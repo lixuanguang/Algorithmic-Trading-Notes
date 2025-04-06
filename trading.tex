@@ -1,0 +1,159 @@
+% Pass options to the xcolor package for table support
+\PassOptionsToPackage{table}{xcolor}
+
+% Document class: A4 paper with an 6pt font size.
+\documentclass[a4paper,6pt]{article}
+
+% Use a plain page style (no headers/footers beyond page numbers)
+\pagestyle{plain}
+
+% Import the base preamble (packages, macros, environments, etc.)
+\input{sections/base}
+
+% Set the title and author metadata
+\title{Algorithmic Trading}
+\author{Arthur Li}
+
+\begin{document}
+
+% Use Roman page numbering for front matter
+\pagenumbering{roman}
+
+% Title Page
+\maketitle
+
+% Bibliography style (Chicago)
+\bibliographystyle{chicago}
+
+% Table of Contents
+\newpage
+\tableofcontents
+
+% Switch to Arabic numbering for main content pages
+\newpage
+\pagenumbering{arabic}
+
+% Introduction Section
+\newpage
+\input{sections/intro/overallstruct}
+    
+\newpage
+   
+\begin{comment}
+	
+% Mathematical and Statistical Foundation
+    
+    Adapted from materials such as Shreve’s stochastic calculus texts and advanced statistics references)
+
+Stochastic Processes and Bayesian Inference:
+Topics: Stochastic calculus, Markov processes, Bayesian linear regression, MCMC methods.
+Purpose: Equip readers with rigorous tools to model market randomness and update beliefs with new data.
+Optimization Techniques:
+Topics: Convex optimization, dynamic programming, optimal control theory.
+Purpose: Provide the mathematical underpinnings for optimal execution and risk management.
+	
+	% Quantitative Finance Theory
+	(Incorporating insights from market microstructure texts and execution research)
+
+Market Microstructure and Optimal Execution:
+Topics: Order flow, transaction cost analysis, smart order routing, and alpha profiling.
+Example: Discuss methods like VWAP, TWAP, and implementations from scholarly articles and Wikipedia’s smart order routing overview 
+EN.WIKIPEDIA.ORG
+.
+Derivative Pricing and Risk Management:
+Topics: Option pricing models, risk-adjusted cost functions, and sensitivity analysis.
+Purpose: Bridge the gap between theoretical pricing models and their algorithmic application.
+
+	% Algorithmic Trading Strategies
+	(Drawing on works such as Michael Halls Moore’s “Advanced Algorithmic Trading” 
+SACREDTRADERS.COM
+and Ernie Chan’s insights)
+
+Strategy Design and Testing:
+Mean reversion, momentum, delta-neutral and statistical arbitrage strategies.
+Detailed discussion of backtesting pitfalls and strategy decay.
+Execution Algorithms:
+In-depth treatment of execution strategies including slicing orders, smart order routing, and adaptive algorithms.
+Case Studies:
+Real-world examples (e.g., pairs trading with cointegration and Kalman filtering) that show the evolution from theoretical model to live trading.
+
+	% Machine Learning and AI in Trading
+	(Incorporating insights from “Advances in Financial Machine Learning” by Lopez de Prado
+ANALYZINGALPHA.COM
+ and related texts)
+
+Supervised and Unsupervised Techniques:
+Regression, decision trees, clustering, and support vector machines applied to financial data.
+Deep Learning and Reinforcement Learning:
+Neural networks for pattern recognition and forecasting, including practical coding examples in Python.
+Feature Engineering and Model Evaluation:
+Techniques for constructing and validating predictive models, with an emphasis on avoiding overfitting in a trading context.
+
+	% Implementation, Backtesting, and Deployment
+	(Using open-source tools like QSTrader, Python, and R – as highlighted in QuantInsti’s advanced courses 
+QUANTRA.QUANTINSTI.COM
+)
+
+Efficient Backtesting Techniques:
+Vectorized and event-driven backtesting frameworks.
+Risk and Performance Metrics:
+Detailed analysis of performance, risk-adjusted returns, and practical considerations when moving to live execution.
+Real-Time Deployment:
+Integrating machine learning models with live data streams, execution engines, and risk management systems.
+
+	% Advanced Topics and Future Directions
+	Emerging Trends:
+Discussion on topics such as high-frequency trading (HFT) infrastructure, smart order routing, and dark pool strategies.
+Reference recent research and articles (e.g., the “mundane economics” of HFT ).
+Regulatory and Market Implications:
+How evolving market regulations impact algorithm design and execution.
+
+	% Appendices and Supplemental Materials
+	Mathematical Proofs and Derivations:
+Detailed proofs for key results for those interested in the theory.
+Code Libraries and Examples:
+Fully annotated code snippets (Python/R) that implement the discussed algorithms.
+Glossary and Further Reading:
+A curated list of additional resources and advanced texts (referencing lists from QuantInsti and other curated guides 
+BLOG.QUANTINSTI.COM
+).
+
+    % Mathematical Overview Section
+    \newpage
+    %\input{sections/math/overallstruct}
+
+    % Microstructure Trading Section
+    \newpage
+    %\input{sections/microstruct/overallstruct}
+
+    % Equities Trading Section
+    \newpage
+    %\input{sections/equities/eqtrade}
+
+    % Fixed Income Trading Section
+    \newpage
+    %\input{sections/fixedincome/fitrade}
+
+    % Derivatives Trading Section
+    \newpage
+    %\input{sections/derivatives/dertrade}
+
+    % Forex Trading Section
+    \newpage
+    %\input{sections/forex/forextrade}
+
+    % Commodities Trading Section
+    \newpage
+    %\input{sections/commodities/commotrade}
+
+    % Appendix Section
+    \newpage
+    %\input{sections/appendix/appindex}
+
+\end{comment}
+
+\newpage
+\bibliography{references}
+
+\end{document}
+	

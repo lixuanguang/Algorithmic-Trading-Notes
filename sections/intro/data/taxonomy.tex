@@ -1,0 +1,211 @@
+\subsubsection{Data Taxonomy}
+
+A brief overview of the types of data used in systematic trading.
+
+\begin{flushleft}
+Four essential types of financial data
+\begin{tabularx}{\textwidth}{X|X|p{13em}|X}
+\hline
+\rowcolor{gray!30}
+Fundamental Data & Market Data & Analytics & Alternative Data \\
+\hline
+Assets \newline
+Liabilities \newline
+Sales \newline
+Costs/Earnings \newline
+Macro Variables \newline
+$\cdots$
+&
+Price/Yield/IV \newline
+Volume \newline
+Dividend/Coupons \newline
+Open Interest \newline
+Quotes/Cancellations \newline
+Aggressor Side \newline
+$\cdots$
+&
+Analyst Recommendation \newline
+Credit Ratings \newline
+Earnings Expectations \newline
+News Sentiment \newline
+$\cdots$
+&
+Satellite/CCTV \newline
+Google Searches \newline
+Twitter/Chats \newline
+Metadata \newline
+$\cdots$ \\
+\hline
+\end{tabularx}
+\end{flushleft}
+
+\begin{remark} \hlt{Fundamental Data Characteristics}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Data published is indexed by last date included in report, which precedes date of release.
+\item Data is often backfilled or re-instated, and data vendor may overwrite initial values with corrections.
+\item Data is extremely regularised and low frequency.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Market Data Characteristics}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Raw feed contains unstructured information, such as FIX messages (allow full construction of trading book), or full collection of BWIC (bids wanted in competition) responses.
+\item FIX data is not trivial to process, $\sim 10$TB generated on daily basis
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Analytics Data Characteristics}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Derivative data as processed based on original source. Signal already extracted from the original source.
+\item Costly, methodology used in production may be biased or opaque.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Alternative Data Characteristics}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Produced by individuals, business processes, and sensors.
+\item Primary information that has not made it to other sources.
+\item Cost and privacy concerns. May be useful if it annoys data infrastructure team.
+\end{enumerate}
+\end{remark}
+
+\begin{definition} \hlt{Reference Data}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Trading Universe: evolving daily to incorporate new listings, de-listings etc. Knowing when a particular stock no longer trades is important to avoid survivor bias.
+\item Symbology Mapping: ISIN, SEDOL, RIC, Bloomberg Tickers etc. Data is not static, symbols may change, complicating historical data merges. Mapping needs to persist as point-in-time data and allow for historical 'as-of-date' usage, require implementation of bi-temporal data structure. 
+\item Ticker Changes: for reasons described in symbology mapping. To maintain historical table of ticker changes to seamlessly go up and down time series data.
+\item Corporate Actions Calendars: contain stock and cash dividends (announcement, execution date), stock splits, reverse splits, rights offer, mergers and acquisitions, spin off, free float or shares outstanding adjustments, quotation suspensions etc.\\
+For dividends, announcements may coincide with more volatility, jumps in price time series. Allow building of strategies that look to benefit from the added volatility.\\
+For stock splits, reverse splits, rights offers, all historical data need to be adjusted backward to reflect the split (both volume and price).\\
+For M\&A, spin-offs, to account for changes in valuation, hence used in Merger Arbitrage strategies.\\
+Suspensions result in gaps in data, may impact backtesting.
+\item Static Data: country, sector, primary exchange, currency, and quote factor. May be used to group instruments based on fundamental similarities (hence for pairs trading). Maintaining a table of quotation currency per instrument necessary to aggregate positions at portfolio level.
+\item Exchange Specific Data: individual exchanges have variety of differences to be accounted for when designing trading strategies. First group of information concerns the hours and dates of operations:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Holiday Calendar: Strategies trading simultaneously in several markets and leveraging correlation may not perform as well if one market is closed and another is open.
+\item Exchange Sessions Hours: Different sessions (Pre-Market, Continuous Core, After-Hour etc.); auction times and respective cutoff times for oder submission; lunch break restricting intraday trading and auctions before/after lunch; settlement times for futures market. Daylight Saving Time (DST) adjustments; length of trading hours during course of the year; different trading hours by venue.
+\item Disrupted Days: Exchange outages or trading disruptions, market data issues. To be recorded so they can be filtered out when building or testing strategies.
+\end{enumerate}
+Second group of information governing the mechanics of trading:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Tick Size: Minimum eligible price increment; may vary by instrument and as a function of price.
+\item Trade and Quote Lots: Minimum size increment for quotes or trades.
+\item Limit-Up and Limit-Down Constraints: Maximum daily fluctuations of securities, and whether trading is paused or can only be traded at better prices than the threshold.
+\item Short Sell Restrictions: Restrict shot sells not to trade at price worse than last price, or not to create a new quote that will be lower than the lowest prevailing quote. Impact ability to source liquidity.
+\end{enumerate}
+\item Market Data Condition Codes: vary per exchange and asset class, and each market event may be attributed to several codes at once. To build mapping table of condition codes and what they mean (i.e., auction trade, lit or dark trade, cancelled or corrected trade, regular trade, off-exchange trade reporting, block-size trade, trade originating from multi-leg order such as option spread trade etc.). To access liquidity for trading algorithm, trades published for reporting purposes must be excluded and not be used to update some of the aggregated daily data used in construction of trading strategies.
+\item Special Day Calendars: days wth distinct liquidity characteristics to be accounted for in both execution strategies and in alpha generation process. These (non-exhaustive) irregular events may be:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Half trading days preceding Christmas and following thanksgiving in US
+\item Ramandan even in Turkey
+\item Taiwan market opening on weekend to make up for lost trading days during holiday periods
+\item Korean market changing trading hours on day of nationwide university entrance exam
+\item Brazilian market opening late on day following the Carnival
+\item Last trading days of months and quarters (investors rebalance portfolios)
+\item Index rebalancing dates, where intraday volume distribution is significantly skewed toward EODs
+\item Options and futures expiry dates (quarterly/monthly expiry, Triple Witching in US, Special Quotations in Japan) where excess trading volume and different intraday patterns result from hedging activity and portfolio adjustments.
+\end{enumerate}
+Model normal days first. Special days are modelled either independently, or using normal days as baseline.
+\item Futures-Specific Reference Data: to know which contract was live at any point of time by using expiry calendar, and the most liquid contract. Equity index futures are most liquid for first contract available (front month), energy futures such as oil are more liquid for second contract. Hence to know which contract carry the most significant price formation characteristics, and what is true liquidity available.\\
+Note there is no real standardised expiry frequency that applies across markets. When computing rolling-window metrics, to account for potential roll dates (due to investors rolling forward positions) that may have happened during the time span. May blend volume time series prior to roll date and after roll date.\\
+Futures market also have different market phases during the day with significantly different liquidity characteristics. Various market data metrics (volume profile, average spread, average bid-ask sizes etc) should be computed separately for each market phase by maintaining a table of start and end times of each session for each contract.
+\item Options-Specific Reference Data (Options Chain): expiry date and strike price combination (option chain). Map of equity tickers to option tickers with strike and expiry dates allow for design for more complex investment and hedging strategies (i.e., distance to strike, change in open interest of puts and calls).
+\item Market-Moving News Releases: macroeconomic announcements. To maintain calendar of dates and times of their occurrences to assess their impact on strategies. Central bank announcements or meeting minutes releases about major economies (FED/FOMC, ECB, BOE, BOJ, SNB), Non-Farm Payrolls, Purchasing Managers' Index, Manufacturing Index, Crude Oil Inventories etc.\\
+Stock-specific releases such as earnings calendars, specialised sector events (for healthcare, biotech etc).
+\item Related Tickers: tickers that are related to each other as they fundamentally represent the same underlying asset. Allows efficient opportunity exploitation. Primary tickers to composite tickers mapping (for markets with fragmented liquidity), dual listed/fungible securities in US and Canada, ADR or GDR, local and foreign boards in Thailand etc.
+\item Composite Assets: ETFs, Indexes, Mutual Funds etc. May be used to achieve desired exposures, or as cheap hedging instruments, and provide arbitrage opportunities when they deviate from NAV. To maintain information such as time series of their constituents and value of any cash component, divisor used to translate NAV into quoted price, constituent weights.
+\item Latency tables: for higher frequency trading strategies. Contains distribution of latency between different data centres for more efficient order routing, and reordering data that are recorded in different locations.
+\end{enumerate}
+\end{definition}
+
+\begin{definition} \hlt{Market Data Feed}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Level I Data (Trade and BBO Quotes): trades and top of book quotes. Enough to reconstruct Best Bid and Offer (BBO). Also contains information in form of trade status (cancelled, reported late etc), trade and quote qualifiers (odd lot, normal trade, auction trade, Intermarket Sweep, average price reporting, on which exchange etc). May be used to analyse sequence of events and decide if a given print should be used to update the last price and total volume traded at a point in time.
+\item Level II Data (Market Depth): addition of quote depth data, displays all lit limit order book updates (price changes, addition or removal of shares quoted) at any level in the book, for all of the lit venues in fragmented markets.
+\item Level III Data (Full Order View): message data. Each order arriving is attributed a unique ID for tracking over time, and is precisely identified when it is executed, cancelled, or amended. Possible to build a full (with national depth) book at any moment intraday. Example from US market:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Timestamp: number of milliseconds after midnight
+\item Ticker: equity symbol (up to 8 char)
+\item Order: Unique order ID
+\item T: message type. 'B' is add buy order; 'S' is add sell order'; 'E' is execute outstanding order in part; 'C' is cancel outstanding order in part; 'F' is execute outstanding order in full; 'D' is delete outstanding order in full; 'X' is bulk volume for cross event; 'T' is execute non-displayed order
+\item Shares: order quantity for 'B', 'S', 'E', 'X', 'C', 'T' messages. Zero for 'F', 'D' messages
+\item Price: order price for 'B', 'S', 'X', 'T' messages. Zero for cancellation and executions. Last 4 digits are decimal, padded to right with zeroes. Divide by $1000$ to convert to currency value.
+\item MPID: Market Participant ID associated with transaction (4 char)
+\item MCID: Market Centre Code for originating exchange (1 char)
+\end{enumerate}
+A few special types of orders worth mentioning are:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Order subject to price sliding: execution price may be one cent worse than display price at NASDAQ; ranked at locking price as hidden order, displayed at the price one minimum price variation inferior to locking price. New order ID will be used if order is replaced as a display order.
+\item Pegged order: based on NBBO, not routable, new timestamp given upon repricing; display rule vary over exchanges
+\item Mid-point peg order: non-displayed, may result in half-penny execution
+\item Reserve order: displayed size is ranked as displayed limit order; reserve size is behind non-displayed orders and pegged orders in priority.\\
+Minimum display quantity is 100, amount replenished from reserve size when it falls below 100 shares; New timestamp created, displayed size re-ranked upon replenishment.
+\item Discretionary order: displayed at one price while passively trading a more aggressive discretionary price. Order becomes active when shares are available within discretionary price range. Order ranked last in priority. Execution price may be worse than display price.
+\item Intermarket sweep order: can be executed without need for checking prevailing NBBO. 
+\end{enumerate}
+Using these data, we may model: the pattern of inter-arrival times of various events; arrival and cancellation rates as a function of distance from nearest touch price; arrival and cancellation rates as a function of other information, such as in the queue on either side of the book, order book imbalance etc.\\
+Once modelled, we may analyse: the impact of market order on limit order book; chances for limit order to move up the queue from given entry position; probability of earning the spread; expected direction of price movement over a short horizon.
+\end{enumerate}
+\end{definition}
+
+\begin{definition} \hlt{Binned Data}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Open, High, Low, Close (OHLC) and Previous Close Price: indication on trading activity and intraday volatility. Distance traveled between lowest and highest points is indication of market sentiment. Previous close has to be adjusted for corporate actions and dividends.
+\item Last Trade before Close (Price/Size/Time): how much the close price may have jumped in final moments of trading; how stable it is as a reference value for next day.
+\item Volume: trading activity indicator, especially when level jumps from long term average. Collect volume breakdown between lit and dark venues for execution strategies.
+\item Auctions Volume and Price: price discovery event when significant volume prints occur.
+\item VWAP: indication of trading activity on the day. Easier to algorithmically execute large orders with VWAP than a single print.
+\item Short Interest/Days-to-Cover/Utilisation: good proxy for investor position. Short pressure an indication of upcoming short term moves: large short interest is bearish view from institutional investors. Utilisation level of available securities to borrow gives indication of how much room is left for future shorting. Days-to-Cover to assess magnitude of potential short squeeze (if sellers unwind position, fraction of available daily liquidity needed); larger value indicates larger potential of sudden upswing on heavily shorted securities.
+\item Futures Data: insight into activity or large investors through open interest data. Offer arbitrage opportunities if their basis exhibits mis-pricing compared to one's dividend estimates.
+\item Index-Level Data: source of relative measures for instrument specific features (index OHLC, volatility). Normalised features identify individual instruments deviating from their benchmarks.
+\item Options Data: information on position of traders through open interest and Greeks.
+\item Asset Class Specific: yield/benchmark rates (repo, 2y, 10y, 30y), CDS spreads, US Dollar Index
+\end{enumerate}
+\end{definition}
+
+\begin{definition} \hlt{Granular Intraday Microstructure Activity}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Number and Frequency of Trades: proxy for activity level, and how continuous it is. Low number of trades mean harder execution, and may be more volatile
+\item Number and Frequency of Quote Updates: similar proxy for activity level
+\item Top of Book Size; proxy for liquidity of instruments (larger top of book size makes it possible to trade larger order quasi immediately)
+\item Depth of Book (price and size): similar proxy for liquidity
+\item Spread Size (average, median, time weighted average): proxy for cost of trading. Parametrised distribution used to identify opportunities if they are cheap or expensive
+\item Trade size (average, median): to identify intraday liquidity opportunities when examining volume available in the order book.
+\item Ticking time (average, median): representation of how often one should expect changes in the order book first level. For execution algorithms for which the frequency of updates (adding/cancelling child orders, re-evaluating decisions etc.) should commensurate with characteristics of the traded instrument.
+\end{enumerate}
+Daily distribution can be used as start of day estimates and updated intraday with online Bayesian updates.\\
+Last group of daily data is derived from previous two groups but stored pre-computed to save time during research phase, or to be used as normalising values:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item X-day Average Daily Volume (ADV) / Average Auction Volume
+\item X-day Volatility (close-to-close, open-to-close etc)
+\item Beta with respect to index or sector (plain beta, or asymmetric up-days/down-days beta)
+\item Correlation matrix
+\end{enumerate}
+When binning data, this may be grouped into bins ranging from a few seconds to 30 minutes. Minute bar data are used for volume and spread profiles to prevent introducing excess noise due to market friction.
+\end{definition}
+
+\begin{definition} \hlt{Fundamental Data and Other Data}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Key Ratios: Earnings Per Share (EPS), Price-to-Earning (P/E), Price-to-Book (P/B), etc. 
+\item Analyst Recommendations: aggregated values given consensus valuation
+\item Earnings data: estimations by research analysts provide quarterly earning estimates which can be used as indication of performance of stock before actual value is published
+\item Holders: sudden changes in ownership indicate changes in sentiment by sophisticated investor
+\item Insiders Purchase/Sale: indicator of future stock price moves from group of people who have access to best possible information about the company
+\item Credit Ratings: credit downgrades resulting in higher funding costs have negative impact on equity prices
+\end{enumerate}
+\end{definition}

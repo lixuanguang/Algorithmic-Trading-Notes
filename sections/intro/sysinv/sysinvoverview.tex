@@ -1,0 +1,49 @@
+\subsection{Overview of Systematic Investments}
+
+A schematic of a live 'production' trading strategy is shown below, but does not include everything else necessary to create the strategy (i.e., research tools).
+
+\begin{figure}[H]
+\centering
+\input{figures/intro/strategystructure.tikz}
+\caption{Live Production Trading Strategy Overview}
+\end{figure}
+
+At its core, the trading system is organised into three primary modules:
+
+The trading system has three modules:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Alpha model: predicts the future of the instruments considered for trading, i.e. directional alpha
+\item Risk model: limits amount of exposure to factors that are unlikely to generate returns but could drive losses, i.e. directional exposure limit on an asset class
+\item Transaction cost model: determine if the cost of the trades needed to migrate from current portfolio to new portfolio is desirable to the portfolio construction model.
+\end{enumerate}
+These models feed into a portfolio construction model that balances the tradeoffs of profit and risk to determine the best portfolio to hold. The model finds the differences in trades that need to be executed.\\
+The execution model then takes the required trades, and using inputs such as urgency in which the trades need to be executed and dynamics of liquidity in the markets, executes the trades in an efficient and low cost manner.\\
+
+\begin{method} \hlt{Chains of Production for Alpha Signals}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Data Curation: for collecting, cleaning, indexing, storing, adjusting, and delivering all data to production chain. Requires experts in market microstructure and data protocols such as FIX.
+\item Feature Analysis: transform raw data into informative signals. Requires experts in information theory, signal extraction and processing, visualisation, labelling, weighting, classifiers, feature importance techniques. Feature analysts collect and catalogue libraries of findings.
+\item Strategists: informative features are transformed into actual investment algorithms. Strategists will parse libraries of features for ideas to develop an investment strategy. Require data scientists with deep knowledge of financial markets and economy. Features may be discovered by black box, but strategy is developed in a white box.
+\item Back-testers: assess profitability of investment strategy under various scenarios. Requires data scientists with deep understanding of empirical and experimental techniques. Good back-tested incorporates in analysis meta-information on how strategy was created.
+\item Deployment Team: integrate strategy code into production line. Requires algorithm specialists and mathematical programmers. To ensure deployed solution is logically identical to prototype, and to optimise implementation sufficiently such that production latency is minimised.
+\item Portfolio Oversight: once strategy is deployed, follows lifecycle.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Embargo: initially, strategy is run on data observed after end date of backtest. If embargoed performance is consistent with backtest, strategy is promoted to next stage.
+\item Paper Trading: strategy run on live, real-time feed. Performance accounts for data parsing latencies, calculation latencies, execution delays, and other time lapses between observation and positioning. 
+\item Graduation: strategy manages real position, whether in isolation of as part of ensemble. Performance evaluated precisely, including attributed risk, returns, and costs.
+\item Re-allocation: based on production performance, allocation is re-assessed frequently and automatically. Strategy allocation follows a concave function, Initial allocation is small. As time passes and strategy performs as expected, allocation is increased. Over time, performance decays and allocations become gradually smaller.
+\item Decommission: if strategy perform below expectations for sufficiently extended period of time, strategy is discontinued.
+\end{enumerate}
+\end{enumerate}
+\end{method}
+
+\input{sections/intro/sysinv/alphamod}
+\input{sections/intro/sysinv/riskmod}
+\input{sections/intro/sysinv/txncostmod}
+\input{sections/intro/sysinv/portconstmod}
+\input{sections/intro/sysinv/executionmod}
+\input{sections/intro/sysinv/research}
+\input{sections/intro/sysinv/modelrisk}

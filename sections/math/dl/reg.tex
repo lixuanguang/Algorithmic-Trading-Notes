@@ -1,0 +1,102 @@
+\subsubsection{Regularisation for Deep Learning}
+
+\begin{definition} \hlt{Regularisation} refers to adding a parameter norm penalty $\Omega(\bm{\theta})$ to the objective function $J$. The regularised objective function is then
+\begin{equation}
+\tilde{J}(\bm{\theta}; \bm{X}, \bm{y}) = J(\bm{\theta}; \bm{X}, \bm{y}) + \alpha \Omega(\bm{\theta}) \nonumber
+\end{equation}
+where $\alpha in [0, \infty)$ is a hyper-parameter that weights the contribution of norm penalty term.\\
+For neural networks, the parameter norm penalty $\Omega$ is chosen such that it penalises only the weights of the affine transformation at each layer and leaves the biases un-regularised.
+\end{definition}
+
+\begin{definition} \hlt{$L^2$/Ridge Regularisation}\\
+The regularisation term added to objective function is
+\begin{equation}
+\Omega(\bm{\theta}) = \frac{1}{2} \Vert \bm{w} \Vert^2_2 \nonumber
+\end{equation}
+\end{definition}
+
+\begin{remark} \hlt{Behaviour of Weight Decay ($L^2$) Regularisation}\\
+Assuming no bias parameter, a model have the following objective function and parameter gradient:
+\begin{align}
+\tilde{J}(\bm{w}; \bm{X}, \bm{y}) &= \frac{\alpha}{2} \bm{w}^T \bm{w} + J(\bm{w}; \bm{X}, \bm{y}) \nonumber \\
+\nabla_{\bm{w}} \tilde{J}(\bm{w}; \bm{X}, \bm{y}) &= \alpha \bm{w} + \nabla_{\bm{w}} J(\bm{w}; \bm{X}, \bm{y}) \nonumber
+\end{align}
+On a single gradient step, the update is as follows:
+\begin{align}
+\bm{w} \leftarrow (1 - \epsilon \alpha)\bm{w} - \epsilon \nabla_{\bm{w}} J(\bm{w}; \bm{X}, \bm{y}) \nonumber
+\end{align}
+The addition of weight decay has modified learning rule to multiplicatively shrink weight vector by constant factor on each step before gradient update.\\
+Using quadratic approximation to objective function at minimal unregularised training cost, approximation is
+\begin{equation}
+\hat{J}(\overline{\theta}) = J(\bm{w}^*) + \frac{1}{2} (\bm{w} - \bm{w}^*)\bm{H}(\bm{w} - \bm{w}^*), \ \ \ \ \bm{w}^* = \arg \min_{\bm{w}} J(\bm{w}) \nonumber
+\end{equation}
+where $\bm{H}$ is Hessian matrix of $J$ with respect to $\bm{w}$ evaluated at $\bm{w}^*$. Minimum of $\hat{J}$ occurs where gradient is
+\begin{align}
+\nabla_{\bm{w}} \hat{J}(\bm{w}) = \bm{H}(\bm{w} - \bm{w}^*) = \bm{0} \nonumber
+\end{align}
+Adding weight decay gradient, solve for minimum of regularised version of $\hat{J}$. Let $\tilde{\bm{w}}$ be minimum, then
+\begin{align}
+\alpha \tilde{\bm{w}} + \bm{H}(\tilde{\bm{w}} - \bm{w}^*) = 0 \nonumber \\
+(\bm{H} + \alpha \bm{I})\tilde{\bm{w}} = \bm{H} \bm{w}^* \nonumber \\
+\tilde{\bm{w}} = (\bm{H} + \alpha \bm{I})^{-1} \bm{H} \bm{w}^* \nonumber
+\end{align}
+As $\alpha \rightarrow 0$, regularised solution $\tilde{\bm{w}} \rightarrow \bm{w}^*$. Note $\bm{H}$ is real and symmetric, hence decompose into diagonal matrix $\bm{A}$ and orthonormal basis of eigenvectors $\bm{Q}$ such that $\bm{H} = \bm{Q} \bm{\Lambda} \bm{Q}^T$, to get
+\begin{equation}
+\tilde{\bm{w}} = (\bm{Q} \bm{\Lambda} \bm{Q}^T + \alpha \bm{I})^{-1} \bm{Q} \bm{\Lambda} \bm{Q}^T \bm{w}^* = \bm{Q} (\bm{\Lambda} + \alpha \bm{I})^{-1} \bm{\Lambda} \bm{Q}^T \bm{w}^* \nonumber
+\end{equation}
+The effect of weight decay rescale $\bm{w}^*$ along axes defined by eigenvectors of $\bm{H}$. The component of $\bm{w}^*$ aligned with $i$-th eigenvector of $\bm{H}$ is rescaled by factor $\frac{\lambda_i}{\lambda_i + \alpha}$. For components where $\lambda_i \gg \alpha$, the effects of regularisation is relatively small. For components where $\lambda_i \ll \alpha$, components will be shrunk to nearly zero magnitude.
+\end{remark}
+
+\begin{definition} \hlt{$L^1$ Regularisation}\\
+The $L^1$ regularisation is the sum of absolute values of individual parameters.
+\begin{equation}
+\Omega(\bm{\theta}) = \Vert \bm{w} \Vert_1 = \sum_i \abs{w_i} \nonumber
+\end{equation}
+\end{definition}
+
+\begin{definition} \hlt{Behaviour of $L^1$ Regularisation}\\
+Assuming no bias parameter, a model has the following objective function and parameter gradient:
+\begin{align}
+\tilde{J}(\bm{w}; \bm{X}, \bm{y}) &= \alpha \Vert \bm{w} \Vert_1 + J(\bm{w}; \bm{X}, \bm{y}) \nonumber \\
+\nabla_{\bm{w}} \tilde{J}(\bm{w}; \bm{X}, \bm{y}) &= \alpha \ \text{sign}(\bm{w}) + \nabla_{\bm{w}} J(\bm{w}; \bm{X}, \bm{y}) \nonumber
+\end{align}
+Note that the regularisation contribution to gradient is a constant factor with sign equal to $\text{sign}(w_i)$. Minimum of $\tilde{J}$ occurs at where
+\begin{equation}
+\nabla_{\bm{w}} \tilde{J}(\bm{w}) = \bm{H} (\bm{w} - \bm{w}^*) \nonumber
+\end{equation}
+Assuming the Hessian is diagonal, $\bm{H} = \text{diag}([H_{1,1}, \ldots, H_{n,n}])$, where each $H_{i,i} > 0$. The quadratic approximation of regularised objective function is then
+\begin{align}
+\tilde{J}(\bm{w}; \bm{X}, \bm{y}) &= J(\bm{w}^*; \bm{X}, \bm{y}) + \sum_i \left[ \frac{1}{2} H_{i,i} (\bm{w}_i - \bm{w}_i^*)^2 + \alpha \abs{w_i} \right] \nonumber \\
+w_i &= \text{sign}(w_i^*) \max \left\{ \abs{w_i^*} - \frac{\alpha}{H_{i,i}}, 0 \right\} \nonumber
+\end{align}
+For the case where $w_i^* > 0$ for all $i$, then
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item if $w_i^* \leq \frac{\alpha}{H_{i,i}}$, the optimal value is $w_i = 0$ as contribution of $J(\bm{w}; \bm{X}, \bm{y})$ to regularised objective $\tilde{J}(\bm{w}; \bm{X}, \bm{y})$ is overwhelmed in direction $i$ by $L^1$ regularisation which pushes $w_i$ to zero.
+\item if $w_i^* > \frac{\alpha}{H_{i,i}}$, regularisation shifts optimal value of $w_i$ in the direction by $\frac{\alpha}{H_{i,i}}$.
+\end{enumerate}
+For the case where $w_i^* < 0$, this happens similarly, but with $L^1$ penalty decreasing $w_i$ by $\frac{\alpha}{H_{i,i}}$, with min value $0$.\\
+Note that $L^1$ produces a more sparse solution, which is a feature selection mechanism.
+\end{definition}
+
+\begin{remark} \hlt{Norm Penalties as Constrained Optimisation}\\
+Let cost function regularised by parameter norm penalty be
+\begin{equation}
+\tilde{J}(\bm{\theta}; \bm{X}, \bm{y}) = J(\bm{\theta}; \bm{X}, \bm{y}) + \alpha \Omega(\bm{\theta}) \nonumber
+\end{equation}
+Construct a generalised generalised Lagrange function,
+\begin{equation}
+\mathcal{L}(\bm{\theta}; \bm{X}, \bm{y}) = J(\bm{\theta}; \bm{X}, \bm{y}) + \alpha (\Omega(\bm{\theta}) - k) \nonumber
+\end{equation}
+The solution to the constrained problem is then
+\begin{equation}
+\bm{\theta}^* = \arg \min_{\bm{\theta}} \max_{\alpha, \alpha \geq 0} \mathcal{L} (\bm{\theta}, \alpha) \nonumber
+\end{equation}
+Note that optimal value $\alpha^*$ will shrink $\Omega(\bm{\theta})$, but not such that it is less than $k$.\\
+Fixing $\alpha^*$, the problem is then a function of $\bm{\theta}$,
+\begin{equation}
+\bm{\theta}^* = \arg \min_{\bm{\theta}} \mathcal{L} (\bm{\theta}, \alpha^*) = \arg \min_{\bm{\theta}} J(\bm{\theta}; \bm{X}, \bm{y}) + \alpha^* \Omega (\bm{\theta}) \nonumber
+\end{equation}
+This is the regularised training problem of minimising $\tilde{J}$. The parameter norm penalty is imposing a constraint on the weights. If explicit constraints are to be used rather than penalties, use stochastic gradient descent on $J(\bm{\theta})$, then take the projected $\bm{\theta}$ to the nearest point that satisfies $\Omega(\bm{\theta}) < k$. This method is used if $k$ is predefined by user, and time is not to be spent on searching for $\alpha$ value that corresponds to this $k$.\\
+Explicit constraints and re-projection work better in circumstances where non-convex optimisation is involved, and this may avoid getting stuck in local minima. Explicit constraints also impose stability, and together with high learning rate allows rapid exploration of parameter space.
+\end{remark}

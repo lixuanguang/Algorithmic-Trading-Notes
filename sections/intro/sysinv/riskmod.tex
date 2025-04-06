@@ -1,0 +1,42 @@
+\subsubsection{Risk Models}
+
+Risk model concerns the intentional selection and sizing of exposures to improve the quality and consistency of returns. By pursing an alpha, we want to be invested in the movement of the exposure to profit in the long run.
+
+\begin{method} \hlt{Factor-Based Models}\\
+Factor-based models decompose asset returns into contributions from systematic factors and idiosyncratic components. The most common factors include:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Market Factor: Captures the overall movement of the market.
+\item Size Factor: Reflects the differential risk associated with companies of varying market capitalizations.
+\item Value Factor: Accounts for risk due to discrepancies between market prices and fundamental valuations.
+\item Momentum Factor: Measures the tendency of asset prices to continue in their current trajectory.
+\end{enumerate}
+This allows traders to understand which elements drive portfolio risk and adjust exposures accordingly.
+\end{method}
+
+\begin{method} \hlt{Statistical Models}\\
+Statistical risk models leverage historical data and probabilistic techniques to quantify risk parameters.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Historical Simulation: Directly computing risk metrics from past return distributions.
+\item Monte Carlo Simulation: Generating a large number of potential future return scenarios to estimate risk under diverse conditions.
+\item Parametric Methods: Employing analytical formulas based on assumed return distributions to calculate key risk measures.
+\end{enumerate}
+These are useful for dynamically updating risk assessments as new market data become available.
+\end{method}
+
+\begin{method} \hlt{Limiting Size of Risk}\\
+The quantitative risk models that limit the size of risk varies by the manner in which size is limited, how risk is measured, and what is having its size limited.\\
+Size limits can be limited by hard constraints and penalties. A hard limit may be arbitrary, hence penalty functions may be built to allow a position to increase beyond the limit level, only if the alpha model expects a significantly larger return. The levels of limits and penalties may be determined from either theory or data.\\
+To measure risk, there are two methodologies. The first is longitudinal, and measures risk through the volatility of an instrument. The second is to measure the correlation or covariance between assets (dispersion).\\
+Size limiting may be applied to single positions and groups of positions (sectors, asset classes). It may also be applied to various types of risks and the amount of portfolio leverage.
+\end{method}
+
+\begin{method} \hlt{Limiting the Types of Risk}\\
+To eliminate unintentional exposure as there is no expectation of being compensated sufficiently for accepting them. This can be achieved through theoretical or empirical risk models.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Theory-Driven Risk Models: focuses on systematic risk factors, derived from economic theory. Systematic risks cannot be diversified away. Equity may have market risk, sector risk, market capitalisation risk etc. Fixed income may have interest rate risk.
+\item Empirical Risk Models: uses historical data to determine the unnamed systematic risks that should be measured and mitigated. Uses principal component analysis (PCA) to discern unnamed systematic risks that may correspond to named risk factors. Used by statistical arbitrage traders who are betting on exactly the component of an asset's return not explained by systematic risks.
+\end{enumerate}
+\end{method}

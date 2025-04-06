@@ -1,0 +1,63 @@
+\begin{tikzpicture}[
+    >=latex,
+    node distance=1.8cm, % overall default vertical distance
+    auto,
+    box/.style={
+      rectangle,
+      draw,
+      minimum width=3cm,
+      minimum height=1cm,
+      align=center
+    }
+]
+
+%--- Nodes (Row 1) ---
+\node[box] (features) {Features};
+
+\node[box, right=1cm of features] (primary)
+  {Primary Model};
+
+\node[box, right=1cm of primary] (binary)
+  {Binary\\Classification\\$[0,1]$};
+
+% "Features + Primary Model Prediction" to the right
+\node[box, right=1cm of binary] (featPred)
+  {Features +\\Primary Model\\Prediction\\(High Recall)};
+
+%--- Secondary pipeline beneath featPred ---
+\node[box, below=1cm of featPred] (secondary)
+  {Secondary Model};
+
+\node[box, below=1cm of secondary] (pmc)
+  {Primary Model\\Correct $[0,1]$};
+
+%--- Meta labels (to the right of secondary) ---
+\node[box, right=1cm of secondary] (metalabels)
+  {Target Variable:\\Meta Labels $[0,1]$};
+
+%--- Final decision box (below Binary) ---
+\node[box, below=1.22cm of binary] (finalDecision)
+  {If both are 1:\\then positive, else negative};
+
+%--- Arrows (main flow) ---
+\draw[->] (features) -- (primary);
+\draw[->] (primary)  -- (binary);
+\draw[->] (binary)   -- (finalDecision);
+
+%--- Arrows for the secondary pipeline ---
+\draw[->] (binary)     -- (featPred);
+\draw[->] (featPred)   -- (secondary);
+\draw[->] (secondary)  -- (pmc);
+\draw[->] (metalabels) -- (secondary);
+\draw[->] (pmc)        -- (finalDecision);
+
+%--- Arrow ABOVE the diagram from Features to featPred ---
+% We move up 1.2cm (instead of 1.5cm) to shorten the path
+% Then go horizontally to the top of featPred
+% Draw this last so it appears on top of the nodes
+\draw[->, thick]
+  (features.north) -- ++(0,1.2) -| (featPred.north);
+
+\end{tikzpicture}
+
+

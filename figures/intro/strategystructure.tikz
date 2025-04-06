@@ -1,0 +1,24 @@
+\begin{tikzpicture}[auto, thick, >=stealth, scale=0.8, transform shape]
+
+    \usetikzlibrary{positioning}
+
+    % Three modules arranged horizontally with reduced dimensions
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm] (alpha) {Alpha Model};
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm, right=0.8cm of alpha] (risk) {Risk Model};
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm, right=0.8cm of risk] (tc) {Transaction Cost Model};
+
+    % Portfolio Construction node directly below Risk Model
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm, below=0.8cm of risk] (portfolio) {Portfolio Construction};
+
+    % Execution node below Portfolio Construction
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm, below=0.8cm of portfolio] (execution) {Execution};
+
+    % Arrows connecting the nodes
+    \draw[->] (alpha.south) -- (portfolio.north);
+    \draw[->] (risk.south) -- (portfolio.north);
+    \draw[->] (tc.south) -- (portfolio.north);
+    \draw[->] (portfolio.south) -- (execution.north);
+    
+\end{tikzpicture}
+
+

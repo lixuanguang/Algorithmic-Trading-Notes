@@ -1,0 +1,109 @@
+\subsubsection{Data Sample Weights}
+
+Note that most of ML literature is based on IID assumption, and ML applications usually fail in finance as these assumptions are unrealistic in the case of financial time series.
+
+\begin{remark} \hlt{Overlapping Outcomes}\\
+Let label $y_i$ be assigned to an observed feature $X_i$, where $y_i = f([t_{i,0}, t_{i,1}])$ is a function over the interval. When $t_{i,1} > t_{j,0}$ and $i < j$, then $y_j$ will depend on common return $r_{t_{j,0}, \min\{t_{i,1}, t_{j,1}\}}$ (over interval $[t_{j,0}, \min\{t_{i,1}, t_{j,1}\}]$). The series of labels $\{y_i \}_{i-1, \ldots, J}$ are not IID whenever there is overlap between any two consecutive outcomes, i.e., $\exists i \ \vert \ t_{i,1} > t_{i+1, 0}$. If this is resolved by restricting bet horizon to $t_{i,1} \leq t_{i+1, 0}$, there is no overlap, but this will lead to coarse models where features sampling frequency is limited by horizon used to determine outcome.\\
+To investigate outcomes that lasted a different duration, samples have to be resampled with different frequency. In addition, if path-dependent labelling technique is to be applied, the sampling frequency will be subordinated to first barrier's touch. Hence, to use $t_{i,1} > t_{i+1, 0}$, leading to overlapping outcomes.
+\end{remark}
+
+\begin{method} \hlt{Estimating Uniqueness of Label}\\
+Let two labels $y_i$ and $y_j$ be concurrent at time $t$, both a function of at least one common return $r_{t-1, t} = \frac{p_t}{p_{t-1}} = 1$.\\
+To compute the number of labels that are a function of given return $r_{t-1, t}$:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item For each $t = 1, \ldots, T$, form a binary array $\{1_{t,i}\}_{i=1, \ldots, I}$ where $1_{t, i} \in \{0,1 \}$.\\
+Variable $1_{t,i} = 1$ if and only if $[t_{i,0}, t_{i,1}]$ overlaps with $[t-1, t]$ and $1_{t,i}=0$ otherwise.
+\item Compute the number of labels concurrent at $t$, $c_t = \sum\limits_{i=1}^I 1_{t,i}$
+\end{enumerate}
+\end{method}
+
+\begin{method} \hlt{Average Uniqueness of Label}\\
+To estimate label's uniqueness (non-overlap) across its lifespan.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Uniqueness of label $i$ at time $t$ is $u_{t,i} = 1_{t,i} c^{-1}_{t}$.
+\item Average uniqueness of label $i$ is average $u_{t,i}$ over label's lifespan, $\overline{u}_i = (\sum_{t=1}^T u_{t,i}) (\sum_{t=1}^T 1_{t,i})^{-1}$.
+\end{enumerate}
+Note that $\{\overline{u}_{i}\}_{i=1, \ldots, I}$ are not used for forecasting the label, hence there is no information leakage.
+\end{method}
+
+\begin{remark} \hlt{IID and Oversampling}\\
+Probability of not selecting item $i$ after $I$ draws with replacement on set of $I$ items is $(1 - I^{-1})^I$. As $I \rightarrow \infty$, note that $(1 - I^{-1})^I \rightarrow e^{-1}$. Number of unique observations drawn to be expected is $(1- e^{-1}) \approx \frac{2}{3}$.\\
+If maximum number of overlapping outcomes is $K \leq I$, probability of not selecting a particular item $i$ after $I$ draws with replacement on set of $I$ items is $(1 - K^{-1})^I$. As sample size increase, probability can be approximated as $(1-I^{-1})^{I \frac{K}{I}} \approx e^{-\frac{K}{I}}$. Implication is that incorrectly assuming IID draws lead to oversampling.
+\end{remark}
+
+\begin{method} \hlt{Sampling with Bootstrap, Redundancy}\\
+Sampling with bootstrapping on observations where $I^{-1} \sum_{i=1}^{I} \overline{u}_i \ll 1$, in-bag observations will increasingly be redundant to each other, and very similar to out-of-bag observations. Two solutions may be:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Drop overlapping outcomes before performing bootstrap.\\
+As overlaps are not perfect, dropping an observation due to overlap will lead to extreme loss in information.
+\item Utilise the average uniqueness $I^{-1} \sum_{i=1}^{I} \overline{u}_i$ to reduce undue influence of outcomes that contain redundant information. Ensure in-bag observations are not sampled at frequency much higher than uniqueness.
+\end{enumerate}
+\end{method}
+
+\begin{method} \hlt{Sequential Bootstrap}\\
+Draws made according to changing probability that controls for redundancy.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Observation $X_i$ is drawn from uniform distribution, $i \sim U[1, I]$.\\
+Probability of drawing any value $i$ is $\delta^{(1)}_i = I^{-1}$.
+\item Second draw, to reduce probability of drawing observation $X_j$ with highly overlapping outcome.\\
+Let $\varphi$ be sequence of draws (may include repetitions), where $\{\varphi^{(1)}\} = \{i\}$.\\
+Uniqueness of $j$ at time $t$ is $u^{(2)}_{t,j} = 1_{t,j} (1 + \sum_{k \in \varphi^{(1)}} 1_{t,k})^{-1}$, which is the uniqueness from adding alternative $j$'s to existing sequence of draws $\varphi^{(1)}$.\\
+Average uniqueness of $j$ is average $u^{(2)}_{t,j}$ over $j$'s lifespan, $\overline{u}^{(2)}_j = (\sum_{t=1}^T u_{t,j}) (\sum_{t=1}^T 1_{t,j})^{-1}$.\\
+A second draw can be made based on updated probabilities $\{\delta^{(2)}_j\}_{j = 1, \ldots, I}$:
+\begin{equation}
+\delta^{(2)}_j = \overline{u}^{(2)}_j \left( \sum\limits_{k=1}^I \overline{u}^{(2)}_j \right)^{-1} \nonumber
+\end{equation}
+where $\sum_{j=1}^I \delta^{(2)}_j = 1$.
+Do a second draw, update $\varphi^{(2)}$, and re-evaluate $\{\delta^{(3)}_j \}_{j=1, \ldots, I}$.
+\item Process is repeated until $I$ draws have taken place.
+\end{enumerate}
+Process draws samples much close to IID, verified by increase in $I^{-1} \sum_{i=1}^I \overline{u}_i$.
+\end{method}
+
+\begin{method} \hlt{Weighting Observations by Uniqueness and Absolute Return}\\
+Let labels be a function for return sign ($\{-1, 1\}$ for standard label, $\{0, 1\}$ for meta-label). The sample weights can be defined in terms of sum of attributed returns over event's life-span, $[t_{i,0}, t_{i,1}]$,
+\begin{equation}
+\tilde{w}_{i} = \abs{\sum\limits_{t = t_{i,0}}^{t_{i,1}} \frac{r_{t-1, t}}{c_t}}, \ \ \ w_t = \tilde{w}_{i} \left( \sum\limits_{j=1}^I \tilde{w}_j \right)^{-1} \nonumber
+\end{equation}
+where $\sum_{i=1}^I w_i = I$. The method weigh an observation as a function of absolute log returns that can be attributed uniquely to it. Lower returns should be assigned higher weights.
+\end{method}
+
+\begin{method} \hlt{Time Decay Weighting} \\
+To let sample weights decay as new observations arrive.\\
+Let $d[x] \geq 0 \ \forall x \in [0, \sum_{i=0}^I \overline{u}_i]$ be time-decay factors multiplying sample weights from earlier.\\
+The final weight has no decay, $d[\sum_{i=1}^I \overline{u}_i] = 1$, and all other weights will adjust relative to that.\\
+Let $c \in (-1, 1]$ be user-defined parameters that determines decay function as follows:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item If $c \in [0,1]$, then $d[1] = c$ with linear decay
+\item If $c \in (-1, 0)$, then $d[-c \sum_{i=1}^I \overline{u}_i] = 0$, with linear decay between $[-c \sum_{i=1}^I \overline{u}_i, \sum_{i=1}^I \overline{u}_i]$,\\
+and $d[x] \ \forall x \leq -c \sum_{i=1}^I \overline{u}_i$.
+\end{enumerate}
+If given linear piecewise function $d = \max \{0, a + bx\}$, requirements are met by following boundary conditions:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item $d = a + b \sum_{i=1}^I \overline{u}_i = 1 \Rightarrow a = 1 - b \sum_{i=1}^I \overline{u}_i$
+\item Contingent on $c$:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item $d = a + b0 = c \Rightarrow b = (1-c) (\sum_{i=1}^I \overline{u}_i)^{-1} \ \ \forall c \in [0,1]$
+\item $d = a - bc \sum_{i=1}^I \overline{u}_i = 0 \Rightarrow b = [(c+1) \sum_{i=1}^I \overline{u}_i]^{-1} \ \forall c \in (-1, 0)$
+\end{enumerate}
+\end{enumerate}
+In the implementation, decay takes place according to cumulative uniqueness. Note that
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item $c=1$ means there is no time decay
+\item $0 < c < 1$ means weights decay linearly over time, but every observation still receives strictly positive weight, regardless of age
+\item $c = 0$ means weights converge linearly to zero over time
+\item $c < 0$ means oldest portion $cT$ of observations receive zero weight (erased from memory)
+\end{enumerate}
+\end{method}
+
+\begin{method} \hlt{Class Weighting}\\
+Weights for underrepresented labels. Critical in classification problems where the most important classes have rare occurrences. To assign higher weights to samples associated with those rare labels.
+\end{method}

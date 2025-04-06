@@ -1,0 +1,41 @@
+\subsubsection{Research}
+
+\begin{definition} \hlt{Scientific Method}
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Researcher observe a phenomenon in the market and construct a theory.
+\item Researcher seeks out information to test the theory.
+\item Researcher tests the theory, and with enough confidence, risk some capital on the validity of the theory.
+\end{enumerate}
+\end{definition}
+
+\begin{remark} \hlt{Sources of Alpha Idea Generation}
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Observing the market, using the scientific method to test the theory
+\item Academic literature, requiring significant time to read academic journals, working papers, and conference presentations for ideas. Literature from other fields such as astronomy, physics, or psychology, may provide ideas relevant to quant finance problems.
+\item Migration of a researcher or portfolio manager from one quant shop to another.
+\item Lessons from activities of discretionary traders
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Model Quality Assessment}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Cumulative profit graph: if profit profile is not smooth, with long periods of inactivity, sharp losses and gains, then the model may have issues
+\item Average annual rate of return: indicates how well the strategy made on historical data
+\item Variability of returns: the less variable the level of returns, the better the strategy. May look at lumpiness of returns, which is the portion of strategy's total returns that comes from periods that are significantly above average (measures consistency of returns).
+\item Worse Peak-to-Valley Drawdowns: measures maximum decline from any cumulative peak in profit curve. The lower the drawdown the better the strategy. Also, to measure recovery period after drawdowns; the shorter the recovery period the better the strategy.
+\item Predictive Power: R-squared statistic may be used, which shows how much of the variability of the predicted asset have been accounted for. A exceedingly high $R^2$ in would be 0.05 out of sample. Instrument returns may be bucketed by deciles; a model with reliable predictive power is one that appropriately buckets the instruments correctly.
+\item Percentage Winning Trades, Winning Time Periods: whether the strategy tends to make profits from a small portion of trades that do very well, or from a large number of trades. 
+\item Ratios of Returns vs Risk: Statistics such as risk-adjusted return, Sharpe ratio, information ratio, Sterling ratio, Calmer ratio, Omega ratio.
+\item Relationship with Other Strategies: value-add of new strategy compared with results of existing strategy with and without the new idea.
+\item Time decay: understand strategy returns if trades are initiated on lagged basis after receiving a trading signal. Determine strategy sensitivity to timeliness with information received, and crowdedness of strategy.
+\item Sensitivity to specific parameters: high quality strategy has small changes in outcomes from slight changes in parameters. Or else this may be a sign that model may be overfitted.
+\item Overfitting: plot a graph of parameter value vs function outcome; a good model has a flatter curve with no jumps.  Models that are parsimonious (less parameters) uses less assumptions, hence less overfitting.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Other Considerations in Model Testing}\\
+Overestimation of trading costs may cause portfolio to hold positions for longer than optimal, and underestimation may result in high portfolio turnover and bleed from trading costs. Assumptions on availability of short positions must also be made; hard-to-borrow lists must be taken into consideration.
+\end{remark}

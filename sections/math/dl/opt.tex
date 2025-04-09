@@ -68,12 +68,6 @@ Occurs when computational graph becomes very deep. Let a computational graph con
 There will be a vanishing and exploding gradient problem if gradients on the graph are scaled according to $\text{diag}(\bm{\lambda})^t$.  Note that recurrent networks uses same $\bm{W}$ at each time step, hence may face the problem.
 \end{remark}
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.45]{images/math/dl/sgd}
-\caption{Stochastic Gradient Descent (SGD) update at training iteration $k$}
-\end{figure}
-
 \begin{remark} \hlt{Stochastic Gradient Descent (SGD)}\\
 Crucial parameter is the learning rate, which may be changed over time; at iteration $k$ this is $\epsilon_k$.\\
 The SGD gradient estimation introduces a source of noise that does not vanish even at minimum. A sufficient condition to guarantee converge of SGD is
@@ -88,11 +82,20 @@ where $\alpha = \frac{k}{\tau}$. After iteration $\tau$, leave $\epsilon$ as a c
 Note that SGD computation time per update does not growth with number of training examples.
 \end{remark}
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.45]{images/math/dl/sgdmom}
-\caption{Stochastic Gradient Descent (SGD) with momentum}
-\end{figure}
+\begin{breakablealgorithm}
+\caption{Stochastic Gradient Descent (SGD) Update at Training Iteration $k$}
+\begin{algorithmic}
+\Require \\
+Learning rate $\epsilon_k$\\
+Initial parameter $\bm{\theta}$\\
+
+\While {stopping criterion not met}
+\State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
+\State Compute gradient estimate $\hat{\bm{g}} \leftarrow + \frac{1}{m} \nabla_{\bm{\theta}} \sum_{i} L(f(\bm{x}^{(i)}; \bm{\theta}), \bm{y}^{(i)})$
+\State Apply update: $\bm{\theta} \leftarrow \bm{\theta} - \epsilon \hat{\bm{g}}$
+\EndWhile
+\end{algorithmic}
+\end{breakablealgorithm}
 
 \begin{remark} \hlt{Momentum Algorithm}\\
 Algorithm introduces variable $\bm{v}$ that is set to an exponentially decaying average of negative gradient.\\
@@ -105,10 +108,26 @@ The update rule is given by
 The larger $\alpha$ is relative to $\epsilon$, the more previous gradients affect current direction.
 \end{remark}
 
+\begin{breakablealgorithm}
+\caption{Stochastic Gradient Descent (SGD) with Momentum}
+\begin{algorithmic}
+\Require \\
+Learning rate $\epsilon_k$\\
+Momentum parameter $\alpha$\\
+
+\While {stopping criterion not met}
+\State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
+\State Compute gradient estimate $\bm{g} \leftarrow + \frac{1}{m} \nabla_{\bm{\theta}} \sum_{i} L(f(\bm{x}^{(i)}; \bm{\theta}), \bm{y}^{(i)})$
+\State Compute velocity update: $\bm{v} \leftarrow \alpha \bm{v} - \epsilon \bm{g}$
+\State Apply update: $\bm{\theta} \leftarrow \bm{\theta} + \bm{v}$
+\EndWhile
+\end{algorithmic}
+\end{breakablealgorithm}
+
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.46]{images/math/dl/sgdnest}
-\caption{Stochastic Gradient Descent (SGD) with Nesterov momentum}
+\includegraphics[scale=0.4]{figures/math/stochasticgradientdescent}
+\caption{Stochastic Gradient Descent (SGD) Algorithm with and without Momentum}
 \end{figure}
 
 \begin{remark} \hlt{Nesterov Momentum}\\
@@ -120,48 +139,128 @@ Inspired by Nesterov's accelerated gradient method, the update rules are:
 Note, gradient is evaluated after current velocity is applied.
 \end{remark}
 
+\begin{breakablealgorithm}
+\caption{Stochastic Gradient Descent (SGD) with Nesterov Momentum}
+\begin{algorithmic}
+\Require \\
+Learning rate $\epsilon_k$\\
+Momentum parameter $\alpha$\\
+Initial parameter $\bm{\theta}$\\
+Initial velocity $\bm{v}$\\
+
+\While {stopping criterion not met}
+\State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
+\State Apply interim update: $\tilde{\bm{\theta}} \leftarrow \bm{\theta} + \alpha \bm{v}$
+\State Compute gradient (at interim point): $\bm{g} \leftarrow \frac{1}{m} \nabla_{\tilde{\bm{\theta}}} \sum_{i} L(f(\bm{x}^{(i)}; \tilde{\bm{\theta}}), \bm{y}^{(i)})$
+\State Compute velocity update: $\bm{v} \leftarrow \alpha \bm{v} - \epsilon \bm{g}$
+\State Apply update: $\bm{\theta} \leftarrow \bm{\theta} + \bm{v}$
+\EndWhile
+\end{algorithmic}
+\end{breakablealgorithm}
+
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.46]{images/math/dl/adagrad}
-\caption{AdaGrad Algorithm}
+\includegraphics[scale=0.4]{figures/math/nesterov}
+\caption{Momentum vs Nesterov Gradient Descent}
 \end{figure}
 
-\begin{remark} \hlt{AdaGrad Algorithm}\\
+
+\begin{remark} \hlt{Adaptive Gradient (AdaGrad) Algorithm}\\
 Algorithm individually adapts learning rates of all model parameters by scaling them inversely proportional to square root of sum of all of their historical squared values. Has greater progress in more gently sloped directions of parameter space. On deep neural networks, accumulation of squared gradients from beginning of training can result in premature and excessive decrease in effective learning rate.
 \end{remark}
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.46]{images/math/dl/rmsprop}
-\caption{RMSPorp Algorithm}
-\end{figure}
+\begin{breakablealgorithm}
+\caption{Adaptive Gradient (AdaGrad) Algorithm}
+\begin{algorithmic}
+\Require \\
+Global Learning rate $\epsilon$\\
+Initial parameter $\bm{\theta}$\\
+Small constant $\delta$, perhaps $10^{-7}$ for numerical stability\\
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.45]{images/math/dl/rmspropnest}
-\caption{RMSPorp Algorithm with Nesterov momentum}
-\end{figure}
+\State Initialise gradient accumulation variable $\bm{r} = \bm{0}$
+\While {stopping criterion not met}
+\State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
+\State Compute gradient: $\bm{g} \leftarrow \frac{1}{m} \nabla_{\bm{\theta}} \sum_i L(f(\bm{x}^{(i)}; \bm{\theta}), \bm{y}^{(i)})$
+\State Accumulate squared gradient: $\bm{r} \leftarrow \bm{r} + \bm{g} \odot \bm{g}$
+\State Compute update: $\Delta \bm{\theta} \leftarrow - \frac{\epsilon}{\delta + \sqrt{\bm{r}}} \odot \bm{g}$ (Division and square root applied element-wise)
+\State Apply update: $\bm{\theta} \leftarrow \bm{\theta} + \Delta \bm{\theta}$
+\EndWhile
+\end{algorithmic}
+\end{breakablealgorithm}
 
-\begin{remark} \hlt{RMSProp Algorithm}\\
+\begin{remark} \hlt{Root Mean Squared Propagation (RMSProp) Algorithm}\\
 Modifies AdaGrad to perform better in non-convex setting by changing gradient accumulation into exponentially weighted moving average. RMSProp is effective and practical for deep neural networks.
 \end{remark}
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.45]{images/math/dl/adam}
-\caption{Adam Algorithm}
-\end{figure}
+\begin{breakablealgorithm}
+\caption{Root Mean Squared Propagation (RMSProp) Algorithm}
+\begin{algorithmic}
+\Require \\
+Global Learning rate $\epsilon$\\
+Decay rate $\rho$\\
+Initial parameter $\bm{\theta}$\\
+Small constant $\delta$, perhaps $10^{-6}$ to stabilise division by small numbers\\
 
-\begin{remark} \hlt{Adam Algorithm}\\
+\State Initialise accumulation variable $\bm{r} = \bm{0}$
+\While {stopping criterion not met}
+\State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
+\State Compute gradient: $\bm{g} \leftarrow \frac{1}{m} \nabla_{\bm{\theta}} \sum_i L(f(\bm{x}^{(i)}; \bm{\theta}), \bm{y}^{(i)})$
+\State Accumulate squared gradient: $\bm{r} \leftarrow \rho \bm{r} + (1 - \rho) \bm{g} \odot \bm{g}$
+\State Compute update: $\Delta \bm{\theta} \leftarrow - \frac{\epsilon}{\sqrt{\delta + \bm{r}}} \odot \bm{g}$ ($\frac{\epsilon}{\sqrt{\delta + \bm{r}}}$ applied element-wise)
+\State Apply update: $\bm{\theta} \leftarrow \bm{\theta} + \Delta \bm{\theta}$
+\EndWhile
+\end{algorithmic}
+\end{breakablealgorithm}
+
+\begin{breakablealgorithm}
+\caption{Root Mean Squared Propagation (RMSProp) Algorithm}
+\begin{algorithmic}
+\Require \\
+Global Learning rate $\epsilon$\\
+Decay rate $\rho$\\
+Momentum coefficient $\alpha$\\
+Initial parameter $\bm{\theta}$\\
+Initial velocity $\bm{v}$\\
+
+\State Initialise accumulation variable $\bm{r} = \bm{0}$
+\While {stopping criterion not met}
+\State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
+\State Compute interim update $\tilde{\bm{\theta}} \leftarrow \bm{\theta} + \alpha \bm{v}$
+\State Compute gradient: $\bm{g} \leftarrow \frac{1}{m} \nabla_{\tilde{\bm{\theta}}} \sum_i L(f(\bm{x}^{(i)}; \tilde{\bm{\theta}}), \bm{y}^{(i)})$
+\State Accumulate gradient: $\bm{r} \leftarrow \rho \bm{r} + (1 - \rho) \bm{g} \odot \bm{g}$
+\State Compute velocity update: $\bm{v} \leftarrow \alpha \bm{v} - \frac{\epsilon}{\sqrt{\bm{r}}} \odot \bm{g}$ ($\frac{1}{\sqrt{\bm{r}}}$ applied element-wise)
+\State Apply update: $\bm{\theta} \leftarrow \bm{\theta} + \bm{v}$
+\EndWhile
+\end{algorithmic}
+\end{breakablealgorithm}
+
+\begin{remark} \hlt{Adaptive Moment Estimation (Adam) Algorithm}\\
 Variant on combination of RMSProp and momentum. Note, momentum is incorporated directly as an estimate of first order moment of gradient; bias corrections are made to estimates of both first-order moments and second-order moments to account for initialisation at origin.\\
 Algorithm is fairly robust to choice of hyper-parameters.
 \end{remark}
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.41]{images/math/dl/newton}
-\caption{Newton's Method with Objective $J(\bm{\theta}) = \frac{1}{m} \sum_{i=1}^m L(f(\bm{x}^{(i)}; \bm{\theta}), y^{(i)})$}
-\end{figure}
+\begin{breakablealgorithm}
+\caption{Adaptive Moment Estimation (Adam) Algorithm}
+\begin{algorithmic}
+\Require \\
+Step size $\epsilon$ (Suggested default: $0.001$)\\
+Exponential decay rates for moment estimates $\rho_1, \rho_2$ in $[0,1)$ (Suggested defaults: $0.9$ and $0.999$)\\
+Small constant $\delta$ used for numerical stabilisation (Suggested default: $10^{-8}$)\\
+Initial parameters $\bm{\theta}$\\
+
+\State Initialise $1$st and $2$nd momentum variables $\bm{s} = \bm{0}$, $\bm{r} = \bm{0}$
+\State Initialise time step $t=0$
+\While {stopping criterion not met}
+\State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
+\State Compute gradient: $\bm{g} \leftarrow \frac{1}{m} \nabla_{\bm{\theta}} \sum_i L(f(\bm{x}^{(i)}; \bm{\theta}), \bm{y}^{(i)})$
+\State Update time step $t \leftarrow t+1$
+\State Update biased first and second moment estimate: $\bm{s} \leftarrow \rho_1 \bm{s} + (1-\rho_1) \bm{g}$ and $\bm{r} \leftarrow \rho_2 \bm{r} + (1-\rho_2) \bm{g} \odot \bm{g}$
+\State Correct bias in first and second moment: $\hat{\bm{s}} \leftarrow \frac{\bm{s}}{1 - \rho_1^t}$ and $\hat{\bm{r}} \leftarrow \frac{\bm{r}}{1 - \rho_2^t}$
+\State Compute update: $\Delta \bm{\theta} = - \epsilon \frac{\hat{\bm{s}}}{\sqrt{\hat{\bm{r}} + \delta}}$ (Operations applied element-wise)
+\State Apply update: $\bm{\theta} \leftarrow \bm{\theta} + \Delta \bm{\theta}$
+\EndWhile
+\end{algorithmic}
+\end{breakablealgorithm}
 
 \begin{remark} \hlt{Newton's Method}\\
 Based on second-order Taylor's series approximating $J(\bm{\theta})$ near the point $\bm{\theta}_0$, ignoring higher derivatives
@@ -180,11 +279,22 @@ Note that for deep learning, the surface of objective function is non-convex. Re
 Due to requirement for inversion of the $k \times k$ matrix with time complexity $O(k^3)$ at every training iteration, only networks with very small number of parameters may be trained with this method.
 \end{remark}
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4]{images/math/dl/conjugrad}
-\caption{Conjugate Gradient Method}
-\end{figure}
+\begin{breakablealgorithm}
+\caption{Newton's Method with Objective $J(\bm{\theta}) = \frac{1}{m} \sum_{i=1}^m L(f(\bm{x}^{(i)}; \bm{\theta}), y^{(i)})$}
+\begin{algorithmic}
+\Require \\
+Initial parameter $\bm{\theta}_0$\\
+Training set of $m$ examples\\
+
+\While {stopping criterion not met}
+\State Compute gradient $\bm{g} \leftarrow \frac{1}{m} \nabla_{\bm{\theta}} \sum_i L(f(\bm{x}^{(i)}; \bm{\theta}), \bm{y}^{(i)})$
+\State Compute Hessian: $\bm{H} \leftarrow \frac{1}{m} \nabla_{\bm{\theta}}^2 \sum_i L(f(\bm{x}^{(i)}; \bm{\theta}), \bm{y}^{(i)})$
+\State Compute Hessian Inverse: $\bm{H}^{-1}$
+\State Compute update: $\Delta \bm{\theta} = - \bm{H}^{-1} \bm{g}$
+\State Apply update: $\bm{\theta} \leftarrow \bm{\theta} + \Delta \bm{\theta}$
+\EndWhile
+\end{algorithmic}
+\end{breakablealgorithm}
 
 \begin{remark} \hlt{Conjugate Gradient Method}\\
 Method effectively avoids computation of inversion Hessian by descending conjugate directions, which is a search direction conjugate to the previous line search direction (will not undo progress made in that direction).\\
@@ -202,6 +312,30 @@ or may be computed with Polak-Ribiere:
 \end{equation}
 The non-linear conjugate gradient method is a variation which uses occasional resets where the method is restarted with line search along with the unaltered gradient.
 \end{remark}
+
+\begin{breakablealgorithm}
+\caption{Conjugate Gradient Method}
+\begin{algorithmic}
+\Require \\
+Initial parameter $\bm{\theta}_0$\\
+Training set of $m$ examples\\
+Initialise $\bm{\rho}_0 = 0$\\
+Initialise $g_0 = 0$\\
+Initialise $t = 1$\\
+
+\While {stopping criterion not met}
+\State Initialise the gradient $\bm{g}_t = \bm{0}$
+\State Compute gradient $\bm{g} \leftarrow \frac{1}{m} \nabla_{\bm{\theta}} \sum_i L(f(\bm{x}^{(i)}; \bm{\theta}), \bm{y}^{(i)})$
+\State Compute Polak-Ribiere metric: $\beta_t = \frac{(\bm{g}_t - \bm{g}_{t-1})^T \bm{g}_t}{\bm{g}_{t-1}^T \bm{g}_{t-1}}$
+\State (Nonlinear conjugate gradient: optionally reset $\beta_t = 0$, i.e., if $t$ is a multiple of some constant $k$)
+\State Compute search direction: $\bm{\rho}_t = -\bm{g}_t + \beta_t \bm{\rho}_{t-1}$
+\State Perform line search to find: $\epsilon^{*} = \arg \min_{\epsilon} \frac{1}{m} \sum_{i=1}^m L(f(\bm{x}^{(i)}; \bm{\theta}_t + \epsilon \bm{\rho}_t), \bm{y}^{(i)})$
+\State (On truly quadratic cost function, analytically solve for $\epsilon^{*}$)
+\State Apply update: $\bm{\theta}_{t+1} = \bm{\theta}_{t} + \epsilon^{\theta} \bm{\rho}_t$
+\State Apply time step $t \leftarrow t + 1$
+\EndWhile
+\end{algorithmic}
+\end{breakablealgorithm}
 
 \begin{remark} \hlt{Broyden-Fletcher-Goldfarb-Shanno (BGFS) Algorithm}\\
 Similar to conjugate gradient, but uses more direct approach to approximation of newton's update.\\

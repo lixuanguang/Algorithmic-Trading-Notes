@@ -29,10 +29,11 @@ Do not require training problem to be convex, and only require finding the right
 J(\bm{\theta}) = - \mathbb{E}_{\bm{x}, \bm{y} \sim \hat{p}_{\text{data}}} \log p_{\text{model}}(\bm{y} \ \vert \ \bm{x}) \nonumber
 \end{equation}
 Specific form of cost function changes from model to model, depending on form of $\log p_{\text{model}}$.\\
-Method removes the burden of designing cost functions for each model, as specifying a model $p(\bm{y} \ \vert \ \bm{x})$ automatically determines a cost function $\log p(\bm{y} \ \vert \ \bm{x})$.
+Method removes the burden of designing cost functions for each model, as specifying a model $p(\bm{y} \ \vert \ \bm{x})$ automatically determines a cost function $\log p(\bm{y} \ \vert \ \bm{x})$.\\
+Gradient of cost function for neural networks must be large and predictable enough to serve as good guide for the learning algorithm. The negative log-likelihood helps to avoid saturation of the function.
 \item Learning Conditional Statistics: to learn just one conditional statistic of $\bm{y}$ given $\bm{x}$.\\
 With sufficiently powerful neural network, this can represent any function $f$ from a wide class of function, limited by features of continuity and boundedness. Hence the cost function is a functional. Learning is choosing a functional rather than a set of parameters.\\
-By calculus of variable, solving the optimisation problem yields the below function,
+By calculus of variation	, solving the optimisation problem yields the below function,
 \begin{align}
 f^* &= \arg \min_f \mathbb{E}_{\bm{x}, \bm{y} \sim p_{\text{data}}} \Vert \bm{y} - f(\bm{x}) \Vert^2 \nonumber \\
 f^* &= \mathbb{E}_{\bm{y} \sim p_{\text{data}}(\bm{y} \ \vert \ \bm{x})} [\bm{y}] \nonumber

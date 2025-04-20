@@ -101,7 +101,7 @@ If covariance is full and conditional, then parametrisation must be chosen that 
 \bm{\Sigma}(\bm{x}) = \bm{B}(\bm{x}) \bm{B}^T(\bm{x}) \nonumber
 \end{equation}
 where $\bm{B}$ is unconstrained square matrix. Note that if matrix is full rank, then computing likelihood requires $O(d^3)$ a $d \times d$ matrix for the determinant and inverse of $\bm{\Sigma}(\bm{x})$.
-\item Mixture Density Networks: to perform multimodal regression (predict real values that come from conditional distribution $p(\bm{y} \ \vert \ \bm{x})$ that can have several different peaks in $\bm{y}$ for the same $\bm{x}$.
+\item Mixture Density Networks: to perform multimodal regression (predict real values that come from conditional distribution $p(\bm{y} \ \vert \ \bm{x})$) that can have several different peaks in $\bm{y}$ for the same $\bm{x}$.
 \begin{equation}
 p(\bm{y} \ \vert \ \bm{x}) = \sum\limits_{i=1}^n p(c=i \ \vert \ \bm{x}) \mathcal{N}(\bm{y}; \bm{\mu}^{(i)} (\bm{x}), \bm{\Sigma}^{(i)} (\bm{x})) \nonumber
 \end{equation}

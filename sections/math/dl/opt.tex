@@ -50,7 +50,7 @@ Monitor squared gradient norm $\bm{g}^T \bm{g}$ and $\bm{g}^T \bm{H} \bm{g}$ ter
 \end{remark}
 
 \begin{remark} \hlt{Challenges: Local Minimums}\\
-Model is identifiable if a sufficiently large training set can rule out all but one setting of model parameters.\\
+Neural networks and models with multiple parametrised latent variables have multiple local minima due to \hlt{model identifiability} problem. Model is identifiable if a sufficiently large training set can rule out all but one setting of model parameters. Models with latent variables are not identifiable as equivalent models are obtained by exchanging latent variables with each other (\hlt{weight space symmetry}). If there are $m$ layers with $n$ units each, then there are $n!^m$ ways to arrange the hidden units, making the model unidentifiable.\\
 There may be an extremely large or uncountably infinite amount of local minima in a cost function. If the local minima have a high cost compared to global minimum, then this is problematic.
 \end{remark}
 
@@ -68,6 +68,14 @@ Occurs when computational graph becomes very deep. Let a computational graph con
 There will be a vanishing and exploding gradient problem if gradients on the graph are scaled according to $\text{diag}(\bm{\lambda})^t$.  Note that recurrent networks uses same $\bm{W}$ at each time step, hence may face the problem.
 \end{remark}
 
+\begin{remark} \hlt{Challenges: Inexact Gradients}\\
+Objective function for minimisation is intractable due to noisy/biased estimate of these quantities; in this case its gradient is intractable as well. Choose surrogate loss function that is easier to approximate than true loss.
+\end{remark}
+
+\begin{remark} \hlt{Challenges: Poor Correspondence between Local and Global Structure}\\
+As gradient descent algorithms make small local moves, optimisation on local downhill moves may fail if local surface does not point toward the global solution. In higher dimensional space, learning algorithms may incur high costs or long training time to circumnavigate the manifold. Hence to find good initial points for problems.
+\end{remark}
+
 \begin{remark} \hlt{Stochastic Gradient Descent (SGD)}\\
 Crucial parameter is the learning rate, which may be changed over time; at iteration $k$ this is $\epsilon_k$.\\
 The SGD gradient estimation introduces a source of noise that does not vanish even at minimum. A sufficient condition to guarantee converge of SGD is
@@ -76,10 +84,9 @@ The SGD gradient estimation introduces a source of noise that does not vanish ev
 \end{equation}
 In practice, it is common to decay learning rate linearly until iteration $\tau$:
 \begin{equation}
-\epsilon_k = (1- \alpha)\epsilon_0 + \alpha \epsilon_{\tau} \nonumber
+\epsilon_k = (1- \alpha)\epsilon_0 + \alpha \epsilon_{\tau}, \ \ \ \alpha = \frac{k}{\tau} \nonumber
 \end{equation}
-where $\alpha = \frac{k}{\tau}$. After iteration $\tau$, leave $\epsilon$ as a constant.\\
-Note that SGD computation time per update does not growth with number of training examples.
+After iteration $\tau$, leave $\epsilon$ constant. Compute time per update does not growth with num of training examples.
 \end{remark}
 
 \begin{breakablealgorithm}

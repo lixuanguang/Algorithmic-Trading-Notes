@@ -239,6 +239,100 @@ Number of epochs \textit{epochs}.\\
   \EndFor
 \end{algorithmic}
 \end{breakablealgorithm}
+\hfill \break
 
-
-
+\begin{example} \hlt{Backpropagation Computation Example (Matt \cite{mazur_backpropagation_2015})}\\
+\begin{figure}[H]
+\centering
+\scalebox{0.75}{\input{figures/math/backpropagation.tikz}}
+\caption{Backpropagation Example}
+\end{figure}
+For the forward pass, compute the total net input to each hidden layer neurone, squash total net input with activation function (logistic function), then repeat process with output layer neurones.\\
+The total net input for $h_1$ is:
+\begin{align}
+\text{net}_{h1} &= w_1 \cdot i_1 + w_2 \cdot i_2 + b_1 \cdot 1 \nonumber \\
+&= 0.15 \cdot 0.05 + 0.2 \cdot 0.1 + 0.35 \cdot 1 = 0.3775 \nonumber
+\end{align}
+Squash with logistic function to get output of $h_2$:
+\begin{align}
+\text{out}_{h1} = 1/(1 + e^{-\text{net}_{h1}}) = 1/(1 + e^{-0.3775}) = 0.593269992 \nonumber
+\end{align}
+For $h_2$, repeating the same process, the output is then $\text{out}_{h2} = 0.596884378$.\\
+Repeating the process for outer layer neurones,
+\begin{align}
+\text{net}_{o1} &= w_5 \cdot \text{out}_{h1} + w_6 \cdot \text{out}_{h2} + b_2 \cdot 1 \nonumber \\
+&= 0.4 \cdot 0.593269992 + 0.45 \cdot 0.596884378 + 0.6 \cdot 1 = 1.105905967 \nonumber \\
+\text{out}_{o1} &= 1/(1 + e^{-\text{net}_{o1}}) = 1/(1 + e^{-1.105905967}) = 0.75136507 \nonumber
+\end{align}
+For $o_2$, repeating the same process, the output is then $\text{out}_{o2} = 0.772928465$.\\
+The total error for each output neurone may be computed using squared error function $E_{\text{total}} = \sum \frac{1}{2} (Y - \hat{Y})^2$.\\
+For $o_1$, the target output is $0.01$, neurone output is $0.75136507$, hence error is
+\begin{align}
+E_{o1} = \frac{1}{2} (0.01 - 0.75136507)^2 = 0.274811083 \nonumber
+\end{align}
+Repeating the process for $o_2$, the total error for neural network is then
+\begin{align}
+E_{\text{total}} = E_{o1} + E_{o2} = 0.274811083 + 0.023560026 = 0.298371109 \nonumber
+\end{align}
+For the backpropagation step, update each of the weights in network to reduce the error for each output neurone.
+\begin{align}
+E_{\text{total}} &= \frac{1}{2}(Y_{o1} - \hat{Y}_{o1})^2 + \frac{1}{2}(Y_{o2} - \hat{Y}_{o2})^2 \nonumber \\\
+\frac{\partial E_{\text{total}}}{\partial \text{out}_{o1}} &= 2 \cdot \frac{1}{2}(Y_{o1} - \hat{Y}_{o1}) \cdot -1 + 0 = - (0.01 - 0.75136507) = 0.74136507 \nonumber
+\end{align}
+Also, note that
+\begin{align}
+\text{out}_{o1} &= 1/(1 + e^{-\text{net}_{o1}}) \nonumber \\
+\frac{\partial\text{out}_{o1}}{\partial\text{net}_{o1}} &= \text{out}_{o1} (1 - \text{out}_{o1}) = 0.75136507(1-0.75136507) = 0.186815602 \nonumber \\
+\text{net}_{o1} &= w_5 \cdot \text{out}_{h1} + w_6 \cdot \text{out}_{h2} + b_2 \cdot 1 \nonumber \\
+\frac{\text{net}_{o1}}{w_5} &= 1 \cdot \text{out}_{h1} \cdot w_5^{0} + 0 + 0 = \text{out}_{h1} = 0.593269992 \nonumber
+\end{align}
+Putting it all together,
+\begin{align}
+\frac{\partial E_{\text{total}}}{\partial w_5} &= \frac{\partial E_{\text{total}}}{\partial \text{out}_{o1}} \cdot \frac{\partial \text{out}_{o1}}{ \partial \text{net}_{o1}} \cdot \frac{\partial \text{out}_{o1}}{\partial w_5} \nonumber \\
+&= - (Y_{o1} - \hat{Y}_{o1}) \cdot \text{out}_{o1} (1 - \text{out}_{o1}) \cdot text{out}_{o1} \nonumber \\
+&= 0.74136507 \cdot 0.186815602 \cdot 0.593269992 = 0.0821267041 \nonumber
+\end{align}
+To decrease the error, subtract the value from current weight multiplied by learning rate (i.e., $\alpha = 0.5$).
+\begin{align}
+w_5^+ = w_5 - \alpha \frac{\partial E_{\text{total}}}{\partial w_5} = 0.4 - 0.5 \cdot 0.0821267041 \nonumber 
+\end{align}
+Repeating for the rest of the weights, we get
+\begin{align}
+w_6^+ &= 0.408666186, \ \ \ w_7^+ = 0.511301270, \ \ \ w_8^+ = 0.561370121 \nonumber
+\end{align}
+For the hidden layers, note that
+\begin{align}
+\frac{\partial E_{\text{total}}}{\partial w_1} &= \frac{\partial E_{\text{total}}}{\partial \text{out}_{h1}} \cdot \frac{\partial \text{out}_{h1}}{\partial \text{net}_{h1}} \cdot \frac{\partial \text{net}_{h1}}{\partial w_1} \nonumber \\
+&= \left(\frac{\partial E_{o1}}{\partial \text{out}_{h1}} + \frac{\partial E_{o2}}{\partial \text{out}_{h1}} \right) \cdot \frac{\partial \text{out}_{h1}}{\partial \text{net}_{h1}} \cdot \frac{\partial \text{net}_{h1}}{\partial w_1} \nonumber
+\end{align}
+Note that $\text{out}_{h1}$ affects both $\text{out}_{o1}$ and $\text{out}_{o2}$.
+\begin{align}
+\frac{\partial E_{o1}}{\partial \text{out}_{h1}} &= \frac{\partial E_{o1}}{\partial \text{net}_{h1}} \cdot \frac{\partial \text{net}_{h1}}{\partial \text{out}_{h1}} \nonumber \\
+\frac{\partial E_{o1}}{\partial \text{net}_{h1}} &= \frac{\partial E_{o1}}{\partial \text{out}_{h1}} \cdot \frac{\partial \text{out}_{o1}}{\partial \text{net}_{h1}} = 0.74136507 \cdot 0.186815602 = 0.138498562 \nonumber \\
+\frac{\partial \text{net}_{h1}}{\partial \text{out}_{h1}} &= w_5 = 0.4 \nonumber \\
+\frac{\partial E_{o1}}{\partial \text{out}_{h1}} &= 0.138498562 \cdot 0.4 = 0.055399425 \nonumber
+\end{align}
+Following same process, $\frac{\partial E_{o2}}{\partial \text{out}_{h1}} = -0.019049119$. Hence
+\begin{align}
+\frac{\partial E_{\text{total}}}{\partial \text{out}_{h1}} = \frac{\partial E_{o1}}{\partial \text{out}_{h1}} + \frac{\partial E_{o2}}{\partial \text{out}_{h1}} = 0.05539425 - 0.019049119 = 0.036350306 \nonumber
+\end{align}
+Next, figure out $\frac{\partial \text{out}_{h1}}{\partial \text{net}_{h1}}$ and $\frac{\partial \text{net}_{h1}}{\partial w_1}$.
+\begin{align}
+\frac{\partial \text{out}_{h1}}{\partial \text{net}_{h1}} &= \text{out}_{h1} \cdot (1 - \text{out}_{h1}) = 0.59326999(1-0.59326999) =0.241 0.241300709 \nonumber \\
+\frac{\partial \text{net}_{h1}}{\partial w_1} &= i_1 = 0.05 \nonumber
+\end{align}
+Putting it together,
+\begin{align}
+\frac{\partial E_{\text{total}}}{\partial w_1} = \frac{\partial E_{\text{total}}}{\partial \text{out}_{h1}} \cdot \frac{\partial \text{out}_{h1}}{\partial \text{net}_{h1}} \cdot \frac{\partial \text{net}_{h1}}{\partial w_1} = 0.036350306 \cdot 0.241300709 \cdot 0.05 = 0.000438658 \nonumber
+\end{align}
+This is also written as
+\begin{align}
+\frac{\partial E_{\text{total}}}{\partial w_1} &= \left( \sum_o \frac{\partial E_{\text{total}}}{\partial \text{out}_{o}} \cdot \frac{\partial \text{out}_{o}}{\partial \text{net}_{o}} \cdot \frac{\partial \text{net}_{o}}{\partial \text{out}_{h_1}}  \right) \cdot \frac{\partial \text{out}_{h1}}{\partial \text{net}_{h1}} \cdot \frac{\partial \text{net}_{h1}}{\partial w_1} \nonumber
+\end{align}
+Next, update $w_1$ and rest of the weights
+\begin{align}
+w_1^+ &= w_1 - \alpha \frac{\partial E_{\text{total}}}{\partial w_1} = 0.15 - 0.5 \cdot 0.000438658 = 0.149780716 \nonumber \\
+w_2^+ &= 0.19956143 , \ \ \ w_3^+ = 0.24975114 , \ \ \ w_4^+ = 0.29950229 \nonumber
+\end{align}
+Hence all the weights has been updated. After the first round of backpropagation, total error has decreased to $0.291027924$. Repeating the process $10,000$ times, the error reduces to $0.0000351085$.
+\end{example}

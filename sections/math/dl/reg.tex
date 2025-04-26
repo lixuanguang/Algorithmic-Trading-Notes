@@ -116,8 +116,7 @@ J = \mathbb{E}_{p(x,y)}[(\hat{y}(\bm{x}) - y)^2] \nonumber
 where $\hat{y}(\bm{x})$ is function to be trained that maps set of features $\bm{x}$ to a scalar using least-squares cost function $J$.\\
 Assume each input presentation include a random perturbation $\epsilon_{\bm{W}} \sim \mathcal{N}(\bm{\epsilon}; \bm{0}, \eta \bm{I})$ in the network weight of a standard $l$-layer MLP. Let the perturbed model be $\hat{y}_{\bm{\epsilon}_{\bm{W}}}(\bm{x})$. With injection o noise, objective function becomes
 \begin{align}
-\tilde{J}_{\bm{W}} &= \mathbb{E}_{p(\bm{x}, y, \bm{\epsilon}_{\bm{W}})}\left[(\hat{y}_{\bm{\epsilon}_{\bm{W}}}(\bm{x}) - y)^2 \right] \nonumber \\
-&= \mathbb{E}_{p(\bm{x}, y, \bm{\epsilon}_{\bm{W}})} \left[\hat{y}^2_{\bm{\epsilon}_{\bm{W}}}(\bm{x}) - 2 y \hat{y}_{\bm{\epsilon}_{\bm{W}}} + y^2 \right] \nonumber
+\tilde{J}_{\bm{W}} &= \mathbb{E}_{p(\bm{x}, y, \bm{\epsilon}_{\bm{W}})}\left[(\hat{y}_{\bm{\epsilon}_{\bm{W}}}(\bm{x}) - y)^2 \right] = \mathbb{E}_{p(\bm{x}, y, \bm{\epsilon}_{\bm{W}})} \left[\hat{y}^2_{\bm{\epsilon}_{\bm{W}}}(\bm{x}) - 2 y \hat{y}_{\bm{\epsilon}_{\bm{W}}} + y^2 \right] \nonumber
 \end{align}
 For small $\eta$, the minimisation of $J$ with added noise (with covariance $\eta \bm{I}$) is equivalent to minimisation of $J$ with additional regularisation term $\eta \mathbb{E}_{p(\bm{x}), y} [\norm{\nabla_{\bm{W}} \hat{y}(\bm{x})}^2]$. This encourages parameters to go to regions of parameter space where small perturbations of weights have relatively small influence on output.
 \end{remark}

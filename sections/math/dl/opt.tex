@@ -86,15 +86,15 @@ In practice, it is common to decay learning rate linearly until iteration $\tau$
 \begin{equation}
 \epsilon_k = (1- \alpha)\epsilon_0 + \alpha \epsilon_{\tau}, \ \ \ \alpha = \frac{k}{\tau} \nonumber
 \end{equation}
-After iteration $\tau$, leave $\epsilon$ constant. Compute time per update does not growth with num of training examples.
+After iteration $\tau$, leave $\epsilon$ constant.\\
+Compute time per update does not growth with number of training examples.
 \end{remark}
 
 \begin{breakablealgorithm}
 \caption{Stochastic Gradient Descent (SGD) Update at Training Iteration $k$}
 \begin{algorithmic}
 \Require \\
-Learning rate $\epsilon_k$\\
-Initial parameter $\bm{\theta}$\\
+Learning rate $\epsilon_k$, Initial parameter $\bm{\theta}$\\
 
 \While {stopping criterion not met}
 \State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
@@ -112,15 +112,18 @@ The update rule is given by
 \bm{v} &\leftarrow \alpha \bm{v} - \epsilon \nabla_{\bm{\theta}} \left(\frac{1}{m} \sum\limits_{i=1}^m L(\bm{f}(\bm{x}^{(i)}; \bm{\theta}), \bm{y}^{(i)}) \right) \nonumber \\
 \bm{\theta} &\leftarrow \bm{\theta} + \bm{v} \nonumber
 \end{align}
-The larger $\alpha$ is relative to $\epsilon$, the more previous gradients affect current direction.
+The larger $\alpha$ is relative to $\epsilon$, the more previous gradients affect current direction.\\
+If gradient is $\bm{g}$, it will accelerate in direction of $-\bm{g}$ until reaching terminal velocity where size of each step is
+\begin{align}
+\frac{\epsilon \norm{\bm{g}}}{1 - \alpha} \nonumber
+\end{align}
 \end{remark}
 
 \begin{breakablealgorithm}
 \caption{Stochastic Gradient Descent (SGD) with Momentum}
 \begin{algorithmic}
 \Require \\
-Learning rate $\epsilon_k$\\
-Momentum parameter $\alpha$\\
+Learning rate $\epsilon_k$, Momentum parameter $\alpha$\\
 
 \While {stopping criterion not met}
 \State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
@@ -143,17 +146,16 @@ Inspired by Nesterov's accelerated gradient method, the update rules are:
 \bm{v} &\leftarrow \alpha \bm{v} - \epsilon \nabla_{\bm{\theta}} \left(\frac{1}{m} \sum\limits_{i=1}^m L(\bm{f}(\bm{x}^{(i)}; \bm{\theta} + \alpha \bm{v}), \bm{y}^{(i)}) \right) \nonumber \\
 \bm{\theta} &\leftarrow \bm{\theta} + \bm{v} \nonumber
 \end{align}
-Note, gradient is evaluated after current velocity is applied.
+Note, gradient is evaluated after current velocity is applied.\\
+Hence, Nesterov momentum is adding a correction factor to the standard method of momentum.
 \end{remark}
 
 \begin{breakablealgorithm}
 \caption{Stochastic Gradient Descent (SGD) with Nesterov Momentum}
 \begin{algorithmic}
 \Require \\
-Learning rate $\epsilon_k$\\
-Momentum parameter $\alpha$\\
-Initial parameter $\bm{\theta}$\\
-Initial velocity $\bm{v}$\\
+Learning rate $\epsilon_k$, Momentum parameter $\alpha$\\
+Initial parameter $\bm{\theta}$, Initial velocity $\bm{v}$\\
 
 \While {stopping criterion not met}
 \State Sample a minibatch of $m$ samples from the training set $\{\bm{x}^{(1)}, \ldots, \bm{x}^{(m)} \}$ with targets $\bm{y}^{(i)}$
@@ -170,6 +172,44 @@ Initial velocity $\bm{v}$\\
 \includegraphics[scale=0.4]{figures/math/nesterov}
 \caption{Momentum vs Nesterov Gradient Descent}
 \end{figure}
+
+\begin{remark} \hlt{Parameter Initialisation Challenges}\\
+Training deep neural networks is difficult as most algorithms are strongly affected by choice of initialisation.\\
+Designing initialisation strategies is difficult as neural network optimisation is not yet well understood, as the nice properties from initialisation may not be preserved as training proceeds.\\
+Some initial points may be beneficial for optimisation, but detrimental for generalisation.
+\end{remark}
+
+\begin{remark} \hlt{Parameter Initialisation Strategies}\\
+Initial parameters need to 'break symmetry' between different units. May explicitly search for large set of basis functions mutually different from each other, but this may incur noticeable computational cost.\\
+Random initialisation from high-entropy distribution over high-dimensional space is computationally cheaper.\\
+Larger initial weights will yield stronger symmetry breaking effect and avoid redundant units. However, if weights are set too large, may result in chaos (extreme sensitivity to small perturbations of input). Exploding gradient may be mitigated by gradient clipping. The bias (i.e., parameters encoding conditional variance of a prediction) for each unit is set to heuristically chosen constraints.
+\end{remark}
+
+\begin{remark} \hlt{Weight Initialisation Heuristics}\\
+Initialising parameters of neural network $\bm{\theta}$ to $\bm{\theta}_0$ is similar to imposing a Gaussian prior $p(\bm{\theta})$ with mean $\bm{\theta}_0$, hence it make sense to choose $\bm{\theta}_0$ near $0$. Initialisation of $\bm{\theta}_0$ to large values means prior specifies which units should interact with each other, and how they should interact.\\
+For a fully connected neural network with $m$ inputs and $n$ inputs, weights may be initialised by:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Sampling from $U\left(-\frac{1}{\sqrt{m}},  \frac{1}{\sqrt{m}} \right)$
+\item Sampling from normalised initialisation $W_{i,j} \sim U \left(-\sqrt{\frac{6}{m+n}},  \sqrt{\frac{6}{m+n}} \right)$ (Glorot and Bengio). Compromise between goal of initialising all layers to have same activation variance and that of same gradient variance. Derived from assumption that network is chain of matrix multiplications with no nonlinearities.
+\item Sampling from random orthogonal matrices, with scaling or gain factor $g$ that accounts for nonlinearity at each layer, with specific values for different types of nonlinear activation functions. Assumes neural network is sequence of matrix multiplications without nonlinearities. Guarantees the total number of training iterations required to reach convergence is independent of depth.\\
+Increasing scaling factor $g$ pushes network toward regime where activations increase in norm in forward propagation, and gradients increase in norm in backward propagation.\\
+For scaling rules that set all of initial weights to have same standard deviation, individual weight becomes extremely small when layers become large.
+\item Sparse initialisation (Martens), where each unit is initialised to have exactly $k$ non-zero weight. Keep total number of input to unit independent from number of inputs $m$ without making magnitude of individual weight elements shrink with $m$.\\
+Imposes very strong prior on weights that are chosen to have large Gaussian values.
+\end{enumerate}
+If computational resources allow, treat initial scale of weights for each layer as a hyper-parameter, and use hyper-parameter search algorithm. Choice of dense or sparse initialisation may also be a hyper-parameter.
+\end{remark}
+
+\begin{remark} \hlt{Bias Initialisation Heuristics}\\
+Setting bias to zero is compatible with most weight initialisation schemes. The few other situations are:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item If bias is for output unit, initialise bias to obtain right marginal statistics of the output. Assume initial weights are small enough that output of unit is determined only by bias. The bias will be inverse of activation function applied to marginal statistics of the output in training set.\\
+If output is a highly skewed distribution over classes with marginal probability of class $i$ given by element $c_i$ of some vector $\bm{c}$, then bias vector $\bm{b}$ is such that $\text{softmax}(\bm{b}) = \bm{c}$. The models have output layers that should resemble input data $\bm{x}$, hence bias should match marginal distribution over $\bm{x}$.
+\item 
+\end{enumerate}
+\end{remark}
 
 
 \begin{remark} \hlt{Adaptive Gradient (AdaGrad) Algorithm}\\

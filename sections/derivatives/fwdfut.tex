@@ -1,0 +1,243 @@
+\subsection{Forwards and Futures}
+
+Based on the book by John \cite{hull_2021}.
+
+\subsubsection{Pricing}
+
+To examine how forward prices and futures prices are related to spot price, we assume the following are true for some market participants:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item No transaction costs
+\item Same tax rate on all net trading profits
+\item Money borrowed and lend are at the same risk-free rate
+\item Arbitrage opportunities are taken advantaged of as they occur
+\end{enumerate}
+
+Let $T$ be time until delivery date (in years), $S_0$ be price of underlying asset today, $F_0$ be price of forward or futures today, $r$ be zero-coupon risk-free rate per annum in continuous compounding (maturing in $T$ years).\\
+
+Consider a forward contract on underlying asset with spot price $S_0$ that provides no income. Then
+\begin{equation}
+F_0 = S_0 e^{rT} \nonumber
+\end{equation}
+If $F_0 > S_0 e^{rT}$, long asset and short forward. If $F_0 < S_0 e^{rT}$, short asset and long forward.\\
+If short sales are not possible, and arbitrage opportunities exist, then if $F_0 > S_0 e^{rT}$, investor may:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Borrow $S_0$ in cash at an interest rate $r$ for $T$ years
+\item Buy 1 unit of asset
+\item Enter forward contract to sell $1$ unit of asset
+\end{enumerate}
+At time $T$, asset is sold for $F_0$, investor to repay $S_0 e^{rT}$ loan, making profit $F_0 - S_0 e^{rT}$.\\
+If $F_0 < S_0 e^{rT}$, investor may:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Sell asset for $S_0$
+\item Invest proceeds at interest rate $r$ for time $T$
+\item Enter into forward contract to buy $1$ unit of asset
+\end{enumerate}
+At time $T$, cash has grown to $S_0 e^{rT}$. Investor repurchase asset for $F_0$, makes profit of $S_0 e^{rT} - F_0$.\\
+
+If the underlying asset provide income with present value of $I$ during life of forward, then
+\begin{equation}
+F_0 = (S_0 - I)e^{rT} \nonumber
+\end{equation}
+If $F_0 > (S_0 - I)e^{rT}$, investor may long asset and short forward. If $F_0 < (S_0 - I)e^{rT}$, investor may short asset and long forward. If short sales are not possible, investors owning the asset will sell the asset and long forward.\\
+
+If the underlying asset provides a known yield rather than income, with $q$ as the average yield, then the following strategy must generate zero profit to prevent arbitrage:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Borrow $S_0$ to buy one unit of asset at time $0$
+\item Enter into forward to sell $e^{qT}$ units of asset at time $T$ for $F_0$
+\item Close the forward by selling $e^{qT}$ units of the asset at time $T$
+\end{enumerate}
+Hence we have
+\begin{equation}
+S_0 e^{rT} = e^{qT} F_0 \nonumber 
+\end{equation}
+or
+\begin{equation}
+F_0 = S_0 e^{(r-q)T} \nonumber
+\end{equation}
+
+When a forward contract is first entered, the value is close to zero. Let $K$ be delivery price negotiated some time ago, with $T$ years delivery date, $r$ is $T$-year risk-free interest rate, $F_0$ is forward price if contract is negotiated today. Let $f$ be value of forward contract today. Then
+\begin{equation}
+f = (F_0 - K)e^{-rT} \nonumber
+\end{equation}
+
+In the case of stock indices, if $F_0 > S_0 e^{(r-q)T}$, profit can be made by buying stocks underlying the index at spot price and shorting the index futures contract. If $F_0 < S_0 e^{(r-q)T}$, short the stocks and long futures. This is known as \hlt{index arbitrage}.\\
+
+In the case of currencies, let $r_f$ be foreign risk-free rate in a foreign-denominated bond, $S_0$ be spot price of local currency in foreign currency, $F_0$ be forward or future price of local currency in foreign currency. Then the \hlt{interest rate parity} relation persists in the form
+\begin{equation}
+F_0 = S_0 e^{(r-r_f)T} \nonumber
+\end{equation}
+
+For commodities, let $U$ be present value of storage costs net of income during life of forward. Then
+\begin{equation}
+F_0 = (S_0 + U)e^{rT} \nonumber
+\end{equation}
+If storage costs are proportional to price of commodity, they can be treated as negative yield. Let $u$ be storage costs per annum as proportion of spot price net of any yield earned on asset. Then
+\begin{equation}
+F_0 = S_0 e^{(r+u)T} \nonumber
+\end{equation}
+If $F_0 > (S_0 + U)e^{rT}$, then investor may take advantage of arbitrage:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Borrow $S_0 + U$ at risk-free rate, purchase one unit of commodity and pay storage costs
+\item Short futures on one unit of commodity
+\end{enumerate}
+If $F_0 < (S_0 + U)e^{rT}$, then investor may take advantage of arbitrage:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Sell commodity, save storage costs, invest proceeds at risk-free interest rate
+\item Long futures contract
+\end{enumerate}
+
+Benefits from holding physical assets are \hlt{convenience yields}, such as by crude oil manufacturers. Let $y$ be the convenience yield, then
+\begin{equation}
+F_0 e^{yT} = (S_0 + U)e^{rT} \nonumber
+\end{equation}
+If storage costs per unit are a constant proportion of spot price, then $y$ is defined such that
+\begin{equation}
+F_0 e^{yT} = S_0 e^{(r+u)T} \nonumber
+\end{equation}
+Convenience yield reflects market expectation on future availability of the commodity. The greater the possibility that shortages will occur, the higher the commodity yield.
+
+The \hlt{cost of carry} measures storage cost plus interest paid to finance the asset less income earned:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Non-dividend paying stock: $r$, as no storage and income is earned
+\item Stock index: $r-q$, as income is earned at rate $q$ on asset
+\item Currency: $r - r_f$
+\item Commodity: $r-q+u$, where it provides income at rate $q$ and requires storage costs at rate $u$
+\end{enumerate}
+
+\subsubsection{Hedging with Futures}
+
+The fundamentals of hedging with futures are \hlt{hedge-and-forget} strategies, where no changes is made to adjust the hedge once it has been put in place.
+
+\begin{definition}
+\hlt{(Basic Principles of Futures Hedging)}\\
+The objective is to take a position that neutralises the risk as far as possible.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{Short Hedge}: short position on futures. \\
+Used when hedger already owns an asset and will sell the asset at some time in the future; or when asset is not owned right now but will be owned and ready for sale sometime in the future.
+\item \hlt{Long Hedge}: long position on futures. \\
+Used when hedger will purchase an asset in the future and wants to lock in the price now.
+\end{enumerate}
+\begin{table}[h]
+\begin{tabular}{|c | c | c|}
+\hline
+ & \textbf{Short Hedge} & \textbf{Long Hedge} \\ \hline
+May $15$ & \makecell[l]{Spot: $50$ \\ Futures: $49$} & \makecell[l]{Spot: $50$ \\ Futures: $49$} \\ \hline
+August $15$ Scenario 1 & \makecell[l]{Spot: $45$ \\ Gain from hedge: $4$} &  \makecell[l]{Spot: $45$ \\ Loss from hedge: $4$} \\ \hline
+August $15$ Scenario 2 & \makecell[l]{Spot: $55$ \\ Loss from hedge: $6$} & \makecell[l]{Spot: $55$ \\ Gain from hedge: $6$} \\ \hline
+\end{tabular}
+\end{table}
+\end{definition}
+
+In practice, hedging is not perfect due to factors as follows:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Asset being hedged is not exactly the same as the asset underlying the futures contract.
+\item Uncertainty as to exact date in which the asset will be bought or sold.
+\item Hedge may require the futures contract to be closed out before its delivery month.
+\end{enumerate}
+These lead to \hlt{basis risk}.
+
+\begin{definition}
+The \hlt{basis} in a hedging situation is defined as
+\begin{align}
+\text{Basis} = \text{Spot Price} - \text{Futures Price} \nonumber
+\end{align}
+An increase/decrease in basis is a strengthening/weakening of the basis.
+\end{definition}
+
+\begin{definition}
+Let $S_i$ be spot price at time $t_i$, $F_i$ be futures price at time $t_i$, $b_i$ be basis price at time $t_i$.	 Assume hedge is placed at time $t_1$, closed at time $t_2$. Price realised for asset is $S_2$, profit from futures position is $F_1 - F_2$.  Effective price obtained for asset hedging is therefore $S_2 + F_1 - F_2 = F_1 + b_2$.\\
+If $b_2$ is known, perfect hedge will result. The \hlt{basis risk} is the hedging risk from uncertainty associated with $b_2$.
+\end{definition}
+
+\begin{definition}
+\hlt{Cross Hedging} occurs when the asset underlying the futures contract is not the same as the asset whose price is being hedged.
+\end{definition}
+
+Cross hedging is often used when futures of the original asset being hedged are not actively traded on the market, and the hedger seeks an alternative asset to hedge the original asset.
+
+\begin{definition}
+\hlt{Hedge Ratio} is the ratio of size of position taken in futures contract to the size of exposure.
+\end{definition}
+
+Assuming no daily settlement of futures contracts, hedger seeks a hedge ratio that minimises variance of hedged position value. Let $\Delta S$ be change in spot price, $\Delta F$ change in futures price. Assuming linear relationship,
+\begin{equation}
+\Delta S = a + b \Delta F + \epsilon	 \nonumber
+\end{equation}
+where $a,b$ are constants, $\epsilon$ is an error term. Suppose hedge ratio is $h$. Change in value of position per unit of exposure to $S$ is:
+\begin{equation}
+\Delta S - h \Delta F = a + (b-h) \Delta F + \epsilon \nonumber
+\end{equation}
+Standard deviation is minimised by setting $h=b$. Let minimum variance hedge ratio be $h^*$. Then
+\begin{equation}
+h^* = \rho \frac{\sigma_S}{\sigma_F} \nonumber
+\end{equation}
+where $\sigma_S, \sigma_F$ is standard deviation of $\Delta S, \Delta F$ respectively, $\rho$ is coefficient of correlation.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{derivatives/hedgeratio}
+\caption{Dependence of variance of position on hedge ratio.}
+\end{figure}
+
+\hlt{Hedge effectiveness} is the proportion of variance eliminated by hedging. This is $R^2$ from regression of $\Delta S$ against $\Delta F$, and equals $\rho^2$. Parameters $\rho$, $\sigma_S$, $\sigma_F$ are estimated from historical data on $\Delta S$ and $\Delta F$.\\
+
+The optimal number of futures to be used in hedging is
+\begin{equation}
+N^* = \frac{h^* Q_A}{Q_F} \nonumber
+\end{equation}
+where $Q_A$ is size of potion being hedged (units), $Q_F$ is size of one futures contract (units). The futures contract should be on $h^* Q_A$ units of the asset.\\
+
+If daily settlement is used, there are a series of one-day hedges, and thus let $\hat{\sigma}_S, \hat{\sigma}_F$ be standard deviation of percentage one-day changes in spot and future price respectively, $\hat{\rho}$ be correlation between percentage one-day changes in spot and future prices. The optimal one day hedge is then
+\begin{equation}
+h^* = \hat{\rho}\frac{\hat{\sigma}_S S}{\hat{\sigma}_F F} \nonumber
+\end{equation} 
+and the optimal number of futures to be used is then
+\begin{equation}
+N^* = \hat{\rho}\frac{\hat{\sigma}_S S Q_A}{\hat{\sigma}_F F Q_F} \nonumber
+\end{equation}
+
+If an interest $r\%$ per annum is earned or paid over the remaining life of the hedge, then the optimal number of futures is $N^* / (1+0.01r)$; this is \hlt{tailing the hedge}.\\
+
+Stock index futures may be used to hedge a well diversified equity portfolio. Let $V_A, V_F$ be the current value of portfolio and one futures contract respectively.\\
+If portfolio mirrors the index, the optimal hedge ratio is then $1.0$, and number of futures contracts to be shorted is then $N^* = \frac{V_A}{V_F}$. If portfolio do not mirror the index, then capital asset pricing model (CAPM) should be used to determine beta ($\beta$), and the number of futures contracts to be shorted is then $N^* = \beta \frac{V_A}{V_F}$, assuming maturity of futures contract is close to the maturity of the hedge.\\
+
+If instead, the hedger wishes to change the beta of portfolio where $\beta > \beta^*$, a short position $(\beta - \beta^*)\frac{V_A}{V_F}$ is required. If $\beta < \beta^*$, then a long position $(\beta^* - \beta)\frac{V_A}{V_F}$ is required.\\
+
+Stock index hedging is typically used when the portfolio manager is uncertain about performance of market, but is confident that the stocks in the portfolio will outperform the market. The hedger may also be planning to hold a portfolio for a long period of time and requires short-term protection in an uncertain market situation.\\
+
+If expiration date of hedge is later than delivery dates of all futures contracts that may be used, then the hedger may \hlt{stack and roll} by closing out one futures contract and taking the same position in a futures contract with a later delivery date.
+
+\subsubsection{Interest Rate Futures}
+
+The \hlt{day count} defines the way in which interest accrues, and is expressed as $X/Y$, where $X$ is the way in which number of days between two dates is calculated, $Y$ is total number of days in reference period.
+\begin{equation}
+\text{interest earned between two dates} = \frac{X}{Y} \times \text{interest earned in reference period} \nonumber
+\end{equation}
+The three common day count conventions used in United States are:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Actual/Actual (in period): for Treasury Bond
+\item $30/360$: for corporate and municipal bonds, assumes $30$ days a month and $360$ days a year
+\item Actual$/360$: for money market instruments
+\end{enumerate}
+
+Prices of money market instruments are quoted using discount rate, which is interest earned as a percentage of final face value. Let $P$ be quoted price, $Y$ be cash price, $n$ remaining life of Treasury bill in calendar days:
+\begin{equation}
+P = \frac{360}{n}(100 - Y) \nonumber
+\end{equation}
+
+Prices of treasury bonds are quoted in dollars and thirty-seconds of a dollar, i.e., $120$-$05$ or $120\frac{5}{32}$, which is a bond value of $\$120,156.25$. The quoted price is \hlt{clean price}, and the cash paid by purchaser is \hlt{dirty price}:
+\begin{equation}
+\text{cash price} = \text{quoted price} + \text{accrued interest since last coupon date} \nonumber
+\end{equation} 
+
+

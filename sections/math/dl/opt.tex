@@ -207,10 +207,24 @@ Setting bias to zero is compatible with most weight initialisation schemes. The 
 \setlength{\itemsep}{0pt}
 \item If bias is for output unit, initialise bias to obtain right marginal statistics of the output. Assume initial weights are small enough that output of unit is determined only by bias. The bias will be inverse of activation function applied to marginal statistics of the output in training set.\\
 If output is a highly skewed distribution over classes with marginal probability of class $i$ given by element $c_i$ of some vector $\bm{c}$, then bias vector $\bm{b}$ is such that $\text{softmax}(\bm{b}) = \bm{c}$. The models have output layers that should resemble input data $\bm{x}$, hence bias should match marginal distribution over $\bm{x}$.
-\item 
+\item If bias is to be set to avoid causing too much saturation at initialisation (i.e., with ReLU). Not compatible with weight initialisation schemes that do not expect strong input form bias (i.e., with random walk init).
+\item If a unit controls whether other units are able to participate in a function. There is unit with output $u$ and another unit $h \in [0,1]$, multiplied together to produce output $uh$. Then $h$ is a gate that determines if $uh \approx u$ or $uh \approx 0$. Hence, to set bias for $h$ such that $h \approx 1$ at initialisation, else $u$ does not learn.
 \end{enumerate}
 \end{remark}
 
+\begin{remark} \hlt{Variance or Precision Parameter Initialisation Heuristics}\\
+For linear regression with conditional variance estimate using model
+\begin{align}
+p(y \ | \ \bm{x}) = \mathcal{N}(y \ | \ \bm{w}^T \bm{x} + b, 1/\beta) \nonumber
+\end{align}
+where $\beta$ is a precision parameter. The variance of precision parameters may be initialised to $1$.\\
+Another approach is to assume initial weights are close enough to zero, and bias may be set while ignoring effect of the weights, then set bias to produce the correct marginal mean of the output, and set variance parameters to the marginal variance of the output in the training set.
+\end{remark}
+
+\begin{remark} \hlt{Model Parameter Initialisation with Machine Learning}\\
+Initialise supervised model with parameters learned by unsupervised model trained on same inputs.\\
+Alternatively, perform supervised training on a related task, which may yield initialisation that offers faster convergence than random initialisation. Information on distribution is encoded into initial parameters of model.
+\end{remark}
 
 \begin{remark} \hlt{Adaptive Gradient (AdaGrad) Algorithm}\\
 Algorithm individually adapts learning rates of all model parameters by scaling them inversely proportional to square root of sum of all of their historical squared values. Has greater progress in more gently sloped directions of parameter space. On deep neural networks, accumulation of squared gradients from beginning of training can result in premature and excessive decrease in effective learning rate.
@@ -236,7 +250,7 @@ Small constant $\delta$, perhaps $10^{-7}$ for numerical stability\\
 \end{breakablealgorithm}
 
 \begin{remark} \hlt{Root Mean Squared Propagation (RMSProp) Algorithm}\\
-Modifies AdaGrad to perform better in non-convex setting by changing gradient accumulation into exponentially weighted moving average. RMSProp is effective and practical for deep neural networks.
+Modifies AdaGrad to perform better in non-convex setting by changing gradient accumulation into exponentially weighted moving average, which discards history from extreme past so it can converge rapidly after finding a convex bowl. Use of moving average introduces a new hyper-parameter $\rho$ that controls length scale of the moving average. RMSProp is effective and practical for deep neural networks.
 \end{remark}
 
 \begin{breakablealgorithm}
@@ -384,8 +398,41 @@ Initialise $t = 1$\\
 \end{algorithmic}
 \end{breakablealgorithm}
 
+\begin{remark} \hlt{Nonlinear Conjugate Gradients}\\
+Method of conjugate gradients is still applicable for non-linear objective function.\\
+Conjugate directions are no longer assumed to remain at minimum of the objective for previous directions. Has occasional resets where method of conjugate gradients is restarted with line search along unaltered gradient.
+\end{remark}
+
 \begin{remark} \hlt{Broyden-Fletcher-Goldfarb-Shanno (BGFS) Algorithm}\\
 Similar to conjugate gradient, but uses more direct approach to approximation of newton's update.\\
 Method approximate the inverse of hessian $\bm{H}$ with matrix $\bm{M}_t$, iteratively refined by low rank updates to better approximate $\bm{H}^{-1}$. Direction of gradient descent is then determined by $\bm{\rho}_t = \bm{M}_t \bm{g}_t$. Line search is performed in this direction to determine step size $\epsilon^{*}$. Final update of parameter is then $\bm{\theta}_{t+1} = \bm{\theta}_t + \epsilon^{*} \bm{\rho}_{t}$.\\
 Note, BGFS store matrix $\bm{M}$ which requires $O(n^2)$ memory, making it impractical for most modern models.
+\end{remark}
+
+\begin{remark} \hlt{Limited Memory BFGS (L-BFGS) Algorithm}\\
+Memory costs of BFGS may be decreased by not storing complete inverse Hessian approximation $\bm{M}$. L-BFGS computes approximation $\bm{M}$ with same method as BFGS, but assumes at beginning that $\bm{M}^{(t-1)}$ is the identity matrix, rather than storing the approximation between steps.\\
+If used with exact line searches, directions defined by L-BFGS are mutually conjugate, and this procedure remains well-behaved when minimum of line search is reached only approximately.\\
+L-BFGS may be generalised to store some vectors used to update $\bm{M}$ at each time step, costing $O(n)$ per step.
+\end{remark}
+
+\begin{remark} \hlt{Meta-Algorithm: Batch Normalisation}\\
+An update from optimisation algorithm may result in multiple-order effects, and in very deep networks, even higher-order interactions can be significant.\\
+Batch normalisation provides an elegant way of re-parametrising any deep network, which reduces the problem of coordinating updates across multiple layers. Batch normalisation may be applied to any input/hidden layer.\\
+Let $\bm{H}$ be minibatch of activations of layer to normalise, with activations for each example appearing in a row. To normalise $\bm{H}$, replace it with $\bm{H}' = \frac{\bm{H} - \bm{\mu}}{\bm{\sigma}}$ where $\bm{\mu}$ is a vector of mean of each unit and $\sigma$ is a vector of standard deviation of each unit. Then $H_{ij}$ is normalised by subtracting $\mu_j$ and dividing $\sigma_j$. Rest of network then operates on $\bm{H}'$ just as in original network on $\bm{H}$.\\
+At training, the mean and standard deviations are computed as
+\begin{align}
+\bm{\mu} &= \frac{1}{m} \sum\limits_i \bm{H}_{i, ;}, \ \ \ \bm{\sigma} = \sqrt{\delta + \frac{1}{m} \sum\limits_{i} (\bm{H} - \bm{\mu})^2_i} \nonumber
+\end{align}
+where $\delta$ is a small positive value (i.e., $10^{-8}$) to avoid undefined gradient of $\sqrt{z}$ at $z=0$.\\
+These are then back-propagated to normalise $\bm{H}$, hence gradient will never increase the standard deviation or mean of $h_i$. Batch normalisation re-parametrises the model to make some units always standardised.\\
+At test time, $\mu$ and $\sigma$ may be replaced by running averages from training time. This allows model to be evaluated on a single example, without needing to use definitions of $\mu$ and $\bm{\sigma}$ that depends on entire minibatch.
+\end{remark}
+
+\begin{remark} \hlt{Batch Normalisation but Maintain Network Express Power}\\
+Replace batch of hidden activations $\bm{H}$ with $\bm{\gamma} \bm{H}' + \bm{\beta}$ rather than $\bm{H}'$, where $\bm{\gamma}$ and $\bm{\beta}$ are learned parameters to allow new variable to have any mean and standard deviation. With original $\bm{H}'$, mean of $\bm{H}$ was determined by complicated interaction between parameters in layers below $\bm{H}$. With $\bm{\gamma} \bm{H}' + \bm{\beta}$, the mean is determined solely by $\bm{\beta}$, which is much easier to learn with gradient descent.\\
+Most neural network layers are of form $\phi(\bm{X} \bm{W} + \bm{b})$, where $\phi$ is some fixed nonlinear activation function. Then $\bm{X} \bm{W} + \bm{b})$ should be replaced by normalised version of $\bm{X} \bm{W}$, and bias term omitted as it becomes redundant with $\beta$ parameter applied from batch normalisation re-parametrisation. Statistics of input are non-Gaussian and less amenable to standardisation by linear operations.
+\end{remark}
+
+\begin{remark} \hlt{Meta-Algorithm: Coordinate Descent}\\
+	
 \end{remark}

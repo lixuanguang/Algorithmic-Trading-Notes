@@ -1,0 +1,145 @@
+\subsection{Market Fundamentals}
+
+The basic function of a market is to bring buyers and sellers together.
+
+\begin{process}
+\hlt{(Four Components of a Trade)}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Acquisition of information and quotes
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Quality information and transparency are crucial to price discovery
+\item Transparent markets quickly disseminate high-quality information
+\item Opaque markets are those that lack transparency
+\end{enumerate}
+\item Routing of the trade order
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Selecting the brokers to handle the trades
+\item Deciding which markets will execute the trades and transmitting the trades to the markets
+\end{enumerate}
+\item Execution. Buys are matched and executed against sells according to the rules of the market
+\item Confirmation, clearance and settlement
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Clearance is the recording and comparison of the trade records
+\item Settlement involves the actual delivery of the security and its payment
+\item Might include trade allocation
+\end{enumerate}
+\end{enumerate}
+\end{process}
+
+\begin{remark}
+\hlt{(Risks of Algorithmic Trading)}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Leaks might arise from competitor efforts to revere engineer them
+\item Many algorithms lack the capacity to handle or respond to exceptional or rare events.
+\end{enumerate}
+\end{remark}
+
+\begin{remark}
+\hlt{(Cornering-the-Market)} Trader takes huge long futures position and tries to exercise control over supply of underlying commodity. As maturity of futures contract is approaching, position is not closed, number of outstanding contracts exceed commodities available. Holders of short positions desperately try to close positions, leading to rise in both futures and spot prices.\\
+Abuse is dealt with by increasing margin requirements or imposing stricter position limits or prohibiting trades that increase speculator's open position or requiring market participants to close their positions.
+\end{remark}
+
+\subsubsection{Liquidity Access in Equity Markets}
+
+\hlt{(Exchanges)} Account for $60\%$ to $70\%$ of all activity. The full order-book, arrivals/cancellations are all published, the liquidity information is transparent. Larger orders may impact the market. Liquidity at best price cannot be ignored, as the exchange will need to reroute to other exchanges where price is better while charging a fee (National Best Bid Offer, NBBO). All exchanges have almost exactly the same trading mechanism, and behave exactly the same way during the trading day except for opening and closing auctions.\\
+Most exchanges use maker-taker fee model, but some exchanges (BYX, EDGA, NSX, BX) have an inverted fee model where rebate is provided for taking liquidity. IEX uses a speed bump to remove speed advantages of HFTs, providing a less 'toxic' liquidity pool.\\
+
+\hlt{(Dark Pools/ATS)} Dark pools do not display any order information and use the NBBO as reference price. To avoid accessing protected venues, these pools trade only at the inside market (at or within the bid ask spread). Still possible to identify large blocks of liquidity by 'pinging' the pool at minimum lot size; counteracted by sending orders with minimum fill quantity tag, which allows block to be transparent from small pinging.\\
+Most of ATS are run by major investment banks; some venues allow direct trading between investment firms. Note that many of the trading strategies used by firms tend to be highly correlated, hence liquidity is often on the same side; venues have to leverage sell side broker's liquidity to supplement their own.\\
+
+\hlt{(Single Dealer's Platform/Systematic Internalisers)} Broker/Dealer and other institutional clients connect to Single Dealer Platform (SDP) directly. Not regulated ATS, hence can offer unique products. Brokers provide their own SDPs to expose their internal liquidity.\\
+
+\hlt{(Auctions)} Exchanges begin and end day with a primary auction procedure that leverages special order types to accumulate supply and demand, then run algorithm that determines best price that would at best pair off the most volume. An opportunity for active and passive investors to exchange large amounts of liquidity.
+
+\subsubsection{Trading Mechanisms}
+
+Most common approach by modern electronic exchanges is the time/price priority, \hlt{continuous double auction} trading system. There are multiple buyers and multiple sellers participating at the same time.\\
+
+\hlt{(Limit Order Book, LOB)} Stores all non-executed orders with associated instructions. Highly efficient, able to handle a high degree of concurrency to ensure the state is always correct. Has 2 copies of core data structure (for Buy, Sell orders). Supports 3 basic instruction types (insert, cancel, amend). There are 4 events on both Buy and Sell that may alter state of order book (limit order submission, limit order cancellation, limit order amendment, execution).\\
+
+\hlt{(Matching Algorithm)} Responsible for interpreting various events to determine if any buy and sell orders can be matched. When multiple orders can be paired, price/time priority is used, where the order with most competitive prices are matched, and when prices are equal, the order that arrived prior is chosen.\\
+
+Exchanges will publish order imbalance that exists among orders on opening and closing books during \hlt{Open Auctions}, with indicative price and volume. The following are published every second on market data feeds:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{Current Reference Price}: Price at which paired shares are maximised, imbalance is minimised, distance from bid-ask mid-point is minimised, in that order
+\item \hlt{Near Indicative Clearing Price}: The crossing price at which orders in opening, closing book and continuous book would clear against each other
+\item \hlt{Far Indicative Clearing Price}: The crossing price at which orders in opening, closing book would clear against each other
+\item \hlt{Number of Paired Shares}: The number of on-open or on-close shares that is able to pair off at the current reference price
+\item \hlt{Imbalance Shares}: The number of opening or closing shares that would remain unexecuted at the current reference price
+\item \hlt{Imbalance Side}: The side of imbalance. B is buy-side imbalance; S is sell-side imbalance; N is no imbalance; O is no marketable on-open or on-close orders
+\end{enumerate}
+
+In general, the following rules apply to match supply and demand:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Crossing price must maximise volume transacted
+\item If several prices result in similar volume transacted, the crossing price is the one the closest from last price
+\item Cross price is identical for all orders executed
+\item If two orders are submitted at same price, the order submitted first has priority
+\item It is possible for an order to be partially executed if the other side quantity is not sufficient
+\item 'At Market' orders are executed against each other at the determined crossing price, up to available matching quantity on both sides, but generally do not participate in price formation process
+\item For Open Auction, unmatched 'At Market' orders are entered into continuous session of LOB as limit orders at the crossing price
+\end{enumerate}
+
+The open auction is a major price discovery mechanism, as it occurs after a period of market inactivity when market participants were unable to transact even if they have information. Market participants with better information are more likely to participate, with more aggressive orders to extract liquidity, hence the mechanism is quite volatile and more suited for short-term alpha investors.\\
+During execution, smaller orders may avoid participation in open auction and period thereafter; larger orders may participate to extract significant liquidity from the market.\\
+
+Diversity of order types is key component of continuous double auction electronic markets.
+
+\begin{definition} {\color{white}space}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{Market Order}: trade carried out immediately at best price available in market.
+\item \hlt{Limit Order}: only executed at this price or at one more favourable to the trader.
+\item \hlt{Stop/Stop-Loss Order}: not visible in LOB. Only become active when certain price is reached or passed, then enter order book as ether limit or market order depending on user setup.
+\item \hlt{Stop-Limit Order}: combination of stop order and limit order. Order becomes limit order as soon as a bid or ask is made at the price equal to or less favourable than stop price. If stop price and limit price is the same, then the order is \hlt{stop-and-limit} order.
+\item \hlt{Trailing Stop Order}: function like stop orders, but stop price is set dynamic rather than static.
+\item \hlt{Market-if-Touched (MIT)/Board Order}: executed at best available price after trade occurs at a specified price or more favourable. Ensure profit is taken if sufficiently favourable price movements occur.
+\item \hlt{Market-Not-Held/Discretionary Order}: traded as market order, execution may be delayed at broker's discretion for better price.
+\item \hlt{All-Or-None Order}: request full execution of order. Not executed until full quantity is available.
+\item \hlt{Peg Order}: specify a price level at which order should be continuously and automatically repriced. Used for mid-point executions in non-displayed markets.
+\item \hlt{Iceberg Order}: limit order with specific display quantity, designed to prevent information leakage.
+\item \hlt{Hidden Order}: when available to trade, not directly available to other market participants in central LOB
+\item \hlt{On-Open}: request execution at open price. Can be limit-on-open or market-on-open.
+\item \hlt{On-Close}: request execution at close price. Can be limit-on-close or market-on-close.
+\item \hlt{Imbalance Only}: provide liquidity intended to offset on-open/on-close order imbalances during opening/closing cross. These generally are limit orders.
+\item \hlt{D-Quote}: Special order on NYSE, mainly used during close auction period.
+\item \hlt{Funari}: Special order on Tokyo Stock Exchange, allows limit order placed in book during continuous session to automatically enter closing auction as market orders.
+\end{enumerate}
+\end{definition}
+
+Instruction validity may take the following forms:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{Day Order}: valid for full duration of trading session
+\item \hlt{Extended Day Orders}: allows for trading in extended hours
+\item \hlt{Good-Till-Cancel Order}: in effect until executed or until end of trading in particular contract
+\item \hlt{Immediate-or-Cancel Order}: will be immediately cancelled back to sender after reaching matching engine if it does not get immediate fill.
+\item \hlt{Fill-or-Kill Order}: must be executed immediately on receipt or none at all.
+\end{enumerate}
+
+
+\subsubsection{Market Microstructure Primer}
+
+A market microstructure analysis framework follows three main categories:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Price Formation and Price Discover: how prices impound information over time, and how determinants of trading costs vary
+\item Market Design: impact of trading rules on price formation. Choice of tick size, circuit breakers that halt trading in event of large price swings, degree of anonymity, transparency of information to market participants. These create a diverse set of constraints and opportunities.
+\item Transparency: quantity, quality and speed of information effect on trading process. Classified into pre-trade (lit order book), post-trade (trade reporting to public). 
+\end{enumerate}
+
+Topics for research in microstructure includes the following:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Parent order sliced into several child orders sent to market for execution; difficult to discern the informed trader who use sophisticated dynamic algorithms. Retail trades usually cross the spread.
+\item Understanding of trading intensity in short intervals. Order imbalance is empirically shown to be unrelated to price levels.
+\item Informed traders usage of hidden orders in entering and exiting the market require further studies.
+\item Traders respond to changing market conditions by revising quoted prices. Quote volatility can provide valuable information about perceived uncertainty in the market.
+\end{enumerate}

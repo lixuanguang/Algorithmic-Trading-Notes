@@ -430,9 +430,19 @@ At test time, $\mu$ and $\sigma$ may be replaced by running averages from traini
 
 \begin{remark} \hlt{Batch Normalisation but Maintain Network Express Power}\\
 Replace batch of hidden activations $\bm{H}$ with $\bm{\gamma} \bm{H}' + \bm{\beta}$ rather than $\bm{H}'$, where $\bm{\gamma}$ and $\bm{\beta}$ are learned parameters to allow new variable to have any mean and standard deviation. With original $\bm{H}'$, mean of $\bm{H}$ was determined by complicated interaction between parameters in layers below $\bm{H}$. With $\bm{\gamma} \bm{H}' + \bm{\beta}$, the mean is determined solely by $\bm{\beta}$, which is much easier to learn with gradient descent.\\
-Most neural network layers are of form $\phi(\bm{X} \bm{W} + \bm{b})$, where $\phi$ is some fixed nonlinear activation function. Then $\bm{X} \bm{W} + \bm{b})$ should be replaced by normalised version of $\bm{X} \bm{W}$, and bias term omitted as it becomes redundant with $\beta$ parameter applied from batch normalisation re-parametrisation. Statistics of input are non-Gaussian and less amenable to standardisation by linear operations.
+Most neural network layers are of form $\phi(\bm{X} \bm{W} + \bm{b})$, where $\phi$ is some fixed nonlinear activation function. Then $\bm{X} \bm{W} + \bm{b})$ should be replaced by normalised version of $\bm{X} \bm{W}$, and bias term omitted as it becomes redundant with $\beta$ parameter applied from batch normalisation re-parametrisation. Statistics of input are non-Gaussian and less amenable to standardisation by linear operations.	
 \end{remark}
 
 \begin{remark} \hlt{Meta-Algorithm: Coordinate Descent}\\
-	
+Solving optimisation problems by minimising the objective function $f(\bm{x})$ with respect to a single variable $x_i$, and rapidly cycling through all variables. \hlt{Block coordinate descent} refers to minimising with respect to a subset of variables simultaneously.\\
+ Coordinate descent works when different variables can be clearly separated into groups that play relatively isolated roles, or when optimisation with respect to one group of variables is significantly more efficient than optimisation with respect to all of the variables.
 \end{remark}
+
+\begin{example} \hlt{Sparse Encoding with Coordinate Descent}\\
+Consider the cost function
+\begin{align}
+J(\bm{H}, \bm{W}) = \sum\limits_{i,j} \abs{H_{ij}} + \sum\limits_{i,j} (\bm{X} - \bm{W}^T \bm{H})^2_{i,j} \nonumber
+\end{align}
+To find weight matrix $\bm{W}$ that can linearly decode a matrix of activation values $\bm{H}$ to reconstruct training set $\bm{X}$. Most applications also include weight decay or constraint on norms of columns of $\bm{W}$ to prevent the pathological solution with extremely small $\bm{H}$ and large $\bm{W}$.\\
+Note $J$ is not convex, but inputs may be divided into the dictionary parameters $\bm{W}$ and the code representations $\bm{H}$. Minimising object function with respect to either set is a convex problem.
+\end{example}

@@ -187,7 +187,7 @@ Larger initial weights will yield stronger symmetry breaking effect and avoid re
 
 \begin{remark} \hlt{Weight Initialisation Heuristics}\\
 Initialising parameters of neural network $\bm{\theta}$ to $\bm{\theta}_0$ is similar to imposing a Gaussian prior $p(\bm{\theta})$ with mean $\bm{\theta}_0$, hence it make sense to choose $\bm{\theta}_0$ near $0$. Initialisation of $\bm{\theta}_0$ to large values means prior specifies which units should interact with each other, and how they should interact.\\
-For a fully connected neural network with $m$ inputs and $n$ inputs, weights may be initialised by:
+For a fully connected neural network with $m$ inputs and $n$ outputs, weights may be initialised by:
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item Sampling from $U\left(-\frac{1}{\sqrt{m}},  \frac{1}{\sqrt{m}} \right)$
@@ -430,9 +430,68 @@ At test time, $\mu$ and $\sigma$ may be replaced by running averages from traini
 
 \begin{remark} \hlt{Batch Normalisation but Maintain Network Express Power}\\
 Replace batch of hidden activations $\bm{H}$ with $\bm{\gamma} \bm{H}' + \bm{\beta}$ rather than $\bm{H}'$, where $\bm{\gamma}$ and $\bm{\beta}$ are learned parameters to allow new variable to have any mean and standard deviation. With original $\bm{H}'$, mean of $\bm{H}$ was determined by complicated interaction between parameters in layers below $\bm{H}$. With $\bm{\gamma} \bm{H}' + \bm{\beta}$, the mean is determined solely by $\bm{\beta}$, which is much easier to learn with gradient descent.\\
-Most neural network layers are of form $\phi(\bm{X} \bm{W} + \bm{b})$, where $\phi$ is some fixed nonlinear activation function. Then $\bm{X} \bm{W} + \bm{b})$ should be replaced by normalised version of $\bm{X} \bm{W}$, and bias term omitted as it becomes redundant with $\beta$ parameter applied from batch normalisation re-parametrisation. Statistics of input are non-Gaussian and less amenable to standardisation by linear operations.
+Most neural network layers are of form $\phi(\bm{X} \bm{W} + \bm{b})$, where $\phi$ is some fixed nonlinear activation function. Then $\bm{X} \bm{W} + \bm{b})$ should be replaced by normalised version of $\bm{X} \bm{W}$, and bias term omitted as it becomes redundant with $\beta$ parameter applied from batch normalisation re-parametrisation. Statistics of input are non-Gaussian and less amenable to standardisation by linear operations.	
 \end{remark}
 
 \begin{remark} \hlt{Meta-Algorithm: Coordinate Descent}\\
-	
+Solving optimisation problems by minimising the objective function $f(\bm{x})$ with respect to a single variable $x_i$, and rapidly cycling through all variables. \hlt{Block coordinate descent} refers to minimising with respect to a subset of variables simultaneously.\\
+ Coordinate descent works when different variables can be clearly separated into groups that play relatively isolated roles, or when optimisation with respect to one group of variables is significantly more efficient than optimisation with respect to all of the variables.
+\end{remark}
+
+\begin{example} \hlt{Sparse Encoding with Coordinate Descent}\\
+Consider the cost function
+\begin{align}
+J(\bm{H}, \bm{W}) = \sum\limits_{i,j} \abs{H_{ij}} + \sum\limits_{i,j} (\bm{X} - \bm{W}^T \bm{H})^2_{i,j} \nonumber
+\end{align}
+To find weight matrix $\bm{W}$ that can linearly decode a matrix of activation values $\bm{H}$ to reconstruct training set $\bm{X}$. Most applications also include weight decay or constraint on norms of columns of $\bm{W}$ to prevent the pathological solution with extremely small $\bm{H}$ and large $\bm{W}$.\\
+Note $J$ is not convex, but inputs may be divided into the dictionary parameters $\bm{W}$ and the code representations $\bm{H}$. Minimising object function with respect to either set is a convex problem.
+\end{example}
+
+\begin{remark} \hlt{Polyak Averaging}\\
+Average several points in trajectory through parameter space visited by optimisation algorithm.\\
+If $t$ iterations of gradient descent visit points $\bm{\theta}^{(1)}, \ldots, \bm{\theta}^{(t)}$, then the output is $\hat{\bm{\theta}}^{(t)} = \frac{1}{t} \sum_i \bm{\theta}^{(i)}$.\\
+The optimisation algorithm may leap back and forth across a valley several times without visiting the minimum point, and the average of all points on either side of the valley should be close to minimum value.\\
+This is developed solely for stochastic gradient descent (SGD) to stabilise the estimates (\cite{granziol2020gadam}).\\
+For non-convex problems, an exponentially decaying running average is used:
+\begin{align}
+\hat{\bm{\theta}}^{(t)} = \alpha \hat{\bm{\theta}}^{(t-1)} + (1- \alpha)\bm{\theta}^{(t)} \nonumber
+\end{align}
+\end{remark}
+
+\begin{remark} \hlt{Supervised Pre-training}\\
+Pre-training refers to training simple models on simple tasks before training the desired model on desired task.\\
+Greedy algorithms break problem into many components, then solve for optimal version of each component in isolation, which is must cheaper than algorithms that solve for best joint solution. Fine-tuning on joint optimisation algorithm searches for optimal solution to the full problem.\\
+Greedy supervised training breaks supervised learning problems into other simpler supervised learning problems.\\
+Transfer learning refers to pre-training a deep network on a set of tasks, then initialise a same-size network with first $k$ layers of first net. The layers of second networks (upper layers initialised randomly) are then jointly trained to perform a different set of tasks with fewer training examples than for first set of tasks.\\
+FitNets approach begins by training a network with low depth and high width, which becomes a teacher for a second network (the student), which is much deeper and thinner. Student network is trained to not only predict the output on original task, but also on value of middle layer of teacher network.
+\end{remark}
+
+\begin{remark} \hlt{Neural Network Design Choice: Linear Transformation}\\
+Model units have generally moved towards using more linear functions, which allow model to have nice properties that make optimisation easier. The model's local gradient information corresponds reasonably well to moving towards a distant solution.
+\end{remark}
+
+\begin{remark} \hlt{Neural Network Design Choice: Linear Paths and Skip Connections}\\
+Linear paths and skip connections between layers reduce length of shortest path from lower layer's parameters to the output, mitigating vanishing gradient problem.\\
+Adding extra copies of output that are attached to intermediate hidden layers is an alternative to pre-training, where these 'auxiliary heads' are trained to perform the same task as primary output at the top of the network to ensure that the lower layers receive a large gradient. After training, these may be discarded.
+\end{remark}
+
+\begin{remark} \hlt{Continuation Methods}\\
+Family of strategies that can make optimisation easier by choosing initial points to ensure that local optimisation spends most of its time in well-behaved regions. Method constructs series of objective functions $\{J^{(0)}, \ldots, J^{(n)}\}$ which are increasingly difficult to minimise (well-behaved over less regions of $\bm{\theta}$ space) for the true cost function $J(\bm{\theta})$. The cost functions are designed such that a solution to one is a good initial point for the next.\\
+Continuation methods aim to reach a global minimum despite many local minima. Easier cost functions are constructed through the blurring operation, which approximates
+\begin{align}
+J^{(i)}(\bm{\theta}) = \mathbb{E}_{\theta' \sim \mathcal{N}(\bm{\theta}'; \bm{\theta}, \sigma^{(i)2})} J(\bm{\theta})' \nonumber
+\end{align}
+via sampling. Some non-convex functions become approximately convex when blurred, but preserved enough information about local global minimum. However, approach might not work when
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item so many incremental cost functions are required that cost of entire procedure remains high;
+\item NP-hard optimisation problems remain NP-hard, even when continuation methods are applicable;
+\item function might not become convex, no matter how much it is blurred;
+\item function may become convex due to blurring, but minimum of this blurred function may track a local rather than global minimum of original cost function.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Curriculum Learning}\\
+Planning a learning process to begin by learning simple concepts, and progress to learning more complex topics that depend on these simpler concepts. Earlier objective functions $J^{(i)}$ are made easier by increasing the influence of simpler examples.\\
+Stochastic curriculum is a variation of the approach where a random mix of easy and difficult examples is always presented to the learner, but average proportion of more difficult examples is gradually increased.
 \end{remark}

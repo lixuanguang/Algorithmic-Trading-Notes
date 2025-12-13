@@ -1,0 +1,25 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Narang}{Narang}{2013}]{rishi_2013}
+Narang, R.~K. (2013).
+\newblock {\em Inside the Black Box: The Simple Truth About Quantitative
+  Trading}.
+\newblock Wiley Finance Series. Wiley.
+
+\bibitem[\protect\citeauthoryear{Prado}{Prado}{2018}]{marcos_2018}
+Prado, M. L.~D. (2018).
+\newblock {\em Advances in Financial Machine Learning}.
+\newblock Wiley Finance Series. Wiley.
+
+\bibitem[\protect\citeauthoryear{Thierry and Helyette}{Thierry and
+  Helyette}{2000}]{Thierry_Helyette_2000}
+Thierry, A. and G.~Helyette (2000, October).
+\newblock Order flow, transaction clock, and normality of returns.
+\newblock {\em The Journal of Finance\/}~{\em 55\/}(5), 2259–2284.
+
+\bibitem[\protect\citeauthoryear{Velu}{Velu}{2020}]{velu_2020}
+Velu, R. (2020).
+\newblock {\em Algorithmic Trading and Quantitative Strategies}.
+\newblock CRC Press.
+
+\end{thebibliography}

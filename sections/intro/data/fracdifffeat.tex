@@ -5,10 +5,10 @@ Fractionally differentiated processes exhibit long-term persistence and anti-per
 
 \begin{definition} \hlt{BackShift Operator}\\
 Let $B$ be the backshift operator applied to a matrix of real-valued features $\{X_t \}$, where $B^k X_t = X_{t-k}$ for any integer $k \geq 0$. By binomial expansion, we then have
-\begin{align}
+\begin{align*}
 (1-B)^d = \sum\limits_{k=0}^{\infty} \binom{d}{k} (-B)^k &= \sum\limits_{k=0}^{\infty} \prod\limits_{i=0}^{k-1} (d-i) \frac{(-B)^k}{k!} = \sum\limits_{k=0}^{\infty} (-B)^k \prod\limits_{i=0}^{k-1} \frac{d-i}{k-i} \nonumber \\
 &= 1 - dB + \frac{d(d-1)}{2!} B^2 - \frac{d(d-1)(d-2)}{3!} B^3 + \cdots \nonumber 
-\end{align}
+\end{align*}
 \end{definition}
 
 \begin{remark}
@@ -24,18 +24,18 @@ where $\omega$ are the weights, $X$ are the values. Properties of these features
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item Long memory: if $d$ is a positive integer number, then
-\begin{equation}
+\begin{equation*}
 \prod\limits_{i=0}^{k-1} \frac{d-i}{k!} = 0 \ \ \forall > d \nonumber
-\end{equation}
+\end{equation*}
 and memory beyond that point is cancelled.
 \item Iterative weight generation: given sequence of weights $\omega$, for $k = 0, \ldots, \infty$, the weights are
-\begin{equation}
+\begin{equation*}
 \omega_k = - \omega_{k-1} \frac{d - k + 1}{k}, \ \ \ \omega_0 = 1 \nonumber
-\end{equation}
+\end{equation*}
 \item Convergence: For $k > d$, if $\omega_{k-1} \neq 0$, then
-\begin{equation}
+\begin{equation*}
 \abs{\frac{\omega_{k}}{\omega_{k-1}}} = \abs{\frac{d-k+1}{k}} < 1 \nonumber
-\end{equation}
+\end{equation*}
 and $\omega_k = 0$ otherwise. Hence weights converge asymptotically to zero.\\
 For positive $d$ and $k < d+1$, then $\frac{d-k+1}{k} \geq 0$, which makes initial weights alternate in sign.\\
 For non-integer $d$, once $k \geq d+1$, $\omega_k$ will be negative if int$[d]$ is even, and positive otherwise.\\
@@ -49,13 +49,14 @@ In special case $d \in (0,1)$, that $-1 < \omega_k < 0 \ \forall k > 0$. Alterna
 \includegraphics[scale=0.35]{figures/intro/fracdiffexpandwindow}
 \includegraphics[scale=0.385]{figures/intro/fracdifffixedwidthwind}
 \caption{Fractional differentiation controlling for weight loss with expanding and fixed-width window}
+\label{fig:fracdiffwindow}
 \end{figure}
 
 \begin{method} \hlt{Expanding Window}\\
 Given time series $T$ with real observations $\{X_t\}_{t = 1, \ldots, T}$, for each $l$, the relative weight loss is defined as
-\begin{equation}
+\begin{equation*}
 \lambda_l = \sum\limits_{j=T-l}^T \abs{\omega_j} \Bigg/ \sum\limits_{i=0}^{T-1} \abs{\omega_i} \nonumber
-\end{equation}
+\end{equation*}
 Given tolerance level $\tau \in [0,1]$, determine value $l^*$ such that $\lambda_{l^*} \leq \tau$ and $\lambda_{l^* + 1} > \tau$. This value $l^*$ corresponds to the first results $\{\tilde{X}_t \}_{t = 1, \ldots, l^*}$, where weight-loss is beyond acceptable threshold $\lambda_t > \tau$.\\
 From Remark \ref{rmk:propfracdifffeat}, it is clear $\lambda_{l^*}$ depends on convergence speed of $\{\omega_k \}$, which in turn depends on $d \in [0,1]$.\\
 For $d = 1, \omega_k = 0 \ \forall k > 1$, and $\lambda_l = 0 \ \forall l > 1$, hence it suffices to drop $\tilde{X}_1$.\\

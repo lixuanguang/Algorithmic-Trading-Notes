@@ -16,9 +16,10 @@ To examine how forward prices and futures prices are related to spot price, we a
 Let $T$ be time until delivery date (in years), $S_0$ be price of underlying asset today, $F_0$ be price of forward or futures today, $r$ be zero-coupon risk-free rate per annum in continuous compounding (maturing in $T$ years).\\
 
 Consider a forward contract on underlying asset with spot price $S_0$ that provides no income. Then
-\begin{equation}
-F_0 = S_0 e^{rT} \nonumber
-\end{equation}
+\begin{equation*}
+\begin{equation*}
+\Delta S = a + b \Delta F + \epsilon\t \nonumber
+\end{equation*}
 If $F_0 > S_0 e^{rT}$, long asset and short forward. If $F_0 < S_0 e^{rT}$, short asset and long forward.\\
 If short sales are not possible, and arbitrage opportunities exist, then if $F_0 > S_0 e^{rT}$, investor may:
 \begin{enumerate}[label=\arabic*.]
@@ -38,9 +39,9 @@ If $F_0 < S_0 e^{rT}$, investor may:
 At time $T$, cash has grown to $S_0 e^{rT}$. Investor repurchase asset for $F_0$, makes profit of $S_0 e^{rT} - F_0$.\\
 
 If the underlying asset provide income with present value of $I$ during life of forward, then
-\begin{equation}
+\begin{equation*}
 F_0 = (S_0 - I)e^{rT} \nonumber
-\end{equation}
+\end{equation*}
 If $F_0 > (S_0 - I)e^{rT}$, investor may long asset and short forward. If $F_0 < (S_0 - I)e^{rT}$, investor may short asset and long forward. If short sales are not possible, investors owning the asset will sell the asset and long forward.\\
 
 If the underlying asset provides a known yield rather than income, with $q$ as the average yield, then the following strategy must generate zero profit to prevent arbitrage:
@@ -51,34 +52,34 @@ If the underlying asset provides a known yield rather than income, with $q$ as t
 \item Close the forward by selling $e^{qT}$ units of the asset at time $T$
 \end{enumerate}
 Hence we have
-\begin{equation}
+\begin{equation*}
 S_0 e^{rT} = e^{qT} F_0 \nonumber 
-\end{equation}
+\end{equation*}
 or
-\begin{equation}
+\begin{equation*}
 F_0 = S_0 e^{(r-q)T} \nonumber
-\end{equation}
+\end{equation*}
 
 When a forward contract is first entered, the value is close to zero. Let $K$ be delivery price negotiated some time ago, with $T$ years delivery date, $r$ is $T$-year risk-free interest rate, $F_0$ is forward price if contract is negotiated today. Let $f$ be value of forward contract today. Then
-\begin{equation}
+\begin{equation*}
 f = (F_0 - K)e^{-rT} \nonumber
-\end{equation}
+\end{equation*}
 
 In the case of stock indices, if $F_0 > S_0 e^{(r-q)T}$, profit can be made by buying stocks underlying the index at spot price and shorting the index futures contract. If $F_0 < S_0 e^{(r-q)T}$, short the stocks and long futures. This is known as \hlt{index arbitrage}.\\
 
 In the case of currencies, let $r_f$ be foreign risk-free rate in a foreign-denominated bond, $S_0$ be spot price of local currency in foreign currency, $F_0$ be forward or future price of local currency in foreign currency. Then the \hlt{interest rate parity} relation persists in the form
-\begin{equation}
+\begin{equation*}
 F_0 = S_0 e^{(r-r_f)T} \nonumber
-\end{equation}
+\end{equation*}
 
 For commodities, let $U$ be present value of storage costs net of income during life of forward. Then
-\begin{equation}
+\begin{equation*}
 F_0 = (S_0 + U)e^{rT} \nonumber
-\end{equation}
+\end{equation*}
 If storage costs are proportional to price of commodity, they can be treated as negative yield. Let $u$ be storage costs per annum as proportion of spot price net of any yield earned on asset. Then
-\begin{equation}
+\begin{equation*}
 F_0 = S_0 e^{(r+u)T} \nonumber
-\end{equation}
+\end{equation*}
 If $F_0 > (S_0 + U)e^{rT}$, then investor may take advantage of arbitrage:
 \begin{enumerate}[label=\arabic*.]
 \setlength{\itemsep}{0pt}
@@ -93,13 +94,13 @@ If $F_0 < (S_0 + U)e^{rT}$, then investor may take advantage of arbitrage:
 \end{enumerate}
 
 Benefits from holding physical assets are \hlt{convenience yields}, such as by crude oil manufacturers. Let $y$ be the convenience yield, then
-\begin{equation}
+\begin{equation*}
 F_0 e^{yT} = (S_0 + U)e^{rT} \nonumber
-\end{equation}
+\end{equation*}
 If storage costs per unit are a constant proportion of spot price, then $y$ is defined such that
-\begin{equation}
+\begin{equation*}
 F_0 e^{yT} = S_0 e^{(r+u)T} \nonumber
-\end{equation}
+\end{equation*}
 Convenience yield reflects market expectation on future availability of the commodity. The greater the possibility that shortages will occur, the higher the commodity yield.
 
 The \hlt{cost of carry} measures storage cost plus interest paid to finance the asset less income earned:
@@ -147,9 +148,9 @@ These lead to \hlt{basis risk}.
 
 \begin{definition}
 The \hlt{basis} in a hedging situation is defined as
-\begin{align}
+\begin{align*}
 \text{Basis} = \text{Spot Price} - \text{Futures Price} \nonumber
-\end{align}
+\end{align*}
 An increase/decrease in basis is a strengthening/weakening of the basis.
 \end{definition}
 
@@ -169,17 +170,18 @@ Cross hedging is often used when futures of the original asset being hedged are 
 \end{definition}
 
 Assuming no daily settlement of futures contracts, hedger seeks a hedge ratio that minimises variance of hedged position value. Let $\Delta S$ be change in spot price, $\Delta F$ change in futures price. Assuming linear relationship,
-\begin{equation}
+\begin{equation*}
 \Delta S = a + b \Delta F + \epsilon	 \nonumber
 \end{equation}
 where $a,b$ are constants, $\epsilon$ is an error term. Suppose hedge ratio is $h$. Change in value of position per unit of exposure to $S$ is:
 \begin{equation}
+\begin{equation*}
 \Delta S - h \Delta F = a + (b-h) \Delta F + \epsilon \nonumber
-\end{equation}
+\end{equation*}
 Standard deviation is minimised by setting $h=b$. Let minimum variance hedge ratio be $h^*$. Then
 \begin{equation}
 h^* = \rho \frac{\sigma_S}{\sigma_F} \nonumber
-\end{equation}
+\end{equation*}
 where $\sigma_S, \sigma_F$ is standard deviation of $\Delta S, \Delta F$ respectively, $\rho$ is coefficient of correlation.
 
 \begin{figure}[H]
@@ -191,19 +193,19 @@ where $\sigma_S, \sigma_F$ is standard deviation of $\Delta S, \Delta F$ respect
 \hlt{Hedge effectiveness} is the proportion of variance eliminated by hedging. This is $R^2$ from regression of $\Delta S$ against $\Delta F$, and equals $\rho^2$. Parameters $\rho$, $\sigma_S$, $\sigma_F$ are estimated from historical data on $\Delta S$ and $\Delta F$.\\
 
 The optimal number of futures to be used in hedging is
-\begin{equation}
+\begin{equation*}
 N^* = \frac{h^* Q_A}{Q_F} \nonumber
-\end{equation}
+\end{equation*}
 where $Q_A$ is size of potion being hedged (units), $Q_F$ is size of one futures contract (units). The futures contract should be on $h^* Q_A$ units of the asset.\\
 
 If daily settlement is used, there are a series of one-day hedges, and thus let $\hat{\sigma}_S, \hat{\sigma}_F$ be standard deviation of percentage one-day changes in spot and future price respectively, $\hat{\rho}$ be correlation between percentage one-day changes in spot and future prices. The optimal one day hedge is then
-\begin{equation}
+\begin{equation*}
 h^* = \hat{\rho}\frac{\hat{\sigma}_S S}{\hat{\sigma}_F F} \nonumber
-\end{equation} 
+\end{equation*}
 and the optimal number of futures to be used is then
-\begin{equation}
+\begin{equation*}
 N^* = \hat{\rho}\frac{\hat{\sigma}_S S Q_A}{\hat{\sigma}_F F Q_F} \nonumber
-\end{equation}
+\end{equation*}
 
 If an interest $r\%$ per annum is earned or paid over the remaining life of the hedge, then the optimal number of futures is $N^* / (1+0.01r)$; this is \hlt{tailing the hedge}.\\
 
@@ -219,9 +221,9 @@ If expiration date of hedge is later than delivery dates of all futures contract
 \subsubsection{Interest Rate Futures}
 
 The \hlt{day count} defines the way in which interest accrues, and is expressed as $X/Y$, where $X$ is the way in which number of days between two dates is calculated, $Y$ is total number of days in reference period.
-\begin{equation}
-\text{interest earned between two dates} = \frac{X}{Y} \times \text{interest earned in reference period} \nonumber
-\end{equation}
+\begin{equation*}
+	ext{interest earned between two dates} = \frac{X}{Y} \times \text{interest earned in reference period} \nonumber
+\end{equation*}
 The three common day count conventions used in United States are:
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -231,13 +233,13 @@ The three common day count conventions used in United States are:
 \end{enumerate}
 
 Prices of money market instruments are quoted using discount rate, which is interest earned as a percentage of final face value. Let $P$ be quoted price, $Y$ be cash price, $n$ remaining life of Treasury bill in calendar days:
-\begin{equation}
+\begin{equation*}
 P = \frac{360}{n}(100 - Y) \nonumber
-\end{equation}
+\end{equation*}
 
 Prices of treasury bonds are quoted in dollars and thirty-seconds of a dollar, i.e., $120$-$05$ or $120\frac{5}{32}$, which is a bond value of $\$120,156.25$. The quoted price is \hlt{clean price}, and the cash paid by purchaser is \hlt{dirty price}:
-\begin{equation}
-\text{cash price} = \text{quoted price} + \text{accrued interest since last coupon date} \nonumber
-\end{equation} 
+\begin{equation*}
+	ext{cash price} = \text{quoted price} + \text{accrued interest since last coupon date} \nonumber
+\end{equation*}
 
 

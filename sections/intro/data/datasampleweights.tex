@@ -54,9 +54,9 @@ Let $\varphi$ be sequence of draws (may include repetitions), where $\{\varphi^{
 Uniqueness of $j$ at time $t$ is $u^{(2)}_{t,j} = 1_{t,j} (1 + \sum_{k \in \varphi^{(1)}} 1_{t,k})^{-1}$, which is the uniqueness from adding alternative $j$'s to existing sequence of draws $\varphi^{(1)}$.\\
 Average uniqueness of $j$ is average $u^{(2)}_{t,j}$ over $j$'s lifespan, $\overline{u}^{(2)}_j = (\sum_{t=1}^T u_{t,j}) (\sum_{t=1}^T 1_{t,j})^{-1}$.\\
 A second draw can be made based on updated probabilities $\{\delta^{(2)}_j\}_{j = 1, \ldots, I}$:
-\begin{equation}
+\begin{equation*}
 \delta^{(2)}_j = \overline{u}^{(2)}_j \left( \sum\limits_{k=1}^I \overline{u}^{(2)}_j \right)^{-1} \nonumber
-\end{equation}
+\end{equation*}
 where $\sum_{j=1}^I \delta^{(2)}_j = 1$.
 Do a second draw, update $\varphi^{(2)}$, and re-evaluate $\{\delta^{(3)}_j \}_{j=1, \ldots, I}$.
 \item Process is repeated until $I$ draws have taken place.
@@ -66,9 +66,9 @@ Process draws samples much close to IID, verified by increase in $I^{-1} \sum_{i
 
 \begin{method} \hlt{Weighting Observations by Uniqueness and Absolute Return}\\
 Let labels be a function for return sign ($\{-1, 1\}$ for standard label, $\{0, 1\}$ for meta-label). The sample weights can be defined in terms of sum of attributed returns over event's life-span, $[t_{i,0}, t_{i,1}]$,
-\begin{equation}
+\begin{equation*}
 \tilde{w}_{i} = \abs{\sum\limits_{t = t_{i,0}}^{t_{i,1}} \frac{r_{t-1, t}}{c_t}}, \ \ \ w_t = \tilde{w}_{i} \left( \sum\limits_{j=1}^I \tilde{w}_j \right)^{-1} \nonumber
-\end{equation}
+\end{equation*}
 where $\sum_{i=1}^I w_i = I$. The method weigh an observation as a function of absolute log returns that can be attributed uniquely to it. Lower returns should be assigned higher weights.
 \end{method}
 

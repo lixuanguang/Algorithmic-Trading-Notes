@@ -12,10 +12,9 @@ At its core, the trading system is organised into three primary modules:
 
 The trading system has three modules:
 \begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Alpha model: predicts the future of the instruments considered for trading, i.e. directional alpha
-\item Risk model: limits amount of exposure to factors that are unlikely to generate returns but could drive losses, i.e. directional exposure limit on an asset class
-\item Transaction cost model: determine if the cost of the trades needed to migrate from current portfolio to new portfolio is desirable to the portfolio construction model.
+	\item Alpha model: predicts the future of the instruments considered for trading, i.e. directional alpha
+	\item Risk model: limits amount of exposure to factors that are unlikely to generate returns but could drive losses, i.e. directional exposure limit on an asset class
+	\item Transaction cost model: determine if the cost of the trades needed to migrate from current portfolio to new portfolio is desirable to the portfolio construction model.
 \end{enumerate}
 These models feed into a portfolio construction model that balances the tradeoffs of profit and risk to determine the best portfolio to hold. The model finds the differences in trades that need to be executed.\\
 The execution model then takes the required trades, and using inputs such as urgency in which the trades need to be executed and dynamics of liquidity in the markets, executes the trades in an efficient and low cost manner.\\

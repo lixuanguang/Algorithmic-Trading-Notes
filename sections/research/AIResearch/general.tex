@@ -1,0 +1,129 @@
+\subsection{Research in AI}
+
+\subsubsection{Reading AI Papers}
+
+\begin{remark} \hlt{Reading Wide}\\
+Navigate through literature reading small amounts of individual research papers, build and improve mental model of research topic.\\
+On \hlt{Papers with Code}, check out top benchmark models, read abstract and take note of key information only. Next step for each model, look into the datasets used by the papers and make notes.\\
+On \hlt{Google Scholar}, check if there is any survey papers (reviews and describe state of problem space with challenges and opportunities) to get up to speed, read each paper, and make notes.\\
+Next find related works (recently published) to understand how researchers in the field traditionally approached the problems, and what the emerging trends are. Related works will populate reading list.
+\end{remark}
+
+\begin{remark} \hlt{Reading Deep}\\
+First pass will not understand more than $10\%$ of research paper, and may require reading of another more fundamental paper. Then read subsequent passes until $70\% \sim 80\%$ understanding.\\
+In introduction, highlight problems and challenges, solutions to challenges, main contributions of the work. Should be able to extract a problem-solution chain from the introduction and proposed solution.\\
+In methods, maintain list of concepts not yet understood. If there is link to paper references, keep track.\\
+In experiments, highlight data setup, main table of results. Keep track of unfamiliar evaluation metrics.
+\end{remark}
+
+\begin{remark} \hlt{Practical AI Research Tools}\\
+Experiment tracking tools include 'Weights \& Biases', 'Tensorboard', 'Neptune'.\\
+If using 'Weights \& Biases', model artefacts can be stored directly on a system of choice.\\
+To train deep learning pipelines by using a config which an modify depending on which dataset, model, or configuration is used, Python's Hydra package may be used.
+\end{remark}
+
+\begin{remark} \hlt{Identifying Gaps in Research Paper}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Identify gaps in research question by comparing with the research hypotheses of compiled papers
+\item Identify gaps in experimental gaps, such as shortcomings in evaluation of methods, the way the comparisons were chosen or implemented, and whether the experimental setup tests the research hypothesis decisively.
+\item Identify gaps through expressed limitations, implicit and explicit. 
+\end{enumerate}
+\end{remark}
+
+\newpage
+
+\subsubsection{Writing AI Papers}
+
+\begin{remark} \hlt{Generating Ideas for Building on Research Paper}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Change task of interest. Can the main ideas be applied to a different modality, a different data type? Can the method or learned model be applied to a different task? Can the outcome of interest be changed?
+\item Change the evaluation strategy. Can it be evaluated on a different dataset or different metric? Explore why something works well/breaks. Make different comparisons.
+\item Change the proposed method. Can training dataset or data elements be changed? Can the pre-training/training strategy be changed? Can the deep learning architecture or problem fomulation be changed?
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Iterating on Research Ideas}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Search for whether idea has been tried. Construct titles for new paper ideas, see if there is Google result.
+\item Read important related works and follow up works.
+\item Geed feedback from domain experts on drafted ideas in written form. Email to authors of the work being built on, share idea and plan, ask their opinion. 
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Global Structure of ML Papers}\\
+ML Papers follow the following pattern (in $6$ to $7$ sections):
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Abstract (answers $5$ to $6$ canonical questions in $100 \sim 250$ words):
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item What is the background and gap?
+\item What is the key desideratum?
+\item What is the proposed solution?
+\item What are its main components?
+\item What are its strengths?
+\item What are the notable results (with tasks, numbers)?
+\end{enumerate}
+\item Introduction (start and end position are nearly identical across papers):
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Context, success of prior approaches
+\item Weaknesses or gaps of prior methods
+\item Desiderata for an improved solution
+\item Proposed method: key components, contributions
+\item High-level experimental overview, positive results
+\end{enumerate}
+\item Related Work/Background (typically $2$ to $3$ subsections), each paragraph conveys:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item High-level mapping of approach categories
+\item Evolution of methods over time
+\item How the proposed method compares to each category
+\item What gaps persist
+\end{enumerate}
+\item Methods (content always includes):
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Overall approach description
+\item Architecture, input/output flow
+\item Loss functions, training objectives
+\item Implementation details
+\item (Sometimes) dataset descriptions or task-specific usage
+\end{enumerate}
+\item Experiments (how results are conveyed. Always structured as such):
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Overall evaluation setup
+\item Dataset description (if not earlier)
+\item Implementation details
+\item Results per task type (tables/figures)
+\item Ablations at the end
+\item References to earlier figures and comparisons to prior models
+\end{enumerate}
+\item Conclusion, Broader Impacts (mirrors abstract but expands):
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Solution, components
+\item Strengths, notable results
+\item Future directions
+\item Limitations and societal considerations
+\item Motivations for follow-up work
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Figure Progression of ML Papers}\\
+ML Papers follow the following pattern for figures:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Method overview diagram (always first)
+\item Lower-level architecture or objective illustration
+\item Comparisons vs. prior models across multiple tasks
+\item Ablation studies
+\item (Optional) qualitative examples, predictions, dataset samples
+\end{enumerate}
+\end{remark}
+

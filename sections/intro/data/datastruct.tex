@@ -4,6 +4,7 @@
 \centering
 \includegraphics[scale=0.55]{figures/intro/standardbars}
 \caption{Average daily frequency of tick, volume, and dollar bars}
+\label{fig:standardbars}
 \end{figure}
 
 \begin{remark} \hlt{Standard BARS}\\
@@ -28,34 +29,34 @@ Method to sample more frequently when new (micro-structural) information arrives
 \setlength{\itemsep}{0pt}
 \item Tick Imbalance Bars: sample bars whenever tick imbalance exceeds expectations. To determine tick index $T$ such that accumulation of signed ticks exceeds a given threshold.\\
 Let $\{(p_t, v_t)\}_{t=1, \ldots, T}$ be sequence of ticks where $p_t$ and $v_t$ is the price and volume associated with tick $t$. Let tick rule define a sequence $\{b_t\}_{t=1, \ldots, T}$ where
-\begin{align}
+\begin{align*}
 b_t = 
 \begin{cases}
 b_{t-1} \ \ \ \text{if } \Delta p_t = 0 \\
 \frac{\abs{\Delta p_t}}{\Delta p_t} \ \ \text{if } \Delta p_t \neq 0
 \end{cases} \nonumber
-\end{align}
+\end{align*}
 The tick imbalance at time $T$ is defined as 
-\begin{equation}
+\begin{equation*}
 \theta_T = \sum\limits_{t=1}^T b_t \nonumber
-\end{equation}
+\end{equation*}
 Compute expected value of $\theta_T$ at beginning of the bar,
-\begin{equation}
+\begin{equation*}
 E_0[\theta_T] = E_0 [T](P[b_t = 1] - P[b_t = -1]) = E_0 [T](2P[b_t = 1] - 1) \nonumber
-\end{equation}
+\end{equation*}
 where $E_0[T]$ is expected size of tick bar, $P[b_t = 1]$ and $P[b_t = -1]$ is unconditional probability that a tick is classified as a buy and sell. In practice, $E_0[T]$ and $(2P[b_t = 1] - 1)$ may be estimated as an exponentially weighted moving average of $T$ and $b_t$ values from prior bars.\\
 Define the tick imbalance bar (TIB) as a $T^{*}$ contiguous subset of ticks such that
-\begin{equation}
+\begin{equation*}
 T^{*} = \arg \min_T \{ \abs{\theta_T} \geq E_0 [T] \ \vert \ 2 P[b_t = 1] - 1 \} \nonumber
-\end{equation}
+\end{equation*}
 where the size of expected imbalance is implied by $\abs{2 P[b_t = 1] - 1}$.\\
 When $\theta_T$ is more imbalanced than expected, a low $T$ will satisfy the conditions.\\
 TIBs are produced more frequently under presence of informed trading (asymmetric information that triggers one-side trading). TIBs are buckets of trades containing equal amounts of information.
 \item Volume/Dollar Imbalance Bars: sample bars when volume or dollar imbalances diverge from expectations.\\
 First, define imbalance at time $T$ as
-\begin{equation}
+\begin{equation*}
 \theta_T = \sum\limits_{t=1}^T b_t v_t \nonumber
-\end{equation}
+\end{equation*}
 where $v_t$ may represent ether number of securities traded (VIB) or dollar amount traded (DIB).\\
 The expected value of $\theta_T$ at the beginning of the bar is then computed as
 \begin{align}
@@ -64,43 +65,43 @@ E_0[\theta_T] &= E_0 \left[ \sum\limits_{t \vert b_t = 1}^T v_t \right] - E_0 \l
 &= E_0[T] (v^+ - v^-) \nonumber
 \end{align}
 where the initial expectation of $v_t$ is decomposed into component contributed by buys and sells. Then
-\begin{equation}
+\begin{equation*}
 E_0[\theta_T] = E_0[T] (2v^+ - E_0 [v_t]) \nonumber
-\end{equation}
+\end{equation*}
 In practice, $E_0[T]$ and $(2v^+ - E_0 [v_t])$ may be estimated as exponentially weighted moving average of $T$ and $b_t v_t$ values from prior bars. Next, define VIB or DIB as a $T^*$-contiguous subset of ticks such that
-\begin{equation}
+\begin{equation*}
 T^* = \arg \min_T \{ \abs{\theta_T} \geq E_0[T] \ \vert \ 2v^+ - E_0[v_t] \} \nonumber
-\end{equation}
+\end{equation*}
 where the size of expected imbalance is implied by $\abs{2v^+ - E_0[v_t]}$.\\
 When $\theta_T$ is more imbalanced then expected, a low $T$ will satisfy the conditions.\\
 VIB and DIB addresses concerns on tick fragmentation and outliers, and also addresses the issues of corporate actions, as the bar size is adjusted dynamically.
 \item Tick Runs Bars: sample bars when the sequence of buys in overall volume diverges from expectations. For the case when large traders sweep order book, use iceberg orders, or slice parent orders into multiple children, all leaving a trace of runs in the $\{b_t\}_{t = 1, \ldots, T}$ sequence. Define length of current run as
-\begin{equation}
+\begin{equation*}
 \theta_T = \max \left\{ \sum\limits_{t \vert b_t = 1}^T b_t - \sum\limits_{t \vert b_t = -1}^T b_t  \right\} \nonumber
-\end{equation}
+\end{equation*}
 The expected value of $\theta_T$ at beginning of bar is computed as
-\begin{equation}
+\begin{equation*}
 E_0[\theta_T] = E_0[T] \max \{P[b_t = 1], 1 - P[b_t = 1] \} \nonumber
-\end{equation}
+\end{equation*}
 In practice, $E_0[T]$ and $P[b_t = 1]$ may be estimated as exponentially weighted moving average of $T$ and proportion of buy ticks from prior bars. Next, define TRB as $T^*$-contiguous subset of ticks such that
-\begin{equation}
+\begin{equation*}
 T^* = \arg \min_T \{ \theta_T \geq E_0[T] \max \{P[b_t = 1], 1 - P[b_t = 1] \} \} \nonumber
-\end{equation}
+\end{equation*}
 where the expected count of ticks from runs is implied by $\max \{P[b_t = 1], 1 - P[b_t = 1] \}$.\\
 When $\theta_T$ exhibits more runs than expected, a low $T$ will satisfy these conditions.\\
 Instead of measuring length of longest sequence, count number of ticks of each side without offsetting.
 \item Volume/Dollar Runs Bars: sample bars when volume or dollars traded by one side exceed expectation for a bar. First, define volume or dollars associated with a run as
-\begin{equation}
+\begin{equation*}
 \theta_T = \max \left\{ \sum\limits_{t \vert b_t = 1}^T b_t v_t - \sum\limits_{t \vert b_t = -1}^T b_t v_t \right\} \nonumber
-\end{equation}
+\end{equation*}
 where $v_t$ may either represent volume (VRB) or dollar amount exchanged (DRB). The expected value of $\theta_T$ at beginning of the bar is then
 \begin{align}
 E_0 [\theta_T] = E_0[T] \max \{ P[b_t = 1]E_0[v_t \vert b_t = 1], (1 - P[b_t = 1]) E_0[v_t \vert b_t = -1] \} \nonumber
 \end{align}
 In practice, $E_0[T], P[b_t = 1], E_0[v_t \vert b_t = 1], E_0[v_t \vert b_t = -1]$ may be estimated as exponentially weighted moving average of $T$, proportion of buy ticks, buy volumes, and sell volumes from prior bars. Next, define a volume runs bar (VR) as $T^*$-contiguous subset of ticks such that
-\begin{equation}
+\begin{equation*}
 T^* = \arg \min_T \{ \theta_T \geq E_0[T] \max \{P[b_t = 1]E_0[v_t \vert b_t = 1], (1 - P[b_t = 1]) E_0[v_t \vert b_t = -1] \} \} \nonumber
-\end{equation}
+\end{equation*}
 expected volume from runs is implied by $\max \{P[b_t = 1]E_0[v_t \vert b_t = 1], (1 - P[b_t = 1]) E_0[v_t \vert b_t = -1] \} \}$.\\
 When $\theta_T$ exhibits more runs than expected, volume from runs is greater than expected, a low $T$ will satisfy these conditions.
 \end{enumerate}
@@ -141,43 +142,43 @@ Let $\tau_i$ be transaction cost associated with trading $\$1$ of the instrument
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item Rebalance Costs: variable cost $\{c_t\}$ associated with allocation rebalance is
-\begin{equation}
+\begin{equation*}
 c_t = \sum\limits_{i=1}^I (\abs{h_{i, t-1}}p_{i,t} + \abs{h_{i,t}} o_{i, t+1}) \varphi_{i,t} \tau_{i} \ \ \ \forall t \in B \nonumber
-\end{equation}
+\end{equation*}
 Note $c_t$ is not embedded in $K_t$, as shorting will generate fictitious proceeds when allocation is rebalanced.\\
 In code, $\{c_t\}$ is treated as a (negative) dividend.
 \item Bid-Ask Spread: the cost $\{ \tilde{c}_t \}$ of buying or selling one unit of this ETF,
-\begin{equation}
-\tilde{c}_t = \sum\limits_{i=1}^I \abs{h_{i, t-1}}p_{i, t} \varphi_{i,t} \tau_i \nonumber
-\end{equation}
+\begin{equation*}
+	ilde{c}_t = \sum\limits_{i=1}^I \abs{h_{i, t-1}}p_{i, t} \varphi_{i,t} \tau_i \nonumber
+\end{equation*}
 When a unit is bought or sold, strategy must charge this cost $\tilde{c}_t$.
 \item Volume: volume traded $\{v_t \}$ is determined by least active member in the basket. Let $v_{i,t}$ be volume traded by instrument $i$ over bar $t$. The number of tradable basket units is
-\begin{equation}
+\begin{equation*}
 v_t = \min_i \left\{ \frac{v_{i,t}}{\abs{h_{i, t-1}}} \right\} \nonumber
-\end{equation}
+\end{equation*}
 \end{enumerate}
 Transaction costs functions may not be linear, and can be simulated by the strategy.
 \end{method}
 
 \begin{method} \hlt{ETF Trick: Computation of Allocation Vector with PCA}\\
 Consider an IID multivariate Gaussian process with means vector $\mu$ of size $N \times 1$, and covariance matrix $V$ of size $N \times N$. First, perform spectral decomposition $VW = W \Lambda$, where columns in $W$ are reordered so that elements of $\Lambda$ diagonal are sorted in descending order. Second, given allocations vector $\omega$, portfolio risk is
-\begin{equation}
+\begin{equation*}
 \sigma^2 = \omega' V \omega = \omega' W \Lambda W' \omega = \beta' \Lambda \beta = (\Lambda^{1/2} \beta)' (\Lambda^{1/2} \beta)' \nonumber
-\end{equation}
+\end{equation*}
  where $\beta$ is projection of $\omega$ on orthogonal basis. Third, $\Lambda$ is a diagonal matrix, thus
-\begin{equation}
+\begin{equation*}
 \sigma^2 = \sum\limits_{n=1}^N \beta^2_n \Lambda_{n,n} \nonumber
-\end{equation}
+\end{equation*}
 The risk attributed to the $n$th component is
-\begin{equation}
+\begin{equation*}
 R_n = \beta^2_n \Lambda_{n,n}\sigma^{-2} = [W' n]^2_n \Lambda_{n,n} \sigma^{-2} \nonumber
-\end{equation}
+\end{equation*}
 with $R' 1_N = 1$, and $1_N$ is a vector of $N$ ones.\\
 Note $\{R_n\}_{n=1, \ldots, N}$ is distribution of risks across orthogonal components.\\
 Next, compute vector $\omega$ which delivers user-defined risk distribution $R$. Note from earlier,
-\begin{equation}
+\begin{equation*}
 \beta = \left\{ \sigma \sqrt{\frac{R_n}{\Lambda_{n,n}}} \right\}_{n = 1, \ldots, N} \nonumber
-\end{equation}
+\end{equation*}
 which represents allocation in new (orthogonal basis).\\
 The allocation in old basis is $\omega = W \beta$. Rescaling $\omega$ re-scales $\sigma$, hence keeping risk distribution constant.
 \end{method}
@@ -208,16 +209,16 @@ Note both samples do not necessarily contain subset of most relevant observation
 Bets are often placed after some event takes place, hence to let ML algorithm learn whether there is an accurate prediction function under these circumstances, CUSUM filter could be used.\\
 This is a quality-control method, to detect shift in mean value of measured quantity away from a target value.\\
 Let $\{y_t\}_{t=1, \ldots, T}$ be IID observations arising from a locally stationary process. The cumulative sums are
-\begin{equation}
+\begin{equation*}
 S_t = \max \{0, S_{t-1} + y_t - E_{t-1} [y_t] \}, \ \ \ S_0 = 0 \nonumber
-\end{equation}
+\end{equation*}
 An action will be recommended at the first $t$ satisfying $S_t \geq h$ for some threshold $h$ (filter size).\\
 Note $S_t = 0$ whenever $y_t = E_{t-1}[y_t] - S_{t-1}$, The zero floor means some downward deviations will be skipped.\\
 The filter is set up to identify a sequence of upside divergences from any reset level zero.\\
 The threshold is activated when
-\begin{equation}
+\begin{equation*}
 S_t \geq h \Leftrightarrow \exists \tau \in [1, t] \ \vert \ \sum\limits_{i=\tau}^t (y_i - E_{i-1}[y_t]) \geq h \nonumber
-\end{equation}
+\end{equation*}
 This concept of run-ups can be extended to include run-downs, giving symmetric CUSUM filter.
 \begin{align}
 S^+_t &= \max \{0, S^+_{t-1} + y_t - E_{t-1}[y_t] \}, \ \ \ S^+_0 = 0 \nonumber \\

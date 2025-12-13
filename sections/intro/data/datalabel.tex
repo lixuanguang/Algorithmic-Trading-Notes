@@ -2,7 +2,7 @@
 
 \begin{method} \hlt{Labelling with Fixed-Time Horizon Method}\\
 Given features matrix $X$ with $I$ rows, $\{X_i\}_{i = 1, \ldots, I}$ drawn from some bards with index $t = 1, \ldots, T$, where $I \leq T$, let an observation $X_i$ be assigned a label $y_i \in \{-1, 0, 1\}$,
-\begin{align}
+\begin{align*}
 y_i &=
 \begin{cases}
 -1 \ \ \ \text{if } r_{t_{i,0}, t_{i,0} + h} < -\tau \\
@@ -10,7 +10,7 @@ y_i &=
 1 \ \ \ \ \ \ \text{if } r_{t_{i,0}, t_{i,0} + h} > \tau
 \end{cases} \nonumber \\
 r_{t_{i,0}, t_{i,0} + h} &= \frac{p_{t_{i,0}+h}}{p_{t_{i,0}}} - 1 \nonumber
-\end{align}
+\end{align*}
 where $\tau$ is a pre-defined constant threshold, $t_{i,0}$ is index of bar immediately after $X_i$ takes place, $t_{i,0} + h$ is index of $h$-th bar after $t_{i,0}$, and $r_{t_{i,0}, t_{i,0} + h}$ is price return over bar horizon $h$.
 \end{method}
 
@@ -61,6 +61,7 @@ The two illogical configurations are:
 \centering
 \scalebox{0.75}{\input{figures/intro/metalabel.tikz}}
 \caption{Meta-Labelling Process}
+\label{fig:metalabel}
 \end{figure}
 
 \begin{method} \hlt{Meta-Labelling}\\

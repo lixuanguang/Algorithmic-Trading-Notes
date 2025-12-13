@@ -109,8 +109,10 @@ Locally connected layers are useful when it is known that each feature should be
 
 \begin{remark} \hlt{Tiled Convolution}\\
 Compromise between convolutional layer and locally connected layer. A set of kernels will be rotated through space. Immediate neighbouring locations will have different filters, but memory requirements for storing the parameters will increase only by a factor of the size of this set of kernels.\\
-Let $k$ be a $6$-D tensor, where two of the dimensions correspond to different locations in output ma. Output locations cycle through a set of $t$ different choices of kernel stack in each direction.
+Let $k$ be a $6$-D tensor, where two of the dimensions correspond to different locations in output matrix. Output locations cycle through a set of $t$ different choices of kernel stack in each direction.
 \begin{align}
 Z_{i,j,k} = \sum\limits_{l,m,n} \mathcal{V}_{l, j+m-1, k+n-1} \mathcal{K}_{i,l,m,n, j \text{ mod } t + 1, k \text{ mod } t + 1} \nonumber
 \end{align}  
 \end{remark}
+
+

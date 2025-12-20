@@ -2,46 +2,117 @@
 
 \subsubsection{Building Blocks of Global Macro}
 
-\begin{remark} \hlt{Macro Strategy Product Groups}
+\begin{remark} \hlt{Macro Strategy Product Groups}\\
+The four core product groups in global macro are:
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Fixed Income (Policy and Growth Sensor): encodes growth expectations, inflation expectations, central bank credibility. Yield curves summarise the entire macro narrative; Steepening means growth/reflation; Flattening or inversion means slowdown/recession.\\
-Fixed income tells what the market thinks will happen before it happens
-\item Foreign Exchange (Adjustment Mechanism): FX reflects relative, not absolute, macro conditions. Sensitive to rate differentials, capital flows, balance of payments, risk-on/risk-off regimes.\\
-FX absorbs and redistributes macro shocks across countries.
-\item Equities (Growth Expression): equities are long growth, long liquidity, short uncertainty. Equity indices aggregate earnings expectations, discount rates, risk appetite.\\
-Volatility (VIX) is a second-order macro signal, not just an equity signal.\\
-Equities express the confidence (or fear) embedded in the macro outlook.
-\item Commodities (Inflation and Real-Economy Link): driven by physical supply and demand, inventories, geopolitics. Highly sensitive to growth cycles, inflation shocks, currency moves (especially USD).\\
-Commodities anchor macro views in real economic constraints.
+\item \textbf{Fixed Income} (FI) (Policy and Growth Sensor): encodes growth expectations, inflation expectations, central bank credibility. Yield curves summarise the entire macro narrative; steepening means growth/reflation; flattening or inversion means slowdown/recession. Fixed income tells what the market thinks will happen before it happens.
+\item \textbf{Foreign Exchange} (FX) (Adjustment Mechanism): FX reflects relative, not absolute, macro conditions. Sensitive to rate differentials, capital flows, balance of payments, risk-on/risk-off regimes. FX absorbs and redistributes macro shocks across countries.
+\item \textbf{Equities} (Growth Expression): equities are long growth, long liquidity, short uncertainty. Equity indices aggregate earnings expectations, discount rates, risk appetite. Volatility (VIX) is a second-order macro signal, not just an equity signal. Equities express the confidence (or fear) embedded in the macro outlook.
+\item \textbf{Commodities} (Inflation and Real-Economy Link): driven by physical supply and demand, inventories, geopolitics. Highly sensitive to growth cycles, inflation shocks, currency moves (especially USD). Commodities anchor macro views in real economic constraints.
 \end{enumerate}
+These are the most liquid markets globally, which allows macro strategies to scale to large AUM while maintaining execution quality.
 \end{remark}
 
 \begin{remark} \hlt{Relationship Between Assets}\\
-These relationships are regime-dependent, not permanent laws.
+These relationships are regime-dependent, not permanent laws:
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Growth Shocks: rates rise, equities rally, cyclicals outperform, commodities rise. FX favours growth-linked currencies (AUD, CAD, EM FX etc.).
-\item Recession Shocks: rates fall, curves flatten/invert, equities sell off, USD strengthens, commodities weaken (except gold)
-\item Inflation Shocks: nominal rates up, real rates determine equity impact. Commodities outperform. FX punishes low-credibility central banks
+\item \textbf{Growth Shocks}: rates rise, equities rally, cyclicals outperform, commodities rise. FX favours growth-linked currencies (AUD, CAD, EM FX).
+\item \textbf{Recession Shocks}: rates fall, curves flatten/invert, equities sell off, USD strengthens (flight to safety), commodities weaken (except gold).
+\item \textbf{Inflation Shocks}: nominal rates up, real rates determine equity impact. Commodities outperform. FX punishes low-credibility central banks.
+\item \textbf{Liquidity Shocks}: USD strengthens sharply, credit spreads widen, correlations spike toward 1, volatility explodes. Cross-currency basis blows out.
+\end{enumerate}
+A single macro thesis should have expressions across multiple asset classes, each with different risk profiles and convexity characteristics.
+\end{remark}
+
+\begin{remark} \hlt{Asset Correlation Dynamics}\\
+Asset correlations change under stress. Diversification fails when needed most, where assets that appear uncorrelated in calm periods may collapse together in crises.\\
+Macro traders profit when they anticipate correlation breakdowns and position for nonlinear regime shifts. This is why macro portfolios use convex instruments (options), size conservatively, and focus on liquidity.\\
+Traders must know what assets they are trading in aggregate. If entire portfolio has assets with high correlation to one another, they can be stopped out of all positions more easily if the market turns against them.
+\end{remark}
+
+\begin{remark} \hlt{Position Sizing Framework}\\
+Position sizing is arguably more important than knowing what to buy or sell. The first rule of investing is to preserve capital and avoid loss.\\
+Position sizing aims to adjust each position for volatility. This normalizes all positions such that losses are more predictable and have the same probability of occurring:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Calculate $N$ = $20$-day exponential moving average of True Range
+\item True Range = max(High $-$ Low, High $-$ Previous Close, Previous Close $-$ Low)
+\item Use $2N$ for stop-loss calculation (two standard deviations) to avoid being stopped out by normal volatility
+\item With $2N$, there is approximately 2\% chance of being stopped out on any given day (vs.\ $16\%$ with $1N$)
+\end{enumerate}
+This methodology, developed by the Turtle Traders, allows traders to take positions in a broad range of markets while monitoring risk consistently.
+\end{remark}
+
+\begin{remark} \hlt{Risk/Reward Discipline}\\
+Given human error and transaction costs, traders can only hope to be right about 50\% of the time. Having good risk/reward on each trade will make or break long-term success.\\
+As a baseline, always strive for a 1:3 risk-to-reward ratio or higher:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item For every trade risking 25 basis points, expect to make at least 75 basis points
+\item Set targets before the trade is executed to avoid biases of irrational human decision making
+\item Log reasons for each trade in a trade journal
+\item If original thesis no longer holds true, take trade off, but do not create excuses for taking trades off early
 \end{enumerate}
 \end{remark}
 
-\begin{remark} \hlt{Asset Correlation Relationships}\\
-Asset correlations change under stress. Diversification fails when you need it most. Assets that appear uncorrelated in calm periods may collapse together in crises.\\
-Macro traders profit when they anticipate correlation breakdowns, and position for nonlinear regime shifts.\\
-This is why macro portfolios use convex instruments, size conservatively, focus on liquidity.
+\begin{remark} \hlt{Gap Risk}\\
+Gap risk is one of the biggest risks when sizing positions. Gap risk occurs when prices change without any trading in between (e.g., overnight, over weekends). This risk is especially acute in:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item EM currencies and assets (less liquid, more event-driven)
+\item Positions held over weekends or holidays
+\item Periods of elevated geopolitical risk
+\item Earnings/data release windows
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Risk Utilization}\\
+Risk-taking is nonlinear. Even with $50\%$ conviction, should not run $50\%$ of risk utilisation.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Base case: set a maximum VaR limit (e.g., $5\%$ daily VaR at $95\%$ confidence)
+\item If up $5\% $ on the year, allow VaR limit to increase to $6\%$ 
+\item If down $2.5\%$ on the year, decrease VaR limit to $4\%$
+\item At the start of each new year, reset to $0\%$ return regardless of prior year performance
+\end{enumerate}
+The intention is to create steady returns while preserving capital and avoiding blow-up risk.
+\end{remark}
+
+\begin{remark} \hlt{Stress Testing}\\
+Stress testing aims to go beyond VaR to find potential worst-case scenarios:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Run historical back-test on P\&L for previous $500$ trading days ($\approx 2$ years)
+\item Sort from best to worst days; examine the average of the $5$ worst days (worst $1\%$)
+\item In periods of low volatility, also test against extreme historical events: October $1987$ crash, $1998$ LTCM/Russian default, $2008$ financial crisis, $2011$ Japan earthquake, $2015$ CNY devaluation, $2020$ COVID crash
+\end{enumerate}
+Knowing maximum loss outside of VaR helps traders understand exposure to tail events.
+\end{remark}
+
+\begin{remark} \hlt{Performance Metrics}\\
+Key metrics for evaluating macro trading performance:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \textbf{Sharpe Ratio}: $\frac{E[R] - R_f}{\sigma}$ --- risk-adjusted return; higher is better. Assumes normal distribution.
+\item \textbf{Sortino Ratio}: Sharpe with only downside volatility, differentiating between good and bad volatility.
+\item \textbf{Maximum Drawdown}: peak-to-trough decline; critical for understanding worst-case capital loss.
+\item \textbf{Value at Risk (VaR)}: $95\%$ or $99\%$ daily VaR (expected loss exceeded on $1$ in $20$ or $100$ days).
+\end{enumerate}
+When evaluating strategies, test Sharpe ratios rather than raw returns. Break down P\&L by asset class, duration, and conviction level to identify strengths and weaknesses.
 \end{remark}
 
 \begin{remark} \hlt{Macro View Thesis}\\
-A macro view expressed in only one asset class is incomplete.\\
-A single macro thesis should have multiple expressions, each with different risk profiles, for example
+A macro view expressed in only one asset class is incomplete. A single macro thesis should have multiple expressions, each with different risk profiles:
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Growth view: rates, equities, FX
-\item Inflation view: commodities, breakevens, FX
-\item Crisis view: bonds, USD, volatility
+\item \textbf{Growth view}: rates (duration), equities (beta), FX (pro-cyclical currencies), commodities (cyclicals)
+\item \textbf{Inflation view}: commodities (energy, agriculture), breakevens, FX (commodity currencies), TIPS
+\item \textbf{Crisis/Deflation view}: bonds (duration), USD/JPY/CHF (havens), volatility (VIX, swaptions), gold
+\item \textbf{Policy divergence view}: FX (rate differentials), yield curve spreads, relative equity indices
 \end{enumerate}
+Having multiple expressions allows for confirmation across asset classes and provides natural hedging if one leg underperforms.
 \end{remark}
 
 \subsubsection{Foreign Exchange in Global Macro}

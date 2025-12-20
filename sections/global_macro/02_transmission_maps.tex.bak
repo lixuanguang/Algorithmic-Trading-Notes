@@ -54,44 +54,21 @@ FX plays three special roles simultaneously:
 \item Macro expression instrument
 \end{enumerate}
 
-\begin{remark} \hlt{FX Market Structure}\\
-The FX market is the world's largest and most liquid market, and operates 24 hours per day, 5.5 days per week across global financial centers (London, New York, Tokyo, Singapore, Hong Kong).\\
-Key participants include: central banks (intervention, reserve management), commercial banks (market-making, proprietary trading), corporations (hedging trade flows), asset managers (currency overlay, alpha generation), hedge funds (macro speculation, carry trades), and retail traders.\\
-The market is predominantly OTC, with spot, forwards, and swaps as the main instruments. FX futures trade on exchanges (CME) but represent a small fraction of total volume.
-\end{remark}
-
 \begin{remark} \hlt{Role of the US Dollar}\\
-Global macro is de facto USD-centric. USD is the global reserve currency, most commodities are USD-priced, global funding markets clear in USD, and cross-border leverage is USD-denominated.\\
-The USD is involved in approximately 85\% of all FX transactions globally. Many ``local'' macro trades are actually USD liquidity trades in disguise.\\
-Stress often appears first in US Dollar Index (DXY), cross-currency basis, EM FX before local assets.\\
-The DXY Index measures USD against a basket of six major currencies: EUR (57.6\%), JPY (13.6\%), GBP (11.9\%), CAD (9.1\%), SEK (4.2\%), CHF (3.6\%). The DXY is not trade-weighted and over-represents EUR.
-\end{remark}
-
-\begin{remark} \hlt{Special Drawing Rights (SDRs)}\\
-SDRs are international reserve assets created by the IMF to supplement member countries' official reserves. The SDR basket is reviewed every five years. SDRs serve as a unit of account for IMF transactions and provide insight into official reserve diversification trends.
+Global macro is de facto USD-centric, as USD is the global reserve currency, most commodities are USD-priced, global funding markets clear in USD, and cross-border leverage is USD-denominated.\\
+Many “local” macro trades are actually USD liquidity trades in disguise.\\
+Stress often appears first in US Dollar Index (DXY), cross-currency basis, EM FX before local assets.
 \end{remark}
 
 \begin{remark} \hlt{Currency Regimes}\\
 Currency regimes matter more than models. FX does not behave uniformly. Regime dominates signal.
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item \textbf{Free-floating}: price discovery happens in FX
-\item \textbf{Managed/pegged}: pressure builds elsewhere such as in rates, reserves, capital controls
-\item \textbf{Hard pegs/Currency boards}: FX looks stable until it breaks violently
+\item Free-floating regimes: price discovery happens in FX
+\item Managed/pegged regimes: pressure builds elsewhere (rates, reserves, capital controls)
+\item Hard pegs: FX looks stable until it breaks violently
 \end{enumerate}
-FX valuation only works within regime constraints. Ignore the regime and ``cheap'' can stay cheap forever.
-\end{remark}
-
-\begin{remark} \hlt{Central Bank Intervention}\\
-Central banks intervene in FX markets for multiple objectives:
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Defend a peg or managed float band
-\item Smooth excessive volatility
-\item Counter speculative attacks
-\item Accumulate or deploy reserves
-\end{enumerate}
-Intervention effectiveness depends on: reserve adequacy, policy credibility, coordination with monetary policy, and market liquidity conditions. Intervention against fundamental pressures typically fails. Watch for reserve depletion as a leading indicator of forced adjustment.
+FX valuation only works within regime constraints. Ignore the regime and “cheap” can stay cheap forever.
 \end{remark}
 
 \begin{remark} \hlt{Valuation Techniques}
@@ -100,39 +77,37 @@ Intervention effectiveness depends on: reserve adequacy, policy credibility, coo
 \item Market Implied and Risk-Appetite Signals
 \begin{enumerate}[label=\arabic*.]
 \setlength{\itemsep}{0pt}
-\item Equity Index Price Performance: strong local equities (vs peers) attract inflows and support currency; sharp equity underperformance foreshadows FX weakness via risk-off deleveraging and foreign selling.
-\item Credit/Sovereign Risk: widening sovereign spreads/CDS signals default/policy credibility/funding stress, weakening FX or raising devaluation risk premia. Also a regime detector for EM FX.
+\item Equity Index Price Performance: strong local equities (vs peers) attract inflows and support currency; sharp equity underperformance foreshadow FX weakness via risk-off deleveraging and foreign selling.
+\item Credit/Sovereign Risk: widening sovereign spreads/CDS is a direct “default/policy credibility/funding stress” signal weaken FX or raise devaluation risk premia). Also a regime detector for EM FX.
 \item Sentiment/Positioning: call-put skew on three-month risk reversals. Acts as a multiplier. Can create overshoots/undershoots around fair value in crowded carry or crisis episodes.
 \end{enumerate}
 \item Trade and Competitiveness Fundamentals
 \begin{enumerate}[label=\arabic*.]
 \setlength{\itemsep}{0pt}
-\item Trade Balance/External Account: structurally strong trade position often supports FX; persistent deficits can make the currency reliant on financing.
-\item Trade-Weighted Index (TWI): reflects currency's effective competitiveness against trading partners---the currency basket that matters for the real economy.
-\item Economic Activity: strong activity can support FX via higher expected returns and inflows, but it can also worsen the trade balance.
-\item Export Partner Growth: mapping who buys exports and whether those buyers are expanding/contracting. Export partner growth leads exporter's FX through expected trade receipts.
+\item Trade Balance/External Account: structurally strong trade position often supports FX; persistent deficits can make the currency reliant on financing
+\item Trade-Weighted Index (TWI): reflects currency’s effective competitiveness against trading partners currency basket that matters for the real economy.
+\item Economic Activity: strong activity can support FX via higher expected returns and inflows, but it can also worsen the trade balance
+\item Export Partner Growth and Direct Exports: mapping who buys exports and whether those buyers are expanding/contracting. Export partner growth leads exporter’s FX through expected trade receipts.
 \end{enumerate}
-\item Macro Sustainability Indicators
+\item Macro Sustainability/Macro Indicators: 
 \begin{enumerate}[label=\arabic*.]
 \setlength{\itemsep}{0pt}
 \item Debt-to-GDP: high public debt with FX liabilities or weak domestic savings can increase risk premia and currency vulnerability, as it tightens the policy constraint set (inflation vs austerity vs default).
-\item Current Account Balance: persistent deficits require capital inflows; sudden stops trigger sharp FX adjustment.
-\item FX Reserves: adequacy (months of import cover, short-term debt coverage) determines policy space.
 \end{enumerate}
 \item Long-Term Valuation Anchors
 \begin{enumerate}[label=\arabic*.]
 \setlength{\itemsep}{0pt}
-\item Purchasing Power Parity (PPP): the idea that exchange rates should adjust so that identical goods cost the same in different countries. In practice, PPP convergence can take years or decades.
-\item GDP Per Capita: structural development/productivity proxy. Richer, higher productivity economies tend to sustain stronger real exchange rates over time (Balassa-Samuelson effect).
+\item Absolute and Relative PPP: can take up to several years for consumer prices to converge.
+\item GDP Per Capita: structural development/productivity proxy. Richer, higher productivity economies tend to sustain stronger real exchange rates over time.
 \end{enumerate}
 \item Carry Indicators
 \begin{enumerate}[label=\arabic*.]
 \setlength{\itemsep}{0pt}
-\item OIS Differential: compares respective policy rates of two countries. Carry is the interest rate differential between two currencies.
-\item LIBOR/SOFR Differential: reflects unsecured interbank rates. Can be decomposed into risk-free rate + credit spread component. Using relative spreads gives a sense of direction; interest rate differential drives demand for a currency.
-\item Risk-Adjusted Carry: adjusts carry for volatility. Outperforms standard carry trades and is useful in cross-currency analysis:
+\item OIS Differential: compares respective policy rates of two countries. If exchange rate is fixed, to hold higher-yielding currency. Carry is interest rate differential between two or a basket of currencies.
+\item LIBOR Differential: LIBOR is an unsecured borrowing rate that banks charge each other. LIBOR can be decomposed as $\text{LIBOR} = \text{Fed Funds} + (\text{LIBOR} - \text{Fed Funds})$, where Fed Funds is the risk-free component and $(\text{LIBOR} - \text{Fed Funds})$ is the credit (risk) component. Using relative spreads gives a sense of direction; interest rate differential drives demand for a currency.
+\item Risk-Adjusted Carry: adjusts carry for volatility. Outperforms standard carry trades and is useful in cross-currency analysis. The carry-to-risk ratio is calculated as
 \begin{equation*}
-\text{Carry-to-Risk Ratio} = \frac{\text{3M Carry (Rate Differential)}}{\text{30D Realized Volatility}}
+\text{Carry-to-Risk Ratio} = \frac{\text{3M Carry (LIBOR Differential)}}{\text{30D Realized Volatility}}
 \end{equation*}
 Within high-yielding currency pairs, one would ideally want the highest carry-to-risk ratio. Volatility and carry components are always in flux, so adjustments should be made frequently.
 \end{enumerate}
@@ -140,8 +115,9 @@ Within high-yielding currency pairs, one would ideally want the highest carry-to
 \end{remark}
 
 \begin{remark} \hlt{Carry Trade Mechanics}\\
-Carry strategies are typically executed by borrowing in lower-yielding currencies and buying higher-yielding currencies. The carry trade is a crowded trade; in large risk-off markets, the strategy suffers significant losses as positions unwind simultaneously.\\
-Carry is the return earned on holding a currency, assuming the exchange rate is held constant. In practice, exchange rate moves often dominate carry returns. Historically, carry strategies exhibit positive returns on average but with significant negative skewness (small gains, occasional large losses).
+Carry strategies are typically executed by borrowing in lower-yielding currencies (JPY, USD, EUR) and buying higher-yielding currencies (AUD, NZD, BRL, TRY, ZAR, and other EM currencies).\\
+The carry trade is a crowded trade, meaning in large risk-off markets (such as 2008), the strategy suffers significant losses as positions unwind simultaneously.\\
+Carry is the return one makes on holding a currency, assuming the exchange rate is held constant. In practice, exchange rate moves often dominate carry returns.
 \end{remark}
 
 \begin{remark} \hlt{Carry Trade Risk Factors}\\
@@ -152,11 +128,9 @@ Key risks to carry trades include:
 \item Gap Risk: EM currencies can gap significantly on weekends or during crises, bypassing stop-losses.
 \item Regime Shifts: central bank policy changes can rapidly alter rate differentials.
 \item Correlation Breakdown: in stress, all carry currencies tend to sell off together against funding currencies.
-\item Liquidity Risk: EM FX can become illiquid precisely when exits are needed most.
 \end{enumerate}
 Finding the carry-to-risk ratio is useful, as is comparing all currency pairs on a relative basis. Measuring the standard error of the sample and finding the most attractive pairs helps in mean-reverting carry strategies.
 \end{remark}
-
 
 \subsubsection{Equities in Global Macro}
 

@@ -1,0 +1,256 @@
+\subsection{Transmission and Cross-Asset Mapping}
+
+\subsubsection{Building Blocks of Global Macro}
+
+\begin{remark} \hlt{Macro Strategy Product Groups}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Fixed Income (Policy and Growth Sensor): encodes growth expectations, inflation expectations, central bank credibility. Yield curves summarise the entire macro narrative; Steepening means growth/reflation; Flattening or inversion means slowdown/recession.\\
+Fixed income tells what the market thinks will happen before it happens
+\item Foreign Exchange (Adjustment Mechanism): FX reflects relative, not absolute, macro conditions. Sensitive to rate differentials, capital flows, balance of payments, risk-on/risk-off regimes.\\
+FX absorbs and redistributes macro shocks across countries.
+\item Equities (Growth Expression): equities are long growth, long liquidity, short uncertainty. Equity indices aggregate earnings expectations, discount rates, risk appetite.\\
+Volatility (VIX) is a second-order macro signal, not just an equity signal.\\
+Equities express the confidence (or fear) embedded in the macro outlook.
+\item Commodities (Inflation and Real-Economy Link): driven by physical supply and demand, inventories, geopolitics. Highly sensitive to growth cycles, inflation shocks, currency moves (especially USD).\\
+Commodities anchor macro views in real economic constraints.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Relationship Between Assets}\\
+These relationships are regime-dependent, not permanent laws.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Growth Shocks: rates rise, equities rally, cyclicals outperform, commodities rise. FX favours growth-linked currencies (AUD, CAD, EM FX etc.).
+\item Recession Shocks: rates fall, curves flatten/invert, equities sell off, USD strengthens, commodities weaken (except gold)
+\item Inflation Shocks: nominal rates up, real rates determine equity impact. Commodities outperform. FX punishes low-credibility central banks
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Asset Correlation Relationships}\\
+Asset correlations change under stress. Diversification fails when you need it most. Assets that appear uncorrelated in calm periods may collapse together in crises.\\
+Macro traders profit when they anticipate correlation breakdowns, and position for nonlinear regime shifts.\\
+This is why macro portfolios use convex instruments, size conservatively, focus on liquidity.
+\end{remark}
+
+\begin{remark} \hlt{Macro View Thesis}\\
+A macro view expressed in only one asset class is incomplete.\\
+A single macro thesis should have multiple expressions, each with different risk profiles, for example
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Growth view: rates, equities, FX
+\item Inflation view: commodities, breakevens, FX
+\item Crisis view: bonds, USD, volatility
+\end{enumerate}
+\end{remark}
+
+\subsubsection{Foreign Exchange in Global Macro}
+
+FX plays three special roles simultaneously:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Macro shock absorber 
+\item Macro transmission channel 
+\item Macro expression instrument
+\end{enumerate}
+
+\begin{remark} \hlt{Role of the US Dollar}\\
+Global macro is de facto USD-centric, as USD is the global reserve currency, most commodities are USD-priced, global funding markets clear in USD, and cross-border leverage is USD-denominated.\\
+Many “local” macro trades are actually USD liquidity trades in disguise.\\
+Stress often appears first in US Dollar Index (DXY), cross-currency basis, EM FX before local assets.
+\end{remark}
+
+\begin{remark} \hlt{Currency Regimes}\\
+Currency regimes matter more than models. FX does not behave uniformly. Regime dominates signal.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Free-floating regimes: price discovery happens in FX
+\item Managed/pegged regimes: pressure builds elsewhere (rates, reserves, capital controls)
+\item Hard pegs: FX looks stable until it breaks violently
+\end{enumerate}
+FX valuation only works within regime constraints. Ignore the regime and “cheap” can stay cheap forever.
+\end{remark}
+
+\begin{remark} \hlt{Valuation Techniques}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Market Implied and Risk-Appetite Signals
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Equity Index Price Performance: strong local equities (vs peers) attract inflows and support currency; sharp equity underperformance foreshadow FX weakness via risk-off deleveraging and foreign selling.
+\item Credit/Sovereign Risk: widening sovereign spreads/CDS is a direct “default/policy credibility/funding stress” signal weaken FX or raise devaluation risk premia). Also a regime detector for EM FX.
+\item Sentiment/Positioning: call-put skew on three-month risk reversals. Acts as a multiplier. Can create overshoots/undershoots around fair value in crowded carry or crisis episodes.
+\end{enumerate}
+\item Trade and Competitiveness Fundamentals
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Trade Balance/External Account: structurally strong trade position often supports FX; persistent deficits can make the currency reliant on financing
+\item Trade-Weighted Index (TWI): reflects currency’s effective competitiveness against trading partners currency basket that matters for the real economy.
+\item Economic Activity: strong activity can support FX via higher expected returns and inflows, but it can also worsen the trade balance
+\item Export Partner Growth and Direct Exports: mapping who buys exports and whether those buyers are expanding/contracting. Export partner growth leads exporter’s FX through expected trade receipts.
+\end{enumerate}
+\item Macro Sustainability/Macro Indicators: 
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Debt-to-GDP: high public debt with FX liabilities or weak domestic savings can increase risk premia and currency vulnerability, as it tightens the policy constraint set (inflation vs austerity vs default).
+\end{enumerate}
+\item Long-Term Valuation Anchors
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Absolute and Relative PPP: can take up to several years for consumer prices to converge.
+\item GDP Per Capita: structural development/productivity proxy. Richer, higher productivity economies tend to sustain stronger real exchange rates over time.
+\end{enumerate}
+\item Carry Indicators
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item OIS Differential: compares respective policy rates of two countries. If exchange rate is fixed, to hold higher-yielding currency. Carry is interest rate differential between two or a basket of currencies.
+\item LIBOR Differential: LIBOR is an unsecured borrowing rate that banks charge each other. LIBOR can be decomposed as $\text{LIBOR} = \text{Fed Funds} + (\text{LIBOR} - \text{Fed Funds})$, where Fed Funds is the risk-free component and $(\text{LIBOR} - \text{Fed Funds})$ is the credit (risk) component. Using relative spreads gives a sense of direction; interest rate differential drives demand for a currency.
+\item Risk-Adjusted Carry: adjusts carry for volatility. Outperforms standard carry trades and is useful in cross-currency analysis. The carry-to-risk ratio is calculated as
+\begin{equation*}
+\text{Carry-to-Risk Ratio} = \frac{\text{3M Carry (LIBOR Differential)}}{\text{30D Realized Volatility}}
+\end{equation*}
+Within high-yielding currency pairs, one would ideally want the highest carry-to-risk ratio. Volatility and carry components are always in flux, so adjustments should be made frequently.
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Carry Trade Mechanics}\\
+Carry strategies are typically executed by borrowing in lower-yielding currencies (JPY, USD, EUR) and buying higher-yielding currencies (AUD, NZD, BRL, TRY, ZAR, and other EM currencies).\\
+The carry trade is a crowded trade, meaning in large risk-off markets (such as 2008), the strategy suffers significant losses as positions unwind simultaneously.\\
+Carry is the return one makes on holding a currency, assuming the exchange rate is held constant. In practice, exchange rate moves often dominate carry returns.
+\end{remark}
+
+\begin{remark} \hlt{Carry Trade Risk Factors}\\
+Key risks to carry trades include:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Crowding Risk: carry trades are popular, leading to violent unwinds during risk-off episodes.
+\item Gap Risk: EM currencies can gap significantly on weekends or during crises, bypassing stop-losses.
+\item Regime Shifts: central bank policy changes can rapidly alter rate differentials.
+\item Correlation Breakdown: in stress, all carry currencies tend to sell off together against funding currencies.
+\end{enumerate}
+Finding the carry-to-risk ratio is useful, as is comparing all currency pairs on a relative basis. Measuring the standard error of the sample and finding the most attractive pairs helps in mean-reverting carry strategies.
+\end{remark}
+
+\subsubsection{Equities in Global Macro}
+
+In macro, a trader should understand equity in terms of market behaviour in the country being traded, the sectors that make up those indices, and correlation risk.
+
+\begin{remark} \hlt{Top-Down Macro Approach to Equities}\\
+Many macro traders take a top-down approach to trading equities:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Start with a global view
+\item Narrow to countries expected to outperform
+\item Select the best sectors within those countries
+\item Optionally, select best companies within sectors
+\end{enumerate}
+If the investor has a knack for knowing where the next opportunity lies, the most reward typically comes from concentrated exposure rather than diversified index holdings.
+\end{remark}
+
+\begin{remark} \hlt{Major Equity Indices by Region}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item United States: S\&P 500, Nasdaq, DJIA, Russell 2000, Wilshire 5000
+\item Europe: Euro Stoxx 50, DAX, CAC 40, FTSE 100, FTSE MIB, IBEX 35, AEX
+\item Asia Ex-Japan: Shanghai Comp, Hang Seng, KOSPI, ASX 200, NZX 50
+\item Japan: Nikkei, Topix, JASDAQ
+\item Emerging Markets: Bovespa, NIFTY, Micex/RTS, Mexico IPC, TOP 40/JALSH, BIST 30/100 etc.
+\end{enumerate}
+Indices can be traded directionally or as relative value trades (long one index, short another). Different indices have different sector exposures: Bovespa is more commodity-sensitive than NIFTY; S\&P 500 has more financial exposure than Nasdaq (technology-weighted).
+\end{remark}
+
+\begin{remark} \hlt{Index Construction Methods}\\
+Index construction methodology affects interpretation:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Price-Weighted: considers only stock price, ignores market cap. A single large stock move can dominate.
+\item Market-Cap Weighted: weighted by market capitalisation. Large-cap stocks dominate performance.
+\item Equal-Weighted: each constituent has equal weight regardless of size.
+\end{enumerate}
+Understanding weighting structure is essential for accurate interpretation of index moves.
+\end{remark}
+
+\begin{remark} \hlt{Sector Rotation Across Economic Cycles}\\
+Different sectors outperform in different economic regimes:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Recession/Contraction: Consumer Staples, Utilities, Healthcare (defensive sectors)
+\item Recovery: Financials, Consumer Discretionary, Real Estate
+\item Expansion: Industrials, Materials, Technology
+\item Slowing Growth/Late Cycle: Energy, Materials (inflation hedges)
+\end{enumerate}
+To best position an equity portfolio, it is critical to know whether the economy is in contraction, recovery, expansion, or slowing growth.
+\end{remark}
+
+\begin{remark} \hlt{Equity Derivatives Overview}\\
+Key equity derivatives for macro trading:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item ETFs: fast, cheap exposure to indices, sectors, countries, commodities, FX, FI. Trade like stocks.
+\item ADRs (American Depositary Receipts): foreign stocks listed on U.S. exchanges in USD. Subject to FX risk since underlying shares are held locally.
+\item Index Futures: liquid, leveraged exposure to equity indices.
+\item Options: provide asymmetric payoffs for hedging and directional views.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{The Volatility Index (VIX)}\\
+The VIX measures implied volatility of S\&P 500 options one month out. Key properties:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Negatively correlated with equity returns (volatility rises when equities fall)
+\item During large selloffs, VIX can move from mid-teens to 30+ in days
+\item VIX options provide asymmetric hedges for equity portfolios
+\item VIX futures typically trade in contango; during sharp selloffs, shift to backwardation
+\end{enumerate}
+Volatility is measured relative to $\sqrt{252} \approx 16$. A VIX of 16 implies approximately $1\%$ expected daily move; VIX of $24$ implies $1.5\%$ daily move $(24/16 = 1.5\%)$.\\
+V2X (Euro Stoxx), VXN (Nasdaq), VXD (DJIA), RVX (Russell 2000), GVZ (Gold), OVX (Crude Oil).
+\end{remark}
+
+\begin{remark} \hlt{Variance Swaps}\\
+Variance swaps are OTC products providing pure variance exposure. Advantages over options:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Pure volatility exposure without delta hedging
+\item Priced with realised volatility (usually lower than implied)
+\item No interest rate or dividend risk
+\end{enumerate}
+Payoff structure is convex and nonlinear. Long variance benefits disproportionately from large moves in either direction. Quoted by strike (reference realised volatility), vega notional, variance units, maturity.\\
+Variance units $= \frac{\text{Vega Notional}}{2 \times \text{Strike}}$, Payoff $= (\sigma_{\text{realised}}^2 - K^2) \times \text{Variance Units}$
+\end{remark}
+
+\begin{remark} \hlt{Dividend Swaps}\\
+An OTC or exchange-traded product that allows one to take a view on dividends of an index to be higher, or lower, than a fixed amount. 
+\end{remark}
+
+\begin{remark} \hlt{Equity Valuation Techniques for Macro}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Price-to-Book (P/B): P/B $> 2.5\times$ generally overbought; P/B $< 1.5\times$ oversold. Useful for detecting bubbles and value opportunities.
+\item Dividend Yield: dividend/price. Holder gets paid while waiting (long carry). Useful for relative value across markets.
+\item Price-to-Earnings (P/E): price per \$1 of earnings. Best for comparable analysis across countries, sectors, stocks. Forward P/E uses analyst EPS estimates.
+\item Free Cash Flow Yield: FCF/Price. Cash flow from operations minus capital expenditures. Graham and Dodd value investors use this as top screen.
+\item Market Cap to GDP: useful for locating potential bubbles. Above 100\% warrants caution; rapid rises to 150\%+ indicate bubble conditions (Japan 1989).
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Leading Indicators for Equities}\\
+Useful macro indicators that lead equity performance:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item PMI (Purchasing Managers' Index): leading indicator scored 0-100. Sharp slope changes and deviations from 50 provide strong signals. ISM below 50 typically indicates U.S. recession.
+\item Baltic Dry Index: shipping prices for raw material dry bulk. Supply is fixed (ships take years to build), demand is inelastic. Leading indicator for raw material demand.
+\item CDX High Yield Index: CDS spread on high-yield corporates. Highly correlated with VIX; inversely related to equity prices. Rising spreads signal risk-off.
+\item Consumer Confidence: in the U.S., consumption accounts for $>70\%$ of GDP. Higher confidence leads to higher spending and GDP growth.
+\item Commodity Prices (YoY): rising commodity prices are inflationary, typically met by central bank tightening, which has bearish equity implications.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{AUD Volatility as Risk Barometer}\\
+The Australian dollar is a main risk-on currency due to Australia's commodity exports and reliance on Asian economies. AUD moves in tandem with equity prices.\\
+Three-month AUD/USD implied volatility is highly correlated with VIX and inversely correlated with S\&P 500. In times of stress, the rate of change in AUD volatility shifts suddenly and aggressively.\\
+Using VIX and AUD volatility combined on an absolute basis smooths out error as a more useful measure.
+\end{remark}
+
+
+

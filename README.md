@@ -6,8 +6,6 @@ Progress Status:
 
 | Book | Author | Progress | Comments |
 | ----- | ----- | ----- | ----- |
-| Time Series Analysis | James Douglas Hamilton | WIP on first chapter | For Mathematical Primer section |
-| Algorithmic Trading and Quantitative Strategies | Raja Velu | WIP on Univariate Time Series Models chapter | For Fundamentals of Systematic Trading section |
-| Options, Futures, and Other Derivatives | John C. Hull | WIP on Interest Rate Futures chapter | For Derivatives Trading section |
-| Inside the Black Box | Rishi K. Narang | Completed | Incorporated in Fundamentals of Systematic Trading section |
-| Visual Studio Code for Python | April Speight | Completed | Incorporated in Appendix section |
+| Inside the Black Box | Rishi K. Narang | Completed | Incorporated in Preface and Prerequisites |
+| Algorithmic Trading and Quantitative Strategies | Raja Velu | WIP in Preface and Prerequisites | For Fundamentals of Systematic Trading section |
+| Global Macro Trading: Profiting in a New World Economy | Greg Gliner | Completed | Incorporated in Macro and Global Market Analysis |

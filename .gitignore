@@ -1,4 +1,9 @@
 .DS_Store
+
+# PDF files (except trading.pdf)
+*.pdf
+!trading.pdf
+
 # LaTeX intermediate and output files
 *.aux
 *.bbl

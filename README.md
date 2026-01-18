@@ -8,4 +8,4 @@ Progress Status:
 | ----- | ----- | ----- | ----- |
 | Inside the Black Box | Rishi K. Narang | Completed | Incorporated in Preface and Prerequisites |
 | Algorithmic Trading and Quantitative Strategies | Raja Velu | WIP in Preface and Prerequisites | For Fundamentals of Systematic Trading section |
-| Global Macro Trading: Profiting in a New World Economy | Greg Gliner | Completed | Incorporated in Macro and Global Market Analysis |
+| Global Macro Trading: Profiting in a New World Economy | Greg Gliner | WIP Finished Chapter on Treasurer | Incorporated in Macro and Global Market Analysis |

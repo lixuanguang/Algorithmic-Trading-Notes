@@ -41,6 +41,25 @@
 % - Speed bumps and deliberate delays
 % Sources: Lehalle Ch.13; Cartea Ch.4
 
+\begin{definition} \hlt{Nyquist-Shannon Sampling Theorem}\\
+A signal can be perfectly reconstructed from its samples if the sampling frequency $f_s$  is at least twice the highest frequency component $f_{\max}$ in the signal:
+\begin{equation*}
+f_s \geq 2 f_{\max}
+\end{equation*}
+\end{definition}
+
+\begin{remark} \hlt{Nyquist-Shannon in Market Microstructure}\\
+The theorem has important implications for market data and trading:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Aliasing: If market data is sampled too slowly relative to the true dynamics, high-frequency patterns appear as spurious low-frequency patterns. Daily data cannot capture intraday mean reversion.
+\item HFT Advantage: High-frequency traders sample orderbook states at microsecond intervals, capturing dynamics invisible to slower participants sampling at seconds or minutes.
+\item Signature Plot: Realised volatility estimates depend on sampling frequency. Too high frequency introduces microstructure noise; too low misses true volatility. Nyquist frequency identify optimal sampling rate.
+\item Epps Effect: Correlation between assets appears to decrease at higher sampling frequencies due to asynchronous trading, a manifestation of sampling issues in multivariate settings.
+\item Practical Implication: To study phenomena at timescale $\tau$, one needs data sampled at least at frequency $1/(2\tau)$. Tick-by-tick data is necessary for microstructure research.
+\end{enumerate}
+\end{remark}
+
 \subsubsection{HFT and Market Quality}
 % Impact on market structure
 % - Liquidity provision

@@ -1,0 +1,53 @@
+\subsection{Time Value of Money}
+
+\begin{definition} \hlt{Time Value of Money Formulas}\\
+\begin{tabular}{p{4.6cm}p{5.5cm}p{5cm}}
+\hline
+\textbf{Concept} & \textbf{Formula} & \textbf{Notes} \\
+\hline
+Expected Annual Rate & $\text{EAR} = (1 + r_p)^m - 1$ & $r_p$ periodic rate, $m$ periods/year \\
+& $\text{EAR} = e^r - 1$ & Continuous \\
+\hline
+Future Value (Continuous) & $FV_N = PV e^{r_s N}$ & $r_s$ stated rate, $N$ years \\
+\hline
+Present Value (Frequent) & $PV = FV_N (1 + \frac{r}{m})^{-mN}$ & $m$ periods/year \\
+\hline
+Ordinary Annuity & $FV_N = A \left[ \frac{(1+r)^N - 1}{r} \right]$ & First CF one period from now \\
+\hline
+Annuity Due & $FV_N = A \left[ \frac{(1+r)^N - 1}{r} \right] (1+r)$ & First CF today \\
+\hline
+Perpetuity & $PV = \frac{A}{r}$ & Infinite cash flows \\
+\hline
+\end{tabular}
+\end{definition}
+
+\begin{definition} \hlt{Return Metrics}\\
+\begin{tabular}{p{4.6cm}p{5.5cm}p{5cm}}
+\hline
+\textbf{Metric} & \textbf{Formula / Description} & \textbf{Notes} \\
+\hline
+Internal Rate of Return & NPV $= 0$ & PV inflows = PV outflows \\
+\hline
+Money-Weighted Return & IRR on portfolio & Timing and size of CFs \\
+\hline
+Time-Weighted Return & $r = \sqrt[1/n]{\prod\limits_{i=1}^n (1+HPR_i)} - 1$ & Geometric mean \\
+\hline
+Annualised Return & $r = (1+HPR)^{365/\text{Days}} - 1$ & HPR scaled to annual \\
+\hline
+Continuously Compounded & $r_{\text{CC}} = \ln(1+HPR)$ & Log return \\
+\hline
+Gross Return & Before fees & Pre-fees \\
+\hline
+Net Return & After fees & Post-fees \\
+\hline
+Pre-Tax Nominal & Before taxes & Pre-tax \\
+\hline
+After-Tax Nominal & After taxes & Post-tax \\
+\hline
+Real Return & $(1 + r_{\text{Real}}) = \frac{(1 + r_{\text{Nom}}) (1 + r_{\text{Risk}})}{(1 + \pi)}$ & Inflation-adjusted \\
+\hline
+Leveraged Return & $r_L = \frac{r(V_0 + V_B) - r_B V_B}{V_0}$ & $V_B$ borrowed, $r_B$ borrow cost \\
+\hline
+\end{tabular}
+\end{definition}
+

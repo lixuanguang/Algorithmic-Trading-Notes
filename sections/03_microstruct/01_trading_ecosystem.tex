@@ -22,7 +22,12 @@ Buy-side trade to achieve their investment, hedging, or asset-exchange objective
 Sell-side facilitate trading rather than trading for their own investment objectives.
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Dealers (Market Makers): Profit from bid-ask spread, provide liquidity on demand, bear inventory risk.
+\item Dealers: Supply liquidity by buying at bid and selling at ask prices. Two main types:
+\begin{enumerate}[label=\alph*.]
+\setlength{\itemsep}{0pt}
+\item Market Makers: Provide liquidity on demand in small quantities, trade in/out many times per day.
+\item Block Facilitators: Provide liquidity for large orders, willing to hold positions longer.
+\end{enumerate}
 \item Brokers: Arrange trades for clients without taking positions. Earn commissions and fees for agency services. Add value by finding counterparties and providing trade execution expertise.
 \item Investment Banks: Underwrite new issues, provide advisory services, combine dealer and broker functions.
 \item Prime Brokers: Provide consolidated services including clearing, custody, financing, and securities lending.
@@ -30,12 +35,24 @@ Sell-side facilitate trading rather than trading for their own investment object
 \end{definition}
 
 \begin{definition} \hlt{Proprietary Traders and Speculators}\\
-Traders who exist purely to profit from trading itself.
+Traders who exist purely to profit from trading itself. Divided into informed traders and parasitic traders.
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Informed Traders (Speculators): Profit by buying undervalued and selling overvalued instruments based on fundamental analysis or private information.
-\item Proprietary Trading Firms: Trade firm capital to profit from market inefficiencies, arbitrage opportunities, or short-term price movements.
-\item High-Frequency Traders (HFT): Use sophisticated technology and algorithms to trade at high speeds, often combining market-making and proprietary strategies.
+\item Informed Traders: Profit from information about fundamental values.
+\begin{enumerate}[label=\alph*.]
+\setlength{\itemsep}{0pt}
+\item Value Traders: Estimate fundamental values through analysis of all available information.
+\item News Traders: Trade immediately upon new information release.
+\item Information-Oriented Technical Traders: Identify patterns indicating prices differ from fundamental.
+\item Arbitrageurs: Exploit price discrepancies across markets or related instruments.
+\end{enumerate}
+\item Parasitic Traders: Profit without making prices more informative.
+\begin{enumerate}[label=\alph*.]
+\setlength{\itemsep}{0pt}
+\item Order Anticipators: Profit from predicting other traders' actions (front runners, squeezers).
+\item Bluffers: Create misinformation to mislead other traders (rumormongers, price manipulators).
+\end{enumerate}
+\item High-Frequency Traders: Use sophisticated technology to trade at high speeds, often combining market-making and proprietary strategies.
 \end{enumerate}
 \end{definition}
 
@@ -52,22 +69,29 @@ Successful traders must understand who loses and why they trade.
 Utilitarian traders trade to obtain benefits other than trading profits.
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Investors and Borrowers: Solve cash flow timing problems. When income exceeds expenses, they invest. When expenses exceed income, they borrow or liquidate past investments.
+\item Investors and Borrowers: Solve inter-temporal cash flow timing problems. When income exceeds expenses, they invest. When expenses exceed income, they borrow or liquidate past investments.
 \item Asset Exchangers: Use markets to exchange owned assets for others of greater immediate use.
 \item Hedgers: Trade to exchange risks they have for risks they would rather bear (or no risk at all). Effective hedgers match asset risks with liability risks. Hedging transforms risk characteristics.
 \item Gamblers: Trade for entertainment, accepting negative expected returns in exchange for excitement and the possibility of large gains. Unlike speculators, gamblers do not have rational expectations of profit.
+\item Fledglings: Trade to learn whether they can trade profitably, willing to lose money to learn.
+\item Cross-Subsidisers: Trade to produce commission revenues for brokers in return for services (soft dollar arrangements). Commissions higher than if services were purchased separately.
+\item Tax Avoiders: Trade to exploit tax loopholes and minimise taxes (tax straddles, loss harvesting, dividend capture strategies).
 \end{enumerate}
 \end{definition}
 
 \begin{definition} \hlt{Profit-Motivated Traders}\\
-Profit-motivated traders trade only because they rationally expect to profit.
+Profit-motivated traders trade only as they rationally expect to profit. Distinguished as informed or uninformed.
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Informed Speculators: Form reliable opinions about fundamental values through insightful analysis of public information or access to private information.
-\item Dealers: Profit from the bid-ask spread by providing liquidity on demand. Manage inventory risk and adverse selection costs from trading with informed traders.
-\item Arbitrageurs: Exploit price discrepancies across markets or related instruments. Provide a valuable service by keeping prices consistent and efficient.
+\item Informed Traders: Can form reliable opinions about whether instruments are fundamentally undervalued or overvalued. Include value traders, news traders, information-oriented technical traders, and arbitrageurs. These traders make prices more informative.
+\item Parasitic Traders: Profit from predicting other traders' actions (order anticipators) or creating misinformation (bluffers). Do not make prices more informative. Include front runners, sentiment-oriented technical traders, squeezers, rumourmongers, and price manipulators.
+\item Dealers: Uninformed profit-motivated traders who profit from bid-ask spread by providing liquidity on demand. Manage inventory risk and adverse selection costs from trading with informed traders.
 \end{enumerate}
 \end{definition}
+
+\begin{remark} \hlt{Informed vs Uninformed Traders}\\
+Traders are either informed or uninformed. Informed traders can form reliable opinions about fundamental values (value given all available information). Uninformed traders cannot form such reliable opinions. Informed traders are always profit-motivated. Uninformed traders include utilitarian traders, futile traders, and some profit-motivated traders (dealers, parasitic traders).
+\end{remark}
 
 \begin{remark} \hlt{Futile Traders}\\
 Futile traders believe they are profit-motivated but their expectations are not rational. They have no informational or analytical advantages that would allow profitable trading. Utilitarian traders and futile traders systematically lose to profit-motivated traders.
@@ -100,14 +124,15 @@ Trading begins with an investment decision by a buy-side institution or individu
 \end{method}
 
 \begin{definition} \hlt{Execution Venues}\\
-Orders can be executed across multiple venue types.
+Orders can be executed across multiple venue types:
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Exchanges: Regulated, transparent markets with central limit order books. Price discovery, settlement.
-\item Alternative Trading Systems (ATS)/Dark Pools: Non-exchange venues that match orders with less pre-trade transparency. Reduce information leakage for large orders.
-\item Dealer Markets: Orders executed against dealer inventory. Quote prices, provide immediate liquidity.
-\item Broker Crossing Networks: Match buy and sell orders from broker's customer base at favourable prices.
+\item Exchanges: Regulated, transparent markets with central limit order books.
+\item Alternative Trading Systems (ATS)/Dark Pools: Non-exchange venues, reduced pre-trade transparency.
+\item Dealer Markets: Orders executed against dealer inventory.
+\item Broker Crossing Networks: Match buy and sell orders from broker's customer base.
 \end{enumerate}
+Market structures, fragmentation, and venue types are examined in detail in subsequent sections.
 \end{definition}
 
 \begin{process} \hlt{Clearing and Settlement}\\
@@ -119,158 +144,3 @@ Post-trade processing ensures transaction completion.
 \item Trade Reporting: Regulatory reporting, position tracking, and reconciliation.
 \end{enumerate}
 \end{process}
-
-
-\subsubsection{Liquidity and the Price Formation Process}
-
-Liquidity is a word often used in financial markets, yet not simple to define with accuracy.
-
-\begin{definition} \hlt{Liquidity Risk}
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Time period to find needed liquidity, where prices can change adversely.
-\item Market impact due to potential sellers observing order book dynamics and offer worse prices.
-\end{enumerate}
-\end{definition}
-
-\begin{definition} \hlt{Liquidity Proxies}
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Bid-Ask Spread: Distance between best bid-ask prices. Short-term proxy without emphasise on quantities.
-\item Round Trip Cost: Net loss on an immediate buy then sell of a given quantity. Accounts for depth. Computing over several quantities yields a curve associating a price to each possible demanded quantity.
-\item Market Depth: The quantities available at each price level in the order book.
-\end{enumerate}
-\end{definition}
-
-\begin{remark} \hlt{Liquidity Fragmentation}\\
-When seeking liquidity and the desired quantity is not instantaneously available in public quotes or electronic order books, the investor must split his large order in slices, through time and through trading venues or counterparts. Anticipating the optimal slicing is addressed by optimal trading theory.
-\end{remark}
-
-\begin{remark} \hlt{Fragmentation at Different Levels}
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Market Operators: New operators appear in early phases of competition, then some merge.
-\item Trading Venues: Same operator can run multiple venues.
-\item Order Books: Same venue can offer multiple order books.
-\item Orders: As fragmentation increases, orders must be split through time and space across order books.
-\item Technology: Number of protocols needed to interact with venues increases with competition.
-\end{enumerate}
-\end{remark}
-
-\begin{definition} \hlt{Market Share as Fragmentation Metric}\\
-Market share is the most common metric to monitor fragmentation dynamics. Let $M$ transactions occur from date $t_1$ to $t_2$ over $N$ trading venues. Each trade $\ell$ has price $P_\ell$, volume $V_\ell$, timestamp $\tau_\ell$, and venue indicator $\delta_\ell = n$ if on venue $n$. The market share in traded value of venue $n$ on stock $k$ is:
-\begin{equation*}
-M_k(n) = \frac{\sum_{t_1 \leq \tau_\ell^k \leq t_2} P_\ell^k V_\ell^k \cdot \mathbf{1}_n(\delta_\ell^k)}{\sum_{t_1 \leq \tau_\ell^k \leq t_2} P_\ell^k V_\ell^k}
-\end{equation*}
-Market share per trade, where $T$ is total number of trades during the period:
-\begin{equation*}
-M_k^T(n) = \frac{\sum_{\ell=1}^{T} \mathbf{1}_n(\delta_\ell^k)}{T}
-\end{equation*}
-Market share varies intraday and is distorted by fixing auctions where one venue has monopoly. Best practice is to compute separate market shares for fixing auctions and continuous trading (ex-fixing).
-\end{definition}
-
-\begin{definition} \hlt{Market Share on Multiple Stocks}\\
-To aggregate market share across stocks $1 \leq k \leq K$:
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Turnover-weighted: Weight by total traded value $T_k$ of each stock:
-\begin{equation*}
-M_{1,\ldots,K}(n) = \frac{\sum_{1 \leq k \leq K} T_k \cdot M_k(n)}{\sum_{1 \leq k \leq K} T_k}
-\end{equation*}
-\item Index-weighted: Weight by stock's weight $w_k$ in index $I$ (proportional to free-float or market cap):
-\begin{equation*}
-M_I(n) = \sum_{k \in I} w_k \cdot M_k(n)
-\end{equation*}
-\item Equally-weighted: Give same weight to each stock:
-\begin{equation*}
-M_{1,\ldots,K}^u(n) = \frac{1}{K} \sum_{1 \leq k \leq K} M_k(n)
-\end{equation*}
-\end{enumerate}
-Fragmentation typically increases with liquidity: the more liquid a stock, the more fragmented its trading.
-\end{definition}
-
-\begin{remark} \hlt{Fixing Auctions vs Continuous Trading}\\
-The choice of market share metric depends on the question being answered:
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Revenue analysis: Include all trades (fixing, continuous), though fee structures may differ.
-\item Probability of execution on venue: Use $M_k^T(n)$ and separate fixing from continuous auctions, since fixing auctions often have 100\% probability on a single venue.
-\item Probability per unit of currency: Use $M_k(n)$ separately for fixing and continuous.
-\end{enumerate}
-\end{remark}
-
-\begin{definition} \hlt{Fixing Auction Market Share Distortion}\\
-Fixing auctions significantly distort market share calculations as primary markets typically maintain a monopoly on fixing auction trading. Let venue $T(n)$ have average market share $m(n)$ during fixing auctions, and let fixing auctions represent weight $p$ of overall daily trading volume (where $T = \sum_{1 \leq \ell \leq T} P_\ell^k V_\ell^k$ is average daily turnover). The relationship between market share excluding versus including fixing auctions is:
-\begin{equation*}
-M(n; \text{ex-fixing}) \approx \frac{1 - m(n)p}{1 - p} \cdot M(n; \text{all included})
-\end{equation*}
-The distortion is proportional to fixing auction weight $p$ and venue's monopoly share $m(n)$ during those auctions.
-\end{definition}
-
-\begin{remark} \hlt{Intraday Market Share Variation}\\
-Market share exhibits strong intraday variation, with different patterns on opening hours, mid-day trading, and closing sessions. This temporal dependence means market share must always be reported with specification of:
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Time interval considered (first hour, last hour, full day)
-\item Whether fixing auctions are included or excluded
-\item Which fixing auctions are included (opening, closing, intraday, volatility interruptions)
-\end{enumerate}
-Failure to separate fixing from continuous trading can lead to misleading conclusions about venue competitiveness and liquidity fragmentation.
-\end{remark}
-
-\begin{definition} \hlt{Price Formation Process (PFP)}\\
-Mechanism by which markets balance supply and demand via the occurrence of deals between traders, forming prices that constitute a fair view of the value of exchanged assets.
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Market Impact: trading pressure not consistent with market consensus generates temporary impact. When this is coherent with market, the impact is permanent.
-\item Temporary Imbalances: Oscillating prices come from temporary imbalances between buyers and sellers that could be suppressed if investors were more synchronised.
-\item Market-Makers' Role: Profit from temporary impact by buying from early sellers and selling to later buyers. Exposed to risk from unexpected news between arrival of sellers and buyers.
-\end{enumerate}
-\end{definition}
-
-\begin{remark} \hlt{Information and Liquidity Paradox}\\
-The more information available, the better the PFP. But trader fears information leakage and the threat of being front-run or having excessive market impact. Market design must balance to allow enough information sharing to ensure a fair PFP, while protecting each investor's interest from information leakage.
-\end{remark}
-
-\begin{remark} \hlt{Best Execution}\\
-Best execution is not simply about immediate price improvement on aggressive orders. In fragmented markets, best execution requires:
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Consolidated access to liquidity for both passive and aggressive orders.
-\item Access to internal crossing engines to value ``natural liquidity'' from final investors.
-\item Protection from information leakage and front-running by faster players.
-\item Consideration of adverse selection, passive split, and reversal measurements over longer time scales.
-\end{enumerate}
-The concept of ``efficient execution'' can only be defined on a long time scale and must relate to the investment style of the order originator.
-\end{remark}
-
-\begin{remark} \hlt{RFQ vs CLOB Trading Mechanisms}\\
-Two main mechanisms organise electronic trading:
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item CLOB (Central Limit Order Book): Multilateral, each participant sends orders to a central place which synchronises, consolidates, generates transactions, and spreads the aggregated view to everyone. 
-\item RFQ (Request For Quotes): Bilateral, traders send messages to dealers declaring interest. Dealers respond with quotes (prices and quantities). Trader chooses which dealer to trade with.
-\end{enumerate}
-In RFQ, traders are more exposed to opportunity cost; dealers are more exposed to adverse selection cost. In CLOB, all are exposed to both depending on limit vs market order usage.\\
-Stale quotes are more frequent in RFQ than vanishing liquidity in CLOB, where what traders see is less reliable.\\
-Dealers use last look (conditional orders) in RFQ to protect against adverse selection; rarely available in CLOB.
-\end{remark}
-
-\begin{definition} \hlt{Nyquist-Shannon Sampling Theorem}\\
-A signal can be perfectly reconstructed from its samples if the sampling frequency $f_s$  is at least twice the highest frequency component $f_{\max}$ in the signal:
-\begin{equation*}
-f_s \geq 2 f_{\max}
-\end{equation*}
-\end{definition}
-
-\begin{remark} \hlt{Nyquist-Shannon in Market Microstructure}\\
-The theorem has important implications for market data and trading:
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Aliasing: If market data is sampled too slowly relative to the true dynamics, high-frequency patterns appear as spurious low-frequency patterns. Daily data cannot capture intraday mean reversion.
-\item HFT Advantage: High-frequency traders sample orderbook states at microsecond intervals, capturing dynamics invisible to slower participants sampling at seconds or minutes.
-\item Signature Plot: Realised volatility estimates depend on sampling frequency. Too high frequency introduces microstructure noise; too low misses true volatility. Nyquist frequency identify optimal sampling rate.
-\item Epps Effect: Correlation between assets appears to decrease at higher sampling frequencies due to asynchronous trading, a manifestation of sampling issues in multivariate settings.
-\item Practical Implication: To study phenomena at timescale $\tau$, one needs data sampled at least at frequency $1/(2\tau)$. Tick-by-tick data is necessary for microstructure research.
-\end{enumerate}
-\end{remark}

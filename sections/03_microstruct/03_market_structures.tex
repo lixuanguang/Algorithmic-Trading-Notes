@@ -6,6 +6,19 @@
 
 \subsection{Market Structures and Venues}
 
+\begin{remark} \hlt{Market Design and Architecture}\\
+For markets to work well, their design must accommodate the needs of institutional and individual investors, dealers, and speculators. A successful market allows investors to trade when they want and minimizes trading costs whilst making it worthwhile for dealers and speculators. Key characteristics of market architecture:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Market type (quote-driven vs order-driven; continuous vs call auctions)
+\item Order types (limit, market, stop, iceberg, etc.)
+\item Trading protocols (precedence rules, tick sizes, lot sizes, halts)
+\item Transparency (pre-trade and post-trade information disclosure)
+\item Off-market trading (dark pools, OTC, internalization)
+\end{enumerate}
+These characteristics significantly influence liquidity and the speed of price discovery, which in turn affect the overall cost of trading. However, no two markets are the same, even if based on the same design, since local regulations and traded asset universes differ.
+\end{remark}
+
 \subsubsection{Market Organization Taxonomy}
 % Fundamental market structure classifications
 % - Quote-driven vs. order-driven markets
@@ -13,6 +26,82 @@
 % - Lit vs. dark markets
 % - On-exchange vs. OTC
 % Sources: Harris Ch.5-6; Johnson Ch.6
+
+Markets are classified by two key properties: trading mechanism and trading frequency.
+
+\begin{definition} \hlt{Trading Mechanism}\\
+Determines how traders interact and how prices are established.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Quote-Driven: Traders transact with dealers (market makers) who quote two-way prices. Dealer provides guaranteed execution at quoted price for a set size. Examples: traditional Nasdaq dealer market.
+\item Order-Driven: All traders participate equally, placing orders in a central limit order book (CLOB) matched by consistent rules. Best bid/offer prices are indicative rather than guaranteed. Prices established by actual orders. Examples: NYSE, LSE, Euronext.
+\item Hybrid: Mix of both mechanisms. Dealers provide continuous firm quotes while also allowing limit orders. Examples: modern NYSE, Nasdaq. Many electronic quote-driven markets now function as hybrid markets since continuous firm quotes effectively force dealers to offer limit orders.
+\end{enumerate}
+Order-driven markets provide visible liquidity and persistence of orders, enhancing price discovery. Traders have more control over order choice (price, size, timing) without negotiation. Quote-driven markets offer guaranteed execution for market orders but may require negotiation or separate firm quote requests.
+\end{definition}
+
+\begin{definition} \hlt{Trading Frequency}\\
+Determines when requirement matches (quotes or orders) turn into executions.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Continuous Trading: Immediate execution when orders match. Convenient and efficient but can lead to price volatility during supply-demand imbalances.
+\item Periodic Trading (Call Auctions): Scheduled auctions at specific times. Allows liquidity accumulation and more considered price formation. Reduces volatility but sacrifices immediacy.
+\item Request-Driven: Execution upon quote request (dealer RFQ, upstairs trading). Convenient for negotiation but not necessarily efficient in terms of price achieved.
+\end{enumerate}
+\end{definition}
+
+\begin{remark} \hlt{RFQ vs CLOB Trading Mechanisms}\\
+Two main mechanisms organise electronic trading:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item CLOB (Central Limit Order Book): Multilateral, each participant sends orders to a central place which synchronises, consolidates, generates transactions, and spreads the aggregated view to everyone. 
+\item RFQ (Request For Quotes): Bilateral, traders send messages to dealers declaring interest. Dealers respond with quotes (prices and quantities). Trader chooses which dealer to trade with.
+\end{enumerate}
+In RFQ, traders are more exposed to opportunity cost; dealers are more exposed to adverse selection cost. In CLOB, all are exposed to both depending on limit vs market order usage.\\
+Stale quotes are more frequent in RFQ than vanishing liquidity in CLOB, where what traders see is less reliable.\\
+Dealers use last look (conditional orders) in RFQ to protect against adverse selection; rarely available in CLOB.
+\end{remark}
+
+\begin{remark} \hlt{Order Types and Market Structure}\\
+Orders differentiate by their liquidity-effect and associated risks.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Market Orders: Trade liquidity for execution price uncertainty.
+\item Limit Orders: Trade price certainty for risk of failing to execute.
+\item Conditional Orders: Wide range of conditions control order activation, duration, and partial fills. Enable stop orders, iceberg orders (hidden quantity), and venue-specific routing.
+\end{enumerate}
+Markets differ in order type behavior. In dealer markets, limit orders may be hidden. In transparent order-driven markets with sufficiently visible order books, limit orders immediately appear and provide liquidity. Hybrid orders combine features: market-if-touched, stop-limit. Hidden and iceberg orders allow traders to achieve best price without disclosing full liquidity, increasingly important for institutional traders.
+\end{remark}
+
+\subsubsection{Trading Protocols and Market Rules}
+
+Markets provide a fair and orderly trading environment by defining and enforcing trading protocols. These rules affect market efficiency and transaction costs.
+
+\begin{definition} \hlt{Order Precedence}\\
+Rules specifying how incoming orders execute with existing orders or dealer quotes. Markets give price priority to orders with best price, with secondary priority either time-based or size-based.
+\end{definition}
+
+\begin{definition} \hlt{Minimum Trade Quantities (Lot Sizes)}\\
+Limits on minimum traceable quantities, varying from single units to thousands. Smaller lot sizes attract retail investors; larger lots favour institutional traders. Markets often accommodate both.
+\end{definition}
+
+\begin{definition} \hlt{Minimum Price Increments (Tick Sizes)}\\
+Minimum price changes allowed between orders, affects the spread. Large ticks widen spreads, make liquidity provision more profitable. If ticks too small, time priority becomes meaningless, traders place orders one tick ahead to jump the queue. Balance between meaningful priority and competitive pricing needed.
+\end{definition}
+
+\begin{definition} \hlt{Opening/Closing Procedures}\\
+Rules governing market open/close times and official reference prices. Most markets now use call auctions for opening and closing to improve price discovery through order batching.
+\end{definition}
+
+\begin{definition} \hlt{Trading Halts and Circuit-Breakers}\\
+Mechanisms to pause trading during abnormal conditions.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Trading Halts: Stock-specific pauses triggered by pending material announcements or large price moves. Allow information dissemination and reduce volatility impact.
+\item Circuit-Breakers: Market-wide mechanisms protecting against mass selling.
+\end{enumerate}
+Alternatively, switch to call auctions rather than complete halt.
+\end{definition}
 
 \subsubsection{Trading Venues}
 % Types of execution venues
@@ -22,6 +111,130 @@
 % - Systematic internalizers
 % - Single-dealer platforms
 % Sources: Johnson Ch.7; Lehalle Ch.2
+
+\begin{remark} \hlt{Market Transparency}\\
+Transparency is the amount of market information available before and after a trade.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Pre-Trade Transparency: Information on prices and sizes of quotes/orders before execution.
+\item Post-Trade Transparency: Information on actual trade execution details (time, size, price).
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Transparency Across Market Types}\\
+Market structure determines transparency level.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Quote-Driven Markets: Less transparent, showing only broker's best bid/offer. Bilateral nature means both parties usually know counterparty identity.
+\item Order-Driven Markets: Higher visibility, displayed order books showing all orders and volumes.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Transparency Trade-offs}\\
+Complete transparency is not appealing to all users. Key considerations:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Institutional Need: Large trades need to reduce potential impact, difficult if each order is identifiable.
+\item Anonymous Order Books: Common solution allowing trade execution without revealing trader identity.
+\item Hidden Orders: Markets increasingly allow hidden orders, giving traders control over visibility.
+\item Dark Pools: ATSs specialize in handling large block orders, operating opaquely to avoid signaling intentions. Most successful when accompanied by large, visible markets providing fair price reference.
+\item Market Evolution: General trend is increasing transparency with anonymity. Several markets moved from fully disclosed broker identities to voluntary identification or complete anonymity.
+\end{enumerate}
+\end{remark}
+
+\subsubsection{Price Discovery and Trade Execution Mechanisms}
+% Trading mechanism types and matching rules
+% - Bilateral vs multilateral trading
+% - Continuous vs call auctions
+% - Price discovery processes
+% - Clearing and settlement
+% Sources: [Add your source here]
+
+\begin{remark} \hlt{Price Discovery Overview}\\
+Price discovery occurs when supply and demand requirements cross, determining the actual execution price. The mechanism by which this happens varies by market structure. Three main types:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Bilateral Trading: One-to-one negotiation mechanisms (quote-driven, RFQ-based)
+\item Continuous Auction: Multilateral matching with continuous order processing
+\item Call Auction: Periodic batch matching at scheduled times
+\end{enumerate}
+Some markets lack independent price discovery. Execution prices are derived externally from primary markets (e.g., mid-point matching venues).
+\end{remark}
+
+\begin{definition} \hlt{Bilateral Trading Mechanisms}\\
+One-to-one trading where each party generally knows the counterparty identity. Mainly used in quote-driven and negotiation-based markets, though some hybrid markets also support bilateral execution.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Two-Way Quotes: Market maker quotes bid/offer prices and sizes. Price discovery occurs only when client accepts quoted prices ("hit the bid" or "take the offer"). Alternatively, parties may renegotiate.
+\item Identity Transparency: Bilateral nature allows market makers to tailor quotes based on client risk. Two-way quotes provide some protection to clients by not immediately revealing their trade side.
+\item Multi-Dealer Systems: Aggregate multiple dealer quotes in a single view, allowing clients to see available prices without contacting each dealer. Prices remain indicative; continuous updates needed.
+\end{enumerate}
+\end{definition}
+
+\begin{definition} \hlt{Request-For-Quote (RFQ) Systems}\\
+Client initiates by requesting quotes from dealers.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item RFQ: Client requests quote; dealer provides; client decides to hit/lift, renegotiate, or walk away.
+\item Request-For-Stream (RFS): Client requests continuous stream of firm quotes rather than single quote. Each new update represents a firm quote allowing client to decide whether to trade on each update. More dynamic than RFQ as dealer provides continuously updating stream.
+\end{enumerate}
+Both mechanisms widely used in fixed income (mainly RFQ) and foreign exchange (both RFQ and RFS). Anonymous bilateral mechanisms also exist (e.g., Liquidnet's crossing service), where counterparties negotiate anonymously, seeing scorecard of previous negotiations to gauge validity.
+\end{definition}
+
+\begin{definition} \hlt{Continuous Auction Mechanisms}\\
+Multilateral process applying matching rules each time an order is added, updated, or cancelled. Requires queuing system to process orders in turn.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Order Processing: Each order instruction added to internal order book, matching rules applied to check for matches, order book updated, execution notifications sent for matches.
+\item Priority Rules: Markets give highest priority to price. Secondary priority typically time-based (earlier orders first) or pro-rata (allocation based on order size proportion).
+\item Equity Priority: Price-time matching common in equities. Highest priced buy orders and lowest priced sells rewarded with highest probability of execution. For orders at same price, earlier orders take priority.
+\item Futures Priority: Price-pro-rata matching common in futures. Best priced buy/sell orders take priority, but allocation between orders at same price done proportionally based on size, rewarding larger orders.
+\end{enumerate}
+\end{definition}
+
+\begin{definition} \hlt{Call Auction Mechanisms}\\
+Batch auctions occurring as infrequently as once per day or as frequently as every 10-15 minutes. Orders queued and applied to auction order book; trade matching occurs at set auction time, not instantaneous.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Auction Crossing: Goal is to maximise volume crossed at the auction price. Orders accumulate before auction; prices form considering accumulated supply/demand.
+\item Price Determination: Venue may publish imbalance information between buy/sell orders pre-auction to help traders price auction orders. Auction crossing checks for order book crossing (market orders or limit orders with prices that cross). Best crossing price determined, typically maximising matched volume.
+\item Priority Application: Once auction price determined, order book processed to match orders within price limit. Many venues use time as secondary priority to reward early auction order entry.
+\item Opening/Closing Use: Many markets use call auctions for opening and closing to reduce price volatility and accumulate liquidity. Continuous auctions often switch to call auctions during volatility interruptions.
+\end{enumerate}
+\end{definition}
+
+\begin{remark} \hlt{Mid-Point Matching Without Price Discovery}\\
+Some continuous markets do not have independent price discovery mechanisms. Instead, execution price is derived externally from primary market.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item External Price Reference: If market orders supported, they execute at mid-point whenever sufficient volume available on other side. Limit orders execute when mid-point price reaches limit threshold.
+\item Mid-Point Definition: Typically defined as midpoint of external best bid/offer prices (often from primary market like NBBO in U.S.).
+\item Crossing Networks: Generally used to support continuous crossing for block-size orders.
+\end{enumerate}
+\end{remark}
+
+\begin{definition} \hlt{Reporting, Clearing and Settlement}\\
+Final stages of the trading process after execution.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Reporting: Trade execution details communicated to counterparties; market authorities may be informed.
+\item Clearing: Validation of trade and settlement details, ensuring buyer and seller have required assets/funds. Often handled by specific clearing agents at regulated exchanges.
+\item Settlement: Actual exchange of assets and funds. Ownership reassignment for buyer. Most financial assets now dematerialised (book entries only). Physical delivery still applies to some assets (commodities). Custodians/depositories handle safekeeping and associated corporate actions. Security depositories and custodians have become international to support cross-border trading.
+\end{enumerate}
+Settlement dates traditionally T+5, gradually shifting to T+1 and ultimately T+0. Straight-through-processing (STP) enables fully electronic pathway.
+\end{definition}
+
+\begin{definition} \hlt{Central Counterparty (CCP) Clearing}\\
+Execution venues increasingly adopt CCP approach for clearing and settlement.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Structure: Each deal split into two parts; each half transacted versus CCP. Buyer pays CCP for asset; seller delivers asset to CCP in return for payment.
+\item Counterparty Risk Reduction: CCP bears default risk, helping reduce bilateral counterparty risk. Buyer and seller only deal with CCP, allowing fully anonymous trading.
+\item Collateral Requirements: Parties provide sufficient collateral to cover trades, also means clearing can be nearly instantaneous.
+\item Netting: Single net trade versus CCP for all participant's trades in an asset. Reduces transfers and settlements substantially, leading to cost savings and reduced required margin.
+\item Cross-Margining: Central counterparties support margining across different assets, allowing futures positions to be hedged by underlying asset holdings, reducing funding/position management costs.
+\end{enumerate}
+\end{definition}
 
 \subsubsection{Dark Pools and Hidden Liquidity}
 % Non-displayed trading venues
@@ -33,11 +246,98 @@
 
 \subsubsection{Market Fragmentation}
 % Consequences of multiple venues
-% - Fragmentation metrics
-% - Consolidated order books
-% - Best execution challenges
-% - Smart order routing
 % Sources: Lehalle Ch.2-3; Harris Ch.29
+
+\begin{remark} \hlt{Liquidity Fragmentation}\\
+When seeking liquidity and the desired quantity is not instantaneously available in public quotes or electronic order books, the investor must split his large order in slices, through time and through trading venues or counterparts. Anticipating the optimal slicing is addressed by optimal trading theory.
+\end{remark}
+
+\begin{remark} \hlt{Fragmentation at Different Levels}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Market Operators: New operators appear in early phases of competition, then some merge.
+\item Trading Venues: Same operator can run multiple venues.
+\item Order Books: Same venue can offer multiple order books.
+\item Orders: As fragmentation increases, orders must be split through time and space across order books.
+\item Technology: Number of protocols needed to interact with venues increases with competition.
+\end{enumerate}
+\end{remark}
+
+\begin{definition} \hlt{Market Share as Fragmentation Metric}\\
+Market share is the most common metric to monitor fragmentation dynamics. Let $M$ transactions occur from date $t_1$ to $t_2$ over $N$ trading venues. Each trade $\ell$ has price $P_\ell$, volume $V_\ell$, timestamp $\tau_\ell$, and venue indicator $\delta_\ell = n$ if on venue $n$. The market share in traded value of venue $n$ on stock $k$ is:
+\begin{equation*}
+M_k(n) = \frac{\sum_{t_1 \leq \tau_\ell^k \leq t_2} P_\ell^k V_\ell^k \cdot \mathbf{1}_n(\delta_\ell^k)}{\sum_{t_1 \leq \tau_\ell^k \leq t_2} P_\ell^k V_\ell^k}
+\end{equation*}
+Market share per trade, where $T$ is total number of trades during the period:
+\begin{equation*}
+M_k^T(n) = \frac{\sum_{\ell=1}^{T} \mathbf{1}_n(\delta_\ell^k)}{T}
+\end{equation*}
+Market share varies intraday and is distorted by fixing auctions where one venue has monopoly. Best practice is to compute separate market shares for fixing auctions and continuous trading (ex-fixing).
+\end{definition}
+
+\begin{definition} \hlt{Market Share on Multiple Stocks}\\
+To aggregate market share across stocks $1 \leq k \leq K$:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Turnover-weighted: Weight by total traded value $T_k$ of each stock:
+\begin{equation*}
+M_{1,\ldots,K}(n) = \frac{\sum_{1 \leq k \leq K} T_k \cdot M_k(n)}{\sum_{1 \leq k \leq K} T_k}
+\end{equation*}
+\item Index-weighted: Weight by stock's weight $w_k$ in index $I$ (proportional to free-float or market cap):
+\begin{equation*}
+M_I(n) = \sum_{k \in I} w_k \cdot M_k(n)
+\end{equation*}
+\item Equally-weighted: Give same weight to each stock:
+\begin{equation*}
+M_{1,\ldots,K}^u(n) = \frac{1}{K} \sum_{1 \leq k \leq K} M_k(n)
+\end{equation*}
+\end{enumerate}
+Fragmentation typically increases with liquidity: the more liquid a stock, the more fragmented its trading.
+\end{definition}
+
+\begin{remark} \hlt{Fixing Auctions vs Continuous Trading}\\
+The choice of market share metric depends on the question being answered:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Revenue analysis: Include all trades (fixing, continuous), though fee structures may differ.
+\item Probability of execution on venue: Use $M_k^T(n)$ and separate fixing from continuous auctions, since fixing auctions often have 100\% probability on a single venue.
+\item Probability per unit of currency: Use $M_k(n)$ separately for fixing and continuous.
+\end{enumerate}
+\end{remark}
+
+\begin{definition} \hlt{Fixing Auction Market Share Distortion}\\
+Fixing auctions significantly distort market share calculations as primary markets typically maintain a monopoly on fixing auction trading. Let venue $T(n)$ have average market share $m(n)$ during fixing auctions, and let fixing auctions represent weight $p$ of overall daily trading volume (where $T = \sum_{1 \leq \ell \leq T} P_\ell^k V_\ell^k$ is average daily turnover). The relationship between market share excluding versus including fixing auctions is:
+\begin{equation*}
+M(n; \text{ex-fixing}) \approx \frac{1 - m(n)p}{1 - p} \cdot M(n; \text{all included})
+\end{equation*}
+The distortion is proportional to fixing auction weight $p$ and venue's monopoly share $m(n)$ during those auctions.
+\end{definition}
+
+\begin{remark} \hlt{Intraday Market Share Variation}\\
+Market share exhibits strong intraday variation, with different patterns on opening hours, mid-day trading, and closing sessions. This temporal dependence means market share must always be reported with specification of:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Time interval considered (first hour, last hour, full day)
+\item Whether fixing auctions are included or excluded
+\item Which fixing auctions are included (opening, closing, intraday, volatility interruptions)
+\end{enumerate}
+Failure to separate fixing from continuous trading can lead to misleading conclusions about venue competitiveness and liquidity fragmentation.
+\end{remark}
+
+\begin{remark} \hlt{Drivers of Market Fragmentation}\\
+Fragmentation benefits from several factors:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Market Transparency: Enables venues (such as ATSs) to reliably guarantee to match main market best prices without price discovery effort.
+\item Technological Changes: Distribution of prices and order flow between venues easier.
+\item Regulatory Policy: Mandates transparency and encourages competition by allowing venue linking.
+\end{enumerate}
+To capture order flow from established markets, competing venues offer additional functionality such as anonymity, better block order handling, or lower costs. Some offer inducements like rebates for orders supplying liquidity, or direct payments to brokers (payment for order flow, criticized as it does not go to customer). As markets are linked, consequences of fragmentation can be minor. One main issue: fragmented markets only truly support price priority. Secondary priorities (time, size) not fully supportable across multiple linked markets when large orders trade through a range of prices at one venue. Most markets are in constant flux; new trading venues appear whilst fierce competition results in many merging or failing.
+\end{remark}
+
+% Consolidated order books
+% Best execution challenges
+% Smart order routing (detailed in 11_execution_algorithms.tex)
 
 \subsubsection{Auction Mechanisms}
 % Opening, closing, and periodic auctions

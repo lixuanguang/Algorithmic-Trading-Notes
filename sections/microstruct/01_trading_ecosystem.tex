@@ -200,6 +200,25 @@ The choice of market share metric depends on the question being answered:
 \end{enumerate}
 \end{remark}
 
+\begin{definition} \hlt{Fixing Auction Market Share Distortion}\\
+Fixing auctions significantly distort market share calculations as primary markets typically maintain a monopoly on fixing auction trading. Let venue $T(n)$ have average market share $m(n)$ during fixing auctions, and let fixing auctions represent weight $p$ of overall daily trading volume (where $T = \sum_{1 \leq \ell \leq T} P_\ell^k V_\ell^k$ is average daily turnover). The relationship between market share excluding versus including fixing auctions is:
+\begin{equation*}
+M(n; \text{ex-fixing}) \approx \frac{1 - m(n)p}{1 - p} \cdot M(n; \text{all included})
+\end{equation*}
+The distortion is proportional to fixing auction weight $p$ and venue's monopoly share $m(n)$ during those auctions.
+\end{definition}
+
+\begin{remark} \hlt{Intraday Market Share Variation}\\
+Market share exhibits strong intraday variation, with different patterns on opening hours, mid-day trading, and closing sessions. This temporal dependence means market share must always be reported with specification of:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Time interval considered (first hour, last hour, full day)
+\item Whether fixing auctions are included or excluded
+\item Which fixing auctions are included (opening, closing, intraday, volatility interruptions)
+\end{enumerate}
+Failure to separate fixing from continuous trading can lead to misleading conclusions about venue competitiveness and liquidity fragmentation.
+\end{remark}
+
 \begin{definition} \hlt{Price Formation Process (PFP)}\\
 Mechanism by which markets balance supply and demand via the occurrence of deals between traders, forming prices that constitute a fair view of the value of exchanged assets.
 \begin{enumerate}[label=\roman*.]

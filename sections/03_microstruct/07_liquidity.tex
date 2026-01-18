@@ -6,6 +6,23 @@
 
 \subsection{Liquidity}
 
+\begin{definition} \hlt{Liquidity Risk}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Time period to find needed liquidity, where prices can change adversely.
+\item Market impact due to potential sellers observing order book dynamics and offer worse prices.
+\end{enumerate}
+\end{definition}
+
+\begin{definition} \hlt{Liquidity Proxies}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Bid-Ask Spread: Distance between best bid-ask prices. Short-term proxy without emphasise on quantities.
+\item Round Trip Cost: Net loss on an immediate buy then sell of a given quantity. Accounts for depth. Computing over several quantities yields a curve associating a price to each possible demanded quantity.
+\item Market Depth: The quantities available at each price level in the order book.
+\end{enumerate}
+\end{definition}
+
 \subsubsection{Dimensions of Liquidity}
 % Multi-dimensional nature of liquidity
 % - Tightness (cost of round-trip)

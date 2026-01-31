@@ -12,10 +12,10 @@
 % - Fixed income: bonds, repos
 % - Derivatives: futures, options, swaps
 % - FX: spot, forwards
-% - Crypto assets
+% - Crypto assets_
 % Sources: Harris Ch.4; Johnson Ch.3
 
-\subsubsection{Order Types}
+\subsubsection{Order Types, Properties and Instructions}
 % Fundamental order types and their use cases
 % - Market orders: immediate execution, price uncertainty
 % - Limit orders: price certainty, execution uncertainty
@@ -25,13 +25,113 @@
 % - Algorithmic order types (TWAP, VWAP, etc.)
 % Sources: Harris Ch.4; Johnson Ch.4-5; Lehalle Ch.1
 
-\subsubsection{Order Properties and Instructions}
-% Time-in-force and execution constraints
-% - Day, GTC, GTD, IOC, FOK
-% - All-or-none (AON)
-% - Minimum quantity
-% - Display vs. non-display
-% Sources: Harris Ch.4; Johnson Ch.5
+\begin{remark} \hlt{Market Order}\\
+Trade a given quantity at the best price possible. Risk uncertainty of execution price.\\
+For orders larger than current best bid/offer, allow market orders to progress deeper into the book.\\
+Performance is dependent on current market conditions. Large orders have significant market impact.
+\end{remark}
+
+\begin{remark} \hlt{Limit Order}\\
+Buy or sell given quantity at specified price or better. Will try to fill as much without breaking price limit.\\
+If no orders that match price, order is left in order book until expiry or cancellation.\\
+Aggressive limit price act like market order demanding liquidity; passive limit price try to capture gains from future price trends or reversions.\\
+Risk is lack of execution certainty, hence need balance between immediacy and price.
+\end{remark}
+
+\begin{remark} \hlt{Optional Order Instructions}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Duration: Good for Day (GFD), Till Date (GTD), Till Cancel (GTC), After Time/Date (GAT)
+\item Auction/Crossing Session: mark for participation in auction, or trading either at open, close, or intraday
+\item Fill: Immediate-or-cancel (IOC), fill-or-kill (FOK) (IOC with $100\%$ completion requirement), all-or-none (AON) (FOK without immediacy), minimum volume (match if quantity sufficient), must-be-filled (MBF)
+\item Preferencing: preferenced (prioritise specific market maker), directed (routed to specific market maker or dealer, may accept or reject them).
+\item Routing: do-not-route (execution venue handle order locally), directed routing (host venue acts as gateway to chosen destination), inter-market sweeps (broker must ensure order protection and best execution requirements met), flashing (displayed at source venue for instant before routed away)
+\item Linking: one-cancels-other (mutually exclusive orders), one-triggers-other (supplementary order created on successful execution of main order), grouped orders.
+\item Identity Details: offer anonymity or anonymous identifiers
+\item Short-Sales: enforce tick-sensitive trading (i.e. sell only on uptick or even tick)
+\item Odd-lots: allow rounded lot orders to be matched with odd-lots
+\item Sentiment Instructions: forex settlement, cash settlement etc.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Optional Order Instructions}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Market-to-Limit: market order, then to standing limit order for residual amount at last execution price
+\item Market-with-Protection: market-to-limit order with limit price away from last execution price
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Conditional Order Types}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Stop: become active market order when reaching trigger price. Used for stop-loss. Stop-limit triggers a limit order. Protection stops add limit-like cap/floor around stop to reduce extreme fills.
+\item Trailing Stop: trigger price is pegged to favourable moves in price. If market turns, stop does not move, and triggers as a normal stop or stop-limit order when price reaches trigger price.
+\item Contingent/If-Touched: hidden until trigger price is reached, then activate into market or limit order. Used as entry orders in forex to establish positions, and may trigger based on another asset price.
+\item Tick-Sensitive: adds validity condition based on last trade price. Buy-on-downtick execute only on downtick; sell-on-uptick only execute on uptick. Reduce immediate market impact but sacrifice immediacy to get one-tick better price; most useful when tick size is large.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Hidden Order Types}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Hidden: provide liquidity or trade size without revealing full interest in order book. Infer by liquidity pinging with IOC limit orders to see whether additional hidden size is available at that level. Hidden orders given lower priority than displayed orders. Venues may add variants to reduce small pinging.
+\item Iceberg/Reserve: shows only a small visible “peak” of a larger limit order; the rest is hidden. When the visible slice fills, the venue automatically reposts a new slice from the hidden reserve until the full size is done. Each reposted slice gets a new time priority, so the chosen peak size affects how quickly it fills.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Discretionary Order Types}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Not-Held: complete discretion to trader on how the order is worked. Used for floor traders in less transparent markets as they have best knowledge of market conditions.
+\item Discretionary: limit order that displays one limit price but is allowed to execute within an extra discretion range when a matching order comes close.
+\item Pegged: limit order with trigger price pegged to a reference price, reduce risk of a resting limit becoming stale/mispriced. May have hard cap/floor. Some venues require a minimum contra size to move the peg, and some support a display size (iceberg-style) for pegged orders.
+\item Scale: splits one parent order into multiple child limit orders placed at several price levels. Orders are already in the book, may get fills with time priority as price moves.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Routed Order Types}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Pass-Through: execute on hosting venue (typically IOC), then routes unfilled remainder to destination venue (primary exchange) as a normal order. Offered by crossing networks/dark pools to capture liquidity locally before sending residual onward, reducing information leakage.
+\item Routing-Strategy: allow more complex instructions
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item MOPP: Route to all protected quotes for display size only. Post any residual on NASDAQ
+\item DOTI: NASDAQ for NBBO or better. Route any residual to NYSE or AMEX
+\item SKIP: NASDAQ for NBBO or better. Route to Reg NMS protected venues. Residual on NASDAQ
+\item SCAN: NASDAQ for NBBO or better. Route to alternate execution venues. Residual on NASDAQ
+\item STGY: As SCAN. Residual will route if NASDAQ subsequently locked or crossed
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Crossing Order Types}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Committed: standard market or limit orders, available for immediate execution
+\item Uncommitted: indications of interest (IOIs) that requires confirmation before execution. Match against other uncommitted orders or firm orders, but do not generate unexpected fills. To deter liquidity pinging, venues often impose safeguards like minimum size requirements and scorecard/eligibility rules.
+\item Negotiated: crossing-network orders that trigger a structured, bilateral negotiation: both sides adjust price/size till agreement, with no trade obligation. Anonymous; venues provide participant historical crossing success rates (scorecards) to help counterparties assess each other.
+\item Alerted: venue sends automated alert to approved liquidity providers/members; they respond with quotes/interest, and if match is found they submit firm order. Some implementations run a short solicitation window to gather responses, then execute eligible orders, with venue-defined priority rules.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Order-Contingent Order Types}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Linked-Alternative: set of alternative orders tied together so that fills in one automatically reduce the remaining size of the others by the same proportion/amount. Risk is concurrent fills across venues causing an over-fill unless the linkage is enforced tightly.
+\item Contingent: link multiple legs across assets so execution happens only if all dependent legs can be matched, enabling spread/multi-leg trading (common on futures exchanges).\\
+Specify a target spread; each leg’s limit price is derived from the other asset’s best price plus the spread. As market prices/sizes change, the legs are continuously repriced and resized to maintain the spread, and if one leg starts filling the other is immediately adjusted to complete the package.
+\item Implied: synthetic quotes generated by the exchange from combinations of related outright and spread orders (common in futures). By linking outright and spread order books, the venue can imply additional bid/offer prices and sizes that maintain the required spreads, creating extra executable liquidity.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Implied IN: outright leg orders imply a spread quote (e.g., buy Jun and sell Sep implies a bid in the Jun–Sep spread at the price difference; size is min of the legs).
+\item Implied OUT: a spread order plus one outright leg implies a quote in the missing outright (deconstructing the spread).
+\end{enumerate}
+Matching typically gives priority to actual (explicit) orders; implied orders fill residual. Implied orders can chain (second-generation) and extend to more complex spreads (e.g., butterflies), further increasing effective liquidity.
+\end{enumerate}
+\end{remark}
+
 
 \subsubsection{The Order Lifecycle}
 % From submission to execution or cancellation

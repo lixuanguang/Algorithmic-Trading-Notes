@@ -274,13 +274,120 @@ Focus on minimising market impact. Leverage dark pool ATSs, broker crossing netw
 \label{fig:minimal_impact}
 \end{figure}
 
-\subsubsection{Implementation Shortfall Algorithms}
+\subsubsection{Cost-Driven Algorithms}
 % Cost-minimization strategies
 % - Front-loaded schedules
 % - Risk-adjusted optimization
 % - Parameter sensitivity
 % - Real-time adaptation
 % Sources: Johnson Ch.14; Cartea Ch.7
+
+Cost-driven algorithms seek to reduce overall transaction costs, which includes commissions, spreads, and other implicit costs such as market impact and timing risk.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.50\textwidth]{images/03_microstruct/trading_strategy_costs.png}
+\caption{Trading Strategy Cost Tradeoffs}
+\label{fig:trading_strategy_costs}
+\end{figure}
+
+\begin{remark} \hlt{Implementation Shortfall (IS) Algorithm}\\
+Determine an optimal trading horizon that balances market impact against timing risk.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Execution Approaches:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Model-Based: optimal trading horizons (model-determined end times, optimal participation rates)
+\item Ground-Up Designs: built from scratch to react opportunistically to market price, liquidity changes
+\item Hybrid: enhanced versions of VWAP or POV algorithms with cost optimisation overlays
+\end{enumerate}
+\item Time Horizon Determinants: shorter trade horizon appropriate when assets have high volatility or low bid-offer spreads, investor has high risk aversion, order size is relatively small.\\
+Quantitative models incorporate these factors along with order size, available trading time, asset liquidity and volatility, and investor urgency to derive the optimal trade horizon.
+\item Static Implementation Shortfall: conceptually similar to a tilted VWAP algorithm, uses a historical volume profile with the optimal end time to determine target percentages for each trading interval.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Trading Profile Construction: historical volume information is scaled to optimal time window, generating new target percentages for each interval
+\item Tilt Factor Application: an additional weighting is applied to increase trading at the order start, reducing timing risk without excessive market impact
+\item Result: aggressive execution early, with trading gradually declining as market volumes decrease
+\end{enumerate}
+\item Dynamic Implementation Shortfall: bases trading pattern on inline participation with market volume, conceptually similar to a tilted POV algorithm
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Participation Rate Calculation: using historical volume profile and end time, calculate expected total market volume by end time. Optimal participation rate is then $\text{order size} / \text{expected market volume}$
+\item Dynamic Adjustment: apply tilt factor that starts with positive adjustment and decreases over time
+\item Adaptability: responds to actual market volume rather than pre-determined schedules, finishing earlier when market volume exceeds historical estimates
+\end{enumerate}
+\item Variants: See Adaptive Shortfall and Market-on-Close subsections below
+\end{enumerate}
+\item Special Parameters:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Benchmark Price: specifies decision price; otherwise defaults to arrival price (midpoint) when the order was received. The IS algorithm optimises execution relative to this benchmark.
+\item Risk Aversion: higher risk aversion triggers shorter time horizon with more aggressive execution tactics. Some algorithms support discrete settings (passive, neutral, aggressive) while others allow fine-grained settings (e.g., 1 to 10 scale).
+\item Execution Style: replaced by or derived from Risk Aversion setting, though some variants maintain separate controls. Affects how aggressively algorithm pursues the completion schedule.
+\item End Time: absolute deadline for order completion. IS algorithms derive optimal trading horizons, to verify with pre-trade analytics that specified end time does not fall before calculated optimal time.
+\item Limit Prices: for price protection. IS algorithms are optimised to work toward benchmark (arrival price), so limit prices outside this logic may negatively impact performance.
+\item Volume Limits: IS algorithms typically start by trading fairly aggressively to minimise timing risk, with internal models balancing market impact against this risk. Overly stringent volume limits can impair algorithm performance. If intent is to reduce signalling risk, a minimal impact or liquidity-driven algorithm may be more appropriate.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Adaptive Shortfall (AS) Algorithms}\\
+Algorithm class is derived from implementation shortfall, with addition of adaptive behaviour (reaction to market price). Effectively, price adaptive shortfall algorithms behave more opportunistically.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Basic Mechanism: an implementation shortfall algorithm, basic behaviour follows IS approach. In addition, the algorithm dynamically adapts to market conditions. Effectively, this is like having a tilt function that adjusts in real-time based on current market conditions.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item A baseline target for volume participation is determined based on estimated optimal trade horizon
+\item During trading, the adaptive portion is then used to modify this rate based on market conditions
+\end{enumerate}
+\item Price Adaptation Strategies: 
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Aggressive In-the-Money (AIM): more aggressively with favourable prices and less when they become adverse. Assumes trends are short-lived and will soon revert.
+\item Passive In-the-Money (PIM): more passive when prices are favourable. Relies on trend persisting, react aggressively to stem losses from unfavourable trends, but passively during favourable trends.
+\item Target Strategy: Similar to price inline algorithm, since it does not account for timing risk, which is covered in the following subsection
+\end{enumerate}
+AIM achieves better prices but at slightly higher risk, PIM quicker to cut losses achieving slightly lower risk but may achieve poorer prices than AIM.
+\item Liquidity and Order Book Adaptations: can also add behaviour reacting to changes in order book depth or overall liquidity measures. Increasingly accessing liquidity from dark pool ATSs
+\item Special Parameters:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Adaptation Type: Either Aggressive In-the-Money (AIM) or Passive In-the-Money (PIM)
+\item Other parameters: same as implementation shortfall algorithms
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Market-on-Close (MOC) Algorithms}\\
+Prices are more sensitive to order flows at the close. 
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Benchmark: close price for mark to market and calculating net asset values, daily returns/profit and loss.
+\item Basic Mechanism: benchmark is unknown until end of trading day. If start trading too early, exposed to timing risk due to variability in closing price. If start too late, may cause significant market impact.
+\item Optimal Trading Horizon: determined using quantitative models, which incorporate estimates of volatility and trading volume to calculate an optimal start time.\\
+Constantly monitor market volume and adjust participation rate accordingly, similar to passive in-the-money adaptive shortfall algorithm.
+\item Departure Price Algorithms: more generic mechanism which will trade to any given end time. i.e., to ensure position is achieved by midday, set end time accordingly, let algorithm find optimal start time.
+\item Special Parameters:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Risk Aversion: high risk aversion signifies trade is more subject to price risk and should be traded more quickly, meaning optimal start time closer to market close. If there is genuine price risk, use a shortfall algorithm rather than market close.
+\item End Time: allow control over end time, giving a much more flexible approach
+\item Auction Participation: minimum and/or maximum order size allowed to participate in close auction
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/IS_completion_rate.png}
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/AS_completion_rate.png}
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/MC_completion_rate.png}
+\caption{Completion Rates: Implementation Shortfall, Adaptive Shortfall, Market-on-Close}
+\label{fig:is_completion_rates}
+\end{figure}
+
 
 \subsubsection{Opportunistic Algorithms}
 % Liquidity-seeking strategies
@@ -289,6 +396,78 @@ Focus on minimising market impact. Leverage dark pool ATSs, broker crossing netw
 % - Pegging strategies
 % - Adaptive algorithms
 % Sources: Johnson Ch.15; Lehalle Ch.9
+
+Opportunistic algorithms take advantage of favourable market conditions (i.e., price, liquidity etc).
+
+\begin{remark} \hlt{Price Inline (PI) Algorithms}\\
+Adapts trading to market price similarly to how POV algorithms adjust to market volume.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Benchmark: if is defined, trading is altered based on how market price compares to this. If no benchmark specified, then mid price when order arrives is typically used instead.
+\item Price Adaptation: aggressive in-the-money (AIM), passive in-the-money (PIM) strategies (refer to AS)
+\item Basic Mechanism: consists of basic trading mechanism combined with price adaptive functionality. Price adaptation directly track difference between market price and benchmark, or even other factors.
+\item Common Variations: price adaptation based on price of other assets, sectors, market indices or even ETFs
+\item Special Parameters:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Adaptation Type: Either aggressive in-the-money (AIM) or passive in-the-money (PIM)
+\item Benchmark Price: if related to another asset, index or ETF, details will need to be provided to allow algorithm to make a real-time price subscription
+\item Participation Rate: if based on dynamic POV type mechanism, baseline participation rate needed
+\item Participation Adjustment: how much to alter participation rate by for a given price move
+\item Price Levels: size of price moves for participation adjustments
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/PI_target_participation_rate.png}
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/PI_completion_rate.png}
+\caption{Price Inline Algorithm Target Participation Rate and Completion Rate}
+\label{fig:pi_completion_rates}
+\end{figure}
+
+\begin{remark} \hlt{Liquidity-Driven Algorithms}\\
+Finding liquidity is an important means of reducing costs, particularly for illiquid assets.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Evolution: originally meant making decisions based on available order book depth. Today, due to fragmented markets, liquidity aggregation has become an important tool.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Multi-broker systems pooled dealer quotes: gather as much order book data as possible from every venue and aggregate results into a virtual order book
+\item Virtual Order Book: orders from primary exchange and several electronic crossing networks (ECNs) and dark pool alternative trading systems (ATSs)
+\item Liquidity Aggregation: summing available orders at each price point across all different venues. For assets such as futures or options, account for liquidity implied from more complex spread strategies.
+\item Venue Considerations: venues have own fee structures, need to consider this when comparing prices. Latency could significantly reduce the probability of execution.
+\end{enumerate}
+\item Execution Probability: execution not guaranteed when choosing between venues. To track probability of execution, based on factors including cancellation probability, latency and historical results.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Hidden Liquidity: probability based on likelihood of hidden volume at that price.
+\item Order Book Aggregation: orders aggregated into a virtual order book with priority based on price then probability. Preference given to venues with best price and highest execution probability.
+\item Hidden Volume Tracking: continually track reported trades and match to order book state. Trades at better prices than shown may indicate hidden liquidity. Tracking enable prediction of hidden sizes.
+\end{enumerate}
+\item Basic Mechanism: liquidity is closely related to market depth and price. Algorithm react strongest when there is market depth and favourable price. Reasonably similar to aggressive in-the-money style trading.\\
+Create market depth measure that reflects notional volume available at a favourable price point. If price and market depth favourable, trade aggressively to consume liquidity. Higher level of participation may be achieved by spreading the execution across a wide range of venues. May reduce participation when the price becomes unfavourable, much like a price inline algorithm
+\item Completion Risk: order does not fully complete due to price becoming unfavourable, since there was sufficient liquidity. In practice, brokers may well offer versions that support a base level of participation or finish-up logic to help ensure the order executes fully.
+\item Signalling Risk: for illiquid assets, even small order can result in price shifting away as other traders try to second-guess requirements. To counter this, adopt a similar strategy of using immediate-or-cancel style (IOC) orders. When liquidity becomes available an aggressive order is used to cross with it (sniping). In order to leave the best price unaffected, some strategies only take orders available one tick size down. Alternatively, hidden orders may be used, either iceberg orders or discretionary orders, although these will leave a certain display size on the order book..
+\item Asset Suitability: intended for more illiquid assets and fragmented markets, where signalling risk is more important concern and more of the liquidity is hidden. Hence, tactics such as seeking and sniping using IOC type orders become important.
+\item Common Variations: specific venue participation only, i.e., dark pool ATSs. Orders may not be included in broker's internalisation stream. 
+\item Special Parameters:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Visibility: low visibility implies hidden order types or IOC orders should be used, or the order is only worked in dark pool ATSs. Higher visibility may be used to leave orders exposed, trying to encourage trading for illiquid assets.
+\item Benchmark Price: used to decide whether the price is favourable enough to warrant participation
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/LS_target_participation_rate.png}
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/LS_completion_rate.png}
+\caption{Liquidity Seeking Algorithm Target Participation Rate and Completion Rate}
+\label{fig:ls_completion_rates}
+\end{figure}
 
 \subsubsection{Smart Order Routing (SOR)}
 % Venue selection and routing

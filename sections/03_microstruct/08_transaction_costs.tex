@@ -13,6 +13,33 @@
 % - Total cost of ownership
 % Sources: Harris Ch.20; Johnson Ch.10
 
+\begin{remark} \hlt{Spread Types for Cost Measurement}\\
+Cost differences for effective and realised spreads to be doubled, as both are calculated using the mid price.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Quoted spread: Market quality measure (best bid $-$ offer price)
+\item Effective spread: Execution cost (trade price $-$ quote midpoint when order was received)
+\item Realised spread: Trading intermediary profits (trade price $-$ quote midpoint 5 minutes after the trade)
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Benchmark Types for Cost Measurement}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Post-Trade: closing prices. Used as milestone for mark to market, and P\&L computations
+\item Intraday: Open-High-Low-Close (OHLC), Time Weighted Average Price (TWAP), Volume Weighted Average Price (VWAP). Accurately reflect intraday market conditions.
+\item Pre-Trade: previous close, open price, decision price, arrival price. Measure of performance on average price achieved in execution, and market price when investor decision was first made.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Components of Transaction Costs}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Explicit: commissions, fees, and taxes, quoted in basis points.
+\item Implicit: timing cost, delay cost, impact, opportunity cost.
+\end{enumerate}
+\end{remark}
+
 \subsubsection{Implementation Shortfall}
 % Perold's framework for measuring execution quality
 % - Paper portfolio vs. actual portfolio

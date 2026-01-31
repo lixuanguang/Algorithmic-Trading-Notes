@@ -14,6 +14,129 @@
 % - Performance measurement
 % Sources: Johnson Ch.12; Lehalle Ch.9
 
+Although there are many variations of trading algorithms, stripping away customisations reveals a small set of core strategies commonly provided by most brokers and vendors. Understanding how these algorithms are categorised helps in selecting the appropriate execution strategy for different trading objectives.
+
+\begin{remark} \hlt{Classification by Benchmark Usage}\\
+One classification approach is based on the benchmarks algorithms target:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Pre-determined benchmark: target fixed in advance (e.g., decision price for Implementation Shortfall)
+\item Dynamic benchmark: target adjusts with market conditions (e.g., intraday volume profile for VWAP)
+\item Forward-looking benchmark: aims to match a future price (e.g., Market-on-Close seeks the closing price)
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Classification by Fundamental Mechanisms}\\
+\cite{domowitz2005} describe algorithm types as a continuum ranging from unstructured strategies (e.g., liquidity seeking) to highly structured approaches (e.g., VWAP). \cite{yang2006} extend this by splitting the continuum into three main categories based on trader objectives:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Schedule-driven: follow a strictly defined trading trajectory, generally created statically from historical data. For instance, VWAP algorithms use historical intraday volume profiles as templates for order slicing over time. These algorithms are purely schedule-driven at the macro level.
+\item Evaluative: represent the middle ground, combining aspects of each approach. At the macro level they may behave in a schedule-driven fashion, whilst at the micro-level they focus on balancing the trade-off between cost and risk. Implementation Shortfall algorithms are good fits for this category.
+\item Opportunistic: completely dynamic, reacting to favourable market conditions and trading more aggressively to take advantage of them. When conditions become less favourable, they trade more passively, if at all. Liquidity-seeking algorithms fit this category.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Classification by Implementation Goals}\\
+A slightly modified scheme focuses on how traders make decisions based on objectives.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Impact-driven: aim to minimise overall market impact by reducing effect trading has on asset price. Large orders are split into smaller ones and traded over longer periods. VWAP is the archetypal example.
+\item Cost-driven: reduce overall trading costs, accounting for market impact, timing risk, and price trends. Implementation Shortfall most commonly used, serving as an important performance benchmark.
+\item Opportunistic: Take advantage whenever market conditions are favourable, typically being price or liquidity-driven, or involving pair/spread trading. i.e., Price Inline and Liquidity-driven algorithms.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Algorithm Sensitivity Factors}\\
+Different algorithm types exhibit varying sensitivities to market factors:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Pre-determined benchmark: TWAP, VWAP, POV algorithms
+\item Price sensitivity: Implementation Shortfall, Adaptive Shortfall, Price Inline algorithms
+\item Volume sensitivity: POV, Adaptive Shortfall, and opportunistic strategies
+\end{enumerate}
+\end{remark}
+
+\begin{table}[h]
+\centering
+\caption{Algorithm Classification by Implementation Goals}
+\label{tab:algo_classification}
+\begin{tabular}{|l|l|l|c|c|c|c|}
+\hline
+\textbf{Type} & \textbf{Key Focus} & \textbf{Algorithms} & \multicolumn{2}{c|}{\textbf{Benchmark}} & \multicolumn{2}{c|}{\textbf{Sensitivity}} \\
+\cline{4-7}
+ &  &  & Dynamic & Pre-det. & Price & Volume \\
+\hline
+\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Impact-driven\end{tabular}} 
+ & Time & TWAP & \checkmark &  &  & \\
+\cline{2-7}
+ & \multirow{2}{*}{Volume} & VWAP & \checkmark &  &  & \\
+\cline{3-7}
+ &  & POV &  & \checkmark &  & $\bullet$ \\
+\cline{2-7}
+ & Impact & Minimal Impact & \checkmark &  & $\circ$ & $\circ$ \\
+\hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}Cost-driven\end{tabular}} 
+ & \multirow{3}{*}{Price/Risk} & Implementation Shortfall &  & \checkmark & $\circ$ & $\circ$ \\
+\cline{3-7}
+ &  & Adaptive Shortfall &  & \checkmark & $\bullet$ & $\circ$ \\
+\cline{3-7}
+ &  & Market On Close & \checkmark &  & $\circ$ & $\circ$ \\
+\hline
+\multirow{3}{*}{Opportunistic} 
+ & Price & Price Inline &  & \checkmark & $\bullet$ & $\circ$ \\
+\cline{2-7}
+ & Liquidity & Liquidity-driven &  & \checkmark & $\circ$ & $\circ$ \\
+\cline{2-7}
+ & Ratio/Spread & Pair/Spread trading &  & \checkmark & $\bullet$ & \\
+\hline
+\end{tabular}
+\vspace{0.2cm}
+
+\small{$\bullet$ = often sensitive, $\circ$ = sometimes sensitive}
+\end{table}
+
+\begin{remark} \hlt{Common Algorithm Parameters}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Specific parameters: Used to specify algorithm-specific behaviour. For example, how much a VWAP algorithm may deviate from the historical volume profile, or the participation required for a POV algorithm.
+\item Generic parameters: Common details, i.e., when to start and stop, whether to enforce a limit price cap.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Timing Parameters}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Start/End Times: specific time act as hard limits even when cost-based algorithms derive their own optimal horizons. Orders with insufficient time horizons may be rejected.\\
+Defaults: start time = now (or market open), end time = market close. Timezone handling is critical for correct transmission and interpretation. Multi-day trading requires explicit end dates.
+\item Duration: may be used instead of end times
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Execution Control Parameters}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Must-be-filled: ensure algorithm trades any residual amounts with specialised finish up logic (aggressive), which will affect overall cost/performance.
+\item Execution Style: passive, aggressive or neutral trading. Aggressiveness is a function of both size and price, so an aggressive algorithm will often execute more quickly, but at a higher impact cost than a passive one.
+\item Limit Price: offers price protection just as it would for a limit order.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Volume Constraint Parameters}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Volume Limit (Maximum): prevents algorithm from trading more than a certain percent of the actual market volume. For preventing signalling risk, use minimal impact or liquidity-driven algorithm.
+\item Volume Limit (Minimum): may have substantial effect on market impact costs.
+\item Volume Limit (Child): limits on size of child orders, or number of orders that can be extant at any one time. For preventing signalling risk, use minimal impact or liquidity-driven algorithm.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Auction Participation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Auctions: flag to specify whether the order may participate in opening, closing and any intraday auctions. There may be parameters to state this as a percentage of the order size.
+\end{enumerate}
+\end{remark}
+
 \subsubsection{Scheduled Algorithms}
 % Time-based execution strategies
 % - TWAP (Time Weighted Average Price)
@@ -28,6 +151,128 @@
 %   - Participation rate strategies
 %   - Adaptive participation
 % Sources: Johnson Ch.13; Lehalle Ch.9
+
+Scheduled algorithms split large orders into smaller child orders to reduce market impact. TWAP and VWAP represent the first generation, tracking statically created trajectories based on their respective benchmarks with little sensitivity to market conditions. Their primary aim is complete execution within the given timeframe.
+
+\begin{remark} \hlt{Time Weighted Average Price (TWAP)}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Benchmark: average market price
+\item Execution: based on a uniform time-based schedule, child orders are issued at regular intervals for equal sizes throughout the trading period. The idealised completion rate charts are straight lines.
+\item Signalling Risk: other market participants only do not know total size of order. Potential poor execution quality when prices become unfavourable or available liquidity suddenly drops.
+\item Randomised TWAP: approach tracks linear target completion profile. Algorithm vary both frequency and size of trades while maintaining overall schedule, reducing predictability and signalling risk, though execution may lag or lead the target at intermediate points.
+\item Common Variations:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Aggressive/Passive Tilting:  aggressiveness issue more orders early, reducing timing risk. Passiveness result in lower market impact costs.
+\item Price Adaptive: adjust schedule dynamically based on market price
+\end{enumerate}
+\item Special Parameters
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Tracking: controls how closely the algorithm tracks the target completion profile via on/off switches or limits (percentage/cash value) for schedule deviations. Inferred from execution style parameters.
+\item Interval Frequency: controls trading frequency and whether randomisation is used to vary intervals.
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/simple_TWAP_completion_rate.png}
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/randomised_TWAP_completion_rate.png}
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/tilted_TWAP_completion_rate.png}
+\caption{TWAP Completion Rates: simple uniform slicing, randomised, tilted aggressive/passive}
+\label{fig:twap_completion_rates}
+\end{figure}
+
+\begin{remark} \hlt{Volume Weighted Average Price (VWAP)}\\
+Volume-weighted average corresponding to overall turnover divided by total volume
+\begin{equation}
+VWAP = \left(\sum_n v_n p_n \right)/\left(\sum_n v_n\right) \nonumber
+\end{equation}
+where $v_n$ is the size and $p_n$ is the price of trade $n$.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Benchmark: total traded value divided by total traded quantity. Reflects market conditions.
+\item Execution: requires trading in proportions matching expected volume distribution. As intraday volume is unknown, historical volume profiles used. Optimal trading schedule is $x_j = u_j X$ where $u_j$ is percentage of daily volume traded at period $j$, $X$ is total order size.
+\item Adaptive Variants: monitor current market conditions, creating a hybrid with dynamic volume participation. May also adjust to short-term price and volume trends.
+\item Special Parameters:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Tracking: control over how closely algorithm tracks target completion profile via custom parameters or inferred from execution style.
+\item Start/End Time: can be specified for specific interval; otherwise defaults to whole trading day.
+\item Trending/Tilting: VWAP is acceptable benchmark when no specific price view exists. If price expected to trend, tilting target execution profile towards start or end may be expensive.
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/simple_VWAP_completion_rate.png}
+\caption{VWAP Completion Rate}
+\label{fig:simple_vwap}
+\end{figure}
+
+\begin{remark} \hlt{Percent of Volume (POV)}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Execution: participate in market at a given rate in proportion with market volume. Completes as soon as the market volume allows, or at specified end time.
+\item Market Impact Risk: multiple competing POV algorithms on illiquid assets can drive each other. Signalling risk is lower than uniform slicing since trading pattern varies with market conditions.
+\item Variants:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Volume Forecasting: using historical profiles and current observed volume
+\item Price Adaptive: adjust participation rate based on how current market price compares to a benchmark price, or relative price changes for other assets.
+\item Corporate Buyback: strict timing, price, volume conditions per SEC Rule 10h-18 safe harbour provision, which protects issuers against liability for market manipulation.
+\end{enumerate}
+\item Special Parameters:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Participation Rate: specify percentage of observed market volume to match.
+\item Tracking: Control over how closely algorithm tracks target participation rate
+\item Volume Filters: prevent unnecessary chasing of volume by excluding or setting maximum trade size limits. May track from primary exchange, composite volume, or all venues.
+\item Start/End Time: only track volume while active. End time as firm limit, completion not guaranteed.
+\item Must-be-Filled: flag for $100\%$ completion, allowing trading style changes as time runs out.
+\item Limit Price: ignore trades outside the limit.
+\item Execution Style: passiveness for price improvement, aggressiveness to track participation more closely, especially for illiquid assets.
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/simple_POV_completion_rate.png}
+\caption{POV Completion Rate}
+\label{fig:simple_pov}
+\end{figure}
+
+\begin{remark} \hlt{Minimal Impact Algorithms}\\
+Focus on minimising market impact. Leverage dark pool ATSs, broker crossing networks, and hidden order types to reduce signal leakage risk.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Execution: simplest is to route entire order to dark pool ATS. As ATS fill rates can be low, split order by leaving most on ATS, trade remainder using passive VWAP or POV, or even liquidity-driven algorithm. 
+\item Variants:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item ATS Fill Models: estimate probability of ATS fills to determine optimal order allocation.
+\item Impact Cost Models: forecast potential costs to use as benchmarks or compare against alternatives.
+\item Stealth-Based Approaches: reduce impact via similar logic to liquidity-driven algorithms.
+\end{enumerate}
+\item Special Parameters:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Visibility: controls how much of order is displayed at execution venues. No visibility means dark pool only; low visibility uses hidden order types or IOCs at other venues.
+\item Must-be-Filled: focused solely on reducing impact cost at risk of incomplete execution. A requirement for full fill may make a cost-based algorithm more appropriate.
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{images/03_microstruct/simple_minimal_impact_completion_rate.png}
+\caption{Minimal Impact Algorithm Completion Rate}
+\label{fig:minimal_impact}
+\end{figure}
 
 \subsubsection{Implementation Shortfall Algorithms}
 % Cost-minimization strategies

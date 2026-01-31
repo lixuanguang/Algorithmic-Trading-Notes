@@ -4,16 +4,7 @@
 % Sources: Harris Ch.4; Johnson Ch.3-5; Lehalle Ch.1
 % =============================================================================
 
-\subsection{Instruments and Orders}
-
-\subsubsection{Financial Instruments}
-% Instrument taxonomy relevant to microstructure
-% - Equities: common stock, ETFs, ADRs
-% - Fixed income: bonds, repos
-% - Derivatives: futures, options, swaps
-% - FX: spot, forwards
-% - Crypto assets_
-% Sources: Harris Ch.4; Johnson Ch.3
+\subsection{Order Mechanics}
 
 \subsubsection{Order Types, Properties and Instructions}
 % Fundamental order types and their use cases
@@ -128,7 +119,7 @@ Specify a target spread; each leg’s limit price is derived from the other asse
 \item Implied IN: outright leg orders imply a spread quote (e.g., buy Jun and sell Sep implies a bid in the Jun–Sep spread at the price difference; size is min of the legs).
 \item Implied OUT: a spread order plus one outright leg implies a quote in the missing outright (deconstructing the spread).
 \end{enumerate}
-Matching typically gives priority to actual (explicit) orders; implied orders fill residual. Implied orders can chain (second-generation) and extend to more complex spreads (e.g., butterflies), further increasing effective liquidity.
+Matching gives priority to actual (explicit) orders; implied orders fill residual. Implied orders can chain (second-generation) and extend to more complex spreads, further increasing effective liquidity.
 \end{enumerate}
 \end{remark}
 

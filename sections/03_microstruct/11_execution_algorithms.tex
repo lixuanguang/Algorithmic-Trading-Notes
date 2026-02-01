@@ -6,7 +6,7 @@
 
 \subsection{Execution Algorithms}
 
-\subsubsection{Algorithmic Trading Overview}
+\subsubsection{Execution Algorithms Overview}
 % Introduction to execution algorithms
 % - Motivation and benefits
 % - Algorithm categories
@@ -468,6 +468,102 @@ Create market depth measure that reflects notional volume available at a favoura
 \caption{Liquidity Seeking Algorithm Target Participation Rate and Completion Rate}
 \label{fig:ls_completion_rates}
 \end{figure}
+
+\begin{remark} \hlt{Pair Trading Algorithms}\\
+Buying one asset, simultaneously sell another. Market neutral strategy; risks from each asset hedge each other. Profits locked in by trading reverse pair.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Benchmark: either spread between two assets or ratio of their prices
+\item Types of Pair Trading:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Statistical Arbitrage: based on relative asset valuations, i.e., expectation of mean-reversion. Assumes spread or ratio for prices of two highly correlated assets will generally oscillate around its mean.
+\item Risk (or Merger) Arbitrage: more equity specific, on probability of merger happening. Sell shares of bidding company, buy those of target company. If merger happens, position may be unwound. Profit is from difference in spreads, wider before merger, then tightens as the deal reaches completion.
+\end{enumerate}
+\item Basic Mechanism: spread diverts from mean signifies trading opportunity. Trade entry signal occurs when spread expected to return to mean, then exit position at mean. If it fails to revert and continues to diverge, then losses will be made (assets are not as correlated, or relationship fundamentally changed).
+\item Liquidity Constraint: constraint may be loosened, so each asset may be traded slightly more autonomously. Important to incorporate liquidity of each asset, since there could be substantial difference between the two. In such cases, algorithm will need to make trading more dependent on the less liquid asset.
+\item Common Variations: Some versions may support a cash adjustment, which may be applied before the ratio or spread is calculated.
+\item Special Parameters:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Spread/Ratio: benchmark for the relationship. Necessary to specify how it is based (A-B spread or A/B ratio, or B-A or B/A). Useful sanity check to ensure target is correctly defined.
+\item Order Identifier: each leg of pair sent separately, require common identifier to link two leg orders.
+\item Legging: control over how autonomously each leg may be traded. Small value constrains trading, but protects from exposure to price risk.
+\item Volume Limit: participation rate cap. Some variants allow specific volume constraints for each side.
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.50\textwidth]{images/03_microstruct/stats_arb_example.png}
+\caption{Statistical Arbitrage Example}
+\label{fig:stats_arb_example}
+\end{figure}
+
+\subsubsection{Other Trading Algorithms}
+
+\begin{remark} \hlt{Multi-Leg Trading Algorithms}\\
+Trading strategies for bonds, futures and options often involve multiple legs. Each leg represents an order for a specific asset. These trades are usually relative value trades.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Bond-Based Multi-Leg Strategies: 
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Coupon Rolls (On/Off the-run): buy new issue, sell current issue. Bond positions rolled when new issues occur as investors swap (or roll) their investments into them.
+\item Barbell: buy both short-term and long-term bonds or take view on interest rates based on yield curve
+\item Butterfly (Bullet-Barbell): buy long maturity and short maturity, sell intermediate maturity to take advantage of future increase in curvature. If yield curve expected to flatten, opposite positions taken.
+\end{enumerate}
+\item Futures-Based Multi-Leg Strategies: most exchanges support dedicated order books for spreads.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Spread (Bull): buy nearby contract, sell deferred contract. Spread trades may be calendar-based, or traded between contracts for different underlies, or contracts from other venues. Take advantage of increasing prices for the near contract in a typically bullish market
+\item Butterfly Spread (Long): buy nearby and deferred contracts, sell next contract (x2). Two calendar spreads combined, trading a spread between spreads. Benefit if spread widens or more positive.
+\item Condor Spread (Long): buy nearby and deferred contracts, sell next two contracts. Benefit if spread widens. For short condor, positions reversed, gain from spread narrowing
+\end{enumerate}
+\item Options-Based Multi-Leg Strategies: spreads may be strike-based (vertical) or calendar spreads.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Long Straddle: benefit if marked price shift occurs (in either direction), profiting from volatility.
+\item Long Strangle: benefit for prices outside a set range as put and call have different strike prices.
+\end{enumerate}
+\item Execution Considerations: each leg separately tackled, with legging risk. Linking the legs and trading simultaneously is safer option.
+\item Dedicated Algorithm Handling: vary legging based on risk, current market conditions, asset classes.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Volatility-Driven Algorithms}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Implied Volatility: time to maturity and interest rates are fixed, hence volatility is main variable. Price differences viewed as differing estimates for volatility of underlying asset.
+\item Trading Approach: option prices are driven by a lot of factors. Hence may base decisions on implied volatility rather than just current price. Brokers and vendors offer trading algorithms on implied volatility order book. This approach may also be extended to trading option spreads.
+\item Contract Selection: basing trading decisions on volatility makes it possible to consider trading different contracts. By matching contracts in terms of implied volatility, requirements may be fulfilled with other contracts, but may add further complications, since different contracts can bring exposure to other risks.
+\item Risk Management Consideration: consider risk factors (Greeks) when analysing risk exposure.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Gamma Weighted Average Price (GWAP)}\\
+Gamma Weighted Average Price (GWAP) is an alternative benchmark designed to tackle some of the shortcomings of VWAP for the options markets. A single asset may have thousands of related options contracts, so liquidity of any one contract will generally be significantly lower than that of underlying asset, hence this lower trading activity makes benchmarks like VWAP less meaningful for options.\\
+Complex multi-leg strategies represent considerable volume in options markets. Thus, prices may also be influenced by prices of other contracts. GWAP benchmark takes into account VWAP of underlying asset.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Definition: The benchmark may be represented as:
+\begin{align*}
+G_{wap}(call) &= P + [\Delta' * \lambda_{roc}], \ \ \ G_{wap}(put) = P - [\Delta' * \lambda_{roc}]
+\end{align*}
+where $P$ is the option price, $\Delta'$ is the adjusted delta and $\lambda_{roc}$ is the rate of change price.\\
+The rate of change price ($\lambda_{roc}$) is based on VWAP of underlying asset:
+\begin{equation*}
+\lambda_{roc} = S_{vwap} - S_0
+\end{equation*}
+where $S_0$ is the reference price of the underlying asset, for example, the arrival price or the previous close, and $S_{vwap}$ is the VWAP average for the specified interval.
+\item Delta Interpretation: measures impact of change in price of underlying asset on option price. Adjusted delta ($\Delta'$) is based on option's implied delta ($\Delta$) and gamma ($\gamma$) from when the order was entered:
+\begin{align*}
+\Delta'_{(call)} &= \Delta + (\lambda_{roc} * \gamma), \ \ \ \Delta'_{(put)} = \Delta - (\lambda_{roc} * \gamma)
+\end{align*}
+Gamma measures rate of change of delta. Target benchmark is based on price moves in underlying asset rather than those from the option market.
+\end{enumerate}
+\end{remark}
 
 \subsubsection{Smart Order Routing (SOR)}
 % Venue selection and routing

@@ -1,7 +1,7 @@
 % =============================================================================
 % 11_execution_algorithms.tex
 % =============================================================================
-% Sources: Johnson Ch.12-15; Lehalle Ch.9; Cartea Ch.7
+% Sources: Johnson Ch.5; Lehalle Ch.3.4; Cartea Ch.7; Bacidore Ch.4-6
 % =============================================================================
 
 \subsection{Execution Algorithms}
@@ -12,7 +12,7 @@
 % - Algorithm categories
 % - Build vs. buy decisions
 % - Performance measurement
-% Sources: Johnson Ch.12; Lehalle Ch.9
+% Sources: Johnson Ch.5; Lehalle Ch.3.4; Bacidore Ch.1
 
 Although there are many variations of trading algorithms, stripping away customisations reveals a small set of core strategies commonly provided by most brokers and vendors. Understanding how these algorithms are categorised helps in selecting the appropriate execution strategy for different trading objectives.
 
@@ -150,7 +150,9 @@ Defaults: start time = now (or market open), end time = market close. Timezone h
 % - POV (Percentage of Volume)
 %   - Participation rate strategies
 %   - Adaptive participation
-% Sources: Johnson Ch.13; Lehalle Ch.9
+% - Implementation Shortfall (schedule-based)
+% - Close Algorithm
+% Sources: Johnson Ch.5; Lehalle Ch.3.4; Bacidore Ch.4
 
 Scheduled algorithms split large orders into smaller child orders to reduce market impact. TWAP and VWAP represent the first generation, tracking statically created trajectories based on their respective benchmarks with little sensitivity to market conditions. Their primary aim is complete execution within the given timeframe.
 
@@ -280,7 +282,7 @@ Focus on minimising market impact. Leverage dark pool ATSs, broker crossing netw
 % - Risk-adjusted optimization
 % - Parameter sensitivity
 % - Real-time adaptation
-% Sources: Johnson Ch.14; Cartea Ch.7
+% Sources: Johnson Ch.14; Cartea Ch.7; Bacidore Ch.4.3-4.4
 
 Cost-driven algorithms seek to reduce overall transaction costs, which includes commissions, spreads, and other implicit costs such as market impact and timing risk.
 
@@ -395,7 +397,7 @@ Constantly monitor market volume and adjust participation rate accordingly, simi
 % - Dark pool routing
 % - Pegging strategies
 % - Adaptive algorithms
-% Sources: Johnson Ch.15; Lehalle Ch.9
+% Sources: Johnson Ch.5; Lehalle Ch.3.3; Bacidore Ch.6
 
 Opportunistic algorithms take advantage of favourable market conditions (i.e., price, liquidity etc).
 
@@ -572,7 +574,7 @@ Gamma measures rate of change of delta. Target benchmark is based on price moves
 % - Routing logic
 % - Latency considerations
 % - IOC sweeps vs. resting orders
-% Sources: Johnson Ch.15; Lehalle Ch.9
+% Sources: Johnson Ch.5; Lehalle Ch.3.3; Bacidore Ch.10
 
 \subsubsection{Algorithm Selection}
 % Choosing the right algorithm
@@ -580,4 +582,4 @@ Gamma measures rate of change of delta. Target benchmark is based on price moves
 % - Market conditions
 % - Performance benchmarks
 % - Algorithm switching
-% Sources: Johnson Ch.15; Lehalle Ch.9
+% Sources: Johnson Ch.5; Lehalle Ch.3.3; Bacidore Ch.1, Ch.7

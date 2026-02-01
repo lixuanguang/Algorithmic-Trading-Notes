@@ -65,7 +65,104 @@ Cost differences for effective and realised spreads to be doubled, as both are c
 % - Post-trade evaluation
 % - Attribution analysis
 % - Peer comparison
-% Sources: Johnson Ch.11; Lehalle Ch.7
+% Pre-trade analysis for informed execution decisions
+% Post-trade analysis for execution quality evaluation
+% - Price, liquidity, risk, and cost data
+% - Trading horizon estimation
+% - Performance measurement and attribution
+% Sources: Johnson Ch.6; Lehalle Ch.7
+
+Pre-trade analysis is important to ensure that best execution is achieved.
+
+\begin{table}[H]
+\centering
+\caption{Key pre-trade analytics data}
+\label{tab:pretrade_data}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Type} & \textbf{Data} \\
+\hline
+Prices & Market prices, Price ranges, Trends/momentum \\
+\hline
+Liquidity & Percentage of ADV, Volume profile, Trading stability \\
+\hline
+Risk & Volatility, Beta, Risk exposure \\
+\hline
+Cost estimates & Market impact, Timing risk \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{remark} \hlt{Pre-Trade Data Components}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Price Data: current market bid and offer prices, recent snapshot, last traded price, bid-offer spread, price ranges (for volatility), etc.. Trends by daily, weekly, monthly percentage changes.
+\item Liquidity Data: trading volume, average daily volume (ADV) of last 30 or 90 days, etc.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Trading Horizon Estimation: based on ADV and $\alpha$ (desired trading rate as $\%$ of market volume)
+\begin{equation*}
+\text{Horizon} = \text{Size} / (\text{ADV} \times \alpha)
+\end{equation*}
+\item Volume Profile Stability: coefficient of variation (CV) quantify reliability that actual trading volume matches historical volume profile. Let $\sigma(\text{ADV})$ be standard deviation of ADV, then
+\begin{equation*}
+\text{CV} = \sigma(\text{ADV}) / \text{ADV}
+\end{equation*}
+The trading stability is inversely related to this coefficient, so a high value of CV implies that sizeable variation from the historical average is possible.
+\item Intraday Volume Patterns: compare current volume to historical profile to estimate today's total volume and resize volume profiles accordingly. Check for news driving abnormal volumes.
+\item Volume Distribution Factors: day-of-week effects exist
+\item Average Trade Size: guide for manual orders to prevent signalling risk; split order or use hidden orders if significantly larger than average.
+\end{enumerate}
+\item Risk Data: volatility (standard deviation of price returns over 3-6 months) estimates timing risk.\\
+High volatility requires more aggressive strategies. Beta measures market sensitivity: $\beta = 1$ moves with market, $\beta > 1$ amplifies moves, $\beta < 1$ dampens moves.
+\item Transaction Cost Estimates: models estimate overall cost and components (market impact, timing risk).
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Cost Model Framework: random walk model for permanent impact, price trending, and volatility.
+\item Asset Selection: choose assets/strategies with lower expected transaction costs for similar returns.
+\item Order Execution Planning: high timing risk suggests aggressive strategy; high market impact suggests passive style.
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+Historical results of post-trade analysis act as measure of broker/trader performance, inform investment and execution decisions.
+
+\begin{remark} \hlt{Post-Trade Analysis}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Performance Analysis and Benchmarks: compares average execution price to benchmark; good performers match or beat benchmark.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Post-Trade Benchmarks: closing prices. Easy to determine but less reflective of intraday conditions; encourage end-of-day trading with timing risk exposure.
+\item Intraday Benchmarks: Open High Low Close (OHLC, mean market price proxy), TWAP (equal-weighted average), VWAP (size-weighted average, fairest but meaningless for orders $>30\%$ ADV).
+\item Pre-Trade Benchmarks: arrival/decision prices. Immediately available, appropriate for all order sizes, but volatile and less reflective of intraday conditions.
+\item Relative Performance Measure (RPM): alternative to price-based benchmarks. Assigns each trade percentile ranking compared to rest of market, suitable for wide range of trading strategies and comparison across different orders and assets.
+\begin{align*}
+\text{RPM(volume)} &= \frac{\text{Total volume at price less favourable than execution}}{\text{Total market volume}} \\
+\text{RPM(trades)} &= \frac{\text{Number of trades at price less favourable than execution}}{\text{Total number of trades}}
+\end{align*}
+A trade that achieves a $90\%$ RPM has performed significantly better than one achieving $60\%$. The RPM is already normalised, facilitating comparison across orders, assets, and time.
+\end{enumerate}
+\item Post-Trade Transaction Costs: total transaction costs determined with Perold's implementation shortfall measure. This is the difference in value between the idealised paper portfolio and the actually traded one:
+\begin{equation*}
+IS = \text{Returns}_{\text{paper}} - \text{Returns}_{\text{real}}
+\end{equation*}
+The theoretical (paper) returns depend on the price when the decision to invest was made ($p_d$), the final market price ($p_N$) and the size of the intended investment ($X$). The real returns depend on actual transaction costs. If $x_j$ represent the sizes of the individual executions and $p_j$ are the achieved prices:
+\begin{equation*}
+IS = X(p_N - p_d) - (Xp_N - \sum_j x_j p_j - \text{fixed}) = \sum_j x_j p_j - Xp_d + \text{fixed}
+\end{equation*}
+To account for opportunity cost (not every order is fully executed), \cite{kissell_glantz_2003} introduced:
+\begin{equation*}
+IS = \underbrace{\sum_j x_j p_j - (\sum_j x_j)p_d}_{\text{Execution Cost}} + \underbrace{(X - \sum_j x_j)(p_N - p_d)}_{\text{Opportunity Cost}} + \text{fixed}
+\end{equation*}
+where $(X - \sum x_j)$ is the size of the unexecuted position. \cite{wagner_glass_2001} showed that transaction costs incorporate a delay factor from when initial investment decision is made to when order is dispatched:
+\begin{equation*}
+\text{Transaction costs} = \underbrace{X(p_0 - p_d)}_{\text{Investment related}} + \underbrace{\sum_j x_j p_j - (\sum_j x_j)p_0}_{\text{Trading related}} + \underbrace{(X - \sum_j x_j)(p_N - p_0)}_{\text{Opportunity Cost}} + \text{fixed}
+\end{equation*}
+where $p_0$ is arrival price. \cite{kissell_glantz_2003} called this the expanded implementation shortfall, which accounts for transaction costs and helps identify where costs actually occurred. Costs may be broken down into spreads, market impact and timing risk.
+\end{enumerate}
+\end{remark}
+
 
 \subsubsection{Cost Models}
 % Predictive models for transaction costs
@@ -74,3 +171,63 @@ Cost differences for effective and realised spreads to be doubled, as both are c
 % - Machine learning for cost prediction
 % - Model validation and backtesting
 % Sources: Lehalle Ch.7; Johnson Ch.10
+
+\subsubsection{Transaction Costs Decomposition}
+% Detailed decomposition of transaction cost components
+% - Investment-related costs (delay, taxes)
+% - Trading-related costs (commission, fees, spreads, impact, trend, timing, opportunity)
+% Sources: Johnson Ch.10; \cite{kissell_glantz_2003}
+
+\begin{remark} \hlt{Investment-Related Costs}\\
+Occur before order execution. 
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Delay Cost:  caused by lag between decision and order issuing, or by waiting for optimal timing.\\
+Price change from investment decision ($t_d$) to broker dispatch ($t_0$):
+\begin{equation*}
+\text{Delay Cost} = X \times (p_0 - p_d)
+\end{equation*}
+where $X$ is order size, $p_d$ is decision price, $p_0$ is arrival price.
+\item Taxes: applied based on capital gains; some markets have additional stamp duty on purchases.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Trading-Related Costs}\\
+Occur during execution. Explicit trading-related costs (commissions and fees) quoted in advance as percentages of traded value, may be reduced by negotiation. Significant costs are implicit trading-related costs, primarily market impact and timing risk, but also spread, price trend and opportunity cost.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Commission: brokers charge for agency trading, quoted in basis points.
+\item Fees: actual trading charges (floor brokers, exchanges, clearing/settlement), often incorporated into commission. Some exchanges charge aggressive orders only to encourage liquidity provision. Multi-venue algorithms must track fees for fair price comparison.
+\item Spread Cost: difference between bid and offer prices. Compensates liquidity providers; aggressive trading incurs higher spread cost.
+\begin{equation*}
+\text{Spread Cost} = \sum(x_j \times (0.5 \times s_j))
+\end{equation*}
+where $x_j$ is execution size and $s_j$ is bid-offer spread. Large-cap liquid stocks have lower spreads. Reduce by trading passively with limit orders.
+\item Market Impact: price change caused by trade/order. Decomposed into temporary (liquidity demand cost) and permanent (information content revealed to market):
+\begin{equation*}
+\text{Market Impact} = \text{Temporary Impact} + \text{Permanent Impact} = \sum(x_j \times (p_j - p_b))
+\end{equation*}
+where $x_j$ is execution size, $p_j$ is achieved price, $p_b$ is best bid/offer. Depends on order size and market liquidity; larger orders incur higher impact (reduced for liquid assets). Algorithms reduce impact by splitting orders over time. Aggressive tactics increase impact costs.
+\item Price Trend Cost: asset prices exhibit consistent trends (short-term alpha). Upward trend increases buying costs, downward trend increases selling costs. Price trend cost determined by difference between trend price and arrival price:
+\begin{equation*}
+\text{Price Trend Cost} = \sum(x_j \times (p_j^* - p_0))
+\end{equation*}
+where $x_j$ is execution size, $p_j^*$ is expected price based on trend and $p_0$ is mid price at $t_0$. Price-sensitive algorithms (implementation shortfall, market on close) focus on price trending. Schedule-based algorithms (TWAP, VWAP) may tilt schedules based on expected price direction.
+\item Timing Risk: \cite{kissell_glantz_2003} use timing risk to represent uncertainty of transaction cost estimate from volatility of asset's price and traded volume. More volatile assets have higher probability of adverse price moves. Liquidity risk represents uncertainty in market impact cost when actual volumes differ from historical estimates. Timing risk measured as residual cost after accounting for price trend:
+\begin{equation*}
+\text{Timing Risk} = \text{Volatility Risk} + \text{Liquidity Risk} + \varepsilon = \sum(x_j \times (m_j - p_j^*))
+\end{equation*}
+where $x_j$ is execution size, $m_j$ is mid price, and $p_j^*$ is expected price based on trend. Risk-based algorithms (implementation shortfall, adaptive shortfall, market on close) focus on timing risk.
+\item Opportunity Cost: reflects cost of not fully executing an order due to asset's price exceeding client's price limit or insufficient liquidity. Determined as product of remaining order size and price difference:
+\begin{equation*}
+OC = (X - \sum x_j)(p_N - p_0)
+\end{equation*}
+where $X$ is total order size, $x_j$ is execution size, $p_N$ is final price, and $p_0$ is arrival price.\\
+Represents virtual loss only realised when new order makes up remainder at less favourable price. Reduction achieved through pre-trade analysis to ensure orders sized correctly for current market conditions. Cost-based algorithms (implementation shortfall) may directly consider opportunity cost.
+\item Timing Cost: represents residual cost after accounting for delay cost and market impact:
+\begin{equation*}
+\text{Timing Cost} = \text{Price Trend} + \text{Timing Risk}
+\end{equation*}
+Pre-trade analysis essential to find optimal trading approach balancing these costs.
+\end{enumerate}
+\end{remark}

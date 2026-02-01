@@ -6,41 +6,168 @@
 
 \subsection{Optimal Execution Theory}
 
-\subsubsection{The Optimal Execution Problem}
+\subsubsection{The Optimal Execution Problem and the Almgren-Chriss Framework}
 % Problem formulation
 % - Trading a large position over time
 % - Trade-off: impact vs. risk
 % - Objective functions
 % - Constraints (time, volume, position limits)
-% Sources: Almgren-Chriss; Guéant Ch.3; Webster Ch.2.3
-
-\subsubsection{The Almgren-Chriss Framework}
 % Mean-variance optimal execution
 % - Price dynamics with impact
 % - Expected cost functional
 % - Variance (execution risk) functional
 % - Mean-variance optimization
 % - Efficient frontier of execution
-\begin{equation}
-    \min_{\{x_k\}} \mathbb{E}[C] + \lambda \cdot \text{Var}[C]
-\end{equation}
 % Sources: Almgren-Chriss (2001); Guéant Ch.3-4; Webster Ch.2.3
 
-\subsubsection{Optimal Trading Trajectories}
+The Almgren-Chriss framework provides a mean-variance approach to optimal execution, balancing expected cost against execution risk (timing risk). The optimisation problem seeks to minimise:
+\begin{equation*}
+    \min_{\{x_k\}} \mathbb{E}[C] + \lambda \cdot \text{Var}[C]
+\end{equation*}
+where $\mathbb{E}[C]$ is the expected cost, $\text{Var}[C]$ represents the execution risk (variance), and $\lambda$ is a Lagrange multiplier representing the level of risk aversion.
+
+\begin{remark} \hlt{The Efficient Trading Frontier}\\
+By solving the unconstrained optimisation:
+\begin{equation*}
+    \min(E(x) + \lambda V(x))
+\end{equation*}
+for different values of $\lambda$ and plotting optimal solutions as expected cost against variance, the convex efficient trading frontier emerges. Each point represents the lowest possible cost for a given risk level. Strategies above the frontier are sub-optimal. Alternative variants include Value at Risk (VaR) formulations \cite{almgren_2001} and basis-point normalized versions \cite{kissell_malamut_2005}.\\
+For practical approximations, \citet{kissell_glantz_2003} proposed an approximation by fitting an exponential decay curve to just a few specific strategies.
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/03_microstruct/efficient_trading_frontier.png}
+\caption{Efficient Trading Frontier}
+\label{fig:efficient_trading_frontier}
+\end{figure}
+
+
+\subsubsection{Benchmark Selection and the Efficient Frontier}
+% Impact of benchmark choice on the frontier
+% - Pre-trade benchmarks (arrival price, previous close)
+% - Post-trade benchmarks (future closing price)
+% - Intraday benchmarks (VWAP)
+% - Cost and risk formulations for different benchmarks
+% Sources: \cite{kissell_malamut_2005}; \cite{almgren_2001}
+
+Choice of benchmark has substantial effect on accuracy of performance measures and efficient trading frontiers.
+
+\begin{table}[H]
+\centering
+\caption{Benchmark expected costs and risks}
+\label{tab:benchmark_costs_risks}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Benchmark} & \textbf{Cost} & \textbf{Risk} \\
+\hline
+Previous Closing/Opening Price & $Cost(\alpha) = h(X,\alpha) + g(X) + (p_0 - p_d) + \varepsilon$ & $\mathfrak{R}(\alpha) = \sqrt{\sigma^2(\varepsilon(\alpha)) + \sigma^2(p_0 - p_d)}$ \\
+\hline
+Arrival Price & $Cost(\alpha) = h(X,\alpha) + g(X) + \varepsilon$ & $\mathfrak{R}(\alpha) = \sigma(\varepsilon(\alpha))$ \\
+\hline
+Future Closing Price & $Cost(\alpha) = h(X,\alpha) + \varepsilon$ & $\mathfrak{R}(\alpha) = \sigma(\varepsilon(\alpha))$ \\
+\hline
+\end{tabular}
+\end{table}
+where $h()$ is permanent impact, $g()$ is temporary impact based on order size $(X)$, $\alpha$ is trade rate, $\varepsilon$ is random noise, $p_0$ is arrival price, $p_d$ is decision price.
+
+\begin{remark} \hlt{Impact on the Efficient Frontier}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Pre-Trade Benchmark ($p_d$): additional price change $(p_0 - p_d)$ is delay cost. Frontier shifts up/down by this amount (up for buys with price rise, down for sells). Timing risk $\sigma^2(p_0-p_d)$ shifts frontier rightward.
+\item Post-Trade Benchmark: permanent impact accounted for in future benchmark price. Cost is only temporary impact, frontier shifts downward by permanent impact amount. Timing risk same as arrival price.
+\item Intraday benchmarks (VWAP): incorporate both temporary and permanent impact. Possible to minimise both cost and timing risk by participating evenly with day's volume.
+\end{enumerate}
+Given target cost $C_1$, previous close benchmark results in optimal strategy with higher risk than arrival price benchmark. Given target risk $R_1$, close price benchmark yields lower expected cost than arrival price, due to incorporating permanent market impact.
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/03_microstruct/benchmark_selection_efficient_frontier.png}
+\caption{Effect of Benchmark on Implementation Goals}
+\label{fig:benchmark_selection_efficient_frontier}
+\end{figure}
+
+\subsubsection{Optimal Trading Trajectories, Risk Aversion, and Trading Goals}
 % Solutions to the execution problem
 % - Static strategies (TWAP as baseline)
 % - Optimal trajectories with risk aversion
 % - Closed-form solutions (linear impact)
 % - Aggressive vs. passive schedules
-% Sources: Almgren-Chriss; Guéant Ch.4
-
-\subsubsection{Risk Aversion and Urgency}
 % Role of trader preferences
 % - Risk-neutral execution
 % - Risk-averse execution (front-loading)
 % - Connection to volatility
 % - Time-varying risk aversion
-% Sources: Guéant Ch.4-5; Cartea Ch.6
+% Defining different optimization objectives
+% - Minimize cost for given risk
+% - Price improvement
+% - Balance cost-risk trade-off
+% Sources: Almgren-Chriss; Guéant Ch.4-5; \cite{kissell_glantz_malamut_2004}; \cite{kissell_glantz_2003}
+
+Risk aversion directly affects aggressiveness. High risk aversion leads to more aggressive trading, higher impact cost, lower timing risk. Low risk aversion leads to more passive trading, lower impact cost, higher timing risk.
+
+\begin{remark} \hlt{The Risk Multiplier $\lambda$}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item $\lambda = 1$: equally concerned about risk and cost
+\item $\lambda > 1$: prioritises risk reduction; shorter horizon, more urgency
+\item $\lambda < 1$: prioritises cost reduction; longer horizon, more patient
+\item Slope of tangent to efficient frontier equals $-\lambda$; optimal strategy found by sliding line with slope $-\lambda$ until tangent to frontier
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Trading Objectives}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Minimise Cost Given Risk: find point on efficient frontier. Sub-optimal strategies above frontier.
+\item Price Improvement: optimal strategy to beat target cost $C$ on tangent of line drawn from $(0, C)$ to frontier.
+\item Balance Cost-Risk Trade-off (Trader's Dilemma): impact cost reduced by passive trading, timing risk reduced by aggressive trading. Optimal strategy where $\lambda=1$ balances both.
+\end{enumerate}
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/03_microstruct/level_of_risk_aversion.png}
+\includegraphics[width=0.45\textwidth]{images/03_microstruct/risk_aversion_balance.png}
+\caption{Risk Aversion and Balance of Trade-off between Cost and Risk}
+\label{fig:level_of_risk_aversion}
+\end{figure}
+
+\subsubsection{Optimal Trading Horizon}
+% Time allocation for order execution
+% - Trade-off between impact and timing risk over time
+% - Optimal horizon depends on risk aversion
+% - Market impact vs. timing risk dynamics
+% Sources: \cite{kissell_malamut_2005}; \cite{almgren_2001}
+
+Total cost curve constructed by summing market impact and timing risk for different $\lambda$ values.
+
+\begin{remark} \hlt{Time Dynamics of Costs}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Market Impact: decreases as horizon increases (more time = less aggressive = lower impact)
+\item Timing Risk: U-shaped curve (too fast = high volatility exposure; too slow = extended price risk)
+\item Total Cost: minimum occurs at different horizons for different $\lambda$ values
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Optimal Horizon and Risk Aversion}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Higher $\lambda$ ($\geq 1.5$): shorter horizon, aggressive execution
+\item Moderate $\lambda$ ($\approx 1.0$): balanced horizon
+\item Lower $\lambda$ ($\leq 0.5$): longer horizon, passive execution
+\end{enumerate}
+Optimal horizon guides IS algorithm or converts to target participation rate based on volume profile/ADV.
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/03_microstruct/optimal_trading_horizon_determination.png}
+\caption{Trading Strategy Optimisation of Trading Horizon}
+\label{fig:optimal_trading_horizon_determination}
+\end{figure}
 
 \subsubsection{Extensions of the Basic Framework}
 % Generalizations of Almgren-Chriss

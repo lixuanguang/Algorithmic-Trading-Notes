@@ -46,3 +46,58 @@
 % - Implications for market makers
 % - Flash crash analysis
 % Sources: Lehalle Ch.2.5, Appendix A.5
+
+\subsubsection{Information-Based Spread Models}
+% Empirical studies on information and spreads
+% Sources: Johnson Ch.8
+
+\begin{remark} \hlt{Information Value in Price Discovery (\cite{inoue_1999})}\\
+For assets with well-established cash flows (e.g., government bonds), prices are mainly affected by public information. Macroeconomic announcements can affect the discount rate and alter present value. Stocks are much more affected by private information since future cash flows are less certain.
+\end{remark}
+
+\begin{remark} \hlt{Information Asymmetry and Adverse Selection}\\
+Information-based models account for information asymmetry in real markets. Some traders have a definite information advantage over others (informed trader). Lead to adverse selection effect for other side of trade.
+\end{remark}
+
+\begin{remark} \hlt{Copeland-Galai Spread Model (\cite{copeland_galai_1983})}\\
+To protect against adverse selection, a market maker's bid-offer spread should generate enough returns to cover the cost. They characterised the cost of supplying quotes as writing a put and a call option:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Bid-offer spread is positively related to price and volatility.
+\item Spread is negatively related to market activity and depth.
+\item Spread is negatively correlated with degree of competition faced by market makers.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{NYSE Specialists and Information Asymmetry (\cite{lee_mucklow_ready_1993})}\\
+NYSE specialists found to be sensitive to information asymmetry, using both spread and quoted depth to manage risk. Study tracked specialist reactions to earnings announcements, after which there is spread widening.
+\end{remark}
+
+\begin{remark} \hlt{Foucault Limit Order Market Model (\cite{foucault_1999})}\\
+Information-based models for order-driven markets differ from dealer markets because the bid-offer spread arises due to market conditions. Valuation-based approach using game theoretic model of price formation for dynamic limit order market. Trading occurred due to inherent differences in valuation without private information.
+\end{remark}
+
+\begin{remark} \hlt{Handa, Schwartz, Tiwari Model (\cite{handa_schwartz_tiwari_2003})}\\
+Extend Foucault's model to incorporate asymmetric information. By empirical data from France's main stock index (CAC40), spread size is based on differences in valuation among traders, risk of adverse selection.
+\end{remark}
+
+\begin{remark} \hlt{Adverse Selection Cost Decomposition (\cite{wang_zu_kuo_2006})}\\
+By empirical data from the Taiwan Stock Exchange, around $25\%$ of the spread was attributable to valuation differences, remaining $75\%$ was a premium to offset adverse selection risk (split evenly for buyers and sellers). Average adverse selection cost varied significantly over time: largest at the open, smallest at lunchtime.\\
+Consistent with studies by \cite{nyholm_2002} and \cite{hong_wang_2000} showing probability of informed trading is larger in morning than afternoon. Spreads tend to be wider in morning compared to later in the day.
+\end{remark}
+
+\subsubsection{Order Book Data Models}
+% How order book information affects price formation
+% Sources: Johnson Ch.8
+
+\begin{remark} \hlt{Order Book Depth and Order Aggressiveness (\cite{biais_hillion_spatt_1995})}\\
+The interaction between order book and supply/demand of liquidity was analysed for stocks on the Paris Bourse. When few limit orders were on order book, incoming orders were often priced less aggressively than best bid/offer and stay on order book, gradually increasing liquidity by adding to available depth. When order book was sufficiently deep, new orders were aggressive to take advantage of liquidity, resulting in executions.
+\end{remark}
+
+\begin{remark} \hlt{Order Book Asymmetry and Placement (\cite{ranaldo_2004})}\\
+Study tracked how available depth on each side of the order book affected new order placement on the Swiss Stock Exchange. Traders tended to place more aggressively priced orders when the same side of the order book was deeper. Traders also placed more aggressively when the opposite side was thinner. Less aggressively priced orders were placed as the spread widened.
+\end{remark}
+
+\begin{remark} \hlt{Short-Term Price Movements and Order Aggressiveness (\cite{chan_2005})}\\
+Study analysed impact of short-term price movements and found that traders place more aggressively priced orders after previously positive returns.
+\end{remark}

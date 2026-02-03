@@ -20,7 +20,25 @@
 % - Queue position dynamics
 % - Limit vs. market order trade-off
 % - Optimal limit order strategies
-% Sources: Cartea Ch.9; Guéant Ch.7; Bacidore Ch.9
+% Sources: Cartea Ch.9; Guéant Ch.7; Bacidore Ch.9; Johnson Ch.8
+
+\begin{remark} \hlt{Order Placement Decisions}\\
+If too aggressive, results in significant market impact and broadcasts intentions to other market participants. If too passive, may fail to complete the order, leading to sizeable opportunity cost. Goal is to find right balance.
+\end{remark}
+
+\begin{remark} \hlt{Order Placement Decision Factors}\\
+Order placement decisions must account for each order's size and price; special order types or conditions (if appropriate); multi-venue markets require choosing best destination; possibility of hidden liquidity.\\
+Decisions affected by wide range of factors such as current market conditions (price, volatility, and liquidity), projected future trends, historical results.
+\end{remark}
+
+\begin{remark} \hlt{Execution Probability Framework}\\
+Factors such as liquidity and price trends help estimate likelihood of an order executing. Orders can be adjusted to maximise chance of being filled. This provides a quantitative basis for actual order selection and enables choosing between execution venues.
+\end{remark}
+
+\begin{remark} \hlt{Three Stages of Trading}\\
+To make best use of orders, it is vital to understand the actual mechanisms involved in order matching. Trading consists of price formation (how prices are determined and discovered), price discovery/trade execution (matching of orders and execution of trades), reporting, clearing and settlement (post-trade processes).\\
+Order placement decisions are closely linked to both price formation and price discovery (execution).
+\end{remark}
 
 \subsubsection{Execution with Signals}
 % Incorporating predictive information

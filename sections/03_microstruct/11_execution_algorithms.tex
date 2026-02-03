@@ -584,3 +584,203 @@ Gamma measures rate of change of delta. Target benchmark is based on price moves
 % - Algorithm switching
 % Sources: Johnson Ch.5; Lehalle Ch.3.3; Bacidore Ch.1, Ch.7
 
+Mapping trading algorithms onto the efficient trading frontier allows comparison of suitability for set objectives. Algorithm choice is dictated by: investor requirements (benchmark, risk aversion, trading goals), order-specific properties (size, horizon), and asset-specific properties (liquidity, volatility, price trends).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.50\textwidth]{images/03_microstruct/algos_on_efficient_trading_frontier.png}
+\caption{Differentiating Algorithms using Efficient Trading Frontier}
+\label{fig:algos_on_efficient_trading_frontier}
+\end{figure}
+
+\begin{remark} \hlt{Mapping Algorithms to the Efficient Trading Frontier}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Impact-driven algorithms: appear towards right side of frontier (lower cost, higher timing risk)
+\item Cost-driven algorithms: appear in centre, balancing both cost and risk
+\item Opportunistic algorithms: position varies based on adaptation type (AIM vs PIM)
+\item Aggressive (A) versions: higher cost, lower risk (left on frontier)
+\item Passive (P) versions: lower cost, higher risk (right on frontier)
+\item Not all algorithms may be on the efficient frontier; some may be sub-optimal
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Algorithm Positions on the Frontier}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item VWAP: minimise impact via historical volume profile. Small orders prolong trading unnecessarily, causing additional risk. VWAP/day has highest associated risk. Reducing trading time to appropriate order size considerably reduces risk without significantly increasing cost.
+\item TWAP: not on efficient frontier, does not account for market conditions. Incur additional impact compared to other algorithms. Similar risk to VWAP. Viable alternative when volume information unavailable.
+\item POV: minimise impact, dynamic trajectory based on actual market volume. Timing risk reduced compared to VWAP. Participation rate $<5\%$ appears to right of VWAP.
+\item Minimal Impact: solely minimise market impact cost with higher timing risk.
+\item Implementation Shortfall (IS): minimise impact and risk by determining optimal trade horizon. Trades quicker than VWAP/POV, hence lower timing risk at slightly higher expected cost. Aggressive (A) or neutral styles appear left of POV. Passive (P) style exhibits lower cost, has lower timing risk than VWAP.
+\item Market Close (MC): calculates optimal start time. Target price has same timing risk, offsetting some risk. Closing period often more volatile, higher costs. Positioned just left of IS (lower risk, higher cost).
+\item Adaptive Shortfall: AIM takes advantage of favourable conditions, achieving lower expected cost but higher risk. PIM reacts aggressively to stem losses, lower risk but higher cost.
+\item Price Inline: AIM has lower expected cost but higher overall risk. PIM version is mirror image. AIM AS algorithm cost slightly lower than aggressive PI algorithm, so sits between the two.
+\item Liquidity-Driven: trades fairly aggressively when liquidity available, otherwise does not trade. Positioned just right of AIM strategies. Does not generally account for timing risk.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Investor Requirements}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Benchmark Selection: if arrival or decision price, then Implementation Shortfall most appropriate. If VWAP benchmark, then VWAP algorithm is appropriate.
+\item Risk Aversion: high risk aversion suggests aggressive trading style, more aggressive IS or shortfall-based approach. Shift towards left side of frontier. If low risk aversion, more passive algorithms may be used (opportunistic or impact-driven). Shift towards right side of frontier.
+\item Trading Goals: if to minimise cost, find algorithm whose projected risk matches required level on frontier. If balance expected cost and risk, cost-driven algorithms such as IS most appropriate. If price improvement is focus, opportunistic liquidity-driven or passively priced impact-driven algorithm more suitable.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Order-Specific Factors}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Order Size:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Larger Orders: trade over multiple days based on price trends and volatility. Shift selection to more passive (but riskier) algorithms on right of frontier. Opportunistic stealth-driven algorithms best due to minimisation of signalling risk via IOC orders and dark pool ATSs. Impact-driven algorithms (VWAP, POV) perform reasonably well, with VWAP outperforming POV at highest order sizes.
+\item Small orders ($<1\%$ ADV): choice of algorithm has less effect, similar results with VWAP or IS.
+\end{enumerate}
+\item Trade Horizon: less difference in performance for short horizons compared to longer ones.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Shorter than Optimal: excessive market impact. Aggressive trading (POV, IS).
+\item Longer than Optimal: substantial timing risk. Passive, impact-driven algorithms (all-day VWAP).
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Asset-Specific Factors}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Liquidity: liquid assets counteract some effects of order size, widens potential choice of optimal algorithms. Illiquid assets signalling risk even for small orders, limits to specialised algorithms (liquidity-driven).
+\item Volatility: high volatility affects both expected cost and timing risk. Select risk-sensitive algorithm (IS, AS). Impact-driven VWAP and POV fare less well, both suffering increased costs with volatility. Low volatility, less timing risk, impact-driven or opportunistic algorithms suitable.
+\item Price Trends: favourable persistent trend reduces costs by trading more passively; passively traded VWAP perform better. Unfavourable trend requires aggressive trading; IS algorithm more appropriate. Price adaptive algorithms (PI, IS) may be used; AIM strategies for mean-reversion short-lived trends; PIM strategies for persistent trends. Favourable trends shift selection to more passive (but riskier) algorithms on right of frontier; unfavourable trends shift to left. 
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Summary of Factors Influencing Algorithm Choice}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Shifts to Higher Impact (left on frontier): higher risk aversion, decreasing order size, shorter trade horizon, increasing liquidity, increasing volatility, unfavourable price trend
+\item Shifts to Higher Risk (right on frontier): lower risk aversion, increasing order size, longer trade horizon, decreasing liquidity, decreasing volatility, favourable price trend
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Decision Tree for Difficult Orders}\\
+Algorithm selection for difficult orders based on two key dimensions: urgency and size.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Order Classification:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Urgent: high investor risk aversion or volatile asset requiring faster execution
+\item Large: typically $>$20\% of ADV, requiring careful impact management
+\end{enumerate}
+\item Decision Framework:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Urgent + Liquid: cost-driven IS/AS algorithms
+\item Urgent + Illiquid: liquidity-based (aggressive) with crossing
+\item Large + Illiquid: liquidity-based (passive) with crossing
+\item Large + Liquid: impact-driven (VWAP/POV) with crossing
+\end{enumerate}
+\item Liquidity as Secondary Factor: liquid assets make trading easier; urgent or large orders for liquid assets pose less difficulty than for illiquid ones.
+\item Crossing Integration: algorithms increasingly interact with crossing networks. Leave sizeable proportion at crossing venue while splitting slices to lit markets. Particularly useful for illiquid assets or larger orders where lower fill probability is acceptable.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Meta-Algorithms and Customisable Selection}\\
+Beyond single algorithm selection, traders can create rule-based ``meta-algorithms'' combining multiple strategies.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Hybrid Execution: e.g., participate in opening auction, then split remainder between POV for baseline participation and price-adaptive or liquidity-seeking algorithm for opportunistic fills.
+\item Broker/Vendor Aggregation: select best of breed algorithms from multiple providers based on conditions.
+\item Flexibility vs Complexity: powerful customisation, but selecting optimal configuration from hundreds of algorithm versions remains challenging. Focus on overall investment objectives and cost-risk balance.
+\end{enumerate}
+\end{remark}
+
+\begin{table}[H]
+\centering
+\caption{Basic data requirements for common trading algorithms}
+\label{tab:algo_data_requirements}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Algorithm} & \textbf{Prices} & \textbf{Real-time Trades} & \textbf{Order Book} & \textbf{Historical Trades} \\
+\hline
+TWAP & $\bullet$ & & & \\
+\hline
+VWAP & $\bullet$ & $\circ$ & & $\bullet$ \\
+\hline
+Percent of Volume & $\bullet$ & $\bullet$ & $\circ$ & $\circ$ \\
+\hline
+Implementation Shortfall & $\bullet$ & $\circ$ & $\circ$ & $\circ$ \\
+\hline
+Liquidity-based & $\bullet$ & $\circ$ & $\bullet$ & $\circ$ \\
+\hline
+\end{tabular}
+\vspace{0.2cm}
+
+\small{$\bullet$ = Required, $\circ$ = Often needed}
+\end{table}
+
+\begin{remark} \hlt{Market Structure and Data Requirements}\\
+Algorithms rely on market data (pre- and post-trade data). Order book data required for liquidity-based strategies. Aggregated market data feeds important for fragmented markets.\\
+Market structure is important; single dealer environment has little point in splitting orders. Requires multiple dealers/market makers. Fragmented markets more difficult to trade.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Simple Order Slicing/TWAP: basic starting point for every asset class, least data requirements. Viable for markets with bare minimum of electronic access and multiple dealers.
+\item VWAP: requires detailed trade information for volume profiles. Makes most sense for centralised markets. Aggregated volume needed for fragmented markets.
+\item IS Algorithms: need to track current price and potential risk to minimise overall cost. Require as much data as available, otherwise performance suffers.
+\item Liquidity-Driven: require order book information, else estimates, reduce efficiency. Signalling risk a key concern, so market needs to support anonymous trading.
+\end{enumerate}
+IS and liquidity-based approaches most applicable across asset classes.
+\end{remark}
+
+\begin{table}[H]
+\centering
+\caption{Applicability of current trading algorithms across different asset classes}
+\label{tab:algo_asset_class_applicability}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Algorithm} & \textbf{Equities} & \textbf{Bonds} & \textbf{FX} & \textbf{Futures} & \textbf{Options} & \textbf{ETFs} \\
+\hline
+TWAP & $\circ$ & $\circ$ & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
+\hline
+VWAP & $\bullet$ & $\circ$ & & $\bullet$ & & $\circ$ \\
+\hline
+Percent of Volume & $\bullet$ & $\circ$ & $\circ$ & $\bullet$ & & \\
+\hline
+Implementation Shortfall & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\
+\hline
+Liquidity-based & $\bullet$ & $\bullet$ & & $\bullet$ & $\bullet$ & $\bullet$ \\
+\hline
+\end{tabular}
+\vspace{0.2cm}
+
+\small{$\bullet$ = High applicability, $\circ$ = Medium applicability}
+\end{table}
+
+\begin{remark} \hlt{Asset-Class Specific Considerations}\\
+Differences between asset classes: number of assets available, liquidity, frequency of trading/average trade size.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item FX: lowest number of tradable assets, highly liquid. Trading volume is less important indicator.
+\item Bonds: non-homogenous, any bond has less liquidity than equity. Often bought and held, trading activity quickly subsides after issuance. Corporate bonds may trade less than once a day.
+\item Equities: short holding period, high trade volume. Volume-driven algorithms need high trading activity.
+\item Options: price not always a key driver. Implied volatility can be more important. Trading volume not as vital; supply and demand have less impact on price.
+\item ETFs: open-ended, not subject to fixed fund size. In-kind creation/redemption process allows specialised dealers to react to secondary market demands. Volume-driven approaches (VWAP, POV) less appropriate.
+\end{enumerate}
+Algorithms tailored for specific asset-classes. Bond trading algorithms may select between alternative assets with similar characteristics. Options trading based on risk characteristics (Greeks) may become more important than finding match for specific contract.
+\end{remark}
+
+\begin{remark} \hlt{Algorithm Selection in High Volatility Regimes} (2008 Financial Crisis)\\
+VIX reached 89 (Oct 2008), volumes surged, liquidity declined. Spreads doubled, displayed depth fell 37\%.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Execution Channel Shifts: sales traders captured 44\% of buy-side flow (up from 37\%), DMA and dark pool usage declined. Algorithmic trading still increased to 24\% (from 22\%) as algorithms proved adaptable.
+\item Algorithm Type Shifts: volatility led to more aggressive strategies minimising timing risk. IS/AS algorithms over schedule-driven. Liquidity-based algorithms important due to reduced visible depth.
+\item Cost Impact \cite{mittal_wong_2008}: optimal algorithm selection saved 60 bps in high volatility vs 20 bps in low volatility periods.
+\item Key Requirements in Volatile Markets: (1) track cost and risk dynamically, (2) leverage all available liquidity sources, (3) minimise signalling risk/information leakage.
+\item Model Limitations: historical data unreliable for cost estimation and horizon calculation in turbulent markets. Short-term forecasting models adjusting estimates based on current conditions become essential.
+\end{enumerate}
+Static schedule-driven VWAP struggles in crisis; dynamic/opportunistic algorithms that adapt to conditions outperform. Pre-trade analysis and algorithm selection become critical when volatility is elevated.
+\end{remark}
+

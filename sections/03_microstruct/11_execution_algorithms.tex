@@ -664,6 +664,39 @@ Mapping trading algorithms onto the efficient trading frontier allows comparison
 \end{enumerate}
 \end{remark}
 
+\begin{remark} \hlt{Decision Tree for Difficult Orders}\\
+Algorithm selection for difficult orders based on two key dimensions: urgency and size.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Order Classification:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Urgent: high investor risk aversion or volatile asset requiring faster execution
+\item Large: typically $>$20\% of ADV, requiring careful impact management
+\end{enumerate}
+\item Decision Framework:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Urgent + Liquid: cost-driven IS/AS algorithms
+\item Urgent + Illiquid: liquidity-based (aggressive) with crossing
+\item Large + Illiquid: liquidity-based (passive) with crossing
+\item Large + Liquid: impact-driven (VWAP/POV) with crossing
+\end{enumerate}
+\item Liquidity as Secondary Factor: liquid assets make trading easier; urgent or large orders for liquid assets pose less difficulty than for illiquid ones.
+\item Crossing Integration: algorithms increasingly interact with crossing networks. Leave sizeable proportion at crossing venue while splitting slices to lit markets. Particularly useful for illiquid assets or larger orders where lower fill probability is acceptable.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Meta-Algorithms and Customisable Selection}\\
+Beyond single algorithm selection, traders can create rule-based ``meta-algorithms'' combining multiple strategies.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Hybrid Execution: e.g., participate in opening auction, then split remainder between POV for baseline participation and price-adaptive or liquidity-seeking algorithm for opportunistic fills.
+\item Broker/Vendor Aggregation: select best of breed algorithms from multiple providers based on conditions.
+\item Flexibility vs Complexity: powerful customisation, but selecting optimal configuration from hundreds of algorithm versions remains challenging. Focus on overall investment objectives and cost-risk balance.
+\end{enumerate}
+\end{remark}
+
 \begin{table}[H]
 \centering
 \caption{Basic data requirements for common trading algorithms}
@@ -736,5 +769,18 @@ Differences between asset classes: number of assets available, liquidity, freque
 \item ETFs: open-ended, not subject to fixed fund size. In-kind creation/redemption process allows specialised dealers to react to secondary market demands. Volume-driven approaches (VWAP, POV) less appropriate.
 \end{enumerate}
 Algorithms tailored for specific asset-classes. Bond trading algorithms may select between alternative assets with similar characteristics. Options trading based on risk characteristics (Greeks) may become more important than finding match for specific contract.
+\end{remark}
+
+\begin{remark} \hlt{Algorithm Selection in High Volatility Regimes} (2008 Financial Crisis)\\
+VIX reached 89 (Oct 2008), volumes surged, liquidity declined. Spreads doubled, displayed depth fell 37\%.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Execution Channel Shifts: sales traders captured 44\% of buy-side flow (up from 37\%), DMA and dark pool usage declined. Algorithmic trading still increased to 24\% (from 22\%) as algorithms proved adaptable.
+\item Algorithm Type Shifts: volatility led to more aggressive strategies minimising timing risk. IS/AS algorithms over schedule-driven. Liquidity-based algorithms important due to reduced visible depth.
+\item Cost Impact \cite{mittal_wong_2008}: optimal algorithm selection saved 60 bps in high volatility vs 20 bps in low volatility periods.
+\item Key Requirements in Volatile Markets: (1) track cost and risk dynamically, (2) leverage all available liquidity sources, (3) minimise signalling risk/information leakage.
+\item Model Limitations: historical data unreliable for cost estimation and horizon calculation in turbulent markets. Short-term forecasting models adjusting estimates based on current conditions become essential.
+\end{enumerate}
+Static schedule-driven VWAP struggles in crisis; dynamic/opportunistic algorithms that adapt to conditions outperform. Pre-trade analysis and algorithm selection become critical when volatility is elevated.
 \end{remark}
 

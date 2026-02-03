@@ -12,7 +12,25 @@
 % - Directional exposure
 % - Mean-reversion assumptions
 % - Inventory management objectives
-% Sources: Harris Ch.15-16; Guéant Ch.1
+% Sources: Harris Ch.15-16; Guéant Ch.1; Johnson Ch.8
+
+\begin{remark} \hlt{Inventory-Based Models Overview}\\
+Inventory-based models take dealer's point of view, focusing on how position affects prices offered. Bid-offer spread represents cost for which market makers are prepared to offer immediacy. Market maker is not an investor; they are not trying to establish a position in an asset, but inventory needs to be sufficient to service incoming orders. Market makers adjust quoted prices to encourage orders closer to preferred inventory size. Market maker's bid-offer spread tends to increase as position moves further from ideal inventory. The strength of this reaction reflects their allowed capital; smaller brokers exhibit more noticeable effects.
+\end{remark}
+
+\begin{remark} \hlt{Inventory Position and Quote Adjustment}\\
+Given market maker's optimal inventory is zero (flat). If in short, raise bid quote to encourage sellers to sell, reducing deficit; set high offer price to discourage buy orders. If flat, quote symmetric bid and offer prices. If in long, lower offer price to encourage buy orders and reduce surplus; lower bid price to discourage further sell orders. Alternative to adjusting price is to alter quoted size: a low bid size discourages sells, while a high offer size encourages buy orders.
+\end{remark}
+
+\begin{remark} \hlt{Multi-Broker Market Dynamics}\\
+In multi-broker markets, inventory effects are distinct for each market maker, reflecting their differing inventories.\\
+Different brokers will be keen to set the best bid or offer at any time. Competition means the market's overall spread tends to be narrower than any given market maker's spread.
+\end{remark}
+
+\begin{remark} \hlt{Inventory Model and Market Features}\\
+Liquid assets tend to have lower spreads than illiquid ones. Market makers can turnover positions more quickly for liquid assets, demanding less compensation and quoting tighter spreads.\\
+End-of-day spreads increase substantially \cite{cushing_madhavan_2001}. Market makers are less keen to carry overnight positions and price accordingly.
+\end{remark}
 
 \subsubsection{The Stoll Model}
 % Early inventory-based spread model
@@ -43,3 +61,19 @@
 % - Optimal quote positioning
 % - Connection to market making models
 % Sources: Guéant Ch.2; Cartea Ch.10
+
+\subsubsection{Combined Inventory and Information Models}
+% Hybrid models incorporating both effects
+% Sources: Johnson Ch.8
+
+\begin{remark} \hlt{Madhavan-Smidt Hybrid Model (\cite{madhavan_smidt_1993})}\\
+Incorporating both inventory and asymmetric information effects. Market maker actively invested by dynamically modifying their target inventory levels according to market conditions. By NYSE data, inventories exhibited a slow mean reversion with a half-life of around seven days.
+\end{remark}
+
+\begin{remark} \hlt{Wang, Zu, Kuo Extended Model (\cite{wang_zu_kuo_2008})}\\
+Extended \cite{handa_schwartz_tiwari_2003} information-based model to include risk-averse traders. By empirical data from Taiwan Stock Exchange, the following indicators for traders' order strategies are order imbalance, prior order aggressiveness, short-term volatility, short-term price momentum, relative spread, timeframe. Favourable signal make buyers more aggressive and sellers more patient
+\end{remark}
+
+\begin{remark} \hlt{Buyer vs. Seller Order Placement Behaviour (\cite{wang_zu_kuo_2008})}\\
+Sellers  more concerned about non-execution risk and followed order aggressiveness of both prior buy and sell orders. Buyers more concerned about mispriced and picked-off orders;  orders more dependent on aggressiveness of prior buys. Favourable signal make buyers more aggressive and sellers more patient. Price formation continually reflected changes in expectation of picking-off risk and non-execution risk for buyers and sellers.
+\end{remark}

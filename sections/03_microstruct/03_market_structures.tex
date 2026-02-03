@@ -272,6 +272,40 @@ Execution venues increasingly adopt CCP approach for clearing and settlement.
 % - Dark aggregators
 % Sources: Lehalle Ch.1.4; Johnson Ch.3; Bacidore Ch.2.3, Ch.10.3
 
+Dark pools offer substantial cost reduction by trading in size without significant market impact. Execution not guaranteed, signalling risk remains. Optimal approach often combines crossing with trading algorithms.
+
+\begin{remark} \hlt{Dark Pool Cost Savings} \cite{qsg_2008}\\
+Millennium ATS study (Dec 2007--Mar 2008): dark pool execution reduced market impact by 62\%, saving 6.6 bps weighted average.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Micro-cap: 66\% impact reduction, 21.53 bps/share savings
+\item Small-cap: 63\% impact reduction, 13.43 bps/share savings
+\item Mid-cap: 59\% impact reduction, 8.08 bps/share savings
+\item Large-cap: 62\% impact reduction, 5.18 bps/share savings
+\end{enumerate}
+Savings consistent across capitalisations; larger bps savings for less liquid stocks.
+\end{remark}
+
+\begin{remark} \hlt{Crossing Mechanism Comparison} \cite{domowitz_finkelshteyn_yegerman_2008}\\
+ITG study of 20+ million orders comparing periodic crossing, continuous crossing, and liquidity aggregation.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Cost Savings vs Benchmark (bps): Periodic (POSIT): +4 overall; Continuous (POSIT Now): 0 overall; Dark Pool Algos: $-4$ overall; Peer Universe: $-12$ overall
+\item Execution Quality ($<$ 30 min): $\mathbb{P} (\abs{\leq 20 \text{bps cost}})$  periodic $88\%$, continuous $77\%$, liquidity aggregator $61\%$
+\item Cost Tail Risk: $\mathbb{P} (> 20 \text{bps cost})$ periodic $4\%$, continuous $10\%$, dark pool algos $20\%$
+\item Duration Degradation: periodic crossing profitable up to 1 hour, becomes 6 bps cost after 2.5 hours; other dark pools lose up to 25 bps after 2.5 hours
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Crossing Mechanism Selection}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Dark pool execution beneficial, but no improvement from dark pool algorithms vs periodic crossing
+\item Information Leakage: multi-venue routing increases leakage risk; single venue routing may outperform
+\item Periodic crossing often more cost-efficient than dark pool liquidity algorithms
+\end{enumerate}
+\end{remark}
+
 \subsubsection{Market Fragmentation}
 % Consequences of multiple venues
 % Sources: Lehalle Ch.1; Harris Ch.26

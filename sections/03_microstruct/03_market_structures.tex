@@ -134,6 +134,16 @@ Complete transparency is not appealing to all users. Key considerations:
 \end{enumerate}
 \end{remark}
 
+\begin{remark} \hlt{Order Types Grouped by Visibility}\\
+Standing limit orders supply liquidity and so large orders have considerable signalling risk. To reduce signalling risk, it is important to hide intentions. Order choices progress from highly visible to more hidden:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Liquidity Suppliers: limit orders $\to$ discretionary orders $\to$ iceberg orders $\to$ hidden orders.
+\item Liquidity Demanders: limit/market orders $\to$ discretionary/IOC orders $\to$ iceberg/fill-or-kill orders $\to$ hidden/fill-or-kill/market orders.
+\end{enumerate}
+Orders provide liquidity with less and less visibility as we move from transparent to opaque. IOC and fill-or-kill instructions help hide marketable limit orders by preventing residual orders from staying on the order book.
+\end{remark}
+
 \subsubsection{Trading Protocols and Order Matching}
 % Trading mechanism rules and matching
 % - Order precedence and priority rules
@@ -345,6 +355,15 @@ Execution venues increasingly adopt CCP approach for clearing and settlement.
 % Sources: Lehalle Ch.1.4; Johnson Ch.3; Bacidore Ch.2.3, Ch.10.3; Harris Ch.26
 
 Dark pools offer substantial cost reduction by trading in size without significant market impact. Execution not guaranteed, signalling risk remains. Optimal approach often combines crossing with trading algorithms.
+
+\begin{remark} \hlt{Dark Pool ATSs and Gaming Risk}\\
+Dark pool ATSs are intended to be opaque, hiding all orders so participants can trade in size without significant signalling risk. However, the wide range of mechanisms employed by ATSs and increasing provision of hidden order types by exchanges makes it difficult to gauge how opaque each venue truly is. Key concerns for investors:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Being gamed by other participants (e.g., IOC orders used to manipulate prices before crossing with hidden liquidity).
+\item Providing information for proprietary trading desks.
+\end{enumerate}
+\end{remark}
 
 \begin{remark} \hlt{Dark Pool Cost Savings} (\cite{qsg_2008})\\
 Millennium ATS study (Dec 2007--Mar 2008): dark pool execution reduced market impact by 62\%, saving 6.6 bps weighted average.

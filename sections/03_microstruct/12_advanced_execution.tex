@@ -20,7 +20,111 @@
 % - Queue position dynamics
 % - Limit vs. market order trade-off
 % - Optimal limit order strategies
-% Sources: Cartea Ch.9; Guéant Ch.7; Bacidore Ch.9
+% Sources: Cartea Ch.9; Guéant Ch.7; Bacidore Ch.9; Johnson Ch.8
+
+\begin{remark} \hlt{Order Placement Decisions}\\
+If too aggressive, results in significant market impact and broadcasts intentions to other market participants. If too passive, may fail to complete the order, leading to sizeable opportunity cost. Goal is to find right balance.
+\end{remark}
+
+\begin{remark} \hlt{Order Placement Decision Factors}\\
+Order placement decisions must account for each order's size and price; special order types or conditions (if appropriate); multi-venue markets require choosing best destination; possibility of hidden liquidity.\\
+Decisions affected by wide range of factors such as current market conditions (price, volatility, and liquidity), projected future trends, historical results.
+\end{remark}
+
+\begin{remark} \hlt{Execution Probability Framework}\\
+Factors such as liquidity and price trends help estimate likelihood of an order executing. Orders can be adjusted to maximise chance of being filled. This provides a quantitative basis for actual order selection and enables choosing between execution venues.
+\end{remark}
+
+\begin{remark} \hlt{Three Stages of Trading}\\
+To make best use of orders, it is vital to understand the actual mechanisms involved in order matching. Trading consists of price formation (how prices are determined and discovered), price discovery/trade execution (matching of orders and execution of trades), reporting, clearing and settlement (post-trade processes).\\
+Order placement decisions are closely linked to both price formation and price discovery (execution).
+\end{remark}
+
+\begin{remark} \hlt{Venue Choice}\\
+Assets may be traded on multiple exchanges, ECNs (MTFs), ATSs, or even OTC.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Venues range from fully transparent (no hidden order types) to completely opaque (dark pools where the whole order book is hidden). Investors wanting to reduce signalling risk will opt for venues supporting hidden order types or that are opaque.
+\item Execution probability is important when choosing venues, as execution may not be guaranteed. Order books may show a probability percentage reflecting cancellation likelihood, latency, and historical results.
+\item Hidden liquidity is another important consideration.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Order Aggressiveness}\\
+Aggressiveness is reflected by order choice, price and size:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Order Choice:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Market Orders: most aggressive, for immediate execution at best price available. At least pay half bid-offer spread, or more if order sweeps book. Aggressiveness is based on its size.
+\item Limit Orders: setting limit at or within current spread is aggressive (demanding liquidity); setting limit away from the spread is passive (supplying liquidity).
+\end{enumerate}
+\item Liquidity-Based Factors:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Spread and Order Placement: wider spread directly increases market order cost. Price for immediacy is half the spread plus any additional market impact:
+\begin{enumerate}[label=\alph*.]
+\setlength{\itemsep}{0pt}
+\item Traders more willing to supply liquidity when the reward is higher (wider spreads).
+\item Wider spreads encourage limit orders over market orders, decrease order aggressiveness.
+\item Hidden orders used more when spreads are narrower to take advantage of increased execution probability from aggressive orders.
+\end{enumerate}
+Empirical support demonstrated on Paris Bourse \cite{biais_hillion_spatt_1995}, Stockholm Stock Exchange \cite{hollifield_miller_sandas_2004}, Swiss Stock Exchange \cite{ranaldo_2004}, Xetra trading system \cite{grammig_heinen_rengifo_2004}, and NYSE \cite{beber_caglio_2005}. Stronger for buyers than sellers.\\
+For overall aggressiveness, marketable limit orders on NYSE were more sensitive to spread than market orders (\cite{ellul_et_al_2003}). For Spanish Stock Exchange, high immediacy costs of wider spreads discouraged traders from issuing small market orders (\cite{pascual_veredas_2008}).
+\item Order Book Information and Placement: highlights available liquidity. 
+\begin{enumerate}[label=\alph*.]
+\setlength{\itemsep}{0pt}
+\item Depth: amount available for trading. Much of available liquidity lies outside best bid/offer.\\
+Hidden orders on Euronext priced more aggressively if there was sufficient depth already available on same side. Displayed depth on opposite side had limited effect on hidden order placement.
+\item Imbalance: difference between quantities available to buy and sell
+\item Height: maximum potential price impact for a market order walking up the order book
+\end{enumerate}
+For same side of order book, aggressiveness increases with height, for opposite side it decreases.
+\item Trade Flow:
+\begin{enumerate}[label=\alph*.]
+\setlength{\itemsep}{0pt}
+\item Volume: proxy for market information. Increased aggressiveness for buy orders consistent with information being revealed by large trading volumes (\cite{easley_ohara_1987}). For NYSE, volume more impactful on order aggressiveness than frequency, particularly for sell orders.\\
+Also confirm information about price trends. Higher volumes increase demand, making buy orders more aggressive and sell orders more passive (\cite{beber_caglio_2005}).\\
+For sell orders, the increased picking-off risk helps explain the shift to more passive pricing.
+\item Frequency: higher trading frequencies lead to less aggressive buy and more aggressive sell orders. Consistent with liquidity-based trading clustering on sell side. Increase algorithmic trading and falling order sizes means more noise in markets; trade flow is not quite the indicator it once was.
+\end{enumerate}
+\item Price Momentum: affects both order choice and aggressiveness.
+\begin{enumerate}[label=\alph*.]
+\setlength{\itemsep}{0pt}
+\item Positive dependency between frequency of buy orders and the return from the last five minutes on the NYSE, with negative correlation for sells (\cite{ellul_et_al_2003}).
+\item With momentum indicator based on the ratio between price and an EMA,
+\begin{equation*}
+MOM_t = \frac{P_t}{EMA_t(P_i)} = \frac{P_t}{\lambda EMA_{t-1}(P_t) + (1 - \lambda)P_i}
+\end{equation*}
+where $P_i$ is current price and decay factor $\lambda = 0.95$. As momentum increased, buy orders became more aggressively priced whilst sell orders became less aggressive (\cite{beber_caglio_2005}).
+\item Risk of non-execution an issue for limit orders when price is trending away. Traders expect positive price trends to reduce execution probability of passive buy orders, increasing probability for sell limit orders, opposite for downward momentum. Found in HKSE (\cite{chan_2005}).
+\item Opposite effect observed on ASX (\cite{hall_hautsch_2006}). Decrease in buy order aggressiveness for positive price trends based on five-minute return; traders expect reversion.
+\item Positive dependency between proportion of hidden orders and intraday stock returns. Traders using hidden orders were often following the prevailing price trend (\cite{pardo_pascual_2006}).
+\end{enumerate}
+\item Other Liquidity-Based Factors: asset-specific attributes may be used as proxy for liquidity. For equities, market capitalisation. For bonds, credit ratings.
+\item Tick Size: closely aligned with the bid-offer spread
+\begin{enumerate}[label=\alph*.]
+\setlength{\itemsep}{0pt}
+\item Larger tick sizes will generally cause bid-offer spread to increase, make it more expensive to jump in front of an order, making this less attractive and helping offset signalling risk.
+\item In theory, hidden orders should be more common for assets with lower tick-sizes.
+\end{enumerate}
+\end{enumerate}
+\item Time-Based Factors: markets more volatile around their opening and closing.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Time of Day: On Spanish stock market, market order usage was highest at open and close, with limit orders and cancellations more prevalent during middle of day (\cite{abad_sanabria_yague_2005}). On NYSE Arca, towards close, orders were more likely to be passive; at beginning of day, spreads wider and depth thinner, resulting in more aggressive order placement (\cite{bongiovanni_borkovec_sinclair_2006}).
+\item Last Event: trading activity is often clustered; any event increases the probability of another soon after (new orders, modifications, or cancellations).
+\begin{enumerate}[label=\alph*.]
+\setlength{\itemsep}{0pt}
+\item Aggressively priced orders often followed by more passively priced ones, attributed to traders reacting to spread changes (\cite{degryse_et_al_2005}).
+\item After a marketable order consumed liquidity, limit orders more likely to arrive on the opposite side rather than replacing lost depth (\cite{ellul_et_al_2003}).
+\item Conflicts with \cite{parlour_1998}, who predicted negative serial correlation since sequential same-side orders reduce execution probability.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
 
 \subsubsection{Execution with Signals}
 % Incorporating predictive information

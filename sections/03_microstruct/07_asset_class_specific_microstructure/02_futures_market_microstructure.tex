@@ -1,1 +1,28 @@
 \subsubsection{Futures Market Microstructure}
+
+\begin{principle} \hlt{Centralised Futures Trading}\\
+Liquid futures are highly electronic and usually trade on centralised limit order books. Fragmentation is limited because margining, clearing, delivery rules, and contract fungibility make post-trade duplication costly.
+\end{principle}
+
+\begin{caveat} \hlt{No Call Auction Norm}\\
+Many futures markets do not rely on equity-style opening and closing call auctions. Instead, participants agree on liquid trading hours during which the contract can support reliable price discovery and hedging.
+\end{caveat}
+
+\begin{mechanism} \hlt{Lead-Lag With Cash Markets}\\
+Index futures and their cash baskets form prices jointly.\\
+Futures may lead when they are cheaper to trade, more leveraged, or open during information arrival; cash markets may lead when constituent-level information dominates.
+\end{mechanism}
+
+\begin{principle} \hlt{Large Tick Futures}\\
+Futures often have economically large ticks. A binding tick creates bid-ask bounce and price reversals, but it also supports large displayed quantities at the best limits relative to comparable equities.
+\end{principle}
+
+\begin{taxonomy} \hlt{Futures Architecture Drivers}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{standardisation}: contracts are fungible by expiry and specification;
+\item \hlt{central clearing}: margin and default management are built into the market;
+\item \hlt{leverage}: small price moves create large economic exposure;
+\item \hlt{hedging link}: futures connect to cash baskets, ETFs, options, and swaps.
+\end{enumerate}
+\end{taxonomy}

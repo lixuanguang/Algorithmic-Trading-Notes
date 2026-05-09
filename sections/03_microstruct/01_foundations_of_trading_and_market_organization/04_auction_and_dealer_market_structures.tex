@@ -1,7 +1,41 @@
 \subsubsection{Auction and Dealer Market Structures}
 
-\begin{taxonomy} \hlt{Quote-Driven vs Order-Driven}\\
-Quote-driven markets trade through dealer quotes and balance sheets. Order-driven markets trade by matching public orders under priority rules.
+\begin{taxonomy} \hlt{Execution-System Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{quote-driven}: dealers supply liquidity through tradable quotes and balance sheets;
+\item \hlt{order-driven}: rules match public orders under priority and pricing rules;
+\item \hlt{brokered}: brokers search for counterparties and reveal interest selectively;
+\item \hlt{hybrid}: venue rules combine books, dealers, auctions, and negotiation.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Trading Session Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{continuous}: trades can occur whenever compatible orders arrive;
+\item \hlt{call}: orders batch until a scheduled or triggered uncrossing;
+\item \hlt{rotation}: instruments are called sequentially;
+\item \hlt{extended}: trading occurs outside the regular session, usually with thinner liquidity.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Open-Outcry Oral Auctions} \cite{harris_2002}\\
+Open-outcry markets arrange trades through public bids, offers, and acceptances on a floor or pit. The economic idea is still useful electronically: trading interest should be exposed enough for competing traders to react, while the rule book decides whose interest has precedence.
+\end{mechanism}
+
+\begin{marketrule} \hlt{Public Exposure Rule}\\
+An auction is open when bids, offers, and acceptances are announced to the crowd before a trade is final. Public exposure supports fairness and price competition, but it also reveals trading interest.
+\end{marketrule}
+
+\begin{taxonomy} \hlt{Order-Driven Rule Stack}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{precedence rules}: rank orders when more than one trader wants the same trade;
+\item \hlt{matching rules}: decide which buy and sell orders can trade;
+\item \hlt{pricing rules}: determine the transaction price once a match is feasible;
+\item \hlt{access rules}: decide who may submit, observe, cancel, or route orders.
+\end{enumerate}
 \end{taxonomy}
 
 \begin{mechanism} \hlt{Continuous Auctions}\\
@@ -33,6 +67,10 @@ Even when continuous trading fragments, primary exchanges often retain the aucti
 
 \begin{mechanism} \hlt{Dealer Markets}\\
 Prices form through dealer quotes rather than a single public book. Dealers absorb timing gaps, manage inventory, and revise quotes as information and inventory change.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Brokered Markets}\\
+Brokers create liquidity by search rather than inventory commitment. This fits blocks, unique assets, and illiquid instruments where public standing orders would reveal too much or attract too little interest.
 \end{mechanism}
 
 \begin{taxonomy} \hlt{Hybrid Markets}\\

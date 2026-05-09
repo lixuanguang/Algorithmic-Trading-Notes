@@ -8,6 +8,20 @@ A dark pool is a trading venue where available liquidity is not displayed before
 Dark pools usually do not form prices independently. Equity dark trades often execute at the midpoint or another reference price from a reliable lit market, so dark liquidity depends on lit price formation.
 \end{principle}
 
+\begin{taxonomy} \hlt{Crossing Network Rule Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{crossing price}: midpoint, primary close, auction price, VWAP, or another derived reference;
+\item \hlt{crossing schedule}: continuous, periodic, after-hours, or event-triggered;
+\item \hlt{allocation}: time priority, pro-rata, minimum quantity, or size preference;
+\item \hlt{confidentiality}: displayed, indicated, anonymous, or fully dark before execution.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{principle} \hlt{Price Ownership Problem}\\
+Reference-price crosses use prices made elsewhere. The dispute is whether dark venues free-ride on lit price discovery or simply cross at a public benchmark.
+\end{principle}
+
 \begin{taxonomy} \hlt{Dark Liquidity Pools}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -24,8 +38,20 @@ Dark pools usually do not form prices independently. Equity dark trades often ex
 Large hidden orders may interact with lit and hidden liquidity in integrated books. Smaller dark orders are typically crossed at the midpoint with basic limit, MAQ, and IOC controls.
 \end{mechanism}
 
+\begin{mechanism} \hlt{Reserve and Iceberg Display}\\
+A reserve order displays $d<q$ and refreshes after the displayed slice trades. It hides total size, but repeated refreshes can reveal the parent and may reset priority.
+\end{mechanism}
+
+\begin{caveat} \hlt{Discovering Hidden Size}\\
+Hidden size is learned by trading into it, not by observing the public queue. Large IOC or minimum-quantity probes can reveal reserve liquidity, so display instructions reduce but do not remove information leakage.
+\end{caveat}
+
 \begin{caveat} \hlt{Dark Pools and Price Discovery}\\
 Dark pools can reduce market impact, but they rely on lit quotes for reference prices. If too much flow moves dark, public price discovery may weaken; if dark flow is selective and low-impact, lit market quality can improve.
+\end{caveat}
+
+\begin{caveat} \hlt{Derivative Pricing Risks}\\
+Derived prices can be stale or manipulable: stale prices select informed flow; manipulable benchmarks invite small lit trades before a larger cross.
 \end{caveat}
 
 \begin{empiricalfinding} \hlt{Dark Activity Drivers}\\

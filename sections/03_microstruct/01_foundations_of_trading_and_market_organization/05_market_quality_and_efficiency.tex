@@ -8,6 +8,10 @@ Market quality measures how well trading interest becomes low-cost execution and
 Liquidity is the ability to trade quickly, in size, at low cost, and with limited price impact. Spreads, depth, volume, turnover, fill rates, and price impact each capture only one face of it.
 \end{definition}
 
+\begin{mechanism} \hlt{Public Benefits of Liquid Markets}\\
+Liquid markets lower the cost of exchange, hedging, risk sharing, and informed trading. They can benefit even non-traders through cheaper goods, lower capital costs, and better prices.
+\end{mechanism}
+
 \begin{taxonomy} \hlt{Four Liquidity Variables}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -57,6 +61,17 @@ Lower $\eta$ means alternations dominate continuations, so more observed price m
 \begin{caveat} \hlt{Transparency Paradox}\\
 More shared information can improve price formation, but each trader prefers to reveal as little as possible before execution. Market design balances public price discovery against private information leakage.
 \end{caveat}
+
+\begin{taxonomy} \hlt{Transparency Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{pre-trade}: orders, quotes, and depth visible before execution;
+\item \hlt{post-trade}: prices, sizes, venues, and trade reports after execution;
+\item \hlt{top-of-book}: best bid and ask only;
+\item \hlt{depth-of-book}: multiple price levels or order-level detail;
+\item \hlt{timeliness}: real-time, delayed, batched, or end-of-day publication.
+\end{enumerate}
+\end{taxonomy}
 
 \begin{caveat} \hlt{Latency and Book State}\\
 When order books update faster than an observer can receive data, decide, and route an order, the displayed book is stale. Available liquidity becomes probabilistic rather than deterministic.

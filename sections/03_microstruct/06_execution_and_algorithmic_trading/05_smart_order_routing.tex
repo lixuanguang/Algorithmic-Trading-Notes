@@ -52,6 +52,10 @@ Let $P$ be the price on $V$, $\delta$ the relative price increase on $V'$, $Q$ t
 Roughly, the price penalty must be below the fee saving.
 \end{caveat}
 
+\begin{caveat} \hlt{Order Preferencing}\\
+A broker may prefer a dealer, affiliate, or venue because of service, economics, or reciprocal flow rather than the displayed quote alone. Best-execution review must therefore compare all-in fills, not just routing intent.
+\end{caveat}
+
 \begin{caveat} \hlt{Latency Makes Liquidity Probabilistic}\\
 Displayed depth is probabilistic: stale or duplicated quotes can vanish before the router arrives.
 \end{caveat}

@@ -37,3 +37,19 @@ Post-trade review explains one execution in detail. TCA usually aggregates month
 \begin{practitionernote} \hlt{Broker and Algo Selection}\\
 The practical output of TCA is a routing table: for a given market context and trading objective, send the next order to the broker or algorithm whose historical performance is best after adjusting for risk and liquidity.
 \end{practitionernote}
+
+\begin{principle} \hlt{Best Execution as Auditability}\\
+Best execution is not the cheapest commission or the fastest fill in isolation. It is the best auditable outcome given the client's objective, limit, urgency, available venues, and information risk.
+\end{principle}
+
+\begin{taxonomy} \hlt{Broker-Conflict Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{routing inducements}: rebates, payments for order flow, reciprocal flow, and affiliate venues;
+\item \hlt{information misuse}: front-running, inappropriate exposure, and prearranged trades;
+\item \hlt{allocation}: assigning favourable fills to preferred accounts;
+\item \hlt{activity incentives}: commissions, churning, soft dollars, and commission recapture;
+\item \hlt{principal conflict}: internalisation, dual trading, and dealer inventory.
+\end{enumerate}
+TCA and audit trails convert these conflicts from stories into measurable routing and fill-quality checks.
+\end{taxonomy}

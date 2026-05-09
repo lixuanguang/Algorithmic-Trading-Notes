@@ -9,6 +9,20 @@ Intuition: a trader's best order depends on what others may know, how fast they 
 A trader with a \hlt{long position} owns the asset and benefits when its price rises. A trader with a \hlt{short position} has sold an asset not owned, or has equivalent negative exposure, and benefits when its price falls. Closing a short position is called \hlt{covering}.
 \end{notation}
 
+\begin{taxonomy} \hlt{Motive Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{utilitarian}: solve an outside problem;
+\item \hlt{profit-motivated}: expect trading profits above costs;
+\item \hlt{futile}: expect profit without enough information, skill, discipline, or agency control.
+\end{enumerate}
+Motive is inferred from context, horizon, and exposure, not order side alone.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Multiple Trader Identities}\\
+Traders often combine motives. A pension fund may invest, hedge FX, and time factors; an HFT may make markets in one book and arbitrage another.
+\end{caveat}
+
 \begin{taxonomy} \hlt{Buy-Side Motives}\\
 Buy-side traders use markets to solve problems outside the market itself:
 \begin{enumerate}[label=\roman*.]
@@ -22,13 +36,59 @@ Buy-side traders use markets to solve problems outside the market itself:
 These traders buy liquidity services rather than sell them.
 \end{taxonomy}
 
-\begin{taxonomy} \hlt{Information-Motivated Traders}\\
-Informed traders trade because they believe prices do not yet reflect information. Value traders use slow information about fundamentals; news traders use recent information; arbitrageurs use relative mispricing across related instruments or venues. Their activity can improve prices, but only after other traders infer or absorb the information in their orders.
+\begin{principle} \hlt{Instrument Choice Follows the Problem}\\
+Investors and borrowers care about after-cost return and funding access. Asset exchangers need the right asset. Hedgers need correlation, maturity, and liquidity. Gamblers care about payoff shape.
+\end{principle}
+
+\begin{taxonomy} \hlt{Hedge-Vehicle Fit}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{forwards}: customise asset, date, size, and delivery, but create search, credit, and exit frictions;
+\item \hlt{futures}: standardise terms and clearing, improving liquidity while introducing basis and delivery mismatch;
+\item \hlt{options}: cap downside for a premium, preserving convex upside or nonlinear exposure;
+\item \hlt{swaps}: exchange cash-flow risks over time, especially interest-rate, currency, credit, or inflation exposures.
+\end{enumerate}
+The best hedge removes the intended risk without adding larger liquidity, basis, or counterparty risks.
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Information-Motivated Traders}\\
+Informed traders trade when prices lag information. Value traders use fundamentals; news traders use recent information; arbitrageurs use relative mispricing.\\
+Their orders improve prices only as the market absorbs the information.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Profit-Motivated Trader Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{informed speculators}: profit when prices move toward information they already understand;
+\item \hlt{order anticipators}: profit by predicting trades other participants must make;
+\item \hlt{bluffers and manipulators}: profit only if others misread false signals;
+\item \hlt{dealers}: sell immediacy and inventory capacity rather than directional views.
+\end{enumerate}
+Informed speculators aid price discovery; dealers supply liquidity. Middle categories mainly redistribute surplus.
+\end{taxonomy}
+
+\begin{corollary} \hlt{Profit-Motivated Flow Needs Non-Profit Motives}\\
+Speculators and dealers cannot all profit by trading only with each other. Their gains require traders who pay for immediacy, risk transfer, information, or entertainment.
+\begin{proof}
+Let $G_i$ be trader $i$'s gross trading gain in a closed set of profit-motivated traders, and let $C_i\ge0$ be trading costs. By zero-sum accounting, $\sum_i G_i=0$, so aggregate net profit is $\sum_i (G_i-C_i)=-\sum_i C_i\le0$.\\
+Thus the group cannot earn positive aggregate net trading profit from itself; positive profits require counterparties with offsetting trading losses or non-trading service value.
+\end{proof}
+\end{corollary}
+
 \begin{definition} \hlt{Noise and Liquidity Traders}\\
-Noise traders trade for reasons not directly tied to fundamental value: portfolio rebalancing, cash needs, index changes, behavioural demand, or mistaken beliefs. They are important because they make informed trading less obvious and give liquidity suppliers order flow that is not always toxic.
+Noise traders trade for non-value reasons: rebalancing, cash needs, index changes, behavioural demand, or errors. They mask informed flow and give liquidity suppliers less toxic orders.
 \end{definition}
+
+\begin{taxonomy} \hlt{Futile Trader Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{pseudo-informed}: trade stale or already-public information as if it were private;
+\item \hlt{inefficient}: have a plausible strategy but execute, size, or control risk poorly;
+\item \hlt{victimised}: rely on advisers, brokers, or agents whose incentives are misaligned;
+\item \hlt{rogue}: hide losses or risks because internal controls fail.
+\end{enumerate}
+Futile traders matter because their losses can fund informed traders and dealers, while their distress can still damage clients, firms, or market confidence.
+\end{taxonomy}
 
 \begin{mechanism} \hlt{Dealers and Market Makers}\\
 Dealers trade for their own account. Market makers quote prices or otherwise stand ready to trade, often holding inventory only until an offsetting order arrives. Their compensation comes from spreads, rebates, information, or client relationships; their risks are inventory, adverse selection, funding, and operational failure.
@@ -38,6 +98,21 @@ They are paid for immediacy: the client trades now, while the market maker manag
 \begin{taxonomy} \hlt{Sell-Side Intermediaries}\\
 Brokers arrange trades for clients without intending to own the position. Dealers trade as principal. Broker-dealers combine both functions, sometimes arranging agency trades and sometimes committing their own capital. The sell side exists because buy-side traders pay for search, immediacy, execution expertise, clearing access, and balance-sheet intermediation.
 \end{taxonomy}
+
+\begin{taxonomy} \hlt{Broker Service Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{search}: find counterparties, dealers, venues, or natural block liquidity;
+\item \hlt{representation}: submit, monitor, and negotiate client orders;
+\item \hlt{access}: connect clients to exchanges, dealers, ECNs, and clearing members;
+\item \hlt{post-trade}: manage confirmation, clearing, settlement, custody, margin, and records;
+\item \hlt{information control}: expose enough order interest to trade without revealing the full parent order.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{caveat} \hlt{Broker Agency Conflict}\\
+Brokers are agents, but commissions, soft dollars, payments for order flow, inventory, and affiliated dealers can pull routing decisions away from pure client execution quality.
+\end{caveat}
 
 \begin{practitionernote} \hlt{Institutional Investors and HFTs}\\
 Institutional investors often trade large parent orders that must be hidden, sliced, or negotiated to reduce market impact. High-frequency traders use speed, automation, and short holding periods; they may act as market makers, arbitrageurs, statistical traders, or order anticipators. Their role depends on strategy.

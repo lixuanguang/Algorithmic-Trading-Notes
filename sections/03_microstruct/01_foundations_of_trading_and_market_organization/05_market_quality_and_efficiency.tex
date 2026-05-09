@@ -1,0 +1,95 @@
+\subsubsection{Market Quality and Efficiency}
+
+\begin{definition} \hlt{Market Quality}\\
+Market quality measures how well trading interest becomes low-cost execution and informative prices. Include liquidity, tightness, depth, resiliency, transparency, volatility control, and informational efficiency.
+\end{definition}
+
+\begin{definition} \hlt{Liquidity}\\
+Liquidity is the ability to trade quickly, in size, at low cost, and with limited price impact. Spreads, depth, volume, turnover, fill rates, and price impact each capture only one face of it.
+\end{definition}
+
+\begin{taxonomy} \hlt{Four Liquidity Variables}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{traded volume}: realised liquidity, where traders actually agreed to trade;
+\item \hlt{quoted quantity}: offered liquidity at the best limits or across the visible book;
+\item \hlt{bid-ask spread}: price of immediacy for small trades;
+\item \hlt{volatility}: uncertainty faced by liquidity providers and liquidity takers.
+\end{enumerate}
+Past volume is not enough: a market can trade actively and still have poor offered liquidity for the next order.
+\end{taxonomy}
+
+\begin{definition} \hlt{Liquidity Risk}\\
+Liquidity risk is uncertainty about the cost of turning a desired position into an executed trade. It includes spread risk, depth risk, market-impact risk, timing risk, and the risk that displayed liquidity disappears.
+\end{definition}
+
+\begin{taxonomy} \hlt{Tightness, Depth, and Resiliency}\\
+Tightness is cost of an immediate small round trip, proxied by bid-ask spread. Depth is the quantity available at or near current prices. Resiliency is the speed with which liquidity returns after a shock or large trade.
+\end{taxonomy}
+
+\begin{definition} \hlt{Book Size}\\
+Book size is the quantity available at the best bid and ask, or within a specified number of price levels.\\
+For small-tick instruments, several limits must often be summed; for large-tick instruments, the first limits may capture most executable size.
+\end{definition}
+
+\begin{caveat} \hlt{Book Size Is a Lower Bound}\\
+Displayed book size understates tradable quantity when hidden, reserve, midpoint, or fast-replenishing liquidity exists. It also overstates certainty when posted quantities are short-lived.
+\end{caveat}
+
+\begin{mechanism} \hlt{Market Impact and Decay}\\
+Market impact is the price movement caused by trading pressure. Temporary impact decays when other traders disagree with the move; permanent impact remains when the order flow reveals information.
+\end{mechanism}
+
+\begin{principle} \hlt{Resiliency as Synchronisation}\\
+Liquidity is resilient when opposing trading interests arrive before a price move becomes self-reinforcing. Poor synchronisation turns temporary imbalances into persistent price pressure \cite{lehalle_2018}.
+\end{principle}
+
+\begin{principle} \hlt{Informational Efficiency}\\
+Informational efficiency means prices incorporate available information quickly and with limited noise. Visibility, update speed, and uninformed flow determine how much information enters prices.
+\end{principle}
+
+\begin{mechanism} \hlt{Bid-Ask Bounce}\\
+Transaction prices alternate between bid and ask even when the efficient price is stable.\\
+A simple bounce statistic compares alternations with continuations: if $N^a$ is the number of price alternations and $N^c$ the number of same-direction continuations, then $\eta=\frac{N^c}{2N^a}$.\\
+Lower $\eta$ means alternations dominate continuations, so more observed price movement is microstructure noise rather than information.
+\end{mechanism}
+
+\begin{caveat} \hlt{Transparency Paradox}\\
+More shared information can improve price formation, but each trader prefers to reveal as little as possible before execution. Market design balances public price discovery against private information leakage.
+\end{caveat}
+
+\begin{caveat} \hlt{Latency and Book State}\\
+When order books update faster than an observer can receive data, decide, and route an order, the displayed book is stale. Available liquidity becomes probabilistic rather than deterministic.
+\end{caveat}
+
+\begin{definition} \hlt{Nyquist-Shannon Latency Bound} \cite{lehalle_2018}\\
+For an order-book update frequency $f$, the latency bound is $\tau^\star=\frac{1}{2f}$. If round-trip observation and routing time exceeds this scale, deterministic use of the displayed book is no longer reliable.
+\end{definition}
+
+\begin{caveat} \hlt{Quality Trade-Offs}\\
+Market quality criteria conflict. Displayed depth, tick size, dark trading, and transparency shift costs across liquidity provision, queue priority, information leakage, and price discovery.
+\end{caveat}
+
+\begin{empiricalfinding} \hlt{Intraday Liquidity Seasonality}\\
+Volume, volatility, spreads, and book size are time-of-day conditional. Opens tend to have high volume, high volatility, and wide spreads; the middle of the day is closer to steady state; the close attracts benchmark flow, higher volume, and often larger best-limit size.
+\end{empiricalfinding}
+
+\begin{principle} \hlt{Spread and Depth Substitute Imperfectly}\\
+When the spread cannot narrow further because the tick binds, liquidity providers compete by increasing size at the best bid and ask. A larger book can then play a role similar to a smaller spread, but only for orders small enough to fit inside displayed depth.
+\end{principle}
+
+\begin{mechanism} \hlt{Spread-Volatility Link}\\
+Market makers ask for wider spreads when volatility rises because adverse selection and inventory risk increase. The relation is cleaner after controlling for tick size, trading frequency, and volatility per trade.
+\end{mechanism}
+
+\begin{definition} \hlt{Flow Reactivity}\\
+Flow reactivity measures how strongly trade counts rise with high-frequency volatility. A resilient venue keeps market makers active when uncertainty rises; a fragile venue loses displayed liquidity when it is most valuable.
+\end{definition}
+
+\begin{empiricalfinding} \hlt{Volume Is Not Directly Comparable}\\
+Reported volume depends on architecture. A direct match may count once, while dealer intermediation may count multiple legs, so cross-venue comparisons need the counting convention.
+\end{empiricalfinding}
+
+\begin{caveat} \hlt{Visible Activity vs Economic Importance}\\
+Visible markets are not always the largest exposures. Stocks attract attention, while real estate, bonds, currencies, swaps, and futures may dominate capital value, risk transfer, or notional activity.
+\end{caveat}

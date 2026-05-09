@@ -1,1 +1,61 @@
 \subsubsection{Microstructure Data Engineering}
+
+\begin{taxonomy} \hlt{Market-Data Depth Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{L1}: best bid, best ask, sizes at the touch, and last trade;
+\item \hlt{L2}: visible depth by price level, usually aggregated by side and venue;
+\item \hlt{L3}: order-level messages, allowing queue reconstruction and cancellation analysis;
+\item \hlt{trades}: prints with price, size, time, venue, and often trade condition codes.
+\end{enumerate}
+The empirical question should choose the shallowest feed that identifies the event cleanly.
+\end{taxonomy}
+
+\begin{definition} \hlt{Microstructure Proportion}\\
+A microstructure proportion is the share of events satisfying a binary condition: trade at the bid, execution on a venue, hidden-liquidity fill, HFT-tagged message, or cancellation before queue execution.
+\end{definition}
+
+\begin{model} \hlt{Bernoulli Proportion Estimator}\\
+For independent indicators $X_1,\ldots,X_n\in\{0,1\}$ with success probability $p$,\\
+$\hat{p}=\frac{1}{n}\sum\limits_{\ell=1}^{n}X_\ell$, $\mathbb{E}[\hat{p}]=p$, $\mathrm{Var}(\hat{p})=\frac{p(1-p)}{n}$. The usual large-sample interval is $\hat{p}\pm z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$.\\
+Here $X_\ell$ is the indicator for event $\ell$, $n$ is the number of observations, $p$ is the true success probability, $\hat{p}$ is the sample proportion, $\alpha$ is the error probability, and $z_{1-\alpha/2}$ is the corresponding standard-normal quantile.\\
+For a 95\% interval, $z_{1-\alpha/2}\approx1.96$.
+\end{model}
+
+\begin{caveat} \hlt{Normal Approximation Boundary}\\
+The normal interval is fragile when the sample is small or the estimated proportion is close to zero or one. A practical check is $n\hat{p}>5$ and $n(1-\hat{p})>5$; otherwise use an exact or adjusted binomial interval.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Sampling Unit Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{trade count}: estimates the probability that the next print has a property;
+\item \hlt{traded value}: estimates where economic turnover is concentrated;
+\item \hlt{message count}: estimates quoting, cancellation, or latency behaviour;
+\item \hlt{time bucket}: estimates realised activity inside a comparable clock segment;
+\item \hlt{security bucket}: estimates whether the result is driven by large caps, small caps, sectors, or venues.
+\end{enumerate}
+Changing the sampling unit changes the estimand, even when the same symbol $\hat{p}$ is used.
+\end{taxonomy}
+
+\begin{model} \hlt{Simple Linear Regression Baseline}\\
+For observations $(x_i,y_i)$, a simple linear regression writes
+\begin{equation*}
+y_i=a_0+a_1x_i+\epsilon_i,\qquad 1\leq i\leq n.
+\end{equation*}
+Here $y_i$ is the dependent variable, $x_i$ is the explanatory variable, $a_0$ is the intercept, $a_1$ is the slope, $\epsilon_i$ is the residual, and $n$ is the sample size. Ordinary least squares estimates
+\begin{equation*}
+\hat{a}_1=\frac{\sum_i(x_i-\bar{x})(y_i-\bar{y})}{\sum_i(x_i-\bar{x})^2},\qquad
+\hat{a}_0=\bar{y}-\hat{a}_1\bar{x}.
+\end{equation*}
+Here $\bar{x}$ and $\bar{y}$ are sample means, and $\hat{a}_0,\hat{a}_1$ are the estimated intercept and slope.
+\end{model}
+
+\begin{definition} \hlt{Regression Fit Quality}\\
+For fitted values $\hat{y}_i$ and residuals $\hat{\epsilon}_i=y_i-\hat{y}_i$, $R^2=1-\frac{\sum\limits_i\hat{\epsilon}_i^2}{\sum\limits_i(y_i-\bar{y})^2}$.\\
+Here $\hat{y}_i$ is the fitted value, $\hat{\epsilon}_i$ is the residual, and $R^2$ is explained variability relative to total variability. It measures fit, not causality or trading usefulness.
+\end{definition}
+
+\begin{caveat} \hlt{Regression Is an Empirical Approximation}\\
+Linearity is often a local summary for spread, volatility, turnover, and impact relations. Check residuals, non-stationarity, heteroskedasticity, and whether a log or event-time transformation gives a more stable relation.
+\end{caveat}

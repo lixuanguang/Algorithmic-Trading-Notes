@@ -5,7 +5,8 @@ Volatility raises inventory risk, adverse-selection risk, and the probability th
 \end{principle}
 
 \begin{definition} \hlt{Garman-Klass Intraday Volatility}\\
-For a fixed intraday interval, the Garman-Klass estimator uses open, high, low, and close prices
+For a fixed intraday interval, the Garman-Klass estimator uses open, high, low, and close prices.\\
+Let $O$, $H$, $L$, and $C$ denote the interval open, high, low, and close:
 \begin{equation*}
 \sigma_{GK}= \sqrt{\frac{1}{2}\left(\log\frac{H}{L}\right)^2-\left(2\log 2-1\right)\left(\log\frac{C}{O}\right)^2}.
 \end{equation*}
@@ -23,7 +24,8 @@ The trigger was an order; the crash mechanism was fragile liquidity under linked
 
 \begin{model} \hlt{Depth-Driven Flash Crash Toy Model}\\
 On one side of the book, let $F_t$ be the market-order arrival rate, $\bar{F}$ the normal refill rate, $r_t=F_t-\bar{F}$ the overflow, and $I_t=1/D_t$ inverse depth. A compact depth-impact dynamic is $\frac{dI_t}{I_t}=\sigma_I dW_t+r_tdt$.\\
-Here $D_t$ is market depth, $I_t$ is impact, and $W_t$ captures random liquidity shocks. Positive overflow $r_t$ makes inverse depth compound upward, so each additional trade has larger price impact than the last.
+Here $D_t$ is market depth, $I_t$ is impact, $\sigma_I$ is liquidity-shock volatility, and $W_t$ captures random liquidity shocks.\\
+Positive overflow $r_t$ makes inverse depth compound upward, so each additional trade has larger price impact than the last.
 \end{model}
 
 \begin{mechanism} \hlt{Hot-Potato Amplification}\\

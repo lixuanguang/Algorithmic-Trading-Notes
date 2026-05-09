@@ -60,7 +60,7 @@ Market share is a rough prior for where trading occurs. For stock $k$ and venue 
 \begin{align}
 M_k(n)= \left( \sum\limits_{t_1\leq \tau_\ell^k\leq t_2}P_\ell^kV_\ell^k\mathbf{1}_n(\delta_\ell^k) \right) / \left( \sum\limits_{t_1\leq \tau_\ell^k\leq t_2}P_\ell^kV_\ell^k \right) \nonumber
 \end{align}
-Here $\ell$ indexes trades, $\tau_\ell^k$ is trade time, $P_\ell^k$ is price, $V_\ell^k$ is size, $\delta_\ell^k$ is venue, and $\mathbf{1}_n = 1$ if trade is on venue $n$.\\
+Here $M_k(n)$ is stock $k$'s value share on venue $n$, $\ell$ indexes trades, $\tau_\ell^k$ is trade time, $P_\ell^k$ is price, $V_\ell^k$ is size, $\delta_\ell^k$ is venue, and $\mathbf{1}_n(\delta_\ell^k)$ equals $1$ if trade $\ell$ is on venue $n$ and $0$ otherwise.\\
 Trade-count share replaces traded value by $\mathbf{1}_n(\delta_\ell^k)$ and divides by the number of trades. Both measures should separate continuous trading from fixing auctions.
 \end{definition}
 

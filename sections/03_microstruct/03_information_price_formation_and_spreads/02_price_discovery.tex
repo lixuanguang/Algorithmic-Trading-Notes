@@ -18,7 +18,8 @@ Intraday frictions can affect daily risk when they change the closing price, the
 \end{taxonomy}
 
 \begin{definition} \hlt{Intraday and Overnight Returns}\\
-For day $t$, $r_t^{\text{intra}}=\log(C_t)-\log(O_t)$, $r_t^{\text{overnight}}=\log(O_t)-\log(C_{t-1})$.\\
+For day $t$, let $O_t$ be the open price and $C_t$ the close price.\\
+Then $r_t^{\text{intra}}=\log(C_t)-\log(O_t)$ and $r_t^{\text{overnight}}=\log(O_t)-\log(C_{t-1})$.\\
 Pairwise correlations can then be computed separately on intraday and overnight return series.
 \end{definition}
 

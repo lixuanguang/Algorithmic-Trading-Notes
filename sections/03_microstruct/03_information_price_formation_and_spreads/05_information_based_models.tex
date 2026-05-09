@@ -1,1 +1,14 @@
 \subsubsection{Information-Based Models}
+
+\begin{model} \hlt{Kyle Linear Price Impact}\\
+Kyle's one-period model separates informed flow from noise flow. The informed trader observes terminal value $p_\infty\sim N(P^\star,\sigma_p^2)$; noise traders submit $n_\omega\sim N(0,\sigma_n^2)$. The market maker observes total flow $y=Q(p_\infty)+n_\omega$ and sets a linear price $f_P(y)=\tilde{P}+\lambda y$.\\
+Here $Q$ is informed order size, $\tilde{P}$ is the unconditional price, and $\lambda$ is price impact per unit of net flow.
+\end{model}
+
+\begin{proposition} \hlt{Kyle Equilibrium}\\
+In the linear equilibrium, $Q(p_\infty)=\frac{p_\infty-\tilde{P}}{2\lambda}$, $tilde{P}=P^\star$, $\lambda=\frac{\sigma_p}{2\sigma_n}$. Higher information variance $\sigma_p$ raises impact; higher noise-trader variance $\sigma_n$ hides informed flow and lowers impact.
+\end{proposition}
+
+\begin{principle} \hlt{Adverse Selection Through Flow}\\
+The market maker does not need to identify the informed trader. It protects itself by moving price with observed net flow, because aggressive flow is statistically informative.
+\end{principle}

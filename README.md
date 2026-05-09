@@ -11,7 +11,7 @@ Progress Status:
 | Algorithmic Trading and Quantitative Strategies | Raja Velu | WIP in Preface and Prerequisites | For Fundamentals of Systematic Trading section |
 | Algorithmic Trading and DMA | Barry Johnson | WIP through Chapter 8 | Incorporated in Market Microstructure section |
 | Trading and Exchanges | Larry Harris | WIP Chapter 1 | Incorporated in Market Microstructure section |
-| Market Microstructure in Practice | Charles-Albert Lehalle & Sophie Laruelle | WIP Chapter 1 | Incorporated in Market Microstructure section |
+| Market Microstructure in Practice | Charles-Albert Lehalle & Sophie Laruelle | Essentially covered | Incorporated across Market Microstructure: fragmentation, routing, liquidity metrics, empirical tools, execution, and microstructure data |
 | Algorithmic and High-Frequency Trading | Álvaro Cartea, Sebastian Jaimungal & José Penalva | WIP Chapter 1 | Incorporated in Market Microstructure section |
 | The Financial Mathematics of Market Liquidity | Olivier Guéant | WIP Chapter 1 | Incorporated in Market Microstructure section |
 | Handbook of Price Impact Modelling | Kevin Webster | WIP Chapter 1 | Incorporated in Market Microstructure section |

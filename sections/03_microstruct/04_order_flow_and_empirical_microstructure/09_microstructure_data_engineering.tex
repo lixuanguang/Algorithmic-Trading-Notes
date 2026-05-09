@@ -39,16 +39,9 @@ Changing the sampling unit changes the estimand, even when the same symbol $\hat
 \end{taxonomy}
 
 \begin{model} \hlt{Simple Linear Regression Baseline}\\
-For observations $(x_i,y_i)$, a simple linear regression writes
-\begin{equation*}
-y_i=a_0+a_1x_i+\epsilon_i,\qquad 1\leq i\leq n.
-\end{equation*}
-Here $y_i$ is the dependent variable, $x_i$ is the explanatory variable, $a_0$ is the intercept, $a_1$ is the slope, $\epsilon_i$ is the residual, and $n$ is the sample size. Ordinary least squares estimates
-\begin{equation*}
-\hat{a}_1=\frac{\sum_i(x_i-\bar{x})(y_i-\bar{y})}{\sum_i(x_i-\bar{x})^2},\qquad
-\hat{a}_0=\bar{y}-\hat{a}_1\bar{x}.
-\end{equation*}
-Here $\bar{x}$ and $\bar{y}$ are sample means, and $\hat{a}_0,\hat{a}_1$ are the estimated intercept and slope.
+For observations $(x_i,y_i)$, a simple linear regression writes $y_i=a_0+a_1x_i+\epsilon_i$, $1\leq i\leq n$.\\
+Here $y_i$ is the dependent variable, $x_i$ is the explanatory variable, $a_0$ is the intercept, $a_1$ is the slope, $\epsilon_i$ is the residual, and $n$ is the sample size.\\
+Ordinary least squares estimates $\hat{a}_1= \left( \sum\limits_i(x_i-\bar{x})(y_i-\bar{y}) \right) / \left( \sum\limits_i(x_i-\bar{x})^2 \right)$, $\hat{a}_0=\bar{y}-\hat{a}_1\bar{x}$. Here $\bar{x}$ and $\bar{y}$ are sample means, and $\hat{a}_0,\hat{a}_1$ are the estimated intercept and slope.
 \end{model}
 
 \begin{definition} \hlt{Regression Fit Quality}\\
@@ -59,3 +52,12 @@ Here $\hat{y}_i$ is the fitted value, $\hat{\epsilon}_i$ is the residual, and $R
 \begin{caveat} \hlt{Regression Is an Empirical Approximation}\\
 Linearity is often a local summary for spread, volatility, turnover, and impact relations. Check residuals, non-stationarity, heteroskedasticity, and whether a log or event-time transformation gives a more stable relation.
 \end{caveat}
+
+\begin{caveat} \hlt{Averaging Effect}\\
+An average intraday profile is not a typical realised path. Averaging volatility, volume, or spread across days can hide event days, close auctions, and isolated liquidity shocks.
+\end{caveat}
+
+\begin{model} \hlt{Average of Regressions vs Regression of Averages}\\
+For an index $I_t=\sum_{k=1}^{N}w_kS_t^k$, spreads aggregate linearly as $\psi^I=\sum_{k=1}^{N}w_k\psi^k$, but volatility generally does not satisfy $\sigma^I=\sum_{k=1}^{N}w_k\sigma^k$. Here $w_k$ is the weight of stock $k$, $S_t^k$ its price, $\psi^k$ its spread, and $\sigma^k$ its volatility.\\
+Regression coefficients estimated on index quantities therefore need not equal weighted averages of single-stock regression coefficients.
+\end{model}

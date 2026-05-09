@@ -39,6 +39,21 @@ They are paid for immediacy: the client trades now, while the market maker manag
 Brokers arrange trades for clients without intending to own the position. Dealers trade as principal. Broker-dealers combine both functions, sometimes arranging agency trades and sometimes committing their own capital. The sell side exists because buy-side traders pay for search, immediacy, execution expertise, clearing access, and balance-sheet intermediation.
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Broker Service Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{search}: find counterparties, dealers, venues, or natural block liquidity;
+\item \hlt{representation}: submit, monitor, and negotiate client orders;
+\item \hlt{access}: connect clients to exchanges, dealers, ECNs, and clearing members;
+\item \hlt{post-trade}: manage confirmation, clearing, settlement, custody, margin, and records;
+\item \hlt{information control}: expose enough order interest to trade without revealing the full parent order.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{caveat} \hlt{Broker Agency Conflict}\\
+Brokers are agents, but commissions, soft dollars, payments for order flow, inventory, and affiliated dealers can pull routing decisions away from pure client execution quality.
+\end{caveat}
+
 \begin{practitionernote} \hlt{Institutional Investors and HFTs}\\
 Institutional investors often trade large parent orders that must be hidden, sliced, or negotiated to reduce market impact. High-frequency traders use speed, automation, and short holding periods; they may act as market makers, arbitrageurs, statistical traders, or order anticipators. Their role depends on strategy.
 \end{practitionernote}

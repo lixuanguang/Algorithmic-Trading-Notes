@@ -20,6 +20,24 @@
 \end{enumerate}
 \end{taxonomy}
 
+\begin{mechanism} \hlt{Open-Outcry Oral Auctions} \cite{harris_2002}\\
+Open-outcry markets arrange trades through public bids, offers, and acceptances on a floor or pit. The economic idea is still useful electronically: trading interest should be exposed enough for competing traders to react, while the rule book decides whose interest has precedence.
+\end{mechanism}
+
+\begin{marketrule} \hlt{Public Exposure Rule}\\
+An auction is open when bids, offers, and acceptances are announced to the crowd before a trade is final. Public exposure supports fairness and price competition, but it also reveals trading interest.
+\end{marketrule}
+
+\begin{taxonomy} \hlt{Order-Driven Rule Stack}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{precedence rules}: rank orders when more than one trader wants the same trade;
+\item \hlt{matching rules}: decide which buy and sell orders can trade;
+\item \hlt{pricing rules}: determine the transaction price once a match is feasible;
+\item \hlt{access rules}: decide who may submit, observe, cancel, or route orders.
+\end{enumerate}
+\end{taxonomy}
+
 \begin{mechanism} \hlt{Continuous Auctions}\\
 Orders execute whenever they arrive and match resting interest. Continuous trading provides immediacy but exposes prices to asynchronous order-flow imbalances.
 \end{mechanism}

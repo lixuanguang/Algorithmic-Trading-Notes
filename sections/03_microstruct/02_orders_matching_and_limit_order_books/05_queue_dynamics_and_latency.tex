@@ -12,6 +12,10 @@ Queue imbalance compares available quantity on the best bid and ask. Predictive 
 For a queue, the arrival-departure ratio compares insertion intensity with cancellation plus transaction intensity. Ratios above one imply queue growth; ratios below one imply depletion.
 \end{mechanism}
 
+\begin{caveat} \hlt{Adverse Queue Selection}\\
+A limit order is most likely to fill when marketable flow reaches it. That event is not neutral: fills are often more valuable to the taker precisely when the resting quote is stale, underpriced, or exposed to informed flow.
+\end{caveat}
+
 \begin{process} \hlt{Queue-Reactive Estimation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -25,3 +29,7 @@ For a queue, the arrival-departure ratio compares insertion intensity with cance
 \begin{caveat} \hlt{Mechanical Mean Reversion}\\
 Queue-reactive simulations can generate too much price mean reversion: after a best queue disappears, the newly promoted queue may be large enough to pull prices back. Models often need memory, Hawkes-style excitation, or state resets after price moves.
 \end{caveat}
+
+\begin{principle} \hlt{Latency Race Boundary}\\
+Latency matters most when a trader can change queue position before others react. It matters less when the tick is wide, the queue is deep, or the order is deliberately not competing for first priority.
+\end{principle}

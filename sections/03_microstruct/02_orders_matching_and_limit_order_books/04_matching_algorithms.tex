@@ -12,6 +12,10 @@ In continuous trading, an incoming marketable order executes immediately against
 In a call, orders are batched until an uncrossing time and matched at one auction price. The batch creates a thicker crossing point, making calls useful at openings, closings, expiries, and volatility interruptions.
 \end{mechanism}
 
+\begin{mechanism} \hlt{Frequent Batch Auctions}\\
+Frequent batch auctions group arrivals into short calls. Price priority remains, but within-batch time priority is muted, reducing pure latency value.
+\end{mechanism}
+
 \begin{process} \hlt{Call Auction Price Rules}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -35,8 +39,9 @@ Some venues randomise the exact end of the call after the theoretical auction ti
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item \hlt{price priority}: better-priced orders execute first;
-\item \hlt{time priority}: earlier orders at the same price execute first;
-\item \hlt{size or pro-rata priority}: volume is allocated partly by submitted size;
+\item \hlt{FIFO time priority}: earlier orders at the same price execute first;
+\item \hlt{pro-rata priority}: fills at one price are allocated partly by displayed size;
+\item \hlt{size priority}: larger orders receive explicit rank or allocation advantages;
 \item \hlt{venue-specific priority}: hidden, displayed, broker, or auction-only flags may change rank.
 \end{enumerate}
 \end{taxonomy}

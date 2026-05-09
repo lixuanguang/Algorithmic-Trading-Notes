@@ -24,6 +24,14 @@ Dark pools usually do not form prices independently. Equity dark trades often ex
 Large hidden orders may interact with lit and hidden liquidity in integrated books. Smaller dark orders are typically crossed at the midpoint with basic limit, MAQ, and IOC controls.
 \end{mechanism}
 
+\begin{mechanism} \hlt{Reserve and Iceberg Display}\\
+A reserve order displays $d<q$ and refreshes after the displayed slice trades. It hides total size, but repeated refreshes can reveal the parent and may reset priority.
+\end{mechanism}
+
+\begin{caveat} \hlt{Discovering Hidden Size}\\
+Hidden size is learned by trading into it, not by observing the public queue. Large IOC or minimum-quantity probes can reveal reserve liquidity, so display instructions reduce but do not remove information leakage.
+\end{caveat}
+
 \begin{caveat} \hlt{Dark Pools and Price Discovery}\\
 Dark pools can reduce market impact, but they rely on lit quotes for reference prices. If too much flow moves dark, public price discovery may weaken; if dark flow is selective and low-impact, lit market quality can improve.
 \end{caveat}

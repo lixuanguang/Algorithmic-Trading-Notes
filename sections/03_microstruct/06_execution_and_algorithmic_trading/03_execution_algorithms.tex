@@ -1,1 +1,40 @@
 \subsubsection{Execution Algorithms}
+
+\begin{principle} \hlt{Algo as Layered Decision System} \cite{lehalle_2018}\\
+An execution algorithm is not only a schedule. It is a layered system that turns a parent order into child orders, adapts to market state, and records enough context to explain the realised cost afterwards.
+\end{principle}
+
+\begin{taxonomy} \hlt{Algorithm Layer Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{execution parameters}: side, size, benchmark, timing, limits, participation, urgency, and venues;
+\item \hlt{risk-control layer}: sets the curve from impact, timing risk, alpha, and context;
+\item \hlt{tactical layer}: uses SORs, liquidity seeking, pegging, and dark probes to realise it.
+\end{enumerate}
+Risk control sets the envelope; tactics work inside it.
+\end{taxonomy}
+
+\begin{process} \hlt{Execution Decision Loop}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item initialise the parent order and benchmark;
+\item compute a target trajectory from historical profiles and model parameters;
+\item observe quotes, trades, fills, rejects, cancellations, and venue responses;
+\item revise child-order size, price, urgency, and venue split;
+\item publish monitoring and performance indicators for the trader.
+\end{enumerate}
+\end{process}
+
+\begin{taxonomy} \hlt{Pre-Trade Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{expected cost}: spread, impact, volatility, and typical quantity on the book;
+\item \hlt{profile}: expected volume curve, duration, and participation bounds;
+\item \hlt{context}: news, volatility regime, sector, country, currency, and event risk;
+\item \hlt{portfolio coupling}: common end times, exposure constraints, and cross-order synchronisation.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{practitionernote} \hlt{What-If Controls}\\
+Useful tools support live counterfactuals: finish now, slow down, switch benchmark, seek dark liquidity, or cap participation. The aim is disciplined comparison before changing trajectory.
+\end{practitionernote}

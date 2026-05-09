@@ -1,1 +1,39 @@
 \subsubsection{Transaction Cost Analysis (TCA)}
+
+\begin{definition} \hlt{TCA}\\
+Transaction cost analysis compares realised execution prices with relevant benchmarks and explains the gap by market context, order design, broker behaviour, and trading style.
+\end{definition}
+
+\begin{principle} \hlt{Pre-, Live-, and Post-Trade Consistency}\\
+The same indicator should have a pre-trade expectation, a live monitored value, and a post-trade assessment. A bid-ask-spread indicator, for example, can move from expected average, to updated live likelihood, to realised influence on performance.
+\end{principle}
+
+\begin{taxonomy} \hlt{Performance Attribution Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{immediate price}: the reference available when the order decision is made;
+\item \hlt{planned price}: the price expected from the risk-control trajectory;
+\item \hlt{unexpected market move}: exogenous price variation during execution;
+\item \hlt{trading efficiency}: quality of liquidity-seeking tactics relative to the plan;
+\item \hlt{market impact}: price movement caused by the order itself.
+\end{enumerate}
+This segmentation is useful only when the benchmark, horizon, and side are explicit.
+\end{taxonomy}
+
+\begin{caveat} \hlt{TCA Uses Wider Samples Than Post-Trade Review}\\
+Post-trade review explains one execution in detail. TCA usually aggregates months of comparable trades to identify contexts where an algorithm, broker, or parameter set is systematically strong or weak.
+\end{caveat}
+
+\begin{taxonomy} \hlt{TCA Context Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{liquidity}: spread, queue size, turnover, trade size, free float, and trading rate;
+\item \hlt{risk}: volatility, jumps, intraday trend, and index or sector co-movement;
+\item \hlt{order design}: size, duration, participation rate, benchmark, and limit constraints;
+\item \hlt{market state}: news, auctions, rebalances, corporate events, and venue outages.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{practitionernote} \hlt{Broker and Algo Selection}\\
+The practical output of TCA is a routing table: for a given market context and trading objective, send the next order to the broker or algorithm whose historical performance is best after adjusting for risk and liquidity.
+\end{practitionernote}

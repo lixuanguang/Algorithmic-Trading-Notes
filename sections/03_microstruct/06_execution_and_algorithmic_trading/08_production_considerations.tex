@@ -1,1 +1,43 @@
 \subsubsection{Production Considerations}
+
+\begin{principle} \hlt{Trading Architecture}\\
+Automated trading needs a production architecture that synchronises market data, order gateways, historical databases, models, monitoring, and TCA. The hard part is not one model; it is keeping the decision chain coherent under fragmented venues and live latency.
+\end{principle}
+
+\begin{taxonomy} \hlt{Trading Tool Input Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{market data}: trades, quotes, depth, timestamps, and book updates, preferably consolidated across venues;
+\item \hlt{venue connectivity}: private order-entry messages and public market-data feeds;
+\item \hlt{historical data}: raw events, real-time analytics, order messages, fills, and market context;
+\item \hlt{models}: impact, risk, alpha, volume, and context models with calibrated parameters;
+\item \hlt{calendar}: holidays, auctions, expiries, index events, and expected halt days.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Analytics Close to the Feed}\\
+Spread, effective spread, volatility, book imbalance, and queue-size measures should be computed as soon as raw data arrive. Fast analytics become state variables for execution, monitoring, and later post-trade explanation.
+\end{mechanism}
+
+\begin{caveat} \hlt{Connections Are Two-Way}\\
+An execution engine sends orders, cancellations, and modifications, then receives acknowledgements, rejects, fills, and public book updates. In dark venues, the private responses can also act as probes of hidden liquidity.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Model Component Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{formula}: the functional relation between state variables and decisions;
+\item \hlt{estimation}: the procedure that calibrates parameters from historical data;
+\item \hlt{accuracy check}: the live or post-trade test that decides whether the model is still usable.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{process} \hlt{Indicator Publication}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item models and algorithms publish their state as indicators;
+\item traders monitor exceptions, concentration, performance, and context shifts;
+\item post-trade systems store the same indicators for diagnosis and TCA.
+\end{enumerate}
+This makes trading algorithms stateful agents in the production stack rather than black boxes.
+\end{process}

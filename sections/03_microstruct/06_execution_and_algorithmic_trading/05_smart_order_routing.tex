@@ -1,1 +1,30 @@
 \subsubsection{Smart Order Routing}
+
+\begin{definition} \hlt{Execution-Side SOR}\\
+In execution, a smart order router chooses where each child order should go after the parent algorithm has chosen when and how much to trade. It is the venue-optimisation layer inside the execution stack.
+\end{definition}
+
+\begin{taxonomy} \hlt{Routing Logic Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{observable liquidity}: quotes, depth, queue position, hidden-liquidity signals, and auction state;
+\item \hlt{fill probability}: venue hit rate, cancellation speed, adverse selection, and reject history;
+\item \hlt{net economics}: explicit fees, maker-taker rebates, clearing, and broker-specific schedules;
+\item \hlt{latency}: feed delay, gateway delay, matching-engine delay, and stale-quote risk;
+\item \hlt{information cost}: signalling from sweeping, probing, or repeatedly visiting the same venue.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{process} \hlt{Child-Order Routing Loop}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item receive the child quantity, side, limit, and urgency from the execution algorithm;
+\item score venues by expected net cost and completion probability;
+\item split or sequence messages across venues;
+\item update venue scores from fills, partial fills, rejects, and missed liquidity.
+\end{enumerate}
+\end{process}
+
+\begin{caveat} \hlt{Displayed Best Price Is Not Enough}\\
+A venue with the best quote can still be a poor destination if the queue is unstable, the quote is stale, fees are high, or fills are followed by adverse price moves.
+\end{caveat}

@@ -26,11 +26,11 @@ The decision loop is bounded by CPU time, network latency, matching-engine laten
 
 \begin{model} \hlt{Toy SOR Allocation Model}\\
 For $K$ venues, let $r_k$ be the fraction routed to venue $k$, $V(\omega)$ the child size, and $D_k(\omega)$ the executable liquidity under liquidity state $\omega$. Captured liquidity is $C(r,\omega)=\sum\limits_{k=1}^{K}\min\{r_kV(\omega),D_k(\omega)\}$, $\sum\limits_{k=1}^{K}r_k=1$.\\
-An SOR learns $r=(r_1,\ldots,r_K)$ by increasing allocation to venues that fill reliably and reducing allocation to venues that disappoint.
+An SOR learns $r=(r_1,\ldots,r_K)$ by increasing allocation to venues that fill reliably and reducing allocation to venues that disappoint. The $\min$ term is the key intuition: a router cannot capture more than it sends to a venue or more than the venue actually has available.
 \end{model}
 
 \begin{mechanism} \hlt{SOR Share Feedback}\\
-If $p_k(t)$ is venue $k$'s market share and $a$ is the fraction of participants using SORs, a simple share update is $p_k(t+1)=(1-a)p_k(t)+a r_k(t)$. SORs therefore turn routing weights into market share; venues with reliable liquidity gain flow, while noisy venues lose allocation slowly.
+If $p_k(t)$ is venue $k$'s market share and $a$ is the fraction of participants using SORs, a simple share update is $p_k(t+1)=(1-a)p_k(t)+a r_k(t)$. SORs therefore turn routing weights into market share; venues with reliable liquidity gain flow, while noisy venues lose allocation slowly. When $a$ is small, historical share anchors the system; when $a$ is large, routing quality changes share quickly.
 \end{mechanism}
 
 \begin{taxonomy} \hlt{SOR Fragmentation Drivers}
@@ -116,7 +116,7 @@ Market-share and entropy metrics describe how traded value or trades are dispers
 \end{caveat}
 
 \begin{mechanism} \hlt{Aggregated Liquidity}\\
-Consolidating visible depth across venues can reduce impact. A market order that would walk the book on one venue may execute at the same or better price when routed across several books.
+Consolidating visible depth across venues can reduce impact. A market order that would walk the book on one venue may execute at the same or better price when routed across several books. The benefit comes from replacing one steep book with several shallower local walks.
 \end{mechanism}
 
 \begin{caveat} \hlt{Intraday Non-Stationarity}\\
@@ -158,7 +158,7 @@ Routing cannot ignore fee schedules. Clearing and settlement may be netted by me
 \end{caveat}
 
 \begin{mechanism} \hlt{Rebate Effects}\\
-Rebates attract passive flow and can deepen displayed queues, but they also change routing incentives. A broker or router must compare net execution quality, not only the visible quote or the nominal likelihood of a fill.
+Rebates attract passive flow and can deepen displayed queues, but they also change routing incentives. A broker or router must compare net execution quality, not only the visible quote or the nominal likelihood of a fill. The economic best venue is the one with the best expected all-in fill, not necessarily the best displayed price.
 \end{mechanism}
 
 \begin{caveat} \hlt{Subsidised Share}\\
@@ -188,7 +188,7 @@ The same HFT market maker may quote on several venues and cancel remaining quote
 
 \begin{mechanism} \hlt{Spread-Share Feedback}\\
 Best-execution and SOR logic move flow toward venues with better net spreads and reliable fills.\\
-More flow attracts market makers, which can tighten spreads further. The same loop can run backward when spreads deteriorate or fills become volatile.
+More flow attracts market makers, which can tighten spreads further. The same loop can run backward when spreads deteriorate or fills become volatile. This is why venue quality can become self-reinforcing after a venue crosses a minimum flow threshold.
 \end{mechanism}
 
 \begin{taxonomy} \hlt{Venue Quality Segmentation}

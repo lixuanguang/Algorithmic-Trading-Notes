@@ -1,7 +1,8 @@
 \subsubsection{Market Participants and Trading Motives}
 
 \begin{model} \hlt{Trading Game View} \cite{o_hara_1995,harris_2002}\\
-A trading mechanism is a game in which participants submit orders under venue rules. The players include customers, brokers, dealers, market makers, and traders acting for their own account. Some demand liquidity, some supply liquidity, some carry information, and some process orders.
+A trading mechanism is a game in which participants submit orders under venue rules. The players include customers, brokers, dealers, market makers, and traders acting for their own account. Some demand liquidity, some supply liquidity, some carry information, and some process orders.\\
+Intuition: a trader's best order depends on what others may know, how fast they can react, and how the venue ranks competing messages.
 \end{model}
 
 \begin{notation} \hlt{Long and Short Positions}\\
@@ -31,6 +32,7 @@ Noise traders trade for reasons not directly tied to fundamental value: portfoli
 
 \begin{mechanism} \hlt{Dealers and Market Makers}\\
 Dealers trade for their own account. Market makers quote prices or otherwise stand ready to trade, often holding inventory only until an offsetting order arrives. Their compensation comes from spreads, rebates, information, or client relationships; their risks are inventory, adverse selection, funding, and operational failure.
+They are paid for immediacy: the client trades now, while the market maker manages the uncertainty of unwinding later.
 \end{mechanism}
 
 \begin{taxonomy} \hlt{Sell-Side Intermediaries}\\
@@ -54,7 +56,7 @@ These markers describe technology and horizon, not whether the strategy is benef
 \end{taxonomy}
 
 \begin{mechanism} \hlt{HFT as Fragmentation Link}\\
-Fast market makers connect fragmented venues by quoting related prices, arbitraging stale quotes, and hedging inventory across books. Their compensation is the spread, rebates, and short-lived information advantages; their cost is technology, inventory risk, and adverse selection.
+Fast market makers connect fragmented venues by quoting related prices, arbitraging stale quotes, and hedging inventory across books. Their compensation is the spread, rebates, and short-lived information advantages; their cost is technology, inventory risk, and adverse selection. They act like moving bridges between books: useful when they keep prices aligned, fragile when those bridges are cancelled under stress.
 \end{mechanism}
 
 \begin{caveat} \hlt{Tighter Spread, Different Cost}\\

@@ -5,7 +5,7 @@ In a fragmented market, liquidity is no longer represented by one order book. Th
 \end{principle}
 
 \begin{definition} \hlt{Smart Order Routing}\\
-A smart order router (SOR) decomposes a parent order into child orders and sends them to venues according to displayed quotes, depth, historical fill rates, queue position, fees, latency, and order-type constraints.
+A smart order router (SOR) maps a trading instruction to venues according to displayed quotes, depth, historical fill rates, queue position, fees, latency, and order-type constraints. The execution algorithm usually chooses the parent schedule; the router chooses the spatial allocation of each child order.
 \end{definition}
 
 \begin{principle} \hlt{Temporal Then Spatial Split}\\
@@ -192,12 +192,10 @@ Pre-trade transparency reveals quotes, not guaranteed liquidity.\\
 Post-trade transparency gives more reliable prints after the fact, so small dark pools with weak pre-trade disclosure may still be informative through execution records.
 \end{caveat}
 
-\begin{practitionernote} \hlt{Routing Objective}\\
-A practical router ranks venues by expected net cost:
-\begin{equation*}
-\text{expected cost}
-= \text{spread/impact}+\text{fees}-\text{rebates}+\text{latency risk}+\text{information cost}.
-\end{equation*}
+\begin{practitionernote} \hlt{Fragmented Routing Objective}\\
+A practical router ranks venues by expected net cost:\\
+$\text{expected cost}
+= \text{spread/impact}+\text{fees}-\text{rebates}+\text{latency risk}+\text{information cost}$.\\
 Patient orders can seek rebates and hidden liquidity; urgent orders pay for immediacy and certainty.
 \end{practitionernote}
 

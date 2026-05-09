@@ -4,6 +4,10 @@
 In execution, a smart order router chooses where each child order should go after the parent algorithm has chosen when and how much to trade. It is the venue-optimisation layer inside the execution stack.
 \end{definition}
 
+\begin{definition} \hlt{Marketable Price Across Venues}\\
+With several books, marketability is venue-specific. A buy order can be marketable on one venue because its limit reaches the local ask, while not marketable elsewhere if the same instrument is offered at a higher price.
+\end{definition}
+
 \begin{taxonomy} \hlt{Routing Logic Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -25,6 +29,79 @@ In execution, a smart order router chooses where each child order should go afte
 \end{enumerate}
 \end{process}
 
+\begin{principle} \hlt{Best Execution Differs by Regime}\\
+US routing leans on protected consolidated quotes. European brokers choose the consolidation layer, so routing quality includes venue access, data quality, and auditability.
+\end{principle}
+
 \begin{caveat} \hlt{Displayed Best Price Is Not Enough}\\
 A venue with the best quote can still be a poor destination if the queue is unstable, the quote is stale, fees are high, or fills are followed by adverse price moves.
 \end{caveat}
+
+\begin{mechanism} \hlt{Active Sweep Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{local best price}: cheapest visible venue first;
+\item \hlt{consolidated price}: split across venues to minimise average price;
+\item \hlt{policy coverage}: restrict destinations to venues covered by the broker mandate;
+\item \hlt{residual choice}: when venues tie at a level, choose by fee, latency, and fill reliability.
+\end{enumerate}
+\end{mechanism}
+
+\begin{caveat} \hlt{Fee-Adjusted Price Priority}\\
+Let $P$ be the price on $V$, $\delta$ the relative price increase on $V'$, $Q$ the size, $f$ the fee on $V$, and $\phi$ the fee saving on $V'$. For a buy order, $V'$ is cheaper when $P(1+\delta)(1+f-\phi)Q < P(1+f)Q$.\\
+Roughly, the price penalty must be below the fee saving.
+\end{caveat}
+
+\begin{caveat} \hlt{Latency Makes Liquidity Probabilistic}\\
+Displayed depth is probabilistic: stale or duplicated quotes can vanish before the router arrives.
+\end{caveat}
+
+\begin{principle} \hlt{Liquidity Seeking Objective}\\
+A liquidity seeker scores the quantity likely to be available on arrival, using visible depth, hidden-liquidity signals, latency, duplicate quotes, fees, and fill rates.
+\end{principle}
+
+\begin{taxonomy} \hlt{Passive Posting Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{queue rank}: post more where fewer shares stand ahead;
+\item \hlt{distance to touch}: prefer venues closer to becoming marketable;
+\item \hlt{trading rate}: prefer venues where opposing flow consumes the level faster;
+\item \hlt{resting-time target}: split to equalise expected completion time.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Minimum Resting-Time Split}\\
+Let $D$ be total passive child size, $Q_n$ queue ahead, $r_n$ opposing-flow rate, $f_n$ posted fraction, and $\tau^\star$ common completion time. Since $\tau_n(x)=\frac{x+Q_n}{r_n}$, equal-time posting gives $\tau^\star=\frac{D+\sum_n Q_n}{\sum_n r_n}$ and $f_n=\frac{\tau^\star r_n-Q_n}{D}$.\\
+If $f_n<0$, post nothing on venue $n$.
+\end{definition}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\stepcounter{table}
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{0.28\textwidth} >{\RaggedRight\arraybackslash}p{0.18\textwidth} >{\RaggedRight\arraybackslash}p{0.18\textwidth} >{\RaggedRight\arraybackslash}X@{}}
+\hline
+\textbf{Criterion} & \textbf{1st venue} & \textbf{2nd venue} & \textbf{3rd venue} \\
+\hline
+Rank in queue & better queue & next queue & deepest queue \\
+Distance to best & nearest touch & next touch & farthest touch \\
+Trading rate & fastest flow & middle flow & slowest flow \\
+Minimum resting time & highest adjusted rate & next adjusted rate & residual venue \\
+\hline
+\end{tabularx}
+
+\vspace{0.25em}
+{\footnotesize Table \thetable. Passive routing criteria can rank the same venues differently.}
+\end{table}
+
+\begin{process} \hlt{Liquidity-Seeker Build}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item estimate hidden liquidity, mirrored orders, latency, fees, and adverse selection;
+\item remove liquidity when the probability-adjusted net price is attractive;
+\item post passively where queue, distance, and trading-rate criteria support fast completion;
+\item keep the parent order inside the execution envelope set by the benchmark layer.
+\end{enumerate}
+\end{process}

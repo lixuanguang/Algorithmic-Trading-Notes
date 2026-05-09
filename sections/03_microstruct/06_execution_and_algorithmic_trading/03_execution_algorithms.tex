@@ -14,6 +14,38 @@ An execution algorithm is not only a schedule. It is a layered system that turns
 Risk control sets the envelope; tactics work inside it.
 \end{taxonomy}
 
+\begin{principle} \hlt{Benchmark Customisation}\\
+Execution styles can be combined: a VWAP can carry minimum participation, limit-price, or would-level constraints; a PoV can be capped by urgency; an IS schedule can still use an SOR and dark-pool probes. The benchmark defines the reference, while constraints define acceptable behaviour around it.
+\end{principle}
+
+\begin{caveat} \hlt{Hard Mixtures Are Fragile}\\
+Binary benchmark switches are brittle in noisy markets. A trading envelope gives the schedule room to adapt without abandoning risk control.
+\end{caveat}
+
+\begin{definition} \hlt{Trading Envelope}\\
+A trading envelope is a band of acceptable execution trajectories around the target schedule. Being too fast implies pausing or posting passively; being too slow implies crossing the spread or increasing participation.
+\end{definition}
+
+\begin{taxonomy} \hlt{Envelope Construction Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{benchmark path}: VWAP, TWAP, PoV, IS, or minimum-impact curve;
+\item \hlt{risk width}: tolerance for timing risk, price drift, and completion uncertainty;
+\item \hlt{market inputs}: volume curve, volatility, spread, depth, and impact estimates;
+\item \hlt{constraints}: limits, participation caps, venue restrictions, and common portfolio end times;
+\item \hlt{tactics}: liquidity capture, dark probes, pegging, and routing choices used inside the band.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{process} \hlt{Customisation Workflow}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item choose the desired risk profile and inject hard constraints into the envelope;
+\item choose liquidity tactics consistent with investment style and observed market state;
+\item monitor whether the realised path remains inside the envelope.
+\end{enumerate}
+\end{process}
+
 \begin{process} \hlt{Execution Decision Loop}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}

@@ -1,5 +1,17 @@
 \subsubsection{Order Lifecycle}
 
+\begin{process} \hlt{Order State Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{pending}: submitted but not yet accepted by the broker or venue;
+\item \hlt{accepted}: valid for handling, but not necessarily executable yet;
+\item \hlt{working}: live in the market or with a broker seeking execution;
+\item \hlt{part-filled}: some quantity executed, with residual quantity still governed by the order instructions;
+\item \hlt{terminal}: filled, cancelled, expired, rejected, or killed by a contingency.
+\end{enumerate}
+The economic order exists before the public book sees it, but the market only reacts once it is working.
+\end{process}
+
 \begin{process} \hlt{Limit-Order Lifecycle}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -18,6 +30,10 @@
 \end{enumerate}
 Private messages control the order; public messages update the common view of the book.
 \end{taxonomy}
+
+\begin{principle} \hlt{Absent Trader Representation}\\
+Limit, stop, validity, and quantity instructions encode future trading contingencies. They let an absent trader participate, but stale contingencies can trigger at bad times.
+\end{principle}
 
 \begin{caveat} \hlt{Lifecycle Tags Change Priority}\\
 Time-in-force, display quantity, hidden flags, minimum quantity, and cancel-on-disconnect rules can change whether an order rests, executes, loses priority, or vanishes under stress.

@@ -1,5 +1,37 @@
 \subsubsection{Limit Order Book Mechanics}
 
+\begin{definition} \hlt{Best Quotes and Spread}\\
+The \hlt{best bid} is the highest displayed buy price and the \hlt{best ask} is the lowest displayed sell price. The \hlt{bid-ask spread} is $a_t-b_t$, and the quoted midpoint is $m_t=(a_t+b_t)/2$.
+\end{definition}
+
+\begin{principle} \hlt{Liquidity Supply and Demand}\\
+Resting limit orders supply immediacy to other traders; marketable orders demand it.\\
+A standing quote is therefore both a price and a service: it lets someone else trade now.
+\end{principle}
+
+\begin{taxonomy} \hlt{Limit Price Placement Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{marketable}: crosses the opposite best quote and can execute immediately;
+\item \hlt{at the market}: joins the current best bid or ask;
+\item \hlt{inside the market}: improves the best bid or ask and narrows the spread;
+\item \hlt{behind the market}: rests away from the best quote;
+\item \hlt{far from the market}: carries low execution probability but low immediacy cost.
+\end{enumerate}
+Aggressiveness raises fill probability and lowers waiting time, but it gives up more price concession.
+\end{taxonomy}
+
+\begin{proposition} \hlt{Standing Limit Orders Are Trading Options}\\
+Let $q$ be order size, $L$ the limit price, $\tau$ the cancellation or expiry time, and $V_t$ the contra-side trader's value at time $t$. While live, a sell limit order gives the market a call-like payoff $q(V_t-L)^+$; a buy limit order gives the market a put-like payoff $q(L-V_t)^+$, where $x^+=\max\{x,0\}$.
+\begin{proof}
+For $t\leq\tau$, an incoming buyer exercises a sell limit only when buying at $L$ gives non-negative surplus, so the exercise value is $\max\{q(V_t-L),0\}$. The buy-limit case is symmetric, with exercise value $\max\{q(L-V_t),0\}$.
+\end{proof}
+\end{proposition}
+
+\begin{caveat} \hlt{Limit-Order Regret}\\
+Limit orders reduce price concession but introduce two risks. The order may not execute and the trader must chase the price later; or it may execute exactly because better-informed flow is trading through it.
+\end{caveat}
+
 \begin{definition} \hlt{Tick Size}\\
 Tick size is the minimum price increment for limit orders.\\
 It discretises prices and can be uniform, price-banded, or liquidity-banded.

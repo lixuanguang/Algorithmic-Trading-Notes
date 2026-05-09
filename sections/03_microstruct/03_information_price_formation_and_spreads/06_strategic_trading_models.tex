@@ -26,3 +26,31 @@ The best informed traders are not only accurate; their errors are different from
 \begin{caveat} \hlt{Informed Trading Paradox}\\
 Perfectly informative prices eliminate informed profits; zero informed profits stop prices from becoming informative. Markets persist between these limits because information is costly, temporary, and unevenly distributed.
 \end{caveat}
+
+\begin{taxonomy} \hlt{Order-Anticipation Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{front running}: trade before a known or inferred order;
+\item \hlt{sentiment-oriented technical}: predict trades uninformed traders will make;
+\item \hlt{quote matching}: step ahead of passive quotes to extract their option value;
+\item \hlt{squeezing}: corner scarce supply and force constrained traders to liquidate;
+\item \hlt{stop gunning}: push prices to trigger clustered stop orders.
+\end{enumerate}
+These strategies use information about future order flow rather than fundamental value.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Front-Running Effect}\\
+Front runners accelerate anticipated order impact. They can speed price discovery for informed flow, but usually raise execution costs and discourage large-order exposure.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Sentiment-Oriented Technical Trading}\\
+These traders forecast predictable non-value flow: tax timing, index changes, hedging, funding needs, or behavioural demand. Profits decay when value traders correct the move or the pattern crowds.
+\end{mechanism}
+
+\begin{caveat} \hlt{Quote Matching and Tick Protection}\\
+Quote matching extracts value from standing limit orders without supplying durable liquidity. Time precedence and meaningful tick sizes protect passive liquidity by making queue jumping costly.
+\end{caveat}
+
+\begin{caveat} \hlt{Squeezes and Stop Gunning}\\
+Squeezes and stop gunning profit from forced trades. They usually make prices less informative, raise transaction costs, and reduce liquidity for traders who must close positions.
+\end{caveat}

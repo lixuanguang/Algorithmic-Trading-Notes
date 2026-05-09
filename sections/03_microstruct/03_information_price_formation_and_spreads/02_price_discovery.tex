@@ -1,0 +1,41 @@
+\subsubsection{Price Discovery}
+
+\begin{definition} \hlt{Price Formation Process (PFP)}\\
+PFP is the route by which order flow, information, and trading rules become transaction prices. Cleaner PFP links prices more closely to fundamentals; noisy PFP lets microstructure frictions dominate short-horizon prices.
+\end{definition}
+
+\begin{principle} \hlt{Microstructure to Macro Prices}\\
+Intraday frictions can affect daily risk when they change the closing price, the auction price, or the path used by benchmark investors. The relevant question is not whether intraday noise exists, but whether it survives into the reference prices used outside the trading day.
+\end{principle}
+
+\begin{taxonomy} \hlt{Volatility Scale Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{intraday volatility}: uncertainty during trading session, (liquidity, spread, and order-flow shocks);
+\item \hlt{overnight volatility}: uncertainty between close and next open (information arrival and auction reopening);
+\item \hlt{extraday volatility}: close-to-close risk, mixing intraday and overnight components.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Intraday and Overnight Returns}\\
+For day $t$, let $O_t$ be the open price and $C_t$ the close price.\\
+Then $r_t^{\text{intra}}=\log(C_t)-\log(O_t)$ and $r_t^{\text{overnight}}=\log(O_t)-\log(C_{t-1})$.\\
+Pairwise correlations can then be computed separately on intraday and overnight return series.
+\end{definition}
+
+\begin{caveat} \hlt{Correlation Interpretation}\\
+Intraday correlations reflect co-movement during continuous price formation.\\
+Overnight correlations are closer to auction and news revaluation. Spikes in daily index correlation hence come from different mechanisms at different horizons.
+\end{caveat}
+
+\begin{mechanism} \hlt{Fragmentation and Price Formation}\\
+Fragmentation can improve prices when venues remain synchronised by routing, arbitrage, and consolidated information. It can damage price formation when venues lose a common reference, when primary quotes become stale, or when market participants pause routing during stress.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Fast Liquidity and Price Discovery}\\
+Fast market makers help price discovery when they update quotes and arbitrage stale venues. They hurt it when speed investment mainly earns queue priority or fee rebates without adding durable liquidity. Fee schedules therefore affect the price formation process, not only venue revenue.
+\end{mechanism}
+
+\begin{caveat} \hlt{Outage Price Discovery}\\
+If alternative venues keep trading while primary data or primary matching is unavailable, prices may temporarily split into parallel formation processes rather than one consolidated market price.
+\end{caveat}

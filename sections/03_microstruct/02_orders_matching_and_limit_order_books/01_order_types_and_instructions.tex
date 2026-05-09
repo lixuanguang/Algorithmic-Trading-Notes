@@ -1,0 +1,21 @@
+\subsubsection{Order Types and Instructions}
+
+\begin{taxonomy} \hlt{Core Order-Type Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{market}: pay immediacy and consume the best available liquidity;
+\item \hlt{limit}: specify a worst acceptable price and wait in the book if not marketable;
+\item \hlt{stop}: become active only after a trigger price is reached;
+\item \hlt{IOC/FOK}: cancel any unfilled quantity immediately, or require full immediate execution;
+\item \hlt{pegged}: reference the midpoint, best bid, best offer, or another venue-derived price;
+\item \hlt{hidden/iceberg}: reduce displayed size while keeping some executable interest undisplayed.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{principle} \hlt{Order Choice Trades Certainty for Leakage}\\
+Aggressive orders buy execution certainty but reveal urgency. Passive and hidden orders reduce signalling, but they introduce queue risk, missed fills, and adverse selection.
+\end{principle}
+
+\begin{caveat} \hlt{Instruction Semantics Are Venue-Specific}\\
+The same label can behave differently across venues. Minimum quantity, display refresh, priority loss after modification, pegging reference, and cancellation rules must be read as part of the market design.
+\end{caveat}

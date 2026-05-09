@@ -1,0 +1,49 @@
+\subsubsection{Hidden Liquidity and Dark Trading}
+
+\begin{definition} \hlt{Dark Pool}\\
+A dark pool is a trading venue where available liquidity is not displayed before execution. It is mainly used to reduce signalling, market impact, and exposure to opportunistic short-horizon traders.
+\end{definition}
+
+\begin{principle} \hlt{Reference Price Trading}\\
+Dark pools usually do not form prices independently. Equity dark trades often execute at the midpoint or another reference price from a reliable lit market, so dark liquidity depends on lit price formation.
+\end{principle}
+
+\begin{taxonomy} \hlt{Dark Liquidity Pools}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{crossing networks}: match buy and sell orders, often at the primary midpoint;
+\item \hlt{internalisation pools}: brokers cross client flow or trade against broker inventory;
+\item \hlt{electronic market-makers}: operators or selected liquidity providers accept or reject incoming flow;
+\item \hlt{exchange dark books}: hidden order types inside regulated venues;
+\item \hlt{dark aggregators}: route one order across several dark pools;
+\item \hlt{block pools}: focus on large institutional orders and natural liquidity.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Integrated vs Midpoint Books}\\
+Large hidden orders may interact with lit and hidden liquidity in integrated books. Smaller dark orders are typically crossed at the midpoint with basic limit, MAQ, and IOC controls.
+\end{mechanism}
+
+\begin{caveat} \hlt{Dark Pools and Price Discovery}\\
+Dark pools can reduce market impact, but they rely on lit quotes for reference prices. If too much flow moves dark, public price discovery may weaken; if dark flow is selective and low-impact, lit market quality can improve.
+\end{caveat}
+
+\begin{empiricalfinding} \hlt{Dark Activity Drivers}\\
+Dark activity is usually concentrated in liquid stocks, high-volume days, volatile periods, and high-spread names. It tends to be lower when order imbalances are large relative to volume.
+\end{empiricalfinding}
+
+\begin{mechanism} \hlt{Why Investors Use Dark Pools}\\
+The main incentives are secrecy and price improvement. A midpoint execution lets a liquidity taker avoid paying the full spread while hiding the order from traders who might infer and trade against the parent order.
+\end{mechanism}
+
+\begin{caveat} \hlt{Dark Liquidity Is Conditional}\\
+Dark liquidity is hard to estimate: misses are often invisible, and fills can still be adversely selected.
+\end{caveat}
+
+\begin{caveat} \hlt{Toxic Liquidity and Gaming}\\
+Dark pools can be gamed through probing, leakage, and adverse selection. Protections include minimum sizes, access controls, and filtering toxic flow.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Bilateral vs Multilateral Liquidity}\\
+Multilateral books let many participants provide liquidity under common rules. Bilateral trading preserves selection and relationship control, which can help avoid toxic counterparties but may reduce open price discovery.
+\end{taxonomy}

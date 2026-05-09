@@ -1,0 +1,24 @@
+\subsubsection{Order Lifecycle}
+
+\begin{process} \hlt{Limit-Order Lifecycle}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{insert}: add displayed or hidden liquidity at a chosen price and size;
+\item \hlt{modify}: change price, quantity, instructions, or expiry. Loses priority when price worsens or size increases;
+\item \hlt{cancel}: remove resting quantity before execution;
+\item \hlt{execute}: trade when an incoming marketable order crosses the resting quote.
+\end{enumerate}
+\end{process}
+
+\begin{taxonomy} \hlt{Message-Channel Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{private channel}: order entry, acknowledgements, rejects, cancels, and fills between member and venue;
+\item \hlt{public channel}: trades, best quotes, depth updates, status messages shared with market-data subscribers.
+\end{enumerate}
+Private messages control the order; public messages update the common view of the book.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Lifecycle Tags Change Priority}\\
+Time-in-force, display quantity, hidden flags, minimum quantity, and cancel-on-disconnect rules can change whether an order rests, executes, loses priority, or vanishes under stress.
+\end{caveat}

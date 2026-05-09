@@ -1,0 +1,63 @@
+\subsubsection{Statistical Models for Order Flow}
+
+\begin{definition} \hlt{Point-Process View}\\
+Order-book events can be modelled as point processes: random arrival times for insertions, cancellations, and transactions. The intensity $\lambda$ is the expected event rate over a short interval.
+\end{definition}
+
+\begin{definition} \hlt{Counting Process and Duration}\\
+For event times $(\tau_i)_{i\geq1}$, the counting process and duration process are $N_t=\sum\limits_{i\geq1}\mathbf{1}_{\{\tau_i\leq t\}}$, $\Delta\tau_i=\tau_i-\tau_{i-1}$. Here $N_t$ counts events up to time $t$, $\tau_i$ is the $i$th event time, and $\Delta\tau_i$ is the waiting time between consecutive events.
+\end{definition}
+
+\begin{definition} \hlt{Conditional Intensity}\\
+For filtration $\mathcal{F}_t$, the event intensity is $\lambda(t\mid\mathcal{F}_t)=\lim\limits_{h\downarrow0}\frac{1}{h}\mathbb{P}(N_{t+h}-N_t>0\mid\mathcal{F}_t)$. Here $\mathcal{F}_t$ is the information available before $t$. The intensity is the instantaneous event rate conditional on that information.
+\end{definition}
+
+\begin{taxonomy} \hlt{Order-Book Event Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item $\lambda^+$: limit-order insertions that add liquidity;
+\item $\lambda^c$: cancellations that remove resting liquidity;
+\item $\lambda^x$: transactions that consume resting liquidity.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{model} \hlt{Homogeneous Poisson Baseline}\\
+The simplest model treats $\lambda^+$, $\lambda^c$, and $\lambda^x$ as constant and independent of the book state. It is a useful null model, but it cannot reproduce realistic queue-size distributions because event rates are strongly state-dependent. Its value is diagnostic: any predictive model should beat this memoryless arrival clock.
+\end{model}
+
+\begin{definition} \hlt{Integrated Intensity}\\
+The integrated intensity over an inter-event interval is $\Lambda(\tau_{i-1},\tau_i)=\int_{\tau_{i-1}}^{\tau_i}\lambda(s)\,ds$. Here $\Lambda$ measures event time in intensity units. Under the time-change view, a correctly specified point process becomes a unit-rate Poisson process after this clock transformation.
+\end{definition}
+
+\begin{model} \hlt{Linear Hawkes Process}\\
+A one-dimensional Hawkes intensity is $\lambda(t)=\lambda_0(t)+\int_{-\infty}^{t}\nu(t-s)dN_s=\lambda_0(t)+\sum_{\tau_i<t}\nu(t-\tau_i)$. Here $\lambda_0(t)$ is baseline intensity, $\nu(\cdot)$ is the excitation kernel, and past events raise current intensity. Hawkes models fit clustered liquidity because trades or messages make near-future events more likely.
+\end{model}
+
+\begin{model} \hlt{Exponential Hawkes Kernel}\\
+With $\nu(u)=\alpha e^{-\beta u}\mathbf{1}_{\{u\geq0\}}$ and constant $\lambda_0$, the intensity is $\lambda(t)=\lambda_0+\sum_{\tau_i<t}\alpha e^{-\beta(t-\tau_i)}$. Here $\alpha$ is jump size, $\beta$ is decay speed, and $\alpha/\beta$ is the branching ratio. Stationarity requires $\alpha/\beta<1$, and then $\mathbb{E}[\lambda(t)]=\lambda_0/(1-\alpha/\beta)$.
+\end{model}
+
+\begin{mechanism} \hlt{Conditioning Improves Queue Dynamics}\\
+Queue-reactive models condition event intensities on current and neighbouring queue sizes. Small best queues are easier to consume; large queues can trigger nearby cancellations. The model becomes more realistic because the book state changes trader incentives before the next event arrives.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Conditioning Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{unconditional}: event type only;
+\item \hlt{own queue}: event type and current queue size;
+\item \hlt{neighbour queues}: own queue plus adjacent bid and ask queues;
+\item \hlt{event time}: count events rather than seconds when clock time is less informative.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Marked Flow Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{event type}: insertions, cancellations, market orders, and trades;
+\item \hlt{side}: buy-initiated and sell-initiated flow;
+\item \hlt{agent class}: broker, HFT, investor, dealer, or internaliser when identifiers exist;
+\item \hlt{venue}: lit, dark, auction, and internalised pools.
+\end{enumerate}
+A marked Hawkes model lets one class of event excite or inhibit another, useful when liquidity arrives in clusters.
+\end{taxonomy}

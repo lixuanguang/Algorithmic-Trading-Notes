@@ -1,0 +1,53 @@
+\subsubsection{Trading Venues and Market Architecture}
+
+\begin{principle} \hlt{Venue as Rule System}\\
+A market is a rule system, not a place. Its rules govern access, order submission, visibility, execution, clearing, and settlement.
+\end{principle}
+
+\begin{definition} \hlt{Exchanges}\\
+Exchanges centralise order interaction under membership, listing, trading, reporting, and clearing rules. They standardise access and make execution more reliable.
+\end{definition}
+
+\begin{definition} \hlt{OTC Markets}\\
+OTC markets use bilateral or dealer-mediated negotiation rather than a central book. They fit bonds, swaps, FX, bespoke derivatives, and heterogeneous contracts.
+\end{definition}
+
+\begin{taxonomy} \hlt{Electronic Communication Networks (ECNs) and Alternative Trading Systems (ATSs)}\\
+ECNs organise electronic matching outside traditional exchange structures. ATSs include dark pools, crossing systems, and specialised venues competing on anonymity, fees, block handling, or lower information leakage.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Dark Pools, Internalizers, and Crossing Networks}\\
+Dark pools hide pre-trade interest; internalizers match against broker-dealer inventory or internal flow; crossing networks match natural buyers and sellers, often at lit-market reference prices. These venues reduce signalling but can weaken public price discovery.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Request for Quotation (RFQ) vs Central Limit Order Book (CLOB)}\\
+RFQ markets request quotes from dealers, often bilaterally. A CLOB exposes standing interest multilaterally; RFQ protects relationships and discretion, while CLOBs improve comparability and public interaction.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Stale Quotes and Vanishing Liquidity}\\
+RFQ quotes can become stale before acceptance; displayed CLOB liquidity can vanish before an order arrives. In fragmented electronic markets, observed liquidity is an estimate, not a guarantee.
+\end{caveat}
+
+\begin{process} \hlt{Post-Trade Infrastructure}\\
+Trading does not end at execution:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{clearing} matches buyer and seller records and validates trade terms;
+\item \hlt{settlement} exchanges cash and securities;
+\item \hlt{custody} holds assets on behalf of clients;
+\item \hlt{depositories} immobilise or dematerialise securities so ownership can transfer by book entry.
+\end{enumerate}
+Clearinghouses may become buyer to every seller and seller to every buyer, reducing counterparty risk through margin and default management.
+\end{process}
+
+\begin{practitionernote} \hlt{Architecture Choice}\\
+Venue choice depends on order size, urgency, information sensitivity, instrument standardisation, and counterparty risk. Small urgent orders favour visible and immediate venues; large or information-sensitive orders often favour dark, negotiated, or sliced execution.
+\end{practitionernote}
+
+\begin{mechanism} \hlt{Liquidity Bridges}\\
+Fragmented venues require routing, arbitrage, and market-making links between books. These links reduce price dispersion, but their compensation is paid through spreads, fees, latency races, or information leakage.
+\end{mechanism}
+
+\begin{practitionernote} \hlt{Straight-Through Processing}\\
+Straight-through processing sends trade details from execution to clearing, settlement, custody, and reporting with minimal manual intervention.
+\end{practitionernote}

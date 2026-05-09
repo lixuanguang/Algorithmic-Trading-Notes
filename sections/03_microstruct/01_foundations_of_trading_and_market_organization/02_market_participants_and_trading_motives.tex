@@ -1,0 +1,72 @@
+\subsubsection{Market Participants and Trading Motives}
+
+\begin{model} \hlt{Trading Game View} \cite{o_hara_1995,harris_2002}\\
+A trading mechanism is a game in which participants submit orders under venue rules. The players include customers, brokers, dealers, market makers, and traders acting for their own account. Some demand liquidity, some supply liquidity, some carry information, and some process orders.\\
+Intuition: a trader's best order depends on what others may know, how fast they can react, and how the venue ranks competing messages.
+\end{model}
+
+\begin{notation} \hlt{Long and Short Positions}\\
+A trader with a \hlt{long position} owns the asset and benefits when its price rises. A trader with a \hlt{short position} has sold an asset not owned, or has equivalent negative exposure, and benefits when its price falls. Closing a short position is called \hlt{covering}.
+\end{notation}
+
+\begin{taxonomy} \hlt{Buy-Side Motives}\\
+Buy-side traders use markets to solve problems outside the market itself:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item investors move wealth across time;
+\item borrowers move wealth from the future to the present;
+\item hedgers reduce business or portfolio risk;
+\item asset exchangers acquire assets they value more than what they tender;
+\item gamblers trade for entertainment or payoff convexity rather than investment efficiency.
+\end{enumerate}
+These traders buy liquidity services rather than sell them.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Information-Motivated Traders}\\
+Informed traders trade because they believe prices do not yet reflect information. Value traders use slow information about fundamentals; news traders use recent information; arbitrageurs use relative mispricing across related instruments or venues. Their activity can improve prices, but only after other traders infer or absorb the information in their orders.
+\end{taxonomy}
+
+\begin{definition} \hlt{Noise and Liquidity Traders}\\
+Noise traders trade for reasons not directly tied to fundamental value: portfolio rebalancing, cash needs, index changes, behavioural demand, or mistaken beliefs. They are important because they make informed trading less obvious and give liquidity suppliers order flow that is not always toxic.
+\end{definition}
+
+\begin{mechanism} \hlt{Dealers and Market Makers}\\
+Dealers trade for their own account. Market makers quote prices or otherwise stand ready to trade, often holding inventory only until an offsetting order arrives. Their compensation comes from spreads, rebates, information, or client relationships; their risks are inventory, adverse selection, funding, and operational failure.
+They are paid for immediacy: the client trades now, while the market maker manages the uncertainty of unwinding later.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Sell-Side Intermediaries}\\
+Brokers arrange trades for clients without intending to own the position. Dealers trade as principal. Broker-dealers combine both functions, sometimes arranging agency trades and sometimes committing their own capital. The sell side exists because buy-side traders pay for search, immediacy, execution expertise, clearing access, and balance-sheet intermediation.
+\end{taxonomy}
+
+\begin{practitionernote} \hlt{Institutional Investors and HFTs}\\
+Institutional investors often trade large parent orders that must be hidden, sliced, or negotiated to reduce market impact. High-frequency traders use speed, automation, and short holding periods; they may act as market makers, arbitrageurs, statistical traders, or order anticipators. Their role depends on strategy.
+\end{practitionernote}
+
+\begin{taxonomy} \hlt{HFT Identification Markers}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item automated order generation, routing, execution, and cancellation;
+\item low-latency infrastructure, co-location, and direct market-data feeds;
+\item short holding periods and low overnight inventory;
+\item high message counts relative to executed trades;
+\item market making, cross-venue arbitrage, or very short-horizon statistical trading.
+\end{enumerate}
+These markers describe technology and horizon, not whether the strategy is beneficial.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{HFT as Fragmentation Link}\\
+Fast market makers connect fragmented venues by quoting related prices, arbitraging stale quotes, and hedging inventory across books. Their compensation is the spread, rebates, and short-lived information advantages; their cost is technology, inventory risk, and adverse selection. They act like moving bridges between books: useful when they keep prices aligned, fragile when those bridges are cancelled under stress.
+\end{mechanism}
+
+\begin{caveat} \hlt{Tighter Spread, Different Cost}\\
+An HFT can improve the displayed spread by stepping inside an older quote, but investor execution cost may not fall by the same amount. Smaller trades, more prints, and higher routing complexity can shift fixed and reporting costs toward slower investors.
+\end{caveat}
+
+\begin{caveat} \hlt{Investor Size Asymmetry}\\
+The uncertainty created by meeting a fast counterparty is not borne equally. A small investor sees high variance in a small number of trades; a large institution diversifies this uncertainty across many child orders but still pays aggregate spread, impact, and signalling costs.
+\end{caveat}
+
+\begin{caveat} \hlt{Blurring of Roles} \cite{lehalle_2018}\\
+Fragmentation blurs the distinction between liquidity takers and providers. The same agent may consume liquidity in one venue, supply it in another, and intermediate price formation through routing speed.
+\end{caveat}

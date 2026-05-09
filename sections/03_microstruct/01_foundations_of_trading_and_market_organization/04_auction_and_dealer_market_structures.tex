@@ -1,0 +1,56 @@
+\subsubsection{Auction and Dealer Market Structures}
+
+\begin{taxonomy} \hlt{Quote-Driven vs Order-Driven}\\
+Quote-driven markets trade through dealer quotes and balance sheets. Order-driven markets trade by matching public orders under priority rules.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Continuous Auctions}\\
+Orders execute whenever they arrive and match resting interest. Continuous trading provides immediacy but exposes prices to asynchronous order-flow imbalances.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Call Auctions}\\
+Orders accumulate, then execute at a single clearing price. Opening and closing calls concentrate liquidity when uncertainty and imbalance are high.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Fixing Auctions}\\
+Fixing auctions are call auctions used to create reference prices.\\
+They are valuable when investors need one public price for index valuation, NAV computation, derivative settlement, opening risk transfer, or end-of-day inventory adjustment.
+\end{mechanism}
+
+\begin{principle} \hlt{Reference Price Monopoly}\\
+Even when continuous trading fragments, primary exchanges often retain the auction flow that defines official reference prices. This makes auction volume structurally different from continuous-session volume and gives the primary market a separate source of liquidity concentration.
+\end{principle}
+
+\begin{taxonomy} \hlt{Auction Session Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{opening call}: rebuilds the book after overnight information and sets the first tradable price;
+\item \hlt{intraday call}: concentrates liquidity around scheduled events or low-liquidity periods;
+\item \hlt{closing call}: sets the end-of-day reference price and absorbs benchmark-driven flow;
+\item \hlt{volatility call}: pauses continuous trading when price moves or imbalances breach venue rules.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Dealer Markets}\\
+Prices form through dealer quotes rather than a single public book. Dealers absorb timing gaps, manage inventory, and revise quotes as information and inventory change.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Hybrid Markets}\\
+Hybrid markets combine order books, dealers, auctions, hidden orders, and off-book negotiation. They mix public order interaction with intermediary support.
+\end{taxonomy}
+
+\begin{marketrule} \hlt{Priority and Access Rules} \cite{o_hara_1995,madhavan_2000}\\
+Priority, tick size, order type, display, halt, and access rules determine how trades are resolved. The same latent supply and demand can produce different prices, quantities, and costs under different rules.
+\end{marketrule}
+
+\begin{casestudy} \hlt{Gold Fixing as Sequential Auction}\\
+The London gold fixing resembles a call process: participants submit net interest, revise after tentative prices, and stop when net demand and supply balance. It produces a clearing price, not continuous immediacy.
+\end{casestudy}
+
+\begin{practitionernote} \hlt{Why Large Orders Like Calls}\\
+Calls reduce the need to reveal urgency sequentially. A large order can interact with accumulated opposite interest at one price, often with less signalling than chasing liquidity through the continuous book.
+\end{practitionernote}
+
+\begin{caveat} \hlt{Auction Transparency Trade-Off}\\
+Pre-auction imbalance messages help traders converge to a clearing price, but they can also invite probing, cancellation, and last-second repricing. More transparency improves price discovery only when participants cannot cheaply game the signal.
+\end{caveat}

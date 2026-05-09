@@ -1,0 +1,93 @@
+\subsubsection{Execution Algorithms}
+
+\begin{principle} \hlt{Algo as Layered Decision System} \cite{lehalle_2018}\\
+An execution algorithm is not only a schedule. It is a layered system that turns a parent order into child orders, adapts to market state, and records enough context to explain the realised cost afterwards.
+\end{principle}
+
+\begin{taxonomy} \hlt{Algorithm Layer Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{execution parameters}: side, size, benchmark, timing, limits, participation, urgency, and venues;
+\item \hlt{risk-control layer}: sets the curve from impact, timing risk, alpha, and context;
+\item \hlt{tactical layer}: uses SORs, liquidity seeking, pegging, and dark probes to realise it.
+\end{enumerate}
+Risk control sets the envelope; tactics work inside it.
+\end{taxonomy}
+
+\begin{principle} \hlt{Benchmark Customisation}\\
+Execution styles can be combined: a VWAP can carry minimum participation, limit-price, or would-level constraints; a PoV can be capped by urgency; an IS schedule can still use an SOR and dark-pool probes. The benchmark defines the reference, while constraints define acceptable behaviour around it.
+\end{principle}
+
+\begin{caveat} \hlt{Hard Mixtures Are Fragile}\\
+Binary benchmark switches are brittle in noisy markets. A trading envelope gives the schedule room to adapt without abandoning risk control.
+\end{caveat}
+
+\begin{definition} \hlt{Trading Envelope}\\
+A trading envelope is a band of acceptable execution trajectories around the target schedule. Being too fast implies pausing or posting passively; being too slow implies crossing the spread or increasing participation.
+\end{definition}
+
+\begin{taxonomy} \hlt{Envelope Construction Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{benchmark path}: VWAP, TWAP, PoV, IS, or minimum-impact curve;
+\item \hlt{risk width}: tolerance for timing risk, price drift, and completion uncertainty;
+\item \hlt{market inputs}: volume curve, volatility, spread, depth, and impact estimates;
+\item \hlt{constraints}: limits, participation caps, venue restrictions, and common portfolio end times;
+\item \hlt{tactics}: liquidity capture, dark probes, pegging, and routing choices used inside the band.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{process} \hlt{Customisation Workflow}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item choose the desired risk profile and inject hard constraints into the envelope;
+\item choose liquidity tactics consistent with investment style and observed market state;
+\item monitor whether the realised path remains inside the envelope.
+\end{enumerate}
+\end{process}
+
+\begin{process} \hlt{Execution Decision Loop}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item initialise the parent order and benchmark;
+\item compute a target trajectory from historical profiles and model parameters;
+\item observe quotes, trades, fills, rejects, cancellations, and venue responses;
+\item revise child-order size, price, urgency, and venue split;
+\item publish monitoring and performance indicators for the trader.
+\end{enumerate}
+\end{process}
+
+\begin{taxonomy} \hlt{Pre-Trade Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{expected cost}: spread, impact, volatility, and typical quantity on the book;
+\item \hlt{profile}: expected volume curve, duration, and participation bounds;
+\item \hlt{context}: news, volatility regime, sector, country, currency, and event risk;
+\item \hlt{portfolio coupling}: common end times, exposure constraints, and cross-order synchronisation.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\stepcounter{table}
+\renewcommand{\arraystretch}{1.14}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{0.14\textwidth} >{\RaggedRight\arraybackslash}p{0.17\textwidth} >{\RaggedRight\arraybackslash}p{0.31\textwidth} >{\RaggedRight\arraybackslash}X@{}}
+\hline
+\textbf{Benchmark} & \textbf{Stock type} & \textbf{Trade type} & \textbf{Main feature} \\
+\hline
+PoV & Medium to large market depth & Long-duration position trade & Flow-following; reactive within participation bounds \\
+VWAP/TWAP & Any market depth & Hedging order; long-duration position; tracking-error unwind & Volume-curve schedule; passive when possible \\
+IS (Implementation Shortfall) & Medium liquidity depth & Alpha extraction; non-linear hedge, typically gamma; inventory-driven trade & Fast on opportunity; cuts losses on adverse moves \\
+Liquidity seeker & Poor fragmented market depth & Alpha extraction; opportunistic position mounting; already split or scheduled order & Pool search; dispersed liquidity; low signalling \\
+\hline
+\end{tabularx}
+
+\vspace{0.25em}
+{\footnotesize Table \thetable. Typical features of trading algorithms.}
+\end{table}
+
+\begin{practitionernote} \hlt{What-If Controls}\\
+Useful tools support live counterfactuals: finish now, slow down, switch benchmark, seek dark liquidity, or cap participation. The aim is disciplined comparison before changing trajectory.
+\end{practitionernote}

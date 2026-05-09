@@ -1,1 +1,40 @@
 \subsubsection{Stylized Facts of High-Frequency Data}
+
+\begin{taxonomy} \hlt{High-Frequency Stylized Facts}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{heavy tails}: short-horizon returns have more extremes than Gaussian returns;
+\item \hlt{volatility clustering}: large moves tend to arrive near other large moves;
+\item \hlt{long memory}: signs, durations, and volatility can remain persistent;
+\item \hlt{intraday seasonality}: volume, spread, volatility, and depth depend strongly on clock time.
+\end{enumerate}
+These facts are data conditions, not trading signals by themselves.
+\end{taxonomy}
+
+\begin{model} \hlt{Time-Series Decomposition}\\
+Microstructure time series can be decomposed into trend, seasonality, and residual variation: $X_t=C_t+S_t+\epsilon_t$ or $X_t=C_tS_t+\epsilon_t$. Here $X_t$ is the observed series, $C_t$ is the trend, $S_t$ is the seasonal component, $\epsilon_t$ is unexplained noise, and $t$ indexes equally spaced observations.
+\end{model}
+
+\begin{definition} \hlt{Centred Moving Average}\\
+For odd window length $2k+1$, the centred moving average is $MA_t=\frac{X_{t-k}+\cdots+X_t+\cdots+X_{t+k}}{2k+1}$. For even window length $2k$, use half weight at the endpoints: $A_t=\frac{0.5X_{t-k}+X_{t-k+1}+\cdots+X_{t+k-1}+0.5X_{t+k}}{2k}$.\\
+Here $MA_t$ is the local trend estimate and $k$ controls the smoothing width. The window should match the seasonal period, or an integer multiple of it, when estimating seasonality.
+\end{definition}
+
+\begin{model} \hlt{Additive Deseasonalisation}\\
+For period index $i$ and within-period slot $j$, write $X_{ij}=C_{ij}+S_j+\epsilon_{ij}$.\\
+If $MA_{ij}$ estimates $C_{ij}$, then $\hat{S}_j=\frac{1}{n}\sum_{i=1}^{n}(X_{ij}-MA_{ij})$, $S_j=\hat{S}_j-\frac{1}{p}\sum_{k=1}^{p}\hat{S}_k$. Here $p$ is the number of slots per period, $n$ is the number of periods, and $S_j$ is centred so the seasonal effects sum to zero.
+\end{model}
+
+\begin{model} \hlt{Multiplicative Deseasonalisation}\\
+For proportional seasonality, write $X_{ij}=C_{ij}S_j+\epsilon_{ij}$ and estimate $\hat{S}_j=\frac{1}{n}\sum\limits_{i=1}^{n}\frac{X_{ij}}{MA_{ij}}$, $S_j=\hat{S}_j / \left( \frac{1}{p}\sum\limits_{k=1}^{p}\hat{S}_k \right)$.\\
+Here $S_j$ is normalised to average one. This is natural for volume curves because activity is often a relative multiplier of the day's baseline.
+\end{model}
+
+\begin{model} \hlt{Volume Seasonality Factorisation}\\
+A compact volume model is $V(y,m,d,n,\omega)=\{f(n)+g(d,n)\}F(m)G(y)v(n,\omega)$, where 
+$f(n)$ is the usual intraday profile, year $y$, month $m$, day $d$, time slot $n$, and event state $\omega$, $g(d,n)$ captures special-day effects, $F(m)$ is monthly seasonality, $G(y)$ is yearly scale, and $v(n,\omega)$ is residual slot-level variation.
+\end{model}
+
+\begin{practitionernote} \hlt{Seasonality Before Signal}\\
+Remove predictable clock-time effects before comparing venues, estimating impact, or training intraday features. Otherwise a noon lull, close auction, expiry day, or macro window can look like alpha.
+\end{practitionernote}

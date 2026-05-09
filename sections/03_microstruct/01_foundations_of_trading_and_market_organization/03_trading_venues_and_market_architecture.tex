@@ -1,8 +1,29 @@
 \subsubsection{Trading Venues and Market Architecture}
 
 \begin{principle} \hlt{Venue as Rule System}\\
-A market is a rule system, not a place. Its rules govern access, order submission, visibility, execution, clearing, and settlement.
+A market is a rule system that govern access, order submission, visibility, execution, clearing, and settlement.
 \end{principle}
+
+\begin{taxonomy} \hlt{Market-Structure Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{session}: when orders may enter and trades may occur;
+\item \hlt{execution}: who arranges the match and which rule prices the trade;
+\item \hlt{information}: who observes orders, quotes, trades, and when;
+\item \hlt{access}: how traders send orders, cancels, and reports;
+\item \hlt{price grid}: the tick sizes and admissible price points.
+\end{enumerate}
+Market structure matters because it defines both tradability and information access.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Access Form Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{physically convened}: traders meet on a floor or pit;
+\item \hlt{distributed}: traders negotiate by phone, message, or bilateral networks;
+\item \hlt{screen-based}: orders, quotes, and trades are submitted through electronic interfaces.
+\end{enumerate}
+\end{taxonomy}
 
 \begin{definition} \hlt{Exchanges}\\
 Exchanges centralise order interaction under membership, listing, trading, reporting, and clearing rules. They standardise access and make execution more reliable.
@@ -22,6 +43,17 @@ Dark pools hide pre-trade interest; internalizers match against broker-dealer in
 
 \begin{taxonomy} \hlt{Request for Quotation (RFQ) vs Central Limit Order Book (CLOB)}\\
 RFQ markets request quotes from dealers, often bilaterally. A CLOB exposes standing interest multilaterally; RFQ protects relationships and discretion, while CLOBs improve comparability and public interaction.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Market Information Systems}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{collection}: capture orders, quotes, trades, and participant reports;
+\item \hlt{distribution}: publish or sell feeds, tapes, and reference data;
+\item \hlt{routing}: transmit orders, cancels, acknowledgements, and fills;
+\item \hlt{presentation}: display books, quotes, trades, indications, and alerts;
+\item \hlt{storage}: preserve audit trails and historical market data.
+\end{enumerate}
 \end{taxonomy}
 
 \begin{caveat} \hlt{Stale Quotes and Vanishing Liquidity}\\

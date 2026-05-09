@@ -24,6 +24,26 @@ Optimal execution first chooses how fast to trade, balancing market impact again
 The decision loop is bounded by CPU time, network latency, matching-engine latency, and feed latency.
 \end{process}
 
+\begin{model} \hlt{Toy SOR Allocation Model}\\
+For $K$ venues, let $r_k$ be the fraction routed to venue $k$, $V(\omega)$ the child size, and $D_k(\omega)$ the executable liquidity under liquidity state $\omega$. Captured liquidity is $C(r,\omega)=\sum\limits_{k=1}^{K}\min\{r_kV(\omega),D_k(\omega)\}$, $\sum\limits_{k=1}^{K}r_k=1$.\\
+An SOR learns $r=(r_1,\ldots,r_K)$ by increasing allocation to venues that fill reliably and reducing allocation to venues that disappoint.
+\end{model}
+
+\begin{mechanism} \hlt{SOR Share Feedback}\\
+If $p_k(t)$ is venue $k$'s market share and $a$ is the fraction of participants using SORs, a simple share update is $p_k(t+1)=(1-a)p_k(t)+a r_k(t)$. SORs therefore turn routing weights into market share; venues with reliable liquidity gain flow, while noisy venues lose allocation slowly.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{SOR Fragmentation Drivers}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{initial share}: incumbent venues start with the observed flow prior $p(0)$;
+\item \hlt{liquidity quality}: stable depth is easier for routers to learn and trust;
+\item \hlt{liquidity variance}: noisy fills push routers toward diversification;
+\item \hlt{SOR adoption}: higher $a$ makes market share follow routing weights faster;
+\item \hlt{reassessment speed}: faster learning accelerates convergence or instability.
+\end{enumerate}
+\end{taxonomy}
+
 \begin{taxonomy} \hlt{Venue Selection Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}

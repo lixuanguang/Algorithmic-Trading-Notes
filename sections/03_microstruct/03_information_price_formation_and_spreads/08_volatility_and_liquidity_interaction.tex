@@ -21,6 +21,27 @@ The 2010 Flash Crash illustrates a liquidity spiral: a large automated futures s
 The trigger was an order; the crash mechanism was fragile liquidity under linked-market stress.
 \end{casestudy}
 
+\begin{model} \hlt{Depth-Driven Flash Crash Toy Model}\\
+On one side of the book, let $F_t$ be the market-order arrival rate, $\bar{F}$ the normal refill rate, $r_t=F_t-\bar{F}$ the overflow, and $I_t=1/D_t$ inverse depth. A compact depth-impact dynamic is $\frac{dI_t}{I_t}=\sigma_I dW_t+r_tdt$.\\
+Here $D_t$ is market depth, $I_t$ is impact, and $W_t$ captures random liquidity shocks.
+\end{model}
+
+\begin{mechanism} \hlt{Hot-Potato Amplification}\\
+If a fraction $\rho$ of traders follows volume mechanically, initial trading rate $r_0$ can amplify roughly as $r_t\simeq \frac{1-\rho^t}{1-\rho}r_0$.\\
+When $\rho$ is high, overflow consumes depth faster than passive liquidity can refill it.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Flash-Crash Control Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{rate controls}: cap participation rates or stop volume-following feedback;
+\item \hlt{depth controls}: require or incentivise fast refill near the touch;
+\item \hlt{price controls}: pause trading after large price moves;
+\item \hlt{cross-market controls}: coordinate futures, ETFs, cash equities, and options;
+\item \hlt{data controls}: detect overflow, quote withdrawal, and broken references in real time.
+\end{enumerate}
+\end{taxonomy}
+
 \begin{caveat} \hlt{Systemic Risk Link}\\
 Fragmentation is not systemic risk by itself. It becomes dangerous when market participants react to stress in the same direction, when related venues desynchronise, or when liquidity withdrawal in one instrument propagates to hedges, ETFs, futures, and correlated stocks.
 \end{caveat}

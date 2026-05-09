@@ -37,6 +37,10 @@ Tick size is the minimum price increment for limit orders.\\
 It discretises prices and can be uniform, price-banded, or liquidity-banded.
 \end{definition}
 
+\begin{empiricalfinding} \hlt{Price Clustering}\\
+Even when the grid permits many prices, quotes often cluster at round numbers. Clustering reflects communication, search, and queueing convenience, especially when the tick is small relative to price.
+\end{empiricalfinding}
+
 \begin{mechanism} \hlt{Binding Tick Constraint}\\
 When the tick is large relative to the latent spread, the quoted spread is floored at one tick. Once the tick no longer binds, further reductions mostly change queue behaviour.
 \end{mechanism}
@@ -89,6 +93,16 @@ To compare book quality across tick regimes, measure the cost of executing a fix
 \begin{principle} \hlt{CLOB as Price-Formation Device}\\
 A central limit order book stores unmatched buying and selling interest until compatible prices meet. Each transaction therefore both transfers inventory and updates the public state of price formation.
 \end{principle}
+
+\begin{taxonomy} \hlt{Order-Book Visibility}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{open book}: broad participants can observe standing interest;
+\item \hlt{closed book}: only the broker, dealer, or venue sees resting orders;
+\item \hlt{top-of-book}: only the best limits are visible;
+\item \hlt{depth book}: multiple levels, aggregate size, or order-level detail are visible.
+\end{enumerate}
+\end{taxonomy}
 
 \begin{mechanism} \hlt{LOB Event Types}\\
 Order-book dynamics are driven by three event families: insertions add liquidity, cancellations remove liquidity without trading, and marketable orders remove liquidity through transactions. Price changes occur when the best queue is depleted or a better price is inserted.

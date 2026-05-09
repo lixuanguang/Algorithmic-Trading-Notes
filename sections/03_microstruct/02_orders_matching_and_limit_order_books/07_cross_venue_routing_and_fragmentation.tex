@@ -64,6 +64,20 @@ Here $M_k(n)$ is stock $k$'s value share on venue $n$, $\ell$ indexes trades, $\
 Trade-count share replaces traded value by $\mathbf{1}_n(\delta_\ell^k)$ and divides by the number of trades. Both measures should separate continuous trading from fixing auctions.
 \end{definition}
 
+\begin{model} \hlt{Venue-Share Estimator}\\
+For asset $k$ and venue $i$, let $T_k^i$ be turnover on venue $i$ inside a fixed segment.\\
+The estimated venue share is $\hat{p}_k^i=\frac{T_k^i}{\sum\limits_j T_k^j}$. The same ratio can be built from trade count, displayed depth, or executable volume, but each choice answers a different routing question.
+\end{model}
+
+\begin{model} \hlt{Index-Level Venue Share}\\
+For an index universe $\mathcal{K}$ with weights $w_k$, aggregate asset-level shares by $\hat{p}_{\mathcal{K}}^i=\sum\limits_{k\in\mathcal{K}}w_k\hat{p}_k^i$.\\
+Here $\mathcal{K}$ is the index constituent set, $w_k$ is asset $k$'s index weight, $\hat{p}_k^i$ is asset $k$'s estimated share on venue $i$, and $\hat{p}_{\mathcal{K}}^i$ is the index-level share on venue $i$. Index weights measure benchmark exposure; turnover weights measure where actual trading activity is concentrated.
+\end{model}
+
+\begin{practitionernote} \hlt{Estimator Comparison}\\
+To compare an asset with its universe, use $d_k^i=\hat{p}_k^i-\hat{p}_{\mathcal{K}}^i$. Here $d_k^i$ is the excess venue share of asset $k$ on venue $i$ relative to the chosen universe. If asset $k$ is included in the benchmark, the two estimators are mechanically correlated; a leave-one-out universe gives a cleaner comparison.
+\end{practitionernote}
+
 \begin{caveat} \hlt{Metric Choice}\\
 The correct fragmentation metric depends on the question. Use all-in market share for venue revenue; use continuous-session trade share for the probability that an order executes on a venue; use value share when the unit of interest is currency traded.
 \end{caveat}
@@ -210,6 +224,32 @@ Low coverage means liquidity is concentrated in a few names; high coverage means
 \begin{definition} \hlt{Gini Liquidity Imbalance}\\
 A turnover Gini index summarises inequality in trading activity across stocks. A value near zero means turnover is evenly distributed; a value near one means a small subset of stocks dominates index liquidity.
 \end{definition}
+
+\begin{model} \hlt{Lorenz-Curve Gini}\\
+Let $L(u)$ be the Lorenz curve for venue share, turnover, or actor activity after observations are ordered from smallest to largest contribution. The Gini coefficient is $G=1-2\int_0^1 L(u)\,du$.\\
+Here $G$ is the Gini coefficient, $u$ is the cumulative fraction of observations, and $L(u)$ is the cumulative fraction of the measured quantity. Equal contribution gives $G=0$; complete concentration gives $G$ close to $1$.
+\end{model}
+
+\begin{taxonomy} \hlt{Gini Measurement Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{venue share}: concentration of trading across venues for one asset or universe;
+\item \hlt{asset turnover}: concentration of liquidity across index constituents;
+\item \hlt{participant activity}: concentration of messages, trades, or liquidity supply across actors;
+\item \hlt{time segment}: separate open, continuous session, close, and event windows.
+\end{enumerate}
+The same Gini value is meaningful only after fixing the unit being ranked.
+\end{taxonomy}
+
+\begin{model} \hlt{Kolmogorov-Smirnov Distribution Test}\\
+For observations $X_1,\ldots,X_n$, the empirical distribution is $F_n(x)=\frac{1}{n}\sum_{k=1}^{n}\mathbf{1}_{\{X_k\leq x\}}$.\\
+For two samples with empirical distributions $F_n^X$ and $F_m^Y$, two-sample statistic is $D_{n,m}=\sup_x\left|F_n^X(x)-F_m^Y(x)\right|$.\\
+Here $X_k$ is observation $k$, $n$ and $m$ are sample sizes, $F_n^X$ and $F_m^Y$ are empirical distribution functions, and $D_{n,m}$ is largest vertical gap. Reject equal distributions at $\alpha$ when $\sqrt{\frac{nm}{n+m}}D_{n,m} > $ Kolmogorov critical value.
+\end{model}
+
+\begin{practitionernote} \hlt{Venue-Share Distribution Comparison}\\
+Use the KS test to compare cross-sectional venue-share distributions across venues or dates. A high Gini says trading is concentrated; a rejected KS test says the whole distribution differs.
+\end{practitionernote}
 
 \begin{mechanism} \hlt{HFT Perimeter Extension}\\
 Fast market makers usually enter liquid large caps first because hedging, borrowing, and inventory recycling are easier. As competition compresses returns, they extend toward less liquid names, improving coverage until hedging cost and inventory risk become uneconomic.

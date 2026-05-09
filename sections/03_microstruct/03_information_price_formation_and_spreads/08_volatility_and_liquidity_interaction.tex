@@ -13,6 +13,21 @@ Let $O$, $H$, $L$, and $C$ denote the interval open, high, low, and close:
 It is useful for comparing intraday uncertainty across markets when transaction-level volatility is too noisy.
 \end{definition}
 
+\begin{model} \hlt{Spread-Volatility Regression}\\
+A compact empirical check regresses spread on volatility: $\psi_i=a_0+a_1\sigma_i+\epsilon_i$.\\
+Here $\psi_i$ is spread observation, $\sigma_i$ is realised volatility, $a_0$ is baseline spread, $a_1$ is spread sensitivity to volatility, and $\epsilon_i$ is residual noise. $\hat{a}_1 > 0$ is consistent with liquidity providers charging more when uncertainty rises.
+\end{model}
+
+\begin{model} \hlt{Log-Log Spread-Volatility Model}\\
+If spread and volatility are skewed, use $\log \psi_i=a_0+a_1\log\sigma_i+\epsilon_i$.\\
+Returning to levels gives the multiplicative relation $\psi_i=A_0\sigma_i^{a_1}e^{\epsilon_i}$ with $A_0=e^{a_0}$. If $\epsilon_i\sim N(0,\sigma_\epsilon^2)$, the unbiased level predictor is $\hat{\psi}= \hat{A}_0\sigma^{\hat{a}_1}e^{\hat{\sigma}_\epsilon^2/2}$.\\
+Here $A_0$ is the level intercept, $\sigma_\epsilon^2$ is residual variance, and hats denote estimates.
+\end{model}
+
+\begin{caveat} \hlt{Spread-Volatility Identification}\\
+A fitted relation is descriptive unless tick size, time of day, venue, depth, and trade intensity are controlled. In large-tick assets, volatility may move through depth rather than spread.
+\end{caveat}
+
 \begin{mechanism} \hlt{Liquidity Spiral}\\
 A large order can consume depth, widen spreads, and raise volatility. Higher volatility makes liquidity providers reduce size or cancel quotes, forcing the next order to trade through less liquidity and amplifying the move. The state variable is confidence in replenishment: once traders doubt the book will refill, everyone demands more price concession at the same time.
 \end{mechanism}

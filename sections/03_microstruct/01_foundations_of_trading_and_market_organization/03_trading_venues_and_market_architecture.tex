@@ -41,6 +41,16 @@ ECNs organise electronic matching outside traditional exchange structures. ATSs 
 Dark pools hide pre-trade interest; internalizers match against broker-dealer inventory or internal flow; crossing networks match natural buyers and sellers, often at lit-market reference prices. These venues reduce signalling but can weaken public price discovery.
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Brokered Transaction Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{order flow}: broker receives client orders and matches, routes, or exposes them;
+\item \hlt{block}: broker searches quietly for the other side of a large trade;
+\item \hlt{offering}: broker distributes new or seasoned securities to investors;
+\item \hlt{corporate-control}: broker advises or introduces parties in merger and acquisition trades.
+\end{enumerate}
+\end{taxonomy}
+
 \begin{taxonomy} \hlt{Request for Quotation (RFQ) vs Central Limit Order Book (CLOB)}\\
 RFQ markets request quotes from dealers, often bilaterally. A CLOB exposes standing interest multilaterally; RFQ protects relationships and discretion, while CLOBs improve comparability and public interaction.
 \end{taxonomy}
@@ -71,6 +81,14 @@ Trading does not end at execution:
 \end{enumerate}
 Clearinghouses may become buyer to every seller and seller to every buyer, reducing counterparty risk through margin and default management.
 \end{process}
+
+\begin{proposition} \hlt{Brokered Credit Compression}\\
+With $n$ traders, direct bilateral trading can require $n(n-1)/2$ credit relationships.\\
+If clients trade through $B$ clearing brokers, the relationship count falls to $n+B(B-1)/2$ when each client relies on one broker and brokers check each other.
+\begin{proof}
+The direct market must check every unordered trader pair. In the brokered market, each client checks one broker, and the remaining checks are among broker pairs.
+\end{proof}
+\end{proposition}
 
 \begin{practitionernote} \hlt{Architecture Choice}\\
 Venue choice depends on order size, urgency, information sensitivity, instrument standardisation, and counterparty risk. Small urgent orders favour visible and immediate venues; large or information-sensitive orders often favour dark, negotiated, or sliced execution.

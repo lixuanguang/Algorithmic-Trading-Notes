@@ -11,6 +11,17 @@
 The empirical question should choose the shallowest feed that identifies the event cleanly.
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Trading-Message Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{order entry}: new, cancel, replace, reject, and execution-report messages;
+\item \hlt{market data}: public trades, quotes, status, and depth updates;
+\item \hlt{drop copy}: private execution and routing records for audit and reconciliation;
+\item \hlt{clearing feed}: allocations, positions, margin, fees, and settlement status.
+\end{enumerate}
+FIX standardises much of order-entry layer. Venues still differ in native gateways, tags, throttles, recovery rules.
+\end{taxonomy}
+
 \begin{caveat} \hlt{Ticker Is Not an Instrument Key}\\
 Ticker symbols are display mnemonics. Robust microstructure data keys need venue, currency, instrument type, expiry, strike, option right, corporate-action history, and identifier validity dates.
 \end{caveat}

@@ -15,6 +15,17 @@ Automated trading needs a production architecture that synchronises market data,
 \end{enumerate}
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Broker-Dealer Operations Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{front office}: client contact, order receipt, execution, sales, and research;
+\item \hlt{back office}: accounts, confirmations, clearing, settlement, custody, and statements;
+\item \hlt{risk and treasury}: margin, credit, stock loan, cash management, and firm inventory;
+\item \hlt{compliance}: suitability, best execution, surveillance, and regulatory reporting;
+\item \hlt{technology}: order routing, market data, drop copies, books, and audit trails.
+\end{enumerate}
+\end{taxonomy}
+
 \begin{mechanism} \hlt{Analytics Close to the Feed}\\
 Spread, effective spread, volatility, book imbalance, and queue-size measures should be computed as soon as raw data arrive. Fast analytics become state variables for execution, monitoring, and later post-trade explanation.
 \end{mechanism}
@@ -40,4 +51,13 @@ An execution engine sends orders, cancellations, and modifications, then receive
 \item post-trade systems store the same indicators for diagnosis and TCA.
 \end{enumerate}
 This makes trading algorithms stateful agents in the production stack rather than black boxes.
+\end{process}
+
+\begin{process} \hlt{Audit Trail}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item record order receipt, route, modification, cancellation, execution, allocation, and timestamp;
+\item link private order messages to public market state and venue responses;
+\item preserve enough context to test best execution, front-running, allocation, and unauthorised trading.
+\end{enumerate}
 \end{process}

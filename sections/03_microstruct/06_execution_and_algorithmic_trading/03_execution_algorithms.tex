@@ -35,6 +35,27 @@ Risk control sets the envelope; tactics work inside it.
 \end{enumerate}
 \end{taxonomy}
 
+\begin{table}[htbp]
+\centering
+\scriptsize
+\stepcounter{table}
+\renewcommand{\arraystretch}{1.14}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{0.14\textwidth} >{\RaggedRight\arraybackslash}p{0.17\textwidth} >{\RaggedRight\arraybackslash}p{0.31\textwidth} >{\RaggedRight\arraybackslash}X@{}}
+\hline
+\textbf{Benchmark} & \textbf{Stock type} & \textbf{Trade type} & \textbf{Main feature} \\
+\hline
+PoV & Medium to large market depth & Long-duration position trade & Flow-following; reactive within participation bounds \\
+VWAP/TWAP & Any market depth & Hedging order; long-duration position; tracking-error unwind & Volume-curve schedule; passive when possible \\
+IS (Implementation Shortfall) & Medium liquidity depth & Alpha extraction; non-linear hedge, typically gamma; inventory-driven trade & Fast on opportunity; cuts losses on adverse moves \\
+Liquidity seeker & Poor fragmented market depth & Alpha extraction; opportunistic position mounting; already split or scheduled order & Pool search; dispersed liquidity; low signalling \\
+\hline
+\end{tabularx}
+
+\vspace{0.25em}
+{\footnotesize Table \thetable. Typical features of trading algorithms.}
+\end{table}
+
 \begin{practitionernote} \hlt{What-If Controls}\\
 Useful tools support live counterfactuals: finish now, slow down, switch benchmark, seek dark liquidity, or cap participation. The aim is disciplined comparison before changing trajectory.
 \end{practitionernote}

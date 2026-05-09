@@ -4,6 +4,10 @@
 PFP is the route by which order flow, information, and trading rules become transaction prices. Cleaner PFP links prices more closely to fundamentals; noisy PFP lets microstructure frictions dominate short-horizon prices.
 \end{definition}
 
+\begin{mechanism} \hlt{Informed Trading Price Discovery}\\
+Informed traders buy when $P_t<V_t$ and sell when $P_t>V_t$. Their trades move prices toward their estimates, but profits shrink as prices incorporate the information.
+\end{mechanism}
+
 \begin{principle} \hlt{Microstructure to Macro Prices}\\
 Intraday frictions can affect daily risk when they change the closing price, the auction price, or the path used by benchmark investors. The relevant question is not whether intraday noise exists, but whether it survives into the reference prices used outside the trading day.
 \end{principle}

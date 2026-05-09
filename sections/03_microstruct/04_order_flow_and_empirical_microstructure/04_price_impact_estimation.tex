@@ -1,1 +1,31 @@
 \subsubsection{Price Impact Estimation}
+
+\begin{definition} \hlt{Execution-Time Impact}\\
+Execution-time impact is the price move observed while the order is being traded, measured from the perspective of the order side and often normalised by spread or volatility.
+\end{definition}
+
+\begin{empiricalfinding} \hlt{Impact Has a Hump Shape}\\
+Intraday impact usually rises during execution and partly decays afterwards. The remaining shift is the candidate permanent component; the decayed part is temporary impact and liquidity replenishment.
+\end{empiricalfinding}
+
+\begin{taxonomy} \hlt{Impact Driver Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{stock characteristics}: liquidity, volatility, spread, tick size, and typical depth;
+\item \hlt{order characteristics}: size, duration, participation rate, side, and aggressiveness;
+\item \hlt{timing}: trend, rebalancing pressure, signal arrival, auctions, and market-wide events;
+\item \hlt{venue access}: lit depth, dark liquidity, queue priority, and routing constraints.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{model} \hlt{Participation-Duration Shape}\\
+A compact empirical specification writes market impact as increasing in duration and participation:
+\begin{equation*}
+\text{Market Impact} \propto \text{Duration}^{\alpha}\times \text{Participation}^{\gamma}.
+\end{equation*}
+The exponents are calibrated from executions; in many datasets the participation exponent is concave, so extra participation hurts, but less than linearly.
+\end{model}
+
+\begin{caveat} \hlt{Timing Is Not Noise}\\
+Two orders with identical size and participation can have different impact because one trades with the market and the other trades against it. Impact estimation therefore has to separate execution mechanics from the signal that caused the trade.
+\end{caveat}

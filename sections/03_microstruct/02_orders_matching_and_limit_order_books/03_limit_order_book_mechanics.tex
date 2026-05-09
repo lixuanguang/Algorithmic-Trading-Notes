@@ -26,6 +26,14 @@ A smaller tick can increase cancellations and modifications relative to trades. 
 To compare book quality across tick regimes, measure the cost of executing a fixed monetary size by rebuilding cumulative depth around the best bid and offer. Top-of-book spread alone ignores hidden liquidity, resiliency, and depth beyond the first level.
 \end{mechanism}
 
+\begin{principle} \hlt{CLOB as Price-Formation Device}\\
+A central limit order book stores unmatched buying and selling interest until compatible prices meet. Each transaction therefore both transfers inventory and updates the public state of price formation.
+\end{principle}
+
+\begin{mechanism} \hlt{LOB Event Types}\\
+Order-book dynamics are driven by three event families: insertions add liquidity, cancellations remove liquidity without trading, and marketable orders remove liquidity through transactions. Price changes occur when the best queue is depleted or a better price is inserted.
+\end{mechanism}
+
 \begin{taxonomy} \hlt{Tick-Size Quality Proxies}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -38,4 +46,9 @@ To compare book quality across tick regimes, measure the cost of executing a fix
 
 \begin{caveat} \hlt{Value of a Quote}\\
 As ticks and displayed sizes shrink, quotes can become shorter-lived and less informative. A consolidated tape of trades cannot fully replace quote data if only the best limit is visible and deeper book information is lost.
+\end{caveat}
+
+\begin{caveat} \hlt{RFQ Can Mimic a Book}\\
+In RFQ markets, dealers answer bilateral requests rather than post firm multilateral quotes.\\
+Aggregating several responses can look like a book, but the liquidity is conditional on the request, relationship, size, and information embedded in the enquiry.
 \end{caveat}

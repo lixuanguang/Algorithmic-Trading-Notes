@@ -1,1 +1,32 @@
 \subsubsection{Statistical Models for Order Flow}
+
+\begin{definition} \hlt{Point-Process View}\\
+Order-book events can be modelled as point processes: random arrival times for insertions, cancellations, and transactions. The intensity $\lambda$ is the expected event rate over a short interval.
+\end{definition}
+
+\begin{taxonomy} \hlt{Order-Book Event Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item $\lambda^+$: limit-order insertions that add liquidity;
+\item $\lambda^c$: cancellations that remove resting liquidity;
+\item $\lambda^x$: transactions that consume resting liquidity.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{model} \hlt{Homogeneous Poisson Baseline}\\
+The simplest model treats $\lambda^+$, $\lambda^c$, and $\lambda^x$ as constant and independent of the book state. It is a useful null model, but it cannot reproduce realistic queue-size distributions because event rates are strongly state-dependent.
+\end{model}
+
+\begin{mechanism} \hlt{Conditioning Improves Queue Dynamics}\\
+Queue-reactive models condition event intensities on current and neighbouring queue sizes. Small best queues are easier to consume; large queues can trigger nearby cancellations.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Conditioning Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{unconditional}: event type only;
+\item \hlt{own queue}: event type and current queue size;
+\item \hlt{neighbour queues}: own queue plus adjacent bid and ask queues;
+\item \hlt{event time}: count events rather than seconds when clock time is less informative.
+\end{enumerate}
+\end{taxonomy}

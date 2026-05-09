@@ -40,6 +40,7 @@ Market share is a rough prior for where trading occurs. For stock $k$ and venue 
 \begin{align}
 M_k(n)= \left( \sum\limits_{t_1\leq \tau_\ell^k\leq t_2}P_\ell^kV_\ell^k\mathbf{1}_n(\delta_\ell^k) \right) / \left( \sum\limits_{t_1\leq \tau_\ell^k\leq t_2}P_\ell^kV_\ell^k \right) \nonumber
 \end{align}
+Here $\ell$ indexes trades, $\tau_\ell^k$ is trade time, $P_\ell^k$ is price, $V_\ell^k$ is size, $\delta_\ell^k$ is venue, and $\mathbf{1}_n = 1$ if trade is on venue $n$.\\
 Trade-count share replaces traded value by $\mathbf{1}_n(\delta_\ell^k)$ and divides by the number of trades. Both measures should separate continuous trading from fixing auctions.
 \end{definition}
 
@@ -67,13 +68,28 @@ Primary markets often regain share near the open and close because auctions, ref
 Intraday market share is not a stable venue attribute. It changes with time of day, expiry windows, benchmark prices, news, and whether investors must trade on the venue that defines the relevant reference price.
 \end{caveat}
 
-\begin{definition} \hlt{Entropy Fragmentation Metric}\\
-If market shares across $N$ venues are $M_1,\ldots,M_N$, the normalised entropy measure is
-\begin{equation*}
-H = -\frac{1}{\log N}\sum_{n=1}^{N} M_n \log M_n.
-\end{equation*}
-$H=0$ when all trading is on one venue and $H=1$ when trading is evenly split. This is a compact Fragmentation Efficiency Index (FEI) for comparing stocks, dates, or indices.
+\begin{definition} \hlt{Fragmentation Efficiency Index}\\
+Let $q_n$ be the share of trading or liquidity observed in venue $n$, with $\sum_{n=1}^{N}q_n=1$.\\
+The Fragmentation Efficiency Index (FEI) is normalised entropy: $\mathfrak{F}(q_1,\ldots,q_N)=\frac{-\sum_{n=1}^{N}q_n\log q_n}{\log N}$.\\
+Here $N$ is the number of venues and $\mathfrak{F}$ is the dispersion score for the share vector $q$.\\
+$\mathfrak{F}=0$ when all flow is in one venue and $\mathfrak{F}=1$ when flow is evenly split across venues.
 \end{definition}
+
+\begin{taxonomy} \hlt{Fragmentation Measurement Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{trade-count FEI}: probability that the next print occurs away from the primary venue;
+\item \hlt{value-share FEI}: economic dispersion of traded notional;
+\item \hlt{displayed-liquidity FEI}: dispersion of visible book quantity, usually by price level;
+\item \hlt{session FEI}: separate continuous trading from auctions and benchmark windows;
+\item \hlt{universe FEI}: compare large caps, small caps, sectors, or index constituents separately.
+\end{enumerate}
+The same formula answers different questions only after the underlying share definition is fixed.
+\end{taxonomy}
+
+\begin{caveat} \hlt{FEI Venue Count}\\
+FEI depends on the considered venue set. If $t$ is the measurement date and $N$ is the venue count, adding an empty venue mechanically lowers the index from $\mathfrak{F}(t)$ to $\frac{\log N}{\log(N+1)}\mathfrak{F}(t)$. Compare FEI through time only after controlling for venue openings, closures, and data coverage.
+\end{caveat}
 
 \begin{caveat} \hlt{Fragmentation of What}\\
 Market-share and entropy metrics describe how traded value or trades are dispersed. They do not by themselves measure protocol costs, connectivity costs, hidden liquidity, or the difficulty of accessing each pool.

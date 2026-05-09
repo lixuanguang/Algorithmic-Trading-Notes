@@ -71,8 +71,7 @@ A liquidity seeker scores the quantity likely to be available on arrival, using 
 \end{taxonomy}
 
 \begin{definition} \hlt{Minimum Resting-Time Split}\\
-Let $D$ be total passive child size, $Q_n$ queue ahead, $r_n$ opposing-flow rate, $f_n$ posted fraction, and $\tau^\star$ common completion time. Since $\tau_n(x)=\frac{x+Q_n}{r_n}$, equal-time posting gives $\tau^\star=\frac{D+\sum_n Q_n}{\sum_n r_n}$ and $f_n=\frac{\tau^\star r_n-Q_n}{D}$.\\
-If $f_n<0$, post nothing on venue $n$.
+Let $D$ be total passive child size, $Q_n$ queue ahead, $r_n$ opposing-flow rate, $f_n$ posted fraction, and $\tau^\star$ common completion time. For posted size $x$ on venue $n$, $\tau_n(x)=\frac{x+Q_n}{r_n}$ is the expected completion time, so equal-time posting gives $\tau^\star=\frac{D+\sum_n Q_n}{\sum_n r_n}$ and $f_n=\frac{\tau^\star r_n-Q_n}{D}$. If $f_n<0$, post nothing on venue $n$.
 \end{definition}
 
 \begin{table}[htbp]

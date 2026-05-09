@@ -10,18 +10,20 @@ When the tick is large relative to the latent spread, the quoted spread is floor
 \end{mechanism}
 
 \begin{model} \hlt{Harris Tick Discretisation Model}\\
-Let $\Psi_{j,t}=(Ask_{j,t}-Bid_{j,t})/tick_{j,d}$ be the observed spread in ticks for stock $j$ on trade $t$ of day $d$. The model assumes an unobserved continuous spread $\widetilde{\Psi}_{j,t}$, then rounds it through a discretisation map $\Psi_{j,t}=\Phi(\widetilde{\Psi}_{j,t})$.\\
+Let $Ask_{j,t}$ and $Bid_{j,t}$ be the best ask and bid for stock $j$ on trade $t$ of day $d$, and let $\Psi_{j,t}=(Ask_{j,t}-Bid_{j,t})/tick_{j,d}$ be the observed spread in ticks. The model assumes an unobserved continuous spread $\widetilde{\Psi}_{j,t}$, then rounds it through a discretisation map $\Psi_{j,t}=\Phi(\widetilde{\Psi}_{j,t})$.\\
 The tick is therefore not just a unit of account; it censors small spreads into one-tick quotes.
 \end{model}
 
 \begin{definition} \hlt{Continuous Spread Expectation}\\
 With turnover proxy $T_j$, volatility $\sigma_{j,d}$, price $P_{j,d}$, and tick size $tick_{j,d}$,\\
 a compact specification is $\mathbb{E}[\widetilde{\Psi}_{j,t}\mid T_j,\sigma_{j,d}] =g(T_j,\sigma_{j,d})\frac{P_{j,d}}{tick_{j,d}}$, $g(T_j,\sigma_{j,d})=\alpha T_j^\beta\sigma_{j,d}^{\gamma}$.\\
-Here $g$ is the latent relative spread; multiplying by $P/tick$ converts it into tick units.
+Here $g$ is the latent relative spread, and $\alpha$, $\beta$, and $\gamma$ are fitted spread-response parameters.\\
+Multiplying by $P/tick$ converts it into tick units.
 \end{definition}
 
 \begin{mechanism} \hlt{Tick-Size Counterfactual}\\
-To estimate the effect of a smaller tick, keep the latent spread distribution fixed and change only the rounding grid. If the new tick is $tick/\delta$, an observed $k$-tick spread becomes roughly $k/\delta$ old-tick units before re-rounding. The largest expected spread decrease occurs when current spreads are near one tick.
+To estimate the effect of a smaller tick, keep the latent spread distribution fixed and change only the rounding grid. If $\delta$ is the tick-reduction factor and the new tick is $tick/\delta$, an observed $k$-tick spread becomes roughly $k/\delta$ old-tick units before re-rounding.\\
+The largest expected spread decrease occurs when current spreads are near one tick.
 \end{mechanism}
 
 \begin{taxonomy} \hlt{Harris Model Inputs}

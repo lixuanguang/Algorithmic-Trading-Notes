@@ -9,6 +9,32 @@ It discretises prices and can be uniform, price-banded, or liquidity-banded.
 When the tick is large relative to the latent spread, the quoted spread is floored at one tick. Once the tick no longer binds, further reductions mostly change queue behaviour.
 \end{mechanism}
 
+\begin{model} \hlt{Harris Tick Discretisation Model}\\
+Let $\Psi_{j,t}=(Ask_{j,t}-Bid_{j,t})/tick_{j,d}$ be the observed spread in ticks for stock $j$ on trade $t$ of day $d$. The model assumes an unobserved continuous spread $\widetilde{\Psi}_{j,t}$, then rounds it through a discretisation map $\Psi_{j,t}=\Phi(\widetilde{\Psi}_{j,t})$.\\
+The tick is therefore not just a unit of account; it censors small spreads into one-tick quotes.
+\end{model}
+
+\begin{definition} \hlt{Continuous Spread Expectation}\\
+With turnover proxy $T_j$, volatility $\sigma_{j,d}$, price $P_{j,d}$, and tick size $tick_{j,d}$,\\
+a compact specification is $\mathbb{E}[\widetilde{\Psi}_{j,t}\mid T_j,\sigma_{j,d}] =g(T_j,\sigma_{j,d})\frac{P_{j,d}}{tick_{j,d}}$, $g(T_j,\sigma_{j,d})=\alpha T_j^\beta\sigma_{j,d}^{\gamma}$.\\
+Here $g$ is the latent relative spread; multiplying by $P/tick$ converts it into tick units.
+\end{definition}
+
+\begin{mechanism} \hlt{Tick-Size Counterfactual}\\
+To estimate the effect of a smaller tick, keep the latent spread distribution fixed and change only the rounding grid. If the new tick is $tick/\delta$, an observed $k$-tick spread becomes roughly $k/\delta$ old-tick units before re-rounding. The largest expected spread decrease occurs when current spreads are near one tick.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Harris Model Inputs}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{liquidity}: turnover $T_j$, usually lowering latent spread;
+\item \hlt{risk}: volatility $\sigma_{j,d}$, usually raising latent spread;
+\item \hlt{price grid}: $P_{j,d}/tick_{j,d}$, controlling how strongly ticks discretise spreads;
+\item \hlt{distribution}: a chosen positive density for latent continuous spreads;
+\item \hlt{fit check}: compare observed relative spreads with fitted discrete-spread expectations.
+\end{enumerate}
+\end{taxonomy}
+
 \begin{principle} \hlt{Tick Size and Queue Discipline}\\
 The tick defines how expensive it is to step ahead of an existing limit order.\\
 Large ticks protect time priority by making queue jumping costly; small ticks make one-tick improvement cheap and weaken the value of being first in queue.

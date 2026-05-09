@@ -14,11 +14,11 @@ Order-book events can be modelled as point processes: random arrival times for i
 \end{taxonomy}
 
 \begin{model} \hlt{Homogeneous Poisson Baseline}\\
-The simplest model treats $\lambda^+$, $\lambda^c$, and $\lambda^x$ as constant and independent of the book state. It is a useful null model, but it cannot reproduce realistic queue-size distributions because event rates are strongly state-dependent.
+The simplest model treats $\lambda^+$, $\lambda^c$, and $\lambda^x$ as constant and independent of the book state. It is a useful null model, but it cannot reproduce realistic queue-size distributions because event rates are strongly state-dependent. Its value is diagnostic: any predictive model should beat this memoryless arrival clock.
 \end{model}
 
 \begin{mechanism} \hlt{Conditioning Improves Queue Dynamics}\\
-Queue-reactive models condition event intensities on current and neighbouring queue sizes. Small best queues are easier to consume; large queues can trigger nearby cancellations.
+Queue-reactive models condition event intensities on current and neighbouring queue sizes. Small best queues are easier to consume; large queues can trigger nearby cancellations. The model becomes more realistic because the book state changes trader incentives before the next event arrives.
 \end{mechanism}
 
 \begin{taxonomy} \hlt{Conditioning Segmentation}

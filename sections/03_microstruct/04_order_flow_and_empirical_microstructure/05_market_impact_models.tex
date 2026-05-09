@@ -39,7 +39,7 @@ For event day $D$, a stock's post-execution move can be split into systematic an
 \log(P_d)-\log(P_{d-1})=
 \beta\left[\log(I_d)-\log(I_{d-1})\right]+\Delta W_d.
 \end{equation*}
-Here $P_d$ is the stock close, $I_d$ the reference index, $\beta$ the index exposure, and $\Delta W_d$ the residual stock-specific move. Cumulative $\Delta W_d$ isolates the profile after removing index co-movement.
+Here $P_d$ is the stock close, $I_d$ the reference index, $\beta$ the index exposure, and $\Delta W_d$ the residual stock-specific move. Cumulative $\Delta W_d$ isolates the profile after removing index co-movement. The intuition is attribution: do not charge the execution for a market move that the whole index experienced.
 \end{model}
 
 \begin{caveat} \hlt{Autocorrelated Flow Bias}\\

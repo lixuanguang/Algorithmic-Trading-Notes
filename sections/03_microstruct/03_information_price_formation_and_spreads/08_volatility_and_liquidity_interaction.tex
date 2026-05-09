@@ -13,7 +13,7 @@ It is useful for comparing intraday uncertainty across markets when transaction-
 \end{definition}
 
 \begin{mechanism} \hlt{Liquidity Spiral}\\
-A large order can consume depth, widen spreads, and raise volatility. Higher volatility makes liquidity providers reduce size or cancel quotes, forcing the next order to trade through less liquidity and amplifying the move.
+A large order can consume depth, widen spreads, and raise volatility. Higher volatility makes liquidity providers reduce size or cancel quotes, forcing the next order to trade through less liquidity and amplifying the move. The state variable is confidence in replenishment: once traders doubt the book will refill, everyone demands more price concession at the same time.
 \end{mechanism}
 
 \begin{casestudy} \hlt{Flash Crash Mechanism}\\
@@ -23,12 +23,12 @@ The trigger was an order; the crash mechanism was fragile liquidity under linked
 
 \begin{model} \hlt{Depth-Driven Flash Crash Toy Model}\\
 On one side of the book, let $F_t$ be the market-order arrival rate, $\bar{F}$ the normal refill rate, $r_t=F_t-\bar{F}$ the overflow, and $I_t=1/D_t$ inverse depth. A compact depth-impact dynamic is $\frac{dI_t}{I_t}=\sigma_I dW_t+r_tdt$.\\
-Here $D_t$ is market depth, $I_t$ is impact, and $W_t$ captures random liquidity shocks.
+Here $D_t$ is market depth, $I_t$ is impact, and $W_t$ captures random liquidity shocks. Positive overflow $r_t$ makes inverse depth compound upward, so each additional trade has larger price impact than the last.
 \end{model}
 
 \begin{mechanism} \hlt{Hot-Potato Amplification}\\
 If a fraction $\rho$ of traders follows volume mechanically, initial trading rate $r_0$ can amplify roughly as $r_t\simeq \frac{1-\rho^t}{1-\rho}r_0$.\\
-When $\rho$ is high, overflow consumes depth faster than passive liquidity can refill it.
+When $\rho$ is high, overflow consumes depth faster than passive liquidity can refill it. The loop is mechanical: trading creates volume, volume targets force more trading, and depth absorbs the loop until it fails.
 \end{mechanism}
 
 \begin{taxonomy} \hlt{Flash-Crash Control Segmentation}

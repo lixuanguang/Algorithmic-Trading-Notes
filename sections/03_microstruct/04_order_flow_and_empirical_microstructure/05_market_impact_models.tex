@@ -23,6 +23,31 @@ Long-horizon impact mixes metaorder pressure and information revealed by trading
 \end{enumerate}
 \end{taxonomy}
 
+\begin{model} \hlt{Propagator Midprice Dynamics}\\
+In trade time, a standard propagator writes the midprice as $m_k=m_{-\infty}+\sum\limits_{k'<k}G(k-k')\epsilon_{k'}+\eta_k$.\\
+Here $m_k$ is the midprice after trade $k$, $\epsilon_k\in\{-1,+1\}$ is trade sign, $G(\cdot)$ is the decaying impact kernel, $\eta_k$ is fair-price noise, and $m_{-\infty}$ is an initial price level.
+\end{model}
+
+\begin{mechanism} \hlt{Trade-Sign Memory and Kernel Decay}\\
+Trade signs are positively autocorrelated because large orders are split and similar agents trade together.\\
+A decaying kernel offsets this persistence: impact must decay enough that predictable order flow does not imply predictable price drift.
+\end{mechanism}
+
+\begin{model} \hlt{Price Response Curve}\\
+For horizon $h$, define the response curve by $\mathcal{R}(h)=\mathbb{E}[(m_{k+h}-m_k)\epsilon_k]$.\\
+Here $\mathcal{R}(h)$ measures the expected signed price move after a trade. It is estimated with the trade-sign autocorrelation $C(\ell)=\mathbb{E}[\epsilon_{k+\ell}\epsilon_k]$ and the kernel increments $\Delta G(\ell)=G(\ell+1)-G(\ell)$.
+\end{model}
+
+\begin{taxonomy} \hlt{Propagator Kernel Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{non-parametric}: estimate discrete kernel increments directly from response and sign autocorrelation;
+\item \hlt{exponential}: impose fast decay with a small number of parameters;
+\item \hlt{power law}: allow slow decay and long-memory order flow;
+\item \hlt{agent-specific}: estimate separate kernels or intensities by participant class.
+\end{enumerate}
+\end{taxonomy}
+
 \begin{process} \hlt{Debiasing Long-Horizon Impact}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}

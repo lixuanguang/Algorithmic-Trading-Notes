@@ -11,6 +11,24 @@
 These facts are data conditions, not trading signals by themselves.
 \end{taxonomy}
 
+\begin{model} \hlt{Signature Plot}\\
+Let $S_t$ be price, $X_t=\log S_t$ log-price, and $\Delta$ the sampling step.\\
+The realised variance estimator is $\hat{V}_R(\Delta)=\sum\limits_{j=1}^{T/\Delta}r_\Delta(j)^2$, where $r_\Delta(j)=X_{j\Delta}-X_{(j-1)\Delta}$. Here $T$ is the horizon and $r_\Delta(j)$ is the $j$th log return. In frictionless continuous time, $\hat{V}_R(\Delta)$ converges to integrated variance as $\Delta\downarrow0$; in real data, bid-ask bounce and quote noise make the estimator rise at very fine sampling.
+\end{model}
+
+\begin{mechanism} \hlt{Microstructure Noise in Volatility}\\
+Observed log-price can be written $X_t=M_t+\epsilon_t$, where $M_t$ is the efficient semimartingale price and $\epsilon_t$ is observation noise. At high frequency, returns include both efficient-price changes and noise differences, so realised variance can diverge as sampling becomes too fine.
+\end{mechanism}
+
+\begin{definition} \hlt{Epps Effect}\\
+The Epps effect is the fall in estimated cross-asset correlation as the sampling interval becomes very short. It is driven by asynchronous trades, lead-lag relations, tick effects, and other microstructure frictions.
+\end{definition}
+
+\begin{model} \hlt{Realised Covariance}\\
+For two log-price processes $X^1$ and $X^2$, realised covariance at step $\Delta$ is $\hat{C}_R(\Delta)=\sum\limits_{j=1}^{T/\Delta}r_\Delta^1(j)r_\Delta^2(j)$.\\
+Here $r_\Delta^a(j)$ is the $j$th return of asset $a$. The estimator needs synchronised observations; refresh-time or previous-tick sampling is usually required before interpreting high-frequency correlations.
+\end{model}
+
 \begin{model} \hlt{Time-Series Decomposition}\\
 Microstructure time series can be decomposed into trend, seasonality, and residual variation: $X_t=C_t+S_t+\epsilon_t$ or $X_t=C_tS_t+\epsilon_t$. Here $X_t$ is the observed series, $C_t$ is the trend, $S_t$ is the seasonal component, $\epsilon_t$ is unexplained noise, and $t$ indexes equally spaced observations.
 \end{model}

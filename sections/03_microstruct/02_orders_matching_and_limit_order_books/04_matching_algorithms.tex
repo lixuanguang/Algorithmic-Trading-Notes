@@ -1,0 +1,50 @@
+\subsubsection{Matching Algorithms}
+
+\begin{principle} \hlt{Matching Is Market Design}\\
+Matching rules decide which orders trade, at what price, and in what priority. Small rule differences can change displayed liquidity, queue value, auction participation, and the usefulness of a venue for large orders.
+\end{principle}
+
+\begin{mechanism} \hlt{Continuous Matching}\\
+In continuous trading, an incoming marketable order executes immediately against resting interest. The trade-off is speed versus noise: prices update continuously, but liquidity can be thin when order flow is asynchronous.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Call Matching}\\
+In a call, orders are batched until an uncrossing time and matched at one auction price. The batch creates a thicker crossing point, making calls useful at openings, closings, expiries, and volatility interruptions.
+\end{mechanism}
+
+\begin{process} \hlt{Call Auction Price Rules}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{maximum executable volume}: choose prices that match the largest quantity;
+\item \hlt{minimum surplus}: among those prices, minimise unmatched quantity;
+\item \hlt{market pressure}: if surplus is only on the buy side choose the higher candidate, and if only on the sell side choose the lower candidate;
+\item \hlt{reference price}: if still tied, choose the candidate closest to the venue reference price.
+\end{enumerate}
+If buy and sell interest do not cross, no auction price can be formed.
+\end{process}
+
+\begin{definition} \hlt{Auction Surplus}\\
+Auction surplus is the quantity left unmatched at a candidate clearing price. It is not excess volume in the day; it is the residual buy or sell pressure at the auction price.
+\end{definition}
+
+\begin{marketrule} \hlt{Randomised Uncrossing}\\
+Some venues randomise the exact end of the call after the theoretical auction time. This weakens last-second order placement and cancellation, but it also makes the final book state less deterministic for participants.
+\end{marketrule}
+
+\begin{taxonomy} \hlt{Priority Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{price priority}: better-priced orders execute first;
+\item \hlt{time priority}: earlier orders at the same price execute first;
+\item \hlt{size or pro-rata priority}: volume is allocated partly by submitted size;
+\item \hlt{venue-specific priority}: hidden, displayed, broker, or auction-only flags may change rank.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Theoretical Matching Curve}\\
+During a call, the theoretical matching curve tracks how close the current indicative matched volume is to the final auction matched volume. It reveals whether the book builds smoothly, jumps at information times, or overshoots before orders are cancelled.
+\end{definition}
+
+\begin{caveat} \hlt{Indicative Volume Is Strategic}\\
+Pre-auction indicative prices, volumes, and imbalances are signals, not commitments. A book can look deeper than the final auction if traders test information by submitting orders they later cancel or modify.
+\end{caveat}

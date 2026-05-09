@@ -38,3 +38,6 @@
 *.run.xml
 *.thm
 *.tdo
+*.aux
+*.log
+*.out

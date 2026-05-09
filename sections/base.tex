@@ -37,6 +37,8 @@
 % Bibliography Support
 % -----------------------------
 \usepackage{natbib}
+\setcitestyle{authoryear,round,semicolon}
+\let\cite\citep
 
 % -----------------------------
 % Listings for Code
@@ -169,6 +171,7 @@
 \newcommand{\tors}[1]{\textnormal{Tor}#1}
 \newcommand{\homs}[1]{\textnormal{Hom}#1}
 \newcommand{\anns}[1]{\textnormal{Ann}#1}
+\newcommand{\defeq}{\vcentcolon=}
 \DeclareMathOperator{\sign}{sign}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -197,6 +200,42 @@
 \newtheorem{remark}[theorem]{Remark}
 \let\oldremark\remark
 \renewcommand{\remark}{\oldremark\normalfont}
+\newtheorem{notation}[theorem]{Notation}
+\let\oldnotation\notation
+\renewcommand{\notation}{\oldnotation\normalfont}
+\newtheorem{principle}[theorem]{Principle}
+\let\oldprinciple\principle
+\renewcommand{\principle}{\oldprinciple\normalfont}
+\newtheorem{mechanism}[theorem]{Mechanism}
+\let\oldmechanism\mechanism
+\renewcommand{\mechanism}{\oldmechanism\normalfont}
+\newtheorem{taxonomy}[theorem]{Taxonomy}
+\let\oldtaxonomy\taxonomy
+\renewcommand{\taxonomy}{\oldtaxonomy\normalfont}
+\newtheorem{model}[theorem]{Model}
+\let\oldmodel\model
+\renewcommand{\model}{\oldmodel\normalfont}
+\newtheorem{assumption}[theorem]{Assumption}
+\let\oldassumption\assumption
+\renewcommand{\assumption}{\oldassumption\normalfont}
+\newtheorem{casestudy}[theorem]{Case Study}
+\let\oldcasestudy\casestudy
+\renewcommand{\casestudy}{\oldcasestudy\normalfont}
+\newtheorem{empiricalfinding}[theorem]{Empirical Finding}
+\let\oldempiricalfinding\empiricalfinding
+\renewcommand{\empiricalfinding}{\oldempiricalfinding\normalfont}
+\newtheorem{practitionernote}[theorem]{Practitioner Note}
+\let\oldpractitionernote\practitionernote
+\renewcommand{\practitionernote}{\oldpractitionernote\normalfont}
+\newtheorem{caveat}[theorem]{Caveat}
+\let\oldcaveat\caveat
+\renewcommand{\caveat}{\oldcaveat\normalfont}
+\newtheorem{marketrule}[theorem]{Rule}
+\let\oldmarketrule\marketrule
+\renewcommand{\marketrule}{\oldmarketrule\normalfont}
+\newtheorem{takeaway}[theorem]{Takeaway}
+\let\oldtakeaway\takeaway
+\renewcommand{\takeaway}{\oldtakeaway\normalfont}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Breakable Algorithm Environment (Algorithms spanning multiple pages)
@@ -246,5 +285,3 @@
   tabsize=2
 }
 \lstset{style=codestyle}
-
-

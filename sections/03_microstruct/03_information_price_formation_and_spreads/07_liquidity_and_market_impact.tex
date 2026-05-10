@@ -17,6 +17,18 @@ Temporary impact is the price concession needed to obtain immediacy and is expec
 A trade has an impulse effect on price, and that effect decays through time. The observed price path is the sum of many signed trade impulses with different decay profiles. This separates immediate pressure from later relaxation: a print can move price now without requiring the full move to be permanent.
 \end{mechanism}
 
+\begin{proposition} \hlt{Round-Trip Manipulation Profit Test}\\
+Suppose a trader completes a zero-inventory round trip, buying and selling total quantity $Q>0$. Let $\bar{P}_B$ be the average buy price, $\bar{P}_S$ the average sale price, and $c$ the all-in cost per share.\\
+The round trip is profitable if and only if $\bar{P}_S-\bar{P}_B>c$.
+\begin{proof}
+The trader pays $Q\bar{P}_B$ on buys and receives $Q\bar{P}_S$ on sales. Net profit after costs is $Q(\bar{P}_S-\bar{P}_B-c)$, which is positive exactly under the stated condition.
+\end{proof}
+\end{proposition}
+
+\begin{principle} \hlt{Impact Symmetry Disciplines Bluffing}\\
+Liquidity suppliers are vulnerable when buys and sells, large and small orders, or fast and slow trades receive inconsistent price impact. A manipulation-resistant rule makes impact depend on net pressure and risk, so a zero-net sequence cannot mechanically create a higher average sale price than buy price after costs.
+\end{principle}
+
 \begin{caveat} \hlt{Permanent Impact Identification}\\
 Calling a long-run price move permanent impact is risky unless market moves, sector moves, autocorrelated flow, and the signal that caused the trade have been separated.
 \end{caveat}

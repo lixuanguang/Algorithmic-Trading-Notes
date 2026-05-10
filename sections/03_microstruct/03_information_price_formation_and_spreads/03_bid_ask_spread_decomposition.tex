@@ -1,1 +1,26 @@
 \subsubsection{Bid-Ask Spread Decomposition}
+
+\begin{taxonomy} \hlt{Spread Measurement Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{quoted spread}: posted ask minus posted bid;
+\item \hlt{inside spread}: best ask across dealers or venues minus best bid;
+\item \hlt{effective spread}: execution price relative to the contemporaneous midpoint;
+\item \hlt{realised spread}: execution price relative to the midpoint after later price adjustment.
+\end{enumerate}
+Quoted spreads measure offered liquidity.\\
+Realised spreads measure what liquidity suppliers keep after prices move.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Spread Component Segmentation} \cite{harris_2002}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{order-processing}: systems, clearing, capital, and operating costs;
+\item \hlt{inventory}: compensation for warehousing price and funding risk;
+\item \hlt{adverse selection}: compensation for trading before prices adjust to informed flow.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{principle} \hlt{Quoted vs Realised Spread}\\
+The quoted spread is an offer. The realised spread is smaller when prices move against the liquidity supplier after the trade, which is the empirical footprint of inventory pressure or adverse selection.
+\end{principle}

@@ -25,6 +25,17 @@ Market structure matters because it defines both tradability and information acc
 \end{enumerate}
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Market-Centre Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{market centre}: any venue, dealer, broker system, or crossing mechanism that can arrange trades;
+\item \hlt{consolidated market}: traders for same instrument meet on one dominant centre or tightly linked book;
+\item \hlt{fragmented market}: the same instrument trades across several centres with shared information or routing;
+\item \hlt{segmented market}: traders select centres because order size, information, patience, access, or credit differs.
+\end{enumerate}
+Fragmentation is not automatically bad; it is costly when the links among centres fail.
+\end{taxonomy}
+
 \begin{definition} \hlt{Exchanges}\\
 Exchanges centralise order interaction under membership, listing, trading, reporting, and clearing rules. They standardise access and make execution more reliable.
 \end{definition}
@@ -92,6 +103,14 @@ Design choice is whether mandatory liquidity support is worth granting privilege
 \item \hlt{storage}: preserve audit trails and historical market data.
 \end{enumerate}
 \end{taxonomy}
+
+\begin{mechanism} \hlt{Trading Systems and Technology}\\
+Communications technology lowers the cost of knowing where liquidity is; computing lowers the cost of acting on it. Modern trading systems therefore compete not only on matching rules, but on market-data quality, order-routing speed, conditional order handling, and auditability.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Automated Reporting Advantage}\\
+When orders and trades are born digital, quotes, executions, order status, and timestamps can be reported faster and with fewer transcription errors. Floor systems need manual entry or support systems to reach comparable audit and market-data quality.
+\end{mechanism}
 
 \begin{caveat} \hlt{Stale Quotes and Vanishing Liquidity}\\
 RFQ quotes can become stale before acceptance; displayed CLOB liquidity can vanish before an order arrives. In fragmented electronic markets, observed liquidity is an estimate, not a guarantee.

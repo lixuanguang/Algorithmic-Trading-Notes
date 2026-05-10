@@ -31,3 +31,13 @@ Futures often have economically large ticks. A binding tick creates bid-ask boun
 Futures gains and losses are settled through daily variation margin.\\
 The broker or FCM manages client margin calls, liquidation rights, and cash balances; credit risk is therefore controlled continuously rather than only at final settlement.
 \end{mechanism}
+
+\begin{taxonomy} \hlt{Futures Block and EFP Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{block trade}: negotiated futures size reported under exchange rules;
+\item \hlt{EFP}: exchange cash or physical exposure for offsetting futures;
+\item \hlt{transitory EFP}: short-lived EFP used when the book is closed or thin.
+\end{enumerate}
+They move large risk off-book, subject to eligibility and reporting rules.
+\end{taxonomy}

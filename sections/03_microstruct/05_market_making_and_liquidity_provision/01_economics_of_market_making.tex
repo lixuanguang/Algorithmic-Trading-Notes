@@ -1,1 +1,48 @@
 \subsubsection{Economics of Market Making}
+
+\begin{definition} \hlt{Dealer}\\
+A dealer trades as principal: buying from clients that want to sell and selling to clients that want to buy. The service sold is immediacy; the compensation is spread, relationship value, or order-flow value.
+\end{definition}
+
+\begin{taxonomy} \hlt{Dealer Problem Segmentation} \cite{harris_2002}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{quote}: set bid, ask, and sizes;
+\item \hlt{order flow}: attract clients without buying toxic flow;
+\item \hlt{inventory}: keep positions near target levels;
+\item \hlt{information}: infer value from trades, quotes, news, and client behaviour.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Dealer Quote Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{two-sided}: quote both bid and ask; \hlt{one-sided}: quote only the desired side;
+\item \hlt{firm}: executable up to a stated size; \hlt{soft}: indication that may be revised;
+\item \hlt{displayed}: visible to the market; \hlt{request-only}: revealed after an RFQ or negotiation;
+\item \hlt{size}: maximum quantity available at the quoted price.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{principle} \hlt{Two-Sided Flow}\\
+Dealers prefer balanced buy and sell flow. Balanced flow earns spread while limiting inventory; one-sided flow converts market making into risk warehousing.
+\end{principle}
+
+\begin{taxonomy} \hlt{Order-Flow Acquisition Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{price}: quote aggressively enough to win trades;
+\item \hlt{size}: show capacity for larger trades;
+\item \hlt{service}: provide research, execution support, credit, and settlement reliability;
+\item \hlt{relationship}: cultivate clients and brokers;
+\item \hlt{inducement}: pay or reciprocate for routed order flow.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{caveat} \hlt{Preferencing and Payment for Order Flow}\\
+Preferencing can lower search costs when dealers compete for relationships, but it can also route orders toward economic arrangements rather than best all-in execution.
+\end{caveat}
+
+\begin{practitionernote} \hlt{Trading with Dealers}\\
+Experienced clients often ask for a two-sided quote before revealing direction. A wide quote is information: the dealer may suspect informed flow, inventory pressure, or poor unwind conditions.
+\end{practitionernote}

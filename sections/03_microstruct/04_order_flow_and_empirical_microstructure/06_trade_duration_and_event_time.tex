@@ -1,1 +1,29 @@
 \subsubsection{Trade Duration and Event Time}
+
+\begin{definition} \hlt{Trade Duration}\\
+Trade duration is the elapsed time between consecutive events, usually trades, quotes, or order-book messages. Short durations indicate high activity; long durations indicate sparse information arrival or weak liquidity.
+\end{definition}
+
+\begin{taxonomy} \hlt{Market Time Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{clock time}: calendar seconds or milliseconds;
+\item \hlt{trade time}: one step per print;
+\item \hlt{quote time}: one step per quote or book update;
+\item \hlt{volume time}: one step per fixed traded quantity or notional amount;
+\item \hlt{business time}: activity-adjusted time after removing intraday seasonality.
+\end{enumerate}
+Calendar risk, event response, and liquidity consumption are different in different times.
+\end{taxonomy}
+
+\begin{model} \hlt{Duration Notation}\\
+If event times are $0<\tau_1<\tau_2<\cdots$, duration is $\Delta \tau_i=\tau_i-\tau_{i-1}$. A basic intensity view treats high event intensity as short expected duration and low intensity as long expected duration.
+\end{model}
+
+\begin{principle} \hlt{Event Time for Microstructure Laws}\\
+Many order-book relations are cleaner in event time because the book changes when messages arrive, not when the wall clock advances. Clock time is still needed for latency, risk limits, news, and benchmark windows.
+\end{principle}
+
+\begin{caveat} \hlt{Activity Time Can Hide Stress}\\
+Business-time transformations stabilise model residuals, but they can also remove exactly the stress state a trader cares about. Keep both clock-time and event-time diagnostics.
+\end{caveat}

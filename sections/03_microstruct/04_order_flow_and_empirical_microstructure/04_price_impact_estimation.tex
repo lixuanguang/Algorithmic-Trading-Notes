@@ -26,6 +26,18 @@ A compact empirical specification writes market impact as increasing in duration
 Here $\alpha$ is the duration exponent, $\gamma$ is the participation exponent. The exponents are calibrated from executions; in many datasets the participation exponent is concave, so extra participation hurts, but less than linearly. The model is not structural; it is a compact way to express the practitioner trade-off between urgency and footprint.
 \end{model}
 
+\begin{model} \hlt{Order-Flow Impact Regression}\\
+A Glosten-Harris style reduced form writes $\Delta P_t=\lambda\,\epsilon_t q_t+\psi\,\Delta(\epsilon_t q_t)+\eta\,\Delta\epsilon_t+u_t$ where $\epsilon_t$ is trade sign and $q_t$ is trade size. The level signed-size term estimates permanent information impact; changes in sign or signed size capture transitory spread and liquidity-supply effects.
+\end{model}
+
+\begin{empiricalfinding} \hlt{Index Reconstitution Impact}\\
+Index additions and deletions create predictable one-sided flow. Price impact is largest when forced index demand is large relative to stock liquidity; partial reversal after the event suggests temporary demand pressure, while the residual move reflects changed ownership, attention, or information.
+\end{empiricalfinding}
+
+\begin{caveat} \hlt{Order-Flow Regression Identification}\\
+Signed order flow is endogenous: informed traders choose when and how much to trade. Use controls for market moves, time of day, volatility, spread, and order splitting before interpreting coefficients as causal impact.
+\end{caveat}
+
 \begin{caveat} \hlt{Timing Is Not Noise}\\
 Two orders with identical size and participation can have different impact because one trades with the market and the other trades against it. Impact estimation therefore has to separate execution mechanics from the signal that caused the trade.
 \end{caveat}

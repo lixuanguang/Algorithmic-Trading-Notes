@@ -84,6 +84,37 @@ The execution algorithm controls transaction cost through these levers, not only
 Reactive execution waits for liquidity to appear and usually lowers leakage. Proactive execution advertises interest or crosses the spread to create a trade. The right point on this continuum depends on urgency, search cost, and how damaging exposure would be.
 \end{principle}
 
+\begin{taxonomy} \hlt{Portfolio Trading Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{program trade}: simultaneous orders across many names, often index or factor related;
+\item \hlt{basket trade}: trade a list as one risk package;
+\item \hlt{package trade}: dealer quotes a firm bid or offer for the whole portfolio;
+\item \hlt{portfolio transition}: move from one target portfolio to another under tracking-error and cost limits.
+\end{enumerate}
+Portfolio trading reduces leg count and search cost, but transfers basket characterisation and residual-risk pricing to the dealer or algorithm.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Basket Characterisation Inputs}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{risk}: beta, factor loadings, volatility, sector, currency, and country exposures;
+\item \hlt{liquidity}: ADV, spreads, depth, index membership, and short-sale or borrow constraints;
+\item \hlt{execution}: names, weights, limits, urgency, venue eligibility, and close/open constraints.
+\end{enumerate}
+For index-like baskets, diversified residual risk lets dealers quote tighter than for unrelated single-stock blocks.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Index Rebalance Controls}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{timing}: trade before, during, or after the effective window subject to tracking error;
+\item \hlt{substitution}: use futures, ETFs, or correlated names when constituents are expensive;
+\item \hlt{liquidity supply}: post or cross opportunistically when forced flow pays a premium.
+\end{enumerate}
+Index discipline constrains the portfolio, but execution still chooses how much immediacy to buy.
+\end{taxonomy}
+
 \begin{table}[htbp]
 \centering
 \scriptsize

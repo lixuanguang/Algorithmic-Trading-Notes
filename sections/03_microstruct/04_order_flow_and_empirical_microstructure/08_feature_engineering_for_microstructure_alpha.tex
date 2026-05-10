@@ -17,6 +17,22 @@ These features separate cheapness from tradability.
 For instruments $i$ and $j$, write $r_i=\beta_i^\top f+\epsilon_i$ and $r_j=\beta_j^\top f+\epsilon_j$. A relative-value signal should explain whether the spread move came from common factors $f$, hedge-ratio error $\beta_i-\beta_j$, or residual shocks $\epsilon_i-\epsilon_j$.
 \end{model}
 
+\begin{principle} \hlt{Alpha Needs Comparative Advantage}\\
+A feature is useful only if it captures information or execution capacity that competitors do not fully exploit. A high in-sample score without an economic reason is usually a selection result, not an edge.
+\end{principle}
+
+\begin{taxonomy} \hlt{Microstructure Alpha Evaluation Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{forecast}: relation to future midprice, spread, fill, or volatility;
+\item \hlt{tradability}: spread, queue loss, borrow, fees, and venue access;
+\item \hlt{capacity}: decay of performance with size and participation;
+\item \hlt{stability}: sensitivity to regime, tick size, latency, and participant mix;
+\item \hlt{crowding}: whether many agents can observe and monetize the same state.
+\end{enumerate}
+The feature is only the first filter; the executable strategy is the object being evaluated.
+\end{taxonomy}
+
 \begin{principle} \hlt{Arbitrage Labels Need Path Information}\\
 A spread that later converges is not automatically a good label.\\
 The trade may still be infeasible if the interim drawdown breaches margin, borrow, inventory, or risk limits.\\

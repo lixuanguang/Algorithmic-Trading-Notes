@@ -12,3 +12,24 @@ Futures, options, FX, fixed income, and crypto differ in tick size, margin, clea
 \begin{marketrule} \hlt{Equity Block Prints and Size Priority}\\
 Equity block crosses may be negotiated away from the public book but printed through an exchange or trade-reporting facility. Size-priority exceptions let very large crosses avoid being broken by small resting orders, while price-priority rules protect displayed liquidity. The design trade-off is direct: protect the book too much and blocks leave; protect blocks too much and displayed liquidity loses precedence value.
 \end{marketrule}
+
+\begin{principle} \hlt{Index Markets Trade Common Risk}\\
+Index products let traders buy or sell broad market risk without trading every constituent separately.\\
+They are often cheaper because index flow is less security-specific, more active, easier to net, and easier to hedge with futures, ETFs, options, or baskets.
+\end{principle}
+
+\begin{taxonomy} \hlt{Index Product Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{open-end index fund}: trades with the fund at NAV; low turnover but slower intraday access;
+\item \hlt{ETF}: exchange-traded claim with creation and redemption against a basket;
+\item \hlt{index future}: leveraged, cash-efficient exposure with basis and roll risk;
+\item \hlt{index option}: convex exposure to index level and volatility.
+\end{enumerate}
+Product choice is mostly a choice among trading speed, funding, tracking error, tax, and operational constraints.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{ETF Basket Arbitrage}\\
+Authorised participants create ETF shares by delivering the basket, or redeem ETF shares for the basket.\\
+This links ETF price to constituent value, but the link weakens when creation costs, borrow, cash substitutions, taxes, or stressed constituent liquidity are material.
+\end{mechanism}

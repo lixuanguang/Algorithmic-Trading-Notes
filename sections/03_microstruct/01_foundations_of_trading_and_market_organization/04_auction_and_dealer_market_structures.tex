@@ -77,6 +77,17 @@ Brokers create liquidity by search rather than inventory commitment. This fits b
 Hybrid markets combine order books, dealers, auctions, hidden orders, and off-book negotiation. They mix public order interaction with intermediary support.
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Specialist Role Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{dealer}: trades as principal when public liquidity is absent or imbalanced;
+\item \hlt{broker}: represents routed orders and searches for contra-side interest;
+\item \hlt{auctioneer}: conducts openings, rotations, and imbalance-resolution calls;
+\item \hlt{exchange official}: helps maintain orderly markets and disseminated quotes.
+\end{enumerate}
+The same agent may protect public orders, trade against them, and observe order flow first.
+\end{taxonomy}
+
 \begin{marketrule} \hlt{Priority and Access Rules}\\
 Priority, tick size, order type, display, halt, and access rules determine how trades are resolved. The same latent supply and demand can produce different prices, quantities, and costs under different rules.
 \end{marketrule}

@@ -19,13 +19,109 @@
 \end{enumerate}
 \end{taxonomy}
 
+\begin{definition} \hlt{Arbitrage Opportunity}\\
+An arbitrage opportunity exists when related instruments trade outside their normal relation after adjusting for carry, conversion, delivery, funding, borrow, and execution costs. The trade is to buy the cheap leg and sell the expensive leg in a hedge portfolio.
+\end{definition}
+
+\begin{notation} \hlt{Basis and Arbitrage Spread}\\
+Let $B_t$ be the observed basis between a hedge portfolio and its reference leg, and let $B_t^\star$ be the fair basis implied by carry, delivery, conversion, dividends, funding, borrow, and other contract terms.\\
+The \hlt{arbitrage spread} is $A_t=B_t-B_t^\star$.
+\end{notation}
+
+\begin{proposition} \hlt{No-Trade Band for Basis Arbitrage}\\
+Let $K_t\ge0$ be all-in round-trip cost and let $R_t\ge0$ be compensation for residual basis risk. A symmetric basis trade is attractive only when $\abs{A_t}>K_t+R_t$.
+\begin{proof}
+Trading the convergence of one unit of basis gives expected gross surplus $\abs{A_t}$.\\
+Net expected surplus is $\abs{A_t}-K_t-R_t$, which is positive exactly under the stated condition.
+\end{proof}
+\end{proposition}
+
+\begin{taxonomy} \hlt{Arbitrage Characterisation Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{price characterisation}: arbitrageurs enforce relative value and the law of one price;
+\item \hlt{quantity characterisation}: arbitrageurs supply liquidity, transform risk, and repackage exposures;
+\item \hlt{implementation characterisation}: arbitrageurs earn spread only if execution, funding, hedging is feasible.
+\end{enumerate}
+The price view explains why mispricing closes.\\
+The quantity view explains why the trade is socially useful and why costs bound the spread.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Arbitrage Type Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{pure arbitrage}: basis strongly mean reverting as delivery, conversion, or cash-settlement links instruments;
+\item \hlt{speculative arbitrage}: basis expected to mean revert, but hedge portfolio nonstationary or model-dependent;
+\item \hlt{risk arbitrage}: payoff depends on a corporate event, legal condition, or deal completion;
+\item \hlt{statistical arbitrage}: factor models identify relative mispricing across many instruments.
+\end{enumerate}
+Pure arbitrage can lose money if convergence is slow, financing fails, or implementation costs exceed spread.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Pure Arbitrage Mechanism Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{shipping}: same asset trades in different locations, bounded by transport and storage costs;
+\item \hlt{delivery}: futures and cash prices converge toward delivery or settlement;
+\item \hlt{conversion}: one risk form is manufactured from another, such as options, ETFs, or commodity crushes;
+\item \hlt{cross-rate}: triangular or multi-leg exchange rates imply an inconsistent synthetic price.
+\end{enumerate}
+Closest to mechanical arbitrage, but binding constraint is usually speed, balance sheet, or operational capacity.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Arbitrage Risk Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{implementation}: legs fill at worse prices, or one leg fills while another does not;
+\item \hlt{basis}: the spread widens before convergence, forcing mark-to-market losses;
+\item \hlt{model}: the assumed fair relation is wrong or misses a contract feature;
+\item \hlt{carry}: funding, borrow, dividends, storage, insurance, or spoilage costs differ from expectation;
+\item \hlt{staying power}: margin, financing, or risk limits force liquidation before convergence;
+\item \hlt{specific-factor}: an idiosyncratic shock breaks the relative-value relation.
+\end{enumerate}
+Question is not only whether the basis is cheap, but whether the portfolio can survive the path to convergence.
+\end{taxonomy}
+
+\begin{principle} \hlt{Common vs Specific Factor Test}\\
+Relative-value trades work best when the spread move is caused by uninformed liquidity demand or slow common-factor adjustment. They fail when the move reflects a permanent instrument-specific shock.\\
+Residualisation is therefore not cosmetic; it decides whether the spread is an opportunity or new information.
+\end{principle}
+
 \begin{principle} \hlt{Orthogonal Information Advantage}\\
 The best informed traders are not only accurate; their errors are different from other traders' errors. Orthogonal information is more valuable than crowded information with the same average accuracy.
+\end{principle}
+
+\begin{principle} \hlt{Value Traders vs News Traders}\\
+Value traders profit when price differs from value because liquidity demand or dealer inventory pressure moved price away from fundamentals.\\
+News traders profit when value itself has changed and price has not caught up. They trade against each other when one mistakes stale price pressure for mispricing, or stale news for new information.
 \end{principle}
 
 \begin{caveat} \hlt{Informed Trading Paradox}\\
 Perfectly informative prices eliminate informed profits; zero informed profits stop prices from becoming informative. Markets persist between these limits because information is costly, temporary, and unevenly distributed.
 \end{caveat}
+
+\begin{definition} \hlt{Winner's Curse}\\
+The winner's curse is the adverse information revealed by winning a common-value trade or auction.\\
+A buyer who wins may be the most optimistic bidder; a seller who wins may be the most pessimistic offeror.
+\end{definition}
+
+\begin{proposition} \hlt{Winner's-Curse Bid Adjustment}\\
+Let a buyer's estimate be $\widehat{V}$ and let $\omega_N=\mathbb{E}[\widehat{V}-V\mid\text{buyer wins among }N\text{ buyers}]$ be the expected overvaluation conditional on winning. With all-in cost $c$, a zero-profit bid is $b^\star=\widehat{V}-\omega_N-c$.
+\begin{proof}
+Conditional expected profit from bid $b$ is $\mathbb{E}[V-b-c\mid\text{win}]=\widehat{V}-\omega_N-b-c$.\\
+Setting this to zero gives $b^\star=\widehat{V}-\omega_N-c$.
+\end{proof}
+\end{proposition}
+
+\begin{taxonomy} \hlt{Winner's-Curse Severity Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{competitor count}: more rival bidders increase the chance that winning selects an extreme estimate;
+\item \hlt{valuation dispersion}: noisier estimates require larger bid shading;
+\item \hlt{information overlap}: common data reduce dispersion; independent but noisy private estimates increase selection risk;
+\item \hlt{market power}: a trader facing few competitors may bid less aggressively and still win.
+\end{enumerate}
+\end{taxonomy}
 
 \begin{taxonomy} \hlt{Bluffing and Manipulation Segmentation}
 \begin{enumerate}[label=\roman*.]

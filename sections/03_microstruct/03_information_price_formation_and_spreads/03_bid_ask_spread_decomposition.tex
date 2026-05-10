@@ -10,12 +10,17 @@ Cross-sectional spread work should usually compare relative spreads, not dollar 
 \setlength{\itemsep}{0pt}
 \item \hlt{quoted spread}: posted ask minus posted bid;
 \item \hlt{inside spread}: best ask across dealers or venues minus best bid;
+\item \hlt{outside spread}: value trader's sell threshold minus buy threshold;
 \item \hlt{effective spread}: execution price relative to the contemporaneous midpoint;
 \item \hlt{realised spread}: execution price relative to the midpoint after later price adjustment.
 \end{enumerate}
 Quoted spreads measure offered liquidity.\\
 Realised spreads measure what liquidity suppliers keep after prices move.
 \end{taxonomy}
+
+\begin{definition} \hlt{Outside Spread}\\
+If a value trader estimates $\widehat{V}$, buys only below $b^o$, and sells only above $a^o$, then $s^o=a^o-b^o$ is the \hlt{outside spread}. It is a private willingness interval, not necessarily a displayed quote. It widens with valuation uncertainty, research cost, impact, financing cost, and adverse-selection risk.
+\end{definition}
 
 \begin{taxonomy} \hlt{Spread Component Segmentation}
 \begin{enumerate}[label=\roman*.]
@@ -62,6 +67,18 @@ Uninformed market orders pay for immediacy through the spread. Uninformed limit 
 \item \hlt{volatility}: raises inventory risk, stale-quote risk, and the value of timing options;
 \item \hlt{utilitarian trading interest}: lowers spreads when activity lets dealers and limit-order traders spread fixed costs over many trades.
 \end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Outside Spread Determinant Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{valuation error}: wider when fair value is hard to estimate or model errors are correlated;
+\item \hlt{winner's curse}: wider when execution itself reveals the trader may be too optimistic or pessimistic;
+\item \hlt{research recovery}: wider when few analysed instruments become tradable opportunities;
+\item \hlt{position and financing}: wider when expected holding period, leverage, borrow, or funding costs are large;
+\item \hlt{market impact}: wider when entering or exiting the position moves price.
+\end{enumerate}
+Outside spreads are usually wider than dealer spreads because value traders hold risk longer and cannot recycle capital through balanced two-sided flow.
 \end{taxonomy}
 
 \begin{taxonomy} \hlt{Order-Driven Spread Determinant Segmentation}

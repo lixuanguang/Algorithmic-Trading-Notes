@@ -8,6 +8,28 @@ PFP is the route by which order flow, information, and trading rules become tran
 Informed traders buy when $P_t<V_t$ and sell when $P_t>V_t$. Their trades move prices toward their estimates, but profits shrink as prices incorporate the information.
 \end{mechanism}
 
+\begin{taxonomy} \hlt{Value-Trader Profit Source Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{information change}: new information moves $V_t$, and price adjusts with delay;
+\item \hlt{uninformed liquidity demand}: non-value trading moves $P_t$ away from $V_t$;
+\item \hlt{dealer inventory pressure}: intermediaries shade quotes to restore target inventory.
+\end{enumerate}
+The second and third cases make value traders liquidity suppliers.\\
+They are paid for standing against temporary price pressure.
+\end{taxonomy}
+
+\begin{proposition} \hlt{Value Traders Supply Liquidity Outside the No-Trade Band}\\
+Let a value trader estimate fundamental value by $\widehat{V}$ and face all-in half-cost $c>0$. Buying one unit is attractive only when $P<\widehat{V}-c$, and selling one unit is attractive only when $P>\widehat{V}+c$.
+\begin{proof}
+Expected surplus from buying is $\widehat{V}-P-c$; expected surplus from selling is $P-\widehat{V}-c$. Each trade is attractive exactly when its surplus is positive.
+\end{proof}
+\end{proposition}
+
+\begin{caveat} \hlt{No-Trade Is an Information Position}\\
+Not buying does not imply selling. When $P$ lies inside the value trader's no-trade band, valuation error, market impact, and the winner's curse can make inactivity the optimal informed decision.
+\end{caveat}
+
 \begin{principle} \hlt{Microstructure to Macro Prices}\\
 Intraday frictions can affect daily risk when they change the closing price, the auction price, or the path used by benchmark investors. The relevant question is not whether intraday noise exists, but whether it survives into the reference prices used outside the trading day.
 \end{principle}

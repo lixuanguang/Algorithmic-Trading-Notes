@@ -32,6 +32,15 @@ For $t\leq\tau$, an incoming buyer exercises a sell limit only when buying at $L
 Limit orders reduce price concession but introduce two risks. The order may not execute and the trader must chase the price later; or it may execute exactly because better-informed flow is trading through it.
 \end{caveat}
 
+\begin{principle} \hlt{Equilibrium Spread as Order-Choice Indifference}\\
+In a continuous order-driven market, the spread adjusts until the marginal trader is indifferent between demanding liquidity with a marketable order and supplying liquidity with a limit order.\\
+If spreads are too wide, more traders post limits and compete them down; if spreads are too narrow, passive traders withdraw and marketable flow widens them.
+\end{principle}
+
+\begin{mechanism} \hlt{Limit Orders Give Timing Options}\\
+A standing limit order gives other traders the option to trade later at a stale price. The option is more valuable when volatility is high, cancellation is slow, informed traders are active, or the contra-side trader can monitor the book faster than the resting order owner.
+\end{mechanism}
+
 \begin{definition} \hlt{Tick Size}\\
 Tick size is the minimum price increment for limit orders.\\
 It discretises prices and can be uniform, price-banded, or liquidity-banded.

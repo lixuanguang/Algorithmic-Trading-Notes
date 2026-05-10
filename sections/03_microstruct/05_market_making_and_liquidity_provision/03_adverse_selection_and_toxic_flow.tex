@@ -1,1 +1,68 @@
 \subsubsection{Adverse Selection and Toxic Flow}
+
+\begin{definition} \hlt{Adverse Selection Risk}\\
+Adverse selection risk is the loss from supplying liquidity to a better-informed trader just before prices move toward that trader's information.
+\end{definition}
+
+\begin{mechanism} \hlt{Information Creates Inventory Imbalance}\\
+When informed traders buy, dealers sell and become short before prices rise. When informed traders sell, dealers buy and become long before prices fall. The loss is both informational and inventory-driven.
+\end{mechanism}
+
+\begin{principle} \hlt{Adverse Selection Spread Component}\\
+Dealers set asks conditional on the next trader possibly being an informed buyer, and bids conditional on the next trader possibly being an informed seller.\\
+This component rises with information probability, materiality, and trade size.
+\end{principle}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\stepcounter{table}
+\renewcommand{\arraystretch}{1.13}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{0.24\textwidth} >{\RaggedRight\arraybackslash}p{0.31\textwidth} >{\RaggedRight\arraybackslash}X@{}}
+\hline
+\textbf{Suspected condition} & \textbf{Tactic} & \textbf{Purpose} \\
+\hline
+Sold to a & Raise ask price; lower ask size & Discourage further sales to informed traders \\
+well-informed buyer & Raise bid price; raise bid size & Restore inventory before prices rise \\
+& Buy from another trader at the ask & Restore inventory quickly; paying liquidity may cost less than remaining short \\
+& Buy a correlated instrument & Hedge inventory risk and speculate on information \\
+\hline
+Bought from a & Lower bid price; lower bid size & Discourage further purchases from informed traders \\
+well-informed seller & Lower ask price; raise ask size & Restore inventory before prices fall \\
+& Sell to another trader at the bid & Restore inventory quickly; paying liquidity may cost less than remaining long \\
+& Sell a correlated instrument & Hedge inventory risk and speculate on information \\
+\hline
+\end{tabularx}
+
+\vspace{0.25em}
+{\footnotesize Table \thetable. Dealer tactics after trading with a suspected well-informed trader.}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\stepcounter{table}
+\renewcommand{\arraystretch}{1.13}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{0.15\textwidth} >{\RaggedRight\arraybackslash}p{0.27\textwidth} >{\RaggedRight\arraybackslash}p{0.27\textwidth} >{\RaggedRight\arraybackslash}X@{}}
+\hline
+\textbf{Buyer is} & \textbf{Raise quotes} & \textbf{Do nothing} & \textbf{Initiate buy at ask} \\
+\hline
+Well informed & Correct tactic: prevents further informed trading; raises chance of covering before prices rise; reduces realised spread & Mistake: more informed buyers may follow; dealer loses when prices rise; realised spread falls sharply & May be correct if prices soon rise enough; limits later losses, but pays liquidity and reduces realised spread \\
+\hline
+Uninformed & Mistake: value traders may sell; realised spread and dealer profit fall & Correct tactic: price is presumably still correct; the next seller can pay the full quoted spread & Big mistake: dealer pays unnecessary liquidity and sharply reduces realised spread \\
+\hline
+\end{tabularx}
+
+\vspace{0.25em}
+{\footnotesize Table \thetable. Dealer response consequences after selling to well-informed and uninformed buyers.}
+\end{table}
+
+\begin{caveat} \hlt{Informed-Trader Identification}\\
+Large, impatient, active, or successful traders may be informed, but these signals are noisy. Dealers therefore price the possibility of information even when no trader can be identified.
+\end{caveat}
+
+\begin{caveat} \hlt{Refusing Flow}\\
+Dealers can control adverse selection by limiting access, refusing anonymous size, or delaying execution. This protects accepted flow but reduces market-wide immediacy.
+\end{caveat}

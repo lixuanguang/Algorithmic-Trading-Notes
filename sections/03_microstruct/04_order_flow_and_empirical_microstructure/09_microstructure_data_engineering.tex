@@ -64,8 +64,45 @@ For fitted values $\hat{y}_i$ and residuals $\hat{\epsilon}_i=y_i-\hat{y}_i$, $R
 Here $\hat{y}_i$ is the fitted value, $\hat{\epsilon}_i$ is the residual, and $R^2$ is explained variability relative to total variability. It measures fit, not causality or trading usefulness.
 \end{definition}
 
+\begin{model} \hlt{Mean Excess-Return Test}\\
+For excess observations $x_1,\ldots,x_n$, sample mean $\bar{x}$, and sample standard deviation $s_x$, the statistic is $t=\frac{\bar{x}}{s_x/\sqrt{n}}$.\\
+It asks whether realised average excess performance is large relative to the noise in the same sample. In trading data, the hard part is defining $x_i$ so it is comparable, independent enough, and not selected after the fact.
+\end{model}
+
+\begin{proposition} \hlt{Power Is a Signal-to-Noise Problem}\\
+For independent observations with true mean $\mu$ and standard deviation $\sigma$, the expected $t$-statistic is approximately $\mu\sqrt{n}/\sigma$. Detecting a small edge therefore requires $n$ of order $(\sigma/\mu)^2$.
+\begin{proof}
+The standard error of the sample mean is $\sigma/\sqrt{n}$.\\
+Dividing the true mean by this standard error gives the signal-to-noise ratio $\mu\sqrt{n}/\sigma$.
+\end{proof}
+\end{proposition}
+
+\begin{caveat} \hlt{More Ticks Are Not More History}\\
+Sampling more frequently can estimate intraday mechanics more accurately, but does not create new independent market regimes. Serial correlation, order splitting, common shocks, and stale prices reduce effective sample size.
+\end{caveat}
+
 \begin{caveat} \hlt{Regression Is an Empirical Approximation}\\
 Linearity is often a local summary for spread, volatility, turnover, and impact relations. Check residuals, non-stationarity, heteroskedasticity, and whether a log or event-time transformation gives a more stable relation.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Performance-Inference Bias Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{survivorship}: failed strategies, funds, venues, or symbols disappear from the dataset;
+\item \hlt{selection}: the sample is chosen because it already looked good;
+\item \hlt{multiple testing}: the best result among many trials is treated as a single unbiased test;
+\item \hlt{look-ahead}: timestamps, corporate actions, or benchmark constituents use future information;
+\item \hlt{fillability}: simulated fills assume liquidity that was not actually reachable.
+\end{enumerate}
+Most backtest errors are sampling errors before they are modelling errors.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Regression to the Mean}\\
+Selecting the best recent performer raises the starting estimate. If the original outperformance mixed skill and luck, subsequent performance usually falls toward the population mean even when the strategy has not changed.
+\end{caveat}
+
+\begin{caveat} \hlt{Distributional Shape Matters}\\
+Fat tails, asymmetric payoff profiles, return smoothing, rare devaluations, and fraud-like reporting can make normal-based tests overconfident. Inspect drawdowns, skew, jump exposure, stale marks, and the economic source of returns before trusting a high $t$-statistic.
 \end{caveat}
 
 \begin{caveat} \hlt{Averaging Effect}\\

@@ -39,3 +39,19 @@ The middle term is impact cost; the last term is inventory risk. Higher risk ave
 \item \hlt{tactical overlay}: lets dark pools, SORs, alpha, and limits modify child orders inside the schedule.
 \end{enumerate}
 \end{taxonomy}
+
+\begin{definition} \hlt{Block Order}\\
+A block order is too large to complete easily through normal displayed liquidity.\\
+Fixed-share thresholds are venue conventions; for execution research, a block is better measured as a fraction of average daily volume, typical depth, or expected participation capacity.
+\end{definition}
+
+\begin{taxonomy} \hlt{Block Execution Problem Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{latent demand}: natural contra interest exists but has not posted orders;
+\item \hlt{order exposure}: revealing the parent attracts anticipators and liquidity withdrawal;
+\item \hlt{price discrimination}: liquidity suppliers wait because they fear selling too cheaply or buying too richly;
+\item \hlt{asymmetric information}: suppliers demand concessions when the initiator may be informed.
+\end{enumerate}
+Block execution buys liquidity with information: disclose enough to find size, but not enough to be exploited.
+\end{taxonomy}

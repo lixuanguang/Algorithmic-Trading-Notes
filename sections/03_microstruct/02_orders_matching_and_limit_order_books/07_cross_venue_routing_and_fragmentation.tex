@@ -55,6 +55,23 @@ If $p_k(t)$ is venue $k$'s market share and $a$ is the fraction of participants 
 \end{enumerate}
 \end{taxonomy}
 
+\begin{mechanism} \hlt{Fragmented-Market Consolidation Loop}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{local adjustment}: quotes and orders inside each venue react to information from other venues;
+\item \hlt{routing}: liquidity demand moves toward the segment with the best expected net execution;
+\item \hlt{arbitrage}: traders move inventory and liquidity across segments when prices diverge enough.
+\end{enumerate}
+When an order cannot move to the best market, the best market may still move to the order through arbitrage.
+\end{mechanism}
+
+\begin{proposition} \hlt{Fragmented Consolidation Bound}\\
+Suppose traders can observe segment prices and route or arbitrage between two venues at all-in cost $k$. If the same asset has executable ask $a_1$ on venue $1$ and executable bid $b_2$ on venue $2$, a persistent gap $b_2-a_1>k$ cannot survive competitive arbitrage.
+\begin{proof}
+Buying on venue $1$ and selling on venue $2$ earns $b_2-a_1-k>0$ before inventory limits. Competitive arbitrage increases demand at venue $1$ and supply at venue $2$, moving prices until the gap is at most $k$ or capacity binds.
+\end{proof}
+\end{proposition}
+
 \begin{definition} \hlt{Market Share as Routing Prior}\\
 Market share is a rough prior for where trading occurs. For stock $k$ and venue $n$, value share over $[t_1,t_2]$ is
 \begin{align}

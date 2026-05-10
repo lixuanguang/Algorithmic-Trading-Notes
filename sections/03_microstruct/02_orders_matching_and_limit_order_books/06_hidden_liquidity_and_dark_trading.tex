@@ -62,6 +62,61 @@ Dark activity is usually concentrated in liquid stocks, high-volume days, volati
 The main incentives are secrecy and price improvement. A midpoint execution lets a liquidity taker avoid paying the full spread while hiding the order from traders who might infer and trade against the parent order.
 \end{mechanism}
 
+\begin{taxonomy} \hlt{Block Exposure-Control Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{sunshine trading}: announce identity, intention, and full size to invite natural liquidity;
+\item \hlt{upstairs negotiation}: expose the block selectively through trusted brokers or dealers;
+\item \hlt{crossing and dark pools}: seek natural contra flow without displayed pre-trade interest;
+\item \hlt{slicing and reserve display}: trade through normal venues while hiding the parent order.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Order Exposure Decision Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{search}: actively look for the other side or wait for it to arrive;
+\item \hlt{display}: show full interest, partial interest, indications, or nothing;
+\item \hlt{slicing}: expose the parent all at once or break it across time;
+\item \hlt{broker concentration}: use one broker for control or many brokers for concealment;
+\item \hlt{venue choice}: trade in one pool, many lit venues, dark venues, or upstairs.
+\end{enumerate}
+Large-order execution is mostly the art of exposing enough information to find liquidity without giving away a free trading option.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Exposure Benefit-Cost Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{benefit}: exposed interest attracts latent contra-side traders and lowers search cost;
+\item \hlt{motive leakage}: others infer why the trader wants to trade;
+\item \hlt{impact leakage}: others infer future price pressure from the size and urgency;
+\item \hlt{option leakage}: quote matchers and anticipators trade before the parent can complete.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Parasitic and Defensive Liquidity Suppliers}\\
+Parasitic traders use exposed order information to trade ahead, quote match, withdraw liquidity, or otherwise profit at the exposed trader's expense. Defensive liquidity suppliers use the same information to avoid being price-discriminated against by informed or urgent traders.
+\end{definition}
+
+\begin{caveat} \hlt{Sunshine Trading Credibility}\\
+Sunshine trading works only when the initiator is credibly uninformed and honest about size. Otherwise the announcement gives order anticipators a free option to trade ahead, quote-match, or withdraw liquidity.
+\end{caveat}
+
+\begin{mechanism} \hlt{Block Hanging Over the Market}\\
+Once a large parent order is known, three reactions matter: front runners trade on the same side before the block, same-side traders accelerate their own trades, and opposite-side traders delay to capture price impact. All three make execution more expensive for the initiator.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Exposure Defence Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{evasive}: use anonymity, selective disclosure, dark pools, reserve orders, and broker discretion;
+\item \hlt{deceptive}: create noisy signals about side, size, completion, or venue interest;
+\item \hlt{offensive}: use stings or controlled exposure to identify and punish predatory traders.
+\end{enumerate}
+Evasive methods are ordinary execution tools.\\
+Deceptive and offensive methods carry legal, compliance, and relationship risk.
+\end{taxonomy}
+
 \begin{caveat} \hlt{Dark Liquidity Is Conditional}\\
 Dark liquidity is hard to estimate: misses are often invisible, and fills can still be adversely selected.
 \end{caveat}
@@ -73,3 +128,7 @@ Dark pools can be gamed through probing, leakage, and adverse selection. Protect
 \begin{taxonomy} \hlt{Bilateral vs Multilateral Liquidity}\\
 Multilateral books let many participants provide liquidity under common rules. Bilateral trading preserves selection and relationship control, which can help avoid toxic counterparties but may reduce open price discovery.
 \end{taxonomy}
+
+\begin{caveat} \hlt{Internal Crossing Agency Problem}\\
+Internal crossing can give clients low-impact fills and save commissions, but the broker controls who sees the order and who receives the match. The main risks are selective exposure, conflicted allocation, and missed price improvement from external liquidity.
+\end{caveat}

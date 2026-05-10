@@ -1,6 +1,6 @@
 \subsubsection{Market Participants and Trading Motives}
 
-\begin{model} \hlt{Trading Game View} \cite{o_hara_1995,harris_2002}\\
+\begin{model} \hlt{Trading Game View}\\
 A trading mechanism is a game in which participants submit orders under venue rules. The players include customers, brokers, dealers, market makers, and traders acting for their own account. Some demand liquidity, some supply liquidity, some carry information, and some process orders.\\
 Intuition: a trader's best order depends on what others may know, how fast they can react, and how the venue ranks competing messages.
 \end{model}
@@ -22,6 +22,11 @@ Motive is inferred from context, horizon, and exposure, not order side alone.
 \begin{caveat} \hlt{Multiple Trader Identities}\\
 Traders often combine motives. A pension fund may invest, hedge FX, and time factors; an HFT may make markets in one book and arbitrage another.
 \end{caveat}
+
+\begin{principle} \hlt{Patience Defines the Liquidity Side}\\
+Impatient traders demand liquidity by initiating trades. Patient traders supply liquidity by waiting, posting, quoting, or making themselves discoverable.\\
+The same institution can demand liquidity for one order and supply it for another.
+\end{principle}
 
 \begin{taxonomy} \hlt{Buy-Side Motives}\\
 Buy-side traders use markets to solve problems outside the market itself:
@@ -56,6 +61,32 @@ Informed traders trade when prices lag information. Value traders use fundamenta
 Their orders improve prices only as the market absorbs the information.
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Informed Trader Liquidity Role Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{value traders}: supply liquidity when uninformed demand pushes price away from fundamental value;
+\item \hlt{news traders}: demand liquidity when new information has not yet been incorporated into price;
+\item \hlt{arbitrageurs}: supply or demand liquidity across related instruments to close relative mispricing.
+\end{enumerate}
+The same trader can switch roles. The useful distinction is whether the order corrects stale prices, absorbs non-value flow, or links related prices.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Arbitrageur Economic Function}\\
+Arbitrageurs trade relative value. They connect buyers and sellers across instruments, venues, maturities, currencies, or risk forms. Their activity enforces the law of one price only after costs, funding, hedge error, and execution risk are small enough for the trade to be worth doing.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Liquidity Supplier Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{market makers}: supply immediacy for small to moderate size at narrow spreads, but lose to informed flow and adverse inventory moves;
+\item \hlt{block dealers}: supply depth to known clients by warehousing risk, but lose when client information or unwind cost is misread;
+\item \hlt{value traders}: supply depth and resiliency when price deviates from fundamental value, but lose to better-informed value traders or financing pressure;
+\item \hlt{precommitted traders}: post aggressive limit orders to lower the cost of trades they already want to do, but risk non-execution or adverse selection;
+\item \hlt{arbitrageurs}: move liquidity across related markets, but lose to faster arbitrageurs, legging risk, funding shocks, and stale hedges.
+\end{enumerate}
+Treating all passive flow as ``market making'' hides the source of depth.
+\end{taxonomy}
+
 \begin{taxonomy} \hlt{Profit-Motivated Trader Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -67,11 +98,48 @@ Their orders improve prices only as the market absorbs the information.
 Informed speculators aid price discovery; dealers supply liquidity. Middle categories mainly redistribute surplus.
 \end{taxonomy}
 
+\begin{principle} \hlt{Speculation Requires Comparative Advantage}\\
+Profitable speculation requires more than being intelligent or informed in isolation. The trader must have an advantage over the marginal counterparty after spread, fees, financing, market impact, and operational error.
+\end{principle}
+
+\begin{taxonomy} \hlt{Trading Edge Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{information}: faster, cleaner, or more exclusive interpretation of value-relevant facts;
+\item \hlt{model}: better mapping from data to price, hedge, or risk;
+\item \hlt{execution}: lower leakage, better routing, queue skill, or lower impact;
+\item \hlt{risk bearing}: ability to hold inventory or convergence risk when others cannot;
+\item \hlt{discipline}: sizing, stopping, and avoiding trades outside the edge.
+\end{enumerate}
+An edge that cannot survive trading costs is not a trading edge.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Skill and Luck Look Similar Ex Post}\\
+Large realised profits may come from skill, favourable exposure, or simple luck.\\
+A useful skill claim must explain why the decision was right before the outcome was known, why the edge should persist, and why it is not already competed away.
+\end{caveat}
+
+\begin{proposition} \hlt{Past Profit Alone Does Not Identify Skill}\\
+Let future excess profit be $\Pi_{t+1}=S_{t+1}+L_{t+1}$, where $S$ is persistent skill and $L$ is zero-mean luck.\\
+If $S_{t+1}$ is independent of past realised profits conditional on current information, then past profit has no incremental predictive value for $\Pi_{t+1}$.
+\begin{proof}
+Conditional on current information $\mathcal{F}_t$, $\mathbb{E}[\Pi_{t+1}\mid \mathcal{F}_t,\Pi_t]=\mathbb{E}[S_{t+1}\mid \mathcal{F}_t]+\mathbb{E}[L_{t+1}\mid \mathcal{F}_t]=\mathbb{E}[\Pi_{t+1}\mid \mathcal{F}_t]$.
+\end{proof}
+\end{proposition}
+
 \begin{corollary} \hlt{Profit-Motivated Flow Needs Non-Profit Motives}\\
 Speculators and dealers cannot all profit by trading only with each other. Their gains require traders who pay for immediacy, risk transfer, information, or entertainment.
 \begin{proof}
 Let $G_i$ be trader $i$'s gross trading gain in a closed set of profit-motivated traders, and let $C_i\ge0$ be trading costs. By zero-sum accounting, $\sum_i G_i=0$, so aggregate net profit is $\sum_i (G_i-C_i)=-\sum_i C_i\le0$.\\
 Thus the group cannot earn positive aggregate net trading profit from itself; positive profits require counterparties with offsetting trading losses or non-trading service value.
+\end{proof}
+\end{corollary}
+
+\begin{corollary} \hlt{Turnover Drag for Active Management}\\
+Let $R_M$ be the gross market return, $a_i$ active manager $i$'s gross active excess return, $c_i\ge0$ the manager's trading and fee drag, and $w_i$ value weights. If active managers aggregate to the market portfolio, $\sum_i w_i a_i=0$, so aggregate net active excess return is $\sum_i w_i(a_i-c_i)=-\sum_i w_i c_i\le0$.\\
+A single active manager beats a passive fund with drag $c_P$ only if $a_i>c_i-c_P$.
+\begin{proof}
+Active deviations clear against each other in aggregate, giving $\sum_i w_i a_i=0$. Subtracting costs gives the aggregate inequality. Relative to passive exposure, manager $i$ must cover the incremental drag $c_i-c_P$.
 \end{proof}
 \end{corollary}
 
@@ -110,6 +178,35 @@ Brokers arrange trades for clients without intending to own the position. Dealer
 \end{enumerate}
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Block-Trading Role Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{block initiator}: trader with a parent order too large for normal displayed liquidity;
+\item \hlt{block liquidity supplier}: trader, dealer, or institution willing to fill the block;
+\item \hlt{block dealer}: principal that facilitates the block and then unwinds inventory;
+\item \hlt{block broker}: agent that assembles counterparties without intending to own the risk;
+\item \hlt{upstairs market}: relationship and telephone market used to find size without public exposure.
+\end{enumerate}
+Block trading is mostly a search and information-control problem, not a different asset.
+\end{taxonomy}
+
+\begin{principle} \hlt{Block Dealers vs Block Brokers}\\
+Dealers are useful when immediacy matters and balance sheet can absorb the position.\\
+Brokers are useful when the block is too large or information-sensitive for one principal, so assembling natural counterparties is cheaper than warehousing risk.\\
+Broker-dealers can be credible when they are willing to participate in the trade they recommend.
+\end{principle}
+
+\begin{taxonomy} \hlt{Block Trader Skill Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{latent demand discovery}: know who might trade if contacted;
+\item \hlt{motive audit}: infer whether the initiator is uninformed, informed, honest, or strategic;
+\item \hlt{exposure control}: reveal size only to counterparties who will not trade ahead;
+\item \hlt{transaction-cost analysis}: price facilitation, unwind risk, and likely market impact;
+\item \hlt{reputation management}: make future counterparties willing to participate.
+\end{enumerate}
+\end{taxonomy}
+
 \begin{caveat} \hlt{Broker Agency Conflict}\\
 Brokers are agents, but commissions, soft dollars, payments for order flow, inventory, and affiliated dealers can pull routing decisions away from pure client execution quality.
 \end{caveat}
@@ -142,6 +239,6 @@ An HFT can improve the displayed spread by stepping inside an older quote, but i
 The uncertainty created by meeting a fast counterparty is not borne equally. A small investor sees high variance in a small number of trades; a large institution diversifies this uncertainty across many child orders but still pays aggregate spread, impact, and signalling costs.
 \end{caveat}
 
-\begin{caveat} \hlt{Blurring of Roles} \cite{lehalle_2018}\\
+\begin{caveat} \hlt{Blurring of Roles}\\
 Fragmentation blurs the distinction between liquidity takers and providers. The same agent may consume liquidity in one venue, supply it in another, and intermediate price formation through routing speed.
 \end{caveat}

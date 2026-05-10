@@ -56,6 +56,15 @@ Roughly, the price penalty must be below the fee saving.
 A broker may prefer a dealer, affiliate, or venue because of service, economics, or reciprocal flow rather than the displayed quote alone. Best-execution review must therefore compare all-in fills, not just routing intent.
 \end{caveat}
 
+\begin{proposition} \hlt{Payment-for-Order-Flow Routing Conflict}\\
+Let $C_v$ be expected client execution cost on venue or dealer $v$, and let $h_v$ be broker revenue from routing there. Client-optimal routing chooses $\arg\min_v C_v$; broker-private routing chooses $\arg\min_v(C_v-h_v)$. A conflict exists whenever some $a,b$ satisfy $C_a<C_b$ but $C_a-h_a>C_b-h_b$.
+\begin{proof}
+The client pays execution cost $C_v$.\\
+The broker internalises both client execution quality and routing revenue, so its private objective subtracts $h_v$.\\
+The displayed inequalities state that $a$ is better for the client while $b$ is better for the broker.
+\end{proof}
+\end{proposition}
+
 \begin{caveat} \hlt{Latency Makes Liquidity Probabilistic}\\
 Displayed depth is probabilistic: stale or duplicated quotes can vanish before the router arrives.
 \end{caveat}

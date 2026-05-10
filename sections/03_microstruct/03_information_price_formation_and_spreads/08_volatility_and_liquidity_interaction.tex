@@ -4,6 +4,67 @@
 Volatility raises inventory risk, adverse-selection risk, and the probability that displayed liquidity becomes stale. Liquidity providers respond through wider spreads, smaller displayed size, faster cancellations, or withdrawal.
 \end{principle}
 
+\begin{taxonomy} \hlt{Volatility Source Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{fundamental volatility}: unexpected changes in efficient value;
+\item \hlt{transitory volatility}: liquidity demand, bid-ask bounce, inventory pressure, or temporary order imbalances;
+\item \hlt{episodic volatility}: isolated jumps around news, auctions, outages, or large orders;
+\item \hlt{continuing volatility}: information, inventory, or funding conditions remain unresolved.
+\end{enumerate}
+Fundamental volatility is necessary for prices to allocate risk and capital.\\
+Transitory volatility is a trading-cost symptom.
+\end{taxonomy}
+
+\begin{definition} \hlt{Bubbles and Crashes}\\
+A bubble is price far above fundamental value; a crash is a rapid large decline. Both are hard to identify in real time because value is latent.
+\end{definition}
+
+\begin{taxonomy} \hlt{Bubble-Crash Dynamics Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{optimistic repricing}: new technology, policy, or growth stories raise value estimates;
+\item \hlt{momentum reinforcement}: trend followers and order anticipators buy because others are buying;
+\item \hlt{valuation restraint}: value traders may be unwilling or unable to short enough size;
+\item \hlt{confidence break}: bad news, failed expectations, or funding pressure changes beliefs;
+\item \hlt{forced flow}: margin calls, stops, hedges, and risk limits create one-sided selling.
+\end{enumerate}
+The crash is often the liquidation phase of an earlier pricing error, not an independent event.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Price Accelerator}\\
+Price rises transfer wealth to long optimists and away from short pessimists. If optimists buy more after gains, or shorts cover to control losses, the induced order flow pushes prices further in the same direction. The same feedback reverses during crashes when leveraged longs must sell.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Fundamental Volatility Driver Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{information surprises}: earnings, macro data, policy, credit, supply-demand, or technology shocks;
+\item \hlt{storage and perishability}: inventories buffer shocks when storage is cheap, but amplify them when storage is costly or impossible;
+\item \hlt{valuation uncertainty}: high-growth, opaque, or model-sensitive assets reprice sharply when beliefs update;
+\item \hlt{leverage}: small asset-value changes produce larger equity-value changes when debt is fixed;
+\item \hlt{political and regulatory risk}: cash flows, property rights change when rules, taxes, or convertibility change.
+\end{enumerate}
+Expected carrying-cost drift is not volatility by itself; the unexpected change in the carry path is.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Transitory Volatility and Reversal}\\
+Transitory volatility appears when impatient uninformed trading pushes transaction prices away from efficient value. Bid-ask bounce creates adjacent reversals; larger order imbalances can reverse over minutes, days, or longer when dealers, arbitrageurs, or value traders absorb the pressure.
+\end{mechanism}
+
+\begin{caveat} \hlt{Crash Attribution}\\
+A large decline is not automatically market failure. Look for reversal, book overload, forced selling, cross-market breaks, or moves beyond news.
+\end{caveat}
+
+\begin{model} \hlt{Volatility Component Decomposition}\\
+Write observed price as $P_t=M_t+u_t$, where $M_t$ is the efficient price and $u_t$ is transitory microstructure noise. Then $\Delta P_t=\Delta M_t+\Delta u_t$. Fundamental volatility is variation in $\Delta M_t$; transitory volatility is variation in $\Delta u_t$ and its covariance with $\Delta M_t$.\\
+Negative serial covariance in $\Delta P_t$ is a useful warning sign that transitory reversals are present.
+\end{model}
+
+\begin{caveat} \hlt{Regulating Volatility}\\
+Regulators can reduce some transitory volatility through transparency, circuit breakers, margin, and market-maker obligations. They cannot remove fundamental volatility without suppressing price discovery.
+\end{caveat}
+
 \begin{definition} \hlt{Garman-Klass Intraday Volatility}\\
 For a fixed intraday interval, the Garman-Klass estimator uses open, high, low, and close prices.\\
 Let $O$, $H$, $L$, and $C$ denote the interval open, high, low, and close:

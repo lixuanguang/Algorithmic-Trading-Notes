@@ -1,7 +1,7 @@
 \subsubsection{Trading Venues and Market Architecture}
 
 \begin{principle} \hlt{Venue as Rule System}\\
-A market is a rule system that govern access, order submission, visibility, execution, clearing, and settlement.
+A market is a rule system that governs access, order submission, visibility, execution, clearing, and settlement.
 \end{principle}
 
 \begin{taxonomy} \hlt{Market-Structure Segmentation}
@@ -25,9 +25,25 @@ Market structure matters because it defines both tradability and information acc
 \end{enumerate}
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Market-Centre Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{market centre}: any venue, dealer, broker system, or crossing mechanism that can arrange trades;
+\item \hlt{consolidated market}: traders for same instrument meet on one dominant centre or tightly linked book;
+\item \hlt{fragmented market}: the same instrument trades across several centres with shared information or routing;
+\item \hlt{segmented market}: traders select centres because order size, information, patience, access, or credit differs.
+\end{enumerate}
+Fragmentation is not automatically bad; it is costly when the links among centres fail.
+\end{taxonomy}
+
 \begin{definition} \hlt{Exchanges}\\
 Exchanges centralise order interaction under membership, listing, trading, reporting, and clearing rules. They standardise access and make execution more reliable.
 \end{definition}
+
+\begin{mechanism} \hlt{Exchanges as Search Engines}\\
+An exchange lowers bilateral search cost by collecting trading interest, ranking it under common rules, and publishing enough information for traders to find the best available counterparty.\\
+Its economic service is not only matching; it is making liquidity searchable.
+\end{mechanism}
 
 \begin{definition} \hlt{OTC Markets}\\
 OTC markets use bilateral or dealer-mediated negotiation rather than a central book. They fit bonds, swaps, FX, bespoke derivatives, and heterogeneous contracts.
@@ -39,6 +55,17 @@ ECNs organise electronic matching outside traditional exchange structures. ATSs 
 
 \begin{taxonomy} \hlt{Dark Pools, Internalizers, and Crossing Networks}\\
 Dark pools hide pre-trade interest; internalizers match against broker-dealer inventory or internal flow; crossing networks match natural buyers and sellers, often at lit-market reference prices. These venues reduce signalling but can weaken public price discovery.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Order-Flow Arrangement Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{internalisation}: broker-dealer fills client orders as principal or against affiliated liquidity;
+\item \hlt{preferencing}: broker routes orders to a selected dealer or venue by arrangement;
+\item \hlt{payment for order flow}: liquidity supplier pays broker for routed orders;
+\item \hlt{internal crossing}: broker matches client orders against each other away from public books.
+\end{enumerate}
+These arrangements lower search and commission costs when flow is uninformed, but fragment order interaction and create best-execution conflicts.
 \end{taxonomy}
 
 \begin{taxonomy} \hlt{Brokered Transaction Segmentation}
@@ -55,6 +82,17 @@ Dark pools hide pre-trade interest; internalizers match against broker-dealer in
 RFQ markets request quotes from dealers, often bilaterally. A CLOB exposes standing interest multilaterally; RFQ protects relationships and discretion, while CLOBs improve comparability and public interaction.
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Designated Market Maker Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{single specialist}: one member carries quoting, auction, and order-book duties for an instrument;
+\item \hlt{multiple DMM}: several assigned dealers share liquidity obligations and compete for flow;
+\item \hlt{third-market dealer}: quotes away from the listing exchange, usually with weaker formal duties;
+\item \hlt{pure CLOB}: no assigned dealer; public orders and voluntary market makers supply liquidity.
+\end{enumerate}
+Design choice is whether mandatory liquidity support is worth granting privileged access or order-flow rights.
+\end{taxonomy}
+
 \begin{taxonomy} \hlt{Market Information Systems}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -65,6 +103,14 @@ RFQ markets request quotes from dealers, often bilaterally. A CLOB exposes stand
 \item \hlt{storage}: preserve audit trails and historical market data.
 \end{enumerate}
 \end{taxonomy}
+
+\begin{mechanism} \hlt{Trading Systems and Technology}\\
+Communications technology lowers the cost of knowing where liquidity is; computing lowers the cost of acting on it. Modern trading systems therefore compete not only on matching rules, but on market-data quality, order-routing speed, conditional order handling, and auditability.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Automated Reporting Advantage}\\
+When orders and trades are born digital, quotes, executions, order status, and timestamps can be reported faster and with fewer transcription errors. Floor systems need manual entry or support systems to reach comparable audit and market-data quality.
+\end{mechanism}
 
 \begin{caveat} \hlt{Stale Quotes and Vanishing Liquidity}\\
 RFQ quotes can become stale before acceptance; displayed CLOB liquidity can vanish before an order arrives. In fragmented electronic markets, observed liquidity is an estimate, not a guarantee.

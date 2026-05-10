@@ -1,1 +1,46 @@
 \subsubsection{Cross-Asset and Cross-Venue Market Making}
+
+\begin{principle} \hlt{Arbitrageurs as Cross-Sectional Dealers}\\
+Dealers use inventory to connect buyers and sellers across time. Arbitrageurs use hedge portfolios to connect buyers and sellers across instruments, venues, locations, maturities, and risk forms. Both sell immediacy, but arbitrageurs often sell a transformed exposure rather than the same instrument.
+\end{principle}
+
+\begin{taxonomy} \hlt{Cross-Asset Arbitrage Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{cash-futures}: buy cash and sell futures, or reverse, after carry and delivery costs;
+\item \hlt{ETF-basket}: create or redeem ETF shares against the underlying basket;
+\item \hlt{ADR-local}: trade depositary receipts against local shares after FX, fees, and settlement frictions;
+\item \hlt{FX triangular}: compare direct exchange rates with synthetic cross rates;
+\item \hlt{option conversion}: manufacture stock, cash, or volatility exposure from options and underlying hedges;
+\item \hlt{merger spread}: trade target and acquirer legs against deal terms and completion probability.
+\end{enumerate}
+Each case answers: what synthetic instrument does hedge portfolio manufacture, and what costs bound basis?
+\end{taxonomy}
+
+\begin{model} \hlt{Triangular FX No-Arbitrage}\\
+For currencies $A,B,C$, no triangular arbitrage requires $S_{A/C}=S_{A/B}S_{B/C}$ after bid-ask spreads, funding, and settlement costs. A tradable deviation must exceed the cost of executing all three legs before quotes move.
+\end{model}
+
+\begin{mechanism} \hlt{Derivative Conversion}\\
+Derivatives let arbitrageurs repackage risk. A market maker who buys an option and delta-hedges with the underlying is converting option demand into stock trading, funding, and volatility exposure. The hedge is dynamic because delta, gamma, vega, and funding costs change with market state.
+\end{mechanism}
+
+\begin{caveat} \hlt{Legging and Synchronisation Risk}\\
+Multi-leg arbitrage is most fragile while the hedge is incomplete. Market orders reduce legging risk but pay spread and impact; limit orders reduce cost but may leave one leg filled and the other missing. Execution logic therefore matters as much as fair-value logic.
+\end{caveat}
+
+\begin{process} \hlt{Balanced Arbitrage Execution}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item estimate fair basis, costs, and hedge ratios;
+\item choose leg order from liquidity, volatility, and unwind optionality;
+\item submit synchronised orders or hedge the most liquid leg last;
+\item monitor partial fills, basis movement, and residual exposure;
+\item cancel, complete, or rebalance before residual risk dominates the spread.
+\end{enumerate}
+\end{process}
+
+\begin{caveat} \hlt{Arbitrage Capital Constraint}\\
+The widest spreads often appear when balance sheet is scarce.\\
+If arbitrageurs cannot finance losses, meet margin, borrow securities, or carry inventory, forced liquidation can widen the basis precisely when the forward-looking trade is most attractive.
+\end{caveat}

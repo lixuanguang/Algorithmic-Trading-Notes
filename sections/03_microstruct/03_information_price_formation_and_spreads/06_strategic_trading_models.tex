@@ -1,1 +1,213 @@
 \subsubsection{Strategic Trading Models}
+
+\begin{taxonomy} \hlt{Informed Trader Style Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{value}: estimate total fundamental value from broad information;
+\item \hlt{news}: estimate value changes from recent information;
+\item \hlt{information-oriented technical}: exploit predictable errors by other traders;
+\item \hlt{arbitrage}: trade relative mispricing across instruments with common valuation factors.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Informed Trading Speed Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{aggressive}: trade quickly when information is short-lived or competitors know it;
+\item \hlt{stealth}: trade slowly when impact and information leakage dominate urgency;
+\item \hlt{inactive}: avoid trading when the price already reflects the information.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Insider-Trading Profitability Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{materiality}: larger value revisions create larger gross opportunity;
+\item \hlt{exclusivity}: fewer informed competitors leave more liquidity before price adjustment;
+\item \hlt{time to public release}: near-term disclosure makes profits easier to realise but easier to detect;
+\item \hlt{liquidity}: deeper markets allow larger positions before impact erodes the signal;
+\item \hlt{traceability}: communication trails, relationship links, and unusual timing raise enforcement risk.
+\end{enumerate}
+The cases with the largest private payoff are often the worst compliance fact pattern: large, exclusive, traceable, and close to a public event.
+\end{taxonomy}
+
+\begin{proposition} \hlt{Deterrence Condition for Illegal Information Trading}\\
+Let $G$ be expected gross trading gain from material nonpublic information, $K$ execution cost and leakage, $R$ residual price risk, $q$ detection probability, and $F$ penalty or disgorgement.\\
+A purely self-interested trader is deterred when $G\le K+R+qF$.
+\begin{proof}
+Expected private surplus is $G-K-R-qF$. Trading has positive expected surplus only when this quantity is positive; deterrence requires the opposite inequality.
+\end{proof}
+\end{proposition}
+
+\begin{definition} \hlt{Arbitrage Opportunity}\\
+An arbitrage opportunity exists when related instruments trade outside their normal relation after adjusting for carry, conversion, delivery, funding, borrow, and execution costs. The trade is to buy the cheap leg and sell the expensive leg in a hedge portfolio.
+\end{definition}
+
+\begin{notation} \hlt{Basis and Arbitrage Spread}\\
+Let $B_t$ be the observed basis between a hedge portfolio and its reference leg, and let $B_t^\star$ be the fair basis implied by carry, delivery, conversion, dividends, funding, borrow, and other contract terms.\\
+The \hlt{arbitrage spread} is $A_t=B_t-B_t^\star$.
+\end{notation}
+
+\begin{proposition} \hlt{No-Trade Band for Basis Arbitrage}\\
+Let $K_t\ge0$ be all-in round-trip cost and let $R_t\ge0$ be compensation for residual basis risk. A symmetric basis trade is attractive only when $\abs{A_t}>K_t+R_t$.
+\begin{proof}
+Trading the convergence of one unit of basis gives expected gross surplus $\abs{A_t}$.\\
+Net expected surplus is $\abs{A_t}-K_t-R_t$, which is positive exactly under the stated condition.
+\end{proof}
+\end{proposition}
+
+\begin{taxonomy} \hlt{Arbitrage Characterisation Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{price characterisation}: arbitrageurs enforce relative value and the law of one price;
+\item \hlt{quantity characterisation}: arbitrageurs supply liquidity, transform risk, and repackage exposures;
+\item \hlt{implementation characterisation}: arbitrageurs earn spread only if execution, funding, hedging is feasible.
+\end{enumerate}
+The price view explains why mispricing closes.\\
+The quantity view explains why the trade is socially useful and why costs bound the spread.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Arbitrage Type Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{pure arbitrage}: basis strongly mean reverting as delivery, conversion, or cash-settlement links instruments;
+\item \hlt{speculative arbitrage}: basis expected to mean revert, but hedge portfolio nonstationary or model-dependent;
+\item \hlt{risk arbitrage}: payoff depends on a corporate event, legal condition, or deal completion;
+\item \hlt{statistical arbitrage}: factor models identify relative mispricing across many instruments.
+\end{enumerate}
+Pure arbitrage can lose money if convergence is slow, financing fails, or implementation costs exceed spread.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Pure Arbitrage Mechanism Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{shipping}: same asset trades in different locations, bounded by transport and storage costs;
+\item \hlt{delivery}: futures and cash prices converge toward delivery or settlement;
+\item \hlt{conversion}: one risk form is manufactured from another, such as options, ETFs, or commodity crushes;
+\item \hlt{cross-rate}: triangular or multi-leg exchange rates imply an inconsistent synthetic price.
+\end{enumerate}
+Closest to mechanical arbitrage, but binding constraint is usually speed, balance sheet, or operational capacity.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Arbitrage Risk Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{implementation}: legs fill at worse prices, or one leg fills while another does not;
+\item \hlt{basis}: the spread widens before convergence, forcing mark-to-market losses;
+\item \hlt{model}: the assumed fair relation is wrong or misses a contract feature;
+\item \hlt{carry}: funding, borrow, dividends, storage, insurance, or spoilage costs differ from expectation;
+\item \hlt{staying power}: margin, financing, or risk limits force liquidation before convergence;
+\item \hlt{specific-factor}: an idiosyncratic shock breaks the relative-value relation.
+\end{enumerate}
+Question is not only whether the basis is cheap, but whether the portfolio can survive the path to convergence.
+\end{taxonomy}
+
+\begin{principle} \hlt{Common vs Specific Factor Test}\\
+Relative-value trades work best when the spread move is caused by uninformed liquidity demand or slow common-factor adjustment. They fail when the move reflects a permanent instrument-specific shock.\\
+Residualisation is therefore not cosmetic; it decides whether the spread is an opportunity or new information.
+\end{principle}
+
+\begin{principle} \hlt{Orthogonal Information Advantage}\\
+The best informed traders are not only accurate; their errors are different from other traders' errors. Orthogonal information is more valuable than crowded information with the same average accuracy.
+\end{principle}
+
+\begin{principle} \hlt{Value Traders vs News Traders}\\
+Value traders profit when price differs from value because liquidity demand or dealer inventory pressure moved price away from fundamentals.\\
+News traders profit when value itself has changed and price has not caught up. They trade against each other when one mistakes stale price pressure for mispricing, or stale news for new information.
+\end{principle}
+
+\begin{caveat} \hlt{Informed Trading Paradox}\\
+Perfectly informative prices eliminate informed profits; zero informed profits stop prices from becoming informative. Markets persist between these limits because information is costly, temporary, and unevenly distributed.
+\end{caveat}
+
+\begin{caveat} \hlt{Skilled Speculation vs Inside Information}\\
+Correct forecasts from public filings, alternative data with clean rights, channel checks, or independent modelling can be legitimate informed trading. The same trade becomes a compliance problem when the edge comes from material nonpublic information or breach of confidence. Timing alone cannot distinguish the cases.
+\end{caveat}
+
+\begin{mechanism} \hlt{Insider-Trading Market Footprint}\\
+Leaked or illegal information may appear as abnormal signed volume, option activity, price drift, widened spreads, quote fading, or dark-pool activity before news. These are surveillance leads, not proof: rumours, public-information analysis, hedging, and unrelated liquidity demand can look similar.
+\end{mechanism}
+
+\begin{definition} \hlt{Winner's Curse}\\
+The winner's curse is the adverse information revealed by winning a common-value trade or auction.\\
+A buyer who wins may be the most optimistic bidder; a seller who wins may be the most pessimistic offeror.
+\end{definition}
+
+\begin{proposition} \hlt{Winner's-Curse Bid Adjustment}\\
+Let a buyer's estimate be $\widehat{V}$ and let $\omega_N=\mathbb{E}[\widehat{V}-V\mid\text{buyer wins among }N\text{ buyers}]$ be the expected overvaluation conditional on winning. With all-in cost $c$, a zero-profit bid is $b^\star=\widehat{V}-\omega_N-c$.
+\begin{proof}
+Conditional expected profit from bid $b$ is $\mathbb{E}[V-b-c\mid\text{win}]=\widehat{V}-\omega_N-b-c$.\\
+Setting this to zero gives $b^\star=\widehat{V}-\omega_N-c$.
+\end{proof}
+\end{proposition}
+
+\begin{taxonomy} \hlt{Winner's-Curse Severity Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{competitor count}: more rival bidders increase the chance that winning selects an extreme estimate;
+\item \hlt{valuation dispersion}: noisier estimates require larger bid shading;
+\item \hlt{information overlap}: common data reduce dispersion; independent but noisy private estimates increase selection risk;
+\item \hlt{market power}: a trader facing few competitors may bid less aggressively and still win.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Bluffing and Manipulation Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{rumourmonger}: spreads false or selectively framed information to make others trade;
+\item \hlt{price manipulator}: trades to make prices, volume, or timing look informative;
+\item \hlt{wash trader}: arranges offsetting trades with confederates to manufacture activity.
+\end{enumerate}
+The bluff works only if other traders mistake the signal for information or urgent liquidity demand.
+\end{taxonomy}
+
+\begin{principle} \hlt{Bluffers vs Informed Speculators}\\
+Both may trade aggressively and advertise conviction. The difference is informational content: informed speculators trade on value-relevant beliefs, while bluffers create signals they hope others will misread.
+\end{principle}
+
+\begin{mechanism} \hlt{Value Traders Discipline Bluffs}\\
+Value traders break bluffs by trading against clear mispricing. Where valuation, borrow, or funding is constrained, bluffs can persist and attract momentum flow.
+\end{mechanism}
+
+\begin{caveat} \hlt{Manipulation Evidence Problem}\\
+Price reversals are not enough to prove manipulation. Prosecutors must usually separate a false signal or wash trade from a bad but legitimate valuation view, which is why small or careful bluffs are hard to punish.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Order-Anticipation Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{front running}: trade before a known or inferred order;
+\item \hlt{sentiment-oriented technical}: predict trades uninformed traders will make;
+\item \hlt{quote matching}: step ahead of passive quotes to extract their option value;
+\item \hlt{squeezing}: corner scarce supply and force constrained traders to liquidate;
+\item \hlt{stop gunning}: push prices to trigger clustered stop orders.
+\end{enumerate}
+These strategies use information about future order flow rather than fundamental value.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Specialist Order-Flow Strategy Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{flow speculation}: trade from early knowledge of routed orders or imbalance;
+\item \hlt{quote matching}: improve by the minimum tick to step ahead of public interest;
+\item \hlt{cream skimming}: fill less toxic marketable flow and leave harder flow to the book;
+\item \hlt{stopping option}: guarantee a price, then choose execution after observing later order flow.
+\end{enumerate}
+These strategies monetise privileged sequencing, so audit trails and public-order precedence are central controls.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Front-Running Effect}\\
+Front runners accelerate anticipated order impact. They can speed price discovery for informed flow, but usually raise execution costs and discourage large-order exposure.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Sentiment-Oriented Technical Trading}\\
+These traders forecast predictable non-value flow: tax timing, index changes, hedging, funding needs, or behavioural demand. Profits decay when value traders correct the move or the pattern crowds.
+\end{mechanism}
+
+\begin{caveat} \hlt{Quote Matching and Tick Protection}\\
+Quote matching extracts value from standing limit orders without supplying durable liquidity. Time precedence and meaningful tick sizes protect passive liquidity by making queue jumping costly.
+\end{caveat}
+
+\begin{caveat} \hlt{Squeezes and Stop Gunning}\\
+Squeezes and stop gunning profit from forced trades. They usually make prices less informative, raise transaction costs, and reduce liquidity for traders who must close positions.
+\end{caveat}

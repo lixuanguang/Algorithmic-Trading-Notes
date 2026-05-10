@@ -19,6 +19,26 @@
 \end{enumerate}
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Insider-Trading Profitability Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{materiality}: larger value revisions create larger gross opportunity;
+\item \hlt{exclusivity}: fewer informed competitors leave more liquidity before price adjustment;
+\item \hlt{time to public release}: near-term disclosure makes profits easier to realise but easier to detect;
+\item \hlt{liquidity}: deeper markets allow larger positions before impact erodes the signal;
+\item \hlt{traceability}: communication trails, relationship links, and unusual timing raise enforcement risk.
+\end{enumerate}
+The cases with the largest private payoff are often the worst compliance fact pattern: large, exclusive, traceable, and close to a public event.
+\end{taxonomy}
+
+\begin{proposition} \hlt{Deterrence Condition for Illegal Information Trading}\\
+Let $G$ be expected gross trading gain from material nonpublic information, $K$ execution cost and leakage, $R$ residual price risk, $q$ detection probability, and $F$ penalty or disgorgement.\\
+A purely self-interested trader is deterred when $G\le K+R+qF$.
+\begin{proof}
+Expected private surplus is $G-K-R-qF$. Trading has positive expected surplus only when this quantity is positive; deterrence requires the opposite inequality.
+\end{proof}
+\end{proposition}
+
 \begin{definition} \hlt{Arbitrage Opportunity}\\
 An arbitrage opportunity exists when related instruments trade outside their normal relation after adjusting for carry, conversion, delivery, funding, borrow, and execution costs. The trade is to buy the cheap leg and sell the expensive leg in a hedge portfolio.
 \end{definition}
@@ -99,6 +119,14 @@ News traders profit when value itself has changed and price has not caught up. T
 \begin{caveat} \hlt{Informed Trading Paradox}\\
 Perfectly informative prices eliminate informed profits; zero informed profits stop prices from becoming informative. Markets persist between these limits because information is costly, temporary, and unevenly distributed.
 \end{caveat}
+
+\begin{caveat} \hlt{Skilled Speculation vs Inside Information}\\
+Correct forecasts from public filings, alternative data with clean rights, channel checks, or independent modelling can be legitimate informed trading. The same trade becomes a compliance problem when the edge comes from material nonpublic information or breach of confidence. Timing alone cannot distinguish the cases.
+\end{caveat}
+
+\begin{mechanism} \hlt{Insider-Trading Market Footprint}\\
+Leaked or illegal information may appear as abnormal signed volume, option activity, price drift, widened spreads, quote fading, or dark-pool activity before news. These are surveillance leads, not proof: rumours, public-information analysis, hedging, and unrelated liquidity demand can look similar.
+\end{mechanism}
 
 \begin{definition} \hlt{Winner's Curse}\\
 The winner's curse is the adverse information revealed by winning a common-value trade or auction.\\

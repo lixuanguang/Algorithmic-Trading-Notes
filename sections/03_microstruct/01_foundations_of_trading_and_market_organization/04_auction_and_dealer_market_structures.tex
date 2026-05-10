@@ -28,6 +28,26 @@ Open-outcry markets arrange trades through public bids, offers, and acceptances 
 An auction is open when bids, offers, and acceptances are announced to the crowd before a trade is final. Public exposure supports fairness and price competition, but it also reveals trading interest.
 \end{marketrule}
 
+\begin{taxonomy} \hlt{Floor vs Automated Auction Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{operational fairness}: automated rules are easier to apply uniformly and audit;
+\item \hlt{fair access}: floors privilege physical presence; screens distribute access through networks;
+\item \hlt{capacity}: oral auctions are bounded by human attention; matching engines scale with system capacity;
+\item \hlt{speed}: electronic systems record and match standard orders faster;
+\item \hlt{information exchange}: floor brokers can exchange soft information useful for blocks;
+\item \hlt{cost}: floor systems carry labour and real-estate costs; automated systems carry fixed technology and reliability costs.
+\end{enumerate}
+Neither form dominates every use case; the valuable question is which trading problem the structure solves.
+\end{taxonomy}
+
+\begin{proposition} \hlt{Fast-Market Capacity Condition}\\
+If $N$ traders submit messages at average rate $\lambda$ and the auction mechanism processes messages at rate $\mu$, orderly real-time handling requires $N\lambda<\mu$.
+\begin{proof}
+The aggregate arrival rate is $N\lambda$. When arrivals exceed processing capacity, the backlog grows on average, so quotes, order reports, and time precedence become unreliable.
+\end{proof}
+\end{proposition}
+
 \begin{taxonomy} \hlt{Order-Driven Rule Stack}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -72,6 +92,10 @@ Prices form through dealer quotes rather than a single public book. Dealers abso
 \begin{mechanism} \hlt{Brokered Markets}\\
 Brokers create liquidity by search rather than inventory commitment. This fits blocks, unique assets, and illiquid instruments where public standing orders would reveal too much or attract too little interest.
 \end{mechanism}
+
+\begin{caveat} \hlt{Floor Information Exchange}\\
+Floor and brokered systems can reveal who might trade, whether more size remains, and whether the contra side appears informed. This helps blocks and relationship trading, but weakens equal access and creates audit, exposure, and allocation risk.
+\end{caveat}
 
 \begin{taxonomy} \hlt{Hybrid Markets}\\
 Hybrid markets combine order books, dealers, auctions, hidden orders, and off-book negotiation. They mix public order interaction with intermediary support.

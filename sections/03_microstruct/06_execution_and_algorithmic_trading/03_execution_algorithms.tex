@@ -95,6 +95,17 @@ Reactive execution waits for liquidity to appear and usually lowers leakage. Pro
 Portfolio trading reduces leg count and search cost, but transfers basket characterisation and residual-risk pricing to the dealer or algorithm.
 \end{taxonomy}
 
+\begin{mechanism} \hlt{Portfolio Insurance as Dynamic Execution}\\
+Portfolio insurance synthetically buys downside protection by dynamically reducing risky exposure as the portfolio falls and increasing exposure as it rises. It transfers risk only if the market can absorb the hedge trades; when many investors run the same rule, the execution demand itself becomes market impact.
+\end{mechanism}
+
+\begin{proposition} \hlt{Dynamic Hedging Feedback}\\
+Let a rule target risky holdings $q(S)$ as a function of market level $S$, with $q'(S)>0$. A price fall $dS<0$ forces $dq=q'(S)dS<0$, so the rule sells into the decline. If temporary impact is $\lambda dq$ with $\lambda>0$, the hedge flow has the same sign as the initial price move.
+\begin{proof}
+Since $q'(S)>0$, $dS<0$ implies $dq<0$. A sell order has negative signed flow and negative temporary price impact, so the induced impact reinforces the initial decline.
+\end{proof}
+\end{proposition}
+
 \begin{taxonomy} \hlt{Basket Characterisation Inputs}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}

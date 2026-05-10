@@ -61,3 +61,24 @@ This makes trading algorithms stateful agents in the production stack rather tha
 \item preserve enough context to test best execution, front-running, allocation, and unauthorised trading.
 \end{enumerate}
 \end{process}
+
+\begin{taxonomy} \hlt{Automated Trading Reliability Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{availability}: redundant servers, gateways, power, and network paths;
+\item \hlt{integrity}: authenticated users, validated orders, and tamper-resistant logs;
+\item \hlt{recoverability}: backups, replayable feeds, drop copies, and disaster-recovery sites;
+\item \hlt{capacity}: headroom for message bursts, opens, closes, halts, and data-feed spikes;
+\item \hlt{latency}: bounded delays for market data, decisions, order entry, and acknowledgements.
+\end{enumerate}
+For a trading system, reliability is a market-quality variable, not only an IT variable.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Network Failure Creates Position Risk}\\
+If order entry, market data, or drop copy fails, the trader may not know whether an order traded, whether a hedge executed, or whether the market moved through a stop.\\
+Controls should prefer safe state reconciliation over blind resubmission.
+\end{caveat}
+
+\begin{mechanism} \hlt{Automated System Cost Structure}\\
+Electronic trading has high fixed costs for software, data networks, security, and recovery, but low marginal labour cost per order. Floor trading has higher human and physical operating costs, but can still be valuable when negotiation, discretion, and soft information dominate raw matching speed.
+\end{mechanism}

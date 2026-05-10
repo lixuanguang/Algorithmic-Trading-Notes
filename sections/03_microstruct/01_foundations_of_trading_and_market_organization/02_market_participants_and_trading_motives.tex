@@ -1,6 +1,6 @@
 \subsubsection{Market Participants and Trading Motives}
 
-\begin{model} \hlt{Trading Game View} \cite{o_hara_1995,harris_2002}\\
+\begin{model} \hlt{Trading Game View}\\
 A trading mechanism is a game in which participants submit orders under venue rules. The players include customers, brokers, dealers, market makers, and traders acting for their own account. Some demand liquidity, some supply liquidity, some carry information, and some process orders.\\
 Intuition: a trader's best order depends on what others may know, how fast they can react, and how the venue ranks competing messages.
 \end{model}
@@ -110,7 +110,7 @@ Brokers arrange trades for clients without intending to own the position. Dealer
 \end{enumerate}
 \end{taxonomy}
 
-\begin{taxonomy} \hlt{Block-Trading Role Segmentation} \cite{harris_2002}
+\begin{taxonomy} \hlt{Block-Trading Role Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item \hlt{block initiator}: trader with a parent order too large for normal displayed liquidity;
@@ -171,6 +171,6 @@ An HFT can improve the displayed spread by stepping inside an older quote, but i
 The uncertainty created by meeting a fast counterparty is not borne equally. A small investor sees high variance in a small number of trades; a large institution diversifies this uncertainty across many child orders but still pays aggregate spread, impact, and signalling costs.
 \end{caveat}
 
-\begin{caveat} \hlt{Blurring of Roles} \cite{lehalle_2018}\\
+\begin{caveat} \hlt{Blurring of Roles}\\
 Fragmentation blurs the distinction between liquidity takers and providers. The same agent may consume liquidity in one venue, supply it in another, and intermediate price formation through routing speed.
 \end{caveat}

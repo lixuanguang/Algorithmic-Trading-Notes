@@ -17,7 +17,7 @@ Quoted spreads measure offered liquidity.\\
 Realised spreads measure what liquidity suppliers keep after prices move.
 \end{taxonomy}
 
-\begin{taxonomy} \hlt{Spread Component Segmentation} \cite{harris_2002}
+\begin{taxonomy} \hlt{Spread Component Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item \hlt{order-processing}: systems, clearing, capital, and operating costs;
@@ -26,7 +26,7 @@ Realised spreads measure what liquidity suppliers keep after prices move.
 \end{enumerate}
 \end{taxonomy}
 
-\begin{model} \hlt{Simple Dealer Quote Decomposition} \cite{harris_2002}\\
+\begin{model} \hlt{Simple Dealer Quote Decomposition}\\
 Let $V_0$ be the dealer's current value estimate. Let $V^B$ be the value estimate conditional on the next trader being a buyer, and $V^S$ the estimate conditional on the next trader being a seller. If $C$ is the transaction-cost component and $A=V^B-V^S$ is the adverse-selection component, then $a=V^B+\frac{C}{2}$, $b=V^S-\frac{C}{2}$, $a-b=A+C$.\\
 The transaction-cost component is the part a dealer expects to keep in uninformed two-sided flow. The adverse-selection component is the price revision forced by the information in trade direction.
 \end{model}
@@ -55,7 +55,7 @@ Empirical decompositions therefore require trade signs and future quote revision
 Uninformed market orders pay for immediacy through the spread. Uninformed limit orders save the spread only when they execute, and execution is most likely when the quote has become attractive to better-informed flow. The order type changes the loss channel; it does not remove adverse selection.
 \end{principle}
 
-\begin{taxonomy} \hlt{Primary Spread Determinants} \cite{harris_2002}
+\begin{taxonomy} \hlt{Primary Spread Determinants}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item \hlt{asymmetric information}: raises the adverse-selection component;

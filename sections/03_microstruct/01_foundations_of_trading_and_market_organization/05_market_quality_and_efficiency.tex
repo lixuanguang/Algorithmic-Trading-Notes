@@ -45,7 +45,7 @@ Market impact is the price movement caused by trading pressure. Temporary impact
 \end{mechanism}
 
 \begin{principle} \hlt{Resiliency as Synchronisation}\\
-Liquidity is resilient when opposing trading interests arrive before a price move becomes self-reinforcing. Poor synchronisation turns temporary imbalances into persistent price pressure \cite{lehalle_2018}.
+Liquidity is resilient when opposing trading interests arrive before a price move becomes self-reinforcing. Poor synchronisation turns temporary imbalances into persistent price pressure.
 \end{principle}
 
 \begin{principle} \hlt{Informational Efficiency}\\
@@ -77,7 +77,7 @@ More shared information can improve price formation, but each trader prefers to 
 When order books update faster than an observer can receive data, decide, and route an order, the displayed book is stale. Available liquidity becomes probabilistic rather than deterministic.
 \end{caveat}
 
-\begin{definition} \hlt{Nyquist-Shannon Latency Bound} \cite{lehalle_2018}\\
+\begin{definition} \hlt{Nyquist-Shannon Latency Bound}\\
 For an order-book update frequency $f$, the latency bound is $\tau^\star=\frac{1}{2f}$. If round-trip observation and routing time exceeds this scale, deterministic use of the displayed book is no longer reliable.
 \end{definition}
 

@@ -137,6 +137,18 @@ The practical output of TCA is a routing table: for a given market context and t
 Best execution is not the cheapest commission or the fastest fill in isolation. It is the best auditable outcome given the client's objective, limit, urgency, available venues, and information risk.
 \end{principle}
 
+\begin{taxonomy} \hlt{Retail Execution Quality Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{price}: execution relative to NBBO, midpoint, or effective spread;
+\item \hlt{speed}: time to fill, cancel, or reject;
+\item \hlt{certainty}: fill probability and partial-fill risk;
+\item \hlt{commission}: explicit brokerage charge net of rebates;
+\item \hlt{adverse selection}: post-fill price movement and opportunity cost.
+\end{enumerate}
+Retail traders observe commissions easily; execution price quality requires quote-synchronised data.
+\end{taxonomy}
+
 \begin{taxonomy} \hlt{Broker-Conflict Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}

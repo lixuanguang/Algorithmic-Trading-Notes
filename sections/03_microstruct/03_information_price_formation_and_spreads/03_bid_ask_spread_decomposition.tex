@@ -56,6 +56,20 @@ Transaction-cost spread creates bid-ask bounce: trade prices reverse between bid
 Empirical decompositions therefore require trade signs and future quote revisions, not prints alone.
 \end{mechanism}
 
+\begin{proposition} \hlt{Roll Serial-Covariance Spread Estimator}\\
+Assume transaction price $P_t=V_t+\frac{S}{2}Q_t$, where $V_t=V_{t-1}+\epsilon_t$, $\mathbb{E}[\epsilon_t]=0$, $\operatorname{Var}(\epsilon_t)=\sigma^2$, and $Q_t\in\{+1,-1\}$ is an independent buyer/seller sign with equal probabilities. Then $\operatorname{Var}(\Delta P_t)=\sigma^2+\frac{S^2}{2}$, $\operatorname{Cov}(\Delta P_t,\Delta P_{t-1})=-\frac{S^2}{4}$.\\
+Hence $S=2\sqrt{-\operatorname{Cov}(\Delta P_t,\Delta P_{t-1})}$ when the serial covariance is negative.
+\begin{proof}
+Since $\Delta P_t=\epsilon_t+\frac{S}{2}(Q_t-Q_{t-1})$, independence gives $\operatorname{Var}(\Delta P_t)=\sigma^2+\frac{S^2}{4}\mathbb{E}[(Q_t-Q_{t-1})^2]=\sigma^2+\frac{S^2}{2}$.\\
+The innovation terms have zero cross-covariance, so $\operatorname{Cov}(\Delta P_t,\Delta P_{t-1}) =\frac{S^2}{4}\mathbb{E}[(Q_t-Q_{t-1})(Q_{t-1}-Q_{t-2})] =-\frac{S^2}{4}$.\\
+Solving gives the estimator.
+\end{proof}
+\end{proposition}
+
+\begin{caveat} \hlt{Roll Estimator Limits}\\
+Roll's estimator identifies spread-induced transitory volatility only under strong assumptions. Order splitting, inventory control, serially correlated trade signs, price discreteness, hidden liquidity, and informed trading can make the covariance less negative or positive.
+\end{caveat}
+
 \begin{principle} \hlt{Uninformed Trading Loss Channels}\\
 Uninformed market orders pay for immediacy through the spread. Uninformed limit orders save the spread only when they execute, and execution is most likely when the quote has become attractive to better-informed flow. The order type changes the loss channel; it does not remove adverse selection.
 \end{principle}

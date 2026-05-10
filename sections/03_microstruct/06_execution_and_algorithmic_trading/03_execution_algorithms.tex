@@ -67,6 +67,23 @@ A trading envelope is a band of acceptable execution trajectories around the tar
 \end{enumerate}
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Order-Submission Control Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{urgency}: cross, post, peg, or wait;
+\item \hlt{price}: limit level, discretion range, and protection price;
+\item \hlt{quantity}: child size, minimum fill, reserve display, and parent slicing;
+\item \hlt{exposure}: lit, dark, brokered, indicated, or anonymous;
+\item \hlt{intermediation}: single broker for control or multiple brokers for concealment;
+\item \hlt{venue}: one book, smart-routed books, crossing networks, or upstairs negotiation.
+\end{enumerate}
+The execution algorithm controls transaction cost through these levers, not only through the target schedule.
+\end{taxonomy}
+
+\begin{principle} \hlt{Reactive vs Proactive Execution}\\
+Reactive execution waits for liquidity to appear and usually lowers leakage. Proactive execution advertises interest or crosses the spread to create a trade. The right point on this continuum depends on urgency, search cost, and how damaging exposure would be.
+\end{principle}
+
 \begin{table}[htbp]
 \centering
 \scriptsize

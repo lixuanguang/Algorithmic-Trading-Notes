@@ -23,6 +23,11 @@ Motive is inferred from context, horizon, and exposure, not order side alone.
 Traders often combine motives. A pension fund may invest, hedge FX, and time factors; an HFT may make markets in one book and arbitrage another.
 \end{caveat}
 
+\begin{principle} \hlt{Patience Defines the Liquidity Side}\\
+Impatient traders demand liquidity by initiating trades. Patient traders supply liquidity by waiting, posting, quoting, or making themselves discoverable.\\
+The same institution can demand liquidity for one order and supply it for another.
+\end{principle}
+
 \begin{taxonomy} \hlt{Buy-Side Motives}\\
 Buy-side traders use markets to solve problems outside the market itself:
 \begin{enumerate}[label=\roman*.]
@@ -69,6 +74,18 @@ The same trader can switch roles. The useful distinction is whether the order co
 \begin{mechanism} \hlt{Arbitrageur Economic Function}\\
 Arbitrageurs trade relative value. They connect buyers and sellers across instruments, venues, maturities, currencies, or risk forms. Their activity enforces the law of one price only after costs, funding, hedge error, and execution risk are small enough for the trade to be worth doing.
 \end{mechanism}
+
+\begin{taxonomy} \hlt{Liquidity Supplier Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{market makers}: supply immediacy for small to moderate size at narrow spreads, but lose to informed flow and adverse inventory moves;
+\item \hlt{block dealers}: supply depth to known clients by warehousing risk, but lose when client information or unwind cost is misread;
+\item \hlt{value traders}: supply depth and resiliency when price deviates from fundamental value, but lose to better-informed value traders or financing pressure;
+\item \hlt{precommitted traders}: post aggressive limit orders to lower the cost of trades they already want to do, but risk non-execution or adverse selection;
+\item \hlt{arbitrageurs}: move liquidity across related markets, but lose to faster arbitrageurs, legging risk, funding shocks, and stale hedges.
+\end{enumerate}
+Treating all passive flow as ``market making'' hides the source of depth.
+\end{taxonomy}
 
 \begin{taxonomy} \hlt{Profit-Motivated Trader Segmentation}
 \begin{enumerate}[label=\roman*.]

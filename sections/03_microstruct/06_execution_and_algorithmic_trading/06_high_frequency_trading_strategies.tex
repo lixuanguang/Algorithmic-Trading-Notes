@@ -1,1 +1,22 @@
 \subsubsection{High-Frequency Trading Strategies}
+
+\begin{taxonomy} \hlt{HFT Strategy Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{passive market making}: quote both sides, earn spread and rebates, manage inventory;
+\item \hlt{statistical arbitrage}: trade short-horizon relative value or lead-lag signals;
+\item \hlt{latency arbitrage}: react faster to stale quotes or delayed cross-venue price updates;
+\item \hlt{order anticipation}: infer large parent orders from child-order footprints;
+\item \hlt{liquidity detection}: probe venues and dark pools for hidden or fleeting interest.
+\end{enumerate}
+The same firm may run several of these, but the risk and social value differ by strategy.
+\end{taxonomy}
+
+\begin{principle} \hlt{HFT Edge Decays With Diffusion}\\
+Speed advantages are valuable only while competitors, venues, and clients cannot replicate them.\\
+Once reaction speed and routing logic diffuse, durable profits must come from inventory control, better models, lower costs, or privileged order flow.
+\end{principle}
+
+\begin{caveat} \hlt{Message Profit Is Not Market Quality}\\
+High message rates can improve displayed prices, but they can also increase cancellation risk and stale-book uncertainty. Evaluate HFT by spreads, depth, realised costs, adverse selection, and stress behaviour.
+\end{caveat}

@@ -98,11 +98,48 @@ Treating all passive flow as ``market making'' hides the source of depth.
 Informed speculators aid price discovery; dealers supply liquidity. Middle categories mainly redistribute surplus.
 \end{taxonomy}
 
+\begin{principle} \hlt{Speculation Requires Comparative Advantage}\\
+Profitable speculation requires more than being intelligent or informed in isolation. The trader must have an advantage over the marginal counterparty after spread, fees, financing, market impact, and operational error.
+\end{principle}
+
+\begin{taxonomy} \hlt{Trading Edge Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{information}: faster, cleaner, or more exclusive interpretation of value-relevant facts;
+\item \hlt{model}: better mapping from data to price, hedge, or risk;
+\item \hlt{execution}: lower leakage, better routing, queue skill, or lower impact;
+\item \hlt{risk bearing}: ability to hold inventory or convergence risk when others cannot;
+\item \hlt{discipline}: sizing, stopping, and avoiding trades outside the edge.
+\end{enumerate}
+An edge that cannot survive trading costs is not a trading edge.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Skill and Luck Look Similar Ex Post}\\
+Large realised profits may come from skill, favourable exposure, or simple luck.\\
+A useful skill claim must explain why the decision was right before the outcome was known, why the edge should persist, and why it is not already competed away.
+\end{caveat}
+
+\begin{proposition} \hlt{Past Profit Alone Does Not Identify Skill}\\
+Let future excess profit be $\Pi_{t+1}=S_{t+1}+L_{t+1}$, where $S$ is persistent skill and $L$ is zero-mean luck.\\
+If $S_{t+1}$ is independent of past realised profits conditional on current information, then past profit has no incremental predictive value for $\Pi_{t+1}$.
+\begin{proof}
+Conditional on current information $\mathcal{F}_t$, $\mathbb{E}[\Pi_{t+1}\mid \mathcal{F}_t,\Pi_t]=\mathbb{E}[S_{t+1}\mid \mathcal{F}_t]+\mathbb{E}[L_{t+1}\mid \mathcal{F}_t]=\mathbb{E}[\Pi_{t+1}\mid \mathcal{F}_t]$.
+\end{proof}
+\end{proposition}
+
 \begin{corollary} \hlt{Profit-Motivated Flow Needs Non-Profit Motives}\\
 Speculators and dealers cannot all profit by trading only with each other. Their gains require traders who pay for immediacy, risk transfer, information, or entertainment.
 \begin{proof}
 Let $G_i$ be trader $i$'s gross trading gain in a closed set of profit-motivated traders, and let $C_i\ge0$ be trading costs. By zero-sum accounting, $\sum_i G_i=0$, so aggregate net profit is $\sum_i (G_i-C_i)=-\sum_i C_i\le0$.\\
 Thus the group cannot earn positive aggregate net trading profit from itself; positive profits require counterparties with offsetting trading losses or non-trading service value.
+\end{proof}
+\end{corollary}
+
+\begin{corollary} \hlt{Turnover Drag for Active Management}\\
+Let $R_M$ be the gross market return, $a_i$ active manager $i$'s gross active excess return, $c_i\ge0$ the manager's trading and fee drag, and $w_i$ value weights. If active managers aggregate to the market portfolio, $\sum_i w_i a_i=0$, so aggregate net active excess return is $\sum_i w_i(a_i-c_i)=-\sum_i w_i c_i\le0$.\\
+A single active manager beats a passive fund with drag $c_P$ only if $a_i>c_i-c_P$.
+\begin{proof}
+Active deviations clear against each other in aggregate, giving $\sum_i w_i a_i=0$. Subtracting costs gives the aggregate inequality. Relative to passive exposure, manager $i$ must cover the incremental drag $c_i-c_P$.
 \end{proof}
 \end{corollary}
 

@@ -60,6 +60,17 @@ Dark pools hide pre-trade interest; internalizers match against broker-dealer in
 RFQ markets request quotes from dealers, often bilaterally. A CLOB exposes standing interest multilaterally; RFQ protects relationships and discretion, while CLOBs improve comparability and public interaction.
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Designated Market Maker Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{single specialist}: one member carries quoting, auction, and order-book duties for an instrument;
+\item \hlt{multiple DMM}: several assigned dealers share liquidity obligations and compete for flow;
+\item \hlt{third-market dealer}: quotes away from the listing exchange, usually with weaker formal duties;
+\item \hlt{pure CLOB}: no assigned dealer; public orders and voluntary market makers supply liquidity.
+\end{enumerate}
+Design choice is whether mandatory liquidity support is worth granting privileged access or order-flow rights.
+\end{taxonomy}
+
 \begin{taxonomy} \hlt{Market Information Systems}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}

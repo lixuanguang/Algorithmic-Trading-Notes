@@ -8,6 +8,27 @@ Market quality measures how well trading interest becomes low-cost execution and
 Liquidity is the ability to trade quickly, in size, at low cost, and with limited price impact. Spreads, depth, volume, turnover, fill rates, and price impact each capture only one face of it.
 \end{definition}
 
+\begin{mechanism} \hlt{Liquidity as Bilateral Search}\\
+Liquidity is the object of a bilateral search: buyers search for sellers, sellers search for buyers, and both sides decide how much interest to reveal. Markets, brokers, dealers, and routers are useful when they reduce this search cost without leaking too much information.
+\end{mechanism}
+
+\begin{proposition} \hlt{Search Stopping Rule}\\
+Let $B$ be the expected improvement from one more search attempt, $c$ the direct cost of searching, and $L$ the expected loss from the current best match disappearing while the trader searches. Continue searching iff $B>c+L$.
+\begin{proof}
+The incremental expected gain from another search is the improvement $B$ less the search cost $c$ and lost-option cost $L$. Searching is optimal exactly when this net gain is positive.
+\end{proof}
+\end{proposition}
+
+\begin{taxonomy} \hlt{Liquidity Search Strategy Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{active search}: cross the spread, call dealers, expose interest, or route aggressively;
+\item \hlt{passive search}: post limits, show indications, wait for contra-side interest, or reveal only to brokers;
+\item \hlt{selective search}: ask trusted counterparties first, then broaden exposure if cost remains acceptable.
+\end{enumerate}
+Active search buys speed with leakage. Passive search buys discretion with non-execution risk.
+\end{taxonomy}
+
 \begin{mechanism} \hlt{Public Benefits of Liquid Markets}\\
 Liquid markets lower the cost of exchange, hedging, risk sharing, and informed trading. They can benefit even non-traders through cheaper goods, lower capital costs, and better prices.
 \end{mechanism}
@@ -31,6 +52,36 @@ Liquidity risk is uncertainty about the cost of turning a desired position into 
 Tightness is cost of an immediate small round trip, proxied by bid-ask spread. Depth is the quantity available at or near current prices. Resiliency is the speed with which liquidity returns after a shock or large trade.
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Search-Output Liquidity Dimensions}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{immediacy}: time required to arrange the trade at acceptable terms;
+\item \hlt{width}: cost of trading a given size, including spread, fees, and price concession;
+\item \hlt{depth}: size available at a given cost or price concession;
+\item \hlt{resiliency}: speed with which prices and depth recover after order-flow shocks.
+\end{enumerate}
+For small trades, width is often the spread. For large trades, depth and information leakage dominate.
+\end{taxonomy}
+
+\begin{proposition} \hlt{Depth-Width Duality}\\
+For a fixed horizon, let $C(q)$ be the nondecreasing all-in cost of trading size $q$, and let $D(c)=\max\{q:C(q)\le c\}$ be executable depth at cost budget $c$. Then $q\le D(c)$ iff $C(q)\le c$.
+\begin{proof}
+If $C(q)\le c$, then $q$ is feasible under the cost budget, so $q\le D(c)$.\\
+If $q\le D(c)$, monotonicity gives $C(q)\le C(D(c))\le c$.
+\end{proof}
+\end{proposition}
+
+\begin{taxonomy} \hlt{Displayed, Undisclosed, and Latent Liquidity}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{displayed}: firm quotes and exposed limit orders that can be taken immediately;
+\item \hlt{reserve}: hidden size behind a displayed slice or venue-level hidden interest;
+\item \hlt{indicated}: IOIs, RFQs, dealer axes, or broker-distributed interest that must be asked for;
+\item \hlt{latent}: buy-side, value-trader, or dealer interest that appears only after contact, price movement, or relationship search.
+\end{enumerate}
+Displayed liquidity is easiest to measure; latent liquidity is often decisive for blocks.
+\end{taxonomy}
+
 \begin{definition} \hlt{Book Size}\\
 Book size is the quantity available at the best bid and ask, or within a specified number of price levels.\\
 For small-tick instruments, several limits must often be summed; for large-tick instruments, the first limits may capture most executable size.
@@ -51,6 +102,19 @@ Liquidity is resilient when opposing trading interests arrive before a price mov
 \begin{mechanism} \hlt{Value-Trader Resiliency}\\
 Value traders make markets more resilient when they buy after uninformed selling pushes price below value, or sell after uninformed buying pushes price above value. Their balance sheet is a delayed liquidity buffer: useful only when valuation confidence, funding, and risk limits survive the shock.
 \end{mechanism}
+
+\begin{taxonomy} \hlt{Liquidity State Drivers}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{trader identity}: uninformed flow is easier to absorb than informed flow;
+\item \hlt{instrument attention}: widely followed instruments attract more latent counterparties;
+\item \hlt{valuation uncertainty}: unclear fundamentals make suppliers demand larger concessions;
+\item \hlt{timing}: closed markets, holidays, and event windows raise search cost;
+\item \hlt{same-side imbalance}: one-sided displayed interest makes the other side expensive;
+\item \hlt{counterparty quality}: reputable traders find liquidity because others expect fairer interaction.
+\end{enumerate}
+These drivers explain why a market can look liquid in normal prints but become expensive for a specific order.
+\end{taxonomy}
 
 \begin{principle} \hlt{Informational Efficiency}\\
 Informational efficiency means prices incorporate available information quickly and with limited noise. Visibility, update speed, and uninformed flow determine how much information enters prices.

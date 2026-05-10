@@ -1,7 +1,7 @@
 \subsubsection{Trading Venues and Market Architecture}
 
 \begin{principle} \hlt{Venue as Rule System}\\
-A market is a rule system that govern access, order submission, visibility, execution, clearing, and settlement.
+A market is a rule system that governs access, order submission, visibility, execution, clearing, and settlement.
 \end{principle}
 
 \begin{taxonomy} \hlt{Market-Structure Segmentation}
@@ -28,6 +28,11 @@ Market structure matters because it defines both tradability and information acc
 \begin{definition} \hlt{Exchanges}\\
 Exchanges centralise order interaction under membership, listing, trading, reporting, and clearing rules. They standardise access and make execution more reliable.
 \end{definition}
+
+\begin{mechanism} \hlt{Exchanges as Search Engines}\\
+An exchange lowers bilateral search cost by collecting trading interest, ranking it under common rules, and publishing enough information for traders to find the best available counterparty.\\
+Its economic service is not only matching; it is making liquidity searchable.
+\end{mechanism}
 
 \begin{definition} \hlt{OTC Markets}\\
 OTC markets use bilateral or dealer-mediated negotiation rather than a central book. They fit bonds, swaps, FX, bespoke derivatives, and heterogeneous contracts.

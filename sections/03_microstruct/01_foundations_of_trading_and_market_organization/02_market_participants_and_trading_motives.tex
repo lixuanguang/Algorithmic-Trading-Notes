@@ -110,6 +110,35 @@ Brokers arrange trades for clients without intending to own the position. Dealer
 \end{enumerate}
 \end{taxonomy}
 
+\begin{taxonomy} \hlt{Block-Trading Role Segmentation} \cite{harris_2002}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{block initiator}: trader with a parent order too large for normal displayed liquidity;
+\item \hlt{block liquidity supplier}: trader, dealer, or institution willing to fill the block;
+\item \hlt{block dealer}: principal that facilitates the block and then unwinds inventory;
+\item \hlt{block broker}: agent that assembles counterparties without intending to own the risk;
+\item \hlt{upstairs market}: relationship and telephone market used to find size without public exposure.
+\end{enumerate}
+Block trading is mostly a search and information-control problem, not a different asset.
+\end{taxonomy}
+
+\begin{principle} \hlt{Block Dealers vs Block Brokers}\\
+Dealers are useful when immediacy matters and balance sheet can absorb the position.\\
+Brokers are useful when the block is too large or information-sensitive for one principal, so assembling natural counterparties is cheaper than warehousing risk.\\
+Broker-dealers can be credible when they are willing to participate in the trade they recommend.
+\end{principle}
+
+\begin{taxonomy} \hlt{Block Trader Skill Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{latent demand discovery}: know who might trade if contacted;
+\item \hlt{motive audit}: infer whether the initiator is uninformed, informed, honest, or strategic;
+\item \hlt{exposure control}: reveal size only to counterparties who will not trade ahead;
+\item \hlt{transaction-cost analysis}: price facilitation, unwind risk, and likely market impact;
+\item \hlt{reputation management}: make future counterparties willing to participate.
+\end{enumerate}
+\end{taxonomy}
+
 \begin{caveat} \hlt{Broker Agency Conflict}\\
 Brokers are agents, but commissions, soft dollars, payments for order flow, inventory, and affiliated dealers can pull routing decisions away from pure client execution quality.
 \end{caveat}

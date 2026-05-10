@@ -62,6 +62,24 @@ Dark activity is usually concentrated in liquid stocks, high-volume days, volati
 The main incentives are secrecy and price improvement. A midpoint execution lets a liquidity taker avoid paying the full spread while hiding the order from traders who might infer and trade against the parent order.
 \end{mechanism}
 
+\begin{taxonomy} \hlt{Block Exposure-Control Segmentation} \cite{harris_2002}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{sunshine trading}: announce identity, intention, and full size to invite natural liquidity;
+\item \hlt{upstairs negotiation}: expose the block selectively through trusted brokers or dealers;
+\item \hlt{crossing and dark pools}: seek natural contra flow without displayed pre-trade interest;
+\item \hlt{slicing and reserve display}: trade through normal venues while hiding the parent order.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{caveat} \hlt{Sunshine Trading Credibility}\\
+Sunshine trading works only when the initiator is credibly uninformed and honest about size. Otherwise the announcement gives order anticipators a free option to trade ahead, quote-match, or withdraw liquidity.
+\end{caveat}
+
+\begin{mechanism} \hlt{Block Hanging Over the Market}\\
+Once a large parent order is known, three reactions matter: front runners trade on the same side before the block, same-side traders accelerate their own trades, and opposite-side traders delay to capture price impact. All three make execution more expensive for the initiator.
+\end{mechanism}
+
 \begin{caveat} \hlt{Dark Liquidity Is Conditional}\\
 Dark liquidity is hard to estimate: misses are often invisible, and fills can still be adversely selected.
 \end{caveat}

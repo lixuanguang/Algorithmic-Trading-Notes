@@ -8,3 +8,7 @@ Equities are the cleanest empirical laboratory because trades, quotes, venue ide
 An equity-style CLOB is not the default architecture for every asset.\\
 Futures, options, FX, fixed income, and crypto differ in tick size, margin, clearing, settlement, inventory risk, and whether liquidity is naturally multilateral or dealer-mediated.
 \end{caveat}
+
+\begin{marketrule} \hlt{Equity Block Prints and Size Priority}\\
+Equity block crosses may be negotiated away from the public book but printed through an exchange or trade-reporting facility. Size-priority exceptions let very large crosses avoid being broken by small resting orders, while price-priority rules protect displayed liquidity. The design trade-off is direct: protect the book too much and blocks leave; protect blocks too much and displayed liquidity loses precedence value.
+\end{marketrule}

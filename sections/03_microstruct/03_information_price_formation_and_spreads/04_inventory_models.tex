@@ -1,1 +1,27 @@
 \subsubsection{Inventory Models}
+
+\begin{principle} \hlt{Inventory Spread Component}\\
+Inventory risk is compensation for holding unwanted positions while waiting for offsetting flow.\\
+It is separate from adverse selection: inventory risk can exist even when no trader is better informed, because prices can move before the dealer unwinds.
+\end{principle}
+
+\begin{taxonomy} \hlt{Inventory Cost Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{price risk}: mark-to-market loss while inventory is held;
+\item \hlt{funding risk}: financing cost of long inventory and borrow or recall risk for shorts;
+\item \hlt{capital risk}: balance-sheet, margin, and risk-limit consumption;
+\item \hlt{hedging cost}: basis risk and transaction costs from reducing exposure elsewhere.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{model} \hlt{Inventory-Skew Quoting}\\
+Let $q_t$ be inventory, $q^\star$ the target inventory, and $r_t=m_t-\kappa(q_t-q^\star)$ the dealer's reservation price.\\
+Quotes can be written as $b_t=r_t-\frac{s_t}{2}$, $a_t=r_t+\frac{s_t}{2}$.\\
+When $q_t>q^\star$, the dealer lowers the reservation price to attract buyers and discourage sellers; when $q_t<q^\star$, the dealer raises it to attract sellers and discourage buyers.
+\end{model}
+
+\begin{caveat} \hlt{Inventory vs Information Identification}\\
+Inventory control and adverse selection can produce the same quote movement after a buy or sell.\\
+Identification needs additional information: dealer inventory, hedges, client type, future midpoint revision, or whether quotes revert after inventory is restored.
+\end{caveat}

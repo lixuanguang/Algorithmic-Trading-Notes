@@ -155,6 +155,70 @@ The concession is instead a risk-transfer price: the impatient trader replaces a
 \item \hlt{liquidity measure}: the cost is the price of trading now versus waiting, not only the posted bid-ask spread;
 \item \hlt{market design}: lower entry, presence, hedging costs increase supply of immediacy. If market-making capacity is scarce, large orders migrate from dealer immediacy to search, block crossing, or delayed execution.
 \end{enumerate}
+
+\par\smallskip\noindent\hlt{Trading Costs}\\
+Grossman-Miller distinguishes two cost channels. A \hlt{participation cost} $c$ is fixed cost of being present as an active MM, so higher $c$ lowers equilibrium competition $n$ and raises the liquidity premium indirectly. A \hlt{per-share trading fee} $\eta$ is paid when shares trade, so it enters prices directly. At date $2$, fees cancel because remaining positions are liquidated either now or at date $3$:
+\begin{align*}
+q_2^j
+&=\frac{\mathbb{E}[S_3-\eta\mid\epsilon_2]-(S_2-\eta)}{\gamma\sigma^2},
+\qquad j\in\{MM,LT1\},\\
+q_2^{LT2}
+&=\frac{\mathbb{E}[S_3+\eta\mid\epsilon_2]-(S_2+\eta)}{\gamma\sigma^2}.
+\end{align*}
+Hence $S_2=\mathbb{E}[S_3\mid\epsilon_2]=\mu+\epsilon_2$ as before. At date $1$, for $i>0$, MMs buy from $LT_1$ and expect to sell later; their demand is reduced by the round-trip fee:
+\begin{align*}
+q_1^{LT1}
+&=\frac{\mathbb{E}[S_2-\eta]-(P_1-\eta)}{\gamma\sigma^2}
+=\frac{\mu-P_1}{\gamma\sigma^2},\\
+q_1^{MM}
+&=\frac{\mathbb{E}[S_2-\eta]-(P_1+\eta)}{\gamma\sigma^2}
+=\frac{\mu-P_1-2\eta}{\gamma\sigma^2}.
+\end{align*}
+Market clearing becomes
+\begin{align*}
+i&=nq_1^{MM}+q_1^{LT1}
+=\frac{\mu-P_1}{\gamma\sigma^2}
++n\frac{\mu-P_1-2\eta}{\gamma\sigma^2},
+\end{align*}
+so
+\begin{align*}
+P_1&=\mu-\gamma\sigma^2\frac{i}{n+1}-2\left(\frac{n}{n+1}\right)\eta,\\
+q_1^{LT1,\star}
+&=\frac{i}{n+1}+2\left(\frac{n}{n+1}\right)\frac{\eta}{\gamma\sigma^2}.
+\end{align*}
+Thus trading fees add an extra liquidity discount and reduce immediacy.\\
+$LT_1$ keeps more inventory after date $1$ than in the no-fee case. The initiating liquidity trader pays her own fee directly and pays much of the MMs' round-trip fee indirectly through a lower sale price. If $\abs{i}$ is small relative to $\eta$, the desired trade can fall into a no-trade region.
+
+\par\smallskip\noindent\hlt{Measuring Liquidity}\\
+The model can also be read as a reduced-form price-impact model. In an electronic book, $P_1$ is the average execution price of $LT_1$'s marketable sell order against posted liquidity; the initial efficient midpoint is $\mu=\mathbb{E}[S_2]$. Let the date-$1$ quantity sold by $LT_1$ be
+\begin{align*}
+Q_1^{LT1}&=i-q_1^{LT1,\star}=\frac{n}{n+1}i.
+\end{align*}
+Then the equilibrium date-$1$ price can be written as
+\begin{align*}
+P_1&=\mu+\lambda Q_1^{LT1}, \qquad
+\lambda=-\frac{\gamma\sigma^2}{n}.
+\end{align*}
+Here $\lambda$ is the price reaction to signed liquidity demand. A more liquid market has lower $\abs{\lambda}$, which comes from more MM competition $n$, lower risk aversion $\gamma$, or lower interim volatility $\sigma^2$.\\
+A second liquidity measure is the autocovariance of price changes. Introduce a date $0$ and public news $\epsilon_1$ before $LT_1$ trades, with efficient price process
+\begin{align*}
+\mu_0&=\mathbb{E}[S_3], \qquad
+\mu_1=\mathbb{E}[S_3\mid\epsilon_1], \qquad
+\mu_2=\mathbb{E}[S_3\mid\epsilon_1,\epsilon_2], \qquad
+\mu_3=S_3.
+\end{align*}
+With $S_0=\mu_0$, $S_1=\mu_1+\lambda Q_1^{LT1}$, and $S_2=\mu_2$, price changes are
+\begin{align*}
+\Delta_1&=S_1-S_0=\epsilon_1+\lambda Q_1^{LT1},\\
+\Delta_2&=S_2-S_1=\epsilon_2-\lambda Q_1^{LT1}.
+\end{align*}
+If liquidity demand is independent of news, then
+\begin{align*}
+\operatorname{Cov}[\Delta_1,\Delta_2]
+&=\operatorname{Cov}[\epsilon_1+\lambda Q_1^{LT1},\epsilon_2-\lambda Q_1^{LT1}]
+=-\lambda^2\operatorname{Var}[Q_1^{LT1}]<0.
+\end{align*}
+Negative price-change autocovariance captures temporary liquidity impact: the first price move contains order pressure, and the next move partially reverses it as price returns toward efficient value. As $\abs{\lambda}\to0$, the observed price process converges to the efficient-price martingale.
 \end{model}
 
 \begin{taxonomy} \hlt{Dealer Spread vs Outside Spread}

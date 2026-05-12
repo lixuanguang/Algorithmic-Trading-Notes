@@ -221,6 +221,55 @@ If liquidity demand is independent of news, then
 Negative price-change autocovariance captures temporary liquidity impact: the first price move contains order pressure, and the next move partially reverses it as price returns toward efficient value. As $\abs{\lambda}\to0$, the observed price process converges to the efficient-price martingale.
 \end{model}
 
+\begin{model} \hlt{Market Making using Limit Orders} \cite{ho_stoll_1981}\\
+Grossman-Miller treats immediacy with a single clearing price. In a LOB, the same economics appears through posted limit orders: the MM chooses how far from the midpoint to quote, trading off higher margin per fill against lower execution probability. Figure~\ref{fig:limit_order_market_making} shows the depth and fill-probability objects.
+
+\begin{center}
+\refstepcounter{figure}\label{fig:limit_order_market_making}
+\scalebox{0.86}{\input{figures/03_microstruct/limit_order_market_making.tikz}}\\
+{\small Figure \thefigure: Limit-order placement and probability of execution.}
+\end{center}
+
+\par\smallskip\noindent\hlt{Assumptions}\\
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{midpoint}: all traders agree on current value $S_t$;
+\item \hlt{orders}: the MM posts sell LO at $S_t+\delta^+$ and buy LO at $S_t-\delta^-$;
+\item \hlt{arrivals}: buy and sell MOs arrive with probabilities $p^+$ and $p^-$;
+\item \hlt{fill probability}: conditional on MO arrival, execution prob falls with quote distance, $P^\pm(\delta^\pm)=e^{-\kappa^\pm\delta^\pm}$;
+\item \hlt{frictions}: no adverse selection, inventory cost, trading cost, or strategic response from other LOs.
+\end{enumerate}
+
+\par\smallskip\noindent\hlt{Setup}\\
+The MM earns $\delta^+$ when her ask is lifted by a buy MO and $\delta^-$ when her bid is hit by a sell MO. Expected profit per posting decision is
+\begin{align*}
+\mathbb{E}\left[\Pi(\delta^+,\delta^-)\right]
+&=p^+P^+(\delta^+)\delta^+ + p^-P^-(\delta^-)\delta^-\\
+&=p^+e^{-\kappa^+\delta^+}\delta^+ + p^-e^{-\kappa^-\delta^-}\delta^-.
+\end{align*}
+
+\par\smallskip\noindent\hlt{Equilibrium}\\
+The static quoting problem separates across the ask and bid:
+\begin{align*}
+\max_{\delta^+,\delta^-}\mathbb{E}\left[\Pi(\delta^+,\delta^-)\right]
+&=\max_{\delta^+,\delta^-}\left\{p^+e^{-\kappa^+\delta^+}\delta^+ + p^-e^{-\kappa^-\delta^-}\delta^-\right\}.
+\end{align*}
+The first-order condition on each side is
+\begin{align*}
+p^\pm e^{-\kappa^\pm\delta^\pm}(1-\kappa^\pm\delta^\pm)&=0,
+\end{align*}
+so the optimal quote depths are
+\begin{align*}
+\delta^{\pm,\star}&=\frac{1}{\kappa^\pm}.
+\end{align*}
+
+\par\smallskip\noindent\hlt{Interpretation}\\
+Posting deeper earns more conditional on execution but reduces probability of execution. Under exponential depth, the optimal quote is placed at the mean depth of incoming market-order walk-up. Arrival probabilities $p^\pm$ scale expected profits, but do not change optimal depths in this static risk-neutral version.
+
+\par\smallskip\noindent\hlt{Limitations}\\
+The model isolates the price-probability trade-off, but it is deliberately thin: $P^\pm$, $p^\pm$, and other LOs are exogenous; the MM has no inventory penalty; and there is no adverse selection. More realistic quoting models add dynamic inventory, queue position, cancellation, latency, and informed-flow risk.
+\end{model}
+
 \begin{taxonomy} \hlt{Dealer Spread vs Outside Spread}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}

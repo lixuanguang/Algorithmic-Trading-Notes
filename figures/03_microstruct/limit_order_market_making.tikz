@@ -1,0 +1,68 @@
+\begin{tikzpicture}[
+    >=stealth,
+    font=\small,
+    line cap=round,
+    line join=round,
+    dot/.style={circle, fill=gray!70, inner sep=1.3pt},
+    guide/.style={dash dot, gray!65, thin}
+]
+
+\definecolor{lobblue}{rgb}{0.34,0.32,0.72}
+\definecolor{lobred}{rgb}{0.95,0.25,0.25}
+
+% Shared price levels
+\def\yask{3.05}
+\def\ymid{2.00}
+\def\ybid{0.95}
+
+% Left panel: cumulative depth
+\draw[gray!65] (0,0) rectangle (4.20,4.00);
+\draw[guide] (0,\yask) -- (4.20,\yask);
+\draw[guide] (0,\ymid) -- (4.20,\ymid);
+\draw[guide] (0,\ybid) -- (4.20,\ybid);
+
+\node[left] at (-0.08,\yask) {$S_t+\delta^+$};
+\node[left] at (-0.08,\ymid) {$S_t$};
+\node[left] at (-0.08,\ybid) {$S_t-\delta^-$};
+\node[dot] at (0,\yask) {};
+\node[dot] at (0,\ymid) {};
+\node[dot] at (0,\ybid) {};
+
+\draw[lobblue, thick] (0,\ymid)
+    .. controls (0.70,2.35) and (2.70,2.45) .. (4.20,4.00);
+\draw[lobred, thick] (0,\ymid)
+    .. controls (0.70,1.55) and (1.55,0.80) .. (2.65,0.00);
+
+\node at (1.25,3.65) {Ask Side};
+\node at (1.00,0.45) {Bid Side};
+\node at (2.10,-0.33) {Cumulative Depth};
+
+% Right panel: fill probability
+\begin{scope}[xshift=5.20cm]
+\draw[gray!65] (0,0) rectangle (4.20,4.00);
+\draw[guide] (0,\yask) -- (4.20,\yask);
+\draw[guide] (0,\ymid) -- (4.20,\ymid);
+\draw[guide] (0,\ybid) -- (4.20,\ybid);
+\node[dot] at (0,\yask) {};
+\node[dot] at (0,\ymid) {};
+\node[dot] at (0,\ybid) {};
+
+\draw[lobblue, thick] (0.05,4.00)
+    .. controls (0.25,2.85) and (1.65,2.20) .. (4.20,\ymid);
+\draw[lobred, thick] (0.05,0.00)
+    .. controls (0.45,1.05) and (1.80,1.65) .. (4.20,\ymid);
+
+\node at (0.55,3.45) {$P^+$};
+\node at (0.60,0.45) {$P^-$};
+\node at (2.75,2.85) {$P^+(\delta^+)$};
+\node at (2.70,1.25) {$P^-(\delta^-)$};
+
+\node[dot, fill=lobblue] (pplus) at (1.05,2.00) {};
+\node[dot, fill=lobred] (pminus) at (2.25,2.00) {};
+\draw[->, gray!70] (2.35,2.70) -- (pplus);
+\draw[->, gray!70] (2.45,1.42) -- (pminus);
+
+\node at (2.10,-0.33) {Fill Prob.};
+\end{scope}
+
+\end{tikzpicture}

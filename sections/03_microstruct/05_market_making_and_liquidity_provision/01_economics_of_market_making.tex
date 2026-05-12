@@ -64,6 +64,212 @@ With dealer competition and public limit-order competition, spreads are pulled t
 \end{enumerate}
 \end{taxonomy}
 
+\begin{model} \hlt{Grossman-Miller Model} \cite{grossman_miller_1988}\\
+Grossman-Miller formalises market making as the supply of \hlt{immediacy} when natural buyers and sellers do not arrive at the same time. Market maker does not want inventory; it accepts one side now because it expects the opposite side later. The price concession is the insurance premium paid by impatient liquidity traders for transferring interim price risk to market makers.
+
+\par\smallskip\noindent\hlt{Assumptions}\\
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{timing}: there are three dates $t\in\{1,2,3\}$. Date $1$ is the first liquidity trade, date $2$ is the arrival of the offsetting liquidity trader, and date $3$ is terminal cash settlement;
+\item \hlt{assets}: cash earns zero return and the risky asset has terminal value $S_3=\mu+\epsilon_2+\epsilon_3$;
+\item \hlt{shocks}: $\epsilon_2,\epsilon_3\overset{\text{iid}}{\sim}N(0,\sigma^2)$. The shock $\epsilon_{t}$ is revealed between dates $t$ and $t-1$;
+\item \hlt{participants}: $n$ identical market makers start with zero risky-asset inventory. Liquidity trader $LT_1$ has initial endowment $i$, while $LT_2$ has initial endowment $-i$;
+\item \hlt{order imbalance}: if $i>0$, $LT_1$ is a natural seller at date $1$ and $LT_2$ is later buyer. If $i<0$, signs reverse;
+\item \hlt{preferences}: all agents have CARA utility $U(X)=-\exp(-\gamma X)$ with risk-aversion parameter $\gamma>0$;
+\item \hlt{frictions}: there are no explicit transaction costs, funding costs, or holding costs. The only cost of supplying liquidity is bearing risky inventory between dates $1$ and $2$.
+\end{enumerate}
+
+\begin{center}
+\refstepcounter{figure}\label{fig:grossman_miller_trading}
+\scalebox{0.82}{\input{figures/03_microstruct/grossman_miller_trading.tikz}}\\
+{\small Figure \thefigure: Trading and price setting in the Grossman-Miller model.}
+\end{center}
+
+\par\smallskip\noindent\hlt{Setup}\\
+Figure~\ref{fig:grossman_miller_trading} summarises the inventory path and price-setting sequence. Let $P_1$ be the date-$1$ trade price and $S_2=\mu+\epsilon_2$ the date-$2$ efficient price after the first shock is known. If agent $j$ holds $q_t^j$ risky units after trading at date $t$, then the date-$2$ and date-$3$ wealth updates are
+\begin{align*}
+X_2^j&=X_1^j+q_1^j(S_2-P_1), \qquad X_3^j=X_2^j+q_2^j(S_3-S_2).
+\end{align*}
+At date $2$, conditional on $\epsilon_2$, CARA-normal utility reduces the problem to a certainty-equivalent maximisation:
+\begin{align*}
+\mathbb{E}\left[U(X_3^j)\mid\epsilon_2\right]
+&=-\exp\left(-\gamma\left(X_2^j+q_2^j(\mathbb{E}[S_3\mid\epsilon_2]-S_2)\right)+\frac{1}{2}\gamma^2(q_2^j)^2\sigma^2\right),\\
+q_2^{j,\star}
+&=\operatorname*{arg\,max}_{q_2^j}\left\{X_2^j+q_2^j(\mathbb{E}[S_3\mid\epsilon_2]-S_2)-\frac{1}{2}\gamma(q_2^j)^2\sigma^2\right\}\\
+&=\operatorname*{arg\,max}_{q_2^j}\left\{q_2^j(\mathbb{E}[S_3\mid\epsilon_2]-S_2)-\frac{1}{2}\gamma(q_2^j)^2\sigma^2\right\}.
+\end{align*}
+The last line drops $X_2^j$ because it is known at date $2$. The first-order condition gives
+\begin{align*}
+0&=\mathbb{E}[S_3\mid\epsilon_2]-S_2-\gamma q_2^{j,\star}\sigma^2,\\
+q_2^{j,\star}&=\frac{\mathbb{E}[S_3\mid\epsilon_2]-S_2}{\gamma\sigma^2}.
+\end{align*}
+At date $2$, the $n$ MMs, $LT_1$, and $LT_2$ are all present. Market clearing gives
+\begin{align*}
+nq_1^{MM}+q_1^{LT1}+q_1^{LT2}
+&=nq_2^{MM}+q_2^{LT1}+q_2^{LT2}\\
+&=(n+2)\frac{\mathbb{E}[S_3\mid\epsilon_2]-S_2}{\gamma\sigma^2}.
+\end{align*}
+Since the entering date-$2$ holdings sum to zero, $nq_1^{MM}+q_1^{LT1}+q_1^{LT2}=i-i=0$. Hence
+\begin{align*}
+S_2&=\mathbb{E}[S_3\mid\epsilon_2]=\mu+\epsilon_2, \qquad q_2^j=0.
+\end{align*}
+Date $2$ is therefore the natural inventory-unwind date: matching liquidity has arrived and no agent wants residual risky inventory.
+
+\par\smallskip\noindent\hlt{Equilibrium}\\
+At date $1$, $LT_2$ is absent. The $n$ MMs and $LT_1$ anticipate the efficient date-$2$ unwind, so the same CARA-normal argument gives the desired holding of each present participant:
+\begin{align*}
+q_1^{j,\star}&=\frac{\mathbb{E}[S_2]-P_1}{\gamma\sigma^2}=\frac{\mu-P_1}{\gamma\sigma^2}.
+\end{align*}
+Market clearing among $LT_1$ and the $n$ MMs is
+\begin{align*}
+nq_0^{MM}+q_0^{LT1}
+&=nq_1^{MM}+q_1^{LT1}=(n+1)\frac{\mu-P_1}{\gamma\sigma^2}.
+\end{align*}
+Using $q_0^{MM}=0$ and $q_0^{LT1}=i$ gives
+\begin{align*}
+i&=(n+1)\frac{\mu-P_1}{\gamma\sigma^2}, \qquad q_1^{j,\star}=\frac{i}{n+1}, \qquad P_1=\mu-\frac{i}{n+1}\gamma\sigma^2.
+\end{align*}
+The absolute liquidity premium, measured as the concession from efficient value, is
+\begin{align*}
+p&=\abs{\mu-P_1}=\frac{\abs{i}}{n+1}\gamma\sigma^2.
+\end{align*}
+If $i>0$, the market makers buy from $LT_1$ at the discounted bid $P_1^b=\mu-p$. If $i<0$, they sell to $LT_1$ at the premium ask $P_1^a=\mu+p$. The implied inside spread is
+\begin{align*}
+P_1^a-P_1^b&=2p=\frac{2\abs{i}}{n+1}\gamma\sigma^2.
+\end{align*}
+For $i>0$, $LT_1$ sells $\frac{n}{n+1}i$ units immediately and keeps $\frac{i}{n+1}$ units until date $2$; each market maker holds $\frac{i}{n+1}$ units. The date-$2$ arrival of $LT_2$ clears the remaining inventory at $S_2=\mu+\epsilon_2$.
+
+\par\smallskip\noindent\hlt{Interpretation}\\
+The price concession is not an adverse-selection charge. There is no informed trader in the simple model; the order imbalance is temporary and total desired trade nets to zero across dates.\\
+The concession is instead a risk-transfer price: the impatient trader replaces an uncertain future execution price with a certain immediate price, while market makers accept exposure to $\epsilon_2$ until matching liquidity arrives.
+
+\par\smallskip\noindent\hlt{Implications}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{larger imbalance}: higher $\abs{i}$ requires a larger concession because more inventory must be warehoused;
+\item \hlt{higher volatility}: higher $\sigma^2$ raises the premium because the interim inventory position is riskier;
+\item \hlt{higher risk aversion}: higher $\gamma$ raises the premium due to requiring more compensation per unit of risk;
+\item \hlt{more market makers}: higher $n$ lowers the premium as imbalance is shared across more risk-bearing capital;
+\item \hlt{free entry}: if market presence has fixed opportunity cost $c$, the long-run number of market makers adjusts until risk-adjusted spread capture just covers $c$;
+\item \hlt{transitory impact}: a sell imbalance depresses $P_1$ below $\mu$ and then reverses toward $S_2$ when matching demand arrives. Inventory-driven price pressure therefore creates negative short-run return autocorrelation;
+\item \hlt{liquidity measure}: the cost is the price of trading now versus waiting, not only the posted bid-ask spread;
+\item \hlt{market design}: lower entry, presence, hedging costs increase supply of immediacy. If market-making capacity is scarce, large orders migrate from dealer immediacy to search, block crossing, or delayed execution.
+\end{enumerate}
+
+\par\smallskip\noindent\hlt{Trading Costs}\\
+Grossman-Miller distinguishes two cost channels. A \hlt{participation cost} $c$ is fixed cost of being present as an active MM, so higher $c$ lowers equilibrium competition $n$ and raises the liquidity premium indirectly. A \hlt{per-share trading fee} $\eta$ is paid when shares trade, so it enters prices directly. At date $2$, fees cancel because remaining positions are liquidated either now or at date $3$:
+\begin{align*}
+q_2^j
+&=\frac{\mathbb{E}[S_3-\eta\mid\epsilon_2]-(S_2-\eta)}{\gamma\sigma^2},
+\qquad j\in\{MM,LT1\},\\
+q_2^{LT2}
+&=\frac{\mathbb{E}[S_3+\eta\mid\epsilon_2]-(S_2+\eta)}{\gamma\sigma^2}.
+\end{align*}
+Hence $S_2=\mathbb{E}[S_3\mid\epsilon_2]=\mu+\epsilon_2$ as before. At date $1$, for $i>0$, MMs buy from $LT_1$ and expect to sell later; their demand is reduced by the round-trip fee:
+\begin{align*}
+q_1^{LT1}
+&=\frac{\mathbb{E}[S_2-\eta]-(P_1-\eta)}{\gamma\sigma^2}
+=\frac{\mu-P_1}{\gamma\sigma^2},\\
+q_1^{MM}
+&=\frac{\mathbb{E}[S_2-\eta]-(P_1+\eta)}{\gamma\sigma^2}
+=\frac{\mu-P_1-2\eta}{\gamma\sigma^2}.
+\end{align*}
+Market clearing becomes
+\begin{align*}
+i&=nq_1^{MM}+q_1^{LT1}
+=\frac{\mu-P_1}{\gamma\sigma^2}
++n\frac{\mu-P_1-2\eta}{\gamma\sigma^2},
+\end{align*}
+so
+\begin{align*}
+P_1&=\mu-\gamma\sigma^2\frac{i}{n+1}-2\left(\frac{n}{n+1}\right)\eta,\\
+q_1^{LT1,\star}
+&=\frac{i}{n+1}+2\left(\frac{n}{n+1}\right)\frac{\eta}{\gamma\sigma^2}.
+\end{align*}
+Thus trading fees add an extra liquidity discount and reduce immediacy.\\
+$LT_1$ keeps more inventory after date $1$ than in the no-fee case. The initiating liquidity trader pays her own fee directly and pays much of the MMs' round-trip fee indirectly through a lower sale price. If $\abs{i}$ is small relative to $\eta$, the desired trade can fall into a no-trade region.
+
+\par\smallskip\noindent\hlt{Measuring Liquidity}\\
+The model can also be read as a reduced-form price-impact model. In an electronic book, $P_1$ is the average execution price of $LT_1$'s marketable sell order against posted liquidity; the initial efficient midpoint is $\mu=\mathbb{E}[S_2]$. Let the date-$1$ quantity sold by $LT_1$ be
+\begin{align*}
+Q_1^{LT1}&=i-q_1^{LT1,\star}=\frac{n}{n+1}i.
+\end{align*}
+Then the equilibrium date-$1$ price can be written as
+\begin{align*}
+P_1&=\mu+\lambda Q_1^{LT1}, \qquad
+\lambda=-\frac{\gamma\sigma^2}{n}.
+\end{align*}
+Here $\lambda$ is the price reaction to signed liquidity demand. A more liquid market has lower $\abs{\lambda}$, which comes from more MM competition $n$, lower risk aversion $\gamma$, or lower interim volatility $\sigma^2$.\\
+A second liquidity measure is the autocovariance of price changes. Introduce a date $0$ and public news $\epsilon_1$ before $LT_1$ trades, with efficient price process
+\begin{align*}
+\mu_0&=\mathbb{E}[S_3], \qquad
+\mu_1=\mathbb{E}[S_3\mid\epsilon_1], \qquad
+\mu_2=\mathbb{E}[S_3\mid\epsilon_1,\epsilon_2], \qquad
+\mu_3=S_3.
+\end{align*}
+With $S_0=\mu_0$, $S_1=\mu_1+\lambda Q_1^{LT1}$, and $S_2=\mu_2$, price changes are
+\begin{align*}
+\Delta_1&=S_1-S_0=\epsilon_1+\lambda Q_1^{LT1},\\
+\Delta_2&=S_2-S_1=\epsilon_2-\lambda Q_1^{LT1}.
+\end{align*}
+If liquidity demand is independent of news, then
+\begin{align*}
+\operatorname{Cov}[\Delta_1,\Delta_2]
+&=\operatorname{Cov}[\epsilon_1+\lambda Q_1^{LT1},\epsilon_2-\lambda Q_1^{LT1}]
+=-\lambda^2\operatorname{Var}[Q_1^{LT1}]<0.
+\end{align*}
+Negative price-change autocovariance captures temporary liquidity impact: the first price move contains order pressure, and the next move partially reverses it as price returns toward efficient value. As $\abs{\lambda}\to0$, the observed price process converges to the efficient-price martingale.
+\end{model}
+
+\begin{model} \hlt{Market Making using Limit Orders} \cite{ho_stoll_1981}\\
+Grossman-Miller treats immediacy with a single clearing price. In a LOB, the same economics appears through posted limit orders: the MM chooses how far from the midpoint to quote, trading off higher margin per fill against lower execution probability. Figure~\ref{fig:limit_order_market_making} shows the depth and fill-probability objects.
+
+\begin{center}
+\refstepcounter{figure}\label{fig:limit_order_market_making}
+\scalebox{0.86}{\input{figures/03_microstruct/limit_order_market_making.tikz}}\\
+{\small Figure \thefigure: Limit-order placement and probability of execution.}
+\end{center}
+
+\par\smallskip\noindent\hlt{Assumptions}\\
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{midpoint}: all traders agree on current value $S_t$;
+\item \hlt{orders}: the MM posts sell LO at $S_t+\delta^+$ and buy LO at $S_t-\delta^-$;
+\item \hlt{arrivals}: buy and sell MOs arrive with probabilities $p^+$ and $p^-$;
+\item \hlt{fill probability}: conditional on MO arrival, execution prob falls with quote distance, $P^\pm(\delta^\pm)=e^{-\kappa^\pm\delta^\pm}$;
+\item \hlt{frictions}: no adverse selection, inventory cost, trading cost, or strategic response from other LOs.
+\end{enumerate}
+
+\par\smallskip\noindent\hlt{Setup}\\
+The MM earns $\delta^+$ when her ask is lifted by a buy MO and $\delta^-$ when her bid is hit by a sell MO. Expected profit per posting decision is
+\begin{align*}
+\mathbb{E}\left[\Pi(\delta^+,\delta^-)\right]
+&=p^+P^+(\delta^+)\delta^+ + p^-P^-(\delta^-)\delta^-\\
+&=p^+e^{-\kappa^+\delta^+}\delta^+ + p^-e^{-\kappa^-\delta^-}\delta^-.
+\end{align*}
+
+\par\smallskip\noindent\hlt{Equilibrium}\\
+The static quoting problem separates across the ask and bid:
+\begin{align*}
+\max_{\delta^+,\delta^-}\mathbb{E}\left[\Pi(\delta^+,\delta^-)\right]
+&=\max_{\delta^+,\delta^-}\left\{p^+e^{-\kappa^+\delta^+}\delta^+ + p^-e^{-\kappa^-\delta^-}\delta^-\right\}.
+\end{align*}
+The first-order condition on each side is
+\begin{align*}
+p^\pm e^{-\kappa^\pm\delta^\pm}(1-\kappa^\pm\delta^\pm)&=0,
+\end{align*}
+so the optimal quote depths are
+\begin{align*}
+\delta^{\pm,\star}&=\frac{1}{\kappa^\pm}.
+\end{align*}
+
+\par\smallskip\noindent\hlt{Interpretation}\\
+Posting deeper earns more conditional on execution but reduces probability of execution. Under exponential depth, the optimal quote is placed at the mean depth of incoming market-order walk-up. Arrival probabilities $p^\pm$ scale expected profits, but do not change optimal depths in this static risk-neutral version.
+
+\par\smallskip\noindent\hlt{Limitations}\\
+The model isolates the price-probability trade-off, but it is deliberately thin: $P^\pm$, $p^\pm$, and other LOs are exogenous; the MM has no inventory penalty; and there is no adverse selection. More realistic quoting models add dynamic inventory, queue position, cancellation, latency, and informed-flow risk.
+\end{model}
+
 \begin{taxonomy} \hlt{Dealer Spread vs Outside Spread}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}

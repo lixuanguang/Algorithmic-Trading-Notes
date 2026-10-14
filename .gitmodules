@@ -1,0 +1,3 @@
+[submodule "guide"]
+	path = guide
+	url = https://github.com/lixuanguang/institutional_reading_list.git

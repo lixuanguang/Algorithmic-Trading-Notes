@@ -1,0 +1,945 @@
+\section{Transmission and Cross-Asset Mapping}
+
+This section services as a primer for four basic asset classes and their usage in global macro trading.
+
+\subsection{Building Blocks of Global Macro}
+
+\begin{remark} \hlt{Macro Strategy Product Groups}\\
+The four core product groups in global macro are:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Fixed Income (FI) (Policy and Growth Sensor): encodes growth expectations, inflation expectations, central bank credibility. Yield curves summarise the entire macro narrative; steepening means growth/reflation; flattening or inversion means slowdown/recession. Fixed income tells what the market thinks will happen before it happens.
+\item Foreign Exchange (FX) (Adjustment Mechanism): FX reflects relative, not absolute, macro conditions. Sensitive to rate differentials, capital flows, balance of payments, risk-on/risk-off regimes. FX absorbs and redistributes macro shocks across countries.
+\item Equities (Growth Expression): equities are long growth, long liquidity, short uncertainty. Equity indices aggregate earnings expectations, discount rates, risk appetite. Volatility (VIX) is a second-order macro signal, not just an equity signal. Equities express the confidence (or fear) embedded in the macro outlook.
+\item Commodities (Inflation and Real-Economy Link): driven by physical supply and demand, inventories, geopolitics. Highly sensitive to growth cycles, inflation shocks, currency moves (especially USD). Commodities anchor macro views in real economic constraints.
+\end{enumerate}
+These are the most liquid markets globally, which allows macro strategies to scale to large AUM while maintaining execution quality.
+\end{remark}
+
+\begin{remark} \hlt{Relationship Between Assets}\\
+These relationships are regime-dependent, not permanent laws:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Growth Shocks: rates rise, equities rally, cyclicals outperform, commodities rise. FX favours growth-linked currencies (AUD, CAD, EM FX).
+\item Recession Shocks: rates fall, curves flatten/invert, equities sell off, USD strengthens (flight to safety), commodities weaken (except gold).
+\item Inflation Shocks: nominal rates up, real rates determine equity impact. Commodities outperform. FX punishes low-credibility central banks.
+\item Liquidity Shocks: USD strengthens sharply, credit spreads widen, correlations spike toward 1, volatility explodes. Cross-currency basis blows out.
+\end{enumerate}
+A single macro thesis should have expressions across multiple asset classes, each with different risk profiles and convexity characteristics.
+\end{remark}
+
+\begin{remark} \hlt{Asset Correlation Dynamics}\\
+Asset correlations change under stress. Diversification fails when needed most, where assets that appear uncorrelated in calm periods may collapse together in crises.\\
+Macro traders profit when they anticipate correlation breakdowns and position for nonlinear regime shifts. This is why macro portfolios use convex instruments (options), size conservatively, and focus on liquidity.\\
+Traders must know what assets they are trading in aggregate. If entire portfolio has assets with high correlation to one another, they can be stopped out of all positions more easily if the market turns against them.
+\end{remark}
+
+\begin{remark} \hlt{Position Sizing Framework}\\
+Position sizing is arguably more important than knowing what to buy or sell. The first rule of investing is to preserve capital and avoid loss.\\
+Position sizing aims to adjust each position for volatility. This normalises all positions such that losses are more predictable and have the same probability of occurring:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Calculate $N$ = $20$-day exponential moving average of True Range
+\item True Range = max(High $-$ Low, High $-$ Previous Close, Previous Close $-$ Low)
+\item Use $2N$ for stop-loss calculation (two standard deviations) to avoid being stopped out by normal volatility
+\item With $2N$, there is approximately $2\%$ chance of being stopped out on any given day (vs. $16\%$ with $1N$)
+\end{enumerate}
+This methodology, developed by the Turtle Traders, allows traders to take positions in a broad range of markets while monitoring risk consistently.
+\end{remark}
+
+\begin{remark} \hlt{Risk/Reward Discipline}\\
+Given human error and transaction costs, traders can only hope to be right about $50\%$ of the time. Having good risk/reward on each trade will make or break long-term success.\\
+As a baseline, always strive for a $1$:$3$ risk-to-reward ratio or higher:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item For every trade risking $25$ basis points, expect to make at least $75$ basis points
+\item Set targets before the trade is executed to avoid biases of irrational human decision making
+\item Log reasons for each trade in a trade journal
+\item If original thesis no longer holds true, take trade off, but do not create excuses for taking trades off early
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Gap Risk}\\
+Gap risk is one of the biggest risks when sizing positions. Gap risk occurs when prices change without any trading in between (e.g., overnight, over weekends). This risk is especially acute in:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item EM currencies and assets (less liquid, more event-driven)
+\item Positions held over weekends or holidays
+\item Periods of elevated geopolitical risk
+\item Earnings/data release windows
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Risk Utilisation}\\
+Risk-taking is nonlinear. Even with $50\%$ conviction, should not run $50\%$ of risk utilisation.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Base case: set a maximum VaR limit (e.g., $5\%$ daily VaR at $95\%$ confidence)
+\item If up $5\% $ on the year, allow VaR limit to increase to $6\%$ 
+\item If down $2.5\%$ on the year, decrease VaR limit to $4\%$
+\item At the start of each new year, reset to $0\%$ return regardless of prior year performance
+\end{enumerate}
+The intention is to create steady returns while preserving capital and avoiding blow-up risk.
+\end{remark}
+
+\begin{remark} \hlt{Stress Testing}\\
+Stress testing aims to go beyond VaR to find potential worst-case scenarios:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Run historical back-test on P\&L for previous $500$ trading days ($\approx 2$ years)
+\item Sort from best to worst days; examine the average of the $5$ worst days (worst $1\%$)
+\item In periods of low volatility, also test against extreme historical events: October $1987$ crash, $1998$ LTCM/Russian default, $2008$ financial crisis, $2011$ Japan earthquake, $2015$ CNY devaluation, $2020$ COVID crash
+\end{enumerate}
+Knowing maximum loss outside of VaR helps traders understand exposure to tail events.
+\end{remark}
+
+\begin{remark} \hlt{Performance Metrics}\\
+Key metrics for evaluating macro trading performance:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Sharpe Ratio: $\frac{E[R] - R_f}{\sigma}$, risk-adjusted return; higher is better. Assumes normal distribution.
+\item Sortino Ratio: Sharpe with only downside volatility, differentiating between good and bad volatility.
+\item Maximum Drawdown: peak-to-trough decline; critical for understanding worst-case capital loss.
+\item Value at Risk (VaR): $95\%$ or $99\%$ daily VaR (expected loss exceeded on $1$ in $20$ or $100$ days).
+\end{enumerate}
+When evaluating strategies, test Sharpe ratios rather than raw returns. Break down P\&L by asset class, duration, and conviction level to identify strengths and weaknesses.
+\end{remark}
+
+\begin{remark} \hlt{Macro View Thesis}\\
+A macro view expressed in only one asset class is incomplete. A single macro thesis should have multiple expressions, each with different risk profiles:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Growth view: rates (duration), equities (beta), FX (pro-cyclical currencies), commodities (cyclicals)
+\item Inflation view: commodities (energy, agriculture), breakevens, FX (commodity currencies), TIPS
+\item Crisis/Deflation view: bonds (duration), USD/JPY/CHF (havens), volatility (VIX, swaptions), gold
+\item Policy divergence view: FX (rate differentials), yield curve spreads, relative equity indices
+\end{enumerate}
+Having multiple expressions allows for confirmation across asset classes and provides natural hedging if one leg underperforms.
+\end{remark}
+
+\subsection{Foreign Exchange in Global Macro}
+
+FX plays three special roles simultaneously:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Macro shock absorber 
+\item Macro transmission channel 
+\item Macro expression instrument
+\end{enumerate}
+
+\begin{remark} \hlt{FX Market Structure}\\
+The FX market is the world's largest and most liquid market, and operates 24 hours per day, 5.5 days per week across global financial centers (London, New York, Tokyo, Singapore, Hong Kong).\\
+Key participants include: central banks (intervention, reserve management), commercial banks (market-making, proprietary trading), corporations (hedging trade flows), asset managers (currency overlay, alpha generation), hedge funds (macro speculation, carry trades), and retail traders.\\
+The market is predominantly OTC, with spot, forwards, and swaps as the main instruments. FX futures trade on exchanges (CME) but represent a small fraction of total volume.
+\end{remark}
+
+\begin{remark} \hlt{Role of the US Dollar}\\
+Global macro is de facto USD-centric. USD is the global reserve currency, most commodities are USD-priced, global funding markets clear in USD, and cross-border leverage is USD-denominated.\\
+The USD is involved in approximately $85\%$ of all FX transactions globally. Many "local" macro trades are actually USD liquidity trades in disguise.\\
+Stress often appears first in US Dollar Index (DXY), cross-currency basis, EM FX before local assets.\\
+The DXY Index measures USD against a basket of six major currencies: EUR ($57.6\%)$, JPY ($13.6\%$), GBP ($11.9\%$), CAD ($9.1\%$), SEK ($4.2\%$), CHF ($3.6\%$). The DXY is not trade-weighted and over-represents EUR.
+\end{remark}
+
+\begin{remark} \hlt{Special Drawing Rights (SDRs)}\\
+SDRs are international reserve assets created by the IMF to supplement member countries' official reserves. The SDR basket is reviewed every five years. SDRs serve as a unit of account for IMF transactions and provide insight into official reserve diversification trends.
+\end{remark}
+
+\begin{remark} \hlt{Currency Regimes}\\
+Currency regimes matter more than models. FX does not behave uniformly. Regime dominates signal.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Free-floating: price discovery happens in FX
+\item Managed/pegged: pressure builds elsewhere such as in rates, reserves, capital controls
+\item Hard pegs/Currency boards: FX looks stable until it breaks violently
+\end{enumerate}
+FX valuation only works within regime constraints. Ignore the regime and "cheap" can stay cheap forever.
+\end{remark}
+
+\begin{remark} \hlt{Central Bank Intervention}\\
+Central banks intervene in FX markets for multiple objectives:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Defend a peg or managed float band
+\item Smooth excessive volatility
+\item Counter speculative attacks
+\item Accumulate or deploy reserves
+\end{enumerate}
+Intervention effectiveness depends on: reserve adequacy, policy credibility, coordination with monetary policy, and market liquidity conditions. Intervention against fundamental pressures typically fails. Watch for reserve depletion as a leading indicator of forced adjustment.
+\end{remark}
+
+\begin{remark} \hlt{Valuation Techniques}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Market Implied and Risk-Appetite Signals
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Equity Index Price Performance: strong local equities (vs peers) attract inflows and support currency; sharp equity underperformance foreshadows FX weakness via risk-off deleveraging and foreign selling.
+\item Credit/Sovereign Risk: widening sovereign spreads/CDS signals default/policy credibility/funding stress, weakening FX or raising devaluation risk premia. Also a regime detector for EM FX.
+\item Sentiment/Positioning: call-put skew on three-month risk reversals. Acts as a multiplier. Can create overshoots/undershoots around fair value in crowded carry or crisis episodes.
+\end{enumerate}
+\item Trade and Competitiveness Fundamentals
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Trade Balance/External Account: structurally strong trade position often supports FX; persistent deficits can make the currency reliant on financing.
+\item Trade-Weighted Index (TWI): reflects currency's effective competitiveness against trading partners; the currency basket that matters for the real economy.
+\item Economic Activity: strong activity can support FX via higher expected returns and inflows, but it can also worsen the trade balance.
+\item Export Partner Growth: mapping who buys exports and whether those buyers are expanding/contracting. Export partner growth leads exporter's FX through expected trade receipts.
+\end{enumerate}
+\item Macro Sustainability Indicators
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Debt-to-GDP: high public debt with FX liabilities or weak domestic savings can increase risk premia and currency vulnerability, as it tightens the policy constraint set (inflation vs austerity vs default).
+\item Current Account Balance: persistent deficits require capital inflows; sudden stops trigger sharp FX adjustment.
+\item FX Reserves: adequacy (months of import cover, short-term debt coverage) determines policy space.
+\end{enumerate}
+\item Long-Term Valuation Anchors
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Purchasing Power Parity (PPP): the idea that exchange rates should adjust so that identical goods cost the same in different countries. In practice, PPP convergence can take years or decades.
+\item GDP Per Capita: structural development/productivity proxy. Richer, higher productivity economies tend to sustain stronger real exchange rates over time (Balassa-Samuelson effect).
+\end{enumerate}
+\item Carry Indicators
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item OIS Differential: compares respective policy rates of two countries. Carry is the interest rate differential between two currencies.
+\item LIBOR/SOFR Differential: reflects unsecured interbank rates. Can be decomposed into risk-free rate + credit spread component. Using relative spreads gives a sense of direction; interest rate differential drives demand for a currency.
+\item Risk-Adjusted Carry: adjusts carry for volatility. Outperforms standard carry trades and is useful in cross-currency analysis:
+\begin{equation*}
+\text{Carry-to-Risk Ratio} = \frac{\text{3M Carry (Rate Differential)}}{\text{30D Realized Volatility}}
+\end{equation*}
+Within high-yielding currency pairs, one would ideally want the highest carry-to-risk ratio. Volatility and carry components are always in flux, so adjustments should be made frequently.
+\end{enumerate}
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Carry Trade Mechanics}\\
+Carry strategies are typically executed by borrowing in lower-yielding currencies and buying higher-yielding currencies. The carry trade is a crowded trade; in large risk-off markets, the strategy suffers significant losses as positions unwind simultaneously.\\
+Carry is the return earned on holding a currency, assuming the exchange rate is held constant. In practice, exchange rate moves often dominate carry returns. Historically, carry strategies exhibit positive returns on average but with significant negative skewness (small gains, occasional large losses).
+\end{remark}
+
+\begin{remark} \hlt{Carry Trade Risk Factors}\\
+Key risks to carry trades include:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Crowding Risk: carry trades are popular, leading to violent unwinds during risk-off episodes.
+\item Gap Risk: EM currencies can gap significantly on weekends or during crises, bypassing stop-losses.
+\item Regime Shifts: central bank policy changes can rapidly alter rate differentials.
+\item Correlation Breakdown: in stress, all carry currencies tend to sell off together against funding currencies.
+\item Liquidity Risk: EM FX can become illiquid precisely when exits are needed most.
+\end{enumerate}
+Finding the carry-to-risk ratio is useful, as is comparing all currency pairs on a relative basis. Measuring the standard error of the sample and finding the most attractive pairs helps in mean-reverting carry strategies.
+\end{remark}
+
+
+\subsection{Equities in Global Macro}
+
+In macro, a trader should understand equity in terms of market behaviour in the country being traded, the sectors that make up those indices, and correlation risk.
+
+\begin{remark} \hlt{Top-Down Macro Approach to Equities}\\
+Many macro traders take a top-down approach to trading equities:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Start with a global view
+\item Narrow to countries expected to outperform
+\item Select the best sectors within those countries
+\item Optionally, select best companies within sectors
+\end{enumerate}
+If the investor has a knack for knowing where the next opportunity lies, the most reward typically comes from concentrated exposure rather than diversified index holdings.
+\end{remark}
+
+\begin{remark} \hlt{Major Equity Indices by Region}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item United States: S\&P $500$, Nasdaq, DJIA, Russell $2000$, Wilshire $5000$
+\item Europe: Euro Stoxx $50$, DAX, CAC $40$, FTSE $100$, FTSE MIB, IBEX $35$, AEX
+\item Asia Ex-Japan: Shanghai Comp, Hang Seng, KOSPI, ASX $200$, NZX $50$
+\item Japan: Nikkei, Topix, JASDAQ
+\item Emerging Markets: Bovespa, NIFTY, Micex/RTS, Mexico IPC, TOP $40$/JALSH, BIST $30/100$ etc.
+\end{enumerate}
+Indices can be traded directionally or as relative value trades (long one index, short another). Different indices have different sector exposures: Bovespa is more commodity-sensitive than NIFTY; S\&P $500$ has more financial exposure than Nasdaq (technology-weighted).
+\end{remark}
+
+\begin{remark} \hlt{Index Construction Methods}\\
+Index construction methodology affects interpretation:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Price-Weighted: considers only stock price, ignores market cap. A single large stock move can dominate.
+\item Market-Cap Weighted: weighted by market capitalisation. Large-cap stocks dominate performance.
+\item Equal-Weighted: each constituent has equal weight regardless of size.
+\end{enumerate}
+Understanding weighting structure is essential for accurate interpretation of index moves.
+\end{remark}
+
+\begin{remark} \hlt{Sector Rotation Across Economic Cycles}\\
+Different sectors outperform in different economic regimes:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Recession/Contraction: Consumer Staples, Utilities, Healthcare (defensive sectors)
+\item Recovery: Financials, Consumer Discretionary, Real Estate
+\item Expansion: Industrials, Materials, Technology
+\item Slowing Growth/Late Cycle: Energy, Materials (inflation hedges)
+\end{enumerate}
+To best position an equity portfolio, it is critical to know whether the economy is in contraction, recovery, expansion, or slowing growth.
+\end{remark}
+
+\begin{remark} \hlt{Equity Derivatives Overview}\\
+Key equity derivatives for macro trading:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item ETFs: fast, cheap exposure to indices, sectors, countries, commodities, FX, FI. Trade like stocks.
+\item ADRs (American Depositary Receipts): foreign stocks listed on U.S. exchanges in USD. Subject to FX risk since underlying shares are held locally.
+\item Index Futures: liquid, leveraged exposure to equity indices.
+\item Options: provide asymmetric payoffs for hedging and directional views.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{The Volatility Index (VIX)}\\
+The VIX measures implied volatility of S\&P 500 options one month out. Key properties:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Negatively correlated with equity returns (volatility rises when equities fall)
+\item During large selloffs, VIX can move from mid-teens to 30+ in days
+\item VIX options provide asymmetric hedges for equity portfolios
+\item VIX futures typically trade in contango; during sharp selloffs, shift to backwardation
+\end{enumerate}
+Volatility is measured relative to $\sqrt{252} \approx 16$. A VIX of 16 implies approximately $1\%$ expected daily move; VIX of $24$ implies $1.5\%$ daily move $(24/16 = 1.5\%)$.\\
+V2X (Euro Stoxx), VXN (Nasdaq), VXD (DJIA), RVX (Russell 2000), GVZ (Gold), OVX (Crude Oil).
+\end{remark}
+
+\begin{remark} \hlt{Variance Swaps}\\
+Variance swaps are OTC products providing pure variance exposure. Advantages over options:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Pure volatility exposure without delta hedging
+\item Priced with realised volatility (usually lower than implied)
+\item No interest rate or dividend risk
+\end{enumerate}
+Payoff structure is convex and nonlinear. Long variance benefits disproportionately from large moves in either direction. Quoted by strike (reference realised volatility), vega notional, variance units, maturity.\\
+Variance units $= \frac{\text{Vega Notional}}{2 \times \text{Strike}}$, Payoff $= (\sigma_{\text{realised}}^2 - K^2) \times \text{Variance Units}$
+\end{remark}
+
+\begin{remark} \hlt{Dividend Swaps}\\
+An OTC or exchange-traded product that allows one to take a view on dividends of an index to be higher, or lower, than a fixed amount. 
+\end{remark}
+
+\begin{remark} \hlt{Equity Valuation Techniques for Macro}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Price-to-Book (P/B): P/B $> 2.5\times$ generally overbought; P/B $< 1.5\times$ oversold. Useful for detecting bubbles and value opportunities.
+\item Dividend Yield: dividend/price. Holder gets paid while waiting (long carry). Useful for relative value across markets.
+\item Price-to-Earnings (P/E): price per $\$1$ of earnings. Best for comparable analysis across countries, sectors, stocks. Forward P/E uses analyst EPS estimates.
+\item Free Cash Flow Yield: FCF/Price. Cash flow from operations minus capital expenditures. Graham and Dodd value investors use this as top screen.
+\item Market Cap to GDP: useful for locating potential bubbles. Above $100\%$ warrants caution; rapid rises to $150\%+$ indicate bubble conditions (Japan 1989).
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Leading Indicators for Equities}\\
+Useful macro indicators that lead equity performance:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item PMI (Purchasing Managers' Index): leading indicator scored $0$-$100$. Sharp slope changes and deviations from 50 provide strong signals. ISM below $50$ typically indicates U.S. recession.
+\item Baltic Dry Index: shipping prices for raw material dry bulk. Supply is fixed (ships take years to build), demand is inelastic. Leading indicator for raw material demand.
+\item CDX High Yield Index: CDS spread on high-yield corporates. Highly correlated with VIX; inversely related to equity prices. Rising spreads signal risk-off.
+\item Consumer Confidence: in the U.S., consumption accounts for $>70\%$ of GDP. Higher confidence leads to higher spending and GDP growth.
+\item Commodity Prices (YoY): rising commodity prices are inflationary, typically met by central bank tightening, which has bearish equity implications.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{AUD Volatility as Risk Barometer}\\
+The Australian dollar is a main risk-on currency due to Australia's commodity exports and reliance on Asian economies. AUD moves in tandem with equity prices.\\
+Three-month AUD/USD implied volatility is highly correlated with VIX and inversely correlated with S\&P $500$. In times of stress, the rate of change in AUD volatility shifts suddenly and aggressively.\\
+Using VIX and AUD volatility combined on an absolute basis smooths out error as a more useful measure.
+\end{remark}
+
+\subsection{Fixed Income in Global Macro}
+
+Fixed income is the lifeblood of the global financial system. Bank credit and debt capital markets fund governments, corporations, and consumers. Understanding fixed income is essential for macro trading because yields encode growth expectations, inflation expectations, and central bank credibility.
+
+\begin{remark} \hlt{Fixed Income Universe}\\
+The fixed income market can be decomposed into:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Money Markets: Short-term instruments (maturity $<1$ year). Includes T-bills, commercial paper, repos, Fed Funds, SOFR.
+\item Government Bonds: Sovereign debt across the curve ($2$Y, $5$Y, $10$Y, $30$Y). Risk-free rate benchmark.
+\item Inflation-Linked Bonds: TIPS in US, Linkers in UK, OATi in France. Index to CPI.
+\item Corporate Bonds: Investment grade (IG) and high yield (HY). Credit spread over risk-free rate.
+\item Municipal Bonds: State and local government debt, often tax-exempt.
+\item Mortgage-Backed Securities (MBS): Agency and non-agency. Prepayment risk.
+\item Asset-Backed Securities (ABS): Auto loans, credit cards, student loans.
+\end{enumerate}
+Fixed income is the largest of the four product groups by notional outstanding.
+\end{remark}
+
+\begin{remark} \hlt{Money Markets and Funding}\\
+Money markets allow short-term capital flow between lenders and borrowers:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Treasury Bills (T-Bills): Short-term US government obligations ($4$-week, $13$-week, $26$-week, $52$-week). Risk-free benchmark.
+\item Commercial Paper: Unsecured short-term corporate debt, typically $90$--$270$ days. Lower rates than bank borrowing.
+\item Repurchase Agreements (Repos): Sale of securities with agreement to repurchase. Critical for short-term funding and leverage.
+\item Certificates of Deposit (CDs): Bank time deposits, $30$ days to $5$ years.
+\item Banker's Acceptances: Promissory notes issued by firms to banks, typically for trade finance.
+\end{enumerate}
+Money market stress (rising repo rates, LIBOR-OIS widening) often precedes broader financial stress.
+\end{remark}
+
+\begin{remark} \hlt{Key Reference Rates}\\
+Reference rates anchor pricing across the fixed income universe:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Fed Funds Rate: Unsecured overnight lending rate between depository institutions.
+\item SOFR (Secured Overnight Financing Rate): Overnight Treasury repo rate as USD benchmark.
+\item LIBOR (Legacy): London Interbank Offered Rate. Historically the most important rate in global finance. Phased out post-$2021$ due to manipulation scandals.
+\item EONIA/EURSTR: Euro overnight rates. EURSTR replaced EONIA in $2022$.
+\item SONIA: Sterling overnight rate for GBP.
+\end{enumerate}
+The transition from LIBOR to risk-free rates (SOFR, SONIA, EURSTR) is one of the largest market structure changes in decades.
+\end{remark}
+
+\begin{remark} \hlt{Overnight Index Swaps (OIS)}\\
+OIS is a fixed-for-floating interest rate swap indexed against an overnight rate (Fed Funds effective in US, EONIA/EURSTR in Europe):
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Excellent tool to hedge or speculate on central bank action
+\item Typically maturity less than two years
+\item Customisable dates for precise central bank meeting targeting
+\item Less volatile than LIBOR, especially in periods of stress
+\end{enumerate}
+Example: If BOE rate is $0.50\%$ and December MPC OIS trades at $0.625\%$, the market prices $50\%$ chance of a $25$bp hike.
+\end{remark}
+
+\begin{remark} \hlt{LIBOR-OIS Spread}\\
+The LIBOR-OIS spread is a key gauge of funding stress:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item LIBOR is unsecured interbank lending; OIS is effectively risk-free overnight rate
+\item Spread widens during credit stress as banks demand higher compensation for counterparty risk
+\item 2008 financial crisis: LIBOR-OIS spiked as institutions stopped trusting each other
+\item European crisis: Spread widened as European banks faced USD funding stress
+\end{enumerate}
+A widening spread does not automatically indicate crisis. Serves as useful barometer for funding market pressure.
+\end{remark}
+
+\begin{remark} \hlt{Eurodollar Futures}\\
+Eurodollar deposits are USD time deposits at banks outside Fed jurisdiction. Eurodollar futures are the most heavily traded futures contracts in the world:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Contract on $3$-month LIBOR (transitioning to SOFR futures)
+\item Contract size: $\$1,000,000$ notional
+\item Price: $100 - \text{3-Month LIBOR Yield}$
+\item Tick value: $1$ basis point = $\$25$
+\item Months: March (H), June (M), September (U), December (Z)
+\item Colour codes by year: White (Y$1$), Red (Y$2$), Green (Y$3$), Blue (Y$4$), Gold (Y$5$)
+\end{enumerate}
+Eurodollar futures used to hedge LIBOR exposure, manage weighted average maturity of short-term liabilities.
+\end{remark}
+
+\begin{remark} \hlt{Interest Rate Swaps}\\
+Interest rate swaps allow exchanging one set of interest payments for another:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Fixed-for-Floating: Most common. Exchange fixed rate for floating rate (SOFR, EURSTR).
+\item Receiver: Receives fixed, pays floating. Profits if floating rates fall.
+\item Payer: Pays fixed, receives floating. Profits if floating rates rise.
+\item Swap curve driven by future rate expectations; increasingly exchange-traded post-Dodd-Frank.
+\end{enumerate}
+Interest rate swaps are the largest derivatives market by notional. Used for hedging, speculation, and transforming asset/liability profiles.
+\end{remark}
+
+\begin{remark} \hlt{Forward Rate Agreements (FRAs)}\\
+FRAs are OTC contracts to exchange a reference rate (SOFR, formerly LIBOR) for a fixed rate:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item More customisable than Eurodollar futures (pick specific dates)
+\item Notation: "$3 \times 6$" means $3$-month forward, $3$-month rate
+\item Fixing date, settle date, and maturity date are key terms
+\item Used for hedging or speculating on short-term rate movements
+\end{enumerate}
+FRAs allow precise targeting of rate exposure around central bank meetings or data releases.
+\end{remark}
+
+\begin{remark} \hlt{US Treasury Futures}\\
+Treasury futures are standardised contracts for trading various maturities:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item $2$-Year (TU): Contract size $\$200,000$, tick $\$15.625$
+\item $5$-Year (FV): Contract size $\$100,000$, tick $\$7.8125$
+\item $10$-Year (TY): Contract size $\$100,000$, tick $\$15.625$
+\item $30$-Year (US): Contract size $\$100,000$, tick $\$31.25$
+\item Ultra-Long (WN): $25$+ years, contract size $\$100,000$, tick $\$31.25$
+\end{enumerate}
+Treasury futures are physically settled (cheapest-to-deliver mechanics). Most traders roll positions before delivery. Futures curve typically in backwardation due to term premium.
+\end{remark}
+
+\begin{remark} \hlt{German Bund Futures}\\
+German government bonds (Bunds) are the European benchmark:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Schatz (DU): $1.75$--$2.25$ year maturity
+\item Bobl (OE): $4.5$--$5.5$ year maturity
+\item Bund (RX): $8.5$--$10.5$ year maturity
+\item Buxl (UB): $24$--$35$ year maturity
+\end{enumerate}
+Bunds trade as "risk-free" for the Eurozone. Spreads to Bunds (e.g., BTP-Bund spread for Italy) are key measures of peripheral sovereign risk.
+\end{remark}
+
+\begin{remark} \hlt{Yield Curve Trades}\\
+Curve trades express views on the shape of the yield curve (done DV01 neutral):
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Steepener: Long short-end, short long-end. Profits from curve steepening.
+\item Flattener: Short short-end, long long-end. Profits from curve flattening.
+\item Bull Flattener: Rates fall, long end falls more than short end.
+\item Bear Flattener: Rates rise, short end rises more than long end (often Fed hiking).
+\item Bull Steepener: Rates fall, short end falls more than long end (often Fed cutting).
+\item Bear Steepener: Rates rise, long end rises more than short end (inflation fears).
+\end{enumerate}
+The $2$s$10$s spread ($10$Y yield minus $2$Y yield) is a classic recession indicator. Inversion has preceded every US recession since $1970$.
+\end{remark}
+
+\begin{remark} \hlt{Carry and Rolldown}\\
+Fixed income positions have carry and rolldown components:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Carry: Coupon income $-$ financing cost. $+$ for steepeners, $-$ for flatteners in normal yield curve.
+\item Rolldown: Return from bond "rolling down" a positively sloped yield curve as it approaches maturity.
+\item In DV$01$-neutral trades, carry differential between legs must be accounted for.
+\item Rolldown is deterministic if curve shape unchanged; carry is known at trade inception.
+\end{enumerate}
+Total return = Price change + Carry + Rolldown. Carry and rolldown dominate in low-volatility environments.
+\end{remark}
+
+\begin{remark} \hlt{Treasury Inflation-Protected Securities (TIPS)}\\
+TIPS are US government bonds indexed to inflation (CPI-U NSA):
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Principal adjusts with CPI; coupon is fixed rate applied to adjusted principal
+\item $5$Y, $10$Y, and $30$Y maturities issued quarterly
+\item Floor at par: At maturity, receive greater of par value or inflation-adjusted principal
+\item $3$-month lag between CPI and index calculation
+\end{enumerate}
+TIPS allow investors to take views on real rates or inflation. Short-end TIPS trade like food and energy.
+\end{remark}
+
+\begin{remark} \hlt{Breakeven Inflation}\\
+Breakeven inflation rate is the implied inflation rate from TIPS:
+\begin{equation*}
+\text{Breakevens} = \text{Nominal Treasury Yield} - \text{TIPS Real Yield}
+\end{equation*}
+For example, if $10$Y Treasury yields $4.0\%$ and $10$Y TIPS yields $1.5\%$, $10$Y breakeven is $2.5\%$.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Breakevens reflect market-implied inflation expectations
+\item Can be traded directly via breakeven swaps
+\item Rising breakevens = market expects higher inflation
+\item Fed monitors breakevens for inflation expectations anchoring
+\end{enumerate}
+Negative real rates (TIPS yield $<$ 0) indicate investors accepting guaranteed loss of purchasing power for safety.
+\end{remark}
+
+\begin{remark} \hlt{Sovereign Credit Risk}\\
+Sovereign debt is issued by national governments. Key concepts:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Reference Entity: Legal name for CDS purposes (e.g., Hellenic Republic for Greece)
+\item Curve Inversion: When short-term yields exceed long-term yields, market prices default risk
+\item Credit Events: Failure to pay, restructuring, moratorium
+\item Recovery Rate: Typically assumed $40\%$ for sovereigns; historical average $55\%$ with high variance
+\end{enumerate}
+Peripheral European spreads (Italy, Spain, Portugal, Greece) to German Bunds are key risk indicators.
+\end{remark}
+
+\begin{remark} \hlt{Credit Default Swaps (CDS)}\\
+CDS provides insurance-like protection against credit events:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Protection Buyer: Pays spread (premium), receives par if credit event occurs
+\item Protection Seller: Receives spread, pays par minus recovery if credit event occurs
+\item Premium quoted as annual spread, paid quarterly (March, June, September, December)
+\item Can buy protection without owning underlying bond ("naked CDS")
+\end{enumerate}
+CDS provides asymmetric payoff: pay small premium for potentially large payout. Attractive risk/reward for tail hedging. Counterparty risk is critical.
+\end{remark}
+
+\begin{remark} \hlt{CDS Credit Events}\\
+Credit events trigger CDS settlement:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Failure to Pay: Sovereign/corporate misses interest or principal payment
+\item Restructuring: Postponement, reduction, or deferral of obligations
+\item Bankruptcy: Corporate only (sovereigns cannot file bankruptcy)
+\end{enumerate}
+For sovereigns, restructuring is not automatic trigger. Both buyer and seller have right (not obligation) to trigger CDS. Greece 2012 required ISDA determination committee ruling.
+\end{remark}
+
+\begin{remark} \hlt{Historical Sovereign Defaults}\\
+Recent sovereign defaults and restructurings:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Russia $1998$: Devaluation and default on local currency obligations, $\$73$B
+\item Argentina $2001$: Largest sovereign default at time, $\$82$B, $70\%$ haircut
+\item Uruguay $2003$: Contagion from Argentina, 5-year maturity extension
+\item Greece $2012$: PSI restructuring, largest sovereign default in history, $\$200$B+
+\item Argentina $2020$: Ninth default, $\$65$B restructured
+\end{enumerate}
+Recovery rates vary widely ($20\%$--$80\%$). "Orderly" restructurings tend to have higher recovery.
+\end{remark}
+
+\begin{remark} \hlt{Fixed Income ETFs}\\
+Fixed income ETFs provide liquid, diversified exposure:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Treasury: SHY ($1$--$3$Y), IEF ($7$--$10$Y), TLT ($20+$Y), TBT ($2$x inverse $20+$Y)
+\item TIPS: TIP (broad TIPS)
+\item Investment Grade: LQD (corporate IG), AGG (aggregate bond)
+\item High Yield: HYG, JNK (high yield corporate)
+\item Emerging Markets: EMB, PCY (EM sovereign debt)
+\item Municipals: MUB (muni bonds)
+\item MBS: MBB (mortgage-backed)
+\end{enumerate}
+ETFs provide quick and cheap exposure to markets otherwise requiring large minimums or dealer relationships.
+\end{remark}
+
+\begin{remark} \hlt{Duration and DV01}\\
+Duration measures sensitivity to interest rate changes:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Modified Duration: Approximate percentage price change for $1\%$ yield change
+\item DV01 (Dollar Value of 01): Dollar change for 1bp yield change = $\frac{\text{Duration} \times \text{Price}}{10000}$
+\item Longer maturity = higher duration = more rate sensitivity
+\item Curve trades are structured DV01-neutral to isolate curve shape from level
+\end{enumerate}
+A $10$Y bond with duration $8$ loses approximately $8\%$ if yields rise $100$bp.
+\end{remark}
+
+\begin{remark} \hlt{Convexity}\\
+Convexity measures how duration changes as yields change:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Positive convexity: Bond gains more when yields fall than it loses when yields rise (most bonds)
+\item Negative convexity: MBS, callable bonds. Gains are capped due to prepayment/call risk
+\item Convexity matters more for large yield moves
+\item Long convexity = long volatility; benefits from rate moves in either direction
+\end{enumerate}
+Convexity adjustment:
+\begin{equation*}
+\Delta P \approx -\text{Duration} \times \Delta y + \frac{1}{2} \times \text{Convexity} \times (\Delta y)^2
+\end{equation*}
+\end{remark}
+
+\begin{remark} \hlt{Curve Inversion as Recession Indicator}\\
+Yield curve inversion (short rates exceeding long rates) has predicted every US recession since 1970:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item 2s10s inversion: $10$Y yield below $2$Y yield
+\item 3m10s inversion: $10$Y yield below $3$-month T-bill
+\item Typical lead time: $6$--$18$ months before recession
+\item Mechanism: Markets expect Fed to cut rates in response to coming weakness
+\end{enumerate}
+Curve inversion is necessary but not sufficient for recession. Duration and depth of inversion also matter.
+\end{remark}
+
+\begin{remark} \hlt{Fixed Income in Different Macro Regimes}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Growth Shock (positive): Rates rise, curve steepens, credit spreads tighten
+\item Recession: Rates fall sharply, curve bull steepens then flattens, credit spreads widen
+\item Inflation Shock: Nominal rates rise, real rates may fall initially, curve bear steepens, TIPS outperform nominals
+\item Deflation/Disinflation: Nominal rates fall, breakevens collapse, duration rallies
+\item Financial Crisis: Flight to quality (Treasuries rally), credit spreads explode, funding markets seize
+\end{enumerate}
+Fixed income tells what the market thinks will happen before it happens. The curve summarises the entire macro narrative.
+\end{remark}
+
+\subsection{Commodities in Global Macro}
+
+Commodities are driven by physical supply and demand, inventories, and geopolitics. They are highly sensitive to growth cycles, inflation shocks, and currency moves (especially USD). Commodities anchor macro views in real economic constraints.
+
+\begin{remark} \hlt{Contango and Backwardation}\\
+The shape of the futures curve reveals market structure:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Contango: Near-term futures trade cheaper than further-dated contracts. Exists due to storage costs, financing costs, and opportunity cost of capital. Normal state for storable commodities like gold.
+\item Backwardation: Near-term futures trade at premium to further-dated contracts. Occurs during supply shortages or immediate demand spikes.
+\item Agricultural seasonality: Curves can exhibit both. Contango after harvest (abundant supply, storage costs), backwardation before harvest (depleted stocks, tight supply).
+\end{enumerate}
+Contango creates negative roll yield; backwardation creates positive roll yield.
+\end{remark}
+
+\begin{remark} \hlt{Commodity Indices}\\
+Major commodity indices for benchmarking and trading:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item CRB (Commodity Research Bureau) Index: $22$ commodities, broad representation of prices.
+\item S\&P GSCI: Goldman Sachs Commodity Index. Production-weighted, heavily energy-exposed ($>50\%$).
+\item Bloomberg Commodity Index (BCOM): Diversified, liquidity-weighted.
+\item ETFs: DBC (Deutsche Bank commodities, $>50\%$ energy), DBA (agriculture only, includes corn, soybeans, sugar, cattle, coffee, cocoa).
+\end{enumerate}
+Caution for ETFs: contango and roll costs can cause significant performance drag versus spot prices.
+\end{remark}
+
+\begin{remark} \hlt{Commodity Risk and Return Profile}\\
+Commodities have distinct risk characteristics:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Higher volatility than FX, equities, and fixed income
+\item Historically attractive Sharpe ratio as a relative comparison
+\item Prior to $2008$, exhibited negative correlation with equities (diversification benefit)
+\item Post-$2008$, correlations with risk assets increased significantly
+\item Supply shocks can cause extreme price moves (geopolitics, weather, production disruptions)
+\end{enumerate}
+Commodities are particularly useful as inflation hedges and for expressing views on global growth.
+\end{remark}
+
+\begin{remark} \hlt{Crude Oil Fundamentals}\\
+Oil is the most important energy commodity, accounting for $33\% $of global energy demand:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Quality measures: API gravity (higher = lighter) and sulphur content (lower = sweeter)
+\item Light sweet crude: Most desirable (WTI, Brent). Heavy sour crude least desirable (Venezuela, Mexico)
+\item Products: Gasoline (cars), kerosene (diesel, jet fuel), heating oil, LPGs
+\item Global consumption approximately 90 million barrels per day
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Major Oil Benchmarks}\\
+Key oil benchmarks and their characteristics:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item WTI (West Texas Intermediate): Light sweet crude. Trades on NYMEX (CL). Delivery at Cushing, Oklahoma. Contract: 1,000 barrels. ETF: USO.
+\item Brent Crude: North Sea light sweet crude. Trades on ICE (CO). Prices more than half of world's internationally traded crude. Delivery at Sullom Voe, Scotland.
+\item WTI-Brent Spread: Historically WTI traded at premium (higher grade), but infrastructure constraints at Cushing and Middle East supply sensitivity pushed Brent to premium.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{OPEC and Oil Supply}\\
+OPEC controls significant portion of global oil supply:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item $12$ member countries controlling $>35\%$ of global production, $73\%$ of reserves
+\item Saudi Arabia has largest spare capacity. "The Call on OPEC" typically means Saudi increases production
+\item Key NOCs: Saudi Aramco (largest company by value, 1/6 of global reserves), NIOC (Iran), PDVSA (Venezuela), INOC (Iraq), KOC (Kuwait)
+\item OPEC quota system attempts to coordinate production to stabilise prices
+\end{enumerate}
+Political risk in OPEC members is critical for oil price forecasting.
+\end{remark}
+
+\begin{remark} \hlt{Oil Chokepoints and Infrastructure}\\
+Critical infrastructure for global oil flows:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Strait of Hormuz: Most important chokepoint. $17$ million bbl/d ($20\%$ of global traded oil). Between Iran and Oman. Geopolitical flashpoint.
+\item Strait of Malacca: $14$ million bbl/d. Connects Indian and Pacific Oceans. Critical for Asian supply.
+\item Mandab Strait/Suez Canal: 3 million and 2 million bbl/d respectively. Piracy risk.
+\item Pipelines: Druzhba (Russia to Europe, 2,300 miles, 1.4 million bbl/d). Keystone (Canada to US).
+\end{enumerate}
+Supply disruption at chokepoints causes immediate price spikes, especially in Brent.
+\end{remark}
+
+\begin{remark} \hlt{Crack Spread}\\
+The crack spread measures refining margins:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Spread between crude oil input and refined product output (gasoline, heating oil)
+\item $3:2:1$ Crack Spread: $3$ barrels crude vs.\ $2$ barrels gasoline + $1$ barrel heating oil (most common)
+\item High crack spread: refiners profitable, incentive to increase production
+\item Low/negative crack spread: margins squeezed, refiners slow production
+\item Factors: Cushing supply, driving demand, refinery shutdowns, hurricanes
+\end{enumerate}
+Conversion: gasoline/heating oil in cents/gallon, crude in dollars/barrel. $1$ barrel = $42$ gallons.
+\end{remark}
+
+\begin{remark} \hlt{Natural Gas}\\
+Natural gas is the cleanest fossil fuel ($30$--$50\%$ less CO2 than gasoline/coal):
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item US and Russia account for $38\%$ of global production
+\item Shale revolution: Horizontal drilling and hydraulic fracturing transformed US from importer to exporter
+\item Flaring: Burning unwanted natural gas, common in US due to regulatory requirements
+\item LNG: Liquefied at $-260^\circ$F for transport, 600x less volume than gas state
+\item Uses: Power generation, heating, fertiliser (ammonia), transportation
+\end{enumerate}
+Natural gas futures (NG) trade on NYMEX. Contract: $10,000$ MMBtu, delivery at Henry Hub, Louisiana. Quoted in \$/MMBtu. ETF: UNG (subject to contango drag).
+\end{remark}
+
+\begin{remark} \hlt{Gold}\\
+Gold is both precious metal and monetary asset. Currency symbol: XAU.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Jewelry: $40\%+$ of demand. Investment: second largest demand driver
+\item Central banks hold $31,920$ tonnes. US largest holder ($8,134$ tonnes, $73\% $of reserves)
+\item China overtook South Africa as largest producer
+\item India largest consumer ($50\%$ used for weddings)
+\item Real rates: Gold inversely correlated with real interest rates. Negative real rates support gold.
+\end{enumerate}
+Trading: GLD ETF ($1/10$ oz per share), gold futures (GC) on COMEX ($100$ troy oz contract).
+\end{remark}
+
+\begin{remark} \hlt{Silver}\\
+Silver has both monetary and industrial properties. Currency symbol: XAG.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Highest electrical conductivity of all metals
+\item Industrial applications: $44\%$ of demand (batteries, electronics, solar panels)
+\item Jewelry/silverware: $22\%$ of demand
+\item Mexico and China account for $47\%$ of global production
+\item More volatile than gold; often trades as leveraged gold play
+\end{enumerate}
+Trading: SLV ETF ($1$ oz per share), silver futures (SI) on COMEX ($5,000$ troy oz). "Triple $9$s" ($99.9\%$ purity) is deliverable grade.
+\end{remark}
+
+\begin{remark} \hlt{Platinum}\\
+Platinum is extremely rare with concentrated supply:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item South Africa holds $80\%$ of global reserves
+\item Autocatalyst (catalytic converters): $38\%$ of demand
+\item Jewelry: $31\%$ of demand
+\item Almost twice as heavy as gold (density $21$ vs.\ $19$)
+\item Play on emerging market growth and automotive demand
+\end{enumerate}
+Platinum futures (PL) trade on COMEX ($50$ troy oz). Platinum/gold ratio is a key relative value indicator.
+\end{remark}
+
+\begin{remark} \hlt{Copper}\\
+Copper is considered a leading economic indicator:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Chile dominates production ($27\%$); China dominates consumption ($43\%$), stockpiles are closely watched
+\item Uses: Building construction ($33\%$), infrastructure ($15\%$), equipment manufacturing ($52\%$)
+\item Major input for urbanising economies, plays into EM growth story
+\item Recycled copper ("secondary copper") represents significant market share
+\end{enumerate}
+Trading: LME (LMCADS03, \$/ton, $25$ tons/contract) or NYMEX (HG, cents/lb, $25,000$ lbs/contract).
+\end{remark}
+
+\begin{remark} \hlt{Aluminium}\\
+Aluminium is the most abundant metal in Earth's crust:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item China accounts for $40\%+$ of both production and consumption
+\item Lightweight, durable, does not corrode
+\item Uses: Construction, transportation (less energy needed to move lighter vehicles), packaging
+\item One of few commodities where China is self-sufficient
+\item Energy-intensive to produce (aluminium smelters locate near cheap power)
+\end{enumerate}
+Trading: LME (LMAHDS03, \$/ton, $25$ tons/contract).
+\end{remark}
+
+\begin{remark} \hlt{Agricultural Commodities Overview}\\
+Key characteristics of agricultural trading:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Supply determined by weather, planting decisions, yields
+\item Demand relatively inelastic (food consumption stable)
+\item US is largest player in most agricultural products
+\item Best agriculture traders employ full-time meteorologists
+\item Crop calendars define sensitive periods for each commodity
+\item Planting, flowering/silking, and harvest are critical stages
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Corn}\\
+Corn is the largest cereal crop globally:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item US accounts for 35\%+ of production, $30\%+$ of consumption, largest exporter
+\item Western Corn Belt (Iowa, Illinois, Nebraska) produces $47\%$ of US corn
+\item Uses: Livestock feed, ethanol ($27\%$ of US demand, growing), food
+\item Ethanol mandate: US Energy Policy Act $2005$ requires ethanol blending, creating structural demand
+\item China demand growth: feedstock demand from $0\%$ ($2007$) to $5\%+$ of imports
+\end{enumerate}
+Trading: CBOT (C), cents/bushel, 5,000 bushels/contract. $1$ bushel = $56$ lbs.\\
+Delivery months: H, K, N, U, Z. Critical period: June--August (silking).
+\end{remark}
+
+\begin{remark} \hlt{Wheat}\\
+Wheat has been cultivated for $10,000+$ years:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item EU, China, India are largest producers; US is fourth largest but largest exporter
+\item Classifications: season (winter/spring), gluten content (hard/soft), colour (red/white/amber)
+\item Uses: Bread, flour, noodles, beer, feedstock
+\item Close substitute for corn. Prices move together
+\item Russia export bans have caused supply shocks
+\end{enumerate}
+Trading: CBOT (W), cents/bushel, $5,000$ bushels/contract. $1$ bushel = $60$ lbs.\\
+Critical period: heading stage.
+\end{remark}
+
+\begin{remark} \hlt{Soybeans}\\
+Soybeans are a critical oilseed with high protein content:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item US largest producer ($31\%$), Brazil second largest but largest exporter
+\item China largest consumer (crush) and importer ($63\%$ of global imports)
+\item Products: Soybean meal, vegetable oil, soy milk, tofu, edamame
+\item 90\%+ of soybeans are genetically engineered (lower pesticide costs)
+\item Brazil/Argentina weather critical, neighbouring countries, correlated weather risk
+\end{enumerate}
+Trading: CBOT (S), cents/bushel, 5,000 bushels/contract. 1 bushel = 60 lbs. Most vulnerable during flowering.\\
+Delivery months: F, H, K, N, Q, U, X.
+\end{remark}
+
+\begin{remark} \hlt{Cotton}\\
+Cotton is the most important textile fiber:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item China, India, US are largest producers ($65\%$ of production)
+\item China largest producer and consumer (textile industry)
+\item US third largest producer but largest exporter ($30\%$ of exports)
+\item Classifications: character (strength), grade (colour/purity), staple (fibre length)
+\item More drought-resistant than other crops
+\end{enumerate}
+Trading: ICE (CT), cents/lb, $50,00$0 lbs/contract ($\approx 104$ bales). $1$ bale = $480$ lbs.\\
+Delivery months: H, K, N, V, Z.
+\end{remark}
+
+\begin{remark} \hlt{Coffee}\\
+Coffee has distinct supply characteristics:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Two types: Arabica ($60\%$ of production, higher grade, higher altitude) and Robusta (stronger taste, more caffeine, lower altitude)
+\item Brazil largest producer/exporter ($37\%$). Vietnam second (mostly robusta)
+\item EU and US are largest importers ($46\%$ and $23\%$ respectively)
+\item Biennial cycle: Coffee trees alternate high and low yield years
+\item Tree life cycle approximately $20$ years
+\end{enumerate}
+Trading: ICE (KC), cents/lb of arabica, $37,500$ lbs/contract. Industry measures in bags ($60$ kg = $132$ lbs).\\
+Critical period: blooming (water is critical).
+\end{remark}
+
+\begin{remark} \hlt{Ending Stocks and Supply/Demand Balance}\\
+Ending stocks (inventory) are the most important driver of commodity prices:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Ending Stocks = Beginning Stocks + Production $-$ Consumption
+\item Low stocks relative to consumption (stocks-to-use ratio) = price support
+\item High stocks = price pressure
+\item USDA WASDE reports provide monthly supply/demand estimates
+\item Small changes in production or consumption can cause large price moves when stocks are tight
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Weather Risk in Agriculture}\\
+Weather is the primary supply shock driver in agriculture:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Drought during critical growth stages (flowering, silking) is most damaging
+\item Livestock cascade: high grain prices $\to$ expensive feed $\to$ early livestock slaughter $\to$ short-term meat supply up, future supply down
+\item El Ni\~{n}o/La Ni\~{n}a cycles affect global weather patterns
+\item Monitor: NOAA drought monitors, crop condition reports, weather forecasts for key growing regions
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Commodities in Different Macro Regimes}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Growth Shock: Commodity demand rises, prices increase, especially energy and industrial metals
+\item Recession: Demand destruction, prices fall (except gold as safe haven)
+\item Inflation Shock: Commodities outperform as inflation hedge; energy and agriculture lead
+\item USD Weakness: Commodity prices rise (inverse correlation with dollar)
+\item Geopolitical Crisis: Energy spikes on supply fears; gold rises on safe-haven demand
+\end{enumerate}
+Commodities are the inflation and real-economy link in the macro framework.
+\end{remark}

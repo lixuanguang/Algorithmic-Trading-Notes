@@ -1,0 +1,350 @@
+\subsection{Regulatory and Structural Evolution}
+
+\begin{principle} \hlt{Regulation as Market Design}\\
+Regulation is market design by law. Good rules support communication, performance, investor protection, competition, and access; bad rules protect incumbents or raise trading costs.
+\end{principle}
+
+\begin{taxonomy} \hlt{Market-Design Question Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{consolidation}: central book versus fragmented venues;
+\item \hlt{intermediation}: order-driven, quote-driven, brokered, or hybrid;
+\item \hlt{access}: internalisation, preferencing, linkages, and who may trade;
+\item \hlt{transparency}: order-book visibility, trade reporting, and market-data ownership;
+\item \hlt{controls}: tick sizes, price limits, halts, and listing permissions.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{process} \hlt{Welfare Evaluation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item identify feasible market structures;
+\item state the objective function and trade-offs;
+\item estimate effects on liquidity, information, volatility, and distribution;
+\item choose the rule with the best expected social welfare.
+\end{enumerate}
+\end{process}
+
+\begin{taxonomy} \hlt{Policy Objective Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{utilitarian traders}: protect the users whose needs make markets exist;
+\item \hlt{public benefits}: promote informative prices and low-cost liquidity;
+\item \hlt{profit-motivated traders}: support them only when they supply liquidity or information;
+\item \hlt{predatory activity}: discourage manipulation, bluffing, and front-running.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{marketrule} \hlt{Insider-Trading Restrictions}\\
+Rules restrict trading or tipping on material nonpublic information obtained through duty, confidence, or misappropriation. Insiders may still trade under disclosure, prearranged plans, trading windows, and approvals.
+\end{marketrule}
+
+\begin{taxonomy} \hlt{Insider-Trading Control Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{disclosure controls}: broad public release and selective-disclosure limits;
+\item \hlt{ownership reports}: public filings of insider holdings and changes in ownership;
+\item \hlt{prearranged plans}: good-faith trading plans adopted before the trader has material nonpublic information;
+\item \hlt{blackout windows}: firm-level restrictions around earnings, deals, and other sensitive events;
+\item \hlt{short-swing rules}: disgorge short-horizon gains by statutory insiders;
+\item \hlt{surveillance and audit trails}: link abnormal trading to information access and communications.
+\end{enumerate}
+The controls separate legitimate insider liquidity needs from trades that monetise privileged information.
+\end{taxonomy}
+
+\begin{process} \hlt{Insider-Trading Enforcement Logic}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item detect abnormal price, volume, option activity, or order flow before a material event;
+\item identify the public event and the set of people who knew the information beforehand;
+\item match suspicious traders to access, relationships, communications, and beneficial owners;
+\item test alternative explanations such as public analysis, hedging, or unrelated liquidity demand;
+\item pursue disgorgement, penalties, injunctions, or criminal referral when evidence supports intent.
+\end{enumerate}
+Surveillance starts from market data, but proof usually requires the information path.
+\end{process}
+
+\begin{taxonomy} \hlt{Insider-Trading Debate Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{fairness and confidence}: restrictions can make outsiders more willing to supply capital;
+\item \hlt{liquidity}: restrictions remove a class of toxic informed flow and can narrow spreads;
+\item \hlt{corporate control}: restrictions reduce incentives for managers to hide information or front-run their firms;
+\item \hlt{price efficiency}: permissive trading can move prices toward value faster;
+\item \hlt{enforcement cost}: detecting remote tippees and slow trading is expensive and imperfect;
+\item \hlt{incentives}: allowing some insider gains can resemble compensation for entrepreneurial information.
+\end{enumerate}
+The welfare question is not whether insider trading is informative, but whether the information benefit exceeds liquidity, control, confidence, and enforcement costs.
+\end{taxonomy}
+
+\begin{proposition} \hlt{Insider-Trading Policy Trade-Off}\\
+Let $L$ be the liquidity and confidence gain from restricting insider trading, $C$ the corporate-control gain, $E$ the enforcement cost, and $D$ the cost of delayed price discovery.\\
+A restriction improves market welfare when $L+C>E+D$.
+\begin{proof}
+The policy's net welfare change is the benefit from lower adverse selection and better control, $L+C$, less enforcement and information-delay costs, $E+D$.\\
+The change is positive exactly when $L+C>E+D$.
+\end{proof}
+\end{proposition}
+
+\begin{taxonomy} \hlt{Exposure-Protection Rule Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{time precedence}: protects displayed orders from later traders at the same price;
+\item \hlt{minimum price increment}: makes stepping ahead costly enough to preserve queue value;
+\item \hlt{undisplayed orders}: let traders make firm commitments without full pre-trade exposure;
+\item \hlt{audit trail}: deters broker front-running, dual-capacity abuse, and allocation manipulation;
+\item \hlt{delayed block reporting}: can protect large trades while they are being completed.
+\end{enumerate}
+These reduce exposure costs, but each also trades off public transparency, price discovery, or queue competition.
+\end{taxonomy}
+
+\begin{marketrule} \hlt{Decimalization}\\
+Decimalization reduced U.S. equity tick sizes from fractions to cents. Smaller ticks narrowed quoted spreads but reduced displayed depth and queue stability.
+\end{marketrule}
+
+\begin{marketrule} \hlt{Reg NMS}\\
+Reg NMS links U.S. equity venues through protected quotes and routing obligations. It protects displayed top-of-book prices, while depth, fees, latency, and hidden liquidity still differ across venues.
+\end{marketrule}
+
+\begin{marketrule} \hlt{MiFID and MiFID II}\\
+MiFID broke exchange monopolies by allowing trading outside historical exchanges; MiFID II tightened best-execution, transparency, and reporting duties. The combined effect was more competition, more venue types, and greater reliance on routing, reporting, and post-trade data quality.
+\end{marketrule}
+
+\begin{principle} \hlt{Best Execution After Fragmentation}\\
+Best execution is not only the best displayed price. In fragmented markets it also depends on fees, likelihood of execution, latency, hidden liquidity, venue access, order size, and the investor's horizon.
+\end{principle}
+
+\begin{mechanism} \hlt{Fragmentation}\\
+Fragmentation means the same instrument trades across multiple venues. It can lower fees and specialise execution, but splits liquidity and complicates best execution.
+\end{mechanism}
+
+\begin{proposition} \hlt{Order-Flow Externality}\\
+Let venue $i$ give trader utility $U_i=s_i-c_i+\ell(F_i)$, where $s_i$ is service value, $c_i$ is access and trading cost, $F_i$ is order flow, and $\ell$ is increasing. A technically better entrant with $s_e-c_e>s_m-c_m$ will still fail to attract a trader from incumbent $m$ when $\ell(F_m)-\ell(F_e)> (s_e-c_e)-(s_m-c_m)$.
+\begin{proof}
+The trader chooses the entrant only if $U_e>U_m$.\\
+Rearranging $s_e-c_e+\ell(F_e)>s_m-c_m+\ell(F_m)$ gives the stated threshold.
+\end{proof}
+\end{proposition}
+
+\begin{taxonomy} \hlt{Levels of Fragmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{operators}: new market operators compete with incumbents, then often merge as fixed costs bite;
+\item \hlt{venues}: one operator may run lit books, dark books, periodic auctions, and internalisation channels;
+\item \hlt{order books}: one venue may maintain several books with different access, transparency, or priority rules;
+\item \hlt{orders}: large parent orders are split through time and across compatible venues;
+\item \hlt{technology}: protocols, market data feeds, and native gateways become part of venue competition.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Structural Evolution of Fragmentation}\\
+Post-MiFID fragmentation first reduced the monopoly share of historical exchanges, then consolidated around large pan-European operators. Complexity did not disappear: liquidity was segmented into lit books, dark pools, broker crossing systems, systematic internalisers, and specialised order books.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Post-MiFID Phases}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{entry}: new MTFs competed for order flow, often with bank sponsorship or imported technology;
+\item \hlt{convergence}: successful venues moved toward pan-European offers and common functionality;
+\item \hlt{dark segmentation}: broker crossing networks, dark MTFs grew around first-hand liquidity, lower signalling;
+\item \hlt{consolidation}: fixed technology, data, and connectivity costs pushed operators toward mergers.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{caveat} \hlt{Early MiFID Failures}\\
+Turquoise and NASDAQ OMX Europe show that technology and sponsorship were not sufficient. Turquoise gained relevance only after its liquidity agreement ended and it became part of the LSE group; NASDAQ OMX's European MTF and router never reached durable scale.
+\end{caveat}
+
+\begin{caveat} \hlt{Liquidity Segmentation}\\
+Venue competition separates natural investor liquidity from opportunistic market-making liquidity. This can improve matching for specific order types, but the trader now pays for aggregation through routing logic, data, connectivity, and information leakage.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Market-Segmentation Motives}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{size}: small orders want broad exposure; blocks want controlled exposure;
+\item \hlt{information}: informed flow wants anonymity; uninformed flow wants identification and price improvement;
+\item \hlt{patience}: impatient traders buy immediacy; patient traders prefer orders with time precedence;
+\item \hlt{access}: members, floor traders, prime-brokered clients, and retail accounts do not see the same facilities;
+\item \hlt{credit and trust}: bilateral markets exclude weak counterparties or make them trade through guarantors.
+\end{enumerate}
+These differences explain why several market structures can survive for the same instrument.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Technology Fragmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{application protocols}: venue APIs and market-data formats such as ITCH, XDP, EMDI, or RWF;
+\item \hlt{network protocols}: multicast UDP, TCP, replay channels, and venue-specific recovery logic;
+\item \hlt{compression protocols}: FAST, ZLIB, or uncompressed feeds.
+\end{enumerate}
+Even when trading rules converge, access remains fragmented through protocols, feeds, and operational detail.
+\end{taxonomy}
+
+\begin{marketrule} \hlt{Transparency and Dark Trading}\\
+Pre-trade transparency reveals resting interest; post-trade transparency reveals completed transactions. Dark trading reduces information leakage, so regulators often pair it with caps, waivers, or stronger reporting.
+\end{marketrule}
+
+\begin{mechanism} \hlt{Broker Crossing Networks}\\
+Broker crossing networks internalise client flow before exposing it to lit markets.\\
+They can protect large investors from signalling, but they also raise conflict questions when broker prop flow, market-making flow, and client flow meet in the same pool.
+\end{mechanism}
+
+\begin{marketrule} \hlt{MiFID II Dark Caps}\\
+MiFID II constrained dark trading through double volume caps: a venue-level cap and an aggregate market-level cap. The intent is to preserve price formation on lit venues while still allowing limited dark execution.
+\end{marketrule}
+
+\begin{taxonomy} \hlt{MiFID Venue Statuses}\\
+European transactions may occur on regulated markets, multilateral trading facilities, systematic internalisers, or OTC channels. Regulated markets and MTFs use multilateral rule books; systematic internalisers trade bilaterally against client flow; OTC trading keeps negotiation bilateral but still faces reporting obligations.
+\end{taxonomy}
+
+\begin{marketrule} \hlt{Tick Size Reforms}\\
+Tick size rules balance price competition against queue discipline. Large ticks widen spreads but support displayed queues; small ticks narrow spreads but encourage queue jumping, cancellation, smaller displayed size.
+\end{marketrule}
+
+\begin{caveat} \hlt{Tick Size as Market Share Tool}\\
+In fragmented markets, venues can use smaller ticks to undercut incumbent quotes and attract flow. This may improve displayed prices in the short run, but can also start a race to economically meaningless price increments.
+\end{caveat}
+
+\begin{marketrule} \hlt{Sub-Penny and Tick-Size Wars}\\
+Sub-penny rules restrict displayed price improvement, but off-exchange venues can still internalise flow at tiny increments. In Europe, early post-MiFID venues used different tick tables to compete until harmonisation reduced tick-size competition.
+\end{marketrule}
+
+\begin{taxonomy} \hlt{Who Gains From Tick Changes}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{liquidity takers}: may gain from narrower spreads on small trades;
+\item \hlt{liquidity providers}: lose queue rents when stepping ahead becomes cheap;
+\item \hlt{large investors}: may face less displayed depth and higher search or slicing costs;
+\item \hlt{venues}: can gain share by offering finer price grids or specialised order types.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{principle} \hlt{Tick Policy Design}\\
+Tick tables should vary with price and liquidity, stay stable enough for adaptation, and be revised using spreads, depth, order-to-trade ratios, and standard-size execution costs.
+\end{principle}
+
+\begin{caveat} \hlt{Cross-Market Precedence Failure}\\
+Time precedence protects a displayed order only inside the venue that enforces it.\\
+In fragmented markets, quote matchers can bypass an older queue by trading elsewhere unless tick, routing, and trade-through rules restore economic precedence across venues.
+\end{caveat}
+
+\begin{marketrule} \hlt{Circuit Breakers and Structural Controls}\\
+Halts, limit moves, short-sale constraints, margin rules, and position limits do not remove volatility. They change when and how traders express demand, supply, and leverage.
+\end{marketrule}
+
+\begin{taxonomy} \hlt{Circuit Breaker Scope}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{local}: halt one instrument or one venue;
+\item \hlt{related-instrument}: halt derivatives, ETFs, or baskets tied to the halted instrument;
+\item \hlt{market-wide}: halt a broad market after index-level stress;
+\item \hlt{dynamic bands}: reject or pause trades outside a price corridor;
+\item \hlt{static thresholds}: trigger from a fixed reference price or previous close.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Extreme-Volatility Control Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{trading halts}: stop trading until information, order imbalance, or system stress is resolved;
+\item \hlt{price limits}: permit trading only inside a daily or intraday price band;
+\item \hlt{transaction taxes}: raise the cost of trading, especially high-turnover strategies;
+\item \hlt{margin and position limits}: cap leverage and forced-loss exposure;
+\item \hlt{collars}: restrict specific order types or program trades under defined market moves.
+\end{enumerate}
+The same rule can damp transitory volatility while delaying fundamental repricing.
+\end{taxonomy}
+
+\begin{principle} \hlt{Circuit Breaker Design}\\
+Circuit breakers should stop disorderly liquidity demand, not ordinary price discovery. Useful triggers combine price movement with liquidity, volatility, correlation, or related-instrument stress.
+\end{principle}
+
+\begin{proposition} \hlt{Halt Value Depends on Volatility Source}\\
+A halt improves price quality only if the expected reduction in transitory noise and operational stress exceeds the cost of delayed fundamental price discovery and pent-up order flow.
+\begin{proof}
+Let benefit $B$ be the avoided transitory trading error and system overload. Let cost $C$ be stale prices, delayed hedging, and accumulated imbalance.\\
+The halt improves expected price quality exactly when $B>C$.
+\end{proof}
+\end{proposition}
+
+\begin{caveat} \hlt{Gravitational Effect}\\
+If traders expect a halt or limit to prevent later execution, they may submit orders earlier. The rule can therefore pull liquidity demand forward and increase volatility near the trigger.
+\end{caveat}
+
+\begin{caveat} \hlt{Propagation Problem}\\
+Halting one instrument can push pressure into substitutes. If ETFs, futures, options, or highly correlated names remain open, the halt may move price discovery elsewhere instead of calming it.
+\end{caveat}
+
+\begin{mechanism} \hlt{Price Limits and Margin Waterfall}\\
+Price limits can slow default losses by forcing losing traders to post margin over several sessions instead of one jump. They also delay liquidation, so unresolved losses and pent-up orders may reappear when trading resumes.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Trading-Restriction Incidence}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{informed traders}: restrictions slow incorporation of value-relevant information;
+\item \hlt{dealers}: higher costs reduce supplied immediacy and widen spreads;
+\item \hlt{order anticipators}: restrictions may reduce front-running and forced-flow extraction;
+\item \hlt{bluffers}: higher manipulation cost can reduce transitory volatility;
+\item \hlt{utilitarian traders}: hedgers, investors, and borrowers may lose useful risk-transfer access;
+\item \hlt{gamblers}: discouraging stale-information trading can reduce noise.
+\end{enumerate}
+Good policy discriminates by harmful behaviour, not by trading frequency alone.
+\end{taxonomy}
+
+\begin{marketrule} \hlt{Post-Flash-Crash Controls}\\
+After the 2010 Flash Crash, U.S. market structure moved toward single-stock pauses, limit-up/limit-down bands, consolidated audit trail reporting, stub-quote restrictions, and tighter controls on naked market access.
+\end{marketrule}
+
+\begin{caveat} \hlt{Stub Quotes}\\
+Stub quotes satisfy a formal two-sided quoting duty at prices far from the market. They are not real liquidity; executions against them reveal missing protection in the trading mechanism.
+\end{caveat}
+
+\begin{principle} \hlt{Consolidated Tape as Resilience}\\
+Helps fragmented markets retain a shared post-trade reference. Without it, stress or outages can leave participants unsure whether price discovery is happening in one market or several disconnected ones.
+\end{principle}
+
+\begin{taxonomy} \hlt{Regulatory Institutions}\\
+Market oversight is shared across:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item governmental regulators, such as securities and futures commissions;
+\item self-regulatory organisations, such as exchanges, clearinghouses, and trader associations;
+\item private standard setters, such as accounting, performance-reporting, and professional bodies;
+\item international organisations, such as IOSCO and the World Federation of Exchanges.
+\end{enumerate}
+This division creates expertise, jurisdictional overlap, and regulatory competition.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Regulatory Political-Economy Risks}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{regulatory risk}: officials adopt visible rules after crises because inaction is blamed more than costly action;
+\item \hlt{regulatory capture}: rules favour incumbents over diffuse market users;
+\item \hlt{measurement risk}: policy is adopted before transitory and fundamental volatility can be cleanly separated.
+\end{enumerate}
+Post-crash rules should therefore be judged by mechanism, not only by public reassurance.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Unintended Consequences}\\
+Rules change incentives. Taxes may move liquidity abroad, bans may move risk into substitutes, protected quotes may increase routing complexity, and exchange rules may protect incumbents.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Regulatory-Service Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{private services}: connectivity, routing, order management, clearing access, account tools paid by users;
+\item \hlt{public services}: surveillance, audit trails, price continuity, disclosure, and manipulation controls.
+\end{enumerate}
+Competition supplies private services readily.\\
+Public services usually need exchange rules, regulation, or industry coordination.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Competition to Merger}\\
+Opening trading to competition first produces innovative venues and lower explicit costs. Once practices converge, scale becomes decisive: mergers reduce fixed technology costs, expand connectivity, and preserve distinct order books under larger operating groups.
+\end{mechanism}
+
+\begin{practitionernote} \hlt{Electronification Beyond Equities}\\
+Electronification does not imply one architecture. Equities move to lit books and dark pools; fixed income and derivatives retain RFQ, dealer networks, and central clearing because contracts and counterparty risks differ.
+\end{practitionernote}

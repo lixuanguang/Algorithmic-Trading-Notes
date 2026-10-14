@@ -1,0 +1,31 @@
+\subsection{Crypto Market Microstructure}
+
+\begin{principle} \hlt{Crypto Liquidity Is Exchange-Fragmented}\\
+Crypto trades across many centralised and decentralised venues with different custody, margin, liquidation, and fee rules. There is no universal consolidated tape, so fair value and best execution are venue-dependent.
+\end{principle}
+
+\begin{taxonomy} \hlt{Crypto Instrument Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{spot}: direct token exchange with custody and transfer risk;
+\item \hlt{perpetual futures}: leveraged swaps kept near spot through funding;
+\item \hlt{dated futures}: basis trades tied to expiry and collateral terms;
+\item \hlt{options}: volatility exposure concentrated in fewer venues and strikes;
+\item \hlt{on-chain pools}: automated market makers with inventory curves and gas costs.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Perpetual Funding}\\
+Funding is the periodic payment that links perpetual futures to spot. Positive funding means longs pay shorts; negative funding means shorts pay longs. It is both a carry term and a crowding signal.
+\end{definition}
+
+\begin{taxonomy} \hlt{Crypto Microstructure Risk Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{venue risk}: outage, withdrawal halt, auto-deleveraging, or insolvency;
+\item \hlt{liquidation risk}: forced trades from leveraged accounts;
+\item \hlt{stablecoin risk}: collateral, redemption, and depeg exposure;
+\item \hlt{bridge and settlement risk}: chain congestion, reorgs, and transfer delay;
+\item \hlt{fragmentation}: basis and price gaps across venues when capital cannot move quickly.
+\end{enumerate}
+\end{taxonomy}

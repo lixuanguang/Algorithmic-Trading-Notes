@@ -1,0 +1,115 @@
+\subsection{Microstructure Data Engineering}
+
+\begin{taxonomy} \hlt{Market-Data Depth Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{L1}: best bid, best ask, sizes at the touch, and last trade;
+\item \hlt{L2}: visible depth by price level, usually aggregated by side and venue;
+\item \hlt{L3}: order-level messages, allowing queue reconstruction and cancellation analysis;
+\item \hlt{trades}: prints with price, size, time, venue, and often trade condition codes.
+\end{enumerate}
+The empirical question should choose the shallowest feed that identifies the event cleanly.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Trading-Message Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{order entry}: new, cancel, replace, reject, and execution-report messages;
+\item \hlt{market data}: public trades, quotes, status, and depth updates;
+\item \hlt{drop copy}: private execution and routing records for audit and reconciliation;
+\item \hlt{clearing feed}: allocations, positions, margin, fees, and settlement status.
+\end{enumerate}
+FIX standardises much of order-entry layer. Venues still differ in native gateways, tags, throttles, recovery rules.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Ticker Is Not an Instrument Key}\\
+Ticker symbols are display mnemonics. Robust microstructure data keys need venue, currency, instrument type, expiry, strike, option right, corporate-action history, and identifier validity dates.
+\end{caveat}
+
+\begin{definition} \hlt{Microstructure Proportion}\\
+A microstructure proportion is the share of events satisfying a binary condition: trade at the bid, execution on a venue, hidden-liquidity fill, HFT-tagged message, or cancellation before queue execution.
+\end{definition}
+
+\begin{model} \hlt{Bernoulli Proportion Estimator}\\
+For independent indicators $X_1,\ldots,X_n\in\{0,1\}$ with success probability $p$,\\
+$\hat{p}=\frac{1}{n}\sum\limits_{\ell=1}^{n}X_\ell$, $\mathbb{E}[\hat{p}]=p$, $\mathrm{Var}(\hat{p})=\frac{p(1-p)}{n}$. The usual large-sample interval is $\hat{p}\pm z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$.\\
+Here $X_\ell$ is the indicator for event $\ell$, $n$ is the number of observations, $p$ is the true success probability, $\hat{p}$ is the sample proportion, $\alpha$ is the error probability, and $z_{1-\alpha/2}$ is the corresponding standard-normal quantile.\\
+For a 95\% interval, $z_{1-\alpha/2}\approx1.96$.
+\end{model}
+
+\begin{caveat} \hlt{Normal Approximation Boundary}\\
+The normal interval is fragile when the sample is small or the estimated proportion is close to zero or one. A practical check is $n\hat{p}>5$ and $n(1-\hat{p})>5$; otherwise use an exact or adjusted binomial interval.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Sampling Unit Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{trade count}: estimates the probability that the next print has a property;
+\item \hlt{traded value}: estimates where economic turnover is concentrated;
+\item \hlt{message count}: estimates quoting, cancellation, or latency behaviour;
+\item \hlt{time bucket}: estimates realised activity inside a comparable clock segment;
+\item \hlt{security bucket}: estimates whether the result is driven by large caps, small caps, sectors, or venues.
+\end{enumerate}
+Changing the sampling unit changes the estimand, even when the same symbol $\hat{p}$ is used.
+\end{taxonomy}
+
+\begin{model} \hlt{Simple Linear Regression Baseline}\\
+For observations $(x_i,y_i)$, a simple linear regression writes $y_i=a_0+a_1x_i+\epsilon_i$, $1\leq i\leq n$.\\
+Here $y_i$ is the dependent variable, $x_i$ is the explanatory variable, $a_0$ is the intercept, $a_1$ is the slope, $\epsilon_i$ is the residual, and $n$ is the sample size.\\
+Ordinary least squares estimates $\hat{a}_1= \left( \sum\limits_i(x_i-\bar{x})(y_i-\bar{y}) \right) / \left( \sum\limits_i(x_i-\bar{x})^2 \right)$, $\hat{a}_0=\bar{y}-\hat{a}_1\bar{x}$. Here $\bar{x}$ and $\bar{y}$ are sample means, and $\hat{a}_0,\hat{a}_1$ are the estimated intercept and slope.
+\end{model}
+
+\begin{definition} \hlt{Regression Fit Quality}\\
+For fitted values $\hat{y}_i$ and residuals $\hat{\epsilon}_i=y_i-\hat{y}_i$, $R^2=1-\frac{\sum\limits_i\hat{\epsilon}_i^2}{\sum\limits_i(y_i-\bar{y})^2}$.\\
+Here $\hat{y}_i$ is the fitted value, $\hat{\epsilon}_i$ is the residual, and $R^2$ is explained variability relative to total variability. It measures fit, not causality or trading usefulness.
+\end{definition}
+
+\begin{model} \hlt{Mean Excess-Return Test}\\
+For excess observations $x_1,\ldots,x_n$, sample mean $\bar{x}$, and sample standard deviation $s_x$, the statistic is $t=\frac{\bar{x}}{s_x/\sqrt{n}}$.\\
+It asks whether realised average excess performance is large relative to the noise in the same sample. In trading data, the hard part is defining $x_i$ so it is comparable, independent enough, and not selected after the fact.
+\end{model}
+
+\begin{proposition} \hlt{Power Is a Signal-to-Noise Problem}\\
+For independent observations with true mean $\mu$ and standard deviation $\sigma$, the expected $t$-statistic is approximately $\mu\sqrt{n}/\sigma$. Detecting a small edge therefore requires $n$ of order $(\sigma/\mu)^2$.
+\begin{proof}
+The standard error of the sample mean is $\sigma/\sqrt{n}$.\\
+Dividing the true mean by this standard error gives the signal-to-noise ratio $\mu\sqrt{n}/\sigma$.
+\end{proof}
+\end{proposition}
+
+\begin{caveat} \hlt{More Ticks Are Not More History}\\
+Sampling more frequently can estimate intraday mechanics more accurately, but does not create new independent market regimes. Serial correlation, order splitting, common shocks, and stale prices reduce effective sample size.
+\end{caveat}
+
+\begin{caveat} \hlt{Regression Is an Empirical Approximation}\\
+Linearity is often a local summary for spread, volatility, turnover, and impact relations. Check residuals, non-stationarity, heteroskedasticity, and whether a log or event-time transformation gives a more stable relation.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Performance-Inference Bias Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{survivorship}: failed strategies, funds, venues, or symbols disappear from the dataset;
+\item \hlt{selection}: the sample is chosen because it already looked good;
+\item \hlt{multiple testing}: the best result among many trials is treated as a single unbiased test;
+\item \hlt{look-ahead}: timestamps, corporate actions, or benchmark constituents use future information;
+\item \hlt{fillability}: simulated fills assume liquidity that was not actually reachable.
+\end{enumerate}
+Most backtest errors are sampling errors before they are modelling errors.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Regression to the Mean}\\
+Selecting the best recent performer raises the starting estimate. If the original outperformance mixed skill and luck, subsequent performance usually falls toward the population mean even when the strategy has not changed.
+\end{caveat}
+
+\begin{caveat} \hlt{Distributional Shape Matters}\\
+Fat tails, asymmetric payoff profiles, return smoothing, rare devaluations, and fraud-like reporting can make normal-based tests overconfident. Inspect drawdowns, skew, jump exposure, stale marks, and the economic source of returns before trusting a high $t$-statistic.
+\end{caveat}
+
+\begin{caveat} \hlt{Averaging Effect}\\
+An average intraday profile is not a typical realised path. Averaging volatility, volume, or spread across days can hide event days, close auctions, and isolated liquidity shocks.
+\end{caveat}
+
+\begin{model} \hlt{Average of Regressions vs Regression of Averages}\\
+For an index $I_t=\sum_{k=1}^{N}w_kS_t^k$, spreads aggregate linearly as $\psi^I=\sum_{k=1}^{N}w_k\psi^k$, but volatility generally does not satisfy $\sigma^I=\sum_{k=1}^{N}w_k\sigma^k$. Here $w_k$ is the weight of stock $k$, $S_t^k$ its price, $\psi^k$ its spread, and $\sigma^k$ its volatility.\\
+Regression coefficients estimated on index quantities therefore need not equal weighted averages of single-stock regression coefficients.
+\end{model}

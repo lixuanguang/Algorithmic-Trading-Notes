@@ -1,0 +1,134 @@
+\subsection{Hidden Liquidity and Dark Trading}
+
+\begin{definition} \hlt{Dark Pool}\\
+A dark pool is a trading venue where available liquidity is not displayed before execution. It is mainly used to reduce signalling, market impact, and exposure to opportunistic short-horizon traders.
+\end{definition}
+
+\begin{principle} \hlt{Reference Price Trading}\\
+Dark pools usually do not form prices independently. Equity dark trades often execute at the midpoint or another reference price from a reliable lit market, so dark liquidity depends on lit price formation.
+\end{principle}
+
+\begin{taxonomy} \hlt{Crossing Network Rule Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{crossing price}: midpoint, primary close, auction price, VWAP, or another derived reference;
+\item \hlt{crossing schedule}: continuous, periodic, after-hours, or event-triggered;
+\item \hlt{allocation}: time priority, pro-rata, minimum quantity, or size preference;
+\item \hlt{confidentiality}: displayed, indicated, anonymous, or fully dark before execution.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{principle} \hlt{Price Ownership Problem}\\
+Reference-price crosses use prices made elsewhere. The dispute is whether dark venues free-ride on lit price discovery or simply cross at a public benchmark.
+\end{principle}
+
+\begin{taxonomy} \hlt{Dark Liquidity Pools}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{crossing networks}: match buy and sell orders, often at the primary midpoint;
+\item \hlt{internalisation pools}: brokers cross client flow or trade against broker inventory;
+\item \hlt{electronic market-makers}: operators or selected liquidity providers accept or reject incoming flow;
+\item \hlt{exchange dark books}: hidden order types inside regulated venues;
+\item \hlt{dark aggregators}: route one order across several dark pools;
+\item \hlt{block pools}: focus on large institutional orders and natural liquidity.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Integrated vs Midpoint Books}\\
+Large hidden orders may interact with lit and hidden liquidity in integrated books. Smaller dark orders are typically crossed at the midpoint with basic limit, MAQ, and IOC controls.
+\end{mechanism}
+
+\begin{mechanism} \hlt{Reserve and Iceberg Display}\\
+A reserve order displays $d<q$ and refreshes after the displayed slice trades. It hides total size, but repeated refreshes can reveal the parent and may reset priority.
+\end{mechanism}
+
+\begin{caveat} \hlt{Discovering Hidden Size}\\
+Hidden size is learned by trading into it, not by observing the public queue. Large IOC or minimum-quantity probes can reveal reserve liquidity, so display instructions reduce but do not remove information leakage.
+\end{caveat}
+
+\begin{caveat} \hlt{Dark Pools and Price Discovery}\\
+Dark pools can reduce market impact, but they rely on lit quotes for reference prices. If too much flow moves dark, public price discovery may weaken; if dark flow is selective and low-impact, lit market quality can improve.
+\end{caveat}
+
+\begin{caveat} \hlt{Derivative Pricing Risks}\\
+Derived prices can be stale or manipulable: stale prices select informed flow; manipulable benchmarks invite small lit trades before a larger cross.
+\end{caveat}
+
+\begin{empiricalfinding} \hlt{Dark Activity Drivers}\\
+Dark activity is usually concentrated in liquid stocks, high-volume days, volatile periods, and high-spread names. It tends to be lower when order imbalances are large relative to volume.
+\end{empiricalfinding}
+
+\begin{mechanism} \hlt{Why Investors Use Dark Pools}\\
+The main incentives are secrecy and price improvement. A midpoint execution lets a liquidity taker avoid paying the full spread while hiding the order from traders who might infer and trade against the parent order.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Block Exposure-Control Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{sunshine trading}: announce identity, intention, and full size to invite natural liquidity;
+\item \hlt{upstairs negotiation}: expose the block selectively through trusted brokers or dealers;
+\item \hlt{crossing and dark pools}: seek natural contra flow without displayed pre-trade interest;
+\item \hlt{slicing and reserve display}: trade through normal venues while hiding the parent order.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Order Exposure Decision Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{search}: actively look for the other side or wait for it to arrive;
+\item \hlt{display}: show full interest, partial interest, indications, or nothing;
+\item \hlt{slicing}: expose the parent all at once or break it across time;
+\item \hlt{broker concentration}: use one broker for control or many brokers for concealment;
+\item \hlt{venue choice}: trade in one pool, many lit venues, dark venues, or upstairs.
+\end{enumerate}
+Large-order execution is mostly the art of exposing enough information to find liquidity without giving away a free trading option.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Exposure Benefit-Cost Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{benefit}: exposed interest attracts latent contra-side traders and lowers search cost;
+\item \hlt{motive leakage}: others infer why the trader wants to trade;
+\item \hlt{impact leakage}: others infer future price pressure from the size and urgency;
+\item \hlt{option leakage}: quote matchers and anticipators trade before the parent can complete.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Parasitic and Defensive Liquidity Suppliers}\\
+Parasitic traders use exposed order information to trade ahead, quote match, withdraw liquidity, or otherwise profit at the exposed trader's expense. Defensive liquidity suppliers use the same information to avoid being price-discriminated against by informed or urgent traders.
+\end{definition}
+
+\begin{caveat} \hlt{Sunshine Trading Credibility}\\
+Sunshine trading works only when the initiator is credibly uninformed and honest about size. Otherwise the announcement gives order anticipators a free option to trade ahead, quote-match, or withdraw liquidity.
+\end{caveat}
+
+\begin{mechanism} \hlt{Block Hanging Over the Market}\\
+Once a large parent order is known, three reactions matter: front runners trade on the same side before the block, same-side traders accelerate their own trades, and opposite-side traders delay to capture price impact. All three make execution more expensive for the initiator.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Exposure Defence Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{evasive}: use anonymity, selective disclosure, dark pools, reserve orders, and broker discretion;
+\item \hlt{deceptive}: create noisy signals about side, size, completion, or venue interest;
+\item \hlt{offensive}: use stings or controlled exposure to identify and punish predatory traders.
+\end{enumerate}
+Evasive methods are ordinary execution tools.\\
+Deceptive and offensive methods carry legal, compliance, and relationship risk.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Dark Liquidity Is Conditional}\\
+Dark liquidity is hard to estimate: misses are often invisible, and fills can still be adversely selected.
+\end{caveat}
+
+\begin{caveat} \hlt{Toxic Liquidity and Gaming}\\
+Dark pools can be gamed through probing, leakage, and adverse selection. Protections include minimum sizes, access controls, and filtering toxic flow.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Bilateral vs Multilateral Liquidity}\\
+Multilateral books let many participants provide liquidity under common rules. Bilateral trading preserves selection and relationship control, which can help avoid toxic counterparties but may reduce open price discovery.
+\end{taxonomy}
+
+\begin{caveat} \hlt{Internal Crossing Agency Problem}\\
+Internal crossing can give clients low-impact fills and save commissions, but the broker controls who sees the order and who receives the match. The main risks are selective exposure, conflicted allocation, and missed price improvement from external liquidity.
+\end{caveat}

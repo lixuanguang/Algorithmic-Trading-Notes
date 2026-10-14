@@ -1,0 +1,29 @@
+\subsection{Order Flow Imbalance}
+
+\begin{definition} \hlt{Order Flow Imbalance}\\
+Order flow imbalance measures the net pressure from buyer-initiated and seller-initiated activity over a chosen horizon. It is useful because short-horizon prices often respond more to signed pressure than to unsigned volume.
+\end{definition}
+
+\begin{model} \hlt{Signed-Trade Imbalance}\\
+For trade sign $\epsilon_i\in\{-1,+1\}$ and size $q_i$, trade imbalance over window $W$ is $OFI_W=\sum\limits_{i\in W}\epsilon_i q_i$.\\
+Normalise by total volume, ADV, or displayed depth when comparing symbols or regimes.
+\end{model}
+
+\begin{model} \hlt{Queue Imbalance}\\
+At the best quotes, queue imbalance is $QI_t=\frac{B_t-A_t}{B_t+A_t}$, where $B_t$ is displayed bid size and $A_t$ is displayed ask size. Positive imbalance means more displayed demand at the bid than supply at the ask.
+\end{model}
+
+\begin{taxonomy} \hlt{Imbalance Feature Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{trade imbalance}: signed executed volume;
+\item \hlt{quote imbalance}: size difference at the best bid and ask;
+\item \hlt{multi-level imbalance}: weighted depth across several price levels;
+\item \hlt{event imbalance}: net add, cancel, and execute messages at each queue;
+\item \hlt{cross-venue imbalance}: pressure aggregated across fragmented books.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{caveat} \hlt{Imbalance Is Horizon-Dependent}\\
+Queue imbalance can predict the next quote move but fail over longer horizons once hidden liquidity, replenishment, and informed trading enter. Always bind the feature to a forecast horizon.
+\end{caveat}

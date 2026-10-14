@@ -1,10 +1,13 @@
 .DS_Store
 
-# PDF files (except trading.pdf)
+# PDFs are build outputs or local copies; only the compiled compendium is kept
 *.pdf
-!trading.pdf
+!compendium/compendium.pdf
 
-# LaTeX intermediate and output files
+# Local copies of sources, never committed
+reading materials/
+
+# LaTeX intermediate files
 *.aux
 *.bbl
 *.blg
@@ -38,6 +41,3 @@
 *.run.xml
 *.thm
 *.tdo
-*.aux
-*.log
-*.out

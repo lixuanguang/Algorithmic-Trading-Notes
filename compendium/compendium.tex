@@ -1,0 +1,40 @@
+% compendium/compendium.tex: compile inside compendium/ with  latexmk -pdf compendium.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{preamble}
+\input{house}
+\pagestyle{plain}
+
+\title{Algorithmic Trading}
+\author{Arthur Li}
+
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+\input{front/notation}
+\InputIfFileExists{front/glossary}{}{}
+\input{front/preface}
+
+\mainmatter
+% One chapter per section of the learning guide, in the guide's order; a chapter
+% appears once <section-key>/section.tex exists.
+\qfsections{common-toolkit, empirical-causal-research, research-engineering-validation,
+  ml-alternative-data, rates-credit-mortgages, government-bond-markets,
+  corporate-credit-capital, securitised-structured-credit, systematic-equities,
+  volatility-options, volatility-trading-premia, multi-asset-systematic-macro,
+  currency-markets, international-equity-markets, global-regional-markets,
+  portfolio-construction-risk, portfolio-risk-financing, execution-market-making,
+  execution-trading-costs, energy-commodities, commodity-spot-markets,
+  physical-commodity-markets, commodity-investing-premia, oil-shocks-macro,
+  power-gas-environmental, environmental-markets, private-capital-allocator,
+  real-asset-investor, insurance-climate-risk, digital-assets-prediction-markets,
+  crypto-spot-markets, onchain-protocols, tokenised-fractional-assets,
+  crypto-market-making, crypto-trading-strategies, event-contracts-prediction-markets,
+  event-contract-venues, event-contract-trading}
+\input{appendix/section}
+
+\backmatter
+\chapter{Sources outside the catalogue}
+\input{front/sources}
+\end{document}

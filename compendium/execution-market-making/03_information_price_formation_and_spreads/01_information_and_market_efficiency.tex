@@ -1,0 +1,60 @@
+\subsection{Information and Market Efficiency}
+
+\begin{definition} \hlt{Fundamental Value and Price Noise}\\
+The \hlt{fundamental value} $V_t$ is the value implied by all payoff-relevant information. The \hlt{market value} $P_t$ is the tradable price, and $\epsilon_t=P_t-V_t$ is price noise.
+\end{definition}
+
+\begin{taxonomy} \hlt{Information Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{public}: broadly available news, filings, trades, quotes, and macro data;
+\item \hlt{private}: costly or restricted information held by a subset of traders;
+\item \hlt{stale}: information already incorporated into prices.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Material Nonpublic Information}\\
+Material nonpublic information is value-relevant information that is not broadly available to the market. The legal test is jurisdiction-specific; the microstructure test is whether the information changes $V_t$, who knows it, and whether price has already incorporated it.
+\end{definition}
+
+\begin{taxonomy} \hlt{Inside-Information Holder Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{corporate insider}: officer, director, employee, or controlling holder with firm information;
+\item \hlt{temporary insider}: lawyer, banker, auditor, printer, consultant, exchange staff, or government employee receiving confidential information through a duty;
+\item \hlt{tipper-tippee chain}: information passes through relationship, benefit, or confidence channels before trade;
+\item \hlt{misappropriator}: trader owes the duty to the information source rather than to the traded issuer;
+\item \hlt{skilled analyst}: trader reaches a private conclusion from public data and independent research.
+\end{enumerate}
+The last category can be economically informed without using inside information. For alpha research, source provenance matters as much as forecast accuracy.
+\end{taxonomy}
+
+\begin{principle} \hlt{Signal Tradability Requires Permission}\\
+A signal is not tradable merely because it predicts returns. Data provenance, confidentiality duties, firm restricted lists, compliance approvals, and execution capacity determine whether a signal may be used.
+\end{principle}
+
+\begin{taxonomy} \hlt{Market Efficiency Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{weak-form}: prices reflect past prices and volumes;
+\item \hlt{semi-strong}: prices reflect public information;
+\item \hlt{strong-form}: prices reflect public and private information;
+\item \hlt{economic}: prices reflect information that can be acquired and traded on profitably after costs.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{proposition} \hlt{Forecast Aggregation Reduces Idiosyncratic Error}\\
+Let informed trader $i$ estimate $f_i=V+\epsilon_i$, where $\mathbb{E}[\epsilon_i]=0$ and $\epsilon_i$ are independent with common variance $\sigma^2$. If price is the average forecast $P_N=\frac{1}{N}\sum_{i=1}^N f_i$, then $\mathbb{E}[P_N]=V$ and $\operatorname{Var}(P_N-V)=\sigma^2/N$.
+\begin{proof}
+Linearity gives $\mathbb{E}[P_N]=V$.\\
+Since $P_N-V=\frac{1}{N}\sum_i\epsilon_i$ and errors are independent, $\operatorname{Var}(P_N-V)=N\sigma^2/N^2=\sigma^2/N$.
+\end{proof}
+\end{proposition}
+
+\begin{caveat} \hlt{Correlated Information Error}\\
+Aggregation removes independent errors, not shared errors. If informed traders use the same data, model, or stale signal, prices can move confidently in the wrong direction.
+\end{caveat}
+
+\begin{caveat} \hlt{Information-Liquidity Trade-Off}\\
+Informative prices are not free. Informed trading transfers wealth from slower liquidity traders and market makers, so policies that improve price efficiency can also reduce displayed liquidity.
+\end{caveat}

@@ -1,0 +1,29 @@
+\subsection{Avellaneda-Stoikov Framework}
+
+\begin{model} \hlt{Avellaneda-Stoikov Setup}\\
+A market maker chooses bid and ask quotes while holding inventory $q_t$ in a risky asset with midprice $S_t$. The model balances spread capture against inventory risk under exponential utility and stochastic order arrivals.
+\end{model}
+
+\begin{model} \hlt{Reservation Price}\\
+With risk aversion $\gamma$, volatility $\sigma$, and horizon $T$, the reservation price is commonly written $r_t=S_t-q_t\gamma\sigma^2(T-t)$.\\
+Long inventory lowers reservation price and therefore skews quotes downward; short inventory does the opposite.
+\end{model}
+
+\begin{model} \hlt{Symmetric Optimal Spread}\\
+In basic exponential-arrival version with arrival sensitivity $k$, total spread is $\psi_t^\star=\gamma\sigma^2(T-t)+\frac{2}{\gamma}\log\left(1+\frac{\gamma}{k}\right)$.\\
+The first term prices inventory risk; the second prices execution probability and order-arrival elasticity.
+\end{model}
+
+\begin{taxonomy} \hlt{Quote-Control Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{level}: move both quotes with fair value;
+\item \hlt{spread}: widen when volatility, toxicity, or uncertainty rises;
+\item \hlt{skew}: shift quotes to reduce inventory;
+\item \hlt{size}: reduce displayed quantity when adverse selection or limits bind.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{caveat} \hlt{Framework, Not Production Model}\\
+The closed form is a useful control template, but real books require queue position, tick size, discrete inventory limits, latency, rebates, hedging instruments, and regime-dependent fill probabilities.
+\end{caveat}

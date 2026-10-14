@@ -1,0 +1,103 @@
+% migrate-to: market-making-lob, execution-market-making
+\subsection{Economics of Market Making}
+
+\begin{definition} \hlt{Dealer}\\
+A dealer trades as principal: buying from clients that want to sell and selling to clients that want to buy. The service sold is immediacy; the compensation is spread, relationship value, or order-flow value.
+\end{definition}
+
+\begin{taxonomy} \hlt{Dealer Problem Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{quote}: set bid, ask, and sizes;
+\item \hlt{order flow}: attract clients without buying toxic flow;
+\item \hlt{inventory}: keep positions near target levels;
+\item \hlt{information}: infer value from trades, quotes, news, and client behaviour.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Designated Market Maker Obligation Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{affirmative}: quote meaningful two-sided markets and trade when public liquidity is absent;
+\item \hlt{negative}: yield to public orders and avoid trading ahead of customer liquidity;
+\item \hlt{auction}: organise openings or calls so orders receive orderly representation;
+\item \hlt{capital}: maintain enough balance sheet to supply liquidity in stressed conditions.
+\end{enumerate}
+Obligations buy price continuity; privileges pay for the obligation.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Specialist Privilege Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{order-flow information}: see routed orders, floor interest, or book imbalance earlier;
+\item \hlt{quote control}: set the disseminated quote within exposure rules;
+\item \hlt{participation option}: step in when public orders are thin or unattractive;
+\item \hlt{brokerage access}: earn fees or relationship value from represented flow.
+\end{enumerate}
+Each privilege must be evaluated against the liquidity supplied when no one else wants to trade.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Dealer Quote Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{two-sided}: quote both bid and ask; \hlt{one-sided}: quote only the desired side;
+\item \hlt{firm}: executable up to a stated size; \hlt{soft}: indication that may be revised;
+\item \hlt{displayed}: visible to the market; \hlt{request-only}: revealed after an RFQ or negotiation;
+\item \hlt{size}: maximum quantity available at the quoted price.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{principle} \hlt{Two-Sided Flow}\\
+Dealers prefer balanced buy and sell flow. Balanced flow earns spread while limiting inventory; one-sided flow converts market making into risk warehousing.
+\end{principle}
+
+\begin{principle} \hlt{Free Entry Bounds Dealer Spreads}\\
+With dealer competition and public limit-order competition, spreads are pulled toward the expected cost of providing immediacy. Monopoly power can widen spreads only when entry, routing, or order-driven competition is weak enough to stop clients from switching liquidity suppliers.
+\end{principle}
+
+\begin{taxonomy} \hlt{Dealer Spread Cost Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{operating costs}: systems, staff, clearing, settlement, membership, and compliance;
+\item \hlt{capital costs}: inventory funding, margin, balance-sheet use, and required return on capital;
+\item \hlt{inventory losses}: price moves before offsetting flow or hedging;
+\item \hlt{informed-flow losses}: trading against clients whose orders predict value changes.
+\end{enumerate}
+\end{taxonomy}
+
+% migrated: Grossman-Miller Model -> mod:grossman-miller, res:grossman-miller-trading-fees, res:grossman-miller-liquidity-measures (full text in notes/artefacts/market-making-lob/derivations.tex)
+% migrated: Kyle Model -> mod:kyle-single-auction (full text in notes/artefacts/market-making-lob/derivations.tex)
+% migrated: Market Making using Limit Orders -> mod:static-limit-order-depth (full text in notes/artefacts/market-making-lob/derivations.tex)
+
+\begin{taxonomy} \hlt{Dealer Spread vs Outside Spread}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{valuation target}: dealers quote around current market value; value traders trade on fundamental value;
+\item \hlt{holding period}: dealers try to turn inventory quickly; value traders wait for convergence;
+\item \hlt{risk source}: dealers bear inventory, client-selection risk.\\
+Value traders bear valuation, financing, winner's-curse risk;
+\item \hlt{scale}: dealers can earn small spreads repeatedly; value traders need fewer, larger opportunities;
+\item \hlt{profit capture}: dealers may earn a full round-trip spread.\\
+Value trader often earns only the move from entry back toward value.
+\end{enumerate}
+This is why dealer spreads is tight even when fundamental investors require a wide outside spread before trading.
+\end{taxonomy}
+
+\begin{taxonomy} \hlt{Order-Flow Acquisition Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{price}: quote aggressively enough to win trades;
+\item \hlt{size}: show capacity for larger trades;
+\item \hlt{service}: provide research, execution support, credit, and settlement reliability;
+\item \hlt{relationship}: cultivate clients and brokers;
+\item \hlt{inducement}: pay or reciprocate for routed order flow.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{caveat} \hlt{Preferencing and Payment for Order Flow}\\
+Preferencing can lower search costs when dealers compete for relationships, but it can also route orders toward economic arrangements rather than best all-in execution.
+\end{caveat}
+
+\begin{practitionernote} \hlt{Trading with Dealers}\\
+Experienced clients often ask for a two-sided quote before revealing direction. A wide quote is information: the dealer may suspect informed flow, inventory pressure, or poor unwind conditions.
+\end{practitionernote}

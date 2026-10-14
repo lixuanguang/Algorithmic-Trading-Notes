@@ -1,0 +1,45 @@
+% migrate-to: market-making-lob, execution-market-making
+\subsection{Optimal Quoting and Inventory Control}
+
+\begin{definition} \hlt{Inventory Imbalance}\\
+Let $q_t$ be dealer inventory and $q_t^\star$ the target inventory. The imbalance is $q_t-q_t^\star$. Dealers quote to earn spread while keeping this imbalance financeable.
+\end{definition}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\stepcounter{table}
+\renewcommand{\arraystretch}{1.13}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{0.27\textwidth} >{\RaggedRight\arraybackslash}p{0.34\textwidth} >{\RaggedRight\arraybackslash}X@{}}
+\hline
+\textbf{Condition} & \textbf{Tactic} & \textbf{Purpose} \\
+\hline
+Inventories too low or & Raise bid price; increase bid size & Encourage clients to sell \\
+clients are net buyers & Raise ask price; decrease ask size & Discourage clients from buying \\
+& Take another trader's offer & Immediately raise inventories \\
+& Buy a correlated instrument & Hedge inventory risk \\
+\hline
+Inventories too high or & Lower ask price; increase ask size & Encourage clients to buy \\
+clients are net sellers & Lower bid price; decrease bid size & Discourage clients from selling \\
+& Hit another trader's bid & Immediately lower inventories \\
+& Sell a correlated instrument & Hedge inventory risk \\
+\hline
+\end{tabularx}
+
+\vspace{0.25em}
+{\footnotesize Table \thetable. Dealer tactics for managing inventories and order flow.}
+\end{table}
+
+\begin{principle} \hlt{Inventory Control Is Price Discovery}\\
+A dealer's search for quotes that balance buy and sell flow also reveals market value. Fundamental value is often learned as a by-product of finding prices at which two-sided flow returns.
+\end{principle}
+
+\begin{model} \hlt{Specialist Participation Option}\\
+Let $V_{\mathrm{step}}$ be the expected value of stepping ahead or trading with the book, $C_{\mathrm{obligation}}$ the expected loss from required liquidity provision, and $K$ the compliance and capital cost. A specialist assignment is privately attractive when $V_{\mathrm{step}}>C_{\mathrm{obligation}}+K$.
+Regulators should ask the public version: whether the price-continuity benefit exceeds the rents transferred through the privilege.
+\end{model}
+
+\begin{caveat} \hlt{Tick Size and Participation}\\
+Small ticks reduce the cost of stepping ahead of public orders, making specialist or DMM participation easier and public queue value weaker. Larger ticks protect queue rents but can widen quoted spreads.
+\end{caveat}

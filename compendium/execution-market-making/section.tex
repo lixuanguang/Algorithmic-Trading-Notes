@@ -1,24 +1,7 @@
 \chapter{Market microstructure and market making}\label{execution-market-making}
-% Pathways: none consolidated yet; the files below predate the learning guide's study method.
+% Pathway keys drawn on: market-making-lob (format pilot, 2026-10-14; supplemental models only).
+% Older notes for this section are in \ref{legacy:execution-market-making}; see notes/migration.md.
 
-\hlt{Market microstructure} studies how trading rules, intermediaries, and order flow transform latent trading demands into transactions, prices, and allocations. The central departure from frictionless asset pricing is that the trading mechanism is not neutral: priority rules, transparency, inventory, information, and immediacy affect the prices at which trades occur.
+\noindent Pathways drawn on: \texttt{market-making-lob} (format pilot: supplemental inventory, information and quoting models; the pathway's required readings are not yet covered). Notes for this section that predate the study method are in Chapter~\ref{legacy:execution-market-making}, in the part \hyperref[legacy]{Notes awaiting migration}.
 
-This chapter treats a market as an engineered trading system rather than a single supply-demand crossing. The practical questions are: who wants immediacy, who absorbs the other side, what information is revealed by the order, how the venue ranks competing messages, and how much of the final execution cost comes from spread, market impact, delay, adverse selection, and operational frictions.
-
-The source base is front-loaded here to avoid repeated citations throughout the section. Demsetz provides the canonical transaction-cost view of why immediacy has a price \citep{demsetz-1968}. O'Hara and Madhavan frame the theoretical links among information, strategic trading, dealer behavior, and price discovery \citep{catalogue-0496}; \citep{madhavan-2000}. Harris supplies the practitioner taxonomy of traders, orders, markets, and trading costs \citep{alpha-harris}. Hasbrouck anchors the empirical treatment of trades, quotes, order flow, and high-frequency data \citep{s6-hasbrouck}. Lehalle and Laruelle connect these ideas to fragmented electronic markets, smart routing, latency, and modern execution practice \citep{alpha-laruelle}.
-
-The section therefore moves from market organization to order mechanics, then to information and spreads, empirical order-flow analysis, and market making; algorithmic execution and asset-class-specific microstructure follow in Chapter~\ref{execution-trading-costs}. The common thread is implementation: every model is useful only insofar as it explains how real orders become real fills under a particular market design.
-
-\input{execution-market-making/01_foundations_of_trading_and_market_organization/00_overview}
-
-\newpage
-\input{execution-market-making/02_orders_matching_and_limit_order_books/00_overview}
-
-\newpage
-\input{execution-market-making/03_information_price_formation_and_spreads/00_overview}
-
-\newpage
-\input{execution-market-making/04_order_flow_and_empirical_microstructure/00_overview}
-
-\newpage
-\input{execution-market-making/05_market_making_and_liquidity_provision/00_overview}
+\input{execution-market-making/market-making-models}

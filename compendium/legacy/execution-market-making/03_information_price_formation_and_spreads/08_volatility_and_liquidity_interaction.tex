@@ -1,0 +1,141 @@
+% migrate-to: execution-market-making, market-making-lob
+\subsection{Volatility and Liquidity Interaction}
+
+\begin{principle} \hlt{Volatility Is a Liquidity Price}\\
+Volatility raises inventory risk, adverse-selection risk, and the probability that displayed liquidity becomes stale. Liquidity providers respond through wider spreads, smaller displayed size, faster cancellations, or withdrawal.
+\end{principle}
+
+\begin{taxonomy} \hlt{Volatility Source Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{fundamental volatility}: unexpected changes in efficient value;
+\item \hlt{transitory volatility}: liquidity demand, bid-ask bounce, inventory pressure, or temporary order imbalances;
+\item \hlt{episodic volatility}: isolated jumps around news, auctions, outages, or large orders;
+\item \hlt{continuing volatility}: information, inventory, or funding conditions remain unresolved.
+\end{enumerate}
+Fundamental volatility is necessary for prices to allocate risk and capital.\\
+Transitory volatility is a trading-cost symptom.
+\end{taxonomy}
+
+\begin{definition} \hlt{Bubbles and Crashes}\\
+A bubble is price far above fundamental value; a crash is a rapid large decline. Both are hard to identify in real time because value is latent.
+\end{definition}
+
+\begin{taxonomy} \hlt{Bubble-Crash Dynamics Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{optimistic repricing}: new technology, policy, or growth stories raise value estimates;
+\item \hlt{momentum reinforcement}: trend followers and order anticipators buy because others are buying;
+\item \hlt{valuation restraint}: value traders may be unwilling or unable to short enough size;
+\item \hlt{confidence break}: bad news, failed expectations, or funding pressure changes beliefs;
+\item \hlt{forced flow}: margin calls, stops, hedges, and risk limits create one-sided selling.
+\end{enumerate}
+The crash is often the liquidation phase of an earlier pricing error, not an independent event.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Price Accelerator}\\
+Price rises transfer wealth to long optimists and away from short pessimists. If optimists buy more after gains, or shorts cover to control losses, the induced order flow pushes prices further in the same direction. The same feedback reverses during crashes when leveraged longs must sell.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Fundamental Volatility Driver Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{information surprises}: earnings, macro data, policy, credit, supply-demand, or technology shocks;
+\item \hlt{storage and perishability}: inventories buffer shocks when storage is cheap, but amplify them when storage is costly or impossible;
+\item \hlt{valuation uncertainty}: high-growth, opaque, or model-sensitive assets reprice sharply when beliefs update;
+\item \hlt{leverage}: small asset-value changes produce larger equity-value changes when debt is fixed;
+\item \hlt{political and regulatory risk}: cash flows, property rights change when rules, taxes, or convertibility change.
+\end{enumerate}
+Expected carrying-cost drift is not volatility by itself; the unexpected change in the carry path is.
+\end{taxonomy}
+
+\begin{mechanism} \hlt{Transitory Volatility and Reversal}\\
+Transitory volatility appears when impatient uninformed trading pushes transaction prices away from efficient value. Bid-ask bounce creates adjacent reversals; larger order imbalances can reverse over minutes, days, or longer when dealers, arbitrageurs, or value traders absorb the pressure.
+\end{mechanism}
+
+\begin{caveat} \hlt{Crash Attribution}\\
+A large decline is not automatically market failure. Look for reversal, book overload, forced selling, cross-market breaks, or moves beyond news.
+\end{caveat}
+
+\begin{model} \hlt{Volatility Component Decomposition}\\
+Write observed price as $P_t=M_t+u_t$, where $M_t$ is the efficient price and $u_t$ is transitory microstructure noise. Then $\Delta P_t=\Delta M_t+\Delta u_t$. Fundamental volatility is variation in $\Delta M_t$; transitory volatility is variation in $\Delta u_t$ and its covariance with $\Delta M_t$.\\
+Negative serial covariance in $\Delta P_t$ is a useful warning sign that transitory reversals are present.
+\end{model}
+
+\begin{caveat} \hlt{Regulating Volatility}\\
+Regulators can reduce some transitory volatility through transparency, circuit breakers, margin, and market-maker obligations. They cannot remove fundamental volatility without suppressing price discovery.
+\end{caveat}
+
+\begin{definition} \hlt{Garman-Klass Intraday Volatility}\\
+For a fixed intraday interval, the Garman-Klass estimator uses open, high, low, and close prices.\\
+Let $O$, $H$, $L$, and $C$ denote the interval open, high, low, and close:
+\begin{equation*}
+\sigma_{GK}= \sqrt{\frac{1}{2}\left(\log\frac{H}{L}\right)^2-\left(2\log 2-1\right)\left(\log\frac{C}{O}\right)^2}.
+\end{equation*}
+It is useful for comparing intraday uncertainty across markets when transaction-level volatility is too noisy.
+\end{definition}
+
+\begin{model} \hlt{Spread-Volatility Regression}\\
+A compact empirical check regresses spread on volatility: $\psi_i=a_0+a_1\sigma_i+\epsilon_i$.\\
+Here $\psi_i$ is spread observation, $\sigma_i$ is realised volatility, $a_0$ is baseline spread, $a_1$ is spread sensitivity to volatility, and $\epsilon_i$ is residual noise. $\hat{a}_1 > 0$ is consistent with liquidity providers charging more when uncertainty rises.
+\end{model}
+
+\begin{model} \hlt{Log-Log Spread-Volatility Model}\\
+If spread and volatility are skewed, use $\log \psi_i=a_0+a_1\log\sigma_i+\epsilon_i$.\\
+Returning to levels gives the multiplicative relation $\psi_i=A_0\sigma_i^{a_1}e^{\epsilon_i}$ with $A_0=e^{a_0}$. If $\epsilon_i\sim N(0,\sigma_\epsilon^2)$, the unbiased level predictor is $\hat{\psi}= \hat{A}_0\sigma^{\hat{a}_1}e^{\hat{\sigma}_\epsilon^2/2}$.\\
+Here $A_0$ is the level intercept, $\sigma_\epsilon^2$ is residual variance, and hats denote estimates.
+\end{model}
+
+\begin{caveat} \hlt{Spread-Volatility Identification}\\
+A fitted relation is descriptive unless tick size, time of day, venue, depth, and trade intensity are controlled. In large-tick assets, volatility may move through depth rather than spread.
+\end{caveat}
+
+\begin{mechanism} \hlt{Liquidity Spiral}\\
+A large order can consume depth, widen spreads, and raise volatility. Higher volatility makes liquidity providers reduce size or cancel quotes, forcing the next order to trade through less liquidity and amplifying the move. The state variable is confidence in replenishment: once traders doubt the book will refill, everyone demands more price concession at the same time.
+\end{mechanism}
+
+\begin{casestudy} \hlt{Flash Crash Mechanism}\\
+The 2010 Flash Crash illustrates a liquidity spiral: a large automated futures sell program met thin liquidity, high-frequency traders recycled inventory quickly, aggressive flow migrated into cash equities, spreads widened, and some routers or venues paused.\\
+The trigger was an order; the crash mechanism was fragile liquidity under linked-market stress.
+\end{casestudy}
+
+\begin{model} \hlt{Depth-Driven Flash Crash Toy Model}\\
+On one side of the book, let $F_t$ be the market-order arrival rate, $\bar{F}$ the normal refill rate, $r_t=F_t-\bar{F}$ the overflow, and $I_t=1/D_t$ inverse depth. A compact depth-impact dynamic is $\frac{dI_t}{I_t}=\sigma_I dW_t+r_tdt$.\\
+Here $D_t$ is market depth, $I_t$ is impact, $\sigma_I$ is liquidity-shock volatility, and $W_t$ captures random liquidity shocks.\\
+Positive overflow $r_t$ makes inverse depth compound upward, so each additional trade has larger price impact than the last.
+\end{model}
+
+\begin{mechanism} \hlt{Hot-Potato Amplification}\\
+If a fraction $\rho$ of traders follows volume mechanically, initial trading rate $r_0$ can amplify roughly as $r_t\simeq \frac{1-\rho^t}{1-\rho}r_0$.\\
+When $\rho$ is high, overflow consumes depth faster than passive liquidity can refill it. The loop is mechanical: trading creates volume, volume targets force more trading, and depth absorbs the loop until it fails.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Flash-Crash Control Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{rate controls}: cap participation rates or stop volume-following feedback;
+\item \hlt{depth controls}: require or incentivise fast refill near the touch;
+\item \hlt{price controls}: pause trading after large price moves;
+\item \hlt{cross-market controls}: coordinate futures, ETFs, cash equities, and options;
+\item \hlt{data controls}: detect overflow, quote withdrawal, and broken references in real time.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{caveat} \hlt{Systemic Risk Link}\\
+Fragmentation is not systemic risk by itself. It becomes dangerous when market participants react to stress in the same direction, when related venues desynchronise, or when liquidity withdrawal in one instrument propagates to hedges, ETFs, futures, and correlated stocks.
+\end{caveat}
+
+\begin{taxonomy} \hlt{Shock Propagation Channels}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{cross-asset hedging}: futures, ETFs, options, and cash baskets transmit inventory pressure;
+\item \hlt{routing feedback}: routers chase fading liquidity or pause when fills become unreliable;
+\item \hlt{quote withdrawal}: market makers widen or cancel when volatility exceeds their risk budget;
+\item \hlt{reference-price dependency}: pegged and benchmark orders inherit stale or broken references;
+\item \hlt{correlated constraints}: margin, risk limits, and kill switches cause simultaneous de-risking.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{empiricalfinding} \hlt{Trade Count as HFT Proxy}\\
+Rising trades per day can proxy for higher high-frequency participation when trade sizes shrink and message intensity rises. It is not sufficient alone: the same count can reflect genuine liquidity, excessive slicing, or stress-induced churn.
+\end{empiricalfinding}

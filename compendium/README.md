@@ -1,8 +1,10 @@
 # Migrating the compendium
 
-The chapters in this folder were written before these notes followed the learning guide's study method (`guide/`, *How to study with this guide*). On 14 October 2026 they were moved, with their text unchanged, into one chapter per guide section. This file is the plan for turning them into the guide's typed, labelled and cited entries. None of it has been started yet.
+The chapters in `legacy/` were written before these notes followed the learning guide's study method (`guide/`, *How to study with this guide*). On 14 October 2026 they were moved, with their text unchanged, into one chapter per guide section, and then into `legacy/<section-key>/`. This file is the plan for turning them into the guide's typed, labelled and cited entries. Phase 0 and a format pilot are done; the record of what has moved, what was checked and the map of legacy files to pathways is in [notes/migration.md](../notes/migration.md).
 
-## Where things stand (14 October 2026)
+Migration is not study. Four kinds of progress are kept apart: *migration progress* (each old block has a disposition), *source verification* (an entry's claims compared with the passages at their locators), *mastery* (a checkpoint passed from your own notes) and *consolidation* (a pathway's backlog empty and its entries checked). Migration and a clean build advance only the first; the last two are dated in `notes/log.md` by you alone.
+
+## Where things stood before Phase 0 (14 October 2026)
 
 - **Block types.** There are 879 blocks in 17 environments of our own, against the guide's eleven entry types. The largest groups have no direct equivalent: `taxonomy` (178), `remark` (146), `caveat` (113) and `principle` (80).
 - **Organisation.** The chapters follow the books they came from, not the guide's pathways. One microstructure file often feeds three or four pathways.
@@ -17,27 +19,24 @@ The chapters in this folder were written before these notes followed the learnin
 
 Do not retype all 879 blocks in one go. Phase 0 is a one-off mechanical tidy that makes the material easy to work through. Phase 1, the migration itself, happens one pathway at a time, when that pathway is consolidated, with the old blocks as drafts. This is the guide's rule for notes written before the method.
 
-## Phase 0: tidy (not started)
+## Phase 0: tidy (done 14 October 2026)
 
-1. **Separate the old notes.** Move the old chapters unchanged to `compendium/legacy/<section-key>/` and compile them as a final part, *Notes awaiting migration*. The main chapters then hold only entries in the guide's format, and the legacy part shrinks as pathways are migrated.
-2. **Migration map.** Put a `% migrate-to:` comment at the top of each legacy file naming the pathways its blocks feed, and collect the map in `notes/migration.md`.
-3. **Status script.** Write `tools/migration_status.py` to report, for each pathway, the old blocks left, the entries written, and entries missing a label, a citation or a status.
-4. **Housekeeping.**
-   - Move the non-finance appendix out of the compendium.
-   - Move the unused execution figures in with the legacy execution files.
-   - Remove the placeholder preface text.
+1. **Separate the old notes.** Done: the old chapters are in `legacy/<section-key>/`, compiled by `legacy/part.tex` as a final part, *Notes awaiting migration*. Their chapter labels became `legacy:<section-key>`, so a canonical chapter can take `\label{<section-key>}`; their block and figure labels are unchanged. The main chapters hold only entries in the guide's format. The staging folder is a convention of this repository, not of the guide.
+2. **Migration map.** Done: `% migrate-to:` on the first line of each legacy file with blocks names its *candidate* pathways, and `% assign: <key>` before a block assigns it to one. The map is collected in `notes/migration.md`. The candidate lists are provisional, taken from the folder table below and narrowed by file name.
+3. **Status script.** Done: `python3 ../tools/migration_status.py` reports the legacy blocks left, by section and by pathway (assigned, the only candidate, or shared and unassigned, so a shared file is never counted as owned by every pathway it lists), the entries written, and entries missing a label, a locator, a known citation key or any of the three status axes. `--check` also fails when the map and the files disagree or a key is not in the pinned routes. It checks presence, not truth: a citation it finds may not support its claim.
+4. **Housekeeping.** Done: the tooling appendix is in `notes/tooling/`, which compiles on its own; the 21 unused execution figures stayed with `legacy/execution-trading-costs/figures/`; the placeholder preface text is gone; `hyperref` now loads last in `preamble.tex`, which removed the duplicate figure anchors.
 
 ## Phase 1: one pathway at a time
 
-1. Run the status script to list the pathway's old blocks.
-2. At placement in the study loop, treat what the blocks cover as drafts to check against the readings, not material to learn again.
-3. When consolidating the pathway, decide each block's fate:
+1. Run the status script to list the pathway's old blocks, assigned and shared.
+2. At placement in the study loop, treat what the blocks cover as drafts to check against the readings, not material to learn again. Assign each shared block you will handle with `% assign:`.
+3. When consolidating the pathway, decide each block's fate, and record it in the dispositions of `notes/migration.md`:
    - rewrite it as an entry, choosing the type by its content rather than its old environment's name;
    - merge it into a field of an existing entry;
    - turn it into a stub in the pathway's entry backlog;
    - or delete it.
-4. Give every new entry a label, a `\citep` with a locator found in the reading (never reconstructed from memory), and a status, normally *unchecked* until compared with the passage.
-5. Delete the migrated blocks, and each legacy file once it is empty. Compile, and date the pathway in `notes/log.md`.
+4. Give every new entry a label, a `\citep` with a locator found in the reading (never reconstructed from memory), and a status on all three axes: verification, normally *unchecked* until compared with the passage and then saying exactly what was compared; stability, *draft*; and currency. Check existing citations against the source too: the pilot found legacy blocks citing papers whose formulas came from a textbook's simplification.
+5. Delete a migrated block only once its content is represented and every pathway listing its file can find it; leave a `% migrated:` comment naming the destination, and keep any full derivation the entry shortens in `notes/artefacts/<pathway-key>/`. Delete each legacy file once it is empty. Compile and run `migration_status.py --check`. Date the pathway in `notes/log.md` only when it is in fact mastered or consolidated.
 
 ## How the old environments map to entry types
 
@@ -60,24 +59,24 @@ Do not retype all 879 blocks in one go. Phase 0 is a one-off mechanical tidy tha
 
 | Old notes (folder, blocks) | Main target pathways |
 |---|---|
-| Microstructure foundations, orders and books, price formation (`execution-market-making/01`–`03`, 420) | Market microstructure overview, `market-making-lob`, `market-structure-execution-quality`, `futures-execution` |
+| Microstructure foundations, orders and books, price formation (`execution-market-making/01`–`03`, 420; 418 after the pilot) | Market microstructure overview, `market-making-lob`, `market-structure-execution-quality`, `futures-execution` |
 | Order flow and empirical microstructure (`execution-market-making/04`, 79) | `price-impact-execution`, `lob-deep-learning`, `market-making-lob`, `market-simulation` |
-| Market making (`execution-market-making/05`, 47) | `market-making-lob`, `hft-market-design` |
+| Market making (`execution-market-making/05`, 47; 40 after the pilot) | `market-making-lob`, `hft-market-design` |
 | Execution and algorithmic trading (`execution-trading-costs/01`, 87) | Execution overview, `price-impact-execution`, `market-structure-execution-quality`, `reinforcement-learning-trading`, `model-governance-controls` |
 | Asset-class microstructure (`execution-trading-costs/02`, 37) | `futures-execution`, `options-execution`, `fx-dealer-market-making`, `otc-fixed-income-trading`, `synthetic-equity-cfd-trs`, `crypto-mm-microstructure` |
 | AFML data chapters (`ml-alternative-data/data`, 36) | `statistical-learning-foundations`, `financial-ml-evaluation`, `alternative-data-sources` |
 | Narang's systematic investing (`portfolio-construction-risk/sysinv`, 26) | Portfolio construction overview, `portfolio-construction`, `research-engineering-validation`, `model-governance-controls` |
 | Gliner and Drobny (`multi-asset-systematic-macro`, 120) | Multi-asset overview, `macro-regimes-stock-bond`, `macro-nowcasting-signals`, `macro-announcements-policy`, `monetary-policy-curve`, `fx-determination-forecasting` |
 | Hull basics (`volatility-options`, 13), time value of money (`rates-credit-mortgages`, 2) | Options overview. Forward pricing and hedge ratios go where the guide first needs them (rates, `commodity-hedging`); time- and money-weighted returns go to `performance-manager-evaluation` |
-| Appendix (`appendix`, 12) | None: tooling notes, not compendium entries |
+| Appendix (`appendix`, 12) | None: tooling notes, not compendium entries; moved to `notes/tooling/` |
 
 ## Order
 
-1. **Pilot `market-making-lob`.** Grossman–Miller, Kyle, Ho–Stoll and Avellaneda–Stoikov are formal models with proofs, so they are the clearest test of Model and Result entries. Adjust the conventions after the pilot.
+1. **Pilot `market-making-lob`.** Done 14 October 2026 as a format pilot: six draft entries in `execution-market-making/market-making-models.tex` (Grossman–Miller with fees and liquidity measures, the static limit-order model, Avellaneda–Stoikov, Kyle), partly checked, with human review outstanding. Ho–Stoll is blocked: the legacy block cited it but follows a textbook's static stand-in, and the route's `catalogue-0527` names no paper. The pathway itself is not migrated: Grossman–Miller and Kyle are supplemental to it. **Next bounded slice:** Glosten–Milgrom and the remaining `market-making-lob` candidate blocks, with Ho–Stoll if the paper is obtained (details in `notes/migration.md`).
 2. **Market microstructure overview**, which holds the largest set of blocks (Harris and Hasbrouck), then the rest of that section's pathways.
 3. **Execution, trading costs and market structure**: its overview, `price-impact-execution` and `market-structure-execution-quality`, then the asset-class pathways.
 4. **AFML, Narang, Gliner, Hull and time value of money**, whenever those pathways are studied.
 
 ## Done when
 
-The legacy part is empty and every entry has a label, a citation at each claim and a status. The old environments can then be deleted from `preamble.tex`.
+The legacy part is empty and every entry has a label, a citation at each claim and a status. The old environments can then be deleted from `preamble.tex`, with `legacy/part.tex` and its line in `compendium.tex`.

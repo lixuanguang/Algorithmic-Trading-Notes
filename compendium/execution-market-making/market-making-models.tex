@@ -1,0 +1,150 @@
+% compendium/execution-market-making/market-making-models.tex
+% Format pilot (2026-10-14): entries migrated from the legacy market-making blocks; dispositions
+% and source checks in notes/migration.md, full derivations in
+% notes/artefacts/market-making-lob/derivations.tex.
+
+\section{Inventory risk and the price of immediacy}
+
+\begin{qfmodel}[Grossman--Miller market making: the price of immediacy]\label{mod:grossman-miller}
+\qffield{Statement} Competitive, risk-averse market makers supply immediacy to a liquidity trader who arrives before the trader with the offsetting need, and the price concession they charge compensates exactly for carrying the inventory until that trader arrives \citep[chap.~``A Primer on the Microstructure of Financial Markets'', p.~21]{crypto-cartea}. In the simplified three-date version, $n$ identical market makers, liquidity trader LT1 holding $i$ units and liquidity trader LT2 holding $-i$ units (arriving at date~2) trade an asset worth $S_3=\mu+\epsilon_2+\epsilon_3$ at date~3, and the date-1 equilibrium is \citep[same chap., pp.~23--24]{crypto-cartea}
+\[ S_1=\mu-\gamma\sigma^2\,\frac{i}{n+1}, \qquad q_1^{MM}=q_1^{LT1}=\frac{i}{n+1}, \]
+so LT1 sells $\frac{n}{n+1}\,i$ at once and each market maker holds $\frac{i}{n+1}$ until date~2, when LT2 arrives, the price is efficient, $S_2=\mathbb{E}[S_3\mid\epsilon_2]=\mu+\epsilon_2$, and every agent exits with zero inventory \citep[same chap., pp.~22--24]{crypto-cartea}. The liquidity discount is $\abs{S_1-\mu}=\gamma\sigma^2\abs{i}/(n+1)$; when LT1 buys ($i<0$) the market makers earn the same amount as a premium \citep[same chap., p.~24]{crypto-cartea}. Figure~\ref{fig:grossman_miller_trading} shows the holdings and trades.
+\begin{figure}[H]
+\centering
+\scalebox{0.82}{\input{execution-market-making/figures/grossman_miller_trading.tikz}}
+\caption{Holdings $q_t^j$ and trading in the Grossman--Miller model, after \citep[Figure~2.1, p.~23]{crypto-cartea}.}\label{fig:grossman_miller_trading}
+\end{figure}
+
+\qffield{Notation} Local override for this entry, \hyperref[res:grossman-miller-trading-fees]{the fee result} and \hyperref[res:grossman-miller-liquidity-measures]{the liquidity measures}: $\sigma^2$ is the variance of one period's value shock, in squared price units and not annualised; $\gamma$ is the coefficient of absolute risk aversion; $q_t^j$ is agent $j$'s holding on leaving date $t$, and $S_t$ the date-$t$ trade price.
+
+\qffield{Conditions} Dates $t\in\{1,2,3\}$; shocks $\epsilon_2,\epsilon_3$ independent $N(0,\sigma^2)$, each announced between dates $t-1$ and $t$; every agent has CARA utility $U(X)=-\exp(-\gamma X)$; market makers start with no inventory; the arrival of LT2 at date~2 is certain; no trading or holding costs \citep[same chap., p.~21]{crypto-cartea}. Interpretation: the concession charges for risk, not for information; no agent is informed, which separates this model from \hyperref[mod:kyle-single-auction]{Kyle's}. Idea of the proof: solve backwards; with CARA utility and normal shocks each agent's demand is $(\mathbb{E}[\text{next price}]-\text{price})/(\gamma\sigma^2)$, and market clearing at each date gives the prices \citep[same chap., pp.~22--23]{crypto-cartea}; the full working is in the derivations artefact listed under \emph{Further reading}.
+
+\qffield{Practice} The discount rises with the size of the liquidity need $\abs{i}$, risk aversion $\gamma$ and volatility $\sigma^2$, and falls with competition $n$; as $n$ grows the premium goes to zero, $S_1$ tends to $\mu$, and LT1's immediate trade tends to $i$ \citep[same chap., p.~24]{crypto-cartea}. Competition is itself set by participation costs: in Grossman and Miller's earlier entry stage, the number of market makers falls monotonically as the participation cost $c$ rises, which raises the discount \citep[same chap., p.~25]{crypto-cartea}. Per-share fees and two empirical liquidity measures follow from the same equilibrium: see \hyperref[res:grossman-miller-trading-fees]{trading fees} and \hyperref[res:grossman-miller-liquidity-measures]{price impact and return reversal}. Interpretation: the quoted inside spread implied by the model, a bid at $\mu-p$ and an ask at $\mu+p$ with $p=\gamma\sigma^2\abs{i}/(n+1)$, is $2p$.
+
+\qffield{Pitfalls} The model solves a single Walrasian clearing rather than a trading mechanism \citep[same chap., pp.~26--27]{crypto-cartea}, and the offsetting trader arrives for sure; the arrival time and its uncertainty, which drive inventory risk in continuous-time quoting models, are absent. Interpretation: reading every concession as risk compensation overstates inventory costs where order flow is informed.
+
+\qffield{See also} \hyperref[mod:kyle-single-auction]{Kyle single-auction model} (contrast: risk-neutral market makers, price impact from information); \hyperref[mod:avellaneda-stoikov]{Avellaneda--Stoikov quoting} (generalisation: inventory risk in continuous time with random order arrival); \hyperref[mod:static-limit-order-depth]{static limit-order depth} (the same immediacy supplied through posted orders).
+
+\qffield{Further reading} \citep{grossman-miller-1988}, the original model, including participation costs (not yet read for this entry); own full derivation, from the legacy notes: \nolinkurl{notes/artefacts/market-making-lob/derivations.tex}.
+
+\qffield{Index} Grossman--Miller; immediacy; liquidity premium; liquidity discount; inventory risk; risk transfer; dealer competition; CARA--normal equilibrium
+
+\qffield{Status} Verification: partly checked 2026-10-14 (every formula and the comparative statics against \texttt{crypto-cartea}, pp.~21--27, read from page images of a scanned copy; the original paper not consulted). Stability: draft. Currency: timeless (theory).
+\end{qfmodel}
+
+\begin{qfresult}[Grossman--Miller with per-share trading fees]\label{res:grossman-miller-trading-fees}
+\qffield{Statement} If every trader pays a fee $\eta$ per share bought or sold, the date-2 price is unchanged, $S_2=\mu+\epsilon_2$, but for a seller ($i>0$) the date-1 price falls to \citep[chap.~``A Primer on the Microstructure of Financial Markets'', pp.~25--26]{crypto-cartea}
+\[ S_1=\mu-\gamma\sigma^2\,\frac{i}{n+1}-2\Big(\frac{n}{n+1}\Big)\eta, \qquad q_1^{LT1,\ast}=\frac{i}{n+1}+2\Big(\frac{n}{n+1}\Big)\frac{\eta}{\gamma\sigma^2}. \]
+The initiating liquidity trader pays his own fee and, through the lower price, the fraction $n/(n+1)$ of the market makers' round-trip fees $2\eta$, and keeps more inventory after date~1 than without fees \citep[same chap., p.~26]{crypto-cartea}.
+
+\qffield{Notation} As in \hyperref[mod:grossman-miller]{the Grossman--Miller model}.
+
+\qffield{Conditions} The model of \hyperref[mod:grossman-miller]{the Grossman--Miller entry}, with fees proportional to shares rather than to dollar volume, positions remaining after date~2 liquidated at date~3, and desired trades large enough that every participant prefers trading to not trading \citep[same chap., p.~25]{crypto-cartea}. Idea of the proof: fees cancel at date~2 because remaining positions are sold either then or at date~3; at date~1 they reduce the market makers' demand by the round-trip fee, $q_1^{MM}=(\mu-S_1-2\eta)/(\gamma\sigma^2)$, and clearing $i=nq_1^{MM}+q_1^{LT1}$ gives the price \citep[same chap., pp.~25--26]{crypto-cartea}.
+
+\qffield{Practice} Liquidity traders whose desired trade is small relative to the fee do not trade at all \citep[same chap., p.~25]{crypto-cartea}. Participation costs and fees act differently: participation costs work through the number of market makers, while fees work mainly through the discount and the immediacy obtained, since each market maker pays $2\eta$ per trade but recovers $2n\eta/(n+1)$ through the discount \citep[same chap., p.~26]{crypto-cartea}.
+
+\qffield{Pitfalls} Real exchange fees are often proportional to dollar volume and differ by side and by maker or taker \citep[same chap., p.~25]{crypto-cartea}; the closed form assumes the same per-share fee for everyone.
+
+\qffield{See also} \hyperref[mod:grossman-miller]{Grossman--Miller model} (the base case, $\eta=0$).
+
+\qffield{Index} trading fees; exchange fees; fee incidence; participation cost; no-trade region; liquidity discount
+
+\qffield{Status} Verification: partly checked 2026-10-14 (the formulas and fee incidence against \texttt{crypto-cartea}, pp.~25--26, from page images of a scanned copy in which several signs are faint; the printed results agree with the clearing condition on the same page). Stability: draft. Currency: timeless (theory).
+\end{qfresult}
+
+\begin{qfresult}[Grossman--Miller liquidity measures: linear price impact and negative autocovariance]\label{res:grossman-miller-liquidity-measures}
+\qffield{Statement} Read as trading in a limit-order book, where LT1's market orders walk the book posted by the market makers, the Grossman--Miller date-1 price is linear in the quantity LT1 trades \citep[chap.~``A Primer on the Microstructure of Financial Markets'', pp.~26--27]{crypto-cartea}:
+\[ S_1=\mu+\lambda\,q^{LT1}, \qquad \lambda=-\frac{1}{n}\,\gamma\sigma^2, \qquad q^{LT1}=i\,\frac{n}{n+1}. \]
+With public news $\epsilon_1$ before LT1 trades and efficient price $\mu_t=\mathbb{E}[S_3\mid\epsilon_1,\ldots,\epsilon_t]$, the price changes $\Delta_1=S_1-S_0$ and $\Delta_2=S_2-S_1$ satisfy \citep[same chap., pp.~27--28]{crypto-cartea}
+\[ \operatorname{Cov}[\Delta_1,\Delta_2]=-\lambda^2\operatorname{Var}[q^{LT1}]<0. \]
+
+\qffield{Notation} As in \hyperref[mod:grossman-miller]{the Grossman--Miller model}; here $q^{LT1}$ is the quantity LT1 trades at date~1, not a holding, and $\lambda$ is the slope of price on that quantity.
+
+\qffield{Conditions} The model of \hyperref[mod:grossman-miller]{the Grossman--Miller entry}, with shocks $\epsilon_1,\epsilon_2,\epsilon_3$ i.i.d.\ normal with variance $\sigma^2$, and liquidity demand independent of news \citep[same chap., pp.~27--28]{crypto-cartea}. Idea of the proof: $S_1=\mu_1+\lambda q^{LT1}$ and $S_2=\mu_2$, so the order-pressure term enters $\Delta_1$ and reverses in $\Delta_2$ \citep[same chap., p.~28]{crypto-cartea}.
+
+\qffield{Practice} A more liquid market has a smaller $\abs{\lambda}$, from more competition, less risk aversion or lower volatility \citep[same chap., p.~27]{crypto-cartea}. As $\lambda$ goes to zero, so does the autocovariance, and the price process converges to the efficient-price martingale \citep[same chap., p.~28]{crypto-cartea}. The two measures coincide here only because the model is essentially static; in dynamic models they capture different things, permanent effects of order flow on the efficient price as against the temporary effect in each trader's execution price \citep[same chap., p.~28]{crypto-cartea}.
+
+\qffield{Pitfalls} Interpretation: an empirical regression of price changes on signed order flow, or a negative return autocovariance, mixes this inventory effect with information and bid--ask bounce; this model alone cannot attribute it. Compare the information slope of \hyperref[mod:kyle-single-auction]{Kyle's model}.
+
+\qffield{See also} \hyperref[mod:grossman-miller]{Grossman--Miller model} (source of the equilibrium); \hyperref[mod:kyle-single-auction]{Kyle single-auction model} (contrast: a price-impact slope from information).
+
+\qffield{Index} price impact; Kyle's lambda (contrast); liquidity measure; autocovariance of price changes; return reversal; temporary impact; transitory price pressure
+
+\qffield{Status} Verification: partly checked 2026-10-14 (both formulas and the comparative statics against \texttt{crypto-cartea}, pp.~26--28, from page images of a scanned copy). Stability: draft. Currency: timeless (theory).
+\end{qfresult}
+
+\section{Quoting with limit orders}
+
+\begin{qfmodel}[Static limit-order depth with exponential fill probability]\label{mod:static-limit-order-depth}
+\qffield{Statement} A small, risk-neutral market maker with costless inventory and infinite patience chooses depths $\delta^\pm$ from the midprice $S_t$ for a sell order at $S_t+\delta^+$ and a buy order at $S_t-\delta^-$; a buy (sell) market order arrives with probability $p^+$ ($p^-$) and reaches depth $\delta$ with probability $e^{-\kappa^\pm\delta}$, and expected profit per trade is maximised by \citep[chap.~``A Primer on the Microstructure of Financial Markets'', p.~29, eq.~(2.3)]{crypto-cartea}
+\[ \max_{\delta^+,\delta^-}\Big\{p^+e^{-\kappa^+\delta^+}\delta^+ + p^-e^{-\kappa^-\delta^-}\delta^-\Big\}, \qquad \delta^{\pm,\ast}=\frac{1}{\kappa^\pm}. \]
+The optimal depth equals the mean depth of the book on that side \citep[same chap., p.~30]{crypto-cartea}. This is a static simplification set up in place of the dynamic Ho--Stoll dealer model, which the authors give as the usual first reference \citep[same chap., p.~28]{crypto-cartea}. Figure~\ref{fig:limit_order_market_making} shows the depths and fill probabilities.
+\begin{figure}[H]
+\centering
+\scalebox{0.86}{\input{execution-market-making/figures/limit_order_market_making.tikz}}
+\caption{Limit-order depths and probability of execution, after \citep[Figure~2.2, p.~30]{crypto-cartea}.}\label{fig:limit_order_market_making}
+\end{figure}
+
+\qffield{Notation} Local override for this entry: $p^\pm$ are probabilities of market-order arrival, not prices, and $P^\pm(\delta)$ is the probability that an arriving market order reaches depth $\delta$, not a bond or put price.
+
+\qffield{Conditions} Everyone agrees on the value $S_t$ (no information asymmetry); other market makers' orders form a fixed book that does not react; the market maker has no inventory or trading costs and liquidates at the midprice \citep[same chap., pp.~28--29]{crypto-cartea}. Idea of the proof: the problem separates by side, and the first-order condition $p^\pm e^{-\kappa^\pm\delta^\pm}(1-\kappa^\pm\delta^\pm)=0$ gives the depth; the arrival probabilities scale profit but not the optimal depth (Interpretation, own derivation).
+
+\qffield{Practice} The model isolates the trade-off between margin per trade and probability of execution \citep[same chap., p.~30]{crypto-cartea}; quoting deeper earns more per fill and fills less often.
+
+\qffield{Pitfalls} The authors list what makes it unrealistic: the arrival and fill probabilities are special, constant and exogenous; the market maker's decision does not affect other traders; and the objective is static \citep[same chap., p.~30]{crypto-cartea}. Interpretation: there is no inventory penalty and no adverse selection, so the depth does not respond to position or to informed flow; \hyperref[mod:avellaneda-stoikov]{Avellaneda--Stoikov} adds inventory.
+
+\qffield{See also} \hyperref[mod:avellaneda-stoikov]{Avellaneda--Stoikov quoting} (generalisation: dynamic, with inventory and the same exponential intensity); \hyperref[mod:grossman-miller]{Grossman--Miller model} (the immediacy this quoting supplies).
+
+\qffield{Further reading} \citep{ho-stoll-1981}, the dynamic dealer model this simplifies (not yet read for this entry; see the pathway backlog); own full derivation, from the legacy notes: \nolinkurl{notes/artefacts/market-making-lob/derivations.tex}.
+
+\qffield{Index} limit-order placement; quote depth; fill probability; probability of execution; exponential order-book depth; static market making; Ho--Stoll (static simplification)
+
+\qffield{Status} Verification: partly checked 2026-10-14 (the problem, the solution and the stated limitations against \texttt{crypto-cartea}, pp.~28--30, from page images of a scanned copy; the Ho--Stoll paper not consulted). Stability: draft. Currency: timeless (theory).
+\end{qfmodel}
+
+\begin{qfmodel}[Avellaneda--Stoikov inventory-aware quotes]\label{mod:avellaneda-stoikov}
+\qffield{Statement} A dealer with CARA utility, inventory $q$ and horizon $T$ quotes around a reservation (indifference) price rather than the midprice $s$ \citep[sec.~2.2, eq.~(8), p.~219]{s6-stoikov}:
+\[ r(s,q,t)=s-q\gamma\sigma^2(T-t). \]
+With symmetric exponential execution intensities $\lambda^a(\delta)=\lambda^b(\delta)=Ae^{-k\delta}$, an expansion of the value function in $q$ with a first-order approximation of the order-arrival terms gives the same reservation price and a bid--ask spread, independent of inventory, of \citep[sec.~3.2, eqs.~(29)--(30), p.~221]{s6-stoikov}
+\[ \delta^a+\delta^b=\gamma\sigma^2(T-t)+\frac{2}{\gamma}\ln\Big(1+\frac{\gamma}{k}\Big). \]
+
+\qffield{Notation} Local override for this entry: the midprice follows $dS_u=\sigma\,dW_u$, so $\sigma$ is an absolute volatility in price units per square root of the model's time unit, not the annualised volatility of returns; $s$ is the current midprice; $\delta^a=p^a-s$ and $\delta^b=s-p^b$ are the quote distances; $\lambda^{a}$, $\lambda^{b}$ are Poisson execution intensities, not price-impact slopes \citep[secs.~2.1 and 2.4, pp.~218--219]{s6-stoikov}.
+
+\qffield{Conditions} Arithmetic Brownian midprice with no drift and a zero interest rate; exponential utility of terminal wealth plus inventory marked at the midprice; one-share limit orders, updated continuously at no cost, filled at Poisson rates that decrease with distance from the midprice \citep[secs.~2.1--2.4, pp.~218--219]{s6-stoikov}. The exponential intensity follows from a constant market-order frequency, a power-law order-size distribution and a logarithmic temporary impact, with $A=\Lambda/\alpha$ and $k=\alpha K$; a power-law impact gives a power-law intensity instead \citep[sec.~2.5, eq.~(12), p.~220]{s6-stoikov}. Exact quotes solve the HJB equation and two implicit equations for the distances \citep[sec.~3.1, eqs.~(15)--(19), pp.~220--221]{s6-stoikov}; the closed form above is an approximation \citep[sec.~3.2, p.~221]{s6-stoikov}. A long position ($q>0$) puts the reservation price below the midprice, so both quotes shift down to sell \citep[sec.~2.2, p.~219]{s6-stoikov}.
+
+\qffield{Practice} In 1000 simulations with $s=100$, $T=1$, $\sigma=2$, $\gamma=0.1$, $k=1.5$, $A=140$ and $dt=0.005$, the inventory strategy earned a mean profit of 65.0 with standard deviation 6.6, against 68.4 and 12.7 for a strategy quoting the same average spread of 1.49 symmetrically around the midprice; final inventory had standard deviation 2.9 against 8.4 \citep[sec.~3.3, Table~1, p.~222]{s6-stoikov}. The symmetric strategy earns slightly more because it trades more, but its P\&L is much more dispersed \citep[sec.~3.3, p.~222]{s6-stoikov}.
+
+\qffield{Pitfalls} Interpretation: the closed form is a control template, not a production model; real books add queue position, tick size, discrete inventory limits, latency, rebates, hedging instruments and fill probabilities that change with regime. The approximate spread does not depend on inventory only because the intensities are exponential \citep[sec.~3.2, p.~221]{s6-stoikov}. Interpretation: the formula has no inventory limit; a hard limit needs the bounded-inventory solution read in this pathway (\texttt{wide-gueant-lehalle-tapia}, not yet read).
+
+\qffield{See also} \hyperref[mod:static-limit-order-depth]{Static limit-order depth} (special case: no inventory risk, static); \hyperref[mod:grossman-miller]{Grossman--Miller model} (the same inventory-risk premium in a three-date equilibrium).
+
+\qffield{Further reading} Own working from the legacy notes: \nolinkurl{notes/artefacts/market-making-lob/derivations.tex}.
+
+\qffield{Index} Avellaneda--Stoikov; reservation price; indifference price; inventory skew; optimal bid--ask spread; market making with limit orders; exponential fill intensity; HJB market making
+
+\qffield{Status} Verification: partly checked 2026-10-14 (the reservation price, intensity, spread and simulation results against the author-hosted journal PDF of \texttt{s6-stoikov}, pp.~217--222; the HJB equation and expansion steps read but not re-derived). Stability: draft. Currency: as published in 2008; review annually with the catalogue record.
+\end{qfmodel}
+
+\section{Information and price impact}
+
+\begin{qfmodel}[Kyle single-auction model: informed trading and linear price impact]\label{mod:kyle-single-auction}
+\qffield{Statement} One risk-neutral insider who knows the asset value $v\sim N(\mu,\sigma_v^2)$, price-insensitive noise traders with net order $u\sim N(0,\sigma_u^2)$ independent of $v$, and competitive risk-neutral market makers who see only the net order flow $y=x+u$ and set $S(y)=\mathbb{E}[v\mid y]$ \citep[chap.~``A Primer on the Microstructure of Financial Markets'', pp.~31--32]{crypto-cartea} have a linear equilibrium \citep[chap.~``Strategic Trader Models I: Informed Traders'', p.~93, eqs.~(4.3)--(4.5)]{catalogue-0496}:
+\[ x(v)=\beta(v-\mu), \qquad S(y)=\mu+\lambda y, \qquad \beta=\frac{\sigma_u}{\sigma_v}, \qquad \lambda=\frac{\sigma_v}{2\sigma_u}. \]
+The insider's ex ante expected profit is $\tfrac12\sigma_v\sigma_u$ \citep[same chap., p.~97, eq.~(4.17)]{catalogue-0496}, and the posterior variance of $v$ after the auction is exactly half the prior, whatever the order flow: price reveals half of the insider's information \citep[same chap., p.~98, eq.~(4.20)]{catalogue-0496}.
+
+\qffield{Notation} Source notation: \texttt{catalogue-0496} writes $p_0$ for $\mu$, $\Sigma_0$ for $\sigma_v^2$, $\sigma_\mu$ for $\sigma_u$ and $P$ for the price; \texttt{crypto-cartea} writes $\sigma$ for $\sigma_v$. Here $\lambda$ is a price-impact slope, in price per share.
+
+\qffield{Conditions} A single auction; the insider does not observe $u$ before trading; normality of $v$ and $u$; market makers earn zero expected profit given the order flow, so price is semi-strong efficient \citep[same chap., pp.~91--92]{catalogue-0496}; \citep[chap.~``A Primer on the Microstructure of Financial Markets'', p.~32]{crypto-cartea}. There is no other linear equilibrium, but nonlinear equilibria are not excluded \citep[chap.~``Strategic Trader Models I: Informed Traders'', p.~97]{catalogue-0496}. Idea of the proof: given a linear price rule the insider's expected profit $x(v-\mu)-\lambda x^2$ is quadratic, so $\beta=1/(2\lambda)$; given a linear strategy, $v$ and $y$ are jointly normal and the projection $\mathbb{E}[v\mid y]$ is linear in $y$; the two conditions fix $\beta$ and $\lambda$ \citep[same chap., pp.~93--96]{catalogue-0496}.
+
+\qffield{Practice} Doubling the noise-trader standard deviation doubles the insider's order and expected profit and leaves the ex ante price unchanged \citep[same chap., p.~97]{catalogue-0496}. Market makers are risk-neutral, so any premium compensates their informational disadvantage and is borne by the price-insensitive liquidity traders \citep[chap.~``A Primer on the Microstructure of Financial Markets'', p.~31]{crypto-cartea}. Interpretation (own derivation): the insider trades only part of the mispricing, because a larger order reveals more through $y$; $\lambda$ rises with $\sigma_v$ and falls with $\sigma_u$.
+
+\qffield{Pitfalls} A linear price rule implies a negative price for a large enough sell imbalance, so it is at best an approximation of actual price behaviour \citep[chap.~``Strategic Trader Models I: Informed Traders'', p.~96]{catalogue-0496}. The joint-normality assumption drives the predictions on trade size and volume \citep[same chap., p.~98]{catalogue-0496}. The textbook account in \texttt{crypto-cartea} prints the equilibrium price as $\mu+2(x+u)\sigma_u/\sigma$, so $\lambda=2\sigma_u/\sigma$ \citep[chap.~``A Primer on the Microstructure of Financial Markets'', p.~33]{crypto-cartea}; this is the reciprocal of the value in \texttt{catalogue-0496}, eq.~(4.5), and of the value implied by its own preceding step $\beta=(2\lambda)^{-1}$. Do not copy $\lambda$ from that page.
+
+\qffield{See also} \hyperref[mod:grossman-miller]{Grossman--Miller model} (contrast: a premium for risk, not for information); \hyperref[res:grossman-miller-liquidity-measures]{Grossman--Miller liquidity measures} (contrast: an inventory price-impact slope).
+
+\qffield{Further reading} \citep{s6-kyle}, the original model and its dynamic version (not yet read for this entry); own full derivation, from the legacy notes: \nolinkurl{notes/artefacts/market-making-lob/derivations.tex}.
+
+\qffield{Index} Kyle model; Kyle's lambda; price impact; informed trading; insider; noise traders; adverse selection; semi-strong efficiency; information revelation; toxic order flow
+
+\qffield{Status} Verification: partly checked 2026-10-14 (the equilibrium, profit and posterior variance against \texttt{catalogue-0496}, pp.~91--98, from page images of a scanned 1998 printing; the setup against \texttt{crypto-cartea}, pp.~31--33, whose printed $\lambda$ conflicts as noted under \emph{Pitfalls}; Kyle's paper not consulted). Stability: draft. Currency: timeless (theory).
+\end{qfmodel}

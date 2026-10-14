@@ -26,17 +26,6 @@
 \setstretch{1}  % Line spacing
 
 % -----------------------------
-% Hyperlinks
-% -----------------------------
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks,
-  linkcolor={blue!80!black},
-  citecolor={green!80!black},
-  urlcolor={red!80!black}
-}
-
-% -----------------------------
 % Listings for Code
 % -----------------------------
 \usepackage{listings}
@@ -281,3 +270,14 @@
   tabsize=2
 }
 \lstset{style=codestyle}
+
+% -----------------------------
+% Hyperlinks (loaded last: loaded before float and algorithm it duplicated figure anchors)
+% -----------------------------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  linkcolor={blue!80!black},
+  citecolor={green!80!black},
+  urlcolor={red!80!black}
+}

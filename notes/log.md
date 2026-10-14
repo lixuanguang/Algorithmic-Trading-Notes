@@ -4,10 +4,11 @@ One row per pathway or section overview, keyed as in the learning guide (`guide/
 
 | Pathway key | Mastered | Consolidated | Checkpoint artefact | Entries |
 | --- | --- | --- | --- | --- |
+| `market-making-lob` | | | | Draft entries from the migration pilot, 2026-10-14, not from study: `mod:grossman-miller`, `res:grossman-miller-trading-fees`, `res:grossman-miller-liquidity-measures`, `mod:static-limit-order-depth`, `mod:avellaneda-stoikov`, `mod:kyle-single-auction` |
 
 ## Reading before the study method
 
-Books read before these notes followed the learning guide. Their material is in the chapters listed, not yet split into reading notes or retyped as entries.
+Books read before these notes followed the learning guide. Their material is in the legacy chapters listed (`compendium/legacy/<section-key>/`), not yet split into reading notes or retyped as entries, except for the entries migrated so far (`notes/migration.md`).
 
 | Catalogue key | Book | Progress | Compendium chapter |
 | --- | --- | --- | --- |
@@ -23,3 +24,6 @@ Books read before these notes followed the learning guide. Their material is in 
 | `s7-gueant` | Olivier Guéant, *The Financial Mathematics of Market Liquidity* | Chapter 1 in progress | `execution-market-making`, `execution-trading-costs` |
 
 ## Open questions
+
+- 2026-10-14, `market-making-lob`: `crypto-cartea` p. 33 prints Kyle's $\lambda=2\sigma_u/\sigma$, the reciprocal of `catalogue-0496` eq. (4.5). Check against Kyle (1985) and the book's errata.
+- 2026-10-14, `market-making-lob`: the route's Ho–Stoll reading, `catalogue-0527`, names no paper. Obtain Ho and Stoll (1981) and decide whether it, or their 1980 paper on competing dealers, is the one to read.

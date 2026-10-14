@@ -1,0 +1,24 @@
+% migrate-to: market-making-lob
+\subsection{Risk Management for Market Makers}
+
+\begin{taxonomy} \hlt{Dealer Inventory Risk Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{diversifiable inventory risk}: price changes unrelated to dealer inventory imbalance;
+\item \hlt{adverse-selection risk}: price changes inversely related to dealer inventory because informed traders selected the dealer's quote.
+\end{enumerate}
+The first is reduced by diversification and hedging.\\
+The second requires better quoting, client selection, and information inference.
+\end{taxonomy}
+
+\begin{principle} \hlt{Dealer Valuation Priority}\\
+Dealers care first about market value: the price that attracts balanced flow now. Fundamental value matters because informed traders and value traders force market value toward it.
+\end{principle}
+
+\begin{caveat} \hlt{Poorly Informed Dealers}\\
+Poorly informed dealers overreact to uninformed flow and underreact to informed flow. They turn inventory quickly, earn smaller realised spreads, and are most vulnerable when client flow looks informative but is not.
+\end{caveat}
+
+\begin{mechanism} \hlt{Dealers and Value Traders}\\
+Value traders discipline dealer mistakes by trading when quotes move away from fundamental value. Dealers with enough capital and information can wait; constrained dealers must concede price to restore inventory.
+\end{mechanism}

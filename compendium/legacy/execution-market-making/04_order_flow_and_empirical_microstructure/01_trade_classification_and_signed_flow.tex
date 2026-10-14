@@ -1,0 +1,28 @@
+% migrate-to: price-impact-execution, lob-deep-learning
+\subsection{Trade Classification and Signed Flow}
+
+\begin{taxonomy} \hlt{Trade-Sign Classification Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{quote rule}: compare trade price with the contemporaneous midpoint;
+\item \hlt{tick rule}: classify upticks as buyer-initiated and downticks as seller-initiated;
+\item \hlt{block-price rule}: for negotiated blocks, compare the block price with the prevailing quote.
+\end{enumerate}
+Classification is an inference about who demanded immediacy, not a fact printed on the trade.
+\end{taxonomy}
+
+\begin{method} \hlt{Lee-Ready Classification}\\
+Use the quote rule first: trades above the midpoint are buyer initiated, trades below it are seller initiated. If the trade is exactly at the midpoint, use the tick rule: classify an uptick as buyer initiated and a downtick as seller initiated; if price is unchanged, look back to the last non-zero tick.
+\end{method}
+
+\begin{definition} \hlt{Signed Volume}\\
+For trade sign $\epsilon_t\in\{+1,-1\}$ and size $q_t$, signed volume is $\epsilon_tq_t$. Aggregating signed volume gives a simple order-flow pressure measure, but classification errors and trade splitting can create false persistence.
+\end{definition}
+
+\begin{caveat} \hlt{Passive-Aggressive Ambiguity}\\
+A limit order can be economically aggressive even when it waits passively in the book. Trade-sign algorithms classify the side that demanded immediate execution, not the trader with the stronger valuation motive.
+\end{caveat}
+
+\begin{empiricalfinding} \hlt{Block Initiator Asymmetry}\\
+If a block print is closer to bid than ask, the seller likely initiated; if it is closer to ask, the buyer likely initiated. Historical block evidence found many more seller-initiated than buyer-initiated blocks, consistent with latent demand, price-discrimination, and asymmetric-information frictions being easier to solve for sellers than buyers.
+\end{empiricalfinding}

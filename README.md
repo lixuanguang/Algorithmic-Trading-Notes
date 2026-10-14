@@ -12,17 +12,20 @@ notes/readings/<catalogue-key>.md       one note per reading
 notes/pathways/<pathway-key>.md         one note per pathway, with its entry backlog
 notes/artefacts/<pathway-key>/          checkpoint code, derivations and data vintages
 notes/log.md                            coverage log, reading progress and open questions
+notes/migration.md                      migration record: map of legacy files to pathways, checks, dispositions
+notes/tooling/                          calculator, reading AI papers, Python and VS Code; compiles on its own
 notes/legacy-references.bib             the old BibTeX file; nothing reads it now
 compendium/compendium.tex               master file: one chapter per guide section, in the guide's order
 compendium/preamble.tex                 your own packages, macros and the older environments
 compendium/house.tex                    entry environments, \citep and \qfsource, copied from the guide
-compendium/front/                       notation list, preface and sources outside the catalogue
-compendium/<section-key>/section.tex    a chapter's heading and opening text, then its topic files
+compendium/front/                       notation list and overrides, preface, and sources outside the catalogue
+compendium/<section-key>/section.tex    a chapter's heading and pathway keys, then its topic files of entries
 compendium/<section-key>/figures/       that chapter's figures
-compendium/appendix/                    calculator guide, reading AI papers, Python and VS Code
+compendium/legacy/<section-key>/        notes awaiting migration, compiled as the final part (temporary)
+tools/migration_status.py               migration progress and entry metadata checks, with its tests
 ```
 
-A chapter appears in the PDF once `compendium/<section-key>/section.tex` exists; `compendium.tex` already lists every section key of the guide.
+A chapter appears in the PDF once `compendium/<section-key>/section.tex` exists; `compendium.tex` already lists every section key of the guide. The legacy folders are a temporary convention of this repository, not part of the guide's layout: `compendium/legacy/part.tex` compiles them after the main chapters, and each folder is deleted once its blocks are migrated.
 
 ## Building
 
@@ -39,7 +42,7 @@ In an existing clone, run `git submodule update --init` once to fetch `guide/`. 
 - **Entries.** Write each new entry as `\begin{qf<type>}[Title]\label{<prefix>:<name>}` … `\end{qf<type>}`, with fields started by `\qffield{Statement}` and so on, using the eleven types and label prefixes in the guide.
 - **Citations.** Cite as `\citep[locator]{catalogue-key}`, one key per citation. Give a source outside the catalogue a `\qfsource{key}{reference}` line in `compendium/front/sources.tex` and cite its key the same way.
 - **Figures.** Keep figures in `compendium/<section-key>/figures/` and reference them from `compendium/`, as in `\includegraphics{execution-market-making/figures/name}`.
-- **Older notes.** The chapters moved here on 14 October 2026 predate the study method. Their blocks use the environments in `preamble.tex` (`definition`, `taxonomy`, `principle`, `mechanism`, `caveat` and others), and are retyped into the guide's entry types, labelled and cited at the claim when each pathway is consolidated. The `mechanism` environment means an economic mechanism, while the guide's Mechanism type covers contract terms and settlement, so retype each block by its content rather than its environment name. The migration plan is in [compendium/README.md](compendium/README.md).
+- **Older notes.** The chapters written before the study method are in `compendium/legacy/` and compile as the final part, *Notes awaiting migration*. Their blocks use the environments in `preamble.tex` (`definition`, `taxonomy`, `principle`, `mechanism`, `caveat` and others), and are retyped into the guide's entry types, labelled and cited at the claim when each pathway is consolidated. The `mechanism` environment means an economic mechanism, while the guide's Mechanism type covers contract terms and settlement, so retype each block by its content rather than its environment name. The plan is in [compendium/README.md](compendium/README.md) and the record of what has moved, with the map of legacy files to pathways, in [notes/migration.md](notes/migration.md). Check progress and entry metadata with `python3 tools/migration_status.py --check`.
 
 ## Moving to a newer edition of the guide
 

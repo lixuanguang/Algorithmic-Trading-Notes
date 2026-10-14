@@ -1,0 +1,17 @@
+% compendium/legacy/part.tex: notes written before the study method, compiled as a final part.
+% Temporary repository convention, not part of the guide's layout: each legacy/<section-key>/
+% folder shrinks as its blocks are migrated into entries in compendium/<section-key>/, and is
+% deleted once empty. The migration map and dispositions are in notes/migration.md.
+\cleardoublepage
+\phantomsection\label{legacy}
+\addcontentsline{toc}{part}{Notes awaiting migration}
+\part*{Notes awaiting migration}
+
+% Legacy chapters, in the guide's section order; add a line only when a new legacy folder appears.
+\InputIfFileExists{legacy/ml-alternative-data/section}{}{}
+\InputIfFileExists{legacy/rates-credit-mortgages/section}{}{}
+\InputIfFileExists{legacy/volatility-options/section}{}{}
+\InputIfFileExists{legacy/multi-asset-systematic-macro/section}{}{}
+\InputIfFileExists{legacy/portfolio-construction-risk/section}{}{}
+\InputIfFileExists{legacy/execution-market-making/section}{}{}
+\InputIfFileExists{legacy/execution-trading-costs/section}{}{}

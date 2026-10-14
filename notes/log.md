@@ -4,7 +4,7 @@ One row per pathway or section overview, keyed as in the learning guide (`guide/
 
 | Pathway key | Mastered | Consolidated | Checkpoint artefact | Entries |
 | --- | --- | --- | --- | --- |
-| `market-making-lob` | | | | Draft entries from the migration pilot, 2026-10-14, not from study: `mod:grossman-miller`, `res:grossman-miller-trading-fees`, `res:grossman-miller-liquidity-measures`, `mod:static-limit-order-depth`, `mod:avellaneda-stoikov`, `mod:kyle-single-auction`; draft entries from migration slice 2, 2026-10-15, not from study: `mod:glosten-milgrom`, `res:glosten-milgrom-half-spreads`, `res:glosten-milgrom-market-collapse`, `res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment` |
+| `market-making-lob` | | | | Draft entries from the migration pilot, 2026-10-14, not from study: `mod:grossman-miller`, `res:grossman-miller-trading-fees`, `res:grossman-miller-liquidity-measures`, `mod:static-limit-order-depth`, `mod:avellaneda-stoikov`, `mod:kyle-single-auction`; draft entries from migration slice 2, 2026-10-15, not from study: `mod:glosten-milgrom`, `res:glosten-milgrom-half-spreads`, `res:glosten-milgrom-market-collapse`, `res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`; draft entries from migration slice 3, 2026-10-15, not from study: `mod:inventory-based-quotes`, `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `res:spread-determinants`, `def:outside-spread` |
 
 ## Reading before the study method
 
@@ -30,3 +30,6 @@ Books read before these notes followed the learning guide. Their material is in 
 - 2026-10-15, `market-making-lob`: Ho and Stoll (1981) still has no open copy (journal closed; the 1979 Wharton working paper is not online). Obtain it through a library or the authors before the Ho–Stoll entry.
 - 2026-10-15, `market-making-lob`: the Glosten–Milgrom entries cite the 1983 working paper (`glosten-milgrom-1983`). Check them against the 1985 journal version (`s6-glosten`) when a copy is available.
 - 2026-10-15, `market-making-lob`: should the legacy cross-asset arbitrage file (`05_.../06_cross_asset_and_cross_venue_market_making.tex`) be re-pointed from `market-making-lob` and `hft-market-design` to `execution-market-making` or the asset-class pathways?
+- 2026-10-15, `market-making-lob`: `mod:inventory-based-quotes` rests on Hasbrouck's version of Stoll (1978) and O'Hara's report of Ho–Stoll (1981). Check O'Hara's three Ho–Stoll properties against the paper when a copy is obtained (stub `res:ho-stoll-dealer-pricing`).
+- 2026-10-15, `execution-market-making`: the spread-measurement entries from slice 3 rest on `s6-hasbrouck`, a required reading of this overview route, which has no pathway note yet. Decide whether they move to a note for the route when it is placed.
+- 2026-10-15, `market-making-lob`: Roll's estimator: Harris (p. 434) says violations usually bias it down; Hasbrouck's Exercise 4.3 shows information-correlated trade signs bias it up. Which matters more in practice is open.

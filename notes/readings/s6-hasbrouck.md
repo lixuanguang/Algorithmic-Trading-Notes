@@ -1,0 +1,48 @@
+---
+key: s6-hasbrouck
+pathways: [execution-market-making, market-making-lob]
+version: Joel Hasbrouck, Empirical Market Microstructure: The Institutions, Economics, and Econometrics of Securities Trading, Oxford University Press, 2007 (ISBN 978-0-19-530164-9); local PDF with a text layer, outside the repository (printed page = PDF page - 11)
+sections: secs. 3.4, 4.4-4.5, 5.4.2, 5.5, 8.1-8.3, chap. 11, secs. 14.2.2 and 14.3.3 (pp. 29-30, 38-39, 49, 53, 67-69, 106-117, 148, 150-151; checked for migration slice 3)
+read:
+status: draft
+---
+
+Prepared on 2026-10-15 by migration slice 3 from source checks, not from study: the headings that need your own reading are left empty. The book is a required reading of the section overview route `execution-market-making`, not of `market-making-lob`. A second local file under Hasbrouck's name is his 2004 lecture-notes draft, not this book, and was not used.
+
+## Question and claim
+
+## Mechanism
+
+## Method
+
+## Data and timing
+
+## Key results
+
+- Roll model: $p_t=m_t+cq_t$, $\gamma_0=2c^2+\sigma_u^2$, $\gamma_1=-c^2$, $c=\sqrt{-\gamma_1}$ (sec. 3.4, eqs. (3.3)–(3.5), pp. 29–30); PCO example and violated assumptions (p. 30).
+- Biases: autocorrelated signs bias $\hat c$ down, signs correlated with $u_t$ bias it up (Exercises 4.2–4.3, pp. 38–39); positive sample autocovariances are not uncommon (sec. 4.5, p. 39).
+- Sequential trade with a cost $c$: $A=\mathbb{E}[V\mid\text{buy}]+c$, $B=\mathbb{E}[V\mid\text{sell}]-c$; quotes martingales, trade prices not (sec. 5.4.2, p. 49).
+- Generalized Roll model: spread $2(c+\lambda)$, $\gamma_0=c^2+(c+\lambda)^2+\sigma_u^2$, $\gamma_1=-c(c+\lambda)$; prices alone do not identify $\lambda$ and $c$, only $\lambda^2+\sigma_u^2$ (secs. 8.2–8.3, pp. 67–69).
+- Stoll's CARA dealer bid $B=\mu_X-(2n+1)\alpha\sigma_X^2/2$, and $P-\alpha\sigma_X^2/2$ at the optimum; two-security version (sec. 11.2, eqs. (11.2)–(11.3), pp. 110–111). Garman ruin and Amihud–Mendelson quotes (secs. 11.1.1–11.1.2, pp. 107–109).
+- Inventory versus information: same short-run response, information permanent; NYSE specialist inventories explain little of quote dynamics (sec. 11.4, p. 115).
+- Effective cost $p_t-m_t$ = realised cost $p_t-m_{t+5}$ + $(m_{t+5}-m_t)$ for a buy, Rule 605 (sec. 14.2.2, eq. (14.2), p. 148); time-stamp and sign-inference problems (sec. 14.3.3, pp. 150–151).
+
+## Limits
+
+## Implementation
+
+## Notation map
+
+- $c\to S/2$ (per-side cost, half the spread); $q_t\to Q_t$ (trade sign); risk aversion $\alpha\to\gamma$ in `mod:inventory-based-quotes`; $\lambda$ here is the information cost per trade, not a Poisson intensity.
+
+## Connections
+
+- `alpha-harris` gives the practitioner account of the same spread components, measures and Roll estimator; `catalogue-0496` gives the Ho–Stoll account that chap. 11 omits.
+
+## Entries
+
+`def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `mod:inventory-based-quotes`; also cited in `res:adverse-selection-spread-component`.
+
+## Open questions
+
+## Retrieval cards

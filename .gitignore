@@ -41,3 +41,7 @@ reading materials/
 *.run.xml
 *.thm
 *.tdo
+
+# Python bytecode
+__pycache__/
+*.pyc

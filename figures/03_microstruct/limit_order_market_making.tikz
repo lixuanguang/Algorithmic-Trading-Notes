@@ -31,7 +31,8 @@
 \draw[lobblue, thick] (0,\ymid)
     .. controls (0.70,2.35) and (2.70,2.45) .. (4.20,4.00);
 \draw[lobred, thick] (0,\ymid)
-    .. controls (0.70,1.55) and (1.55,0.80) .. (2.65,0.00);
+    .. controls (0.35,1.68) and (0.95,1.24) .. (1.55,0.82)
+    .. controls (2.00,0.50) and (2.35,0.22) .. (2.65,0.00);
 
 \node at (1.25,3.65) {Ask Side};
 \node at (1.00,0.45) {Bid Side};
@@ -49,8 +50,8 @@
 
 \draw[lobblue, thick] (0.05,4.00)
     .. controls (0.25,2.85) and (1.65,2.20) .. (4.20,\ymid);
-\draw[lobred, thick] (0.05,0.00)
-    .. controls (0.45,1.05) and (1.80,1.65) .. (4.20,\ymid);
+\draw[lobred, thick] (0.65,0.00)
+    .. controls (0.95,0.90) and (2.05,1.64) .. (4.20,\ymid);
 
 \node at (0.55,3.45) {$P^+$};
 \node at (0.60,0.45) {$P^-$};

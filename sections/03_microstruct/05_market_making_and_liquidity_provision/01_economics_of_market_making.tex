@@ -221,6 +221,120 @@ If liquidity demand is independent of news, then
 Negative price-change autocovariance captures temporary liquidity impact: the first price move contains order pressure, and the next move partially reverses it as price returns toward efficient value. As $\abs{\lambda}\to0$, the observed price process converges to the efficient-price martingale.
 \end{model}
 
+\begin{model} \hlt{Kyle Model} \cite{kyle_1985}\\
+Kyle's static insider-trading model studies how an informed trader monetises a private signal when competitive market makers observe only aggregate order flow. The model is the canonical bridge from \hlt{informational advantage} to \hlt{linear price impact}: informed trades are profitable because liquidity trades provide camouflage, but those same trades move price because market makers learn from order flow.
+
+\par\smallskip\noindent\hlt{Assumptions}\\
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{asset value}: one risky asset has terminal value $v\sim N(\mu,\sigma_v^2)$;
+\item \hlt{informed trader}: one risk-neutral insider observes $v$ before trading and chooses signed order size $x(v)$;
+\item \hlt{liquidity demand}: uninformed liquidity traders submit aggregate order $u\sim N(0,\sigma_u^2)$, independent of $v$ and insensitive to price;
+\item \hlt{market makers}: many risk-neutral MMs observe only net order flow $y=x(v)+u$, not the separate components $x(v)$ and $u$;
+\item \hlt{competition}: MMs compete order flow profits away, so the transaction price equals conditional expected value, $S(y)=\mathbb{E}[v\mid y]$;
+\item \hlt{static auction}: all trading happens once, after which the asset value is realised;
+\item \hlt{equilibrium}: the insider maximises expected profit given the price rule, and MMs set prices by Bayes rule given the insider's strategy.
+\end{enumerate}
+
+\par\smallskip\noindent\hlt{Setup}\\
+The timing is:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item nature draws $v$ and liquidity demand $u$;
+\item the insider observes $v$ and submits $x(v)$;
+\item MMs observe only $y=x(v)+u$;
+\item MMs set the clearing price $S(y)$;
+\item the terminal value $v$ is realised.
+\end{enumerate}
+The insider's profit is
+\begin{align*}
+\Pi^{IT}(v,u)&=x(v)\brk{v-S(x(v)+u)}.
+\end{align*}
+Equilibrium is a fixed point between the insider's trading function and the MMs' pricing function:
+\begin{align*}
+x(v)&\in\operatorname*{arg\,max}_{x}\mathbb{E}_u\brk{x\brk{v-S(x+u)}\mid v},\\
+S(y)&=\mathbb{E}[v\mid y].
+\end{align*}
+To solve the normal-static version, conjecture a linear equilibrium:
+\begin{align*}
+S(y)&=\mu+\lambda y,\\
+x(v)&=\beta(v-\mu),
+\end{align*}
+where $\lambda$ is the market's price-impact coefficient and $\beta$ is the insider's trading intensity.
+
+\par\smallskip\noindent\hlt{Equilibrium}\\
+Given the pricing rule $S(x+u)=\mu+\lambda(x+u)$, the insider chooses $x$ to maximise conditional expected profit:
+\begin{align*}
+\max_x\mathbb{E}_u\brk{x\brk{v-\mu-\lambda(x+u)}\mid v} \quad
+&=\max_x\brc{x(v-\mu)-\lambda x^2},
+\end{align*}
+because $\mathbb{E}[u]=0$. The first-order condition gives
+\begin{align*}
+v-\mu-2\lambda x&=0 \Rightarrow x^\star(v)=\frac{v-\mu}{2\lambda}
+\end{align*}
+Hence
+\begin{align*}
+\beta&=\frac{1}{2\lambda}.
+\end{align*}
+Now impose the MM zero-profit pricing condition. Under $x(v)=\beta(v-\mu)$,
+\begin{align*}
+y&=\beta(v-\mu)+u.
+\end{align*}
+Since $(v,y)$ are jointly normal,
+\begin{align*}
+\mathbb{E}[v\mid y]
+&=\mu+\frac{\operatorname{Cov}(v,y)}{\operatorname{Var}(y)}y=\mu+\frac{\beta\sigma_v^2}{\beta^2\sigma_v^2+\sigma_u^2}y.
+\end{align*}
+Therefore
+\begin{align*}
+\lambda&=\frac{\beta\sigma_v^2}{\beta^2\sigma_v^2+\sigma_u^2}.
+\end{align*}
+Combining $\beta=(2\lambda)^{-1}$ with the pricing equation yields
+\begin{align*}
+\beta^\star&=\frac{\sigma_u}{\sigma_v},\\
+\lambda^\star&=\frac{\sigma_v}{2\sigma_u},\\
+x^\star(v)&=\frac{\sigma_u}{\sigma_v}(v-\mu),\\
+S^\star(y)&=\mu+\frac{\sigma_v}{2\sigma_u}y.
+\end{align*}
+The insider's conditional expected profit is
+\begin{align*}
+\mathbb{E}_u[\Pi^{IT}\mid v]
+&=x^\star(v)(v-\mu)-\lambda^\star (x^\star(v))^2
+=\frac{(v-\mu)^2}{4\lambda^\star},
+\end{align*}
+and ex-ante expected profit is
+\begin{align*}
+\mathbb{E}[\Pi^{IT}]&=\frac{\sigma_v\sigma_u}{2}.
+\end{align*}
+MMs earn zero expected profit conditional on the information they observe:
+\begin{align*}
+\mathbb{E}\brk{v-S^\star(y)\mid y}=0.
+\end{align*}
+
+\par\smallskip\noindent\hlt{Interpretation}\\
+The insider does not trade the full mispricing immediately. A larger order extracts more value from information, but it also reveals more information through $y$ and worsens the execution price. The equilibrium order is therefore only a fraction of the private-value gap $v-\mu$.\\
+Noise flow is valuable because it makes informed trading hard to identify. Higher $\sigma_u$ lets the insider trade more aggressively and lowers $\lambda^\star$, because a given order-flow imbalance is less informative. Higher $\sigma_v$ raises $\lambda^\star$, because order flow is more value-relevant when private information is more important.\\
+The market is \hlt{semi-strong efficient} with respect to MM information: price fully reflects public information plus observed order flow. It is not strong-form efficient because the price does not fully reveal $v$. In equilibrium,
+\begin{align*}
+\operatorname{Var}(v\mid y)&=\sigma_v^2-\frac{\operatorname{Cov}(v,y)^2}{\operatorname{Var}(y)}
+=\frac{1}{2}\sigma_v^2,
+\end{align*}
+so one static auction reveals only part of the insider's information.
+
+\par\smallskip\noindent\hlt{Implications}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{price impact is informational}: $\lambda^\star$ is not compensation for inventory risk; it is the adverse-selection slope needed when order flow predicts value;
+\item \hlt{liquidity traders pay for camouflage}: uninformed flow hides the insider, but loses on average because the insider's profit is financed by liquidity traders while MMs break even;
+\item \hlt{more noise lowers impact}: as $\sigma_u$ rises, $\lambda^\star$ falls and larger informed trades can be absorbed without the same price response;
+\item \hlt{more private-value risk raises impact}: as $\sigma_v$ rises, order flow becomes more informative and MMs mark prices more aggressively;
+\item \hlt{strategic execution matters}: informed traders split the difference between exploiting the signal and concealing it; overly aggressive trading destroys the informational rent through impact;
+\item \hlt{permanent impact}: unlike Grossman-Miller inventory pressure, Kyle impact is permanent because price moves toward expected terminal value;
+\item \hlt{empirical reading}: a regression of price changes on signed order flow estimates an information-impact coefficient only after separating it from inventory, spread bounce, and mechanical liquidity effects;
+\item \hlt{market design}: transparent flow, low noise volume, and concentrated informed trading increase adverse-selection costs; deep uninformed participation makes the market safer for immediacy suppliers.
+\end{enumerate}
+\end{model}
+
 \begin{model} \hlt{Market Making using Limit Orders} \cite{ho_stoll_1981}\\
 Grossman-Miller treats immediacy with a single clearing price. In a LOB, the same economics appears through posted limit orders: the MM chooses how far from the midpoint to quote, trading off higher margin per fill against lower execution probability. Figure~\ref{fig:limit_order_market_making} shows the depth and fill-probability objects.
 

@@ -379,4 +379,205 @@ The first term prices inventory risk; the second prices execution probability an
 The closed form is a useful control template, but real books require queue position, tick size, discrete inventory limits, latency, rebates, hedging instruments, and regime-dependent fill probabilities.
 \end{caveat}
 
+
+\section*{Glosten--Milgrom and dealer quoting (slice 2, 2026-10-15)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 2).
+% Destinations: mod:glosten-milgrom, res:glosten-milgrom-half-spreads, res:glosten-milgrom-market-collapse,
+% res:adverse-selection-spread-component, def:dealer-inventory-risk, meth:dealer-quote-adjustment.
+% Source found for most of this text: Harris, Trading and Exchanges (alpha-harris), chapters "Dealers"
+% and "Bid/Ask Spreads", pp. 283-321; the Glosten-Milgrom proposition follows Harris's appendix example
+% (pp. 320-321), not the paper. Treat everything here as unchecked own working.
+
+% From compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/05_information_based_models.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Information-Based Models}
+
+\begin{proposition} \hlt{Glosten-Milgrom Adverse-Selection Spread Component}\\
+Let the unconditional value be $V$.\\
+The next trader is equally likely to buy or sell; with probability $P$ the trader is informed. If an informed buyer implies value $V+E$ and an informed seller implies value $V-E$, then the zero-cost competitive dealer quotes $a=V+PE$, $b=V-PE$, so the adverse-selection spread component is $a-b=2PE$.
+\begin{proof}
+Conditional on a buy, the trader is uninformed with probability $1-P$ and informed with probability $P$, so the dealer's conditional value estimate is $(1-P)V+P(V+E)=V+PE$. Conditional on a sell it is $(1-P)V+P(V-E)=V-PE$. Competitive zero-profit quotes equal these conditional values when order-processing and inventory costs are ignored, giving $a-b=2PE$.
+\end{proof}
+\end{proposition}
+
+\begin{principle} \hlt{Information and Accounting Views Agree}\\
+In the simple Glosten-Milgrom setup, $2PE$ is both the conditional-value gap between buyer and seller flow and the expected loss that uninformed traders must pay to compensate the dealer for trading with informed flow.
+\end{principle}
+
+% migrated: Kyle Linear Price Impact; Kyle Linear Equilibrium -> mod:kyle-single-auction (full text in notes/artefacts/market-making-lob/derivations.tex)
+
+\begin{principle} \hlt{Adverse Selection Through Flow}\\
+The market maker does not need to identify the informed trader. It protects itself by moving price with observed net flow, because aggressive flow is statistically informative.
+\end{principle}
+
+% From compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/02_avellaneda_stoikov_framework.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Avellaneda-Stoikov Framework}
+
+% migrated: Avellaneda-Stoikov Setup; Reservation Price; Symmetric Optimal Spread -> mod:avellaneda-stoikov (full text in notes/artefacts/market-making-lob/derivations.tex)
+
+% assign: market-making-lob
+\begin{taxonomy} \hlt{Quote-Control Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{level}: move both quotes with fair value;
+\item \hlt{spread}: widen when volatility, toxicity, or uncertainty rises;
+\item \hlt{skew}: shift quotes to reduce inventory;
+\item \hlt{size}: reduce displayed quantity when adverse selection or limits bind.
+\end{enumerate}
+\end{taxonomy}
+
+% migrated: Framework, Not Production Model -> mod:avellaneda-stoikov (Pitfalls field) (full text in notes/artefacts/market-making-lob/derivations.tex)
+
+% From compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/03_adverse_selection_and_toxic_flow.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Adverse Selection and Toxic Flow}
+
+\begin{definition} \hlt{Adverse Selection Risk}\\
+Adverse selection risk is the loss from supplying liquidity to a better-informed trader just before prices move toward that trader's information.
+\end{definition}
+
+\begin{mechanism} \hlt{Information Creates Inventory Imbalance}\\
+When informed traders buy, dealers sell and become short before prices rise. When informed traders sell, dealers buy and become long before prices fall. The loss is both informational and inventory-driven.
+\end{mechanism}
+
+\begin{principle} \hlt{Adverse Selection Spread Component}\\
+Dealers set asks conditional on the next trader possibly being an informed buyer, and bids conditional on the next trader possibly being an informed seller.\\
+This component rises with information probability, materiality, and trade size.
+\end{principle}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\stepcounter{table}
+\renewcommand{\arraystretch}{1.13}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{0.24\textwidth} >{\RaggedRight\arraybackslash}p{0.31\textwidth} >{\RaggedRight\arraybackslash}X@{}}
+\hline
+\textbf{Suspected condition} & \textbf{Tactic} & \textbf{Purpose} \\
+\hline
+Sold to a & Raise ask price; lower ask size & Discourage further sales to informed traders \\
+well-informed buyer & Raise bid price; raise bid size & Restore inventory before prices rise \\
+& Buy from another trader at the ask & Restore inventory quickly; paying liquidity may cost less than remaining short \\
+& Buy a correlated instrument & Hedge inventory risk and speculate on information \\
+\hline
+Bought from a & Lower bid price; lower bid size & Discourage further purchases from informed traders \\
+well-informed seller & Lower ask price; raise ask size & Restore inventory before prices fall \\
+& Sell to another trader at the bid & Restore inventory quickly; paying liquidity may cost less than remaining long \\
+& Sell a correlated instrument & Hedge inventory risk and speculate on information \\
+\hline
+\end{tabularx}
+
+\vspace{0.25em}
+{\footnotesize Table \thetable. Dealer tactics after trading with a suspected well-informed trader.}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\stepcounter{table}
+\renewcommand{\arraystretch}{1.13}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{0.15\textwidth} >{\RaggedRight\arraybackslash}p{0.27\textwidth} >{\RaggedRight\arraybackslash}p{0.27\textwidth} >{\RaggedRight\arraybackslash}X@{}}
+\hline
+\textbf{Buyer is} & \textbf{Raise quotes} & \textbf{Do nothing} & \textbf{Initiate buy at ask} \\
+\hline
+Well informed & Correct tactic: prevents further informed trading; raises chance of covering before prices rise; reduces realised spread & Mistake: more informed buyers may follow; dealer loses when prices rise; realised spread falls sharply & May be correct if prices soon rise enough; limits later losses, but pays liquidity and reduces realised spread \\
+\hline
+Uninformed & Mistake: value traders may sell; realised spread and dealer profit fall & Correct tactic: price is presumably still correct; the next seller can pay the full quoted spread & Big mistake: dealer pays unnecessary liquidity and sharply reduces realised spread \\
+\hline
+\end{tabularx}
+
+\vspace{0.25em}
+{\footnotesize Table \thetable. Dealer response consequences after selling to well-informed and uninformed buyers.}
+\end{table}
+
+\begin{caveat} \hlt{Informed-Trader Identification}\\
+Large, impatient, active, or successful traders may be informed, but these signals are noisy. Dealers therefore price the possibility of information even when no trader can be identified.
+\end{caveat}
+
+\begin{caveat} \hlt{Refusing Flow}\\
+Dealers can control adverse selection by limiting access, refusing anonymous size, or delaying execution. This protects accepted flow but reduces market-wide immediacy.
+\end{caveat}
+
+% From compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/07_risk_management_for_market_makers.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Risk Management for Market Makers}
+
+\begin{taxonomy} \hlt{Dealer Inventory Risk Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{diversifiable inventory risk}: price changes unrelated to dealer inventory imbalance;
+\item \hlt{adverse-selection risk}: price changes inversely related to dealer inventory because informed traders selected the dealer's quote.
+\end{enumerate}
+The first is reduced by diversification and hedging.\\
+The second requires better quoting, client selection, and information inference.
+\end{taxonomy}
+
+\begin{principle} \hlt{Dealer Valuation Priority}\\
+Dealers care first about market value: the price that attracts balanced flow now. Fundamental value matters because informed traders and value traders force market value toward it.
+\end{principle}
+
+\begin{caveat} \hlt{Poorly Informed Dealers}\\
+Poorly informed dealers overreact to uninformed flow and underreact to informed flow. They turn inventory quickly, earn smaller realised spreads, and are most vulnerable when client flow looks informative but is not.
+\end{caveat}
+
+\begin{mechanism} \hlt{Dealers and Value Traders}\\
+Value traders discipline dealer mistakes by trading when quotes move away from fundamental value. Dealers with enough capital and information can wait; constrained dealers must concede price to restore inventory.
+\end{mechanism}
+
+% From compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/01_economics_of_market_making.tex (three blocks).
+\subsection*{Economics of Market Making (excerpt)}
+
+\begin{principle} \hlt{Two-Sided Flow}\\
+Dealers prefer balanced buy and sell flow. Balanced flow earns spread while limiting inventory; one-sided flow converts market making into risk warehousing.
+\end{principle}
+
+\begin{principle} \hlt{Free Entry Bounds Dealer Spreads}\\
+With dealer competition and public limit-order competition, spreads are pulled toward the expected cost of providing immediacy. Monopoly power can widen spreads only when entry, routing, or order-driven competition is weak enough to stop clients from switching liquidity suppliers.
+\end{principle}
+
+\begin{taxonomy} \hlt{Dealer Spread Cost Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{operating costs}: systems, staff, clearing, settlement, membership, and compliance;
+\item \hlt{capital costs}: inventory funding, margin, balance-sheet use, and required return on capital;
+\item \hlt{inventory losses}: price moves before offsetting flow or hedging;
+\item \hlt{informed-flow losses}: trading against clients whose orders predict value changes.
+\end{enumerate}
+\end{taxonomy}
+
+% From compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex (definition, table and principle).
+\subsection*{Optimal Quoting and Inventory Control (excerpt)}
+
+\begin{definition} \hlt{Inventory Imbalance}\\
+Let $q_t$ be dealer inventory and $q_t^\star$ the target inventory. The imbalance is $q_t-q_t^\star$. Dealers quote to earn spread while keeping this imbalance financeable.
+\end{definition}
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\stepcounter{table}
+\renewcommand{\arraystretch}{1.13}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}p{0.27\textwidth} >{\RaggedRight\arraybackslash}p{0.34\textwidth} >{\RaggedRight\arraybackslash}X@{}}
+\hline
+\textbf{Condition} & \textbf{Tactic} & \textbf{Purpose} \\
+\hline
+Inventories too low or & Raise bid price; increase bid size & Encourage clients to sell \\
+clients are net buyers & Raise ask price; decrease ask size & Discourage clients from buying \\
+& Take another trader's offer & Immediately raise inventories \\
+& Buy a correlated instrument & Hedge inventory risk \\
+\hline
+Inventories too high or & Lower ask price; increase ask size & Encourage clients to buy \\
+clients are net sellers & Lower bid price; decrease bid size & Discourage clients from selling \\
+& Hit another trader's bid & Immediately lower inventories \\
+& Sell a correlated instrument & Hedge inventory risk \\
+\hline
+\end{tabularx}
+
+\vspace{0.25em}
+{\footnotesize Table \thetable. Dealer tactics for managing inventories and order flow.}
+\end{table}
+
+\begin{principle} \hlt{Inventory Control Is Price Discovery}\\
+A dealer's search for quotes that balance buy and sell flow also reveals market value. Fundamental value is often learned as a by-product of finding prices at which two-sided flow returns.
+\end{principle}
+
 \end{document}

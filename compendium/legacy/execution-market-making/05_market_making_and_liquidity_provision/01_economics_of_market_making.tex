@@ -1,10 +1,12 @@
 % migrate-to: market-making-lob, execution-market-making
 \subsection{Economics of Market Making}
 
+% assign: execution-market-making
 \begin{definition} \hlt{Dealer}\\
 A dealer trades as principal: buying from clients that want to sell and selling to clients that want to buy. The service sold is immediacy; the compensation is spread, relationship value, or order-flow value.
 \end{definition}
 
+% assign: execution-market-making
 \begin{taxonomy} \hlt{Dealer Problem Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -15,6 +17,7 @@ A dealer trades as principal: buying from clients that want to sell and selling 
 \end{enumerate}
 \end{taxonomy}
 
+% assign: execution-market-making
 \begin{taxonomy} \hlt{Designated Market Maker Obligation Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -26,6 +29,7 @@ A dealer trades as principal: buying from clients that want to sell and selling 
 Obligations buy price continuity; privileges pay for the obligation.
 \end{taxonomy}
 
+% assign: execution-market-making
 \begin{taxonomy} \hlt{Specialist Privilege Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -37,6 +41,7 @@ Obligations buy price continuity; privileges pay for the obligation.
 Each privilege must be evaluated against the liquidity supplied when no one else wants to trade.
 \end{taxonomy}
 
+% assign: execution-market-making
 \begin{taxonomy} \hlt{Dealer Quote Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -47,28 +52,15 @@ Each privilege must be evaluated against the liquidity supplied when no one else
 \end{enumerate}
 \end{taxonomy}
 
-\begin{principle} \hlt{Two-Sided Flow}\\
-Dealers prefer balanced buy and sell flow. Balanced flow earns spread while limiting inventory; one-sided flow converts market making into risk warehousing.
-\end{principle}
 
-\begin{principle} \hlt{Free Entry Bounds Dealer Spreads}\\
-With dealer competition and public limit-order competition, spreads are pulled toward the expected cost of providing immediacy. Monopoly power can widen spreads only when entry, routing, or order-driven competition is weak enough to stop clients from switching liquidity suppliers.
-\end{principle}
 
-\begin{taxonomy} \hlt{Dealer Spread Cost Segmentation}
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item \hlt{operating costs}: systems, staff, clearing, settlement, membership, and compliance;
-\item \hlt{capital costs}: inventory funding, margin, balance-sheet use, and required return on capital;
-\item \hlt{inventory losses}: price moves before offsetting flow or hedging;
-\item \hlt{informed-flow losses}: trading against clients whose orders predict value changes.
-\end{enumerate}
-\end{taxonomy}
+% migrated: Two-Sided Flow -> meth:dealer-quote-adjustment; Free Entry Bounds Dealer Spreads; Dealer Spread Cost Segmentation -> res:adverse-selection-spread-component (full text in notes/artefacts/market-making-lob/derivations.tex)
 
 % migrated: Grossman-Miller Model -> mod:grossman-miller, res:grossman-miller-trading-fees, res:grossman-miller-liquidity-measures (full text in notes/artefacts/market-making-lob/derivations.tex)
 % migrated: Kyle Model -> mod:kyle-single-auction (full text in notes/artefacts/market-making-lob/derivations.tex)
 % migrated: Market Making using Limit Orders -> mod:static-limit-order-depth (full text in notes/artefacts/market-making-lob/derivations.tex)
 
+% assign: execution-market-making
 \begin{taxonomy} \hlt{Dealer Spread vs Outside Spread}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -83,6 +75,7 @@ Value trader often earns only the move from entry back toward value.
 This is why dealer spreads is tight even when fundamental investors require a wide outside spread before trading.
 \end{taxonomy}
 
+% assign: execution-market-making
 \begin{taxonomy} \hlt{Order-Flow Acquisition Segmentation}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -94,10 +87,12 @@ This is why dealer spreads is tight even when fundamental investors require a wi
 \end{enumerate}
 \end{taxonomy}
 
+% assign: execution-market-making
 \begin{caveat} \hlt{Preferencing and Payment for Order Flow}\\
 Preferencing can lower search costs when dealers compete for relationships, but it can also route orders toward economic arrangements rather than best all-in execution.
 \end{caveat}
 
+% assign: execution-market-making
 \begin{practitionernote} \hlt{Trading with Dealers}\\
 Experienced clients often ask for a two-sided quote before revealing direction. A wide quote is information: the dealer may suspect informed flow, inventory pressure, or poor unwind conditions.
 \end{practitionernote}

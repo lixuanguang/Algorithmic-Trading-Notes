@@ -4,7 +4,7 @@ One row per pathway or section overview, keyed as in the learning guide (`guide/
 
 | Pathway key | Mastered | Consolidated | Checkpoint artefact | Entries |
 | --- | --- | --- | --- | --- |
-| `market-making-lob` | | | | Draft entries from the migration pilot, 2026-10-14, not from study: `mod:grossman-miller`, `res:grossman-miller-trading-fees`, `res:grossman-miller-liquidity-measures`, `mod:static-limit-order-depth`, `mod:avellaneda-stoikov`, `mod:kyle-single-auction` |
+| `market-making-lob` | | | | Draft entries from the migration pilot, 2026-10-14, not from study: `mod:grossman-miller`, `res:grossman-miller-trading-fees`, `res:grossman-miller-liquidity-measures`, `mod:static-limit-order-depth`, `mod:avellaneda-stoikov`, `mod:kyle-single-auction`; draft entries from migration slice 2, 2026-10-15, not from study: `mod:glosten-milgrom`, `res:glosten-milgrom-half-spreads`, `res:glosten-milgrom-market-collapse`, `res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment` |
 
 ## Reading before the study method
 
@@ -25,5 +25,8 @@ Books read before these notes followed the learning guide. Their material is in 
 
 ## Open questions
 
-- 2026-10-14, `market-making-lob`: `crypto-cartea` p. 33 prints Kyle's $\lambda=2\sigma_u/\sigma$, the reciprocal of `catalogue-0496` eq. (4.5). Check against Kyle (1985) and the book's errata.
+- 2026-10-14, `market-making-lob`: `crypto-cartea` p. 33 prints Kyle's $\lambda=2\sigma_u/\sigma$, the reciprocal of `catalogue-0496` eq. (4.5). Update 2026-10-15: the authors' errata correct it to $\sigma/(2\sigma_u)$; Kyle (1985) still unread (no open copy found).
 - 2026-10-14, `market-making-lob`: the route's Ho–Stoll reading, `catalogue-0527`, names no paper. Obtain Ho and Stoll (1981) and decide whether it, or their 1980 paper on competing dealers, is the one to read.
+- 2026-10-15, `market-making-lob`: Ho and Stoll (1981) still has no open copy (journal closed; the 1979 Wharton working paper is not online). Obtain it through a library or the authors before the Ho–Stoll entry.
+- 2026-10-15, `market-making-lob`: the Glosten–Milgrom entries cite the 1983 working paper (`glosten-milgrom-1983`). Check them against the 1985 journal version (`s6-glosten`) when a copy is available.
+- 2026-10-15, `market-making-lob`: should the legacy cross-asset arbitrage file (`05_.../06_cross_asset_and_cross_venue_market_making.tex`) be re-pointed from `market-making-lob` and `hft-market-design` to `execution-market-making` or the asset-class pathways?

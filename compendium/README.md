@@ -1,0 +1,83 @@
+# Migrating the compendium
+
+The chapters in this folder were written before these notes followed the learning guide's study method (`guide/`, *How to study with this guide*). On 14 October 2026 they were moved, with their text unchanged, into one chapter per guide section. This file is the plan for turning them into the guide's typed, labelled and cited entries. None of it has been started yet.
+
+## Where things stand (14 October 2026)
+
+- **Block types.** There are 879 blocks in 17 environments of our own, against the guide's eleven entry types. The largest groups have no direct equivalent: `taxonomy` (178), `remark` (146), `caveat` (113) and `principle` (80).
+- **Organisation.** The chapters follow the books they came from, not the guide's pathways. One microstructure file often feeds three or four pathways.
+- **Labels and citations.** Only one block has a label (five figures also do), and sources are cited once per book at the top of a chapter rather than at each claim. No block can yet be linked to, or checked against its source.
+- **Leftovers.**
+  - 16 topic files have fewer than 250 words.
+  - 21 execution-algorithm figures in `execution-trading-costs/figures/` are not used by any file.
+  - The appendix (calculator, reading AI papers, Python, VS Code) is not quantitative finance.
+  - The preface is placeholder text.
+
+## Approach
+
+Do not retype all 879 blocks in one go. Phase 0 is a one-off mechanical tidy that makes the material easy to work through. Phase 1, the migration itself, happens one pathway at a time, when that pathway is consolidated, with the old blocks as drafts. This is the guide's rule for notes written before the method.
+
+## Phase 0: tidy (not started)
+
+1. **Separate the old notes.** Move the old chapters unchanged to `compendium/legacy/<section-key>/` and compile them as a final part, *Notes awaiting migration*. The main chapters then hold only entries in the guide's format, and the legacy part shrinks as pathways are migrated.
+2. **Migration map.** Put a `% migrate-to:` comment at the top of each legacy file naming the pathways its blocks feed, and collect the map in `notes/migration.md`.
+3. **Status script.** Write `tools/migration_status.py` to report, for each pathway, the old blocks left, the entries written, and entries missing a label, a citation or a status.
+4. **Housekeeping.**
+   - Move the non-finance appendix out of the compendium.
+   - Move the unused execution figures in with the legacy execution files.
+   - Remove the placeholder preface text.
+
+## Phase 1: one pathway at a time
+
+1. Run the status script to list the pathway's old blocks.
+2. At placement in the study loop, treat what the blocks cover as drafts to check against the readings, not material to learn again.
+3. When consolidating the pathway, decide each block's fate:
+   - rewrite it as an entry, choosing the type by its content rather than its old environment's name;
+   - merge it into a field of an existing entry;
+   - turn it into a stub in the pathway's entry backlog;
+   - or delete it.
+4. Give every new entry a label, a `\citep` with a locator found in the reading (never reconstructed from memory), and a status, normally *unchecked* until compared with the passage.
+5. Delete the migrated blocks, and each legacy file once it is empty. Compile, and date the pathway in `notes/log.md`.
+
+## How the old environments map to entry types
+
+| Old environment (blocks) | Usually becomes |
+|---|---|
+| `definition` (98) | Definition; Convention if it states a market's quoting or settlement rule |
+| `taxonomy` (178) | The list or table inside its parent concept's Definition; drop lists that make no claim |
+| `principle` (80) | Result with its conditions, or Evidence if it is an empirical regularity |
+| `mechanism` (81) | Model or Result; the guide's Mechanism type only for contract, order-lifecycle or settlement terms |
+| `model` (58), with 28 proofs | Model; each proof shrinks to its idea plus a locator |
+| `method` (31), `process` (18) | Method; order or settlement sequences become Mechanism |
+| `proposition`, `lemma`, `corollary` (28) | Result |
+| `caveat` (113) | Pitfall if it has a check and a remedy; otherwise the Conditions or Pitfalls field of its parent entry |
+| `remark` (146), `practitionernote` (14) | The Practice or Conditions field of the entry it comments on, or delete |
+| `empiricalfinding` (11), `casestudy` (3) | Evidence, with magnitude, sample and period; Example if it is numerical |
+| `marketrule` (18) | Rule for law or regulation, with jurisdiction and date; Convention for venue rules such as matching priority |
+| `notation` (2) | The notation register in `front/notation.tex` |
+
+## Where the old notes go
+
+| Old notes (folder, blocks) | Main target pathways |
+|---|---|
+| Microstructure foundations, orders and books, price formation (`execution-market-making/01`–`03`, 420) | Market microstructure overview, `market-making-lob`, `market-structure-execution-quality`, `futures-execution` |
+| Order flow and empirical microstructure (`execution-market-making/04`, 79) | `price-impact-execution`, `lob-deep-learning`, `market-making-lob`, `market-simulation` |
+| Market making (`execution-market-making/05`, 47) | `market-making-lob`, `hft-market-design` |
+| Execution and algorithmic trading (`execution-trading-costs/01`, 87) | Execution overview, `price-impact-execution`, `market-structure-execution-quality`, `reinforcement-learning-trading`, `model-governance-controls` |
+| Asset-class microstructure (`execution-trading-costs/02`, 37) | `futures-execution`, `options-execution`, `fx-dealer-market-making`, `otc-fixed-income-trading`, `synthetic-equity-cfd-trs`, `crypto-mm-microstructure` |
+| AFML data chapters (`ml-alternative-data/data`, 36) | `statistical-learning-foundations`, `financial-ml-evaluation`, `alternative-data-sources` |
+| Narang's systematic investing (`portfolio-construction-risk/sysinv`, 26) | Portfolio construction overview, `portfolio-construction`, `research-engineering-validation`, `model-governance-controls` |
+| Gliner and Drobny (`multi-asset-systematic-macro`, 120) | Multi-asset overview, `macro-regimes-stock-bond`, `macro-nowcasting-signals`, `macro-announcements-policy`, `monetary-policy-curve`, `fx-determination-forecasting` |
+| Hull basics (`volatility-options`, 13), time value of money (`rates-credit-mortgages`, 2) | Options overview. Forward pricing and hedge ratios go where the guide first needs them (rates, `commodity-hedging`); time- and money-weighted returns go to `performance-manager-evaluation` |
+| Appendix (`appendix`, 12) | None: tooling notes, not compendium entries |
+
+## Order
+
+1. **Pilot `market-making-lob`.** Grossman–Miller, Kyle, Ho–Stoll and Avellaneda–Stoikov are formal models with proofs, so they are the clearest test of Model and Result entries. Adjust the conventions after the pilot.
+2. **Market microstructure overview**, which holds the largest set of blocks (Harris and Hasbrouck), then the rest of that section's pathways.
+3. **Execution, trading costs and market structure**: its overview, `price-impact-execution` and `market-structure-execution-quality`, then the asset-class pathways.
+4. **AFML, Narang, Gliner, Hull and time value of money**, whenever those pathways are studied.
+
+## Done when
+
+The legacy part is empty and every entry has a label, a citation at each claim and a status. The old environments can then be deleted from `preamble.tex`.

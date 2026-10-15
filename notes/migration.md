@@ -1718,9 +1718,92 @@ All are the copies retrieved on 15 October 2026 with generic headers; no new ret
 - Default-management auction details (subordination and seniorization amounts) are in confidential guidelines.
 - Customer-side FCM rules and intraday cycle times are unchecked.
 
+## Slice 19 second follow-up: account classes and the second-month settlement, 15 October 2026
+
+Two wording clarifications, run from `bd4ba54` (633 legacy blocks = 530 shared + 74 single-candidate + 29 assigned, 75 entries, checker clean, guide `343d145`). Earlier records are left as written.
+
+1. `mech:futures-margin-settlement`: "customer losses only from the collateral of the customer account class concerned" stated the restriction in the wrong direction. CME Rules 802.A.5 and 802.G (including 802.G.1 and 802.G.6), read in the chapter-8 text retrieved on 15 October 2026, give the following, and the entry now says so:
+   - default management runs separately by account class;
+   - a customer-class loss is met first from that class's customer collateral, which in a defaulted customer futures class includes the collateral of customers who did not cause the default (802.G.1);
+   - the member's own assets are applied across classes with priority to customers (802.A.5.i, iii);
+   - remaining proprietary collateral may cover customer-class losses, pro rata among defaulted customer classes (802.G.6);
+   - segregated customer collateral may not be used for proprietary obligations or for another customer class.
+2. `conv:cme-globex-trading`: the second month is derived by applying the lead–second spread price to the lead-month settlement. Tier 2 says so explicitly in Exhibit B (PDF p. 6, rendered blackline): the last spread trade, or the nearer of the spread's bid or ask if the trade lies outside them. The entry marks the same reading of Tier 1 as Interpretation. The ES-only VWAP, the rounding and the 2020 dating are unchanged.
+
+## Slice 20: FX market microstructure, 15 October 2026
+
+Migration of the four-block FX file, run after the follow-up above. Migration and source checking, not study; the pathway's checkpoint was not attempted.
+
+### Scope
+
+The whole of `execution-trading-costs/02_.../03_fx_market_microstructure.tex`: 4 counted blocks with the sentences inside them; outside them only the `% migrate-to:` line and the subsection heading (checked by script). The file, its `\input` in `02_.../00_overview.tex` and its map row were deleted; the wrapper and its other four topics are unchanged.
+
+### Ownership and dispositions
+
+`fx-dealer-market-making` (the map's single candidate) owns all four blocks. Its outcome is pricing a spot FX client franchise, choosing between internalising and hedging, and evaluating aggregator and last-look practices against fill and markout evidence. The one item outside that outcome, "fixing windows", is benchmark timing; it was left to `fx-funding-settlement`, whose outcome covers conduct around benchmark fixes, without an entry. That is the only routing exception, and it is not a migration into another entry. The pathway sits in the section `execution-market-making`, so the entries are in `compendium/execution-market-making/fx-dealing.tex`.
+
+| # | Legacy block | Owner | Destination | Checked sources | Disposition |
+|---|---|---|---|---|---|
+| 1 | *FX Is Dealer-Centric and Fragmented* (principle) | `fx-dealer-market-making` | `def:fx-market-structure` (new) | BIS pp. 22–23; Cartea–Jaimungal–Walton p. 2 | Rewritten; prime-brokered access unchecked |
+| 2 | *FX Venue Segmentation* (taxonomy) | `fx-dealer-market-making` | `def:fx-market-structure` (venues, ECNs, RFQ); `mod:fx-internalisation-horizon` (new; internalisation); fixing windows left to `fx-funding-settlement` | BIS pp. 5, 12, 23, 43; Butz–Oomen pp. 1–2, 8, 11 | Split: venues, protocols and internalisation separated; RFQ "for size or less liquid pairs" unsupported as a restriction |
+| 3 | *Last Look* (definition) | `fx-dealer-market-making` | `mech:fx-last-look` (new) | FX Global Code Principle 17, pp. 22–23 (page images), p. 1; DB cover sheet sec. C.4; CJW abstract | Rewritten; the stale-quote rationale marked as the model premise |
+| 4 | *FX Cost Is Relationship-Dependent* (caveat) | `fx-dealer-market-making` | `mech:fx-last-look` (Practice, Pitfalls) and `mod:fx-internalisation-horizon` (Practice); stub `ev:fx-last-look-fill-reject-evidence` | BIS Box B p. 11, p. 27; Butz–Oomen abstract, p. 2; DB cover sheet | Merged; "can dominate fill quality" dropped as unsupported; prime-broker limits unchecked |
+
+Overlaps: `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment` and `mod:inventory-based-quotes` (generic dealer theory), `def:smart-order-routing` and `def:best-execution` (equity sources) and `res:latency-arbitrage-arms-race` (ES–SPY evidence) are cross-referenced, each labelled as not FX evidence; none was changed.
+
+### Sources, 2026-10-15 (generic request headers)
+
+- **BIS Markets Committee**, *FX execution algorithms and market functioning*, October 2020 (`exp-fx-algos`), official PDF: pp. 5, 11–13, 21–24, 27–28, 43, text layer (printed page = PDF − 6). A study-group survey with interviews.
+- **FX Global Code**, updated December 2024 (`exp-fx-code`), official PDF: p. 1 (status) and Principle 17, pp. 22–23, on page images, because the text layer contains hidden placeholder text.
+- **Deutsche Bank**, GFXC Liquidity Provider Disclosure Cover Sheet, completed 18 September 2025 (`db-fxgc-lp-cover-2025`, added to `front/sources.tex`), sec. C.4: one provider's self-reported terms.
+- **Butz and Oomen** (`cfd-butz-oomen-2019`), accepted version on LSE Research Online (manuscript November 2017): abstract, pp. 1–2, 8 and 11, page images of pp. 8 and 11; the EUR/USD calibration recomputed (12.75/3.66/2.507 ≈ 1.39 minutes). The authors were in Deutsche Bank's e-FX division.
+- **Cartea, Jaimungal and Walton** (`dm-cartea-jaimungal-walton-2019`), arXiv 1806.04460v1 (12 June 2018): abstract and p. 2.
+- **Not available or not read:**
+  - `dm-oomen-last-look-2017` and `dm-oomen-aggregator-2017`: no open copy found; the old LSE eprints listing returned 404, and the new repository's search did not surface them;
+  - `wide-king-osler-rime`;
+  - the pathway's empirical order-flow readings.
+
+### Distinctions kept
+
+- **Structure.** Venues and access channels, trading protocols (RFQ/RFS, algorithms), internalisation (a dealer's risk-management choice, with its horizon model) and fixing windows (benchmark timing, another pathway's) are separated.
+- **Quotes and rejections.** Firm quotes (anonymous order books) are kept apart from conditional ones (disclosed pools with last look). Price-check rejection is kept apart from validity rejection (credit, exposure, permissioning) and from technical failures; prime-broker restrictions are unchecked.
+- **Costs.** Quoted spreads are kept apart from realised costs, reject ratios and markouts (named as TCA metrics only). No FX evidence on magnitudes was found, so no benchmark, horizon or selection effect is reported for one.
+- **Status of claims.** The Global Code is voluntary guidance (it disclaims legal obligations), the provider sheet is contractual disclosure, Cartea–Jaimungal–Walton is a theoretical prediction, the BIS report is survey evidence, and Butz–Oomen is a model calibrated to survey aggregates.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `exp-fx-algos` | pp. 5, 11–13, 21–24, 27–28, 43 | Survey and interviews, 2020 |
+| `exp-fx-code` | p. 1; pp. 22–23 (page images) | Voluntary; December 2024 edition |
+| DB cover sheet | sec. C.4 | One provider, self-reported |
+| `cfd-butz-oomen-2019` | abstract, pp. 1–2, 8, 11 | Accepted manuscript; model calibrated top-down |
+| `dm-cartea-jaimungal-walton-2019` | abstract, p. 2 | arXiv v1; theory |
+| Oomen (2017, two papers), King–Osler–Rime | none | Not available or not read |
+
+The three new entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/fx-dealer-market-making/derivations.tex` (1 page, no warnings or bad boxes), with only the subsection unnumbered; a script confirmed the body appears once and the four blocks once each, in order, with nothing else outside them. Earlier artefacts are unchanged.
+
+### Counts
+
+`migration_status.py`: 633 → 629 legacy blocks = 530 shared + 70 single-candidate + 29 assigned. `fx-dealer-market-making`: exclusive 4 → 0, listed entries 0 → 3 (new note), backlog stubs 0 → 1. Entries 75 → 78 (definitions 28 → 29, mechanisms 4 → 5, models 9 → 10). Other listings unchanged.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 195 pages (193 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. Rendered and inspected: PDF pp. 53–55 (the new FX section), 87 and 89 (the slice-19 clarifications) and 192 (the legacy asset-class section, which now starts at *Options Market Microstructure*). Tests: 14 passed.
+
+### For review
+
+- The three new FX entries.
+- Leaving fixing windows to `fx-funding-settlement` without an entry.
+- The reliance on a voluntary code, one provider's disclosure and open manuscript versions.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/03_fx_market_microstructure.tex` (4 blocks), whose map names `fx-dealer-market-making` alone. Likely overlaps: `meth:dealer-quote-adjustment` and `def:dealer-inventory-risk` (internalisation and dealer quoting), `def:smart-order-routing` and `res:latency-arbitrage-arms-race` (last look and stale quotes), and `def:best-execution`. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/04_options_market_microstructure.tex` (4 blocks), whose map names `options-execution` alone. Likely overlaps: the dealer quoting and inventory entries, `def:portfolio-trading` and `mech:etf-creation-redemption` (index options), and `conv:futures-block-efrp` (EOOs). The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1755,7 +1838,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/03_fx_market_microstructure.tex` | fx-dealer-market-making |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/04_options_market_microstructure.tex` | options-execution |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/05_fixed_income_microstructure.tex` | otc-fixed-income-trading |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/06_securities_lending_and_synthetic_shorts.tex` | synthetic-equity-cfd-trs |

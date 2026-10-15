@@ -1,0 +1,51 @@
+---
+key: fx-dealer-market-making
+section: execution-market-making
+status: not started (draft entries from the migration only)
+---
+
+# FX dealing: internalisation, last look and hedging
+
+Pathway outcome, from the guide: price a spot FX client franchise, choose between internalising and hedging inventory across currency pairs, and evaluate aggregator and last-look practices against fill and markout evidence. Its checkpoint sets spreads and an inventory skew for one pair, compares internalising only, hedging immediately and a mixed policy, then adds a last-look window and reports fill rates, reject rates and client markouts, stating which results depend on latency and client mix. Its twelve readings run from the King–Osler–Rime survey through FX order-flow evidence to internalisation (`cfd-butz-oomen-2019`), multi-currency skewing and hedging, and last look and aggregators (`dm-oomen-aggregator-2017`, `dm-oomen-last-look-2017`, `dm-cartea-jaimungal-walton-2019`).
+
+## Status
+
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration slice 20 (`notes/migration.md`), which migrated the legacy FX-market-microstructure file mapped to this pathway alone. The entries come from migration and source checking against the BIS Markets Committee's 2020 report (`exp-fx-algos`), the FX Global Code of December 2024 (`exp-fx-code`), one provider's 2025 disclosure, and two of this pathway's readings in open versions (`cfd-butz-oomen-2019` accepted manuscript; `dm-cartea-jaimungal-walton-2019` arXiv v1). That is not study of the readings, and the checkpoint was not attempted.
+
+## Outcome in my own words
+
+## How the readings fit together
+
+## Checkpoint
+
+Not attempted.
+
+## Entries created or changed
+
+Written in migration slice 20, 2026-10-15:
+
+- `def:fx-market-structure`: fragmentation without a consolidated tape; venues and access channels, RFQ/RFS risk transfer, firm and non-firm liquidity, principal and franchise liquidity; internalisation as a dealer choice; transaction cost analysis metrics including reject ratios.
+- `mod:fx-internalisation-horizon`: Butz and Oomen's queue model, $W\approx(R/\lambda_0)c_R/\sqrt{2\pi}$, with the EUR/USD calibration recomputed (1.39 minutes) and the costs of position skewing.
+- `mech:fx-last-look`: the FX Global Code's Principle 17 (voluntary, December 2024), one provider's disclosed terms (September 2025), firm against conditional quotes, price against validity rejections and technical failures, and the Cartea–Jaimungal–Walton model prediction.
+
+All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/fx-dealer-market-making/derivations.tex`.
+
+## Related entries owned elsewhere
+
+Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `mod:inventory-based-quotes` (`market-making-lob` and `execution-market-making`); `def:smart-order-routing`, `def:best-execution` (`market-structure-execution-quality`); `res:latency-arbitrage-arms-race` (`hft-market-design`). None of them is FX evidence.
+
+## Entry backlog
+
+- ev:fx-last-look-fill-reject-evidence: measured fill rates, reject rates, hold times and client markouts under last look against firm liquidity, with benchmarks, horizons and selection effects; Oomen's last-look and aggregator papers (unread) and empirical FX studies are needed before such an entry.
+
+## Legacy candidate material
+
+Run `python3 tools/migration_status.py` for the current counts. After slice 20 no legacy file lists this pathway.
+
+## What changed in my view or practice
+
+## Questions carried forward
+
+- Read Oomen (2017) on last look and on aggregators; no open copy was found on 2026-10-15.
+- Read King, Osler and Rime (2013) for FX market structure.
+- Fixing windows were left to `fx-funding-settlement`; prime-broker access was not checked.

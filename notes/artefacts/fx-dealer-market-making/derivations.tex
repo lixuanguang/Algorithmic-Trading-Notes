@@ -1,0 +1,53 @@
+% notes/artefacts/fx-dealer-market-making/derivations.tex
+% Legacy blocks kept verbatim when they were migrated (notes/migration.md), for the pathway
+% fx-dealer-market-making. The compendium entries state each claim with its locator; the original wording lives here.
+% Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/fx-dealer-market-making/ with  latexmk -pdf derivations.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{FX dealing: legacy derivations}
+
+\section*{FX market microstructure (slice 20, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 20): the whole of
+% 03_fx_market_microstructure.tex below its migrate-to line, 4 blocks in order with the sentences inside
+% them; only the subsection is unnumbered here. No other text, table or figure was in the file.
+% Destinations (all fx-dealer-market-making): block 1 and block 2 (venues, ECNs, RFQ) def:fx-market-structure;
+% block 2's internalisation item mod:fx-internalisation-horizon and def:fx-market-structure; block 2's
+% "fixing windows" left to fx-funding-settlement; block 3 mech:fx-last-look; block 4 split between
+% mech:fx-last-look and mod:fx-internalisation-horizon, its "can dominate" claim dropped as unsupported.
+% Sources: BIS Markets Committee (exp-fx-algos, October 2020); FX Global Code (exp-fx-code, December 2024);
+% Deutsche Bank cover sheet (18 September 2025); Butz and Oomen (cfd-butz-oomen-2019, accepted version);
+% Cartea, Jaimungal and Walton (dm-cartea-jaimungal-walton-2019, arXiv v1).
+
+% From compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/03_fx_market_microstructure.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{FX Market Microstructure}
+
+\begin{principle} \hlt{FX Is Dealer-Centric and Fragmented}\\
+Spot FX has no single consolidated exchange. Liquidity is split across dealer streams, ECNs, prime-brokered access, bank internalisers, and bilateral relationships.
+\end{principle}
+
+\begin{taxonomy} \hlt{FX Venue Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{dealer streams}: bilateral executable prices from banks or non-bank market makers;
+\item \hlt{ECNs}: central electronic books with disclosed or anonymous participation;
+\item \hlt{RFQ}: request-for-quote negotiation for size or less liquid pairs;
+\item \hlt{internalisation}: dealer offsets client flow before external hedging;
+\item \hlt{fixing windows}: benchmark-driven flow concentrated around reference-rate times.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Last Look}\\
+Last look gives a liquidity provider a short window to accept or reject an incoming trade request.\\
+It reduces stale-quote risk for the provider, but creates execution uncertainty and potential information-leakage concerns for the client.
+\end{definition}
+
+\begin{caveat} \hlt{FX Cost Is Relationship-Dependent}\\
+The displayed spread is only part of the cost. Credit, prime-broker limits, rejection rates, hold times, skewed streams, and information leakage can dominate fill quality.
+\end{caveat}
+
+\end{document}

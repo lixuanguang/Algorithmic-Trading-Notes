@@ -1,0 +1,92 @@
+% compendium/execution-market-making/fx-dealing.tex
+% Entries migrated on 2026-10-15 from the legacy FX-market-microstructure file (slice 20), owned by
+% fx-dealer-market-making; dispositions and source checks in notes/migration.md, the blocks verbatim in
+% notes/artefacts/fx-dealer-market-making/derivations.tex.
+
+\section{Spot FX dealing: market structure, internalisation and last look}
+
+\begin{qfdefinition}[Spot FX market structure: venues and access channels, trading protocols, firm and non-firm liquidity, and principal and franchise liquidity]\label{def:fx-market-structure}
+\qffield{Statement} The FX market is fragmented and has no consolidated tape of prices or volumes \citep[sec.~2.2, p.~22]{exp-fx-algos}. Cartea, Jaimungal and Walton add that there is no central exchange framework. The most common G10 currencies may trade on more than 20 electronic crossing networks (ECNs), and most major banks also offer trading through their own platforms, applications or APIs \citep[arXiv version, sec.~1, p.~2]{dm-cartea-jaimungal-walton-2019}. Four things should be kept apart:
+\begin{itemize}
+\item \emph{Venues and access channels.} The primary electronic venues (EBS Market, Refinitiv Spot Matching, and CME for some pairs) supply the reference prices most algorithms use. Their market share had dwindled as alternative ECNs and liquidity pools emerged; clients reach liquidity by voice or chat, APIs, single-dealer and multi-dealer platforms \citep[pp.~12, 22--23]{exp-fx-algos}.
+\item \emph{Trading protocols.} In a ``risk transfer'' the client requests a price, by request for quote (RFQ) or request for stream (RFS), and trades its full ticket at the price received, paying the spread for immediacy; RFQ systems differ in whether the side is revealed, who receives the request and whether quotes are executable or indicative (pp.~5 and~43). Orders may instead be worked by execution algorithms across venues (sec.~2).
+\item \emph{Firm and non-firm liquidity.} Anonymous pools based on a central limit order book typically match ``firm liquidity'', without the option to reject. Disclosed pools allow liquidity to be partitioned by counterparty and typically include ``non-firm liquidity'', with a short window in which the provider may reject (``last look''); some ECNs offer both (Box~D, p.~23).
+\item \emph{Principal and franchise liquidity.} In principal pools the provider takes the position on its market-making desk. In franchise pools it uses one client's flow to offset another's, \emph{internalising} rather than hedging externally (Box~D, p.~23).
+\end{itemize}
+Internalisation is a dealer's risk-management choice, not a venue. A dealer may \emph{internalise} a client trade by warehousing the risk until offsetting flow arrives, or \emph{externalise} it by hedging in the open market \citep[accepted version, abstract and sec.~1, p.~1]{cfd-butz-oomen-2019}; see \hyperref[mod:fx-internalisation-horizon]{FX internalisation horizon}.
+
+\qffield{Conditions} The BIS figures are a central-bank study group's survey and interviews as of 2020, not measurements of the whole market. The largest dealers report internalisation ratios ``as high as 90\%'', but the term has several definitions, from matching only between users of one platform to including flow routed to a dealer's own desk or to mid-matching venues, so reported ratios are not comparable (Box~D, p.~23). Visible depth can mislead: trading interest posted on several venues at once can create a ``liquidity mirage'', which the report expects last look to exacerbate (p.~27).
+
+\qffield{Practice} Interpretation: routing in FX must weigh firmness and internalisation as well as price; the BIS describes routers that consider quoted size, queue length, fill ratios and fill probability, and that assume lower price impact for internalised orders, an assumption checked through transaction cost analysis (p.~24; compare \hyperref[def:smart-order-routing]{smart order routing}, from European equities). Transaction cost analysis in FX compares traded prices with benchmarks at order arrival, during and after execution, and measures slippage, market impact and the ratio of rejected trades, without a consolidated tape to supply the benchmark (Box~B, p.~11).
+
+\qffield{Pitfalls} The legacy principle listed prime-brokered access and bilateral relationships among the places liquidity sits, and its taxonomy listed ``fixing windows'' as a venue type. Prime brokerage is not in the passages read. Fixing windows are a matter of benchmark timing, not a venue; they belong to the pathway \texttt{fx-funding-settlement} and are left to it. The legacy taxonomy's RFQ ``for size or less liquid pairs'' is a plausible use, but the source describes RFQ as a protocol for full-size risk transfer without restricting it to those cases. Venue names and market shares are as of 2020.
+
+\qffield{See also} \hyperref[mod:fx-internalisation-horizon]{FX internalisation horizon}; \hyperref[mech:fx-last-look]{last look}; \hyperref[def:smart-order-routing]{smart order routing} and \hyperref[def:best-execution]{best execution} (equity sources, not FX evidence); \hyperref[def:dealer-inventory-risk]{dealer inventory risk}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/fx-dealer-market-making/}. King, Osler and Rime (\texttt{wide-king-osler-rime}), the pathway's survey of FX market structure, was not read.
+
+\qffield{Index} FX market structure; spot FX; fragmentation; consolidated tape; primary venues; EBS; ECN; single-dealer platform; multi-dealer platform; request for quote; request for stream; risk transfer; firm liquidity; non-firm liquidity; disclosed pools; anonymous pools; principal liquidity; franchise liquidity; internalisation; externalisation; liquidity mirage
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against \texttt{exp-fx-algos}, BIS Markets Committee report of October 2020, pp.~5, 11--13, 21--24, 27--28 and~43, text layer; \texttt{dm-cartea-jaimungal-walton-2019} in arXiv~1806.04460v1, p.~2; and \texttt{cfd-butz-oomen-2019} in its accepted version, pp.~1--2). Stability: draft. Currency: market structure as described in 2018--2020.
+\end{qfdefinition}
+
+\begin{qfmodel}[FX internalisation horizon: how long a dealer takes to offset client risk internally, and what position skewing costs (Butz and Oomen)]\label{mod:fx-internalisation-horizon}
+\qffield{Statement} Butz and Oomen model internalisation as a queue: each client trade either increases or decreases the dealer's risk position, and the \emph{internalisation horizon} is the time a risk-increasing trade waits until risk-decreasing trades offset it. To control the build-up of risk the dealer \emph{skews} its prices to attract risk-reducing flow. By Little's law the average horizon is proportional to the ratio of the dealer's risk limit $R$ to the rate $\lambda_0$ of risk-increasing flow \citep[accepted version, sec.~1, p.~2]{cfd-butz-oomen-2019}. With an exponential position skew,
+\[ W\approx\frac{R}{\lambda_0}\,\frac{c_R}{\sqrt{2\pi}},\qquad c_R\to1\ \text{as $R$ grows}, \]
+and with a binary skew $W=(R/\lambda_0)\,c_R/4$ (Proposition~1, eqs.~(10)--(11), p.~8, page image). The average is the same whatever rule the dealer uses internally to match offsetting trades, provided its position starts and ends at zero (p.~8).
+
+\qffield{Notation} $R$ is the risk limit in notional (for example \$ millions); $\lambda_0$ the rate of risk-increasing client flow in notional per minute; $W$ the average horizon in minutes.
+
+\qffield{Conditions} The calibration is top-down, from the BIS 2016 triennial survey rather than dealer data. Spot turnover of \$1{,}652~billion a day is reduced to customer flow, a representative tier-1 dealer is given a 6.6 percent share, and its risk limit is set so that its position stays within \$25~million 95 percent of the time, $R=\$25\text{mn}/1.96=\$12.75$mn. For EUR/USD, $\lambda_0=\tfrac12\times\$111\text{mn/min}\times6.6\%=\$3.66$mn/min, giving $W=12.75/3.66\times1/\sqrt{2\pi}\approx1.39$ minutes (pp.~8 and~11, page image of p.~11; recomputed). Horizons are single-digit minutes for liquid G10 currencies and tens of minutes for most Asian and emerging-market currencies and some less liquid G10 ones (p.~11, Figure~6), and vary predictably over the day.
+
+\qffield{Practice} Smaller dealers, or those with less risk appetite, can shorten horizons by skewing more aggressively. That has a direct cost, less spread captured on risk-decreasing trades, and an indirect one, ``information leakage or signalling risk associated with skewing''. Internalisation therefore runs on a continuum from passive to aggressive (p.~2). The authors' message is that a client's transaction costs and liquidity access depend on its own trading and on the dealer's risk management; clients should tell externalisers from internalisers, and passive from aggressive internalisers (abstract). The BIS report gives the user's side: internalisation can reduce information leakage and market impact, though dealers' skewing may reveal information and negate some of that benefit \citep[p.~27]{exp-fx-algos}.
+
+\qffield{Pitfalls} The authors worked in Deutsche Bank's electronic FX spot division, as the paper discloses in a footnote on its abstract page. The horizons are model outputs from survey aggregates, not observed internalisation times; the accepted manuscript was read, not the published version. Generic dealer-inventory theory (\hyperref[def:dealer-inventory-risk]{dealer inventory risk}, \hyperref[meth:dealer-quote-adjustment]{dealer quote adjustment}, from Harris's equity and floor examples) motivates skewing but is not FX evidence.
+
+\qffield{See also} \hyperref[def:fx-market-structure]{spot FX market structure}; \hyperref[mod:inventory-based-quotes]{inventory-based quotes}; \hyperref[meth:dealer-quote-adjustment]{dealer quote adjustment}.
+
+\qffield{Further reading} The legacy item it replaces, verbatim, is in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/fx-dealer-market-making/}.
+
+\qffield{Index} internalisation; externalisation; internalisation horizon; Little's law; queuing theory; position skewing; risk limit; client flow; passive internaliser; aggressive internaliser; tier-1 dealer; BIS triennial survey
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against \texttt{cfd-butz-oomen-2019} in the accepted version on LSE Research Online, abstract and pp.~1--2, 8 and~11, page images of pp.~8 and~11, calibration recomputed; and \texttt{exp-fx-algos}, p.~27). Stability: draft. Currency: model timeless; calibration from the 2016 BIS survey.
+\end{qfmodel}
+
+\begin{qfmechanism}[Last look in spot FX: the provider's final accept or reject window, its validity and price checks, and how it differs from firm liquidity]\label{mech:fx-last-look}
+\qffield{Statement} The FX Global Code defines \emph{last look} as a practice in electronic trading ``whereby a Market Participant receiving a trade request has a final opportunity to accept or reject the request against its quoted price''. If used, it should be a risk control that checks \emph{validity}, the operational details and sufficient credit, and/or \emph{price}, whether the requested price remains consistent with the current price. The provider has sole discretion, leaving the client with market risk if the request is rejected \citep[Principle~17, pp.~22--23, page images]{exp-fx-code}. Under the Code providers should disclose:
+\begin{itemize}
+\item whether and how price changes in either direction affect the decision;
+\item the expected or typical time taken to decide;
+\item the purpose of last look.
+\end{itemize}
+They should not use it to gather information with no intention of accepting, and should not trade on the information in the request during the window. That covers both pricing on electronic platforms and hedging, with an exception for documented ``cover and deal'' arrangements in which the provider fills the client only after offsetting in the market and passes on the whole volume.
+
+\qffield{Conditions} The Code is voluntary: it ``does not impose legal or regulatory obligations on Market Participants nor does it substitute for regulation'' (p.~1); the edition read is the update of December 2024. Contractual practice is in each provider's disclosures. In one example, completed on 18 September 2025, Deutsche Bank reports for its wholesale FX business:
+\begin{itemize}
+\item a price check of up to 10~milliseconds, with no additional hold time beyond the checks;
+\item a validity check covering counterparty-exposure limits, credit checks and currency-pair permissioning;
+\item symmetric and asymmetric price checks, with the asymmetric check as its default, since it causes fewer rejections;
+\item that technical problems or disrupted markets may lengthen the window, and that acceptance rates, price-check durations and pricing may differ between customers;
+\item no trading during the window except under agreed cover-and-deal arrangements.
+\end{itemize}
+\citep[sec.~C.4]{db-fxgc-lp-cover-2025}. These are one provider's self-reported terms, not market facts.
+
+\qffield{Practice} Keep apart, Interpretation using the sources above:
+\begin{itemize}
+\item a \emph{firm} quote, matched without rejection, as in anonymous order books, from a \emph{conditional} (non-firm) quote subject to last look \citep[Box~D, p.~23]{exp-fx-algos};
+\item a \emph{price-check rejection} from a \emph{validity} rejection for credit, exposure or permissioning, and both from a \emph{technical failure} that lengthens or breaks the process;
+\item the provider's \emph{hold time}, the time spent deciding, which the Code asks to be disclosed;
+\item the client's measures: fill and reject rates, and markouts, prices after the trade compared with the trade price. FX transaction cost analysis includes the ratio of rejected trades and benchmarks after execution \citep[Box~B, p.~11]{exp-fx-algos}.
+\end{itemize}
+In theory, with risk-neutral providers who recover losses to latency arbitrageurs from other traders, last look lowers the quoted spread on a single venue. With two venues an equilibrium may keep both or only one, and a last-look venue may even quote wider spreads than a firm one \citep[arXiv version, abstract]{dm-cartea-jaimungal-walton-2019}. This is a model prediction, not an empirical finding.
+
+\qffield{Pitfalls} The legacy definition said last look ``reduces stale-quote risk for the provider'' and creates ``execution uncertainty and potential information-leakage concerns for the client''. The first is the model's premise; the second matches the Code's concern with information use and the client's market risk on rejection. The legacy caveat's list (credit, prime-broker limits, rejection rates, hold times, skewed streams, information leakage), and its claim that these ``can dominate fill quality'', is not established by the passages read. Credit appears as part of the validity check; prime-broker limits were not checked; no source read measures how much each item contributes, so ``can dominate'' is dropped. The latency-arbitrage evidence of Budish, Cramton and Shim concerns ES and SPY, not FX (\hyperref[res:latency-arbitrage-arms-race]{latency-arbitrage arms race}). Oomen's papers on last-look design and on aggregators (\texttt{dm-oomen-last-look-2017}, \texttt{dm-oomen-aggregator-2017}) were not available and are unread.
+
+\qffield{See also} \hyperref[def:fx-market-structure]{spot FX market structure}; \hyperref[res:latency-arbitrage-arms-race]{latency-arbitrage arms race}; \hyperref[def:best-execution]{best execution}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/fx-dealer-market-making/}.
+
+\qffield{Index} last look; FX Global Code; Principle 17; validity check; price check; symmetric last look; asymmetric last look; hold time; reject rate; fill rate; markout; cover and deal; firm liquidity; non-firm liquidity; information leakage; latency arbitrage
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against \texttt{exp-fx-code}, FX Global Code updated December 2024, pp.~1 and 22--23, page images of pp.~22--23; the Deutsche Bank cover sheet completed 18 September 2025, sec.~C.4; \texttt{exp-fx-algos}, pp.~11, 23 and~27; and \texttt{dm-cartea-jaimungal-walton-2019}, arXiv v1, abstract and p.~2). Stability: draft. Currency: the Code as of December 2024; provider practice as of September 2025.
+\end{qfmechanism}

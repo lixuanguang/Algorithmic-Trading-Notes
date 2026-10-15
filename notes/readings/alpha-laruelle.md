@@ -2,7 +2,7 @@
 key: alpha-laruelle
 pathways: [execution-market-making, hft-market-design, market-structure-execution-quality]
 version: Charles-Albert Lehalle and Sophie Laruelle (eds.), Market Microstructure in Practice, 2nd ed., World Scientific, 2018 (ISBN 9789813231122; DOI 10.1142/10739); local PDF with a text layer, outside the repository (printed page = PDF page - 27)
-sections: Introduction (pp. 3-7, 19-20, 27-29); chap. 3, secs. 3.2-3.2.2 (pp. 203-215, page image of p. 208, checked for migration slice 9); chap. 2, secs. 2.2, 2.3.1, 2.5-2.5.2 (pp. 143-151, 169-186); app. A, secs. A.2 (pp. 250-251, for routing only), A.5, A.7 (pp. 273-284, slice 10) and A.10 (pp. 261-266, 292-298); page images for p. 172 and pp. 262-266 (checked for migration slices 4 and 5)
+sections: Introduction (pp. 3-7, 19-20, 27-29); chap. 3, secs. 3.2-3.2.2 (pp. 203-215, page image of p. 208, checked for migration slice 9); chap. 3, secs. 3.1 and 3.4.1 (pp. 193-201 for context; pp. 227-231, page image of Table 3.1 on p. 229, slice 11); chap. 2, secs. 2.2, 2.3.1, 2.5-2.5.2 (pp. 143-151, 169-186); app. A, secs. A.2 (pp. 250-251, for routing only), A.5, A.7 (pp. 273-284, slice 10) and A.10 (pp. 261-266, 292-298); page images for p. 172 and pp. 262-266 (checked for migration slices 4 and 5)
 read:
 status: draft
 ---
@@ -25,6 +25,7 @@ Prepared on 2026-10-15 by migration slices 4 and 5 from source checks, not from 
 - Garman–Klass volatility normalised by the average price (p. 172, page image); used for seasonality and for the FTSE 100 / IBEX 35 comparison, which found no significant effect of UK fragmentation on intraday volatility (pp. 146–147, 172–174).
 - Intraday impact in spreads from the arrival price, concave during execution and reverting after (Figure 3.3, pp. 204–206, CAC 40, 2010); impact $\propto$ Duration$^\alpha\times$Participation$^\gamma$, $\gamma\approx0.5$ (eq. (3.1), pp. 207–209); drivers and timing (pp. 203–206); restatement of Bacry et al.'s post-execution study with home indexes and least-squares beta (eq. (3.2), pp. 209–215).
 - Optimal trade scheduling (app. A.7, pp. 273–281): temporary impact $\kappa\sigma_n(v/V_n)^\gamma$ (A.17), expectation-only schedule $\propto V_n/\sigma_n^{1/\gamma}$ (A.22), variance-only (A.25), mean–variance (A.26) and the $\gamma=1$ recurrence (A.28); two layers of a trading algorithm (p. 274); Cartea–Jaimungal stochastic control (A.7.3, pp. 281–284, not used). The appendix mixes timing conventions ((A.16) against (A.27)) and mislabels Proposition 5 (own check).
+- Benchmarks of trading algorithms by region (US stealth, Asia cross-market comparison, Europe detection and routing), "on paper" IS, VWAP or PoV and liquidity seekers, adjusted by order size; Table 3.1 (order size, market context, hedged risk, p. 229) and Table 3.2 (stock, trade and features, p. 230); the risk–reward reading of the hedged-risk column (sec. 3.4.1, pp. 227–228).
 - Number of trades per day as a proxy for HFT activity (Figure 2.25, p. 171).
 - Price formation process: the impact of each trade plus the variation of the fair price (after Bouchaud et al. 2002); immediate impact, then decay or resilience (Figure 8, pp. 27–29); temporary impact when pressure contradicts consensus, permanent when it agrees (pp. 3, 28); mainly driven by information (p. 7); more information should improve it, but traders fear leakage (pp. 19–20).
 - Extraday and intraday volatility as two scales (sec. 2.5, p. 169); intraday and overnight returns and correlations, eqs. (2.2)–(2.3) (p. 175); correlation spikes mainly overnight, intraday correlation a baseline, highest since 1991 in October 2010; the opening fixing less noisy than the closing one (pp. 174–177).
@@ -47,7 +48,7 @@ Prepared on 2026-10-15 by migration slices 4 and 5 from source checks, not from 
 
 ## Entries
 
-`meth:garman-klass-volatility`, `meth:spread-volatility-regression`, `def:price-formation-process`, `def:intraday-overnight-returns`, `ev:intraday-impact-profile`, `mod:almgren-chriss-execution`; also cited in `res:spread-determinants` and `def:market-efficiency`.
+`meth:garman-klass-volatility`, `meth:spread-volatility-regression`, `def:price-formation-process`, `def:intraday-overnight-returns`, `ev:intraday-impact-profile`, `mod:almgren-chriss-execution`, `meth:algorithm-benchmark-choice`; also cited in `def:execution-benchmark`, `res:spread-determinants` and `def:market-efficiency`.
 
 ## Open questions
 

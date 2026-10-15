@@ -1,0 +1,50 @@
+---
+key: s7-kissellscience
+pathways: [execution-trading-costs]
+version: Robert Kissell, The Science of Algorithmic Trading and Portfolio Management, Academic Press (Elsevier), copyright 2014, ISBN 978-0-12-401689-7; the catalogue cites it as 2013. Local PDF with a text layer, outside the repository (printed page = PDF page - 19); identity checked from the title page, copyright page and ISBN, not the file name
+sections: chap. 1, pp. 16-18 (algorithm classes and types); chap. 3, pp. 97-108 (cost conventions, implementation shortfall, arrival cost, benchmark, VWAP and participation-weighted price performance), page images of pp. 100, 103 and 105 (checked for migration slice 11)
+read:
+status: draft
+---
+
+Prepared on 2026-10-15 by migration slice 11 from source checks, not from study: the headings that need your own reading are left empty. The book is in the catalogue but on no route's required list; it was used because Perold's paper (`wide-perold-shortfall`) was not available.
+
+## Question and claim
+
+## Mechanism
+
+## Method
+
+- Implementation shortfall as paper minus actual return (eqs. (3.1)–(3.4), pp. 97–99); complete execution; Perold's execution and opportunity costs (pp. 100–101); Wagner's expanded form with delay, trading and opportunity parts, and the market-activity form (eqs. (3.5)–(3.8), pp. 101–104); arrival cost in currency and basis points with signed quantities (eqs. (3.9)–(3.11), p. 105).
+- Benchmark, VWAP (full day, interval, to end of day) and participation-weighted price performance (eqs. (3.12)–(3.16), pp. 105–108).
+
+## Data and timing
+
+## Key results
+
+- Worked examples recomputed with exact arithmetic: \$2,600 for a complete fill; \$3,080 for a partial fill, split as 2,000 execution, 1,000 opportunity and 80 fees (Perold) or 1,250 delay, 1,000 trading, 750 opportunity and 80 fees (Wagner) (pp. 99–103).
+- Algorithm types: VWAP follows the volume curve, TWAP trades evenly in time, POV trades a fixed fraction of volume without guaranteed completion; arrival-price and implementation-shortfall algorithms are cost–risk optimisations whose meaning varies across brokers (chap. 1, pp. 16–18).
+
+## Limits
+
+- Own checks: the intermediate actual return for a partial fill adds fees instead of subtracting them (p. 100); eq. (3.10) divides by the signed $(\sum s_j)P_0$ and so reverses the sign for sells, unlike (3.11); eq. (3.16) has no side factor. TWAP is described as "a constant participation rate" but means a constant rate in time (p. 17).
+
+## Implementation
+
+## Notation map
+
+- $S$, $s_j$, $p_j$, $P_d$, $P_0$, $P_n$, $\bar P$ (the book's $P_{avg}$) as in `def:implementation-shortfall`.
+
+## Connections
+
+- Attributes the execution-and-opportunity formula to Perold (1988) and the expanded form to Wagner (1975, 1991) and Wagner and Edwards (1993), none consulted.
+
+## Entries
+
+`def:implementation-shortfall`, `def:execution-benchmark`.
+
+## Open questions
+
+- Are the sign slips in (3.10) and on p. 100 corrected in `wide-kissell-methods` (2021)?
+
+## Retrieval cards

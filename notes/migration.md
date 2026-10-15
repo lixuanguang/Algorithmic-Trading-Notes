@@ -889,9 +889,95 @@ The 9 blocks are kept verbatim in `notes/artefacts/market-making-lob/derivations
 - The timing-convention resolution and the corrected comparative static and convexity claims.
 - Reliance on the Almgren–Chriss preprint.
 
+## Slice 11: execution benchmarks, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 10's pushed state (`bbaafa5`, on `main`, matching `origin/main`; guide submodule at `343d145`; `house.tex` unchanged). The reported counts matched the checker: 724 legacy blocks (117 single-candidate, 578 shared, 29 assigned), 46 entries, listings of 2, 9, 22 and 13, and candidate associations of 48 (`execution-trading-costs`) and 27 (`price-impact-execution`). Migration and source checking, not study.
+
+### Scope
+
+The whole of `execution-trading-costs/01_.../02_execution_benchmarks.tex`: its 3 counted blocks (*Benchmark Matches Trading Need*, *Regional Benchmark Preference*, *Benchmark Is Not an Objective Alone*) and the uncounted table *Typical uses of benchmarks for trading algorithms*, with its settings and caption. There was no prose outside these. The file was shared in the map between the overview `execution-trading-costs` and `market-structure-execution-quality`. It contains no implementation-shortfall formula; the benchmarks it names are PoV, VWAP/TWAP, implementation shortfall and liquidity seekers. The file, its `\input` line in `01_.../00_overview.tex` and its map row were deleted.
+
+### Ownership
+
+The content is the choice of an algorithm's benchmark for an order, by size, market context and the risk to hedge. That is planning an order's execution, which is the overview's outcome ("plan the execution ... and split realised implementation shortfall"), and its checkpoint measures shortfall against arrival price; its first reading is Perold's implementation-shortfall paper and `exp-fx-algos` is on "venue and benchmark choices". `market-structure-execution-quality` covers fragmentation, dark trading, fees, tick size, odd lots, retail routing, trading hours and the rule changes; the file touches fragmentation and HFT only as Lehalle and Laruelle's reasons for a regional preference, so it has no block of its own there and is cross-referenced by name (it has no entries yet). Perold's place was one input; the decision rests on the blocks' content.
+
+Existing entries were searched first. `mod:almgren-chriss-execution` holds the schedule and its expected shortfall, not benchmark definitions; `def:price-impact` and `meth:almgren-impact-estimation` hold impact concepts and one firm's estimation; `def:spread-measures` (owned by `execution-market-making`) already holds the effective and realised spreads, Harris's contemporaneous and post-trade midpoint benchmarks. Nothing defined a benchmark price, an algorithm target or implementation shortfall, so three entries were created, all owned by the overview: the benchmark definitions, kept apart from the source-specific choice method and from Harris's and Kissell's measurement conventions, and implementation shortfall, which the table's IS row and the overview's checkpoint both need. The others are cross-referenced, not listed.
+
+| Legacy item | Owner | Destination | Disposition |
+|---|---|---|---|
+| *Benchmark Matches Trading Need* (principle) | `execution-trading-costs` | `meth:algorithm-benchmark-choice` (Statement, Practice) | Merged |
+| *Regional Benchmark Preference* (taxonomy) | `execution-trading-costs` | `meth:algorithm-benchmark-choice` (Statement; rationales corrected in Pitfalls) | Rewritten |
+| Table *Typical uses of benchmarks for trading algorithms* (not a counted block) | `execution-trading-costs` | Rows: `meth:algorithm-benchmark-choice`, rebuilt as a sourced summary of Lehalle and Laruelle's Table 3.1 with links to the definitions; the benchmarks it names: `def:execution-benchmark` and `def:implementation-shortfall` | Rebuilt; original kept verbatim in the artefact |
+| *Benchmark Is Not an Objective Alone* (caveat) | `execution-trading-costs` | `meth:algorithm-benchmark-choice` (Pitfalls, Interpretation) | Rewritten |
+
+### Sources, 2026-10-15
+
+- **Lehalle and Laruelle**, sec. 3.4.1, pp. 227–231, Table 3.1 on p. 229 by page image: the source of all three blocks and the table (2018 World Scientific printing; text layer, printed page = PDF page − 27). Table 3.2 (p. 230) and sec. 3.1 (pp. 193–201) read for context.
+- **Perold (1988)**, `wide-perold-shortfall`, identified from the pinned catalogue record (*Journal of Portfolio Management* 14(3), 4–9, DOI 10.3905/jpm.1988.409150). No copy was available: the DOI resolves to the publisher's site, which refused the request (HTTP 429), and the search found only a ProQuest preview page and secondary accounts. It was not read, and nothing in the entries rests on it directly.
+- **Kissell**, `s7-kissellscience`, local copy identified from its title page, copyright page (Academic Press, copyright 2014) and ISBN 978-0-12-401689-7; the catalogue cites it as 2013. Chap. 1, pp. 16–18 (algorithm types); chap. 3, pp. 97–108 (cost conventions, Perold and Wagner formulations, arrival cost, benchmark, VWAP and participation-weighted price performance), page images of pp. 100, 103 and 105. Printed page = PDF page − 19. Its attribution of the formulas to Perold and Wagner is secondary.
+- **Harris**, chap. "Liquidity and Transaction Cost Measurement", pp. 424–437, Table 21-1 (p. 433) by page image: price-benchmark estimators, implementation shortfall with the filled and missed parts, the properties of each benchmark, missed-trade costs and the Plexus box. His attribution to Perold and Treynor is secondary.
+
+### What each benchmark fixes (from the sources; details in `def:execution-benchmark`)
+
+| Benchmark | Reference price and time | Weighting and eligible trades | Own fills | Unfilled quantity | Known |
+|---|---|---|---|---|---|
+| Decision price (Perold IS) | Midpoint when the manager decides (Harris p. 426); often the previous close (p. 437) | One price | Not in the benchmark | Opportunity cost at a later price | Before the order |
+| Arrival price | Midpoint when the order enters the market; last trade or official close after hours (Kissell p. 102) | One price | Not in the benchmark | Opportunity cost from $P_0$ (Wagner) | At the start of trading |
+| VWAP (full day, interval, to end of day) | The day, the order's horizon, or from the start to the close | Trade-size weights (Harris p. 425); vendors choose eligible trades and may drop delayed or negotiated ones (Kissell p. 107) | Included: biases towards zero for large orders | Not measured | Afterwards |
+| Participation-weighted price at $\rho$ | First (shares traded)$/\rho$ market shares from arrival (Kissell p. 108) | Volume weights | Included | Window shrinks with fills (Interpretation) | Afterwards |
+| Open, close, later closes | Single daily prices (Harris p. 425; Kissell p. 106) | — | Close moved by own impact (Harris p. 429) | Not measured | Open before, close after |
+| TWAP | Algorithm only (Kissell p. 17); no benchmark price defined in the passages checked | — | — | — | — |
+| PoV, liquidity seeker | Algorithm targets; no reference price (Kissell p. 17; Lehalle and Laruelle p. 230) | — | — | PoV completion not guaranteed (Kissell p. 17) | — |
+
+Units and signs: basis points of the benchmark with a side factor (Kissell eqs. (3.11)–(3.14)), or currency for implementation shortfall; cost and gain sign conventions both occur (pp. 97, 108). Gross and net: the benchmark formulas exclude fees; implementation shortfall adds them.
+
+### Accounting checks (own, Interpretation in the entries)
+
+- **Reconciliation.** For a buy of 10,000 shares (decision midpoint 50.00, arrival 50.10, fills 3,000 at 50.20 and 3,000 at 50.30, rest cancelled, $P_n=50.60$, fees 60), paper minus real portfolio gives 3,960; Perold's components 1,500 + 2,400 + 60 and Wagner's 1,000 + 900 + 2,000 + 60 both reconcile exactly (rational arithmetic). The mirror-image sell with signed quantities gives the same figures. Kissell's three worked examples reproduce (\$2,600; \$3,080 as 2,000/1,000/80 and as 1,250/1,000/750/80), as do Harris's split-order example (\$400 against the decision midpoint, zero against VWAP, −\$200 against the close) and DINE missed-trade figures (\$12,600 and \$714,600).
+- **Corrections to the source.** Kissell's intermediate actual return for a partial fill adds fees instead of subtracting them (p. 100); his final formula is right. His eq. (3.10) divides by the signed $(\sum s_j)P_0$ and so reverses the sign for sells (−30.06 against +30.06 bp in the example), unlike (3.11); (3.16) has no side factor. He describes TWAP as "a constant participation rate" while meaning a constant rate in time.
+- **Double counting.** With a midpoint decision or arrival price the half-spread is already inside the execution component; adding an effective-spread term counts it twice, and fees enter once as the explicit term. No source checked splits the trading-related part into spread and impact, as the overview's checkpoint asks.
+- **Model against measurement.** Almgren–Chriss's shortfall $XS_0-\sum n_k\tilde S_k$ equals Kissell's trading-related part for a complete sale from the pre-trade price (checked on the sell example: 900 both ways); its mean and variance are model forecasts, it has no opportunity term, and its temporary impact already carries half-spread and fees. Performance against an algorithm's own target (VWAP) is not its cost.
+
+### Corrections to the legacy text
+
+- Asia's rationale: the source speaks of differences between local markets, not "fragmented market conventions".
+- Europe's rationale: the source names avoiding detection by HFT as well as routing efficiency.
+- The table's risk column condensed Lehalle and Laruelle's "do not miss ..." wording and dropped "especially if I have the information" for PoV.
+- The caveat is Interpretation, consistent with the risk–reward reading on p. 228 but not in the source.
+- The table's "benchmarks" are algorithm classes; PoV and liquidity seekers are not benchmark prices.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-laruelle` | sec. 3.4.1, pp. 227–231 | Text layer; Table 3.1 by page image |
+| `s7-kissellscience` | chap. 1, pp. 16–18; chap. 3, pp. 97–108 | Text layer; page images of pp. 100, 103, 105; not on a route |
+| `alpha-harris` | chap. 21, pp. 424–437 | Text layer; Table 21-1 by page image |
+| `wide-perold-shortfall` | none | Not available; unread |
+
+The three new entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefacts/market-making-lob/derivations.tex`, section *Execution benchmarks (slice 11)*, with only the subsection unnumbered. A script confirmed that the artefact's earlier content is unchanged, that the file body appears there once, and that the three blocks and the table (with its `\stepcounter`, column settings and caption) each appear once and in order. The other files of `execution-trading-costs/01_...` are byte-identical; only the `\input` line was removed from `00_overview.tex`. The table's disposition is recorded separately above, since the checker counts only the three blocks.
+
+### Counts
+
+`migration_status.py`: 724 → 721 legacy blocks (3 migrated). Shared 578 → 575; single-candidate 117 → 117; assigned 29 → 29. Each block was a candidate of `execution-trading-costs` and `market-structure-execution-quality`, so each pathway's candidate associations fell by 3: 48 → 45 and 321 → 318 (3 blocks, not 6). `price-impact-execution` stays at 27. Entries 46 → 49 (definitions 16 → 18, methods 6 → 7). Entries listed: `execution-trading-costs` 2 → 5; `price-impact-execution` 9; `execution-market-making` 22; `market-making-lob` 13.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 167 pages (164 before); no LaTeX warnings, no undefined references or citations; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files, as before; the one `page.i` duplicate-destination warning. A first build had three overfull boxes in the new section (a long key at a line end, the table's paragraph indent, a long path), fixed before commit. Rendered and inspected: PDF pp. 39–43 (the chapter opener, the new section and its table) and p. 154 (the pruned legacy chapter, which now starts at *Execution Algorithms*). The artefact compiles on its own: 22 pages (21 before), no warnings, the same 3 underfull boxes; its new last page shows the original table.
+
+### For review
+
+- The three new entries, and ownership by the overview rather than `market-structure-execution-quality`.
+- Reliance on Kissell and Harris for implementation shortfall while Perold is unread.
+- The corrections to Kissell's eq. (3.10) and p. 100, and the double-counting and model-against-measurement notes.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/02_execution_benchmarks.tex` (3 blocks and a benchmark table; its successor `03_execution_algorithms.tex` restates Lehalle and Laruelle's two algorithm layers, already cited in `mod:almgren-chriss-execution`), shared between `execution-trading-costs` and `market-structure-execution-quality` in the map. The overview's first reading is Perold on implementation shortfall (`wide-perold-shortfall`), so benchmark definitions likely belong to the overview. Decide each block's owner from its content before migrating, and compare with `mod:almgren-chriss-execution` and `def:price-impact`. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/03_execution_algorithms.tex` (17 blocks and a table, *Typical features of trading algorithms*, which restates Lehalle and Laruelle's Table 3.2), shared between `execution-trading-costs` and `price-impact-execution`. Its benchmark-customisation and trading-envelope blocks follow Lehalle and Laruelle sec. 3.4.1, pp. 231 onwards, and its layer blocks restate the two algorithm layers already in `mod:almgren-chriss-execution`; compare with `def:execution-benchmark` and `meth:algorithm-benchmark-choice` before adding entries. Its successor `04_transaction_cost_analysis.tex` (25 blocks) holds an implementation-shortfall model, a VWAP benchmark and a benchmark-price taxonomy that should merge into `def:implementation-shortfall` and `def:execution-benchmark`. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -926,7 +1012,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/02_execution_benchmarks.tex` | execution-trading-costs, market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/03_execution_algorithms.tex` | execution-trading-costs, price-impact-execution |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/04_transaction_cost_analysis.tex` | market-structure-execution-quality, execution-trading-costs |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/05_smart_order_routing.tex` | market-structure-execution-quality |

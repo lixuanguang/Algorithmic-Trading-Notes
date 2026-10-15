@@ -2471,3 +2471,127 @@ Tests: 14 passed.
 - The mapping of Narang's slippage and impact onto the delay and trading-related terms, and the correction of "unknown until the trade has been completed".
 - The interpretation on computational cost (convex piecewise-linear, quadratic, 3/2-power, integer variables for per-trade fixed costs), which no source read supports and which the `meth:convex-cost-portfolio-optimisation` stub should replace.
 - Clearing left undefined pending the CPMI glossary (`def:clearing-settlement`).
+
+## Slice 27 follow-up: units, cost-function conditions and the sell example, 15 October 2026
+
+Narrow corrections to slice 27 after an audit, run before slice 28; the slice-27 record above is left as written, and this record supersedes it where they differ. No legacy block, entry label, stub, artefact or count changed (598 legacy blocks; 99 entries).
+
+- **Units, `mod:portfolio-transaction-cost-function`** (`compendium/portfolio-construction-risk/transaction-cost-models.tex`). Slice 27 let $q$ be shares, "contracts, or currency" while giving coefficients per share. The notation is now for one equity: $q$ and $V$ in shares, $P$ in currency per share, coefficients in currency, currency per share or currency per share squared, and $\eta$ dimensionless. The per-share cost $c(q)=C(q)/\lvert q\rvert$ is defined only for $q\neq0$. Contracts or notional are said to need their own units (such as a multiplier), not the same conversions. "Per-unit" became "per-share" where it meant that.
+- **Parameter conditions.** All coefficients are nonnegative and every form has $C(0)=0$, $C\ge0$ and depends only on $\lvert q\rvert$. The displayed $\max_i(b_i\lvert q\rvert-d_i)$ with increasing slopes alone did not guarantee this: slopes 0.01, 0.03 with intercepts $-5$, 200 give $C(0)=5$, and with 5, 200 give $C(0)=-5$. The entry now uses the convex hinge form $b_0\lvert q\rvert+\sum_ih_i(\lvert q\rvert-\kappa_i)_+$ with $0<\kappa_1<\dots$, and states the equivalent maximum of lines with slopes $s_j=b_0+\sum_{i\le j}h_i$ and intercepts $d_j=\sum_{i\le j}h_i\kappa_i$. The 3/2-power form $\eta P\lvert q\rvert(\lvert q\rvert/V)^{1/2}$ is written out, and the assumptions are stated: symmetric between buys and sales, nonnegative (no rebates or favourable drift), expected rather than realised, one instrument and period, independent of duration and other trades.
+- **Checks**, exact fractions in the session (no script kept): for $b_0=0.01$, $h=(0.02,0.05)$, $\kappa=(10{,}000,50{,}000)$, $C=0$ at 0 and 50, 100, 700, 1,300, 2,100 at $\lvert q\rvert=$ 5,000, 10,000, 30,000, 50,000, 60,000, equal for $\pm q$; left and right values at each breakpoint differ by under $10^{-7}$; equal to the maximum of lines (0.01, 0), (0.03, 200), (0.08, 2,700) at every point tested. The illustration with $\eta=0.01$, $P=50$, $V=10^6$ still gives \$500 and 10 bp at $\pm$10,000 shares and \$1,414.21 and 14.142 bp at 20,000.
+- **Sell example, `def:transaction-costs`** (`compendium/execution-trading-costs/transaction-cost-analysis.tex`). Slice 27 said Narang's sale filled at \$100.20 "though the order did not raise the price". That assertion is removed: the example shows a negative arrival-to-fill cost against a benchmark, which does not identify the order's causal effect.
+- **Notes and index.** The `portfolio-construction` and `execution-trading-costs` pathway notes record the changes; the slice-27 row in `notes/migration.md` now gives its commit `0224ac7`.
+
+## Slice 28: portfolio construction models (rules, mean–variance optimisation, signal portfolios), 15 October 2026
+
+Migration of the portfolio-construction-models file of Narang's systematic-investing notes, run after the slice-27 follow-up above. Migration and source checking, not study; no checkpoint was attempted. One of the owning pathway's readings, Boyd et al., was read in part for method mechanics; that is source checking, not study of it.
+
+### Scope
+
+The whole of `compendium/legacy/portfolio-construction-risk/sysinv/portconstmod.tex`: an introductory paragraph outside the environments, and 3 counted blocks (one `definition`, one `remark`, one `method`) with 13 `\item` commands (4 in *Rule-Based Models*, 3 in *Optimisers Models Parameters*, 6 in *Optimisation Techniques*), plus the remark's two paragraphs of prose before its list; the three `\setlength{\itemsep}{0pt}` lines are not items. Outside the blocks were only the `% migrate-to:` line, the subsection heading and the introduction (checked by script). The file and its map row were deleted; in `sysinv/sysinvoverview.tex` only its `\input` line was replaced, by a `% migrated:` comment. The other `sysinv/` files (`alphamod.tex`, `riskmod.tex`, `executionmod.tex`, the overview's method block), other legacy files, earlier artefacts (including slice 27's `transaction-cost-models.tex`), the deferred assignments, the 21 PNGs, `house.tex` and the guide pin (`343d145`) are unchanged.
+
+### Ownership and dispositions
+
+The map's only candidate is `portfolio-construction`, whose outcome is to "construct a constrained portfolio from noisy forecasts with a factor risk model, shrinkage and costs, and attribute its realised risk", with readings on mean–variance selection, estimation error, shrinkage, factor risk models, risk-based portfolios, Black–Litterman and convex optimisation with costs. Every block is portfolio construction in that sense, so all stay with it; no routing exception. Equal risk contribution and GARCH volatility forecasts are stubbed here with their home pathways named (`risk-parity-vol-targeting`, `time-series-volatility`), as slice 25 did for borrow data.
+
+The new entries are in the new topic file `compendium/portfolio-construction-risk/portfolio-construction-models.tex`, input before slice 27's cost entry. The artefact is a new file, `notes/artefacts/portfolio-construction-risk/portfolio-construction-models.tex`, beside slice 27's, which is unchanged.
+
+| Part | Legacy text | Destination | Checked source | Disposition |
+|---|---|---|---|---|
+| Intro | Two families: rule-based heuristics; optimisers with an objective function | `meth:rule-based-position-sizing` (Statement), `mod:mean-variance-portfolio-optimisation` | Narang chap. 6, pp. 99–100 | Rewritten |
+| 1 | *Rule-Based Models* (definition), items i–iv | `meth:rule-based-position-sizing` (new); stub `meth:equal-risk-contribution` | secs. 6.1–6.1.4, 6.4, pp. 100–104, 123; Exhibit 6.1 by page image | Rewritten with corrections (subclaims below) |
+| 2 | *Optimisers Models Parameters* (remark): prose and items i–iii | `mod:mean-variance-portfolio-optimisation` (new); stubs `meth:portfolio-covariance-estimation`, `mod:garch-volatility-forecast` | sec. 6.2–6.2.1, pp. 104–113; Exhibits 6.2, 6.4, 6.5 by page image; Boyd et al. secs. 1.1, 3.2, 3.4 | Rewritten with corrections |
+| 3 | *Optimisation Techniques* (method), items i–vi | `mod:mean-variance-portfolio-optimisation`; `meth:signal-portfolio-allocation` (new); stubs `mod:black-litterman`, `meth:resampled-efficiency` | secs. 6.2.2–6.3, pp. 113–123; Exhibits 6.6, 6.7 and the p. 118 example by page image; Boyd et al. secs. 1.3–1.4, 2.4, 4.3, 5.6 | Rewritten, item vi not adopted |
+
+**Subclaims.**
+
+| Where | Legacy claim | Disposition |
+|---|---|---|
+| Intro | Rule-based from experience; optimisers use an objective and algorithms | Rewritten (pp. 99–100) |
+| 1.i | Equal position: no other information needed; signal strength not used | Rewritten (pp. 100–101), with the implicit homogeneity assumption |
+| 1.i | "Assumes sufficient statistical strength … to predict … magnitude"; "few large bets on 'best' forecast, many smaller bets"; adverse selection | **Misplaced in the legacy**: these are Narang's two arguments *against unequal* weighting, which equal weighting avoids (pp. 101–102). Restored to that role; bad-data and winsorisation points added |
+| 1.ii | Equal risk: inverse to volatility or another risk measure | Rewritten (p. 102). Exhibit 6.1's 39/61 shown to be inverse-variance (inverse-volatility gives 44.4/55.6); Narang's "risk the allocation contributes to the portfolio" kept apart from inverse volatility: equal risk contribution uses the full covariance matrix and differs for three or more assets (computed). Stub `meth:equal-risk-contribution` |
+| 1.ii | Backward-looking risk; changing volatility misleads | Rewritten with his 2008 bank-stock example (p. 103) |
+| 1.iii | Alpha-driven: size by signal with position and group limits; forecast-to-size function | Rewritten (pp. 103–104), with his 3% and 20% example |
+| 1.iii | Futures trend following "might suffer sharp drawdowns"; reliance on alpha | Rewritten as his "relatively frequently", with his reason (largest position at the reversal) (p. 104) |
+| 1.iv | Decision tree: path by alpha and instrument type; percentage limits; size grows dramatically | Only the name and one sentence are in the third edition (p. 100); the details are not, perhaps from an earlier edition (not checked); kept in the artefact, not adopted |
+| 2 prose | MVO the pioneer; MPT; inputs mean, variance, correlation | Rewritten with Boyd et al.'s two formulations and closed form (sec. 1.1, pp. 4–5) and Narang (pp. 104–105) |
+| 2 prose | Other inputs: currency size, desired risk level "(volatility or expected drawdown)", constraints | Qualified: Narang calls them not required by the optimiser and "mostly arbitrary" (p. 105); expected drawdown is not part of mean–variance, and a return-to-drawdown objective is a different model (p. 124) |
+| 2 prose | Objective "usually maximising return … relative to volatility" | Qualified: Sharpe maximisation is a distinct objective from the variance-target and risk-aversion forms (Boyd et al. sec. 3.2, p. 20); tangency portfolio (Exhibit 6.7) |
+| 2.i | Expected return from alpha models, including direction | Rewritten (p. 108): sign-only forecasts set equal |
+| 2.ii | Stochastic volatility methods common; "GARCH model is most used" | Reported as Narang's unsourced claim (pp. 108–109), with his own EWMA remark; his calling GARCH a stochastic-volatility model and his reading of a negative autoregression as trending not adopted; Boyd et al.'s EWMA, DCC, iterated EWMA listed. Stub `mod:garch-volatility-forecast` |
+| 2.iii | Correlations unstable, so "group assets together before computing correlation within the group" | Qualified: Narang's grouping is "in the definition of relative … and/or in the specification of the risk model" (p. 111), shown with two pairs over one sample (Exhibit 6.5), not a method for estimating a covariance matrix. His 1,998,000 pairs corrected to 1,999,000. Stub `meth:portfolio-covariance-estimation` |
+| 3.i | Unconstrained: "might provide a single-instrument portfolio" | Corrected: not a property of mean–variance; the closed form generally holds every asset, and Narang's own unconstrained example (85% CVX, 75% NFLX, p. 106, Exhibit 6.2) holds both; the case where a single asset results is stated as interpretation |
+| 3.ii | Constraints; may drive the portfolio more than the optimiser | Rewritten with his 1.5% cap example (p. 114); penalties, costs (cross-referenced to `mod:portfolio-transaction-cost-function`), sign flips and the substitution effect (pp. 114–121) |
+| 3.iii | Black–Litterman blends expectations, confidence and history; "adjusts historically observed correlation levels" | Narang's description kept as his (p. 117); the correlation claim is in neither Narang nor Boyd et al., where the method shrinks the means toward market-implied returns (secs. 1.3, 3.4); not adopted. Note 5's 1982 against the text's 1992 recorded. Stub `mod:black-litterman` |
+| 3.iv | Grinold–Kahn: portfolio of signals; rule-based factor portfolios backtested and optimised; "not more than 20"; inputs | `meth:signal-portfolio-allocation`: Narang's account with his 0.2% example checked; "about 20" kept as his unsourced statement; Grinold and Kahn unread |
+| 3.v | Resampled efficiency reduces estimation error by Monte Carlo resampling | Qualified: Narang describes reordering observed returns and says mean and volatility stay the same (pp. 118–119), so the reordering he describes cannot change the optimiser's inputs; his example is strategy robustness. Michaud's actual procedure and its claimed improvement not checked. Stub `meth:resampled-efficiency` |
+| 3.vi | Data mining: supervised learning or genetic algorithms because MVO searches many portfolios | Not in the third edition, which says few strictly ML portfolio models are seen (pp. 113–114). Not adopted: supervised learning fits forecasts, and convex problems need no generic search (Boyd et al. secs. 1.4, 4.3) |
+
+No claim was deleted outright; the not-adopted claims stay in the artefact and are named in the entries.
+
+**Existing entries and backlog checked.**
+- `mod:portfolio-transaction-cost-function` (this pathway): cost inputs cross-referenced, not repeated; its Pitfalls now cite Boyd et al. secs. 2.4 and 4.3 for the computational remarks, and its Status records this.
+- Stub `meth:convex-cost-portfolio-optimisation`: kept; its text now records that Boyd et al. was read in part, while the multi-period paper is unread.
+- Stub `res:no-trade-region`: unchanged; not in the legacy file.
+- Also cross-referenced, unchanged: `meth:backtest-evaluation-diagnostics`, `pit:parameter-overfitting` (`backtest-inference`), `def:common-investor-contagion` (`funding-crowding`), `mod:almgren-chriss-execution` (`execution-trading-costs`).
+
+### Sources, 2026-10-15
+
+- **Narang** (`s7-narang`), *Inside the Black Box*, third edition, Wiley 2024 (copyright page: Third Edition, ISBN 9781119931911 Adobe PDF), the same local copy as slices 25–27, text layer through PDFKit. Chap. 6, "Portfolio Construction Models", secs. 6.1–6.5 and notes, pp. 99–125 (PDF pages 119–145; contents: chapter p. 99, notes p. 125; running heads checked). Read by page image: Exhibit 6.1 (p. 102), 6.2 (p. 107), 6.4 (p. 111), 6.5 (p. 112), 6.6 (p. 116), 6.7 (p. 122) and the worked example on p. 118. Exhibit 6.3 (p. 109) was read from the text layer only.
+- **Boyd, Johansson, Kahn, Schiele and Schmelzer** (`wide-boyd-markowitz-seventy`), "Markowitz Portfolio Construction at Seventy", the authors' version of 5 January 2024 (53 pages), downloaded 2026-10-15 from the authors' page given in the catalogue; published in *Journal of Portfolio Management* 50(8), 117–160, 2024, whose pagination was not checked. Read: secs. 1.1–1.4 (pp. 3–10), 2.4 (p. 17), 3.2 (pp. 19–20), 3.4 (pp. 21–22), 4.3 (pp. 27–28), 5.6 with Table 2 (pp. 39–40). A reading note was opened.
+- **Downloaded but not used:** Markowitz (1952) from the catalogue link, a scan with no text layer; not read.
+- **Not read:** Black and Litterman (`alpha-black`), Michaud's book and paper, Grinold and Kahn (`alpha-grinold`), Bollerslev, Maillard–Roncalli–Teïletche, Ledoit–Wolf, Connor–Goldberg–Korajczyk, Johansson et al. (Narang's EWMA source), the multi-period paper.
+
+### Numerical checks
+
+Recomputed in the session with numpy and by hand; no script kept, and no existing script covers this content:
+- Exhibit 6.1: inverse-variance weights 39.02/60.98% (the table's 39/61); inverse-volatility 44.44/55.56%; $w_i\sigma_i$ 1.111/1.111 against 0.976/1.220.
+- Risk contributions: for two assets inverse-volatility weights give 50/50 at correlations −0.5, 0.1 and 0.8. For three assets at 20% volatility with $\rho_{12}=0.8$ and the third uncorrelated, equal weights give 39.13/39.13/21.74%; the ERC weights $a=1/(2+\sqrt{1.8})=0.2993$, $b=0.4015$ give 1/3 each (closed form and numerical check).
+- Pairs: $2000^2=4{,}000{,}000$; $2000\times1999/2=1{,}999{,}000$.
+- Grinold–Kahn example: $0.01\times0.6-0.01\times0.4=0.002$.
+- Sharpe scale invariance: $\Sigma^{-1}\mu$ and $3\Sigma^{-1}\mu$ give the same ratio, 0.5596, for an illustrative two-asset $\mu$, $\Sigma$.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `s7-narang` | chap. 6, pp. 99–125; exhibits listed above as images | Third edition; one practitioner's account; GARCH prevalence, "about 20" factors, the users of each method, and the decision-tree details absent; some text–exhibit inconsistencies (Exhibit 6.1 labels; "high correlation" on p. 115 against about 0.1 on p. 106) |
+| `wide-boyd-markowitz-seventy` | the sections listed | Authors' version, not the journal; one paper's view of the alleged deficiencies; timings are for one solver and hardware |
+| Black–Litterman, Michaud, Grinold–Kahn, ERC, GARCH and covariance readings | none | Stubs; claims about them are limited to what Narang and Boyd et al. say |
+
+The three new entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/portfolio-construction-risk/portfolio-construction-models.tex`, with only the subsection unnumbered. A script compared it with `git show HEAD:compendium/legacy/portfolio-construction-risk/sysinv/portconstmod.tex`:
+- the body below the subsection heading appears exactly once;
+- the introduction (279 characters) appears once, before the blocks, and the remark's prose before its list (604 characters) once;
+- the 3 blocks appear verbatim once each, in order;
+- `\item` commands, matched as `\item` not followed by a letter, number 4, 3 and 6, 13 in both original and artefact; the substring count would have given 16, because of the 3 `\itemsep` lines;
+- the sequence of 12 `\begin`/`\end` commands is identical (ignoring `document`);
+- nothing lay outside the blocks but the migrate-to line, the subsection heading and the introduction.
+
+The artefact compiles alone: 2 pages, no warnings, no bad boxes.
+
+### Counts
+
+`migration_status.py --check`, 0 problems: 598 → 595 legacy blocks = 530 shared + 36 single-candidate + 29 assigned. `portfolio-construction`: exclusive 7 → 4, entries 1 → 4, stubs 2 → 7. Other pathways unchanged (`execution-trading-costs` 14/1, `model-governance-controls` 3/4, `funding-crowding` 1/4, `backtest-inference` 4/8, `crypto-perpetuals` 3/5). Entries 99 → 102 (methods 17 → 19, models 11 → 12). Reading notes: `s7-narang` extended, `wide-boyd-markowitz-seventy` opened. No new `front/sources.tex` keys.
+
+### Other files
+
+- Chapter opener `compendium/portfolio-construction-risk/section.tex`: comment, paragraph and inputs.
+- `notes/pathways/portfolio-construction.md`: status, entries, related entries, backlog, legacy material, one question.
+- `notes/log.md`: the `portfolio-construction` coverage row, the `s7-narang` progress cell, one open question.
+- `notes/migration.md`: status, index, next slice and map; `compendium/README.md`: order paragraph.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 222 pages (219 before); no LaTeX warnings; the one `page.i` warning; 0 overfull and 26 underfull boxes, all after the start of the legacy part in the log, as before. The first builds had one overfull and one underfull box from a pathway key and the artefact file name in *Further reading*, and an underfull opening line of the mean–variance Statement; the wording was changed and the file name put on its own line. Rendered and inspected: PDF pp. 21–24 (opener and the three new entries), p. 25 (the corrected cost-function notation), p. 93 (the corrected sell example) and p. 177 (the legacy portfolio chapter, where *Risk Models* now runs into *Execution Model*). Tests: 14 passed.
+
+### For review
+
+- The reading of Exhibit 6.1 as inverse-variance and the ERC distinction.
+- The correction of the unconstrained single-asset claim, and the treatment of Black–Litterman and resampling on Narang's and Boyd et al.'s accounts alone.
+- Keeping Grinold and Kahn's approach as a separate entry on Narang's account only.
+- The not-adopted data-mining and decision-tree details, which may come from an earlier edition.

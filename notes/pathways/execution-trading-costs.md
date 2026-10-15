@@ -70,7 +70,9 @@ Changed in migration slice 27, 2026-10-15, from the transaction-cost-models file
 
 - Merged: Narang's three cost components into `def:transaction-costs` (`s7-narang`, third edition, chap. 5, pp. 85-91). His slippage (decision to arrival) is mapped to the delay term, and his market impact (arrival to fill) to the trading-related part of shortfall, not to causal impact. His claim that impact is known once the trade is complete is corrected: the unaffected price is never observed. His trend-following, mean-reversion, latency and volatility claims are kept as conditional statements about the drift over the delay. The legacy pairing of fee payers with services is not in his text. His clearing and settlement descriptions are reported as his, beside the CPSS-IOSCO principles' DvP and central-counterparty paragraphs (`exp-pfmi`, paras 1.12-1.13); no clearing definition is adopted.
 
-Partly checked 2026-10-15, draft; human review outstanding. The block is in `notes/artefacts/portfolio-construction-risk/transaction-cost-models.tex`. The same file's introduction and cost-function block went to `portfolio-construction`, whose note lists the entry; it is not owned here.
+Partly checked 2026-10-15, draft; human review outstanding. The block is in `notes/artefacts/portfolio-construction-risk/transaction-cost-models.tex`.
+
+Changed in the slice-27 follow-up, 2026-10-15: `def:transaction-costs` no longer says that Narang's selling order "did not raise the price"; his example shows a negative arrival-to-fill cost against a benchmark, which does not identify the order's own effect. The same file's introduction and cost-function block went to `portfolio-construction`, whose note lists the entry; it is not owned here.
 
 ## Entry backlog
 

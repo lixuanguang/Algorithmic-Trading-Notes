@@ -1,5 +1,31 @@
-% migrate-to: portfolio-construction
-\subsection{Portfolio Construction Models}
+% notes/artefacts/portfolio-construction-risk/portfolio-construction-models.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 28). Its single map candidate,
+% portfolio-construction, owns all its entries; the file sits beside slice 27's transaction-cost-models.tex under the
+% section key, as a new file so that the earlier artefact stays unchanged. The compendium entries state each claim
+% with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/portfolio-construction-risk/ with  latexmk -pdf portfolio-construction-models.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Portfolio construction and risk: legacy portfolio construction models}
+
+\section*{Portfolio construction models (slice 28, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration-slices.md, slice 28): the whole of
+% sysinv/portconstmod.tex below its migrate-to line, the introductory paragraph and 3 blocks in order with their
+% prose and 13 items (4, 3 and 6); only the subsection is unnumbered here. No other text, table or figure was in it.
+% Destinations: introduction -> meth:rule-based-position-sizing, mod:mean-variance-portfolio-optimisation;
+% Rule-Based Models -> meth:rule-based-position-sizing; Optimisers Models Parameters ->
+% mod:mean-variance-portfolio-optimisation; Optimisation Techniques -> mod:mean-variance-portfolio-optimisation,
+% meth:signal-portfolio-allocation, stubs (Black-Litterman, resampled efficiency); the data-mining item not adopted.
+% Sources: Narang (s7-narang), Inside the Black Box, third edition, Wiley 2024, chap. 6 "Portfolio Construction
+% Models", pp. 99-125 (printed page = PDF page - 20), exhibits by page image; Boyd et al. (wide-boyd-markowitz-seventy),
+% authors' version of 5 January 2024.
+
+% From compendium/legacy/portfolio-construction-risk/sysinv/portconstmod.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Portfolio Construction Models}
 
 Comes in two major forms: rule-based, optimisers. Rule-based models are based on heuristics, can be exceedingly simple or rather complex, and derived from human experience (trial and error). Optimisers comprises of an objective function and uses algorithms to reach the end goal.
 
@@ -40,3 +66,5 @@ Number of factor portfolios is more manageable, usually not more than 20. What i
 \item Data-Mining Approaches: machine learning techniques such as supervised learning or genetic algorithms used, as MVO involves searching many possible portfolios to find the best.
 \end{enumerate}
 \end{method}
+
+\end{document}

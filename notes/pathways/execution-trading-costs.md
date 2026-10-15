@@ -64,6 +64,8 @@ Changed in migration slice 18, 2026-10-15, from the equity-market-microstructure
 
 Both partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/etf-index-closing-execution/derivations.tex`.
 
+Changed in the slice-18 follow-up, 2026-10-15: `def:portfolio-trading` now gives index arbitrage as about 9 percent of reported program-trade volume (about 2.4 percent of NYSE volume), and `def:block-trade` limits the 2002 print requirement to brokers and dealers who were exchange members.
+
 ## Entry backlog
 
 ## Legacy candidate material

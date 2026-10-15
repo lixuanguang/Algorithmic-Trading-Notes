@@ -26,6 +26,8 @@ Written in migration slice 18, 2026-10-15:
 
 - `mech:etf-creation-redemption`: authorised participants, creation units, in-kind and cash baskets, creation and redemption against secondary trading, arbitrage that tends to align price and value without guaranteeing it, stale reference values, APs' discretion, and Pan and Zeng's liquidity-mismatch evidence for corporate bond ETFs; index products as Harris lists them (2001–2002).
 
+Corrected in a follow-up the same day (`notes/migration.md`, *Slice 18 follow-up*): Pan and Zeng's model predictions kept apart from their empirical findings (p. 4: weakened, not failed, arbitrage); fund trading and costs qualified for in-kind against cash creations; the \$100 million illustration reconciled as an in-kind redemption, labelled Interpretation.
+
 Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/etf-index-closing-execution/derivations.tex`.
 
 ## Related entries owned elsewhere

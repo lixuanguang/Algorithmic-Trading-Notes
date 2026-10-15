@@ -1,5 +1,32 @@
-% migrate-to: futures-execution
-\subsection{Futures Market Microstructure}
+% notes/artefacts/futures-execution/derivations.tex
+% Legacy blocks kept verbatim when they were migrated (notes/migration.md), for the pathway
+% futures-execution. The compendium entries state each claim with its locator; the original wording lives here.
+% Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/futures-execution/ with  latexmk -pdf derivations.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Futures execution: legacy derivations}
+
+\section*{Futures market microstructure (slice 19, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 19): the whole of
+% 02_futures_market_microstructure.tex below its migrate-to line, 7 blocks in order with the sentences
+% inside them; only the subsection is unnumbered here. No other text, table or figure was in the file.
+% Destinations (futures-execution unless stated): blocks 1-2 conv:cme-globex-trading; block 3
+% ev:index-futures-price-discovery; block 4 merged into res:spread-determinants (execution-market-making);
+% blocks 5-6 mech:futures-margin-settlement; block 7 conv:futures-block-efrp.
+% Corrections: the "no call auction" caveat is wrong for the CME Globex open (pre-open and indicative
+% opening price); "transitory EFP" is historical (Harris 2002) and prohibited at CME Group since
+% 4 August 2014; variation margin does not control credit risk "continuously".
+% Sources: CME Rulebook chaps. 5 and 8, advisory RA2607-5 (and RA1911-5), CME Client Systems Wiki,
+% the CFTC filing of 22 September 2020, Hasbrouck's NYU working paper FIN-00-046, Harris (alpha-harris)
+% pp. 334 and 492, Lehalle and Laruelle (alpha-laruelle) pp. 144-148.
+
+% From compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/02_futures_market_microstructure.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Futures Market Microstructure}
 
 \begin{principle} \hlt{Centralised Futures Trading}\\
 Liquid futures are highly electronic and usually trade on centralised limit order books. Fragmentation is limited because margining, clearing, delivery rules, and contract fungibility make post-trade duplication costly.
@@ -42,3 +69,5 @@ The broker or FCM manages client margin calls, liquidation rights, and cash bala
 \end{enumerate}
 They move large risk off-book, subject to eligibility and reporting rules.
 \end{taxonomy}
+
+\end{document}

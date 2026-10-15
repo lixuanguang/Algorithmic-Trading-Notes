@@ -1587,9 +1587,98 @@ The whole file below its `% migrate-to:` line is kept verbatim in the new artefa
 - Routing all six blocks away from the map candidate; deleting blocks 1 and 2.
 - The ETF entry's reliance on working-paper versions.
 
+## Slice 18 follow-up: ETF and Harris precision, 15 October 2026
+
+A bounded correction to slice 18 (`580463e`), run from that pushed state (640 legacy blocks = 530 shared + 81 single-candidate + 29 assigned, 71 entries, checker clean, guide `343d145`). The slice-18 record above is left as written; where it differs, this section supersedes it.
+
+1. **Pan and Zeng: predictions against findings.** ESRB WP 59 p. 4 was read with pp. 1–3. The entry now separates the model's predictions (an arbitrage effect, and an inventory-management effect that can reverse the direction of creations and redemptions) from the empirical findings:
+   - a 1 percent premium raises AP arbitrage by 50 bp, and a one-standard-deviation rise in volatility lowers it by 10 percent, more at discounts;
+   - under extreme inventory, creations and redemptions follow inventory more and mispricing less; a difference-in-differences shows less (more) net redemption after large positive (negative) inventory shocks;
+   - overall, arbitrage still goes the corrective way, and the authors "do not find evidence of the complete 'failure' of ETF arbitrage".
+
+   The entry says that inventory pressure weakens corrective arbitrage, not that arbitrage fails, and does not claim that opposite-direction episodes never occur.
+2. **Fund trading and costs.** Secondary trading and in-kind creations and redemptions do not themselves require the fund to trade the underlying; cash creations and redemptions can, and who bears those costs is not stated in the passages read.
+3. **The \$100 million illustration.** The source's arithmetic is preserved (\$84,985,000 for the mutual fund; the ETF's non-selling investors "will hold a fund whose assets are valued at \$85 million"). The entry adds, as Interpretation, that pure secondary trading leaves total assets at \$100 million. Total assets of \$85 million follow from a net \$15 million in-kind redemption, held by the original non-sellers (\$80 million) and new buyers (\$5 million). This distinguishes total fund assets from the holdings of remaining investors.
+4. **Harris precision.**
+   - `def:portfolio-trading`: index arbitrageurs did about 9 percent of reported program-trade volume, about 2.4 percent of NYSE volume (p. 489).
+   - `def:block-trade`: the 2002 print requirement applied to brokers and dealers who were exchange members (p. 333).
+
+Reading notes `wide-pan-zeng-etf` and `ex-lettau-madhavan-2018`, and the pathway notes of `etf-index-closing-execution` and `execution-trading-costs`, were updated.
+
+## Slice 19: futures market microstructure, 15 October 2026
+
+Migration of the file named as the next bounded slice, run after the follow-up above. Migration and source checking, not study, and not the pathway's checkpoint: no roll cost was measured.
+
+### Scope
+
+The whole of `execution-trading-costs/02_.../02_futures_market_microstructure.tex`: 7 counted blocks with the sentences inside them; outside them only the `% migrate-to:` line and the subsection heading (checked by script). The file, its `\input` in `02_.../00_overview.tex` and its map row were deleted; the wrapper and its other five topics are unchanged.
+
+### Ownership and dispositions
+
+`futures-execution` (the map's single candidate) owns six blocks. Its outcome is executing futures orders and rolls using the contract's matching algorithm, settlement mechanisms and cross-market price discovery. The large-tick block is general microstructure and went to an existing entry of `execution-market-making` (a routing exception), with a futures-specific backlog stub.
+
+| # | Legacy block | Owner | Destination | Checked locator | Disposition |
+|---|---|---|---|---|---|
+| 1 | *Centralised Futures Trading* (principle) | `futures-execution` | `conv:cme-globex-trading` (new) | Harris sec. 15.6.2, p. 334; CME Rulebook Rules 526, 538 | Rewritten; the legacy reasons (margining, fungibility) unsupported, the rule-based reason substituted |
+| 2 | *No Call Auction Norm* (caveat) | `futures-execution` | `conv:cme-globex-trading` | CME wiki "Indicative Opening Price and Quantity" and "Supported Matching Algorithms" (updated 11 Feb. 2025); CFTC filing 22 Sep. 2020 | Corrected: wrong for the Globex open; ES daily settlement is a 30-second VWAP; "liquid trading hours" unsupported |
+| 3 | *Lead-Lag With Cash Markets* (mechanism) | `futures-execution` | `ev:index-futures-price-discovery` (new) | Hasbrouck WP FIN-00-046 abstract, pp. 4–6, 13, 34; Harris p. 489 via `def:portfolio-trading` | Rewritten as evidence; the legacy conditions marked untested |
+| 4 | *Large Tick Futures* (principle) | `execution-market-making` | `res:spread-determinants` (merged); stub `ev:futures-tick-size-evidence` in `futures-execution` | Lehalle and Laruelle eq. (2.1), pp. 144–145, and p. 148 | Merged; the futures-specific and equity-comparison claims unchecked |
+| 5 | *Futures Architecture Drivers* (taxonomy) | `futures-execution` | `mech:futures-margin-settlement` (Pitfalls) | CME Rules 802, 814, 820; Harris p. 492; Rule 538 | Merged; standardisation and ETF link unchecked |
+| 6 | *Variation Margin* (mechanism) | `futures-execution` | `mech:futures-margin-settlement` (new) | CME Rules 814, 820, 802.B | Rewritten; "credit risk controlled continuously" corrected |
+| 7 | *Futures Block and EFP Segmentation* (taxonomy) | `futures-execution` | `conv:futures-block-efrp` (new) | CME Rules 526, 538; RA2607-5 pp. 4, 10 (Q14), Q28; RA1911-5 p. 1; Harris p. 334 | Rewritten; "transitory EFP" verified as history and prohibited at CME Group since 4 Aug. 2014 |
+
+`def:block-trade` (equity, Harris 2002) is cross-referenced and kept separate from the futures block rules; `def:portfolio-trading` is cross-referenced from the price-discovery entry.
+
+### Sources, 2026-10-15 (generic request headers)
+
+- **CME Rulebook**, chap. 5 (Rules 526, 538; its 538.K already has the NDF wording effective 7 Aug. 2026) and chap. 8 (Rules 802.B, 814, 820), PDFs from cmegroup.com.
+- **CME Group advisory RA2607-5** (24 July 2026, effective 7 Aug. 2026), read as Exhibit B of the CFTC certification of 23 July 2026 (submission 26-369); **RA1911-5** (17 Dec. 2019) for the 2014 history.
+- **CME Client Systems Wiki** (the catalogue's `ex-cme-matching`): "Supported Matching Algorithms" and "Indicative Opening Price and Quantity", both updated 11 Feb. 2025, read from the HTML; the parent page through WebFetch.
+- **CFTC filing of 22 Sep. 2020** (E-mini S&P 500 daily settlement, trade date 26 Oct. 2020). The current settlement page was not retrievable (a holding response).
+- **Hasbrouck** (`ex-hasbrouck-2003`): NYU working paper FIN-00-046, preliminary draft of 16 Nov. 2000, not the published version.
+- **Harris**, 2002 printing: pp. 334, 489, 492. **Lehalle and Laruelle**, 2018 printing: pp. 144–145, 148.
+- **Not available:** Garbade and Silber (1983, `w5-garbade-silber`); only secondary descriptions were found and none was used.
+
+### Distinctions kept
+
+- **Venue rules against outcomes.** The tick is a constraint, the matching algorithm a rule, and bounce and book size observed outcomes; the opening uncross (rule) is kept apart from the settlement VWAP (a price-determination procedure).
+- **Margin.** Contract standardisation, initial margin (performance bond), variation settlement, intraday cycles, FCM–customer arrangements and residual default risk are separated; daily settlement does not eliminate credit risk.
+- **Blocks and EFRPs.** Eligibility, the related position, reporting and submission are listed per rule; the history of transitory EFPs (Harris 2002; permitted until 4 Aug. 2014) is kept apart from current rules.
+- **Price discovery.** The empirical result (sample March–May 2000) is kept apart from theory (Garbade–Silber, unread) and from the legacy's explanations (untested).
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| CME Rulebook chaps. 5, 8 | Rules 526, 538, 802.B, 814, 820 | Product thresholds, reporting times and cycle times in separate notices not read |
+| RA2607-5, RA1911-5 | pp. 1, 4, 10, Q14, Q28 | — |
+| CME Client Systems Wiki | two pages, updated 11 Feb. 2025 | Product algorithm checked for SOFR futures only |
+| CFTC filing 2020 | Exhibit A, E-mini S&P 500 | Current procedure not retrieved |
+| `ex-hasbrouck-2003` | WP abstract, pp. 4–6, 13, 34 | Draft, not the JF version; S&P 400 result may differ |
+| `w5-garbade-silber` | none | Not available |
+
+The four new entries and the extended `res:spread-determinants` are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/futures-execution/derivations.tex` (1 page, no warnings or bad boxes), with only the subsection unnumbered; a script confirmed the body appears once and the seven blocks once each, in order, with nothing else outside them. Earlier artefacts are unchanged.
+
+### Counts
+
+`migration_status.py`: 640 → 633 legacy blocks = 530 shared + 74 single-candidate + 29 assigned. `futures-execution`: exclusive 7 → 0, shared 18 unchanged, listed entries 0 → 4 (new note), backlog stubs 0 → 1. Entries 71 → 75 (conventions 0 → 2, evidence 3 → 4, mechanisms 3 → 4). Other listings unchanged. A first checker run, before the pathway note existed, reported the four new entries as listed in no note; fixed by the note.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 191 pages (187 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. A first build had one overfull See-also line in the new evidence entry, reworded. Rendered and inspected: PDF pp. 41 (`res:spread-determinants`), 82–86 (the ETF follow-up and the new futures section) and 188 (the legacy asset-class section, which now starts at *FX Market Microstructure*). Tests: 14 passed.
+
+### For review
+
+- The four new entries; routing the large-tick block to `execution-market-making`.
+- The reliance on CME documentation retrieved on one date, and on a 2000 working-paper draft for the price-discovery evidence.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/02_futures_market_microstructure.tex` (7 blocks), whose map names `futures-execution` alone. Likely overlaps: `def:block-trade` (futures block trades and EFPs), `ev:intraday-impact-profile` and the lead–lag of index futures noted in `def:portfolio-trading`. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/03_fx_market_microstructure.tex` (4 blocks), whose map names `fx-dealer-market-making` alone. Likely overlaps: `meth:dealer-quote-adjustment` and `def:dealer-inventory-risk` (internalisation and dealer quoting), `def:smart-order-routing` and `res:latency-arbitrage-arms-race` (last look and stale quotes), and `def:best-execution`. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1624,7 +1713,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/02_futures_market_microstructure.tex` | futures-execution |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/03_fx_market_microstructure.tex` | fx-dealer-market-making |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/04_options_market_microstructure.tex` | options-execution |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/05_fixed_income_microstructure.tex` | otc-fixed-income-trading |

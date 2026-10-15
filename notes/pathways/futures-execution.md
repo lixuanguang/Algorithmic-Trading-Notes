@@ -1,0 +1,52 @@
+---
+key: futures-execution
+section: execution-trading-costs
+status: not started (draft entries from the migration only)
+---
+
+# Futures execution: matching, rolls and settlement
+
+Pathway outcome, from the guide: execute futures orders and rolls using the contract's matching algorithm, settlement mechanisms and cross-market price discovery, and measure roll costs. Its checkpoint identifies one contract's Globex matching algorithm and estimates passive fill probability, then plans a calendar roll (early, in the index roll window, and through trade-at-settlement), measuring spread, impact, calendar-spread slippage and settlement-price risk. Its ten readings begin with futures–cash price discovery (`w5-garbade-silber`, `ex-hasbrouck-2003`) and CME matching (`ex-cme-matching`), then evidence on matching changes, the Flash Crash, Treasury delivery, rolls, index investment and trade-at-settlement.
+
+## Status
+
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration slice 19 (`notes/migration.md`), which migrated the legacy futures-market-microstructure file mapped to this pathway alone. The entries come from migration and source checking against CME Group's rulebook, advisory notices and client documentation as retrieved on 15 October 2026, a dated CFTC filing, Hasbrouck's working paper, and Harris (2002). That is not study of the readings; it is not the checkpoint either, and no roll costs were measured.
+
+## Outcome in my own words
+
+## How the readings fit together
+
+## Checkpoint
+
+Not attempted.
+
+## Entries created or changed
+
+Written in migration slice 19, 2026-10-15:
+
+- `conv:cme-globex-trading`: the centralised market and its permitted off-exchange exceptions; CME Globex matching algorithms, with SOFR futures' pro-rata allocation as the named example; the pre-open and indicative opening price; the E-mini S&P 500 daily settlement window as of 2020.
+- `conv:futures-block-efrp`: CME Rule 526 block trades and Rule 538 EFRPs (eligibility, related position, reporting and submission), and the prohibition of transitory EFRPs since 2014, with Harris's 2002 history kept apart.
+- `mech:futures-margin-settlement`: settlement variation each cycle (Rule 814), performance bond (Rule 820) and the default waterfall (Rule 802.B); daily settlement bounds credit risk but does not eliminate it.
+- `ev:index-futures-price-discovery`: Hasbrouck's evidence that E-minis led price discovery for the S&P 500 and Nasdaq-100 in March–May 2000 (working-paper draft), with the legacy explanations marked as untested.
+
+All four: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/futures-execution/derivations.tex`.
+
+## Related entries owned elsewhere
+
+Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).
+
+## Entry backlog
+
+- ev:futures-tick-size-evidence: whether futures "often" have economically large ticks relative to comparable equities, with bounce and larger displayed depth, as the legacy principle claimed; only the general large-tick mechanism (Lehalle and Laruelle, pp. 144–148) was checked.
+
+## Legacy candidate material
+
+Run `python3 tools/migration_status.py` for the current counts. After slice 19 no legacy file lists this pathway alone; it remains a candidate for 18 shared blocks.
+
+## What changed in my view or practice
+
+## Questions carried forward
+
+- Read Garbade and Silber (1983) for the theory of futures–cash price discovery; it had no open copy.
+- Compare the Hasbrouck working-paper draft (2000) with the published Journal of Finance version, whose S&P 400 result the catalogue describes as shared rather than ETF-dominated.
+- Check the current CME E-mini S&P 500 settlement procedure page (not retrievable on 2026-10-15) and CME Clearing's intraday settlement-cycle times.

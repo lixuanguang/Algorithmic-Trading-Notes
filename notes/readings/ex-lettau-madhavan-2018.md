@@ -22,7 +22,7 @@ Prepared on 2026-10-15 by migration slice 18 from source checks, not from study:
 - Mutual funds transact at end-of-day NAV and trade the underlying on net flows; ETFs deal with APs, who create and redeem creation units against a basket and/or cash, in kind or (not typically) in cash; holdings and next-day basket published daily (pp. 4–5).
 - Secondary trading does not trade the underlying; secondary volume about 4:1 creation/redemption (ICI, 2014) (pp. 5–6).
 - APs lock in profits intraday; arbitrage "helps keep" price close to value; premiums to stale NAV or intraday indicative value need not be arbitrage (p. 6); Madhavan–Sobczyk half-lives (pp. 6–7, reported).
-- Transaction costs externalised: \$100 million example ending at \$84,985,000 against \$85 million (p. 7, recomputed); tax advantage of in-kind transfers (p. 8).
+- Transaction costs externalised: \$100 million example ending at \$84,985,000 against \$85 million (p. 7, recomputed); the ETF side of the example is abbreviated. Own reconciliation (follow-up): pure secondary trading leaves total assets at \$100 million; \$85 million of total assets follows if the net \$15 million is redeemed in kind. Cash creations and redemptions can make the fund trade. Tax advantage of in-kind transfers (p. 8).
 - AP withdrawal: largest of 931 ETFs average 38 APs (ICI 2015, reported); with no APs an ETF would trade like a closed-end fund (p. 18). "Primary market" used for the underlying securities' market (p. 18).
 
 ## Limits

@@ -71,6 +71,8 @@ Written in migration slice 17, 2026-10-15, from a legacy execution file whose ma
 
 Partly checked 2026-10-15, draft; its artefact is `notes/artefacts/model-governance-controls/derivations.tex`.
 
+Changed in migration slice 19, 2026-10-15: `res:spread-determinants` took the legacy large-tick futures principle, adding Lehalle and Laruelle's large-tick bounce term (eq. (2.1)) and the book-size compensation at a one-tick spread (p. 148); the futures-specific claim is a backlog item of `futures-execution`.
+
 ## Entry backlog
 
 ## Legacy candidate material

@@ -58,6 +58,12 @@ Written in migration slice 17, 2026-10-15, from the production-considerations fi
 
 Both partly checked 2026-10-15, draft; their artefact is `notes/artefacts/model-governance-controls/derivations.tex`. The operational controls and the floor-against-automated comparison from the same file are owned by `model-governance-controls` and `execution-market-making` and are not listed here.
 
+Changed in migration slice 18, 2026-10-15, from the equity-market-microstructure file:
+
+- Merged: Harris's 2002 block-print and size-precedence rule into `def:block-trade` (sec. 15.6.1), with reporting, execution priority and trade-through protection kept apart; Harris's three reasons for cheap index trading into `def:portfolio-trading` (sec. 23.4).
+
+Both partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/etf-index-closing-execution/derivations.tex`.
+
 ## Entry backlog
 
 ## Legacy candidate material

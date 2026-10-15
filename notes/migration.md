@@ -1515,9 +1515,81 @@ The wrapper `00_overview.tex` (in a verbatim environment, since it `\input`s the
 - Routing blocks 1–7 to the execution overview, 11 to `execution-market-making`, and deleting block 3.
 - The order-state synthesis and the reliance on one U.S. rule; the RTS 6 and FIX stubs.
 
+## Slice 17 follow-up: clarifications, 15 October 2026
+
+Three clarifications to slice 17 (`1c3fabc`), made at the start of slice 18; the slice-17 record above is left as written.
+
+- `def:automated-trading-architecture`: Lehalle and Laruelle's "known in real time" is now quoted as theirs and qualified. The market volume $V$ is available only as observed; volume still to come requires a forecast. It cross-references the decision-time item already in `def:trading-envelope`.
+- `cfr-240-15c3-5` in `front/sources.tex`: the SEC adopting release, 34-63241, is dated 3 November 2010 (checked on p. 130 of the release PDF from sec.gov); the Federal Register published it on 15 November 2010, where the eCFR cites the rule text at 75 FR 69825.
+- `def:floor-automated-trading-systems`: the six bullets are now presented as the entry's grouping of Harris's seven sections (27.1–27.7), with Table 27-1 listing eleven issues. High absolute start-up costs (p. 549) and the table's relatively lower software costs (p. 552) are recorded as compatible, not as a contradiction; the Harris reading note and the `execution-market-making` pathway note were reworded to match.
+
+## Slice 18: equity market microstructure, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 17's pushed state (`1c3fabc`, on `main`, matching `origin/main`; guide `343d145`; `house.tex` unchanged). The reported counts matched the checker: 646 legacy blocks (530 shared, 87 single-candidate, 29 assigned), 70 entries, 0 problems. Migration and source checking, not study.
+
+### Scope
+
+The whole of `execution-trading-costs/02_.../01_equity_market_microstructure.tex`: 6 counted blocks with the sentences inside them; outside them only the `% migrate-to:` line and the subsection heading (checked by script). The file, its `\input` in `02_.../00_overview.tex` and its map row were deleted; the wrapper and its other six topics are unchanged.
+
+### Ownership, block by block
+
+The map's single candidate, `market-structure-execution-quality`, received no block. Its outcome is current fragmentation, fee, tick, odd-lot and retail-routing rules and their effect on execution quality. The checked support for these blocks was Harris's 2002 descriptions and ETF readings, and current venue rules were not checked; the pathway receives a backlog stub instead.
+
+| # | Legacy block | Owner | Destination | Disposition | Rationale |
+|---|---|---|---|---|---|
+| 1 | *Equities as Microstructure Laboratory* (principle) | none | artefact only | Deleted | No checked source supports "cleanest empirical laboratory" or the transfer list; the asset-class pathways carry the differences with their own readings |
+| 2 | *Asset-Class Transfer* (caveat) | none | artefact only | Deleted | Orientation statement without a checked source; the same pathways cover it |
+| 3 | *Equity Block Prints and Size Priority* (marketrule) | `execution-trading-costs` | `def:block-trade` (Practice, Pitfalls); stub `rule:block-print-trade-through-current` in `market-structure-execution-quality` | Merged as historical; current rules stubbed | Harris sec. 15.6.1, pp. 333–334 (2002): print requirement, size precedence above 25,000 shares, price priority; reporting, execution priority and trade-through protection separated; "trade-reporting facility" and current exceptions unverified |
+| 4 | *Index Markets Trade Common Risk* (principle) | `execution-trading-costs` | `def:portfolio-trading` (Conditions, Pitfalls) | Merged | Harris pp. 484, 489: three reasons (few informed traders, activity, one transaction); "easier to net" and "easier to hedge" are not his |
+| 5 | *Index Product Segmentation* (taxonomy) | `etf-index-closing-execution` | `mech:etf-creation-redemption` (Practice, Pitfalls) | Merged | Harris sec. 23.5, pp. 491–492; futures "basis" and the closing choice sentence unsupported |
+| 6 | *ETF Basket Arbitrage* (mechanism) | `etf-index-closing-execution` | `mech:etf-creation-redemption` (new) | Rewritten | Lettau and Madhavan pp. 4–8, 18; Pan and Zeng pp. 1–3; borrow, cash substitution and taxes as weakening factors unsupported |
+
+Routing exceptions: blocks 3 and 4 go to the overview `execution-trading-costs`, owner of `def:block-trade` and `def:portfolio-trading`; blocks 5 and 6 go to `etf-index-closing-execution`, whose outcome names ETF creations. `ev:index-reconstitution-impact` (owned by `price-impact-execution`) is cross-referenced, not extended.
+
+### Sources, 2026-10-15
+
+- **Harris**, 2002 Oxford printing (text through macOS PDFKit, as in slice 17; printed page = PDF − 13): sec. 15.6.1, pp. 333–334; chap. 23, p. 484, sec. 23.4, p. 489, sec. 23.5 with Table 23-1, pp. 491–492.
+- **Lettau and Madhavan** (`ex-lettau-madhavan-2018`): NBER Working Paper 24250, January 2018, pp. 1, 4–8, 18, text layer. The published JEP version was not retrieved (the AEA site returned a bot check). The paper discloses Madhavan's BlackRock role.
+- **Pan and Zeng** (`wide-pan-zeng-etf`): ESRB Working Paper 59, December 2017, abstract and pp. 1–3, text layer (printed page = PDF − 2). SSRN, the catalogue's record, returned a bot page.
+- **Not consulted:** current exchange or FINRA block and trade-reporting rules, Rule 611 trade-through exceptions, SEC Rule 6c-11 on ETFs, Hasbrouck (the only local Hasbrouck file found was his 2004 lecture notes, which the reading note already excludes). All requests used generic headers.
+
+### Distinctions kept
+
+- **Block trades.** Reporting or printing venue, execution priority against the book, and trade-through protection across venues are kept apart in `def:block-trade`; only Harris's 2002 exchange rule is stated.
+- **ETFs.** Creation and redemption between APs and the fund is kept apart from secondary trading of ETF shares, in-kind from cash, and the arbitrage incentive from guaranteed convergence; stale NAV and AP discretion are the stated limits. Pan and Zeng's evidence is labelled corporate-bond-only.
+- **Index costs.** Harris's three reasons replace the legacy four.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-harris` | pp. 333–334, 484, 489, 491–492 | Text through PDFKit; facts as of 2001–2002 |
+| `ex-lettau-madhavan-2018` | WP pp. 1, 4–8, 18 | Working-paper version, not the JEP article |
+| `wide-pan-zeng-etf` | ESRB pp. 1–3 and abstract | Model and data read only in the introduction |
+| current venue and ETF rules | none | Not checked; stubbed or stated as unchecked |
+
+The new entry and the two extended entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/etf-index-closing-execution/derivations.tex` (1 page, no warnings or bad boxes), with only the subsection unnumbered; a script confirmed the body appears once and the six blocks once each, in order, with nothing else outside them. Existing artefacts are unchanged (`git diff` empty for the three earlier ones).
+
+### Counts
+
+`migration_status.py`: 646 → 640 legacy blocks = 530 shared + 81 single-candidate + 29 assigned. `market-structure-execution-quality`: exclusive 6 → 0; assigned 3 and shared 290 unchanged; listed entries 5; backlog stubs 0 → 1. Entries 70 → 71 (mechanisms 2 → 3). Listings: `etf-index-closing-execution` 0 → 1 (new note); `execution-trading-costs` 14 (two entries extended, none added); others unchanged.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 187 pages (186 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. Rendered and inspected: PDF pp. 59 (`def:block-trade`), 64 (`def:portfolio-trading`), 81–82 (the new ETF section) and 184 (the legacy asset-class section, which now starts at *Futures Market Microstructure*); pp. 52 and 61 hold the slice-17 follow-up wording. Tests: 14 passed.
+
+### For review
+
+- Routing all six blocks away from the map candidate; deleting blocks 1 and 2.
+- The ETF entry's reliance on working-paper versions.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/01_equity_market_microstructure.tex` (6 blocks), whose map names `market-structure-execution-quality` alone, its last exclusive legacy material. Likely overlaps: `def:block-trade`, `def:portfolio-trading` and `ev:index-reconstitution-impact` (index products, ETF creation and block prints). The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/02_futures_market_microstructure.tex` (7 blocks), whose map names `futures-execution` alone. Likely overlaps: `def:block-trade` (futures block trades and EFPs), `ev:intraday-impact-profile` and the lead–lag of index futures noted in `def:portfolio-trading`. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1552,7 +1624,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/01_equity_market_microstructure.tex` | market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/02_futures_market_microstructure.tex` | futures-execution |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/03_fx_market_microstructure.tex` | fx-dealer-market-making |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/04_options_market_microstructure.tex` | options-execution |

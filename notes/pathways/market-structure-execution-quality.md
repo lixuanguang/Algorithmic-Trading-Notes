@@ -38,9 +38,11 @@ All five: verification partly checked 2026-10-15, stability draft; human review 
 
 ## Entry backlog
 
+- rule:block-print-trade-through-current: where U.S. equity blocks are now printed or reported (exchanges, FINRA trade-reporting facilities), how crosses interact with displayed orders (size precedence, if any), and the trade-through exceptions under Rule 611. The legacy block-print rule (slice 18) was checked only against Harris's 2002 description, now in `def:block-trade`; name each venue rule, provision and date before writing the entry.
+
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. This pathway has three blocks assigned to it and others exclusive to it in `compendium/legacy/`; most of its candidates are shared with the microstructure overview.
+Run `python3 tools/migration_status.py` for the current counts. This pathway has three blocks assigned to it in `compendium/legacy/` and, after slice 18, none exclusive to it; most of its candidates are shared with the microstructure overview. Slice 18 routed all six blocks of its last exclusive file elsewhere (`notes/migration.md`).
 
 ## What changed in my view or practice
 

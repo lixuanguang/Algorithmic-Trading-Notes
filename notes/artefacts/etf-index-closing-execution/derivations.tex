@@ -1,5 +1,31 @@
-% migrate-to: market-structure-execution-quality
-\subsection{Equity Market Microstructure}
+% notes/artefacts/etf-index-closing-execution/derivations.tex
+% Legacy blocks kept verbatim when they were migrated (notes/migration.md), for the pathway
+% etf-index-closing-execution and the entries that took blocks from the same legacy file. The compendium
+% entries state each claim with its locator; the original wording lives here.
+% Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/etf-index-closing-execution/ with  latexmk -pdf derivations.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{ETFs, index events and closing auctions: legacy derivations}
+
+\section*{Equity market microstructure (slice 18, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 18): the whole of
+% 01_equity_market_microstructure.tex below its migrate-to line, 6 blocks in order with the sentences
+% inside them; only the subsection is unnumbered here. No other text, table or figure was in the file.
+% Destinations: blocks 1-2 (Equities as Microstructure Laboratory, Asset-Class Transfer) deleted from
+% the compendium, unsupported by the sources checked, and kept only here; block 3 merged into
+% def:block-trade and block 4 into def:portfolio-trading (execution-trading-costs); blocks 5-6 into
+% mech:etf-creation-redemption (etf-index-closing-execution). Current block-print and trade-through rules
+% are a backlog stub of market-structure-execution-quality.
+% Sources: Harris (alpha-harris) secs. 15.6.1, 23.4-23.5, pp. 333-334, 484, 489, 491-492; Lettau and
+% Madhavan (ex-lettau-madhavan-2018), NBER WP 24250; Pan and Zeng (wide-pan-zeng-etf), ESRB WP 59.
+
+% From compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/01_equity_market_microstructure.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Equity Market Microstructure}
 
 \begin{principle} \hlt{Equities as Microstructure Laboratory}\\
 Equities are the cleanest empirical laboratory because trades, quotes, venue identifiers, and regulatory changes are comparatively well recorded. Lessons from equities transfer to other markets only after adjusting for contract standardisation, post-trade process, leverage, and dealer intermediation.
@@ -34,3 +60,5 @@ Product choice is mostly a choice among trading speed, funding, tracking error, 
 Authorised participants create ETF shares by delivering the basket, or redeem ETF shares for the basket.\\
 This links ETF price to constituent value, but the link weakens when creation costs, borrow, cash substitutions, taxes, or stressed constituent liquidity are material.
 \end{mechanism}
+
+\end{document}

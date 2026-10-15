@@ -1,0 +1,45 @@
+% compendium/execution-trading-costs/etf-mechanics.tex
+% Entry migrated on 2026-10-15 from the legacy equity-market-microstructure file (slice 18), owned by
+% etf-index-closing-execution (a pathway outside the file's map candidates); dispositions and source checks in
+% notes/migration.md, the blocks verbatim in notes/artefacts/etf-index-closing-execution/derivations.tex.
+
+\section{Exchange-traded funds and index products}
+
+\begin{qfmechanism}[ETF creation and redemption: authorised participants, in-kind and cash baskets, and arbitrage that tends to keep price near value without guaranteeing it]\label{mech:etf-creation-redemption}
+\qffield{Statement} An open-end mutual fund transacts with its investors at the end of the day at net asset value (NAV), and buys or sells the underlying assets itself when flows do not net. An exchange-traded fund (ETF) also holds a portfolio but does not deal with the markets directly. Its sponsor contracts with \emph{authorised participants} (APs), typically large financial institutions or specialised market makers, who can create or redeem the fund's shares in large blocks, \emph{creation units}, in exchange for a basket of securities and/or cash \citep[NBER working paper version, pp.~4--5]{ex-lettau-madhavan-2018}. Two markets are therefore distinct:
+\begin{itemize}
+\item \emph{creation and redemption} between APs and the fund. The fund publishes its holdings and the basket it will accept for the next business day at the end of each trading day. Transactions are either \emph{in kind}, the AP delivering or receiving a basket identical or very similar to the holdings, or \emph{in cash}; in the authors' description cash creation is ``not typical'' (p.~5);
+\item \emph{secondary trading} of ETF shares on exchanges, through brokers, among investors, APs and other liquidity providers. It involves no transactions in the underlying securities; across U.S. ETFs secondary volume was about four times creation and redemption activity in 2014, by Investment Company Institute statistics as the authors report them (pp.~5--6).
+\end{itemize}
+Creation or redemption happens at the end of the day, but APs typically lock in any profit intraday. If the ETF trades at a premium to an AP's estimate of value, which need not be the NAV, the AP may deliver the creation basket for new ETF shares, which it may sell or keep. The mechanism ``works through arbitrage to help keep the price \dots\ close to the intrinsic value'' of the holdings (p.~6). Harris's 2002 description is the same in kind: ETFs are trusts whose units trade like stocks, and large traders create units by depositing the index portfolio and redeem them for a pro rata share of it \citep[chap.~``Index and Portfolio Markets'', sec.~23.5, p.~492]{alpha-harris}.
+
+\qffield{Conditions} The link between price and value is an arbitrage incentive, not a guarantee.
+\begin{itemize}
+\item \emph{Stale reference values.} Deviations from the published NAV need not be arbitrage opportunities. The NAV and the intraday indicative value, disseminated about every 15 seconds, may rest on stale prices, as for funds holding Japanese stocks during U.S. hours or bonds that have not traded \citep[p.~6]{ex-lettau-madhavan-2018}.
+\item \emph{No obligation to arbitrage.} APs ``are not contractually bound by legal obligations to perform ETF arbitrage'' \citep[ESRB version, p.~1]{wide-pan-zeng-etf}. Lettau and Madhavan argue that one AP's withdrawal is likely to be covered by others in ETFs with many APs; in an Investment Company Institute study of 931 U.S. ETFs that they cite, the largest averaged 38 APs. Smaller niche ETFs with few APs are the exception they allow for. If all APs withdrew, the fund would trade like a closed-end fund, with possibly wider premiums or discounts (p.~18).
+\item \emph{Liquidity mismatch in corporate bond ETFs.} Pan and Zeng model and test the case where a liquid ETF holds illiquid assets, for U.S. corporate bond ETFs only. Their data are AP lists from two issuers covering on average 83 percent of passive corporate bond ETF assets, 2004--2015, with dealer-identified TRACE bond trades \citep[abstract and pp.~1--3]{wide-pan-zeng-etf}. APs are also bond dealers. When their bond inventory imbalances are small, they arbitrage, but less as volatility, bond illiquidity and trading costs rise. When imbalances are large, an inventory-management motive can make creations and redemptions run against the mispricing, with larger relative mispricing. The authors contrast equity ETFs, where they see no such mismatch (p.~2). Their evidence does not extend to equity ETFs.
+\end{itemize}
+
+\qffield{Practice} In an open-end fund the costs of trading for redeeming or subscribing investors fall on those who stay; in an ETF, sellers trade with buyers at a market price, and the costs are ``externalised''. In the authors' illustration, a \$100 million fund with 0.20 percent spreads and a \$15 million net outflow ends at \$84{,}985{,}000 as a mutual fund, against \$85 million for the ETF's remaining holders \citep[p.~7]{ex-lettau-madhavan-2018}; recomputed: 15 million sold at 0.10 percent below value costs \$15{,}000. In-kind transfers can reduce capital-gains distributions (p.~8; Harris, p.~492, for the same tax point). Among index products Harris also lists open-end index funds, bought and redeemed at closing NAV and not tradable within the day; index futures, cheap to hold on margin but rolled at a cost; and cash-settled index options, used by speculators, hedgers and gamblers (sec.~23.5, pp.~491--492, Table~23-1 as of April 2001).
+
+\qffield{Pitfalls} ``Primary market'' is used two ways. Harris's Table~23-1 gives the primary market for fund shares as deposit to and redemption from the fund (p.~491), while Lettau and Madhavan use it for the market in the underlying securities in which APs acquire baskets (p.~18). This entry says ``creation and redemption'' for the first and ``secondary trading'' for exchange trading in ETF shares.
+
+The legacy mechanism said the link ``weakens when creation costs, borrow, cash substitutions, taxes, or stressed constituent liquidity are material''. Stale valuation, illiquid holdings (for corporate bonds) and APs' discretion are in the passages read. Borrow costs, cash substitution as a weakening factor and taxes as a limit to arbitrage are not.
+
+The legacy taxonomy's items were checked against Harris:
+\begin{itemize}
+\item index futures as ``leveraged, cash-efficient exposure with basis and roll risk'': Harris names margins and roll costs, not basis;
+\item index options as ``convex exposure to index level and volatility'': a gloss (Interpretation);
+\item its closing claim that product choice is ``mostly'' about speed, funding, tracking error, tax and operations: a synthesis.
+\end{itemize}
+
+On versions and dates: Lettau and Madhavan were read in their NBER working paper of January 2018, not the published \emph{Journal of Economic Perspectives} version, which was behind a bot check. Madhavan was then head of ETF and index research at BlackRock, which the paper discloses (p.~1). The ETF facts are as of 2014--2018 for the United States. Current SEC rules on ETF baskets (Rule 6c-11) were not checked.
+
+\qffield{See also} \hyperref[def:portfolio-trading]{portfolio trading} (index products and program trades; owned by \texttt{execution-trading-costs}); \hyperref[ev:index-reconstitution-impact]{index reconstitution} (owned by \texttt{price-impact-execution}); \hyperref[res:arbitrage-risks]{arbitrage risks}; \hyperref[def:hft-strategies]{HFT strategies} (ETF-basket arbitrage as an example).
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/etf-index-closing-execution/}.
+
+\qffield{Index} exchange-traded fund; ETF; authorised participant; creation unit; creation basket; in-kind creation; cash creation; redemption; secondary market; net asset value; intraday indicative value; ETF premium and discount; ETF arbitrage; liquidity mismatch; corporate bond ETF; transaction costs externalised; open-end index fund; index futures; index options
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against \texttt{ex-lettau-madhavan-2018} in NBER Working Paper 24250, January 2018, pp.~1 and 4--8, 18, text layer; \texttt{wide-pan-zeng-etf} in ESRB Working Paper 59, December 2017, abstract and pp.~1--3, text layer; and the text layer of \texttt{alpha-harris}, 2002 Oxford printing, sec.~23.5, pp.~491--492). Stability: draft. Currency: ETF practice as described for the United States, 2014--2018; Harris's products as of 2001--2002; no current rule checked.
+\end{qfmechanism}

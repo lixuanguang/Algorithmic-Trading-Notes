@@ -67,7 +67,7 @@ All twenty-two: verification partly checked 2026-10-15, stability draft. Human r
 
 Written in migration slice 17, 2026-10-15, from a legacy execution file whose map named only `model-governance-controls` (a routing exception):
 
-- `def:floor-automated-trading-systems`: Harris's comparison of floor and automated trading systems (chap. 27, Table 27-1), as of 2002, with the text–table inconsistency on initial costs.
+- `def:floor-automated-trading-systems`: Harris's comparison of floor and automated trading systems (chap. 27, Table 27-1), as of 2002; the six headings are the entry's grouping of Harris's seven sections (slice-17 follow-up).
 
 Partly checked 2026-10-15, draft; its artefact is `notes/artefacts/model-governance-controls/derivations.tex`.
 

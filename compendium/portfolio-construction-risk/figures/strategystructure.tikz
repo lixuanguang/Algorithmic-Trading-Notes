@@ -1,0 +1,30 @@
+% compendium/portfolio-construction-risk/figures/strategystructure.tikz
+% Moved from compendium/legacy/portfolio-construction-risk/figures/ in slice 30 (2026-10-15); the return arrow
+% from execution to portfolio construction was added to match Narang's Exhibit 2.1. The original is kept verbatim
+% in notes/artefacts/portfolio-construction-risk/systematic-investing-overview.tex.
+\begin{tikzpicture}[auto, thick, >=stealth, scale=0.8, transform shape]
+
+    \usetikzlibrary{positioning}
+
+    % Three modules arranged horizontally with reduced dimensions
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm] (alpha) {Alpha Model};
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm, right=0.8cm of alpha] (risk) {Risk Model};
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm, right=0.8cm of risk] (tc) {Transaction Cost Model};
+
+    % Portfolio Construction node directly below Risk Model
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm, below=0.8cm of risk] (portfolio) {Portfolio Construction};
+
+    % Execution node below Portfolio Construction
+    \node[draw, rectangle, minimum width=2.5cm, minimum height=0.8cm, below=0.8cm of portfolio] (execution) {Execution};
+
+    % Arrows connecting the nodes
+    \draw[->] (alpha.south) -- (portfolio.north);
+    \draw[->] (risk.south) -- (portfolio.north);
+    \draw[->] (tc.south) -- (portfolio.north);
+    % Narang's Exhibit 2.1 (p. 17) shows the two modules interacting: an arrow down and one back up.
+    \draw[->] ([xshift=-0.3cm]portfolio.south) -- ([xshift=-0.3cm]execution.north);
+    \draw[->] ([xshift=0.3cm]execution.north) -- ([xshift=0.3cm]portfolio.south);
+    
+\end{tikzpicture}
+
+

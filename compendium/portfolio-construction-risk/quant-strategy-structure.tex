@@ -1,0 +1,89 @@
+% compendium/portfolio-construction-risk/quant-strategy-structure.tex
+% Entries migrated on 2026-10-15 from the legacy systematic-investing overview and alpha-models files (slice 30,
+% sysinv/sysinvoverview.tex and sysinv/alphamod.tex), owned by the section overview portfolio-construction-risk, the
+% files' map candidate. Dispositions and source checks in notes/migration-slices.md; the files verbatim in
+% notes/artefacts/portfolio-construction-risk/systematic-investing-overview.tex and alpha-models.tex.
+
+\section{The structure of a quant strategy and its alpha models}
+
+\begin{qfdefinition}[Components of a quant trading strategy: alpha, risk and transaction cost models feeding portfolio construction, which interacts with execution, built on data and research]\label{def:quant-strategy-components}
+\qffield{Statement} Narang's schematic of a live, production trading strategy has three modules, ``an alpha model, a risk model, and a transaction cost model'', which ``feed into a portfolio construction model, which in turn interacts with the execution model'' \citep[chap.~2, ``An Introduction to Quantitative Trading'', sec.~2.2, Exhibit~2.1, p.~17, page image]{s7-narang}:
+\begin{itemize}
+\item the \emph{alpha model} predicts the future of the instruments considered, to generate returns;
+\item the \emph{risk model} helps limit exposure to factors ``unlikely to generate returns but could drive losses'', for example a trend follower's limit on directional exposure to commodities (pp.~17--18);
+\item the \emph{transaction cost model} estimates the cost of the trades needed to move from the current to the desired portfolio (p.~18);
+\item the \emph{portfolio construction model} balances profit, risk and cost to choose the best portfolio to hold; the difference between the target and the current portfolio is the list of trades (Exhibit~2.2, p.~18);
+\item the \emph{execution model} carries out those trades, using inputs such as their urgency and the dynamics of liquidity, ``in an efficient and low-cost manner'' (p.~18).
+\end{itemize}
+The schematic covers only the production system; data, without which black boxes are ``inert and useless'', and research complete it (Exhibit~2.3, p.~19). Figure~\ref{fig:quant-strategy-structure} redraws Exhibit~2.1.
+\begin{figure}[ht]
+\centering
+\input{portfolio-construction-risk/figures/strategystructure.tikz}
+\caption{The modules of a live quant trading strategy, after Narang's Exhibit~2.1 (p.~17); data and research, his Exhibit~2.3, are not drawn.}\label{fig:quant-strategy-structure}
+\end{figure}
+
+\qffield{Conditions} Narang calls a trader a quant when both what to own and how much are decided systematically as standard practice, allowing emergency overrides (sec.~2.1, p.~16). The structure ``is by no means universal'': many strategies run without a transaction cost, portfolio construction or execution model, risk constraints can be built into the alpha model, and some links are recursive, such as executions feeding the cost model (p.~19).
+
+\qffield{Practice} Each module has its entries: forecasts in \hyperref[def:alpha-model-taxonomy]{alpha models} and \hyperref[meth:alpha-strategy-specification]{their specification}, combined in \hyperref[meth:alpha-signal-combination]{signal combination}; risk in \hyperref[mod:factor-risk-model]{the factor risk model}; costs in \hyperref[mod:portfolio-transaction-cost-function]{cost functions}; the decision in \hyperref[meth:rule-based-position-sizing]{rule-based sizing} and \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}; execution in \hyperref[def:order-exposure-decisions]{order exposure decisions}; and the research and production chain around them in \hyperref[meth:strategy-production-lifecycle]{the strategy production lifecycle}. Checked: Narang's Exhibit~2.2 trades follow from target minus current weights ($-25-(-30)=+5$, $25-20=+5$, $25-40=-15$, $-25-(-10)=-15$ percent).
+
+\qffield{Pitfalls} The legacy diagram drew only a downward arrow from portfolio construction to execution; Narang's exhibit and text show the two interacting, and the redrawn figure adds the return arrow. The legacy description of the risk model as ``directional exposure limit on an asset class'' generalises his single example. As in \hyperref[mod:factor-risk-model]{the factor risk model}, the risk model informs the decision; the portfolio construction model selects and sizes.
+
+\qffield{See also} \hyperref[def:quant-strategy-risk-sources]{sources of strategy risk} (model risk can arise in every module); \hyperref[meth:quant-strategy-monitoring]{strategy monitoring}.
+
+\qffield{Further reading} The legacy overview, its chapter wrapper and its original diagram are kept verbatim in the section's folder of \nolinkurl{notes/artefacts/}, as\\ \nolinkurl{systematic-investing-overview.tex}.
+
+\qffield{Index} quant trading system; black box; alpha model; risk model; transaction cost model; portfolio construction model; execution model; target portfolio; trade list; data; research; production system
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~2, secs.~2.1--2.2, pp.~16--19, with Exhibit~2.1 on p.~17 by page image; Exhibit~2.2 arithmetic checked). Stability: draft. Currency: practitioner framework as of 2024.
+\end{qfdefinition}
+
+\begin{qfdefinition}[Alpha models: theory-driven and data-driven, and Narang's eight classes of theory-driven alpha by input]\label{def:alpha-model-taxonomy}
+\qffield{Statement} Narang defines alpha, ``not conventional'' by his own account, as ``skill in timing the selection and/or sizing of portfolio holdings''; an alpha model is the software that does this timing systematically \citep[chap.~3, ``Alpha Models: How Quants Make Money'', pp.~23--24]{s7-narang}. Alpha models are \emph{theory-driven}, starting from an economic explanation that is then tested, or \emph{data-driven}, looking for patterns without a prior theory (sec.~3.1, pp.~25--28). Theory-driven alphas fall into eight classes, sorted by input (Exhibit~3.2, p.~29):
+\begin{itemize}
+\item \emph{price data}: \emph{trend} or momentum, explained by slow consensus-building or by ``greater fools'' (pp.~29--30); \emph{mean reversion}, explained by temporary liquidity imbalances, such as index additions, and overshooting, with statistical arbitrage on similar stocks as its best-known form (pp.~33--35); and \emph{technical sentiment}, from option volumes and skews, trading volume and the order book (pp.~35--37);
+\item \emph{fundamental data}: \emph{value/yield}, ratios with price in the denominator such as earnings yield, read as being paid to hold riskier instruments (pp.~38--41); \emph{growth/sentiment}, including analysts' revisions (pp.~42--43); \emph{supply/demand} (pp.~43--44); \emph{quality}, from leverage, revenue diversity, management, fraud risk and quality sentiment (pp.~44--46); and \emph{tactical/events}, one-off events such as elections or the pandemic (pp.~46--47).
+\end{itemize}
+Data-driven strategies are ``far less widely practiced'', more common at high frequency where data are abundant, and in his view mostly unsuccessful as forecasters of markets (sec.~3.3, pp.~47--52).
+
+\qffield{Conditions} The classes are Narang's framework for organising strategies, not a result: he offers explanations for trend and reversion and cites little evidence: two papers for value/yield (Fama and French, n.~5; Ball, n.~6; pp.~37--40) and his reading of research on volume as a contrarian signal (p.~37), and otherwise examples and anecdotes. Trend and reversion coexist ``largely'' because they operate at different horizons, longer trends with shorter oscillations (Exhibit~3.5, pp.~35--36). He stresses that every class has ``relatively long periods of poor returns'' because the behaviours are ``unstable and episodic'' (p.~32), and that some strategies once called alpha, such as longer-term trend, are now treated by many as risk premia or ``smart beta'' (p.~24).
+
+\qffield{Practice} Interpretation: whether a class is used as an alpha to forecast, a premium to harvest or a risk to limit depends on the strategy, as in \hyperref[mod:factor-risk-model]{the factor risk model}. His relative-value example combines value and financing: ``when done on a relative basis \dots\ this strategy is also known as a carry trade'', earning the yield spread (p.~40); with the euro at 4.25 percent and the dollar at 2 percent, the carry is 2.25 percent (checked).
+
+\qffield{Pitfalls} The legacy block listed five classes (trend, mean reversion, value/yield, growth, quality); the third edition has eight, adding technical sentiment, supply/demand and tactical/events. The legacy sentence that a moving-average crossover ``has less than one point of return for every point of downside risk'' attaches to one rule what Narang says of ``the typical successful trend follower'' (p.~32), with no data. The legacy ``buying undervalued security and selling overvalued security is a carry trade'' drops the context of his sentence, in which ``this strategy'' is the yield strategy, so that the long earns the higher yield; interpretation, not checked against the factor readings: value (cheapness against fundamentals) and carry (the return if prices do not change) are distinct signals in later work, though they can coincide. His performance figures for Seykota, Mint and Renaissance (pp.~31--32) are anecdotes with press or web sources. ``In general, strategies that use data-mining techniques to forecast markets do not work'' (p.~49) is his judgement. Evidence for each class belongs to its specialist pathway (stubs in the overview's note).
+
+\qffield{See also} \hyperref[meth:alpha-strategy-specification]{alpha strategy specification}; \hyperref[meth:alpha-signal-combination]{signal combination}; \hyperref[meth:hypothesis-driven-strategy-research]{hypothesis-driven strategy research} (theory-driven research as a method); \hyperref[pit:parameter-overfitting]{parameter overfitting}.
+
+\qffield{Further reading} The legacy file, verbatim, is in \nolinkurl{alpha-models.tex} in the section's folder of \nolinkurl{notes/artefacts/}.
+
+\qffield{Index} alpha; alpha model; theory-driven; data-driven; data mining; trend following; momentum; mean reversion; statistical arbitrage; technical sentiment; value; yield; earnings yield; carry; quant long/short; growth; estimate revisions; supply and demand; quality; tactical events; smart beta; risk premia
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~3, secs.~3.1--3.3, pp.~23--52, with Exhibit~3.2 on p.~29 by page image; the carry example checked). Stability: draft. Currency: practitioner taxonomy as of 2024; anecdotes from 1970 to 2023.
+\end{qfdefinition}
+
+\begin{qfmethod}[Specifying an alpha strategy: forecast target, time horizon, bet structure, investment universe, model specification, conditioning variables and run frequency]\label{meth:alpha-strategy-specification}
+\qffield{Statement} Narang lists the choices that turn an alpha idea into a strategy \citep[chap.~3, sec.~3.4, pp.~52--63]{s7-narang}:
+\begin{enumerate}
+\item \emph{forecast target}: direction, magnitude and/or duration of a move, possibly with a confidence. Signal strength is the expected return and/or the confidence, and ``in general, though certainly not always'' a stronger signal means a bigger bet (pp.~52--53);
+\item \emph{time horizon}, from microseconds to a year or more, with his classes high-frequency, short-term (a day to two weeks), medium-term and long-term (pp.~53--55);
+\item \emph{bet structure}: an instrument by itself (intrinsic) or relative to others, in pairs or larger clusters, grouped statistically or heuristically (pp.~55--57);
+\item \emph{investment universe}: geography, asset class, instrument class and exclusions, preferring liquidity, plentiful clean data and predictable behaviour (pp.~57--59);
+\item \emph{model specification}: the precise definition and parameters, and how often the model is refitted (pp.~59--60);
+\item \emph{conditioning variables}: modifying conditioners such as stops and profit targets, and secondary conditioners that require agreement between signals (pp.~60--61);
+\item \emph{run frequency}: from monthly to continuous, trading noise and cost against large, market-moving rebalances and missed prices (pp.~61--62).
+\end{enumerate}
+With two forecast types, four horizons, two bet structures and four asset classes, one idea gives $2\times4\times2\times4=64$ variants (pp.~62--63; checked).
+
+\qffield{Conditions} Narang qualifies several items himself. Very large signals are rare, so the forecast--outcome relation may be less reliable there (p.~53). Differences between strategies are larger at short horizons, because small changes are amplified over many trades (pp.~54--55). Pairs are rarely precisely comparable, statistical groupings ``can be fooled by the data'' and heuristic ones are imprecise and rigid; grouping techniques suffer when regimes change (pp.~56--57). Refitting raises the risk of overfitting (p.~60). Most directional trend-following strategies make money on a minority of their trades, ``often less than 40 percent'' (pp.~60--61).
+
+\qffield{Practice} Interpretation: forecast strength becomes position size only through calibration and the portfolio decision. Sizing by strength presumes that strength is calibrated to realised returns (rank-based or equal sizing need not); size also depends on each instrument's risk, its correlation with other positions, costs and constraints, so ``bigger signal, bigger bet'' holds for a calibrated forecast with other inputs equal (\hyperref[meth:rule-based-position-sizing]{rule-based sizing}, where Narang gives the case against unequal weights; \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}; \hyperref[mod:portfolio-transaction-cost-function]{cost functions}). Specification choices made after looking at results are trials to be counted (\hyperref[pit:parameter-overfitting]{parameter overfitting}).
+
+\qffield{Pitfalls} ``Relative alpha strategies tend to exhibit smoother returns during normal times than intrinsic alpha strategies, but \dots\ unique problems related to incorrect groupings during stressful periods'' (p.~57) is a conditional generalisation with no data in the chapter; the legacy kept it. Narang's statement that machine-learning techniques are ``designed to provide'' a ``scientifically valid way of testing \dots\ without overfitting'' (p.~60) is not adopted. Interpretation: searching many specifications is a source of overfitting, which no technique removes by its name (\hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics}). His biotech example is that ``some quants exclude'' such stocks (p.~58), which the legacy turned into a rule. The legacy omitted the conditioning variables. ``Relative value'', he notes, is industry jargon for any relative bet structure, mostly unrelated to value (p.~57).
+
+\qffield{See also} \hyperref[def:alpha-model-taxonomy]{alpha models}; \hyperref[meth:alpha-signal-combination]{signal combination}; \hyperref[meth:hypothesis-driven-strategy-research]{hypothesis-driven strategy research}; \hyperref[mod:factor-risk-model]{factor risk model} (relative bets as risk control).
+
+\qffield{Further reading} The legacy file, verbatim, is in \nolinkurl{alpha-models.tex} in the section's folder of \nolinkurl{notes/artefacts/}.
+
+\qffield{Index} forecast target; signal strength; confidence; time horizon; high-frequency; short-term; medium-term; long-term; bet structure; intrinsic; relative; pairs; clusters; grouping; relative value; investment universe; liquidity; model specification; parameters; refitting; conditioning variables; stop-loss; profit target; time stop; run frequency
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~3, sec.~3.4, pp.~52--63, with Exhibits~3.7 and~3.8 read from the text layer; the permutation count checked). Stability: draft. Currency: practitioner account as of 2024.
+\end{qfmethod}

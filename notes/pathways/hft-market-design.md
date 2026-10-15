@@ -30,6 +30,12 @@ Written in migration slice 15, 2026-10-15:
 
 All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`.
 
+Changed in migration slice 30, 2026-10-15, from the legacy execution-model file of Narang's notes (`sysinv/executionmod.tex`, mapped to the overview `portfolio-construction-risk`):
+
+- `def:hft-strategies`: Narang's fast alpha (chap. 15, pp. 291-293) and footprints (chap. 7); the legacy *High Frequency Trading* block's machine-learning claim and its *HFT Shark Strategy*, neither in the third edition, kept as historical descriptions: "front-run" read against Narang's fiduciary definition (Appendix, pp. 312-314) and FINRA Rule 5270, the profit not riskless.
+
+Partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/portfolio-construction-risk/execution-model.tex`.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:order-anticipation`, `def:bluffing-manipulation`, `def:arbitrage`, `def:spread-measures`, `mod:glosten-milgrom` (`execution-market-making` and `market-making-lob`); `def:smart-order-routing` (`market-structure-execution-quality`).

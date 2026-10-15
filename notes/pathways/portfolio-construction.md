@@ -44,8 +44,10 @@ All three new entries partly checked 2026-10-15, draft; human review outstanding
 
 Written in migration slice 29, 2026-10-15, from Narang's chap. 4, "Risk Models" (`s7-narang`, third edition, pp. 71-84), with Boyd et al. secs. 3.3 and 4.2:
 
-- `mod:factor-risk-model`: risk as an unforecast exposure and the risk model as an input to the portfolio decision, not the decision; the factor model $r=Ff+\epsilon$ with $\Sigma=F\Sigma_fF^\top+D$ and its assumptions; diversification of residual risk only under uncorrelated residuals (computed); economic against PCA factors, whose labels are after-the-fact; exposure limits and neutrality, with zero covariance kept apart from zero exposure (computed); the legacy market, size, value and momentum list, not in Narang's chapter, read as roles that depend on the strategy; "unintended" not the same as "uncompensated"; updating not evidence of better forecasts.
+- `mod:factor-risk-model`: risk as an unforecast exposure and the risk model as an input to the portfolio decision, not the decision; the factor model $r=Ff+\epsilon$ with $\Sigma=F\Sigma_fF^\top+D$ and its assumptions; diversification of residual risk under stated correlation conditions (computed; corrected in the slice-29 follow-up); economic against PCA factors, whose labels are after-the-fact; exposure limits and neutrality, with zero covariance kept apart from zero exposure (computed); the legacy market, size, value and momentum list, not in Narang's chapter, read as roles that depend on the strategy; "unintended" not the same as "uncompensated"; updating not evidence of better forecasts.
 - Merged into `mod:mean-variance-portfolio-optimisation`: hard limits against penalties, with Boyd et al.'s softening (a penalty replaces a limit; mandated limits stay hard); limit levels from theory or data; where limits apply; volatility and dispersion read as parts of one covariance model, with Narang's dispersion inference and VaR description not adopted.
+
+Changed in the slice-29 follow-up, 2026-10-15: `mod:factor-risk-model` now treats a diagonal residual covariance as sufficient, not necessary, for residual diversification (constant equicorrelation leaves a floor; correlation within disjoint pairs gives $0.108/n$ and still diversifies); the CVX-XOM pair is an approximate hedge that Narang says "substantially eliminated" market risk, exact only with equal betas; and his rule is quoted as no expectation of being compensated *sufficiently*, not of earning nothing.
 
 Both partly checked 2026-10-15, draft; human review outstanding. Their artefact is `notes/artefacts/portfolio-construction-risk/risk-models.tex`, a new file beside slices 27 and 28's.
 
@@ -65,7 +67,7 @@ Cross-referenced, not owned here: `def:transaction-costs` and `meth:transaction-
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. No legacy file now lists this pathway as a candidate: slice 28 migrated `sysinv/portconstmod.tex` and slice 29 `sysinv/riskmod.tex`. The remaining files of Narang's notes, `sysinv/alphamod.tex`, `sysinv/executionmod.tex` and the overview's method block in `sysinv/sysinvoverview.tex`, list the section overview `portfolio-construction-risk`; any of their blocks may still bear on this pathway when they are migrated. This says nothing about consolidation: the backlog is open and no reading has been studied.
+Run `python3 tools/migration_status.py` for the current counts. No legacy file now lists this pathway as a candidate: slice 28 migrated `sysinv/portconstmod.tex` and slice 29 `sysinv/riskmod.tex`. The remaining files of Narang's notes, mapped to the overview `portfolio-construction-risk`, were migrated by slice 30, which removed the legacy chapter; their alpha, signal-combination and production material went to the overview, `equity-long-short-construction` and `model-governance-controls`, and none to this pathway. This says nothing about consolidation: the backlog is open and no reading has been studied.
 
 ## What changed in my view or practice
 

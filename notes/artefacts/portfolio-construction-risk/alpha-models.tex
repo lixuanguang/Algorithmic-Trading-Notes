@@ -1,5 +1,28 @@
-% migrate-to: portfolio-construction-risk
-\subsection{Alpha Models Overview}
+% notes/artefacts/portfolio-construction-risk/alpha-models.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 30), as a new file beside the
+% artefacts of slices 27-29 under the section key portfolio-construction-risk. The compendium entries state each
+% claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/portfolio-construction-risk/ with  latexmk -pdf alpha-models.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Portfolio construction and risk: legacy alpha models}
+
+\section*{Alpha models (slice 30, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (slice 30): the whole of sysinv/alphamod.tex below its
+% migrate-to line, with all prose outside the environments; only the subsection is unnumbered here.
+% Destinations: introduction and Theory Driven Models -> def:alpha-model-taxonomy (portfolio-construction-risk);
+% data-driven paragraph -> def:alpha-model-taxonomy; Strategy Parameters -> meth:alpha-strategy-specification
+% (portfolio-construction-risk); Blending of Models items i-ii -> meth:alpha-signal-combination
+% (equity-long-short-construction); item iii (Lopez de Prado) -> meth:strategy-production-lifecycle
+% (model-governance-controls); evidence for each alpha class stubbed in the overview's note.
+% Source: Narang (s7-narang), third edition, Wiley 2024, chap. 3, pp. 23-69; Lopez de Prado (alpha-afml) pp. 5-6.
+
+% From compendium/legacy/portfolio-construction-risk/sysinv/alphamod.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Alpha Models Overview}
 
 Theory-driven models tests theories of why markets behave in a manner, and see if they can be used to predict the future. Strategies utilising price-related data are trend and mean reversion; strategies utilising fundamental data are value/yield, growth and quality. Usually more than one model is used in combination.
 
@@ -46,3 +69,5 @@ Most common approaches are linear models, nonlinear models, and machine learning
 Decades ago, macroscopic alpha based on simple tools like econometrics are common, but this is quickly diminishing. Microscopic alpha however, becomes more abundant, but requires heavy ML tools.
 \end{enumerate}
 \end{method}
+
+\end{document}

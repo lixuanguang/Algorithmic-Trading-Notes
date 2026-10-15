@@ -1,0 +1,32 @@
+% compendium/systematic-equities/signal-combination.tex
+% Entry migrated on 2026-10-15 from the legacy alpha-models file (slice 30, sysinv/alphamod.tex, block Blending of
+% Models), owned by equity-long-short-construction (a routing exception: the file's map candidate is the section
+% overview portfolio-construction-risk). Dispositions in notes/migration-slices.md; the file verbatim in
+% notes/artefacts/portfolio-construction-risk/alpha-models.tex.
+
+\section{Combining alpha signals}
+
+\begin{qfmethod}[Combining alpha signals into one forecast: linear weights, conditional and rotational models, machine learning, or separate factor portfolios]\label{meth:alpha-signal-combination}
+\qffield{Statement} Narang treats blending as the problem of turning several alpha models' forecasts for an instrument into one composite forecast, which then goes to portfolio construction \citep[chap.~3, ``Alpha Models: How Quants Make Money'', sec.~3.5, pp.~64--68]{s7-narang}. He names four approaches:
+\begin{itemize}
+\item \emph{linear models}, ``by far the most common'': each factor contributes additively, its weight usually set by multiple regression on past returns. In his example a yield factor forecasting $+20$ percent at weight 0.7 and a trend factor forecasting $-10$ percent at weight 0.3 give $0.7\times20+0.3\times(-10)=+11$ percent (pp.~65--66; checked). Equal weights, equal-risk weights and discretionary weights are special cases (p.~66);
+\item \emph{nonlinear models}: \emph{conditional} models, where one factor's reading sets another's weight, for example acting on value only when momentum agrees, which in his example gives no signal, or $+20$ percent if the trend agreed (Exhibit~3.10, pp.~66--67, page image); and \emph{rotation} models, whose weights are refitted on recent data and ``usually'' favour the factors that have done best recently, ``a form of trend following in the timing of alpha factors'' (p.~67);
+\item \emph{machine-learning} models that choose the weights, which he calls ``both more common and more successful'' than machine learning used to forecast markets (pp.~67--68);
+\item not combining at all: building one portfolio per alpha model and combining those portfolios, as in \hyperref[meth:signal-portfolio-allocation]{signal-portfolio allocation} (p.~64).
+\end{itemize}
+Signal mixing produces one forecast per instrument; portfolio construction then sizes positions from forecasts, risk and costs (p.~68).
+
+\qffield{Conditions} Narang's argument for blending is that two partly right forecasts can together be right more often (Exhibit~3.9, p.~65), and that ``any reasonably intelligent combination of alphas'' is likely to beat any one of them over time (p.~64). Interpretation: that holds when the forecasts each carry information and their errors are not highly correlated; combining a weak forecast with a strong one, or two near-duplicates, need not help, and weights fitted to past returns carry estimation error. His Exhibit~3.9 is a diagram, not evidence.
+
+\qffield{Practice} Interpretation: ``linear'' describes the form of the combination, not the factors. A linear model assumes each factor's contribution does not depend on the others (no interaction), which is what Narang means by inclusion being ``independent'' (p.~65); it does not need the factors to be statistically independent. Correlated factors can be combined linearly, though highly correlated ones make regression weights unstable. A conditional rule is an interaction; a rotation rule is a time-varying weight. Combining signals into one forecast before optimising, or optimising on the signals separately, is the mixing-against-integrating choice that this pathway's checkpoint asks to compare (stub).
+
+\qffield{Pitfalls} The legacy ``linear models: require independence of factors'' misreads Narang's additivity as statistical independence. Rotation by recent performance is a bet that factor performance trends; Narang gives no evidence for it, and refitting weights on recent data counts as further trials (\hyperref[pit:parameter-overfitting]{parameter overfitting}). His claim that machine learning works better for weighting than for forecasting is a judgement without data in the chapter. He refers to Chapter~7 for portfolio construction techniques (p.~64), but they are in Chapter~6; Chapter~7 is on execution. The legacy block's third item, on the cost of machine-learning strategies and ``microscopic alpha'', comes from López de Prado rather than Narang and is in \hyperref[meth:strategy-production-lifecycle]{the strategy production lifecycle}.
+
+\qffield{See also} \hyperref[def:alpha-model-taxonomy]{alpha models}; \hyperref[meth:alpha-strategy-specification]{alpha strategy specification} (conditioning variables); \hyperref[meth:signal-portfolio-allocation]{signal-portfolio allocation}; \hyperref[meth:rule-based-position-sizing]{rule-based sizing} (equal and equal-risk weights); \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}.
+
+\qffield{Further reading} The pathway's readings on forecast scaling and signal combination (Grinold, Qian and others) are unread; stubs in the pathway note. The legacy file, verbatim, is in \nolinkurl{alpha-models.tex} under the section key \texttt{portfolio-construction-risk} in \nolinkurl{notes/artefacts/}.
+
+\qffield{Index} signal combination; alpha blending; signal mixing; composite forecast; linear model; multiple regression; equal weighting; equal risk weighting; conditional model; interaction; rotation model; factor timing; machine learning; factor portfolios; mixing versus integrating
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~3, sec.~3.5, pp.~64--68, with Exhibits~3.9 and~3.10 on pp.~65 and~67 by page image; the linear example checked). Stability: draft. Currency: practitioner account as of 2024.
+\end{qfmethod}

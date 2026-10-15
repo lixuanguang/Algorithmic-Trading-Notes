@@ -1,0 +1,51 @@
+---
+key: portfolio-construction-risk
+section: portfolio-construction-risk
+status: not started (draft entries from the migration only)
+---
+
+# Portfolio construction and risk (section overview)
+
+Overview outcome, from the guide: construct and evaluate a portfolio whose forecasts, risk model, constraints, costs and tail measures are explicit and testable. Its checkpoint builds a long-only and a long-short portfolio from the same forecasts and risk model, reports ex-ante and realised risk, turnover, costs and the largest tail-loss contributors, and reruns with a shrunk covariance estimate. Its readings are `s7-meucci`, `alpha-grinold` and `s7-qrm`.
+
+## Status
+
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration slice 30 (`notes/migration-slices.md`), which migrated the last three files of Narang's systematic-investing notes, all mapped to this overview. This overview keeps the parts about the structure of a quant strategy and its forecasts: the black-box components and Narang's alpha taxonomy and strategy specification. Signal combination went to `equity-long-short-construction`, the production chain to `model-governance-controls`, and the execution and HFT material was merged into existing entries of `execution-trading-costs` and `hft-market-design`. The entries come from source checking against `s7-narang` (third edition, 2024), which is not one of the overview's readings; none of those has been read, and the checkpoint was not attempted.
+
+## Outcome in my own words
+
+## How the readings fit together
+
+## Checkpoint
+
+Not attempted.
+
+## Entries created or changed
+
+Written in migration slice 30, 2026-10-15:
+
+- `def:quant-strategy-components`: Narang's alpha, risk and transaction cost models feeding portfolio construction, which interacts with execution, with data and research around them (chap. 2, pp. 16-19); the legacy diagram, moved to this chapter's figures, now has the return arrow of his Exhibit 2.1.
+- `def:alpha-model-taxonomy`: alpha as skill in timing selection and sizing; theory-driven against data-driven; Narang's eight theory-driven classes by input (the legacy listed five); the trend follower's return-to-downside claim restored to its subject; carry kept apart from value as interpretation.
+- `meth:alpha-strategy-specification`: forecast target, horizon, bet structure, universe, model specification, conditioning variables (omitted by the legacy) and run frequency; forecast strength tied to size only through calibration and the portfolio decision; Narang's claim that machine learning tests specifications "without overfitting" not adopted.
+
+All three partly checked 2026-10-15, draft; human review outstanding. Their artefacts are `notes/artefacts/portfolio-construction-risk/systematic-investing-overview.tex` (with exact copies of the legacy overview, chapter wrapper and diagram) and `alpha-models.tex`.
+
+## Related entries owned elsewhere
+
+Cross-referenced, not owned here: from the same legacy files, `meth:alpha-signal-combination` (`equity-long-short-construction`), `meth:strategy-production-lifecycle` (`model-governance-controls`), and the merges into `def:order-exposure-decisions`, `def:portfolio-trading`, `def:automated-trading-architecture` (`execution-trading-costs`) and `def:hft-strategies` (`hft-market-design`); also `mod:factor-risk-model`, `meth:rule-based-position-sizing`, `mod:mean-variance-portfolio-optimisation` and `mod:portfolio-transaction-cost-function` (`portfolio-construction`), and `meth:hypothesis-driven-strategy-research` and `pit:parameter-overfitting` (`backtest-inference`).
+
+## Entry backlog
+
+- ev:trend-following-evidence: the long-run returns, crisis behaviour and return-to-drawdown of diversified trend following, to replace Narang's anecdotes and his "less than one point of return for every point of downside risk" (`s6-tsmom`, `alpha-century`, unread); home pathway `trend-following`.
+- meth:residual-reversion-strategy: residual or pairs mean reversion with costs and crowding, against Narang's AAL-DAL exhibit and March 2020 (`alpha-gatev`, `alpha-residual`, `exp-khandani-lo-quant-meltdown`, unread); home pathway `statistical-arbitrage`.
+- ev:value-carry-premia: value and carry as distinct signals and the evidence for value, quality and growth premia, against Narang's use of "carry trade" for relative value (`alpha-ff1993`, `alpha-value`, `alpha-qmj`, unread); home pathway `equity-factor-premia`.
+
+## Legacy candidate material
+
+Run `python3 tools/migration_status.py` for the current counts. No legacy file now lists this overview: slice 30 migrated the last three and removed the legacy chapter. That says nothing about consolidation: the backlog is open and no reading has been studied.
+
+## What changed in my view or practice
+
+## Questions carried forward
+
+- Narang's eight classes and Exhibit 3.2 are a practitioner's framework; does `alpha-grinold`'s account of forecasts and information coefficients organise them differently?

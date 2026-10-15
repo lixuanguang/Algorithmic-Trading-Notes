@@ -38,6 +38,8 @@ All five: verification partly checked 2026-10-15, stability draft; human review 
 
 ## Entry backlog
 
+- rule:spoofing-securities-markets: whether placing orders with intent to cancel before execution, or layering to mislead, is prohibited in U.S. securities markets (SEC and FINRA rules or enforcement) and under EU MAR, with dates; slice 30 checked only the Commodity Exchange Act clause for futures (7 U.S.C. 6c(a)(5)(C), cited in `def:order-exposure-decisions`, owned by `execution-trading-costs`).
+
 - rule:block-print-trade-through-current: where U.S. equity blocks are now printed or reported (exchanges, FINRA trade-reporting facilities), how crosses interact with displayed orders (size precedence, if any), and the trade-through exceptions under Rule 611. The legacy block-print rule (slice 18) was checked only against Harris's 2002 description, now in `def:block-trade`; name each venue rule, provision and date before writing the entry.
 
 ## Legacy candidate material

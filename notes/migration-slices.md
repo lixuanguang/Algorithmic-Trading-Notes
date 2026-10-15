@@ -2720,3 +2720,161 @@ The artefact compiles alone: 1 page, no warnings, no bad boxes; its page image w
 - Routing the statistical-methods block to `risk-tail-systemic` as a backlog item only, and opening that note without entries.
 - Reading the legacy factor list as roles that depend on the strategy, and "unintended is not uncompensated".
 - Merging the size-limit material into the mean–variance entry, including the softening reading of penalties and the non-adoption of Narang's VaR and dispersion statements.
+
+## Slice 29 follow-up: residual diversification, the CVX–XOM hedge and compensation, 15 October 2026
+
+Narrow corrections to slice 29 after an audit, run before slice 30; the slice-29 record above is left as written, and this record supersedes it where they differ. No legacy block, entry label, stub, artefact or count changed (591 legacy blocks; 103 entries). Narang's p. 76 was reread in the same third-edition copy.
+
+- **Residual diversification, `mod:factor-risk-model`.** Slice 29 said that "diversification of residual risk depends on the diagonal-$D$ assumption holding". A diagonal $D$ with bounded variances and equal weights is sufficient, not necessary. The entry now keeps the constant-equicorrelation example (correlation 0.2, variance 0.09: $0.018+0.072/n$, a floor of 0.018) and adds a counterexample: correlation 0.2 within disjoint pairs only gives $0.108/n$, which still vanishes. In these examples correlation confined to small groups still diversifies, while correlation shared by every pair leaves a floor, like an omitted factor. Checked with numpy for $n=10$, 100, 1,000 (0.0108, 0.00108, 0.000108; and 0.0252, 0.01872, 0.018072).
+- **CVX–XOM, same entry.** "Removed by shorting XOM" is replaced by Narang's "substantially eliminated" (p. 76), with the interpretation that equal dollar positions hedge the market exactly only with equal betas; exact neutrality needs beta-weighted sizes under a stated risk model.
+- **Compensation, same entry.** "Narang's rule assumes that exposures the alpha model does not forecast earn nothing" is replaced by his wording, "no expectation of being compensated sufficiently" (p. 76): expected reward not enough for the risk, not zero.
+- **Notes and index.** The `portfolio-construction` and `s7-narang` notes record the changes; `log.md` keeps its slice-29 line and gains a dated correction; the slice-29 index row gives `cd7b13c`.
+
+## Slice 30: Narang's systematic-investing cluster (overview and diagram, alpha models, execution), 15 October 2026
+
+A multi-file batch: the last three files of Narang's systematic-investing notes, migrated together after the slice-29 follow-up above, with the legacy chapter removed. Migration and source checking, not study; no checkpoint was attempted and no reading of any owning pathway was studied.
+
+### Scope
+
+Under `compendium/legacy/portfolio-construction-risk/` (all mapped to the section overview `portfolio-construction-risk`), counted by script against the committed originals:
+
+| File | Counted blocks | `\item` commands (excluding `\itemsep`) | Outside the blocks |
+|---|---|---|---|
+| `sysinv/alphamod.tex` | 3: *Theory Driven Models* (definition, 5), *Strategy Parameters* (method, 6), *Blending of Models* (method, 3) | 14 | introduction (318 characters) and the data-driven paragraph (308) |
+| `sysinv/executionmod.tex` | 4: *Order Execution Algorithm Parameters* (remark, 5), *High Frequency Trading*, *HFT Shark Strategy* (definitions), *HFT Trading Infrastructure* (remark) | 5 | introduction (926 characters) |
+| `sysinv/sysinvoverview.tex` | 1: *Chains of Production for Alpha Signals* (method, 6 + 5 nested) | 11 in the block, 3 in the module list outside it | introduction, the figure, the module list, the bridge prose, two `\input` lines and the slice 25–29 `% migrated:` comments |
+| **Total** | **8** | **33** (substring counts would give 39) | |
+
+Also accounted for: `figures/strategystructure.tikz` (moved to `compendium/portfolio-construction-risk/figures/`, with a return arrow added) and the chapter wrapper `section.tex` (removed). The line `\InputIfFileExists{legacy/portfolio-construction-risk/section}{}{}` was removed from `compendium/legacy/part.tex`, the three map rows from `notes/migration.md`, and the empty folder. The other legacy chapters, earlier artefacts, the deferred assignments, the 21 PNGs of the legacy execution chapter, `house.tex` and the guide pin (`343d145`) are unchanged.
+
+### Ownership and dispositions
+
+Each block was routed by concept against the guide's outcomes; the map candidate, the overview whose outcome is a portfolio "whose forecasts, risk model, constraints, costs and tail measures are explicit and testable", kept the material about the structure of a strategy and its forecasts. **Routing exceptions:** signal combination to `equity-long-short-construction` (outcome: "scale forecasts, combine signals … compare mixing with integrating"), opening the canonical chapter `systematic-equities/` and the pathway's note; the production chain to `model-governance-controls` (inventory, validation, change and approval before production); execution material into existing `execution-trading-costs` entries; HFT material into `hft-market-design`'s `def:hft-strategies`. Rejected: `trend-following`, `statistical-arbitrage` and `equity-factor-premia` for the alpha taxonomy (the block makes no evidence claims those pathways test; evidence stubbed with them named as homes); `backtest-inference` for strategy parameters (cross-referenced); `market-structure-execution-quality` for routing and spoofing (stub only); `research-engineering-validation` overview for the production chain (its outcome is reconstructing decisions from records, not promotion stages).
+
+| File and block | Owner | Destination | Checked source | Disposition |
+|---|---|---|---|---|
+| overview: introduction, figure, module list, bridge prose | `portfolio-construction-risk` | `def:quant-strategy-components` (new), Figure (redrawn) | Narang chap. 2, pp. 16–19; Exhibit 2.1 by page image | Rewritten; return arrow restored |
+| overview: *Chains of Production* (11 items) | `model-governance-controls` | `meth:strategy-production-lifecycle` (new); stub `meth:strategy-promotion-criteria` | López de Prado (`alpha-afml`) chap. 1, pp. 5–9 | Rewritten as one author's prescription |
+| alpha: introduction, *Theory Driven Models* (5), data-driven paragraph | `portfolio-construction-risk` | `def:alpha-model-taxonomy` (new); stubs `ev:trend-following-evidence`, `meth:residual-reversion-strategy`, `ev:value-carry-premia` | Narang chap. 3, secs. 3.1–3.3, pp. 23–52; Exhibit 3.2 by page image | Rewritten; three classes added; claims qualified |
+| alpha: *Strategy Parameters* (6) | `portfolio-construction-risk` | `meth:alpha-strategy-specification` (new) | sec. 3.4, pp. 52–63 | Rewritten; conditioning variables added |
+| alpha: *Blending of Models* items i–ii | `equity-long-short-construction` | `meth:alpha-signal-combination` (new); stubs `meth:forecast-scaling-ic`, `meth:signal-mixing-vs-integration` | sec. 3.5, pp. 64–68; Exhibits 3.9–3.10 by page image | Rewritten; "independence" corrected |
+| alpha: *Blending of Models* item iii | `model-governance-controls` | merged into `meth:strategy-production-lifecycle` | López de Prado pp. 5–6 | Merged; source corrected (not Narang) |
+| execution: introduction | `execution-trading-costs` | merged into `def:order-exposure-decisions`, `def:portfolio-trading`, `def:automated-trading-architecture` | Narang chap. 7, pp. 127–129 | Merged |
+| execution: *Order Execution Algorithm Parameters* (5) | `execution-trading-costs` | merged into `def:order-exposure-decisions`; stub `rule:spoofing-securities-markets` in `market-structure-execution-quality` | chap. 7, pp. 129–138; chap. 14, p. 270; Appendix pp. 314–315; 7 U.S.C. §6c(a)(5) | Merged; item v kept as an unresolved pitfall |
+| execution: *High Frequency Trading* | `hft-market-design` | merged into `def:hft-strategies` | chap. 15, pp. 291–293; chap. 7, pp. 129–134 | Merged; ML claim not adopted |
+| execution: *HFT Shark Strategy* | `hft-market-design` | merged into `def:hft-strategies` (Pitfalls) | Appendix, pp. 312–314; FINRA Rule 5270; SEC 2010 release as already cited | Kept as historical description, qualified |
+| execution: *HFT Trading Infrastructure* | `execution-trading-costs` | merged into `def:automated-trading-architecture` | chap. 7, pp. 138–141 | Merged; FIX reversal corrected |
+
+**Subclaims.**
+
+| Where | Legacy claim | Disposition |
+|---|---|---|
+| overview intro | Schematic of a live production strategy, without research tools | Rewritten (p. 17); data and research added from Exhibit 2.3 (p. 19) |
+| overview figure | Three modules → portfolio construction → execution | Redrawn with Exhibit 2.1's return arrow (portfolio construction and execution "interact"); original kept verbatim and rendered in the artefact |
+| overview list i–iii | Alpha predicts; risk limits unrewarded exposure, "i.e. directional exposure limit on an asset class"; t-cost model decides if costs are "desirable" | Rewritten (pp. 17–18); the risk example generalised by the legacy, qualified; the t-cost model estimates costs, the portfolio model decides |
+| overview bridge | Portfolio construction balances profit and risk; trades are the differences; execution uses urgency and liquidity | Rewritten (p. 18); costs added to the balance; Exhibit 2.2 checked |
+| chain i–v | Data curation, feature analysis, strategists, backtesters, deployment | Rewritten from AFML pp. 7–8; "good back-tested" read as backtester; probability of overfitting from the number of trials added |
+| chain vi.1–5 | Embargo, paper trading, graduation, re-allocation ("follows a concave function"), decommission | Rewritten (pp. 8–9); "in general" and the decommission condition restored; no quantitative criteria in the source (stub) |
+| alpha intro | Theory-driven tests theories; price data → trend and reversion; fundamental → value, growth, quality; models combined | Rewritten (pp. 25–29): eight classes, not five; technical sentiment, supply/demand and tactical/events added |
+| theory i | Trend: consensus-building; moving-average crossover "has less than one point of return for every point of downside risk" | Consensus and greater-fools rationales kept (pp. 29–30); the return-to-downside sentence restored to its subject, "the typical successful trend follower" (p. 32), unsourced; evidence stubbed |
+| theory ii | Mean reversion; stat arb; trends and reversions coexist | Rewritten (pp. 33–35); coexistence by horizon (Exhibit 3.5); March 2020 pitfall noted; evidence stubbed |
+| theory iii | Value as inverted ratios; "buying undervalued … selling overvalued … is a carry trade"; QLS | Rewritten (pp. 38–41); carry restored to a yield spread (p. 40, example checked); value and carry kept apart as interpretation; stub |
+| theory iv–v | Growth; quality | Rewritten (pp. 42–46) |
+| data-driven paragraph | Harder, data mining, less practised, more used at high frequency | Rewritten (pp. 47–52); his "in general … do not work" kept as judgement |
+| params i | Signal strength → bigger bet | Kept as his "in general, though certainly not always" (p. 53), with his large-signal caution; calibration, risk, correlation, costs and constraints added as interpretation |
+| params ii | Short-term strategies vary more | Rewritten (pp. 53–55) as his generalisation |
+| params iii | Pairs, clusters, statistical or heuristic grouping; relative alpha smoother in normal times | Rewritten (pp. 55–57); the smoothness claim kept as a conditional generalisation without data |
+| params iv | Universe; "biotech stocks are excluded" | Rewritten (pp. 57–59); "some quants exclude" restored |
+| params v | Model specification; ML for parameters; refitting raises overfitting | Rewritten (pp. 59–60); his "without overfitting" claim not adopted |
+| params vi | Run frequency trade-offs | Rewritten (pp. 61–62) |
+| (omitted) | Conditioning variables | Added (pp. 60–61) |
+| blending stem | Linear, nonlinear, ML; or separate portfolios | Rewritten (pp. 64, 68) |
+| blending i | Linear "require independence of factors" | Corrected: additivity, not statistical independence (p. 65; interpretation); regression weights; example checked |
+| blending ii | Nonlinear: conditional; rotational weights favour recent performance | Rewritten (pp. 66–67); rotation qualified as a bet on factor trends, no evidence |
+| blending iii | ML research effort; macroscopic against microscopic alpha | Source corrected to López de Prado (pp. 5–6); merged into the lifecycle entry as opinion |
+| exec intro | Electronic or human; DMA; build/broker/vendor; portfolio bidding | Merged (pp. 127–128) |
+| exec i | Aggressive/passive; rebates; momentum aggressive, reversion passive; signal strength; middle ground | Merged (pp. 130–133); side-dependence of "aggressive" made explicit; venue-specific fees and inverted venues noted; inside-spread orders need spread > tick |
+| exec ii | Splitting large orders | Merged (pp. 136–137) |
+| exec iii | Hidden orders lose priority; iceberging | Merged (pp. 131, 134–135); "most exchanges", venue rules |
+| exec iv | Smart order routing | Cross-referenced to `def:smart-order-routing` (Narang pp. 137–138; his dated venue names and his Reg NMS description not adopted) |
+| exec v | Orders "with no intention of execution", cancelled; small sell orders to "improve market perception" | Not in the third edition. Kept as a description of conduct, not a technique: for futures and swaps on registered entities, 7 U.S.C. §6c(a)(5)(C) makes "spoofing" unlawful; the securities and non-U.S. positions are unresolved (stub). Narang's defence of routine cancellation cited |
+| HFT block | Microstructure alphas; ML discerns others' execution patterns, "somewhat stable" | Microstructure alpha mapped to fast alpha (pp. 291–293); the ML claim not in the third edition, not adopted |
+| shark | Detect icebergs with small orders, front-run, "relatively riskless profit" | Not in the third edition; kept as a historical description of pinging for order anticipation; "front-run" qualified against Narang's fiduciary definition and FINRA Rule 5270; not riskless |
+| infrastructure | Broker as agent; colocation; sponsored access; "software that implements FIX … free and open source"; own FIX engines | Merged (pp. 138–140); protocol and engine reversed back to Narang's wording; sponsored access referred to Rule 15c3-5; FIX licence unchecked |
+
+No claim was deleted outright; every not-adopted claim stays in the artefacts and is named in an entry.
+
+**Existing entries checked.** Changed: `def:order-exposure-decisions`, `def:portfolio-trading`, `def:automated-trading-architecture` (`execution-trading-costs`), `def:hft-strategies` (`hft-market-design`). Cross-referenced and unchanged: `def:smart-order-routing`, `def:order-anticipation`, `meth:automated-trading-operational-controls`, `meth:hypothesis-driven-strategy-research`, `meth:backtest-evaluation-diagnostics`, `pit:parameter-overfitting`, `meth:signal-portfolio-allocation`, `meth:rule-based-position-sizing`, `mod:mean-variance-portfolio-optimisation`, `mod:factor-risk-model`, `mod:portfolio-transaction-cost-function`, `def:quant-strategy-risk-sources`, `meth:quant-strategy-monitoring`.
+
+### Sources, 2026-10-15
+
+- **Narang** (`s7-narang`), third edition, Wiley 2024, the local copy of slices 25–29 (text layer; printed page = PDF page − 20). Read: chap. 2, secs. 2.1–2.2, pp. 16–19, Exhibit 2.1 by page image; chap. 3, "Alpha Models: How Quants Make Money", whole, pp. 23–69 (contents: 23; notes 69), Exhibits 3.2, 3.9 and 3.10 by page image; chap. 7, "Execution", whole, pp. 127–141 (contents: 127; notes 141); chap. 14, sec. 14.1.3, p. 270; chap. 15, sec. 15.4, pp. 291–293; Appendix, secs. A.2–A.2.2, pp. 311–315. "Shark" does not occur anywhere in the copy (text search).
+- **López de Prado** (`alpha-afml`), *Advances in Financial Machine Learning*, Wiley 2018 (ISBN 9781119482086), local copy, text layer (printed page = PDF page − 27): chap. 1, secs. 1.2.2 and 1.3.1, pp. 5–9. A reading note was opened.
+- **7 U.S.C. §6c** (`usc-7-6c`), 2024 edition, GPO via govinfo, retrieved 2026-10-15: paragraph (a)(5). The House Office of the Law Revision Counsel site returned "page not found".
+- **FINRA Rule 5270** (`finra-rule-5270`), as displayed on finra.org on 2026-10-15.
+- **Not read:** every reading of the overview, `equity-long-short-construction`, `trend-following`, `statistical-arbitrage`, `equity-factor-premia` and `market-structure-execution-quality` named in stubs; the FIX specification (`s6-fix`) and its licence; SEC and FINRA spoofing rules; EU MAR; earlier editions of Narang, from which the legacy's cancel-and-replace, ML-HFT and shark passages may come.
+
+### Numerical checks
+
+Recomputed in the session; no script kept and none existing covers this content: Exhibit 2.2 trades (+5, +5, −15, −15 percent); linear blend $0.7\times20+0.3\times(-10)=11$; carry $4.25-2=2.25$; variants $2\times4\times2\times4=64$; the conditional blend gives no signal or $+20$ percent. Slice-29 follow-up: equicorrelated and disjoint-pair residual variances (above).
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `s7-narang` | as listed | Third edition; one practitioner's account; anecdotes and performance figures unsourced; several legacy passages from an unknown (probably earlier) edition |
+| `alpha-afml` | pp. 5–9 | One author's prescription; no criteria or evidence for the stages |
+| `usc-7-6c`, `finra-rule-5270` | (a)(5); (a) | Futures/swaps and FINRA members only; securities-market spoofing and other jurisdictions unchecked |
+| Specialist readings | none | Stubs |
+
+The five new entries and the merged passages are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+New artefacts in `notes/artefacts/portfolio-construction-risk/` (earlier ones unchanged):
+- `alpha-models.tex` and `execution-model.tex`: each file below its `% migrate-to:` line, rendered, with only the subsection unnumbered;
+- `systematic-investing-overview.tex`: displays, without executing, the removed `part.tex` line and exact copies of the chapter wrapper (`legacy-section-original.tex`), the overview (`sysinvoverview-original.tex`) and the diagram (`strategystructure-original.tikz`), and renders the diagram from its copy.
+
+A script compared them with `git show HEAD:…`:
+- the three copies are byte-identical to the committed originals;
+- each body appears exactly once; the prose outside the blocks (318 and 308; 926 characters; the overview's in its copy) once each;
+- all 8 blocks appear verbatim once each, in order;
+- `\item` commands, matched as `\item` not followed by a letter: 5, 6, 3 (alpha, 14); 5, 0, 0, 0 (execution, 5); 11 in the block and 3 outside (overview, 14): 33 in both originals and artefacts; substring counts would give 17, 6 and 16;
+- the `\begin`/`\end` sequences are identical (12, 10 and 10 commands).
+
+All three artefacts compile alone without warnings or bad boxes (2, 2 and 3 pages); the diagram's rendering was inspected by page image.
+
+### Counts
+
+`migration_status.py --check`, 0 problems: 591 → 583 legacy blocks = 530 shared + 24 single-candidate + 29 assigned. `portfolio-construction-risk` (overview): exclusive 8 → 0, entries 0 → 3, stubs 0 → 3 (new note). `equity-long-short-construction`: entries 0 → 1, stubs 0 → 2 (new note). `model-governance-controls`: entries 3 → 4, stubs 4 → 5. `market-structure-execution-quality`: stubs 1 → 2. `execution-trading-costs` (14/1) and `hft-market-design` (3 entries) unchanged in count, their entries extended. Entries 103 → 108 (definitions 36 → 38, methods 19 → 22). Two `front/sources.tex` keys added (`finra-rule-5270`, `usc-7-6c`); reading notes `s7-narang` extended and `alpha-afml` opened.
+
+### Other files
+
+- Chapter openers: `portfolio-construction-risk` (overview added, legacy reference removed, new topic file input first), `systematic-equities` (new), `research-engineering-validation`, `execution-trading-costs`, `execution-market-making`.
+- Pathway notes: new `portfolio-construction-risk.md` and `equity-long-short-construction.md`; `model-governance-controls`, `execution-trading-costs`, `hft-market-design`, `market-structure-execution-quality`, `portfolio-construction`.
+- `notes/log.md`: coverage rows, the `s7-narang` progress cell, two open questions; `notes/migration.md`: status, index, next batch, map; `compendium/README.md`: order paragraph.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 225 pages (223 before); no LaTeX warnings; the one `page.i` warning; 0 overfull and 25 underfull boxes, all after the start of the legacy part in the log. The underfull count fell from 26 because one was in the removed legacy portfolio chapter. During the slice two overfull boxes (an artefact file name in *Further reading*, and section headings with long paths in the overview artefact) and a stray "Figure 1: \*" from `\caption*` without the caption package were fixed. Rendered and inspected: PDF p. 10 (production lifecycle), p. 16 (systematic-equities opener and signal combination), pp. 18–20 (overview opener, redrawn figure, alpha taxonomy and specification), p. 25 (the slice-29 follow-up), p. 70 (`def:hft-strategies`), p. 93 (`def:order-exposure-decisions`), and the three artefacts, including the original diagram's rendering. Tests: 14 passed.
+
+### Independent review
+
+Before committing, a separate review compared every changed claim, quotation, locator and calculation with the source text layers and the legal texts. It confirmed the arithmetic, all 23 cross-referenced labels and both legal quotations, and found four overstatements and seven judgement calls, all fixed in this batch:
+- "most trend followers win on fewer than 40 percent" → his "often less than 40 percent" (pp. 60–61);
+- "no evidence for the classes" → two papers for value/yield (Fama–French, Ball) and his reading of volume research (pp. 37–40);
+- macroscopic alpha "converging to zero" → the *chances* of an individual finding it (AFML p. 6);
+- "larger quants use order-book signals" (legacy, not Narang) → his micro price and footprint passages (pp. 130, 133–134);
+- FINRA 5270: "inferring a hidden order is not that information" marked as interpretation, with the undefined term and the rule's note on Rules 2010 and 5320;
+- Narang's front-running argument limited to "most" HFTs, with his contractual-market-maker exception (p. 312);
+- the CEA clause's scope given in its own words, "futures and swaps" marked as gloss;
+- order types, not fees and priority, are what he says change often (pp. 134–135);
+- "inert and useless" applies to data only (p. 19);
+- the non-contiguous machine-learning quotation split and the rebuttal marked as interpretation;
+- "worth sizing on only if calibrated" softened; "largely" restored; the CVX view and the carry context restated.
+
+### For review
+
+- The routing of signal combination and the production chain away from the map's overview, and the new `systematic-equities` chapter.
+- Keeping the cancel-and-replace and shark passages as historical descriptions with limited legal support, rather than as techniques or stubs only.
+- The redrawn diagram's return arrow, and the alpha taxonomy's correction from five classes to eight.

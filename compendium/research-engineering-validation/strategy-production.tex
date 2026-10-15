@@ -1,0 +1,41 @@
+% compendium/research-engineering-validation/strategy-production.tex
+% Entry migrated on 2026-10-15 from the legacy systematic-investing overview (slice 30, sysinv/sysinvoverview.tex,
+% block Chains of Production for Alpha Signals) and one item of the alpha-models file (sysinv/alphamod.tex), owned by
+% model-governance-controls (a routing exception: the files' map candidate is the overview portfolio-construction-risk).
+% Dispositions in notes/migration-slices.md; the files verbatim in notes/artefacts/portfolio-construction-risk/.
+
+\section{The research and production chain of a strategy}
+
+\begin{qfmethod}[Strategy production lifecycle: López de Prado's research stations and the embargo, paper-trading, graduation, re-allocation and decommission stages]\label{meth:strategy-production-lifecycle}
+\qffield{Statement} López de Prado argues that a firm, not a lone researcher, should produce machine-learning strategies, under what he calls the meta-strategy paradigm: ``It takes almost as much effort to produce one true investment strategy as to produce a hundred'', because of data curation, high-performance computing, software, feature analysis, execution simulators and backtesting \citep[chap.~1, sec.~1.2.2, p.~5]{alpha-afml}. He describes the stations of the production chain (sec.~1.3.1, pp.~6--8):
+\begin{itemize}
+\item \emph{data curators} collect, clean, index, store, adjust and deliver all data, as experts in market microstructure and data protocols such as FIX;
+\item \emph{feature analysts} turn raw data into informative signals and catalogue findings, but do not develop strategies;
+\item \emph{strategists} turn features into strategies, each strategy being ``the experiment designed to test the validity'' of a theory that must identify ``the economic mechanism that causes an agent to lose money to us''; ``features may be discovered by a black box, but the strategy is developed in a white box'';
+\item \emph{backtesters} assess the strategy under several scenarios and evaluate ``the probability of backtest overfitting by taking into account the number of trials''; their results go to management and are not shared;
+\item the \emph{deployment team} integrates the code into production, keeps it ``logically identical to the prototype'' and optimises it for latency;
+\item \emph{portfolio oversight}, which follows a deployed strategy through five stages (pp.~8--9):
+  \begin{enumerate}
+  \item \emph{embargo}: running on data after the backtest's end date; promotion if performance is consistent with the backtest;
+  \item \emph{paper trading} on a live feed, capturing data, calculation and execution delays, ``for as long as it is needed to gather enough evidence that the strategy performs as expected'';
+  \item \emph{graduation}: managing a real position, alone or in an ensemble, with risk, returns and costs attributed;
+  \item \emph{re-allocation}: allocations reassessed ``frequently and automatically'' in a diversified portfolio, ``in general'' following a concave function, small at graduation, rising while the strategy performs and shrinking as performance decays;
+  \item \emph{decommission}, when performance stays below expectations long enough ``to conclude that the supporting theory is no longer backed by empirical evidence''.
+  \end{enumerate}
+\end{itemize}
+He prefers releasing new variations to run in parallel with old ones (p.~9).
+
+\qffield{Conditions} This is one author's prescription, presented as what ``every successful quantitative firm I am aware of'' does (p.~5), not a regulatory standard or a tested result. None of the stages carries a quantitative criterion: how much consistency promotes a strategy from embargo, how long paper trading lasts, the shape of the concave allocation function and the length of underperformance that triggers decommission are all left to the firm. His view that ``the only true alpha left is microscopic'' and needs ``heavy ML tools'', while the chances of an individual finding macroscopic alpha with simple tools such as econometrics are ``quickly converging to zero'' (p.~6), is an opinion without data in the passage.
+
+\qffield{Practice} Interpretation: the stages map onto this pathway's controls. Embargo and paper trading are forms of validation before production; graduation, re-allocation and decommission are change and approval decisions that need an owner, evidence and a record (\hyperref[meth:quant-strategy-monitoring]{strategy monitoring} supplies the evidence; \hyperref[meth:automated-trading-operational-controls]{operational controls} the pre-trade and kill-switch layer). The backtester's count of trials is the subject of \hyperref[pit:parameter-overfitting]{parameter overfitting} and \hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics}. An embargo period is one further sample, of whatever length the backtest left out; a promotion decided on it is another trial, and its strength depends on that length, which the source does not set.
+
+\qffield{Pitfalls} The legacy block followed López de Prado closely but dropped his decommission condition, the loss of empirical support for the theory, and his ``in general'' on the concave allocation. Its stations and stages are proposals for organising work, not evidence that the organisation works. The legacy alpha-models file's machine-learning item, on the cost of producing strategies and macroscopic against microscopic alpha, is the same author's sec.~1.2.2 and~1.3.1 (pp.~5--6), not Narang's; it is represented here.
+
+\qffield{See also} \hyperref[meth:hypothesis-driven-strategy-research]{hypothesis-driven strategy research} (theory before testing, in Narang's version); \hyperref[def:quant-strategy-components]{components of a quant strategy}; \hyperref[def:quant-strategy-risk-sources]{sources of strategy risk} (implementation errors in deployment).
+
+\qffield{Further reading} The legacy blocks, verbatim, are in \nolinkurl{systematic-investing-overview.tex} and \nolinkurl{alpha-models.tex} under the section key \texttt{portfolio-construction-risk} in \nolinkurl{notes/artefacts/}.
+
+\qffield{Index} meta-strategy paradigm; production chain; data curators; feature analysts; strategists; backtesters; deployment team; portfolio oversight; embargo; paper trading; graduation; re-allocation; decommission; strategy lifecycle; microscopic alpha; macroscopic alpha
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{alpha-afml}, Wiley 2018, ISBN 9781119482086, chap.~1, secs.~1.2.2 and~1.3.1, pp.~5--9; printed page = PDF page $-27$). Stability: draft. Currency: one practitioner's prescription as of 2018.
+\end{qfmethod}

@@ -37,11 +37,19 @@ Changed in the slice-26 follow-up, 2026-10-15: `def:quant-strategy-risk-sources`
 
 Both verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/model-governance-controls/risk-assessment.tex`, a new file beside the slice-17 `derivations.tex`. The same legacy file's contagion block was routed to `funding-crowding` (its entry is listed below, under related entries).
 
+Written in migration slice 30, 2026-10-15, from López de Prado (`alpha-afml`, 2018, chap. 1, pp. 5-9), through the *Chains of Production for Alpha Signals* block of Narang's legacy overview file and one item of the alpha-models file (both mapped to the overview `portfolio-construction-risk`; a routing exception, since promotion, allocation and decommission are model-governance decisions):
+
+- `meth:strategy-production-lifecycle`: the meta-strategy paradigm, the research stations, and the embargo, paper-trading, graduation, re-allocation and decommission stages, as one author's prescription without quantitative criteria; his decommission condition and "in general" on concave allocation restored; "microscopic alpha" kept as opinion.
+
+Partly checked 2026-10-15, draft; human review outstanding. Its artefacts are `notes/artefacts/portfolio-construction-risk/systematic-investing-overview.tex` and `alpha-models.tex`.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:automated-trading-architecture` (model accuracy checks, venue messages) and `meth:execution-decision-support` (`execution-trading-costs`); `def:floor-automated-trading-systems` (`execution-market-making`); `def:common-investor-contagion` (`funding-crowding`); `meth:backtest-evaluation-diagnostics`, `pit:parameter-overfitting` (`backtest-inference`); `res:arbitrage-risks` (`execution-market-making`).
 
 ## Entry backlog
+
+- meth:strategy-promotion-criteria: evidence, owners and records for promoting a strategy from backtest to embargo, paper trading and production, for re-allocating and for decommissioning, against López de Prado's unquantified stages (`s8-governance`, `wide-pra-ss123`, unread).
 
 - rule:mifid-rts6-algorithmic-controls: Commission Delegated Regulation (EU) 2017/589 (`wide-mifid-rts6`) on testing, kill functionality, pre- and post-trade controls, capacity and business continuity. EUR-Lex returned a bot challenge on 2026-10-15; retrieve the current consolidated text before stating any EU obligation.
 - meth:discretionary-override-governance: who may override or switch off a model, on what evidence, with what record and review, against Narang's "discretionary overrides" for exogenous shocks (`s8-governance`, `w4-simonian-model-governance`, unread).

@@ -74,6 +74,14 @@ Partly checked 2026-10-15, draft; human review outstanding. The block is in `not
 
 Changed in the slice-27 follow-up, 2026-10-15: `def:transaction-costs` no longer says that Narang's selling order "did not raise the price"; his example shows a negative arrival-to-fill cost against a benchmark, which does not identify the order's own effect. The same file's introduction and cost-function block went to `portfolio-construction`, whose note lists the entry; it is not owned here.
 
+Changed in migration slice 30, 2026-10-15, from the legacy execution-model file of Narang's notes (`sysinv/executionmod.tex`, mapped to the overview `portfolio-construction-risk`):
+
+- `def:order-exposure-decisions`: Narang's execution-algorithm choices (aggressive against passive, side-dependent; rebates and inverted fees; signal strength and strategy type; the inside-spread middle ground; micro price; hidden orders and icebergs; order sizing; footprints), chap. 7, pp. 127-137; the legacy cancel-and-replace item kept as an unresolved pitfall, with the U.S. futures spoofing clause (7 U.S.C. 6c(a)(5)(C)).
+- `def:portfolio-trading`: Narang's portfolio bid (p. 128).
+- `def:automated-trading-architecture`: Narang's DMA, colocation, FIX and hardware (pp. 138-141); the legacy reversal of protocol and engine corrected; sponsored access referred to Rule 15c3-5.
+
+Partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/portfolio-construction-risk/execution-model.tex`. The same file's HFT blocks went to `hft-market-design`.
+
 ## Entry backlog
 
 - def:clearing-settlement: clearing, settlement, delivery versus payment and the central counterparty's guarantee in their standard definitions, to replace Narang's broker-fee description (CPMI glossary, not retrieved on 2026-10-15; the PFMI glossary annex, `exp-pfmi`, not reached in the copy read).

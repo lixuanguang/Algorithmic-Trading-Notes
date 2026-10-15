@@ -24,12 +24,12 @@ Migrating a block and compiling the result advances only the first. An entry wri
 
 - **Records.** Each slice appends one section to [migration-slices.md](migration-slices.md) and one row to the index below. A correction to a finished slice is appended as a follow-up; earlier records are left as written.
 
-## Status after slice 29 (15 October 2026)
+## Status after slice 30 (15 October 2026)
 
-- **Legacy blocks:** 591 = 530 shared + 32 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
-- **Entries:** 103, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
-- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain).
-- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 223 pages; no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
+- **Legacy blocks:** 583 = 530 shared + 24 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
+- **Entries:** 108, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
+- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30, its diagram moved to the canonical chapter).
+- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 225 pages; no LaTeX warnings; 0 overfull and 25 underfull boxes, all in the legacy part; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
 
 ## Slices
 
@@ -66,11 +66,12 @@ Blocks are the legacy blocks counted by `migration_status.py` before and after t
 | 26 | Risk assessment: model risk, regime change, shocks, contagion, monitoring | `e0451c9` | 605 → 600 | 95 → 98 | Overrides, impact inference, Calmar |
 | 27 | Transaction cost models: components and cost functions | `0224ac7` | 600 → 598 | 98 → 99 | Units, cost-function conditions, sell example |
 | 28 | Portfolio construction models: rules, mean–variance optimisation, signal portfolios | `4e7666d` | 598 → 595 | 99 → 102 | Closed-form conditions, permutations, ML tasks, ERC rounding |
-| 29 | Risk models: factor exposures, limits and penalties | this slice's commit | 595 → 591 | 102 → 103 | |
+| 29 | Risk models: factor exposures, limits and penalties | `cd7b13c` | 595 → 591 | 102 → 103 | Residual diversification, CVX–XOM hedge, compensation wording |
+| 30 | Narang's systematic-investing cluster: overview and diagram, alpha models, execution (three files, chapter closed) | this slice's commit | 591 → 583 | 103 → 108 | |
 
 ## Next bounded slice
 
-`compendium/legacy/portfolio-construction-risk/sysinv/alphamod.tex` (3 blocks: *Theory Driven Models*, *Strategy Parameters*, *Blending of Models*, with prose outside them), whose map names the section overview `portfolio-construction-risk`. Decide ownership by concept before writing: forecast construction, signal blending and strategy parameters may belong to specialist pathways (for example `equity-factor-premia` or `backtest-inference`) rather than to the overview or `portfolio-construction`; check its overlap with `meth:signal-portfolio-allocation`, `mod:factor-risk-model` and `meth:hypothesis-driven-strategy-research`. Narang's chapter "Alpha Models: How Quants Make Money" (chap. 3, pp. 23-69 in the third edition's contents) is the likely source, to be read and confirmed; at that length the slice may need to stay narrowly bounded. The other `sysinv/` files (`executionmod.tex`, the overview's method block in `sysinvoverview.tex`), the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+A two-chapter batch of 15 blocks that would close two more legacy chapters: `compendium/legacy/volatility-options/basic.tex` (8 blocks, single candidate `volatility-options`), `compendium/legacy/volatility-options/fwdfut.tex` (5 blocks, candidates `rates-credit-mortgages` and `commodity-hedging`) and `compendium/legacy/rates-credit-mortgages/01_tvm.tex` (2 blocks, candidates `rates-credit-mortgages` and `performance-manager-evaluation`). The plan's folder table names Hull's basics and time value of money as their origin; the source and edition used, and which pathway first needs forward pricing, hedge ratios and time- and money-weighted returns, are to be established before writing (time- and money-weighted returns may belong with `meth:relative-performance-evaluation`). The AFML data chapters (`ml-alternative-data/data/`, 36 blocks over five files, shared among three pathways) are the next larger cluster; the fifteen blocks assigned to `hft-market-design`, the three slice-5 assignments and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -113,9 +114,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/multi-asset-systematic-macro/01_regimes.tex` | multi-asset-systematic-macro, macro-regimes-stock-bond |
 | `compendium/legacy/multi-asset-systematic-macro/02_transmission_maps.tex` | macro-nowcasting-signals, macro-announcements-policy, monetary-policy-curve, fx-determination-forecasting |
 | `compendium/legacy/multi-asset-systematic-macro/03_practitioner_insights.tex` | multi-asset-systematic-macro |
-| `compendium/legacy/portfolio-construction-risk/sysinv/alphamod.tex` | portfolio-construction-risk |
-| `compendium/legacy/portfolio-construction-risk/sysinv/executionmod.tex` | portfolio-construction-risk |
-| `compendium/legacy/portfolio-construction-risk/sysinv/sysinvoverview.tex` | portfolio-construction-risk |
 | `compendium/legacy/rates-credit-mortgages/01_tvm.tex` | rates-credit-mortgages, performance-manager-evaluation |
 | `compendium/legacy/volatility-options/basic.tex` | volatility-options |
 | `compendium/legacy/volatility-options/fwdfut.tex` | rates-credit-mortgages, commodity-hedging |

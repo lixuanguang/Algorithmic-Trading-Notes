@@ -1,5 +1,29 @@
-% migrate-to: portfolio-construction-risk
-\subsection{Execution Model}
+% notes/artefacts/portfolio-construction-risk/execution-model.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 30), as a new file beside the
+% artefacts of slices 27-29 under the section key portfolio-construction-risk. The compendium entries state each
+% claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/portfolio-construction-risk/ with  latexmk -pdf execution-model.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Portfolio construction and risk: legacy execution model}
+
+\section*{Execution model (slice 30, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (slice 30): the whole of sysinv/executionmod.tex below its
+% migrate-to line, with all prose outside the environments; only the subsection is unnumbered here.
+% Destinations: introduction -> def:order-exposure-decisions, def:portfolio-trading, def:automated-trading-architecture
+% (execution-trading-costs); Order Execution Algorithm Parameters -> def:order-exposure-decisions (cancel-and-replace
+% item kept as an unresolved pitfall; stub rule:spoofing-securities-markets in market-structure-execution-quality);
+% High Frequency Trading and HFT Shark Strategy -> def:hft-strategies (hft-market-design); HFT Trading
+% Infrastructure -> def:automated-trading-architecture.
+% Sources: Narang (s7-narang), third edition, chap. 7 pp. 127-141, chap. 14 p. 270, chap. 15 pp. 291-293,
+% Appendix pp. 311-315; 7 U.S.C. 6c(a)(5) (2024 ed.); FINRA Rule 5270.
+
+% From compendium/legacy/portfolio-construction-risk/sysinv/executionmod.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Execution Model}
 
 Two basic ways to execute trade: through electronic, or through human intermediary. For electronic execution, achieved through direct market access (DMA), which allows traders to utilise the infrastructure and exchange connectivity of brokerage firms to trade directly on electronic markets.\\
 Execution algorithms can be acquired through building, using broker's, or a third-party software vendors.\\
@@ -33,3 +57,5 @@ Using a broker that act as trading agent allows the infrastructure requirements 
 High frequency strategies may use colocation or sponsored access. Colocation setup is where trader attempts to place trading servers as physically close to the exchange as possible.\\
 Financial Information eXchange (FIX) protocol is the choice of real-time electronic communication among users. The software that implements the FIX protocol is free and open source (FIX engine). High frequency traders will likely build their own FIX engines to ensure optimal speeds.
 \end{remark}
+
+\end{document}

@@ -2,7 +2,7 @@
 key: s6-hasbrouck
 pathways: [execution-market-making, market-making-lob]
 version: Joel Hasbrouck, Empirical Market Microstructure: The Institutions, Economics, and Econometrics of Securities Trading, Oxford University Press, 2007 (ISBN 978-0-19-530164-9); local PDF with a text layer, outside the repository (printed page = PDF page - 11)
-sections: secs. 3.4, 4.4-4.5, 5.4.2, 5.5, 8.1-8.7, chap. 11, secs. 14.2.2 and 14.3.3 (pp. 29-30, 38-39, 49, 53, 67-75, 106-117, 148, 150-151; checked for migration slices 3 and 4)
+sections: secs. 3.2, 3.4, 4.4-4.5, 5.4.2, 5.5, 8.1-8.7, chap. 11, secs. 14.2.2 and 14.3.3 (pp. 24-27, 29-30, 38-39, 49, 53, 67-75, 106-117, 148, 150-151; checked for migration slices 3 to 5)
 read:
 status: draft
 ---
@@ -19,6 +19,7 @@ Prepared on 2026-10-15 by migration slice 3 from source checks, not from study: 
 
 ## Key results
 
+- Fundamental value or efficient price: the expectation of the payoff conditional on all public information, a martingale with respect to those information sets; trade prices usually are not martingales (sec. 3.2, pp. 25–26).
 - Roll model: $p_t=m_t+cq_t$, $\gamma_0=2c^2+\sigma_u^2$, $\gamma_1=-c^2$, $c=\sqrt{-\gamma_1}$ (sec. 3.4, eqs. (3.3)–(3.5), pp. 29–30); PCO example and violated assumptions (p. 30).
 - Biases: autocorrelated signs bias $\hat c$ down, signs correlated with $u_t$ bias it up (Exercises 4.2–4.3, pp. 38–39); positive sample autocovariances are not uncommon (sec. 4.5, p. 39).
 - Sequential trade with a cost $c$: $A=\mathbb{E}[V\mid\text{buy}]+c$, $B=\mathbb{E}[V\mid\text{sell}]-c$; quotes martingales, trade prices not (sec. 5.4.2, p. 49).
@@ -42,7 +43,7 @@ Prepared on 2026-10-15 by migration slice 3 from source checks, not from study: 
 
 ## Entries
 
-`def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `mod:inventory-based-quotes`, `def:volatility-components`; also cited in `res:adverse-selection-spread-component`.
+`def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `mod:inventory-based-quotes`, `def:volatility-components`; also cited in `res:adverse-selection-spread-component` and `def:fundamental-value` (contrast with Harris's fundamental value).
 
 ## Open questions
 

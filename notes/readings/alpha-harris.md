@@ -2,12 +2,12 @@
 key: alpha-harris
 pathways: [execution-market-making, market-making-lob]
 version: Larry Harris, Trading and Exchanges, Oxford University Press, 2002 printing; local PDF with a text layer, outside the repository (printed page = PDF page - 13)
-sections: chapter "Dealers", pp. 280, 283-295; chapter "Bid/Ask Spreads", pp. 297-321; chapter "Value Traders", pp. 340-346; chapter "Volatility", pp. 410-417; chapter "Liquidity and Transaction Cost Measurement", pp. 423-427, 434; chapter "Bubbles, Crashes, and Circuit Breakers", pp. 555-563, 570-578 (checked for migration slices 2 to 4)
+sections: chapter "Informed Traders and Market Efficiency", pp. 222-244; chapter "Dealers", pp. 280, 283-295; chapter "Bid/Ask Spreads", pp. 297-321; chapter "Value Traders", pp. 338-346; chapter "Volatility", pp. 410-417; chapter "Liquidity and Transaction Cost Measurement", pp. 423-427, 434; chapter "Bubbles, Crashes, and Circuit Breakers", pp. 555-563, 570-578; chapter "Insider Trading", pp. 584-598 (checked for migration slices 2 to 5)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slices 2 to 4 from source checks, not from study: the headings that need your own reading are left empty. Reading progress before the study method is in `notes/log.md` (completed).
+Prepared on 2026-10-15 by migration slices 2 to 5 from source checks, not from study: the headings that need your own reading are left empty. Reading progress before the study method is in `notes/log.md` (completed).
 
 ## Question and claim
 
@@ -19,6 +19,11 @@ Prepared on 2026-10-15 by migration slices 2 to 4 from source checks, not from s
 
 ## Key results
 
+- Market value against fundamental value, the expected present value of holding the instrument given everything known; noise is their difference; fundamental-value changes unpredictable (chap. 10, pp. 222–223). Stale information and pseudo-informed traders (p. 229).
+- Informed traders move prices towards their estimates; algebraic box: the price is the average forecast under linear demands and zero net supply, its error vanishing with independent errors (p. 225); weighted averages and the statistical calculator (p. 226); orthogonal estimates (p. 237).
+- Market paradox (pp. 238–239); weak, semistrong and strong forms and the cost-sensitive definition (p. 240); the trade-off between liquidity and informative prices, with publication of information as the exception (pp. 241–242).
+- Value traders profit only from uninformed liquidity demand; news traders profit from information changes (chap. 16, pp. 338–339); "If you are not a buyer, should you be a seller?" (box, p. 343).
+- Inside information: material information not available to public traders; the SEC's 2002 summary (box, p. 585); insiders, tippees, misappropriation (pp. 584–587); employee pre-approval and trading windows (p. 588); detection (pp. 588–590); restrictions narrow spreads and make prices less informative in the short run (pp. 597–598).
 - Inventory imbalance, and the two inventory risks: diversifiable (independent of the imbalance) and adverse selection (inversely correlated with it) (pp. 283–286).
 - Dealers seek market values that produce two-sided flow, and discover fundamental values as a by-product (pp. 284, 286–287).
 - Tactics: Table 13-2 for inventory (p. 285), Table 13-3 after a suspected informed trade (p. 288), Table 13-4 for consequences when trading with informed and uninformed buyers (p. 292).
@@ -48,8 +53,10 @@ Prepared on 2026-10-15 by migration slices 2 to 4 from source checks, not from s
 
 ## Entries
 
-`res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `res:spread-determinants`, `def:outside-spread`, `def:volatility-components`, `mech:bubble-crash-dynamics`; also cited in `mod:glosten-milgrom` and `meth:spread-volatility-regression`.
+`res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `res:spread-determinants`, `def:outside-spread`, `def:volatility-components`, `mech:bubble-crash-dynamics`, `def:fundamental-value`, `res:informed-trading-aggregation`, `def:market-efficiency`, `def:inside-information`; also cited in `mod:glosten-milgrom` and `meth:spread-volatility-regression`.
 
 ## Open questions
+
+- The box on p. 225 says the market's forecast error is below the average individual error whenever the individual errors are not identical; that holds for squared errors but not, in general, for absolute ones (own check, slice 5). Is a mean-squared sense intended?
 
 ## Retrieval cards

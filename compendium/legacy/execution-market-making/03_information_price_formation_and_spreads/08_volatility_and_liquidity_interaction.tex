@@ -1,4 +1,4 @@
-% migrate-to: execution-market-making, market-making-lob, hft-market-design
+% migrate-to: execution-market-making, market-making-lob, hft-market-design, market-structure-execution-quality
 \subsection{Volatility and Liquidity Interaction}
 
 % migrated: Volatility Is a Liquidity Price -> res:spread-determinants (Practice, Pitfalls); Volatility Source Segmentation, Fundamental Volatility Driver Segmentation, Transitory Volatility and Reversal, Volatility Component Decomposition -> def:volatility-components; Bubbles and Crashes, Bubble-Crash Dynamics Segmentation, Price Accelerator -> mech:bubble-crash-dynamics; Crash Attribution -> mech:bubble-crash-dynamics (Pitfalls); Regulating Volatility -> def:volatility-components (Practice); Garman-Klass Intraday Volatility -> meth:garman-klass-volatility; Spread-Volatility Regression, Log-Log Spread-Volatility Model -> meth:spread-volatility-regression; Spread-Volatility Identification -> meth:spread-volatility-regression (Pitfalls) (full text in notes/artefacts/market-making-lob/derivations.tex)
@@ -34,7 +34,7 @@ When $\rho$ is high, overflow consumes depth faster than passive liquidity can r
 \item \hlt{data controls}: detect overflow, quote withdrawal, and broken references in real time.
 \end{enumerate}
 \end{taxonomy}
-% assign: hft-market-design
+% assign: market-structure-execution-quality
 \begin{caveat} \hlt{Systemic Risk Link}\\
 Fragmentation is not systemic risk by itself. It becomes dangerous when market participants react to stress in the same direction, when related venues desynchronise, or when liquidity withdrawal in one instrument propagates to hedges, ETFs, futures, and correlated stocks.
 \end{caveat}

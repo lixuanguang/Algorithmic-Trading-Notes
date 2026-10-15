@@ -24,7 +24,7 @@ Not attempted.
 
 Written in migration slice 26, 2026-10-15:
 
-- `def:common-investor-contagion`: Narang's contagion or common-investor risk, split into crowding (common positions) and the ATM effect (common funding: losses elsewhere force the sale of a liquid strategy). It gives his four drivers of August 2007 (crowding, weak prior returns, cross-collateralisation, volatility targeting) as a practitioner's explanation without data, and his August 1998 LTCM example. The Pulte Homes illustration does not support his "about half" and "about 20 times", and his "quadratic" impact does not match the square-root law.
+- `def:common-investor-contagion`: Narang's contagion or common-investor risk, split into crowding (common positions) and the ATM effect (common funding: losses elsewhere force the sale of a liquid strategy). It gives his four drivers of August 2007 (crowding, weak prior returns, cross-collateralisation, volatility targeting) as a practitioner's explanation without data, and his August 1998 LTCM example. The Pulte Homes illustration does not support his "about half" and "about 20 times". Changed in the slice-26 follow-up, 2026-10-15: the entry no longer says the illustration contradicts square-root metaorder impact. Aggregate crisis-period returns and volume do not identify a metaorder impact exponent, so the table bears neither for his "quadratic" nor against the square-root law; his account remains distinct from causal evidence.
 
 Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/model-governance-controls/risk-assessment.tex` (under the map candidate, keeping the file whole).
 

@@ -66,7 +66,15 @@ Both partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/etf-in
 
 Changed in the slice-18 follow-up, 2026-10-15: `def:portfolio-trading` now gives index arbitrage as about 9 percent of reported program-trade volume (about 2.4 percent of NYSE volume), and `def:block-trade` limits the 2002 print requirement to brokers and dealers who were exchange members.
 
+Changed in migration slice 27, 2026-10-15, from the transaction-cost-models file of Narang's systematic-investing notes (`sysinv/txncostmod.tex`, mapped to the section overview `portfolio-construction-risk`):
+
+- Merged: Narang's three cost components into `def:transaction-costs` (`s7-narang`, third edition, chap. 5, pp. 85-91). His slippage (decision to arrival) is mapped to the delay term, and his market impact (arrival to fill) to the trading-related part of shortfall, not to causal impact. His claim that impact is known once the trade is complete is corrected: the unaffected price is never observed. His trend-following, mean-reversion, latency and volatility claims are kept as conditional statements about the drift over the delay. The legacy pairing of fee payers with services is not in his text. His clearing and settlement descriptions are reported as his, beside the CPSS-IOSCO principles' DvP and central-counterparty paragraphs (`exp-pfmi`, paras 1.12-1.13); no clearing definition is adopted.
+
+Partly checked 2026-10-15, draft; human review outstanding. The block is in `notes/artefacts/portfolio-construction-risk/transaction-cost-models.tex`. The same file's introduction and cost-function block went to `portfolio-construction`, whose note lists the entry; it is not owned here.
+
 ## Entry backlog
+
+- def:clearing-settlement: clearing, settlement, delivery versus payment and the central counterparty's guarantee in their standard definitions, to replace Narang's broker-fee description (CPMI glossary, not retrieved on 2026-10-15; the PFMI glossary annex, `exp-pfmi`, not reached in the copy read).
 
 ## Legacy candidate material
 

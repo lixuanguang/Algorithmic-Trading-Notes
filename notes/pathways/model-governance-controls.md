@@ -30,8 +30,10 @@ Verification partly checked 2026-10-15, stability draft; human review outstandin
 
 Written in migration slice 26, 2026-10-15, from Narang's chapter "Risks Inherent to Quant Strategies" (`s7-narang`, third edition, 2024, not a reading of this pathway):
 
-- `def:quant-strategy-risk-sources`: model risk (inapplicability, misspecification, implementation errors), regime change and exogenous shocks, kept apart from funding contagion (`funding-crowding`) and operational failure; the legacy "discretionary overrides" qualified as an ungoverned model change.
+- `def:quant-strategy-risk-sources`: model risk (inapplicability, misspecification, implementation errors), regime change and exogenous shocks, kept apart from funding contagion (`funding-crowding`) and operational failure; the legacy "discretionary overrides" qualified by separating ad hoc intervention outside the validated design, in effect an unvalidated model change, from approved and tested contingency responses (de-risking rules, limits, kill switches), which are part of the design.
 - `meth:quant-strategy-monitoring`: exposure, profit-and-loss (including how money is made and hit rate), execution and systems monitors as early warnings; execution-algorithm indicators left to the decision-support entry of `execution-trading-costs` (see below).
+
+Changed in the slice-26 follow-up, 2026-10-15: `def:quant-strategy-risk-sources` no longer calls every override an unvalidated model change; operational controls are described as mitigating failure, not guaranteeing its prevention; and the five causes are presented as overlapping questions rather than exclusive categories.
 
 Both verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/model-governance-controls/risk-assessment.tex`, a new file beside the slice-17 `derivations.tex`. The same legacy file's contagion block was routed to `funding-crowding` (its entry is listed below, under related entries).
 

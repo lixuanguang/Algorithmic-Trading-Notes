@@ -2332,3 +2332,142 @@ Tests: 14 passed. The numerical scripts were not rerun; none covers changed cont
 - Routing the contagion block to `funding-crowding` against the map, and the new pathway note with four stubs.
 - Presenting Narang's 2007 drivers as his explanation, and the Pulte Homes arithmetic against his text.
 - The qualification of discretionary overrides, and implementation failure treated as operational rather than model risk.
+
+## Slice 26 follow-up: overrides, impact inference and the Calmar ratio, 15 October 2026
+
+Narrow corrections to slices 25 and 26 after an audit, run before slice 27; the records above are left as written, and this record supersedes them where they differ. No legacy block, entry label, stub, artefact or count changed (600 legacy blocks; 98 entries). The passages were reread in the same local third edition of `s7-narang` (text layer; printed page = PDF page − 20).
+
+- **Overrides, `def:quant-strategy-risk-sources`** (`compendium/research-engineering-validation/strategy-risk.tex`). Slice 26 wrote that "an override is itself an unvalidated change to the model". The entry now separates an ad hoc intervention, improvised outside the validated design and in effect an untested model change, from an approved contingency response (a pre-specified de-risking rule, limit or kill switch whose triggers, authority and effects were tested and approved), which is part of the validated design. Narang's p. 208 account and the one-firm anecdote are unchanged. Operational failure is now said to be made less likely and less costly by testing, change control and operational controls, which mitigate it rather than guarantee its prevention. The five causes are presented as overlapping questions (a regime change can expose a misspecification; others' forced selling can look like a regime change; one loss can have several causes), not exclusive categories. The `model-governance-controls` pathway note records the change.
+- **Pulte Homes and impact, `def:common-investor-contagion`** (`compendium/portfolio-risk-financing/crowding-contagion.tex`). Slice 26 set Narang's "quadratic nature of market impact" (p. 206) against the square-root law as if the table contradicted it. That inference is withdrawn: average daily volume and returns over crisis sub-periods give no metaorder sizes or schedules, mix many traders' flow, and do not reveal the price without the liquidation, so they identify no metaorder impact exponent, quadratic or square-root. The checked arithmetic (31.75% fall, about a third recovered, 3.7–5.4 times the earlier pace) and the separation of Narang's account from causal evidence are kept; his unsourced "as much as 15 percent in market impact" is now noted. The `funding-crowding` note and the `s7-narang` reading note record the change; the dated open question in `log.md` is left as written, with a new dated line withdrawing its impact clause.
+- **Calmar ratio, `meth:backtest-evaluation-diagnostics`** (`compendium/research-engineering-validation/backtest-evaluation.tex`). $12.1/39.7=0.30479$, which rounds to 0.30, while Narang reports 0.31 on pp. 173 and 174. The entry no longer says "as reported" after 0.30, and its *Practice* now says that most example figures agree within rounding, with the Calmar ratio the unexplained exception. No explanation was supplied. The slice-25 *Findings* line "all consistent within rounding" is superseded for this ratio. Recomputed in the session: $12.1/39.7=0.3048$, $12.1/21.2=0.5708$, $19/35=0.5429$.
+- **Index.** The slice-26 row in `notes/migration.md` now gives its commit `e0451c9`.
+
+## Slice 27: transaction cost models (components and cost functions), 15 October 2026
+
+Migration of the transaction-cost-models file of Narang's systematic-investing notes, run after the slice-26 follow-up above. Migration and source checking, not study; no checkpoint was attempted, and no reading of either owning pathway was read.
+
+### Scope
+
+The whole of `compendium/legacy/portfolio-construction-risk/sysinv/txncostmod.tex`: an introductory paragraph outside the environments, and 2 counted blocks (one `remark`, one `definition`) with 7 `\item` commands (3 in *Transaction Cost Components*, 4 in *Types of Transaction Cost Models*; the two `\setlength{\itemsep}{0pt}` lines are not items). Outside the blocks were only the `% migrate-to:` line, the subsection heading and the introduction (checked by script). The file and its map row were deleted. In `sysinv/sysinvoverview.tex` only its `\input` line was replaced, by a `% migrated:` comment. The other `sysinv/` files, other legacy files, earlier artefacts, the 21 PNGs, `house.tex` and the guide pin (`343d145`) are unchanged.
+
+### Ownership and dispositions
+
+The map names only `portfolio-construction-risk`, a **section overview**, whose outcome is a portfolio "whose forecasts, risk model, constraints, costs and tail measures are explicit and testable", and whose first goal, constrained portfolios "with factor risk models, shrinkage and costs", names `portfolio-construction`. The candidates compared:
+- `portfolio-construction`: construct a constrained portfolio from noisy forecasts "with a factor risk model, shrinkage and costs"; readings include convex Markowitz with costs and multi-period trading (`wide-boyd-markowitz-seventy`, `exp-boyd-multiperiod-trading`) and, as an optional branch, no-trade regions (`w2-davis-norman`). A cost function supplied to the portfolio optimiser, and the reason it exists, is this pathway's material.
+- `execution-trading-costs` (overview): plan executions, estimate expected cost from a stated impact model and split realised shortfall into spread, impact, timing and fees. It already owns `def:transaction-costs`, `meth:transaction-cost-analysis` and `def:execution-benchmark`; the cost-components block restates those terms in Narang's words.
+- `price-impact-execution`: estimate an impact model from executions. It owns `ev:square-root-impact`, `meth:almgren-impact-estimation` and `def:price-impact`, the evidence on the shape of impact costs. The legacy blocks make no estimation; their shape claims are checked against these entries, not moved into them.
+
+**Routing exception:** the introduction and *Types of Transaction Cost Models* go to `portfolio-construction` as one new entry, `mod:portfolio-transaction-cost-function`, in the new topic file `compendium/portfolio-construction-risk/transaction-cost-models.tex`; *Transaction Cost Components* is merged into `def:transaction-costs` (owned by `execution-trading-costs`). Nothing was routed to `price-impact-execution`, whose entries are cross-referenced and unchanged. The pathway had no note; this slice opened `notes/pathways/portfolio-construction.md`. The artefact sits under the map candidate as `notes/artefacts/portfolio-construction-risk/transaction-cost-models.tex`, keeping the file whole.
+
+| Part | Legacy text | Owner | Destination | Checked source (`s7-narang`, 3rd ed., chap. 5) | Disposition |
+|---|---|---|---|---|---|
+| Intro | Two reasons to trade; benefit above cost; the model informs, does not minimise | `portfolio-construction` | `mod:portfolio-transaction-cost-function` (new), Statement and Practice | pp. 85–86, 96 | Rewritten; Narang's framing kept as his; joint optimisation and forced trades added as interpretation |
+| 1 | *Transaction Cost Components* (remark), items i–iii | `execution-trading-costs` | merged into `def:transaction-costs` (Statement; Pitfalls, "Narang's terms") | sec. 5.1, pp. 86–91; `exp-pfmi` paras 1.12–1.13 | Merged with corrections (subclaims below) |
+| 2 | *Types of Transaction Cost Models* (definition), items i–iv | `portfolio-construction` | `mod:portfolio-transaction-cost-function` (new); stubs `meth:convex-cost-portfolio-optimisation`, `res:no-trade-region` | sec. 5.2–5.3 and n. 2, pp. 91–97; Exhibits 5.1–5.4 and n. 2 by page image | Rewritten; rankings not adopted (subclaims below) |
+
+**Subclaims.**
+
+| Where | Legacy claim | Disposition |
+|---|---|---|
+| Intro | "Trade is made only if it increases the odds or magnitude of return … or decreases … loss" | Rewritten as Narang's "only two reasons to make a trade" (p. 85); interpretation: forced trades (flows, margin, constraints) exist |
+| Intro | "This improvement should be higher than cost of trading" | Rewritten as his hurdle (p. 85); interpretation: in an optimiser cost enters jointly with alpha and risk, compared over the same horizon and units, not trade by trade |
+| Intro | Not designed to minimise cost, only to inform portfolio construction | Rewritten (pp. 85–86); his two phases of cost reduction added (p. 96) |
+| 1.i | Commissions and fees paid to brokerages (access), exchanges (security), regulators (infrastructure) | Corrected: the text lists three payers and three services without pairing them; p. 87 credits exchanges with access to liquidity and with guaranteeing performance; that guarantee is a central counterparty's function (`exp-pfmi` para. 1.13), as interpretation |
+| 1.i | Quants use the bank's infrastructure; commissions small per trade | Merged (p. 86) |
+| 1.i | Brokers collect clearing and settlement fees | Merged: usually a component of commissions (p. 86) |
+| 1.i | Clearing = regulatory reporting and monitoring, tax handling, handling failure, before settlement | Reported as Narang's description, not adopted as a definition. The CPMI glossary was not retrieved; the PFMI paragraphs read describe settlement systems' clearing functions (confirmation of instructions) and CCP netting, not his list. Stubbed (`def:clearing-settlement`, `execution-trading-costs`) |
+| 1.i | Settlement = delivery of securities against payment in full | Reported as his; set beside the PFMI's free-of-payment and DvP transfers (para. 1.12) |
+| 1.ii | Slippage from decision to the order at the exchange | Merged and mapped to the delay term $S(P_0-P_d)$, signed by side; his CVX example (pp. 87–88) |
+| 1.ii | Trend-following suffers most, mean-reverting least | Kept as Narang's conditional claim about the expected drift over the delay relative to trade side; no data in the source |
+| 1.ii | Lower latency, smaller slippage | Qualified: shortens the delay; lowers expected cost only with adverse expected drift (his accurate-forecast condition, p. 88) |
+| 1.ii | More volatile, bigger slippage | Qualified: widens the dispersion; raises expected cost only with adverse drift (pp. 88, 91). His GOOG figure not used (undated, unsourced) |
+| 1.iii | Impact: how much an order moves the market by demanding liquidity | Merged with his operational definition, arrival price to fill (pp. 88–89), mapped to the trading-related part of shortfall, not causal impact (`def:price-impact`) |
+| 1.iii | "Unknown until the trade has already been completed" | Corrected: after completion the fills and realised cost are known, but impact is not, since the unaffected price is never observed (Kissell pp. 91–92 as cited in the entry; `def:price-impact`) |
+| 1.iii | Slippage–impact interaction when selling into an uptrend | Merged with his example ($100.00, $100.05, $100.20; −$0.05 and −$0.15, checked) and his concession that they may be inseparable (pp. 89–90) |
+| 2.i | Flat: same cost regardless of size; reasonable if size nearly constant and liquidity constant | Rewritten (pp. 92–93) with units; interpretation: a per-share commission is linear, only a per-ticket charge is flat |
+| 2.ii | Linear: constant rate; "better estimate than flat" | Rewritten (pp. 93–94); the comparison held against his drawn curve only, not adopted generally |
+| 2.iii | Piecewise-linear: balance of simplicity and accuracy; "better accuracy than flat or linear" | Rewritten as his "happy medium" (p. 94); accuracy ranking not adopted |
+| 2.iv | Quadratic: "most computationally intensive, but also most accurate" | Not adopted as fact. Narang's exhibits are schematic, against an assumed convex curve from zero; his note 2 says quadratic is "not universally accepted" and reports square-root per-share costs for U.S. equities; computational cost depends on the optimiser formulation (interpretation, stubbed) |
+
+No claim was deleted outright.
+
+**Units and conventions** (all in `mod:portfolio-transaction-cost-function`): total cost $C(q)$ in currency against signed size $q$; per-unit cost $C/\lvert q\rvert$ in currency per share or basis points. A quadratic total is a linear per-unit cost; square-root per-unit cost is a 3/2-power total. Narang's note 2, "cost per share scales with an exponent of 1.5, or in other words, as the square root of trade size" (p. 97), conflates the two conventions; recorded, not repeated.
+
+**Existing entries checked.**
+- `def:transaction-costs`: the destination of block 1; Statement, Pitfalls (new paragraph "Narang's terms"), Index, Further reading and Status extended; its accounting split, examples and other text unchanged.
+- `meth:transaction-cost-analysis`: ex-ante forecasts against realised costs; cross-referenced from the new entry, unchanged.
+- `def:execution-benchmark`: its decision and arrival prices fix Narang's slippage interval; not changed, since `def:transaction-costs` already uses them.
+- `def:price-impact`: the counterfactual definition of impact; cross-referenced, unchanged.
+- `meth:almgren-impact-estimation`: the fitted 3/5 per-unit temporary-impact exponent, a total exponent of about 1.6 at fixed duration; cross-referenced, unchanged.
+- `ev:square-root-impact`: the empirical shape and the two-thirds shortfall ratio; cross-referenced, unchanged.
+- Also linked: `mod:almgren-chriss-execution` (linear temporary impact, a quadratic total cost for a given schedule) and `pit:backtest-cost-short-assumptions` (misestimated costs, Narang p. 186; repeated by him on p. 86).
+
+### Sources, 2026-10-15
+
+- **Narang** (`s7-narang`), *Inside the Black Box*, third edition, Wiley 2024 (copyright page: ISBN 9781119931911 Adobe PDF), the same local copy as slices 25 and 26, read through PDFKit's text layer (printed page = PDF page − 20, checked again on this chapter). Chap. 5, "Transaction Cost Models", secs. 5.1–5.3 and notes, pp. 85–97, located from the contents (Transaction Cost Models 85; 5.1 p. 86; 5.2 p. 91; 5.3 p. 96; Notes p. 97) and the running heads. Exhibits 5.1–5.4 (pp. 93–95) and note 2 with Exhibit 5.5 (p. 97) were read from page images; p. 98 is blank (page image).
+- **CPSS–IOSCO, *Principles for financial market infrastructures*** (`exp-pfmi`, April 2012), downloaded 2026-10-15 from bis.org (the catalogue's `d101a.pdf` link redirects to `bis.org/publications/principles-financial-market-infrastructures.pdf`; server length 1,117,912 bytes). PDFKit read only the first 18 PDF pages, the front matter to para. 1.19; paras. 1.8–1.13 (pp. 7–9) were read. The glossary annex was not reached.
+- **Not retrieved:** the CPMI glossary (`bis.org/cpmi/glossary.pdf` returned "page not found"; `bis.org/cpmi/publ/d00b.pdf` returned an HTML page). A web search found secondary pages quoting a CPMI-style clearing definition; they were not used.
+- **Not read:** every reading of `portfolio-construction` (including the Boyd papers and Davis–Norman named in stubs) and of `price-impact-execution`; the sources behind Narang's note 2.
+
+### Distinctions kept
+
+- Narang's terminology against current usage: his slippage is the delay cost; his market impact is the arrival-to-fill trading cost, not causal impact.
+- Total cost against per-unit cost, with sizes in shares, currency or fraction of volume.
+- The author's claims (two reasons to trade; the accuracy and computational ranking; the trend/mean-reversion, latency and volatility statements) against interpretation, each marked.
+- The realised cost observed after a trade against the impact, which is never observed.
+
+### Numerical check
+
+Recomputed in the session, with no script kept and no existing script covering this content: slippage–impact example $100.05-100.00=0.05$, $100.20-100.05=0.15$; ECN take fee minus rebate $0.3-0.2=0.1$ cents; the illustration in the new entry: per-share cost $0.5\times0.02\times(q/10^6)^{1/2}$ of a \$50 price gives 10 bp and \$500 at 10,000 shares, 14.14 bp and \$1,414.21 at 20,000, 20 bp and \$4,000 at 40,000; ratios $2^{1/2}=1.414$ per share and $2^{3/2}=2.828$ in total.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `s7-narang` | chap. 5, pp. 85–97; Exhibits 5.1–5.4, 5.5 and n. 2 as images | Third edition; one practitioner's account; exhibits schematic with no data; the 20–50 percent cost share, the "generally accepted" quadratic, the GOOG statistic, the 2019 dark-pool share and the square-root evidence in n. 2 are unsourced or cited only to a newspaper, not checked |
+| `exp-pfmi` | paras. 1.8–1.13, pp. 7–9 | Only the first 18 PDF pages could be read; no glossary; 2012 text |
+| `portfolio-construction` and `price-impact-execution` readings | none | Stubs and cross-references only; the computational remarks are interpretation |
+
+The new entry and the merged paragraph are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/portfolio-construction-risk/transaction-cost-models.tex`, with only the subsection unnumbered; no earlier artefact was touched. A script compared it with `git show HEAD:compendium/legacy/portfolio-construction-risk/sysinv/txncostmod.tex`, counting commands with patterns rather than substrings:
+- the body below the subsection heading appears exactly once;
+- the introduction (373 characters) appears exactly once, before the blocks;
+- the 2 blocks appear verbatim once each, in order (*Transaction Cost Components*, *Types of Transaction Cost Models*);
+- `\item` commands (pattern `\item` not followed by a letter, excluding `\itemsep`) number 3 and 4, 7 in both the original and the artefact, plus 2 `\itemsep` lines;
+- the sequence of 8 `\begin`/`\end` commands is identical (ignoring the artefact's `document`);
+- nothing lay outside the blocks but the migrate-to line, the subsection heading and the introduction.
+
+The artefact compiles alone: 1 page, no warnings, no bad boxes; its page image was inspected.
+
+### Counts
+
+`migration_status.py --check`, 0 problems: 600 → 598 legacy blocks = 530 shared + 39 single-candidate + 29 assigned. `portfolio-construction-risk`: exclusive 10 → 8. `portfolio-construction`: entries 0 → 1, stubs 0 → 2 (new note); exclusive 7, unchanged. `execution-trading-costs`: entries 14, unchanged (the merge changes an existing entry); stubs 0 → 1. Entries 98 → 99 (models 10 → 11). The note for `execution-trading-costs` names the new entry's pathway without its label, so that the entry is counted only under its owner. No new `front/sources.tex` keys (`exp-pfmi` is a catalogue key).
+
+### Other files
+
+- Chapter openers: `portfolio-construction-risk` (`portfolio-construction` added first, in the guide's order; the new topic file input before the performance file) and `execution-trading-costs` (the merge noted in its comment and opening paragraph).
+- `notes/readings/s7-narang.md`: pathways, sections and key results for chap. 5; entries.
+- `notes/log.md`: coverage row for `portfolio-construction`; the `s7-narang` progress cell; one open question appended.
+- `notes/migration.md`: status, index, next slice and map; `compendium/README.md`: order paragraph.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 219 pages (216 before); no LaTeX warnings; the one `page.i` warning; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files (located from the log), as before. The first build had two new overfull boxes and one underfull box from catalogue keys in the new entry's *Further reading*; that line was reworded. Inspection of the rendered page then showed $\mathbb 1$ printing as a wrong glyph; the flat form was rewritten in words, which gave one overfull display, split into two lines. Rendered and inspected:
+- PDF p. 9: the corrected Calmar passage and *Practice* of `meth:backtest-evaluation-diagnostics`;
+- p. 14: `def:quant-strategy-risk-sources` with the corrected *Practice* and overrides;
+- pp. 21–23: the `portfolio-construction-risk` opener, the new entry and the unchanged performance entry after it;
+- p. 25: `def:common-investor-contagion` with the corrected Pulte passage;
+- pp. 88–89: `def:transaction-costs` with Narang's components and the new Pitfalls paragraph;
+- pp. 171 and 173: the legacy portfolio chapter, where *Risk Models* now runs straight into *Portfolio Construction Models*.
+
+Tests: 14 passed.
+
+### For review
+
+- Routing the introduction and cost-function block to `portfolio-construction` against the map, and merging the components into an `execution-trading-costs` entry rather than adding a new one.
+- The mapping of Narang's slippage and impact onto the delay and trading-related terms, and the correction of "unknown until the trade has been completed".
+- The interpretation on computational cost (convex piecewise-linear, quadratic, 3/2-power, integer variables for per-trade fixed costs), which no source read supports and which the `meth:convex-cost-portfolio-optimisation` stub should replace.
+- Clearing left undefined pending the CPMI glossary (`def:clearing-settlement`).

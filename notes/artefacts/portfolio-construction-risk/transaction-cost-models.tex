@@ -1,5 +1,33 @@
-% migrate-to: portfolio-construction-risk
-\subsection{Transaction Cost Models}
+% notes/artefacts/portfolio-construction-risk/transaction-cost-models.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 27), under the section key
+% portfolio-construction-risk, the file's map candidate. Its introduction and Types of Transaction Cost Models
+% block are owned by portfolio-construction (mod:portfolio-transaction-cost-function, a routing exception); its
+% Transaction Cost Components block was merged into def:transaction-costs (owned by the section overview
+% execution-trading-costs). The file is kept whole here. The compendium entries state each claim with its
+% locator; the original wording lives here. Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/portfolio-construction-risk/ with  latexmk -pdf transaction-cost-models.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Portfolio construction and risk: legacy transaction cost models}
+
+\section*{Transaction cost models (slice 27, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration-slices.md, slice 27): the whole of
+% sysinv/txncostmod.tex below its migrate-to line, the introductory paragraph and 2 blocks in order with their
+% 7 items (3 and 4); only the subsection is unnumbered here. No other text, table or figure was in the file.
+% Destinations: introduction -> mod:portfolio-transaction-cost-function (portfolio-construction); Transaction
+% Cost Components -> merged into def:transaction-costs (execution-trading-costs; clearing and settlement
+% limited, impact-after-execution corrected); Types of Transaction Cost Models ->
+% mod:portfolio-transaction-cost-function (accuracy and computation rankings not adopted).
+% Source: Narang (s7-narang), Inside the Black Box, third edition, Wiley 2024, chap. 5 "Transaction Cost
+% Models", pp. 85-97, local copy with text layer (printed page = PDF page - 20); Exhibits 5.1-5.4 and note 2
+% by page image.
+
+% From compendium/legacy/portfolio-construction-risk/sysinv/txncostmod.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Transaction Cost Models}
 
 Trade is made only if it increases the odds or magnitude of return (from alpha model), or if it decreases the odds or magnitudes of loss (from risk model). However, this improvement should be higher than cost of trading. The transaction cost model is not designed to minimise cost of trading, only to inform portfolio construction engine the cost of making any given trade.
 
@@ -22,3 +50,5 @@ Brokers also collect clearing and settlement fees. Clearing is the activity invo
 \item Quadratic Model: most computationally intensive, but also most accurate.
 \end{enumerate}
 \end{definition}
+
+\end{document}

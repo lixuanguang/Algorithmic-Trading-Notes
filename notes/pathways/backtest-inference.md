@@ -31,6 +31,8 @@ Written in migration slice 25, 2026-10-15:
 
 Corrected 2026-10-15 (slice-25 follow-up): `meth:backtest-evaluation-diagnostics` now gives the S&P example's no-trade state (zero signal on 65% of days, threshold not stated) and writes Calmar and zero-threshold Omega with absolute-value denominators, kept apart from Narang's shorthand.
 
+Corrected 2026-10-15 (slice-26 follow-up): the same entry now distinguishes the recomputed Calmar ratio, $12.1/39.7\approx0.3048$ (0.30 to two places), from Narang's reported 0.31 (pp. 173-174), drops "as reported" after 0.30, and no longer calls all the example figures consistent; the difference is left unexplained.
+
 All four: verification partly checked 2026-10-15, stability draft; human review outstanding. The artefact is `notes/artefacts/research-engineering-validation/derivations.tex` (under the map candidate, keeping the file whole).
 
 ## Related entries owned elsewhere

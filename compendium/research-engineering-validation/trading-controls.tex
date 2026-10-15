@@ -1,0 +1,61 @@
+% compendium/research-engineering-validation/trading-controls.tex
+% Entry migrated on 2026-10-15 from the legacy production-considerations file (slice 17), owned by
+% model-governance-controls; dispositions and source checks in notes/migration.md, the blocks verbatim in
+% notes/artefacts/model-governance-controls/derivations.tex.
+
+\section{Operational controls for automated trading}
+
+\begin{qfmethod}[Operational controls for automated trading: reliability and recovery, unknown order state, audit trails, and the U.S. market-access rule]\label{meth:automated-trading-operational-controls}
+\qffield{Statement} Harris describes the operational demands on automated trading systems of markets, ``as well as brokers and dealers'', as of 2002 \citep[chap.~``Floor Versus Automated Trading Systems'', sec.~27.7.1, pp.~549--551]{alpha-harris}. The systems must validate users, accept and process orders, report trades and report order status, reliably, securely and fast:
+\begin{itemize}
+\item \emph{reliability}: trading stops when the computer or network is down, and traders will not use unreliable systems. Builders therefore eliminate single points of failure and, since failures are inevitable, invest in recovering from interruptions: fault-tolerant hardware; redundant computers and network connections through different vendors and physical paths; backup power; a remote ``hot disaster recovery site'' to which activity can switch at once; significant excess capacity for surges in demand; quality controls in software development; redundant data backups; and thorough testing by independent quality-assurance groups (pp.~549--550, page image of p.~550);
+\item \emph{security}: encryption and user authentication, so that hackers cannot tamper with systems and impersonators cannot trade in others' names (p.~550);
+\item \emph{speed}, because traders without the latest information decide badly (pp.~550--551).
+\end{itemize}
+An \emph{audit trail} records the submission and disposition of every order, with detailed information on everything that happens to it. Regulators use it to decide whether traders have violated trading rules; floor rules require time stamps when orders are received and filled, sequential recording and immediate reporting; automated systems produce complete audit trails of all activity within them (sec.~27.1.1, pp.~544--545).
+
+When a connection fails, Harris's examples show three distinct risks (box, p.~550, page image). A trader whose accepted limit order may or may not have filled cannot safely trade elsewhere: if she does so without knowing, she risks trading twice. An arbitrageur who has bought one leg cannot sell the other, and is left unhedged. A speculator cannot exit a losing position; a stop order placed immediately after the purchase would have represented him while he could not communicate.
+
+In the United States, Rule 15c3-5 requires a broker or dealer with market access, or that provides others with access to an exchange or alternative trading system, to establish, document and maintain risk-management controls and supervisory procedures \citep[17 CFR 240.15c3-5(b)]{cfr-240-15c3-5}. These are reasonably designed, among other things:
+\begin{itemize}
+\item to prevent orders that exceed pre-set credit or capital thresholds ((c)(1)(i));
+\item to prevent erroneous orders, by rejecting orders that exceed price or size parameters, order by order or over a short period, ``or that indicate duplicative orders'' ((c)(1)(ii));
+\item to restrict access to trading systems and technology to pre-approved, authorised persons and accounts ((c)(2)(iii));
+\item to assure that surveillance personnel receive immediate post-trade execution reports ((c)(2)(iv)).
+\end{itemize}
+The controls must be under the firm's direct and exclusive control, with a limited contractual allocation of some regulatory controls to broker-dealer customers ((d)); they must be reviewed regularly, at least annually, with an annual certification by the chief executive officer ((e)).
+
+\qffield{Conditions} Interpretation, a synthesis of the passages above and not a procedure stated in them: after a failure the states to separate are these.
+\begin{itemize}
+\item \emph{Unknown order state}: an order may be unacknowledged, live, partly filled, filled, cancelled or rejected. Venue messages report these transitions (acknowledgements, rejections, cancellations and fills; \hyperref[def:automated-trading-architecture]{automated trading architecture}), and the trader's view is stale until they arrive.
+\item \emph{Unknown fill state and position}: what matters for risk is the quantity filled and the resulting position, including the unhedged leg of a multi-leg trade.
+\item \emph{Reconciliation}: establishing state from authoritative records, such as venue or broker execution reports and post-trade reports, before acting.
+\item \emph{Retry}: resubmitting before reconciliation is how a trader trades twice. For U.S. broker-dealers with market access, rejecting orders that indicate duplicative orders is a required pre-trade control, but such a filter is a backstop, not a reconciliation.
+\item \emph{Cancellation}: a cancel sent while state is unknown may cross with a fill, so its outcome also needs confirmation.
+\item \emph{Recovery}: redundancy, backups and disaster-recovery sites restore service; they do not by themselves establish what happened to orders in flight.
+\end{itemize}
+
+\qffield{Practice} Interpretation: the legacy advice to prefer safe state reconciliation over blind resubmission follows from Harris's ``trading twice'' and is consistent with the duplicative-order control of Rule 15c3-5, which states the control, not the reconciliation procedure. Harris's stop-order example is a way to leave a resting instruction that protects a position while disconnected; it is not a substitute for knowing the order's state. The pathway's checkpoint maps such controls to rules and to the Knight Capital failure points; the Knight Capital order (\texttt{wide-knight-capital}) is unread.
+
+\qffield{Pitfalls} Keep three kinds of statement apart.
+\begin{itemize}
+\item \emph{Description}: Harris's lists are descriptions of practice in 2002 markets, not requirements.
+\item \emph{Law}: Rule 15c3-5 is U.S. law for broker-dealers with market access, checked in its current eCFR text. It does not mention kill switches, reconciliation or ``drop copies''; the immediate post-trade execution reports it requires are the nearest provision.
+\item \emph{Not checked}: the EU's algorithmic-trading rules (\texttt{wide-mifid-rts6}) could not be retrieved, because EUR-Lex answered with a bot challenge, so no EU obligation is stated here. U.K. supervisory statements, industry guidance (\texttt{w2-fia-automated-controls}), Regulation SCI and audit-trail rules such as the U.S. consolidated audit trail were not checked.
+\end{itemize}
+Unsupported legacy items, kept only in the artefact:
+\begin{itemize}
+\item drop copies, replayable feeds, tamper-resistant logs and validated orders among reliability measures (Harris names validating users);
+\item ``bounded delays'' for each stage, which Harris states only as a need for speed;
+\item the claim that reliability is ``a market-quality variable, not only an IT variable'' (Harris says only that traders will not use unreliable systems and that trading stops when systems are down);
+\item in the audit trail, allocation, linking private messages to public market state, and testing best execution, front running, allocation and unauthorised trading. Harris names front running, inappropriate order exposure, fraudulent trade assignment and prearranged trading as the floor scandals that audit trails help deter.
+\end{itemize}
+
+\qffield{See also} \hyperref[def:automated-trading-architecture]{automated trading architecture}, for venue messages, recorded messages and model accuracy checks, and \hyperref[def:floor-automated-trading-systems]{floor against automated trading systems}, owned by the section overviews \texttt{execution-trading-costs} and \texttt{execution-market-making}; \hyperref[def:best-execution]{best execution}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/model-governance-controls/}. The adopting release of Rule 15c3-5 is \texttt{wide-sec-15c3-5}, not read.
+
+\qffield{Index} operational resilience; reliability; single point of failure; redundancy; disaster recovery site; excess capacity; software quality assurance; security; authentication; audit trail; unknown order state; unknown fill state; reconciliation; resubmission; duplicate orders; cancellation; recovery; legging risk; market access rule; Rule 15c3-5; pre-trade controls; post-trade execution reports
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{alpha-harris}, 2002 Oxford printing, chap.~27, pp.~543--554, page images of pp.~550 and~552; and the eCFR text of 17 CFR 240.15c3-5 as of 13 October 2026). Stability: draft. Currency: Harris's practice as of 2002; Rule 15c3-5 current as of 13 October 2026; no EU or U.K. rule checked.
+\end{qfmethod}

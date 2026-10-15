@@ -1434,9 +1434,90 @@ A bounded correction to slice 16 (`6d04e52`), run from that pushed state (657 le
 
 No verification theorem for the quadratic ansatz; the constrained one-directional problem is not solved; Cartea and Jaimungal's originals and `crypto-cartea` are still unconsulted; `wide-hambly-xu-yang` still read only in arXiv v4.
 
+## Slice 17: production considerations, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from the slice-16 follow-up's pushed state (`8aa672a`, on `main`, matching `origin/main`; guide `343d145`; `house.tex` unchanged). The reported counts matched the checker: 657 legacy blocks (530 shared, 98 single-candidate, 29 assigned), 67 entries, 0 problems. Migration and source checking, not study.
+
+### Slice-16 clarification
+
+The wealth identity in `mod:cartea-jaimungal-execution` now states that the cash account starts at $X_0=0$, with $X_0$ to be added to the right-hand side otherwise. The follow-up's corrections, checks and limits are unchanged; the check script already starts cash at 0.
+
+### Scope
+
+The whole of `execution-trading-costs/01_.../08_production_considerations.tex`: 11 counted blocks; outside them only the `% migrate-to:` line and the subsection heading (checked by script). It was the last topic of `01_execution_and_algorithmic_trading/`, whose wrapper `00_overview.tex` then held only a section heading and this file's `\input`. Both files, the wrapper's `\input` (with its `\newpage`) in `legacy/execution-trading-costs/section.tex` and the map row were deleted. The asset-class folder `02_...` and its input are unchanged.
+
+### Ownership, block by block
+
+The map's single candidate, `model-governance-controls`, was a provisional tag. Its outcome concerns model inventory, validation and change, pre-trade and kill-switch controls, monitoring and incidents, and it receives the three blocks about reliability, network failure and audit trails. The rest go elsewhere:
+- the architecture, input, analytics, venue-connection, model-component and indicator blocks follow Lehalle and Laruelle's sec. 3.1, whose sections 3.1.2–3.1.3 already have entries owned by the overview `execution-trading-costs` (`def:trading-envelope`, `meth:execution-decision-support`);
+- the floor-against-automated cost comparison is Harris's market-structure chapter, routed to the overview `execution-market-making` (a routing exception);
+- the brokerage organisation list was deleted.
+
+The `research-engineering-validation` overview, whose outcome is reconstructing decisions and trades from records, was considered for the order-state and audit material. It has no note, and its FIX reading was not consulted, so it was left as a backlog direction rather than given an entry.
+
+| # | Legacy block | Owner | Destination | Disposition | Rationale |
+|---|---|---|---|---|---|
+| 1 | *Trading Architecture* (principle) | `execution-trading-costs` | `def:automated-trading-architecture` (new) | Rewritten | Lehalle and Laruelle Fig. 3.1, pp. 193–194, 198; "the hard part … decision chain" flagged as synthesis |
+| 2 | *Trading Tool Input Segmentation* | `execution-trading-costs` | `def:automated-trading-architecture` | Merged | sec. 3.1.1, pp. 194–197; calendar items beyond expiries, expected news and half-days unsupported |
+| 3 | *Broker-Dealer Operations Segmentation* | none | artefact only | Deleted | Harris sec. 7.2 (pp. 147–148) classifies a brokerage as front office, back office (incl. compliance, credit, systems) and proprietary operations (cash and risk management); the legacy five-way list is its own and serves no pathway outcome |
+| 4 | *Analytics Close to the Feed* | `execution-trading-costs` | `def:automated-trading-architecture` | Merged | p. 195; book imbalance and queue size not in the source |
+| 5 | *Connections Are Two-Way* | `execution-trading-costs` | `def:automated-trading-architecture` | Merged | pp. 195–196; public book updates belong to the market-data feed, not the connection |
+| 6 | *Model Component Segmentation* | `execution-trading-costs` | `def:automated-trading-architecture` | Merged | pp. 196–197, with deactivation of inadequate models; cross-referenced to the governance entry |
+| 7 | *Indicator Publication* (process) | `execution-trading-costs` | `meth:execution-decision-support` | Merged | pp. 200–202; the book prints "stateless agents", the legacy "stateful" |
+| 8 | *Audit Trail* (process) | `model-governance-controls` | `meth:automated-trading-operational-controls` (new) | Rewritten | Harris pp. 544–545; allocation, linkage to public state and the listed tests unsupported; current audit-trail rules not checked |
+| 9 | *Automated Trading Reliability Segmentation* | `model-governance-controls` | `meth:automated-trading-operational-controls` | Merged | Harris pp. 549–551; Rule 15c3-5(c)(2)(iii)–(iv); drop copies, replayable feeds, tamper-resistant logs, bounded delays and the market-quality claim unsupported |
+| 10 | *Network Failure Creates Position Risk* (caveat) | `model-governance-controls` | `meth:automated-trading-operational-controls` | Rewritten | Harris box p. 550; Rule 15c3-5(c)(1)(ii) (duplicative orders); unknown order state, fill state, reconciliation, retry, cancellation and recovery separated as Interpretation |
+| 11 | *Automated System Cost Structure* (mechanism) | `execution-market-making` | `def:floor-automated-trading-systems` (new) | Rewritten | Harris chap. 27, pp. 543–554 and Table 27-1; routing exception |
+
+### Overlaps resolved
+
+`def:trading-envelope` (components and envelope, sec. 3.1.2) and `meth:execution-decision-support` (outputs, sec. 3.1.3) are not restated: the new architecture entry covers the inputs (sec. 3.1.1) and Figure 3.1 and cross-references both. `meth:transaction-cost-analysis` and `def:smart-order-routing` (dark probes, latency) are cross-referenced. No order-lifecycle entry exists; the venue messages are in the architecture entry and their use after a failure in the controls entry, with a backlog stub for FIX-level evidence.
+
+### Sources, 2026-10-15
+
+- **Lehalle and Laruelle**, 2018 World Scientific printing (local; printed page = PDF − 27): secs. 3.1–3.1.2, pp. 193–198, and sec. 3.1.3, pp. 199–203, text layer; page images of p. 194 (Figure 3.1) and p. 202.
+- **Harris**, 2002 Oxford printing (local copy, AES-encrypted with an empty user password: Ghostscript could not open it, so the text was extracted and pages rendered through macOS PDFKit; printed page = PDF − 13): chap. 7, sec. 7.2, pp. 147–148, and box p. 159; chap. 27, pp. 543–554, page images of pp. 550 and 552.
+- **17 CFR 240.15c3-5** (`cfr-240-15c3-5`, added to `front/sources.tex`): eCFR versioner API, point-in-time text for 13 October 2026, full section; one version listed (31 December 2016, the start of the versioner's history), adopted 75 FR 69825 (2010). U.S. law for broker-dealers with market access. The adopting release (`wide-sec-15c3-5`) was not read.
+- **Not available or not read:** MiFID II RTS 6 (`wide-mifid-rts6`): EUR-Lex returned a bot challenge for both HTML and PDF, so no EU obligation is stated; the FIX specification (`s6-fix`); the Knight Capital order; U.K. statements; FIA guidance; Regulation SCI; audit-trail rules. Requests used a generic header.
+
+### Claims kept apart
+
+- **Legal requirement:** only Rule 15c3-5's provisions as quoted, U.S., broker-dealers with market access, current as of 13 October 2026.
+- **Historical description:** Harris's practice and market facts as of 2002; Lehalle and Laruelle's architecture as of 2018.
+- **Own synthesis (Interpretation):** the separation of unknown order state, fill state, reconciliation, retry, cancellation and recovery; the replay use of recorded messages.
+- No supervisory guidance or voluntary framework was relied on.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-laruelle` | pp. 193–203 | Text layer; page images of pp. 194 and 202 |
+| `alpha-harris` | pp. 147–148, 159, 543–554 | Text through PDFKit; page images of pp. 550 and 552 |
+| `cfr-240-15c3-5` | full section, eCFR 13 Oct. 2026 | Adopting release not read |
+| `wide-mifid-rts6`, `s6-fix`, `wide-knight-capital`, other pathway readings | none | Not retrieved or not read |
+
+The three new entries and the extended `meth:execution-decision-support` are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The wrapper `00_overview.tex` (in a verbatim environment, since it `\input`s the deleted file) and the whole of `08_production_considerations.tex` below its `% migrate-to:` line (only the subsection unnumbered) are kept in the new artefact `notes/artefacts/model-governance-controls/derivations.tex`, which compiles on its own (2 pages, no warnings or bad boxes). A script confirmed both appear once, the 11 blocks once each and in order, and nothing else outside them. The artefacts of `market-making-lob` and `reinforcement-learning-trading` are unchanged (`git diff` empty).
+
+### Counts
+
+`migration_status.py`: 657 → 646 legacy blocks = 530 shared + 87 single-candidate + 29 assigned. `model-governance-controls`: exclusive 16 → 5 (the five in `sysinv/modelrisk.tex`), listed entries 0 → 1, backlog stubs 0 → 2. Entries 67 → 70 (definitions 26 → 28, methods 12 → 13). Listings: `execution-trading-costs` 13 → 14, `execution-market-making` 22 → 23; unchanged `market-structure-execution-quality` 5, `performance-manager-evaluation` 1, `price-impact-execution` 9, `market-making-lob` 13, `hft-market-design` 3, `reinforcement-learning-trading` 1.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 186 pages (182 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. A first build had three overfull lines (the new artefact path in Further reading) and one underfull line (a See-also), all from this slice and fixed. The new chapter `research-engineering-validation` is Chapter 1; later chapters are renumbered by one, labels unchanged. Rendered and inspected: PDF pp. 7–9 (the new chapter), 51 (the floor-against-automated entry), 60–61 (the architecture entry and decision support) and 182 (the legacy execution chapter, which now starts at *Asset-Class-Specific Microstructure*). Tests: 14 passed.
+
+### For review
+
+- Routing blocks 1–7 to the execution overview, 11 to `execution-market-making`, and deleting block 3.
+- The order-state synthesis and the reliance on one U.S. rule; the RTS 6 and FIX stubs.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/08_production_considerations.tex` (11 blocks), whose map names `model-governance-controls` alone (the pathway's other 5 exclusive blocks are in `portfolio-construction-risk/sysinv/modelrisk.tex`); it is the last file of `01_execution_and_algorithmic_trading/`. Likely overlaps: `def:trading-envelope` and `meth:execution-decision-support` (monitoring, indicators), `meth:transaction-cost-analysis`, and `def:smart-order-routing` (venue connectivity, dark probes). The three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/01_equity_market_microstructure.tex` (6 blocks), whose map names `market-structure-execution-quality` alone, its last exclusive legacy material. Likely overlaps: `def:block-trade`, `def:portfolio-trading` and `ev:index-reconstitution-impact` (index products, ETF creation and block prints). The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1471,7 +1552,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/08_production_considerations.tex` | model-governance-controls |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/01_equity_market_microstructure.tex` | market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/02_futures_market_microstructure.tex` | futures-execution |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/03_fx_market_microstructure.tex` | fx-dealer-market-making |

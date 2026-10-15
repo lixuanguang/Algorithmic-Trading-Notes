@@ -1,0 +1,32 @@
+% compendium/execution-market-making/trading-systems.tex
+% Entry migrated on 2026-10-15 from the legacy production-considerations file (slice 17), owned by the
+% section overview execution-market-making (a pathway outside the file's map candidates); dispositions in
+% notes/migration.md, the block verbatim in notes/artefacts/model-governance-controls/derivations.tex.
+
+\section{Floor and automated trading systems}
+
+\begin{qfdefinition}[Floor against automated trading systems: two technologies for the same order-driven auction, compared on fairness, access, capacity, speed, information and cost (as of 2002)]\label{def:floor-automated-trading-systems}
+\qffield{Statement} Floor-based oral auctions and automated rule-based auctions are both order-driven markets that match buy and sell orders by very similar rules. They differ mainly in technology: in oral auctions traders exchange information in person, in automated markets computers arrange the trades \citep[chap.~``Floor Versus Automated Trading Systems'', p.~544]{alpha-harris}. Harris compares them on six counts (secs.~27.1--27.7, pp.~544--552), summarised in Table~27-1 (p.~552, page image):
+\begin{itemize}
+\item \emph{fairness}: automated systems apply their rules exactly and produce complete audit trails; oral auctions depend on traders' skill and honesty and need surveillance. Floor traders see and react first, and in pits even size and voice matter, while automated markets favour traders with computer-generated orders (pp.~544--546);
+\item \emph{convenience}: distributed access from traders' desks (pp.~546--547);
+\item \emph{capacity}: electronic matching scales; oral auctions become disorderly ``fast markets'' when too many traders take part (p.~547);
+\item \emph{speed}: automated systems complete and report trades faster, but oral negotiation of size is faster than splitting firm orders, which undisclosed orders and negotiation messaging partly address (pp.~547--548);
+\item \emph{information exchange}: floors win when traders need to know who the counterparty is and whether more size is coming, to avoid informed or price-discriminating traders, and when brokers know of latent interest (pp.~548--549). Automated systems report market data faster and more accurately (p.~549);
+\item \emph{cost}: both have high initial creation costs; screen-based systems have low operating costs, their main operating costs being telecommunications and data backup. Floor systems are labour-intensive, needing floor brokers, reporters, officials and runners, and well-trained floor brokers are expensive (sec.~27.7, pp.~549--552).
+\end{itemize}
+
+\qffield{Conditions} Automated trading also needs heavy investment in reliability, security and speed (pp.~549--551; \hyperref[meth:automated-trading-operational-controls]{operational controls for automated trading}). Automated markets exploit economies of scale, which drives exchange mergers. Because of the order-flow externality, the survival of large floor markets does not prove that floor technology is better (p.~553). Harris expects automated systems to serve active markets and small traders, and floors large institutions that need to exchange information (pp.~552--553).
+
+\qffield{Practice} Harris's examples of competition, such as the Paris Bourse against London and the DTB against LIFFE, did not decide the question, because other events, a repealed French stamp tax and German banks repatriating their market, also moved trading (p.~543).
+
+\qffield{Pitfalls} Harris's text says that both systems have high initial creation costs (p.~549), while Table~27-1 lists ``relatively lower costs for the exchange software'' for automated systems against high costs to build a floor and train its staff (p.~552); the two are left as printed. The legacy mechanism's ``high fixed costs for software, data networks, security, and recovery, but low marginal labour cost per order'' agrees with the text. Its claim that floors remain valuable ``when negotiation, discretion, and soft information dominate raw matching speed'' paraphrases sec.~27.5. The market facts (the NYSE and most U.S. options exchanges still floor-based, the firms and systems named) are as of 2002 and are not current.
+
+\qffield{See also} \hyperref[def:order-exposure-decisions]{order exposure decisions} (negotiating size and undisclosed orders); \hyperref[def:block-trade]{block trades}; \hyperref[def:best-execution]{best execution}.
+
+\qffield{Further reading} The legacy block it replaces, verbatim, is in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/model-governance-controls/}.
+
+\qffield{Index} floor trading; oral auction; automated trading system; electronic trading; fairness; fair access; audit trail; distributed access; scalability; fast market; negotiation of size; undisclosed orders; information exchange; market data reporting; trading system costs; economies of scale; order-flow externality
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{alpha-harris}, 2002 Oxford printing, chap.~27, pp.~543--554, page image of p.~552 with Table~27-1). Stability: draft. Currency: historical, as of 2002.
+\end{qfdefinition}

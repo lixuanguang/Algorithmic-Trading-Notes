@@ -1,5 +1,45 @@
-% migrate-to: model-governance-controls
-\subsection{Production Considerations}
+% notes/artefacts/model-governance-controls/derivations.tex
+% Legacy blocks kept verbatim when they were migrated (notes/migration.md), for the pathway
+% model-governance-controls and the entries that took blocks from the same legacy file. The compendium
+% entries state each claim with its locator; the original wording lives here.
+% Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/model-governance-controls/ with  latexmk -pdf derivations.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Model governance and trading controls: legacy derivations}
+
+\section*{Production considerations (slice 17, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 17): the wrapper
+% of the folder 01_execution_and_algorithmic_trading (00_overview.tex, deleted once its last topic left;
+% shown in a verbatim environment), then the whole of 08_production_considerations.tex below its
+% migrate-to line: 11 blocks in order, with only the subsection unnumbered. No other text, table or
+% figure was in either file.
+% Destinations: def:automated-trading-architecture (blocks 1, 2, 4, 5, 6) and
+% meth:execution-decision-support (block 7), owned by execution-trading-costs;
+% meth:automated-trading-operational-controls (blocks 8, 9, 10), owned by model-governance-controls;
+% def:floor-automated-trading-systems (block 11), owned by execution-market-making;
+% block 3 (Broker-Dealer Operations Segmentation) deleted from the compendium and kept only here.
+% Sources: Lehalle and Laruelle (alpha-laruelle) secs. 3.1-3.1.3, pp. 193-202; Harris (alpha-harris)
+% chap. 7, pp. 147-148, and chap. 27, pp. 543-554; 17 CFR 240.15c3-5 (eCFR, 13 October 2026).
+% Unsupported items are listed in the entries' Pitfalls and in notes/migration.md.
+
+% From compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/00_overview.tex (whole file, deleted 2026-10-15).
+% Kept in a verbatim environment, exactly as found, so that its \input of the deleted file is shown, not run.
+{\scriptsize
+\begin{verbatim}
+\section{Execution and Algorithmic Trading}
+
+
+\input{legacy/execution-trading-costs/01_execution_and_algorithmic_trading/08_production_considerations}
+\end{verbatim}
+}
+
+% From compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/08_production_considerations.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Production Considerations}
 
 \begin{principle} \hlt{Trading Architecture}\\
 Automated trading needs a production architecture that synchronises market data, order gateways, historical databases, models, monitoring, and TCA. The hard part is not one model; it is keeping the decision chain coherent under fragmented venues and live latency.
@@ -83,3 +123,5 @@ Controls should prefer safe state reconciliation over blind resubmission.
 \begin{mechanism} \hlt{Automated System Cost Structure}\\
 Electronic trading has high fixed costs for software, data networks, security, and recovery, but low marginal labour cost per order. Floor trading has higher human and physical operating costs, but can still be valuable when negotiation, discretion, and soft information dominate raw matching speed.
 \end{mechanism}
+
+\end{document}

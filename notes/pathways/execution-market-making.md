@@ -65,6 +65,12 @@ Changed in slice 7: `def:bluffing-manipulation` (the legacy impact-symmetry prin
 
 All twenty-two: verification partly checked 2026-10-15, stability draft. Human review is outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`, where the migration has kept every removed block since the pilot.
 
+Written in migration slice 17, 2026-10-15, from a legacy execution file whose map named only `model-governance-controls` (a routing exception):
+
+- `def:floor-automated-trading-systems`: Harris's comparison of floor and automated trading systems (chap. 27, Table 27-1), as of 2002, with the text–table inconsistency on initial costs.
+
+Partly checked 2026-10-15, draft; its artefact is `notes/artefacts/model-governance-controls/derivations.tex`.
+
 ## Entry backlog
 
 ## Legacy candidate material

@@ -51,6 +51,13 @@ Written in migration slice 13, 2026-10-15:
 
 All thirteen: verification partly checked 2026-10-15, stability draft; human review outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`. The impact concepts they use (price impact and its empirical estimation) are owned by `price-impact-execution` and are cross-referenced from the entries, not listed here; so is the 1987-crash mechanism owned by `execution-market-making`.
 
+Written in migration slice 17, 2026-10-15, from the production-considerations file:
+
+- `def:automated-trading-architecture`: Lehalle and Laruelle's architecture (Figure 3.1) and the inputs of trading tools: market data with fast analytics, two-way venue connections, historical data with recorded messages and context, and models with an accuracy check.
+- Merged: indicator publication into `meth:execution-decision-support` (pp. 200–202; the book's "stateless agents" against the legacy "stateful").
+
+Both partly checked 2026-10-15, draft; their artefact is `notes/artefacts/model-governance-controls/derivations.tex`. The operational controls and the floor-against-automated comparison from the same file are owned by `model-governance-controls` and `execution-market-making` and are not listed here.
+
 ## Entry backlog
 
 ## Legacy candidate material

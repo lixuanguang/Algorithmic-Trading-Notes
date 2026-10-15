@@ -2002,4 +2002,41 @@ Minimum resting time & highest adjusted rate & next adjusted rate & residual ven
 \end{enumerate}
 \end{process}
 
+\section*{High-frequency trading strategies (slice 15, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 15): its 3
+% blocks and the sentences inside them, in order; only the subsection is unnumbered here. There was no
+% text, table or figure outside the blocks.
+% Destinations (all owned by hft-market-design, outside the file's map candidates): def:hft-strategies,
+% res:latency-arbitrage-arms-race, res:hft-spread-investor-cost (new, compendium/execution-market-making/
+% high-frequency-trading.tex).
+% Sources found: SEC Concept Release 34-61358 (2010), sec. IV.B; Budish, Cramton and Shim (2015);
+% Lehalle and Laruelle (alpha-laruelle), sec. 2.4. In the second block only "lower costs" is supported
+% (Budish et al., n. 27); inventory control, better models and privileged order flow are not, and the
+% premise that speed rents vanish once speed diffuses is contradicted (see res:latency-arbitrage-arms-race).
+% The taxonomy's categories are the legacy note's own. Treat everything here as unchecked own working.
+
+% From compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/06_high_frequency_trading_strategies.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{High-Frequency Trading Strategies}
+
+\begin{taxonomy} \hlt{HFT Strategy Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{passive market making}: quote both sides, earn spread and rebates, manage inventory;
+\item \hlt{statistical arbitrage}: trade short-horizon relative value or lead-lag signals;
+\item \hlt{latency arbitrage}: react faster to stale quotes or delayed cross-venue price updates;
+\item \hlt{order anticipation}: infer large parent orders from child-order footprints;
+\item \hlt{liquidity detection}: probe venues and dark pools for hidden or fleeting interest.
+\end{enumerate}
+The same firm may run several of these, but the risk and social value differ by strategy.
+\end{taxonomy}
+
+\begin{principle} \hlt{HFT Edge Decays With Diffusion}\\
+Speed advantages are valuable only while competitors, venues, and clients cannot replicate them.\\
+Once reaction speed and routing logic diffuse, durable profits must come from inventory control, better models, lower costs, or privileged order flow.
+\end{principle}
+
+\begin{caveat} \hlt{Message Profit Is Not Market Quality}\\
+High message rates can improve displayed prices, but they can also increase cancellation risk and stale-book uncertainty. Evaluate HFT by spreads, depth, realised costs, adverse selection, and stress behaviour.
+\end{caveat}
+
 \end{document}

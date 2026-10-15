@@ -1250,9 +1250,90 @@ The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefac
 - The Rule 611 statement and its scope; the European regime left as of 2018.
 - The eq. (3.4) and B2 misprints, the fee thresholds and the split's non-negativity correction.
 
+## Slice 15: high-frequency trading strategies, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 14's pushed state (`4fb411c`, on `main`, matching `origin/main`; guide submodule at `343d145`; `house.tex` unchanged). The reported counts matched the checker: 664 legacy blocks (102 single-candidate, 533 shared, 29 assigned), 63 entries, listings of 13, 5, 1, 9, 22 and 13, and `market-structure-execution-quality` with 6 exclusive blocks and 293 shared candidate associations. Migration and source checking, not study.
+
+### Scope
+
+The whole of `execution-trading-costs/01_.../06_high_frequency_trading_strategies.tex`: 3 counted blocks, including the closing sentence inside the taxonomy. The file had no table, figure, caption or text outside the blocks other than its `% migrate-to:` line and subsection heading (checked by script). The map listed `execution-trading-costs` and `market-structure-execution-quality`. The file, its `\input` line in `01_.../00_overview.tex` and its map row were deleted.
+
+### Ownership and the routing exception
+
+All three blocks belong to `hft-market-design`, which is not among the file's map candidates. The blocks classify HFT strategies, claim that speed edges decay as speed diffuses, and say how HFT should be judged by other traders' costs. That pathway's outcome is to "evaluate how speed, latency races and fast arbitrage affect liquidity, price discovery and the costs borne by slower traders", and two of its required readings are the theory and evidence the blocks need (`wide-budish-cramton-shim`, `wide-menkveld-hft-review`). The overview's outcome (planning and costing an order) and `market-structure-execution-quality`'s (rules, fees and execution quality) touch the material only through routing and fees, which already have entries there and are cross-referenced. The pathway sits in the section `execution-market-making`, so the entries are in `compendium/execution-market-making/high-frequency-trading.tex`, and a pathway note was opened. The routing outside the map is a judgement **for review**, as with slice 13's routing to `performance-manager-evaluation`. The fifteen blocks already assigned to `hft-market-design` were not touched.
+
+| # | Legacy block | Owner | Destination | Disposition |
+|---|---|---|---|---|
+| 1 | *HFT Strategy Segmentation* (taxonomy, with its closing sentence) | `hft-market-design` | `def:hft-strategies` | Rewritten against the SEC's four types; statistical and latency arbitrage remapped, liquidity detection reclassified as a tool, momentum ignition added |
+| 2 | *HFT Edge Decays With Diffusion* (principle) | `hft-market-design` | `res:latency-arbitrage-arms-race` (Pitfalls) | Rewritten; premise corrected (the prize is not competed away, rents are dissipated into speed); "lower costs" supported (n. 27); inventory control, better models and privileged order flow unsupported, kept in the artefact only |
+| 3 | *Message Profit Is Not Market Quality* (caveat) | `hft-market-design` | `res:hft-spread-investor-cost` (Practice, Pitfalls) | Merged; the evaluation criteria kept as the legacy note's own, its effects stated as possibilities and open questions, not findings |
+
+### Overlaps resolved, from content
+
+- `def:order-anticipation` (Harris, owned by `execution-market-making`) keeps order anticipation, front running and quote matching; the new definition only places order anticipation among the SEC's HFT strategy types and adds the release's distinction between pinging for liquidity and pinging to trade ahead. A See-also link was added to `def:order-anticipation`.
+- The market-making entries (`mod:avellaneda-stoikov`, `meth:dealer-quote-adjustment`, `mod:glosten-milgrom`) and `def:arbitrage` are cross-referenced for the economics of passive market making and arbitrage; nothing was restated.
+- `def:smart-order-routing` keeps latency, mirrored liquidity and liquidity seeking by routers; it gained a See-also link. `res:fee-adjusted-venue-choice` and `meth:passive-order-split` are not referenced and are unchanged. `def:order-exposure-decisions`, `def:trading-envelope`, `def:best-execution` and `def:broker-agency-conflicts` were compared and are unaffected: the blocks make no routing, exposure, best-execution or broker claims.
+- `res:latency-arbitrage-arms-race` is distinct from the legacy fee-and-race model in `05_.../05_latency_and_queue_competition.tex` (assigned here, unmigrated, source not identified), which models maker–taker fees and speed investment differently.
+
+### Sources, 2026-10-15
+
+- **SEC, Concept Release on Equity Market Structure**, Release 34-61358, dated 14 January 2010 (`sec-concept-release-2010`, added to `front/sources.tex`): official PDF from sec.gov, 74 pages, text layer; sec. IV.B, pp. 45–58, with nn. 67–75. A request for comment, not a rule, and dated: no current U.S. or EU rule on HFT was needed or checked.
+- **Budish, Cramton and Shim** (`wide-budish-cramton-shim`), the published *QJE* 130(4) version, open access, hosted by the University of Maryland economics department: text layer of pp. 1547–1556 and 1576–1592; page images of pp. 1589–1590 (eqs. (5)–(7)). Secs. II–V (data and empirical analysis) and VII–VIII (batch auctions) not read; the ES–SPY evidence is taken from the introduction's summary.
+- **Lehalle and Laruelle**, 2018 World Scientific printing (text layer; printed page = PDF − 27): sec. 2.3.3–2.4.3, pp. 158–169, with page images of pp. 164, 165, 166 and 168.
+- Harris's order-anticipation passages (chap. 11) were not re-read; `def:order-anticipation` is unchanged except for its See-also line. The SEC quotes Harris's 2003 printing (pp. 245, 251).
+- Not available or not read: `wide-menkveld-hft-review` (Annual Reviews, subscriber only; no author copy found), `wide-hendershott-jones-menkveld`, `wide-brogaard-hft-discovery`, `exp-aquilina-budish-oneill-races`, `wide-baron-hft-competition` and the pathway's other readings. Perold remains unread; nothing here cites him.
+
+### Mechanism, evidence and interpretation kept apart
+
+- **Speed against strategy.** Speed, co-location and data feeds are tools; passive market making, arbitrage, stale-quote trading, order anticipation and momentum ignition are different economic mechanisms with different effects (`def:hft-strategies`, Conditions, Interpretation). The SEC's types organise a 2010 request for comment and are not used as a universal classification; no strategy label is treated as illegal.
+- **Theory.** The sniping equilibrium and the dissipation of rents are results of a deliberately extreme model (perfectly correlated public signal, costless liquidation, no inventory or information costs, continuous prices).
+- **Evidence.** The ES–SPY durations, profits and prize are the authors' measurements for one pair, 2005–2011, read in their summary.
+- **Author's interpretation.** Lehalle and Laruelle's cost model attributes the 2007–2011 Euronext Paris spread change to HFT with an assumed 40 percent share; their coverage account is a reading of descriptive statistics.
+
+### Mathematical checks (own, Interpretation in the entries)
+
+- **BCS eq. (7).** Adding (5) and $N-1$ times (6) gives $\lambda_{\mathrm{invest}}s^*/2=N^*c_{\mathrm{speed}}$; subtracting gives eq. (3). Numerically, with $J$ uniform on $[0,1]$, $\lambda_{\mathrm{jump}}=2$, $\lambda_{\mathrm{invest}}=10$ and $c_{\mathrm{speed}}=0.05$: $s^*=0.1678$, prize = investor cost = 0.8392, $N^*=16.78$, and both the liquidity provider's and a sniper's profit before speed costs equal $c_{\mathrm{speed}}$. A simulated race with $N=4$ gives the sniped share 0.750, matching $(N-1)/N$. Units: rates per unit time, $s$ and $J$ in price units.
+- **Lehalle and Laruelle.** From $\psi_B=5.41$, $\psi_N=4.73$ bp and $q=0.4$: $\psi_{\mathrm{HFT}}=3.71$ bp; $\mathbb E[C]$ is 2.705, 3.2615, 3.6325 and 4.56 bp at $r=0$, 0.3, 0.5 and 1, matching Figure 2.24's endpoints and markers. The rise from $r=0.3$ to 0.5 is 0.371 bp, not the text's "approximately 0.5bp". $C$ is measured from the trader's own resting quote (Figure 2.21), not against the midpoint.
+- **Timing and information.** In BCS all fast firms see the jump at the same time and the outcome is decided by serial processing; investors see $y$ later. The cost model is a single-order, ex ante expectation with $r$ fixed.
+
+### Source findings and legacy corrections
+
+- The legacy taxonomy's five categories are its own: the SEC's arbitrage and directional types split "statistical arbitrage"; "latency arbitrage" is the release's structural stale-price example and its cross-venue arbitrage question; "liquidity detection" is a tool (pinging) used both in ordinary search and in order anticipation; momentum ignition was missing.
+- "Edge decays with diffusion" is contradicted by BCS: arbitrage durations fell from 97 to 7 ms while profit per opportunity stayed about constant, and in the model the prize does not depend on speed or its cost. What decays is a firm's relative lead and, at the margin, its profit net of speed costs.
+- Lehalle and Laruelle overstate their own cost rise (0.5 against 0.37 bp) and report HFT shares of trades as hearsay; the SEC's 50 percent-plus volume share comes from press reports.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `sec-concept-release-2010` | sec. IV.B, pp. 45–58 | Text layer; a 2010 request for comment; no later SEC action checked |
+| `wide-budish-cramton-shim` | pp. 1547–1556, 1576–1592 | Text layer; page images of pp. 1589–1590; secs. II–V and VII–VIII not read |
+| `alpha-laruelle` | pp. 158–169 | Text layer; page images of pp. 164–166 and 168 |
+| `wide-menkveld-hft-review` and the pathway's other readings | none | Not available or not read |
+
+The three new entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefacts/market-making-lob/derivations.tex`, section *High-frequency trading strategies (slice 15)*, with only the subsection unnumbered. A script confirmed that the artefact's earlier content is unchanged (its first 128,718 characters, everything before `\end{document}`, are identical), that the file body appears once, that the three blocks appear once each and in order, and that nothing but the `% migrate-to:` line and the subsection heading lay outside them. The other files of `execution-trading-costs/01_...` are byte-identical; only the `\input` line was removed from `00_overview.tex`.
+
+### Counts
+
+`migration_status.py`: 664 → 661 legacy blocks (3 migrated). Shared 533 → 530; single-candidate 102; assigned 29. Each block was a candidate of `execution-trading-costs` and `market-structure-execution-quality`, so each fell by 3: 3 → 0 and 293 → 290 (3 blocks, not 6); `market-structure-execution-quality` keeps 6 exclusive and 3 assigned. Entries 63 → 66 (definitions 25 → 26, results 13 → 15). Entries listed: `hft-market-design` 0 → 3 (new note, whose cross-references are under *Related entries owned elsewhere*, not the Entries heading); unchanged: `execution-trading-costs` 13, `market-structure-execution-quality` 5, `performance-manager-evaluation` 1, `price-impact-execution` 9, `execution-market-making` 22, `market-making-lob` 13. `hft-market-design` keeps 15 assigned and 7 shared blocks.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 178 pages (175 before); no LaTeX warnings, no undefined references or citations; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. Rendered and inspected: PDF pp. 40–44 (the new section 2.10) and 172 (the pruned legacy chapter, which now starts at *Reinforcement Learning and ML in Execution*). The artefact compiles on its own: 28 pages (unchanged count), no warnings, the same 3 underfull boxes. Tests: 14 passed.
+
+### For review
+
+- Routing all three blocks to `hft-market-design`, outside the map candidates, and opening its note and topic file.
+- The three new entries; the reading of the SEC's types as an organising device, not a classification.
+- The correction to the "edge decays" principle and the 0.37 bp correction to Lehalle and Laruelle.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/06_high_frequency_trading_strategies.tex` (3 blocks), shared between `execution-trading-costs` and `market-structure-execution-quality`. Likely overlaps: `def:order-anticipation` and the market-making entries of `execution-market-making` (its strategy taxonomy), `def:smart-order-routing` (latency and liquidity detection), and the `hft-market-design` pathway, which is not among the file's map candidates and already holds the assigned flash-crash blocks. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/07_reinforcement_learning_and_ml_in_execution.tex` (4 blocks), whose map names `reinforcement-learning-trading` alone. Likely overlaps: `mod:almgren-chriss-execution` and Lehalle and Laruelle's app. A.7.3 (the Cartea–Jaimungal control formulation, not yet used), and `crypto-cartea` for the stochastic-control dynamics. The three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1287,7 +1368,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/06_high_frequency_trading_strategies.tex` | execution-trading-costs, market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/07_reinforcement_learning_and_ml_in_execution.tex` | reinforcement-learning-trading |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/08_production_considerations.tex` | model-governance-controls |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/01_equity_market_microstructure.tex` | market-structure-execution-quality |

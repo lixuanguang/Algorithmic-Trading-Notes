@@ -10,7 +10,7 @@ Pathway outcome, from the guide: estimate a price-impact model from executions, 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 15 October 2026 by migration slice 7 (`notes/migration.md`), when three entries on price impact were migrated from the legacy liquidity-and-market-impact file into the new canonical chapter `compendium/execution-trading-costs/`. The entries were checked against Webster's handbook (`wide-webster-price-impact`, a required reading of this pathway) and against Bouchaud, Bonart, Donier and Gould (`catalogue-0528`, on no route). That is migration and source checking, not study of the readings. Gatheral (`catalogue-0501`) and the propagator paper (`wide-bouchaud-propagator`), both required readings, were not consulted; the entries cite them only through these books.
+Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 15 October 2026 by migration slice 7 (`notes/migration.md`), when three entries on price impact were migrated from the legacy liquidity-and-market-impact file into the new canonical chapter `compendium/execution-trading-costs/`. The entries were checked against Webster's handbook (`wide-webster-price-impact`, a required reading of this pathway) and against Bouchaud, Bonart, Donier and Gould (`catalogue-0528`, on no route). That is migration and source checking, not study of the readings. Gatheral (`catalogue-0501`) was not consulted and is cited only through Webster. In slice 8 three required readings were read in open versions for source checking: `alpha-almgren` (author preprint of December 2000), `wide-bouchaud-propagator` (arXiv cond-mat/0307332v2) and `wide-bacry-life-cycle` (arXiv preprint of December 2014); their journal versions and pagination were not checked.
 
 ## Outcome in my own words
 
@@ -28,13 +28,20 @@ Written in migration slice 7, 2026-10-15:
 - `mod:propagator`: the propagator model of transient impact; response function and sign autocorrelation.
 - `res:no-price-manipulation`: price manipulation as a round trip with negative expected cost; Webster's Obizhaeva–Wang example and the condition 2β+γ′>0; the closed-trajectory cost in the latent-liquidity model.
 
-All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`, where the migration has kept every removed block.
+Written in migration slice 8, 2026-10-15, from the legacy market-impact-models file:
+
+- `ev:square-root-impact`: the square-root law of metaorder impact, its range and conditions (`catalogue-0528`; confirmed in `wide-bacry-life-cycle`).
+- `meth:post-execution-impact-profile`: Bacry et al.'s debiasing for later metaorders and index decomposition of post-execution prices.
+
+Changed in slice 8: `def:price-impact` (model families from the Almgren–Chriss original; the three meanings of "temporary impact"; mechanical and informational views of permanent impact) and `mod:propagator` (the 2004 original read; kernel shapes and the fine balance; order splitting as the source of sign memory; legacy departures corrected).
+
+All five: verification partly checked 2026-10-15, stability draft; human review outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`, where the migration has kept every removed block.
 
 ## Entry backlog
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. The blocks exclusive to this pathway are in `compendium/legacy/execution-trading-costs/`. The legacy file `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/05_market_impact_models.tex` repeats propagator and permanent-impact material that belongs with the entries above (see `notes/migration.md`, next bounded slice).
+Run `python3 tools/migration_status.py` for the current counts. The blocks exclusive to this pathway are in `compendium/legacy/execution-trading-costs/`. The legacy market-impact-models file was migrated and deleted in slice 8. `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/04_price_impact_estimation.tex` is next (`notes/migration.md`, next bounded slice).
 
 ## What changed in my view or practice
 

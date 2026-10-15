@@ -1248,4 +1248,88 @@ Liquidity suppliers are vulnerable when buys and sells, large and small orders, 
 Calling a long-run price move permanent impact is risky unless market moves, sector moves, autocorrelated flow, and the signal that caused the trade have been separated.
 \end{caveat}
 
+\section*{Market impact models (slice 8, 2026-10-15)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 8).
+% Destinations (compendium/execution-trading-costs/, pathway price-impact-execution): def:price-impact,
+% mod:propagator, ev:square-root-impact, meth:post-execution-impact-profile.
+% Sources found: Bacry, Iuga, Lasnier and Lehalle (wide-bacry-life-cycle, arXiv 2014), sec. 7;
+% Bouchaud, Gefen, Potters and Wyart (wide-bouchaud-propagator, arXiv 2003); Almgren and Chriss
+% (alpha-almgren, preprint 2000); Bouchaud, Bonart, Donier and Gould (catalogue-0528), chaps. 10, 12, 13.
+% The propagator block departs from its sources (timing, noise term, volume weight); corrections are in
+% the entries. Treat everything here as unchecked own working.
+
+% From compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/05_market_impact_models.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Market Impact Models}
+
+\begin{taxonomy} \hlt{Model Family Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{Almgren-Chriss}: optimise a schedule by balancing expected impact cost against execution risk;
+\item \hlt{linear impact}: use tractable instantaneous or temporary cost proportional to trading rate or signed size;
+\item \hlt{propagator}: model each signed trade as a decaying impulse in future prices;
+\item \hlt{empirical square-root}: summarise metaorder cost as concave in order size relative to market volume.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{principle} \hlt{Permanent Impact or Price Anticipation}\\
+Long-horizon impact mixes metaorder pressure and information revealed by trading. Remove the information effect before calling the residual permanent impact.
+\end{principle}
+
+\begin{taxonomy} \hlt{Permanent-Impact View Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{mechanical view}: prices move because buying and selling pressure are imbalanced;
+\item \hlt{informational view}: prices move because the trade reveals new expectations about value;
+\item \hlt{hybrid view}: executions contain both pressure and information, so identification matters more than labels.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{model} \hlt{Propagator Midprice Dynamics}\\
+In trade time, a standard propagator writes the midprice as $m_k=m_{-\infty}+\sum\limits_{k'<k}G(k-k')\epsilon_{k'}+\eta_k$.\\
+Here $m_k$ is the midprice after trade $k$, $\epsilon_k\in\{-1,+1\}$ is trade sign, $G(\cdot)$ is the decaying impact kernel, $\eta_k$ is fair-price noise, and $m_{-\infty}$ is an initial price level.
+\end{model}
+
+\begin{mechanism} \hlt{Trade-Sign Memory and Kernel Decay}\\
+Trade signs are positively autocorrelated because large orders are split and similar agents trade together.\\
+A decaying kernel offsets this persistence: impact must decay enough that predictable order flow does not imply predictable price drift.
+\end{mechanism}
+
+\begin{model} \hlt{Price Response Curve}\\
+For horizon $h$, define the response curve by $\mathcal{R}(h)=\mathbb{E}[(m_{k+h}-m_k)\epsilon_k]$.\\
+Here $\mathcal{R}(h)$ measures the expected signed price move after a trade. It is estimated with the trade-sign autocorrelation $C(\ell)=\mathbb{E}[\epsilon_{k+\ell}\epsilon_k]$ and the kernel increments $\Delta G(\ell)=G(\ell+1)-G(\ell)$.
+\end{model}
+
+\begin{taxonomy} \hlt{Propagator Kernel Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{non-parametric}: estimate discrete kernel increments directly from response and sign autocorrelation;
+\item \hlt{exponential}: impose fast decay with a small number of parameters;
+\item \hlt{power law}: allow slow decay and long-memory order flow;
+\item \hlt{agent-specific}: estimate separate kernels or intensities by participant class.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{process} \hlt{Debiasing Long-Horizon Impact}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item classify trades by whether they are likely information-driven or liquidity-driven;
+\item remove market and sector moves with a benchmark or factor model;
+\item adjust for autocorrelated metaorder flow after the execution day;
+\item measure the remaining post-execution drift over several days.
+\end{enumerate}
+\end{process}
+
+\begin{model} \hlt{CAPM-Like Post-Execution Decomposition}\\
+For event day $D$, a stock's post-execution move can be split into systematic and idiosyncratic parts:
+\begin{equation*}
+\log(P_d)-\log(P_{d-1})=
+\beta\left[\log(I_d)-\log(I_{d-1})\right]+\Delta W_d.
+\end{equation*}
+Here $P_d$ is the stock close, $I_d$ the reference index, $\beta$ the index exposure, and $\Delta W_d$ the residual stock-specific move. Cumulative $\Delta W_d$ isolates the profile after removing index co-movement. The intuition is attribution: do not charge the execution for a market move that the whole index experienced.
+\end{model}
+
+\begin{caveat} \hlt{Autocorrelated Flow Bias}\\
+Metaorder flow can remain signed and autocorrelated for days. If later same-direction executions are ignored, their impact may be falsely attributed to the original order.
+\end{caveat}
+
 \end{document}

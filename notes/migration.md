@@ -601,9 +601,106 @@ The 6 blocks are kept verbatim in `notes/artefacts/market-making-lob/derivations
   - the "temporary impact" terminology note.
 - Whether `catalogue-0528`, on no route, should be the main empirical source for these entries until the pathway's own readings are studied.
 
+## Slice 8: market impact models, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 7's pushed state (`c7ed121`, on `main`, matching `origin/main`; guide submodule at `343d145`; `house.tex` unchanged).
+
+**Baseline counts.** The reported counts were confirmed (751 legacy blocks, 29 assigned, 587 shared, 38 entries; 13 listed for `market-making-lob`, 3 for `price-impact-execution`) except one. The status script listed 23 entries for `execution-market-making`, not 22, because slice 7 had named `res:no-price-manipulation` under that note's Entries heading. The sentence was reworded, and the count is 22 again.
+
+Migration and source checking, not study.
+
+### Scope
+
+The 10 blocks of `04_.../05_market_impact_models.tex`, whose only candidate pathway is `price-impact-execution`. All 10 were migrated. The file, its `\input` line in `04_.../00_overview.tex` and its map row were deleted. `04_.../04_price_impact_estimation.tex` was not touched.
+
+### Routing
+
+Slice 7's routing is carried forward: the entries live in the canonical chapter `compendium/execution-trading-costs/` under `price-impact-execution`. No block concerns market making or bluffing, so `def:bluffing-manipulation` and `res:no-price-manipulation` were compared but not changed.
+
+### Overlaps resolved, from content
+
+- *Model Family Segmentation*, *Permanent Impact or Price Anticipation* and *Permanent-Impact View Segmentation* → merged into `def:price-impact`, which already held the reaction/prediction split. The model families were added with the Almgren–Chriss definitions from the original. Bacry et al.'s mechanical and informational views were added with the book's split of permanent impact into prediction and reaction.
+- *Propagator Midprice Dynamics*, *Trade-Sign Memory and Kernel Decay*, *Price Response Curve* and *Propagator Kernel Segmentation* → merged into `mod:propagator`, which already held the model, the sign-memory argument and the response function. Added: the 2004 original, kernel estimation, power-law decay and the fine balance, and the cause of sign memory.
+- The **square-root law**, one item in the model-family list, is a distinct empirical regularity with its own required reading, so it became a new evidence entry, `ev:square-root-impact`.
+- *Debiasing Long-Horizon Impact*, *CAPM-Like Post-Execution Decomposition* and *Autocorrelated Flow Bias* describe one procedure, Bacry et al.'s sec. 7.2, so they became a new method, `meth:post-execution-impact-profile`. It is cross-referenced from `def:price-impact`, which keeps the general warning that correlated metaorders mimic permanent impact.
+
+### Sources and availability, 2026-10-15
+
+| Source | Copy used | Identity checked |
+|---|---|---|
+| `alpha-almgren` | Authors' preprint dated December 2000, from a Wayback snapshot (2017-08-11) of `cims.nyu.edu/~almgren/papers/optliq.pdf`; the catalogue's author link returned "Access forbidden" | Title, authors, date; journal pagination not checked |
+| `wide-bouchaud-propagator` | arXiv cond-mat/0307332v2, 25 August 2003 | Title and authors match the catalogue; journal pagination not checked |
+| `wide-bacry-life-cycle` | arXiv 1412.0217, printed 9 December 2014 | Title and authors match; journal version not checked |
+| `catalogue-0528` | As in slice 7 | As before |
+| `wide-webster-price-impact` | As in slice 7 | As before |
+
+The downloads were kept in a scratch folder outside the repository and read only as PDF text and page images. Gatheral (2010), Fruth, Schöneborn and Urusov (2013), Tóth et al. (2011), Waelbroeck and Gomes (2013), Brokmann et al. (2014) and Bouchaud (2009) were not consulted; claims from them are attributed to the source that reports them.
+
+### Source findings and corrections
+
+- **"Temporary impact" has three meanings.** The original Almgren–Chriss $h(v)$ lowers only the execution price of one's own sale and does not enter the next market price (eq. (2), p. 9). Webster's reading of it as the instantaneous transaction cost is therefore confirmed from the original. Bacry et al. use "temporary market impact" for the impact at the end of execution (p. 3), a third meaning, recorded in `def:price-impact`.
+- **Propagator block.** It departed from its sources in four ways:
+  - it called $m_k$ the mid-price *after* trade $k$ while summing over $k'<k$, which in the sources is the price *before* the trade;
+  - it used a single noise $\eta_k$ instead of the cumulative sum, which would make the price stationary apart from trading (Interpretation);
+  - it dropped the original's $\ln V$ volume weight (eq. (12), p. 14 of the arXiv version), which the book's simple model also omits;
+  - it said the response is estimated with the kernel, whereas response and sign correlation are measured and the kernel is estimated from them.
+- **Sign memory.** The legacy block attributed it to splitting *and* similar agents trading together. Bouchaud et al. (book) find order splitting the primary cause and herding not relevant on the relevant time scale (p. 198).
+- **Kernel taxonomy.** Non-parametric and power-law kernels are supported (pp. 254–257); exponential follows from the Obizhaeva–Wang model (Interpretation, from Webster). Agent-specific kernels are not in the passages checked.
+- **Square-root law.** The legacy line omitted the volatility scale, the condition $Q\ll V_T$ and the exponent range 0.4–0.7 (book, eq. (12.6), p. 234).
+- **Debiasing.** Bacry et al. could not classify trades as informed or liquidity-driven (broker data). That design is Waelbroeck and Gomes's, reported by them, and they remove only reference-index moves, not sector or factor moves. In their reading, the systematic component is aggregated information, not just a market move to exclude.
+
+### Mathematical checks (own, Interpretation in the entries)
+
+- **Units and signs:** Almgren–Chriss's linear forms $g=\gamma v$, $h=\epsilon\,\mathrm{sgn}(n)+(\eta/\tau)n$, with the units printed (eqs. (6)–(7)).
+- **Book eq. (12.6):** dimensionally consistent, both sides in percent of price, as the authors state.
+- **Bacry et al.'s eq. (21):** cumulates to $W_d-W_{D-1}$ plus the systematic part from $D-1$. Their beta is estimated over $D-20$ to $D+20$, so it is in-sample and can absorb the event. Removing the systematic part also removes any impact of the aggregate flow on the index. The debiasing inherits the error of the square-root model for later flow.
+- **Kept distinct.** Permanent impact (a limit) against impact at a finite post-execution horizon (Bacry et al.'s 20 days). Observed against reaction and prediction impact. The simple common kernel against the extensions (volume weight, event types). No no-manipulation claim was made or changed in this slice.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-almgren` | secs. 1.2–1.5 and 2, pp. 7–13 (preprint) | Text layer; page images of pp. 9 and 11 |
+| `wide-bouchaud-propagator` | secs. 3.1–3.2, pp. 14–17 (arXiv v2) | Text layer; page image of p. 14 |
+| `wide-bacry-life-cycle` | abstract; sec. 2.2, pp. 3–4; secs. 7–8, pp. 19–22 (arXiv) | Text layer; page image of p. 21 |
+| `catalogue-0528` | chap. 10, p. 198; chap. 12, pp. 233–236 and 241; chap. 13, pp. 254–257 | Text layer; page image of p. 234; chap. 14 seen only in the contents |
+
+The two new entries are *partly checked 2026-10-15*, *draft*. **Human review is outstanding** for them and for the two revised ones.
+
+### Dispositions
+
+| Legacy block (`04_.../05_market_impact_models.tex`) | Disposition |
+|---|---|
+| *Model Family Segmentation* | Merged into the Practice of `def:price-impact` (Almgren–Chriss from the original; linear; propagator and square-root linked); the square-root item rewritten as `ev:square-root-impact` |
+| *Permanent Impact or Price Anticipation* | Merged into the Pitfalls of `def:price-impact` |
+| *Permanent-Impact View Segmentation* | Merged into the Conditions of `def:price-impact` (Bacry et al.'s views) |
+| *Propagator Midprice Dynamics* | Merged into `mod:propagator` (the 2004 original; departures corrected in Pitfalls) |
+| *Trade-Sign Memory and Kernel Decay* | Merged into the Conditions of `mod:propagator` (splitting, not herding; the fine balance) |
+| *Price Response Curve* | Merged into `mod:propagator` (definition already there; estimation direction corrected) |
+| *Propagator Kernel Segmentation* | Merged into the Practice of `mod:propagator` (agent-specific kernels flagged unsupported) |
+| *Debiasing Long-Horizon Impact*, *CAPM-Like Post-Execution Decomposition* | Rewritten as `meth:post-execution-impact-profile` |
+| *Autocorrelated Flow Bias* | Merged into the Conditions of `meth:post-execution-impact-profile` |
+
+The 10 blocks are kept verbatim in `notes/artefacts/market-making-lob/derivations.tex`, section *Market impact models (slice 8)*. A script confirmed three things: each block appears there once and in order; the artefact's earlier content is unchanged; and the other files of `04_...` are byte-identical (only the `\input` line was removed from `00_overview.tex`).
+
+### Counts
+
+`migration_status.py`: 751 → 741 legacy blocks (10 migrated). Assigned 29 → 29; one candidate only 135 → 125 (these blocks counted to `price-impact-execution` alone); shared 587 → 587. Entries 38 → 40 (evidence 0 → 1, methods 3 → 4). Entries listed: `price-impact-execution` 3 → 5; `execution-market-making` 23 → 22 (the slice-7 listing artefact removed); `market-making-lob` 13 → 13. No notation override was added; $\mathcal I_d$ (index), $P_d$ (close) and the Almgren–Chriss coefficients are defined in their entries.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 160 pages (159 before); no LaTeX warnings, no undefined references or citations; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files, as before; the one `page.i` duplicate-destination warning. A first build had one new underfull box in the Status line of `mod:propagator`; it was reworded away. Rendered and inspected: PDF pp. 40–45 (the revised and new entries) and pp. 136–137 (the pruned legacy section, which now passes from *Price Impact Estimation* to *Trade Duration*). The artefact compiles on its own: 20 pages (19 before), no warnings, the same 3 underfull boxes.
+
+### For review
+
+- The two new entries and the revised `def:price-impact` and `mod:propagator`.
+- Reliance on preprint versions of the three required readings.
+- The three meanings of "temporary impact".
+- The interpretation notes on Bacry et al.'s in-sample beta.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/05_market_impact_models.tex`. Its blocks (seen while routing this slice: linear impact, propagator, *Permanent Impact or Price Anticipation*, *Permanent-Impact View Segmentation*, *Propagator Midprice Dynamics*, *Propagator Kernel Segmentation*) overlap `def:price-impact` and `mod:propagator`. Read and compare them before merging. The map gives it a single candidate, `price-impact-execution`, so its blocks count to that pathway already. `04_.../04_price_impact_estimation.tex` would follow. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/04_price_impact_estimation.tex`, whose only candidate pathway is `price-impact-execution`. Read its blocks and compare them with `def:price-impact`, `mod:propagator`, `ev:square-root-impact` and `meth:post-execution-impact-profile` before merging. The required readings `wide-almgren-direct-impact` and `wide-toth-square-root` may support estimation blocks. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -631,7 +728,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/02_order_flow_imbalance.tex` | market-making-lob, lob-deep-learning, price-impact-execution |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/03_stylized_facts_of_high_frequency_data.tex` | market-simulation, lob-deep-learning |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/04_price_impact_estimation.tex` | price-impact-execution |
-| `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/05_market_impact_models.tex` | price-impact-execution |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/06_trade_duration_and_event_time.tex` | market-simulation, lob-deep-learning |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/07_statistical_models_for_order_flow.tex` | market-simulation, market-making-lob |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/08_feature_engineering_for_microstructure_alpha.tex` | lob-deep-learning |

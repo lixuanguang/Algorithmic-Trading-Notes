@@ -1331,9 +1331,85 @@ The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefac
 - The three new entries; the reading of the SEC's types as an organising device, not a classification.
 - The correction to the "edge decays" principle and the 0.37 bp correction to Lehalle and Laruelle.
 
+## Slice 16: reinforcement learning and ML in execution, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 15's pushed state (`60753ff`, on `main`, matching `origin/main`; guide submodule at `343d145`; `house.tex` unchanged). The reported counts matched the checker: 661 legacy blocks (530 shared, 102 single-candidate, 29 assigned), 66 entries, 0 problems. Migration and source checking, not study.
+
+### Slice-15 correction
+
+`res:latency-arbitrage-arms-race` said that one firm quotes $y\pm s/2$. Proposition 1(i) (printed p. 1583, rechecked) says that exactly one unit is offered at each of $y-s/2$ and $y+s/2$, and that the two quotes may belong to one trading firm or to two distinct firms; the authors assign the liquidity-provider role to one firm for simplicity, with economically equivalent equilibria in which it rotates or is random (pp. 1579–1580), and the sniping probability is Proposition 1(iii). The entry, its status line and the reading note `wide-budish-cramton-shim` were reworded; eqs. (3) and (7) are unchanged.
+
+### Scope
+
+The whole of `execution-trading-costs/01_.../07_reinforcement_learning_and_ml_in_execution.tex`: 4 counted blocks. Nothing lay outside them but the `% migrate-to:` line and the subsection heading (checked by script). The map listed `reinforcement-learning-trading` alone. The file, its `\input` line in `01_.../00_overview.tex` and its map row were deleted; `08_production_considerations.tex` was not touched.
+
+### Ownership
+
+`reinforcement-learning-trading` owns all four blocks. Its outcome is to formulate an execution problem as an MDP, train a policy against a validated simulator and compare it with the control-theoretic benchmark, and its checkpoint compares an RL execution policy with Almgren–Chriss. The blocks set out such a benchmark (a stochastic-control execution model with order flow) and contrast control with learning. The pathway is in the section `ml-alternative-data`, which comes before the execution sections in the guide's order, so the entry opened the canonical chapter `compendium/ml-alternative-data/` (Chapter 1; later chapters are renumbered by one, labels unchanged) and a pathway note. `price-impact-execution` and `stochastic-calculus-control` could also claim a continuous-time execution model; neither is a map candidate, and the entry cross-references `mod:almgren-chriss-execution` (owned by `execution-trading-costs`) without restating it. Ownership is **for review**.
+
+| # | Legacy block | Owner | Destination | Disposition |
+|---|---|---|---|---|
+| 1 | *Stochastic-Control Execution View* (model) | `reinforcement-learning-trading` | `mod:cartea-jaimungal-execution` (Statement, Notation) | Merged; "value function" corrected to a fixed policy's reward |
+| 2 | *Cartea-Jaimungal State Dynamics* (model) | `reinforcement-learning-trading` | `mod:cartea-jaimungal-execution` (Statement, Notation, Conditions) | Merged; units, signs and constraints added; attribution qualified (Lehalle and Laruelle's account) |
+| 3 | *Value Function Intuition* (principle) | `reinforcement-learning-trading` | `mod:cartea-jaimungal-execution` (Practice) | Merged; qualified by own numerical paths ($A$ governs completion, $\kappa$ also leaves residual) |
+| 4 | *Control vs Learning* (taxonomy) | `reinforcement-learning-trading` | `mod:cartea-jaimungal-execution` (Practice, Pitfalls); backlog stub `meth:hybrid-control-learning-execution` | Control and RL items merged from Hambly, Xu and Yang, with simulator and historical data separated; the hybrid item unsupported, kept in the artefact and stubbed |
+
+One entry, as planned: objective, dynamics, HJB and the supported intuition together, without the full closed form or an RL implementation.
+
+### Sources, 2026-10-15
+
+- **Lehalle and Laruelle**, 2018 World Scientific printing (local copy; printed page = PDF − 27): app. A, sec. A.7.3, pp. 281–284, text layer and page images of all four pages; p. 280 for context (Figure A.11).
+- **Hambly, Xu and Yang** (`wide-hambly-xu-yang`), arXiv 2112.04553v4 (28 February 2023), downloaded with a generic request header: sec. 1, p. 2; sec. 2, pp. 3–4; sec. 2.2, p. 7; sec. 4.2, pp. 32–35 (page images of pp. 32–33); sec. 5, p. 49. The journal version (*Mathematical Finance* 33(3), 2023) was not checked.
+- **Not consulted:** Cartea and Jaimungal's papers and `crypto-cartea` (no passage of it was needed for the claims kept); the execution studies the survey reports (Hendricks and Wilcox; Ning, Lin and Jaimungal, `w2-ning-ddqn-execution`); `wide-kolm-ritter-rl` and the pathway's other readings.
+
+### Mathematical checks (own, Interpretation in the entry; script `notes/artefacts/reinforcement-learning-trading/cartea_jaimungal_checks.py`)
+
+- **min against sup.** Proposition 6 writes $H^*:=\min_\nu H(\nu)$ for a value it calls maximising and solves with a $\sup$; the value is $\sup_\nu H_t(\nu)$, distinct from $H_t(\nu)$, the reward of a fixed policy.
+- **Half-spread.** The terminal condition $x+q(S-\psi/2)-Aq^2$ charges the half-spread on residual inventory; the printed objective's $Q_T(S_T-AQ_T)$ does not. The ansatz and $h$-equations follow the terminal condition, so the consistent objective has $Q_T(S_T-\psi/2-AQ_T)$; the half-spread is then paid on every share and leaves the control unchanged (for one-directional selling). With the printed objective the first-order condition would gain $-\psi/(4\kappa)$, an incentive to delay.
+- **Inventory term.** $dQ=-\nu\,dt$ gives $-\nu\partial_qH$ in the generator; the book prints $-\partial_qH$. Substituting $H=x+q(S-\psi/2)+h$ with $-\nu\partial_qH$ reproduces the book's p. 283 equation exactly (difference ~1e-16 at random points).
+- **Notation.** "bid–ask spread $\phi$" (p. 282) for $\psi$; $k$ for $\kappa$; $b_t$ against $b$; terminal conditions for $h_0,h_1$ printed at $t$.
+- **Closed forms.** The printed $h_2=-\xi-b/2$ with the printed $\xi$ and $\zeta$ gives $h_2(T)=A-b$ (0.498 at $A=0.5$, $b=0.002$), not $-A$; the solution of the Riccati equation is $\xi=\sqrt{\kappa\phi}(1+\zeta e^{-2\gamma(T-t)})/(1-\zeta e^{-2\gamma(T-t)})$, $\zeta=(A-b/2-\sqrt{\kappa\phi})/(A-b/2+\sqrt{\kappa\phi})$, matching direct integration ($h_2(0)=-0.011141$). The boxed $h_1$ "when $b=0$" lacks the factor $b$; $h_1=b\int_t^Te^{-\int\xi/\kappa}\mathbb E[\mu_s]ds$ matches the ODE (0.000303).
+- **Assumptions stated.** Observed $S,\mu,Q,X$; Markov flow unaffected by the trader; constant coefficients; unconstrained $\nu$ (no sign or inventory constraint); finite $A$ is a penalty, not mandatory completion; $\phi\int Q^2$ equals a mean–variance penalty $\lambda\sigma^2\int Q^2$ only for deterministic schedules. Units and impact signs are in the entry.
+- **Benchmark limit.** With $\mu\equiv0$ and $A\to\infty$, $Q_t=Q_0\sinh(\gamma(T-t))/\sinh(\gamma T)$, $\gamma=\sqrt{\phi/\kappa}$, the continuous Almgren–Chriss schedule (matched to four decimals).
+- **Parameter intuition.** Base $\kappa=0.01$, $\phi=0.001$, $A=0.5$, $T=Q_0=1$: inventory at $T/2$ 0.503 and residual 1.9 percent; tenfold $\phi$ 0.451 and 1.7 percent; tenfold $A$ 0.495 and 0.2 percent; tenfold $\kappa$ 0.582 and 16.6 percent.
+
+### Source findings and legacy corrections
+
+- The legacy blocks copy the appendix, including its objective without the half-spread at $T$; they call $H_t(\nu)$ a value function and attribute the dynamics to Cartea and Jaimungal directly.
+- "Larger $\phi$ or $A$ pushes faster liquidation; stronger $\kappa$ smoother trading" holds under the model for $\phi$ (front-loading) and $\kappa$, but $A$ mainly governs completion near $T$, and a larger $\kappa$ with finite $A$ also leaves more unsold.
+- Hambly, Xu and Yang support the control and RL items (model needed against learning from interaction; model-based against model-free) but not "learn … from simulated or historical interaction" as one thing: they flag data scarcity and non-stationarity and call for simulators (p. 49), and replaying history does not show the response to one's own orders. The hybrid item (control for constraints, ML for forecasts, fills and regimes) is not in the passages; the survey reports only a combination of Almgren–Chriss with Q-learning (p. 34).
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-laruelle` | app. A.7.3, pp. 281–284 | Text layer and page images; Cartea and Jaimungal's originals not consulted |
+| `wide-hambly-xu-yang` | pp. 2–4, 7, 32–35, 49 | arXiv v4, not the journal version; the studies it reports not checked |
+| `crypto-cartea`, Cartea–Jaimungal papers, `wide-kolm-ritter-rl`, other readings | none | Not consulted or not read |
+
+The new entry is *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/reinforcement-learning-trading/derivations.tex` (compiles on its own, 1 page), with only the subsection unnumbered; a script confirmed the body appears once and the four blocks once each, in order, with nothing else outside them. The existing artefact `notes/artefacts/market-making-lob/derivations.tex` is unchanged (`git diff` empty). `08_production_considerations.tex` is byte-identical; only the `\input` line was removed from `00_overview.tex`.
+
+### Counts
+
+`migration_status.py`: 661 → 657 legacy blocks (4 migrated) = 530 shared + 98 single-candidate (102 − 4) + 29 assigned. `reinforcement-learning-trading`: exclusive 4 → 0, listed entries 0 → 1, backlog stubs 0 → 1. Entries 66 → 67 (models 8 → 9). Other listings unchanged: `execution-trading-costs` 13, `market-structure-execution-quality` 5, `performance-manager-evaluation` 1, `price-impact-execution` 9, `execution-market-making` 22, `market-making-lob` 13, `hft-market-design` 3.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 181 pages (178 before); no LaTeX warnings, no undefined references; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. A first build had one overfull line in the entry's See-also (an unbreakable key), reworded. Rendered and inspected: PDF pp. 7–9 (the new Chapter 1), 10 (Chapter 2, renumbered), 45 (the corrected Budish–Cramton–Shim paragraph) and 175 (the pruned legacy chapter, which now starts at *Production Considerations*). The new artefact compiles with no warnings or bad boxes. Tests: 14 passed.
+
+### For review
+
+- Ownership by `reinforcement-learning-trading` and the new chapter `ml-alternative-data/`.
+- The appendix corrections and the qualified parameter intuition; whether to check the model against Cartea and Jaimungal's originals.
+- The backlog stub for hybrid execution.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/07_reinforcement_learning_and_ml_in_execution.tex` (4 blocks), whose map names `reinforcement-learning-trading` alone. Likely overlaps: `mod:almgren-chriss-execution` and Lehalle and Laruelle's app. A.7.3 (the Cartea–Jaimungal control formulation, not yet used), and `crypto-cartea` for the stochastic-control dynamics. The three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/08_production_considerations.tex` (11 blocks), whose map names `model-governance-controls` alone (the pathway's other 5 exclusive blocks are in `portfolio-construction-risk/sysinv/modelrisk.tex`); it is the last file of `01_execution_and_algorithmic_trading/`. Likely overlaps: `def:trading-envelope` and `meth:execution-decision-support` (monitoring, indicators), `meth:transaction-cost-analysis`, and `def:smart-order-routing` (venue connectivity, dark probes). The three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1368,7 +1444,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/07_reinforcement_learning_and_ml_in_execution.tex` | reinforcement-learning-trading |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/08_production_considerations.tex` | model-governance-controls |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/01_equity_market_microstructure.tex` | market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/02_futures_market_microstructure.tex` | futures-execution |

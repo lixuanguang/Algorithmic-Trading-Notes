@@ -1,5 +1,31 @@
-% migrate-to: reinforcement-learning-trading
-\subsection{Reinforcement Learning and ML in Execution}
+% notes/artefacts/reinforcement-learning-trading/derivations.tex
+% Legacy blocks kept verbatim when they were migrated (notes/migration.md), for the pathway
+% reinforcement-learning-trading. The compendium entries state each result with its locator; the
+% original wording lives here. Numerical checks of slice 16 are in cartea_jaimungal_checks.py.
+% Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/reinforcement-learning-trading/ with  latexmk -pdf derivations.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Reinforcement learning for trading: legacy derivations}
+
+\section*{Reinforcement learning and ML in execution (slice 16, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 16): its 4
+% blocks and the text inside them, in order; only the subsection is unnumbered here. There was no
+% text, table or figure outside the blocks.
+% Destination (owned by reinforcement-learning-trading): mod:cartea-jaimungal-execution (new,
+% compendium/ml-alternative-data/execution-control.tex). The "hybrid execution" item of the last
+% block is unsupported and stubbed in the pathway backlog (meth:hybrid-control-learning-execution).
+% Sources found: Lehalle and Laruelle (alpha-laruelle), app. A, sec. A.7.3, pp. 281-284, which the
+% first three blocks follow (they share its missing half-spread in the objective); Hambly, Xu and
+% Yang (wide-hambly-xu-yang), arXiv v4, for the control-learning contrast. H_t(v) below is the
+% reward of a fixed policy, not the value function.
+
+% From compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/07_reinforcement_learning_and_ml_in_execution.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Reinforcement Learning and ML in Execution}
 
 \begin{model} \hlt{Stochastic-Control Execution View}\\
 Stochastic-control execution chooses a trading rate $v_t$ from state variables such as price $S_t$, remaining inventory $Q_t$, cash $X_t$, and forecast market flow $\mu_t$. A compact sell-side value function is
@@ -30,3 +56,5 @@ The control trades off three terms: realised cash, leftover inventory value, and
 \item \hlt{hybrid execution}: use control structure for constraints and ML for forecasts, fills, and regime detection.
 \end{enumerate}
 \end{taxonomy}
+
+\end{document}

@@ -1876,9 +1876,88 @@ The whole file below its `% migrate-to:` line is kept verbatim in the new artefa
 - The two backlog stubs, which need dated OCC and exchange rule documents.
 - Not adopting "buy-side typically consume liquidity".
 
+## Slice 21 follow-up: corrections, 15 October 2026
+
+Targeted corrections to two slice-21 entries after rechecking Bryzgalova, Pavlova and Sikorskaya pp. 2, 11–12 and 14–17 and the page images of Table I (pp. 15–16); the slice-21 record above is left as written.
+
+- `meth:option-spread-measurement`: "lowest quoted spreads" removed. At-the-money quoted spreads (8.7 percent SLIM, 8.4 percent non-SLIM) are far below those of slightly out-of-the-money trades (28.7, 21.3) but not the lowest bin: slightly in-the-money trades (0.1 to 1) have 8.6 and 5.9. Moneyness, written in Table I as (MidpointPrice − Strike)/Strike for calls, is read as using the underlying's midpoint, distinct from the option-premium midpoint used for spreads; this is labelled interpretation, since the caption does not name the underlying. SLIM is defined as the single-leg non-ISO price-improvement-auction proxy and non-SLIM as the whole remaining pool; "say nothing about spread or multi-leg costs" is replaced by the precise limit that the results do not isolate the execution costs of multi-leg strategies. The Pitfalls on "ATM deepest" now rest on trade share only.
+- `res:option-market-maker-spreads` and `mech:options-retail-wholesaler-routing`: exchange-only execution is bounded to the U.S. listed-options market the authors study (their OPRA data). FINRA Regulatory Notice 22-14 (22 June 2022; `finra-rn-22-14`, added to `front/sources.tex`) is cited for its background distinction between listed (standardised) and OTC (conventional) options, OTC trades not generally being centrally cleared or reported to FINRA, the SEC, an exchange or the CAT; the notice's proposal is stated as a request for comment, not an effective rule, and its later status was not checked.
+- `mech:options-retail-wholesaler-routing`: the $0.30 net rebate is tied to the responder-execution case of p. 11, footnote 15 (another market maker paying $0.50 to break up a paired order).
+- The reading note for `ex-bryzgalova-pavlova-sikorskaya-2023` and the pathway note were updated; the abstract-only limits on the other five readings are unchanged. The slice-21 artefact is unchanged.
+
+## Slice 22: fixed-income microstructure, 15 October 2026
+
+Migration of the six-block fixed-income file, run after the follow-up above. Migration and source checking, not study; the pathway's checkpoint was not attempted.
+
+### Scope
+
+The whole of `execution-trading-costs/02_.../05_fixed_income_microstructure.tex`: 6 counted blocks with the sentences inside them; outside them only the `% migrate-to:` line and the subsection heading (checked by script). The file, its `\input` in `02_.../00_overview.tex` and its map row were deleted; the wrapper keeps its other two topics (securities lending, crypto).
+
+### Ownership and dispositions
+
+`otc-fixed-income-trading` (the map's single candidate) owns all six blocks. Its outcome is measuring what clients pay in bond, swap and FX dealer markets and explaining how RFQ and portfolio trading, transparency rules and dealer capacity change those costs; every block falls inside it. Two exceptions were considered and not taken: the dealer-capacity material could serve `bond-swap-dealer-market-making` (no note yet), and the credit-derivative and swap items could too; both are inside this pathway's outcome, so they stay here, the capacity material cross-referenced to the existing dealer entries and the swap items stubbed. The pathway sits in the section `execution-trading-costs`, so the entries are in the new topic file `compendium/execution-trading-costs/fixed-income-trading.tex`, input after `futures-execution.tex`; the chapter opener names it. Six blocks were merged into three entries by question (how the market is organised, what the rules require, what the evidence shows).
+
+| # | Legacy block | Owner | Destination | Checked sources | Disposition |
+|---|---|---|---|---|---|
+| 1 | *Fixed-Income Instrument Range* (taxonomy) | `otc-fixed-income-trading` | `def:fixed-income-market-structure` (new); stub `ev:credit-derivative-swap-trading-structure` | BSV pp. 1–5, 7–8, 11, 13–16, 30, 32 | Items i–ii rewritten for U.S. Treasuries and corporate bonds (Treasury electronic share is interdealer); structured products and municipals added from the survey; items iii–iv (CDS indices against bespoke, swaps dealer-mediated) unchecked |
+| 2 | *RFQ Dominance* (principle) | `otc-fixed-income-trading` | `def:fixed-income-market-structure` | BSV pp. 2–3, 7–8, 37–38; Hendershott–Madhavan and O'Hara–Zhou (abstracts) | Protocols, venues and risk-bearing separated; "dominance" not supported (19 percent electronic in U.S. IG corporates, 2016); the "because" not adopted |
+| 3 | *Dealer Balance Sheet as Venue* (mechanism) | `otc-fixed-income-trading` | `def:fixed-income-market-structure` (Practice) | BSV pp. 4, 32–33 | Treated as a metaphor; reduced capital commitment, prearranged trades, nonbank dealers and the regulatory links as the survey states them |
+| 4 | *TRACE and Post-Trade Transparency* (market rule) | `otc-fixed-income-trading` | `rule:us-eu-bond-transparency` (new); `ev:bond-transparency-trading-costs` ("improving") | FINRA Rules 6730, 6750 and filing pages (2026-10-15); BSV Table 2, pp. 8–10, 29–30; ESMA statement (10 Oct 2025) and manual (12 May 2026) | Reporting and dissemination separated; history, current text and the one-minute change and its supersession dated; EU post-trade deferrals from 2 March 2026; the European "aim" and U.K. regime unchecked; stubs `rule:eu-mifir-bond-transparency-level1`, `rule:uk-bond-transparency` |
+| 5 | *Pre-Trade Transparency Limits* (caveat) | `otc-fixed-income-trading` | `ev:bond-transparency-trading-costs` (Conditions, Pitfalls) | BSV pp. 29, 37–39 | Kept as dealers' argument, a model prediction (Back–Liu–Teguia, as reported) and an open question; not adopted as a finding |
+| 6 | *Data Changes the Market* (practitioner note) | `otc-fixed-income-trading` | `ev:bond-transparency-trading-costs` (Practice); `def:fixed-income-market-structure` (Conditions) | BSV pp. 7–10, 31–32; O'Hara–Zhou (abstract) | Split; data sources and missing 605/606 analogue stated; electronification effects only as O'Hara and Zhou's abstract reports them, not causally; desk governance unchecked |
+
+Overlaps: `def:dealer-inventory-risk` and `meth:dealer-quote-adjustment` (generic inventory theory), `def:spread-measures`, `def:best-execution`, `meth:transaction-cost-analysis`, `def:portfolio-trading` and `mech:etf-creation-redemption` (Pan and Zeng's corporate bond ETF evidence) are cross-referenced; none was changed.
+
+### Sources, 2026-10-15 (generic request headers)
+
+- **Bessembinder, Spatt and Venkataraman** (`wide-bsv-fi-survey`), published JFQA version, as hosted in the SEC's fixed-income advisory committee materials, retrieved through the web-fetch tool after a direct request was refused by SEC's rate page: abstract and pp. 1–5, 7–11, 13–16, 29–33, 37–39, text layer (printed page = PDF page).
+- **Abstracts only**, from the publishers' records via OpenAlex, Crossref and RePEc: Edwards, Harris and Piwowar (`wide-edwards-harris-piwowar`), Hendershott and Madhavan (`wide-hendershott-madhavan`), O'Hara and Zhou (`wide-ohara-zhou-electronic`). SSRN returned bot pages; a 2005 working-paper copy of Edwards–Harris–Piwowar returned 403; a Bank of Canada PDF found in the search was a different paper (Edwards, Nimalendran and Piwowar, 2006) and was not used.
+- **FINRA** (added to `front/sources.tex`): Rule 6730 (`finra-rule-6730`) and Rule 6750 (`finra-rule-6750`) as displayed on 15 October 2026, with amendment histories; filing pages for SR-FINRA-2024-004 and SR-FINRA-2025-008 (`finra-sr-2024-004`), titles and summaries only, and SR-FINRA-2026-009 (title only). The approval orders were not read.
+- **ESMA** (added): public statement No. 2 of 10 October 2025 (`esma-mifir-review-statement-2025`), p. 4; manual on pre- and post-trade transparency of 12 May 2026 (`esma-transparency-manual-2026`), pp. 24–29 and 258–272 (worked examples, Level 3 guidance).
+- **Not available or not read:** Regulation (EU) 2024/791 and the amended RTS 2 (EUR-Lex returned an empty page); the Official Journal publication of the amending RTS; U.K. rules; the pathway's other readings, including portfolio trading (`wide-li-ohara-portfolio-trading`) and dealer capacity (`exp-eisfeldt-interdealer-capacity`).
+
+### Distinctions kept
+
+- **Segments.** U.S. Treasuries, structured products (TBA against specified pools), corporate and municipal bonds are described separately; credit derivatives and swaps are not described beyond clearing and one CDS transparency study; no corporate-bond sample is generalised to other segments.
+- **Market organisation.** Trading protocols (runs, voice, RFQ, lists), venues (interdealer platforms, RFQ platforms, all-to-all) and dealer risk-bearing (principal, prearranged) are separated; "balance sheet as venue" is a metaphor.
+- **Rules.** Reporting to FINRA is kept apart from public dissemination; post-trade from pre-trade; product coverage and exceptions are listed; history (2002–2017, from the survey), current text (rulebook, 15 October 2026), an approved-then-superseded change and a pending amendment are dated separately; the EU and U.K. regimes are kept apart, the latter unchecked; proposals (FIMSAC's 48-hour delay) are not presented as rules.
+- **Evidence status.** Empirical associations (the TRACE phase-in studies, through the survey and one abstract), a model prediction (Back–Liu–Teguia) and interpretation are labelled; no causal claim about electronification, and no general claim that transparency helps or harms liquidity.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `wide-bsv-fi-survey` | pp. 1–5, 7–11, 13–16, 29–33, 37–39 | Survey; U.S. data to about 2018; primary studies through its summaries |
+| `wide-edwards-harris-piwowar` | abstract | Full text unread |
+| `wide-hendershott-madhavan` | abstract | Full text unread |
+| `wide-ohara-zhou-electronic` | abstract | Full text unread |
+| FINRA Rules 6730, 6750; filing pages | rule text; titles and summaries | As displayed 2026-10-15; approval orders unread; a 2027 amendment may already be displayed |
+| ESMA statement, manual | p. 4; pp. 24–29, 258–272 | Level 3 guidance and examples, not the Level 1 or 2 text |
+| MiFIR as amended, U.K. rules | none | Not retrievable or not checked; stubs |
+
+The three new entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/otc-fixed-income-trading/derivations.tex` (1 page, no warnings or bad boxes), with only the subsection unnumbered; a script confirmed the body appears exactly once, the six blocks once each and in order, nothing outside the blocks but the subsection heading, and nothing after the body but `\end{document}`. Earlier artefacts, `house.tex` and the guide pin (`343d145`) are unchanged; earlier log entries and open questions were only appended to.
+
+### Counts
+
+`migration_status.py`: 625 → 619 legacy blocks = 530 shared + 60 single-candidate + 29 assigned. `otc-fixed-income-trading`: exclusive 6 → 0, listed entries 0 → 3 (new note), backlog stubs 0 → 3. Entries 81 → 84 (definitions 29 → 30, evidence 4 → 5, rules 0 → 1). Four reading notes added; five sources and the slice-21 follow-up's FINRA notice added to `front/sources.tex`. `options-execution` unchanged at 3 entries and 2 stubs.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 203 pages (199 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. Rendered and inspected: PDF pp. 57–58 (the corrected options entries), 95, 97–98 (the new fixed-income section) and 200 (the legacy asset-class section, which now starts at *Securities Lending and Synthetic Shorts*). Tests: 14 passed.
+
+### For review
+
+- The three new fixed-income entries, and the reliance on one survey plus three abstracts.
+- The rule entry's reading of SR-FINRA-2024-004 and SR-FINRA-2025-008 from their filing summaries.
+- The three backlog stubs (credit derivatives and swaps, EU Level 1 text, U.K.).
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/05_fixed_income_microstructure.tex` (6 blocks), whose map names `otc-fixed-income-trading` alone. Likely overlaps: the dealer quoting and inventory entries, `def:spread-measures`, `def:best-execution`, and `mech:etf-creation-redemption` (corporate bond ETFs); TRACE and European transparency claims need dated FINRA and EU rule documents. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/06_securities_lending_and_synthetic_shorts.tex` (6 blocks), whose map names `synthetic-equity-cfd-trs` alone. Likely overlaps: the options entries (its synthetic-short block uses put–call parity), `mech:etf-creation-redemption` and the arbitrage entries; current borrow, locate, buy-in and record-date rules need dated SEC and FINRA (or other jurisdictions') documents. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1913,7 +1992,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/05_fixed_income_microstructure.tex` | otc-fixed-income-trading |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/06_securities_lending_and_synthetic_shorts.tex` | synthetic-equity-cfd-trs |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/07_crypto_market_microstructure.tex` | crypto-mm-microstructure |
 | `compendium/legacy/ml-alternative-data/data/datalabel.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |

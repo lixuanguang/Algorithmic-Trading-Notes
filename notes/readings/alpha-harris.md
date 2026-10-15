@@ -2,7 +2,7 @@
 key: alpha-harris
 pathways: [execution-market-making, market-making-lob]
 version: Larry Harris, Trading and Exchanges, Oxford University Press, 2002 printing; local PDF with a text layer, outside the repository (printed page = PDF page - 13)
-sections: chapter "Informed Traders and Market Efficiency", pp. 222-244 (box p. 225 also by page image); chapter "Order Anticipators", pp. 245-258; chapter "Bluffers and Market Manipulation", pp. 259-275 (p. 270 by page image); chapter "Dealers", pp. 280, 283-295; chapter "Bid/Ask Spreads", pp. 297-321; chapter "Value Traders", pp. 338-346; chapter "Arbitrageurs", pp. 347-379; chapter "Volatility", pp. 410-417; chapter "Liquidity and Transaction Cost Measurement", pp. 423-427, 434, 435 (box, page image); chapter "Bubbles, Crashes, and Circuit Breakers", pp. 555-563, 570-578; chapter "Index and Portfolio Markets", p. 487 (box, page image); chapter "Specialists", pp. 494-508; chapter "Insider Trading", pp. 584-598 (checked for migration slices 2 to 6 and 9)
+sections: chapter "Informed Traders and Market Efficiency", pp. 222-244 (box p. 225 also by page image); chapter "Order Anticipators", pp. 245-258; chapter "Bluffers and Market Manipulation", pp. 259-275 (p. 270 by page image); chapter "Dealers", pp. 280, 283-295; chapter "Bid/Ask Spreads", pp. 297-321; chapter "Block Traders", pp. 322-327 (slice 10); chapter "Value Traders", pp. 338-346; chapter "Arbitrageurs", pp. 347-379; chapter "Volatility", pp. 410-417; chapter "Liquidity and Transaction Cost Measurement", pp. 423-427, 434, 435 (box, page image); chapter "Bubbles, Crashes, and Circuit Breakers", pp. 555-563, 570-578; chapter "Index and Portfolio Markets", p. 487 (box, page image); chapter "Specialists", pp. 494-508; chapter "Insider Trading", pp. 584-598 (checked for migration slices 2 to 6, 9 and 10)
 read:
 status: draft
 ---
@@ -60,7 +60,7 @@ Prepared on 2026-10-15 by migration slices 2 to 6 from source checks, not from s
 
 ## Entries
 
-`res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `res:spread-determinants`, `def:outside-spread`, `def:volatility-components`, `mech:bubble-crash-dynamics`, `def:fundamental-value`, `res:informed-trading-aggregation`, `def:market-efficiency`, `def:inside-information`, `def:informed-trader-types`, `def:winners-curse`, `res:insider-trading-deterrence`, `def:arbitrage`, `res:arbitrage-risks`, `def:order-anticipation`, `def:bluffing-manipulation`, `meth:order-flow-impact-regression`, `ev:index-reconstitution-impact`; also cited in `mod:glosten-milgrom` and `meth:spread-volatility-regression`.
+`res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `res:spread-determinants`, `def:outside-spread`, `def:volatility-components`, `mech:bubble-crash-dynamics`, `def:fundamental-value`, `res:informed-trading-aggregation`, `def:market-efficiency`, `def:inside-information`, `def:informed-trader-types`, `def:winners-curse`, `res:insider-trading-deterrence`, `def:arbitrage`, `res:arbitrage-risks`, `def:order-anticipation`, `def:bluffing-manipulation`, `meth:order-flow-impact-regression`, `ev:index-reconstitution-impact`, `def:block-trade`; also cited in `mod:glosten-milgrom` and `meth:spread-volatility-regression`.
 
 ## Open questions
 

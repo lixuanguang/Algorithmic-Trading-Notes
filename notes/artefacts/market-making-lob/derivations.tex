@@ -1388,4 +1388,71 @@ Signed order flow is endogenous: informed traders choose when and how much to tr
 Two orders with identical size and participation can have different impact because one trades with the market and the other trades against it. Impact estimation therefore has to separate execution mechanics from the signal that caused the trade.
 \end{caveat}
 
+\section*{Optimal execution problem (slice 10, 2026-10-15)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 10).
+% Destinations (compendium/execution-trading-costs/, owned by the section overview execution-trading-costs):
+% mod:almgren-chriss-execution, def:block-trade.
+% Sources found: Lehalle and Laruelle (alpha-laruelle), app. A, sec. A.7; Almgren and Chriss (alpha-almgren,
+% author preprint of December 2000); Harris (alpha-harris), chap. 15. The comparative static on impact
+% sensitivity and the convexity claim are corrected in the entry. Treat everything here as unchecked own working.
+
+% From compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/01_optimal_execution_problem.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Optimal Execution Problem}
+
+\begin{principle} \hlt{Impact-Risk Trade-Off}\\
+Optimal execution balances two forces: market impact rewards slower trading, while price risk rewards faster completion. A schedule is a compromise between footprint and exposure.
+\end{principle}
+
+\begin{model} \hlt{Discrete Execution Schedule}\\
+Plan a buy order of size $v^\star$ over $N$ slices. During slice $n$, trade $v_n$ shares, expected market volume is $V_n$, volatility is $\sigma_n$, and the fair price evolves as $S_{n+1}=S_n+\sigma_n\xi_{n+1}$, $\sum\limits_{n=1}^{N}v_n=v^\star$.\\
+Here $\xi$ is a standard Gaussian shock. The schedule controls timing; the market supplies uncertainty.
+\end{model}
+
+\begin{model} \hlt{Temporary Impact Cost}\\
+A simple execution price for slice $n$ is $\widetilde{S}_n(v_n)=S_n+\kappa\sigma_n\left(\frac{v_n}{V_n}\right)^\gamma$, $W=\sum\limits_{n=1}^{N}v_n\widetilde{S}_n(v_n)$.\\
+Here $W$ is total execution notional, and $\kappa$ and $\gamma$ are stock-dependent impact parameters.\\
+Participation $v_n/V_n$ is the key lever: trading more of the available volume costs more.
+\end{model}
+
+\begin{definition} \hlt{Expectation-Minimising Schedule}\\
+Ignoring risk, the minimiser allocates more to high-volume and low-volatility slices: $v_n^{\mathrm{exp}} =\frac{V_n/\sigma_n^{1/\gamma}}{\sum\limits_{\ell=1}^{N}V_\ell/\sigma_\ell^{1/\gamma}}v^\star$.\\
+If $V_n$ and $\sigma_n$ are constant, the schedule is uniform: $v_n=v^\star/N$.
+\end{definition}
+
+\begin{mechanism} \hlt{Risk-Only Schedule}\\
+If impact is ignored and only price-risk variance matters, the optimal action is to trade immediately. Waiting leaves remaining inventory exposed to random price moves.
+\end{mechanism}
+
+\begin{model} \hlt{Mean-Variance Execution Objective}\\
+Let $x_n$ be the remaining quantity after slice $n$, with $x_0=v^\star$ and $x_N=0$.\\
+A compact objective is $\mathcal{C} =v^\star S_0 +\kappa\sum\limits_{n=1}^{N}\sigma_n\frac{v_n^{\gamma+1}}{V_n^\gamma} +\lambda\sum\limits_{n=1}^{N}x_n^2\sigma_n^2$.\\
+The middle term is impact cost; the last term is inventory risk. Higher risk aversion $\lambda$ front-loads the schedule, while higher impact sensitivity back-loads it.
+\end{model}
+
+\begin{taxonomy} \hlt{Execution Schedule Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{risk-neutral}: follows volume and volatility to reduce expected impact;
+\item \hlt{risk-only}: finishes immediately to remove exposure;
+\item \hlt{mean-variance}: trades along a convex remaining-quantity path;
+\item \hlt{tactical overlay}: lets dark pools, SORs, alpha, and limits modify child orders inside the schedule.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Block Order}\\
+A block order is too large to complete easily through normal displayed liquidity.\\
+Fixed-share thresholds are venue conventions; for execution research, a block is better measured as a fraction of average daily volume, typical depth, or expected participation capacity.
+\end{definition}
+
+\begin{taxonomy} \hlt{Block Execution Problem Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{latent demand}: natural contra interest exists but has not posted orders;
+\item \hlt{order exposure}: revealing the parent attracts anticipators and liquidity withdrawal;
+\item \hlt{price discrimination}: liquidity suppliers wait because they fear selling too cheaply or buying too richly;
+\item \hlt{asymmetric information}: suppliers demand concessions when the initiator may be informed.
+\end{enumerate}
+Block execution buys liquidity with information: disclose enough to find size, but not enough to be exploited.
+\end{taxonomy}
+
 \end{document}

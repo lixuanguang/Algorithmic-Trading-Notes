@@ -811,9 +811,87 @@ The 8 blocks are kept verbatim in `notes/artefacts/market-making-lob/derivations
 - The duration reconciliation.
 - The reliance on preprints (Almgren et al. 2005, Bacry et al. 2014) and on Harris's report of Madhavan.
 
+## Slice 10: optimal execution problem, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 9's pushed state (`3d597b1`, on `main`, matching `origin/main`; guide submodule at `343d145`; `house.tex` unchanged). The reported counts matched the checker: 733 legacy blocks (117 single-candidate, 587 shared, 29 assigned), 44 entries, and listings of 9, 22 and 13. `price-impact-execution`'s 36 were candidate associations of shared blocks, not owned blocks, and are reported that way below. Migration and source checking, not study.
+
+### Scope
+
+The 9 blocks of `execution-trading-costs/01_.../01_optimal_execution_problem.tex`, shared in the map between `price-impact-execution` and the section overview `execution-trading-costs`. All 9 were migrated. The file, its `\input` line in `01_.../00_overview.tex` and its map row were deleted.
+
+### Ownership
+
+The overview's outcome asks for a schedule and an expected cost with its uncertainty "from a stated impact model". Its readings include `alpha-almgren` ("Set a benchmark for the trade-off between impact risk and execution speed"). The guide therefore first needs the scheduling model at the overview; `price-impact-execution` builds on it to estimate impact models and derive schedules. Block trading is part of planning an order's execution (venue, mechanism, schedule) and has no specialist pathway in the pinned taxonomy. Both new entries are therefore owned by the overview. A note was opened for it, `notes/pathways/execution-trading-costs.md`, on the same basis as the `execution-market-making` note in slice 5. The impact concepts the entries use stay with `price-impact-execution` and are cross-referenced. Owned listings and cross-references are kept apart: a first draft of the note named two `price-impact-execution` entries under its Entries heading, which the checker counted as owned, and it was reworded.
+
+| Legacy block | Owner | Destination | Disposition |
+|---|---|---|---|
+| *Impact-Risk Trade-Off* | `execution-trading-costs` | `mod:almgren-chriss-execution` (Statement) | Merged |
+| *Discrete Execution Schedule* | `execution-trading-costs` | `mod:almgren-chriss-execution` (Notation; timing in Pitfalls) | Merged |
+| *Temporary Impact Cost* | `execution-trading-costs` | `mod:almgren-chriss-execution` (Notation and Conditions; temporary-impact concept in `def:price-impact`) | Merged |
+| *Expectation-Minimising Schedule* | `execution-trading-costs` | `mod:almgren-chriss-execution` (Conditions) | Merged (a result, not a definition) |
+| *Risk-Only Schedule* | `execution-trading-costs` | `mod:almgren-chriss-execution` (Conditions) | Merged |
+| *Mean-Variance Execution Objective* | `execution-trading-costs` | `mod:almgren-chriss-execution` (Statement and Conditions; comparative static corrected) | Rewritten |
+| *Execution Schedule Segmentation* | `execution-trading-costs` | `mod:almgren-chriss-execution` (Practice; convexity corrected) | Merged |
+| *Block Order* | `execution-trading-costs` | `def:block-trade` | Rewritten |
+| *Block Execution Problem Segmentation* | `execution-trading-costs` | `def:block-trade` | Merged |
+
+### Sources and model identity, 2026-10-15
+
+- **The notation of the blocks** ($v^\star$, $\kappa\sigma_n(v_n/V_n)^\gamma$, $v_n^{\exp}$) is Lehalle and Laruelle's app. A, sec. A.7 (pp. 273–281). They call it a "simplified and commented version of the original Almgren–Chriss paper". It is distinct from Almgren–Chriss's linear model and from Almgren et al. (2005), whose empirical procedure is `meth:almgren-impact-estimation`.
+- **Almgren and Chriss** were checked in the authors' preprint of December 2000, the copy obtained in slice 8. The passages used in slice 8 (pp. 8–11) were reused; additional passages were read for this slice (sec. 1.1, p. 7; eqs. (4)–(5), p. 10; secs. 2–2.3, pp. 11–15, with a page image of p. 14). The 2001 journal version was not compared.
+- **Harris** chap. 15, pp. 322–327, for the block blocks.
+- The Cartea–Jaimungal framework in A.7.3 was read but not used, since no block draws on it.
+
+### Mathematical checks (own, Interpretation in the entry)
+
+**Units and conventions.** The concession $\kappa\sigma_n(v_n/V_n)^\gamma$ is currency per share, with $\sigma_n$ in currency per slice (p. 275). The slice cost is $v_n$ times it, and the order's expected impact cost is $\kappa\sum\sigma_nv_n^{\gamma+1}/V_n^\gamma$, a total, not a rate. It is a temporary cost on the slice's own fills, not a transient displacement. There is no permanent-impact term and no spread or fee term, unlike Almgren–Chriss's $g$ and $\epsilon$.
+
+**Expectation-only schedule.** (A.22) rederived: marginal impact costs are equalised across slices. A numerical check (random $V_n$, $\sigma_n$, $\gamma=0.6$) found no feasible perturbation that lowers expected cost. The source's Lagrange condition omits $\kappa$, which is harmless because $\kappa$ is absorbed into the multiplier.
+
+**Timing.** Lehalle and Laruelle's (A.16) prices slice $n$ after shock $n$, and (A.24) sums over the quantity remaining from slice $n$ on. Their terminal conditions $x_0=v^\star$, $x_N=0$ belong to the other convention. The legacy blocks use the Almgren–Chriss convention (slice $n$ at $S_n$, then $S_{n+1}=S_n+\sigma_n\xi_{n+1}$), under which their risk term $\lambda\sum x_n^2\sigma_n^2$ with $x_0=v^\star$, $x_N=0$ is consistent.
+
+**Recurrence and closed form.** (A.28) rederived from the first-order conditions. For $\gamma=1$ and constant parameters, the legacy-convention solution equals the Almgren–Chriss $\sinh$ trajectory with $\cosh k=1+\lambda\sigma V/(2\kappa)$, numerically to $10^{-12}$. The mapping is $\kappa\sigma_n/V_n\leftrightarrow\eta/\tau$ and $\sigma_n^2\leftrightarrow\sigma^2\tau$, without the $\tilde\eta$ correction. Proposition 5 is mislabelled "variance minimization" in the source.
+
+**Comparative statics.** The minimiser depends only on $\lambda/\kappa$. The legacy "higher impact sensitivity back-loads" is corrected: larger $\kappa$ moves the schedule towards the expectation-only one. In the varying-parameter cases checked it never went beyond it; that is numerical evidence, not a proof.
+
+**Shape.** The mean–variance path is convex for constant parameters (the $\sinh$ form). With time-varying $V_n$ and $\sigma_n$ all 200 random cases checked were non-convex, so the legacy "convex remaining-quantity path" holds only under constant parameters.
+
+**Variance-only schedule.** Zero variance in Almgren–Chriss is an artefact of the discretisation, as they say (p. 12).
+
+**Parameters against estimates.** The model's $\kappa,\gamma$ are inputs estimated daily or weekly (p. 274). Almgren et al.'s exponent 0.6 measures a related quantity at a 30-minute post-trade horizon; the two are linked only by a cross-reference.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-laruelle` | app. A, sec. A.7, pp. 273–284 | Text layer; Figure A.11 seen only in the text layer |
+| `alpha-almgren` | author preprint (Dec. 2000), pp. 7–15 | Text layer; page images of pp. 9, 11 and 14; the journal version not compared |
+| `alpha-harris` | chap. 15, pp. 322–327 | Text layer |
+
+The two new entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The 9 blocks are kept verbatim in `notes/artefacts/market-making-lob/derivations.tex`, section *Optimal execution problem (slice 10)*. A script confirmed three things: each block appears there once and in order; the artefact's earlier content is unchanged; and the other files of `execution-trading-costs/01_...` are byte-identical (only the `\input` line was removed from `00_overview.tex`).
+
+### Counts
+
+`migration_status.py`: 733 → 724 legacy blocks (9 migrated). Shared 587 → 578; single-candidate 117 → 117; assigned 29 → 29. Each of the 9 blocks was a candidate of both pathways, so the per-pathway candidate counts fell by 9 each: `execution-trading-costs` 57 → 48, `price-impact-execution` 36 → 27. This is one block counted under two candidates, not 18 blocks. Entries 44 → 46 (definitions 15 → 16, models 7 → 8). Entries listed: `execution-trading-costs` 0 → 2 (new note); `price-impact-execution` 9 → 9; `execution-market-making` 22 → 22; `market-making-lob` 13 → 13. No notation override was added: the entry declares its $\kappa$, $\gamma$ and $\lambda$ locally, against the Almgren–Chriss symbols.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 164 pages (163 before); no LaTeX warnings, no undefined references or citations; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files, as before; the one `page.i` duplicate-destination warning; no new boxes. Rendered and inspected: PDF pp. 39–41 (the chapter opener and the new section) and p. 151 (the pruned legacy chapter, which now starts at *Execution Benchmarks*). The artefact compiles on its own: 21 pages (as before, the new section fitting the last page), no warnings, the same 3 underfull boxes.
+
+### For review
+
+- The two new entries.
+- Ownership by the overview rather than `price-impact-execution`.
+- The timing-convention resolution and the corrected comparative static and convexity claims.
+- Reliance on the Almgren–Chriss preprint.
+
 ## Next bounded slice
 
-`price-impact-execution` has no single-candidate legacy blocks left; its remaining candidates (36) are shared. The nearest is `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/01_optimal_execution_problem.tex`, shared with the section overview `execution-trading-costs` in the map. It contains a *Temporary Impact Cost* model, seen while routing slice 7, which would integrate with the Almgren–Chriss material in `def:price-impact`. Read its blocks and decide each one's owner before migrating. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/02_execution_benchmarks.tex` (3 blocks and a benchmark table; its successor `03_execution_algorithms.tex` restates Lehalle and Laruelle's two algorithm layers, already cited in `mod:almgren-chriss-execution`), shared between `execution-trading-costs` and `market-structure-execution-quality` in the map. The overview's first reading is Perold on implementation shortfall (`wide-perold-shortfall`), so benchmark definitions likely belong to the overview. Decide each block's owner from its content before migrating, and compare with `mod:almgren-chriss-execution` and `def:price-impact`. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -848,7 +926,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/01_optimal_execution_problem.tex` | price-impact-execution, execution-trading-costs |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/02_execution_benchmarks.tex` | execution-trading-costs, market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/03_execution_algorithms.tex` | execution-trading-costs, price-impact-execution |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/04_transaction_cost_analysis.tex` | market-structure-execution-quality, execution-trading-costs |

@@ -50,7 +50,7 @@ All nine: verification partly checked 2026-10-15, stability draft; human review 
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. The blocks exclusive to this pathway are in `compendium/legacy/execution-trading-costs/`. The legacy market-impact-models file was migrated and deleted in slice 8, and the price-impact-estimation file in slice 9. No legacy block is now a candidate of this pathway alone; its 36 remaining candidates are shared, the nearest in `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/`.
+Run `python3 tools/migration_status.py` for the current counts. The blocks exclusive to this pathway are in `compendium/legacy/execution-trading-costs/`. The legacy market-impact-models file was migrated and deleted in slice 8, and the price-impact-estimation file in slice 9. In slice 10 the optimal-execution-problem file, shared with the section overview, was migrated to entries owned by `execution-trading-costs` (see that note), cross-referencing this pathway's impact entries. No legacy block is now a candidate of this pathway alone; its 27 remaining candidates (after slice 10) are shared, the nearest in `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/`.
 
 ## What changed in my view or practice
 

@@ -82,6 +82,8 @@ Changed in migration slice 30, 2026-10-15, from the legacy execution-model file 
 
 Partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/portfolio-construction-risk/execution-model.tex`. The same file's HFT blocks went to `hft-market-design`.
 
+Changed in the slice-30 follow-up, 2026-10-15: `def:order-exposure-decisions` no longer says hidden orders "reveal nothing"; they remove the pre-trade display, while executions and pinging (SEC 2010 release, p. 47, n. 69) still leak information. Its Currency field and that of `def:automated-trading-architecture` now date the 2024 U.S. Code passage and Narang's 2024 account.
+
 ## Entry backlog
 
 - def:clearing-settlement: clearing, settlement, delivery versus payment and the central counterparty's guarantee in their standard definitions, to replace Narang's broker-fee description (CPMI glossary, not retrieved on 2026-10-15; the PFMI glossary annex, `exp-pfmi`, not reached in the copy read).

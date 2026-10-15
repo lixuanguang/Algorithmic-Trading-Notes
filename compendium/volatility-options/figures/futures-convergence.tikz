@@ -1,0 +1,25 @@
+% compendium/volatility-options/figures/futures-convergence.tikz
+% Schematic drawn for slice 31 (2026-10-15) after the idea of Hull's Figure 2.1 (11th Global ed., p. 51); the curves
+% are illustrative, not data. The legacy PNG it replaces is kept in notes/artefacts/volatility-options/figures/.
+\begin{tikzpicture}[>=stealth, x=0.9cm, y=0.9cm, font=\small]
+  \begin{scope}
+    \draw[->] (0,0) -- (5.2,0) node[below left] {time};
+    \draw[->] (0,0) -- (0,3.6) node[above right] {price};
+    \draw[thick] (0.3,2.6) .. controls (1.5,3.1) and (3.2,2.4) .. (4.6,2.2);
+    \draw[thick, dashed] (0.3,0.9) .. controls (1.6,1.8) and (3.4,1.6) .. (4.6,2.2);
+    \node[right] at (0.3,2.95) {futures};
+    \node[right] at (0.3,0.55) {spot};
+    \draw[dotted] (4.6,0) -- (4.6,2.2); \node[below] at (4.6,0) {delivery};
+    \node at (2.5,-0.75) {(a) futures above spot};
+  \end{scope}
+  \begin{scope}[xshift=6.6cm]
+    \draw[->] (0,0) -- (5.2,0) node[below left] {time};
+    \draw[->] (0,0) -- (0,3.6) node[above right] {price};
+    \draw[thick, dashed] (0.3,2.6) .. controls (1.5,3.1) and (3.2,2.4) .. (4.6,2.0);
+    \draw[thick] (0.3,0.9) .. controls (1.6,1.6) and (3.4,1.4) .. (4.6,2.0);
+    \node[right] at (0.3,2.95) {spot};
+    \node[right] at (0.3,0.55) {futures};
+    \draw[dotted] (4.6,0) -- (4.6,2.0); \node[below] at (4.6,0) {delivery};
+    \node at (2.5,-0.75) {(b) futures below spot};
+  \end{scope}
+\end{tikzpicture}

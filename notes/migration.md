@@ -24,12 +24,12 @@ Migrating a block and compiling the result advances only the first. An entry wri
 
 - **Records.** Each slice appends one section to [migration-slices.md](migration-slices.md) and one row to the index below. A correction to a finished slice is appended as a follow-up; earlier records are left as written.
 
-## Status after slice 30 (15 October 2026)
+## Status after slice 31 (16 October 2026)
 
-- **Legacy blocks:** 583 = 530 shared + 24 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
-- **Entries:** 108, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
-- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30, its diagram moved to the canonical chapter).
-- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 225 pages; no LaTeX warnings; 0 overfull and 25 underfull boxes, all in the legacy part; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
+- **Legacy blocks:** 568 = 523 shared + 16 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
+- **Entries:** 118, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
+- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30, its diagram moved to the canonical chapter); `volatility-options` and `rates-credit-mortgages` (removed by slice 31, their two figures moved to the slice's artefact).
+- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 228 pages; no LaTeX warnings; 0 overfull and 0 underfull boxes; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
 
 ## Slices
 
@@ -67,11 +67,18 @@ Blocks are the legacy blocks counted by `migration_status.py` before and after t
 | 27 | Transaction cost models: components and cost functions | `0224ac7` | 600 → 598 | 98 → 99 | Units, cost-function conditions, sell example |
 | 28 | Portfolio construction models: rules, mean–variance optimisation, signal portfolios | `4e7666d` | 598 → 595 | 99 → 102 | Closed-form conditions, permutations, ML tasks, ERC rounding |
 | 29 | Risk models: factor exposures, limits and penalties | `cd7b13c` | 595 → 591 | 102 → 103 | Residual diversification, CVX–XOM hedge, compensation wording |
-| 30 | Narang's systematic-investing cluster: overview and diagram, alpha models, execution (three files, chapter closed) | this slice's commit | 591 → 583 | 103 → 108 | |
+| 30 | Narang's systematic-investing cluster: overview and diagram, alpha models, execution (three files, chapter closed) | `2642451` | 591 → 583 | 103 → 108 | Hidden-order leakage, lifecycle timing, currency fields |
+| 31 | Hull's derivatives basics, forwards, futures and hedging, and the time-value file (three files, two chapters closed) | this slice's commit | 583 → 568 | 108 → 118 | |
 
 ## Next bounded slice
 
-A two-chapter batch of 15 blocks that would close two more legacy chapters: `compendium/legacy/volatility-options/basic.tex` (8 blocks, single candidate `volatility-options`), `compendium/legacy/volatility-options/fwdfut.tex` (5 blocks, candidates `rates-credit-mortgages` and `commodity-hedging`) and `compendium/legacy/rates-credit-mortgages/01_tvm.tex` (2 blocks, candidates `rates-credit-mortgages` and `performance-manager-evaluation`). The plan's folder table names Hull's basics and time value of money as their origin; the source and edition used, and which pathway first needs forward pricing, hedge ratios and time- and money-weighted returns, are to be established before writing (time- and money-weighted returns may belong with `meth:relative-performance-evaluation`). The AFML data chapters (`ml-alternative-data/data/`, 36 blocks over five files, shared among three pathways) are the next larger cluster; the fifteen blocks assigned to `hft-market-design`, the three slice-5 assignments and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+The AFML data cluster, proposed as one batch of 36 blocks that would close the legacy `ml-alternative-data` chapter: in `compendium/legacy/ml-alternative-data/data/`, `taxonomy.tex` (9 blocks), `datastruct.tex` (8), `datalabel.tex` (6), `datasampleweights.tex` (9) and `fracdifffeat.tex` (4), with the wrapper `dataoverview.tex`, the chapter's `section.tex` and its four figures (`standardbars.png`, `metalabel.tikz`, `fracdiffexpandwindow.png`, `fracdifffixedwidthwind.png`). All five files list the same three candidates (`statistical-learning-foundations`, `financial-ml-evaluation`, `alternative-data-sources`).
+
+- **Sources.** López de Prado, *Advances in Financial Machine Learning* (`alpha-afml`, local PDF) covers four files: chap. 2 (standard, information-driven and multi-product bars, the ETF trick, CUSUM sampling), chap. 3 (fixed-horizon and triple-barrier labelling, meta-labelling), chap. 4 (overlapping outcomes, uniqueness, sequential bootstrap, return attribution, time decay) and chap. 5 (fractional differentiation, expanding and fixed-width windows); `datastruct.tex` also cites `ane-geman-2000`. The four characteristics remarks of `taxonomy.tex` follow AFML sec. 2.2, but its five definitions (reference data, market data feed, binned data, granular intraday activity, fundamental and other data) do not, and their source is unrecorded: it must be identified, or the blocks rewritten from a named primary or vendor source, before they are migrated.
+- **Proposed ownership**, to be confirmed against the guide's outcomes when the batch starts: labels, sample weights and fractional differentiation (19 blocks) to `statistical-learning-foundations`, whose required reading AFML is, with time-validity and leakage consequences cross-referenced from `financial-ml-evaluation`; bars, the ETF trick and CUSUM sampling (8) to `statistical-learning-foundations`, with point-in-time and vendor caveats routed to `point-in-time-data` if its outcomes claim them; the taxonomy (9) to `alternative-data-sources` for the alternative-data characteristics and dataset assessment, with the market- and reference-data definitions to the `ml-alternative-data` overview or `point-in-time-data`.
+- **Review** in two groups: taxonomy and data structures (17 blocks); labels, weights and fractional differentiation (19).
+
+The fifteen blocks assigned to `hft-market-design`, the three slice-5 assignments and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -114,7 +121,4 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/multi-asset-systematic-macro/01_regimes.tex` | multi-asset-systematic-macro, macro-regimes-stock-bond |
 | `compendium/legacy/multi-asset-systematic-macro/02_transmission_maps.tex` | macro-nowcasting-signals, macro-announcements-policy, monetary-policy-curve, fx-determination-forecasting |
 | `compendium/legacy/multi-asset-systematic-macro/03_practitioner_insights.tex` | multi-asset-systematic-macro |
-| `compendium/legacy/rates-credit-mortgages/01_tvm.tex` | rates-credit-mortgages, performance-manager-evaluation |
-| `compendium/legacy/volatility-options/basic.tex` | volatility-options |
-| `compendium/legacy/volatility-options/fwdfut.tex` | rates-credit-mortgages, commodity-hedging |
 <!-- map:end -->

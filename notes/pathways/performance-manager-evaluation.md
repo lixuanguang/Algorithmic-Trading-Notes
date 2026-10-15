@@ -28,11 +28,19 @@ Written in migration slice 13, 2026-10-15:
 
 Verification partly checked 2026-10-15, stability draft; human review outstanding. Its derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`; it sits in `compendium/portfolio-construction-risk/`, the canonical chapter for this pathway's section, opened by this slice.
 
+Written in migration slice 31, 2026-10-15, from the *Return Metrics* block of the unsourced legacy time-value file (`rates-credit-mortgages/01_tvm.tex`):
+
+- `def:return-measures`: GIPS 2020 definitions of time- and money-weighted returns, external cash flows, gross and net of fees; cumulative, geometric-mean and annualised returns; IRR existence and multiple roots; real and leveraged returns. The legacy's malformed TWR root and its unexplained "risk" factor in the real return are corrected; formulas derived and checked numerically.
+
+Partly checked 2026-10-15, draft; human review outstanding. Artefact: `notes/artefacts/rates-credit-mortgages/time-value.tex`.
+
 ## Entry backlog
+
+- meth:gips-composite-presentation: composite construction, required statistics and disclosures for a GIPS report, as the checkpoint asks (`wide-gips-2020`, read only for definitions).
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. The rest of this pathway's candidates are in `compendium/legacy/rates-credit-mortgages/`.
+Run `python3 tools/migration_status.py` for the current counts. Slice 31 migrated `compendium/legacy/rates-credit-mortgages/01_tvm.tex` and removed that legacy chapter; no legacy file now lists this pathway. That says nothing about consolidation.
 
 ## What changed in my view or practice
 

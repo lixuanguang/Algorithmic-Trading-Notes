@@ -43,6 +43,8 @@ Written in migration slice 30, 2026-10-15, from López de Prado (`alpha-afml`, 2
 
 Partly checked 2026-10-15, draft; human review outstanding. Its artefacts are `notes/artefacts/portfolio-construction-risk/systematic-investing-overview.tex` and `alpha-models.tex`.
 
+Changed in the slice-30 follow-up, 2026-10-15: embargo and paper trading are placed after deployment and before live-capital trading (graduation), as in AFML pp. 8-9, not "before production".
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:automated-trading-architecture` (model accuracy checks, venue messages) and `meth:execution-decision-support` (`execution-trading-costs`); `def:floor-automated-trading-systems` (`execution-market-making`); `def:common-investor-contagion` (`funding-crowding`); `meth:backtest-evaluation-diagnostics`, `pit:parameter-overfitting` (`backtest-inference`); `res:arbitrage-risks` (`execution-market-making`).

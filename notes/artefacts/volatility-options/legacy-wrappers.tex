@@ -1,0 +1,35 @@
+% notes/artefacts/volatility-options/legacy-wrappers.tex
+% The two legacy chapter wrappers emptied and removed by slice 31 (2026-10-15), with the removed lines of
+% compendium/legacy/part.tex, shown as display-only text so that their old \input lines do not execute. Exact copies of
+% the wrappers are legacy-section-original.tex here and in notes/artefacts/rates-credit-mortgages/. The two original
+% figures are rendered from their preserved PNGs, which reproduce Hull's Figures 2.1 (p. 51) and 3.3 (p. 81), 11th Global ed.
+% Compile inside notes/artefacts/volatility-options/ with  latexmk -pdf legacy-wrappers.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,keepspaces=true,frame=single}
+\begin{document}
+\chapter*{Legacy wrappers and figures removed by slice 31}
+
+\section*{Removed lines of legacy/part.tex (display only)}
+\begin{lstlisting}
+\InputIfFileExists{legacy/rates-credit-mortgages/section}{}{}
+\InputIfFileExists{legacy/volatility-options/section}{}{}
+\end{lstlisting}
+
+\section*{Options chapter wrapper, legacy section.tex (display only)}
+\lstinputlisting{legacy-section-original.tex}
+
+\section*{Rates chapter wrapper, legacy section.tex (display only)}
+\lstinputlisting{../rates-credit-mortgages/legacy-section-original.tex}
+
+\section*{The two legacy figures, from their preserved files}
+\begin{center}
+\includegraphics[scale=0.4]{legacy/volatility-options/figures/convgspotfuture}\par\medskip
+\small convgspotfuture.png, captioned ``Convergence of futures price to spot price.''\par\bigskip
+\includegraphics[scale=0.5]{legacy/volatility-options/figures/hedgeratio}\par\medskip
+\small hedgeratio.png, captioned ``Dependence of variance of position on hedge ratio.''
+\end{center}
+\end{document}

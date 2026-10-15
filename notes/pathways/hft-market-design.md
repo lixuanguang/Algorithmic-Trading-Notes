@@ -36,6 +36,8 @@ Changed in migration slice 30, 2026-10-15, from the legacy execution-model file 
 
 Partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/portfolio-construction-risk/execution-model.tex`.
 
+Changed in the slice-30 follow-up, 2026-10-15: `def:hft-strategies`' Currency field records FINRA Rule 5270 as the one current rule checked.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:order-anticipation`, `def:bluffing-manipulation`, `def:arbitrage`, `def:spread-measures`, `mod:glosten-milgrom` (`execution-market-making` and `market-making-lob`); `def:smart-order-routing` (`market-structure-execution-quality`).

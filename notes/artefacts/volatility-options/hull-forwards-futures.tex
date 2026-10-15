@@ -1,5 +1,24 @@
-% migrate-to: rates-credit-mortgages, commodity-hedging
-\section{Forwards and Futures}
+% notes/artefacts/volatility-options/hull-forwards-futures.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 31, 2026-10-15): the whole of
+% compendium/legacy/volatility-options/fwdfut.tex below its migrate-to line, with only the section heading unnumbered. The compendium entries state each
+% claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: pricing and cost of carry -> res:cost-of-carry-forward-price (volatility-options); hedging principles,
+% basis, basis risk, cross hedging, stack and roll -> def:futures-hedge-basis; hedge ratio, number of contracts,
+% tailing, index futures -> mod:minimum-variance-hedge-ratio (both commodity-hedging); day count and quotation ->
+% conv:us-rate-quotation (rates-credit-mortgages).
+% Figures referenced by the original as legacy/volatility-options/figures/*.png are kept, unchanged, at that same
+% relative path under notes/artefacts/volatility-options/, so that the body compiles without edits.
+% Compile inside notes/artefacts/volatility-options/ with  latexmk -pdf hull-forwards-futures.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: Hull forwards and futures: pricing, hedging, rate conventions}
+
+% From compendium/legacy/volatility-options/fwdfut.tex (whole file, deleted 2026-10-15 once empty).
+\section*{Forwards and Futures}
 
 Based on the book by John Hull \citep{s7-hulloptions}.
 
@@ -242,3 +261,5 @@ Prices of treasury bonds are quoted in dollars and thirty-seconds of a dollar, i
 \end{equation*} 
 
 
+
+\end{document}

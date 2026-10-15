@@ -2878,3 +2878,175 @@ Before committing, a separate review compared every changed claim, quotation, lo
 - The routing of signal combination and the production chain away from the map's overview, and the new `systematic-equities` chapter.
 - Keeping the cancel-and-replace and shark passages as historical descriptions with limited legal support, rather than as techniques or stubs only.
 - The redrawn diagram's return arrow, and the alpha taxonomy's correction from five classes to eight.
+
+## Slice 30 follow-up: hidden-order leakage, lifecycle timing and currency fields, 15 October 2026
+
+Narrow corrections to slice 30, run before slice 31; the slice-30 record above is left as written, and this record supersedes it where they differ. No legacy block, entry label, stub, artefact or count changed (583 legacy blocks; 108 entries).
+
+- **Hidden orders, `def:order-exposure-decisions`.** "Hidden orders reveal nothing" overstated Narang, who says a hidden order "provides no information to the market" (p. 134), meaning no displayed interest. The entry now separates undisplayed pre-trade interest from information inferred through executions and probing, citing the SEC's 2010 release on immediate-or-cancel "pinging" to find undisplayed liquidity (p. 47, n. 69) and linking `def:order-anticipation`; hiding lowers, not removes, leakage.
+- **Lifecycle timing, `meth:strategy-production-lifecycle`.** "Embargo and paper trading are forms of validation before production" contradicted López de Prado, whose portfolio-oversight stages follow deployment (AFML pp. 8–9). They are now validation before live-capital trading (graduation).
+- **Currency fields.** `def:hft-strategies` no longer says no current rule was checked: FINRA Rule 5270 (as displayed 15 October 2026) is recorded as the one current rule checked, with historical figures dated as given. `def:order-exposure-decisions` dates the U.S. Code passage to its 2024 edition and Narang's venue details to 2024, with no current venue rule checked. `def:automated-trading-architecture` adds Narang's 2024 account, with his latency figures undated.
+- **Notes and index.** The `execution-trading-costs`, `model-governance-controls` and `hft-market-design` notes record the changes; the slice-30 index row gives `2642451`.
+
+## Slice 31: derivatives, hedging, rates and time value (Hull notes and the time-value file), 16 October 2026
+
+A three-file batch closing two legacy chapters, run after the slice-30 follow-up above. Migration and source checking, not study; no checkpoint was attempted. Hull's book is the first reading of the `volatility-options` overview and the GIPS standards a reading of `performance-manager-evaluation`; both were read only where the blocks needed them.
+
+### Scope
+
+Counted by script against the committed originals (`e`, the starting commit `2642451`):
+
+| File | Blocks | `\item` (excl. `\itemsep`) | Other content |
+|---|---|---|---|
+| `volatility-options/basic.tex` | 8: *derivative*, *spot/forward contract*, *call/put option*, *American/European option*, *credit spread*, *Forward Rates*, *FRA*, *Duration* (all `definition`) | 0 in blocks, 3 outside (OTC reforms) | introduction and prose on exchanges, OTC, futures, convergence (figure `convgspotfuture.png`), clearing house, OTC markets, rate types, compounding, zero/bond/par yields, forward and instantaneous forward rates, FRA value, duration, modified duration, convexity, term-structure theories; 13 display equations |
+| `volatility-options/fwdfut.tex` | 5: *Basic Principles of Futures Hedging* (with a table), *basis*, *basis risk*, *Cross Hedging*, *Hedge Ratio* (all `definition`) | 2 in blocks, 27 outside | pricing assumptions, arbitrage lists, income, yield, forward value, index arbitrage, interest rate parity, commodities, convenience yield, cost of carry, imperfect hedges, hedge-ratio derivation (figure `hedgeratio.png`), contract numbers, daily settlement, tailing, index futures, beta change, stack and roll, day counts, T-bill and T-bond quotes; 20 display equations |
+| `rates-credit-mortgages/01_tvm.tex` | 2: *Time Value of Money Formulas*, *Return Metrics* (`definition`, each a table) | 0 | none |
+| **Total** | **15** | **32** (2 inside, 30 outside; substring counts give 43) | 33 display equations, 3 tables, 2 figures |
+
+Also accounted for: the chapter wrappers `legacy/volatility-options/section.tex` (citing Hull and inputting both files) and `legacy/rates-credit-mortgages/section.tex`, their two lines in `legacy/part.tex`, the three map rows and the two PNGs. All were removed from the compendium after preservation; the two legacy folders are gone. Other legacy chapters, earlier artefacts, deferred assignments, `house.tex` and the guide pin (`343d145`) are unchanged.
+
+### Ownership and dispositions
+
+Routed block by block on guide outcomes. **Routing exceptions** against the map (`basic.tex` → `volatility-options`; `fwdfut.tex` → `rates-credit-mortgages`, `commodity-hedging`; `01_tvm.tex` → `rates-credit-mortgages`, `performance-manager-evaluation`):
+- the rates material of `basic.tex` (credit spread, forward rates, FRA, duration, and the prose on rate types, compounding, yields, clearing) goes to `rates-credit-mortgages` ("connect a rate quote or bond position to its curve … collateral and hedge-contract assumptions");
+- its exchange-clearing prose is merged into `mech:futures-margin-settlement` (`futures-execution`) as a generic account beside the CME rules;
+- the pricing half of `fwdfut.tex` (cost of carry) goes to the `volatility-options` overview, whose first reading is Hull, rather than to its map candidates; its day-count and quotation prose goes to `rates-credit-mortgages`.
+Rejected: `curve-term-structure` for forward rates and term-structure theories (no curve building or term-premium estimation in the blocks; evidence stubbed with it as home), `rate-derivatives` for the FRA (no model calibration), `energy-commodities` and `commodity-storage-curves` for convenience yield (stubbed), `money-markets-repo-lending` for repo rates (a definition only, cross-referenced).
+
+| # | Legacy block | Owner | Destination | Hull 11th Global ed. / other source | Disposition |
+|---|---|---|---|---|---|
+| B1 | *derivative* | `volatility-options` | `def:derivative-contracts` (new) | chap. 1, p. 23 | Rewritten |
+| B2 | *spot/forward contract* | `volatility-options` | `def:derivative-contracts` | sec. 1.3, pp. 28–30 | Rewritten, payoffs kept |
+| B3 | *call/put option* | `volatility-options` | `def:derivative-contracts` | sec. 1.5, p. 31 | **Corrected**: the legacy reversed the rights |
+| B4 | *American/European option* | `volatility-options` | `def:derivative-contracts` | p. 31 | Rewritten |
+| B5 | *credit spread* | `rates-credit-mortgages` | `def:interest-rate-measures` (new) | sec. 4.1, p. 98 | Rewritten ("interest rate" → over a risk-free rate) |
+| B6 | *Forward Rates* | `rates-credit-mortgages` | `mod:forward-rates-fra` (new) | sec. 4.8, pp. 109–110 | Rewritten |
+| B7 | *FRA* | `rates-credit-mortgages` | `mod:forward-rates-fra` | sec. 4.9, pp. 110–112 | Rewritten; value **corrected** to a present value |
+| B8 | *Duration* | `rates-credit-mortgages` | `mod:duration-convexity` (new) | secs. 4.10–4.11, pp. 112–117 | Rewritten; approximations marked |
+| B9 | *Basic Principles of Futures Hedging* (table) | `commodity-hedging` | `def:futures-hedge-basis` (new) | sec. 3.1, pp. 70–72 | Rewritten; the long-hedge column noted as not Hull's |
+| B10 | *basis* | `commodity-hedging` | `def:futures-hedge-basis` | sec. 3.3, p. 76 | Rewritten; sign convention stated |
+| B11 | *basis risk* | `commodity-hedging` | `def:futures-hedge-basis` | p. 77 | Rewritten; long-hedge case and cross-hedge components added |
+| B12 | *Cross Hedging* | `commodity-hedging` | `def:futures-hedge-basis` | sec. 3.4, p. 79 | Rewritten |
+| B13 | *Hedge Ratio* | `commodity-hedging` | `mod:minimum-variance-hedge-ratio` (new) | sec. 3.4, pp. 79–83 | Rewritten; derivation added |
+| B14 | *Time Value of Money Formulas* | `rates-credit-mortgages` | `def:interest-rate-measures` | none (derived here) | Rewritten; "Expected Annual Rate" corrected to effective |
+| B15 | *Return Metrics* | `performance-manager-evaluation` | `def:return-measures` (new) | GIPS 2020 | Rewritten; TWR root and real-return "risk" factor corrected |
+
+**Subclaims outside and inside the blocks.**
+
+| Where | Legacy claim | Disposition |
+|---|---|---|
+| basic intro | Derivatives market much larger than stocks by underlying assets; hedging, speculation, arbitrage; risk transfer | Kept as Hull's (p. 23); qualified: notional (\$558.5 tn OTC) is not value (\$11.6 tn), pp. 27–28 |
+| basic | Exchanges trade standardised contracts; clearing house "takes care of credit risk" by margin | Rewritten (p. 25); qualified: margin reduces, does not remove, credit risk (`mech:otc-clearing-collateral`) |
+| basic, items i–iii | OTC reforms: SEFs, CCP clearing, reporting | Kept as Hull's account with his qualifiers restored ("whenever possible", "most parts of the world", p. 26); primary rules unchecked → stub `rule:otc-derivatives-reforms` |
+| basic | Forward payoffs $S_T-K$, $K-S_T$ | Rewritten (p. 29); option payoff and profit with premium added (p. 32, examples recomputed) |
+| basic | Futures on exchange; most closed out | Rewritten (pp. 30, 47–48) |
+| basic | Delivery notice, grade, size, place, months, last trading; price limits "trading ceases" | Rewritten (pp. 48–50); limits contract-specific, exchanges can change them, controversial |
+| basic + figure | Convergence by arbitrage | Rewritten (pp. 50–51) with the deliverability condition as interpretation; figure redrawn in TikZ, original PNG (a reproduction of Hull's Figure 2.1) preserved |
+| basic | Margin accounts, daily settlement, variation, maintenance, margin call, withdrawal, brokers pay interest; minimum levels by clearing house | Merged into `mech:futures-margin-settlement` as Hull's generic account (pp. 51–54): "most brokers"; maintenance about 75%; not any clearing house's rules |
+| basic | Clearing house members: net basis, maintenance = initial, guaranty fund | Merged (pp. 53–54), with Hull's "about 99%" sizing |
+| basic | OTC CCPs, novation-like substitution, CCP takes credit risk; bilateral ISDA/CSA; 2016 margin rules | `mech:otc-clearing-collateral` (pp. 54–57; PFMI para. 1.13); scope of the 2016 rules from Hull's footnote; CCPs mitigate, not eliminate |
+| basic | Treasury rates risk-free "as there is no chance" of default | Qualified: "usually assumed" (p. 99), default in own currency only; not the derivatives discount rate (p. 101) |
+| basic | Fed funds; EFFR as weighted average of brokered rates; Fed may intervene | **Corrected** with the New York Fed: volume-weighted median of FR 2420 transactions since 1 March 2016 (`exp-sofr-data`); Hull's p. 99 description superseded |
+| basic | Repo rates; overnight and term repo | Rewritten (p. 99); SOFR methodology added (`exp-sofr-data`) |
+| basic | Compounding $A(1+R/m)^{mn}$, $Ae^R$, "equivalent annual interest rate" | Rewritten (pp. 102–104) with conversions |
+| basic | Spot rate, bond price, bond yield, par yield | Rewritten (pp. 104–106); examples recomputed |
+| basic | $R_F$ formulas; instantaneous forward | Rewritten (pp. 109–110); finite-difference check |
+| basic | FRA value $\tau(R_K-R_F)L$ | **Corrected**: present value; settlement timing; single-curve caveat; SOFR backward-looking |
+| basic | Duration definition and relations; modified duration; convexity Taylor | Rewritten with approximation signs; ±200 bp checks |
+| basic | Parallel-shift assumption for portfolios | Kept (p. 115), with yield change against curve shift |
+| basic | Expectations, segmentation, liquidity-preference theories; "forward rates are greater" | Kept as Hull's conjectures (pp. 117–119); "are" qualified; evidence stubbed (`ev:term-premia`, home `curve-term-structure`) |
+| fwdfut, items i–iv | Four assumptions | Rewritten (p. 126): needed for some participants only |
+| fwdfut, numbered lists (no-short-sale arbitrage, yield strategy, commodity arbitrage) | Arbitrage strategies | Rewritten (pp. 127–142); the commodity reverse arbitrage limited to investment assets; consumption assets give only an upper bound |
+| fwdfut | Income $I$, yield $q$, forward value $f$ "close to zero" | Rewritten (pp. 130–133); $K$ set so $f=0$ at inception |
+| fwdfut | Index arbitrage | Rewritten (pp. 135–137), with October 1987 failure |
+| fwdfut | Currency parity with $S_0$ as "local in foreign" | **Corrected** to Hull's quote direction (p. 138) |
+| fwdfut | Commodities, storage $U$, $u$, convenience yield, cost of carry items i–iv | Rewritten (pp. 141–144) |
+| fwdfut, items in B9 | Short and long hedges | Rewritten (pp. 71–72) |
+| fwdfut, 1–3 | Causes of imperfect hedges | Kept (pp. 75–76) |
+| fwdfut | Hedge-ratio derivation, $h^*$, figure | Rewritten with the entry's own variance derivation; figure redrawn from Hull's Table 3.2 data; original PNG (a reproduction of Hull's Figure 3.3) preserved |
+| fwdfut | Hedge effectiveness $=R^2=\rho^2$ | Kept (p. 81), qualified as in-sample |
+| fwdfut | $N^*$, daily-settlement versions | Rewritten (pp. 81–83); price-change and return regressions kept apart |
+| fwdfut | Tailing $N^*/(1+0.01r)$ | Qualified: one year at simple rate only (Hull's 1.05 example, p. 83) |
+| fwdfut | Index futures, CAPM beta, changing beta | Rewritten (pp. 85–88); Hull's table assumptions noted |
+| fwdfut | Reasons for index hedging | Kept as motivations (pp. 87–88), not evidence |
+| fwdfut | Stack and roll | Rewritten (pp. 89–90), with Metallgesellschaft's liquidity mismatch |
+| fwdfut, items i–iii | U.S. day counts | `conv:us-rate-quotation` (pp. 152–153) |
+| fwdfut | T-bill quote, T-bond 32nds, clean/dirty | `conv:us-rate-quotation` (p. 154); examples recomputed |
+| tvm table | EAR, continuous FV, PV, ordinary annuity, annuity due, perpetuity | Derived here (no source); "Expected" → effective; timing, $r\to0$ and perpetuity limits stated |
+| tvm table | IRR, MWR | `def:return-measures` (GIPS p. 78); existence and multiple roots added |
+| tvm table | TWR $\sqrt[1/n]{\cdot}$ "geometric mean" | **Corrected**: malformed root; cumulative, geometric mean and annualised kept apart; split at external cash flows (GIPS 2.A.24) |
+| tvm table | Annualised, log return | Kept, derived |
+| tvm table | Gross, net, pre-tax, after-tax | Gross and net from GIPS glossary (pp. 76, 78); tax measures not checked |
+| tvm table | Real return with $(1+r_{\mathrm{Risk}})$ factor | **Corrected**: $(1+r_{\mathrm{nom}})/(1+\pi)-1$; the risk factor has no basis |
+| tvm table | Leveraged return | Kept, derived with its funding assumptions |
+
+No claim was deleted outright; every not-adopted claim stays in the artefacts.
+
+**Existing entries checked.** `mech:futures-margin-settlement` (merged into, generic account kept apart from CME rules); `def:arbitrage` and `res:synthetic-short-put-call` (cross-referenced; parity and carrying costs not repeated); `meth:relative-performance-evaluation` (IRR and holding-period return already there; cross-referenced); `def:fixed-income-market-structure`, `mech:securities-lending-short-sale`, `def:securities-lending-fee-rebate`, `def:common-investor-contagion`, `mod:factor-risk-model` (cross-referenced). No duplication was found.
+
+### Sources, 2026-10-15/16
+
+- **Hull** (`s7-hulloptions`), *Options, Futures, and Other Derivatives*, 11th Global edition, Pearson 2022, ISBN 9781292410654 (copyright page checked; matches the catalogue's selected edition), local PDF, 881 pages, text layer through PDFKit, printed page = PDF page − 1 (PDF 24 is p. 23, chapter 1's opening). Read: chap. 1 pp. 23–33; chap. 2 pp. 46–57 and 62–65; chap. 3 pp. 70–90; chap. 4 pp. 98–119; chap. 5 pp. 124–145; chap. 6 pp. 152–155. Figures 2.1 (p. 51) and 3.3 (p. 81) viewed as page images: the two legacy PNGs reproduce them. Author errata not checked.
+- **New York Fed**, *Additional Information about Reference Rates* (`exp-sofr-data`) and the EFFR and SOFR pages, retrieved 2026-10-15: EFFR and OBFR methodology (volume-weighted median, FR 2420, change of 1 March 2016) and SOFR's scope.
+- **GIPS standards for firms, 2020 edition** (`wide-gips-2020`), official PDF (146 pages) downloaded 2026-10-15, printed page = PDF page − 18: provisions 1.A.35 (pp. 5–6), 2.A.23–2.A.30 (pp. 11–13) and the glossary entries for external cash flow (p. 75), gross-of-fees (p. 76), money-weighted and net-of-fees returns (p. 78) and time-weighted return (p. 83).
+- **CPSS–IOSCO PFMI** (`exp-pfmi`), para. 1.13, p. 9, as read in slice 27.
+- **Not read:** the readings of the four owning pathways beyond those above; the Dodd–Frank, swap-reporting and uncleared-margin rule texts; Hull chaps. 6.2–6.5 and 7 onward; any source for the legacy time-value file, whose origin is not recorded.
+
+### Numerical checks
+
+Independent of the formulas being checked, in a scratch script (numpy/scipy, not kept in the repository):
+- **Hedge objective**: the sample variance of $\Delta S-h\Delta F$ on Hull's Table 3.2 data minimised numerically gives $h^*=0.7777$, equal to the OLS slope and to $\rho\sigma_S/\sigma_F$; variance retained 13.81% (removed 86.19% $=\rho^2$); at $h=1$, 20.86%; $N^*=37.03$; one-day $N^*=32.23$; tailing factor $1/1.05=0.9524$ against $1/(1+0.05\times0.5)$ for six months.
+- **Discounted cash flows**: Hull's forward prices (40.50, 886.60, 51.14, 25.77), forward value 2.17, parity 0.7206, storage 484.63, index 1,313.07; bond 98.39, yield 6.76%, par yield 6.873%; forward 3→4 6.2%; instantaneous forward by finite difference of $-\ln P$ equal to $R+TR'$.
+- **FRA**: Example 4.3 gives \$369,247 (Hull prints \$369,200); sign from the receive-fixed side.
+- **Duration**: $B=94.213$, $D=2.653$, $C=7.570$; exact against approximate at $\Delta y=+0.001$, $\pm0.02$; semiannual $D^*=2.499$, exact 93.978.
+- **Annuity limits**: brute-force sums equal the closed forms; factor → 10 as $r\to0$; perpetuity partial sums converge to $A/r$.
+- **Returns**: TWR −1.00% against MWR −3.71% in a contribution example; cumulative 3.95%, geometric mean 1.30%; annualised 7.42%; IRR roots 10% and 40%; a no-root case (maximum NPV −0.75); real 4.854% against $n-\pi=5\%$; leveraged 13%.
+- **Quotes**: 2.6957, 2.7111, T-bill quote 4.00, \$120,156.25, accrued 1.64; gold margin balance \$7,980 on day 7.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `s7-hulloptions` | as listed | Textbook account as of 2021; U.S.-centred conventions and examples; the legacy notes' edition is unknown |
+| `exp-sofr-data` | methodology page | As published 15 October 2026 |
+| `wide-gips-2020` | definitions and provisions listed | Presentation standard, not a full methodology; after-tax returns not covered |
+| Reform rules, term-premium and hedging evidence | none | Stubs |
+
+The ten new entries and the merged passage are *partly checked*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+New artefacts (earlier ones unchanged): `notes/artefacts/volatility-options/hull-basics.tex`, `hull-forwards-futures.tex`, `legacy-wrappers.tex` (display-only wrappers and `part.tex` lines, with both figures rendered) and `legacy-section-original.tex`; `notes/artefacts/rates-credit-mortgages/time-value.tex` and `legacy-section-original.tex`. The PNGs were moved, byte-identical (SHA-256 prefixes `9d6e55b4…`, `ba04bf8f…`), to `notes/artefacts/volatility-options/legacy/volatility-options/figures/`, the same relative path the originals use, so the verbatim bodies compile unedited. A script compared everything with `git show HEAD:…`:
+- each body below its migrate-to line appears exactly once; both wrapper copies are byte-identical;
+- all 15 blocks appear verbatim once each, in order; every prose segment outside the blocks appears;
+- `\item` commands, matched as `\item` not followed by a letter: 3, 29 and 0 (32; 2 inside blocks, 30 outside), equal in originals and artefacts; substring counts give 4, 39 and 0;
+- `\begin`/`\end` sequences identical (46, 76 and 8 commands), covering all 33 display equations, 3 tables and 2 figures.
+
+All four artefacts compile alone without warnings or overfull boxes (4, 5, 1 and 2 pages); the two Hull files carry 15 and 10 underfull boxes from their own `\\` line breaks, which are the legacy boxes removed from the compendium. Their tables, equations and figures were inspected by page image, including the malformed TWR root, preserved as committed.
+
+### Counts
+
+`migration_status.py --check`, 0 problems: 583 → 568 legacy blocks = 523 shared + 16 single-candidate + 29 assigned. Entries 108 → 118 (definitions 38 → 42, models 13 → 16, results 17 → 18, conventions 2 → 3, mechanisms 8 → 9). New pathway notes: `volatility-options` (2 entries, 2 stubs), `rates-credit-mortgages` (5, 3), `commodity-hedging` (2, 3); `performance-manager-evaluation` 1 → 2 entries, 0 → 1 stub; `futures-execution` 4/1 unchanged in count, its entry extended. New reading note `s7-hulloptions`. No new `front/sources.tex` keys (all sources are catalogue keys).
+
+### Other files
+
+- New chapters `volatility-options/`, `rates-credit-mortgages/` and `energy-commodities/`, with their openers and two TikZ figures; `portfolio-construction-risk` and `execution-trading-costs` openers updated.
+- Pathway notes as above; `notes/log.md` coverage rows, a Hull reading row and two open questions; `notes/migration.md` status, index, next batch and map; `compendium/README.md` order paragraph.
+
+### Build
+
+`latexmk -g -pdf compendium.tex` exits 0: 228 pages (225 before); no LaTeX warnings; 0 overfull and 0 underfull boxes (25 underfull before, all in the removed legacy chapters); the inherited `page.i` duplicate-destination warning. `migration_status.py --check` 0 problems; `python3 -m pytest -q tools` 14 passed. Pages inspected as images: the rates chapter (forward rates, FRA, duration), the options entry, the return measures and the hedge-variance figure, after the review fixes as well.
+
+### Independent review
+
+An independent subagent re-read the cited Hull pages (chaps. 1–6), the GIPS, PFMI and New York Fed passages and Narang p. 134, recomputed every number in the entries and checked every cross-reference label. All quotes, locators and numbers not listed below were confirmed. Fixed:
+- **Definite errors.** The hedge-ratio minimum was stated as $dV/dh=0$; now $d\operatorname{Var}V(h)/dh=0$. A locator "pp. 82" → p. 82. The gold margin example cited only Table 2.1 (p. 52); the loss and the call are in the text on pp. 51 and 53. The legacy "value is close to zero" at a forward's inception is Hull's own sentence (p. 133), not an omission; the entry now says the legacy dropped Hull's next step, $K$ set so $f=0$. The receive-fixed FRA cash flow $\tau(R_K-R_M)L$ is now marked as derived from Hull's definitions (pp. 111–112), and the Pitfalls record that Hull's p. 111 example reverses the payment direction (Party A, receiving 3% fixed with LIBOR at 3.5%, pays \$125,000); his p. 112 value formula is correct; errata not checked.
+- **Qualifications.** Yield change against a parallel zero-curve shift: approximately equal, exactly only for a flat curve (0.9996 on Hull's Table 4.2 bond, recomputed). EFFR: the methodology changed with the rate for 1 March 2016 and is now a volume-weighted median. The annuity limits are the future-value factor's. LTCM (Business Snapshot 2.2): collateral on both legs and high leverage forced close-outs, not "unable to meet calls". Term-structure theories: Hull calls two conjectures and finds liquidity preference "most appealing". GIPS 2.A.23–2.A.24: sub-period returns at large cash flows apply if daily returns are not calculated, with exceptions for private-market investment portfolios. SOFR's 360-day year cited to Hull p. 100. "DV01" dropped from an index that never defined it.
+- **Slice-30 wording.** In `def:order-exposure-decisions`, words after Narang's quotation had read as his; "in Narang's words" now sits with the quotation and the gloss (size and price not displayed before it trades) is the entry's.
+Not changed: Hull's "tranasaction" typo (p. 23) is silently corrected in the quotation.
+
+### For review
+
+- Splitting the Hull notes across four pathways against the map, and the cost-of-carry entry under the options overview.
+- Using the New York Fed's methodology to correct Hull's EFFR description, and treating Hull's reform list as his account.
+- The time-value identities written as derived, unsourced material.

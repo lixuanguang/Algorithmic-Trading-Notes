@@ -33,6 +33,8 @@ Corrected in a follow-up the same day (`notes/migration.md`, *Slice 19 follow-up
 
 All four: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/futures-execution/derivations.tex`.
 
+Changed in migration slice 31, 2026-10-15: `mech:futures-margin-settlement` gains Hull's generic margin account (initial, maintenance and variation margin, margin calls, interest, securities as margin, clearing-member net margining and guaranty fund; 11th Global edition, chap. 2, pp. 51-54), marked as illustration, not any clearing house's rules, beside the CME rules already there. Its artefact is `notes/artefacts/volatility-options/hull-basics.tex`.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).

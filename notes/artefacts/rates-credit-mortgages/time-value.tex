@@ -1,5 +1,23 @@
-% migrate-to: rates-credit-mortgages, performance-manager-evaluation
-\section{Time Value of Money}
+% notes/artefacts/rates-credit-mortgages/time-value.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 31, 2026-10-15): the whole of
+% compendium/legacy/rates-credit-mortgages/01_tvm.tex below its migrate-to line, with only the section heading unnumbered. The compendium entries state each
+% claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Time Value of Money Formulas -> def:interest-rate-measures (rates-credit-mortgages; formulas derived,
+% no source); Return Metrics -> def:return-measures (performance-manager-evaluation; GIPS 2020 definitions).
+% No source is recorded for this file; it is not attributed to Hull.
+% Figures referenced by the original as legacy/volatility-options/figures/*.png are kept, unchanged, at that same
+% relative path under notes/artefacts/volatility-options/, so that the body compiles without edits.
+% Compile inside notes/artefacts/rates-credit-mortgages/ with  latexmk -pdf time-value.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: Time value of money and return metrics}
+
+% From compendium/legacy/rates-credit-mortgages/01_tvm.tex (whole file, deleted 2026-10-15 once empty).
+\section*{Time Value of Money}
 
 \begin{definition} \hlt{Time Value of Money Formulas}\\
 \begin{tabular}{p{4.6cm}p{5.5cm}p{5cm}}
@@ -52,3 +70,5 @@ Leveraged Return & $r_L = \frac{r(V_0 + V_B) - r_B V_B}{V_0}$ & $V_B$ borrowed, 
 \end{tabular}
 \end{definition}
 
+
+\end{document}

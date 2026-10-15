@@ -61,7 +61,7 @@ Changed in slice 6:
 - `def:inside-information`: skilled speculation against inside information.
 - `def:outside-spread`: cross-references only.
 
-Changed in slice 7: `def:bluffing-manipulation` (the legacy impact-symmetry principle merged into its Practice, with a pointer to the absence-of-manipulation entry listed under `price-impact-execution`), and cross-references from `def:price-formation-process` and `res:spread-component-identification` to the new price-impact entries, which live under `price-impact-execution`.
+Changed in slice 7: `def:bluffing-manipulation` (the legacy impact-symmetry principle merged into its Practice, with a pointer to the absence-of-manipulation entry listed under `price-impact-execution`), and cross-references from `def:price-formation-process` and `res:spread-component-identification` to the new price-impact entries, which live under `price-impact-execution`. Changed in slice 9: `res:spread-component-identification` (a cross-reference to the Glosten–Harris regression listed under `price-impact-execution`).
 
 All twenty-two: verification partly checked 2026-10-15, stability draft. Human review is outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`, where the migration has kept every removed block since the pilot.
 

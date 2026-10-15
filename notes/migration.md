@@ -698,9 +698,122 @@ The 10 blocks are kept verbatim in `notes/artefacts/market-making-lob/derivation
 - The three meanings of "temporary impact".
 - The interpretation notes on Bacry et al.'s in-sample beta.
 
+## Slice 9: price impact estimation, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 8's pushed state (`2214a1b`, on `main`, matching `origin/main`; guide submodule at `343d145`; `house.tex` unchanged). The reported counts matched the checker: 741 legacy blocks (125 single-candidate, 587 shared, 29 assigned), 40 entries, and pathway listings of 5, 22 and 13. Migration and source checking, not study.
+
+### Scope
+
+The 8 blocks of `04_.../04_price_impact_estimation.tex`, whose only candidate pathway is `price-impact-execution`. All 8 were migrated. The file, its `\input` line in `04_.../00_overview.tex` and its map row were deleted. No other legacy file was touched.
+
+### Routing and overlaps, from content
+
+Routing is carried forward: the entries live in `compendium/execution-trading-costs/` under `price-impact-execution`.
+
+**Merged into existing entries:**
+- *Execution-Time Impact* → `def:price-impact`. It is a measurement of the impact path, from the arrival price, signed and in spreads or volatility; the path itself is in the new evidence entry.
+- *Timing Is Not Noise* → `def:price-impact`. It is the reaction/prediction split already there, with Lehalle and Laruelle's timing examples.
+
+**New entries, because their designs or targets differ from the existing ones:**
+- *Impact Has a Hump Shape*, *Impact Driver Segmentation* and *Participation-Duration Shape* → `ev:intraday-impact-profile`. Its target is the intraday path and its dependence on participation and duration, not the size scaling of `ev:square-root-impact`, so it is cross-referenced rather than merged.
+- `meth:almgren-impact-estimation`. Almgren et al.'s design differs in target ("permanent" measured half an hour after the last fill, realised cost, temporary $J-I/2$), clock (volume time) and normalisation. It is kept distinct from Lehalle and Laruelle's fit and from Bacry et al.'s 20-day profile. No legacy block was solely its rewrite: it supports the participation, driver and execution-time blocks.
+- *Order-Flow Impact Regression* and *Order-Flow Regression Identification* → `meth:order-flow-impact-regression`. This is a regression procedure on signed trades. It extends the generalized Roll model in `res:spread-component-identification`, which gained a cross-reference; it was not merged there because the target (per-trade permanent and transitory effects as functions of size) and the estimation question differ.
+- *Index Reconstitution Impact* → `ev:index-reconstitution-impact`. The pathway `etf-index-closing-execution` is named as a reader.
+
+### Sources and availability, 2026-10-15
+
+| Source | Copy used | Identity checked |
+|---|---|---|
+| `alpha-laruelle` | As in slices 4–5 | As before |
+| `alpha-harris` | As in slices 2–6 | As before |
+| `s6-hasbrouck` | The 2007 book PDF, `Empirical Market Microstructure_ ... (2007, Oxford University Press, USA) - libgen.li.pdf`. Another local file named "Joel Hasbrouck - Empirical market microstructure ... (2007).pdf" renders as his 2004 lecture-notes draft and was not used | Page image of p. 91 matches the 2007 book |
+| `wide-almgren-direct-impact` | Authors' preprint of 10 May 2005, 26 pp., from a Wayback snapshot (2017-08-08) of `cims.nyu.edu/~almgren/papers/costestim.pdf` | Title, authors and date; the published Risk version was not compared |
+| `wide-bacry-life-cycle` | arXiv preprint of 9 December 2014, as in slice 8 | As before; Lehalle and Laruelle (2018) restate its procedure, citing the 2015 paper |
+
+Not consulted: Glosten and Harris (1988), Madhavan (2002), Moro et al. (2009), Huberman and Stanzl (2004), Tóth et al. (2011). Claims from them are attributed to the source that reports them. Slice 8's checks of Almgren and Chriss covered only selected passages of a preprint and were not reused as a check of Almgren et al. (2005).
+
+### What each estimator measures
+
+| Design | Target and horizon | Unit and benchmark | Normalisation | Sample and uncertainty |
+|---|---|---|---|---|
+| Lehalle and Laruelle (`ev:intraday-impact-profile`) | Price path during and after execution; dependence on participation and duration | Order; signed move from the arrival price | Bid–ask spreads; participation = share of market volume during execution; duration in 5-minute intervals | Crédit Agricole Cheuvreux, CAC 40, 2010; bucket averages; 95% band on the path; no exponent uncertainty reported |
+| Bacry et al. (same entry, and `meth:post-execution-impact-profile`) | Signed move at the end of execution; daily profile to 20 days | Metaorder; relative mid-price move from the start | Daily participation $R$ or trading rate $r$; duration $T$ | One European broker, 2010; L1, L2 and log-log fits, no standard errors in Table 2 |
+| Almgren et al. (`meth:almgren-impact-estimation`) | $I$ to half an hour after the last fill; realised $J$; temporary $J-I/2$ | Order; pre-trade midpoint | Volume time; size relative to volume during execution; volatility; inverse turnover | Citigroup, S&P 500, 2001–2003, 29,509 orders after filters; one-standard-deviation errors; $R^2$ below 1% |
+| Glosten–Harris (`meth:order-flow-impact-regression`) | Per-trade permanent and transitory effects | Trade (event time) or interval (clock time); trade prices or midpoints | Trade size | Assumes size and sign exogenous; the original not read |
+| Russell reconstitution (`ev:index-reconstitution-impact`) | Monthly return difference, additions against deletions | Stock; June and July returns | None | 1996–2001 averages, via Harris |
+
+### Source findings and corrections
+
+- **Participation and duration.** *Participation-Duration Shape* is Lehalle and Laruelle's eq. (3.1) (p. 208, page image), with only $\gamma\approx0.5$ reported. Bacry et al.'s Table 2 shows that the sign of the duration effect depends on what is held fixed: negative at fixed daily participation, positive at fixed trading rate. That reconciles the two. Interpretation: $R=rT$ gives $T^{a+b}$, $a+b\approx0.2$–0.36. Almgren et al. reject the square root at 95% for temporary impact (exponent $0.600\pm0.038$); that was added to `ev:square-root-impact`.
+- **Drivers.** Tick size, depth, side, auctions and venue access are not in the passages. The sources disagree on the spread (Almgren et al.: no consistent dependence; Bacry et al.: a log-log exponent of 0.28).
+- **The regression block** is Harris's box (p. 435, page image), the Glosten–Harris model with only size-proportional permanent impact. Hasbrouck's statement of the model has also a size-independent permanent term, $\lambda_0$ (eq. (9.26), p. 91, page image); the legacy form sets $\lambda_0=0$. Harris's sentence that regression "ensures" an error uncorrelated with the regressors confuses residual orthogonality with exogeneity (Interpretation).
+- **The identification caveat's controls.** Partly supported:
+  - *Index return:* Hasbrouck p. 87.
+  - *Volume time:* Almgren et al.
+  - *Volatility and spread:* Bacry et al.
+
+  Controls alone do not make coefficients causal (Interpretation).
+- **Index reconstitution.** Harris's box (p. 487, page image) reports the 15% and 5% figures from Madhavan (2002), not consulted. The legacy residual explanations (ownership, attention, information) are not Harris's; his are liquidity value, momentum, or later reversal.
+- **"Permanent" is horizon-dependent.** Almgren et al.: half an hour after the last fill. Lehalle and Laruelle: one day. Bacry et al.: a 20-day profile. Each entry states its horizon.
+- **Bacry et al.'s in-sample beta.** Lehalle and Laruelle's restatement keeps the same window and least-squares beta. The question stays open; a same-author restatement is not independent evidence.
+
+### Mathematical checks (own, Interpretation in the entries)
+
+- Differencing Hasbrouck's eq. (9.26) gives $\Delta p_t=\lambda_0q_t+\lambda_1q_tV_t+c_0\Delta q_t+c_1\Delta(q_tV_t)+u_t$; Harris's form follows with $\lambda_0=0$.
+- Almgren et al.'s Table 3 recomputed from the fitted coefficients: IBM $I=19.9$ bp, $J=32.2$, $24.6$, $18.4$ bp; DRI $I=21.7$ bp, $J=42.9$, $32.0$, $23.1$ bp. These match the printed 20, 32, 25, 18 and 22, 43, 32, 23 bp to rounding.
+- The duration reconciliation above, from Bacry et al.'s Table 2.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-laruelle` | chap. 3, secs. 3.2–3.2.2, pp. 203–215 | Text layer; page image of p. 208 |
+| `alpha-harris` | chap. 21, box p. 435; chap. 23, box p. 487 | Page images of both |
+| `s6-hasbrouck` | secs. 9.6–9.8.1, pp. 87–92 | Text layer; page image of p. 91 |
+| `wide-almgren-direct-impact` | preprint pp. 1–22 | Text layer; page images of pp. 19 and 21 |
+| `wide-bacry-life-cycle` | arXiv sec. 3, pp. 5–8 | Text layer; page image of p. 8 |
+
+The four new entries are *partly checked 2026-10-15*, *draft*. **Human review is outstanding** for them and for the three revised ones.
+
+### Dispositions
+
+| Legacy block (`04_.../04_price_impact_estimation.tex`) | Disposition |
+|---|---|
+| *Execution-Time Impact* | Merged into the Practice of `def:price-impact` |
+| *Impact Has a Hump Shape* | Rewritten as `ev:intraday-impact-profile` (Statement) |
+| *Impact Driver Segmentation* | Merged into the Practice and Pitfalls of `ev:intraday-impact-profile` (unsupported drivers named) |
+| *Participation-Duration Shape* | Rewritten as `ev:intraday-impact-profile` (eq. (3.1); Bacry et al.'s comparison; Almgren et al. in `meth:almgren-impact-estimation`) |
+| *Order-Flow Impact Regression* | Rewritten as `meth:order-flow-impact-regression` |
+| *Index Reconstitution Impact* | Rewritten as `ev:index-reconstitution-impact` |
+| *Order-Flow Regression Identification* | Merged into the Pitfalls of `meth:order-flow-impact-regression` |
+| *Timing Is Not Noise* | Merged into the Pitfalls of `def:price-impact` |
+
+Also changed:
+- `ev:square-root-impact`: Almgren et al.'s 3/5 exponent and Bacry et al.'s duration factor.
+- `meth:post-execution-impact-profile`: Lehalle and Laruelle's restatement.
+- `res:spread-component-identification`: a cross-reference.
+
+The 8 blocks are kept verbatim in `notes/artefacts/market-making-lob/derivations.tex`, section *Price impact estimation (slice 9)*. A script confirmed three things: each block appears there once and in order; the artefact's earlier content is unchanged; and the other files of `04_...` are byte-identical (only the `\input` line was removed from `00_overview.tex`).
+
+### Counts
+
+`migration_status.py`: 741 → 733 legacy blocks (8 migrated). Single-candidate 125 → 117; shared 587 → 587; assigned 29 → 29. Entries 40 → 44 (evidence 1 → 3, methods 4 → 6). Entries listed: `price-impact-execution` 5 → 9; `execution-market-making` 22 → 22 (one of its entries gained a cross-reference, recorded in its note without a new listing); `market-making-lob` 13 → 13. No notation override was added: the house trade sign $q_t$ is kept, and Almgren et al.'s $I$, $J$ and coefficients are declared local in their entry.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 163 pages (160 before); no LaTeX warnings, no undefined references or citations; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files, as before; the one `page.i` duplicate-destination warning; no new boxes. Rendered and inspected: PDF p. 40 (the revised `def:price-impact`), pp. 44–48 (the revised and new entries) and pp. 140–141 (the pruned legacy section, which no longer contains *Price Impact Estimation* or *Market Impact Models*). The artefact compiles on its own: 21 pages (20 before), no warnings, the same 3 underfull boxes.
+
+### For review
+
+- The four new entries and the three revised ones.
+- The decision to give Almgren et al.'s design its own method entry.
+- The $\lambda_0$ correction to the Glosten–Harris form.
+- The duration reconciliation.
+- The reliance on preprints (Almgren et al. 2005, Bacry et al. 2014) and on Harris's report of Madhavan.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/04_price_impact_estimation.tex`, whose only candidate pathway is `price-impact-execution`. Read its blocks and compare them with `def:price-impact`, `mod:propagator`, `ev:square-root-impact` and `meth:post-execution-impact-profile` before merging. The required readings `wide-almgren-direct-impact` and `wide-toth-square-root` may support estimation blocks. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`price-impact-execution` has no single-candidate legacy blocks left; its remaining candidates (36) are shared. The nearest is `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/01_optimal_execution_problem.tex`, shared with the section overview `execution-trading-costs` in the map. It contains a *Temporary Impact Cost* model, seen while routing slice 7, which would integrate with the Almgren–Chriss material in `def:price-impact`. Read its blocks and decide each one's owner before migrating. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -727,7 +840,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/01_trade_classification_and_signed_flow.tex` | price-impact-execution, lob-deep-learning |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/02_order_flow_imbalance.tex` | market-making-lob, lob-deep-learning, price-impact-execution |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/03_stylized_facts_of_high_frequency_data.tex` | market-simulation, lob-deep-learning |
-| `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/04_price_impact_estimation.tex` | price-impact-execution |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/06_trade_duration_and_event_time.tex` | market-simulation, lob-deep-learning |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/07_statistical_models_for_order_flow.tex` | market-simulation, market-making-lob |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/08_feature_engineering_for_microstructure_alpha.tex` | lob-deep-learning |

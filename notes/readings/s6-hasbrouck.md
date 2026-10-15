@@ -2,7 +2,7 @@
 key: s6-hasbrouck
 pathways: [execution-market-making, market-making-lob]
 version: Joel Hasbrouck, Empirical Market Microstructure: The Institutions, Economics, and Econometrics of Securities Trading, Oxford University Press, 2007 (ISBN 978-0-19-530164-9); local PDF with a text layer, outside the repository (printed page = PDF page - 11)
-sections: secs. 3.2, 3.4, 4.4-4.5, 5.4.2, 5.5, 8.1-8.7, chap. 11, secs. 14.2.2 and 14.3.3 (pp. 24-27, 29-30, 38-39, 49, 53, 67-75, 106-117, 148, 150-151; checked for migration slices 3 to 5)
+sections: secs. 3.2, 3.4, 4.4-4.5, 9.6-9.8.1 (pp. 87-92, page image of p. 91; slice 9), 5.4.2, 5.5, 8.1-8.7, chap. 11, secs. 14.2.2 and 14.3.3 (pp. 24-27, 29-30, 38-39, 49, 53, 67-75, 106-117, 148, 150-151; checked for migration slices 3 to 5)
 read:
 status: draft
 ---
@@ -43,7 +43,7 @@ Prepared on 2026-10-15 by migration slice 3 from source checks, not from study: 
 
 ## Entries
 
-`def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `mod:inventory-based-quotes`, `def:volatility-components`; also cited in `res:adverse-selection-spread-component` and `def:fundamental-value` (contrast with Harris's fundamental value).
+`def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `mod:inventory-based-quotes`, `def:volatility-components`; also cited in `res:adverse-selection-spread-component`, `def:fundamental-value` and `meth:order-flow-impact-regression` (contrast with Harris's fundamental value).
 
 ## Open questions
 

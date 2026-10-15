@@ -34,6 +34,8 @@ Written in migration slice 31, 2026-10-15, from the *Return Metrics* block of th
 
 Partly checked 2026-10-15, draft; human review outstanding. Artefact: `notes/artefacts/rates-credit-mortgages/time-value.tex`.
 
+Slice-31 follow-up, 2026-10-16: the TWR/MWR example now compares matching horizons (MWR $-3.71$ percent per sub-period, $-7.29$ percent over two; TWR $-1.0$ percent over two, $-0.50$ percent per sub-period), and the entry separates the annualisation formula from GIPS presentation: 2.A.12 (p. 9) forbids annualising periods under a year, 2.A.29 (p. 12) requires annualised since-inception MWRs, and 5.A.1.a--b (p. 33) presents a non-annualised since-inception MWR for a track record under a full year.
+
 ## Entry backlog
 
 - meth:gips-composite-presentation: composite construction, required statistics and disclosures for a GIPS report, as the checkpoint asks (`wide-gips-2020`, read only for definitions).

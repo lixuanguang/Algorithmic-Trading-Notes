@@ -75,3 +75,27 @@ His example: 100 equally weighted stocks, factor weights 60 and 40 percent, sign
 
 \qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~6, pp.~117--118, with p.~118 by page image; the example computed; Grinold and Kahn not read). Stability: draft. Currency: practitioner account as of 2024.
 \end{qfmethod}
+
+% Added 2026-10-16 by migration slice 32 from the legacy AFML data structures file (datastruct.tex, the ETF trick's
+% PCA allocation block), routed here outside the file's map candidates; see notes/migration-slices.md.
+\begin{qfmodel}[PCA risk-distribution weights: allocating a target variance across the principal components of a covariance matrix]\label{mod:pca-risk-distribution-weights}
+\qffield{Statement} Given an $N\times N$ covariance matrix $V$ of an invariant (returns, yield changes, volatility changes) and a target distribution of risk $R$ across $V$'s principal components, López de Prado computes the allocation $\omega$ as follows \citep[chap.~2, sec.~2.4.2, p.~35]{alpha-afml}. Decompose $VW=W\Lambda$ with eigenvalues in descending order. For any $\omega$, with $\beta=W'\omega$ its projection on the orthogonal basis,
+\[ \sigma^2=\omega'V\omega=\beta'\Lambda\beta=\sum_{n=1}^N\beta_n^2\Lambda_{n,n},\qquad R_n=\frac{[W'\omega]_n^2\Lambda_{n,n}}{\sigma^2},\qquad \sum_nR_n=1. \]
+To deliver a chosen $R$ at risk $\sigma$, set $\beta_n=\sigma\sqrt{R_n/\Lambda_{n,n}}$ and $\omega=W\beta$; rescaling $\omega$ rescales $\sigma$ and keeps $R$ (p.~35). With no $R$ given, Snippet~2.1 puts all risk on the smallest-eigenvalue component, so $\omega$ is the last eigenvector scaled to $\sigma$ (p.~36).
+
+\qffield{Notation} $\omega$ is in the units of the invariant (for example weights on returns); $\sigma$ is the target standard deviation (\texttt{riskTarget}); $R_n\ge0$.
+
+\qffield{Conditions} López de Prado frames $V$ as the covariance of an IID multivariate Gaussian process with mean $\mu$ (p.~35); interpretation, the mean plays no part, and the construction needs only $V$. It needs $\Lambda_{n,n}>0$ for every component given risk: a zero eigenvalue cannot carry risk, and a near-zero one, where estimation error is largest, produces very large weights, which the snippet does not guard against. The decomposition does not fix signs: each $\beta_n$ with $R_n>0$ can be $\pm\sigma\sqrt{R_n/\Lambda_{n,n}}$, so with distinct eigenvalues $2^k$ allocations share one risk distribution, $k$ being the number of components given risk (two for the snippet's default); the snippet's positive roots, and the arbitrary signs of the computed eigenvectors, are conventions. With repeated eigenvalues the eigenvectors, and so the allocations, are not unique at all. The weights are those of an estimated $V$; with an estimated covariance, the lowest-variance component is the one most likely to be noise.
+
+\qffield{Practice} Checked on a random positive-definite $4\times4$ matrix (\nolinkurl{afml-checks.py}, in the artefact folder of \texttt{statistical-learning-foundations}): the construction delivers the target $R=(0.1,0.2,0.3,0.4)$ and $\sigma$ exactly, and flipping the sign of one $\beta_n$ with $R_n>0$ leaves $R$ unchanged. López de Prado's Figure~2.2 contrasts an inverse-variance portfolio, whose risk is spread over nearly all components, with the PCA portfolio, whose risk is all in the lowest-variance component (pp.~35--36). In his chapter the weights feed the ETF trick for a spread or hedge.
+
+\qffield{Pitfalls} The legacy notes wrote $\sigma^2=(\Lambda^{1/2}\beta)'(\Lambda^{1/2}\beta)'$, with a stray transpose, and $R_n=[W'n]^2_n\Lambda_{n,n}\sigma^{-2}$ for $[W'\omega]_n^2$. Allocating all risk to the smallest eigenvalue is a hedging choice, not a return forecast; it says nothing about expected return.
+
+\qffield{See also} \hyperref[meth:etf-trick]{ETF trick}; \hyperref[mod:factor-risk-model]{factor risk model}; \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance portfolio optimisation}.
+
+\qffield{Further reading} López de Prado cites López de Prado and Leinweber (2012) and Bailey and López de Prado (2012) for other hedging weights (p.~35), not read here. The legacy block is kept in \nolinkurl{notes/artefacts/statistical-learning-foundations/financial-data-structures.tex}.
+
+\qffield{Index} principal components; PCA weights; spectral decomposition; eigenvalues; risk distribution; risk contribution; risk budgeting; hedging weights; smallest-eigenvalue portfolio
+
+\qffield{Status} Verification: partly checked 2026-10-16 (against the text layer and a page image of a local copy of \texttt{alpha-afml}, chap.~2, pp.~35--36, Snippet~2.1; the construction checked numerically). Stability: draft. Currency: timeless.
+\end{qfmodel}

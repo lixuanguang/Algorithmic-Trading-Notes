@@ -26,7 +26,7 @@ Written in migration slice 31, 2026-10-15:
 
 - `def:interest-rate-measures`: credit spread; Treasury, overnight and repo rates; EFFR and SOFR methodology (Hull's brokered-average EFFR superseded in 2016 by a volume-weighted median); compounding conversions and EAR (the legacy "expected annual rate" corrected); zero rates, bond yields and par yields; annuity and perpetuity values derived, with their timing and limits.
 - `mod:forward-rates-fra`: forward and instantaneous forward rates; FRA payoff against present value (the legacy dropped the discounting), settlement timing and the single-curve caveat; term-structure theories as conjectures.
-- `mod:duration-convexity`: Macaulay and modified duration and convexity as approximations, checked at plus or minus 200 bp; yield change against parallel curve shift.
+- `mod:duration-convexity`: Macaulay and modified duration and convexity as approximations, checked at plus or minus 200 bp; yield change against parallel curve shift. Slice-31 follow-up, 2026-10-16: the yield moves one for one with a parallel zero-curve shift if and only if the zero rates at all the bond's payment dates equal its yield; a flat curve is sufficient, not necessary (a zero-coupon bond on any curve); counterexamples computed in `notes/artefacts/rates-credit-mortgages/yield-shift-check.py`.
 - `conv:us-rate-quotation`: U.S. day counts, Treasury bill discount quotes, bond prices in thirty-seconds, clean and dirty prices.
 - `mech:otc-clearing-collateral`: CCP and bilateral ISDA/CSA clearing, variation and initial margin, interest on margin, haircuts, and the post-crisis reforms as Hull reports them; CCPs mitigate rather than eliminate counterparty risk.
 

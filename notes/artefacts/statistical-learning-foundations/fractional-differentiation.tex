@@ -1,5 +1,24 @@
-% migrate-to: statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources
-\subsection{Fractionally Differentiated Features}
+% notes/artefacts/statistical-learning-foundations/fractional-differentiation.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 32, 2026-10-16): the whole of
+% compendium/legacy/ml-alternative-data/data/fracdifffeat.tex below its migrate-to line, with only the subsection heading
+% unnumbered. The compendium entries state each claim with its locator; the original wording lives here. Treat
+% everything here as unchecked own working.
+% Destinations: opening prose, BackShift Operator and Properties -> mod:fractional-differencing-weights; Expanding Window, Fixed-Width
+% Window and the figure -> meth:fixed-width-fractional-differencing (AFML chap. 5, pp. 75-88). The two PNGs reproduce
+% AFML Figures 5.3(b) (p. 81) and 5.4 (p. 83), uncredited in the original.
+% Figures referenced by the original as legacy/ml-alternative-data/figures/* are kept, unchanged, at that same relative
+% path under notes/artefacts/statistical-learning-foundations/, so that the body compiles without edits.
+% Compile inside notes/artefacts/statistical-learning-foundations/ with  latexmk -pdf fractional-differentiation.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: fractionally differentiated features}
+
+% From compendium/legacy/ml-alternative-data/data/fracdifffeat.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Fractionally Differentiated Features}
 
 Standard stationarity transformations (i.e. integer differentiation) reduce signal by removing memory. Although stationarity is necessary for inferential purposes, it is rarely the case that we want all memory to be erased.\\
 Fractionally differentiated processes exhibit long-term persistence and anti-persistence, hence enhancing the forecasting power compared to standard ARIMA approach.
@@ -77,3 +96,4 @@ Drop weights after their modulus $\abs{\omega_k}$ decreases below a given thresh
 Note that the same vector of weights is used across all estimates of $\{\tilde{X}_t \}_{t = l^*, \ldots, T}$, hence avoiding negative drift caused by expanding window's added weights.\\
 Distribution has skewness and excess kurtosis from memory, but it is stationary.
 \end{method}
+\end{document}

@@ -29,6 +29,8 @@ Written in migration slice 31, 2026-10-15:
 
 Both partly checked 2026-10-15, draft; human review outstanding. Artefact: `notes/artefacts/volatility-options/hull-forwards-futures.tex`, with the original figure.
 
+Slice-31 follow-up, 2026-10-16: `def:futures-hedge-basis` now names the two cross-hedge basis components (the futures-underlying basis $S_2^*-F_2$ and the asset difference $S_2-S_2^*$, Hull p. 77), states that $F_1+b_2$ and the decomposition assume a hedge ratio of 1.0 (p. 79), and adds the derived general expression $S_2+h(F_1-F_2)$ with its units.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry-forward-price` (`volatility-options`); `mod:duration-convexity` (`rates-credit-mortgages`); `mod:factor-risk-model` (`portfolio-construction`); `def:arbitrage` (`execution-market-making`).

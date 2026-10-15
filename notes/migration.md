@@ -24,12 +24,12 @@ Migrating a block and compiling the result advances only the first. An entry wri
 
 - **Records.** Each slice appends one section to [migration-slices.md](migration-slices.md) and one row to the index below. A correction to a finished slice is appended as a follow-up; earlier records are left as written.
 
-## Status after slice 31 (16 October 2026)
+## Status after slice 32 (16 October 2026)
 
-- **Legacy blocks:** 568 = 523 shared + 16 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
-- **Entries:** 118, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
-- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30, its diagram moved to the canonical chapter); `volatility-options` and `rates-credit-mortgages` (removed by slice 31, their two figures moved to the slice's artefact).
-- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 228 pages; no LaTeX warnings; 0 overfull and 0 underfull boxes; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
+- **Legacy blocks:** 532 = 487 shared + 16 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
+- **Entries:** 135, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
+- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30); `volatility-options` and `rates-credit-mortgages` (removed by slice 31); `ml-alternative-data` (removed by slice 32, its four figures moved to the slice's artefact). Two legacy chapters remain: `execution-market-making` (412 blocks) and `multi-asset-systematic-macro` (120).
+- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 227 pages; no LaTeX warnings; 0 overfull and 0 underfull boxes; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
 
 ## Slices
 
@@ -68,17 +68,18 @@ Blocks are the legacy blocks counted by `migration_status.py` before and after t
 | 28 | Portfolio construction models: rules, mean–variance optimisation, signal portfolios | `4e7666d` | 598 → 595 | 99 → 102 | Closed-form conditions, permutations, ML tasks, ERC rounding |
 | 29 | Risk models: factor exposures, limits and penalties | `cd7b13c` | 595 → 591 | 102 → 103 | Residual diversification, CVX–XOM hedge, compensation wording |
 | 30 | Narang's systematic-investing cluster: overview and diagram, alpha models, execution (three files, chapter closed) | `2642451` | 591 → 583 | 103 → 108 | Hidden-order leakage, lifecycle timing, currency fields |
-| 31 | Hull's derivatives basics, forwards, futures and hedging, and the time-value file (three files, two chapters closed) | this slice's commit | 583 → 568 | 108 → 118 | |
+| 31 | Hull's derivatives basics, forwards, futures and hedging, and the time-value file (three files, two chapters closed) | `9fbd551` | 583 → 568 | 108 → 118 | Cross-hedge components, yield-shift condition, return horizons and GIPS annualisation |
+| 32 | AFML data cluster: taxonomy, bars and multi-product series, labels, sample weights, fractional differentiation (five files, chapter closed) | this slice's commit | 568 → 532 | 118 → 135 | |
 
 ## Next bounded slice
 
-The AFML data cluster, proposed as one batch of 36 blocks that would close the legacy `ml-alternative-data` chapter: in `compendium/legacy/ml-alternative-data/data/`, `taxonomy.tex` (9 blocks), `datastruct.tex` (8), `datalabel.tex` (6), `datasampleweights.tex` (9) and `fracdifffeat.tex` (4), with the wrapper `dataoverview.tex`, the chapter's `section.tex` and its four figures (`standardbars.png`, `metalabel.tikz`, `fracdiffexpandwindow.png`, `fracdifffixedwidthwind.png`). All five files list the same three candidates (`statistical-learning-foundations`, `financial-ml-evaluation`, `alternative-data-sources`).
+The order-flow and event-time cluster of the legacy microstructure chapter, proposed as one batch of 37 blocks: in `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/`, `01_trade_classification_and_signed_flow.tex` (5 blocks: quote, tick and block-price rules, Lee–Ready, signed volume), `02_order_flow_imbalance.tex` (5: order-flow, trade and queue imbalance), `03_stylized_facts_of_high_frequency_data.tex` (11: heavy tails, clustering, long memory, seasonality, signature plot, microstructure noise, Epps effect, realised covariance, deseasonalisation), `06_trade_duration_and_event_time.tex` (5: durations, clock, trade, volume and business time) and `07_statistical_models_for_order_flow.tex` (11: counting processes, intensities, Poisson baseline, Hawkes processes, conditional queue dynamics). None is assigned; their candidates are `price-impact-execution`, `lob-deep-learning`, `market-making-lob` and `market-simulation`.
 
-- **Sources.** López de Prado, *Advances in Financial Machine Learning* (`alpha-afml`, local PDF) covers four files: chap. 2 (standard, information-driven and multi-product bars, the ETF trick, CUSUM sampling), chap. 3 (fixed-horizon and triple-barrier labelling, meta-labelling), chap. 4 (overlapping outcomes, uniqueness, sequential bootstrap, return attribution, time decay) and chap. 5 (fractional differentiation, expanding and fixed-width windows); `datastruct.tex` also cites `ane-geman-2000`. The four characteristics remarks of `taxonomy.tex` follow AFML sec. 2.2, but its five definitions (reference data, market data feed, binned data, granular intraday activity, fundamental and other data) do not, and their source is unrecorded: it must be identified, or the blocks rewritten from a named primary or vendor source, before they are migrated.
-- **Proposed ownership**, to be confirmed against the guide's outcomes when the batch starts: labels, sample weights and fractional differentiation (19 blocks) to `statistical-learning-foundations`, whose required reading AFML is, with time-validity and leakage consequences cross-referenced from `financial-ml-evaluation`; bars, the ETF trick and CUSUM sampling (8) to `statistical-learning-foundations`, with point-in-time and vendor caveats routed to `point-in-time-data` if its outcomes claim them; the taxonomy (9) to `alternative-data-sources` for the alternative-data characteristics and dataset assessment, with the market- and reference-data definitions to the `ml-alternative-data` overview or `point-in-time-data`.
-- **Review** in two groups: taxonomy and data structures (17 blocks); labels, weights and fractional differentiation (19).
+- **Sources.** No file records a source. The material matches Bouchaud, Bonart, Donier and Gould, *Trades, Quotes and Prices* (`catalogue-0528`, local PDF; a reading note exists), Lehalle and Laruelle (`alpha-laruelle`, local, used in earlier slices) and Cartea, Jaimungal and Penalva (`crypto-cartea`, local), with primary papers to check where the notes lean on them: Lee and Ready (1991), Cont, Kukanov and Stoikov on order-flow imbalance (`catalogue-0503`), Epps (1979), and Hawkes-process work such as Bacry et al. (`wide-bacry-life-cycle`, reading note exists). Provenance must be established block by block before writing, as in slice 32.
+- **Proposed ownership**, to be confirmed against the guide's outcomes: signing and imbalance (10 blocks) to `price-impact-execution` or `lob-deep-learning`, whose outcome needs signed flow and imbalance features with leakage-free splits; stylised facts, event time and point-process models (27) to `market-simulation`, whose outcome is a simulator validated against stylised facts; queue-conditioning blocks may belong with `market-making-lob`. Cross-reference `meth:information-driven-bars` (tick rule), `meth:activity-sampled-bars` (event clocks) and `def:volatility-components` rather than repeat them.
+- **Review** in two groups: signing, imbalance and stylised facts (21 blocks); event time and point processes (16).
 
-The fifteen blocks assigned to `hft-market-design`, the three slice-5 assignments and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+The two files of the same folder left out (`08_feature_engineering_for_microstructure_alpha.tex`, 6 blocks; `09_microstructure_data_engineering.tex`, 18) are a natural following batch with `point-in-time-data` and `lob-deep-learning`. The legacy macro chapter (120 blocks) is held back: its regimes file follows Gliner (`s7-gliner`), of which no local copy was found, while its practitioner file follows Drobny (`s7-drobny`, local). The fifteen blocks assigned to `hft-market-design`, the three slice-5 assignments and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -113,11 +114,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/ml-alternative-data/data/datalabel.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |
-| `compendium/legacy/ml-alternative-data/data/datasampleweights.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |
-| `compendium/legacy/ml-alternative-data/data/datastruct.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |
-| `compendium/legacy/ml-alternative-data/data/fracdifffeat.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |
-| `compendium/legacy/ml-alternative-data/data/taxonomy.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |
 | `compendium/legacy/multi-asset-systematic-macro/01_regimes.tex` | multi-asset-systematic-macro, macro-regimes-stock-bond |
 | `compendium/legacy/multi-asset-systematic-macro/02_transmission_maps.tex` | macro-nowcasting-signals, macro-announcements-policy, monetary-policy-curve, fx-determination-forecasting |
 | `compendium/legacy/multi-asset-systematic-macro/03_practitioner_insights.tex` | multi-asset-systematic-macro |

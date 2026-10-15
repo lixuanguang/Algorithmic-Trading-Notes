@@ -1,5 +1,27 @@
-% migrate-to: statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources
-\subsection{Data Taxonomy}
+% notes/artefacts/statistical-learning-foundations/data-taxonomy.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 32, 2026-10-16): the whole of
+% compendium/legacy/ml-alternative-data/data/taxonomy.tex below its migrate-to line, with only the subsection heading
+% unnumbered. The compendium entries state each claim with its locator; the original wording lives here. Treat
+% everything here as unchecked own working.
+% Destinations: the table and the four characteristics remarks (Fundamental, Market, Analytics, Alternative), from AFML sec. 2.2,
+% pp. 23-25 -> def:financial-data-types (alternative-data-sources); Reference Data -> data:trading-reference-data;
+% Market Data Feed -> data:market-data-levels; Binned Data (in the source Velu's Daily Statistics) and Granular Intraday
+% Microstructure Activity -> data:derived-market-statistics (all point-in-time-data); Fundamental Data and Other Data ->
+% def:financial-data-types. The five definitions follow Velu, Hardy and Nehren (s3-velu), chap. 1, sec. 1.4, pp. 26-44,
+% which the legacy file did not name.
+% Figures referenced by the original as legacy/ml-alternative-data/figures/* are kept, unchanged, at that same relative
+% path under notes/artefacts/statistical-learning-foundations/, so that the body compiles without edits.
+% Compile inside notes/artefacts/statistical-learning-foundations/ with  latexmk -pdf data-taxonomy.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: data taxonomy}
+
+% From compendium/legacy/ml-alternative-data/data/taxonomy.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Data Taxonomy}
 
 A brief overview of the types of data used in systematic trading.
 
@@ -210,3 +232,4 @@ When binning data, this may be grouped into bins ranging from a few seconds to 3
 \item Credit Ratings: credit downgrades resulting in higher funding costs have negative impact on equity prices
 \end{enumerate}
 \end{definition}
+\end{document}

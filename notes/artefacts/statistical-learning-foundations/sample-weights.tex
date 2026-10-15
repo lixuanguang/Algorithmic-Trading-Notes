@@ -1,5 +1,25 @@
-% migrate-to: statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources
-\subsection{Data Sample Weights}
+% notes/artefacts/statistical-learning-foundations/sample-weights.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 32, 2026-10-16): the whole of
+% compendium/legacy/ml-alternative-data/data/datasampleweights.tex below its migrate-to line, with only the subsection heading
+% unnumbered. The compendium entries state each claim with its locator; the original wording lives here. Treat
+% everything here as unchecked own working.
+% Destinations: opening IID sentence, Overlapping Outcomes, Estimating and Average Uniqueness -> def:label-concurrency-uniqueness;
+% IID and Oversampling, Sampling with Bootstrap, Sequential Bootstrap -> meth:sequential-bootstrap; Return attribution,
+% Time Decay, Class Weighting -> meth:sample-weights-attribution-decay; the training-only use of uniqueness and weights
+% -> pit:label-weight-leakage (financial-ml-evaluation) (AFML chap. 4, pp. 59-72).
+% Figures referenced by the original as legacy/ml-alternative-data/figures/* are kept, unchanged, at that same relative
+% path under notes/artefacts/statistical-learning-foundations/, so that the body compiles without edits.
+% Compile inside notes/artefacts/statistical-learning-foundations/ with  latexmk -pdf sample-weights.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: sample weights}
+
+% From compendium/legacy/ml-alternative-data/data/datasampleweights.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Data Sample Weights}
 
 Note that most of ML literature is based on IID assumption, and ML applications usually fail in finance as these assumptions are unrealistic in the case of financial time series.
 
@@ -108,3 +128,4 @@ In the implementation, decay takes place according to cumulative uniqueness. Not
 \begin{method} \hlt{Class Weighting}\\
 Weights for underrepresented labels. Critical in classification problems where the most important classes have rare occurrences. To assign higher weights to samples associated with those rare labels.
 \end{method}
+\end{document}

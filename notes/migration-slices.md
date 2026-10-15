@@ -3050,3 +3050,185 @@ Not changed: Hull's "tranasaction" typo (p. 23) is silently corrected in the quo
 - Splitting the Hull notes across four pathways against the map, and the cost-of-carry entry under the options overview.
 - Using the New York Fed's methodology to correct Hull's EFFR description, and treating Hull's reform list as his account.
 - The time-value identities written as derived, unsourced material.
+
+## Slice 31 follow-up: cross-hedge components, yield-shift condition, return horizons and GIPS annualisation, 16 October 2026
+
+Narrow corrections to slice 31 (`9fbd551`), run before slice 32; the slice-31 record above is left as written, and this record supersedes it where they differ. No legacy block, entry label, stub or count changed (568 legacy blocks; 118 entries).
+
+- **Cross hedging, `def:futures-hedge-basis`.** The entry gave $F_1+(S_2^*-F_2)+(S_2-S_2^*)$ without naming its parts and cited pp. 77 and 79. Hull calls the two last terms "the two components of the basis": $S_2^*-F_2$ the basis that would exist if the hedged asset were the futures' underlying, $S_2-S_2^*$ "the basis arising from the difference between the two assets" (p. 77). Both that expression and $S_2+F_1-F_2=F_1+b_2$ are one-to-one hedges: Hull's examples use a hedge ratio of 1.0, "natural" for the same asset and "not always optimal" in a cross hedge (p. 79). Added, as derived: with hedge ratio $h$ (futures units per unit of exposure, taken in the offsetting direction) the effective price is $S_2+h(F_1-F_2)$, equal to $F_1+b_2$ at $h=1$; $h$ carries any unit conversion between the two assets. The locator of "Cross hedging uses a futures contract on a different asset", which had been p. 78 (Hull's *Choice of Contract*), is now p. 77 and sec. 3.4, p. 79; and the units remark now notes that Hull's jet-fuel and heating-oil example needs no conversion (both in gallons).
+- **Returns, `def:return-measures`.** The example compared a cumulative TWR ($-1.0$ percent over two periods) with a per-sub-period IRR ($-3.71$ percent). Recomputed independently: the IRR solving $-100-100(1+x)^{-1}+189(1+x)^{-2}=0$ is $-3.7126$ percent per equal sub-period, $-7.2874$ percent compounded over both; the TWR's geometric mean is $-0.5013$ percent per sub-period. The entry now labels units and compares like with like.
+- **GIPS annualisation, same entry.** "Money-weighted returns must be annualised since-inception returns" stated 2.A.29 without the presentation rules. Read in the GIPS 2020 PDF (printed page = PDF page − 18): 2.A.12, "Returns for periods of less than one year must not be annualized" (p. 9); 2.A.29.a, "Calculate annualized since-inception money-weighted returns" (p. 12); 5.A.1.a–b, the annualised since-inception MWR through the most recent annual period end and, "when the composite has a track record that is less than a full year, the non-annualized composite since-inception money-weighted return through the initial annual period end" (p. 33). The entry now separates the mathematical annualisation $(1+R)^{365/d}-1$ from what a firm may present, and marks its 200-day example as one GIPS would not allow a firm to present. The advertising provisions were not read.
+- **Yield against zero-curve shift, `mod:duration-convexity`.** Slice 31's review fix said the two coincide "exactly only when the zero curve is flat". Flatness is sufficient, not necessary. Derived and checked: the yield moves by exactly $\Delta$ for every parallel shift $\Delta$ if and only if the zero rates at all the bond's payment dates equal its yield; a zero-coupon bond ($y=R(T)$) moves one for one on any curve, and a two-payment bond on a curve level at its payment dates does too. Counterexamples: Hull's Table 4.2 bond moves 0.9996$\Delta$; a 10-year 5 percent annual-coupon bond on a curve rising 40 bp a year from 1.4 percent moves 0.986$\Delta$, with yield duration 8.13 against zero-curve duration 8.01 years. The script is kept as `notes/artefacts/rates-credit-mortgages/yield-shift-check.py` (numpy, scipy).
+- **Notes and index.** `commodity-hedging`, `rates-credit-mortgages` and `performance-manager-evaluation` notes, the `s7-hulloptions` reading note and `log.md` record the changes; the slice-31 index row gives `9fbd551`.
+
+## Slice 32: the AFML data cluster (taxonomy, data structures, labels, sample weights, fractional differentiation), 16 October 2026
+
+A five-file batch of 36 blocks closing the legacy `ml-alternative-data` chapter, run after the slice-31 follow-up above. Migration and source checking, not study; no checkpoint was attempted. López de Prado (`alpha-afml`) is a required reading of `statistical-learning-foundations` and was read only in chaps. 2–5; Velu, Hardy and Nehren (`s3-velu`) is no pathway's reading. Two internal review groups were used: A, taxonomy and data structures (17 blocks); B, labels, sample weights and fractional differentiation (19 blocks).
+
+### Scope
+
+Counted by script against the committed originals (starting commit `9fbd551`):
+
+| File | Blocks | `\item` (excl. `\itemsep`) | Other content |
+|---|---|---|---|
+| `ml-alternative-data/data/taxonomy.tex` | 9: four `remark` (Fundamental, Market, Analytics, Alternative Data Characteristics), five `definition` (Reference Data, Market Data Feed, Binned Data, Granular Intraday Microstructure Activity, Fundamental Data and Other Data) | 83, all inside blocks | opening sentence; a four-column table (AFML Table 2.1) |
+| `ml-alternative-data/data/datastruct.tex` | 8: two `remark` (Standard Bars, Information-Driven Bars), one `definition` (ETF Trick), five `method` (ETF Trick, PCA allocation, Single Futures Roll, Sampling for Reduction, CUSUM filter) | 21, all inside | figure `standardbars.png`; one prose paragraph before *Sampling for Reduction*; 25 display environments |
+| `ml-alternative-data/data/datalabel.tex` | 6: three `method` (Fixed-Time Horizon, Triple-Barrier, Meta-Labelling), three `remark` (two sets of limitations, configurations) | 24, all inside | figure `metalabel.tikz`; 1 display |
+| `ml-alternative-data/data/datasampleweights.tex` | 9: two `remark` (Overlapping Outcomes, IID and Oversampling), seven `method` (Estimating Uniqueness, Average Uniqueness, Bootstrap Redundancy, Sequential Bootstrap, Return Attribution, Time Decay, Class Weighting) | 19, all inside | opening sentence; 2 displays |
+| `ml-alternative-data/data/fracdifffeat.tex` | 4: `definition` (BackShift Operator), `remark` (Properties), two `method` (Expanding, Fixed-Width Window) | 3, all inside | opening prose; figure with two PNGs; 7 displays |
+| **Total** | **36** | **150** (all inside blocks; substring counts give 188) | 35 display environments, 1 table, 3 figures with 4 assets |
+
+Also accounted for: `data/dataoverview.tex` (the wrapper inputting the five files, no blocks), the chapter's `section.tex`, its line in `legacy/part.tex`, the five map rows and the four figure assets. All were removed from the compendium after preservation; the legacy folder is gone. The other legacy chapters, earlier artefacts, deferred assignments, `house.tex` and the guide pin (`343d145`) are unchanged.
+
+### Provenance
+
+- `datastruct.tex`, `datalabel.tex` (except as below), `datasampleweights.tex` and `fracdifffeat.tex`: López de Prado chaps. 2–5, close paraphrase with the source's own slips copied (below).
+- `taxonomy.tex`: its table and four remarks follow López de Prado sec. 2.2 (pp. 23–25); its five definitions follow Velu, Hardy and Nehren chap. 1, sec. 1.4 (pp. 26–44), not named in the file. The "Binned Data" definition holds Velu's *Daily Statistics* (pp. 39–40); his *Binned Data* is p. 42.
+- `datalabel.tex` meta-labelling: the steps (high-recall primary model, threshold possibly from ROC curves, concatenated features and predictions, positive "only where both are true") follow the Hudson & Thames blog "Meta Labeling (A Toy Example)" (`ht-meta-labeling-toy`, read 2026-10-16); `metalabel.tikz` follows its architecture. The five feature groups beyond the concatenation and the three "Limitations of Meta-Labelling" were found in neither source nor by web search; they are not adopted.
+- Figures: `standardbars.png` reproduces AFML Figure 2.1 (p. 28); `fracdiffexpandwindow.png` and `fracdifffixedwidthwind.png` reproduce AFML Figures 5.3(b) (p. 81) and 5.4 (p. 83); none was credited. They are kept only in the artefact, with attribution there; no entry uses them.
+
+### Ownership and dispositions
+
+Routed block by block on guide outcomes. `statistical-learning-foundations` ("fit and tune ... estimate out-of-sample error with a validation scheme suited to dependent, non-stationary data"; `alpha-afml` is its reading for "finance-specific labelling") owns the bars, sampling, labels, weights and fractional differencing. `financial-ml-evaluation` ("time-valid inputs") owns the time-validity consequences, as one pitfall. `alternative-data-sources` ("assess an alternative dataset by its coverage, timing and incremental information") owns the four data types. **Routing exceptions** against the map (all five files: `statistical-learning-foundations`, `financial-ml-evaluation`, `alternative-data-sources`): the reference-data, market-data-feed, binned-data and intraday blocks go to `point-in-time-data` ("a research panel whose every field is available at decision time, with documented vintages, corrections and survivorship controls"), as `data` entries in a new topic file of `research-engineering-validation/`; the PCA allocation block goes to `portfolio-construction` (a risk allocation across principal components), appended to its portfolio-construction-models file. Rejected: the section overview `ml-alternative-data` for the taxonomy (its outcome is a filing-text test); `market-structure-execution-quality` and `lob-deep-learning` for the market-data levels (noted for review in the pathway note).
+
+| # | Legacy block | Owner | Destination | Source | Disposition |
+|---|---|---|---|---|---|
+| T1 | *Fundamental Data Characteristics* | `alternative-data-sources` | `def:financial-data-types` (new) | AFML sec. 2.2.1, pp. 23–24 | Rewritten; Bloomberg-specific lag restored, backfill and reinstatement defined |
+| T2 | *Market Data Characteristics* | `alternative-data-sources` | `def:financial-data-types` | sec. 2.2.2, pp. 24–25 | Rewritten; "over 10TB" and its "appealing" context restored, marked unsourced |
+| T3 | *Analytics Data Characteristics* | `alternative-data-sources` | `def:financial-data-types` | sec. 2.2.3, p. 25 | Rewritten; crowding point added |
+| T4 | *Alternative Data Characteristics* | `alternative-data-sources` | `def:financial-data-types` | sec. 2.2.4, p. 25 (Kolanovic–Krishnamachari split) | Rewritten; "annoys your data infrastructure team" marked opinion, in context |
+| T5 | *Reference Data* | `point-in-time-data` | `data:trading-reference-data` (new) | Velu sec. 1.4.1, pp. 26–35 | Rewritten; dividend conflation **corrected**; rule histories restored |
+| T6 | *Market Data Feed* | `point-in-time-data` | `data:market-data-levels` (new) | Velu sec. 1.4.2, pp. 35–39, Table 1.10 | Rewritten; "divide by 1000" **corrected** to 10000; consolidation and latency restored |
+| T7 | *Binned Data* | `point-in-time-data` | `data:derived-market-statistics` (new) | Velu sec. 1.4.3, pp. 39–40 (Daily Statistics) | Rewritten; mislabelled heading **corrected** |
+| T8 | *Granular Intraday Microstructure Activity* | `point-in-time-data` | `data:derived-market-statistics` | pp. 41–42 | Rewritten; reference-data caveat and binned-data limits added |
+| T9 | *Fundamental Data and Other Data* | `alternative-data-sources` | `def:financial-data-types` | Velu sec. 1.4.4, pp. 42–44 | Rewritten; hedges ("might", "thought to be", "generally") restored; claims stubbed as evidence |
+| D1 | *Standard Bars* | `statistical-learning-foundations` | `meth:activity-sampled-bars` (new) | AFML sec. 2.3.1, pp. 26–28 | Rewritten; dollar-bar robustness narrowed; distributional evidence qualified (Ané–Geman abstract read) |
+| D2 | *Information-Driven Bars* | `statistical-learning-foundations` | `meth:information-driven-bars` (new) | sec. 2.3.2, pp. 29–32 | Rewritten; runs statistics and imbalance thresholds **corrected**; $b_0$ and causal EWMAs stated |
+| D3 | *Multi-Product Series: ETF Trick* (definition) | `statistical-learning-foundations` | `meth:etf-trick` (new) | secs. 2.4–2.4.1, pp. 32–33 | Merged into the method entry |
+| D4 | *ETF Trick* (method) | `statistical-learning-foundations` | `meth:etf-trick` | p. 34 | Rewritten; $o_{i,t+1}$ **corrected**; timing, positivity and cost limits added |
+| D5 | *ETF Trick: Computation of Allocation Vector with PCA* | `portfolio-construction` | `mod:pca-risk-distribution-weights` (new) | sec. 2.4.2, pp. 35–36 | Rewritten; two formula slips **corrected**; eigenvalue and sign conditions added |
+| D6 | *ETF Trick: Single Futures Roll* | `statistical-learning-foundations` | `meth:etf-trick` | sec. 2.4.3, pp. 36–37 | Rewritten; denominator **corrected** to the previous raw price; roll gaps added |
+| D7 | *Sampling for Reduction* | `statistical-learning-foundations` | `meth:event-based-sampling` (new) | sec. 2.5.1, p. 38 | Rewritten |
+| D8 | *Event-Based Sampling: CUSUM Filter* | `statistical-learning-foundations` | `meth:event-based-sampling` | sec. 2.5.2.1, pp. 38–40, Snippet 2.4 | Rewritten; zero condition and run condition **corrected**; sampling, reset and strict-inequality rules added |
+| L1 | *Labelling with Fixed-Time Horizon Method* | `statistical-learning-foundations` | `meth:triple-barrier-labelling` (new) | sec. 3.2, p. 43 | Rewritten |
+| L2 | *Limitations of Fixed-Time Horizon Method* | `statistical-learning-foundations` | `meth:triple-barrier-labelling` | p. 44, Snippet 3.1 | Rewritten; third limitation (path) added |
+| L3 | *Labelling with Triple-Barrier Method* | `statistical-learning-foundations` | `meth:triple-barrier-labelling` | sec. 3.4, p. 45 | Rewritten; vertical-barrier preference, side and size, intrabar ties added |
+| L4 | *Triple-Barrier Method Configurations* | `statistical-learning-foundations` | `meth:triple-barrier-labelling` | p. 46 | Rewritten; "physical", "loose", "immediate" corrected |
+| L5 | *Meta-Labelling* | `statistical-learning-foundations` | `meth:meta-labelling` (new) | secs. 3.6–3.8, pp. 50–55 | Rewritten from AFML; the legacy steps attributed to Hudson & Thames; claims stated as claims; out-of-sample primary predictions added |
+| L6 | *Limitations of Meta-Labelling* | `statistical-learning-foundations` | `meth:meta-labelling` (Pitfalls) | no source found | Not adopted; first item contradicts AFML p. 53; kept in the artefact |
+| W1 | *Overlapping Outcomes* | `statistical-learning-foundations` | `def:label-concurrency-uniqueness` (new) | sec. 4.2, pp. 59–60 | Rewritten |
+| W2 | *Estimating Uniqueness of Label* | `statistical-learning-foundations` | `def:label-concurrency-uniqueness` | sec. 4.3, p. 60 | Rewritten; $r_{t-1,t}$ **corrected** |
+| W3 | *Average Uniqueness of Label* | `statistical-learning-foundations` | `def:label-concurrency-uniqueness` | sec. 4.4, pp. 61–62 | Rewritten; training-set condition restored |
+| W4 | *IID and Oversampling* | `statistical-learning-foundations` | `meth:sequential-bootstrap` (new) | sec. 4.5, p. 62 | Rewritten; AFML's $e^{-K/I}$ **corrected** to $e^{-I/K}$, "overlapping" to non-overlapping |
+| W5 | *Sampling with Bootstrap, Redundancy* | `statistical-learning-foundations` | `meth:sequential-bootstrap` | pp. 62–63 | Rewritten |
+| W6 | *Sequential Bootstrap* | `statistical-learning-foundations` | `meth:sequential-bootstrap` | secs. 4.5.1–4.5.4, pp. 63–68 | Rewritten; normaliser **corrected**; Monte Carlo evidence qualified |
+| W7 | *Weighting Observations by Uniqueness and Absolute Return* | `statistical-learning-foundations` | `meth:sample-weights-attribution-decay` (new) | sec. 4.6, pp. 68–69 | Rewritten; factor $I$ and the weighting direction **corrected** |
+| W8 | *Time Decay Weighting* | `statistical-learning-foundations` | `meth:sample-weights-attribution-decay` | sec. 4.7, pp. 70–71 | Rewritten; AFML's $d[1]$ and $cT$ slips **corrected** |
+| W9 | *Class Weighting* | `statistical-learning-foundations` | `meth:sample-weights-attribution-decay` | sec. 4.8, pp. 71–72 | Rewritten |
+| F1 | *BackShift Operator* | `statistical-learning-foundations` | `mod:fractional-differencing-weights` (new) | sec. 5.4, p. 77 | Rewritten |
+| F2 | *Properties of Fractionally Differentiated Features* | `statistical-learning-foundations` | `mod:fractional-differencing-weights` | secs. 5.4.1–5.4.3, pp. 77–80 | Rewritten; weight formula **corrected**; "makes stationary" corrected to AFML's "necessary"; decay rate added |
+| F3 | *Expanding Window* | `statistical-learning-foundations` | `meth:fixed-width-fractional-differencing` (new) | sec. 5.5.1, pp. 80–82 | Rewritten with one consistent index (AFML's is not) |
+| F4 | *Fixed-Width Window* | `statistical-learning-foundations` | `meth:fixed-width-fractional-differencing` | sec. 5.5.2, pp. 82–83; secs. 5.6–5.7, pp. 84–88 | Rewritten; FFD range **corrected**; "it is stationary" qualified; minimum-$d$ procedure added |
+
+The time-validity consequences of W3, W7, W8, L3, L5, D8 and F4 are also stated once in `pit:label-weight-leakage` (`financial-ml-evaluation`, new).
+
+**Subclaims outside the blocks and inside them, beyond the rows above.**
+
+| Where | Legacy claim | Disposition |
+|---|---|---|
+| taxonomy opening and table | "brief overview"; the four-column table | Table rewritten as AFML Table 2.1 in `def:financial-data-types`; the "increasing diversity" ordering restored |
+| D1 | Time bars oversample quiet periods; poor statistical properties | Kept as AFML's with "often" and his citation |
+| D1 | "returns closer to IID Normal" (Ané–Geman) | Qualified: abstract claims normality under a trade-count clock, ranks trades above volume; "IID" is AFML's gloss; replication stubbed |
+| D1 | Volume bars "better statistical properties" | Kept as AFML's report of Clark (1973), with the conflict noted |
+| D2 | TIBs are "buckets of trades containing equal amounts of information" | Kept as AFML's interpretation, untested |
+| D2 | VIB/DIB address corporate actions | Kept (p. 31) |
+| D4 | Series "strictly positive" | Qualified with AFML's own "at worst, infinitesimal"; a short-leg counterexample computed |
+| D4 | $c_t$ not embedded in $K_t$ "as shorting will generate fictitious proceeds" | Rewritten ("profits" when the spread is shorted, p. 34) |
+| prose before D7 | ML algorithms scale badly; learn better from relevant examples | Kept (p. 38) |
+| D8 | "IID observations from a locally stationary process" | Kept as AFML's words; the snippet's level-series convention stated |
+| L5 | Meta-labelling achieves higher F1 | Kept as AFML's unsupported claim; F1 not guaranteed (derived) |
+| datasampleweights opening | ML literature assumes IID; fails in finance | Kept as AFML's (p. 59) in `def:label-concurrency-uniqueness` |
+| W3 | "no information leakage" | Qualified with AFML's training-set condition; `pit:label-weight-leakage` |
+| W6 | "much close to IID, verified by increase" | Qualified: Monte Carlo evidence on synthetic spans |
+| W7 | "Lower returns should be assigned higher weights" | **Corrected**: applies only to a neutral class, which AFML advises dropping |
+| W8 | "$c<0$ ... oldest portion $cT$" | **Corrected**: a share $-c$ of cumulative uniqueness |
+| fracdiff opening | Integer differencing removes memory; stationarity needed for inference | Kept as AFML's (pp. 75–76), with "stationarity does not ensure predictive power" added |
+| fracdiff opening | Fractional processes "enhance forecasting power compared to ARIMA" | Kept as AFML's account of Hosking (1981), unchecked |
+| F3 | Negative drift on an expanding window "still substantial" | Kept (pp. 80–82) |
+| F4 | FFD output "is stationary" | Qualified: ADF outcome on one sample; I(1-d) theory; truncation residue computed |
+
+No claim was deleted outright; every not-adopted claim stays in the artefacts.
+
+**Existing entries checked.** `meth:strategy-production-lifecycle` (its "embargo" is a lifecycle stage, distinct from cross-validation embargo; cross-referenced); `pit:parameter-overfitting`, `meth:backtest-evaluation-diagnostics` (cross-referenced, not repeated); `def:order-exposure-decisions` (hidden and reserve orders; cross-referenced from the market-data entry); `meth:garman-klass-volatility`, `def:spread-measures`, `def:securities-lending-fee-rebate`, `mech:securities-lending-short-sale`, `ev:index-reconstitution-impact`, `conv:cme-globex-trading`, `def:futures-hedge-basis`, `mech:etf-creation-redemption`, `def:informed-trader-types`, `mod:factor-risk-model`, `mod:mean-variance-portfolio-optimisation` (cross-referenced). No duplication was found; no existing entry was changed.
+
+### Sources, 2026-10-16
+
+- **López de Prado** (`alpha-afml`), *Advances in Financial Machine Learning*, Wiley 2018, local PDF with a text layer, printed page = PDF page − 27 throughout chaps. 2–5 (checked at pp. 23, 24, 28, 35, 39, 43, 59, 62, 75, 83). Read: chap. 2 pp. 23–42, chap. 3 pp. 43–55, chap. 4 pp. 59–73, chap. 5 pp. 75–89, with snippets and exercises. Page images: pp. 62 (overlap approximation), and, by the two reviews, pp. 28–40 (equations, Figure 2.1, Snippet 2.4), 45–46, 52–53, 60–71, 77–83 (equations, Figures 5.3–5.4). Errata not checked.
+- **Velu, Hardy and Nehren** (`s3-velu`), *Algorithmic Trading and Quantitative Strategies*, CRC Press, ISBN 9781498737166, local PDF (copyright page "© 2020"; the catalogue records a 2021 copyright), printed page = PDF page − 17. Read: chap. 1, sec. 1.4, pp. 26–44; Table 1.10 (p. 37) by page image.
+- **Ané and Geman (2000)** (`ane-geman-2000`): abstract only, on RePEc, read 2026-10-16; the paper was not accessible (publisher 403).
+- **Hudson & Thames**, "Meta Labeling (A Toy Example)" (`ht-meta-labeling-toy`, new source key): read 2026-10-16 for provenance only.
+- **Read by the group-A review only**: Murphy and Izzeldin, working-paper comment on Ané and Geman (2006); used only in the backlog stub. **Read by the group-B review only**: web searches for the meta-labelling limitations (no source found).
+- **Not read**: AFML chaps. 1 (beyond slice 30), 6–22, including chap. 7 (purging and embargo); Mandelbrot–Taylor, Clark, Easley–López de Prado–O'Hara, Hosking, Kolanovic–Krishnamachari and the other works AFML cites; the readings of the four owning pathways; any U.S. rule text behind Velu's footnotes.
+
+### Numerical checks
+
+Independent of the formulas being checked, kept as `notes/artefacts/statistical-learning-foundations/afml-checks.py` (numpy, statsmodels; fixed seed):
+- **Bars**: tick rule with $b_0$; imbalance and runs bars with thresholds from prior bars on a toy flow (all four types close more often in a one-sided burst; on a balanced flow the tick-imbalance threshold collapses to 5,424 bars from 5,900 ticks).
+- **ETF trick**: two-leg toy, a consistency check only ($\Delta K$ recomputed from the same prices, 0.007425 against 0.007426, rounding; gross exposure at execution equals $K$); a short leg can drive $K$ to $-0.2$.
+- **PCA**: target risk distribution and $\sigma$ delivered exactly; flipping the sign of a component given risk keeps $R$.
+- **CUSUM**: events with reset; no events when hovering; strict against non-strict threshold.
+- **Triple barrier**: toy paths, vertical barrier by sign or zero, the intrabar ambiguity.
+- **Uniqueness and bootstrap**: AFML's toy concurrency $(1,1,2,1,1,1)$ and uniqueness $(0.833,0.75,1)$; probabilities $(5,3,6)/14$ and $(5,3,3)/11$; Monte Carlo medians 0.600 and 0.700, the sequential sample less unique in 22 percent of runs; $(1-1/I)^I\to e^{-1}$; for $I=1000$, $K=100$, $(1-1/K)^I=4.3\times10^{-5}$ against AFML's $e^{-K/I}=0.905$, and 0.100 distinct effective outcomes per in-bag row.
+- **Weights**: attribution weights sum to $I$; decay constants for $c=1,0.5,0,-0.5$ meet their boundary conditions; the oldest observation's factor exceeds $c$.
+- **Fractional differencing**: recurrence equals the binomial form for $d=0,0.4,1,1.5,2$; signs; ratio $\to1$ and power-law decay $|\omega_k|k^{1+d}\to1/|\Gamma(-d)|$; FFD window 11, 55, 1,458 weights at $\tau=10^{-2},10^{-3},10^{-5}$ with residual sums 0.264, 0.136, 0.036; expanding-window weight loss; a random walk's FFD($d$), $\tau=10^{-4}$, rejecting a unit root by one-lag ADF already at $d=0.2$ ($-5.3$) and at $d=0.4$ ($-10.2$), although I($1-d$), not stationary, in theory.
+
+The group-B review's own script (`checkB.py`, scratch, not kept) reproduced the toy, bootstrap, decay and fractional-differencing results independently, with the sequential bootstrap less unique in 23 percent of its 3,000 runs.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-afml` | chaps. 2–5 as listed | A 2018 practitioner text; its evidence is one futures market (E-mini) or synthetic; several formulas wrong (marked); chap. 7 unread |
+| `s3-velu` | chap. 1, sec. 1.4 | Practitioner descriptions as of about 2018–2020; exchange rules and calendars not checked against current sources |
+| `ane-geman-2000` | abstract | Paper unread |
+| `ht-meta-labeling-toy` | the page | Provenance only; undated, no author |
+| Evidence on bars, meta-labelling, alternative-data decay; purging and embargo | none | Stubs |
+
+The seventeen new entries are *partly checked*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+New artefacts under `notes/artefacts/statistical-learning-foundations/` (earlier ones unchanged): `data-taxonomy.tex`, `financial-data-structures.tex`, `labelling.tex`, `sample-weights.tex`, `fractional-differentiation.tex` (each a whole legacy file below its migrate-to line, with only the subsection heading starred), `legacy-wrappers.tex` (display-only `part.tex` line and both wrappers, with all four figures rendered and attributed), `legacy-section-original.tex` and `dataoverview-original.tex` (exact copies), and `afml-checks.py`. The four figure assets were moved, byte-identical (SHA-256 prefixes `fb0a58ca` standardbars, `36f8a864` metalabel, `2faacde0` and `6221383e` the fractional-differencing PNGs), to `notes/artefacts/statistical-learning-foundations/legacy/ml-alternative-data/figures/`, the relative path the originals use, so the bodies compile unedited. A script compared everything with `git show HEAD:…`:
+- each body appears exactly once; both wrapper copies are byte-identical;
+- all 36 blocks appear verbatim once each, in order; every non-empty segment outside the blocks appears;
+- `\item` commands, matched as `\item` not followed by a letter: 83, 21, 24, 19 and 3 (150, all inside blocks), equal in originals and artefacts; substring counts give 98, 27, 32, 27 and 4;
+- `\begin`/`\end` sequences identical (52, 86, 34, 38 and 28 commands), covering all 35 display environments (25, 1, 2 and 7; taxonomy none), the table and the three figure environments.
+
+All six artefacts compile alone without warnings, overfull or underfull boxes (5, 5, 2, 2, 2 and 2 pages); their equations, the table and the figures were inspected by page image, including the legacy's preserved errors.
+
+### Counts
+
+`migration_status.py --check`, 0 problems: 568 → 532 legacy blocks = 487 shared + 16 single-candidate + 29 assigned. Entries 118 → 135 (definitions 42 → 44, data 0 → 3, methods 22 → 31, models 16 → 18, pitfalls 2 → 3). New pathway notes: `statistical-learning-foundations` (11 entries, 4 stubs), `financial-ml-evaluation` (1, 1), `alternative-data-sources` (1, 3), `point-in-time-data` (3, 3); `portfolio-construction` 5 → 6 entries, 7 stubs unchanged. New reading note `s3-velu`; `alpha-afml` extended. One new `front/sources.tex` key, `ht-meta-labeling-toy`.
+
+### Other files
+
+- New topic files `ml-alternative-data/financial-data-structures.tex`, `labelling-sample-weights.tex`, `fractional-differentiation.tex`, `financial-data-types.tex` and `research-engineering-validation/point-in-time-data.tex`; `mod:pca-risk-distribution-weights` appended to `portfolio-construction-risk/portfolio-construction-models.tex`. Openers of `ml-alternative-data` (stale reference to the legacy chapter removed), `research-engineering-validation` and `portfolio-construction-risk` updated.
+- Pathway and reading notes as above; `notes/log.md` coverage rows, reading rows (`s3-velu` updated, `alpha-afml` added) and an open question; `notes/migration.md` status, index, next batch and map; `compendium/README.md` order paragraph.
+
+### Build
+
+`latexmk -g -pdf compendium.tex` exits 0: 227 pages (228 before: the legacy ML chapter removed, the new entries added); no LaTeX warnings; 0 overfull and 0 underfull boxes (four overfull and two underfull boxes in the first build fixed: the bars table, the ETF-trick display, two long paths, one paragraph and the new source line); the inherited `page.i` duplicate-destination warning. `migration_status.py --check` 0 problems; `python3 -m pytest -q tools` 14 passed; `afml-checks.py` runs in about 3 s. Pages inspected as images: the point-in-time data entries, all four new ML topic files (bars table, ETF-trick and bootstrap displays, fractional-differencing pages), the PCA entry and, for the follow-up, the cross-hedge and duration pages; the artefacts' figures and tables.
+
+### Independent review
+
+Two source reviews ran before writing (group A: taxonomy and data structures against AFML chap. 2, Velu sec. 1.4 and the Ané–Geman abstract and critique; group B: labels, weights and fractional differentiation against AFML chaps. 3–5, with their own numerical script), and their findings are the provenance and corrections above. An independent review of the integrated changes then re-read every quote by script against the AFML and Velu text layers, rechecked locators, recomputed the slice-31 follow-up (Hull pp. 77–79, the return example, GIPS 2.A.12, 2.A.29, 5.A.1, the yield-shift condition) and the mathematics, ran `afml-checks.py`, and compared the records, counts and artefacts. Fixed:
+- **Definite errors.** The fractional-differencing ADF illustration quoted a statistic ($-7.6$) from an earlier run of the script: adding the balanced-flow test had shifted the random-number stream; the entry now gives the script's $-5.3$ at $d=0.2$ and $-10.2$ at $d=0.4$, with $\tau=10^{-4}$. The cross-hedging locator p. 78 (Hull's *Choice of Contract*) became p. 77 and sec. 3.4, p. 79, also noted in the follow-up record. The PCA entry's "$2^N$ allocations" became $2^k$ for the $k$ components given risk, with distinct eigenvalues (non-unique with repeated ones); the script and the portfolio-construction note follow. The compendium was rebuilt after the last edit, and this record appended (it had been drafted outside the repository at review time).
+- **Judgement calls adopted.** The share of Monte Carlo runs in which the sequential bootstrap is less unique is now computed by the kept script (22 percent; the review's 3,000 runs gave 23); the overlap example distinguishes the exact $4.3\times10^{-5}$ from $e^{-I/K}=4.5\times10^{-5}$; the attribution weights name log returns; the Monte Carlo spans are 1–4 bars (Snippet 4.7, `maxH=5`); the ETF-trick toy is called a consistency check; GIPS 2.A.12 is described as a calculation provision with no stated reason, the reason being interpretation; Hull's jet-fuel example needs no unit conversion; "routed against the map" became "outside the map's candidates"; the CUSUM input remark is labelled interpretation; an unread chap.-10 phrase was dropped from the meta-labelling entry.
+- **Verified unchanged.** All other quotes, locators and numbers; the slice-31 follow-up; the provenance claims; counts, labels and pathway order; preservation.
+
+### For review
+
+- Routing the reference- and market-data blocks to `point-in-time-data` and the PCA weights to `portfolio-construction`, both against the map.
+- Correcting López de Prado's own formulas (overlap approximation, time-decay boundary, index ranges) on the basis of derivation and computation, without errata.
+- Qualifying the stationarity of fractionally differenced series with fractional-integration theory, which is interpretation, not a reading.
+- Keeping the three reproduced AFML figures only in the artefact, with attribution.

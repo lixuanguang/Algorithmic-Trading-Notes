@@ -1,0 +1,32 @@
+% compendium/ml-alternative-data/financial-data-types.tex
+% Entry migrated on 2026-10-16 from the legacy data taxonomy file (slice 32, legacy/ml-alternative-data/data/taxonomy.tex:
+% its table, its four characteristics remarks and its Fundamental-and-Other-Data block), owned by alternative-data-sources.
+% The file's reference- and market-data blocks went to point-in-time-data (research-engineering-validation/point-in-time-data.tex).
+% Dispositions in notes/migration-slices.md; the file verbatim in notes/artefacts/statistical-learning-foundations/.
+
+\section{Types of financial data}
+
+\begin{qfdefinition}[Four types of financial data: fundamental, market, analytics and alternative data, with their timing, cost and uniqueness]\label{def:financial-data-types}
+\qffield{Statement} López de Prado orders four ``essential types of financial data'' by increasing diversity \citep[chap.~2, sec.~2.2, Table~2.1, pp.~23--24]{alpha-afml}:
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item \emph{fundamental data}: assets, liabilities, sales, costs and earnings, macro variables; ``mostly accounting data, reported quarterly'' and ``reported with a lapse'' (p.~23);
+\item \emph{market data}: prices, yields and implied volatilities, volume, dividends and coupons, open interest, quotes and cancellations, aggressor side; ``all trading activity that takes place in an exchange \dots\ or trading venue'' (p.~24);
+\item \emph{analytics}: analyst recommendations, credit ratings, earnings expectations, news sentiment; ``derivative data, based on an original source'', processed for the user and ``not readily available from an original source'' (p.~25);
+\item \emph{alternative data}: satellite and CCTV images, web searches, social media, metadata; ``primary information, that is, information that has not made it to the other sources'' (p.~25).
+\end{itemize}
+He takes the division of alternative data into data produced by individuals, by business processes and by sensors from Kolanovic and Krishnamachari (2017) (p.~25).
+
+\qffield{Conditions} \emph{Timing.} Fundamental data must be used only from the moment each point was released; López de Prado's example is Bloomberg, which indexes fundamental data by the last date in the report, ``which precedes the date of the release (often by 1.5 months)'' (p.~23). It is also backfilled (missing values assigned values ``unknown at that time'') and reinstated (corrections overwriting the first release), so a dataset that keeps only final values assigns information to dates when it was not known; some vendors keep every release, for example three values for a quarterly GDP figure (p.~24). \emph{Cost and use.} Analytics may be costly, their methodology ``biased or opaque'', and ``you will not be the sole consumer''; alternative data raise cost and privacy concerns (p.~25). Velu, Hardy and Nehren add that the value of an alternative dataset depends on the user's resources and ``maybe more importantly---on the uniqueness of the data set. As more investors get access to it, the harder it becomes to extract meaningful alpha'' \citep[chap.~1, sec.~1.4.4, pp.~43--44]{s3-velu}.
+
+\qffield{Practice} López de Prado's judgements are opinions, not findings: fundamental data being ``extremely regularized and low frequency'' leaves ``rather unlikely that there is much value left'', though it may help combined with other data (p.~24); FIX market data is ``appealing'' because it is ``not trivial to process'' and abundant, ``over 10TB being generated on a daily basis'' (p.~25, no source or market given); and ``a dataset may be useful if it annoys your data infrastructure team'', since competitors may not have tried, gave up or processed it wrongly (p.~25). Velu, Hardy and Nehren list fundamental and analyst inputs with their own hedges (pp.~42--43): key ratios (EPS, P/E, P/B) for cross-sectional comparison; analyst recommendations, individually ``noisy'' but in aggregate a consensus whose changes ``can have a direct impact on price''; earnings estimates and surprises; holdings disclosed on Form~13F, where sudden changes ``might indicate changes in sentiment by sophisticated investor''; insider purchases and sales, ``thought to be an indicator of future stock price moves''; and credit rating downgrades, which ``generally have a negative impact on equity prices''. These are claims to test with the pathway's evidence readings, not results.
+
+\qffield{Pitfalls} The legacy notes generalised the Bloomberg indexing lag to all fundamental data, turned ``over 10TB'' into ``$\sim$10TB'' and an appealing feature into a burden, moved the ``annoys your data infrastructure team'' line under cost and privacy, dropped the crowding point about analytics, and stated Velu, Hardy and Nehren's holdings, insider and rating claims without their hedges. They also merged López de Prado's four types with Velu, Hardy and Nehren's reference, market, derived and fundamental data without saying so; the two taxonomies are kept apart here. Filing lags for holdings and insider data are a \texttt{point-in-time-data} matter (backlog).
+
+\qffield{See also} \hyperref[data:trading-reference-data]{trading reference data}; \hyperref[data:market-data-levels]{market data levels}; \hyperref[data:derived-market-statistics]{derived market statistics}; \hyperref[meth:activity-sampled-bars]{activity-sampled bars}.
+
+\qffield{Further reading} The pathway's required readings, beginning with \texttt{wide-kolanovic-big-data} and \texttt{rf-monk-prins-rook-2019}, and the evidence on how alternative-data edges decay are unread (backlog). The legacy file is kept in \nolinkurl{notes/artefacts/statistical-learning-foundations/}.
+
+\qffield{Index} fundamental data; market data; analytics; alternative data; release lag; backfilling; reinstated values; data vintages; FIX messages; BWIC; primary information; data uniqueness; alpha decay; analyst recommendations; earnings surprise; Form 13F; insider trades; credit ratings
+
+\qffield{Status} Verification: partly checked 2026-10-16 (against the text layers of local copies of \texttt{alpha-afml}, chap.~2, pp.~23--25, and \texttt{s3-velu}, CRC Press, copyright page \copyright~2020 in the local copy (the catalogue records a 2021 copyright), ISBN 9781498737166, chap.~1, pp.~42--44, printed page $=$ PDF page $-17$). Stability: draft. Currency: practitioner descriptions as of 2018--2020; the 10TB figure undated and unsourced.
+\end{qfdefinition}

@@ -1,5 +1,25 @@
-% migrate-to: statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources
-\subsection{Data Labelling Techniques}
+% notes/artefacts/statistical-learning-foundations/labelling.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 32, 2026-10-16): the whole of
+% compendium/legacy/ml-alternative-data/data/datalabel.tex below its migrate-to line, with only the subsection heading
+% unnumbered. The compendium entries state each claim with its locator; the original wording lives here. Treat
+% everything here as unchecked own working.
+% Destinations: Fixed-time horizon method, its limitations, Triple-Barrier Method and its configurations -> meth:triple-barrier-labelling;
+% Meta-Labelling and its limitations -> meth:meta-labelling (AFML chap. 3, pp. 43-55). The meta-labelling steps and the
+% figure metalabel.tikz follow a Hudson & Thames blog example (ht-meta-labeling-toy), not AFML; the feature list and the
+% three limitations have no source found and are not adopted.
+% Figures referenced by the original as legacy/ml-alternative-data/figures/* are kept, unchanged, at that same relative
+% path under notes/artefacts/statistical-learning-foundations/, so that the body compiles without edits.
+% Compile inside notes/artefacts/statistical-learning-foundations/ with  latexmk -pdf labelling.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: data labelling}
+
+% From compendium/legacy/ml-alternative-data/data/datalabel.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Data Labelling Techniques}
 
 \begin{method} \hlt{Labelling with Fixed-Time Horizon Method}\\
 Given features matrix $X$ with $I$ rows, $\{X_i\}_{i = 1, \ldots, I}$ drawn from some bards with index $t = 1, \ldots, T$, where $I \leq T$, let an observation $X_i$ be assigned a label $y_i \in \{-1, 0, 1\}$,
@@ -95,3 +115,4 @@ Meta Labels are used as target variable in second model. Fit the second model
 \item Technique trades recall for precision. Require a large number of trades to train on, while being happy with reduction in trade frequency
 \end{enumerate}
 \end{remark}
+\end{document}

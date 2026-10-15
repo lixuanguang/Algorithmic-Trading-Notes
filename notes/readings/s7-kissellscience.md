@@ -2,7 +2,7 @@
 key: s7-kissellscience
 pathways: [execution-trading-costs]
 version: Robert Kissell, The Science of Algorithmic Trading and Portfolio Management, Academic Press (Elsevier), copyright 2014, ISBN 978-0-12-401689-7; the catalogue cites it as 2013. Local PDF with a text layer, outside the repository (printed page = PDF page - 19); identity checked from the title page, copyright page and ISBN, not the file name
-sections: chap. 1, pp. 16-18 (algorithm classes and types); chap. 3, pp. 97-108 (cost conventions, implementation shortfall, arrival cost, benchmark, VWAP and participation-weighted price performance), page images of pp. 100, 103 and 105 (checked for migration slice 11)
+sections: chap. 1, pp. 16-19 (algorithm classes and types, basket algorithms and the risk-aversion parameter; pp. 18-19 for slice 12); chap. 3, pp. 97-108 (cost conventions, implementation shortfall, arrival cost, benchmark, VWAP and participation-weighted price performance), page images of pp. 100, 103 and 105 (checked for migration slices 11 and 12)
 read:
 status: draft
 ---
@@ -23,6 +23,7 @@ Prepared on 2026-10-15 by migration slice 11 from source checks, not from study:
 ## Key results
 
 - Worked examples recomputed with exact arithmetic: \$2,600 for a complete fill; \$3,080 for a partial fill, split as 2,000 execution, 1,000 opportunity and 80 fees (Perold) or 1,250 delay, 1,000 trading, 750 opportunity and 80 fees (Wagner) (pp. 99–103).
+- Basket algorithms manage cost against total basket risk, with cash-balancing, self-financing and participation constraints; brokers scale the risk-aversion parameter differently (pp. 18–19).
 - Algorithm types: VWAP follows the volume curve, TWAP trades evenly in time, POV trades a fixed fraction of volume without guaranteed completion; arrival-price and implementation-shortfall algorithms are cost–risk optimisations whose meaning varies across brokers (chap. 1, pp. 16–18).
 
 ## Limits
@@ -41,7 +42,7 @@ Prepared on 2026-10-15 by migration slice 11 from source checks, not from study:
 
 ## Entries
 
-`def:implementation-shortfall`, `def:execution-benchmark`.
+`def:implementation-shortfall`, `def:execution-benchmark`; also cited in `def:trading-envelope` and `def:portfolio-trading`.
 
 ## Open questions
 

@@ -975,9 +975,98 @@ The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefac
 - Reliance on Kissell and Harris for implementation shortfall while Perold is unread.
 - The corrections to Kissell's eq. (3.10) and p. 100, and the double-counting and model-against-measurement notes.
 
+## Slice 12: execution algorithms, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 11's pushed state (`5d113ac`, on `main`, matching `origin/main`; guide submodule at `343d145`; `house.tex` unchanged). The reported counts matched the checker: 721 legacy blocks (117 single-candidate, 575 shared, 29 assigned), 49 entries, listings of 5, 9, 22 and 13, and candidate associations of 45 (`execution-trading-costs`), 27 (`price-impact-execution`) and 318 (`market-structure-execution-quality`). Migration and source checking, not study.
+
+### Scope
+
+The whole of `execution-trading-costs/01_.../03_execution_algorithms.tex`: 17 counted blocks (the proposition's proof is inside its block), the uncounted table *Typical features of trading algorithms* with its settings and caption, and the closing sentences inside the taxonomies. There was no prose outside the blocks and the table. The file was shared in the map between the overview `execution-trading-costs` and `price-impact-execution`. The file, its `\input` line in `01_.../00_overview.tex` and its map row were deleted. `04_transaction_cost_analysis.tex` was not touched.
+
+### Ownership
+
+The blocks describe how an order is worked: an algorithm's parameters, risk-control layer and tactics; customising it; pre-trade and monitoring tools; order exposure and routing; portfolio and index trading; and a hedging rule's own execution demand. That is the overview's outcome, planning the execution of an order by venue, mechanism and schedule. `price-impact-execution`'s outcome is estimating impact models, deriving schedules and measuring shortfall with confidence intervals; its models are inputs to the risk-control layer, so it is cross-referenced, not given blocks. The positive-feedback blocks could have gone to the 1987-crash entry `mech:bubble-crash-dynamics`, but that belongs to `execution-market-making`, not a candidate here, and covers the crash, not the hedging rule's mechanics; the new entry cross-references it.
+
+Existing entries were compared first. `def:execution-benchmark` already separates VWAP and TWAP as prices and as policies, and is not repeated; `meth:algorithm-benchmark-choice` already cited Table 3.2, so the table was added to it rather than to a new entry; `mod:almgren-chriss-execution` holds the two algorithm layers from app. A.7 and a model for the trading curve; `def:block-trade` holds order exposure as a block problem, and `ev:index-reconstitution-impact` the reconstitution timing. Algorithm variants (VWAP, TWAP, POV, IS, liquidity seeker) are described inside `def:trading-envelope`, not as separate entries.
+
+| Legacy block | Owner | Destination | Disposition |
+|---|---|---|---|
+| *Algo as Layered Decision System* | `execution-trading-costs` | `def:trading-envelope` (Statement) | Merged |
+| *Algorithm Layer Segmentation* | `execution-trading-costs` | `def:trading-envelope` (Statement) | Merged |
+| *Benchmark Customisation* | `execution-trading-costs` | `def:trading-envelope` (Practice; examples corrected) | Rewritten |
+| *Hard Mixtures Are Fragile* | `execution-trading-costs` | `def:trading-envelope` (Practice) | Merged |
+| *Trading Envelope* | `execution-trading-costs` | `def:trading-envelope` (Statement; "posts passively" corrected) | Rewritten |
+| *Envelope Construction Segmentation* | `execution-trading-costs` | `def:trading-envelope` (Statement, Conditions; "minimum-impact curve" unsourced) | Merged |
+| *Customisation Workflow* | `execution-trading-costs` | `def:trading-envelope` (Practice) | Merged |
+| *Execution Decision Loop* | `execution-trading-costs` | `def:trading-envelope` (Conditions, Pitfalls) | Merged |
+| *Pre-Trade Segmentation* | `execution-trading-costs` | `meth:execution-decision-support` | Merged; portfolio coupling relocated |
+| *Order-Submission Control Segmentation* | `execution-trading-costs` | `def:order-exposure-decisions` | Rewritten; unsourced levers flagged |
+| *Reactive vs Proactive Execution* | `execution-trading-costs` | `def:order-exposure-decisions` | Rewritten; conflation with aggressiveness corrected |
+| *Portfolio Trading Segmentation* | `execution-trading-costs` | `def:portfolio-trading` | Rewritten; basket/package distinction corrected |
+| *Portfolio Insurance as Dynamic Execution* | `execution-trading-costs` | `mech:positive-feedback-hedging` | Merged |
+| *Dynamic Hedging Feedback* (proposition and proof) | `execution-trading-costs` | `mech:positive-feedback-hedging` (Interpretation) | Merged; size and stability added |
+| *Basket Characterisation Inputs* | `execution-trading-costs` | `def:portfolio-trading` (Conditions; reason for tight quotes corrected) | Rewritten |
+| *Index Rebalance Controls* | `execution-trading-costs` | `def:portfolio-trading` (Practice) | Rewritten |
+| *What-If Controls* | `execution-trading-costs` | `meth:execution-decision-support` | Merged; examples corrected |
+| Table *Typical features of trading algorithms* (not a counted block) | `execution-trading-costs` | `meth:algorithm-benchmark-choice`, rebuilt from Lehalle and Laruelle's Table 3.2 with links | Rebuilt; original kept verbatim in the artefact |
+
+### Sources, 2026-10-15
+
+- **Lehalle and Laruelle**, 2018 World Scientific printing (text layer; printed page = PDF page − 27): sec. 3.1.1, pp. 196–197 (historical data, dark-pool probes, models with daily parameters and real-time variables); sec. 3.1.2, pp. 197–198 (components); sec. 3.1.3, pp. 198–201 (pre-trade, monitoring, performance and what-if); sec. 3.4.1, pp. 230–233 (Table 3.2, customisation, trading envelopes). Page images of pp. 198, 201, 230 (Table 3.2), 231 and 233. Slice 11's inspection of Table 3.1 was not relied on for this material.
+- **Harris**, 2002 Oxford printing: chap. 18, pp. 380–389 (order submission, reactive and proactive traders, defensive strategies); chap. 23, pp. 486–491 (index funds, program trades, the firm bid/offer market); chap. 28, sec. 28.2.2, pp. 560–561 with both boxes (portfolio insurance).
+- **Kissell**, `s7-kissellscience`, the copy whose copyright page says 2014 (the catalogue's date is 2013; the guide is unchanged): chap. 1, pp. 16–19 (algorithm types, basket algorithms, risk-aversion parameter), and chap. 3, p. 108 (participation-weighted price).
+- **Perold (1988)** remains unread; nothing in this slice cites it.
+
+### Algorithm checks (own, Interpretation in the entries)
+
+- **Benchmark against policy.** VWAP and TWAP keep their two meanings (price statistic and policy) in `def:execution-benchmark`; `def:trading-envelope` describes the policies. Kissell's VWAP and TWAP policies are static day schedules; POV reacts to realised volume and need not complete, with a broker minimum rate as the completion fix; arrival-price and IS algorithms are cost–risk optimisations, IS adding adaptation; definitions and risk-aversion scales vary by broker.
+- **Parent schedule against child placement.** The envelope bounds the parent order's cumulative quantity; child size, price and venue belong to the tactics (pp. 197–198).
+- **Information.** Parameters are estimated about daily; $V$ in $\kappa\sigma(v/V)^\gamma$ is realised market volume, so a schedule fixed at the start can use only a forecast of it.
+- **Participation denominator.** Neither source states whether a rate $\rho$ counts the order's own fills. With them, the order is $\rho/(1-\rho)$ of others' volume (25 percent at 20 percent); without, $\rho/(1+\rho)$ of the total (16.7 percent). Kissell's participation-weighted price counts own fills in its window. Checked numerically; logged as an open question.
+- **Feedback.** The legacy proposition shows only the sign. If induced moves persist and retrigger the rule, the total move is $dS/(1-\lambda q')$ for dimensionless $\lambda q'<1$ (1.67 at 0.4, checked by iteration); purely temporary impact gives no amplification.
+- **Portfolio-insurance sizing.** Harris's box multiplies the fall by delta; the rebalancing trade depends on the change in the hedge ratio. A Black–Scholes illustration (zero rate, 20 percent volatility, one year) gives sales of about 1.0, 1.6 and 1.8 percent of insured value per 1 percent fall for floors at 80, 90 and 100 percent.
+- The spread-against-impact accounting gap from slice 11 stays open; no cost already in execution prices was added.
+
+### Source findings and legacy corrections
+
+- Lehalle and Laruelle's p. 197 sends the trading curve to app. A.6, which is the Harris tick model; the scheduling appendix is A.7. Figure 3.14's caption lacks its second algorithm name; the text says IS (p. 232).
+- Envelope: a too-fast algorithm stops posting (not "posts passively"). Customisation examples: the would level makes an algorithm IS-like and the SOR liquidity-seeker-like; "PoV capped by urgency" and the "minimum-impact curve" are not in the source. Dark probes are supported (p. 196).
+- What-if examples in the source are finishing now and switching IS to PoV; "portfolio coupling" is outside the pre-trade list.
+- Harris separates the reactive–proactive continuum (search cost) from the aggressive–passive one (eagerness); the legacy principle conflated them. "Discretion range", "protection price", "pegging" and "minimum fill" are not in the passages.
+- Harris treats package, basket and portfolio trading as one market; he explains tight package quotes by lower adverse selection, not diversification; his index-fund substitutes are non-index stocks, not futures or ETFs. "Portfolio transition" is only named (Kissell p. 16).
+- Table 3.2: the legacy rows dropped PoV's "can be very aggressive", the VWAP/TWAP condition on unexpected volume in the order's direction and the liquidity seeker's relative-price orientation, and called VWAP/TWAP a "volume-curve schedule".
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-laruelle` | secs. 3.1.1–3.1.3, pp. 196–201; sec. 3.4.1, pp. 230–233 | Text layer; page images of pp. 198, 201, 230, 231, 233; envelope references (Bouchard et al., Lehalle, Guéant et al.) not consulted |
+| `alpha-harris` | chap. 18, pp. 380–389; chap. 23, pp. 486–491; chap. 28, pp. 560–561 | Text layer; market facts as of 2002 |
+| `s7-kissellscience` | chap. 1, pp. 16–19; chap. 3, p. 108 | Text layer; not on a route |
+
+The five new entries and the extended `meth:algorithm-benchmark-choice` are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefacts/market-making-lob/derivations.tex`, section *Execution algorithms (slice 12)*, with only the subsection unnumbered. A script confirmed that the artefact's earlier content is unchanged, that the file body appears once, and that the 17 blocks and the table (with its settings and caption) each appear once and in order. The other files of `execution-trading-costs/01_...` are byte-identical; only the `\input` line was removed from `00_overview.tex`. The table's disposition is recorded separately above.
+
+### Counts
+
+`migration_status.py`: 721 → 704 legacy blocks (17 migrated). Shared 575 → 558; single-candidate 117; assigned 29. Each block was a candidate of `execution-trading-costs` and `price-impact-execution`, so each fell by 17: 45 → 28 and 27 → 10 (17 blocks, not 34). `market-structure-execution-quality` stays at 318. Entries 49 → 54 (definitions 18 → 21, methods 7 → 8, mechanisms 1 → 2). Entries listed: `execution-trading-costs` 5 → 10; `price-impact-execution` 9; `execution-market-making` 22; `market-making-lob` 13. A first draft of the overview note named `mech:bubble-crash-dynamics` under its Entries heading, which the checker counted as owned (11); reworded.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 170 pages (167 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files, as before; the one `page.i` duplicate-destination warning. Rendered and inspected: PDF pp. 43 (the rebuilt Table 3.2), 45–49 (the new section) and 159 (the pruned legacy chapter, which now starts at *Transaction Cost Analysis (TCA)*). The artefact compiles on its own: 24 pages (22 before), no warnings, the same 3 underfull boxes; its last page shows the original table.
+
+### For review
+
+- The five new entries, the Table 3.2 extension, and ownership by the overview rather than `price-impact-execution`.
+- The participation-denominator question and the portfolio-insurance sizing correction.
+- The source slips in Lehalle and Laruelle (A.6 reference, Figure 3.14 caption).
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/03_execution_algorithms.tex` (17 blocks and a table, *Typical features of trading algorithms*, which restates Lehalle and Laruelle's Table 3.2), shared between `execution-trading-costs` and `price-impact-execution`. Its benchmark-customisation and trading-envelope blocks follow Lehalle and Laruelle sec. 3.4.1, pp. 231 onwards, and its layer blocks restate the two algorithm layers already in `mod:almgren-chriss-execution`; compare with `def:execution-benchmark` and `meth:algorithm-benchmark-choice` before adding entries. Its successor `04_transaction_cost_analysis.tex` (25 blocks) holds an implementation-shortfall model, a VWAP benchmark and a benchmark-price taxonomy that should merge into `def:implementation-shortfall` and `def:execution-benchmark`. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/04_transaction_cost_analysis.tex` (25 blocks), shared between `market-structure-execution-quality` and `execution-trading-costs`. Likely overlaps: its *Implementation Shortfall with Missed Quantity* and *Signed Benchmark Cost* models with `def:implementation-shortfall` and `def:execution-benchmark`; its *VWAP Benchmark* and *Benchmark Price Segmentation* with `def:execution-benchmark`; its *Marginal Aggressiveness Rule* with Harris p. 438; its cost-component taxonomy with Kissell chap. 3 and the overview checkpoint's split into spread, impact, timing and fees (the gap logged in slice 11); and Lehalle and Laruelle's average-price decomposition (p. 201) in `meth:execution-decision-support`. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1012,7 +1101,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/03_execution_algorithms.tex` | execution-trading-costs, price-impact-execution |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/04_transaction_cost_analysis.tex` | market-structure-execution-quality, execution-trading-costs |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/05_smart_order_routing.tex` | market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/06_high_frequency_trading_strategies.tex` | execution-trading-costs, market-structure-execution-quality |

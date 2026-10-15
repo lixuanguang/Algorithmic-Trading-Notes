@@ -1,0 +1,32 @@
+% compendium/portfolio-construction-risk/performance-evaluation.tex
+% Entry migrated on 2026-10-15 from the legacy transaction-cost-analysis file (slice 13), owned by
+% performance-manager-evaluation; dispositions and source checks in notes/migration.md, the blocks
+% verbatim in notes/artefacts/market-making-lob/derivations.tex.
+
+\section{Performance evaluation}
+
+\begin{qfmethod}[Relative performance evaluation: total returns, market-adjusted and risk-adjusted returns, market timing, and smoothed returns]\label{meth:relative-performance-evaluation}
+\qffield{Statement} Portfolio performance depends on management and on every factor that moves the prices of its holdings, most of which nobody can foresee, so good results may reflect skill or luck \citep[chap.~``Performance Evaluation and Prediction'', sec.~22.1, pp.~443--444]{alpha-harris}. Relative evaluations are therefore more valuable than absolute ones: an absolute evaluation computes the total return; a relative one compares it with a benchmark chosen to show how the portfolio would have done without active management (sec.~22.2, p.~445). Harris's measures (secs.~22.2.1--22.2.2.3, pp.~445--450):
+\begin{itemize}
+\item \emph{total return} over an interval, including income and paying out commissions, fees and margin flows; with capital added or withdrawn, either the \emph{internal rate of return}, approximately a time- and value-weighted average of the returns between flows, or the \emph{holding-period return} of one unit invested at the start with distributions reinvested, which differ when flows are not pro rata;
+\item \emph{market-adjusted return}, the portfolio return minus a market index return;
+\item \emph{risk-adjusted excess return} or realised alpha, the portfolio return minus the portfolio's beta times the market return, with the beta measured concurrently because it changes when the manager trades;
+\item \emph{market-timing return}, beta times the market return minus the market return; so that
+\end{itemize}
+\[ r^p=\underbrace{(r^p-\beta r^m)}_{\text{excess return}}+\underbrace{(\beta r^m-r^m)}_{\text{market timing}}+\underbrace{r^m}_{\text{market}} \]
+(p.~450). Harris notes that the decomposition generalises to other risk factors, such as size and growth.
+
+\qffield{Conditions} Returns of illiquid assets depend on estimated values; managers who adjust them slowly, especially downwards, report smooth returns with positive serial correlation; the low volatility inflates $t$-ratios, and forced revaluation later produces large losses, an artificial peso problem \citep[same chap., box ``Smooth Sailing, Rapids Ahead'', p.~448, and sec.~22.5.2.1, pp.~469--470]{alpha-harris}. Holding-period returns compound: $+100$ percent then $-50$ percent is zero, not $+50$ percent (box, p.~447).
+
+\qffield{Practice} Interpretation: transaction cost analysis applies the same idea over an order's horizon, subtracting beta times the index move from the arrival cost (\hyperref[meth:transaction-cost-analysis]{transaction cost analysis}); in both, the residual is not proof of skill.
+
+\qffield{Pitfalls} Interpretation: Harris's realised alpha $r^p-\beta r^m$ omits the risk-free rate; the legacy regression form $r^p_t-r^f_t=\alpha+\beta(r^m_t-r^f_t)+u_t$ (Jensen's alpha) differs from it by $(1-\beta)r^f$, for example $-0.9$ percentage points at $\beta=1.3$ and $r^f=3$ percent (checked); the regression also estimates a constant beta, whereas Harris uses concurrent betas. The legacy decomposition $r^p=r^m+(r^p-\beta r^m)+(\beta-1)r^m$ is Harris's identity. The legacy list called the IRR ``money-weighted, useful when capital flows are controlled by the investor'' and added ``trade-weighted'' fill-quality measures; Harris calls the IRR approximately time- and value-weighted and does not discuss who controls flows, and fill quality belongs to transaction cost analysis. Return smoothing is in Harris a problem of fraudulent or careless valuation; the formal treatment the pathway asks for (\texttt{wide-getmansky-lo-makarov}) is unread.
+
+\qffield{See also} \hyperref[meth:transaction-cost-analysis]{transaction cost analysis} (the execution analogue, owned by \texttt{execution-trading-costs}).
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim: \nolinkurl{notes/artefacts/market-making-lob/derivations.tex}.
+
+\qffield{Index} performance evaluation; absolute performance; relative performance; total return; internal rate of return; IRR; holding-period return; market-adjusted return; risk-adjusted return; realised alpha; Jensen's alpha; beta; market timing; performance attribution; return smoothing; stale valuations; serial correlation; peso problem
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{alpha-harris}, 2002 Oxford printing, pp.~443--450 and 469--470; the decomposition and the Jensen comparison checked numerically). Stability: draft. Currency: timeless (methods); presentation standards named by Harris (AIMR-PPS) as of 2002.
+\end{qfmethod}

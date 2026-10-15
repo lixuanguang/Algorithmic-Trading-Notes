@@ -1,8 +1,8 @@
 ---
 key: s7-kissellscience
-pathways: [execution-trading-costs]
+pathways: [execution-trading-costs, market-structure-execution-quality]
 version: Robert Kissell, The Science of Algorithmic Trading and Portfolio Management, Academic Press (Elsevier), copyright 2014, ISBN 978-0-12-401689-7; the catalogue cites it as 2013. Local PDF with a text layer, outside the repository (printed page = PDF page - 19); identity checked from the title page, copyright page and ISBN, not the file name
-sections: chap. 1, pp. 16-19 (algorithm classes and types, basket algorithms and the risk-aversion parameter; pp. 18-19 for slice 12); chap. 3, pp. 97-108 (cost conventions, implementation shortfall, arrival cost, benchmark, VWAP and participation-weighted price performance), page images of pp. 100, 103 and 105 (checked for migration slices 11 and 12)
+sections: chap. 1, pp. 16-19 (algorithm classes and types, basket algorithms and the risk-aversion parameter; pp. 18-19 for slice 12); chap. 3, pp. 87-96 (best execution, ten cost components, classification, pre-, intra- and post-trade analysis; slice 13), pp. 110-113 (index-adjusted cost and z-scores, page image of p. 112; slice 13), pp. 97-108 (cost conventions, implementation shortfall, arrival cost, benchmark, VWAP and participation-weighted price performance), page images of pp. 100, 103 and 105 (checked for migration slices 11 to 13)
 read:
 status: draft
 ---
@@ -23,12 +23,14 @@ Prepared on 2026-10-15 by migration slice 11 from source checks, not from study:
 ## Key results
 
 - Worked examples recomputed with exact arithmetic: \$2,600 for a complete fill; \$3,080 for a partial fill, split as 2,000 execution, 1,000 opportunity and 80 fees (Perold) or 1,250 delay, 1,000 trading, 750 opportunity and 80 fees (Wagner) (pp. 99–103).
+- Ten unbundled cost components and their classification (Tables 3.1–3.2, pp. 89–95); market impact as an unobservable counterfactual (pp. 91–92); cost measure against forecast; VWAP comparison as performance, close as tracking error (pp. 95–96); best execution as a process judged on the information available at the start (p. 88).
+- Index-adjusted cost (3.21)–(3.22) and z-scores (3.23)–(3.24), tested by order size and strategy on shares traded, with the investor's own pre-trade model (pp. 110–113).
 - Basket algorithms manage cost against total basket risk, with cash-balancing, self-financing and participation constraints; brokers scale the risk-aversion parameter differently (pp. 18–19).
 - Algorithm types: VWAP follows the volume curve, TWAP trades evenly in time, POV trades a fixed fraction of volume without guaranteed completion; arrival-price and implementation-shortfall algorithms are cost–risk optimisations whose meaning varies across brokers (chap. 1, pp. 16–18).
 
 ## Limits
 
-- Own checks: the intermediate actual return for a partial fill adds fees instead of subtracting them (p. 100); eq. (3.10) divides by the signed $(\sum s_j)P_0$ and so reverses the sign for sells, unlike (3.11); eq. (3.16) has no side factor. TWAP is described as "a constant participation rate" but means a constant rate in time (p. 17).
+- Own checks: the intermediate actual return for a partial fill adds fees instead of subtracting them (p. 100); eq. (3.10) divides by the signed $(\sum s_j)P_0$ and so reverses the sign for sells, unlike (3.11); eq. (3.16) has no side factor. Eq. (3.22) leaves the index cost unsigned by side, which mis-adjusts sells; "Index VWAP = 1/2 R_m" approximates the index cost, not the index VWAP (p. 112). TWAP is described as "a constant participation rate" but means a constant rate in time (p. 17).
 
 ## Implementation
 
@@ -42,7 +44,7 @@ Prepared on 2026-10-15 by migration slice 11 from source checks, not from study:
 
 ## Entries
 
-`def:implementation-shortfall`, `def:execution-benchmark`; also cited in `def:trading-envelope` and `def:portfolio-trading`.
+`def:implementation-shortfall`, `def:execution-benchmark`, `def:transaction-costs`, `meth:transaction-cost-analysis`; also cited in `def:trading-envelope`, `def:portfolio-trading`, `def:best-execution` and `def:broker-agency-conflicts`.
 
 ## Open questions
 

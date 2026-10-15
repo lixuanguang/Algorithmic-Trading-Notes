@@ -1064,9 +1064,114 @@ The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefac
 - The participation-denominator question and the portfolio-insurance sizing correction.
 - The source slips in Lehalle and Laruelle (A.6 reference, Figure 3.14 caption).
 
+## Slice 13: transaction cost analysis, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 12's pushed state (`3d93967`, on `main`, matching `origin/main`; guide submodule at `343d145`; `house.tex` unchanged). The reported counts matched the checker: 704 legacy blocks (117 single-candidate, 558 shared, 29 assigned), 54 entries, listings of 10, 9, 22 and 13, and candidate associations of 28 (`execution-trading-costs`), 10 (`price-impact-execution`) and 318 (`market-structure-execution-quality`). Migration and source checking, not study.
+
+### Scope
+
+The whole of `execution-trading-costs/01_.../04_transaction_cost_analysis.tex`: 25 counted blocks, including the closing sentences inside them. The file had no table, figure or text outside the blocks (checked by script). The map listed `market-structure-execution-quality` and `execution-trading-costs`. The file, its `\input` line in `01_.../00_overview.tex` and its map row were deleted.
+
+### Ownership
+
+Each block was read and routed on its content, not the filename or earlier slices:
+
+- **`execution-trading-costs`** (overview): measuring, predicting and splitting execution costs and shortfall, which is the last clause of its outcome ("split realised implementation shortfall into spread, impact, timing and fees") and its checkpoint; and the block-trading blocks, whose canonical entry it already owns.
+- **`market-structure-execution-quality`**: best execution, retail execution quality and broker conflicts. Its outcome names retail routing and execution quality, its checkpoint measures retail execution quality by venue type, and its readings include the Rule 605 amendments and the 2025 withdrawal of the best-execution proposal. A pathway note was opened.
+- **`performance-manager-evaluation`**: four blocks evaluate investment managers, not executions (total and money-weighted returns, Jensen-style alpha, the selection and timing decomposition, smoothed returns). Neither map candidate has that outcome; this pathway's is "attribute returns, adjust for factor exposure, smoothing and survivorship". Routing outside the map candidates is a judgement **for review**. A pathway note and the canonical chapter `compendium/portfolio-construction-risk/` were opened; because that section comes first in the guide's order, later chapters are renumbered by one (labels unchanged).
+
+| # | Legacy block | Owner | Destination | Disposition |
+|---|---|---|---|---|
+| 1 | *TCA* | `execution-trading-costs` | `meth:transaction-cost-analysis` | Merged |
+| 2 | *Transaction Cost Component Segmentation* | `execution-trading-costs` | `def:transaction-costs` | Rewritten; glosses corrected |
+| 3 | *Signed Benchmark Cost* | `execution-trading-costs` | `def:execution-benchmark` | Merged (duplication) |
+| 4 | *Implementation Shortfall with Missed Quantity* | `execution-trading-costs` | `def:implementation-shortfall` (Notation) | Merged (duplication) |
+| 5 | *Marginal Aggressiveness Rule* | `execution-trading-costs` | `meth:aggressiveness-tradeoff` | Rewritten |
+| 6 | *Benchmark Price Segmentation* | `execution-trading-costs` | `def:execution-benchmark` | Merged (duplication) |
+| 7 | *VWAP Benchmark* | `execution-trading-costs` | `def:execution-benchmark` | Merged (duplication) |
+| 8 | *Performance Measurement Segmentation* | `performance-manager-evaluation` | `meth:relative-performance-evaluation` | Rewritten |
+| 9 | *Risk-Adjusted Excess Return* | `performance-manager-evaluation` | `meth:relative-performance-evaluation`; TCA analogy in `meth:transaction-cost-analysis` | Rewritten; alpha definitions distinguished |
+| 10 | *Benchmark Failure Modes* | `execution-trading-costs` | `meth:transaction-cost-analysis` (Pitfalls) | Merged; a synthesis, flagged |
+| 11 | *Pre-, Live-, and Post-Trade Consistency* | `execution-trading-costs` | `meth:execution-decision-support` | Merged |
+| 12 | *Performance Attribution Segmentation* | `execution-trading-costs` | `meth:execution-decision-support` | Merged; (A.26) relationship corrected |
+| 13 | *Selection and Timing Decomposition* | `performance-manager-evaluation` | `meth:relative-performance-evaluation` | Merged (Harris's identity) |
+| 14 | *TCA Uses Wider Samples Than Post-Trade Review* | `execution-trading-costs` | `meth:transaction-cost-analysis` | Merged; selection limit added |
+| 15 | *TCA Estimator Quality Segmentation* | `execution-trading-costs` | `def:execution-benchmark` | Merged (duplication of Harris sec. 21.4) |
+| 16 | *TCA Context Segmentation* | `execution-trading-costs` | `meth:transaction-cost-analysis` | Merged |
+| 17 | *Pre-Trade Cost Prediction Variables* | `execution-trading-costs` | `meth:transaction-cost-analysis` (Conditions) | Merged; unsourced variables flagged |
+| 18 | *Broker and Algo Selection* | `execution-trading-costs` | `meth:transaction-cost-analysis` | Merged; selection caveat |
+| 19 | *Best Execution as Auditability* | `market-structure-execution-quality` | `def:best-execution` | Rewritten |
+| 20 | *Retail Execution Quality Segmentation* | `market-structure-execution-quality` | `def:best-execution` | Merged |
+| 21 | *Broker-Conflict Segmentation* | `market-structure-execution-quality` | `def:broker-agency-conflicts` | Rewritten |
+| 22 | *Gaming the Measure* | `execution-trading-costs` | `def:execution-benchmark` | Merged; venue-selection gloss flagged |
+| 23 | *Smooth Returns Are Not Safer Returns* | `performance-manager-evaluation` | `meth:relative-performance-evaluation` (Conditions) | Merged |
+| 24 | *Block Motive Audit* | `execution-trading-costs` | `def:block-trade` | Merged |
+| 25 | *Block Trade Reporting Trade-Off* | `execution-trading-costs` | `def:block-trade` | Merged; argument corrected |
+
+Existing entries compared and kept: `def:spread-measures` and `res:spread-component-identification` (owned by `execution-market-making`) hold the effective and realised spreads; they are cross-referenced, and no spread measure was duplicated. `def:price-impact` and the estimation methods stay with `price-impact-execution`.
+
+### Sources, 2026-10-15
+
+- **Harris**, 2002 Oxford printing (text layer; printed page = PDF − 13): chap. 7, pp. 151–167 (principal–agent problem, best execution, dual trading, preferencing, soft dollars, dishonest brokers); chap. 15, pp. 328–331 (block dealers, trade reporting, motive audit, Table 15-2); chap. 21, pp. 420–423, 432 and 435–441 (components, signed cost, marginal rule, prediction), reusing slice 11's pp. 424–437; chap. 22, pp. 442–450 and 469–470 (performance evaluation, smoothing); chap. 25, pp. 514–519 (best execution practice, Rules 11Ac1-5 and 11Ac1-6). The marginal-aggressiveness passage (pp. 437–438) was read in this slice, not taken from the earlier lead.
+- **Kissell**, `s7-kissellscience`, the inspected copy whose copyright page says 2014 (the catalogue's 2013 date is unchanged): chap. 3, pp. 87–96 (best execution, ten components, TCA phases, cost against performance) and pp. 110–113 (index-adjusted cost and z-scores; page image of p. 112).
+- **Lehalle and Laruelle**, 2018 printing: sec. 3.1.3, pp. 200–203 (performance indicators, pre-, live- and post-trade compatibility, TCA); app. A, sec. A.7.2, pp. 278–279, with the page image of p. 279 for (A.26), the passage the average-price decomposition cites.
+- **Perold** remains unread; the slice relies on it only through Kissell's and Harris's attributions, as before.
+
+### Accounting checks (own, Interpretation in the entries)
+
+- **Legacy shortfall formula.** $\mathrm{IS}=dq(\bar p-p_0)+d(Q-q)(p_T-p_0)+$ explicit costs equals Perold's form with $S=dQ$; slice 11's example gives 3,960 for the buy and the sell.
+- **Spread and drift split.** With pre-fill midpoints $m_j$: delay $S(P_0-P_d)$ + half-spread paid $\sum s_j(p_j-m_j)$ + midpoint drift $\sum s_j(m_j-P_0)$ + opportunity $(S-\sum s_j)(P_n-P_0)$ + fees. Buy and sell examples with partial fills reconcile exactly: 1,000 + 300 + 600 + 2,000 + 60 = 3,960. It is an accounting identity; the drift is not causal impact.
+- **Lehalle and Laruelle's decomposition.** (A.26) is $\mathbb E(W)+\lambda\operatorname{Var}(W)$, an ex-ante objective whose third term is a variance penalty. Its realised counterpart $W=v^\star S_0+\sum x_n\sigma_n\xi_n+\kappa\sum\sigma_nv_n^{\gamma+1}/V_n^\gamma$ holds exactly inside the model (checked by simulation, book's timing); on data the impact term is a model value and the move a residual. The refined decomposition (planned price, unexpected moves, trading efficiency) has no formula, so its additivity cannot be checked.
+- **Kissell's index adjustment.** Eq. (3.22) leaves the index term unsigned; for a sale 50 bp below arrival while the index fell 50 bp with $\hat\beta=1$, it gives 100 bp of adjusted cost instead of 0. The side factor is needed.
+- **Performance identity.** Harris's $r^p=(r^p-\beta r^m)+(\beta r^m-r^m)+r^m$ checked. His realised alpha differs from Jensen's by $(1-\beta)r^f$ (−0.9 points at $\beta=1.3$, $r^f=3\%$).
+- **Examples.** Harris's cotton example (\$137,500) recomputed.
+- **Marginal rule.** Harris states it as advice: objective, choice variable and smoothness assumptions are Interpretation; there is no proof of optimality in the source.
+- **Evaluation populations.** TCA averages by order or by value depend on which orders each broker received; routing tables from unadjusted averages confound selection with skill.
+
+### The spread-versus-impact gap
+
+Partly addressed, not closed. The split above gives spread (half-spread paid against pre-fill midpoints), timing before arrival (delay), opportunity and fees with explicit references, and reconciles to the total without double-counting spreads already in fill prices. The rest, midpoint drift, mixes own impact with market and other traders' moves. Kissell says impact is an unobservable counterfactual (pp. 91–92), and a market-adjusted residual is impact only under the model used. The checkpoint's impact component is therefore still open, as is the effect of the tick, fee and reporting rules in force.
+
+### Source findings and legacy corrections
+
+- Harris: adverse selection is a cause of the spread, not a separate implicit cost; delay is Kissell's investment-related cost. Borrow charges, the venue variables in cost prediction, "benchmark change" and "past behaviour" in the motive audit, and venue selection as gaming are not in the passages.
+- Best execution: the legacy "best auditable outcome given objective, limit, urgency, venues and information risk" merges Harris's auditability standard with Kissell's process definition. Rules 11Ac1-5 and 11Ac1-6 are as of 2002 (now Rules 605 and 606, amended 2024; the pathway's readings on them are unread).
+- Broker conflicts: Harris treats commission recapture as a sponsor's tool, not a broker incentive; payment for order flow resembles but is generally not a kickback.
+- Block reporting: Harris argues that timely reporting hurts facilitating dealers; the legacy claim that delayed reporting helps informed initiators exploit stale prices is not his.
+- Performance: the legacy "money-weighted IRR, useful when the investor controls flows" and "trade-weighted" measures are not Harris's; his IRR is approximately time- and value-weighted.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-harris` | chaps. 7, 15, 21, 22, 25 as above | Text layer; rules and figures as of 2002 |
+| `s7-kissellscience` | chap. 3, pp. 87–96, 110–113 | Text layer; page image of p. 112; not on a route |
+| `alpha-laruelle` | pp. 200–203; app. A.7.2, pp. 278–279 | Text layer; page image of p. 279 |
+| `wide-perold-shortfall`, `ex-sec-rule605-2024`, `ex-sec-withdrawal-2025`, `wide-getmansky-lo-makarov` | none | Not read |
+
+The six new entries and the four extended entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefacts/market-making-lob/derivations.tex`, section *Transaction cost analysis (slice 13)*, with only the subsection unnumbered. A script confirmed that the artefact's earlier content is unchanged, that the file body appears once, that all 25 blocks appear once and in order, and that no text lies outside them. The other files of `execution-trading-costs/01_...` are byte-identical; only the `\input` line was removed from `00_overview.tex`.
+
+### Counts
+
+`migration_status.py`: 704 → 679 legacy blocks (25 migrated). Shared 558 → 533; single-candidate 117; assigned 29. Each block was a candidate of `execution-trading-costs` and `market-structure-execution-quality`, so each fell by 25: 28 → 3 and 318 → 293 (25 blocks, not 50); `price-impact-execution` stays at 10. Entries 54 → 60 (definitions 21 → 24, methods 8 → 11). Entries listed: `execution-trading-costs` 10 → 13; `market-structure-execution-quality` 0 → 2 (new note); `performance-manager-evaluation` 0 → 1 (new note); `price-impact-execution` 9; `execution-market-making` 22; `market-making-lob` 13.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 174 pages (170 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files, as before; the one `page.i` warning. A first build had one overfull box (a See-also line with an unbreakable key) and one underfull line in the chapter opener, both from this slice and fixed. Rendered and inspected: PDF p. 7 (the new Chapter 1), pp. 47 and 52–55 (the block-trade extension, the new sections) and p. 166 (the pruned legacy chapter, which now starts at *Smart Order Routing*). The artefact compiles on its own: 27 pages (24 before), no warnings, the same 3 underfull boxes.
+
+### For review
+
+- Routing four blocks to `performance-manager-evaluation`, outside the map candidates, and opening its chapter.
+- The three best-execution and broker blocks given to `market-structure-execution-quality`.
+- The accounting split and its limits, the (A.26) correction, the Kissell side correction.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/04_transaction_cost_analysis.tex` (25 blocks), shared between `market-structure-execution-quality` and `execution-trading-costs`. Likely overlaps: its *Implementation Shortfall with Missed Quantity* and *Signed Benchmark Cost* models with `def:implementation-shortfall` and `def:execution-benchmark`; its *VWAP Benchmark* and *Benchmark Price Segmentation* with `def:execution-benchmark`; its *Marginal Aggressiveness Rule* with Harris p. 438; its cost-component taxonomy with Kissell chap. 3 and the overview checkpoint's split into spread, impact, timing and fees (the gap logged in slice 11); and Lehalle and Laruelle's average-price decomposition (p. 201) in `meth:execution-decision-support`. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/05_smart_order_routing.tex` (15 blocks), mapped to `market-structure-execution-quality` alone. Likely overlaps: Lehalle and Laruelle sec. 3.4.2 (pp. 233 onwards, smart routing and the trade-through rule), `def:trading-envelope` (routers as tactics), `def:order-exposure-decisions`, and `def:best-execution` (U.S. and European best-execution regimes); its fee-adjusted price caveat needs a check against fee and rebate rules. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1101,7 +1206,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/04_transaction_cost_analysis.tex` | market-structure-execution-quality, execution-trading-costs |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/05_smart_order_routing.tex` | market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/06_high_frequency_trading_strategies.tex` | execution-trading-costs, market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/07_reinforcement_learning_and_ml_in_execution.tex` | reinforcement-learning-trading |

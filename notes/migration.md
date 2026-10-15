@@ -1801,9 +1801,84 @@ The whole file below its `% migrate-to:` line is kept verbatim in the new artefa
 - Leaving fixing windows to `fx-funding-settlement` without an entry.
 - The reliance on a voluntary code, one provider's disclosure and open manuscript versions.
 
+## Slice 20 follow-up: corrections, 15 October 2026
+
+Targeted corrections to two slice-20 entries; the slice-20 record above is left as written.
+
+- `mod:fx-internalisation-horizon`: Butz and Oomen's eq. (8) defines the expected queue length $L$ and the arrival rate $\lambda$ of risk-increasing trades; $L/\lambda$ is the conditional horizon of a risk-increasing trade, and, since risk-reducing trades wait zero, the all-trade average is $W=L/(2\lambda)$ (eq. (9), p. 7). $\lambda_0$ is the baseline intensity of buys and of sells in the skew examples (Examples 1–2, eqs. (5)–(7), pp. 5–6, page images), not $\lambda$. The EUR/USD figure of 1.39 minutes is now labelled the all-trade average the authors report; the conditional horizon, about 2.78 minutes, is labelled as own recomputation (exact stationary sum: $L/\lambda=2.774$, $W=1.387$). Notation and Status updated; `notes/readings/cfd-butz-oomen-2019.md` and the pathway note updated.
+- `mech:fx-last-look`: all three of the Code's cover-and-deal conditions are stated (explicit understanding of filling without market risk by first entering offsetting transactions; the volume traded in the window passed on in its entirety; the understanding documented and disclosed, p. 23, page image). The Code's "expected or typical period of time for making the decision" is called the decision time, the duration of the last-look window, and is kept apart from the time spent on checks and from any additional hold. The Deutsche Bank 10-millisecond bound is kept to its scope: the spot price check, with no additional hold; the validity check's duration is not bounded in the sheet, and non-spot products may differ. `notes/readings/exp-fx-code.md` and the pathway note updated.
+
+Checks: as for slice 21 below (same build and test run).
+
+## Slice 21: options market microstructure, 15 October 2026
+
+Migration of the four-block options file, run after the follow-up above. Migration and source checking, not study; the pathway's checkpoint was not attempted.
+
+### Scope
+
+The whole of `execution-trading-costs/02_.../04_options_market_microstructure.tex`: 4 counted blocks with the sentences inside them; outside them only the `% migrate-to:` line and the subsection heading (checked by script). The file, its `\input` in `02_.../00_overview.tex` and its map row were deleted; the wrapper and its other three topics (fixed income, securities lending, crypto) are unchanged.
+
+### Ownership and dispositions
+
+`options-execution` (the map's single candidate) owns all four blocks. Its outcome is explaining option spreads and execution costs through market-maker hedging, inventory and volatility risk, and measuring how retail order flow is routed and what it pays. The pathway sits in the section `execution-market-making`, so the entries are in the new topic file `compendium/execution-market-making/options-dealing.tex`, input after `fx-dealing.tex`; the chapter opener names it. The blocks were merged into three entries by question (why spreads exist, how costs are measured, how retail flow is routed), not one entry per block.
+
+| # | Legacy block | Owner | Destination | Checked sources | Disposition |
+|---|---|---|---|---|---|
+| 1 | *Options Are Surface Markets* (principle) | `options-execution` | `res:option-market-maker-spreads` (new) | Jameson–Wilhelm, Huh–Lin–Mello, Muravyev (abstracts) | Rewritten; "liquidity lives on a surface" kept as interpretation only, the implied-volatility surface distinguished from uniform liquidity |
+| 2 | *Post-Trade Complexity* (caveat) | `options-execution` | `res:option-market-maker-spreads` (Pitfalls); stub `mech:options-clearing-exercise-assignment` | Battalio–Hatch–Jennings (abstract) | Clearing, exercise, assignment and margin constraining fragmentation unchecked (no OCC or exchange rule read); "dominated by cross-contract risk" dropped as unmeasured |
+| 3 | *Market-Maker-Centric Liquidity* (mechanism) | `options-execution` | `res:option-market-maker-spreads` (who supplies quotes); `mech:options-retail-wholesaler-routing` (new) | Bryzgalova–Pavlova–Sikorskaya pp. 2, 11; Muravyev–Pearson (abstract) | Split; "buy-side traders typically consume liquidity" and its explanation not adopted |
+| 4 | *Options Liquidity Segmentation* (taxonomy) | `options-execution` | items iii–iv `res:option-market-maker-spreads`; items i, ii, v `meth:option-spread-measurement` (new); stub `def:option-complex-orders` | Bryzgalova–Pavlova–Sikorskaya Table I, pp. 15–16 (page images), pp. 12, 14, 17; Jameson–Wilhelm, Huh–Lin–Mello (abstracts) | Split; ATM "deepest" supported only as trade share and percentage quoted spread, not depth; "reduces size" and complex orders unchecked |
+
+Overlaps: `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `mod:inventory-based-quotes`, `res:adverse-selection-spread-component`, `def:spread-measures` and `res:spread-determinants` (generic and equity dealer material), `def:best-execution` and `def:broker-agency-conflicts` (equity PFOF), and `conv:futures-block-efrp`, `def:portfolio-trading` and `mech:etf-creation-redemption` are cross-referenced, each labelled as not establishing option claims; none was changed.
+
+### Sources, 2026-10-15 (generic request headers)
+
+- **Bryzgalova, Pavlova and Sikorskaya** (`ex-bryzgalova-pavlova-sikorskaya-2023`), the published *Journal of Finance* article, open access (CC BY), early-view pagination, from LBS Research Online eprint 2827: abstract and pp. 2, 4–5, 7, 11–12, 14–17, text layer (printed page = PDF − 1), with page images of Table I (pp. 15–16). U.S. OPRA data, 4 November 2019 to 30 June 2021.
+- **Abstracts only**, from the publishers' records as served by RePEc, Crossref and OpenAlex: Jameson and Wilhelm (`ex-jameson-wilhelm-1992`), Huh, Lin and Mello (`ex-huh-lin-mello-2015`), Muravyev (`wide-muravyev-order-flow`), Muravyev and Pearson (`wide-muravyev-pearson`), Battalio, Hatch and Jennings (`ex-battalio-hatch-jennings-2004`). No open full text was found; the EFMA 2013 working-paper copy of Huh, Lin and Mello returned HTTP 503, and a copy of Muravyev and Pearson on a trading-forum host was not used.
+- **Not read:** any OCC or exchange rule on clearing, exercise, assignment, margin, complex orders or price-improvement auction fees; `wide-christoffersen-option-illiquidity`, `ex-eraker-osterrieder-2023`, `exp-baldacci-options-market-making`.
+
+### Distinctions kept
+
+- **Surface and liquidity.** A linked set of prices (the implied volatility surface) is kept apart from liquidity, which is measured contract by contract; option liquidity is kept apart from the hedge instrument's.
+- **Risks.** Hedging cost, volatility risk, inventory risk and information risk are separated, each with its source and the source's status (empirical abstract, model prediction).
+- **Costs.** Quoted against effective spreads, both against timing-adjusted spreads with a fair-value benchmark; percent-of-premium against volatility units; outright against multi-leg (the BPS figures are single-leg only).
+- **Market, sample and contract.** Every figure carries its market (U.S.), period (2019–2021), contract set and measure; the abstract-only findings are marked as such, with samples unread.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `ex-bryzgalova-pavlova-sikorskaya-2023` | abstract; pp. 2, 4–5, 7, 11–12, 14–17; Table I page images | U.S., 2019–2021; SLIM proxy single-leg; fees as the authors report |
+| `ex-jameson-wilhelm-1992` | abstract | Full text and sample unread |
+| `ex-huh-lin-mello-2015` | abstract | Model; empirical tests unread |
+| `wide-muravyev-order-flow` | abstract | Full text unread |
+| `wide-muravyev-pearson` | abstract | Full text unread |
+| `ex-battalio-hatch-jennings-2004` | abstract | Full text unread |
+| OCC and exchange rules | none | Not read; stubs |
+
+The three new entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/options-execution/derivations.tex` (1 page, no warnings or bad boxes), with only the subsection unnumbered; a script confirmed the body appears once and the four blocks once each, in order, with nothing else outside them. Earlier artefacts are unchanged.
+
+### Counts
+
+`migration_status.py`: 629 → 625 legacy blocks = 530 shared + 66 single-candidate + 29 assigned. `options-execution`: exclusive 4 → 0, listed entries 0 → 3 (new note), backlog stubs 0 → 2. Entries 78 → 81 (results 15 → 16, methods 13 → 14, mechanisms 5 → 6). Six reading notes added. Other listings unchanged.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 199 pages (195 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before (one overfull Status line in the new file was fixed by rephrasing); the one `page.i` warning. Rendered and inspected: PDF pp. 54 (the corrected internalisation model), 56–58 (the new options section) and 196 (the legacy asset-class section, which now starts at *Fixed Income Microstructure*). Tests: 14 passed.
+
+### For review
+
+- The three new options entries, and the reliance on five abstracts.
+- The two backlog stubs, which need dated OCC and exchange rule documents.
+- Not adopting "buy-side typically consume liquidity".
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/04_options_market_microstructure.tex` (4 blocks), whose map names `options-execution` alone. Likely overlaps: the dealer quoting and inventory entries, `def:portfolio-trading` and `mech:etf-creation-redemption` (index options), and `conv:futures-block-efrp` (EOOs). The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/05_fixed_income_microstructure.tex` (6 blocks), whose map names `otc-fixed-income-trading` alone. Likely overlaps: the dealer quoting and inventory entries, `def:spread-measures`, `def:best-execution`, and `mech:etf-creation-redemption` (corporate bond ETFs); TRACE and European transparency claims need dated FINRA and EU rule documents. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1838,7 +1913,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/04_options_market_microstructure.tex` | options-execution |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/05_fixed_income_microstructure.tex` | otc-fixed-income-trading |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/06_securities_lending_and_synthetic_shorts.tex` | synthetic-equity-cfd-trs |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/07_crypto_market_microstructure.tex` | crypto-mm-microstructure |

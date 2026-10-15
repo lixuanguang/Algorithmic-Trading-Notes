@@ -25,8 +25,8 @@ Not attempted.
 Written in migration slice 20, 2026-10-15:
 
 - `def:fx-market-structure`: fragmentation without a consolidated tape; venues and access channels, RFQ/RFS risk transfer, firm and non-firm liquidity, principal and franchise liquidity; internalisation as a dealer choice; transaction cost analysis metrics including reject ratios.
-- `mod:fx-internalisation-horizon`: Butz and Oomen's queue model, $W\approx(R/\lambda_0)c_R/\sqrt{2\pi}$, with the EUR/USD calibration recomputed (1.39 minutes) and the costs of position skewing.
-- `mech:fx-last-look`: the FX Global Code's Principle 17 (voluntary, December 2024), one provider's disclosed terms (September 2025), firm against conditional quotes, price against validity rejections and technical failures, and the Cartea–Jaimungal–Walton model prediction.
+- `mod:fx-internalisation-horizon`: Butz and Oomen's queue model: conditional horizon $L/\lambda$ of a risk-increasing trade, all-trade average $W=L/(2\lambda)\approx(R/\lambda_0)c_R/\sqrt{2\pi}$ with $\lambda_0$ the baseline intensity; EUR/USD calibration recomputed (all-trade 1.39 minutes, conditional about 2.78) and the costs of position skewing.
+- `mech:fx-last-look`: the FX Global Code's Principle 17 (voluntary, December 2024) with all three cover-and-deal conditions, one provider's disclosed terms (September 2025; spot price check up to 10 ms, no additional hold), decision time against check time and additional hold, firm against conditional quotes, price against validity rejections and technical failures, and the Cartea–Jaimungal–Walton model prediction.
 
 All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/fx-dealer-market-making/derivations.tex`.
 

@@ -1,0 +1,57 @@
+% notes/artefacts/options-execution/derivations.tex
+% Legacy blocks kept verbatim when they were migrated (notes/migration.md), for the pathway
+% options-execution. The compendium entries state each claim with its locator; the original wording lives here.
+% Treat everything here as unchecked own working.
+% Compile inside notes/artefacts/options-execution/ with  latexmk -pdf derivations.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Options execution: legacy derivations}
+
+\section*{Options market microstructure (slice 21, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 21): the whole of
+% 04_options_market_microstructure.tex below its migrate-to line, 4 blocks in order with the sentences inside
+% them; only the subsection is unnumbered here. No other text, table or figure was in the file.
+% Destinations (all options-execution): block 1 res:option-market-maker-spreads (its "liquidity lives on a
+% surface" kept as interpretation only); block 2 res:option-market-maker-spreads, its clearing, exercise,
+% assignment and margin claim unchecked (backlog stub) and "dominated by cross-contract risk" dropped as
+% unmeasured; block 3 split between res:option-market-maker-spreads and mech:options-retail-wholesaler-routing,
+% its "buy-side typically consume liquidity" not adopted; block 4 items iii and iv res:option-market-maker-spreads
+% ("reduces size" unchecked), items i, ii and v meth:option-spread-measurement (ATM "deepest" supported only as
+% trade share and percentage spread; complex orders unchecked, backlog stub).
+% Sources: Bryzgalova, Pavlova and Sikorskaya (ex-bryzgalova-pavlova-sikorskaya-2023, published open-access
+% version, read in part); abstracts only of Jameson and Wilhelm (ex-jameson-wilhelm-1992), Muravyev
+% (wide-muravyev-order-flow), Huh, Lin and Mello (ex-huh-lin-mello-2015), Muravyev and Pearson
+% (wide-muravyev-pearson) and Battalio, Hatch and Jennings (ex-battalio-hatch-jennings-2004).
+
+% From compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/04_options_market_microstructure.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Options Market Microstructure}
+
+\begin{principle} \hlt{Options Are Surface Markets}\\
+An option quote is linked to the underlying price, volatility, rates, dividends, strike, and maturity.\\
+Liquidity therefore lives on a surface, not in one instrument, and market makers hedge across the underlying, futures, and related options.
+\end{principle}
+
+\begin{caveat} \hlt{Post-Trade Complexity}\\
+Options fragmentation is constrained by clearing, exercise, assignment, margin, and position-risk management. The trading interface may look electronic, but the economics are dominated by cross-contract risk.
+\end{caveat}
+
+\begin{mechanism} \hlt{Market-Maker-Centric Liquidity}\\
+Options markets rely heavily on professional market makers posting two-sided liquidity. Buy-side traders typically consume liquidity because maintaining coherent quotes across many strikes and maturities requires specialised models and hedging infrastructure.
+\end{mechanism}
+
+\begin{taxonomy} \hlt{Options Liquidity Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{moneyness}: at-the-money contracts are usually deepest;
+\item \hlt{expiry}: near expiries trade differently from long-dated optionality;
+\item \hlt{underlying liquidity}: hedging cost transfers into option spreads;
+\item \hlt{volatility regime}: high uncertainty widens quotes and reduces size;
+\item \hlt{complex orders}: spreads and multi-leg trades may be more relevant than outrights.
+\end{enumerate}
+\end{taxonomy}
+
+\end{document}

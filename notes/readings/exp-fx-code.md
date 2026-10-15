@@ -20,7 +20,7 @@ Prepared on 2026-10-15 by migration slice 20 from source checks, not from study:
 ## Key results
 
 - The Code "does not impose legal or regulatory obligations" and supplements local law (p. 1).
-- Principle 17: last look defined; disclosure of how price changes affect decisions, the typical decision time and the purpose; validity and price checks; no information gathering; no trading on the request's information during the window, except cover-and-deal arrangements meeting three conditions (pp. 22–23).
+- Principle 17: last look defined; disclosure of how price changes affect decisions, the typical decision time and the purpose; validity and price checks; no information gathering; no trading on the request's information during the window, except cover-and-deal arrangements meeting all three conditions: an explicit understanding that the provider fills without taking market risk by first entering offsetting transactions, the volume traded in the window passed on in its entirety, and the understanding documented and disclosed (pp. 22–23).
 
 ## Limits
 

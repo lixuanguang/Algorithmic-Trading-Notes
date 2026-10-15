@@ -1,0 +1,88 @@
+% compendium/execution-market-making/options-dealing.tex
+% Entries migrated on 2026-10-15 from the legacy options-market-microstructure file (slice 21), owned by
+% options-execution; dispositions and source checks in notes/migration.md, the blocks verbatim in
+% notes/artefacts/options-execution/derivations.tex.
+
+\section{Options dealing: market-maker spreads, cost measurement and retail routing}
+
+\begin{qfresult}[Option market-maker spreads: discrete hedging, volatility uncertainty, inventory and informed trading, priced across linked contracts]\label{res:option-market-maker-spreads}
+\qffield{Statement} An option's value depends on the underlying price, volatility, rates, dividends, strike and maturity, so the quotes on one underlying form a linked set of contracts, and a market maker who sells one option holds risks that it can hedge in the underlying or in other options. Four findings, each from a different sample or model, separate the risks that this linkage leaves the market maker:
+\begin{itemize}
+\item \emph{Hedging and volatility risk.} For a sample of Chicago Board Options Exchange options, the risks of being unable to rebalance an option hedge continuously and of uncertainty about the underlying's return volatility ``each account for a statistically and economically significant proportion'' of quoted bid--ask spreads, risks the authors call unique to options \citep[abstract]{ex-jameson-wilhelm-1992}.
+\item \emph{Inventory risk.} Decomposing the price impact of option trades into inventory-risk and asymmetric-information components, both are large and the inventory component is larger; order imbalances attributable to inventory risk have ``five times larger impact on option prices than previously thought'', and past imbalances predict option returns better than other common predictors \citep[abstract]{wide-muravyev-order-flow}.
+\item \emph{Informed trading and the hedging instrument.} In Huh, Lin and Mello's model, market makers who hedge against adverse selection widen spreads in both the option and the stock, more in the option, and more when hedging with the underlying than with other options; hedging also changes informed traders' strategies. Their empirical tests are reported as consistent with the model's key implication \citep[abstract]{ex-huh-lin-mello-2015}.
+\item \emph{Who supplies quotes.} In U.S. options all orders must be executed on exchanges, and retail orders are typically filled by a wholesaler's affiliated market maker \citep[published version, pp.~2 and~11]{ex-bryzgalova-pavlova-sikorskaya-2023}; the routing is in \hyperref[mech:options-retail-wholesaler-routing]{retail option order routing}.
+\end{itemize}
+
+\qffield{Conditions} The first three are abstract-level checks of the published papers; their samples, periods, contracts and estimates were not read. Jameson and Wilhelm's evidence is for CBOE equity options in a sample period not read (the paper was published in 1992); Huh, Lin and Mello's result is a model prediction whose empirical support is stated only as consistency with one implication. None of them says how large each risk is in today's markets.
+
+\qffield{Practice} Interpretation, keeping the risks apart:
+\begin{itemize}
+\item \emph{hedging cost}: the cost and residual risk of trading the hedge, discretely, in the underlying or other options;
+\item \emph{volatility risk}: exposure to changes in volatility, which a delta hedge does not remove;
+\item \emph{inventory risk}: the position a market maker accumulates from net order flow, priced through quote adjustment as in equity dealer models (\hyperref[def:dealer-inventory-risk]{dealer inventory risk}, \hyperref[meth:dealer-quote-adjustment]{dealer quote adjustment});
+\item \emph{information risk}: trading against better-informed traders, in the option or through the hedge (\hyperref[res:adverse-selection-spread-component]{adverse-selection spread component}).
+\end{itemize}
+A linked set of prices, an implied volatility surface, does not mean liquidity is uniform across it: liquidity is measured contract by contract (\hyperref[meth:option-spread-measurement]{option spread measurement}), and the liquidity of an option differs from that of the instrument used to hedge it.
+
+\qffield{Pitfalls} The legacy principle's ``liquidity therefore lives on a surface, not in one instrument'' is kept as interpretation only: the papers read link spreads to hedging, not liquidity to a surface. The legacy caveat's claim that fragmentation is ``constrained by clearing, exercise, assignment, margin, and position-risk management'' was not checked: no clearing-house or exchange rule was read, and Battalio, Hatch and Jennings's study of multiply listed equity options contrasts June 2000, when quotes were often ignored, with January 2002, when the market more closely resembled a national market; it does not address clearing \citep[abstract]{ex-battalio-hatch-jennings-2004}. Its ``economics are dominated by cross-contract risk'' is not measured by any source read. Of the taxonomy, ``hedging cost transfers into option spreads'' is supported in direction by the hedging findings above; ``high uncertainty widens quotes'' is supported cross-sectionally by Jameson and Wilhelm's volatility-uncertainty result, and ``reduces size'' is not checked. Generic dealer models from equity markets motivate but do not establish option claims, nor do the \hyperref[conv:futures-block-efrp]{futures EFRP} (exchange of options for options), \hyperref[def:portfolio-trading]{portfolio trading} or \hyperref[mech:etf-creation-redemption]{ETF} entries.
+
+\qffield{See also} \hyperref[res:spread-determinants]{spread determinants}; \hyperref[mod:inventory-based-quotes]{inventory-based quotes}; \hyperref[meth:option-spread-measurement]{option spread measurement}; \hyperref[mech:options-retail-wholesaler-routing]{retail option order routing}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/options-execution/}.
+
+\qffield{Index} option market making; options bid--ask spread; discrete hedge rebalancing; volatility uncertainty; inventory risk; option order imbalance; asymmetric information; informed trading in options; hedging with the underlying; hedging with options; implied volatility surface; multiply listed options
+
+\qffield{Status} Verification: partly checked 2026-10-15 (for \texttt{ex-jameson-wilhelm-1992}, the abstract only; for \texttt{wide-muravyev-order-flow}, the abstract only; for \texttt{ex-huh-lin-mello-2015}, the abstract only; for \texttt{ex-battalio-hatch-jennings-2004}, the abstract only; these four from the publishers' records as served by RePEc, Crossref and OpenAlex, with the full texts unread; and for \texttt{ex-bryzgalova-pavlova-sikorskaya-2023}, the published open-access version, pp.~2 and~11). Stability: draft. Currency: findings as of their samples, from the CBOE before 1992 to U.S. options in 2019--2021.
+\end{qfresult}
+
+\begin{qfmethod}[Measuring option execution costs: quoted against effective spreads, premium units, execution timing, and segmentation by moneyness, expiry and trade type]\label{meth:option-spread-measurement}
+\qffield{Statement} Option spreads are usually measured relative to the option's premium. In Bryzgalova, Pavlova and Sikorskaya's U.S. data, the \emph{quoted spread} is the best ask minus the best bid across all exchanges relative to the midpoint at the time of the trade, and the \emph{effective spread} twice the absolute percentage deviation of the trade price from that midpoint, both frequency-weighted \citep[published version, Table~I, p.~15, page image]{ex-bryzgalova-pavlova-sikorskaya-2023}. These are the equity measures of \hyperref[def:spread-measures]{spread measures} applied per contract. Two corrections apply in options:
+\begin{itemize}
+\item \emph{Benchmark and timing.} Option price changes are predictable at high frequency, and many traders time executions, buying when the option's fair value is close to the ask and selling when it is close to the bid. Effective spreads of such traders are less than 40 percent of conventional measures, the overall average effective spread is one-quarter smaller than conventional estimates, and price-impact measures are also affected \citep[abstract]{wide-muravyev-pearson}. Interpretation: the midpoint then overstates the cost of a timed trade.
+\item \emph{Units.} A spread in percent of premium is not a spread in volatility units: a cheap out-of-the-money option can have a large percentage spread and a small spread in implied volatility (Interpretation).
+\end{itemize}
+
+\qffield{Conditions} The segmentation figures are from Table~I of Bryzgalova, Pavlova and Sikorskaya, all U.S. option trades from 4 November 2019 to 30 June 2021 (OPRA data), split into single-leg price-improvement-auction trades (SLIM, their retail proxy) and the rest (pp.~7, 11 and~15--16, page images):
+\begin{itemize}
+\item \emph{moneyness}: at-the-money trades are about 70 percent of trades in both groups and have the lowest quoted spreads, 8.7 percent (SLIM) and 8.4 percent (non-SLIM), against 28.7 and 21.3 percent for slightly out-of-the-money trades; moneyness is $(\text{midpoint price}-\text{strike})/\text{strike}$, with the opposite sign for puts;
+\item \emph{expiry}: options with less than a week to expiration carry about half of SLIM volume and 41.5 percent of non-SLIM volume; their quoted spreads are 12.6 and 13.3 percent and their effective spreads 6.6 and 10.1 percent. Spreads are not monotone in maturity: 3--12 month options have SLIM quoted spreads of 18.5 percent but non-SLIM ones of 10.2 percent;
+\item \emph{trade size}: SLIM trades below \$250 have quoted spreads of 23.5 percent; trades above \$20{,}000 have effective spreads above quoted spreads, consistent with price impact (p.~17);
+\item \emph{totals}: quoted and effective spreads average 13.7 and 6.7 percent for SLIM and 11.6 and 8.6 percent for non-SLIM trades.
+\end{itemize}
+
+\qffield{Practice} Report spreads per contract with the market, sample period, contract set and units, and separate:
+\begin{itemize}
+\item quoted from effective spreads, and both from timing-adjusted measures against a fair-value benchmark;
+\item outright from multi-leg trades: Bryzgalova, Pavlova and Sikorskaya restrict their measure to single-leg auctions and note that multi-leg auctions are a noisier retail measure (p.~12), so their figures say nothing about spread or multi-leg costs;
+\item the option's liquidity from the hedge's: a narrow option spread can still carry a costly hedge, and the reverse.
+\end{itemize}
+
+\qffield{Pitfalls} The legacy taxonomy's ``at-the-money contracts are usually deepest'' is supported only as trade share and percentage quoted spread in one U.S. sample; depth, size at the quote, was not measured in the passages read. ``Near expiries trade differently'' is consistent with the expiry split but is not a finding. ``Spreads and multi-leg trades may be more relevant than outrights'' is not checked: no source read measures complex-order books or exchange complex-order rules.
+
+\qffield{See also} \hyperref[def:spread-measures]{spread measures}; \hyperref[res:option-market-maker-spreads]{option market-maker spreads}; \hyperref[mech:options-retail-wholesaler-routing]{retail option order routing}; \hyperref[def:best-execution]{best execution}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/options-execution/}.
+
+\qffield{Index} option quoted spread; option effective spread; relative spread in premium; spread in volatility units; execution timing; fair-value benchmark; moneyness; at-the-money; out-of-the-money; weekly options; time to expiry; single-leg; multi-leg; complex orders; option price impact
+
+\qffield{Status} Verification: partly checked 2026-10-15 (\texttt{ex-bryzgalova-pavlova-sikorskaya-2023}, published open-access version, pp.~7, 11--12 and~14--17 with page images of Table~I; abstract of \texttt{wide-muravyev-pearson} from the publisher's record via RePEc and OpenAlex, full text unread). Stability: draft. Currency: U.S. options, November 2019 to June 2021; Muravyev and Pearson's sample not read.
+\end{qfmethod}
+
+\begin{qfmechanism}[Retail option order routing: payment for order flow, wholesalers and price-improvement auctions (U.S., 2019--2021)]\label{mech:options-retail-wholesaler-routing}
+\qffield{Statement} In U.S. equities wholesalers internalise retail orders off exchange; in options all orders must be executed on exchanges, so internalisation was thought specific to equities. Bryzgalova, Pavlova and Sikorskaya argue that much retail option flow is also effectively internalised \citep[published version, p.~2]{ex-bryzgalova-pavlova-sikorskaya-2023}. A retail broker routes the order to a wholesaler in exchange for payment for order flow (PFOF) and a promise of price improvement on the NBBO. The wholesaler's affiliated market maker brings the order, paired with its own contra side, to an exchange's price-improvement auction, where other participants (``responders'') may offer a better price within a time window. Fees are stacked against responders: on most exchanges the affiliated market maker pays \$0.05 a contract, a responder \$0.50, and the wholesaler receives a net rebate of \$0.30 for bringing the order (p.~11 and footnote~15).
+
+\qffield{Conditions} Sample and measure: OPRA trades from 4 November 2019 to 30 June 2021, with the retail proxy built from the single-leg non-ISO price-improvement auction flag that OPRA introduced on that date (pp.~11--12). Some large SLIM trades are likely institutional; the authors check robustness on trades below \$20{,}000 (p.~17). Retail trading reached over 60 percent of total option volume, and nearly 90 percent of PFOF came from three wholesalers (abstract), named as Citadel, Susquehanna and Wolverine, by the second quarter of 2021 (pp.~2 and~11). The fees are as the authors report them for their sample; no exchange fee schedule was read.
+
+\qffield{Practice} What retail flow pays, in the authors' measures: SLIM trades had an average quoted spread of 13.7 percent and effective spread of 6.7 percent of the premium (Table~I), so they received price improvement but paid spreads far above those in equities (p.~14). Aggregate trading costs, measured from trade price to midquote for all SLIM trades, were \$6.4 billion over the sample, against about \$900 million of commissions; at a 10-day holding horizon the aggregate retail portfolio lost \$2.1 billion (pp.~4--5).
+
+\qffield{Pitfalls} The legacy mechanism said buy-side traders ``typically consume liquidity'' because coherent quoting needs specialised models and hedging infrastructure. The routing above shows retail market orders filled by wholesalers' market makers, and Muravyev and Pearson find that many traders time their liquidity-taking \citep[abstract]{wide-muravyev-pearson}; neither establishes who supplies or takes liquidity across the options market, or why, so the general claim and its explanation are not adopted. Payment for order flow and broker conflicts in equities are in \hyperref[def:broker-agency-conflicts]{broker conflicts}; they do not establish option facts.
+
+\qffield{See also} \hyperref[def:best-execution]{best execution}; \hyperref[def:broker-agency-conflicts]{broker conflicts}; \hyperref[meth:option-spread-measurement]{option spread measurement}; \hyperref[res:option-market-maker-spreads]{option market-maker spreads}.
+
+\qffield{Further reading} The legacy block it draws on, verbatim, is in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/options-execution/}.
+
+\qffield{Index} payment for order flow; PFOF; wholesaler; retail option trading; price improvement auction; price improvement mechanism; SLIM; paired order; responder fee; affiliated market maker; internalisation in options; OPRA; retail trading costs
+
+\qffield{Status} Verification: partly checked 2026-10-15 (\texttt{ex-bryzgalova-pavlova-sikorskaya-2023}, published open-access version, abstract and pp.~2, 4--5, 11--12, 14--17, with page images of Table~I; abstract of \texttt{wide-muravyev-pearson}). Stability: draft. Currency: U.S. options, November 2019 to June 2021; exchange fees as the authors report them, not checked against any current schedule.
+\end{qfmechanism}

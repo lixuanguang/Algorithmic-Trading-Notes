@@ -2595,3 +2595,128 @@ The artefact compiles alone: 2 pages, no warnings, no bad boxes.
 - The correction of the unconstrained single-asset claim, and the treatment of Black–Litterman and resampling on Narang's and Boyd et al.'s accounts alone.
 - Keeping Grinold and Kahn's approach as a separate entry on Narang's account only.
 - The not-adopted data-mining and decision-tree details, which may come from an earlier edition.
+
+## Slice 28 follow-up: closed-form conditions, permutations, learning and rounding, 15 October 2026
+
+Narrow corrections to slice 28 after an audit, run before slice 29; the slice-28 record above is left as written, and this record supersedes it where they differ. No legacy block, entry label, stub, artefact or count changed (595 legacy blocks; 102 entries).
+
+- **Closed form, `mod:mean-variance-portfolio-optimisation`.** The entry now states that $w^\star=\tfrac1{2\gamma}\Sigma^{-1}(\mu+\nu^\star\mathbf 1)$ assumes a positive-definite $\Sigma$ and $\gamma>0$, and gives $\nu^\star=(2\gamma-\mathbf 1^\top\Sigma^{-1}\mu)/(\mathbf 1^\top\Sigma^{-1}\mathbf 1)$, the budget constraint's dual variable (Boyd et al., p. 4), which shifts all expected returns equally so that the weights sum to one. The volatility-target form is feasible only when $\sigma_{\mathrm{tar}}^2\ge1/(\mathbf 1^\top\Sigma^{-1}\mathbf 1)$, quoting Boyd et al.'s "can be infeasible when $\sigma^{\mathrm{tar}}$ is too small" (p. 4). A singular $\Sigma$ is said to need separate treatment, with no pseudoinverse by default.
+- **Single asset, same entry.** Slice 28 said a single-asset answer arises "when risk is ignored". The entry now separates the bounded case (budget and no shorting: the highest-return asset) from the unbounded one (shorting allowed, returns not all equal) and box limits.
+- **Resampling, same entry.** Slice 28 said Narang's remark "shows that reordering cannot change the sample means and covariances an optimiser uses". His remark concerns one series. The entry now says that reordering one series keeps its mean and variance, a common permutation of multivariate rows keeps covariances, and independent permutations change them; Michaud's procedure and performance claims remain unchecked.
+- **Machine learning, same entry.** "Supervised learning fits a forecast; it does not choose weights" is replaced by a distinction between forecasting, learning allocation weights (possible; its literature not read) and optimisation, keeping the narrower conclusion that the legacy item lacks source support.
+- **ERC rounding and positive variance, `meth:rule-based-position-sizing`.** The displayed weights 29.9, 29.9 and 40.2 percent did not match the stored calculation ($b=0.401492$ rounds to 40.1); they now read about 29.93, 29.93 and 40.15 percent with their closed form. Normalised risk contributions are stated to require $w^\top\Sigma w>0$.
+- **Transaction-cost entry.** `mod:portfolio-transaction-cost-function`'s *Further reading* and *Status* no longer say that no pathway reading was read; they name the parts of Boyd et al. read in slice 28.
+- **Checks**, in the session with numpy (no script kept): for a three-asset positive-definite $\Sigma$ (eigenvalues 0.0219, 0.0374, 0.0932), $\gamma=1$ and $\gamma=5$ give $\nu^\star=-0.0555$ and $0.0562$, weights summing to 1 and first-order residuals below $10^{-16}$; minimum variance 0.01396; with $\gamma=0$ the direction $(1,0,-1)$ raises return by 0.03 per unit with unchanged budget, so the problem is unbounded; two perfectly correlated assets give eigenvalues 0 and 0.08. Permutation: $x=y=(1,2,3,4)$, covariance 1.25; reversing $y$ alone gives $-1.25$ with means 2.5 and variances 1.25 unchanged; a common permutation keeps 1.25. ERC: 29.9254, 29.9254, 40.1492 percent; equal weights give 39.13, 39.13, 21.74 percent at variance 0.02044.
+- **Notes and index.** The `portfolio-construction` note records the changes; `log.md` keeps its slice-28 line and gains a dated line narrowing it; the slice-28 index row gives `4e7666d`.
+
+## Slice 29: risk models (factor exposures, limits and penalties), 15 October 2026
+
+Migration of the risk-models file of Narang's systematic-investing notes, run after the slice-28 follow-up above. Migration and source checking, not study; no checkpoint was attempted. Two further sections of Boyd et al., a reading of the owning pathway, were read for method mechanics.
+
+### Scope
+
+The whole of `compendium/legacy/portfolio-construction-risk/sysinv/riskmod.tex`: an introductory paragraph outside the environments, and 4 counted `method` blocks with 9 `\item` commands (4 in *Factor-Based Models*, 3 in *Statistical Models*, none in *Limiting Size of Risk*, which is prose only, and 2 in *Limiting the Types of Risk*), with the prose around them; the three `\setlength{\itemsep}{0pt}` lines are not items. Outside the blocks were only the `% migrate-to:` line, the subsection heading and the introduction (checked by script). The file and its map row were deleted; in `sysinv/sysinvoverview.tex` only its `\input` line was replaced, by a `% migrated:` comment. The remaining `sysinv/` files (`alphamod.tex`, `executionmod.tex`, `sysinvoverview.tex` with its method block), their inputs and the chapter wrappers, other legacy files, earlier artefacts (slices 27 and 28 included), the deferred assignments, the 21 PNGs, `house.tex` and the guide pin (`343d145`) are unchanged.
+
+### Ownership and dispositions
+
+The map's only candidate is `portfolio-construction` ("construct a constrained portfolio from noisy forecasts with a factor risk model, shrinkage and costs, and attribute its realised risk"). The factor-model, size-limit and exposure-type material is that pathway's. The *Statistical Models* block lists historical simulation, Monte Carlo simulation and parametric methods for "risk metrics" and "key risk measures"; it is about estimating portfolio risk measures, not about the covariance an optimiser uses. `risk-tail-systemic` has the outcome "forecast and backtest VaR and ES, design a tail hedge, and run a stress test", with a checkpoint built on filtered historical simulation and EVT. **Routing exception:** that block goes to `risk-tail-systemic`, as a backlog item only (`meth:var-es-estimation-methods`), because its text is generic, absent from Narang's chapter, and supports no entry; this slice opened `notes/pathways/risk-tail-systemic.md`. Nothing went to `time-series-volatility`: the block does not discuss GARCH, and `mod:garch-volatility-forecast` is unchanged.
+
+One new entry, `mod:factor-risk-model`, in the new topic file `compendium/portfolio-construction-risk/risk-models.tex`; the size-limit block merged into `mod:mean-variance-portfolio-optimisation`. The artefact is a new file, `notes/artefacts/portfolio-construction-risk/risk-models.tex`, beside those of slices 27 and 28.
+
+| Part | Legacy text | Owner | Destination | Checked source | Disposition |
+|---|---|---|---|---|---|
+| Intro | Risk model concerns intentional selection and sizing of exposures; alpha exposure accepted for long-run profit | `portfolio-construction` | `mod:factor-risk-model` (Statement, Pitfalls) | Narang chap. 4, pp. 71–73; Exhibit 4.1, p. 83 by page image | Corrected: Narang says this of risk *management*; the risk model is an input to the portfolio decision |
+| 1 | *Factor-Based Models* (method), items i–iv | `portfolio-construction` | `mod:factor-risk-model` (new) | Boyd et al. sec. 3.3, pp. 20–21; Narang pp. 71–72, 77–78 | Rewritten with the factor covariance and its assumptions; the factor list qualified |
+| 2 | *Statistical Models* (method), items i–iii | `risk-tail-systemic` | stub `meth:var-es-estimation-methods` (new note) | none in Narang's chapter | Stubbed, not written as an entry |
+| 3 | *Limiting Size of Risk* (method), prose | `portfolio-construction` | merged into `mod:mean-variance-portfolio-optimisation` (Practice, Pitfalls) | Narang secs. 4.1–4.1.3, pp. 73–76; Boyd et al. sec. 4.2, pp. 25–27 | Merged with corrections |
+| 4 | *Limiting the Types of Risk* (method), items i–ii | `portfolio-construction` | `mod:factor-risk-model` (Conditions, Practice, Pitfalls) | Narang secs. 4.2–4.2.3, pp. 76–81 | Rewritten with qualifications |
+
+**Subclaims.**
+
+| Where | Legacy claim | Disposition |
+|---|---|---|
+| Intro | "Risk model concerns the intentional selection and sizing of exposures to improve the quality and consistency of returns" | Corrected: Narang's sentence is about risk management (p. 71); the risk model measures and flags exposures and feeds portfolio construction (p. 72, Exhibit 4.1) |
+| Intro | Alpha exposure accepted for long-run profit | Rewritten as his definition: risks are the exposures not intentionally forecast (pp. 71–72) |
+| 1 stem | Returns decomposed into systematic factors and idiosyncratic components | Rewritten with Boyd et al.'s $r=Ff+\epsilon$, $\Sigma=F\Sigma_fF^\top+D$ and its assumptions (uncorrelated $f$ and $\epsilon$, diagonal $D$) |
+| 1.i–iv | Market, size, value, momentum as "the most common factors"; size and value as risks; momentum as a tendency | Qualified: the list is not in Narang's chap. 4, which names market, sector and market-cap risk (pp. 77–78) and uses value as an alpha (pp. 71–72); whether a factor is a risk, a signal or a premium depends on the strategy's forecasts. Boyd et al.'s market, industry and style (Fama–French) factors cited |
+| 1 close | Lets traders see what drives risk and adjust exposures | Rewritten as Narang's uses: measure, explain P&L, model residuals (pp. 72, 82–83); the adjustment is the portfolio decision |
+| 2.i–iii | Historical simulation, Monte Carlo, parametric methods | Stubbed in `risk-tail-systemic`, with the methods treated as overlapping (filtered historical simulation mixes a volatility model with historical residuals; Monte Carlo draws from a parametric or resampled model) |
+| 2 close | "Useful for dynamically updating risk assessments" | Stubbed with the qualification that updating is not evidence of better forecasts |
+| 3 | Limits vary by how size is limited, how risk is measured, what is limited | Merged (p. 73) |
+| 3 | Hard constraints and penalties; penalty lets a position pass the limit only for a larger expected return | Merged with his 3% example (pp. 73–74) and Boyd et al.'s softening, which replaces a hard constraint by a penalty and keeps mandated limits hard (pp. 25–27): a penalty does not permit breaching a separate hard cap |
+| 3 | Levels from theory or data | Merged (p. 74), with the overfitting link |
+| 3 | Two ways to measure risk: volatility (longitudinal) and correlation/covariance (dispersion) | Corrected: Narang's dispersion is the cross-sectional standard deviation or correlation (pp. 74–75); a covariance risk model contains volatilities and correlations together; his "higher dispersion, less risky" not adopted |
+| 3 | Limits on positions, groups, risk types, leverage | Merged (p. 75); his VaR-based leverage critique noted, and his description of VaR as a one-standard-deviation move not adopted (pp. 75–76) |
+| 4 stem | Eliminate unintentional exposure, "no expectation of being compensated" | Kept as Narang's rule (p. 76), qualified: unintended is not the same as uncompensated; his CVX/XOM and value-sector examples given |
+| 4 stem | Through theoretical or empirical risk models | Rewritten (pp. 76–80), with his preference for building exposure control into alpha models (pp. 80–81) |
+| 4.i | Theory-driven: systematic factors from economic theory; "cannot be diversified away"; market, sector, cap; rates | Rewritten (pp. 77–78), with the diversification condition shown numerically (residuals diversify only if uncorrelated) |
+| 4.ii | Empirical: PCA finds unnamed systematic risks; used by stat-arb traders | Rewritten (p. 78): PCA factors need not have stable names (sign, order and composition can change; interpretation), may be spurious (his caution); "used by" corrected to his "most commonly found among"; adaptiveness against data needs (p. 79) |
+
+No claim was deleted outright.
+
+**Existing coverage checked.**
+- `mod:mean-variance-portfolio-optimisation`: the destination of block 3; its *Practice* gains a size-limits passage and its *Pitfalls* a volatility-and-covariance passage, and its Status is updated.
+- `meth:rule-based-position-sizing`, `meth:signal-portfolio-allocation`, `mod:portfolio-transaction-cost-function`: no overlap beyond cross-references; unchanged in this slice (the first two were corrected in the follow-up above).
+- Stub `meth:portfolio-covariance-estimation`: narrowed to estimation (shrinkage, fitting a factor model, out-of-sample tests), since the factor model's structure is now in the new entry.
+- Stub `mod:garch-volatility-forecast` (home `time-series-volatility`): unchanged; the statistical block does not discuss GARCH.
+- Cross-referenced, unchanged: `def:quant-strategy-risk-sources` (`model-governance-controls`), `def:common-investor-contagion` (`funding-crowding`), `pit:parameter-overfitting` (`backtest-inference`).
+
+### Sources, 2026-10-15
+
+- **Narang** (`s7-narang`), *Inside the Black Box*, third edition, Wiley 2024, the same local copy as slices 25–28, text layer through PDFKit. Chap. 4, "Risk Models", secs. 4.1–4.4 and notes, pp. 71–84 (PDF pages 91–104; contents: chap. 4 p. 71, notes p. 84; running heads checked). Its only exhibit, 4.1 (p. 83), the black-box schematic, was read by page image; the chapter has no data exhibits.
+- **Boyd et al.** (`wide-boyd-markowitz-seventy`), authors' version of 5 January 2024, the same copy as slice 28: sec. 3.3, factor model (pp. 20–21), and sec. 4.2, softening constraints (pp. 25–27). The reading note records them.
+- **Not read:** the readings of `risk-tail-systemic` (VaR, ES, historical simulation, backtests), the factor-premia and covariance-estimation readings (`wide-connor-goldberg-korajczyk`, `wide-ledoit-wolf-review`), and any PCA reading.
+
+### Numerical checks
+
+In the session with numpy; no script kept, and no existing script covers this content:
+- One-factor model, unit loadings, factor volatility 15%, residual 30%, equal weights: portfolio variance 0.1125, 0.0315, 0.0234, 0.02259 (volatility 33.5, 17.8, 15.3, 15.0%) for $n=1$, 10, 100, 1,000; factor part fixed at 0.0225.
+- Residuals with correlation 0.2 and variance 0.09, 1,000 assets: residual variance 0.01807, above the floor $0.2\times0.09=0.018$.
+- Neutrality: loadings $(1,0.5)$, $(1,-0.5)$, $(0.8,1)$, $\Sigma_f=\begin{pmatrix}0.04&0.012\\0.012&0.01\end{pmatrix}$, $w=(0.5,-0.5,0)$: exposures $(0,0.5)$, covariance with the factors $(0.006,0.005)$.
+- PCA sign: the eigenvectors of a 2×2 correlation matrix with $\rho=0.6$ are returned with arbitrary sign (eigenvalues 0.4 and 1.6).
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `s7-narang` | chap. 4, pp. 71–84; Exhibit 4.1 as image | Third edition; one practitioner's account with no data; his VaR description and dispersion inference not adopted; the legacy factor list and statistical block absent |
+| `wide-boyd-markowitz-seventy` | secs. 3.3, 4.2 | Authors' version; the factor model stated, not estimated |
+| VaR/ES, factor-premia and covariance-estimation readings | none | Stubs; "unintended is not uncompensated" is interpretation |
+
+The new entry and the merged passages are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/portfolio-construction-risk/risk-models.tex`, with only the subsection unnumbered. A script compared it with `git show HEAD:compendium/legacy/portfolio-construction-risk/sysinv/riskmod.tex`:
+- the body below the subsection heading appears exactly once;
+- the introduction (223 characters) appears once, before the blocks;
+- the 4 blocks appear verbatim once each, in order (773, 688, 958 and 967 characters, all prose included);
+- `\item` commands, matched as `\item` not followed by a letter, number 4, 3, 0 and 2, 9 in both original and artefact; the substring count would give 12, because of the 3 `\itemsep` lines;
+- the sequence of 14 `\begin`/`\end` commands is identical (ignoring `document`);
+- nothing lay outside the blocks but the migrate-to line, the subsection heading and the introduction.
+
+The artefact compiles alone: 1 page, no warnings, no bad boxes; its page image was inspected.
+
+### Counts
+
+`migration_status.py --check`, 0 problems: 595 → 591 legacy blocks = 530 shared + 32 single-candidate + 29 assigned. `portfolio-construction`: exclusive 4 → 0, entries 4 → 5, stubs 7 (one narrowed). `risk-tail-systemic`: entries 0, stubs 0 → 1 (new note). `portfolio-construction-risk` (overview): exclusive 8, unchanged. Other pathways unchanged (`execution-trading-costs` 14/1, `model-governance-controls` 3/4, `funding-crowding` 1/4, `backtest-inference` 4/8, `crypto-perpetuals` 3/5). Entries 102 → 103 (models 12 → 13). No new `front/sources.tex` keys.
+
+`portfolio-construction` now has no legacy file listing it alone. That is migration progress only: its backlog is open, no reading has been studied, and the remaining `sysinv/` files, mapped to the overview, may still bear on it.
+
+### Other files
+
+- Chapter opener `compendium/portfolio-construction-risk/section.tex`: comment, paragraph and inputs.
+- `notes/pathways/portfolio-construction.md` (entries, related entries, backlog, legacy material); `notes/pathways/risk-tail-systemic.md` (new).
+- `notes/readings/s7-narang.md` and `notes/readings/wide-boyd-markowitz-seventy.md`.
+- `notes/log.md`: coverage rows for `portfolio-construction` and `risk-tail-systemic`, the `s7-narang` progress cell, one open question.
+- `notes/migration.md`: status, index, next slice and map; `compendium/README.md`: order paragraph.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 223 pages (222 before); no LaTeX warnings; the one `page.i` warning; 0 overfull and 26 underfull boxes, all after the start of the legacy part in the log, as before. No new bad boxes at any stage. Rendered and inspected: PDF pp. 22–24 (the slice-28 corrections and the merged size-limit and covariance passages), pp. 25–26 (the factor-risk-model entry), p. 177 (the legacy portfolio chapter, where the overview's method block now runs into *Alpha Models Overview*), and the artefact's page. Tests: 14 passed.
+
+### For review
+
+- Routing the statistical-methods block to `risk-tail-systemic` as a backlog item only, and opening that note without entries.
+- Reading the legacy factor list as roles that depend on the strategy, and "unintended is not uncompensated".
+- Merging the size-limit material into the mean–variance entry, including the softening reading of penalties and the non-adoption of Narang's VaR and dispersion statements.

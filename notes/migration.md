@@ -24,12 +24,12 @@ Migrating a block and compiling the result advances only the first. An entry wri
 
 - **Records.** Each slice appends one section to [migration-slices.md](migration-slices.md) and one row to the index below. A correction to a finished slice is appended as a follow-up; earlier records are left as written.
 
-## Status after slice 28 (15 October 2026)
+## Status after slice 29 (15 October 2026)
 
-- **Legacy blocks:** 595 = 530 shared + 36 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
-- **Entries:** 102, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
+- **Legacy blocks:** 591 = 530 shared + 32 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
+- **Entries:** 103, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
 - **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain).
-- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 222 pages; no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
+- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 223 pages; no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
 
 ## Slices
 
@@ -65,11 +65,12 @@ Blocks are the legacy blocks counted by `migration_status.py` before and after t
 | 25 | Research and backtest evaluation | `c45e2b5` | 609 → 605 | 91 → 95 | Corrections |
 | 26 | Risk assessment: model risk, regime change, shocks, contagion, monitoring | `e0451c9` | 605 → 600 | 95 → 98 | Overrides, impact inference, Calmar |
 | 27 | Transaction cost models: components and cost functions | `0224ac7` | 600 → 598 | 98 → 99 | Units, cost-function conditions, sell example |
-| 28 | Portfolio construction models: rules, mean–variance optimisation, signal portfolios | this slice's commit | 598 → 595 | 99 → 102 | |
+| 28 | Portfolio construction models: rules, mean–variance optimisation, signal portfolios | `4e7666d` | 598 → 595 | 99 → 102 | Closed-form conditions, permutations, ML tasks, ERC rounding |
+| 29 | Risk models: factor exposures, limits and penalties | this slice's commit | 595 → 591 | 102 → 103 | |
 
 ## Next bounded slice
 
-`compendium/legacy/portfolio-construction-risk/sysinv/riskmod.tex` (4 blocks: *Factor-Based Models*, *Statistical Models*, *Limiting Size of Risk*, *Limiting the Types of Risk*), whose single map candidate is `portfolio-construction`. Check its overlap with `mod:mean-variance-portfolio-optimisation` (risk penalties, limits, covariance inputs) and the backlog stubs `meth:portfolio-covariance-estimation` and `mod:garch-volatility-forecast` before adding anything; Narang's chapter "Risk Models" (chap. 4, pp. 71-84 in the third edition's contents) is the likely source, to be read. The other `sysinv/` files (`alphamod.tex`, `executionmod.tex`, the overview's method block), the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/portfolio-construction-risk/sysinv/alphamod.tex` (3 blocks: *Theory Driven Models*, *Strategy Parameters*, *Blending of Models*, with prose outside them), whose map names the section overview `portfolio-construction-risk`. Decide ownership by concept before writing: forecast construction, signal blending and strategy parameters may belong to specialist pathways (for example `equity-factor-premia` or `backtest-inference`) rather than to the overview or `portfolio-construction`; check its overlap with `meth:signal-portfolio-allocation`, `mod:factor-risk-model` and `meth:hypothesis-driven-strategy-research`. Narang's chapter "Alpha Models: How Quants Make Money" (chap. 3, pp. 23-69 in the third edition's contents) is the likely source, to be read and confirmed; at that length the slice may need to stay narrowly bounded. The other `sysinv/` files (`executionmod.tex`, the overview's method block in `sysinvoverview.tex`), the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -114,7 +115,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/multi-asset-systematic-macro/03_practitioner_insights.tex` | multi-asset-systematic-macro |
 | `compendium/legacy/portfolio-construction-risk/sysinv/alphamod.tex` | portfolio-construction-risk |
 | `compendium/legacy/portfolio-construction-risk/sysinv/executionmod.tex` | portfolio-construction-risk |
-| `compendium/legacy/portfolio-construction-risk/sysinv/riskmod.tex` | portfolio-construction |
 | `compendium/legacy/portfolio-construction-risk/sysinv/sysinvoverview.tex` | portfolio-construction-risk |
 | `compendium/legacy/rates-credit-mortgages/01_tvm.tex` | rates-credit-mortgages, performance-manager-evaluation |
 | `compendium/legacy/volatility-options/basic.tex` | volatility-options |

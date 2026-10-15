@@ -1,0 +1,67 @@
+% compendium/research-engineering-validation/strategy-risk.tex
+% Entries migrated on 2026-10-15 from the legacy risk-assessment file (slice 26, sysinv/modelrisk.tex), owned by
+% model-governance-controls, the file's map candidate; its contagion block went to funding-crowding
+% (portfolio-risk-financing/crowding-contagion.tex). Dispositions and source checks in notes/migration-slices.md,
+% the blocks verbatim in notes/artefacts/model-governance-controls/risk-assessment.tex.
+
+\section{Sources of strategy risk and their monitoring}
+
+\begin{qfdefinition}[Sources of risk in a quant strategy: model risk (inapplicability, misspecification, implementation errors), regime change and exogenous shocks, kept apart from funding contagion and operational failure]\label{def:quant-strategy-risk-sources}
+\qffield{Statement} Narang names four risks that are specific to quant strategies, or larger for them than for discretionary ones \citep[chap.~``Risks Inherent to Quant Strategies'', secs.~10.1--10.4 and~10.6, pp.~191--211]{s7-narang}. The first three are:
+\begin{itemize}
+\item \emph{model risk}: ``the risk that the strategy does not accurately describe, match, or predict the real-world phenomenon it is attempting to exploit''. It can arise in any part of the strategy, from back-testing software and data-feed handlers to the alpha, risk, transaction-cost and portfolio-construction models and the execution algorithms. Small errors may build slowly and then ``explode on a busy trading day'' (sec.~10.1, pp.~191--192). Its three common sources:
+  \begin{itemize}
+  \item \emph{inapplicability of modelling}, in two forms: using quantitative modelling on a question it cannot answer, and misapplying an otherwise valid technique. His example of the second is VaR built on correlations and historical volatility, which assumes normal distributions and linear relationships that market data often lack (sec.~10.1.1, pp.~192--193);
+  \item \emph{misspecification}: a model that badly describes the world. The common case is a model that works most of the time and fails in rare events. His example is quants who in August 2007 found they had modelled the liquidity risk of large-cap U.S. stocks from their own holdings alone, when the aggregate size of similar holdings being liquidated mattered more (sec.~10.1.2, pp.~193--195);
+  \item \emph{implementation errors}: errors in programming or in the architecture of systems, ``perhaps [the] most common'' and usually the least painful (sec.~10.1.3, pp.~195--196). His examples are a reversed sign in execution software, Knight's August 2012 loss and AXA Rosenberg's risk-model coding error, which he reports without sources, and an unnamed firm whose execution server restarted before its alpha server and, seeing no signals, sold 80 percent of the portfolio, which then had to be bought back;
+  \end{itemize}
+\item \emph{regime change}: models rest on relationships in historical data, and when a structural shift changes an instrument's behaviour or the relationships between instruments ``dramatically and quickly'', the strategy typically suffers (sec.~10.2, pp.~196--200). His examples are the Schwab and Merrill Lynch relationship from 1996 to 2007, and the value-against-growth spread in 2007--2008, whose reversals, he says, came with reversals in sectors, currencies, bonds and commodities, so that regime changes ``tend to occur across many levels simultaneously'' (p.~199);
+\item \emph{exogenous shocks}: big moves driven by information outside the market, which models built on market data cannot explain. His examples are 11 September 2001, the start of the Iraq war in 2003, the Bear Stearns rescue in March 2008 and the SEC's 2008 change to short-sale rules for financial stocks. He calls the risk difficult to do anything about ``other than with discretionary overrides'' (sec.~10.3, pp.~200--202).
+\end{itemize}
+The fourth, contagion or common-investor risk, is in \hyperref[def:common-investor-contagion]{common-investor contagion}.
+
+\qffield{Conditions} One practitioner's classification (third edition, 2024), whose examples run from 1996 to 2012. Narang concedes that whether a regulatory intervention or a rumour-driven collapse is endogenous or exogenous to the market is arguable (p.~201). His company figures (Knight, AXA Rosenberg) are not sourced in the chapter and were not checked.
+
+\qffield{Practice} Interpretation: keep five causes apart, because each calls for a different control.
+\begin{itemize}
+\item A \emph{model error} (inapplicability or misspecification) is found by validation and by monitoring for unexpected behaviour (\hyperref[meth:quant-strategy-monitoring]{strategy monitoring}).
+\item A \emph{regime change} is a change in the world after the model was built. It is not overfitting, in which the model was fitted to an unrepresentative sample (\hyperref[pit:parameter-overfitting]{parameter overfitting}), though the two can look alike in live results.
+\item An \emph{exogenous shock} is information the model never sees.
+\item \emph{Funding contagion} is loss from other holders' forced selling (\hyperref[def:common-investor-contagion]{common-investor contagion}). Narang's own value-against-growth example mixes it with regime change: he attributes the 2007 reversal partly to quant unwinds (p.~198).
+\item An \emph{operational failure}, such as software, architecture or restart order, is what Narang files under implementation errors. It is prevented by testing, change control and the controls in \hyperref[meth:automated-trading-operational-controls]{operational controls for automated trading}, not by better modelling.
+\end{itemize}
+
+\qffield{Pitfalls} \emph{Discretionary overrides.} The legacy ``may require discretionary overrides'' repeats Narang's remedy for exogenous shocks. An override is itself an unvalidated change to the model. Narang's own account of August 2007 says that the main discretion many quants used, unwinding when models misbehave, spread the losses among managers with overlapping positions (p.~208). His story of one firm that, by delay, held its positions and recovered is a single anecdote, not evidence that holding is better (p.~208). Who may override, on what evidence, with what record and review is a governance question for this pathway's readings (stub). The legacy's ``models loaded in a wrong sequence'' compresses the server-restart example, in which servers, not models, came back in the wrong order.
+
+\qffield{See also} \hyperref[def:common-investor-contagion]{common-investor contagion} (the fourth risk, owned by \texttt{funding-crowding}); \hyperref[meth:quant-strategy-monitoring]{strategy monitoring} (how the risks are watched); \hyperref[meth:automated-trading-operational-controls]{operational controls for automated trading} (operational failure); \hyperref[pit:parameter-overfitting]{parameter overfitting} (contrast with regime change); \hyperref[res:arbitrage-risks]{arbitrage risks} (Harris's model risk for arbitrageurs, a special case).
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{risk-assessment.tex} in the folder \nolinkurl{notes/artefacts/} under the pathway key \texttt{model-governance-controls}.
+
+\qffield{Index} model risk; inapplicability of modelling; misspecification; implementation error; coding error; architecture error; VaR assumptions; fat tails; nonlinear dependence; regime change; structural break; relationship breakdown; exogenous shock; event risk; discretionary override; Knight Capital; AXA Rosenberg
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~``Risks Inherent to Quant Strategies'', pp.~191--202 and 208--211; the company and market examples not checked against other sources). Stability: draft. Currency: practitioner account as of 2024; examples 1996--2012.
+\end{qfdefinition}
+
+\begin{qfmethod}[Monitoring a running quant strategy: exposure, profit and loss, execution and systems monitors]\label{meth:quant-strategy-monitoring}
+\qffield{Statement} Narang describes four kinds of monitoring tool that quants use alongside their risk models \citep[chap.~``Risks Inherent to Quant Strategies'', sec.~10.5, pp.~209--210]{s7-narang}:
+\begin{itemize}
+\item \emph{exposure monitors}: start from current positions and group them by whatever exposures concern the manager. Examples are asset classes; valuation, momentum or volatility; or, for equities, gross and net exposure by sector and industry, capitalisation bucket and style factor, with proprietary or vendor tools. VaR-based tools measure overall gross risk ``at least according to that measure''. Exposures out of line with limits or expectations can be an early warning of a model problem or difficult markets;
+\item \emph{profit and loss monitors}: compare current prices with the previous close and chart intraday performance, so that unexpected gains or losses prompt a check. Others look at \emph{how} money is made: whether the strategy is holding losers longer or selling winners sooner than usual, and its \emph{hit rate}, the share of positions on which it makes money, against what its designer expects;
+\item \emph{execution monitors}: orders being worked and recently completed, with sizes and prices; fill rates of limit orders, particularly for passive execution; and, at some managers, slippage and market impact against expectations;
+\item \emph{systems performance monitors}: software and infrastructure errors, CPU performance, the speed of each automated stage and the latency of messages to and from exchanges. Narang calls this ``perhaps the most important for sniffing out systems errors and some types of model risk'' (p.~210).
+\end{itemize}
+
+\qffield{Conditions} A description of tools, not a standard or a set of thresholds: ``the art is in how to use them'' (p.~209). The expected values against which deviations are judged, such as normal exposures, hit rates and slippage, come from the strategy's design and its backtest (\hyperref[meth:backtest-evaluation-diagnostics]{backtest evaluation diagnostics}).
+
+\qffield{Practice} Narang reports one manager who, in August 2007, noticed intraday profit and loss falling with nearly every tick, researched it and cut risk earlier than most (p.~210). Interpretation: each monitor watches a different source of risk (\hyperref[def:quant-strategy-risk-sources]{sources of strategy risk}). Exposures and the pattern of profit and loss point to model error and regime change; systems monitors point to implementation and operational failure; execution monitors point to costs. A monitor only detects. The response, whether a limit, a kill switch or an approved override, belongs to the controls this pathway designs (\hyperref[meth:automated-trading-operational-controls]{operational controls for automated trading}).
+
+\qffield{Pitfalls} Execution monitoring here is the manager's view across a strategy. The indicators for supervising many execution algorithms in flight are in \hyperref[meth:execution-decision-support]{decision support for trading algorithms} and are not repeated here. The legacy block matches Narang's four monitors; it omitted the VaR measure, the ``how money is made'' monitors and the early-warning purpose.
+
+\qffield{See also} \hyperref[def:quant-strategy-risk-sources]{sources of strategy risk} (what is monitored); \hyperref[meth:execution-decision-support]{decision support for trading algorithms} (execution indicators); \hyperref[meth:automated-trading-operational-controls]{operational controls for automated trading} (the controls that act on alerts); \hyperref[meth:backtest-evaluation-diagnostics]{backtest evaluation diagnostics} (expected hit rates and exposures).
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{risk-assessment.tex} in the folder \nolinkurl{notes/artefacts/} under the pathway key \texttt{model-governance-controls}.
+
+\qffield{Index} risk monitoring; exposure monitoring; gross and net exposure; factor exposure; VaR; profit and loss monitoring; intraday P\&L; hit rate; winners and losers; execution monitoring; fill rate; slippage; market impact; systems monitoring; latency monitoring; early warning
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~``Risks Inherent to Quant Strategies'', sec.~10.5, pp.~209--210). Stability: draft. Currency: practitioner account as of 2024.
+\end{qfmethod}

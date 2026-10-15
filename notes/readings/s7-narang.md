@@ -1,8 +1,8 @@
 ---
 key: s7-narang
-pathways: [backtest-inference]
+pathways: [backtest-inference, model-governance-controls, funding-crowding]
 version: Rishi K. Narang, Inside the Black Box: A Simple Guide to Systematic Investing, third edition, John Wiley & Sons, Hoboken, 2024 (ISBN 9781119931911, Adobe PDF), copyright 2024. Copy used: a local PDF outside the repository with a text layer (printed page = PDF page - 20). The catalogue entry carries the first edition's subtitle and says the edition is not established; no route lists this key as a reading
-sections: chap. "Research" (chap. 9), secs. 9.1-9.4, pp. 161-187, text layer, with Exhibits 9.2, 9.3 and 9.5 (pp. 171, 172, 178) by page image (checked for migration slice 25)
+sections: chap. "Research" (chap. 9), secs. 9.1-9.4, pp. 161-187, text layer, with Exhibits 9.2, 9.3 and 9.5 (pp. 171, 172, 178) by page image (checked for migration slice 25); chap. "Risks Inherent to Quant Strategies" (chap. 10), secs. 10.1-10.6, pp. 191-211, text layer, with Exhibit 10.6 (p. 206) by page image (checked for migration slice 26)
 read:
 status: draft
 ---
@@ -22,9 +22,13 @@ Prepared on 2026-10-15 by migration slice 25 from source checks, not from study:
 - Scientific method: observe, theorise, deduce consequences, test by attempted falsification; at best, enough confidence to risk capital; research must continue because markets change (sec. 9.1, pp. 161-163).
 - Four sources of ideas: market observation, academic literature (and other sciences), migration of researchers, discretionary traders' lessons (sec. 9.2, pp. 163-165).
 - Diagnostics on a daily S&P 500 equity-risk-premium strategy, June 1982 to December 2000: 746% cumulative, 12.1% a year before costs; volatility 21.2%; worst drawdown -39.7%; R² 0.0085; zero signal 65% of days, 19% wins, 16% losses; IR 0.57, Sterling 0.87, Calmar 0.31, Omega 1.26; one-day delay raises the total to 870% (12.9% a year) (sec. 9.3.2, pp. 168-176).
+- Correction 2026-10-15 (slice-25 follow-up): the S&P strategy is not always in the market. Its signal reads a higher stock earnings yield than the 10-year Treasury yield as long and a lower one as short (p. 168), but it trades only when the opportunity seems attractive enough, with a zero signal on 65% of days (p. 173); the adjustment and the threshold are not stated. Calmar (0.31) and Omega (1.26) are reported as positive, so the drawdown and the sum of negative returns are used as magnitudes, although his wording divides by negative numbers (pp. 173-174).
 - "A superb R² in our industry is 0.05 (out of sample)" (p. 171), a practitioner judgement with no sample.
 - Text-figure mismatch, p. 172: the text gives the two most bearish quintiles average returns of -2.35% and -0.19%; in Exhibit 9.3 these are the signal-bucket labels, and the bars (next-day returns) run from about -0.03% to +0.13%.
 - Overfitting: nearby parameters should give similar results; choose a plateau with margins (Exhibit 9.5, point B); parsimony; overfitting as Type I and underfitting as Type II error, with the balance shifting since the early 2010s (secs. 9.3.2.10-9.3.3, pp. 176-183). Out-of-sample R² ratio "about half or better" considered good; burning data (sec. 9.3.4, pp. 183-185).
+- Risks inherent to quant strategies (chap. 10): model risk (inapplicability, misspecification, implementation errors), regime change, exogenous shocks and contagion or common-investor risk (secs. 10.1-10.4, pp. 191-209); exogenous shocks hard to address "other than with discretionary overrides" (p. 202); monitoring by exposure, P&L, execution and systems monitors (sec. 10.5, pp. 209-210).
+- August 2007, his account (sec. 10.4.1, pp. 203-209): four drivers (crowding, weak prior returns, cross-collateralisation with illiquid credit strategies, risk targeting); "likely" about $1 trillion gross; leverage up 1.5-2 times as volatility fell; losses "solely the result of market impact"; -5% to -45% at funds. No position or flow data.
+- Exhibit 10.6 (Pulte Homes, p. 206): -22.0%, -12.5%, +15.6%, -22.6%; the rebound recovers about a third of the 31.75% decline, not "about half", at roughly four to five times the earlier pace, not "about 20 times" (recomputed).
 - Testing assumptions: the 55/45, $0.01 cost example (+$0.10 to -$0.90 per 100 shares); over- and underestimated costs; err towards overestimating; hard-to-borrow lists; historical HTB data hard to obtain (sec. 9.3.5, pp. 185-186).
 
 ## Limits
@@ -37,7 +41,7 @@ Prepared on 2026-10-15 by migration slice 25 from source checks, not from study:
 
 ## Entries
 
-`meth:hypothesis-driven-strategy-research`, `meth:backtest-evaluation-diagnostics`, `pit:parameter-overfitting`, `pit:backtest-cost-short-assumptions`.
+`meth:hypothesis-driven-strategy-research`, `meth:backtest-evaluation-diagnostics`, `pit:parameter-overfitting`, `pit:backtest-cost-short-assumptions` (chap. "Research"); `def:quant-strategy-risk-sources`, `meth:quant-strategy-monitoring`, `def:common-investor-contagion` (chap. "Risks Inherent to Quant Strategies").
 
 ## Open questions
 

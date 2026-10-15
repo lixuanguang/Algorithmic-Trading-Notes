@@ -1,0 +1,37 @@
+% compendium/portfolio-risk-financing/crowding-contagion.tex
+% Entry migrated on 2026-10-15 from the legacy risk-assessment file (slice 26, sysinv/modelrisk.tex), owned by
+% funding-crowding (a routing exception: the file's map candidate is model-governance-controls); dispositions and
+% source checks in notes/migration-slices.md, the blocks verbatim in
+% notes/artefacts/model-governance-controls/risk-assessment.tex.
+
+\section{Crowding and common-investor contagion}
+
+\begin{qfdefinition}[Common-investor (contagion) risk: crowded positions and forced exits through what else their holders own, with Narang's account of August 2007]\label{def:common-investor-contagion}
+\qffield{Statement} Contagion, or common-investor, risk is the risk a strategy bears ``not because of the strategy itself but because other investors hold the same strategies'' \citep[chap.~``Risks Inherent to Quant Strategies'', sec.~10.4, p.~202]{s7-narang}. Narang splits it in two:
+\begin{itemize}
+\item \emph{crowding}: how many others hold the same positions;
+\item the \emph{ATM effect}: what else those holders own that could force them out. When highly levered investors take losses on an illiquid holding and face margin calls, they sell what they can, the liquid strategy, to raise cash. Losses in one strategy thus cause the liquidation of an unrelated one (p.~202).
+\end{itemize}
+His examples are August 1998, in which LTCM's losses on Russian debt forced it to sell positions such as Royal Dutch against Shell, whose spread widened from 8--10 percent to over 20 percent (pp.~202--203), and August 2007 (sec.~10.4.1, pp.~203--209).
+
+\qffield{Conditions} \emph{Narang's account of August 2007, a practitioner's explanation.} He names four drivers (pp.~203--205):
+\begin{enumerate}
+\item the size and popularity of quant long/short equity strategies from 2004 to 2007. He estimates ``likely'' hundreds of billions of capital and about \$1 trillion of gross positions, mostly in large-cap U.S. stocks; despite diverse models, the overlap was enough to crowd individual trades;
+\item weak returns before August, with value lagging growth from about the end of May 2007, and multi-strategy and proprietary desks that cut whatever had done poorly;
+\item the practice, ``in my view, a critically important one'', of banks' proprietary desks and multi-strategy funds cross-collateralising strategies explicitly or implicitly. When credit strategies lost heavily in July 2007, the liquid quant books were sold to raise cash;
+\item risk targeting: leverage set inversely to measured risk, usually VaR. Falling volatility from 2003 to 2006 called for one and a half to two times more leverage, so a four-times gross strategy became six or eight times. Higher returns were also sought by levering up. When volatility and correlations jumped together in late July 2007, VaR rose and many players had to cut leverage at once.
+\end{enumerate}
+In his sequence, multi-strategy funds and desks began deleveraging the most liquid book, U.S. quant long/short. Statistical arbitrageurs first supplied liquidity, then took losses and joined the selling. By 8--9 August the losses had spread across strategies and to Japan, while U.S. indices were roughly flat for the first ten days of August (pp.~205--209). He calls the losses ``solely the result of market impact'' (p.~208), reports losses of $-5$ to $-45$ percent at funds (p.~208), and concludes that ``for the first time, crowding became a risk of quant trading strategies'' (p.~209). Phrases such as ``it is likely'', ``it appears'' and ``in my view'' mark these as his inferences: the chapter gives no data on positions, leverage or flows.
+
+\qffield{Practice} Interpretation: the entry separates two channels. In \emph{common positions}, crowding, the same trades are held by many, so any one holder's exit moves the others' prices. In \emph{common funding}, the ATM effect, an unrelated loss forces a holder to sell. Cross-collateralisation is what joins the second channel to a liquid strategy, and volatility targeting can make many holders sell at the same moment. The same mechanics in arbitrage, where staying power fails under leverage, are in \hyperref[res:arbitrage-risks]{arbitrage risks}. Leverage and margin terms are in \hyperref[mech:futures-margin-settlement]{futures margin and settlement} and \hyperref[def:securities-lending-fee-rebate]{lending fees and rebates}.
+
+\qffield{Pitfalls} The account is one practitioner's reconstruction. It is not causal evidence that the four drivers produced the losses, nor a measure of their weights; the pathway's evidence readings (stubs) are unread. Narang's Pulte Homes illustration (Exhibit~10.6, p.~206, checked by page image) does not support all its words. By the table, the stock fell 22.0 and then 12.5 percent (31.75 percent together) and then rose 15.6 percent, which recovers about a third of the lost price, not ``about half''. Over his 44-day and four-day periods that is roughly four to five times the earlier pace, not ``about 20 times''. His ``quadratic nature of market impact'' there is a one-stock anecdote, against the concave square-root law for metaorders (\hyperref[ev:square-root-impact]{square-root impact}). A separate question stays open in \texttt{backtest-inference}'s stub \texttt{ev:signal-decay-crowding}: whether faster decay of a delayed signal identifies crowding. Common positions and forced liquidation, the subject here, do not answer it. The legacy ``quant liquidation criss'' is the 2007 crisis; its four causes match Narang's list.
+
+\qffield{See also} \hyperref[res:arbitrage-risks]{arbitrage risks} (staying power under leverage); \hyperref[def:quant-strategy-risk-sources]{sources of strategy risk} (the other three quant-specific risks); \hyperref[ev:square-root-impact]{square-root impact} (impact of large liquidations); \hyperref[mech:futures-margin-settlement]{futures margin and settlement} (margin calls).
+
+\qffield{Further reading} The legacy block it replaces, verbatim, is in \nolinkurl{risk-assessment.tex} in the folder \nolinkurl{notes/artefacts/} under the pathway key \texttt{model-governance-controls}.
+
+\qffield{Index} contagion risk; common-investor risk; crowding; crowded trade; ATM effect; forced liquidation; deleveraging; fire sale; cross-collateralisation; margin call; risk targeting; volatility targeting; VaR-based leverage; quant liquidation crisis; quant meltdown; August 2007; LTCM; August 1998; Royal Dutch Shell
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~``Risks Inherent to Quant Strategies'', sec.~10.4, pp.~202--209, with Exhibit~10.6 on p.~206 by page image and its arithmetic recomputed; no evidence source read). Stability: draft. Currency: practitioner account as of 2024 of events in 1998 and 2007.
+\end{qfdefinition}

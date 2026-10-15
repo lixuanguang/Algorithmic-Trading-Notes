@@ -1,5 +1,32 @@
-% migrate-to: model-governance-controls
-\subsection{Risk Assessment}
+% notes/artefacts/model-governance-controls/risk-assessment.tex
+% Legacy blocks kept verbatim when they were migrated (notes/migration-slices.md, slice 26), for the pathway
+% model-governance-controls, the file's map candidate. Four blocks' entries are owned by this pathway; the
+% contagion block's entry is owned by funding-crowding (a routing exception), and the file is kept whole here.
+% A separate file, so that derivations.tex in this folder (slice 17) stays unchanged. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked
+% own working.
+% Compile inside notes/artefacts/model-governance-controls/ with  latexmk -pdf risk-assessment.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Model governance and trading controls: legacy risk assessment}
+
+\section*{Risk assessment (slice 26, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration-slices.md, slice 26): the whole of
+% sysinv/modelrisk.tex below its migrate-to line, 5 blocks in order with the items inside them; only the
+% subsection is unnumbered here. No other text, table or figure was in the file.
+% Destinations: Model Risks, Regime Change Risk, Exogenous Shock Risk -> def:quant-strategy-risk-sources
+% (model-governance-controls; "discretionary overrides" qualified, stub); Contagion Risk ->
+% def:common-investor-contagion (funding-crowding; the 2007 drivers kept as Narang's explanation, evidence
+% stubbed); Risk Monitoring Methods -> meth:quant-strategy-monitoring (model-governance-controls).
+% Source: Narang (s7-narang), Inside the Black Box, third edition, Wiley 2024, chap. "Risks Inherent to Quant
+% Strategies", pp. 191-211, local copy with text layer (printed page = PDF page - 20); Exhibit 10.6 by page image.
+
+% From compendium/legacy/portfolio-construction-risk/sysinv/modelrisk.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Risk Assessment}
 
 \begin{definition} \hlt{Model Risks}\\
 Quant models has model risk, the risk that the model does not accurately describe, match, or predict the real-world phenomenon. Each component of the quant model may all have model risk.
@@ -33,3 +60,5 @@ Quant liquidation criss may be driven by size and popularity of quantitative str
 \item System Performance Monitors: checks for software and infrastructure errors. Checks performance of CPUs, speeds of various stages of automated processes, latency in communication of messages.
 \end{enumerate}
 \end{method}
+
+\end{document}

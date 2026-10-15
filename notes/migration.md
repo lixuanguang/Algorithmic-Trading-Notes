@@ -6,8 +6,8 @@ The working record for moving the notes written before the study method into the
 
 | Kind | What it means | Where it is recorded | Set by |
 |---|---|---|---|
-| Migration progress | A legacy block has a disposition: rewritten as an entry, merged into one, stubbed in a backlog, or deleted | This file and `tools/migration_status.py` | The migration |
-| Source verification | An entry's claims have been compared with the passages at their locators | Each entry's *Status: Verification*, and the checks table below | Whoever reads the passage |
+| Migration progress | A legacy block has a disposition: rewritten as an entry, merged into one, stubbed in a backlog, or deleted | Each slice's dispositions in [migration-slices.md](migration-slices.md); counts in this file's status and index, and `tools/migration_status.py` | The migration |
+| Source verification | An entry's claims have been compared with the passages at their locators | Each entry's *Status: Verification*, and the *Checks and their limits* of each slice in [migration-slices.md](migration-slices.md) | Whoever reads the passage |
 | Learner mastery | A pathway's checkpoint passed from your own notes, readings closed | `notes/log.md`, *Mastered* | You only |
 | Pathway consolidation | Everything the pathway relies on is in checked entries and its backlog is empty | `notes/log.md`, *Consolidated* | You, after review |
 
@@ -24,12 +24,12 @@ Migrating a block and compiling the result advances only the first. An entry wri
 
 - **Records.** Each slice appends one section to [migration-slices.md](migration-slices.md) and one row to the index below. A correction to a finished slice is appended as a follow-up; earlier records are left as written.
 
-## Status after slice 25 (15 October 2026)
+## Status after slice 26 (15 October 2026)
 
-- **Legacy blocks:** 605 = 530 shared + 46 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
-- **Entries:** 95, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review*, and the open questions in [log.md](log.md).
+- **Legacy blocks:** 600 = 530 shared + 41 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
+- **Entries:** 98, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
 - **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain).
-- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 213 pages; no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
+- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 216 pages; no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
 
 ## Slices
 
@@ -62,11 +62,12 @@ Blocks are the legacy blocks counted by `migration_status.py` before and after t
 | 22 | Fixed-income microstructure | `18eef7f` | 625 → 619 | 81 → 84 | Corrections |
 | 23 | Securities lending and synthetic shorts | `b56a121` | 619 → 613 | 84 → 88 | Corrections (`74c643e`); lending opening |
 | 24 | Crypto market microstructure | `9148410` | 613 → 609 | 88 → 91 | Socialised-loss trigger |
-| 25 | Research and backtest evaluation | this slice's commit | 609 → 605 | 91 → 95 | |
+| 25 | Research and backtest evaluation | `c45e2b5` | 609 → 605 | 91 → 95 | Corrections |
+| 26 | Risk assessment: model risk, regime change, shocks, contagion, monitoring | this slice's commit | 605 → 600 | 95 → 98 | |
 
 ## Next bounded slice
 
-`compendium/legacy/portfolio-construction-risk/sysinv/modelrisk.tex` (5 blocks: *Model Risks*, *Regime Change Risk*, *Exogenous Shock Risk*, *Contagion Risk*, *Risk Monitoring Methods*), whose map names `model-governance-controls` alone, a pathway that already has a note and one entry. Its contagion block's crowding claim meets the slice-25 stub `ev:signal-decay-crowding`, and its monitoring block may overlap `meth:automated-trading-operational-controls` and `meth:execution-decision-support`; Narang's chap. "Risks Inherent to Quant Strategies" (from p. 191 of the third edition) is the likely source. The other `sysinv/` files, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/portfolio-construction-risk/sysinv/txncostmod.tex` (2 blocks: *Transaction Cost Components*, *Types of Transaction Cost Models*), whose map names the section overview `portfolio-construction-risk`. Check its ownership against `execution-trading-costs` and `price-impact-execution`, and its overlap with `def:transaction-costs`, `meth:transaction-cost-analysis` and the impact entries before adding anything; Narang's chapter on transaction cost models in the third edition is the likely source, to be verified. The other `sysinv/` files (`alphamod.tex`, `riskmod.tex`, `portconstmod.tex`, `executionmod.tex`, the overview's method block), the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -111,7 +112,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/multi-asset-systematic-macro/03_practitioner_insights.tex` | multi-asset-systematic-macro |
 | `compendium/legacy/portfolio-construction-risk/sysinv/alphamod.tex` | portfolio-construction-risk |
 | `compendium/legacy/portfolio-construction-risk/sysinv/executionmod.tex` | portfolio-construction-risk |
-| `compendium/legacy/portfolio-construction-risk/sysinv/modelrisk.tex` | model-governance-controls |
 | `compendium/legacy/portfolio-construction-risk/sysinv/portconstmod.tex` | portfolio-construction |
 | `compendium/legacy/portfolio-construction-risk/sysinv/riskmod.tex` | portfolio-construction |
 | `compendium/legacy/portfolio-construction-risk/sysinv/sysinvoverview.tex` | portfolio-construction-risk |

@@ -29,6 +29,8 @@ Written in migration slice 25, 2026-10-15:
 - `pit:parameter-overfitting`: isolated optima, nearby-parameter checks, plateaus, parsimony, the out-of-sample $R^2$ ratio and burnt out-of-sample data, and the third edition's balance against underfitting; parameter stability is not a correction for the number of trials.
 - `pit:backtest-cost-short-assumptions`: over- and underestimated trading costs, and hard-to-borrow names a backtest could not have shorted; Narang's "naked short sale \dots illegal" not adopted, and borrow fees and recall added from the lending entries as interpretation.
 
+Corrected 2026-10-15 (slice-25 follow-up): `meth:backtest-evaluation-diagnostics` now gives the S&P example's no-trade state (zero signal on 65% of days, threshold not stated) and writes Calmar and zero-threshold Omega with absolute-value denominators, kept apart from Narang's shorthand.
+
 All four: verification partly checked 2026-10-15, stability draft; human review outstanding. The artefact is `notes/artefacts/research-engineering-validation/derivations.tex` (under the map candidate, keeping the file whole).
 
 ## Related entries owned elsewhere

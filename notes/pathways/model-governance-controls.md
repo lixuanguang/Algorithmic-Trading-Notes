@@ -28,18 +28,27 @@ Written in migration slice 17, 2026-10-15:
 
 Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/model-governance-controls/derivations.tex`.
 
+Written in migration slice 26, 2026-10-15, from Narang's chapter "Risks Inherent to Quant Strategies" (`s7-narang`, third edition, 2024, not a reading of this pathway):
+
+- `def:quant-strategy-risk-sources`: model risk (inapplicability, misspecification, implementation errors), regime change and exogenous shocks, kept apart from funding contagion (`funding-crowding`) and operational failure; the legacy "discretionary overrides" qualified as an ungoverned model change.
+- `meth:quant-strategy-monitoring`: exposure, profit-and-loss (including how money is made and hit rate), execution and systems monitors as early warnings; execution-algorithm indicators left to the decision-support entry of `execution-trading-costs` (see below).
+
+Both verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/model-governance-controls/risk-assessment.tex`, a new file beside the slice-17 `derivations.tex`. The same legacy file's contagion block was routed to `funding-crowding` (its entry is listed below, under related entries).
+
 ## Related entries owned elsewhere
 
-Cross-referenced, not owned here: `def:automated-trading-architecture` (model accuracy checks, venue messages) and `meth:execution-decision-support` (`execution-trading-costs`); `def:floor-automated-trading-systems` (`execution-market-making`).
+Cross-referenced, not owned here: `def:automated-trading-architecture` (model accuracy checks, venue messages) and `meth:execution-decision-support` (`execution-trading-costs`); `def:floor-automated-trading-systems` (`execution-market-making`); `def:common-investor-contagion` (`funding-crowding`); `meth:backtest-evaluation-diagnostics`, `pit:parameter-overfitting` (`backtest-inference`); `res:arbitrage-risks` (`execution-market-making`).
 
 ## Entry backlog
 
 - rule:mifid-rts6-algorithmic-controls: Commission Delegated Regulation (EU) 2017/589 (`wide-mifid-rts6`) on testing, kill functionality, pre- and post-trade controls, capacity and business continuity. EUR-Lex returned a bot challenge on 2026-10-15; retrieve the current consolidated text before stating any EU obligation.
+- meth:discretionary-override-governance: who may override or switch off a model, on what evidence, with what record and review, against Narang's "discretionary overrides" for exogenous shocks (`s8-governance`, `w4-simonian-model-governance`, unread).
+- ev:quant-implementation-failures: Knight Capital's August 2012 loss and AXA Rosenberg's 2007-2010 risk-model coding error as Narang reports them (pp. 195-196), to check against the regulators' orders (`wide-knight-capital`, unread; the AXA Rosenberg order is not catalogued).
 - mech:order-state-reconciliation: the protocol-level evidence for reconciling order state after a failure (order status, execution reports, resend and possible-duplicate flags), from the FIX specification (`s6-fix`, a reading of the `research-engineering-validation` overview); the entry's reconciliation steps are currently a synthesis.
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. Five exclusive blocks remain, in `compendium/legacy/portfolio-construction-risk/sysinv/modelrisk.tex`.
+Run `python3 tools/migration_status.py` for the current counts. No legacy file lists this pathway since slice 26 migrated `sysinv/modelrisk.tex`.
 
 ## What changed in my view or practice
 

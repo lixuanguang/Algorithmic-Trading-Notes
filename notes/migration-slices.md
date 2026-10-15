@@ -2211,3 +2211,124 @@ The whole file below its `% migrate-to:` line is kept verbatim in the new artefa
 - Routing all four blocks to `backtest-inference` against the map, and opening that pathway's note with eight stubs, two of which name other pathways.
 - Citing the third edition while the catalogue leaves the edition open.
 - The qualifications to Narang's heuristics: smooth P&L, lower volatility, the R² of 0.05, time decay as crowding, and parameter stability as evidence against overfitting.
+
+## Slice 25 follow-up: corrections, 15 October 2026
+
+Narrow corrections after an audit of slice 25; the slice-25 record above is left as written, and this record supersedes it where they differ. The artefact `notes/artefacts/research-engineering-validation/derivations.tex` is unchanged.
+
+- **S&P example, `meth:backtest-evaluation-diagnostics`.** Slice 25 described the strategy as "long when the index's earnings yield exceeds the 10-year Treasury yield and short otherwise", which leaves out its no-trade state. Narang (third edition) p. 168 reads a higher stock yield as a signal to be long and a lower one as a signal to be short, as "an adjustment to" the equity risk premium. P. 173 says the strategy signals "only when the model perceives that the opportunity is sufficiently attractive to warrant trading at all" and is at zero 65% of the time. The entry now gives both, and says that the adjustment and the threshold are not stated; no threshold was supplied.
+- **Ratio signs, same entry.** Narang defines Calmar as average return divided by the worst drawdown and Omega as the sum of positive returns divided by the sum of negative returns, both of which have negative denominators taken literally. He reports both as positive (0.31 and 1.26, pp. 173–174). The entry now quotes his wording and sets out, as interpretation, the explicit conventions Calmar $=\bar R/\lvert\mathrm{MDD}\rvert$ and $\Omega(0)=\sum\max(R_t,0)/\lvert\sum\min(R_t,0)\rvert$. Hand-check, in the session with no script kept: $12.1/\lvert-39.7\rvert=0.305$ against $-0.305$ taken literally; returns $+2,+1,-1.5,-0.5$ give $\Omega(0)=3/2=1.5$ against $-1.5$. His Sterling and Omega values were not recomputed, since the strategy's returns are not available.
+- **Item count.** The slice-25 *Preservation* paragraph says "all 21 items are present". The 21 counted the substring `\item`, which also matches the three `\setlength{\itemsep}{0pt}` lines. The original has 18 `\item` commands: 3 in *Scientific Method*, 4 in *Sources of Alpha Idea Generation*, 11 in *Model Quality Assessment* and none in *Other Considerations in Model Testing*. Recounted against `9148410:…/sysinv/research.tex` with a pattern that excludes `\itemsep`; all 18 and the three `\itemsep` lines appear in the artefact. No text was lost.
+- **Guidance after the record split.** `compendium/README.md` now points dispositions and checks to `migration-slices.md` (its opening paragraph and Phase 1 step 3). In `migration.md` the progress table's "checks table below" now points to each slice's *Checks and their limits*, and the slice-25 index row now gives its commit `c45e2b5`. Historical slice narratives that mention `migration.md` were not changed.
+- **Notes.** The `s7-narang` reading note and the `backtest-inference` pathway note record the corrections. Entries, stubs, ownership and counts are unchanged (605 legacy blocks; 95 entries).
+
+## Slice 26: risk assessment (model risk, regime change, shocks, contagion, monitoring), 15 October 2026
+
+Migration of the five-block risk-assessment file of Narang's systematic-investing notes, run after the slice-25 follow-up above. Migration and source checking, not study; no checkpoint was attempted, and no reading of either owning pathway was read.
+
+### Scope
+
+The whole of `compendium/legacy/portfolio-construction-risk/sysinv/modelrisk.tex`: 5 counted blocks (four `definition`s and one `method`) with their 7 `\item` commands (3 in *Model Risks*, 4 in *Risk Monitoring Methods*; the two `\setlength{\itemsep}{0pt}` lines are not items). Outside the blocks was only the `% migrate-to:` line and the subsection heading (checked by script). The file and its map row were deleted. In `sysinv/sysinvoverview.tex` only its `\input` line was replaced, by a `% migrated:` comment. The other `sysinv/` files, other legacy files, earlier artefacts (including `notes/artefacts/model-governance-controls/derivations.tex` from slice 17), the 21 PNGs, `house.tex` and the guide pin (`343d145`) are unchanged.
+
+### Ownership and dispositions
+
+The map names `model-governance-controls`, whose outcome is designing a model inventory, validation and change process and the pre-trade and kill-switch controls a strategy needs before production, with monitoring in its checkpoint. Model risk, regime change, exogenous shocks and their monitoring are what such a process must cover, so blocks 1, 2, 3 and 5 stay with it.
+
+`funding-crowding` (section `portfolio-risk-financing`) has the outcome of tracing "how margin, leverage, funding runs and crowded positions turn small shocks into forced liquidations". Its readings include the 2007 quant meltdown (`exp-khandani-lo-quant-meltdown`) and crowded exits (`wide-pedersen-exit`). The contagion block is about common positions, cross-collateralisation, volatility targeting and forced exits, so **routing exception:** block 4 goes to `funding-crowding`. Other candidates were rejected:
+- `risk-tail-systemic` (fire-sale stress tests) and `risk-parity-vol-targeting` (volatility targeting as an allocation method): the block describes the mechanism of forced exits, not a stress model or an allocation rule.
+- `macro-regimes-stock-bond` (regime identification) for block 2: the block is a model-risk statement, not regime estimation.
+
+The new entries opened the topic files `compendium/research-engineering-validation/strategy-risk.tex` and `compendium/portfolio-risk-financing/crowding-contagion.tex`, and the pathway note `notes/pathways/funding-crowding.md`. The artefact sits under the map candidate as a new file, `notes/artefacts/model-governance-controls/risk-assessment.tex`, so that slice 17's `derivations.tex` there is unchanged.
+
+| # | Legacy block | Owner | Destination | Checked source (`s7-narang`, 3rd ed., chap. "Risks Inherent to Quant Strategies") | Disposition |
+|---|---|---|---|---|---|
+| 1 | *Model Risks* (definition) | `model-governance-controls` | `def:quant-strategy-risk-sources` (new) | sec. 10.1, pp. 191–196 | Rewritten |
+| 2 | *Regime Change Risk* (definition) | `model-governance-controls` | merged into `def:quant-strategy-risk-sources` | sec. 10.2, pp. 196–200 | Merged |
+| 3 | *Exogenous Shock Risk* (definition) | `model-governance-controls` | merged into `def:quant-strategy-risk-sources`; stub `meth:discretionary-override-governance` | sec. 10.3, pp. 200–202 | Merged; overrides qualified |
+| 4 | *Contagion Risk* (definition) | `funding-crowding` | `def:common-investor-contagion` (new); stubs `ev:august-2007-quant-unwind`, `mod:margin-liquidity-spiral`, `mod:volatility-targeting-deleveraging`, `meth:overlap-crowding-measure` | sec. 10.4, pp. 202–209; Exhibit 10.6 by page image | Rewritten; 2007 drivers kept as practitioner explanation |
+| 5 | *Risk Monitoring Methods* (method) | `model-governance-controls` | `meth:quant-strategy-monitoring` (new) | sec. 10.5, pp. 209–210 | Rewritten; execution indicators left to `meth:execution-decision-support` |
+
+**Substantive claims.**
+
+| Block | Legacy claim | Disposition |
+|---|---|---|
+| 1 | Model risk defined; every component can have it | Rewritten (p. 192); Narang's list of components and "explode on a busy trading day" added |
+| 1 | Inapplicability: wrong problem, or misapplied technique | Rewritten (pp. 192–193), with his VaR example |
+| 1 | Misspecification: works most of the time, fails in extreme events | Rewritten (pp. 193–195), with his August 2007 liquidity example |
+| 1 | Implementation errors; "models loaded in a wrong sequence" | Rewritten (pp. 195–196). The sequence claim corrected to his example: servers restarted in the wrong order, execution before alpha, selling 80% of the portfolio. Knight and AXA Rosenberg figures reported as his, unchecked; stub `ev:quant-implementation-failures`. Implementation failure separated as operational, linked to `meth:automated-trading-operational-controls` |
+| 2 | Relationships in historical data change; model loses effectiveness | Rewritten (pp. 196–200), with his SCHW/MER and value–growth examples; distinguished from overfitting (`pit:parameter-overfitting`) and from funding contagion, which his value–growth example mixes in |
+| 3 | Shocks from information outside the market (terrorism, war, bailouts, short-sale rules) | Rewritten (pp. 200–202), with his four 2001–2008 examples; his concession that classification is arguable added |
+| 3 | "May require discretionary overrides" | Qualified: an override is an unvalidated model change; his own 2007 account says discretionary unwinding spread losses (p. 208); the one-firm anecdote is not evidence; governance stubbed |
+| 4 | Risk from others holding the same strategies; crowding; ATM effect forcing exits "in a panic" | Rewritten (p. 202), with his 1998 LTCM example (pp. 202–203) |
+| 4 | 2007 crisis driven by size and popularity, subpar returns, cross-collateralisation, risk targeting | Rewritten as Narang's four drivers (pp. 203–205), presented as his explanation ("likely", "it appears", "in my view"), with no data in the chapter. Not adopted as causal evidence; stubs for Khandani–Lo, margin spirals, volatility-targeting deleveraging and an overlap measure. "Criss" read as crisis |
+| 4 | (Narang, not legacy) losses "solely the result of market impact"; Pulte Homes illustration | Reported as his claims, qualified by the arithmetic below and the square-root impact entry |
+| 5 | Exposure, P&L (hit rate), execution, systems monitors | Rewritten (pp. 209–210); VaR measure, "how money is made" monitors and early-warning purpose added; execution-algorithm indicators cross-referenced, not duplicated |
+
+No claim was deleted outright. **Kept distinct:** the slice-25 stub `ev:signal-decay-crowding` in `backtest-inference` (does delayed-signal decay identify crowding?) is unchanged and is named in the contagion entry as a separate question.
+
+**Existing entries checked.**
+- `meth:automated-trading-operational-controls`: covers operational controls, the destination for implementation failure; cross-referenced, unchanged.
+- `meth:execution-decision-support`: execution-algorithm indicators; cross-referenced from the monitoring entry, unchanged.
+- `meth:backtest-evaluation-diagnostics`: the source of expected hit rates and exposures; cross-referenced.
+- `pit:parameter-overfitting`: contrasted with regime change; cross-referenced.
+- `res:arbitrage-risks`: Harris's model risk and staying power; already pointed to `funding-crowding`; cross-referenced, unchanged.
+- Also linked: `ev:square-root-impact`, `mech:futures-margin-settlement`, `def:securities-lending-fee-rebate`.
+
+### Sources, 2026-10-15
+
+- **Narang** (`s7-narang`), *Inside the Black Box*, third edition, Wiley 2024, the same local copy as slice 25 (text layer through PDFKit; printed page = PDF page − 20). Chap. 10, "Risks Inherent to Quant Strategies", secs. 10.1–10.6, pp. 191–211, was verified to exist in this edition from the contents (pp. 191–211) and the running heads. Exhibit 10.6 (p. 206) was read by page image; Exhibits 10.1–10.5 were read from the text layer only.
+- **Not read:** every reading of `model-governance-controls` and `funding-crowding`, including the Knight Capital order and Khandani and Lo; the AXA Rosenberg order (not catalogued); `risk-parity-vol-targeting` readings.
+
+### Findings and arithmetic
+
+- **Pulte Homes, Exhibit 10.6.** −22.0%, −12.5%, +15.6%, −22.6%, with average daily volume 3.5, 7.2, 10.4 and 5.7 million shares. The two declines compound to 1 − 0.78 × 0.875 = 31.75%. The +15.6% rebound brings the price from 0.6825 to 0.789 of its 31 May level, recovering (0.789 − 0.6825)/0.3175 = 33.6% of the lost price (38% in logs), not "about half". Narang counts the decline over 44 days and the rebound over 4: the rate is about 3.7 times the earlier pace by share of lost ground, or 5.4 times by percentage points per day (15.6/4 against 31.75/44), not "about 20 times". Volume rose 106% and then 44%, matching his "100 percent" and "50 percent".
+- **His other pace claims check out.** Value–growth: half the loss in 16 days against 160 gives 5 times (his "five times"); 40% in 6 days against 115 gives 7.7 times (his "almost eight").
+- **Leverage arithmetic.** 4 × 1.5 = 6 and 4 × 2 = 8 gross, matching his "six or eight".
+- All recomputed in the session; no script kept, and no existing numerical script covers this content.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `s7-narang` | chap. "Risks Inherent to Quant Strategies", pp. 191–211; Exhibit 10.6 as image | Third edition; one practitioner's account; company and episode figures unsourced in the chapter; 2007 drivers are his inferences |
+| Pathway readings (`exp-khandani-lo-quant-meltdown`, `wide-knight-capital`, `s8-governance` and others) | none | Stubs only |
+
+The three new entries are *partly checked 2026-10-15*, *draft*, current as of 2024; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefacts/model-governance-controls/risk-assessment.tex`, with only the subsection unnumbered. A script compared it with `git show HEAD:…/sysinv/modelrisk.tex`, counting commands rather than substrings:
+- the body appears exactly once;
+- the 5 blocks appear verbatim once each, with titles in order;
+- `\item` commands (excluding `\itemsep`) number 3, 0, 0, 0 and 4 per block, 7 in both the original and the artefact, plus 2 `\itemsep` lines;
+- the sequence of 14 `\begin`/`\end` commands is identical;
+- nothing lay outside the blocks but the migrate-to line and the subsection heading.
+
+The artefact compiles alone: 1 page, no warnings, no bad boxes.
+
+### Counts
+
+`migration_status.py --check`, 0 problems: 605 → 600 legacy blocks = 530 shared + 41 single-candidate + 29 assigned. `model-governance-controls`: exclusive 5 → 0, entries 1 → 3, stubs 2 → 4. `funding-crowding`: entries 0 → 1, stubs 0 → 4 (new note). Entries 95 → 98 (definitions 34 → 36, methods 16 → 17). The `s7-narang` reading note was extended; no new `front/sources.tex` keys.
+
+### Other files
+
+- Chapter openers of `research-engineering-validation` (`model-governance-controls` now three entries; no legacy file now mapped to the section) and `portfolio-risk-financing` (`funding-crowding` added first, as in the guide's order).
+- `notes/log.md`: coverage rows for `model-governance-controls` and `funding-crowding`, the `s7-narang` progress cell, and one open question appended.
+- `notes/migration.md`: status, index, next slice and map.
+- `compendium/README.md`: order paragraph.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 216 pages (213 before); no LaTeX warnings; the one `page.i` warning; 0 overfull and 26 underfull boxes, none in the changed chapters, as before. Rendered and inspected:
+- PDF pp. 8–9: the slice-25 corrections, including the displayed Calmar and Omega formulas;
+- pp. 13–15: the end of the operational-controls entry and the two new `model-governance-controls` entries;
+- pp. 22–23: the `portfolio-risk-financing` opener and the contagion entry;
+- p. 172: the legacy portfolio chapter, which now ends after the execution file.
+
+Tests: 14 passed. The numerical scripts were not rerun; none covers changed content.
+
+### For review
+
+- Routing the contagion block to `funding-crowding` against the map, and the new pathway note with four stubs.
+- Presenting Narang's 2007 drivers as his explanation, and the Pulte Homes arithmetic against his text.
+- The qualification of discretionary overrides, and implementation failure treated as operational rather than model risk.

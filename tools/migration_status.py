@@ -239,7 +239,8 @@ def check_legacy_part(root, sections, problems):
     for d in sorted(p for p in legacy.iterdir() if p.is_dir()):
         if d.name not in sections:
             problems.append(f'compendium/legacy/{d.name}: not a guide section key')
-        if f'legacy/{d.name}/section' not in part:
+        # A folder left with figures only (its chapter fully migrated) needs no input.
+        if f'legacy/{d.name}/section' not in part and any(d.rglob('*.tex')):
             problems.append(f'compendium/legacy/{d.name}: not input by compendium/legacy/part.tex')
 
 

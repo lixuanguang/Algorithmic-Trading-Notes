@@ -1,0 +1,92 @@
+% compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex
+% Entries migrated on 2026-10-15 from the legacy crypto-market-microstructure file (slice 24), owned by
+% crypto-perpetuals (a routing exception from the file's map candidate crypto-mm-microstructure);
+% dispositions and source checks in notes/migration.md, the blocks verbatim in
+% notes/artefacts/crypto-mm-microstructure/derivations.tex.
+
+\section{Crypto venues, perpetuals and trading risk}
+
+\begin{qfdefinition}[Crypto venue and instrument structure: fragmented executable prices, reference prices and best execution, and spot, dated futures, perpetuals (linear, inverse, quanto), options and pools]\label{def:crypto-venue-instrument-structure}
+\qffield{Statement} Crypto assets trade on many independently owned venues. Makarov and Schoar, using tick data from 34 exchanges in 19 countries, find that individual exchanges mostly run centralised order books like equity markets, but that, unlike regulated equity markets, the crypto market ``lacks any provisions to ensure that investors receive the best price'', contrasting the U.S. NBBO requirement \citep[discussion-paper version of December 2018, pp.~1--2 and footnote~1]{s6-makarov}. Kept apart here:
+\begin{itemize}
+\item \emph{executable prices}: the bids and offers on each venue, in its own quote currency, custody and fee terms;
+\item \emph{reference prices}: indices a venue or benchmark administrator computes from several venues, against which derivatives are marked or settled (Deribit marks positions with a Mark Price and computes funding against a Deribit Index, \hyperref[mech:perpetual-funding]{perpetual funding});
+\item \emph{fair-value models}: a trader's own estimate of value, which need not equal either;
+\item \emph{legal best-execution obligations}: duties under a jurisdiction's rules (\hyperref[def:best-execution]{best execution}), which Makarov and Schoar found absent across crypto venues as a market-wide price-protection rule (p.~1).
+\end{itemize}
+
+\emph{Instruments.} \emph{Spot} trades exchange one asset for another; on Deribit spot trades are brokerage services settled and delivered immediately \citep[Rulebook v2.0, Rules 1.2(a) and 11.3(a)]{gapclose-deribit-rules}. \emph{Dated futures} expire, and convergence to spot at expiry limits the basis \citep[arXiv v2, p.~2]{roadmap-perpetual-pricing}. \emph{Perpetual futures} have no expiry and are anchored by periodic funding payments (\hyperref[mech:perpetual-funding]{perpetual funding}). Ackerer, Hugonnier and Jermann distinguish three contract types (pp.~2--3):
+\begin{itemize}
+\item \emph{linear}: contract size in units of the base asset (1 BTC), margined and settled in the quote currency (USD, or in practice a stablecoin such as USDT, p.~7);
+\item \emph{inverse}: the base asset itself (BTC) is the margin and settlement asset, and the contract size is in the quote currency (for example 10{,}000 USD);
+\item \emph{quanto}: a third currency (for example ETH) is used for margining and settlement.
+\end{itemize}
+\emph{Options}: Deribit lists European-style cash-settled options and linear options; its European options are priced in BTC or ETH and cannot be exercised before expiry (Rulebook, Appendix~A, 2(d)). \emph{On-chain pools} (automated market makers) were not checked in this slice.
+
+\qffield{Conditions} The fragmentation evidence is historical. Over December 2017 to February 2018 the daily average price ratio between the United States and Korea exceeded 15 percent and reached 40 percent on several days; Japan--U.S. differences were about 10 percent and U.S.--Europe about 3 percent, while differences within a country typically did not exceed one percent on average (pp.~1--2). The authors estimate at least \$2 billion of potential arbitrage profit over that period from executed trades (p.~2, footnote~2). Spreads co-moved across countries and opened during rapid appreciation; between cryptocurrencies on the same exchanges spreads were an order of magnitude smaller, and pairwise capital-control tightness was positively related to the correlation of spreads, which the authors read as evidence that capital controls contribute (pp.~2--3). These are 2017--2018 findings; current spreads were not measured.
+
+\qffield{Practice} Interpretation: a crypto price is a price on a venue, in a quote currency, with that venue's custody, collateral and fees. Quote-currency differences (USD, USDT, USDC, KRW) and settlement currency (linear against inverse) change the units of P\&L and margin. Cross-references: fragmentation without a consolidated tape in spot FX is in \hyperref[def:fx-market-structure]{spot FX market structure}, routing across venues in \hyperref[def:smart-order-routing]{smart order routing}, limits to arbitrage in \hyperref[res:arbitrage-risks]{arbitrage risks}.
+
+\qffield{Pitfalls} The legacy principle said ``there is no universal consolidated tape, so fair value and best execution are venue-dependent''. The sources read support the absence of a market-wide best-price rule in 2018 (Makarov and Schoar) but say nothing on consolidated tapes; ``fair value is venue-dependent'' conflates venue prices with fair value. Its taxonomy's ``perpetual futures: leveraged swaps kept near spot through funding'' overstates the anchoring (\hyperref[mech:perpetual-funding]{perpetual funding}); ``options: volatility exposure concentrated in fewer venues and strikes'' and ``on-chain pools: automated market makers with inventory curves and gas costs'' were not checked and are stubbed for \texttt{crypto-options-numeraire} and \texttt{amm-lending}. Deribit's terms are one venue's.
+
+\qffield{See also} \hyperref[mech:perpetual-funding]{perpetual funding}; \hyperref[def:crypto-trading-risk-layers]{crypto trading risk layers}; \hyperref[def:best-execution]{best execution}; \hyperref[def:fx-market-structure]{spot FX market structure}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/crypto-mm-microstructure/}.
+
+\qffield{Index} crypto market fragmentation; cross-exchange arbitrage; Kimchi premium; capital controls; reference price; index price; mark price; best execution in crypto; spot crypto; dated crypto futures; perpetual futures; linear perpetual; inverse perpetual; quanto perpetual; crypto options; automated market maker; quote currency; settlement currency
+
+\qffield{Status} Verification: partly checked 2026-10-15 (\texttt{s6-makarov}, LSE FMG Discussion Paper 782 of December 2018, abstract and pp.~1--3, text layer; \texttt{roadmap-perpetual-pricing}, arXiv v2 of 3 September 2024, pp.~2--3 and~7; \texttt{gapclose-deribit-rules}, Rulebook version 2.0 applicable 13 August 2026, retrieved 15 October 2026, Rules 1.2 and~11.3 and Appendix~A). Stability: draft. Currency: fragmentation evidence 2017--2018; Deribit terms as of October 2026.
+\end{qfdefinition}
+
+\begin{qfmechanism}[Perpetual funding: premium and interest terms, sign convention, accrual and settlement, damper and caps (Deribit as one venue), and why convergence is not guaranteed]\label{mech:perpetual-funding}
+\qffield{Statement} A perpetual future has no expiry, so it cannot rely on convergence at maturity; instead, longs and shorts exchange periodic \emph{funding} payments. Ackerer, Hugonnier and Jermann describe the payment as generally the sum of a \emph{premium} part $\kappa_t(f_t-x_t)$, paid by longs when the perpetual price $f_t$ is above spot $x_t$, and an \emph{interest} part $\iota_t x_t$ set by the exchange to reflect the interest-rate differential between the two currencies; for a linear contract the long's cash flow over one period is
+\[ (f_{t+1}-f_t)-\kappa_t(f_t-x_t)-\iota_t x_t \]
+in the quote currency \citep[arXiv v2, sec.~3, pp.~7--8, eqs.~(4)--(6)]{roadmap-perpetual-pricing}. Funding is commonly computed every 8 hours (p.~2). In their frictionless no-arbitrage model the exchange can choose the interest factor so that the perpetual price equals spot for any sufficiently large premium rate (p.~4; Corollary~1, p.~12). That is a model result. He, Manela, Ross and von Wachter state that perpetuals ``are not guaranteed to converge to the spot price'', derive bounds with trading costs, and find empirical deviations larger than in traditional currency markets, co-moving across currencies and diminishing over time \citep[arXiv v7 of 17 September 2026, abstract]{roadmap-perpetual-fundamentals}.
+
+\qffield{Conditions} \emph{One venue's rule: Deribit, Funding Specifications page edited 27 July 2026, retrieved 15 October 2026} \citep[Funding Specifications]{gapclose-deribit-rules}:
+\begin{itemize}
+\item \emph{sign}: when the funding rate is positive, longs pay shorts; when negative, shorts pay longs; Deribit charges no fee on funding, so payments net to zero between holders;
+\item \emph{rate}: premium rate $P=(\text{Mark Price}-\text{Deribit Index})/\text{Deribit Index}$; a damper sets funding to zero for $|P|\le0.025\%$ and otherwise moves $P$ towards zero by $0.025\%$; a cap then bounds the rate, $\pm0.5\%$ for BTC, $\pm1.0\%$ for ETH and $\pm5.0\%$ for the USDC- and USDT-margined perpetuals:
+\[ \text{rate}=\min\bigl(c,\ \max\bigl(-c,\ \max(0.025\%,P)+\min(-0.025\%,P)\bigr)\bigr); \]
+\item \emph{units and cadence}: the rate is expressed per 8 hours but accrues continuously; the payment is rate $\times$ position size $\times$ (period / 8 hours), in the settlement currency of the contract: BTC in Deribit's BTC example, where a USD 100{,}000 position is 1 BTC, an inverse contract in Ackerer, Hugonnier and Jermann's sense (Interpretation), and USDC for a USDC-margined linear one;
+\item \emph{settlement}: accrued funding shows at once in account equity (realised session P\&L) and can be used for trading, but moves to the cash balance only at the daily settlement at 08:00 UTC, after which it can be withdrawn (also Rulebook v2.0, Rule 11.4).
+\end{itemize}
+
+\qffield{Practice} Worked example (Deribit's, recomputed by the script \nolinkurl{funding_checks.py} beside the artefact): BTC perpetual mark USD 100{,}075 against index USD 100{,}000 gives $P=0.075\%$ and a rate of $0.05\%$ per 8 hours; a long of USD 100{,}000 (1 BTC) pays $0.05\%\times1\text{ BTC}\times1/480=0.000001041667$ BTC per minute and $0.0005$ BTC over 8 hours. A USDC-margined SOL perpetual at mark 100.10 against index 100 gives $0.075\%$, so a USDC 100{,}000 long pays 0.15625 USDC per minute and 75 USDC over 8 hours. The script also checks the printed max/min formula against the prose rule on a grid of premia and the other examples (damper, caps, offsetting minutes). Interpretation: funding is a carry cost or income of holding the perpetual against spot, in the contract's settlement currency; whether it signals crowding was not checked.
+
+\qffield{Pitfalls} The legacy definition said funding is ``the periodic payment that links perpetual futures to spot'', with longs paying when it is positive, and that ``it is both a carry term and a crowding signal''. The sign convention matches Deribit's; ``links \dots\ to spot'' holds as a design intent and a model result, not a guarantee; ``crowding signal'' is not supported by the sources read and is stubbed (\texttt{ev:crypto-funding-crowding}). Venue rules differ: other venues' cadence, interest term, clamps and index construction were not checked, and Deribit's own page contains slips in its ETH examples (an index ``at USD 10,000'' and ``a 1 BTC long position'' in the ETH column of Example~3; 7.5\% inside the ETH cap formula of Example~5), whose stated results are nevertheless correct.
+
+\qffield{See also} \hyperref[def:crypto-venue-instrument-structure]{crypto venue and instrument structure}; \hyperref[def:crypto-trading-risk-layers]{crypto trading risk layers}; \hyperref[mech:futures-margin-settlement]{futures margin and settlement}; \hyperref[def:securities-lending-fee-rebate]{lending fees and rebates} (financing legs).
+
+\qffield{Further reading} The legacy block it replaces, verbatim, is in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/crypto-mm-microstructure/}.
+
+\qffield{Index} perpetual futures; funding rate; funding payment; premium rate; interest rate differential; anchoring; mark price; Deribit index; funding damper; funding cap; 8-hour funding rate; continuous funding accrual; daily settlement; linear perpetual funding; inverse perpetual funding; perpetual basis
+
+\qffield{Status} Verification: partly checked 2026-10-15 (\texttt{roadmap-perpetual-pricing}, arXiv v2 of 3 September 2024, pp.~2, 4, 7--8 and~12, text layer; \texttt{roadmap-perpetual-fundamentals}, arXiv v7 of 17 September 2026, abstract; \texttt{gapclose-deribit-rules}, Funding Specifications edited 27 July 2026 and Rulebook v2.0 Rule 11.4, retrieved 15 October 2026 through the help-centre API; formula and examples recomputed by script). Stability: draft. Currency: Deribit terms as of October 2026; model results timeless.
+\end{qfmechanism}
+
+\begin{qfdefinition}[Crypto trading risk layers: liquidation, insurance fund, socialised loss and auto-deleveraging at one venue, kept apart from custody, stablecoin and network-settlement risk]\label{def:crypto-trading-risk-layers}
+\qffield{Statement} The losses a crypto trader can bear beyond market risk come in layers that are governed by different documents and fail in different ways:
+\begin{itemize}
+\item \emph{liquidation}: forced closing of positions when margin falls short. Under Deribit's rulebook, if a member fails to meet maintenance margin, Deribit may close positions, cancel orders, delta-hedge with futures and perpetuals, apply auto-deleveraging where applicable, or close the whole account, together the Liquidation Process, and may charge a liquidation fee \citep[Rulebook v2.0, Rules 10.1 and~10.5]{gapclose-deribit-rules};
+\item \emph{insurance fund}: if an account's margin balance in a currency is negative after liquidation, Deribit transfers assets from its insurance fund, funded mainly by liquidation fees and excess collateral from liquidations, to bring it to zero, and may convert other currencies of the fund (Rules 10.6--10.7; definition of Insurance Fund);
+\item \emph{socialised loss}: if the fund is depleted, Deribit may deduct from all members with positive profit and loss in the same session their pro-rata share of the negative balance, halt trading, cancel orders and close positions at the mark price; members agree to this and may dispute only a manifest error in their share (Rules 10.8--10.11);
+\item \emph{auto-deleveraging}: a step in the liquidation waterfall in which, once liquidity-support providers' capacity is used, eligible positions of a distressed account are transferred to a deleveraged counterparty at a preferential price and closed against that member's existing positions (definition of Auto-Deleveraging; the full waterfall is in the Exchange Membership Terms, clause~12, not read);
+\item \emph{custody}: Deribit holds members' assets in its own wallets or through a third-party custodian of its choice, or acts as limited agent over a member-chosen custodian for margining, liquidation and settlement (Rule~2, guidance);
+\item \emph{stablecoin, network and bridge risk}: redemption and depeg of stablecoin collateral, chain congestion, reorganisations and transfer delays. Not checked in this slice (stub).
+\end{itemize}
+
+\qffield{Conditions} All rules above are Deribit FZE's, a virtual-asset service provider regulated by Dubai's VARA, under Rulebook version 2.0 applicable 13 August 2026 (Rule 1.1); other venues' waterfalls were not checked and may differ. Venue insolvency is a separate legal process from a venue's socialised-loss mechanism; neither insolvency outcomes nor customer-asset treatment in insolvency were checked.
+
+\qffield{Practice} Interpretation: keep apart a trader's own liquidation (its positions closed), a loss to the venue's backstop (insurance fund), a loss charged to other members (socialised loss), a position closed against a counterparty's will (auto-deleveraging) and a loss of assets held at the venue (custody, insolvency). Cross-venue strategies add transfer and settlement paths between venues, during which capital cannot respond. Margin and default waterfalls in a regulated futures clearing house are in \hyperref[mech:futures-margin-settlement]{futures margin and settlement}.
+
+\qffield{Pitfalls} The legacy taxonomy listed venue risk (``outage, withdrawal halt, auto-deleveraging, or insolvency''), liquidation risk, stablecoin risk, bridge and settlement risk, and fragmentation (``basis and price gaps across venues when capital cannot move quickly''). Auto-deleveraging and liquidation are checked only for Deribit; outages and withdrawal halts were not checked; fragmentation is a market-structure fact (\hyperref[def:crypto-venue-instrument-structure]{crypto venue and instrument structure}), linked by Makarov and Schoar to capital controls rather than to slow crypto transfers. Stablecoin and bridge risks are stubbed for their own pathways.
+
+\qffield{See also} \hyperref[mech:perpetual-funding]{perpetual funding}; \hyperref[def:crypto-venue-instrument-structure]{crypto venue and instrument structure}; \hyperref[mech:futures-margin-settlement]{futures margin and settlement}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/crypto-mm-microstructure/}.
+
+\qffield{Index} crypto liquidation; maintenance margin; liquidation fee; insurance fund; bankrupt account; socialised loss; auto-deleveraging; ADL; liquidation waterfall; crypto custody; third-party custodian; stablecoin depeg; bridge risk; network settlement; venue insolvency; Deribit; VARA
+
+\qffield{Status} Verification: partly checked 2026-10-15 (\texttt{gapclose-deribit-rules}, Rulebook version 2.0 applicable 13 August 2026, page updated 15 September 2026, retrieved 15 October 2026 through the help-centre API: Rules 1.1, 2 (guidance on custody), 10.1--10.11 and the definitions of Auto-Deleveraging and Insurance Fund; the Exchange Membership Terms not read). Stability: draft. Currency: Deribit as of October 2026.
+\end{qfdefinition}

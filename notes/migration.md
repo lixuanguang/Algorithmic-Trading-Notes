@@ -2055,9 +2055,86 @@ Targeted corrections to two slice-23 entries; the slice-23 record above is left 
 - **Numerical checks**, added as `notes/artefacts/synthetic-equity-cfd-trs/synthetic_short_checks.py` (standard library; `derivations.tex` unchanged). (1) Payoffs leg by leg at $S_T=60, 95, 100, 140$: put minus call $=K-S_T$; with a short bond $=-S_T$; with a long bond $=2K-S_T$ (130, 95, 90, 50). (2) Parity example $S_0=100$, $K=95$, $r=5\%$, $q=2\%$, $\sigma=25\%$, $T=1$: options repriced by midpoint integration over the risk-neutral density, $C=13.684728$, $P=6.031656$, matching the closed forms to $10^{-4}$, and $P-C=-7.653072=Ke^{-rT}-S_0e^{-qT}=e^{-rT}(K-F)$ with $F=103.0455$. (3) Rebate comparison, $q=0$, same $S_0$, $K$, $r$, $\sigma$, $T$: $C=15.0471$, $P=5.4138$, $P-C=-9.6332$; day-by-day accounts give the package $S_0e^{rT}-S_T$ (5.127110 at $S_T=100$) and the short sale $S_0e^{r_bT}-S_T$ (5.127110, 3.045453, $-0.995017$ for $r_b=5\%, 3\%, -1\%$), gaps $S_0(e^{rT}-e^{r_bT})=0$, 2.081656, 6.122126 at every $S_T$. All checks passed.
 - The pathway note for `synthetic-equity-cfd-trs`, the `alpha-harris` reading note and the log were updated. Ownership, stubs and counts are unchanged (613 legacy blocks; 88 entries).
 
+## Slice 23 second follow-up: lending opening, 15 October 2026
+
+`mech:securities-lending-short-sale` now opens with the standard stock-loan route only: a short seller sells securities it does not own and borrows them to meet delivery at settlement. The examples added in the first follow-up, delivery from other clients' street-name holdings (Harris, p. 155) and Regulation SHO's deemed-to-own locate exception (§ 242.203(b)(2)(ii)), were removed as explanations of why a loan is unnecessary: delivering another customer's street-name securities does not show that no lending occurs, and a locate exemption is a separate regulatory question. The Regulation SHO conditions stay in the entry's Conditions. The synthetic-short mathematics and `synthetic_short_checks.py` are unchanged and still pass. The first follow-up record above is left as written.
+
+## Slice 24: crypto market microstructure, 15 October 2026
+
+Migration of the four-block crypto file, the last topic of the legacy execution-trading-costs chapter, run after the clarification above. Migration and source checking, not study; no checkpoint was attempted.
+
+### Scope
+
+The whole of `execution-trading-costs/02_.../07_crypto_market_microstructure.tex`: 4 counted blocks with the sentences inside them; outside them only the `% migrate-to:` line and the subsection heading (checked by script). The file, its map row and both wrappers that input it were deleted: `02_.../00_overview.tex` (a section heading and this one `\input`) and `execution-trading-costs/section.tex` (the legacy chapter heading with label `legacy:execution-trading-costs`, a comment and one `\input`); both are kept verbatim as display text (`verbatim`) in the artefact, so their inputs do not execute. The line `\InputIfFileExists{legacy/execution-trading-costs/section}{}{}` was removed from `compendium/legacy/part.tex`. The 21 unused PNGs in `compendium/legacy/execution-trading-costs/figures/` were left unchanged; `tools/migration_status.py` now requires a `part.tex` input only for legacy folders that still contain `.tex` files, so the figures-only folder passes (the 14 tests pass unchanged).
+
+References to `legacy:execution-trading-costs` were updated: the comment and the closing sentence of `compendium/execution-trading-costs/section.tex` (all its older notes are now migrated; the impact material remains in the legacy execution-market-making chapter), and the overview paragraph of `compendium/legacy/execution-market-making/section.tex` (algorithmic execution and asset-class microstructure have been migrated). No other `.tex` reference remained; earlier records in this file keep the label as history.
+
+### Ownership and dispositions
+
+The map names `crypto-mm-microstructure`, whose outcome is estimating the fee, impact, latency and adverse-selection terms of quoting one crypto order book from the venue's own data. None of the four blocks is about that. `crypto-perpetuals` has the outcome of reconciling spot, perpetual and dated-futures basis with financing, transfer, margin and liquidation paths across fragmented venues, and its readings include Makarov–Schoar, the perpetual-pricing papers and Deribit's rulebook and funding specification. **Routing exception:** all four blocks go to `crypto-perpetuals`. Items outside its outcome were not given entries: options (`crypto-options-numeraire`), AMM pools (`amm-lending`) and stablecoin, network and bridge risk (`stablecoin-pegs-runs` and the section overview) are stubbed in the `crypto-perpetuals` note with their destination named. `crypto-price-discovery` was considered for block 1 (cross-exchange gaps) but its readings were not used and its outcome centres on information shares and reference rates. The pathway sits in the section `digital-assets-prediction-markets`, which had no chapter; this slice opened `compendium/digital-assets-prediction-markets/` (`section.tex`, `crypto-venues-perpetuals.tex`). The artefact sits under the map candidate, `notes/artefacts/crypto-mm-microstructure/`, keeping the file whole, as in slices 17, 18 and 23.
+
+| # | Legacy block | Owner | Destination | Checked sources | Disposition |
+|---|---|---|---|---|---|
+| 1 | *Crypto Liquidity Is Exchange-Fragmented* (principle) | `crypto-perpetuals` | `def:crypto-venue-instrument-structure` (new) | Makarov–Schoar DP 782, abstract, pp. 1–3; Deribit Rulebook v2.0 | Rewritten; executable prices, reference prices, fair value and legal best execution separated; 2017–2018 evidence dated; "fair value is venue-dependent" and the consolidated-tape claim not adopted |
+| 2 | *Crypto Instrument Segmentation* (taxonomy) | `crypto-perpetuals` | `def:crypto-venue-instrument-structure`; perpetual item to `mech:perpetual-funding`; stubs `def:crypto-options-venue-structure`, `def:amm-pool-mechanics` | Ackerer–Hugonnier–Jermann arXiv v2, pp. 2–3, 7; Deribit Rulebook Rules 1.2, 11.3, App. A | Spot, dated futures, perpetuals (linear, inverse, quanto) and Deribit's options checked; "kept near spot" qualified; options concentration and pool mechanics unchecked |
+| 3 | *Perpetual Funding* (definition) | `crypto-perpetuals` | `mech:perpetual-funding` (new); stub `ev:crypto-funding-crowding` | AHJ pp. 2, 4, 7–8, 12; He et al. v7 abstract; Deribit Funding Specifications; Rule 11.4 | Sign convention confirmed (Deribit); anchoring a model result, not guaranteed; one venue's damper, caps, accrual and settlement; "crowding signal" unsupported |
+| 4 | *Crypto Microstructure Risk Segmentation* (taxonomy) | `crypto-perpetuals` | `def:crypto-trading-risk-layers` (new); stub `ev:stablecoin-network-settlement-risk` | Deribit Rulebook Rules 1.1, 2, 10.1–10.11, definitions | Liquidation, insurance fund, socialised loss, ADL and custody for Deribit only; insolvency, outages, withdrawal halts, stablecoin and bridge risk unchecked; fragmentation moved to block 1's entry |
+
+Overlaps checked: no existing entry covered crypto. `def:best-execution`, `def:smart-order-routing`, `def:fx-market-structure`, `res:arbitrage-risks`, `mech:futures-margin-settlement` and `def:securities-lending-fee-rebate` are cross-referenced; none was changed.
+
+### Sources, 2026-10-15 (generic request headers)
+
+- **Makarov and Schoar** (`s6-makarov`), LSE FMG Discussion Paper 782, 15 December 2018, from fmg.ac.uk: abstract and pp. 1–3 with footnotes 1–3, text layer (printed page = PDF − 2). The published JFE version was not read.
+- **Ackerer, Hugonnier and Jermann** (`roadmap-perpetual-pricing`), arXiv 2310.11771v2, 3 September 2024: abstract and pp. 2–4, 7–8 (eqs. (4)–(7)) and 12 (Corollary 1), text layer (printed page = PDF page). The Mathematical Finance version was not read.
+- **He, Manela, Ross and von Wachter** (`roadmap-perpetual-fundamentals`), arXiv 2212.06888v7, 17 September 2026: abstract and title page only (one author's eToro affiliation disclosed there).
+- **Deribit** (`gapclose-deribit-rules`): Exchange Rulebook version 2.0, applicable 13 August 2026 (article updated 15 September 2026), and Funding Specifications (edited 27 July 2026, updated 20 August 2026), retrieved through the help-centre JSON API because the web pages returned a bot check. Rulebook locators are rule numbers (no page numbers); the funding cap table was read from the article's HTML table. Exchange Membership Terms, option and portfolio-margin pages not read.
+- **Not available or not read:** the BIS carry paper (`roadmap-carry`; the PDF URL returned an HTML page), Gornall–Rinaldi–Xiao (`s11-r15`; SSRN), the `crypto-mm-microstructure` readings (none supports these blocks), `s11-r29` venue API documentation, and any AMM, stablecoin or bridge source.
+
+### Distinctions kept
+
+- **Evidence, rules and interpretation.** Makarov–Schoar's 2017–2018 findings; Deribit's October 2026 rules for one venue; Ackerer–Hugonnier–Jermann's and He et al.'s model results; interpretation labelled.
+- **Prices.** Executable venue prices, reference indices (Deribit Index, Mark Price), fair-value models and legal best-execution obligations.
+- **Instruments and contracts.** Spot, dated futures, perpetuals, options and AMM pools (the last unchecked); linear, inverse and quanto contracts.
+- **Funding.** Premium against interest terms; sign convention; continuous accrual against the 8-hour quotation; settlement currency and units; damper and caps by currency; equity against cash at the 08:00 UTC settlement.
+- **Risk layers.** Liquidation, insurance fund, socialised loss, auto-deleveraging and custody (Deribit), kept apart from venue insolvency and from stablecoin, network and bridge risk (unchecked).
+
+### Numerical check
+
+`notes/artefacts/crypto-mm-microstructure/funding_checks.py` (standard library): Deribit's printed max/min funding formula agrees with an independent piecewise reading of its prose rule at every premium from −10% to +10% in 0.005% steps, for each cap; all of Deribit's worked examples recompute (BTC 0.05% per 8 hours, 0.000001041667 BTC per minute and 0.0005 BTC per 8 hours for 1 BTC; ETH 0.075%, 0.0000015625 and 0.00075 ETH; SOL_USDC 0.075%, 0.15625 and 75 USDC on USDC 100,000; offsetting minutes net to zero; damper examples zero; caps 0.5%, 1.0% and 5.0% binding; ETH uncapped 1.975%); and funding between long and short nets to zero. The page's slips (ETH Example 3 "Index remains at USD 10,000" and "1 BTC long position"; 7.5% inside the ETH formula of Example 5) do not change its stated results. All checks passed.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `s6-makarov` | abstract; pp. 1–3 | 2018 discussion paper; 2017–2018 data |
+| `roadmap-perpetual-pricing` | abstract; pp. 2–4, 7–8, 12 | Preprint; frictionless model |
+| `roadmap-perpetual-fundamentals` | abstract | Body unread |
+| `gapclose-deribit-rules` | Rulebook rules and definitions; Funding Specifications | One venue; October 2026; Membership Terms unread |
+| `roadmap-carry`, `s11-r15`, AMM, stablecoin, bridge | none | Not retrieved or not in scope; stubs |
+
+The three new entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/crypto-mm-microstructure/derivations.tex` (1 page; no warnings or bad boxes after setting the wrapper text in `\scriptsize` and a ragged-right path line), with only the subsection unnumbered. A script confirmed, against the committed originals, that the body appears exactly once, the four blocks (Crypto Liquidity Is Exchange-Fragmented, Crypto Instrument Segmentation, Perpetual Funding, Crypto Microstructure Risk Segmentation) once each and in order, nothing outside the blocks but the subsection heading, and each deleted wrapper verbatim exactly once inside a `verbatim` environment. Earlier artefacts, `house.tex`, the guide pin (`343d145`) and the 21 figures are unchanged; earlier log entries and open questions were only appended to.
+
+### Counts
+
+`migration_status.py`: 613 → 609 legacy blocks = 530 shared + 50 single-candidate + 29 assigned. `crypto-mm-microstructure`: exclusive 4 → 0, no entries. `crypto-perpetuals`: entries 0 → 3, backlog stubs 0 → 5 (new note). Entries 88 → 91 (definitions 32 → 34, mechanisms 7 → 8). Four reading notes added; no new `front/sources.tex` keys (all sources are catalogue keys).
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 210 pages (207 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. Rendered and inspected: PDF p. 65 (the execution-trading-costs opener), pp. 105–108 (the new chapter and its last page), p. 109 (the part page for notes awaiting migration) and p. 167 (the legacy execution-market-making opener, now the last legacy chapter). Tests: 14 passed; `synthetic_short_checks.py` and `funding_checks.py` pass.
+
+### For review
+
+- Routing all four blocks to `crypto-perpetuals` against the map, and the new `digital-assets-prediction-markets` chapter.
+- The checker change for figures-only legacy folders.
+- The five backlog stubs, three of which name other pathways.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/07_crypto_market_microstructure.tex` (4 blocks), whose map names `crypto-mm-microstructure` alone; it is the last topic of the asset-class wrapper, so the wrapper `00_overview.tex` would be removed with it once empty. Likely overlaps: `def:fx-market-structure` (fragmentation without a consolidated tape), `def:best-execution`, `mech:futures-margin-settlement` and the options entries; perpetual-futures funding and venue rules need dated exchange documentation. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/portfolio-construction-risk/sysinv/research.tex` (4 blocks), whose map names `research-engineering-validation` alone; it sits in Narang's systematic-investing chapter, whose other files (`modelrisk.tex`, `portconstmod.tex`, `riskmod.tex` and the rest) are unchanged. Likely overlaps: the research and validation entries in `research-engineering-validation/` and `ml-alternative-data/`, and `meth:automated-trading-operational-controls`. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -2092,7 +2169,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/07_crypto_market_microstructure.tex` | crypto-mm-microstructure |
 | `compendium/legacy/ml-alternative-data/data/datalabel.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |
 | `compendium/legacy/ml-alternative-data/data/datasampleweights.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |
 | `compendium/legacy/ml-alternative-data/data/datastruct.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |

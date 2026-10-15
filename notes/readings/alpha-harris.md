@@ -2,12 +2,12 @@
 key: alpha-harris
 pathways: [execution-market-making, market-making-lob]
 version: Larry Harris, Trading and Exchanges, Oxford University Press, 2002 printing; local PDF with a text layer, outside the repository (printed page = PDF page - 13)
-sections: chapter "Informed Traders and Market Efficiency", pp. 222-244; chapter "Dealers", pp. 280, 283-295; chapter "Bid/Ask Spreads", pp. 297-321; chapter "Value Traders", pp. 338-346; chapter "Volatility", pp. 410-417; chapter "Liquidity and Transaction Cost Measurement", pp. 423-427, 434; chapter "Bubbles, Crashes, and Circuit Breakers", pp. 555-563, 570-578; chapter "Insider Trading", pp. 584-598 (checked for migration slices 2 to 5)
+sections: chapter "Informed Traders and Market Efficiency", pp. 222-244 (box p. 225 also by page image); chapter "Order Anticipators", pp. 245-258; chapter "Bluffers and Market Manipulation", pp. 259-275 (p. 270 by page image); chapter "Dealers", pp. 280, 283-295; chapter "Bid/Ask Spreads", pp. 297-321; chapter "Value Traders", pp. 338-346; chapter "Arbitrageurs", pp. 347-379; chapter "Volatility", pp. 410-417; chapter "Liquidity and Transaction Cost Measurement", pp. 423-427, 434; chapter "Bubbles, Crashes, and Circuit Breakers", pp. 555-563, 570-578; chapter "Specialists", pp. 494-508; chapter "Insider Trading", pp. 584-598 (checked for migration slices 2 to 6)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slices 2 to 5 from source checks, not from study: the headings that need your own reading are left empty. Reading progress before the study method is in `notes/log.md` (completed).
+Prepared on 2026-10-15 by migration slices 2 to 6 from source checks, not from study: the headings that need your own reading are left empty. Reading progress before the study method is in `notes/log.md` (completed).
 
 ## Question and claim
 
@@ -24,6 +24,13 @@ Prepared on 2026-10-15 by migration slices 2 to 5 from source checks, not from s
 - Market paradox (pp. 238–239); weak, semistrong and strong forms and the cost-sensitive definition (p. 240); the trade-off between liquidity and informative prices, with publication of information as the exception (pp. 241–242).
 - Value traders profit only from uninformed liquidity demand; news traders profit from information changes (chap. 16, pp. 338–339); "If you are not a buyer, should you be a seller?" (box, p. 343).
 - Inside information: material information not available to public traders; the SEC's 2002 summary (box, p. 585); insiders, tippees, misappropriation (pp. 584–587); employee pre-approval and trading windows (p. 588); detection (pp. 588–590); restrictions narrow spreads and make prices less informative in the short run (pp. 597–598).
+- Informed-trader types: value, news, information-oriented technical, arbitrageurs (sec. 10.5, Table 10-3, p. 235); aggressive against stealth trading (sec. 10.4, pp. 225–226).
+- Order anticipators: front runners (quote matchers against passive traders), sentiment-oriented technical traders, squeezers; gunning stop orders; time precedence with a meaningful tick protects liquidity suppliers (chap. 11, pp. 245–257).
+- Bluffers: rumourmongers and price manipulators (wash trades a technique); profitable when buy and sell impacts differ, with the worked example on p. 270; value traders call bluffs; manipulation hard to prove (chap. 12, pp. 259–274).
+- Arbitrage: hedge portfolio, basis, fair value, arbitrage spread, bounds (p. 349); pure (shipping, delivery, conversion, cyclic) against speculative (spreads, pairs, statistical, merger) (pp. 350–363); four risks and staying power (pp. 363–373); slow adjustment against uninformed demand (pp. 373–375); price and quantity characterisations (pp. 375–376).
+- Winner's curse: bid lower with more bidders and harder valuation; market power with very few (pp. 341–343).
+- Specialist privileges as of 2002: order-flow speculation, quote matching, cream skimming, stop-order anticipation, stopping stock (sec. 24.5, pp. 501–508).
+- Insider trading: detection by surveillance and list matching (pp. 588–590); deterrence by probability times penalty (p. 590); competition among insiders (p. 592).
 - Inventory imbalance, and the two inventory risks: diversifiable (independent of the imbalance) and adverse selection (inversely correlated with it) (pp. 283–286).
 - Dealers seek market values that produce two-sided flow, and discover fundamental values as a by-product (pp. 284, 286–287).
 - Tactics: Table 13-2 for inventory (p. 285), Table 13-3 after a suspected informed trade (p. 288), Table 13-4 for consequences when trading with informed and uninformed buyers (p. 292).
@@ -53,10 +60,10 @@ Prepared on 2026-10-15 by migration slices 2 to 5 from source checks, not from s
 
 ## Entries
 
-`res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `res:spread-determinants`, `def:outside-spread`, `def:volatility-components`, `mech:bubble-crash-dynamics`, `def:fundamental-value`, `res:informed-trading-aggregation`, `def:market-efficiency`, `def:inside-information`; also cited in `mod:glosten-milgrom` and `meth:spread-volatility-regression`.
+`res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `res:spread-determinants`, `def:outside-spread`, `def:volatility-components`, `mech:bubble-crash-dynamics`, `def:fundamental-value`, `res:informed-trading-aggregation`, `def:market-efficiency`, `def:inside-information`, `def:informed-trader-types`, `def:winners-curse`, `res:insider-trading-deterrence`, `def:arbitrage`, `res:arbitrage-risks`, `def:order-anticipation`, `def:bluffing-manipulation`; also cited in `mod:glosten-milgrom` and `meth:spread-volatility-regression`.
 
 ## Open questions
 
-- The box on p. 225 says the market's forecast error is below the average individual error whenever the individual errors are not identical; that holds for squared errors but not, in general, for absolute ones (own check, slice 5). Is a mean-squared sense intended?
+- The box on p. 225 says the market's forecast error is below the average individual error whenever the individual errors are not identical; that holds for squared errors but not, in general, for absolute ones (own check, slice 5). Is a mean-squared sense intended? Update (slice 6, page image checked): realisation by realisation only the squared comparison is strict whenever errors differ; in expectation, with independent nondegenerate errors, the absolute one is strict too. The closing claim that the price beats any individual trader needs equal accuracies.
 
 ## Retrieval cards

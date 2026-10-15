@@ -1676,6 +1676,48 @@ The whole file below its `% migrate-to:` line is kept verbatim in the new artefa
 - The four new entries; routing the large-tick block to `execution-market-making`.
 - The reliance on CME documentation retrieved on one date, and on a 2000 working-paper draft for the price-discovery evidence.
 
+## Slice 19 follow-up: corrections, 15 October 2026
+
+A bounded correction to slice 19 (`fb56198`), run from that pushed state (633 legacy blocks = 530 shared + 74 single-candidate + 29 assigned, 75 entries, checker clean, guide `343d145`, clean tree matching `origin/main`). The slice-19 record above is left as written; where it differs, this section supersedes it. No block, owner, label, artefact or backlog stub changed; the FX file (slice 20) was not started.
+
+1. **Large-tick equation.** Lehalle and Laruelle's eq. (2.1), checked on the page image of p. 145, is $\psi_i=a+(b_1\sigma_i+b_2\eta\,\mathrm{tick})/\sqrt{N_i}$: both terms are over $\sqrt{N_i}$. Slice 19 had put only the volatility term over it in `res:spread-determinants`. The entry now matches `meth:spread-volatility-regression`, which already had it right; the reading note `alpha-laruelle` was corrected too. No other occurrence in the compendium or notes. The empirical scope and the futures-specific backlog stub are unchanged.
+2. **Default waterfall and performance bond.** CME Rules 802.A and 802.B were read in full in the chapter-8 PDF retrieved on 15 October 2026. `mech:futures-margin-settlement` now gives the Base waterfall as:
+   - the defaulting member's own resources, applied by account class, with customer collateral ring-fenced from proprietary losses and from other customer classes (802.A.2, 802.A.5);
+   - CME's \$100 million;
+   - the Base Guaranty Fund, the non-defaulting members' prefunded contributions, applied in the rule's order (subordinated, then pro rata, then seniorized amounts);
+   - assessments capped at 275 percent (single default) and 550 percent (all defaults in a cooling-off period) of each member's Base Guaranty Fund requirement.
+
+   Rule 802.B.1 lists "The Base Guaranty Fund" (ii) and "the Guaranty Fund contributions of non-defaulting Base Clearing Members" (iii) as separate items; since the fund consists of members' contributions (802.A.4), the entry counts it once. Rule 820's retention is now quoted as "in whole or in part, as Clearing House staff may deem necessary".
+3. **2020 settlement.** The procedure is Exhibit B of the filing (blackline); Exhibit A only lists products. On the rendered blackline the amended Tier 1 uses E-mini Globex trades alone: floor trades in the full-sized contract, the multiplier of five and "combined" are struck. The full procedure is now stated:
+   - ES and MES settle to SP's settlement rounded to the nearest tradable tick, and SP's lead month is rounded to 0.10;
+   - Tier 2 (bid/ask midpoint) applies if there are no trades, and Tier 3 (carry from the cash index) if no two-sided market is available;
+   - the second month follows its three tiers, and staff may override.
+
+   The entry, `front/sources.tex` and the futures pathway note's dating were updated; the procedure stays dated 2020.
+4. **Scope points.**
+   - `conv:futures-block-efrp` now spells out Rule 538.K, checked on the rulebook page image (p. 29) and on the filing's Exhibit A blackline: EFPs whose related position is a cash transaction and EFRs whose related position is an NDF, in foreign currencies only, never as EOOs. The amendment changed 538.K only, leaving 538.A--J unchanged. It also gives 538.A's carve-out (rulebook p. 28): for these immediately offsetting FX EFPs the third-party pass-through requirement does not apply, and the cash legs need not be passed through when CTAs or account controllers act, though the customer bears the offsetting leg's P&L if the futures leg fails to clear.
+   - `mech:etf-creation-redemption`'s opening now quotes Lettau and Madhavan ("does not interact with capital markets directly", p. 4) and qualifies it by the existing distinction: secondary and in-kind transactions do not make the fund trade, while cash creations and redemptions can. The Pan–Zeng, \$100m/\$85m and Harris text are unchanged.
+
+### Sources checked
+
+- Lehalle and Laruelle, 2018 printing, p. 145, page image.
+- CME Rulebook chap. 8, Rules 802.A--802.B (full text) and 820.
+- CME Rulebook chap. 5, pp. 27--29, page images.
+- CFTC filing of 22 September 2020, Exhibits A and B, page images of pp. 5--6.
+- CME Group RA2607-5 filing of 23 July 2026, pp. 1--3 with the Exhibit A blackline as a page image.
+
+All are the copies retrieved on 15 October 2026 with generic headers; no new retrieval was needed.
+
+### Validation
+
+`migration_status.py --check`: 0 problems; 633 legacy blocks and 75 entries, unchanged. Tests: 14 passed. `latexmk -g -pdf compendium.tex`: exit 0; 193 pages (191 before, from the longer waterfall and settlement text); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. Rendered and inspected: printed pp. 35 (`res:spread-determinants`), 75 (the ETF opening), 78 (settlement) and 79--80 (EFRP and margin), PDF pp. 41, 81, 84 and 85--86.
+
+### Remaining limits
+
+- The current CME settlement page is still unretrieved, so the procedure is as filed in 2020.
+- Default-management auction details (subordination and seniorization amounts) are in confidential guidelines.
+- Customer-side FCM rules and intraday cycle times are unchecked.
+
 ## Next bounded slice
 
 `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/03_fx_market_microstructure.tex` (4 blocks), whose map names `fx-dealer-market-making` alone. Likely overlaps: `meth:dealer-quote-adjustment` and `def:dealer-inventory-risk` (internalisation and dealer quoting), `def:smart-order-routing` and `res:latency-arbitrage-arms-race` (last look and stale quotes), and `def:best-execution`. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.

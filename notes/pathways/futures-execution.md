@@ -29,6 +29,8 @@ Written in migration slice 19, 2026-10-15:
 - `mech:futures-margin-settlement`: settlement variation each cycle (Rule 814), performance bond (Rule 820) and the default waterfall (Rule 802.B); daily settlement bounds credit risk but does not eliminate it.
 - `ev:index-futures-price-discovery`: Hasbrouck's evidence that E-minis led price discovery for the S&P 500 and Nasdaq-100 in March–May 2000 (working-paper draft), with the legacy explanations marked as untested.
 
+Corrected in a follow-up the same day (`notes/migration.md`, *Slice 19 follow-up*): the default waterfall of Rules 802.A–B and the retention wording of Rule 820; the settlement procedure located in Exhibit B of the 2020 filing, with its tiers and rounding; Rule 538.K's exception and 538.A's carve-out.
+
 All four: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/futures-execution/derivations.tex`.
 
 ## Related entries owned elsewhere

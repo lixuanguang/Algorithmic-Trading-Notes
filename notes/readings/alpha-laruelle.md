@@ -20,7 +20,7 @@ Prepared on 2026-10-15 by migration slices 4 and 5 from source checks, not from 
 ## Key results
 
 - Four liquidity variables: volume, spread, volatility, book size; their intraday seasonality, high after the open (Figure 2.12, pp. 145–148); at a one-tick spread, book size adjusts instead of the spread (p. 148).
-- Cross-sectional spread relation $\psi_i=a+b\sigma_i/\sqrt{N_i}$ for small-tick instruments, with a bounce term $\eta=N_c/(2N_a)$ for large-tick ones (eq. (2.1), pp. 144–145).
+- Cross-sectional spread relation $\psi_i=a+b\sigma_i/\sqrt{N_i}$ for small-tick instruments; for large-tick ones $\psi_i=a+(b_1\sigma_i+b_2\eta\,\mathrm{tick})/\sqrt{N_i}$, both terms over $\sqrt{N_i}$, with bounce parameter $\eta=N^c/(2N^a)$ (eq. (2.1), pp. 144–145, page image of p. 145 checked in the slice-19 follow-up).
 - Daily spread rises with daily volatility (Figure 2.13, pp. 150–151); spread on volatility in levels and logs, with the log-normal back-transformation (app. A.10.2, pp. 295–298; Rio Tinto, $R^2$ 0.24, 0.16, 0.11).
 - Garman–Klass volatility normalised by the average price (p. 172, page image); used for seasonality and for the FTSE 100 / IBEX 35 comparison, which found no significant effect of UK fragmentation on intraday volatility (pp. 146–147, 172–174).
 - Intraday impact in spreads from the arrival price, concave during execution and reverting after (Figure 3.3, pp. 204–206, CAC 40, 2010); impact $\propto$ Duration$^\alpha\times$Participation$^\gamma$, $\gamma\approx0.5$ (eq. (3.1), pp. 207–209); drivers and timing (pp. 203–206); restatement of Bacry et al.'s post-execution study with home indexes and least-squares beta (eq. (3.2), pp. 209–215).

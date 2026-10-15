@@ -21,7 +21,7 @@ Prepared on 2026-10-15 by migration slice 22 from source checks, not from study:
 
 ## Key results
 
-- Most fixed-income trading is dealer-oriented OTC search; Treasuries and TBA MBS the exceptions; quotes indicative, not firm; 19% of U.S. IG corporate trading electronic in 2016, mostly RFQ (pp. 1-3).
+- Most fixed-income trading is dealer-oriented OTC search; Treasuries and TBA MBS the exceptions; quotes indicative, not firm; 19% of U.S. IG corporate trading electronically facilitated, mostly RFQ, as estimated by an industry report published July 2016 (observation period not given) (pp. 1-3).
 - Dealer capital commitment reduced in corporate bonds; prearranged trades; nonbank dealers 12.5% of customer-dealer volume 2014-2016 vs 2.4% pre-crisis; linked to capital rules and the Volcker Rule (pp. 4, 32-33).
 - Costs fall with trade size in bonds, the reverse of equities (p. 5).
 - TRACE timeline 1997-2017 (Table 2, p. 9); reporting vs dissemination; caps 5MM+/1MM+ (p. 10, fn. 10).

@@ -1955,9 +1955,99 @@ The whole file below its `% migrate-to:` line is kept verbatim in the new artefa
 - The rule entry's reading of SR-FINRA-2024-004 and SR-FINRA-2025-008 from their filing summaries.
 - The three backlog stubs (credit derivatives and swaps, EU Level 1 text, U.K.).
 
+## Slice 22 follow-up: corrections, 15 October 2026
+
+Targeted corrections to `compendium/execution-trading-costs/fixed-income-trading.tex`; the slice-22 record above is left as written.
+
+- `def:fixed-income-market-structure`: the 19 percent figure is now an estimate in an industry report published in July 2016, as the survey cites it (p. 2); the observation period behind it is not given, and the publication date is no longer presented as one.
+- `ev:bond-transparency-trading-costs`: Edwards, Harris and Piwowar's conclusion keeps the abstract's wording, that the results "suggest that public traders benefit significantly from price transparency".
+- `rule:us-eu-bond-transparency`: SR-FINRA-2026-009 rechecked against the SEC approval order (Release No. 34-105991, 24 July 2026, 91 FR 47909–47911; `sec-34-105991`, added to `front/sources.tex`). The presently effective exclusion suppresses from dissemination qualifying same-day, same-price, same-security transactions between a member and its non-member affiliate; the amendment extends it to member affiliates and renames the indicator the Affiliate—Principal Transaction indicator, with an implementation date of at least 12 months after approval (listed as 2 August 2027) and voluntary earlier use. The rulebook's displayed Rule 6750(d)(1), "Affiliate—principal transaction indicator", is named as the future wording.
+- `ev:bond-transparency-trading-costs`: "markup disclosure for riskless principal trades" replaced, after rechecking FINRA Rule 2232 (`finra-rule-2232`) and Regulatory Notice 17-08 (`finra-rn-17-08`, both added): since 14 May 2018, Rule 2232(c) requires the mark-up or mark-down on the confirmation when the member trades as principal in a corporate or agency debt security with a non-institutional customer and makes same-trading-day offsetting trades of at least that size, looking through non-arm's-length affiliate trades; (d) exempts functionally separate trading desks and same-day fixed-price-offering sales. FINRA's notice reports a parallel MSRB rule with the same effective date; MSRB's own text was not read, so the municipal statement is attributed to FINRA.
+- Layout: the follow-up added about fifteen lines to the evidence entry, so its continuation page (PDF p. 99 before, p. 104 after slice 23) now carries the end of Pitfalls, See also, Further reading, Index and Status (18 text lines) and is no longer near-empty; removing it would require cutting evidence or status text, so it was kept. `house.tex` is unchanged.
+- The reading notes for `wide-bsv-fi-survey` and `wide-edwards-harris-piwowar` and the pathway note were updated. Earlier artefacts and the options corrections are unchanged.
+
+## Slice 23: securities lending and synthetic shorts, 15 October 2026
+
+Migration of the six-block securities-lending file, run after the follow-up above. Migration and source checking, not study; no checkpoint was attempted.
+
+### Scope
+
+The whole of `execution-trading-costs/02_.../06_securities_lending_and_synthetic_shorts.tex`: 6 counted blocks with the sentences inside them; outside them only the `% migrate-to:` line and the subsection heading (checked by script). The file, its `\input` in `02_.../00_overview.tex` and its map row were deleted; the wrapper keeps its last topic (crypto).
+
+### Ownership and dispositions
+
+The map names `synthetic-equity-cfd-trs`, whose outcome is pricing CFDs and equity total return swaps from financing, dividend, borrow and margin terms and identifying their counterparty, disclosure and tax exposures. Its prerequisite `money-markets-repo-lending` has the outcome of distinguishing repo from securities lending and pricing collateral financing, with the ICMA FAQ, Duffie–Gârleanu–Pedersen and the ISLA handbook as readings. **Routing exception:** blocks 1–4 and 6 describe the lending market itself (custody, the loan, availability, rebates, the votes of lent shares) and belong to `money-markets-repo-lending`; block 5, a synthetic position replacing borrow, stays with `synthetic-equity-cfd-trs`. Derivative-based empty voting and beneficial-ownership disclosure, which do belong to `synthetic-equity-cfd-trs`, are stubbed there. Both pathways sit in the section `portfolio-risk-financing`, which had no chapter; this slice opened `compendium/portfolio-risk-financing/` (`section.tex`, `securities-lending.tex`, `synthetic-shorts.tex`). The artefact sits under the map candidate, `notes/artefacts/synthetic-equity-cfd-trs/`, keeping the file whole, as in slices 17 and 18.
+
+| # | Legacy block | Owner | Destination | Checked sources | Disposition |
+|---|---|---|---|---|---|
+| 1 | *Street Name* (definition) | `money-markets-repo-lending` | `def:street-name-beneficial-ownership` (new) | Harris pp. 148, 169–170 | Rewritten; registration, beneficial ownership, custody and permission to lend separated |
+| 2 | *Securities Lending* (mechanism) | `money-markets-repo-lending` | `mech:securities-lending-short-sale` (new) | DGP sec. 2, pp. 5–8; ICMA FAQ 13; ISLA pp. 2–3, 24–25; 17 CFR 242.203(b), 242.204(a); Harris pp. 155, 158 | Rewritten; locate, borrow, delivery, recall, replacement borrow, buy-in; Regulation SHO as current U.S. law, ISLA as practice |
+| 3 | *Borrow Availability Segmentation* (taxonomy) | `money-markets-repo-lending` | items i–ii `def:securities-lending-fee-rebate` (new); items iii–iv `mech:securities-lending-short-sale` | Harris pp. 156–158; DGP pp. 6–8; Regulation SHO | Split; recall and settlement risk reclassified as operational risks; "failed locate" separated from delivery failure |
+| 4 | *Short Interest Rebate* (definition) | `money-markets-repo-lending` | `def:securities-lending-fee-rebate` | ICMA FAQ 13; DGP p. 7; ISLA pp. 7–8; Harris pp. 155–157 | Corrected: cash collateral passes from the borrower (often the broker) to the lender; customer margin separated; negative rebates not exemplified in sources |
+| 5 | *Synthetic Short* (principle) | `synthetic-equity-cfd-trs` | `res:synthetic-short-put-call` (new) | Harris p. 157; Hu–Black p. 5, fn. 6; own derivation and numerical check | Payoff, initial value with dividends, short forward against short stock, American exercise and assignment; "can replace scarce borrow" qualified, not adopted |
+| 6 | *Voting and Beneficial Ownership* (caveat) | `money-markets-repo-lending` | `def:street-name-beneficial-ownership` (Conditions, Practice, Pitfalls); stub `ev:empty-voting-equity-derivatives` (`synthetic-equity-cfd-trs`) | Harris p. 169; ICMA FAQ 13; DGP p. 8; Hu–Black pp. 1, 5 | Kept as Harris's description of broker voting; record holders vote; no duplicate legal votes; record-date capture through borrowing kept apart from swap-based decoupling |
+
+Overlaps checked: no existing entry covered securities lending, street name or put–call parity. `def:arbitrage`, `res:arbitrage-risks`, `res:option-market-maker-spreads`, `meth:option-spread-measurement`, `mech:futures-margin-settlement` and `def:broker-agency-conflicts` are cross-referenced; none was changed.
+
+### Sources, 2026-10-15 (generic request headers)
+
+- **Harris** (`alpha-harris`), 2002 Oxford printing, local copy, text layer: chap. "Brokers", sec. 7.2.2.2 (p. 148), secs. 7.3.1.4 and 7.3.1.7 with the box "Synthetic Short Positions" (pp. 155–158), the box "Can Investors Vote More Than 100 Percent of the Shares Outstanding?" and sec. 7.5.6.1 (pp. 169–170).
+- **Duffie, Gârleanu and Pedersen** (`al-duffie`), NYU Stern working paper FIN-01-023, version of 24 September 2001 (10-page file): abstract and sec. 2, pp. 5–8. The published JFE version was not read.
+- **ICMA ERCC Repo FAQ 13** (`al-icma`), living page as retrieved.
+- **ISLA Securities Lending Best Practice** (`al-isla`), 29-page compilation dated 31 March 2025, pages as images, read by macOS Vision OCR and page images: pp. 2–3, 7–8, 14–16, 23–26.
+- **Regulation SHO** (added: `cfr-242-203`, `cfr-242-204`): 17 CFR 242.203(b) and 242.204(a) on eCFR, version of 13 October 2026.
+- **Hu and Black** (`cfd-hu-black-2007`), ECGI Law Working Paper 056/2006, whose first pages carry another paper's cover text in the text layer: abstract, p. 1, sec. 2.2.3 and footnote 6, p. 5 (checked by page image). The published version was not read.
+- **Not available or not read:** Hull (`s7-hulloptions`), so put–call parity rests on an own derivation; OCC or exchange documents on listed option exercise style, settlement and multiplier; Regulation T and FINRA margin rules as current; U.S. proxy-processing rules; the 2023 SEC beneficial-ownership rule (`cfd-sec-13d-2023`); other jurisdictions' rules.
+
+### Distinctions kept
+
+- **Ownership.** Holder of record, beneficial owner, custody and permission to lend; economic exposure against the legal vote; record dates; recall to vote; securities-lending vote transfer against derivative-based empty voting and disclosure (stubbed).
+- **Contracts.** Broker–customer arrangements (margin agreement, short proceeds, customer margin) against the institutional loan (master agreement, collateral, rebate, recall, claims).
+- **Lifecycle.** Locate (a belief or arrangement under Rule 203(b)), completed borrow, delivery, fail and close-out (Rule 204(a)), recall, replacement borrow, buy-in.
+- **Availability against operations.** General collateral and specials against locate, delivery, recall and return failures.
+- **Economics.** Cash against non-cash collateral; fee against rebate (fee implicit in the rebate); reinvestment return; broker rebate spread; customer margin.
+- **Synthetic short.** European payoff identity and initial value; matching strike, maturity, underlying, multiplier and settlement; short forward against short stock with upfront premium, financing and dividends; American early exercise and assignment; no guaranteed access to scarce borrow.
+- **Law against practice.** Regulation SHO (U.S., eCFR October 2026) is law; ISLA's handbook is practice that yields to the GMSLA and local codes; Harris and DGP describe 2001–2002 U.S. practice.
+
+### Numerical check
+
+Own script, Black–Scholes prices with $S_0=100$, $K=95$, $r=5\%$, $q=2\%$, $\sigma=25\%$, $T=1$: $C=13.6847$, $P=6.0317$, $P-C=-7.6531=Ke^{-rT}-S_0e^{-qT}=e^{-rT}(K-F)$ with $F=103.0455$; payoff $K-S_T$ at $S_T=60, 95, 100, 140$; terminal wealth of the financed package $F-S_T$, equal to a short sale of $e^{-qT}$ shares with rebate $r_b=r$ ($3.0455$ at $S_T=100$) and not with $r_b=3\%$ ($1.0050$).
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-harris` | pp. 148, 155–158, 169–170 | U.S., 2002 |
+| `al-duffie` | abstract; sec. 2, pp. 5–8 | 2001 working paper |
+| `al-icma` | FAQ 13 | Living page; European practice association |
+| `al-isla` | pp. 2–3, 7–8, 14–16, 23–26 | OCR of images; sections "Under Review"; practice, not law |
+| Regulation SHO | 242.203(b), 242.204(a) | U.S. only; eCFR 13 October 2026 |
+| `cfd-hu-black-2007` | abstract, pp. 1, 5 | Working paper; its Regulation T statement unchecked |
+| Hull, OCC, margin, proxy rules | none | Not available or not checked; stubs |
+
+The four new entries are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in the new artefact `notes/artefacts/synthetic-equity-cfd-trs/derivations.tex` (1 page, no warnings or bad boxes), with only the subsection unnumbered; a script confirmed the body appears exactly once, the six blocks (Street Name, Securities Lending, Borrow Availability Segmentation, Short Interest Rebate, Synthetic Short, Voting and Beneficial Ownership) once each and in order, nothing outside the blocks but the subsection heading, and nothing after the body but `\end{document}`. Earlier artefacts, `house.tex` and the guide pin (`343d145`) are unchanged; earlier log entries and open questions were only appended to.
+
+### Counts
+
+`migration_status.py`: 619 → 613 legacy blocks = 530 shared + 54 single-candidate + 29 assigned. `synthetic-equity-cfd-trs`: exclusive 6 → 0, listed entries 0 → 1, backlog stubs 0 → 2. `money-markets-repo-lending`: entries 0 → 3, stubs 0 → 2. Entries 84 → 88 (definitions 30 → 32, mechanisms 6 → 7, results 16 → 17). Two pathway notes and four reading notes added, `alpha-harris` updated; five sources added in this follow-up and slice (`finra-rule-2232`, `finra-rn-17-08`, `sec-34-105991`, `cfr-242-203`, `cfr-242-204`).
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 207 pages (203 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options (25) and portfolio (1) files, as before; the one `page.i` warning. Rendered and inspected: PDF pp. 16–20 (the new chapter, its continuation and closing pages), 97–99 and 104 (the slice-22 follow-up and the fixed-income continuation page) and 205 (the legacy asset-class section, now only *Crypto Market Microstructure*). Tests: 14 passed.
+
+### For review
+
+- The routing of five blocks to `money-markets-repo-lending` against the map, and the new `portfolio-risk-financing` chapter.
+- The synthetic-short entry's reliance on an own derivation in place of Hull.
+- The four backlog stubs.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/06_securities_lending_and_synthetic_shorts.tex` (6 blocks), whose map names `synthetic-equity-cfd-trs` alone. Likely overlaps: the options entries (its synthetic-short block uses put–call parity), `mech:etf-creation-redemption` and the arbitrage entries; current borrow, locate, buy-in and record-date rules need dated SEC and FINRA (or other jurisdictions') documents. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/07_crypto_market_microstructure.tex` (4 blocks), whose map names `crypto-mm-microstructure` alone; it is the last topic of the asset-class wrapper, so the wrapper `00_overview.tex` would be removed with it once empty. Likely overlaps: `def:fx-market-structure` (fragmentation without a consolidated tape), `def:best-execution`, `mech:futures-margin-settlement` and the options entries; perpetual-futures funding and venue rules need dated exchange documentation. The five blocks of `sysinv/modelrisk.tex`, the three slice-5 assignments, the fifteen blocks assigned to `hft-market-design`, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1992,7 +2082,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/06_securities_lending_and_synthetic_shorts.tex` | synthetic-equity-cfd-trs |
 | `compendium/legacy/execution-trading-costs/02_asset_class_specific_microstructure/07_crypto_market_microstructure.tex` | crypto-mm-microstructure |
 | `compendium/legacy/ml-alternative-data/data/datalabel.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |
 | `compendium/legacy/ml-alternative-data/data/datasampleweights.tex` | statistical-learning-foundations, financial-ml-evaluation, alternative-data-sources |

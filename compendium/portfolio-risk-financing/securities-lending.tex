@@ -1,0 +1,92 @@
+% compendium/portfolio-risk-financing/securities-lending.tex
+% Entries migrated on 2026-10-15 from the legacy securities-lending-and-synthetic-shorts file (slice 23), owned by
+% money-markets-repo-lending (a routing exception from the file's map candidate synthetic-equity-cfd-trs);
+% dispositions and source checks in notes/migration.md, the blocks verbatim in
+% notes/artefacts/synthetic-equity-cfd-trs/derivations.tex.
+
+\section{Securities lending and short selling}
+
+\begin{qfdefinition}[Street name and beneficial ownership: holder of record, beneficial owner, custody, permission to lend, and who votes lent shares]\label{def:street-name-beneficial-ownership}
+\qffield{Statement} Clients hold securities in \emph{street name} when their broker or a depository holds them on their behalf. The issuer then registers the broker or depository as the \emph{holder of record}, and the client becomes a \emph{beneficial owner} holding a claim on the broker rather than legal title \citep[chap.~``Brokers'', secs.~7.2.2.2 and~7.5.6.1, pp.~148 and~169--170]{alpha-harris}. Four things are kept apart:
+\begin{itemize}
+\item \emph{registration}: whose name is on the issuer's register (Harris notes that most securities held by the Depository Trust Company are registered in the name of its nominee, Cede \& Co., p.~169);
+\item \emph{beneficial ownership}: the client's economic claim, recorded in the broker's books;
+\item \emph{custody}: the broker's or depository's safekeeping, with duties to collect and allocate dividends and interest and to process corporate actions (p.~148);
+\item \emph{permission to lend}: in Harris's U.S. account, a margin agreement lets the broker hypothecate the client's securities as loan collateral and lend them to short sellers; clients generally do not know whether their securities were lent and generally receive no lending fee, which is why some large institutions hold securities in their own name (pp.~169--170).
+\end{itemize}
+Traders hold in street name to avoid losing certificates, to use securities as margin collateral and to have them available for settlement (p.~148).
+
+\qffield{Conditions} Voting. Only holders of record have the legal right to vote; a beneficial owner can only instruct its broker. A securities loan transfers legal title, and with it the voting rights attached to equities \citep[Repo FAQ 13]{al-icma}. When a lent share is sold short, its buyer may register it and acquire the vote, so the beneficial owners in a broker's books can together believe they own more shares than the broker holds of record. Harris's example: the broker then votes its record shares in proportion to its clients' instructions, and since many clients do not instruct, it usually has enough shares unless it has lent too many \citep[sidebar ``Can Investors Vote More Than 100 Percent of the Shares Outstanding?'', p.~169]{alpha-harris}. Several parties may hold economic claims; only record shares carry legal votes. Because a loan transfers votes, lenders keep an express right of recall so that they can recover securities to vote or respond to corporate actions \citep[Repo FAQ 13]{al-icma}; the borrower pays the lender amounts equal to dividends (``cash-in-lieu'') \citep[sec.~2, p.~8]{al-duffie}.
+
+\qffield{Practice} Record dates decide who may vote. Hu and Black call borrowing shares shortly before a meeting's record date and returning them soon after ``record date capture'': the borrower holds votes without economic ownership and the lender economic ownership without votes \citep[working-paper version, sec.~2.2.3, p.~5]{cfd-hu-black-2007}. They report that in the United States Federal Reserve Board Regulation~T bars lending shares for voting purposes ``in many circumstances''; that statement was not checked against the regulation. Decoupling through equity swaps and options, and beneficial-ownership disclosure, are a separate matter (Pitfalls).
+
+\qffield{Pitfalls} The legacy caveat said stock lending ``can separate economic exposure from voting rights'' and that brokers ``need entitlement records because more investors may believe they own voting shares than there are record shares available''. Both match Harris's sidebar, which describes how brokers vote, not a legal requirement; proxy-processing rules and current broker practice were not checked. Do not infer duplicate legal votes from several economic claims. Empty voting and hidden ownership through equity swaps, and the 2023 U.S. beneficial-ownership reporting rules, belong to \texttt{synthetic-equity-cfd-trs} and are stubbed there. Harris describes U.S. practice as of 2002.
+
+\qffield{See also} \hyperref[mech:securities-lending-short-sale]{securities lending for short sales}; \hyperref[def:securities-lending-fee-rebate]{lending fees and rebates}; \hyperref[def:broker-agency-conflicts]{broker conflicts}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/synthetic-equity-cfd-trs/}.
+
+\qffield{Index} street name; holder of record; shareholder of record; beneficial owner; Cede \& Co.; custody; hypothecation; margin agreement; permission to lend; lent shares; voting rights; record date; record date capture; proxy voting by brokers; over-voting; cash in lieu of dividends; manufactured dividend; recall for voting
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of \texttt{alpha-harris}, 2002 Oxford printing, pp.~148 and~169--170; \texttt{al-icma}, ICMA ERCC Repo FAQ 13 as retrieved 15 October 2026; \texttt{al-duffie}, working-paper version of 24 September 2001, sec.~2, p.~8; \texttt{cfd-hu-black-2007}, ECGI working-paper version, pp.~1 and~5). Stability: draft. Currency: U.S. practice as described in 2001--2007; ICMA as of October 2026.
+\end{qfdefinition}
+
+\begin{qfmechanism}[Securities lending for short sales: locate, borrow, delivery, recall, replacement borrow and buy-in, with broker and institutional layers kept apart]\label{mech:securities-lending-short-sale}
+\qffield{Statement} A short seller sells securities it does not own and must deliver them at settlement, so someone must lend them. In Duffie, Gârleanu and Pedersen's description of U.S. equity lending in 2001 \citep[sec.~2, pp.~5--8]{al-duffie}:
+\begin{enumerate}
+\item \emph{locate}: the would-be short seller asks its broker for a ``locate''; the broker looks in its own inventory, in customer accounts that permit lending, then to custodian banks or other lenders, such as insurers, index funds and pension funds. Hard-to-locate stocks may get partial fills or delays (pp.~5--6);
+\item \emph{borrow}: given a locate, the loan can be done the same day; through a broker, the broker borrows from the outside lender and lends to the outside borrower (p.~7). A broker may pay a lender to hold located shares until the short sale (``pay-for-hold'', p.~6);
+\item \emph{delivery}: the borrowed shares are delivered to the buyer at settlement;
+\item \emph{recall}: loans are normally open, renewed daily; the lender may recall, and the borrower must return the shares, typically by borrowing them from another lender (\emph{replacement borrow}) or by its broker recalling them from another borrower (pp.~7--8);
+\item \emph{buy-in}: if no lendable shares can be found the borrower must buy the stock; if the borrower fails to deliver within standard settlement time, the lender may buy it with the cash collateral, the borrower remaining liable for extra costs. A buy-in interrupts the short sale (p.~8).
+\end{enumerate}
+A securities loan transfers legal title in exchange for collateral, and lenders keep an express right of recall \citep[Repo FAQ 13]{al-icma}.
+
+\qffield{Conditions} \emph{U.S. rules (Regulation SHO, 17 CFR part 242, as published on eCFR for 13 October 2026).} A broker-dealer may not accept a short-sale order in an equity security, or short for its own account, unless it has borrowed the security or arranged in good faith to borrow it, or has reasonable grounds to believe it can be borrowed for delivery when due, and has documented compliance, with stated exceptions including bona-fide market making \citep[\S\,242.203(b)]{cfr-242-203}. A clearing-agency participant with a fail to deliver on a short sale must close it out by borrowing or buying securities of like kind and quantity by the beginning of regular trading hours on the settlement day after settlement date, with longer periods for some cases \citep[\S\,242.204(a)]{cfr-242-204}. A locate is therefore a belief or arrangement before the sale, not a completed borrow; delivery and close-out are later obligations. Harris's 2002 ``affirmative determination'' (p.~155) predates Regulation SHO. Other jurisdictions' rules were not checked.
+
+\emph{Market practice, not law.} ISLA's best-practice handbook, which yields to the Global Master Securities Lending Agreement and to local codes, recommends that a recall notice give the ISIN, quantity and settlement date, reach the borrower at the latest one hour before the relevant market close minus two business days or, if greater, the standard settlement cycle; that the borrower acknowledge; and that, if the return fails to settle or the borrower does not respond, the lender calculate and claim the costs under GMSLA 9.3, after which the loan is closed and collateral returned \citep[``Loan Recall to buy-in/close out'' and ``Legal'', pp.~2--3 and~24--25, page images; sections last updated 28 January 2022]{al-isla}.
+
+\qffield{Practice} Keep apart, Interpretation using the sources above:
+\begin{itemize}
+\item \emph{broker--customer arrangements}: the customer's margin agreement, its short-sale margin and what the broker pays it, and the broker's permission to lend customer securities;
+\item \emph{the institutional loan}: lender (or agent lender) and borrower under a master agreement, with collateral, fee or rebate, marking to market, recall and claims;
+\item the \emph{availability} of a security to borrow (general collateral or special, \hyperref[def:securities-lending-fee-rebate]{lending fees and rebates}) from \emph{operational} risks: a locate that cannot be turned into a borrow, a delivery failure, a recall, a failed return, a buy-in.
+\end{itemize}
+Factors said to make shares hard to locate include small capitalisation, low float, exclusion from indices, illiquidity, concentrated ownership and events such as IPOs, mergers, spinoffs and acquisitions; the authors had no data on locate delays (p.~6).
+
+\qffield{Pitfalls} The legacy mechanism's ``brokers source inventory from street-name holdings, stock-loan desks, brokers, or institutions, earning lending fees or rebate spreads'' matches Harris (pp.~155 and~158) and Duffie, Gârleanu and Pedersen. The legacy taxonomy listed recall risk and settlement risk beside general collateral and specials; they are operational risks, not availability classes, and are separated here. Its ``failed locate \dots\ can break the short-sale trade'' runs two steps together: under Regulation SHO the locate precedes the order, and it is a delivery failure that triggers close-out. DGP's description of retail short-sale margin and of a price test in 2001 is historical; current margin rules and short-sale price tests were not checked.
+
+\qffield{See also} \hyperref[def:securities-lending-fee-rebate]{lending fees and rebates}; \hyperref[def:street-name-beneficial-ownership]{street name and beneficial ownership}; \hyperref[res:synthetic-short-put-call]{synthetic short through options}; \hyperref[res:arbitrage-risks]{arbitrage risks}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/synthetic-equity-cfd-trs/}.
+
+\qffield{Index} securities lending; short sale; locate; borrow; pre-borrow; pay-for-hold; delivery; fail to deliver; close-out; Regulation SHO; Rule 203; Rule 204; recall; replacement borrow; buy-in; short squeeze; open loan; agent lender; GMSLA; ISLA best practice; hard to locate
+
+\qffield{Status} Verification: partly checked 2026-10-15 (\texttt{al-duffie}, working-paper version of 24 September 2001, sec.~2, pp.~5--8, text layer; \texttt{al-icma} as retrieved 15 October 2026; \texttt{al-isla}, 29-page compilation dated 31 March 2025, pp.~2--3 and~24--25 by OCR of page images; 17 CFR 242.203(b) and 242.204(a) on eCFR, version of 13 October 2026; \texttt{alpha-harris}, pp.~155 and~158). Stability: draft. Currency: Regulation SHO as of October 2026; ISLA practice as last updated 2022; market description as of 2001--2002.
+\end{qfmechanism}
+
+\begin{qfdefinition}[Lending fees and collateral rebates: cash and non-cash collateral, general collateral and specials, reinvestment returns, broker spreads and customer margin]\label{def:securities-lending-fee-rebate}
+\qffield{Statement} A securities borrower pays the lender a fee for the use of the security. Against non-cash collateral (other securities) the fee is paid outright. Against cash collateral, the lender reinvests the cash and \emph{rebates} an agreed part of the reinvestment return to the borrower, usually deducting the fee, so that the fee is implicit in the rebate rate \citep[Repo FAQ 13]{al-icma}. In Duffie, Gârleanu and Pedersen's U.S. description, cash collateral is normally 102 percent of the market value of the shares for domestic securities (105 percent for international); an overnight rebate rate $r$ pays $r/360$ times the cash collateral per day; and the shortfall of the rebate below a market rate such as the federal funds rate is the lender's benefit \citep[sec.~2, p.~7]{al-duffie}. ISLA describes the rebate as a negotiated spread in basis points over or under a benchmark rate \citep[``Cash Rebate'', pp.~7--8]{al-isla}.
+
+With $r_m$ a market overnight rate and $r_b$ the rebate rate on cash collateral, the implicit annualised lending fee is approximately $r_m-r_b$ (Interpretation); the definitions above do not fix the benchmark.
+
+\qffield{Conditions} \emph{Availability classes.} Easy-to-borrow securities carry small fees; in Harris's 2002 U.S. account the fee is ``only about 10 basis points per year'', and hard-to-borrow securities are said to be \emph{on special}, with fees that depend on scarcity \citep[sec.~7.3.1.4, pp.~156--157]{alpha-harris}. Fees are highest for closely held securities that interest short sellers (sec.~7.3.1.7, p.~158). Duffie, Gârleanu and Pedersen model lending fees as the outcome of search for lenders and bargaining: if lendable securities are hard to find, the price is initially elevated and expected to decline, and may exceed even the most optimistic buyer's valuation because owners expect lending fees (abstract; a model result). \emph{General collateral} is used here for the easy-to-borrow class; the term's meaning in repo, collateral not specific to an issue, is related but not identical (Interpretation).
+
+\qffield{Practice} Who receives what, in the sources' U.S. descriptions:
+\begin{itemize}
+\item the \emph{lender} earns the fee, or the reinvestment return minus the rebate, and bears reinvestment risk on cash collateral (Interpretation);
+\item the \emph{broker} intermediating the loan normally offers its outside borrower a lower rebate than it receives (DGP, p.~7), a broker spread;
+\item \emph{retail short sellers} typically receive no interest on their short proceeds, and retail customers whose stocks are lent typically receive no fee (DGP, p.~7; Harris, pp.~157 and~170); large clients demand a rebate (Harris, p.~157);
+\item \emph{customer margin} is a separate obligation of the customer to its broker, not collateral in the institutional loan; DGP give the Regulation~T requirement of 2001 as an additional 50 percent of market value, which was not checked as current (p.~7, footnote~9).
+\end{itemize}
+
+\qffield{Pitfalls} The legacy definition said ``the short seller posts cash collateral'' and ``the lender may rebate part of the collateral interest''. In the sources, cash collateral passes from the borrower (often the broker) to the lender; the retail short seller's obligation is margin to its broker. Its ``the harder the borrow, the lower the rebate and the higher the effective shorting cost'' matches the sources for cash-collateral loans; rebates can in principle be negative when the fee exceeds the reinvestment rate, as the legacy taxonomy said, but no source read gives a negative-rebate example. Harris's rebate benchmarks (federal funds or LIBOR) are of 2002 and are not current.
+
+\qffield{See also} \hyperref[mech:securities-lending-short-sale]{securities lending for short sales}; \hyperref[res:synthetic-short-put-call]{synthetic short through options}; \hyperref[mech:futures-margin-settlement]{futures margin}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/synthetic-equity-cfd-trs/}.
+
+\qffield{Index} lending fee; borrow fee; rebate rate; short interest rebate; cash collateral; non-cash collateral; collateral reinvestment; easy to borrow; hard to borrow; on special; specials; general collateral; broker spread on rebates; retail short proceeds; customer margin; Regulation T; search and bargaining in securities lending
+
+\qffield{Status} Verification: partly checked 2026-10-15 (\texttt{al-icma} as retrieved 15 October 2026; \texttt{al-duffie}, working-paper version of 24 September 2001, abstract and sec.~2, p.~7; \texttt{al-isla}, pp.~7--8 by OCR, section last updated 15 January 2021; \texttt{alpha-harris}, pp.~155--158 and~170). Stability: draft. Currency: market practice as described in 2001--2002 and by ICMA and ISLA in 2021--2026.
+\end{qfdefinition}

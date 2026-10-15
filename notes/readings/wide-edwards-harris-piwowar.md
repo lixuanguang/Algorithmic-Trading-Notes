@@ -19,7 +19,7 @@ Prepared on 2026-10-15 by migration slice 22 from source checks, not from study:
 
 ## Key results
 
-- U.S. OTC corporate bonds, each bond trading more than nine times between January 2003 and January 2005: costs fall significantly with trade size; lower for highly rated, recently issued and near-maturity bonds; lower for bonds with transparent prices, and they drop when TRACE starts disseminating; public traders benefit significantly from transparency (abstract).
+- U.S. OTC corporate bonds, each bond trading more than nine times between January 2003 and January 2005: costs fall significantly with trade size; lower for highly rated, recently issued and near-maturity bonds; lower for bonds with transparent prices, and they drop when TRACE starts disseminating; the results "suggest that public traders benefit significantly from price transparency" (abstract).
 - As the survey reports: from 75 bp at $5,000 to under 10 bp at $1 million or more; issues did not trade on 52% of days (survey p. 5).
 
 ## Limits

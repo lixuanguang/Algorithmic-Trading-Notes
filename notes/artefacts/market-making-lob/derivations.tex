@@ -1203,4 +1203,49 @@ Quote matching extracts value from standing limit orders without supplying durab
 Squeezes and stop gunning profit from forced trades. They usually make prices less informative, raise transaction costs, and reduce liquidity for traders who must close positions.
 \end{caveat}
 
+\section*{Liquidity and market impact (slice 7, 2026-10-15)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 7).
+% Destinations: def:price-impact, mod:propagator, res:no-price-manipulation (compendium/execution-trading-costs/,
+% pathway price-impact-execution) and def:bluffing-manipulation.
+% Sources found: Webster, Handbook of Price Impact Modeling (wide-webster-price-impact), chaps. 1-2;
+% Bouchaud, Bonart, Donier and Gould, Trades, Quotes and Prices (catalogue-0528), chaps. 11-13 and 19;
+% Harris (alpha-harris), chap. 12. The round-trip proposition is an accounting identity, not a
+% no-manipulation result. Treat everything here as unchecked own working; corrections are in the entries.
+
+% From compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/07_liquidity_and_market_impact.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Liquidity and Market Impact}
+
+\begin{taxonomy} \hlt{Market Impact Lens Segmentation}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{theoretical}: strategic splitting and information inference;
+\item \hlt{reduced-form}: price response to signed volume, participation, volatility, and time;
+\item \hlt{practitioner}: cost of urgency, benchmark choice, and venue access.
+\end{enumerate}
+\end{taxonomy}
+
+\begin{definition} \hlt{Temporary and Permanent Impact}\\
+Temporary impact is the price concession needed to obtain immediacy and is expected to decay as liquidity replenishes. Permanent impact is the residual price shift after decay, but it may reflect information in the order rather than mechanical pressure.
+\end{definition}
+
+\begin{mechanism} \hlt{Propagator Intuition}\\
+A trade has an impulse effect on price, and that effect decays through time. The observed price path is the sum of many signed trade impulses with different decay profiles. This separates immediate pressure from later relaxation: a print can move price now without requiring the full move to be permanent.
+\end{mechanism}
+
+\begin{proposition} \hlt{Round-Trip Manipulation Profit Test}\\
+Suppose a trader completes a zero-inventory round trip, buying and selling total quantity $Q>0$. Let $\bar{P}_B$ be the average buy price, $\bar{P}_S$ the average sale price, and $c$ the all-in cost per share.\\
+The round trip is profitable if and only if $\bar{P}_S-\bar{P}_B>c$.
+\begin{proof}
+The trader pays $Q\bar{P}_B$ on buys and receives $Q\bar{P}_S$ on sales. Net profit after costs is $Q(\bar{P}_S-\bar{P}_B-c)$, which is positive exactly under the stated condition.
+\end{proof}
+\end{proposition}
+
+\begin{principle} \hlt{Impact Symmetry Disciplines Bluffing}\\
+Liquidity suppliers are vulnerable when buys and sells, large and small orders, or fast and slow trades receive inconsistent price impact. A manipulation-resistant rule makes impact depend on net pressure and risk, so a zero-net sequence cannot mechanically create a higher average sale price than buy price after costs.
+\end{principle}
+
+\begin{caveat} \hlt{Permanent Impact Identification}\\
+Calling a long-run price move permanent impact is risky unless market moves, sector moves, autocorrelated flow, and the signal that caused the trade have been separated.
+\end{caveat}
+
 \end{document}

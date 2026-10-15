@@ -61,13 +61,15 @@ Changed in slice 6:
 - `def:inside-information`: skilled speculation against inside information.
 - `def:outside-spread`: cross-references only.
 
+Changed in slice 7: `def:bluffing-manipulation` (the legacy impact-symmetry principle merged into its Practice, with a pointer to `res:no-price-manipulation`), and cross-references from `def:price-formation-process` and `res:spread-component-identification` to the new price-impact entries, which live under `price-impact-execution`.
+
 All twenty-two: verification partly checked 2026-10-15, stability draft. Human review is outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`, where the migration has kept every removed block since the pilot.
 
 ## Entry backlog
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. The route is a candidate for most files in `compendium/legacy/execution-market-making/01_...` to `03_...`. In slice 5 the information-and-market-efficiency file was migrated and deleted, and nine of the twelve price-discovery blocks were migrated. The other three are assigned elsewhere: fragmentation and outage to `market-structure-execution-quality`, fast liquidity to `hft-market-design`. In slice 6 the strategic-trading-models file was migrated and deleted. The next bounded slice is recorded in `notes/migration.md`.
+Run `python3 tools/migration_status.py` for the current counts. The route is a candidate for most files in `compendium/legacy/execution-market-making/01_...` to `03_...`. In slice 5 the information-and-market-efficiency file was migrated and deleted, and nine of the twelve price-discovery blocks were migrated. The other three are assigned elsewhere: fragmentation and outage to `market-structure-execution-quality`, fast liquidity to `hft-market-design`. In slice 6 the strategic-trading-models file was migrated and deleted; in slice 7 the liquidity-and-market-impact file, whose impact entries went to `price-impact-execution`. The next bounded slice is recorded in `notes/migration.md`.
 
 ## What changed in my view or practice
 

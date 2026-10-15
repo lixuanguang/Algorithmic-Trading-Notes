@@ -1,5 +1,33 @@
-% migrate-to: research-engineering-validation
-\subsection{Research}
+% notes/artefacts/research-engineering-validation/derivations.tex
+% Legacy blocks kept verbatim when they were migrated (notes/migration-slices.md), for the pathway
+% research-engineering-validation, the file's map candidate (the section overview); the blocks' entries are
+% owned by backtest-inference (a routing exception), and the file is kept whole here. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked
+% own working.
+% Compile inside notes/artefacts/research-engineering-validation/ with  latexmk -pdf derivations.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Research engineering and validation: legacy derivations}
+
+\section*{Research (slice 25, 2026-10-15)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration-slices.md, slice 25): the whole
+% of sysinv/research.tex below its migrate-to line, 4 blocks in order with the items inside them; only the
+% subsection is unnumbered here. No other text, table or figure was in the file.
+% Destinations (all backtest-inference): block 1 (Scientific Method) and block 2 (Sources of Alpha Idea
+% Generation) meth:hypothesis-driven-strategy-research; block 3 (Model Quality Assessment) items i-ix
+% meth:backtest-evaluation-diagnostics, items x-xi pit:parameter-overfitting; block 4 (Other Considerations in
+% Model Testing) pit:backtest-cost-short-assumptions. Qualified or unsupported subclaims (smooth P&L, lower
+% volatility, the R-squared of 0.05, time decay as crowding, "flatter curve", naked short sales) are in the
+% entries' Pitfalls and stubbed in notes/pathways/backtest-inference.md.
+% Source: Narang (s7-narang), Inside the Black Box, third edition, Wiley 2024, chap. "Research", pp. 161-187,
+% local copy with text layer (printed page = PDF page - 20); Exhibits 9.2, 9.3 and 9.5 by page image.
+
+% From compendium/legacy/portfolio-construction-risk/sysinv/research.tex (whole file, deleted 2026-10-15 once empty).
+\subsection*{Research}
 
 \begin{definition} \hlt{Scientific Method}
 \begin{enumerate}[label=\arabic*.]
@@ -40,3 +68,5 @@
 \begin{remark} \hlt{Other Considerations in Model Testing}\\
 Overestimation of trading costs may cause portfolio to hold positions for longer than optimal, and underestimation may result in high portfolio turnover and bleed from trading costs. Assumptions on availability of short positions must also be made; hard-to-borrow lists must be taken into consideration.
 \end{remark}
+
+\end{document}

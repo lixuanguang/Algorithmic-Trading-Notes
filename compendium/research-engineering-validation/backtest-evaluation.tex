@@ -1,0 +1,127 @@
+% compendium/research-engineering-validation/backtest-evaluation.tex
+% Entries migrated on 2026-10-15 from the legacy research file (slice 25), owned by backtest-inference
+% (a routing exception: the file's map candidate is the section overview research-engineering-validation);
+% dispositions and source checks in notes/migration-slices.md, the blocks verbatim in
+% notes/artefacts/research-engineering-validation/derivations.tex.
+
+\section{Strategy research and backtest evaluation}
+
+\begin{qfmethod}[Hypothesis-first strategy research: observation, theory, deduced consequences and attempted falsification, with Narang's four sources of ideas]\label{meth:hypothesis-driven-strategy-research}
+\qffield{Statement} Narang describes quant research as following the scientific method \citep[chap.~``Research'', sec.~9.1, pp.~161--163]{s7-narang}:
+\begin{enumerate}
+\item observe something in the market that might be explainable, a pattern;
+\item form a theory that explains it;
+\item deduce the theory's consequences, for example that a trend should give a better-than-random forecast from past returns alone;
+\item test the theory by looking for evidence against those consequences (Popper's falsification), not for proof. A theory not yet disproved is accepted only for the moment. At best the researcher gains enough confidence that the tests were rigorous to ``warrant risking some capital on the validity of this theory'' (p.~163).
+\end{enumerate}
+Because markets change, through regulation, investor psychology and competition for alpha, quants must keep researching rather than treat a validated theory as permanent (p.~163).
+
+Narang's four common sources of ideas \citep[sec.~9.2, pp.~163--165]{s7-narang}:
+\begin{itemize}
+\item \emph{observing the markets}, the source closest to the scientific method; his example is Donchian's two-week breakout rule for futures;
+\item \emph{academic literature}: many quant firms spend significant time on journals, working papers and conference presentations; literature from astronomy, physics or psychology is also used;
+\item \emph{migration} of researchers or portfolio managers between firms, despite noncompete and nondisclosure agreements. Investors who have seen inside one firm can also carry ideas to another;
+\item \emph{lessons from discretionary traders}, such as ``ride winners and cut losers'' formalised as a stop-loss policy.
+\end{itemize}
+For data-driven (machine-learning) alphas he reports, as paraphrases of practitioners, that feature selection and engineering draw on the same sources (p.~165).
+
+\qffield{Conditions} A practitioner's account of how ideas arise and are screened, in a 2024 book, not a statistical protocol. It does not say how many hypotheses were tried, how significance is adjusted for them, or what evidence suffices to risk capital: those are the subject of this pathway's readings (see the backlog of \texttt{backtest-inference}).
+
+\qffield{Practice} Interpretation: stating the theory and its deduced consequences before testing fixes what would count as evidence against it. That is the step that separates a test from a search. Narang's out-of-sample discussion makes the same point from the other side: refitting after looking at out-of-sample data, or choosing models already known to have survived a period, ``burns'' that data (sec.~9.3.4, pp.~183--185; \hyperref[pit:parameter-overfitting]{parameter overfitting}).
+
+\qffield{Pitfalls} The legacy block reduced the method to three steps (observe and theorise, seek information, test and risk capital). It dropped the deduction of consequences and the aim of falsification, which Narang treats as the core (p.~162). Of discretionary traders' rules, Narang notes that systematic versions of chart patterns have mostly failed. That may be because the theory is invalid or because human practice is less rule-based than it seems, and ``not all successful traders have skill'' (p.~165). An idea's source is not evidence for it. Ideas that move with staff raise contractual and legal questions; Narang describes a dispute over noncompete agreements, which was not checked further.
+
+\qffield{See also} \hyperref[meth:backtest-evaluation-diagnostics]{backtest evaluation diagnostics} (the tests that follow); \hyperref[pit:parameter-overfitting]{parameter overfitting} (what testing guards against); \hyperref[pit:backtest-cost-short-assumptions]{cost and short-availability assumptions}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/} under the pathway key \texttt{research-engineering-validation}.
+
+\qffield{Index} scientific method; falsification; hypothesis-driven research; theory before data; idea generation; sources of alpha; academic literature; researcher migration; noncompete; discretionary traders; stop-loss; trend following; Donchian; feature engineering
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~``Research'', pp.~161--165 and 183--185; the catalogue does not establish which edition it means). Stability: draft. Currency: practitioner account as of 2024.
+\end{qfmethod}
+
+\begin{qfmethod}[Backtest evaluation diagnostics: the profit curve, return, variability and lumpiness, drawdowns, predictive power, win rates, risk-adjusted ratios, fit with other strategies, and time decay]\label{meth:backtest-evaluation-diagnostics}
+\qffield{Statement} Narang lists statistics quants use to judge a model, in sample and out of sample, illustrated on his own daily S\&P~500 strategy. The strategy is long when the index's earnings yield exceeds the 10-year Treasury yield and short otherwise, on daily closes from June 1982 to December 2000; it was built in the mid-1990s and never traded \citep[chap.~``Research'', sec.~9.3.2, p.~168]{s7-narang}. Each diagnostic, with his example's value:
+\begin{itemize}
+\item \emph{cumulative profit graph}: shows whether, how smoothly and with what downside the strategy made money. His example is ``lumpy'', with years of inactivity (late 1989 to early 1995), sharp losses and steep gains, which he reads as ``real problems'' (sec.~9.3.2.1, p.~168);
+\item \emph{average rate of return}: 746 percent cumulative, 12.1 percent a year, before costs and fees (sec.~9.3.2.2, p.~168);
+\item \emph{variability of returns}: ``in general, the less the variability for a given level of returns, the better'' (sec.~9.3.2.3, p.~169); 21.2 percent annualised. His firm also uses \emph{lumpiness}, the share of total return earned in periods significantly above average, as a measure of consistency, while noting that consistency is not always a primary goal;
+\item \emph{worst peak-to-valley drawdowns} and recovery times: lower drawdowns are better and long recoveries are disliked; several drawdowns are measured, not only the worst. His example's worst is $-39.7$ percent, short before the October 1987 crash (sec.~9.3.2.4, pp.~169--170);
+\item \emph{predictive power}: the $R^2$ of the target on the signal, 0.0085 for his example in Exhibit~9.2 (sec.~9.3.2.5, p.~171). Returns are also bucketed by quantiles of the forecast: returns rising monotonically across buckets indicate reliable predictive power, and non-monotonic buckets may mean the strategy works by accident (p.~172);
+\item \emph{percentage of winning trades or periods}, a measure of consistency. His example has a zero signal 65 percent of the time, wins 19 percent and loses 16 percent, so about 54 percent of non-zero days win (sec.~9.3.2.6, pp.~172--173);
+\item \emph{ratios of return to risk}, as Narang defines them (sec.~9.3.2.7, pp.~173--174): the Sharpe ratio, average periodic return above the risk-free rate divided by its variability; the information ratio, the same with ``any arbitrary benchmark return---most often zero'' in place of the risk-free rate (0.57 in the example); the Sterling ratio, average return over the variability of below-average returns (0.87); the Calmar ratio, average return over the worst drawdown (0.31); and the Omega ratio, the sum of positive returns over the sum of negative returns (1.26);
+\item \emph{relationship with other strategies}: a correlation with the existing book, or better, the existing strategy's results with and without the new idea (sec.~9.3.2.8, p.~174);
+\item \emph{time decay}: the strategy's returns when trades start one, two, three or more days after the signal. This shows its sensitivity to timely information and, Narang says, ``some information about how crowded the strategy is'', since crowding would mean faster moves to a new equilibrium (sec.~9.3.2.9, pp.~174--176).
+\end{itemize}
+
+\qffield{Conditions} One author's list and one illustrative strategy, not a validated scorecard. Narang says ``a significant amount of discretion is used'' in judging models (p.~176). None of the diagnostics is adjusted for the number of strategies or parameter sets tried, and none comes with a standard error (see the backlog).
+
+\qffield{Practice} Narang's time-decay example uses analyst downgrades of Microsoft announced before the open on 28 April 2006. The stock opened about 11.1 percent down and underperformed the S\&P~500 by about 11.4 percent that day. A simulation must not assume a fill before the open. Selling at the close on 28 April, 1 May or 2 May made money over two weeks; selling from 3 to 12 May lost (pp.~174--175). Delay can also help: entering his S\&P strategy one day late raised the total return from 746 to 870 percent (12.9 percent a year), which he takes as a bad sign, because the signal is early (pp.~175--176). Interpretation: his example figures are mutually consistent: $12.1/21.2=0.57$, $12.1/39.7=0.30$, $19/35=0.54$, and 746 and 870 percent over about 18.6 years compound to about 12.2 and 13.0 percent a year (checked).
+
+\qffield{Pitfalls} Interpretation, qualifying the heuristics:
+\begin{itemize}
+\item \emph{Smooth profits.} Narang reads lumpiness as a problem in his example and says consistency is not always the goal. A smooth curve can come from stale or managed valuations rather than skill (\hyperref[meth:relative-performance-evaluation]{relative performance evaluation}), and from short-volatility payoffs whose losses the sample did not contain. Narang's own convertible-arbitrage example (1990--1997, then 1998) shows this (p.~170). The legacy rule ``if the profit profile is not smooth \dots\ the model may have issues'' is his reading of one example, not a test.
+\item \emph{Lower volatility.} His rule holds return fixed (``for a given level of returns''); the legacy ``the less variable \dots\ the better'' dropped that condition. His ``67 percent of the time within one standard deviation'' assumes roughly normal annual returns (about 68 percent for a normal distribution).
+\item \emph{Drawdowns.} A worst drawdown from a favourable sample understates risk. Narang's convertible-arbitrage example is ``sample bias'', and his remedy, shuffling the historical returns to get many paths, still draws only from the sample (pp.~170--171). Shuffling single returns also destroys serial dependence, which drives drawdown depth; that point is not in Narang.
+\item \emph{The $R^2$ of 0.05.} ``A superb $R^2$ in our industry is 0.05 (out of sample)'', with two colleagues' remarks (0.15 too good to be legitimate, ``rich off a 0.02''), is a practitioner's judgement with no horizon, asset, sample or design stated (p.~171). An $R^2$ depends on the horizon, on whether the regression is a time series or a cross-section, and on the target's noise. Treat it as an order of magnitude for one context, not a benchmark; his own example is a daily, single-index time series. The legacy ``exceedingly high'' paraphrases ``superb''. Out-of-sample magnitudes are stubbed.
+\item \emph{Bucket study.} On p.~172 the text gives the two most bearish quintiles average next-day returns of $-2.35$ and $-0.19$ percent. In Exhibit~9.3 (checked by page image) those figures label the signal buckets on the horizontal axis, and the bars, the next-day returns, run from about $-0.03$ to $+0.13$ percent. The monotonic ordering holds in the figure; the text's return figures do not match it.
+\item \emph{Ratios.} Narang's information ratio with a zero benchmark is return over volatility, not active return over tracking error, and his Sterling ratio, the variability of below-average returns, is a downside-deviation measure. Other sources define both differently; they were not checked. The legacy ``Calmer'' is the Calmar ratio.
+\item \emph{Time decay and crowding.} A fast decay shows that the strategy depends on timely information. It does not identify crowding: in Narang's Microsoft example the move is a public announcement priced at the open, and a signal that is early improves with delay. His crowding inference is an interpretation without evidence in the chapter (stub).
+\end{itemize}
+
+\qffield{See also} \hyperref[meth:hypothesis-driven-strategy-research]{hypothesis-first research} (what is being tested); \hyperref[pit:parameter-overfitting]{parameter overfitting} (sensitivity to parameters, the next diagnostics); \hyperref[pit:backtest-cost-short-assumptions]{cost and short-availability assumptions} (what the returns assume); \hyperref[meth:relative-performance-evaluation]{relative performance evaluation} (the same statistics applied to managers, and smoothed returns).
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/} under the pathway key \texttt{research-engineering-validation}.
+
+\qffield{Index} backtest evaluation; cumulative profit curve; equity curve; average return; volatility; lumpiness; consistency; drawdown; peak-to-valley drawdown; recovery time; resampling; R-squared; predictive power; quantile study; decile buckets; monotonicity; hit rate; winning days; Sharpe ratio; information ratio; Sterling ratio; Calmar ratio; Omega ratio; strategy diversification; marginal contribution; time decay; signal delay; alpha decay; crowding
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~``Research'', pp.~168--176, with Exhibits~9.2 and~9.3 on pp.~171--172 by page image; the example's ratios and growth rates recomputed). Stability: draft. Currency: practitioner account as of 2024; the S\&P example covers 1982--2000.
+\end{qfmethod}
+
+\begin{qfpitfall}[Parameter overfitting: an isolated optimum, a model that explains its sample too closely, and the balance against underfitting]\label{pit:parameter-overfitting}
+\qffield{Statement} \emph{The error.} A parameter set is chosen because it performed best in a sample, although nearby values perform very differently. A model with many parameters or signals explains the past ``so closely \dots\ that it might be useless for predicting the future'' \citep[chap.~``Research'', secs.~9.3.2.10--9.3.3, pp.~176--179]{s7-narang}.
+
+\emph{How it arises.} Training searches parameters and keeps the best (p.~167). In Narang's terms, overfitting is ``expecting too much from the data you have'', treating an unrepresentative sample as the population. An isolated peak, his point~D in Exhibit~9.5, is likely a ``spurious coincidence in the fitting period'' (pp.~177--178). Re-using out-of-sample data, by refitting after seeing it or by building models already known to work in that period, turns it into in-sample data (``burning data'', pp.~183--184).
+
+\emph{Checks.} Vary each parameter slightly. In Narang's P/E example, a cheap threshold of 12 against 11 and an expensive threshold of 50 against 49 should give similar results, and if they do not, he would distrust and use neither (sec.~9.3.2.10, p.~176). Plot outcome against parameter value (Exhibit~9.5, p.~178). Compare the out-of-sample $R^2$ with the in-sample $R^2$: a ratio of about half or better ``is considered a good thing'' (p.~183).
+
+\emph{Remedies.} Choose a value with a margin of safety on a broad plateau, his point~B, over the plateau's highest point near a cliff (C) or a lonely peak (D) (pp.~177--179). Prefer parsimonious models, since models with many parameters or signals carry more risk of overfitting (p.~179). Separate research from strategy selection, or withhold data from researchers, to limit burning (pp.~184--185).
+
+\qffield{Conditions} In the third edition Narang presents overfitting as one side of a balance. Overfitting is a Type~I error and underfitting a Type~II error; as easy alpha became scarce from about the early 2010s, and as data and methods improved, narrower and more fitted models became reasonable (pp.~180--182). How much fitting is warranted depends on the competition for alpha and on the strength of the prior relative to the data; he believes the industry may overestimate the value of more fitting, especially beyond the shortest horizons (pp.~182--183). Einstein's ``as simple as possible, but not simpler'' is his caution against oversimplifying (p.~179).
+
+\qffield{Practice} Interpretation: smooth performance across nearby parameters is a sign of robustness to the parameter, not evidence that the strategy has an edge. A whole family of rules, each stable in its own parameters, can be the survivor of a search over many families. The adjustment for the number of trials (deflated Sharpe ratio, multiple-testing control) is this pathway's subject and is stubbed. Narang's ``flat'' criterion is local: the legacy ``a good model has a flatter curve with no jumps'' overstates it, since his preferred point B lies on a plateau in a curve that has cliffs.
+
+\qffield{Pitfalls} The legacy block equated parsimony with fewer assumptions and therefore less overfitting. Narang adds the opposite risk, underfitting, and the role of priors, which the legacy omitted. His claim that simpler theories are better because more easily tested is attributed to Popper (p.~179) and was not checked at the original.
+
+\qffield{See also} \hyperref[meth:backtest-evaluation-diagnostics]{backtest evaluation diagnostics} (the statistics being optimised); \hyperref[meth:hypothesis-driven-strategy-research]{hypothesis-first research} (theory before fitting).
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/} under the pathway key \texttt{research-engineering-validation}.
+
+\qffield{Index} overfitting; underfitting; Type I error; Type II error; parameter sensitivity; parameter stability; robustness; plateau; parameter surface; parsimony; Occam's razor; in-sample; out-of-sample; out-of-sample R-squared ratio; burning data; look-ahead bias; data snooping
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~``Research'', pp.~166--167 and 176--185, with Exhibit~9.5 on p.~178 by page image). Stability: draft. Currency: practitioner view as of 2024.
+\end{qfpitfall}
+
+\begin{qfpitfall}[Backtest cost and short-availability assumptions: costs set too high or too low, and shorts the strategy could not have borrowed]\label{pit:backtest-cost-short-assumptions}
+\qffield{Statement} \emph{The error.} A backtest assumes trading costs, or the ability to short, that the strategy would not have had. A backtest has no record of what the strategy would have cost, because it did not trade, so costs, especially market impact, must be assumed \citep[chap.~``Research'', sec.~9.3.5, p.~185]{s7-narang}.
+
+\emph{How it arises, costs.} Narang's example: a model right 55 percent of the time, making \$0.01 a share, and wrong 45 percent, losing \$0.01, earns \$0.10 per 100 shares if trading is free. At an all-in cost of \$0.01 a share it breaks even on its winners and loses \$0.02 on its losers, $-\$0.90$ per 100 shares (pp.~185--186; recomputed). Overestimating costs makes a quant hold positions longer than is likely optimal; underestimating them makes the portfolio turn over too fast and ``bleed'' costs (p.~186).
+
+\emph{How it arises, shorts.} In a U.S. market-neutral or long/short equity backtest, the best short candidates may be on hard-to-borrow lists, stocks the broker generally restricts from shorting because it cannot locate shares to borrow. The live strategy then cannot place those shorts and substitutes inferior ones, so the short book's backtested value may not exist (p.~186).
+
+\emph{Checks and remedies.} Narang advises erring towards overestimating costs if one must err, though ``it is always preferable to get the cost estimation approximately right'' (p.~186). He notes that making a model aware of past hard-to-borrow status is not trivial, because such historical data are hard to come by (p.~186). Interpretation: compare the backtest's cost assumptions with pre-trade cost forecasts and with realised costs measured after trading (\hyperref[meth:transaction-cost-analysis]{transaction cost analysis}). Test how the result changes as assumed costs vary and when hard-to-borrow names are excluded or charged their fees.
+
+\qffield{Conditions} Narang's example ignores how often the position turns over and how costs scale with size; it shows only that a thin edge per share can be smaller than the cost. His short-availability point concerns U.S. equities. He says that shorting without locating shares ``would be considered a naked short sale, which is illegal in the United States'' (p.~186). That is broader than the rule: Regulation SHO bars a broker-dealer from accepting a short-sale order, or selling short for its own account, without a borrow, an arrangement to borrow or reasonable grounds to believe the security can be borrowed, with exceptions such as bona-fide market making, and imposes close-out duties for fails (\hyperref[mech:securities-lending-short-sale]{securities lending for short sales}). Its wording was not adopted.
+
+\qffield{Practice} Interpretation: Narang discusses whether shares can be borrowed, not what borrowing costs. A short backtest also needs the lending fee or rebate, which is high for securities on special (\hyperref[def:securities-lending-fee-rebate]{lending fees and rebates}), and allowance for recall and buy-in risk (\hyperref[mech:securities-lending-short-sale]{securities lending for short sales}). Neither is in the legacy block or in Narang's passage.
+
+\qffield{Pitfalls} The legacy block said only that hard-to-borrow lists ``must be taken into consideration''; it did not note that historical lists are hard to obtain, so the check is often impossible without point-in-time borrow data (stub). ``Overestimation \dots\ hold positions for longer than optimal'' and ``underestimation \dots\ high turnover and bleed'' match Narang. The legacy dropped his advice on which way to err.
+
+\qffield{See also} \hyperref[meth:transaction-cost-analysis]{transaction cost analysis} (cost forecasts and measurement); \hyperref[def:transaction-costs]{transaction costs} (components); \hyperref[mech:securities-lending-short-sale]{securities lending for short sales} (locate and borrow); \hyperref[def:securities-lending-fee-rebate]{lending fees and rebates} (borrow cost); \hyperref[meth:backtest-evaluation-diagnostics]{backtest evaluation diagnostics}.
+
+\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/} under the pathway key \texttt{research-engineering-validation}.
+
+\qffield{Index} backtest assumptions; transaction cost assumptions; cost overestimation; cost underestimation; turnover; cost bleed; market impact; short availability; hard-to-borrow list; locate; naked short sale; borrow cost; short book; market-neutral backtest
+
+\qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~``Research'', pp.~185--186; the example recomputed; the legal point compared with the Regulation SHO text already cited in \texttt{mech:securities-lending-short-sale}, not rechecked). Stability: draft. Currency: practitioner account as of 2024; U.S. rules as cited in the linked entry.
+\end{qfpitfall}

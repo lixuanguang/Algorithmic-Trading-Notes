@@ -12,7 +12,8 @@ notes/readings/<catalogue-key>.md       one note per reading
 notes/pathways/<pathway-key>.md         one note per pathway, with its entry backlog
 notes/artefacts/<pathway-key>/          checkpoint code, derivations and data vintages
 notes/log.md                            coverage log, reading progress and open questions
-notes/migration.md                      migration record: map of legacy files to pathways, checks, dispositions
+notes/migration.md                      migration record: conventions, status, slice index and map of legacy files to pathways
+notes/migration-slices.md               each slice's full record: sources, checks, dispositions, counts and build
 notes/tooling/                          calculator, reading AI papers, Python and VS Code; compiles on its own
 notes/legacy-references.bib             the old BibTeX file; nothing reads it now
 compendium/compendium.tex               master file: one chapter per guide section, in the guide's order

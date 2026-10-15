@@ -10,7 +10,7 @@ Pathway outcome, from the guide: derive inventory-aware quotes, model queue dyna
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. On 14 October 2026 the compendium migration pilot (`notes/migration.md`) wrote the entries below from the legacy notes, as a test of the entry format. They are supplemental models; of the pathway's required readings they touch only `s6-stoikov`, and the checkpoint has not been attempted. On 15 October 2026 a second migration slice added Glosten–Milgrom, from its 1983 working paper (`glosten-milgrom-1983`) rather than the journal version `s6-glosten`, and Harris's account of dealer inventory and quoting. A third slice, the same day, migrated the spread-decomposition and inventory-model files, checked against Harris and Hasbrouck (`s6-hasbrouck`, a required reading of the section overview route, not of this pathway) and O'Hara's account of Ho–Stoll. That is migration and source checking, not study of the readings.
+Not mastered and not consolidated: no dates in `notes/log.md`. On 14 October 2026 the compendium migration pilot (`notes/migration.md`) wrote the entries below from the legacy notes, as a test of the entry format. They are supplemental models; of the pathway's required readings they touch only `s6-stoikov`, and the checkpoint has not been attempted. On 15 October 2026 a second migration slice added Glosten–Milgrom, from its 1983 working paper (`glosten-milgrom-1983`) rather than the journal version `s6-glosten`, and Harris's account of dealer inventory and quoting. A third slice, the same day, migrated the spread-decomposition and inventory-model files, checked against Harris and Hasbrouck (`s6-hasbrouck`, a required reading of the section overview route, not of this pathway) and O'Hara's account of Ho–Stoll. A fourth slice, also on 15 October 2026, migrated the volatility, bubble-and-crash and spread–volatility blocks of the volatility-and-liquidity file, checked against Harris, Hasbrouck and Lehalle and Laruelle (`alpha-laruelle`), and assigned that file's flash-crash and systemic blocks to `hft-market-design`. That is migration and source checking, not study of the readings.
 
 ## Outcome in my own words
 
@@ -43,9 +43,14 @@ Not attempted.
 - `res:spread-determinants`: Harris's primary and secondary spread determinants and the order-driven equilibrium spread.
 - `def:outside-spread`: value traders' outside spread (Harris).
 
+- `def:volatility-components`: fundamental and transitory volatility; the random-walk decomposition (Harris, Hasbrouck).
+- `meth:garman-klass-volatility`: range-based intraday volatility as Lehalle and Laruelle use it (the 1980 paper not consulted).
+- `meth:spread-volatility-regression`: spread on volatility in levels and logs, with the retransformation correction (Lehalle and Laruelle).
+- `mech:bubble-crash-dynamics`: how bubbles build and crashes unwind; the price accelerator; crash attribution (Harris).
+
 Changed in slice 3: `res:adverse-selection-spread-component` (now also the total spread, Figure 14-1, the uninformed-traders lesson, and a correction of the legacy "twice the loss" claim; title changed, label kept), `def:dealer-inventory-risk` (inventory costs and the inventory premium) and `meth:dealer-quote-adjustment` (cross-references only).
 
-The first six: verification partly checked 2026-10-14, stability draft. The next six: partly checked 2026-10-15, draft. The last six: partly checked 2026-10-15 (slice 3), draft. `mod:kyle-single-auction` was changed on 2026-10-15: the `crypto-cartea` errata confirm its p. 33 misprint. Human review outstanding for all eighteen. The five measurement entries (`def:spread-measures` to `def:outside-spread`) serve the section overview route `execution-market-making` as much as this pathway; they are listed here because no pathway note exists for that route yet.
+The first six: verification partly checked 2026-10-14, stability draft. The next six: partly checked 2026-10-15, draft. The next six: partly checked 2026-10-15 (slice 3), draft. The last four: partly checked 2026-10-15 (slice 4), draft; slice 4 also changed `res:spread-determinants` (volatility and liquidity supply, Lehalle and Laruelle's empirical relation) and `res:roll-spread-estimator` (a cross-reference). `mod:kyle-single-auction` was changed on 2026-10-15: the `crypto-cartea` errata confirm its p. 33 misprint. Human review outstanding for all twenty-two. The five measurement entries (`def:spread-measures` to `def:outside-spread`) and the four slice 4 entries serve the section overview route `execution-market-making` more than this pathway; they are listed here only because no pathway note exists for that route yet.
 
 ## Entry backlog
 
@@ -57,7 +62,7 @@ The first six: verification partly checked 2026-10-14, stability draft. The next
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. No block is now assigned to this pathway: *Inventory-Skew Quoting* was migrated in slice 3 to `mod:inventory-based-quotes` from textbook sources, with the Ho–Stoll paper still unread (backlog stub above). The market-making section of the legacy notes has been worked through (`notes/migration.md`, slice 2). Its remaining blocks are assigned to `execution-market-making` or `hft-market-design`, except the cross-asset arbitrage file, which is shared and flagged. The spread-decomposition and inventory files of `03_information_price_formation_and_spreads/` were migrated and deleted in slice 3. Shared candidate material remains in `02_orders_matching_and_limit_order_books/`, the other `03_...` files and `04_order_flow_and_empirical_microstructure/`.
+Run `python3 tools/migration_status.py` for the current counts. No block is now assigned to this pathway: *Inventory-Skew Quoting* was migrated in slice 3 to `mod:inventory-based-quotes` from textbook sources, with the Ho–Stoll paper still unread (backlog stub above). The market-making section of the legacy notes has been worked through (`notes/migration.md`, slice 2). Its remaining blocks are assigned to `execution-market-making` or `hft-market-design`, except the cross-asset arbitrage file, which is shared and flagged. The spread-decomposition and inventory files of `03_information_price_formation_and_spreads/` were migrated and deleted in slice 3. In slice 4, 14 of the 22 blocks of its volatility-and-liquidity file were migrated; the other 8 (liquidity spiral, Flash Crash, systemic risk, trade count) are assigned to `hft-market-design`, whose readings include the Flash Crash papers. Shared candidate material remains in `02_orders_matching_and_limit_order_books/`, the other `03_...` files and `04_order_flow_and_empirical_microstructure/`.
 
 ## What changed in my view or practice
 

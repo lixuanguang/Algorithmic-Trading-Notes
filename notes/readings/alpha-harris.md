@@ -2,12 +2,12 @@
 key: alpha-harris
 pathways: [execution-market-making, market-making-lob]
 version: Larry Harris, Trading and Exchanges, Oxford University Press, 2002 printing; local PDF with a text layer, outside the repository (printed page = PDF page - 13)
-sections: chapter "Dealers", pp. 280, 283-295; chapter "Bid/Ask Spreads", pp. 297-321; chapter "Value Traders", pp. 340-346; chapter "Volatility", pp. 413-417; chapter "Liquidity and Transaction Cost Measurement", pp. 423-427, 434 (checked for migration slices 2 and 3)
+sections: chapter "Dealers", pp. 280, 283-295; chapter "Bid/Ask Spreads", pp. 297-321; chapter "Value Traders", pp. 340-346; chapter "Volatility", pp. 410-417; chapter "Liquidity and Transaction Cost Measurement", pp. 423-427, 434; chapter "Bubbles, Crashes, and Circuit Breakers", pp. 555-563, 570-578 (checked for migration slices 2 to 4)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slices 2 and 3 from source checks, not from study: the headings that need your own reading are left empty. Reading progress before the study method is in `notes/log.md` (completed).
+Prepared on 2026-10-15 by migration slices 2 to 4 from source checks, not from study: the headings that need your own reading are left empty. Reading progress before the study method is in `notes/log.md` (completed).
 
 ## Question and claim
 
@@ -29,6 +29,8 @@ Prepared on 2026-10-15 by migration slices 2 and 3 from source checks, not from 
 - Order-driven equilibrium spread: indifference between limit and market orders; Table 14-2 (p. 311); management cost plus twice the timing option (p. 307).
 - Outside spread of value traders and why it exceeds dealer spreads (chap. 16, pp. 340–345).
 - Roll's estimator, $S=2\sqrt{-\mathrm{SCov}}$ (box, p. 415, page image); typically biased down by violations, use only without quotes (p. 434).
+- Fundamental volatility from unexpected value changes, transitory volatility from impatient uninformed trading, which reverts; total = sum; negative serial correlation a strong indicator; perishable spot prices an exception; regulators can affect only the transitory part (chap. 20, pp. 410–416).
+- Bubbles and crashes: five-phase dynamics, price accelerator (box after Treynor, p. 556), most crashes correct earlier mispricing (box p. 559); the 1987 crash (pp. 559–563); circuit breakers' net effect on transitory volatility indeterminate (secs. 28.3.1–28.3.4, pp. 572–577).
 - Effective spread = twice the signed difference from the time-of-trade midpoint; realised spread from a later midpoint (pp. 424–425); quoted − effective = price improvement, effective − realised = losses to informed traders (pp. 425–426). "Realised spread" also means a dealer's round-trip outcome (p. 280).
 
 ## Limits
@@ -46,7 +48,7 @@ Prepared on 2026-10-15 by migration slices 2 and 3 from source checks, not from 
 
 ## Entries
 
-`res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `res:spread-determinants`, `def:outside-spread`; also cited in `mod:glosten-milgrom`.
+`res:adverse-selection-spread-component`, `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `res:spread-determinants`, `def:outside-spread`, `def:volatility-components`, `mech:bubble-crash-dynamics`; also cited in `mod:glosten-milgrom` and `meth:spread-volatility-regression`.
 
 ## Open questions
 

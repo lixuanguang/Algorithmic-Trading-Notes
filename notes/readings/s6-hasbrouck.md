@@ -2,7 +2,7 @@
 key: s6-hasbrouck
 pathways: [execution-market-making, market-making-lob]
 version: Joel Hasbrouck, Empirical Market Microstructure: The Institutions, Economics, and Econometrics of Securities Trading, Oxford University Press, 2007 (ISBN 978-0-19-530164-9); local PDF with a text layer, outside the repository (printed page = PDF page - 11)
-sections: secs. 3.4, 4.4-4.5, 5.4.2, 5.5, 8.1-8.3, chap. 11, secs. 14.2.2 and 14.3.3 (pp. 29-30, 38-39, 49, 53, 67-69, 106-117, 148, 150-151; checked for migration slice 3)
+sections: secs. 3.4, 4.4-4.5, 5.4.2, 5.5, 8.1-8.7, chap. 11, secs. 14.2.2 and 14.3.3 (pp. 29-30, 38-39, 49, 53, 67-75, 106-117, 148, 150-151; checked for migration slices 3 and 4)
 read:
 status: draft
 ---
@@ -23,6 +23,7 @@ Prepared on 2026-10-15 by migration slice 3 from source checks, not from study: 
 - Biases: autocorrelated signs bias $\hat c$ down, signs correlated with $u_t$ bias it up (Exercises 4.2–4.3, pp. 38–39); positive sample autocovariances are not uncommon (sec. 4.5, p. 39).
 - Sequential trade with a cost $c$: $A=\mathbb{E}[V\mid\text{buy}]+c$, $B=\mathbb{E}[V\mid\text{sell}]-c$; quotes martingales, trade prices not (sec. 5.4.2, p. 49).
 - Generalized Roll model: spread $2(c+\lambda)$, $\gamma_0=c^2+(c+\lambda)^2+\sigma_u^2$, $\gamma_1=-c(c+\lambda)$; prices alone do not identify $\lambda$ and $c$, only $\lambda^2+\sigma_u^2$ (secs. 8.2–8.3, pp. 67–69).
+- Random-walk decomposition $p_t=m_t+s_t$: only $\sigma_w^2=\theta(1)^2\sigma_\varepsilon^2$ is identified, the pricing-error variance has a lower bound (sec. 8.6, eqs. (8.8)–(8.13), pp. 72–74); long-horizon variance per unit time approximates $\sigma_w^2$ (p. 69); variance ratios (sec. 8.7, eq. (8.14), pp. 74–75); lagged adjustment gives positive autocorrelation (Exercise 8.2, p. 74).
 - Stoll's CARA dealer bid $B=\mu_X-(2n+1)\alpha\sigma_X^2/2$, and $P-\alpha\sigma_X^2/2$ at the optimum; two-security version (sec. 11.2, eqs. (11.2)–(11.3), pp. 110–111). Garman ruin and Amihud–Mendelson quotes (secs. 11.1.1–11.1.2, pp. 107–109).
 - Inventory versus information: same short-run response, information permanent; NYSE specialist inventories explain little of quote dynamics (sec. 11.4, p. 115).
 - Effective cost $p_t-m_t$ = realised cost $p_t-m_{t+5}$ + $(m_{t+5}-m_t)$ for a buy, Rule 605 (sec. 14.2.2, eq. (14.2), p. 148); time-stamp and sign-inference problems (sec. 14.3.3, pp. 150–151).
@@ -41,7 +42,7 @@ Prepared on 2026-10-15 by migration slice 3 from source checks, not from study: 
 
 ## Entries
 
-`def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `mod:inventory-based-quotes`; also cited in `res:adverse-selection-spread-component`.
+`def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `mod:inventory-based-quotes`, `def:volatility-components`; also cited in `res:adverse-selection-spread-component`.
 
 ## Open questions
 

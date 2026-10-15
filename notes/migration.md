@@ -1169,9 +1169,90 @@ The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefac
 - The three best-execution and broker blocks given to `market-structure-execution-quality`.
 - The accounting split and its limits, the (A.26) correction, the Kissell side correction.
 
+## Slice 14: smart order routing, 15 October 2026
+
+Migration of the file named as the next bounded slice, run from slice 13's pushed state (`b699ed2`, on `main`, matching `origin/main`; guide submodule at `343d145`; `house.tex` unchanged). The reported counts matched the checker: 679 legacy blocks (117 single-candidate, 533 shared, 29 assigned), 60 entries, listings of 13, 2, 1, 9, 22 and 13, and candidate associations of 3, 293 and 10. The file's map row names one pathway, so its 15 blocks were among the 117 single-candidate (`market-structure-execution-quality` exclusive: 21), not the shared count. Migration and source checking, not study.
+
+### Scope
+
+The whole of `execution-trading-costs/01_.../05_smart_order_routing.tex`: 15 counted blocks (the proposition's proof is inside its block), the uncounted table *Passive routing criteria can rank the same venues differently* with its settings and caption, and the sentences inside the blocks. There was no text outside the blocks and the table. The file, its `\input` line in `01_.../00_overview.tex` and its map row were deleted.
+
+### Ownership
+
+The map's single candidate fits: the pathway's outcome is how fragmentation, dark trading and fees affect execution quality, and the blocks are about routing child orders across fragmented venues, the effect of fees on venue choice, and best-execution regimes and broker conflicts. All 15 are owned by `market-structure-execution-quality`; no exception was needed. Routing stays distinct from scheduling (`mod:almgren-chriss-execution`) and from the algorithm's layers (`def:trading-envelope`, which names routers as tactics), both owned by `execution-trading-costs` and cross-referenced; exposure choices stay in `def:order-exposure-decisions`. Two blocks duplicate this pathway's existing entries and were merged.
+
+| # | Legacy block | Destination | Disposition |
+|---|---|---|---|
+| 1 | *Execution-Side SOR* | `def:smart-order-routing` | Merged |
+| 2 | *Marketable Price Across Venues* | `def:smart-order-routing` | Merged |
+| 3 | *Routing Logic Segmentation* | `def:smart-order-routing` | Merged; a synthesis, flagged |
+| 4 | *Child-Order Routing Loop* | `def:smart-order-routing` | Merged; a synthesis, flagged |
+| 5 | *Best Execution Differs by Regime* | `def:best-execution` | Merged; Rule 611 verified, European regime dated 2018 |
+| 6 | *Displayed Best Price Is Not Enough* | `def:smart-order-routing` | Merged |
+| 7 | *Active Sweep Segmentation* | `def:smart-order-routing` | Merged; "local best price" corrected |
+| 8 | *Fee-Adjusted Price Priority* | `res:fee-adjusted-venue-choice` | Rewritten; sell side and per-share fees added |
+| 9 | *Order Preferencing* | `def:broker-agency-conflicts` | Merged (duplication) |
+| 10 | *Payment-for-Order-Flow Routing Conflict* (proposition and proof) | `def:broker-agency-conflicts` | Merged as Interpretation |
+| 11 | *Latency Makes Liquidity Probabilistic* | `def:smart-order-routing` | Merged |
+| 12 | *Liquidity Seeking Objective* | `def:smart-order-routing` | Merged |
+| 13 | *Passive Posting Segmentation* | `meth:passive-order-split` | Merged |
+| 14 | *Minimum Resting-Time Split* | `meth:passive-order-split` | Rewritten; non-negativity corrected |
+| 15 | *Liquidity-Seeker Build* | `def:smart-order-routing` | Merged |
+| — | Table *Passive routing criteria…* (not counted) | `meth:passive-order-split` | Rebuilt from Lehalle and Laruelle's Table 3.6 with venue names; original kept verbatim |
+
+### Sources, 2026-10-15
+
+- **Lehalle and Laruelle**, 2018 World Scientific printing (text layer; printed page = PDF − 27): sec. 3.4.2, pp. 233–244, with page images of pp. 235 (Table 3.3), 236 (the broker outcomes and the fee inequality), 240 (Table 3.4, eq. (3.3)) and 241 (Table 3.5, eq. (3.4) and footnote 16). Pp. 237–239 and 242 read in the text layer.
+- **17 CFR 242.611**, the order protection rule: text retrieved on 15 October 2026 through the eCFR versioner API, point-in-time 13 October 2026; versions listed since 2016, latest 14 June 2024; citations 70 FR 37620 (2005), 83 FR 58429 (2018), 86 FR 18811 (2021), 89 FR 26616 (2024). The effective and compliance dates of the 2024 amendment were not checked. This verifies Rule 611 only, not Rules 605, 606 or 610, FINRA's best-execution rule, or any European rule.
+- **MiFID II**: the consolidated text could not be retrieved (EUR-Lex returned an empty response), so the European regime is stated only as Lehalle and Laruelle describe it in 2018.
+- Harris's preferencing passages (chap. 7, pp. 161–162) were reused from slice 13. `ex-sec-rule605-2024`, `ex-sec-withdrawal-2025`, `ex-sec-tick-access-2024` and Perold remain unread.
+
+### Regulatory claims: historical against verified
+
+- **Verified as of 15 October 2026:** Rule 611 obliges a *trading center* to keep and enforce written policies reasonably designed to prevent trade-throughs of protected quotations in NMS stocks, and to surveil them, with nine exceptions (system failures, non-regular-way trades, single-priced opening, reopening and closing transactions, crossed protected quotations, intermarket sweep orders, orders not priced off the quote, quotes inferior within the prior second, stopped customer orders). It is quote protection by venues, not a broker's best-execution duty or a reporting obligation, and it does not require venues to reroute; an intermarket sweep order lets the router take protected quotes itself.
+- **Historical (2018, not verified as current):** Lehalle and Laruelle's statements that U.S. clearing and settlement fees must be equal across venues, and that European executing brokers choose their consolidation and must disclose a best-execution policy.
+- **Historical (2002):** Harris's Rules 11Ac1-5 and 11Ac1-6, unchanged from slice 13.
+
+### Routing and fee-accounting checks (own, Interpretation in the entries)
+
+- **Three-broker example.** Sweeping Table 3.3's cheapest levels: B1 (Euronext and Chi-X, split) 101.15 and B3 (all three, split) 100.75, as printed. The best single venue for 500 shares is Chi-X at 102.05 (Euronext 102.10, Turquoise 102.20), against the printed 102.50: a likely misprint. B1's bracketed quantities add to 600 and list depth, not fills.
+- **Fee threshold.** Exactly $\delta<\phi/(1+f-\phi)$ for a buy (acquisition cost) and $\delta<\phi/(1-f+\phi)$ for a sell (proceeds), both about $\phi$; illustrative $P=100$, $f=3$ bp, $\phi=1$ bp give thresholds 0.99980 and 1.00020 bp, and $\delta=0.99$ and 1.01 bp flip the choice on both sides. With per-share fees the condition is $P\delta<c-c'$. Fees are proportional and paid by the taker; rebates are negative fees; both quotes are assumed contemporaneous, executable for the whole size and taken; the spread is in the prices and not added again. A favourable fee-adjusted quote does not establish a fill or best execution.
+- **Passive split.** The book prints eq. (3.4) as $(D-\sum Q_n)/\sum r_n$; its footnote and Table 3.5 need $D+\sum Q_n$ (62.5 s, against −12.5 s). Table 3.5 recomputed (35/42.5/22.5 percent; 175/212.5/112.5 shares). A venue with $f_n<0$ must be dropped and $\tau^\star$ recomputed: setting it to zero leaves fractions not summing to one (checked on an illustrative case). Equal finishing times minimise the completion time of the whole order, not an average. The model treats queues and rates as fixed.
+- **Latency.** Displayed depth is not assumed to remain while a sequence of child orders is routed; the book's mirrored-liquidity example is kept as a scenario, not a measured effect.
+- **Routing conflict.** The legacy proposition is a condition under which client- and broker-optimal routing differ; it is not evidence of conflicted routing.
+- The accounting split of slice 13 and its limit (midpoint drift is not automatically own impact) are unchanged.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-laruelle` | sec. 3.4.2, pp. 233–244 | Text layer; page images of pp. 235, 236, 240, 241; Laruelle et al. (2011, 2013) not consulted |
+| 17 CFR 242.611 | full section, eCFR point-in-time 13 Oct. 2026 | Effective and compliance dates of the 2024 amendment not checked |
+| MiFID II | none | Not retrieved; European regime dated 2018 |
+
+The three new entries and the two extended ones are *partly checked 2026-10-15*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+The whole file below its `% migrate-to:` line is kept verbatim in `notes/artefacts/market-making-lob/derivations.tex`, section *Smart order routing (slice 14)*, with only the subsection unnumbered. A script confirmed that the artefact's earlier content is unchanged, that the file body appears once, that the 15 blocks and the table (with its caption) each appear once and in order, and that no text lies outside them. The other files of `execution-trading-costs/01_...` are byte-identical; only the `\input` line was removed.
+
+### Counts
+
+`migration_status.py`: 679 → 664 legacy blocks (15 migrated). Single-candidate 117 → 102; shared 533 → 533 (unchanged, as these blocks were never shared); assigned 29. `market-structure-execution-quality`: exclusive 21 → 6, shared candidates 293 (unchanged), listed entries 2 → 5. Entries 60 → 63 (definitions 24 → 25, methods 11 → 12, results 12 → 13). Other listings unchanged: `execution-trading-costs` 13, `performance-manager-evaluation` 1, `price-impact-execution` 9, `execution-market-making` 22, `market-making-lob` 13.
+
+### Build
+
+`latexmk -g -pdf compendium.tex`: exit 0; 175 pages (174 before); no LaTeX warnings; 0 overfull and 26 underfull boxes, all in the legacy volatility-options and portfolio files, as before; the one `page.i` warning. A first build had one overfull line (a long path), fixed. Rendered and inspected: PDF pp. 55 (best execution with Rule 611), 56–58 (the new section and the rebuilt table) and 168 (the pruned legacy chapter, which now starts at *High-Frequency Trading Strategies*). The artefact compiles on its own: 28 pages (27 before), no warnings, the same 3 underfull boxes.
+
+### For review
+
+- The three new entries; the merges into `def:best-execution` and `def:broker-agency-conflicts`.
+- The Rule 611 statement and its scope; the European regime left as of 2018.
+- The eq. (3.4) and B2 misprints, the fee thresholds and the split's non-negativity correction.
+
 ## Next bounded slice
 
-`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/05_smart_order_routing.tex` (15 blocks), mapped to `market-structure-execution-quality` alone. Likely overlaps: Lehalle and Laruelle sec. 3.4.2 (pp. 233 onwards, smart routing and the trade-through rule), `def:trading-envelope` (routers as tactics), `def:order-exposure-decisions`, and `def:best-execution` (U.S. and European best-execution regimes); its fee-adjusted price caveat needs a check against fee and rebate rules. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+`compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/06_high_frequency_trading_strategies.tex` (3 blocks), shared between `execution-trading-costs` and `market-structure-execution-quality`. Likely overlaps: `def:order-anticipation` and the market-making entries of `execution-market-making` (its strategy taxonomy), `def:smart-order-routing` (latency and liquidity detection), and the `hft-market-design` pathway, which is not among the file's map candidates and already holds the assigned flash-crash blocks. The three slice-5 assignments, the eight flash-crash and systemic blocks, and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
 
 ## File map
 
@@ -1206,7 +1287,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/05_smart_order_routing.tex` | market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/06_high_frequency_trading_strategies.tex` | execution-trading-costs, market-structure-execution-quality |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/07_reinforcement_learning_and_ml_in_execution.tex` | reinforcement-learning-trading |
 | `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/08_production_considerations.tex` | model-governance-controls |

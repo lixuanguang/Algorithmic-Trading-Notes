@@ -3232,3 +3232,177 @@ Two source reviews ran before writing (group A: taxonomy and data structures aga
 - Correcting López de Prado's own formulas (overlap approximation, time-decay boundary, index ranges) on the basis of derivation and computation, without errata.
 - Qualifying the stationarity of fractionally differenced series with fractional-integration theory, which is interpretation, not a reading.
 - Keeping the three reproduced AFML figures only in the artefact, with attribution.
+
+## Slice 32 follow-up: hedge-ratio sign, ETF-trick timing and capital, label spans, and the Hawkes lead, 16 October 2026
+
+Narrow corrections to slice 32 (`8be60d1`) and to a slice-31 entry, run before slice 33; the earlier records are left as written, and this record supersedes them where they differ. No legacy block, entry label, stub or count changed (532 legacy blocks; 135 entries). Decisive examples are reproduced by `notes/artefacts/volatility-options/negative-hedge-ratio-check.py` and `notes/artefacts/statistical-learning-foundations/slice32-followup-checks.py` (numpy only); the earlier scripts are unchanged.
+
+- **Negative hedge ratios, `def:futures-hedge-basis` and `mod:minimum-variance-hedge-ratio`.** The first said a negative $h$ "would add to the exposure". With the stated convention ($V(h)=\Delta S-h\Delta F$; $h>0$ a short futures position against a long exposure), $h^*=\operatorname{Cov}(\Delta S,\Delta F)/\operatorname{Var}\Delta F$ has the sign of $\rho$, and a negative $h^*$, a long futures position against a long exposure, still reduces variance to $\sigma_S^2(1-\rho^2)$. Example: $\sigma_S=\sigma_F=1$, $\rho=-0.6$: $h^*=-0.6$ leaves 0.64 against 1 unhedged, while $h=+0.6$ gives 2.08; a 200,000-draw simulation gives an OLS slope of $-0.6003$ and the same grid minimiser. Both entries now state the sign convention and the case.
+- **ETF trick timing, `meth:etf-trick`.** The entry called sizing at $o_{i,t+1}$ "execution at the next open, not look-ahead, provided $\omega_t$ uses information up to $t$". López de Prado's holdings divide by the next open, unknown at $t$, so the series is an accounting convention; causal weights are necessary but not sufficient for it to be executable. The entry now names what would reproduce it: an order whose quantity is set by its own fill price, such as a notional order per leg filled in full in a single-price opening auction at $o_{i,t+1}$ with $\varphi_{i,t}$ known, to be checked per venue and instrument; a quantity sized on $p_{i,t}$ leaves a gross exposure of 1.0026 against $K=1$ on a two-leg toy with 1.5 and 1.6 percent opening gaps.
+- **Gross exposure and capital, same entry.** "Gross exposure equals $K_t$" is $|K_t|$ when every $o_{i,t+1}\varphi_{i,t}>0$, and $K_t$ only with $K_t\ge0$; with a negative price a holding's sign no longer follows its weight. At $K_t=0$ the holdings vanish and at $K_t<0$ they reverse ($K=-0.2$ turns the long leg short, gross 0.2); the method has no rule for exhausted capital, so a backtest must stop the series or state its own financing or loss rule. No production system is described.
+- **Label spans, `def:label-concurrency-uniqueness`, `meth:sample-weights-attribution-decay`, `meth:triple-barrier-labelling`.** For returns $r_{t-1,t}$ indexed by ending time, a label from $t_{i,0}$ to $t_{i,1}$ uses $t_{i,0}<t\le t_{i,1}$; the entries now define $1_{t,i}$ that way and start the attribution sum at $t_{i,0}+1$. The earlier remark that "either convention can be used if it is used consistently", and that the toy "has the same off-by-one", was wrong. López de Prado's toy matrix (p. 65, rows $t=1,\dots,6$) is the ending-time rule, and Snippet 4.6's spans $\{0{:}2,2{:}3,4{:}5\}$ are a consistent start-time reindexing; his Snippets 4.1, 4.3 and 4.10 mark $t_{i,0}$ to $t_{i,1}$ inclusive on event timestamps, which adds the return ending at $t_{i,0}$. On the toy's events that inclusive rule gives concurrency $(1,1,2,2,2,1,1)$ and uniqueness $(0.75,0.5,0.833)$ against $(1,1,2,1,1,1)$ and $(0.833,0.75,1)$, and labels 2 and 3, adjacent at $t=4$, share $r_{3,4}$, which label 3 does not use; attribution sums on a toy path change from $(0.0247,0.0145,0.0190)$ to $(0.0149,0.0146,0.0288)$. The bootstrap probabilities and Monte Carlo of `meth:sequential-bootstrap` are unaffected (the toy matrix is unchanged; the Monte Carlo replicates AFML's own code convention, as slice 32 recorded). Read again: AFML pp. 60–61, 64–66 and 69 (text layer).
+- **Hawkes lead, `notes/migration.md`.** The proposed next slice named `wide-bacry-life-cycle` (an impact paper) as the Hawkes lead and said a reading note existed for it in that role. Replaced by `wide-bacry-hawkes`, Bacry, Mastromatteo and Muzy, "Hawkes Processes in Finance", a required reading of `market-making-lob`, with no reading note and no full-text check at the time of the correction (slice 33 then read parts of its preprint; see below).
+- **Notes and index.** `statistical-learning-foundations` and `commodity-hedging` notes, the `alpha-afml` reading note and `log.md` record the changes; the slice-32 index row gives `8be60d1`.
+
+## Slice 33: orders, the limit order book, queues, order flow and point processes (eight files, one batch), 16 October 2026
+
+A single integrated batch of 73 blocks from `compendium/legacy/execution-market-making/`, run after the slice-32 follow-up above, organised for checking in three groups that were not separate stopping points: A, orders and books (`02_orders_matching_and_limit_order_books/02_order_lifecycle.tex`, 5; `03_limit_order_book_mechanics.tex`, 24; `05_queue_dynamics_and_latency.tex`, 7); B, signing, imbalance and stylised facts (`04_order_flow_and_empirical_microstructure/01_...`, 5; `02_...`, 5; `03_...`, 11); C, event time and point processes (`06_...`, 5; `07_...`, 11). Migration and source checking, not study; no checkpoint was attempted.
+
+### Scope
+
+Counted by script against the committed originals (starting commit `8be60d1`): 73 blocks (5, 24, 7, 5, 5, 11, 5, 11), 61 `\item` commands (11, 18, 4, 3, 5, 4, 5, 11), all inside blocks; one proof (inside the limit-order proposition); no figures, tables or assets. Outside the blocks the files hold only their `% migrate-to:` line and `\subsection` heading. Also accounted for: the two folder wrappers (`02_.../00_overview.tex`, `04_.../00_overview.tex`), from which the eight `\input` lines were removed, and the eight map rows. The other files of both folders, the macro chapter, the assigned HFT and slice-5 remnants, Ho–Stoll and the other deferred items are unchanged.
+
+### Provenance
+
+No file named a source. Block by block, the material follows:
+- **Lehalle and Laruelle** (`alpha-laruelle`, 2nd ed. 2018): chap. 3, sec. 3.3 (pp. 216–227) for the CLOB and RFQ contrast, messages and channels, the three event types, conditioning, the Poisson baseline and its estimation, queue-reactive Models I–III, the A/R ratio, mean reversion and reset, and imbalance; chap. 1, sec. 1.3 (pp. 74–90) for tick size, binding probability and leeway, quoted depth, order-to-trade ratio, cumulative depth, queue jumping; app. A, sec. A.6 (pp. 266–273) for the Harris model and its counterfactual, nearly symbol for symbol; secs. A.11–A.13 (pp. 298–319) for decomposition, moving averages, deseasonalisation, the volume model, point processes, Hawkes processes, signature plot and Epps effect, also nearly symbol for symbol.
+- **Harris** (`alpha-harris`): limit-price placement, limit orders as options, their two risks and absent traders (chap. 4, pp. 73–78); price clustering (p. 91); open and closed books (p. 109); the block statistic and block-price rule (sec. 15.5, pp. 332–333); Lee–Ready and its limits (p. 423).
+- **Hasbrouck** (`s6-hasbrouck`): signing and signed volume (sec. 9.7, pp. 89–90); event against wall-clock time (p. 90); duration analysis (sec. 15.2.3, pp. 163–164).
+- **Bouchaud et al.** (`catalogue-0528`): queue imbalance $I$ (chap. 7), Hawkes conditions and inhibition (chap. 9), stylised facts (chaps. 2, 4, 10), priority rules (chap. 3) and the "order-flow imbalance" of signed market orders (p. 222).
+- Not found in any source read: the five-state lifecycle as worded, the "latency race boundary", queue imbalance's "less likely to reverse", the horizon caveat on imbalance, clustering's three reasons, the consolidated-tape caveat, refresh-time sampling, "false persistence", and the claim that marked Hawkes models can inhibit. Each is either rewritten as interpretation, corrected, or not adopted, as below.
+
+### Ownership and dispositions
+
+Routed by guide outcomes; every owner is one of its file's map candidates, so there is **no routing exception**. The section overview `execution-market-making` (outcome: evaluate a quoting policy on an order-book replay by fill probability, adverse selection and inventory risk, with queue-position assumptions; its checkpoint replays acknowledgements, cancellations, fills and missed fills) owns the lifecycle, the book and limit orders as options. `market-making-lob` ("model queue dynamics and fill probabilities"; readings include Huang–Lehalle–Rosenbaum, Lehalle–Mounjid and `wide-bacry-hawkes`) owns queues, queue imbalance, queue-reactive intensities and Hawkes processes. `market-structure-execution-quality` (its outcome names tick size) owns the tick-size blocks. `lob-deep-learning` (checkpoint: "a linear OFI baseline"; readings on OFI) owns order-flow imbalance. `market-simulation` ("validate it against stylised facts") owns stylised facts, realised variance, deseasonalisation, clocks and point processes. `price-impact-execution` (estimate impact from executions; signs are inputs to impact regressions and propagators) owns trade signing. Rejected: `lob-deep-learning` for trade signing (its readings start from book data, not signed trades); `market-simulation` for Hawkes processes (the reading that defines them is `market-making-lob`'s); `execution-market-making` for tick size (its outcome does not name market design).
+
+| File | # | Legacy block | Owner | Destination | Disposition |
+|---|---|---|---|---|---|
+| 02/02 | 1 | *Order State Segmentation* | `execution-market-making` | `mech:order-lifecycle` (new) | Rewritten against FIX 4.4 OrdStatus; the five states kept as a simplification |
+| | 2 | *Limit-Order Lifecycle* | | same | Rewritten; "loses priority when price worsens" **corrected** to CME FIFO's rule (any price change, size increase, account change) and made venue-specific |
+| | 3 | *Message-Channel Segmentation* | | same | Rewritten (LL p. 218: private channel faster) |
+| | 4 | *Absent Trader Representation* | | same | Rewritten (Harris pp. 77–78; stop-order example) |
+| | 5 | *Lifecycle Tags Change Priority* | | same | Partly adopted (time in force, iceberg priority, IOC); minimum quantity and cancel-on-disconnect stubbed |
+| 02/03 | 1 | *Best Quotes and Spread* | `execution-market-making` | `def:limit-order-book` (new) | Merged; spread measures cross-referenced to `def:spread-measures`, not repeated |
+| | 2 | *Liquidity Supply and Demand* | | same | Merged (TQP p. 43) |
+| | 3 | *Limit Price Placement* | | same | Rewritten as Harris's Table 4-1; "far: low immediacy cost" **corrected** |
+| | 4 | *Standing Limit Orders Are Trading Options* | | `res:limit-order-options` (new) | Rewritten (Harris pp. 75–76; TQP p. 46); payoff and proof idea kept as derived, conditions added |
+| | 5 | *Limit-Order Regret* | | same | Rewritten as Harris's two risks (p. 77) |
+| | 6 | *Equilibrium Spread as Order-Choice Indifference* | | `res:spread-determinants` (existing) | Already stated there (Harris pp. 304–310); cross-referenced, not repeated |
+| | 7 | *Limit Orders Give Timing Options* | | `res:limit-order-options` | Merged; monitoring speed marked as beyond the pages read |
+| | 8 | *Tick Size* | `market-structure-execution-quality` | `def:tick-size` (new) | Rewritten (LL p. 74; TQP pp. 48–49) |
+| | 9 | *Price Clustering* | | same | Rewritten as Harris p. 91; the legacy reasons not adopted |
+| | 10 | *Binding Tick Constraint* | | same | Rewritten (LL p. 77); "further reductions mostly change queue behaviour" not adopted |
+| | 11 | *Harris Tick Discretisation Model* | | `mod:harris-discretised-spread` (new) | Rewritten with $\Phi$ stated |
+| | 12 | *Continuous Spread Expectation* | | same | Rewritten; likelihood and fit added |
+| | 13 | *Tick-Size Counterfactual* | | same | Units **corrected**: an observed $k$-tick spread is $k\delta$ new ticks; the model re-rounds the latent spread, $E=\sum_k(k/\delta)f_\delta(k)$ in old ticks (page images pp. 272–273) |
+| | 14 | *Harris Model Inputs* | | same | Merged |
+| | 15 | *Tick Size and Queue Discipline* | | `def:tick-size` | Rewritten (TQP p. 49; LL pp. 88–89) |
+| | 16 | *Quoted Depth Under Small Ticks* | | `ev:tick-size-market-quality` (new) | Rewritten with sample (FTSE 100, April 2012) |
+| | 17 | *Order-to-Trade Ratio* | | same | Rewritten (+50 percent, LL p. 84) |
+| | 18 | *Cumulative Depth* | | same | Rewritten; conditioning on takers and fragmentation added |
+| | 19 | *CLOB as Price-Formation Device* | `execution-market-making` | `def:limit-order-book` | Merged |
+| | 20 | *Order-Book Visibility* | | same | Open/closed book from Harris p. 109; top-of-book and depth-book levels pointed to `data:market-data-levels` |
+| | 21 | *LOB Event Types* | | same | Merged (LL p. 219; TQP p. 51) |
+| | 22 | *Tick-Size Quality Proxies* | `market-structure-execution-quality` | `def:tick-size` | Merged (LL pp. 77, 84) |
+| | 23 | *Value of a Quote* | | `ev:tick-size-market-quality` | Value of quote adopted (LL p. 84); consolidated-tape clause not adopted |
+| | 24 | *RFQ Can Mimic a Book* | `execution-market-making` | `def:limit-order-book` | Rewritten (LL p. 216); conditional depth as interpretation |
+| 02/05 | 1 | *Condition on the Queue* | `market-making-lob` | `mod:queue-reactive-intensities` (new) | Rewritten (LL pp. 219–220) |
+| | 2 | *Queue Imbalance* | | `def:queue-imbalance` (new) | Merged with 04/02 #3; the reversal claim not adopted |
+| | 3 | *Arrival-Departure Ratio* | | `mod:queue-reactive-intensities` | Rewritten (LL p. 224) with the promotion argument and a drift check |
+| | 4 | *Adverse Queue Selection* | `execution-market-making` | `res:limit-order-options` | Merged (Harris p. 77; TQP p. 46) |
+| | 5 | *Queue-Reactive Estimation* | `market-making-lob` | `mod:queue-reactive-intensities` | Rewritten (LL pp. 221–223); the starting-time dependence (n. 12) added and computed |
+| | 6 | *Mechanical Mean Reversion* | | same | Rewritten (LL pp. 225–226) |
+| | 7 | *Latency Race Boundary* | | same (Pitfalls) | Kept as interpretation, with LL p. 89 and TQP p. 59 |
+| 04/01 | 1 | *Trade-Sign Classification Segmentation* | `price-impact-execution` | `meth:trade-sign-classification` (new) | Rewritten (Hasbrouck p. 89; Harris pp. 332, 423) |
+| | 2 | *Lee-Ready Classification* | | same | Rewritten; the paper itself not read |
+| | 3 | *Signed Volume* | | same | Rewritten; transforms (p. 89); "false persistence" not adopted |
+| | 4 | *Passive-Aggressive Ambiguity* | | same | Rewritten from Harris's sidebar (p. 423) |
+| | 5 | *Block Initiator Asymmetry* | | same | Kept as Harris's report ("approximately 80 percent", no sample); primary evidence stubbed |
+| 04/02 | 1 | *Order Flow Imbalance* | `lob-deep-learning` | `def:order-flow-imbalance` (new) | **Corrected**: defined as Cont–Kukanov–Stoikov's event-based $e_n$, not signed trades |
+| | 2 | *Signed-Trade Imbalance* | | same | Renamed trade imbalance (CKS $\mathrm{TI}_k$); naming collision with TQP p. 222 recorded |
+| | 3 | *Queue Imbalance* | `market-making-lob` | `def:queue-imbalance` | Merged duplicate; $QI=2I-1$ |
+| | 4 | *Imbalance Feature Segmentation* | `lob-deep-learning` | `def:order-flow-imbalance` | Kept as a menu, not results; multi-level OFI stubbed |
+| | 5 | *Imbalance Is Horizon-Dependent* | | same (Pitfalls) | Not found; not adopted as a claim; CKS fits are contemporaneous; stubbed |
+| 04/03 | 1 | *High-Frequency Stylized Facts* | `market-simulation` | `ev:high-frequency-stylised-facts` (new) | Rewritten with each fact's sample (TQP) |
+| | 2 | *Signature Plot* | | `meth:realised-variance-signature-plot` (new) | Rewritten (LL pp. 316–317; TQP pp. 25–28) |
+| | 3 | *Microstructure Noise in Volatility* | | same | Rewritten; divergence conditioned on the noise model |
+| | 4 | *Epps Effect* | | same | Rewritten with Epps's words as LL quote them and their sample |
+| | 5 | *Realised Covariance* | | same | Rewritten; refresh-time not adopted (stub); previous-tick shown to cause Epps |
+| | 6 | *Time-Series Decomposition* | | `meth:intraday-deseasonalisation` (new) | Rewritten (LL p. 299) |
+| | 7 | *Centred Moving Average* | | same | Rewritten; $A_t$ typo and window rule **corrected**; look-ahead added |
+| | 8 | *Additive Deseasonalisation* | | same | Rewritten (LL pp. 300–301) |
+| | 9 | *Multiplicative Deseasonalisation* | | same | Rewritten (LL pp. 301–302) |
+| | 10 | *Volume Seasonality Factorisation* | | same | Rewritten with LL's $E[H]=1$, $\sum F=1$ and example |
+| | 11 | *Seasonality Before Signal* | | same (Pitfalls) | Kept; estimation from earlier data added |
+| 04/06 | 1 | *Trade Duration* | `market-simulation` | `def:market-clocks-durations` (new) | Rewritten (LL p. 306; Hasbrouck pp. 163–164) |
+| | 2 | *Market Time Segmentation* | | same | Rewritten (Hasbrouck p. 90; TQP p. 173); volume time pointed to `meth:activity-sampled-bars` |
+| | 3 | *Duration Notation* | | same | Merged |
+| | 4 | *Event Time for Microstructure Laws* | | same | Rewritten as Hasbrouck's rule |
+| | 5 | *Activity Time Can Hide Stress* | | same (Practice) | Kept as interpretation |
+| 04/07 | 1 | *Point-Process View* | `market-simulation` | `def:order-event-point-processes` (new) | Rewritten (LL p. 305) |
+| | 2 | *Counting Process and Duration* | | same | Rewritten (LL p. 306) |
+| | 3 | *Conditional Intensity* | | same | Rewritten; predictability stated |
+| | 4 | *Order-Book Event Segmentation* | | same (Notation) | Merged (LL p. 221) |
+| | 5 | *Homogeneous Poisson Baseline* | `market-making-lob` | `mod:queue-reactive-intensities` | Rewritten as LL's finding for one stock |
+| | 6 | *Integrated Intensity* | `market-simulation` | `def:order-event-point-processes` | Rewritten; LL's printed condition $\int\lambda=1$ **corrected** to divergence (page image p. 308); time rescaling computed |
+| | 7 | *Linear Hawkes Process* | `market-making-lob` | `mod:hawkes-order-flow` (new) | Rewritten with conditions (non-negative causal kernel, $g<1$ or spectral radius $<1$) |
+| | 8 | *Exponential Hawkes Kernel* | | same | Kept ($\alpha/\beta$, $\lambda_0/(1-\alpha/\beta)$, LL pp. 309–311); parameterisations compared |
+| | 9 | *Conditioning Improves Queue Dynamics* | | `mod:queue-reactive-intensities` | Merged (LL pp. 223–224) |
+| | 10 | *Conditioning Segmentation* | | same | Merged; its event-time item to `def:market-clocks-durations` |
+| | 11 | *Marked Flow Segmentation* | | `mod:hawkes-order-flow` | **Corrected**: inhibition needs a non-linear link (TQP p. 181; BMM p. 8); agent classes from LL pp. 315–316 |
+
+**Existing entries checked.** `def:spread-measures` (best quotes, spread, midpoint), `res:spread-determinants` (order-driven equilibrium, timing option, large-tick bounce and depth), `meth:information-driven-bars` (tick rule) and `meth:activity-sampled-bars` (volume and dollar clocks), `data:market-data-levels` (book levels), `conv:cme-globex-trading` (matching and priority), `def:order-exposure-decisions` (hidden orders), `mod:propagator` (sign persistence), `def:volatility-components`, `meth:garman-klass-volatility`, `res:roll-spread-estimator` and `def:intraday-overnight-returns` (volatility), `mod:kyle-single-auction` and `meth:order-flow-impact-regression` (net flow), `pit:label-weight-leakage`: cross-referenced from the new entries; no duplication found and none changed.
+
+### Sources, 2026-10-16
+
+- **Lehalle and Laruelle** (`alpha-laruelle`), local PDF with a text layer, printed page = PDF page − 27: chap. 1, pp. 74–90; chap. 3, pp. 216–227; app. A, pp. 266–273, 298–319; page images of pp. 272–273 (counterfactual), 306 and 308 (intensity, time change).
+- **Bouchaud, Bonart, Donier and Gould** (`catalogue-0528`), local PDF, printed = PDF − 19: chaps. 2 (pp. 23–31), 3 (pp. 43–56), 4 (pp. 58–61), 7 (pp. 118–120), 9 (pp. 163–185), 10 (pp. 187–189), 11 (pp. 222–223).
+- **Harris** (`alpha-harris`), 2002 printing through macOS PDFKit, printed = PDF − 13: pp. 73–78, 91, 109, 332–333, 423.
+- **Hasbrouck** (`s6-hasbrouck`), 2007 book (not the 2004 draft), printed = PDF − 11: pp. 89–90, 163–164, 180.
+- **Cont, Kukanov and Stoikov** (`catalogue-0503`): arXiv 1011.6402v3, pp. 1, 4, 8, 16, downloaded 2026-10-16; journal version not checked. New reading note.
+- **Bacry, Mastromatteo and Muzy** (`wide-bacry-hawkes`): arXiv 1502.04592v2, secs. 1–2.2.4 (pp. 1–8), 5.1 (p. 27), 6.1 (pp. 29–30), downloaded 2026-10-16; journal version not checked. New reading note.
+- **FIX 4.4 OrdStatus** through the OnixS dictionary (`onixs-fix44-ordstatus`, new source key), read 2026-10-16; the FIX Trading Community's specification not consulted.
+- **CME Globex FIFO rule**: as cited from `ex-cme-matching` in slice 19, not reread.
+- **Not read**: Huang–Lehalle–Rosenbaum, Cont–Stoikov–Talreja, Lehalle–Mounjid, Moallemi–Yuan, Kolm–Turiel–Westray, Cont–Cucuringu–Zhang, Vyetrenko et al., Lee–Ready, Epps, Harris (1994), Brémaud–Massoulié, Daley–Vere-Jones, and the tick-size studies Lehalle and Laruelle summarise; Johnson (`alpha-johnson`) has no text layer in the local copy and was not used.
+
+### Numerical checks
+
+`notes/artefacts/market-simulation/order-flow-checks.py` (numpy, scipy; fixed seed; about 2 s), independent of the entries' formulas:
+- **Harris counterfactual**: gamma latent spread (shape 4), $\delta=5$: latent means 0.6, 1.2, 3 and 8 old ticks give expected spreads 1.010→0.601, 1.302→1.200, 3.005→3.000, 8.000→8.000 old ticks; the legacy $k/\delta$ rescaling would predict −6.4 for the last.
+- **Imbalance**: $QI=2I-1$ to $10^{-16}$; scale invariance. **OFI against trade imbalance**: a five-state toy gives $\mathrm{OFI}=+400$, $\mathrm{TI}=-100$.
+- **Lee–Ready**: four toy trades, including a sell at the bid after an uptick.
+- **Realised variance with i.i.d. noise**: tracks $\int\sigma^2+2n\sigma_\eta^2$ from 13 to 23,400 returns. **Epps from asynchrony**: true correlation 0.6, previous-tick sampling, 40 paths: 0.120 at step 5, 0.394 at 30, 0.547 at 120, 0.629 at 600.
+- **Deseasonalisation**: multiplicative coefficients recovered within 0.0052; a later shock moves the centred average at the six earlier times.
+- **Hawkes**: exponential kernel, branching ratio 0.6: rate 2.471 against 2.500, clustering ratio 6.38 against the long-window 6.25; compensator-rescaled durations mean 1.005, KS $p=0.35$ (raw durations $p\approx10^{-268}$). **Inhibition**: linear intensity $-0.30$ after one event; positive-part link: rate 0.369, clustering ratio 0.62. **A/R ratio**: drifts $+0.091$ and $-0.111$ per event at 1.2 and 0.8. **Waiting-time estimator**: 0.594 from uniform starts against 0.405 from events on a Hawkes sample.
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `alpha-laruelle` | as listed | Practitioner text, 2018; queue-reactive results reported second-hand; one large-tick stock |
+| `catalogue-0528` | as listed | NASDAQ 2015 samples; book's own summaries of the literature |
+| `alpha-harris` | as listed | 2002; the 80 percent block statistic has no stated sample |
+| `s6-hasbrouck` | as listed | Methods; Lee–Ready not read |
+| `catalogue-0503` | arXiv v3 | Preprint; April 2010 U.S. data; contemporaneous fits |
+| `wide-bacry-hawkes` | arXiv v2, parts | Review; empirical results second-hand |
+| `onixs-fix44-ordstatus` | one page | Vendor rendering of a 2003-era standard |
+
+The sixteen new entries are *partly checked*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+New artefacts, one standalone file per legacy file (whole file below its `% migrate-to:` line, only the subsection heading starred), each with a header naming its destinations: `notes/artefacts/execution-market-making/order-lifecycle.tex`, `limit-order-book-mechanics.tex`, `02-overview-original.tex` (exact copy of the folder wrapper before this slice); `notes/artefacts/market-making-lob/queue-dynamics-latency.tex`, `statistical-models-order-flow.tex`; `notes/artefacts/price-impact-execution/trade-classification.tex`; `notes/artefacts/lob-deep-learning/order-flow-imbalance.tex`; `notes/artefacts/market-simulation/stylized-facts.tex`, `trade-duration-event-time.tex`, `04-overview-original.tex`, and `order-flow-checks.py`. The earlier `market-making-lob/derivations.tex` is unchanged. A script compared everything with `git show 8be60d1:…`: each body appears exactly once; all 73 blocks appear verbatim and in order; `\item` counts (matched as `\item` not followed by a letter) 11, 18, 4, 3, 5, 4, 5, 11 equal in originals and artefacts; `\begin`/`\end` sequences identical (16, 58, 16, 12, 12, 24, 12, 28 commands, the proof included); both wrapper copies byte-identical. All eight artefacts compile alone with no warnings, overfull or underfull boxes (1, 3, 1, 2, 1, 1, 2, 1 pages); the limit-order-book and stylised-facts pages were inspected by image.
+
+### Counts
+
+`migration_status.py --check`, 0 problems: 532 → 459 legacy blocks = 414 shared + 16 single-candidate + 29 assigned; `execution-market-making` legacy 412 → 339. Entries 135 → 151 (definitions 44 → 50, evidence 5 → 7, mechanisms 9 → 10, methods 31 → 34, models 18 → 21, results 18 → 19). Pathway notes: new `lob-deep-learning` (1 entry, 2 stubs) and `market-simulation` (5, 3); `execution-market-making` 23 → 26 entries, 0 → 1 stub; `market-making-lob` 13 → 16 listed, 5 → 8 stubs; `market-structure-execution-quality` 5 → 8, 2 → 4; `price-impact-execution` 9 → 10, 0 → 2. New reading notes `catalogue-0503` and `wide-bacry-hawkes`; `alpha-laruelle`, `catalogue-0528`, `alpha-harris` and `s6-hasbrouck` extended. One new `front/sources.tex` key, `onixs-fix44-ordstatus`.
+
+### Other files
+
+- New topic files `execution-market-making/order-books.tex` and `order-flow-statistics.tex` (input first in the chapter), `execution-trading-costs/tick-size.tex` and `trade-signing.tex`; both chapter openers updated.
+- `notes/log.md` coverage rows (two new) and three open questions; `notes/migration.md` status, index, next batch and map (eight rows removed); `compendium/README.md` order paragraph.
+
+### Build
+
+`latexmk -g -pdf compendium.tex` exits 0: 234 pages (227 before); no LaTeX warnings; 0 overfull and 0 underfull boxes; the inherited `page.i` duplicate-destination warning. `python3 -B -m unittest discover -s tools -p 'test_*.py'`: 14 tests pass. Pages inspected as images: the queue-imbalance, queue-reactive and OFI pages, the Harris model page, the label-concurrency page, and, before the final rebuild, all pages carrying the new entries and the corrected ETF-trick and hedge entries.
+
+### Independent review
+
+An integrated review of the whole batch, by the same session, after writing: every quotation in the new and changed entries was searched by script in the normalised text layers of the seven sources (all slice-33 source quotations found; unmatched strings are legacy wording quoted as such, page titles, or slice-32 quotes containing mathematics); locators were rechecked against the printed-page offsets; the mathematics was rederived (the $e_n$ cases, $QI=2I-1$, $E[\hat V_R]$ with noise, the Hawkes mean, branching and stability conditions, the counterfactual's units, the ETF gross-exposure identity). Fixed: a figure locator (Epps, pp. 318–319), the Harris chapter for open books (chap. 5), the CKS robustness passage (p. 8, not a claim of stability), the tick-regime pitfall (Lehalle and Laruelle's quotation groups do group by liquidity), an index clash in the ETF identity, and simulation figures re-taken after the Epps check was replicated over 40 paths (which shifted the random stream). This was not an independent second reader: **human review is outstanding.**
+
+### For review
+
+- Merging the two queue-imbalance definitions under `market-making-lob` and the OFI definition under `lob-deep-learning`, with Bouchaud et al.'s naming collision recorded rather than resolved.
+- Correcting a printed condition in Lehalle and Laruelle (time change) and the legacy counterfactual's units by derivation and computation, without errata.
+- Treating the FIX 4.4 states (through a vendor page) as the reference for order states.
+- Keeping Harris's 80 percent block statistic as his unsourced report.

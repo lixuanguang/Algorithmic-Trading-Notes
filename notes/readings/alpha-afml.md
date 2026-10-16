@@ -41,6 +41,8 @@ Prepared on 2026-10-15 by migration slice 30 from source checks, not from study:
 
 `meth:strategy-production-lifecycle`. Slice 32: `meth:activity-sampled-bars`, `meth:information-driven-bars`, `meth:etf-trick`, `meth:event-based-sampling`, `meth:triple-barrier-labelling`, `meth:meta-labelling`, `def:label-concurrency-uniqueness`, `meth:sequential-bootstrap`, `meth:sample-weights-attribution-decay`, `mod:fractional-differencing-weights`, `meth:fixed-width-fractional-differencing` (`statistical-learning-foundations`); `pit:label-weight-leakage` (`financial-ml-evaluation`); `def:financial-data-types` (`alternative-data-sources`); `mod:pca-risk-distribution-weights` (`portfolio-construction`).
 
+Slice-32 follow-up, 2026-10-16: rechecked pp. 60--61, 64--66 and 69 (text layer) for the indicator convention: the printed toy matrix (p. 65) marks the returns ending at $t=1,\dots,6$ that each label compounds, Snippet 4.6 codes it in start-time indexing, and Snippets 4.1, 4.3 and 4.10 mark the event's own bar; see `def:label-concurrency-uniqueness`. The ETF-trick timing (p. 34) restated in `meth:etf-trick`.
+
 ## Open questions
 
 - The stages carry no quantitative promotion or decommission criteria; which governance readings supply them?

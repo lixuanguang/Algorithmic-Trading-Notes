@@ -1,8 +1,8 @@
 ---
 key: catalogue-0528
-pathways: [price-impact-execution, execution-market-making]
+pathways: [price-impact-execution, execution-market-making, market-making-lob, market-simulation, lob-deep-learning, market-structure-execution-quality]
 version: Jean-Philippe Bouchaud, Julius Bonart, Jonathan Donier and Martin Gould, Trades, Quotes and Prices: Financial Markets Under the Microscope, Cambridge University Press, first published 2018 (ISBN 9781107156050; DOI 10.1017/9781316659335). The catalogue record does not establish the edition; this copy was used. Local PDF with a text layer, outside the repository (printed page = PDF page - 19)
-sections: chap. 10, secs. 10.4-10.5 (p. 198); chap. 11, secs. 11.1-11.2 (pp. 208-212); chap. 12, secs. 12.2-12.5 (pp. 233-236, 240-241); chap. 13, secs. 13.1-13.2.3 (pp. 249-257); chap. 19, sec. 19.5 (pp. 361-362); page images of pp. 211, 234, 252 and 362 (checked for migration slices 7 and 8)
+sections: chap. 10, secs. 10.4-10.5 (p. 198); chap. 11, secs. 11.1-11.2 (pp. 208-212); chap. 12, secs. 12.2-12.5 (pp. 233-236, 240-241); chap. 13, secs. 13.1-13.2.3 (pp. 249-257); chap. 19, sec. 19.5 (pp. 361-362); page images of pp. 211, 234, 252 and 362 (checked for migration slices 7 and 8); chap. 2, secs. 2.1-2.2.2, pp. 23-31; chap. 3, pp. 43-56; chap. 4, secs. 4.1-4.2.1, pp. 58-61; chap. 7, secs. 7.1-7.2, pp. 118-120; chap. 9, pp. 163-185; chap. 10, sec. 10.1, pp. 187-189; chap. 11, sec. 11.4, pp. 222-223 (slice 33)
 read:
 status: draft
 ---
@@ -44,6 +44,8 @@ Prepared on 2026-10-15 by migration slice 7 from source checks, not from study: 
 ## Entries
 
 `def:price-impact`, `mod:propagator`, `res:no-price-manipulation`, `ev:square-root-impact`.
+
+Slice 33: `def:limit-order-book`, `mech:order-lifecycle`, `res:limit-order-options`, `def:queue-imbalance`, `def:order-flow-imbalance` (naming), `def:tick-size`, `ev:high-frequency-stylised-facts`, `meth:realised-variance-signature-plot`, `meth:intraday-deseasonalisation`, `def:market-clocks-durations`, `def:order-event-point-processes`, `mod:hawkes-order-flow`, `mod:queue-reactive-intensities`.
 
 ## Open questions
 

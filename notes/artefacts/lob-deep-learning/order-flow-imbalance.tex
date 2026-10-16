@@ -1,5 +1,20 @@
-% migrate-to: market-making-lob, lob-deep-learning, price-impact-execution
-\subsection{Order Flow Imbalance}
+% notes/artefacts/lob-deep-learning/order-flow-imbalance.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 33, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/02_order_flow_imbalance.tex
+% below its migrate-to line (migrate-to: market-making-lob, lob-deep-learning, price-impact-execution), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Order Flow Imbalance, Signed-Trade Imbalance, Imbalance Feature Segmentation, Imbalance Is Horizon-Dependent -> def:order-flow-imbalance (Cont, Kukanov and Stoikov, arXiv v3; Bouchaud et al. p. 222); Queue Imbalance -> def:queue-imbalance (market-making-lob).
+% Compile inside notes/artefacts/lob-deep-learning/ with  latexmk -pdf order-flow-imbalance.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: order flow imbalance}
+
+% From compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/02_order_flow_imbalance.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Order Flow Imbalance}
 
 \begin{definition} \hlt{Order Flow Imbalance}\\
 Order flow imbalance measures the net pressure from buyer-initiated and seller-initiated activity over a chosen horizon. It is useful because short-horizon prices often respond more to signed pressure than to unsigned volume.
@@ -28,3 +43,5 @@ At the best quotes, queue imbalance is $QI_t=\frac{B_t-A_t}{B_t+A_t}$, where $B_
 \begin{caveat} \hlt{Imbalance Is Horizon-Dependent}\\
 Queue imbalance can predict the next quote move but fail over longer horizons once hidden liquidity, replenishment, and informed trading enter. Always bind the feature to a forecast horizon.
 \end{caveat}
+
+\end{document}

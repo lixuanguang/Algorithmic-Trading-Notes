@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-making-lob, market-structure-execution-quality
-\subsection{Limit Order Book Mechanics}
+% notes/artefacts/execution-market-making/limit-order-book-mechanics.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 33, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/03_limit_order_book_mechanics.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-making-lob, market-structure-execution-quality), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Best Quotes and Spread, Liquidity Supply and Demand, Limit Price Placement, CLOB, Order-Book Visibility, LOB Event Types, RFQ -> def:limit-order-book (spread definitions in def:spread-measures); Standing Limit Orders Are Trading Options, Limit-Order Regret, Equilibrium Spread, Timing Options -> res:limit-order-options (equilibrium spread in res:spread-determinants); Tick Size, Price Clustering, Binding Tick, Tick Size and Queue Discipline, Tick-Size Quality Proxies -> def:tick-size; Quoted Depth, Order-to-Trade Ratio, Cumulative Depth, Value of a Quote -> ev:tick-size-market-quality; Harris model, Continuous Spread Expectation, Tick-Size Counterfactual, Harris Model Inputs -> mod:harris-discretised-spread (market-structure-execution-quality).
+% Compile inside notes/artefacts/execution-market-making/ with  latexmk -pdf limit-order-book-mechanics.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: limit order book mechanics}
+
+% From compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/03_limit_order_book_mechanics.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Limit Order Book Mechanics}
 
 \begin{definition} \hlt{Best Quotes and Spread}\\
 The \hlt{best bid} is the highest displayed buy price and the \hlt{best ask} is the lowest displayed sell price. The \hlt{bid-ask spread} is $a_t-b_t$, and the quoted midpoint is $m_t=(a_t+b_t)/2$.
@@ -136,3 +151,5 @@ As ticks and displayed sizes shrink, quotes can become shorter-lived and less in
 In RFQ markets, dealers answer bilateral requests rather than post firm multilateral quotes.\\
 Aggregating several responses can look like a book, but the liquidity is conditional on the request, relationship, size, and information embedded in the enquiry.
 \end{caveat}
+
+\end{document}

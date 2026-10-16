@@ -1,5 +1,20 @@
-% migrate-to: market-simulation, lob-deep-learning
-\subsection{Stylized Facts of High-Frequency Data}
+% notes/artefacts/market-simulation/stylized-facts.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 33, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/03_stylized_facts_of_high_frequency_data.tex
+% below its migrate-to line (migrate-to: market-simulation, lob-deep-learning), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: High-Frequency Stylized Facts -> ev:high-frequency-stylised-facts; Signature Plot, Microstructure Noise, Epps Effect, Realised Covariance -> meth:realised-variance-signature-plot; Time-Series Decomposition, Centred Moving Average, Additive and Multiplicative Deseasonalisation, Volume Seasonality Factorisation, Seasonality Before Signal -> meth:intraday-deseasonalisation; from Lehalle and Laruelle app. A.11 and A.13, Bouchaud et al. chaps. 2, 4, 9, 10.
+% Compile inside notes/artefacts/market-simulation/ with  latexmk -pdf stylized-facts.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: stylized facts of high-frequency data}
+
+% From compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/03_stylized_facts_of_high_frequency_data.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Stylized Facts of High-Frequency Data}
 
 \begin{taxonomy} \hlt{High-Frequency Stylized Facts}
 \begin{enumerate}[label=\roman*.]
@@ -57,3 +72,5 @@ $f(n)$ is the usual intraday profile, year $y$, month $m$, day $d$, time slot $n
 \begin{practitionernote} \hlt{Seasonality Before Signal}\\
 Remove predictable clock-time effects before comparing venues, estimating impact, or training intraday features. Otherwise a noon lull, close auction, expiry day, or macro window can look like alpha.
 \end{practitionernote}
+
+\end{document}

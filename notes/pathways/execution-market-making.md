@@ -73,11 +73,21 @@ Partly checked 2026-10-15, draft; its artefact is `notes/artefacts/model-governa
 
 Changed in migration slice 19, 2026-10-15: `res:spread-determinants` took the legacy large-tick futures principle, adding Lehalle and Laruelle's large-tick bounce term (eq. (2.1)) and the book-size compensation at a one-tick spread (p. 148); the futures-specific claim is a backlog item of `futures-execution`.
 
+Written in migration slice 33, 2026-10-16, from the legacy order-lifecycle and limit-order-book-mechanics files:
+
+- `mech:order-lifecycle`: order states (FIX 4.4), insert, modify, cancel and execute, private and public channels, and venue-specific loss of priority (CME's FIFO rule), from Lehalle and Laruelle, Bouchaud et al. and Harris.
+- `def:limit-order-book`: the book, best quotes, Harris's limit-price placement, open and closed books, the three event types, price changes and RFQ screens.
+- `res:limit-order-options`: Harris's standing limit orders as trading options, the two risks and adverse selection of fills (the queue file's adverse-selection caveat merged).
+
+All three: partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/execution-market-making/order-lifecycle.tex`, `limit-order-book-mechanics.tex` and `02-overview-original.tex`. The tick-size blocks of the same file went to `market-structure-execution-quality`; the legacy equilibrium-spread principle was already in `res:spread-determinants` and the best-quote definitions in `def:spread-measures`, both cross-referenced rather than repeated.
+
 ## Entry backlog
+
+- conv:order-instruction-venue-rules: minimum-quantity, cancel-on-disconnect and other order instructions, and the priority effect of each kind of modification, for named venues with rule dates; slice 33 checked only CME Globex's FIFO rule (`ex-cme-matching`, as cited in slice 19)
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. The route is a candidate for most files in `compendium/legacy/execution-market-making/01_...` to `03_...`. In slice 5 the information-and-market-efficiency file was migrated and deleted, and nine of the twelve price-discovery blocks were migrated. The other three are assigned elsewhere: fragmentation and outage to `market-structure-execution-quality`, fast liquidity to `hft-market-design`. In slice 6 the strategic-trading-models file was migrated and deleted; in slice 7 the liquidity-and-market-impact file, whose impact entries went to `price-impact-execution`. The next bounded slice is recorded in `notes/migration.md`.
+Run `python3 tools/migration_status.py` for the current counts. The route is a candidate for most files in `compendium/legacy/execution-market-making/01_...` to `03_...`. In slice 5 the information-and-market-efficiency file was migrated and deleted, and nine of the twelve price-discovery blocks were migrated. The other three are assigned elsewhere: fragmentation and outage to `market-structure-execution-quality`, fast liquidity to `hft-market-design`. In slice 6 the strategic-trading-models file was migrated and deleted; in slice 7 the liquidity-and-market-impact file, whose impact entries went to `price-impact-execution`. In slice 33 the order-lifecycle, limit-order-book-mechanics and queue-dynamics files of `02_...` were migrated and deleted. The next bounded slice is recorded in `notes/migration.md`.
 
 ## What changed in my view or practice
 

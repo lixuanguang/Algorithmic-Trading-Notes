@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-making-lob
-\subsection{Queue Dynamics and Latency}
+% notes/artefacts/market-making-lob/queue-dynamics-latency.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 33, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/05_queue_dynamics_and_latency.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-making-lob), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Condition on the Queue, Arrival-Departure Ratio, Queue-Reactive Estimation, Mechanical Mean Reversion, Latency Race Boundary -> mod:queue-reactive-intensities; Queue Imbalance -> def:queue-imbalance; Adverse Queue Selection -> res:limit-order-options; from Lehalle and Laruelle pp. 219-227, Bouchaud et al. pp. 118-120, Harris p. 77.
+% Compile inside notes/artefacts/market-making-lob/ with  latexmk -pdf queue-dynamics-latency.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: queue dynamics and latency}
+
+% From compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/05_queue_dynamics_and_latency.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Queue Dynamics and Latency}
 
 \begin{principle} \hlt{Condition on the Queue}\\
 Queue dynamics are less random once the state of the book is specified. A cancellation at the best bid is not comparable when that queue has one lot, ten lots, or a much larger opposite queue.
@@ -34,3 +49,5 @@ Queue-reactive simulations can generate too much price mean reversion: after a b
 \begin{principle} \hlt{Latency Race Boundary}\\
 Latency matters most when a trader can change queue position before others react. It matters less when the tick is wide, the queue is deep, or the order is deliberately not competing for first priority.
 \end{principle}
+
+\end{document}

@@ -46,7 +46,16 @@ Changed in slice 9: `def:price-impact` (execution-time measurement; timing), `ev
 
 All nine: verification partly checked 2026-10-15, stability draft; human review outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`, where the migration has kept every removed block.
 
+Written in migration slice 33, 2026-10-16, from the legacy trade-classification file (a map candidate):
+
+- `meth:trade-sign-classification`: quote rule, tick rule and Lee--Ready as Harris and Hasbrouck describe them, the block-price rule, signed volume, and the limits of an inferred sign; Harris's 80 percent seller-initiated blocks kept as his unsourced report.
+
+Partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/artefacts/price-impact-execution/trade-classification.tex`.
+
 ## Entry backlog
+
+- ev:block-initiator-asymmetry: the primary evidence behind Harris's "approximately 80 percent" of large U.S. block trades being seller-initiated (p. 332), with sample, period and classification method
+- res:trade-sign-accuracy: Lee and Ready (1991) and later accuracy studies of trade-sign rules, including quote delays and midpoint trades; cited by Hasbrouck (p. 180), not read
 
 ## Legacy candidate material
 

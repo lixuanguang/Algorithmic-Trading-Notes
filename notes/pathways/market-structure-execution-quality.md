@@ -36,7 +36,19 @@ Written in migration slice 14, 2026-10-15:
 
 All five: verification partly checked 2026-10-15, stability draft; human review outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`. The spread measures they use are owned by `execution-market-making` and cross-referenced, not listed here.
 
+Written in migration slice 33, 2026-10-16, from the tick-size blocks of the legacy limit-order-book-mechanics file (a map candidate; the pathway's outcome names tick size):
+
+- `def:tick-size`: the grid, regimes, relative tick, binding probability and leeway, queue jumping and price clustering.
+- `ev:tick-size-market-quality`: Lehalle and Laruelle's FTSE 100 evidence (April 2012) and their account of the decimalisation studies.
+- `mod:harris-discretised-spread`: Harris's latent-spread model as Lehalle and Laruelle present it, with the tick-reduction counterfactual in corrected units (computed in `notes/artefacts/market-simulation/order-flow-checks.py`).
+
+All three: partly checked 2026-10-16, draft; human review outstanding; no current tick rule is stated. Artefact: `notes/artefacts/execution-market-making/limit-order-book-mechanics.tex`.
+
 ## Entry backlog
+
+- rule:tick-size-regimes-current: the U.S. minimum pricing increments and access-fee caps adopted in 2024 (`ex-sec-tick-access-2024`) and the EU MiFID II tick-size regime, with provisions and dates in force; slice 33 states none
+
+- ev:tick-size-primary-studies: the decimalisation and tick-change studies Lehalle and Laruelle summarise (Bacidore et al. 2003, Goldstein and Kavajecz 2000, Ahn et al. 1996, Harris 1994 and 1996), with samples and magnitudes from the papers
 
 - rule:spoofing-securities-markets: whether placing orders with intent to cancel before execution, or layering to mislead, is prohibited in U.S. securities markets (SEC and FINRA rules or enforcement) and under EU MAR, with dates; slice 30 checked only the Commodity Exchange Act clause for futures (7 U.S.C. 6c(a)(5)(C), cited in `def:order-exposure-decisions`, owned by `execution-trading-costs`).
 

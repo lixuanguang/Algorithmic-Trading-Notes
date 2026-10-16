@@ -1,5 +1,20 @@
-% migrate-to: market-simulation, market-making-lob
-\subsection{Statistical Models for Order Flow}
+% notes/artefacts/market-making-lob/statistical-models-order-flow.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 33, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/07_statistical_models_for_order_flow.tex
+% below its migrate-to line (migrate-to: market-simulation, market-making-lob), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Point-Process View, Counting Process and Duration, Conditional Intensity, Order-Book Event Segmentation, Integrated Intensity -> def:order-event-point-processes (market-simulation); Homogeneous Poisson Baseline, Conditioning Improves Queue Dynamics, Conditioning Segmentation -> mod:queue-reactive-intensities; Linear Hawkes Process, Exponential Hawkes Kernel, Marked Flow Segmentation -> mod:hawkes-order-flow; from Lehalle and Laruelle app. A.12 and chap. 3, Bouchaud et al. chap. 9, Bacry, Mastromatteo and Muzy (arXiv v2).
+% Compile inside notes/artefacts/market-making-lob/ with  latexmk -pdf statistical-models-order-flow.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: statistical models for order flow}
+
+% From compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/07_statistical_models_for_order_flow.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Statistical Models for Order Flow}
 
 \begin{definition} \hlt{Point-Process View}\\
 Order-book events can be modelled as point processes: random arrival times for insertions, cancellations, and transactions. The intensity $\lambda$ is the expected event rate over a short interval.
@@ -62,3 +77,5 @@ Queue-reactive models condition event intensities on current and neighbouring qu
 \end{enumerate}
 A marked Hawkes model lets one class of event excite or inhibit another, useful when liquidity arrives in clusters.
 \end{taxonomy}
+
+\end{document}

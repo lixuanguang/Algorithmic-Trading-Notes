@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-making-lob, market-structure-execution-quality
-\subsection{Order Lifecycle}
+% notes/artefacts/execution-market-making/order-lifecycle.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 33, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/02_order_lifecycle.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-making-lob, market-structure-execution-quality), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Order State Segmentation, Limit-Order Lifecycle, Message-Channel Segmentation, Absent Trader Representation, Lifecycle Tags Change Priority -> mech:order-lifecycle; from Lehalle and Laruelle pp. 217-218, Bouchaud et al. pp. 54-55, Harris pp. 77-78, FIX 4.4 OrdStatus (OnixS).
+% Compile inside notes/artefacts/execution-market-making/ with  latexmk -pdf order-lifecycle.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: order lifecycle}
+
+% From compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/02_order_lifecycle.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Order Lifecycle}
 
 \begin{process} \hlt{Order State Segmentation}
 \begin{enumerate}[label=\roman*.]
@@ -39,3 +54,5 @@ Limit, stop, validity, and quantity instructions encode future trading contingen
 \begin{caveat} \hlt{Lifecycle Tags Change Priority}\\
 Time-in-force, display quantity, hidden flags, minimum quantity, and cancel-on-disconnect rules can change whether an order rests, executes, loses priority, or vanishes under stress.
 \end{caveat}
+
+\end{document}

@@ -34,13 +34,15 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:carry-crash
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:carry-crash-skewness` narrowed (BNP Table 2: skewness -0.54 to -0.98 for k = 1-3 portfolios, weekly 1992-2006 and quarterly 1986-2006, against -0.41 and -0.88 for CRSP). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `ev:carry-crash-skewness` resolved (Menkhoff, Sarno, Schmeling and Schrimpf, accepted version February 2011: 48 currencies, November 1983 to August 2009, net of bid-ask; high-minus-low 7.23 percent a year, skewness -1.03, Sharpe 0.74; developed 5.72, -0.92, 0.56; volatility, not skewness, prices the cross-section; the journal version not compared). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:fx-valuation-signals` (`fx-determination-forecasting`); `def:us-dollar-dxy-sdr` (`currency-markets`); `meth:macro-position-sizing-risk` (`multi-asset-systematic-macro`).
 
 ## Entry backlog
 
-- ev:carry-crash-skewness: Menkhoff, Sarno, Schmeling and Schrimpf's samples and results (not read); Brunnermeier, Nagel and Pedersen's working paper body was read on 2026-10-16
+None open after the source follow-up of 2026-10-16.
 
 ## Legacy candidate material
 

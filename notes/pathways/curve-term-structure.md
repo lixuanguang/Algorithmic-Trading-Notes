@@ -34,6 +34,10 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:curve-inver
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` narrowed (Estrella and Trubin's own series rebuilt from H.15 with a reproducible script; month and episode rules tested; only the outcome-dependent revisit remains). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` deferred (depends on future NBER dating; no peak after February 2020 dated as of 16 October 2026; the episode rule's hit rates are now labelled retrospective in the entry). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
+Audit note of 2026-10-16 (`meth:curve-trades-carry-rolldown`): the episode rule is scored from an episode's last inverted month and ex-post NBER dates, so its hit rates describe the record and are not a prospective forecasting result; counts unchanged.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:duration-convexity` (`rates-credit-mortgages`); `mod:forward-rates-fra` (`rates-credit-mortgages`); `conv:government-bond-futures` (`futures-execution`).

@@ -36,6 +36,8 @@ Changed in migration slice 36, 2026-10-16 (a routing exception from the microstr
 
 Second slice-37 follow-up, 2026-10-16, working source gaps of slice 36 (source verification, not study): `data:trade-correction-records` narrowed (Daily TAQ v4.0: 01 records carry corrected data at the original time, 12 records the correction time and the original data; decision-time handling stated in the entry). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:trade-correction-records` blocked (Holden and Jacobsen: journal behind a subscription, SSRN HTTP 403, SMU record without a file, Holden's former Indiana page 401/404; Daily TAQ v4.0 field 8 rechecked: it does not state which time the 10 and 11 records carry). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-sources`, including López de Prado's release lags, backfilling and reinstatement of fundamental data); `meth:etf-trick` (`statistical-learning-foundations`); `pit:label-weight-leakage` (`financial-ml-evaluation`); `pit:backtest-cost-short-assumptions` (`backtest-inference`).

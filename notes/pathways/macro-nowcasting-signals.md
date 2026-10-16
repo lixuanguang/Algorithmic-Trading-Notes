@@ -35,6 +35,8 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:bls-ces-s
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:demographic-projections-current` resolved (UN World Population Prospects 2024, medium variant, five-year age groups: 15-64 and 35-69 peak years for the thirteen Table 12.2 countries, with several moved by decades; the Census Bureau's International Database API now requires a key). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Audit correction of 2026-10-16 (`def:macroeconomic-indicators` Practice): the second follow-up attributed the differences between Gliner's Census-based peak years and UN WPP 2024 to revised migration and fertility assumptions without evidence; the entry now records the publisher and vintage mismatch, separates historical estimates (before about 2012) from projections, and attributes no cause, since no controlled comparison was made. This also answers the question carried in `notes/log.md` (2026-10-16): the data read cannot separate the two.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `data:us-macro-release-calendar` (`macro-announcements-policy`); `meth:macro-event-queries` (`macro-announcements-policy`); `def:tips-breakevens` (`rates-inflation`).

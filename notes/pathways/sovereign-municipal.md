@@ -34,6 +34,8 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:isda-greece
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:sovereign-restructurings-after-2006` narrowed (Greece: EUR 197 billion exchanged, 53.5 percent nominal haircut, NPV loss 70-75 percent, EUR 106 billion written off; Argentina: US$82 billion restructured, US$65.5 billion of it foreign-law, recovery about 52 percent). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `ev:sovereign-restructurings-after-2006` blocked for now (no named dataset with a dated Argentine default count obtained: Reinhart's data page lists no static download link and the BoC-BoE database counts amounts in default from 1960, not episodes since independence). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mech:cds-contract-credit-events` (`corporate-credit-cds`); `meth:curve-trades-carry-rolldown` (`curve-term-structure`).

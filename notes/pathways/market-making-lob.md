@@ -54,14 +54,17 @@ All three: partly checked 2026-10-16, draft; human review outstanding. Artefacts
 
 Changed in the slice-33 follow-up, 2026-10-16: `mod:queue-reactive-intensities` (the claim that uniform-start and event-start waiting times agree "only for a Poisson process" replaced by the renewal result $E[X^2]/(2E[X])$, equal to $E[X]$ when the coefficient of variation is 1, with a non-exponential counterexample).
 
+## Source verification after slice 37
+
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `res:queue-reactive-models-hlr` resolved (Huang, Lehalle and Rosenbaum, arXiv v2: Theorem 2.1's two sufficient conditions, Model I MLE and invariant law with the shifted arrival/departure ratio, Models IIa-IIb, Cheuvreux data January 2010 to March 2012, Model III's 5 bp against 14 bp mechanical volatility and calibration 0.7 and 0.85; the journal version not compared); `ev:imbalance-placement-latency` narrowed (Lehalle and Mounjid read: sample, imbalance definition, the round-trip caveat and the latency factor). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Written in slice 36 for `hft-market-design` and cross-referenced here: `res:queue-position-value`, from this pathway's reading `wide-moallemi-yuan-queue` (June 2017 revision; abstract, secs. 1--2, 4.3, 5.2 and 6 read, the value recursion of sec. 3 not checked). The cross-asset file, which listed this pathway, was routed to `execution-market-making`'s arbitrage entries (slice 36).
 
 ## Entry backlog
 
-- res:queue-reactive-models-hlr: Huang, Lehalle and Rosenbaum's Models I--III, their estimation, sample and ergodicity result, checked in the paper (`exp-huang-lehalle-rosenbaum-queue-reactive`, a required reading, not read); `mod:queue-reactive-intensities` rests on Lehalle and Laruelle's summary
-- ev:imbalance-placement-latency: the size of queue-imbalance predictability and its use in placement with latency, with sample and period, from Lehalle and Mounjid (`wide-lehalle-mounjid`, a required reading, not read)
+- ev:imbalance-placement-latency: a numerical, out-of-sample size of queue-imbalance predictability usable for placement, and a calibrated price of latency; Lehalle and Mounjid (arXiv v4) was read on 2026-10-16 and gives only a figure for one stock (AstraZeneca, NASDAQ-OMX, January-September 2013) and model-unit latency costs
 - res:nonlinear-hawkes-stability: Brémaud and Massoulié's (1996) stability conditions for non-linear Hawkes processes, cited by Bouchaud et al. (p. 181) and Bacry et al. (p. 8), not read
 - res:avellaneda-stoikov-infinite-horizon: an infinite-horizon discounted objective gives stationary reservation prices, defined for $\omega>\tfrac12\gamma^2\sigma^2q^2$, so $\omega$ acts as a bound on the inventory allowed; $\omega=\tfrac12\gamma^2\sigma^2(q_{\max}+1)^2$ keeps the prices bounded \citep[sec.~2.3, p.~219]{s6-stoikov}
 - res:avellaneda-stoikov-exact-quotes: the exact optimal distances solve implicit equations in the reservation prices and the intensity and its derivative \citep[sec.~3.1, eqs.~(18)--(19), p.~221]{s6-stoikov}

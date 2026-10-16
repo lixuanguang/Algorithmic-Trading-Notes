@@ -34,13 +34,15 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cbot-ice-
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cbot-ice-ag-contract-terms` unchanged (CME access barrier). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:cbot-ice-ag-contract-terms` resolved for CBOT corn, soybeans and wheat from the chapter text reprinted in CBOT Submission 24-443 (filed with the CFTC 16 December 2024, effective 2 January 2025): 5,000 bushels, quarter-cent ticks, grades and differentials, delivery months, last trading day and price-limit resets; amendments after January 2025 not checked; ICE coffee and cotton read earlier. The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:futures-hedge-basis` (`commodity-hedging`).
 
 ## Entry backlog
 
-- conv:cbot-ice-ag-contract-terms: CBOT corn, wheat and soybean terms from CME's rulebook, which still refused automated access on 2026-10-16; ICE coffee (KC) and cotton (CT) were read on 2026-10-16
+None open after the source follow-up of 2026-10-16.
 
 ## Legacy candidate material
 

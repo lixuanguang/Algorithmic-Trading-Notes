@@ -34,14 +34,16 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:brent-wti
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:brent-wti-contract-terms` unchanged (CME still refused access); `data:opec-membership-current` narrowed to OPEC's own statement (opec.org refused access; secondary reports of a 2026 change recorded, not used). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:opec-membership-current` narrowed to a recorded conflict (OPEC home page navigation read; member and press pages refused); `conv:brent-wti-contract-terms` narrowed (NYMEX 23-057: sulphur at most 0.42 percent, API 37-42, delivery FOB Cushing with Enterprise, Enbridge or Plains storage access). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:natural-gas-market` (`gas-hub-pricing`); `def:contango-backwardation-stocks` (`commodity-storage-curves`).
 
 ## Entry backlog
 
-- conv:brent-wti-contract-terms: NYMEX WTI (CL) terms from CME's current rulebook, which still refused automated access on 2026-10-16 (CFTC-hosted Chapter 200 text found only in 2011-2012 filings, not current); ICE Brent's terms were read on 2026-10-16
-- data:opec-membership-current: OPEC's own member-country list or press release (opec.org returned HTTP 402 and 403 on 2026-10-16; secondary sources report the United Arab Emirates leaving with effect from 1 May 2026, which needs OPEC's confirmation) and the EIA's chokepoint estimates (script-only)
+- conv:brent-wti-contract-terms: NYMEX WTI (CL) contract size, trading terms and any post-2023 amendment (CME's rulebook still refused access); CL grade and Cushing delivery were read in NYMEX Submission 23-057 as filed with the CFTC, and ICE Brent's terms earlier
+- data:opec-membership-current: OPEC's own member-country page or press release, which returned HTTP 403 on 2026-10-16 while its home page navigation still listed twelve members including the United Arab Emirates, against secondary reports of a UAE exit from 1 May 2026; and the EIA's chokepoint estimates
 
 ## Legacy candidate material
 

@@ -47,6 +47,8 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:treasury-
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:treasury-bund-futures-current-specs` unchanged (CME still refused access; recorded as an access barrier). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:treasury-bund-futures-current-specs` narrowed (CBOT 22-468 and 25-099 from cftc.gov: the ZN basket moved from 6.5-10 years to 6.5-7.75 years from September 2023 and is certified as 6.5 to under 8 years in 2025). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).
@@ -54,7 +56,7 @@ Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` 
 ## Entry backlog
 
 - ev:futures-tick-size-evidence: whether futures "often" have economically large ticks relative to comparable equities, with bounce and larger displayed depth, as the legacy principle claimed; only the general large-tick mechanism (Lehalle and Laruelle, pp. 144–148) was checked.
-- conv:treasury-bund-futures-current-specs: CME's TU, FV, TY, US and UB contract terms from its rulebook, which still refused automated access on 2026-10-16 (HTTP 403 to the shell and the fetching tool; the CFTC-hosted filings found were from 2011-2012 or unrelated); Eurex's Schatz, Bobl, Bund and Buxl terms were read on 2026-10-16
+- conv:treasury-bund-futures-current-specs: CME's TU, FV, US and UB contract terms and current tick sizes (CME's rulebook still refused automated access, HTTP 403, on 2026-10-16); the 10-year note basket (6 years 6 months to less than 8 years, reopenings added from March 2026) was read in CBOT Submissions 22-468 and 25-099 as filed with the CFTC, and Eurex's terms earlier
 
 ## Legacy candidate material
 

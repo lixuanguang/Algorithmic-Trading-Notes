@@ -34,6 +34,8 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cds-stand
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cds-standard-contract` narrowed (the Big Bang FAQ read for contract coverage, Determinations Committee requests, the 60-day look-back and the fixed coupons). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:cds-standard-contract` blocked (the 2014 ISDA Credit Derivatives Definitions are sold by ISDA; no licensed copy). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:sovereign-credit-defaults` (`sovereign-municipal`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).

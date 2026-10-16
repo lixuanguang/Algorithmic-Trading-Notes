@@ -34,13 +34,15 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:equity-in
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:equity-index-lists-current` narrowed (JPX market-structure page; Moscow Exchange index page). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:equity-index-lists-current` narrowed (Nikkei's Nikkei 225 profile and JPX's TOPIX page). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:equity-index-valuation` (`cross-asset-style-premia`); `def:vix-variance-dividend-swaps` (`vix-correlation-dividends`); `mech:etf-creation-redemption` (`etf-index-closing-execution`).
 
 ## Entry backlog
 
-- data:equity-index-lists-current: index providers' current factsheets for the rest of Gliner's Table 8.1 (names, providers, constituents and weighting); JASDAQ's absorption into TSE's Prime, Standard and Growth markets on 4 April 2022 and Moscow Exchange's MOEX Russia Index (the former MICEX) were read on 2026-10-16
+- data:equity-index-lists-current: index providers' current pages for the rest of Gliner's Table 8.1 (names, providers, constituents and weighting); JASDAQ's absorption, the MOEX Russia Index, and the Nikkei 225 (price-weighted, 225 Prime Market stocks) and TOPIX (free-float capitalisation-weighted, base 4 January 1968) were read on 2026-10-16; IDX and JSE pages returned HTTP 403 and Wilshire's 404
 
 ## Legacy candidate material
 

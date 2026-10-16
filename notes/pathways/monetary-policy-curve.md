@@ -37,13 +37,17 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:eurodolla
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:eurodollar-sofr-conversion-date` resolved (CME Clearing Advisory 23-082 of 15 March 2023, from a user-supplied browser export: conversion at 1:1 after the close of Friday 14 April 2023 for trade date 17 April, Eurodollar futures and options from September 2023 and the E0, E2-E5 mid-curves; ARRC minutes of 9 March 2023 and the CFTC chairman's keynote agree; CME Submission 24-271 shows the CBOT filing's "April 23" to be the date of CME's press release on the 7.5 million converted contracts); `ev:qe-announcement-effects` resolved (NY Fed Staff Report 441, March 2010, the working-paper version: eight events, 10-year Treasury -91 bp, agency -156, MBS -113; yields up nearly 100 bp on other days; term premium down 50-100 bp in the time-series estimate, 30-100 bp overall; the IJCB version itself not obtained); `rule:central-bank-policy-history` narrowed (ECB TLTRO page: series of 5 June 2014, 10 March 2016 and 7 March 2019; PBOC Announcement [2014] No. 5: band 1 to 2 percent from 17 March 2014). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `rule:central-bank-policy-history` narrowed (Gauweiler judgment para. 84 and Press Release 70/15 via CELLAR and curia; PBC central-parity statement as reproduced by NAFMII; Bank of England Quarterly Bulletin, February 1998, pp. 30-31). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
+Correction of 2026-10-16 to the second follow-up paragraph above: CME's press release on the conversion is dated 24 April 2023 (read in a dated reprint; CME's page refused automated access), so the CBOT filing's "April 23" is not the press release's date; the filings do not explain that date. The conversion trade date, 17 April 2023, stands.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:money-market-reference-rates` (`money-markets-repo-lending`); `def:currency-regimes-intervention` (`em-currencies-intervention`); `meth:macro-event-queries` (`macro-announcements-policy`).
 
 ## Entry backlog
 
-- rule:central-bank-policy-history: an ECB or court statement on whether OMT was ever activated (EUR-Lex and curia not retrievable on 2026-10-16), the PBOC's current band, its August 2015 fixing reform and reserve-requirement history, and the Bank of England's first published inflation forecast; TLTRO I-III and the PBOC's March 2014 widening to 2 percent were read on 2026-10-16
+- rule:central-bank-policy-history: the PBOC's current band width and reserve-requirement history (not checked), and evidence for "first major central bank to publish inflation forecasts" from other central banks' dates (the Reserve Bank of New Zealand's, for example); OMT's non-activation to June 2015 (Court of Justice, Gauweiler, para. 84), the PBC's 11 August 2015 fixing change (NAFMII reprint) and the Bank of England's first Inflation Report (February 1993) and fan chart (February 1996) were read on 2026-10-16
 
 ## Legacy candidate material
 

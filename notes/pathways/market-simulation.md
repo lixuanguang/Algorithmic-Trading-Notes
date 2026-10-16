@@ -36,9 +36,12 @@ Changed in migration slice 36, 2026-10-16: `meth:intraday-deseasonalisation` (Le
 
 ## Entry backlog
 
-- meth:refresh-time-covariance: covariance estimators for asynchronous prices (refresh-time sampling, Hayashi--Yoshida), with their conditions; named by the legacy notes and by Lehalle and Laruelle (p. 318), none read; the slice-33 check shows previous-tick sampling itself produces an Epps effect
-- res:time-rescaling-theorem: the time-change theorem with its exact conditions (compensator continuous and divergent) from a point-process text such as Daley and Vere-Jones; Lehalle and Laruelle print the condition as $\int_0^\infty\lambda=1$ (p. 308)
-- ev:simulator-realism-metrics: the stylised-fact metrics a simulator is scored on, from Vyetrenko et al. (`w2-vyetrenko-realism`) and the reality-gap tests of Noble, Rosenbaum and Souilmi (`exp-noble-rosenbaum-souilmi-reality-gap`), required readings not read
+- meth:refresh-time-covariance: the Hayashi-Yoshida (2005) paper and its conditions (Project Euclid behind a bot check, 2026-10-16); refresh time and its assumptions were read in Barndorff-Nielsen, Hansen, Lunde and Shephard (CREATES RP 2008-63) and simulated
+- res:time-rescaling-theorem: the half-line statement (compensator continuous and divergent) from a point-process text such as Daley and Vere-Jones; Brown et al. (2002) was read for the finite-window theorem (positive conditional intensity, finite integrated intensity) and the KS goodness-of-fit bands
+
+## Source verification after slice 37
+
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `meth:refresh-time-covariance` narrowed (Definition 1, Assumptions 1-2 and sec. 5.3 read; refresh-time realised covariance biased without lead-lag terms in simulation); `res:time-rescaling-theorem` narrowed (Brown, Barbieri, Ventura, Kass and Frank, Neural Computation 14(2), pp. 325-331); `ev:simulator-realism-metrics` resolved (Vyetrenko et al., arXiv v1: five groups of stylised-fact checks and ABIDES comparisons; Noble, Rosenbaum and Souilmi, arXiv v1: in-sample validation statistics on Databento data 2023-2025, a 29-microsecond inter-event mode and an impact state; the ACM version of the former not compared). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
 ## Legacy candidate material
 

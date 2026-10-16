@@ -34,13 +34,15 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:metals-ma
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:metals-market-shares-current` narrowed (gold jewellery about 31 and investment about 43 percent of 5,002 tonnes in 2025; silver industrial about 58 percent of 1.13 billion ounces). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:metals-market-shares-current` narrowed (platinum: automotive 35.0, jewellery 25.5, industrial 26.1, investment 13.3 percent of 8,671 koz; South Africa 71.2 percent of refined mine supply). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- data:metals-market-shares-current: platinum, copper and aluminium consumption shares (WPIC, ICSG) and COMEX and LME contract terms; gold (World Gold Council, full year 2025) and silver (World Silver Survey 2026 release) demand shares and USGS production shares were read on 2026-10-16
+- data:metals-market-shares-current: copper and aluminium consumption shares (ICSG timed out) and COMEX and LME contract terms (both refused, HTTP 403); platinum 2025 demand and supply shares were read in WPIC's Platinum Quarterly Q2 2026 on 2026-10-16
 
 ## Legacy candidate material
 

@@ -35,6 +35,8 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:us-releas
 
 Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` narrowed (BLS CPI schedule: 10 November and 10 December 2026, 13 January 2027 at 8:30 a.m.). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
 
+Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` blocked (the ISM calendar and report pages redirect to a member login, rechecked 2026-10-16). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:central-bank-policy-framework` (`monetary-policy-curve`); `rule:major-central-banks-current` (`monetary-policy-curve`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`).

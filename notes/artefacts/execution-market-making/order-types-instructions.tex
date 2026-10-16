@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-making-lob, market-structure-execution-quality
-\subsection{Order Types and Instructions}
+% notes/artefacts/execution-market-making/order-types-instructions.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 34, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/01_order_types_and_instructions.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-making-lob, market-structure-execution-quality), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Order, Order-Instruction Segmentation, Core Order-Type Segmentation, Market Order Cost Segmentation, Conditional Activation, Stops Are Not Limits, Tick-Sensitive Orders, Time-in-Force, Quantity and Handling, Special Instruction, Instruction Semantics -> def:order-instructions; Marketable Limit Order -> def:limit-order-book and def:order-instructions; Order Choice Trades Certainty for Leakage, Market vs Limit Order Choice, Limit-Order Fill Threshold (with its proof), Spread-Only Rules Fail -> res:limit-order-options; from Harris chap. 4 (pp. 68-86), chap. 6 (pp. 117, 126), chap. 14 (p. 304), Bouchaud et al. p. 55, FIX 4.4 code sets.
+% Compile inside notes/artefacts/execution-market-making/ with  latexmk -pdf order-types-instructions.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: order types and instructions}
+
+% From compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/01_order_types_and_instructions.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Order Types and Instructions}
 
 \begin{definition} \hlt{Order}\\
 An order is a trade instruction. At minimum it identifies the instrument, side, and quantity; practical orders also specify price limits, activation rules, validity, display, routing, settlement, or broker discretion.
@@ -120,3 +135,5 @@ These instructions trade fill probability against information leakage and accoun
 \begin{caveat} \hlt{Instruction Semantics Are Venue-Specific}\\
 The same label can behave differently across venues. Minimum quantity, display refresh, priority loss after modification, pegging reference, and cancellation rules must be read as part of the market design.
 \end{caveat}
+
+\end{document}

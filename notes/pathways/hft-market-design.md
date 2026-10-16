@@ -44,6 +44,8 @@ Cross-referenced, not owned here: `def:order-anticipation`, `def:bluffing-manipu
 
 ## Entry backlog
 
+- res:frequent-batch-auctions: what Budish, Cramton and Shim's frequent batch auctions do to time priority within a batch and to latency rents (their secs. VII-VIII, not read); the legacy matching file's claim that within-batch time priority is "muted" waits on it
+
 ## Legacy candidate material
 
 Run `python3 tools/migration_status.py` for the current counts. Fifteen legacy blocks were already assigned to this pathway before slice 15 and are unchanged: the flash-crash and shock-propagation blocks of `03_.../08_volatility_and_liquidity_interaction.tex`, *Fast Liquidity and Price Discovery* in `03_.../02_price_discovery.tex`, and the seven blocks of `05_.../05_latency_and_queue_competition.tex`, a stylised maker–taker fee and speed-investment model whose source has not been identified. The seven cross-asset blocks of `05_.../06_...` list this pathway as a candidate and are unassigned.

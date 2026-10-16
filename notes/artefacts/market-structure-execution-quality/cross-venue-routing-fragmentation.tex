@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-structure-execution-quality
-\subsection{Cross-Venue Routing and Fragmentation}
+% notes/artefacts/market-structure-execution-quality/cross-venue-routing-fragmentation.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 34, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/07_cross_venue_routing_and_fragmentation.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-structure-execution-quality), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: twelve blocks -> def:smart-order-routing; three -> res:fee-adjusted-venue-choice; Toy SOR Model, SOR Share Feedback, SOR Fragmentation Drivers, Primary-Market Variance Feedback (reclassified as a model result) -> mod:sor-market-share-dynamics; eleven -> meth:venue-market-share; ten -> meth:fragmentation-concentration-metrics; eleven -> ev:european-fragmentation-evidence; the consolidation proposition and its proof kept as a derived bound in def:smart-order-routing; from Lehalle and Laruelle chaps. 1-2 and apps. A.1, A.3, A.8, A.9, and Harris chap. 26.
+% Compile inside notes/artefacts/market-structure-execution-quality/ with  latexmk -pdf cross-venue-routing-fragmentation.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: cross-venue routing and fragmentation}
+
+% From compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/07_cross_venue_routing_and_fragmentation.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Cross-Venue Routing and Fragmentation}
 
 \begin{principle} \hlt{Routing After Fragmentation}\\
 In a fragmented market, liquidity is no longer represented by one order book. The execution problem becomes a joint choice of price, size, time, venue, fees, and information exposure.
@@ -297,3 +312,5 @@ Patient orders can seek rebates and hidden liquidity; urgent orders pay for imme
 If an alternative venue delivers volatile fills, rational routers reduce future allocation to it.\\
 Lower variance makes routing fractions easier to estimate; higher variance pushes flow back to the primary market and can lower the alternative venue's share.
 \end{empiricalfinding}
+
+\end{document}

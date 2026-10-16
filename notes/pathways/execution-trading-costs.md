@@ -84,6 +84,8 @@ Partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/portfolio-c
 
 Changed in the slice-30 follow-up, 2026-10-15: `def:order-exposure-decisions` no longer says hidden orders "reveal nothing"; they remove the pre-trade display, while executions and pinging (SEC 2010 release, p. 47, n. 69) still leak information. Its Currency field and that of `def:automated-trading-architecture` now date the 2024 U.S. Code passage and Narang's 2024 account.
 
+Changed in migration slice 34, 2026-10-16 (a routing exception: the legacy hidden-liquidity file's candidates are `execution-market-making` and `market-structure-execution-quality`, but these entries already held the concepts, so the blocks were merged rather than duplicated): `def:order-exposure-decisions` (benefits and costs of exposure, parasitic and defensive traders, display instructions and display precedence; Harris pp. 84-85, 117, 382-384) and `def:block-trade` (sunshine trading, pp. 327-328). Partly checked 2026-10-16, draft.
+
 ## Entry backlog
 
 - def:clearing-settlement: clearing, settlement, delivery versus payment and the central counterparty's guarantee in their standard definitions, to replace Narang's broker-fee description (CPMI glossary, not retrieved on 2026-10-15; the PFMI glossary annex, `exp-pfmi`, not reached in the copy read).

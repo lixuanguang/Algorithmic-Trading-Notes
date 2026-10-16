@@ -52,6 +52,8 @@ Written in migration slice 33, 2026-10-16, from the legacy trade-classification 
 
 Partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/artefacts/price-impact-execution/trade-classification.tex`.
 
+Changed in the slice-33 follow-up, 2026-10-16: `meth:trade-sign-classification` (the check now uses exact decimal prices and ten assertions; the slice-33 float version misclassified a half-tick midpoint trade after a downtick).
+
 ## Entry backlog
 
 - ev:block-initiator-asymmetry: the primary evidence behind Harris's "approximately 80 percent" of large U.S. block trades being seller-initiated (p. 332), with sample, period and classification method

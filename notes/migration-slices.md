@@ -3406,3 +3406,102 @@ An integrated review of the whole batch, by the same session, after writing: eve
 - Correcting a printed condition in Lehalle and Laruelle (time change) and the legacy counterfactual's units by derivation and computation, without errata.
 - Treating the FIX 4.4 states (through a vendor page) as the reference for order states.
 - Keeping Harris's 80 percent block statistic as his unsourced report.
+
+## Slice 33 follow-up: trade-signing arithmetic, order types, session boundaries, FIX states, realised variance and waiting times, 16 October 2026
+
+Corrections to slice 33 (`d40d4c2`), run before slice 34; the slice-33 record above is left as written, and this record supersedes it where they differ. No legacy block, entry label or count changed (459 legacy blocks; 151 entries). Each correction is reproduced in `notes/artefacts/market-simulation/order-flow-checks.py` (run with numpy and scipy); the other results of that script are unchanged.
+
+1. **Trade signing, `meth:trade-sign-classification`.** The slice-33 check computed the midpoint in binary floating point, so $(10.00+10.01)/2=10.004999\dots$ and the half-tick midpoint trade at 10.005 after a downtick returned $+1$ (a buy); the slice-33 record's "four toy trades" therefore included one wrong result, although the entry's wording happened to state the right rule. The check now holds prices as `Decimal` values built from strings, signs zero ticks by the last non-zero change, and asserts ten cases: half-tick and whole-tick midpoints after up- and downticks, zero upticks and zero downticks, a midpoint with no prior change (unclassified), trades just above and below a half-tick midpoint, and trades at the bid and ask against the previous tick. All ten pass; the entry's *Checked* sentence states them.
+2. **Order type against aggressiveness, `def:limit-order-book`.** The entry said an order that matches on arrival *is* a market order. That is Bouchaud et al.'s event convention (p. 45), now named as such; Harris's market order is an instruction to trade at the best price (p. 71), and a marketable limit order can execute at once while limiting its price (p. 73). A crossing limit order executes the matching part and rests the rest at its limit (Bouchaud et al., p. 45) unless an immediate-or-cancel instruction removes it (p. 55).
+3. **Session boundaries, `mech:order-lifecycle`.** "An order book is empty at the start of the day" was stated as universal. Lehalle and Laruelle say "most often empty" (p. 217); the entry now attributes it and adds Harris's day and good-till-cancel orders (pp. 82–84, Table 4-3) and FIX 4.4's TimeInForce (an absent value means "Day (or session)"; good till cancel and good till date exist), so orders carried across sessions rest in the reopened book. A dated CME rule could not be read (CME's site refuses scripted access; not circumvented) and is a backlog stub (`conv:session-carry-over`).
+4. **FIX 4.4 states, same entry.** "Replaced" was listed among OrdStatus values from a vendor page that itself marked it as replaced in FIX 4.3. Checked against the FIX Trading Community's FIX 4.4 Orchestra repository (FIX.4.4_EP311) as rendered by Orchimate, to which FIXimate links: OrdStatus (39) has new, partially filled, filled, done for day, cancelled, pending cancel, stopped, rejected, suspended, pending new, calculated, expired, accepted for bidding and pending replace, and no value 5; ExecType (150) "describes the specific ExecutionRpt ... while OrdStatus (39) will always identify the current order status", with 5 = Replace and F = Trade. The entry and a new source key `fix44-orchestra` say so; the OnixS key is kept in the sources with a note that it was superseded.
+5. **Realised variance, `meth:realised-variance-signature-plot`.** The limits to integrated variance and covariance are now attributed to Lehalle and Laruelle's "Itô semi-martingale framework" and restricted to continuous Itô processes; with jumps the limits are the quadratic variation and covariation, including co-jumps. Counterexample (computed): a unit-jump Poisson path with five jumps on [0, 1] has zero diffusion variance and realised variance 9 on a 10-step grid, 5 from 10^4 steps; three common jumps of +1 and −0.5 give realised covariance −1.5. The finite-grid expectation $\sigma^2T+2n\sigma_\eta^2$ is stated as exact for the simulated driftless Brownian model with i.i.d. centred noise independent of it, not for general semimartingales.
+6. **Waiting times, `mod:queue-reactive-intensities` and the script.** "Equal in expectation only for a Poisson process" was wrong. For a stationary renewal process with finite second moment the mean wait from an arbitrary time is $E[X^2]/(2E[X])$, equal to $E[X]$ exactly when the coefficient of variation is 1. Counterexample: gaps 0.5 with probability 0.8 and 3 with probability 0.2 have $E[X]=1$, $E[X^2]=2$, CV 1, and a simulated mean wait of 1.0006 against a mean gap of 0.9997. The valid point is kept: the Hawkes sample's gaps (CV 1.37) give a mean wait from uniform starts of 0.594 against a mean gap of 0.405, near $E[X^2]/(2E[X])=0.579$.
+
+Source statements and derived corrections are kept apart in the entries: items 2–4 restate sources more exactly, items 1, 5 and 6 are derivations and computations.
+
+## Slice 34: the rest of the orders-and-matching folder (order types, matching, hidden liquidity and dark trading, routing and fragmentation), 16 October 2026
+
+A single batch of 108 blocks from `compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/`, run after the slice-33 follow-up, with review checkpoints of 34 blocks (`01_order_types_and_instructions.tex`, 16; `04_matching_algorithms.tex`, 18), 23 (`06_hidden_liquidity_and_dark_trading.tex`) and 51 (`07_cross_venue_routing_and_fragmentation.tex`). It closes the folder. Migration and source checking, not study.
+
+### Scope
+
+Counted by script against the starting commit `d40d4c2`: 108 blocks (16, 18, 23, 51), 117 `\item` commands (33, 16, 26, 42), four proofs (one in the fill-threshold proposition, two in the matching file's lemma and proposition, one in the consolidation proposition), no figures, tables or assets. Outside the blocks each file holds only its `% migrate-to:` line and its `\subsection` heading. Also accounted for: the folder wrapper `00_overview.tex` (four `\input` lines after slice 33) and the chapter file's `\newpage`/`\input` lines for the folder, both removed, and four map rows.
+
+### Provenance
+
+- **Harris** (`alpha-harris`): order instructions (chap. 4, pp. 68–86), precedence, matching and trade pricing, crossing networks, price ownership and derivative-price risks (chap. 6, pp. 115–136), order choice (chap. 14, p. 304), sunshine trading (sec. 15.3, pp. 327–328), exposure (chap. 18, pp. 382–384), internal crossing (sec. 25.4, pp. 520–521), consolidation and fragmentation (chap. 26, pp. 526–534).
+- **Lehalle and Laruelle** (`alpha-laruelle`): market share and its metrics (chap. 1, sec. 1.1.1, pp. 33–39), SOR (sec. 1.2, pp. 62–73), dark pools (sec. 1.4, pp. 102–115), auctions, matching curves and volume curves (chap. 2, sec. 2.1, pp. 117–140), spreads, resilience and coverage (secs. 2.3–2.4, pp. 153–163), Spain and the 2010 outage (sec. 2.5, pp. 170–185), FEI (app. A.1), the SOR toy model (A.3), market-share estimation (A.8), Gini and KS (A.9); sec. 3.4.2 was already the source of the existing routing entries.
+- **Bouchaud et al.** (`catalogue-0528`): order categories and order types (pp. 45, 55), the auction price (p. 56).
+- **FIX 4.4** code sets (`fix44-orchestra`): OrdType, TimeInForce, ExecInst.
+- Not found in any source read: the legacy venue-selection list and routing-cost formula, frequent batch auctions' "muted" time priority (Budish et al.'s batch-auction sections not read), pegging references, the Gini for participants and time segments, leave-one-out estimators, and "subsidised share" beyond Turquoise's 2009 episode; each is marked interpretation, narrowed or stubbed.
+
+### Ownership and dispositions
+
+Routed by guide outcomes and map candidates. The overview `execution-market-making` (replay with acknowledgements, cancellations and fills; queue-position assumptions) owns order instructions and matching (files 01 and 04; candidates: execution-market-making, market-making-lob, market-structure-execution-quality, and for 04 futures-execution). `market-structure-execution-quality` ("fragmentation, dark trading, fees") owns dark trading and fragmentation (files 06 and 07). **Routing exception:** nine blocks of file 06 merged into `def:order-exposure-decisions` and `def:block-trade`, owned by the overview `execution-trading-costs`, which is not a candidate of the file, because those entries already hold the concepts (Harris chaps. 15 and 18); parallel entries were not written. `futures-execution`'s `conv:cme-globex-trading` gained a cross-reference only. Rejected: `market-making-lob` for matching (its outcome is queue dynamics and fill probabilities, which use the rules but do not define them).
+
+| File | Blocks | Destination | Disposition |
+|---|---|---|---|
+| 02/01 | *Order*; *Order-Instruction Segmentation*; *Core Order-Type Segmentation*; *Market Order Cost Segmentation*; *Conditional Activation*; *Stops Are Not Limits*; *Tick-Sensitive Orders*; *Time-in-Force*; *Quantity and Handling*; *Special Instruction*; *Instruction Semantics Are Venue-Specific* (11) | `def:order-instructions` (new) | Rewritten from Harris chap. 4 and FIX 4.4; IOC/FOK naming conflict recorded; pegs attributed to FIX, not Harris; T+3 marked historical; venue semantics stubbed |
+| 02/01 | *Marketable Limit Order* | `def:limit-order-book`, `def:order-instructions` | Merged; remainder rule (Harris p. 126) |
+| 02/01 | *Order Choice Trades Certainty for Leakage*; *Market vs Limit Order Choice*; *Limit-Order Fill Threshold* (with proof); *Spread-Only Rules Fail* (4) | `res:limit-order-options` | Merged; Harris p. 304 and Table 14-1; threshold derived and computed; spread-only rule reframed by information |
+| 02/04 | all 18 (principle, procedure, continuous and call matching, frequent batch auctions, pricing rules and incidence, auction rules, surplus, schedules, lemma and proposition with proofs, randomised uncrossing, priority, public order precedence, pro-rata, matching curve, indicative volume) | `mech:order-matching-pricing` (new) | Rewritten from Harris chap. 6 and Lehalle–Laruelle chap. 2; pro-rata remainders computed; frequent batch auctions stubbed (`hft-market-design`); public order precedence and random ends dated |
+| 02/06 | *Dark Pool*; *Reference Price Trading*; *Crossing Network Rules*; *Price Ownership*; *Dark Liquidity Pools*; *Integrated vs Midpoint Books*; *Dark Pools and Price Discovery*; *Derivative Pricing Risks*; *Dark Activity Drivers*; *Why Investors Use Dark Pools*; *Dark Liquidity Is Conditional*; *Toxic Liquidity and Gaming*; *Bilateral vs Multilateral*; *Internal Crossing Agency* (14) | `def:dark-pools-crossing` (new) | Rewritten; "volatile periods" **qualified** (true of LL's dark turnover, not of dark share, against Buti et al. as reported); Zhu and Buti not read |
+| 02/06 | *Reserve and Iceberg Display*; *Discovering Hidden Size*; *Order Exposure Decision*; *Exposure Benefit-Cost*; *Parasitic and Defensive Suppliers*; *Exposure Defence* (6) | `def:order-exposure-decisions` | Merged (routing exception); Harris pp. 84–85, 117, 382–384 |
+| 02/06 | *Block Exposure-Control*; *Sunshine Trading Credibility*; *Block Hanging Over the Market* (3) | `def:block-trade` | Merged (routing exception); sunshine trading added; Table 15-1 already present |
+| 02/07 | *Routing After Fragmentation*; *Smart Order Routing*; *Temporal Then Spatial*; *SOR Feedback Loop*; *Venue Selection*; *Consolidation Loop*; *Consolidation Bound* (with proof); *Aggregated Liquidity*; *Average Trade Size*; *Duplicate Liquidity*; *Transparency Is Not Certainty*; *Fragmented Routing Objective* (12) | `def:smart-order-routing` | Merged; LL sec. 1.2.1 and Harris sec. 26.4; bound derived; venue list and cost formula marked as the notes' synthesis |
+| 02/07 | *Maker-Taker*; *Smart Routers vs Fee Savers*; *Rebate Effects* (3) | `res:fee-adjusted-venue-choice` | Merged |
+| 02/07 | *Toy SOR Model*; *SOR Share Feedback*; *SOR Fragmentation Drivers*; *Primary-Market Variance Feedback* (4) | `mod:sor-market-share-dynamics` (new) | Rewritten; three printed slips and the first-order condition **corrected**; the "finding" reclassified as a model result |
+| 02/07 | *Market Share as Routing Prior*; *Venue-Share Estimator*; *Index-Level Venue Share*; *Estimator Comparison*; *Metric Choice*; *Market Share Segmentation*; *Market Share Is Conditional*; *Intraday Non-Stationarity*; *Volume-Curve Segmentation*; *Event-Driven Volume Clustering*; *Reference Rules Create Volume* (11) | `meth:venue-market-share` (new) | Rewritten; ex-fixing formula **corrected**; Bernoulli assumption tested |
+| 02/07 | *FEI*; *Fragmentation Measurement Segmentation*; *FEI Venue Count*; *Fragmentation of What*; *Coverage*; *Gini Liquidity Imbalance*; *Lorenz-Curve Gini*; *Gini Measurement Segmentation*; *KS Test*; *Venue-Share Distribution Comparison* (10) | `meth:fragmentation-concentration-metrics` (new) | Rewritten; LL's "H0 accepted ... same distribution" **corrected** to failure to reject; Gini inconsistency flagged |
+| 02/07 | *Intraday Venue-Share Shape*; *Liquidity and Capitalisation*; *Why Large Caps Fragment First*; *Subsidised Share*; *Post-Trade Barriers*; *Spain*; *Spread-Share Feedback*; *Venue Quality*; *HFT Perimeter*; *Primary Outage*; *Fragmentation Needs Shared References* (11) | `ev:european-fragmentation-evidence` (new) | Rewritten with samples and periods; Spain treated as a confounded comparison |
+
+### Sources, 2026-10-16
+
+- `alpha-harris`, 2002 printing via macOS PDFKit (printed = PDF − 13): pp. 68–86, 115–136, 304, 327–328, 382–384, 520–521, 526–534.
+- `alpha-laruelle`, 2018 printing (printed = PDF − 27): pp. 5, 33–39, 62–73, 102–115, 117–140, 153–185, 247–260, 284–292; page images of pp. 35, 255, 257, 288 and 291.
+- `catalogue-0528` (printed = PDF − 19): pp. 45, 55–56.
+- `fix44-orchestra` (new key): FIX 4.4 OrdStatus, ExecType, TimeInForce, OrdType and ExecInst code sets via Orchimate, retrieved 2026-10-16.
+- Not read: Zhu (`wide-zhu-dark-pools`, catalogue metadata only), Moallemi and Yuan (`wide-moallemi-yuan-queue`), Buti, Rindi and Werner, Budish et al.'s batch-auction sections, O'Hara and Ye, Foucault and Menkveld, the current EU and U.S. rules, and CME's documentation (scripted access refused).
+
+### Numerical checks
+
+`notes/artefacts/market-structure-execution-quality/slice34-checks.py` (numpy, scipy; fixed seeds; run with `/opt/homebrew/bin/python3.10`): Harris's Table 6-1 call clears 7 at 20.0 by maximum volume, surplus 1.6 against 1.0 continuously (exact fractions), Bif's average 20.15; pro-rata 18 against 10 and 20 gives 6 and 12, POSIT 1,000 and 2,000, 10 against three 3s leaves one lot after floors and 7 against 1, 1 and 100 floors the small orders to nothing; the posting threshold's sign in three cases; the ex-fixing share 0.50 against the printed 0.60; FEI 0.854 and 0.676 with an empty venue; Lorenz and mean-difference Gini agree (0.565); KS fails to reject different normals in 89 percent of 30-sample trials; the binomial standard error 0.010 against 0.047 with venue choices repeated in runs of 20; the SOR model with the described update takes (0.95, 0.03, 0.02) to (0.52, 0.27, 0.21), and at a grid optimum the size-weighted first-order terms are near equal; a cross-venue gap beyond costs.
+
+### Checks and their limits
+
+| Source | Passages | Limits |
+|---|---|---|
+| `alpha-harris` | as listed | 2002 U.S. institutions; Harris's own views on IOC/FOK naming |
+| `alpha-laruelle` | as listed | European data 2006–2013; several printed slips; claims reported without sources (variance and share; HFT shares) |
+| `catalogue-0528` | pp. 45, 55–56 | Definitions only |
+| `fix44-orchestra` | five code sets | A third-party rendering of the Community's repository; message vocabulary, not venue behaviour |
+
+The seven new entries and nine changed entries are *partly checked*, *draft*; **human review is outstanding**.
+
+### Preservation
+
+New artefacts: `notes/artefacts/execution-market-making/order-types-instructions.tex`, `matching-algorithms.tex`, `02-overview-before-slice34.tex` (the folder wrapper as it stood after slice 33) and `legacy-section-before-slice34.tex` (the chapter file before this slice); `notes/artefacts/market-structure-execution-quality/hidden-liquidity-dark-trading.tex`, `cross-venue-routing-fragmentation.tex` and `slice34-checks.py`. The slice-33 snapshot `02-overview-original.tex` is unchanged. Compared by script with `git show d40d4c2:…`: each body appears once; all 108 blocks appear verbatim and in order (16, 18, 23 and 51 top-level blocks); `\item` counts 33, 16, 26 and 42 equal; `\begin`/`\end` sequences identical (48, 48, 58 and 124 commands, the four proofs included); wrapper and chapter copies byte-identical. The four artefacts compile alone without warnings, overfull or underfull boxes (2, 2, 3 and 5 pages); the routing artefact's equations were inspected by page image.
+
+### Counts
+
+`migration_status.py --check`, 0 problems: 459 → 351 legacy blocks = 306 shared + 16 single-candidate + 29 assigned; `execution-market-making` legacy 339 → 231; multi-asset macro 120 unchanged. Entries 151 → 158 (definitions 50 → 52, evidence 7 → 8, mechanisms 10 → 11, methods 34 → 36, models 21 → 22). Pathway notes: `execution-market-making` 26 → 28 entries, 1 → 3 stubs; `market-structure-execution-quality` 8 → 13 entries, 4 → 7 stubs; `hft-market-design` +1 stub; `execution-trading-costs` and `futures-execution` changed entries recorded. Reading notes `alpha-harris`, `alpha-laruelle` and `catalogue-0528` extended. One new source key, `fix44-orchestra`.
+
+### Other files
+
+New topic file `execution-trading-costs/dark-trading-fragmentation.tex`; two entries added to `execution-market-making/order-books.tex`; extensions in `smart-order-routing.tex`, `execution-algorithms.tex`, `execution-scheduling.tex` and `futures-execution.tex`; both chapter openers; `notes/log.md`, `notes/migration.md` and `compendium/README.md`.
+
+### Build
+
+`latexmk -g -pdf compendium.tex` exits 0: 233 pages (234 before: the legacy folder removed, entries added); no LaTeX warnings; 0 overfull and 0 underfull boxes after two long artefact paths and one opener line were reworded; the inherited `page.i` warning. Tests: 14 pass. Pages inspected as images: the chapter opener and lifecycle, order instructions, matching, venue market share, fragmentation metrics and the SOR model.
+
+### Independent review
+
+An integrated review by the same session after writing, with the three checkpoints, rechecked every quotation in the new and changed entries by script against the text layers and the FIX pages, the locators against printed-page offsets, and the mathematics (auction schedules, surplus, pro-rata, ex-fixing share, FEI, Gini, KS, the SOR first-order condition and update sign). Fixed before commit: the variance-feedback pitfall, which first claimed the legacy direction contradicted Lehalle and Laruelle (it does not for a noisier alternative venue; the error was calling a model result empirical), and the dark-trading pitfall, which first rejected "volatile periods" outright (it holds for dark turnover). **Human review is outstanding.**
+
+### For review
+
+- Merging nine dark-trading-file blocks into entries owned by `execution-trading-costs` (routing exception).
+- Correcting Lehalle and Laruelle's ex-fixing formula, the A.3 update sign and the A.6 condition, and their KS conclusion, by derivation and computation without errata.
+- Using a third-party rendering of the FIX Orchestra repository for FIX 4.4 values.
+- Leaving pro-rata remainder rules, session carry-over and current EU dark-trading caps as stubs because the primary venue documents were not readable here.

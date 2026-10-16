@@ -52,6 +52,8 @@ Written in migration slice 33, 2026-10-16, from the legacy queue-dynamics and st
 
 All three: partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/market-making-lob/queue-dynamics-latency.tex` and `statistical-models-order-flow.tex`; simulations in `notes/artefacts/market-simulation/order-flow-checks.py`. The point-process definitions of the same file are owned by `market-simulation`.
 
+Changed in the slice-33 follow-up, 2026-10-16: `mod:queue-reactive-intensities` (the claim that uniform-start and event-start waiting times agree "only for a Poisson process" replaced by the renewal result $E[X^2]/(2E[X])$, equal to $E[X]$ when the coefficient of variation is 1, with a non-exponential counterexample).
+
 ## Entry backlog
 
 - res:queue-reactive-models-hlr: Huang, Lehalle and Rosenbaum's Models I--III, their estimation, sample and ergodicity result, checked in the paper (`exp-huang-lehalle-rosenbaum-queue-reactive`, a required reading, not read); `mod:queue-reactive-intensities` rests on Lehalle and Laruelle's summary

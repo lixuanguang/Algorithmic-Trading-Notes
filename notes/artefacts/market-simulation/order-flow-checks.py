@@ -3,6 +3,8 @@
 Each block recomputes a claim from first principles or gives a counterexample; nothing here is fitted to real data.
 Run: python3 order-flow-checks.py   (numpy, scipy; fixed seeds; about 20 s)
 """
+from decimal import Decimal
+
 import numpy as np
 from scipy import integrate, stats
 
@@ -85,19 +87,47 @@ print(f'OFI = {ofi:+.0f}, trade imbalance = {ti:+.0f}: the cancellation at the a
 head('trade signing: quote rule, then tick rule at the midpoint (Lee-Ready as described by Harris and Hasbrouck)')
 
 
-def lee_ready(price, bid, ask, last_nonzero_change):
+def tick_sign(prices):
+    """Sign of the last non-zero price change before the current trade (0 if none): the tick test, zero ticks skipped."""
+    for k in range(len(prices) - 1, 0, -1):
+        d = prices[k] - prices[k - 1]
+        if d != 0:
+            return 1 if d > 0 else -1
+    return 0
+
+
+def lee_ready(price, bid, ask, prior_prices):
+    """Quote rule against the midpoint, tick test (last non-zero change) for trades exactly at the midpoint.
+    Prices are Decimal values built from strings, so a half-tick midpoint such as 10.005 compares exactly."""
     mid = (bid + ask) / 2
     if price > mid:
         return +1
     if price < mid:
         return -1
-    return int(np.sign(last_nonzero_change)) if last_nonzero_change != 0 else 0
+    return tick_sign(list(prior_prices) + [price])
 
 
-tests = [(10.01, 10.00, 10.02, -0.01), (10.005, 10.00, 10.01, +0.01), (10.005, 10.00, 10.01, -0.01), (10.00, 10.00, 10.02, +0.02)]
-for p, b, a, ch in tests:
-    print(f'  trade {p} in [{b}, {a}], last non-zero change {ch:+.2f} -> sign {lee_ready(p, b, a, ch):+d}')
-print('the last case: a trade at the bid is a sell under the quote rule even after an uptick; a passive buyer who pegs the bid'
+D = Decimal
+cases = [  # (trade, bid, ask, earlier trade prices, expected sign, what it tests)
+    (D('10.005'), D('10.00'), D('10.01'), [D('10.00')], +1, 'half-tick midpoint after an uptick'),
+    (D('10.005'), D('10.00'), D('10.01'), [D('10.01')], -1, 'half-tick midpoint after a downtick'),
+    (D('10.01'), D('10.00'), D('10.02'), [D('10.02')], -1, 'whole-tick midpoint after a downtick'),
+    (D('10.01'), D('10.00'), D('10.02'), [D('10.00'), D('10.01')], +1, 'midpoint, zero tick, last non-zero change up (zero uptick)'),
+    (D('10.01'), D('10.00'), D('10.02'), [D('10.02'), D('10.01')], -1, 'midpoint, zero tick, last non-zero change down (zero downtick)'),
+    (D('10.01'), D('10.00'), D('10.02'), [D('10.01')], 0, 'midpoint, no earlier non-zero change: unclassified'),
+    (D('10.006'), D('10.00'), D('10.01'), [D('10.01')], +1, 'just above a half-tick midpoint, after a downtick'),
+    (D('10.004'), D('10.00'), D('10.01'), [D('10.00')], -1, 'just below a half-tick midpoint, after an uptick'),
+    (D('10.00'), D('10.00'), D('10.02'), [D('9.98')], -1, 'at the bid after an uptick'),
+    (D('10.02'), D('10.00'), D('10.02'), [D('10.04')], +1, 'at the ask after a downtick'),
+]
+for p, b, a, prior, want, what in cases:
+    got = lee_ready(p, b, a, prior)
+    assert got == want, (what, got, want)
+    print(f'  {what:62}: trade {p} in [{b}, {a}] after {[str(x) for x in prior]} -> {got:+d}')
+print('all', len(cases), 'assertions hold')
+print('binary floating point: (10.00 + 10.01)/2 =', repr((10.00 + 10.01) / 2), '< 10.005 ->',
+      'a float implementation calls the downtick midpoint case a buy;', 'Decimal gives', (D('10.00') + D('10.01')) / 2)
+print('a trade at the bid is a sell under the quote rule whatever the previous tick; a passive buyer who pegs the bid'
       ' is never classified as the buyer (Harris, p. 423)')
 
 
@@ -112,6 +142,21 @@ for step in [1, 5, 30, 300, 1800]:
     rv = np.sum(np.diff(X[::step]) ** 2)
     n = N // step
     print(f'  step {step:5d} ({n:5d} returns): RV = {rv:.3e}, IV + 2 n s_eta^2 = {sigma ** 2 + 2 * n * s_eta ** 2:.3e}')
+
+head('jumps: realised variance converges to quadratic variation, not to the integrated diffusion variance')
+rng_j = np.random.default_rng(35)
+lam_j, Tj = 5.0, 1.0
+jt = np.sort(rng_j.uniform(0, Tj, rng_j.poisson(lam_j * Tj)))     # unit-jump Poisson path: sigma = 0
+for n_steps in [10, 100, 10_000, 1_000_000]:
+    grid = np.linspace(0, Tj, n_steps + 1)
+    Ng = np.searchsorted(jt, grid, side='right')                     # N at grid times
+    print(f'  {n_steps:9d} steps: RV = {np.sum(np.diff(Ng) ** 2):3d}; jump count N_T = {len(jt)}; integrated diffusion variance 0')
+co = np.sort(rng_j.uniform(0, 1, 3))
+X1 = lambda t: np.searchsorted(co, t, side='right') * 1.0               # three common jumps of +1 ...
+X2 = lambda t: -np.searchsorted(co, t, side='right') * 0.5             # ... and -0.5 in the second asset
+g = np.linspace(0, 1, 100_001)
+print('  co-jumps: realised covariance', float(np.sum(np.diff(X1(g)) * np.diff(X2(g)))), '= sum of jump products 3 x (1)(-0.5)')
+
 
 head('Epps effect from asynchronous observation alone: true correlation 0.6, previous-tick sampling of Poisson trade times')
 rho, N, reps = 0.6, 23_400, 40
@@ -235,11 +280,29 @@ for L, D in [(1.2, 1.0), (0.8, 1.0)]:
 print('the drift sign follows the ratio only when both rates are constant in the queue size; with state-dependent rates'
       ' (Huang-Lehalle-Rosenbaum) the ratio must be read at each size')
 
-head('waiting-time estimator of 1/lambda depends on the starting points when arrivals cluster (Lehalle-Laruelle p. 221, n. 12)')
+head('waiting-time estimator of 1/lambda depends on where the clock starts (Lehalle-Laruelle p. 221, n. 12)')
 starts_uniform = rng.uniform(0, ev[-1], 5000)
 idx = np.searchsorted(ev, starts_uniform)
 ok = idx < len(ev)
 wait_uniform = (ev[idx[ok]] - starts_uniform[ok]).mean()
 wait_after_event = np.diff(ev).mean()
-print(f'Hawkes sample: mean wait from uniform start times {wait_uniform:.3f}, from event times {wait_after_event:.3f}'
-      ' (equal in expectation only for a Poisson process)')
+print(f'Hawkes sample: mean wait from uniform start times {wait_uniform:.3f}, mean inter-event time {wait_after_event:.3f}')
+print('renewal theory: for an equilibrium renewal process with finite E[X^2], the mean wait from an arbitrary time is'
+      ' E[X^2]/(2 E[X]); it equals E[X] iff E[X^2] = 2 E[X]^2, i.e. CV = 1, which does not imply exponential gaps')
+xs, ps = np.array([0.5, 3.0]), np.array([0.8, 0.2])
+EX, EX2 = float((xs * ps).sum()), float((xs ** 2 * ps).sum())
+assert abs(EX - 1) < 1e-12 and abs(EX2 - 2) < 1e-12
+print(f'two-point gaps P(X=0.5)=0.8, P(X=3)=0.2: E[X] = {EX}, E[X^2] = {EX2}, CV = {np.sqrt(EX2 - EX ** 2) / EX:.3f},'
+      f' E[X^2]/(2E[X]) = {EX2 / (2 * EX)}')
+rng2 = np.random.default_rng(34)
+gaps = rng2.choice(xs, size=400_000, p=ps)
+times = np.cumsum(gaps)
+st = rng2.uniform(times[1000], times[-1000], 200_000)
+w = times[np.searchsorted(times, st)] - st
+print(f'simulated: mean wait from uniform times {w.mean():.4f} against mean gap {gaps.mean():.4f}; equal although not Poisson')
+g_exp = rng2.exponential(1.0, 400_000); t_exp = np.cumsum(g_exp)
+st = rng2.uniform(t_exp[1000], t_exp[-1000], 200_000)
+print(f'exponential gaps (mean 1): mean wait {(t_exp[np.searchsorted(t_exp, st)] - st).mean():.4f}')
+hg = np.diff(ev)
+print(f'Hawkes gaps: CV = {hg.std() / hg.mean():.3f}; E[X^2]/(2E[X]) = {(hg ** 2).mean() / (2 * hg.mean()):.3f}'
+      f' against the mean wait {wait_uniform:.3f} from uniform start times (the stationary inversion formula, Palm moments)')

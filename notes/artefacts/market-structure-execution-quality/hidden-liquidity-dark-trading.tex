@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-structure-execution-quality
-\subsection{Hidden Liquidity and Dark Trading}
+% notes/artefacts/market-structure-execution-quality/hidden-liquidity-dark-trading.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 34, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/06_hidden_liquidity_and_dark_trading.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-structure-execution-quality), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Dark Pool, Reference Price Trading, Crossing Network Rules, Price Ownership, Dark Liquidity Pools, Integrated vs Midpoint Books, Dark Pools and Price Discovery, Derivative Pricing Risks, Dark Activity Drivers (qualified), Why Investors Use Dark Pools, Dark Liquidity Is Conditional, Toxic Liquidity and Gaming, Bilateral vs Multilateral, Internal Crossing Agency -> def:dark-pools-crossing; Reserve and Iceberg Display, Discovering Hidden Size, Order Exposure Decision, Exposure Benefit-Cost, Parasitic and Defensive Suppliers, Exposure Defence -> def:order-exposure-decisions (execution-trading-costs); Block Exposure-Control, Sunshine Trading Credibility, Block Hanging Over the Market -> def:block-trade (execution-trading-costs); from Lehalle and Laruelle sec. 1.4 (pp. 102-115), Harris chaps. 4, 6, 15, 18, 25.
+% Compile inside notes/artefacts/market-structure-execution-quality/ with  latexmk -pdf hidden-liquidity-dark-trading.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: hidden liquidity and dark trading}
+
+% From compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/06_hidden_liquidity_and_dark_trading.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Hidden Liquidity and Dark Trading}
 
 \begin{definition} \hlt{Dark Pool}\\
 A dark pool is a trading venue where available liquidity is not displayed before execution. It is mainly used to reduce signalling, market impact, and exposure to opportunistic short-horizon traders.
@@ -133,3 +148,5 @@ Multilateral books let many participants provide liquidity under common rules. B
 \begin{caveat} \hlt{Internal Crossing Agency Problem}\\
 Internal crossing can give clients low-impact fills and save commissions, but the broker controls who sees the order and who receives the match. The main risks are selective exposure, conflicted allocation, and missed price improvement from external liquidity.
 \end{caveat}
+
+\end{document}

@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-making-lob, futures-execution
-\subsection{Matching Algorithms}
+% notes/artefacts/execution-market-making/matching-algorithms.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 34, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/04_matching_algorithms.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-making-lob, futures-execution), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: all eighteen blocks -> mech:order-matching-pricing (frequent batch auctions as a pointer to res:latency-arbitrage-arms-race and a backlog stub; pro-rata also cross-referenced from conv:cme-globex-trading); the lemma and proposition with their proofs reduced to Harris's argument (chap. 6, pp. 122-125); from Harris chap. 6 (pp. 115-136), Lehalle and Laruelle chap. 2 (pp. 121-127), Bouchaud et al. p. 56.
+% Compile inside notes/artefacts/execution-market-making/ with  latexmk -pdf matching-algorithms.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: matching algorithms}
+
+% From compendium/legacy/execution-market-making/02_orders_matching_and_limit_order_books/04_matching_algorithms.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Matching Algorithms}
 
 \begin{principle} \hlt{Matching Is Market Design}\\
 Matching rules decide which orders trade, at what price, and in what priority. Small rule differences can change displayed liquidity, queue value, auction participation, and the usefulness of a venue for large orders.
@@ -107,3 +122,5 @@ During a call, the theoretical matching curve tracks how close the current indic
 \begin{caveat} \hlt{Indicative Volume Is Strategic}\\
 Pre-auction indicative prices, volumes, and imbalances are signals, not commitments. A book can look deeper than the final auction if traders test information by submitting orders they later cancel or modify.
 \end{caveat}
+
+\end{document}

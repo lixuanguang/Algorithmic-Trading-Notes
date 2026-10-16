@@ -44,6 +44,16 @@ Written in migration slice 33, 2026-10-16, from the tick-size blocks of the lega
 
 All three: partly checked 2026-10-16, draft; human review outstanding; no current tick rule is stated. Artefact: `notes/artefacts/execution-market-making/limit-order-book-mechanics.tex`.
 
+Written in migration slice 34, 2026-10-16, from the legacy hidden-liquidity-and-dark-trading and cross-venue-routing-and-fragmentation files (both map candidates; the outcome names fragmentation and dark trading):
+
+- `def:dark-pools-crossing`: dark pools and crossing networks, derivative pricing and its risks, the European two-book design, motives, evidence as Lehalle and Laruelle report it (the legacy "volatile periods" qualified: true of dark turnover, not of dark share), gaming and internal crossing.
+- `meth:venue-market-share`: value and trade-count shares, the ex-fixing share (Lehalle and Laruelle's printed formula corrected), aggregation, estimation error and time-of-day effects.
+- `meth:fragmentation-concentration-metrics`: FEI, coverage, Gini and two-sample KS, with "H0 accepted" corrected to failure to reject.
+- `mod:sor-market-share-dynamics`: Lehalle and Laruelle's toy model of routers and shares, with three printed slips and the first-order condition corrected, and the legacy variance-feedback "finding" reclassified as a model result.
+- `ev:european-fragmentation-evidence`: fragmentation and liquidity, spreads and share, resilience, intraday share, the 2010 Euronext outage, and Spain as a confounded comparison.
+
+Changed in slice 34: `def:smart-order-routing` (temporal then spatial splitting, execution-policy records, aggregation, duplicate liquidity, average trade size, Harris's consolidation mechanisms and a derived cross-venue bound) and `res:fee-adjusted-venue-choice` (maker--taker and fee complexity). All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/market-structure-execution-quality/hidden-liquidity-dark-trading.tex`, `cross-venue-routing-fragmentation.tex`, `slice34-checks.py`. Six exposure blocks and three block-trading blocks of the dark-trading file were merged into the order-exposure and block-trade entries owned by `execution-trading-costs` (a routing exception; listed in that note).
+
 ## Entry backlog
 
 - rule:tick-size-regimes-current: the U.S. minimum pricing increments and access-fee caps adopted in 2024 (`ex-sec-tick-access-2024`) and the EU MiFID II tick-size regime, with provisions and dates in force; slice 33 states none
@@ -53,6 +63,9 @@ All three: partly checked 2026-10-16, draft; human review outstanding; no curren
 - rule:spoofing-securities-markets: whether placing orders with intent to cancel before execution, or layering to mislead, is prohibited in U.S. securities markets (SEC and FINRA rules or enforcement) and under EU MAR, with dates; slice 30 checked only the Commodity Exchange Act clause for futures (7 U.S.C. 6c(a)(5)(C), cited in `def:order-exposure-decisions`, owned by `execution-trading-costs`).
 
 - rule:block-print-trade-through-current: where U.S. equity blocks are now printed or reported (exchanges, FINRA trade-reporting facilities), how crosses interact with displayed orders (size precedence, if any), and the trade-through exceptions under Rule 611. The legacy block-print rule (slice 18) was checked only against Harris's 2002 description, now in `def:block-trade`; name each venue rule, provision and date before writing the entry.
+- rule:eu-dark-trading-caps-current: the EU dark-trading volume caps and reference-price and LIS waivers after the 2024 MiFIR review (`ex-eu-mifir-review-2024`), with provisions and application dates; slice 34 states only Lehalle and Laruelle's description of MiFID and MiFID II
+- ev:dark-pool-price-discovery: Zhu (`wide-zhu-dark-pools`) and Buti, Rindi and Werner on dark trading and price discovery, read in full with samples and periods; slice 34 has only Lehalle and Laruelle's summaries
+- ev:market-share-variance-claim: the source of Lehalle and Laruelle's statement that "all studies have shown that variance is proportional with market share" (p. 72)
 
 ## Legacy candidate material
 

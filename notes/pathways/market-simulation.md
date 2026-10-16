@@ -30,6 +30,8 @@ Not attempted.
 
 All five: partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/market-simulation/stylized-facts.tex` and `trade-duration-event-time.tex` (legacy files verbatim), `04-overview-original.tex` (the folder's wrapper before slice 33) and `order-flow-checks.py` (simulations for all slice-33 entries). The simulator's building blocks, Hawkes processes and queue-reactive intensities, are owned by `market-making-lob` and cross-referenced, not listed here.
 
+Changed in the slice-33 follow-up, 2026-10-16: `meth:realised-variance-signature-plot` (limits restricted to continuous Itô processes; quadratic-variation limits with jumps and co-jumps; the noise expectation's assumptions stated as exact for the simulated driftless Brownian model; a unit-jump Poisson counterexample in `order-flow-checks.py`).
+
 ## Entry backlog
 
 - meth:refresh-time-covariance: covariance estimators for asynchronous prices (refresh-time sampling, Hayashi--Yoshida), with their conditions; named by the legacy notes and by Lehalle and Laruelle (p. 318), none read; the slice-33 check shows previous-tick sampling itself produces an Epps effect

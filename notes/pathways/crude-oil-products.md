@@ -28,14 +28,18 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:brent-wti-contract-terms` narrowed; `data:opec-membership-current` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:natural-gas-market` (`gas-hub-pricing`); `def:contango-backwardation-stocks` (`commodity-storage-curves`).
 
 ## Entry backlog
 
-- conv:brent-wti-contract-terms: current ICE Brent and NYMEX WTI contract terms, including how Brent futures settle.
-- data:opec-membership-current: current OPEC membership, production share and spare capacity.
+- conv:brent-wti-contract-terms: NYMEX WTI (CL) contract terms from CME's rulebook, which refused automated access; ICE Brent's terms (EFP delivery with an option to cash settle against the ICE Brent Index) were read on 2026-10-16.
+- data:opec-membership-current: OPEC's member-country list and the EIA's chokepoint estimates, whose pages returned a challenge or script-only content on 2026-10-16.
 
 ## Legacy candidate material
 

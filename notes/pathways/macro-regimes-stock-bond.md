@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:regime-asset-responses-tested` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:global-macro-strategy` (`multi-asset-systematic-macro`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- ev:regime-asset-responses-tested: test each sign of the regime map on regimes classified with real-time data (the stock--bond correlation first).
+- ev:regime-asset-responses-tested: test each sign of the regime map, and of Gliner's Figure 8.3 sector phases (compared with the legacy table on 2026-10-16), on regimes classified with real-time data; no source supplies the test.
 
 ## Legacy candidate material
 

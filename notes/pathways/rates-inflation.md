@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `rule:tips-auction-schedule-history` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:macroeconomic-indicators` (`macro-nowcasting-signals`); `def:macro-regime-asset-map` (`macro-regimes-stock-bond`).
 
 ## Entry backlog
 
-- rule:tips-auction-schedule-history: dates of changes to the TIPS auction and reopening schedule since 2014.
+- rule:tips-auction-schedule-history: the Treasury refunding announcements that moved the 5-year TIPS to April and October issues with June and December reopenings and cut the 30-year to one reopening (August), the two differences from Gliner's 2014 calendar identified on 2026-10-16.
 
 ## Legacy candidate material
 

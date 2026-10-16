@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:carry-crash-skewness` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:fx-valuation-signals` (`fx-determination-forecasting`); `def:us-dollar-dxy-sdr` (`currency-markets`); `meth:macro-position-sizing-risk` (`multi-asset-systematic-macro`).
 
 ## Entry backlog
 
-- ev:carry-crash-skewness: carry returns, skewness and crash risk from Brunnermeier--Nagel--Pedersen and Menkhoff et al..
+- ev:carry-crash-skewness: the samples, skewness estimates and average carry returns in the body of Brunnermeier, Nagel and Pedersen (NBER w14473) and in Menkhoff et al.; only the BNP abstract was read on 2026-10-16.
 
 ## Legacy candidate material
 

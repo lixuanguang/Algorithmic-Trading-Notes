@@ -3879,3 +3879,79 @@ New artefacts in `notes/artefacts/multi-asset-systematic-macro/`: `regimes.tex`,
 - Every correction of Gliner listed above, and the reattributions in Drobny (the 2013 edition not inspected).
 - Current-status statements dated 16 October 2026 (FOMC, ECB, BoE, BoJ, SNB, LIBOR, EONIA, TIPS schedule, payroll date), against their pages.
 - The backlog stubs that stand in for unread primary sources: the Eurodollar conversion date, BoE minutes history, BLS payroll scope, ISDA's 2012 Greece decision, the BIS dollar share, ICE's index methodology and current exchange contract terms.
+
+## Slice 37 follow-up: audit corrections, a source-verification pass over the 37 macro entries and merges, and the 36 slice-37 backlog items, 16 October 2026
+
+Corrections and source checks after slice 37 (`f73498d`); the slice-37 record above is left as written, and this record supersedes it where they differ. No legacy block, entry label or entry count changed (0 legacy blocks; 211 entries). This is source verification, not human review or study: every entry stays *draft*, and verification statuses were extended only for the passages actually read.
+
+### Audit findings resolved
+
+1. **Convexity, `mod:duration-convexity`.** Positive convexity improves price relative to the linear approximation; it does not make an unhedged bond gain both ways: the 10-year 4 percent par bond loses 7.722 percent at $+100$~bp and gains 8.530 percent at $-100$~bp (duration alone: $\mp8.111$). The long-volatility analogy is restricted to a duration-hedged position (long the 10-year, short 4.30 times the face of a 2-year: $+0.274$ and $+0.302$ per 100 for $\pm100$~bp, $+0.018$ for $+25$~bp), with its conditions (parallel moves, rebalancing, carry and financing cost). Negative convexity is qualified for callables and MBS (near the money; model-dependent effective convexity). Derivation, not a source check.
+2. **Inversion, `meth:curve-trades-carry-rolldown`.** Estrella and Trubin reread (pp.~4--6, table p.~6): on their 1968--2005 sample the monthly-average 10-year minus three-month spread was both necessary and sufficient (every recession preceded by three to twelve negative months within twelve months; no false signals), which reverses the slice-37 sentence calling it sufficient but not necessary; the entry now separates sample, signal and horizon from a forecasting claim. Extended with Treasury par yields (CMT proxy) and the NBER chronology: inversions before the December 2007 and February 2020 peaks, and November 2022--November 2024 plus five months of 2025 with no peak dated after February 2020 as of 16 October 2026.
+3. **VIX, `def:vix-variance-dividend-swaps`.** Cboe's methodology (v6.0, 26 February 2026): $\text{VIX}=100\sigma$ with $\sigma^2$ an annualised 30-day variance computed from option prices, minutes-based annualisation (43,200 and 525,600); VIX~20 means variance 0.04 (0.0033 over 30 days); first value date January 1990, current method from 2003; VIX derivatives settle to a Special Opening Quotation. Gliner's implied-volatility description and the legacy's futures remark corrected.
+4. **Gold and silver, `def:metals-markets`.** Gliner p.~320 names China, the United States, Australia and South Africa (``more than 40 percent'') and states that China overtook South Africa; the entry had dropped two countries and called the overtaking unstated. USGS gives 38.9 and 37.8 percent for 2011 and 2012. Table~10.9 (p.~322) is internally inconsistent: Mexico 162.2 plus China 117.0 over the stated 787.0 total is 35.5 percent, the printed shares imply a denominator near 594 and sum to 132.5 percent, and Gliner's 47 and 83 percent follow the printed shares; USGS gives 33.5 percent for 2012. Recorded, not repaired; the World Silver Survey was not read.
+5. **Drobny, `meth:macro-practitioner-frameworks` and the reading note.** Andres Drobny (pp.~131--132): re-entry on a single trade with a very tight stop and the incurred loss counted (4:1 becoming 4:3 after two stops), ``On a specific trade, no'' cooling-off; a month away only after a portfolio-wide stop-out and big losses. Siva-Jothy (p.~85): ``50 to 60 percent options'' with no stated denominator (not ``of risk''); three or four opportunities a year and overtrading are his; Andres Drobny only accepts the interviewer's framing (p.~125).
+6. **Chapter 8 and 12 locators, `def:macro-regime-asset-map` and `def:macroeconomic-indicators`.** Figure~8.3 (p.~217) compared phase by phase with the legacy sector table (partly matching; the legacy late-cycle list contradicts the figure's defensive slowing-growth phase). The U.S.-consumer figure is Gliner's (p.~416); the slice-37 statement that it was not in the passages read was wrong. Table~12.2 is on pp.~424 (heading) and~425 (data), not pp.~422--423.
+7. **Commercial paper, `def:money-market-reference-rates`.** Section 3(a)(3) quoted (``not exceeding nine months'', with the current-transaction condition); SEC interpretations 219.01--219.02; the Richmond Fed's account of the other historical conditions (not ordinarily purchased by the general public, prime quality and Federal Reserve discountability under Release 33-4412, discounting dropped in 1980). Gliner's ``less than 270 days'' kept as attributed.
+8. **GSCI history, `def:commodity-indices-risk-return`.** ``Pre-2000 back-filled'' corrected: the index dates from 1991 (Dunsby and Nelson; S\&P pages refused access, and the supplied 11 April 1991 date could not be confirmed, search listings showing April 1991), so 1970--1990 of Gliner's Table~10.1 is back-calculated; spot, excess-return and total-return variants distinguished, without assuming which the 2007 study used.
+9. **FX carry and CDS.** `mod:fx-carry-trade` states the quote convention ($S$ domestic per foreign), simple rates, the exact covered-parity and funded-P\&L formulas and their first-order forms (example: $+0.2550$ against $+0.2500$ percent). `mech:cds-contract-credit-events` presents the physical/cash equivalence as an illustration under a common recovery valuation, with a counterexample (62 against 60), and dates the 2009 Big Bang changes and the 2012 Greek determination.
+
+### Verification pass over the 37 entries (34 entries and 3 merges)
+
+Every quotation in the slice-37 entries was mapped by script to the Gliner PDF page or Drobny printed page where it occurs (`loccheck` against the text layers); locators matched except those corrected above, and two labels (``Short-end TIPS trade like food and energy'' and ``TIPS are typically issued on a quarterly basis'', pp.~247--248, are Gliner's, not only the legacy's) were fixed. Spot rereads: Gliner pp.~52, 55, 57 (sizing, risk/reward, gap risk), 36--38 (Barclays Prime Services), 222--227, 246--248, 302, 314, 317, 320--325, 356, 373 (Table~11.4 against Bauer's Table~1, which matches exactly), 416, 424--425.
+
+| Entry | Follow-up result |
+|---|---|
+| `def:global-macro-strategy`, `ev:global-macro-crisis-performance` | Locators and quotations re-matched; no change |
+| `meth:macro-position-sizing-risk` | pp.~52--57 reread; no change |
+| `meth:macro-practitioner-frameworks` | Corrected (item 5) |
+| `def:macro-regime-asset-map` | Corrected (item 6) |
+| `def:macroeconomic-indicators` | Corrected (item 6); CES scope from BLS (nonprofits in scope; other legacy exclusions right); release timing |
+| `meth:equity-macro-leading-indicators`, `meth:macro-event-queries`, `meth:equity-index-valuation` | Re-matched; no change |
+| `data:us-macro-release-calendar` | BEA, Census and G.17 calendars read; cadence confirmed; CPI and ISM unchecked |
+| `def:central-bank-policy-framework` | Bauer's letter read; event-study caveats quoted |
+| `mod:taylor-rule` | No change |
+| `rule:major-central-banks-current` | BoE minutes history, FOMC practice, BoJ 2024 exit, SNB 2015, ECB APP and OMT status dated; TARGET2/T2S |
+| `meth:policy-path-ois-futures` | Eurodollar conversion narrowed (CME notice not readable; 14 April 2023 better supported than the filing's 23 April) |
+| `meth:curve-trades-carry-rolldown` | Corrected (item 2) |
+| `def:tips-breakevens` | Gliner's 2014 calendar compared with today's; attribution of two sentences fixed |
+| `def:interest-rate-swaps` | BIS: interest rate derivatives the largest OTC component ($579 trillion, end-June 2024) |
+| `def:fixed-income-universe` | SIFMA 2025 totals; the legacy ranking shown to be ill-posed |
+| `def:money-market-reference-rates` | Corrected (item 7); Treasury bill schedule |
+| `def:sovereign-credit-defaults` | ISDA Greece determination and auction dated |
+| `mech:cds-contract-credit-events` | Corrected (item 9) |
+| `conv:government-bond-futures` | Eurex terms read (legacy Schatz and Buxl bands are current); CME unread |
+| `def:us-dollar-dxy-sdr` | ICE formula and history; BIS 2025 shares (dollar 89.2 percent) |
+| `def:currency-regimes-intervention`, `meth:fx-valuation-signals` | Re-matched; no change |
+| `mod:fx-carry-trade` | Corrected (item 9); BNP abstract |
+| `def:equity-indices-derivatives` | Re-matched; no change |
+| `def:vix-variance-dividend-swaps` | Corrected (item 3) |
+| `def:contango-backwardation-stocks` | Re-matched; no change |
+| `def:commodity-indices-risk-return` | Corrected (item 8) |
+| `def:crude-oil-markets` | ICE Brent terms (EFP delivery, cash-settlement option) |
+| `def:metals-markets` | Corrected (item 4); USGS 2025 production shares |
+| `def:agricultural-markets` | ICE coffee and cotton terms |
+| `def:natural-gas-market` | Re-matched; no change |
+| Merges: `mod:duration-convexity` (item 1), `mod:forward-rates-fra` (re-matched, no change), `def:fx-market-structure` (re-matched, no change) | |
+
+### The 36 backlog items
+
+Resolved (9): `data:bls-ces-scope`, `rule:boe-minutes-publication-history`, `data:fomc-communication-current`, `ev:isda-greece-2012-determination`, `data:bis-2025-currency-shares`, `conv:dxy-methodology`, `conv:cboe-vix-methodology`, `data:fixed-income-market-size`, `data:treasury-bill-offering-schedule`. Narrowed to a named document, dataset or empirical test (27): `data:eurodollar-sofr-conversion-date` (CME advisories 23-082 and 23-121), `ev:qe-announcement-effects` (Gagnon et al.), `rule:central-bank-policy-history` (OMT activation, TLTRO, PBOC), `ev:curve-inversion-after-2005` (H.15 series), `rule:tips-auction-schedule-history` (refunding announcements), `data:irs-notional-share` (BIS swaps line), `ev:sovereign-restructurings-after-2006`, `conv:cds-standard-contract` (fixed coupons, 2014 Definitions), `data:de-facto-regime-classification`, `ev:carry-crash-skewness` (paper bodies), `data:equity-index-lists-current`, `conv:commodity-index-methodologies`, `conv:brent-wti-contract-terms` (NYMEX WTI), `data:opec-membership-current`, `data:metals-market-shares-current` (consumption shares, COMEX/LME), `conv:cbot-ice-ag-contract-terms` (CBOT grains), `conv:henry-hub-contract-terms`, `conv:treasury-bund-futures-current-specs` (CME), `data:us-release-schedules-2026` (BLS CPI, ISM), `data:demographic-projections-current`, `data:post-libor-funding-stress-measures`, and six empirical items that no reading can close (`ev:global-macro-returns-after-2013`, `ev:practitioner-rules-tested`, `ev:regime-asset-responses-tested`, `ev:equity-index-value-signal`, `ev:fx-valuation-factors-oos`, `ev:backwardation-scarcity-or-premium`). Each stub's text in its pathway note names what is missing; each affected note records the follow-up under *Source verification after slice 37*.
+
+### Sources, 2026-10-16
+
+Read directly: Estrella and Trubin (New York Fed PDF); Cboe's VIX methodology (catalogue key `gap-cboe-vix6`); Bauer (FRBSF Economic Letter 2012-16, with Table~1 as an image); the Warsh review and the Bank of England's 2015 documentation page; the FOMC calendars; the Bank of Japan statement of 19 March 2024; the SNB release of 15 January 2015 (title and date); the ECB's APP page and TPI release; NBER's chronology and dating pages; Treasury's daily par-yield files 2006--2026 (monthly averages in `ust-10y3m-monthly.csv`); TreasuryDirect's bills and TIPS pages; the BIS 2025 FX results; ICE's Dollar Index FAQ, Brent, coffee and cotton specifications; Eurex's fixed-income factsheet and contract specifications of 10 September 2025; ISDA's Big Bang page and Greece releases; USGS Mineral Commodity Summaries 2013 (gold, silver) and 2025 (gold, silver, copper); the Richmond Fed's commercial-paper chapter; Dunsby and Nelson (2010); BEA's schedule, the Census calendar, the Fed's G.17 dates; SIFMA's Fact Book highlights; the NBER abstract of Brunnermeier, Nagel and Pedersen. Read through a web-fetching tool's extracts (direct requests refused): the BLS CES concepts page and FAQ, the SEC's Securities Act interpretations, 15 U.S.C. 77c, the BIS OTC release for end-June 2024. Seen only in search listings: CME Clearing Advisory 23-082's title and summary, S\&P's GSCI launch information, the Greek auction final price. Refused or unusable: CME (terms-of-use block, not circumvented), S\&P Dow Jones Indices and Bloomberg methodologies (403), OPEC (challenge), EIA (script-only pages), ISM, BLS schedule pages, the IJCB PDF. Gliner and Drobny reread at the pages listed above. 32 source keys added (`sifma-factbook-2026` among them) and `bis-triennial-2025` updated in `compendium/front/sources.tex`.
+
+### Checks
+
+`notes/artefacts/multi-asset-systematic-macro/slice37-followup-checks.py` (exit 0 with `/opt/homebrew/bin/python3.10`; reads `ust-10y3m-monthly.csv` in the same folder), seven sections: convexity unhedged and duration-hedged; inversion runs against NBER peaks; VIX units; gold and silver shares and Table~10.9's denominators; exact and first-order FX carry; CDS settlement with different recovery valuations; Andres Drobny's 4:1 after two stops. The slice-35, 36 and 37 scripts were rerun unchanged (exit 0). Quotations added in this follow-up were compared by script with the source text layers; the misses are source titles, passages read only through fetching-tool extracts (BLS, SEC, statute, BIS), Gliner and legacy text broken by page markers, LaTeX or ``[sic]'', and the search-listing title of CME's notice, all inspected.
+
+### Other files
+
+README.md and compendium/README.md (stale descriptions of the removed legacy part corrected); the Gliner and Drobny reading notes; 26 pathway notes; `notes/log.md`; `notes/migration.md`. Preservation artefacts unchanged.
+
+### For review
+
+- The corrections listed above, especially the reversal on necessity and sufficiency, the reading of Table~10.9 and the restricted long-volatility analogy.
+- Facts taken from fetching-tool extracts or search listings (BLS, SEC, BIS OTC, CME notice title, GSCI launch).
+- The post-2005 inversion check, which uses Treasury's 3-month CMT rather than Estrella and Trubin's bill series.

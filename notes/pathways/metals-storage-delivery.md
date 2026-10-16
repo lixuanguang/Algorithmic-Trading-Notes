@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:metals-market-shares-current` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- data:metals-market-shares-current: current production, consumption and reserve shares (World Gold Council, USGS, ICSG) and COMEX and LME contract terms.
+- data:metals-market-shares-current: consumption shares (World Gold Council, Silver Institute, ICSG) and COMEX and LME contract terms; USGS production shares for 2011-2012 and 2023-2024 were read on 2026-10-16, and Gliner's Table 10.9 inconsistency recorded.
 
 ## Legacy candidate material
 

@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cbot-ice-ag-contract-terms` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:futures-hedge-basis` (`commodity-hedging`).
 
 ## Entry backlog
 
-- conv:cbot-ice-ag-contract-terms: current CBOT and ICE grain and softs contract terms (sizes, months, arabica KC size).
+- conv:cbot-ice-ag-contract-terms: CBOT corn, wheat and soybean terms from CME's rulebook, which refused automated access; ICE coffee (KC, 37,500 pounds) and cotton (CT, 50,000 pounds) were read on 2026-10-16.
 
 ## Legacy candidate material
 

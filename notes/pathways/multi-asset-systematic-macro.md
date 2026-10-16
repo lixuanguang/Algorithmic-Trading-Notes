@@ -31,14 +31,18 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:global-macro-returns-after-2013` narrowed; `ev:practitioner-rules-tested` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:macro-regime-asset-map` (`macro-regimes-stock-bond`); `meth:equity-index-valuation` (`cross-asset-style-premia`); `mod:fx-carry-trade` (`fx-premia`); `meth:curve-trades-carry-rolldown` (`curve-term-structure`); `meth:relative-performance-evaluation` (`performance-manager-evaluation`).
 
 ## Entry backlog
 
-- ev:global-macro-returns-after-2013: macro index returns and crisis correlations after 2013 from the section's readings or index providers; Gliner's data end in 2012 and September 2013.
-- ev:practitioner-rules-tested: evidence, if any, on the practitioners' rules (1:3 against 4:1 risk/reward, stops with cooling-off, P&L-contingent VaR limits); the sources give opinions only.
+- ev:global-macro-returns-after-2013: monthly returns of a named macro hedge-fund index (Credit Suisse/DJCS, Barclay or HFR) from 2014 to date and their correlation with the S&P 500 in down months, from the index provider's data (not public on the pages tried); a reading cannot replace that data.
+- ev:practitioner-rules-tested: an empirical test of the practitioners' rules (1:3 against 4:1 targets, re-entry with the incurred loss counted, a month off after a portfolio-wide stop-out, P&L-contingent VaR limits) on trade-level data; the follow-up only rechecked what each interviewee said (Drobny 2006, pp. 85, 131-132), which is not evidence that the rules work.
 
 ## Legacy candidate material
 

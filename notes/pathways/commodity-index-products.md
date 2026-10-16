@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:commodity-index-methodologies` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:crude-oil-markets` (`crude-oil-products`).
 
 ## Entry backlog
 
-- conv:commodity-index-methodologies: current S&P GSCI and Bloomberg Commodity Index weights and roll schedules.
+- conv:commodity-index-methodologies: the S&P GSCI and Bloomberg Commodity Index methodology documents (weights, roll schedules, launch and first value dates), which refused automated access (HTTP 403) on 2026-10-16; the 1991 origin and pre-launch back-filling were confirmed from Dunsby and Nelson (2010) and S&P search listings only.
 
 ## Legacy candidate material
 

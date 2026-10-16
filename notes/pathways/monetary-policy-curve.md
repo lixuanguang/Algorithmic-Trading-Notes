@@ -31,17 +31,19 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:eurodollar-sofr-conversion-date` narrowed; `rule:boe-minutes-publication-history` resolved (Bank of England minutes about a fortnight after each meeting until July 2015 (Warsh review; 9 and 22 July 2015), published with the Monetary Policy Summary from 6 August 2015); `ev:qe-announcement-effects` narrowed; `rule:central-bank-policy-history` narrowed; `data:fomc-communication-current` resolved (FOMC press conferences after every meeting in 2025 and 2026 so far, projections at four meetings (March, June, September, December), minutes about three weeks later). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:money-market-reference-rates` (`money-markets-repo-lending`); `def:currency-regimes-intervention` (`em-currencies-intervention`); `meth:macro-event-queries` (`macro-announcements-policy`).
 
 ## Entry backlog
 
-- data:eurodollar-sofr-conversion-date: CME's own notices for the Eurodollar-to-SOFR conversion date; the CBOT filing says 23 April 2023, a Sunday.
-- rule:boe-minutes-publication-history: when the Bank of England began publishing minutes with the decision (the legacy's 2--3 week lag describes 2012).
-- ev:qe-announcement-effects: read Bauer's May 2012 letter and Gagnon et al. (2011) behind Gliner's Table 11.4.
-- rule:central-bank-policy-history: BoJ yield-curve control and negative rates and their end, the 2015 end of the SNB floor, the PBOC band, OMT activation, ECB APP and TLTRO, from the banks' releases.
-- data:fomc-communication-current: current FOMC press-conference and projection practice (Gliner: four to five of eight meetings in 2013).
+- data:eurodollar-sofr-conversion-date: the text of CME Clearing Advisories 23-082 and 23-121, which refused automated access with a terms-of-use message on 2026-10-16; search listings give the conversion as effective after the close of Friday 14 April 2023 (trade date 17 April), against the CBOT filing's "April 23, 2023".
+- ev:qe-announcement-effects: Gagnon, Raskin, Remache and Sack (2011), whose IJCB PDF link returned an HTML page on 2026-10-16; Bauer's 2012 letter was read and matches Gliner's Table 11.4.
+- rule:central-bank-policy-history: an ECB statement on whether OMT was ever activated (the 2022 TPI release only says it remains in the toolkit), TLTRO terms, the PBOC's band and reserve-requirement history, and the Bank of England's first published inflation forecast; the BoJ's March 2024 exit, the SNB's January 2015 decision and the APP's history were checked on 2026-10-16.
 
 ## Legacy candidate material
 

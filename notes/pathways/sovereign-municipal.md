@@ -28,14 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:isda-greece-2012-determination` resolved (ISDA EMEA Determinations Committee: Restructuring Credit Event for the Hellenic Republic, unanimous, 9 March 2012, after the collective action clauses; auction held 19 March 2012 (final price not read in a primary document)); `ev:sovereign-restructurings-after-2006` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mech:cds-contract-credit-events` (`corporate-credit-cds`); `meth:curve-trades-carry-rolldown` (`curve-term-structure`).
 
 ## Entry backlog
 
-- ev:isda-greece-2012-determination: the ISDA Determinations Committee's March 2012 decision on the Hellenic Republic.
-- ev:sovereign-restructurings-after-2006: Greece 2012 (PSI) and Argentina 2020 sizes and recoveries, which the legacy added without source.
+- ev:sovereign-restructurings-after-2006: the Greek PSI exchange (2012) and Argentina's 2020 exchange, sizes and haircuts from the governments' exchange documents or a dated default dataset (Moody's or S&P), against the legacy's "$200B+" and "Ninth default, $65B"; not attempted in the follow-up.
 
 ## Legacy candidate material
 

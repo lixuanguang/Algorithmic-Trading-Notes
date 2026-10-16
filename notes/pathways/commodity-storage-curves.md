@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:backwardation-scarcity-or-premium` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:cost-of-carry-forward-price` (`volatility-options`); `def:futures-hedge-basis` (`commodity-hedging`); `def:agricultural-markets` (`agricultural-futures-delivery`).
 
 ## Entry backlog
 
-- ev:backwardation-scarcity-or-premium: evidence separating scarcity from risk premia in backwardation, from the pathway's readings.
+- ev:backwardation-scarcity-or-premium: evidence separating scarcity from risk premia in backwardation, from the pathway's readings (storage model, hedging pressure); empirical, not attempted in the follow-up.
 
 ## Legacy candidate material
 

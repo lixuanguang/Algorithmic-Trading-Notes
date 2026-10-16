@@ -28,14 +28,16 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:bis-2025-currency-shares` resolved (BIS 2025: the dollar on one side of 89.2 percent of trades in April 2025 (88.4 in 2022)); `conv:dxy-methodology` resolved (ICE's U.S. Dollar Index FAQ (June 2015): geometric average, constant 50.14348112, weights as Gliner gives them). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:fx-market-structure` (`fx-dealer-market-making`); `mod:fx-carry-trade` (`fx-premia`); `def:currency-regimes-intervention` (`em-currencies-intervention`); `meth:fx-valuation-signals` (`fx-determination-forecasting`).
 
 ## Entry backlog
 
-- data:bis-2025-currency-shares: the dollar's share of turnover in the BIS 2025 Triennial Survey.
-- conv:dxy-methodology: ICE's U.S. Dollar Index methodology (weights, formula), not retrievable on 2026-10-16.
 
 ## Legacy candidate material
 

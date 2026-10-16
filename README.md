@@ -22,7 +22,8 @@ compendium/house.tex                    entry environments, \citep and \qfsource
 compendium/front/                       notation list and overrides, preface, and sources outside the catalogue
 compendium/<section-key>/section.tex    a chapter's heading and pathway keys, then its topic files of entries
 compendium/<section-key>/figures/       that chapter's figures
-compendium/legacy/<section-key>/        notes awaiting migration, compiled as the final part (temporary)
+compendium/legacy/execution-trading-costs/figures/  21 unused figures left from the migrated legacy notes (no legacy text remains)
+notes/artefacts/                        the legacy notes verbatim, preserved when each was migrated, with check scripts
 tools/migration_status.py               migration progress and entry metadata checks, with its tests
 ```
 
@@ -43,7 +44,7 @@ In an existing clone, run `git submodule update --init` once to fetch `guide/`. 
 - **Entries.** Write each new entry as `\begin{qf<type>}[Title]\label{<prefix>:<name>}` … `\end{qf<type>}`, with fields started by `\qffield{Statement}` and so on, using the eleven types and label prefixes in the guide.
 - **Citations.** Cite as `\citep[locator]{catalogue-key}`, one key per citation. Give a source outside the catalogue a `\qfsource{key}{reference}` line in `compendium/front/sources.tex` and cite its key the same way.
 - **Figures.** Keep figures in `compendium/<section-key>/figures/` and reference them from `compendium/`, as in `\includegraphics{execution-market-making/figures/name}`.
-- **Older notes.** The chapters written before the study method are in `compendium/legacy/` and compile as the final part, *Notes awaiting migration*. Their blocks use the environments in `preamble.tex` (`definition`, `taxonomy`, `principle`, `mechanism`, `caveat` and others), and are retyped into the guide's entry types, labelled and cited at the claim when each pathway is consolidated. The `mechanism` environment means an economic mechanism, while the guide's Mechanism type covers contract terms and settlement, so retype each block by its content rather than its environment name. The plan is in [compendium/README.md](compendium/README.md) and the record of what has moved, with the map of legacy files to pathways, in [notes/migration.md](notes/migration.md). Check progress and entry metadata with `python3 tools/migration_status.py --check`.
+- **Older notes.** The chapters written before the study method have all been retyped into the guide's entry types (the last in migration slice 37, 16 October 2026); the compendium no longer compiles a legacy part. Their original text is kept verbatim in `notes/artefacts/`, whose standalone files compile with the old environments still defined in `preamble.tex` (`definition`, `taxonomy`, `principle`, `mechanism`, `caveat` and others). In those files the `mechanism` environment means an economic mechanism, while the guide's Mechanism type covers contract terms and settlement. Every migrated entry is a draft awaiting human review. The plan is in [compendium/README.md](compendium/README.md) and the record of what has moved, with the map of legacy files to pathways, in [notes/migration.md](notes/migration.md). Check progress and entry metadata with `python3 tools/migration_status.py --check`.
 
 ## Moving to a newer edition of the guide
 

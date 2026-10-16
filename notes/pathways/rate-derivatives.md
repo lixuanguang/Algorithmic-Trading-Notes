@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:irs-notional-share` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:policy-path-ois-futures` (`monetary-policy-curve`); `mech:otc-clearing-collateral` (`rates-credit-mortgages`).
 
 ## Entry backlog
 
-- data:irs-notional-share: BIS OTC derivatives statistics for the legacy's "largest derivatives market by notional".
+- data:irs-notional-share: the swaps line of the BIS OTC derivatives table (interest rate swaps against FRAs and options) for a recent half-year; the BIS release of 21 November 2024 gives interest rate derivatives as the largest OTC component, $579 trillion at end-June 2024.
 
 ## Legacy candidate material
 

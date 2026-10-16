@@ -28,13 +28,16 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cboe-vix-methodology` resolved (Cboe VIX methodology v6.0 (26 February 2026): VIX = 100 x sqrt(annualised 30-day variance) from option prices; SOQ settlement). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:equity-indices-derivatives` (`international-equity-markets`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- conv:cboe-vix-methodology: Cboe's VIX methodology (`gap-cboe-vix6`), against Gliner's description.
 
 ## Legacy candidate material
 

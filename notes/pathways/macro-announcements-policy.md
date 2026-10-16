@@ -29,13 +29,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:central-bank-policy-framework` (`monetary-policy-curve`); `rule:major-central-banks-current` (`monetary-policy-curve`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- data:us-release-schedules-2026: BEA, Census, Federal Reserve G.17 and ISM release schedules for the legacy's mid-month and late-month placements.
+- data:us-release-schedules-2026: the BLS CPI release calendar and the ISM's report calendar (first and third business days), whose pages refused automated access; the BEA, Census and Federal Reserve G.17 calendars were read on 2026-10-16 and match the legacy cadence.
 
 ## Legacy candidate material
 

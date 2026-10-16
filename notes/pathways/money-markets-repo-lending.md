@@ -34,6 +34,10 @@ Written in migration slice 37, 2026-10-16, from the legacy macro chapter:
 
 - `def:money-market-reference-rates`: money-market instruments as Gliner describes them; fed funds, SOFR and the EFFR; LIBOR's end (panel after 30 June 2023, synthetic settings to 30 September 2024); EONIA discontinued on 3 January 2022 and €STR published since 2 October 2019; the LIBOR--OIS spread as a historical stress gauge. Verification partly checked 2026-10-16, stability draft.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed; `data:treasury-bill-offering-schedule` resolved (TreasuryDirect: bills of 4 to 52 weeks; 4-, 6-, 8-, 13-, 17- and 26-week weekly, 52-week every four weeks, plus cash management bills). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:broker-agency-conflicts` (`market-structure-execution-quality`); `res:arbitrage-risks` (`execution-market-making`); `mech:futures-margin-settlement` (`futures-execution`).
@@ -42,8 +46,7 @@ Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equ
 
 - rule:us-short-sale-margin-and-price-test: current Regulation T and FINRA margin for short sales, and the current U.S. short-sale price test; DGP's 2001 description is historical.
 - ev:securities-lending-fees-evidence: measured lending fees, rebates and specials (for example from institutional lending data, `catalogue-0897`), against the legacy "low or negative rebates" claim.
-- data:post-libor-funding-stress-measures: which spreads (unsecured term rates or commercial paper against OIS, repo dispersion) now serve as the LIBOR--OIS spread did, with dated data.
-- data:treasury-bill-offering-schedule: current Treasury bill maturities and auction cadence (the legacy listed 4, 13, 26 and 52 weeks).
+- data:post-libor-funding-stress-measures: which spreads (term unsecured or commercial-paper rates against OIS, repo-rate dispersion, the FRA-OIS spread) market studies now use in LIBOR-OIS's place, with dated data; not attempted in the follow-up.
 
 ## Legacy candidate material
 

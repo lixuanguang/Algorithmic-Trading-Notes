@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:duration-convexity` (`rates-credit-mortgages`); `mod:forward-rates-fra` (`rates-credit-mortgages`); `conv:government-bond-futures` (`futures-execution`).
 
 ## Entry backlog
 
-- ev:curve-inversion-after-2005: the 2022--2024 inversion and NBER business-cycle dating after it.
+- ev:curve-inversion-after-2005: repeat the post-2005 check with Estrella and Trubin's own series (H.15 secondary-market three-month bill on a bond-equivalent basis) instead of Treasury's 3-month CMT, and revisit if NBER dates a peak after February 2020; the CMT version (2026-10-16) finds the 2022-24 inversion followed by no dated recession.
 
 ## Legacy candidate material
 

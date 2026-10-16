@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:fx-valuation-factors-oos` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:fx-carry-trade` (`fx-premia`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- ev:fx-valuation-factors-oos: out-of-sample tests of Gliner's factors against a random walk.
+- ev:fx-valuation-factors-oos: an out-of-sample test of Gliner's factors (pp. 195-209) against a random walk with economic as well as statistical criteria; empirical work, not a reading.
 
 ## Legacy candidate material
 

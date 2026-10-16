@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cds-standard-contract` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:sovereign-credit-defaults` (`sovereign-municipal`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- conv:cds-standard-contract: the 2009 standardisation (fixed coupons, Determinations Committees, auctions) and the 2014 ISDA Credit Derivatives Definitions.
+- conv:cds-standard-contract: the fixed-coupon standard contracts of 2009 and the 2014 ISDA Credit Derivatives Definitions (add-cds-contract); the Big Bang Protocol page (Determinations Committees and auction hardwiring from 8 April 2009) was read on 2026-10-16.
 
 ## Legacy candidate material
 

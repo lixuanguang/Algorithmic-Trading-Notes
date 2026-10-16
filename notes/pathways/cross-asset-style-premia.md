@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:equity-index-value-signal` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:equity-indices-derivatives` (`international-equity-markets`); `mod:fx-carry-trade` (`fx-premia`); `def:global-macro-strategy` (`multi-asset-systematic-macro`).
 
 ## Entry backlog
 
-- ev:equity-index-value-signal: cross-sectional value across equity indices against Gliner's fixed thresholds, from the pathway's readings.
+- ev:equity-index-value-signal: cross-sectional value (book-to-price or earnings yield) across equity indices with its out-of-sample record, from the pathway's readings, against Gliner's fixed P/B thresholds (pp. 228); not attempted in the follow-up.
 
 ## Legacy candidate material
 

@@ -25,7 +25,7 @@ See `meth:macro-practitioner-frameworks` for each claim with its printed page.
 
 ## Limits
 
-Survivorship and selection: successful managers describing their own rules. Attributions corrected from the legacy: the "75 percent of price movement" remark, long-gamma leverage, never being a forced seller and buying options when an outcome is "inevitable" are the anonymous currency specialist's (pp. 331-336), not Siva-Jothy's; 4:1 risk/reward, cooling-off after stops and three or four good trades a year are Andres Drobny's (pp. 125, 130-131), not Wadhwani's; time-horizon arbitrage is Porter's (p. 135); front-page and magazine-cover contrarianism is Rogers's (pp. 217, 230) and Porter's (p. 152), not Anderson's. Porter's "the yield curve is 90 percent explained by the direction of interest rates" (pp. 147-148) was misquoted as "steepener = 90% bullish". The anonymous manager's three blocs are Europe, Asia and Latin America (p. 328).
+Survivorship and selection: successful managers describing their own rules. Attributions corrected from the legacy: the "75 percent of price movement" remark, long-gamma leverage, never being a forced seller and buying options when an outcome is "inevitable" are the anonymous currency specialist's (pp. 331-336), not Siva-Jothy's; 4:1 risk/reward and the stop rules are Andres Drobny's (pp. 131-132), not Wadhwani's; his cooling-off of about a month applies after a portfolio-wide stop-out and big losses ("On a specific trade, no"), while a single stopped trade may be re-entered with a very tight stop and a worse risk/reward (4:1 becoming 4:3 after two stops); three or four major opportunities a year, overtrading and the 50-60 percent options share ("I always structure my portfolio to be 50 to 60 percent options", no denominator stated) are Siva-Jothy's (p. 85), the three-or-four-trades framing at p. 125 is the interviewer's, which Andres Drobny accepts; Wadhwani's re-entry rule is a 24-hour break (p. 177); time-horizon arbitrage is Porter's (p. 135); front-page and magazine-cover contrarianism is Rogers's (pp. 217, 230) and Porter's (p. 152), not Anderson's. Porter's "the yield curve is 90 percent explained by the direction of interest rates" (pp. 147-148) was misquoted as "steepener = 90% bullish". The anonymous manager's three blocs are Europe, Asia and Latin America (p. 328).
 
 ## Implementation
 
@@ -38,5 +38,7 @@ Survivorship and selection: successful managers describing their own rules. Attr
 `meth:macro-practitioner-frameworks` (`multi-asset-systematic-macro`).
 
 ## Open questions
+
+- Slice-37 follow-up, 2026-10-16: pp. 85, 109, 125 and 130-132 reread; the corrections above replace the slice-37 wording.
 
 - Compare the 2013 revised edition's interviews and pagination with the 2006 printing.

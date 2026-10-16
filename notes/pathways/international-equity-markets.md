@@ -28,13 +28,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+## Source verification after slice 37
+
+Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:equity-index-lists-current` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:equity-index-valuation` (`cross-asset-style-premia`); `def:vix-variance-dividend-swaps` (`vix-correlation-dividends`); `mech:etf-creation-redemption` (`etf-index-closing-execution`).
 
 ## Entry backlog
 
-- data:equity-index-lists-current: current names, providers and constituents of the indices in Gliner's Table 8.1.
+- data:equity-index-lists-current: index providers' current factsheets for the indices in Gliner's Table 8.1 (names, providers, constituents), for example the Moscow Exchange's for Micex and RTS; not attempted in the follow-up.
 
 ## Legacy candidate material
 

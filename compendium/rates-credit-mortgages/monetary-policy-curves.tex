@@ -1,0 +1,175 @@
+% compendium/rates-credit-mortgages/monetary-policy-curves.tex
+% Entries migrated on 2026-10-16 from the legacy macro chapter (slice 37), for monetary-policy-curve, curve-term-structure,
+% rates-inflation, rate-derivatives and the section overview rates-credit-mortgages. Gliner (2014) is cited by chapter,
+% section and PDF page of the ebook; central-bank, Treasury and CFTC texts as retrieved on 16 October 2026.
+% Dispositions in notes/migration-slices.md, slice 37; the legacy files verbatim in notes/artefacts/multi-asset-systematic-macro/.
+
+\section{Central banks, the policy path and the curve}
+
+\begin{qfdefinition}[Central-bank policy framework: mandates, conventional tools, the balance sheet and money aggregates, the zero lower bound, quantitative easing and its measured effects, crisis lending facilities, and hawks and doves]\label{def:central-bank-policy-framework}
+\qffield{Statement} Gliner's chapter on central banks \citep[chap.~11, PDF pp.~355--400]{s7-gliner}:
+\begin{itemize}
+\item \emph{Goals} (sec.\ ``Monetary Policy Goals'', pp.~356--357): price stability above all, with the Fed's statutory goals of maximum employment, stable prices and moderate long-term rates, the Bank of England's monetary and financial stability, and the SNB's price stability under its law.
+\item \emph{Tools} (sec.\ ``Tools Used by Central Banks'', pp.~358--361): the policy rate, the overnight rate at which banks lend reserves, which he calls ``the single strongest action''; the reserve requirement, with a money multiplier of $1/r$ (10 at 10 percent); open market operations and repos; discount-window lending; and currency intervention, \emph{sterilised} when the central bank offsets the effect on the monetary base and \emph{unsterilised} when it does not (pp.~360--361).
+\item \emph{Monetary base and money supply} (pp.~365--367): the base is currency plus reserves; the quantity identity $MV=PY$; aggregates M1--M3 in Table~11.1, with M2 ``historically'' a predictor of nominal income.
+\item \emph{Zero lower bound and liquidity trap} (p.~370), and \emph{quantitative easing} (pp.~371--374): purchases of government bonds and MBS financed with reserves; Table~11.4, from Bauer's San Francisco Fed letter of May 2012, gives the cumulative change in the 10-year Treasury yield on announcement days of $-1.00$ percentage point for QE1 (five dates, 25 November 2008 to 18 March 2009), $-0.14$ for QE2 (three dates in 2010) and $-0.08$ for the maturity extension programme (21 September 2011) (p.~373).
+\item \emph{Communication} (pp.~375--379): hawks and doves, with a dove's hawkish remark moving markets more than a hawk's, and the Bank of England's minutes as the example (\hyperref[meth:macro-event-queries]{event queries}).
+\item \emph{Fed crisis programmes} (appendix, pp.~396--398): central-bank liquidity swap lines (first announced 12 December 2007); the Term Auction Facility (28-day, later 84-day, loans auctioned to avoid the discount-window stigma); the Term Securities Lending Facility (Treasuries lent to primary dealers for 28 days against other collateral); the Primary Dealer Credit Facility; the AMLF; the Commercial Paper Funding Facility; the Term Asset-Backed Securities Loan Facility; and agency MBS purchases of \$1.25 trillion in QE1 (p.~371).
+\end{itemize}
+
+\qffield{Notation} $r$ required reserve ratio; $M$ money, $V$ velocity, $P$ price level, $Y$ real output; M0 (or the base), M1, M2 and M3 as each central bank defines them.
+
+\qffield{Conditions} \emph{Announcement-day effects are not total effects.} Bauer's figures sum one-day yield changes on announcement dates; they measure the surprise component on those days, not the cumulative effect of the purchases, and depend on which dates are chosen. The legacy ``QE1 lowered 10-year yields by 100bp; QE2 by only 14bp'' should carry that qualification. \emph{Money multiplier.} $1/r$ is a textbook upper bound; with interest on reserves and ample reserves, bank lending does not follow reserves mechanically, as the legacy itself notes. \emph{Definitions change.} Gliner's U.S.\ M1--M3 are as of 2013; the current H.6 definitions were not checked.
+
+\qffield{Practice} The legacy's three policy regimes (conventional, with the rate as the tool; unconventional, at the lower bound, working through asset prices, expectations and FX; crisis, where liquidity provision dominates), its four QE channels (portfolio rebalancing, term-premium and credit-spread compression, signalling, exchange rate), and its list of mandates including currency stability for the SNB and PBOC, are a reasonable synthesis but are the legacy's framing, not Gliner's text; separating the rate-path, term-premium and balance-sheet channels is what the pathway's readings do.
+
+\qffield{Pitfalls} The legacy said the monetary base ``can only be controlled via open market operations''; lending facilities, FX intervention and interest on reserves also change it. ``Yield curves flatten naturally; carry trades distort; volatility is suppressed'' at the ZLB are untested assertions. ``Effectiveness diminishes with successive rounds'' reads Bauer's smaller later numbers as declining effectiveness; smaller surprises would give the same pattern.
+
+\qffield{See also} \hyperref[mod:taylor-rule]{Taylor rule}; \hyperref[rule:major-central-banks-current]{major central banks}; \hyperref[meth:policy-path-ois-futures]{policy path from OIS and futures}; \hyperref[def:currency-regimes-intervention]{currency regimes and intervention}; \hyperref[def:money-market-reference-rates]{money-market reference rates}.
+
+\qffield{Further reading} Large-scale asset purchases \citep{rt-gagnon-lsap-2011}; Bauer's 2012 letter itself was not read.
+
+\qffield{Index} central bank mandate; price stability; maximum employment; policy rate; reserve requirement; money multiplier; open market operations; discount window; sterilised intervention; unsterilised intervention; monetary base; money supply; M1; M2; M3; quantity theory; zero lower bound; liquidity trap; quantitative easing; announcement-day yield changes; Term Auction Facility; TSLF; CPFF; TALF; swap lines; hawks and doves
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~11, PDF pp.~355--400, including Table~11.4 and the appendix). Stability: draft. Currency: Gliner's account as of 2013; QE figures as of May 2012.
+\end{qfdefinition}
+
+\begin{qfmodel}[The Taylor rule: Taylor's 1993 equation, its 2 percent equilibrium real rate and coefficients, the Taylor principle, and the legacy and Gliner variants]\label{mod:taylor-rule}
+\qffield{Statement} Taylor's rule for the federal funds rate is \citep[p.~202, eq.~(1)]{taylor-1993}
+\[ r=p+0.5\,y+0.5\,(p-2)+2, \]
+where $r$ is the federal funds rate, $p$ the rate of inflation over the previous four quarters and $y$ the percent deviation of real GDP from target; the equilibrium real rate and the inflation target are both 2 percent. The general form used in the legacy is $i_t=r^*+\pi_t+\alpha(\pi_t-\pi^*)+\beta(y_t-y^*_t)$, with $r^*=2$, $\pi^*=2$ and $\alpha=\beta=0.5$ in Taylor's version. Gliner quotes the Kansas City Fed's verbal definition and prints the formula as an image \citep[chap.~11, sec.\ ``Taylor Rule'', PDF pp.~361--362]{s7-gliner}.
+
+\qffield{Notation} $i_t$ (Taylor's $r$) nominal policy rate; $\pi_t$ inflation; $\pi^*$ target; $y_t-y^*_t$ output gap in percent; $r^*$ equilibrium real rate.
+
+\qffield{Conditions} The response of the nominal rate to inflation is $1+\alpha=1.5$, greater than one: the \emph{Taylor principle}, under which a rise in inflation raises the real rate. On target with no gap the rule gives 4 percent; inflation of 4 percent gives 7 percent; a $-2$ percent gap gives 3 percent (slice-37 check script, section~5). Taylor fitted the rule to U.S.\ policy over 1987--1992 as a description and benchmark, not as a law central banks follow.
+
+\qffield{Practice} Gliner suggests forecasting the rule's inputs with the market's one-year CPI forecast and an output measure, and comparing the result with fed funds futures (p.~362). The legacy's statement that central banks use the rule ``as a benchmark, communication tool, and political shield'' is its own.
+
+\qffield{Pitfalls} The legacy gives $r^*$ as ``typically estimated 2--3\%''; Taylor used 2 percent, and current estimates of the neutral real rate are model-dependent and were not checked. One of Gliner's two printed forms reads ``$p+1/(2y)$'', a typesetting slip for $\tfrac12 y$: at $y=2$ it gives 4.25 instead of 5.00 (checks, section~5). Inputs measured with revised data overstate how well the rule fits in real time.
+
+\qffield{See also} \hyperref[def:central-bank-policy-framework]{central-bank policy}; \hyperref[meth:policy-path-ois-futures]{policy path from OIS and futures}.
+
+\qffield{Further reading} Taylor (1993), read as a scanned PDF from Taylor's Stanford page.
+
+\qffield{Index} Taylor rule; policy rule; equilibrium real rate; neutral rate; r-star; output gap; inflation gap; Taylor principle; federal funds rate
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Taylor (1993), p.~202, from the page image; Gliner's text, chap.~11, PDF pp.~361--362; the arithmetic in the slice's check script). Stability: draft. Currency: timeless; Taylor's calibration as of 1993.
+\end{qfmodel}
+
+\begin{qfrule}[Major central banks as of 16 October 2026: Fed, ECB, Bank of England, Bank of Japan and SNB mandates, committees and meeting frequency; ECB crisis tools and TARGET2; communication and the Bank of England's 2012 minutes]\label{rule:major-central-banks-current}
+\qffield{Statement} \emph{Federal Reserve.} The FOMC has twelve voting members, the seven members of the Board of Governors, the president of the Federal Reserve Bank of New York and four of the other eleven Reserve Bank presidents serving one-year rotating terms, and holds eight regularly scheduled meetings a year \citep[page updated 7 October 2026]{fomc-page}. Its inflation goal is 2 percent on the annual change in the PCE price index \citep[pp.~1--2]{fomc-longer-run-goals}. \emph{ECB.} The Governing Council comprises the six members of the Executive Board and the governors of the 21 euro-area national central banks, and takes monetary policy decisions every six weeks \citep[page dated 10 September 2026]{ecb-governing-council}; its strategy targets 2 percent HICP inflation over the medium term, symmetrically \citep[retrieved 2026-10-16]{ecb-strategy}. \emph{Bank of England.} The Monetary Policy Committee has nine members, four of them external \citep[retrieved 2026-10-16]{boe-mpc-page}; ``The Monetary Policy summary and minutes are published at 12 noon on a Thursday eight times a year'' \citep[page last updated 31 January 2023]{boe-mps-minutes}. \emph{Bank of Japan.} The Policy Board has nine members, the Governor, two Deputy Governors and six other members \citep[retrieved 2026-10-16]{boj-policy-board}. \emph{SNB.} Price stability means a rise in the consumer price index of less than 2 percent a year, assessed quarterly \citep[retrieved 2026-10-16]{snb-strategy}.
+
+\qffield{Conditions} \emph{Historical, as Gliner gives them} \citep[chap.~11, sec.\ ``Central Banks'', PDF pp.~380--393]{s7-gliner}: four to five of the eight FOMC meetings had projections and a press conference (p.~380); the ECB's Governing Council had 23 members and ``usually meets twice a month'' (p.~383); the three-year LTROs allotted \texteuro529.5 billion in December 2011 and \texteuro489.2 billion on 29 February 2012 (p.~384); OMT was announced on 6 September 2012, with the SMP terminated, for one- to three-year bonds of countries under strict conditionality, with ``no limits to size'' and full sterilisation (pp.~386--387); German credit exposure through TARGET2 to countries like Spain had risen ``to around \texteuro700 billion'' (pp.~387--388); the SNB introduced a minimum EUR/CHF rate of 1.20 on 6 September 2011 (p.~391). The Bank of England raised its asset purchases by \pounds50 billion to \pounds375 billion on 5 July 2012 (Table~11.3, p.~372), after June minutes showing a 5--4 vote against more QE, against 8--1 in May (pp.~377--379).
+
+\qffield{Practice} Membership changes with euro-area enlargement: Gliner's 23 (six plus seventeen governors) and the legacy's 25 (six plus nineteen) were each right for their time; 27 is current. Communication channels, the legacy's list (statements after each meeting, minutes, press conferences, projections such as the Fed's dot plot, speeches), are standard; their current formats should be read from each bank's site.
+
+\qffield{Pitfalls} \emph{Legacy errors and gaps.} ECB ``HICP $<2\%$'' is the pre-2021 formulation; the current target is symmetric 2 percent. ``Released with lag (2 to 3 weeks)'' for minutes describes the Bank of England's practice in 2012 and the Fed's three-week lag, not the Bank of England's current practice of publishing minutes with the summary; the date of that change was not checked. Gliner calls TARGET2 a platform ``for settling almost all heavily traded securities'' (p.~387); it is the Eurosystem's large-value payment system, and securities settlement is a separate platform. The legacy's Bank of Japan (``Pioneer of QE, yield curve control (YCC), negative rates''), PBOC (trading band, active reserve requirements), SNB floor abandonment (2015), ECB APP and TLTRO, and OMT ``Never actually used'' are not in Gliner and were not checked against the banks' releases (backlog). ``First major central bank to publish inflation forecasts'' for the Bank of England was not checked.
+
+\qffield{See also} \hyperref[def:central-bank-policy-framework]{central-bank policy}; \hyperref[data:us-macro-release-calendar]{release calendar}; \hyperref[def:currency-regimes-intervention]{currency regimes} (the SNB floor).
+
+\qffield{Further reading} Each bank's own site for current decisions; Gliner, chap.~11, for the 2008--2013 record.
+
+\qffield{Index} Federal Open Market Committee; FOMC membership; FOMC meetings; ECB Governing Council; ECB strategy; symmetric inflation target; HICP; Bank of England MPC; MPC minutes; Bank of Japan Policy Board; Swiss National Bank; EUR/CHF floor; LTRO; OMT; SMP; TARGET2; central bank communication; dot plot
+
+\qffield{Status} Verification: partly checked 2026-10-16 (the Federal Reserve's FOMC page and Statement on Longer-Run Goals; the ECB's Governing Council and strategy pages; the Bank of England's MPC and summary-and-minutes pages; the Bank of Japan's Policy Board page; the SNB's strategy page, all as retrieved; Gliner's text, chap.~11, PDF pp.~372--393). Stability: draft. Currency: as of 16 October 2026 for current membership and frequency; Gliner's account as of 2013.
+\end{qfrule}
+
+\begin{qfmethod}[Reading the policy path: fed funds futures, overnight index swaps, meeting-dated OIS probabilities, and Eurodollar futures as a historical LIBOR contract converted to SOFR in 2023]\label{meth:policy-path-ois-futures}
+\qffield{Statement} \emph{Fed funds futures} settle on 100 minus the average daily effective fed funds rate for the contract month, on a \$5 million face value \citep[chap.~9, sec.\ ``Federal (Fed) Funds'', PDF pp.~257--259, Table~9.1]{s7-gliner}. An \emph{overnight index swap} exchanges a fixed rate for the compounded overnight rate (the effective fed funds rate in the United States; in Gliner's time EONIA, SONIA and TOIS elsewhere); OIS are ``great tools to hedge or speculate in central bank action'', usually under two years, with customisable dates (sec.\ ``Overnight Indexed Swaps (OIS)'', pp.~260--261). Gliner's example: with Bank Rate at 0.50 percent, a December MPC-dated OIS at 0.625 prices ``a 50 percent chance for a hike'' of 25~bp ($(0.625-0.50)/0.25$) (p.~261). \emph{Eurodollar futures}, as Gliner describes them in 2013--2014 (sec.\ ``London Interbank Offered Rate (LIBOR)'', pp.~254--255): \$1,000,000 notional on three-month LIBOR, price 100 minus the rate, one basis point worth \$25, March, June, September and December months, and colour codes by year (white, red, green, blue, gold and beyond).
+
+\qffield{Notation} $P=100-R$; for a 90-day period, $\$1{,}000{,}000\times0.0001\times90/360=\$25$ per basis point (\nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~7).
+
+\qffield{Conditions} \emph{Probabilities from OIS.} The $(\text{OIS}-\text{current})/\text{step}$ reading holds when the swap's period starts at the meeting's effective date (a meeting-dated OIS) and only one move of one size is possible. If part of the period precedes the meeting, the average is diluted: with 60 percent of the period after the meeting, the same quote implies 83 percent (checks, section~6). Term premia, the spread between the overnight index and the policy rate, and the possibility of a larger move make the reading approximate.
+
+\qffield{Practice} \emph{The end of LIBOR and of Eurodollar futures.} On 5 March 2021 ICE Benchmark Administration announced that it could not publish the main U.S.\ dollar LIBOR settings on a representative basis beyond 30 June 2023, and the FCA confirmed that three-month U.S.\ dollar LIBOR would cease to be representative immediately after that date; SOFR, selected by the ARRC in 2017 and published since April 2018, became the successor, with CME SOFR futures from May 2018; CME converted open Eurodollar futures and options into three-month SOFR futures and options in April 2023 (the CBOT filing gives ``April 23, 2023''); synthetic one-, three- and six-month U.S.\ dollar LIBOR was published until 30 September 2024 and barred from new contracts and cleared derivatives \citep[secs.~1--2, pp.~1--5]{cbot-23-214}. The ARRC records that the U.S.\ dollar LIBOR panel ended after 30 June 2023 and that new use had stopped after 31 December 2021 \citep[retrieved 2026-10-16]{arrc-sofr-transition}. In Europe, EONIA was discontinued on 3 January 2022 \citep[retrieved 2026-10-16]{emmi-eonia}; the ECB has published \texteuro{}STR since 2 October 2019 \citep[retrieved 2026-10-16]{ecb-estr}.
+
+\qffield{Pitfalls} The legacy present tense (``Eurodollar futures are the most heavily traded futures contracts'', ``contract on 3-month LIBOR (transitioning to SOFR)'', ``Fed Funds effective in US, EONIA/EURSTR in Europe'') is historical: Eurodollar futures no longer trade and EONIA no longer exists. ``most heavily traded futures contracts in the world'' (legacy) follows Gliner (``the most actively traded futures market in the world based on contact [sic] volume'', p.~254), as of about 2013, and was not checked against exchange statistics. The exact conversion date is unresolved: the CBOT filing's 23 April 2023 is a Sunday, and CME's own notices, which were not retrievable, should settle it (backlog). Gliner's fed funds example (FFH4 at 99.79 ``pricing in 0.21'', computed as $100-99.97$) has a typo in the arithmetic (p.~257).
+
+\qffield{See also} \hyperref[def:money-market-reference-rates]{money-market reference rates}; \hyperref[mod:forward-rates-fra]{forward rates and FRAs}; \hyperref[def:interest-rate-swaps]{interest-rate swaps}; \hyperref[def:interest-rate-measures]{interest-rate measures}.
+
+\qffield{Further reading} Market-based policy expectations \citep{rt-kuttner-2001}; SOFR futures pricing and hedging \citep{gap-rates-sofr-futures-hedging}.
+
+\qffield{Index} fed funds futures; overnight index swap; OIS; meeting-dated OIS; implied probability of a rate move; Eurodollar futures; LIBOR cessation; SOFR; SOFR futures; synthetic LIBOR; Eurodollar conversion; EONIA; euro short-term rate; policy path
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~254--261; CBOT Submission No.~23-214, as filed with the CFTC on 1 June 2023; the ARRC's SOFR-transition page, EMMI's EONIA page and the ECB's \texteuro{}STR page as retrieved; the probability and tick arithmetic in the slice's check script). Stability: draft. Currency: Eurodollar and LIBOR material historical; status as of 16 October 2026.
+\end{qfmethod}
+
+\begin{qfmethod}[Curve trades, carry and rolldown, and inversion as a recession signal: DV01-neutral steepeners and flatteners, bull and bear moves, carry signs that depend on the curve, and the Estrella--Trubin record]\label{meth:curve-trades-carry-rolldown}
+\qffield{Statement} Flatteners and steepeners trade the spread between two points of the curve, ``done DV01 neutral'', for example 2s10s, the 10-year yield minus the 2-year \citep[chap.~9, sec.\ ``Flatteners and Steepeners'', PDF pp.~266--267]{s7-gliner}; a \emph{bear flattener} has short rates rising more than long rates, a \emph{bull flattener} long rates falling more than short (p.~267, Figure~9.7), and by symmetry a \emph{bull steepener} has short rates falling more and a \emph{bear steepener} long rates rising more. A steepener is long the short maturity and short the long maturity in DV01-matched amounts. \emph{Carry} is the income of a position net of financing over a holding period; \emph{rolldown} is the price change as a bond ages along an unchanged curve. Total return $\approx$ carry $+$ rolldown $+$ the effect of yield changes. \emph{Inversion as a recession signal.} Estrella and Trubin's preferred spread is the 10-year constant-maturity Treasury yield minus the three-month secondary-market bill rate on a bond-equivalent basis, in monthly averages; it ``has turned negative before each recession in the period from January 1968 to July 2006''; all six NBER recessions since 1968 were preceded by at least three negative monthly averages in the twelve months before, with no false signals on a monthly-average basis, while negative spreads occurred on 100 days between 1968 and 2005 in months that did not have a negative average \citep[pp.~4--5]{estrella-trubin-2006}. The 2s10s spread ``tends to turn negative earlier and more frequently'' (p.~4).
+
+\qffield{Notation} DV01 price change per 1~bp yield change (\hyperref[mod:duration-convexity]{duration and convexity}); a DV01-neutral steepener holds $N_2\,\mathrm{DV01}_2=N_{10}\,\mathrm{DV01}_{10}$.
+
+\qffield{Conditions} \emph{Carry signs.} The legacy's carry ``$+$ for steepeners, $-$ for flatteners in normal yield curve'' is not general. For a DV01-neutral steepener (long 2-year, short 10-year), carry per unit DV01 is positive with 2-year at 1.5 percent, 10-year at 3 percent and repo at 1 percent, but negative with an inverted front (2-year 4.5, 10-year 4.0, repo 5.0) and also negative with a mildly upward curve when repo is close to the 2-year yield (2.0, 2.5, 2.4) (\nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~9). Rolldown is deterministic only if the curve is unchanged, and carry is known at inception only for a fixed financing rate.
+
+\qffield{Practice} Gliner defines rolldown as rolling a futures or bond position to keep the original maturity profile (p.~268); that is the roll of a position, not rolldown in the usual sense defined above. Porter's view that a steepener is in effect a bet on a bond rally (\hyperref[meth:macro-practitioner-frameworks]{practitioner frameworks}) restates the empirical tendency of the curve to steepen in rallies. Gliner reads an inversion far out the curve, as in Portugal and Greece in 2010--2012, as pricing default risk, and a mild inversion near the front as pricing cuts (sec.\ ``Curve Inversion'', p.~271; \hyperref[def:sovereign-credit-defaults]{sovereign credit}).
+
+\qffield{Pitfalls} The legacy's ``inversion has preceded every US recession since 1970'' and a typical lead time of 6 to 18 months are not what Estrella and Trubin show: their record is six recessions from 1968 to 2005, on a specific spread and monthly averages, with a twelve-month horizon in their probit model; daily inversions give false signals. The inversion of 2022--2024 and the absence (or dating) of a following recession were not checked against NBER determinations (backlog). ``Necessary but not sufficient'' in the legacy contradicts its own claim that inversion preceded every recession; on Estrella and Trubin's sample monthly inversion was a sufficient signal, not a necessary condition.
+
+\qffield{See also} \hyperref[mod:duration-convexity]{duration and convexity}; \hyperref[mod:forward-rates-fra]{forward rates and term-structure theories}; \hyperref[def:macro-regime-asset-map]{regime map}; \hyperref[conv:government-bond-futures]{government bond futures}.
+
+\qffield{Further reading} Term-structure decomposition \citep{rt-gurkaynak-wright-2012}, the pathway's subject.
+
+\qffield{Index} steepener; flattener; bull steepener; bear steepener; bull flattener; bear flattener; 2s10s; DV01 neutral; carry; rolldown; total return decomposition; yield curve inversion; recession signal; 10-year minus 3-month spread; Estrella--Trubin; probit model; false signals
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~266--271; Estrella and Trubin (2006), pp.~1--6; carry signs computed in the slice's check script). Stability: draft. Currency: inversion record to 2005; later episodes unchecked.
+\end{qfmethod}
+
+\begin{qfdefinition}[TIPS and breakeven inflation: index ratio and CPI-U lag, the principal floor, semiannual interest, the auction schedule then and now, and what a breakeven contains besides expected inflation]\label{def:tips-breakevens}
+\qffield{Statement} TIPS are Treasury securities whose principal is indexed to the CPI-U, not seasonally adjusted, through a reference index with a three-month lag; the fixed coupon rate is applied to the adjusted principal, and at maturity the holder receives the greater of the adjusted principal and the original principal \citep[chap.~9, PDF pp.~247--249]{s7-gliner}; the floor ``does not apply to coupon payments'' (p.~248). TreasuryDirect describes TIPS as issued in 5-, 10- and 30-year terms, paying interest every six months, and repaying the adjusted or the original principal, whichever is greater; its current schedule has the 5-year auctioned in April and October and reopened in June and December, the 10-year in January and July and reopened in March, May, September and November, and the 30-year in February and reopened in August \citep[retrieved 2026-10-16]{treasurydirect-tips}. The \emph{breakeven inflation rate} is the nominal Treasury yield minus the TIPS real yield of the same maturity: 4.0 minus 1.5 gives 2.5 percent \citep[chap.~9, PDF p.~250]{s7-gliner}.
+
+\qffield{Notation} Index ratio $=\text{Ref CPI}_{\text{settle}}/\text{Ref CPI}_{\text{dated}}$; adjusted principal $=$ face $\times$ index ratio.
+
+\qffield{Conditions} A breakeven equals expected inflation plus an inflation risk premium minus a liquidity premium for TIPS (and is affected by the deflation floor and the indexation lag), so ``breakevens reflect market-implied inflation expectations'' holds only approximately; decomposing it is the pathway's outcome.
+
+\qffield{Practice} With cumulative CPI up 5 percent, the principal per 100 is 105 and coupons are paid on 105; with CPI down 2 percent, coupons are paid on 98 and the maturity payment is floored at 100 (\nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~11). Gliner's walk-through of the reference-index calculation for a March 2012 settlement uses December 2011 CPI-U (p.~249).
+
+\qffield{Pitfalls} Gliner's ``if CPI is 5 percent for a year, then the TIPS will trade at 105'' conflates the adjusted principal with the market price, which is the index ratio times a real clean price that moves with real yields. ``5Y, 10Y, and 30Y maturities issued quarterly'' (legacy) does not match the schedule above, and Gliner's 2014 auction calendar differs again (p.~247); the dates of changes were not checked (backlog). ``Short-end TIPS trade like food and energy'' (legacy) compresses the observation that short TIPS carry depends on headline CPI, which energy prices dominate month to month. Negative real yields mean holders accept a real loss if inflation equals the breakeven, not a ``guaranteed'' loss.
+
+\qffield{See also} \hyperref[def:macroeconomic-indicators]{inflation indicators}; \hyperref[def:macro-regime-asset-map]{regime map}; \hyperref[def:fixed-income-universe]{fixed-income universe}.
+
+\qffield{Further reading} TIPS breakeven decomposition \citep{gap-inflation-tips-decomposition}; TreasuryDirect's CPI reference data \citep{gap-inflation-tips-spec}.
+
+\qffield{Index} TIPS; Treasury Inflation-Protected Securities; CPI-U NSA; reference CPI; index ratio; indexation lag; deflation floor; real yield; breakeven inflation; inflation risk premium; TIPS liquidity premium; inflation swap; TIPS auction schedule
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~247--250; TreasuryDirect's TIPS page as retrieved; the arithmetic in the slice's check script). Stability: draft. Currency: schedule as of 16 October 2026; Gliner's as of 2014.
+\end{qfdefinition}
+
+\begin{qfdefinition}[Interest-rate swaps for macro use: fixed for floating, payer and receiver, the swap curve, clearing, and uses]\label{def:interest-rate-swaps}
+\qffield{Statement} An interest-rate swap exchanges fixed for floating interest payments on a notional; ``future LIBOR expectations drive [the] swap curve'', and ``while most trade OTC'' they are used to hedge interest-rate exposure and lock in spreads \citep[chap.~9, sec.\ ``Interest Rate Swaps'', PDF p.~256]{s7-gliner}. A \emph{payer} pays fixed and receives floating, gaining when rates rise; a \emph{receiver} receives fixed, gaining when rates fall. Today's U.S.\ dollar swaps reference SOFR, compounded in arrears (\hyperref[meth:policy-path-ois-futures]{LIBOR cessation}).
+
+\qffield{Notation} Par swap rate: the fixed rate that sets the swap's value to zero at inception; the floating leg follows the reference rate's conventions (\hyperref[def:interest-rate-measures]{interest-rate measures}).
+
+\qffield{Conditions} The payer gains from a rise in the swap rate for the remaining term, not only in the floating rate; with SOFR, the floating amount is known only at the end of each period.
+
+\qffield{Practice} The legacy's ``increasingly exchange-traded post-Dodd-Frank'' should read centrally cleared and, for some, traded on swap execution facilities; clearing is covered in \hyperref[mech:otc-clearing-collateral]{OTC clearing and collateral}. ``The largest derivatives market by notional'' is a commonly cited BIS statistic, not checked here.
+
+\qffield{Pitfalls} Do not read a swap curve as pure expectations: it contains term premia and, against Treasuries, swap spreads with their own drivers.
+
+\qffield{See also} \hyperref[mod:forward-rates-fra]{forward rates and FRAs}; \hyperref[meth:policy-path-ois-futures]{OIS}; \hyperref[mech:otc-clearing-collateral]{OTC clearing}.
+
+\qffield{Further reading} The 2021 ISDA definitions \citep{gap-rates-isda-definitions}.
+
+\qffield{Index} interest-rate swap; fixed for floating; payer swap; receiver swap; par swap rate; swap curve; SOFR swap; central clearing
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF p.~256; LIBOR cessation per the CBOT filing cited in the policy-path entry). Stability: draft. Currency: SOFR conventions as of 2026; Gliner's LIBOR account as of 2014.
+\end{qfdefinition}
+
+\begin{qfdefinition}[The fixed-income universe for macro: money markets, government, inflation-linked, corporate, municipal, mortgage and asset-backed bonds, and fixed-income ETFs]\label{def:fixed-income-universe}
+\qffield{Statement} Gliner opens his fixed-income chapter with bank credit and debt capital markets funding governments, corporations and consumers, and covers money markets, LIBOR, swaps, fed funds, OIS, FRAs, futures, TIPS, sovereign credit and CDS \citep[chap.~9, opening, PDF p.~245]{s7-gliner}; he calls fixed income ``the most important'' product group for macro (chap.~4, PDF p.~95). The legacy's universe: money markets (maturities under a year: bills, commercial paper, repo, fed funds, SOFR); government bonds; inflation-linked bonds (TIPS, U.K.\ index-linked gilts, French OATi); corporate bonds, investment grade and high yield; municipal bonds, often tax-exempt; agency and non-agency MBS, with prepayment risk; and ABS. Gliner's ETF list (sec.\ ``Exchange Traded Funds (ETFs)'', PDF p.~280) gives liquid access to these segments.
+
+\qffield{Notation} IG and HY the investment-grade and high-yield credit classes; agency MBS guaranteed by GSEs.
+
+\qffield{Conditions} ``Fixed income is the largest of the four product groups by notional outstanding'' (legacy) was not checked against BIS or SIFMA data; derivative notionals and bond stocks are not comparable.
+
+\qffield{Practice} Gliner's Table~9.5 lists SHY, IEF, TLT, TBT, AGG, LQD, TIP, MBB, MUB, PCY, HYG, JNK and BKLN (p.~280); the legacy dropped BKLN and added EMB. These are funds as of 2013; check each fund's current prospectus before use. Inverse and leveraged ETFs such as TBT reset daily, so their multi-day returns are not the stated multiple of the index's.
+
+\qffield{Pitfalls} An ETF's price can deviate from the value of its bonds in stress; creation and redemption arbitrage is in \hyperref[mech:etf-creation-redemption]{ETF creation and redemption}.
+
+\qffield{See also} \hyperref[def:money-market-reference-rates]{money markets}; \hyperref[def:tips-breakevens]{TIPS}; \hyperref[def:sovereign-credit-defaults]{sovereign credit}; \hyperref[mech:cds-contract-credit-events]{CDS}; \hyperref[def:fixed-income-market-structure]{fixed-income market structure}.
+
+\qffield{Further reading} The section's readings on each segment.
+
+\qffield{Index} fixed income universe; money markets; government bonds; inflation-linked bonds; linkers; OATi; corporate bonds; investment grade; high yield; municipal bonds; mortgage-backed securities; asset-backed securities; fixed income ETFs; leveraged ETF daily reset
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~245 and 280, and chap.~4, p.~95). Stability: draft. Currency: segment list timeless; ETF names as of the 2010s.
+\end{qfdefinition}

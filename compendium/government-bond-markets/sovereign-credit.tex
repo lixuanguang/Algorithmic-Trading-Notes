@@ -1,0 +1,26 @@
+% compendium/government-bond-markets/sovereign-credit.tex
+% Entry migrated on 2026-10-16 from the legacy macro chapter (slice 37, 02_transmission_maps.tex), owned by
+% sovereign-municipal. Gliner (2014) is cited by chapter, section and PDF page of the ebook.
+% Dispositions in notes/migration-slices.md, slice 37.
+
+\section{Sovereign credit}
+
+\begin{qfdefinition}[Sovereign credit risk: issuers and CDS reference entities, inverted sovereign curves, the 40 percent recovery convention against Moody's recoveries, and the 1998--2006 default record with later cases left to check]\label{def:sovereign-credit-defaults}
+\qffield{Statement} Gliner gives ISDA's 2003 definition of a sovereign, ``any state, political subdivision, or government, or any agency, instrumentality, ministry, department, or other authority (including the central bank) thereof'', and notes that a country has many issuers (for Greece, the Hellenic Republic's several bond programmes and state companies) in several currencies \citep[chap.~9, sec.\ ``Sovereign Credit'', PDF pp.~269--270]{s7-gliner}. The \emph{reference entity} is the legal name used in CDS, ``Greece is the Hellenic Republic'' (Table~9.3, pp.~274--275). An inverted curve ``further out'' typically means ``the market is pricing in default risk'', as in Portugal's five-year yield above its long bonds (sec.\ ``Curve Inversion'', p.~271). Loss severity is one minus recovery, ``usually assumed to be 40 percent''; Moody's recoveries on defaulted sovereign bonds for 1983--2006 average 55 percent with a standard deviation of 24 percent (Figure~9.10, p.~278). His Table~9.4 (from Moody's, \emph{Sovereign Default and Recovery Rates, 1983--2006}, June 2007) lists defaults from 1998 to 2006, among them Russia (August 1998, \$72,709 million: local-currency Treasury obligations first, then a moratorium on foreign-currency obligations, restructured in 1999--2000), Argentina (November 2001, \$82,268 million, a distressed exchange with haircuts of about 70 percent), Uruguay (April 2003, \$5,744 million, a distressed exchange extending maturities by five years), and Peru, Moldova, the Dominican Republic and Belize (pp.~275--278).
+
+\qffield{Notation} Recovery $R$ as a fraction of par; loss given default $1-R$; amounts in the table in millions of U.S.\ dollars of debt affected.
+
+\qffield{Conditions} \emph{The recovery comparison.} Gliner concludes that a mean of 55 with a standard deviation of 24 ``is not enough evidence to dispute the standard 40 percent''. Whether it is depends on the number of independent defaults, which he does not give: the mean differs from 40 at the 5 percent level once there are more than about ten independent issuers (\nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~12). Recoveries also differ in measurement (trading prices after default against the value of exchanged bonds) and by restructuring.
+
+\qffield{Practice} Peripheral euro-area spreads to Bunds, which the legacy calls key risk indicators, are the subject of \texttt{dm-sovereign-bonds}; Gliner's account of Greece's two bailouts and of five-year CDS moving from 345 to 890~bp in April--May 2010 is in his chapter~11 (PDF p.~389).
+
+\qffield{Pitfalls} \emph{Legacy additions not in Gliner and not checked}: ``Greece 2012: PSI restructuring, largest sovereign default in history, \$200B+'' and ``Argentina 2020: Ninth default, \$65B restructured''; the ISDA Determinations Committee's 2012 decision on Greece was not read (backlog). The legacy's ``recovery rates vary widely (20\%--80\%)'' and ```orderly' restructurings tend to have higher recovery'' were not checked. The legacy's ``market prices default risk'' holds for credit-driven inversions; a front-end inversion in a default-free curve prices rate cuts (\hyperref[meth:curve-trades-carry-rolldown]{curve trades}).
+
+\qffield{See also} \hyperref[mech:cds-contract-credit-events]{CDS contracts and credit events}; \hyperref[meth:curve-trades-carry-rolldown]{curve inversion}; \hyperref[meth:fx-valuation-signals]{FX valuation signals} (sovereign risk and currencies).
+
+\qffield{Further reading} Restructuring practice \citep{gap-sovereign-restructuring-playbook}, among the pathway's readings.
+
+\qffield{Index} sovereign credit; sovereign debt; reference entity; Hellenic Republic; inverted curve; default risk; recovery rate; loss given default; 40 percent recovery; Moody's sovereign recoveries; Russia 1998; Argentina 2001; Uruguay 2003; distressed exchange; haircut; peripheral spreads
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~269--279, with Tables~9.3--9.4 and Figure~9.10; Moody's 2007 report itself not read; the recovery test computed in the slice's check script). Stability: draft. Currency: default record to 2006; later restructurings unchecked.
+\end{qfdefinition}

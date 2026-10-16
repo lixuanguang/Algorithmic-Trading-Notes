@@ -207,6 +207,13 @@ print(f"  w(q) = q on [q_min,1], 2 on (1,2), 5 on [2,3] (not lower semicontinuou
 assert att and abs(s - 1.0) < 1e-9
 print("  lower semicontinuity with a compact domain is sufficient, not necessary; on [q_min, inf) a constant w < wbar")
 print("  is continuous and has no maximal feasible size, so boundedness is needed as well")
+# second slice-35 follow-up: units. w in currency per share gives C = q w; w in basis points of
+# the midpoint m gives C = q m w_bp / 10,000
+q_, m_, w_bp = 100, 100.0, 10.0
+C_cash = q_ * m_ * w_bp / 10_000
+print(f"  units: {q_} shares at midpoint {m_:.0f} and {w_bp:.0f} bp cost C = q m w_bp/10,000 = {C_cash:.0f} (currency); "
+      f"the same cost as w = {m_*w_bp/10_000:.2f} per share")
+assert abs(C_cash - 10.0) < 1e-12 and abs(q_ * (m_ * w_bp / 10_000) - C_cash) < 1e-12
 
 
 # 5. Search stopping ---------------------------------------------------------------------

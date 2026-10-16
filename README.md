@@ -26,7 +26,7 @@ compendium/legacy/<section-key>/        notes awaiting migration, compiled as th
 tools/migration_status.py               migration progress and entry metadata checks, with its tests
 ```
 
-A chapter appears in the PDF once `compendium/<section-key>/section.tex` exists; `compendium.tex` already lists every section key of the guide. The legacy folders are a temporary convention of this repository, not part of the guide's layout: `compendium/legacy/part.tex` compiles them after the main chapters, and each folder is deleted once its blocks are migrated.
+A chapter appears in the PDF once `compendium/<section-key>/section.tex` exists; `compendium.tex` already lists every section key of the guide. The legacy folders were a temporary convention of this repository, not part of the guide's layout: `compendium/legacy/part.tex` compiled them after the main chapters, and each folder was deleted once its blocks were migrated. The migration finished on 16 October 2026 (slice 37): no legacy chapter remains, `part.tex` is gone, and only `compendium/legacy/execution-trading-costs/figures/` (21 unused figures) is left; the original texts are in `notes/artefacts/`.
 
 ## Building
 

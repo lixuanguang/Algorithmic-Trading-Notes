@@ -36,6 +36,10 @@ Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quot
 
 Slice 36, 2026-10-16: cyclic (triangular) currency arbitrage is in `def:arbitrage` (owned by `execution-market-making`): the no-arbitrage band with bid and ask quotes, derived and checked, and Harris's three-legged currency box recomputed. It concerns cross-pair pricing, which bears on this pathway's choice between internalising and hedging across currency pairs, but it is Harris's arbitrage material, so it was not written as an entry here.
 
+Slice 37, 2026-10-16: the legacy macro chapter's FX market-structure block was merged into `def:fx-market-structure` (Gliner's $4 trillion and trading hours, the BIS's $9.6 trillion for April 2025, and the legacy's "5.5 days" corrected). The dollar, the dollar index and the SDR are in `def:us-dollar-dxy-sdr` (`currency-markets`).
+
+Slice-36 follow-up, 2026-10-16: `def:arbitrage` now states the triangular equality only for frictionless quotes; with spreads, cross-rate midpoints may differ while no executable cycle profits (EUR/USD, USD/JPY, EUR/JPY example recomputed).
+
 ## Entry backlog
 
 - ev:fx-last-look-fill-reject-evidence: measured fill rates, reject rates, hold times and client markouts under last look against firm liquidity, with benchmarks, horizons and selection effects; Oomen's last-look and aggregator papers (unread) and empirical FX studies are needed before such an entry.

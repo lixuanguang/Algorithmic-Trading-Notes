@@ -1,0 +1,146 @@
+% compendium/multi-asset-systematic-macro/macro-regimes-data.tex
+% Entries migrated on 2026-10-16 from the legacy macro chapter (slice 37), for macro-regimes-stock-bond,
+% macro-nowcasting-signals, macro-announcements-policy and cross-asset-style-premia. Gliner (2014) is cited by chapter,
+% section and PDF page of the ebook; the FOMC's statement and the BLS page as retrieved on 16 October 2026.
+% Dispositions in notes/migration-slices.md, slice 37; the legacy files verbatim in notes/artefacts/multi-asset-systematic-macro/.
+
+\section{Regimes, indicators, releases and valuation}
+
+\begin{qfdefinition}[A regime map of asset responses: growth, recession, inflation, deflation, liquidity and geopolitical shocks across rates, credit, equities and sectors, currencies and commodities, as hypotheses to test]\label{def:macro-regime-asset-map}
+\qffield{Statement} A \emph{regime map} lists the direction in which each asset class is expected to move under a type of macro shock. Gliner's version is qualitative: a risk-on/risk-off grouping of assets, correlations that rise in stress (Figure~4.5, around Lehman), and the need to know which relationships hold in the current environment \citep[chap.~4, sec.\ ``Assessing the Relationships between Assets'', PDF pp.~98--102]{s7-gliner}; sector rotation, defensive sectors such as consumer staples in recession, and the need to know ``whether or not the economy is in contraction, recovery, expansion, or slowing growth'' (chap.~8, sec.\ ``Sector Rotation'', PDF pp.~216--217, Figure~8.3). The legacy map, kept here as the hypotheses it is:
+\begin{itemize}
+\item \emph{Growth shock}: yields up, curve steeper, credit tighter, equities and cyclicals up, industrial commodities up, growth-linked currencies (AUD, CAD, EM) up.
+\item \emph{Recession}: yields down, curves bull-steepen or flatten, credit wider, equities down, USD up, commodities down except gold; defensives (staples, utilities, health care) lead.
+\item \emph{Inflation shock}: nominal yields up, curve bear-steepens, TIPS beat nominals, commodities (energy, agriculture) up; equities depend on real rates; low-credibility central banks' currencies punished.
+\item \emph{Deflation or disinflation}: nominal yields and breakevens down, duration rallies.
+\item \emph{Liquidity shock or financial crisis}: USD up sharply, Treasuries rally, credit spreads gap wider, correlations jump, volatility spikes, the cross-currency basis widens, funding markets seize.
+\item \emph{USD weakness}: commodity prices up. \emph{Geopolitical crisis}: energy and gold up.
+\end{itemize}
+The legacy cycle-phase sector table (recovery: financials, consumer discretionary, real estate; expansion: industrials, materials, technology; late cycle: energy, materials) is the conventional sector-rotation scheme, of which Gliner's text gives only the recession example.
+
+\qffield{Notation} A \emph{bull steepener} is a steeper curve with falling yields, a \emph{bear steepener} with rising yields (\hyperref[meth:curve-trades-carry-rolldown]{curve trades}).
+
+\qffield{Conditions} None of these signs is a law. They depend on the monetary regime and on what kind of shock moves inflation: the stock--bond correlation, for example, has changed sign across decades, which is what the pathway \texttt{macro-regimes-stock-bond} sets out to model. Classifying regimes needs information available at the time; a map built on ex post NBER dates or revised data is look-ahead.
+
+\qffield{Practice} Use the map to state a thesis's expressions and its hedges, then test each sign on dated regimes with real-time data before relying on it. The legacy phrase that the curve ``summarises the entire macro narrative'' and that fixed income ``tells what the market thinks will happen before it happens'' is a reading of the expectations component of yields, which also contain term premia (\hyperref[mod:forward-rates-fra]{forward rates and term-structure theories}).
+
+\qffield{Pitfalls} The legacy's ``real rates may fall initially'' in an inflation shock and ``curve bull steepens then flattens'' in a recession are ordering claims with no source; the ordering depends on the policy response. An inverse correlation between commodities and the dollar (legacy) holds on average in some samples and fails in others.
+
+\qffield{See also} \hyperref[def:global-macro-strategy]{global macro}; \hyperref[def:macroeconomic-indicators]{macroeconomic indicators}; \hyperref[def:central-bank-policy-framework]{central-bank policy}; \hyperref[def:tips-breakevens]{TIPS and breakevens}.
+
+\qffield{Further reading} The pathway's readings on regimes and the stock--bond correlation (for example \citep{wide-ang-timmermann-regimes}).
+
+\qffield{Index} regime map; macro regime; growth shock; recession; inflation shock; deflation; liquidity shock; risk on risk off; sector rotation; defensive sectors; cyclical sectors; stock--bond correlation; regime-dependent correlation
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~4, PDF pp.~98--102, and chap.~8, pp.~216--217; the legacy map is otherwise unsourced). Stability: draft. Currency: hypotheses, untested here.
+\end{qfdefinition}
+
+\begin{qfdefinition}[Macroeconomic indicators for macro trading: growth, inflation, employment, external accounts, fiscal, consumption, housing and business surveys, and demographics, with the FOMC's inflation goal and Gliner's demographic table read correctly]\label{def:macroeconomic-indicators}
+\qffield{Statement} Gliner's chapter on data releases \citep[chap.~12, PDF pp.~401--428]{s7-gliner} groups the indicators a macro trader watches:
+\begin{itemize}
+\item \emph{Growth} (sec.\ ``Measuring Growth'', p.~402): GDP, nominal and real, quarterly with revisions.
+\item \emph{Inflation} (sec.\ ``Inflation'', pp.~404--405): CPI and core CPI, PCE, the euro area's HICP, and the PPI, which measures ``the average change over time in the selling prices received by domestic producers''.
+\item \emph{Employment} (sec.\ ``Employment and Population'', pp.~406--409): the unemployment rate, the labour force and participation rate (labour force as a share of the civilian noninstitutional population), and nonfarm payrolls, ``released on the first Friday of the month'', with average hourly earnings.
+\item \emph{External accounts} (sec.\ ``Balance of Payments'', pp.~410--412): the current account (trade balance, net income and transfers), the trade balance, and the terms of trade, export prices relative to import prices.
+\item \emph{Government} (sec.\ ``Government Indicators'', pp.~413--415): the budget balance and debt-to-GDP.
+\item \emph{Consumption} (sec.\ ``Consumption Indicators'', pp.~416--417): retail sales, the savings rate and consumer confidence (Conference Board, University of Michigan).
+\item \emph{Industry and services} (sec.\ ``Industry and Services Indicators'', pp.~418--420): purchasing managers' indices, with above 50 read as expansion and new orders and inventories among their components; industrial production; building permits, which lead housing starts; and capacity utilisation.
+\item \emph{Demographics} (sec.\ ``Demographics'', pp.~421--426): working-age (15--64) and prime-saving (35--69) populations, with Table~12.2 (U.S.\ Census Bureau) giving each country's peak year for both, and Trichet's remark that the current account ``is an important summary indicator'' (p.~424).
+\end{itemize}
+
+\qffield{Notation} \emph{Headline} and \emph{core} inflation (core excludes food and energy); PCE the personal consumption expenditures price index; PMI a diffusion index, $\%\text{better}+\tfrac12\%\text{same}$, scaled so that 50 means no change.
+
+\qffield{Conditions} \emph{The Fed's inflation goal.} Gliner writes that ``the Fed targets core PCE'' (p.~405), and the legacy that ``central banks target core''. The FOMC's goal is 2 percent inflation ``as measured by the annual change in the price index for personal consumption expenditures'', the headline index; the statement was first adopted effective 24 January 2012 and was reaffirmed effective 27 January 2026 \citep[Statement on Longer-Run Goals and Monetary Policy Strategy, pp.~1--2]{fomc-longer-run-goals}. Core measures are watched as guides to the trend, not targeted. Gliner's further statements that PCE ``targets urban consumers'' and HICP ``rural consumers'' are wrong as descriptions: urban coverage defines the CPI-U, not PCE, and the HICP covers household consumption in general. \emph{Payroll dates.} The Employment Situation is usually published on the first Friday but not always; the BLS's own schedule is the record (the next release, as of retrieval, 6 November 2026) \citep[program page, retrieved 2026-10-16]{bls-ces-page}.
+
+\qffield{Practice} \emph{Demographic peaks.} The legacy list of ``peak working-age'' years mixes Gliner's two columns: Netherlands 1989, U.K.\ 2009 and U.S.\ 2007 are working-age (15--64) peaks, while Germany 2006, Japan 2016, China 2032, Korea 2023, Russia 2025, Spain 2022, India, Indonesia and the Philippines 2050 are prime-saving (35--69) peaks; Nigeria shows 2050 in both (Table~12.2, pp.~422--423; matched year by year in \nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~15). These are projections published around 2013 and will have moved. \emph{Other legacy claims.} Consumption ``more than 70 percent of GDP'' in the United States is Gliner's (chap.~8, p.~238); the legacy's U.S.\ consumer at about 15 percent of global GDP is not in the passages read. PPI leading CPI by one to three months, that the ISM new-orders-minus-inventories spread is a reliable leading indicator, the quits rate as an indicator of labour-market tightness, wage growth driving stickier services inflation and the legacy's median ages are conventional practitioner statements with no source here.
+
+\qffield{Pitfalls} \emph{Capacity utilisation} ``over 100 percent'' (Gliner, p.~420; legacy) is not a reading one sees in the Federal Reserve's series, which measures output relative to sustainable capacity and has stayed well below 100 percent; read deviations from its own history. \emph{Nonfarm payroll scope.} The legacy's list of exclusions (farms, private households, nonprofits, self-employed, military) is not in Gliner and could not be checked against the BLS handbook, whose page was not retrievable; the exclusion of nonprofits in particular is doubtful (backlog). Debt-to-GDP above 90 percent as a threshold (Gliner, p.~414) is the contested Reinhart--Rogoff finding, not a rule.
+
+\qffield{See also} \hyperref[data:us-macro-release-calendar]{U.S.\ release calendar}; \hyperref[meth:macro-event-queries]{event queries}; \hyperref[meth:equity-macro-leading-indicators]{equity leading indicators}; \hyperref[def:tips-breakevens]{TIPS and breakevens}; \hyperref[def:central-bank-policy-framework]{central-bank policy}.
+
+\qffield{Further reading} Nowcasting with release vintages, the pathway's subject \citep{wide-giannone-nowcasting}.
+
+\qffield{Index} macroeconomic indicators; GDP; CPI; core inflation; PCE; HICP; PPI; nonfarm payrolls; unemployment rate; participation rate; current account; trade balance; terms of trade; budget balance; debt-to-GDP; retail sales; savings rate; consumer confidence; PMI; diffusion index; industrial production; building permits; housing starts; capacity utilisation; demographics; working-age population; prime-saving age; dependency ratio
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~12, PDF pp.~401--428, and Table~12.2; the FOMC's Statement on Longer-Run Goals, as amended effective 27 January 2026; the BLS Current Employment Statistics page as retrieved). Stability: draft. Currency: FOMC goal as of 16 October 2026; Gliner's data and projections as of about 2013.
+\end{qfdefinition}
+
+\begin{qfmethod}[Leading indicators for equities in Gliner's macro toolkit: commodity prices, the CDX high-yield index, the ISM PMI, the Baltic Dry Index, consumer confidence and Australian-dollar implied volatility]\label{meth:equity-macro-leading-indicators}
+\qffield{Statement} Gliner lists indicators that lead or confirm equity moves \citep[chap.~8, sec.\ ``Valuation Techniques for Equities'', PDF pp.~233--240]{s7-gliner}: the year-on-year change in commodity prices, whose rise is inflationary and invites tightening (pp.~233--234); the five-year CDX high-yield index (CDX.NA.HY), rising with risk aversion and inversely related to equities (pp.~234--235); the ISM manufacturing PMI, where ``the ISM \dots\ goes below 50, the United States typically enters recession'' (p.~235); the Baltic Dry Index, a composite of Capesize, Panamax, Handysize and Supramax dry-bulk freight assessments, watched because raw materials lead (p.~236); the ARMS index (pp.~237--238); consumer confidence, since consumption is over 70 percent of U.S.\ GDP (p.~238); and three-month AUD/USD implied volatility, ``highly correlated'' with the VIX and inversely with the S\&P 500, most useful as a rate of change, though ``given the choice, using the VIX is a more effective factor'', and the two combined ``smooth out any error'' (pp.~239--240).
+
+\qffield{Notation} CDX.NA.HY the Markit North American high-yield CDS index, quoted as a price or spread; ISM the U.S.\ Institute for Supply Management.
+
+\qffield{Conditions} These are Gliner's chart readings (Figures~8.12--8.18), without lead-lag statistics or out-of-sample tests; The reading of ISM below 50 as recession has had false signals, since the index has fallen below 50 outside recessions.
+
+\qffield{Practice} Treat each as a candidate signal for the nowcasting pathway: build it from real-time vintages and test its lead against equity returns.
+
+\qffield{Pitfalls} The legacy said the Baltic Dry Index ``cannot be speculated (no futures market)'' and that ship supply is ``fixed''; Gliner says neither. Dry-bulk freight is traded through forward freight agreements settled on Baltic route assessments (the \texttt{freight-forward-hedging} pathway; not checked here), and fleet supply changes with deliveries and scrapping.
+
+\qffield{See also} \hyperref[def:macroeconomic-indicators]{macroeconomic indicators}; \hyperref[meth:equity-index-valuation]{equity-index valuation}; \hyperref[def:vix-variance-dividend-swaps]{VIX}.
+
+\qffield{Further reading} Mixed-frequency nowcasting \citep{wide-banbura-nowcasting}.
+
+\qffield{Index} leading indicators; commodity prices year on year; CDX high yield; ISM PMI; Baltic Dry Index; dry bulk freight; ARMS index; consumer confidence; AUD implied volatility; risk barometer
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~8, PDF pp.~233--240). Stability: draft. Currency: Gliner's charts to 2013.
+\end{qfmethod}
+
+\begin{qfdata}[U.S.\ macro release calendar: the usual monthly cadence of employment, inflation, activity and survey releases, FOMC and ECB meeting frequency, and why the agencies' own schedules are the record]\label{data:us-macro-release-calendar}
+\qffield{Statement} The legacy cadence: the Employment Situation (payrolls, unemployment, wages) on the first Friday; CPI, retail sales and industrial production mid-month; housing starts and permits in the third week; GDP (quarterly), personal income and outlays (PCE) and durable goods late in the month; the ISM manufacturing PMI on the first business day and the services PMI on the third. Of these, the first-Friday payroll convention is Gliner's \citep[chap.~12, PDF p.~406]{s7-gliner}, and the BLS's schedule shows the next Employment Situation on Friday 6 November 2026 \citep[program page, retrieved 2026-10-16]{bls-ces-page}. The FOMC holds eight regularly scheduled meetings a year \citep[retrieved 2026-10-16, page updated 7 October 2026]{fomc-page}. The ECB's Governing Council takes monetary policy decisions every six weeks \citep[retrieved 2026-10-16]{ecb-governing-council}, about eight a year.
+
+\qffield{Notation} Release times are U.S.\ Eastern; each agency (BLS, BEA, Census Bureau, Federal Reserve Board, ISM) publishes its own calendar.
+
+\qffield{Conditions} The cadence is a pattern, not a rule: payrolls move when the first Friday falls too early in the month or on a holiday, and government shutdowns have postponed releases. Use the agencies' published calendars, archived as they stood on each date, to rebuild a release timeline without look-ahead.
+
+\qffield{Practice} A backtest that uses data at its reference date rather than its release time, or uses revised values, has look-ahead; keep first-release values and their timestamps (\hyperref[meth:macro-event-queries]{event queries}).
+
+\qffield{Pitfalls} The legacy said the ECB meets ``6 per year''; the ECB's own page gives decisions every six weeks. The mid-month and late-month placements and the ISM business-day rules were not checked against current calendars (backlog).
+
+\qffield{See also} \hyperref[def:macroeconomic-indicators]{macroeconomic indicators}; \hyperref[meth:macro-event-queries]{event queries}; \hyperref[rule:major-central-banks-current]{major central banks}.
+
+\qffield{Further reading} Announcement returns \citep{wide-savor-wilson-announcements}.
+
+\qffield{Index} release calendar; economic calendar; Employment Situation; first Friday; CPI release; GDP release; ISM; FOMC meetings; ECB meetings; release timestamps; data vintages
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner, chap.~12, PDF p.~406; the BLS CES program page, the Federal Reserve's FOMC page and the ECB's Governing Council page as retrieved; other agencies' calendars not read). Stability: draft. Currency: schedules as of 16 October 2026.
+\end{qfdata}
+
+\begin{qfmethod}[Event queries around data releases and policy decisions: surprise against consensus, revisions, conditional back-tests of asset returns after past events, hit rates and their small-sample error]\label{meth:macro-event-queries}
+\qffield{Statement} Gliner's \emph{query} back-tests how assets behaved after past occurrences of an event like the one expected: choose the event and the conditioning (for an expected ``no change'' from the ECB, back-test meetings with no change), list the dates, and tabulate returns at fixed horizons with the share of up and down outcomes and the standard deviation \citep[chap.~3, secs.\ ``Simple Back-Tests and Queries'' and ``An Example of Building a Query'', PDF pp.~79--85]{s7-gliner}. His example is the Bank of England's quantitative easing in July 2012: the June minutes showed a 5--4 vote against more QE (against 8--1 in May), traders expected an expansion, and the query over the six earlier QE announcements shows the FTSE~100 up on 5 of 6 announcement days (83 percent), averaging 0.3 percent, and up on all six four days later, averaging 1.7 percent, at horizons of 1 to 5 days, two weeks and one month (Tables~3.1--3.2, pp.~80--83). He adds analogs, comparing current price paths with past ones (sec.\ ``Historical Correlations and Analogs'', p.~86).
+
+\qffield{Notation} \emph{Surprise} = actual minus consensus forecast, often scaled by its standard deviation; \emph{hit rate} = share of events in which the asset moved in the expected direction.
+
+\qffield{Conditions} With six events, a hit rate means little: five or more up out of six has probability 0.109 under a fair coin, and six of six 0.016 (\nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~4); overlapping horizons from the same six dates are not independent tests. The conditioning set is chosen after the fact, which invites data mining. A query on a release also needs the surprise, not the level: markets price the consensus beforehand.
+
+\qffield{Practice} The legacy's principles (surprise direction and size drive the move; initial releases move markets and material revisions move them again; NFP and CPI dominate in the United States and PMIs globally; what matters depends on the regime) are standard practitioner views, consistent with the announcement literature the pathway reads, but not shown in Gliner's chapter. Report the number of events and a confidence interval with any hit rate.
+
+\qffield{Pitfalls} ``If position moves against you immediately after event, cut quickly'' is advice, not a result. Back-testing on revised data, or on event dates known only afterwards, adds look-ahead.
+
+\qffield{See also} \hyperref[data:us-macro-release-calendar]{release calendar}; \hyperref[def:macroeconomic-indicators]{macroeconomic indicators}; \hyperref[def:central-bank-policy-framework]{central-bank communication}; \hyperref[meth:skill-luck-significance-tests]{tests of skill against luck}.
+
+\qffield{Further reading} High-frequency policy surprises \citep{rt-kuttner-2001} and announcement-day returns \citep{wide-savor-wilson-announcements}, the pathway's readings.
+
+\qffield{Index} event study; query; back-test; analog; data surprise; consensus forecast; revisions; hit rate; small sample; Bank of England quantitative easing 2012; MPC vote split
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~3, PDF pp.~79--86, with Tables~3.1--3.2; the binomial probabilities computed in the slice's check script). Stability: draft. Currency: example as of July 2012.
+\end{qfmethod}
+
+\begin{qfmethod}[Equity-index valuation for macro: top-down country and sector selection, price-to-book, dividend yield, P/E and forward P/E, free-cash-flow yield and market capitalisation to GDP, with Gliner's thresholds as rules of thumb]\label{meth:equity-index-valuation}
+\qffield{Statement} Gliner describes a top-down approach to equities, from a global view to countries, then sectors, then optionally companies; if the investor knows where the next opportunity lies, the reward comes from concentrated rather than index exposure \citep[chap.~8, sec.\ ``Taking a Top-Down Macro Approach'', PDF pp.~215--216, Figure~8.1]{s7-gliner}. His valuation measures (sec.\ ``Valuation Techniques for Equities'', PDF pp.~228--233): price-to-book, where ``a P/B greater than 2.5$\times$ is generally thought to be overbought, and a P/B lower than 1.5$\times$ is oversold'' (the S\&P 500 near 1.5 in 2008, p.~228); dividend yield, paid while waiting (p.~229); trailing and forward P/E, with earnings yield its reciprocal (pp.~230--232); price-to-free-cash-flow and its reciprocal, a Graham-and-Dodd screen (pp.~232--233); and stock market capitalisation to GDP, ``more worrisome'' the further above 100 percent and quickly rising, as when Japan's passed 150 percent in 1989 (p.~233).
+
+\qffield{Notation} P/B price over book value per share; P/E price over earnings per share (forward: analysts' next-year estimate); FCF operating cash flow minus capital expenditure.
+
+\qffield{Conditions} The thresholds are rules of thumb for the S\&P 500's history, not levels that transfer across markets or eras: sector mix, accounting, intangible assets and interest rates move normal valuation ranges. Market capitalisation to GDP mixes a global firm's value with domestic output.
+
+\qffield{Practice} For \texttt{cross-asset-style-premia}, value in equity indices is measured cross-sectionally (cheap against expensive countries), not against a fixed threshold. Gliner's Tobin's $q$, which he says gives ``a score between 0 and 1'' (p.~228), is not bounded above by one: $q$ is market value over replacement cost and has exceeded one for long periods.
+
+\qffield{Pitfalls} The legacy's P/B above 2.5$\times$ as ``generally overbought'', as a timing rule, has no test here; valuation predicts long-horizon returns weakly and timing poorly.
+
+\qffield{See also} \hyperref[def:equity-indices-derivatives]{equity indices}; \hyperref[meth:equity-macro-leading-indicators]{equity leading indicators}; \hyperref[def:macro-regime-asset-map]{regime map}.
+
+\qffield{Further reading} Value and momentum across asset classes, among the pathway's readings.
+
+\qffield{Index} top-down approach; country selection; sector selection; price-to-book; dividend yield; price-to-earnings; forward P/E; earnings yield; free cash flow yield; market capitalisation to GDP; Tobin's q; Japan 1989; equity index valuation
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~8, PDF pp.~215--216 and 228--233). Stability: draft. Currency: Gliner's thresholds as of 2013.
+\end{qfmethod}

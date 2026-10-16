@@ -1,9 +1,24 @@
-% migrate-to: macro-nowcasting-signals, macro-announcements-policy, monetary-policy-curve, fx-determination-forecasting
+% notes/artefacts/multi-asset-systematic-macro/transmission-maps.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 37, 2026-10-16): the whole of
+% compendium/legacy/multi-asset-systematic-macro/02_transmission_maps.tex
+% below its migrate-to line (migrate-to: macro-nowcasting-signals, macro-announcements-policy, monetary-policy-curve, fx-determination-forecasting), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: 75 blocks, and the section's introductory prose and its top-level list of FX roles, to entries in the multi-asset, currency, rates, government-bond, credit, equity, volatility, energy, physical-commodity and commodity-premia chapters, with merges into mod:duration-convexity, mod:forward-rates-fra and def:fx-market-structure; the full table is in notes/migration-slices.md, slice 37. Checked against Gliner (2014), chaps. 2, 4 and 7-10, and dated primary sources.
+% Compile inside notes/artefacts/multi-asset-systematic-macro/ with  latexmk -pdf transmission-maps.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: transmission and cross-asset mapping}
+
+% From compendium/legacy/multi-asset-systematic-macro/02_transmission_maps.tex (whole file, deleted 2026-10-16 once empty).
 \section{Transmission and Cross-Asset Mapping}
 
 This section services as a primer for four basic asset classes and their usage in global macro trading.
 
-\subsection{Building Blocks of Global Macro}
+\subsection*{Building Blocks of Global Macro}
 
 \begin{remark} \hlt{Macro Strategy Product Groups}\\
 The four core product groups in global macro are:
@@ -118,7 +133,7 @@ A macro view expressed in only one asset class is incomplete. A single macro the
 Having multiple expressions allows for confirmation across asset classes and provides natural hedging if one leg underperforms.
 \end{remark}
 
-\subsection{Foreign Exchange in Global Macro}
+\subsection*{Foreign Exchange in Global Macro}
 
 FX plays three special roles simultaneously:
 \begin{enumerate}[label=\roman*.]
@@ -232,7 +247,7 @@ Finding the carry-to-risk ratio is useful, as is comparing all currency pairs on
 \end{remark}
 
 
-\subsection{Equities in Global Macro}
+\subsection*{Equities in Global Macro}
 
 In macro, a trader should understand equity in terms of market behaviour in the country being traded, the sectors that make up those indices, and correlation risk.
 
@@ -352,7 +367,7 @@ Three-month AUD/USD implied volatility is highly correlated with VIX and inverse
 Using VIX and AUD volatility combined on an absolute basis smooths out error as a more useful measure.
 \end{remark}
 
-\subsection{Fixed Income in Global Macro}
+\subsection*{Fixed Income in Global Macro}
 
 Fixed income is the lifeblood of the global financial system. Bank credit and debt capital markets fund governments, corporations, and consumers. Understanding fixed income is essential for macro trading because yields encode growth expectations, inflation expectations, and central bank credibility.
 
@@ -652,7 +667,7 @@ Curve inversion is necessary but not sufficient for recession. Duration and dept
 Fixed income tells what the market thinks will happen before it happens. The curve summarises the entire macro narrative.
 \end{remark}
 
-\subsection{Commodities in Global Macro}
+\subsection*{Commodities in Global Macro}
 
 Commodities are driven by physical supply and demand, inventories, and geopolitics. They are highly sensitive to growth cycles, inflation shocks, and currency moves (especially USD). Commodities anchor macro views in real economic constraints.
 
@@ -944,3 +959,5 @@ Weather is the primary supply shock driver in agriculture:
 \end{enumerate}
 Commodities are the inflation and real-economy link in the macro framework.
 \end{remark}
+
+\end{document}

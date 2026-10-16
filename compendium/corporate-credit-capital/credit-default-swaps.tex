@@ -1,0 +1,26 @@
+% compendium/corporate-credit-capital/credit-default-swaps.tex
+% Entry migrated on 2026-10-16 from the legacy macro chapter (slice 37, 02_transmission_maps.tex), owned by
+% corporate-credit-cds. Gliner (2014) is cited by chapter, section and PDF page of the ebook.
+% Dispositions in notes/migration-slices.md, slice 37.
+
+\section{Credit default swaps}
+
+\begin{qfmechanism}[The credit default swap: premium leg paid quarterly, physical settlement against par and its cash equivalent par minus recovery, credit events for sovereigns and corporates, counterparty risk, and what has changed since Gliner's account]\label{mech:cds-contract-credit-events}
+\qffield{Statement} A CDS works like insurance on a reference entity's debt: the protection buyer pays a premium, ``quoted at an annual spread, but paid quarterly'' (100~bp a year is 25~bp a quarter, ``usually in March, June, September, and December''); being long credit risk means selling protection and receiving the spread \citep[chap.~9, sec.\ ``Credit Default Swaps (CDS)'', PDF pp.~272--273]{s7-gliner}. The basic terms are the reference obligation, notional, spread and maturity (p.~273). On a credit event, in Gliner's description, ``the protection buyer stops paying the premium and delivers the reference bond to the protection seller. Then the protection seller makes the protection buyer whole by transferring par (100)'' (p.~273, Figure~9.9). His two characteristic credit events are \emph{failure to pay} and \emph{restructuring} (postponing, reducing or deferring obligations); for sovereigns, he writes, ``CDS is not automatically triggered during a restructuring event and both protection buyer and seller have a right (but not an obligation) to trigger the CDS'' (p.~273). More than one party can buy protection on the same debt, so CDS notional can exceed the reference obligations (p.~272), and the seller's own default is a counterparty risk (p.~273).
+
+\qffield{Notation} $s$ annual spread; $N$ notional; $R$ recovery as a fraction of par; protection payout $N(1-R)$.
+
+\qffield{Conditions} Physical and cash settlement give the same economic payout: the buyer delivers a bond worth $R$ and receives par, a net gain of $1-R$, or receives $1-R$ in cash (\nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~12). The legacy's buyer who ``receives par if credit event occurs'' does so only on delivery of the bond; its seller ``pays par minus recovery'' describes the cash equivalent.
+
+\qffield{Practice} Gliner's argument for buying protection, that on \$10 million at 100~bp the investor pays \$100,000 a year ``with almost unlimited upside (up to \$10,000,000)'' (p.~279), overstates the payout: the gain is $N(1-R)$, \$6 million at 40 percent recovery, less premiums paid. He notes that CDS are more often bought to hedge a bond position, the difference between the bond and CDS spreads being the \emph{basis} (p.~279).
+
+\qffield{Pitfalls} \emph{Practice has moved on.} Gliner's account follows earlier contract practice. Since 2009, standard contracts have used fixed coupons with upfront payments, ISDA Determinations Committees that decide whether a credit event has occurred, and auctions that fix a single recovery for cash settlement; the 2014 ISDA Credit Derivatives Definitions now govern \citep[catalogue entry only, not read]{add-cds-contract}. None of this was checked here (backlog), so the legacy's ``both buyer and seller have right (not obligation) to trigger'' and ``Greece 2012 required ISDA determination committee ruling'' are unverified. Bankruptcy as a credit event applies to corporates, not sovereigns, which cannot file for bankruptcy (legacy; consistent with Gliner's sovereign list, which omits it).
+
+\qffield{See also} \hyperref[def:sovereign-credit-defaults]{sovereign credit}; \hyperref[mech:otc-clearing-collateral]{OTC clearing and collateral}; \hyperref[meth:equity-macro-leading-indicators]{CDX high yield as an equity indicator}.
+
+\qffield{Further reading} The ISDA CDS standard model \citep{add-cds-model}, among the pathway's readings.
+
+\qffield{Index} credit default swap; CDS; protection buyer; protection seller; premium leg; quarterly payment dates; physical settlement; cash settlement; recovery; credit event; failure to pay; restructuring; bankruptcy; naked CDS; counterparty risk; CDS basis; Determinations Committee; CDS auction
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~272--279; settlement equivalence computed in the slice's check script; current ISDA documentation not read). Stability: draft. Currency: Gliner's account as of 2013, largely pre-2009 practice.
+\end{qfmechanism}

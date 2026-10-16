@@ -90,6 +90,14 @@ for _ in range(n_trials):
 print(f"  {n_trials:,} random quote sets: a cycle earns money exactly when the direct quotes do not overlap the synthetic "
       f"band [bid x bid, ask x ask]: agreement {viol_agree}/{n_trials}")
 assert viol_agree == n_trials
+# slice-36 follow-up: midpoints need not satisfy the frictionless equality while no cycle pays
+q = {"EURUSD": (1.0999, 1.1001), "USDJPY": (109.99, 110.01), "EURJPY": (120.99, 121.03)}
+a_, b_ = cycle_profits(q)
+syn_mid = (q["EURUSD"][0] + q["EURUSD"][1]) / 2 * (q["USDJPY"][0] + q["USDJPY"][1]) / 2
+dir_mid = sum(q["EURJPY"]) / 2
+print(f"  quotes EUR/USD 1.0999/1.1001, USD/JPY 109.99/110.01, EUR/JPY 120.99/121.03: synthetic midpoint {syn_mid:.2f}, "
+      f"direct {dir_mid:.2f}; cycle returns per euro {a_:.5f} (via USD) and {b_:.5f} (via JPY): no arbitrage")
+assert abs(syn_mid - 121.00) < 1e-9 and abs(dir_mid - 121.01) < 1e-9 and a_ < 1 and b_ < 1
 
 
 # 3. Make/take fees and the speed race -----------------------------------------------------

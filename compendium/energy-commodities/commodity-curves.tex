@@ -1,0 +1,26 @@
+% compendium/energy-commodities/commodity-curves.tex
+% Entry migrated on 2026-10-16 from the legacy macro chapter (slice 37, 02_transmission_maps.tex), owned by
+% commodity-storage-curves. Gliner (2014) is cited by chapter, section and PDF page of the ebook.
+% Dispositions in notes/migration-slices.md, slice 37.
+
+\section{Curves and inventories}
+
+\begin{qfdefinition}[Contango, backwardation and ending stocks: storage and financing costs, scarcity premia, seasonal crop curves, the stocks-to-use ratio, and roll yield stated carefully]\label{def:contango-backwardation-stocks}
+\qffield{Statement} Gliner: commodities are driven by supply (producers, costs, yield, weather, politics) and demand (population, development, alternative energy) \citep[chap.~10, secs.\ ``Supply Drivers'' and ``Demand Drivers'', PDF pp.~293--296]{s7-gliner}. \emph{Ending stock} ``effectively measures the inventory of a particular commodity''; crops are harvested once or twice a year while demand is continuous, and the stock carried over becomes the next season's beginning balance (sec.\ ``Ending Stock'', p.~296, Figure~10.1). \emph{Contango} is near-term futures trading below later ones, from storage, transport and the opportunity cost of capital (gold in a vault); \emph{backwardation} is near-term futures at a premium, as in a supply shortage (cocoa during an Ivory Coast export stoppage) or just before a harvest when stocks are depleted; a crop curve can show both, contango after harvest and backwardation before the next (sec.\ ``Contango and Backwardation'', pp.~297--298, Figure~10.2, corn as of 30 September 2013).
+
+\qffield{Notation} Balance sheet: beginning stocks $+$ production $+$ imports $-$ consumption $-$ exports $=$ ending stocks; stocks-to-use $=$ ending stocks $/$ total use. Full carry: $F=S e^{(r+u-y)T}$ with storage cost $u$ and convenience yield $y$ (\hyperref[res:cost-of-carry-forward-price]{cost-of-carry forward price}).
+
+\qffield{Conditions} The legacy identity ``ending stocks $=$ beginning stocks $+$ production $-$ consumption'' holds for the world, not for a country, which also has trade; with imports of 5 and exports of 12 on a balance of 10, 100 and 95, ending stocks are 8, not 15 (\nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~16). Low stocks relative to use support prices and make them sensitive to small supply changes, which is the storage model the pathway estimates; the legacy's ``most important driver of commodity prices'' is an overstatement of it.
+
+\qffield{Practice} The monthly WASDE report \citep[catalogue entry only, not read]{physical-usda-wasde-2026} gives USDA's U.S.\ and world supply-and-demand balances. ``Normal state for storable commodities like gold'' (legacy contango) fits monetary metals with large above-ground stocks; it is not a general rule for storable commodities, which can be backwardated when inventories are scarce.
+
+\qffield{Pitfalls} ``Contango creates negative roll yield; backwardation creates positive roll yield'' (legacy) is true of the roll component holding the curve fixed, not of total returns, and it says nothing on its own about a risk premium: whether backwardation reflects scarcity or compensation for risk is the pathway's question.
+
+\qffield{See also} \hyperref[res:cost-of-carry-forward-price]{cost-of-carry forward price}; \hyperref[def:futures-hedge-basis]{futures hedges and basis}; \hyperref[def:commodity-indices-risk-return]{commodity indices}; \hyperref[def:agricultural-markets]{agricultural markets}.
+
+\qffield{Further reading} The competitive storage model and convenience yield, the pathway's readings.
+
+\qffield{Index} contango; backwardation; ending stocks; beginning stocks; stocks-to-use ratio; supply and demand balance; WASDE; storage costs; convenience yield; seasonal curve; crop year; roll yield
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~291--298; the trade-adjusted balance computed in the slice's check script). Stability: draft. Currency: timeless concepts; Gliner's examples as of 2013.
+\end{qfdefinition}

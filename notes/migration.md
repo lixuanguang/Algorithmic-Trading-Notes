@@ -15,7 +15,7 @@ Migrating a block and compiling the result advances only the first. An entry wri
 
 ## Conventions
 
-- **Legacy staging.** Old chapters live in `compendium/legacy/<section-key>/` and compile, through `compendium/legacy/part.tex`, as the final part *Notes awaiting migration*. This is a temporary convention of this repository, not part of the guide's layout. Their chapter labels carry a `legacy:` prefix so that they never collide with the canonical chapter label (`\label{<section-key>}`) when that chapter appears. Their block, figure and remark labels are unchanged.
+- **Legacy staging.** Old chapters lived in `compendium/legacy/<section-key>/` and compiled, through `compendium/legacy/part.tex`, as the final part *Notes awaiting migration*, a temporary convention of this repository, not part of the guide's layout. Slice 37 (16 October 2026) emptied the last legacy chapter and removed `part.tex` and its line in `compendium.tex`; only `compendium/legacy/execution-trading-costs/figures/` (21 unused figures) remains, and the original texts are in `notes/artefacts/`. The convention below is kept as the record of how the migration worked. Their chapter labels carry a `legacy:` prefix so that they never collide with the canonical chapter label (`\label{<section-key>}`) when that chapter appears. Their block, figure and remark labels are unchanged.
 - **Canonical homes.** Migrated entries go in `compendium/<section-key>/`, in the section where the guide first needs the concept. Other pathways link to that entry rather than restating it.
 - **Map.** `% migrate-to: key, key` on the first line of each legacy file with blocks names the pathways its blocks are *candidate* material for. These lists are provisional: drawn from the plan's folder table and narrowed by file name, not from reading every block. A file listing several pathways is shared material; none of those pathways owns its blocks until one is assigned.
 - **Assignment.** `% assign: <pathway-key>` on the line before a block assigns that block to one pathway. Only assigned blocks, or blocks in a file with a single candidate, count towards one pathway; the status script lists shared, unassigned blocks separately.
@@ -24,12 +24,12 @@ Migrating a block and compiling the result advances only the first. An entry wri
 
 - **Records.** Each slice appends one section to [migration-slices.md](migration-slices.md) and one row to the index below. A correction to a finished slice is appended as a follow-up; earlier records are left as written.
 
-## Status after slice 36 (16 October 2026)
+## Status after slice 37 (16 October 2026)
 
-- **Legacy blocks:** 120 = 110 shared + 10 single-candidate + 0 assigned (867 in the finance chapters at the baseline), all in `multi-asset-systematic-macro`.
-- **Entries:** 177, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
-- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30); `volatility-options` and `rates-credit-mortgages` (removed by slice 31); `ml-alternative-data` (removed by slice 32, its four figures moved to the slice's artefact); `execution-market-making` (removed by slice 36, its wrappers and files kept verbatim in the artefacts). One legacy chapter remains: `multi-asset-systematic-macro` (120 blocks).
-- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 240 pages; no LaTeX warnings; 0 overfull and 0 underfull boxes; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
+- **Legacy blocks:** 0 (867 in the finance chapters at the baseline). The migration of the notes written before the study method is complete; that is migration progress only, not source verification, mastery or consolidation.
+- **Entries:** 211, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
+- **Legacy chapters emptied:** all. `execution-trading-costs` (only its 21 unused figures remain, in `compendium/legacy/execution-trading-costs/figures/`); `portfolio-construction-risk` (slice 30); `volatility-options` and `rates-credit-mortgages` (slice 31); `ml-alternative-data` (slice 32); `execution-market-making` (slice 36); `multi-asset-systematic-macro` (slice 37, which also removed `compendium/legacy/part.tex`). The old environments stay in `compendium/preamble.tex` because the preservation artefacts compile with them.
+- **Build:** `latexmk -g -pdf compendium.tex` exits 0; no LaTeX warnings; 0 overfull and 0 underfull boxes; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
 
 ## Slices
 
@@ -73,24 +73,25 @@ Blocks are the legacy blocks counted by `migration_status.py` before and after t
 | 33 | Orders, the limit order book and queues; trade signing and order-flow imbalance; stylised facts, event time and point processes (eight files, one batch) | `d40d4c2` | 532 → 459 | 135 → 151 | Trade-signing arithmetic, order type against aggressiveness, sessions, FIX states, realised-variance limits, waiting times |
 | 34 | The rest of the orders-and-matching folder: order instructions, matching and trade pricing, dark trading, routing and fragmentation (four files, folder closed) | `4d9d5da` | 459 → 351 | 151 → 158 | Pro-rata capacity, posting against crossing, ex-fixing domain, venue-share variance, SOR objective |
 | 35 | The foundations folder: market functions, motives, skill and luck, intermediaries, venues, sessions, liquidity; regulation, venue competition, U.S. and EU rules, circuit breakers (six files, folder closed) | `063de31` | 351 → 180 | 158 → 170 | Liquidity units, systematic internaliser and U.S. currency, queue stability, preservation counts |
-| 36 | The rest of the legacy microstructure chapter: market making (dealers, specialists, queue value, fees and the speed race, cross-asset arbitrage), information and volatility (price formation across venues, the Flash Crash and its toy model), and the feature- and data-engineering files (eight files, chapter closed) | this slice's commit | 180 → 120 | 170 → 177 | |
+| 36 | The rest of the legacy microstructure chapter: market making (dealers, specialists, queue value, fees and the speed race, cross-asset arbitrage), information and volatility (price formation across venues, the Flash Crash and its toy model), and the feature- and data-engineering files (eight files, chapter closed) | `ca6986e` | 180 → 120 | 170 → 177 | Triangular-arbitrage band (frictionless equality only) |
+| 37 | The legacy macro chapter: global macro, its record, sizing and practitioners; regimes, indicators, releases and event queries; central banks, the Taylor rule, the policy path and LIBOR's end, curve trades, TIPS, swaps and money markets; sovereign credit and CDS; currencies; equity indices, valuation and the VIX; commodity curves, indices, oil, gas, metals and agriculture (three files, chapter closed, legacy part removed) | this slice's commit | 120 → 0 | 177 → 211 | |
 
-## Next bounded slice
+## After the migration
 
-Only the legacy macro chapter remains (`compendium/legacy/multi-asset-systematic-macro/`, 120 blocks, none assigned): `01_regimes.tex` (35 blocks: the global-macro landscape, central banks, data releases and demographics; candidates `multi-asset-systematic-macro`, `macro-regimes-stock-bond`), `02_transmission_maps.tex` (75: building blocks, FX, equities, fixed income, commodities; four candidates) and `03_practitioner_insights.tex` (10: practitioner frameworks; single candidate `multi-asset-systematic-macro`). The chapter cites Gliner's *Global Macro Trading* (`s7-gliner`) as its source, and the practitioner file names interviewees (Leitner, Siva-Jothy, Wadhwani, Bessent and others).
+The migration slices are finished: no legacy block remains. The planning text that stood here before slice 37 (deferring the 75 transmission blocks until Gliner was obtained) is superseded; Gliner's *Global Macro Trading* was then available as a local PDF and was read for the whole chapter. Earlier slice records keep their own planning as written.
 
-**Source availability decides the order.** No copy of Gliner was found on this machine; Drobny's *Inside the House of Money* (`s7-drobny`, the 2006 Wiley edition, against the catalogue's revised 2013 edition) is available locally. Most central-bank and data-release claims can instead be checked against primary texts (central-bank statutes and statements, statistical agencies' release calendars, dated) and the macro pathways' readings, many of them open working papers.
+**Next substantive work** is study and verification, not migration, in this order:
 
-**Proposed slice 37, one batch of 45 blocks:** `03_practitioner_insights.tex` (10), checked interview by interview against Drobny, with any interview not in the 2006 edition marked unresolved, and `01_regimes.tex` (35), its central-bank and data-release blocks dated from primary sources and its regime and return-profile claims checked against `macro-regimes-stock-bond`'s open readings, Gliner-only claims kept as unverified with backlog stubs. Ownership by content: the strategy definition, trade types and practitioner frameworks to the overview `multi-asset-systematic-macro`; regime behaviour to `macro-regimes-stock-bond`; central-bank tools and communication probably to `monetary-policy-curve` or `macro-announcements-policy` (not candidates of the file, so routing exceptions to record); data releases to `macro-nowcasting-signals` and `point-in-time-data` for release timing and vintages. `02_transmission_maps.tex` (75) would follow as slice 38, ideally once Gliner has been obtained, since its asset-class maps paraphrase him most closely.
+1. **Human review of the draft entries**, starting with the newest and least-checked: the 34 macro entries of slice 37 (Gliner-derived figures as of 2013, practitioner opinions, dated central-bank facts), then the *For review* lists of slices 33--36. Review compares each claim with its passage and records the result in the entry's *Status*; it does not set mastery or consolidation dates.
+2. **Work the backlogs where the gap is a source to read**, not a judgement: for the macro chapter, the stubs listed in slice 37 (CME's Eurodollar conversion date, BoE minutes timing history, TIPS schedule history, BLS payroll scope, the ISDA 2012 Greece determination, the BIS 2025 dollar share, ICE's dollar-index methodology, current CME, Eurex, ICE and LME contract terms, agency commodity data, NBER dating after 2005).
+3. **Study pathways one at a time by the guide's method**, choosing ones whose entries already exist so that the readings can be checked against them, in the guide's order for the learner, prerequisites first. No pathway is mastered; `notes/log.md` is where you record that.
+4. **Tooling:** `tools/migration_status.py` still reports entry metadata, pathway-note listings and citation keys; its legacy-block counting now always reports zero and can be simplified later.
 
 ## File map
 
-One row per legacy file with blocks; `tools/migration_status.py --check` fails if this table and the files' `% migrate-to:` lines disagree.
+One row per legacy file with blocks; `tools/migration_status.py --check` fails if this table and the files' `% migrate-to:` lines disagree. Empty since slice 37: no legacy file with blocks remains.
 
 <!-- map:begin -->
 | Legacy file | Candidate pathways |
 |---|---|
-| `compendium/legacy/multi-asset-systematic-macro/01_regimes.tex` | multi-asset-systematic-macro, macro-regimes-stock-bond |
-| `compendium/legacy/multi-asset-systematic-macro/02_transmission_maps.tex` | macro-nowcasting-signals, macro-announcements-policy, monetary-policy-curve, fx-determination-forecasting |
-| `compendium/legacy/multi-asset-systematic-macro/03_practitioner_insights.tex` | multi-asset-systematic-macro |
 <!-- map:end -->

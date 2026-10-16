@@ -37,6 +37,10 @@ Changed in migration slice 31, 2026-10-15: `mech:futures-margin-settlement` gain
 
 Changed in migration slice 34, 2026-10-16: `conv:cme-globex-trading` (a note that pro-rata remainders need a further rule, with CME's own allocation steps not read, and a cross-reference to the general matching entry owned by `execution-market-making`).
 
+Written in migration slice 37, 2026-10-16, from the legacy macro chapter:
+
+- `conv:government-bond-futures`: Gliner's 2013--2014 U.S. Treasury contract sizes and ticks (recomputed), physical delivery and cheapest-to-deliver, the German Schatz, Bobl and Bund, and why the futures trade below the bond (carry, not term premium); verification partly checked 2026-10-16, stability draft.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).
@@ -44,6 +48,7 @@ Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` 
 ## Entry backlog
 
 - ev:futures-tick-size-evidence: whether futures "often" have economically large ticks relative to comparable equities, with bounce and larger displayed depth, as the legacy principle claimed; only the general large-tick mechanism (Lehalle and Laruelle, pp. 144–148) was checked.
+- conv:treasury-bund-futures-current-specs: current CME Treasury and Eurex Bund-family contract terms (sizes, ticks, delivery baskets, ultra contracts), against Gliner's 2013--2014 table and the legacy's Schatz and Buxl bands.
 
 ## Legacy candidate material
 

@@ -1,0 +1,87 @@
+% compendium/currency-markets/macro-fx.tex
+% Entries migrated on 2026-10-16 from the legacy macro chapter (slice 37, 02_transmission_maps.tex), for the section
+% overview currency-markets, em-currencies-intervention, fx-determination-forecasting and fx-premia. Gliner (2014) is
+% cited by chapter, section and PDF page of the ebook; IMF and BIS pages as retrieved on 16 October 2026.
+% Dispositions in notes/migration-slices.md, slice 37.
+
+\section{Currencies in global macro}
+
+\begin{qfdefinition}[The dollar in global macro: FX as shock absorber, transmission channel and expression; the dollar's share of turnover and reserves; the dollar index and its weights; and the SDR]\label{def:us-dollar-dxy-sdr}
+\qffield{Statement} Gliner: ``The U.S.\ dollar accounts for 85 percent of all foreign exchange (FX) transactions'', the shares summing to 200 percent because each trade involves two currencies (Figure~7.1, BIS Triennial Survey, April 2013), and more than 60 percent of central banks' reserves, declining gradually \citep[chap.~7, sec.\ ``The Role of the U.S.\ Dollar'', PDF pp.~180--181]{s7-gliner}. The U.S.\ Dollar Index is the dollar against a basket changed once, in 1999, with weights EUR 57.6, JPY 13.6, GBP 11.9, CAD 9.1, SEK 4.2 and CHF 3.6 percent, traded as the DX future and the UUP ETF (p.~181). The SDR was created by the IMF in 1969, initially defined as 0.888671 grams of fine gold, later as a basket of currencies; it ``is neither a currency, nor a claim on the IMF'' and serves as the IMF's unit of account (sec.\ ``Special Drawing Rights (SDRs)'', pp.~187--188). The IMF's current factsheet gives the basket as the U.S.\ dollar, euro, Chinese renminbi, Japanese yen and pound sterling, with the valuation reviewed every five years and the current weights effective 1 August 2022 \citep[factsheet dated 7 October 2023]{imf-sdr-factsheet}.
+
+\qffield{Notation} DXY the ICE U.S.\ Dollar Index, a geometric average of six exchange rates; SDR Special Drawing Right.
+
+\qffield{Conditions} Gliner's 85 percent means the dollar is on one side of 85 percent of trades, as of 2013 (BIS); the 2025 survey's dollar share was not obtained here (backlog). The index weights are fixed, changed only once, in 1999 (Gliner); the index is therefore not a trade-weighted index against today's partners: it gives the euro over half the weight and omits the renminbi and the Mexican peso (legacy, consistent with the weights).
+
+\qffield{Practice} The legacy's three roles of FX in macro (shock absorber, transmission channel, expression instrument) and its claims that global macro is ``de facto USD-centric'', that many local trades are ``USD liquidity trades in disguise'', and that stress appears first in the dollar index, the cross-currency basis and EM currencies are the legacy author's framing; dollar funding and the basis are the subject of \texttt{fx-cip-dollar-funding}.
+
+\qffield{Pitfalls} The SDR is not a reserve currency anyone trades; ``insight into official reserve diversification trends'' (legacy) comes from the IMF's COFER data on reserve composition (Gliner's Figure~7.2), not from the SDR basket. The index's weights should be read from ICE's methodology, which was not retrievable (backlog).
+
+\qffield{See also} \hyperref[def:fx-market-structure]{spot FX market structure}; \hyperref[def:currency-regimes-intervention]{currency regimes}; \hyperref[mod:fx-carry-trade]{FX carry}; \hyperref[meth:fx-valuation-signals]{FX valuation signals}.
+
+\qffield{Further reading} The dollar's role and safe-asset demand \citep{wide-jkl-safe-asset}.
+
+\qffield{Index} U.S.\ dollar; reserve currency; FX turnover by currency; BIS Triennial Survey; U.S.\ Dollar Index; DXY; dollar index weights; Special Drawing Right; SDR basket; COFER; roles of FX in macro
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~179--188; the IMF's SDR factsheet as retrieved; ICE's index methodology not retrieved). Stability: draft. Currency: Gliner's figures as of 2013; SDR basket as of 2022.
+\end{qfdefinition}
+
+\begin{qfdefinition}[Currency regimes and intervention: fixed, managed and floating regimes in Gliner's grouping, sterilised and unsterilised intervention, the impossible trinity, and reserve depletion]\label{def:currency-regimes-intervention}
+\qffield{Statement} Gliner groups currencies by the central bank's intervention: \emph{fixed} (HKD, DKK, LVL, AED, TRL in his 2013 table), \emph{floating with frequent intervention} (JPY, BRL, CNY, CHF with the EUR/CHF floor) and \emph{floating with no intervention} (USD, EUR, GBP, AUD, NZD, MXN, CAD, SEK, NOK, INR), stressing that ``no model will be of help if, for example, a currency is pegged'' \citep[chap.~7, sec.\ ``Currency Regimes'', PDF pp.~185--194]{s7-gliner}. His examples include the Hong Kong dollar's peg at 7.8 (p.~190) and Brazil's repeated interventions (Table~7.2, pp.~191--192). Intervention is \emph{sterilised} when the central bank offsets its effect on the monetary base and \emph{unsterilised} when it lets the base change (chap.~11, pp.~360--361). The \emph{impossible trinity}, from Mundell's work, says a country can have only two of a fixed exchange rate, free capital flows and an independent monetary policy (chap.~11, sec.\ ``The Impossible Trinity'', p.~363).
+
+\qffield{Notation} Peg, crawling peg, band and currency board are forms of a fixed regime; a floor (EUR/CHF 1.20 from 6 September 2011) limits movement in one direction.
+
+\qffield{Conditions} Gliner's grouping is de jure and as of 2013; de facto classifications, which the pathway uses, can differ, and several of his currencies have since changed regime (the legacy dates the end of the EUR/CHF floor to 2015; such changes were not checked here).
+
+\qffield{Practice} The legacy's points (in a free float, price discovery happens in FX; in a managed regime, pressure appears in rates, reserves or capital controls; a hard peg looks stable until it breaks; ``cheap'' can stay cheap if the regime prevents adjustment) and its list of intervention motives and conditions for success (reserve adequacy, credibility, consistency with monetary policy, liquidity; intervention against fundamentals ``typically fails''; reserve depletion as a leading indicator) are standard arguments, not shown in Gliner's chapter; testing them is the pathway's outcome. The trinity explains the ERM crisis of 1992 and the Asian crisis of 1997 in the legacy's telling; Gliner gives no such cases in that section.
+
+\qffield{Pitfalls} The trinity is about full capital mobility and a fixed rate; intermediate regimes trade off partial independence against partial stability, so ``choose two of three'' is a corner-solution statement.
+
+\qffield{See also} \hyperref[def:central-bank-policy-framework]{central-bank tools}; \hyperref[rule:major-central-banks-current]{major central banks}; \hyperref[def:us-dollar-dxy-sdr]{the dollar and the SDR}.
+
+\qffield{Further reading} On whether intervention works, \citep{cur-fratzscher-et-al-2019}; for a survey, \citep{cur-menkhoff-2013}.
+
+\qffield{Index} currency regime; fixed exchange rate; peg; currency board; managed float; free float; FX intervention; sterilised intervention; unsterilised intervention; impossible trinity; trilemma; Mundell; Hong Kong dollar peg; EUR/CHF floor; reserve depletion
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~185--194, and chap.~11, pp.~360--363). Stability: draft. Currency: regime grouping as of 2013.
+\end{qfdefinition}
+
+\begin{qfmethod}[Gliner's FX valuation signals: equity performance, sovereign credit, risk reversals, trade and the trade-weighted index, export-partner growth, debt and the current account, reserves, PPP and GDP per capita, and policy-rate and LIBOR differentials]\label{meth:fx-valuation-signals}
+\qffield{Statement} Gliner lists factors for a currency model \citep[chap.~7, sec.\ ``Valuation Techniques for Foreign Exchange'', PDF pp.~195--209]{s7-gliner}: relative \emph{equity index performance}, through flows (pp.~195--196); \emph{credit}, five-year sovereign CDS (Australia against Mexico, p.~197); \emph{sentiment}, ``call-put skew on three-month risk reversals'', to be ``back-tested on a currency-by-currency basis'' and correlating better in distress than in calm periods (p.~197); the \emph{trade} balance and current account (pp.~198--199); the \emph{trade-weighted index} (pp.~199--200); \emph{economic activity} (p.~200); \emph{export-partner growth} weighted by export shares, with Australia's exports to China, Japan, Korea, India and Taiwan (pp.~200--201); \emph{debt to GDP} (p.~202); \emph{absolute and relative PPP}, with the Big Mac index, and Meese and Rogoff's finding that it does not forecast in the short run (pp.~203--205); \emph{GDP per capita} (p.~205); and \emph{carry} indicators, the policy-rate (OIS) differential and the LIBOR differential, decomposed as LIBOR $=$ fed funds $+$ (LIBOR $-$ fed funds) (pp.~206--208), with risk-adjusted carry (\hyperref[mod:fx-carry-trade]{FX carry}).
+
+\qffield{Notation} Risk reversal: implied volatility of an out-of-the-money call minus that of an equally out-of-the-money put (usually 25-delta); TWI: a trade-weighted index of the currency against its partners.
+
+\qffield{Conditions} The list is a set of candidate factors with charts, not a tested model: Gliner gives no out-of-sample results, and the pathway's question is precisely whether such factors beat a random walk. Several cut both ways, as the legacy notes: strong activity can attract inflows and also worsen the trade balance.
+
+\qffield{Practice} Build each factor from data available at the time and test against a random walk with economic as well as statistical criteria. The legacy grouped the factors into risk-appetite, trade, sustainability, long-term anchors and carry, and added FX reserve adequacy (months of import cover, short-term debt coverage), which Gliner treats under reserves elsewhere.
+
+\qffield{Pitfalls} Gliner's account of the \emph{Balassa--Samuelson effect}, that as a country becomes richer ``foreign investment flows into the country'' and strengthens the currency (p.~205), is not the effect: Balassa--Samuelson says faster productivity growth in traded goods raises the relative price of non-traded goods and so the real exchange rate. GDP per capita adjusted for PPP corrects for price levels, not for inflation as he puts it. Meese and Rogoff's 1983 result concerned structural exchange-rate models against a random walk at short horizons, a wider statement than ``PPP is not an accurate forecasting tool''. LIBOR differentials are historical (\hyperref[def:money-market-reference-rates]{reference rates}).
+
+\qffield{See also} \hyperref[mod:fx-carry-trade]{FX carry}; \hyperref[def:macroeconomic-indicators]{external accounts}; \hyperref[def:sovereign-credit-defaults]{sovereign credit}.
+
+\qffield{Further reading} Order flow and fundamentals in exchange-rate determination, and currency value \citep{wide-menkhoff-value}.
+
+\qffield{Index} FX valuation; currency model; risk reversal; FX sentiment; trade-weighted index; export-partner growth; current account; debt to GDP; purchasing power parity; Big Mac index; Meese--Rogoff; GDP per capita; Balassa--Samuelson; interest-rate differential; OIS differential
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~195--209). Stability: draft. Currency: Gliner's examples as of 2012--2013.
+\end{qfmethod}
+
+\begin{qfmodel}[The FX carry trade: carry as the rate differential at a constant exchange rate, funding and target currencies, crowding and crash risk, and carry-to-risk ratios]\label{mod:fx-carry-trade}
+\qffield{Statement} ``In currencies, carry is the return one makes on holding a currency, assuming that the exchange rate is held constant''; carry trades borrow in low-yielding currencies (yen, dollar, sterling in Gliner's time) and buy high-yielding ones (Australian and New Zealand dollars, Brazilian real, Turkish lira) \citep[chap.~7, sec.\ ``Carry Indicators for Currency Valuation'', PDF pp.~206--207]{s7-gliner}. ``The carry trade is a very crowded trade, which means that in large risk off markets such as 2008, the strategy suffers big losses'' (p.~207). \emph{Risk-adjusted carry} divides three-month carry by 30-day volatility; Gliner's Table~7.6 (September 2013) ranks pairs within groups, NZD/EUR at 0.26 being the most attractive New Zealand cross, and he says risk-adjusted carry ``tends to outperform standard carry trades'' and needs frequent adjustment (pp.~208--209).
+
+\qffield{Notation} Carry over horizon $\tau$: $(i^*-i)\tau$ for a long position in the foreign currency, with $i^*$ the foreign and $i$ the domestic rate; by covered parity, equal to the forward discount. Carry-to-risk $=$ annualised carry $/$ annualised volatility.
+
+\qffield{Conditions} The realised excess return is carry plus the exchange-rate change; uncovered interest parity predicts that the change offsets carry on average, and carry's profitability is the forward-premium puzzle. Carry-to-risk uses volatility as the risk measure and so ignores skewness and crash risk; the ranking by ratio can differ from the ranking by carry (\nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~17).
+
+\qffield{Practice} The legacy's risk list (crowding, weekend gaps in EM currencies, regime shifts in policy, correlated sell-offs of carry currencies against funders, illiquidity when exits are needed) is consistent with Gliner's 2008 remark but goes beyond it; its statements that exchange-rate moves ``often dominate carry returns'' and that carry has ``positive returns on average but with significant negative skewness'' are claims from the literature the pathway reads, not checked here (backlog). ``Measuring the standard error of the sample and finding the most attractive pairs'' is Gliner's (p.~209), without method.
+
+\qffield{Pitfalls} ``Outperforms standard carry trades'' is asserted without evidence in the passage. Gliner's Table~7.6 labels the carry ``3M Carry (LIBOR)'' and the volatility ``30D Volatility''; the legacy's ``30D Realized Volatility'' adds a word the table does not have.
+
+\qffield{See also} \hyperref[meth:fx-valuation-signals]{FX valuation signals}; \hyperref[def:us-dollar-dxy-sdr]{the dollar}; \hyperref[meth:macro-position-sizing-risk]{gap risk}.
+
+\qffield{Further reading} Carry crashes \citep{catalogue-0241}; carry and global volatility \citep{wide-menkhoff-carry}; common risk factors \citep{catalogue-0240}, the pathway's readings.
+
+\qffield{Index} carry trade; currency carry; funding currency; target currency; interest-rate differential; uncovered interest parity; forward premium puzzle; crowding; carry crash; negative skewness; carry-to-risk ratio; risk-adjusted carry
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~206--209, with Table~7.6; the ranking example computed in the slice's check script). Stability: draft. Currency: Gliner's table as of September 2013.
+\end{qfmodel}

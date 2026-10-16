@@ -128,3 +128,25 @@ Daily settlement bounds the exposure that can build between cycles; it does not 
 
 \qffield{Status} Verification: partly checked 2026-10-15 (against \texttt{ex-hasbrouck-2003} in its NYU working-paper draft of 16 November 2000, abstract and pp.~4--5, 13 and~34, text layer, not the Journal of Finance version; Garbade and Silber unread). Stability: draft. Currency: evidence for March--May 2000.
 \end{qfevidence}
+
+% Added on 2026-10-16 by slice 37 from the legacy macro chapter (02_transmission_maps.tex, the U.S. Treasury and
+% German Bund futures blocks), owned by futures-execution; Gliner (2014) cited by chapter, section and PDF page.
+\begin{qfconvention}[Government bond futures as Gliner describes them in 2013--2014: U.S.\ Treasury contract sizes and ticks, physical delivery and cheapest-to-deliver, the German Schatz, Bobl and Bund, and why futures trade below the bond]\label{conv:government-bond-futures}
+\qffield{Statement} U.S.\ Treasury note and bond futures are physically settled, ``which lends to the concept of cheapest-to-deliver'', and most traders roll before delivery \citep[chap.~9, sec.\ ``U.S.\ Fixed Income Futures'', PDF p.~264]{s7-gliner}. Gliner's specifications (pp.~265--266): \$200,000 face for the 2-year (TU) and \$100,000 for the 5-year (FV), 10-year (TY), bond (US, his ``15+Year'') and ultra bond (WN, ``25+Year''); ticks of a quarter of a 32nd (\$15.625) for TU, a quarter (\$7.8125) for FV, a half (\$15.625) for TY and a full 32nd (\$31.25) for US and WN; March, June, September and December months. German futures: Schatz about 2 years (DU), Bobl 4.5 to 5.5 years (OE) and Bund 8.5 to 10.5 years (RX) to maturity (p.~266).
+
+\qffield{Notation} Tick value $=$ face $\times$ tick in points $/100$: $200{,}000\times(1/128)/100=\$15.625$; $100{,}000\times(1/128)/100=\$7.8125$; $100{,}000\times(1/64)/100=\$15.625$; $100{,}000\times(1/32)/100=\$31.25$ (\nolinkurl{notes/artefacts/multi-asset-systematic-macro/slice37-checks.py}, section~7).
+
+\qffield{Conditions} \emph{Why the curve slopes down.} Gliner says Treasuries ``have term premium, which implies a positive sloping yield curve, which means that the futures curve on Treasuries is usually in backwardation'', unusually among futures (p.~264), and adds that underlying instruments ``generally have a higher interest rate than short-term financing costs''. The second clause is the reason: with coupon income above the repo rate the forward price is below spot (positive carry). A 4 percent bond at 100 financed at 1 percent for three months has a forward of 99.25 (checks, section~8). Term premium affects the slope of yields, not the futures discount directly; a futures curve in ``backwardation'' here means lower prices for later contracts.
+
+\qffield{Practice} Contract specifications change, and contracts and tick sizes may have been added or altered since 2014; the specifications above are Gliner's and should be checked against CME's and Eurex's current contract terms before use (backlog). The legacy's maturity bands for the Schatz (1.75--2.25 years) and Buxl (24--35 years, UB) are not in Gliner and were not checked. Spreads to Bunds, such as BTP--Bund, as euro-area risk measures belong to \texttt{dm-sovereign-bonds}.
+
+\qffield{Pitfalls} The legacy ``futures curve typically in backwardation due to term premium'' follows Gliner's first clause and gets the mechanism wrong. Gliner's ``15+Year'' and ``25+Year'' labels are his shorthand for the bond and ultra-bond delivery baskets, whose eligibility rules were not checked.
+
+\qffield{See also} \hyperref[conv:cme-globex-trading]{CME Globex trading}; \hyperref[mech:futures-margin-settlement]{futures margin and settlement}; \hyperref[res:cost-of-carry-forward-price]{cost-of-carry forward price}; \hyperref[meth:curve-trades-carry-rolldown]{curve trades}; \hyperref[conv:us-rate-quotation]{U.S.\ quotation in 32nds}.
+
+\qffield{Further reading} The pathway \texttt{treasury-market-functioning} reads on the Treasury futures basis and delivery options.
+
+\qffield{Index} Treasury futures; TU; FV; TY; US; WN; tick value; thirty-seconds; cheapest-to-deliver; physical delivery; roll; Bund futures; Schatz; Bobl; Buxl; positive carry; futures below spot
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~264--266; tick values and the carry example computed in the slice's check script; CME and Eurex specifications not retrieved). Stability: draft. Currency: specifications as of 2013--2014.
+\end{qfconvention}

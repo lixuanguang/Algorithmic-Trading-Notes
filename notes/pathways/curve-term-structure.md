@@ -1,0 +1,45 @@
+---
+key: curve-term-structure
+section: rates-credit-mortgages
+status: not started (draft entries from the migration only)
+---
+
+# Yield-curve construction and term-structure models
+
+Pathway outcome, from the guide: build a zero curve, decompose yields into expectations and term premia, and estimate and compare affine term-structure models. Its 16 required readings: `catalogue-0233`, `wide-litterman-scheinkman`, `wide-nelson-siegel`, `wide-hagan-west-interp`, `wide-ametrano-bianchetti`, `wide-gsw-yield-curve`, `wide-diebold-li`, `s6-vasicek`, `wide-cir-1985`, `wide-hull-white`, `s6-hjm`, `wide-duffee-essentially`, `wide-jsz`, `rt-cdr-afns-2011`, `exp-adrian-crump-moench-term-structure`, `rt-kim-wright-2005`. This note is for a pathway of the section `rates-credit-mortgages`.
+
+## Status
+
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 37 (`notes/migration.md`), which routed here the curve-trade, carry-and-rolldown and inversion blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Estrella and Trubin (2006). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+
+## Outcome in my own words
+
+## How the readings fit together
+
+## Checkpoint
+
+Not attempted.
+
+## Entries created or changed
+
+Written in migration slice 37, 2026-10-16:
+
+- `meth:curve-trades-carry-rolldown`: DV01-neutral steepeners and flatteners, bull and bear moves, carry signs that depend on the curve and financing, rolldown defined (Gliner's definition corrected), and Estrella--Trubin's inversion record to 2005.
+
+All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+
+## Related entries owned elsewhere
+
+Cross-referenced, not owned here: `mod:duration-convexity` (`rates-credit-mortgages`); `mod:forward-rates-fra` (`rates-credit-mortgages`); `conv:government-bond-futures` (`futures-execution`).
+
+## Entry backlog
+
+- ev:curve-inversion-after-2005: the 2022--2024 inversion and NBER business-cycle dating after it.
+
+## Legacy candidate material
+
+None: the legacy chapters were all migrated by slice 37.
+
+## What changed in my view or practice
+
+## Questions carried forward

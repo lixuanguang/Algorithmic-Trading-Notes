@@ -1,7 +1,22 @@
-% migrate-to: multi-asset-systematic-macro, macro-regimes-stock-bond
+% notes/artefacts/multi-asset-systematic-macro/regimes.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 37, 2026-10-16): the whole of
+% compendium/legacy/multi-asset-systematic-macro/01_regimes.tex
+% below its migrate-to line (migrate-to: multi-asset-systematic-macro, macro-regimes-stock-bond), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: 35 blocks to def:global-macro-strategy, ev:global-macro-crisis-performance, def:central-bank-policy-framework, mod:taylor-rule, rule:major-central-banks-current, def:currency-regimes-intervention, def:macroeconomic-indicators, data:us-macro-release-calendar, meth:macro-event-queries; the full block-by-block table is in notes/migration-slices.md, slice 37. Checked against Gliner (2014), chaps. 1, 3, 11 and 12, Taylor (1993) and dated central-bank and statistical-agency pages.
+% Compile inside notes/artefacts/multi-asset-systematic-macro/ with  latexmk -pdf regimes.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: regime and world state}
+
+% From compendium/legacy/multi-asset-systematic-macro/01_regimes.tex (whole file, deleted 2026-10-16 once empty).
 \section{Regime and World State}
 
-\subsection{Survey of Global Macro Landscape}
+\subsection*{Survey of Global Macro Landscape}
 
 \begin{definition} \hlt{Global Macro}\\
 Global macro is a top-down investment strategy that trades economic regimes, not securities.\\
@@ -116,7 +131,7 @@ This liquidity allows macro funds to:
 \end{enumerate}
 \end{remark}
 
-\subsection{Role of Central Banks in Global Macro}
+\subsection*{Role of Central Banks in Global Macro}
 
 \begin{remark} \hlt{Monetary Policy Regimes}\\
 Central banks define the macro regime more than any other actor. Markets do not trade rates, they trade policy intent under constraints. Regimes fall into following types:
@@ -287,7 +302,7 @@ During and after 2008, the Fed deployed unprecedented tools:
 Understanding these tools helps anticipate future crisis responses.
 \end{remark}
 
-\subsection{Economic Data Releases and Demographics}
+\subsection*{Economic Data Releases and Demographics}
 
 \begin{remark} \hlt{Data Releases and Market Impact}\\
 Data releases are central bank inputs, not just statistics. Markets price expectations before the release; the move comes from the surprise, not the level. Key principles:
@@ -460,3 +475,4 @@ FOMC meetings (8 per year) and ECB meetings (6 per year) often dominate all othe
 Economic calendars (Bloomberg ECO, Reuters, Trading Economics) are essential tools.
 \end{remark}
 
+\end{document}

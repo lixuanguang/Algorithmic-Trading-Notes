@@ -32,6 +32,12 @@ Written in migration slice 31, 2026-10-15:
 
 All partly checked 2026-10-15, draft; human review outstanding. Artefacts: `notes/artefacts/volatility-options/hull-basics.tex`, `hull-forwards-futures.tex`, and `notes/artefacts/rates-credit-mortgages/time-value.tex`.
 
+Written in migration slice 37, 2026-10-16, from the legacy macro chapter:
+
+- `def:fixed-income-universe`: the fixed-income segments, Gliner's fixed-income ETF table (Table 9.5) and the legacy's unchecked size claim.
+
+Changed in slice 37 (merges): `mod:forward-rates-fra` (FRA market notation, Gliner's fixing-date and convexity remarks corrected); `mod:duration-convexity` (DV01, the legacy convexity formula, which dropped the price, and negative convexity). The slice's other rates entries are owned by `monetary-policy-curve` (`def:central-bank-policy-framework`, `mod:taylor-rule`, `rule:major-central-banks-current`, `meth:policy-path-ois-futures`), `curve-term-structure` (`meth:curve-trades-carry-rolldown`), `rates-inflation` (`def:tips-breakevens`) and `rate-derivatives` (`def:interest-rate-swaps`), all in `compendium/rates-credit-mortgages/monetary-policy-curves.tex`.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry-forward-price` (`volatility-options`); `mech:futures-margin-settlement` (`futures-execution`); `def:return-measures` (`performance-manager-evaluation`, from the same time-value file); `mod:minimum-variance-hedge-ratio` (`commodity-hedging`); `def:fixed-income-market-structure` (`otc-fixed-income-trading`); `mech:securities-lending-short-sale` (`money-markets-repo-lending`); `def:common-investor-contagion` (`funding-crowding`).
@@ -41,6 +47,7 @@ Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry
 - rule:otc-derivatives-reforms: the primary rules behind Hull's account (U.S. swap execution and clearing mandates, swap data reporting, and the uncleared-margin framework phased in from 2016), with jurisdictions, scope and dates (`gap-gregory5` and the rule texts, unread).
 - mod:multi-curve-fra-swap-valuation: FRA and swap valuation with separate projection and discounting curves and backward-looking compounded SOFR, replacing the single-curve illustration (`s6-brigo`, `gap-rates-sofr-futures-hedging`, unread).
 - ev:term-premia: estimates of term premia that decide between expectations and liquidity-preference accounts (`exp-adrian-crump-moench-term-structure`, unread); home pathway `curve-term-structure`.
+- data:fixed-income-market-size: outstanding amounts by segment (SIFMA, BIS) for the legacy's "largest of the four product groups by notional outstanding".
 
 ## Legacy candidate material
 

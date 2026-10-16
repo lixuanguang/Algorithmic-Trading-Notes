@@ -1,0 +1,26 @@
+% compendium/international-equity-markets/equity-indices.tex
+% Entry migrated on 2026-10-16 from the legacy macro chapter (slice 37, 02_transmission_maps.tex), owned by the
+% section overview international-equity-markets. Gliner (2014) is cited by chapter, section and PDF page of the ebook.
+% Dispositions in notes/migration-slices.md, slice 37.
+
+\section{Equity indices and instruments for macro}
+
+\begin{qfdefinition}[Equity indices and instruments for macro: major indices by region, price, capitalisation and equal weighting, and ETFs, ADRs, index futures and options as ways to trade them]\label{def:equity-indices-derivatives}
+\qffield{Statement} Gliner's Table~8.1 lists major indices by region: United States (S\&P 500, Nasdaq, DJIA, Russell 2000, Wilshire 5000), Europe (Euro Stoxx 50, DAX, CAC 40, FTSE 100, FTSE MIB, IBEX 35, AEX), Asia ex-Japan (Shanghai Composite, Hang Seng, KOSPI, ASX 200, NZX 50), Japan (Nikkei, Topix, JASDAQ) and emerging markets (Bovespa, NIFTY, Micex and RTS, Mexico IPC, TOP 40 and JALSH, BIST 30 and 100, Jakarta Composite); indices ``can be traded directionally or as a relative value trade'', and their exposures differ, so ``the Bovespa is more likely to be affected by commodities than the NIFTY, while the S\&P 500 has more financial exposure than the Nasdaq, which is more technology-weighted'' \citep[chap.~8, sec.\ ``Equity Indices Overview'', PDF pp.~214--215]{s7-gliner}. Price-weighted indices consider only prices and ``can be strongly affected by the move of one'' stock; capitalisation-weighted indices are dominated by the largest companies; ``it is useful to know the weighting structure of each index in order to accurately interpret its meaning'' (pp.~214--215). Instruments (sec.\ ``Equity Derivatives'', PDF pp.~218--221): ETFs, ``a fast, cheap way to get exposures'' that trade like stocks but charge fees, whose composition can differ from the index (EWZ held as much as 15 percent Petrobras, more than the Bovespa); ADRs, a depositary bank's holdings of a non-U.S.\ stock listed in the United States in dollars, ``subject to foreign exchange risk''.
+
+\qffield{Notation} Price-weighted: $I_t\propto\sum_i P_{i,t}$; capitalisation-weighted: $I_t\propto\sum_i N_{i,t}P_{i,t}$ (often free-float adjusted); equal-weighted: equal weights reset at each rebalance.
+
+\qffield{Conditions} Index lists, constituents and ETF holdings are as of 2013; names, providers and constituents may have changed since and were not checked.
+
+\qffield{Practice} For relative-value index trades, size legs by beta and volatility, and hedge or deliberately keep the currency exposure; for the section's outcome, compare markets in local currency and in dollars, hedged and unhedged.
+
+\qffield{Pitfalls} An ADR's dollar price follows the local share price converted at the exchange rate, so it carries currency risk for a dollar investor, not because ``shares are held locally'' but because the underlying is priced in local currency. The legacy's index futures (``liquid, leveraged exposure'') and options (``asymmetric payoffs'') are generic; futures conventions are in \hyperref[conv:cme-globex-trading]{CME Globex trading} and ETF mechanics in \hyperref[mech:etf-creation-redemption]{ETF creation and redemption}.
+
+\qffield{See also} \hyperref[meth:equity-index-valuation]{equity-index valuation}; \hyperref[def:vix-variance-dividend-swaps]{VIX and variance swaps}; \hyperref[def:global-macro-strategy]{global macro}.
+
+\qffield{Further reading} The section's readings on market integration and cross-listing.
+
+\qffield{Index} equity indices; S\&P 500; Euro Stoxx 50; Nikkei; Topix; emerging market indices; MSCI; price-weighted index; capitalisation-weighted index; equal-weighted index; relative value index trade; ETF; ADR; American depositary receipt; index futures
+
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~8, PDF pp.~214--221, with Tables~8.1--8.2). Stability: draft. Currency: index lists and ETF examples as of 2013.
+\end{qfdefinition}

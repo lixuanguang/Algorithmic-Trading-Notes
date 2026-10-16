@@ -30,6 +30,10 @@ Written in migration slice 23, 2026-10-15:
 
 All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their legacy wording is kept, with the rest of the file, in `notes/artefacts/synthetic-equity-cfd-trs/derivations.tex`.
 
+Written in migration slice 37, 2026-10-16, from the legacy macro chapter:
+
+- `def:money-market-reference-rates`: money-market instruments as Gliner describes them; fed funds, SOFR and the EFFR; LIBOR's end (panel after 30 June 2023, synthetic settings to 30 September 2024); EONIA discontinued on 3 January 2022 and €STR published since 2 October 2019; the LIBOR--OIS spread as a historical stress gauge. Verification partly checked 2026-10-16, stability draft.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:broker-agency-conflicts` (`market-structure-execution-quality`); `res:arbitrage-risks` (`execution-market-making`); `mech:futures-margin-settlement` (`futures-execution`).
@@ -38,6 +42,8 @@ Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equ
 
 - rule:us-short-sale-margin-and-price-test: current Regulation T and FINRA margin for short sales, and the current U.S. short-sale price test; DGP's 2001 description is historical.
 - ev:securities-lending-fees-evidence: measured lending fees, rebates and specials (for example from institutional lending data, `catalogue-0897`), against the legacy "low or negative rebates" claim.
+- data:post-libor-funding-stress-measures: which spreads (unsecured term rates or commercial paper against OIS, repo dispersion) now serve as the LIBOR--OIS spread did, with dated data.
+- data:treasury-bill-offering-schedule: current Treasury bill maturities and auction cadence (the legacy listed 4, 13, 26 and 52 weeks).
 
 ## Legacy candidate material
 

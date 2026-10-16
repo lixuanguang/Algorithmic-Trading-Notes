@@ -32,13 +32,14 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:irs-notional-share` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:irs-notional-share` resolved (BIS OTC derivatives bulk data: at end-December 2025 interest rate swaps $545.0 trillion, 81.4 percent of $669.5 trillion interest rate derivatives; FRAs 10.7, options 7.9 percent; end-June 2024 swaps 81.1 percent of $578.8 trillion). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:policy-path-ois-futures` (`monetary-policy-curve`); `mech:otc-clearing-collateral` (`rates-credit-mortgages`).
 
 ## Entry backlog
 
-- data:irs-notional-share: the swaps line of the BIS OTC derivatives table (interest rate swaps against FRAs and options) for a recent half-year; the BIS release of 21 November 2024 gives interest rate derivatives as the largest OTC component, $579 trillion at end-June 2024.
 
 ## Legacy candidate material
 

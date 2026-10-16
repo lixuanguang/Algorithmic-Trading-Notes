@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:equity-index-lists-current` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:equity-index-lists-current` narrowed (JPX market-structure page; Moscow Exchange index page). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:equity-index-valuation` (`cross-asset-style-premia`); `def:vix-variance-dividend-swaps` (`vix-correlation-dividends`); `mech:etf-creation-redemption` (`etf-index-closing-execution`).
 
 ## Entry backlog
 
-- data:equity-index-lists-current: index providers' current factsheets for the indices in Gliner's Table 8.1 (names, providers, constituents), for example the Moscow Exchange's for Micex and RTS; not attempted in the follow-up.
+- data:equity-index-lists-current: index providers' current factsheets for the rest of Gliner's Table 8.1 (names, providers, constituents and weighting); JASDAQ's absorption into TSE's Prime, Standard and Growth markets on 4 April 2022 and Moscow Exchange's MOEX Russia Index (the former MICEX) were read on 2026-10-16
 
 ## Legacy candidate material
 

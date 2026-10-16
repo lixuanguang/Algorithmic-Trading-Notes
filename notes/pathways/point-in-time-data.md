@@ -32,6 +32,10 @@ All partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes
 
 Changed in migration slice 36, 2026-10-16 (a routing exception from the microstructure data-engineering file, whose candidates are `lob-deep-learning` and `market-simulation`; the blocks concern what a record means and when it was known): `data:market-data-levels` (timestamp quality and sequencing across markets and the public-awareness time, Hasbrouck p. 105; three times for a feature's availability; corrections arriving as later records; the legacy feed levels and message layers against Velu, Hardy and Nehren chap. 11) and `data:trading-reference-data` (the ticker caveat: identifiers with validity dates). Partly checked, draft.
 
+## Source verification after slice 37
+
+Second slice-37 follow-up, 2026-10-16, working source gaps of slice 36 (source verification, not study): `data:trade-correction-records` narrowed (Daily TAQ v4.0: 01 records carry corrected data at the original time, 12 records the correction time and the original data; decision-time handling stated in the entry). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-sources`, including López de Prado's release lags, backfilling and reinstatement of fundamental data); `meth:etf-trick` (`statistical-learning-foundations`); `pit:label-weight-leakage` (`financial-ml-evaluation`); `pit:backtest-cost-short-assumptions` (`backtest-inference`).
@@ -41,7 +45,7 @@ Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-
 - meth:bitemporal-reference-tables: valid time against transaction time for identifiers, corporate actions and vendor corrections (`s8-bitemporal`, unread).
 - data:holdings-insider-filing-lags: Form 13F, 13D, 3 and 4 filing deadlines and their use in a decision-time panel (`wide-sec-13f-nport`; Velu, Hardy and Nehren give the 13F threshold and the 13D and Form 4 deadlines in footnotes, p. 43, unchecked against the rules).
 - ev:delisting-survivorship-rewriting: delisting returns, survivorship and vendor history rewriting (`wide-shumway-delisting`, `wide-elton-gruber-blake-survivorship`, `wide-ljungqvist-rewriting`, unread).
-- data:trade-correction-records: how consolidated U.S. trade data mark cancellations, corrections and late reports, and how a decision-time panel should apply them (`wide-holden-jacobsen` and the TAQ documentation, unread); slice 36 stated the principle only
+- data:trade-correction-records: Holden and Jacobsen's filters (`wide-holden-jacobsen`) and the time stamps carried by TAQ's cancel and error records; NYSE's Daily TAQ specification v4.0 (correction indicator 00-12, sale conditions L and Z) was read on 2026-10-16
 
 ## Legacy candidate material
 

@@ -47,6 +47,10 @@ Written in migration slice 36, 2026-10-16, from the legacy latency-and-queue-com
 
 Changed in slice 36: `def:hft-strategies` (trade counts as an HFT proxy, Lehalle and Laruelle pp. 20--21 and 170--171, against the report's volume warning). The fast-liquidity block of the price-discovery file was merged into `mod:make-take-fee-speed-race`. All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/hft-market-design/latency-queue-competition.tex` and `volatility-liquidity-flash-crash.tex`; checks in `notes/artefacts/execution-market-making/slice36-checks.py`.
 
+## Source verification after slice 37
+
+Second slice-37 follow-up, 2026-10-16, working source gaps of slice 36 (source verification, not study): `ev:flash-crash-studies` narrowed (Kirilenko et al.: classification of over 15,000 E-mini accounts; High Frequency Traders 34.22 percent of volume on 3-5 May and 28.57 on 6 May; their inventory-price relation unchanged during the crash); `mod:fkk-make-take-original` resolved (the September 2009 working paper: the platform maximises (c_m + c_t) R for a fixed total fee; Proposition 4 in the large-market limit is Lehalle and Laruelle's (A.4) with s*Delta for Delta/2 and Gamma for L, so "efficient" is trade-maximising for a given total fee; welfare R L - M C_m - N C_t is a different objective; the 2013 journal version not read). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:order-anticipation`, `def:bluffing-manipulation`, `def:arbitrage`, `def:spread-measures`, `mod:glosten-milgrom` (`execution-market-making` and `market-making-lob`); `def:smart-order-routing` (`market-structure-execution-quality`).
@@ -56,8 +60,7 @@ Changed in migration slice 35, 2026-10-16 (a routing exception from the foundati
 ## Entry backlog
 
 - res:frequent-batch-auctions: what Budish, Cramton and Shim's frequent batch auctions do to time priority within a batch and to latency rents (their secs. VII-VIII, not read); the legacy matching file's claim that within-batch time priority is "muted" waits on it
-- ev:flash-crash-studies: the pathway's Flash Crash readings (`w5-kirilenko-flash-crash`, branch `w5-menkveld-yueshen-flash`) and the staff report's detailed sections, with samples and measured HFT behaviour; slice 36 read only the report's executive summary and Lehalle and Laruelle
-- mod:fkk-make-take-original: Foucault, Kadan and Kandel's paper itself, to confirm what "efficient" means in eq. (A.4) and the conditions of their result; slice 36 re-derived the formula as the trade-maximising split from Lehalle and Laruelle's summary
+- ev:flash-crash-studies: Menkveld and Yueshen (`w5-menkveld-yueshen-flash`; the open repository copy sits behind a bot check) and the staff report's detailed sections; Kirilenko, Kyle, Samadi and Tuzun was read in its accepted manuscript on 2026-10-16
 
 ## Legacy candidate material
 

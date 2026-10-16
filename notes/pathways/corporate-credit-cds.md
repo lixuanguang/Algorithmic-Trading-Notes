@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cds-standard-contract` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cds-standard-contract` narrowed (the Big Bang FAQ read for contract coverage, Determinations Committee requests, the 60-day look-back and the fixed coupons). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:sovereign-credit-defaults` (`sovereign-municipal`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- conv:cds-standard-contract: the fixed-coupon standard contracts of 2009 and the 2014 ISDA Credit Derivatives Definitions (add-cds-contract); the Big Bang Protocol page (Determinations Committees and auction hardwiring from 8 April 2009) was read on 2026-10-16.
+- conv:cds-standard-contract: the 2014 ISDA Credit Derivatives Definitions (sold by ISDA, not read), for the current credit-event and deliverable-obligation terms; the Big Bang Protocol page and FAQ, including the 100/500 SNAC terms, were read on 2026-10-16
 
 ## Legacy candidate material
 

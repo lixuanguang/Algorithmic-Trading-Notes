@@ -6,6 +6,7 @@
 
 # Local copies of sources, never committed
 reading materials/
+reading_materials/
 
 # LaTeX intermediate files
 *.aux

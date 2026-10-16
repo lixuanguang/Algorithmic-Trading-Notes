@@ -1,0 +1,25 @@
+period,risk,instrument,instrument_name,notional_usd_millions
+2024-S1,A,A,Total (all instruments),729535006.427
+2024-S1,D,A,Total (all instruments),578804684.552
+2024-S1,D,M,Forward rate agreements,62803916.934
+2024-S1,D,N,Interest rate swaps,469172611.783
+2024-S1,D,R,Options,46601690.923
+2024-S1,D,Z,Other instruments,226465.913
+2024-S2,A,A,Total (all instruments),699476336.946
+2024-S2,D,A,Total (all instruments),548341442.990
+2024-S2,D,M,Forward rate agreements,55105495.869
+2024-S2,D,N,Interest rate swaps,446874675.525
+2024-S2,D,R,Options,46156447.347
+2024-S2,D,Z,Other instruments,204824.249
+2025-S1,A,A,Total (all instruments),845690019.288
+2025-S1,D,A,Total (all instruments),665808300.520
+2025-S1,D,M,Forward rate agreements,75206034.241
+2025-S1,D,N,Interest rate swaps,539067804.849
+2025-S1,D,R,Options,51409284.278
+2025-S1,D,Z,Other instruments,125176.152
+2025-S2,A,A,Total (all instruments),844577771.490
+2025-S2,D,A,Total (all instruments),669545338.239
+2025-S2,D,M,Forward rate agreements,71468680.832
+2025-S2,D,N,Interest rate swaps,545020360.443
+2025-S2,D,R,Options,52856420.671
+2025-S2,D,Z,Other instruments,199876.293

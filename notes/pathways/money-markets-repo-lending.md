@@ -38,6 +38,8 @@ Written in migration slice 37, 2026-10-16, from the legacy macro chapter:
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed; `data:treasury-bill-offering-schedule` resolved (TreasuryDirect: bills of 4 to 52 weeks; 4-, 6-, 8-, 13-, 17- and 26-week weekly, 52-week every four weeks, plus cash management bills). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed (OFR FSI: 3-month CP minus SOFR OIS replaces LIBOR-OIS, CP minus 3-month Treasury replaces TED, from 1 January 2022; funding contribution 9.58 on 10 October 2008, 0.96 on 30 March 2020, -0.16 on 13 October 2026). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:broker-agency-conflicts` (`market-structure-execution-quality`); `res:arbitrage-risks` (`execution-market-making`); `mech:futures-margin-settlement` (`futures-execution`).
@@ -46,7 +48,7 @@ Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equ
 
 - rule:us-short-sale-margin-and-price-test: current Regulation T and FINRA margin for short sales, and the current U.S. short-sale price test; DGP's 2001 description is historical.
 - ev:securities-lending-fees-evidence: measured lending fees, rebates and specials (for example from institutional lending data, `catalogue-0897`), against the legacy "low or negative rebates" claim.
-- data:post-libor-funding-stress-measures: which spreads (term unsecured or commercial-paper rates against OIS, repo-rate dispersion, the FRA-OIS spread) market studies now use in LIBOR-OIS's place, with dated data; not attempted in the follow-up.
+- data:post-libor-funding-stress-measures: which spreads research studies, beyond the OFR's index, use in LIBOR-OIS's place, and a dated series of the 3-month commercial paper minus SOFR OIS spread itself; the OFR's June 2023 replacement of its funding variables, its daily index and the Fed's May 2026 Financial Stability Report were read on 2026-10-16
 
 ## Legacy candidate material
 

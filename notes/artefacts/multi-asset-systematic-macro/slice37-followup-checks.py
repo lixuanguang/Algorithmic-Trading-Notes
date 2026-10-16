@@ -46,37 +46,95 @@ assert all(v[0] - v[1] > 0 for v in res.values())          # always better than 
 assert all(v[2] > 0 for v in res.values())                 # hedged: gains either way, parallel moves only
 assert res[0.0025][2] < res[0.01][2] / 10                  # grows with (dy)^2
 
-# 2. Inversion after Estrella-Trubin's sample ------------------------------------------------------------
-section("2. 10-year minus 3-month monthly averages since 2006 against NBER peaks")
-rows = list(csv.DictReader(open(os.path.join(HERE, "ust-10y3m-monthly.csv"))))
-neg = [r["month"] for r in rows if float(r["spread_10y_3m_cmt"]) < 0]
-runs, start, prev = [], None, None
-for m in neg:
-    y, mo = map(int, m.split("-"))
-    idx = 12 * y + mo
-    if prev is None or idx != prev + 1:
-        if start:
-            runs.append((start, last))
-        start = m
-    prev, last = idx, m
-runs.append((start, last))
-print("  negative months (runs):", runs)
-peaks = ["2007-12", "2020-02"]                             # NBER peaks after 2005, as of 2026-10-16
+# 2. Inversion: three different statements, tested separately --------------------------------------------
+# (second follow-up, 2026-10-16: replaces the first follow-up's chronology assertions)
+section("2. inversions, recession onsets and the twelve-month horizon")
+from math import erf, sqrt
 
 
-def months_between(a, b):
-    ya, ma = map(int, a.split("-")); yb, mb = map(int, b.split("-"))
-    return 12 * (yb - ya) + (mb - ma)
+def phi(z):
+    return 0.5 * (1 + erf(z / sqrt(2)))
 
 
-for a, b in runs:
-    nxt = [p for p in peaks if months_between(b, p) >= 0]
-    lead = months_between(a, nxt[0]) if nxt else None
-    print(f"  run {a} to {b}: next NBER peak {nxt[0] if nxt else 'none dated'}"
-          + (f", {lead} months after the first negative month" if lead is not None else ""))
-assert ("2022-11", "2024-11") in runs                      # the long 2022-24 run
-assert min(float(r["spread_10y_3m_cmt"]) for r in rows) < -1.7  # deepest about -1.73 (May 2023)
-assert not [p for p in peaks if p > "2022-11"]              # no peak dated after it as of retrieval
+def add_months(m, k):
+    y, mo = map(int, m.split("-")); n = 12 * y + (mo - 1) + k
+    return f"{n // 12:04d}-{n % 12 + 1:02d}"
+
+
+PEAKS = ["1969-12", "1973-11", "1980-01", "1981-07", "1990-07", "2001-03", "2007-12", "2020-02"]   # NBER, 2026-10-16
+TROUGHS = ["1970-11", "1975-03", "1980-07", "1982-11", "1991-03", "2001-11", "2009-06", "2020-04"]
+ONSETS = [add_months(p, 1) for p in PEAKS]               # first contraction month; peak months are expansion
+
+
+def in_recession(m):
+    return any(add_months(p, 1) <= m <= tr for p, tr in zip(PEAKS, TROUGHS))
+
+
+def load(name, col):
+    rows = list(csv.DictReader(open(os.path.join(HERE, name))))
+    months = [r["month"] for r in rows]
+    assert len(months) == len(set(months)) and all(add_months(months[k], 1) == months[k + 1] for k in range(len(months) - 1))
+    assert rows[-1]["month"] == "2026-10" and rows[-1]["complete"] == "no"     # data to mid-October 2026
+    return {r["month"]: float(r[col]) for r in rows if r["complete"] == "yes"}
+
+
+h15 = load("h15-spread-monthly.csv", "spread_10y_3m_be")  # the paper's series, built by h15_monthly.py
+cmt = load("ust-10y3m-monthly.csv", "spread_10y_3m_cmt")  # Treasury CMT proxy, built by ust_monthly.py
+
+# (1) the paper's table (p. 6): negative months in the twelve before each recession, and the minimum
+paper = {"1970-01": (10, -0.51), "1973-12": (6, -1.59), "1980-02": (12, -2.20), "1981-08": (10, -3.51),
+         "1990-08": (3, -0.08), "2001-04": (7, -0.70)}
+for start, (n, lo) in paper.items():
+    w = [add_months(start, -k) for k in range(1, 13)]
+    got_n, got_lo = sum(h15[m] < 0 for m in w), min(h15[m] for m in w)
+    print(f"  (1) recession from {start}: negative months {got_n} (paper {n}), minimum {got_lo:.2f} (paper {lo:.2f})")
+    assert got_n == n and abs(got_lo - lo) <= 0.015
+assert round(h15["1989-06"], 2) == -0.16                    # the footnote's June 1989 value
+# (2) the paper's probit targets recession STATUS in month t+12 (p. 3)
+a_, b_ = -0.6045, -0.7374
+print(f"  (2) P(recession month at t+12) at s = 0: {phi(a_):.3f}; at s = -0.16: {phi(a_ + b_ * -0.16):.3f}")
+assert abs(phi(a_) - 0.2727) < 1e-3
+
+
+# (3) onset rules defined here, applied to negative months in expansion (recession months excluded)
+def rule_outcomes(series, lo, hi):
+    last = max(series)
+    neg = [m for m in sorted(series) if lo <= m <= hi and series[m] < 0 and not in_recession(m)]
+
+    def out(start, end):
+        if [o for o in ONSETS if add_months(start, 1) <= o <= add_months(end, 12)]:
+            return "hit"
+        if add_months(end, 12) > last:
+            return "window open"
+        return "miss" if add_months(end, 12) < PEAKS[-1] else "provisional miss"
+    eps, cur = [], []
+    for m in neg:
+        if cur and add_months(cur[-1], 1) == m:
+            cur.append(m)
+        else:
+            if cur:
+                eps.append(cur)
+            cur = [m]
+    if cur:
+        eps.append(cur)
+    months = {m: out(m, m) for m in neg}                      # month rule: onset in t+1 .. t+12
+    episodes = [(e[0], e[-1], out(e[0], e[-1])) for e in eps]  # episode rule: onset by 12 months after its last month
+    return months, episodes
+
+
+m_in, e_in = rule_outcomes(h15, "1968-01", "2005-12")
+print(f"  (3) 1968-2005, paper's series: {len(m_in)} negative expansion months, month-rule misses "
+      f"{[m for m, o in m_in.items() if o == 'miss']}; episode rule: {sorted(set(o for *_, o in e_in))} for {len(e_in)} episodes")
+assert [m for m, o in m_in.items() if o == "miss"] == ["1968-12", "1978-11", "1978-12", "1979-01", "1989-06", "1989-07"]
+assert len(m_in) == 54 and all(o == "hit" for *_, o in e_in) and len(e_in) == 9
+for label, series in (("paper's series", h15), ("CMT proxy", cmt)):
+    mo, ep = rule_outcomes(series, "2006-01", "2026-12")
+    tally = {k: sum(1 for v in mo.values() if v == k) for k in ("hit", "miss", "provisional miss", "window open")}
+    print(f"  (3) 2006-2026, {label}: {len(mo)} months {tally}; episodes {ep}")
+    assert [m for m, o in mo.items() if o == "miss"] == ["2006-08", "2006-09", "2006-10", "2006-11", "2006-12"]
+    assert [o for *_, o in ep][:3] == ["hit", "hit", "hit"] and all(o == "provisional miss" for *_, o in ep[3:])
+    assert tally == ({"hit": 11, "miss": 5, "provisional miss": 27, "window open": 0} if series is h15
+                     else {"hit": 11, "miss": 5, "provisional miss": 30, "window open": 0})
 
 # 3. VIX units -------------------------------------------------------------------------------------------
 section("3. VIX is 100 x sqrt(annualised 30-day variance)")

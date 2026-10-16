@@ -35,15 +35,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:eurodollar-sofr-conversion-date` narrowed; `rule:boe-minutes-publication-history` resolved (Bank of England minutes about a fortnight after each meeting until July 2015 (Warsh review; 9 and 22 July 2015), published with the Monetary Policy Summary from 6 August 2015); `ev:qe-announcement-effects` narrowed; `rule:central-bank-policy-history` narrowed; `data:fomc-communication-current` resolved (FOMC press conferences after every meeting in 2025 and 2026 so far, projections at four meetings (March, June, September, December), minutes about three weeks later). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:eurodollar-sofr-conversion-date` resolved (CME Clearing Advisory 23-082 of 15 March 2023, from a user-supplied browser export: conversion at 1:1 after the close of Friday 14 April 2023 for trade date 17 April, Eurodollar futures and options from September 2023 and the E0, E2-E5 mid-curves; ARRC minutes of 9 March 2023 and the CFTC chairman's keynote agree; CME Submission 24-271 shows the CBOT filing's "April 23" to be the date of CME's press release on the 7.5 million converted contracts); `ev:qe-announcement-effects` resolved (NY Fed Staff Report 441, March 2010, the working-paper version: eight events, 10-year Treasury -91 bp, agency -156, MBS -113; yields up nearly 100 bp on other days; term premium down 50-100 bp in the time-series estimate, 30-100 bp overall; the IJCB version itself not obtained); `rule:central-bank-policy-history` narrowed (ECB TLTRO page: series of 5 June 2014, 10 March 2016 and 7 March 2019; PBOC Announcement [2014] No. 5: band 1 to 2 percent from 17 March 2014). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:money-market-reference-rates` (`money-markets-repo-lending`); `def:currency-regimes-intervention` (`em-currencies-intervention`); `meth:macro-event-queries` (`macro-announcements-policy`).
 
 ## Entry backlog
 
-- data:eurodollar-sofr-conversion-date: the text of CME Clearing Advisories 23-082 and 23-121, which refused automated access with a terms-of-use message on 2026-10-16; search listings give the conversion as effective after the close of Friday 14 April 2023 (trade date 17 April), against the CBOT filing's "April 23, 2023".
-- ev:qe-announcement-effects: Gagnon, Raskin, Remache and Sack (2011), whose IJCB PDF link returned an HTML page on 2026-10-16; Bauer's 2012 letter was read and matches Gliner's Table 11.4.
-- rule:central-bank-policy-history: an ECB statement on whether OMT was ever activated (the 2022 TPI release only says it remains in the toolkit), TLTRO terms, the PBOC's band and reserve-requirement history, and the Bank of England's first published inflation forecast; the BoJ's March 2024 exit, the SNB's January 2015 decision and the APP's history were checked on 2026-10-16.
+- rule:central-bank-policy-history: an ECB or court statement on whether OMT was ever activated (EUR-Lex and curia not retrievable on 2026-10-16), the PBOC's current band, its August 2015 fixing reform and reserve-requirement history, and the Bank of England's first published inflation forecast; TLTRO I-III and the PBOC's March 2014 widening to 2 percent were read on 2026-10-16
 
 ## Legacy candidate material
 

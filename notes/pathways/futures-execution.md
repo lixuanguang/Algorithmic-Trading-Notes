@@ -45,6 +45,8 @@ Written in migration slice 37, 2026-10-16, from the legacy macro chapter:
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:treasury-bund-futures-current-specs` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:treasury-bund-futures-current-specs` unchanged (CME still refused access; recorded as an access barrier). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).
@@ -52,7 +54,7 @@ Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` 
 ## Entry backlog
 
 - ev:futures-tick-size-evidence: whether futures "often" have economically large ticks relative to comparable equities, with bounce and larger displayed depth, as the legacy principle claimed; only the general large-tick mechanism (Lehalle and Laruelle, pp. 144–148) was checked.
-- conv:treasury-bund-futures-current-specs: CME's TU, FV, TY, US and UB contract terms from its rulebook, which refused automated access; Eurex's Schatz, Bobl, Bund and Buxl terms were read on 2026-10-16.
+- conv:treasury-bund-futures-current-specs: CME's TU, FV, TY, US and UB contract terms from its rulebook, which still refused automated access on 2026-10-16 (HTTP 403 to the shell and the fetching tool; the CFTC-hosted filings found were from 2011-2012 or unrelated); Eurex's Schatz, Bobl, Bund and Buxl terms were read on 2026-10-16
 
 ## Legacy candidate material
 

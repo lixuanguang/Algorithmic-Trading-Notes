@@ -33,13 +33,14 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:bls-ces-scope` resolved (CES scope from the BLS Handbook of Methods and CES FAQ: nonprofits are in scope, the other legacy exclusions are right; release typically on the third Friday after the reference week); `data:demographic-projections-current` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:demographic-projections-current` resolved (UN World Population Prospects 2024, medium variant, five-year age groups: 15-64 and 35-69 peak years for the thirteen Table 12.2 countries, with several moved by decades; the Census Bureau's International Database API now requires a key). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `data:us-macro-release-calendar` (`macro-announcements-policy`); `meth:macro-event-queries` (`macro-announcements-policy`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- data:demographic-projections-current: peak years of the 15-64 and 35-69 populations for Gliner's Table 12.2 countries from the UN World Population Prospects 2024 (or the Census Bureau's International Database), a dataset not retrieved; Table 12.2's locators corrected to pp. 424-425.
 
 ## Legacy candidate material
 

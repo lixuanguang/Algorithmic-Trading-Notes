@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cbot-ice-ag-contract-terms` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cbot-ice-ag-contract-terms` unchanged (CME access barrier). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:futures-hedge-basis` (`commodity-hedging`).
 
 ## Entry backlog
 
-- conv:cbot-ice-ag-contract-terms: CBOT corn, wheat and soybean terms from CME's rulebook, which refused automated access; ICE coffee (KC, 37,500 pounds) and cotton (CT, 50,000 pounds) were read on 2026-10-16.
+- conv:cbot-ice-ag-contract-terms: CBOT corn, wheat and soybean terms from CME's rulebook, which still refused automated access on 2026-10-16; ICE coffee (KC) and cotton (CT) were read on 2026-10-16
 
 ## Legacy candidate material
 

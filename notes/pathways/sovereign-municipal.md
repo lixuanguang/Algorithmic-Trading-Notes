@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:isda-greece-2012-determination` resolved (ISDA EMEA Determinations Committee: Restructuring Credit Event for the Hellenic Republic, unanimous, 9 March 2012, after the collective action clauses; auction held 19 March 2012 (final price not read in a primary document)); `ev:sovereign-restructurings-after-2006` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:sovereign-restructurings-after-2006` narrowed (Greece: EUR 197 billion exchanged, 53.5 percent nominal haircut, NPV loss 70-75 percent, EUR 106 billion written off; Argentina: US$82 billion restructured, US$65.5 billion of it foreign-law, recovery about 52 percent). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mech:cds-contract-credit-events` (`corporate-credit-cds`); `meth:curve-trades-carry-rolldown` (`curve-term-structure`).
 
 ## Entry backlog
 
-- ev:sovereign-restructurings-after-2006: the Greek PSI exchange (2012) and Argentina's 2020 exchange, sizes and haircuts from the governments' exchange documents or a dated default dataset (Moody's or S&P), against the legacy's "$200B+" and "Ninth default, $65B"; not attempted in the follow-up.
+- ev:sovereign-restructurings-after-2006: a dated default count for Argentina (the legacy's "ninth default") from a named dataset; the Greek 2012 and Argentine 2020 exchanges' sizes, haircuts and participation were read in IMF Country Reports 12/57, 17/44 and 22/92 on 2026-10-16
 
 ## Legacy candidate material
 

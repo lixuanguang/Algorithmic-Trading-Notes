@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` narrowed (Estrella and Trubin's own series rebuilt from H.15 with a reproducible script; month and episode rules tested; only the outcome-dependent revisit remains). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:duration-convexity` (`rates-credit-mortgages`); `mod:forward-rates-fra` (`rates-credit-mortgages`); `conv:government-bond-futures` (`futures-execution`).
 
 ## Entry backlog
 
-- ev:curve-inversion-after-2005: repeat the post-2005 check with Estrella and Trubin's own series (H.15 secondary-market three-month bill on a bond-equivalent basis) instead of Treasury's 3-month CMT, and revisit if NBER dates a peak after February 2020; the CMT version (2026-10-16) finds the 2022-24 inversion followed by no dated recession.
+- ev:curve-inversion-after-2005: revisit the post-2005 outcomes once NBER dates a peak after February 2020 or the provisional horizons complete: on H.15 data (bond-equivalent bill, 2026-10-16) 27 of 43 inverted expansion months, the episodes 2022-11 to 2024-11 and 2025-03 to 2025-04, have no dated recession and incomplete or unevaluated twelve-month horizons
 
 ## Legacy candidate material
 

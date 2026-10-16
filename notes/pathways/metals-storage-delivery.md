@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:metals-market-shares-current` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:metals-market-shares-current` narrowed (gold jewellery about 31 and investment about 43 percent of 5,002 tonnes in 2025; silver industrial about 58 percent of 1.13 billion ounces). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- data:metals-market-shares-current: consumption shares (World Gold Council, Silver Institute, ICSG) and COMEX and LME contract terms; USGS production shares for 2011-2012 and 2023-2024 were read on 2026-10-16, and Gliner's Table 10.9 inconsistency recorded.
+- data:metals-market-shares-current: platinum, copper and aluminium consumption shares (WPIC, ICSG) and COMEX and LME contract terms; gold (World Gold Council, full year 2025) and silver (World Silver Survey 2026 release) demand shares and USGS production shares were read on 2026-10-16
 
 ## Legacy candidate material
 

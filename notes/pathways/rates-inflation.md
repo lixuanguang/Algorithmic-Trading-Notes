@@ -32,13 +32,14 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `rule:tips-auction-schedule-history` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `rule:tips-auction-schedule-history` resolved (Treasury refunding statement of 31 October 2018: new October 5-year TIPS from 2019 replacing the October 30-year reopening, the April 5-year's first reopening moved from August to June, the 30-year reopened once, in August; May 2004 statement: 5-year TIPS from October 2004 on an April/October cycle; when the October new issue lapsed before 2014 was not traced). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:macroeconomic-indicators` (`macro-nowcasting-signals`); `def:macro-regime-asset-map` (`macro-regimes-stock-bond`).
 
 ## Entry backlog
 
-- rule:tips-auction-schedule-history: the Treasury refunding announcements that moved the 5-year TIPS to April and October issues with June and December reopenings and cut the 30-year to one reopening (August), the two differences from Gliner's 2014 calendar identified on 2026-10-16.
 
 ## Legacy candidate material
 

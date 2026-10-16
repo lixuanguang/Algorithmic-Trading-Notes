@@ -32,13 +32,14 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:commodity-index-methodologies` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:commodity-index-methodologies` resolved (S&P GSCI Methodology, August 2026, and Why S&P GSCI?, November 2024, from user-supplied browser exports: launch 11 April 1991, base 31 December 1969, ER and TR definitions, 5th-9th business-day roll; Bloomberg Commodity Index methodology, February 2026: two-thirds liquidity and one-third production, caps, 2026 targets, 6th-10th day roll, launch 14 July 1998; the return variant of the Goldman Sachs 2007 table in Gliner stays unknown, an entry caveat, not a stub). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:crude-oil-markets` (`crude-oil-products`).
 
 ## Entry backlog
 
-- conv:commodity-index-methodologies: the S&P GSCI and Bloomberg Commodity Index methodology documents (weights, roll schedules, launch and first value dates), which refused automated access (HTTP 403) on 2026-10-16; the 1991 origin and pre-launch back-filling were confirmed from Dunsby and Nelson (2010) and S&P search listings only.
 
 ## Legacy candidate material
 

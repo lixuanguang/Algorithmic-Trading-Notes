@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:henry-hub-contract-terms` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:henry-hub-contract-terms` unchanged (CME and EIA access barriers). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:crude-oil-markets` (`crude-oil-products`).
 
 ## Entry backlog
 
-- conv:henry-hub-contract-terms: NYMEX Henry Hub (NG) terms from CME's rulebook and U.S. LNG export data from the EIA, both refused or script-only on 2026-10-16.
+- conv:henry-hub-contract-terms: NYMEX Henry Hub (NG) terms from CME's rulebook and U.S. LNG export data from the EIA, refused or script-only on 2026-10-16 (CME again refused on the second attempt that day)
 
 ## Legacy candidate material
 

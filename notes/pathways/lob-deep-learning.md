@@ -26,13 +26,16 @@ Not attempted.
 
 Partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/artefacts/lob-deep-learning/order-flow-imbalance.tex` (the legacy file verbatim). Related entries owned elsewhere, cross-referenced and not listed here: queue imbalance and queue-reactive intensities (`market-making-lob`), trade-sign classification (`price-impact-execution`), realised variance and intraday deseasonalisation (`market-simulation`; the latter's look-ahead warning matters for features), and the time-validity pitfall (`financial-ml-evaluation`).
 
+## Source verification after slice 37
+
+Second slice-37 follow-up, 2026-10-16, working source gaps of slice 36 (source verification, not study): `def:multi-level-ofi` resolved (Cont, Cucuringu and Zhang, arXiv v4 of 13 June 2023: ten levels, PCA-integrated OFI explaining 89 percent of the levels' variance, LOBSTER 2017-2019 top 100 S&P 500 stocks, 30-minute windows; integrated OFI lifts contemporaneous out-of-sample R^2 from 64.6 to 83.8 percent, cross-asset terms add little contemporaneously, and one-minute forecasts have negative out-of-sample R^2; their per-level flow uses the new size where Cont, Kukanov and Stoikov use the old; the legacy's cross-venue pressure remains an unsourced construction). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+
 ## Related entries owned elsewhere
 
 Slice 36, 2026-10-16, migrated this pathway's two remaining candidate files, but by content most of their blocks went elsewhere (routing exceptions recorded in `notes/migration-slices.md`): the feature-engineering file's blocks concern relative-value arbitrage, not order-book prediction, and went to `res:arbitrage-risks`, `def:trader-motives` and `meth:triple-barrier-labelling`; the data-engineering file's to `data:market-data-levels` and `data:trading-reference-data` (`point-in-time-data`), `meth:venue-market-share`, `meth:spread-volatility-regression`, `meth:intraday-deseasonalisation` and the new `meth:skill-luck-significance-tests` (`performance-manager-evaluation`). The one block on transaction-level usefulness became a backlog stub (below). No block of either file asserts a multilevel or cross-asset OFI result; those wait on the stubs already here. Artefacts: `notes/artefacts/lob-deep-learning/feature-engineering-microstructure-alpha.tex` and `microstructure-data-engineering.tex`.
 
 ## Entry backlog
 
-- def:multi-level-ofi: multi-level OFI integrated across book depth, and cross-asset OFI, with sample, horizons and out-of-sample design, from Cont, Cucuringu and Zhang (`wide-cont-cross-impact-ofi`, a required reading, not read); the legacy "multi-level" and "cross-venue" imbalance features wait on it
 - ev:ofi-forecast-horizons: how OFI-based forecasts degrade with horizon and across stocks and periods, from Kolm, Turiel and Westray (`wide-kolm-deep-ofi`) and the LOBCAST benchmark (`w2-lobcast`); the legacy caveat "imbalance is horizon-dependent" was found in neither source read and waits on these
 - meth:lob-signal-transaction-usefulness: how to judge an order-book signal by what it is worth after trading: forecast target (mid-price, spread, fill, volatility), tradability (spread, queue loss, fees, access), capacity, stability across tick size, latency and participants, and crowding; the legacy evaluation list (slice 36) is a checklist without a source, and the checkpoint's "probability of profitable round trips after spread" (Briola et al., `w2-briola-lob-guide`; LOBCAST, `w2-lobcast`) is unread
 

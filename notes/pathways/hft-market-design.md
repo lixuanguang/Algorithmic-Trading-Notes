@@ -42,6 +42,8 @@ Changed in the slice-30 follow-up, 2026-10-15: `def:hft-strategies`' Currency fi
 
 Cross-referenced, not owned here: `def:order-anticipation`, `def:bluffing-manipulation`, `def:arbitrage`, `def:spread-measures`, `mod:glosten-milgrom` (`execution-market-making` and `market-making-lob`); `def:smart-order-routing` (`market-structure-execution-quality`).
 
+Changed in migration slice 35, 2026-10-16 (a routing exception from the foundations folder, whose candidates are `execution-market-making` and `market-structure-execution-quality`): `def:hft-strategies` (Lehalle and Laruelle's high-frequency liquidity bridges and role blurring, Introduction pp. 5--6 and 22; the legacy identification markers recorded) and `res:hft-spread-investor-cost` (the legacy caveats recorded as restatements). Partly checked 2026-10-16, draft; human review outstanding.
+
 ## Entry backlog
 
 - res:frequent-batch-auctions: what Budish, Cramton and Shim's frequent batch auctions do to time priority within a batch and to latency rents (their secs. VII-VIII, not read); the legacy matching file's claim that within-batch time priority is "muted" waits on it

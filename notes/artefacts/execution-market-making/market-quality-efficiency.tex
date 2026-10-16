@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-structure-execution-quality
-\subsection{Market Quality and Efficiency}
+% notes/artefacts/execution-market-making/market-quality-efficiency.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 35, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/05_market_quality_and_efficiency.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-structure-execution-quality), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Market Quality, Liquidity, Liquidity as Bilateral Search, Search Stopping Rule (proposition), Liquidity Search Strategy Segmentation, Four Liquidity Variables, Liquidity Risk, Tightness Depth and Resiliency, Price Continuity, Search-Output Liquidity Dimensions, Depth-Width Duality (proposition, attainment condition added), Displayed Undisclosed and Latent Liquidity, Book Size, Book Size Is a Lower Bound (corrected), Resiliency as Synchronisation, Value-Trader Resiliency, Liquidity State Drivers, Quality Trade-Offs, Intraday Liquidity Seasonality, Flow Reactivity -> def:liquidity-dimensions; Public Benefits of Liquid Markets, Visible Activity vs Economic Importance -> def:market-functions; Transparency Paradox, Transparency Segmentation, Volume Is Not Directly Comparable -> def:market-structures-venues; Latency and Book State, Nyquist-Shannon Latency Bound (not adopted as a theorem) -> def:smart-order-routing; Market Impact and Decay -> def:price-impact (routing exception); Informational Efficiency -> def:market-efficiency; Bid-Ask Bounce, Spread and Depth Substitute Imperfectly -> res:spread-determinants; Spread-Volatility Link -> meth:spread-volatility-regression. From Harris chaps. 3, 5, 9 and 19, Hasbrouck chap. 1, Lehalle and Laruelle's introduction and chap. 2.
+% Compile inside notes/artefacts/execution-market-making/ with  latexmk -pdf market-quality-efficiency.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: market quality and efficiency}
+
+% From compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/05_market_quality_and_efficiency.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Market Quality and Efficiency}
 
 \begin{definition} \hlt{Market Quality}\\
 Market quality measures how well trading interest becomes low-cost execution and informative prices. Include liquidity, tightness, depth, resiliency, transparency, volatility control, and informational efficiency.
@@ -182,3 +197,5 @@ Reported volume depends on architecture. A direct match may count once, while de
 \begin{caveat} \hlt{Visible Activity vs Economic Importance}\\
 Visible markets are not always the largest exposures. Stocks attract attention, while real estate, bonds, currencies, swaps, and futures may dominate capital value, risk transfer, or notional activity.
 \end{caveat}
+
+\end{document}

@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-structure-execution-quality
-\subsection{Market Participants and Trading Motives}
+% notes/artefacts/execution-market-making/market-participants-trading-motives.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 35, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/02_market_participants_and_trading_motives.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-structure-execution-quality), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Trading Game View, Long and Short Positions, Motive Segmentation, Multiple Trader Identities, Patience Defines the Liquidity Side, Buy-Side Motives, Instrument Choice Follows the Problem, Hedge-Vehicle Fit, Profit-Motivated Trader Segmentation, Speculation Requires Comparative Advantage, Trading Edge Segmentation, Noise and Liquidity Traders, Futile Trader Segmentation -> def:trader-motives; Skill and Luck Look Similar Ex Post, Past Profit Alone Does Not Identify Skill (proposition, conditions restated), the two corollaries with proofs -> res:zero-sum-skill-luck; Liquidity Supplier Segmentation, Dealers and Market Makers, Sell-Side Intermediaries, Broker Service Segmentation -> def:market-intermediaries; Information-Motivated Traders, Informed Trader Liquidity Role Segmentation -> def:informed-trader-types; Arbitrageur Economic Function -> def:arbitrage; Block-Trading Role Segmentation, Block Dealers vs Block Brokers, Block Trader Skill Segmentation -> def:block-trade (routing exception); Broker Agency Conflict -> def:broker-agency-conflicts; Institutional Investors and HFTs, HFT Identification Markers, HFT as Fragmentation Link, Blurring of Roles -> def:hft-strategies (routing exception); Tighter Spread Different Cost, Investor Size Asymmetry -> res:hft-spread-investor-cost (routing exception). From Harris chaps. 3, 7, 8, 15, 19 and 22, Lehalle and Laruelle's introduction.
+% Compile inside notes/artefacts/execution-market-making/ with  latexmk -pdf market-participants-trading-motives.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: market participants and trading motives}
+
+% From compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/02_market_participants_and_trading_motives.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Market Participants and Trading Motives}
 
 \begin{model} \hlt{Trading Game View}\\
 A trading mechanism is a game in which participants submit orders under venue rules. The players include customers, brokers, dealers, market makers, and traders acting for their own account. Some demand liquidity, some supply liquidity, some carry information, and some process orders.\\
@@ -243,3 +258,5 @@ The uncertainty created by meeting a fast counterparty is not borne equally. A s
 \begin{caveat} \hlt{Blurring of Roles}\\
 Fragmentation blurs the distinction between liquidity takers and providers. The same agent may consume liquidity in one venue, supply it in another, and intermediate price formation through routing speed.
 \end{caveat}
+
+\end{document}

@@ -86,6 +86,8 @@ Changed in the slice-30 follow-up, 2026-10-15: `def:order-exposure-decisions` no
 
 Changed in migration slice 34, 2026-10-16 (a routing exception: the legacy hidden-liquidity file's candidates are `execution-market-making` and `market-structure-execution-quality`, but these entries already held the concepts, so the blocks were merged rather than duplicated): `def:order-exposure-decisions` (benefits and costs of exposure, parasitic and defensive traders, display instructions and display precedence; Harris pp. 84-85, 117, 382-384) and `def:block-trade` (sunshine trading, pp. 327-328). Partly checked 2026-10-16, draft.
 
+Changed in migration slice 35, 2026-10-16 (a routing exception: the legacy foundations folder's candidates are `execution-market-making` and `market-structure-execution-quality`, but these entries already held the material): `def:block-trade` (Harris's block dealers against block brokers in the upstairs market, pp. 328--330) and `def:order-exposure-decisions` (how markets protect exposure: time precedence with a meaningful tick, undisclosed orders, audit trails, delayed reporting, p. 389). Partly checked 2026-10-16, draft; human review outstanding.
+
 ## Entry backlog
 
 - def:clearing-settlement: clearing, settlement, delivery versus payment and the central counterparty's guarantee in their standard definitions, to replace Narang's broker-fee description (CPMI glossary, not retrieved on 2026-10-15; the PFMI glossary annex, `exp-pfmi`, not reached in the copy read).

@@ -24,12 +24,12 @@ Migrating a block and compiling the result advances only the first. An entry wri
 
 - **Records.** Each slice appends one section to [migration-slices.md](migration-slices.md) and one row to the index below. A correction to a finished slice is appended as a follow-up; earlier records are left as written.
 
-## Status after slice 34 (16 October 2026)
+## Status after slice 35 (16 October 2026)
 
-- **Legacy blocks:** 351 = 306 shared + 16 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
-- **Entries:** 158, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
-- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30); `volatility-options` and `rates-credit-mortgages` (removed by slice 31); `ml-alternative-data` (removed by slice 32, its four figures moved to the slice's artefact). Two legacy chapters remain: `execution-market-making` (231 blocks; its orders-and-matching folder closed by slice 34) and `multi-asset-systematic-macro` (120).
-- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 233 pages; no LaTeX warnings; 0 overfull and 0 underfull boxes; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
+- **Legacy blocks:** 180 = 135 shared + 16 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
+- **Entries:** 170, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
+- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30); `volatility-options` and `rates-credit-mortgages` (removed by slice 31); `ml-alternative-data` (removed by slice 32, its four figures moved to the slice's artefact). Two legacy chapters remain: `execution-market-making` (60 blocks; its orders-and-matching folder closed by slice 34 and its foundations folder by slice 35) and `multi-asset-systematic-macro` (120).
+- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 236 pages; no LaTeX warnings; 0 overfull and 0 underfull boxes; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
 
 ## Slices
 
@@ -71,17 +71,18 @@ Blocks are the legacy blocks counted by `migration_status.py` before and after t
 | 31 | Hull's derivatives basics, forwards, futures and hedging, and the time-value file (three files, two chapters closed) | `9fbd551` | 583 → 568 | 108 → 118 | Cross-hedge components, yield-shift condition, return horizons and GIPS annualisation |
 | 32 | AFML data cluster: taxonomy, bars and multi-product series, labels, sample weights, fractional differentiation (five files, chapter closed) | `8be60d1` | 568 → 532 | 118 → 135 | Hedge-ratio sign, ETF-trick timing and capital, label spans, Hawkes lead |
 | 33 | Orders, the limit order book and queues; trade signing and order-flow imbalance; stylised facts, event time and point processes (eight files, one batch) | `d40d4c2` | 532 → 459 | 135 → 151 | Trade-signing arithmetic, order type against aggressiveness, sessions, FIX states, realised-variance limits, waiting times |
-| 34 | The rest of the orders-and-matching folder: order instructions, matching and trade pricing, dark trading, routing and fragmentation (four files, folder closed) | this slice's commit | 459 → 351 | 151 → 158 | |
+| 34 | The rest of the orders-and-matching folder: order instructions, matching and trade pricing, dark trading, routing and fragmentation (four files, folder closed) | `4d9d5da` | 459 → 351 | 151 → 158 | Pro-rata capacity, posting against crossing, ex-fixing domain, venue-share variance, SOR objective |
+| 35 | The foundations folder: market functions, motives, skill and luck, intermediaries, venues, sessions, liquidity; regulation, venue competition, U.S. and EU rules, circuit breakers (six files, folder closed) | this slice's commit | 351 → 180 | 158 → 170 | |
 
 ## Next bounded slice
 
-The first half of the foundations folder, proposed as one batch of 67 blocks: in `compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/`, `01_roles_of_financial_markets.tex` (11 blocks), `02_market_participants_and_trading_motives.tex` (34) and `03_trading_venues_and_market_architecture.tex` (22). None is assigned; their candidates are `execution-market-making` and `market-structure-execution-quality`.
+The market-making folder's remnants, proposed as one batch of 25 blocks: in `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/`, `01_economics_of_market_making.tex` (9 blocks), `04_optimal_quoting_and_inventory_control.tex` (2), `05_latency_and_queue_competition.tex` (7) and `06_cross_asset_and_cross_venue_market_making.tex` (7). Eighteen are assigned by `% assign:` lines in the files (the eleven of the first two files to `execution-market-making`, the seven of the latency file to `hft-market-design`); the cross-venue file's seven are shared between `market-making-lob` and `hft-market-design`.
 
-- **Why together.** They describe who trades, why, and through which venue types, the material on which slices 33–34's order, matching, dark-trading and routing entries rest; several existing entries already hold parts of it (`def:informed-trader-types`, `def:order-anticipation`, `def:floor-automated-trading-systems`, `def:fixed-income-market-structure`, `def:dark-pools-crossing`), so merging will matter as much as writing.
-- **Sources.** Harris chaps. 1–3 and 5 (`alpha-harris`, local), Lehalle and Laruelle's introduction and chap. 1 (`alpha-laruelle`), and Hasbrouck chap. 1–2 (`s6-hasbrouck`); establish provenance block by block.
-- **Proposed ownership**, to be confirmed against the guide's outcomes: participants and motives to the overview `execution-market-making`; venue architecture to `market-structure-execution-quality` where it concerns current venue types and rules (dated), to the overview where it is conceptual.
+- **Why together.** They complete the market-making material that slices 2--3, 15 and 33 began (`def:dealer-inventory-risk`, `mod:avellaneda-stoikov`, `mod:inventory-based-quotes`, `res:latency-arbitrage-arms-race`, `mod:queue-reactive-intensities`), and the folder would then close; merging into those entries will matter more than writing new ones.
+- **Sources.** Harris chaps. 13 and 19 (`alpha-harris`, local), Avellaneda and Stoikov (`s6-stoikov`), Budish, Cramton and Shim (`wide-budish-cramton-shim`), the queue-value literature (`wide-moallemi-yuan-queue`, not yet read) and Lehalle and Laruelle chap. 2; check each block's provenance.
+- **Proposed ownership:** keep the existing assignments; place the cross-venue blocks by their content (inventory hedging across venues to `market-making-lob`, latency and venue races to `hft-market-design`).
 
-The other half of that folder (`04_auction_and_dealer_market_structures.tex`, 21 blocks; `05_market_quality_and_efficiency.tex`, 32; `06_regulatory_and_structural_evolution.tex`, 51, which needs dated primary rule texts) is a natural following batch. The feature- and data-engineering files of the order-flow folder (`04_.../08_...`, 6 blocks; `09_...`, 18) remain a batch for `lob-deep-learning` and `point-in-time-data`. The legacy macro chapter (120 blocks), the fifteen blocks assigned to `hft-market-design`, the three slice-5 assignments, the market-making folder's remnants and the deferred items (the toy-model time term, Lehalle and Laruelle sec. 2.5.3, Ho–Stoll) are unchanged.
+After it, `execution-market-making` keeps the eleven assigned blocks of the information-and-spreads folder (`03_.../02_...`, 3; `08_...`, 8, including Lehalle and Laruelle's toy flash-crash model and its time term) and the feature- and data-engineering files of the order-flow folder (`04_.../08_...`, 6 blocks; `09_...`, 18) for `lob-deep-learning`, `market-simulation` and `point-in-time-data`. The legacy macro chapter (120 blocks) and the deferred items (Ho--Stoll, the toy-model time term) are unchanged.
 
 ## File map
 
@@ -90,12 +91,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 <!-- map:begin -->
 | Legacy file | Candidate pathways |
 |---|---|
-| `compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/01_roles_of_financial_markets.tex` | execution-market-making, market-structure-execution-quality |
-| `compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/02_market_participants_and_trading_motives.tex` | execution-market-making, market-structure-execution-quality |
-| `compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/03_trading_venues_and_market_architecture.tex` | execution-market-making, market-structure-execution-quality |
-| `compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/04_auction_and_dealer_market_structures.tex` | execution-market-making, market-structure-execution-quality |
-| `compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/05_market_quality_and_efficiency.tex` | execution-market-making, market-structure-execution-quality |
-| `compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/06_regulatory_and_structural_evolution.tex` | execution-market-making, market-structure-execution-quality |
 | `compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/02_price_discovery.tex` | execution-market-making, market-making-lob, market-structure-execution-quality, hft-market-design |
 | `compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/08_volatility_and_liquidity_interaction.tex` | execution-market-making, market-making-lob, hft-market-design, market-structure-execution-quality |
 | `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/08_feature_engineering_for_microstructure_alpha.tex` | lob-deep-learning |

@@ -54,6 +54,8 @@ Partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/art
 
 Changed in the slice-33 follow-up, 2026-10-16: `meth:trade-sign-classification` (the check now uses exact decimal prices and ten assertions; the slice-33 float version misclassified a half-tick midpoint trade after a downtick).
 
+Changed in migration slice 35, 2026-10-16 (a routing exception from the foundations folder, whose candidates are `execution-market-making` and `market-structure-execution-quality`): `def:price-impact` took the legacy temporary-and-permanent impact mechanism as a restatement, with Harris's resiliency (pp. 400 and 403). Partly checked 2026-10-16, draft; human review outstanding.
+
 ## Entry backlog
 
 - ev:block-initiator-asymmetry: the primary evidence behind Harris's "approximately 80 percent" of large U.S. block trades being seller-initiated (p. 332), with sample, period and classification method

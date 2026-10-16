@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-structure-execution-quality
-\subsection{Auction and Dealer Market Structures}
+% notes/artefacts/execution-market-making/auction-dealer-market-structures.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 35, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/04_auction_and_dealer_market_structures.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-structure-execution-quality), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Execution-System Segmentation, Trading Session Segmentation, Continuous Auctions, Call Auctions, Fixing Auctions, Auction Session Segmentation, Dealer Markets, Brokered Markets, Hybrid Markets, Specialist Role Segmentation, Gold Fixing as Sequential Auction (dated from LBMA and IBA), Why Large Orders Like Calls, Auction Transparency Trade-Off -> def:trading-sessions-execution-systems; Open-Outcry Oral Auctions, Public Exposure Rule, Order-Driven Rule Stack, Priority and Access Rules -> mech:order-matching-pricing; Floor vs Automated Auction Segmentation, Fast-Market Capacity Condition (proposition restated as a necessary queue-stability condition), Floor Information Exchange -> def:floor-automated-trading-systems; Reference Price Monopoly -> meth:venue-market-share. From Harris chaps. 5, 6, 24, 27 and 28, Hasbrouck chap. 2.
+% Compile inside notes/artefacts/execution-market-making/ with  latexmk -pdf auction-dealer-market-structures.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: auction and dealer market structures}
+
+% From compendium/legacy/execution-market-making/01_foundations_of_trading_and_market_organization/04_auction_and_dealer_market_structures.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Auction and Dealer Market Structures}
 
 \begin{taxonomy} \hlt{Execution-System Segmentation}
 \begin{enumerate}[label=\roman*.]
@@ -128,3 +143,5 @@ Calls reduce the need to reveal urgency sequentially. A large order can interact
 \begin{caveat} \hlt{Auction Transparency Trade-Off}\\
 Pre-auction imbalance messages help traders converge to a clearing price, but they can also invite probing, cancellation, and last-second repricing. More transparency improves price discovery only when participants cannot cheaply game the signal.
 \end{caveat}
+
+\end{document}

@@ -56,36 +56,88 @@ bif_cont = (Fr('20.1') * 2 + Fr('20.2') * 2) / 4
 print(f"Bif's average price: discriminatory {float(bif_cont):.2f} against 20.2 if his order alone set a uniform price"
       " (Harris p. 128); Sue's average 20.033 against 20.0")
 
-# ------------------------------------------------------------------ pro-rata allocation and rounding
-head('pro-rata allocation: exact shares and what rounding leaves over')
-print('Harris (p. 117): 18 against resting 10 and 20 ->', [Fr(18 * q, 30) for q in (10, 20)])
-print('POSIT example (p. 134): sell 3,000 against buys 5,000 and 10,000 ->', [3000 * q // 15000 for q in (5000, 10000)])
-Q, rest = 10, [3, 3, 3]
-exact = [Fr(Q * q, sum(rest)) for q in rest]
-floors = [int(x) for x in exact]
-print(f'Q={Q} against {rest}: exact {[str(x) for x in exact]}, floors {floors}, remainder {Q - sum(floors)}'
-      ' to be allocated by a venue rule (time, largest fraction, or another); the rule changes who fills')
-Q, rest = 7, [1, 1, 100]
-exact = [Fr(Q * q, sum(rest)) for q in rest]
-print(f'Q={Q} against {rest}: exact {[f"{float(x):.3f}" for x in exact]}, floors {[int(x) for x in exact]}:'
-      ' small orders receive nothing without a minimum or remainder rule')
+# ------------------------------------------------------------------ pro-rata allocation: capacity, rounding, residual
+head('pro-rata allocation (corrected 2026-10-16): capacity first, then proportional shares, rounding remainder, incoming residual')
 
-# ------------------------------------------------------------------ market versus limit threshold (derived)
-head('posting against crossing: expected relative gain p(S-A) - (1-p)M (derived; legacy proposition)')
-for p, S, A, M in [(0.6, 1.0, 0.3, 0.8), (0.6, 1.0, 0.7, 0.8), (0.9, 1.0, 0.3, 2.0)]:
-    g = p * (S - A) - (1 - p) * M
-    print(f'  p={p}, S={S}, A={A}, M={M}: gain {g:+.2f} -> {"post" if g > 0 else "cross"}')
 
-# ------------------------------------------------------------------ fragmentation metrics
-head("ex-fixing market share (Lehalle-Laruelle p. 35): derived (M - m p)/(1 - p) against the printed (1 - m p) M/(1 - p)")
-for M_, m_, p_ in [(0.60, 1.0, 0.20), (0.30, 0.0, 0.20), (0.70, 1.0, 0.25)]:
-    total, fix_total = 1.0, p_
-    venue_total = M_ * total
-    venue_fix = m_ * fix_total
-    exact = (venue_total - venue_fix) / (total - fix_total)
+def pro_rata(Q, resting):
+    """Executable quantity is capped by eligible resting liquidity; shares are proportional to size; floors leave a
+    rounding remainder for a venue rule; any excess of Q over the liquidity is the incoming order's residual."""
+    E = min(Q, sum(resting))
+    exact = [Fr(E * q, sum(resting)) for q in resting]
+    floors = [int(x) for x in exact]
+    rounding = E - sum(floors)
+    residual = Q - E
+    assert all(f <= q for f, q in zip(floors, resting)), 'no order fills beyond its size'
+    assert sum(floors) + rounding + residual == Q, 'quantity conserved'
+    assert sum(floors) + rounding <= sum(resting), 'capacity respected'
+    return E, exact, floors, rounding, residual
+
+
+cases = [('Harris p. 117', 18, [10, 20]), ('undersubscribed, fractional', 10, [4, 4, 4]),
+         ('equal', 12, [4, 4, 4]), ('oversubscribed', 10, [3, 3, 3]), ('small orders', 7, [1, 1, 100])]
+for name, Q, rest in cases:
+    E, exact, floors, rounding, residual = pro_rata(Q, rest)
+    print(f'  {name:28} Q={Q:2d} vs {rest}: executable {E}, exact {[str(x) for x in exact]}, floors {floors},'
+          f' rounding remainder {rounding} (venue rule), unexecuted incoming residual {residual}')
+assert pro_rata(10, [3, 3, 3])[1:] == ([3, 3, 3], [3, 3, 3], 0, 1)
+assert pro_rata(10, [4, 4, 4])[3:] == (1, 0)
+print('POSIT example (p. 134): sell 3,000 against buys 5,000 and 10,000 ->', pro_rata(3000, [5000, 10000])[2])
+
+# ------------------------------------------------------------------ posting against crossing: explicit cash flows
+head('posting against crossing (corrected 2026-10-16): equal target quantity, common terminal mark, pathwise cash flows')
+
+
+def outcomes(ask0, bid0, filled, chase_price, mark):
+    """Buy one unit by the horizon. Crossing pays ask0 now. Posting pays bid0 if filled, otherwise buys at the horizon
+    at chase_price. Both end long one unit, marked at the same terminal price."""
+    cross = mark - ask0
+    post = mark - (bid0 if filled else chase_price)
+    return cross, post, post - cross
+
+
+c, p_, g = outcomes(100, 99, True, None, 97)
+print(f'  fill at 99 vs buy at 100, mark 97: crossing {c:+}, posting {p_:+}, posting gain {g:+} (= the spread saved;'
+      ' the fall to 97 hits both)')
+assert g == 1
+c, p_, g = outcomes(100, 99, False, 101.5, 103)
+print(f'  miss, chase at 101.5, mark 103: crossing {c:+}, posting {p_:+}, posting gain {g:+} (= ask0 - chase price)')
+assert g == -1.5
+# pathwise check on a random-walk midprice with a fill rule; the identity gain = p*S - (1-p)*M holds by construction
+rng_p = np.random.default_rng(341)
+n, steps, half = 200_000, 50, 0.5
+mid0 = 100.0
+z = rng_p.standard_normal((n, steps)).cumsum(1) * 0.2
+mins, last = z.min(1), z[:, -1]
+filled = mins <= -2 * half             # the bid at mid0 - half is reached if the mid falls one full spread below it
+chase = mid0 + last + half               # buy at the horizon ask if missed
+mark = mid0 + last
+cross = mark - (mid0 + half)
+post = np.where(filled, mark - (mid0 - half), mark - chase)
+gain = post - cross
+p_fill = filled.mean(); S = 2 * half; M = (chase - (mid0 + half))[~filled].mean()
+print(f'  random walk: P(fill) {p_fill:.3f}; mean pathwise gain {gain.mean():+.4f}; p*S - (1-p)*M = {p_fill * S - (1 - p_fill) * M:+.4f}')
+assert abs(gain.mean() - (p_fill * S - (1 - p_fill) * M)) < 1e-9
+A = (mid0 - half - mark)[filled].mean()  # the post-fill fall, the old formula's 'A'
+print(f'  the old formula subtracts A = E[fill price - mark | fill] = {A:+.3f} from the posting branch only; the same fall'
+      f' hits the crossing position, so p(S-A)-(1-p)M = {p_fill * (S - A) - (1 - p_fill) * M:+.4f} misstates the gain')
+
+# ------------------------------------------------------------------ ex-fixing share
+head('ex-fixing market share: (M - m p)/(1 - p) against the printed (1 - m p) M/(1 - p); equal iff m p (1 - M) = 0')
+
+
+def ex_fixing(M, m, p):
+    assert 0 <= p < 1 and 0 <= m <= 1 and m * p <= M <= m * p + (1 - p), 'shares must be feasible'
+    return (M - m * p) / (1 - p)
+
+
+for M_, m_, p_ in [(0.60, 1.0, 0.20), (0.30, 0.0, 0.20), (0.70, 1.0, 0.25), (1.0, 1.0, 0.2), (0.4, 0.5, 0.0)]:
+    exact = ex_fixing(M_, m_, p_)
     printed = (1 - m_ * p_) * M_ / (1 - p_)
-    print(f'  M={M_}, m={m_}, p={p_}: ex-fixing share {exact:.4f}; printed formula {printed:.4f}')
-print('  (a venue with all the auctions and 60 percent overall has 50 percent of continuous trading, not 60)')
+    agree = abs(exact - printed) < 1e-12
+    assert agree == (abs(m_ * p_ * (1 - M_)) < 1e-12)
+    print(f'  M={M_}, m={m_}, p={p_}: ex-fixing {exact:.4f}; printed {printed:.4f}; agree {agree} (m p (1-M) = {m_ * p_ * (1 - M_):.3f})')
+print('  a monopolist (M = m = 1) has share 1 ex-fixing under both; p = 1 (all volume in auctions) leaves it undefined')
 
 head('FEI = entropy / log N (app. A.1) and an empty venue added')
 q = np.array([0.6, 0.25, 0.15])
@@ -128,49 +180,144 @@ n, m = 120, 120
 print(f'  LL Table A.4 statistics for SBF 120 (n=m=120 assumed here): critical D at 5 percent ~'
       f' {1.358 * np.sqrt((n + m) / (n * m)):.3f}; observed 0.1207 (2010) and 0.0833 (2012) fail to reject, nothing more')
 
-# ------------------------------------------------------------------ market-share estimator and its variance
-head('venue-share estimator (app. A.8): Bernoulli variance holds only for independent equal-size trades')
+# ------------------------------------------------------------------ market-share estimators and their variance
+head('venue-share estimators (corrected 2026-10-16): count and value shares, and the fixed-weight index estimator')
+rng_v = np.random.default_rng(342)
 p_true, n_tr = 0.3, 2000
-iid = rng.binomial(1, p_true, (4000, n_tr)).mean(1)
-print(f'  independent trades: sd {iid.std():.4f} against sqrt(p(1-p)/n) {np.sqrt(p_true * (1 - p_true) / n_tr):.4f}')
-runs = []
-for _ in range(4000):                       # venue choice persists in runs of 20 trades (one child order split...)
-    v = rng.binomial(1, p_true, n_tr // 20).repeat(20)
-    runs.append(v.mean())
-print(f'  venue choice repeated in runs of 20 trades: sd {np.std(runs):.4f}; the binomial interval is too narrow')
+iid = rng_v.binomial(1, p_true, (4000, n_tr)).mean(1)
+print(f'  count share, independent trades: sd {iid.std():.4f} against sqrt(p(1-p)/n) {np.sqrt(p_true * (1 - p_true) / n_tr):.4f}')
+vals = rng_v.lognormal(0, 1.5, n_tr)            # fixed trade values
+X = rng_v.binomial(1, p_true, (4000, n_tr))
+vshare = (X * vals).sum(1) / vals.sum()
+n_eff = vals.sum() ** 2 / (vals ** 2).sum()
+print(f'  value share, fixed trade values, independent venues: sd {vshare.std():.4f} against sqrt(p(1-p)/n_eff)'
+      f' {np.sqrt(p_true * (1 - p_true) / n_eff):.4f} with n_eff = {n_eff:.0f} of {n_tr} trades')
+runs = np.array([rng_v.binomial(1, p_true, n_tr // 20).repeat(20).mean() for _ in range(4000)])
+print(f'  count share with venue choices repeated in runs of 20: sd {runs.std():.4f}; binomial {np.sqrt(p_true * (1 - p_true) / n_tr):.4f}')
 
-# ------------------------------------------------------------------ SOR toy model (app. A.3)
-head('SOR toy model (app. A.3): learning rule, market-share update, and the first-order condition')
-K, a_sor, gamma = 3, 0.3, 0.002
-p_share = np.array([0.95, 0.03, 0.02])
-r = np.full(K, 1 / K)
-nu = 0.8                                                  # sd proportional to mean liquidity (LL's assumption)
-for period in range(400):
-    for _ in range(50):
-        D = p_share * np.exp(rng.normal(-nu ** 2 / 2, nu, K))     # mean p_k, lognormal
-        V = D.sum() * np.exp(rng.normal(-0.02, 0.2))
-        hit = (r * V < D).astype(float)                   # venue had more than was sent: allocation was too small
-        r = r + gamma * (hit - hit.mean())                 # raise r_k where venue k had more than was sent; LL print
-        #   gamma*(mean - hit) in eq. (A.7), which would lower it, against their own text (p. 256)
-        r = np.clip(r, 1e-4, None); r /= r.sum()
-    p_share = (1 - a_sor) * p_share + a_sor * r
-print('  start shares (0.95, 0.03, 0.02), equal initial SOR keys; after 400 periods: shares', p_share.round(3), 'keys', r.round(3))
-# first-order condition check with random V: E[V 1{r_k V < D_k}] equal across venues at the optimum
-Ds = np.array([0.5, 0.3, 0.2]) * np.exp(rng.normal(-0.32, 0.8, (200_000, 3)))
-Vs = Ds.sum(1) * np.exp(rng.normal(0, 0.6, 200_000))
-best, bestr = -1, None
-for r1 in np.linspace(0.05, 0.9, 86):
-    for r2 in np.linspace(0.05, 0.9 - r1, max(2, int((0.9 - r1) / 0.01))):
-        rr = np.array([r1, r2, 1 - r1 - r2])
-        if rr[2] <= 0:
-            continue
-        c = np.minimum(rr * Vs[:, None], Ds).sum(1).mean()
-        if c > best:
-            best, bestr = c, rr
-hitw = ((bestr * Vs[:, None] < Ds) * Vs[:, None]).mean(0)
-hitu = (bestr * Vs[:, None] < Ds).mean(0)
-print(f'  grid optimum r = {bestr.round(3)}: E[V 1(rV<D)] = {hitw.round(4)} (near-equal), E[1(rV<D)] = {hitu.round(4)}'
-      ' (LL eq. A.6 drops the V weight; exact only for a fixed order size)')
+
+def var_diff(w, sig2, k, cov=None):
+    a = -np.asarray(w, float); a[k] += 1.0                  # p_hat_k - sum_j w_j p_hat_j
+    C = np.diag(sig2) if cov is None else np.asarray(cov)
+    return float(a @ C @ a)
+
+
+w, p_, n_ = np.array([0.9, 0.1]), np.array([0.5, 0.5]), np.array([100, 100])
+s2 = p_ * (1 - p_) / n_
+correct = var_diff(w, s2, 0)
+book = (1 - 2 * w[0]) * s2[0] + 0.5 * 0.5 / n_.sum()
+print(f'  w=(0.9,0.1), p=(0.5,0.5), n=(100,100): Var(p_1 - p_hat) = (1-w1)^2 s1 + w2^2 s2 = {correct:.5f};'
+      f' the printed formula with pooled n = 200 gives {book:+.5f}')
+assert abs(correct - 0.00005) < 1e-12 and abs(book + 0.00075) < 1e-12
+sims = rng_v.binomial(n_, p_, (400_000, 2)) / n_
+diff = sims[:, 0] - sims @ w
+print(f'  simulated variance {diff.var():.6f}')
+
+# ------------------------------------------------------------------ SOR objective, gradient and a consistent learner
+head('SOR objective (corrected 2026-10-16): E[sum_k min(r_k V, D_k)]; marginal value E[V 1{r_k V < D_k}]')
+scen = [(1.0, np.array([0.4, 0.6])), (10.0, np.array([6.0, 4.0]))]   # equally likely
+
+
+def capture(r):
+    return np.mean([np.minimum(r * V, D).sum() for V, D in scen])
+
+
+def ind(r, weighted):
+    return np.mean([(V if weighted else 1.0) * (r * V < D) for V, D in scen], axis=0)
+
+
+for r in [np.array([0.5, 0.5]), np.array([0.6, 0.4])]:
+    print(f'  r={r}: expected capture {capture(r):.2f}; E[1(rV<D)] {ind(r, False)}; E[V 1(rV<D)] {ind(r, True)}')
+assert abs(capture(np.array([0.5, 0.5])) - 4.95) < 1e-12 and abs(capture(np.array([0.6, 0.4])) - 5.4) < 1e-12
+grid = np.linspace(0, 1, 1001)
+caps = [capture(np.array([x, 1 - x])) for x in grid]
+print(f'  grid optimum r1 = {grid[int(np.argmax(caps))]:.3f} with capture {max(caps):.3f}: equal unweighted indicators do'
+      ' not identify the optimum; the size-weighted condition does (interior: equal for all r_k > 0; boundary r_k = 0: no larger)')
+
+head('a learner consistent with that objective, with D independent of V and E[D_k / sum D] = p_k (Lehalle-Laruelle eq. A.10)')
+rng_s = np.random.default_rng(343)
+K, nu = 3, 0.8
+
+
+def draw_D(mu, size):
+    return mu * np.exp(rng_s.normal(-nu ** 2 / 2, nu, (size, K)))   # sd proportional to the mean (common nu)
+
+
+def calibrate(p_target, iters=60, size=40_000):
+    mu = p_target.copy()
+    Z = rng_s.normal(-nu ** 2 / 2, nu, (size, K))
+    for _ in range(iters):
+        D = mu * np.exp(Z)
+        share = (D / D.sum(1, keepdims=True)).mean(0)
+        mu = mu * p_target / share
+        mu = mu / mu.sum()
+    return mu, (D / D.sum(1, keepdims=True)).mean(0)
+
+
+def project_simplex(v):
+    u = np.sort(v)[::-1]; css = np.cumsum(u)
+    rho = np.nonzero(u * np.arange(1, len(v) + 1) > (css - 1))[0][-1]
+    return np.maximum(v - (css[rho] - 1) / (rho + 1), 0)
+
+
+mu, achieved = calibrate(np.array([0.95, 0.03, 0.02]))
+print(f'  calibrated means {mu.round(4)} give E[D_k/sum D] = {achieved.round(4)} (target 0.95, 0.03, 0.02)')
+
+
+def learn(r, mu, n_draws, gamma0=0.02, tau=300):
+    """Projected stochastic gradient ascent on E[sum min(r_k V, D_k)] with decreasing steps; returns the average key."""
+    D = draw_D(mu, n_draws)
+    V = np.exp(rng_s.normal(-0.02, 0.2, n_draws)) * mu.sum()           # independent of D, E[V] ~ sum E[D]
+    acc = np.zeros(K)
+    for i, (d, v) in enumerate(zip(D, V)):
+        g = v * (r * v < d) / mu.sum()                                   # stochastic gradient, scaled by order size
+        r = project_simplex(r + gamma0 / (1 + i / tau) * (g - g.mean()))
+        if i >= n_draws // 2:
+            acc += r
+    return r, acc / (n_draws - n_draws // 2)
+
+
+def optimum(mu, n=100_000):
+    """Exact KKT solution on a sample: each r_k solves h_k(r_k) = E[V 1{r_k V < D_k}] = lam (h_k decreasing in r_k),
+    r_k = 0 if h_k(0) <= lam, and lam is set by bisection so that the keys sum to one."""
+    D = draw_D(mu, n); V = np.exp(rng_s.normal(-0.02, 0.2, n)) * mu.sum()
+    ratio = D / V[:, None]                                               # r_k V < D_k  <=>  r_k < D_k / V
+
+    def key(k, lam):
+        order = np.argsort(ratio[:, k]); rk = ratio[order, k]; vk = V[order]
+        tail = np.cumsum(vk[::-1])[::-1] / n                             # h_k just below each breakpoint
+        idx = np.searchsorted(-tail, -lam, side='right')                # first breakpoint where h_k <= lam
+        return 0.0 if idx == 0 else rk[min(idx, n) - 1]
+
+    lo, hi = 0.0, V.mean()
+    for _ in range(80):
+        lam = (lo + hi) / 2
+        tot = sum(key(k, lam) for k in range(K))
+        lo, hi = (lam, hi) if tot > 1 else (lo, lam)
+    r = np.array([key(k, lam) for k in range(K)]); r = r / r.sum()
+    g = (V[:, None] * (r * V[:, None] < D)).mean(0)
+    return r, g, np.minimum(r * V[:, None], D).sum(1).mean(), lam
+
+
+p_share, r, a_sor = np.array([0.95, 0.03, 0.02]), np.full(K, 1 / K), 0.3
+for period in range(60):
+    mu, _ = calibrate(p_share, iters=25, size=8_000)
+    r, r_avg = learn(r, mu, 3000)
+    p_share = (1 - a_sor) * p_share + a_sor * r_avg
+r_opt, g_opt, c_opt, lam = optimum(mu)
+print(f'  illustrative coupled run, 60 periods (a = 0.3, nu = {nu}): shares {p_share.round(3)}, averaged keys {r_avg.round(3)}')
+print(f'  exact KKT optimum at the final liquidity: keys {r_opt.round(5)}, E[V 1(rV<D)] {g_opt.round(4)}, lambda {lam:.4f}'
+      ' (all keys positive and the marginal values equal: an interior solution)')
+assert np.all(r_opt > 0) and np.ptp(g_opt) < 0.01 * lam + 1e-3
+print(f'  the learner averaged keys {r_avg.round(4)} against the exact optimum {r_opt.round(4)}')
+assert np.abs(r_avg - r_opt).max() < 0.01
+r_mid, g_mid, c_mid, lam_mid = optimum(np.array([0.6, 0.25, 0.15]))
+print(f'  same solver with liquidity means (0.6, 0.25, 0.15): keys {r_mid.round(3)}, E[V 1(rV<D)] {g_mid.round(4)}')
+assert np.ptp(g_mid[r_mid > 0]) < 0.01 * lam_mid + 1e-3
+print('  with D_k = mu_k X_k, X_k i.i.d. and V independent, the optimal keys are mu_k / sum mu (scale invariance), and the'
+      ' constraint E[D_k/sum D] = p_k makes mu_1/sum mu > p_1 for the largest venue, so p drifts towards it: this variant'
+      ' concentrates and does not reproduce Lehalle-Laruelle\'s 50/25/25 path (their nu is unreported and their update'
+      ' as printed differs)')
 
 # ------------------------------------------------------------------ cross-venue no-arbitrage bound (derived)
 head('cross-venue bound: a buy at ask a1 and a sale at bid b2 earn b2 - a1 - k per unit')

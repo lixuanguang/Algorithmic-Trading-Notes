@@ -34,13 +34,14 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 
 Audit correction of 2026-10-16 (`def:order-flow-imbalance`): Cont, Cucuringu and Zhang selected their 100 stocks by market capitalisation on 31 December 2019 (n. 3, p. 5), the end of their 2017-2019 sample; the entry now states that universe-selection look-ahead, separates it from their rolling train/test design, and does not call the reported calculations invalid.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `ev:ofi-forecast-horizons` resolved in the working-paper version (Kolm, Turiel and Westray, SSRN 6 August 2021: 115 Nasdaq stocks 2019-2020, stock-specific horizons, order-flow inputs beat book states for most stocks, out-of-sample R^2 peaks near two average price changes, no costs; the Mathematical Finance version not compared); `meth:lob-signal-transaction-usefulness` unchanged (no new source in this batch; the gap recorded on 16 October 2026 stands). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Slice 36, 2026-10-16, migrated this pathway's two remaining candidate files, but by content most of their blocks went elsewhere (routing exceptions recorded in `notes/migration-slices.md`): the feature-engineering file's blocks concern relative-value arbitrage, not order-book prediction, and went to `res:arbitrage-risks`, `def:trader-motives` and `meth:triple-barrier-labelling`; the data-engineering file's to `data:market-data-levels` and `data:trading-reference-data` (`point-in-time-data`), `meth:venue-market-share`, `meth:spread-volatility-regression`, `meth:intraday-deseasonalisation` and the new `meth:skill-luck-significance-tests` (`performance-manager-evaluation`). The one block on transaction-level usefulness became a backlog stub (below). No block of either file asserts a multilevel or cross-asset OFI result; those wait on the stubs already here. Artefacts: `notes/artefacts/lob-deep-learning/feature-engineering-microstructure-alpha.tex` and `microstructure-data-engineering.tex`.
 
 ## Entry backlog
 
-- ev:ofi-forecast-horizons: Kolm, Turiel and Westray (`wide-kolm-deep-ofi`: Wiley and SSRN refused automated access, HTTP 403, 2026-10-16) for OFI-based multi-horizon forecasts; LOBCAST (arXiv v2) was read, on raw order-book inputs, not OFI
 - meth:lob-signal-transaction-usefulness: how to judge an order-book signal by what it is worth after trading: forecast target (mid-price, spread, fill, volatility), tradability (spread, queue loss, fees, access), capacity, stability across tick size, latency and participants, and crowding; the legacy evaluation list (slice 36) is a checklist without a source, and the checkpoint's "probability of profitable round trips after spread" (Briola et al., `w2-briola-lob-guide`; LOBCAST, `w2-lobcast`) is unread
 
 ## Legacy candidate material

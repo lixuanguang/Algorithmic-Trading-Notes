@@ -36,6 +36,8 @@ Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cd
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:cds-standard-contract` blocked (the 2014 ISDA Credit Derivatives Definitions are sold by ISDA; no licensed copy). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:cds-standard-contract` still blocked (ISDA's 21 February 2014 release read: bail-in credit event, sovereign asset-package delivery, standard reference obligation, implementation from the September 2014 roll by reference or protocol; the Definitions themselves are sold by ISDA and were not read). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:sovereign-credit-defaults` (`sovereign-municipal`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).

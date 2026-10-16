@@ -59,11 +59,13 @@ Changed in migration slice 35, 2026-10-16 (a routing exception from the foundati
 ## Entry backlog
 
 - ev:block-initiator-asymmetry: the primary evidence behind Harris's "approximately 80 percent" of large U.S. block trades being seller-initiated (p. 332), with sample, period and classification method
-- res:trade-sign-accuracy: Lee and Ready (1991) and Ellis, Michaely and O'Hara (2000) themselves (journal copies behind subscriptions); Jurkatis's Bank of England Staff Working Paper 896, with known directions on NASDAQ, May-July 2011, was read on 2026-10-16
+- res:trade-sign-accuracy: Ellis, Michaely and O'Hara (2000) and the other accuracy studies Jurkatis reviews; Lee and Ready (1991), read from a scan on 2026-10-16, report agreement rates and quote timing, not accuracy against known directions
 
 ## Source verification after slice 37
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `res:trade-sign-accuracy` narrowed (Jurkatis: about 98 percent of volume correct with nanosecond stamps, about 90 percent for Lee-Ready, EMO and CLNV at one-second stamps against 95 for his algorithm; interpolation lowers accuracy). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `res:trade-sign-accuracy` narrowed (Lee and Ready: Table I agreement of the tick test with quote classification 92.1 and 90.2 percent at the ask and bid, quotes recorded ahead of trades, the 5-second rule and n. 10 on other periods). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
 ## Legacy candidate material
 

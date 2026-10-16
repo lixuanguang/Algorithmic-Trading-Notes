@@ -36,13 +36,15 @@ Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:me
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:metals-market-shares-current` narrowed (platinum: automotive 35.0, jewellery 25.5, industrial 26.1, investment 13.3 percent of 8,671 koz; South Africa 71.2 percent of refined mine supply). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:metals-market-shares-current` narrowed (ICSG 2024: mine 23 Mt, Chile 24 percent; refined usage 27.4 Mt, China 58 percent; end use 26/17/57 against Gliner's 33/15/52; COMEX Chapters 107 and 111-113 and LME Part 6 read). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- data:metals-market-shares-current: copper and aluminium consumption shares (ICSG timed out) and COMEX and LME contract terms (both refused, HTTP 403); platinum 2025 demand and supply shares were read in WPIC's Platinum Quarterly Q2 2026 on 2026-10-16
+- data:metals-market-shares-current: aluminium production and consumption by country (Gliner's China over 40 percent) and the LME's minimum price fluctuations, which its Rulebook leaves to Exchange notices (Rule 11.3.7); copper (ICSG Factbook 2025, ICA 2023 dataset), aluminium sector shares (IAI/MPP 2023, a model baseline of about 2020) and the COMEX and LME contract texts were read
 
 ## Legacy candidate material
 

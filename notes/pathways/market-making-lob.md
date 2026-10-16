@@ -58,6 +58,8 @@ Changed in the slice-33 follow-up, 2026-10-16: `mod:queue-reactive-intensities` 
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `res:queue-reactive-models-hlr` resolved (Huang, Lehalle and Rosenbaum, arXiv v2: Theorem 2.1's two sufficient conditions, Model I MLE and invariant law with the shifted arrival/departure ratio, Models IIa-IIb, Cheuvreux data January 2010 to March 2012, Model III's 5 bp against 14 bp mechanical volatility and calibration 0.7 and 0.85; the journal version not compared); `ev:imbalance-placement-latency` narrowed (Lehalle and Mounjid read: sample, imbalance definition, the round-trip caveat and the latency factor). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `ev:imbalance-placement-latency` unchanged (no new source in this batch; the gap recorded on 16 October 2026 stands). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Written in slice 36 for `hft-market-design` and cross-referenced here: `res:queue-position-value`, from this pathway's reading `wide-moallemi-yuan-queue` (June 2017 revision; abstract, secs. 1--2, 4.3, 5.2 and 6 read, the value recursion of sec. 3 not checked). The cross-asset file, which listed this pathway, was routed to `execution-market-making`'s arbitrage entries (slice 36).

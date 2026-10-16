@@ -36,13 +36,15 @@ Second slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:sove
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `ev:sovereign-restructurings-after-2006` blocked for now (no named dataset with a dated Argentine default count obtained: Reinhart's data page lists no static download link and the BoC-BoE database counts amounts in default from 1960, not episodes since independence). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `ev:sovereign-restructurings-after-2006` resolved as attributed counts (CRS IF10991 v6: nine external defaults since 1816, May 2020 the ninth; Reinhart's 2010 chartbook: seven external and five domestic episodes to 2009; Fitch's 2020 study: rating defaults in 2001, 2014, 2019 and 2020; kept apart, not merged). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mech:cds-contract-credit-events` (`corporate-credit-cds`); `meth:curve-trades-carry-rolldown` (`curve-term-structure`).
 
 ## Entry backlog
 
-- ev:sovereign-restructurings-after-2006: a dated default count for Argentina (the legacy's "ninth default") from a named dataset; the Greek 2012 and Argentine 2020 exchanges' sizes, haircuts and participation were read in IMF Country Reports 12/57, 17/44 and 22/92 on 2026-10-16
+None open after the second source follow-up of 2026-10-16.
 
 ## Legacy candidate material
 

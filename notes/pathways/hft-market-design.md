@@ -53,6 +53,8 @@ Second slice-37 follow-up, 2026-10-16, working source gaps of slice 36 (source v
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `ev:flash-crash-studies` narrowed (the staff report's sec. I, printed pp. 12-17: depth below 1,050 contracts, the six-point no-bust range, 18,000 of the first 35,000 contracts sold aggressively, a 30,000-contract fundamental imbalance, 15 cross-market firms interviewed; Menkveld and Yueshen blocked); `res:frequent-batch-auctions` resolved (Budish, Cramton and Shim, secs. VII-VIII of the published version and n. 33 of the 2013 working paper: priority by whole batches outstanding, pro rata within a batch; speed advantage relevant a fraction delta/tau of the time; random delays do not address sniping). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `ev:flash-crash-studies` resolved for the entry's claims (Menkveld and Yueshen, SSRN version of 15 November 2017, and the undated online appendix: arbitrage weakened at 14:15 and broke at 14:44, cross-section of 50 stocks, root cause not identified, $98.6-229.8 million calibrated overpayment; the staff report's secs. II.2.e and II.3.a on internalisers and stub quotes; the Management Science version and the rest of secs. II-III not read). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:order-anticipation`, `def:bluffing-manipulation`, `def:arbitrage`, `def:spread-measures`, `mod:glosten-milgrom` (`execution-market-making` and `market-making-lob`); `def:smart-order-routing` (`market-structure-execution-quality`).
@@ -61,7 +63,7 @@ Changed in migration slice 35, 2026-10-16 (a routing exception from the foundati
 
 ## Entry backlog
 
-- ev:flash-crash-studies: Menkveld and Yueshen (`w5-menkveld-yueshen-flash`: publisher's version behind a subscription, SSRN refused automated access with HTTP 403, Singapore Management University's copy behind a bot check, 2026-10-16) and the staff report's equities sections (II-III); Kirilenko et al. and the report's section I were read
+None open after the second source follow-up of 2026-10-16.
 
 ## Legacy candidate material
 

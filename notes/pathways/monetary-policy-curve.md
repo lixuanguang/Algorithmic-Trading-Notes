@@ -41,6 +41,8 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 
 Correction of 2026-10-16 to the second follow-up paragraph above: CME's press release on the conversion is dated 24 April 2023 (read in a dated reprint; CME's page refused automated access), so the CBOT filing's "April 23" is not the press release's date; the filings do not explain that date. The conversion trade date, 17 April 2023, stands.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `rule:central-bank-policy-history` unchanged (no new source in this batch; the gap recorded on 16 October 2026 stands). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:money-market-reference-rates` (`money-markets-repo-lending`); `def:currency-regimes-intervention` (`em-currencies-intervention`); `meth:macro-event-queries` (`macro-announcements-policy`).

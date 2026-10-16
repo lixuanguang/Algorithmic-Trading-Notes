@@ -36,14 +36,15 @@ Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:br
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:opec-membership-current` narrowed to a recorded conflict (OPEC home page navigation read; member and press pages refused); `conv:brent-wti-contract-terms` narrowed (NYMEX 23-057: sulphur at most 0.42 percent, API 37-42, delivery FOB Cushing with Enterprise, Enbridge or Plains storage access). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:opec-membership-current` narrowed (four sources kept apart: WAM's announcement, EIA's analysis of 23 June 2026 and glossary, OPEC's navigation and 3 May 2026 release, and Statute Art. 8A; EIA's 2025 shares 35 percent with the UAE, 31 without); `conv:brent-wti-contract-terms` resolved (NYMEX Chapter 200: 1,000 barrels with a 2 percent delivery tolerance, $0.01 a barrel, last trade on the third business day before the 25th of the prior month, ASTM D-6377 now in the grade text; ICE Brent read earlier; the chapter is undated). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:natural-gas-market` (`gas-hub-pricing`); `def:contango-backwardation-stocks` (`commodity-storage-curves`).
 
 ## Entry backlog
 
-- conv:brent-wti-contract-terms: NYMEX WTI (CL) contract size, trading terms and any post-2023 amendment (CME's rulebook still refused access); CL grade and Cushing delivery were read in NYMEX Submission 23-057 as filed with the CFTC, and ICE Brent's terms earlier
-- data:opec-membership-current: OPEC's own member-country page or press release, which returned HTTP 403 on 2026-10-16 while its home page navigation still listed twelve members including the United Arab Emirates, against secondary reports of a UAE exit from 1 May 2026; and the EIA's chokepoint estimates
+- data:opec-membership-current: OPEC's own statement on the date and legal effect of the UAE's withdrawal: the UAE announced its exit effective 1 May 2026 (WAM, 28 April 2026) and EIA treats it as having left, but OPEC's site navigation still lists the UAE and Article 8A of the Statute (2021 edition) makes a withdrawal effective at the start of the next calendar year
 
 ## Legacy candidate material
 

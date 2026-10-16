@@ -49,6 +49,8 @@ Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:tr
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:treasury-bund-futures-current-specs` narrowed (CBOT 22-468 and 25-099 from cftc.gov: the ZN basket moved from 6.5-10 years to 6.5-7.75 years from September 2023 and is certified as 6.5 to under 8 years in 2025). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:treasury-bund-futures-current-specs` resolved (CBOT Chapters 18-21 and 40, official chapter PDFs of 16 October 2026: TU 1/8 of a 32nd, $7.8125, against Gliner's 1/4; FV 1/4, TY 1/2, US and UB 1/32 as Gliner; baskets read; the texts are undated, so when the TU tick changed is not known). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).
@@ -56,7 +58,6 @@ Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` 
 ## Entry backlog
 
 - ev:futures-tick-size-evidence: whether futures "often" have economically large ticks relative to comparable equities, with bounce and larger displayed depth, as the legacy principle claimed; only the general large-tick mechanism (Lehalle and Laruelle, pp. 144–148) was checked.
-- conv:treasury-bund-futures-current-specs: CME's TU, FV, US and UB contract terms and current tick sizes (CME's rulebook still refused automated access, HTTP 403, on 2026-10-16); the 10-year note basket (6 years 6 months to less than 8 years, reopenings added from March 2026) was read in CBOT Submissions 22-468 and 25-099 as filed with the CFTC, and Eurex's terms earlier
 
 ## Legacy candidate material
 

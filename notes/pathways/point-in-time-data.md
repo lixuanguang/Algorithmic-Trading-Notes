@@ -38,6 +38,8 @@ Second slice-37 follow-up, 2026-10-16, working source gaps of slice 36 (source v
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:trade-correction-records` blocked (Holden and Jacobsen: journal behind a subscription, SSRN HTTP 403, SMU record without a file, Holden's former Indiana page 401/404; Daily TAQ v4.0 field 8 rechecked: it does not state which time the 10 and 11 records carry). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:trade-correction-records` narrowed from blocked (Holden and Jacobsen, JF 2014, published version: sample, quote screens, n. 12 on the blank Quote Cancel/Correction field, Interpolated Time eq. (16) and its look-ahead, n. 29). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-sources`, including López de Prado's release lags, backfilling and reinstatement of fundamental data); `meth:etf-trick` (`statistical-learning-foundations`); `pit:label-weight-leakage` (`financial-ml-evaluation`); `pit:backtest-cost-short-assumptions` (`backtest-inference`).
@@ -47,7 +49,7 @@ Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-
 - meth:bitemporal-reference-tables: valid time against transaction time for identifiers, corporate actions and vendor corrections (`s8-bitemporal`, unread).
 - data:holdings-insider-filing-lags: Form 13F, 13D, 3 and 4 filing deadlines and their use in a decision-time panel (`wide-sec-13f-nport`; Velu, Hardy and Nehren give the 13F threshold and the 13D and Form 4 deadlines in footnotes, p. 43, unchecked against the rules).
 - ev:delisting-survivorship-rewriting: delisting returns, survivorship and vendor history rewriting (`wide-shumway-delisting`, `wide-elton-gruber-blake-survivorship`, `wide-ljungqvist-rewriting`, unread).
-- data:trade-correction-records: Holden and Jacobsen's filters (`wide-holden-jacobsen`) and the time stamps carried by TAQ's cancel and error records; NYSE's Daily TAQ specification v4.0 (correction indicator 00-12, sale conditions L and Z) was read on 2026-10-16
+- data:trade-correction-records: Holden and Jacobsen's Internet Appendix, which holds their full screening (the published article, read on 2026-10-16, states no trade-correction filter in the main text); the time carried by Daily TAQ 10 and 11 records
 
 ## Legacy candidate material
 

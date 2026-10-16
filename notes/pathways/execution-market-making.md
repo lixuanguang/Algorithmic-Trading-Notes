@@ -113,14 +113,14 @@ Corrected in the slice-36 follow-up, 2026-10-16: `def:arbitrage` (exact triangul
 
 ## Entry backlog
 
-- conv:order-instruction-venue-rules: Nasdaq's minimum-quantity attribute and modification rules (Equity 4, Rule 4703, refused automated access, HTTP 403) and other named venues; CME Globex's minimum quantity, cancel on disconnect and FIFO modification rules (wiki pages, versions of 2025-2026) and MIAX PEARL Rule 2616(a)(5) (as described in a 2021 filing) were read on 2026-10-16
 - conv:pro-rata-allocation-rules: how named venues allocate pro-rata remainders (rounding, minimum allocation, time or size tie-breaks) and whether refreshed iceberg slices keep priority, with rule dates; CME's allocation steps could not be retrieved in slice 34 (the site blocks scripted access)
 - conv:session-carry-over: which order durations a named venue carries across sessions (for example CME Globex good-till-cancel and good-till-date orders), and what a replay must load at the open; slice-33 follow-up stated only Harris's 2002 broker practice and FIX's TimeInForce values
-- conv:dmm-obligations-current: NYSE Rule 104 as currently amended (read in NYSE's rulebook compilation last modified 9 May 2019, with later Federal Register filings listed: June and September 2019 amendments, a 2023 proposal withdrawn in July 2024) and other venues' market-maker obligations
 
 ## Source verification after slice 37
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:order-instruction-venue-rules` narrowed (CME wiki pages Order Qualifiers, Cancel on Disconnect and Matching Algorithm Steps through the public REST interface; MIAX PEARL filing SR-PEARL-2021-35); `conv:dmm-obligations-current` narrowed (NYSE Rule 104: one-round-lot continuous two-sided quote, 15 and 10 percent of the day at the inside by volume class, Designated Percentages 8/28/30 and Defined Limits 9.5/29.5/31.5). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:order-instruction-venue-rules` resolved for the venues named (Nasdaq Equity 4, Rules 4703(e), 4756(a)(3) and 4757(a)(1), browser export of 16 October 2026: two minimum-quantity modes, persistent on the resting order; priority kept only for re-marking and size reduction; CME and MIAX PEARL read earlier); `conv:dmm-obligations-current` resolved for NYSE (current Rules 104 and 107B, browser exports of 16 October 2026: 15/10 percent at the inside for non-ETPs and 25 for ETPs; Designated Percentages and Defined Limits unchanged; last amended 22 November 2022 and 25 January 2023; other venues out of the entry's scope). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
 ## Legacy candidate material
 

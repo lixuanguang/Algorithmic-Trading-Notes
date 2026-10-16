@@ -36,6 +36,8 @@ Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cb
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:cbot-ice-ag-contract-terms` resolved for CBOT corn, soybeans and wheat from the chapter text reprinted in CBOT Submission 24-443 (filed with the CFTC 16 December 2024, effective 2 January 2025): 5,000 bushels, quarter-cent ticks, grades and differentials, delivery months, last trading day and price-limit resets; amendments after January 2025 not checked; ICE coffee and cotton read earlier. The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:cbot-ice-ag-contract-terms` resolution confirmed (CBOT Chapters 10, 11 and 14 as published on 16 October 2026 agree with the 24-443 reprint; location differentials split at the 2027/2028 contract months). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:futures-hedge-basis` (`commodity-hedging`).

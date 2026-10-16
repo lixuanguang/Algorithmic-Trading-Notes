@@ -36,13 +36,15 @@ Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:he
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:henry-hub-contract-terms` narrowed (NYMEX 16-080: delivery FOB at the buyer's interconnection point at the Henry Hub, by flow or displacement, Intra Hub Transfer accepted, from 26 July 2016). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:henry-hub-contract-terms` narrowed (NYMEX Chapter 220: 10,000 MMBtu with 2 percent tolerance, $0.001 per MMBtu, $0.00025 for spreads, last trade three business days before the delivery month). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:crude-oil-markets` (`crude-oil-products`).
 
 ## Entry backlog
 
-- conv:henry-hub-contract-terms: NYMEX Henry Hub (NG) contract size, trading terms and any amendment after 2016 (CME's rulebook still refused access) and U.S. LNG export data from the EIA; Rule 220104 delivery was read in NYMEX Submission 16-080 as filed with the CFTC
+- conv:henry-hub-contract-terms: U.S. LNG export data from the EIA, and the amendment history of Chapter 220 (the current chapter, read 2026-10-16, is undated); size, ticks, termination and Rule 220104 were read
 
 ## Legacy candidate material
 

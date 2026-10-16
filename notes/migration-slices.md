@@ -4076,3 +4076,120 @@ Pathway notes (22) with a paragraph under *Source verification after slice 37* a
 - The refresh-time simulation result and its reading against Barndorff-Nielsen et al.'s kernel.
 - The OPEC membership conflict, the NYSE rule compilation's date, and the CFTC-filed contract texts used in place of CME's rulebook.
 - The EU transposition statement, which covers Ireland and Malta only.
+
+## Second source follow-up of the slice 33-37 queue, 16 October 2026
+
+Works the 24 items left unresolved and not deferred by the previous record (*Source follow-up of slices 33-36 and slice-37 audit corrections*, commit `9cc18eb`): its 19 narrowed and 5 blocked items, from local copies obtained for this pass (author and institutional copies, official chapter PDFs downloaded through a browser, and browser exports of web rulebooks and calendars). It also rechecks one resolved item (`conv:cbot-ice-ag-contract-terms`) against the current chapters. The two deferred items (`ev:curve-inversion-after-2005`, `data:post-libor-funding-stress-measures`) and the six macro empirical-test stubs stay open. No legacy block, entry label or entry count changed (0 legacy blocks; 211 entries). This is source verification, not study or human review: every entry stays *draft*, mastery and consolidation dates are untouched, the guide pin (343d145) is unchanged, and verification statuses were extended only for the passages read.
+
+### Statements superseded
+
+Earlier records are left as written; where they differ, this record supersedes them:
+
+- that Holden and Jacobsen, Lee and Ready, Hayashi and Yoshida, Kolm, Turiel and Westray, and Menkveld and Yueshen were unread or unobtainable, and that the tick-size studies were all blocked (the Goldstein--Kavajecz working paper is now read, and Harris (1994) in part);
+- that the ISM calendar, Nasdaq Rule 4703, NYSE's current Rule 104, CME's TU, FV, US and UB chapters and the CL and NG contract sizes were not read;
+- that the UAE's departure from OPEC was reported only by secondary sources: the UAE's own announcement and EIA's analysis are now read, with the conflict documented below;
+- that ``ninth default'' was not checked: it is now attributed to the CRS;
+- that the copper and aluminium shares and the COMEX and LME terms were not checked;
+- that ESMA's final report on SI notifications was not read;
+- that the later amendments to Rule~104 were those of June and September 2019: the current amendment history lists six more, in January 2020, June 2021 and four in 2022, the last on 22 November 2022.
+
+### Corrections of fact
+
+- **Gliner's 2-year Treasury tick is out of date** (`conv:government-bond-futures`). CBOT Chapter~21 now sets one-eighth of a 32nd (\$7.8125) on \$200,000 face, against Gliner's quarter (\$15.625). His FV, TY, US and UB ticks match the current chapters. The chapters are undated, so when the change happened was not established.
+- **Attribution of the aluminium shares.** The IAI/MPP strategy credits its p.~15 figures to a 2020 World Economic Forum and Accenture report and the same figures on p.~26 to the IAI Material Flow Model (accessed January 2022). The preparation manifest attributed them to the Material Flow Model only.
+- **Working-paper date.** The Kolm, Turiel and Westray SSRN copy is dated 6 August 2021 on its title page, not 5 August as the preparation manifest and prompt gave.
+- **The ISM rule has exceptions.** The first- and third-business-day rule, counted against federal holidays, misses January (an ISM holiday on 2 January) and April's Services date (6 April, which skips Good Friday). The entry now states both.
+
+### The 24 items
+
+Each line gives the outcome, then the claim checked, the source version and the locator, then what is missing.
+
+*Resolved (9)*
+- `data:us-release-schedules-2026`: ISM 2026 calendar, browser export of the page (p.~1). Every listed date is reproduced by the rule except the two exceptions above (`source-followup-checks-2.py`, section~5). Missing: nothing for the entry's claim; other years must be read from each year's calendar.
+- `ev:sovereign-restructurings-after-2006`: three attributed counts, not merged.
+  - CRS IF10991 v6 (15 June 2020), pp.~1--2: nine external defaults since 1816; May 2020 is the ninth.
+  - Reinhart, NBER w15815 (March 2010), Figure~3a table, printed p.~16, checked as an image: seven external and five domestic episodes to 2009.
+  - Fitch, *Sovereign 2020 Transition and Default Study* (27 May 2021), pp.~2--3: rating defaults in 2001, 2014, 2019 (twice) and 2020.
+  - Missing: none for the entry; the counts remain method-dependent.
+- `conv:treasury-bund-futures-current-specs`: CBOT Chapters 18--21 and~40, official chapter PDFs (undated; footnotes ``Revised March 2008; January 2009''), Rules xx101.A--xx102.C. Covers face value, deliverable bands and ticks, and the TU discrepancy (section~1). Missing: the date of the TU tick change.
+- `conv:brent-wti-contract-terms`: NYMEX Chapter~200, official PDF (undated), Rules 200101 and 200102.B--F. Covers 1,000 barrels with a 2 percent tolerance, \$0.01, last trading day and ASTM D-6377. Missing: the amendment history.
+- `ev:flash-crash-studies`, for the entry's claims:
+  - Menkveld and Yueshen, SSRN version dated 15 November 2017 (earlier titled ``Anatomy of the Flash Crash''), printed pp.~2--7 and~15, and the undated online appendix, sec.~A. The *Management Science* version was not compared, and the 2014 thesis chapter was not used.
+  - The staff report's secs.~II.2.e and II.3.a, printed pp.~58 and 64--65, from the local text copy.
+  - Missing: the rest of secs.~II--III.
+- `conv:order-instruction-venue-rules`, for the venues named: Nasdaq Equity~4, browser export of 16 October 2026, Rules 4703(e) (export pp.~19--20), 4756(a)(3) (p.~29) and 4757(a)(1) (p.~30). Missing: other venues, which are outside the entry's scope.
+- `conv:dmm-obligations-current`, for NYSE: current Rules 104 and 107B, browser exports, amendment histories to 22 November 2022 and 25 January 2023. Covers the ETP 25 percent requirement and unchanged percentages. Missing: what each later amendment changed.
+- `ev:ofi-forecast-horizons`: Kolm, Turiel and Westray, SSRN version of 6 August 2021, PDF pp.~5--31, with Fig.~8 read as an image. Missing: the *Mathematical Finance* version, not compared.
+- `meth:refresh-time-covariance`: Hayashi and Yoshida, *Bernoulli* 11(2), author copy, pp.~367--375. Condition~C and Definition~3.1 (p.~368) were checked by page image, as were Theorem~3.1 and Remarks~3.3--3.4. Missing: none for the entry.
+
+*Narrowed further (8)*
+- `data:equity-index-lists-current`: FTSE/JSE ground rules v9.3 (September 2026), secs.~1.7.1 and 4.5.1, pp.~4 and~13; FT Wilshire 5000 methodology WI-METH-001 (January 2026), sec.~1.1, p.~4. Missing: the Jakarta Composite (IDX HTTP 403) and the rest of Gliner's table.
+- `data:opec-membership-current`: four kinds of evidence, kept apart (`def:crude-oil-markets`).
+  - The announced exit: WAM, 28 April 2026, effective 1 May 2026.
+  - EIA's classification: its analysis of 23 June 2026 and its live glossary, which lists eleven members (section~4 recomputes 31 percent).
+  - OPEC's own pages: navigation still listing twelve, and a 3 May 2026 release silent on membership.
+  - The statutory rule: Statute (2021 edition), Art.~8A, PDF p.~12, under which a withdrawal takes effect at the start of the next calendar year.
+  - Missing: OPEC's statement on the date and legal effect.
+- `data:metals-market-shares-current`.
+  - Copper: ICSG *World Copper Factbook 2025*, pp.~5 and~48 (end-use chart as an image; 2024, preliminary); ICA 2023 dataset, World sheet rows 48--51 (2022, copper content of semis).
+  - Aluminium: IAI/MPP (April 2023), PDF pp.~15 and~26, sector shares of about 2020.
+  - Contracts: COMEX Chapters 107 and 111--113; LME Rulebook as of 13 October 2026, Part~6, pp.~6-1 and 6-11 (section~3).
+  - Missing: aluminium shares by country, and the LME's minimum price fluctuations (Rule~11.3.7 leaves them to the Exchange).
+- `conv:henry-hub-contract-terms`: NYMEX Chapter~220, official PDF (undated), Rules 220101--220104. Missing: EIA LNG data and the amendment history.
+- `data:trade-correction-records`, from blocked: Holden and Jacobsen, JF 69(4), published version (author copy). Read: sec.~III, p.~1758, n.~16, n.~12, p.~1754, eq.~(16) and n.~29, pp.~1766--1767. Missing: the Internet Appendix with the full screens, and the time in the TAQ 10/11 records.
+- `res:trade-sign-accuracy`: Lee and Ready, JF 46(2), University at Buffalo course scan without a text layer. OCR was used only to search; pp.~734 and 736--739 were checked as page images. Table~I gives agreement rates, not accuracy. Missing: Ellis, Michaely and O'Hara (2000) and the other accuracy studies.
+- `ev:tick-size-primary-studies`, from blocked.
+  - Goldstein and Kavajecz, Rodney L.~White Center working paper of 16 September 1998 (not the 2000 JFE version), PDF pp.~2, 5 and 9--15.
+  - Harris, RFS 7(1), partial course scan, pp.~149 and~155 as images. PDF p.~27 renders only in part, and pp.~28--30 show only the watermark.
+  - Missing: Bacidore et al., Jones and Lipson, Ahn et al., Harris (1996), and Harris's projection tables.
+- `rule:eu-si-national-transposition`: ESMA final report ESMA74-2134169708-7780 (10 April 2025), paras~8 and 21--23 and Next Steps. These are draft ITS, not law. Missing: other Member States, Malta's route, and whether the Commission adopted the ITS.
+
+*Still blocked (1)*
+- `conv:cds-standard-contract`: ISDA's release of 21 February 2014 (2 pp.) was read. It is not the 2014 Definitions, which are sold by ISDA. Missing: the operative wording.
+
+*Unchanged, no new source in this pass (6)*
+- `rule:central-bank-policy-history`, `ev:imbalance-placement-latency`, `meth:lob-signal-transaction-usefulness`, `res:time-rescaling-theorem`, `ev:circuit-breaker-effects` and `ev:dark-pool-price-discovery`. The gaps recorded by the previous record stand.
+
+*Rechecked (resolved item)*
+- `conv:cbot-ice-ag-contract-terms`: CBOT Chapters 10, 11 and~14, official PDFs (undated), agree with the 24-443 reprint. Location differentials are split at December 2027 and March 2028 for corn, and November 2027 and January 2028 for soybeans.
+
+Queue totals after this pass, over the 35 items of the previous record: 18 resolved, 14 narrowed, 1 blocked, 2 deferred. The six macro empirical-test stubs stay open: no specified experiment was run.
+
+### Sources
+
+Listed with source URL, retrieval date, version, acquisition method and SHA-256 in `reading_materials/sources_audit_9cc18eb_2026-10-16.json` (47 files; ignored; none committed). Thirty source keys were added to `compendium/front/sources.tex`. Catalogue readings are cited by their catalogue keys with the version read in the locator (`wide-holden-jacobsen`, `wide-kolm-deep-ofi`, `w5-menkveld-yueshen-flash`).
+
+Acquisition:
+- **Direct downloads:** author and institutional copies, the CRS, NBER, Fitch, ICA, IAI, ESMA, OPEC Statute, ISDA, FTSE Russell and Wilshire files.
+- **Official PDFs downloaded through a browser** after direct requests were refused: CME Group chapter files, the LME Rulebook, the ICSG Factbook and the two SSRN papers. No challenge was solved and no login was used.
+- **Browser exports of rendered pages:** Nasdaq Equity~4, NYSE Rules 104 and 107B, the ISM calendar and the WAM announcement. These are not publisher PDFs.
+
+Scan limits:
+- The Lee--Ready and Harris files are course scans; OCR served only as a search aid.
+- Harris's scan is incomplete.
+
+### Checks
+
+New `notes/artefacts/execution-market-making/source-followup-checks-2.py` (standard library; exit 0 with `/opt/homebrew/bin/python3.10`) has five sections:
+1. Treasury tick values.
+2. Commodity tick values.
+3. Copper groupings and aluminium share sums.
+4. EIA's OPEC shares.
+5. The ISM business-day rule, with federal holidays and Easter computed and tested on known dates.
+
+The Easter function was wrong in the first draft (it gave 29 March for 2026) and was replaced before use. In `source-followup-checks.py`, two docstring lines that called the Hayashi--Yoshida paper unread were updated, and the code is unchanged. The other scripts are unchanged and passing.
+
+### Other files
+
+- Eighteen pathway notes have a paragraph under *Source verification after slice 37*, with backlog stubs updated or removed.
+- New reading notes: `wide-holden-jacobsen`, `wide-kolm-deep-ofi`, `w5-menkveld-yueshen-flash`.
+- Also updated: `notes/migration.md`, `notes/log.md` and `compendium/front/sources.tex`.
+
+### For review
+
+- The OPEC membership conflict and the Statute's next-calendar-year rule.
+- The TU tick discrepancy and the undated CME chapters.
+- The ISM Good Friday inference.
+- The three Argentine counts.
+- The reading of Kolm et al.'s Fig.~8 values from the plot.
+- The page images used for Lee--Ready, Harris, Hayashi--Yoshida, Reinhart and ICSG.

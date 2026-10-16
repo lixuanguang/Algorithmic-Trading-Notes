@@ -1,7 +1,7 @@
 """Source follow-up of slices 33-36 and the slice-37 audit (2026-10-16): checks of derivations added from primary sources.
 
 1. Refresh time (Barndorff-Nielsen, Hansen, Lunde and Shephard, CREATES RP 2008-63, Definition 1, sec. 2.1.1) and the
-   Hayashi-Yoshida estimator in its standard form (the 2005 paper itself not read), against previous-tick sampling on two
+   Hayashi-Yoshida estimator (Bernoulli 11(2), 2005, Definition 3.1, read in the second follow-up), against previous-tick sampling on two
    correlated Brownian motions observed at independent Poisson times, without noise. Refresh time alone leaves one
    stale price per refresh interval, so the plain realised covariance at refresh times is still biased down; one lead
    and one lag remove the bias here (the paper's kernel includes lags; its n. 2 limits staleness to one refresh lag).
@@ -14,7 +14,7 @@
    maximum-likelihood estimates (inverse mean waiting time by queue size, split by event shares) on a simulated queue.
 5. The Lee-Ready, EMO and CLNV rules as Jurkatis states them (BoE Staff Working Paper 896, sec. 2.1) on trades inside a
    10-cent spread after a downtick, where they disagree, and Holden and Jacobsen's interpolated time stamps as he
-   describes them (sec. 2.2).
+   describes them (sec. 2.2; the same formula as their JF 2014 eq. (16), read in the second follow-up).
 6. The EU tick-size table (Delegated Regulation (EU) 2017/588, Annex, unchanged by its amendments of 2019 and 2023):
    lookups and the range of the relative tick in the most and least liquid bands; the large-in-scale table for shares
    (Delegated Regulation (EU) 2017/587, Annex II, Table 1, unchanged by its 2019, 2023 and 2025 amendments).

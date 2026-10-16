@@ -37,13 +37,15 @@ Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:us
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` blocked (the ISM calendar and report pages redirect to a member login, rechecked 2026-10-16). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:us-release-schedules-2026` resolved (ISM 2026 calendar read from a browser export: first and third business days at 10:00 a.m.; the rule reproduces every date except January, an ISM holiday, and April's Services date, which skips Good Friday; computed in source-followup-checks-2.py, section 5). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:central-bank-policy-framework` (`monetary-policy-curve`); `rule:major-central-banks-current` (`monetary-policy-curve`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- data:us-release-schedules-2026: the ISM's report calendar (first and third business days), which redirects to a member login; the BLS CPI schedule, BEA, Census and Federal Reserve G.17 calendars were read on 2026-10-16
+None open after the second source follow-up of 2026-10-16.
 
 ## Legacy candidate material
 

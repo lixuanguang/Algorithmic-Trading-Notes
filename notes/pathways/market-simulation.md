@@ -36,12 +36,13 @@ Changed in migration slice 36, 2026-10-16: `meth:intraday-deseasonalisation` (Le
 
 ## Entry backlog
 
-- meth:refresh-time-covariance: the Hayashi-Yoshida (2005) paper and its conditions (Project Euclid behind a bot check, 2026-10-16); refresh time and its assumptions were read in Barndorff-Nielsen, Hansen, Lunde and Shephard (CREATES RP 2008-63) and simulated
 - res:time-rescaling-theorem: the half-line statement (compensator continuous and divergent) from a point-process text such as Daley and Vere-Jones; Brown et al. (2002) was read for the finite-window theorem (positive conditional intensity, finite integrated intensity) and the KS goodness-of-fit bands
 
 ## Source verification after slice 37
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `meth:refresh-time-covariance` narrowed (Definition 1, Assumptions 1-2 and sec. 5.3 read; refresh-time realised covariance biased without lead-lag terms in simulation); `res:time-rescaling-theorem` narrowed (Brown, Barbieri, Ventura, Kass and Frank, Neural Computation 14(2), pp. 325-331); `ev:simulator-realism-metrics` resolved (Vyetrenko et al., arXiv v1: five groups of stylised-fact checks and ABIDES comparisons; Noble, Rosenbaum and Souilmi, arXiv v1: in-sample validation statistics on Databento data 2023-2025, a 29-microsecond inter-event mode and an impact state; the ACM version of the former not compared). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `meth:refresh-time-covariance` resolved (Hayashi and Yoshida, Bernoulli 2005, author copy: Condition C, Definition 3.1, Theorem 3.1 and Remarks 3.3-3.4; noise outside the model); `res:time-rescaling-theorem` unchanged (no new source in this batch; the gap recorded on 16 October 2026 stands). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
 ## Legacy candidate material
 

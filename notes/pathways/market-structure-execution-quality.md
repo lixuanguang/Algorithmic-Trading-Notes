@@ -64,6 +64,10 @@ Written in migration slice 35, 2026-10-16, from the legacy regulatory-and-struct
 
 Changed in slice 35: `def:tick-size` (ticks and precedence, the race to the bottom, the 2009 European tick war, MiFID II Art. 49), `def:best-execution` (Lehalle and Laruelle's best execution after fragmentation), `def:dark-pools-crossing` (broker crossing networks), `def:smart-order-routing` (latency and book state; the "Nyquist--Shannon latency bound" not adopted as a theorem, restated as a staleness probability), `def:broker-agency-conflicts` (order-flow arrangements, internal crossing, the EU payment-for-order-flow ban) and `meth:venue-market-share` (reference-price auctions). All partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/artefacts/market-structure-execution-quality/regulatory-structural-evolution.tex`; checks in `notes/artefacts/execution-market-making/slice35-checks.py`.
 
+Corrected in the slice-35 follow-up, 2026-10-16: `rule:eu-trading-venue-transparency` (the systematic-internaliser definition: the 2014 wording dated as historical, the current wording from Directive (EU) 2024/790, its equity scope, the removed substantial-basis criterion and the opt-in retained for non-equity instruments, supported by Delegated Regulation (EU) 2026/392 recital 1; transposition due 29 September 2025, national measures unchecked) and `rule:us-equity-market-structure` (aggregate odd-lot depth exempted to May 2028 by Release 34-104612, the best odd-lot order not exempted; NYSE's market-wide circuit breakers made permanent by Release 34-94441 of March 2022; the 2024 amendments effective since 9 December 2024 with compliance exempted to November 2027). Partly checked, draft.
+
+Changed in migration slice 36, 2026-10-16, from three blocks assigned here and four routed here: `mech:venue-competition-fragmentation` (price formation across venues with Hasbrouck's information shares, chap. 10, pp. 99--105; the systemic-risk caveat against Lehalle and Laruelle pp. 169 and 177), `ev:european-fragmentation-evidence` (the Euronext outage of 13 October 2010, pp. 183--185) and `meth:venue-market-share` (proportions in general, Wald against Wilson coverage computed, sampling units; four blocks of the data-engineering file, a routing exception). Partly checked 2026-10-16, draft. Artefacts: `notes/artefacts/market-structure-execution-quality/price-discovery-fragmentation-outage.tex` and, for the routed blocks, `notes/artefacts/lob-deep-learning/microstructure-data-engineering.tex`.
+
 ## Entry backlog
 
 - rule:tick-size-regimes-current: the EU MiFID II tick-size regime as it applies now (Art. 49, RTS 11 tick tables, and the treatment of systematic internalisers), with provisions and dates; the U.S. increment and access-fee amendments of 2024 and their compliance stays are in `rule:us-equity-market-structure` (slice 35)
@@ -74,7 +78,8 @@ Changed in slice 35: `def:tick-size` (ticks and precedence, the race to the bott
 
 - rule:block-print-trade-through-current: where U.S. equity blocks are now printed or reported (exchanges, FINRA trade-reporting facilities), how crosses interact with displayed orders (size precedence, if any), and the trade-through exceptions under Rule 611. The legacy block-print rule (slice 18) was checked only against Harris's 2002 description, now in `def:block-trade`; name each venue rule, provision and date before writing the entry.
 - conv:eu-pre-trade-waiver-thresholds: the large-in-scale thresholds and the conditions of the reference-price, negotiated-trade and order-management waivers under RTS 1 as amended after the 2024 MiFIR review, with dates; slice 35 states the volume caps (`rule:eu-trading-venue-transparency`) but not the waiver thresholds
-- rule:us-market-wide-circuit-breakers-current: the current market-wide circuit-breaker rule (pilot status after 2021, current exchange rule text) and LULD plan amendments after 2019; slice 35 checked the 2012 approvals, the 2019 LULD order and one 2020 extension filing
+- rule:us-market-wide-circuit-breakers-current: the other exchanges' and FINRA's permanent market-wide circuit-breaker rules of April 2022 (seen only in search listings), any amendments to NYSE Rule 7.12 after March 2022, and LULD plan amendments after 2019; the slice-35 follow-up read NYSE's permanence order (Release 34-94441)
+- rule:eu-si-national-transposition: the national measures transposing Directive (EU) 2024/790's systematic-internaliser definition, their dates, and ESMA's guidance on the qualitative assessment; the follow-up read only the directive and Delegated Regulation (EU) 2026/392
 - rule:cat-current-status: the Consolidated Audit Trail's current reporting scope, plan amendments and funding litigation (`wide-sec-cat`); slice 35 checked only Rule 613's adoption and the 2016 plan approval
 - ev:circuit-breaker-effects: empirical studies of halts, price limits and LULD (magnet effect, volatility after reopening), with samples and periods; Harris (2002) reports the evidence as inconclusive
 - ev:dark-pool-price-discovery: Zhu (`wide-zhu-dark-pools`) and Buti, Rindi and Werner on dark trading and price discovery, read in full with samples and periods; slice 34 has only Lehalle and Laruelle's summaries
@@ -82,7 +87,7 @@ Changed in slice 35: `def:tick-size` (ticks and precedence, the race to the bott
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. This pathway has three blocks assigned to it in `compendium/legacy/` and, after slice 18, none exclusive to it; most of its candidates are shared with the microstructure overview. Slice 18 routed all six blocks of its last exclusive file elsewhere (`notes/migration.md`).
+Run `python3 tools/migration_status.py` for the current counts. Slice 36 migrated the three blocks assigned here and removed the legacy microstructure chapter; no legacy file now lists this pathway.
 
 ## What changed in my view or practice
 

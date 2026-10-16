@@ -8,17 +8,21 @@ Each section prints its result and asserts what the entries state.
 2. Zero-sum accounting and the two corollaries (res:zero-sum-skill-luck).
 3. Credit relationships with and without brokers: Harris's ordered count and the
    legacy unordered count (def:market-structures-venues).
-4. Depth--width duality and the attainment condition (def:liquidity-dimensions).
+4. Depth--width duality per unit, against a cash budget, and the attainment conditions
+   (def:liquidity-dimensions; corrected in the slice-35 follow-up).
 5. Search stopping: Harris's camera example and the one-step rule (def:liquidity-dimensions).
 6. Book size is neither a bound on traded volume nor on executable quantity
    (def:liquidity-dimensions).
 7. Lehalle and Laruelle's ``Nyquist--Shannon latency bound'' restated as a staleness
    condition (def:smart-order-routing).
-8. Message capacity: utilisation below one is necessary, not sufficient
-   (def:floor-automated-trading-systems).
+8. Message capacity: for M/M/1, utilisation below one is necessary and sufficient for
+   stability; delay, deadlines, bursts and buffers are separate questions
+   (def:floor-automated-trading-systems; corrected in the slice-35 follow-up).
 9. Reported volume under different counting conventions (def:market-structures-venues).
 10. The order-flow externality inequality (mech:venue-competition-fragmentation).
 """
+import collections
+
 import numpy as np
 
 rng = np.random.default_rng(35)
@@ -127,23 +131,82 @@ print("  assumptions: one broker per client, brokers guarantee their clients, ev
 
 
 # 4. Depth--width duality --------------------------------------------------------------
-section("4. depth--width duality")
-def check_duality(C, grid, c):
-    feasible = [q for q in grid if C(q) <= c]
-    D = max(feasible)
-    return all((q <= D) == (C(q) <= c) for q in grid), D
-# a nondecreasing step cost on an integer grid: the maximum is attained and the equivalence holds
-steps = np.sort(rng.uniform(0, 1, 20))
-C_step = lambda q: float(steps[:q].sum())
-ok, D = check_duality(C_step, range(0, 21), 3.0)
-print(f"  integer sizes, nondecreasing cost: D(3.0) = {D}; q <= D(c) iff C(q) <= c: {ok}")
+# Corrected in the slice-35 follow-up (2026-10-16). Harris (pp. 398--399) states width as
+# "the cost per unit of liquidity" and depth in "units available at a given price of
+# liquidity": both are per-unit quantities. The slice-35 version inverted a cumulative
+# (total) cost, which answers a cash-budget question instead.
+section("4. depth--width duality (per-unit cost, not a cash budget)")
+def book_costs(levels, mid, q, fee=0.0):
+    """Buying q shares by sweeping (price, size) ask levels from the midpoint `mid`, with a
+    fixed fee per order: returns (total cost in currency, average per-unit cost, marginal
+    per-unit cost of the last share). Sizes beyond the book are infeasible (None)."""
+    left, total, last = q, 0.0, None
+    for price, size in levels:
+        take = min(left, size)
+        if take > 0:
+            total += take * (price - mid)
+            last = price - mid
+            left -= take
+        if left == 0:
+            break
+    if left > 0:
+        return None
+    total += fee
+    return total, total / q, last
+# (a) Harris-style counterexample: midpoint 99, 100 shares offered at 100
+book1 = [(100.0, 100)]
+w = lambda q: book_costs(book1, 99.0, q)[1]
+C = lambda q: book_costs(book1, 99.0, q)[0]
+dom = range(1, 101)
+depth_per_unit = max(q for q in dom if w(q) <= 1.0)
+budget_size = max(q for q in dom if C(q) <= 1.0)
+print(f"  midpoint 99, 100 offered at 100: per-unit cost w(q) = {w(1):.0f} for q <= 100; depth at per-unit cost 1 = {depth_per_unit} shares;")
+print(f"  total cost C(q) = q, so a cash budget of 1 buys {budget_size} share: two different questions")
+assert depth_per_unit == 100 and budget_size == 1
+# (b) average against marginal per-unit cost: 100 at 100 and 100 at 101
+book2 = [(100.0, 100), (101.0, 100)]
+dom2 = range(1, 201)
+d_avg = max(q for q in dom2 if book_costs(book2, 99.0, q)[1] <= 1.5 + 1e-12)
+d_marg = max(q for q in dom2 if book_costs(book2, 99.0, q)[2] <= 1.5 + 1e-12)
+print(f"  adding 100 at 101: depth at average per-unit cost 1.5 = {d_avg} shares; at marginal cost 1.5 = {d_marg} shares")
+assert d_avg == 200 and d_marg == 100
+# (c) with a nondecreasing per-unit cost on a finite lot grid the equivalence holds;
+#     the 20 uniform draws keep the random stream of later sections unchanged
+gaps = np.sort(rng.uniform(0, 1, 20))
+book3 = [(99.0 + 0.01 + g, 10) for g in gaps]          # 20 levels of 10 shares above mid 99
+dom3 = range(1, 201)
+w3 = {q: book_costs(book3, 99.0, q)[1] for q in dom3}
+assert all(w3[q] <= w3[q + 1] + 1e-12 for q in range(1, 200))   # sweeping: nondecreasing
+ok = True
+for wbar in np.linspace(0.05, 1.0, 40):
+    feas = [q for q in dom3 if w3[q] <= wbar]
+    if feas:
+        D = max(feas)
+        ok &= all((q <= D) == (w3[q] <= wbar) for q in dom3)
+print(f"  random 20-level book, lots 1..200, nondecreasing average cost: q <= D(wbar) iff w(q) <= wbar for 40 levels: {ok}")
 assert ok
-# continuous size with a jump at q = 1, cost right-continuous: {q : C(q) <= 1.5} = [0, 1), no maximum
-C_jump = lambda q: q if q < 1 else 2.0
-qs = np.linspace(0, 1, 100_001)[:-1]
-sup = qs[[C_jump(x) <= 1.5 for x in qs]].max()
-print(f"  C(q) = q for q < 1, 2 for q >= 1, c = 1.5: sup of feasible sizes -> 1 (grid {sup:.5f}), C(1) = {C_jump(1.0)} > c: the max is not attained")
-print("  so the duality needs the maximum to exist (C lower semicontinuous, here left-continuous at the jump) and C(0) <= c")
+# (d) a fixed fee per order makes the average per-unit cost fall with size: not monotone
+F = 50.0
+wf = {q: book_costs(book2, 99.0, q, fee=F)[1] for q in dom2}
+feas = [q for q in dom2 if wf[q] <= 1.5 + 1e-12]
+print(f"  fee {F:.0f} per order: w(1) = {wf[1]:.1f}, w(50) = {wf[50]:.1f}, w(100) = {wf[100]:.2f}, w(150) = {wf[150]:.3f}; feasible set at 1.5 = {feas}")
+assert feas == [100] and wf[50] > 1.5          # q = 50 <= D = 100 but w(50) > 1.5: the equivalence fails
+# (e) attainment on an interval domain [q_min, qbar]
+qs = np.linspace(0.01, 3.0, 299_001)
+def sup_and_attained(wfun, wbar):
+    feas = qs[np.array([wfun(x) <= wbar for x in qs])]
+    s = feas.max()
+    return s, wfun(s) <= wbar
+w_rc = lambda q: q if q < 1 else 2.0                      # right-continuous jump at 1: not LSC
+s, _ = sup_and_attained(w_rc, 1.5)
+print(f"  w(q) = q below 1 and 2 from 1 on, wbar 1.5: feasible [q_min, 1), grid sup {s:.5f}, w(1) = {w_rc(1.0)} > 1.5: no maximum")
+assert w_rc(1.0) > 1.5 and s < 1.0
+w_nlsc = lambda q: q if q <= 1 else (2.0 if q < 2 else 5.0)  # jumps up at 2, w(2) = 5 > liminf 2: not LSC at 2
+s, att = sup_and_attained(w_nlsc, 1.5)
+print(f"  w(q) = q on [q_min,1], 2 on (1,2), 5 on [2,3] (not lower semicontinuous at 2), wbar 1.5: max {s:.3f} attained = {att}")
+assert att and abs(s - 1.0) < 1e-9
+print("  lower semicontinuity with a compact domain is sufficient, not necessary; on [q_min, inf) a constant w < wbar")
+print("  is continuous and has no maximal feasible size, so boundedness is needed as well")
 
 
 # 5. Search stopping ---------------------------------------------------------------------
@@ -195,28 +258,130 @@ assert abs(np.exp(-1) - 0.3679) < 1e-4
 
 
 # 8. Capacity ----------------------------------------------------------------------------
-section("8. message capacity")
-mu = 1000.0
+# Corrected in the slice-35 follow-up (2026-10-16). (i) For the stated M/M/1 queue (Poisson
+# arrivals at total rate lam = N x lambda, exponential service at rate mu, one server, unlimited
+# buffer, FIFO), lam < mu is necessary and sufficient for stability; stability says nothing
+# about delay. (ii) The slice-35 burst simulation drew each inter-arrival gap from the rate in
+# force at the previous arrival, so a gap that crossed a rate boundary kept the old rate; its
+# average rate was not the one stated. Arrivals are now sampled by thinning, which is exact for
+# a piecewise-constant rate. (iii) Waiting time in queue W and time in system T = W + S are
+# reported separately. Section 8 has its own generator so that no other section changes.
+section("8. message capacity: stability, delay and bursts")
+rq = np.random.default_rng(3508)
+mu = 1000.0                                   # messages per second
 for rho_ in [0.5, 0.9, 0.99]:
-    print(f"  M/M/1, utilisation {rho_}: mean time in system 1/(mu - lambda) = {1000/(mu - rho_*mu):.1f} ms at mu = 1,000 messages/s")
-def lindley(arr_rate_fn, n=200_000, svc=1/mu):
-    t, w, waits = 0.0, 0.0, []
+    lam = rho_ * mu
+    print(f"  M/M/1, utilisation {rho_}: mean wait in queue rho/(mu - lam) = {1000*rho_/(mu - lam):.1f} ms, "
+          f"mean time in system 1/(mu - lam) = {1000/(mu - lam):.1f} ms")
+
+def thinning(rate_fn, rate_max, horizon):
+    """Exact non-homogeneous Poisson arrival times on [0, horizon) for rate_fn <= rate_max."""
+    n = rq.poisson(rate_max * horizon)
+    cand = np.sort(rq.uniform(0.0, horizon, n))
+    keep = rq.uniform(0.0, 1.0, n) < rate_fn(cand) / rate_max
+    return cand[keep]
+
+def fifo(arrivals):
+    """Single exponential server, FIFO, unlimited buffer: Lindley recursion.
+    Returns waits in queue W and service times S (time in system T = W + S)."""
+    S = rq.exponential(1.0 / mu, arrivals.size)
+    W = np.empty(arrivals.size)
+    w, prev = 0.0, arrivals[0]
+    for i, a in enumerate(arrivals):
+        if i:
+            w = max(0.0, w + S[i - 1] - (a - prev))
+        W[i] = w
+        prev = a
+    return W, S
+
+H = 400.0                                     # seconds simulated; first 20 s discarded as warm-up
+# (a) constant rate 0.8 mu against the M/M/1 formulas
+lam = 0.8 * mu
+arr = thinning(lambda t: np.full_like(t, lam), lam, H)
+W, S = fifo(arr)
+m = arr >= 20.0
+T = W + S
+th_W, th_T = 0.8 / (mu - lam), 1.0 / (mu - lam)
+th_W99 = np.log(0.8 / 0.01) / (mu - lam)      # P(W > x) = rho exp(-(mu - lam) x)
+th_T99 = np.log(100.0) / (mu - lam)           # T ~ Exp(mu - lam)
+d = 0.010
+print(f"  constant rate: realised rate {arr.size / H:.1f}/s (target {lam:.0f}); mean wait {1000*W[m].mean():.2f} ms "
+      f"(theory {1000*th_W:.2f}); mean time in system {1000*T[m].mean():.2f} ms (theory {1000*th_T:.2f})")
+print(f"    99th percentiles: wait {1000*np.quantile(W[m], .99):.1f} ms (theory {1000*th_W99:.1f}); "
+      f"time in system {1000*np.quantile(T[m], .99):.1f} ms (theory {1000*th_T99:.1f}); "
+      f"P(T > {1000*d:.0f} ms) = {np.mean(T[m] > d):.3f} (theory {np.exp(-(mu - lam)*d):.3f})")
+assert abs(arr.size / H - lam) / lam < 0.01
+assert abs(W[m].mean() - th_W) / th_W < 0.05 and abs(T[m].mean() - th_T) / th_T < 0.05
+assert abs(np.quantile(T[m], .99) - th_T99) / th_T99 < 0.08
+assert abs(np.mean(T[m] > d) - np.exp(-(mu - lam) * d)) < 0.01
+
+# (b) periodic bursts: 1.5 mu for the first 10% of each second, a lower rate otherwise, with the
+#     low rate set so that the average is exactly 0.8 mu
+hi, frac, avg = 1.5 * mu, 0.1, 0.8 * mu
+lo = (avg - frac * hi) / (1 - frac)
+rate = lambda t: np.where((t % 1.0) < frac, hi, lo)
+arr_b = thinning(rate, hi, H)
+Wb, Sb = fifo(arr_b)
+mb = arr_b >= 20.0
+Tb = Wb + Sb
+print(f"  bursts: 1.5 mu for 0.1 s of every second, {lo/mu:.4f} mu otherwise; realised average rate "
+      f"{arr_b.size / H:.1f}/s (target {avg:.0f}); in-burst rate {np.mean((arr_b % 1.0) < frac) * arr_b.size / (frac*H):.0f}/s")
+assert abs(arr_b.size / H - avg) / avg < 0.01
+print(f"    mean wait {1000*Wb[mb].mean():.2f} ms against {1000*W[m].mean():.2f} ms at a constant rate with the same average; "
+      f"mean time in system {1000*Tb[mb].mean():.2f} against {1000*T[m].mean():.2f} ms")
+print(f"    99th percentile time in system {1000*np.quantile(Tb[mb], .99):.1f} against {1000*np.quantile(T[m], .99):.1f} ms; "
+      f"P(T > 10 ms) {np.mean(Tb[mb] > d):.3f} against {np.mean(T[m] > d):.3f}")
+# fluid approximation of the burst: backlog grows at hi - mu for 0.1 s and drains at mu - lo
+peak = (hi - mu) * frac
+drain = peak / (mu - lo)
+phase = arr_b % 1.0
+end_burst = mb & (phase > 0.095) & (phase < 0.1)
+print(f"    fluid view: backlog peaks near (hi - mu) x 0.1 s = {peak:.0f} messages, about {1000*peak/mu:.0f} ms of work, "
+      f"and drains in {drain:.2f} s; simulated mean wait at the end of a burst {1000*Wb[end_burst].mean():.1f} ms")
+assert Wb[mb].mean() > W[m].mean() and abs(Wb[end_burst].mean() - peak / mu) < 0.02
+# (c) the same peak rate in shorter bursts with the same average: delay depends on duration
+for frac2 in [0.1, 0.02, 0.005]:
+    a2 = thinning(lambda t, f=frac2: np.where((t % 1.0) < f, hi, (avg - f * hi) / (1 - f)), hi, H)
+    W2, S2 = fifo(a2)
+    m2 = a2 >= 20.0
+    print(f"    burst of {1000*frac2:.0f} ms at 1.5 mu once a second (average 0.8 mu): mean wait {1000*W2[m2].mean():.2f} ms, "
+          f"99th percentile time in system {1000*np.quantile((W2 + S2)[m2], .99):.1f} ms, P(T > 10 ms) {np.mean((W2 + S2)[m2] > d):.3f}")
+# (d) a finite buffer: messages arriving when K are already in the system are rejected
+def fifo_buffer(arrivals, K):
+    S = rq.exponential(1.0 / mu, arrivals.size)
+    rejected = 0
+    q = collections.deque()                   # departure times of messages in the system
+    for a, s in zip(arrivals, S):
+        while q and q[0] <= a:
+            q.popleft()
+        if len(q) >= K:
+            rejected += 1
+            continue
+        start = max(a, q[-1] if q else a)
+        q.append(start + s)
+    return rejected / arrivals.size
+for K in [20, 100]:
+    print(f"    buffer of {K} messages: rejected share {fifo_buffer(arr_b, K):.4f} with bursts against "
+          f"{fifo_buffer(arr, K):.5f} at a constant rate (M/M/1/{K} theory {(1-0.8)*0.8**K/(1-0.8**(K+1)):.5f})")
+# (e) overload: utilisation above one, backlog grows without bound
+over = thinning(lambda t: np.full_like(t, 1.05 * mu), 1.05 * mu, 100.0)
+Wo, So = fifo(over)
+print(f"  utilisation 1.05: wait at 50 s and 100 s {1000*Wo[over < 50].max():.0f} and {1000*Wo[-1]:.0f} ms "
+      f"(fluid growth 0.05 s of work per second: {50*0.05*1000:.0f} and {100*0.05*1000:.0f} ms)")
+assert Wo[-1] > Wo[over < 50].max()
+
+
+# (f) the slice-35 sampler, kept for the record: each gap drawn from the rate in force at the
+#     previous arrival, with a low rate of 0.72 mu (stated average 0.798 mu)
+def old_sampler(n, hi_=1.5 * mu, lo_=0.72 * mu):
+    t, out = 0.0, np.empty(n)
     for i in range(n):
-        lam = arr_rate_fn(t)
-        dt = rng.exponential(1 / lam)
-        t += dt
-        w = max(0.0, w + rng.exponential(svc) - dt)
-        waits.append(w)
-    return np.array(waits)
-w_steady = lindley(lambda t: 0.8 * mu)
-burst = lambda t: (1.5 * mu) if (t % 1.0) < 0.1 else (0.72 * mu)   # average 0.798 mu, bursts at 1.5 mu
-w_burst = lindley(burst)
-print(f"  average utilisation 0.8: mean wait {1000*w_steady.mean():.2f} ms (steady) against {1000*w_burst.mean():.2f} ms with 10% bursts at 1.5x capacity; "
-      f"99th percentile {1000*np.quantile(w_steady, .99):.1f} against {1000*np.quantile(w_burst, .99):.1f} ms")
-assert w_burst.mean() > 3 * w_steady.mean()
-w_over = lindley(lambda t: 1.05 * mu, n=100_000)
-print(f"  utilisation 1.05: backlog wait after 50k and 100k messages {1000*w_over[49_999]:.1f} and {1000*w_over[-1]:.1f} ms (grows without bound)")
-assert w_over[-1] > w_over[49_999]
+        t += rq.exponential(1.0 / (hi_ if (t % 1.0) < 0.1 else lo_))
+        out[i] = t
+    return out
+old = old_sampler(200_000)
+print(f"  slice-35 sampler: stated average 0.798 mu = 798/s; realised {old.size / old[-1]:.1f}/s over {old[-1]:.0f} s "
+      f"(in-burst share of arrivals {np.mean((old % 1.0) < 0.1):.4f} against 0.1 x 1.5 / 0.798 = {0.15/0.798:.4f})")
 
 
 # 9. Volume counting -----------------------------------------------------------------------

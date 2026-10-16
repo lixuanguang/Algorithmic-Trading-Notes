@@ -2,7 +2,7 @@
 key: s3-velu
 pathways: [point-in-time-data, alternative-data-sources]
 version: Raja Velu, Maxence Hardy and Daniel Nehren, Algorithmic Trading and Quantitative Strategies, Chapman & Hall/CRC Financial Mathematics Series, CRC Press, Boca Raton, ISBN 9781498737166 (hbk), 9780429183942 (ebk). The copyright page of the local copy reads "(c) 2020 Taylor & Francis Group"; the catalogue records a 2020 release and 2021 copyright. Copy used: a local PDF outside the repository with a text layer (printed page = PDF page - 17 in chap. 1)
-sections: chap. 1, sec. 1.4 "Taxonomy of Data Used in Algorithmic Trading" (pp. 26-44), text layer, with Table 1.10 (p. 37) by page image, read for migration slice 32; nothing else read
+sections: chap. 1, sec. 1.4 "Taxonomy of Data Used in Algorithmic Trading" (pp. 26-44), text layer, with Table 1.10 (p. 37) by page image, read for migration slice 32; nothing else read; slice 36: chap. 11, sec. 11.1 (pp. 383-386), text layer
 read:
 status: draft
 ---
@@ -35,6 +35,8 @@ Prepared on 2026-10-16 by migration slice 32 from source checks, not from study:
 ## Entries
 
 `data:trading-reference-data`, `data:market-data-levels`, `data:derived-market-statistics` (`point-in-time-data`); `def:financial-data-types` (`alternative-data-sources`, with `alpha-afml`).
+
+Slice 36: `data:market-data-levels` (the order path from client to venue: FIX, the order management system, gateways and native protocols, acknowledgements and executions, clearing and settlement; chap. 11, sec. 11.1, pp. 383-386), merged from the legacy data-engineering file.
 
 ## Open questions
 

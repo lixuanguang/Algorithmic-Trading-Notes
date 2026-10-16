@@ -54,6 +54,10 @@ All three: partly checked 2026-10-16, draft; human review outstanding. Artefacts
 
 Changed in the slice-33 follow-up, 2026-10-16: `mod:queue-reactive-intensities` (the claim that uniform-start and event-start waiting times agree "only for a Poisson process" replaced by the renewal result $E[X^2]/(2E[X])$, equal to $E[X]$ when the coefficient of variation is 1, with a non-exponential counterexample).
 
+## Related entries owned elsewhere
+
+Written in slice 36 for `hft-market-design` and cross-referenced here: `res:queue-position-value`, from this pathway's reading `wide-moallemi-yuan-queue` (June 2017 revision; abstract, secs. 1--2, 4.3, 5.2 and 6 read, the value recursion of sec. 3 not checked). The cross-asset file, which listed this pathway, was routed to `execution-market-making`'s arbitrage entries (slice 36).
+
 ## Entry backlog
 
 - res:queue-reactive-models-hlr: Huang, Lehalle and Rosenbaum's Models I--III, their estimation, sample and ergodicity result, checked in the paper (`exp-huang-lehalle-rosenbaum-queue-reactive`, a required reading, not read); `mod:queue-reactive-intensities` rests on Lehalle and Laruelle's summary
@@ -67,7 +71,7 @@ Changed in the slice-33 follow-up, 2026-10-16: `mod:queue-reactive-intensities` 
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. No block is now assigned to this pathway: *Inventory-Skew Quoting* was migrated in slice 3 to `mod:inventory-based-quotes` from textbook sources, with the Ho–Stoll paper still unread (backlog stub above). The market-making section of the legacy notes has been worked through (`notes/migration.md`, slice 2). Its remaining blocks are assigned to `execution-market-making` or `hft-market-design`, except the cross-asset arbitrage file, which is shared and flagged. The spread-decomposition and inventory files of `03_information_price_formation_and_spreads/` were migrated and deleted in slice 3. In slice 4, 14 of the 22 blocks of its volatility-and-liquidity file were migrated. The other 8 were assigned to `hft-market-design`, whose readings include the Flash Crash papers. In slice 5 one of them, *Systemic Risk Link*, was reassigned to `market-structure-execution-quality`. Slice 5 also migrated the information and price-discovery files, now listed under `execution-market-making`. Shared candidate material remains in `02_orders_matching_and_limit_order_books/` (order types, matching algorithms, hidden liquidity, routing) and the other `03_...` files; slice 33 migrated the queue, order-flow-imbalance and order-flow-model files.
+Run `python3 tools/migration_status.py` for the current counts. Slice 36 removed the last legacy microstructure files; no legacy file now lists this pathway. Its blocks went, over slices 2--5, 33 and 36, to this pathway's entries above and to `execution-market-making`, `hft-market-design` and `market-structure-execution-quality`. Ho--Stoll is still unread (backlog).
 
 ## What changed in my view or practice
 

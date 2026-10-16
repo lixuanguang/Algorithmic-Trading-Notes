@@ -40,6 +40,8 @@ All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `note
 
 Changed in the slice-32 follow-up, 2026-10-16: `meth:etf-trick` (the next-open sizing is an accounting convention, reproducible only by notional orders filled in full at a single opening price; gross exposure $|K_t|$ with positive prices and conversion factors; holdings reverse at $K_t<0$, so a series that exhausts its capital stops describing the strategy); `def:label-concurrency-uniqueness` (indicator $t_{i,0}<t\le t_{i,1}$ for returns indexed by ending time; López de Prado's toy matrix is consistent, his Snippets 4.1, 4.3 and 4.10 include the event's own bar, which is not equivalent); `meth:sample-weights-attribution-decay` (sum from $t_{i,0}+1$); `meth:triple-barrier-labelling` (the returns a label uses). Checks in `notes/artefacts/statistical-learning-foundations/slice32-followup-checks.py`.
 
+Changed in migration slice 36, 2026-10-16: `meth:triple-barrier-labelling` (two legacy arbitrage-label blocks from the feature-engineering file, a routing exception, compared with the path argument on p. 44). Partly checked, draft.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `pit:label-weight-leakage` (`financial-ml-evaluation`); `def:financial-data-types` (`alternative-data-sources`); `data:trading-reference-data`, `data:market-data-levels`, `data:derived-market-statistics` (`point-in-time-data`); `mod:pca-risk-distribution-weights` (`portfolio-construction`); `pit:parameter-overfitting` (`backtest-inference`); `meth:strategy-production-lifecycle` (`model-governance-controls`).

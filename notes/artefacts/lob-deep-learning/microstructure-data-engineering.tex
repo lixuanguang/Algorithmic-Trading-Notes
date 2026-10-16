@@ -1,5 +1,20 @@
-% migrate-to: lob-deep-learning, market-simulation
-\subsection{Microstructure Data Engineering}
+% notes/artefacts/lob-deep-learning/microstructure-data-engineering.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 36, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/09_microstructure_data_engineering.tex
+% below its migrate-to line (migrate-to: lob-deep-learning, market-simulation), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Market-Data Depth Segmentation, Trading-Message Segmentation -> data:market-data-levels; Ticker Is Not an Instrument Key -> data:trading-reference-data; Microstructure Proportion, Bernoulli Proportion Estimator, Normal Approximation Boundary, Sampling Unit Segmentation -> meth:venue-market-share; Simple Linear Regression Baseline, Regression Fit Quality, Regression Is an Empirical Approximation, Average of Regressions vs Regression of Averages -> meth:spread-volatility-regression; Mean Excess-Return Test, Power Is a Signal-to-Noise Problem (proposition), More Ticks Are Not More History, Performance-Inference Bias Segmentation, Regression to the Mean, Distributional Shape Matters -> meth:skill-luck-significance-tests; Averaging Effect -> meth:intraday-deseasonalisation. Routing exceptions recorded in notes/migration-slices.md, slice 36.
+% Compile inside notes/artefacts/lob-deep-learning/ with  latexmk -pdf microstructure-data-engineering.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: microstructure data engineering}
+
+% From compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/09_microstructure_data_engineering.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Microstructure Data Engineering}
 
 \begin{taxonomy} \hlt{Market-Data Depth Segmentation}
 \begin{enumerate}[label=\roman*.]
@@ -114,3 +129,5 @@ An average intraday profile is not a typical realised path. Averaging volatility
 For an index $I_t=\sum_{k=1}^{N}w_kS_t^k$, spreads aggregate linearly as $\psi^I=\sum_{k=1}^{N}w_k\psi^k$, but volatility generally does not satisfy $\sigma^I=\sum_{k=1}^{N}w_k\sigma^k$. Here $w_k$ is the weight of stock $k$, $S_t^k$ its price, $\psi^k$ its spread, and $\sigma^k$ its volatility.\\
 Regression coefficients estimated on index quantities therefore need not equal weighted averages of single-stock regression coefficients.
 \end{model}
+
+\end{document}

@@ -34,6 +34,8 @@ All three: verification partly checked 2026-10-15, stability draft; human review
 
 Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `mod:inventory-based-quotes` (`market-making-lob` and `execution-market-making`); `def:smart-order-routing`, `def:best-execution` (`market-structure-execution-quality`); `res:latency-arbitrage-arms-race` (`hft-market-design`). None of them is FX evidence.
 
+Slice 36, 2026-10-16: cyclic (triangular) currency arbitrage is in `def:arbitrage` (owned by `execution-market-making`): the no-arbitrage band with bid and ask quotes, derived and checked, and Harris's three-legged currency box recomputed. It concerns cross-pair pricing, which bears on this pathway's choice between internalising and hedging across currency pairs, but it is Harris's arbitrage material, so it was not written as an entry here.
+
 ## Entry backlog
 
 - ev:fx-last-look-fill-reject-evidence: measured fill rates, reject rates, hold times and client markouts under last look against firm liquidity, with benchmarks, horizons and selection effects; Oomen's last-look and aggregator papers (unread) and empirical FX studies are needed before such an entry.

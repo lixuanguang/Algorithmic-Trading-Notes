@@ -1,5 +1,20 @@
-% migrate-to: market-making-lob, execution-market-making
-\subsection{Economics of Market Making}
+% notes/artefacts/execution-market-making/economics-of-market-making.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 36, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/01_economics_of_market_making.tex
+% below its migrate-to line (migrate-to: market-making-lob, execution-market-making), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Dealer, Dealer Problem Segmentation, Dealer Quote Segmentation, Order-Flow Acquisition Segmentation, Preferencing and Payment for Order Flow, Trading with Dealers -> def:dealer-quotes-order-flow; Designated Market Maker Obligation Segmentation, Specialist Privilege Segmentation -> def:specialist-obligations-privileges; Dealer Spread vs Outside Spread -> def:outside-spread (a restatement). From Harris chaps. 13, 16 and 24. The earlier migrated comments are kept as they stood.
+% Compile inside notes/artefacts/execution-market-making/ with  latexmk -pdf economics-of-market-making.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: economics of market making}
+
+% From compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/01_economics_of_market_making.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Economics of Market Making}
 
 % assign: execution-market-making
 \begin{definition} \hlt{Dealer}\\
@@ -96,3 +111,5 @@ Preferencing can lower search costs when dealers compete for relationships, but 
 \begin{practitionernote} \hlt{Trading with Dealers}\\
 Experienced clients often ask for a two-sided quote before revealing direction. A wide quote is information: the dealer may suspect informed flow, inventory pressure, or poor unwind conditions.
 \end{practitionernote}
+
+\end{document}

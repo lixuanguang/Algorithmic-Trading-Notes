@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-making-lob, market-structure-execution-quality, hft-market-design
-\subsection{Price Discovery}
+% notes/artefacts/market-structure-execution-quality/price-discovery-fragmentation-outage.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 36, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/02_price_discovery.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-making-lob, market-structure-execution-quality, hft-market-design), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Fragmentation and Price Formation -> mech:venue-competition-fragmentation; Fast Liquidity and Price Discovery -> mod:make-take-fee-speed-race (hft-market-design); Outage Price Discovery -> ev:european-fragmentation-evidence. From Lehalle and Laruelle (app. A.2; sec. 2.5) and Hasbrouck chap. 10. The earlier migrated comment is kept as it stood.
+% Compile inside notes/artefacts/market-structure-execution-quality/ with  latexmk -pdf price-discovery-fragmentation-outage.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: price discovery (remaining blocks)}
+
+% From compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/02_price_discovery.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Price Discovery}
 
 % migrated: Price Formation Process (PFP) -> def:price-formation-process; Informed Trading Price Discovery -> res:informed-trading-aggregation; Value-Trader Profit Source Segmentation -> def:outside-spread (Conditions, Pitfalls); Value Traders Supply Liquidity Outside the No-Trade Band -> def:outside-spread (Statement); No-Trade Is an Information Position -> def:outside-spread (Practice); Microstructure to Macro Prices, Volatility Scale Segmentation, Intraday and Overnight Returns, Correlation Interpretation -> def:intraday-overnight-returns (full text in notes/artefacts/market-making-lob/derivations.tex)
 
@@ -17,3 +32,5 @@ Fast market makers help price discovery when they update quotes and arbitrage st
 \begin{caveat} \hlt{Outage Price Discovery}\\
 If alternative venues keep trading while primary data or primary matching is unavailable, prices may temporarily split into parallel formation processes rather than one consolidated market price.
 \end{caveat}
+
+\end{document}

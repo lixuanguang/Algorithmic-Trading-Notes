@@ -32,6 +32,8 @@ All five: partly checked 2026-10-16, draft; human review outstanding. Artefacts:
 
 Changed in the slice-33 follow-up, 2026-10-16: `meth:realised-variance-signature-plot` (limits restricted to continuous Itô processes; quadratic-variation limits with jumps and co-jumps; the noise expectation's assumptions stated as exact for the simulated driftless Brownian model; a unit-jump Poisson counterexample in `order-flow-checks.py`).
 
+Changed in migration slice 36, 2026-10-16: `meth:intraday-deseasonalisation` (Lehalle and Laruelle's mean-against-path warning, app. A.14.1, and a simulated example), from the data-engineering file, which listed this pathway; the file's other blocks were routed by content (see `lob-deep-learning`). Partly checked, draft.
+
 ## Entry backlog
 
 - meth:refresh-time-covariance: covariance estimators for asynchronous prices (refresh-time sampling, Hayashi--Yoshida), with their conditions; named by the legacy notes and by Lehalle and Laruelle (p. 318), none read; the slice-33 check shows previous-tick sampling itself produces an Epps effect
@@ -40,7 +42,7 @@ Changed in the slice-33 follow-up, 2026-10-16: `meth:realised-variance-signature
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. After slice 33 the pathway's remaining candidate is the data-engineering file (`04_order_flow_and_empirical_microstructure/09_...`, shared with `lob-deep-learning`).
+Run `python3 tools/migration_status.py` for the current counts. Slice 36 migrated the data-engineering file and removed the legacy microstructure chapter; no legacy file now lists this pathway.
 
 ## What changed in my view or practice
 

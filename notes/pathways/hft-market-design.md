@@ -38,6 +38,15 @@ Partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/portfolio-c
 
 Changed in the slice-30 follow-up, 2026-10-15: `def:hft-strategies`' Currency field records FINRA Rule 5270 as the one current rule checked.
 
+Written in migration slice 36, 2026-10-16, from the legacy latency-and-queue-competition, volatility-and-liquidity and price-discovery files (the fifteen blocks assigned here):
+
+- `res:queue-position-value`: Moallemi and Yuan's static and dynamic components of queue value, the large-tick condition, the race after a price change, Table 3's front-against-back gaps (0.03 to 0.22 ticks); the legacy "thin queues" contradicted (`wide-moallemi-yuan-queue`, June 2017 revision, read in part; a reading of `market-making-lob`).
+- `mod:make-take-fee-speed-race`: the source of the legacy fee-race blocks identified as Lehalle and Laruelle's app. A.2, summarising Foucault, Kadan and Kandel; eq. (A.4) re-derived as the trade-maximising fee split and checked against finite-population equilibria; printed slips recorded; the legacy "averages" corrected to sums.
+- `mod:depth-overflow-flash-crash`: Lehalle and Laruelle's toy model (app. A.5); the time term resolved: the hot-potato $t$ counts rounds, the overflow approximation bounded, and (A.14) follows only if the overflow $R$, not the rate $r$, drives impact (derived and simulated); the remedies and the legacy control list.
+- `ev:may-2010-flash-crash`: the CFTC and SEC staff findings of 30 September 2010 (executive summary), compared with Lehalle and Laruelle's account; the legacy case study and propagation channels checked against them.
+
+Changed in slice 36: `def:hft-strategies` (trade counts as an HFT proxy, Lehalle and Laruelle pp. 20--21 and 170--171, against the report's volume warning). The fast-liquidity block of the price-discovery file was merged into `mod:make-take-fee-speed-race`. All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/hft-market-design/latency-queue-competition.tex` and `volatility-liquidity-flash-crash.tex`; checks in `notes/artefacts/execution-market-making/slice36-checks.py`.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:order-anticipation`, `def:bluffing-manipulation`, `def:arbitrage`, `def:spread-measures`, `mod:glosten-milgrom` (`execution-market-making` and `market-making-lob`); `def:smart-order-routing` (`market-structure-execution-quality`).
@@ -47,10 +56,12 @@ Changed in migration slice 35, 2026-10-16 (a routing exception from the foundati
 ## Entry backlog
 
 - res:frequent-batch-auctions: what Budish, Cramton and Shim's frequent batch auctions do to time priority within a batch and to latency rents (their secs. VII-VIII, not read); the legacy matching file's claim that within-batch time priority is "muted" waits on it
+- ev:flash-crash-studies: the pathway's Flash Crash readings (`w5-kirilenko-flash-crash`, branch `w5-menkveld-yueshen-flash`) and the staff report's detailed sections, with samples and measured HFT behaviour; slice 36 read only the report's executive summary and Lehalle and Laruelle
+- mod:fkk-make-take-original: Foucault, Kadan and Kandel's paper itself, to confirm what "efficient" means in eq. (A.4) and the conditions of their result; slice 36 re-derived the formula as the trade-maximising split from Lehalle and Laruelle's summary
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. Fifteen legacy blocks were already assigned to this pathway before slice 15 and are unchanged: the flash-crash and shock-propagation blocks of `03_.../08_volatility_and_liquidity_interaction.tex`, *Fast Liquidity and Price Discovery* in `03_.../02_price_discovery.tex`, and the seven blocks of `05_.../05_latency_and_queue_competition.tex`, a stylised maker–taker fee and speed-investment model whose source has not been identified. The seven cross-asset blocks of `05_.../06_...` list this pathway as a candidate and are unassigned.
+Run `python3 tools/migration_status.py` for the current counts. Slice 36 migrated every block assigned to this pathway (the latency file, the flash-crash and propagation blocks, the fast-liquidity block) and routed the cross-asset file, which listed this pathway, to `execution-market-making`'s arbitrage entries, because its blocks concern arbitrage rather than latency races. No legacy file now lists this pathway.
 
 ## What changed in my view or practice
 

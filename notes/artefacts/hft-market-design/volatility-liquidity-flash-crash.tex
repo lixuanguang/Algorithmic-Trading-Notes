@@ -1,5 +1,20 @@
-% migrate-to: execution-market-making, market-making-lob, hft-market-design, market-structure-execution-quality
-\subsection{Volatility and Liquidity Interaction}
+% notes/artefacts/hft-market-design/volatility-liquidity-flash-crash.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 36, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/08_volatility_and_liquidity_interaction.tex
+% below its migrate-to line (migrate-to: execution-market-making, market-making-lob, hft-market-design, market-structure-execution-quality), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Liquidity Spiral, Depth-Driven Flash Crash Toy Model (the time term resolved by derivation), Hot-Potato Amplification, Flash-Crash Control Segmentation -> mod:depth-overflow-flash-crash; Flash Crash Mechanism, Shock Propagation Channels -> ev:may-2010-flash-crash; Systemic Risk Link -> mech:venue-competition-fragmentation (market-structure-execution-quality); Trade Count as HFT Proxy -> def:hft-strategies. From Lehalle and Laruelle sec. 2.5.2 and app. A.5, and the CFTC and SEC staff report of 30 September 2010. The earlier migrated comment is kept as it stood.
+% Compile inside notes/artefacts/hft-market-design/ with  latexmk -pdf volatility-liquidity-flash-crash.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: volatility and liquidity interaction (remaining blocks)}
+
+% From compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/08_volatility_and_liquidity_interaction.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Volatility and Liquidity Interaction}
 
 % migrated: Volatility Is a Liquidity Price -> res:spread-determinants (Practice, Pitfalls); Volatility Source Segmentation, Fundamental Volatility Driver Segmentation, Transitory Volatility and Reversal, Volatility Component Decomposition -> def:volatility-components; Bubbles and Crashes, Bubble-Crash Dynamics Segmentation, Price Accelerator -> mech:bubble-crash-dynamics; Crash Attribution -> mech:bubble-crash-dynamics (Pitfalls); Regulating Volatility -> def:volatility-components (Practice); Garman-Klass Intraday Volatility -> meth:garman-klass-volatility; Spread-Volatility Regression, Log-Log Spread-Volatility Model -> meth:spread-volatility-regression; Spread-Volatility Identification -> meth:spread-volatility-regression (Pitfalls) (full text in notes/artefacts/market-making-lob/derivations.tex)
 
@@ -53,3 +68,5 @@ Fragmentation is not systemic risk by itself. It becomes dangerous when market p
 \begin{empiricalfinding} \hlt{Trade Count as HFT Proxy}\\
 Rising trades per day can proxy for higher high-frequency participation when trade sizes shrink and message intensity rises. It is not sufficient alone: the same count can reflect genuine liquidity, excessive slicing, or stress-induced churn.
 \end{empiricalfinding}
+
+\end{document}

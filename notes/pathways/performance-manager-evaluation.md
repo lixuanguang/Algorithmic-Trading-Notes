@@ -36,13 +36,19 @@ Partly checked 2026-10-15, draft; human review outstanding. Artefact: `notes/art
 
 Slice-31 follow-up, 2026-10-16: the TWR/MWR example now compares matching horizons (MWR $-3.71$ percent per sub-period, $-7.29$ percent over two; TWR $-1.0$ percent over two, $-0.50$ percent per sub-period), and the entry separates the annualisation formula from GIPS presentation: 2.A.12 (p. 9) forbids annualising periods under a year, 2.A.29 (p. 12) requires annualised since-inception MWRs, and 5.A.1.a--b (p. 33) presents a non-annualised since-inception MWR for a track record under a full year.
 
+Written in migration slice 36, 2026-10-16, from six blocks of the legacy microstructure data-engineering file (a routing exception: its candidates are `lob-deep-learning` and `market-simulation`; the blocks are Harris's tests of skill against luck, this pathway's outcome):
+
+- `meth:skill-luck-significance-tests`: the $t$-test of mean excess return, power and the years of data needed (Tables 22-2 and 22-3 recomputed), sample length against frequency, distributional shape, smoothing and fraud, selection, survivorship and regression to the mean (Harris chap. 22, secs. 22.4--22.6).
+
+Partly checked 2026-10-16, draft; human review outstanding.
+
 ## Entry backlog
 
 - meth:gips-composite-presentation: composite construction, required statistics and disclosures for a GIPS report, as the checkpoint asks (`wide-gips-2020`, read only for definitions).
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. Slice 31 migrated `compendium/legacy/rates-credit-mortgages/01_tvm.tex` and removed that legacy chapter; no legacy file now lists this pathway. That says nothing about consolidation.
+Run `python3 tools/migration_status.py` for the current counts. No legacy file lists this pathway; slice 36's entry came by routing. That says nothing about consolidation.
 
 ## What changed in my view or practice
 

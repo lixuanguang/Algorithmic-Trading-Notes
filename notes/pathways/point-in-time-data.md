@@ -30,6 +30,8 @@ Written in migration slice 32, 2026-10-16:
 
 All partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/artefacts/statistical-learning-foundations/data-taxonomy.tex`.
 
+Changed in migration slice 36, 2026-10-16 (a routing exception from the microstructure data-engineering file, whose candidates are `lob-deep-learning` and `market-simulation`; the blocks concern what a record means and when it was known): `data:market-data-levels` (timestamp quality and sequencing across markets and the public-awareness time, Hasbrouck p. 105; three times for a feature's availability; corrections arriving as later records; the legacy feed levels and message layers against Velu, Hardy and Nehren chap. 11) and `data:trading-reference-data` (the ticker caveat: identifiers with validity dates). Partly checked, draft.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-sources`, including López de Prado's release lags, backfilling and reinstatement of fundamental data); `meth:etf-trick` (`statistical-learning-foundations`); `pit:label-weight-leakage` (`financial-ml-evaluation`); `pit:backtest-cost-short-assumptions` (`backtest-inference`).
@@ -39,10 +41,11 @@ Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-
 - meth:bitemporal-reference-tables: valid time against transaction time for identifiers, corporate actions and vendor corrections (`s8-bitemporal`, unread).
 - data:holdings-insider-filing-lags: Form 13F, 13D, 3 and 4 filing deadlines and their use in a decision-time panel (`wide-sec-13f-nport`; Velu, Hardy and Nehren give the 13F threshold and the 13D and Form 4 deadlines in footnotes, p. 43, unchecked against the rules).
 - ev:delisting-survivorship-rewriting: delisting returns, survivorship and vendor history rewriting (`wide-shumway-delisting`, `wide-elton-gruber-blake-survivorship`, `wide-ljungqvist-rewriting`, unread).
+- data:trade-correction-records: how consolidated U.S. trade data mark cancellations, corrections and late reports, and how a decision-time panel should apply them (`wide-holden-jacobsen` and the TAQ documentation, unread); slice 36 stated the principle only
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. No legacy file lists this pathway; its three entries came by routing.
+Run `python3 tools/migration_status.py` for the current counts. No legacy file lists this pathway; its entries and changes came by routing (slices 32 and 36).
 
 ## What changed in my view or practice
 

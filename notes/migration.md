@@ -24,12 +24,12 @@ Migrating a block and compiling the result advances only the first. An entry wri
 
 - **Records.** Each slice appends one section to [migration-slices.md](migration-slices.md) and one row to the index below. A correction to a finished slice is appended as a follow-up; earlier records are left as written.
 
-## Status after slice 35 (16 October 2026)
+## Status after slice 36 (16 October 2026)
 
-- **Legacy blocks:** 180 = 135 shared + 16 single-candidate + 29 assigned (867 in the finance chapters at the baseline).
-- **Entries:** 170, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
-- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30); `volatility-options` and `rates-credit-mortgages` (removed by slice 31); `ml-alternative-data` (removed by slice 32, its four figures moved to the slice's artefact). Two legacy chapters remain: `execution-market-making` (60 blocks; its orders-and-matching folder closed by slice 34 and its foundations folder by slice 35) and `multi-asset-systematic-macro` (120).
-- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 236 pages; no LaTeX warnings; 0 overfull and 0 underfull boxes; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
+- **Legacy blocks:** 120 = 110 shared + 10 single-candidate + 0 assigned (867 in the finance chapters at the baseline), all in `multi-asset-systematic-macro`.
+- **Entries:** 177, all *draft* and *partly checked*. **Human review is outstanding** for every entry; the review items of each slice are under its *For review* in [migration-slices.md](migration-slices.md), and the open questions in [log.md](log.md).
+- **Legacy chapters emptied:** `execution-trading-costs` (only its 21 unused figures remain); `portfolio-construction-risk` (removed by slice 30); `volatility-options` and `rates-credit-mortgages` (removed by slice 31); `ml-alternative-data` (removed by slice 32, its four figures moved to the slice's artefact); `execution-market-making` (removed by slice 36, its wrappers and files kept verbatim in the artefacts). One legacy chapter remains: `multi-asset-systematic-macro` (120 blocks).
+- **Build:** `latexmk -g -pdf compendium.tex` exits 0; 240 pages; no LaTeX warnings; 0 overfull and 0 underfull boxes; one inherited `page.i` duplicate-destination warning. Tests: 14 pass.
 
 ## Slices
 
@@ -72,17 +72,16 @@ Blocks are the legacy blocks counted by `migration_status.py` before and after t
 | 32 | AFML data cluster: taxonomy, bars and multi-product series, labels, sample weights, fractional differentiation (five files, chapter closed) | `8be60d1` | 568 → 532 | 118 → 135 | Hedge-ratio sign, ETF-trick timing and capital, label spans, Hawkes lead |
 | 33 | Orders, the limit order book and queues; trade signing and order-flow imbalance; stylised facts, event time and point processes (eight files, one batch) | `d40d4c2` | 532 → 459 | 135 → 151 | Trade-signing arithmetic, order type against aggressiveness, sessions, FIX states, realised-variance limits, waiting times |
 | 34 | The rest of the orders-and-matching folder: order instructions, matching and trade pricing, dark trading, routing and fragmentation (four files, folder closed) | `4d9d5da` | 459 → 351 | 151 → 158 | Pro-rata capacity, posting against crossing, ex-fixing domain, venue-share variance, SOR objective |
-| 35 | The foundations folder: market functions, motives, skill and luck, intermediaries, venues, sessions, liquidity; regulation, venue competition, U.S. and EU rules, circuit breakers (six files, folder closed) | this slice's commit | 351 → 180 | 158 → 170 | |
+| 35 | The foundations folder: market functions, motives, skill and luck, intermediaries, venues, sessions, liquidity; regulation, venue competition, U.S. and EU rules, circuit breakers (six files, folder closed) | `063de31` | 351 → 180 | 158 → 170 | Liquidity units, systematic internaliser and U.S. currency, queue stability, preservation counts |
+| 36 | The rest of the legacy microstructure chapter: market making (dealers, specialists, queue value, fees and the speed race, cross-asset arbitrage), information and volatility (price formation across venues, the Flash Crash and its toy model), and the feature- and data-engineering files (eight files, chapter closed) | this slice's commit | 180 → 120 | 170 → 177 | |
 
 ## Next bounded slice
 
-The market-making folder's remnants, proposed as one batch of 25 blocks: in `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/`, `01_economics_of_market_making.tex` (9 blocks), `04_optimal_quoting_and_inventory_control.tex` (2), `05_latency_and_queue_competition.tex` (7) and `06_cross_asset_and_cross_venue_market_making.tex` (7). Eighteen are assigned by `% assign:` lines in the files (the eleven of the first two files to `execution-market-making`, the seven of the latency file to `hft-market-design`); the cross-venue file's seven are shared between `market-making-lob` and `hft-market-design`.
+Only the legacy macro chapter remains (`compendium/legacy/multi-asset-systematic-macro/`, 120 blocks, none assigned): `01_regimes.tex` (35 blocks: the global-macro landscape, central banks, data releases and demographics; candidates `multi-asset-systematic-macro`, `macro-regimes-stock-bond`), `02_transmission_maps.tex` (75: building blocks, FX, equities, fixed income, commodities; four candidates) and `03_practitioner_insights.tex` (10: practitioner frameworks; single candidate `multi-asset-systematic-macro`). The chapter cites Gliner's *Global Macro Trading* (`s7-gliner`) as its source, and the practitioner file names interviewees (Leitner, Siva-Jothy, Wadhwani, Bessent and others).
 
-- **Why together.** They complete the market-making material that slices 2--3, 15 and 33 began (`def:dealer-inventory-risk`, `mod:avellaneda-stoikov`, `mod:inventory-based-quotes`, `res:latency-arbitrage-arms-race`, `mod:queue-reactive-intensities`), and the folder would then close; merging into those entries will matter more than writing new ones.
-- **Sources.** Harris chaps. 13 and 19 (`alpha-harris`, local), Avellaneda and Stoikov (`s6-stoikov`), Budish, Cramton and Shim (`wide-budish-cramton-shim`), the queue-value literature (`wide-moallemi-yuan-queue`, not yet read) and Lehalle and Laruelle chap. 2; check each block's provenance.
-- **Proposed ownership:** keep the existing assignments; place the cross-venue blocks by their content (inventory hedging across venues to `market-making-lob`, latency and venue races to `hft-market-design`).
+**Source availability decides the order.** No copy of Gliner was found on this machine; Drobny's *Inside the House of Money* (`s7-drobny`, the 2006 Wiley edition, against the catalogue's revised 2013 edition) is available locally. Most central-bank and data-release claims can instead be checked against primary texts (central-bank statutes and statements, statistical agencies' release calendars, dated) and the macro pathways' readings, many of them open working papers.
 
-After it, `execution-market-making` keeps the eleven assigned blocks of the information-and-spreads folder (`03_.../02_...`, 3; `08_...`, 8, including Lehalle and Laruelle's toy flash-crash model and its time term) and the feature- and data-engineering files of the order-flow folder (`04_.../08_...`, 6 blocks; `09_...`, 18) for `lob-deep-learning`, `market-simulation` and `point-in-time-data`. The legacy macro chapter (120 blocks) and the deferred items (Ho--Stoll, the toy-model time term) are unchanged.
+**Proposed slice 37, one batch of 45 blocks:** `03_practitioner_insights.tex` (10), checked interview by interview against Drobny, with any interview not in the 2006 edition marked unresolved, and `01_regimes.tex` (35), its central-bank and data-release blocks dated from primary sources and its regime and return-profile claims checked against `macro-regimes-stock-bond`'s open readings, Gliner-only claims kept as unverified with backlog stubs. Ownership by content: the strategy definition, trade types and practitioner frameworks to the overview `multi-asset-systematic-macro`; regime behaviour to `macro-regimes-stock-bond`; central-bank tools and communication probably to `monetary-policy-curve` or `macro-announcements-policy` (not candidates of the file, so routing exceptions to record); data releases to `macro-nowcasting-signals` and `point-in-time-data` for release timing and vintages. `02_transmission_maps.tex` (75) would follow as slice 38, ideally once Gliner has been obtained, since its asset-class maps paraphrase him most closely.
 
 ## File map
 
@@ -91,14 +90,6 @@ One row per legacy file with blocks; `tools/migration_status.py --check` fails i
 <!-- map:begin -->
 | Legacy file | Candidate pathways |
 |---|---|
-| `compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/02_price_discovery.tex` | execution-market-making, market-making-lob, market-structure-execution-quality, hft-market-design |
-| `compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/08_volatility_and_liquidity_interaction.tex` | execution-market-making, market-making-lob, hft-market-design, market-structure-execution-quality |
-| `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/08_feature_engineering_for_microstructure_alpha.tex` | lob-deep-learning |
-| `compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/09_microstructure_data_engineering.tex` | lob-deep-learning, market-simulation |
-| `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/01_economics_of_market_making.tex` | market-making-lob, execution-market-making |
-| `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/04_optimal_quoting_and_inventory_control.tex` | market-making-lob, execution-market-making |
-| `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/05_latency_and_queue_competition.tex` | market-making-lob, hft-market-design |
-| `compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex` | market-making-lob, hft-market-design |
 | `compendium/legacy/multi-asset-systematic-macro/01_regimes.tex` | multi-asset-systematic-macro, macro-regimes-stock-bond |
 | `compendium/legacy/multi-asset-systematic-macro/02_transmission_maps.tex` | macro-nowcasting-signals, macro-announcements-policy, monetary-policy-curve, fx-determination-forecasting |
 | `compendium/legacy/multi-asset-systematic-macro/03_practitioner_insights.tex` | multi-asset-systematic-macro |

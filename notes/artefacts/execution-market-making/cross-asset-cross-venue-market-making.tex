@@ -1,5 +1,20 @@
-% migrate-to: market-making-lob, hft-market-design
-\subsection{Cross-Asset and Cross-Venue Market Making}
+% notes/artefacts/execution-market-making/cross-asset-cross-venue-market-making.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 36, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex
+% below its migrate-to line (migrate-to: market-making-lob, hft-market-design), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Arbitrageurs as Cross-Sectional Dealers, Cross-Asset Arbitrage Segmentation, Triangular FX No-Arbitrage (restated as a bid-ask band; Harris's box recomputed), Derivative Conversion -> def:arbitrage; Legging and Synchronisation Risk, Balanced Arbitrage Execution, Arbitrage Capital Constraint -> res:arbitrage-risks. Routing exception: both entries are owned by execution-market-making, not by the map candidates market-making-lob and hft-market-design. From Harris chap. 17.
+% Compile inside notes/artefacts/execution-market-making/ with  latexmk -pdf cross-asset-cross-venue-market-making.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: cross-asset and cross-venue market making}
+
+% From compendium/legacy/execution-market-making/05_market_making_and_liquidity_provision/06_cross_asset_and_cross_venue_market_making.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Cross-Asset and Cross-Venue Market Making}
 
 \begin{principle} \hlt{Arbitrageurs as Cross-Sectional Dealers}\\
 Dealers use inventory to connect buyers and sellers across time. Arbitrageurs use hedge portfolios to connect buyers and sellers across instruments, venues, locations, maturities, and risk forms. Both sell immediacy, but arbitrageurs often sell a transformed exposure rather than the same instrument.
@@ -45,3 +60,5 @@ Multi-leg arbitrage is most fragile while the hedge is incomplete. Market orders
 The widest spreads often appear when balance sheet is scarce.\\
 If arbitrageurs cannot finance losses, meet margin, borrow securities, or carry inventory, forced liquidation can widen the basis precisely when the forward-looking trade is most attractive.
 \end{caveat}
+
+\end{document}

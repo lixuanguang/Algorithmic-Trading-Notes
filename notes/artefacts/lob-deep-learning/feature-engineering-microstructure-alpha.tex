@@ -1,5 +1,20 @@
-% migrate-to: lob-deep-learning
-\subsection{Feature Engineering for Microstructure Alpha}
+% notes/artefacts/lob-deep-learning/feature-engineering-microstructure-alpha.tex
+% Legacy file kept verbatim when it was migrated (notes/migration-slices.md, slice 36, 2026-10-16): the whole of
+% compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/08_feature_engineering_for_microstructure_alpha.tex
+% below its migrate-to line (migrate-to: lob-deep-learning), with only the subsection heading unnumbered. The compendium entries
+% state each claim with its locator; the original wording lives here. Treat everything here as unchecked own working.
+% Destinations: Relative-Value Feature Segmentation, Factor-Residual Arbitrage View (hedge ratio restored) -> res:arbitrage-risks; Alpha Needs Comparative Advantage -> def:trader-motives; Arbitrage Labels Need Path Information, Arbitrage Event Label Segmentation -> meth:triple-barrier-labelling; Microstructure Alpha Evaluation Segmentation -> backlog stub meth:lob-signal-transaction-usefulness (lob-deep-learning). Routing exceptions (all but the stub): see notes/migration-slices.md, slice 36.
+% Compile inside notes/artefacts/lob-deep-learning/ with  latexmk -pdf feature-engineering-microstructure-alpha.tex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[a4paper,oneside,openany]{book}
+\input{../../../compendium/preamble}
+\input{../../../compendium/house}
+\pagestyle{plain}
+\begin{document}
+\chapter*{Legacy notes: feature engineering for microstructure alpha}
+
+% From compendium/legacy/execution-market-making/04_order_flow_and_empirical_microstructure/08_feature_engineering_for_microstructure_alpha.tex (whole file, deleted 2026-10-16 once empty).
+\subsection*{Feature Engineering for Microstructure Alpha}
 
 \begin{taxonomy} \hlt{Relative-Value Feature Segmentation}
 \begin{enumerate}[label=\roman*.]
@@ -49,3 +64,5 @@ Label both terminal convergence and maximum adverse excursion.
 \item \hlt{exit}: convergence, stop-out, forced liquidation, expiry, or capital reallocation.
 \end{enumerate}
 \end{taxonomy}
+
+\end{document}

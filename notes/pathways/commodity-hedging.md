@@ -39,7 +39,7 @@ method validation (2026-10-17) (audit repairs and a source-review coverage; sour
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:why-firms-hedge` narrowed (Tufano (1996) and Jin and Jorion (2006) read at abstract level and merged into the hedging entry: neither supports the value channel). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 42: static against rolling hedge ratios for a jet-fuel exposure, out of sample under a recorded protocol: rolling helps modestly (heating oil 53.8 against 49.3 percent variance reduction), merged into `mod:minimum-variance-hedge-ratio`; GARCH not run. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): the `meth:time-varying-hedge-ratio` question: static against rolling hedge ratios for a jet-fuel exposure, out of sample under a recorded protocol: rolling helps modestly (heating oil 53.8 against 49.3 percent variance reduction), merged into `mod:minimum-variance-hedge-ratio`; GARCH not run. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 

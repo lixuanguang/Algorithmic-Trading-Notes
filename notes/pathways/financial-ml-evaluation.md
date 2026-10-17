@@ -38,7 +38,7 @@ method validation (2026-10-17) (audit repairs and a source-review coverage; sour
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `meth:time-valid-ml-experiment-record` narrowed (He, Lv, Manela and Wu's abstract merged; Levy's full text refused again (Wiley 403)). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 5: Kapoor and Narayanan's leakage taxonomy merged into `meth:time-valid-ml-experiment-record`, which lacks duplicate and test-window-selection checks. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): the `pit:ml-leakage-taxonomy` question: Kapoor and Narayanan's leakage taxonomy merged into `meth:time-valid-ml-experiment-record`, which lacks duplicate and test-window-selection checks. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 

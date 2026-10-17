@@ -38,7 +38,7 @@ macro markets and pricing review follow-up, 2026-10-16 (source verification, not
 
 Second macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:irs-notional-share` resolved (BIS OTC derivatives bulk data: at end-December 2025 interest rate swaps $545.0 trillion, 81.4 percent of $669.5 trillion interest rate derivatives; FRAs 10.7, options 7.9 percent; end-June 2024 swaps 81.1 percent of $578.8 trillion). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 
-derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 29: new entry `mod:sabr-smile` (SABR expansion in single- and multiple-curve form, with an own Monte Carlo check); targets 34-35 (Schrimpf and Sushko; the SOFR calculation and revision rule) merged into `def:money-market-reference-rates`. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): the `mod:sabr-smile` question: new entry `mod:sabr-smile` (SABR expansion in single- and multiple-curve form, with an own Monte Carlo check); the `def:money-market-reference-rates` question (Schrimpf and Sushko; the SOFR calculation and revision rule) merged into `def:money-market-reference-rates`. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 

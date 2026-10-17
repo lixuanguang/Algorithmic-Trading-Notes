@@ -28,7 +28,8 @@ class Repo:
         self.write('guide/learning_routes.json', json.dumps(ROUTES))
         self.write('guide/institutional_quantitative_finance_reading_list.tex',
                    r'\CatalogueEntry{cat-key}{A book}' + '\n')
-        self.write('compendium/front/sources.tex', r'\qfsource{src-key}{A paper}' + '\n')
+        self.write('compendium/front/sources.tex', r'\qfsource{src-key}{A paper}' + '\n'
+                   + r'\qfsource[https://example.org/x]{linked-key}{A page}' + '\n')
         self.write('notes/pathways/.keep', '')
 
     def write(self, rel, text):
@@ -53,6 +54,11 @@ class EntryMetadata(unittest.TestCase):
     def gaps(self, entry):
         self.repo.write('compendium/sec-a/topic.tex', entry)
         return self.repo.report()['problems']
+
+    def test_source_key_with_url_is_known(self):
+        entry = GOOD_ENTRY.replace(r'\citep{src-key}', r'\citep{linked-key}')
+        self.assertNotEqual(entry, GOOD_ENTRY)
+        self.assertFalse(any('linked-key' in p for p in self.gaps(entry)))
 
     def test_complete_entry_passes(self):
         r = (self.gaps(GOOD_ENTRY), self.repo.report())

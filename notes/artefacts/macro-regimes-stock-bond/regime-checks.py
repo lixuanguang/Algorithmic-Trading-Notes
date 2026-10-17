@@ -40,7 +40,7 @@ def add3(ym):
 same('goods-only only for windows ending by 2019-12', all(add3(r['vintage_month']) <= '2019-12' for r in rows if r['usd_goods_only']), True)
 same('goods-and-services only from 2006-01', all(r['vintage_month'] >= '2006-01' for r in rows if r['usd_goods_services']), True)
 
-v1 = open(os.path.join(HERE, 'v1-2026-10-17', 'regime_recession_results.txt')).read()
+v1 = open(os.path.join(HERE, 'superseded-first-run', 'regime_recession_results.txt')).read()
 v2 = open(os.path.join(HERE, 'regime_recession_results.txt')).read()
 v1_block = v1.split('== ex-post NBER window')[1]
 v2_block = v2.split('ANY OVERLAP (v1 definition)')[1].split('== ex-post NBER window, ALL MONTHS')[0]
@@ -53,7 +53,7 @@ b = re.search(r'usd \(v1 splice[^)]*\)\s+[0-9-]+: regime ([+-][0-9.]+).*diff ([+
 same('v1 any-overlap dollar (splice) preserved', b, a)
 same('real-time block precedes and is labelled the only test', v2.index('REAL-TIME TEST') < v2.index('EX-POST DESCRIPTION'), True)
 same('verdict line refers to real time', 'Verdict (real time)' in v2, True)
-p1 = open(os.path.join(HERE, 'v1-2026-10-17', 'regime_quarters.csv'), 'rb').read()
+p1 = open(os.path.join(HERE, 'superseded-first-run', 'regime_quarters.csv'), 'rb').read()
 same('v1 panel preserved (SHA-256 prefix)', hashlib.sha256(p1).hexdigest()[:8], '82ce2b97')
 
 if fails:

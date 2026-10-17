@@ -36,7 +36,7 @@ method validation (2026-10-17) (audit repairs and a source-review coverage; sour
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:credit-derivative-swap-trading-structure` narrowed (the CFTC's made-available-to-trade filings and TW SEF's 2023 submission merged). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 40: FCA PS24/14's four bond deferral groups merged into `rule:us-eu-bond-transparency` from an Internet Archive capture; `rule:uk-bond-transparency` narrowed to its thresholds and Handbook text. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): the `rule:uk-bond-transparency` question: FCA PS24/14's four bond deferral groups merged into `rule:us-eu-bond-transparency` from an Internet Archive capture; `rule:uk-bond-transparency` narrowed to its thresholds and Handbook text. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 

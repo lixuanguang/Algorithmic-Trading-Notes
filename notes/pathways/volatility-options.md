@@ -38,7 +38,7 @@ Written in empirical extensions (2026-10-17) (source verification and bounded ch
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 30: arXiv v1 and v2 of Gatheral and Jacquier carry the same density slip, merged into `def:implied-volatility-surface`; target 28 (Leland 1985) blocked, no open copy. New entries for the option-pricing pathway are listed in `option-pricing-models`. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): the `def:implied-volatility-surface` question: arXiv v1 and v2 of Gatheral and Jacquier carry the same density slip, merged into `def:implied-volatility-surface`; the `meth:leland-cost-adjusted-volatility` question (Leland 1985) blocked, no open copy. New entries for the option-pricing pathway are listed in `option-pricing-models`. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 

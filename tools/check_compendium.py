@@ -48,7 +48,7 @@ def load_citation_keys(root):
         root / 'guide' / 'institutional_quantitative_finance_reading_list.tex').read_text()))
     sources = root / 'compendium' / 'front' / 'sources.tex'
     if sources.exists():
-        keys |= set(re.findall(r'\\qfsource\{([^}]+)\}', sources.read_text()))
+        keys |= set(re.findall(r'\\qfsource(?:\[[^]]*\])?\{([^}]+)\}', sources.read_text()))
     return keys
 
 

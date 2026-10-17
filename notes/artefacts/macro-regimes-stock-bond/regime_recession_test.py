@@ -1,7 +1,7 @@
 """ev:regime-asset-responses-tested: the regime map's "recession" row, tested on a regime classified with real-time
 data. Only this row is tested; the other rows and Gliner's sector phases are not.
 
-Corrected rerun (v2, 17 October 2026). The first run (v1, same day) is kept unchanged in v1-2026-10-17/. v2 keeps
+Corrected rerun (v2, 17 October 2026). The first run (v1, same day) is kept unchanged in superseded-first-run/. v2 keeps
 v1's hypothesis, real-time rule, responses and decision rule, and changes only what an audit found after v1's
 results were seen; nothing here is preregistered:
   1. Ex-post window definition stated. v1's NBER window is ANY OVERLAP: a quarter counts if at least one of its

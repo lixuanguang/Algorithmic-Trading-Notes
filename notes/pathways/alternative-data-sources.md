@@ -34,7 +34,7 @@ method validation (2026-10-17) (audit repairs and a source-review coverage; sour
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:alternative-data-edge-decay` narrowed (Dessaint, Foucault and Frésard and Farboodi and Veldkamp read at abstract level and merged); `ev:holdings-insider-ratings-signals` narrowed (Cohen, Malloy and Pomorski (abstract and sec. I) merged). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 67: Cohen, Malloy and Pomorski's NBER working paper quantified (82 basis points a month value-weighted, $t=2.15$) in `def:financial-data-types`; `ev:holdings-insider-ratings-signals` narrowed to 13F and ratings. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): the `ev:holdings-insider-ratings-signals` question: Cohen, Malloy and Pomorski's NBER working paper quantified (82 basis points a month value-weighted, $t=2.15$) in `def:financial-data-types`; `ev:holdings-insider-ratings-signals` narrowed to 13F and ratings. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 

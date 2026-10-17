@@ -47,7 +47,7 @@ used), so that half of the backlog item stays untested.
 
 - The return above is the log return ln(C1(t1)/C2(t)). empirical extensions (2026-10-17)'s script took the simple return
   C1(t1)/C2(t) - 1 from the imported v2 builder, so its premium figures did not implement this protocol. The script now
-  uses the log return for heating oil; empirical extensions (2026-10-17)'s run is kept in simple-return-2026-10-17/. The WTI and Henry
+  uses the log return for heating oil; empirical extensions (2026-10-17)'s run is kept in superseded-simple-return-run/. The WTI and Henry
   Hub protocols are separate and are not changed.
 - "Month-end" as implemented is the last date in the month on which EIA reports both contracts. Before about 2007
   contract 2 is sparse, so 79 of the 361 selected dates precede the last date in the month on which EIA reports either

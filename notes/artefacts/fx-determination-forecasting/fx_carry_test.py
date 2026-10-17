@@ -14,7 +14,7 @@ unchanged.
   less 5 bp per unit of turnover; mean > 0 with Newey-West (12 lags) t > 2. A statistical return on averaged
   prices and interbank rates, not an executable result.
 Inference repair (derivatives and empirical validation (2026-10-17), after the results were seen; empirical extensions (2026-10-17)'s script and output
-  are kept in rowlag-2026-10-17/). The CW scores of the 7-9 currencies forecast in each month were stacked month by
+  are kept in superseded-row-lag-inference/). The CW scores of the 7-9 currencies forecast in each month were stacked month by
   month and given Newey-West with h-1 ROW lags, which span only one or two calendar months and treat currencies of the
   same month as serially, not contemporaneously, dependent. The scores now keep their forecast-origin month and the
   t statistic is fx_ppp_oos_test.panel_nw_t (sum within origin month, Bartlett over h-1 calendar months; h lags as a

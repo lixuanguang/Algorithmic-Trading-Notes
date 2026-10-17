@@ -11,7 +11,7 @@ Each check targets one audit finding, on a synthetic trading calendar or on the 
    report a gas out-of-sample test (v1 could not).
 5. Wording: the results no longer say months were "dropped"; they say they are retained.
 6. Execution: the panel's executable return differs from the settlement-to-settlement return, and v1's outputs
-   are kept unchanged in v1-2026-10-17/.
+   are kept unchanged in superseded-first-run/.
 Run: python3 energy-checks.py   (numpy; reads files next to it; under 1 s). Exits non-zero on failure.
 """
 import csv
@@ -76,7 +76,7 @@ same('no "dropped" wording', 'dropped' in res, False)
 same('"retained" wording', 'retained in every estimate' in res, True)
 same('executable return differs from settlement return somewhere',
      any(r['r_exec_next_day'] != r['r_next_settle'] for r in rows if r['r_exec_next_day']), True)
-v1 = open(os.path.join(HERE, 'v1-2026-10-17', 'backwardation_monthly.csv'), 'rb').read()
+v1 = open(os.path.join(HERE, 'superseded-first-run', 'backwardation_monthly.csv'), 'rb').read()
 same('v1 panel preserved (SHA-256 prefix)', hashlib.sha256(v1).hexdigest()[:8], '6953ecd1')
 
 if fails:

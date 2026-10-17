@@ -1,5 +1,5 @@
 """ev:backwardation-scarcity-or-premium: corrected rerun (v2, 17 October 2026) of the bounded test on EIA's public
-NYMEX futures and inventory series. The first run (v1, same day) is kept unchanged in v1-2026-10-17/.
+NYMEX futures and inventory series. The first run (v1, same day) is kept unchanged in superseded-first-run/.
 
 Hypotheses and decision rules are the v1 protocol's, unchanged (written before v1's results were computed, by the batch
 record's account; committed together with the results, so not a preregistration):

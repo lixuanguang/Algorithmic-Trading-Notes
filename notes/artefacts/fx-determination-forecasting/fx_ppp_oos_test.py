@@ -1,6 +1,6 @@
 """ev:fx-valuation-factors-oos: corrected rerun (v2, 17 October 2026) of the out-of-sample test of relative PPP
 (the real exchange rate) against a random walk, on public FRED data. The first run (v1, same day) is kept unchanged
-in v1-2026-10-17/.
+in superseded-first-run/.
 
 Hypothesis, data, h, start date, training rule, portfolio, costs and decision rules are v1's, unchanged (written
 before v1's results were computed, by the batch record's account; committed with the results, so not preregistered):
@@ -23,7 +23,7 @@ Limitations kept explicit: revised CPI, not real-time vintages (a small look-ahe
   leg uses three-month interbank rates (IR3TIB01), not the forward points or funding rates a trader would pay;
   the 5 bp cost per unit of turnover is an assumption. EUR is excluded (short history).
 Inference repair (derivatives and empirical validation (2026-10-17), after the results were seen; v2 as committed in 012aa19 is kept in
-  rowlag-2026-10-17/). The pooled Clark-West t stacked currency rows and applied Newey-West to the stacked vector, so it
+  superseded-row-lag-inference/). The pooled Clark-West t stacked currency rows and applied Newey-West to the stacked vector, so it
   ignored contemporaneous dependence across currencies (all nine are dollar rates, so their forecast errors share the
   dollar's move) and mixed currencies at the stacking boundaries. It now uses panel_nw_t: the CW scores are summed
   across currencies within each forecast-origin month, and the Bartlett/Newey-West long-run variance is taken over

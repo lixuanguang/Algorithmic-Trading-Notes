@@ -46,7 +46,7 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 source verification (2026-10-17) (source verification and bounded tests, not study or human review): `res:time-rescaling-theorem` resolved with a caveat by merge into `def:order-event-point-processes`: Laub, Taimre and Pollett (arXiv v1, 2015, Theorem 5, p. 18) restate Daley and Vere-Jones's Proposition 7.4.IV for the half-line, with a monotonic continuous compensator diverging almost surely; Daley and Vere-Jones's own text was not read. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
 
-derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 14: Ratliff-Crain et al.'s retest of Cont's eleven facts (eight supported intraday, three not) merged into `ev:high-frequency-stylised-facts`. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): the `ev:high-frequency-stylised-facts` question: Ratliff-Crain et al.'s retest of Cont's eleven facts (eight supported intraday, three not) merged into `ev:high-frequency-stylised-facts`. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Legacy candidate material
 

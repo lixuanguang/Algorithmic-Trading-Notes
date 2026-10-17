@@ -35,7 +35,7 @@ For an existing clone, initialise the guide with `git submodule update --init`. 
 
 ## Write an entry
 
-Use `\begin{qf<type>}[Title]\label{<prefix>:<name>}` and the matching end command. Start fields with `\qffield{Statement}`, `\qffield{Conditions}`, and the other relevant content fields. Cite claims with `\citep[locator]{catalogue-key}`. Register sources outside the catalogue using `\qfsource{key}{reference}` in `compendium/front/sources.tex`.
+Use `\begin{qf<type>}[Title]\label{<prefix>:<name>}` and the matching end command. Start fields with `\qffield{Statement}`, `\qffield{Conditions}`, and the other relevant content fields. Cite claims with `\citep[locator]{catalogue-key}`. Register sources outside the catalogue using `\qfsource[url]{key}{reference}` in `compendium/front/sources.tex`.
 
 Keep explanations, assumptions, evidence dates and substantive caveats in the entry. Keep verification diaries, study progress and edit history in `notes/`; do not print Status blocks or keyword dumps. See [the compendium conventions](compendium/README.md).
 

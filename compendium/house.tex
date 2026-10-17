@@ -21,8 +21,10 @@
   \ifcsname r@src:#3\endcsname\hyperref[src:#3]{\nolinkurl{#3}}%
   \else\href{\qfcatalogue\##3}{\nolinkurl{#3}}\fi
   \IfValueTF{#2}{, #2}{\IfValueT{#1}{, #1}}]}
-% \qfsource{key}{reference} records one source outside the catalogue, in front/sources.tex.
-\newcommand{\qfsource}[2]{\par\noindent\phantomsection\label{src:#1}\nolinkurl{#1}\quad #2\par}
+% \qfsource[url]{key}{reference} records one source outside the catalogue, in
+% front/sources.tex; the optional URL links the key.
+\NewDocumentCommand{\qfsource}{o m m}{\par\noindent\phantomsection\label{src:#2}%
+  \IfValueTF{#1}{\href{#1}{\nolinkurl{#2}}}{\nolinkurl{#2}}\quad #3\par}
 % \qfsections{key, ...} inputs <key>/section.tex for each listed key that has one, in order.
 \ExplSyntaxOn
 \NewDocumentCommand{\qfsections}{m}

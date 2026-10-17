@@ -9,7 +9,7 @@ status: draft
 
 Prepared on 2026-10-16 by the second source follow-up from source checks, not from study: the headings that need your own reading are left empty.
 
-source verification (2026-10-17) (source checks, not study): the Internet Appendix was obtained from Holden's page, superseding "was not obtained" in the version line; its MTAQ program keeps only trades with correction code 00 and a positive price. The DTAQ code linked from the same page returned HTTP 404.
+source verification (2026-10-17) (source checks, not study): the Internet Appendix was obtained from Holden's page, superseding "was not obtained" in the version line; its MTAQ program keeps only trades with correction code 00 and a positive price. The DTAQ code linked from the same page returned HTTP 404: Holden's course instructions name the archive "Holden-and-Jacobsen-Daily-TAQ-and-Monthly-TAQ-Code-2016-07-21.zip" on his site; the file returned HTTP 404 there, the site's directory 401, and no Internet Archive capture was found. The compendium therefore covers only the MTAQ program printed in the Internet Appendix.
 
 ## Question and claim
 

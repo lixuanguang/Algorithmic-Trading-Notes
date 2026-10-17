@@ -68,7 +68,7 @@ for c in ('AUD', 'NZD'):
 same('ages recorded and within the rule', all(r['cpi_age_months'] in ('2', '4', '5', '6') for r in rows if r['predictor_eligible'] == '1'), True)
 res = open(os.path.join(HERE, 'fx_ppp_results.txt')).read()
 same('portfolio labelled not executable', 'not an executable result' in res, True)
-v1 = open(os.path.join(HERE, 'v1-2026-10-17', 'fx_ppp_monthly.csv'), 'rb').read()
+v1 = open(os.path.join(HERE, 'superseded-first-run', 'fx_ppp_monthly.csv'), 'rb').read()
 same('v1 panel preserved (SHA-256 prefix)', hashlib.sha256(v1).hexdigest()[:8], 'da1bb9d4')
 
 if fails:

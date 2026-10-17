@@ -52,7 +52,7 @@ method validation (2026-10-17) (audit repairs and a source-review coverage; sour
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `data:post-libor-funding-stress-measures` deferred (trigger review: still no free official dated SOFR OIS series; retained). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): targets 34-38: new entry `ev:money-fund-runs` (Cipriani and La Spada); CP maturities (the BIS primer contradicts Gliner's 90-270 days), the SOFR calculation and revision rule, Schrimpf and Sushko and Copeland and Engbretson merged into `def:money-market-reference-rates`. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): the `def:money-market-reference-rates` and `ev:money-fund-runs` questions: new entry `ev:money-fund-runs` (Cipriani and La Spada); CP maturities (the BIS primer contradicts Gliner's 90-270 days), the SOFR calculation and revision rule, Schrimpf and Sushko and Copeland and Engbretson merged into `def:money-market-reference-rates`. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 

@@ -12,7 +12,7 @@ Data (EIA, public domain; reading_materials/empirical-extensions/empirical): EER
   daily (EIA labels both "New York Harbor No. 2 Heating Oil Future"; contract 2 from February 1994; both end
   5 April 2024), WDISTUS1 weekly.
 Correction (derivatives and empirical validation (2026-10-17), after the results were seen; empirical extensions (2026-10-17)'s run is kept unchanged in
-simple-return-2026-10-17/):
+superseded-simple-return-run/):
   * Return definition. The protocol records the held-contract return as a LOG return, ln(C1(t1)/C2(t)); the imported
     v2 builder supplies the SIMPLE return C1(t1)/C2(t) - 1 (the WTI and gas protocols, which this script does not
     change, use that). The heating-oil rows now carry r = ln(C1(t1)/C2(t)), as recorded. B, the inventory deviation,

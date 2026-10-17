@@ -38,6 +38,8 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 
 Audit note of 2026-10-16 (`meth:curve-trades-carry-rolldown`): the episode rule is scored from an episode's last inverted month and ex-post NBER dates, so its hit rates describe the record and are not a prospective forecasting result; counts unchanged.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:curve-inversion-after-2005` deferral retained: NBER's chronology (data last updated 14 March 2023) still ends with the February 2020 peak and April 2020 trough, so the provisional outcomes are unchanged. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:duration-convexity` (`rates-credit-mortgages`); `mod:forward-rates-fra` (`rates-credit-mortgages`); `conv:government-bond-futures` (`futures-execution`).

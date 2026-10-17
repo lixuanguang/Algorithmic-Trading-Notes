@@ -38,13 +38,15 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 
 Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:metals-market-shares-current` narrowed (ICSG 2024: mine 23 Mt, Chile 24 percent; refined usage 27.4 Mt, China 58 percent; end use 26/17/57 against Gliner's 33/15/52; COMEX Chapters 107 and 111-113 and LME Part 6 read). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:metals-market-shares-current` narrowed: USGS's Mineral Commodity Summaries (February 2026) give 2025 aluminium smelter output of 74.0 million tonnes, China 45.0 (about 61 percent), merged into `def:metals-markets`; consumption by country and the LME's minimum price fluctuations remain. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- data:metals-market-shares-current: aluminium production and consumption by country (Gliner's China over 40 percent) and the LME's minimum price fluctuations, which its Rulebook leaves to Exchange notices (Rule 11.3.7); copper (ICSG Factbook 2025, ICA 2023 dataset), aluminium sector shares (IAI/MPP 2023, a model baseline of about 2020) and the COMEX and LME contract texts were read
+- data:metals-market-shares-current: aluminium consumption by country (Gliner's China over 40 percent; USGS reports production, about 61 percent Chinese in 2025, not consumption), and the LME's minimum price fluctuations, which its Rulebook leaves to Exchange notices (Rule 11.3.7)
 
 ## Legacy candidate material
 

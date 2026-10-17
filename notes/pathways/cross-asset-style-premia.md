@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:equity-index-value-signal` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:equity-index-value-signal` remains open with an executable protocol in the backlog: point-in-time country-level valuation data were not obtained (MSCI's are licensed; Ken French's international files give value portfolios within countries, not country-index book-to-price), so nothing was computed. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:equity-indices-derivatives` (`international-equity-markets`); `mod:fx-carry-trade` (`fx-premia`); `def:global-macro-strategy` (`multi-asset-systematic-macro`).
 
 ## Entry backlog
 
-- ev:equity-index-value-signal: cross-sectional value (book-to-price or earnings yield) across equity indices with its out-of-sample record, from the pathway's readings, against Gliner's fixed P/B thresholds (pp. 228); not attempted in the follow-up.
+- ev:equity-index-value-signal: does cross-sectional value (book-to-price or earnings yield) across country equity indices predict relative returns out of sample, and do Gliner's fixed P/B thresholds (2.5 'overbought', p. 228) time markets? Protocol: monthly B/P and E/P with publication dates for 15-20 developed markets; rank each month, long the cheapest tercile and short the dearest, from a ten-year warm-up; returns in USD and local currency, net of an assumed futures or ETF cost; Sharpe with Lo's standard error and the deflated Sharpe ratio over variants; the threshold rule against buy-and-hold per market. Missing: point-in-time country valuation data (MSCI licensed; French's international files are within-country portfolios)
 
 ## Legacy candidate material
 

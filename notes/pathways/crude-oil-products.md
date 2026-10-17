@@ -38,6 +38,8 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 
 Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:opec-membership-current` narrowed (four sources kept apart: WAM's announcement, EIA's analysis of 23 June 2026 and glossary, OPEC's navigation and 3 May 2026 release, and Statute Art. 8A; EIA's 2025 shares 35 percent with the UAE, 31 without); `conv:brent-wti-contract-terms` resolved (NYMEX Chapter 200: 1,000 barrels with a 2 percent delivery tolerance, $0.01 a barrel, last trade on the third business day before the 25th of the prior month, ASTM D-6377 now in the grade text; ICE Brent read earlier; the chapter is undated). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:opec-membership-current` reviewed, unchanged: OPEC's home page navigation still lists the United Arab Emirates among twelve members on 2026-10-17; its releases of 4, 6 and 12 October 2026 do not address membership; its press-release index returned HTTP 403; a search found no Secretariat statement. The prerequisite is OPEC's own statement, or 1 January 2027, when Article 8A of the Statute would make a 2026 withdrawal effective. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:natural-gas-market` (`gas-hub-pricing`); `def:contango-backwardation-stocks` (`commodity-storage-curves`).

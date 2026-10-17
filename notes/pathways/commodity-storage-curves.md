@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:backwardation-scarcity-or-premium` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:backwardation-scarcity-or-premium` empirically tested on two U.S. energy contracts (own bounded test, protocol fixed before computing; `notes/artefacts/commodity-storage-curves/backwardation_test.py`, results and panel beside it, on EIA data ending 5 April 2024): backwardation rises as inventories fall below their seasonal norm for WTI (1987-2024, t = -5.9) and Henry Hub (2015-2024, t = -4.4), so scarcity is supported; the pre-specified premium test is not (WTI slope t = 0.1, OOS R^2 -2.2 percent), with an exploratory sign effect for WTI only. Written into `def:contango-backwardation-stocks`. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:cost-of-carry-forward-price` (`volatility-options`); `def:futures-hedge-basis` (`commodity-hedging`); `def:agricultural-markets` (`agricultural-futures-delivery`).
 
 ## Entry backlog
 
-- ev:backwardation-scarcity-or-premium: evidence separating scarcity from risk premia in backwardation, from the pathway's readings (storage model, hedging pressure); empirical, not attempted in the follow-up.
+- ev:backwardation-scarcity-or-premium: extend the 2026-10-17 test (scarcity supported, linear premium not supported, for WTI and Henry Hub) to other commodities and to the pathway's readings on hedging pressure and the storage model (for example Gorton, Hayashi and Rouwenhorst), which were not read; EIA's futures series end on 5 April 2024
 
 ## Legacy candidate material
 

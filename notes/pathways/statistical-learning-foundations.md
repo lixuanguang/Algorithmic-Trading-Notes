@@ -42,13 +42,18 @@ Changed in the slice-32 follow-up, 2026-10-16: `meth:etf-trick` (the next-open s
 
 Changed in migration slice 36, 2026-10-16: `meth:triple-barrier-labelling` (two legacy arbitrage-label blocks from the feature-engineering file, a routing exception, compared with the path argument on p. 44). Partly checked, draft.
 
+- `meth:purged-embargoed-cross-validation`: purging and embargo (AFML chap. 7), inflated out-of-bag scores, and when ordinary K-fold or time-ordered holdouts are appropriate. Partly checked 2026-10-17, draft.
+
+## Source verification after slice 37
+
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `meth:purged-embargoed-cross-validation` resolved as a new entry in `ml-alternative-data/labelling-sample-weights.tex`: López de Prado chap. 7 (pp. 103-109, p. 106 as page images, where the printed information-set condition reads '= ∅' but must mean '≠ ∅') and sec. 6.3.3 on inflated out-of-bag accuracy; Bergmeir, Hyndman and Koo (working paper of 23 July 2017) on when ordinary K-fold is valid; Cerqueira, Torgo and Mozetič (arXiv v1, not the 2020 journal version). `notes/artefacts/statistical-learning-foundations/batch40-cv-checks.py` shows that Snippet 7.3 keeps labels touching the test block at one bar, which the closed-interval rule would purge. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `pit:label-weight-leakage` (`financial-ml-evaluation`); `def:financial-data-types` (`alternative-data-sources`); `data:trading-reference-data`, `data:market-data-levels`, `data:derived-market-statistics` (`point-in-time-data`); `mod:pca-risk-distribution-weights` (`portfolio-construction`); `pit:parameter-overfitting` (`backtest-inference`); `meth:strategy-production-lifecycle` (`model-governance-controls`).
 
 ## Entry backlog
 
-- meth:purged-embargoed-cross-validation: purging overlapping training labels and embargoing after the test set, and why shuffled k-fold and out-of-bag estimates are inflated, as the checkpoint asks (`alpha-afml` chap. 7, `rf-bergmeir-hyndman-koo-2018`, `rf-cerqueira-torgo-mozetic-2020`, unread).
 - ev:transaction-clock-normality: evidence on returns sampled by trades, volume or dollars (Clark 1973, Ané and Geman 2000, whose paper was not read beyond its abstract, and the replication critique of Murphy and Izzeldin, working paper 2006, read only by the slice-32 review).
 - ev:meta-labelling-performance: whether meta-labelling improves precision, F1 or after-cost results out of sample (no source identified; López de Prado's claims are unsupported in chap. 3).
 - meth:fractional-integration-tests: testing a fractionally differenced series against fractional rather than unit-root alternatives (MacKinnon and Nielsen 2014, listed by López de Prado; unread).

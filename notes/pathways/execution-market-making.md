@@ -113,14 +113,15 @@ Corrected in the slice-36 follow-up, 2026-10-16: `def:arbitrage` (exact triangul
 
 ## Entry backlog
 
-- conv:pro-rata-allocation-rules: how named venues allocate pro-rata remainders (rounding, minimum allocation, time or size tie-breaks) and whether refreshed iceberg slices keep priority, with rule dates; CME's allocation steps could not be retrieved in slice 34 (the site blocks scripted access)
-- conv:session-carry-over: which order durations a named venue carries across sessions (for example CME Globex good-till-cancel and good-till-date orders), and what a replay must load at the open; slice-33 follow-up stated only Harris's 2002 broker practice and FIX's TimeInForce values
+Empty after the batch of 2026-10-17; new stubs go here.
 
 ## Source verification after slice 37
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:order-instruction-venue-rules` narrowed (CME wiki pages Order Qualifiers, Cancel on Disconnect and Matching Algorithm Steps through the public REST interface; MIAX PEARL filing SR-PEARL-2021-35); `conv:dmm-obligations-current` narrowed (NYSE Rule 104: one-round-lot continuous two-sided quote, 15 and 10 percent of the day at the inside by volume class, Designated Percentages 8/28/30 and Defined Limits 9.5/29.5/31.5). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
 Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:order-instruction-venue-rules` resolved for the venues named (Nasdaq Equity 4, Rules 4703(e), 4756(a)(3) and 4757(a)(1), browser export of 16 October 2026: two minimum-quantity modes, persistent on the resting order; priority kept only for re-marking and size reduction; CME and MIAX PEARL read earlier); `conv:dmm-obligations-current` resolved for NYSE (current Rules 104 and 107B, browser exports of 16 October 2026: 15/10 percent at the inside for non-ETPs and 25 for ETPs; Designated Percentages and Defined Limits unchanged; last amended 22 November 2022 and 25 January 2023; other venues out of the entry's scope). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `conv:pro-rata-allocation-rules` resolved for CME Globex by merge into `mech:order-matching-pricing` (Client Systems Wiki, "CME Globex Matching Algorithm Steps", version 5 of 2 June 2026, from the retained REST export): algorithms by step, Pro Rata rounded down with a minimum allocation, Leveling (algorithm K), Split with FIFO rounded up, TOP, LMM (options only), the FIFO exception, and display-quantity priority; CME's examples recomputed in `notes/artefacts/execution-market-making/batch40-cme-allocation-checks.py`. `conv:session-carry-over` resolved for CME Globex by merge into `mech:order-lifecycle` (Order Qualifiers, version 3; Matching Algorithm Steps, version 5): day orders expire, GTC and GTD carry with their timestamps, no TOP over a weekend. Other venues and CME's market-data recovery were not checked. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
 ## Legacy candidate material
 

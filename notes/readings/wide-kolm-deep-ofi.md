@@ -24,8 +24,11 @@ Prepared on 2026-10-16 by the second source follow-up from source checks, not fr
 
 ## Key results
 
-- OF inputs beat LOB inputs for most stocks in pairwise tests, though the CNN-LSTM did better with LOB for 23 to 45 stocks depending on the horizon (Table 3, PDF pp. 19-23).
-- Out-of-sample R^2 rises to about two average price changes and declines after; read from Fig. 8, CNN-LSTM peaks near 1.5 percent and falls to about 0.65 at ten (PDF pp. 18 and 28).
+- Pairwise OF-against-LOB tests: each Table 3 entry is, per model and horizon, the number of stocks with a significantly positive t-statistic (1 percent) minus the number with a significantly negative one (sec. 4.1.2, PDF p. 19; caption, PDF p. 21). CNN-LSTM row: 70 to 93 (Avg 89); LSTM rows 114-115. These are net counts: neither they nor 115 minus them are counts of winning or losing stocks, and the raw counts are not reported.
+- Source ambiguity, recorded rather than resolved: the caption and text also read an entry X as OF outperforming "for X stocks"; the caption tests a "loss difference" where the text tests a difference in R^2_OS; and the text's "about 40 stocks for which the CNN-LSTM with LOB inputs perform better" at shorter horizons (PDF p. 20) cannot be derived from the net counts. No exact count of LOB-favoured stocks is stated.
+- Out-of-sample R^2 rises up to about two average price changes (Fig. 2, PDF p. 18, whose horizons stop at two). The decline beyond two rests on Fig. 8 (PDF p. 28): read from the plot, CNN-LSTM peaks near 1.5 percent at about two and falls to roughly 0.64 at ten; the text on it says R^2_OS "plateaus at around two average price changes" (sec. 4.3, PDF p. 27).
+
+Correction of 2026-10-17: the earlier bullet here said the CNN-LSTM did better with LOB inputs "for 23 to 45 stocks", obtained by subtracting Table 3's entries from 115, and cited Fig. 2 for the decline; both were wrong for the reasons above (rechecked on PDF pp. 18-21 and 27-28 as page images).
 
 ## Limits
 

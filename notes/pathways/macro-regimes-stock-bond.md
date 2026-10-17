@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:regime-asset-responses-tested` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:regime-asset-responses-tested` empirically tested for the recession row only (own bounded test, protocol fixed before computing; `notes/artefacts/macro-regimes-stock-bond/regime_recession_test.py`, results and panel beside it): on a Sahm-type rule applied to each quarterly vintage of the Philadelphia Fed's real-time unemployment data, 1965-2025 (241 vintages, 53 signal quarters; the 2026 vintages skipped because October 2025 is missing in them), none of the five recession signs holds over the next three months at |t| > 2, and equities and defensives move against the map; inside ex-post NBER windows the signs match the map but are not significant. Written into `def:macro-regime-asset-map`. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:global-macro-strategy` (`multi-asset-systematic-macro`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- ev:regime-asset-responses-tested: test each sign of the regime map, and of Gliner's Figure 8.3 sector phases (compared with the legacy table on 2026-10-16), on regimes classified with real-time data; no source supplies the test.
+- ev:regime-asset-responses-tested: test the other rows of the regime map (growth, inflation, deflation, liquidity, geopolitical) and Gliner's Figure 8.3 sector phases on regimes classified with real-time data, and the recession row with other real-time rules, horizons, commodities and non-U.S. assets; the recession row was tested on 2026-10-17 with a real-time Sahm-type rule (no sign supported; `def:macro-regime-asset-map`)
 
 ## Legacy candidate material
 

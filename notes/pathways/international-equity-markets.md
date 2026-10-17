@@ -38,13 +38,15 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 
 Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:equity-index-lists-current` narrowed further (FTSE/JSE ground rules v9.3: Top 40 the 40 most investable All Share companies, headline indices on the SWIX free float from 18 March 2024; FT Wilshire 5000: comprehensive, float-adjusted U.S. market index). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:equity-index-lists-current` narrowed: NSE's methodology of September 2026 (Nifty 50, float-adjusted capitalisation-weighted) and Borsa Istanbul's ground rules of April 2020 (free-float weighting, capped variants) were read into `def:equity-indices-derivatives`. Failed routes, not repeated blindly: IDX (HTTP 403 again), S&P DJI methodologies (403, also through the fetching tool), stoxx.com (TLS certificate not verifiable; not forced), Euronext (403), and the Hang Seng address tried (404). The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:equity-index-valuation` (`cross-asset-style-premia`); `def:vix-variance-dividend-swaps` (`vix-correlation-dividends`); `mech:etf-creation-redemption` (`etf-index-closing-execution`).
 
 ## Entry backlog
 
-- data:equity-index-lists-current: index providers' current pages for the rest of Gliner's Table 8.1, the Jakarta Composite included (IDX still HTTP 403); JASDAQ, MOEX, the Nikkei 225, TOPIX, the FTSE/JSE Top 40 and All Share (ground rules v9.3, September 2026) and the FT Wilshire 5000 (methodology of January 2026) were read
+- data:equity-index-lists-current: index providers' current methodologies for the rest of Gliner's Table 8.1: the Jakarta Composite (IDX, HTTP 403 on 2026-10-16 and 2026-10-17), the S&P and Dow Jones indices (S&P DJI, 403), Euro Stoxx 50 and DAX (stoxx.com certificate not verifiable), CAC 40 and AEX (Euronext, 403), Hang Seng, KOSPI, ASX 200, NZX 50, Shanghai Composite, Bovespa, Mexico IPC, Nasdaq, Russell 2000, FTSE 100, FTSE MIB and IBEX 35; JASDAQ, MOEX, the Nikkei 225, TOPIX, FTSE/JSE, FT Wilshire 5000, Nifty 50 and BIST were read
 
 ## Legacy candidate material
 

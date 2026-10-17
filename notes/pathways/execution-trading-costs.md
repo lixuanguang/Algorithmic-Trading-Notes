@@ -88,9 +88,13 @@ Changed in migration slice 34, 2026-10-16 (a routing exception: the legacy hidde
 
 Changed in migration slice 35, 2026-10-16 (a routing exception: the legacy foundations folder's candidates are `execution-market-making` and `market-structure-execution-quality`, but these entries already held the material): `def:block-trade` (Harris's block dealers against block brokers in the upstairs market, pp. 328--330) and `def:order-exposure-decisions` (how markets protect exposure: time precedence with a meaningful tick, undisclosed orders, audit trails, delayed reporting, p. 389). Partly checked 2026-10-16, draft; human review outstanding.
 
+## Source verification after slice 37
+
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `def:clearing-settlement` resolved by merge into `def:transaction-costs` (its clearing-and-settlement item): the CPSS-IOSCO principles' Annex H definitions of clearing, final settlement, delivery versus payment, principal risk, central counterparty, novation and open offer (pp. 174-178, BIS PDF). The CPMI's online glossary page renders its terms by script and was not compared; the CPSS glossary of 2003 was not read. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Entry backlog
 
-- def:clearing-settlement: clearing, settlement, delivery versus payment and the central counterparty's guarantee in their standard definitions, to replace Narang's broker-fee description (CPMI glossary, not retrieved on 2026-10-15; the PFMI glossary annex, `exp-pfmi`, not reached in the copy read).
+Empty after the batch of 2026-10-17; new stubs go here.
 
 ## Legacy candidate material
 

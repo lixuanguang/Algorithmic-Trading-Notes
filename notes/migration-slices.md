@@ -4193,3 +4193,100 @@ The Easter function was wrong in the first draft (it gave 29 March for 2026) and
 - The three Argentine counts.
 - The reading of Kolm et al.'s Fig.~8 values from the plot.
 - The page images used for Lee--Ready, Harris, Hayashi--Yoshida, Reinhart and ICSG.
+
+## Batch of 17 October 2026: four audit corrections, the 15 active leftovers of the slice 33-37 queue, 19 older backlog items and the six macro empirical stubs
+
+Starting state checked: `main` at `9e403e3`, equal to `origin/main`, clean; guide pin `343d145` (unchanged); 211 entries, all draft; no legacy block. This record covers 40 distinct items in three groups, kept apart in the counts below, plus the two deferred items. It is source verification and bounded empirical testing, not study or human review: every entry stays *draft*, no mastery or consolidation date is set, and verification statuses were extended only for the passages read. Earlier records are left as written; where they differ, this record supersedes them.
+
+### Audit corrections
+
+1. **Kolm, Turiel and Westray, Table~3** (`def:order-flow-imbalance`; `notes/readings/wide-kolm-deep-ofi.md`). The statement that the CNN-LSTM with book inputs did better ``for 23 to 45 of the 115 stocks'' is withdrawn. In the SSRN version of 6 August 2021 a Table~3 entry is the number of stocks with a significantly positive $t$-statistic (1 percent) minus the number with a significantly negative one (sec.~4.1.2, PDF p.~19; caption, PDF p.~21; checked as page images); the CNN-LSTM row runs from 70 to 93. These are net counts, and 115 minus them is not a count of losing stocks. The source is ambiguous: the caption and text also read an entry $X$ as OF outperforming ``for $X$ stocks'', the caption tests a ``loss difference'' where the text tests a difference in $R^2_{OS}$, and the text's ``about 40 stocks'' (PDF p.~20) cannot be derived from the net counts. No exact count is stated.
+2. **Kolm et al., the decline after two average price changes.** Now cited to Fig.~8 (PDF p.~28, horizons to ten); Fig.~2 (PDF p.~18) stops at two. The text on Fig.~8 says $R^2_{OS}$ ``plateaus at around two average price changes'' (sec.~4.3, PDF p.~27); the plot falls from about 1.5 to roughly 0.64 percent; both are recorded.
+3. **Ultra Bond spreads** (`conv:government-bond-futures`). CBOT Rule 40102.C: outright one 32nd (\$31.25); intermonth spreads ``one quarter of one thirty-second of one point (equal to \$7.8125 per contract)''. Check added to `source-followup-checks-2.py`, section~1.
+4. **`lob-deep-learning` status.** The pathway note's ``none of the pathway's required readings has been read'' is superseded: specified sections of Briola et al., LOBCAST, Kolm et al.\ and Cont, Cucuringu and Zhang were source-checked on 16 October 2026; full study, LOBCAST's supplement (SUP sec.~7, its trading simulation), Briola et al.'s Appendices~A--C and a costed checkpoint remain incomplete. Its backlog item no longer says the readings are ``unread''.
+
+### Statements superseded
+
+- That López de Prado's chap.~7, Lo (2002), the deflated Sharpe ratio paper, Grinold and Kahn's chap.~10, Boyd et al.'s multi-period paper, Brunnermeier and Pedersen, RTS~6, the Knight Capital order, FIX's message definitions, the PFMI glossary annex, Grossman and Miller's NBER paper (eqs.~(16)--(19)), Holden and Jacobsen's Internet Appendix and a half-line statement of the time-change theorem were unread or unobtainable: each is now read for the passages named below.
+- That no EU algorithmic-trading obligation could be stated (`meth:automated-trading-operational-controls`): RTS~6 is now read through CELLAR.
+- The second source follow-up's description of Buti, Rindi and Werner's published version as the source of the dark-pool stub: the published paper is ``Diving into Dark Pools'', \emph{Financial Management} 51(4), 961--994 (2022) by its bibliographic record; their 2017 JFE paper is a different, theoretical paper.
+
+### The 40 items
+
+Each line gives the outcome, the evidence (version and locator) and what remains.
+
+*Group A: the 15 active leftovers of the 35-item queue*
+- `data:equity-index-lists-current`, narrowed further: NSE Indices' methodology, September 2026, PDF p.~19 (Nifty~50 float-adjusted cap-weighted); Borsa Istanbul's ground rules, April 2020, secs.~2.2--2.3, 2.20, 3.1. Remaining: IDX (403 again), S\&P DJI (403, also via the fetching tool), stoxx.com (TLS certificate not verifiable; not forced), Euronext (403), Hang Seng (404 at the address tried) and the rest of Gliner's Table~8.1.
+- `data:opec-membership-current`, reviewed, unchanged: OPEC's home navigation still lists the UAE (2026-10-17); releases of 4, 6 and 12 October 2026 silent; press-release index 403; no Secretariat statement found. Prerequisite: OPEC's statement, or 1 January 2027 under Statute Art.~8A.
+- `data:metals-market-shares-current`, narrowed further: USGS \emph{Mineral Commodity Summaries} 2026, aluminum, p.~2 (2025 smelter output 74.0 Mt, China 45.0, about 61 percent). Remaining: consumption by country; LME minimum price fluctuations.
+- `conv:henry-hub-contract-terms`, narrowed further: EIA's annual LNG export series (release of 30 September 2026); NYMEX Submissions 17-048 (administrative amendments to Chapter~220, effective trade date 13 March 2017) and 18-465 (Rule~589). Remaining: filings after 2018 (search not exhaustive).
+- `data:trade-correction-records`, narrowed further: Holden and Jacobsen's Internet Appendix (author-hosted), MTAQ program, PDF p.~19 (\texttt{where corr eq 0 and price gt 0}). Remaining: their DTAQ code (linked file 404) and the time carried by TAQ 10/11 records.
+- `res:trade-sign-accuracy`, reviewed, unchanged (subscription): no open copy of Ellis, Michaely and O'Hara (Cambridge paywall; HKU record without file).
+- `ev:tick-size-primary-studies`, reviewed, unchanged (subscription): Jones and Lipson's Columbia working paper is listed by RePEc only with a publisher link; the others not found.
+- `rule:eu-si-national-transposition`, narrowed further (slightly): CELLAR title searches (2026-10-17) found no implementing act on SI notifications under MiFIR Art.~15(5) (the ITS's legal basis, ESMA report Annex~II, PDF p.~43); Delegated Regulation 2026/482 noted by title. Non-adoption not established; other Member States remain.
+- `rule:central-bank-policy-history`, reviewed, unchanged: a BIS-hosted 2018 RBNZ speech dates the RBNZ Act (February 1990), not its first inflation forecast; PBOC band and RRR pages not found.
+- `ev:imbalance-placement-latency`, resolved as to the evidence asked (merged into `def:queue-imbalance`): Gould and Bonart, arXiv v1, secs.~4--5.2 and Tables~4--5 (out-of-sample AUC 0.752--0.805 large tick, 0.581--0.642 small tick; random 80/20 split of 2014 Nasdaq data); Moallemi and Sağlam, revision of 5 February 2013, eq.~(1), Corollary~1, p.~23 calibration reproduced. A costed placement rule stays with `lob-deep-learning`.
+- `meth:lob-signal-transaction-usefulness`, narrowed further: Briola et al., sec.~7, pp.~22--23 (four backtest assumptions) and Table~7, pp.~16--17; costed-test protocol written into `def:order-flow-imbalance`, not run (LOBSTER samples now behind a request and terms). Remaining: capacity and crowding sources; the test itself on licensed data.
+- `res:time-rescaling-theorem`, resolved with a caveat (merged into `def:order-event-point-processes`): Laub, Taimre and Pollett, arXiv v1, Theorem~5, p.~18, restating Daley and Vere-Jones's Proposition~7.4.IV; Daley and Vere-Jones not read.
+- `ev:circuit-breaker-effects`, narrowed further: Kasahara and Yamada, JPX Working Paper~52 (10 April 2026), abstract and sec.~3 (TSE pauses reduce volatility and spreads; IV within one regime), against Hautsch and Horvath. Remaining: price-limit and market-wide-halt studies; the published Hautsch and Horvath.
+- `ev:dark-pool-price-discovery`, reviewed, unchanged (paywall): see *Statements superseded*.
+- `conv:cds-standard-contract`, still blocked: ISDA's 2014 Definitions Protocol (21 August 2014, PDF pp.~1 and~13) dates the switch (Implementation Date the later of 22 September 2014 and a cut-off date; effectiveness condition met 17 September 2014); the Definitions' operative wording is sold by ISDA.
+
+*Group B: 19 older backlog items*
+- `conv:pro-rata-allocation-rules`, resolved for CME Globex (merged into `mech:order-matching-pricing`): Matching Algorithm Steps, version~5 (2 June 2026), retained REST export; CME's examples recomputed.
+- `conv:session-carry-over`, resolved for CME Globex (merged into `mech:order-lifecycle`): Order Qualifiers, version~3; GTC timestamp retention and no TOP over a weekend from the Steps page.
+- `rule:spoofing-securities-markets`, advanced (narrowed): new entry; MAR Art.~12 and Annex~I and Delegated Regulation 2016/522, Annex~II, sec.~1, point~5(e), through CELLAR; 15 U.S.C.~78i(a). Remaining: FINRA's rules (404, then 429), Rule 10b-5, enforcement.
+- `rule:block-print-trade-through-current`, narrowed: Rule 611(b), eCFR text for 15 October 2026, merged into `def:block-trade` (no block-size exception). Remaining: FINRA reporting rules and exchange cross rules.
+- `rule:mifid-rts6-algorithmic-controls`, resolved (new entry): Delegated Regulation 2017/589, Arts.~5--17 and~29; CELLAR SPARQL (no amending act; German-only corrigendum of 28 July 2017).
+- `ev:quant-implementation-failures`, resolved (new entry): SEC Releases 34-70694 and 33-9181 (Internet Archive captures of 29 October 2013 and 20 February 2011; sec.gov returned 403), against Narang pp.~195--196.
+- `mech:order-state-reconciliation`, resolved (new entry): FIX Orchestra files (FIX Latest EP312; FIXT EP247; commit \texttt{cd24169}); RTS~6 Art.~17(3); Knight order paras.~16 and~21; offline illustration only.
+- `res:avellaneda-stoikov-infinite-horizon`, resolved (merged into `mod:avellaneda-stoikov`): sec.~2.3, p.~219, page image; the printed ask breaks the problem's symmetry at $q=0$ and is recorded as an apparent misprint (own derivation and quadrature).
+- `res:avellaneda-stoikov-exact-quotes`, resolved (merged): sec.~3.1, eqs.~(15)--(19), pp.~220--221.
+- `res:grossman-miller-free-entry`, resolved (merged into `mod:grossman-miller`): NBER WP 2641, eqs.~(16)--(19), printed pp.~18--19 (page image). Eq.~(19) fixes $t=e^{2ac}-1$; $M$ falls with $c$ and rises with each variance, but its response to $a$ is not monotone (own algebra), so the paper's ``the smaller $a$'' holds only for $2ac>1.594$.
+- `res:grossman-miller-market-structure`, resolved (merged): printed pp.~9--10 (page image).
+- `meth:convex-cost-portfolio-optimisation`, resolved (merged into `mod:portfolio-transaction-cost-function`): Boyd et al.\ 2017, secs.~2.3, 4.7, 5.3.
+- `def:clearing-settlement`, resolved (merged into `def:transaction-costs`): PFMI Annex~H, pp.~174--178; the CPMI web glossary renders by script and was not compared.
+- `meth:purged-embargoed-cross-validation`, resolved (new entry): AFML chap.~7 and secs.~6.3.3--6.4; Bergmeir et al.\ working paper; Cerqueira et al.\ arXiv v1. The printed ``$\Phi_i\cap\Phi_j=\emptyset$'' (p.~106) is an apparent misprint; Snippet~7.3 keeps boundary-touching labels.
+- `meth:sharpe-ratio-standard-error`, resolved (new entry): Lo (2002), pp.~36--41.
+- `meth:deflated-sharpe-ratio`, resolved (new entry): Bailey and López de Prado, author version of 31 July 2014, pp.~7--11; the 2026 López de Prado--Porcu paper not obtained.
+- `meth:forecast-scaling-ic`, resolved (new entry): Grinold and Kahn, 2nd ed., chap.~10, pp.~261--271; `eq-grinold-1994` not obtained (publisher login).
+- `data:holdings-insider-filing-lags`, resolved (new entry): eCFR texts for 15 October 2026, 15 U.S.C.~78p (2023 edition), 88~FR 76896; Velu et al.'s footnotes predate the 2024 deadlines.
+- `mod:margin-liquidity-spiral`, resolved (new entry): Brunnermeier and Pedersen, RFS Advance Access version, pp.~1--5, 8--9, 18--19.
+
+*Group C: the six macro empirical stubs.* For each the hypothesis, data, sample, timing, benchmark, costs and pass rule were written into the script's docstring before results were computed.
+- `ev:backwardation-scarcity-or-premium`, empirically tested (bounded): EIA futures (contracts 1, 2, 4; series end 5 April 2024) and inventories; WTI August 1987--March 2024 ($n=439$), Henry Hub 2015--March 2024 ($n=111$). Scarcity supported (backwardation on inventory deviation: WTI $\beta=-0.112$, NW $t=-5.9$; gas $-0.124$, $t=-4.4$). Premium not supported (return on backwardation: WTI $t=0.1$, OOS $R^2=-2.2$ percent, Clark--West $t=-0.4$; gas $t=-0.6$, OOS too short). Exploratory, added after the first run: WTI backwardated months $+2.2$ against $-0.3$ percent ($t=3.4$); gas the reverse. `notes/artefacts/commodity-storage-curves/`.
+- `ev:fx-valuation-factors-oos`, empirically tested for relative PPP only: nine currencies against USD, forecasts 1985 to 2021--2026; full-sample slopes negative 9/9 at 12 months, but pooled OOS $R^2$ against a random walk $-2.0$ (1 month) and $-15.3$ percent (12 months); value portfolio $+0.09$ percent a year spot (1985--2025), $-0.17$ with interest differentials (2002--2025). Not supported. `notes/artefacts/fx-determination-forecasting/`.
+- `ev:regime-asset-responses-tested`, empirically tested for the recession row only: real-time Sahm-type rule on RTDSM unemployment vintages 1965Q4--2025Q4 (241 vintages; 53 signals; 2026 vintages skipped for the missing October 2025 rate); no sign supported at $\abs{t}>2$; equities and defensives against the map; ex-post NBER windows match the map's signs without significance. `notes/artefacts/macro-regimes-stock-bond/`.
+- `ev:global-macro-returns-after-2013`, open, protocol recorded: macro hedge-fund index data behind registration (BarclayHedge, Eurekahedge, HFR; 2026-10-17).
+- `ev:practitioner-rules-tested`, open, protocol recorded: needs trade-level data.
+- `ev:equity-index-value-signal`, open, protocol recorded: needs point-in-time country valuation data (MSCI licensed).
+
+*Deferred, tracked separately.* `ev:curve-inversion-after-2005`: NBER's table (last updated 14 March 2023) still ends at the February 2020 peak; deferral retained. `data:post-libor-funding-stress-measures`: no public dated SOFR OIS series; deferral retained.
+
+### Counts
+
+- Original 35-item queue: before this batch 18 resolved, 14 narrowed, 1 blocked, 2 deferred. Of the 15 active leftovers: 2 resolved, 7 narrowed further, 5 reviewed and unchanged, 1 still blocked. Queue now 20 resolved, 12 narrowed, 1 blocked, 2 deferred.
+- Older backlog (19 items, separate): 17 resolved, 2 narrowed.
+- Macro empirical stubs (6, separate): 3 empirically tested within stated bounds (one row, one factor, two contracts; the untested remainder stays in each backlog), 3 open with executable protocols and named missing data.
+- All 40: 19 resolved, 9 narrowed or advanced, 5 reviewed without change, 1 blocked, 3 empirically tested, 3 protocol only.
+- Entries 211 $\to$ 221 (new: `meth:purged-embargoed-cross-validation`, `meth:sharpe-ratio-standard-error`, `meth:deflated-sharpe-ratio`, `meth:forecast-scaling-ic`, `data:holdings-insider-filing-lags`, `mod:margin-liquidity-spiral`, `rule:mifid-rts6-algorithmic-controls`, `mech:order-state-reconciliation`, `ev:quant-implementation-failures`, `rule:spoofing-securities-markets`); legacy blocks 0; all draft.
+
+### Sources
+
+Listed with URL, retrieval date, version, acquisition route and SHA-256 in `reading_materials/sources_batch40_2026-10-17.json` (96 files; ignored; none committed). Routes: direct downloads of author, institutional and official copies; the eCFR versioner API; GovInfo; CELLAR content negotiation and SPARQL; the FIX Trading Community's GitHub repository at a pinned commit; Internet Archive captures for the two SEC orders; public data from EIA, FRED, the Philadelphia Fed and Ken French's library. Local library copies outside the repository: AFML (Wiley 2018), Grinold and Kahn (2nd ed.), Narang (3rd ed.), Velu et al. Nineteen keys were added to `compendium/front/sources.tex`. Refused or unavailable, not bypassed: sec.gov (403), finra.org (404 then 429), S\&P DJI (403), stoxx.com (TLS certificate unverifiable), Euronext (403), IDX (403), LME notices, ISDA's 2014 Definitions (sold), journal paywalls (JFQA, JFE, \emph{Financial Management}, JPM), LOBSTER samples (request and terms), macro hedge-fund indices (registration). The Lo (2002) copy is hosted by a Berkeley student organisation; its provenance is not established, though it carries the journal pagination.
+
+### Checks
+
+New, all exit 0 with `/opt/homebrew/bin/python3.10`: `market-making-lob/batch40-model-checks.py` (Avellaneda--Stoikov infinite horizon by quadrature, eqs.~(18)--(19), Grossman--Miller free entry); `statistical-learning-foundations/batch40-cv-checks.py`; `backtest-inference/batch40-sharpe-checks.py`; `equity-long-short-construction/batch40-forecast-checks.py`; `point-in-time-data/batch40-filing-checks.py`; `funding-crowding/batch40-spiral-checks.py` (an illustration); `model-governance-controls/batch40-reconciliation-check.py` (an offline illustration); `execution-market-making/batch40-cme-allocation-checks.py`; `execution-market-making/source-followup-checks-3.py`. Extended: `source-followup-checks-2.py` (Ultra Bond spread tick). The seven existing scripts (slice-35, slice-36, slice-37, the two slice-37 follow-ups and the two source follow-ups) rerun and pass. Empirical scripts (`backwardation_test.py`, `fx_ppp_oos_test.py`, `regime_recession_test.py`) reproduce their printed results and rebuild their derived panels byte for byte (SHA-256 6953ecd1\dots, da1bb9d4\dots, 82ce2b97\dots). `h15_monthly.py` and `ust_monthly.py` were not rerun: neither their code nor their inputs changed. The first drafts of three checks were corrected before use: a vacuous variance check and a first-order test that did not shrink $\gamma^2\sigma^2/\omega$ (model checks), and a mislabelled message in the CV check. `tools/migration_status.py --check`: 0 problems; `python3 -B -m unittest discover -s tools`: 14 tests OK.
+
+### Other files
+
+Pathway notes (28) with a paragraph under *Source verification after slice 37* (created where absent) and backlogs updated; reading notes created for eleven catalogue readings (`wide-lo-sharpe`, `alpha-dsr`, `alpha-grinold`, `exp-boyd-multiperiod-trading`, `exp-pfmi`, `exp-brunnermeier-pedersen-liquidity`, `wide-mifid-rts6`, `wide-knight-capital`, `s6-fix`, `rf-bergmeir-hyndman-koo-2018`, `rf-cerqueira-torgo-mozetic-2020`) and updated for `alpha-afml`, `s6-stoikov`, `wide-holden-jacobsen`, `w2-briola-lob-guide`, `s3-velu` and `wide-kolm-deep-ofi`; `notes/log.md`; `notes/migration.md`; `compendium/README.md`; `compendium/front/sources.tex`.
+
+### For review
+
+- The Avellaneda--Stoikov ask and the AFML p.~106 condition, both read as misprints from the surrounding text and own algebra.
+- The non-monotone response of Grossman and Miller's market-maker count to risk aversion (own algebra against the paper's ``of course'').
+- The Kolm et al.\ Table~3 ambiguity, recorded rather than resolved.
+- The three empirical tests' design choices (expiry mapping of EIA's continuous contracts, monthly-average FX rates and revised CPI, the Sahm-type rule on quarterly vintages) and the exploratory WTI sign effect.
+- Sources read in non-publisher hosts: Lo (student-organisation host), the SEC orders (Internet Archive), Brunnermeier and Pedersen (Advance Access PDF).

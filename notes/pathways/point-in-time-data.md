@@ -32,6 +32,8 @@ All partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes
 
 Changed in migration slice 36, 2026-10-16 (a routing exception from the microstructure data-engineering file, whose candidates are `lob-deep-learning` and `market-simulation`; the blocks concern what a record means and when it was known): `data:market-data-levels` (timestamp quality and sequencing across markets and the public-awareness time, Hasbrouck p. 105; three times for a feature's availability; corrections arriving as later records; the legacy feed levels and message layers against Velu, Hardy and Nehren chap. 11) and `data:trading-reference-data` (the ticker caveat: identifiers with validity dates). Partly checked, draft.
 
+- `data:holdings-insider-filing-lags`: Form 13F, Schedules 13D and 13G, Forms 3 and 4 deadlines in force on 15 October 2026, their 2024 change and what they imply for decision-time panels. Partly checked 2026-10-17, draft.
+
 ## Source verification after slice 37
 
 Second slice-37 follow-up, 2026-10-16, working source gaps of slice 36 (source verification, not study): `data:trade-correction-records` narrowed (Daily TAQ v4.0: 01 records carry corrected data at the original time, 12 records the correction time and the original data; decision-time handling stated in the entry). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
@@ -40,6 +42,8 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 
 Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:trade-correction-records` narrowed from blocked (Holden and Jacobsen, JF 2014, published version: sample, quote screens, n. 12 on the blank Quote Cancel/Correction field, Interpolated Time eq. (16) and its look-ahead, n. 29). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:holdings-insider-filing-lags` resolved as a new entry in `research-engineering-validation/point-in-time-data.tex`: 17 CFR 240.13f-1, 13d-1, 13d-2, 16a-3 and 0-3 (eCFR, 15 October 2026), 15 U.S.C. 78p(a)(2) and the 2023 beneficial-ownership release (88 FR 76896), against Velu, Hardy and Nehren's pre-2024 footnotes; deadline arithmetic in `notes/artefacts/point-in-time-data/batch40-filing-checks.py`. `data:trade-correction-records` narrowed: Holden and Jacobsen's Internet Appendix (author-hosted) prints their July 2013 MTAQ program, which keeps only trades with correction code 00 and a positive price; their DTAQ code link returned 404 and the TAQ 10/11 record time is still unstated. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-sources`, including López de Prado's release lags, backfilling and reinstatement of fundamental data); `meth:etf-trick` (`statistical-learning-foundations`); `pit:label-weight-leakage` (`financial-ml-evaluation`); `pit:backtest-cost-short-assumptions` (`backtest-inference`).
@@ -47,9 +51,8 @@ Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-
 ## Entry backlog
 
 - meth:bitemporal-reference-tables: valid time against transaction time for identifiers, corporate actions and vendor corrections (`s8-bitemporal`, unread).
-- data:holdings-insider-filing-lags: Form 13F, 13D, 3 and 4 filing deadlines and their use in a decision-time panel (`wide-sec-13f-nport`; Velu, Hardy and Nehren give the 13F threshold and the 13D and Form 4 deadlines in footnotes, p. 43, unchecked against the rules).
 - ev:delisting-survivorship-rewriting: delisting returns, survivorship and vendor history rewriting (`wide-shumway-delisting`, `wide-elton-gruber-blake-survivorship`, `wide-ljungqvist-rewriting`, unread).
-- data:trade-correction-records: Holden and Jacobsen's Internet Appendix, which holds their full screening (the published article, read on 2026-10-16, states no trade-correction filter in the main text); the time carried by Daily TAQ 10 and 11 records
+- data:trade-correction-records: Holden and Jacobsen's Daily TAQ code (the excelmodeling.com link on Holden's page returned 404 on 2026-10-17), and the time carried by Daily TAQ 10 and 11 records; their Internet Appendix, read 2026-10-17, gives only the MTAQ filter (correction code 00, price > 0)
 
 ## Legacy candidate material
 

@@ -28,6 +28,12 @@ Written in migration slice 26, 2026-10-15:
 
 Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/model-governance-controls/risk-assessment.tex` (under the map candidate, keeping the file whole).
 
+- `mod:margin-liquidity-spiral`: Brunnermeier and Pedersen's funding constraint and liquidity spirals. Partly checked 2026-10-17, draft.
+
+## Source verification after slice 37
+
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `mod:margin-liquidity-spiral` resolved as a new entry in `portfolio-risk-financing/crowding-contagion.tex` from Brunnermeier and Pedersen's RFS Advance Access version (10 December 2008, princeton.edu): the margin constraint, VaR margins, destabilising margins, and the margin and loss spirals of Proposition 5 (eq. (24)); an illustration of the spiral expansion and its super-additivity in `notes/artefacts/funding-crowding/batch40-spiral-checks.py`. The issue pagination and Appendix A were not compared. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here and not changed: `res:arbitrage-risks` (`execution-market-making`; staying power under leverage, LTCM); `def:quant-strategy-risk-sources` (`model-governance-controls`); `ev:square-root-impact` (`price-impact-execution`); `mech:futures-margin-settlement` (`futures-execution`); `def:securities-lending-fee-rebate` (`money-markets-repo-lending`). Kept distinct: the `backtest-inference` stub `ev:signal-decay-crowding`, which asks whether delayed-signal decay identifies crowding, a question that common positions and forced liquidation do not answer.
@@ -35,7 +41,6 @@ Cross-referenced, not owned here and not changed: `res:arbitrage-risks` (`execut
 ## Entry backlog
 
 - ev:august-2007-quant-unwind: the August 2007 quant liquidation measured with data (losses, timing, the unwind hypothesis), to test Narang's four drivers (`exp-khandani-lo-quant-meltdown`, unread).
-- mod:margin-liquidity-spiral: how margins and funding liquidity turn losses into forced sales and wider margins (`exp-brunnermeier-pedersen-liquidity`, unread).
 - mod:volatility-targeting-deleveraging: leverage set inversely to measured volatility and correlation, raised as volatility falls and cut by many holders at once when it jumps, against Narang's 1.5-2 times estimate (no source checked; `risk-parity-vol-targeting` readings, unread).
 - meth:overlap-crowding-measure: a crowding measure from the overlap of holdings, as the checkpoint asks (`wide-pedersen-exit`, `w4-chincarini-crowded-anomalies`, unread).
 

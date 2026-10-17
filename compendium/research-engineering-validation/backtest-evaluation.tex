@@ -91,7 +91,7 @@ with $\bar R$ the average (annualised) return, $\mathrm{MDD}$ the worst peak-to-
 
 \qffield{Conditions} In the third edition Narang presents overfitting as one side of a balance. Overfitting is a Type~I error and underfitting a Type~II error; as easy alpha became scarce from about the early 2010s, and as data and methods improved, narrower and more fitted models became reasonable (pp.~180--182). How much fitting is warranted depends on the competition for alpha and on the strength of the prior relative to the data; he believes the industry may overestimate the value of more fitting, especially beyond the shortest horizons (pp.~182--183). Einstein's ``as simple as possible, but not simpler'' is his caution against oversimplifying (p.~179).
 
-\qffield{Practice} Interpretation: smooth performance across nearby parameters is a sign of robustness to the parameter, not evidence that the strategy has an edge. A whole family of rules, each stable in its own parameters, can be the survivor of a search over many families. The adjustment for the number of trials (deflated Sharpe ratio, multiple-testing control) is this pathway's subject and is stubbed. Narang's ``flat'' criterion is local: the legacy ``a good model has a flatter curve with no jumps'' overstates it, since his preferred point B lies on a plateau in a curve that has cliffs.
+\qffield{Practice} Interpretation: smooth performance across nearby parameters is a sign of robustness to the parameter, not evidence that the strategy has an edge. A whole family of rules, each stable in its own parameters, can be the survivor of a search over many families. The adjustment for the number of trials is this pathway's subject: see \hyperref[meth:deflated-sharpe-ratio]{the deflated Sharpe ratio} (written 2026-10-17; other multiple-testing controls remain unwritten). Narang's ``flat'' criterion is local: the legacy ``a good model has a flatter curve with no jumps'' overstates it, since his preferred point B lies on a plateau in a curve that has cliffs.
 
 \qffield{Pitfalls} The legacy block equated parsimony with fewer assumptions and therefore less overfitting. Narang adds the opposite risk, underfitting, and the role of priors, which the legacy omitted. His claim that simpler theories are better because more easily tested is attributed to Popper (p.~179) and was not checked at the original.
 
@@ -127,3 +127,51 @@ with $\bar R$ the average (annualised) return, $\mathrm{MDD}$ the worst peak-to-
 
 \qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~``Research'', pp.~185--186; the example recomputed; the legal point compared with the Regulation SHO text already cited in \texttt{mech:securities-lending-short-sale}, not rechecked). Stability: draft. Currency: practitioner account as of 2024; U.S. rules as cited in the linked entry.
 \end{qfpitfall}
+
+\begin{qfmethod}[Standard errors of an estimated Sharpe ratio: IID returns, serial correlation and time aggregation]\label{meth:sharpe-ratio-standard-error}
+\qffield{Statement} Lo derives the asymptotic distribution of the estimated Sharpe ratio $\widehat{SR}=(\hat\mu-R_f)/\hat\sigma$ by the delta method \citep[``IID Returns'', eqs.~(5)--(9), pp.~37--38]{wide-lo-sharpe}. Under IID returns with finite mean and variance, $\sqrt T(\widehat{SR}-SR)\to N(0,V_{\mathrm{IID}})$ with $V_{\mathrm{IID}}=1+\tfrac12SR^2$, so
+\[ \mathrm{SE}(\widehat{SR})\approx\sqrt{\big(1+\tfrac12\widehat{SR}^2\big)/T}, \]
+a 95 percent interval being $\widehat{SR}\pm1.96\,\mathrm{SE}$ (eqs.~(8)--(10), p.~38). With 60 observations the standard error is 0.188 at a true Sharpe ratio of 1.50 and 0.303 at 3.00, in the units of the observation period (p.~38). For non-IID returns (serial correlation, conditional heteroskedasticity) the variance comes from a GMM estimator, $\mathrm{SE}\approx\sqrt{\hat V_{\mathrm{GMM}}/T}$, under stationarity, using Hansen's (1982) GMM results (eqs.~(13)--(15), pp.~39--40); Appendix~A estimates the covariance by Newey and West's (1987) procedure (text layer only; the appendix was not otherwise checked). \emph{Time aggregation}: for $q$-period returns, $SR(q)=\sqrt q\,SR$ only under IID returns; for stationary returns with autocorrelations $\rho_k$,
+\[ SR(q)=\eta(q)\,SR,\qquad \eta(q)=\frac{q}{\sqrt{q+2\sum_{k=1}^{q-1}(q-k)\rho_k}} \]
+(eqs.~(17)--(20), p.~40), with a closed form for AR(1) returns (eq.~(22), p.~41). A monthly first-order autocorrelation of $-20$ percent gives an annual factor of 4.17, against 3.46 under IID returns and 2.88 at $+20$ percent (Table~2, p.~41).
+
+\qffield{Notation} $T$ the number of return observations; $SR$ the Sharpe ratio per observation period; $q$ the aggregation length (12 for monthly to annual); $\rho_k$ the $k$th autocorrelation of returns.
+
+\qffield{Conditions} Asymptotic: the approximations are large-$T$ results \citep[p.~38]{wide-lo-sharpe}. $V_{\mathrm{IID}}$ assumes IID returns with finite variance and ignores skewness and kurtosis; the GMM version relaxes independence but still needs stationarity. The scale factor needs the first $q-1$ autocorrelations, themselves estimated. Own check: $\eta(q)$ from eq.~(20) and eq.~(22) agree, and eq.~(22) reproduces the Table~2 cells checked to two decimals; eq.~(9) reproduces the 0.188 and 0.303 (\nolinkurl{notes/artefacts/backtest-inference/batch40-sharpe-checks.py}, sections~1--2).
+
+\qffield{Practice} Positive serial correlation makes multi-period variance grow faster than $q$, so $\sqrt{q}$ annualisation overstates the annual ratio; Lo's hedge-fund example finds annual Sharpe ratios ``overstated by as much as 65 percent'' and rankings that ``can change dramatically'' once serial correlation is accounted for (abstract, p.~36). As a fraction of the ratio the IID standard error tends to $\sqrt{1/(2T)}$ as $SR$ grows (eq.~(11), p.~38): a high Sharpe ratio is no more precisely known in relative terms.
+
+\qffield{Pitfalls} A standard error for one strategy is not a test of the best of many: selecting the maximum over trials needs \hyperref[meth:deflated-sharpe-ratio]{deflation}. The copy read is the published article hosted on a Berkeley student-organisation site (provenance not established; the text matches the journal pagination and AIMR copyright line); the comment and reply of 2003 listed by CFA Institute were not read.
+
+\qffield{See also} \hyperref[meth:backtest-evaluation-diagnostics]{backtest evaluation diagnostics} (where the point estimate is reported); \hyperref[meth:deflated-sharpe-ratio]{deflated Sharpe ratio}; \hyperref[def:return-measures]{return measures}.
+
+\qffield{Further reading} The pathway's other validation readings (Ledoit and Wolf's test of Sharpe-ratio differences, the stationary bootstrap) are unread.
+
+\qffield{Index} Sharpe ratio; standard error; delta method; IID returns; GMM; serial correlation; autocorrelation; annualisation; square-root-of-time rule; time aggregation; AR(1)
+
+\qffield{Status} Verification: partly checked 2026-10-17 (against \texttt{wide-lo-sharpe}, FAJ 58(4), pp.~36--41, text layer and page images of pp.~38, 40 and~41; eq.~(9) examples and Table~2 cells recomputed; Appendix~A and the empirical sections not checked beyond the Newey--West reference). Stability: draft. Currency: timeless (statistics), published 2002.
+\end{qfmethod}
+
+\begin{qfmethod}[The deflated Sharpe ratio: the probability that the selected strategy's true Sharpe ratio is positive, given the number of trials, their dispersion and non-normal returns]\label{meth:deflated-sharpe-ratio}
+\qffield{Statement} For $N$ independent trials whose estimated Sharpe ratios $\{\widehat{SR}_n\}$ are normal with mean $E[\{\widehat{SR}_n\}]$ and variance $V[\{\widehat{SR}_n\}]$, the expected maximum for $N\gg1$ is approximately \citep[eq.~(1), p.~7]{alpha-dsr}
+\[ E[\max\{\widehat{SR}_n\}]\approx E[\{\widehat{SR}_n\}]+\sqrt{V[\{\widehat{SR}_n\}]}\Big((1-\gamma)Z^{-1}\big[1-\tfrac1N\big]+\gamma Z^{-1}\big[1-\tfrac1Ne^{-1}\big]\Big), \]
+with $\gamma\approx0.5772$ the Euler--Mascheroni constant and $Z$ the standard normal distribution function. The deflated Sharpe ratio is the probabilistic Sharpe ratio evaluated at the threshold that this maximum takes when the true Sharpe ratio is zero (eq.~(2), p.~8):
+\[ \widehat{DSR}=Z\!\left[\frac{(\widehat{SR}-\widehat{SR}_0)\sqrt{T-1}}{\sqrt{1-\hat\gamma_3\widehat{SR}+\frac{\hat\gamma_4-1}{4}\widehat{SR}^2}}\right],\quad \widehat{SR}_0=\sqrt{V[\{\widehat{SR}_n\}]}\Big((1-\gamma)Z^{-1}\big[1-\tfrac1N\big]+\gamma Z^{-1}\big[1-\tfrac1Ne^{-1}\big]\Big), \]
+where $\widehat{SR}$, $T$, $\hat\gamma_3$ (skewness) and $\hat\gamma_4$ (kurtosis) belong to the selected strategy. ``Essentially, DSR is a PSR where the rejection threshold is adjusted to reflect the multiplicity of trials'' (p.~9).
+
+\qffield{Notation} All Sharpe ratios in the formula are per observation period, not annualised; $\hat\gamma_4$ is kurtosis (3 for the normal), not excess kurtosis.
+
+\qffield{Conditions} The threshold assumes the trials' Sharpe ratios are normally distributed around a common mean and that $N$ counts \emph{independent} trials \citep[p.~7]{alpha-dsr}; correlated configurations must be reduced to an effective number, which the formula does not supply. \emph{The authors' example} (pp.~9--10): $N=100$ independent trials, $V=\tfrac12$ (annualised), $T=1250$ daily returns, skewness $-3$, kurtosis 10 and a selected annualised Sharpe ratio of 2.5 give $\widehat{SR}_0\approx0.1132$ (daily, 250 observations a year) and $\widehat{DSR}\approx0.9004<0.95$; after only 46 trials it would have been 0.9505, and with normal returns 0.9505 after 88. All four numbers are reproduced (\nolinkurl{notes/artefacts/backtest-inference/batch40-sharpe-checks.py}, section~3).
+
+\qffield{Practice} The checkpoint of \texttt{backtest-inference} asks for 200 recorded variants with Lo standard errors and a deflated Sharpe ratio; the variance across trials and the trial count therefore have to be logged from the first experiment. The authors also suggest planning trials in advance and an optimal-stopping rule, sampling about 37 percent of the justifiable configurations first (pp.~10--11), which is a heuristic, not part of the statistic. They describe Harvey and Liu's false-discovery threshold as complementary and suggest computing the statistic on both thresholds (p.~9).
+
+\qffield{Pitfalls} Parameter stability does not deflate anything (\hyperref[pit:parameter-overfitting]{parameter overfitting}). Interpretation: $\widehat{DSR}$ is a probability under the stated assumptions, not the out-of-sample Sharpe ratio; a large undisclosed search, or an $N$ that ignores discarded families, overstates it. The 2026 unification by López de Prado and Porcu (\texttt{w4-lopezdeprado-porcu-dsr}, \emph{JPM}, online 26 September 2026) was not obtained, so its location-and-dispersion variants are not described here. The author version read is dated 31 July 2014; the published \emph{JPM} version was not compared.
+
+\qffield{See also} \hyperref[meth:sharpe-ratio-standard-error]{Sharpe-ratio standard errors}; \hyperref[meth:purged-embargoed-cross-validation]{purged cross-validation} (the other failure of reused test sets); \hyperref[meth:skill-luck-significance-tests]{tests of skill against luck}.
+
+\qffield{Further reading} \texttt{wide-bailey-sharpe-frontier}, an optional branch of the pathway on the probabilistic Sharpe ratio and the minimum track-record length, is unread.
+
+\qffield{Index} deflated Sharpe ratio; probabilistic Sharpe ratio; selection bias; multiple testing; backtest overfitting; expected maximum Sharpe ratio; extreme value theory; non-normal returns; skewness; kurtosis; number of trials
+
+\qffield{Status} Verification: partly checked 2026-10-17 (against \texttt{alpha-dsr}, author version of 31 July 2014 from davidhbailey.com, pp.~7--11, equations and example checked as page images and recomputed; Appendix~1's proof not checked). Stability: draft. Currency: methods published 2014; a 2026 unification not read.
+\end{qfmethod}

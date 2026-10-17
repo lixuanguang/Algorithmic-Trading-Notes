@@ -28,13 +28,18 @@ Written in migration slice 30, 2026-10-15:
 
 Partly checked 2026-10-15, draft; human review outstanding. Its artefact is `notes/artefacts/portfolio-construction-risk/alpha-models.tex`.
 
+- `meth:forecast-scaling-ic`: refined forecast = volatility x IC x score, its regression form and the two-signal combination (Grinold and Kahn, chap. 10). Partly checked 2026-10-17, draft.
+
+## Source verification after slice 37
+
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `meth:forecast-scaling-ic` resolved as a new entry in `systematic-equities/signal-combination.tex` from Grinold and Kahn's second edition, chap. 10 (pp. 261-271, the rule of thumb on p. 266 as a page image; the binary-model IC, the two-signal weights and combined IC, and Table 10.1 recomputed in `notes/artefacts/equity-long-short-construction/batch40-forecast-checks.py`). Grinold's 1994 paper (`eq-grinold-1994`) is behind the publisher's login and his 1989 paper was not read. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:alpha-model-taxonomy` and `meth:alpha-strategy-specification` (`portfolio-construction-risk`); `meth:signal-portfolio-allocation`, `meth:rule-based-position-sizing` and `mod:mean-variance-portfolio-optimisation` (`portfolio-construction`); `pit:parameter-overfitting` (`backtest-inference`); `meth:strategy-production-lifecycle` (`model-governance-controls`).
 
 ## Entry backlog
 
-- meth:forecast-scaling-ic: turning a raw signal into a forecast of return by volatility and information coefficient, the calibration that "bigger signal, bigger bet" needs (`s7-grinold`, `eq-grinold-1994`, unread).
 - meth:signal-mixing-vs-integration: combining signals into one forecast before optimising against optimising on them separately, with the transfer coefficient (`eq-fitzgibbons-2017`, unread).
 
 ## Legacy candidate material

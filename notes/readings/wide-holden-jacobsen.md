@@ -2,12 +2,14 @@
 key: wide-holden-jacobsen
 pathways: [point-in-time-data]
 version: Craig W. Holden and Stacey Jacobsen, "Liquidity Measurement Problems in Fast, Competitive Markets: Expensive and Cheap Solutions", The Journal of Finance 69(4), 2014, pp. 1747-1785, as catalogued. Copy used: the published version, author-hosted at Indiana University, 39 pages, downloaded 2026-10-16; text layer. The Internet Appendix, which holds the detailed data screening, was not obtained
-sections: secs. I-III and VII, nn. 12, 16 and 29 (pp. 1747-1767)
+sections: secs. I-III and VII, nn. 12, 16 and 29 (pp. 1747-1767); batch of 2026-10-17: the Internet Appendix (author-hosted PDF, 29 pp.), sec. I and the July 2013 MTAQ SAS program, PDF pp. 1-2 and 19
 read:
 status: draft
 ---
 
 Prepared on 2026-10-16 by the second source follow-up from source checks, not from study: the headings that need your own reading are left empty.
+
+Batch of 2026-10-17 (source checks, not study): the Internet Appendix was obtained from Holden's page, superseding "was not obtained" in the version line; its MTAQ program keeps only trades with correction code 00 and a positive price. The DTAQ code linked from the same page returned HTTP 404.
 
 ## Question and claim
 

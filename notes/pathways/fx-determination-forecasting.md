@@ -32,13 +32,15 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:fx-valuation-factors-oos` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` empirically tested for one factor, relative PPP (own bounded test, protocol fixed before computing; `notes/artefacts/fx-determination-forecasting/fx_ppp_oos_test.py`, results and panel beside it): for nine currencies against the dollar, 1985 to 2021-2026, the real-exchange-rate deviation has the expected sign in-sample but loses to a random walk out of sample (pooled 12-month OOS R^2 -15.3 percent), and a cheap-minus-dear portfolio earns about zero; written into `meth:fx-valuation-signals`. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:fx-carry-trade` (`fx-premia`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- ev:fx-valuation-factors-oos: an out-of-sample test of Gliner's factors (pp. 195-209) against a random walk with economic as well as statistical criteria; empirical work, not a reading.
+- ev:fx-valuation-factors-oos: out-of-sample tests of Gliner's other factors (equity flows, sovereign CDS, risk reversals, trade and TWI, export-partner growth, debt, GDP per capita, carry indicators), which need data not used here; relative PPP was tested on 2026-10-17 (not supported statistically or economically; `meth:fx-valuation-signals`)
 
 ## Legacy candidate material
 

@@ -57,13 +57,16 @@ Written in migration slice 32, 2026-10-16, routed here from the legacy AFML data
 
 Partly checked 2026-10-16, draft; human review outstanding. Its artefact is `notes/artefacts/statistical-learning-foundations/financial-data-structures.tex` (the legacy file kept whole) and `afml-checks.py`.
 
+## Source verification after slice 37
+
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `meth:convex-cost-portfolio-optimisation` resolved by merge into `mod:portfolio-transaction-cost-function` (Boyd et al., *Multi-Period Trading via Convex Optimization*, 2017, author-hosted PDF, secs. 2.3, 4.7 and 5.3): the a|x| + b sigma |x|^{3/2}/V^{1/2} + cx cost, convexity of the common variants and nonconvexity of fixed fees, interior-point cost O(nk^2) 'even for ... the 3/2 power transaction costs', a coefficient near 2 for purely quadratic problems, and multi-period effort linear in the horizon; the piecewise-linear reformulation remains our interpretation. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:transaction-costs` and `meth:transaction-cost-analysis` (`execution-trading-costs`; the same legacy file's cost-components block was merged into the first, and is listed in that note); `mod:almgren-chriss-execution` (`execution-trading-costs`); `ev:square-root-impact` and `meth:almgren-impact-estimation` (`price-impact-execution`; the empirical shape of costs, not changed); `pit:backtest-cost-short-assumptions` (`backtest-inference`; the effect of misestimated costs, not changed); from slice 28, `pit:parameter-overfitting` and `meth:backtest-evaluation-diagnostics` (`backtest-inference`) and `def:common-investor-contagion` (`funding-crowding`), cross-referenced and not changed; from slice 29, `def:quant-strategy-risk-sources` (`model-governance-controls`), cross-referenced and not changed, and the stub `meth:var-es-estimation-methods` in `risk-tail-systemic`, which holds this pathway's legacy statistical-methods block.
 
 ## Entry backlog
 
-- meth:convex-cost-portfolio-optimisation: linear, quadratic and 3/2-power cost terms in a convex single- and multi-period portfolio problem, and what each form demands of the solver, to replace the entry's interpretation of computational cost (`wide-boyd-markowitz-seventy` read in part in slice 28, secs. 2.4 and 4.3; `exp-boyd-multiperiod-trading` unread).
 - res:no-trade-region: proportional costs create a region around the target in which not trading is optimal (`w2-davis-norman`, an optional branch, unread).
 - mod:black-litterman: equilibrium (market-implied) returns combined with views and their confidence into posterior expected returns, to check Narang's description and the legacy claim about correlations (`alpha-black`, unread).
 - meth:resampled-efficiency: what Michaud's resampling draws, what it averages, and whether it improves out-of-sample results (Michaud's book, not catalogued; `wide-michaud-enigma` for the estimation-error critique; unread).

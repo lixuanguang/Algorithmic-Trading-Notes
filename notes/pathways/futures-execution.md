@@ -51,6 +51,8 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 
 Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:treasury-bund-futures-current-specs` resolved (CBOT Chapters 18-21 and 40, official chapter PDFs of 16 October 2026: TU 1/8 of a 32nd, $7.8125, against Gliner's 1/4; FV 1/4, TY 1/2, US and UB 1/32 as Gliner; baskets read; the texts are undated, so when the TU tick changed is not known). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): Audit correction: `conv:government-bond-futures` now gives the Ultra Bond's intermonth-spread tick, a quarter of a 32nd ($7.8125; CBOT Rule 40102.C), beside its outright 32nd ($31.25); the value is checked in `notes/artefacts/execution-market-making/source-followup-checks-2.py`, section 1. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).

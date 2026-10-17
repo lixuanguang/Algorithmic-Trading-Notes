@@ -35,14 +35,19 @@ Corrected 2026-10-15 (slice-26 follow-up): the same entry now distinguishes the 
 
 All four: verification partly checked 2026-10-15, stability draft; human review outstanding. The artefact is `notes/artefacts/research-engineering-validation/derivations.tex` (under the map candidate, keeping the file whole).
 
+- `meth:sharpe-ratio-standard-error`: Lo's IID and GMM standard errors and the time-aggregation factor eta(q). Partly checked 2026-10-17, draft.
+- `meth:deflated-sharpe-ratio`: Bailey and López de Prado's expected maximum Sharpe ratio and deflated Sharpe ratio, with their example reproduced. Partly checked 2026-10-17, draft.
+
+## Source verification after slice 37
+
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `meth:sharpe-ratio-standard-error` and `meth:deflated-sharpe-ratio` resolved as new entries in `research-engineering-validation/backtest-evaluation.tex`: Lo (FAJ 2002, read in a copy hosted by a Berkeley student organisation, provenance not established; eqs. (9), (15), (17)-(22) and Table 2 checked as page images and recomputed) and Bailey and López de Prado (author version of 31 July 2014; SR0 = 0.1132 and DSR = 0.9004, 0.9505 at N = 46 and 0.9505 under normal returns at N = 88, all reproduced in `notes/artefacts/backtest-inference/batch40-sharpe-checks.py`). The 2026 López de Prado and Porcu paper was not obtained. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here and not changed: `meth:relative-performance-evaluation` (`performance-manager-evaluation`; smoothed returns from stale valuations); `meth:transaction-cost-analysis`, `def:transaction-costs` (`execution-trading-costs`); `mech:securities-lending-short-sale`, `def:securities-lending-fee-rebate` (`money-markets-repo-lending`). Checked and not linked: `meth:automated-trading-operational-controls` (`model-governance-controls`), which concerns production controls, not research.
 
 ## Entry backlog
 
-- meth:sharpe-ratio-standard-error: standard errors of an estimated Sharpe ratio under serial correlation, to replace the point estimates in the diagnostics (`wide-lo-sharpe`, unread).
-- meth:deflated-sharpe-ratio: deflating the best Sharpe ratio for the number of trials and non-normality; parameter stability does not do this (`alpha-dsr`, `w4-lopezdeprado-porcu-dsr`, unread).
 - meth:multiple-testing-control: Reality Check, Romano–Wolf stepdown and Benjamini–Hochberg control across a family of strategies (`catalogue-0731`, `wide-romano-wolf-stepdown`, `wide-benjamini-hochberg`, unread).
 - meth:backtest-protocol: a protocol fixed before experiments, against Narang's practitioner screening (`wide-arnott-harvey-markowitz`, unread).
 - meth:dependent-resampling-drawdowns: resampling returns with their dependence (stationary bootstrap) for drawdown distributions, against Narang's shuffle (`wide-politis-romano-stationary`, unread).

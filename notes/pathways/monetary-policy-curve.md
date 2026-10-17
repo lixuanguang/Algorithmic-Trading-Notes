@@ -43,6 +43,8 @@ Correction of 2026-10-16 to the second follow-up paragraph above: CME's press re
 
 Second source follow-up, 2026-10-16 (source verification, not study or human review): `rule:central-bank-policy-history` unchanged (no new source in this batch; the gap recorded on 16 October 2026 stands). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `rule:central-bank-policy-history` reviewed, unchanged: no new primary source. A BIS-hosted 2018 speech by an RBNZ assistant governor dates the Reserve Bank of New Zealand Act to February 1990 but not its first published inflation forecast; secondary sources say the RBNZ's early Monetary Policy Statements are not on its website; PBOC pages on the current band and reserve-requirement history were not found. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:money-market-reference-rates` (`money-markets-repo-lending`); `def:currency-regimes-intervention` (`em-currencies-intervention`); `meth:macro-event-queries` (`macro-announcements-policy`).

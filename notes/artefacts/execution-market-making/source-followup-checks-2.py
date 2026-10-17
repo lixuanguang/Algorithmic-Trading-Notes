@@ -1,7 +1,8 @@
 """Second source follow-up of slices 33-37 (2026-10-16): arithmetic behind figures added from rulebooks and data releases.
 
 1. Tick values of the CBOT Treasury futures as the current chapters state them (Chapters 18-21 and 40, Rules xx102.B-C):
-   face value x tick in points / 100, against Gliner's 2013-2014 ticks; only the 2-year differs.
+   face value x tick in points / 100, against Gliner's 2013-2014 ticks; only the 2-year differs. Added 2026-10-17: the Ultra
+   Bond's intermonth-spread tick of a quarter of a 32nd ($7.8125; Rule 40102.C) against its outright 32nd ($31.25).
 2. Tick values of the NYMEX, COMEX and CBOT contracts read (Chapters 200, 220, 107, 111-113, 10, 11 and 14):
    contract unit x minimum fluctuation.
 3. Copper end-use groupings: the ICA 2023 dataset (World sheet, 2022, copper content of semis; market shares in row 50,
@@ -51,6 +52,8 @@ treasury = {  # face value, minimum fluctuation in points (outrights)
 }
 for name, (face, tick, stated) in treasury.items():
     check(name, face * tick / 100, stated)
+check('UB intermonth spread, a quarter of a 32nd (Rule 40102.C)', 100_000 * (1 / 32 / 4) / 100, 7.8125)
+check('UB outright tick / spread tick', (1 / 32) / (1 / 32 / 4), 4.0)
 check('TU at Gliner\'s quarter of a 32nd', 200_000 * (1 / 32 / 4) / 100, 15.625)
 check('TU current tick / Gliner\'s', (1 / 32 / 8) / (1 / 32 / 4), 0.5)
 

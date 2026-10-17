@@ -42,6 +42,8 @@ Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:po
 
 Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` deferred (a dated CP minus SOFR OIS series needs SOFR OIS swap rates, which were not found in public data; no study replacing LIBOR-OIS was read in this batch). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
 
+Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:post-libor-funding-stress-measures` deferral retained: no public, dated SOFR OIS series was obtained, so the CP minus SOFR OIS spread still cannot be built. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:broker-agency-conflicts` (`market-structure-execution-quality`); `res:arbitrage-risks` (`execution-market-making`); `mech:futures-margin-settlement` (`futures-execution`).

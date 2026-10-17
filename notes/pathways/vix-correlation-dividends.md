@@ -1,7 +1,7 @@
 ---
 key: vix-correlation-dividends
 section: volatility-trading-premia
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # VIX, correlation and dividend derivatives
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price and hedge VIX futures and options, correl
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the VIX, variance-swap and dividend-swap blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:vix-variance-dividend-swaps`: the VIX and its futures curve, variance-swap units and payoff (strike fixed ex ante; Gliner's "priced with realized volatility" corrected), daily moves as standard deviations, and dividend swaps.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -37,11 +37,6 @@ macro markets and pricing review follow-up, 2026-10-16 (source verification, not
 Cross-referenced, not owned here: `def:equity-indices-derivatives` (`international-equity-markets`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
-
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

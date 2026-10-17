@@ -39,10 +39,6 @@ derivatives and empirical validation (2026-10-17) (source verification and bound
 
 - meth:heston-branch-cut: the complex-logarithm branch problem in Heston-type characteristic functions at long maturities (`vo-lord-kahl-2010`, not obtained) and the checkpoint's calibration to SPX quotes (no quote data retained).
 
-## Legacy candidate material
-
-None.
-
 ## What changed in my view or practice
 
 ## Questions carried forward

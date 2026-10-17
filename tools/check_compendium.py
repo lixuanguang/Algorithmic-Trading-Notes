@@ -57,7 +57,7 @@ def scan_entries(root, sections, cite_keys, problems):
     compendium = root / 'compendium'
     for path in sorted(compendium.rglob('*.tex')):
         parts = path.relative_to(compendium).parts
-        if len(parts) < 2 or parts[0] in ('legacy', 'front'):
+        if len(parts) < 2 or parts[0] == 'front':
             continue
         rel = path.relative_to(root).as_posix()
         if parts[0] not in sections:

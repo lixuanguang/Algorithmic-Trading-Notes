@@ -2,12 +2,12 @@
 key: al-duffie
 pathways: [money-markets-repo-lending, synthetic-equity-cfd-trs]
 version: D. Duffie, N. Garleanu and L. H. Pedersen, "Securities Lending, Shorting, and Pricing", Journal of Financial Economics 66(2-3), 307-339, 2002 (DOI 10.1016/S0304-405X(02)00226-X). Copy used: NYU Stern working paper FIN-01-023, current version 24 September 2001 (first version 29 March 2001), from NYU's institutional repository, downloaded 2026-10-15 with a generic header; text layer; the file holds 10 pages (through the start of sec. 3). The published version was not checked
-sections: abstract; sec. 2, "The Market for Securities Lending", pp. 5-8 (checked for migration securities lending and synthetic shorts review)
+sections: abstract; sec. 2, "The Market for Securities Lending", pp. 5-8 (checked for securities lending and synthetic shorts review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration securities lending and synthetic shorts review from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by securities lending and synthetic shorts review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

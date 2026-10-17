@@ -2,12 +2,10 @@
 key: exp-fx-code
 pathways: [fx-dealer-market-making]
 version: Global Foreign Exchange Committee, FX Global Code, "Updated December 2024" (back cover), 84-page PDF from globalfxc.org, downloaded 2026-10-15 with a generic header; the text layer contains hidden placeholder text, so quoted passages were checked on page images
-sections: p. 1 (status of the Code); Principle 17, pp. 22-23, page images; Principle 18 heading, p. 23 (checked for migration FX market structure review)
+sections: p. 1 (status of the Code); Principle 17, pp. 22-23, page images; Principle 18 heading, p. 23
 read:
 status: draft
 ---
-
-Prepared on 2026-10-15 by migration FX market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

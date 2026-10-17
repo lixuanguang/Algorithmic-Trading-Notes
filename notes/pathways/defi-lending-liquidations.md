@@ -38,10 +38,6 @@ derivatives and empirical validation (2026-10-17) (source verification and bound
 
 - ev:defi-liquidation-replay: the checkpoint's reconstruction of one account at a pinned block (rate model, debt index, oracle, maximum repay) needs chain data not retained; oracle designs (`oc-eskandari-oracles-2021`) unread.
 
-## Legacy candidate material
-
-None.
-
 ## What changed in my view or practice
 
 ## Questions carried forward

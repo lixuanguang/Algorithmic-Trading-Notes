@@ -1,7 +1,7 @@
 ---
 key: international-equity-markets
 section: international-equity-markets
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # International and emerging equity markets
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: measure equity-market integration and diversifi
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the equity-index, index-construction and equity-derivative blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:equity-indices-derivatives`: Gliner's indices by region, weighting methods, ETFs and ADRs, as of 2013.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -53,10 +53,6 @@ Cross-referenced, not owned here: `meth:equity-index-valuation` (`cross-asset-st
 ## Entry backlog
 
 - data:equity-index-lists-current: current methodologies for the Jakarta Composite, the S&P 500 and the other S&P DJI indices apart from the DJIA, CAC 40 and AEX, KOSPI, ASX 200, NZX 50, Shanghai Composite, Bovespa, Mexico IPC, Nasdaq Composite and FTSE MIB, and BME's IBEX Technical Regulations themselves; fourteen indices' rules and an IBEX committee notice are in `def:equity-indices-derivatives`.
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

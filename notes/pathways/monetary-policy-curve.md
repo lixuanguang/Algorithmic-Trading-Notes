@@ -1,7 +1,7 @@
 ---
 key: monetary-policy-curve
 section: rates-credit-mortgages
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Monetary policy, balance-sheet policy and the yield curve
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: read the expected policy path from futures, mea
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the central-bank, Taylor-rule, OIS and Eurodollar blocks of the legacy chapter; `02_transmission_maps.tex` named this pathway as a candidate, while the central-bank blocks were in `01_regimes.tex`. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), Taylor (1993), and the Federal Reserve, ECB, Bank of England, Bank of Japan, SNB, ARRC, EMMI and CFTC (CBOT filing 23-214) texts as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), Taylor (1993), and the Federal Reserve, ECB, Bank of England, Bank of Japan, SNB, ARRC, EMMI and CFTC (CBOT filing 23-214) texts as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,14 +22,14 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:central-bank-policy-framework`: mandates, tools, the money multiplier, aggregates, the ZLB, QE with Bauer's announcement-day yield changes, crisis facilities, hawks and doves.
 - `mod:taylor-rule`: Taylor's 1993 equation (2 percent equilibrium real rate), the Taylor principle and Gliner's printing slip.
 - `rule:major-central-banks-current`: FOMC, ECB Governing Council (27 members, decisions every six weeks), BoE MPC, BoJ Policy Board and SNB as of 16 October 2026; Gliner's 2011--2013 ECB, SNB and BoE record; TARGET2 described correctly.
 - `meth:policy-path-ois-futures`: fed funds futures, OIS and meeting-dated probabilities (dilution when the period straddles the meeting), and Eurodollar futures as history: LIBOR's end and the 2023 conversion to SOFR.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -58,10 +58,6 @@ Cross-referenced, not owned here: `def:money-market-reference-rates` (`money-mar
 ## Entry backlog
 
 - rule:central-bank-policy-history: whether the PBOC's 2 percent band of March 2014 has changed since (its English regime page states a managed float without a band), the reserve-requirement history before 2021 (the English pages list cuts from 2021; the 2024 and 2025 cuts were read), and dated evidence for 'first major central bank to publish inflation forecasts' (RBNZ pages HTTP 403; only a repost of RBNZ's pre-1997 statements on a former official's blog was found).
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

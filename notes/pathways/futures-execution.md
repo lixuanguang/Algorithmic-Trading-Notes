@@ -1,7 +1,7 @@
 ---
 key: futures-execution
 section: execution-trading-costs
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Futures execution: matching, rolls and settlement
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: execute futures orders and rolls using the cont
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration futures market structure review (`notes/source-review-index.md`), which migrated the legacy futures-market-microstructure file mapped to this pathway alone. The entries come from migration and source checking against CME Group's rulebook, advisory notices and client documentation as retrieved on 15 October 2026, a dated CFTC filing, Hasbrouck's working paper, and Harris (2002). That is not study of the readings; it is not the checkpoint either, and no roll costs were measured.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by futures market structure review (`notes/source-review-index.md`). The entries come from source checking against CME Group's rulebook, advisory notices and client documentation as retrieved on 15 October 2026, a dated CFTC filing, Hasbrouck's working paper, and Harris (2002). That is not study of the readings; it is not the checkpoint either, and no roll costs were measured.
 
 ## Outcome in my own words
 
@@ -22,22 +22,22 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration futures market structure / source review / optimal execution / high-frequency strategies reviews:
+Written in futures market structure / source review / optimal execution / high-frequency strategies reviews:
 
 - `conv:cme-globex-trading`: the centralised market and its permitted off-exchange exceptions; CME Globex matching algorithms, with SOFR futures' pro-rata allocation as the named example; the pre-open and indicative opening price; the E-mini S&P 500 daily settlement window as of 2020.
 - `conv:futures-block-efrp`: CME Rule 526 block trades and Rule 538 EFRPs (eligibility, related position, reporting and submission), and the prohibition of transitory EFRPs since 2014, with Harris's 2002 history kept apart.
 - `mech:futures-margin-settlement`: settlement variation each cycle (Rule 814), performance bond (Rule 820) and the default waterfall (Rule 802.B); daily settlement bounds credit risk but does not eliminate it.
-- `ev:index-futures-price-discovery`: Hasbrouck's evidence that E-minis led price discovery for the S&P 500 and Nasdaq-100 in March–May 2000 (working-paper draft), with the legacy explanations marked as untested.
+- `ev:index-futures-price-discovery`: Hasbrouck's evidence that E-minis led price discovery for the S&P 500 and Nasdaq-100 in March–May 2000 (working-paper draft).
 
 Corrected in a follow-up the same day (`notes/source-review-index.md`, *futures market structure review follow-up*): the default waterfall of Rules 802.A–B and the retention wording of Rule 820; the settlement procedure located in Exhibit B of the 2020 filing, with its tiers and rounding; Rule 538.K's exception and 538.A's carve-out.
 
-All four: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/futures-execution/derivations.tex`.
+All four: verification partly checked 2026-10-15, stability draft; human review outstanding.
 
-Changed in migration derivatives and hedging / source review / optimal execution / high-frequency strategies reviews: `mech:futures-margin-settlement` gains Hull's generic margin account (initial, maintenance and variation margin, margin calls, interest, securities as margin, clearing-member net margining and guaranty fund; 11th Global edition, chap. 2, pp. 51-54), marked as illustration, not any clearing house's rules, beside the CME rules already there. Its artefact is `notes/artefacts/volatility-options/hull-basics.tex`.
+Changed in derivatives and hedging / source review / optimal execution / high-frequency strategies reviews: `mech:futures-margin-settlement` gains Hull's generic margin account (initial, maintenance and variation margin, margin calls, interest, securities as margin, clearing-member net margining and guaranty fund; 11th Global edition, chap. 2, pp. 51-54), marked as illustration, not any clearing house's rules, beside the CME rules already there.
 
-Changed in migration order matching and fragmentation / source review / optimal execution / execution control reviews: `conv:cme-globex-trading` (a note that pro-rata remainders need a further rule, with CME's own allocation steps not read, and a cross-reference to the general matching entry owned by `execution-market-making`).
+Changed in order matching and fragmentation / source review / optimal execution / execution control reviews: `conv:cme-globex-trading` (a note that pro-rata remainders need a further rule, with CME's own allocation steps not read, and a cross-reference to the general matching entry owned by `execution-market-making`).
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews, from the legacy macro chapter:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `conv:government-bond-futures`: Gliner's 2013--2014 U.S. Treasury contract sizes and ticks (recomputed), physical delivery and cheapest-to-deliver, the German Schatz, Bobl and Bund, and why the futures trade below the bond (carry, not term premium); verification partly checked 2026-10-16, stability draft.
 
@@ -59,15 +59,11 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 ## Related entries owned elsewhere
 
-Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).
+Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants` (`execution-market-making`).
 
 ## Entry backlog
 
-- ev:futures-tick-size-evidence: the comparison with equities (bounce and displayed depth against comparable stocks), as the legacy principle claimed. Dayri and Rosenbaum show ten futures in 2009 were all large-tick (one-tick spreads for 72.7 to 99.6 percent of trades); that is in `res:spread-determinants`.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. After futures market structure review no legacy file lists this pathway alone; it remains a candidate for 18 shared blocks.
+- ev:futures-tick-size-evidence: the comparison with equities (bounce and displayed depth against comparable stocks). Dayri and Rosenbaum show ten futures in 2009 were all large-tick (one-tick spreads for 72.7 to 99.6 percent of trades); that is in `res:spread-determinants`.
 
 ## What changed in my view or practice
 

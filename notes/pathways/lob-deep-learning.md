@@ -1,7 +1,7 @@
 ---
 key: lob-deep-learning
 section: execution-market-making
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Deep learning on limit-order-book data
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: train and evaluate an order-book prediction mod
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 16 October 2026 by migration order books and order flow review (`notes/source-review-index.md`), which wrote one entry for this pathway from the legacy order-flow-imbalance file, checked against Cont, Kukanov and Stoikov (`catalogue-0503`, arXiv version 3) and Bouchaud et al. (`catalogue-0528`). At order books and order flow review none of the pathway's required readings had been read. Correction of 2026-10-17, superseding that sentence for the current state: specified sections of Briola, Bartolucci and Aste (arXiv v4, secs. 4-7, pp. 7-8 and 22-25), LOBCAST (arXiv v2, pp. 1-10), Kolm, Turiel and Westray (SSRN 6 August 2021, PDF pp. 1-31) and Cont, Cucuringu and Zhang (arXiv v4) were source-checked on 16 October 2026 against the entries that cite them. That is source checking, not study: no reading has been studied in full, the LOBCAST supplemental material (SUP, which holds its trading simulation) and Briola et al.'s Appendices A-C (in the same arXiv PDF) are unread, and the checkpoint, including a costed test of an order-book signal of ours, has not been attempted. Migration and source checking are not study.
+Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 16 October 2026 by order books and order flow review (`notes/source-review-index.md`). (`catalogue-0528`). At order books and order flow review none of the pathway's required readings had been read. Correction of 2026-10-17, superseding that sentence for the current state: specified sections of Briola, Bartolucci and Aste (arXiv v4, secs. 4-7, pp. 7-8 and 22-25), LOBCAST (arXiv v2, pp. 1-10), Kolm, Turiel and Westray (SSRN 6 August 2021, PDF pp. 1-31) and Cont, Cucuringu and Zhang (arXiv v4) were source-checked on 16 October 2026 against the entries that cite them. That is source checking, not study: no reading has been studied in full, the LOBCAST supplemental material (SUP, which holds its trading simulation) and Briola et al.'s Appendices A-C (in the same arXiv PDF) are unread, and the checkpoint, including a costed test of an order-book signal of ours, has not been attempted.
 
 ## Outcome in my own words
 
@@ -22,13 +22,13 @@ Not attempted.
 
 ## Entries created or changed
 
-- `def:order-flow-imbalance`: Cont, Kukanov and Stoikov's event-based OFI at the best quotes against signed trade volume (trade imbalance), with their April 2010 TAQ evidence, the naming collision with Bouchaud et al.'s "order-flow imbalance", and the legacy menu of imbalance features. It is the "linear OFI baseline" of the checkpoint, not yet implemented.
+- `def:order-flow-imbalance`: Cont, Kukanov and Stoikov's event-based OFI at the best quotes against signed trade volume (trade imbalance), with their April 2010 TAQ evidence, the naming collision with Bouchaud et al.'s "order-flow imbalance". It is the "linear OFI baseline" of the checkpoint, not yet implemented.
 
-Partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/artefacts/lob-deep-learning/order-flow-imbalance.tex` (the legacy file verbatim). Related entries owned elsewhere, cross-referenced and not listed here: queue imbalance and queue-reactive intensities (`market-making-lob`), trade-sign classification (`price-impact-execution`), realised variance and intraday deseasonalisation (`market-simulation`; the latter's look-ahead warning matters for features), and the time-validity pitfall (`financial-ml-evaluation`).
+Partly checked 2026-10-16, draft; human review outstanding. Related entries owned elsewhere, cross-referenced and not listed here: queue imbalance and queue-reactive intensities (`market-making-lob`), trade-sign classification (`price-impact-execution`), realised variance and intraday deseasonalisation (`market-simulation`; the latter's look-ahead warning matters for features), and the time-validity pitfall (`financial-ml-evaluation`).
 
 ## Source verification after macro markets and pricing review
 
-Second macro markets and pricing review follow-up, 2026-10-16, working source gaps of dealer models and information review (source verification, not study): `def:multi-level-ofi` resolved (Cont, Cucuringu and Zhang, arXiv v4 of 13 June 2023: ten levels, PCA-integrated OFI explaining 89 percent of the levels' variance, LOBSTER 2017-2019 top 100 S&P 500 stocks, 30-minute windows; integrated OFI lifts contemporaneous out-of-sample R^2 from 64.6 to 83.8 percent, cross-asset terms add little contemporaneously, and one-minute forecasts have negative out-of-sample R^2; their per-level flow uses the new size where Cont, Kukanov and Stoikov use the old; the legacy's cross-venue pressure remains an unsourced construction). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
+Second macro markets and pricing review follow-up, 2026-10-16, working source gaps of dealer models and information review (source verification, not study): `def:multi-level-ofi` resolved. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 
 Source follow-up of order books and order flow / dealer models and information reviews and the macro markets and pricing review audit, 2026-10-16 (source verification, not study): `ev:ofi-forecast-horizons` narrowed (LOBCAST: F1 48-61 percent on 2021-22 LOBSTER data, horizon effects not monotone; Kolm et al. blocked); `meth:lob-signal-transaction-usefulness` narrowed (Briola, Bartolucci and Aste, arXiv v4: p_T = CT/(PT + TT - CT) is an assumption-free overlap of predicted and realised round trips, not profit after spread or fees; validation days inside the training window; the checklist itself is still without a source, and no signal of ours has been costed). The record is in `notes/source-review-records.md`, *Source follow-up of order books and order flow / dealer models and information reviews and macro markets and pricing review audit corrections*.
 
@@ -44,15 +44,11 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 ## Related entries owned elsewhere
 
-dealer models and information / source review / optimal execution / execution control reviews, migrated this pathway's two remaining candidate files, but by content most of their blocks went elsewhere (routing exceptions recorded in `notes/source-review-records.md`): the feature-engineering file's blocks concern relative-value arbitrage, not order-book prediction, and went to `res:arbitrage-risks`, `def:trader-motives` and `meth:triple-barrier-labelling`; the data-engineering file's to `data:market-data-levels` and `data:trading-reference-data` (`point-in-time-data`), `meth:venue-market-share`, `meth:spread-volatility-regression`, `meth:intraday-deseasonalisation` and the new `meth:skill-luck-significance-tests` (`performance-manager-evaluation`). The one block on transaction-level usefulness became a backlog stub (below). No block of either file asserts a multilevel or cross-asset OFI result; those wait on the stubs already here. Artefacts: `notes/artefacts/lob-deep-learning/feature-engineering-microstructure-alpha.tex` and `microstructure-data-engineering.tex`.
+dealer models and information / source review / optimal execution / execution control reviews; the data-engineering file's to `data:market-data-levels` and `data:trading-reference-data` (`point-in-time-data`), `meth:venue-market-share`, `meth:spread-volatility-regression`, `meth:intraday-deseasonalisation` and the new `meth:skill-luck-significance-tests` (`performance-manager-evaluation`). Transaction-level usefulness is a backlog stub (below). Multilevel and cross-asset OFI results wait on the stubs already here.
 
 ## Entry backlog
 
 - meth:lob-signal-transaction-usefulness: a source for the capacity and crowding items, and the costed test specified in the entry, which needs licensed message data (LOBSTER samples now require a request and accepted terms). Briola et al.'s backtest assumptions and clock-time horizons, LOBCAST's and Kolm et al.'s cost cautions, Gould and Bonart's out-of-sample scores and Moallemi and Saglam's latency cost are in `def:order-flow-imbalance`.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. dealer models and information review migrated both remaining candidate files and removed the legacy microstructure chapter; no legacy file now lists this pathway.
 
 ## What changed in my view or practice
 

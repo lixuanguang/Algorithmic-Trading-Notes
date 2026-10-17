@@ -2,12 +2,12 @@
 key: al-icma
 pathways: [money-markets-repo-lending]
 version: ICMA European Repo and Collateral Council, Repo FAQ 13, "What is the difference between repo and securities lending?", living web page (no date on the page; site copyright 2026), retrieved 2026-10-15 with a generic header
-sections: whole answer (checked for migration securities lending and synthetic shorts review)
+sections: whole answer (checked for securities lending and synthetic shorts review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration securities lending and synthetic shorts review from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by securities lending and synthetic shorts review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

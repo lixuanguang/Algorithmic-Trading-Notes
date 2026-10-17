@@ -1,7 +1,5 @@
 % compendium/portfolio-construction-risk/figures/strategystructure.tikz
-% Moved from compendium/legacy/portfolio-construction-risk/figures/ in slice 30 (2026-10-15); the return arrow
-% from execution to portfolio construction was added to match Narang's Exhibit 2.1. The original is kept verbatim
-% in notes/artefacts/portfolio-construction-risk/systematic-investing-overview.tex.
+% Narang's Exhibit 2.1, including the return arrow from execution to portfolio construction.
 \begin{tikzpicture}[auto, thick, >=stealth, scale=0.8, transform shape]
 
     \usetikzlibrary{positioning}

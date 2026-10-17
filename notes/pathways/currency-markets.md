@@ -1,7 +1,7 @@
 ---
 key: currency-markets
 section: currency-markets
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Currency markets: exchange rates, premia and hedging
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: from spot, forward and money-market rates, meas
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the FX roles list and the dollar and SDR blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), the IMF's SDR factsheet and the BIS's 2025 survey page as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), the IMF's SDR factsheet and the BIS's 2025 survey page as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
-- `def:us-dollar-dxy-sdr`: the dollar's share of turnover and reserves (2013), the dollar index weights, the SDR basket as of 2022, and the legacy's three roles of FX.
+- `def:us-dollar-dxy-sdr`: the dollar's share of turnover and reserves (2013), the dollar index weights, the SDR basket as of 2022.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -37,11 +37,6 @@ macro markets and pricing review follow-up, 2026-10-16 (source verification, not
 Cross-referenced, not owned here: `def:fx-market-structure` (`fx-dealer-market-making`); `mod:fx-carry-trade` (`fx-premia`); `def:currency-regimes-intervention` (`em-currencies-intervention`); `meth:fx-valuation-signals` (`fx-determination-forecasting`).
 
 ## Entry backlog
-
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

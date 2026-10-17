@@ -2,12 +2,12 @@
 key: wide-ohara-zhou-electronic
 pathways: [otc-fixed-income-trading]
 version: M. O'Hara and X. (A.) Zhou, "The electronic evolution of corporate bond dealers", Journal of Financial Economics 140(2), 368-390, 2021 (DOI 10.1016/j.jfineco.2021.01.001). Copy used: none. Only the abstract was read, from the publisher's record as served by OpenAlex, Crossref or RePEc on 2026-10-15 with a generic header; SSRN (the open-access location OpenAlex lists) returned a bot page; the FRASER record of a 2019 conference version had no downloadable file
-sections: abstract only (checked for migration fixed-income market structure review)
+sections: abstract only (checked for fixed-income market structure review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration fixed-income market structure review from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by fixed-income market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

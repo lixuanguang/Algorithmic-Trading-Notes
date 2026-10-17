@@ -2,12 +2,12 @@
 key: ex-huh-lin-mello-2015
 pathways: [options-execution]
 version: S.-W. Huh, H. Lin and A. S. Mello, "Options market makers' hedging and informed trading: Theory and evidence", Journal of Financial Markets 23, 26-58, 2015 (DOI 10.1016/j.finmar.2015.01.001). Copy used: none. Only the abstract was read, from the publisher's record as served by RePEc, Crossref or OpenAlex on 2026-10-15 with a generic header; no open full text was found; the EFMA 2013 working-paper copy ("Hedging by Options Market Makers: Theory and Evidence") returned HTTP 503. SSRN 2123965 not tried
-sections: abstract only (checked for migration options market structure review)
+sections: abstract only (checked for options market structure review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration options market structure review from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by options market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

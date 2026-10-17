@@ -38,10 +38,6 @@ derivatives and empirical validation (2026-10-17) (source verification and bound
 
 - ev:risk-parity-out-of-sample: risk parity's sensitivity to sample period, financing and costs (`w2-anderson-risk-parity`, `w2-asness-leverage-aversion`, unread); the in-sample illustrations of Qian and of Maillard, Roncalli and Teiletche are in `meth:equal-risk-contribution`.
 
-## Legacy candidate material
-
-None.
-
 ## What changed in my view or practice
 
 ## Questions carried forward

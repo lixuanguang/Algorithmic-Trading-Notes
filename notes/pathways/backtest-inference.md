@@ -1,7 +1,7 @@
 ---
 key: backtest-inference
 section: research-engineering-validation
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Backtest inference, multiple testing and Sharpe-ratio statistics
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: report a strategy result with the number of tri
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration backtest evaluation review (`notes/source-review-records.md`). the topic review routed all four blocks of the legacy research file (`sysinv/research.tex`, Narang's systematic-investing notes) here, an exception to the file's map candidate. The candidate was the section overview `research-engineering-validation`, whose outcome is reconstructing a research decision and its trade from versioned identities, data events, experiments and control records. The blocks are about forming hypotheses and judging backtests. The entries come from migration and source checking against `s7-narang` (third edition, Wiley 2024, chapter "Research"), which is not a reading of this pathway. None of the pathway's readings has been read, and the checkpoint was not attempted. The entries therefore describe one practitioner's diagnostics and say where the pathway's statistics are missing; they do not supply those statistics.
+Not mastered and not consolidated: no dates in `notes/log.md`. The entries come from source checking against `s7-narang` (third edition, Wiley 2024, chapter "Research"), which is not a reading of this pathway. None of the pathway's readings has been read, and the checkpoint was not attempted. The entries therefore describe one practitioner's diagnostics and say where the pathway's statistics are missing; they do not supply those statistics.
 
 ## Outcome in my own words
 
@@ -22,9 +22,9 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration backtest evaluation / source review / optimal execution / high-frequency strategies reviews:
+Written in backtest evaluation / source review / optimal execution / high-frequency strategies reviews:
 
-- `meth:hypothesis-driven-strategy-research`: Narang's scientific method (observation, theory, deduced consequences, attempted falsification, capital risked only on confidence) and his four sources of ideas; the legacy three-step version and the evidential weight of idea sources qualified.
+- `meth:hypothesis-driven-strategy-research`: Narang's scientific method (observation, theory, deduced consequences, attempted falsification, capital risked only on confidence) and his four sources of ideas.
 - `meth:backtest-evaluation-diagnostics`: cumulative profit curve, average return, variability and lumpiness, drawdowns and recovery, $R^2$ and quantile buckets, win rates, Sharpe, information, Sterling, Calmar and Omega ratios as Narang defines them, fit with other strategies, and time decay; the smooth-P&L and lower-volatility heuristics, the $R^2$ of 0.05, the bucket text–figure mismatch and time decay as crowding qualified.
 - `pit:parameter-overfitting`: isolated optima, nearby-parameter checks, plateaus, parsimony, the out-of-sample $R^2$ ratio and burnt out-of-sample data, and the third edition's balance against underfitting; parameter stability is not a correction for the number of trials.
 - `pit:backtest-cost-short-assumptions`: over- and underestimated trading costs, and hard-to-borrow names a backtest could not have shorted; Narang's "naked short sale \dots illegal" not adopted, and borrow fees and recall added from the lending entries as interpretation.
@@ -33,7 +33,7 @@ Corrected 2026-10-15 (backtest evaluation review follow-up): `meth:backtest-eval
 
 Corrected 2026-10-15 (model risk and contagion review follow-up): the same entry now distinguishes the recomputed Calmar ratio, $12.1/39.7\approx0.3048$ (0.30 to two places), from Narang's reported 0.31 (pp. 173-174), drops "as reported" after 0.30, and no longer calls all the example figures consistent; the difference is left unexplained.
 
-All four: verification partly checked 2026-10-15, stability draft; human review outstanding. The artefact is `notes/artefacts/research-engineering-validation/derivations.tex` (under the map candidate, keeping the file whole).
+All four: verification partly checked 2026-10-15, stability draft; human review outstanding.
 
 - `meth:sharpe-ratio-standard-error`: Lo's IID and GMM standard errors and the time-aggregation factor eta(q). Partly checked 2026-10-17, draft.
 - `meth:deflated-sharpe-ratio`: Bailey and López de Prado's expected maximum Sharpe ratio and deflated Sharpe ratio, with their example reproduced. Partly checked 2026-10-17, draft.
@@ -64,13 +64,9 @@ Cross-referenced, not owned here and not changed: `meth:relative-performance-eva
 - ev:signal-decay-crowding: a study that measures crowding by the decay of a delayed signal, as Narang suggests without evidence. The two crowding studies read at abstract level (`w3-kyle-crowded-markets`, `w4-chincarini-crowded-anomalies`) measure crowding from holdings or fire-sale dislocations instead.
 - data:historical-borrow-availability: a point-in-time source of borrow fees and hard-to-borrow status for short-side backtests. Nasdaq's daily Regulation SHO threshold lists (public from January 2005) cover only fails-to-deliver thresholds and are in `data:derived-market-statistics`; belongs to `point-in-time-data`.
 
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. No legacy file lists this pathway; its backtest evaluation review material came from a file mapped to the section overview.
-
 ## What changed in my view or practice
 
 ## Questions carried forward
 
-- Which edition did the legacy notes follow? They match the 2024 third edition in wording and order, but the catalogue does not establish its edition for `s7-narang`.
+- Which edition of `s7-narang` do the research-chapter entries follow? They match the 2024 third edition in wording and order, but the catalogue does not establish its edition.
 - Narang's information ratio uses a zero benchmark and his Sterling ratio a downside deviation; check standard definitions before any formula entry uses these names.

@@ -1,7 +1,7 @@
 ---
 key: macro-nowcasting-signals
 section: multi-asset-systematic-macro
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Nowcasting, real-time macro data and macro trading signals
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: build a real-time nowcast and surprise index fr
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the indicator blocks of the legacy chapter (growth, inflation, employment, external, fiscal, consumption, housing, business, demographics) and Gliner's equity leading indicators; `02_transmission_maps.tex` named this pathway as a candidate. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), the FOMC's Statement on Longer-Run Goals and the BLS program page as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), the FOMC's Statement on Longer-Run Goals and the BLS program page as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,16 +22,16 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:macroeconomic-indicators`: Gliner's indicator families, the FOMC's headline-PCE goal (Gliner's "core PCE" corrected) and his demographic table read column by column.
 - `meth:equity-macro-leading-indicators`: commodity prices, CDX HY, ISM, the Baltic Dry Index, consumer confidence and AUD implied volatility as Gliner's equity indicators, untested.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
-macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:bls-ces-scope` resolved (CES scope from the BLS Handbook of Methods and CES FAQ: nonprofits are in scope, the other legacy exclusions are right; release typically on the third Friday after the reference week); `data:demographic-projections-current` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:bls-ces-scope` resolved; `data:demographic-projections-current` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
 Second macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:demographic-projections-current` resolved (UN World Population Prospects 2024, medium variant, five-year age groups: 15-64 and 35-69 peak years for the thirteen Table 12.2 countries, with several moved by decades; the Census Bureau's International Database API now requires a key). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 
@@ -42,11 +42,6 @@ Audit correction of 2026-10-16 (`def:macroeconomic-indicators` Practice): the se
 Cross-referenced, not owned here: `data:us-macro-release-calendar` (`macro-announcements-policy`); `meth:macro-event-queries` (`macro-announcements-policy`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
-
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

@@ -39,10 +39,6 @@ derivatives and empirical validation (2026-10-17) (source verification and bound
 - meth:large-covariance-comparison: the checkpoint's comparison of sample, linear-shrinkage, nonlinear-shrinkage and POET covariance by out-of-sample minimum-variance risk on a large equity universe; the estimators are in `meth:portfolio-covariance-estimation`, but no equity return panel is retained and the nonlinear formula is not transcribed.
 - ev:tail-index-estimation: peaks-over-threshold tail-index and expected-shortfall estimation and their threshold sensitivity (`wide-embrechts-extremal`, not obtained).
 
-## Legacy candidate material
-
-None.
-
 ## What changed in my view or practice
 
 ## Questions carried forward

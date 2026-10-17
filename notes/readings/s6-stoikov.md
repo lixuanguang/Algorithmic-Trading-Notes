@@ -2,12 +2,10 @@
 key: s6-stoikov
 pathways: [market-making-lob, execution-market-making]
 version: 2008 journal article, Quantitative Finance 8(3), 217-224; author-hosted journal PDF
-sections: 1-3 (checked for the migration pilot); source verification (2026-10-17): secs. 2.3 and 3.1 (pp. 219-221) rechecked as page images in the same author-hosted PDF, downloaded again
+sections: 1-3; source verification (2026-10-17): secs. 2.3 and 3.1 (pp. 219-221) rechecked as page images in the same author-hosted PDF, downloaded again
 read:
 status: draft
 ---
-
-Prepared on 2026-10-14 by the compendium migration pilot from source checks, not from study: the headings that need your own reading are left empty.
 
 source verification (2026-10-17) (source checks, not study): the infinite-horizon reservation prices of sec. 2.3 were recomputed from the stated objective; the printed bid matches the indifference definition and the printed ask does not (it breaks symmetry at q = 0), recorded in `mod:avellaneda-stoikov` as an apparent misprint.
 

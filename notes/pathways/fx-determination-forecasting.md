@@ -1,7 +1,7 @@
 ---
 key: fx-determination-forecasting
 section: currency-markets
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Exchange-rate determination, forecasting and order flow
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: test exchange-rate forecasts against a random w
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the FX valuation block of the legacy chapter; `02_transmission_maps.tex` named this pathway as a candidate. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `meth:fx-valuation-signals`: Gliner's currency factors from equity flows to rate differentials, with his Balassa--Samuelson and Meese--Rogoff descriptions corrected.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -47,10 +47,6 @@ Cross-referenced, not owned here: `mod:fx-carry-trade` (`fx-premia`); `def:macro
 ## Entry backlog
 
 - ev:fx-valuation-factors-oos: out-of-sample tests of Gliner's other factors (equity flows, sovereign CDS, risk reversals, trade and TWI, export-partner growth, debt, GDP per capita), which need data not used here. Relative PPP and the short-rate differential are tested: forecasts not supported against a random walk; a carry portfolio narrowly supported as a statistical return on monthly-average prices.
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

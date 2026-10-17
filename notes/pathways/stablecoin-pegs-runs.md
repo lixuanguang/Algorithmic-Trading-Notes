@@ -39,10 +39,6 @@ derivatives and empirical validation (2026-10-17) (source verification and bound
 
 - ev:stablecoin-peg-panel: the checkpoint's daily panel of prices, mints and redemptions, supply by chain and reserves for one fiat-backed and one crypto-collateralised coin; no such data retained. The guide's reading note for `cd-anadu-2023` says the break-the-buck threshold is USD 0.99, while the paper estimates USD 1 (noted in `ev:stablecoin-runs`).
 
-## Legacy candidate material
-
-None.
-
 ## What changed in my view or practice
 
 ## Questions carried forward

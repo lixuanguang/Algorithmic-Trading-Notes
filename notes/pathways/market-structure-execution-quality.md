@@ -1,7 +1,7 @@
 ---
 key: market-structure-execution-quality
 section: execution-trading-costs
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Market structure rules, fees and execution quality
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: explain how fragmentation, dark trading, fees, 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration transaction-cost analysis review (`notes/source-review-index.md`) and extended by smart order routing review, which migrated the smart-order-routing file mapped to this pathway alone (routing across fragmented venues and the effect of fees). transaction-cost analysis review opened it because the legacy transaction-cost file's best-execution, retail execution-quality and broker-conflict blocks belong to this pathway's outcome (retail routing and execution quality) rather than to the overview. The entries come from migration and source checking against Harris (`alpha-harris`, 2002) and Kissell (`s7-kissellscience`, on no route); their rules and figures are as of 2002 and 2014, and none of this pathway's readings has been read. That is not study of the readings.
+Not mastered and not consolidated: no dates in `notes/log.md`. The entries come from source checking against Harris (`alpha-harris`, 2002) and Kissell (`s7-kissellscience`, on no route); their rules and figures are as of 2002 and 2014, and none of this pathway's readings has been read. That is not study of the readings.
 
 ## Outcome in my own words
 
@@ -22,56 +22,55 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration transaction-cost analysis / source review / optimal execution / high-frequency strategies reviews:
+Written in transaction-cost analysis / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:best-execution`: Harris's three standards of best execution, speed and price as dimensions of execution quality, NBBO and price-improvement practice, Rules 11Ac1-5 and 11Ac1-6 (as of 2002), and Kissell's process definition.
 - `def:broker-agency-conflicts`: the broker principal–agent problem; dual trading and internalisation, order preferencing and payment for order flow, soft dollars and directed brokerage, dishonest practices; venue rebates (Kissell).
 
-Written in migration smart order routing / source review / optimal execution / high-frequency strategies reviews:
+Written in smart order routing / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:smart-order-routing`: venue-specific marketability, Lehalle and Laruelle's three-broker example (recomputed; one misprint), latency and mirrored liquidity, liquidity seekers.
 - `res:fee-adjusted-venue-choice`: when a worse price with lower fees is cheaper; buy and sell thresholds; per-share fees.
 - `meth:passive-order-split`: queue, distance and trading-rate rankings and the minimum-resting-time split (the book's eq. (3.4) sign misprint corrected).
 - Merged: the U.S. and European regimes into `def:best-execution`, with 17 CFR 242.611 checked in the eCFR text of 13 October 2026; order preferencing and a routing-conflict condition into `def:broker-agency-conflicts`.
 
-All five: verification partly checked 2026-10-15, stability draft; human review outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`. The spread measures they use are owned by `execution-market-making` and cross-referenced, not listed here.
+All five: verification partly checked 2026-10-15, stability draft; human review outstanding. The spread measures they use are owned by `execution-market-making` and cross-referenced, not listed here.
 
-Written in migration order books and order flow / source review / optimal execution / execution control reviews, from the tick-size blocks of the legacy limit-order-book-mechanics file (a map candidate; the pathway's outcome names tick size):
+Written in order books and order flow / source review / optimal execution / execution control reviews:
 
 - `def:tick-size`: the grid, regimes, relative tick, binding probability and leeway, queue jumping and price clustering.
 - `ev:tick-size-market-quality`: Lehalle and Laruelle's FTSE 100 evidence (April 2012) and their account of the decimalisation studies.
 - `mod:harris-discretised-spread`: Harris's latent-spread model as Lehalle and Laruelle present it, with the tick-reduction counterfactual in corrected units (computed in `notes/artefacts/market-simulation/order-flow-checks.py`).
 
-All three: partly checked 2026-10-16, draft; human review outstanding; no current tick rule is stated. Artefact: `notes/artefacts/execution-market-making/limit-order-book-mechanics.tex`.
+All three: partly checked 2026-10-16, draft; human review outstanding; no current tick rule is stated.
 
-Written in migration order matching and fragmentation / source review / optimal execution / execution control reviews, from the legacy hidden-liquidity-and-dark-trading and cross-venue-routing-and-fragmentation files (both map candidates; the outcome names fragmentation and dark trading):
+Written in order matching and fragmentation / source review / optimal execution / execution control reviews:
 
-- `def:dark-pools-crossing`: dark pools and crossing networks, derivative pricing and its risks, the European two-book design, motives, evidence as Lehalle and Laruelle report it (the legacy "volatile periods" qualified: true of dark turnover, not of dark share), gaming and internal crossing.
+- `def:dark-pools-crossing`: dark pools and crossing networks, derivative pricing and its risks, the European two-book design, motives, evidence as Lehalle and Laruelle report it, gaming and internal crossing.
 - `meth:venue-market-share`: value and trade-count shares, the ex-fixing share (Lehalle and Laruelle's printed formula corrected), aggregation, estimation error and time-of-day effects.
 - `meth:fragmentation-concentration-metrics`: FEI, coverage, Gini and two-sample KS, with "H0 accepted" corrected to failure to reject.
-- `mod:sor-market-share-dynamics`: Lehalle and Laruelle's toy model of routers and shares, with three printed slips and the first-order condition corrected, and the legacy variance-feedback "finding" reclassified as a model result.
+- `mod:sor-market-share-dynamics`: Lehalle and Laruelle's toy model of routers and shares, with three printed slips and the first-order condition corrected.
 - `ev:european-fragmentation-evidence`: fragmentation and liquidity, spreads and share, resilience, intraday share, the 2010 Euronext outage, and Spain as a confounded comparison.
 
-Changed in order matching and fragmentation review: `def:smart-order-routing` (temporal then spatial splitting, execution-policy records, aggregation, duplicate liquidity, average trade size, Harris's consolidation mechanisms and a derived cross-venue bound) and `res:fee-adjusted-venue-choice` (maker--taker and fee complexity). All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/market-structure-execution-quality/hidden-liquidity-dark-trading.tex`, `cross-venue-routing-fragmentation.tex`, `order-routing-fragmentation-checks.py`. Six exposure blocks and three block-trading blocks of the dark-trading file were merged into the order-exposure and block-trade entries owned by `execution-trading-costs` (a routing exception; listed in that note). Changed in the order matching and fragmentation review follow-up: `meth:venue-market-share` (ex-fixing domain and the equality condition $mp(1-\mathfrak M)=0$; the fixed-weight variance of a stock's share against its index, with count and value shares distinguished; the textbook's pooled form recorded as unsupported) and `mod:sor-market-share-dynamics` (size-weighted marginal condition with interior and boundary cases; the order matching and fragmentation review reproduction claim withdrawn and replaced by an illustrative variant that concentrates).
+Changed in order matching and fragmentation review: `def:smart-order-routing` (temporal then spatial splitting, execution-policy records, aggregation, duplicate liquidity, average trade size, Harris's consolidation mechanisms and a derived cross-venue bound) and `res:fee-adjusted-venue-choice` (maker--taker and fee complexity). All partly checked 2026-10-16, draft; human review outstanding. Checks: `order-routing-fragmentation-checks.py`. The order-exposure and block-trade material is in entries owned by `execution-trading-costs`. Changed in the order matching and fragmentation review follow-up: `meth:venue-market-share` (ex-fixing domain and the equality condition $mp(1-\mathfrak M)=0$; the fixed-weight variance of a stock's share against its index, with count and value shares distinguished; the textbook's pooled form recorded as unsupported) and `mod:sor-market-share-dynamics` (size-weighted marginal condition with interior and boundary cases; the order matching and fragmentation review reproduction claim withdrawn and replaced by an illustrative variant that concentrates).
 
-Written in migration market design and liquidity / source review / optimal execution / execution control reviews, from the legacy regulatory-and-structural-evolution file of the foundations folder (a map candidate; the outcome names U.S. and EU rule changes, fragmentation and dark trading):
+Written in market design and liquidity / source review / optimal execution / execution control reviews:
 
 - `def:market-regulation-design`: who regulates, design questions, Harris's four-step evaluation and his stated objectives, public and private services, regulatory risk and capture, unintended consequences (Harris chaps. 3, 9, 26, 28).
-- `mech:venue-competition-fragmentation`: the order-flow externality (with the legacy inequality restated), why markets segment, cross-market precedence and the race to the bottom, Lehalle and Laruelle's post-MiFID phases and their inconsistent dates, technology fragmentation, consolidated tapes (Harris chap. 26; Hasbrouck chap. 1; Lehalle and Laruelle).
+- `mech:venue-competition-fragmentation`: the order-flow externality, why markets segment, cross-market precedence and the race to the bottom, Lehalle and Laruelle's post-MiFID phases and their inconsistent dates, technology fragmentation, consolidated tapes (Harris chap. 26; Hasbrouck chap. 1; Lehalle and Laruelle).
 - `rule:us-equity-market-structure`: decimal pricing (2000--2001), Regulation NMS (2005), Rule 612 as amended in 2024 with its stay and the exemptions to November 2027, single-stock and market-wide circuit breakers and LULD (2010--2019), stub quotes, Rule 15c3-5 and the CAT rule, each from Federal Register, eCFR or SEC texts.
 - `rule:eu-trading-venue-transparency`: MiFID and MiFID II dates with their postponements, venue types, waivers, the double volume cap (4 and 8 percent, 2018 to 28 September 2025) replaced by the single 7 percent cap (from 29 September 2025; first results 9 October 2025), and the payment-for-order-flow ban, from EU texts retrieved through the Publications Office and ESMA statements.
 - `mech:circuit-breakers-trading-halts`: halts, limits, taxes, margins and collars; when a halt helps; gravitational effect, propagation and related instruments; incidence by trader type; MiFID II Art. 48(5) (Harris chap. 28; Lehalle and Laruelle sec. 2.5.3).
 
-Changed in market design and liquidity review: `def:tick-size` (ticks and precedence, the race to the bottom, the 2009 European tick war, MiFID II Art. 49), `def:best-execution` (Lehalle and Laruelle's best execution after fragmentation), `def:dark-pools-crossing` (broker crossing networks), `def:smart-order-routing` (latency and book state; the "Nyquist--Shannon latency bound" not adopted as a theorem, restated as a staleness probability), `def:broker-agency-conflicts` (order-flow arrangements, internal crossing, the EU payment-for-order-flow ban) and `meth:venue-market-share` (reference-price auctions). All partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/artefacts/market-structure-execution-quality/regulatory-structural-evolution.tex`; checks in `notes/artefacts/execution-market-making/liquidity-market-design-checks.py`.
+Changed in market design and liquidity review: `def:tick-size` (ticks and precedence, the race to the bottom, the 2009 European tick war, MiFID II Art. 49), `def:best-execution` (Lehalle and Laruelle's best execution after fragmentation), `def:dark-pools-crossing` (broker crossing networks), `def:smart-order-routing` (latency and book state; the "Nyquist--Shannon latency bound" not adopted as a theorem, restated as a staleness probability), `def:broker-agency-conflicts` (order-flow arrangements, internal crossing, the EU payment-for-order-flow ban) and `meth:venue-market-share` (reference-price auctions). All partly checked 2026-10-16, draft; human review outstanding. Checks: `notes/artefacts/execution-market-making/liquidity-market-design-checks.py`.
 
 Corrected in the market design and liquidity review follow-up, 2026-10-16: `rule:eu-trading-venue-transparency` (the systematic-internaliser definition: the 2014 wording dated as historical, the current wording from Directive (EU) 2024/790, its equity scope, the removed substantial-basis criterion and the opt-in retained for non-equity instruments, supported by Delegated Regulation (EU) 2026/392 recital 1; transposition due 29 September 2025, national measures unchecked) and `rule:us-equity-market-structure` (aggregate odd-lot depth exempted to May 2028 by Release 34-104612, the best odd-lot order not exempted; NYSE's market-wide circuit breakers made permanent by Release 34-94441 of March 2022; the 2024 amendments effective since 9 December 2024 with compliance exempted to November 2027). Partly checked, draft.
 
-Changed in migration dealer models and information / source review / optimal execution / execution control reviews, from three blocks assigned here and four routed here: `mech:venue-competition-fragmentation` (price formation across venues with Hasbrouck's information shares, chap. 10, pp. 99--105; the systemic-risk caveat against Lehalle and Laruelle pp. 169 and 177), `ev:european-fragmentation-evidence` (the Euronext outage of 13 October 2010, pp. 183--185) and `meth:venue-market-share` (proportions in general, Wald against Wilson coverage computed, sampling units; four blocks of the data-engineering file, a routing exception). Partly checked 2026-10-16, draft. Artefacts: `notes/artefacts/market-structure-execution-quality/price-discovery-fragmentation-outage.tex` and, for the routed blocks, `notes/artefacts/lob-deep-learning/microstructure-data-engineering.tex`.
+Changed in dealer models and information / source review / optimal execution / execution control reviews: `mech:venue-competition-fragmentation` (price formation across venues with Hasbrouck's information shares, chap. 10, pp. 99--105; the systemic-risk caveat against Lehalle and Laruelle pp. 169 and 177), `ev:european-fragmentation-evidence` (the Euronext outage of 13 October 2010, pp. 183--185) and `meth:venue-market-share`. Partly checked 2026-10-16, draft.
 
 - `rule:spoofing-securities-markets`: EU market-abuse law on order placement and cancellation (MAR Art. 12, Annex I; 2016/522 Annex II 'layering and spoofing') and U.S. Exchange Act sec. 9(a); FINRA rules and enforcement not read. Partly checked 2026-10-17, draft.
 
 ## Entry backlog
-
 
 - ev:tick-size-primary-studies: Bacidore et al. (2003), Jones and Lipson (2001), Ahn et al. (1996), Harris (1996), the 2000 journal version of Goldstein and Kavajecz, and Harris's (1994) projection tables: journal paywalls; Jones and Lipson's Columbia working paper 99-3 is listed by RePEc only with a publisher link (rechecked 2026-10-17).
 
@@ -96,10 +95,6 @@ method validation (2026-10-17) (audit repairs and a source-review coverage; sour
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:circuit-breaker-effects` narrowed (Chen, Gao, He, Jiang and Xiong on Shenzhen daily price limits (NBER WP 24014, abstract and sec. 1) merged into `mech:circuit-breakers-trading-halts`); `ev:dark-pool-price-discovery` narrowed (the published version's abstract (Financial Management 2022) adds 2020: dark pools improve spreads in 2009 but worsen market quality for large caps in 2020; full text not obtained); `rule:spoofing-securities-markets` narrowed (FINRA Regulatory Notice 17-22 read: Rule 5210.03 has no express intent element and supports an expedited cease-and-desist order; enforcement actions unread); `rule:block-print-trade-through-current` narrowed (NYSE Rules 76 and 127 (compilation of May 2019) read: a block cross outside the quote trades with the NYSE best bid or offer and better-priced book orders first, then has priority at its price; merged into `def:block-trade`); `ev:market-share-variance-claim` narrowed (the only formal counterpart in Lehalle and Laruelle is an appendix assumption; no study cited). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
 derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): audit repairs: `rule:spoofing-securities-markets` corrected: MAR's Article 12 limbs carry no general intent requirement (ESMA/2015/224), criminal liability needs intent (Directive 2014/57/EU), Rule 10b-5 needs scienter, and FINRA Rule 5210.03 is not an exception. The `rule:spoofing-securities-markets`, `ev:circuit-breaker-effects` and `ev:dark-pool-price-discovery` questions: no FINRA action under 5210.03 found; the MWCB Working Group's report merged into `mech:circuit-breakers-trading-halts`; Buti, Rindi and Werner's published paper still blocked. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. dealer models and information review migrated the three blocks assigned here and removed the legacy microstructure chapter; no legacy file now lists this pathway.
 
 ## What changed in my view or practice
 

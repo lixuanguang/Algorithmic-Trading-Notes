@@ -1,7 +1,7 @@
 ---
 key: otc-fixed-income-trading
 section: execution-trading-costs
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Fixed-income and OTC electronic trading
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: measure what clients pay in bond, swap and FX d
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration fixed-income market structure review (`notes/source-review-index.md`), which migrated the legacy fixed-income-microstructure file mapped to this pathway alone. The entries come from migration and source checking: `wide-bsv-fi-survey` in its published JFQA version, read in part; the abstracts only of `wide-edwards-harris-piwowar`, `wide-hendershott-madhavan` and `wide-ohara-zhou-electronic`; FINRA Rules 6730 and 6750 and filing pages as displayed on 15 October 2026; ESMA's statement of 10 October 2025 and transparency manual of 12 May 2026. That is not study of the readings, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by fixed-income market structure review (`notes/source-review-index.md`). The entries come from source checking: `wide-bsv-fi-survey` in its published JFQA version, read in part; the abstracts only of `wide-edwards-harris-piwowar`, `wide-hendershott-madhavan` and `wide-ohara-zhou-electronic`; FINRA Rules 6730 and 6750 and filing pages as displayed on 15 October 2026; ESMA's statement of 10 October 2025 and transparency manual of 12 May 2026. That is not study of the readings, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,13 +22,13 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration fixed-income market structure / source review / optimal execution / high-frequency strategies reviews:
+Written in fixed-income market structure / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:fixed-income-market-structure`: segments (Treasuries, structured products and TBAs, corporate and municipal bonds) kept apart from trading protocols (runs, voice, RFQ, BWIC/OWIC), venues (interdealer platforms, RFQ platforms, all-to-all) and dealer risk-bearing (principal trading, prearranged trades, reduced capital commitment, nonbank dealers); "dealer balance sheet as venue" treated as a metaphor; electronic RFQ evidence at abstract level.
 - `rule:us-eu-bond-transparency`: TRACE reporting (Rule 6730, 15-minute outer limit, the one-minute proposal and its supersession) kept apart from dissemination (Rule 6750 and its exceptions, Treasuries), the 2002–2017 phase-in history, and EU post-trade deferrals for bonds from 2 March 2026 (ESMA examples); EU pre-trade and U.K. regimes not checked. The fixed-income market structure review follow-up (same day) separated the presently effective non-member-affiliate exclusion from the member-affiliate expansion (SR-FINRA-2026-009, effective 2 August 2027, whose wording the rulebook already displays).
 - `ev:bond-transparency-trading-costs`: post-trade transparency associated with lower customer costs in U.S. corporate bonds and other segments, costs falling with trade size; the survey's limits (completed trades only, large orders, optimal transparency unresolved); pre-trade transparency as an open question; what data clients can measure with, including Rule 2232's mark-up disclosure for non-institutional customer principal trades with same-day offsetting trades (follow-up).
 
-All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/otc-fixed-income-trading/derivations.tex`.
+All three: verification partly checked 2026-10-15, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -46,10 +46,6 @@ Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quot
 
 - ev:credit-derivative-swap-trading-structure: measured shares of dealer-to-client RFQ against order-book trading in swaps, and the swap readings. The CFTC's clearing and SEF rules, its made-available-to-trade determinations and TW SEF's 2023 submission are merged.
 - rule:uk-bond-transparency: the size thresholds of PS24/14's Table 8 by issuer, issue size and maturity, and the Handbook text (MAR 11); the four deferral groups and the December 2025 start are in `rule:us-eu-bond-transparency`.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. After fixed-income market structure review no legacy file lists this pathway as its single candidate.
 
 ## What changed in my view or practice
 

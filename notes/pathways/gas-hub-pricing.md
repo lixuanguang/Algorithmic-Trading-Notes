@@ -1,7 +1,7 @@
 ---
 key: gas-hub-pricing
 section: power-gas-environmental
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Natural gas markets: hub pricing, oil indexation, market integration and supply shocks
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: explain how open access and liberalisation crea
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the natural-gas block of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
-- `def:natural-gas-market`: producers, shale, flaring (the legacy's regulatory explanation corrected), LNG and the Henry Hub contract as of 2013.
+- `def:natural-gas-market`: producers, shale, flaring, LNG and the Henry Hub contract as of 2013.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -53,10 +53,6 @@ Cross-referenced, not owned here: `def:crude-oil-markets` (`crude-oil-products`)
 ## Entry backlog
 
 - conv:henry-hub-contract-terms: an exhaustive amendment history of NYMEX Chapter 220. NYMEX's filings on the CFTC's listing from September 2019 to October 2026 (281 scanned) show no Chapter 220 text amendment; Submissions 16-080, 17-048, 18-465, 19-158, 19-198 and 20-166 were read; filings before September 2019 were not scanned systematically.
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

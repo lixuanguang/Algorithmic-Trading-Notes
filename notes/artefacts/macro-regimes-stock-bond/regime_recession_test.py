@@ -22,7 +22,7 @@ results were seen; nothing here is preregistered:
      regime indicator, and prints the number of distinct episodes (runs of consecutive regime quarters).
 
 v1 protocol, as written before v1's results by the batch record's account (committed with them, so not preregistered):
-Hypothesis (legacy map, def:macro-regime-asset-map): in recession, yields fall, credit spreads widen, equities fall,
+Hypothesis (def:macro-regime-asset-map): in recession, yields fall, credit spreads widen, equities fall,
   the dollar rises and defensive sectors lead. Commodities are not tested (no public, licence-free series used).
 Regime, real time. Sahm-type rule on the Philadelphia Fed's Real-Time Data Set unemployment vintages (RUC, quarterly
   vintages of monthly data, 1965Q4-2026Q3): in vintage v, with L the last month reported, signal = 1 if the

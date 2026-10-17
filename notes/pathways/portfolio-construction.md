@@ -1,7 +1,7 @@
 ---
 key: portfolio-construction
 section: portfolio-construction-risk
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Portfolio construction, estimation error and risk models
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: construct a constrained portfolio from noisy fo
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration transaction-cost models review (`notes/source-review-records.md`). the topic review routed the introduction and the *Types of Transaction Cost Models* block of the legacy transaction-cost-models file (`sysinv/txncostmod.tex`, Narang's systematic-investing notes) here, against the file's map candidate, the section overview `portfolio-construction-risk`. The overview's outcome makes costs explicit and testable in a portfolio, but its goal for constrained portfolios "with factor risk models, shrinkage and costs" names this pathway. The entry comes from source checking against `s7-narang` (third edition, 2024), which is not a reading of this pathway. portfolio construction review migrated the file mapped to this pathway alone (`sysinv/portconstmod.tex`), checking it against Narang's chap. 6 and reading one of the pathway's readings, Boyd et al. (`wide-boyd-markowitz-seventy`, authors' version of 5 January 2024, selected sections), for method mechanics. That is source checking, not study: no reading has been studied, and the checkpoint was not attempted. financial data and labels review (16 October 2026) routed one block of López de Prado's data-structures chapter here, checked against `alpha-afml`, which is not a reading of this pathway.
+Not mastered and not consolidated: no dates in `notes/log.md`. The overview's outcome makes costs explicit and testable in a portfolio, but its goal for constrained portfolios "with factor risk models, shrinkage and costs" names this pathway. The entry comes from source checking against `s7-narang` (third edition, 2024). That is source checking, not study: no reading has been studied, and the checkpoint was not attempted. financial data and labels review (16 October 2026) added material from López de Prado's data-structures chapter, checked against `alpha-afml`, which is not a reading of this pathway.
 
 ## Outcome in my own words
 
@@ -22,44 +22,44 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration transaction-cost models / source review / optimal execution / high-frequency strategies reviews:
+Written in transaction-cost models / source review / optimal execution / high-frequency strategies reviews:
 
 - `mod:portfolio-transaction-cost-function`: Narang's transaction cost model as an input to portfolio construction, not a cost minimiser; his flat, linear, piecewise-linear and quadratic forms written as total cost against signed size, with units, the per-unit form of each, and the square-root law as a 3/2-power total; his exhibits read as schematic against an assumed convex curve, so no general ranking of accuracy or computational cost is adopted; his note 2's conflation of per-share and total exponents recorded.
 
 Changed in the transaction-cost models review follow-up, 2026-10-15: the entry's notation is now for one equity in shares ($q$, $V$ in shares, $P$ in currency per share), with per-share cost defined only for $q\neq0$; every form has nonnegative coefficients and $C(0)=0$; the piecewise-linear form is a convex hinge sum, equal to a maximum of lines only with matching intercepts; the 3/2-power form is written out; and the assumptions (symmetric, nonnegative, expected, one instrument and period) are stated, with contracts and notional left to their own units.
 
-Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/portfolio-construction-risk/transaction-cost-models.tex` (under the map candidate, keeping the file whole).
+Verification partly checked 2026-10-15, stability draft; human review outstanding.
 
-Written in migration portfolio construction / source review / optimal execution / high-frequency strategies reviews, from Narang's chap. 6, "Portfolio Construction Models" (`s7-narang`, third edition, pp. 99-125), with Boyd et al. for mechanics:
+Written in portfolio construction / source review / optimal execution / high-frequency strategies reviews, from Narang's chap. 6, "Portfolio Construction Models" (`s7-narang`, third edition, pp. 99-125), with Boyd et al. for mechanics:
 
-- `meth:rule-based-position-sizing`: the two families; equal position, equal risk, alpha-driven and decision-tree weighting; Narang's two arguments against unequal weights, placed where he puts them (the legacy filed the second under equal weighting); Exhibit 6.1's weights shown to be inverse-variance; inverse volatility kept apart from equal risk contribution under a full covariance matrix (three-asset example computed).
-- `mod:mean-variance-portfolio-optimisation`: Markowitz's two forms and their closed form (Boyd et al.), Sharpe maximisation as a separate objective, expected drawdown outside the model, the unconstrained single-asset claim corrected by Narang's own example, inputs (GARCH prevalence as his unsourced claim; correlation grouping as his two-pair illustration), constraints, costs (cross-referenced), solver claims against Boyd et al.'s Table 2, Black-Litterman acting on means not correlations, resampling described by Narang as reordering one series (which keeps that series' mean and variance; corrected in the follow-up below), and the legacy data-mining item not adopted.
+- `meth:rule-based-position-sizing`: the two families; equal position, equal risk, alpha-driven and decision-tree weighting; Narang's two arguments against unequal weights, placed where he puts them; Exhibit 6.1's weights shown to be inverse-variance; inverse volatility kept apart from equal risk contribution under a full covariance matrix (three-asset example computed).
+- `mod:mean-variance-portfolio-optimisation`: Markowitz's two forms and their closed form (Boyd et al.), Sharpe maximisation as a separate objective, expected drawdown outside the model, the unconstrained single-asset claim corrected by Narang's own example, inputs (GARCH prevalence as his unsourced claim; correlation grouping as his two-pair illustration), constraints, costs (cross-referenced), solver claims against Boyd et al.'s Table 2, Black-Litterman acting on means not correlations, resampling described by Narang as reordering one series (which keeps that series' mean and variance; corrected in the follow-up below).
 - `meth:signal-portfolio-allocation`: Narang's account of Grinold and Kahn's factor-portfolio optimisation, his 0.2% example checked, "not more than about 20" kept as his statement, Grinold and Kahn unread.
 
 Changed in portfolio construction review: `mod:portfolio-transaction-cost-function` now cites Boyd et al. secs. 2.4 and 4.3 for its remarks on convex cost terms and nonconvex constraints.
 
 Changed in the portfolio construction review follow-up, 2026-10-15: `mod:mean-variance-portfolio-optimisation` now states the closed form's conditions (positive-definite $\Sigma$, $\gamma>0$, a feasible volatility target), defines $\nu^\star$ as the budget constraint's multiplier, says a singular $\Sigma$ needs separate treatment rather than a pseudoinverse by default, and adds that ignoring risk without bounds can make the problem unbounded; its resampling passage now separates one series, a common row permutation (covariance kept) and independent permutations (covariance changed); and its machine-learning passage separates forecasting, learning allocation weights and optimisation. `meth:rule-based-position-sizing` now gives the ERC weights as about 29.93, 29.93 and 40.15 percent (40.2 was a rounding slip) and requires positive portfolio variance for normalised risk contributions. `mod:portfolio-transaction-cost-function` now says which pathway reading was read.
 
-All three new entries partly checked 2026-10-15, draft; human review outstanding. Their artefact is `notes/artefacts/portfolio-construction-risk/portfolio-construction-models.tex`, a new file beside transaction-cost models review's.
+All three new entries partly checked 2026-10-15, draft; human review outstanding.
 
-Written in migration risk models / source review / optimal execution / high-frequency strategies reviews, from Narang's chap. 4, "Risk Models" (`s7-narang`, third edition, pp. 71-84), with Boyd et al. secs. 3.3 and 4.2:
+Written in risk models / source review / optimal execution / high-frequency strategies reviews, from Narang's chap. 4, "Risk Models" (`s7-narang`, third edition, pp. 71-84), with Boyd et al. secs. 3.3 and 4.2:
 
-- `mod:factor-risk-model`: risk as an unforecast exposure and the risk model as an input to the portfolio decision, not the decision; the factor model $r=Ff+\epsilon$ with $\Sigma=F\Sigma_fF^\top+D$ and its assumptions; diversification of residual risk under stated correlation conditions (computed; corrected in the risk models review follow-up); economic against PCA factors, whose labels are after-the-fact; exposure limits and neutrality, with zero covariance kept apart from zero exposure (computed); the legacy market, size, value and momentum list, not in Narang's chapter, read as roles that depend on the strategy; "unintended" not the same as "uncompensated"; updating not evidence of better forecasts.
+- `mod:factor-risk-model`: risk as an unforecast exposure and the risk model as an input to the portfolio decision, not the decision; the factor model $r=Ff+\epsilon$ with $\Sigma=F\Sigma_fF^\top+D$ and its assumptions; diversification of residual risk under stated correlation conditions (computed; corrected in the risk models review follow-up); economic against PCA factors, whose labels are after-the-fact; exposure limits and neutrality, with zero covariance kept apart from zero exposure (computed); "unintended" not the same as "uncompensated"; updating not evidence of better forecasts.
 - Merged into `mod:mean-variance-portfolio-optimisation`: hard limits against penalties, with Boyd et al.'s softening (a penalty replaces a limit; mandated limits stay hard); limit levels from theory or data; where limits apply; volatility and dispersion read as parts of one covariance model, with Narang's dispersion inference and VaR description not adopted.
 
 Changed in the risk models review follow-up, 2026-10-15: `mod:factor-risk-model` now treats a diagonal residual covariance as sufficient, not necessary, for residual diversification (constant equicorrelation leaves a floor; correlation within disjoint pairs gives $0.108/n$ and still diversifies); the CVX-XOM pair is an approximate hedge that Narang says "substantially eliminated" market risk, exact only with equal betas; and his rule is quoted as no expectation of being compensated *sufficiently*, not of earning nothing.
 
-Both partly checked 2026-10-15, draft; human review outstanding. Their artefact is `notes/artefacts/portfolio-construction-risk/risk-models.tex`, a new file beside transaction-cost models / portfolio construction reviews's.
+Both partly checked 2026-10-15, draft; human review outstanding.
 
-Written in migration financial data and labels / source review / optimal execution / execution control reviews, routed here from the legacy AFML data-structures file (`ml-alternative-data/data/datastruct.tex`, map candidates `statistical-learning-foundations`, `financial-ml-evaluation`, `alternative-data-sources`), because allocating risk across a covariance matrix's principal components is a portfolio-construction method:
+Written in financial data and labels / source review / optimal execution / execution control reviews:
 
-- `mod:pca-risk-distribution-weights`: López de Prado's weights that deliver a chosen distribution of risk across principal components (`alpha-afml`, chap. 2, sec. 2.4.2, pp. 35-36), with the legacy's two formula slips corrected, the positive-eigenvalue requirement, the sign indeterminacy ($2^k$ allocations per risk distribution, $k$ the components given risk, when eigenvalues are distinct) and the estimation-error caveat for the smallest eigenvalues.
+- `mod:pca-risk-distribution-weights`: López de Prado's weights that deliver a chosen distribution of risk across principal components (`alpha-afml`, chap. 2, sec. 2.4.2, pp. 35-36).
 
-Partly checked 2026-10-16, draft; human review outstanding. Its artefact is `notes/artefacts/statistical-learning-foundations/financial-data-structures.tex` (the legacy file kept whole) and `afml-checks.py`.
+Partly checked 2026-10-16, draft; human review outstanding. Checks: `afml-checks.py`.
 
 method validation (2026-10-17):
 
-- `mod:black-litterman`: equilibrium returns, views and the posterior mean, with numerical checks; the legacy correlation claim corrected. Partly checked 2026-10-17, draft.
+- `mod:black-litterman`: equilibrium returns, views and the posterior mean, with numerical checks. Partly checked 2026-10-17, draft.
 - `meth:portfolio-covariance-estimation`: linear and nonlinear shrinkage of large covariance matrices, with an own simulation. Partly checked 2026-10-17, draft.
 
 Written in empirical extensions (2026-10-17) (source verification and bounded checks, not study or human review):
@@ -80,17 +80,13 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 ## Related entries owned elsewhere
 
-Cross-referenced, not owned here: `def:transaction-costs` and `meth:transaction-cost-analysis` (`execution-trading-costs`; the same legacy file's cost-components block was merged into the first, and is listed in that note); `mod:almgren-chriss-execution` (`execution-trading-costs`); `ev:square-root-impact` and `meth:almgren-impact-estimation` (`price-impact-execution`; the empirical shape of costs, not changed); `pit:backtest-cost-short-assumptions` (`backtest-inference`; the effect of misestimated costs, not changed); from portfolio construction review, `pit:parameter-overfitting` and `meth:backtest-evaluation-diagnostics` (`backtest-inference`) and `def:common-investor-contagion` (`funding-crowding`), cross-referenced and not changed; from risk models review, `def:quant-strategy-risk-sources` (`model-governance-controls`), cross-referenced and not changed, and the stub `meth:var-es-estimation-methods` in `risk-tail-systemic`, which holds this pathway's legacy statistical-methods block.
+Cross-referenced, not owned here: `def:transaction-costs` and `meth:transaction-cost-analysis`; `mod:almgren-chriss-execution` (`execution-trading-costs`); `ev:square-root-impact` and `meth:almgren-impact-estimation` (`price-impact-execution`; the empirical shape of costs, not changed);
 
 ## Entry backlog
 
 - res:no-trade-region: Davis and Norman's (1990) own paper (`w2-davis-norman`): no open copy; Shreve and Soner's account of it and their wealth-independent no-trade interval are in `mod:portfolio-transaction-cost-function`.
 - meth:resampled-efficiency: independent out-of-sample evidence on resampled efficiency (the entry's only evidence is the proponents' simulation) and the estimation-error critique of `wide-michaud-enigma`.
 - meth:portfolio-covariance-estimation: estimating a factor model's loadings, factor covariance and residual variances (`wide-connor-goldberg-korajczyk`), the nonlinear-shrinkage formula itself, and Engle's 2002 DCC paper (Engle and Sheppard's account is read). Shrinkage targets and intensity, POET, DCC's equations and the 2022 review's recommendations are in the entry.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. No legacy file now lists this pathway as a candidate: portfolio construction review migrated `sysinv/portconstmod.tex` and risk models review `sysinv/riskmod.tex`. The remaining files of Narang's notes, mapped to the overview `portfolio-construction-risk`, were migrated by systematic-investing architecture review, which removed the legacy chapter; their alpha, signal-combination and production material went to the overview, `equity-long-short-construction` and `model-governance-controls`, and none to this pathway. This says nothing about consolidation: the backlog is open and no reading has been studied.
 
 ## What changed in my view or practice
 

@@ -1,7 +1,7 @@
 ---
 key: macro-regimes-stock-bond
 section: multi-asset-systematic-macro
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Macro regimes, inflation and the stock–bond correlation
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: identify growth, inflation and volatility regim
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the regime-response blocks of the legacy chapter (relationship between assets, sector rotation, fixed income and commodities in regimes); `01_regimes.tex` named this pathway as a candidate, the others came from `02_transmission_maps.tex`. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,9 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
-- `def:macro-regime-asset-map`: the legacy's map of asset and sector responses to growth, recession, inflation, deflation, liquidity and geopolitical shocks, kept as hypotheses, with Gliner's risk-on/risk-off and sector-rotation passages.
-
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+- `def:macro-regime-asset-map`: a map of asset and sector responses to growth, recession, inflation, deflation, liquidity and geopolitical shocks, kept as hypotheses, with Gliner's risk-on/risk-off and sector-rotation passages.
 
 ## Source verification after macro markets and pricing review
 
@@ -47,10 +45,6 @@ Cross-referenced, not owned here: `def:global-macro-strategy` (`multi-asset-syst
 ## Entry backlog
 
 - ev:regime-asset-responses-tested: the map's growth, liquidity and geopolitical rows and Gliner's Figure 8.3 sector phases on real-time classifications, and other rules, horizons and non-U.S. assets for the rows tested. The recession, inflation-shock and deflation rows are tested on real-time vintages: no hypothesised sign is supported.
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

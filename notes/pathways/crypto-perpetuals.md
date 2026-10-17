@@ -1,7 +1,7 @@
 ---
 key: crypto-perpetuals
 section: digital-assets-prediction-markets
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Crypto perpetuals and cross-venue basis
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: reconcile spot, perpetual and dated-futures bas
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration crypto market structure review (`notes/source-review-index.md`), which routed all four blocks of the legacy crypto-market-microstructure file here, an exception to the file's map candidate `crypto-mm-microstructure`, whose outcome is the fee, impact, latency and adverse-selection terms of quoting one venue's order book; the blocks concern cross-venue structure, funding, margin and settlement. The entries come from migration and source checking against `s6-makarov` (2018 discussion paper), `roadmap-perpetual-pricing` (arXiv v2), `roadmap-perpetual-fundamentals` (arXiv v7, abstract only) and `gapclose-deribit-rules` (rulebook v2.0 and funding specification, retrieved 15 October 2026). That is not study of the readings, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by crypto market structure review (`notes/source-review-index.md`). The entries come from source checking against `s6-makarov` (2018 discussion paper), `roadmap-perpetual-pricing` (arXiv v2), `roadmap-perpetual-fundamentals` (arXiv v7, abstract only) and `gapclose-deribit-rules` (rulebook v2.0 and funding specification, retrieved 15 October 2026). That is not study of the readings, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,14 +22,14 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration crypto market structure / source review / optimal execution / high-frequency strategies reviews:
+Written in crypto market structure / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:crypto-venue-instrument-structure`: executable venue prices, reference prices, fair-value models and legal best execution kept apart; Makarov–Schoar's 2017–2018 cross-country spreads and capital controls; spot, dated futures, perpetuals (linear, inverse, quanto, after Ackerer–Hugonnier–Jermann) and Deribit's European cash-settled options; on-chain pools not checked.
 - `mech:perpetual-funding`: premium and interest terms and the long's cash flow (Ackerer–Hugonnier–Jermann); anchoring as a model result, no guaranteed convergence (He et al.); Deribit's sign convention, premium rate, damper, caps by currency, continuous accrual quoted per 8 hours, settlement-currency units, and 08:00 UTC cash settlement; worked examples recomputed by script.
 - `def:crypto-trading-risk-layers`: Deribit's liquidation process, insurance fund, socialised loss and auto-deleveraging, and custody arrangements, kept apart from venue insolvency and from stablecoin, network and bridge risk (unchecked).
   Corrected 2026-10-15 (crypto market structure review follow-up): socialised loss is triggered at Deribit's absolute discretion when the fund is depleted in all currencies, or in the bankrupt account's currency when Deribit decides not to convert others (Rule 10.8); converting other currencies is itself discretionary (Rule 10.7).
 
-All three: verification partly checked 2026-10-15, stability draft; human review outstanding. The artefact is `notes/artefacts/crypto-mm-microstructure/derivations.tex` (under the map candidate, keeping the file whole), with `funding_checks.py` beside it.
+All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Checks: `funding_checks.py`.
 
 Written in empirical extensions (2026-10-17) (source verification and bounded checks, not study or human review):
 
@@ -52,10 +52,6 @@ Cross-referenced, not owned here: `def:best-execution`, `def:smart-order-routing
 - def:crypto-options-venue-structure: venues beyond Deribit and OKX (both one-day API snapshots of 17 October 2026, in `def:crypto-venue-instrument-structure`) and whether the inverse-contract dominance and expiry concentration persist across days. Belongs to `crypto-options-numeraire`.
 - def:amm-pool-mechanics: measured gas and execution costs for swaps and liquidity provision, and designs beyond Uniswap (Curve's stableswap); fee and gas theory (Milionis, Moallemi and Roughgarden), reported-price and convex-trade results (Angeris et al.), Uniswap v4 hooks and the am-AMM proposal are in the entry. Belongs to `amm-lending`.
 - ev:stablecoin-network-settlement-risk: measured incidents of chain congestion, reorganisation and bridge or transfer delay; CPMI-IOSCO's settlement-finality and money-settlement guidance (July 2022) is in `def:crypto-trading-risk-layers` and redemption and depeg in `ev:stablecoin-runs`. Belongs to `stablecoin-pegs-runs` and the section overview.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. No legacy file lists this pathway.
 
 ## What changed in my view or practice
 

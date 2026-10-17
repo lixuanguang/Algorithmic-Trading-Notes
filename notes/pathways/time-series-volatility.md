@@ -39,10 +39,6 @@ derivatives and empirical validation (2026-10-17) (source verification and bound
 
 - meth:volatility-model-comparison: the checkpoint's out-of-sample comparison of GARCH, GJR, HAR-RV and a regime model with MSE and QLIKE and a model-confidence-set or SPA test; the models and losses are in the entries, but no intraday data for realised variance are retained.
 
-## Legacy candidate material
-
-None.
-
 ## What changed in my view or practice
 
 ## Questions carried forward

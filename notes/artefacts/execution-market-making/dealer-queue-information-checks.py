@@ -1,5 +1,5 @@
-"""Numerical checks for migration dealer models and information review (market making, information and volatility, and the
-feature- and data-engineering files; the legacy execution-market-making chapter closed), 2026-10-16.
+"""Numerical checks for dealer models and information review (market making, information and volatility, and
+feature and data engineering), 2026-10-16.
 
 Run with numpy and scipy:  /opt/homebrew/bin/python3.10 dealer-queue-information-checks.py
 Each section prints its result and asserts what the entries state.
@@ -224,7 +224,7 @@ assert cov_w < 0.6
 lo0, hi0 = wald(0, 30)
 print(f"  zero successes in 30: Wald interval [{lo0:.3f}, {hi0:.3f}] (degenerate); Wilson [{wilson(0,30)[0]:.3f}, {wilson(0,30)[1]:.3f}]")
 assert lo0 == hi0 == 0.0
-print("  Lehalle and Laruelle's rule of thumb is n p > 5 and n (1 - p) > 5 with the true p (p. 286); the legacy notes used the estimate")
+print("  Lehalle and Laruelle's rule of thumb is n p > 5 and n (1 - p) > 5 with the true p (p. 286), not the estimate")
 
 
 # 8. Harris's power tables and inference pitfalls -----------------------------------------------------
@@ -359,7 +359,7 @@ section("10. factor exposure of a hedged spread")
 bi, bj = np.array([1.2, 0.3]), np.array([0.8, 0.5])
 for h in [1.0, bi[0] / bj[0]]:
     print(f"  r_i - h r_j with h = {h:.3f}: factor exposure beta_i - h beta_j = {np.round(bi - h*bj, 3)} "
-          f"(the legacy beta_i - beta_j is the case h = 1)")
+          f"(beta_i - beta_j is the case h = 1)")
 assert np.allclose((bi - (bi[0] / bj[0]) * bj)[0], 0.0)
 f = rng.normal(0, 0.01, (100_000, 2)); ei = rng.normal(0, 0.005, 100_000); ej = rng.normal(0, 0.005, 100_000)
 ri = f @ bi + ei; rj = f @ bj + ej

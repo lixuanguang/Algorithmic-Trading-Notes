@@ -4,7 +4,7 @@ Written 2026-10-17 (empirical extensions (2026-10-17) that date) before the CPI 
 result was computed. It is committed with the results, so it is a protocol recorded in advance within the session,
 not a preregistration. The recession-row test (regime_recession_test.py, v2) and its outputs are unchanged.
 
-## Hypothesis (legacy map, def:macro-regime-asset-map, "Inflation shock")
+## Hypothesis (def:macro-regime-asset-map, "Inflation shock")
 
 In an inflation shock, nominal yields rise, the curve bear-steepens and commodities (energy) rise. Equities "depend on
 real rates" and TIPS and currency rows are not tested (no clear sign; TIPS history too short for most of the sample).

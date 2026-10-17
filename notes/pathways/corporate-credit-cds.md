@@ -1,7 +1,7 @@
 ---
 key: corporate-credit-cds
 section: corporate-credit-capital
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Corporate bonds and credit derivatives
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: reconcile a cash-bond spread, a CDS model value
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the CDS and credit-event blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `mech:cds-contract-credit-events`: premium leg, physical settlement against par and its cash equivalent, credit events, Gliner's "unlimited upside" corrected, and the post-2009 standard contract flagged as unchecked.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -51,10 +51,6 @@ Cross-referenced, not owned here: `def:sovereign-credit-defaults` (`sovereign-mu
 ## Entry backlog
 
 - conv:cds-standard-contract: the 2014 ISDA Credit Derivatives Definitions themselves (sold by ISDA, not read), for the current credit-event and deliverable-obligation terms. The Big Bang Protocol page and FAQ, ISDA's release of 21 February 2014 and the 2014 Definitions Protocol of 21 August 2014 were read.
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

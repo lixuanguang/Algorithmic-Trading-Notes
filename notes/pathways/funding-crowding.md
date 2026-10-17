@@ -1,7 +1,7 @@
 ---
 key: funding-crowding
 section: portfolio-risk-financing
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Funding, leverage and crowding
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: trace how margin, leverage, funding runs and cr
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration model risk and contagion review (`notes/source-review-records.md`). the topic review routed the *Contagion Risk* block of the legacy risk-assessment file (`sysinv/modelrisk.tex`, Narang's systematic-investing notes) here, against the file's map candidate `model-governance-controls`. That pathway's outcome is model inventories, validation and pre-trade controls; the block concerns crowded positions, cross-collateralisation, volatility targeting and forced exits, which is this pathway's outcome. The entry comes from source checking against `s7-narang` (third edition, 2024), which is not a reading of this pathway. None of the pathway's readings has been read, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. The entry concerns crowded positions, cross-collateralisation, volatility targeting and forced exits, which is this pathway's outcome. The entry comes from source checking against `s7-narang` (third edition, 2024), which is not a reading of this pathway. None of the pathway's readings has been read, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration model risk and contagion / source review / optimal execution / high-frequency strategies reviews:
+Written in model risk and contagion / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:common-investor-contagion`: Narang's contagion or common-investor risk, split into crowding (common positions) and the ATM effect (common funding: losses elsewhere force the sale of a liquid strategy). It gives his four drivers of August 2007 (crowding, weak prior returns, cross-collateralisation, volatility targeting) as a practitioner's explanation without data, and his August 1998 LTCM example. The Pulte Homes illustration does not support his "about half" and "about 20 times". Changed in the model risk and contagion review follow-up, 2026-10-15: the entry no longer says the illustration contradicts square-root metaorder impact. Aggregate crisis-period returns and volume do not identify a metaorder impact exponent, so the table bears neither for his "quadratic" nor against the square-root law; his account remains distinct from causal evidence.
 
-Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/model-governance-controls/risk-assessment.tex` (under the map candidate, keeping the file whole).
+Verification partly checked 2026-10-15, stability draft; human review outstanding.
 
 - `mod:margin-liquidity-spiral`: Brunnermeier and Pedersen's funding constraint and liquidity spirals. Partly checked 2026-10-17, draft.
 
@@ -48,10 +48,6 @@ Cross-referenced, not owned here and not changed: `res:arbitrage-risks` (`execut
 
 - mod:volatility-targeting-deleveraging: measured volatility-targeted assets and how much of them deleveraged together, and a source for Narang's 1.5-2 times leverage estimate; one strategy's leverage distribution (Moreira and Muir) and the real-time evidence (Cederburg et al.) are in `ev:volatility-managed-portfolios`.
 - meth:overlap-crowding-measure: a holdings-overlap measure itself: Chincarini, Lazo-Paz and Moneta's (`w4-chincarini-crowded-anomalies`; abstract read, full text refused) or one built from 13F filings with the data-set structure in `wide-sec-13f-nport`.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. No legacy file lists this pathway; its model risk and contagion review material came from a file mapped to `model-governance-controls`.
 
 ## What changed in my view or practice
 

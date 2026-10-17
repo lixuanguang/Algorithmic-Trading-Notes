@@ -39,10 +39,6 @@ derivatives and empirical validation (2026-10-17) (source verification and bound
 
 - ev:liquidation-cascade-waterfalls: the checkpoint's two-venue reconstruction of a cascade (open interest, funding, liquidation prints, insurance funds, ADL notices); only Chitra's account of 10 October 2025 is read.
 
-## Legacy candidate material
-
-None.
-
 ## What changed in my view or practice
 
 ## Questions carried forward

@@ -1,7 +1,7 @@
 ---
 key: money-markets-repo-lending
 section: portfolio-risk-financing
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Money markets, repo and securities lending
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price short-term cash and collateral financing,
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration securities lending and synthetic shorts review (`notes/source-review-index.md`), which routed the lending blocks of the legacy securities-lending-and-synthetic-shorts file here, an exception to the file's map candidate `synthetic-equity-cfd-trs`: their subject is the lending market itself, which this pathway's outcome and readings cover. The entries come from migration and source checking against Harris (`alpha-harris`, chap. 7), `al-duffie` in its September 2001 working paper, `al-icma` and `al-isla` as retrieved, Regulation SHO on eCFR (October 2026) and Hu–Black's working paper. That is not study of the readings, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by securities lending and synthetic shorts review (`notes/source-review-index.md`). The entries come from source checking against Harris (`alpha-harris`, chap. 7), `al-duffie` in its September 2001 working paper, `al-icma` and `al-isla` as retrieved, Regulation SHO on eCFR (October 2026) and Hu–Black's working paper. That is not study of the readings, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,15 +22,15 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration securities lending and synthetic shorts / source review / optimal execution / high-frequency strategies reviews:
+Written in securities lending and synthetic shorts / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:street-name-beneficial-ownership`: registration, beneficial ownership, custody and permission to lend kept apart; votes follow record holdings, lent shares carry votes to the borrower, brokers vote record shares in proportion to instructions (Harris); recall to vote; record-date capture through borrowing (Hu–Black), kept apart from swap-based decoupling and disclosure.
 - `mech:securities-lending-short-sale`: locate, borrow, delivery, recall, replacement borrow and buy-in (DGP, 2001); Regulation SHO's locate (Rule 203(b)) and close-out (Rule 204(a)) as current U.S. law; ISLA's recall-to-buy-in practice; broker–customer arrangements against the institutional loan; availability against operational risks.
 - `def:securities-lending-fee-rebate`: fee against non-cash collateral, rebate against cash collateral with the fee implicit; 102 percent collateral and rebate accrual (DGP); general collateral and specials; broker rebate spreads; retail short proceeds and customer margin kept apart from loan collateral.
 
-All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their legacy wording is kept, with the rest of the file, in `notes/artefacts/synthetic-equity-cfd-trs/derivations.tex`.
+All three: verification partly checked 2026-10-15, stability draft; human review outstanding.
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews, from the legacy macro chapter:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:money-market-reference-rates`: money-market instruments as Gliner describes them; fed funds, SOFR and the EFFR; LIBOR's end (panel after 30 June 2023, synthetic settings to 30 September 2024); EONIA discontinued on 3 January 2022 and €STR published since 2 October 2019; the LIBOR--OIS spread as a historical stress gauge. Verification partly checked 2026-10-16, stability draft.
 
@@ -61,10 +61,6 @@ Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equ
 ## Entry backlog
 
 - data:post-libor-funding-stress-measures: a free, dated, official series for the 3-month commercial paper minus SOFR OIS spread (no free official SOFR OIS series, rechecked 2026-10-17), and which spreads research uses in LIBOR-OIS's place beyond the OFR's index. Deferred: revisit when an official term SOFR OIS series becomes freely available.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. No legacy file names this pathway as its map candidate.
 
 ## What changed in my view or practice
 

@@ -2,12 +2,12 @@
 key: catalogue-0503
 pathways: [lob-deep-learning]
 version: Rama Cont, Arseniy Kukanov and Sasha Stoikov, "The Price Impact of Order Book Events", Journal of Financial Econometrics 12(1), 47-88, 2014 (DOI 10.1093/jjfinec/nbt003). Copy used: arXiv 1011.6402v3, dated March 2011 (arXiv stamp 13 April 2011), 26 pages, downloaded 2026-10-16. Page numbers below are the preprint's; the journal version was not checked
-sections: abstract (p. 1); sec. 2.1 (pp. 3-4, definition of e_n and OFI); sec. 3.1 (p. 8, data and time grid); sec. 4.1 (p. 16, trade imbalance against OFI, Table 4) (checked for migration order books and order flow review)
+sections: abstract (p. 1); sec. 2.1 (pp. 3-4, definition of e_n and OFI); sec. 3.1 (p. 8, data and time grid); sec. 4.1 (p. 16, trade imbalance against OFI, Table 4) (checked for order books and order flow review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-16 by migration order books and order flow review from source checks, not from study: the headings that need your own reading are left empty. The paper is in the catalogue and is not on `lob-deep-learning`'s required list, whose readings build on it.
+Prepared on 2026-10-16 by order books and order flow review from source checks, not from study: the headings that need your own reading are left empty. The paper is in the catalogue and is not on `lob-deep-learning`'s required list, whose readings build on it.
 
 ## Question and claim
 
@@ -42,6 +42,6 @@ Prepared on 2026-10-16 by migration order books and order flow review from sourc
 
 ## Open questions
 
-- The fits are contemporaneous; the forecasting use the legacy notes implied was not tested in the passages read.
+- The fits are contemporaneous.
 
 ## Retrieval cards

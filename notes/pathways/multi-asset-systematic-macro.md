@@ -1,7 +1,7 @@
 ---
 key: multi-asset-systematic-macro
 section: multi-asset-systematic-macro
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Multi-asset and systematic macro
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: attribute a cross-asset portfolio's returns to 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the legacy chapter's strategy, record, sizing and practitioner blocks, two of whose files named this overview as a candidate. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Drobny (`s7-drobny`, *Inside the House of Money*, Wiley 2006 printing, checked interview by interview). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Drobny (`s7-drobny`, *Inside the House of Money*, Wiley 2006 printing, checked interview by interview). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,14 +22,14 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
-- `def:global-macro-strategy`: global macro as Gliner defines it: discretionary, systematic, high-frequency and CTA approaches; directional, relative-value and thematic trades; the four product groups; multi-asset expression of a view; the legacy's unsourced "structural reasons" kept as hypotheses.
+- `def:global-macro-strategy`: global macro as Gliner defines it: discretionary, systematic, high-frequency and CTA approaches; directional, relative-value and thematic trades; the four product groups; multi-asset expression of a view.
 - `ev:global-macro-crisis-performance`: Gliner's index record (Barclays Global Macro Index 2002--2012, DJCS 1995--2013) and conditional correlation with equities, with the limits of hedge-fund index data.
 - `meth:macro-position-sizing-risk`: Turtle-style volatility units (N is an average true range, not a standard deviation), 1:3 risk/reward, gap risk, P&L-contingent VaR utilisation, stress tests, performance ratios and correlation against beta.
 - `meth:macro-practitioner-frameworks`: Drobny's interviewees with attributions corrected (anonymous currency manager, Andres Drobny, Porter, Rogers) and Porter's "90 percent" quote restored.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -52,13 +52,8 @@ Cross-referenced, not owned here: `def:macro-regime-asset-map` (`macro-regimes-s
 - ev:global-macro-returns-after-2013: complete within its stated scope: the protocol's window, January 2014 to July 2026, was run on the public BarclayHedge workbook (53 down months, mean index return in them -0.52 percent, t = -3.00: crisis protection not supported), with the 2022-2026 run kept. What remains is outside that scope: the index's weighting and backfill rules, which BarclayHedge does not publish, and whether other macro indices (HFR, Eurekahedge; sign-in required) agree.
 - ev:practitioner-rules-tested: do the Drobny practitioners' rules (1:3 against 4:1 reward-to-risk exits, re-entry counting the incurred loss, a month off after a portfolio-wide stop-out, P&L-contingent VaR limits) improve risk-adjusted results? Protocol: on trade-level data (entries, exits, sizes, P&L, targets, stops), replay each rule on the same entries; compare expectancy, Sharpe with Lo's standard error and drawdowns, with the deflated Sharpe ratio over all variants tried and a block bootstrap after stop-out events. Missing: trade-level data of a discretionary macro book; a systematic proxy on public futures would answer a different question and was not run.
 
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
-
 ## What changed in my view or practice
 
 ## Questions carried forward
 
 - Inspect the 2013 revised edition of Drobny that the catalogue names; page numbers here are from the 2006 printing.
-- Which of the legacy's "structural reasons" for macro (policy jumps, sticky capital, under-arbitraged links) do the section's readings support?

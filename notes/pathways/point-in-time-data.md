@@ -1,7 +1,7 @@
 ---
 key: point-in-time-data
 section: research-engineering-validation
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Point-in-time data, vendor files and bias control
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: construct a research panel whose every field is
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration financial data and labels review (`notes/source-review-records.md`), which routed the legacy taxonomy file's reference-data, market-data-feed, binned-data and intraday-activity blocks here, outside the file's map candidates (`statistical-learning-foundations`, `financial-ml-evaluation`, `alternative-data-sources`): their content is the reference and market data from which a decision-time panel is built. The legacy notes did not name their source; it is Velu, Hardy and Nehren (`s3-velu`, chap. 1, sec. 1.4), which is not a reading of this pathway. None of the pathway's readings has been opened, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by financial data and labels review (`notes/source-review-records.md`). it is Velu, Hardy and Nehren (`s3-velu`, chap. 1, sec. 1.4), which is not a reading of this pathway. None of the pathway's readings has been opened, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,15 +22,15 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration financial data and labels / source review / optimal execution / execution control reviews:
+Written in financial data and labels / source review / optimal execution / execution control reviews:
 
-- `data:trading-reference-data`: universe, symbology with bitemporal as-of mapping, ticker changes, corporate actions, static data and quote factors, exchange data with rule histories, condition codes, special days, futures and options reference data, event calendars, related and composite instruments, latency tables; the legacy's dividend conflation corrected.
+- `data:trading-reference-data`: universe, symbology with bitemporal as-of mapping, ticker changes, corporate actions, static data and quote factors, exchange data with rule histories, condition codes, special days, futures and options reference data, event calendars, related and composite instruments, latency tables.
 - `data:market-data-levels`: Level I, II and III data, matching-engine against reception time, the U.S. Level III record (prices divided by 10,000, not 1,000), special order types.
-- `data:derived-market-statistics`: daily activity data, intraday microstructure statistics, pre-computed aggregates and binned data, with the reference-data caveat and the availability time of each field; the legacy's "Binned Data" heading corrected.
+- `data:derived-market-statistics`: daily activity data, intraday microstructure statistics, pre-computed aggregates and binned data, with the reference-data caveat and the availability time of each field.
 
-All partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/artefacts/statistical-learning-foundations/data-taxonomy.tex`.
+All partly checked 2026-10-16, draft; human review outstanding.
 
-Changed in migration dealer models and information / source review / optimal execution / execution control reviews (a routing exception from the microstructure data-engineering file, whose candidates are `lob-deep-learning` and `market-simulation`; the blocks concern what a record means and when it was known): `data:market-data-levels` (timestamp quality and sequencing across markets and the public-awareness time, Hasbrouck p. 105; three times for a feature's availability; corrections arriving as later records; the legacy feed levels and message layers against Velu, Hardy and Nehren chap. 11) and `data:trading-reference-data` (the ticker caveat: identifiers with validity dates). Partly checked, draft.
+Changed in dealer models and information / source review / optimal execution / execution control reviews: `data:market-data-levels` and `data:trading-reference-data` (the ticker caveat: identifiers with validity dates). Partly checked, draft.
 
 - `data:holdings-insider-filing-lags`: Form 13F, Schedules 13D and 13G, Forms 3 and 4 deadlines in force on 15 October 2026, their 2024 change and what they imply for decision-time panels. Partly checked 2026-10-17, draft.
 
@@ -62,10 +62,6 @@ Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-
 
 - ev:delisting-survivorship-rewriting: Shumway's full text (BYU repository HTTP 403), Elton, Gruber and Blake, and Ljungqvist, Malloy and Marston (no open copy; the CEPR version is restricted). Shumway's and Shumway and Warther's abstracts are in `data:trading-reference-data`.
 - data:trade-correction-records: the time carried by correction records 10 and 11, which none of the four Daily TAQ specifications read states, and Holden and Jacobsen's DTAQ code (link 404).
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. No legacy file lists this pathway; its entries and changes came by routing (financial data and labels / dealer models and information reviews).
 
 ## What changed in my view or practice
 

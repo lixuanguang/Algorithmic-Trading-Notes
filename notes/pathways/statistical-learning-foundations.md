@@ -1,7 +1,7 @@
 ---
 key: statistical-learning-foundations
 section: ml-alternative-data
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Statistical learning foundations and time-series validation
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: fit and tune regularised, tree-based and neural
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration financial data and labels review (`notes/source-review-records.md`), which migrated the legacy AFML data cluster (`ml-alternative-data/data/`, five files) and closed the legacy chapter. The entries come from source checking against López de Prado's chaps. 2–5, the pathway's thirteenth reading, read only in those chapters; that is not study of it, and chap. 7 (purged and embargoed cross-validation), which the checkpoint needs, is unread. No other reading has been opened and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by financial data and labels review (`notes/source-review-records.md`). The entries come from source checking against López de Prado's chaps. 2–5, the pathway's thirteenth reading, read only in those chapters; that is not study of it, and chap. 7 (purged and embargoed cross-validation), which the checkpoint needs, is unread. No other reading has been opened and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,25 +22,25 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration financial data and labels / source review / optimal execution / execution control reviews:
+Written in financial data and labels / source review / optimal execution / execution control reviews:
 
 - `meth:activity-sampled-bars`: time, tick, volume and dollar bars; what each corrects (auction prints, fragmentation, price level, issuance); the evidence on their return distributions as cited (Mandelbrot–Taylor, Clark, Ané–Geman, whose ranking of trades over volume conflicts with Clark's), not guaranteed.
-- `meth:information-driven-bars`: tick rule with its boundary condition; imbalance and runs bars in a corrected table (the legacy runs statistics collapsed to $T$); causal EWMA thresholds from prior bars; the unstated independence assumption and Jensen gap; collapse of the threshold on a balanced flow.
+- `meth:information-driven-bars`: tick rule with its boundary condition; imbalance and runs bars in a corrected table; causal EWMA thresholds from prior bars; the unstated independence assumption and Jensen gap; collapse of the threshold on a balanced flow.
 - `meth:etf-trick`: the \$1-invested series for baskets and spreads, holdings sized at the next open (execution, not look-ahead), costs, tradable volume, the single futures roll with the previous-raw-price return; positivity not guaranteed with short legs.
 - `meth:event-based-sampling`: linspace and uniform downsampling; the CUSUM filter with its sampling, reset and strict-inequality conventions, and the mismatch between "IID observations" and the snippet's differencing.
 - `meth:triple-barrier-labelling`: fixed horizons and their three limits; volatility-scaled barriers known at the decision time; first touch, configurations, intrabar ties (unspecified in the source), side against size.
-- `meth:meta-labelling`: López de Prado's side-and-size method; his F1 and overfitting claims stated as claims; out-of-sample primary predictions required (interpretation); the legacy's steps and figure traced to a Hudson & Thames blog, its limitations to no source.
+- `meth:meta-labelling`: López de Prado's side-and-size method; his F1 and overfitting claims stated as claims; out-of-sample primary predictions required (interpretation).
 - `def:label-concurrency-uniqueness`: overlapping outcomes, concurrency, uniqueness and average uniqueness, with the training-set condition on "no leakage".
 - `meth:sequential-bootstrap`: bootstrap redundancy, inflated out-of-bag accuracy, the sequential bootstrap and its Monte Carlo evidence; López de Prado's $e^{-K/I}$ approximation corrected to $e^{-I/K}$.
 - `meth:sample-weights-attribution-decay`: return-attribution weights summing to $I$ (large returns weigh more), time decay on cumulative uniqueness (the source's $d[1]$ and $cT$ slips corrected), class weights.
 - `mod:fractional-differencing-weights`: binomial weights, recurrence, integer cases, signs, and a power-law decay rate in place of the source's product argument.
 - `meth:fixed-width-fractional-differencing`: expanding window and weight loss with one consistent index, FFD with its range corrected, the minimum-$d$ ADF procedure and its evidence; ADF rejection is not demonstrated stationarity, and $d$ is to be chosen on training data.
 
-All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/` (the five legacy files verbatim, the wrappers and the four original figures, and `afml-checks.py`, the numerical checks).
+All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/`.
 
 Changed in the financial data and labels review follow-up, 2026-10-16: `meth:etf-trick` (the next-open sizing is an accounting convention, reproducible only by notional orders filled in full at a single opening price; gross exposure $|K_t|$ with positive prices and conversion factors; holdings reverse at $K_t<0$, so a series that exhausts its capital stops describing the strategy); `def:label-concurrency-uniqueness` (indicator $t_{i,0}<t\le t_{i,1}$ for returns indexed by ending time; López de Prado's toy matrix is consistent, his Snippets 4.1, 4.3 and 4.10 include the event's own bar, which is not equivalent); `meth:sample-weights-attribution-decay` (sum from $t_{i,0}+1$); `meth:triple-barrier-labelling` (the returns a label uses). Checks in `notes/artefacts/statistical-learning-foundations/financial-labels-capital-checks.py`.
 
-Changed in migration dealer models and information / source review / optimal execution / execution control reviews: `meth:triple-barrier-labelling` (two legacy arbitrage-label blocks from the feature-engineering file, a routing exception, compared with the path argument on p. 44). Partly checked, draft.
+Changed in dealer models and information / source review / optimal execution / execution control reviews: `meth:triple-barrier-labelling`. Partly checked, draft.
 
 - `meth:purged-embargoed-cross-validation`: purging and embargo (AFML chap. 7), inflated out-of-bag scores, and when ordinary K-fold or time-ordered holdouts are appropriate. Partly checked 2026-10-17, draft.
 
@@ -63,13 +63,8 @@ Cross-referenced, not owned here: `pit:label-weight-leakage` (`financial-ml-eval
 - ev:transaction-clock-normality: Clark (1973) and the body of Ané and Geman (2000) (abstract read), for the evidence on returns sampled by trades, volume or dollars; Murphy and Izzeldin's replication critique (working paper) is merged.
 - ev:meta-labelling-performance: whether meta-labelling improves precision, F1 or after-cost results out of sample: no open evaluation found (arXiv, Crossref and web searched on 2026-10-17); López de Prado's claims are unsupported in chap. 3.
 
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. No legacy file lists this pathway: financial data and labels review migrated the five AFML data files and removed the legacy ML chapter. That says nothing about consolidation.
-
 ## What changed in my view or practice
 
 ## Questions carried forward
 
 - López de Prado's own slips (the overlap approximation, the time-decay $d[1]$ and $cT$, the expanding-window and FFD index ranges, $E_{i-1}[y_t]$): check the author's errata or a later printing.
-- Which source did the legacy notes' meta-labelling feature list and limitations follow?

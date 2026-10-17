@@ -1,7 +1,7 @@
 ---
 key: financial-ml-evaluation
 section: ml-alternative-data
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Financial ML: information timing, uncertainty and portfolio tests
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: assess a modern ML or language-model result usi
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration financial data and labels review (`notes/source-review-records.md`), which gave this pathway the time-validity consequences of the legacy AFML labelling, sample-weight and fractional-differencing notes, one of the files' three map candidates. The entry rests on López de Prado (`alpha-afml`), which is not a reading of this pathway; none of the pathway's eight readings has been opened, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by financial data and labels review (`notes/source-review-records.md`). The entry rests on López de Prado (`alpha-afml`), which is not a reading of this pathway; none of the pathway's eight readings has been opened, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,7 +22,7 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration financial data and labels / source review / optimal execution / execution control reviews:
+Written in financial data and labels / source review / optimal execution / execution control reviews:
 
 - `pit:label-weight-leakage`: what López de Prado's labels, uniqueness and attribution weights know about the future, the conditions under which he says there is no leakage, the full-sample choice of the fractional-differencing order and the same-training-set meta-labels, and a train/test checklist (the checklist is the entry's own; purging and embargo unread).
 
@@ -47,10 +47,6 @@ Cross-referenced, not owned here: `def:label-concurrency-uniqueness`, `meth:samp
 ## Entry backlog
 
 - meth:time-valid-ml-experiment-record: Levy's look-ahead study (`latest-levy-caution-llm`; SSRN and Wiley refused automated retrieval on 2026-10-17) and Jansen's third edition (`alpha-jansen`). `latest-pit-language-models` and He, Lv, Manela and Wu's abstract are in the entry.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. After financial data and labels review no legacy file lists this pathway.
 
 ## What changed in my view or practice
 

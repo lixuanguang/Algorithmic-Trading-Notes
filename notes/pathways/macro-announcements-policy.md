@@ -1,7 +1,7 @@
 ---
 key: macro-announcements-policy
 section: multi-asset-systematic-macro
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Macro announcements, policy news and announcement premia
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: measure how stocks, bonds and currencies respon
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the data-release, query and calendar blocks of the legacy chapter; `02_transmission_maps.tex` named this pathway as a candidate, while the blocks themselves were in `01_regimes.tex`. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), the BLS, Federal Reserve and ECB pages as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), the BLS, Federal Reserve and ECB pages as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,12 +22,12 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
-- `data:us-macro-release-calendar`: the usual U.S. release cadence, FOMC and ECB meeting frequency (the legacy's "ECB 6 per year" corrected), and agencies' calendars as the record.
+- `data:us-macro-release-calendar`: the usual U.S. release cadence, FOMC and ECB meeting frequency, and agencies' calendars as the record.
 - `meth:macro-event-queries`: Gliner's conditional back-tests around events (the BoE's 2012 QE example), surprises and revisions, and why six events cannot support a hit rate.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -46,10 +46,6 @@ Cross-referenced, not owned here: `def:central-bank-policy-framework` (`monetary
 ## Entry backlog
 
 None open after the second source follow-up of 2026-10-16.
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

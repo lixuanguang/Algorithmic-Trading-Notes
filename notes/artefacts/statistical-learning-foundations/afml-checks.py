@@ -1,4 +1,4 @@
-"""Numerical checks for migration financial data and labels review (AFML data cluster), 2026-10-16.
+"""Numerical checks for financial data and labels review (AFML data cluster), 2026-10-16.
 
 Independent toy calculations and boundary cases for the formulas and algorithms adopted in the
 compendium entries; not an implementation library. Run:  python3 afml-checks.py
@@ -130,7 +130,7 @@ print('target R', R, '-> realised', contrib.round(10), '; sigma', round(math.sqr
 flip = beta * np.array([1, -1, 1, 1])
 print('flipping the sign of one beta with R_n > 0 keeps R:', ((W.T @ (W @ flip)) ** 2 * lam / ((W @ flip) @ V @ (W @ flip))).round(10),
       '-> 2^k allocations for k components with R_n > 0 (distinct eigenvalues)')
-print('legacy typo check: (L^1/2 b)\'(L^1/2 b) =', round(float((np.sqrt(lam) * beta) @ (np.sqrt(lam) * beta)), 10),
+print('typo check: (L^1/2 b)\'(L^1/2 b) =', round(float((np.sqrt(lam) * beta) @ (np.sqrt(lam) * beta)), 10),
       '= sigma^2', sigma ** 2)
 
 # ---------------------------------------------------------------- CUSUM (pp. 38-39, Snippet 2.4)
@@ -305,7 +305,7 @@ w04_long = frac_weights(0.4, 100000)
 for thr in (1e-2, 1e-3, 1e-5):
     width = int(np.argmax(np.abs(w04_long) < thr))
     print(f'FFD d=0.4 threshold {thr:g}: keep k = 0..{width - 1} ({width} weights); kept weights sum to {w04_long[:width].sum():.4f}')
-print('the legacy weight formula with (d-1) in place of (d-i):', [round((-1) ** k * math.prod(0.4 - 1 for _ in range(k)) / math.factorial(k), 4) for k in range(4)],
+print('the weight formula with (d-1) in place of (d-i):', [round((-1) ** k * math.prod(0.4 - 1 for _ in range(k)) / math.factorial(k), 4) for k in range(4)],
       'against', binom_weights(0.4, 4).round(4))
 
 head('expanding-window weight loss (Snippet 5.2 logic)')

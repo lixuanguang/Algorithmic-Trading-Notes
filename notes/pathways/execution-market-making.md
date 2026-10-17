@@ -1,7 +1,7 @@
 ---
 key: execution-market-making
 section: execution-market-making
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Market microstructure and market making (section overview)
@@ -10,7 +10,7 @@ Overview outcome, from the guide: evaluate a quoting policy on an order-book rep
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 15 October 2026 by migration information and price discovery review (`notes/source-review-index.md`), because the guide runs one study loop per section overview and this route had no note. It lists the migrated entries that serve the overview route rather than a specialist pathway. Until then they were listed provisionally in `market-making-lob.md`. They come from migration and source checking against Harris (`alpha-harris`) and Hasbrouck (`s6-hasbrouck`), two of this route's readings, and against Lehalle and Laruelle (`alpha-laruelle`), which is on no route. None of it is study of the readings.
+Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 15 October 2026 by information and price discovery review (`notes/source-review-index.md`). Until then they were listed provisionally in `market-making-lob.md`. They come from source checking against Harris (`alpha-harris`) and Hasbrouck (`s6-hasbrouck`), two of this route's readings, and against Lehalle and Laruelle (`alpha-laruelle`), which is on no route. None of it is study of the readings.
 
 ## Outcome in my own words
 
@@ -22,7 +22,7 @@ Not attempted.
 
 ## Entries created or changed
 
-Moved here from `market-making-lob.md` on 2026-10-15; written in migration spread and inventory models / volatility and liquidity reviews:
+Moved here from `market-making-lob.md` on 2026-10-15; written in spread and inventory models / volatility and liquidity reviews:
 
 - `def:spread-measures`: quoted, inside, relative, effective and realised spreads (Harris, Hasbrouck).
 - `res:roll-spread-estimator`: Roll's serial-covariance estimator and its biases (Harris, Hasbrouck).
@@ -34,7 +34,7 @@ Moved here from `market-making-lob.md` on 2026-10-15; written in migration sprea
 - `meth:spread-volatility-regression`: spread on volatility in levels and logs, with the retransformation correction (Lehalle and Laruelle).
 - `mech:bubble-crash-dynamics`: how bubbles build and crashes unwind; the price accelerator; crash attribution (Harris).
 
-Written in migration information and price discovery / source review / optimal execution / high-frequency strategies reviews:
+Written in information and price discovery / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:fundamental-value`: fundamental value, market value and noise; public, private and stale information (Harris; contrasted with Hasbrouck's efficient price).
 - `res:informed-trading-aggregation`: informed trading makes prices informative; the price as an average of forecasts; correlated errors (Harris).
@@ -45,7 +45,7 @@ Written in migration information and price discovery / source review / optimal e
 
 information and price discovery review also added cross-references to `def:volatility-components` and `meth:garman-klass-volatility`.
 
-Written in migration strategic trading / source review / optimal execution / high-frequency strategies reviews, from the strategic-trading-models file (Harris chaps. 10–12, 16, 17, 24 and 29):
+Written in strategic trading / source review / optimal execution / high-frequency strategies reviews (Harris chaps. 10–12, 16, 17, 24 and 29):
 
 - `def:informed-trader-types`: value, news, information-oriented technical traders and arbitrageurs; when value and news traders profit.
 - `def:winners-curse`: the winner's curse and the break-even bid as a fixed point.
@@ -57,57 +57,56 @@ Written in migration strategic trading / source review / optimal execution / hig
 
 Changed in strategic trading review:
 - `res:informed-trading-aggregation`: trading speed and orthogonality merged, inverse-variance weighting, and the error comparison restated by loss measure, with the counterexample to "better than any individual".
-- `def:market-efficiency`: the legacy paradox wording.
 - `def:inside-information`: skilled speculation against inside information.
 - `def:outside-spread`: cross-references only.
 
-Changed in liquidity and impact review: `def:bluffing-manipulation` (the legacy impact-symmetry principle merged into its Practice, with a pointer to the absence-of-manipulation entry listed under `price-impact-execution`), and cross-references from `def:price-formation-process` and `res:spread-component-identification` to the new price-impact entries, which live under `price-impact-execution`. Changed in impact estimation review: `res:spread-component-identification` (a cross-reference to the Glosten–Harris regression listed under `price-impact-execution`).
+Changed in liquidity and impact review: `def:bluffing-manipulation`, and cross-references from `def:price-formation-process` and `res:spread-component-identification` to the new price-impact entries, which live under `price-impact-execution`. Changed in impact estimation review: `res:spread-component-identification` (a cross-reference to the Glosten–Harris regression listed under `price-impact-execution`).
 
-All twenty-two: verification partly checked 2026-10-15, stability draft. Human review is outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`, where the migration has kept every removed block since the pilot.
+All twenty-two: verification partly checked 2026-10-15, stability draft. Human review is outstanding.
 
-Written in migration trading infrastructure / source review / optimal execution / high-frequency strategies reviews, from a legacy execution file whose map named only `model-governance-controls` (a routing exception):
+Written in trading infrastructure / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:floor-automated-trading-systems`: Harris's comparison of floor and automated trading systems (chap. 27, Table 27-1), as of 2002; the six headings are the entry's grouping of Harris's seven sections (trading infrastructure review follow-up).
 
-Partly checked 2026-10-15, draft; its artefact is `notes/artefacts/model-governance-controls/derivations.tex`.
+Partly checked 2026-10-15, draft.
 
-Changed in migration futures market structure / source review / optimal execution / high-frequency strategies reviews: `res:spread-determinants` took the legacy large-tick futures principle, adding Lehalle and Laruelle's large-tick bounce term (eq. (2.1)) and the book-size compensation at a one-tick spread (p. 148); the futures-specific claim is a backlog item of `futures-execution`.
+Changed in futures market structure / source review / optimal execution / high-frequency strategies reviews: `res:spread-determinants` gained Lehalle and Laruelle's large-tick bounce term (eq. (2.1)) and the book-size compensation at a one-tick spread (p. 148); the futures-specific claim is a backlog item of `futures-execution`.
 
-Written in migration order books and order flow / source review / optimal execution / execution control reviews, from the legacy order-lifecycle and limit-order-book-mechanics files:
+Written in order books and order flow / source review / optimal execution / execution control reviews:
 
 - `mech:order-lifecycle`: order states (FIX 4.4), insert, modify, cancel and execute, private and public channels, and venue-specific loss of priority (CME's FIFO rule), from Lehalle and Laruelle, Bouchaud et al. and Harris.
 - `def:limit-order-book`: the book, best quotes, Harris's limit-price placement, open and closed books, the three event types, price changes and RFQ screens.
 - `res:limit-order-options`: Harris's standing limit orders as trading options, the two risks and adverse selection of fills (the queue file's adverse-selection caveat merged).
 
-All three: partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/execution-market-making/order-lifecycle.tex`, `limit-order-book-mechanics.tex` and `02-overview-original.tex`. The tick-size blocks of the same file went to `market-structure-execution-quality`; the legacy equilibrium-spread principle was already in `res:spread-determinants` and the best-quote definitions in `def:spread-measures`, both cross-referenced rather than repeated.
+All three: partly checked 2026-10-16, draft; human review outstanding.
 
-Written in migration order matching and fragmentation / source review / optimal execution / execution control reviews, from the legacy order-types and matching-algorithms files:
+Written in order matching and fragmentation / source review / optimal execution / execution control reviews:
 
 - `def:order-instructions`: Harris's standard order instructions (types, validity, quantity, display, handling, special), the FIX 4.4 fields that carry them, and their interactions (immediate-or-cancel against fill-or-kill, remainders, size restrictions, stops through gaps).
 - `mech:order-matching-pricing`: Harris's matching procedure, precedence rules and uniform, discriminatory and derivative pricing; pro-rata allocation with worked remainders; Lehalle and Laruelle's four call-auction rules, random ends and matching curves; Harris's surplus result with its conditions.
 
-Changed in order matching and fragmentation review: `res:limit-order-options` (order choice: Harris's spread argument and Table 14-1, with the legacy posting threshold derived and computed). Changed in the order matching and fragmentation review follow-up: `res:limit-order-options` (posting against crossing re-derived from cash flows with a common terminal mark, $pS-(1-p)M$, checked pathwise; the order matching and fragmentation review $p(S-A)-(1-p)M$ withdrawn) and `mech:order-matching-pricing` (pro-rata capped by eligible liquidity; rounding remainder distinguished from the incoming order's residual). Changed in the order books and order flow review follow-up: `mech:order-lifecycle` (FIX 4.4 OrdStatus and ExecType distinguished; sessions and orders carried across them) and `def:limit-order-book` (order type against aggressiveness). All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/execution-market-making/order-types-instructions.tex`, `matching-algorithms.tex`, and the folder wrapper and chapter file as they stood before order matching and fragmentation review (`orders-matching-overview.tex`, `microstructure-orders-chapter.tex`); checks in `notes/artefacts/market-structure-execution-quality/order-routing-fragmentation-checks.py`.
+Changed in order matching and fragmentation review: `res:limit-order-options`. Changed in the order matching and fragmentation review follow-up: `res:limit-order-options` (posting against crossing re-derived from cash flows with a common terminal mark, $pS-(1-p)M$, checked pathwise; the order matching and fragmentation review $p(S-A)-(1-p)M$ withdrawn) and `mech:order-matching-pricing` (pro-rata capped by eligible liquidity; rounding remainder distinguished from the incoming order's residual). Changed in the order books and order flow review follow-up: `mech:order-lifecycle` (FIX 4.4 OrdStatus and ExecType distinguished; sessions and orders carried across them) and `def:limit-order-book` (order type against aggressiveness). All partly checked 2026-10-16, draft; human review outstanding. Checks: `notes/artefacts/market-structure-execution-quality/order-routing-fragmentation-checks.py`.
 
-Written in migration market design and liquidity / source review / optimal execution / execution control reviews, from the first five files of the legacy foundations folder (roles of markets, participants and motives, venues and architecture, auction and dealer structures, market quality; map candidates `execution-market-making` and `market-structure-execution-quality`; the overview owns them as conceptual material):
+Written in market design and liquidity / source review / optimal execution / execution control reviews:
 
 - `def:market-functions`: what markets do (liquidity, price discovery, risk transfer, capital allocation), private and public benefits, why the mechanism matters, and Harris's wealth shares as dated estimates (Harris chaps. 1, 3, 9; Hasbrouck chap. 1).
 - `def:trader-motives`: utilitarian, profit-motivated and futile traders; long and short; patience and the liquidity side; hedging instruments; comparative advantage (Harris chaps. 3, 8, 19).
-- `res:zero-sum-skill-luck`: zero-sum accounting and its two corollaries with their conditions; when past profit predicts future profit, with the conditional assumptions on luck the legacy proposition lacked (Harris chaps. 8, 9, 22; simulated).
+- `res:zero-sum-skill-luck`: zero-sum accounting and its two corollaries with their conditions; when past profit predicts future profit; simulated).
 - `def:market-intermediaries`: dealers, market makers, brokers and broker-dealers; why brokers are cheaper; Harris's five liquidity suppliers (Harris chaps. 3, 7, 8, 19).
-- `def:market-structures-venues`: market structure, forums and access, exchanges, OTC and alternative systems, information systems and transparency, clearing and settlement, brokered credit (Harris's ordered count and the legacy unordered one), reported volume, RFQ against CLOB (Harris chaps. 3, 5, 7, 24; Lehalle and Laruelle).
+- `def:market-structures-venues`: market structure, forums and access, exchanges, OTC and alternative systems, information systems and transparency, clearing and settlement, brokered credit, reported volume, RFQ against CLOB (Harris chaps. 3, 5, 7, 24; Lehalle and Laruelle).
 - `def:trading-sessions-execution-systems`: continuous and call sessions; quote-driven, order-driven, brokered and hybrid markets; auctions and fixings; specialists; the London gold price dated from LBMA and IBA (Harris chaps. 5, 24, 28; Hasbrouck chap. 2).
-- `def:liquidity-dimensions`: liquidity as bilateral search; immediacy, width, depth, resiliency; the depth--width duality with its attainment condition; the search rule; displayed and latent liquidity; book size (the legacy "lower bound" corrected); flow reactivity (Harris chap. 19; Hasbrouck chap. 1; Lehalle and Laruelle secs. 2.2--2.3).
+- `def:liquidity-dimensions`: liquidity as bilateral search; immediacy, width, depth, resiliency; the depth--width duality with its attainment condition; the search rule; displayed and latent liquidity; book size; flow reactivity (Harris chap. 19; Hasbrouck chap. 1; Lehalle and Laruelle secs. 2.2--2.3).
 
-Changed in market design and liquidity review (merges): `def:informed-trader-types` (liquidity roles), `def:arbitrage` (porters of liquidity), `def:floor-automated-trading-systems` (technology, reporting, and the capacity condition restated as a necessary queue-stability condition), `mech:order-matching-pricing` (open-outcry rule, precedence), `res:spread-determinants` and `meth:spread-volatility-regression` (legacy restatements recorded), `def:market-efficiency` (liquidity and informative prices), `def:inside-information` (insiders' controls; Rule 10b5-1 as amended in 2022, Form 4 and Regulation FD as of October 2026) and `res:insider-trading-deterrence` (Harris's policy debate; retitled). Routing exceptions recorded in `notes/source-review-records.md`: blocks merged into the block-trade, order-exposure and price-impact entries (owned by `execution-trading-costs` and `price-impact-execution`) and into the two high-frequency-trading entries (owned by `hft-market-design`). All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/execution-market-making/roles-of-financial-markets.tex`, `market-participants-trading-motives.tex`, `trading-venues-market-architecture.tex`, `auction-dealer-market-structures.tex`, `market-quality-efficiency.tex`, the folder wrapper and chapter file as they stood before market design and liquidity review (`market-foundations-overview.tex`, `microstructure-foundations-chapter.tex`) and the checks `liquidity-market-design-checks.py`.
+Changed in market design and liquidity review (merges): `def:informed-trader-types` (liquidity roles), `def:arbitrage` (porters of liquidity), `def:floor-automated-trading-systems` (technology, reporting, and the capacity condition restated as a necessary queue-stability condition), `mech:order-matching-pricing` (open-outcry rule, precedence), `res:spread-determinants` and `meth:spread-volatility-regression`, `def:market-efficiency` (liquidity and informative prices), `def:inside-information` (insiders' controls; Rule 10b5-1 as amended in 2022, Form 4 and Regulation FD as of October 2026) and `res:insider-trading-deterrence` (Harris's policy debate; retitled). All partly checked 2026-10-16, draft; human review outstanding. Checks: `liquidity-market-design-checks.py`.
 
 Corrected in the market design and liquidity review follow-up, 2026-10-16: `def:liquidity-dimensions` (width and depth stated per unit, after Harris pp. 398--399, and kept apart from a cash budget; average against marginal cost; an explicit size domain; attainment conditions, with lower semicontinuity neither necessary nor enough without boundedness) and `def:floor-automated-trading-systems` (for the M/M/1 queue, utilisation below one is necessary and sufficient for stability; delay, deadlines, burst duration, backlog and buffers treated separately; the burst simulation redone with exact arrival sampling and waits separated from time in system). `liquidity-market-design-checks.py` sections 4 and 8 were rewritten; its other results are unchanged.
 
-Written in migration dealer models and information / source review / optimal execution / execution control reviews, from the legacy economics-of-market-making and optimal-quoting files of the market-making folder (eleven blocks assigned here):
+Written in dealer models and information / source review / optimal execution / execution control reviews:
 
 - `def:dealer-quotes-order-flow`: Harris's dealers and their four problems; two-sided and one-sided, firm and soft, continuous and on-request quotes; the inside spread (Table 13-1 recomputed); trading with dealers; attracting and buying order flow; preferencing (chap. 13, as of 2002).
-- `def:specialist-obligations-privileges`: affirmative, negative, auction and capital obligations; the privileges; the legacy participation-option inequality marked as interpretation of Harris p. 499; tick size and participation (box, p. 500); the regulator's question and who pays (chap. 24, as of 2002).
+- `def:specialist-obligations-privileges`: affirmative, negative, auction and capital obligations; the privileges; tick size and participation (box, p. 500); the regulator's question and who pays (chap. 24, as of 2002).
 
-Changed in dealer models and information review (merges): `def:outside-spread` (the dealer comparison restated), `def:arbitrage` (cross-asset arbitrage mapped onto Harris's types; derivative conversion and dynamic hedges; the cyclic currency band derived and Harris's currency box found inconsistent and recomputed) and `res:arbitrage-risks` (legging and synchronised execution, capital, relative-value features, and the factor decomposition with a hedge ratio), from the cross-asset file, whose candidates are `market-making-lob` and `hft-market-design`, and the feature-engineering file (routing exceptions); `def:trader-motives` (comparative advantage in signals); `meth:spread-volatility-regression` (fit quality and the averaging effect, from the data-engineering file; routing exception); and `mech:bubble-crash-dynamics`, whose See also pointed to the removed legacy chapter. All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/execution-market-making/economics-of-market-making.tex`, `optimal-quoting-inventory-control.tex`, `cross-asset-cross-venue-market-making.tex`, the three folder wrappers and the chapter file as they stood before dealer models and information review (`03-`, `04-` and `market-making-overview.tex`, `microstructure-dealers-chapter.tex`) and the checks `dealer-queue-information-checks.py`.
+Changed in dealer models and information review (merges): `def:outside-spread` (the dealer comparison restated), `def:arbitrage` (cross-asset arbitrage mapped onto Harris's types; derivative conversion and dynamic hedges; the cyclic currency band derived and Harris's currency box found inconsistent and recomputed) and `res:arbitrage-risks` (legging and synchronised execution, capital, relative-value features, and the factor decomposition with a hedge ratio); and `def:trader-motives` (comparative advantage in signals). All partly checked 2026-10-16, draft; human review outstanding. Checks: `dealer-queue-information-checks.py`.
 
 Corrected in the dealer models and information review follow-up, 2026-10-16: `def:arbitrage` (exact triangular equality of cross rates restricted to the frictionless case; with bid and ask quotes the synthetic and direct midpoints can differ inside the executable band, checked on EUR/USD 1.0999/1.1001, USD/JPY 109.99/110.01 and EUR/JPY 120.99/121.03, synthetic mid 121.00 against direct 121.01, both cycles unprofitable). Corrected in a second market design and liquidity review follow-up, 2026-10-16: `def:liquidity-dimensions` (the cost function made dimensionally consistent: $C(q)=q\,w(q)$ with $w$ in currency per share, or $C=q\,m\,w_{bp}/10{,}000$ with $w$ in basis points of the midpoint $m$; 100 shares at a midpoint of 100 and 10 bp cost 10). Both checks extend `notes/artefacts/execution-market-making/dealer-queue-information-checks.py` and `liquidity-market-design-checks.py`.
 
@@ -122,10 +121,6 @@ Source follow-up of order books and order flow / dealer models and information r
 Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:order-instruction-venue-rules` resolved for the venues named (Nasdaq Equity 4, Rules 4703(e), 4756(a)(3) and 4757(a)(1), browser export of 16 October 2026: two minimum-quantity modes, persistent on the resting order; priority kept only for re-marking and size reduction; CME and MIAX PEARL read earlier); `conv:dmm-obligations-current` resolved for NYSE (current Rules 104 and 107B, browser exports of 16 October 2026: 15/10 percent at the inside for non-ETPs and 25 for ETPs; Designated Percentages and Defined Limits unchanged; last amended 22 November 2022 and 25 January 2023; other venues out of the entry's scope). The record is in `notes/source-review-records.md`, *Second source follow-up of the order books and order flow / macro markets and pricing reviews queue*.
 
 source verification (2026-10-17) (source verification and bounded tests, not study or human review): `conv:pro-rata-allocation-rules` resolved for CME Globex by merge into `mech:order-matching-pricing` (Client Systems Wiki, "CME Globex Matching Algorithm Steps", version 5 of 2 June 2026, from the retained REST export): algorithms by step, Pro Rata rounded down with a minimum allocation, Leveling (algorithm K), Split with FIFO rounded up, TOP, LMM (options only), the FIFO exception, and display-quantity priority; CME's examples recomputed in `notes/artefacts/execution-market-making/cme-allocation-checks.py`. `conv:session-carry-over` resolved for CME Globex by merge into `mech:order-lifecycle` (Order Qualifiers, version 3; Matching Algorithm Steps, version 5): day orders expire, GTC and GTD carry with their timestamps, no TOP over a weekend. Other venues and CME's market-data recovery were not checked. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. dealer models and information review migrated the last blocks of the legacy microstructure chapter (`compendium/legacy/execution-market-making/`) and removed it, with its wrappers kept verbatim in the artefacts: no legacy file now lists this pathway. Earlier: information and price discovery review migrated the information-and-market-efficiency file and nine of the twelve price-discovery blocks, strategic trading / liquidity and impact reviews the strategic-trading and liquidity-and-impact files, order books and order flow / order matching and fragmentation reviews the orders-and-matching folder, and market design and liquidity review the foundations folder. That says nothing about consolidation.
 
 ## What changed in my view or practice
 

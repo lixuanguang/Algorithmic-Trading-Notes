@@ -2,12 +2,12 @@
 key: wide-webster-price-impact
 pathways: [price-impact-execution]
 version: Kevin T. Webster, Handbook of Price Impact Modeling, Chapman and Hall/CRC, first edition, 2023 (DOI 10.1201/9781003316923; ISBN 978-1-032-32822-5), matching the catalogue record; local PDF with a text layer, outside the repository (printed page = PDF page - 17)
-sections: chap. 1, secs. 1.1.1-1.1.5 (pp. 3-15); chap. 2, Definition 2.2.6 (pp. 53-54), sec. 2.7 (pp. 93-96), Definition 2.8.1 (p. 97); page image of p. 94 (checked for migration liquidity and impact review)
+sections: chap. 1, secs. 1.1.1-1.1.5 (pp. 3-15); chap. 2, Definition 2.2.6 (pp. 53-54), sec. 2.7 (pp. 93-96), Definition 2.8.1 (p. 97); page image of p. 94 (checked for liquidity and impact review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration liquidity and impact review from source checks, not from study: the headings that need your own reading are left empty. `notes/log.md` records chapter 1 as in progress before the study method.
+Prepared on 2026-10-15 by liquidity and impact review from source checks, not from study: the headings that need your own reading are left empty. `notes/log.md` records chapter 1 as in progress before the study method.
 
 ## Question and claim
 

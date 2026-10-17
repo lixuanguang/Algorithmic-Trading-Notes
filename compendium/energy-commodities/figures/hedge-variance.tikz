@@ -1,7 +1,6 @@
 % compendium/energy-commodities/figures/hedge-variance.tikz
-% Drawn for slice 31 (2026-10-15): the sample variance of dS - h dF, relative to the unhedged variance, for Hull's
-% jet-fuel/heating-oil data (Table 3.2, 11th Global ed., p. 82), computed with numpy. The legacy schematic PNG it
-% replaces is kept in notes/artefacts/volatility-options/figures/.
+% The sample variance of dS - h dF, relative to the unhedged variance, for Hull's jet-fuel/heating-oil
+% data (Table 3.2, 11th Global ed., p. 82), computed with numpy.
 \begin{tikzpicture}[>=stealth, x=4.2cm, y=3.2cm, font=\small]
   \draw[->] (0,0) -- (1.75,0) node[right] {$h$};
 

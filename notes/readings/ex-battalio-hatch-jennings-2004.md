@@ -2,12 +2,12 @@
 key: ex-battalio-hatch-jennings-2004
 pathways: [options-execution]
 version: R. Battalio, B. Hatch and R. Jennings, "Toward a National Market System for U.S. Exchange-listed Equity Options", Journal of Finance 59(2), 933-962, 2004 (DOI 10.1111/j.1540-6261.2004.00653.x). Copy used: none. Only the abstract was read, from the publisher's record as served by RePEc, Crossref or OpenAlex on 2026-10-15 with a generic header; no open full text was found
-sections: abstract only (checked for migration options market structure review)
+sections: abstract only (checked for options market structure review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration options market structure review from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by options market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

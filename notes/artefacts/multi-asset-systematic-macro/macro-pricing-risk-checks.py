@@ -1,4 +1,4 @@
-"""Numerical checks for migration macro markets and pricing review (the legacy macro chapter: regimes, transmission maps and
+"""Numerical checks for macro markets and pricing review (regimes, transmission maps and
 practitioner frameworks), 2026-10-16.
 
 Run with numpy and scipy:  /opt/homebrew/bin/python3.10 macro-pricing-risk-checks.py
@@ -20,7 +20,7 @@ section and PDF page of the ebook (no printed page numbers); Drobny (2006), prin
     def:sovereign-credit-defaults).
 13. Variance swap units and payoff; the VIX rule of 16 (def:vix-variance-dividend-swaps).
 14. Commodity contract notionals, the 3:2:1 crack spread and platinum's density (physical entries).
-15. Gliner's demographic table: which column the legacy notes used (def:macroeconomic-indicators).
+15. Gliner's demographic table: which column each peak year comes from (def:macroeconomic-indicators).
 16. Stocks-to-use with trade (def:contango-backwardation-stocks).
 17. Carry-to-risk ratio (mod:fx-carry-trade).
 """
@@ -138,7 +138,7 @@ dy = 0.01
 approx_pct = -Dmod * dy + 0.5 * C * dy ** 2
 exact_pct = price(y + dy) / P0 - 1
 print(f"  10y 4% annual bond at par: modified duration {Dmod:.3f}, convexity {C:.1f}, DV01 per 100 = {dv01:.4f}")
-print(f"  +100 bp: exact {exact_pct:+.4%}, -D dy + C dy^2/2 = {approx_pct:+.4%} (a percentage of price; the legacy dropped the price factor)")
+print(f"  +100 bp: exact {exact_pct:+.4%}, -D dy + C dy^2/2 = {approx_pct:+.4%} (a percentage of price, so the price factor matters)")
 assert abs(approx_pct - exact_pct) < 5e-4
 
 
@@ -192,10 +192,10 @@ section("15. Gliner's Table 12.2: prime-saving (35-69) against working-age (15-6
 table = {"Germany": (2006, 1986), "Japan": (2016, 1992), "Netherlands": (2012, 1989), "United Kingdom": (2012, 2009),
          "United States": (2016, 2007), "China": (2032, 2011), "Korea": (2023, 2015), "Russia": (2025, 2011),
          "Spain": (2022, 2004), "India": (2050, 2027), "Indonesia": (2050, 2023), "Nigeria": (2050, 2050), "Philippines": (2050, 2037)}
-legacy = {"Germany": 2006, "Japan": 2016, "Netherlands": 1989, "United Kingdom": 2009, "United States": 2007, "China": 2032,
+quoted = {"Germany": 2006, "Japan": 2016, "Netherlands": 1989, "United Kingdom": 2009, "United States": 2007, "China": 2032,
           "Korea": 2023, "Russia": 2025, "Spain": 2022, "India": 2050, "Indonesia": 2050, "Nigeria": 2050, "Philippines": 2050}
-cols = {k: ("prime" if legacy[k] == v[0] else "working") + ("" if v[0] != v[1] else " (same)") for k, v in table.items()}
-print("  legacy 'peak working-age' year matches:", ", ".join(f"{k} {legacy[k]} -> {cols[k]}" for k in table))
+cols = {k: ("prime" if quoted[k] == v[0] else "working") + ("" if v[0] != v[1] else " (same)") for k, v in table.items()}
+print("  quoted 'peak working-age' year matches:", ", ".join(f"{k} {quoted[k]} -> {cols[k]}" for k in table))
 assert cols["Netherlands"] == "working" and cols["Germany"] == "prime" and cols["United Kingdom"] == "working"
 
 
@@ -204,7 +204,7 @@ section("16. ending stocks with trade")
 beg, prod, imp, use, exp_ = 10.0, 100.0, 5.0, 95.0, 12.0
 end = beg + prod + imp - use - exp_
 print(f"  country balance: {beg} + {prod} + {imp} - {use} - {exp_} = {end}; stocks-to-use {end/(use+exp_):.1%} "
-      f"(the legacy identity without trade gives {beg+prod-use})")
+      f"(the identity without trade gives {beg+prod-use})")
 assert end == 8.0
 
 

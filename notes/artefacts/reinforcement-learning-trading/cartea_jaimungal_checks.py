@@ -1,4 +1,4 @@
-"""Numerical checks for mod:cartea-jaimungal-execution (migration execution control / source review / optimal execution / high-frequency strategies reviews).
+"""Numerical checks for mod:cartea-jaimungal-execution (execution control / source review / optimal execution / high-frequency strategies reviews).
 
 Checks Lehalle and Laruelle, app. A.7.3, pp. 281-284: the reduction of the HJB equation with the
 inventory term -nu*dqH, the Riccati solution for h2 against direct integration (the printed closed

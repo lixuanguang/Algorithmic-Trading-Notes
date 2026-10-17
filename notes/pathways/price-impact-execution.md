@@ -1,7 +1,7 @@
 ---
 key: price-impact-execution
 section: execution-trading-costs
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Price impact, optimal execution and implementation shortfall
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: estimate a price-impact model from executions, 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 15 October 2026 by migration liquidity and impact review (`notes/source-review-index.md`), when three entries on price impact were migrated from the legacy liquidity-and-market-impact file into the new canonical chapter `compendium/execution-trading-costs/`. The entries were checked against Webster's handbook (`wide-webster-price-impact`, a required reading of this pathway) and against Bouchaud, Bonart, Donier and Gould (`catalogue-0528`, on no route). That is migration and source checking, not study of the readings. Gatheral (`catalogue-0501`) was not consulted and is cited only through Webster. In market-impact models review three required readings were read in open versions for source checking: `alpha-almgren` (author preprint of December 2000), `wide-bouchaud-propagator` (arXiv cond-mat/0307332v2) and `wide-bacry-life-cycle` (arXiv preprint of December 2014); their journal versions and pagination were not checked. In impact estimation review `wide-almgren-direct-impact` was read in the authors' preprint of 10 May 2005; `wide-toth-square-root` remains unread.
+Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 15 October 2026 by liquidity and impact review (`notes/source-review-index.md`). The entries were checked against Webster's handbook (`wide-webster-price-impact`, a required reading of this pathway) and against Bouchaud, Bonart, Donier and Gould (`catalogue-0528`, on no route). That is source checking, not study of the readings. Gatheral (`catalogue-0501`) was not consulted and is cited only through Webster. In market-impact models review three required readings were read in open versions for source checking: `alpha-almgren` (author preprint of December 2000), `wide-bouchaud-propagator` (arXiv cond-mat/0307332v2) and `wide-bacry-life-cycle` (arXiv preprint of December 2014); their journal versions and pagination were not checked. In impact estimation review `wide-almgren-direct-impact` was read in the authors' preprint of 10 May 2005; `wide-toth-square-root` remains unread.
 
 ## Outcome in my own words
 
@@ -22,20 +22,20 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration liquidity and impact / source review / optimal execution / high-frequency strategies reviews:
+Written in liquidity and impact / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:price-impact`: unperturbed, observed and trade prices; reaction, observed and prediction impact; transient and permanent impact; the "temporary impact" ambiguity.
 - `mod:propagator`: the propagator model of transient impact; response function and sign autocorrelation.
 - `res:no-price-manipulation`: price manipulation as a round trip with negative expected cost; Webster's Obizhaeva–Wang example and the condition 2β+γ′>0; the closed-trajectory cost in the latent-liquidity model.
 
-Written in migration market-impact models / source review / optimal execution / high-frequency strategies reviews, from the legacy market-impact-models file:
+Written in market-impact models / source review / optimal execution / high-frequency strategies reviews:
 
 - `ev:square-root-impact`: the square-root law of metaorder impact, its range and conditions (`catalogue-0528`; confirmed in `wide-bacry-life-cycle`).
 - `meth:post-execution-impact-profile`: Bacry et al.'s debiasing for later metaorders and index decomposition of post-execution prices.
 
-Changed in market-impact models review: `def:price-impact` (model families from the Almgren–Chriss original; the three meanings of "temporary impact"; mechanical and informational views of permanent impact) and `mod:propagator` (the 2004 original read; kernel shapes and the fine balance; order splitting as the source of sign memory; legacy departures corrected).
+Changed in market-impact models review: `def:price-impact` (model families from the Almgren–Chriss original; the three meanings of "temporary impact"; mechanical and informational views of permanent impact) and `mod:propagator`.
 
-Written in migration impact estimation / source review / optimal execution / high-frequency strategies reviews, from the legacy price-impact-estimation file:
+Written in impact estimation / source review / optimal execution / high-frequency strategies reviews:
 
 - `ev:intraday-impact-profile`: the impact path during and after execution, and its dependence on participation and duration (`alpha-laruelle`; `wide-bacry-life-cycle`).
 - `meth:almgren-impact-estimation`: Almgren et al.'s direct estimation of permanent and temporary impact from Citigroup orders (`wide-almgren-direct-impact`, preprint).
@@ -44,17 +44,17 @@ Written in migration impact estimation / source review / optimal execution / hig
 
 Changed in impact estimation review: `def:price-impact` (execution-time measurement; timing), `ev:square-root-impact` (Almgren et al.'s 3/5 exponent; Bacry et al.'s duration factor), `meth:post-execution-impact-profile` (Lehalle and Laruelle's restatement of the procedure).
 
-All nine: verification partly checked 2026-10-15, stability draft; human review outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`, where the migration has kept every removed block.
+All nine: verification partly checked 2026-10-15, stability draft; human review outstanding.
 
-Written in migration order books and order flow / source review / optimal execution / execution control reviews, from the legacy trade-classification file (a map candidate):
+Written in order books and order flow / source review / optimal execution / execution control reviews:
 
 - `meth:trade-sign-classification`: quote rule, tick rule and Lee--Ready as Harris and Hasbrouck describe them, the block-price rule, signed volume, and the limits of an inferred sign; Harris's 80 percent seller-initiated blocks kept as his unsourced report.
 
-Partly checked 2026-10-16, draft; human review outstanding. Artefact: `notes/artefacts/price-impact-execution/trade-classification.tex`.
+Partly checked 2026-10-16, draft; human review outstanding.
 
 Changed in the order books and order flow review follow-up, 2026-10-16: `meth:trade-sign-classification` (the check now uses exact decimal prices and ten assertions; the order books and order flow review float version misclassified a half-tick midpoint trade after a downtick).
 
-Changed in migration market design and liquidity / source review / optimal execution / execution control reviews (a routing exception from the foundations folder, whose candidates are `execution-market-making` and `market-structure-execution-quality`): `def:price-impact` took the legacy temporary-and-permanent impact mechanism as a restatement, with Harris's resiliency (pp. 400 and 403). Partly checked 2026-10-16, draft; human review outstanding.
+Changed in market design and liquidity / source review / optimal execution / execution control reviews: `def:price-impact` gained Harris's resiliency (pp. 400 and 403). Partly checked 2026-10-16, draft; human review outstanding.
 
 ## Entry backlog
 
@@ -74,10 +74,6 @@ method validation (2026-10-17) (audit repairs and a source-review coverage; sour
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `res:trade-sign-accuracy` unchanged (open versions of Ellis, Michaely and O'Hara and of the later accuracy studies were searched for and not found); `ev:block-initiator-asymmetry` narrowed (Harris gives the rule without a citation; Saar (theory) and Alzahrani et al. (Saudi data) merged). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
 derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. The blocks exclusive to this pathway are in `compendium/legacy/execution-trading-costs/`. The legacy market-impact-models file was migrated and deleted in market-impact models review, and the price-impact-estimation file in impact estimation review. In optimal execution review the optimal-execution-problem file, shared with the section overview, was migrated to entries owned by `execution-trading-costs` (see that note), cross-referencing this pathway's impact entries. In execution algorithms review the execution-algorithms file, also shared with the overview, went to entries owned by `execution-trading-costs`; its envelope entry cross-references this pathway's impact models. No legacy block is now a candidate of this pathway alone; its 10 remaining candidates (after execution algorithms review) are shared, the nearest in `compendium/legacy/execution-trading-costs/01_execution_and_algorithmic_trading/`.
 
 ## What changed in my view or practice
 

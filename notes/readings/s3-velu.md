@@ -2,12 +2,12 @@
 key: s3-velu
 pathways: [point-in-time-data, alternative-data-sources]
 version: Raja Velu, Maxence Hardy and Daniel Nehren, Algorithmic Trading and Quantitative Strategies, Chapman & Hall/CRC Financial Mathematics Series, CRC Press, Boca Raton, ISBN 9781498737166 (hbk), 9780429183942 (ebk). The copyright page of the local copy reads "(c) 2020 Taylor & Francis Group"; the catalogue records a 2020 release and 2021 copyright. Copy used: a local PDF outside the repository with a text layer (printed page = PDF page - 17 in chap. 1)
-sections: chap. 1, sec. 1.4 "Taxonomy of Data Used in Algorithmic Trading" (pp. 26-44), text layer, with Table 1.10 (p. 37) by page image, read for migration financial data and labels review; nothing else read; dealer models and information review: chap. 11, sec. 11.1 (pp. 383-386), text layer; source verification (2026-10-17): chap. 1, sec. 1.4, p. 43 with nn. 31-32, text layer
+sections: chap. 1, sec. 1.4 "Taxonomy of Data Used in Algorithmic Trading" (pp. 26-44), text layer, with Table 1.10 (p. 37) by page image, read for financial data and labels review; nothing else read; dealer models and information review: chap. 11, sec. 11.1 (pp. 383-386), text layer; source verification (2026-10-17): chap. 1, sec. 1.4, p. 43 with nn. 31-32, text layer
 read:
 status: draft
 ---
 
-Prepared on 2026-10-16 by migration financial data and labels review from source checks, not from study: the headings that need your own reading are left empty. The legacy ML data-taxonomy file's five definitions (reference data, market data feed, binned data, granular intraday activity, fundamental and other data) follow this section closely without naming it; the book is cited in the compendium's preface. No route checked here names it as a required reading.
+Prepared on 2026-10-16 by financial data and labels review from source checks, not from study: the headings that need your own reading are left empty. the book is cited in the compendium's preface. No route checked here names it as a required reading.
 
 source verification (2026-10-17) (source checks, not study): the 13F, 13D and Form 3/4 remarks on p. 43 were compared with the rules in force (`data:holdings-insider-filing-lags`); the 13D ten-day deadline predates the 2024 amendments and the 13F test counts section 13(f) securities, not assets.
 
@@ -38,9 +38,8 @@ source verification (2026-10-17) (source checks, not study): the 13F, 13D and Fo
 
 `data:trading-reference-data`, `data:market-data-levels`, `data:derived-market-statistics` (`point-in-time-data`); `def:financial-data-types` (`alternative-data-sources`, with `alpha-afml`).
 
-dealer models and information review: `data:market-data-levels` (the order path from client to venue: FIX, the order management system, gateways and native protocols, acknowledgements and executions, clearing and settlement; chap. 11, sec. 11.1, pp. 383-386), merged from the legacy data-engineering file.
+dealer models and information review: `data:market-data-levels` (the order path from client to venue: FIX, the order management system, gateways and native protocols, acknowledgements and executions, clearing and settlement; chap. 11, sec. 11.1, pp. 383-386).
 
 ## Open questions
 
-- The legacy "divide by 1000" and the mislabelled "Binned Data" heading were the notes' slips, not the book's; were the notes made from another printing?
 - The 13F, 13D and Form 4 thresholds and deadlines in the footnotes (p. 43) are not checked against the rules.

@@ -2,12 +2,12 @@
 key: catalogue-0528
 pathways: [price-impact-execution, execution-market-making, market-making-lob, market-simulation, lob-deep-learning, market-structure-execution-quality]
 version: Jean-Philippe Bouchaud, Julius Bonart, Jonathan Donier and Martin Gould, Trades, Quotes and Prices: Financial Markets Under the Microscope, Cambridge University Press, first published 2018 (ISBN 9781107156050; DOI 10.1017/9781316659335). The catalogue record does not establish the edition; this copy was used. Local PDF with a text layer, outside the repository (printed page = PDF page - 19)
-sections: chap. 10, secs. 10.4-10.5 (p. 198); chap. 11, secs. 11.1-11.2 (pp. 208-212); chap. 12, secs. 12.2-12.5 (pp. 233-236, 240-241); chap. 13, secs. 13.1-13.2.3 (pp. 249-257); chap. 19, sec. 19.5 (pp. 361-362); page images of pp. 211, 234, 252 and 362 (checked for migration liquidity and impact / market-impact models reviews); chap. 2, secs. 2.1-2.2.2, pp. 23-31; chap. 3, pp. 43-56; chap. 4, secs. 4.1-4.2.1, pp. 58-61; chap. 7, secs. 7.1-7.2, pp. 118-120; chap. 9, pp. 163-185; chap. 10, sec. 10.1, pp. 187-189; chap. 11, sec. 11.4, pp. 222-223 (order books and order flow review); chap. 3, secs. 3.1.2-3.1.3, 3.2.2-3.2.3, pp. 45, 55-56 (order matching and fragmentation review and the order books and order flow review follow-up)
+sections: chap. 10, secs. 10.4-10.5 (p. 198); chap. 11, secs. 11.1-11.2 (pp. 208-212); chap. 12, secs. 12.2-12.5 (pp. 233-236, 240-241); chap. 13, secs. 13.1-13.2.3 (pp. 249-257); chap. 19, sec. 19.5 (pp. 361-362); page images of pp. 211, 234, 252 and 362 (checked for liquidity and impact / market-impact models reviews); chap. 2, secs. 2.1-2.2.2, pp. 23-31; chap. 3, pp. 43-56; chap. 4, secs. 4.1-4.2.1, pp. 58-61; chap. 7, secs. 7.1-7.2, pp. 118-120; chap. 9, pp. 163-185; chap. 10, sec. 10.1, pp. 187-189; chap. 11, sec. 11.4, pp. 222-223 (order books and order flow review); chap. 3, secs. 3.1.2-3.1.3, 3.2.2-3.2.3, pp. 45, 55-56 (order matching and fragmentation review and the order books and order flow review follow-up)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration liquidity and impact review from source checks, not from study: the headings that need your own reading are left empty. The book is in the catalogue but on no route's required list.
+Prepared on 2026-10-15 by liquidity and impact review from source checks, not from study: the headings that need your own reading are left empty. The book is in the catalogue but on no route's required list.
 
 ## Question and claim
 

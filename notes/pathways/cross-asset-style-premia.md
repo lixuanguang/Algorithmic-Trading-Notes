@@ -1,7 +1,7 @@
 ---
 key: cross-asset-style-premia
 section: multi-asset-systematic-macro
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Cross-asset style premia: value, momentum, carry and defensive
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: build value, momentum, carry and defensive stra
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the legacy chapter's equity valuation and top-down blocks; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `meth:equity-index-valuation`: top-down country and sector selection and Gliner's valuation ratios (P/B thresholds, dividend yield, P/E, FCF yield, market cap to GDP), with his Tobin's q slip.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -43,10 +43,6 @@ Cross-referenced, not owned here: `def:equity-indices-derivatives` (`internation
 ## Entry backlog
 
 - ev:equity-index-value-signal: does cross-sectional value (book-to-price or earnings yield) across country equity indices predict relative returns out of sample, and do Gliner's fixed P/B thresholds (2.5 'overbought', p. 228) time markets? Protocol: monthly B/P and E/P with publication dates for 15-20 developed markets; rank each month, long the cheapest tercile and short the dearest, from a ten-year warm-up; returns in USD and local currency, net of an assumed futures or ETF cost; Sharpe with Lo's standard error and the deflated Sharpe ratio over variants; the threshold rule against buy-and-hold per market. Missing: point-in-time country valuation data (MSCI licensed; French's international files are within-country portfolios)
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

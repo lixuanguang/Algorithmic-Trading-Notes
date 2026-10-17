@@ -2,12 +2,12 @@
 key: s7-kissellscience
 pathways: [execution-trading-costs, market-structure-execution-quality]
 version: Robert Kissell, The Science of Algorithmic Trading and Portfolio Management, Academic Press (Elsevier), copyright 2014, ISBN 978-0-12-401689-7; the catalogue cites it as 2013. Local PDF with a text layer, outside the repository (printed page = PDF page - 19); identity checked from the title page, copyright page and ISBN, not the file name
-sections: chap. 1, pp. 16-19 (algorithm classes and types, basket algorithms and the risk-aversion parameter; pp. 18-19 for execution algorithms review); chap. 3, pp. 87-96 (best execution, ten cost components, classification, pre-, intra- and post-trade analysis; transaction-cost analysis review), pp. 110-113 (index-adjusted cost and z-scores, page image of p. 112; transaction-cost analysis review), pp. 97-108 (cost conventions, implementation shortfall, arrival cost, benchmark, VWAP and participation-weighted price performance), page images of pp. 100, 103 and 105 (checked for migration execution benchmarks / transaction-cost analysis reviews)
+sections: chap. 1, pp. 16-19 (algorithm classes and types, basket algorithms and the risk-aversion parameter; pp. 18-19 for execution algorithms review); chap. 3, pp. 87-96 (best execution, ten cost components, classification, pre-, intra- and post-trade analysis; transaction-cost analysis review), pp. 110-113 (index-adjusted cost and z-scores, page image of p. 112; transaction-cost analysis review), pp. 97-108 (cost conventions, implementation shortfall, arrival cost, benchmark, VWAP and participation-weighted price performance), page images of pp. 100, 103 and 105 (checked for execution benchmarks / transaction-cost analysis reviews)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration execution benchmarks review from source checks, not from study: the headings that need your own reading are left empty. The book is in the catalogue but on no route's required list; it was used because Perold's paper (`wide-perold-shortfall`) was not available.
+Prepared on 2026-10-15 by execution benchmarks review from source checks, not from study: the headings that need your own reading are left empty. The book is in the catalogue but on no route's required list; it was used because Perold's paper (`wide-perold-shortfall`) was not available.
 
 ## Question and claim
 

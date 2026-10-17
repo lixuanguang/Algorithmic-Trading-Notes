@@ -1,7 +1,7 @@
 ---
 key: curve-term-structure
 section: rates-credit-mortgages
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Yield-curve construction and term-structure models
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: build a zero curve, decompose yields into expec
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the curve-trade, carry-and-rolldown and inversion blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Estrella and Trubin (2006). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Estrella and Trubin (2006). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `meth:curve-trades-carry-rolldown`: DV01-neutral steepeners and flatteners, bull and bear moves, carry signs that depend on the curve and financing, rolldown defined (Gliner's definition corrected), and Estrella--Trubin's inversion record to 2005.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 Written in derivatives and empirical validation (2026-10-17):
 
@@ -55,10 +55,6 @@ Cross-referenced, not owned here: `mod:duration-convexity` (`rates-credit-mortga
 ## Entry backlog
 
 - ev:curve-inversion-after-2005: retrospective NBER dating only. All 27 inverted expansion months from November 2022 (episodes 2022-11 to 2024-11 and 2025-03 to 2025-04, on H.15 data) now have complete twelve-month horizons with no recession dated; 24 lie beyond the longest past announcement lag (12 months) and 3 (2024-11, 2025-03, 2025-04) still within it. Revisit when NBER announces a business-cycle peak after February 2020, or from April 2027, when the last of the 27 months passes the longest past lag (a later dating would then need a longer lag than any before).
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

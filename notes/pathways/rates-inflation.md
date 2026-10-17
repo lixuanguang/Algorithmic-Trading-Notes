@@ -1,7 +1,7 @@
 ---
 key: rates-inflation
 section: rates-credit-mortgages
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Inflation-linked bonds, real yields and breakevens
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price TIPS and inflation swaps with actual inde
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the TIPS and breakeven blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and TreasuryDirect's TIPS page as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and TreasuryDirect's TIPS page as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:tips-breakevens`: TIPS indexation, lag and floor, the current auction schedule against Gliner's 2014 calendar, his "trades at 105" conflation corrected, and what a breakeven contains.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -39,11 +39,6 @@ Second macro markets and pricing review follow-up, 2026-10-16 (source verificati
 Cross-referenced, not owned here: `def:macroeconomic-indicators` (`macro-nowcasting-signals`); `def:macro-regime-asset-map` (`macro-regimes-stock-bond`).
 
 ## Entry backlog
-
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

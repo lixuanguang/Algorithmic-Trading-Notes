@@ -1,7 +1,7 @@
 ---
 key: commodity-storage-curves
 section: energy-commodities
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Theory of storage, convenience yield and inventories
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: explain the basis and the shape of commodity fo
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the contango, backwardation and ending-stocks blocks and the commodities introduction of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:contango-backwardation-stocks`: storage and scarcity, seasonal crop curves, ending stocks with trade, stocks-to-use, and roll yield stated carefully.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -47,10 +47,6 @@ Cross-referenced, not owned here: `res:cost-of-carry-forward-price` (`volatility
 ## Entry backlog
 
 - ev:backwardation-scarcity-or-premium: commodities beyond the three U.S. energy contracts (metals, agriculture), and hedging pressure for gas and heating oil (tested for WTI only, not supported). Data limits that remain: inventory release schedules before 2025, NYMEX's heating-oil rule text, sparse two-contract overlap before 2007, COT release delays, and TAS availability before 2019.
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

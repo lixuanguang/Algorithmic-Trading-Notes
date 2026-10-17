@@ -2,12 +2,12 @@
 key: wide-moallemi-yuan-queue
 pathways: [market-making-lob, hft-market-design]
 version: Ciamac C. Moallemi and Kai Yuan, "A Model for Queue Position Valuation in a Limit Order Book", author working paper, initial version December 2016, current revision June 2017 (the copy read; the catalogue records the 2016 version), from the author's site (moallemi.com/ciamac/papers/queue-value-2016.pdf), 33 pages, retrieved 2026-10-16; printed page = PDF page
-sections: abstract; sec. 1 (pp. 1-4); sec. 2, opening (p. 6); sec. 4.3 and Table 1 (pp. 18-19); sec. 5.2 and Table 3 (pp. 23-24); sec. 6 (pp. 24-25); read for migration dealer models and information review. Sec. 3 (the value recursion) and the remaining sections not read
+sections: abstract; sec. 1 (pp. 1-4); sec. 2, opening (p. 6); sec. 4.3 and Table 1 (pp. 18-19); sec. 5.2 and Table 3 (pp. 23-24); sec. 6 (pp. 24-25); read for dealer models and information review. Sec. 3 (the value recursion) and the remaining sections not read
 read:
 status: draft
 ---
 
-Prepared on 2026-10-16 by migration dealer models and information review from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-16 by dealer models and information review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 
@@ -35,7 +35,7 @@ Prepared on 2026-10-16 by migration dealer models and information review from so
 
 ## Entries
 
-dealer models and information review: `res:queue-position-value` (owned by `hft-market-design`; the legacy "latency as queue option" block, whose "thin queues" the paper contradicts).
+dealer models and information review: `res:queue-position-value`.
 
 ## Open questions
 

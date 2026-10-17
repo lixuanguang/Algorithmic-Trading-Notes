@@ -1,7 +1,7 @@
 ---
 key: rate-derivatives
 section: rates-credit-mortgages
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Interest-rate derivatives, volatility and RFR conventions
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price caps, swaptions and SOFR futures with a c
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the interest-rate-swap block of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:interest-rate-swaps`: fixed for floating, payer and receiver, SOFR in place of LIBOR, clearing rather than "exchange-traded".
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 Written in derivatives and empirical validation (2026-10-17):
 
@@ -45,11 +45,6 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 Cross-referenced, not owned here: `meth:policy-path-ois-futures` (`monetary-policy-curve`); `mech:otc-clearing-collateral` (`rates-credit-mortgages`).
 
 ## Entry backlog
-
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

@@ -1,7 +1,7 @@
 ---
 key: exp-pfmi
 pathways: [funding-crowding, execution-trading-costs]
-version: CPSS and IOSCO Technical Committee, Principles for Financial Market Infrastructures, April 2012, as catalogued. Copy used: the BIS PDF (188 pages), downloaded 2026-10-17 (an earlier copy was read in migration transaction-cost models review); text layer
+version: CPSS and IOSCO Technical Committee, Principles for Financial Market Infrastructures, April 2012, as catalogued. Copy used: the BIS PDF (188 pages), downloaded 2026-10-17 (an earlier copy was read in transaction-cost models review); text layer
 sections: paras. 1.8-1.13 (pp. 7-9, transaction-cost models review); Annex H, glossary (pp. 174-178, source verification (2026-10-17))
 read:
 status: draft

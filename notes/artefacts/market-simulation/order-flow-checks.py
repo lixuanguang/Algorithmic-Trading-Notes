@@ -42,7 +42,7 @@ for mean in [0.6, 1.2, 3.0, 8.0]:
     print(f'latent mean {mean:4.1f} old ticks: E(Psi|delta=1) = {e1:.3f}, E(Psi|delta=5) = {e5:.3f} old ticks,'
           f' change {e5 - e1:+.3f} ({(e5 - e1) / e1:+.1%})')
 print('units: an observed spread of k old ticks is k*delta NEW ticks (3 old ticks = 15 new ticks at delta = 5);'
-      ' it is a count of k NEW ticks that equals k/delta old ticks. The legacy "k-tick spread becomes k/delta old-tick units" mixes the two.')
+      ' it is a count of k NEW ticks that equals k/delta old ticks. Reading a k-tick spread as k/delta old-tick units mixes the two.')
 print('the counterfactual re-rounds the latent spread on the finer grid; it does not rescale observed spreads:'
       f' mean 8.0 changes by {expected_discrete(8.0, 5) - expected_discrete(8.0, 1):+.3f} old ticks, not 8.0/5 - 8.0 = {8 / 5 - 8:+.1f}')
 

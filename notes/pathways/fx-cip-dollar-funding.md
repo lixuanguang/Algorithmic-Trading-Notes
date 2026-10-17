@@ -38,10 +38,6 @@ derivatives and empirical validation (2026-10-17) (source verification and bound
 
 - ev:cip-basis-current: the basis after 2016 and its drivers in dollar funding (the pathway's other readings, unread); the 2010-2016 evidence is in `ev:cip-deviations`.
 
-## Legacy candidate material
-
-None.
-
 ## What changed in my view or practice
 
 ## Questions carried forward

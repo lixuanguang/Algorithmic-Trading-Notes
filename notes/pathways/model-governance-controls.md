@@ -1,7 +1,7 @@
 ---
 key: model-governance-controls
 section: research-engineering-validation
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Model governance, AI risk and trading controls
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: design a model inventory, validation and change
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration trading infrastructure review (`notes/source-review-index.md`), which migrated the legacy production-considerations file mapped to this pathway. Only its reliability, network-failure and audit-trail blocks were routed here; its architecture, indicator, floor-against-automated and brokerage blocks went elsewhere or were deleted. The entry comes from migration and source checking against Harris (`alpha-harris`, 2002) and the current eCFR text of Rule 15c3-5, whose adopting release (`wide-sec-15c3-5`) is a reading of this pathway but was not itself read. That is not study of the readings: none has been studied, and the EU rule (`wide-mifid-rts6`) could not be retrieved.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by trading infrastructure review (`notes/source-review-index.md`). The entry comes from source checking against Harris (`alpha-harris`, 2002) and the current eCFR text of Rule 15c3-5, whose adopting release (`wide-sec-15c3-5`) is a reading of this pathway but was not itself read. That is not study of the readings: none has been studied, and the EU rule (`wide-mifid-rts6`) could not be retrieved.
 
 ## Outcome in my own words
 
@@ -22,26 +22,26 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration trading infrastructure / source review / optimal execution / high-frequency strategies reviews:
+Written in trading infrastructure / source review / optimal execution / high-frequency strategies reviews:
 
 - `meth:automated-trading-operational-controls`: Harris's reliability, security and audit-trail practice (2002); the network-failure examples, with unknown order state, unknown fill state, reconciliation, retry, cancellation and recovery kept apart (synthesis marked as Interpretation); and the U.S. market-access rule, 17 CFR 240.15c3-5, in its current text (duplicative-order rejection, access restriction, post-trade execution reports, annual review).
 
-Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/model-governance-controls/derivations.tex`.
+Verification partly checked 2026-10-15, stability draft; human review outstanding.
 
-Written in migration model risk and contagion / source review / optimal execution / high-frequency strategies reviews, from Narang's chapter "Risks Inherent to Quant Strategies" (`s7-narang`, third edition, 2024, not a reading of this pathway):
+Written in model risk and contagion / source review / optimal execution / high-frequency strategies reviews, from Narang's chapter "Risks Inherent to Quant Strategies" (`s7-narang`, third edition, 2024, not a reading of this pathway):
 
-- `def:quant-strategy-risk-sources`: model risk (inapplicability, misspecification, implementation errors), regime change and exogenous shocks, kept apart from funding contagion (`funding-crowding`) and operational failure; the legacy "discretionary overrides" qualified by separating ad hoc intervention outside the validated design, in effect an unvalidated model change, from approved and tested contingency responses (de-risking rules, limits, kill switches), which are part of the design.
+- `def:quant-strategy-risk-sources`: model risk (inapplicability, misspecification, implementation errors), regime change and exogenous shocks, kept apart from funding contagion (`funding-crowding`) and operational failure.
 - `meth:quant-strategy-monitoring`: exposure, profit-and-loss (including how money is made and hit rate), execution and systems monitors as early warnings; execution-algorithm indicators left to the decision-support entry of `execution-trading-costs` (see below).
 
 Changed in the model risk and contagion review follow-up, 2026-10-15: `def:quant-strategy-risk-sources` no longer calls every override an unvalidated model change; operational controls are described as mitigating failure, not guaranteeing its prevention; and the five causes are presented as overlapping questions rather than exclusive categories.
 
-Both verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/model-governance-controls/risk-assessment.tex`, a new file beside the trading infrastructure review `derivations.tex`. The same legacy file's contagion block was routed to `funding-crowding` (its entry is listed below, under related entries).
+Both verification partly checked 2026-10-15, stability draft; human review outstanding.
 
-Written in migration systematic-investing architecture / source review / optimal execution / high-frequency strategies reviews, from López de Prado (`alpha-afml`, 2018, chap. 1, pp. 5-9), through the *Chains of Production for Alpha Signals* block of Narang's legacy overview file and one item of the alpha-models file (both mapped to the overview `portfolio-construction-risk`; a routing exception, since promotion, allocation and decommission are model-governance decisions):
+Written in systematic-investing architecture / source review / optimal execution / high-frequency strategies reviews, from López de Prado (`alpha-afml`, 2018, chap. 1, pp. 5-9)
 
 - `meth:strategy-production-lifecycle`: the meta-strategy paradigm, the research stations, and the embargo, paper-trading, graduation, re-allocation and decommission stages, as one author's prescription without quantitative criteria; his decommission condition and "in general" on concave allocation restored; "microscopic alpha" kept as opinion.
 
-Partly checked 2026-10-15, draft; human review outstanding. Its artefacts are `notes/artefacts/portfolio-construction-risk/systematic-investing-overview.tex` and `alpha-models.tex`.
+Partly checked 2026-10-15, draft; human review outstanding.
 
 Changed in the systematic-investing architecture review follow-up, 2026-10-15: embargo and paper trading are placed after deployment and before live-capital trading (graduation), as in AFML pp. 8-9, not "before production".
 
@@ -67,12 +67,6 @@ empirical extensions (2026-10-17) (six audit repairs and a source-review coverag
 Cross-referenced, not owned here: `def:automated-trading-architecture` (model accuracy checks, venue messages) and `meth:execution-decision-support` (`execution-trading-costs`); `def:floor-automated-trading-systems` (`execution-market-making`); `def:common-investor-contagion` (`funding-crowding`); `meth:backtest-evaluation-diagnostics`, `pit:parameter-overfitting` (`backtest-inference`); `res:arbitrage-risks` (`execution-market-making`).
 
 ## Entry backlog
-
-
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. No legacy file lists this pathway since model risk and contagion review migrated `sysinv/modelrisk.tex`.
 
 ## What changed in my view or practice
 

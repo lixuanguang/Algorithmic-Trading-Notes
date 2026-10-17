@@ -1,7 +1,7 @@
 ---
 key: options-execution
 section: execution-market-making
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Options market making and execution costs
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: explain option spreads and execution costs thro
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration options market structure review (`notes/source-review-index.md`), which migrated the legacy options-market-microstructure file mapped to this pathway alone. The entries come from migration and source checking: `ex-bryzgalova-pavlova-sikorskaya-2023` in its published open-access version, read in part; the other five readings drawn on through their publishers' abstracts only. That is not study of the readings, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by options market structure review (`notes/source-review-index.md`). The entries come from source checking: `ex-bryzgalova-pavlova-sikorskaya-2023` in its published open-access version, read in part; the other five readings drawn on through their publishers' abstracts only. That is not study of the readings, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,13 +22,13 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration options market structure / source review / optimal execution / high-frequency strategies reviews:
+Written in options market structure / source review / optimal execution / high-frequency strategies reviews:
 
 - `res:option-market-maker-spreads`: discrete-hedging and volatility-uncertainty components of quoted spreads (Jameson–Wilhelm), inventory against information components of option price impact (Muravyev), hedging against informed trading and the choice of hedge instrument (Huh–Lin–Mello model), with hedging, volatility, inventory and information risk kept apart and the implied volatility surface distinguished from uniform liquidity.
 - `meth:option-spread-measurement`: quoted against effective spreads in percent of premium, timing-adjusted spreads against a fair-value benchmark (Muravyev–Pearson), premium against volatility units, and the U.S. listed-options 2019–2021 split by moneyness (moneyness on the underlying's midpoint, read as interpretation; ATM spreads far below slightly OTM but not the lowest bin), expiry and trade size (Bryzgalova–Pavlova–Sikorskaya Table I, SLIM single-leg auction proxy against the remaining pool); outright against multi-leg (multi-leg strategy costs not isolated), option against hedge liquidity. Corrected in the options market structure review follow-up.
 - `mech:options-retail-wholesaler-routing`: PFOF, wholesalers' affiliated market makers and paired orders in exchange price-improvement auctions, the responder-fee asymmetry (the $0.30 net rebate in the responder-execution case), concentration in three wholesalers, and what SLIM trades paid (2019–2021); exchange-only execution bounded to listed options, with OTC options per FINRA Regulatory Notice 22-14's background.
 
-All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/options-execution/derivations.tex`.
+All three: verification partly checked 2026-10-15, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -46,10 +46,6 @@ Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quot
 
 - mech:options-clearing-exercise-assignment: a source linking common clearing, exercise, assignment and margin to multiple listing and fragmentation. OCC Rules 803-805 and 1803 (archived copy, last modified 19 August 2025; they name neither random nor pro-rata assignment) are merged.
 - def:option-complex-orders: evidence on executing multi-leg spreads as complex orders against legging the outrights. The current Cboe Rule 5.33 text (SR-CBOE-2026-081, Exhibit 5) is merged.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. After options market structure review no legacy file lists this pathway.
 
 ## What changed in my view or practice
 

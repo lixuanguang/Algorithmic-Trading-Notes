@@ -1,7 +1,7 @@
 ---
 key: hft-market-design
 section: execution-market-making
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # High-frequency trading, speed and adverse selection
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: evaluate how speed, latency races and fast arbi
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration high-frequency strategies review (`notes/source-review-index.md`), which migrated the legacy high-frequency-trading-strategies file. That file's map named `execution-trading-costs` and `market-structure-execution-quality`; its three blocks were routed here because they classify HFT strategies, describe the speed race and ask how HFT should be judged by other traders' costs, which is this pathway's outcome. The entries come from migration and source checking against the SEC's 2010 concept release, Lehalle and Laruelle (`alpha-laruelle`, 2018 printing) and the published version of `wide-budish-cramton-shim`, one of this pathway's required readings, read only in the sections the entries cite. That is not study of the readings: the other nine are unread, and Menkveld's survey had no open copy.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by high-frequency strategies review (`notes/source-review-index.md`). The entries classify HFT strategies, describe the speed race and ask how HFT should be judged by other traders' costs, which is this pathway's outcome. The entries come from source checking against the SEC's 2010 concept release, Lehalle and Laruelle (`alpha-laruelle`, 2018 printing) and the published version of `wide-budish-cramton-shim`, one of this pathway's required readings, read only in the sections the entries cite. That is not study of the readings: the other nine are unread, and Menkveld's survey had no open copy.
 
 ## Outcome in my own words
 
@@ -22,30 +22,28 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration high-frequency strategies / source review / optimal execution / high-frequency strategies reviews:
+Written in high-frequency strategies / source review / optimal execution / high-frequency strategies reviews:
 
-- `def:hft-strategies`: HFT as proprietary strategies sharing speed tools; the SEC's 2010 types (passive market making, arbitrage, structural, directional, with order anticipation and momentum ignition); pinging as a tool; the legacy taxonomy corrected.
-- `res:latency-arbitrage-arms-race`: Budish, Cramton and Shim's sniping equilibrium, eq. (3); rent dissipation with endogenous speed, eq. (7); invariance of the prize to speed; the ES–SPY evidence, 2005–2011; the legacy "edge decays with diffusion" corrected.
+- `def:hft-strategies`: HFT as proprietary strategies sharing speed tools; the SEC's 2010 types (passive market making, arbitrage, structural, directional, with order anticipation and momentum ignition); pinging as a tool.
+- `res:latency-arbitrage-arms-race`: Budish, Cramton and Shim's sniping equilibrium, eq. (3); rent dissipation with endogenous speed, eq. (7); invariance of the prize to speed; the ES–SPY evidence, 2005–2011.
 - `res:hft-spread-investor-cost`: Lehalle and Laruelle's stylised model in which a narrower effective spread leaves other traders' costs unchanged or higher; calibration recomputed and the text's 0.5 bp corrected to 0.37 bp.
 
-All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their derivations artefact is `notes/artefacts/market-making-lob/derivations.tex`.
+All three: verification partly checked 2026-10-15, stability draft; human review outstanding.
 
-Changed in migration systematic-investing architecture / source review / optimal execution / high-frequency strategies reviews, from the legacy execution-model file of Narang's notes (`sysinv/executionmod.tex`, mapped to the overview `portfolio-construction-risk`):
+Changed in systematic-investing architecture / source review / optimal execution / high-frequency strategies reviews:
 
-- `def:hft-strategies`: Narang's fast alpha (chap. 15, pp. 291-293) and footprints (chap. 7); the legacy *High Frequency Trading* block's machine-learning claim and its *HFT Shark Strategy*, neither in the third edition, kept as historical descriptions: "front-run" read against Narang's fiduciary definition (Appendix, pp. 312-314) and FINRA Rule 5270, the profit not riskless.
-
-Partly checked 2026-10-15, draft; the blocks are in `notes/artefacts/portfolio-construction-risk/execution-model.tex`.
+- `def:hft-strategies`: Narang's fast alpha (chap. 15, pp. 291-293) and footprints (chap. 7).
 
 Changed in the systematic-investing architecture review follow-up, 2026-10-15: `def:hft-strategies`' Currency field records FINRA Rule 5270 as the one current rule checked.
 
-Written in migration dealer models and information / source review / optimal execution / execution control reviews, from the legacy latency-and-queue-competition, volatility-and-liquidity and price-discovery files (the fifteen blocks assigned here):
+Written in dealer models and information / source review / optimal execution / execution control reviews:
 
-- `res:queue-position-value`: Moallemi and Yuan's static and dynamic components of queue value, the large-tick condition, the race after a price change, Table 3's front-against-back gaps (0.03 to 0.22 ticks); the legacy "thin queues" contradicted (`wide-moallemi-yuan-queue`, June 2017 revision, read in part; a reading of `market-making-lob`).
-- `mod:make-take-fee-speed-race`: the source of the legacy fee-race blocks identified as Lehalle and Laruelle's app. A.2, summarising Foucault, Kadan and Kandel; eq. (A.4) re-derived as the trade-maximising fee split and checked against finite-population equilibria; printed slips recorded; the legacy "averages" corrected to sums.
-- `mod:depth-overflow-flash-crash`: Lehalle and Laruelle's toy model (app. A.5); the time term resolved: the hot-potato $t$ counts rounds, the overflow approximation bounded, and (A.14) follows only if the overflow $R$, not the rate $r$, drives impact (derived and simulated); the remedies and the legacy control list.
-- `ev:may-2010-flash-crash`: the CFTC and SEC staff findings of 30 September 2010 (executive summary), compared with Lehalle and Laruelle's account; the legacy case study and propagation channels checked against them.
+- `res:queue-position-value`: Moallemi and Yuan's static and dynamic components of queue value, the large-tick condition, the race after a price change, Table 3's front-against-back gaps (0.03 to 0.22 ticks); a reading of `market-making-lob`).
+- `mod:make-take-fee-speed-race`: Lehalle and Laruelle's app. A.2, summarising Foucault, Kadan and Kandel; eq. (A.4) re-derived as the trade-maximising fee split and checked against finite-population equilibria; printed slips recorded; $\bar\mu$ and $\bar\tau$ are sums, not averages.
+- `mod:depth-overflow-flash-crash`: Lehalle and Laruelle's toy model (app.
+- `ev:may-2010-flash-crash`: the CFTC and SEC staff findings of 30 September 2010 (executive summary), compared with Lehalle and Laruelle's account.
 
-Changed in dealer models and information review: `def:hft-strategies` (trade counts as an HFT proxy, Lehalle and Laruelle pp. 20--21 and 170--171, against the report's volume warning). The fast-liquidity block of the price-discovery file was merged into `mod:make-take-fee-speed-race`. All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/hft-market-design/latency-queue-competition.tex` and `volatility-liquidity-flash-crash.tex`; checks in `notes/artefacts/execution-market-making/dealer-queue-information-checks.py`.
+Changed in dealer models and information review: `def:hft-strategies` (trade counts as an HFT proxy, Lehalle and Laruelle pp. 20--21 and 170--171, against the report's volume warning). Fast liquidity provision is part of `mod:make-take-fee-speed-race`. All partly checked 2026-10-16, draft; human review outstanding. Checks: `notes/artefacts/execution-market-making/dealer-queue-information-checks.py`.
 
 ## Source verification after macro markets and pricing review
 
@@ -59,15 +57,11 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Cross-referenced, not owned here: `def:order-anticipation`, `def:bluffing-manipulation`, `def:arbitrage`, `def:spread-measures`, `mod:glosten-milgrom` (`execution-market-making` and `market-making-lob`); `def:smart-order-routing` (`market-structure-execution-quality`).
 
-Changed in migration market design and liquidity / source review / optimal execution / execution control reviews (a routing exception from the foundations folder, whose candidates are `execution-market-making` and `market-structure-execution-quality`): `def:hft-strategies` (Lehalle and Laruelle's high-frequency liquidity bridges and role blurring, Introduction pp. 5--6 and 22; the legacy identification markers recorded) and `res:hft-spread-investor-cost` (the legacy caveats recorded as restatements). Partly checked 2026-10-16, draft; human review outstanding.
+Changed in market design and liquidity / source review / optimal execution / execution control reviews: `def:hft-strategies` and `res:hft-spread-investor-cost`. Partly checked 2026-10-16, draft; human review outstanding.
 
 ## Entry backlog
 
 None open after the second source follow-up of 2026-10-16.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. dealer models and information review migrated every block assigned to this pathway (the latency file, the flash-crash and propagation blocks, the fast-liquidity block) and routed the cross-asset file, which listed this pathway, to `execution-market-making`'s arbitrage entries, because its blocks concern arbitrage rather than latency races. No legacy file now lists this pathway.
 
 ## What changed in my view or practice
 

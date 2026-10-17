@@ -1,4 +1,4 @@
-"""Numerical checks for migration market design and liquidity review (the foundations folder), 2026-10-16.
+"""Numerical checks for market design and liquidity review (the foundations folder), 2026-10-16.
 
 Run with numpy:  /opt/homebrew/bin/python3.10 liquidity-market-design-checks.py
 Each section prints its result and asserts what the entries state.
@@ -7,7 +7,7 @@ Each section prints its result and asserts what the entries state.
    unconditional zero-mean luck is not enough (res:zero-sum-skill-luck).
 2. Zero-sum accounting and the two corollaries (res:zero-sum-skill-luck).
 3. Credit relationships with and without brokers: Harris's ordered count and the
-   legacy unordered count (def:market-structures-venues).
+   unordered count (def:market-structures-venues).
 4. Depth--width duality per unit, against a cash budget, and the attainment conditions
    (def:liquidity-dimensions; corrected in the market design and liquidity review follow-up).
 5. Search stopping: Harris's camera example and the one-step rule (def:liquidity-dimensions).
@@ -114,7 +114,7 @@ print(f"  Harris (ordered checks): direct {ordered_direct:,}; brokered {ordered_
 assert ordered_direct == 999_999_000_000 and ordered_brokered == 2_009_900
 unordered_direct = n_traders * (n_traders - 1) // 2
 unordered_brokered = n_traders + B * (B - 1) // 2
-print(f"  legacy (unordered pairs): direct {unordered_direct:,}; brokered n + B(B-1)/2 = {unordered_brokered:,}; ratio {unordered_direct / unordered_brokered:,.0f}")
+print(f"  unordered pairs: direct {unordered_direct:,}; brokered n + B(B-1)/2 = {unordered_brokered:,}; ratio {unordered_direct / unordered_brokered:,.0f}")
 # brute force on a small network: each client attached to exactly one broker, brokers fully linked
 n_s, B_s = 12, 3
 broker_of = np.arange(n_s) % B_s

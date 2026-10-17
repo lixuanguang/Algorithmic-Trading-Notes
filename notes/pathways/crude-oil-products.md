@@ -1,7 +1,7 @@
 ---
 key: crude-oil-products
 section: physical-commodity-markets
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Crude oil and refined products: benchmarks, spreads and price reporting
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: map a crude or product exposure to the right be
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the crude-oil, benchmark, OPEC, chokepoint and crack-spread blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
+Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:crude-oil-markets`: grades, WTI and Brent, OPEC and spare capacity, chokepoints, the 3:2:1 crack spread, and Gliner's kerosene and Aramco errors.
 
-All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -49,10 +49,6 @@ Cross-referenced, not owned here: `def:natural-gas-market` (`gas-hub-pricing`); 
 ## Entry backlog
 
 - data:opec-membership-current: OPEC's own statement on the date and legal effect of the UAE's withdrawal: the UAE announced its exit effective 1 May 2026 (WAM, 28 April 2026) and EIA treats it as having left, but OPEC's site navigation still lists the UAE and Article 8A of the Statute (2021 edition) makes a withdrawal effective at the start of the next calendar year
-
-## Legacy candidate material
-
-None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

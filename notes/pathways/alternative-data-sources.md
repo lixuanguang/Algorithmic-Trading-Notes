@@ -1,7 +1,7 @@
 ---
 key: alternative-data-sources
 section: ml-alternative-data
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Alternative data: sources, information value and market effects
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: assess an alternative dataset by its coverage, 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration financial data and labels review (`notes/source-review-records.md`), which gave this pathway the legacy taxonomy file's table, its four characteristics remarks and its fundamental-and-other-data block. The entry rests on López de Prado (`alpha-afml`, chap. 2) and Velu, Hardy and Nehren (`s3-velu`, chap. 1), neither a reading of this pathway; López de Prado takes his split of alternative data from `wide-kolanovic-big-data`, the pathway's first reading, which was not opened. The checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by financial data and labels review (`notes/source-review-records.md`). The entry rests on López de Prado (`alpha-afml`, chap. 2) and Velu, Hardy and Nehren (`s3-velu`, chap. 1), neither a reading of this pathway; López de Prado takes his split of alternative data from `wide-kolanovic-big-data`, the pathway's first reading, which was not opened. The checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,11 +22,11 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration financial data and labels / source review / optimal execution / execution control reviews:
+Written in financial data and labels / source review / optimal execution / execution control reviews:
 
-- `def:financial-data-types`: López de Prado's fundamental, market, analytics and alternative data, with release lags (the legacy generalised a Bloomberg example), backfilling and reinstatement, cost, crowding of analytics, and his opinions marked as opinions; Velu, Hardy and Nehren's fundamental and analyst inputs with their hedges restored, and their point that a dataset's value falls as access spreads.
+- `def:financial-data-types`: López de Prado's fundamental, market, analytics and alternative data, with release lags, backfilling and reinstatement, cost, crowding of analytics, and his opinions marked as opinions; Velu, Hardy and Nehren's fundamental and analyst inputs with their hedges restored, and their point that a dataset's value falls as access spreads.
 
-Partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/data-taxonomy.tex`.
+Partly checked 2026-10-16, draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 
@@ -45,10 +45,6 @@ Cross-referenced, not owned here: `data:trading-reference-data`, `data:market-da
 - ev:alternative-data-edge-decay: measured evidence (sample, period, magnitude) that a dataset's predictive value falls as access to it spreads. Katona, Painter, Patatoukas and Zeng (`rf-katona-painter-patatoukas-zeng-2025`) is unread; Dessaint, Foucault and Frésard and Farboodi and Veldkamp were read at abstract level only, and both concern short-horizon data crowding out long-horizon forecasting rather than the decay of one dataset's edge.
 - meth:alternative-dataset-assessment: coverage, history, release lag, vendor backfill and incremental information over consensus, as the checkpoint asks. Neither reading has an accessible copy (`wide-kolanovic-big-data`: no authorised copy of the J.P. Morgan report; `rf-monk-prins-rook-2019`: CAIA copy HTTP 404, SSRN 403; 2026-10-17).
 - ev:holdings-insider-ratings-signals: whether 13F holdings changes and rating downgrades predict returns (no source read for either); the insider result is quantified from Cohen, Malloy and Pomorski's NBER working paper in `def:financial-data-types`.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. After financial data and labels review no legacy file lists this pathway.
 
 ## What changed in my view or practice
 

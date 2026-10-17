@@ -1,7 +1,7 @@
 ---
 key: etf-index-closing-execution
 section: execution-trading-costs
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # ETFs, index events and closing auctions
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: plan trades around ETF creations, index reconst
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration equity market structure review (`notes/source-review-index.md`), which routed the ETF-product and creation-redemption blocks of the legacy equity-market-microstructure file here, outside that file's map candidate (`market-structure-execution-quality`), because this pathway's outcome names ETF creations. The entry comes from migration and source checking against the working-paper versions of the pathway's first two readings and Harris (2002), read only in the passages the entry cites. That is not study of the readings.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by equity market structure review (`notes/source-review-index.md`). The entry comes from source checking against the working-paper versions of the pathway's first two readings and Harris (2002), read only in the passages the entry cites. That is not study of the readings.
 
 ## Outcome in my own words
 
@@ -22,23 +22,19 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration equity market structure / source review / optimal execution / high-frequency strategies reviews:
+Written in equity market structure / source review / optimal execution / high-frequency strategies reviews:
 
 - `mech:etf-creation-redemption`: authorised participants, creation units, in-kind and cash baskets, creation and redemption against secondary trading, arbitrage that tends to align price and value without guaranteeing it, stale reference values, APs' discretion, and Pan and Zeng's liquidity-mismatch evidence for corporate bond ETFs; index products as Harris lists them (2001–2002).
 
 Corrected in a follow-up the same day (`notes/source-review-index.md`, *equity market structure review follow-up*): Pan and Zeng's model predictions kept apart from their empirical findings (p. 4: weakened, not failed, arbitrage); fund trading and costs qualified for in-kind against cash creations; the \$100 million illustration reconciled as an in-kind redemption, labelled Interpretation.
 
-Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/etf-index-closing-execution/derivations.tex`.
+Verification partly checked 2026-10-15, stability draft; human review outstanding.
 
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:portfolio-trading` (`execution-trading-costs`); `ev:index-reconstitution-impact` (`price-impact-execution`).
 
 ## Entry backlog
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. No legacy file lists this pathway.
 
 ## What changed in my view or practice
 

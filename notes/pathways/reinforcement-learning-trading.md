@@ -1,7 +1,7 @@
 ---
 key: reinforcement-learning-trading
 section: ml-alternative-data
-status: not started (draft entries from the migration only)
+status: not started (draft entries only, not from study)
 ---
 
 # Reinforcement learning for trading, hedging and execution
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: formulate a trading, hedging or execution probl
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration execution control review (`notes/source-review-index.md`), which migrated the legacy reinforcement-learning-and-ML-in-execution file, mapped to this pathway alone. Its blocks set out a stochastic-control execution model and contrast control with learning; the model is the control-theoretic benchmark the outcome names. The entry comes from migration and source checking against Lehalle and Laruelle (`alpha-laruelle`, 2018 printing, app. A.7.3) and the arXiv version of `wide-hambly-xu-yang`, one of this pathway's required readings, read only in the passages the entry cites. That is not study of the readings: the other eleven are unread.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by execution control review (`notes/source-review-index.md`). The entry comes from source checking against Lehalle and Laruelle (`alpha-laruelle`, 2018 printing, app. A.7.3) and the arXiv version of `wide-hambly-xu-yang`, one of this pathway's required readings, read only in the passages the entry cites. That is not study of the readings: the other eleven are unread.
 
 ## Outcome in my own words
 
@@ -22,13 +22,13 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration execution control / source review / optimal execution / high-frequency strategies reviews:
+Written in execution control / source review / optimal execution / high-frequency strategies reviews:
 
 - `mod:cartea-jaimungal-execution`: the Cartea–Jaimungal objective, dynamics and HJB as presented by Lehalle and Laruelle, with the appendix's inconsistencies corrected (min against sup, the half-spread in the terminal condition, the inventory term, notation, the closed forms for $h_2$ and $h_1$); units, signs, constraints and terminal treatment; the Almgren–Chriss limit; qualified parameter intuition; and the contrast between control, model-based and model-free RL, and simulator against historical data.
 
 Corrected in a follow-up the same day (`notes/source-review-index.md`, *execution control review follow-up*): one consistent terminal payoff $Q_T(S_T-\psi/2-AQ_T)$, with the printed objective and its decomposition $g=H-x-qS$ kept apart under Pitfalls; a sufficient finite-value regime ($\kappa>0$, $\phi>0$, $A>b/2$, square-integrable policies and flow) and a counterexample outside it; the formal unconstrained benchmark kept apart from one-directional execution; $\sigma^2\int Q^2$ restricted to the Brownian contribution to variance; $b$ in currency per share$^2$.
 
-Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/reinforcement-learning-trading/` (the legacy blocks verbatim and the numerical checks).
+Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/reinforcement-learning-trading/`.
 
 ## Source verification after macro markets and pricing review
 
@@ -42,11 +42,7 @@ Cross-referenced, not owned here: `mod:almgren-chriss-execution`, `def:implement
 
 ## Entry backlog
 
-- meth:hybrid-control-learning-execution: a primary source for the legacy claim that hybrid execution uses control structure for constraints and machine learning for forecasts, fills and regime detection. Kolm and Ritter's preprint has no hybrid design, and Hambly, Xu and Yang report only a combination of the Almgren-Chriss solution with Q-learning (p. 34); no entry until a source is found.
-
-## Legacy candidate material
-
-Run `python3 tools/check_compendium.py` for the current counts. After execution control review no legacy file lists this pathway.
+- meth:hybrid-control-learning-execution: a primary source for execution that uses control structure for constraints and machine learning for forecasts, fills and regime detection. Kolm and Ritter's preprint has no hybrid design, and Hambly, Xu and Yang report only a combination of the Almgren-Chriss solution with Q-learning (p. 34); no entry until a source is found.
 
 ## What changed in my view or practice
 

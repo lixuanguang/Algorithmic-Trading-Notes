@@ -30,13 +30,16 @@ Written in migration slice 30, 2026-10-15:
 
 All three partly checked 2026-10-15, draft; human review outstanding. Their artefacts are `notes/artefacts/portfolio-construction-risk/systematic-investing-overview.tex` (with exact copies of the legacy overview, chapter wrapper and diagram) and `alpha-models.tex`.
 
+## Source verification after slice 37
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `ev:trend-following-evidence` resolved by merge into `def:alpha-model-taxonomy`'s pitfalls (Moskowitz, Ooi and Pedersen's abstract; Hurst, Ooi and Pedersen's 1880-2016 Exhibit 1: 7.3 percent net, 9.7 percent volatility, Sharpe 0.76, drawdowns up to 25 percent). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: from the same legacy files, `meth:alpha-signal-combination` (`equity-long-short-construction`), `meth:strategy-production-lifecycle` (`model-governance-controls`), and the merges into `def:order-exposure-decisions`, `def:portfolio-trading`, `def:automated-trading-architecture` (`execution-trading-costs`) and `def:hft-strategies` (`hft-market-design`); also `mod:factor-risk-model`, `meth:rule-based-position-sizing`, `mod:mean-variance-portfolio-optimisation` and `mod:portfolio-transaction-cost-function` (`portfolio-construction`), and `meth:hypothesis-driven-strategy-research` and `pit:parameter-overfitting` (`backtest-inference`).
 
 ## Entry backlog
 
-- ev:trend-following-evidence: the long-run returns, crisis behaviour and return-to-drawdown of diversified trend following, to replace Narang's anecdotes and his "less than one point of return for every point of downside risk" (`s6-tsmom`, `alpha-century`, unread); home pathway `trend-following`.
 - meth:residual-reversion-strategy: residual or pairs mean reversion with costs and crowding, against Narang's AAL-DAL exhibit and March 2020 (`alpha-gatev`, `alpha-residual`, `exp-khandani-lo-quant-meltdown`, unread); home pathway `statistical-arbitrage`.
 - ev:value-carry-premia: value and carry as distinct signals and the evidence for value, quality and growth premia, against Narang's use of "carry trade" for relative value (`alpha-ff1993`, `alpha-value`, `alpha-qmj`, unread); home pathway `equity-factor-premia`.
 

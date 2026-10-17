@@ -59,7 +59,7 @@ Changed in migration slice 35, 2026-10-16 (a routing exception from the foundati
 ## Entry backlog
 
 - ev:block-initiator-asymmetry: the primary evidence behind Harris's "approximately 80 percent" of large U.S. block trades being seller-initiated (p. 332), with sample, period and classification method
-- res:trade-sign-accuracy: Ellis, Michaely and O'Hara (2000) and the other accuracy studies Jurkatis reviews; Lee and Ready (1991), read from a scan on 2026-10-16, report agreement rates and quote timing, not accuracy against known directions
+- res:trade-sign-accuracy: the body of Ellis, Michaely and O'Hara (2000) (only its abstract read, 2026-10-17; paywalled) and the other accuracy studies Jurkatis reviews; Lee and Ready (1991), read from a scan on 2026-10-16, report agreement rates and quote timing, not accuracy against known directions
 
 ## Source verification after slice 37
 
@@ -68,6 +68,8 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 Second source follow-up, 2026-10-16 (source verification, not study or human review): `res:trade-sign-accuracy` narrowed (Lee and Ready: Table I agreement of the tick test with quote classification 92.1 and 90.2 percent at the ask and bid, quotes recorded ahead of trades, the 5-second rule and n. 10 on other periods). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `res:trade-sign-accuracy` reviewed, unchanged: no lawful open copy of Ellis, Michaely and O'Hara (2000) was found (Cambridge's JFQA page is paywalled; the HKU repository record has no file), nor of the other accuracy studies. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `res:trade-sign-accuracy` narrowed (Ellis, Michaely and O'Hara's abstract from the publisher page: 76.4, 77.66 and 81.05 percent correct; merged into `meth:trade-sign-classification`). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
 ## Legacy candidate material
 

@@ -45,3 +45,5 @@ Batch of 2026-10-17 (source checks, not study): the infinite-horizon reservation
 ## Open questions
 
 ## Retrieval cards
+
+Misprint review, second batch of 2026-10-17: Balakaeva and Veretennikov (arXiv:2510.15988v1, Lemma 3) print the same infinite-horizon ask without derivation; their own Lemma 2 and Definition 3 give the ask with D(q-1), so the printed form stays an apparent misprint, quoted unchanged.

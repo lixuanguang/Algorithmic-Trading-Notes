@@ -24,13 +24,20 @@ Not attempted.
 
 None yet.
 
+Second batch of 2026-10-17:
+
+- `meth:var-es-estimation-methods`: historical, filtered historical, parametric and Monte Carlo VaR and ES as overlapping choices, and the unconditional coverage backtest. Partly checked 2026-10-17, draft.
+
+## Source verification after slice 37
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `meth:var-es-estimation-methods` resolved as a new entry in `portfolio-construction-risk/risk-models.tex` (Christoffersen, 2nd ed., chaps. 2, 6, 8 and 13; own GARCH backtest simulation); QRM and Kupiec not read. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:factor-risk-model` and `mod:mean-variance-portfolio-optimisation` (`portfolio-construction`; the latter records Narang's description of VaR-based leverage, not adopted as a definition of VaR); `def:common-investor-contagion` (`funding-crowding`; VaR-based deleveraging in August 2007).
 
 ## Entry backlog
 
-- meth:var-es-estimation-methods: historical simulation, Monte Carlo simulation and parametric (distributional) estimation of VaR and ES, treated as overlapping choices rather than exclusive categories (filtered historical simulation combines a volatility model with historical residuals; Monte Carlo needs a parametric or resampled model to draw from), with their assumptions and backtests. To replace the legacy block's generic list, whose claim that the methods are "useful for dynamically updating risk assessments" needs evidence of better forecasts, not only of updating (`wide-christoffersen-elements`, `s7-qrm`, `wide-kupiec-backtest`, unread).
 
 ## Legacy candidate material
 

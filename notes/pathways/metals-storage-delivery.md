@@ -40,6 +40,8 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:metals-market-shares-current` narrowed: USGS's Mineral Commodity Summaries (February 2026) give 2025 aluminium smelter output of 74.0 million tonnes, China 45.0 (about 61 percent), merged into `def:metals-markets`; consumption by country and the LME's minimum price fluctuations remain. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `data:metals-market-shares-current` unchanged (LME contract specifications HTTP 403 on a second route). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:tips-breakevens` (`rates-inflation`).

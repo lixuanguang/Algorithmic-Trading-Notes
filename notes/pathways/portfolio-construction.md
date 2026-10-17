@@ -57,9 +57,16 @@ Written in migration slice 32, 2026-10-16, routed here from the legacy AFML data
 
 Partly checked 2026-10-16, draft; human review outstanding. Its artefact is `notes/artefacts/statistical-learning-foundations/financial-data-structures.tex` (the legacy file kept whole) and `afml-checks.py`.
 
+Second batch of 2026-10-17:
+
+- `mod:black-litterman`: equilibrium returns, views and the posterior mean, with numerical checks; the legacy correlation claim corrected. Partly checked 2026-10-17, draft.
+- `meth:portfolio-covariance-estimation`: linear and nonlinear shrinkage of large covariance matrices, with an own simulation. Partly checked 2026-10-17, draft.
+
 ## Source verification after slice 37
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `meth:convex-cost-portfolio-optimisation` resolved by merge into `mod:portfolio-transaction-cost-function` (Boyd et al., *Multi-Period Trading via Convex Optimization*, 2017, author-hosted PDF, secs. 2.3, 4.7 and 5.3): the a|x| + b sigma |x|^{3/2}/V^{1/2} + cx cost, convexity of the common variants and nonconvexity of fixed fees, interior-point cost O(nk^2) 'even for ... the 3/2 power transaction costs', a coefficient near 2 for purely quadratic problems, and multi-period effort linear in the horizon; the piecewise-linear reformulation remains our interpretation. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `mod:black-litterman` resolved as a new entry (Black and Litterman's October 1991 Goldman Sachs paper, appendix formula by page image; the 1992 FAJ article not compared); `meth:portfolio-covariance-estimation` narrowed with a new entry (Ledoit and Wolf's review, UZH WP 323; factor-model estimation unread); `res:no-trade-region` narrowed (Guasoni and Muhle-Karbe's survey restates Davis and Norman and the epsilon^(1/3) width; merged into `mod:portfolio-transaction-cost-function`). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
 ## Related entries owned elsewhere
 
@@ -67,10 +74,9 @@ Cross-referenced, not owned here: `def:transaction-costs` and `meth:transaction-
 
 ## Entry backlog
 
-- res:no-trade-region: proportional costs create a region around the target in which not trading is optimal (`w2-davis-norman`, an optional branch, unread).
-- mod:black-litterman: equilibrium (market-implied) returns combined with views and their confidence into posterior expected returns, to check Narang's description and the legacy claim about correlations (`alpha-black`, unread).
+- res:no-trade-region: (narrowed 2026-10-17: survey restatement merged into `mod:portfolio-transaction-cost-function`) Davis and Norman's own theorem (`w2-davis-norman`, not obtained).
 - meth:resampled-efficiency: what Michaud's resampling draws, what it averages, and whether it improves out-of-sample results (Michaud's book, not catalogued; `wide-michaud-enigma` for the estimation-error critique; unread).
-- meth:portfolio-covariance-estimation: estimating a large covariance matrix, by shrinkage or by fitting a factor model's loadings, factor covariance and residual variances, and testing the estimate out of sample, against Narang's grouping of similar instruments (`wide-ledoit-wolf-review`, `wide-connor-goldberg-korajczyk`, unread; EWMA and DCC as listed by Boyd et al., sec. 3.4). Narrowed in slice 29: the factor model's structure and assumptions are now in `mod:factor-risk-model`; how to estimate it is not.
+- meth:portfolio-covariance-estimation: (narrowed; entry written 2026-10-17 on shrinkage) estimating a factor model's loadings, factor covariance and residual variances (`wide-connor-goldberg-korajczyk`), and EWMA and DCC as listed by Boyd et al., sec. 3.4.
 - meth:equal-risk-contribution: equal contributions to portfolio risk under a full covariance matrix, against inverse-volatility weights (`wide-maillard-roncalli-erc`, unread); home pathway `risk-parity-vol-targeting`.
 - mod:garch-volatility-forecast: GARCH and EWMA volatility forecasts and their comparative accuracy, against Narang's prevalence claim (`s7-bollerslev`, unread); home pathway `time-series-volatility`.
 

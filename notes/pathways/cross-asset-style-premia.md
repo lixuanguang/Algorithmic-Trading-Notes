@@ -34,6 +34,8 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:equity-inde
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:equity-index-value-signal` remains open with an executable protocol in the backlog: point-in-time country-level valuation data were not obtained (MSCI's are licensed; Ken French's international files give value portfolios within countries, not country-index book-to-price), so nothing was computed. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `ev:equity-index-value-signal` unchanged: point-in-time country valuation data are still missing; the protocol is kept. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:equity-indices-derivatives` (`international-equity-markets`); `mod:fx-carry-trade` (`fx-premia`); `def:global-macro-strategy` (`multi-asset-systematic-macro`).

@@ -1,0 +1,6 @@
+Window (2022, 1) to (2026, 7), T = 55 months (Barclay Global Macro Index, net; French Mkt-RF)
+All months: mean +0.68%/month, vol 5.62%/yr, monthly Sharpe (excess) +0.221 (Lo IID s.e. 0.136), annualised +0.76
+down  months (n 24): mean -0.39% (t -1.48), correlation +0.29 [-0.13, +0.62], beta +0.129 [-0.057, +0.316]
+up    months (n 31): mean +1.51% (t +6.14), correlation +0.21 [-0.16, +0.52], beta +0.106 [-0.083, +0.294]
+ten worst benchmark months: benchmark mean -6.49%, index mean -0.79% (2022-01, 2022-04, 2022-06, 2022-08, 2022-09, 2022-12, 2023-09, 2024-04, 2025-03, 2026-03)
+Verdict (pre-set rule): crisis protection not supported in this window

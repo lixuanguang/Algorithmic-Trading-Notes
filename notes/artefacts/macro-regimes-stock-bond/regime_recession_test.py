@@ -1,7 +1,27 @@
 """ev:regime-asset-responses-tested: the regime map's "recession" row, tested on a regime classified with real-time
 data. Only this row is tested; the other rows and Gliner's sector phases are not.
 
-Protocol, fixed before results were computed (batch of 17 October 2026):
+Corrected rerun (v2, 17 October 2026). The first run (v1, same day) is kept unchanged in v1-2026-10-17/. v2 keeps
+v1's hypothesis, real-time rule, responses and decision rule, and changes only what an audit found after v1's
+results were seen; nothing here is preregistered:
+  1. Ex-post window definition stated. v1's NBER window is ANY OVERLAP: a quarter counts if at least one of its
+     three response months lies in a recession (peak month excluded, trough included). That remains the reported
+     ex-post comparison. ALL MONTHS (all three response months inside a recession) is reported as a sensitivity
+     only; neither definition was chosen for its significance.
+  2. Dollar definition. TWEXBMTH is the Fed's broad index on goods trade only (published to December 2019);
+     DTWEXBGS weights goods and services trade, with new weight formula and composition, from January 2006 (Fed
+     FEDS Note of 15 January 2019 and H.10 of 19 February 2019; local copies). v2 tests the dollar on the goods-only
+     index alone (1973-2019, consistent definition; the primary dollar result) and, separately, on DTWEXBGS alone
+     (2006 onward). v1's splice of the two (by changes, at 2019-12/2020-01) is reported only for continuity, with
+     its definition break.
+  3. Real-time and ex-post results are printed in separate blocks; only the real-time block is the test. The
+     ex-post block uses NBER dates announced months to years later and is a description, not a tradable signal.
+  4. Dependence. Quarters do not overlap, but signal quarters cluster in a few episodes and responses are
+     heteroskedastic and serially dependent, so Welch t (v1) overstates the information. v2 adds, as a sensitivity
+     chosen before computing it, a Newey-West t (4 quarterly lags) from the regression of each response on the
+     regime indicator, and prints the number of distinct episodes (runs of consecutive regime quarters).
+
+v1 protocol, as written before v1's results by the batch record's account (committed with them, so not preregistered):
 Hypothesis (legacy map, def:macro-regime-asset-map): in recession, yields fall, credit spreads widen, equities fall,
   the dollar rises and defensive sectors lead. Commodities are not tested (no public, licence-free series used).
 Regime, real time. Sahm-type rule on the Philadelphia Fed's Real-Time Data Set unemployment vintages (RUC, quarterly
@@ -14,7 +34,7 @@ Responses over the three months after the vintage month m (m+1..m+3), all from p
   eq    = sum of Mkt-RF over m+1..m+3               (Ken French, CRSP 202608 file, percent)
   dfn   = sum over m+1..m+3 of mean(NoDur, Utils, Hlth) - (Mkt-RF + RF)   (French 12 industries, value weighted)
   usd   = 100 * ln change of the broad dollar index, m to m+3 (TWEXBMTH to 2019-12, then monthly averages of
-          DTWEXBGS; chained by changes).
+          DTWEXBGS; chained by changes). [v2: see correction 2 above.]
   Vintages with a missing month inside the 15-month window are skipped and listed (found on the first run: the
   October 2025 rate is #N/A in the 2026 vintages).
 Test. Mean response in signal quarters minus non-signal quarters, Welch t (quarters are non-overlapping windows).
@@ -22,7 +42,7 @@ Test. Mean response in signal quarters minus non-signal quarters, Welch t (quart
   trough included), which uses information not available in real time.
 Sufficient test. A sign is supported if the real-time difference has the hypothesised sign (dy10 < 0, dcred > 0,
   eq < 0, dfn > 0, usd > 0) with |t| > 2.
-Run: PYTHONPATH=<path with openpyxl> python3 regime_recession_test.py <empirical folder>   (expects rucqvmd.xlsx,
+Run (v2, under 2 s): PYTHONPATH=<path with openpyxl> python3 regime_recession_test.py <empirical folder>   (expects rucqvmd.xlsx,
   fred/*.csv, french/*.csv). Writes regime_quarters.csv (derived panel).
 """
 import csv
@@ -108,6 +128,12 @@ def dlog_usd(a, b):  # 100 * ln(index_b / index_a), chaining across the splice a
     return tot
 
 
+def dlog_one(src, a, b):  # 100 * ln change within one index, or None if either month is missing
+    if a not in src or b not in src:
+        return None
+    return 100 * math.log(src[b] / src[a])
+
+
 peaks_troughs = [((1969, 12), (1970, 11)), ((1973, 11), (1975, 3)), ((1980, 1), (1980, 7)), ((1981, 7), (1982, 11)),
                  ((1990, 7), (1991, 3)), ((2001, 3), (2001, 11)), ((2007, 12), (2009, 6)), ((2020, 2), (2020, 4))]
 nber = {m for p, t in peaks_troughs for m in [add(p, k) for k in range(1, (t[0] * 12 + t[1]) - (p[0] * 12 + p[1]) + 1)]}
@@ -119,35 +145,71 @@ for vm in sorted(signals):
     if not all(w in ff and w in ind for w in win) or m3 not in gs10 or vm not in gs10 or m3 not in baa:
         continue
     r = dict(vm=vm, sahm=signals[vm][0], sig=signals[vm][0] >= 0.5, nb=any(w in nber for w in win),
+             nball=all(w in nber for w in win),
+             usd_g=dlog_one(tw_old, vm, m3), usd_gs=dlog_one(tw_new, vm, m3),
              dy10=gs10[m3] - gs10[vm], dcred=(baa[m3] - gs10[m3]) - (baa[vm] - gs10[vm]),
              eq=sum(ff[w]['Mkt-RF'] for w in win),
              dfn=sum((ind[w]['NoDur'] + ind[w]['Utils'] + ind[w]['Hlth']) / 3 - (ff[w]['Mkt-RF'] + ff[w]['RF']) for w in win),
-             usd=dlog_usd(vm, m3))
+             usd=dlog_usd(vm, m3))  # v1 splice, kept for continuity
     recs.append(r)
 
 with open(os.path.join(HERE, 'regime_quarters.csv'), 'w', newline='') as f:
     w = csv.writer(f)
-    w.writerow(['vintage_month', 'sahm_realtime', 'signal', 'nber_window', 'dy10', 'dcred', 'eq', 'dfn', 'usd'])
+    w.writerow(['vintage_month', 'sahm_realtime', 'signal', 'nber_any_overlap', 'nber_all_months', 'dy10', 'dcred', 'eq',
+                'dfn', 'usd_goods_only', 'usd_goods_services', 'usd_splice_v1'])
     for r in recs:
-        w.writerow([f"{r['vm'][0]}-{r['vm'][1]:02d}", f"{r['sahm']:.3f}", int(r['sig']), int(r['nb'])] +
-                   [('' if r[k] is None else f'{r[k]:.4f}') for k in ('dy10', 'dcred', 'eq', 'dfn', 'usd')])
+        w.writerow([f"{r['vm'][0]}-{r['vm'][1]:02d}", f"{r['sahm']:.3f}", int(r['sig']), int(r['nb']), int(r['nball'])] +
+                   [('' if r[k] is None else f'{r[k]:.4f}') for k in ('dy10', 'dcred', 'eq', 'dfn', 'usd_g', 'usd_gs', 'usd')])
+
+want = {'dy10': -1, 'dcred': +1, 'eq': -1, 'dfn': +1, 'usd_g': +1, 'usd_gs': +1, 'usd': +1}
+label = {'usd_g': 'usd (goods only, TWEXBMTH, to 2019)', 'usd_gs': 'usd (goods+services, DTWEXBGS, 2006-)',
+         'usd': 'usd (v1 splice; definition break 2020-01)'}
+
+
+def nw_diff_t(y, d, lags=4):
+    """Slope and Newey-West t of y on a constant and the 0/1 indicator d (time order kept)."""
+    X = np.column_stack([np.ones(len(y)), d])
+    b = np.linalg.lstsq(X, y, rcond=None)[0]
+    e = y - X @ b
+    S = (X * e[:, None]).T @ (X * e[:, None])
+    for L in range(1, lags + 1):
+        G = (X[L:] * e[L:, None]).T @ (X[:-L] * e[:-L, None])
+        S += (1 - L / (lags + 1)) * (G + G.T)
+    Xi = np.linalg.inv(X.T @ X)
+    return b[1], b[1] / math.sqrt((Xi @ S @ Xi)[1, 1])
+
+
+def episodes(flags):
+    return sum(1 for i, f in enumerate(flags) if f and (i == 0 or not flags[i - 1]))
+
+
+def block(key, title):
+    print(f'\n== {title}')
+    out = {}
+    for k, sgn in want.items():
+        sub = [r for r in recs if r[k] is not None]
+        a = np.array([r[k] for r in sub if r[key]]); b = np.array([r[k] for r in sub if not r[key]])
+        d = a.mean() - b.mean()
+        t = d / math.sqrt(a.var(ddof=1) / len(a) + b.var(ddof=1) / len(b))
+        _, tn = nw_diff_t(np.array([r[k] for r in sub]), np.array([float(r[key]) for r in sub]))
+        ok = np.sign(d) == sgn and abs(t) > 2
+        span = f"{sub[0]['vm'][0]}-{sub[-1]['vm'][0]}"
+        print(f'  {label.get(k, k):42s} {span}: regime {a.mean():+.3f} (n {len(a)}, {episodes([r[key] for r in sub])} episodes), '
+              f'other {b.mean():+.3f} (n {len(b)}), diff {d:+.3f}, Welch t {t:+.2f}, NW(4) t {tn:+.2f}'
+              f'  -> {"sign as hypothesised with |Welch t| > 2" if ok else "threshold not met"}')
+        out[k] = ok
+    return out
+
 
 sig = [r for r in recs if r['sig']]
 print(f"Quarters: {len(recs)} ({recs[0]['vm']} to {recs[-1]['vm']}); real-time signal in {len(sig)}:")
 print('  ' + ', '.join(f"{r['vm'][0]}-{r['vm'][1]:02d}" for r in sig))
 print(f"Vintages skipped for a missing month in the window: {', '.join(skipped) or 'none'}")
-print(f"NBER-window quarters: {sum(r['nb'] for r in recs)}; overlap with signal: {sum(r['nb'] and r['sig'] for r in recs)}")
-want = {'dy10': -1, 'dcred': +1, 'eq': -1, 'dfn': +1, 'usd': +1}
-verdict = {}
-for key, cls in (('sig', 'real-time Sahm signal'), ('nb', 'ex-post NBER window')):
-    print(f'\n== {cls}: mean in regime minus mean outside (Welch t)')
-    for k, sgn in want.items():
-        a = np.array([r[k] for r in recs if r[key] and r[k] is not None])
-        b = np.array([r[k] for r in recs if not r[key] and r[k] is not None])
-        d = a.mean() - b.mean()
-        t = d / math.sqrt(a.var(ddof=1) / len(a) + b.var(ddof=1) / len(b))
-        ok = np.sign(d) == sgn and abs(t) > 2
-        print(f'  {k:6s}: regime {a.mean():+.3f} (n {len(a)}), other {b.mean():+.3f} (n {len(b)}), diff {d:+.3f}, t {t:+.2f}  -> {"supported" if ok else "not supported"}')
-        if key == 'sig':
-            verdict[k] = ok
-print('\nVerdict (real time): ' + '; '.join(f'{k} {"supported" if v else "not supported"}' for k, v in verdict.items()))
+print(f"NBER quarters: any overlap {sum(r['nb'] for r in recs)} (overlap with signal {sum(r['nb'] and r['sig'] for r in recs)}); "
+      f"all three months inside {sum(r['nball'] for r in recs)} (overlap with signal {sum(r['nball'] and r['sig'] for r in recs)})")
+print('\nREAL-TIME TEST (the only test; decision rule: hypothesised sign with |Welch t| > 2)')
+verdict = block('sig', 'real-time Sahm signal: mean in regime minus mean outside')
+print('\nEX-POST DESCRIPTION (NBER dates known only later; not a test of a usable classification)')
+block('nb', 'ex-post NBER window, ANY OVERLAP (v1 definition)')
+block('nball', 'ex-post NBER window, ALL MONTHS inside (sensitivity)')
+print('\nVerdict (real time): ' + '; '.join(f'{label.get(k, k)} {"supported" if v else "not supported"}' for k, v in verdict.items()))

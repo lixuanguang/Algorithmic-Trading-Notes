@@ -40,13 +40,15 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `conv:henry-hub-contract-terms` narrowed: EIA's annual U.S. LNG export series (release of 30 September 2026: 2,924 MMcf in 2013 against 5,508,984 in 2025) and two later NYMEX filings (17-048, administrative amendments to Chapter 220 effective 13 March 2017; 18-465, Rule 589 price limits) were added to `def:natural-gas-market`; a complete amendment history after 2018 was not found. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `conv:henry-hub-contract-terms` narrowed further (NYMEX Submissions 19-158 on TAS eligibility and 19-198 on settlement procedures). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:crude-oil-markets` (`crude-oil-products`).
 
 ## Entry backlog
 
-- conv:henry-hub-contract-terms: the amendment history of Chapter 220 after 2018 (NYMEX Submissions 16-080, 17-048 and 18-465 found; the search was not exhaustive); EIA LNG export data, size, ticks, termination and Rule 220104 were read
+- conv:henry-hub-contract-terms: the amendment history of Chapter 220 after 2019 (NYMEX Submissions 16-080, 17-048, 18-465 and, on 2026-10-17, 19-158 (TAS months) and 19-198 (settlement procedures) found; the search was not exhaustive); EIA LNG export data, size, ticks, termination and Rule 220104 were read
 
 ## Legacy candidate material
 

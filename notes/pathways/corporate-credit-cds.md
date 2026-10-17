@@ -40,6 +40,8 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `conv:cds-standard-contract` still blocked: ISDA's 2014 Definitions Protocol (published 21 August 2014) and its web page were read into `mech:cds-contract-credit-events` (Implementation Date the later of 22 September 2014 and the business day after any cut-off date; effectiveness condition met on 17 September 2014), but the Definitions' operative wording is sold by ISDA and was not read. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `conv:cds-standard-contract` still blocked (the 2014 ISDA Definitions are sold). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:sovereign-credit-defaults` (`sovereign-municipal`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).

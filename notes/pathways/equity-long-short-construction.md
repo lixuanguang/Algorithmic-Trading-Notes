@@ -34,13 +34,14 @@ Partly checked 2026-10-15, draft; human review outstanding. Its artefact is `not
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `meth:forecast-scaling-ic` resolved as a new entry in `systematic-equities/signal-combination.tex` from Grinold and Kahn's second edition, chap. 10 (pp. 261-271, the rule of thumb on p. 266 as a page image; the binary-model IC, the two-signal weights and combined IC, and Table 10.1 recomputed in `notes/artefacts/equity-long-short-construction/batch40-forecast-checks.py`). Grinold's 1994 paper (`eq-grinold-1994`) is behind the publisher's login and his 1989 paper was not read. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Audit repair: `meth:forecast-scaling-ic` now distinguishes Grinold and Kahn's best linear projection (Proposition 1) from the conditional expectation (equal under joint normality, Proposition 2, or other affine conditional means), states the orthogonality and mean-independence conditions, and adds a zero-IC counterexample with predictive information (`batch50-projection-checks.py`). Queue: `meth:signal-mixing-vs-integration` resolved by merge into `meth:alpha-signal-combination` (Fitzgibbons et al., JOI Winter 2017, AQR reprint: integrated 3.6% against 2.5% excess, IR 0.9 against 0.6, transfer coefficient 0.6 against 0.3, MSCI World-like universe 1993-2015). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:alpha-model-taxonomy` and `meth:alpha-strategy-specification` (`portfolio-construction-risk`); `meth:signal-portfolio-allocation`, `meth:rule-based-position-sizing` and `mod:mean-variance-portfolio-optimisation` (`portfolio-construction`); `pit:parameter-overfitting` (`backtest-inference`); `meth:strategy-production-lifecycle` (`model-governance-controls`).
 
 ## Entry backlog
 
-- meth:signal-mixing-vs-integration: combining signals into one forecast before optimising against optimising on them separately, with the transfer coefficient (`eq-fitzgibbons-2017`, unread).
 
 ## Legacy candidate material
 

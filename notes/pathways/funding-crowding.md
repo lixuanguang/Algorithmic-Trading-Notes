@@ -34,15 +34,16 @@ Verification partly checked 2026-10-15, stability draft; human review outstandin
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `mod:margin-liquidity-spiral` resolved as a new entry in `portfolio-risk-financing/crowding-contagion.tex` from Brunnermeier and Pedersen's RFS Advance Access version (10 December 2008, princeton.edu): the margin constraint, VaR margins, destabilising margins, and the margin and loss spirals of Proposition 5 (eq. (24)); an illustration of the spiral expansion and its super-additivity in `notes/artefacts/funding-crowding/batch40-spiral-checks.py`. The issue pagination and Appendix A were not compared. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `ev:august-2007-quant-unwind` resolved by merge into `def:common-investor-contagion` (Khandani and Lo, NBER WP 14465: July-December unwinding, the 1 and 6 August unwinds, market-making losses in the week of 6 August, reversal on 10 August); `mod:volatility-targeting-deleveraging` narrowed (Moreira and Muir's volatility-managed portfolios and Pedersen's risk-management spiral merged; Narang's 1.5-2 times estimate unverified); `meth:overlap-crowding-measure` narrowed (Pedersen gives overlap as mechanism, no measure; Chincarini et al. not obtained). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here and not changed: `res:arbitrage-risks` (`execution-market-making`; staying power under leverage, LTCM); `def:quant-strategy-risk-sources` (`model-governance-controls`); `ev:square-root-impact` (`price-impact-execution`); `mech:futures-margin-settlement` (`futures-execution`); `def:securities-lending-fee-rebate` (`money-markets-repo-lending`). Kept distinct: the `backtest-inference` stub `ev:signal-decay-crowding`, which asks whether delayed-signal decay identifies crowding, a question that common positions and forced liquidation do not answer.
 
 ## Entry backlog
 
-- ev:august-2007-quant-unwind: the August 2007 quant liquidation measured with data (losses, timing, the unwind hypothesis), to test Narang's four drivers (`exp-khandani-lo-quant-meltdown`, unread).
-- mod:volatility-targeting-deleveraging: leverage set inversely to measured volatility and correlation, raised as volatility falls and cut by many holders at once when it jumps, against Narang's 1.5-2 times estimate (no source checked; `risk-parity-vol-targeting` readings, unread).
-- meth:overlap-crowding-measure: a crowding measure from the overlap of holdings, as the checkpoint asks (`wide-pedersen-exit`, `w4-chincarini-crowded-anomalies`, unread).
+- mod:volatility-targeting-deleveraging: (narrowed 2026-10-17: Moreira and Muir, NBER WP 22208, and Pedersen, NBER WP 15297, merged into `def:common-investor-contagion`) evidence on how much volatility-targeted capital existed and deleveraged together, and on Narang's 1.5-2 times leverage estimate (`risk-parity-vol-targeting` readings).
+- meth:overlap-crowding-measure: (narrowed 2026-10-17: Pedersen discusses overlap without a measure) a holdings-overlap measure (`w4-chincarini-crowded-anomalies`, paywalled; 13F-based overlap would need the data-set structure in `wide-sec-13f-nport`).
 
 ## Legacy candidate material
 

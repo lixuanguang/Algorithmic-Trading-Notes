@@ -50,3 +50,5 @@ Slice-32 follow-up, 2026-10-16: rechecked pp. 60--61, 64--66 and 69 (text layer)
 - The stages carry no quantitative promotion or decommission criteria; which governance readings supply them?
 - The book's own slips found in slice 32: $(1-K^{-1})^I\approx e^{-K/I}$ (p. 62; it is $e^{-I/K}$); $d[1]=c$ and "the oldest portion $cT$" in the time decay (pp. 70-71); $\bar u^{(2)}_j$ written with $u_{t,j}$ (p. 64); the weight-loss sum to $T$ and the FFD range $T-l^*+1,\dots,T$ (pp. 80, 82); $E_{i-1}[y_t]$ in the CUSUM run condition (p. 39); "$1-P[b_t=-1]$" for the runs expectation (p. 31). Check the errata or a later printing.
 - Meta-labels are refitted "on the same training set" (p. 53) and $d$ is chosen on the full sample (p. 85): what does chap. 7 require?
+
+Audit repair, second batch of 2026-10-17: the performance plateau as k grows (pp. 106-107) is recorded as the source's heuristic, not proof that leakage is absent.

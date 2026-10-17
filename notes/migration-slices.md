@@ -4290,3 +4290,186 @@ Pathway notes (28) with a paragraph under *Source verification after slice 37* (
 - The Kolm et al.\ Table~3 ambiguity, recorded rather than resolved.
 - The three empirical tests' design choices (expiry mapping of EIA's continuous contracts, monthly-average FX rates and revised CPI, the Sahm-type rule on quarterly vintages) and the exploratory WTI sign effect.
 - Sources read in non-publisher hosts: Lo (student-organisation host), the SEC orders (Internet Archive), Brunnermeier and Pedersen (Advance Access PDF).
+
+## Second batch of 17 October 2026: eight audit repairs (three empirical tests rerun) and a 50-item queue
+
+Starting state checked: `main` at `820517a`, equal to `origin/main`, clean; guide pin `343d145` (unchanged); 221 entries, all draft; no legacy block. This is source verification and bounded empirical testing, not study or human review: every entry stays *draft*, no mastery or consolidation date is set, and verification statuses were extended only for the passages read. Earlier records are left as written; where they differ, this record supersedes them. No protocol here is preregistered: protocols written in docstrings and committed together with results are labelled as such, and v2 corrections were chosen after v1's results had been seen.
+
+### Stage 1: audit repairs
+
+1. **Energy test** (`notes/artefacts/commodity-storage-curves/`; `def:contango-backwardation-stocks`). v1 (script, results, panel) moved unchanged to `v1-2026-10-17/`; v2 replaces it.
+   - *Contract identity and complete holding periods.* v1 paired 28 March 2024 with the incomplete month ending 5 April 2024, when contract 1 (May WTI) was not 28 March's contract 2 (June). v2 uses only complete months (data continuing into the next month) and requires the delivery month of C2 at $t$ to equal that of C1 at $t+1$ under NYMEX Rules 200102.F and 220102.F, on the trading calendar of EIA's own series. A roll check (score of $C_1(d+1)$ against $C_2(d)$) supports the WTI rule in every five-year block from 1985 and the Henry Hub rule from about 1997. Before then the gas data roll two or three days earlier, so gas identity is required under expiries 3, 5 and 6 business days before the delivery month. The 2020--2024 WTI block's score at offset $-1$ (19.5) reflects April 2020's negative prices on nine roll days.
+   - *Samples.* The premium regression, its out-of-sample test and the timing rules now use all identity-valid months (WTI 1985-01 to 2024-02, 470; gas 1994-01 to 2024-02, 362). The scarcity and joint regressions use the inventory sample (WTI 1987-08 to 2024-02, 438; gas 2015-01 to 2024-02, 110). The gas out-of-sample test, impossible in v1, now runs from January 2004 (242 forecasts).
+   - *Inventory availability.* v1's fixed five-day lag let a Wednesday month-end use a gas report released on the Thursday. v2 dates reports from EIA's published schedules (local copies retrieved 2026-10-17: WPSR Wednesday 10:30 ET, WNGSR Thursday 10:30 ET; holiday releases up to Thursday noon or Friday 10:30, and Monday 29 December 2025, 5 p.m., for the week ending 19 December 2025). Convention: usable at settlement $t$ if $t\ge F+6$ days (crude) or $F+7$ (gas), or $F+11$ when 25 December or 1 January falls in $F+1..F+7$. Schedules before 2025 were not obtained. Sensitivity: $F+14$ throughout, with unchanged conclusions (WTI $t=-5.8$, gas $-4.0$).
+   - *Statistical against executable.* The regressions and the settlement-to-settlement timing rule are labelled closing-price associations. An executable variant forms the signal at settlement $t$ and trades the next trading day's settlement in the same contract, exiting on the first trading day after $t+1$, with two ticks round trip. Settlement fills are an assumption. For Henry Hub, NYMEX's TAS order type covered the spot and second through seventh months by May 2019 (Submission 19-158); earlier availability was not established.
+   - *Message.* v1's ``months with $|r|\ge50\%$ dropped'' was wrong: they were counted, not dropped. v2 says retained.
+   - *Results, v2* (v1 in brackets). Pre-specified verdicts unchanged.
+     - Scarcity: WTI $\beta=-0.111$, $t=-5.9$ ($-0.112$, $-5.9$); gas $-0.114$, $-4.3$ ($-0.124$, $-4.4$).
+     - Premium slope: WTI $+0.02$, $t=0.1$ ($+0.05$, $0.1$); gas $-0.05$, $-0.3$ ($-0.19$, $-0.6$).
+     - Out-of-sample $R^2$: WTI $-1.8\%$, Clark--West $t=-0.4$ ($-2.2\%$, $-0.4$); gas $-0.8\%$, $-1.4$ (not computable in v1).
+     - Exploratory, not pre-specified: WTI backwardated against contango months $+1.95$ against $-0.22\%$, difference $t=2.95$ ($+2.17$ against $-0.33$, $t=3.4$); gas $-1.32$ against $-0.90$, $t=-0.2$ ($-4.96$ against $-0.38$, $t=-1.9$).
+     - Executable timing rule, net of two ticks: WTI $+0.92\%$ a month, Newey--West $t=2.34$; gas $+0.58\%$, $t=0.9$.
+   - Focused checks: `batch50-energy-checks.py`, testing CLJ24, CLK24 and NGJ24 expiries on a synthetic calendar, v1's bad pairing, the terminal month, report availability, samples, wording, execution and v1's preserved hash.
+2. **FX test** (`notes/artefacts/fx-determination-forecasting/`; `meth:fx-valuation-signals`). v1 kept in `v1-2026-10-17/`.
+   - *Eligibility.* Predictor eligibility now uses only price levels known at $t$. Outcomes use spot rates alone, so future CPI is no longer needed: JPY's 12-month forecasts gain the last 12 months.
+   - *Stale-data rule.* Monthly CPI must be exactly two months old. Quarterly CPI is accepted 4 to 6 months after its quarter ends. v1 carried 2025Q1 AUD and NZD CPI to September 2026; v2 stops them at September 2025.
+   - *Reporting.* Ages and effective endpoints are reported: JPY ends August 2021, monthly-CPI currencies May--June 2025, AUD and NZD September 2025. Expanding-training cutoffs are unchanged and checked against an independent OLS fit.
+   - *Results* (v1 in brackets): pooled 12-month OOS $R^2$ $-14.9\%$, Clark--West $t=-0.3$ ($-15.3\%$, $-0.4$); 1-month $-2.0\%$ ($-2.0\%$). Portfolio unchanged in substance: spot $+0.09\%$ a year, with interest differentials $-0.17\%$. It is now labelled a statistical return on monthly averages with interbank-rate carry, not an executable result. Neither pass rule is met.
+   - Focused checks: `batch50-fx-checks.py`.
+3. **Regime test** (`notes/artefacts/macro-regimes-stock-bond/`; `def:macro-regime-asset-map`). v1 kept in `v1-2026-10-17/`.
+   - *Window definition.* v1's NBER window is stated as \emph{any overlap} and preserved exactly (checked). \emph{All months inside} is added as a sensitivity, not chosen for significance.
+   - *Dollar.* TWEXBMTH (goods only, to December 2019) and DTWEXBGS (goods and services, new weights and composition, from January 2006; FEDS Note of 15 January 2019 and H.10 of 19 February 2019, read) are tested separately. Goods-only is primary; v1's splice is reported with its January 2020 definition break.
+   - *Inference.* Real-time and ex-post blocks are printed separately. Newey--West (4 quarterly lags) $t$ and episode counts are added as an inference sensitivity chosen before computing.
+   - *Real-time results.* No sign passes. The goods-only dollar is $+1.11$, Welch $t=1.98$, Newey--West $1.87$, 6 episodes; goods-and-services $-0.39$, $t=-0.3$.
+   - *Ex post.* Any-overlap results equal v1's, with Baa spread Welch $t=1.78$ but Newey--West $2.46$. On all-months windows the yield ($-0.41$, $t=-2.2$) and spread ($+0.45$, $t=+2.9$) signs pass Welch $|t|>2$. The earlier claim that no ex-post sign reaches $|t|=2$ is therefore restricted to any-overlap windows with Welch $t$.
+   - Focused checks: `batch50-regime-checks.py`.
+4. **Sharpe inference** (`meth:sharpe-ratio-standard-error`). Lo's eq. (5), p. 38 (page image), asserts $2\sigma^4$ under ``finite mean $\mu$ and variance $\sigma^2$''. The entry now states:
+   - a finite fourth moment and $\sigma>0$ are required;
+   - the general IID variance is $V=1-\gamma_3SR+(\gamma_4-1)SR^2/4$, and $1+SR^2/2$ is its normal-moment case;
+   - Lo's own eqs. (25)--(26), p. 42, set normal moments explicitly.
+
+   The wording at eq. (5) is recorded as an overstatement in the source, not edited. Lo's aggregation is scoped to additive (summed) returns with a consistently aggregated benchmark (eq. (16) and note 7). Zero autocovariances suffice, so IID is not necessary. Compounded simple returns differ (0.515 against $\sqrt{12}\times0.155=0.538$ in a lognormal example). Independent checks in `batch50-sharpe-conditions-checks.py`: a skewed two-point distribution (Monte Carlo 1.70 against general 1.68, normal-moment 1.02), Student-$t_3$ ($T\operatorname{Var}$ rising from 2.5 to 10.0 with $T$), and an uncorrelated but dependent process obeying $\sqrt{12}$.
+5. **Forecast scaling** (`meth:forecast-scaling-ic`). Grinold and Kahn's appendix proves a best linear projection (Proposition 1, pp. 287--288); the conditional expectation follows only under joint normality (Proposition 2, p. 289); n. 1, p. 263, calls the notation ``somewhat loosely'' used. The entry now:
+   - states that equality needs an affine conditional mean, for example joint normal or elliptical returns;
+   - distinguishes uncorrelated from mean-independent errors;
+   - gives the counterexample $r=g^2-1+\varepsilon$, with zero IC but a conditional mean explaining two thirds of the variance (`batch50-projection-checks.py`).
+6. **Cross-validation** (`meth:purged-embargoed-cross-validation`). The performance plateau as $k$ grows (AFML pp. 106--107) is now the source's heuristic, with examples of leakage that does not grow with $k$; the overlap and endpoint corrections stand; provenance and time-valid evaluation are stated as necessary.
+7. **Order reconciliation** (`mech:order-state-reconciliation`, `batch40-reconciliation-check.py`, corrected in place). The first version released every terminal reconciled order for resubmission, including a filled one. Now reconciled state, remaining authorised quantity and a valid intent are separate. The cases are:
+   - a filled order: nothing proposed;
+   - a partially filled cancelled order: 180 of 300 proposed with a valid intent, nothing with a withdrawn intent;
+   - an order in Pending Cancel: unresolved, nothing proposed;
+   - duplicate reports: applied once;
+   - a missing execution: a break of 150, nothing proposed until it is resolved.
+
+   The illustration remains offline and synthetic.
+8. **Filing timestamps** (`data:holdings-insider-filing-lags`). There was no literal ``three-minute'' text; the entry's single ``acceptance time'' convention was the defect.
+   - *Four timestamps.* The entry now separates EDGAR acceptance, the official filing date (17 CFR 232.13(a)(2) and (a)(4): 5:30 p.m., or 10 p.m. for Forms 3--5, 144 and Schedules 13D, 13G and 14N; 232.12(c) hours; 232.13(b) adjustment), public dissemination and the user's first-observed time.
+   - *No fixed delay.* None of the texts read guarantees a fixed delay. The convention is first-observed time, else the start of the next business day after acceptance.
+   - *Later information.* Amendments, and 13F information withheld under 15 U.S.C. 78m(f)(4) and Rule 24b-2 and released later, keep their own timestamps.
+   - Checks: `batch50-filing-timestamp-checks.py`, which shows that a deadline-day 13F transmitted at 17:31 is filed the next day.
+
+*Misprint review.* The candidates were re-examined, not silently changed:
+- Avellaneda--Stoikov ask: a 2025 preprint prints the same ask without derivation, inconsistent with its own Lemma 2 and Definition 3; still an apparent misprint, quoted unchanged.
+- AFML's $\Phi_i\cap\Phi_j=\emptyset$ (p. 106): unchanged, apparent misprint.
+- Lehalle and Laruelle's ``$=1$'': unchanged.
+- Lo's eq. (5): new, recorded as an overstatement.
+- Grossman and Miller: the non-monotone response stays an own-algebra finding against the paper's wording.
+
+### The 50-item queue
+
+Outcome per identifier (evidence, then what remains). Repairs overlapping the queue (items 16--18) are counted once.
+
+*A. Carry-forward source gaps (15)*
+1. `data:equity-index-lists-current`, narrowed further: Hang Seng Index methodology v2.3, July 2023 (free-float cap-weighted, 100 constituents, 8 percent cap). Remaining: IDX, S\&P DJI (403 on a second URL), STOXX (no response), Euronext (403), and others.
+2. `data:opec-membership-current`, unchanged: no new evidence since the same-day check; prerequisite unchanged.
+3. `data:metals-market-shares-current`, unchanged and blocked: LME contract specifications 403 on a second route; consumption by country not found.
+4. `conv:henry-hub-contract-terms`, narrowed further: NYMEX Submissions 19-158 (TAS months, 20 May 2019) and 19-198 (settlement procedures, 4 September 2019). Later filings not found.
+5. `data:trade-correction-records`, narrowed further: NYSE Daily TAQ Client Specification v4.0, sec. 3, codes 00--12. The 01 records carry the original time and the corrected data; the 12 records carry the correction time and the original data. The time on 10 and 11 records is not stated.
+6. `res:trade-sign-accuracy`, narrowed: Ellis, Michaely and O'Hara's abstract from Cambridge Core (76.4, 77.66, 81.05 percent). The body is paywalled.
+7. `ev:tick-size-primary-studies`, unchanged: paywalls. One search found only the RePEc record of Goldstein and Kavajecz's working paper.
+8. `rule:eu-si-national-transposition`, unchanged: no new route.
+9. `rule:central-bank-policy-history`, narrowed: PBOC English pages, with a managed-float statement without a band and RRR cuts of 27 September 2024 and 15 May 2025 (0.5 point each). Whether the 2014 band has changed, and the RBNZ dates (403), remain.
+10. `meth:lob-signal-transaction-usefulness`, unchanged: licensed message data.
+11. `ev:circuit-breaker-effects`, narrowed: SEC Release 34-93365 on the four March 2020 Level 1 halts and the SRO working group's conclusions. The study itself (nyse.com 404) and price-limit studies remain.
+12. `ev:dark-pool-price-discovery`, narrowed: Comerton-Forde and Putniņš, accepted manuscript (ASX 2008--2011; harmful above about 10 percent dark volume; blocks benign). Buti, Rindi and Werner (2022) remains unobtained.
+13. `conv:cds-standard-contract`, still blocked: the ISDA 2014 Definitions are sold.
+14. `rule:spoofing-securities-markets`, narrowed further: Rule 10b-5 (eCFR), FINRA Rules 2020 and 5210.03 (Types 1 and 2, from 3 April 2017). Enforcement actions remain (sec.gov 403).
+15. `rule:block-print-trade-through-current`, narrowed further: FINRA Rule 6380B(a), 10 seconds, late designation and modifiers, version of 30 March to 5 December 2026. Exchange cross rules remain.
+
+*B. Macro empirical scopes (6)*
+16. `ev:backwardation-scarcity-or-premium`: repaired and retested (Stage 1, item 1). Untested remainder: other commodities and hedging-pressure readings.
+17. `ev:fx-valuation-factors-oos`: repaired and retested (Stage 1, item 2). Gliner's other factors untested.
+18. `ev:regime-asset-responses-tested`: repaired and retested (Stage 1, item 3). Other rows of the map untested.
+19. `ev:global-macro-returns-after-2013`: newly tested within stated bounds. The protocol was recorded in the earlier batch before any data were seen. Data choices were fixed before computing: estimated months excluded, French Mkt-RF as benchmark, sample ending July 2026.
+   - Data: BarclayHedge's public page (Barclay Global Macro Index, net), January 2022 to July 2026 (55 months).
+   - All months: mean 0.68 percent a month, annualised Sharpe 0.76.
+   - Down months (24): $-0.39$ percent ($t=-1.5$), correlation $+0.29$ (CI $-0.13$ to $0.62$), beta $+0.13$.
+   - Ten worst benchmark months: index $-0.79$ against benchmark $-6.49$.
+   - Crisis protection is not supported. The window from 2014 needs the history behind registration. Script: `notes/artefacts/multi-asset-systematic-macro/global_macro_down_months_test.py`.
+20. `ev:practitioner-rules-tested`: open with its protocol; missing input is trade-level data of a discretionary macro book.
+21. `ev:equity-index-value-signal`: open with its protocol; missing input is point-in-time country B/P and E/P with publication dates (MSCI licensed). A U.S.-only valuation test would answer a different question and was not run.
+
+*C. Existing backlog items (29)*
+22. `res:nonlinear-hawkes-stability`, narrowed: Theorems 4--5 as restated by Zhu (arXiv:1304.7531v3, pp. 33--34), merged into `mod:hawkes-order-flow`. The original was refused by bot protection.
+23. `meth:multiple-testing-control`, narrowed with a new entry: Romano and Wolf's working paper, with an own Monte Carlo (error rates 0.014--0.046; power 0.57--0.74). White and Benjamini--Hochberg were not read.
+24. `meth:backtest-protocol`, blocked: Research Affiliates served a gate page and SSRN returned 403. A third-party copy of unverified provenance was not used.
+25. `meth:dependent-resampling-drawdowns`, narrowed: own AR(1) check (shuffle 0.53 and blocks 0.85, against 0.99). Politis and Romano not obtained.
+26. `ev:out-of-sample-r2-scale`, narrowed: Welch and Goyal's Table 1 (page image). Campbell and Thompson refused (429).
+27. `meth:bitemporal-reference-tables`, resolved as a new entry (Fowler 2021; own check).
+28. `ev:delisting-survivorship-rewriting`, narrowed: Shumway's abstract. Full text 403; Elton, Gruber and Blake and Ljungqvist et al. not obtained.
+29. `meth:alternative-dataset-assessment`, unchanged and blocked: CAIA 404, SSRN 403, the J.P. Morgan report not public.
+30. `meth:time-valid-ml-experiment-record`, narrowed with a new entry: Kelly et al., NBER WP 35247. Levy and Jansen's third edition not read.
+31. `meth:signal-mixing-vs-integration`, resolved (merged): Fitzgibbons et al., AQR reprint.
+32. `ev:august-2007-quant-unwind`, resolved (merged): Khandani and Lo, NBER WP 14465.
+33. `mod:volatility-targeting-deleveraging`, narrowed: Moreira and Muir and Pedersen merged. The 1.5--2 times estimate is unverified.
+34. `meth:overlap-crowding-measure`, narrowed: Pedersen gives no measure; Chincarini et al. paywalled.
+35. `rule:us-short-sale-margin-and-price-test`, resolved (merged): 12 CFR 220.12(c), FINRA 4210(c), 17 CFR 242.201.
+36. `ev:securities-lending-fees-evidence`, resolved (merged): Sikorskaya, author version of 27 April 2026, Table 1.
+37. `mech:options-clearing-exercise-assignment`, narrowed: SEC Release 34-56845 (2007). OCC rulebook 403.
+38. `def:option-complex-orders`, narrowed: Cboe Rule 5.33 from SEC Release 34-92729. Cboe rulebook 403; no evidence on multi-leg costs.
+39. `ev:credit-derivative-swap-trading-structure`, narrowed: 17 CFR 50.4, 37.9 and 37.10. MAT lists and trading shares remain.
+40. `rule:eu-mifir-bond-transparency-level1`, resolved (merged): Regulation 2024/791 and Delegated Regulation 2025/1246 (OJ, 3 November 2025).
+41. `rule:uk-bond-transparency`, blocked: FCA 403; legislation.gov.uk returned an empty 202.
+42. `meth:gips-composite-presentation`, resolved as a new entry (GIPS 2020).
+43. `res:no-trade-region`, narrowed: Guasoni and Muhle-Karbe's survey. Davis and Norman not obtained.
+44. `mod:black-litterman`, resolved as a new entry: the 1991 Goldman Sachs paper, with the appendix formula by page image. The 1992 FAJ version was not compared.
+45. `meth:portfolio-covariance-estimation`, narrowed with a new entry: Ledoit and Wolf's review WP; factor-model estimation unread.
+46. `meth:var-es-estimation-methods`, resolved as a new entry: Christoffersen 2nd ed. and own simulation. QRM and Kupiec not read.
+47. `mod:theory-of-storage`, blocked: Working and Brennan paywalled; no open copy found.
+48. `meth:time-varying-hedge-ratio`, blocked: Baillie and Myers and Lien and Tse paywalled.
+49. `ev:why-firms-hedge`, narrowed: Froot, Scharfstein and Stein's NBER WP read by OCR. Tufano and Jin and Jorion not obtained.
+50. `ev:trend-following-evidence`, resolved (merged): Moskowitz, Ooi and Pedersen's abstract and Hurst, Ooi and Pedersen's Exhibit 1 (page image).
+
+*Deferred, tracked separately and not in the tally.* `ev:curve-inversion-after-2005`: no new NBER dating is known; the trigger was not rechecked online. `data:post-libor-funding-stress-measures`: no public dated SOFR OIS series was found or sought anew. Both deferrals are retained.
+
+### Counts
+
+- All 50: 10 resolved (4 as new entries); 23 narrowed (3 of them with new entries); 4 unchanged; 7 blocked; 3 repaired and retested; 1 newly tested within bounds; 2 open with protocols.
+- New entries: 7. Entries 221 $\to$ 228: `meth:multiple-testing-control`, `meth:bitemporal-reference-tables`, `meth:time-valid-ml-experiment-record`, `meth:gips-composite-presentation`, `mod:black-litterman`, `meth:portfolio-covariance-estimation`, `meth:var-es-estimation-methods`. Legacy blocks 0; all entries draft.
+
+### Sources
+
+Listed with URL, retrieval date, version and SHA-256 in `reading_materials/sources_batch50_2026-10-17.json` (58 files; ignored; none committed), with local library copies (Grinold and Kahn, AFML, Christoffersen) and reused batch-40 files noted. Routes: eCFR versioner API; GovInfo and Federal Register public-inspection PDFs (SEC releases); CELLAR (local copies of the EU texts); finra.org (the version marked as selected on each page); CFTC filings; official pages of the PBOC, Hang Seng Indexes, NYSE, EIA and the Federal Reserve; author, NBER, arXiv and university repositories; a BarclayHedge public page. Two copies sit on course pages (Black and Litterman 1991 at Duke, Hurst et al. at Yale), and one paper (Froot, Scharfstein and Stein) was read by OCR. Refused or unavailable, not bypassed:
+- regulators and standard setters: sec.gov, the FCA (403), legislation.gov.uk (empty 202), ISDA (sold);
+- market operators: theocc.com, cboe.com, S\&P DJI, Euronext and the LME (403), and stoxx.com (no response);
+- research hosts: SSRN (403), Project Euclid (bot protection), Harvard DASH (429), CAIA (404), the nyse.com MWCB study (404), the BYU full text (403);
+- publishers and data: journal paywalls; hedge-fund index histories behind registration.
+
+### Checks
+
+New, all exit 0 with `/opt/homebrew/bin/python3.10`:
+- `commodity-storage-curves/batch50-energy-checks.py`, `fx-determination-forecasting/batch50-fx-checks.py`, `macro-regimes-stock-bond/batch50-regime-checks.py`;
+- `backtest-inference/batch50-sharpe-conditions-checks.py`, `batch50-multiple-testing-checks.py` and `batch50-drawdown-resampling-checks.py`;
+- `equity-long-short-construction/batch50-projection-checks.py`;
+- `point-in-time-data/batch50-filing-timestamp-checks.py` and `batch50-bitemporal-check.py`;
+- `portfolio-construction/batch50-black-litterman-check.py` and `batch50-shrinkage-check.py`;
+- `risk-tail-systemic/batch50-var-backtest-check.py`.
+
+`model-governance-controls/batch40-reconciliation-check.py` was corrected. All existing numerical checks rerun and pass; `afml-checks.py` needs statsmodels, installed for the run in a scratch library.
+
+Empirical scripts:
+- *Byte-for-byte reproduction.* `backwardation_test.py` (3.7 s), `fx_ppp_oos_test.py` (1.4 s), `regime_recession_test.py` (0.9 s) and `global_macro_down_months_test.py` (0.6 s) reproduce their printed results and derived panels byte for byte on rerun. SHA-256 prefixes: backwardation panel 2eab519e, FX panel 2379a3a3, regime panel 294292e2, global macro panel dbbd9544.
+- *v1 preserved.* The v1 scripts, run from a copy, still reproduce their v1 outputs (6953ecd1, da1bb9d4, 82ce2b97).
+- *Not rerun.* `h15_monthly.py` and `ust_monthly.py`: code and inputs unchanged.
+- *Validity separate from reproducibility.* Timing, eligibility, contract identity and units were checked by the focused checks, not inferred from reproducibility.
+
+`tools/migration_status.py --check`: 0 problems. `python3 -B -m unittest discover -s tools`: 14 tests OK.
+
+### Build
+
+Clean `latexmk -pdf compendium.tex` after `latexmk -C`: exit 0, 307 pages. Seven overfull or underfull boxes introduced by new text were fixed by rewording; after the last edit, 0 overfull and 0 underfull boxes and no LaTeX warnings remain, apart from the inherited `page.i` duplicate-destination warning. Pages with the repaired energy and regime passages and the new entries were inspected as images.
+
+### Other files
+
+- Pathway notes (31) received a dated paragraph and updated backlogs. Resolved items were removed, narrowed and blocked stubs rewritten, and new entries listed.
+- Reading notes: created for 17 catalogue readings and updated for `wide-lo-sharpe`, `alpha-grinold`, `alpha-afml` and `s6-stoikov`.
+- Also updated: `notes/log.md` (entries and open questions; no dates of mastery or consolidation), `notes/migration.md`, `compendium/front/sources.tex` (25 keys added) and v1 READMEs.
+
+### For review
+
+- The energy test's expiry inference for Henry Hub before 1997, the inventory availability convention, and the executable variant's settlement-fill assumption.
+- The FX stale-data limits (2 months; 4--6 months).
+- The regime sensitivities: the all-months window and Newey--West with 4 lags.
+- The global macro test's data choices, and that only 2022--2026 was available.
+- Lo's eq. (5) reading; the Avellaneda--Stoikov ask after the 2025 preprint.
+- Sources read from course pages, author hosts and OCR.

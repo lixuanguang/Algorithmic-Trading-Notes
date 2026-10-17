@@ -22,9 +22,75 @@ with $F$ the $n\times k$ loading (exposure) matrix, known when the portfolio is 
 
 \qffield{See also} \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation} (where exposure limits, penalties and the covariance enter); \hyperref[meth:rule-based-position-sizing]{rule-based position sizing}; \hyperref[def:quant-strategy-risk-sources]{sources of strategy risk} (regime change and model risk); \hyperref[def:common-investor-contagion]{common-investor contagion} (VaR-based leverage under rising volatility).
 
-\qffield{Further reading} Factor-model estimation and covariance shrinkage remain in the pathway's backlog. The legacy file it replaces is kept verbatim in the section's folder of \nolinkurl{notes/artefacts/}, as \nolinkurl{risk-models.tex}.
+\qffield{Further reading} Covariance shrinkage is in \hyperref[meth:portfolio-covariance-estimation]{covariance estimation} (2026-10-17); estimating a factor model's loadings remains in the pathway's backlog. The legacy file it replaces is kept verbatim in the section's folder of \nolinkurl{notes/artefacts/}, as \nolinkurl{risk-models.tex}.
 
 \qffield{Index} risk model; factor model; factor exposure; factor loading; factor returns; idiosyncratic return; residual return; specific risk; factor covariance; low rank plus diagonal; systematic risk; diversification; theory-driven risk model; empirical risk model; statistical risk model; principal component analysis; factor neutrality; zero beta; market neutrality; sector neutrality; unintended exposure; risk premium; commercial risk models; regime change
 
 \qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~4, ``Risk Models'', pp.~71--84, with Exhibit~4.1 on p.~83 by page image; and the authors' version of 5 January 2024 of \texttt{wide-boyd-markowitz-seventy}, sec.~3.3, pp.~20--21; the diversification, correlated-residual and neutrality examples computed; the residual-diversification condition, the CVX--XOM hedge and Narang's compensation wording corrected 2026-10-15 in the slice-29 follow-up). Stability: draft. Currency: formulation timeless; Narang's practitioner account as of 2024.
 \end{qfmodel}
+
+\begin{qfmethod}[Estimating a large covariance matrix: why the sample matrix fails when assets are many relative to observations, and linear and nonlinear shrinkage]\label{meth:portfolio-covariance-estimation}
+\qffield{Statement} Ledoit and Wolf's review starts from the case ``when the number of variables is of the same magnitude as the number of observations'', where ``the sample covariance matrix certainly will not do'' \citep[UZH ECON WP~323, version of February 2020, abstract, p.~1]{wide-ledoit-wolf-review}. \emph{Linear shrinkage} to the identity solves $\min_{\rho_1,\rho_2}E\|\hat\Sigma-\Sigma\|_F^2$ over $\hat\Sigma=\rho_1I+\rho_2S$, with the scaled Frobenius norm $\|A\|_F^2=\operatorname{Tr}(A'A)/N$ (eqs.~(2.1)--(2.5), pp.~4--5). The solution is
+\[ \Sigma^*=\gamma^*\mu I+(1-\gamma^*)S,\qquad \gamma^*=\frac{\beta^2}{\delta^2}, \]
+with $\mu=\langle\Sigma,I\rangle$ the average variance, $\alpha^2=\|\Sigma-\mu I\|_F^2$, $\beta^2=E\|S-\Sigma\|_F^2$ and $\delta^2=E\|S-\mu I\|_F^2=\alpha^2+\beta^2$ (eqs.~(2.6)--(2.7), p.~5). It is a convex combination, positive definite and invertible ``even when $N>T$''. The optimal intensity depends on unknown population quantities, so a feasible estimator is derived under large-dimensional asymptotics, with $N/T\to c$ (sec.~2.2, p.~6).
+\begin{itemize}
+\item \emph{Other targets.} Linear shrinkage can also target the single-factor matrix or the constant-correlation matrix.
+\item \emph{Their own comparison.} In their 2004 back-test of a tracking-error-constrained manager, the single-factor target, the constant-correlation target and a five-principal-component factor model all ``dominated the sample covariance matrix, but there was no clear winner'': constant correlation was best for $N\le100$ and the single factor for $N\ge225$ (sec.~3.3, p.~14).
+\item \emph{Nonlinear shrinkage} keeps the sample eigenvectors and shrinks each eigenvalue differently. It ``can deliver another level of performance improvement, especially if overlaid with'' time-varying co-volatility or factor models (abstract; secs.~4--6).
+\end{itemize}
+
+\qffield{Notation} $N$ assets, $T$ observations, $S$ the sample covariance, $c=N/T$ the concentration; the norm divides by $N$, which is not the standard Frobenius norm.
+
+\qffield{Conditions} Section~2 assumes i.i.d., mean-zero observations; demeaned data and dynamic (DCC) and factor extensions are treated later (Remark~2.1; secs.~5--6). Optimality is in Frobenius loss, which is not the same as the out-of-sample variance of an optimised portfolio, though the review's applications are mostly Markowitz problems.
+
+\qffield{Practice} Own simulation with a known one-factor population of 100 assets and 120 observations (\nolinkurl{notes/artefacts/portfolio-construction/batch50-shrinkage-check.py}):
+\begin{itemize}
+\item $\alpha^2+\beta^2=\delta^2$ holds (0.2035 against 0.2031);
+\item the oracle intensity is 0.045, and the Frobenius loss falls from 0.00910 to 0.00871;
+\item the true variance of the global minimum-variance portfolio falls from 0.0252 using $S$ to 0.0089 using $\Sigma^*$, against an optimum of 0.0044.
+\end{itemize}
+The small loss gain and the large portfolio gain illustrate that the two criteria differ. Narang's grouping of similar instruments (\hyperref[mod:factor-risk-model]{factor risk model}) is a structured target of this kind, without a rule for the intensity.
+
+\qffield{Pitfalls} The feasible intensity's formula and the nonlinear estimator were not transcribed; the working-paper version read may differ from the 2022 \emph{Journal of Financial Econometrics} version. Connor, Goldberg and Korajczyk's book on factor-model estimation (\texttt{wide-connor-goldberg-korajczyk}) and the EWMA and DCC estimators listed by Boyd et al.\ were not read.
+
+\qffield{See also} \hyperref[mod:factor-risk-model]{factor risk model}; \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}.
+
+\qffield{Further reading} \texttt{wide-connor-goldberg-korajczyk}.
+
+\qffield{Index} covariance estimation; sample covariance matrix; shrinkage; Ledoit--Wolf; linear shrinkage; nonlinear shrinkage; concentration ratio; Frobenius loss; constant-correlation target; single-factor target; large-dimensional asymptotics; minimum-variance portfolio
+
+\qffield{Status} Verification: partly checked 2026-10-17 (against \texttt{wide-ledoit-wolf-review} in the University of Zurich working-paper version of February 2020, pp.~1--7 and~14, text layer; the identity and the direction of the gains checked by own simulation). Stability: draft. Currency: methods as reviewed in 2020.
+\end{qfmethod}
+
+\begin{qfmethod}[Estimating VaR and ES: historical simulation, filtered historical simulation, parametric dynamic models and Monte Carlo as overlapping choices, and the coverage backtest]\label{meth:var-es-estimation-methods}
+\qffield{Statement} In Christoffersen's textbook \citep[2nd ed., 2012]{wide-christoffersen-elements} the methods are treated as layers, not as exclusive categories:
+\begin{itemize}
+\item \emph{Historical simulation} (HS) applies today's holdings to past prices. It assumes ``the distribution of tomorrow's portfolio returns \dots\ is well approximated by the empirical distribution of the past $m$ observations'' (chap.~2, sec.~2.1, PDF pp.~34--35). His conclusion is that ``HS is problematic for computing VaR'', which motivates dynamic models (chap.~2, overview). Weighted HS, which weights recent observations more, is an extension.
+\item \emph{Filtered historical simulation} (FHS) ``combines model-based methods of dynamic variance, such as GARCH, with model-free methods of distribution''. It scales the empirical distribution of standardised returns by the model's current volatility (chap.~6, PDF p.~134).
+\item \emph{Monte Carlo} and FHS are both used to simulate a dynamic risk model forward, for VaR and ES at horizons longer than a day, where closed forms are lacking. Monte Carlo ``relies on artificial random numbers'' from the model's assumed distribution, FHS ``uses historical random shocks'' (chap.~8, overview, PDF p.~179).
+\end{itemize}
+\emph{Backtesting.} With $I_{t+1}$ the indicator of a VaR violation at coverage rate $p$, $T_0$ and $T_1$ the numbers of non-violations and violations, the unconditional coverage test is
+\[ LR_{uc}=-2\ln\big[(1-p)^{T_0}p^{T_1}\big/\big((1-T_1/T)^{T_0}(T_1/T)^{T_1}\big)\big]\sim\chi^2_1, \]
+rejected at 10 percent above 2.7055. An independence test and a combined conditional-coverage test follow (chap.~13, PDF pp.~303--304).
+
+\qffield{Notation} VaR at coverage $p$: the loss exceeded with probability $p$; ES: the expected loss given that VaR is exceeded; $m$ the HS window.
+
+\qffield{Conditions} HS needs no distributional assumption but assumes the window's returns are draws from tomorrow's distribution: a stationary, independent sample over $m$ days. FHS needs a correct variance model and i.i.d.\ standardised returns. Monte Carlo needs a fully specified distribution. The $\chi^2$ backtest is asymptotic and assumes independent violations under the null.
+
+\qffield{Practice} Own synthetic check: the script is \nolinkurl{batch50-var-backtest-check.py} in \nolinkurl{notes/artefacts/risk-tail-systemic/}. Returns are simulated from a GARCH(1,1) with Student-$t$ shocks over 20{,}000 days, and 1 percent HS and FHS VaR are backtested, both on a 250-day window.
+\begin{itemize}
+\item HS violations occur on 1.62 percent of days, with $LR_{uc}=66$. Their probability the day after a violation is 5.8 percent: they cluster.
+\item FHS violations occur on 1.38 percent of days, with $LR_{uc}=25$, the 250-day empirical 1-percent quantile being imprecise. They do not cluster after a violation.
+\end{itemize}
+The legacy claim that the methods are ``useful for dynamically updating risk assessments'' therefore needs this kind of evidence: forecasts with better coverage and independence. That a method can be updated is not enough. Here the evidence is only synthetic, in a world where the GARCH model is true.
+
+\qffield{Pitfalls} The book's EVT, ES backtesting and stress-testing chapters, the regulatory ES standard and Kupiec's 1995 paper (\texttt{wide-kupiec-backtest}; the Fed's working-paper link failed) were not read. \texttt{s7-qrm} was not obtained. Page numbers here are PDF pages of a local copy, whose printed numbering is offset by a varying amount.
+
+\qffield{See also} \hyperref[mod:factor-risk-model]{factor risk model}; \hyperref[def:common-investor-contagion]{common-investor contagion} (VaR-based leverage in August 2007).
+
+\qffield{Further reading} \texttt{s7-qrm}; \texttt{wide-kupiec-backtest}.
+
+\qffield{Index} Value at Risk; expected shortfall; historical simulation; weighted historical simulation; filtered historical simulation; Monte Carlo simulation; GARCH; backtesting; unconditional coverage; Kupiec test; violation clustering; independence test
+
+\qffield{Status} Verification: partly checked 2026-10-17 (against the text layer of a local copy of the second edition, \texttt{wide-christoffersen-elements}, Academic Press 2012, chap.~2 (overview and sec.~2.1), chap.~6 (FHS), chap.~8 (overview) and chap.~13 (unconditional coverage); the backtest formula and its critical value recomputed in an own simulation). Stability: draft. Currency: methods as of the 2012 edition.
+\end{qfmethod}

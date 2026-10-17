@@ -1,0 +1,30 @@
+
+== WTI: 1987-08-31 to 2024-03-28 (month-ends with inventory norm), n = 439
+  S: B on I        beta_S = -0.1115  t = -5.90
+  S (C1/C4 slope): beta   = -0.0932  t = -6.49
+  P: r on B        beta_P = +0.0462  t = +0.14
+  P: r on I        beta   = -0.0110  t = -0.21
+  P: r on B and I  beta_B = +0.0277 (t +0.07), beta_I = -0.0080 (t -0.13)
+  mean monthly r: backwardated +2.17% (n 197), contango -0.33% (n 242)
+  net of 2 ticks : backwardated +2.10%, contango -0.39%
+  timing rule (long if B>0 else short), net: mean +1.10%/month, annualised Sharpe +0.38
+  OOS (from month 121): R^2 = -2.24%  Clark-West t = -0.36  n = 319
+  exploratory (not pre-specified): r on 1[B>0]  diff = +2.50%  t = +3.44
+  exploratory: months with |r| >= 50% dropped: 2
+
+== NG: 2015-01-30 to 2024-03-28 (month-ends with inventory norm), n = 111
+  S: B on I        beta_S = -0.1238  t = -4.41
+  S (C1/C4 slope): beta   = -0.1280  t = -4.24
+  P: r on B        beta_P = -0.1910  t = -0.64
+  P: r on I        beta   = -0.0432  t = -0.50
+  P: r on B and I  beta_B = -0.3221 (t -1.01), beta_I = -0.0830 (t -0.85)
+  mean monthly r: backwardated -4.96% (n 27), contango -0.38% (n 84)
+  net of 2 ticks : backwardated -5.03%, contango -0.46%
+  timing rule (long if B>0 else short), net: mean -0.99%/month, annualised Sharpe -0.23
+  OOS: not computed (sample shorter than the pre-set 120-month start plus a year)
+  exploratory (not pre-specified): r on 1[B>0]  diff = -4.58%  t = -1.90
+  exploratory: months with |r| >= 50% dropped: 1
+
+WTI: scarcity supported; premium not supported
+
+NG: scarcity supported; premium not supported

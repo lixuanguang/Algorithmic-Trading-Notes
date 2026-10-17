@@ -30,14 +30,18 @@ Written in migration slice 21, 2026-10-15:
 
 All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/options-execution/derivations.tex`.
 
+## Source verification after slice 37
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `mech:options-clearing-exercise-assignment` narrowed (OCC rulebook HTTP 403; SEC Release 34-56845 of 2007 describes random and pro rata assignment, merged into `res:option-market-maker-spreads`; no source links clearing to fragmentation); `def:option-complex-orders` narrowed (Cboe rulebook 403; Rule 5.33's COB, COA, SBBO and legging from SEC Release 34-92729, merged into `meth:option-spread-measurement`; no evidence on multi-leg costs). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `mod:inventory-based-quotes`, `def:spread-measures`, `res:spread-determinants`, `res:adverse-selection-spread-component` (`market-making-lob` and `execution-market-making`); `def:best-execution`, `def:broker-agency-conflicts` (`market-structure-execution-quality`); `conv:futures-block-efrp` (`futures-execution`), `def:portfolio-trading` (`execution-trading-costs`) and `mech:etf-creation-redemption` (`etf-index-closing-execution`). None of them is option evidence.
 
 ## Entry backlog
 
-- mech:options-clearing-exercise-assignment: how common clearing, exercise, assignment and margin shape multiple listing and fragmentation in U.S. options; needs dated OCC and exchange rule documents before such an entry (the legacy caveat's claim is unchecked).
-- def:option-complex-orders: complex-order books, multi-leg price-improvement auctions and how multi-leg costs compare with outrights; needs dated exchange rules and evidence on multi-leg spreads.
+- mech:options-clearing-exercise-assignment: (narrowed 2026-10-17: OCC assignment procedures as of 2007 from an SEC release) current OCC rules (theocc.com HTTP 403) and any source linking common clearing, exercise, assignment and margin to multiple listing and fragmentation.
+- def:option-complex-orders: (narrowed 2026-10-17: Cboe Rule 5.33 mechanisms from an SEC notice of 2021) the current rule text (Cboe HTTP 403) and evidence on multi-leg spreads against outrights.
 
 ## Legacy candidate material
 

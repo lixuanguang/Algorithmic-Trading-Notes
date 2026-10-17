@@ -38,9 +38,15 @@ All four: verification partly checked 2026-10-15, stability draft; human review 
 - `meth:sharpe-ratio-standard-error`: Lo's IID and GMM standard errors and the time-aggregation factor eta(q). Partly checked 2026-10-17, draft.
 - `meth:deflated-sharpe-ratio`: Bailey and López de Prado's expected maximum Sharpe ratio and deflated Sharpe ratio, with their example reproduced. Partly checked 2026-10-17, draft.
 
+Second batch of 2026-10-17:
+
+- `meth:multiple-testing-control`: familywise error, Bonferroni and Holm, the Reality Check and Romano and Wolf's StepM, with conditions and an own Monte Carlo. Partly checked 2026-10-17, draft.
+
 ## Source verification after slice 37
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `meth:sharpe-ratio-standard-error` and `meth:deflated-sharpe-ratio` resolved as new entries in `research-engineering-validation/backtest-evaluation.tex`: Lo (FAJ 2002, read in a copy hosted by a Berkeley student organisation, provenance not established; eqs. (9), (15), (17)-(22) and Table 2 checked as page images and recomputed) and Bailey and López de Prado (author version of 31 July 2014; SR0 = 0.1132 and DSR = 0.9004, 0.9505 at N = 46 and 0.9505 under normal returns at N = 88, all reproduced in `notes/artefacts/backtest-inference/batch40-sharpe-checks.py`). The 2026 López de Prado and Porcu paper was not obtained. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Audit repair: `meth:sharpe-ratio-standard-error` now states that 1 + SR^2/2 needs normal third and fourth moments (general IID form 1 - skew SR + (kurt - 1)/4 SR^2, finite fourth moment), records Lo's finite-variance wording at eq. (5) as an overstatement, scopes the sqrt(q) rule to additive returns with a consistent benchmark (zero autocovariances suffice), and adds counterexamples (`batch50-sharpe-conditions-checks.py`). Queue: `meth:multiple-testing-control` resolved as a new entry from Romano and Wolf's working paper (White and Benjamini-Hochberg described only as Romano and Wolf report them; own Monte Carlo); `meth:dependent-resampling-drawdowns` narrowed (own synthetic check, `batch50-drawdown-resampling-checks.py`; Politis and Romano not obtained); `ev:out-of-sample-r2-scale` narrowed (Welch and Goyal's Table 1 read; Campbell and Thompson refused, HTTP 429); `meth:backtest-protocol` blocked (Research Affiliates gate page, SSRN 403). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
 ## Related entries owned elsewhere
 
@@ -48,10 +54,10 @@ Cross-referenced, not owned here and not changed: `meth:relative-performance-eva
 
 ## Entry backlog
 
-- meth:multiple-testing-control: Reality Check, Romano–Wolf stepdown and Benjamini–Hochberg control across a family of strategies (`catalogue-0731`, `wide-romano-wolf-stepdown`, `wide-benjamini-hochberg`, unread).
-- meth:backtest-protocol: a protocol fixed before experiments, against Narang's practitioner screening (`wide-arnott-harvey-markowitz`, unread).
-- meth:dependent-resampling-drawdowns: resampling returns with their dependence (stationary bootstrap) for drawdown distributions, against Narang's shuffle (`wide-politis-romano-stationary`, unread).
-- ev:out-of-sample-r2-scale: out-of-sample $R^2$ magnitudes by horizon and design, against Narang's unsourced "superb $R^2$ \dots 0.05"; belongs to `return-predictability` (`wide-campbell-thompson`, `s7-welch`, unread).
+- meth:multiple-testing-control: (narrowed; entry written 2026-10-17) White (2000) and Benjamini and Hochberg (1995) themselves, and the 2005 Econometrica version of Romano and Wolf.
+- meth:backtest-protocol: a protocol fixed before experiments, against Narang's practitioner screening (`wide-arnott-harvey-markowitz`; blocked 2026-10-17: Research Affiliates served a gate page, SSRN HTTP 403; a third-party copy of unverified provenance not used).
+- meth:dependent-resampling-drawdowns: (narrowed 2026-10-17: own AR(1) check shows shuffling understates the drawdown tail, 0.53 against 0.99, blocks 0.85; merged into `meth:backtest-evaluation-diagnostics`) Politis and Romano's paper itself (`wide-politis-romano-stationary`, not obtained).
+- ev:out-of-sample-r2-scale: (narrowed 2026-10-17: Welch and Goyal's annual OOS R^2 all negative, e.g. d/p -2.06%, merged into `meth:backtest-evaluation-diagnostics`) Campbell and Thompson's restricted forecasts (`wide-campbell-thompson`; Harvard repository HTTP 429) and monthly horizons; belongs to `return-predictability`.
 - ev:signal-decay-crowding: whether faster decay of a delayed signal measures crowding, as Narang suggests without evidence (`w3-kyle-crowded-markets`, `w4-chincarini-crowded-anomalies`, unread).
 - data:historical-borrow-availability: point-in-time hard-to-borrow status and borrow fees for short-side backtests, which Narang says are hard to obtain; belongs to `point-in-time-data` (no source identified).
 

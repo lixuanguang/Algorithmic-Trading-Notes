@@ -1,45 +1,46 @@
-Sample per currency (first z, last month):
-  JPY: (1975, 12) to (2021, 8)
-  GBP: (1975, 12) to (2025, 5)
-  CHF: (1975, 12) to (2025, 6)
-  CAD: (1975, 12) to (2025, 5)
-  AUD: (1975, 12) to (2026, 9)
-  NZD: (1975, 12) to (2026, 9)
-  SEK: (1975, 12) to (2025, 5)
-  NOK: (1975, 12) to (2025, 6)
-  DKK: (1975, 12) to (2025, 6)
+Samples per currency: spot range; predictor-eligible range (first z, last eligible month); CPI ages
+  JPY: spot (1971, 1)-(2026, 9); z (1975, 12)-(2021, 8); age 2-2 months (mean 2.0); spot months after the last eligible predictor: 61
+  GBP: spot (1971, 1)-(2026, 9); z (1975, 12)-(2025, 5); age 2-2 months (mean 2.0); spot months after the last eligible predictor: 16
+  CHF: spot (1971, 1)-(2026, 9); z (1975, 12)-(2025, 6); age 2-2 months (mean 2.0); spot months after the last eligible predictor: 15
+  CAD: spot (1971, 1)-(2026, 9); z (1975, 12)-(2025, 5); age 2-2 months (mean 2.0); spot months after the last eligible predictor: 16
+  AUD: spot (1971, 1)-(2026, 9); z (1975, 12)-(2025, 9); age 4-6 months (mean 5.0); spot months after the last eligible predictor: 12
+  NZD: spot (1971, 1)-(2026, 9); z (1975, 12)-(2025, 9); age 4-6 months (mean 5.0); spot months after the last eligible predictor: 12
+  SEK: spot (1971, 1)-(2026, 9); z (1975, 12)-(2025, 5); age 2-2 months (mean 2.0); spot months after the last eligible predictor: 16
+  NOK: spot (1971, 1)-(2026, 9); z (1975, 12)-(2025, 6); age 2-2 months (mean 2.0); spot months after the last eligible predictor: 15
+  DKK: spot (1971, 1)-(2026, 9); z (1975, 12)-(2025, 6); age 2-2 months (mean 2.0); spot months after the last eligible predictor: 15
 
 == h = 1 months: expanding OLS of ds on z, forecasts from 1985-01
-  JPY: n = 439, OOS R^2 vs RW = -0.51%, full-sample b = +0.0001
-  GBP: n = 484, OOS R^2 vs RW = -2.67%, full-sample b = -0.0088
-  CHF: n = 485, OOS R^2 vs RW = -0.95%, full-sample b = -0.0092
-  CAD: n = 484, OOS R^2 vs RW = -1.19%, full-sample b = -0.0050
-  AUD: n = 498, OOS R^2 vs RW = -1.60%, full-sample b = -0.0060
-  NZD: n = 498, OOS R^2 vs RW = -3.23%, full-sample b = -0.0014
-  SEK: n = 484, OOS R^2 vs RW = -2.48%, full-sample b = -0.0042
-  NOK: n = 485, OOS R^2 vs RW = -2.25%, full-sample b = -0.0019
-  DKK: n = 485, OOS R^2 vs RW = -2.70%, full-sample b = -0.0036
-  pooled OOS R^2 vs RW = -2.00%, Clark-West t = -2.15 (pooled, NW 0 lags; serial correlation across stacked currencies ignored)
+  JPY: n = 440 ((1985, 1) to (2021, 8)), OOS R^2 vs RW = -0.51%, full-sample b = +0.0002
+  GBP: n = 485 ((1985, 1) to (2025, 5)), OOS R^2 vs RW = -2.66%, full-sample b = -0.0090
+  CHF: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -0.92%, full-sample b = -0.0093
+  CAD: n = 485 ((1985, 1) to (2025, 5)), OOS R^2 vs RW = -1.18%, full-sample b = -0.0052
+  AUD: n = 489 ((1985, 1) to (2025, 9)), OOS R^2 vs RW = -1.60%, full-sample b = -0.0058
+  NZD: n = 489 ((1985, 1) to (2025, 9)), OOS R^2 vs RW = -3.28%, full-sample b = -0.0016
+  SEK: n = 485 ((1985, 1) to (2025, 5)), OOS R^2 vs RW = -2.48%, full-sample b = -0.0043
+  NOK: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -2.25%, full-sample b = -0.0017
+  DKK: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -2.69%, full-sample b = -0.0037
+  pooled OOS R^2 vs RW = -2.00%, Clark-West t = -2.14 (pooled, NW 0 lags; serial correlation across stacked currencies ignored)
   full-sample slopes negative for 8 of 9 currencies
 
 == h = 12 months: expanding OLS of ds on z, forecasts from 1985-01
-  JPY: n = 428, OOS R^2 vs RW = -9.01%, full-sample b = -0.0856
-  GBP: n = 473, OOS R^2 vs RW = -1.63%, full-sample b = -0.2222
-  CHF: n = 474, OOS R^2 vs RW = -7.11%, full-sample b = -0.2240
-  CAD: n = 473, OOS R^2 vs RW = -14.73%, full-sample b = -0.1288
-  AUD: n = 488, OOS R^2 vs RW = -12.45%, full-sample b = -0.1545
-  NZD: n = 488, OOS R^2 vs RW = -24.06%, full-sample b = -0.1494
-  SEK: n = 473, OOS R^2 vs RW = -16.86%, full-sample b = -0.1425
-  NOK: n = 474, OOS R^2 vs RW = -23.77%, full-sample b = -0.0806
-  DKK: n = 474, OOS R^2 vs RW = -22.78%, full-sample b = -0.1565
-  pooled OOS R^2 vs RW = -15.26%, Clark-West t = -0.40 (pooled, NW 11 lags; serial correlation across stacked currencies ignored)
+  JPY: n = 440 ((1985, 1) to (2021, 8)), OOS R^2 vs RW = -11.62%, full-sample b = -0.0565
+  GBP: n = 485 ((1985, 1) to (2025, 5)), OOS R^2 vs RW = -1.07%, full-sample b = -0.2247
+  CHF: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -5.65%, full-sample b = -0.2293
+  CAD: n = 485 ((1985, 1) to (2025, 5)), OOS R^2 vs RW = -14.54%, full-sample b = -0.1297
+  AUD: n = 489 ((1985, 1) to (2025, 9)), OOS R^2 vs RW = -12.43%, full-sample b = -0.1548
+  NZD: n = 489 ((1985, 1) to (2025, 9)), OOS R^2 vs RW = -24.06%, full-sample b = -0.1494
+  SEK: n = 485 ((1985, 1) to (2025, 5)), OOS R^2 vs RW = -15.42%, full-sample b = -0.1572
+  NOK: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -22.63%, full-sample b = -0.0996
+  DKK: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -21.71%, full-sample b = -0.1635
+  pooled OOS R^2 vs RW = -14.89%, Clark-West t = -0.31 (pooled, NW 11 lags; serial correlation across stacked currencies ignored)
   full-sample slopes negative for 9 of 9 currencies
 
-== Value portfolio (long 3 cheapest, short 3 dearest by z), (1985, 1) to (2025, 4)
-  spot, gross: n = 484, mean +0.09%/yr, vol 5.99%/yr, Sharpe +0.01, NW t = +0.09
-  spot, net of 5 bp turnover cost: n = 484, mean -0.04%/yr, vol 6.00%/yr, Sharpe -0.01, NW t = -0.04
-  excess return incl. interest differential, gross: n = 276, mean -0.17%/yr, vol 5.04%/yr, Sharpe -0.03, NW t = -0.17
-  excess return, net of costs: n = 276, mean -0.30%/yr, vol 5.04%/yr, Sharpe -0.06, NW t = -0.29
-  mean turnover cost 0.13%/yr; breakeven cost per unit turnover 3.4 bp (spot)
+== Value portfolio on monthly-average rates (long 3 cheapest, short 3 dearest by z), (1985, 1) to (2025, 5)
+   A statistical portfolio return on averaged prices with interbank-rate carry: not an executable result.
+  spot, gross: n = 485, mean +0.09%/yr, vol 5.99%/yr, Sharpe +0.01, NW t = +0.09
+  spot, net of 5 bp turnover cost: n = 485, mean -0.04%/yr, vol 5.99%/yr, Sharpe -0.01, NW t = -0.05
+  with interest differential, gross: n = 277, mean -0.17%/yr, vol 5.03%/yr, Sharpe -0.03, NW t = -0.17
+  with interest differential, net of costs: n = 277, mean -0.30%/yr, vol 5.03%/yr, Sharpe -0.06, NW t = -0.29
+  mean turnover cost 0.13%/yr; breakeven cost per unit turnover 3.3 bp (spot)
 
-Verdict: statistical (h = 12) not supported; economic not supported
+Verdict: statistical (h = 12) not supported; economic (statistical portfolio) not supported

@@ -1,20 +1,37 @@
 Quarters: 241 ((1965, 11) to (2025, 11)); real-time signal in 53:
   1969-11, 1970-05, 1970-08, 1970-11, 1971-02, 1971-05, 1971-08, 1971-11, 1974-08, 1974-11, 1975-02, 1975-05, 1975-08, 1975-11, 1976-02, 1980-05, 1980-08, 1980-11, 1981-02, 1981-05, 1982-02, 1982-05, 1982-08, 1982-11, 1983-02, 1983-05, 1991-02, 1991-05, 1991-08, 1991-11, 1992-02, 1992-05, 1992-08, 1992-11, 2001-08, 2001-11, 2002-02, 2002-05, 2002-08, 2002-11, 2008-08, 2008-11, 2009-02, 2009-05, 2009-08, 2009-11, 2010-02, 2010-05, 2020-05, 2020-08, 2020-11, 2021-02, 2024-08
 Vintages skipped for a missing month in the window: RUC26Q1, RUC26Q2, RUC26Q3
-NBER-window quarters: 34; overlap with signal: 17
+NBER quarters: any overlap 34 (overlap with signal 17); all three months inside 23 (overlap with signal 11)
 
-== real-time Sahm signal: mean in regime minus mean outside (Welch t)
-  dy10  : regime -0.040 (n 53), other +0.009 (n 188), diff -0.049, t -0.50  -> not supported
-  dcred : regime -0.047 (n 53), other +0.020 (n 188), diff -0.067, t -0.79  -> not supported
-  eq    : regime +2.660 (n 53), other +1.475 (n 188), diff +1.185, t +0.82  -> not supported
-  dfn   : regime -0.521 (n 53), other +0.225 (n 188), diff -0.747, t -1.02  -> not supported
-  usd   : regime +1.284 (n 45), other +0.490 (n 167), diff +0.794, t +1.48  -> not supported
+REAL-TIME TEST (the only test; decision rule: hypothesised sign with |Welch t| > 2)
 
-== ex-post NBER window: mean in regime minus mean outside (Welch t)
-  dy10  : regime -0.135 (n 34), other +0.021 (n 207), diff -0.156, t -1.03  -> not supported
-  dcred : regime +0.218 (n 34), other -0.030 (n 207), diff +0.248, t +1.78  -> not supported
-  eq    : regime -0.919 (n 34), other +2.172 (n 207), diff -3.091, t -1.41  -> not supported
-  dfn   : regime +1.018 (n 34), other -0.096 (n 207), diff +1.114, t +1.21  -> not supported
-  usd   : regime +1.341 (n 30), other +0.546 (n 182), diff +0.795, t +1.14  -> not supported
+== real-time Sahm signal: mean in regime minus mean outside
+  dy10                                       1965-2025: regime -0.040 (n 53, 10 episodes), other +0.009 (n 188), diff -0.049, Welch t -0.50, NW(4) t -0.42  -> threshold not met
+  dcred                                      1965-2025: regime -0.047 (n 53, 10 episodes), other +0.020 (n 188), diff -0.067, Welch t -0.79, NW(4) t -0.85  -> threshold not met
+  eq                                         1965-2025: regime +2.660 (n 53, 10 episodes), other +1.475 (n 188), diff +1.185, Welch t +0.82, NW(4) t +0.84  -> threshold not met
+  dfn                                        1965-2025: regime -0.521 (n 53, 10 episodes), other +0.225 (n 188), diff -0.747, Welch t -1.02, NW(4) t -1.26  -> threshold not met
+  usd (goods only, TWEXBMTH, to 2019)        1973-2019: regime +1.614 (n 40, 6 episodes), other +0.502 (n 147), diff +1.113, Welch t +1.98, NW(4) t +1.87  -> threshold not met
+  usd (goods+services, DTWEXBGS, 2006-)      2006-2025: regime -0.123 (n 13, 3 episodes), other +0.267 (n 67), diff -0.390, Welch t -0.29, NW(4) t -0.32  -> threshold not met
+  usd (v1 splice; definition break 2020-01)  1973-2025: regime +1.284 (n 45, 8 episodes), other +0.490 (n 167), diff +0.794, Welch t +1.48, NW(4) t +1.28  -> threshold not met
 
-Verdict (real time): dy10 not supported; dcred not supported; eq not supported; dfn not supported; usd not supported
+EX-POST DESCRIPTION (NBER dates known only later; not a test of a usable classification)
+
+== ex-post NBER window, ANY OVERLAP (v1 definition)
+  dy10                                       1965-2025: regime -0.135 (n 34, 8 episodes), other +0.021 (n 207), diff -0.156, Welch t -1.03, NW(4) t -1.29  -> threshold not met
+  dcred                                      1965-2025: regime +0.218 (n 34, 8 episodes), other -0.030 (n 207), diff +0.248, Welch t +1.78, NW(4) t +2.46  -> threshold not met
+  eq                                         1965-2025: regime -0.919 (n 34, 8 episodes), other +2.172 (n 207), diff -3.091, Welch t -1.41, NW(4) t -1.69  -> threshold not met
+  dfn                                        1965-2025: regime +1.018 (n 34, 8 episodes), other -0.096 (n 207), diff +1.114, Welch t +1.21, NW(4) t +1.65  -> threshold not met
+  usd (goods only, TWEXBMTH, to 2019)        1973-2019: regime +1.217 (n 29, 6 episodes), other +0.652 (n 158), diff +0.565, Welch t +0.80, NW(4) t +0.90  -> threshold not met
+  usd (goods+services, DTWEXBGS, 2006-)      2006-2025: regime +1.342 (n 8, 2 episodes), other +0.077 (n 72), diff +1.265, Welch t +0.63, NW(4) t +0.97  -> threshold not met
+  usd (v1 splice; definition break 2020-01)  1973-2025: regime +1.341 (n 30, 7 episodes), other +0.546 (n 182), diff +0.795, Welch t +1.14, NW(4) t +1.28  -> threshold not met
+
+== ex-post NBER window, ALL MONTHS inside (sensitivity)
+  dy10                                       1965-2025: regime -0.367 (n 23, 7 episodes), other +0.037 (n 218), diff -0.405, Welch t -2.24, NW(4) t -2.13  -> sign as hypothesised with |Welch t| > 2
+  dcred                                      1965-2025: regime +0.412 (n 23, 7 episodes), other -0.038 (n 218), diff +0.450, Welch t +2.88, NW(4) t +4.36  -> sign as hypothesised with |Welch t| > 2
+  eq                                         1965-2025: regime -1.974 (n 23, 7 episodes), other +2.127 (n 218), diff -4.101, Welch t -1.42, NW(4) t -1.92  -> threshold not met
+  dfn                                        1965-2025: regime +1.937 (n 23, 7 episodes), other -0.137 (n 218), diff +2.073, Welch t +1.93, NW(4) t +2.65  -> threshold not met
+  usd (goods only, TWEXBMTH, to 2019)        1973-2019: regime +1.326 (n 20, 6 episodes), other +0.669 (n 167), diff +0.657, Welch t +0.73, NW(4) t +0.87  -> threshold not met
+  usd (goods+services, DTWEXBGS, 2006-)      2006-2025: regime +1.915 (n 5, 1 episodes), other +0.089 (n 75), diff +1.826, Welch t +0.60, NW(4) t +1.24  -> threshold not met
+  usd (v1 splice; definition break 2020-01)  1973-2025: regime +1.326 (n 20, 6 episodes), other +0.589 (n 192), diff +0.737, Welch t +0.82, NW(4) t +0.99  -> threshold not met
+
+Verdict (real time): dy10 not supported; dcred not supported; eq not supported; dfn not supported; usd (goods only, TWEXBMTH, to 2019) not supported; usd (goods+services, DTWEXBGS, 2006-) not supported; usd (v1 splice; definition break 2020-01) not supported

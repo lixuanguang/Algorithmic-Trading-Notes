@@ -42,9 +42,16 @@ Written in migration slice 36, 2026-10-16, from six blocks of the legacy microst
 
 Partly checked 2026-10-16, draft; human review outstanding.
 
+Second batch of 2026-10-17:
+
+- `meth:gips-composite-presentation`: composite construction, required statistics and first disclosures of a GIPS composite report. Partly checked 2026-10-17, draft.
+
+## Source verification after slice 37
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `meth:gips-composite-presentation` resolved as a new entry in `portfolio-construction-risk/performance-evaluation.tex` (GIPS for Firms 2020, provisions 3.A.1-3.A.11, 4.A.1-4.A.3, 4.C.1-4.C.5, 5.A.1). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Entry backlog
 
-- meth:gips-composite-presentation: composite construction, required statistics and disclosures for a GIPS report, as the checkpoint asks (`wide-gips-2020`, read only for definitions).
 
 ## Legacy candidate material
 

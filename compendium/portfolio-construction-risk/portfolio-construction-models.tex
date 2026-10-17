@@ -99,3 +99,37 @@ To deliver a chosen $R$ at risk $\sigma$, set $\beta_n=\sigma\sqrt{R_n/\Lambda_{
 
 \qffield{Status} Verification: partly checked 2026-10-16 (against the text layer and a page image of a local copy of \texttt{alpha-afml}, chap.~2, pp.~35--36, Snippet~2.1; the construction checked numerically). Stability: draft. Currency: timeless.
 \end{qfmodel}
+
+\begin{qfmodel}[Black--Litterman: equilibrium returns implied by market weights, combined with views and their confidence into posterior expected returns]\label{mod:black-litterman}
+\qffield{Statement} In Black and Litterman's mathematical appendix \citep[Goldman Sachs Fixed Income Research, October 1991, Appendix, points~1--8, pp.~37--38]{alpha-black}:
+\begin{itemize}
+\item excess returns are normal with covariance $\Sigma$, and the \emph{equilibrium} risk premiums are $\Pi=\delta\Sigma W$, with $W$ the market weights (bonds and equities by capitalisation, currencies by a universal hedging constant) and $\delta$ a proportionality constant (point~6);
+\item the unobservable expected return $E[R]$ has a distribution ``proportional to a product of two normal distributions'': one centred at $\Pi$ with covariance $\tau\Sigma$, and one expressing $k$ views $PE[R]=Q+\varepsilon$, with $\varepsilon\sim N(0,\Omega)$ and $\Omega$ diagonal (point~7);
+\item the result is normal with mean (point~8)
+\[ \overline{E[R]}=\big[(\tau\Sigma)^{-1}+P'\Omega^{-1}P\big]^{-1}\big[(\tau\Sigma)^{-1}\Pi+P'\Omega^{-1}Q\big], \]
+which is then used ``as the vector of expected excess returns'' in the optimiser.
+\end{itemize}
+
+\qffield{Notation} $n$ assets; $W$ market weights; $\Sigma$ the return covariance; $\tau$ a scalar for the uncertainty of the equilibrium mean; $P$ ($k\times n$) the view portfolios, $Q$ their expected returns, $\Omega$ the view variances (lower variance, more confidence).
+
+\qffield{Conditions} The posterior mean is the precision-weighted combination of two normal sources. Own checks (\nolinkurl{notes/artefacts/portfolio-construction/batch50-black-litterman-check.py}), on a three-asset example:
+\begin{itemize}
+\item it equals the conditional mean of $E[R]$ given the views by Gaussian conditioning;
+\item with no confidence in the views ($\Omega\to\infty$) it returns $\Pi$;
+\item with certainty ($\Omega\to0$) it satisfies $P\overline{E[R]}=Q$;
+\item a view on one asset moves correlated assets' expected returns. A 3-point view on asset~1 with 2-point standard error raises asset~2's by 1.77 points.
+\end{itemize}
+$\tau$ and $\Omega$ are inputs the appendix does not calibrate.
+
+\qffield{Practice} Interpretation: the equilibrium gives the optimiser a neutral starting mean, so that portfolios without views are the market portfolio rather than the extreme positions an unconstrained optimiser produces from noisy means (\hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}, whose estimation-error pitfall cites this shrinkage via Boyd et al.).
+
+\qffield{Pitfalls} The legacy description, which ``blends investor expectations with a degree of confidence \dots\ and these with historical precedent evident in the data'' and ``adjusts historically observed correlation levels'', misdescribes the model on two counts. The prior is the market-implied equilibrium $\Pi=\delta\Sigma W$, not historical average returns. The formula changes the mean, not $\Sigma$, so correlations are not adjusted; correlations instead carry a view on one asset to the others. The copy read is the October 1991 Goldman Sachs research paper on a Duke University course page, not the 1992 \emph{Financial Analysts Journal} article that the catalogue lists; the two were not compared.
+
+\qffield{See also} \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}; \hyperref[meth:portfolio-covariance-estimation]{covariance estimation} (the other input); \hyperref[meth:forecast-scaling-ic]{forecast scaling} (another way of shrinking views towards zero).
+
+\qffield{Further reading} He and Litterman's intuition paper and the 1992 \emph{FAJ} article, not read.
+
+\qffield{Index} Black--Litterman; equilibrium returns; implied returns; reverse optimisation; views; view confidence; tau; Bayesian combination; posterior expected returns; universal hedging
+
+\qffield{Status} Verification: partly checked 2026-10-17 (against \texttt{alpha-black} in the Goldman Sachs Fixed Income Research version of October 1991, Appendix, PDF pp.~41--42, with point~8 read as a page image; the formula's properties checked numerically). Stability: draft. Currency: model of 1991--1992.
+\end{qfmodel}

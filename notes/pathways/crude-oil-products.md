@@ -40,6 +40,8 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:opec-membership-current` reviewed, unchanged: OPEC's home page navigation still lists the United Arab Emirates among twelve members on 2026-10-17; its releases of 4, 6 and 12 October 2026 do not address membership; its press-release index returned HTTP 403; a search found no Secretariat statement. The prerequisite is OPEC's own statement, or 1 January 2027, when Article 8A of the Statute would make a 2026 withdrawal effective. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `data:opec-membership-current` unchanged (no new evidence since the check earlier the same day; prerequisite unchanged). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:natural-gas-market` (`gas-hub-pricing`); `def:contango-backwardation-stocks` (`commodity-storage-curves`).

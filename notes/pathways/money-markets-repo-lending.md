@@ -44,14 +44,14 @@ Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source veri
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:post-libor-funding-stress-measures` deferral retained: no public, dated SOFR OIS series was obtained, so the CP minus SOFR OIS spread still cannot be built. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `rule:us-short-sale-margin-and-price-test` resolved by merge into `mech:securities-lending-short-sale` (12 CFR 220.12(c): 150 percent; FINRA Rule 4210(c)(2)-(3); Rule 201's 10 percent trigger and NBB restriction for the day and the next); `ev:securities-lending-fees-evidence` resolved by merge into `def:securities-lending-fee-rebate` (Sikorskaya, author version of 27 April 2026, Table 1: general collateral 0.39 percent, specials 5.61 percent mean near the Russell cutoff, 2006-2018). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:broker-agency-conflicts` (`market-structure-execution-quality`); `res:arbitrage-risks` (`execution-market-making`); `mech:futures-margin-settlement` (`futures-execution`).
 
 ## Entry backlog
 
-- rule:us-short-sale-margin-and-price-test: current Regulation T and FINRA margin for short sales, and the current U.S. short-sale price test; DGP's 2001 description is historical.
-- ev:securities-lending-fees-evidence: measured lending fees, rebates and specials (for example from institutional lending data, `catalogue-0897`), against the legacy "low or negative rebates" claim.
 - data:post-libor-funding-stress-measures: which spreads research studies, beyond the OFR's index, use in LIBOR-OIS's place, and a dated series of the 3-month commercial paper minus SOFR OIS spread itself; the OFR's June 2023 replacement of its funding variables, its daily index and the Fed's May 2026 Financial Stability Report were read on 2026-10-16
 
 ## Legacy candidate material

@@ -28,13 +28,21 @@ Written in migration slice 32, 2026-10-16:
 
 Partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/`.
 
+Second batch of 2026-10-17:
+
+- `meth:time-valid-ml-experiment-record`: release times, model and pretraining cutoffs, tuning trials and held-out dates for an ML or language-model result, from Kelly et al.'s point-in-time models. Partly checked 2026-10-17, draft.
+
+## Source verification after slice 37
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `meth:time-valid-ml-experiment-record` resolved as a new entry in `ml-alternative-data/labelling-sample-weights.tex` from Kelly, Malamud, Schwab and Xu's point-in-time language models (NBER WP 35247, May 2026); Levy (SSRN 403) and Jansen's third edition were not read. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:label-concurrency-uniqueness`, `meth:sample-weights-attribution-decay`, `meth:meta-labelling`, `meth:triple-barrier-labelling`, `meth:fixed-width-fractional-differencing`, `meth:event-based-sampling` (`statistical-learning-foundations`); `pit:parameter-overfitting` (`backtest-inference`); `meth:strategy-production-lifecycle` (`model-governance-controls`).
 
 ## Entry backlog
 
-- meth:time-valid-ml-experiment-record: recording release times, model-training cutoffs, tuning trials and held-out dates for an ML or language-model result, as the checkpoint asks (`alpha-jansen`, `latest-pit-language-models`, `latest-levy-caution-llm`, unread).
+- meth:time-valid-ml-experiment-record: (narrowed; entry written 2026-10-17 from `latest-pit-language-models`) Levy's look-ahead study (`latest-levy-caution-llm`; SSRN refused automated retrieval) and Jansen's third edition (`alpha-jansen`).
 
 ## Legacy candidate material
 

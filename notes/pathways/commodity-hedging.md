@@ -33,15 +33,19 @@ Slice-31 follow-up, 2026-10-16: `def:futures-hedge-basis` now names the two cros
 
 Changed in the slice-32 follow-up, 2026-10-16: `def:futures-hedge-basis` and `mod:minimum-variance-hedge-ratio` no longer say a negative $h$ adds exposure: with $\operatorname{Cov}(\Delta S,\Delta F)<0$ the minimum-variance $h^*$ is negative (a long futures position against a long exposure) and reduces variance; checked in `notes/artefacts/volatility-options/negative-hedge-ratio-check.py`.
 
+## Source verification after slice 37
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `ev:why-firms-hedge` narrowed (Froot, Scharfstein and Stein's NBER WP 4084 read by OCR, merged into `def:futures-hedge-basis`; Tufano and Jin and Jorion not obtained); `mod:theory-of-storage` and `meth:time-varying-hedge-ratio` blocked (Working, Brennan, Baillie and Myers, Lien and Tse paywalled; one search each found no open copy). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry-forward-price` (`volatility-options`); `mod:duration-convexity` (`rates-credit-mortgages`); `mod:factor-risk-model` (`portfolio-construction`); `def:arbitrage` (`execution-market-making`).
 
 ## Entry backlog
 
-- meth:time-varying-hedge-ratio: rolling-window and bivariate-GARCH hedge ratios and their out-of-sample variance reduction (`ec-baillie-myers-1991`, `ec-lien-tse-2002`, unread).
-- ev:why-firms-hedge: theory and evidence on whether hedging adds value (`ec-froot-scharfstein-stein-1993`, `ec-tufano-1996`, `ec-jin-jorion-2006`, unread).
-- mod:theory-of-storage: inventories, convenience yield and the basis (home pathway `commodity-storage-curves`; `ec-working-1948`, `ec-brennan-1958`, unread).
+- meth:time-varying-hedge-ratio: rolling-window and bivariate-GARCH hedge ratios and their out-of-sample variance reduction (`ec-baillie-myers-1991`, `ec-lien-tse-2002`; blocked on 2026-10-17, paywalled, no open copy found).
+- ev:why-firms-hedge: (narrowed 2026-10-17: Froot, Scharfstein and Stein's theory merged) the evidence, Tufano (1996) and Jin and Jorion (2006), not obtained.
+- mod:theory-of-storage: inventories, convenience yield and the basis (home pathway `commodity-storage-curves`; `ec-working-1948`, `ec-brennan-1958`; blocked on 2026-10-17, no open copy found).
 
 ## Legacy candidate material
 

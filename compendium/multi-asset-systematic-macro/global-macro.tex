@@ -43,7 +43,14 @@
 
 \qffield{Practice} The legacy summarised the record as lower volatility than equities, comparable or higher long-run returns, low or negative correlation in crises, and a higher Sharpe ratio; and it described crises as times when equity managers are ``trapped long'', credit liquidity vanishes and correlations ``converge toward 1'', while macro funds can cut gross exposure, short directly, and trade rates, FX or volatility. Those mechanisms are plausible but are the legacy's own generalisation; Gliner's evidence is the index comparison and the conditional-correlation chart above, and his chapter~4 shows correlations rising around Lehman (Figure~4.5, PDF pp.~100--101).
 
-\qffield{Pitfalls} Do not extend a 2002--2012 or 1995--2013 record to later years: the guide's section readings and later index data are needed (backlog). Negative correlation in crises is a conditional statistic on a few episodes, sensitive to how crises are chosen. The legacy's ``most popular hedge fund allocation by pension funds'' is Gliner's reading of one prime broker's survey for 2009--2012, not a market-wide statistic.
+\qffield{Pitfalls} Do not extend a 2002--2012 or 1995--2013 record to later years: the guide's section readings and later index data are needed (backlog). \emph{Own bounded test, 2022--2026} (batch of 2026-10-17; not a reading). The protocol was in the pathway backlog in commit \texttt{820517a}, before the data were obtained. The data choices below were fixed before computing, because the only public series found starts in 2022. It uses the Barclay Global Macro Index's monthly net returns as displayed on BarclayHedge's public page on 17 October 2026, excluding the months it marks as estimated, against French's Mkt-RF, January 2022 to July 2026 (55 months).
+\begin{itemize}
+\item \emph{All months.} The index earned 0.68 percent a month at 5.6 percent annual volatility, an annualised Sharpe ratio on excess returns of 0.76 (monthly 0.22, Lo standard error 0.14).
+\item \emph{Down months} (24): it averaged $-0.39$ percent ($t=-1.5$), with correlation $+0.29$ (95 percent interval $-0.13$ to $0.62$) and beta $+0.13$.
+\item \emph{Up months} (31): it averaged $+1.51$ percent.
+\item \emph{The ten worst benchmark months}, which averaged $-6.5$ percent: the index averaged $-0.79$ percent.
+\end{itemize}
+By the pre-set rule (down-month mean positive with $t>2$), crisis protection is not supported in this window. The low betas say the index fell much less than equities, not that it rose. The test is bounded in several ways: one index of self-reporting funds, subject to revision and backfill; 55 months instead of the protocol's span from 2014; equal treatment of all down months; and the page's earlier history is behind registration. Script, data choices and outputs: \nolinkurl{notes/artefacts/multi-asset-systematic-macro/global_macro_down_months_test.py}, \nolinkurl{global_macro_results.txt} and \nolinkurl{global_macro_monthly.csv}. Negative correlation in crises is a conditional statistic on a few episodes, sensitive to how crises are chosen. The legacy's ``most popular hedge fund allocation by pension funds'' is Gliner's reading of one prime broker's survey for 2009--2012, not a market-wide statistic.
 
 \qffield{See also} \hyperref[def:global-macro-strategy]{global macro}; \hyperref[meth:macro-position-sizing-risk]{macro position sizing and risk}; \hyperref[meth:relative-performance-evaluation]{relative performance evaluation}.
 
@@ -51,7 +58,7 @@
 
 \qffield{Index} global macro returns; Barclays Global Macro Index; Credit Suisse Global Macro Hedge Fund Index; crisis alpha; conditional correlation; pension fund allocation; hedge fund index bias
 
-\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~1, PDF pp.~34--38, and chap.~4, pp.~100--101; the figures' underlying data were not obtained). Stability: draft. Currency: data to 2012 and September 2013.
+\qffield{Status} Verification: partly checked 2026-10-16 (Gliner's text, chap.~1, PDF pp.~34--38, and chap.~4, pp.~100--101; the figures' underlying data were not obtained; batch of 2026-10-17: own bounded test of the 2022--2026 public index data, reported in Pitfalls). Stability: draft. Currency: data to 2012 and September 2013; own test data January 2022 to July 2026.
 \end{qfevidence}
 
 \begin{qfmethod}[Macro position sizing and risk limits: Turtle-style volatility units, risk/reward targets, gap risk, VaR utilisation tied to year-to-date P\&L, stress tests, performance ratios and portfolio correlation, as Gliner describes them]\label{meth:macro-position-sizing-risk}

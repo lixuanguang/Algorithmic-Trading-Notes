@@ -34,6 +34,10 @@ Changed in migration slice 36, 2026-10-16 (a routing exception from the microstr
 
 - `data:holdings-insider-filing-lags`: Form 13F, Schedules 13D and 13G, Forms 3 and 4 deadlines in force on 15 October 2026, their 2024 change and what they imply for decision-time panels. Partly checked 2026-10-17, draft.
 
+Second batch of 2026-10-17:
+
+- `meth:bitemporal-reference-tables`: actual (valid) against record (transaction) time for identifiers, corporate actions and vendor corrections, from Fowler, with an own synthetic split-correction check. Partly checked 2026-10-17, draft.
+
 ## Source verification after slice 37
 
 Second slice-37 follow-up, 2026-10-16, working source gaps of slice 36 (source verification, not study): `data:trade-correction-records` narrowed (Daily TAQ v4.0: 01 records carry corrected data at the original time, 12 records the correction time and the original data; decision-time handling stated in the entry). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
@@ -44,15 +48,16 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:holdings-insider-filing-lags` resolved as a new entry in `research-engineering-validation/point-in-time-data.tex`: 17 CFR 240.13f-1, 13d-1, 13d-2, 16a-3 and 0-3 (eCFR, 15 October 2026), 15 U.S.C. 78p(a)(2) and the 2023 beneficial-ownership release (88 FR 76896), against Velu, Hardy and Nehren's pre-2024 footnotes; deadline arithmetic in `notes/artefacts/point-in-time-data/batch40-filing-checks.py`. `data:trade-correction-records` narrowed: Holden and Jacobsen's Internet Appendix (author-hosted) prints their July 2013 MTAQ program, which keeps only trades with correction code 00 and a positive price; their DTAQ code link returned 404 and the TAQ 10/11 record time is still unstated. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Audit repair: `data:holdings-insider-filing-lags` now keeps EDGAR acceptance, the official filing date (17 CFR 232.13: 5:30 p.m., 10 p.m. for Forms 3-5, 144, 13D, 13G), public dissemination and first-observed time apart, assumes no fixed post-acceptance delay, and keeps separate timestamps for amendments and later-released confidential information (15 U.S.C. 78m(f)(4); Rule 24b-2) (`batch50-filing-timestamp-checks.py`). Queue: `meth:bitemporal-reference-tables` resolved as a new entry (Fowler, 2021; own synthetic check); `ev:delisting-survivorship-rewriting` narrowed (Shumway's abstract from the BYU record; full text 403); `data:trade-correction-records` narrowed further (NYSE Daily TAQ spec v4.0: correction codes 00-12 and what records 01 and 12 carry). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-sources`, including López de Prado's release lags, backfilling and reinstatement of fundamental data); `meth:etf-trick` (`statistical-learning-foundations`); `pit:label-weight-leakage` (`financial-ml-evaluation`); `pit:backtest-cost-short-assumptions` (`backtest-inference`).
 
 ## Entry backlog
 
-- meth:bitemporal-reference-tables: valid time against transaction time for identifiers, corporate actions and vendor corrections (`s8-bitemporal`, unread).
-- ev:delisting-survivorship-rewriting: delisting returns, survivorship and vendor history rewriting (`wide-shumway-delisting`, `wide-elton-gruber-blake-survivorship`, `wide-ljungqvist-rewriting`, unread).
-- data:trade-correction-records: Holden and Jacobsen's Daily TAQ code (the excelmodeling.com link on Holden's page returned 404 on 2026-10-17), and the time carried by Daily TAQ 10 and 11 records; their Internet Appendix, read 2026-10-17, gives only the MTAQ filter (correction code 00, price > 0)
+- ev:delisting-survivorship-rewriting: (narrowed 2026-10-17: Shumway's abstract merged into `data:trading-reference-data`) Shumway's full text (BYU repository HTTP 403), Elton, Gruber and Blake, and Ljungqvist, Malloy and Marston (no open copy found; the CEPR version is restricted).
+- data:trade-correction-records: (narrowed further 2026-10-17: NYSE Daily TAQ Client Specification v4.0, sec. 3, correction codes and the times carried by 01 and 12 records) the time carried by 10 and 11 records, not stated in the specification; Holden and Jacobsen's DTAQ code (link 404 on 2026-10-17, not retried).
 
 ## Legacy candidate material
 

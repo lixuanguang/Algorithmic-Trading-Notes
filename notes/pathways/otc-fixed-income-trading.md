@@ -30,15 +30,18 @@ Written in migration slice 22, 2026-10-15:
 
 All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/otc-fixed-income-trading/derivations.tex`.
 
+## Source verification after slice 37
+
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `rule:eu-mifir-bond-transparency-level1` resolved by merge into `rule:us-eu-bond-transparency` (Regulation (EU) 2024/791, Art. 1(5)-(9); Delegated Regulation (EU) 2025/1246, OJ of 3 November 2025, Art. 8a deferral maxima, applying from 2 March 2026); `ev:credit-derivative-swap-trading-structure` narrowed (17 CFR 50.4 clearing classes, 37.9 and 37.10 SEF execution and MAT; trading shares unmeasured); `rule:uk-bond-transparency` blocked (FCA 403; legislation.gov.uk empty 202). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment` (`market-making-lob` and `execution-market-making`), `def:spread-measures` (`execution-market-making`), `def:best-execution` (`market-structure-execution-quality`), `meth:transaction-cost-analysis` and `def:portfolio-trading` (`execution-trading-costs`), `mech:etf-creation-redemption` (`etf-index-closing-execution`, with Pan and Zeng's corporate bond ETF evidence). The dealer-capacity theory of the guide's `bond-swap-dealer-market-making` pathway (no note yet) was not drawn on beyond the survey's account. None of these establishes fixed-income facts on its own.
 
 ## Entry backlog
 
-- ev:credit-derivative-swap-trading-structure: how index and single-name CDS and interest rate swaps trade (central clearing, swap execution facilities, dealer mediation, RFQ on SEFs), against the legacy claims that indices trade "more centrally than bespoke risk" and swaps "remain dealer-mediated because contracts differ"; needs dated CFTC and SEF sources and the swap readings.
-- rule:eu-mifir-bond-transparency-level1: the amended MiFIR text (Regulation (EU) 2024/791) on bond pre-trade transparency and deferral categories, and the Official Journal publication of the amending RTS 2; EUR-Lex returned an empty page on 2026-10-15.
-- rule:uk-bond-transparency: the U.K. bond transparency regime, kept separate from the EU's; not checked.
+- ev:credit-derivative-swap-trading-structure: (narrowed 2026-10-17: CFTC clearing and SEF execution rules merged into `def:fixed-income-market-structure`) current made-available-to-trade determinations and measured shares of dealer-to-client RFQ and order-book trading; the swap readings.
+- rule:uk-bond-transparency: the U.K. bond transparency regime (FCA PS24/14 and Handbook MAR 11), kept separate from the EU's; blocked on 2026-10-17 (FCA HTTP 403, legislation.gov.uk empty response).
 
 ## Legacy candidate material
 

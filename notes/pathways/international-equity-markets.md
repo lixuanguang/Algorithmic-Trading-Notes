@@ -40,13 +40,15 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:equity-index-lists-current` narrowed: NSE's methodology of September 2026 (Nifty 50, float-adjusted capitalisation-weighted) and Borsa Istanbul's ground rules of April 2020 (free-float weighting, capped variants) were read into `def:equity-indices-derivatives`. Failed routes, not repeated blindly: IDX (HTTP 403 again), S&P DJI methodologies (403, also through the fetching tool), stoxx.com (TLS certificate not verifiable; not forced), Euronext (403), and the Hang Seng address tried (404). The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `data:equity-index-lists-current` narrowed further (Hang Seng Index methodology v2.3, July 2023). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:equity-index-valuation` (`cross-asset-style-premia`); `def:vix-variance-dividend-swaps` (`vix-correlation-dividends`); `mech:etf-creation-redemption` (`etf-index-closing-execution`).
 
 ## Entry backlog
 
-- data:equity-index-lists-current: index providers' current methodologies for the rest of Gliner's Table 8.1: the Jakarta Composite (IDX, HTTP 403 on 2026-10-16 and 2026-10-17), the S&P and Dow Jones indices (S&P DJI, 403), Euro Stoxx 50 and DAX (stoxx.com certificate not verifiable), CAC 40 and AEX (Euronext, 403), Hang Seng, KOSPI, ASX 200, NZX 50, Shanghai Composite, Bovespa, Mexico IPC, Nasdaq, Russell 2000, FTSE 100, FTSE MIB and IBEX 35; JASDAQ, MOEX, the Nikkei 225, TOPIX, FTSE/JSE, FT Wilshire 5000, Nifty 50 and BIST were read
+- data:equity-index-lists-current: index providers' current methodologies for the rest of Gliner's Table 8.1: the Jakarta Composite (IDX, HTTP 403 on 2026-10-16 and 2026-10-17), the S&P and Dow Jones indices (S&P DJI, 403 again on a second URL, 2026-10-17), Euro Stoxx 50 and DAX (stoxx.com no response), CAC 40 and AEX (Euronext, 403 again), KOSPI, ASX 200, NZX 50, Shanghai Composite, Bovespa, Mexico IPC, Nasdaq, Russell 2000, FTSE 100, FTSE MIB and IBEX 35; JASDAQ, MOEX, the Nikkei 225, TOPIX, FTSE/JSE, FT Wilshire 5000, Nifty 50, BIST and (2026-10-17) the Hang Seng Index were read.
 
 ## Legacy candidate material
 

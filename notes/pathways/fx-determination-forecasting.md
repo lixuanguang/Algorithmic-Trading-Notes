@@ -34,6 +34,8 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:fx-valuatio
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` empirically tested for one factor, relative PPP (own bounded test, protocol fixed before computing; `notes/artefacts/fx-determination-forecasting/fx_ppp_oos_test.py`, results and panel beside it): for nine currencies against the dollar, 1985 to 2021-2026, the real-exchange-rate deviation has the expected sign in-sample but loses to a random walk out of sample (pooled 12-month OOS R^2 -15.3 percent), and a cheap-minus-dear portfolio earns about zero; written into `meth:fx-valuation-signals`. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` repaired and retested (v2; v1 kept): outcomes now need only spot rates, CPI must be exactly two months old (monthly) or four to six months past its quarter (AUD, NZD), and ages and effective endpoints are reported (JPY August 2021; others May-September 2025). Pooled 12-month OOS R^2 -14.9% (was -15.3%), Clark-West t -0.3; the value portfolio is labelled a statistical return on monthly averages, not executable. Neither pass rule is met. Focused checks: `batch50-fx-checks.py`. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:fx-carry-trade` (`fx-premia`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`).

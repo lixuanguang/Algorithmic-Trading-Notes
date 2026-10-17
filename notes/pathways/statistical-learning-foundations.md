@@ -50,15 +50,16 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Audit repair: `meth:purged-embargoed-cross-validation` now presents López de Prado's performance plateau as a source heuristic, not proof of no leakage, lists leakage that does not grow with k, and keeps the overlap and endpoint corrections; information provenance and a time-valid evaluation remain necessary. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:transaction-clock-normality` narrowed (Murphy and Izzeldin's working paper merged); `ev:meta-labelling-performance` unchanged (no open out-of-sample evaluation found (arXiv, Crossref and web searched); Joubert's journal articles are paywalled); `meth:fractional-integration-tests` resolved (MacKinnon and Nielsen's working paper merged into the fractional-differentiation entry). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `pit:label-weight-leakage` (`financial-ml-evaluation`); `def:financial-data-types` (`alternative-data-sources`); `data:trading-reference-data`, `data:market-data-levels`, `data:derived-market-statistics` (`point-in-time-data`); `mod:pca-risk-distribution-weights` (`portfolio-construction`); `pit:parameter-overfitting` (`backtest-inference`); `meth:strategy-production-lifecycle` (`model-governance-controls`).
 
 ## Entry backlog
 
-- ev:transaction-clock-normality: evidence on returns sampled by trades, volume or dollars (Clark 1973, Ané and Geman 2000, whose paper was not read beyond its abstract, and the replication critique of Murphy and Izzeldin, working paper 2006, read only by the slice-32 review).
-- ev:meta-labelling-performance: whether meta-labelling improves precision, F1 or after-cost results out of sample (no source identified; López de Prado's claims are unsupported in chap. 3).
-- meth:fractional-integration-tests: testing a fractionally differenced series against fractional rather than unit-root alternatives (MacKinnon and Nielsen 2014, listed by López de Prado; unread).
+- ev:transaction-clock-normality: (narrowed in the third batch of 2026-10-17) evidence on returns sampled by trades, volume or dollars (Clark 1973, Ané and Geman 2000, whose paper was not read beyond its abstract, and the replication critique of Murphy and Izzeldin, working paper 2006, read only by the slice-32 review).
+- ev:meta-labelling-performance: (unchanged in the third batch of 2026-10-17) whether meta-labelling improves precision, F1 or after-cost results out of sample (no source identified; López de Prado's claims are unsupported in chap. 3).
 
 ## Legacy candidate material
 

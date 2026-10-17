@@ -36,13 +36,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): `ev:regime-asset-responses-tested` repaired (v2; v1 kept): the ex-post NBER window is stated as any overlap (v1) with an all-months sensitivity; the dollar is tested on the goods-only index to 2019 (primary) and on the goods-and-services index from 2006, the v1 splice reported with its definition break; real-time and ex-post blocks separated; Newey-West (4) t and episode counts added. Real time: no sign passes (goods-only dollar +1.1%, t = 1.98). Ex post: on all-months windows the yield and Baa-spread signs pass Welch |t| > 2, so 'no ex-post sign reaches the threshold' now holds only for any-overlap windows with Welch t. Focused checks: `batch50-regime-checks.py`. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:regime-asset-responses-tested` tested (the inflation-shock row tested on real-time CPI vintages under a protocol with two recorded deviations: no response supported). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:global-macro-strategy` (`multi-asset-systematic-macro`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- ev:regime-asset-responses-tested: test the other rows of the regime map (growth, inflation, deflation, liquidity, geopolitical) and Gliner's Figure 8.3 sector phases on regimes classified with real-time data, and the recession row with other real-time rules, horizons, commodities and non-U.S. assets; the recession row was tested on 2026-10-17 with a real-time Sahm-type rule (no sign supported; `def:macro-regime-asset-map`)
+- ev:regime-asset-responses-tested: (tested within stated bounds in the third batch of 2026-10-17) test the other rows of the regime map (growth, inflation, deflation, liquidity, geopolitical) and Gliner's Figure 8.3 sector phases on regimes classified with real-time data, and the recession row with other real-time rules, horizons, commodities and non-U.S. assets; the recession row was tested on 2026-10-17 with a real-time Sahm-type rule (no sign supported; `def:macro-regime-asset-map`)
 
 ## Legacy candidate material
 

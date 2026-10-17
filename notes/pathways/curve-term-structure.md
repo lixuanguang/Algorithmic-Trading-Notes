@@ -40,13 +40,15 @@ Audit note of 2026-10-16 (`meth:curve-trades-carry-rolldown`): the episode rule 
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:curve-inversion-after-2005` deferral retained: NBER's chronology (data last updated 14 March 2023) still ends with the February 2020 peak and April 2020 trough, so the provisional outcomes are unchanged. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:curve-inversion-after-2005` deferred (trigger review: no NBER peak after February 2020; 24 of the 27 months lie beyond the longest past announcement lag, 3 months and both episodes within it; retained). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:duration-convexity` (`rates-credit-mortgages`); `mod:forward-rates-fra` (`rates-credit-mortgages`); `conv:government-bond-futures` (`futures-execution`).
 
 ## Entry backlog
 
-- ev:curve-inversion-after-2005: revisit the post-2005 outcomes once NBER dates a peak after February 2020 or the provisional horizons complete: on H.15 data (bond-equivalent bill, 2026-10-16) 27 of 43 inverted expansion months, the episodes 2022-11 to 2024-11 and 2025-03 to 2025-04, have no dated recession and incomplete or unevaluated twelve-month horizons
+- ev:curve-inversion-after-2005: (deferral trigger reviewed in the third batch of 2026-10-17) revisit the post-2005 outcomes once NBER dates a peak after February 2020 or the provisional horizons complete: on H.15 data (bond-equivalent bill, 2026-10-16) 27 of 43 inverted expansion months, the episodes 2022-11 to 2024-11 and 2025-03 to 2025-04, have no dated recession and incomplete or unevaluated twelve-month horizons
 
 ## Legacy candidate material
 

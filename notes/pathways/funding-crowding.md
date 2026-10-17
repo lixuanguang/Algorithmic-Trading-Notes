@@ -36,14 +36,16 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `ev:august-2007-quant-unwind` resolved by merge into `def:common-investor-contagion` (Khandani and Lo, NBER WP 14465: July-December unwinding, the 1 and 6 August unwinds, market-making losses in the week of 6 August, reversal on 10 August); `mod:volatility-targeting-deleveraging` narrowed (Moreira and Muir's volatility-managed portfolios and Pedersen's risk-management spiral merged; Narang's 1.5-2 times estimate unverified); `meth:overlap-crowding-measure` narrowed (Pedersen gives overlap as mechanism, no measure; Chincarini et al. not obtained). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `mod:volatility-targeting-deleveraging` narrowed (the ECB's May 2020 box on volatility-targeting strategies merged into `def:common-investor-contagion`); `meth:overlap-crowding-measure` narrowed (Chincarini, Lazo-Paz and Moneta's abstract (open access, but the publisher refused automated retrieval) merged into `def:common-investor-contagion`; their holdings measure unread). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here and not changed: `res:arbitrage-risks` (`execution-market-making`; staying power under leverage, LTCM); `def:quant-strategy-risk-sources` (`model-governance-controls`); `ev:square-root-impact` (`price-impact-execution`); `mech:futures-margin-settlement` (`futures-execution`); `def:securities-lending-fee-rebate` (`money-markets-repo-lending`). Kept distinct: the `backtest-inference` stub `ev:signal-decay-crowding`, which asks whether delayed-signal decay identifies crowding, a question that common positions and forced liquidation do not answer.
 
 ## Entry backlog
 
-- mod:volatility-targeting-deleveraging: (narrowed 2026-10-17: Moreira and Muir, NBER WP 22208, and Pedersen, NBER WP 15297, merged into `def:common-investor-contagion`) evidence on how much volatility-targeted capital existed and deleveraged together, and on Narang's 1.5-2 times leverage estimate (`risk-parity-vol-targeting` readings).
-- meth:overlap-crowding-measure: (narrowed 2026-10-17: Pedersen discusses overlap without a measure) a holdings-overlap measure (`w4-chincarini-crowded-anomalies`, paywalled; 13F-based overlap would need the data-set structure in `wide-sec-13f-nport`).
+- mod:volatility-targeting-deleveraging: (narrowed in the third batch of 2026-10-17) (narrowed 2026-10-17: Moreira and Muir, NBER WP 22208, and Pedersen, NBER WP 15297, merged into `def:common-investor-contagion`) evidence on how much volatility-targeted capital existed and deleveraged together, and on Narang's 1.5-2 times leverage estimate (`risk-parity-vol-targeting` readings).
+- meth:overlap-crowding-measure: (narrowed in the third batch of 2026-10-17) (narrowed 2026-10-17: Pedersen discusses overlap without a measure) a holdings-overlap measure (`w4-chincarini-crowded-anomalies`, paywalled; 13F-based overlap would need the data-set structure in `wide-sec-13f-nport`).
 
 ## Legacy candidate material
 

@@ -28,14 +28,20 @@ Written in migration slice 23, 2026-10-15:
 
 Verification partly checked 2026-10-15, stability draft; human review outstanding. The numerical checks are `synthetic_short_checks.py` beside the artefact, which is `notes/artefacts/synthetic-equity-cfd-trs/derivations.tex`, which keeps the whole legacy file, including the blocks routed to `money-markets-repo-lending`.
 
+Written in the third batch of 2026-10-17 (source verification and bounded checks, not study or human review):
+
+- `ev:empty-voting-equity-derivatives`: Hu and Black's decoupling and the SEC's 2023 beneficial-ownership release. Partly checked 2026-10-17, draft; human review outstanding.
+
+## Source verification after slice 37
+
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:empty-voting-equity-derivatives` resolved (new entry `ev:empty-voting-equity-derivatives` from Hu and Black and the SEC's 2023 release); `ev:option-implied-borrow-cost` resolved (Ofek, Richardson and Whitelaw (NBER WP 9423) merged into `res:synthetic-short-put-call`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mech:securities-lending-short-sale`, `def:securities-lending-fee-rebate`, `def:street-name-beneficial-ownership` (`money-markets-repo-lending`); `res:option-market-maker-spreads`, `meth:option-spread-measurement` (`options-execution`); `def:arbitrage`, `res:arbitrage-risks` (`execution-market-making`).
 
 ## Entry backlog
 
-- ev:empty-voting-equity-derivatives: decoupling of votes from economic ownership through equity swaps and options (Hu–Black), and beneficial-ownership disclosure of cash-settled derivatives under the 2023 SEC rule (`cfd-sec-13d-2023`); kept apart from securities-lending vote transfer.
-- ev:option-implied-borrow-cost: whether and how scarce borrow is priced into put–call parity deviations; needs an empirical source.
 
 ## Legacy candidate material
 

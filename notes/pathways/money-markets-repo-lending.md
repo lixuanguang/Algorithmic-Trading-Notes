@@ -46,13 +46,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `rule:us-short-sale-margin-and-price-test` resolved by merge into `mech:securities-lending-short-sale` (12 CFR 220.12(c): 150 percent; FINRA Rule 4210(c)(2)-(3); Rule 201's 10 percent trigger and NBB restriction for the day and the next); `ev:securities-lending-fees-evidence` resolved by merge into `def:securities-lending-fee-rebate` (Sikorskaya, author version of 27 April 2026, Table 1: general collateral 0.39 percent, specials 5.61 percent mean near the Russell cutoff, 2006-2018). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `data:post-libor-funding-stress-measures` deferred (trigger review: still no free official dated SOFR OIS series; retained). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:broker-agency-conflicts` (`market-structure-execution-quality`); `res:arbitrage-risks` (`execution-market-making`); `mech:futures-margin-settlement` (`futures-execution`).
 
 ## Entry backlog
 
-- data:post-libor-funding-stress-measures: which spreads research studies, beyond the OFR's index, use in LIBOR-OIS's place, and a dated series of the 3-month commercial paper minus SOFR OIS spread itself; the OFR's June 2023 replacement of its funding variables, its daily index and the Fed's May 2026 Financial Stability Report were read on 2026-10-16
+- data:post-libor-funding-stress-measures: (deferral trigger reviewed in the third batch of 2026-10-17) which spreads research studies, beyond the OFR's index, use in LIBOR-OIS's place, and a dated series of the 3-month commercial paper minus SOFR OIS spread itself; the OFR's June 2023 replacement of its funding variables, its daily index and the Fed's May 2026 Financial Stability Report were read on 2026-10-16
 
 ## Legacy candidate material
 

@@ -38,9 +38,15 @@ Written in migration slice 37, 2026-10-16, from the legacy macro chapter:
 
 Changed in slice 37 (merges): `mod:forward-rates-fra` (FRA market notation, Gliner's fixing-date and convexity remarks corrected); `mod:duration-convexity` (DV01, the legacy convexity formula, which dropped the price, and negative convexity). The slice's other rates entries are owned by `monetary-policy-curve` (`def:central-bank-policy-framework`, `mod:taylor-rule`, `rule:major-central-banks-current`, `meth:policy-path-ois-futures`), `curve-term-structure` (`meth:curve-trades-carry-rolldown`), `rates-inflation` (`def:tips-breakevens`) and `rate-derivatives` (`def:interest-rate-swaps`), all in `compendium/rates-credit-mortgages/monetary-policy-curves.tex`.
 
+Written in the third batch of 2026-10-17 (source verification and bounded checks, not study or human review):
+
+- `mod:multi-curve-fra-swap-valuation`: FRA and swap valuation with separate projection and discount curves, with own checks (`batch60-multicurve-check.py`). Partly checked 2026-10-17, draft; human review outstanding.
+
 ## Source verification after slice 37
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:fixed-income-market-size` resolved (SIFMA Fact Book highlights: global fixed-income debt $160.7 trillion and equity market capitalisation $157.8 trillion in 2025; the legacy's ranking found ill-posed). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `rule:otc-derivatives-reforms` narrowed (U.S. rules resolved (17 CFR 23.150-161, 43.3, 45.3) and merged into `mech:otc-clearing-collateral`; BCBS-IOSCO, prudential regulators and EMIR unread); `mod:multi-curve-fra-swap-valuation` resolved (new entry `mod:multi-curve-fra-swap-valuation` from Hull, with own checks); `ev:term-premia` resolved (Adrian, Crump and Moench and the New York Fed's file summarised and merged into `mod:forward-rates-fra`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
 ## Related entries owned elsewhere
 
@@ -48,9 +54,7 @@ Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry
 
 ## Entry backlog
 
-- rule:otc-derivatives-reforms: the primary rules behind Hull's account (U.S. swap execution and clearing mandates, swap data reporting, and the uncleared-margin framework phased in from 2016), with jurisdictions, scope and dates (`gap-gregory5` and the rule texts, unread).
-- mod:multi-curve-fra-swap-valuation: FRA and swap valuation with separate projection and discounting curves and backward-looking compounded SOFR, replacing the single-curve illustration (`s6-brigo`, `gap-rates-sofr-futures-hedging`, unread).
-- ev:term-premia: estimates of term premia that decide between expectations and liquidity-preference accounts (`exp-adrian-crump-moench-term-structure`, unread); home pathway `curve-term-structure`.
+- rule:otc-derivatives-reforms: (narrowed in the third batch of 2026-10-17) the primary rules behind Hull's account (U.S. swap execution and clearing mandates, swap data reporting, and the uncleared-margin framework phased in from 2016), with jurisdictions, scope and dates (`gap-gregory5` and the rule texts, unread).
 
 ## Legacy candidate material
 

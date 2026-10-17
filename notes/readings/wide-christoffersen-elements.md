@@ -2,7 +2,7 @@
 key: wide-christoffersen-elements
 pathways: [risk-tail-systemic]
 version: Peter F. Christoffersen, Elements of Financial Risk Management, 2nd ed., Academic Press 2012, as catalogued. Copy used: a local PDF outside the repository; text layer; PDF page numbers
-sections: chap. 2 (overview, sec. 2.1), chap. 6 (FHS), chap. 8 (overview), chap. 13 (unconditional coverage)
+sections: chap. 2 (overview, sec. 2.1), chap. 6 (FHS), chap. 8 (overview), chap. 13 (unconditional coverage); third batch of 2026-10-17: chap. 4, pp. 70-71 (GARCH and RiskMetrics), for `mod:garch-volatility-forecast`
 read:
 status: draft
 ---

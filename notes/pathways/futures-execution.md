@@ -53,13 +53,15 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): Audit correction: `conv:government-bond-futures` now gives the Ultra Bond's intermonth-spread tick, a quarter of a 32nd ($7.8125; CBOT Rule 40102.C), beside its outright 32nd ($31.25); the value is checked in `notes/artefacts/execution-market-making/source-followup-checks-2.py`, section 1. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:futures-tick-size-evidence` narrowed (Dayri and Rosenbaum: ten futures in 2009 all large-tick (one-tick spreads for 72.7 to 99.6 percent of trades); merged into `res:spread-determinants`; the equity comparison and depth unchecked). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).
 
 ## Entry backlog
 
-- ev:futures-tick-size-evidence: whether futures "often" have economically large ticks relative to comparable equities, with bounce and larger displayed depth, as the legacy principle claimed; only the general large-tick mechanism (Lehalle and Laruelle, pp. 144–148) was checked.
+- ev:futures-tick-size-evidence: (narrowed in the third batch of 2026-10-17) whether futures "often" have economically large ticks relative to comparable equities, with bounce and larger displayed depth, as the legacy principle claimed; only the general large-tick mechanism (Lehalle and Laruelle, pp. 144–148) was checked.
 
 ## Legacy candidate material
 

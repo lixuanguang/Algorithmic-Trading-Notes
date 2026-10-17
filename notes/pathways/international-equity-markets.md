@@ -42,13 +42,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `data:equity-index-lists-current` narrowed further (Hang Seng Index methodology v2.3, July 2023). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `data:equity-index-lists-current` narrowed (DJIA, Russell 2000, FTSE 100, EURO STOXX 50 and DAX rules read and merged into `def:equity-indices-derivatives`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:equity-index-valuation` (`cross-asset-style-premia`); `def:vix-variance-dividend-swaps` (`vix-correlation-dividends`); `mech:etf-creation-redemption` (`etf-index-closing-execution`).
 
 ## Entry backlog
 
-- data:equity-index-lists-current: index providers' current methodologies for the rest of Gliner's Table 8.1: the Jakarta Composite (IDX, HTTP 403 on 2026-10-16 and 2026-10-17), the S&P and Dow Jones indices (S&P DJI, 403 again on a second URL, 2026-10-17), Euro Stoxx 50 and DAX (stoxx.com no response), CAC 40 and AEX (Euronext, 403 again), KOSPI, ASX 200, NZX 50, Shanghai Composite, Bovespa, Mexico IPC, Nasdaq, Russell 2000, FTSE 100, FTSE MIB and IBEX 35; JASDAQ, MOEX, the Nikkei 225, TOPIX, FTSE/JSE, FT Wilshire 5000, Nifty 50, BIST and (2026-10-17) the Hang Seng Index were read.
+- data:equity-index-lists-current: (narrowed in the third batch of 2026-10-17) index providers' current methodologies for the rest of Gliner's Table 8.1: the Jakarta Composite (IDX, HTTP 403 on 2026-10-16 and 2026-10-17), the S&P and Dow Jones indices (S&P DJI, 403 again on a second URL, 2026-10-17), Euro Stoxx 50 and DAX (stoxx.com no response), CAC 40 and AEX (Euronext, 403 again), KOSPI, ASX 200, NZX 50, Shanghai Composite, Bovespa, Mexico IPC, Nasdaq, Russell 2000, FTSE 100, FTSE MIB and IBEX 35; JASDAQ, MOEX, the Nikkei 225, TOPIX, FTSE/JSE, FT Wilshire 5000, Nifty 50, BIST and (2026-10-17) the Hang Seng Index were read.
 
 ## Legacy candidate material
 

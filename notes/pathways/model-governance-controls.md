@@ -49,11 +49,18 @@ Changed in the slice-30 follow-up, 2026-10-15: embargo and paper trading are pla
 - `mech:order-state-reconciliation`: FIX OrderStatusRequest, OrderMassStatusRequest, ExecutionReport states, ResendRequest, SequenceReset and possible-duplicate flags, arranged as a documented method; offline illustration only. Partly checked 2026-10-17, draft.
 - `ev:quant-implementation-failures`: Knight Capital (2012) and AXA Rosenberg (2007-2010) from the SEC orders, with the differences from Narang's account. Partly checked 2026-10-17, draft.
 
+Written in the third batch of 2026-10-17 (source verification and bounded checks, not study or human review):
+
+- `meth:strategy-promotion-criteria`: promotion and conditional approval under PRA SS1/23 and SR 26-2. Partly checked 2026-10-17, draft; human review outstanding.
+- `meth:discretionary-override-governance`: model overrides and post-model adjustments under the same texts. Partly checked 2026-10-17, draft; human review outstanding.
+
 ## Source verification after slice 37
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): Three stubs resolved as new entries in `research-engineering-validation/trading-controls.tex`. `rule:mifid-rts6-algorithmic-controls`: Delegated Regulation 2017/589 through CELLAR (Arts. 5-17 and 29; no amending act, one German-only corrigendum); `meth:automated-trading-operational-controls` now says so in place of its 'EU text could not be retrieved'. `ev:quant-implementation-failures`: the SEC's Knight (34-70694) and AXA Rosenberg (33-9181) orders, read in Internet Archive captures because sec.gov refused automated retrieval, against Narang's account (his 30 minutes and $400 million against the order's 45 minutes and over $460 million). `mech:order-state-reconciliation`: FIX status requests, execution reports and resend flags from the FIX Trading Community's Orchestra files (FIX Latest EP312, FIXT EP247, commit cd24169), RTS 6 Art. 17(3), with an offline illustration in `notes/artefacts/model-governance-controls/batch40-reconciliation-check.py`. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Audit repair: `mech:order-state-reconciliation` and `batch40-reconciliation-check.py` corrected: a fully filled order is no longer a resubmission candidate. Reconciled state, remaining authorised quantity and a valid intent are separate, with cases for a filled order, a partially filled cancelled order (valid and withdrawn intent), Pending Cancel, duplicate reports and a missing execution; still an offline synthetic illustration. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `meth:strategy-promotion-criteria` resolved (new entry `meth:strategy-promotion-criteria` from PRA SS1/23 and SR 26-2); `meth:discretionary-override-governance` resolved (new entry `meth:discretionary-override-governance` from PRA SS1/23 and SR 26-2). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
 ## Related entries owned elsewhere
 
@@ -61,9 +68,7 @@ Cross-referenced, not owned here: `def:automated-trading-architecture` (model ac
 
 ## Entry backlog
 
-- meth:strategy-promotion-criteria: evidence, owners and records for promoting a strategy from backtest to embargo, paper trading and production, for re-allocating and for decommissioning, against López de Prado's unquantified stages (`s8-governance`, `wide-pra-ss123`, unread).
 
-- meth:discretionary-override-governance: who may override or switch off a model, on what evidence, with what record and review, against Narang's "discretionary overrides" for exogenous shocks (`s8-governance`, `w4-simonian-model-governance`, unread).
 
 ## Legacy candidate material
 

@@ -32,15 +32,17 @@ Partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/ar
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `meth:alternative-dataset-assessment` unchanged and blocked: Monk, Prins and Rook (CAIA copy 404; Stanford page links SSRN, which refuses automated retrieval) and Kolanovic and Krishnamachari (no public authorised copy) not obtained. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:alternative-data-edge-decay` narrowed (Dessaint, Foucault and Frésard and Farboodi and Veldkamp read at abstract level and merged); `ev:holdings-insider-ratings-signals` narrowed (Cohen, Malloy and Pomorski (abstract and sec. I) merged). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `data:trading-reference-data`, `data:market-data-levels`, `data:derived-market-statistics` (`point-in-time-data`); `meth:activity-sampled-bars` (`statistical-learning-foundations`).
 
 ## Entry backlog
 
-- ev:alternative-data-edge-decay: evidence on how an alternative dataset's predictive value falls as access spreads, and on short-horizon data crowding out long-horizon forecasting (`rf-katona-painter-patatoukas-zeng-2025`, `rf-dessaint-foucault-fresard-2024`, `rf-farboodi-veldkamp-2020`, unread).
+- ev:alternative-data-edge-decay: (narrowed in the third batch of 2026-10-17) evidence on how an alternative dataset's predictive value falls as access spreads, and on short-horizon data crowding out long-horizon forecasting (`rf-katona-painter-patatoukas-zeng-2025`, `rf-dessaint-foucault-fresard-2024`, `rf-farboodi-veldkamp-2020`, unread).
 - meth:alternative-dataset-assessment: coverage, history, release lag, vendor backfill and incremental information over consensus, as the checkpoint asks (`wide-kolanovic-big-data`, `rf-monk-prins-rook-2019`; blocked on 2026-10-17: CAIA copy HTTP 404, SSRN 403, no authorised copy of the J.P. Morgan report).
-- ev:holdings-insider-ratings-signals: whether 13F holdings changes, insider trades and rating downgrades predict returns, which Velu, Hardy and Nehren assert with hedges (no reading of this pathway covers it; source to identify).
+- ev:holdings-insider-ratings-signals: (narrowed in the third batch of 2026-10-17) whether 13F holdings changes, insider trades and rating downgrades predict returns, which Velu, Hardy and Nehren assert with hedges (no reading of this pathway covers it; source to identify).
 
 ## Legacy candidate material
 

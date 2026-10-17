@@ -1,0 +1,8 @@
+NBER peak announcement lags (months): 1980-01: 5, 1981-07: 6, 1990-07: 9, 2001-03: 8, 2007-12: 12, 2020-02: 4; max 12
+negative complete months from 2022-11: 27 (2022-11 .. 2025-04)
+(1) window complete and (2) beyond the longest past lag: 24 months (2022-11 .. 2024-10)
+(1) window complete, (2) still within the longest past lag: 3 months: 2024-11, 2025-03, 2025-04
+window not yet complete: 0 months: none
+episode 2022-11 .. 2024-11 (25 months): window to 2025-11 complete; dating within the longest past lag
+episode 2025-03 .. 2025-04 (2 months): window to 2026-04 complete; dating within the longest past lag
+checks passed

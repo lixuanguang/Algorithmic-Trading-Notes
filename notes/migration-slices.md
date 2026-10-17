@@ -4473,3 +4473,156 @@ Clean `latexmk -pdf compendium.tex` after `latexmk -C`: exit 0, 307 pages. Seven
 - The global macro test's data choices, and that only 2022--2026 was available.
 - Lo's eq. (5) reading; the Avellaneda--Stoikov ask after the 2025 preprint.
 - Sources read from course pages, author hosts and OCR.
+
+## Third batch of 17 October 2026: six audit repairs and a 60-item queue
+
+Starting state checked: `main` at `12e634a`, equal to `origin/main`; guide pin `343d145` (unchanged); 228 entries, all draft; no legacy block. This is source verification and bounded empirical testing, not study or human review: every entry stays *draft*, no mastery or consolidation date is set, and verification statuses were extended only for the passages read. Earlier records are left as written; where they differ, this record supersedes them. Protocols for the empirical extensions were written before the results were computed and are committed with them, so none is a preregistration.
+
+### Stage 1: audit repairs
+
+1. **Filing availability** (`data:holdings-insider-filing-lags`; `batch50-filing-timestamp-checks.py`, corrected in place). The second batch's fallback, the start of the next business day, was not conservative: EDGAR's *Determine the Status of My Filing* page (dated 4 June 2024, reviewed 31 October 2024; Internet Archive capture of 5 October 2026, sec.gov refusing automated retrieval) gives after-cutoff submissions a 6:00 a.m. filing date on the next business day and dissemination only "the next business day", with no time. Availability is now the recorded dissemination time, else the first-observed time, else unknown (the record does not enter the panel). A separate lower bound (acceptance, or 6:00 a.m. on the next business day after holidays for after-cutoff forms outside the same-day list) only detects look-ahead. The check adds a holiday case, a Form 4 before 10 p.m., a Schedule 13D/A and a first observation earlier than the bound, flagged as a data error.
+2. **FIX Done for Day** (`mech:order-state-reconciliation`; `batch40-reconciliation-check.py`, corrected in place). OrdStatus 3 was treated as terminal. FIX 4.4's state matrices (OnixS reprint of Appendix D, scenarios A.1.b and H.1.a) show a GTC order continuing after Done for Day and being restated the next day (ExecRestatementReason 1, GT renewal). Terminal states are now Filled, Canceled, Rejected and Expired; Done for Day ends the lifetime only for a Day order where the venue's rule says so (a named configuration flag). New cases: a GTC order with Done for Day and zero leaves (not released), and a Day order.
+3. **Expected shortfall** (`meth:var-es-estimation-methods`, Notation; new `batch60-es-discrete-check.py`). ES is now defined as the quantile integral $\mathrm{ES}_p=\frac1p\int_0^p\mathrm{VaR}_u\,du$ (Acerbi and Tasche, 2001), which differs from the tail conditional expectation when the distribution has an atom at the quantile. Example: a loss of 100 with probability 0.005 at $p=1\%$ gives VaR $=0$ and ES $=50$.
+4. **Sharpe asymptotics** (`meth:sharpe-ratio-standard-error`; new `batch60-sharpe-zero-check.py`). A finite fourth moment is sufficient, not necessary: at $SR=0$ the Slutsky argument needs only finite variance. Student-$t_3$ returns at $SR=0$ give a scaled variance of 0.990 (Monte Carlo) and a tail rejection rate of 0.0483 at 5 percent; a non-normal three-point law with skewness 0 and kurtosis 3 gives $T\operatorname{Var}=1.113$ against the normal-moment $1+SR^2/2=1.125$, so normal moments, not normality, are what the simple formula needs. "Only then" was qualified accordingly.
+5. **GIPS benchmark exception** (`meth:gips-composite-presentation`). Provision 4.A.1(e) lets a composite present no benchmark when no appropriate one exists, with the reason disclosed under 4.C.31 (PDF pp. 39 and 47, printed pp. 21 and 29); the parallel provisions for pooled funds and asset owners (5.C.30, 6.A.1(e), 6.C.26, 7.C.26, 8.D.4, 8.F.4, 8.H.1) are listed.
+6. **Global macro from 2014** (`ev:global-macro-returns-after-2013`; target 27). The BarclayHedge workbook was obtained through the site's public Excel download form (an HTTP POST; SHA-256 `ead890c4…`, matching the audit). The registered window, January 2014 to July 2026 (151 months), gives 53 down months for the benchmark, a mean index return in them of $-0.5217$ percent ($t=-2.9952$, the audit's values), correlation $+0.42$ (CI 0.17 to 0.62). Crisis protection is not supported, more firmly than in 2022--2026, which is kept. The statements that the window needed registration are corrected. Revision check: 0 of the 55 overlapping months differ from the earlier page; the index's weighting and backfill rules are not public. Script `global_macro_down_months_2014_test.py`; v1 (`global_macro_down_months_test.py`) unchanged and reproduced.
+
+### Statements superseded
+
+- The next-business-day availability fallback (second batch, item 8) is superseded by Stage 1, item 1.
+- "Done for Day is terminal" in the second batch's reconciliation check is superseded by Stage 1, item 2.
+- The second batch's ES notation (tail expectation without the atom correction) is superseded by Stage 1, item 3.
+- "Only then" for the fourth-moment condition (second batch, item 4) is qualified by Stage 1, item 4.
+- "The window from 2014 needs the history behind registration" (second batch, item 19) is superseded: the workbook is public through a form.
+- In `def:crypto-venue-instrument-structure`, "fewer venues and strikes … not checked" is replaced by the one-venue snapshot (target 34). In the Hawkes entry, "the same stability condition holds" is qualified to $\int|h|<1$ (target 10). In `def:block-trade`, "exchange cross rules … remain open" is replaced by NYSE Rule 127 (target 9).
+
+### The 60-item queue
+
+Outcome per identifier. Wording is short; the entries and pathway notes carry the locators.
+
+*A. Index, contract and record data (4)*
+1. `data:equity-index-lists-current`, narrowed: DJIA, Russell 2000, FTSE 100, EURO STOXX 50 and DAX rules read and merged into `def:equity-indices-derivatives`.
+2. `conv:henry-hub-contract-terms`, narrowed: a scan of 281 NYMEX filings on the CFTC's listing (September 2019 to October 2026) found one Henry Hub futures filing, Submission 20-166 (spot-month limit), and no Chapter 220 text amendment.
+3. `data:trade-correction-records`, narrowed: three earlier Daily TAQ specifications define the correction records alike and give no time for them; Holden and Jacobsen's code archive returns 404.
+31. `data:historical-borrow-availability`, narrowed: Nasdaq's daily Regulation SHO threshold files (public from January 2005) merged into `data:derived-market-statistics`; no public point-in-time borrow-fee source found.
+
+*B. Market structure, regulation and execution (12)*
+4. `res:trade-sign-accuracy`, unchanged: open versions of Ellis, Michaely and O'Hara and of the later accuracy studies were searched for and not found.
+6. `ev:circuit-breaker-effects`, narrowed: Chen, Gao, He, Jiang and Xiong on Shenzhen daily price limits (NBER WP 24014, abstract and sec. 1) merged into `mech:circuit-breakers-trading-halts`.
+7. `ev:dark-pool-price-discovery`, narrowed: the published version's abstract (Financial Management 2022) adds 2020: dark pools improve spreads in 2009 but worsen market quality for large caps in 2020; full text not obtained.
+8. `rule:spoofing-securities-markets`, narrowed: FINRA Regulatory Notice 17-22 read: Rule 5210.03 has no express intent element and supports an expedited cease-and-desist order; enforcement actions unread.
+9. `rule:block-print-trade-through-current`, narrowed: NYSE Rules 76 and 127 (compilation of May 2019) read: a block cross outside the quote trades with the NYSE best bid or offer and better-priced book orders first, then has priority at its price; merged into `def:block-trade`.
+18. `mech:options-clearing-exercise-assignment`, narrowed: current OCC Rules 803-805 and 1803 (last modified 19 August 2025, archived copy) read and merged into the options-dealing entry: the rule text names neither random nor pro rata assignment.
+19. `def:option-complex-orders`, narrowed: Cboe filing SR-CBOE-2026-081, Exhibit 5 (current Rule 5.33(g) legging text) merged.
+20. `ev:credit-derivative-swap-trading-structure`, narrowed: the CFTC's made-available-to-trade filings and TW SEF's 2023 submission merged.
+37. `ev:futures-tick-size-evidence`, narrowed: Dayri and Rosenbaum: ten futures in 2009 all large-tick (one-tick spreads for 72.7 to 99.6 percent of trades); merged into `res:spread-determinants`; the equity comparison and depth unchecked.
+38. `ev:fx-last-look-fill-reject-evidence`, narrowed: Oomen's accepted manuscript is theory; no measured fill or reject rates found.
+39. `ev:market-share-variance-claim`, narrowed: the only formal counterpart in Lehalle and Laruelle is an appendix assumption; no study cited.
+47. `ev:block-initiator-asymmetry`, narrowed: Harris gives the rule without a citation; Saar (theory) and Alzahrani et al. (Saudi data) merged.
+
+*C. Backtest inference and machine learning (9)*
+11. `meth:multiple-testing-control`, narrowed: Benjamini and Hochberg (1995) and White (2000) read and merged into `meth:multiple-testing-control`; Romano and Wolf unread.
+12. `meth:dependent-resampling-drawdowns`, narrowed: White's restatement of Politis and Romano merged; the original and its validity for drawdowns unread.
+13. `ev:out-of-sample-r2-scale`, resolved: Campbell and Thompson (NBER WP 11468) read: the $R^2/S^2$ scale and their Table 1 merged into `meth:backtest-evaluation-diagnostics`.
+14. `ev:delisting-survivorship-rewriting`, narrowed: Shumway and Warther's abstract (a $-55$ percent substitute delisting return; no Nasdaq size effect after correction) merged into `data:trading-reference-data`; Shumway's full text still refused.
+15. `meth:time-valid-ml-experiment-record`, narrowed: He, Lv, Manela and Wu's abstract merged; Levy's full text refused again (Wiley 403).
+30. `ev:signal-decay-crowding`, narrowed: two crowding studies read at abstract level measure crowding from holdings or fire-sale dislocations, not from delayed-signal decay; noted in `meth:backtest-evaluation-diagnostics`.
+52. `ev:transaction-clock-normality`, narrowed: Murphy and Izzeldin's working paper merged.
+53. `ev:meta-labelling-performance`, unchanged: no open out-of-sample evaluation found (arXiv, Crossref and web searched); Joubert's journal articles are paywalled.
+54. `meth:fractional-integration-tests`, resolved: MacKinnon and Nielsen's working paper merged into the fractional-differentiation entry.
+
+*D. Microstructure models (2)*
+10. `res:nonlinear-hawkes-stability`, resolved: Brémaud and Massoulié (1996) read from an archived copy: a signed kernel is allowed and the condition is on the $L^1$ norm of $|h|$; merged into `mod:hawkes-order-flow`.
+51. `meth:hybrid-control-learning-execution`, narrowed: Kolm and Ritter's preprint (archived copy) has no hybrid design; the claim stays unsupported.
+
+*E. Portfolio construction and risk (9)*
+16. `mod:volatility-targeting-deleveraging`, narrowed: the ECB's May 2020 box on volatility-targeting strategies merged into `def:common-investor-contagion`.
+17. `meth:overlap-crowding-measure`, narrowed: Chincarini, Lazo-Paz and Moneta's abstract (open access, but the publisher refused automated retrieval) merged into `def:common-investor-contagion`; their holdings measure unread.
+21. `res:no-trade-region`, blocked: Davis and Norman (1990) has no open copy (arXiv and OpenAlex searched).
+22. `meth:portfolio-covariance-estimation`, narrowed: Boyd et al. sec. 3.4 and their backtest's normalised EWMA (half-life 125 days) merged into `meth:portfolio-covariance-estimation`; factor-model estimation and DCC unread.
+42. `meth:residual-reversion-strategy`, narrowed: Avellaneda and Lee and Gatev et al. merged into the alpha taxonomy.
+43. `ev:value-carry-premia`, resolved: Koijen et al., Asness, Moskowitz and Pedersen and the QMJ paper merged into `def:alpha-model-taxonomy`.
+44. `meth:resampled-efficiency`, narrowed: new entry `meth:resampled-efficiency` from the Michauds' authors' version (2007): what is drawn and averaged; out-of-sample evidence only the proponents' simulation.
+45. `meth:equal-risk-contribution`, resolved: new entry `meth:equal-risk-contribution` from Maillard, Roncalli and Teïletche.
+46. `mod:garch-volatility-forecast`, resolved: new entry `mod:garch-volatility-forecast` from Christoffersen and Hansen and Lunde.
+
+*F. Commodities, rates, credit and governance (8)*
+23. `ev:why-firms-hedge`, narrowed: Tufano (1996) and Jin and Jorion (2006) read at abstract level and merged into the hedging entry: neither supports the value channel.
+40. `meth:strategy-promotion-criteria`, resolved: new entry `meth:strategy-promotion-criteria` from PRA SS1/23 and SR 26-2.
+41. `meth:discretionary-override-governance`, resolved: new entry `meth:discretionary-override-governance` from PRA SS1/23 and SR 26-2.
+48. `rule:otc-derivatives-reforms`, narrowed: U.S. rules resolved (17 CFR 23.150-161, 43.3, 45.3) and merged into `mech:otc-clearing-collateral`; BCBS-IOSCO, prudential regulators and EMIR unread.
+49. `mod:multi-curve-fra-swap-valuation`, resolved: new entry `mod:multi-curve-fra-swap-valuation` from Hull, with own checks.
+50. `ev:term-premia`, resolved: Adrian, Crump and Moench and the New York Fed's file summarised and merged into `mod:forward-rates-fra`.
+56. `ev:option-implied-borrow-cost`, resolved: Ofek, Richardson and Whitelaw (NBER WP 9423) merged into `res:synthetic-short-put-call`.
+55. `ev:empty-voting-equity-derivatives`, resolved: new entry `ev:empty-voting-equity-derivatives` from Hu and Black and the SEC's 2023 release.
+
+*G. Crypto (5)*
+32. `ev:crypto-funding-crowding`, narrowed: BIS WP 1087's dated-futures evidence and its restatements merged; a direct funding-rate study unread.
+33. `ev:crypto-dated-futures-carry`, resolved: new entry `ev:crypto-dated-futures-carry` from BIS WP 1087 (archived copy).
+34. `def:crypto-options-venue-structure`, narrowed: a one-day Deribit API snapshot (inverse against USDC-settled listings, open-interest concentration) merged into `def:crypto-venue-instrument-structure`; other venues unread.
+35. `def:amm-pool-mechanics`, narrowed: new entry `def:amm-pool-mechanics` from the Uniswap v2 and v3 papers; gas costs not covered.
+36. `ev:stablecoin-network-settlement-risk`, narrowed: the Federal Reserve's FEDS Note on USDC and SVB merged into `def:crypto-trading-risk-layers`.
+
+*H. Options and volatility (2)*
+57. `mod:black-scholes-merton`, resolved: new entry `mod:black-scholes-merton`.
+58. `def:implied-volatility-surface`, resolved: new entry `def:implied-volatility-surface`.
+
+*I. Central banks and data definitions (3)*
+5. `rule:central-bank-policy-history`, unchanged: only a route was found (RBNZ's pre-1997 statements reposted on a former official's blog); the PBOC band and the full reserve-requirement history were not obtained.
+28. `ev:alternative-data-edge-decay`, narrowed: Dessaint, Foucault and Frésard and Farboodi and Veldkamp read at abstract level and merged.
+29. `ev:holdings-insider-ratings-signals`, narrowed: Cohen, Malloy and Pomorski (abstract and sec. I) merged.
+
+*J. Empirical extensions (protocol recorded before computing) (4)*
+24. `ev:backwardation-scarcity-or-premium`, tested within stated bounds: heating oil added under a protocol recorded before the data: scarcity supported, premium not.
+25. `ev:fx-valuation-factors-oos`, tested within stated bounds: the carry factor added under a protocol recorded before the results: forecasts not supported out of sample, a carry portfolio narrowly supported.
+26. `ev:regime-asset-responses-tested`, tested within stated bounds: the inflation-shock row tested on real-time CPI vintages under a protocol with two recorded deviations: no response supported.
+27. `ev:global-macro-returns-after-2013`, tested within stated bounds: the BarclayHedge window January 2014 to July 2026 run as registered: 53 down months, mean $-0.52$ percent, $t=-3.00$; the registration statements corrected.
+
+*K. Deferral-trigger reviews (2)*
+59. `ev:curve-inversion-after-2005`, deferral trigger reviewed, retained: trigger review: no NBER peak after February 2020; 24 of the 27 months lie beyond the longest past announcement lag, 3 months and both episodes within it; retained.
+60. `data:post-libor-funding-stress-measures`, deferral trigger reviewed, retained: trigger review: still no free official dated SOFR OIS series; retained.
+### Counts
+
+- All 60: 15 resolved (9 as new entries); 35 narrowed (2 of them with new entries: `def:amm-pool-mechanics`, `meth:resampled-efficiency`); 3 unchanged; 1 blocked; 4 tested within stated bounds (three extensions and the global-macro window); 2 deferral-trigger reviews, both retained.
+- New entries: 11. Entries 228 $\to$ 239: `mod:black-scholes-merton`, `def:implied-volatility-surface`, `meth:equal-risk-contribution`, `mod:garch-volatility-forecast`, `meth:resampled-efficiency`, `mod:multi-curve-fra-swap-valuation`, `meth:strategy-promotion-criteria`, `meth:discretionary-override-governance`, `ev:crypto-dated-futures-carry`, `def:amm-pool-mechanics`, `ev:empty-voting-equity-derivatives`. Legacy blocks 0; all entries draft.
+
+### Conclusions that changed
+
+- Filing availability: no fixed fallback is conservative; a missing dissemination time means unknown.
+- Global macro: crisis protection is not supported over January 2014 to July 2026 ($t=-3.0$), more firmly than over 2022--2026.
+- Dark pools: the 2009 association with narrower spreads does not hold for large caps in 2020 (published abstract).
+- Nonlinear Hawkes stability with inhibition needs $\alpha\int|h|<1$; "slope at most one, same condition" holds only with the absolute value.
+- Spoofing: FINRA's Rule 5210.03 has no intent element, unlike the MAR and Rule 10b-5 framing the entry used.
+- Heating oil: backwardation tracks low distillate stocks (scarcity supported) but does not forecast returns (premium not supported), as for WTI and gas.
+- FX: the short-rate differential does not forecast 12-month changes out of sample; a carry portfolio earned +2.07 percent a year net (Newey--West $t=2.04$), a statistical return on averaged prices.
+- Inflation-shock row: no hypothesised response (10-year yield, slope, oil) is supported on real-time CPI vintages.
+- Why firms hedge: the two industry studies read at abstract level do not support the value channel.
+
+### Sources
+
+Listed with URL, retrieval date, acquisition route, content type, size and SHA-256 in `reading_materials/sources_batch60_2026-10-17.json` (106 files kept, 3 not kept with reasons, 23 failed or refused requests; ignored; none committed), with derived text layers and the local library copies (Hull 11th Global edition, Christoffersen proof, Harris 2002, Lehalle and Laruelle 2nd edition) noted. 36 source keys were added to `compendium/front/sources.tex` (298 in all); `ecfr-17cfr-cftc-swaps`, `nber-business-cycles` and `nyse-rules-2019` were extended in place. Internet Archive captures were used where a publisher refused automated retrieval and an archived copy existed: SEC (filing status), BIS (WP 1087), the OCC rulebook, Project Euclid (Brémaud and Massoulié, open access), S\&P DJI, STOXX, Deutsche Börse and NYU (Kolm and Ritter). Abstract-only routes: RePEc (Tufano; Jin and Jorion; Shumway and Warther; Buti, Rindi and Werner 2022) and OpenAlex (Chincarini et al.; Kyle, Obizhaeva and Wang). Refused or unavailable, not bypassed: sec.gov and theocc.com (403), FRED (HTTP/2 errors and timeouts; H.15 and EIA used, a recorded protocol deviation), BYU (Shumway, 403, no archived copy), ScienceDirect (403 on an open-access article), Wiley (Levy, 403), the Philadelphia Fed's quarterly-vintage file (does not exist; monthly vintages used), Nasdaq and FTSE MIB methodologies (403, 404), journal paywalls (Davis and Norman; Joubert; Tufano and Jin and Jorion full texts).
+
+### Checks
+
+New, all exit 0: `backtest-inference/batch60-sharpe-zero-check.py`; `risk-tail-systemic/batch60-es-discrete-check.py` and `batch60-garch-ewma-check.py`; `volatility-options/batch60-bsm-svi-checks.py`; `portfolio-construction/batch60-erc-check.py`; `rates-credit-mortgages/batch60-multicurve-check.py`; `crypto-perpetuals/batch60-amm-checks.py`; `multi-asset-systematic-macro/batch60-inversion-horizons.py` (output unchanged on rerun). Corrected in place and passing: `batch50-filing-timestamp-checks.py`, `batch40-reconciliation-check.py`. All 37 earlier no-argument checks rerun and pass.
+
+Empirical scripts, rerun and compared byte for byte with their saved outputs: `batch60_heating_oil_test.py` (results and panel), `batch60_fx_carry_test.py`, `batch60_inflation_regime_test.py`, `global_macro_down_months_2014_test.py`, `batch60-acm-term-premium-summary.py`, `batch60-deribit-options-snapshot.py`. The v2 scripts (`backwardation_test.py`, `fx_ppp_oos_test.py`, `regime_recession_test.py`) and the global-macro v1 script reproduce their committed outputs, which are unchanged. `tools/migration_status.py --check`: 0 problems. `python3 -B -m unittest discover -s tools`: 14 tests OK.
+
+### Build
+
+Clean `latexmk -pdf compendium.tex` after `latexmk -C`: exit 0, 328 pages. Three overfull and two underfull boxes from new text were fixed by rewording (the Greeks set as a list); after the last edit, 0 overfull and 0 underfull boxes and no LaTeX warnings remain, apart from the inherited `page.i` duplicate-destination warning. Pages with the new option-pricing, resampled-efficiency, Hawkes and crypto passages were inspected as images.
+
+### Other files
+
+- Pathway notes (31): a dated paragraph each, new entries listed, resolved stubs removed and the others annotated.
+- Reading notes updated: `wide-boyd-markowitz-seventy`, `cfd-hu-black-2007`, `s7-hulloptions`, `alpha-laruelle`, `alpha-harris`, `wide-christoffersen-elements`.
+- Also updated: `notes/log.md` (no dates of mastery or consolidation), `notes/migration.md` and `compendium/README.md`.
+
+### For review
+
+- The filing-availability convention (dissemination or first observation, else unknown) and its lower bound.
+- The venue-rule flag for Done for Day on Day orders.
+- The heating-oil expiry assumption (rule text not obtained; supported by the roll check in 6 of 7 blocks) and the two inflation-row protocol deviations.
+- The Gatheral--Jacquier density factor recorded as a source discrepancy (p. 5).
+- Abstract-only evidence (targets 7, 14, 17, 23, 30) and archived copies used in place of refused publisher pages.
+- The NYSE rulebook read is a 2019 compilation.

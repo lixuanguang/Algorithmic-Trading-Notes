@@ -30,6 +30,10 @@ Written in migration slice 20, 2026-10-15:
 
 All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their artefact is `notes/artefacts/fx-dealer-market-making/derivations.tex`.
 
+## Source verification after slice 37
+
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:fx-last-look-fill-reject-evidence` narrowed (Oomen's accepted manuscript is theory; no measured fill or reject rates found). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `mod:inventory-based-quotes` (`market-making-lob` and `execution-market-making`); `def:smart-order-routing`, `def:best-execution` (`market-structure-execution-quality`); `res:latency-arbitrage-arms-race` (`hft-market-design`). None of them is FX evidence.
@@ -42,7 +46,7 @@ Slice-36 follow-up, 2026-10-16: `def:arbitrage` now states the triangular equali
 
 ## Entry backlog
 
-- ev:fx-last-look-fill-reject-evidence: measured fill rates, reject rates, hold times and client markouts under last look against firm liquidity, with benchmarks, horizons and selection effects; Oomen's last-look and aggregator papers (unread) and empirical FX studies are needed before such an entry.
+- ev:fx-last-look-fill-reject-evidence: (narrowed in the third batch of 2026-10-17) measured fill rates, reject rates, hold times and client markouts under last look against firm liquidity, with benchmarks, horizons and selection effects; Oomen's last-look and aggregator papers (unread) and empirical FX studies are needed before such an entry.
 
 ## Legacy candidate material
 

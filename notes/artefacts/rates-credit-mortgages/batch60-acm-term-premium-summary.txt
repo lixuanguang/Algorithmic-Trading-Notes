@@ -1,0 +1,10 @@
+sample 30-Jun-1961 to 30-Sep-2026, 784 months; max |ACMY10 - ACMRNY10 - ACMTP10| = 0.00e+00
+10-year term premium: mean +1.43 pp; below zero in 101 of 784 months (13%); min -1.38 (31-Jul-2020), max +5.20 (31-May-1984); latest +0.89 (30-Sep-2026)
+  1960s: mean +0.38, below zero 3/103
+  1970s: mean +1.68, below zero 0/120
+  1980s: mean +3.42, below zero 0/120
+  1990s: mean +2.11, below zero 0/120
+  2000s: mean +1.48, below zero 0/120
+  2010s: mean +0.44, below zero 47/120
+  2020s: mean -0.21, below zero 51/81
+first month below zero after 1990: 30-Jan-2015

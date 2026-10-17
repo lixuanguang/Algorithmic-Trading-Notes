@@ -30,13 +30,17 @@ Corrected in a follow-up the same day (`notes/migration.md`, *Slice 16 follow-up
 
 Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/reinforcement-learning-trading/` (the legacy blocks verbatim and the numerical checks).
 
+## Source verification after slice 37
+
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `meth:hybrid-control-learning-execution` narrowed (Kolm and Ritter's preprint (archived copy) has no hybrid design; the claim stays unsupported). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:almgren-chriss-execution`, `def:implementation-shortfall` and `def:trading-envelope` (`execution-trading-costs`); `def:price-impact` (`price-impact-execution`).
 
 ## Entry backlog
 
-- meth:hybrid-control-learning-execution: the legacy claim that hybrid execution uses control structure for constraints and machine learning for forecasts, fills and regime detection. Not in the passages read; Hambly, Xu and Yang report only a combination of the Almgren–Chriss solution with Q-learning (p. 34). Needs a primary source, for instance the cited study or `wide-kolm-ritter-rl`, before an entry is written.
+- meth:hybrid-control-learning-execution: (narrowed in the third batch of 2026-10-17) the legacy claim that hybrid execution uses control structure for constraints and machine learning for forecasts, fills and regime detection. Not in the passages read; Hambly, Xu and Yang report only a combination of the Almgren–Chriss solution with Q-learning (p. 34). Needs a primary source, for instance the cited study or `wide-kolm-ritter-rl`, before an entry is written.
 
 ## Legacy candidate material
 

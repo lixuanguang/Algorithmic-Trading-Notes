@@ -29,14 +29,21 @@ Written in migration slice 31, 2026-10-15:
 
 Both partly checked 2026-10-15, draft; human review outstanding. Artefacts: `notes/artefacts/volatility-options/hull-basics.tex` and `hull-forwards-futures.tex`, with the original figures.
 
+Written in the third batch of 2026-10-17 (source verification and bounded checks, not study or human review):
+
+- `mod:black-scholes-merton`: the model, its PDE, Greeks and Merton's no-early-exercise result, with own checks (`batch60-bsm-svi-checks.py`). Partly checked 2026-10-17, draft; human review outstanding.
+- `def:implied-volatility-surface`: implied volatility, static-arbitrage conditions, SVI and Lee's wing formula, with a recorded source discrepancy. Partly checked 2026-10-17, draft; human review outstanding.
+
+## Source verification after slice 37
+
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mech:futures-margin-settlement` (`futures-execution`, extended with Hull's generic margin account); `mech:otc-clearing-collateral`, `def:interest-rate-measures`, `mod:forward-rates-fra`, `mod:duration-convexity`, `conv:us-rate-quotation` (`rates-credit-mortgages`); `def:futures-hedge-basis`, `mod:minimum-variance-hedge-ratio` (`commodity-hedging`); `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:arbitrage` (`execution-market-making`).
 
 ## Entry backlog
 
-- mod:black-scholes-merton: the Black-Scholes-Merton model, its assumptions and Greeks, toward the overview's hedging checkpoint (`s6-blackscholes`, `p2-merton`, Hull chaps. 15 and 19, unread).
-- def:implied-volatility-surface: implied volatility, the smile and arbitrage-free surfaces (`s6-surface`, `exp-gatheral-jacquier-svi`, unread).
 
 ## Legacy candidate material
 

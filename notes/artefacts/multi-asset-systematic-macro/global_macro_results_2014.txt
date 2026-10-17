@@ -1,0 +1,15 @@
+workbook SHA-256 ead890c4274a7cdd7f92e3da23d15dbd0359dd239bf6a3841cddf437853d1097 (matches the audited snapshot)
+estimated months excluded: 2026-08, 2026-09
+Protocol window (Barclay Global Macro Index workbook, net; French Mkt-RF): window 2014-01 to 2026-07, T = 151 months
+  all months: mean +0.46%/month, vol 5.05%/yr, monthly Sharpe (excess) +0.213 (Lo IID s.e. 0.082), annualised +0.74
+  down  months (n 53): mean -0.5217% (t -2.9952), correlation +0.42 [+0.17, +0.62], beta +0.173 [+0.067, +0.279]
+  up    months (n 98): mean +0.9967% (t +7.7897), correlation +0.43 [+0.26, +0.58], beta +0.201 [+0.116, +0.285]
+  ten worst benchmark months: benchmark mean -8.56%, index mean -1.22% (2018-10, 2018-12, 2019-05, 2020-02, 2020-03, 2022-04, 2022-06, 2022-09, 2022-12, 2025-03)
+  verdict (pre-set rule): crisis protection not supported in this window
+Recent-period comparison from the workbook: window 2022-01 to 2026-07, T = 55 months
+  all months: mean +0.68%/month, vol 5.62%/yr, monthly Sharpe (excess) +0.221 (Lo IID s.e. 0.136), annualised +0.76
+  down  months (n 24): mean -0.3871% (t -1.4835), correlation +0.29 [-0.13, +0.62], beta +0.129 [-0.057, +0.316]
+  up    months (n 31): mean +1.5061% (t +6.1426), correlation +0.21 [-0.16, +0.52], beta +0.106 [-0.083, +0.294]
+  ten worst benchmark months: benchmark mean -6.49%, index mean -0.79% (2022-01, 2022-04, 2022-06, 2022-08, 2022-09, 2022-12, 2023-09, 2024-04, 2025-03, 2026-03)
+  verdict (pre-set rule): crisis protection not supported in this window
+revision check against the second batch's page values (55 months, 4 decimals): 0 months differ

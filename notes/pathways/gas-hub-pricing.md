@@ -42,13 +42,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `conv:henry-hub-contract-terms` narrowed further (NYMEX Submissions 19-158 on TAS eligibility and 19-198 on settlement procedures). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `conv:henry-hub-contract-terms` narrowed (a scan of 281 NYMEX filings on the CFTC's listing (September 2019 to October 2026) found one Henry Hub futures filing, Submission 20-166 (spot-month limit), and no Chapter 220 text amendment). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:crude-oil-markets` (`crude-oil-products`).
 
 ## Entry backlog
 
-- conv:henry-hub-contract-terms: the amendment history of Chapter 220 after 2019 (NYMEX Submissions 16-080, 17-048, 18-465 and, on 2026-10-17, 19-158 (TAS months) and 19-198 (settlement procedures) found; the search was not exhaustive); EIA LNG export data, size, ticks, termination and Rule 220104 were read
+- conv:henry-hub-contract-terms: (narrowed in the third batch of 2026-10-17) the amendment history of Chapter 220 after 2019 (NYMEX Submissions 16-080, 17-048, 18-465 and, on 2026-10-17, 19-158 (TAS months) and 19-198 (settlement procedures) found; the search was not exhaustive); EIA LNG export data, size, ticks, termination and Rule 220104 were read
 
 ## Legacy candidate material
 

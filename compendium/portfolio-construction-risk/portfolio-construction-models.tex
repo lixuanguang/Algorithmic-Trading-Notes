@@ -29,6 +29,58 @@
 \qffield{Status} Verification: partly checked 2026-10-15 (against the text layer of a local copy of \texttt{s7-narang}, third edition, Wiley 2024, chap.~6, pp.~99--104 and~123, with Exhibit~6.1 on p.~102 by page image; the weights and risk contributions computed; the ERC weights' rounding corrected in the slice-28 follow-up). Stability: draft. Currency: practitioner account as of 2024; the risk-contribution arithmetic is timeless.
 \end{qfmethod}
 
+\begin{qfmethod}[Equal risk contribution: equalising each asset's share of portfolio volatility under a full covariance matrix, against inverse-volatility weights]\label{meth:equal-risk-contribution}
+\qffield{Statement} For long-only weights $x$ and covariance matrix $\Sigma$, with $\sigma(x)=\sqrt{x^\top\Sigma x}$, Maillard, Roncalli and Te\"iletche define the risk contribution of asset $i$ as $\sigma_i(x)=x_i\,\partial\sigma/\partial x_i=x_i(\Sigma x)_i/\sigma(x)$. Because $\sigma$ is homogeneous of degree one, the contributions sum to $\sigma(x)$ \citep[authors' version, May 2009, sec.~2.1, p.~4]{wide-maillard-roncalli-erc}. The \emph{equal risk contribution} (ERC) portfolio is the one in $[0,1]^n$ with $\sum x_i=1$ and $x_i(\Sigma x)_i=x_j(\Sigma x)_j$ for all $i,j$ (eqs.~(1)--(2), pp.~4--5). Its weights are $x_i=\beta_i^{-1}/n$, with $\beta_i=(\Sigma x)_i/\sigma^2(x)$ the asset's beta to the portfolio. This is endogenous, so in general there is no closed form (eq.~(5), p.~6). Two cases are closed-form:
+\begin{itemize}
+\item with two assets, $x_1=\sigma_1^{-1}/(\sigma_1^{-1}+\sigma_2^{-1})$ whatever the correlation (sec.~3.1, p.~5);
+\item with one common correlation, $x_i=\sigma_i^{-1}/\sum_j\sigma_j^{-1}$, the inverse-volatility portfolio (eq.~(3), p.~5).
+\end{itemize}
+Otherwise inverse-volatility weights do not equalise contributions. The ERC solution is unique for a positive-definite $\Sigma$, since it solves $\min\sqrt{y^\top\Sigma y}$ subject to $\sum\ln y_i\ge c$, $y\ge0$, then rescaled (eq.~(7), p.~7). The three heuristics compare as equal weights ($x_i=x_j$), minimum variance (equal marginal contributions) and ERC (equal total contributions), with volatilities ordered $\sigma_{mv}\le\sigma_{erc}\le\sigma_{1/n}$ (sec.~3.4, pp.~8--9, proof in their Appendix~A.3). ERC is the maximum-Sharpe portfolio when correlations are constant and all assets have the same Sharpe ratio (sec.~3.5, p.~9).
+
+\qffield{Notation} $x$ weights; $\Sigma$ covariance matrix; $\sigma_i(x)$ total and $\partial\sigma/\partial x_i$ marginal risk contribution; $\beta_i$ the beta of asset $i$ to the portfolio.
+
+\qffield{Conditions} Long only, as the authors restrict it: without that constraint several portfolios satisfy the ERC condition (p.~7). The risk measure is volatility from one estimated $\Sigma$, so the weights inherit its estimation error (\hyperref[meth:portfolio-covariance-estimation]{covariance estimation}). No expected returns enter.
+
+\qffield{Practice} Own check, \nolinkurl{notes/artefacts/portfolio-construction/batch60-erc-check.py}, with four assets of 10, 20, 30 and 15 percent volatility:
+\begin{itemize}
+\item contributions sum to $\sigma(x)$, and the ERC solution satisfies $x_i=\beta_i^{-1}/n$;
+\item with a common correlation of 0.3, ERC equals inverse volatility (40, 20, 13.3, 26.7 percent);
+\item with unequal correlations (0.8 between the first two, $-0.3$ between the last two), ERC is 33.9, 14.8, 16.4 and 34.9 percent. The inverse-volatility weights then put 32.8, 36.2, 17.2 and 13.8 percent of risk on the four assets;
+\item in both cases $\sigma_{mv}\le\sigma_{erc}\le\sigma_{1/n}$ (7.8, 9.2 and 11.3 percent in the second).
+\end{itemize}
+Narang's ``equal risk weighting'' is inverse volatility, or inverse variance in his exhibit (\hyperref[meth:rule-based-position-sizing]{rule-based position sizing}). It equals ERC only in the two closed-form cases.
+
+\qffield{Pitfalls} The empirical sections of the paper (sec.~4) were not read, so no claim about ERC's out-of-sample performance is made here. The copy is the authors' version on Roncalli's site, dated May 2009, before the 2010 \emph{Journal of Portfolio Management} article the catalogue cites; the two were not compared. Its text layer is hex-encoded and was decoded by script.
+
+\qffield{See also} \hyperref[meth:rule-based-position-sizing]{rule-based position sizing}; \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}; \hyperref[mod:pca-risk-distribution-weights]{PCA risk-distribution weights}.
+
+\qffield{Further reading} \texttt{wide-roncalli-risk-parity} (risk budgeting); the risk-parity pathway's readings.
+
+\qffield{Index} equal risk contribution; ERC; risk parity; risk contribution; marginal risk contribution; inverse volatility; minimum variance; equal weights; risk budgeting; Euler decomposition
+
+\qffield{Status} Verification: partly checked 2026-10-17 (against \texttt{wide-maillard-roncalli-erc} in the authors' version of May 2009, secs.~2--3.5, pp.~4--9, decoded text layer; own numerical check). Stability: draft. Currency: theory timeless.
+\end{qfmethod}
+
+\begin{qfmethod}[Resampled efficiency: averaging the weights of mean--variance portfolios computed on resampled inputs, and what its proponents' simulation shows]\label{meth:resampled-efficiency}
+\qffield{Statement} Richard and Robert Michaud describe Resampled Efficiency (RE, a trademark) in five steps \citep[authors' version \copyright~2007, p.~5]{michaud-michaud-2008-wp}: (1)~sample a mean vector and covariance matrix from a distribution centred at the point estimates; (2)~compute the mean--variance efficient frontier for that draw; (3)~repeat until step~4 converges; (4)~average the portfolio weights across draws to form the RE optimal portfolio; (5)~optionally apply investability constraints. In their illustration each draw simulates 120 monthly returns per asset from a multivariate normal fitted to the data, a resample of the same length as the original history (p.~5, footnote~14). Portfolios are matched across frontiers by rank (for example the minimum-variance and maximum-return ends, each averaged across draws), so the resampled frontier is an average of ``properly associated'' optimal portfolios (pp.~6--7). Each asset's weight in the maximum-return RE portfolio equals the probability that it is truly the maximum-return asset (p.~9, footnote~21).
+
+\qffield{Notation} RE resampled efficiency; REF the resampled efficient frontier; MV mean--variance.
+
+\qffield{Conditions} Sign- and budget-constrained (long-only, fully invested) total-return optimisation; the authors treat benchmark-relative and long--short cases separately (p.~10, footnote~24). The REF lies below and is shorter than the classical frontier in sample, so any in-sample comparison favours the classical frontier (p.~7).
+
+\qffield{Practice} The evidence for out-of-sample improvement is a simulation, not a backtest. A referee takes 20 stocks' risk and return estimates (monthly, January~1997 to December~2006) as the truth, simulates histories, has an MV and an RE investor optimise on them, and scores both with the true parameters. On average the RE portfolios earn about the same return with less risk (pp.~9--10, Figure~4). The authors state that superiority cannot be proven for every simulation test, only for ``financially relevant cases''. A truth with negative mean returns, for example, is excluded under sign constraints (p.~9, footnote~22). They report that Markowitz and Usmen (2003) replicated the Michaud (1998) simulation (p.~10, footnote~23); that paper was not read.
+
+\qffield{Pitfalls} All the evidence read here is the proponents' own; the paper is marked as not to be quoted without permission, so it is paraphrased. The critics Michaud and Michaud name, Harvey et al.\ (2006) on the in-sample comparison and Scherer's 2002 review, were not read; nor was Markowitz and Usmen's experiment, which, as the authors describe it, raised a concern about expected-utility axioms (p.~7, footnote~17). The simulation result depends on the chosen truth, the constraints and the number of draws, so it is not evidence about any one real allocation.
+
+\qffield{See also} \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}; \hyperref[mod:black-litterman]{Black--Litterman}; \hyperref[meth:portfolio-covariance-estimation]{covariance estimation}.
+
+\qffield{Further reading} \texttt{wide-michaud-enigma} (the estimation-error critique); Markowitz and Usmen, ``Resampled frontiers vs diffuse Bayes: an experiment'', \emph{Journal of Investment Management}, 2003; Scherer, ``Portfolio resampling: review and critique'', \emph{Financial Analysts Journal}, 2002 (both unread).
+
+\qffield{Index} resampled efficiency; Michaud; resampling; Monte Carlo; resampled efficient frontier; estimation error; mean--variance; portfolio averaging; simulation test; Jobson--Korkie
+
+\qffield{Status} Verification: partly checked 2026-10-17 (third batch; against the authors' version, \copyright~2007, marked as forthcoming in the \emph{Journal of Investment Management} (published 2008), pp.~5--10, text layer; the 2007 MIT colloquium abstract). Stability: draft. Currency: method of 1998 as described in 2007; evidence is the authors' simulation.
+\end{qfmethod}
+
 \begin{qfmodel}[Mean--variance portfolio optimisation: objectives, inputs, constraints and solvers, and what the legacy claimed about them]\label{mod:mean-variance-portfolio-optimisation}
 \qffield{Statement} Markowitz's problem, as written by Boyd, Johansson, Kahn, Schiele and Schmelzer, chooses the weights $w\in\mathbb R^n$ given expected returns $\mu$ and a covariance matrix $\Sigma$ in one of two forms \citep[author version of 5 Jan.\ 2024, sec.~1.1, eqs.~(1)--(2), pp.~4--5]{wide-boyd-markowitz-seventy}:
 \[ \max_w\ \mu^\top w\ \ \text{s.t.}\ \ w^\top\Sigma w\le\sigma_{\mathrm{tar}}^2,\ \mathbf 1^\top w=1;\qquad \max_w\ \mu^\top w-\gamma\,w^\top\Sigma w\ \ \text{s.t.}\ \ \mathbf 1^\top w=1. \]

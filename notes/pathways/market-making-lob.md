@@ -64,13 +64,14 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Misprint review: the Avellaneda-Stoikov infinite-horizon ask stays recorded as an apparent misprint with the printed formula quoted unchanged; a 2025 preprint (Balakaeva and Veretennikov, arXiv:2510.15988) prints the same ask without derivation, while its own value function and indifference definitions give the derived one. Queue: `res:nonlinear-hawkes-stability` narrowed (Brémaud and Massoulié's Theorems 4-5 as restated in Zhu's 2013 thesis, merged into `mod:hawkes-order-flow`; the original refused by Project Euclid's bot protection). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `res:nonlinear-hawkes-stability` resolved (Brémaud and Massoulié (1996) read from an archived copy: a signed kernel is allowed and the condition is on the $L^1$ norm of $|h|$; merged into `mod:hawkes-order-flow`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Written in slice 36 for `hft-market-design` and cross-referenced here: `res:queue-position-value`, from this pathway's reading `wide-moallemi-yuan-queue` (June 2017 revision; abstract, secs. 1--2, 4.3, 5.2 and 6 read, the value recursion of sec. 3 not checked). The cross-asset file, which listed this pathway, was routed to `execution-market-making`'s arbitrage entries (slice 36).
 
 ## Entry backlog
 
-- res:nonlinear-hawkes-stability: (narrowed 2026-10-17: restated theorems merged) Brémaud and Massoulié's original (Ann. Probab. 1996; Project Euclid served a bot-protection page), including the norm used for a signed kernel.
 - res:ho-stoll-dealer-pricing: check against the paper the three properties O'Hara reports for the multiperiod model (spread = risk-neutral monopoly spread plus a risk adjustment rising with the horizon; transaction uncertainty does not enter; spread independent of inventory, quotes shifted instead) \citep[sec.~2.3, pp.~35--36]{catalogue-0496}; blocked: `ho-stoll-1981` has no accessible copy, and `catalogue-0527` names no paper
 
 ## Legacy candidate material

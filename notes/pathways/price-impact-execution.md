@@ -58,8 +58,8 @@ Changed in migration slice 35, 2026-10-16 (a routing exception from the foundati
 
 ## Entry backlog
 
-- ev:block-initiator-asymmetry: the primary evidence behind Harris's "approximately 80 percent" of large U.S. block trades being seller-initiated (p. 332), with sample, period and classification method
-- res:trade-sign-accuracy: the body of Ellis, Michaely and O'Hara (2000) (only its abstract read, 2026-10-17; paywalled) and the other accuracy studies Jurkatis reviews; Lee and Ready (1991), read from a scan on 2026-10-16, report agreement rates and quote timing, not accuracy against known directions
+- ev:block-initiator-asymmetry: (narrowed in the third batch of 2026-10-17) the primary evidence behind Harris's "approximately 80 percent" of large U.S. block trades being seller-initiated (p. 332), with sample, period and classification method
+- res:trade-sign-accuracy: (unchanged in the third batch of 2026-10-17) the body of Ellis, Michaely and O'Hara (2000) (only its abstract read, 2026-10-17; paywalled) and the other accuracy studies Jurkatis reviews; Lee and Ready (1991), read from a scan on 2026-10-16, report agreement rates and quote timing, not accuracy against known directions
 
 ## Source verification after slice 37
 
@@ -70,6 +70,8 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `res:trade-sign-accuracy` reviewed, unchanged: no lawful open copy of Ellis, Michaely and O'Hara (2000) was found (Cambridge's JFQA page is paywalled; the HKU repository record has no file), nor of the other accuracy studies. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `res:trade-sign-accuracy` narrowed (Ellis, Michaely and O'Hara's abstract from the publisher page: 76.4, 77.66 and 81.05 percent correct; merged into `meth:trade-sign-classification`). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `res:trade-sign-accuracy` unchanged (open versions of Ellis, Michaely and O'Hara and of the later accuracy studies were searched for and not found); `ev:block-initiator-asymmetry` narrowed (Harris gives the rule without a citation; Saar (theory) and Alzahrani et al. (Saudi data) merged). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
 ## Legacy candidate material
 

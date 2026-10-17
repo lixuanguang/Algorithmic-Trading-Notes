@@ -1,0 +1,87 @@
+% compendium/volatility-options/option-pricing.tex
+% Entries written on 2026-10-17 (third batch of that date) from backlog items mod:black-scholes-merton and
+% def:implied-volatility-surface of the section overview volatility-options. Source verification and own checks, not
+% study: the overview's readings are not studied and its checkpoint is not attempted.
+
+\section{Option pricing and the implied volatility surface}
+
+\begin{qfmodel}[The Black--Scholes--Merton model: the hedging argument, the differential equation and formula, the assumptions it needs, Merton's no-early-exercise result and the Greeks]\label{mod:black-scholes-merton}
+\qffield{Statement} Black and Scholes value an option under ``ideal conditions'' \citep[``The Valuation Formula'', pp.~640--641]{s6-blackscholes}:
+\begin{itemize}
+\item a known, constant short rate;
+\item a stock price following a random walk in continuous time with variance rate proportional to the square of the price, so prices at any horizon are lognormal;
+\item no dividends;
+\item a European option;
+\item no transaction costs;
+\item borrowing any fraction of a security's price at the short rate, and short selling without penalty.
+\end{itemize}
+A position long one share and short $1/w_1$ options is then riskless over a short interval if continuously adjusted, so it must earn the short rate. That gives the differential equation and, with the payoff $w(x,t^*)=\max(x-c,0)$, the unique solution \citep[eqs.~(7), (8) and~(13), pp.~643--644, read from page images]{s6-blackscholes}:
+\[ w_2=rw-rxw_1-\tfrac12v^2x^2w_{11},\qquad w(x,t)=xN(d_1)-ce^{r(t-t^*)}N(d_2),\quad d_{1,2}=\frac{\ln(x/c)+(r\pm\frac12v^2)(t^*-t)}{v\sqrt{t^*-t}}. \]
+The stock's expected return does not appear (p.~644). In Hull's notation, for a stock with continuous yield $q$, $c=S_0e^{-qT}N(d_1)-Ke^{-rT}N(d_2)$ and $p=Ke^{-rT}N(-d_2)-S_0e^{-qT}N(-d_1)$ \citep[chap.~15, eqs.~(15.20)--(15.21), p.~352, for $q=0$; the yield version through chap.~17 and Table~19.6, p.~439]{s7-hulloptions}.
+
+\emph{Merton's bound and early exercise.} Without payouts to the stock over the option's life, or with protection against them, a European call satisfies $f(S,\tau;E)\ge\max[0,S-EP(\tau)]$, with $P(\tau)$ the price of a riskless discount bond (Theorem~1). Then ``an American warrant will never be exercised prior to expiration, and hence, it has the same value as a European warrant'' (Theorem~2) \citep[p.~144, read from page images of a scan]{p2-merton}.
+
+\emph{Greeks} for a European call on an asset with yield $q$ \citep[chap.~19, Table~19.6, p.~439]{s7-hulloptions}:
+\begin{itemize}
+\item delta $e^{-qT}N(d_1)$;
+\item gamma $N'(d_1)e^{-qT}/(S_0\sigma\sqrt T)$;
+\item vega $S_0\sqrt TN'(d_1)e^{-qT}$;
+\item rho $KTe^{-rT}N(d_2)$;
+\item theta $-S_0N'(d_1)\sigma e^{-qT}/(2\sqrt T)+qS_0N(d_1)e^{-qT}-rKe^{-rT}N(d_2)$.
+\end{itemize}
+Setting $q$ to an index yield, the foreign rate or $r$ gives index, currency and futures options (p.~439).
+
+\qffield{Notation} Black and Scholes: $x$ stock price, $c$ exercise price, $t^*$ maturity, $v^2$ variance rate, $w_1$, $w_2$, $w_{11}$ partial derivatives. Hull: $S_0$, $K$, $T$, $\sigma$, $q$. Merton: $f$ European and $F$ American warrant values, $\tau$ time to expiry, $E$ exercise price.
+
+\qffield{Conditions} The riskless hedge needs continuous rebalancing. Black and Scholes argue that a discretely adjusted hedge carries only diversifiable risk (p.~642), and Hull's list adds no riskless arbitrage, perfect divisibility, no taxes and a flat, constant rate. He notes that $\sigma$ and $r$ may be known functions of time, and rates stochastic if the terminal price stays lognormal (sec.~15.6, p.~348). Merton's Theorems~1--2 need no payouts and positive interest rates; with a large dividend yield the European call can fall below intrinsic value, and early exercise of an American call can then have value (own check: $S=150$, $K=100$, $q=10$ percent, $r=2$ percent, $\sigma=20$ percent, $T=2$ gives $c=29.98<50$).
+
+\qffield{Practice} Own checks, \nolinkurl{notes/artefacts/volatility-options/batch60-bsm-svi-checks.py}:
+\begin{itemize}
+\item Hull's Example~15.6 ($S_0=42$, $K=40$, $r=10$ percent, $\sigma=20$ percent, $T=0.5$) gives $c=4.76$ and $p=0.81$ (p.~356);
+\item the formula equals the discounted risk-neutral expectation computed by quadrature;
+\item it satisfies the differential equation by finite differences;
+\item each Greek of Table~19.6 matches its finite difference;
+\item $\Theta+(r-q)S\Delta+\frac12\sigma^2S^2\Gamma=rc$, which is the differential equation restated in Greeks;
+\item Merton's bound holds at several volatilities, and implied volatility is recovered by bisection.
+\end{itemize}
+The overview's checkpoint compares delta and delta--vega hedges on profit and loss. That needs the discrete-hedging error, costs and smile moves, which these checks do not cover.
+
+\qffield{Pitfalls} The constant-volatility lognormal model is contradicted by the smile itself (\hyperref[def:implied-volatility-surface]{implied volatility surface}). The Greeks are partial derivatives at fixed $\sigma$, so a vega hedge under one implied volatility per option is a model-dependent hedge. The copy of Black and Scholes read is a JSTOR reprint on a course page at Simon Fraser University; Merton's is a scan on a Trinity College Dublin page, read through page images and OCR. Hull is the local copy of the 11th Global edition used in earlier slices.
+
+\qffield{See also} \hyperref[def:derivative-contracts]{derivative contracts}; \hyperref[res:cost-of-carry-forward-price]{cost-of-carry forward price} (the yield $q$); \hyperref[def:implied-volatility-surface]{implied volatility surface}.
+
+\qffield{Further reading} Merton's later sections (dividends, stochastic rates, the American put) and Hull's chaps.~19 and~21 on hedging practice and American Greeks were not read.
+
+\qffield{Index} Black--Scholes--Merton; option pricing; riskless hedge; differential equation; risk-neutral valuation; delta; gamma; vega; theta; rho; dividend yield; early exercise; Merton's lower bound; put--call parity
+
+\qffield{Status} Verification: partly checked 2026-10-17 (against \texttt{s6-blackscholes}, pp.~640--644, text layer and page images of pp.~643--644; \texttt{p2-merton}, p.~144, page image and OCR of a scan, Theorems~1--2 only; \texttt{s7-hulloptions}, 11th Global edition, local copy, sec.~15.6, eqs.~(15.20)--(15.21), Example~15.6 and Table~19.6; own numerical checks). Stability: draft. Currency: theory timeless (1973).
+\end{qfmodel}
+
+\begin{qfdefinition}[Implied volatility, the smile and an arbitrage-free surface: total implied variance, the calendar and butterfly conditions, raw SVI and the wing bound]\label{def:implied-volatility-surface}
+\qffield{Statement} The \emph{Black--Scholes implied volatility} $\sigma_{BS}(k,t)$ of a European option is the volatility that, put into the Black--Scholes formula, reproduces its price, with $k=\ln(K/F_t)$ the log-moneyness against the forward. Gatheral and Jacquier work with the \emph{total implied variance} $w(k,t)=\sigma_{BS}^2(k,t)\,t$. They call the map $(k,t)\mapsto w$ the volatility surface and a fixed-$t$ curve a slice \citep[``Notations'', p.~2]{exp-gatheral-jacquier-svi}. A surface is free of \emph{static arbitrage} if and only if it is free of calendar-spread arbitrage and each slice is free of butterfly arbitrage (Definition~2.1, p.~3):
+\begin{itemize}
+\item \emph{Calendar spreads.} With dividends proportional to the stock price, the surface is free of calendar-spread arbitrage if and only if $\partial_tw(k,t)\ge0$ for all $k$ and $t>0$: total variance at fixed log-moneyness cannot fall with maturity (Lemma~2.1, p.~3).
+\item \emph{Butterflies.} A slice is free of butterfly arbitrage, a non-negative implied density, if and only if
+\[ g(k)=\Big(1-\frac{kw'(k)}{2w(k)}\Big)^2-\frac{w'(k)^2}{4}\Big(\frac1{w(k)}+\frac14\Big)+\frac{w''(k)}2\ge0\ \ \text{for all }k,\qquad\lim_{k\to+\infty}d_+(k)=-\infty \]
+(eq.~(2.1) and Lemma~2.2, p.~4).
+\end{itemize}
+\emph{Raw SVI} parameterises a slice as $w(k)=a+b\{\rho(k-m)+\sqrt{(k-m)^2+\sigma^2}\}$, with $b\ge0$, $|\rho|<1$, $\sigma>0$ and $a+b\sigma\sqrt{1-\rho^2}\ge0$ so that $w\ge0$ (eq.~(3.1), p.~5). It is convex in $k$, but its parameters alone do not exclude butterfly arbitrage. Their Example~3.1, Vogt's parameters $(a,b,m,\rho,\sigma)=(-0.0410,0.1331,0.3586,0.3060,0.4153)$ at $t=1$, gives a negative density (p.~10). Their SSVI family (sec.~4) gives sufficient conditions for a whole surface free of static arbitrage.
+
+\emph{Wings.} Lee's moment formula bounds the tails model-free: the large-strike limsup of $\sigma_{BS}^2T/|x|$ is a number $\beta_R\in[0,2]$, with $\frac1{2\beta_R}+\frac{\beta_R}8-\frac12=\sup\{p:E\,S_T^{1+p}<\infty\}$, and a reciprocal formula holds for small strikes \citep[sec.~1, eq.~(1.1), p.~2; Theorems~3.2 and~3.4]{exp-lee-wings}. So total implied variance can grow at most linearly in $|k|$, with slope at most~2.
+
+\qffield{Notation} $F_t$ the forward; $k$ log-moneyness; $w$ total implied variance; $d_\pm(k)=-k/\sqrt{w}\pm\sqrt w/2$; raw SVI parameters $a,b,\rho,m,\sigma$ (here $\sigma$ is a shape parameter, not a volatility).
+
+\qffield{Conditions} The conditions are on a continuous, twice-differentiable surface. Observed quotes form a finite grid with bid--ask spreads, so ``arbitrage-free'' applies to the fitted surface, and quotes inside the spread may admit several such fits. The calendar condition needs proportional dividends (Lemma~2.1).
+
+\qffield{Practice} Own checks, \nolinkurl{notes/artefacts/volatility-options/batch60-bsm-svi-checks.py}. The quantity $g/\sqrt{2\pi w}\,e^{-d_-^2/2}$ matches $K\,\partial^2C/\partial K^2$ of the undiscounted call by finite differences. An illustrative SVI slice has $g\ge0$ on $|k|\le1.5$, while Vogt's slice has $\min g=-0.033$. Two slices with the same shape and higher $a$ at the longer maturity satisfy the calendar condition. \emph{Source discrepancy.} In the proof of Lemma~2.2 (p.~5, page image) the source writes the density as $p(k)=\partial^2C/\partial K^2|_{K=F_te^k}$ and then as $g(k)/\sqrt{2\pi w(k)}\,\exp(-d_-(k)^2/2)$. The second is the density per unit log-moneyness, $K$ times the first (checked). The sign condition, and so the lemma, is unaffected.
+
+\qffield{Pitfalls} The version read is the arXiv preprint as revised on 27 November 2024, not the journal version of 2014 that the catalogue cites; the two were not compared. Gatheral's book (\texttt{s6-surface}) was not read. Fitting a surface to market quotes, the overview's checkpoint, was not attempted.
+
+\qffield{See also} \hyperref[mod:black-scholes-merton]{Black--Scholes--Merton}; \hyperref[def:vix-variance-dividend-swaps]{the VIX and variance swaps} (variance from a strip of options).
+
+\qffield{Further reading} \texttt{s6-surface} (local and stochastic volatility, surface parameterisations).
+
+\qffield{Index} implied volatility; volatility smile; volatility skew; total implied variance; log-moneyness; volatility surface; static arbitrage; calendar-spread arbitrage; butterfly arbitrage; risk-neutral density; SVI; SSVI; moment formula; wing slope
+
+\qffield{Status} Verification: partly checked 2026-10-17 (against \texttt{exp-gatheral-jacquier-svi}, arXiv:1204.0646 as revised 27 November 2024, pp.~2--5 and~10, text layer and a page image of p.~5; \texttt{exp-lee-wings}, author manuscript of 11 August 2003, abstract and p.~2; own numerical checks). Stability: draft. Currency: theory timeless.
+\end{qfdefinition}

@@ -1,0 +1,9 @@
+vintages used: 111 (PCPI98M11 to PCPI26M5); skipped: PCPI26M8 (responses incomplete)
+signal quarters: 31 in 14 episodes: PCPI99M11, PCPI00M8, PCPI03M2, PCPI04M11, PCPI05M5, PCPI05M11, PCPI07M11, PCPI08M2, PCPI08M5, PCPI08M8, PCPI10M2, PCPI10M5, PCPI10M8, PCPI10M11, PCPI11M8, PCPI11M11, PCPI12M2, PCPI16M2, PCPI16M5, PCPI16M11, PCPI17M2, PCPI17M5, PCPI18M8, PCPI21M5, PCPI21M8, PCPI21M11, PCPI22M2, PCPI22M5, PCPI22M8, PCPI22M11, PCPI26M5
+
+response   hypothesis   signal mean   other mean   difference   Welch t   NW t (4 lags)
+dy10       > 0              +0.044       -0.019       +0.063     +0.76     +0.76
+dslope     > 0              -0.107       +0.048       -0.156     -1.44     -1.33
+oil        > 0              +0.953       +1.961       -1.008     -0.24     -0.24
+
+Verdict (Welch |t| > 2, hypothesised sign): dy10 not supported; dslope not supported; oil not supported

@@ -36,13 +36,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` repaired and retested (v2; v1 kept): outcomes now need only spot rates, CPI must be exactly two months old (monthly) or four to six months past its quarter (AUD, NZD), and ages and effective endpoints are reported (JPY August 2021; others May-September 2025). Pooled 12-month OOS R^2 -14.9% (was -15.3%), Clark-West t -0.3; the value portfolio is labelled a statistical return on monthly averages, not executable. Neither pass rule is met. Focused checks: `batch50-fx-checks.py`. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` tested (the carry factor added under a protocol recorded before the results: forecasts not supported out of sample, a carry portfolio narrowly supported). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:fx-carry-trade` (`fx-premia`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- ev:fx-valuation-factors-oos: out-of-sample tests of Gliner's other factors (equity flows, sovereign CDS, risk reversals, trade and TWI, export-partner growth, debt, GDP per capita, carry indicators), which need data not used here; relative PPP was tested on 2026-10-17 (not supported statistically or economically; `meth:fx-valuation-signals`)
+- ev:fx-valuation-factors-oos: (tested within stated bounds in the third batch of 2026-10-17) out-of-sample tests of Gliner's other factors (equity flows, sovereign CDS, risk reversals, trade and TWI, export-partner growth, debt, GDP per capita, carry indicators), which need data not used here; relative PPP was tested on 2026-10-17 (not supported statistically or economically; `meth:fx-valuation-signals`)
 
 ## Legacy candidate material
 

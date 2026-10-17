@@ -34,14 +34,15 @@ All three partly checked 2026-10-15, draft; human review outstanding. Their arte
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `ev:trend-following-evidence` resolved by merge into `def:alpha-model-taxonomy`'s pitfalls (Moskowitz, Ooi and Pedersen's abstract; Hurst, Ooi and Pedersen's 1880-2016 Exhibit 1: 7.3 percent net, 9.7 percent volatility, Sharpe 0.76, drawdowns up to 25 percent). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `meth:residual-reversion-strategy` narrowed (Avellaneda and Lee and Gatev et al. merged into the alpha taxonomy); `ev:value-carry-premia` resolved (Koijen et al., Asness, Moskowitz and Pedersen and the QMJ paper merged into `def:alpha-model-taxonomy`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: from the same legacy files, `meth:alpha-signal-combination` (`equity-long-short-construction`), `meth:strategy-production-lifecycle` (`model-governance-controls`), and the merges into `def:order-exposure-decisions`, `def:portfolio-trading`, `def:automated-trading-architecture` (`execution-trading-costs`) and `def:hft-strategies` (`hft-market-design`); also `mod:factor-risk-model`, `meth:rule-based-position-sizing`, `mod:mean-variance-portfolio-optimisation` and `mod:portfolio-transaction-cost-function` (`portfolio-construction`), and `meth:hypothesis-driven-strategy-research` and `pit:parameter-overfitting` (`backtest-inference`).
 
 ## Entry backlog
 
-- meth:residual-reversion-strategy: residual or pairs mean reversion with costs and crowding, against Narang's AAL-DAL exhibit and March 2020 (`alpha-gatev`, `alpha-residual`, `exp-khandani-lo-quant-meltdown`, unread); home pathway `statistical-arbitrage`.
-- ev:value-carry-premia: value and carry as distinct signals and the evidence for value, quality and growth premia, against Narang's use of "carry trade" for relative value (`alpha-ff1993`, `alpha-value`, `alpha-qmj`, unread); home pathway `equity-factor-premia`.
+- meth:residual-reversion-strategy: (narrowed in the third batch of 2026-10-17) residual or pairs mean reversion with costs and crowding, against Narang's AAL-DAL exhibit and March 2020 (`alpha-gatev`, `alpha-residual`, `exp-khandani-lo-quant-meltdown`, unread); home pathway `statistical-arbitrage`.
 
 ## Legacy candidate material
 

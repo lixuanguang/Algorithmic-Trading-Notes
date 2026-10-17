@@ -1,0 +1,20 @@
+BTC  file: BTC   settled in BTC  (reversed)  938 instruments, 12 expiries, strikes per expiry median 42, max 59
+ETH  file: ETH   settled in ETH  (reversed)  810 instruments, 12 expiries, strikes per expiry median 37, max 44
+USDC file: AVAX  settled in USDC (linear  )  412 instruments,  6 expiries, strikes per expiry median 29, max 57
+USDC file: BTC   settled in USDC (linear  )  606 instruments,  8 expiries, strikes per expiry median 32, max 59
+USDC file: ETH   settled in USDC (linear  )  532 instruments,  8 expiries, strikes per expiry median 36, max 44
+USDC file: HYPE  settled in USDC (linear  )  426 instruments,  6 expiries, strikes per expiry median 40, max 51
+USDC file: SOL   settled in USDC (linear  )  742 instruments,  6 expiries, strikes per expiry median 77, max 100
+USDC file: TRX   settled in USDC (linear  )  302 instruments,  6 expiries, strikes per expiry median 25, max 41
+USDC file: XRP   settled in USDC (linear  )  416 instruments,  6 expiries, strikes per expiry median 40, max 60
+
+BTC options settled in BTC (inverse): 938 instruments, open interest 390,301.2 BTC, index 81,614; zero-OI instruments 202
+  share of open interest in top 1% / 5% / 10% of instruments: 23.7% / 49.0% / 67.0%
+  largest expiries: 30OCT26 38.4%, 25DEC26 33.5%, 26MAR27 10.7%
+  largest strikes (all expiries): 95000 7.7%, 90000 6.9%, 100000 6.0%, 80000 5.9%, 70000 4.1%
+
+BTC options settled in USDC (linear): 606 instruments, open interest 2,780.7 BTC, index 81,614; zero-OI instruments 296
+  share of open interest in top 1% / 5% / 10% of instruments: 24.6% / 50.9% / 69.2%
+  largest expiries: 30OCT26 33.6%, 25DEC26 31.7%, 27NOV26 24.7%
+  largest strikes (all expiries): 83000 16.6%, 80000 4.8%, 85000 4.2%, 84000 3.9%, 75000 3.8%
+  USDC-settled BTC open interest relative to inverse: 0.7%

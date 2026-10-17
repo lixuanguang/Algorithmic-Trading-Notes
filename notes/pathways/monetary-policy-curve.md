@@ -47,13 +47,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `rule:central-bank-policy-history` narrowed (PBOC English regime and required-reserves pages; RRR cuts of 27 September 2024 and 15 May 2025). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `rule:central-bank-policy-history` unchanged (only a route was found (RBNZ's pre-1997 statements reposted on a former official's blog); the PBOC band and the full reserve-requirement history were not obtained). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:money-market-reference-rates` (`money-markets-repo-lending`); `def:currency-regimes-intervention` (`em-currencies-intervention`); `meth:macro-event-queries` (`macro-announcements-policy`).
 
 ## Entry backlog
 
-- rule:central-bank-policy-history: whether the PBOC's 2 percent band of March 2014 has since changed (its English regime page states a managed float without a band) and the full reserve-requirement history (the English pages list cuts from 2021; the 2024 and 2025 announcements were read on 2026-10-17), and evidence for 'first major central bank to publish inflation forecasts' from other central banks' dates (RBNZ pages HTTP 403); OMT's non-activation to June 2015 (Court of Justice, Gauweiler, para. 84), the PBC's 11 August 2015 fixing change (NAFMII reprint) and the Bank of England's first Inflation Report (February 1993) and fan chart (February 1996) were read on 2026-10-16
+- rule:central-bank-policy-history: (unchanged in the third batch of 2026-10-17) whether the PBOC's 2 percent band of March 2014 has since changed (its English regime page states a managed float without a band) and the full reserve-requirement history (the English pages list cuts from 2021; the 2024 and 2025 announcements were read on 2026-10-17), and evidence for 'first major central bank to publish inflation forecasts' from other central banks' dates (RBNZ pages HTTP 403); OMT's non-activation to June 2015 (Court of Justice, Gauweiler, para. 84), the PBC's 11 August 2015 fixing change (NAFMII reprint) and the Bank of England's first Inflation Report (February 1993) and fan chart (February 1996) were read on 2026-10-16
 
 ## Legacy candidate material
 

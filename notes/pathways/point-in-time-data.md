@@ -50,14 +50,16 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Audit repair: `data:holdings-insider-filing-lags` now keeps EDGAR acceptance, the official filing date (17 CFR 232.13: 5:30 p.m., 10 p.m. for Forms 3-5, 144, 13D, 13G), public dissemination and first-observed time apart, assumes no fixed post-acceptance delay, and keeps separate timestamps for amendments and later-released confidential information (15 U.S.C. 78m(f)(4); Rule 24b-2) (`batch50-filing-timestamp-checks.py`). Queue: `meth:bitemporal-reference-tables` resolved as a new entry (Fowler, 2021; own synthetic check); `ev:delisting-survivorship-rewriting` narrowed (Shumway's abstract from the BYU record; full text 403); `data:trade-correction-records` narrowed further (NYSE Daily TAQ spec v4.0: correction codes 00-12 and what records 01 and 12 carry). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `data:trade-correction-records` narrowed (three earlier Daily TAQ specifications define the correction records alike and give no time for them; Holden and Jacobsen's code archive returns 404); `ev:delisting-survivorship-rewriting` narrowed (Shumway and Warther's abstract (a $-55$ percent substitute delisting return; no Nasdaq size effect after correction) merged into `data:trading-reference-data`; Shumway's full text still refused). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-sources`, including López de Prado's release lags, backfilling and reinstatement of fundamental data); `meth:etf-trick` (`statistical-learning-foundations`); `pit:label-weight-leakage` (`financial-ml-evaluation`); `pit:backtest-cost-short-assumptions` (`backtest-inference`).
 
 ## Entry backlog
 
-- ev:delisting-survivorship-rewriting: (narrowed 2026-10-17: Shumway's abstract merged into `data:trading-reference-data`) Shumway's full text (BYU repository HTTP 403), Elton, Gruber and Blake, and Ljungqvist, Malloy and Marston (no open copy found; the CEPR version is restricted).
-- data:trade-correction-records: (narrowed further 2026-10-17: NYSE Daily TAQ Client Specification v4.0, sec. 3, correction codes and the times carried by 01 and 12 records) the time carried by 10 and 11 records, not stated in the specification; Holden and Jacobsen's DTAQ code (link 404 on 2026-10-17, not retried).
+- ev:delisting-survivorship-rewriting: (narrowed in the third batch of 2026-10-17) (narrowed 2026-10-17: Shumway's abstract merged into `data:trading-reference-data`) Shumway's full text (BYU repository HTTP 403), Elton, Gruber and Blake, and Ljungqvist, Malloy and Marston (no open copy found; the CEPR version is restricted).
+- data:trade-correction-records: (narrowed in the third batch of 2026-10-17) (narrowed further 2026-10-17: NYSE Daily TAQ Client Specification v4.0, sec. 3, correction codes and the times carried by 01 and 12 records) the time carried by 10 and 11 records, not stated in the specification; Holden and Jacobsen's DTAQ code (link 404 on 2026-10-17, not retried).
 
 ## Legacy candidate material
 

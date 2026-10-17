@@ -39,13 +39,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `ev:global-macro-returns-after-2013` empirically tested within bounds on the only public series found (Barclay Global Macro Index, January 2022 to July 2026): down-month mean -0.39 percent (t -1.5), crisis protection not supported by the pre-set rule; `ev:practitioner-rules-tested` unchanged (trade-level data missing). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:global-macro-returns-after-2013` tested (the BarclayHedge window January 2014 to July 2026 run as registered: 53 down months, mean $-0.52$ percent, $t=-3.00$; the registration statements corrected). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:macro-regime-asset-map` (`macro-regimes-stock-bond`); `meth:equity-index-valuation` (`cross-asset-style-premia`); `mod:fx-carry-trade` (`fx-premia`); `meth:curve-trades-carry-rolldown` (`curve-term-structure`); `meth:relative-performance-evaluation` (`performance-manager-evaluation`).
 
 ## Entry backlog
 
-- ev:global-macro-returns-after-2013: (tested 2026-10-17 for 2022-2026 only; see `ev:global-macro-crisis-performance`) the protocol's window from January 2014 needs an index history behind registration (BarclayHedge, Eurekahedge, HFR); the same script runs on a longer download.
+- ev:global-macro-returns-after-2013: (tested within stated bounds in the third batch of 2026-10-17) (tested 2026-10-17 for 2022-2026 only; see `ev:global-macro-crisis-performance`) the protocol's window from January 2014 needs an index history behind registration (BarclayHedge, Eurekahedge, HFR); the same script runs on a longer download.
 - ev:practitioner-rules-tested: do the Drobny practitioners' rules (1:3 against 4:1 reward-to-risk exits, re-entry counting the incurred loss, a month off after a portfolio-wide stop-out, P&L-contingent VaR limits) improve risk-adjusted results? Protocol: on trade-level data (entries, exits, sizes, P&L, targets, stops), replay each rule on the same entries; compare expectancy, Sharpe with Lo's standard error and drawdowns, with the deflated Sharpe ratio over all variants tried and a block bootstrap after stop-out events. Missing: trade-level data of a discretionary macro book; a systematic proxy on public futures would answer a different question and was not run
 
 ## Legacy candidate material

@@ -44,13 +44,15 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `conv:henry-hub-contract-terms` narrowed (a scan of 281 NYMEX filings on the CFTC's listing (September 2019 to October 2026) found one Henry Hub futures filing, Submission 20-166 (spot-month limit), and no Chapter 220 text amendment). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:crude-oil-markets` (`crude-oil-products`).
 
 ## Entry backlog
 
-- conv:henry-hub-contract-terms: (narrowed in the third batch of 2026-10-17) the amendment history of Chapter 220 after 2019 (NYMEX Submissions 16-080, 17-048, 18-465 and, on 2026-10-17, 19-158 (TAS months) and 19-198 (settlement procedures) found; the search was not exhaustive); EIA LNG export data, size, ticks, termination and Rule 220104 were read
+- conv:henry-hub-contract-terms: an exhaustive amendment history of NYMEX Chapter 220. NYMEX's filings on the CFTC's listing from September 2019 to October 2026 (281 scanned) show no Chapter 220 text amendment; Submissions 16-080, 17-048, 18-465, 19-158, 19-198 and 20-166 were read; filings before September 2019 were not scanned systematically.
 
 ## Legacy candidate material
 

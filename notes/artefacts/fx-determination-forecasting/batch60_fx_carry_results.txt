@@ -11,7 +11,7 @@ Samples (predictor available): JPY (2002, 5)-(2026, 9); GBP (1985, 1)-(2026, 2);
   SEK: n = 379, OOS R^2 vs RW = -0.17%
   NOK: n = 379, OOS R^2 vs RW = -0.35%
   DKK: n = 379, OOS R^2 vs RW = -0.77%
-  pooled OOS R^2 vs RW = -0.38%, Clark-West t = -0.85 (NW 0 lags; cross-currency correlation ignored)
+  pooled OOS R^2 vs RW = -0.38%, Clark-West t = -0.41 (scores summed by forecast-origin month, Newey-West 0 calendar-month lags); sensitivity with 1 lags: -0.35; superseded row-stacked t: -0.85
 
 == h = 12: pooled expanding OLS of ds on x, forecasts (1995, 1) onward, n = 3169
   full-sample pooled slope b = +0.00173 per percentage point (UIP benchmark -0.01000); last expanding b = +0.00201
@@ -24,7 +24,7 @@ Samples (predictor available): JPY (2002, 5)-(2026, 9); GBP (1985, 1)-(2026, 2);
   SEK: n = 368, OOS R^2 vs RW = -6.03%
   NOK: n = 368, OOS R^2 vs RW = -8.06%
   DKK: n = 368, OOS R^2 vs RW = -11.41%
-  pooled OOS R^2 vs RW = -6.66%, Clark-West t = -4.44 (NW 11 lags; cross-currency correlation ignored)
+  pooled OOS R^2 vs RW = -6.66%, Clark-West t = -1.97 (scores summed by forecast-origin month, Newey-West 11 calendar-month lags); sensitivity with 12 lags: -1.94; superseded row-stacked t: -4.44
 
 == Carry portfolio (median split on x), (1985, 1) to (2026, 8), n = 498 months
   gross: mean +2.16%/yr; net: mean +2.07%/yr, vol 5.62%/yr, Sharpe +0.37, NW t = +2.04

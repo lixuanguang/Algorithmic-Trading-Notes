@@ -1,0 +1,19 @@
+jet fuel: 1990-04-02 to 2026-10-14, 8057 days
+
+== hedge: HO contract 1; 1323 usable weekly changes 1990-04-11 to 2024-03-28; 408 roll weeks dropped
+  static h = 1.313; rolling-104 h ranged 0.808 to 1.280; full-sample (in-sample) h = 1.018
+  out-of-sample VR, static (first 260 weeks): 49.3%
+  out-of-sample VR, rolling 104 weeks: 53.8%
+  out-of-sample VR, rolling 52 weeks: 53.7%
+  first half (1997-02-20 to 2010-12-23): static 27.7%, rolling-104 30.4%
+  second half (2010-12-31 to 2024-03-28): static 73.2%, rolling-104 79.8%
+  verdict: rolling helps
+
+== hedge: WTI contract 1; 1359 usable weekly changes 1990-04-11 to 2024-04-05; 408 roll weeks dropped
+  static h = 1.354; rolling-104 h ranged 0.605 to 1.355; full-sample (in-sample) h = 1.023
+  out-of-sample VR, static (first 260 weeks): 25.3%
+  out-of-sample VR, rolling 104 weeks: 28.1%
+  out-of-sample VR, rolling 52 weeks: 27.9%
+  first half (1996-10-31 to 2010-07-16): static 12.2%, rolling-104 17.0%
+  second half (2010-07-30 to 2024-04-05): static 35.9%, rolling-104 37.1%
+  verdict: rolling helps

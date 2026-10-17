@@ -55,13 +55,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:futures-tick-size-evidence` narrowed (Dayri and Rosenbaum: ten futures in 2009 all large-tick (one-tick spreads for 72.7 to 99.6 percent of trades); merged into `res:spread-determinants`; the equity comparison and depth unchecked). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:block-trade` and `def:portfolio-trading` (`execution-trading-costs`); `res:spread-determinants`, which took the large-tick block (`execution-market-making`).
 
 ## Entry backlog
 
-- ev:futures-tick-size-evidence: (narrowed in the third batch of 2026-10-17) whether futures "often" have economically large ticks relative to comparable equities, with bounce and larger displayed depth, as the legacy principle claimed; only the general large-tick mechanism (Lehalle and Laruelle, pp. 144–148) was checked.
+- ev:futures-tick-size-evidence: the comparison with equities (bounce and displayed depth against comparable stocks), as the legacy principle claimed. Dayri and Rosenbaum show ten futures in 2009 were all large-tick (one-tick spreads for 72.7 to 99.6 percent of trades); that is in `res:spread-determinants`.
 
 ## Legacy candidate material
 

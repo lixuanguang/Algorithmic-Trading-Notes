@@ -42,3 +42,17 @@ used), so that half of the backlog item stays untested.
   R^2 (from 120 months) is positive with a Clark-West t above 1.65.
 - No other specification is part of the verdict. Any further figure (for example an executable timing rule) is
   labelled exploratory.
+
+## Correction recorded in the fourth batch of 17 October 2026 (after the results were seen)
+
+- The return above is the log return ln(C1(t1)/C2(t)). The third batch's script took the simple return
+  C1(t1)/C2(t) - 1 from the imported v2 builder, so its premium figures did not implement this protocol. The script now
+  uses the log return for heating oil; the third batch's run is kept in simple-return-2026-10-17/. The WTI and Henry
+  Hub protocols are separate and are not changed.
+- "Month-end" as implemented is the last date in the month on which EIA reports both contracts. Before about 2007
+  contract 2 is sparse, so 79 of the 361 selected dates precede the last date in the month on which EIA reports either
+  contract (12 of them by more than five days; the largest gap is 21 days, 9 August 1996). That is the last available
+  common observation, not the month's last trading day; the gap is now reported and written to the panel.
+- Expiry: EIA's own definitions (Futures Prices (NYMEX), "Contract 1"; page retrieved 2026-10-17) state the rule this
+  protocol assumed. The roll check, run on the intersection calendar, is consistent with it in 6 of 7 blocks but does
+  not prove the exact expiry date; the NYMEX rule text was still not obtained.

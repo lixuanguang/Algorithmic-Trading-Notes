@@ -52,14 +52,16 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:transaction-clock-normality` narrowed (Murphy and Izzeldin's working paper merged); `ev:meta-labelling-performance` unchanged (no open out-of-sample evaluation found (arXiv, Crossref and web searched); Joubert's journal articles are paywalled); `meth:fractional-integration-tests` resolved (MacKinnon and Nielsen's working paper merged into the fractional-differentiation entry). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `pit:label-weight-leakage` (`financial-ml-evaluation`); `def:financial-data-types` (`alternative-data-sources`); `data:trading-reference-data`, `data:market-data-levels`, `data:derived-market-statistics` (`point-in-time-data`); `mod:pca-risk-distribution-weights` (`portfolio-construction`); `pit:parameter-overfitting` (`backtest-inference`); `meth:strategy-production-lifecycle` (`model-governance-controls`).
 
 ## Entry backlog
 
-- ev:transaction-clock-normality: (narrowed in the third batch of 2026-10-17) evidence on returns sampled by trades, volume or dollars (Clark 1973, Ané and Geman 2000, whose paper was not read beyond its abstract, and the replication critique of Murphy and Izzeldin, working paper 2006, read only by the slice-32 review).
-- ev:meta-labelling-performance: (unchanged in the third batch of 2026-10-17) whether meta-labelling improves precision, F1 or after-cost results out of sample (no source identified; López de Prado's claims are unsupported in chap. 3).
+- ev:transaction-clock-normality: Clark (1973) and the body of Ané and Geman (2000) (abstract read), for the evidence on returns sampled by trades, volume or dollars; Murphy and Izzeldin's replication critique (working paper) is merged.
+- ev:meta-labelling-performance: whether meta-labelling improves precision, F1 or after-cost results out of sample: no open evaluation found (arXiv, Crossref and web searched on 2026-10-17); López de Prado's claims are unsupported in chap. 3.
 
 ## Legacy candidate material
 

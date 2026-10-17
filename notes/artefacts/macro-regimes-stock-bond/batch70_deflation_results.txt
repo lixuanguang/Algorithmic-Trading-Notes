@@ -1,0 +1,10 @@
+Deflation / disinflation row, quarterly CPI vintages (cpiQvMd.xlsx)
+vintages used: 128 (CPI94Q3 to CPI26Q2); skipped: 1
+signal quarters: 28 in 12 episodes: CPI98Q1, CPI02Q1, CPI02Q2, CPI02Q3, CPI02Q4, CPI06Q4, CPI07Q3, CPI09Q1, CPI09Q2, CPI09Q3, CPI09Q4, CPI11Q1, CPI12Q3, CPI12Q4, CPI13Q1, CPI13Q2, CPI15Q2, CPI15Q3, CPI15Q4, CPI19Q3, CPI20Q2, CPI21Q1, CPI23Q1, CPI23Q2, CPI23Q3, CPI23Q4, CPI24Q1, CPI24Q2
+
+response   role          signal mean   other mean   difference   Welch t   NW t (4 lags)
+dy10       H: < 0           +0.013       -0.029       +0.042     +0.51     +0.50
+dslope     alongside        +0.070       -0.038       +0.107     +1.20     +1.23
+oil        alongside        +5.467       -0.013       +5.480     +1.45     +1.18
+
+Verdict (dy10 < 0 with Welch |t| > 2): not supported

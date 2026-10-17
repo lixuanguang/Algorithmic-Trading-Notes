@@ -38,6 +38,8 @@ Written in the third batch of 2026-10-17 (source verification and bounded checks
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): target 30: arXiv v1 and v2 of Gatheral and Jacquier carry the same density slip, merged into `def:implied-volatility-surface`; target 28 (Leland 1985) blocked, no open copy. New entries for the option-pricing pathway are listed in `option-pricing-models`. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mech:futures-margin-settlement` (`futures-execution`, extended with Hull's generic margin account); `mech:otc-clearing-collateral`, `def:interest-rate-measures`, `mod:forward-rates-fra`, `mod:duration-convexity`, `conv:us-rate-quotation` (`rates-credit-mortgages`); `def:futures-hedge-basis`, `mod:minimum-variance-hedge-ratio` (`commodity-hedging`); `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:arbitrage` (`execution-market-making`).

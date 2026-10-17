@@ -38,13 +38,15 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `meth:time-valid-ml-experiment-record` narrowed (He, Lv, Manela and Wu's abstract merged; Levy's full text refused again (Wiley 403)). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): target 5: Kapoor and Narayanan's leakage taxonomy merged into `meth:time-valid-ml-experiment-record`, which lacks duplicate and test-window-selection checks. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:label-concurrency-uniqueness`, `meth:sample-weights-attribution-decay`, `meth:meta-labelling`, `meth:triple-barrier-labelling`, `meth:fixed-width-fractional-differencing`, `meth:event-based-sampling` (`statistical-learning-foundations`); `pit:parameter-overfitting` (`backtest-inference`); `meth:strategy-production-lifecycle` (`model-governance-controls`).
 
 ## Entry backlog
 
-- meth:time-valid-ml-experiment-record: (narrowed in the third batch of 2026-10-17) (narrowed; entry written 2026-10-17 from `latest-pit-language-models`) Levy's look-ahead study (`latest-levy-caution-llm`; SSRN refused automated retrieval) and Jansen's third edition (`alpha-jansen`).
+- meth:time-valid-ml-experiment-record: Levy's look-ahead study (`latest-levy-caution-llm`; SSRN and Wiley refused automated retrieval on 2026-10-17) and Jansen's third edition (`alpha-jansen`). `latest-pit-language-models` and He, Lv, Manela and Wu's abstract are in the entry.
 
 ## Legacy candidate material
 

@@ -13,6 +13,13 @@ unchanged.
   economic verdict: median-split long-short portfolio, one-month spot change plus the month-t interest accrual,
   less 5 bp per unit of turnover; mean > 0 with Newey-West (12 lags) t > 2. A statistical return on averaged
   prices and interbank rates, not an executable result.
+Inference repair (fourth batch of 17 October 2026, after the results were seen; the third batch's script and output
+  are kept in rowlag-2026-10-17/). The CW scores of the 7-9 currencies forecast in each month were stacked month by
+  month and given Newey-West with h-1 ROW lags, which span only one or two calendar months and treat currencies of the
+  same month as serially, not contemporaneously, dependent. The scores now keep their forecast-origin month and the
+  t statistic is fx_ppp_oos_test.panel_nw_t (sum within origin month, Bartlett over h-1 calendar months; h lags as a
+  sensitivity). Pooling weights (each currency-month 1/N), forecasts, OOS R^2 and the carry portfolio (already one
+  observation per month) are unchanged.
 Run: python3 batch60_fx_carry_test.py <folder with the FRED csv files>  (numpy). Writes batch60_fx_carry_monthly.csv.
 """
 import csv
@@ -51,7 +58,7 @@ def main(src):
         pairs = [(t, c, x[c][t], spot[c][v2.add(t, h)] - spot[c][t]) for c in v2.CCY for t in x[c] if v2.add(t, h) in spot[c]]
         pairs.sort()
         months = sorted({p[0] for p in pairs if p[0] >= FIRST_FC})
-        a_all, f_all, by_c = [], [], {}
+        a_all, f_all, o_all, by_c = [], [], [], {}
         last_b = None
         for t in months:
             tr = [p for p in pairs if v2.add(p[0], h) <= t]
@@ -63,12 +70,12 @@ def main(src):
             for p in pairs:
                 if p[0] == t:
                     fc = b[0] + b[1] * p[2]
-                    f_all.append(fc); a_all.append(p[3])
+                    f_all.append(fc); a_all.append(p[3]); o_all.append(t)
                     by_c.setdefault(p[1], []).append((fc, p[3]))
         a, f = np.array(a_all), np.array(f_all)
         r2 = 1 - ((a - f) ** 2).sum() / (a ** 2).sum()
         cw = a ** 2 - ((a - f) ** 2 - f ** 2)
-        cwt = v2.nw_t(cw, max(h - 1, 0))
+        cwt = v2.panel_nw_t(list(zip(o_all, cw)), max(h - 1, 0))
         A = np.column_stack([np.ones(len(pairs)), [p[2] for p in pairs]])
         bfull = np.linalg.lstsq(A, np.array([p[3] for p in pairs]), rcond=None)[0]
         print(f'\n== h = {h}: pooled expanding OLS of ds on x, forecasts {months[0]} onward, n = {len(a)}')
@@ -78,8 +85,9 @@ def main(src):
             if c in by_c:
                 ff = np.array([q[0] for q in by_c[c]]); aa = np.array([q[1] for q in by_c[c]])
                 print(f'  {c}: n = {len(aa)}, OOS R^2 vs RW = {(1 - ((aa - ff) ** 2).sum() / (aa ** 2).sum())*100:+.2f}%')
-        print(f'  pooled OOS R^2 vs RW = {r2*100:+.2f}%, Clark-West t = {cwt:+.2f} (NW {max(h-1,0)} lags; '
-              'cross-currency correlation ignored)')
+        print(f'  pooled OOS R^2 vs RW = {r2*100:+.2f}%, Clark-West t = {cwt:+.2f} (scores summed by forecast-origin '
+              f'month, Newey-West {max(h-1,0)} calendar-month lags); sensitivity with {h} lags: '
+              f'{v2.panel_nw_t(list(zip(o_all, cw)), h):+.2f}; superseded row-stacked t: {v2.nw_t(cw, max(h-1,0)):+.2f}')
         if h == 12:
             stat_ok = r2 > 0 and cwt > 1.65
     # economic: median-split portfolio

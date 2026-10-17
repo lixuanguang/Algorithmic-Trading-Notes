@@ -36,14 +36,16 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:credit-derivative-swap-trading-structure` narrowed (the CFTC's made-available-to-trade filings and TW SEF's 2023 submission merged). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): target 40: FCA PS24/14's four bond deferral groups merged into `rule:us-eu-bond-transparency` from an Internet Archive capture; `rule:uk-bond-transparency` narrowed to its thresholds and Handbook text. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment` (`market-making-lob` and `execution-market-making`), `def:spread-measures` (`execution-market-making`), `def:best-execution` (`market-structure-execution-quality`), `meth:transaction-cost-analysis` and `def:portfolio-trading` (`execution-trading-costs`), `mech:etf-creation-redemption` (`etf-index-closing-execution`, with Pan and Zeng's corporate bond ETF evidence). The dealer-capacity theory of the guide's `bond-swap-dealer-market-making` pathway (no note yet) was not drawn on beyond the survey's account. None of these establishes fixed-income facts on its own.
 
 ## Entry backlog
 
-- ev:credit-derivative-swap-trading-structure: (narrowed in the third batch of 2026-10-17) (narrowed 2026-10-17: CFTC clearing and SEF execution rules merged into `def:fixed-income-market-structure`) current made-available-to-trade determinations and measured shares of dealer-to-client RFQ and order-book trading; the swap readings.
-- rule:uk-bond-transparency: the U.K. bond transparency regime (FCA PS24/14 and Handbook MAR 11), kept separate from the EU's; blocked on 2026-10-17 (FCA HTTP 403, legislation.gov.uk empty response).
+- ev:credit-derivative-swap-trading-structure: measured shares of dealer-to-client RFQ against order-book trading in swaps, and the swap readings. The CFTC's clearing and SEF rules, its made-available-to-trade determinations and TW SEF's 2023 submission are merged.
+- rule:uk-bond-transparency: the size thresholds of PS24/14's Table 8 by issuer, issue size and maturity, and the Handbook text (MAR 11); the four deferral groups and the December 2025 start are in `rule:us-eu-bond-transparency`.
 
 ## Legacy candidate material
 

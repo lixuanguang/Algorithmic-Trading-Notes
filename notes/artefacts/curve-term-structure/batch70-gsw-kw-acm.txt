@@ -1,0 +1,8 @@
+GSW: 13759 days with a 10-year yield; recomputed minus published |diff| max 0.00005 pp (2003-05-21: 3.6810 vs 3.6809), 99th percentile 0.00005; three-term days 2084
+  last day 2026-10-09: recomputed 5.2514, published 5.2514
+KW vs ACM, 10-year term premium: 441 common months, (1990, 1) to (2026, 9)
+  correlation 0.863; KW - ACM mean -0.24 pp, range -2.22 to +1.18
+  months both below zero 40; KW below zero 58; ACM below zero 98
+  1990-12: KW +2.13 (1990-12-31), ACM +2.77
+  2020-06: KW -0.61 (2020-06-30), ACM -1.23
+  2026-09: KW +1.08 (2026-09-30), ACM +0.89

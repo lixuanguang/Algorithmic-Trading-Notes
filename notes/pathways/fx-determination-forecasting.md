@@ -38,13 +38,15 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` tested (the carry factor added under a protocol recorded before the results: forecasts not supported out of sample, a carry portfolio narrowly supported). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): Stage 1: the pooled Clark--West inference of the carry and PPP tests corrected to calendar-month panel standard errors (carry $h=12$: $-1.97$, not $-4.44$); verdicts unchanged; pre-correction scripts kept in `rowlag-2026-10-17/`; `batch70-fx-panel-inference-check.py` added. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:fx-carry-trade` (`fx-premia`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- ev:fx-valuation-factors-oos: (tested within stated bounds in the third batch of 2026-10-17) out-of-sample tests of Gliner's other factors (equity flows, sovereign CDS, risk reversals, trade and TWI, export-partner growth, debt, GDP per capita, carry indicators), which need data not used here; relative PPP was tested on 2026-10-17 (not supported statistically or economically; `meth:fx-valuation-signals`)
+- ev:fx-valuation-factors-oos: out-of-sample tests of Gliner's other factors (equity flows, sovereign CDS, risk reversals, trade and TWI, export-partner growth, debt, GDP per capita), which need data not used here. Relative PPP and the short-rate differential are tested: forecasts not supported against a random walk; a carry portfolio narrowly supported as a statistical return on monthly-average prices.
 
 ## Legacy candidate material
 

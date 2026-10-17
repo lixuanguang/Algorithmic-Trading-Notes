@@ -66,13 +66,15 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `res:nonlinear-hawkes-stability` resolved (Brémaud and Massoulié (1996) read from an archived copy: a signed kernel is allowed and the condition is on the $L^1$ norm of $|h|$; merged into `mod:hawkes-order-flow`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Written in slice 36 for `hft-market-design` and cross-referenced here: `res:queue-position-value`, from this pathway's reading `wide-moallemi-yuan-queue` (June 2017 revision; abstract, secs. 1--2, 4.3, 5.2 and 6 read, the value recursion of sec. 3 not checked). The cross-asset file, which listed this pathway, was routed to `execution-market-making`'s arbitrage entries (slice 36).
 
 ## Entry backlog
 
-- res:ho-stoll-dealer-pricing: check against the paper the three properties O'Hara reports for the multiperiod model (spread = risk-neutral monopoly spread plus a risk adjustment rising with the horizon; transaction uncertainty does not enter; spread independent of inventory, quotes shifted instead) \citep[sec.~2.3, pp.~35--36]{catalogue-0496}; blocked: `ho-stoll-1981` has no accessible copy, and `catalogue-0527` names no paper
+- res:ho-stoll-dealer-pricing: check against the paper the three properties O'Hara reports for the multiperiod model (spread = risk-neutral monopoly spread plus a risk adjustment rising with the horizon; transaction uncertainty does not enter; spread independent of inventory, quotes shifted instead) \citep[sec.~2.3, pp.~35--36]{catalogue-0496}; blocked: `ho-stoll-1981` has no accessible copy, and `catalogue-0527` names no paper.
 
 ## Legacy candidate material
 

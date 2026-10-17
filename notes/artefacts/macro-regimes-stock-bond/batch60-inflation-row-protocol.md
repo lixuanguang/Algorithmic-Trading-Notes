@@ -49,3 +49,30 @@ series are taken from their primary publishers instead; the definitions do not c
 - WTISPLC is replaced by EIA's monthly Cushing WTI spot price (series RWTC, monthly, dollars per barrel), the response
   being 100 ln(RWTC(m+3)/RWTC(m)). EIA's series begins in January 1986, before the CPI vintages begin.
 GS10 is the FRED file already retained for the recession test (reading_materials/batch40/empirical/fred/GS10.csv).
+
+## Correction recorded in the fourth batch of 17 October 2026, before the quarterly-vintage results were computed
+
+The first deviation above is wrong. The Philadelphia Fed does publish quarterly vintages of monthly CPI: the file is
+cpiQvMd.xlsx (column headers CPIyyQq), linked from https://www.philadelphiafed.org/surveys-and-data/real-time-data-research/cpi
+(page dated 2 October 2026; retrieved 2026-10-17, SHA-256 57d28f99...). The third batch requested pcpiqvmd.xlsx, a name
+formed from the monthly file's root, and that request failed; the failure was not evidence that no quarterly file exists.
+
+The collection documentation (specific notes for CPI and for PCPI; general notes on non-NIPA variables, last updated
+22 December 2016, sec. II and IV) says the two files are timed differently: quarterly vintages reflect data available on
+the 15th of the middle month of the quarter and include no release published after the 15th, while monthly vintages
+reflect data available just after the BLS's monthly CPI report, which may fall a few days before or after the 15th. So
+the May monthly vintage may contain April's CPI when the May quarterly vintage does not, and the two can differ around
+release day. The middle-month monthly vintage is therefore not the quarterly vintage the protocol named.
+
+The original protocol is now implemented with the actual file, in batch70_inflation_quarterly_test.py:
+- regime, signal rule, threshold, response definitions, dating (vintage month = middle month of the quarter), skip rules,
+  test and acceptance rule: exactly as in the sections "Regime, real time" to "Test and acceptance" above;
+- the second deviation (H.15 bill rate and EIA RWTC in place of FRED TB3MS and WTISPLC) still applies, because the
+  response data are unchanged;
+- the sample is whatever the quarterly file and the response series jointly allow (the first usable vintage is
+  reported, not chosen).
+The monthly-vintage run of the third batch (batch60_inflation_regime_test.py and its outputs) is kept unchanged and is
+relabelled a sensitivity analysis: "monthly middle-month vintages (PCPI), a timing sensitivity". Its figures are no
+longer the headline result. A comparison of the two files on their common vintage months (vintages compared, how often
+the latest available CPI month differs, how many signal labels change) is reported alongside, as a diagnostic only; it
+does not enter the verdict.

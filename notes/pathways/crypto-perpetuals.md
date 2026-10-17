@@ -40,16 +40,18 @@ Written in the third batch of 2026-10-17 (source verification and bounded checks
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:crypto-funding-crowding` narrowed (BIS WP 1087's dated-futures evidence and its restatements merged; a direct funding-rate study unread); `ev:crypto-dated-futures-carry` resolved (new entry `ev:crypto-dated-futures-carry` from BIS WP 1087 (archived copy)); `def:crypto-options-venue-structure` narrowed (a one-day Deribit API snapshot (inverse against USDC-settled listings, open-interest concentration) merged into `def:crypto-venue-instrument-structure`; other venues unread); `def:amm-pool-mechanics` narrowed (new entry `def:amm-pool-mechanics` from the Uniswap v2 and v3 papers; gas costs not covered); `ev:stablecoin-network-settlement-risk` narrowed (the Federal Reserve's FEDS Note on USDC and SVB merged into `def:crypto-trading-risk-layers`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): Stage 1: the BIS WP 1087 liquidation scale corrected from Table 7 (2.22 percentage points of open interest per standard deviation of carry, intercept 10.84 percent). Targets 49-57 and 63: perpetual-futures deviations (He et al.) into `mech:perpetual-funding`; Table 5 checked; an OKX snapshot beside Deribit; AMM fees, gas, reported prices, convex trades, Uniswap v4 and am-AMM into `def:amm-pool-mechanics`; CPMI-IOSCO finality into `def:crypto-trading-risk-layers`. New entries for DeFi lending, stablecoins and leverage are listed in their own pathway notes. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:best-execution`, `def:smart-order-routing` (`market-structure-execution-quality`); `def:fx-market-structure` (`fx-dealer-market-making`); `res:arbitrage-risks` (`execution-market-making`); `mech:futures-margin-settlement` (`futures-execution`); `def:securities-lending-fee-rebate` (`money-markets-repo-lending`). None of them is crypto evidence.
 
 ## Entry backlog
 
-- ev:crypto-funding-crowding: (narrowed in the third batch of 2026-10-17) whether funding rates measure crowding or leverage demand, against the legacy claim; needs empirical evidence (for example `s11-r15` or `roadmap-carry`, unread).
-- def:crypto-options-venue-structure: (narrowed in the third batch of 2026-10-17) crypto option venues, strike concentration and inverse payoffs, against the legacy "fewer venues and strikes"; belongs to `crypto-options-numeraire`.
-- def:amm-pool-mechanics: (narrowed in the third batch of 2026-10-17) constant-function pools, inventory curves and gas costs; belongs to `amm-lending`.
-- ev:stablecoin-network-settlement-risk: (narrowed in the third batch of 2026-10-17) stablecoin redemption and depeg, chain congestion, reorganisations and bridge or transfer delay; belongs to `stablecoin-pegs-runs` and the section overview.
+- ev:crypto-funding-crowding: whether funding measures positioning concentration (crowding) as distinct from leverage demand: He, Manela, Ross and von Wachter (arXiv v7, in `mech:perpetual-funding`) attribute the perpetual-spot gap to end users' leverage demand against limited arbitrage capital; `s11-r15` is unread and no position-level evidence has been read.
+- def:crypto-options-venue-structure: venues beyond Deribit and OKX (both one-day API snapshots of 17 October 2026, in `def:crypto-venue-instrument-structure`) and whether the inverse-contract dominance and expiry concentration persist across days. Belongs to `crypto-options-numeraire`.
+- def:amm-pool-mechanics: measured gas and execution costs for swaps and liquidity provision, and designs beyond Uniswap (Curve's stableswap); fee and gas theory (Milionis, Moallemi and Roughgarden), reported-price and convex-trade results (Angeris et al.), Uniswap v4 hooks and the am-AMM proposal are in the entry. Belongs to `amm-lending`.
+- ev:stablecoin-network-settlement-risk: measured incidents of chain congestion, reorganisation and bridge or transfer delay; CPMI-IOSCO's settlement-finality and money-settlement guidance (July 2022) is in `def:crypto-trading-risk-layers` and redemption and depeg in `ev:stablecoin-runs`. Belongs to `stablecoin-pegs-runs` and the section overview.
 
 ## Legacy candidate material
 

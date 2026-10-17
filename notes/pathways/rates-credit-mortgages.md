@@ -48,13 +48,15 @@ Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:fixed-inc
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `rule:otc-derivatives-reforms` narrowed (U.S. rules resolved (17 CFR 23.150-161, 43.3, 45.3) and merged into `mech:otc-clearing-collateral`; BCBS-IOSCO, prudential regulators and EMIR unread); `mod:multi-curve-fra-swap-valuation` resolved (new entry `mod:multi-curve-fra-swap-valuation` from Hull, with own checks); `ev:term-premia` resolved (Adrian, Crump and Moench and the New York Fed's file summarised and merged into `mod:forward-rates-fra`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): Stage 1: `mod:multi-curve-fra-swap-valuation` now separates the end-settled swaplet from the start-settled FRA, with the stochastic-valuation conditions and `batch70-fra-settlement-check.py`. Targets 31, 33 and 39: Bianchetti and Carlicchi's FRA table (end-settled form), Kim and Wright against ACM (correlation 0.86 over 441 months) and the BCBS-IOSCO margin framework merged; `rule:otc-derivatives-reforms` narrowed. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry-forward-price` (`volatility-options`); `mech:futures-margin-settlement` (`futures-execution`); `def:return-measures` (`performance-manager-evaluation`, from the same time-value file); `mod:minimum-variance-hedge-ratio` (`commodity-hedging`); `def:fixed-income-market-structure` (`otc-fixed-income-trading`); `mech:securities-lending-short-sale` (`money-markets-repo-lending`); `def:common-investor-contagion` (`funding-crowding`).
 
 ## Entry backlog
 
-- rule:otc-derivatives-reforms: (narrowed in the third batch of 2026-10-17) the primary rules behind Hull's account (U.S. swap execution and clearing mandates, swap data reporting, and the uncleared-margin framework phased in from 2016), with jurisdictions, scope and dates (`gap-gregory5` and the rule texts, unread).
+- rule:otc-derivatives-reforms: the U.S. prudential regulators' uncleared-margin rule and EMIR's texts, with scope and dates; the CFTC's rules and the BCBS-IOSCO framework (thresholds and phase-in) are in `mech:otc-clearing-collateral`.
 
 ## Legacy candidate material
 

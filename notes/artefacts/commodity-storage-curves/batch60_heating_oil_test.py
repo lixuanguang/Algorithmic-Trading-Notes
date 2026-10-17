@@ -11,6 +11,22 @@ inventory deviation, availability lag, Newey-West inference, out-of-sample test)
 Data (EIA, public domain; reading_materials/batch60/empirical): EER_EPD2F_PE1_Y35NY_DPG and EER_EPD2F_PE2_Y35NY_DPG
   daily (EIA labels both "New York Harbor No. 2 Heating Oil Future"; contract 2 from February 1994; both end
   5 April 2024), WDISTUS1 weekly.
+Correction (fourth batch of 17 October 2026, after the results were seen; the third batch's run is kept unchanged in
+simple-return-2026-10-17/):
+  * Return definition. The protocol records the held-contract return as a LOG return, ln(C1(t1)/C2(t)); the imported
+    v2 builder supplies the SIMPLE return C1(t1)/C2(t) - 1 (the WTI and gas protocols, which this script does not
+    change, use that). The heating-oil rows now carry r = ln(C1(t1)/C2(t)), as recorded. B, the inventory deviation,
+    the contract identity, the samples and the inference are unchanged.
+  * Calendar. "Month-end" is the last date of the month on which EIA reports BOTH contracts (the builder intersects
+    the two daily series). Before about 2007 contract 2 is sparse, so that date can be well before the month's last
+    trading day; the script now reports, for each selected month-end, the gap to the last date in the month on which
+    EIA reports EITHER contract, a proxy for the month's last trading day (EIA's calendar, not NYMEX's).
+  * Expiry. EIA's definitions (Futures Prices (NYMEX), "Contract 1") say heating-oil contracts expire on the last
+    business day of the month before delivery and that "the delivery month for Contract 1 is the calendar month
+    following the trade date". The roll check runs on the intersection calendar, so a supportive score is consistent
+    with that mapping; it does not establish the exact expiry date, which the NYMEX rule text (not obtained) would.
+  * Exploratory, chosen after the results were seen and not part of the verdict: P re-estimated on the month pairs
+    whose selected dates both equal the proxy last trading day.
 Run: python3 batch60_heating_oil_test.py <folder with EIA_*.xls>  (numpy, xlrd; a few seconds).
 Writes batch60_heating_oil_monthly.csv next to this script.
 """
@@ -50,6 +66,15 @@ def series(src, name):
 def main(src):
     c1, c2, st = series(src, 'EER_EPD2F_PE1_Y35NY_DPGd'), series(src, 'EER_EPD2F_PE2_Y35NY_DPGd'), series(src, 'WDISTUS1w')
     cal, rows, excluded = bt.build('HO', c1, c2, {}, st)
+    for x in rows:  # the protocol's log held-contract return (the builder's r is simple)
+        x['r_simple'] = x['r']
+        x['r'] = math.log(c1[x['t1']] / c2[x['t']])
+    last_any = {}
+    for d in sorted(set(c1) | set(c2)):
+        last_any[(d.year, d.month)] = d
+    for x in rows:
+        x['gap'] = (last_any[(x['t'].year, x['t'].month)] - x['t']).days
+        x['gap1'] = (last_any[(x['t1'].year, x['t1'].month)] - x['t1']).days
     print('== HO (NY Harbor No. 2 heating oil / ULSD futures; distillate stocks)')
     print(f'  calendar {cal[0]} to {cal[-1]} ({len(cal)} trading days with both contracts)')
     for t, why in excluded:
@@ -64,6 +89,12 @@ def main(src):
         print(f'    {a}-{b}: {rc[-1][0]*100:+.2f} / {rc[0][0]*100:+.2f} / {rc[1][0]*100:+.2f}  (n {rc[0][1]})')
         support.append(rc[0][0] > max(rc[-1][0], rc[1][0]))
     print(f'  roll check supports the assumed expiry in {sum(support)} of {len(support)} five-year blocks')
+    gaps = np.array([x['gap'] for x in rows])
+    worst = max(rows, key=lambda x: x['gap'])
+    print(f'  selected month-end vs last date in the month with either contract (proxy last trading day): '
+          f'equal in {int((gaps == 0).sum())} of {len(rows)}, earlier by 1-5 days in {int(((gaps > 0) & (gaps <= 5)).sum())}, '
+          f'by more than 5 days in {int((gaps > 5).sum())} (largest {worst["gap"]} days, {worst["t"]}); '
+          f'{sum(x["gap"] > 0 for x in rows if x["t"].year < 2007)} of the earlier dates fall before 2007')
     inv = [x for x in rows if x['I'] is not None]
     B = np.array([x['B'] for x in rows]); r = np.array([x['r'] for x in rows])
     print(f'  price-only sample: {rows[0]["t"]} to {rows[-1]["t"]}, n = {len(rows)}')
@@ -75,10 +106,16 @@ def main(src):
     b14, t14 = bt.ols_nw(np.array([x['B'] for x in inv14]), np.array([x['I14'] for x in inv14]))
     print(f'  S sensitivity, report lag F+14 days : beta_S = {b14[1]:+.4f}  t = {t14[1]:+.2f}  (n {len(inv14)})')
     bP, tP = bt.ols_nw(r, B)
-    print(f'  P: r on B (price-only sample)       beta_P = {bP[1]:+.4f}  t = {tP[1]:+.2f}')
+    print(f'  P: r on B (price-only sample)       beta_P = {bP[1]:+.4f}  t = {tP[1]:+.2f}  (r = log held-contract return)')
+    bPs, tPs = bt.ols_nw(np.array([x['r_simple'] for x in rows]), B)
+    print(f'  superseded simple-return P          beta_P = {bPs[1]:+.4f}  t = {tPs[1]:+.2f}')
     r2, cw, n = bt.oos(r, B)
     print(f'  P OOS (price-only, from month 121): R^2 = {r2*100:+.2f}%  Clark-West t = {cw:+.2f}  n = {n}'
           f'  (first forecast {rows[120]["t"]})')
+    exact = [x for x in rows if x['gap'] == 0 and x['gap1'] == 0]
+    be, te = bt.ols_nw(np.array([x['r'] for x in exact]), np.array([x['B'] for x in exact]))
+    print(f'  exploratory (after results; not the verdict): P on pairs whose dates are both the proxy last trading day: '
+          f'beta_P = {be[1]:+.4f}  t = {te[1]:+.2f}  n = {len(exact)}')
     ex = [x for x in rows if x['rx'] is not None]
     if ex:
         rx = np.array([x['rx'] for x in ex]); rxn = np.array([x['rxnet'] for x in ex]); bx = np.array([x['B'] for x in ex]) > 0
@@ -97,12 +134,13 @@ def main(src):
           f'scarcity {"supported" if S else "not supported"}; premium {"supported" if P else "not supported"}')
     with open(os.path.join(HERE, 'batch60_heating_oil_monthly.csv'), 'w', newline='') as fh:
         w = csv.writer(fh)
-        w.writerow(['month_end', 'next_month_end', 'held_contract_delivery', 'B_ln_c1_c2', 'r_next_settle',
-                    'inventory_week_used', 'inv_dev', 'inv_dev_lag14'])
+        w.writerow(['month_end', 'next_month_end', 'held_contract_delivery', 'B_ln_c1_c2', 'r_log_next_settle',
+                    'r_simple_superseded', 'days_before_last_date_either_contract', 'inventory_week_used', 'inv_dev',
+                    'inv_dev_lag14'])
         f = lambda v: '' if v is None else f'{v:.6f}'
         for x in rows:
             w.writerow([x['t'].isoformat(), x['t1'].isoformat(), f'{x["dC2"][0]}-{x["dC2"][1]:02d}', f'{x["B"]:.6f}',
-                        f'{x["r"]:.6f}', '' if x['F'] is None else x['F'].isoformat(), f(x['I']), f(x['I14'])])
+                        f'{x["r"]:.6f}', f'{x["r_simple"]:.6f}', x['gap'], '' if x['F'] is None else x['F'].isoformat(), f(x['I']), f(x['I14'])])
 
 
 if __name__ == '__main__':

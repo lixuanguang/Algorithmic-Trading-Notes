@@ -41,14 +41,16 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:global-macro-returns-after-2013` tested (the BarclayHedge window January 2014 to July 2026 run as registered: 53 down months, mean $-0.52$ percent, $t=-3.00$; the registration statements corrected). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog: `ev:global-macro-returns-after-2013` rewritten as complete within its stated scope; the registration blocker removed. Correction to the third-batch paragraph above: "run as registered" should read "run under the protocol recorded in the second batch"; no preregistration occurred, and the window was not registered with anyone. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:macro-regime-asset-map` (`macro-regimes-stock-bond`); `meth:equity-index-valuation` (`cross-asset-style-premia`); `mod:fx-carry-trade` (`fx-premia`); `meth:curve-trades-carry-rolldown` (`curve-term-structure`); `meth:relative-performance-evaluation` (`performance-manager-evaluation`).
 
 ## Entry backlog
 
-- ev:global-macro-returns-after-2013: (tested within stated bounds in the third batch of 2026-10-17) (tested 2026-10-17 for 2022-2026 only; see `ev:global-macro-crisis-performance`) the protocol's window from January 2014 needs an index history behind registration (BarclayHedge, Eurekahedge, HFR); the same script runs on a longer download.
-- ev:practitioner-rules-tested: do the Drobny practitioners' rules (1:3 against 4:1 reward-to-risk exits, re-entry counting the incurred loss, a month off after a portfolio-wide stop-out, P&L-contingent VaR limits) improve risk-adjusted results? Protocol: on trade-level data (entries, exits, sizes, P&L, targets, stops), replay each rule on the same entries; compare expectancy, Sharpe with Lo's standard error and drawdowns, with the deflated Sharpe ratio over all variants tried and a block bootstrap after stop-out events. Missing: trade-level data of a discretionary macro book; a systematic proxy on public futures would answer a different question and was not run
+- ev:global-macro-returns-after-2013: complete within its stated scope: the protocol's window, January 2014 to July 2026, was run on the public BarclayHedge workbook (53 down months, mean index return in them -0.52 percent, t = -3.00: crisis protection not supported), with the 2022-2026 run kept. What remains is outside that scope: the index's weighting and backfill rules, which BarclayHedge does not publish, and whether other macro indices (HFR, Eurekahedge; sign-in required) agree.
+- ev:practitioner-rules-tested: do the Drobny practitioners' rules (1:3 against 4:1 reward-to-risk exits, re-entry counting the incurred loss, a month off after a portfolio-wide stop-out, P&L-contingent VaR limits) improve risk-adjusted results? Protocol: on trade-level data (entries, exits, sizes, P&L, targets, stops), replay each rule on the same entries; compare expectancy, Sharpe with Lo's standard error and drawdowns, with the deflated Sharpe ratio over all variants tried and a block bootstrap after stop-out events. Missing: trade-level data of a discretionary macro book; a systematic proxy on public futures would answer a different question and was not run.
 
 ## Legacy candidate material
 

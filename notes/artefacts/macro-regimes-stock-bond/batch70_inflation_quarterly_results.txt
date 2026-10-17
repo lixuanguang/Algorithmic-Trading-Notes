@@ -1,0 +1,16 @@
+Quarterly CPI vintages (cpiQvMd.xlsx), the protocol as written
+vintages used: 128 (CPI94Q3 to CPI26Q2)
+skipped: 1: CPI26Q3 (responses incomplete)
+signal quarters: 34 in 13 episodes: CPI99Q4, CPI00Q1, CPI00Q2, CPI00Q3, CPI03Q2, CPI04Q3, CPI05Q1, CPI05Q2, CPI05Q4, CPI06Q3, CPI07Q4, CPI08Q1, CPI08Q2, CPI08Q3, CPI08Q4, CPI10Q1, CPI10Q2, CPI10Q3, CPI10Q4, CPI11Q3, CPI11Q4, CPI12Q1, CPI16Q4, CPI17Q1, CPI17Q2, CPI18Q3, CPI21Q2, CPI21Q3, CPI21Q4, CPI22Q1, CPI22Q2, CPI22Q3, CPI22Q4, CPI26Q2
+
+response   hypothesis   signal mean   other mean   difference   Welch t   NW t (4 lags)
+dy10       > 0              +0.031       -0.039       +0.070     +0.83     +0.78
+dslope     > 0              -0.138       +0.031       -0.168     -1.56     -1.49
+oil        > 0              -0.439       +1.774       -2.213     -0.60     -0.51
+
+Verdict (Welch |t| > 2, hypothesised sign): dy10 not supported; dslope not supported; oil not supported
+
+Diagnostic (not part of the verdict): quarterly vs monthly middle-month vintages, classifiable in both
+common vintage months: 112 (1998-11 to 2026-08); 111 of them have responses (the third batch used 111 monthly vintages)
+latest CPI month differs: 55 (monthly later in 55, quarterly later in 0)
+signal label differs: 11: 2000-02 (Q 1, M 0), 2000-05 (Q 1, M 0), 2003-02 (Q 0, M 1), 2003-05 (Q 1, M 0), 2004-08 (Q 1, M 0), 2004-11 (Q 0, M 1), 2005-02 (Q 1, M 0), 2006-08 (Q 1, M 0), 2008-11 (Q 1, M 0), 2016-02 (Q 0, M 1), 2016-05 (Q 0, M 1)

@@ -1,0 +1,8 @@
+snapshot time 2026-10-17 11:52 UTC; 1466 BTC option instruments
+  settle BTC, inverse, multiplier 0.01 BTC: 786 instruments
+  settle USD, linear, multiplier 0.01 BTC: 680 instruments
+  inverse expiries: 14
+  linear expiries: 10
+open interest USD 2.549 bn: inverse 99.2%, linear 0.8%, ? 0.0%
+largest expiries: 261225 24.7%, 261030 23.1%, 270326 16.9% (together 64.7%)
+ten largest instruments hold 21.1%; largest: BTC-USD-270326-30000-P 7.2%, BTC-USD-261225-100000-C 4.1%, BTC-USD-270326-100000-C 1.8%

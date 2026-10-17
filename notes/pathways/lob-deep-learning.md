@@ -40,13 +40,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `meth:lob-signal-transaction-usefulness` unchanged (licensed message data still required). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Slice 36, 2026-10-16, migrated this pathway's two remaining candidate files, but by content most of their blocks went elsewhere (routing exceptions recorded in `notes/migration-slices.md`): the feature-engineering file's blocks concern relative-value arbitrage, not order-book prediction, and went to `res:arbitrage-risks`, `def:trader-motives` and `meth:triple-barrier-labelling`; the data-engineering file's to `data:market-data-levels` and `data:trading-reference-data` (`point-in-time-data`), `meth:venue-market-share`, `meth:spread-volatility-regression`, `meth:intraday-deseasonalisation` and the new `meth:skill-luck-significance-tests` (`performance-manager-evaluation`). The one block on transaction-level usefulness became a backlog stub (below). No block of either file asserts a multilevel or cross-asset OFI result; those wait on the stubs already here. Artefacts: `notes/artefacts/lob-deep-learning/feature-engineering-microstructure-alpha.tex` and `microstructure-data-engineering.tex`.
 
 ## Entry backlog
 
-- meth:lob-signal-transaction-usefulness: how to judge an order-book signal by what it is worth after trading. Sourced on 2026-10-17 (in `def:order-flow-imbalance`): Briola et al.'s four backtest assumptions (infrastructure and timing, certain execution, zero impact, zero costs; arXiv v4, sec. 7, pp. 22-23) and clock-time horizons (Table 7), LOBCAST's and Kolm et al.'s cost cautions, Gould and Bonart's out-of-sample scores and Moallemi and Saglam's latency cost. Missing: a source for the capacity and crowding items, and the costed test specified in the entry, which needs licensed message data (LOBSTER samples now require a request and accepted terms)
+- meth:lob-signal-transaction-usefulness: a source for the capacity and crowding items, and the costed test specified in the entry, which needs licensed message data (LOBSTER samples now require a request and accepted terms). Briola et al.'s backtest assumptions and clock-time horizons, LOBCAST's and Kolm et al.'s cost cautions, Gould and Bonart's out-of-sample scores and Moallemi and Saglam's latency cost are in `def:order-flow-imbalance`.
 
 ## Legacy candidate material
 

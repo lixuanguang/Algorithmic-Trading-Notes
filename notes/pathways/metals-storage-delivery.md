@@ -42,13 +42,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `data:metals-market-shares-current` unchanged (LME contract specifications HTTP 403 on a second route). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:contango-backwardation-stocks` (`commodity-storage-curves`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- data:metals-market-shares-current: aluminium consumption by country (Gliner's China over 40 percent; USGS reports production, about 61 percent Chinese in 2025, not consumption), and the LME's minimum price fluctuations, which its Rulebook leaves to Exchange notices (Rule 11.3.7)
+- data:metals-market-shares-current: aluminium consumption by country (Gliner's China over 40 percent; USGS reports production, about 61 percent Chinese in 2025, not consumption), and the LME's minimum price fluctuations, which its Rulebook leaves to Exchange notices (Rule 11.3.7).
 
 ## Legacy candidate material
 

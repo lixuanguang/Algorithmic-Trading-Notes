@@ -38,13 +38,15 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:backwardation-scarcity-or-premium` tested (heating oil added under a protocol recorded before the data: scarcity supported, premium not). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): Stage 1: the heating-oil premium test rerun with the protocol's log returns (slope 0.33, $t=1.55$; OOS $R^2=-0.95$ percent), the simple-return run kept; EIA's contract definition and the sparse two-contract calendar documented. Target 41: hedging pressure from the CFTC's Commitments of Traders tested for WTI under a protocol recorded before the data: not supported. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:cost-of-carry-forward-price` (`volatility-options`); `def:futures-hedge-basis` (`commodity-hedging`); `def:agricultural-markets` (`agricultural-futures-delivery`).
 
 ## Entry backlog
 
-- ev:backwardation-scarcity-or-premium: (tested within stated bounds in the third batch of 2026-10-17) extend the corrected 2026-10-17 test (v2: scarcity supported, linear premium not supported, for WTI and Henry Hub; the exploratory executable WTI timing rule's +0.92%/month, t = 2.3, is not pre-specified) to other commodities and to the pathway's readings on hedging pressure; missing inputs: pre-2025 inventory release schedules (a conservative convention is used), TAS availability before 2019, and curve data for other commodities.
+- ev:backwardation-scarcity-or-premium: commodities beyond the three U.S. energy contracts (metals, agriculture), and hedging pressure for gas and heating oil (tested for WTI only, not supported). Data limits that remain: inventory release schedules before 2025, NYMEX's heating-oil rule text, sparse two-contract overlap before 2007, COT release delays, and TAS availability before 2019.
 
 ## Legacy candidate material
 

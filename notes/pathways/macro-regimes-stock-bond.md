@@ -38,13 +38,15 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:regime-asset-responses-tested` tested (the inflation-shock row tested on real-time CPI vintages under a protocol with two recorded deviations: no response supported). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): Stage 1: the inflation-shock row rerun on the quarterly CPI vintages the protocol named (`cpiQvMd.xlsx`; 128 vintages, 34 signals in 13 episodes; no sign supported), the monthly-vintage run kept as a timing sensitivity. Target 45: the deflation row tested on the same vintages under a recorded protocol: not supported. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:global-macro-strategy` (`multi-asset-systematic-macro`); `def:macroeconomic-indicators` (`macro-nowcasting-signals`); `def:tips-breakevens` (`rates-inflation`).
 
 ## Entry backlog
 
-- ev:regime-asset-responses-tested: (tested within stated bounds in the third batch of 2026-10-17) test the other rows of the regime map (growth, inflation, deflation, liquidity, geopolitical) and Gliner's Figure 8.3 sector phases on regimes classified with real-time data, and the recession row with other real-time rules, horizons, commodities and non-U.S. assets; the recession row was tested on 2026-10-17 with a real-time Sahm-type rule (no sign supported; `def:macro-regime-asset-map`)
+- ev:regime-asset-responses-tested: the map's growth, liquidity and geopolitical rows and Gliner's Figure 8.3 sector phases on real-time classifications, and other rules, horizons and non-U.S. assets for the rows tested. The recession, inflation-shock and deflation rows are tested on real-time vintages: no hypothesised sign is supported.
 
 ## Legacy candidate material
 

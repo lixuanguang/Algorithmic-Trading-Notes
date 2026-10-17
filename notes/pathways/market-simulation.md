@@ -46,6 +46,8 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `res:time-rescaling-theorem` resolved with a caveat by merge into `def:order-event-point-processes`: Laub, Taimre and Pollett (arXiv v1, 2015, Theorem 5, p. 18) restate Daley and Vere-Jones's Proposition 7.4.IV for the half-line, with a monotonic continuous compensator diverging almost surely; Daley and Vere-Jones's own text was not read. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): target 14: Ratliff-Crain et al.'s retest of Cont's eleven facts (eight supported intraday, three not) merged into `ev:high-frequency-stylised-facts`. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Legacy candidate material
 
 Run `python3 tools/migration_status.py` for the current counts. Slice 36 migrated the data-engineering file and removed the legacy microstructure chapter; no legacy file now lists this pathway.

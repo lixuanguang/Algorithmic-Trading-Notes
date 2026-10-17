@@ -19,7 +19,7 @@ Samples per currency: spot range; predictor-eligible range (first z, last eligib
   SEK: n = 485 ((1985, 1) to (2025, 5)), OOS R^2 vs RW = -2.48%, full-sample b = -0.0043
   NOK: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -2.25%, full-sample b = -0.0017
   DKK: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -2.69%, full-sample b = -0.0037
-  pooled OOS R^2 vs RW = -2.00%, Clark-West t = -2.14 (pooled, NW 0 lags; serial correlation across stacked currencies ignored)
+  pooled OOS R^2 vs RW = -2.00%, Clark-West t = -1.30 (scores summed by forecast-origin month, Newey-West 0 calendar-month lags); sensitivity with 1 lags: -1.18; superseded row-stacked t: -2.14
   full-sample slopes negative for 8 of 9 currencies
 
 == h = 12 months: expanding OLS of ds on z, forecasts from 1985-01
@@ -32,7 +32,7 @@ Samples per currency: spot range; predictor-eligible range (first z, last eligib
   SEK: n = 485 ((1985, 1) to (2025, 5)), OOS R^2 vs RW = -15.42%, full-sample b = -0.1572
   NOK: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -22.63%, full-sample b = -0.0996
   DKK: n = 486 ((1985, 1) to (2025, 6)), OOS R^2 vs RW = -21.71%, full-sample b = -0.1635
-  pooled OOS R^2 vs RW = -14.89%, Clark-West t = -0.31 (pooled, NW 11 lags; serial correlation across stacked currencies ignored)
+  pooled OOS R^2 vs RW = -14.89%, Clark-West t = -0.18 (scores summed by forecast-origin month, Newey-West 11 calendar-month lags); sensitivity with 12 lags: -0.17; superseded row-stacked t: -0.31
   full-sample slopes negative for 9 of 9 currencies
 
 == Value portfolio on monthly-average rates (long 3 cheapest, short 3 dearest by z), (1985, 1) to (2025, 5)

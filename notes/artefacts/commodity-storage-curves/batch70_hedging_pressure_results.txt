@@ -1,0 +1,12 @@
+COT 067651: 1844 weekly reports, 1986-01-15 to 2024-12-31
+  name "CRUDE OIL, LIGHT 'SWEET' - NEW YORK MERCANTILE EXCHANGE": 1986-01-15 to 2000-02-01
+  name "CRUDE OIL, LIGHT SWEET - NEW YORK MERCANTILE EXCHANGE": 2000-02-08 to 2022-02-01
+  name "WTI-PHYSICAL - NEW YORK MERCANTILE EXCHANGE": 2022-02-08 to 2024-12-31
+sample: 1986-01-30 to 2024-02-29, n = 458 months; report age at month-end 3-18 days
+HP: mean +0.079, sd 0.115, min -0.166, max +0.349
+H: r on HP   beta = -0.0084  NW t = -0.17
+H OOS (from month 121): R^2 = -1.11%  Clark-West t = -0.28  n = 338  (first forecast 1996-01-31)
+alongside: corr(HP, B) = -0.066
+alongside: r on B and HP   beta_B = +0.0479 (t +0.15), beta_HP = -0.0078 (t -0.16)
+
+Verdict: hedging pressure not supported

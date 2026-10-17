@@ -52,14 +52,16 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `data:trade-correction-records` narrowed (three earlier Daily TAQ specifications define the correction records alike and give no time for them; Holden and Jacobsen's code archive returns 404); `ev:delisting-survivorship-rewriting` narrowed (Shumway and Warther's abstract (a $-55$ percent substitute delisting return; no Nasdaq size effect after correction) merged into `data:trading-reference-data`; Shumway's full text still refused). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:financial-data-types` (`alternative-data-sources`, including López de Prado's release lags, backfilling and reinstatement of fundamental data); `meth:etf-trick` (`statistical-learning-foundations`); `pit:label-weight-leakage` (`financial-ml-evaluation`); `pit:backtest-cost-short-assumptions` (`backtest-inference`).
 
 ## Entry backlog
 
-- ev:delisting-survivorship-rewriting: (narrowed in the third batch of 2026-10-17) (narrowed 2026-10-17: Shumway's abstract merged into `data:trading-reference-data`) Shumway's full text (BYU repository HTTP 403), Elton, Gruber and Blake, and Ljungqvist, Malloy and Marston (no open copy found; the CEPR version is restricted).
-- data:trade-correction-records: (narrowed in the third batch of 2026-10-17) (narrowed further 2026-10-17: NYSE Daily TAQ Client Specification v4.0, sec. 3, correction codes and the times carried by 01 and 12 records) the time carried by 10 and 11 records, not stated in the specification; Holden and Jacobsen's DTAQ code (link 404 on 2026-10-17, not retried).
+- ev:delisting-survivorship-rewriting: Shumway's full text (BYU repository HTTP 403), Elton, Gruber and Blake, and Ljungqvist, Malloy and Marston (no open copy; the CEPR version is restricted). Shumway's and Shumway and Warther's abstracts are in `data:trading-reference-data`.
+- data:trade-correction-records: the time carried by correction records 10 and 11, which none of the four Daily TAQ specifications read states, and Holden and Jacobsen's DTAQ code (link 404).
 
 ## Legacy candidate material
 

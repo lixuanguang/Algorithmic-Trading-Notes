@@ -42,13 +42,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `conv:cds-standard-contract` still blocked (the 2014 ISDA Definitions are sold). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:sovereign-credit-defaults` (`sovereign-municipal`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
-- conv:cds-standard-contract: the 2014 ISDA Credit Derivatives Definitions (sold by ISDA, not read), for the current credit-event and deliverable-obligation terms; the Big Bang Protocol page and FAQ, ISDA's release of 21 February 2014 and the 2014 Definitions Protocol of 21 August 2014 were read
+- conv:cds-standard-contract: the 2014 ISDA Credit Derivatives Definitions themselves (sold by ISDA, not read), for the current credit-event and deliverable-obligation terms. The Big Bang Protocol page and FAQ, ISDA's release of 21 February 2014 and the 2014 Definitions Protocol of 21 August 2014 were read.
 
 ## Legacy candidate material
 

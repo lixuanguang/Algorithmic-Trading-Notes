@@ -28,6 +28,10 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
+Written in the fourth batch of 2026-10-17:
+
+- `data:gsw-treasury-curve`: the Federal Reserve's fitted Treasury curve: the Svensson form, its parameters and an own recomputation.
+
 ## Source verification after slice 37
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
@@ -42,13 +46,15 @@ Batch of 2026-10-17 (source verification and bounded tests, not study or human r
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:curve-inversion-after-2005` deferred (trigger review: no NBER peak after February 2020; 24 of the 27 months lie beyond the longest past announcement lag, 3 months and both episodes within it; retained). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): target 32: new entry `data:gsw-treasury-curve` (the published Svensson parameters reproduce SVENY10 on all 13,759 days to 0.00005 points). Backlog: `ev:curve-inversion-after-2005` rewritten; all 27 inverted months now have complete horizons, and only retrospective NBER dating remains, with a revisit trigger of an NBER peak announcement or April 2027. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mod:duration-convexity` (`rates-credit-mortgages`); `mod:forward-rates-fra` (`rates-credit-mortgages`); `conv:government-bond-futures` (`futures-execution`).
 
 ## Entry backlog
 
-- ev:curve-inversion-after-2005: (deferral trigger reviewed in the third batch of 2026-10-17) revisit the post-2005 outcomes once NBER dates a peak after February 2020 or the provisional horizons complete: on H.15 data (bond-equivalent bill, 2026-10-16) 27 of 43 inverted expansion months, the episodes 2022-11 to 2024-11 and 2025-03 to 2025-04, have no dated recession and incomplete or unevaluated twelve-month horizons
+- ev:curve-inversion-after-2005: retrospective NBER dating only. All 27 inverted expansion months from November 2022 (episodes 2022-11 to 2024-11 and 2025-03 to 2025-04, on H.15 data) now have complete twelve-month horizons with no recession dated; 24 lie beyond the longest past announcement lag (12 months) and 3 (2024-11, 2025-03, 2025-04) still within it. Revisit when NBER announces a business-cycle peak after February 2020, or from April 2027, when the last of the 27 months passes the longest past lag (a later dating would then need a longer lag than any before).
 
 ## Legacy candidate material
 

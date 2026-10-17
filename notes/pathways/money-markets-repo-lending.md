@@ -34,6 +34,10 @@ Written in migration slice 37, 2026-10-16, from the legacy macro chapter:
 
 - `def:money-market-reference-rates`: money-market instruments as Gliner describes them; fed funds, SOFR and the EFFR; LIBOR's end (panel after 30 June 2023, synthetic settings to 30 September 2024); EONIA discontinued on 3 January 2022 and €STR published since 2 October 2019; the LIBOR--OIS spread as a historical stress gauge. Verification partly checked 2026-10-16, stability draft.
 
+Written in the fourth batch of 2026-10-17:
+
+- `ev:money-fund-runs`: March 2020 prime-fund runs, institutional against retail (Cipriani and La Spada).
+
 ## Source verification after slice 37
 
 Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed; `data:treasury-bill-offering-schedule` resolved (TreasuryDirect: bills of 4 to 52 weeks; 4-, 6-, 8-, 13-, 17- and 26-week weekly, 52-week every four weeks, plus cash management bills). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
@@ -48,13 +52,15 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `data:post-libor-funding-stress-measures` deferred (trigger review: still no free official dated SOFR OIS series; retained). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): targets 34-38: new entry `ev:money-fund-runs` (Cipriani and La Spada); CP maturities (the BIS primer contradicts Gliner's 90-270 days), the SOFR calculation and revision rule, Schrimpf and Sushko and Copeland and Engbretson merged into `def:money-market-reference-rates`. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:broker-agency-conflicts` (`market-structure-execution-quality`); `res:arbitrage-risks` (`execution-market-making`); `mech:futures-margin-settlement` (`futures-execution`).
 
 ## Entry backlog
 
-- data:post-libor-funding-stress-measures: (deferral trigger reviewed in the third batch of 2026-10-17) which spreads research studies, beyond the OFR's index, use in LIBOR-OIS's place, and a dated series of the 3-month commercial paper minus SOFR OIS spread itself; the OFR's June 2023 replacement of its funding variables, its daily index and the Fed's May 2026 Financial Stability Report were read on 2026-10-16
+- data:post-libor-funding-stress-measures: a free, dated, official series for the 3-month commercial paper minus SOFR OIS spread (no free official SOFR OIS series, rechecked 2026-10-17), and which spreads research uses in LIBOR-OIS's place beyond the OFR's index. Deferred: revisit when an official term SOFR OIS series becomes freely available.
 
 ## Legacy candidate material
 

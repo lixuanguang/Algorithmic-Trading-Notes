@@ -22,6 +22,14 @@ Limitations kept explicit: revised CPI, not real-time vintages (a small look-ahe
   prices, not an executable trading result, and averaging induces autocorrelation in monthly changes; the carry
   leg uses three-month interbank rates (IR3TIB01), not the forward points or funding rates a trader would pay;
   the 5 bp cost per unit of turnover is an assumption. EUR is excluded (short history).
+Inference repair (fourth batch of 17 October 2026, after the results were seen; v2 as committed in 012aa19 is kept in
+  rowlag-2026-10-17/). The pooled Clark-West t stacked currency rows and applied Newey-West to the stacked vector, so it
+  ignored contemporaneous dependence across currencies (all nine are dollar rates, so their forecast errors share the
+  dollar's move) and mixed currencies at the stacking boundaries. It now uses panel_nw_t: the CW scores are summed
+  across currencies within each forecast-origin month, and the Bartlett/Newey-West long-run variance is taken over
+  calendar months (h-1 lags, the protocol's lag count, now in months; h lags as a sensitivity, because 12-month changes
+  of monthly-average prices overlap for h months, not h-1). Each currency-month keeps weight 1/N, so the pooled mean
+  and the pooled OOS R^2 are unchanged; only the standard error changes. Forecast-origin months are kept with each score.
 Run: python3 fx_ppp_oos_test.py <folder with the FRED csv files>  (numpy only; about 2 s).
 Writes fx_ppp_monthly.csv (derived panel) next to this script.
 """
@@ -110,6 +118,27 @@ def nw_t(x, lags):
     return x.mean() / math.sqrt(s2 / n)
 
 
+def panel_nw_t(rows, lags):
+    """t statistic for the mean of pooled scores rows = [(forecast-origin month, score), ...], in calendar time.
+
+    The scores are summed within each origin month (S_m, n_m rows), giving one observation per calendar month; months
+    with no rows count as zero on a complete monthly grid. With mu the pooled mean (every row weighted 1/N), the
+    long-run variance of sum_m (S_m - n_m mu) is estimated with Bartlett weights over `lags` calendar months, and
+    Var(mu) = LRV / N^2. Contemporaneous dependence across currencies is absorbed in S_m; overlap is handled by the lags.
+    With one row per month this equals nw_t."""
+    by = {}
+    for m, v in rows:
+        s, n = by.get(m, (0.0, 0))
+        by[m] = (s + v, n + 1)
+    lo, hi = min(by), max(by)
+    grid = [add(lo, k) for k in range(mdiff(hi, lo) + 1)]
+    S = np.array([by.get(m, (0.0, 0))[0] for m in grid]); n = np.array([by.get(m, (0.0, 0))[1] for m in grid])
+    N = n.sum(); mu = S.sum() / N
+    u = S - n * mu
+    lrv = u @ u + 2 * sum((1 - L / (lags + 1)) * (u[L:] @ u[:-L]) for L in range(1, lags + 1))
+    return mu / math.sqrt(lrv / N ** 2)
+
+
 def forecasts(spot, pred, c, h):
     """Expanding-OLS forecasts for currency c: list of (t, forecast, actual)."""
     ts = [t for t in sorted(pred[c]) if pred[c][t]['z'] is not None and add(t, h) in spot[c]]
@@ -162,12 +191,13 @@ def main(src):
             bsum.append(bfull[1])
             print(f'  {c}: n = {len(a)} ({fc[0][0]} to {fc[-1][0]}), OOS R^2 vs RW = {r2*100:+.2f}%, full-sample b = {bfull[1]:+.4f}')
             sse_m += ((a - f) ** 2).sum(); sse_rw += (a ** 2).sum()
-            cw_all.extend(list(a ** 2 - ((a - f) ** 2 - f ** 2)))
+            cw_all.extend(zip([x[0] for x in fc], a ** 2 - ((a - f) ** 2 - f ** 2)))
         lags = max(h - 1, 0)
-        cwt = nw_t(cw_all, lags)
+        cwt = panel_nw_t(cw_all, lags)
         r2p = 1 - sse_m / sse_rw
-        print(f'  pooled OOS R^2 vs RW = {r2p*100:+.2f}%, Clark-West t = {cwt:+.2f} (pooled, NW {lags} lags; '
-              'serial correlation across stacked currencies ignored)')
+        print(f'  pooled OOS R^2 vs RW = {r2p*100:+.2f}%, Clark-West t = {cwt:+.2f} (scores summed by forecast-origin '
+              f'month, Newey-West {lags} calendar-month lags); sensitivity with {h} lags: {panel_nw_t(cw_all, h):+.2f}; '
+              f'superseded row-stacked t: {nw_t([v for _, v in cw_all], lags):+.2f}')
         print(f'  full-sample slopes negative for {sum(b < 0 for b in bsum)} of {len(bsum)} currencies')
         if h == 12:
             stat_ok = r2p > 0 and cwt > 1.65

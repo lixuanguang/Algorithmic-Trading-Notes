@@ -36,14 +36,16 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `mech:options-clearing-exercise-assignment` narrowed (current OCC Rules 803-805 and 1803 (last modified 19 August 2025, archived copy) read and merged into the options-dealing entry: the rule text names neither random nor pro rata assignment); `def:option-complex-orders` narrowed (Cboe filing SR-CBOE-2026-081, Exhibit 5 (current Rule 5.33(g) legging text) merged). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:dealer-inventory-risk`, `meth:dealer-quote-adjustment`, `mod:inventory-based-quotes`, `def:spread-measures`, `res:spread-determinants`, `res:adverse-selection-spread-component` (`market-making-lob` and `execution-market-making`); `def:best-execution`, `def:broker-agency-conflicts` (`market-structure-execution-quality`); `conv:futures-block-efrp` (`futures-execution`), `def:portfolio-trading` (`execution-trading-costs`) and `mech:etf-creation-redemption` (`etf-index-closing-execution`). None of them is option evidence.
 
 ## Entry backlog
 
-- mech:options-clearing-exercise-assignment: (narrowed in the third batch of 2026-10-17) (narrowed 2026-10-17: OCC assignment procedures as of 2007 from an SEC release) current OCC rules (theocc.com HTTP 403) and any source linking common clearing, exercise, assignment and margin to multiple listing and fragmentation.
-- def:option-complex-orders: (narrowed in the third batch of 2026-10-17) (narrowed 2026-10-17: Cboe Rule 5.33 mechanisms from an SEC notice of 2021) the current rule text (Cboe HTTP 403) and evidence on multi-leg spreads against outrights.
+- mech:options-clearing-exercise-assignment: a source linking common clearing, exercise, assignment and margin to multiple listing and fragmentation. OCC Rules 803-805 and 1803 (archived copy, last modified 19 August 2025; they name neither random nor pro-rata assignment) are merged.
+- def:option-complex-orders: evidence on executing multi-leg spreads as complex orders against legging the outrights. The current Cboe Rule 5.33 text (SR-CBOE-2026-081, Exhibit 5) is merged.
 
 ## Legacy candidate material
 

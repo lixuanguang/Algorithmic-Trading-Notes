@@ -39,15 +39,17 @@ Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verificati
 
 Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:why-firms-hedge` narrowed (Tufano (1996) and Jin and Jorion (2006) read at abstract level and merged into the hedging entry: neither supports the value channel). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
 
+Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): target 42: static against rolling hedge ratios for a jet-fuel exposure, out of sample under a recorded protocol: rolling helps modestly (heating oil 53.8 against 49.3 percent variance reduction), merged into `mod:minimum-variance-hedge-ratio`; GARCH not run. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry-forward-price` (`volatility-options`); `mod:duration-convexity` (`rates-credit-mortgages`); `mod:factor-risk-model` (`portfolio-construction`); `def:arbitrage` (`execution-market-making`).
 
 ## Entry backlog
 
-- meth:time-varying-hedge-ratio: rolling-window and bivariate-GARCH hedge ratios and their out-of-sample variance reduction (`ec-baillie-myers-1991`, `ec-lien-tse-2002`; blocked on 2026-10-17, paywalled, no open copy found).
-- ev:why-firms-hedge: (narrowed in the third batch of 2026-10-17) (narrowed 2026-10-17: Froot, Scharfstein and Stein's theory merged) the evidence, Tufano (1996) and Jin and Jorion (2006), not obtained.
-- mod:theory-of-storage: inventories, convenience yield and the basis (home pathway `commodity-storage-curves`; `ec-working-1948`, `ec-brennan-1958`; blocked on 2026-10-17, no open copy found).
+- meth:time-varying-hedge-ratio: bivariate-GARCH hedge ratios, the checkpoint's third method, and the readings `ec-baillie-myers-1991` and `ec-lien-tse-2002` (paywalled); static against rolling OLS ratios was tested out of sample for a jet-fuel exposure (rolling helps modestly; in `mod:minimum-variance-hedge-ratio`).
+- ev:why-firms-hedge: the full texts of Tufano (1996) and Jin and Jorion (2006), for their samples and estimates; their abstracts were read and neither supports a firm-value channel. Froot, Scharfstein and Stein's theory is in the entry.
+- mod:theory-of-storage: inventories, convenience yield and the basis as Working (1948) and Brennan (1958) set them out (home pathway `commodity-storage-curves`; `ec-working-1948`, `ec-brennan-1958`: no open copy found on 2026-10-17).
 
 ## Legacy candidate material
 

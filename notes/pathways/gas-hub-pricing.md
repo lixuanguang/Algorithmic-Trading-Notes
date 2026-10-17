@@ -10,7 +10,7 @@ Pathway outcome, from the guide: explain how open access and liberalisation crea
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 37 (`notes/migration.md`), which routed here the natural-gas block of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the natural-gas block of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,29 +22,29 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 37, 2026-10-16:
+Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:natural-gas-market`: producers, shale, flaring (the legacy's regulatory explanation corrected), LNG and the Henry Hub contract as of 2013.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:henry-hub-contract-terms` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `conv:henry-hub-contract-terms` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
-Second slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:henry-hub-contract-terms` unchanged (CME and EIA access barriers). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+Second macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `conv:henry-hub-contract-terms` unchanged (CME and EIA access barriers). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 
-Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `conv:henry-hub-contract-terms` narrowed (NYMEX 16-080: delivery FOB at the buyer's interconnection point at the Henry Hub, by flow or displacement, Intra Hub Transfer accepted, from 26 July 2016). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+Source follow-up of order books and order flow / dealer models and information reviews and the macro markets and pricing review audit, 2026-10-16 (source verification, not study): `conv:henry-hub-contract-terms` narrowed (NYMEX 16-080: delivery FOB at the buyer's interconnection point at the Henry Hub, by flow or displacement, Intra Hub Transfer accepted, from 26 July 2016). The record is in `notes/source-review-records.md`, *Source follow-up of order books and order flow / dealer models and information reviews and macro markets and pricing review audit corrections*.
 
-Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:henry-hub-contract-terms` narrowed (NYMEX Chapter 220: 10,000 MMBtu with 2 percent tolerance, $0.001 per MMBtu, $0.00025 for spreads, last trade three business days before the delivery month). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `conv:henry-hub-contract-terms` narrowed (NYMEX Chapter 220: 10,000 MMBtu with 2 percent tolerance, $0.001 per MMBtu, $0.00025 for spreads, last trade three business days before the delivery month). The record is in `notes/source-review-records.md`, *Second source follow-up of the order books and order flow / macro markets and pricing reviews queue*.
 
-Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `conv:henry-hub-contract-terms` narrowed: EIA's annual U.S. LNG export series (release of 30 September 2026: 2,924 MMcf in 2013 against 5,508,984 in 2025) and two later NYMEX filings (17-048, administrative amendments to Chapter 220 effective 13 March 2017; 18-465, Rule 589 price limits) were added to `def:natural-gas-market`; a complete amendment history after 2018 was not found. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+source verification (2026-10-17) (source verification and bounded tests, not study or human review): `conv:henry-hub-contract-terms` narrowed: EIA's annual U.S. LNG export series (release of 30 September 2026: 2,924 MMcf in 2013 against 5,508,984 in 2025) and two later NYMEX filings (17-048, administrative amendments to Chapter 220 effective 13 March 2017; 18-465, Rule 589 price limits) were added to `def:natural-gas-market`; a complete amendment history after 2018 was not found. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
 
-Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `conv:henry-hub-contract-terms` narrowed further (NYMEX Submissions 19-158 on TAS eligibility and 19-198 on settlement procedures). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `conv:henry-hub-contract-terms` narrowed further (NYMEX Submissions 19-158 on TAS eligibility and 19-198 on settlement procedures). The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `conv:henry-hub-contract-terms` narrowed (a scan of 281 NYMEX filings on the CFTC's listing (September 2019 to October 2026) found one Henry Hub futures filing, Submission 20-166 (spot-month limit), and no Chapter 220 text amendment). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `conv:henry-hub-contract-terms` narrowed (a scan of 281 NYMEX filings on the CFTC's listing (September 2019 to October 2026) found one Henry Hub futures filing, Submission 20-166 (spot-month limit), and no Chapter 220 text amendment). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -56,7 +56,7 @@ Cross-referenced, not owned here: `def:crude-oil-markets` (`crude-oil-products`)
 
 ## Legacy candidate material
 
-None: the legacy chapters were all migrated by slice 37.
+None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

@@ -2,12 +2,12 @@
 key: wide-hambly-xu-yang
 pathways: [reinforcement-learning-trading]
 version: Ben Hambly, Renyuan Xu and Huining Yang, "Recent advances in reinforcement learning in finance", Mathematical Finance 33(3), 437-503, 2023 (DOI 10.1111/mafi.12382). Copy used: arXiv 2112.04553v4, 28 February 2023 (title page dated 1 March 2023), 65 pages, downloaded 2026-10-15; text layer, printed page = PDF page. The journal version was not checked
-sections: sec. 1 (p. 2); sec. 2 (pp. 3-4); sec. 2.2 (p. 7); sec. 4.2 (pp. 32-35, page images of pp. 32-33); sec. 5, sample efficiency (p. 49) (checked for migration slice 16)
+sections: sec. 1 (p. 2); sec. 2 (pp. 3-4); sec. 2.2 (p. 7); sec. 4.2 (pp. 32-35, page images of pp. 32-33); sec. 5, sample efficiency (p. 49) (checked for migration execution control review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 16 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration execution control review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

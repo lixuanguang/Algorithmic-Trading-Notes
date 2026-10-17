@@ -2,12 +2,12 @@
 key: wide-boyd-markowitz-seventy
 pathways: [portfolio-construction]
 version: Stephen Boyd, Kasper Johansson, Ronald Kahn, Philipp Schiele and Thomas Schmelzer, "Markowitz Portfolio Construction at Seventy", Journal of Portfolio Management 50(8), 117-160, July 2024. Copy used: the authors' version dated 5 January 2024, 53 pages, linked from the authors' page in the catalogue (web.stanford.edu/~boyd/papers/markowitz.html), downloaded 2026-10-15 and read through its text layer; journal pagination not checked
-sections: secs. 1.1-1.4 (pp. 3-10), 2.4 trading cost (p. 17), 3.2 (pp. 19-20), 3.4 (pp. 21-22), 4.3 (pp. 27-28), 5.6 and Table 2 (pp. 39-40), read for migration slice 28; secs. 3.3 factor model (pp. 20-21) and 4.2 softening constraints (pp. 25-27), read for slice 29; the rest not read; third batch of 2026-10-17: arXiv v1 (2401.05080) sec. 3.4, pp. 21-22, again, and the backtest's covariance paragraph, pp. 31-32, for `meth:portfolio-covariance-estimation`
+sections: secs. 1.1-1.4 (pp. 3-10), 2.4 trading cost (p. 17), 3.2 (pp. 19-20), 3.4 (pp. 21-22), 4.3 (pp. 27-28), 5.6 and Table 2 (pp. 39-40), read for migration portfolio construction review; secs. 3.3 factor model (pp. 20-21) and 4.2 softening constraints (pp. 25-27), read for risk models review; the rest not read; empirical extensions (2026-10-17): arXiv v1 (2401.05080) sec. 3.4, pp. 21-22, again, and the backtest's covariance paragraph, pp. 31-32, for `meth:portfolio-covariance-estimation`
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 28 from source checks, not from study: the headings that need your own reading are left empty. Only the sections listed were read, to check method mechanics in `mod:mean-variance-portfolio-optimisation`.
+Prepared on 2026-10-15 by migration portfolio construction review from source checks, not from study: the headings that need your own reading are left empty. Only the sections listed were read, to check method mechanics in `mod:mean-variance-portfolio-optimisation`.
 
 ## Question and claim
 

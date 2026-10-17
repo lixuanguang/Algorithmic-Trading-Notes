@@ -7,7 +7,7 @@ read:
 status: draft
 ---
 
-Prepared on 2026-10-17 by the second batch of 17 October 2026 from source checks, not from study: the headings that need your own reading are left empty. Used for `def:futures-hedge-basis`.
+Prepared on 2026-10-17 by method validation (2026-10-17) from source checks, not from study: the headings that need your own reading are left empty. Used for `def:futures-hedge-basis`.
 
 ## Question and claim
 

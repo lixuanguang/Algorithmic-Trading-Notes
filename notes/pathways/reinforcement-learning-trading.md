@@ -10,7 +10,7 @@ Pathway outcome, from the guide: formulate a trading, hedging or execution probl
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration slice 16 (`notes/migration.md`), which migrated the legacy reinforcement-learning-and-ML-in-execution file, mapped to this pathway alone. Its blocks set out a stochastic-control execution model and contrast control with learning; the model is the control-theoretic benchmark the outcome names. The entry comes from migration and source checking against Lehalle and Laruelle (`alpha-laruelle`, 2018 printing, app. A.7.3) and the arXiv version of `wide-hambly-xu-yang`, one of this pathway's required readings, read only in the passages the entry cites. That is not study of the readings: the other eleven are unread.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration execution control review (`notes/source-review-index.md`), which migrated the legacy reinforcement-learning-and-ML-in-execution file, mapped to this pathway alone. Its blocks set out a stochastic-control execution model and contrast control with learning; the model is the control-theoretic benchmark the outcome names. The entry comes from migration and source checking against Lehalle and Laruelle (`alpha-laruelle`, 2018 printing, app. A.7.3) and the arXiv version of `wide-hambly-xu-yang`, one of this pathway's required readings, read only in the passages the entry cites. That is not study of the readings: the other eleven are unread.
 
 ## Outcome in my own words
 
@@ -22,19 +22,19 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 16, 2026-10-15:
+Written in migration execution control / source review / optimal execution / high-frequency strategies reviews:
 
 - `mod:cartea-jaimungal-execution`: the Cartea–Jaimungal objective, dynamics and HJB as presented by Lehalle and Laruelle, with the appendix's inconsistencies corrected (min against sup, the half-spread in the terminal condition, the inventory term, notation, the closed forms for $h_2$ and $h_1$); units, signs, constraints and terminal treatment; the Almgren–Chriss limit; qualified parameter intuition; and the contrast between control, model-based and model-free RL, and simulator against historical data.
 
-Corrected in a follow-up the same day (`notes/migration.md`, *Slice 16 follow-up*): one consistent terminal payoff $Q_T(S_T-\psi/2-AQ_T)$, with the printed objective and its decomposition $g=H-x-qS$ kept apart under Pitfalls; a sufficient finite-value regime ($\kappa>0$, $\phi>0$, $A>b/2$, square-integrable policies and flow) and a counterexample outside it; the formal unconstrained benchmark kept apart from one-directional execution; $\sigma^2\int Q^2$ restricted to the Brownian contribution to variance; $b$ in currency per share$^2$.
+Corrected in a follow-up the same day (`notes/source-review-index.md`, *execution control review follow-up*): one consistent terminal payoff $Q_T(S_T-\psi/2-AQ_T)$, with the printed objective and its decomposition $g=H-x-qS$ kept apart under Pitfalls; a sufficient finite-value regime ($\kappa>0$, $\phi>0$, $A>b/2$, square-integrable policies and flow) and a counterexample outside it; the formal unconstrained benchmark kept apart from one-directional execution; $\sigma^2\int Q^2$ restricted to the Brownian contribution to variance; $b$ in currency per share$^2$.
 
 Verification partly checked 2026-10-15, stability draft; human review outstanding. Its artefact is `notes/artefacts/reinforcement-learning-trading/` (the legacy blocks verbatim and the numerical checks).
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `meth:hybrid-control-learning-execution` narrowed (Kolm and Ritter's preprint (archived copy) has no hybrid design; the claim stays unsupported). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `meth:hybrid-control-learning-execution` narrowed (Kolm and Ritter's preprint (archived copy) has no hybrid design; the claim stays unsupported). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -46,7 +46,7 @@ Cross-referenced, not owned here: `mod:almgren-chriss-execution`, `def:implement
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. After slice 16 no legacy file lists this pathway.
+Run `python3 tools/check_compendium.py` for the current counts. After execution control review no legacy file lists this pathway.
 
 ## What changed in my view or practice
 

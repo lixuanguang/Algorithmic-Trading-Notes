@@ -1,4 +1,4 @@
-"""Slice 33 (2026-10-16): independent checks for the order-book, order-flow and point-process entries.
+"""order books and order flow review (2026-10-16): independent checks for the order-book, order-flow and point-process entries.
 
 Each block recomputes a claim from first principles or gives a counterexample; nothing here is fitted to real data.
 Run: python3 order-flow-checks.py   (numpy, scipy; fixed seeds; about 20 s)

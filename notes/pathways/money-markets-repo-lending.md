@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price short-term cash and collateral financing,
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration slice 23 (`notes/migration.md`), which routed the lending blocks of the legacy securities-lending-and-synthetic-shorts file here, an exception to the file's map candidate `synthetic-equity-cfd-trs`: their subject is the lending market itself, which this pathway's outcome and readings cover. The entries come from migration and source checking against Harris (`alpha-harris`, chap. 7), `al-duffie` in its September 2001 working paper, `al-icma` and `al-isla` as retrieved, Regulation SHO on eCFR (October 2026) and Hu–Black's working paper. That is not study of the readings, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration securities lending and synthetic shorts review (`notes/source-review-index.md`), which routed the lending blocks of the legacy securities-lending-and-synthetic-shorts file here, an exception to the file's map candidate `synthetic-equity-cfd-trs`: their subject is the lending market itself, which this pathway's outcome and readings cover. The entries come from migration and source checking against Harris (`alpha-harris`, chap. 7), `al-duffie` in its September 2001 working paper, `al-icma` and `al-isla` as retrieved, Regulation SHO on eCFR (October 2026) and Hu–Black's working paper. That is not study of the readings, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,7 +22,7 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 23, 2026-10-15:
+Written in migration securities lending and synthetic shorts / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:street-name-beneficial-ownership`: registration, beneficial ownership, custody and permission to lend kept apart; votes follow record holdings, lent shares carry votes to the borrower, brokers vote record shares in proportion to instructions (Harris); recall to vote; record-date capture through borrowing (Hu–Black), kept apart from swap-based decoupling and disclosure.
 - `mech:securities-lending-short-sale`: locate, borrow, delivery, recall, replacement borrow and buy-in (DGP, 2001); Regulation SHO's locate (Rule 203(b)) and close-out (Rule 204(a)) as current U.S. law; ISLA's recall-to-buy-in practice; broker–customer arrangements against the institutional loan; availability against operational risks.
@@ -30,29 +30,29 @@ Written in migration slice 23, 2026-10-15:
 
 All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Their legacy wording is kept, with the rest of the file, in `notes/artefacts/synthetic-equity-cfd-trs/derivations.tex`.
 
-Written in migration slice 37, 2026-10-16, from the legacy macro chapter:
+Written in migration macro markets and pricing / source review / optimal execution / execution control reviews, from the legacy macro chapter:
 
 - `def:money-market-reference-rates`: money-market instruments as Gliner describes them; fed funds, SOFR and the EFFR; LIBOR's end (panel after 30 June 2023, synthetic settings to 30 September 2024); EONIA discontinued on 3 January 2022 and €STR published since 2 October 2019; the LIBOR--OIS spread as a historical stress gauge. Verification partly checked 2026-10-16, stability draft.
 
-Written in the fourth batch of 2026-10-17:
+Written in derivatives and empirical validation (2026-10-17):
 
 - `ev:money-fund-runs`: March 2020 prime-fund runs, institutional against retail (Cipriani and La Spada).
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed; `data:treasury-bill-offering-schedule` resolved (TreasuryDirect: bills of 4 to 52 weeks; 4-, 6-, 8-, 13-, 17- and 26-week weekly, 52-week every four weeks, plus cash management bills). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed; `data:treasury-bill-offering-schedule` resolved (TreasuryDirect: bills of 4 to 52 weeks; 4-, 6-, 8-, 13-, 17- and 26-week weekly, 52-week every four weeks, plus cash management bills). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
-Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed (OFR FSI: 3-month CP minus SOFR OIS replaces LIBOR-OIS, CP minus 3-month Treasury replaces TED, from 1 January 2022; funding contribution 9.58 on 10 October 2008, 0.96 on 30 March 2020, -0.16 on 13 October 2026). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+Second macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed (OFR FSI: 3-month CP minus SOFR OIS replaces LIBOR-OIS, CP minus 3-month Treasury replaces TED, from 1 January 2022; funding contribution 9.58 on 10 October 2008, 0.96 on 30 March 2020, -0.16 on 13 October 2026). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 
-Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` deferred (a dated CP minus SOFR OIS series needs SOFR OIS swap rates, which were not found in public data; no study replacing LIBOR-OIS was read in this batch). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+Source follow-up of order books and order flow / dealer models and information reviews and the macro markets and pricing review audit, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` deferred (a dated CP minus SOFR OIS series needs SOFR OIS swap rates, which were not found in public data; no study replacing LIBOR-OIS was read in this batch). The record is in `notes/source-review-records.md`, *Source follow-up of order books and order flow / dealer models and information reviews and macro markets and pricing review audit corrections*.
 
-Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `data:post-libor-funding-stress-measures` deferral retained: no public, dated SOFR OIS series was obtained, so the CP minus SOFR OIS spread still cannot be built. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+source verification (2026-10-17) (source verification and bounded tests, not study or human review): `data:post-libor-funding-stress-measures` deferral retained: no public, dated SOFR OIS series was obtained, so the CP minus SOFR OIS spread still cannot be built. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
 
-Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `rule:us-short-sale-margin-and-price-test` resolved by merge into `mech:securities-lending-short-sale` (12 CFR 220.12(c): 150 percent; FINRA Rule 4210(c)(2)-(3); Rule 201's 10 percent trigger and NBB restriction for the day and the next); `ev:securities-lending-fees-evidence` resolved by merge into `def:securities-lending-fee-rebate` (Sikorskaya, author version of 27 April 2026, Table 1: general collateral 0.39 percent, specials 5.61 percent mean near the Russell cutoff, 2006-2018). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `rule:us-short-sale-margin-and-price-test` resolved by merge into `mech:securities-lending-short-sale` (12 CFR 220.12(c): 150 percent; FINRA Rule 4210(c)(2)-(3); Rule 201's 10 percent trigger and NBB restriction for the day and the next); `ev:securities-lending-fees-evidence` resolved by merge into `def:securities-lending-fee-rebate` (Sikorskaya, author version of 27 April 2026, Table 1: general collateral 0.39 percent, specials 5.61 percent mean near the Russell cutoff, 2006-2018). The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `data:post-libor-funding-stress-measures` deferred (trigger review: still no free official dated SOFR OIS series; retained). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `data:post-libor-funding-stress-measures` deferred (trigger review: still no free official dated SOFR OIS series; retained). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): targets 34-38: new entry `ev:money-fund-runs` (Cipriani and La Spada); CP maturities (the BIS primer contradicts Gliner's 90-270 days), the SOFR calculation and revision rule, Schrimpf and Sushko and Copeland and Engbretson merged into `def:money-market-reference-rates`. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): targets 34-38: new entry `ev:money-fund-runs` (Cipriani and La Spada); CP maturities (the BIS primer contradicts Gliner's 90-270 days), the SOFR calculation and revision rule, Schrimpf and Sushko and Copeland and Engbretson merged into `def:money-market-reference-rates`. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -64,7 +64,7 @@ Cross-referenced, not owned here: `res:synthetic-short-put-call` (`synthetic-equ
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. No legacy file names this pathway as its map candidate.
+Run `python3 tools/check_compendium.py` for the current counts. No legacy file names this pathway as its map candidate.
 
 ## What changed in my view or practice
 

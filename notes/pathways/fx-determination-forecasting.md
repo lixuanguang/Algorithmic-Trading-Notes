@@ -10,7 +10,7 @@ Pathway outcome, from the guide: test exchange-rate forecasts against a random w
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 37 (`notes/migration.md`), which routed here the FX valuation block of the legacy chapter; `02_transmission_maps.tex` named this pathway as a candidate. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the FX valuation block of the legacy chapter; `02_transmission_maps.tex` named this pathway as a candidate. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,23 +22,23 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 37, 2026-10-16:
+Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `meth:fx-valuation-signals`: Gliner's currency factors from equity flows to rate differentials, with his Balassa--Samuelson and Meese--Rogoff descriptions corrected.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:fx-valuation-factors-oos` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:fx-valuation-factors-oos` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
-Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` empirically tested for one factor, relative PPP (own bounded test, protocol fixed before computing; `notes/artefacts/fx-determination-forecasting/fx_ppp_oos_test.py`, results and panel beside it): for nine currencies against the dollar, 1985 to 2021-2026, the real-exchange-rate deviation has the expected sign in-sample but loses to a random walk out of sample (pooled 12-month OOS R^2 -15.3 percent), and a cheap-minus-dear portfolio earns about zero; written into `meth:fx-valuation-signals`. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+source verification (2026-10-17) (source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` empirically tested for one factor, relative PPP (own bounded test, protocol fixed before computing; `notes/artefacts/fx-determination-forecasting/fx_ppp_oos_test.py`, results and panel beside it): for nine currencies against the dollar, 1985 to 2021-2026, the real-exchange-rate deviation has the expected sign in-sample but loses to a random walk out of sample (pooled 12-month OOS R^2 -15.3 percent), and a cheap-minus-dear portfolio earns about zero; written into `meth:fx-valuation-signals`. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
 
-Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` repaired and retested (v2; v1 kept): outcomes now need only spot rates, CPI must be exactly two months old (monthly) or four to six months past its quarter (AUD, NZD), and ages and effective endpoints are reported (JPY August 2021; others May-September 2025). Pooled 12-month OOS R^2 -14.9% (was -15.3%), Clark-West t -0.3; the value portfolio is labelled a statistical return on monthly averages, not executable. Neither pass rule is met. Focused checks: `batch50-fx-checks.py`. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` repaired and retested (v2; v1 kept): outcomes now need only spot rates, CPI must be exactly two months old (monthly) or four to six months past its quarter (AUD, NZD), and ages and effective endpoints are reported (JPY August 2021; others May-September 2025). Pooled 12-month OOS R^2 -14.9% (was -15.3%), Clark-West t -0.3; the value portfolio is labelled a statistical return on monthly averages, not executable. Neither pass rule is met. Focused checks: `fx-checks.py`. The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` tested (the carry factor added under a protocol recorded before the results: forecasts not supported out of sample, a carry portfolio narrowly supported). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:fx-valuation-factors-oos` tested (the carry factor added under a protocol recorded before the results: forecasts not supported out of sample, a carry portfolio narrowly supported). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): Stage 1: the pooled Clark--West inference of the carry and PPP tests corrected to calendar-month panel standard errors (carry $h=12$: $-1.97$, not $-4.44$); verdicts unchanged; pre-correction scripts kept in `rowlag-2026-10-17/`; `batch70-fx-panel-inference-check.py` added. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): Stage 1: the pooled Clark--West inference of the carry and PPP tests corrected to calendar-month panel standard errors (carry $h=12$: $-1.97$, not $-4.44$); verdicts unchanged; pre-correction scripts kept in `rowlag-2026-10-17/`; `fx-panel-inference-check.py` added. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -50,7 +50,7 @@ Cross-referenced, not owned here: `mod:fx-carry-trade` (`fx-premia`); `def:macro
 
 ## Legacy candidate material
 
-None: the legacy chapters were all migrated by slice 37.
+None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

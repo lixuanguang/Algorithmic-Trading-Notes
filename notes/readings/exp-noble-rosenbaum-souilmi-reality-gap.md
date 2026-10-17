@@ -7,7 +7,7 @@ read:
 status: draft
 ---
 
-Prepared on 2026-10-16 by the source follow-up of slices 33-36 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-16 by the source follow-up of order books and order flow / dealer models and information reviews from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

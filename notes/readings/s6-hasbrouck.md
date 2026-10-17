@@ -2,12 +2,12 @@
 key: s6-hasbrouck
 pathways: [execution-market-making, market-making-lob, price-impact-execution, market-simulation]
 version: Joel Hasbrouck, Empirical Market Microstructure: The Institutions, Economics, and Econometrics of Securities Trading, Oxford University Press, 2007 (ISBN 978-0-19-530164-9); local PDF with a text layer, outside the repository (printed page = PDF page - 11)
-sections: secs. 3.2, 3.4, 4.4-4.5, 9.6-9.8.1 (pp. 87-92, page image of p. 91; slice 9), 5.4.2, 5.5, 8.1-8.7, chap. 11, secs. 14.2.2 and 14.3.3 (pp. 24-27, 29-30, 38-39, 49, 53, 67-75, 106-117, 148, 150-151; checked for migration slices 3 to 5); sec. 9.7, pp. 89-90; sec. 15.2.3, pp. 163-164; note 1 to chap. 4 and note 1 to chap. 9, p. 180 (slice 33); slice 35: chap. 1, secs. 1.1-1.3 (pp. 3-6), chap. 2, sec. 2.4 (pp. 17-19); slice 36: chap. 10, secs. 10.2-10.3 and the data discussion that follows (pp. 99-105)
+sections: secs. 3.2, 3.4, 4.4-4.5, 9.6-9.8.1 (pp. 87-92, page image of p. 91; impact estimation review), 5.4.2, 5.5, 8.1-8.7, chap. 11, secs. 14.2.2 and 14.3.3 (pp. 24-27, 29-30, 38-39, 49, 53, 67-75, 106-117, 148, 150-151; checked for migration spread and inventory models / information and price discovery reviews); sec. 9.7, pp. 89-90; sec. 15.2.3, pp. 163-164; note 1 to chap. 4 and note 1 to chap. 9, p. 180 (order books and order flow review); market design and liquidity review: chap. 1, secs. 1.1-1.3 (pp. 3-6), chap. 2, sec. 2.4 (pp. 17-19); dealer models and information review: chap. 10, secs. 10.2-10.3 and the data discussion that follows (pp. 99-105)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 3 from source checks, not from study: the headings that need your own reading are left empty. The book is a required reading of the section overview route `execution-market-making`, not of `market-making-lob`. A second local file under Hasbrouck's name is his 2004 lecture-notes draft, not this book, and was not used.
+Prepared on 2026-10-15 by migration spread and inventory models review from source checks, not from study: the headings that need your own reading are left empty. The book is a required reading of the section overview route `execution-market-making`, not of `market-making-lob`. A second local file under Hasbrouck's name is his 2004 lecture-notes draft, not this book, and was not used.
 
 ## Question and claim
 
@@ -45,11 +45,11 @@ Prepared on 2026-10-15 by migration slice 3 from source checks, not from study: 
 
 `def:spread-measures`, `res:roll-spread-estimator`, `res:spread-component-identification`, `mod:inventory-based-quotes`, `def:volatility-components`; also cited in `res:adverse-selection-spread-component`, `def:fundamental-value` and `meth:order-flow-impact-regression` (contrast with Harris's fundamental value).
 
-Slice 33: `meth:trade-sign-classification`, `def:market-clocks-durations`, `ev:high-frequency-stylised-facts` (intraday seasonality note).
+order books and order flow review: `meth:trade-sign-classification`, `def:market-clocks-durations`, `ev:high-frequency-stylised-facts` (intraday seasonality note).
 
-Slice 35: `def:market-functions` (Walrasian price, p. 4), `def:liquidity-dimensions` (depth, breadth and resiliency, pp. 4-5; breadth as many participants, unlike Harris's width), `def:trader-motives` (reversible liquidity roles, p. 5), `mech:venue-competition-fragmentation` (the liquidity externality as a network externality, p. 5), `def:trading-sessions-execution-systems` (auctions, fixings, random stops and deadlines, pp. 17-18), `meth:venue-market-share` (uses of closing prices, p. 18).
+market design and liquidity review: `def:market-functions` (Walrasian price, p. 4), `def:liquidity-dimensions` (depth, breadth and resiliency, pp. 4-5; breadth as many participants, unlike Harris's width), `def:trader-motives` (reversible liquidity roles, p. 5), `mech:venue-competition-fragmentation` (the liquidity externality as a network externality, p. 5), `def:trading-sessions-execution-systems` (auctions, fixings, random stops and deadlines, pp. 17-18), `meth:venue-market-share` (uses of closing prices, p. 18).
 
-Slice 36: `mech:venue-competition-fragmentation` (price discovery across venues, the VECM and information shares, chap. 10, pp. 99-102) and `data:market-data-levels` (time aggregation, timestamp quality and sequencing across markets, the public-awareness time, pp. 104-105).
+dealer models and information review: `mech:venue-competition-fragmentation` (price discovery across venues, the VECM and information shares, chap. 10, pp. 99-102) and `data:market-data-levels` (time aggregation, timestamp quality and sequencing across markets, the public-awareness time, pp. 104-105).
 
 ## Open questions
 

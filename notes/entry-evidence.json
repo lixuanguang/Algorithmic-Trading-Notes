@@ -1,0 +1,1018 @@
+{
+  "def:commodity-indices-risk-return": {
+    "source": "compendium/commodity-investing-premia/commodity-indices.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~299--300, with Table~10.1; index methodologies not read at that stage, see below; macro markets and pricing review follow-up, 2026-10-16: Dunsby and Nelson (2010) read for the 1991 origin and back-filling; S\\&P Dow Jones Indices pages and methodology refused automated access (HTTP 403), so the launch date and variant definitions rest on search listings of S\\&P pages, not on reading them; second follow-up, 2026-10-16: S\\&P's \\emph{S\\&P GSCI Methodology} (August 2026) and \\emph{Why S\\&P GSCI?} (November 2024), as browser-printed copies supplied by the user after automated access was refused (HTTP 403), read at the pages cited, giving the exact launch date and the ER and TR definitions; the Goldman Sachs 2007 note behind Gliner's table not read, so its return variant stays unresolved; the Bloomberg Commodity Index methodology of February 2026 read, above). Stability: draft. Currency: figures to 2006; ETF details as of 2013."
+  },
+  "mech:cds-contract-credit-events": {
+    "source": "compendium/corporate-credit-capital/credit-default-swaps.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~272--279; settlement equivalence computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: ISDA's Big Bang Protocol page and the 9 and 19 March 2012 Greece releases read; second follow-up, 2026-10-16: the protocol FAQ's coverage, notice, tolling, settlement and 100/500 answers read; the 2014 Definitions, a purchased document, not read; second source follow-up, 2026-10-16: ISDA's release of 21 February 2014 on the 2014 Definitions; source verification (2026-10-17): the ISDA 2014 Credit Derivatives Definitions Protocol of 21 August 2014, PDF pp.~1 and~13, and its web page). Stability: draft. Currency: Gliner's account as of 2013, largely pre-2009 practice."
+  },
+  "def:us-dollar-dxy-sdr": {
+    "source": "compendium/currency-markets/macro-fx.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~179--188; the IMF's SDR factsheet as retrieved; macro markets and pricing review follow-up, 2026-10-16: ICE's U.S. Dollar Index FAQ of June 2015 and the BIS 2025 preliminary results on currency shares read). Stability: draft. Currency: Gliner's figures as of 2013; SDR basket as of 2022."
+  },
+  "def:currency-regimes-intervention": {
+    "source": "compendium/currency-markets/macro-fx.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~185--194, and chap.~11, pp.~360--363; second macro markets and pricing review follow-up, 2026-10-16: the Ilzetzki--Reinhart--Rogoff classification workbook, 1940--2025, read for nineteen currencies at December 2013 and December 2025). Stability: draft. Currency: regime grouping as of 2013; de facto codes to December 2025."
+  },
+  "meth:fx-valuation-signals": {
+    "source": "compendium/currency-markets/macro-fx.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~195--209; source verification (2026-10-17): own PPP test on FRED data, rerun as v2 after an audit, reported in Pitfalls; empirical extensions (2026-10-17): carry factor added; derivatives and empirical validation (2026-10-17): pooled Clark--West inference of both tests corrected to calendar-month panel standard errors, verdicts unchanged). Stability: draft. Currency: Gliner's examples as of 2012--2013; forecasts to 2021--2025 by currency, outcomes to 2026."
+  },
+  "mod:fx-carry-trade": {
+    "source": "compendium/currency-markets/macro-fx.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~206--209, with Table~7.6; the ranking example computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: quote, compounding and return conventions stated, exact and first-order forms checked numerically, and the Brunnermeier--Nagel--Pedersen abstract read; second follow-up, 2026-10-16: separate accrual fractions for the two rates, the log excess return distinguished from the arithmetic P\\&L, and an ACT/360 against ACT/365 example computed; the Brunnermeier--Nagel--Pedersen working paper read at pp.~8 and 12--13; source follow-up of 2026-10-16: Menkhoff et al.'s accepted version, secs.~II and~V.C and Table~I, from City, University of London's repository). Stability: draft. Currency: Gliner's table as of September 2013; carry statistics to August 2009."
+  },
+  "ev:cip-deviations": {
+    "source": "compendium/currency-markets/macro-fx.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): NBER WP~23170, abstract and pp.~1--9, text layer). Stability: draft. Currency: evidence on 2010--2016; owning pathway \\texttt{fx-cip-dollar-funding}."
+  },
+  "def:crypto-venue-instrument-structure": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-15 (\\texttt{s6-makarov}, LSE FMG Discussion Paper 782 of December 2018, abstract and pp.~1--3, text layer; \\texttt{roadmap-perpetual-pricing}, arXiv v2 of 3 September 2024, pp.~2--3 and~7; \\texttt{gapclose-deribit-rules}, Rulebook version 2.0 applicable 13 August 2026, retrieved 15 October 2026, Rules 1.2 and~11.3 and Appendix~A; empirical extensions (2026-10-17): Deribit public API instrument and book-summary responses of 17 October 2026; derivatives and empirical validation (2026-10-17): an OKX API snapshot of 17 October 2026). Stability: draft. Currency: fragmentation evidence 2017--2018; Deribit terms as of October 2026."
+  },
+  "mech:perpetual-funding": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-15 (\\texttt{roadmap-perpetual-pricing}, arXiv v2 of 3 September 2024, pp.~2, 4, 7--8 and~12, text layer; \\texttt{roadmap-perpetual-fundamentals}, arXiv v7 of 17 September 2026, abstract; \\texttt{gapclose-deribit-rules}, Funding Specifications edited 27 July 2026 and Rulebook v2.0 Rule 11.4, retrieved 15 October 2026 through the help-centre API; formula and examples recomputed by script; derivatives and empirical validation (2026-10-17): He, Manela, Ross and von Wachter, arXiv v7, sec.~1). Stability: draft. Currency: Deribit terms as of October 2026; model results timeless."
+  },
+  "def:crypto-trading-risk-layers": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-15 (\\texttt{gapclose-deribit-rules}, Rulebook version 2.0 applicable 13 August 2026, page updated 15 September 2026, retrieved 15 October 2026 through the help-centre API: Rules 1.1, 2 (guidance on custody), 10.1--10.11 and the definitions of Auto-Deleveraging and Insurance Fund; the Exchange Membership Terms not read; Rules 10.6--10.11 rechecked against the same version on 15 October 2026, correcting the socialised-loss trigger and its discretion; derivatives and empirical validation (2026-10-17): CPMI--IOSCO's July 2022 guidance, secs.~2 and~3.4). Stability: draft. Currency: Deribit as of October 2026."
+  },
+  "ev:crypto-dated-futures-carry": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{roadmap-carry}, BIS Working Paper 1087, revision of 1 October 2025, Internet Archive capture, PDF pp.~1--9, text layer; derivatives and empirical validation (2026-10-17): PDF pp.~7 and~25 reread and Table~7, PDF p.~44, read as a page image, correcting the liquidation units). Stability: draft. Currency: evidence to July 2024."
+  },
+  "def:amm-pool-mechanics": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{uniswap-v2-2020}, the v2 Core whitepaper of March 2020, secs.~1 and~3.2.1, text layer; \\texttt{s6-uniswap}, the v3 Core whitepaper of March 2021, secs.~1--2, text layer and a page image of p.~2; own numerical checks; derivatives and empirical validation (2026-10-17): Milionis et al., Angeris and Chitra, Angeris et al.\\ (two papers), the Uniswap v4 whitepaper and the am-AMM paper). Stability: draft. Currency: protocol designs of 2020--2021."
+  },
+  "mech:defi-lending-liquidation": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): Qin et al., arXiv v2, secs.~1--2; Perez et al., arXiv v6, abstract; Aave V3 Technical Paper, PDF pp.~6--8 and~14; text layers). Stability: draft. Currency: protocol designs of 2019--2022; owning pathway \\texttt{defi-lending-liquidations}."
+  },
+  "ev:stablecoin-runs": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): Staff Report~1073 abstract and introduction; BIS WP~1270 abstract; text layers). Stability: draft. Currency: evidence 2021--2025; owning pathway \\texttt{stablecoin-pegs-runs}."
+  },
+  "rule:stablecoin-standards": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): FSB final report of 17 July 2023, Recommendation~9 and n.~2, text layer). Stability: draft. Currency: standards as of 2023; owning pathway \\texttt{stablecoin-pegs-runs}."
+  },
+  "mech:crypto-auto-deleveraging": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): arXiv v3, abstract and introduction, text layer). Stability: draft. Currency: event of October 2025; owning pathway \\texttt{crypto-leverage-liquidations}."
+  },
+  "mod:liquidity-spirals": {
+    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): NBER WP~12939, sec.~1 and Propositions~1--3, text layer). Stability: draft. Currency: model of 2007--2009. Owning pathway: \\texttt{crypto-leverage-liquidations}."
+  },
+  "def:contango-backwardation-stocks": {
+    "source": "compendium/energy-commodities/commodity-curves.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~291--298; the trade-adjusted balance computed in the topic review check script; source verification (2026-10-17): own test on EIA data, rerun as v2 after an audit, reported in Pitfalls; synthetic checks of contract identity and report availability in \\nolinkurl{notes/artefacts/commodity-storage-curves/energy-checks.py}). Stability: draft. Currency: timeless concepts; Gliner's examples as of 2013; test data to February 2024 (complete months); heating-oil extension added 2026-10-17 (empirical extensions (2026-10-17)), its premium test rerun with the protocol's log returns and EIA's contract definition read in derivatives and empirical validation (2026-10-17)."
+  },
+  "def:futures-hedge-basis": {
+    "source": "compendium/energy-commodities/futures-hedging.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~3, pp.~70--79 and 89--90, printed page $=$ PDF page $-1$; five examples recomputed; the basis components and hedge-ratio wording rechecked 2026-10-16, pp.~77--79; the general-$h$ expression derived here; the sign convention for negative $h$ restated 2026-10-16; source verification (2026-10-17): \\texttt{ec-froot-scharfstein-stein-1993} as NBER WP~4084, abstract and pp.~12--14, by OCR of page images; empirical extensions (2026-10-17): \\texttt{ec-tufano-1996} and \\texttt{ec-jin-jorion-2006}, abstracts from RePEc). Stability: draft. Currency: concepts timeless; contract examples as of 2021."
+  },
+  "mod:minimum-variance-hedge-ratio": {
+    "source": "compendium/energy-commodities/futures-hedging.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~3, pp.~79--90; Table~3.2 recomputed, the variance minimised numerically and the curve plotted; the derivation is the entry's own; a negative-covariance case computed 2026-10-16; derivatives and empirical validation (2026-10-17): an own out-of-sample test of static against rolling ratios for jet fuel). Stability: draft. Currency: timeless; data as of Hull's example."
+  },
+  "def:fx-market-structure": {
+    "source": "compendium/execution-market-making/fx-dealing.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{exp-fx-algos}, BIS Markets Committee report of October 2020, pp.~5, 11--13, 21--24, 27--28 and~43, text layer; \\texttt{dm-cartea-jaimungal-walton-2019} in arXiv~1806.04460v1, p.~2; and \\texttt{cfd-butz-oomen-2019} in its accepted version, pp.~1--2). Stability: draft. Currency: market structure as described in 2018--2020. macro markets and pricing / source review / optimal execution / execution control reviews: the legacy macro chapter's FX market-structure block merged; checked against \\texttt{s7-gliner}, chap.~7, PDF pp.~179--184, and the BIS 2025 Triennial Survey's preliminary results page."
+  },
+  "mod:fx-internalisation-horizon": {
+    "source": "compendium/execution-market-making/fx-dealing.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{cfd-butz-oomen-2019} in the accepted version on LSE Research Online, abstract and pp.~1--2, 8 and~11, page images of pp.~8 and~11, calibration recomputed; pp.~5--7 with page images, the conditional and all-trade horizons separated in a correction the same day; and \\texttt{exp-fx-algos}, p.~27). Stability: draft. Currency: model timeless; calibration from the 2016 BIS survey."
+  },
+  "mech:fx-last-look": {
+    "source": "compendium/execution-market-making/fx-dealing.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{exp-fx-code}, FX Global Code updated December 2024, pp.~1 and 22--23, page images of pp.~22--23; the Deutsche Bank cover sheet completed 18 September 2025, sec.~C.4; \\texttt{exp-fx-algos}, pp.~11, 23 and~27; and \\texttt{dm-cartea-jaimungal-walton-2019}, arXiv v1, abstract and p.~2). Stability: draft. Currency: the Code as of December 2024; provider practice as of September 2025."
+  },
+  "def:hft-strategies": {
+    "source": "compendium/execution-market-making/high-frequency-trading.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the SEC's concept release, Release 34-61358 dated 14 January 2010, official PDF, sec.~IV.B, pp.~45--58, text layer; and the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~158 and~163; in systematic-investing architecture review, \\texttt{s7-narang}, third edition, Wiley 2024, chap.~7, pp.~129--134, chap.~15, pp.~291--293, and Appendix, pp.~311--314, text layers, and FINRA Rule~5270 as displayed on 15 October 2026; market design and liquidity review: \\texttt{alpha-laruelle}, pp.~5--6 and~22; dealer models and information review: pp.~20--21 and 170--171). Stability: draft. Currency: U.S. equities as of January 2010; European venues as of the 2018 printing; Narang's account as of 2024; FINRA Rule~5270 as displayed on 15 October 2026, the only current rule checked; no market share checked and the historical figures dated as given."
+  },
+  "res:latency-arbitrage-arms-race": {
+    "source": "compendium/execution-market-making/high-frequency-trading.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the authors' open-access published version, \\emph{Quarterly Journal of Economics} 130(4), 2015, hosted by the University of Maryland, text layer of pp.~1547--1556 and 1576--1592, page images of pp.~1589--1590; quote ownership in Proposition~1(i), p.~1583, rechecked in execution control review; eqs.~(3) and (5)--(7) rederived and checked numerically; and the text layer of \\texttt{alpha-laruelle}, 2018 printing, pp.~161--162). Stability: draft. Currency: model timeless; evidence ES and SPY, 2005--2011."
+  },
+  "res:hft-spread-investor-cost": {
+    "source": "compendium/execution-market-making/high-frequency-trading.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, sec.~2.4.3, pp.~163--169, page images of pp.~164--166 and~168, formulas and calibration recomputed; and the SEC concept release, pp.~48--51). Stability: draft. Currency: model timeless; calibration Euronext Paris, 2007 and 2011; release as of January 2010."
+  },
+  "res:queue-position-value": {
+    "source": "compendium/execution-market-making/high-frequency-trading.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of the authors' working paper, June 2017 revision, pp.~1--6 and 18--25, with Tables~1 and~3). Stability: draft. Currency: model timeless; evidence U.S. large-tick stocks and ETFs, August 2013."
+  },
+  "mod:make-take-fee-speed-race": {
+    "source": "compendium/execution-market-making/high-frequency-trading.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, app.~A, sec.~A.2, pp.~250--254; eq.~(A.4) re-derived and checked numerically; second macro markets and pricing review follow-up, 2026-10-16: Foucault, Kadan and Kandel's September 2009 working paper read at pp.~1, 20 and 23--25, with pp.~20, 23 and~25 as page images). Stability: draft. Currency: model timeless; the original paper in its 2009 working-paper version."
+  },
+  "mod:depth-overflow-flash-crash": {
+    "source": "compendium/execution-market-making/high-frequency-trading.tex",
+    "review": "Verification: partly checked 2026-10-16 (against page images of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, app.~A, sec.~A.5, pp.~261--266; the hot-potato sums, the overflow and the exponent of (A.14) derived and simulated). Stability: draft. Currency: model timeless; the event of May 2010."
+  },
+  "ev:may-2010-flash-crash": {
+    "source": "compendium/execution-market-making/high-frequency-trading.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of the CFTC's PDF of the staff report of 30 September 2010, cover and executive summary, pp.~1--7; and \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~177--184; second macro markets and pricing review follow-up, 2026-10-16: \\texttt{w5-kirilenko-flash-crash} in its accepted manuscript, PDF pp.~1--6, 11--14 and~35; source follow-up of 2026-10-16: the staff report's sec.~I, printed pp.~12--17, from the same PDF, with the aggressive and passive splits checked to sum; second source follow-up of 2026-10-16: the staff report's secs.~II.2.e and II.3.a, printed pp.~58 and~64--65, and \\texttt{w5-menkveld-yueshen-flash} in its SSRN version of 15 November 2017, PDF pp.~1--9 and~17, and its undated online appendix, sec.~A). Stability: draft. Currency: the event of 6 May 2010, as reconstructed in 2010 and 2017."
+  },
+  "mod:grossman-miller": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-14 (every formula and the comparative statics against \\texttt{crypto-cartea}, pp.~21--27, read from page images of a scanned copy; the original paper not consulted at that time; source verification (2026-10-17): \\texttt{grossman-miller-1988-nber}, NBER PDF downloaded 2026-10-17, printed pp.~9--10 and 16--19, eqs.~(16)--(19) checked as a page image and the comparative statics recomputed). Stability: draft. Currency: timeless (theory)."
+  },
+  "res:grossman-miller-trading-fees": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-14 (the formulas and fee incidence against \\texttt{crypto-cartea}, pp.~25--26, from page images of a scanned copy in which several signs are faint; the printed results agree with the clearing condition on the same page). Stability: draft. Currency: timeless (theory)."
+  },
+  "res:grossman-miller-liquidity-measures": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-14 (both formulas and the comparative statics against \\texttt{crypto-cartea}, pp.~26--28, from page images of a scanned copy). Stability: draft. Currency: timeless (theory)."
+  },
+  "mod:static-limit-order-depth": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-14 (the problem, the solution and the stated limitations against \\texttt{crypto-cartea}, pp.~28--30, from page images of a scanned copy; the Ho--Stoll paper not consulted). Stability: draft. Currency: timeless (theory)."
+  },
+  "mod:avellaneda-stoikov": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-14 (the reservation price, intensity, spread and simulation results against the author-hosted journal PDF of \\texttt{s6-stoikov}, pp.~217--222; the HJB equation and expansion steps read but not re-derived; source verification (2026-10-17): secs.~2.3 and~3.1, pp.~219--221, rechecked as page images in the same author-hosted PDF, downloaded again 2026-10-17, with the infinite-horizon prices and eqs.~(18)--(19) recomputed). Stability: draft. Currency: as published in 2008; review annually with the catalogue record."
+  },
+  "def:fundamental-value": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~222--230, 236--237, 240 and 585, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, p.~26). Stability: draft. Currency: timeless (concepts)."
+  },
+  "res:informed-trading-aggregation": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~222--226, 229 and 236--239; the box on p.~225 also against its page image, 2026-10-15, strategic trading review). Stability: draft. Currency: timeless (theory)."
+  },
+  "def:informed-trader-types": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~226--235 and 239, Tables~10-1 and~10-3 included, and pp.~338--339; market design and liquidity review: pp.~194--196 and 402--403). Stability: draft. Currency: timeless (concepts)."
+  },
+  "def:winners-curse": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~341--343). Stability: draft. Currency: timeless (concept)."
+  },
+  "def:market-efficiency": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~237--244 and 597--598, and \\texttt{alpha-laruelle}, 2018 World Scientific printing, p.~4; market design and liquidity review: pp.~215--216). Stability: draft. Currency: timeless (concepts); the empirical summary as of 2002."
+  },
+  "def:inside-information": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~236 and 584--592, the box on p.~590 added in strategic trading review; the SEC web page Harris quotes was not consulted; market design and liquidity review: pp.~587--588; 17 CFR 240.10b5-1, 240.16a-3 and 243.100 for 14 October 2026; the 2022 release's summary and dates). Stability: draft. Currency: dated: United States law as summarised in 2002, with the insider-plan, Form~4 and Regulation~FD rules checked as of October 2026; penalties and other jurisdictions not checked."
+  },
+  "res:insider-trading-deterrence": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~236 and 588--595; market design and liquidity review: pp.~591--598). Stability: draft. Currency: dated: United States law and enforcement practice as described in 2002; not checked against current law."
+  },
+  "def:price-formation-process": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, Introduction, pp.~3--7, 19--20 and 27--29, and chap.~2, pp.~171--172 and 177; Figure~8 not inspected). Stability: draft. Currency: timeless (concept); the regulatory context is European, 2007--2018."
+  },
+  "def:arbitrage": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~232--235 and 347--379; market design and liquidity review: pp.~6 and 404--405; dealer models and information review: pp.~354--357, page image of p.~357, the currency box and the cyclic band recomputed; dealer models and information review follow-up, 2026-10-16: the triangular equality restricted to frictionless quotes and the EUR/USD--USD/JPY--EUR/JPY quotes example computed in \\nolinkurl{notes/artefacts/execution-market-making/dealer-queue-information-checks.py}, section~2). Stability: draft. Currency: timeless (concepts); examples to 2000."
+  },
+  "res:arbitrage-risks": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~356--375; dealer models and information review: pp.~366--367 for legging, and the factor decomposition with a hedge ratio derived and simulated). Stability: draft. Currency: timeless (concepts); examples to 2000."
+  },
+  "def:order-anticipation": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~245--258 and 498--508). Stability: draft. Currency: concepts timeless; the specialist privileges and legal remarks as of 2002."
+  },
+  "def:bluffing-manipulation": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~259--275, and the page image of p.~270; pp.~271--273 rechecked in liquidity and impact review). Stability: draft. Currency: timeless (concepts); legal remarks as of 2002."
+  },
+  "mod:kyle-single-auction": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-14 (the equilibrium, profit and posterior variance against \\texttt{catalogue-0496}, pp.~91--98, from page images of a scanned 1998 printing; the setup against \\texttt{crypto-cartea}, pp.~31--33, whose printed $\\lambda$ conflicts as noted under \\emph{Pitfalls}; Kyle's paper not consulted; the p.~33 misprint confirmed against the authors' errata page 2026-10-15). Stability: draft. Currency: timeless (theory)."
+  },
+  "mod:glosten-milgrom": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (every statement against the scanned 1983 discussion paper, pp.~1--25, read from page images with OCR for running text; the 1985 journal version not consulted; the Harris passage from the text layer of a local copy). Stability: draft. Currency: timeless (theory)."
+  },
+  "res:glosten-milgrom-half-spreads": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (the setup, both formulas, the dynamic version and the interpretation against \\texttt{crypto-cartea}, pp.~34--36, read from page images of a scanned copy; the zero-profit algebra re-derived). Stability: draft. Currency: timeless (theory)."
+  },
+  "res:glosten-milgrom-market-collapse": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (the formulas, the collapse condition and its footnote against \\texttt{crypto-cartea}, p.~37, from page images of a scanned copy; the correction against the authors' errata page, read from the equation source of the page; the shutdown passages against the 1983 discussion paper). Stability: draft. Currency: timeless (theory)."
+  },
+  "res:adverse-selection-spread-component": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (the example, both derivations, the conditions and the spread determinants against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~289--304, 312--313 and 320--321; p.~321 and Figure~14-1, p.~301, also from page images; the structural version against the text layer of a local copy of \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~49 and~53). Stability: draft. Currency: timeless (theory)."
+  },
+  "def:dealer-inventory-risk": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~283--287, 299 and~313). Stability: draft. Currency: timeless (concepts)."
+  },
+  "meth:dealer-quote-adjustment": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (every step and table summary against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~283--294 and 312--313). Stability: draft. Currency: timeless (practice description from 2002; venue examples dated)."
+  },
+  "mod:inventory-based-quotes": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (the Stoll version, eqs.~(11.2)--(11.3), and the inventory evidence against the text layer of a local copy of \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~106--117; the Ho--Stoll account against page images of \\texttt{catalogue-0496}, 1998 Wiley printing, pp.~29--36; the ask and the reservation price derived here; neither Stoll (1978) nor Ho and Stoll (1981) consulted). Stability: draft. Currency: timeless (theory); the evidence is from 1990s NYSE data."
+  },
+  "def:spread-measures": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~280--281, 312 and 423--427, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~148 and 150--151). Stability: draft. Currency: as of the 2002 and 2007 printings for the reporting rules (Rule 605 named by Hasbrouck); definitions timeless."
+  },
+  "res:roll-spread-estimator": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (the model and derivation against the page image of \\texttt{alpha-harris}, p.~415, and its text layer, pp.~416 and 434; the parametrisation, example, biases and estimation against the text layer of \\texttt{s6-hasbrouck}, pp.~29--30 and 38--39; the original paper not consulted). Stability: draft. Currency: timeless (method); the example is from 2003 data."
+  },
+  "res:spread-component-identification": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, pp.~299--303, and \\texttt{s6-hasbrouck}, pp.~67--69, 112 and 115). Stability: draft. Currency: timeless (method); the NYSE evidence is from 1990s data."
+  },
+  "res:spread-determinants": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~303--318, Table~14-2 included, and pp.~561 and 563; and of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~144--151, with eq.~(2.1) and p.~148 added in futures market structure review, eq.~(2.1) corrected from the page image of p.~145 in its follow-up; empirical extensions (2026-10-17): \\texttt{dayri-rosenbaum-2013}, arXiv v2, pp.~15 and 18--19, text layer). Stability: draft. Currency: timeless (theory); institutional examples from 2002; the European evidence from 2008--2016."
+  },
+  "def:outside-spread": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~338--346, and pp.~230 and 239 for the profit sources; dealer models and information review: pp.~344--345 for the dealer comparison). Stability: draft. Currency: timeless (concepts)."
+  },
+  "def:volatility-components": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~410--417 and 575--577, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~69 and 72--75). Stability: draft. Currency: timeless (concepts and method)."
+  },
+  "meth:garman-klass-volatility": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (the formula against the page image of \\texttt{alpha-laruelle}, 2018 World Scientific printing, p.~172; its use against the text layer, pp.~146--148 and 172--174; the original paper not consulted). Stability: draft. Currency: timeless (method); the applications use 2007--2016 European data."
+  },
+  "def:intraday-overnight-returns": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~169 and 174--177, figure captions included; no page images). Stability: draft. Currency: as of the 1991--2012 data; definitions timeless."
+  },
+  "meth:spread-volatility-regression": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~144--151 and 292--298, figure captions included; \\texttt{alpha-harris}, p.~314; market design and liquidity review: p.~149; dealer models and information review: pp.~295, 298 and 318--321, the $R^2$ forms and the averaging effect computed). Stability: draft. Currency: as of the 2008--2016 data used; method timeless."
+  },
+  "mech:bubble-crash-dynamics": {
+    "source": "compendium/execution-market-making/market-making-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~555--563 and 570--571). Stability: draft. Currency: timeless (mechanism); the case material is historical, to 2002."
+  },
+  "def:market-functions": {
+    "source": "compendium/execution-market-making/market-organisation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~3--9, 32, 45, 89 and 202--218, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~3--6). Stability: draft. Currency: concepts timeless; Harris's wealth shares are estimates for about 2000."
+  },
+  "def:trader-motives": {
+    "source": "compendium/execution-market-making/market-organisation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~5--8, 32--33, 176--201, 396 and 400--404, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, p.~5; dealer models and information review: the merged principle compared with p.~196). Stability: draft. Currency: timeless (classification)."
+  },
+  "res:zero-sum-skill-luck": {
+    "source": "compendium/execution-market-making/market-organisation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~4--8, 176--177, 206, 444--454 and 470--471; the corollaries and the skill--luck conditions derived and simulated). Stability: draft. Currency: timeless."
+  },
+  "def:market-intermediaries": {
+    "source": "compendium/execution-market-making/market-organisation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~32--38, 139--144, 195--196 and 400--405). Stability: draft. Currency: concepts timeless; institutional examples as of 2002."
+  },
+  "def:dealer-quotes-order-flow": {
+    "source": "compendium/execution-market-making/market-organisation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~13, pp.~278--283, with Table~13-1 recomputed). Stability: draft. Currency: concepts timeless; U.S. practice and figures as of 2002."
+  },
+  "def:specialist-obligations-privileges": {
+    "source": "compendium/execution-market-making/market-organisation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~24, pp.~495--511; source follow-up of 2026-10-16: NYSE Rules 104 and 107B in NYSE's rulebook PDF, and Federal Register records of later Rule~104 filings; second source follow-up of 2026-10-16: the current Rules 104 and 107B in NYSE's online rulebook, browser exports). Stability: draft. Currency: U.S. exchange arrangements as of 2002; NYSE Rules 104 and 107B as in force on 16 October 2026 (last amended November 2022 and January 2023)."
+  },
+  "def:market-structures-venues": {
+    "source": "compendium/execution-market-making/market-organisation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~32--38, 45--49, 89--111, 139--144, 396 and 494--496, and \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~19--20 and 189--191; the credit counts recomputed). Stability: draft. Currency: concepts timeless; venue classes and settlement cycles as of 2002."
+  },
+  "def:trading-sessions-execution-systems": {
+    "source": "compendium/execution-market-making/market-organisation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~89--96, 494--501 and 572--573, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~17--19; LBMA's centenary page and IBA's auction page as retrieved on 16 October 2026). Stability: draft. Currency: structures timeless; venue examples as of 2002--2007; gold auction as of October 2026."
+  },
+  "def:liquidity-dimensions": {
+    "source": "compendium/execution-market-making/market-organisation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~394--409; \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~4--6; and \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~143--149 and 156--158; the duality and the search rule computed; market design and liquidity review follow-up, 2026-10-16: Harris pp.~398--399 rechecked for the units of width and depth, the duality restated per unit and recomputed; second market design and liquidity review follow-up, 2026-10-16: the cost function's units made consistent, currency per share or basis points of the midpoint, and the 100-share example computed in \\nolinkurl{notes/artefacts/execution-market-making/liquidity-market-design-checks.py}, section~4). Stability: draft. Currency: concepts timeless; Lehalle and Laruelle's data 2008--2016."
+  },
+  "res:option-market-maker-spreads": {
+    "source": "compendium/execution-market-making/options-dealing.tex",
+    "review": "Verification: partly checked 2026-10-15 (for \\texttt{ex-jameson-wilhelm-1992}, the abstract only; for \\texttt{wide-muravyev-order-flow}, the abstract only; for \\texttt{ex-huh-lin-mello-2015}, the abstract only; for \\texttt{ex-battalio-hatch-jennings-2004}, the abstract only; these four from the publishers' records as served by RePEc, Crossref and OpenAlex, with the full texts unread; and for \\texttt{ex-bryzgalova-pavlova-sikorskaya-2023}, the published open-access version, pp.~2 and~11; source verification (2026-10-17): SEC Release 34-56845 on OCC assignment procedures, 72~FR 67991, from GovInfo; empirical extensions (2026-10-17): OCC Rules, Chapter VIII and Rule~1803, last modified 19 August 2025, from a Wayback capture of 19 August 2025, the OCC site having refused direct access). Stability: draft. Currency: findings as of their samples, from the CBOE before 1992 to U.S. options in 2019--2021."
+  },
+  "meth:option-spread-measurement": {
+    "source": "compendium/execution-market-making/options-dealing.tex",
+    "review": "Verification: partly checked 2026-10-15 (\\texttt{ex-bryzgalova-pavlova-sikorskaya-2023}, published open-access version, pp.~7, 11--12 and~14--17 with page images of Table~I, rechecked in a follow-up the same day; abstract of \\texttt{wide-muravyev-pearson} from the publisher's record via RePEc and OpenAlex, full text unread; source verification (2026-10-17): SEC Release 34-92729 on Cboe Rule 5.33, public-inspection PDF from the Federal Register). Stability: draft. Currency: U.S. options, November 2019 to June 2021; Muravyev and Pearson's sample not read."
+  },
+  "mech:options-retail-wholesaler-routing": {
+    "source": "compendium/execution-market-making/options-dealing.tex",
+    "review": "Verification: partly checked 2026-10-15 (\\texttt{ex-bryzgalova-pavlova-sikorskaya-2023}, published open-access version, abstract and pp.~2, 4--5, 11--12, 14--17, with page images of Table~I, rechecked in a follow-up the same day; abstract of \\texttt{wide-muravyev-pearson}; \\texttt{finra-rn-22-14}, background only). Stability: draft. Currency: U.S. options, November 2019 to June 2021; exchange fees as the authors report them, not checked against any current schedule."
+  },
+  "mech:order-lifecycle": {
+    "source": "compendium/execution-market-making/order-books.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~217--218; \\texttt{catalogue-0528}, Cambridge 2018, pp.~54--55; \\texttt{alpha-harris}, 2002 Oxford printing, pp.~77--78; the CME page as cited in futures market structure review, not reread; corrected 2026-10-16 against the FIX Trading Community's FIX~4.4 Orchestra repository as rendered by Orchimate (OrdStatus, ExecType and TimeInForce code sets) and \\texttt{alpha-harris} pp.~71 and 82--84; source follow-ups of 2026-10-16: CME's client wiki pages and the MIAX PEARL filing as cited; Nasdaq Equity~4, Rules 4703(e), 4756(a)(3) and 4757(a)(1), from a browser export of the web rulebook; source verification (2026-10-17): CME Client Systems Wiki pages ``Order Qualifiers'' (version~3) and ``CME Globex Matching Algorithm Steps'' (version~5), retained REST exports of 2026-10-16). Stability: draft. Currency: FIX~4.4 (2003) code sets; Harris's broker practice as of 2002; CME pages of 2026; MIAX PEARL as filed in 2021; Nasdaq's rules as of 16 October 2026; other venues not checked."
+  },
+  "def:order-instructions": {
+    "source": "compendium/execution-market-making/order-books.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~4, pp.~68--86, and chap.~6, pp.~117 and~126, and \\texttt{catalogue-0528}, Cambridge 2018, p.~55; and the FIX~4.4 code sets as rendered by Orchimate, retrieved 2026-10-16). Stability: draft. Currency: Harris's instructions and settlement as of 2002; FIX~4.4 (2003); no current venue's order types checked."
+  },
+  "def:limit-order-book": {
+    "source": "compendium/execution-market-making/order-books.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{catalogue-0528}, Cambridge 2018, pp.~43--53 and~60; \\texttt{alpha-harris}, 2002 Oxford printing, pp.~73--74 and~109; \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~216--219; order type against aggressiveness restated 2026-10-16 against Harris pp.~71 and~73 and Bouchaud et al.\\ pp.~45 and~55). Stability: draft. Currency: definitions timeless; the hidden-order shares are NASDAQ 2015."
+  },
+  "mech:order-matching-pricing": {
+    "source": "compendium/execution-market-making/order-books.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~6, pp.~115--136; \\texttt{alpha-laruelle}, 2018 World Scientific printing, chap.~2, pp.~121--127; and \\texttt{catalogue-0528}, Cambridge 2018, p.~56; Harris's examples and the allocation remainders recomputed exactly; the capacity cap and the rounding--residual distinction corrected in the order matching and fragmentation review follow-up; market design and liquidity review: pp.~112--114; source follow-up of 2026-10-16: \\texttt{wide-budish-cramton-shim}, the authors' published version hosted by the University of Maryland, secs.~VII--VIII, pp.~1594--1611, and the September 2013 NBER conference version, sec.~7.1 with n.~33; source verification (2026-10-17): CME Client Systems Wiki, ``CME Globex Matching Algorithm Steps'', version~5 (2 June 2026), read through the retained REST export of 2026-10-16, with its examples recomputed). Stability: draft. Currency: mechanisms timeless; venue settings (random ends, public order precedence) as of 2002--2012; the batch-auction design as published in 2015."
+  },
+  "res:limit-order-options": {
+    "source": "compendium/execution-market-making/order-books.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~75--77, and \\texttt{catalogue-0528}, Cambridge 2018, p.~46; the payoff expression derived here; order choice added in order matching and fragmentation review from Harris p.~304; the posting comparison re-derived from cash flows with a common terminal mark and checked pathwise in the order matching and fragmentation review follow-up). Stability: draft. Currency: timeless."
+  },
+  "def:queue-imbalance": {
+    "source": "compendium/execution-market-making/order-books.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{catalogue-0528}, Cambridge 2018, pp.~58, 60 and 118--120, and \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~223--224 and~227; the identity computed; source follow-up of 2026-10-16: \\texttt{wide-lehalle-mounjid} in arXiv version~4, pp.~3--9 and 18--19; source verification (2026-10-17): Gould and Bonart, arXiv v1, pp.~9--12 and 19--21, and Moallemi and Sağlam, author revision of 5 February 2013, pp.~5, 19, 23 and 26--27, text layers). Stability: draft. Currency: evidence from NASDAQ 2015, an unnamed European large-tick stock and AstraZeneca on NASDAQ-OMX in 2013."
+  },
+  "mod:queue-reactive-intensities": {
+    "source": "compendium/execution-market-making/order-books.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, chap.~3, pp.~219--227, and chap.~1, p.~89; \\texttt{catalogue-0528}, p.~59; the drift and waiting-time illustrations computed; source follow-up of 2026-10-16: Huang, Lehalle and Rosenbaum's paper in arXiv version~2, secs.~2--3, pp.~4--20, with the invariant law and the estimator checked by simulation). Stability: draft. Currency: the model as published in 2014--2015; evidence Euronext Paris, 2010--2012."
+  },
+  "def:order-flow-imbalance": {
+    "source": "compendium/execution-market-making/order-books.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of \\texttt{catalogue-0503} in its arXiv version 3 of 13 April 2011, pp.~1, 4, 8 and~16, downloaded 2026-10-16; the journal version was not checked; and \\texttt{catalogue-0528}, Cambridge 2018, p.~222; the toy sequence computed; second macro markets and pricing review follow-up, 2026-10-16: \\texttt{wide-cont-cross-impact-ofi} in its arXiv version 4 of 13 June 2023, pp.~1, 5--8, 11--12, 16, 22--23 and 26--28, with p.~5 checked as an image; correction of 2026-10-16: n.~3, p.~5, on the selection date, and the rolling design, p.~22; source follow-up of 2026-10-16: \\texttt{w2-lobcast} in arXiv version~2 (19 September 2023), pp.~1--10, and \\texttt{w2-briola-lob-guide} in arXiv version~4 (4 June 2024), pp.~7--8 and 22--25; journal versions not compared; second source follow-up of 2026-10-16: \\texttt{wide-kolm-deep-ofi}, SSRN version of 6 August 2021, PDF pp.~1--31, Fig.~8 read as an image; correction of 2026-10-17: Table~3's definition rechecked on PDF pp.~19--21 as page images, and Fig.~8, p.~28, cited for the decline). Stability: draft. Currency: evidence from April 2010, 2017--2020 and 2021--2022 U.S. data."
+  },
+  "ev:high-frequency-stylised-facts": {
+    "source": "compendium/execution-market-making/order-flow-statistics.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{catalogue-0528}, Cambridge 2018, pp.~28--31, 58--61, 165, 174--175 and 187--189, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, p.~180; source follow-up of 2026-10-16: Vyetrenko et al., arXiv v1, pp.~4--8, and Noble, Rosenbaum and Souilmi, arXiv v1, pp.~2 and 8--13; derivatives and empirical validation (2026-10-17): Ratliff-Crain et al.'s retest of Cont's facts, arXiv v2, abstract and secs.~1 and~6). Stability: draft. Currency: samples of 2011--2015, 2019 and 2023--2025."
+  },
+  "meth:realised-variance-signature-plot": {
+    "source": "compendium/execution-market-making/order-flow-statistics.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~316--319, and \\texttt{catalogue-0528}, Cambridge 2018, pp.~25--28; noise and asynchrony simulated; the limits restricted to continuous processes, the jump and co-jump limits and the noise-model assumptions added 2026-10-16, with a jump counterexample computed; source follow-up of 2026-10-16: Barndorff-Nielsen, Hansen, Lunde and Shephard, CREATES Research Paper 2008-63, secs.~2.1 and~2.3 and~5.1--5.3, PDF pp.~5--9 and 17--19, with refresh time and the Hayashi--Yoshida estimator simulated; second follow-up 2026-10-16: \\texttt{hayashi-yoshida-2005}, published version, sec.~3, pp.~367--375, Condition~C and Definition~3.1 checked by page image). Stability: draft. Currency: estimators timeless; illustrations from 2012 data."
+  },
+  "meth:intraday-deseasonalisation": {
+    "source": "compendium/execution-market-making/order-flow-statistics.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~298--304, and \\texttt{catalogue-0528}, Cambridge 2018, p.~173; a synthetic recovery and the look-ahead computed; dealer models and information review: pp.~318--320 for the averaging effect). Stability: draft. Currency: timeless; the illustration from 2007--2012 data."
+  },
+  "def:market-clocks-durations": {
+    "source": "compendium/execution-market-making/order-flow-statistics.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~227, 306 and~311, \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~90 and 163--164, and \\texttt{catalogue-0528}, Cambridge 2018, p.~173). Stability: draft. Currency: timeless."
+  },
+  "def:order-event-point-processes": {
+    "source": "compendium/execution-market-making/order-flow-statistics.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~221 and 305--308, page images of pp.~306 and~308; and \\texttt{catalogue-0528}, Cambridge 2018, pp.~164--165; the time change computed; source follow-up of 2026-10-16: Brown et al., \\emph{Neural Computation} 14 (2002), from the copy on a co-author's Carnegie Mellon page, pp.~325--331; source verification (2026-10-17): Laub, Taimre and Pollett, arXiv v1, p.~18, text layer). Stability: draft. Currency: timeless."
+  },
+  "mod:hawkes-order-flow": {
+    "source": "compendium/execution-market-making/order-flow-statistics.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~304--311 and 315--316, page image of p.~308; \\texttt{catalogue-0528}, Cambridge 2018, pp.~163--185; and \\texttt{wide-bacry-hawkes}, arXiv v2, pp.~1--8 and 27--30, downloaded 2026-10-16; the excitation, inhibition and stationarity cases simulated; source verification (2026-10-17): Brémaud and Massoulié's Theorems as restated by Zhu, arXiv:1304.7531v3, pp.~33--34, text layer; empirical extensions (2026-10-17): \\texttt{bremaud-massoulie-1996}, pp.~1563--1564, 1567 and~1569, page images). Stability: draft. Currency: calibrations from 1998--2015 data."
+  },
+  "def:floor-automated-trading-systems": {
+    "source": "compendium/execution-market-making/trading-systems.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~27, pp.~543--554, page image of p.~552 with Table~27-1; market design and liquidity review: pp.~35, 97 and 524--525; the queueing condition simulated, and in the market design and liquidity review follow-up restated as an M/M/1 stability condition and resimulated with exact arrival sampling). Stability: draft. Currency: historical, as of 2002."
+  },
+  "def:dark-pools-crossing": {
+    "source": "compendium/execution-trading-costs/dark-trading-fragmentation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-laruelle}, 2018 World Scientific printing, chap.~1, sec.~1.4, pp.~102--115, and \\texttt{alpha-harris}, 2002 Oxford printing, chap.~6, pp.~132--136, and chap.~25, pp.~520--521; market design and liquidity review: pp.~18 and 55--56; source follow-up of 2026-10-16: \\texttt{wide-zhu-dark-pools}, pp.~747--770, and Buti, Rindi and Werner's June 2010 working paper, pp.~2--16; source verification (2026-10-17): Comerton-Forde and Putniņš, accepted manuscript from the UTS repository, abstract and PDF pp.~4--5 and~10, text layer; empirical extensions (2026-10-17): \\texttt{brw-2022-published}, abstract from RePEc). Stability: draft. Currency: U.S.\\ crossing networks as of 2002; U.S.\\ dark pools in 2009; European venues and data as of 2010--2018; no current rule stated."
+  },
+  "meth:venue-market-share": {
+    "source": "compendium/execution-trading-costs/dark-trading-fragmentation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, chap.~1, pp.~33--39, chap.~2, pp.~117--139, and app.~A, sec.~A.8, pp.~284--288, page images of pp.~35 and~288; the ex-fixing formula derived and the estimator's dependence computed; the ex-fixing domain and the fixed-weight variance corrected in the order matching and fragmentation review follow-up, 2026-10-16; market design and liquidity review: \\texttt{s6-hasbrouck}, 2007 Oxford printing, p.~18; dealer models and information review: pp.~284--286 for proportions in general, and interval coverage computed). Stability: draft. Currency: methods timeless; data and auction shares as of 2006--2013."
+  },
+  "meth:fragmentation-concentration-metrics": {
+    "source": "compendium/execution-trading-costs/dark-trading-fragmentation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, chap.~1, pp.~33--34, chap.~2, pp.~158--161, and app.~A, secs.~A.1 and~A.9, pp.~247--250 and 288--292, page image of p.~291; FEI, Gini and KS power computed). Stability: draft. Currency: metrics timeless; data 2008--2012."
+  },
+  "mod:sor-market-share-dynamics": {
+    "source": "compendium/execution-trading-costs/dark-trading-fragmentation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, chap.~1, sec.~1.2.2, pp.~71--73, and app.~A, sec.~A.3, pp.~253--260, page images of pp.~255 and~257; the first-order condition derived and the dynamics simulated). Stability: draft. Currency: a stylised model of European fragmentation after 2007. Objective, update and simulation restated in the order matching and fragmentation review follow-up (2026-10-16)."
+  },
+  "ev:european-fragmentation-evidence": {
+    "source": "compendium/execution-trading-costs/dark-trading-fragmentation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-laruelle}, 2018 World Scientific printing, introduction p.~5, chap.~1, p.~37, chap.~2, pp.~139--140, 153--163 and 170--185, and \\texttt{alpha-harris}, 2002 Oxford printing, chap.~26, pp.~526--534; dealer models and information review: pp.~183--185 for the Euronext outage). Stability: draft. Currency: European markets 2007--2013; no current market structure stated."
+  },
+  "mech:etf-creation-redemption": {
+    "source": "compendium/execution-trading-costs/etf-mechanics.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{ex-lettau-madhavan-2018} in NBER Working Paper 24250, January 2018, pp.~1 and 4--8, 18, text layer; \\texttt{wide-pan-zeng-etf} in ESRB Working Paper 59, December 2017, abstract and pp.~1--4, text layer, p.~4 added in a follow-up the same day; and the text layer of \\texttt{alpha-harris}, 2002 Oxford printing, sec.~23.5, pp.~491--492). Stability: draft. Currency: ETF practice as described for the United States, 2014--2018; Harris's products as of 2001--2002; no current rule checked."
+  },
+  "def:automated-trading-architecture": {
+    "source": "compendium/execution-trading-costs/execution-algorithms.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, secs.~3.1--3.1.2, pp.~193--198, page image of p.~194 with Figure~3.1; in systematic-investing architecture review, \\texttt{s7-narang}, third edition, Wiley 2024, chap.~7, pp.~138--141). Stability: draft. Currency: Lehalle and Laruelle's practitioner description as of the 2018 printing; Narang's account as of 2024, with his latency figures undated."
+  },
+  "def:trading-envelope": {
+    "source": "compendium/execution-trading-costs/execution-algorithms.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-laruelle}, 2018 World Scientific printing, secs.~3.1.1--3.1.2, pp.~196--199, and sec.~3.4.1, pp.~231--233, page images of pp.~198, 231 and~233; and \\texttt{s7-kissellscience}, Academic Press printing with copyright 2014, chap.~1, pp.~16--19, and chap.~3, p.~108). Stability: draft. Currency: practitioner descriptions as of 2014 and 2018; broker definitions vary."
+  },
+  "meth:execution-decision-support": {
+    "source": "compendium/execution-trading-costs/execution-algorithms.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, sec.~3.1.3, pp.~198--202, page images of pp.~198 and~201, and app.~A, sec.~A.7.2, pp.~278--279, page image of p.~279, added in transaction-cost analysis review; the realised identity checked by simulation; pp.~200 and~202, page image of p.~202, for indicator publication, trading infrastructure review). Stability: draft. Currency: practitioner description as of the 2018 printing."
+  },
+  "def:order-exposure-decisions": {
+    "source": "compendium/execution-trading-costs/execution-algorithms.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~18, pp.~380--389; in systematic-investing architecture review, \\texttt{s7-narang}, third edition, Wiley 2024, chap.~7, pp.~127--137, chap.~14, p.~270, and Appendix, pp.~311--315, text layers, and 7 U.S.C.~\\S6c(a)(5), 2024 edition; market design and liquidity review: p.~389). Stability: draft. Currency: concepts timeless; Harris's systems and legal remarks as of 2002; Narang's venue details as of 2024, with no current venue rule checked; the U.S. Code passage as of its 2024 edition. order matching and fragmentation review (2026-10-16) added the benefits and costs of exposure (Harris pp.~382--384), display instructions and precedence (pp.~84--85 and~117) and Bouchaud et al.\\ p.~55."
+  },
+  "def:portfolio-trading": {
+    "source": "compendium/execution-trading-costs/execution-algorithms.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~23, pp.~486--491, with pp.~484 and~489 added in equity market structure review, and \\texttt{s7-kissellscience}, Academic Press printing with copyright 2014, chap.~1, pp.~16--19; in systematic-investing architecture review, \\texttt{s7-narang}, third edition, Wiley 2024, chap.~7, p.~128). Stability: draft. Currency: market figures as of 2002."
+  },
+  "mech:positive-feedback-hedging": {
+    "source": "compendium/execution-trading-costs/execution-algorithms.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~28, pp.~560--561, with boxes; the feedback series and the Black--Scholes illustration are own calculations). Stability: draft. Currency: mechanism timeless; the sizing is historical, for 1987."
+  },
+  "def:execution-benchmark": {
+    "source": "compendium/execution-trading-costs/execution-benchmarks.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~422--437 and~440, Table~21-1 on p.~433 by page image, pp.~422--423 and~440 added in transaction-cost analysis review; \\texttt{s7-kissellscience}, Academic Press printing with copyright 2014, ISBN 978-0-12-401689-7, chap.~1, pp.~16--18, and chap.~3, pp.~97--108, pp.~100, 103 and~105 by page image; and \\texttt{alpha-laruelle}, 2018 World Scientific printing, p.~230). Stability: draft. Currency: definitions timeless; vendor and consultant practice as of 2002 and 2014."
+  },
+  "def:implementation-shortfall": {
+    "source": "compendium/execution-trading-costs/execution-benchmarks.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~424, 426 and~434--437, and \\texttt{s7-kissellscience}, Academic Press printing with copyright 2014, chap.~3, pp.~97--105, pp.~100, 103 and~105 by page image; formulas and examples checked with exact arithmetic; \\texttt{wide-perold-shortfall} not consulted). Stability: draft. Currency: timeless (accounting); the Plexus figures as of 2002."
+  },
+  "meth:algorithm-benchmark-choice": {
+    "source": "compendium/execution-trading-costs/execution-benchmarks.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, sec.~3.4.1, pp.~227--230, Table~3.1 on p.~229 and Table~3.2 on p.~230 by page image; Table~3.2 added in execution algorithms review). Stability: draft. Currency: practitioner guidance as of the 2018 printing."
+  },
+  "def:best-execution": {
+    "source": "compendium/execution-trading-costs/execution-quality.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~160--163 and 514--519, \\texttt{s7-kissellscience}, Academic Press printing with copyright 2014, chap.~3, p.~88, and \\texttt{alpha-laruelle}, 2018 World Scientific printing, p.~234; 17 CFR 242.611 checked on 15 October 2026 against the eCFR point-in-time text for 13 October 2026, smart order routing review; market design and liquidity review: \\texttt{alpha-laruelle}, pp.~17--19 and~43). Stability: draft. Currency: Rule 611 as verified on 15 October 2026; other U.S. rules and practice as of 2002, European regime as of 2018; superseded in part, see Pitfalls."
+  },
+  "def:broker-agency-conflicts": {
+    "source": "compendium/execution-trading-costs/execution-quality.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~153--155, 159--167 and 516--517, and \\texttt{s7-kissellscience}, Academic Press printing with copyright 2014, chap.~3, p.~90; market design and liquidity review: p.~537). Stability: draft. Currency: practices and figures as of 2002 and 2014."
+  },
+  "mod:almgren-chriss-execution": {
+    "source": "compendium/execution-trading-costs/execution-scheduling.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, app.~A, sec.~A.7, pp.~273--281; and \\texttt{alpha-almgren} in the authors' preprint of December 2000, pp.~7--15, page images of pp.~9, 11 and~14; formulas and comparative statics checked numerically). Stability: draft. Currency: timeless (model)."
+  },
+  "def:block-trade": {
+    "source": "compendium/execution-trading-costs/execution-scheduling.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~322--327, and pp.~328--331 and~389 added in transaction-cost analysis review, and pp.~333--334 added in equity market structure review; sunshine trading, pp.~327--328, added in order matching and fragmentation review; market design and liquidity review: pp.~328--330; source verification (2026-10-17): 17 CFR 242.611(b), eCFR, and FINRA Rule 6380B(a), finra.org, the version selected on the page; empirical extensions (2026-10-17): NYSE Rules 76 and~127, compilation of 8 May 2019). Stability: draft. Currency: timeless (concepts); the NYSE threshold, venues and reporting deadlines as of 2002."
+  },
+  "def:fixed-income-market-structure": {
+    "source": "compendium/execution-trading-costs/fixed-income-trading.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{wide-bsv-fi-survey}, published JFQA version, pp.~1--5, 7--8, 11, 13--16, 29--33 and~37--39, text layer; for \\texttt{wide-hendershott-madhavan} and for \\texttt{wide-ohara-zhou-electronic}, the abstracts only, from the publishers' records via OpenAlex and RePEc, with the full texts unread; source verification (2026-10-17): 17 CFR 37.9, 37.10 and 50.4, eCFR texts for 15 October 2026). Stability: draft. Currency: U.S. market structure as surveyed to about 2018."
+  },
+  "rule:us-eu-bond-transparency": {
+    "source": "compendium/execution-trading-costs/fixed-income-trading.tex",
+    "review": "Verification: partly checked 2026-10-15 (FINRA Rules 6730 and 6750 as displayed on finra.org; the FINRA filing pages for SR-FINRA-2024-004 and SR-FINRA-2025-008, titles and summaries only; the SEC approval order for SR-FINRA-2026-009, rechecked in a follow-up the same day; the ESMA public statement of 10 October 2025, p.~4; the ESMA manual of 12 May 2026, pp.~24--29 and~258--272; \\texttt{wide-bsv-fi-survey}, pp.~8--10 and~29--30; source verification (2026-10-17): Regulation (EU) 2024/791, Art.~1, points~(5)--(9), and Delegated Regulation (EU) 2025/1246, Art.~1, points~(6)--(7), and Art.~3, Official Journal texts through CELLAR; derivatives and empirical validation (2026-10-17): FCA PS24/14 (archived), PDF pp.~12, 14 and~42--43). Stability: draft. Currency: U.S. rules as displayed on 15 October 2026; EU Level~1 and RTS~2 as published, applying from 2 March 2026; U.K. rules unchecked (retrieval refused)."
+  },
+  "ev:bond-transparency-trading-costs": {
+    "source": "compendium/execution-trading-costs/fixed-income-trading.tex",
+    "review": "Verification: partly checked 2026-10-15 (\\texttt{wide-bsv-fi-survey}, published JFQA version, pp.~5, 7--10, 29--32 and~37--39, text layer; for \\texttt{wide-edwards-harris-piwowar} and \\texttt{wide-ohara-zhou-electronic}, the abstracts only, from the publishers' records via OpenAlex and RePEc, with the full texts unread; FINRA Rule 2232 and Regulatory Notice 17-08, in a follow-up the same day). Stability: draft. Currency: U.S. evidence from 2002--2017 samples; Rule 2232 as displayed on 15 October 2026; other regulatory facts as of the survey (2019)."
+  },
+  "conv:cme-globex-trading": {
+    "source": "compendium/execution-trading-costs/futures-execution.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the CME Client Systems Wiki pages ``Supported Matching Algorithms'' and ``Indicative Opening Price and Quantity'', both updated 11 February 2025; CME Rulebook chap.~5, Rules 526 and 538; the CFTC filing of 22 September 2020, Exhibit~B (blackline, page images), for the E-mini S\\&P 500 settlement; and the text of \\texttt{alpha-harris}, 2002 Oxford printing, p.~334). Stability: draft. Currency: venue documentation as retrieved on 15 October 2026; settlement as of trade date 26 October 2020; Harris as of 2002."
+  },
+  "conv:futures-block-efrp": {
+    "source": "compendium/execution-trading-costs/futures-execution.tex",
+    "review": "Verification: partly checked 2026-10-15 (against CME Rulebook chap.~5, Rules 526 and 538, as retrieved on 15 October 2026; CME Group advisory RA2607-5, effective 7 August 2026, pp.~1--4 and 10--17, with the Exhibit~A blackline and the rulebook's pp.~27--29 as page images; RA1911-5 of 2019 for the history; and \\texttt{alpha-harris}, 2002 Oxford printing, p.~334). Stability: draft. Currency: CME Group rules as of 15 October 2026; Harris as of 2002."
+  },
+  "mech:futures-margin-settlement": {
+    "source": "compendium/execution-trading-costs/futures-execution.tex",
+    "review": "Verification: partly checked 2026-10-15 (against CME Rulebook chap.~8, Rules 802.A, 802.B, 814 and 820, as retrieved on 15 October 2026, 802 read in full in the futures market structure review follow-up, and \\texttt{alpha-harris}, 2002 Oxford printing, p.~492; in derivatives and hedging review, \\texttt{s7-hulloptions}, 11th Global edition, chap.~2, pp.~51--54, for the generic account). Stability: draft. Currency: CME rules as of 15 October 2026; Hull's generic account as of 2021."
+  },
+  "ev:index-futures-price-discovery": {
+    "source": "compendium/execution-trading-costs/futures-execution.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{ex-hasbrouck-2003} in its NYU working-paper draft of 16 November 2000, abstract and pp.~4--5, 13 and~34, text layer, not the Journal of Finance version; Garbade and Silber unread). Stability: draft. Currency: evidence for March--May 2000."
+  },
+  "conv:government-bond-futures": {
+    "source": "compendium/execution-trading-costs/futures-execution.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~264--266; tick values and the carry example computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: Eurex's fixed-income futures factsheet and its contract specifications as of 10 September 2025 read; CME specifications not retrieved; source follow-up of 2026-10-16: CBOT Submissions 22-468 and 25-099 as filed with the CFTC; second source follow-up of 2026-10-16: CBOT Chapters 18--21 and~40, official chapter PDFs, with tick values recomputed; correction of 2026-10-17: Rule 40102.C's intermonth-spread tick for the Ultra Bond added from the same Chapter~40 copy, with its value recomputed in \\nolinkurl{contract-specifications-statistics-checks.py}, section~1). Stability: draft. Currency: Gliner's specifications as of 2013--2014; CBOT Treasury chapters as published on 16 October 2026."
+  },
+  "def:price-impact": {
+    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "review": "Verification: partly checked 2026-10-15, against the text layers of local copies of two books (Webster's handbook, \\texttt{wide-webster-price-impact}, CRC 2023 first edition, pp.~3--15 and 53--54, and Bouchaud et al., \\texttt{catalogue-0528}, Cambridge 2018 first printing, ISBN 9781107156050, pp.~208--212, 233 and 240; the page image of p.~211 for eqs.~(11.2)--(11.4)); and, in market-impact models review, the originals \\texttt{alpha-almgren} (author preprint of December 2000, pp.~8--13, page images of pp.~9 and 11; journal pagination not checked) and \\texttt{wide-bacry-life-cycle} (arXiv preprint of 9 December 2014, pp.~3 and 19--22; market design and liquidity review: \\texttt{alpha-harris}, pp.~400 and~403); in impact estimation review, \\texttt{alpha-laruelle}, p.~204. Stability: draft. Currency: timeless (concepts); the empirical statements as of 2018."
+  },
+  "mod:propagator": {
+    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{catalogue-0528}, Cambridge 2018 first printing, pp.~249--253, with the page image of p.~252; \\texttt{wide-webster-price-impact}, CRC 2023, pp.~5, 10 and 97; and in market-impact models review Bouchaud et al.'s book, pp.~198 and 254--257, and the original paper, \\texttt{wide-bouchaud-propagator}, in its arXiv version cond-mat/0307332v2, pp.~14--17, page image of p.~14, not its journal pagination). Stability: draft. Currency: timeless (model); the empirical motivation as of 2018."
+  },
+  "res:no-price-manipulation": {
+    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{wide-webster-price-impact}, CRC 2023, pp.~7--8 and 93--97, with the page image of p.~94; and \\texttt{catalogue-0528}, Cambridge 2018 first printing, pp.~361--362, with its page image; the example rederived independently). Stability: draft. Currency: timeless (theory)."
+  },
+  "ev:square-root-impact": {
+    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{catalogue-0528}, Cambridge 2018 first printing, pp.~233--236 and 241, page image of p.~234; and \\texttt{wide-bacry-life-cycle} in its arXiv version of 9 December 2014, pp.~1, 21--22, not its journal pagination). Stability: draft. Currency: as of the samples, 2007--2010."
+  },
+  "meth:post-execution-impact-profile": {
+    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{wide-bacry-life-cycle} in its arXiv version of 9 December 2014, pp.~3--4 and 19--22, page image of p.~21; the 2015 journal version and its pagination not checked). Stability: draft. Currency: as of the 2010 European sample."
+  },
+  "ev:intraday-impact-profile": {
+    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~203--209, page image of p.~208; and \\texttt{wide-bacry-life-cycle} in its arXiv version of 9 December 2014, pp.~5--8, page image of p.~8). Stability: draft. Currency: as of the 2010 samples."
+  },
+  "meth:almgren-impact-estimation": {
+    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the authors' preprint of 10 May 2005 of \\texttt{wide-almgren-direct-impact}, 26 pages, from a Wayback snapshot of 8 August 2017 of the author's site, pp.~1--22, page images of pp.~19 and~21; the example recomputed). Stability: draft. Currency: as of the 2001--2003 sample."
+  },
+  "meth:order-flow-impact-regression": {
+    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{alpha-harris}, 2002 Oxford printing, p.~435 by page image; and \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~87--92, page image of p.~91). Stability: draft. Currency: timeless (method)."
+  },
+  "ev:index-reconstitution-impact": {
+    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{alpha-harris}, 2002 Oxford printing, p.~487 by page image). Stability: draft. Currency: as of 1996--2001."
+  },
+  "def:market-regulation-design": {
+    "source": "compendium/execution-trading-costs/market-regulation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~59--66, 202--218, 538 and 572--582). Stability: draft. Currency: framework timeless; institutions and examples as of 2002."
+  },
+  "mech:venue-competition-fragmentation": {
+    "source": "compendium/execution-trading-costs/market-regulation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~524--541, \\texttt{s6-hasbrouck}, 2007 Oxford printing, p.~5, and \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~4--7, 15--17, 39--62 and 177--186; dealer models and information review: \\texttt{s6-hasbrouck}, pp.~99--105, and \\texttt{alpha-laruelle}, pp.~169 and~177). Stability: draft. Currency: mechanisms timeless; European chronology to 2017, as reported."
+  },
+  "rule:us-equity-market-structure": {
+    "source": "compendium/execution-trading-costs/market-regulation.tex",
+    "review": "Verification: partly checked 2026-10-16 (Federal Register texts of Releases 34-42914, 34-44568, 34-51808 (first pages and dates), 34-63255, 34-67090, 34-67091, 34-67457, 34-79318 (date) and 34-85623 (date and purpose), and of an exchange filing of October 2020; SEC Release 34-105656 of 11 June 2026, pp.~1--5; 17 CFR 242.612 and 240.15c3-5 in the eCFR for 14 October 2026; \\texttt{alpha-laruelle}, pp.~181--183; \\texttt{alpha-harris}, p.~573). Stability: draft. Currency: as of 16 October 2026; market-wide circuit breakers permanent at NYSE from March 2022, at Nasdaq and FINRA from April 2022, with Level~3 resumption amended for overnight trading in September--October 2026; LULD and CAT status as of October 2026 from Federal Register texts; market design and liquidity review follow-up, 2026-10-16: Releases 34-94441 (whole), 34-104612 (whole) and 34-105656 (Federal Register text, whole) and the Federal Register's record of the 2024 adopting release (effective date) read; source follow-up of 2026-10-16: Federal Register documents 2022-08283, 2022-08286, 2024-21508, 2026-16201, 2026-19125, 2026-20605 and 2026-20799 (circuit breakers and LULD) and 2025-17929, 2026-00762, 2026-05350, 2026-06255 and 2026-07651 (CAT), opening sections and the passages cited, found through the Federal Register API."
+  },
+  "rule:eu-trading-venue-transparency": {
+    "source": "compendium/execution-trading-costs/market-regulation.tex",
+    "review": "Verification: partly checked 2026-10-16 (texts of Directives 2006/31/EC, 2014/65/EU and (EU) 2016/1034 and Regulations (EU) No 600/2014, 2016/1033 and 2024/791, retrieved through the EU Publications Office's CELLAR service because EUR-Lex's HTML pages returned an empty bot-check response; ESMA's statements of 27 March 2024 and 10 October 2025 and its double-volume-cap page; \\texttt{alpha-laruelle}, pp.~8--9 and 42--45; market design and liquidity review follow-up, 2026-10-16: Directive (EU) 2024/790, recitals and Arts.~1(3) and~2--3, and Commission Delegated Regulation (EU) 2026/392, recitals and Arts.~1--2, retrieved through CELLAR; source follow-up of 2026-10-16, through CELLAR: Delegated Regulations (EU) 2017/588 (whole, with Annex) and its amendments 2019/443 and 2023/960; 2017/587, Arts.~5--8 and Annex~II, and its amendments 2019/442, 2023/944 and 2025/1246; Regulation (EU) 2019/2033, Arts.~63 and~67; Regulation (EU) 2024/791, Art.~1(3), (4) and~(16); MiFIR Art.~4 as originally published; second source follow-up of 2026-10-16: ESMA's final report ESMA74-2134169708-7780, paras~8 and~21--23 and Next Steps; source verification (2026-10-17): the same report's Annex~II, and CELLAR SPARQL title searches for adopting acts). Stability: draft. Currency: as of 16 October 2026; national transposition of Directive (EU) 2024/790 checked for Ireland and Malta only; ESMA's SI standards as drafts of April 2025; no adopting act found in CELLAR's titles on 17 October 2026."
+  },
+  "mech:circuit-breakers-trading-halts": {
+    "source": "compendium/execution-trading-costs/market-regulation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~572--582, and \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~181 and 187--189; Directive 2014/65/EU, Art.~48(5), via the Publications Office; source follow-up of 2026-10-16: Hautsch and Horvath, CFS Working Paper 571, April 2017 draft, pp.~1--17 and 40--41; source verification (2026-10-17): Kasahara and Yamada, JPX Working Paper Vol.~52, text layer; second pass: SEC Release 34-93365 on the market-wide circuit breaker pilot, Federal Register public-inspection PDF; derivatives and empirical validation (2026-10-17): the MWCB Working Group's report of 31 March 2021). Stability: draft. Currency: mechanisms timeless; examples dated as stated."
+  },
+  "rule:spoofing-securities-markets": {
+    "source": "compendium/execution-trading-costs/market-regulation.tex",
+    "review": "Verification: partly checked 2026-10-17 (against the Official Journal texts of Regulation (EU) No 596/2014, Art.~12 and Annex~I, and Delegated Regulation (EU) 2016/522, Annex~II, retrieved through CELLAR; CELLAR SPARQL list of MAR amending acts, searched for Article~12; 15 U.S.C. 78i from GovInfo's 2023 edition; source verification (2026-10-17), second pass: 17 CFR 240.10b-5 (eCFR, 15 October 2026) and FINRA Rules 2020 and 5210, Supplementary Material~.03, from finra.org, the version marked as selected on the page; empirical extensions (2026-10-17): FINRA Regulatory Notice 17-22, from finra.org; derivatives and empirical validation (2026-10-17): MAR Art.~12(1) limbs reread, ESMA/2015/224 paras.~8 and~12, Directive 2014/57/EU Art.~5 and recital~23 through CELLAR, and the syllabi and holdings of \\emph{Aaron v.\\ SEC} and \\emph{Ernst \\& Ernst v.\\ Hochfelder} from Cornell LII, for the intent correction). Stability: draft. Currency: EU texts in force as of 17 October 2026 as far as the amendment search shows; U.S. statute as of the 2023 code edition; FINRA and SEC rules as of 17 October 2026."
+  },
+  "def:smart-order-routing": {
+    "source": "compendium/execution-trading-costs/smart-order-routing.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, sec.~3.4.2, pp.~233--244, page images of pp.~235 and~236; the example recomputed; market design and liquidity review: Introduction, pp.~22--23, page image of p.~23; the staleness probability computed); extended 2026-10-16 in order matching and fragmentation review against chap.~1, sec.~1.2.1, pp.~62--71, and \\texttt{alpha-harris}, 2002 Oxford printing, chap.~26, pp.~533--534, with the cross-venue bound derived. Stability: draft. Currency: European venues and latencies as of 2012--2018; Harris as of 2002."
+  },
+  "res:fee-adjusted-venue-choice": {
+    "source": "compendium/execution-trading-costs/smart-order-routing.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, sec.~3.4.2, pp.~236--238, page image of p.~236; buy and sell thresholds derived and checked). Stability: draft. Currency: timeless (arithmetic); no current fee schedule checked; order matching and fragmentation review added Lehalle and Laruelle's chap.~1, pp.~68--69, and chap.~2, p.~163, on 2026-10-16."
+  },
+  "meth:passive-order-split": {
+    "source": "compendium/execution-trading-costs/smart-order-routing.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, sec.~3.4.2, pp.~239--242, page images of pp.~240 and~241; the example and the corrected formula recomputed with exact arithmetic). Stability: draft. Currency: timeless (method); the example is stylised."
+  },
+  "def:tick-size": {
+    "source": "compendium/execution-trading-costs/tick-size.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~74--79 and 88--89; \\texttt{catalogue-0528}, Cambridge 2018, pp.~48--49 and~58; \\texttt{alpha-harris}, 2002 Oxford printing, p.~91; market design and liquidity review: \\texttt{alpha-harris}, pp.~114, 531 and 537--538; \\texttt{alpha-laruelle}, p.~15). Stability: draft. Currency: rules and figures as of 2002--2015; U.S.\\ and EU tick regimes have changed since and are not checked here."
+  },
+  "ev:tick-size-market-quality": {
+    "source": "compendium/execution-trading-costs/tick-size.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, chap.~1, pp.~75--90); source follow-up 2026-10-16 against Goldstein and Kavajecz's 1998 working paper (whole text) and Harris (1994) (pp.~149 and~155 checked visually; Table~7 and the last pages unreadable in the scan). Stability: draft. Currency: FTSE~100 data of April 2012; decimalisation studies of 1992--2005."
+  },
+  "mod:harris-discretised-spread": {
+    "source": "compendium/execution-trading-costs/tick-size.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, chap.~1, pp.~74--77, and app.~A, sec.~A.6, pp.~266--273, page images of pp.~272--273; the counterfactual computed). Stability: draft. Currency: model timeless; the fit is FTSE data of April 2012."
+  },
+  "meth:trade-sign-classification": {
+    "source": "compendium/execution-trading-costs/trade-signing.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~89--90 and 180, and \\texttt{alpha-harris}, 2002 Oxford printing, pp.~332--333 and~423; the rule computed on toy trades, recomputed 2026-10-16 with exact decimal prices after a floating-point error in the first check; source follow-up of 2026-10-16: Bank of England Staff Working Paper 896, pp.~1--5 and 12--14, with the three rules computed on trades inside the spread; second follow-up 2026-10-16: \\texttt{lee-ready-1991}, pp.~734--739, by page image; source verification (2026-10-17): Ellis, Michaely and O'Hara, abstract only, Cambridge Core page). Stability: draft. Currency: methods timeless; the block statistic as reported in 2002; quote-lag evidence from the NYSE and AMEX in 1987--1988; accuracy evidence from NASDAQ in 2011."
+  },
+  "def:transaction-costs": {
+    "source": "compendium/execution-trading-costs/transaction-cost-analysis.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~420--423 and 428--429, and \\texttt{s7-kissellscience}, Academic Press printing with copyright 2014, chap.~3, pp.~87--96; the split and examples checked with exact arithmetic; in transaction-cost models review, \\texttt{s7-narang}, third edition, Wiley 2024, chap.~5, pp.~85--91, and \\texttt{exp-pfmi}, April 2012, paras.~1.8--1.13, pp.~7--9, both text layers, Narang's examples recomputed; the reading of his sell example corrected 2026-10-15 in the transaction-cost models review follow-up; source verification (2026-10-17): \\texttt{exp-pfmi}, Annex~H, pp.~174--178, BIS PDF downloaded 2026-10-17, text layer). Stability: draft. Currency: timeless (accounting); Narang's account as of 2024."
+  },
+  "meth:transaction-cost-analysis": {
+    "source": "compendium/execution-trading-costs/transaction-cost-analysis.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~420--421, 432 and 438--440; \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~202--203; and \\texttt{s7-kissellscience}, Academic Press printing with copyright 2014, chap.~3, pp.~95--96 and 110--113, p.~112 by page image). Stability: draft. Currency: practitioner methods as of 2002, 2014 and 2018."
+  },
+  "meth:aggressiveness-tradeoff": {
+    "source": "compendium/execution-trading-costs/transaction-cost-analysis.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~435--439). Stability: draft. Currency: timeless (decision rule)."
+  },
+  "def:sovereign-credit-defaults": {
+    "source": "compendium/government-bond-markets/sovereign-credit.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~269--279, with Tables~9.3--9.4 and Figure~9.10; Moody's 2007 report itself not read; the recovery test computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: ISDA's Greece determination and auction releases read; second follow-up, 2026-10-16: IMF Country Reports 12/57, 17/44 and 22/92 read at the pages cited; second source follow-up, 2026-10-16: CRS IF10991 v6, Reinhart's 2010 chartbook (table checked as a page image) and Fitch's 2020 sovereign default study). Stability: draft. Currency: default record to 2006; Greece 2012 and Argentina 2020 from IMF reports of 2012--2022; Argentine default counts as published in 2010 (Reinhart), 2020 (CRS) and 2021 (Fitch)."
+  },
+  "def:equity-indices-derivatives": {
+    "source": "compendium/international-equity-markets/equity-indices.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~8, PDF pp.~214--221, with Tables~8.1--8.2; second macro markets and pricing review follow-up, 2026-10-16: the JPX market-structure page and Moscow Exchange's index page read; source follow-up of 2026-10-16: Nikkei's Nikkei 225 profile and JPX's TOPIX page; second source follow-up of 2026-10-16: FTSE/JSE ground rules v9.3 and the FT Wilshire 5000 methodology of January 2026; source verification (2026-10-17): NSE Indices' methodology of September 2026 and Borsa Istanbul's ground rules of April 2020, text layers; second pass: Hang Seng Indexes' HSI methodology v2.3 of July 2023, text layer; empirical extensions (2026-10-17): Dow Jones Averages methodology (May 2026), Russell US construction v7.2, FTSE UK ground rules v17.3, STOXX guide (October 2026) and DAX guide v11.3.0, text layers; derivatives and empirical validation (2026-10-17): BME's IBEX committee notice 18/2024). Stability: draft. Currency: index lists and ETF examples as of 2013; fourteen indices' names or weighting as of 2026 (BIST rules dated 2020, DAX 2022, HSI 2023)."
+  },
+  "mod:cartea-jaimungal-execution": {
+    "source": "compendium/ml-alternative-data/execution-control.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer and page images of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, app.~A, sec.~A.7.3, pp.~281--284, with the HJB reduction, the Riccati and Feynman--Kac solutions and the parameter paths checked numerically; follow-up the same day: the terminal payoff made consistent, the finite-value regime, the variance decomposition and the units, with independent numerical checks; and \\texttt{wide-hambly-xu-yang} in the arXiv version 2112.04553v4 of 28 February 2023, not the journal version, pp.~2--4, 7, 32--35 and 49, page images of pp.~32--33). Stability: draft. Currency: model timeless; the survey's account of RL as of February 2023."
+  },
+  "meth:activity-sampled-bars": {
+    "source": "compendium/ml-alternative-data/financial-data-structures.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-afml}, Wiley 2018, chap.~2, pp.~26--28 and 40--41, printed page $=$ PDF page $-27$; Figure~2.1 viewed as a page image; the Ané--Geman abstract read on RePEc, the paper itself not read). Stability: draft. Currency: methods timeless; the evidence cited is from 1967--2012."
+  },
+  "meth:information-driven-bars": {
+    "source": "compendium/ml-alternative-data/financial-data-structures.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~2, pp.~29--32; the thresholds and their failure on a balanced flow checked on a toy flow). Stability: draft. Currency: timeless."
+  },
+  "meth:etf-trick": {
+    "source": "compendium/ml-alternative-data/financial-data-structures.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~2, pp.~32--37 and Snippets~2.2--2.3; a two-leg toy computed; timing, gross exposure and exhausted capital restated and computed 2026-10-16). Stability: draft. Currency: timeless."
+  },
+  "meth:event-based-sampling": {
+    "source": "compendium/ml-alternative-data/financial-data-structures.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~2, pp.~38--40, Snippet~2.4; toy series computed). Stability: draft. Currency: timeless."
+  },
+  "def:financial-data-types": {
+    "source": "compendium/ml-alternative-data/financial-data-types.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layers of local copies of \\texttt{alpha-afml}, chap.~2, pp.~23--25, and \\texttt{s3-velu}, CRC Press, copyright page \\copyright~2020 in the local copy (the catalogue records a 2021 copyright), ISBN 9781498737166, chap.~1, pp.~42--44, printed page $=$ PDF page $-17$; derivatives and empirical validation (2026-10-17): Cohen, Malloy and Pomorski's NBER WP~16454, sec.~I). Stability: draft. Currency: practitioner descriptions as of 2018--2020; the 10TB figure undated and unsourced."
+  },
+  "mod:fractional-differencing-weights": {
+    "source": "compendium/ml-alternative-data/fractional-differentiation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~5, pp.~75--80; the weights, signs and decay rate computed). Stability: draft. Currency: timeless."
+  },
+  "meth:fixed-width-fractional-differencing": {
+    "source": "compendium/ml-alternative-data/fractional-differentiation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~5, pp.~80--88, Snippets~5.2--5.4 and Table~5.1; windows, weight loss and a simulated ADF illustration computed; empirical extensions (2026-10-17): MacKinnon and Nielsen's CREATES working paper, abstract and secs.~1--2, text layer). Stability: draft. Currency: the futures evidence as of 2018."
+  },
+  "meth:triple-barrier-labelling": {
+    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~3, pp.~43--50, Snippets~3.1--3.5; toy paths labelled; the returns a label uses restated 2026-10-16; dealer models and information review: the merged arbitrage-label blocks compared with p.~44). Stability: draft. Currency: timeless."
+  },
+  "meth:meta-labelling": {
+    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~3, pp.~50--55; the Hudson \\& Thames page read for provenance only). Stability: draft. Currency: timeless; the Hudson \\& Thames page as retrieved 2026-10-16."
+  },
+  "def:label-concurrency-uniqueness": {
+    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~4, pp.~59--62 and 64--66; the toy example recomputed; the indicator convention restated and the inclusive code convention computed 2026-10-16, pp.~60--61, 64--65 and~69). Stability: draft. Currency: timeless."
+  },
+  "meth:sequential-bootstrap": {
+    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~4, pp.~62--68; toy example, Monte Carlo and the overlap approximation recomputed). Stability: draft. Currency: timeless."
+  },
+  "meth:sample-weights-attribution-decay": {
+    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~4, pp.~68--72, Snippets~4.10--4.11; weights and decay constants recomputed; the summation's lower limit corrected 2026-10-16). Stability: draft. Currency: timeless; scikit-learn behaviour as described in 2018."
+  },
+  "pit:label-weight-leakage": {
+    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "review": "Verification: partly checked 2026-10-16 (the López de Prado passages cited, chaps.~2--5, as for the linked entries; the checklist is the entry's own and unchecked against chap.~7). Stability: draft. Currency: timeless."
+  },
+  "meth:purged-embargoed-cross-validation": {
+    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "review": "Verification: partly checked 2026-10-17 (against the text layer of a local copy of \\texttt{alpha-afml}, Wiley 2018, chap.~7, secs.~7.1--7.4.3, pp.~103--109, with p.~106 read as page images, and chap.~6, secs.~6.3.3--6.4, pp.~97--98; \\texttt{rf-bergmeir-hyndman-koo-2018}, Monash working paper dated 23 July 2017, pp.~1--3 and 14; \\texttt{rf-cerqueira-torgo-mozetic-2020}, arXiv v1, abstract; the overlap rule and the class's index sets recomputed; audit repair of 2026-10-17: the plateau passage, pp.~106--107, reread and scoped as a heuristic). Stability: draft. Currency: methods as published 2017--2019."
+  },
+  "meth:time-valid-ml-experiment-record": {
+    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{latest-pit-language-models}, NBER Working Paper 35247, May 2026, abstract and pp.~5, 9 and~22, text layer; the record list is interpretation; derivatives and empirical validation (2026-10-17): Kapoor and Narayanan's leakage taxonomy, sec.~2.4, arXiv text layer). Stability: draft. Currency: methods as of 2026."
+  },
+  "def:global-macro-strategy": {
+    "source": "compendium/multi-asset-systematic-macro/global-macro.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text of \\texttt{s7-gliner}, Wiley 2014 ebook, chap.~1, PDF pp.~29--40, chap.~2, p.~60, and chap.~4, pp.~91--102). Stability: draft. Currency: Gliner's characterisations as of 2013--2014."
+  },
+  "ev:global-macro-crisis-performance": {
+    "source": "compendium/multi-asset-systematic-macro/global-macro.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~1, PDF pp.~34--38, and chap.~4, pp.~100--101; the figures' underlying data were not obtained; source verification (2026-10-17): own bounded test of the 2022--2026 public index data, reported in Pitfalls; empirical extensions (2026-10-17): the protocol's 2014--2026 window run on the public workbook, with the registration statement corrected). Stability: draft. Currency: data to 2012 and September 2013; own test data January 2014 to July 2026, workbook retrieved 2026-10-17."
+  },
+  "meth:macro-position-sizing-risk": {
+    "source": "compendium/multi-asset-systematic-macro/global-macro.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~2, PDF pp.~50--69, and chap.~4, pp.~100--101; the arithmetic recomputed in the macro markets and pricing review check script, sections~1--3). Stability: draft. Currency: timeless method; Gliner's stress list as of 2013."
+  },
+  "meth:macro-practitioner-frameworks": {
+    "source": "compendium/multi-asset-systematic-macro/global-macro.tex",
+    "review": "Verification: partly checked 2026-10-16 (every attribution above compared with the text of a local copy of \\texttt{s7-drobny}, Wiley 2006 printing; the 2013 revised edition the catalogue names was not inspected, so page numbers may differ there; macro markets and pricing review follow-up, 2026-10-16: pp.~85, 109, 125 and 130--132 reread, the Siva-Jothy, Andres Drobny and cooling-off paraphrases corrected). Stability: draft. Currency: interviews of about 2005."
+  },
+  "def:macro-regime-asset-map": {
+    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~4, PDF pp.~98--102, and chap.~8, pp.~216--217; macro markets and pricing review follow-up, 2026-10-16: Figure~8.3 on p.~217 read as a page image and compared phase by phase with the legacy sector table; the legacy map is otherwise unsourced; empirical extensions (2026-10-17): own real-time test of the inflation row added, rerun on the quarterly vintages in derivatives and empirical validation (2026-10-17) with the monthly run kept as a sensitivity, and the deflation row added; source verification (2026-10-17): own real-time test of the recession row, rerun as v2 after an audit, reported in Pitfalls). Stability: draft. Currency: hypotheses; the recession row tested on 1965--2025 data, the other rows untested."
+  },
+  "def:macroeconomic-indicators": {
+    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~12, PDF pp.~401--428, and Table~12.2 (pp.~424--425; macro markets and pricing review follow-up: page images of pp.~416 and 424--425 read); the FOMC's Statement on Longer-Run Goals, as amended effective 27 January 2026; the BLS Current Employment Statistics page as retrieved; second macro markets and pricing review follow-up, 2026-10-16: the UN World Population Prospects 2024 age-group file for the Table~12.2 countries). Stability: draft. Currency: FOMC goal as of 16 October 2026; Gliner's data and projections as of about 2013; UN projections of 2024."
+  },
+  "meth:equity-macro-leading-indicators": {
+    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~8, PDF pp.~233--240). Stability: draft. Currency: Gliner's charts to 2013."
+  },
+  "data:us-macro-release-calendar": {
+    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner, chap.~12, PDF p.~406; the BLS CES program page, the Federal Reserve's FOMC page and the ECB's Governing Council page as retrieved; macro markets and pricing review follow-up, 2026-10-16: the BLS CES FAQ, the Fed's G.17 release dates, BEA's 2026 schedule and the Census Bureau's indicator calendar read; BLS CPI and ISM calendars not retrievable; second follow-up, 2026-10-16: the BLS CPI schedule read; the ISM calendar still behind a login; third follow-up, 2026-10-16: the ISM's 2026 calendar read from a browser export, with the business-day rule computed). Stability: draft. Currency: schedules as of 16 October 2026."
+  },
+  "meth:macro-event-queries": {
+    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~3, PDF pp.~79--86, with Tables~3.1--3.2; the binomial probabilities computed in the topic review check script). Stability: draft. Currency: example as of July 2012."
+  },
+  "meth:equity-index-valuation": {
+    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~8, PDF pp.~215--216 and 228--233). Stability: draft. Currency: Gliner's thresholds as of 2013."
+  },
+  "def:crude-oil-markets": {
+    "source": "compendium/physical-commodity-markets/physical-markets.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~301--312; the crack-spread arithmetic in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: ICE Brent Crude futures specifications read; OPEC, EIA and CME pages not retrievable; source follow-up of 2026-10-16: NYMEX Submission 23-057 as filed with the CFTC and OPEC's home page; second source follow-up of 2026-10-16: NYMEX Chapter~200, the WAM announcement, EIA's analysis and glossary, OPEC's Statute and 3 May 2026 release). Stability: draft. Currency: market data as of 2011--2013; the WTI contract as published on 16 October 2026; OPEC membership evidence to 16 October 2026."
+  },
+  "def:metals-markets": {
+    "source": "compendium/physical-commodity-markets/physical-markets.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~319--328; the density ratio in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: Gliner pp.~320 and~322 reread and Table~10.9 recomputed; USGS \\emph{Mineral Commodity Summaries} 2013 (gold, silver) and 2025 (gold, silver, copper) read; second follow-up, 2026-10-16: the World Gold Council's full-year 2025 demand release and jewellery section and the Silver Institute's World Silver Survey 2026 release read; source follow-up of 2026-10-16: WPIC's \\emph{Platinum Quarterly} Q2~2026, Table~1; second source follow-up of 2026-10-16: ICSG \\emph{World Copper Factbook 2025}, pp.~5 and~48, the ICA 2023 end-use dataset, the IAI/MPP aluminium strategy, COMEX Chapters 107 and 111--113, and the LME Rulebook as of 13 October 2026; source verification (2026-10-17): USGS \\emph{Mineral Commodity Summaries} 2026, aluminum, text layer). Stability: draft. Currency: market data as of 2011--2013; gold and silver demand for 2025; copper for 2024 (end use 2022 and 2024); aluminium demand shares of about 2020 and smelter production for 2024--2025; contract texts as of October 2026."
+  },
+  "def:agricultural-markets": {
+    "source": "compendium/physical-commodity-markets/physical-markets.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~330--348; macro markets and pricing review follow-up, 2026-10-16: ICE coffee and cotton specifications read; source follow-up of 2026-10-16: CBOT Submission 24-443; second source follow-up of 2026-10-16: CBOT Chapters 10, 11 and~14, official chapter PDFs). Stability: draft. Currency: market data as of 2012--2013; CBOT grain terms as published on 16 October 2026."
+  },
+  "meth:relative-performance-evaluation": {
+    "source": "compendium/portfolio-construction-risk/performance-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~443--450 and 469--470; the decomposition and the Jensen comparison checked numerically). Stability: draft. Currency: timeless (methods); presentation standards named by Harris (AIMR-PPS) as of 2002."
+  },
+  "def:return-measures": {
+    "source": "compendium/portfolio-construction-risk/performance-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of the GIPS standards for firms, 2020 edition, CFA Institute, official PDF downloaded 2026-10-15, provisions 1.A.35 and 2.A.23--2.A.30 and the Glossary, printed page $=$ PDF page $-18$; the formulas derived and checked numerically; provisions 2.A.12 and 5.A.1 read and the cash-flow example recomputed on matching horizons 2026-10-16). Stability: draft. Currency: GIPS 2020, effective 1 January 2020."
+  },
+  "meth:skill-luck-significance-tests": {
+    "source": "compendium/portfolio-construction-risk/performance-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~22, pp.~452--474, with Tables~22-2 and~22-3 recomputed by the normal approximation). Stability: draft. Currency: methods timeless; calibration and examples as of 2002."
+  },
+  "meth:gips-composite-presentation": {
+    "source": "compendium/portfolio-construction-risk/performance-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-17 (against the text layer of \\texttt{wide-gips-2020}, GIPS Standards for Firms, 2020 edition, official PDF from gipsstandards.org retrieved 2026-10-17, provisions 3.A.1--3.A.11, 4.A.1--4.A.3, 4.C.1--4.C.5 and 5.A.1, printed pp.~18--19, 21--22, 25--27 and~33; empirical extensions (2026-10-17), same file (SHA-256 \\texttt{9c45d87d}): 4.A.1(e), 4.C.31, 5.C.30, 6.A.1(e), 6.C.26, 7.C.26, 8.D.4, 8.F.4 and 8.H.1 read for the no-appropriate-benchmark exception, which the first version omitted). Stability: draft. Currency: GIPS 2020 edition, effective 1 January 2020."
+  },
+  "meth:rule-based-position-sizing": {
+    "source": "compendium/portfolio-construction-risk/portfolio-construction-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~6, pp.~99--104 and~123, with Exhibit~6.1 on p.~102 by page image; the weights and risk contributions computed; the ERC weights' rounding corrected in the portfolio construction review follow-up). Stability: draft. Currency: practitioner account as of 2024; the risk-contribution arithmetic is timeless."
+  },
+  "meth:equal-risk-contribution": {
+    "source": "compendium/portfolio-construction-risk/portfolio-construction-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{wide-maillard-roncalli-erc} in the authors' version of May 2009, secs.~2--3.5, pp.~4--9, decoded text layer; own numerical check; derivatives and empirical validation (2026-10-17): sec.~3.5 reread and the maximum-Sharpe statement qualified, with an own counterexample; derivatives and empirical validation (2026-10-17): sec.~4 backtests and Qian (2005), with an own check). Stability: draft. Currency: theory timeless."
+  },
+  "ev:volatility-managed-portfolios": {
+    "source": "compendium/portfolio-construction-risk/portfolio-construction-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): \\texttt{s16-r25}, NBER WP~22208, secs.~2.2 and~5, text layer; \\texttt{wide-cederburg-volmanaged}, journal pages 95--97, text layer). Stability: draft. Currency: evidence on U.S.\\ equity factors to about 2015--2017; owning pathway \\texttt{risk-parity-vol-targeting}."
+  },
+  "meth:resampled-efficiency": {
+    "source": "compendium/portfolio-construction-risk/portfolio-construction-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (empirical extensions (2026-10-17); against the authors' version, \\copyright~2007, marked as forthcoming in the \\emph{Journal of Investment Management} (published 2008), pp.~5--10, text layer; the 2007 MIT colloquium abstract). Stability: draft. Currency: method of 1998 as described in 2007; evidence is the authors' simulation."
+  },
+  "mod:mean-variance-portfolio-optimisation": {
+    "source": "compendium/portfolio-construction-risk/portfolio-construction-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~6, pp.~99--125, with Exhibits~6.2, 6.4--6.7 by page image; and the authors' version of 5 January 2024 of \\texttt{wide-boyd-markowitz-seventy}, secs.~1.1--1.4, 2.4, 3.2, 3.4, 4.3 and 5.6, pp.~3--10, 17, 19--22, 27--28 and 39--40, not the journal pagination; Exhibit~6.1 weights, pair count and Sharpe scale invariance computed; the closed form's conditions, the unbounded case, the permutation example and the three tasks behind the machine-learning item corrected 2026-10-15 in the portfolio construction review follow-up; in risk models review, chap.~4, secs.~4.1--4.1.3, pp.~73--76, and Boyd et al.\\ sec.~4.2, pp.~25--27, for size limits, penalties and risk measurement; derivatives and empirical validation (2026-10-17): Markowitz (1952), p.~77 as a page image, and DeMiguel, Garlappi and Uppal, abstract and sec.~1). Stability: draft. Currency: formulation timeless; solver timings as of 2024."
+  },
+  "meth:signal-portfolio-allocation": {
+    "source": "compendium/portfolio-construction-risk/portfolio-construction-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~6, pp.~117--118, with p.~118 by page image; the example computed; Grinold and Kahn not read). Stability: draft. Currency: practitioner account as of 2024."
+  },
+  "mod:pca-risk-distribution-weights": {
+    "source": "compendium/portfolio-construction-risk/portfolio-construction-models.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer and a page image of a local copy of \\texttt{alpha-afml}, chap.~2, pp.~35--36, Snippet~2.1; the construction checked numerically). Stability: draft. Currency: timeless."
+  },
+  "mod:black-litterman": {
+    "source": "compendium/portfolio-construction-risk/portfolio-construction-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{alpha-black} in the Goldman Sachs Fixed Income Research version of October 1991, Appendix, PDF pp.~41--42, with point~8 read as a page image; the formula's properties checked numerically). Stability: draft. Currency: model of 1991--1992."
+  },
+  "def:quant-strategy-components": {
+    "source": "compendium/portfolio-construction-risk/quant-strategy-structure.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~2, secs.~2.1--2.2, pp.~16--19, with Exhibit~2.1 on p.~17 by page image; Exhibit~2.2 arithmetic checked). Stability: draft. Currency: practitioner framework as of 2024."
+  },
+  "def:alpha-model-taxonomy": {
+    "source": "compendium/portfolio-construction-risk/quant-strategy-structure.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~3, secs.~3.1--3.3, pp.~23--52, with Exhibit~3.2 on p.~29 by page image; the carry example checked; source verification (2026-10-17): \\texttt{s6-tsmom}, author-hosted journal copy, abstract; \\texttt{alpha-century}, \\emph{JPM} Fall 2017 reprint, PDF pp.~3--7 with Exhibit~1 by page image; derivatives and empirical validation (2026-10-17): Lo and MacKinlay (NBER WP~2977), Avellaneda and Lee's eqs.~(15)--(16) and Moskowitz, Ooi and Pedersen's secs.~2.4 and~4.1). Stability: draft. Currency: practitioner taxonomy as of 2024; anecdotes from 1970 to 2023."
+  },
+  "meth:alpha-strategy-specification": {
+    "source": "compendium/portfolio-construction-risk/quant-strategy-structure.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~3, sec.~3.4, pp.~52--63, with Exhibits~3.7 and~3.8 read from the text layer; the permutation count checked). Stability: draft. Currency: practitioner account as of 2024."
+  },
+  "mod:factor-risk-model": {
+    "source": "compendium/portfolio-construction-risk/risk-models.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~4, ``Risk Models'', pp.~71--84, with Exhibit~4.1 on p.~83 by page image; and the authors' version of 5 January 2024 of \\texttt{wide-boyd-markowitz-seventy}, sec.~3.3, pp.~20--21; the diversification, correlated-residual and neutrality examples computed; the residual-diversification condition, the CVX--XOM hedge and Narang's compensation wording corrected 2026-10-15 in the risk models review follow-up). Stability: draft. Currency: formulation timeless; Narang's practitioner account as of 2024."
+  },
+  "meth:portfolio-covariance-estimation": {
+    "source": "compendium/portfolio-construction-risk/risk-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{wide-ledoit-wolf-review} in the University of Zurich working-paper version of February 2020, pp.~1--7 and~14, text layer; the identity and the direction of the gains checked by own simulation; empirical extensions (2026-10-17): \\texttt{wide-boyd-markowitz-seventy}, arXiv v1, secs.~3.4 and the backtest's covariance paragraph, pp.~21--22 and 31--32; derivatives and empirical validation (2026-10-17): \\texttt{s6-honey} appendices, POET's sec.~2, Engle and Sheppard's DCC equations and the 2022 journal version of the review, with an own check). Stability: draft. Currency: methods as reviewed in 2020."
+  },
+  "ev:correlation-matrix-noise": {
+    "source": "compendium/portfolio-construction-risk/risk-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): against the arXiv preprint cond-mat/9810255v1 of 20 October 1998, pp.~1--2, text layer; the band and the variance arithmetic recomputed). Stability: draft. Currency: evidence on 1991--1996 data; owning pathway \\texttt{high-dimensional-estimation}."
+  },
+  "mod:garch-volatility-forecast": {
+    "source": "compendium/portfolio-construction-risk/risk-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{wide-christoffersen-elements} in a local uncorrected proof, chap.~4, printed pp.~70--71, text layer; Hansen and Lunde's working paper of 8 March 2001, abstract and secs.~1, 2.4 and~6, text layer; own synthetic check; derivatives and empirical validation (2026-10-17): GJR's Model~2 from the 1992 working paper as a page image, and Corsi's HAR-RV, pp.~177--181, with an own lag-mapping check). Stability: draft. Currency: methods 1986--2005; evidence on 1987--1999 data."
+  },
+  "meth:volatility-forecast-loss": {
+    "source": "compendium/portfolio-construction-risk/risk-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): against the working paper of April 2006, Definition~1, eqs.~(5)--(10) and Propositions~2--4, text layer; the MAE misranking reproduced by simulation). Stability: draft. Currency: method as of 2006--2011; owning pathway \\texttt{time-series-volatility}."
+  },
+  "meth:structural-break-tests": {
+    "source": "compendium/portfolio-construction-risk/risk-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): the 1995 MIT working paper, abstract and secs.~4--5, OCR text of an Internet Archive scan). Stability: draft. Currency: methods of 1995--2003; owning pathway \\texttt{time-series-volatility}."
+  },
+  "meth:var-es-estimation-methods": {
+    "source": "compendium/portfolio-construction-risk/risk-models.tex",
+    "review": "Verification: partly checked 2026-10-17 (against the text layer of a local copy of the second edition, \\texttt{wide-christoffersen-elements}, Academic Press 2012, chap.~2 (overview and sec.~2.1), chap.~6 (FHS), chap.~8 (overview) and chap.~13 (unconditional coverage); the backtest formula and its critical value recomputed in an own simulation; empirical extensions (2026-10-17): the ES definition corrected from the conditional-exceedance form to the quantile integral, against Acerbi and Tasche's arXiv v3, Definitions~2.1--2.6 and Proposition~3.2 read from page images and text, with an own discrete and historical-simulation check). Stability: draft. Currency: methods as of the 2012 edition."
+  },
+  "mod:portfolio-transaction-cost-function": {
+    "source": "compendium/portfolio-construction-risk/transaction-cost-models.tex",
+    "review": "Verification: partly checked 2026-10-15; units, parameter conditions and the piecewise-linear form corrected 2026-10-15 in the transaction-cost models review follow-up; Boyd et al.\\ secs.~2.4 and~4.3 cited for the computational remarks in portfolio construction review (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~5, ``Transaction Cost Models'', pp.~85--97, with Exhibits~5.1--5.4 on pp.~93--95 and note~2 on p.~97 by page image; the numerical illustration computed; of the readings of \\texttt{portfolio-construction}, only parts of \\texttt{wide-boyd-markowitz-seventy} read, in portfolio construction review; source verification (2026-10-17): \\texttt{exp-boyd-multiperiod-trading}, \\emph{Foundations and Trends in Optimization} 3(1), 2017, author-hosted PDF, secs.~2.3, 4.7 and~5.3, pp.~9--11, 38--39 and~51, text layer; \\texttt{guasoni-muhle-karbe-2012}, arXiv v1, PDF pp.~3 and~9, text layer; derivatives and empirical validation (2026-10-17): Boyd et al.'s secs.~5.2 and~7.4, and Shreve and Soner's sec.~1 as page images). Stability: draft. Currency: practitioner account as of 2024; the forms are timeless."
+  },
+  "def:common-investor-contagion": {
+    "source": "compendium/portfolio-risk-financing/crowding-contagion.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~``Risks Inherent to Quant Strategies'', sec.~10.4, pp.~202--209, with Exhibit~10.6 on p.~206 by page image and its arithmetic recomputed; no evidence source read then; the reading of the Pulte illustration against metaorder impact corrected 2026-10-15 in the model risk and contagion review follow-up; source verification (2026-10-17): \\texttt{exp-khandani-lo-quant-meltdown} as NBER WP~14465, abstract and PDF pp.~13 and~19; \\texttt{wide-pedersen-exit} as NBER WP~15297, PDF pp.~3, 8, 14--15; \\texttt{s16-r25} as NBER WP~22208, abstract and p.~1, text layers; empirical extensions (2026-10-17): the ECB box, and \\texttt{w4-chincarini-crowded-anomalies} and \\texttt{w3-kyle-crowded-markets}, abstracts from OpenAlex; derivatives and empirical validation (2026-10-17): Khandani and Lo, sec.~5). Stability: draft. Currency: practitioner account as of 2024 of events in 1998 and 2007."
+  },
+  "mod:margin-liquidity-spiral": {
+    "source": "compendium/portfolio-risk-financing/crowding-contagion.tex",
+    "review": "Verification: \\texttt{exp-brunnermeier-pedersen-liquidity} partly checked 2026-10-17 (against the text layer of the RFS Advance Access version of 10 December 2008 from princeton.edu, pp.~1--5, 8--9, 18--19; Propositions~2--4 located but their statements not checked in full). Stability: draft. Currency: theory, published 2009."
+  },
+  "def:money-market-reference-rates": {
+    "source": "compendium/portfolio-risk-financing/money-markets.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~246--262; macro markets and pricing review follow-up, 2026-10-16: 15 U.S.C. 77c(a)(3), the SEC's Securities Act interpretations 219.01--219.02 and the Richmond Fed's 1993 commercial-paper chapter read; the New York Fed reference-rate page via \\texttt{exp-sofr-data}; the ARRC, EMMI and ECB pages and the CBOT filing as retrieved; second follow-up, 2026-10-16: the OFR's June 2023 FSI fact sheet and the FSI daily data, and section~4 of the Federal Reserve's May 2026 Financial Stability Report, read; derivatives and empirical validation (2026-10-17): the BIS CP and CD primer, the New York Fed's SOFR methodology and revision rules, Schrimpf and Sushko's RFR primer and Copeland and Engbretson's abstract). Stability: draft. Currency: benchmark status as of 16 October 2026; LIBOR material historical."
+  },
+  "ev:money-fund-runs": {
+    "source": "compendium/portfolio-risk-financing/money-markets.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): Staff Report~956, revised April 2024, abstract and introduction, text layer). Stability: draft. Currency: evidence on March 2020; owning pathway \\texttt{money-markets-repo-lending}."
+  },
+  "def:street-name-beneficial-ownership": {
+    "source": "compendium/portfolio-risk-financing/securities-lending.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~148 and~169--170; \\texttt{al-icma}, ICMA ERCC Repo FAQ 13 as retrieved 15 October 2026; \\texttt{al-duffie}, working-paper version of 24 September 2001, sec.~2, p.~8; \\texttt{cfd-hu-black-2007}, ECGI working-paper version, pp.~1 and~5). Stability: draft. Currency: U.S. practice as described in 2001--2007; ICMA as of October 2026."
+  },
+  "mech:securities-lending-short-sale": {
+    "source": "compendium/portfolio-risk-financing/securities-lending.tex",
+    "review": "Verification: partly checked 2026-10-15 (\\texttt{al-duffie}, working-paper version of 24 September 2001, sec.~2, pp.~5--8, text layer; \\texttt{al-icma} as retrieved 15 October 2026; \\texttt{al-isla}, 29-page compilation dated 31 March 2025, pp.~2--3 and~24--25 by OCR of page images; 17 CFR 242.203(b) and 242.204(a) on eCFR, version of 13 October 2026; \\texttt{alpha-harris}, pp.~155 and~158; source verification (2026-10-17): 12 CFR 220.12 and 17 CFR 242.201 from eCFR for 15 October 2026, FINRA Rule 4210(c) from finra.org, the version selected on 2026-10-17). Stability: draft. Currency: Regulation SHO as of October 2026; ISLA practice as last updated 2022; market description as of 2001--2002."
+  },
+  "def:securities-lending-fee-rebate": {
+    "source": "compendium/portfolio-risk-financing/securities-lending.tex",
+    "review": "Verification: partly checked 2026-10-15 (\\texttt{al-icma} as retrieved 15 October 2026; \\texttt{al-duffie}, working-paper version of 24 September 2001, abstract and sec.~2, p.~7; \\texttt{al-isla}, pp.~7--8 by OCR, section last updated 15 January 2021; \\texttt{alpha-harris}, pp.~155--158 and~170; source verification (2026-10-17): \\texttt{catalogue-0897}, author version of 27 April 2026, pp.~4, 6, 16--18, text layer; 12 CFR 220.12 and 17 CFR 242.201 from eCFR for 15 October 2026, FINRA Rule 4210(c) from finra.org, the version selected on 2026-10-17). Stability: draft. Currency: market practice as described in 2001--2002 and by ICMA and ISLA in 2021--2026."
+  },
+  "res:synthetic-short-put-call": {
+    "source": "compendium/portfolio-risk-financing/synthetic-shorts.tex",
+    "review": "Verification: partly checked 2026-10-15 (the text layer of \\texttt{alpha-harris}, 2002 Oxford printing, p.~157; \\texttt{cfd-hu-black-2007}, ECGI working-paper version, p.~5, footnote~6; the page image of p.~157 rechecked in a follow-up the same day; the identities derived and checked numerically by the script beside the artefact; \\texttt{s7-hulloptions} not read). Stability: draft. Currency: timeless identity; market remarks as of 2002."
+  },
+  "ev:empty-voting-equity-derivatives": {
+    "source": "compendium/portfolio-risk-financing/synthetic-shorts.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{cfd-hu-black-2007}, ECGI Law Working Paper 056/2006 dated May 2005, abstract and secs.~2.1--2.3, pp.~1--6, text layer; \\texttt{fr-2023-22678}, 88~FR 76896, summary, pp.~76898--76899 and sec.~II.B.3, pp.~76928--76929, text layer). Stability: draft. Currency: cases of 2001--2005; U.S. rule as amended effective 5 February 2024."
+  },
+  "def:natural-gas-market": {
+    "source": "compendium/power-gas-environmental/natural-gas.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~313--318; source follow-up of 2026-10-16: NYMEX Submission 16-080 as filed with the CFTC; second source follow-up of 2026-10-16: NYMEX Chapter~220, official chapter PDF; source verification (2026-10-17): EIA's annual LNG export series, HTML table of the release of 30 September 2026; NYMEX Submissions 17-048 and 18-465 as filed with the CFTC; second pass: Submissions 19-158 and 19-198 as filed with the CFTC). Stability: draft. Currency: Gliner's account as of 2013; the contract as published on 16 October 2026; LNG exports to 2025."
+  },
+  "def:interest-rate-measures": {
+    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~4, pp.~98--106, printed page $=$ PDF page $-1$; the New York Fed's reference-rate methodology page, \\texttt{exp-sofr-data}, retrieved 2026-10-15; the time-value identities derived and checked numerically, with no source for them). Stability: draft. Currency: conventions timeless; the reference-rate methodology as published on 15 October 2026."
+  },
+  "mod:forward-rates-fra": {
+    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~4, pp.~101 and 109--119; Table~4.5 and Example~4.3 recomputed; the instantaneous forward checked by finite difference; derivatives and empirical validation (2026-10-17): Kim and Wright (FEDS 2005-33) and an own comparison with ACM). Stability: draft. Currency: formulas timeless; LIBOR-based conventions historical, SOFR conventions as Hull states them in 2021. macro markets and pricing / source review / optimal execution / execution control reviews: FRA market notation merged from the legacy macro chapter and checked against \\texttt{s7-gliner}, chap.~9, PDF p.~263. empirical extensions (2026-10-17), 2026-10-17: term-premium evidence from \\texttt{exp-adrian-crump-moench-term-structure} (Staff Report 340, revised April 2013, text layer, secs.~2.4 and~3.3; the JFE version not compared) and the New York Fed's ACM data file, summarised by an own script."
+  },
+  "mod:multi-curve-fra-swap-valuation": {
+    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "review": "Verification: partly checked 2026-10-17 (against the local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~7, secs.~7.2 and~7.6, pp.~175 and~183--185, text layer; Example~7.1 and an own two-curve illustration recomputed; derivatives and empirical validation (2026-10-17): settlement conventions separated, Hull's p.~111 n.~4 read, start- and end-settled values recomputed in \\nolinkurl{fra-settlement-check.py}). Stability: draft. Currency: conventions as Hull states them in 2021; SOFR replaced USD LIBOR after June 2023."
+  },
+  "mod:duration-convexity": {
+    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~4, pp.~112--117; Table~4.6 and Examples~4.4--4.5 recomputed; convexity and the $\\pm200$~bp comparisons computed here; the yield response to parallel zero-curve shifts computed 2026-10-16 in \\nolinkurl{notes/artefacts/rates-credit-mortgages/yield-shift-check.py}). Stability: draft. Currency: timeless. macro markets and pricing / source review / optimal execution / execution control reviews: DV01, the legacy convexity formula and negative convexity merged from the legacy macro chapter; DV01 and the $\\pm100$~bp comparison computed in the topic review check script; the legacy blocks had no source. macro markets and pricing review follow-up, 2026-10-16: the long-volatility reading restricted to a duration-hedged position, the $-100$~bp case and the 2-year-hedged example computed in the macro markets and pricing review follow-up check script, section~1; negative convexity qualified; derivation, not a source check. Second follow-up, 2026-10-16: the negative-carry claim qualified; zero carry in the flat, symmetrically financed example computed."
+  },
+  "conv:us-rate-quotation": {
+    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~6, pp.~152--155; examples recomputed). Stability: draft. Currency: U.S. conventions as of Hull's 2021 account; no current market convention document checked."
+  },
+  "data:gsw-treasury-curve": {
+    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): FEDS 2006-28, eq.~(22) on p.~15 as a page image; the published parameter file recomputed in full). Stability: draft. Currency: data to 9 October 2026; owning pathway \\texttt{curve-term-structure}."
+  },
+  "mech:otc-clearing-collateral": {
+    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~1, pp.~25--26, and chap.~2, pp.~54--57; and \\texttt{exp-pfmi}, April 2012, para.~1.13, p.~9, read in transaction-cost models review). empirical extensions (2026-10-17), 2026-10-17: 17 CFR 23.150--23.153, 23.157, 23.161, 43.3 and 45.3, eCFR point-in-time text for 15 October 2026, read. derivatives and empirical validation (2026-10-17): the BCBS--IOSCO framework of April 2020, Requirements~2 and~8. Stability: draft. Currency: Hull's account as of 2021; U.S. rules as of 15 October 2026."
+  },
+  "def:central-bank-policy-framework": {
+    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~11, PDF pp.~355--400, including Table~11.4 and the appendix; macro markets and pricing review follow-up, 2026-10-16: Bauer's Economic Letter read, with its Table~1 as an image; second follow-up, 2026-10-16: NY Fed Staff Report 441 (March 2010) read at pp.~17--18, 21 and~28). Stability: draft. Currency: Gliner's account as of 2013; QE figures as of May 2012."
+  },
+  "mod:taylor-rule": {
+    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "review": "Verification: partly checked 2026-10-16 (Taylor (1993), p.~202, from the page image; Gliner's text, chap.~11, PDF pp.~361--362; the arithmetic in the topic review check script). Stability: draft. Currency: timeless; Taylor's calibration as of 1993."
+  },
+  "rule:major-central-banks-current": {
+    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "review": "Verification: partly checked 2026-10-16 (source verification (2026-10-17): the PBOC's English Exchange Rate Regime and Required Reserves pages and its RRR announcements of 27 September 2024 and 7 May 2025; the Federal Reserve's FOMC page and Statement on Longer-Run Goals; the ECB's Governing Council and strategy pages; the Bank of England's MPC and summary-and-minutes pages; the Bank of Japan's Policy Board page; the SNB's strategy page, all as retrieved; Gliner's text, chap.~11, PDF pp.~372--393; macro markets and pricing review follow-up, 2026-10-16: the Warsh review, the Bank of England's 2015 documentation page, the FOMC calendars, the Bank of Japan's statement of 19 March 2024, the SNB release of 15 January 2015 (title and date only), the ECB's APP page and its TPI release read; second follow-up, 2026-10-16: the ECB's TLTRO page and the PBOC's 2014 band announcement, in the State Council's English copy, read). Stability: draft. Currency: as of 16 October 2026 for current membership and frequency; Gliner's account as of 2013."
+  },
+  "meth:policy-path-ois-futures": {
+    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~254--261; CBOT Submission No.~23-214, as filed with the CFTC on 1 June 2023; the ARRC's SOFR-transition page, EMMI's EONIA page and the ECB's \\texteuro{}STR page as retrieved; the probability and tick arithmetic in the topic review check script; second macro markets and pricing review follow-up, 2026-10-16: CME Clearing Advisory 23-082 from a user-supplied browser export, the ARRC's 9 March 2023 minutes, the CFTC chairman's LIBOR keynote and CME Submission No.~24-271 read for the conversion date; correction of 2026-10-16: CME's press release of 24 April 2023 read in a dated reprint, CME's own page refusing automated access (HTTP 403), which removed the follow-up's misattribution of ``April 23''). Stability: draft. Currency: Eurodollar and LIBOR material historical; status as of 16 October 2026."
+  },
+  "meth:curve-trades-carry-rolldown": {
+    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~266--271; Estrella and Trubin (2006), pp.~1--6; carry signs computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: Estrella and Trubin reread from the New York Fed's PDF, pp.~4--6 and the table; NBER chronology and Treasury daily par yields 2006--2026 retrieved and averaged by month; second follow-up, 2026-10-16: pp.~2--3, 5 and~6 (with the table's footnote) reread, the three statements separated, the paper's series replicated from H.15 and its table reproduced, and month and episode onset rules tested on reproducible monthly series). Stability: draft. Currency: Estrella and Trubin's record to 2005; post-2005 inversions and NBER dating as of 16 October 2026."
+  },
+  "def:tips-breakevens": {
+    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~247--250; TreasuryDirect's TIPS page as retrieved; the arithmetic in the topic review check script; second macro markets and pricing review follow-up, 2026-10-16: Treasury's refunding statements of 5 May 2004 and 31 October 2018 read). Stability: draft. Currency: schedule as of 16 October 2026; Gliner's as of 2014."
+  },
+  "def:interest-rate-swaps": {
+    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF p.~256; LIBOR cessation per the CBOT filing cited in the policy-path entry; macro markets and pricing review follow-up, 2026-10-16: the BIS OTC derivatives release for end-June 2024; second follow-up, 2026-10-16: the BIS OTC derivatives bulk dataset, instrument breakdown for end-June 2024 to end-December 2025). Stability: draft. Currency: SOFR conventions as of 2026; Gliner's LIBOR account as of 2014."
+  },
+  "def:fixed-income-universe": {
+    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~245 and 280, and chap.~4, p.~95; macro markets and pricing review follow-up, 2026-10-16: SIFMA's Fact Book highlights page read). Stability: draft. Currency: segment list timeless; ETF names as of the 2010s."
+  },
+  "meth:hypothesis-driven-strategy-research": {
+    "source": "compendium/research-engineering-validation/backtest-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~``Research'', pp.~161--165 and 183--185; the catalogue does not establish which edition it means). Stability: draft. Currency: practitioner account as of 2024."
+  },
+  "meth:backtest-evaluation-diagnostics": {
+    "source": "compendium/research-engineering-validation/backtest-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~``Research'', pp.~168--176, with Exhibits~9.2 and~9.3 on pp.~171--172 by page image; the example's ratios and growth rates recomputed; the signal's no-trade state (p.~173) and the Calmar and Omega sign conventions corrected 2026-10-15 in the backtest evaluation review follow-up; the recomputed Calmar ratio, 0.3048 against the reported 0.31, distinguished 2026-10-15 in the model risk and contagion review follow-up; source verification (2026-10-17): \\texttt{s7-welch}, author-hosted journal copy, abstract and Table~1, p.~1470, page image; own drawdown-resampling check; derivatives and empirical validation (2026-10-17): Patton, Politis and White's 2009 correction, pp.~372--373). Stability: draft. Currency: practitioner account as of 2024; the S\\&P example covers 1982--2000."
+  },
+  "pit:parameter-overfitting": {
+    "source": "compendium/research-engineering-validation/backtest-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~``Research'', pp.~166--167 and 176--185, with Exhibit~9.5 on p.~178 by page image). Stability: draft. Currency: practitioner view as of 2024."
+  },
+  "pit:backtest-cost-short-assumptions": {
+    "source": "compendium/research-engineering-validation/backtest-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~``Research'', pp.~185--186; the example recomputed; the legal point compared with the Regulation SHO text already cited in \\texttt{mech:securities-lending-short-sale}, not rechecked). Stability: draft. Currency: practitioner account as of 2024; U.S. rules as cited in the linked entry."
+  },
+  "meth:sharpe-ratio-standard-error": {
+    "source": "compendium/research-engineering-validation/backtest-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{wide-lo-sharpe}, FAJ 58(4), pp.~36--41, text layer and page images of pp.~38, 40 and~41; eq.~(9) examples and Table~2 cells recomputed; Appendix~A and the empirical sections not checked beyond the Newey--West reference; audit repair of 2026-10-17: eqs.~(5), (16), (25)--(26) reread, pp.~38 (page image), 40 and 42, and the conditions corrected with own Monte Carlo and closed-form checks; empirical extensions (2026-10-17): sufficiency and necessity separated by an own Slutsky argument at $SR=0$ and the exact condition for $1+\\tfrac12SR^2$, with a Monte Carlo check; derivatives and empirical validation (2026-10-17): Ledoit and Wolf, IEW WP~320, secs.~1--3). Stability: draft. Currency: timeless (statistics), published 2002."
+  },
+  "meth:deflated-sharpe-ratio": {
+    "source": "compendium/research-engineering-validation/backtest-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{alpha-dsr}, author version of 31 July 2014 from davidhbailey.com, pp.~7--11, equations and example checked as page images and recomputed; Appendix~1's proof not checked). Stability: draft. Currency: methods published 2014; a 2026 unification not read."
+  },
+  "meth:multiple-testing-control": {
+    "source": "compendium/research-engineering-validation/backtest-evaluation.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{wide-romano-wolf-stepdown} in its UPF working-paper version of October 2003, pp.~1--11, text layer; the power and error-rate statements recomputed by own Monte Carlo; empirical extensions (2026-10-17): \\texttt{wide-benjamini-hochberg}, JRSS~B 57(1), pp.~289--300, scanned journal copy hosted at dcscience.net, secs.~2.1 and~3; \\texttt{catalogue-0731}, \\emph{Econometrica} 68(5), journal pages hosted on a University of Wisconsin course page, pp.~1097--1104 and~1109, text layer; derivatives and empirical validation (2026-10-17): Hansen's SPA working paper (archived), sec.~1 and the consistent-distribution section, and Harvey, Liu and Zhu, NBER WP~20592, abstract and pp.~26 and~34). Stability: draft. Currency: methods published 1995--2005."
+  },
+  "data:trading-reference-data": {
+    "source": "compendium/research-engineering-validation/point-in-time-data.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{s3-velu}, CRC Press, \\copyright~2020 in the copy, chap.~1, pp.~26--35, printed page $=$ PDF page $-17$; dealer models and information review: the merged legacy caveat compared with pp.~26--27; source verification (2026-10-17): \\texttt{wide-shumway-delisting}, abstract only, from the BYU ScholarsArchive record; empirical extensions (2026-10-17): \\texttt{shumway-warther-1999}, abstract from RePEc). Stability: draft. Currency: examples as of about 2018--2020; exchange rules and calendars change and were not checked against current sources."
+  },
+  "data:market-data-levels": {
+    "source": "compendium/research-engineering-validation/point-in-time-data.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{s3-velu}, chap.~1, pp.~35--39; Table~1.10 checked by page image; dealer models and information review: \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~104--105, and \\texttt{s3-velu}, chap.~11, pp.~383--386; second macro markets and pricing review follow-up, 2026-10-16: NYSE's Daily TAQ Client Specification v4.0, sec.~3, pp.~17--19; source follow-up 2026-10-16: \\texttt{wide-holden-jacobsen}, published version (author-hosted copy), sec.~III and pp.~1750--1767; source verification (2026-10-17): its Internet Appendix, author-hosted PDF, pp.~1--2 and~19; second pass: NYSE Daily TAQ Client Specification v4.0, sec.~3, PDF pp.~17--19, text layer). Stability: draft. Currency: U.S. feed examples as of about 2018--2020; TAQ codes as of the November 2022 specification."
+  },
+  "data:derived-market-statistics": {
+    "source": "compendium/research-engineering-validation/point-in-time-data.tex",
+    "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{s3-velu}, chap.~1, pp.~39--42; empirical extensions (2026-10-17): three Nasdaq threshold files and FINRA Notice to Members 04-93). Stability: draft. Currency: practitioner descriptions as of about 2018--2020."
+  },
+  "data:holdings-insider-filing-lags": {
+    "source": "compendium/research-engineering-validation/point-in-time-data.tex",
+    "review": "Verification: partly checked 2026-10-17 (against the eCFR point-in-time texts of 17 CFR 240.0-3, 240.13d-1, 240.13d-2, 240.13f-1 and 240.16a-3 for 15 October 2026, retrieved through the eCFR API; 15 U.S.C. 78p from GovInfo's 2023 United States Code edition; 88~FR 76896 from GovInfo, summary table and sec.~II.G; \\texttt{s3-velu}, p.~43, text layer; deadlines computed; audit repair of 2026-10-17: 17 CFR 232.12, 232.13 and 240.24b-2 (eCFR, 15 October 2026) and 15 U.S.C. 78m(f)(4) (GovInfo, 2023 edition) read; timestamps checked on synthetic records; empirical extensions (2026-10-17): EDGAR's \\emph{Determine the Status of My Filing}, Wayback Machine capture of 5 October 2026 (sec.gov refused the script), filing-date section read and quoted; fallback replaced by unknown availability with a lower bound). Stability: draft. Currency: rules as of 15 October 2026; review when the SEC amends Regulation 13D-G or Section~16 rules."
+  },
+  "meth:bitemporal-reference-tables": {
+    "source": "compendium/research-engineering-validation/point-in-time-data.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{s8-bitemporal}, Martin Fowler, ``Bitemporal History'', martinfowler.com, published 7 April 2021, full HTML text as retrieved 2026-10-17; the finance application is interpretation, illustrated by an own synthetic check). Stability: draft. Currency: concepts as published 2021."
+  },
+  "meth:strategy-production-lifecycle": {
+    "source": "compendium/research-engineering-validation/strategy-production.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-afml}, Wiley 2018, ISBN 9781119482086, chap.~1, secs.~1.2.2 and~1.3.1, pp.~5--9; printed page = PDF page $-27$). Stability: draft. Currency: one practitioner's prescription as of 2018."
+  },
+  "meth:strategy-promotion-criteria": {
+    "source": "compendium/research-engineering-validation/strategy-production.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{wide-pra-ss123}, SS1/23 of May 2023, official PDF, paras.~1.2--1.3 and~2.13--2.14, Principles~2.3(c), 3.3, 4.1, n.~6 and p.~14, text layer; SR~26-2 cover letter of 17 April 2026 and its attachment \\emph{Revised Guidance on Model Risk Management}, PDF pp.~5--10, text layer). Stability: draft. Currency: guidance as of 17 April 2026 (U.S.) and May 2023, effective 17 May 2024 (UK)."
+  },
+  "meth:discretionary-override-governance": {
+    "source": "compendium/research-engineering-validation/strategy-production.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{wide-pra-ss123}, Principles~3.4 and~5.1, PDF pp.~22--23 and~28, text layer; SR~26-2's attachment, sec.~V, PDF p.~9). Stability: draft. Currency: as for \\hyperref[meth:strategy-promotion-criteria]{strategy promotion}."
+  },
+  "def:quant-strategy-risk-sources": {
+    "source": "compendium/research-engineering-validation/strategy-risk.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~``Risks Inherent to Quant Strategies'', pp.~191--202 and 208--211; the company and market examples not checked against other sources; the treatment of overrides, operational controls and overlapping categories corrected 2026-10-15 in the model risk and contagion review follow-up). Stability: draft. Currency: practitioner account as of 2024; examples 1996--2012."
+  },
+  "meth:quant-strategy-monitoring": {
+    "source": "compendium/research-engineering-validation/strategy-risk.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~``Risks Inherent to Quant Strategies'', sec.~10.5, pp.~209--210). Stability: draft. Currency: practitioner account as of 2024."
+  },
+  "meth:automated-trading-operational-controls": {
+    "source": "compendium/research-engineering-validation/trading-controls.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, chap.~27, pp.~543--554, page images of pp.~550 and~552; and the eCFR text of 17 CFR 240.15c3-5 as of 13 October 2026). Stability: draft. Currency: Harris's practice as of 2002; Rule 15c3-5 current as of 13 October 2026; no EU or U.K. rule checked."
+  },
+  "rule:mifid-rts6-algorithmic-controls": {
+    "source": "compendium/research-engineering-validation/trading-controls.tex",
+    "review": "Verification: partly checked 2026-10-17 (against the Official Journal text of Delegated Regulation 2017/589 retrieved through CELLAR, Arts.~5--17 and~29 read, Annexes not read; CELLAR SPARQL metadata for amendments and corrigenda). Stability: draft. Currency: EU text in force as of 17 October 2026 per CELLAR metadata."
+  },
+  "mech:order-state-reconciliation": {
+    "source": "compendium/research-engineering-validation/trading-controls.tex",
+    "review": "Verification: partly checked 2026-10-17 (against the FIX Trading Community's Orchestra files OrchestraFIXLatest.xml, EP312, and FIXTSession.xml, EP247, at commit \\texttt{cd24169}, message and field documentation extracted by script; RTS~6 Art.~17(3); the Knight order, paras.~16 and~21; empirical extensions (2026-10-17): OrdStatus precedence table, TimeInForce codes, field 151 and ExecRestatementReason in the same Orchestra file; FIX~4.4 Appendix~D matrices A.1.b and H.1.a through OnixS's mirror). Stability: draft. Currency: FIX Latest EP312 (September 2026)."
+  },
+  "ev:quant-implementation-failures": {
+    "source": "compendium/research-engineering-validation/trading-controls.tex",
+    "review": "Verification: partly checked 2026-10-17 (against SEC Release 34-70694 of 16 October 2013, pp.~1--10 and~18, and Release 33-9181 of 3 February 2011, pp.~1--4, 10 and~16, text layers of Internet Archive captures; \\texttt{s7-narang}, third edition, pp.~195--196, text layer of a local copy). Stability: draft. Currency: events of 2007--2012, orders of 2011 and 2013."
+  },
+  "meth:alpha-signal-combination": {
+    "source": "compendium/systematic-equities/signal-combination.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-narang}, third edition, Wiley 2024, chap.~3, sec.~3.5, pp.~64--68, with Exhibits~3.9 and~3.10 on pp.~65 and~67 by page image; the linear example checked; source verification (2026-10-17): \\texttt{eq-fitzgibbons-2017}, AQR-hosted reprint of the \\emph{Journal of Investing} article, pp.~1, 7, 9 and Exhibit~5, text layer). Stability: draft. Currency: practitioner account as of 2024; evidence 1993--2015."
+  },
+  "meth:forecast-scaling-ic": {
+    "source": "compendium/systematic-equities/signal-combination.tex",
+    "review": "Verification: partly checked 2026-10-17 (against the text layer of a local copy of \\texttt{alpha-grinold}, second edition, chap.~10, pp.~261--271, with pp.~265--266 read as page images; the example's numbers recomputed; audit repair of 2026-10-17: n.~1, p.~263, and the Technical Appendix, Propositions~1--2, pp.~287--289, text layer). Stability: draft. Currency: timeless (method), 1999 edition."
+  },
+  "def:derivative-contracts": {
+    "source": "compendium/volatility-options/derivative-contracts.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, Pearson 2022, ISBN 9781292410654, chap.~1, pp.~23--33, and chap.~2, pp.~47--51 and 64--65, printed page $=$ PDF page $-1$; Hull's examples recomputed; the convergence figure redrawn). Stability: draft. Currency: definitions timeless; contract examples and market sizes as of 2019--2021."
+  },
+  "res:cost-of-carry-forward-price": {
+    "source": "compendium/volatility-options/derivative-contracts.tex",
+    "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~5, pp.~124--144; seven examples recomputed). Stability: draft. Currency: theory timeless; examples and market episodes as given."
+  },
+  "mod:black-scholes-merton": {
+    "source": "compendium/volatility-options/option-pricing.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{s6-blackscholes}, pp.~640--644, text layer and page images of pp.~643--644; \\texttt{p2-merton}, p.~144, page image and OCR of a scan, Theorems~1--2 only; \\texttt{s7-hulloptions}, 11th Global edition, local copy, sec.~15.6, eqs.~(15.20)--(15.21), Example~15.6 and Table~19.6; own numerical checks). Stability: draft. Currency: theory timeless (1973)."
+  },
+  "def:implied-volatility-surface": {
+    "source": "compendium/volatility-options/option-pricing.tex",
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{exp-gatheral-jacquier-svi}, arXiv:1204.0646 as revised 27 November 2024, pp.~2--5 and~10, text layer and a page image of p.~5; \\texttt{exp-lee-wings}, author manuscript of 11 August 2003, abstract and p.~2; own numerical checks; derivatives and empirical validation (2026-10-17): arXiv v1 and v2 compared at the density lemma). Stability: draft. Currency: theory timeless."
+  },
+  "mod:heston-stochastic-volatility": {
+    "source": "compendium/volatility-options/option-pricing.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): Heston's eqs.~(10)--(18) from a page image of p.~331; Carr and Madan's eqs.~(5)--(7) from the author copy's text layer, p.~64; own numerical checks). Stability: draft. Currency: models of 1993 and 1999; owning pathway \\texttt{option-pricing-models}."
+  },
+  "mod:merton-jump-diffusion": {
+    "source": "compendium/volatility-options/option-pricing.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): the 1975 working paper, printed pp.~12--22, page images of pp.~15--17 and 20--22; own numerical check). Stability: draft. Currency: model of 1975--76; owning pathway \\texttt{option-pricing-models}."
+  },
+  "mod:sabr-smile": {
+    "source": "compendium/volatility-options/option-pricing.tex",
+    "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): Bianchetti and Carlicchi, Table~5 on p.~18 as a page image; own numerical check). Stability: draft. Currency: formula of 2002 as restated in 2012; owning pathway \\texttt{rate-derivatives}."
+  },
+  "def:vix-variance-dividend-swaps": {
+    "source": "compendium/volatility-trading-premia/vix-variance-dividends.tex",
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~8, PDF pp.~222--227; the variance-swap and daily-move arithmetic recomputed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: Cboe's \\emph{Cboe Volatility Index Methodology}, version 6.0 of 26 February 2026, read at secs.~1--3.1, 3.4 and~5 and the app.~3 sample, with VIX~20 against variance 0.04 computed). Stability: draft. Currency: Gliner's examples as of 2013."
+  }
+}

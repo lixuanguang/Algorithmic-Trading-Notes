@@ -1,4 +1,4 @@
-"""Numerical checks for res:synthetic-short-put-call (slice 23 follow-up, 2026-10-15).
+"""Numerical checks for res:synthetic-short-put-call (securities lending and synthetic shorts review follow-up, 2026-10-15).
 
 Run from the repository root:  python3 notes/artefacts/synthetic-equity-cfd-trs/synthetic_short_checks.py
 Standard library only. Each check computes the quantity by a route independent of the

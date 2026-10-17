@@ -1,13 +1,13 @@
-"""ev:global-macro-returns-after-2013, third batch of 17 October 2026: the original protocol's window, January 2014 to
+"""ev:global-macro-returns-after-2013, empirical extensions (2026-10-17): the original protocol's window, January 2014 to
 July 2026, on the Barclay Global Macro Index workbook.
 
-Why a second script. The second batch ran the protocol on January 2022 - July 2026 only (global_macro_down_months_test.py,
+Why a second script. method validation (2026-10-17) ran the protocol on January 2022 - July 2026 only (global_macro_down_months_test.py,
 55 months, kept unchanged with its outputs as the recent-period comparison), stating that earlier history needed
 registration. That statement was wrong: BarclayHedge's public index page offers the whole history through its ordinary
 Excel form (POST https://portal.barclayhedge.com/cgi-bin/indices/ghsndx_JSON.cgi with dump=excel&prog_cod=ghsmc), which an
 audit used without registration. The workbook was retrieved the same way on 2026-10-17 07:58 UTC; its SHA-256,
 ead890c4274a7cdd7f92e3da23d15dbd0359dd239bf6a3841cddf437853d1097, equals the audit's. The window and the rules below
-are the protocol's (recorded in the batch of 17 October 2026 before any index data were seen) and the second batch's
+are the protocol's (recorded in the source verification (2026-10-17) before any index data were seen) and method validation (2026-10-17)'s
 data choices (fixed before its computation); none was chosen after seeing this window's results:
   * window: January 2014 to July 2026 inclusive, both bounds enforced explicitly;
   * months the workbook marks as estimated (cells carrying '*' notes: August and September 2026) are excluded, and no
@@ -17,7 +17,7 @@ data choices (fixed before its computation); none was chosen after seeing this w
     OLS beta with t interval, Lo's normal-moment IID Sharpe standard error, ten worst benchmark months);
   * pre-set verdict: crisis protection only if the down-month mean is positive with t > 2.
 Diagnostics added in this batch (not part of the protocol's verdict): the same statistics on 2022-01..2026-07 from the
-workbook, and a month-by-month comparison with the 55 values read from the HTML page in the second batch, to detect
+workbook, and a month-by-month comparison with the 55 values read from the HTML page in method validation (2026-10-17), to detect
 revisions between the two retrievals. The index is computed by BarclayHedge from reporting funds; its constituents and
 past values can change (late reporters, new funds, closures), so every figure is as of the retrieval time.
 Run: python3 global_macro_down_months_2014_test.py <workbook .xls> <French factors csv>
@@ -126,7 +126,7 @@ def main(xls_path, ff_path):
         y, m = row['month'].split('-')
         page[(int(y), int(m))] = float(row['barclay_global_macro'])
     diffs = [(m, page[m], round(idx[m], 4)) for m in sorted(page) if abs(page[m] - round(idx[m], 4)) > 5e-5]
-    print(f'revision check against the second batch\'s page values (55 months, 4 decimals): '
+    print(f'revision check against method validation (2026-10-17)\'s page values (55 months, 4 decimals): '
           f'{len(diffs)} months differ' + (': ' + '; '.join(f'{m[0]}-{m[1]:02d} {a:+.4f} -> {b:+.4f}' for m, a, b in diffs) if diffs else ''))
 
 

@@ -7,7 +7,7 @@ read:
 status: draft
 ---
 
-Prepared on 2026-10-17 by the batch of 17 October 2026 from source checks, not from study: the headings that need your own reading are left empty. Used for `meth:forecast-scaling-ic`.
+Prepared on 2026-10-17 by the source verification (2026-10-17) from source checks, not from study: the headings that need your own reading are left empty. Used for `meth:forecast-scaling-ic`.
 
 ## Question and claim
 
@@ -27,4 +27,4 @@ Prepared on 2026-10-17 by the batch of 17 October 2026 from source checks, not f
 
 Only chap. 10 read; chaps. 11-12 not read.
 
-Audit repair, second batch of 2026-10-17: n. 1 (p. 263) uses E{r|g} "somewhat loosely"; the Technical Appendix proves the best linear estimate (Proposition 1, pp. 287-288) and the conditional expectation only under joint normality (Proposition 2, p. 289). Own checks: `batch50-projection-checks.py`.
+Audit repair, method validation (2026-10-17): n. 1 (p. 263) uses E{r|g} "somewhat loosely"; the Technical Appendix proves the best linear estimate (Proposition 1, pp. 287-288) and the conditional expectation only under joint normality (Proposition 2, p. 289). Own checks: `projection-checks.py`.

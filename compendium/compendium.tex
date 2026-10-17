@@ -1,6 +1,6 @@
-% compendium/compendium.tex: compile inside compendium/ with  latexmk -pdf compendium.tex
+% Build with latexmk -lualatex compendium.tex from this directory.
 \PassOptionsToPackage{table}{xcolor}
-\documentclass[a4paper,oneside,openany]{book}
+\documentclass[8pt,a4paper,oneside,openany]{extbook}
 \input{preamble}
 \input{house}
 \pagestyle{plain}
@@ -14,7 +14,6 @@
 \tableofcontents
 \input{front/notation}
 \InputIfFileExists{front/glossary}{}{}
-\input{front/preface}
 
 \mainmatter
 % One chapter per section of the learning guide, in the guide's order; a chapter

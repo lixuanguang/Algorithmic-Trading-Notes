@@ -2,7 +2,7 @@
 key: catalogue-0496
 pathways: [market-making-lob]
 version: Maureen O'Hara, Market Microstructure Theory; local scan of the 1998 Wiley printing (catalogue record 1995)
-sections: chapter "Inventory Models", sec. 2.3, pp. 29-36 (checked for migration slice 3); chapter "Strategic Trader Models I: Informed Traders", pp. 89-98 (checked for the migration pilot)
+sections: chapter "Inventory Models", sec. 2.3, pp. 29-36 (checked for migration spread and inventory models review); chapter "Strategic Trader Models I: Informed Traders", pp. 89-98 (checked for the migration pilot)
 read:
 status: draft
 ---

@@ -1,8 +1,3 @@
-% compendium/volatility-options/option-pricing.tex
-% Entries written on 2026-10-17 (third batch of that date) from backlog items mod:black-scholes-merton and
-% def:implied-volatility-surface of the section overview volatility-options. Source verification and own checks, not
-% study: the overview's readings are not studied and its checkpoint is not attempted.
-
 \section{Option pricing and the implied volatility surface}
 
 \begin{qfmodel}[The Black--Scholes--Merton model: the hedging argument, the differential equation and formula, the assumptions it needs, Merton's no-early-exercise result and the Greeks]\label{mod:black-scholes-merton}
@@ -33,9 +28,9 @@ Setting $q$ to an index yield, the foreign rate or $r$ gives index, currency and
 
 \qffield{Notation} Black and Scholes: $x$ stock price, $c$ exercise price, $t^*$ maturity, $v^2$ variance rate, $w_1$, $w_2$, $w_{11}$ partial derivatives. Hull: $S_0$, $K$, $T$, $\sigma$, $q$. Merton: $f$ European and $F$ American warrant values, $\tau$ time to expiry, $E$ exercise price.
 
-\qffield{Conditions} The riskless hedge needs continuous rebalancing. Black and Scholes argue that a discretely adjusted hedge carries only diversifiable risk (p.~642), and Hull's list adds no riskless arbitrage, perfect divisibility, no taxes and a flat, constant rate. He notes that $\sigma$ and $r$ may be known functions of time, and rates stochastic if the terminal price stays lognormal (sec.~15.6, p.~348). Merton's Theorems~1--2 need no payouts and positive interest rates; with a large dividend yield the European call can fall below intrinsic value, and early exercise of an American call can then have value (own check: $S=150$, $K=100$, $q=10$ percent, $r=2$ percent, $\sigma=20$ percent, $T=2$ gives $c=29.98<50$).
+\qffield{Conditions} Theory timeless (1973). The riskless hedge needs continuous rebalancing. Black and Scholes argue that a discretely adjusted hedge carries only diversifiable risk (p.~642), and Hull's list adds no riskless arbitrage, perfect divisibility, no taxes and a flat, constant rate. He notes that $\sigma$ and $r$ may be known functions of time, and rates stochastic if the terminal price stays lognormal (sec.~15.6, p.~348). Merton's Theorems~1--2 need no payouts and positive interest rates; with a large dividend yield the European call can fall below intrinsic value, and early exercise of an American call can then have value (own check: $S=150$, $K=100$, $q=10$ percent, $r=2$ percent, $\sigma=20$ percent, $T=2$ gives $c=29.98<50$).
 
-\qffield{Practice} Own checks, \nolinkurl{notes/artefacts/volatility-options/batch60-bsm-svi-checks.py}:
+\qffield{Practice} Own checks, \nolinkurl{notes/artefacts/volatility-options/bsm-svi-checks.py}:
 \begin{itemize}
 \item Hull's Example~15.6 ($S_0=42$, $K=40$, $r=10$ percent, $\sigma=20$ percent, $T=0.5$) gives $c=4.76$ and $p=0.81$ (p.~356);
 \item the formula equals the discounted risk-neutral expectation computed by quadrature;
@@ -52,9 +47,6 @@ The overview's checkpoint compares delta and delta--vega hedges on profit and lo
 
 \qffield{Further reading} Merton's later sections (dividends, stochastic rates, the American put) and Hull's chaps.~19 and~21 on hedging practice and American Greeks were not read.
 
-\qffield{Index} Black--Scholes--Merton; option pricing; riskless hedge; differential equation; risk-neutral valuation; delta; gamma; vega; theta; rho; dividend yield; early exercise; Merton's lower bound; put--call parity
-
-\qffield{Status} Verification: partly checked 2026-10-17 (against \texttt{s6-blackscholes}, pp.~640--644, text layer and page images of pp.~643--644; \texttt{p2-merton}, p.~144, page image and OCR of a scan, Theorems~1--2 only; \texttt{s7-hulloptions}, 11th Global edition, local copy, sec.~15.6, eqs.~(15.20)--(15.21), Example~15.6 and Table~19.6; own numerical checks). Stability: draft. Currency: theory timeless (1973).
 \end{qfmodel}
 
 \begin{qfdefinition}[Implied volatility, the smile and an arbitrage-free surface: total implied variance, the calendar and butterfly conditions, raw SVI and the wing bound]\label{def:implied-volatility-surface}
@@ -73,57 +65,56 @@ The overview's checkpoint compares delta and delta--vega hedges on profit and lo
 
 \qffield{Conditions} The conditions are on a continuous, twice-differentiable surface. Observed quotes form a finite grid with bid--ask spreads, so ``arbitrage-free'' applies to the fitted surface, and quotes inside the spread may admit several such fits. The calendar condition needs proportional dividends (Lemma~2.1).
 
-\qffield{Practice} Own checks, \nolinkurl{notes/artefacts/volatility-options/batch60-bsm-svi-checks.py}. The quantity $g/\sqrt{2\pi w}\,e^{-d_-^2/2}$ matches $K\,\partial^2C/\partial K^2$ of the undiscounted call by finite differences. An illustrative SVI slice has $g\ge0$ on $|k|\le1.5$, while Vogt's slice has $\min g=-0.033$. Two slices with the same shape and higher $a$ at the longer maturity satisfy the calendar condition. \emph{Source discrepancy.} In the proof of Lemma~2.2 (p.~5, page image) the source writes the density as $p(k)=\partial^2C/\partial K^2|_{K=F_te^k}$ and then as $g(k)/\sqrt{2\pi w(k)}\,\exp(-d_-(k)^2/2)$. The second is the density per unit log-moneyness, $K$ times the first (checked). The sign condition, and so the lemma, is unaffected. \emph{Earlier versions} (fourth batch of 2026-10-17): arXiv versions v1 and v2 carry the same two expressions in the same proof, there numbered Lemma~4.1 (PDF p.~8 of each), so the slip predates the 2024 revision; the 2014 journal version was still not compared. arXiv regenerates these files, so their printed dates (February and April 2022) are compilation dates, not version dates.
+\qffield{Practice} Own checks, \nolinkurl{notes/artefacts/volatility-options/bsm-svi-checks.py}. The quantity $g/\sqrt{2\pi w}\,e^{-d_-^2/2}$ matches $K\,\partial^2C/\partial K^2$ of the undiscounted call by finite differences. An illustrative SVI slice has $g\ge0$ on $|k|\le1.5$, while Vogt's slice has $\min g=-0.033$. Two slices with the same shape and higher $a$ at the longer maturity satisfy the calendar condition.
 
-\qffield{Pitfalls} The version read is the arXiv preprint as revised on 27 November 2024, not the journal version of 2014 that the catalogue cites; the two were not compared. Gatheral's book (\texttt{s6-surface}) was not read. Fitting a surface to market quotes, the overview's checkpoint, was not attempted.
+\emph{Source discrepancy.} In the proof of Lemma~2.2 (p.~5, page image) the source writes the density as $p(k)=\partial^2C/\partial K^2|_{K=F_te^k}$ and then as $g(k)/\sqrt{2\pi w(k)}\,\exp(-d_-(k)^2/2)$. The second is the density per unit log-moneyness, $K$ times the first (checked). The sign condition, and so the lemma, is unaffected.
+
+\emph{Earlier versions}: arXiv versions v1 and v2 carry the same two expressions in the same proof, there numbered Lemma~4.1 (PDF p.~8 of each), so the slip predates the 2024 revision; the 2014 journal version was still not compared. arXiv regenerates these files, so their printed dates (February and April 2022) are compilation dates, not version dates.
+
+\qffield{Pitfalls} The version read is the arXiv preprint as revised on 27 November 2024, not the journal version of 2014 that the catalogue cites; the two were not compared. Gatheral's book (\nolinkurl{s6-surface}) was not read. Fitting a surface to market quotes, the overview's checkpoint, was not attempted.
 
 \qffield{See also} \hyperref[mod:black-scholes-merton]{Black--Scholes--Merton}; \hyperref[def:vix-variance-dividend-swaps]{the VIX and variance swaps} (variance from a strip of options).
 
-\qffield{Further reading} \texttt{s6-surface} (local and stochastic volatility, surface parameterisations).
+\qffield{Further reading} \nolinkurl{s6-surface} (local and stochastic volatility, surface parameterisations).
 
-\qffield{Index} implied volatility; volatility smile; volatility skew; total implied variance; log-moneyness; volatility surface; static arbitrage; calendar-spread arbitrage; butterfly arbitrage; risk-neutral density; SVI; SSVI; moment formula; wing slope
-
-\qffield{Status} Verification: partly checked 2026-10-17 (against \texttt{exp-gatheral-jacquier-svi}, arXiv:1204.0646 as revised 27 November 2024, pp.~2--5 and~10, text layer and a page image of p.~5; \texttt{exp-lee-wings}, author manuscript of 11 August 2003, abstract and p.~2; own numerical checks; fourth batch of 2026-10-17: arXiv v1 and v2 compared at the density lemma). Stability: draft. Currency: theory timeless.
 \end{qfdefinition}
 
 \begin{qfmodel}[Heston's stochastic-volatility model: the closed-form price through characteristic functions, and Carr and Madan's FFT for many strikes]\label{mod:heston-stochastic-volatility}
-\qffield{Statement} Heston lets the variance follow a square-root process correlated with the stock: $dS=\mu S\,dt+\sqrt{v}S\,dz_1$, $dv=\kappa(\theta-v)dt+\sigma\sqrt v\,dz_2$, $dz_1dz_2=\rho\,dt$. With $x=\ln S$, a call is $C=SP_1-Ke^{-r\tau}P_2$, where each $P_j$ is the probability, under a different measure, that the option ends in the money. Their characteristic functions are $f_j=\exp[C(\tau;\phi)+D(\tau;\phi)v+i\phi x]$ with $C$ and $D$ in closed form ($u_1=\tfrac12$, $u_2=-\tfrac12$, $a=\kappa\theta$, $b_1=\kappa+\lambda-\rho\sigma$, $b_2=\kappa+\lambda$), and $P_j=\tfrac12+\tfrac1\pi\int_0^\infty\operatorname{Re}[e^{-i\phi\ln K}f_j/(i\phi)]\,d\phi$ (eqs.~(10) and~(14)--(18), p.~331, page image) \citep[\emph{RFS} 6(2), 1993, eqs.~(10)--(18), pp.~330--331]{s6-heston}. Carr and Madan price a whole strike grid at once: they Fourier-transform the call price in log strike after multiplying by $e^{\alpha k}$, because the plain call price is not square-integrable, and invert with the FFT; a sufficient condition for the damped price to be integrable is that $E[S_T^{\alpha+1}]$ is finite, and they find ``one quarter of this upper bound serves as a good choice for $\alpha$'' (eqs.~(5)--(7), p.~64) \citep[\emph{Journal of Computational Finance} 2(4), 1999, author copy, pp.~63--64]{s6-carrmadan}.
+\qffield{Statement} Heston lets the variance follow a square-root process correlated with the stock: $dS=\mu S\,dt+\sqrt{v}S\,dz_1$, $dv=\kappa(\theta-v)dt+\sigma\sqrt v\,dz_2$, $dz_1dz_2=\rho\,dt$. With $x=\ln S$, a call is $C=SP_1-Ke^{-r\tau}P_2$, where each $P_j$ is the probability, under a different measure, that the option ends in the money. Their characteristic functions are $f_j=\exp[C(\tau;\phi)+D(\tau;\phi)v+i\phi x]$ with $C$ and $D$ in closed form ($u_1=\tfrac12$, $u_2=-\tfrac12$, $a=\kappa\theta$, $b_1=\kappa+\lambda-\rho\sigma$, $b_2=\kappa+\lambda$), and $P_j=\tfrac12+\tfrac1\pi\int_0^\infty\operatorname{Re}[e^{-i\phi\ln K}f_j/(i\phi)]\,d\phi$ (eqs.~(10) and~(14)--(18), p.~331, page image) \citep[\emph{RFS} 6(2), 1993, eqs.~(10)--(18), pp.~330--331]{s6-heston}.
+
+Carr and Madan price a whole strike grid at once: they Fourier-transform the call price in log strike after multiplying by $e^{\alpha k}$, because the plain call price is not square-integrable, and invert with the FFT; a sufficient condition for the damped price to be integrable is that $E[S_T^{\alpha+1}]$ is finite, and they find ``one quarter of this upper bound serves as a good choice for $\alpha$'' (eqs.~(5)--(7), p.~64) \citep[\emph{Journal of Computational Finance} 2(4), 1999, author copy, pp.~63--64]{s6-carrmadan}.
 
 \qffield{Notation} $v$ instantaneous variance; $\kappa$ speed of mean reversion; $\theta$ long-run variance; $\sigma$ volatility of variance; $\rho$ correlation; $\lambda$ the variance risk-premium parameter (zero in the checks); $\alpha$ the damping coefficient; $k=\ln K$.
 
-\qffield{Conditions} Heston's form of $g$ and $\log(1-ge^{d\tau})$ can cross a branch cut of the complex logarithm at long maturities, which is the subject of \texttt{vo-lord-kahl-2010} (not read); the checks here use a half-year maturity. The FFT needs a damping $\alpha$ for which the moment $E[S_T^{\alpha+1}]$ exists; in Heston that moment can explode in finite time for some parameters.
+\qffield{Conditions} Heston's form of $g$ and $\log(1-ge^{d\tau})$ can cross a branch cut of the complex logarithm at long maturities, which is the subject of \nolinkurl{vo-lord-kahl-2010} (not read); the checks here use a half-year maturity. The FFT needs a damping $\alpha$ for which the moment $E[S_T^{\alpha+1}]$ exists; in Heston that moment can explode in finite time for some parameters.
 
-\qffield{Practice} Own check (\nolinkurl{notes/artefacts/option-pricing-models/batch70-option-model-checks.py}, invented parameters): with a negligible volatility of variance and $v_0=\theta$ the formula equals Black--Scholes at $\sqrt\theta$ to $10^{-3}$; with $\kappa=1.5$, $\theta=v_0=0.04$, $\sigma=0.5$, $\rho=-0.7$ and $T=0.5$ it matches a 200{,}000-path Monte Carlo at strikes 90, 100 and 110 within three standard errors (5.705 against 5.708 at the money); the FFT with $\alpha=1.5$ reproduces Black--Scholes within 0.001 and the Heston integral within 0.002. Negative $\rho$ lowers out-of-the-money call prices relative to Black--Scholes at the same variance (1.41 against 2.47 at strike 110), the skew the model exists to produce.
+\qffield{Practice} Own check (\nolinkurl{notes/artefacts/option-pricing-models/option-model-checks.py}, invented parameters): with a negligible volatility of variance and $v_0=\theta$ the formula equals Black--Scholes at $\sqrt\theta$ to $10^{-3}$; with $\kappa=1.5$, $\theta=v_0=0.04$, $\sigma=0.5$, $\rho=-0.7$ and $T=0.5$ it matches a 200{,}000-path Monte Carlo at strikes 90, 100 and 110 within three standard errors (5.705 against 5.708 at the money); the FFT with $\alpha=1.5$ reproduces Black--Scholes within 0.001 and the Heston integral within 0.002. Negative $\rho$ lowers out-of-the-money call prices relative to Black--Scholes at the same variance (1.41 against 2.47 at strike 110), the skew the model exists to produce.
 
-\qffield{Pitfalls} The hosted Heston copy and the Carr--Madan author copy were read; neither was compared with a publisher's file. Calibration to quotes, the \texttt{option-pricing-models} checkpoint, was not attempted.
+\qffield{Pitfalls} The hosted Heston copy and the Carr--Madan author copy were read; neither was compared with a publisher's file. Calibration to quotes, the \nolinkurl{option-pricing-models} checkpoint, was not attempted.
 
 \qffield{See also} \hyperref[mod:black-scholes-merton]{Black--Scholes--Merton}; \hyperref[def:implied-volatility-surface]{implied volatility surface}; \hyperref[mod:merton-jump-diffusion]{Merton's jump-diffusion}.
 
-\qffield{Further reading} \texttt{vo-lord-kahl-2010}; \texttt{audit-duffie-pan-singleton}; \texttt{s7-derman}.
+\qffield{Further reading} \nolinkurl{vo-lord-kahl-2010}; \nolinkurl{audit-duffie-pan-singleton}; \nolinkurl{s7-derman}.
 
-\qffield{Index} Heston model; stochastic volatility; square-root process; characteristic function; Fourier pricing; FFT; Carr--Madan; damping coefficient; volatility of variance; skew
-
-\qffield{Status} Verification: partly checked 2026-10-17 (fourth batch: Heston's eqs.~(10)--(18) from a page image of p.~331; Carr and Madan's eqs.~(5)--(7) from the author copy's text layer, p.~64; own numerical checks). Stability: draft. Currency: models of 1993 and 1999; owning pathway \texttt{option-pricing-models}.
 \end{qfmodel}
 
 \begin{qfmodel}[Merton's jump-diffusion option price: a Poisson mixture of Black--Scholes prices, and why jump risk cannot be hedged with the stock alone]\label{mod:merton-jump-diffusion}
-\qffield{Statement} Merton adds to the diffusion a Poisson jump with intensity $\lambda$ that multiplies the price by $Y$. With jumps ``there is no way to construct a riskless portfolio of stock and options'', so the Black--Scholes argument fails; if the jump risk is diversifiable (uncorrelated with the market), the option price satisfies an equation in which only the interest rate appears, and ``one cannot `act as if' the jump component was not there'' (secs.~II--III, printed pp.~12--15). The solution is $F(S,\tau)=\sum_n\frac{e^{-\lambda\tau}(\lambda\tau)^n}{n!}\,\mathcal E_n[W(SX_ne^{-\lambda k\tau},\tau;E,\sigma^2,r)]$, with $W$ the Black--Scholes price and $X_n$ the product of $n$ jumps (eq.~(16), printed p.~16). With lognormal jumps of log-variance $\delta^2$ and $E[Y]=1$, $F=\sum_n\frac{e^{-\lambda\tau}(\lambda\tau)^n}{n!}W(S,\tau;E,\sigma^2+n\delta^2/\tau,r)$ (eqs.~(18)--(19), printed p.~17); an option on a stock with jumps is worth more, other things equal, $\partial F/\partial\lambda>0$ at $\lambda=0$ (sec.~IV, printed p.~21) \citep[Sloan Working Paper 787-75, 1975, printed pp.~12--21, page images]{wide-merton-jumps}.
+\qffield{Statement} Merton adds to the diffusion a Poisson jump with intensity $\lambda$ that multiplies the price by $Y$. With jumps ``there is no way to construct a riskless portfolio of stock and options'', so the Black--Scholes argument fails; if the jump risk is diversifiable (uncorrelated with the market), the option price satisfies an equation in which only the interest rate appears, and ``one cannot `act as if' the jump component was not there'' (secs.~II--III, printed pp.~12--15). The solution is $F(S,\tau)=\sum_n\frac{e^{-\lambda\tau}(\lambda\tau)^n}{n!}\,\mathcal E_n[W(SX_ne^{-\lambda k\tau},\tau;E,\sigma^2,r)]$, with $W$ the Black--Scholes price and $X_n$ the product of $n$ jumps (eq.~(16), printed p.~16).
+
+With lognormal jumps of log-variance $\delta^2$ and $E[Y]=1$, $F=\sum_n\frac{e^{-\lambda\tau}(\lambda\tau)^n}{n!}W(S,\tau;E,\sigma^2+n\delta^2/\tau,r)$ (eqs.~(18)--(19), printed p.~17); an option on a stock with jumps is worth more, other things equal, $\partial F/\partial\lambda>0$ at $\lambda=0$ (sec.~IV, printed p.~21) \citep[Sloan Working Paper 787-75, 1975, printed pp.~12--21, page images]{wide-merton-jumps}.
 
 \qffield{Notation} $\lambda$ jump intensity; $Y$ the jump multiplier, $k=E[Y]-1$; $\delta^2$ the variance of $\ln Y$; $W(S,\tau;E,\sigma^2,r)$ Black--Scholes with strike $E$.
 
 \qffield{Conditions} The pricing equation rests on the jump risk being diversifiable (Merton's two derivations, printed pp.~13--20); with priced jump risk it does not hold. Merton notes he knows of no empirical test of that proposition (printed p.~20).
 
-\qffield{Practice} Own check (\nolinkurl{batch70-option-model-checks.py}): with $\lambda=0$ the series is Black--Scholes; $\partial F/\partial\lambda>0$ at $\lambda=0$ at strikes 80, 100 and 120; with $\lambda=1$, $\delta^2=0.02$, $\sigma^2=0.04$ and $T=0.5$ it matches a Monte Carlo within three standard errors (7.214 against 7.212 at the money).
+\qffield{Practice} Own check (\nolinkurl{option-model-checks.py}): with $\lambda=0$ the series is Black--Scholes; $\partial F/\partial\lambda>0$ at $\lambda=0$ at strikes 80, 100 and 120; with $\lambda=1$, $\delta^2=0.02$, $\sigma^2=0.04$ and $T=0.5$ it matches a Monte Carlo within three standard errors (7.214 against 7.212 at the money).
 
-\qffield{Pitfalls} The version read is the 1975 MIT working paper through an Internet Archive capture (MIT's repository returned HTTP 429), whose equation numbers may differ from the 1976 \emph{Journal of Financial Economics} article the catalogue cites.
+\qffield{Pitfalls} The version read is the 1975 MIT working paper through an Internet Archive capture, whose equation numbers may differ from the 1976 \emph{Journal of Financial Economics} article the catalogue cites.
 
 \qffield{See also} \hyperref[mod:heston-stochastic-volatility]{Heston}; \hyperref[mod:black-scholes-merton]{Black--Scholes--Merton}.
 
-\qffield{Further reading} \texttt{wide-bates-svj} (stochastic volatility with jumps).
+\qffield{Further reading} \nolinkurl{wide-bates-svj} (stochastic volatility with jumps).
 
-\qffield{Index} jump-diffusion; Merton model; Poisson jumps; lognormal jumps; diversifiable jump risk; incomplete market
-
-\qffield{Status} Verification: partly checked 2026-10-17 (fourth batch: the 1975 working paper, printed pp.~12--22, page images of pp.~15--17 and 20--22; own numerical check). Stability: draft. Currency: model of 1975--76; owning pathway \texttt{option-pricing-models}.
 \end{qfmodel}
 
 \begin{qfmodel}[The SABR model and its implied-volatility expansion, in single- and multiple-curve form]\label{mod:sabr-smile}
@@ -131,17 +122,14 @@ The overview's checkpoint compares delta and delta--vega hedges on profit and lo
 
 \qffield{Notation} $F$ the forward or FRA rate; $\alpha$ initial volatility; $\beta$ the CEV exponent; $\rho$ correlation; $\nu$ volatility of volatility; $\tau$ time to expiry.
 
-\qffield{Conditions} It is an asymptotic expansion, accurate for small $\tau\nu^2$ and not too far from the money; at low strikes it can imply a negative density, which the arbitrage-free version (\texttt{rt-arbitrage-free-sabr-2014}, not read) addresses.
+\qffield{Conditions} Formula of 2002 as restated in 2012. It is an asymptotic expansion, accurate for small $\tau\nu^2$ and not too far from the money; at low strikes it can imply a negative density, which the arbitrage-free version (\nolinkurl{rt-arbitrage-free-sabr-2014}, not read) addresses.
 
-\qffield{Practice} Own check (\nolinkurl{batch70-option-model-checks.py}): the formula is continuous at the money and flat at $\alpha$ when $\nu=0$, $\beta=1$; with $F=3\%$, $\beta=0.5$, $\rho=-0.3$, $\nu=0.4$ and one year to expiry, it is within 0.2 volatility points of a Monte Carlo of the dynamics at strikes 2.5, 3 and 3.5 percent (22.53 against 22.37 percent at 2.5). That is one parameter set, not an accuracy study.
+\qffield{Practice} Own check (\nolinkurl{option-model-checks.py}): the formula is continuous at the money and flat at $\alpha$ when $\nu=0$, $\beta=1$; with $F=3\%$, $\beta=0.5$, $\rho=-0.3$, $\nu=0.4$ and one year to expiry, it is within 0.2 volatility points of a Monte Carlo of the dynamics at strikes 2.5, 3 and 3.5 percent (22.53 against 22.37 percent at 2.5). That is one parameter set, not an accuracy study.
 
-\qffield{Pitfalls} Hagan et al.'s own paper (\texttt{wide-hagan-sabr}) was not read; the formula is from Bianchetti and Carlicchi's restatement, checked against an own simulation.
+\qffield{Pitfalls} Hagan et al.'s own paper (\nolinkurl{wide-hagan-sabr}) was not read; the formula is from Bianchetti and Carlicchi's restatement, checked against an own simulation.
 
 \qffield{See also} \hyperref[mod:multi-curve-fra-swap-valuation]{multi-curve FRA and swap valuation}; \hyperref[def:implied-volatility-surface]{implied volatility surface}.
 
-\qffield{Further reading} \texttt{wide-hagan-sabr}; \texttt{rt-arbitrage-free-sabr-2014}; \texttt{s6-brigo}.
+\qffield{Further reading} \nolinkurl{wide-hagan-sabr}; \nolinkurl{rt-arbitrage-free-sabr-2014}; \nolinkurl{s6-brigo}.
 
-\qffield{Index} SABR; stochastic volatility; CEV; volatility smile; caps; swaptions; FRA rate; multiple-curve
-
-\qffield{Status} Verification: partly checked 2026-10-17 (fourth batch: Bianchetti and Carlicchi, Table~5 on p.~18 as a page image; own numerical check). Stability: draft. Currency: formula of 2002 as restated in 2012; owning pathway \texttt{rate-derivatives}.
 \end{qfmodel}

@@ -1,8 +1,3 @@
-% compendium/execution-trading-costs/etf-mechanics.tex
-% Entry migrated on 2026-10-15 from the legacy equity-market-microstructure file (slice 18), owned by
-% etf-index-closing-execution (a pathway outside the file's map candidates); dispositions and source checks in
-% notes/migration.md, the blocks verbatim in notes/artefacts/etf-index-closing-execution/derivations.tex.
-
 \section{Exchange-traded funds and index products}
 
 \begin{qfmechanism}[ETF creation and redemption: authorised participants, in-kind and cash baskets, and arbitrage that tends to keep price near value without guaranteeing it]\label{mech:etf-creation-redemption}
@@ -33,9 +28,9 @@ In-kind transfers can also reduce capital-gains distributions (p.~8; Harris, p.~
 
 \qffield{Pitfalls} ``Primary market'' is used two ways. Harris's Table~23-1 gives the primary market for fund shares as deposit to and redemption from the fund (p.~491), while Lettau and Madhavan use it for the market in the underlying securities in which APs acquire baskets (p.~18). This entry says ``creation and redemption'' for the first and ``secondary trading'' for exchange trading in ETF shares.
 
-The legacy mechanism said the link ``weakens when creation costs, borrow, cash substitutions, taxes, or stressed constituent liquidity are material''. Stale valuation, illiquid holdings (for corporate bonds) and APs' discretion are in the passages read. Borrow costs, cash substitution as a weakening factor and taxes as a limit to arbitrage are not.
+The mechanism said the link ``weakens when creation costs, borrow, cash substitutions, taxes, or stressed constituent liquidity are material''. Stale valuation, illiquid holdings (for corporate bonds) and APs' discretion are in the passages read. Borrow costs, cash substitution as a weakening factor and taxes as a limit to arbitrage are not.
 
-The legacy taxonomy's items were checked against Harris:
+The taxonomy's items were checked against Harris:
 \begin{itemize}
 \item index futures as ``leveraged, cash-efficient exposure with basis and roll risk'': Harris names margins and roll costs, not basis;
 \item index options as ``convex exposure to index level and volatility'': a gloss (Interpretation);
@@ -44,11 +39,6 @@ The legacy taxonomy's items were checked against Harris:
 
 On versions and dates: Lettau and Madhavan were read in their NBER working paper of January 2018, not the published \emph{Journal of Economic Perspectives} version, which was behind a bot check. Madhavan was then head of ETF and index research at BlackRock, which the paper discloses (p.~1). The ETF facts are as of 2014--2018 for the United States. Current SEC rules on ETF baskets (Rule 6c-11) were not checked.
 
-\qffield{See also} \hyperref[def:portfolio-trading]{portfolio trading} (index products and program trades; owned by \texttt{execution-trading-costs}); \hyperref[ev:index-reconstitution-impact]{index reconstitution} (owned by \texttt{price-impact-execution}); \hyperref[res:arbitrage-risks]{arbitrage risks}; \hyperref[def:hft-strategies]{HFT strategies} (ETF-basket arbitrage as an example).
+\qffield{See also} \hyperref[def:portfolio-trading]{portfolio trading} (index products and program trades; owned by \nolinkurl{execution-trading-costs}); \hyperref[ev:index-reconstitution-impact]{index reconstitution} (owned by \nolinkurl{price-impact-execution}); \hyperref[res:arbitrage-risks]{arbitrage risks}; \hyperref[def:hft-strategies]{HFT strategies} (ETF-basket arbitrage as an example).
 
-\qffield{Further reading} The legacy blocks it replaces, verbatim, are in \nolinkurl{derivations.tex} in the folder \nolinkurl{notes/artefacts/etf-index-closing-execution/}.
-
-\qffield{Index} exchange-traded fund; ETF; authorised participant; creation unit; creation basket; in-kind creation; cash creation; redemption; secondary market; net asset value; intraday indicative value; ETF premium and discount; ETF arbitrage; liquidity mismatch; corporate bond ETF; transaction costs externalised; open-end index fund; index futures; index options
-
-\qffield{Status} Verification: partly checked 2026-10-15 (against \texttt{ex-lettau-madhavan-2018} in NBER Working Paper 24250, January 2018, pp.~1 and 4--8, 18, text layer; \texttt{wide-pan-zeng-etf} in ESRB Working Paper 59, December 2017, abstract and pp.~1--4, text layer, p.~4 added in a follow-up the same day; and the text layer of \texttt{alpha-harris}, 2002 Oxford printing, sec.~23.5, pp.~491--492). Stability: draft. Currency: ETF practice as described for the United States, 2014--2018; Harris's products as of 2001--2002; no current rule checked.
 \end{qfmechanism}

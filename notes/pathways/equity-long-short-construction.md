@@ -10,7 +10,7 @@ Pathway outcome, from the guide: turn several equity signals into one market-, s
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration slice 30 (`notes/migration-slices.md`), which routed the *Blending of Models* block of the legacy alpha-models file (`sysinv/alphamod.tex`, mapped to the section overview `portfolio-construction-risk`) here, because combining signals into one forecast is this pathway's outcome. The block's third item, on the cost of machine-learning research, came from López de Prado and went to `model-governance-controls`. The entry comes from source checking against `s7-narang` (third edition, 2024), not a reading of this pathway; none of the readings has been read, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration systematic-investing architecture review (`notes/source-review-records.md`), which routed the *Blending of Models* block of the legacy alpha-models file (`sysinv/alphamod.tex`, mapped to the section overview `portfolio-construction-risk`) here, because combining signals into one forecast is this pathway's outcome. The block's third item, on the cost of machine-learning research, came from López de Prado and went to `model-governance-controls`. The entry comes from source checking against `s7-narang` (third edition, 2024), not a reading of this pathway; none of the readings has been read, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,7 +22,7 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 30, 2026-10-15:
+Written in migration systematic-investing architecture / source review / optimal execution / high-frequency strategies reviews:
 
 - `meth:alpha-signal-combination`: Narang's linear (regression or equal weights), conditional and rotational combinations, machine-learning weights, and not combining at all; his example checked; "linear" read as additive, not as statistically independent factors; rotation and machine-learning claims kept as his unsupported judgements.
 
@@ -30,11 +30,11 @@ Partly checked 2026-10-15, draft; human review outstanding. Its artefact is `not
 
 - `meth:forecast-scaling-ic`: refined forecast = volatility x IC x score, its regression form and the two-signal combination (Grinold and Kahn, chap. 10). Partly checked 2026-10-17, draft.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `meth:forecast-scaling-ic` resolved as a new entry in `systematic-equities/signal-combination.tex` from Grinold and Kahn's second edition, chap. 10 (pp. 261-271, the rule of thumb on p. 266 as a page image; the binary-model IC, the two-signal weights and combined IC, and Table 10.1 recomputed in `notes/artefacts/equity-long-short-construction/batch40-forecast-checks.py`). Grinold's 1994 paper (`eq-grinold-1994`) is behind the publisher's login and his 1989 paper was not read. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+source verification (2026-10-17) (source verification and bounded tests, not study or human review): `meth:forecast-scaling-ic` resolved as a new entry in `systematic-equities/signal-combination.tex` from Grinold and Kahn's second edition, chap. 10 (pp. 261-271, the rule of thumb on p. 266 as a page image; the binary-model IC, the two-signal weights and combined IC, and Table 10.1 recomputed in `notes/artefacts/equity-long-short-construction/forecast-checks.py`). Grinold's 1994 paper (`eq-grinold-1994`) is behind the publisher's login and his 1989 paper was not read. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
 
-Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Audit repair: `meth:forecast-scaling-ic` now distinguishes Grinold and Kahn's best linear projection (Proposition 1) from the conditional expectation (equal under joint normality, Proposition 2, or other affine conditional means), states the orthogonality and mean-independence conditions, and adds a zero-IC counterexample with predictive information (`batch50-projection-checks.py`). Queue: `meth:signal-mixing-vs-integration` resolved by merge into `meth:alpha-signal-combination` (Fitzgibbons et al., JOI Winter 2017, AQR reprint: integrated 3.6% against 2.5% excess, IR 0.9 against 0.6, transfer coefficient 0.6 against 0.3, MSCI World-like universe 1993-2015). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Audit repair: `meth:forecast-scaling-ic` now distinguishes Grinold and Kahn's best linear projection (Proposition 1) from the conditional expectation (equal under joint normality, Proposition 2, or other affine conditional means), states the orthogonality and mean-independence conditions, and adds a zero-IC counterexample with predictive information (`projection-checks.py`). Queue: `meth:signal-mixing-vs-integration` resolved by merge into `meth:alpha-signal-combination` (Fitzgibbons et al., JOI Winter 2017, AQR reprint: integrated 3.6% against 2.5% excess, IR 0.9 against 0.6, transfer coefficient 0.6 against 0.3, MSCI World-like universe 1993-2015). The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -45,7 +45,7 @@ Cross-referenced, not owned here: `def:alpha-model-taxonomy` and `meth:alpha-str
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. No legacy file lists this pathway; its slice-30 material came from a file mapped to the overview `portfolio-construction-risk`.
+Run `python3 tools/check_compendium.py` for the current counts. No legacy file lists this pathway; its systematic-investing architecture review material came from a file mapped to the overview `portfolio-construction-risk`.
 
 ## What changed in my view or practice
 

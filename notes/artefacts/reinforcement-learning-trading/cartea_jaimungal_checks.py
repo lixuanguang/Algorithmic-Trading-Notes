@@ -1,4 +1,4 @@
-"""Numerical checks for mod:cartea-jaimungal-execution (migration slice 16, 2026-10-15).
+"""Numerical checks for mod:cartea-jaimungal-execution (migration execution control / source review / optimal execution / high-frequency strategies reviews).
 
 Checks Lehalle and Laruelle, app. A.7.3, pp. 281-284: the reduction of the HJB equation with the
 inventory term -nu*dqH, the Riccati solution for h2 against direct integration (the printed closed
@@ -6,7 +6,7 @@ form gives h2(T) = A - b), the Feynman-Kac form of h1 (the boxed formula omits t
 Almgren-Chriss limit (mu = 0, A -> infinity) and the inventory paths behind the parameter intuition.
 Illustrative parameters in consistent units; standard library only.  Run: python3 cartea_jaimungal_checks.py
 
-Follow-up to slice 16 (2026-10-15), in followup_checks(): the pathwise wealth identity behind the
+Follow-up to execution control review (2026-10-15), in check_wealth_identity_and_feedback(): the pathwise wealth identity behind the
 corrected terminal payoff Q_T(S_T - psi/2 - A Q_T); a direct discretised optimisation compared with the
 feedback policies for the corrected payoff (decomposition h = H - x - q(S - psi/2)) and for the printed
 payoff (decomposition g = H - x - qS); the infinite-value counterexample nu = -M; and the variance of
@@ -64,7 +64,7 @@ def main():
     g = math.sqrt(0.001 / 0.01)
     print('  A=1e6                         ', path(0.01, 0.001, 1e6),
           'Almgren-Chriss sinh', [round(math.sinh(g * (1 - t)) / math.sinh(g), 4) for t in (0.25, 0.5)])
-    followup_checks()
+    check_wealth_identity_and_feedback()
 
 
 def wealth_sim(nu, mu, Q0, S0, b, kappa, psi, phi, A, T, printed=False):
@@ -125,7 +125,7 @@ def feedback_path(Q0, kappa, phi, A, b, psi, T, n, printed):
     return out
 
 
-def followup_checks():
+def check_wealth_identity_and_feedback():
     print('--- follow-up checks (2026-10-15)')
     random.seed(1)
     T, n, Q0, S0 = 1.0, 4000, 1.0, 10.0

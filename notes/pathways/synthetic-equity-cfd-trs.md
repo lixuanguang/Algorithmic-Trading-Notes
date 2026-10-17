@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price a CFD or equity total return swap from it
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration slice 23 (`notes/migration.md`), which migrated the legacy securities-lending-and-synthetic-shorts file mapped to this pathway alone. Only the synthetic-short block stayed here; the lending blocks were routed to `money-markets-repo-lending`. The entry comes from migration, Harris (2002), Hu–Black's working paper and an own derivation checked numerically; Hull was not available. That is not study of the readings, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by migration securities lending and synthetic shorts review (`notes/source-review-index.md`), which migrated the legacy securities-lending-and-synthetic-shorts file mapped to this pathway alone. Only the synthetic-short block stayed here; the lending blocks were routed to `money-markets-repo-lending`. The entry comes from migration, Harris (2002), Hu–Black's working paper and an own derivation checked numerically; Hull was not available. That is not study of the readings, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,19 +22,19 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 23, 2026-10-15:
+Written in migration securities lending and synthetic shorts / source review / optimal execution / high-frequency strategies reviews:
 
-- `res:synthetic-short-put-call`: long put plus short call pays $K-S_T$, a short forward at $K$; $P-C=e^{-rT}(K-F)$ with dividends; with a short bond repaying $K$ the payoff is $-S_T$, equivalent to short stock when $q=0$ (Harris's p. 157 "long bond" wording recorded as a discrepancy, since a long bond gives $2K-S_T$); with $q=0$ the financed package ends with $S_0e^{rT}-S_T$ against $S_0e^{r_bT}-S_T$ for a short sale with rebate $r_b$; matching terms; American early exercise and assignment; no guaranteed access to scarce borrow. Corrected in the slice-23 follow-up (same day), with reproducible checks in `notes/artefacts/synthetic-equity-cfd-trs/synthetic_short_checks.py`.
+- `res:synthetic-short-put-call`: long put plus short call pays $K-S_T$, a short forward at $K$; $P-C=e^{-rT}(K-F)$ with dividends; with a short bond repaying $K$ the payoff is $-S_T$, equivalent to short stock when $q=0$ (Harris's p. 157 "long bond" wording recorded as a discrepancy, since a long bond gives $2K-S_T$); with $q=0$ the financed package ends with $S_0e^{rT}-S_T$ against $S_0e^{r_bT}-S_T$ for a short sale with rebate $r_b$; matching terms; American early exercise and assignment; no guaranteed access to scarce borrow. Corrected in the securities lending and synthetic shorts review follow-up (same day), with reproducible checks in `notes/artefacts/synthetic-equity-cfd-trs/synthetic_short_checks.py`.
 
 Verification partly checked 2026-10-15, stability draft; human review outstanding. The numerical checks are `synthetic_short_checks.py` beside the artefact, which is `notes/artefacts/synthetic-equity-cfd-trs/derivations.tex`, which keeps the whole legacy file, including the blocks routed to `money-markets-repo-lending`.
 
-Written in the third batch of 2026-10-17 (source verification and bounded checks, not study or human review):
+Written in empirical extensions (2026-10-17) (source verification and bounded checks, not study or human review):
 
 - `ev:empty-voting-equity-derivatives`: Hu and Black's decoupling and the SEC's 2023 beneficial-ownership release. Partly checked 2026-10-17, draft; human review outstanding.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:empty-voting-equity-derivatives` resolved (new entry `ev:empty-voting-equity-derivatives` from Hu and Black and the SEC's 2023 release); `ev:option-implied-borrow-cost` resolved (Ofek, Richardson and Whitelaw (NBER WP 9423) merged into `res:synthetic-short-put-call`). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:empty-voting-equity-derivatives` resolved (new entry `ev:empty-voting-equity-derivatives` from Hu and Black and the SEC's 2023 release); `ev:option-implied-borrow-cost` resolved (Ofek, Richardson and Whitelaw (NBER WP 9423) merged into `res:synthetic-short-put-call`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -45,7 +45,7 @@ Cross-referenced, not owned here: `mech:securities-lending-short-sale`, `def:sec
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. After slice 23 no legacy file lists this pathway.
+Run `python3 tools/check_compendium.py` for the current counts. After securities lending and synthetic shorts review no legacy file lists this pathway.
 
 ## What changed in my view or practice
 

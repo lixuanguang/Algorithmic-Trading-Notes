@@ -22,7 +22,7 @@ Limitations kept explicit: revised CPI, not real-time vintages (a small look-ahe
   prices, not an executable trading result, and averaging induces autocorrelation in monthly changes; the carry
   leg uses three-month interbank rates (IR3TIB01), not the forward points or funding rates a trader would pay;
   the 5 bp cost per unit of turnover is an assumption. EUR is excluded (short history).
-Inference repair (fourth batch of 17 October 2026, after the results were seen; v2 as committed in 012aa19 is kept in
+Inference repair (derivatives and empirical validation (2026-10-17), after the results were seen; v2 as committed in 012aa19 is kept in
   rowlag-2026-10-17/). The pooled Clark-West t stacked currency rows and applied Newey-West to the stacked vector, so it
   ignored contemporaneous dependence across currencies (all nine are dollar rates, so their forecast errors share the
   dollar's move) and mixed currencies at the stacking boundaries. It now uses panel_nw_t: the CW scores are summed

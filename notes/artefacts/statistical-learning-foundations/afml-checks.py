@@ -1,4 +1,4 @@
-"""Numerical checks for migration slice 32 (AFML data cluster), 2026-10-16.
+"""Numerical checks for migration financial data and labels review (AFML data cluster), 2026-10-16.
 
 Independent toy calculations and boundary cases for the formulas and algorithms adopted in the
 compendium entries; not an implementation library. Run:  python3 afml-checks.py

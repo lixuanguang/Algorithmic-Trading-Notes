@@ -2,12 +2,12 @@
 key: wide-hendershott-madhavan
 pathways: [otc-fixed-income-trading]
 version: T. Hendershott and A. Madhavan, "Click or Call? Auction versus Search in the Over-the-Counter Market", Journal of Finance 70(1), 419-447, 2015 (DOI 10.1111/jofi.12164). Copy used: none. Only the abstract was read, from the publisher's record as served by OpenAlex, Crossref or RePEc on 2026-10-15 with a generic header; SSRN (the open-access location OpenAlex lists) returned a bot page
-sections: abstract only (checked for migration slice 22); the survey's description, wide-bsv-fi-survey pp. 2-3
+sections: abstract only (checked for migration fixed-income market structure review); the survey's description, wide-bsv-fi-survey pp. 2-3
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 22 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration fixed-income market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

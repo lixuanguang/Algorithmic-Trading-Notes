@@ -10,7 +10,7 @@ Pathway outcome, from the guide: distinguish local-currency sovereign risk, defa
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 37 (`notes/migration.md`), which routed here the sovereign-credit and historical-default blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and the Moody's 1983--2006 table he reproduces. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the sovereign-credit and historical-default blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and the Moody's 1983--2006 table he reproduces. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,21 +22,21 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 37, 2026-10-16:
+Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:sovereign-credit-defaults`: ISDA's sovereign definition, reference entities, inverted credit curves, the 40 percent recovery convention against Moody's 55 percent mean (the test depends on n), and the 1998--2006 default record.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:isda-greece-2012-determination` resolved (ISDA EMEA Determinations Committee: Restructuring Credit Event for the Hellenic Republic, unanimous, 9 March 2012, after the collective action clauses; auction held 19 March 2012 (final price not read in a primary document)); `ev:sovereign-restructurings-after-2006` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:isda-greece-2012-determination` resolved (ISDA EMEA Determinations Committee: Restructuring Credit Event for the Hellenic Republic, unanimous, 9 March 2012, after the collective action clauses; auction held 19 March 2012 (final price not read in a primary document)); `ev:sovereign-restructurings-after-2006` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
-Second slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:sovereign-restructurings-after-2006` narrowed (Greece: EUR 197 billion exchanged, 53.5 percent nominal haircut, NPV loss 70-75 percent, EUR 106 billion written off; Argentina: US$82 billion restructured, US$65.5 billion of it foreign-law, recovery about 52 percent). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+Second macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:sovereign-restructurings-after-2006` narrowed (Greece: EUR 197 billion exchanged, 53.5 percent nominal haircut, NPV loss 70-75 percent, EUR 106 billion written off; Argentina: US$82 billion restructured, US$65.5 billion of it foreign-law, recovery about 52 percent). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 
-Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `ev:sovereign-restructurings-after-2006` blocked for now (no named dataset with a dated Argentine default count obtained: Reinhart's data page lists no static download link and the BoC-BoE database counts amounts in default from 1960, not episodes since independence). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+Source follow-up of order books and order flow / dealer models and information reviews and the macro markets and pricing review audit, 2026-10-16 (source verification, not study): `ev:sovereign-restructurings-after-2006` blocked for now (no named dataset with a dated Argentine default count obtained: Reinhart's data page lists no static download link and the BoC-BoE database counts amounts in default from 1960, not episodes since independence). The record is in `notes/source-review-records.md`, *Source follow-up of order books and order flow / dealer models and information reviews and macro markets and pricing review audit corrections*.
 
-Second source follow-up, 2026-10-16 (source verification, not study or human review): `ev:sovereign-restructurings-after-2006` resolved as attributed counts (CRS IF10991 v6: nine external defaults since 1816, May 2020 the ninth; Reinhart's 2010 chartbook: seven external and five domestic episodes to 2009; Fitch's 2020 study: rating defaults in 2001, 2014, 2019 and 2020; kept apart, not merged). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `ev:sovereign-restructurings-after-2006` resolved as attributed counts (CRS IF10991 v6: nine external defaults since 1816, May 2020 the ninth; Reinhart's 2010 chartbook: seven external and five domestic episodes to 2009; Fitch's 2020 study: rating defaults in 2001, 2014, 2019 and 2020; kept apart, not merged). The record is in `notes/source-review-records.md`, *Second source follow-up of the order books and order flow / macro markets and pricing reviews queue*.
 
 ## Related entries owned elsewhere
 
@@ -48,7 +48,7 @@ None open after the second source follow-up of 2026-10-16.
 
 ## Legacy candidate material
 
-None: the legacy chapters were all migrated by slice 37.
+None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

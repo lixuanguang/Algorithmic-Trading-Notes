@@ -10,7 +10,7 @@ Pathway outcome, from the guide: Construct equal-risk-contribution and volatilit
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 17 October 2026 by the fourth batch of that date (`notes/migration-slices.md`, *Fourth batch of 17 October 2026*), which wrote this pathway's first entries from bounded source verification of some of its readings. That is not study of the pathway: its readings were read only for the passages cited in the entries, and no checkpoint was attempted. The entries are in `compendium/portfolio-construction-risk/portfolio-construction-models.tex`, beside `meth:equal-risk-contribution`.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 17 October 2026 by derivatives and empirical validation (2026-10-17) that date (`notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*), which wrote this pathway's first entries from bounded source verification of some of its readings. That is not study of the pathway: its readings were read only for the passages cited in the entries, and no checkpoint was attempted. The entries are in `compendium/portfolio-construction-risk/portfolio-construction-models.tex`, beside `meth:equal-risk-contribution`.
 
 ## Outcome in my own words
 
@@ -22,7 +22,7 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in the fourth batch of 2026-10-17:
+Written in derivatives and empirical validation (2026-10-17):
 
 - `ev:volatility-managed-portfolios`: Moreira and Muir's volatility-managed portfolios with their leverage distribution, and Cederburg et al.'s real-time evidence against them.
 
@@ -30,7 +30,7 @@ All: verification partly checked 2026-10-17, stability draft; human review outst
 
 ## Source verification
 
-Fourth batch of 2026-10-17 (source verification and bounded checks, not study or human review): the entries above were written from the passages cited in them; the record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (source verification and bounded checks, not study or human review): the entries above were written from the passages cited in them; the record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 

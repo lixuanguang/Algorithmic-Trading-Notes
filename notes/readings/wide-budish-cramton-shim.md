@@ -2,12 +2,12 @@
 key: wide-budish-cramton-shim
 pathways: [hft-market-design]
 version: Eric Budish, Peter Cramton and John Shim, "The High-Frequency Trading Arms Race: Frequent Batch Auctions as a Market Design Response", Quarterly Journal of Economics 130(4), 1547-1621, 2015 (DOI 10.1093/qje/qjv027), matching the catalogue. Copy used: the published open-access (CC BY-NC-ND) PDF hosted by the University of Maryland economics department, downloaded 2026-10-15; text layer, printed page = PDF page + 1546
-sections: abstract and sec. I (pp. 1547-1556); sec. VI.A-VI.E (pp. 1576-1592), with page images of pp. 1589-1590 (checked for migration slice 15). Secs. VII-VIII (frequent batch auctions and alternatives, pp. 1594-1611) read in the source follow-up of 2026-10-16, with the September 2013 NBER conference version's sec. 7.1 and n. 33 for comparison; secs. II-V (data and empirical analysis) not read
+sections: abstract and sec. I (pp. 1547-1556); sec. VI.A-VI.E (pp. 1576-1592), with page images of pp. 1589-1590 (checked for migration high-frequency strategies review). Secs. VII-VIII (frequent batch auctions and alternatives, pp. 1594-1611) read in the source follow-up of 2026-10-16, with the September 2013 NBER conference version's sec. 7.1 and n. 33 for comparison; secs. II-V (data and empirical analysis) not read
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 15 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration high-frequency strategies review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

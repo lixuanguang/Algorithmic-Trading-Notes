@@ -2,12 +2,12 @@
 key: ex-lettau-madhavan-2018
 pathways: [etf-index-closing-execution]
 version: Martin Lettau and Ananth Madhavan, "Exchange-Traded Funds 101 for Economists", Journal of Economic Perspectives 32(1), 135-154, 2018 (DOI 10.1257/jep.32.1.135). Copy used: NBER Working Paper 24250, January 2018, 39 pages, downloaded 2026-10-15 from nber.org with a generic header (the AEA copy of the published version was behind a bot check); text layer, page numbers are the working paper's. The published version was not checked
-sections: pp. 1, 4-8, 18 (checked for migration slice 18)
+sections: pp. 1, 4-8, 18 (checked for migration equity market structure review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 18 from source checks, not from study: the headings that need your own reading are left empty. The working paper discloses that Madhavan was then head of ETF and index investing research at BlackRock (p. 1).
+Prepared on 2026-10-15 by migration equity market structure review from source checks, not from study: the headings that need your own reading are left empty. The working paper discloses that Madhavan was then head of ETF and index investing research at BlackRock (p. 1).
 
 ## Question and claim
 

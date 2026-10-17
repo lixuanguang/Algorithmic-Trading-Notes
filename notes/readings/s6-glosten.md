@@ -2,12 +2,12 @@
 key: s6-glosten
 pathways: [market-making-lob]
 version: checked in the working-paper version only, Northwestern CMS-EMS Discussion Paper 570, August 1983 (compendium source key glosten-milgrom-1983), a scan retrieved from the Internet Archive's snapshot of the Kellogg-hosted PDF; the catalogue names the 1985 Journal of Financial Economics article, not consulted
-sections: working paper secs. I-IV, pp. 1-25 (checked for migration slice 2)
+sections: working paper secs. I-IV, pp. 1-25 (checked for migration dealer-information models review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 2 from source checks, not from study: the headings that need your own reading are left empty. Locators in the entries are to the 1983 working paper and may not match the journal version.
+Prepared on 2026-10-15 by migration dealer-information models review from source checks, not from study: the headings that need your own reading are left empty. Locators in the entries are to the 1983 working paper and may not match the journal version.
 
 ## Question and claim
 

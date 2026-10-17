@@ -1,5 +1,3 @@
-% compendium/house.tex: entry environments, citations and sources, as printed in the
-% learning guide. compendium.tex loads it after your preamble; replace it, do not edit it.
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,booktabs,graphicx,hyperref}
 \hypersetup{colorlinks}
@@ -20,11 +18,11 @@
 % and otherwise to its entry in the pinned catalogue PDF.
 \newcommand{\qfcatalogue}{../guide/institutional_quantitative_finance_reading_list.pdf}
 \NewDocumentCommand{\citep}{o o m}{[\IfValueT{#2}{#1 }%
-  \ifcsname r@src:#3\endcsname\hyperref[src:#3]{\texttt{#3}}%
-  \else\href{\qfcatalogue\##3}{\texttt{#3}}\fi
+  \ifcsname r@src:#3\endcsname\hyperref[src:#3]{\nolinkurl{#3}}%
+  \else\href{\qfcatalogue\##3}{\nolinkurl{#3}}\fi
   \IfValueTF{#2}{, #2}{\IfValueT{#1}{, #1}}]}
 % \qfsource{key}{reference} records one source outside the catalogue, in front/sources.tex.
-\newcommand{\qfsource}[2]{\par\noindent\phantomsection\label{src:#1}\texttt{#1}\quad #2\par}
+\newcommand{\qfsource}[2]{\par\noindent\phantomsection\label{src:#1}\nolinkurl{#1}\quad #2\par}
 % \qfsections{key, ...} inputs <key>/section.tex for each listed key that has one, in order.
 \ExplSyntaxOn
 \NewDocumentCommand{\qfsections}{m}

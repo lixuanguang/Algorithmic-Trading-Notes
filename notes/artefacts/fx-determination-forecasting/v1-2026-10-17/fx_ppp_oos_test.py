@@ -1,7 +1,7 @@
 """ev:fx-valuation-factors-oos: out-of-sample test of one of Gliner's factors, relative PPP (the real exchange rate),
 against a random walk, on public FRED data.
 
-Protocol, fixed before results were computed (batch of 17 October 2026):
+Protocol, fixed before results were computed (source verification (2026-10-17)):
 Hypothesis. A currency that is dear in real terms relative to its own history depreciates against the U.S. dollar:
   in  ds_{t,t+h} = a + b z_t + e,  b < 0, where z_t is the deviation of the log real exchange rate from its
   expanding-window mean; and the forecast beats a random walk (no change) out of sample.

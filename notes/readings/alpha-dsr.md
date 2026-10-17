@@ -7,7 +7,7 @@ read:
 status: draft
 ---
 
-Prepared on 2026-10-17 by the batch of 17 October 2026 from source checks, not from study: the headings that need your own reading are left empty. Used for `meth:deflated-sharpe-ratio`.
+Prepared on 2026-10-17 by the source verification (2026-10-17) from source checks, not from study: the headings that need your own reading are left empty. Used for `meth:deflated-sharpe-ratio`.
 
 ## Question and claim
 

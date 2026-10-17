@@ -33,7 +33,7 @@ protocol and are not preregistered. What changed:
      fills (e.g. trade-at-settlement orders) and the two-tick round-trip cost are assumptions, not measured.
   5. The v1 message "months with |r| >= 50% dropped" was wrong: those months were counted, never dropped. v2 says
      they are retained.
-Data (EIA, public domain; ignored reading_materials/batch40/empirical): RCLC1-4 and RNGC1-4 daily (end 5 April
+Data (EIA, public domain; ignored reading_materials/source-verification/empirical): RCLC1-4 and RNGC1-4 daily (end 5 April
   2024); WCESTUS1 weekly (U.S. crude stocks excl. SPR); NW2_EPG0_SWO_R48_BCF weekly (Lower-48 working gas, from 2010).
 Inventory deviation I_t: ln(stocks) at the latest usable week minus the mean of ln(stocks) in the same ISO week of
   the previous five years.

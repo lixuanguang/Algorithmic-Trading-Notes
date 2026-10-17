@@ -1,7 +1,7 @@
 """ev:regime-asset-responses-tested: the regime map's "recession" row, tested on a regime classified with real-time
 data. Only this row is tested; the other rows and Gliner's sector phases are not.
 
-Protocol, fixed before results were computed (batch of 17 October 2026):
+Protocol, fixed before results were computed (source verification (2026-10-17)):
 Hypothesis (legacy map, def:macro-regime-asset-map): in recession, yields fall, credit spreads widen, equities fall,
   the dollar rises and defensive sectors lead. Commodities are not tested (no public, licence-free series used).
 Regime, real time. Sahm-type rule on the Philadelphia Fed's Real-Time Data Set unemployment vintages (RUC, quarterly

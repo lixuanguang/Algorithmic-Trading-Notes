@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price and hedge VIX futures and options, correl
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 37 (`notes/migration.md`), which routed here the VIX, variance-swap and dividend-swap blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the VIX, variance-swap and dividend-swap blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,15 +22,15 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 37, 2026-10-16:
+Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:vix-variance-dividend-swaps`: the VIX and its futures curve, variance-swap units and payoff (strike fixed ex ante; Gliner's "priced with realized volatility" corrected), daily moves as standard deviations, and dividend swaps.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Slice-37 follow-up, 2026-10-16 (source verification, not study): `conv:cboe-vix-methodology` resolved (Cboe VIX methodology v6.0 (26 February 2026): VIX = 100 x sqrt(annualised 30-day variance) from option prices; SOQ settlement). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `conv:cboe-vix-methodology` resolved (Cboe VIX methodology v6.0 (26 February 2026): VIX = 100 x sqrt(annualised 30-day variance) from option prices; SOQ settlement). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
 ## Related entries owned elsewhere
 
@@ -41,7 +41,7 @@ Cross-referenced, not owned here: `def:equity-indices-derivatives` (`internation
 
 ## Legacy candidate material
 
-None: the legacy chapters were all migrated by slice 37.
+None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

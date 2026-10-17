@@ -1,11 +1,12 @@
-% Your own packages, macros and environments. The learning guide's entry environments,
-% \citep and \qfsource are in house.tex, which compendium.tex loads after this file.
-
-% -----------------------------
-% Document Class & Encoding
-% -----------------------------
-\usepackage[utf8]{inputenc}  % Input encoding
+\usepackage{iftex}
+\ifPDFTeX\usepackage[utf8]{inputenc}\fi
+\ifLuaTeX\usepackage[utf8]{luainputenc}\fi
 \usepackage[T1]{fontenc}     % Font encoding
+\usepackage[type1,sfdefault,semibold]{sourcesanspro}
+\usepackage[type1,scale=0.92]{sourcecodepro}
+\renewcommand{\rmdefault}{\sfdefault}
+\usepackage{textcomp}
+\renewcommand{\copyright}{\textcopyright}
 
 % -----------------------------
 % Page Layout & Geometry
@@ -22,8 +23,19 @@
 % Text Formatting & Spacing
 % -----------------------------
 \usepackage{ragged2e}
+\usepackage{microtype}
 \usepackage[nodisplayskipstretch]{setspace}
 \setstretch{1}  % Line spacing
+\setlength{\parskip}{2pt plus 0.3pt minus 0.3pt}
+\setlength{\parindent}{1em}
+% LuaTeX discourages short prose endings before choosing line breaks.
+\ifLuaTeX
+  \directlua{dofile("typography.lua")}
+\fi
+\setlength{\parfillskip}{0pt plus 1fil}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
 
 % -----------------------------
 % Listings for Code
@@ -48,8 +60,12 @@
 % -----------------------------
 % Math Packages
 % -----------------------------
-\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{newtxsf}
+\usepackage{bm}
 \usepackage{mathrsfs}        % Script fonts
+\DeclareFontFamily{U}{rsfs}{\skewchar\font127}
+\DeclareFontShape{U}{rsfs}{m}{n}{<-> rsfs10}{}
 \usepackage{tikz-cd}         % Commutative diagrams
 \usepackage{rotating}        % Rotated objects
 \usepackage{float}           % Float placement
@@ -68,6 +84,20 @@
 % -----------------------------
 \usepackage{xparse}          % For defining robust commands
 \usepackage{enumitem}        % For customizing list layouts
+\setlist{nosep,topsep=2pt,leftmargin=*}
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\normalfont\bfseries\fontsize{14}{17}\selectfont}
+  {\thechapter}{0.7em}{}
+\titleformat{\section}{\normalfont\bfseries\fontsize{11}{13}\selectfont}
+  {\thesection}{0.7em}{}
+\titleformat{\subsection}{\normalfont\bfseries\fontsize{9}{11}\selectfont}
+  {\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\normalsize}
+  {\thesubsubsection}{0.7em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{10pt}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\subsection}{0pt}{6pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{4pt}{2pt}
 \usepackage{makecell}        % For enhanced table cells
 \usepackage{comment}		 % For commenting out sections
 
@@ -275,6 +305,7 @@
 % Hyperlinks (loaded last: loaded before float and algorithm it duplicated figure anchors)
 % -----------------------------
 \usepackage{hyperref}
+\usepackage{xurl}
 \hypersetup{
   colorlinks,
   linkcolor={blue!80!black},

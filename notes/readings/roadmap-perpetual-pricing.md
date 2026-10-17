@@ -2,12 +2,12 @@
 key: roadmap-perpetual-pricing
 pathways: [crypto-perpetuals]
 version: D. Ackerer, J. Hugonnier and U. Jermann, "Perpetual Futures Pricing", Mathematical Finance 36(3), 481-499, 2026 (DOI 10.1111/mafi.70018). Copy used: arXiv 2310.11771v2, dated 3 September 2024 (posted 4 September 2024), downloaded 2026-10-15; text layer, printed page = PDF page. The published version was not checked
-sections: abstract; pp. 2-4, 7-8 (sec. 3, eqs. (3)-(7)), 12 (Corollary 1) (checked for migration slice 24)
+sections: abstract; pp. 2-4, 7-8 (sec. 3, eqs. (3)-(7)), 12 (Corollary 1) (checked for migration crypto market structure review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 24 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration crypto market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

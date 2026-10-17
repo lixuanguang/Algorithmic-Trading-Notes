@@ -2,12 +2,12 @@
 key: roadmap-perpetual-fundamentals
 pathways: [crypto-perpetuals]
 version: S. He, A. Manela, O. Ross and V. von Wachter, "Fundamentals of Perpetual Futures", arXiv 2212.06888v7, dated September 2026 (posted 17 September 2026), downloaded 2026-10-15; text layer. O. Ross is disclosed as Chief Blockchain Scientist at the eToro Group (title page)
-sections: abstract and title page only (checked for migration slice 24); the body was not read
+sections: abstract and title page only (checked for migration crypto market structure review); the body was not read
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 24 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration crypto market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

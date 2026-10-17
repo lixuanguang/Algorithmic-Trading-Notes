@@ -2,7 +2,7 @@
 key: crypto-cartea
 pathways: [market-making-lob]
 version: 2015 first edition, Cambridge University Press (local scan)
-sections: chapter "A Primer on the Microstructure of Financial Markets", pp. 19-37 (pp. 19-33 checked for the migration pilot, pp. 34-37 for slice 2); authors' errata for pp. 33-37
+sections: chapter "A Primer on the Microstructure of Financial Markets", pp. 19-37 (pp. 19-33 checked for the migration pilot, pp. 34-37 for dealer-information models review); authors' errata for pp. 33-37
 read:
 status: draft
 ---

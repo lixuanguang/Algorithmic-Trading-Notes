@@ -10,7 +10,7 @@ Pathway outcome, from the guide: assess an alternative dataset by its coverage, 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 32 (`notes/migration-slices.md`), which gave this pathway the legacy taxonomy file's table, its four characteristics remarks and its fundamental-and-other-data block. The entry rests on López de Prado (`alpha-afml`, chap. 2) and Velu, Hardy and Nehren (`s3-velu`, chap. 1), neither a reading of this pathway; López de Prado takes his split of alternative data from `wide-kolanovic-big-data`, the pathway's first reading, which was not opened. The checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration financial data and labels review (`notes/source-review-records.md`), which gave this pathway the legacy taxonomy file's table, its four characteristics remarks and its fundamental-and-other-data block. The entry rests on López de Prado (`alpha-afml`, chap. 2) and Velu, Hardy and Nehren (`s3-velu`, chap. 1), neither a reading of this pathway; López de Prado takes his split of alternative data from `wide-kolanovic-big-data`, the pathway's first reading, which was not opened. The checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,19 +22,19 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 32, 2026-10-16:
+Written in migration financial data and labels / source review / optimal execution / execution control reviews:
 
 - `def:financial-data-types`: López de Prado's fundamental, market, analytics and alternative data, with release lags (the legacy generalised a Bloomberg example), backfilling and reinstatement, cost, crowding of analytics, and his opinions marked as opinions; Velu, Hardy and Nehren's fundamental and analyst inputs with their hedges restored, and their point that a dataset's value falls as access spreads.
 
 Partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/data-taxonomy.tex`.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `meth:alternative-dataset-assessment` unchanged and blocked: Monk, Prins and Rook (CAIA copy 404; Stanford page links SSRN, which refuses automated retrieval) and Kolanovic and Krishnamachari (no public authorised copy) not obtained. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `meth:alternative-dataset-assessment` unchanged and blocked: Monk, Prins and Rook (CAIA copy 404; Stanford page links SSRN, which refuses automated retrieval) and Kolanovic and Krishnamachari (no public authorised copy) not obtained. The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:alternative-data-edge-decay` narrowed (Dessaint, Foucault and Frésard and Farboodi and Veldkamp read at abstract level and merged); `ev:holdings-insider-ratings-signals` narrowed (Cohen, Malloy and Pomorski (abstract and sec. I) merged). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:alternative-data-edge-decay` narrowed (Dessaint, Foucault and Frésard and Farboodi and Veldkamp read at abstract level and merged); `ev:holdings-insider-ratings-signals` narrowed (Cohen, Malloy and Pomorski (abstract and sec. I) merged). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): target 67: Cohen, Malloy and Pomorski's NBER working paper quantified (82 basis points a month value-weighted, $t=2.15$) in `def:financial-data-types`; `ev:holdings-insider-ratings-signals` narrowed to 13F and ratings. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 67: Cohen, Malloy and Pomorski's NBER working paper quantified (82 basis points a month value-weighted, $t=2.15$) in `def:financial-data-types`; `ev:holdings-insider-ratings-signals` narrowed to 13F and ratings. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -48,7 +48,7 @@ Cross-referenced, not owned here: `data:trading-reference-data`, `data:market-da
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. After slice 32 no legacy file lists this pathway.
+Run `python3 tools/check_compendium.py` for the current counts. After financial data and labels review no legacy file lists this pathway.
 
 ## What changed in my view or practice
 

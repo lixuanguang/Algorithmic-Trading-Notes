@@ -1,4 +1,4 @@
-"""Slice-32 follow-up check (2026-10-16): a negative minimum-variance hedge ratio reduces variance.
+"""financial data and labels review follow-up check (2026-10-16): a negative minimum-variance hedge ratio reduces variance.
 
 Position convention as in mod:minimum-variance-hedge-ratio: hedged change V(h) = dS - h dF, so h > 0 is a short
 futures position against a long exposure and h < 0 a long one.

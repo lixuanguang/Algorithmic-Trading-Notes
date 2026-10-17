@@ -10,7 +10,7 @@ Pathway outcome, from the guide: build a zero curve, decompose yields into expec
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 37 (`notes/migration.md`), which routed here the curve-trade, carry-and-rolldown and inversion blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Estrella and Trubin (2006). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the curve-trade, carry-and-rolldown and inversion blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Estrella and Trubin (2006). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,31 +22,31 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 37, 2026-10-16:
+Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `meth:curve-trades-carry-rolldown`: DV01-neutral steepeners and flatteners, bull and bear moves, carry signs that depend on the curve and financing, rolldown defined (Gliner's definition corrected), and Estrella--Trubin's inversion record to 2005.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
-Written in the fourth batch of 2026-10-17:
+Written in derivatives and empirical validation (2026-10-17):
 
 - `data:gsw-treasury-curve`: the Federal Reserve's fitted Treasury curve: the Svensson form, its parameters and an own recomputation.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
-Second slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` narrowed (Estrella and Trubin's own series rebuilt from H.15 with a reproducible script; month and episode rules tested; only the outcome-dependent revisit remains). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+Second macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` narrowed (Estrella and Trubin's own series rebuilt from H.15 with a reproducible script; month and episode rules tested; only the outcome-dependent revisit remains). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 
-Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` deferred (depends on future NBER dating; no peak after February 2020 dated as of 16 October 2026; the episode rule's hit rates are now labelled retrospective in the entry). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+Source follow-up of order books and order flow / dealer models and information reviews and the macro markets and pricing review audit, 2026-10-16 (source verification, not study): `ev:curve-inversion-after-2005` deferred (depends on future NBER dating; no peak after February 2020 dated as of 16 October 2026; the episode rule's hit rates are now labelled retrospective in the entry). The record is in `notes/source-review-records.md`, *Source follow-up of order books and order flow / dealer models and information reviews and macro markets and pricing review audit corrections*.
 
 Audit note of 2026-10-16 (`meth:curve-trades-carry-rolldown`): the episode rule is scored from an episode's last inverted month and ex-post NBER dates, so its hit rates describe the record and are not a prospective forecasting result; counts unchanged.
 
-Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `ev:curve-inversion-after-2005` deferral retained: NBER's chronology (data last updated 14 March 2023) still ends with the February 2020 peak and April 2020 trough, so the provisional outcomes are unchanged. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+source verification (2026-10-17) (source verification and bounded tests, not study or human review): `ev:curve-inversion-after-2005` deferral retained: NBER's chronology (data last updated 14 March 2023) still ends with the February 2020 peak and April 2020 trough, so the provisional outcomes are unchanged. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:curve-inversion-after-2005` deferred (trigger review: no NBER peak after February 2020; 24 of the 27 months lie beyond the longest past announcement lag, 3 months and both episodes within it; retained). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:curve-inversion-after-2005` deferred (trigger review: no NBER peak after February 2020; 24 of the 27 months lie beyond the longest past announcement lag, 3 months and both episodes within it; retained). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): target 32: new entry `data:gsw-treasury-curve` (the published Svensson parameters reproduce SVENY10 on all 13,759 days to 0.00005 points). Backlog: `ev:curve-inversion-after-2005` rewritten; all 27 inverted months now have complete horizons, and only retrospective NBER dating remains, with a revisit trigger of an NBER peak announcement or April 2027. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 32: new entry `data:gsw-treasury-curve` (the published Svensson parameters reproduce SVENY10 on all 13,759 days to 0.00005 points). Backlog: `ev:curve-inversion-after-2005` rewritten; all 27 inverted months now have complete horizons, and only retrospective NBER dating remains, with a revisit trigger of an NBER peak announcement or April 2027. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -58,7 +58,7 @@ Cross-referenced, not owned here: `mod:duration-convexity` (`rates-credit-mortga
 
 ## Legacy candidate material
 
-None: the legacy chapters were all migrated by slice 37.
+None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

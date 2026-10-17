@@ -10,7 +10,7 @@ Pathway outcome, from the guide: fit and tune regularised, tree-based and neural
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 32 (`notes/migration-slices.md`), which migrated the legacy AFML data cluster (`ml-alternative-data/data/`, five files) and closed the legacy chapter. The entries come from source checking against López de Prado's chaps. 2–5, the pathway's thirteenth reading, read only in those chapters; that is not study of it, and chap. 7 (purged and embargoed cross-validation), which the checkpoint needs, is unread. No other reading has been opened and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration financial data and labels review (`notes/source-review-records.md`), which migrated the legacy AFML data cluster (`ml-alternative-data/data/`, five files) and closed the legacy chapter. The entries come from source checking against López de Prado's chaps. 2–5, the pathway's thirteenth reading, read only in those chapters; that is not study of it, and chap. 7 (purged and embargoed cross-validation), which the checkpoint needs, is unread. No other reading has been opened and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,7 +22,7 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 32, 2026-10-16:
+Written in migration financial data and labels / source review / optimal execution / execution control reviews:
 
 - `meth:activity-sampled-bars`: time, tick, volume and dollar bars; what each corrects (auction prints, fragmentation, price level, issuance); the evidence on their return distributions as cited (Mandelbrot–Taylor, Clark, Ané–Geman, whose ranking of trades over volume conflicts with Clark's), not guaranteed.
 - `meth:information-driven-bars`: tick rule with its boundary condition; imbalance and runs bars in a corrected table (the legacy runs statistics collapsed to $T$); causal EWMA thresholds from prior bars; the unstated independence assumption and Jensen gap; collapse of the threshold on a balanced flow.
@@ -38,21 +38,21 @@ Written in migration slice 32, 2026-10-16:
 
 All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/` (the five legacy files verbatim, the wrappers and the four original figures, and `afml-checks.py`, the numerical checks).
 
-Changed in the slice-32 follow-up, 2026-10-16: `meth:etf-trick` (the next-open sizing is an accounting convention, reproducible only by notional orders filled in full at a single opening price; gross exposure $|K_t|$ with positive prices and conversion factors; holdings reverse at $K_t<0$, so a series that exhausts its capital stops describing the strategy); `def:label-concurrency-uniqueness` (indicator $t_{i,0}<t\le t_{i,1}$ for returns indexed by ending time; López de Prado's toy matrix is consistent, his Snippets 4.1, 4.3 and 4.10 include the event's own bar, which is not equivalent); `meth:sample-weights-attribution-decay` (sum from $t_{i,0}+1$); `meth:triple-barrier-labelling` (the returns a label uses). Checks in `notes/artefacts/statistical-learning-foundations/slice32-followup-checks.py`.
+Changed in the financial data and labels review follow-up, 2026-10-16: `meth:etf-trick` (the next-open sizing is an accounting convention, reproducible only by notional orders filled in full at a single opening price; gross exposure $|K_t|$ with positive prices and conversion factors; holdings reverse at $K_t<0$, so a series that exhausts its capital stops describing the strategy); `def:label-concurrency-uniqueness` (indicator $t_{i,0}<t\le t_{i,1}$ for returns indexed by ending time; López de Prado's toy matrix is consistent, his Snippets 4.1, 4.3 and 4.10 include the event's own bar, which is not equivalent); `meth:sample-weights-attribution-decay` (sum from $t_{i,0}+1$); `meth:triple-barrier-labelling` (the returns a label uses). Checks in `notes/artefacts/statistical-learning-foundations/financial-labels-capital-checks.py`.
 
-Changed in migration slice 36, 2026-10-16: `meth:triple-barrier-labelling` (two legacy arbitrage-label blocks from the feature-engineering file, a routing exception, compared with the path argument on p. 44). Partly checked, draft.
+Changed in migration dealer models and information / source review / optimal execution / execution control reviews: `meth:triple-barrier-labelling` (two legacy arbitrage-label blocks from the feature-engineering file, a routing exception, compared with the path argument on p. 44). Partly checked, draft.
 
 - `meth:purged-embargoed-cross-validation`: purging and embargo (AFML chap. 7), inflated out-of-bag scores, and when ordinary K-fold or time-ordered holdouts are appropriate. Partly checked 2026-10-17, draft.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Batch of 2026-10-17 (source verification and bounded tests, not study or human review): `meth:purged-embargoed-cross-validation` resolved as a new entry in `ml-alternative-data/labelling-sample-weights.tex`: López de Prado chap. 7 (pp. 103-109, p. 106 as page images, where the printed information-set condition reads '= ∅' but must mean '≠ ∅') and sec. 6.3.3 on inflated out-of-bag accuracy; Bergmeir, Hyndman and Koo (working paper of 23 July 2017) on when ordinary K-fold is valid; Cerqueira, Torgo and Mozetič (arXiv v1, not the 2020 journal version). `notes/artefacts/statistical-learning-foundations/batch40-cv-checks.py` shows that Snippet 7.3 keeps labels touching the test block at one bar, which the closed-interval rule would purge. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+source verification (2026-10-17) (source verification and bounded tests, not study or human review): `meth:purged-embargoed-cross-validation` resolved as a new entry in `ml-alternative-data/labelling-sample-weights.tex`: López de Prado chap. 7 (pp. 103-109, p. 106 as page images, where the printed information-set condition reads '= ∅' but must mean '≠ ∅') and sec. 6.3.3 on inflated out-of-bag accuracy; Bergmeir, Hyndman and Koo (working paper of 23 July 2017) on when ordinary K-fold is valid; Cerqueira, Torgo and Mozetič (arXiv v1, not the 2020 journal version). `notes/artefacts/statistical-learning-foundations/cv-checks.py` shows that Snippet 7.3 keeps labels touching the test block at one bar, which the closed-interval rule would purge. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
 
-Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Audit repair: `meth:purged-embargoed-cross-validation` now presents López de Prado's performance plateau as a source heuristic, not proof of no leakage, lists leakage that does not grow with k, and keeps the overlap and endpoint corrections; information provenance and a time-valid evaluation remain necessary. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Audit repair: `meth:purged-embargoed-cross-validation` now presents López de Prado's performance plateau as a source heuristic, not proof of no leakage, lists leakage that does not grow with k, and keeps the overlap and endpoint corrections; information provenance and a time-valid evaluation remain necessary. The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:transaction-clock-normality` narrowed (Murphy and Izzeldin's working paper merged); `ev:meta-labelling-performance` unchanged (no open out-of-sample evaluation found (arXiv, Crossref and web searched); Joubert's journal articles are paywalled); `meth:fractional-integration-tests` resolved (MacKinnon and Nielsen's working paper merged into the fractional-differentiation entry). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:transaction-clock-normality` narrowed (Murphy and Izzeldin's working paper merged); `ev:meta-labelling-performance` unchanged (no open out-of-sample evaluation found (arXiv, Crossref and web searched); Joubert's journal articles are paywalled); `meth:fractional-integration-tests` resolved (MacKinnon and Nielsen's working paper merged into the fractional-differentiation entry). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -65,7 +65,7 @@ Cross-referenced, not owned here: `pit:label-weight-leakage` (`financial-ml-eval
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. No legacy file lists this pathway: slice 32 migrated the five AFML data files and removed the legacy ML chapter. That says nothing about consolidation.
+Run `python3 tools/check_compendium.py` for the current counts. No legacy file lists this pathway: financial data and labels review migrated the five AFML data files and removed the legacy ML chapter. That says nothing about consolidation.
 
 ## What changed in my view or practice
 

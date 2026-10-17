@@ -1,4 +1,4 @@
-"""Slice-31 follow-up check (2026-10-16): yield change against a parallel zero-curve shift.
+"""derivatives and hedging review follow-up check (2026-10-16): yield change against a parallel zero-curve shift.
 
 Continuous compounding. Run: python3 yield-shift-check.py (numpy, scipy).
 """

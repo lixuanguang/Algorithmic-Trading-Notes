@@ -2,12 +2,12 @@
 key: wide-bacry-hawkes
 pathways: [market-making-lob]
 version: Emmanuel Bacry, Iacopo Mastromatteo and Jean-François Muzy, "Hawkes Processes in Finance", Market Microstructure and Liquidity 1(1), 1550005, 2015 (DOI 10.1142/s2382626615500057). Copy used: arXiv 1502.04592v2, 17 May 2015, 48 pages, downloaded 2026-10-16. Page numbers below are the preprint's; the journal version was not checked
-sections: abstract and sec. 1 (pp. 1-3); sec. 2.1 (pp. 3-6, Definition 1, Proposition 1, Examples 1-2); secs. 2.2-2.2.4 (pp. 6-8); sec. 5.1 (p. 27, Bacry and Muzy's impact model); sec. 6.1 (pp. 29-30, Large's level-I model) (checked for migration slice 33)
+sections: abstract and sec. 1 (pp. 1-3); sec. 2.1 (pp. 3-6, Definition 1, Proposition 1, Examples 1-2); secs. 2.2-2.2.4 (pp. 6-8); sec. 5.1 (p. 27, Bacry and Muzy's impact model); sec. 6.1 (pp. 29-30, Large's level-I model) (checked for migration order books and order flow review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-16 by migration slice 33 from source checks, not from study: the headings that need your own reading are left empty. A required reading of `market-making-lob`; the sections above were read for one entry, the rest of the review was not.
+Prepared on 2026-10-16 by migration order books and order flow review from source checks, not from study: the headings that need your own reading are left empty. A required reading of `market-making-lob`; the sections above were read for one entry, the rest of the review was not.
 
 ## Question and claim
 

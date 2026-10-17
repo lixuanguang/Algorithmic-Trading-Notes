@@ -2,12 +2,12 @@
 key: wide-bouchaud-propagator
 pathways: [price-impact-execution]
 version: Jean-Philippe Bouchaud, Yuval Gefen, Marc Potters and Matteo Wyart, "Fluctuations and response in financial markets: the subtle nature of 'random' price changes", Quantitative Finance 4(2), 176-190, 2004 (DOI 10.1080/14697680400000022). Copy used: arXiv cond-mat/0307332v2 (25 August 2003), 30 pages, downloaded 2026-10-15. Page numbers below are the preprint's; the journal version was not checked
-sections: sec. 3.1 (pp. 14-16); sec. 3.2 (pp. 16-17); page image of p. 14 (checked for migration slice 8)
+sections: sec. 3.1 (pp. 14-16); sec. 3.2 (pp. 16-17); page image of p. 14 (checked for migration market-impact models review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 8 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration market-impact models review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

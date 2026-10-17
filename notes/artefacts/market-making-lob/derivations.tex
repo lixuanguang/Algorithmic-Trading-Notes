@@ -1,6 +1,6 @@
 % notes/artefacts/market-making-lob/derivations.tex
 % Full derivations from the legacy notes, kept verbatim when the blocks were migrated on 2026-10-14
-% (format pilot, notes/migration.md). Only figure paths changed. The compendium entries state each
+% (format pilot, notes/source-review-index.md). Only figure paths changed. The compendium entries state each
 % result with its locator and an idea of the proof; the complete working lives here.
 % Source of each block as found by the pilot: Cartea, Jaimungal and Penalva (crypto-cartea),
 % chapter "A Primer on the Microstructure of Financial Markets", pp. 20-30, except the Kyle
@@ -380,8 +380,8 @@ The closed form is a useful control template, but real books require queue posit
 \end{caveat}
 
 
-\section*{Glosten--Milgrom and dealer quoting (slice 2, 2026-10-15)}
-% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 2).
+\section*{Glosten--Milgrom and dealer quoting (dealer-information models / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/source-review-index.md, dealer-information models review).
 % Destinations: mod:glosten-milgrom, res:glosten-milgrom-half-spreads, res:glosten-milgrom-market-collapse,
 % res:adverse-selection-spread-component, def:dealer-inventory-risk, meth:dealer-quote-adjustment.
 % Source found for most of this text: Harris, Trading and Exchanges (alpha-harris), chapters "Dealers"
@@ -581,8 +581,8 @@ A dealer's search for quotes that balance buy and sell flow also reveals market 
 \end{principle}
 
 
-\section*{Spread decomposition and inventory models (slice 3, 2026-10-15)}
-% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 3).
+\section*{Spread decomposition and inventory models (spread and inventory models / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/source-review-index.md, spread and inventory models review).
 % Destinations: res:adverse-selection-spread-component, def:dealer-inventory-risk,
 % mod:inventory-based-quotes, def:spread-measures, res:roll-spread-estimator,
 % res:spread-component-identification, res:spread-determinants, def:outside-spread.
@@ -750,12 +750,12 @@ Inventory control and adverse selection can produce the same quote movement afte
 Identification needs additional information: dealer inventory, hedges, client type, future midpoint revision, or whether quotes revert after inventory is restored.
 \end{caveat}
 
-\section*{Volatility, liquidity and crashes (slice 4, 2026-10-15)}
+\section*{Volatility, liquidity and crashes (volatility and liquidity / source review / optimal execution / high-frequency strategies reviews)}
 % From compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/08_volatility_and_liquidity_interaction.tex,
-% lines 4--91 (before migration): the 14 blocks migrated in slice 4, verbatim. The other 8 blocks
+% lines 4--91 (before migration): the 14 blocks migrated in volatility and liquidity review, verbatim. The other 8 blocks
 % (liquidity spiral, Flash Crash, systemic risk, trade count) remain in that file, assigned to hft-market-design.
 % Destinations: res:spread-determinants, def:volatility-components, mech:bubble-crash-dynamics,
-% meth:garman-klass-volatility, meth:spread-volatility-regression (see notes/migration.md, slice 4).
+% meth:garman-klass-volatility, meth:spread-volatility-regression (see notes/source-review-index.md, volatility and liquidity review).
 
 \subsection*{Volatility and Liquidity Interaction (excerpt)}
 
@@ -848,8 +848,8 @@ Here $A_0$ is the level intercept, $\sigma_\epsilon^2$ is residual variance, and
 A fitted relation is descriptive unless tick size, time of day, venue, depth, and trade intensity are controlled. In large-tick assets, volatility may move through depth rather than spread.
 \end{caveat}
 
-\section*{Information, market efficiency and price discovery (slice 5, 2026-10-15)}
-% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 5).
+\section*{Information, market efficiency and price discovery (information and price discovery / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/source-review-index.md, information and price discovery review).
 % Destinations: def:fundamental-value, res:informed-trading-aggregation, def:market-efficiency,
 % def:inside-information, def:price-formation-process, def:intraday-overnight-returns, def:outside-spread.
 % Sources found: Harris, Trading and Exchanges (alpha-harris), chaps. "Informed Traders and Market
@@ -921,7 +921,7 @@ Informative prices are not free. Informed trading transfers wealth from slower l
 \end{caveat}
 
 % From compendium/legacy/execution-market-making/03_information_price_formation_and_spreads/02_price_discovery.tex,
-% lines 4--56 (before migration): the 9 blocks migrated in slice 5. The other 3 blocks (fragmentation, fast
+% lines 4--56 (before migration): the 9 blocks migrated in information and price discovery review. The other 3 blocks (fragmentation, fast
 % liquidity, outage) remain in that file, assigned to market-structure-execution-quality and hft-market-design.
 \subsection*{Price Discovery (excerpt)}
 
@@ -979,8 +979,8 @@ Intraday correlations reflect co-movement during continuous price formation.\\
 Overnight correlations are closer to auction and news revaluation. Spikes in daily index correlation hence come from different mechanisms at different horizons.
 \end{caveat}
 
-\section*{Strategic trading models (slice 6, 2026-10-15)}
-% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 6).
+\section*{Strategic trading models (strategic trading / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/source-review-index.md, strategic trading review).
 % Destinations: def:informed-trader-types, res:informed-trading-aggregation, def:market-efficiency,
 % def:inside-information, res:insider-trading-deterrence, def:arbitrage, res:arbitrage-risks,
 % def:winners-curse, def:order-anticipation, def:bluffing-manipulation.
@@ -1203,8 +1203,8 @@ Quote matching extracts value from standing limit orders without supplying durab
 Squeezes and stop gunning profit from forced trades. They usually make prices less informative, raise transaction costs, and reduce liquidity for traders who must close positions.
 \end{caveat}
 
-\section*{Liquidity and market impact (slice 7, 2026-10-15)}
-% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 7).
+\section*{Liquidity and market impact (liquidity and impact / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/source-review-index.md, liquidity and impact review).
 % Destinations: def:price-impact, mod:propagator, res:no-price-manipulation (compendium/execution-trading-costs/,
 % pathway price-impact-execution) and def:bluffing-manipulation.
 % Sources found: Webster, Handbook of Price Impact Modeling (wide-webster-price-impact), chaps. 1-2;
@@ -1248,8 +1248,8 @@ Liquidity suppliers are vulnerable when buys and sells, large and small orders, 
 Calling a long-run price move permanent impact is risky unless market moves, sector moves, autocorrelated flow, and the signal that caused the trade have been separated.
 \end{caveat}
 
-\section*{Market impact models (slice 8, 2026-10-15)}
-% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 8).
+\section*{Market impact models (market-impact models / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/source-review-index.md, market-impact models review).
 % Destinations (compendium/execution-trading-costs/, pathway price-impact-execution): def:price-impact,
 % mod:propagator, ev:square-root-impact, meth:post-execution-impact-profile.
 % Sources found: Bacry, Iuga, Lasnier and Lehalle (wide-bacry-life-cycle, arXiv 2014), sec. 7;
@@ -1332,8 +1332,8 @@ Here $P_d$ is the stock close, $I_d$ the reference index, $\beta$ the index expo
 Metaorder flow can remain signed and autocorrelated for days. If later same-direction executions are ignored, their impact may be falsely attributed to the original order.
 \end{caveat}
 
-\section*{Price impact estimation (slice 9, 2026-10-15)}
-% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 9).
+\section*{Price impact estimation (impact estimation / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/source-review-index.md, impact estimation review).
 % Destinations (compendium/execution-trading-costs/, pathway price-impact-execution): def:price-impact,
 % ev:intraday-impact-profile, meth:almgren-impact-estimation, meth:order-flow-impact-regression,
 % ev:index-reconstitution-impact.
@@ -1388,8 +1388,8 @@ Signed order flow is endogenous: informed traders choose when and how much to tr
 Two orders with identical size and participation can have different impact because one trades with the market and the other trades against it. Impact estimation therefore has to separate execution mechanics from the signal that caused the trade.
 \end{caveat}
 
-\section*{Optimal execution problem (slice 10, 2026-10-15)}
-% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/migration.md, slice 10).
+\section*{Optimal execution problem (optimal execution / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when these blocks were migrated on 2026-10-15 (notes/source-review-index.md, optimal execution review).
 % Destinations (compendium/execution-trading-costs/, owned by the section overview execution-trading-costs):
 % mod:almgren-chriss-execution, def:block-trade.
 % Sources found: Lehalle and Laruelle (alpha-laruelle), app. A, sec. A.7; Almgren and Chriss (alpha-almgren,
@@ -1455,8 +1455,8 @@ Fixed-share thresholds are venue conventions; for execution research, a block is
 Block execution buys liquidity with information: disclose enough to find size, but not enough to be exploited.
 \end{taxonomy}
 
-\section*{Execution benchmarks (slice 11, 2026-10-15)}
-% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 11): its three
+\section*{Execution benchmarks (execution benchmarks / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/source-review-index.md, execution benchmarks review): its three
 % blocks, its table with caption and settings, and the text between them, in order; only the
 % subsection is unnumbered here.
 % Destinations (compendium/execution-trading-costs/, owned by the section overview execution-trading-costs):
@@ -1506,8 +1506,8 @@ Liquidity Seeker & US & Any size & Stock expected to oscillate around fair value
 The benchmark justifies the comparison, not the whole execution policy. Market conditions, order size, liquidity, and control freedom still determine the usable algorithm.
 \end{caveat}
 
-\section*{Execution algorithms (slice 12, 2026-10-15)}
-% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 12): its 17
+\section*{Execution algorithms (execution algorithms / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/source-review-index.md, execution algorithms review): its 17
 % blocks (with the proof inside the proposition), its table with caption and settings, and the text
 % between them, in order; only the subsection is unnumbered here.
 % Destinations (compendium/execution-trading-costs/, owned by the section overview execution-trading-costs):
@@ -1671,8 +1671,8 @@ Liquidity seeker & Poor fragmented market depth & Alpha extraction; opportunisti
 Useful tools support live counterfactuals: finish now, slow down, switch benchmark, seek dark liquidity, or cap participation. The aim is disciplined comparison before changing trajectory.
 \end{practitionernote}
 
-\section*{Transaction cost analysis (slice 13, 2026-10-15)}
-% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 13): its 25
+\section*{Transaction cost analysis (transaction-cost analysis / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/source-review-index.md, transaction-cost analysis review): its 25
 % blocks and the closing sentences inside them, in order; the file had no table or text outside the
 % blocks. Only the subsection is unnumbered here.
 % Destinations: owned by execution-trading-costs: def:transaction-costs, meth:transaction-cost-analysis,
@@ -1713,7 +1713,7 @@ The first term is realised execution cost. The second term is missed trade oppor
 \end{model}
 
 \begin{principle} \hlt{Marginal Aggressiveness Rule}\\
-Trade more aggressively when the marginal missed-opportunity cost saved exceeds the marginal transaction cost paid. Trade less aggressively when the marginal transaction cost saved exceeds the additional missed-opportunity cost. Average cost is the wrong control variable for the last slice.
+Trade more aggressively when the marginal missed-opportunity cost saved exceeds the marginal transaction cost paid. Trade less aggressively when the marginal transaction cost saved exceeds the additional missed-opportunity cost. Average cost is the wrong control variable for the last execution slice.
 \end{principle}
 
 \begin{taxonomy} \hlt{Benchmark Price Segmentation}
@@ -1871,8 +1871,8 @@ The audit is not moral judgement; it is adverse-selection control.
 Fast public reporting improves transparency and protects the regular market, but it can hurt dealers that still need to unwind facilitated inventory. Delayed reporting protects facilitation, but gives informed block traders more room to exploit stale prices.
 \end{caveat}
 
-\section*{Smart order routing (slice 14, 2026-10-15)}
-% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 14): its 15
+\section*{Smart order routing (smart order routing / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/source-review-index.md, smart order routing review): its 15
 % blocks (with the proof inside the proposition), its table with caption and settings, and the text
 % inside them, in order; only the subsection is unnumbered here.
 % Destinations (all owned by market-structure-execution-quality): def:smart-order-routing,
@@ -2002,8 +2002,8 @@ Minimum resting time & highest adjusted rate & next adjusted rate & residual ven
 \end{enumerate}
 \end{process}
 
-\section*{High-frequency trading strategies (slice 15, 2026-10-15)}
-% Kept verbatim when this file was migrated on 2026-10-15 (notes/migration.md, slice 15): its 3
+\section*{High-frequency trading strategies (high-frequency strategies / source review / optimal execution / high-frequency strategies reviews)}
+% Kept verbatim when this file was migrated on 2026-10-15 (notes/source-review-index.md, high-frequency strategies review): its 3
 % blocks and the sentences inside them, in order; only the subsection is unnumbered here. There was no
 % text, table or figure outside the blocks.
 % Destinations (all owned by hft-market-design, outside the file's map candidates): def:hft-strategies,

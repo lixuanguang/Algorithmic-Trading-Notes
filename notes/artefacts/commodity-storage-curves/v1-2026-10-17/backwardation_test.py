@@ -1,6 +1,6 @@
 """ev:backwardation-scarcity-or-premium: a bounded test on EIA's public NYMEX futures and inventory series.
 
-Protocol, fixed before results were computed (batch of 17 October 2026):
+Protocol, fixed before results were computed (source verification (2026-10-17)):
 Hypotheses.
   S (scarcity, theory of storage): the futures curve is more backwardated when inventories are low relative to their
     seasonal norm, i.e. beta_S < 0 in  B_t = a + beta_S * I_t + e_t.

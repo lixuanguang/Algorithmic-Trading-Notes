@@ -2,12 +2,12 @@
 key: ex-hasbrouck-2003
 pathways: [futures-execution]
 version: Joel Hasbrouck, "Intraday Price Formation in U.S. Equity Index Markets", Journal of Finance 58(6), 2375-2400, 2003 (DOI 10.1046/j.1540-6261.2003.00609.x). Copy used: NYU Stern working paper FIN-00-046, "preliminary draft" of 16 November 2000, from the NYU Faculty Digital Archive, downloaded 2026-10-15 with a generic header; text layer; printed page = PDF page - 2, the abstract page unnumbered. The published version was not checked
-sections: abstract; pp. 4-6 (related work, trading venues), 13 (sample), 34 (conclusions) (checked for migration slice 19)
+sections: abstract; pp. 4-6 (related work, trading venues), 13 (sample), 34 (conclusions) (checked for migration futures market structure review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 19 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration futures market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

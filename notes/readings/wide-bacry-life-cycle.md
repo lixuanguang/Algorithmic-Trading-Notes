@@ -2,12 +2,12 @@
 key: wide-bacry-life-cycle
 pathways: [price-impact-execution]
 version: Emmanuel Bacry, Adrian Iuga, Matthieu Lasnier and Charles-Albert Lehalle, "Market Impacts and the Life Cycle of Investors Orders", Market Microstructure and Liquidity 1(2), 1550009, 2015 (DOI 10.1142/s2382626615500094). Copy used: arXiv 1412.0217, printed 9 December 2014, 30 pages, downloaded 2026-10-15. Page numbers below are the preprint's; the journal version was not checked
-sections: abstract (p. 1); sec. 2.2 (pp. 3-4); sec. 3 (pp. 5-8, page image of p. 8, slice 9); secs. 7-8 (pp. 19-22); page image of p. 21 (checked for migration slices 8 and 9)
+sections: abstract (p. 1); sec. 2.2 (pp. 3-4); sec. 3 (pp. 5-8, page image of p. 8, impact estimation review); secs. 7-8 (pp. 19-22); page image of p. 21 (checked for migration market-impact models / impact estimation reviews)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 8 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration market-impact models review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

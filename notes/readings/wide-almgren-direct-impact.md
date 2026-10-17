@@ -2,12 +2,12 @@
 key: wide-almgren-direct-impact
 pathways: [price-impact-execution]
 version: Robert Almgren, Chee Thum, Emmanuel Hauptmann and Hong Li, "Direct Estimation of Equity Market Impact", Risk 18(7), 58-62, July 2005 (catalogue record). Copy used: the authors' preprint dated 10 May 2005, 26 pages, downloaded 2026-10-15 from a Wayback Machine snapshot (8 August 2017) of www.cims.nyu.edu/~almgren/papers/costestim.pdf, because the live author link returned an error. Page numbers below are the preprint's; the published version was not compared
-sections: secs. 1-4.3 (pp. 3-22), page images of pp. 19 and 21 (checked for migration slice 9)
+sections: secs. 1-4.3 (pp. 3-22), page images of pp. 19 and 21 (checked for migration impact estimation review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 9 from source checks, not from study: the headings that need your own reading are left empty. Distinct from `alpha-almgren` (Almgren and Chriss, the execution framework this paper fits).
+Prepared on 2026-10-15 by migration impact estimation review from source checks, not from study: the headings that need your own reading are left empty. Distinct from `alpha-almgren` (Almgren and Chriss, the execution framework this paper fits).
 
 ## Question and claim
 

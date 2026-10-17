@@ -2,12 +2,12 @@
 key: wide-bsv-fi-survey
 pathways: [otc-fixed-income-trading]
 version: H. Bessembinder, C. Spatt and K. Venkataraman, "A Survey of the Microstructure of Fixed-Income Markets", Journal of Financial and Quantitative Analysis 55(1), 1-45, 2020 (DOI 10.1017/S0022109019000231; online March 2019). Copy used: the published version as hosted in the SEC's Fixed Income Market Structure Advisory Committee materials (sec.gov), retrieved 2026-10-15 through a web-fetch tool after a direct request hit SEC's rate page; text layer, printed page = PDF page
-sections: abstract; pp. 1-5, 7-11, 13-16, 29-33, 37-39 (checked for migration slice 22)
+sections: abstract; pp. 1-5, 7-11, 13-16, 29-33, 37-39 (checked for migration fixed-income market structure review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 22 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration fixed-income market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

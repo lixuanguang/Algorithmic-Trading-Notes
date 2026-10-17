@@ -2,12 +2,12 @@
 key: ex-bryzgalova-pavlova-sikorskaya-2023
 pathways: [options-execution]
 version: S. Bryzgalova, A. Pavlova and T. Sikorskaya, "Retail Trading in Options and the Rise of the Big Three Wholesalers", Journal of Finance 78(6), 3465-3514, 2023 (DOI 10.1111/jofi.13285). Copy used: the published open-access (CC BY) article in its early-view pagination (pp. 1-50), from LBS Research Online eprint 2827, downloaded 2026-10-15 with a generic header; text layer, printed page = PDF page - 1 (PDF p. 1 is the repository cover)
-sections: abstract; pp. 2, 4-5, 7, 11-12, 14-17, with page images of Table I (pp. 15-16) (checked for migration slice 21; pp. 2, 11-12, 14-17 and Table I rechecked in the slice-21 follow-up)
+sections: abstract; pp. 2, 4-5, 7, 11-12, 14-17, with page images of Table I (pp. 15-16) (checked for migration options market structure review; pp. 2, 11-12, 14-17 and Table I rechecked in the options market structure review follow-up)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 21 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration options market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

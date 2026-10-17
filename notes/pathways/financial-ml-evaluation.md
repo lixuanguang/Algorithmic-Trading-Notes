@@ -10,7 +10,7 @@ Pathway outcome, from the guide: assess a modern ML or language-model result usi
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 32 (`notes/migration-slices.md`), which gave this pathway the time-validity consequences of the legacy AFML labelling, sample-weight and fractional-differencing notes, one of the files' three map candidates. The entry rests on López de Prado (`alpha-afml`), which is not a reading of this pathway; none of the pathway's eight readings has been opened, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration financial data and labels review (`notes/source-review-records.md`), which gave this pathway the time-validity consequences of the legacy AFML labelling, sample-weight and fractional-differencing notes, one of the files' three map candidates. The entry rests on López de Prado (`alpha-afml`), which is not a reading of this pathway; none of the pathway's eight readings has been opened, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 
@@ -22,23 +22,23 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 32, 2026-10-16:
+Written in migration financial data and labels / source review / optimal execution / execution control reviews:
 
 - `pit:label-weight-leakage`: what López de Prado's labels, uniqueness and attribution weights know about the future, the conditions under which he says there is no leakage, the full-sample choice of the fractional-differencing order and the same-training-set meta-labels, and a train/test checklist (the checklist is the entry's own; purging and embargo unread).
 
 Partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/`.
 
-Second batch of 2026-10-17:
+method validation (2026-10-17):
 
 - `meth:time-valid-ml-experiment-record`: release times, model and pretraining cutoffs, tuning trials and held-out dates for an ML or language-model result, from Kelly et al.'s point-in-time models. Partly checked 2026-10-17, draft.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `meth:time-valid-ml-experiment-record` resolved as a new entry in `ml-alternative-data/labelling-sample-weights.tex` from Kelly, Malamud, Schwab and Xu's point-in-time language models (NBER WP 35247, May 2026); Levy (SSRN 403) and Jansen's third edition were not read. The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `meth:time-valid-ml-experiment-record` resolved as a new entry in `ml-alternative-data/labelling-sample-weights.tex` from Kelly, Malamud, Schwab and Xu's point-in-time language models (NBER WP 35247, May 2026); Levy (SSRN 403) and Jansen's third edition were not read. The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `meth:time-valid-ml-experiment-record` narrowed (He, Lv, Manela and Wu's abstract merged; Levy's full text refused again (Wiley 403)). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `meth:time-valid-ml-experiment-record` narrowed (He, Lv, Manela and Wu's abstract merged; Levy's full text refused again (Wiley 403)). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): target 5: Kapoor and Narayanan's leakage taxonomy merged into `meth:time-valid-ml-experiment-record`, which lacks duplicate and test-window-selection checks. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): target 5: Kapoor and Narayanan's leakage taxonomy merged into `meth:time-valid-ml-experiment-record`, which lacks duplicate and test-window-selection checks. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -50,7 +50,7 @@ Cross-referenced, not owned here: `def:label-concurrency-uniqueness`, `meth:samp
 
 ## Legacy candidate material
 
-Run `python3 tools/migration_status.py` for the current counts. After slice 32 no legacy file lists this pathway.
+Run `python3 tools/check_compendium.py` for the current counts. After financial data and labels review no legacy file lists this pathway.
 
 ## What changed in my view or practice
 

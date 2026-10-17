@@ -10,7 +10,7 @@ Pathway outcome, from the guide: attribute a cross-asset portfolio's returns to 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 37 (`notes/migration.md`), which routed here the legacy chapter's strategy, record, sizing and practitioner blocks, two of whose files named this overview as a candidate. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Drobny (`s7-drobny`, *Inside the House of Money*, Wiley 2006 printing, checked interview by interview). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the legacy chapter's strategy, record, sizing and practitioner blocks, two of whose files named this overview as a candidate. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Drobny (`s7-drobny`, *Inside the House of Money*, Wiley 2006 printing, checked interview by interview). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,7 +22,7 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 37, 2026-10-16:
+Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:global-macro-strategy`: global macro as Gliner defines it: discretionary, systematic, high-frequency and CTA approaches; directional, relative-value and thematic trades; the four product groups; multi-asset expression of a view; the legacy's unsourced "structural reasons" kept as hypotheses.
 - `ev:global-macro-crisis-performance`: Gliner's index record (Barclays Global Macro Index 2002--2012, DJCS 1995--2013) and conditional correlation with equities, with the limits of hedge-fund index data.
@@ -31,17 +31,17 @@ Written in migration slice 37, 2026-10-16:
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Slice-37 follow-up, 2026-10-16 (source verification, not study): `ev:global-macro-returns-after-2013` narrowed; `ev:practitioner-rules-tested` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:global-macro-returns-after-2013` narrowed; `ev:practitioner-rules-tested` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
-Batch of 2026-10-17 (source verification and bounded tests, not study or human review): Two empirical stubs remain open; executable protocols are now recorded in the backlog, and nothing was computed (a protocol is not evidence). `ev:global-macro-returns-after-2013`: the macro hedge-fund index data are not public (BarclayHedge's index pages redirect to its home page, Eurekahedge requires sign-in, HFR requires registration, checked 2026-10-17). `ev:practitioner-rules-tested`: no trade-level data; a systematic proxy would test the rules on that proxy, not on the practitioners' trades, and was not attempted. The record is in `notes/migration-slices.md`, *Batch of 17 October 2026*.
+source verification (2026-10-17) (source verification and bounded tests, not study or human review): Two empirical stubs remain open; executable protocols are now recorded in the backlog, and nothing was computed (a protocol is not evidence). `ev:global-macro-returns-after-2013`: the macro hedge-fund index data are not public (BarclayHedge's index pages redirect to its home page, Eurekahedge requires sign-in, HFR requires registration, checked 2026-10-17). `ev:practitioner-rules-tested`: no trade-level data; a systematic proxy would test the rules on that proxy, not on the practitioners' trades, and was not attempted. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
 
-Second batch of 2026-10-17 (audit repairs and a 50-item queue; source verification and bounded tests, not study or human review): Queue: `ev:global-macro-returns-after-2013` empirically tested within bounds on the only public series found (Barclay Global Macro Index, January 2022 to July 2026): down-month mean -0.39 percent (t -1.5), crisis protection not supported by the pre-set rule; `ev:practitioner-rules-tested` unchanged (trade-level data missing). The record is in `notes/migration-slices.md`, *Second batch of 17 October 2026*.
+method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `ev:global-macro-returns-after-2013` empirically tested within bounds on the only public series found (Barclay Global Macro Index, January 2022 to July 2026): down-month mean -0.39 percent (t -1.5), crisis protection not supported by the pre-set rule; `ev:practitioner-rules-tested` unchanged (trade-level data missing). The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.
 
-Third batch of 2026-10-17 (six audit repairs and a 60-item queue; source verification and bounded tests, not study or human review): `ev:global-macro-returns-after-2013` tested (the BarclayHedge window January 2014 to July 2026 run as registered: 53 down months, mean $-0.52$ percent, $t=-3.00$; the registration statements corrected). The record is in `notes/migration-slices.md`, *Third batch of 17 October 2026*.
+empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `ev:global-macro-returns-after-2013` tested (the BarclayHedge window January 2014 to July 2026 run as registered: 53 down months, mean $-0.52$ percent, $t=-3.00$; the registration statements corrected). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
-Fourth batch of 2026-10-17 (seven audit repairs, backlog reconciliation and a 70-target batch; source verification and bounded tests, not study or human review): backlog: `ev:global-macro-returns-after-2013` rewritten as complete within its stated scope; the registration blocker removed. Correction to the third-batch paragraph above: "run as registered" should read "run under the protocol recorded in the second batch"; no preregistration occurred, and the window was not registered with anyone. The record is in `notes/migration-slices.md`, *Fourth batch of 17 October 2026*.
+derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): backlog: `ev:global-macro-returns-after-2013` rewritten as complete within its stated scope; the registration blocker removed. Correction to the third-batch paragraph above: "run as registered" should read "run under the protocol recorded in method validation (2026-10-17)"; no preregistration occurred, and the window was not registered with anyone. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 ## Related entries owned elsewhere
 
@@ -54,7 +54,7 @@ Cross-referenced, not owned here: `def:macro-regime-asset-map` (`macro-regimes-s
 
 ## Legacy candidate material
 
-None: the legacy chapters were all migrated by slice 37.
+None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

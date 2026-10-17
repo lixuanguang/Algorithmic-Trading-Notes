@@ -2,12 +2,12 @@
 key: s7-drobny
 pathways: [multi-asset-systematic-macro]
 version: Steven Drobny, Inside the House of Money: Top Hedge Fund Traders on Profiting in the Global Markets, John Wiley & Sons, Hoboken, 2006 (copyright 2006; ISBN-13 978-0-471-79447-9, cloth, from the copyright page). The catalogue entry describes the revised 2013 edition, which was not inspected: page numbers and possibly chapter content may differ there. Copy used: a local PDF outside the repository, with a text layer; printed page = PDF page - 15
-sections: interviews, printed pages: Leitner 35-70; Siva-Jothy 71-102; Andres Drobny 103-132; Porter 133-160; Wadhwani 161-180; Thiel 181-198; Yra Harris 199-216; Rogers 217-240; Anderson 241-268; Bessent 269-288; Dimitrijević 289-308; Gorton and Standing 309-324; the anonymous currency specialist 325-340. Text layer, searched and read at each claim for migration slice 37; Thiel and Gorton-Standing not used
+sections: interviews, printed pages: Leitner 35-70; Siva-Jothy 71-102; Andres Drobny 103-132; Porter 133-160; Wadhwani 161-180; Thiel 181-198; Yra Harris 199-216; Rogers 217-240; Anderson 241-268; Bessent 269-288; Dimitrijević 289-308; Gorton and Standing 309-324; the anonymous currency specialist 325-340. Text layer, searched and read at each claim for migration macro markets and pricing review; Thiel and Gorton-Standing not used
 read:
 status: draft
 ---
 
-Prepared on 2026-10-16 by migration slice 37 from source checks, not from study: the headings that need your own reading are left empty. The legacy practitioner file cited this book by interviewee; every claim was compared with the interview it named, and several were reattributed.
+Prepared on 2026-10-16 by migration macro markets and pricing review from source checks, not from study: the headings that need your own reading are left empty. The legacy practitioner file cited this book by interviewee; every claim was compared with the interview it named, and several were reattributed.
 
 ## Question and claim
 
@@ -39,6 +39,6 @@ Survivorship and selection: successful managers describing their own rules. Attr
 
 ## Open questions
 
-- Slice-37 follow-up, 2026-10-16: pp. 85, 109, 125 and 130-132 reread; the corrections above replace the slice-37 wording.
+- macro markets and pricing review follow-up, 2026-10-16: pp. 85, 109, 125 and 130-132 reread; the corrections above replace the macro markets and pricing review wording.
 
 - Compare the 2013 revised edition's interviews and pagination with the 2006 printing.

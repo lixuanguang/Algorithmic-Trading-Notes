@@ -2,12 +2,12 @@
 key: cfd-butz-oomen-2019
 pathways: [fx-dealer-market-making]
 version: M. Butz and R. Oomen, "Internalisation by electronic FX spot dealers", Quantitative Finance 19(1), 35-56, 2019 (DOI 10.1080/14697688.2018.1504167). Copy used: authors' accepted version on LSE Research Online (eprint 90485, available October 2018; manuscript dated November 2017), downloaded 2026-10-15 with a generic header; text layer, printed page = PDF page - 2. The published version was not checked
-sections: abstract; pp. 1-2, 5-7 (Examples 1-2, eqs. (5)-(9), page images, slice-20 follow-up), 8 (Proposition 1, page image), 11 (calibration, page image) (checked for migration slice 20)
+sections: abstract; pp. 1-2, 5-7 (Examples 1-2, eqs. (5)-(9), page images, FX market structure review follow-up), 8 (Proposition 1, page image), 11 (calibration, page image) (checked for migration FX market structure review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 20 from source checks, not from study: the headings that need your own reading are left empty. The authors were in Deutsche Bank's electronic FX spot division (disclosed on the abstract page).
+Prepared on 2026-10-15 by migration FX market structure review from source checks, not from study: the headings that need your own reading are left empty. The authors were in Deutsche Bank's electronic FX spot division (disclosed on the abstract page).
 
 ## Question and claim
 

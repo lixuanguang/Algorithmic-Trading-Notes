@@ -2,12 +2,12 @@
 key: alpha-almgren
 pathways: [execution-trading-costs, price-impact-execution]
 version: Robert Almgren and Neil Chriss, "Optimal Execution of Portfolio Transactions", Journal of Risk 3(2), 2001 (DOI 10.21314/JOR.2001.041). Copy used: the authors' preprint dated December 2000, 42 pages, downloaded 2026-10-15 from a Wayback Machine snapshot (11 August 2017) of www.cims.nyu.edu/~almgren/papers/optliq.pdf, because the catalogue's author link returned "Access forbidden". Page numbers below are the preprint's; the journal pagination was not checked
-sections: secs. 1.1-1.5 (pp. 7-11), secs. 2-2.3 (pp. 12-15); page images of pp. 9, 11 and 14 (checked for migration slices 8 and 10)
+sections: secs. 1.1-1.5 (pp. 7-11), secs. 2-2.3 (pp. 12-15); page images of pp. 9, 11 and 14 (checked for migration market-impact models / optimal execution reviews)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 8 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration market-impact models review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 
@@ -40,7 +40,7 @@ Prepared on 2026-10-15 by migration slice 8 from source checks, not from study: 
 
 ## Entries
 
-`def:price-impact` (model families; meanings of "temporary impact"); `mod:almgren-chriss-execution` (slice 10).
+`def:price-impact` (model families; meanings of "temporary impact"); `mod:almgren-chriss-execution` (optimal execution review).
 
 ## Open questions
 

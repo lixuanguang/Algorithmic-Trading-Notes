@@ -1,4 +1,4 @@
-"""Numerical checks for mech:perpetual-funding (slice 24, 2026-10-15).
+"""Numerical checks for mech:perpetual-funding (crypto market structure / source review / optimal execution / high-frequency strategies reviews).
 
 Run from the repository root:  python3 notes/artefacts/crypto-mm-microstructure/funding_checks.py
 Standard library only. Rates are in percent per 8 hours, as Deribit quotes them; the closed form

@@ -2,12 +2,12 @@
 key: al-isla
 pathways: [money-markets-repo-lending]
 version: International Securities Lending Association, Securities Lending Best Practice Handbook, downloadable compilation (filename dated 31-03-2025, 29 pages), downloaded 2026-10-15 with a generic header; the pages are images without a usable text layer, read by macOS Vision OCR and page images. Sections are marked "Under Review" with their own update dates
-sections: pp. 2-3 (standards, legal precedence, conduct); pp. 7-8 (cash rebate); pp. 14-16 (collateral fails); pp. 23-26 (partial close, loan recall to buy-in/close out, sale notifications, claims) (checked for migration slice 23)
+sections: pp. 2-3 (standards, legal precedence, conduct); pp. 7-8 (cash rebate); pp. 14-16 (collateral fails); pp. 23-26 (partial close, loan recall to buy-in/close out, sale notifications, claims) (checked for migration securities lending and synthetic shorts review)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 23 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration securities lending and synthetic shorts review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

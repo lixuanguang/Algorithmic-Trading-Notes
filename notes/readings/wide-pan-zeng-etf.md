@@ -2,12 +2,12 @@
 key: wide-pan-zeng-etf
 pathways: [etf-index-closing-execution]
 version: Kevin Pan and Yao Zeng, "ETF Arbitrage Under Liquidity Mismatch"; the catalogue names SSRN 3723406 (2017), which was not retrievable (SSRN returned a bot page). Copy used: ESRB Working Paper Series No 59, December 2017, 74 pages, downloaded 2026-10-15 from esrb.europa.eu with a generic header; text layer, printed page = PDF page - 2
-sections: abstract (PDF p. 2); introduction, pp. 1-3 (checked for migration slice 18) and p. 4 (slice-18 follow-up)
+sections: abstract (PDF p. 2); introduction, pp. 1-3 (checked for migration equity market structure review) and p. 4 (equity market structure review follow-up)
 read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by migration slice 18 from source checks, not from study: the headings that need your own reading are left empty.
+Prepared on 2026-10-15 by migration equity market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

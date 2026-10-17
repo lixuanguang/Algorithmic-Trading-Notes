@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price TIPS and inflation swaps with actual inde
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 37 (`notes/migration.md`), which routed here the TIPS and breakeven blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and TreasuryDirect's TIPS page as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the TIPS and breakeven blocks of the legacy chapter; not a candidate of any legacy file (routing exception). The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and TreasuryDirect's TIPS page as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,17 +22,17 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 37, 2026-10-16:
+Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `def:tips-breakevens`: TIPS indexation, lag and floor, the current auction schedule against Gliner's 2014 calendar, his "trades at 105" conflation corrected, and what a breakeven contains.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Slice-37 follow-up, 2026-10-16 (source verification, not study): `rule:tips-auction-schedule-history` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `rule:tips-auction-schedule-history` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
-Second slice-37 follow-up, 2026-10-16 (source verification, not study): `rule:tips-auction-schedule-history` resolved (Treasury refunding statement of 31 October 2018: new October 5-year TIPS from 2019 replacing the October 30-year reopening, the April 5-year's first reopening moved from August to June, the 30-year reopened once, in August; May 2004 statement: 5-year TIPS from October 2004 on an April/October cycle; when the October new issue lapsed before 2014 was not traced). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+Second macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `rule:tips-auction-schedule-history` resolved (Treasury refunding statement of 31 October 2018: new October 5-year TIPS from 2019 replacing the October 30-year reopening, the April 5-year's first reopening moved from August to June, the 30-year reopened once, in August; May 2004 statement: 5-year TIPS from October 2004 on an April/October cycle; when the October new issue lapsed before 2014 was not traced). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 
 ## Related entries owned elsewhere
 
@@ -43,7 +43,7 @@ Cross-referenced, not owned here: `def:macroeconomic-indicators` (`macro-nowcast
 
 ## Legacy candidate material
 
-None: the legacy chapters were all migrated by slice 37.
+None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

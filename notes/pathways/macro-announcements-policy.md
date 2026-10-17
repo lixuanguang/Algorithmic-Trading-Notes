@@ -10,7 +10,7 @@ Pathway outcome, from the guide: measure how stocks, bonds and currencies respon
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration slice 37 (`notes/migration.md`), which routed here the data-release, query and calendar blocks of the legacy chapter; `02_transmission_maps.tex` named this pathway as a candidate, while the blocks themselves were in `01_regimes.tex`. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), the BLS, Federal Reserve and ECB pages as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by migration macro markets and pricing review (`notes/source-review-index.md`), which routed here the data-release, query and calendar blocks of the legacy chapter; `02_transmission_maps.tex` named this pathway as a candidate, while the blocks themselves were in `01_regimes.tex`. The entries come from migration and source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page), the BLS, Federal Reserve and ECB pages as retrieved on 16 October 2026. That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
 ## Outcome in my own words
 
@@ -22,22 +22,22 @@ Not attempted.
 
 ## Entries created or changed
 
-Written in migration slice 37, 2026-10-16:
+Written in migration macro markets and pricing / source review / optimal execution / execution control reviews:
 
 - `data:us-macro-release-calendar`: the usual U.S. release cadence, FOMC and ECB meeting frequency (the legacy's "ECB 6 per year" corrected), and agencies' calendars as the record.
 - `meth:macro-event-queries`: Gliner's conditional back-tests around events (the BoE's 2012 QE example), surprises and revisions, and why six events cannot support a hit rate.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding. The legacy wording is kept in `notes/artefacts/multi-asset-systematic-macro/`.
 
-## Source verification after slice 37
+## Source verification after macro markets and pricing review
 
-Slice-37 follow-up, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` narrowed. Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
-Second slice-37 follow-up, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` narrowed (BLS CPI schedule: 10 November and 10 December 2026, 13 January 2027 at 8:30 a.m.). Entries corrected in the same follow-up are listed in `notes/migration-slices.md`, *Slice 37 second follow-up*.
+Second macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` narrowed (BLS CPI schedule: 10 November and 10 December 2026, 13 January 2027 at 8:30 a.m.). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 
-Source follow-up of slices 33-36 and the slice-37 audit, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` blocked (the ISM calendar and report pages redirect to a member login, rechecked 2026-10-16). The record is in `notes/migration-slices.md`, *Source follow-up of slices 33-36 and slice-37 audit corrections*.
+Source follow-up of order books and order flow / dealer models and information reviews and the macro markets and pricing review audit, 2026-10-16 (source verification, not study): `data:us-release-schedules-2026` blocked (the ISM calendar and report pages redirect to a member login, rechecked 2026-10-16). The record is in `notes/source-review-records.md`, *Source follow-up of order books and order flow / dealer models and information reviews and macro markets and pricing review audit corrections*.
 
-Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:us-release-schedules-2026` resolved (ISM 2026 calendar read from a browser export: first and third business days at 10:00 a.m.; the rule reproduces every date except January, an ISM holiday, and April's Services date, which skips Good Friday; computed in source-followup-checks-2.py, section 5). The record is in `notes/migration-slices.md`, *Second source follow-up of the slice 33-37 queue*.
+Second source follow-up, 2026-10-16 (source verification, not study or human review): `data:us-release-schedules-2026` resolved (ISM 2026 calendar read from a browser export: first and third business days at 10:00 a.m.; the rule reproduces every date except January, an ISM holiday, and April's Services date, which skips Good Friday; computed in contract-specifications-statistics-checks.py, section 5). The record is in `notes/source-review-records.md`, *Second source follow-up of the order books and order flow / macro markets and pricing reviews queue*.
 
 ## Related entries owned elsewhere
 
@@ -49,7 +49,7 @@ None open after the second source follow-up of 2026-10-16.
 
 ## Legacy candidate material
 
-None: the legacy chapters were all migrated by slice 37.
+None: the legacy chapters were all migrated by macro markets and pricing review.
 
 ## What changed in my view or practice
 

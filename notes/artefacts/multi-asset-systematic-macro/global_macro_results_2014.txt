@@ -12,4 +12,4 @@ Recent-period comparison from the workbook: window 2022-01 to 2026-07, T = 55 mo
   up    months (n 31): mean +1.5061% (t +6.1426), correlation +0.21 [-0.16, +0.52], beta +0.106 [-0.083, +0.294]
   ten worst benchmark months: benchmark mean -6.49%, index mean -0.79% (2022-01, 2022-04, 2022-06, 2022-08, 2022-09, 2022-12, 2023-09, 2024-04, 2025-03, 2026-03)
   verdict (pre-set rule): crisis protection not supported in this window
-revision check against the second batch's page values (55 months, 4 decimals): 0 months differ
+revision check against method validation (2026-10-17)'s page values (55 months, 4 decimals): 0 months differ

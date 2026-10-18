@@ -4091,3 +4091,92 @@ A fixes-only pass on `907e84b`. This is not study and not human review; plan Sec
 - CI moved to merged pull requests into `main`, checking out `merge_commit_sha`. This was validated locally by `check-yaml` and an event simulation; a live merge event is unverified.
 - The earlier "CI pending" statement is reconciled: run 39119458178 passed on `907e84b` only.
 - Coverage unchanged: 41 of 424 objectives.
+
+## Performance and planning batch, 18 October 2026
+
+Thirty objectives in nine topics: market index construction (2), the investment management process (3), investment policy planning (4), behavioural finance (2), the risk management framework (2), active management (3), performance evaluation (7), manager selection (3) and performance presentation standards (4). Branch `codex/performance-management-20261018`, stacked on PR #22 at `e82bb90`. Source checks and numerical verification; not study and not human review.
+
+### Source discovery (plan sec. 3.5)
+
+Searches on 2026-10-18 used subject terms (index divisor and corporate actions; fixed-income index rebalancing and return universes; transfer coefficient and fundamental law; behavioural finance survey; GIPS portability and verification; Rule 205-3 qualified client 2026; ESG integration definitions; investment company fact book 2026). The owner's local library was searched first and supplied the books. Sources read, with sections and identities in their reading notes:
+
+- S&P DJI, *Index Mathematics Methodology* (September 2026), pp. 4-16, 21-22 and 70, and *Equity Indices Policies & Practices* (August 2026), pp. 5-8, 19 and 24. spglobal.com returned HTTP 403 to automated requests, so both were read from Internet Archive captures of the official URLs (1 October and 29 September 2026).
+- Bloomberg, *Fixed Income Index Methodology* (8 January 2026), pp. 9-10, 42-43, 47-48 and 57-61.
+- Bacon, *Practical Portfolio Performance Measurement and Attribution* (3rd ed., 2023), chaps. 3-6 and 8 at the pages listed in `notes/readings/wide-bacon-attribution.md`.
+- Maginn, Tuttle, McLeavey and Pinto (eds.), *Managing Investment Portfolios* (3rd ed., 2007), chaps. 1-3, 5, 7, 9 and 12, used as authored chapters (chap. 9 by Chance, Grant and Marsland; chap. 12 by Bailey, Richards and Tierney), not as an outline.
+- Grinold and Kahn, *Active Portfolio Management* (2nd ed.), chaps. 3-6 at the pages listed (equations are images, so formulas were confirmed from text, tables and worked numbers), and *Advances in Active Portfolio Management* (2020), Insight 5, pp. 23-29.
+- Ang, *Asset Management* (2014), chaps. 1, 3, 15, 16 and 17 at the pages listed.
+- Barberis and Thaler, NBER w9222 (September 2002), secs. 1-3, 5-7, read through a local OCR because the body pages lack a text layer; locators are working-paper pages.
+- Statman, *Behavioral Finance: The Second Generation* (2019), chaps. 1, 3 and 4 (section openings); Kahneman, *Thinking, Fast and Slow*, chaps. 7 and 24; Damodaran, *Strategic Risk Taking* (2008), pp. 303-304 and 331-339.
+- Sharpe, "The Sharpe Ratio" (1994) and "Asset Allocation: Management Style and Performance Measurement" (1992), author-hosted reprints.
+- GIPS for Firms 2020 (Preface, Introduction, secs. 1-3 in full, 4.A and 4.C.1-4.C.40, Glossary p. 75); GIPS Handbook for Firms (November 2020), Provisions 1.A.32, 3.A.2, 3.A.7-3.A.8, 3.A.12 and 4.A.1(i)-(j); GIPS for Verifiers 2020, pp. 1-7 and 11-12.
+- ICI, *2026 Investment Company Fact Book* (chap. 2 and Quick Facts Guide, year-end 2025); GSIA, *Global Sustainable Investment Review 2022*, p. 7.
+- US law, current at 18 October 2026: 15 U.S.C. 80b-5 and 17 CFR 275.205-3 (Legal Information Institute; eCFR blocked automated access); the SEC order of 1 May 2026 (FR 2026-08480, effective 29 June 2026) and the March notice; the SEC proposal of 6 October 2026 (FR 2026-20474, comments due 7 December 2026, not law).
+
+Access limits and substitutions:
+- Clarke, de Silva and Thorley (2002) is paywalled; the transfer coefficient is cited through Grinold and Kahn (2020), who credit it.
+- Brinson, Hood and Beebower (1986), Brinson and Fachler (1985), Treynor (1965), Jensen (1968), Modigliani and Modigliani (1997), Sortino and van der Meer (1991), Treynor and Black (1973), Fong, Pearson and Vasicek (1983) and Grinold (1989) were not read directly; their methods are cited through Bacon, Bailey et al. and Grinold and Kahn.
+- The PRI's ESG-integration page is script-rendered and could not be read live or from the archive; the harmonised CFA Institute/GSIA/PRI definitions reproduced by GSIA were used.
+- investor.gov returned HTTP 403; fund structures rest on Ang and ICI.
+- No curriculum text was used as a substantive source; the outlines defined scope only.
+
+### Entries
+
+Thirty new entries in six topic files and one extension:
+- `international-equity-markets/index-construction.tex`: `meth:index-value-return-calculation`, `def:equity-fixed-income-index-types`.
+- `portfolio-construction-risk/investment-process-planning.tex`: `def:portfolio-management-process`, `def:investor-types-needs`, `def:asset-management-industry`, `meth:investment-policy-statement`, `meth:asset-class-portfolio-construction`, `ex:investment-planning-case`.
+- `behavioural-finance.tex`: `def:behavioural-biases`, `mech:biases-market-anomalies`.
+- `risk-governance.tex`: `def:risk-management-framework`, `meth:risk-identification-modification`.
+- `active-management.tex`: `meth:active-return-information-ratio`, `res:fundamental-law-active-management`, `meth:active-risk-decomposition`.
+- `performance-attribution-appraisal.tex`: `def:performance-evaluation-components`, `meth:risk-adjusted-performance-measures`, `meth:return-attribution`, `meth:macro-attribution-owner-manager`, `meth:benchmark-selection-quality`, `meth:downside-appraisal-measures`, `meth:manager-skill-evaluation`.
+- `manager-selection.tex`: `meth:manager-due-diligence`, `meth:manager-philosophy-process-behaviour`, `meth:vehicle-contract-fee-analysis`, `ex:manager-selection-case`.
+- `performance-standards.tex`: `def:gips-scope-verification`, `meth:gips-return-calculations`, `meth:gips-composite-membership`, `ex:gips-composite-report`.
+- `meth:gips-composite-presentation` (in `performance-evaluation.tex`) gained presentation and updating duties and portability.
+
+The existing entries named in the brief were reviewed first. `def:equity-indices-derivatives`, `def:return-measures`, `meth:relative-performance-evaluation`, `meth:forecast-scaling-ic` and the factor-risk, CAPM and downside entries are linked, not repeated. `meth:skill-luck-significance-tests` is mapped, with the new skill entry, to `objective:evaluate-manager-skill`. The GIPS presentation entry is mapped, with the new report example, to `objective:prepare-compliant-presentations`.
+
+### Numerical evidence
+
+Six scripts, found by `make examples`, 164 checks, no random draws:
+- `market-index-construction/index-construction-checks.py` (30): divisors for a split and a share issue in both additive and multiplicative forms, TR and NTR, equal-weight drift and turnover, a two-bond month.
+- `investment-planning/investment-planning-checks.py` (25): Maginn's required returns reproduced; the case's 2.70 percent requirement solved and rolled forward to zero; three candidate allocations; Euler risk contributions; the concentrated stock; a futures overlay modelled as moving equity to cash; Edwards's posterior.
+- `active-management-analysis/active-management-checks.py` (30): ex post IR and Sharpe; Grinold-Kahn Table 5.3; optimal active risk by numerical maximisation; fundamental-law examples and the binary example; IR_P = TC x IR_Q to machine precision; two decompositions of active variance.
+- `performance-evaluation/performance-evaluation-checks.py` (35): risk-adjusted measures; Bacon Table 5.6; downside, capture and drawdown with edge cases; Brinson and Carino; fixed-income attribution summing exactly; macro attribution; benchmark statistics; Exhibits 12-19 and 12-20.
+- `manager-selection/manager-selection-checks.py` (19): fee schedules, expected fees by numerical integration, Ang's NAV path, filter error rates, SLSQP style analysis, IR shrinkage.
+- `performance-presentation-standards/gips-checks.py` (25): true TWR against Modified Dietz, three composite methods, dispersion with n and n - 1, the 36-month factor, a membership calendar, model-fee net returns, a synthetic report.
+
+Findings from the checks:
+- Bailey, Richards and Tierney's Exhibit 12-19 equals Phi(IR sqrt(T)) in 33 of 36 cells when its "0.67" column is read as 2/3; it prints 84.03 (IR 1.00, one year), 63.81 and 81.70 (IR 0.20, three and 20 years) where the model gives 84.13, 63.55 and 81.45. Exhibit 12-20 is within 0.05 points of a binomial with p = 0.2442.
+- Several expected values were typed before the first runs and failed (index and bond returns, case drift and concentrated-stock volatility, the toy IR series, transfer-coefficient and active-risk figures, fee expectations, composite returns, a membership off-by-one in the script's own rule). They were recomputed, checked by hand, and replaced before the entries were finalised. One check was wrong in substance: a futures overlay was first modelled without the cash leg, and now moves 10 points from equity to cash, reducing the mean by 0.50 rather than 0.55.
+
+### Coverage
+
+The 72 outline items mapped to the 30 objectives were each read on their outline pages (Level I PDF pp. 1, 15, 19 and 28; Level II p. 26; Level III core pp. 9-10) against the finished entries. Six bullets exposed gaps that were closed before promotion: risk interaction and method choice (m092:b06-b07) and tolerance's effect (b04); risk-attribution choice (m013:b07); misspecification's effects (b12); drawdown duration (b14); contract types and the three fee forms (m014:b08-b09); a facts-based discretion determination (m015:b06); and the verification process (m015:b11). All 72 items are promoted with item-specific rationales.
+
+All 30 objectives are `covered` (editorial coverage, not mastery). Totals: 71 of 424 objectives; 78 Level I, 13 Level II and 37 Level III core items covered; 902 of 1,030 items unreviewed.
+
+### Limits
+
+- All examples are synthetic or invented except the dated ICI figures and the legal thresholds. They establish mechanics, not performance or skill; the planning case, the foundation case and the GIPS report are fictional and claim nothing about any person or firm.
+- Index rules are S&P DJI's and Bloomberg's at their stated dates; other providers differ. US legal points are dated to 18 October 2026; the October 2026 proposal could change them.
+- The Barberis and Thaler locators are working-paper pages from OCR; the anomaly figures are quoted from the survey, not recomputed.
+- Human review is outstanding.
+
+## Correction pass on PR #23, 18 October 2026
+
+A fixes-only pass on `0b094ea`, after an external audit. This is not study and not human review; plan Section 18.1 has the scope. No objective was added and no coverage status or outline mapping changed.
+
+Sources re-read for this pass:
+- Sharpe (1992), "Style Analysis", from the hashed local copy (SHA-256 3f82fa85...6286, identical to the batch's) and the live author page: weights minimise the variance of the difference, and the objective "is not to minimize either the average value of this difference or the sum of the squared differences".
+- Bacon (3rd ed., 2023), pp. 203-204, from the owner's local PDF: eqs. (5.80)-(5.81) divide by all n; the p. 204 note says a normal distribution with standard deviation 1 has a semi-standard deviation "about 0.6", with no target stated.
+- MIP chap. 12, p. 769, from the owner's local PDF: alpha and Treynor "will always give the same assessment", argued from a positive-alpha account plotting above the ex post SML.
+
+Corrections:
+- `meth:manager-due-diligence` (style analysis). The script minimised `((fund - X w)^2).var()`, the variance of the squared differences, not Sharpe's objective. Corrected to `(fund - X w).var()`. Weights 1.3745, 56.6014, 0, 27.1260 and 14.8981 percent (previously 1.1787, 55.4429, 0, 28.4609, 14.9175); residual variance 0.05586964 against 0.05604418 for the previous weights; R^2 0.98568 (unchanged at three decimals). New checks: an independently written centred quadratic form gives the same weights and minimum; the KKT conditions hold; adding 2 points to every fund return leaves the weights unchanged; the mean-square objective moves under the same shift and has higher tracking variance. Recovering the construction weights is kept only as a consistency check.
+- `ex:investment-planning-case`, `meth:asset-class-portfolio-construction`. Tax basis stated: capital market assumptions are real and pre-tax; a flat 15 percent tax falls on nominal returns as earned, with full loss offset; the after-tax real return is exactly (1 - t) r - t pi/(1 + pi). The 20 percent gains tax falls only on the embedded 300,000 gain, 20,000 nominal at the end of years 1-3, paid from the pool; later stock returns are in the 15 percent regime, so no return is taxed twice. Requirement 2.699 percent without and 2.808 percent with the gains tax (roll-forward to zero). After-tax geometric returns 1.70, 2.40 and 2.87 percent; pre-tax 5th percentiles -7.81, -11.73 and -15.61 (after-tax -7.01, -10.34, -13.64). The previous verdict, balanced "meets both", compared pre-tax forecasts with an after-tax requirement; no candidate meets both. The best long-only mix within the pre-tax limit is about 61/39/0/0 at 2.61 percent; with an after-tax limit, 71/29/0/0 would reach 2.83, 0.03 above, and this is disclosed. Funding gap 283,249 at 62; spending of about 132,000, savings of about 60,650 or retirement at 64 would close it. The IPS return objective is now 2.40 percent with the client's resolution recorded.
+- `ex:investment-planning-case`, `meth:risk-identification-modification` (transition hedge). The script applied the 10 percent hedge to the four-asset diversified mix (9.34 to 7.79 percent) while the prose described hedging with the stock still held. Recomputed on the five-asset weights and covariance: 12.1912 to 10.8922 percent, mean down 0.50 points. With the stock's expected real return assumed equal to equity's 5.5 percent, the 5th percentile goes from -16.43 to -14.80, still beyond -13; about 22 percent notional would be needed, and the minimum-variance hedge leaves 6.75 percent. Selling the first third with the hedge gives -12.52, and after the second sale -12.73 unhedged. A beta-consistent 7.06 percent changes no verdict. Specific risk (28 of the stock's 35 points) is unhedgeable by an index future. The 7.79 figure is no longer used.
+- `ex:manager-selection-case`. Removed the claim that the prior cannot change the direction of the comparison: posterior IRs are X 0.27746 and Y 0.23386 at a prior sd of 0.30, and X 0.42923 and Y 0.47143 at 0.50, crossing at 0.419. The decision to hire X now rests explicitly on process, attribution and operational evidence.
+- `meth:downside-appraisal-measures`. Removed the unconditional 0.6-sigma claim. For a normal distribution, eq. (5.80) gives sigma/sqrt(2) at the mean, 0.2745 sigma one sd below and 1.3873 sigma one sd above (closed form and numerical integration). Bacon's 0.6 is attributed and matched to sqrt(1 - 2/pi), the conditional sd below the mean; this agrees with `def:downside-relative-dispersion`. The Sortino example is unchanged (its arithmetic is unaffected).
+- `meth:risk-adjusted-performance-measures`. alpha = beta (T_P - T_M), so agreement requires beta > 0; Treynor is undefined at beta 0 and reverses for negative beta (rf 3, market 8, return 0, beta -1: alpha +2, Treynor 3 against 5). Positive, zero and negative beta checks added; a pitfall added. Positive alpha stays separate from skill.
+
+Checks: `investment-planning-checks.py` 41 (was 25), `manager-selection-checks.py` 26 (was 19), `performance-evaluation-checks.py` 41 (was 35); the batch total is 193. Coverage reassessed for the nine objectives mapped to these entries; each still meets its operations and depth with the corrected teaching, so counts are unchanged: 71 of 424 objectives; 78 Level I, 13 Level II and 37 shared-core items covered; 902 of 1,030 unreviewed.

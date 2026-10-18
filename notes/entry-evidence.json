@@ -713,7 +713,7 @@
   },
   "meth:gips-composite-presentation": {
     "source": "compendium/portfolio-construction-risk/performance-evaluation.tex",
-    "review": "Verification: partly checked 2026-10-17 (against the text layer of \\texttt{wide-gips-2020}, GIPS Standards for Firms, 2020 edition, official PDF from gipsstandards.org retrieved 2026-10-17, provisions 3.A.1--3.A.11, 4.A.1--4.A.3, 4.C.1--4.C.5 and 5.A.1, printed pp.~18--19, 21--22, 25--27 and~33; empirical extensions (2026-10-17), same file (SHA-256 \\texttt{9c45d87d}): 4.A.1(e), 4.C.31, 5.C.30, 6.A.1(e), 6.C.26, 7.C.26, 8.D.4, 8.F.4 and 8.H.1 read for the no-appropriate-benchmark exception, which the first version omitted). Stability: draft. Currency: GIPS 2020 edition, effective 1 January 2020."
+    "review": "Verification: partly checked 2026-10-17 (against the text layer of \\texttt{wide-gips-2020}, GIPS Standards for Firms, 2020 edition, official PDF from gipsstandards.org retrieved 2026-10-17, provisions 3.A.1--3.A.11, 4.A.1--4.A.3, 4.C.1--4.C.5 and 5.A.1, printed pp.~18--19, 21--22, 25--27 and~33; empirical extensions (2026-10-17), same file (SHA-256 \\texttt{9c45d87d}): 4.A.1(e), 4.C.31, 5.C.30, 6.A.1(e), 6.C.26, 7.C.26, 8.D.4, 8.F.4 and 8.H.1 read for the no-appropriate-benchmark exception, which the first version omitted). Stability: draft. Currency: GIPS 2020 edition, effective 1 January 2020. Extended 2026-10-18 (performance and planning batch): presentation and updating duties (1.A.11-1.A.12, 1.A.16, 1.A.27, 4.A.5) and portability (1.A.32-1.A.34, 4.C.37) from GIPS for Firms 2020, pp. 2-5, 22 and 30, and the Handbook for Firms (Nov. 2020), Provision 1.A.32, pp. 50-52. Partly checked 2026-10-18; draft."
   },
   "meth:rule-based-position-sizing": {
     "source": "compendium/portfolio-construction-risk/portfolio-construction-models.tex",
@@ -1146,5 +1146,125 @@
   "mod:return-generating-models": {
     "source": "compendium/portfolio-construction-risk/asset-pricing-models.tex",
     "review": "Verification: Huberman and Wang 2005, secs. 2 and 6; Ross 1976, eqs. (2) and (15), pp. 342 and 347; Sharpe 1964, pp. 438-439 and n. 23 (diagonal model); Fama and French 2004, pp. 31-32 and 39; Markowitz 1952, p. 89. The market-model definition, the single-index covariance, the raw intercept restriction (1 - beta) R_f and the parameter counts are Interpretation. Checked by notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py: raw-return regression a = 0.0158, b = 1.2574, R^2 0.814; 125,250 against 1,001 parameters for 500 assets. Partly checked 2026-10-18 (portfolio choice and asset pricing batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:index-value-return-calculation": {
+    "source": "compendium/international-equity-markets/index-construction.tex",
+    "review": "Verification: S&P DJI Index Mathematics Methodology (September 2026, archive capture of 1 Oct 2026), pp. 4-16, 21-22 and 70; Equity Indices Policies & Practices (August 2026), pp. 8, 19 and 24. Checked by notes/artefacts/market-index-construction/index-construction-checks.py parts 1-4: price-weighted divisor 1.5 and post-split 1.10127; cap-weighted divisor 12, additive and multiplicative divisor forms equal (12.5607) after a 570 share issue; TR 3.7745 and NTR 3.6194 against PR 2.7408 percent; equal-weight drift and one-way turnover 2.69 percent; AWF identity. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:equity-fixed-income-index-types": {
+    "source": "compendium/international-equity-markets/index-construction.tex",
+    "review": "Verification: Bacon (3rd ed., 2023) chap. 4, pp. 105-113; S&P DJI Index Mathematics p. 4; Bloomberg Fixed Income Index Methodology (8 Jan 2026), pp. 9, 42-43, 47 and 57-61. Checked by index-construction-checks.py part 5: bond price and coupon returns on beginning dirty value, beginning market-value weights 495/309, index return 0.7587 percent. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:portfolio-management-process": {
+    "source": "compendium/portfolio-construction-risk/investment-process-planning.tex",
+    "review": "Verification: Maginn, Tuttle, McLeavey and Pinto, Managing Investment Portfolios (3rd ed., 2007), chap. 1, pp. 2-10. Qualitative definition; no numbers. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:investor-types-needs": {
+    "source": "compendium/portfolio-construction-risk/investment-process-planning.tex",
+    "review": "Verification: MIP chap. 1 p. 3 and Exhibit 1-3 p. 15; chap. 3 pp. 64-66 and 79-80; Ang (2014) chap. 1, pp. 4-5, 13, 24 and 28-31. Jurisdictional rules dated to the sources. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:asset-management-industry": {
+    "source": "compendium/portfolio-construction-risk/investment-process-planning.tex",
+    "review": "Verification: MIP chap. 1 pp. 2-4; Ang (2014) chap. 15 p. 502, chap. 16 pp. 523-527, chap. 17 pp. 581-582; ICI 2026 Fact Book (year-end 2025 figures, Quick Facts and chap. 2 pp. 13 and 18). Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:investment-policy-statement": {
+    "source": "compendium/portfolio-construction-risk/investment-process-planning.tex",
+    "review": "Verification: MIP chap. 1 pp. 2, 5-7 and 11-17. Checked by notes/artefacts/investment-planning/investment-planning-checks.py part 1: Maginn's required returns (2.88, 4.55, 7.0 and 10 percent) reproduced, and the required-return equation solved and rolled forward. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:asset-class-portfolio-construction": {
+    "source": "compendium/portfolio-construction-risk/investment-process-planning.tex",
+    "review": "Verification: MIP chap. 5 pp. 231-232 and 248-249, chap. 1 p. 13; GSIA Global Sustainable Investment Review 2022, Tables 1-2 p. 7; Ang (2014) chap. 3 pp. 110-112. Qualitative; the case numbers, including the tax-basis requirement and the conflict between required return and risk objective, are in ex:investment-planning-case. Partly checked 2026-10-18 (performance and planning batch; corrected 2026-10-18 in the PR #23 fixes pass). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "ex:investment-planning-case": {
+    "source": "compendium/portfolio-construction-risk/investment-process-planning.tex",
+    "review": "Verification: method from MIP chap. 1 pp. 11-17 and chap. 5 pp. 231-232. Checked by investment-planning-checks.py parts 1-3: tax basis stated (15 percent on nominal returns with full loss offset; 20 percent only on the embedded 300,000 gain, 20,000 at the end of years 1-3); required real after-tax return 2.699 percent without and 2.808 percent with the gains tax (FV 2,995,705 = PV of spending; roll-forward to zero); nominal 5.38, pre-tax nominal 6.33 and pre-tax real 3.73 percent; after-tax real map (1 - t) r - t pi/(1 + pi) checked exactly; after-tax geometric 1.70/2.40/2.87 against 2.81 with pre-tax 5th percentiles -7.81/-11.73/-15.61 (after-tax -7.01/-10.34/-13.64): no candidate meets both; best long-only mix within the limit about 61/39/0/0 at 2.61; funding gap 283,249 at 62, sustainable spending about 132,000, savings about 60,650, retirement at 64; equity 91.7 percent of variance; drift to 59.2 percent; transition with the stock retained (stock mean assumed 5.5 percent; beta-consistent 7.06 also checked): sd 12.19 to 10.89 percent with a 10 percent hedge, 5th percentile -16.43 to -14.80 (breach), about 22 percent notional needed, -12.52 after the first sale with the hedge and -12.73 after the second unhedged; specific sd 28 percent. Partly checked 2026-10-18 (performance and planning batch; corrected 2026-10-18 in the PR #23 fixes pass). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:behavioural-biases": {
+    "source": "compendium/portfolio-construction-risk/behavioural-finance.tex",
+    "review": "Verification: Barberis and Thaler, NBER w9222 (OCR of the working paper), secs. 3.1-3.2, pp. 12-21; Statman (2019) pp. 3-7, 25-65 (section openings), 55 and 58; MIP chap. 2 pp. 28-29; Kahneman (2011) chaps. 7 and 24. Edwards's posterior 0.967 recomputed in investment-planning-checks.py part 4. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "mech:biases-market-anomalies": {
+    "source": "compendium/portfolio-construction-risk/behavioural-finance.tex",
+    "review": "Verification: Barberis and Thaler, NBER w9222, abstract, secs. 2.1-2.2 (pp. 3-6), sec. 5 (pp. 33-34, 38-39), sec. 6.1 (p. 44), sec. 7 (pp. 47-50). Figures quoted from the survey, not recomputed. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:risk-management-framework": {
+    "source": "compendium/portfolio-construction-risk/risk-governance.tex",
+    "review": "Verification: MIP chap. 9 (Chance, Grant and Marsland) pp. 579-584, 625 and 634-635, chap. 1 p. 13; Damodaran (2008) pp. 303-304. Case figures (loss limit, Euler contributions) from investment-planning-checks.py part 2. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:risk-identification-modification": {
+    "source": "compendium/portfolio-construction-risk/risk-governance.tex",
+    "review": "Verification: MIP chap. 9 pp. 585-586, 596 and 623 (including LTCM); Damodaran (2008) chap. 10, pp. 331-339. Transition numbers checked in investment-planning-checks.py part 3: with the concentrated stock retained (five-asset weights and covariance), a 10 percent-notional short index future with its cash leg cuts sd from 12.19 to 10.89 percent and the mean by 0.50 points, but the 5th percentile -14.80 still breaches -13; about 22 percent notional is needed; selling the first third plus the hedge gives -12.52; stock beta 1.3125 and specific sd 28 percent. Partly checked 2026-10-18 (performance and planning batch; corrected 2026-10-18 in the PR #23 fixes pass). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:active-return-information-ratio": {
+    "source": "compendium/portfolio-construction-risk/active-management.tex",
+    "review": "Verification: Grinold and Kahn (1999) chap. 3 p. 49, chap. 5 pp. 110-123 and Technical Appendix p. 137; MIP chap. 12 p. 743; Bacon pp. 167-169; Sharpe (1994) sections on ex ante and ex post ratios and time dependence. Checked by notes/artefacts/active-management-analysis/active-management-checks.py parts 1-2: TE 2.257, IR 0.797, Sharpe 0.779 and 0.530; Table 5.3 reproduced; optimal active risk 18.75 and SR_P = sqrt(SR_B^2 + IR^2) = 0.640 found numerically. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "res:fundamental-law-active-management": {
+    "source": "compendium/portfolio-construction-risk/active-management.tex",
+    "review": "Verification: Grinold and Kahn (1999) chap. 6, pp. 147-163; Grinold and Kahn (2020) pp. 23 and 27-29 (transfer coefficient, crediting Clarke, de Silva and Thorley 2002, not read directly). Checked by active-management-checks.py part 3: IC 0.25 and 0.025 for IR 0.5; 0.783, 0.12 and 0.173; additivity 0.82 and 0.95; binary example (active sd 1.2227, annual IR 1.1567 against 1.1547); combined IC 0.0942; IR_P = TC x IR_Q exactly (TC 0.835) on a constrained five-stock problem. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:active-risk-decomposition": {
+    "source": "compendium/portfolio-construction-risk/active-management.tex",
+    "review": "Verification: Grinold and Kahn (1999) chap. 3 pp. 50, 67 and 76-77, chap. 4 p. 90; Bacon p. 167. Checked by active-management-checks.py part 4: x'Fx + sum h^2 s^2 = h'Vh (TE 3.959, factor share 13.5 percent); contributions sum to TE; active beta 0.0448 and residual variance 14.748. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:performance-evaluation-components": {
+    "source": "compendium/portfolio-construction-risk/performance-attribution-appraisal.tex",
+    "review": "Verification: MIP chap. 12 (Bailey, Richards and Tierney) pp. 718-720; Bacon chap. 6 pp. 239-241. Qualitative. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:risk-adjusted-performance-measures": {
+    "source": "compendium/portfolio-construction-risk/performance-attribution-appraisal.tex",
+    "review": "Verification: MIP chap. 12 pp. 767-771 (p. 769: the alpha-Treynor agreement argued from a point above the ex post SML, which assumes positive beta); Bacon pp. 159, 177, 190 and 226-227. Checked by notes/artefacts/performance-evaluation/performance-evaluation-checks.py parts 1-2: P and Q measures (Sharpe 0.464/0.364, Treynor 7.22/8.00, M2 9.96/8.45, alpha 2.00/3.00, AR 0.54/0.19), ranking split, alpha = beta x Treynor difference; sign cases at beta 0.9 (agree), 0 (Treynor undefined) and -1 (alpha +2 but Treynor 3 < 5); Bacon Table 5.6 recomputed. Partly checked 2026-10-18 (performance and planning batch; corrected 2026-10-18 in the PR #23 fixes pass). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:return-attribution": {
+    "source": "compendium/portfolio-construction-risk/performance-attribution-appraisal.tex",
+    "review": "Verification: Bacon chap. 6 pp. 239-258, 331-338 and 361-363; MIP chap. 12 pp. 744, 746, 753 and 764-765; Grinold and Kahn chap. 3 pp. 67 and 78. Checked by performance-evaluation-checks.py parts 4-5: BHB 0.45/0.20/0.10 and Brinson-Fachler sector effects summing to 0.75; two-period residual and Carino reconciliation; fixed-income effects 0.0286 - 0.0336 + 0.1250 + 0.0270 = 0.147. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:macro-attribution-owner-manager": {
+    "source": "compendium/portfolio-construction-risk/performance-attribution-appraisal.tex",
+    "review": "Verification: MIP chap. 12 pp. 746-753 (eqs. 12-10 to 12-12) with nn. 18-19. Checked by performance-evaluation-checks.py part 6: levels 0.300 + 1.560 + 0.027 + 0.015 + 0.049 = 1.951 percent; value metric 9.755 million. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:benchmark-selection-quality": {
+    "source": "compendium/portfolio-construction-risk/performance-attribution-appraisal.tex",
+    "review": "Verification: MIP chap. 12 pp. 731-744 (properties, types, universes, quality tests, hedge funds, n. 8 on liabilities); Bacon pp. 125 and 234-235. Checked by performance-evaluation-checks.py part 7: beta 0.98, corr(A,S) 0.11, corr(S,E) 0.91, TE 0.20 against 0.49; coverage 90 percent and active positions. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:downside-appraisal-measures": {
+    "source": "compendium/portfolio-construction-risk/performance-attribution-appraisal.tex",
+    "review": "Verification: Bacon pp. 126, 190, 194-197, 203-208 and 234-236 (p. 204 note: about 0.6 for a normal distribution, target unstated). Checked by performance-evaluation-checks.py part 3: downside deviation with n = 24 (1.440), Sortino 0.17, capture 0.963/0.777, maximum drawdown -5.92 percent censored, an earlier drawdown with 5-month duration, quarterly sampling shallower, infinite Sortino edge case; normal benchmark by closed form and numerical integration: sigma/sqrt(2) at the mean, 0.2745 and 1.3873 sigma one sd below and above, sqrt(1 - 2/pi) = 0.603 as the conditional sd below the mean. Partly checked 2026-10-18 (performance and planning batch; corrected 2026-10-18 in the PR #23 fixes pass). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:manager-skill-evaluation": {
+    "source": "compendium/portfolio-construction-risk/performance-attribution-appraisal.tex",
+    "review": "Verification: MIP chap. 12 pp. 767 and 776-778; Harris via meth:skill-luck-significance-tests. Checked by performance-evaluation-checks.py part 8: Exhibit 12-19 equals Phi(IR sqrt(T)) in 33 of 36 cells (84.03, 63.81 and 81.70 printed for 84.13, 63.55 and 81.45); Exhibit 12-20 within 0.05 points of binomial(10, 0.2442); power 0.30 and 24.7 years; t 1.455, p 0.073. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:manager-due-diligence": {
+    "source": "compendium/portfolio-construction-risk/manager-selection.tex",
+    "review": "Verification: MIP chap. 7 pp. 436, 442-444 and 466-470, chap. 12 pp. 778-781; Bacon pp. 489-491; Sharpe (1992) sections \"Style Analysis\", \"Mutual Fund Styles\" and Table 2 (objective: minimise the variance of the difference, not its mean or the sum of squared differences). Checked by notes/artefacts/manager-selection/manager-selection-checks.py parts 2-3: filter probabilities (81.4/50/32.7 percent; Type I 3.9 percent and Type II 77 percent at t > 1.645; kept value added 0.99 against 1.55); constrained style analysis minimising tracking variance: weights 1.37/56.60/0/27.13/14.90 percent, residual variance 0.05587, R2 0.986, confirmed by a centred quadratic form, the KKT conditions and invariance to adding a constant to fund returns; the mean-square objective is shown not to be shift-invariant. Partly checked 2026-10-18 (performance and planning batch; corrected 2026-10-18 in the PR #23 fixes pass). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:manager-philosophy-process-behaviour": {
+    "source": "compendium/portfolio-construction-risk/manager-selection.tex",
+    "review": "Verification: MIP chap. 7 pp. 466 and 468; Barberis and Thaler w9222 p. 15; Kahneman (2011) chaps. 7 and 24; Statman (2019) p. 6; Ang (2014) p. 503. Qualitative checklist (Interpretation). Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:vehicle-contract-fee-analysis": {
+    "source": "compendium/portfolio-construction-risk/manager-selection.tex",
+    "review": "Verification: MIP chap. 1 pp. 2-3, chap. 7 p. 467, chap. 9 p. 596; Bacon pp. 59-64; Ang (2014) pp. 502 and 581-582; 15 U.S.C. 80b-5 (LII, 2026-10-18); 17 CFR 275.205-3 (LII); SEC order FR 2026-08480 (1 May 2026, effective 29 June 2026); SEC proposal FR 2026-20474 (6 Oct 2026). Checked by manager-selection-checks.py part 1: ad valorem 1.50, asymmetric with HWM 1.95 (1.05/0.25/0.65), fulcrum 2.00; zero-skill expected fees 0.566 and 0.50; Ang's NAV path 4.0/0/5.0. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "ex:manager-selection-case": {
+    "source": "compendium/portfolio-construction-risk/manager-selection.tex",
+    "review": "Verification: method from MIP chap. 12 pp. 776-781 and the entries cited. Checked by manager-selection-checks.py part 4: t 1.860 and 1.905; posterior mean IRs 0.277 and 0.234 at a prior sd of 0.30, 0.429 and 0.471 at 0.50; ranking changes at a prior sd of 0.419; the hiring decision rests on process, attribution and operational evidence. Partly checked 2026-10-18 (performance and planning batch; corrected 2026-10-18 in the PR #23 fixes pass). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:gips-scope-verification": {
+    "source": "compendium/portfolio-construction-risk/performance-standards.tex",
+    "review": "Verification: GIPS for Firms 2020, Preface pp. v-vi, Introduction pp. vii-xv, 1.A.1-1.A.39 and 1.B.3-1.B.4 (pp. 1-6), Glossary p. 75, 4.C.1 (p. 26); GIPS Handbook for Firms (Nov. 2020) p. 147; GIPS Standards for Verifiers 2020 pp. 1-7 and 11-12. Qualitative. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:gips-return-calculations": {
+    "source": "compendium/portfolio-construction-risk/performance-standards.tex",
+    "review": "Verification: GIPS 2020 2.A.8-2.A.42 and 2.B.6 (pp. 8-17), 1.A.35; Handbook pp. 196-200. Checked by notes/artefacts/performance-presentation-standards/gips-checks.py parts 1-4 and 6: true TWR 7.6466 against Modified Dietz 7.50; composite 3.4415/3.5602/3.5371 by the three methods; dispersion (equal-weighted 1.11 or 1.20; asset-weighted 0.94); sqrt(36/35) factor; model fee no lower than actual. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:gips-composite-membership": {
+    "source": "compendium/portfolio-construction-risk/performance-standards.tex",
+    "review": "Verification: GIPS 2020 3.A.1-3.A.13 and 3.B.2 (pp. 18-20), 4.C.35; Handbook pp. 147, 166-167 and 173-174. Checked by gips-checks.py part 5: an invented policy's membership calendar (counts 4, 4, 4, 5, 5, 5, 4, 3, 3, 4, 3, 3). The discretion determinations are reasoned cases. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "ex:gips-composite-report": {
+    "source": "compendium/portfolio-construction-risk/performance-standards.tex",
+    "review": "Verification: GIPS 2020 4.A.1-4.A.3 and 4.C.1-4.C.11 (pp. 21-27), 4.C.35-4.C.40 (p. 30), 1.A.27. Checked by gips-checks.py part 7: annual gross, net and benchmark returns and three-year standard deviations from synthetic monthly series; dispersion from part 3. Educational; no compliance claim. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   }
 }

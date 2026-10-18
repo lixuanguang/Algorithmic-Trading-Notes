@@ -1,0 +1,184 @@
+\section{Investors, the investment process and investment policy}
+
+These entries describe the portfolio management process, the investors it serves and the industry that serves them, and then the investment policy statement (IPS) that turns an investor's needs into a mandate. A fictional client case connects them; its numbers are checked in \texttt{notes/artefacts/investment-planning/investment-planning-checks.py}. Asset-class risk and return are in \hyperref[def:asset-class-characteristics]{asset-class characteristics} and allocation mechanics in \hyperref[meth:efficient-frontier]{the efficient frontier}.
+
+\begin{qfdefinition}[The portfolio approach and the portfolio management process: planning, execution and feedback; objectives and constraints, capital market expectations, strategic allocation, construction, monitoring, rebalancing and evaluation]\label{def:portfolio-management-process}
+\qffield{Statement} The \emph{portfolio perspective} looks at ``the aggregate of all the investor's holdings''. Because the risks of different assets are related, evaluating each in isolation would ``likely misunderstand the risk and return prospects of the investor's total investment position'' \citep[chap.~1, p.~4]{managing-investment-portfolios-2007}. The \emph{portfolio management process} is ``an integrated set of steps undertaken in a consistent manner to create and maintain an appropriate portfolio (combination of assets) to meet clients' stated goals''. It ``moves from planning, through execution, and then to feedback'' (pp.~2 and~5):
+\begin{itemize}
+\item \emph{Planning}: identify and specify the investor's objectives (return and risk) and constraints, write the IPS, form capital market expectations, and set the strategic asset allocation, often with minimum and maximum weights ``as a risk-control mechanism'' (pp.~5--8).
+\item \emph{Execution}: select the specific assets, often with portfolio optimisation, and implement the trades, whose explicit and implicit costs reduce performance (pp.~8--9).
+\item \emph{Feedback}: monitor investor-related and market factors, rebalance when weights or circumstances move, and evaluate performance through measurement, attribution and appraisal (pp.~9--10).
+\end{itemize}
+The resulting definition: portfolio management is ``an ongoing process'' in which objectives and constraints are specified, strategies developed, composition decided, decisions implemented by traders, performance measured, conditions monitored and rebalancing implemented (p.~10).
+
+\qffield{Conditions} The process is the same for every investor and asset type and ``can be as loose or as disciplined, as quantitative or as qualitative'' as its operators choose (p.~5). Strategies are passive (composition does not react to changed expectations), active (holdings differ from a benchmark to seek positive risk-adjusted excess return) or semiactive (enhanced index, tight risk control) (p.~7).
+
+\qffield{Practice} Interpretation: each later step needs an output of an earlier one. Evaluation needs the benchmark fixed in planning; rebalancing needs the ranges fixed in the strategic allocation; and a change in the investor's circumstances sends the process back to planning. A temporary deviation from the strategic allocation reflecting changed circumstances differs from tactical asset allocation, which responds to short-term expectations (p.~8). The case in \hyperref[ex:investment-planning-case]{the planning case} follows one client through the steps.
+
+\qffield{Pitfalls} Selecting securities without an overall plan. Revising strategy after short-term results instead of after a change in objectives, constraints or long-run expectations. Treating performance evaluation as return calculation alone.
+
+\qffield{See also} \hyperref[meth:investment-policy-statement]{investment policy statement}; \hyperref[def:performance-evaluation-components]{measurement, attribution and appraisal}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Investor types and their needs: individuals, defined-benefit and defined-contribution pension plans, foundations and endowments, insurers, banks and sovereign wealth funds]\label{def:investor-types-needs}
+\qffield{Statement} Investors are individual or institutional. Institutional investors, ``such as pension funds, foundations and endowments, insurance companies, and banks'', intermediate between individuals and markets, and their policy is usually set by committees or trustees who may owe fiduciary duties \citep[chap.~1, p.~3]{managing-investment-portfolios-2007}.
+
+\emph{Pension plans.} ``A defined-benefit plan is a pension plan that specifies the plan sponsor's obligations in terms of the benefit to plan participants''; a defined-contribution plan specifies them ``in terms of contributions to the pension fund rather than benefits'' (chap.~3, p.~64). The differences that drive investment policy (p.~65):
+\begin{itemize}
+\item a DC sponsor recognises no pension liability; a DB promise is a liability whose present value relative to assets is the plan's \emph{funded status} (pp.~65--66);
+\item DC participants bear the investment risk; in a DB plan the sponsor bears it, at least in part, and participants bear the risk that the plan is terminated;
+\item DC contributions and their returns belong to the participant, and individual accounts make them portable.
+\end{itemize}
+DB investment risk is best stated relative to liabilities: the emphasis ``shifts from the expected volatility of pension assets to the expected volatility of pension surplus'', which falls when asset values move with liability values, hence bonds (p.~79). In a participant-directed DC plan the sponsor sets no single policy. Each participant chooses a risk and return objective, and the sponsor's IPS governs the menu of options and its review. In the United States, ERISA section 404(c) gives a safe harbour for a menu of at least three diversified options with freedom to move among them (pp.~79--80, as of 2007).
+
+\qffield{Data} Typical requirements and tolerances \citep[chap.~1, Exhibit~1-3, p.~15]{managing-investment-portfolios-2007}:
+\begin{center}\small
+\begin{tabular}{@{}p{0.2\linewidth}p{0.38\linewidth}p{0.34\linewidth}@{}}
+\toprule
+Investor & Return requirement & Risk tolerance \\
+\midrule
+Individual & stage of life, circumstances, obligations & varies \\
+DB pension & fund liabilities on an inflation-adjusted basis & plan, sponsor and workforce features; funded status \\
+DC pension & stage of life of each participant & each participant's \\
+Foundation, endowment & annual spending, expenses and inflation & generally average or above \\
+Life insurer & rates used for policyholder reserves & below average (regulation) \\
+Non-life insurer & competitive pricing and financial needs & below average (regulation) \\
+Bank & cost of funds & varies \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\qffield{Conditions} Ang adds sovereign wealth funds, ``part of overall sovereign reserves'', whose owners are a country's citizens and whose horizons and spending rules are set by governments \citep[chap.~1, pp.~4--5]{s7-ang}. He groups pension savings into national plans, private DB plans, private DC plans and individually managed tax-advantaged accounts (p.~13). He notes that US private foundations must pay out at least 5 percent of assets a year under the Tax Reform Act of 1969, while university endowments spend at about that rate without the requirement (p.~24, as of 2014). Individuals' needs depend on labour income, family, leverage and health, and wealthy families may use family offices (pp.~28--31). Jurisdictional rules (ERISA, payout rules, insurance regulation) are dated to these sources and vary by country.
+
+\qffield{Practice} Interpretation: the needs that differ across investors are the liability (none, contractual, actuarial, spending rule), its horizon and inflation linkage, the liquidity it demands, the regulator, the tax status and the governance body. These map directly onto the IPS's objectives and constraints (\hyperref[meth:investment-policy-statement]{IPS}).
+
+\qffield{Pitfalls} Applying an asset-only risk measure to a DB plan whose risk is the surplus. Treating a participant-directed DC plan as if the sponsor chose a single allocation. Reading ``long horizon'' as unlimited risk capacity when spending or liabilities draw cash every year.
+
+\qffield{See also} \hyperref[def:portfolio-management-process]{portfolio management process}; \hyperref[def:asset-management-industry]{asset management industry}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[The asset management industry and pooled vehicles: active and passive, traditional and alternative managers; mutual funds compared with ETFs, closed-end funds, unit investment trusts, hedge funds, private funds and separately managed accounts]\label{def:asset-management-industry}
+\qffield{Statement} Investment management is ``the service of professionally investing money''. A manager's revenue is mainly ``fees based on a percentage of the average amount of assets under management'', so size is judged by assets under management, and firms employ portfolio managers, buy-side analysts, traders and marketing and support staff \citep[chap.~1, pp.~2--4]{managing-investment-portfolios-2007}. Interpretation: managers are commonly grouped by approach (active, passive, semiactive) and by asset type (traditional public stocks and bonds against alternatives such as hedge funds, private equity and real assets), and they reach investors through pooled funds or separate accounts.
+
+\emph{US registered funds.} The Investment Company Act of 1940 covers four types of registered investment company: mutual funds, closed-end funds, unit investment trusts and ETFs, all tax pass-through vehicles \citep[chap.~16, p.~523]{s7-ang}. Mutual fund shares are bought from and ``redeemable daily at the NAV'', so the share count rises and falls (open-ended). Closed-end fund shares ``are not redeemable and are fixed in number'' and trade on an exchange after the offering, which lets these funds hold less liquid securities. UITs issue a fixed number of redeemable units, buy and hold a portfolio until a termination date and need no adviser. ETFs ``trade on exchanges like closed-end funds'' but have no fixed share count, and dealings in shares keep the price close to NAV (pp.~524--525). The Act mandates prospectuses, audited reports and holdings disclosure (``quarterly for mutual funds and daily in the case of ETFs''). It limits mutual fund borrowing to a 300 percent asset coverage, and it requires any performance fee charged to a registered fund to be symmetric around a benchmark, a ``fulcrum fee'' (pp.~526--527).
+
+\emph{Unregistered vehicles.} Hedge funds are exempt from the 1940 Act and may use leverage, short sales and nonlinear fees, typically a management fee near 2 percent of NAV plus a performance fee near 20 percent, often with a high-water mark and hurdle \citep[chap.~17, pp.~581--582]{s7-ang}. A separately managed account holds the client's own securities, making the manager's trades ``completely transparent'' to the client (chap.~15, p.~502).
+
+\qffield{Data} US-registered investment companies managed \$45.1 trillion at year-end 2025: mutual funds \$31.4 trillion, ETFs \$13.4 trillion, traditional closed-end funds \$257 billion and UITs \$103 billion. Index mutual funds and index ETFs held 52 percent of long-term fund assets, up from 19 percent at year-end 2010. Worldwide regulated open-end funds held \$88.0 trillion \citep[\emph{Quick Facts Guide}, ``Facts at a glance''; chap.~2, pp.~13 and~18]{investment-company-fact-book-2026}.
+
+\qffield{Practice} Interpretation, comparing vehicles for one strategy:
+\begin{itemize}
+\item \emph{Liquidity and price}: mutual funds trade once a day at NAV; ETFs and closed-end funds trade intraday at market prices, closed-end funds often at a premium or discount to NAV; hedge funds and private funds have notice periods, lock-ups or no redemption.
+\item \emph{Customisation and ownership}: pooled vehicles hold one portfolio for all investors; a separate account can carry client restrictions, tax-lot management and in-kind transfers but needs a larger minimum and its own custody and administration.
+\item \emph{Costs and fees}: pooled funds charge an expense ratio; scale lowers costs; performance fees are restricted in registered funds and common in hedge and private funds.
+\item \emph{Regulation and transparency}: registered funds disclose holdings and limit leverage; private funds rely on exemptions and disclose less.
+\end{itemize}
+Vehicle choice for an institutional mandate is analysed in \hyperref[meth:vehicle-contract-fee-analysis]{vehicles, contracts and fees}.
+
+\qffield{Conditions} The legal descriptions are of US law as summarised by Ang (2014); other jurisdictions (for example UCITS funds in the European Union) have their own fund types and rules. The fact-book figures are dated year-end 2025.
+
+\qffield{Pitfalls} Treating an ETF's market price as its NAV in stressed markets. Comparing a hedge fund's net return with a mutual fund's without allowing for fees, leverage and liquidity terms. Assuming a pooled fund can apply one client's exclusions.
+
+\qffield{See also} \hyperref[def:investor-types-needs]{investor types}; \hyperref[mech:etf-creation-redemption]{ETF creation and redemption}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[The investment policy statement: purpose and components; risk objectives and risk tolerance as willingness and ability; return objectives and required returns; liquidity, horizon, tax, legal and unique constraints]\label{meth:investment-policy-statement}
+\qffield{Statement} ``An investment policy statement (IPS) is a written document that clearly sets out a client's return objectives and risk tolerance over that client's relevant time horizon, along with applicable constraints such as liquidity needs, tax considerations, regulatory requirements, and unique circumstances.'' It ``becomes a plan that can be executed by any adviser or portfolio manager the client might subsequently hire'', and it ``disciplines the portfolio management process and helps ensure against ad hoc revisions in strategy'' \citep[chap.~1, p.~2]{managing-investment-portfolios-2007}. A typical IPS contains a client description; its purpose; the duties of the client, committee, manager and custodian; goals, objectives and constraints; the review schedule; performance measures and benchmarks; considerations for the strategic allocation; investment strategies and styles; and rebalancing guidelines (pp.~5--7).
+
+\emph{Risk objective.} The investor decides how to measure risk (absolute, such as volatility or value at risk, or relative, such as tracking risk). The investor's \emph{willingness} to take risk is psychological and stated. The \emph{ability} to take risk depends on spending needs relative to wealth, long-term targets or liabilities, and the financial strength to raise savings or contributions if the portfolio falls short. Risk tolerance ``is a function of both''. ``When an investor's willingness to accept risk exceeds ability to do so, ability prudently places a limit''; when ability exceeds willingness, willingness limits and the return objective may be missed, and either mismatch needs resolution through client education (pp.~11--13, Exhibit~1-2). The risk objective is the specific, measurable form of that tolerance, for example a maximum one-year loss or volatility (p.~13).
+
+\emph{Return objective.} The return is measured as total, nominal or real, pre- or post-tax. The \emph{stated desire} differs from the \emph{required return}, the average return the investor must earn, which can be in conflict with the risk objective (pp.~13--14). The objective combines both into ``a measurable annual total return specification'' consistent with the risk objective (p.~14).
+
+\emph{Constraints} (pp.~15--17). \emph{Liquidity}: cash needs beyond contributions or savings, met by liquid, low-price-risk holdings. \emph{Time horizon}: single or multistage; a longer horizon raises the ability to take risk. \emph{Taxes}: differences between income and gains taxes, timing of sales, estate taxes. \emph{Legal and regulatory}: for example concentration limits on funds or ERISA's limits on employer securities. \emph{Unique circumstances}: ethical exclusions, health, dependants, the investor's own capabilities. Liquidity and horizon bear directly on ability, so the process may start with constraints (p.~11).
+
+\qffield{Notation} For an investor with investable assets $A_0$, savings $S$ at the end of each of $n$ years and spending $W$ at the start of each of $m$ years thereafter, the required real return $r$ solves
+\[ A_0(1+r)^n+S\frac{(1+r)^n-1}{r}=W\frac{1-(1+r)^{-m}}{r}(1+r). \]
+A nominal requirement is $(1+r)(1+\pi)-1$ for expected inflation $\pi$, and a pre-tax requirement with all returns taxed annually at rate $t$ is the nominal divided by $1-t$.
+
+\qffield{Practice} Maginn et al.'s examples (p.~14), reproduced. A couple needing \pounds2 million in 18 years from \pounds1.2 million must earn $(2/1.2)^{1/18}-1=2.88$ percent a year after tax. Withdrawing \pounds25{,}000 a year raises the requirement to 4.55 percent, or 7 percent pre-tax at 35 percent tax. A retiree needing 4 percent real after tax with 2 percent inflation and 40 percent tax needs about $(4+2)/(1-0.40)=10$ percent pre-tax nominal; this additive form is an approximation. The complete original application is the \hyperref[ex:investment-planning-case]{planning case}.
+
+\qffield{Conditions} Exhibit~1-2's four-cell grid is a heuristic; ability can be quantified (spending relative to wealth, the probability of missing a goal), willingness only elicited. A required return computed with deterministic returns ignores the order of returns: the same average return can fail if losses come early in the spending phase. Tax and legal examples are jurisdiction-specific and dated to the 2007 text.
+
+\qffield{Pitfalls} Setting the return objective from the client's wish rather than the requirement and the risk objective. Measuring willingness by questionnaire alone when circumstances (a short horizon, high spending) cap ability. Omitting constraints that are not legal rules, such as a concentrated holding with an embedded gain. Revising the IPS after market moves rather than after changes in circumstances.
+
+\qffield{See also} \hyperref[meth:asset-class-portfolio-construction]{asset classes and construction}; \hyperref[def:behavioural-biases]{behavioural biases}; \hyperref[def:risk-aversion-utility]{risk aversion}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Specifying asset classes and building the portfolio from the IPS: asset-class criteria, the strategic allocation and its ranges, risk budgeting, implementation, rebalancing and ESG integration]\label{meth:asset-class-portfolio-construction}
+\qffield{Statement} The strategic asset allocation integrates the investor's ``return objectives, risk tolerance, and investment constraints'' with long-run capital market expectations ``to establish exposures to IPS-permissible asset classes''. It is usually specified as target weights with permissible ranges, and a weight outside its range triggers rebalancing; tactical allocation instead makes short-term adjustments on expected relative performance \citep[chap.~5, pp.~231--232, Exhibit~5-1]{managing-investment-portfolios-2007}. Asset classes should be (pp.~248--249):
+\begin{enumerate}
+\item relatively homogeneous within the class;
+\item mutually exclusive;
+\item diversifying, judged better by the minimum tracking risk to a combination of the other classes (Kritzman's criterion) than by pairwise correlations, above 0.95 being undesirable;
+\item together a preponderance of world investable wealth;
+\item able to absorb a significant fraction of the portfolio without impairing liquidity.
+\end{enumerate}
+Risk budgeting allocates an overall quantity of risk (for example value at risk or tracking risk) to investments ``so as to maximize expected overall risk-adjusted return'' (chap.~1, p.~13).
+
+\emph{ESG in planning.} The harmonised definitions of CFA Institute, GSIA and PRI distinguish \emph{screening} (``Applying rules based on defined criteria that determine whether an investment is permissible'': norms-based, negative or exclusionary, and positive or best-in-class), \emph{ESG integration} (``Ongoing consideration of ESG factors within an investment analysis and decision-making process with the aim to improve risk-adjusted returns''), thematic investing, stewardship and impact investing \citep[Tables~1--2, p.~7]{sustainable-investment-review-2022}. Ang argues that exclusions are constraints that ``shrink diversification benefits'' in mean--variance terms, that selecting on firm characteristics linked to such ratings is an active strategy judged like any other, and that ``SRI is the asset owners' choice, but the costs of imposing SRI constraints \ldots should be measured relative to the full investment set'' \citep[chap.~3, pp.~110--112]{s7-ang}.
+
+\qffield{Practice} Interpretation, from IPS to portfolio:
+\begin{itemize}
+\item an exclusion or norms screen is a unique-circumstance constraint written into the IPS and applied to the permissible universe and the benchmark;
+\item integration belongs to the manager's analysis and is evaluated through results and process, not stated as an objective;
+\item liquidity needs are carved out into a sleeve outside the strategic allocation, and the allocation is chosen from candidates that meet both the required return and the risk objective, with forecasts and requirement on the same tax basis; where none does, the conflict is resolved with the client before the allocation is set;
+\item ranges and a rebalancing rule control drift, and risk contributions show where the risk budget is spent.
+\end{itemize}
+The \hyperref[ex:investment-planning-case]{planning case} applies these steps.
+
+\qffield{Conditions} Asset-class lists differ by investor; regulation may restrict classes for banks and insurers (p.~248). ESG terms vary in use, and these definitions are a voluntary harmonisation published by industry bodies, not a legal standard. Ang's evidence on SRI performance is mixed and dated to 2014.
+
+\qffield{Pitfalls} Accepting a product as a new asset class when it is a strategy over existing ones. Overlapping classes (domestic equity alongside world equity including domestic). Treating an exclusion as costless, or as an alpha source, without measuring it. Leaving the benchmark unscreened when the portfolio is screened, which builds a permanent tracking difference.
+
+\qffield{See also} \hyperref[meth:investment-policy-statement]{IPS}; \hyperref[meth:efficient-frontier]{efficient frontier}; \hyperref[def:risk-management-framework]{risk management framework}.
+
+\end{qfmethod}
+
+\begin{qfexample}[Planning case: a fictional surgeon's needs, risk tolerance, required return, constraints, IPS provisions and strategic allocation, with behavioural and risk-governance implications]\label{ex:investment-planning-case}
+\qffield{Statement} The client is fictional, in an unnamed jurisdiction. All amounts are in currency units. Inflation of 2.5 percent, a flat 15 percent tax on each year's nominal return, a 20 percent tax on realised gains and all capital market assumptions are invented for teaching, not forecasts. The case applies \hyperref[def:portfolio-management-process]{the process}, \hyperref[meth:investment-policy-statement]{the IPS} and \hyperref[meth:asset-class-portfolio-construction]{asset-class construction} \citep[method from][chap.~1, pp.~11--17, and chap.~5, pp.~231--232]{managing-investment-portfolios-2007}.
+
+\emph{Facts.} Dr~A, aged 50, surgeon, has 2{,}000{,}000 investable. Of this, 400{,}000 is a single inherited listed stock with a 300{,}000 unrealised gain. She will save 40{,}000 a year (real, after tax, at each year end) until retiring at 62. From 62 she wants 145{,}000 a year (real, after tax) from the portfolio for 30 years, withdrawn at the start of each year. A renovation will cost 150{,}000 in 18 months, and she wants a 50{,}000 emergency reserve. She describes herself as comfortable with losses of 30 percent, trades actively and is reluctant to sell the inherited stock (``my father chose it'').
+
+\qffield{Practice} \emph{Tax basis.} Savings, spending and the requirement are real and after tax. The 15 percent tax falls on each year's nominal return as it is earned, losses are offset in full, and withdrawals are not taxed again. The 20 percent tax falls only on the 300{,}000 gain already embedded in the stock. The stock's later returns are taxed at 15 percent like the rest, so no return is taxed twice.
+
+\emph{Needs and return objective.} Setting aside 200{,}000 for the renovation and reserve leaves a long-term pool of 1{,}800{,}000. The stock is sold in thirds now, in 12 months and in 24 months, assumed at today's value. Each sale's 20{,}000 of tax is paid from the pool at the end of that year (19{,}512, 19{,}036 and 18{,}571 in today's money). Without the gains tax the equation in the IPS entry gives $r=2.70$ percent; with it the requirement is $r=2.81$ percent a year. At that rate the pool reaches 2{,}995{,}705 at 62, the present value of the spending, and a year-by-year roll-forward ends at zero after the 30th withdrawal. The nominal after-tax requirement is $(1.0281)(1.025)-1=5.38$ percent. Taxing all nominal returns at 15 percent, the pre-tax requirement is 6.33 percent nominal or 3.73 percent real; the additive shortcut gives 6.24 percent.
+
+\emph{Risk tolerance.} Her willingness is above average (stated tolerance, active trading). Her ability is moderate: a 12-year accumulation phase and stable professional income support risk, but spending of 145{,}000 against a pool of 1.8 million is a large, fixed draw over 30 years, and a shortfall cannot be made up after retirement. Ability limits, so tolerance is average. The risk objective: a one-year 5th-percentile real loss before tax no worse than $-13$ percent.
+
+\emph{Constraints.} Liquidity: 200{,}000 in cash and short deposits outside the strategic allocation. Horizon: two stages (12 years, then 30). Tax: 60{,}000 on the embedded gain, 3.3 percent of the pool, whether the stock is sold at once or in stages; at a flat rate, staging only defers part of it. Legal: none special. Unique: the concentrated holding, 22.2 percent of the pool, and her attachment to it.
+
+\emph{Allocation.} Invented real, pre-tax assumptions (mean, standard deviation): global equity (5.5, 16), government bonds (1.5, 6), inflation-linked bonds (1.2, 5), cash (0.5, 1), with correlations 0.1, 0.2 and 0 between equity and the others, 0.7 between the two bond classes and 0.1 between bonds and cash. Taxing the nominal return turns a real pre-tax return $r$ into exactly $(1-t)r-t\pi/(1+\pi)$ after tax. Each mix's after-tax mean is therefore 0.85 times its pre-tax mean less 0.37 points, the tax on the inflation part of the nominal return, and its standard deviation is 0.85 times the pre-tax figure. The risk objective is measured on pre-tax returns: the fall in portfolio value before any tax offset. The return is the after-tax geometric mean ($\approx\mu-\sigma^2/2$), compared with the after-tax requirement:
+\begin{center}\small
+\begin{tabular}{@{}lrrrrl@{}}
+\toprule
+Mix (equity/gov/ILB/cash) & Mean & S.d. & 5th pct. & After-tax geometric & Verdict \\
+\midrule
+Conservative 30/50/15/5 & 2.61 & 6.33 & $-7.81$ & 1.70 & below 2.81 required \\
+Balanced 55/30/10/5 & 3.62 & 9.34 & $-11.73$ & 2.40 & below 2.81 required \\
+Growth 75/15/5/5 & 4.44 & 12.19 & $-15.61$ & 2.87 & breaches $-13$ limit \\
+\bottomrule
+\end{tabular}
+\end{center}
+No candidate meets both objectives. The balanced mix stays within the loss limit but falls 0.41 points short of the requirement; growth meets the requirement but breaches the limit. No other long-only mix of the four classes does better: the best within the limit, about 61/39/0/0, earns 2.61 percent after tax. Measured after tax with full loss offset, the 5th percentiles would be $-7.01$, $-10.34$ and $-13.64$, with the same verdicts. Only an extreme 71/29/0/0 mix would then reach the requirement, by 0.03 points, holding no inflation-linked bonds or cash.
+
+\emph{Funding gap.} The required return conflicts with the risk objective, and ability limits, so the gap is closed by changing the plan rather than by taking more risk. At the balanced mix's 2.40 percent the pool is 283{,}249 short at 62. It supports real spending of about 132{,}000 a year instead of 145{,}000. Alternatively, savings would have to rise to about 60{,}700 a year from 40{,}000. Retiring at 63 still leaves the pool 101{,}562 short; retiring at 64, with spending to 92, leaves 84{,}479 to spare. Presenting these choices is the client education that resolves the conflict.
+
+Equity is 55 percent of capital but 91.7 percent of variance risk (Euler contributions $w_i(\Sigma w)_i/\sigma$). Ranges: equity 50--60, government bonds 26--34, others $\pm2$ points. An 18 percent equity rise with bonds down 1 percent moves equity to 59.2 percent, still inside its range.
+
+\emph{IPS provisions} (summary). Purpose and parties. Return objective: 2.40 percent real after tax, the balanced mix's expectation, with the client's chosen resolution of the funding gap (lower spending, higher savings, later retirement or a combination) recorded beside it. Risk objective as above. Benchmark: the four index returns at target weights. The 200{,}000 liquidity sleeve. The stock to be sold in thirds now, in 12 and in 24 months, and counted in the equity weight meanwhile, with the hedge below until the second sale. Annual review, and review on any change in health, income or spending. Rebalancing to target when a range is breached and at the annual review.
+
+\emph{Behavioural and governance implications.} Assume the stock's expected real return equals equity's 5.5 percent, since there is no view on it. Keeping the whole holding raises portfolio volatility from 9.34 to 12.19 percent (stock standard deviation 35 percent, correlation 0.6 with equity), and the 5th percentile to $-16.43$, beyond the limit. ``My father chose it'' is therefore costly. That reluctance is an emotional attachment, and her stated 30 percent loss tolerance reflects confidence that may not survive a real loss (\hyperref[def:behavioural-biases]{behavioural biases}). Writing a staged-sale rule into the IPS is a self-control device.
+
+\emph{Hedging the transition.} Selling index futures on 10 percent of the pool, with the matching cash leg, lowers volatility to 10.89 percent and the mean by 0.50 points. The 5th percentile, $-14.80$, still breaches the limit; about 22 percent notional would be needed. The hedge removes market risk only. The stock's specific risk, 28 of its 35 points of volatility, is about 6.2 points of portfolio volatility on its own, and even the minimum-variance hedge leaves 6.75 percent. Selling the first third at once and keeping the 10 percent hedge until the second sale meets the limit ($-12.52$); after the second sale the unhedged portfolio meets it ($-12.73$). A beta-consistent stock return of 7.06 percent changes these percentiles by under 0.4 points and none of the verdicts. Basis, margin and execution risks are in \hyperref[meth:risk-identification-modification]{modifying exposures}.
+
+\qffield{Conditions} The requirement uses deterministic real returns and ignores sequence risk and longevity beyond 92. The normal 5th percentile understates fat-tailed losses. The geometric mean is an approximation. The tax regime is stylised: one flat rate, full loss offset, no deferral and no tax-advantaged accounts. The gains tax assumes the stock's price is unchanged until each sale, and the transition weights ignore the cash held back for each tax payment. A different set of assumptions would change the ranking; the case teaches the method, not an allocation for any real person.
+
+\qffield{Pitfalls} Comparing pre-tax return forecasts with an after-tax requirement. Choosing growth because the client says she can tolerate losses; spending the liquidity sleeve's return assumption on the long-term pool; ignoring the concentrated stock because it is ``outside'' the plan.
+
+\qffield{See also} \hyperref[def:investor-types-needs]{investor types}; \hyperref[def:risk-management-framework]{risk management framework}.
+
+\end{qfexample}

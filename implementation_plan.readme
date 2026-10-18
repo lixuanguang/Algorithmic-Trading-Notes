@@ -16,7 +16,10 @@ and all eight `topic:asset-pricing-factor-models` objectives, including the two
 analysis-level ones, after two audit corrections; a fixes-only correction
 pass followed (Section 17), which also moved remote CI to merged pull requests.
 Standing batch preference: future content-expansion prompts target 30 newly
-completed objectives (Section 17.4). No next content slice has been selected. Not started: the remaining `topic:linear-regression` objectives
+completed objectives (Section 17.4). The performance and planning batch (Section 18) then
+covered 30 objectives in index construction, investment planning, behavioural finance, risk
+governance, active management, performance evaluation, manager selection and GIPS, on a
+branch stacked on PR #22. No next content slice has been selected. Not started: the remaining `topic:linear-regression` objectives
 (multiple regression, misspecification, extensions); the rest of Batch 2; and
 the rest of Batches 3-6.
 Editorial coverage only: nothing here records or implies learner mastery.
@@ -2273,3 +2276,147 @@ pass on PR #22*, for the local check results. Coverage counts are unchanged:
 The five untracked `* 2.md` duplicates in `notes/readings/` were present at the
 start of the batch session but were absent when this pass began; this pass did
 not remove them and did not recreate them.
+
+## 18. Performance and planning batch (executed 2026-10-18)
+
+**Scope.** Thirty objectives, the standing batch size of Section 17.4:
+- `topic:market-index-construction`: `objective:calculate-index-value-and-returns`,
+  `objective:describe-index-types`.
+- `topic:investment-management-process`: `objective:describe-portfolio-management-process`,
+  `objective:compare-investor-types`, `objective:describe-asset-management-industry`.
+- `topic:investment-policy-planning`: `objective:draft-investment-policy-statement`,
+  `objective:assess-risk-tolerance`, `objective:apply-investment-constraints`,
+  `objective:specify-asset-classes-and-construction`.
+- `topic:behavioral-finance`: `objective:classify-behavioural-biases`,
+  `objective:link-biases-to-market-anomalies`.
+- `topic:risk-management-framework`: `objective:design-risk-management-framework`,
+  `objective:identify-and-modify-risk-exposures`.
+- `topic:active-management-analysis`: `objective:measure-value-added`,
+  `objective:apply-fundamental-law`, `objective:decompose-active-risk`.
+- `topic:performance-evaluation`: `objective:calculate-risk-adjusted-performance`,
+  `objective:explain-evaluation-components`, `objective:apply-return-and-risk-attribution`,
+  `objective:separate-owner-and-manager-results`, `objective:select-and-test-benchmarks`,
+  `objective:calculate-appraisal-measures`, `objective:evaluate-manager-skill`.
+- `topic:manager-selection`: `objective:run-manager-due-diligence`,
+  `objective:evaluate-manager-process-and-behaviour`, `objective:choose-vehicle-and-contract`.
+- `topic:performance-presentation-standards`: `objective:explain-performance-standard-scope`,
+  `objective:apply-performance-standard-calculations`, `objective:construct-composites`,
+  `objective:prepare-compliant-presentations`.
+
+**Starting state.** PR #22 was open, draft and unmerged at `e82bb90`, with a clean tree;
+coverage was 41 of 424 objectives, 50 Level I and 6 Level II items, 974 items unreviewed,
+0 problems. All 30 objectives were `missing`, and their prerequisite topics were covered
+or in the batch. The batch runs on `codex/performance-management-20261018`, branched
+from `e82bb90`, with a draft PR stacked on PR #22.
+
+**Sources (Section 3.5).** The owner's local library supplied Bacon (3rd ed., 2023),
+*Managing Investment Portfolios* (3rd ed., 2007), Grinold and Kahn (1999 and 2020), Ang
+(2014), Damodaran (2008) and Kahneman (2011). Official documents were read for rules:
+- S&P DJI index mathematics and policies (Internet Archive captures, because the live site
+  refused automated access) and Bloomberg's fixed-income methodology;
+- GIPS for Firms 2020, its Handbook (November 2020) and the GIPS Standards for Verifiers;
+- ICI's 2026 Fact Book;
+- US performance-fee law as of 18 October 2026: Advisers Act sec. 205, Rule 205-3, the
+  1 May 2026 threshold order (effective 29 June 2026) and the October 2026 proposal.
+
+Original research came from Barberis and Thaler (NBER w9222, through OCR), Statman (2019),
+Sharpe (1992, 1994) and GSIA's 2022 review of the harmonised ESG definitions. Fifteen
+source keys were added (`compendium/front/sources.tex`), and 21 reading notes were written
+and two updated.
+
+Access limits:
+- Clarke, de Silva and Thorley (2002) is paywalled and is cited through Grinold and Kahn
+  (2020).
+- Brinson et al., Treynor, Jensen, the Modiglianis, Sortino and Treynor-Black are cited
+  through Bacon and Bailey et al.
+- The PRI page could not be read, so its definitions come through GSIA.
+- No curriculum text was used as a substantive source.
+
+**Entries.** Thirty new entries:
+- `international-equity-markets/index-construction.tex` (2 entries);
+- `portfolio-construction-risk/investment-process-planning.tex` (6, with a fictional
+  planning case);
+- `behavioural-finance.tex` (2) and `risk-governance.tex` (2);
+- `active-management.tex` (3);
+- `performance-attribution-appraisal.tex` (7);
+- `manager-selection.tex` (4, with a fictional decision case);
+- `performance-standards.tex` (4, with an educational GIPS report);
+- an extension of `meth:gips-composite-presentation` (presentation duties and portability).
+
+Existing entries were reviewed and linked; `meth:skill-luck-significance-tests` and
+`meth:gips-composite-presentation` are mapped alongside the new entries.
+
+**Evidence.** Six scripts under `notes/artefacts/` (`market-index-construction`,
+`investment-planning`, `active-management-analysis`, `performance-evaluation`,
+`manager-selection`, `performance-presentation-standards`), 164 checks, no random draws. They
+use reconciliation identities (divisor forms, attribution sums, Carino linking, the
+transfer-coefficient identity, two active-variance decompositions) and independent routes
+(roll-forwards, numerical maximisation and integration, SLSQP). Bailey, Richards and
+Tierney's Exhibit 12-19 differs from the normal model in three cells (Section 18 records;
+`notes/log.md` question).
+
+**Coverage.** The 72 mapped outline items were read on their pages:
+- Level I PDF pp. 1, 15, 19 and 28;
+- Level II p. 26;
+- Level III core pp. 9-10.
+
+Gaps in six bullets were closed before promotion, and all 72 are promoted with
+item-specific rationales. All 30 objectives are covered (editorial coverage, not mastery).
+Totals: 71 of 424 objectives; 78 Level I, 13 Level II and 37 Level III core items covered;
+902 of 1,030 unreviewed.
+
+**Validation.** See `notes/source-review-records.md`, *Performance and planning batch*, and
+the draft PR for the final local results. Remote CI runs only after a merge into `main`
+(Section 17.2) and was not triggered; live execution on a merge event remains unverified.
+
+**Remaining gaps.**
+- Examples are synthetic apart from dated ICI figures and legal thresholds.
+- Several original papers were read only through secondary texts.
+- The October 2026 SEC proposal could change the performance-fee rules.
+- Human review is outstanding.
+
+### 18.1 Correction pass on PR #23 (executed 2026-10-18)
+
+A fixes-only pass on draft PR #23 at `0b094ea`, after an external audit. No objective
+was added and no coverage status or outline mapping changed; this pass is exempt from
+the 30-objective target (Section 17.4), which stands for future expansion prompts.
+
+1. **Style analysis** (`meth:manager-due-diligence`). The script minimised the variance
+   of squared tracking differences. It now minimises the variance of the tracking
+   difference, as Sharpe (1992) states. The weights are 1.37/56.60/0/27.13/14.90 percent,
+   and R^2 is still 0.986. Three checks confirm the solution: a centred quadratic form,
+   the KKT conditions, and invariance to a constant added to the fund's returns.
+2. **Transition hedge** (`ex:investment-planning-case`,
+   `meth:risk-identification-modification`). The hedge is now applied with the
+   concentrated stock retained, using the five-asset weights and covariance: volatility
+   falls from 12.19 to 10.89 percent.
+   - It does not meet the loss limit (5th percentile -14.80 against -13). The limit is
+     met only after the first third is sold (-12.52).
+   - The stock's expected return is assumed to be 5.5 percent; a beta-consistent
+     alternative changes no verdict.
+   - Specific risk remains, and the basis, margin and execution limits are kept.
+3. **Tax basis** (planning case, `meth:asset-class-portfolio-construction`).
+   - Forecasts are now stated as pre-tax real and mapped exactly to after-tax real.
+   - The gains tax on the staged sale is paid from the pool, raising the requirement
+     from 2.70 to 2.81 percent.
+   - The balanced mix earns 2.40 percent after tax, and no mix meets both objectives.
+     The case now teaches a funding gap closed by lower spending, higher savings or
+     later retirement.
+   - The IPS return objective is 2.40 percent, with the client's resolution recorded.
+4. **Prior sensitivity** (`ex:manager-selection-case`). The posterior ranking reverses
+   at a prior sd of about 0.42 (0.30: X 0.277, Y 0.234; 0.50: X 0.429, Y 0.471). The
+   hire rests on process, attribution and operational evidence.
+5. **Normal downside deviation** (`meth:downside-appraisal-measures`). Eq. (5.80) gives
+   sigma/sqrt(2) at the mean, and the ratio depends on the target. Bacon's "about 0.6"
+   is attributed to him and matched to the conditional standard deviation below the
+   mean.
+6. **Treynor and alpha** (`meth:risk-adjusted-performance-measures`). They agree only
+   for positive beta; the entry now shows the zero- and negative-beta cases and a
+   counterexample.
+
+Checks rose from 164 to 193 (investment planning 41, manager selection 26, performance
+evaluation 41). The nine objectives mapped to the changed entries were reassessed
+against the corrected teaching and remain covered. Totals are unchanged: 71 of 424
+objectives; 78 Level I, 13 Level II and 37 shared-core items covered; 902 of 1,030
+unreviewed. Details are in `notes/source-review-records.md`, *Correction pass on
+PR #23*. Remote CI was not triggered.

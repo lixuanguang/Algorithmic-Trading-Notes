@@ -16,10 +16,18 @@ the full spot, dividends repay the loan); the SOFR futures hedge derives loan in
 N(E_t/E_0 - P(t, T_next)) (Hull, p. 778, prints N(E - E_0)/E_0; his Technical Note 19 agrees with the correction), adds
 an equity-for-SOFR leg with realised overnight compounding, reset-date limits, and a stochastic-rate simulation.
 
+Correction of 2026-10-19 (audit of 642e29c): the original bond forward is built on a dated coupon calendar (15 May/15 Nov,
+actual/actual in period, Sunday coupon paid Monday under 31 CFR 356.30(a), T+1 spot settlement, term repo act/360);
+accrued interest, coupon timing, full and quoted prices come from that one schedule, with a two-repo cash ledger and a
+carry decomposition of quoted forward minus spot quote as independent checks.
+
+Count convention: one check is one executed ok() call (so a call inside a loop counts once per iteration).
+
 Run: uv run python forward-swap-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports
+import datetime
 import math
 import sys
 
@@ -359,20 +367,146 @@ ok(
     and abs(F_quoted_bond - 114.859) < 5e-4
     and abs(F_fut - 71.79) < 0.005,
 )
-# Original bond forward: 5% s.a. bond, clean 101.20, accrued 0.90 now; coupon 2.50 in 0.35 years; forward for
-# delivery in 0.5 years when accrued will be 0.375; repo 4.2% (continuous)
-full_now = 101.20 + 0.90
-I_b = 2.5 * math.exp(-0.042 * 0.35)
-F_full = (full_now - I_b) * math.exp(0.042 * 0.5)
-F_clean = F_full - 0.375
-ok(
-    "bond forward: full 102.10, coupon PV 2.4635, forward full 101.7510, forward clean (quoted) 101.3760",
-    abs(I_b - 2.4635) < 5e-5 and abs(F_full - 101.7510) < 5e-5 and abs(F_clean - 101.3760) < 5e-5,
+# Original bond forward on a dated schedule (correction of 2026-10-19: the earlier inputs, accrued 0.90 now and 0.375
+# at delivery with a coupon in 0.35 years, fitted no regular semiannual calendar). 5% note, coupons 15 May and 15
+# November, actual/actual in period on the scheduled dates (Hull sec. 6.1, pp. 152-153); a coupon date on a weekend is
+# paid the next business day without additional interest (31 CFR 356.30(a)). Spot trade Fri 16 Oct 2026, T+1
+# settlement Mon 19 Oct 2026; forward delivery Mon 19 Apr 2027; term repo 4.20% simple act/360, flat.
+C_b, repo = 2.5, 0.042
+settle, deliver, trade = (
+    datetime.date(2026, 10, 19),
+    datetime.date(2027, 4, 19),
+    datetime.date(2026, 10, 16),
 )
-F_new = F_full + 0.40
+
+
+def coupon_schedule(maturity, first_needed):
+    """Scheduled coupon dates stepped back six months from maturity (independent of the hand-entered dates)."""
+    dates, y, m = [], maturity.year, maturity.month
+    while True:
+        d = datetime.date(y, m, maturity.day)
+        if d < first_needed:
+            return sorted([*dates, d])
+        dates.append(d)
+        m -= 6
+        if m <= 0:
+            m, y = m + 12, y - 1
+
+
+def paid_on(d):
+    """Next business day for a weekend date (no holiday falls on these dates)."""
+    while d.weekday() >= 5:
+        d += datetime.timedelta(days=1)
+    return d
+
+
+sched = coupon_schedule(datetime.date(2031, 11, 15), datetime.date(2026, 1, 1))
+
+
+def accrued(on):
+    prev = max(d for d in sched if d <= on)
+    nxt = min(d for d in sched if d > on)
+    return C_b * (on - prev).days / (nxt - prev).days, prev, nxt
+
+
+def df_repo(d):
+    return 1 / (1 + repo * (d - settle).days / 360)
+
+
+ai_0, prev_0, next_0 = accrued(settle)
+ai_T, prev_T, next_T = accrued(deliver)
+pay_c = paid_on(next_0)
 ok(
-    "if the forward full price later rises by 0.40 with 0.25 years left, a long agreed at 101.7510 is worth +0.3958",
-    abs(0.40 * math.exp(-0.042 * 0.25) - 0.3958) < 5e-5 and F_new > F_full,
+    "schedule: settlement in 15 May-15 Nov 2026 (157 of 184 days), delivery in 15 Nov 2026-15 May 2027 (155 of 181);"
+    " the Sunday 15 Nov 2026 coupon is paid Monday 16 Nov, 28 days after settlement; trade T+1 is Monday 19 Oct",
+    (prev_0, next_0, prev_T, next_T)
+    == (
+        datetime.date(2026, 5, 15),
+        datetime.date(2026, 11, 15),
+        datetime.date(2026, 11, 15),
+        datetime.date(2027, 5, 15),
+    )
+    and (
+        (settle - prev_0).days,
+        (next_0 - prev_0).days,
+        (deliver - prev_T).days,
+        (next_T - prev_T).days,
+    )
+    == (157, 184, 155, 181)
+    and next_0.weekday() == 6
+    and pay_c == datetime.date(2026, 11, 16)
+    and (pay_c - settle).days == 28
+    and paid_on(trade + datetime.timedelta(days=1)) == settle,
+)
+ok(
+    "accrual is continuous: it reaches the full coupon at the scheduled date and restarts at zero (not on the paid date)",
+    close(C_b * (next_0 - prev_0).days / (next_0 - prev_0).days, C_b)
+    and close(accrued(next_0)[0], 0.0)
+    and accrued(pay_c)[0] > 0,
+)
+clean_0 = 101.20
+B0_b = clean_0 + ai_0
+I_b = C_b * df_repo(pay_c)
+F_full = (B0_b - I_b) / df_repo(deliver)
+F_clean = F_full - ai_T
+ok(
+    "accrued 2.133152 and 2.140884; full spot 103.333152; coupon PV 2.491860; forward full 102.982489; quoted 100.841605",
+    all(
+        abs(a - b) < 5e-7
+        for a, b in [
+            (ai_0, 2.133152),
+            (ai_T, 2.140884),
+            (B0_b, 103.333152),
+            (I_b, 2.491860),
+            (F_full, 102.982489),
+            (F_clean, 100.841605),
+        ]
+    ),
+    f"{ai_0:.6f} {ai_T:.6f} {B0_b:.6f} {I_b:.6f} {F_full:.6f} {F_clean:.6f}",
+)
+# Independent check 1: dated ledger of the replication (two term repos), net cash zero before delivery
+loan_T, loan_c = B0_b - I_b, I_b
+ledger = {
+    settle: -B0_b + loan_T + loan_c,
+    pay_c: C_b - loan_c * (1 + repo * (pay_c - settle).days / 360),
+    deliver: -loan_T * (1 + repo * (deliver - settle).days / 360),
+}
+ok(
+    "replication ledger: buy the bond with repo to delivery (B0 - I) and to the coupon date (I); the coupon repays the"
+    " short repo; at delivery the bond is held against a debt equal to the forward full price",
+    close(ledger[settle], 0, 1e-12)
+    and close(ledger[pay_c], 0, 1e-12)
+    and close(-ledger[deliver], F_full, 1e-9),
+)
+# Independent check 2: clean-to-full at both dates and the carry decomposition of quoted forward minus spot quote
+fin = B0_b * repo * (deliver - settle).days / 360
+coupon_income = C_b - ai_0 + ai_T
+reinvest = C_b * (df_repo(pay_c) / df_repo(deliver) - 1)
+ok(
+    "quoted forward - spot quote = financing 2.194107 - coupon income 2.507732 - interest on the paid coupon 0.044770"
+    " = -0.358395 (positive carry: forward quoted below spot)",
+    close(F_clean - clean_0, fin - coupon_income - reinvest, 1e-12)
+    and abs(fin - 2.194107) < 5e-7
+    and abs(coupon_income - 2.507732) < 5e-7
+    and abs(reinvest - 0.044770) < 5e-7
+    and F_clean < clean_0,
+)
+ok(
+    "conventions matter: discounting the coupon from the Sunday instead of the Monday moves the forward by -0.000296;"
+    " reinvesting it at the 154-day term rate instead of the curve's forward moves it by -0.000146",
+    abs((B0_b - C_b / (1 + repo * 27 / 360)) / df_repo(deliver) - F_full + 0.000296) < 5e-7
+    and abs(
+        B0_b / df_repo(deliver)
+        - C_b * (1 + repo * (deliver - pay_c).days / 360)
+        - F_full
+        + 0.000146
+    )
+    < 5e-7,
+)
+later = datetime.date(2027, 1, 18)
+ok(
+    "if the forward full price rises 0.40 on 18 Jan 2027 (91 days left), a long agreed at 102.982489 is worth +0.395798",
+    (deliver - later).days == 91 and abs(0.40 / (1 + repo * 91 / 360) - 0.395798) < 5e-7,
 )
 
 print("== part 6: swaps as strips of forwards; interest-rate, currency and equity swaps")

@@ -4121,7 +4121,15 @@
      },
      {
       "key": "s7-fabozzifixed",
-      "locator": "chap. 9, pp. 221-223"
+      "locator": "chap. 9, p. 221"
+     },
+     {
+      "key": "irs-pub-550-2025",
+      "locator": "chap. 1, Tax-Exempt Interest and Market Discount Bonds; chap. 4, Discounted tax-exempt obligations and Tax-exempt state and local government bonds"
+     },
+     {
+      "key": "irs-pub-1212-2025",
+      "locator": "Figuring OID on Long-Term Debt Instruments, Debt Instruments Issued After 1984; Information for Owners of OID Debt Instruments, De minimis rule"
      },
      {
       "key": "cfr-17-240-15c6-1",
@@ -4150,13 +4158,15 @@
      "notes/readings/usc-31-3124.md",
      "notes/readings/cfr-17-240-15c6-1.md",
      "notes/readings/finra-regulatory-notice-23-15.md",
-     "notes/readings/eu-2017-1129-prospectus.md"
+     "notes/readings/eu-2017-1129-prospectus.md",
+     "notes/readings/irs-pub-550-2025.md",
+     "notes/readings/irs-pub-1212-2025.md"
     ],
     "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
     "entry_evidence": [
      "rule:bond-issuance-legal-tax"
     ],
-    "example": null
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 10 (municipal original-issue against market discount: constant-yield accrual by two routes, de minimis threshold, holders at issue and in the secondary market); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5162,17 +5172,22 @@
      {
       "key": "cbot-treasury-chapters-2026",
       "locator": "Rule 18101.B"
+     },
+     {
+      "key": "cfr-31-356-30-payment-dates",
+      "locator": "sec. 356.30(a)"
      }
     ],
     "reading_notes": [
-     "notes/readings/s7-hulloptions.md"
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/cfr-31-356-30-payment-dates.md"
     ],
     "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
     "entry_evidence": [
      "meth:forward-price-value-lifecycle",
      "meth:rate-bond-forward-valuation"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (value at inception, during the life and at expiry); notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (value at inception, during the life and at expiry); notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward on a dated coupon calendar with a two-repo cash ledger and a carry decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -8783,16 +8798,21 @@
      {
       "key": "cbot-treasury-chapters-2026",
       "locator": "Rule 18101.B"
+     },
+     {
+      "key": "cfr-31-356-30-payment-dates",
+      "locator": "sec. 356.30(a)"
      }
     ],
     "reading_notes": [
-     "notes/readings/s7-hulloptions.md"
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/cfr-31-356-30-payment-dates.md"
     ],
     "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
     "entry_evidence": [
      "meth:rate-bond-forward-valuation"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward on a dated coupon calendar with a two-repo cash ledger and a carry decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },

@@ -16,6 +16,11 @@ business days with calendar-day weights (the New York Fed's SOFR Averages and In
 example is reproduced), replacing simple interest on 91.25-day quarters; and part 9 adds a sloped-curve counterexample
 in which parallel-zero-curve and yield duration and convexity differ, with a flat-curve control.
 
+Correction of 2026-10-19 (audit of 642e29c): part 10 checks the municipal original-issue and market discount example of
+rule:bond-issuance-legal-tax (IRS Pub. 550 for 2025, Pub. 1212 rev. December 2025).
+
+Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
+
 Conventions are stated beside each block: semiannual coupons, bond-equivalent (doubled) yields unless stated, prices
 per 100 of par, durations in years, PVBP per 100 of par for one basis point.
 
@@ -958,6 +963,60 @@ print(f"    empirical duration {-beta:.3f} vs analytical 6.5")
 ok(
     "empirical duration 4.63 (population value 6.5 x 0.75 = 4.875), well below the analytical 6.5",
     abs(-beta - 4.630) < 5e-3 and -beta < 6.5,
+)
+
+
+print(
+    "== part 10: discount on a municipal bond, OID against market discount (correction of 2026-10-19)"
+)
+# rule:bond-issuance-legal-tax. U.S. federal income tax for an individual holder, IRS Pub. 550 (2025) and Pub. 1212
+# (rev. December 2025): tax-exempt OID is exempt interest that is accrued by constant yield and added to basis; market
+# discount (issue price plus OID accrued before purchase, less basis) is not exempt and, for a purchase after 30 April
+# 1993, is ordinary income on disposal or redemption unless below the de minimis 0.25% x full years to maturity.
+face_m, cpn_m, n_m, issue_m = 1000.0, 30.0, 40, 900.0
+
+
+def muni_pv(y, periods):
+    return (
+        sum(cpn_m / 2 / (1 + y / 2) ** k for k in range(1, periods + 1))
+        + face_m / (1 + y / 2) ** periods
+    )
+
+
+y_m = brentq(lambda y: muni_pv(y, n_m) - issue_m, 1e-4, 0.2)
+basis = issue_m
+for _ in range(
+    10
+):  # constant-yield accrual period by period: interest at the issue yield less the coupon paid
+    basis = basis * (1 + y_m / 2) - cpn_m / 2
+aip_5 = muni_pv(y_m, n_m - 10)
+ok(
+    "issue at 900 implies 3.7128% s.a.; after five years the adjusted issue price is 918.58 by period-by-period"
+    " accrual and by discounting the remaining cash flows at the issue yield",
+    abs(y_m - 0.037128) < 5e-7 and close(basis, aip_5, 1e-9) and abs(aip_5 - 918.577) < 5e-4,
+)
+md_b = aip_5 - 850.0
+de_min = 0.0025 * face_m * 15
+oid_left = face_m - aip_5
+gain_b = face_m - (850.0 + oid_left)
+ok(
+    "holder B at 850: market discount 68.58 exceeds de minimis 37.50; remaining OID 81.42 is exempt and lifts basis to"
+    " 931.42; the 68.58 redemption gain equals the market discount (ordinary income)",
+    md_b > de_min
+    and abs(md_b - 68.577) < 5e-4
+    and abs(oid_left - 81.423) < 5e-4
+    and close(gain_b, md_b, 1e-9)
+    and close(oid_left + md_b, face_m - 850.0, 1e-9),
+)
+ok(
+    "holder A sells at 850 after five years: capital loss 68.58 against the OID-adjusted basis, not 50 against cost",
+    abs((850.0 - aip_5) + 68.577) < 5e-4 and close(850.0 - issue_m, -50.0),
+)
+md_900 = aip_5 - 900.0
+ok(
+    "bought at 900 instead: discount 18.58 is below 37.50, so market discount is zero and the 18.58 gain is capital;"
+    " A selling at 950 instead has a capital gain of 31.42",
+    md_900 < de_min and abs(md_900 - 18.577) < 5e-4 and abs(950.0 - aip_5 - 31.423) < 5e-4,
 )
 
 print()

@@ -8891,7 +8891,7 @@
    "objectives": [
     "objective:explain-bond-legal-tax-factors"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: rule:bond-issuance-legal-tax describes registration and its exemptions, shelf and Rule 144A, the Trust Indenture Act threshold, tax exemptions for municipal and Treasury interest, T+1 settlement and the EU prospectus exemptions, each dated.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: rule:bond-issuance-legal-tax describes registration and its exemptions, shelf and Rule 144A, the Trust Indenture Act threshold, tax exemptions for municipal and Treasury interest, T+1 settlement and the EU prospectus exemptions, each dated. Re-reviewed 2026-10-19 after the second PR #24 correction pass: the tax paragraph now separates exempt original-issue discount, taxable market discount and capital gains with their basis treatment, from IRS Pub. 550 and Pub. 1212, with a worked example; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -17635,7 +17635,7 @@
    "objectives": [
     "objective:value-rate-and-bond-forwards"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: meth:rate-bond-forward-valuation prices and values bond forwards and Treasury futures, with conversion factors and the cheapest to deliver.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:rate-bond-forward-valuation prices and values bond forwards and Treasury futures, with conversion factors and the cheapest to deliver. Re-reviewed 2026-10-19 after the second PR #24 correction pass: the original bond forward now derives accrued interest, coupon timing and full and quoted prices from one dated coupon calendar; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },

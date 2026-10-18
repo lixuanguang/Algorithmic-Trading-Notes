@@ -11,9 +11,11 @@ d the discount yield in percentage points; daily spread = 10-year CMT - bond-equ
 of business days. Checks: unique, increasing dates; no missing months; the month of the last observation
 flagged incomplete when it is the retrieval month (October 2026).
 
-Usage: python3 h15_monthly.py --extract H15_data.xml   (rebuild the daily extract)
-       python3 h15_monthly.py                          (rebuild h15-spread-monthly.csv)
+Usage: uv run python h15_monthly.py --extract H15_data.xml   (rebuild the daily extract)
+       uv run python h15_monthly.py                          (rebuild h15-spread-monthly.csv)
 """
+
+# standard library imports
 import csv
 import datetime as dt
 import os
@@ -26,7 +28,9 @@ RETRIEVED = dt.date(2026, 10, 16)
 
 
 def extract(xml_path):
+    # standard library imports
     import xml.etree.ElementTree as ET
+
     want = {"RIFSGFSM03_N.B": "tb3m_discount", "RIFLGFCY10_N.B": "cmt_10y"}
     data = {v: {} for v in want.values()}
     cur = None
@@ -40,7 +44,9 @@ def extract(xml_path):
             el.clear()
         elif ev == "end" and tag == "Series":
             cur = None
-    dates = sorted(d for d in set(data["tb3m_discount"]) & set(data["cmt_10y"]) if d >= "1962-01-01")
+    dates = sorted(
+        d for d in set(data["tb3m_discount"]) & set(data["cmt_10y"]) if d >= "1962-01-01"
+    )
     with open(DAILY, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["date", "tb3m_discount", "cmt_10y"])
@@ -56,7 +62,9 @@ def bond_equivalent(d):
 def monthly():
     rows = list(csv.DictReader(open(DAILY)))
     dates = [r["date"] for r in rows]
-    assert len(dates) == len(set(dates)) and dates == sorted(dates), "dates not unique and increasing"
+    assert len(dates) == len(set(dates)) and dates == sorted(dates), (
+        "dates not unique and increasing"
+    )
     by = {}
     for r in rows:
         s = float(r["cmt_10y"]) - bond_equivalent(float(r["tb3m_discount"]))

@@ -18,15 +18,17 @@ Checks:
      start-settled payoff lies below the deterministic substitution (Jensen), by an amount that grows with the
      volatility of L (expectation by quadrature over the normal density). Illustration only; lognormal L and the
      volatilities are invented.
-Run: python3 fra-settlement-check.py  (standard library; exits 1 on failure).
+Run: uv run python fra-settlement-check.py  (standard library; exits 1 on failure).
 """
+
+# standard library imports
 import math
 import sys
 
 fails = []
 
 
-def ok(name, cond, detail=''):
+def ok(name, cond, detail=""):
     print(f"  {'ok ' if cond else 'BAD'} {name}{': ' + detail if detail else ''}")
     if not cond:
         fails.append(name)
@@ -43,30 +45,39 @@ def values(Pois, Pref):
     return F, start, end
 
 
-print('== 1. the entry\'s invented curves (OIS 3.0%, term reference 3.3%, continuous)')
+print("== 1. the entry's invented curves (OIS 3.0%, term reference 3.3%, continuous)")
 Pois = lambda t: math.exp(-0.030 * t)
 Pref = lambda t: math.exp(-0.033 * t)
 F, start, end = values(Pois, Pref)
-print(f'     F_j = {F*100:.4f}%; start-settled {start:,.2f}; end-settled {end:,.2f}')
-ok('start-settled -20,777.37', round(start, 2) == -20777.37)
-ok('end-settled -20,792.96', round(end, 2) == -20792.96)
+print(f"     F_j = {F * 100:.4f}%; start-settled {start:,.2f}; end-settled {end:,.2f}")
+ok("start-settled -20,777.37", round(start, 2) == -20777.37)
+ok("end-settled -20,792.96", round(end, 2) == -20792.96)
 
-print('== 2. single curve: projection and discounting on the same curve')
+print("== 2. single curve: projection and discounting on the same curve")
 for r in (0.01, 0.03, 0.08):
     P = lambda t, r=r: math.exp(-r * t)
     F1, s1, e1 = values(P, P)
     rep = N * (P(T1) - (1 + tau * K) * P(T2))
-    ok(f'coincide at {r:.0%}', abs(s1 - e1) < 1e-6 and abs(s1 - rep) < 1e-6, f'start {s1:,.4f}, end {e1:,.4f}, bonds {rep:,.4f}')
+    ok(
+        f"coincide at {r:.0%}",
+        abs(s1 - e1) < 1e-6 and abs(s1 - rep) < 1e-6,
+        f"start {s1:,.4f}, end {e1:,.4f}, bonds {rep:,.4f}",
+    )
 
-print('== 3. separate curves: the conventions diverge')
+print("== 3. separate curves: the conventions diverge")
 for spread in (0.001, 0.003, 0.010):
     Pr = lambda t, s=spread: math.exp(-(0.030 + s) * t)
     F3, s3, e3 = values(Pois, Pr)
     gap = N * tau * (F3 - K) * (Pois(T1) / (1 + tau * F3) - Pois(T2))
-    ok(f'differ with a {spread*1e4:.0f} bp basis', abs(s3 - e3) > 0.01 and abs((s3 - e3) - gap) < 1e-6,
-       f'start - end = {s3 - e3:,.2f}')
+    ok(
+        f"differ with a {spread * 1e4:.0f} bp basis",
+        abs(s3 - e3) > 0.01 and abs((s3 - e3) - gap) < 1e-6,
+        f"start - end = {s3 - e3:,.2f}",
+    )
 
-print('== 4. stochastic L, deterministic OIS: deterministic substitution overstates the start-settled value')
+print(
+    "== 4. stochastic L, deterministic OIS: deterministic substitution overstates the start-settled value"
+)
 Fm = F
 det = N * Pois(T1) * tau * (Fm - K) / (1 + tau * Fm)
 prev = 0.0
@@ -80,11 +91,14 @@ for vol in (0.2, 0.5, 1.0):
         w = (0.5 if i in (0, m - 1) else 1.0) * h * math.exp(-0.5 * z * z) / math.sqrt(2 * math.pi)
         acc += w * tau * (L - K) / (1 + tau * L)
     ex = N * Pois(T1) * acc
-    ok(f'lognormal vol {vol:.0%}: exact expectation below substitution', ex < det and det - ex > prev,
-       f'{ex:,.2f} vs substitution {det:,.2f} (gap {det - ex:,.2f})')
+    ok(
+        f"lognormal vol {vol:.0%}: exact expectation below substitution",
+        ex < det and det - ex > prev,
+        f"{ex:,.2f} vs substitution {det:,.2f} (gap {det - ex:,.2f})",
+    )
     prev = det - ex
 
 if fails:
-    print('\nFAILED:', fails)
+    print("\nFAILED:", fails)
     sys.exit(1)
-print('\nall checks passed')
+print("\nall checks passed")

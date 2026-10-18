@@ -1,0 +1,63 @@
+\section{Descriptive statistics of returns}
+
+The entries in this section use one original series of eight monthly returns, in percent: asset~A $2.0, -1.5, 3.0, 0.5, -4.0, 1.5, 2.5, -0.5$ and asset~B $1.0, -0.5, 1.5, 0.0, -2.5, 1.0, 2.0, 0.5$. They are illustrative numbers, not data on any security.
+
+\begin{qfdefinition}[Location, dispersion and quantiles of a return sample: mean, median, mode; range, absolute deviations, variance and standard deviation with population and sample denominators; percentiles and the interquartile range]\label{def:return-sample-statistics}
+\qffield{Statement} The mean is the sum of the data divided by their number; the median is the middle value of the sorted data, or the average of the two middle values when $N$ is even; the mode is the most frequent value. With extreme values in the tails the median is a better estimate of location than the mean, and for skewed data the mean is pulled towards the long tail \citep[sec.~1.3.5.1]{statistical-methods-handbook}. Dispersion is measured by the range, the average absolute deviation from the mean (divide by $N$), the median absolute deviation from the median, the interquartile range (75th minus 25th percentile) and the variance and standard deviation, which the handbook defines with denominator $N-1$ (sec.~1.3.5.6). For a random sample, independent observations from one distribution with finite variance $\sigma^2$, dividing the squared deviations by $n$ gives a biased estimator of $\sigma^2$, with bias $-\sigma^2/n$; dividing by $n-1$ gives the unbiased sample variance, though its square root is still a biased estimator of $\sigma$ \citep[sec.~8.2.2]{probability-statistics-random-processes}.
+
+\qffield{Notation} Data $x_1,\dots,x_N$, mean $\bar x$. Population (descriptive, the data are the whole set): $\sigma^2=\frac1N\sum(x_i-\bar x)^2$. Sample (the data estimate a larger population): $s^2=\frac1{N-1}\sum(x_i-\bar x)^2$. Standard deviations are the square roots, in the units of the data. \emph{Quantile convention used here}: the $p$th percentile sets $p(N+1)=k+d$, $k$ an integer and $0\le d<1$, and takes $Y_{(k)}+d\,(Y_{(k+1)}-Y_{(k)})$ from the ordered data, with $p\le1/(N+1)$ giving the minimum and $p\ge N/(N+1)$ the maximum; other interpolations are in common use and give different answers \citep[sec.~7.2.6.2]{statistical-methods-handbook}.
+
+\qffield{Conditions} Descriptive statistics summarise the observed data, whatever produced them; either denominator is then a choice of definition. Read as \emph{estimates} of a distribution's moments, they need a sampling model: the unbiasedness of $s^2$ above uses independent, identically distributed observations with finite variance. A common marginal distribution is not enough. If two observations are always equal, $X_1=X_2=Z$ with $Z$ equally likely $-1$ or $+1$, the marginal variance is 1 but every sample of two has sample variance 0 (Interpretation). Monthly returns are dependent and their distribution shifts over time, so a sample of eight months says little about the population. Which denominator and which quantile rule a calculator or package uses must be checked before comparing figures.
+
+\qffield{Practice} Example (asset~A). Mean 0.4375 percent; sorted data $-4.0,-1.5,-0.5,0.5,1.5,2.0,2.5,3.0$, so the median is $(0.5+1.5)/2=1.0$ percent, and there is no mode. Range 7.0 points; average absolute deviation 1.8281; median absolute deviation 1.5. Variance 4.8398 with $N$ and 5.5313 with $N-1$; standard deviations 2.2000 and 2.3519 percent. Quartiles by the $p(N+1)$ rule are $-1.25$ and 2.375 (interquartile range 3.625); the interpolation rule used by many spreadsheets gives $-0.75$ and 2.125. The 10th percentile is the minimum, $-4.0$, under the first rule and $-2.25$ under the second. Interpretation: the mean lies below the median because one large loss pulls it down.
+
+\qffield{Pitfalls} The sample standard deviation is not unbiased for $\sigma$ even when $s^2$ is unbiased for $\sigma^2$; with positively dependent observations $s^2$ itself is biased downward. Annualising a monthly standard deviation by $\sqrt{12}$ assumes uncorrelated, identically distributed returns. With few observations, extreme percentiles are the sample extremes and are unstable.
+
+\qffield{See also} \hyperref[def:return-shape-statistics]{skewness and kurtosis}; \hyperref[def:return-measures]{return measures} (arithmetic and geometric means); \hyperref[def:conditional-moments]{moments of random variables}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Skewness and kurtosis of a return sample: moment ratios, bias-adjusted versions, and kurtosis against excess kurtosis]\label{def:return-shape-statistics}
+\qffield{Statement} The Fisher--Pearson coefficient of skewness is $g_1=\frac{\sum(Y_i-\bar Y)^3/N}{s^3}$ and the kurtosis $\frac{\sum(Y_i-\bar Y)^4/N}{s^4}$, where in both ``the $s$ is computed with $N$ in the denominator rather than $N-1$''. Many programs instead compute the adjusted coefficient $G_1=\frac{\sqrt{N(N-1)}}{N-2}g_1$. The kurtosis of a normal distribution is three; \emph{excess} kurtosis subtracts 3 so that the normal has zero, and ``which definition of kurtosis is used is a matter of convention'' \citep[sec.~1.3.5.11]{statistical-methods-handbook}.
+
+\qffield{Notation} Central moments $m_k=\frac1N\sum(x_i-\bar x)^k$; $g_1=m_3/m_2^{3/2}$; kurtosis $b_2=m_4/m_2^2$; excess kurtosis $b_2-3$. A common bias-adjusted excess kurtosis (the one returned by scipy's \texttt{kurtosis(bias=False)}) is $G_2=\frac{N-1}{(N-2)(N-3)}\bigl((N+1)(b_2-3)+6\bigr)$.
+
+\qffield{Conditions} Kurtosis ``is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution'': data with high kurtosis ``tend to have heavy tails, or outliers'' (sec.~1.3.5.11). Interpretation: negative skewness means a longer left tail. Both statistics rest on third and fourth powers, so a few extreme observations can dominate them, and their sampling error is large in short samples. High kurtosis does not by itself say where the rest of the mass lies: probabilities 0.495 at $\pm1$ and 0.005 at $\pm10$ give variance 1.99 and kurtosis 25.50, yet no mass within half a standard deviation of the mean, where a normal of the same variance has 0.383. A finite sample always has a finite variance and kurtosis, which are valid descriptions of those data; what fails, when the population moment does not exist (\hyperref[def:financial-distributions]{distributions}), is reading them as estimates of it.
+
+\qffield{Practice} Example (asset~A): $g_1=-0.7615$, $G_1=-0.9497$; kurtosis 2.5138, excess kurtosis $-0.4862$, and the bias-adjusted excess kurtosis $+0.3789$. The sign of the excess kurtosis depends on the convention: with eight observations the data cannot tell a thin-tailed from a fat-tailed distribution. The negative skewness agrees with the mean lying below the median.
+
+\qffield{Pitfalls} State whether a reported kurtosis is raw or excess; ``kurtosis of 3'' and ``excess kurtosis of 3'' describe very different distributions. Monthly samples of a few years rarely pin down tail shape; heavy tails of returns are a documented feature of longer and higher-frequency data (\hyperref[ev:high-frequency-stylised-facts]{stylised facts}).
+
+\qffield{See also} \hyperref[def:return-sample-statistics]{location and dispersion}; \hyperref[def:financial-distributions]{distributions used in finance}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Covariance and correlation of two return series: definitions, units, denominators and limitations]\label{def:return-dependence}
+\qffield{Statement} The covariance of two random variables is $\mathrm{Cov}(X,Y)=E[(X-EX)(Y-EY)]=E[XY]-EX\,EY$, and the correlation coefficient $\rho=\mathrm{Cov}(X,Y)/(\sigma_X\sigma_Y)$ always lies between $-1$ and $1$. Independent variables have zero covariance, but zero covariance does not imply independence. Correlation is unchanged by positive rescaling and shifting, $\rho(aX+b,cY+d)=\rho(X,Y)$ for $a,c>0$, while covariance scales with the variables; and $\mathrm{Var}(aX+bY)=a^2\mathrm{Var}X+b^2\mathrm{Var}Y+2ab\,\mathrm{Cov}(X,Y)$ \citep[sec.~5.3.1]{probability-statistics-random-processes}.
+
+\qffield{Notation} Sample covariance $\frac1{N-1}\sum(a_i-\bar a)(b_i-\bar b)$, or with $N$ for the descriptive version; correlation $r=\frac{\sum(a_i-\bar a)(b_i-\bar b)}{\sqrt{\sum(a_i-\bar a)^2\sum(b_i-\bar b)^2}}$, which is the same with either denominator provided all three terms use it. Covariance has the product of the two units (percent squared for returns in percent); correlation has none.
+
+\qffield{Conditions} Interpretation: correlation measures \emph{linear} association only; a perfect nonlinear relation can have zero correlation, and a few extreme observations can create or hide it. Correlations estimated over one period need not hold in another; in stress, the dependence of tails can differ from that in normal months. Large covariance matrices need special estimators (\hyperref[meth:portfolio-covariance-estimation]{covariance estimation}).
+
+\qffield{Practice} Example: the covariance of A and B is 2.7734 (percent squared) with $N$ and 3.1696 with $N-1$; in decimal returns it is 0.000317. The correlation is 0.9573 either way. The series $x=-2,\dots,2$ and $y=x^2$ are perfectly dependent yet have correlation zero.
+
+\qffield{Pitfalls} Mixing denominators (a covariance with $N-1$ and standard deviations with $N$) gives a correlation that is wrong by the factor $N/(N-1)$. Covariances must be compared in the same units. High correlation of two assets is not evidence that one causes the other.
+
+\qffield{See also} \hyperref[def:conditional-moments]{conditional moments} (covariance of random variables); \hyperref[ev:correlation-matrix-noise]{noise in large correlation matrices}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Downside and relative dispersion: semi-deviation about a target, its denominators, and the coefficient of variation and its limits]\label{def:downside-relative-dispersion}
+\qffield{Statement} The semideviation with respect to a chosen benchmark $B$ is $\mathrm{SSD}_B=\bigl\{\frac1T\sum_{t=1}^{T}\min(R_t-B,0)^2\bigr\}^{1/2}$, with $T$ the number of observations: ``returns below $B$ add to the calculation of the semideviation figure, but returns above it do not'' \citep[eq.~(1), p.~2]{downside-risk-volatility-2026}. The coefficient of variation (CV) is ``the ratio of the standard deviation to the mean''; it ``should typically only be used for data measured on a ratio scale'', with ``a meaningful zero'', and ``if the mean value is near zero, the coefficient of variation is sensitive to small changes in the mean'' \citep[``Coefficient of Variation'']{coefficient-of-variation-reference-2017}.
+
+\qffield{Notation} Target $B$: zero, the mean, a risk-free rate or a required return; denominator $T$ (every observation, as in Estrada), $T-1$, or the number of shortfalls only. All three conventions are in use, so the target and the denominator must be stated with the figure. $\mathrm{CV}=s/\bar x$, here with the sample standard deviation.
+
+\qffield{Conditions} Interpretation: with denominator $N$, a semi-deviation about the mean equals $\sigma/\sqrt2$ for data symmetric about their mean, so a ratio to the standard deviation above $1/\sqrt2$ points to a heavier downside (asset~A: $1.7437/2.2000=0.79$). Dividing by the number of shortfalls measures their typical size, not their frequency, and is not comparable with the other two. Returns are not on a ratio scale: their mean can be zero or negative, so the CV of returns can be negative, unbounded or reversed in ranking. The CV is meaningful for positive quantities such as prices, volumes or volatility estimates.
+
+\qffield{Practice} Example (asset~A; three of eight returns are negative): about a target of zero, the semi-deviation is 1.5207 percent dividing by $N$, 1.6257 dividing by $N-1$ and 2.4833 dividing by the three shortfalls; about the mean, 0.4375 percent, it is 1.7437 dividing by $N$. The CV is $2.3519/0.4375=5.38$ for A and 3.75 for B. Subtracting 0.5 points from every return of A leaves its standard deviation unchanged but turns the mean to $-0.0625$ percent and the CV to $-37.6$, which ranks nothing.
+
+\qffield{Pitfalls} Quoting a semi-deviation without its target and denominator. Ranking assets by CV when any mean is near zero or negative. Treating the inverse of the CV as a Sharpe ratio: it uses the total, not the excess, return.
+
+\qffield{See also} \hyperref[def:return-sample-statistics]{location and dispersion}; \hyperref[meth:relative-performance-evaluation]{relative performance evaluation}.
+
+\end{qfdefinition}

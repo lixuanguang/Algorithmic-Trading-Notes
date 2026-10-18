@@ -1,0 +1,78 @@
+\section{Cash-flow analysis}
+
+\begin{qfmethod}[Linking the three statements: deriving operating, investing and financing cash flows from the income statement and balance sheets, by the indirect and direct methods, under IFRS and US GAAP]\label{meth:statement-linked-cash-flows}
+\qffield{Statement} The statement of cash flows reports the period's cash flows classified by operating, investing and financing activities \citep[IAS~7 para.~10]{eu-2023-1803-ias7}. Operating activities are the principal revenue-producing activities and any activity that is neither investing nor financing; investing activities acquire and dispose of long-term assets and other investments outside cash equivalents; financing activities change the size and composition of contributed equity and borrowings (para.~6). Only expenditure that results in a recognised asset may be classified as investing (para.~16). The three sections together explain the change in cash and cash equivalents between the two balance sheets, with the effect of exchange-rate changes on foreign-currency cash shown separately (para.~28).
+
+Operating cash flow is reported by either the \emph{direct} method, which shows major classes of gross receipts and payments, or the \emph{indirect} method, which starts from profit and adjusts it for non-cash transactions, deferrals and accruals of operating receipts and payments, and items whose cash effects are investing or financing (para.~18). The indirect adjustments include changes in inventories and operating receivables and payables, and non-cash items such as depreciation, provisions and deferred taxes (para.~20). The direct method is encouraged, and its gross amounts may be derived by adjusting revenue, cost of sales and other income-statement items for the same changes (para.~19). A gain on selling plant enters profit, but the proceeds are an investing inflow (para.~14).
+
+\qffield{Notation} Interpretation: for a balance-sheet account, closing balance $=$ opening balance $+$ additions $-$ reductions. Applying this identity account by account turns accruals into cash. With $\Delta$ denoting closing minus opening balance, indirect operating cash flow is
+\[ \mathrm{CFO}=\text{starting profit}+\text{non-cash charges}-\text{gains on investing disposals}-\Delta\text{operating assets}+\Delta\text{operating liabilities}\pm\text{reclassified items}. \]
+Operating assets include receivables, inventory and prepaid expenses; operating liabilities include trade payables, accrued expenses and deferred revenue. Capital expenditure is the change in gross property, plant and equipment plus the cost of assets disposed of; dividends paid are opening retained earnings plus profit minus closing retained earnings when no other equity movement exists. Then $\Delta\text{cash}=\mathrm{CFO}+\mathrm{CFI}+\mathrm{CFF}$.
+
+\emph{Line-by-line conversion} (Interpretation, from the same identity). Each income-statement line becomes a cash line by removing the change in its related operating balances. The rules below assume that those balances move only through the period's income-statement items and cash settlements: no business combinations or disposals of businesses, no foreign-currency translation of the balances, no non-cash settlements and no amounts recognised in other comprehensive income (OCI) or directly in equity. Any such movement must be removed from $\Delta$ first.
+\begin{itemize}
+\item cash from customers $=$ revenue $-\Delta$receivables $+\Delta$deferred revenue;
+\item cash paid to suppliers $=$ cost of sales $+\Delta$inventory $-\Delta$trade payables;
+\item cash paid for an expense $=$ expense $+\Delta$prepaid expense $-\Delta$accrued expense;
+\item income tax paid $=$ current tax recognised in the period $-\Delta$net current tax payable, where the net payable is current tax payable less current tax receivable; interest paid $=$ interest expense $-\Delta$interest payable;
+\item depreciation, amortisation and gains or losses on disposals have no operating cash line.
+\end{itemize}
+The tax line is a roll-forward of the \emph{current} tax balance. Current tax unpaid is a liability and an overpayment an asset \citep[IAS~12 para.~12]{eu-2023-1803-ias12}, so opening net payable plus current tax recognised minus closing net payable is tax paid. Current tax recognised includes tax charged in OCI or equity as well as the current component of tax expense in profit or loss, which entities disclose separately from deferred tax (paras.~79--80, 81(a) and~(ab)). Deferred tax is a non-cash charge: its profit-or-loss part is added back in the indirect method, and deferred-tax balances are not used to compute cash tax. They also move outside profit or loss, for example when a revaluation of property is recognised in OCI and its deferred tax with it (paras.~58, 61A and~62(a)).
+
+The textbook form of the same rule is: cash paid for a prepaid item is closing prepaid plus expense less opening prepaid, and cash paid for an accrued item is opening payable plus expense less closing payable \citep[sec.~16.6]{principles-financial-accounting-2019}. Every adjustment in the indirect method appears in exactly one direct-method line, so the two totals agree.
+
+\qffield{Conditions} Framework and period. The paragraph references above are to IAS~7 as adopted in the EU in 2023, before the IFRS~18 amendments. IFRS~18 \emph{Presentation and Disclosure in Financial Statements} applies to annual periods beginning on or after 1~January 2027, with earlier application permitted \citep[Annex, IFRS~18 para.~C1]{eu-2026-338-ifrs18}; EU companies apply it at the latest from their first financial year starting on or after that date (Art.~2). It changes the indirect method's starting point from profit to \emph{operating profit or loss}, with tax and other operating cash flows whose income or expense lies outside the operating category added as explicit adjustments (amended IAS~7 paras.~18(b) and~20).
+
+IFRS~18 also removes classification choices. Under the earlier text, entities other than financial institutions could classify interest paid and interest and dividends received as operating, or as financing and investing respectively, and dividends paid as financing or operating \citep[IAS~7 paras.~33--34]{eu-2023-1803-ias7}. The amended standard requires dividends paid to be financing, and, for an entity whose main business activity is not investing in assets or financing customers, interest paid to be financing and interest and dividends received to be investing \citep[Annex, amended IAS~7 paras.~33A and~34A]{eu-2026-338-ifrs18}. Entities with such a main business follow their income-statement classification (paras.~34B--34D). Taxes on income are operating unless specifically identified with investing or financing activities \citep[IAS~7 para.~35]{eu-2023-1803-ias7}.
+
+\emph{US GAAP} (FASB Accounting Standards Codification Topic~230). Interest and dividends received are operating inflows, and interest paid and payments to governments for taxes are operating outflows; dividends paid are financing outflows \citep[ASC 230-10-45-16(b), 45-17(c)--(d) and 45-15(a), as amended, pp.~9--10 and 14--15]{us-cash-flow-classification-amendment-2016}. Those amendments apply to public business entities for fiscal years beginning after 15~December 2017 and to other entities a year later (p.~5). The direct method is encouraged, with at least the classes of receipts and payments listed in 230-10-45-25 (p.~10). Whichever method is used, net income must be reconciled to operating cash flow, in a separate schedule when the direct method is used \citep[ASC 230-10-45-28 to 45-30, as quoted]{cash-flow-statement-roadmap-2026}; IAS~7 paragraphs~18--20 contain no such reconciliation requirement. The US GAAP text above is the 2016 Update's reprint and a 2026 secondary quotation; the current Codification was not consulted, so later amendments to these paragraphs are not reflected. In 2025--2026 the FASB staff reported stakeholder suggestions that interest need not all be operating as research feedback, not as a proposal \citep[AP35, slides~2--4; AP20A, slide~4]{cash-flow-standard-setting-2026}.
+
+\begin{center}\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+ & IFRS before IFRS~18 & IFRS with IFRS~18 (from 2027) & US GAAP (Topic 230) \\
+\midrule
+Indirect method starts from & profit or loss & operating profit or loss & net income \\
+Interest paid & operating or financing & financing$^{*}$ & operating \\
+Interest, dividends received & operating or investing & investing$^{*}$ & operating \\
+Dividends paid & financing or operating & financing & financing \\
+Income taxes paid & operating unless identified & operating unless identified & operating \\
+Reconciliation if direct method & not required & not required & required \\
+\bottomrule
+\end{tabular}
+\end{center}
+$^{*}$For entities whose main business activity is not investing in assets or providing financing to customers.
+
+\qffield{Practice} Example, original and synthetic. A distributor reports revenue 1{,}000, cost of sales 600, insurance expense 30, wages expense 150, depreciation 50 and a gain of 10 on equipment sold for 80 (cost 100, accumulated depreciation 30), so operating profit is 180. Interest expense is 20, all paid, and tax expense is 40; profit is 120. Receivables rise from 120 to 150, inventory falls from 200 to 180, prepaid insurance rises from 10 to 16, payables rise from 100 to 130, wages payable rise from 12 to 20, and tax payable falls from 15 to 10. Gross PP\&E rises from 800 to 900, accumulated depreciation from 300 to 320, and borrowings from 300 to 350. Dividends of 60 are paid, and opening cash is 50.
+
+\begin{center}\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+Operating profit & 180 \\
+Depreciation, less gain on sale ($50-10$) & 40 \\
+Receivables, inventory, prepaid ($-30+20-6$) & $-16$ \\
+Payables, wages payable ($+30+8$) & 38 \\
+Tax paid ($40+15-10$) & $-45$ \\
+\textbf{Operating cash flow} & \textbf{197} \\
+Capital expenditure ($900-800+100$); sale proceeds & $-200$; $+80$ \\
+\textbf{Investing cash flow} & $\mathbf{-120}$ \\
+New borrowing; interest paid; dividends paid & $+50$; $-20$; $-60$ \\
+\textbf{Financing cash flow} & $\mathbf{-30}$ \\
+\textbf{Change in cash} ($50\to97$) & \textbf{47} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The direct method converts each line. Cash from customers is $1{,}000-30=970$; purchases are $600-20=580$, of which $580-30=550$ was paid to suppliers. Insurance paid is $16+30-10=36$, six more than the expense because the prepayment grew; wages paid are $12+150-20=142$, eight less than the expense because more wages were left unpaid. With tax paid of 45, operating cash flow is $970-550-36-142-45=197$. The closing balance sheet, with cash at 97 and retained earnings rising by $120-60$, balances at 1{,}023.
+
+Classification changes the sections, not the change in cash. Under US GAAP, or under the earlier IFRS text with interest paid classified as operating, the indirect method starts from profit of 120 and gives operating cash flow of 177: 120, plus 40 of depreciation net of the gain, plus the 22 working-capital release, less the decrease of 5 in tax payable. Financing cash flow is then $-10$. The 20 of interest paid is the whole difference from the IFRS~18 figure of 197.
+
+Interpretation: operating cash flow exceeds profit mainly because depreciation is non-cash and working capital released 22. Operating cash flow less capital expenditure is $-3$; the sale proceeds and new borrowing funded the dividend. A single year does not show whether the inventory release or the capital expenditure will recur.
+
+\qffield{Pitfalls} Deduct a gain on sale from profit and show the full proceeds under investing; adding the proceeds to operating cash flow counts the gain twice. An increase in an operating asset, such as a prepayment, reduces cash, and an increase in an operating liability, such as an accrual, increases it. Use tax paid, not tax expense, and interest paid, not interest expense, where payables change. Derive tax paid from current tax, not from total deferred-tax balance changes: with current tax of 30 in profit or loss, no deferred tax there, an unchanged tax payable and a revaluation that adds a deferred tax liability of 10 through OCI, tax paid is 30; subtracting the change in the deferred tax liability would give 20. Investing and financing transactions that use no cash, such as acquiring an asset by assuming a liability or converting debt into equity, are excluded from the statement and disclosed elsewhere \citep[IAS~7 paras.~43--44]{eu-2023-1803-ias7}. Before comparing operating cash flows across companies, frameworks or the 2027 transition, put interest and dividends in the same sections.
+
+\qffield{See also} \hyperref[def:return-measures]{return measures} (timing of cash flows in returns).
+
+\qffield{Further reading} The indirect-method steps and a worked statement are taught in \citep[secs.~16.3--16.4]{principles-financial-accounting-2019}, the direct method in sec.~16.6.
+
+\end{qfmethod}

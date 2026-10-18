@@ -1,0 +1,77 @@
+\section{Portfolio return and risk: moments and diversification}
+
+The two entries in this section are the foundations used by the optimisers and risk models that follow. Their examples are invented, with stated units and sampling assumptions, and are not evidence about any market.
+
+\begin{qfmethod}[Portfolio return moments: one-period value weights, expected return, variance, standard deviation, covariance and correlation of portfolios, from a probability model and from historical data]\label{meth:portfolio-return-moments}
+\qffield{Statement} Markowitz writes the return on a portfolio as $R=\sum_iR_iX_i$, where $R_i$ is the return on security $i$ and $X_i$ ``the percentage of the investor's assets which are allocated to the $i$th security''. The $R_i$ are random variables; the $X_i$ are fixed by the investor, sum to one and, in his analysis, are not negative. The expected return and variance of the portfolio are then
+\[ E=\sum_{i=1}^NX_i\mu_i,\qquad V=\sum_{i=1}^N\sum_{j=1}^N\sigma_{ij}X_iX_j, \]
+with $\mu_i$ the expected value of $R_i$ and $\sigma_{ij}=E\{[R_i-E(R_i)][R_j-E(R_j)]\}=\rho_{ij}\sigma_i\sigma_j$ their covariance, so that $\sigma_{ii}$ is the variance of $R_i$ \citep[\emph{Journal of Finance} 7(1), 1952, pp.~80--81]{s6-markowitz}. The standard deviation is $\sigma=\sqrt V$ (p.~80).
+
+For the covariance of two portfolios, the covariance of two weighted sums is $\mathrm{Cov}(\sum_ia_iX_i,\sum_jb_jY_j)=\sum_i\sum_ja_ib_j\,\mathrm{Cov}(X_i,Y_j)$, and $\mathrm{Var}(aX+bY)=a^2\mathrm{Var}X+b^2\mathrm{Var}Y+2ab\,\mathrm{Cov}(X,Y)$ \citep[sec.~5.3.1, Lemma~5.3 and eq.~(5.21)]{probability-statistics-random-processes}.
+
+\qffield{Notation} One period from time 0 to time 1, all amounts in one base currency. Asset $i$ has value $V_{i0}$ at the start and $V_{i1}$ plus income $D_{i1}$ at the end; its arithmetic total return is $R_i=(V_{i1}+D_{i1})/V_{i0}-1$ (\hyperref[def:return-measures]{return measures}). The portfolio starts at $V_0=\sum_iV_{i0}$, and the \emph{beginning-of-period value weights} are $w_i=V_{i0}/V_0$. In matrix form, with $\mu$ the vector of expected returns and $\Sigma$ the covariance matrix:
+\begin{itemize}
+\item $E[R_P]=w^\top\mu$ and $\mathrm{Var}(R_P)=w^\top\Sigma w$; for two assets, $w_1^2\sigma_1^2+w_2^2\sigma_2^2+2w_1w_2\rho\sigma_1\sigma_2$;
+\item $\mathrm{Cov}(R_P,R_Q)=w^\top\Sigma v$ for a second portfolio with weights $v$, and $\rho_{PQ}=w^\top\Sigma v/\sqrt{(w^\top\Sigma w)(v^\top\Sigma v)}$.
+\end{itemize}
+Variances are in squared return units (percent squared for returns in percent); standard deviations and expected returns are in return units per period. Interpretation: $R_P=\sum_iw_iR_i$ is exact because the end value is $\sum_iV_{i0}(1+R_i)=V_0(1+\sum_iw_iR_i)$.
+
+\emph{Model moments against estimates.} With states $s$ of probability $p_s$, the moments are probability-weighted sums (\hyperref[def:conditional-moments]{moments of random variables}); they describe a model and are exact for it. From $N$ past periods, the sample mean, sample variances and covariances estimate them: dividing the sums of squares and cross-products by $N-1$ gives the usual sample estimates, by $N$ the descriptive moments of the data themselves (\hyperref[def:return-sample-statistics]{location and dispersion}; \hyperref[def:return-dependence]{covariance and correlation}). The identities above hold for a portfolio's sample moments as well, provided every term uses the same denominator (Interpretation).
+
+\qffield{Conditions} The weighted-sum formula assumes one period with no contributions or withdrawals inside it; income is reinvested or counted at the period end. All returns are measured in the base currency, so a foreign asset's return includes its currency return. Over several periods the weights drift with relative performance. A constant-weight series therefore describes a portfolio rebalanced to those weights at the start of each period, not one bought and held (Interpretation).
+
+Log returns do not aggregate in this way: the log return of a portfolio is not the weighted sum of the assets' log returns (Interpretation). With short sales or borrowing, weights can be negative or exceed one, which Markowitz excludes (p.~81); the formulas still hold for value weights on net capital. Population moments are model assumptions; sample estimates carry estimation error that grows with the number of assets relative to the number of observations (\hyperref[meth:portfolio-covariance-estimation]{covariance estimation}).
+
+\qffield{Practice} Example~1, original, a one-year probability model in US dollars. A portfolio of 1{,}000{,}000 holds 600{,}000 in an equity fund E and 400{,}000 in a bond fund B, so $w=(0.6,0.4)$. Total returns, in percent, are:
+
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+State & Probability & E & B & Portfolio \\
+\midrule
+Boom & 0.3 & 25 & $-2$ & 14.2 \\
+Normal & 0.5 & 8 & 4 & 6.4 \\
+Recession & 0.2 & $-20$ & 10 & $-8.0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In the boom the end value is $600{,}000\times1.25+400{,}000\times0.98=1{,}142{,}000$, a portfolio return of 14.2 percent, equal to $0.6\times25+0.4\times(-2)$. The model gives $\mu=(7.5,3.4)$, variances 243.25 and 17.64 (standard deviations 15.60 and 4.20), covariance $-64.5$ and correlation $-0.985$. Then $E[R_P]=0.6\times7.5+0.4\times3.4=5.86$ percent. The variance is $87.57+2.8224-30.96=59.43$, a standard deviation of 7.71 percent. Both equal the probability-weighted mean and variance of the portfolio column.
+
+A second portfolio Q holds 30/70: $E[R_Q]=4.63$, $\mathrm{Var}(R_Q)=3.4461$, $\mathrm{Cov}(R_P,R_Q)=w^\top\Sigma v=13.894$ and $\rho_{PQ}=0.971$. Two portfolios of the same two assets can be highly correlated even when the assets are strongly negatively correlated.
+
+Example~2, original, six invented months of total returns in percent: E $3.0,-1.5,4.2,-2.8,1.6,0.9$ and B $0.4,0.9,-0.3,1.2,0.1,0.5$. The sample means are 0.90 and 0.467. Over $N-1=5$, the variances are 7.048 and 0.2907 and the covariance $-1.336$; over $N$ they are 5.873, 0.2422 and $-1.113$. The correlation is $-0.933$ either way. Rebalanced to 60/40 each month, the portfolio returns 1.96, $-0.54$, 2.40, $-1.20$, 1.00 and 0.74. Their mean is $0.727=w^\top\bar x$ and their sample variance $1.9425=w^\top Sw$, a monthly standard deviation of 1.39 percent. Bought and held instead, the weights drift to 0.606/0.394 after the first month and the second month's return is $-0.555$, not $-0.540$.
+
+\qffield{Pitfalls} Using end-of-period or target weights for a period in which the holdings drifted. Mixing currencies, or price and total returns, across assets. Averaging log returns across assets. Reporting a sample variance without its denominator, or computing a correlation with a covariance over $N-1$ and standard deviations over $N$, which inflates it by $N/(N-1)$ (1.2 here). Treating six months of history as the population moments.
+
+\qffield{See also} \hyperref[mech:diversification-correlation]{diversification and correlation}; \hyperref[def:return-dependence]{covariance and correlation}; \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation} ($w^\top\Sigma w$ as an input); \hyperref[mod:factor-risk-model]{factor risk model}.
+
+\end{qfmethod}
+
+\begin{qfmechanism}[Diversification and correlation: how the portfolio standard deviation depends on correlation, when variance can reach zero, what diversification guarantees and does not, and why historical correlation need not persist]\label{mech:diversification-correlation}
+\qffield{Statement} For two assets with long-only weights $w_1,w_2\ge0$ summing to one,
+\[ \sigma_P^2=w_1^2\sigma_1^2+w_2^2\sigma_2^2+2w_1w_2\rho\sigma_1\sigma_2 \]
+\citep[pp.~80--81]{s6-markowitz} rises with the correlation $\rho$. At $\rho=+1$ it equals $(w_1\sigma_1+w_2\sigma_2)^2$. For any $\rho<1$ and both weights positive, $\sigma_P$ is below the weighted average $w_1\sigma_1+w_2\sigma_2$ of the two standard deviations: that reduction is what imperfect correlation buys. At $\rho=-1$, $\sigma_P=|w_1\sigma_1-w_2\sigma_2|$, which is zero at $w_1=\sigma_2/(\sigma_1+\sigma_2)$. At $\rho=0$ or $+1$, no long-only portfolio of two risky assets has zero variance; at $\rho=+1$ a short position, $w_1=-\sigma_2/(\sigma_1-\sigma_2)$ when $\sigma_1>\sigma_2$, is needed (Interpretation, from the formula).
+
+Diversification does not remove all risk. Markowitz rejects the idea that the law of large numbers makes a diversified portfolio's yield almost certain: ``The returns from securities are too intercorrelated. Diversification cannot eliminate all variance'' (p.~79). With equal weights over $N$ assets of equal standard deviation $\sigma$ and common correlation $\bar\rho$, his double sum gives $\sigma_P^2=\sigma^2[1/N+(1-1/N)\bar\rho]$, which falls towards $\bar\rho\sigma^2$, not zero, as $N$ grows (Interpretation).
+
+Correlation measured in one period need not hold in another. Longin and Solnik show that sample correlations conditioned on large or small returns differ even when the true correlation is constant. Their example is a bivariate normal with correlation 0.50, split at the median absolute value of one return, 0.674: the conditional correlations are 0.21 for the small returns and 0.62 for the large. In monthly data on the five largest stock markets from 1958 to 1996 they reject multivariate normality for the negative tail but not the positive tail, and find that correlation rises in bear markets but not in bull markets \citep[working-paper version of April~2000, abstract and pp.~1--2]{w2-longin-solnik}.
+
+\qffield{Notation} $\sigma_1,\sigma_2$ standard deviations, $\rho$ correlation, $w_i$ value weights; asset~2 is the safer one when $\sigma_2<\sigma_1$. Interpretation: holding a little of the riskier asset lowers the standard deviation below the safer asset's only when $\rho<\sigma_2/\sigma_1$, because the derivative of $\sigma_P^2$ with respect to $w_1$ at $w_1=0$ is $2\sigma_2(\rho\sigma_1-\sigma_2)$.
+
+\qffield{Conditions} The comparison with the weighted average holds for long-only weights; with shorting, $\sigma_P$ can exceed it. The results are statements about the model's standard deviation, a measure of dispersion; they say nothing about losses in the tails, which Longin and Solnik find are more correlated in falling markets. Common exposures, such as to the whole equity market, remain after diversification across many assets; how they are measured is in \hyperref[mod:factor-risk-model]{factor risk model}, and whether investors are paid for bearing them belongs to asset-pricing models. Correlations estimated over one window, or conditioned on its large moves, are not the correlations of the next one (\hyperref[def:return-dependence]{covariance and correlation}).
+
+\qffield{Practice} Example, original: weights 0.6 in an asset with $\sigma_1=20$ percent and 0.4 in one with $\sigma_2=10$ percent, so the weighted average is 16 percent.
+\begin{itemize}
+\item $\rho=+1$: $\sigma_P=16.0$, no reduction.
+\item $\rho=0.3$: $\sigma_P=13.74$. $\rho=0$: $\sqrt{0.36\times400+0.16\times100}=12.65$.
+\item $\rho=-1$: $\sigma_P=|12-4|=8.0$, and a 1/3 weight in the riskier asset gives zero variance.
+\item At $\rho=0$ and $\rho=0.3$ the 60/40 mix is less risky than the weighted average but riskier than the 10 percent asset held alone. At $\rho=0$, a 20 percent weight gives $\sqrt{80}=8.94$ percent, below 10; here the threshold is $\rho<0.5$.
+\end{itemize}
+Equal weights over $N$ assets with $\sigma=20$ percent and $\bar\rho=0.3$ give 20.0, 16.1, 12.2 and 11.1 percent for $N=1$, 2, 10 and 100, against a floor of $20\sqrt{0.3}=10.95$ percent.
+
+\qffield{Pitfalls} Reading diversification as a promise of lower risk than the safest holding. Expecting many holdings to remove risk that they share. Carrying a correlation from a calm sample into a crisis, or concluding that correlation has changed from a comparison of subsamples selected by return size. Using a negative correlation from a short sample, such as the six months of \hyperref[meth:portfolio-return-moments]{portfolio return moments}, as if it were a property of the assets.
+
+\qffield{See also} \hyperref[meth:portfolio-return-moments]{portfolio return moments}; \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation} (instability of estimated correlations, Narang's rolling examples); \hyperref[ev:correlation-matrix-noise]{noise in large correlation matrices}.
+
+\end{qfmechanism}

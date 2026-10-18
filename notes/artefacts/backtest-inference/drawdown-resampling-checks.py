@@ -8,10 +8,13 @@ described form (block starts uniform, lengths geometric with mean L, wrapping ar
 Design: monthly returns r_t = 0.005 + 0.3 (r_{t-1} - 0.005) + e_t, e_t ~ N(0, 0.04^2), T = 120. The model's own
 distribution of the maximum drawdown is the reference; for 200 independent sample paths each method's bootstrap
 95th percentile is compared with the reference 95th percentile.
-Run: python3 drawdown-resampling-checks.py   (numpy; about 10 s). Exits non-zero on failure.
+Run: uv run python drawdown-resampling-checks.py   (numpy; about 10 s). Exits non-zero on failure.
 """
+
+# standard library imports
 import sys
 
+# third party library imports
 import numpy as np
 
 rng = np.random.default_rng(1710)
@@ -29,7 +32,9 @@ def ar1(n_paths):
 
 def max_dd(r):
     w = np.cumsum(np.log1p(r), axis=-1)
-    peak = np.maximum.accumulate(np.concatenate([np.zeros(w.shape[:-1] + (1,)), w], axis=-1), axis=-1)[..., 1:]
+    peak = np.maximum.accumulate(
+        np.concatenate([np.zeros((*w.shape[:-1], 1)), w], axis=-1), axis=-1
+    )[..., 1:]
     return np.max(peak - w, axis=-1)
 
 
@@ -56,15 +61,19 @@ for _ in range(200):
     q_sh.append(np.quantile(max_dd(shuffle_boot(x, 400)), 0.95))
     q_st.append(np.quantile(max_dd(stationary_boot(x, 400)), 0.95))
 q_sh, q_st = np.median(q_sh), np.median(q_st)
-print(f'reference 95th percentile of max drawdown (log units): {ref:.3f}')
-print(f'median bootstrap 95th percentile: shuffle {q_sh:.3f}, stationary-type blocks (L=12) {q_st:.3f}')
+print(f"reference 95th percentile of max drawdown (log units): {ref:.3f}")
+print(
+    f"median bootstrap 95th percentile: shuffle {q_sh:.3f}, stationary-type blocks (L=12) {q_st:.3f}"
+)
 fails = []
 if not q_sh < 0.85 * ref:
-    fails.append('shuffle does not understate')
+    fails.append("shuffle does not understate")
 if not abs(q_st - ref) < abs(q_sh - ref):
-    fails.append('blocks not closer than shuffle')
+    fails.append("blocks not closer than shuffle")
 for f in fails:
-    print('BAD', f)
+    print("BAD", f)
 if fails:
     sys.exit(1)
-print('ok  shuffling understates the drawdown tail under positive autocorrelation; blocks come closer\nall checks passed')
+print(
+    "ok  shuffling understates the drawdown tail under positive autocorrelation; blocks come closer\nall checks passed"
+)

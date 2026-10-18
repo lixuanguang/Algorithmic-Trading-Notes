@@ -22,7 +22,5 @@
     % Narang's Exhibit 2.1 (p. 17) shows the two modules interacting: an arrow down and one back up.
     \draw[->] ([xshift=-0.3cm]portfolio.south) -- ([xshift=-0.3cm]execution.north);
     \draw[->] ([xshift=0.3cm]execution.north) -- ([xshift=0.3cm]portfolio.south);
-    
+
 \end{tikzpicture}
-
-

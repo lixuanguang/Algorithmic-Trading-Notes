@@ -1,0 +1,80 @@
+---
+key: common-toolkit
+section: common-toolkit
+status: not started (draft entries only, not from study)
+---
+
+# Common toolkit (section overview)
+
+Overview outcome, from the guide: write a reproducible research record for a simple signal: decision-time data, an economic mechanism, the uncertainty of the headline estimate, a portfolio decision and the evidence that would reject it. Its checkpoint is a one-page research record for a public-data signal, rebuilt from the recorded inputs. Its readings are `prob-wasserman`, `s15-campbell`, `s6-cochrane`, `alpha-boyd`, `s7-meucci`, `s6-pbo` and `s8-bitemporal`.
+
+The chapter also holds the time-value foundations that the subject objectives in `notes/coverage/objectives.json` place under `topic:time-value-of-money` and part of `topic:return-measurement`. Those entries come from the foundation slice of 18 October 2026, not from this overview's readings.
+
+## Status
+
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 18 October 2026 by the first foundation slice (`notes/source-review-records.md`, *Return measurement and present value: first foundation slice*). The entries come from source checking against an open finance textbook, Hull and a Federal Reserve note, none of them this overview's readings. That is not study, and the checkpoint was not attempted.
+
+## Outcome in my own words
+
+## How the readings fit together
+
+## Checkpoint
+
+Not attempted.
+
+## Entries created or changed
+
+Written in the first foundation slice (2026-10-18):
+
+- `def:required-return-components`: the Fisher relation, exact and approximate; nominal yield as real yield plus expected inflation plus an inflation risk premium, and the inflation-indexed liquidity premium, from the Federal Reserve staff decomposition; credit and other premia as a decomposition by convention.
+- `meth:instrument-present-value`: present values of zero-coupon and coupon bonds (single yield and zero rates), preferred stock, constant and two-stage dividend growth; implied yield, required return and growth.
+- `res:cash-flow-additivity`: the law of one price and additivity of dated cash flows; implied forward rates, covered interest parity and a one-period replicated option with put-call parity.
+
+All three partly checked 2026-10-18, draft; numerical examples in `notes/artefacts/time-value-returns/time-value-return-checks.py`; human review outstanding.
+
+Corrections of 2026-10-18 (plan sec. 10.2): `res:cash-flow-additivity` now shows the dated cash flows of forward lending and borrowing and separates them from refinancing at a later, unknown rate; `def:required-return-components` separates the realised (ex post) Fisher identity and the ex ante relation (Mankiw, chap. 5, sec. 5-3) from the expected real return under uncertain inflation; `meth:instrument-present-value` distinguishes nominal annual yields compounded semiannually from effective annual yields.
+
+Written in the statistics slice (2026-10-18):
+
+- `def:return-sample-statistics`: mean, median, mode; range, absolute deviations, variance and standard deviation with $N$ and $N-1$; the $p(N+1)$ percentile rule and the interquartile range.
+- `def:return-shape-statistics`: moment skewness and kurtosis with $N$ denominators, bias-adjusted versions, kurtosis against excess kurtosis.
+- `def:return-dependence`: covariance and correlation, units, denominators, linearity and other limits.
+- `def:downside-relative-dispersion`: semi-deviation about a target with its three denominator conventions; the coefficient of variation and why it fails for returns near or below zero.
+- `def:conditional-moments`: unconditional and conditional expectation, variance and covariance, with the laws of total expectation, variance and covariance on a probability table.
+- `def:financial-distributions`: normal, lognormal, Student $t$ and binomial moments and when they exist; the lognormal price model.
+- `meth:bayesian-updating`: a discrete prior updated by binomial likelihoods, with normalisation and the predictive probability.
+
+All seven partly checked 2026-10-18, draft; examples in `notes/artefacts/descriptive-probability/statistics-probability-checks.py`; human review outstanding.
+
+Corrections of 2026-10-18 (plan sec. 11.2): sampling assumptions for the unbiased sample variance; kurtosis read as tail and outlier sensitivity, not central mass; finite sample moments distinguished from nonexistent population moments, with the Student-t thresholds for real degrees of freedom; GBM drift against mean log return; conditional independence in the Bayesian example; the check-script path removed from the printed text.
+
+Written in the inference and simulation slice (2026-10-18):
+
+- `meth:confidence-intervals`: estimand and sampling design; the central limit theorem and its assumptions; exact $t$ and chi-square intervals against normal approximations; the repeated-sampling meaning; failure under serial dependence.
+- `meth:hypothesis-testing`: null and alternative, $p$-values, Type I and II errors, power by the noncentral $t$; chi-square and $F$ tests for variances and their normality dependence.
+- `meth:nonparametric-tests`: sign and signed-rank tests against the $t$ test, their assumptions and relative power.
+- `meth:historical-simulation`: scenario construction from past changes, equal and age weights, and what the window assumes.
+- `meth:bootstrap-resampling`: the bootstrap's sampling unit, its ideal value, and the failure of i.i.d. resampling for dependent data against moving blocks.
+- `meth:monte-carlo-simulation`: target, seed, standard error and the square-root rule against a closed-form benchmark.
+
+All six partly checked 2026-10-18, draft; examples in `notes/artefacts/inference-simulation/inference-simulation-checks.py`; human review outstanding.
+
+Corrections of 2026-10-18 (plan sec. 13.2): `meth:historical-simulation` now uses the lower loss quantile and exact-tail-mass ES of `meth:var-es-estimation-methods` for both weightings (VaR 8,400 in both; ES 15,700 equal-weighted and about 14,000 age-weighted), with Hull's equal-weight rank attributed as an alternative; `meth:hypothesis-testing` states the independent-samples condition of the variance-ratio F test and uses an independently drawn second sample, with a correlated-sample counterexample.
+
+Written in the regression slice (2026-10-18):
+
+- `meth:simple-regression-estimation`: population and estimated lines, the least squares criterion and formulas, fitted values and residuals, coefficient units, association against causation.
+- `meth:regression-diagnostics-anova`: the LINE conditions and how sensitive inference is to each, residual plots and standardised residuals, the standard error of estimate, $R^2$ and its cautions, coefficient $t$ tests, the ANOVA table and $F=t^2$.
+- `meth:regression-prediction-functional-form`: predictions, the interval for the mean against the prediction interval, extrapolation, log functional forms and retransformation to medians and means (normal theory and smearing).
+
+All three partly checked 2026-10-18, draft; examples in `notes/artefacts/linear-regression/regression-checks.py`; human review outstanding. Multiple regression, misspecification, time-series regression and the CAPM regression are not written; `topic:linear-regression` is therefore only partly covered.
+
+Correction pass of 2026-10-18 (plan sec. 13.5): `meth:simple-regression-estimation` states when the estimates exist (finite data, $S_{xx}>0$); `meth:regression-diagnostics-anova` separates the assumptions for computing, unbiasedness, conventional variances and exact $t$/$F$ inference, requires $n>2$, and restricts $F=t^2$ to the zero-slope null; `meth:regression-prediction-functional-form` treats the back-transformed log prediction as a geometric mean (a median only under a median-zero log error), qualifies Duan's consistency statement and corrects the log--log percentage rule; the ES pitfall of `meth:historical-simulation` now matches the canonical VaR of 8,400.
+
+## Entry backlog
+
+## What changed in my view or practice
+
+## Questions carried forward
+
+- The equity-risk-premium and credit-spread figures in the required-return example are illustrative; which estimates should replace them, and from what data?

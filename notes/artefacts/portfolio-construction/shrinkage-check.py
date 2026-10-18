@@ -7,10 +7,13 @@ the population known (so the oracle is computable): N = 100 assets, T = 120 i.i.
 covariance with a one-factor structure. (1) the identity alpha^2 + beta^2 = delta^2 holds by simulation; (2) the
 oracle has lower Frobenius loss than S; (3) the global minimum-variance portfolio built from Sigma* has a lower true
 variance than the one built from S. Synthetic data only; the feasible estimator of the paper is not reproduced.
-Run: python3 shrinkage-check.py   (numpy; about 5 s). Exits non-zero on failure.
+Run: uv run python shrinkage-check.py   (numpy; about 5 s). Exits non-zero on failure.
 """
+
+# standard library imports
 import sys
 
+# third party library imports
 import numpy as np
 
 rng = np.random.default_rng(2020)
@@ -42,18 +45,22 @@ def gmv_var(C):
 v_S = np.mean([gmv_var(S) for S in Ss])
 v_star = np.mean([gmv_var(g * mu * I + (1 - g) * S) for S in Ss])
 v_true = gmv_var(Sigma)
-print(f'alpha^2 + beta^2 = {alpha2 + beta2:.6f}, delta^2 = {delta2:.6f}; oracle intensity gamma* = {g:.3f}')
-print(f'Frobenius loss: sample {loss_S:.6f}, oracle shrinkage {loss_star:.6f}')
-print(f'true variance of GMV portfolio: from S {v_S:.6f}, from Sigma* {v_star:.6f}, true optimum {v_true:.6f}')
+print(
+    f"alpha^2 + beta^2 = {alpha2 + beta2:.6f}, delta^2 = {delta2:.6f}; oracle intensity gamma* = {g:.3f}"
+)
+print(f"Frobenius loss: sample {loss_S:.6f}, oracle shrinkage {loss_star:.6f}")
+print(
+    f"true variance of GMV portfolio: from S {v_S:.6f}, from Sigma* {v_star:.6f}, true optimum {v_true:.6f}"
+)
 fails = []
 if abs(alpha2 + beta2 - delta2) > 0.02 * delta2:
-    fails.append('identity')
+    fails.append("identity")
 if not loss_star < loss_S:
-    fails.append('Frobenius')
+    fails.append("Frobenius")
 if not v_star < v_S:
-    fails.append('GMV variance')
+    fails.append("GMV variance")
 for f in fails:
-    print('BAD', f)
+    print("BAD", f)
 if fails:
     sys.exit(1)
-print('all checks passed')
+print("all checks passed")

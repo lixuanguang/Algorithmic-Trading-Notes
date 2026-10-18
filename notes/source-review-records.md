@@ -3602,3 +3602,389 @@ Files changed: `compendium/multi-asset-systematic-macro/global-macro.tex` (Besse
 - **Quotation handling.** The Practice field quoted three summaries as if verbatim ("75\% of price moves", "3--4 major opportunities annually", "overtrading as damaging as running losers"); the 2006 text reads "75 percent of price movement happens only 10 to 15 percent of the time" (p. 332), "three or four major macro opportunities each year" and "Overtrading is as bad as running losing positions for too long" (p. 85). The three are now unquoted paraphrases. The entry's remaining quotation marks enclose 38 verbatim phrases, one with a marked omission ("money … craves stability", p. 207), six short source terms ("doubly right", "incredibly dangerous", "matrix", "prayer trade", "frozen ice", "inevitable") and one chapter title; all 45 non-title strings occur at their cited 2006 pages. In the 2013 EPUB, 36 occur in the same interviewee's chapter and Andres Drobny's nine do not. Bessent's own statements, the belief he attributes to Druckenmiller and Soros, and the saying he attributes to Soros are kept apart in the entry.
 - **Edition claims.** The first version of this record said every quotation recurred unchanged in the 2013 edition; the entry, the reading note, the entry evidence and the edition-comparison item above now state the counts and say that unquoted paraphrases were checked by keyword only.
 - **Locations.** Both books are in the checkout's git-ignored `reading materials/` directory, not outside the repository as first recorded; their file names and SHA-256 hashes are given above and in the reading note.
+
+## Coverage inventory and pilot integrations, 18 October 2026
+
+Batches 0 and 1 of `implementation_plan.readme`: an inventory of the supplied topic outlines mapped to neutral objectives, and two source-to-entry pilots. Source checking and editorial mapping, not study; no mastery is implied. Both pilot entries stay *draft*.
+
+### Outline inventory
+
+- **Relocation.** The eight outline PDFs in the ignored `reading_materials/curriculum_cfa/` were hashed (SHA-256, all equal to the plan's audit values), copied to `reading_materials/outlines/outline-<first 12 hex digits>.pdf`, each copy re-hashed and matched before its original was deleted, and the emptied folder removed. No twelve-digit prefixes collide. Original names are kept only as provenance in `notes/coverage/outline-manifest.json`; no maintained file referred to the old folder.
+- **Extraction.** Text from every page with PyPDF2; modules parsed as the heading before each "able to" marker and items as checkbox lines. Split headings (the Standard VII title runs over two lines) and wrapped items were reconciled against the raw extracted page text. Counts: Level I 102 modules / 340 items; Level II 51 / 382; each 2027 Level III file 28 / 183 core plus 8 / 64, 7 / 34 and 7 / 27 pathway items; 2026 files 22 / 171 core plus the same pathway counts. The three core copies are identical within each year. Total in scope: 203 modules / 1,030 items, core counted once with all three occurrences kept.
+- **Mapping.** Each item was read and paraphrased in our own words with its command verbs; items were grouped into 424 objectives in 107 topics owned by guide or local chapters. 1,019 items map to one objective and 11 to two. Distinct standards and levels stay distinct items; identical wording across the seven standards maps to the same per-standard objectives at every level. Candidate existing entries were attached to 66 objectives by subject search; none was assessed, so those objectives stay `missing` with next action `review`.
+- **Edition comparison.** The 2026-to-2027 Level III differences are the ethics guidance split (six modules, twelve items added per file) and one semicolon in Private Debt; see `notes/coverage/source-changes.md`.
+
+### Sources, 2026-10-18
+
+| Source key | Identity and copy | Read | Use |
+| --- | --- | --- | --- |
+| `wide-gips-2020` | GIPS for Firms 2020, local PDF `reading_materials/method-validation/src/GIPS_2020_firms.pdf`, SHA-256 9c45d87d…d5532 | Glossary (external cash flow, money- and time-weighted return), provisions 1.A.35-1.A.36, 2.A.12, 2.A.23-2.A.24, 2.A.29, 5.A.1 | `def:return-measures` reuse |
+| `alpha-harris` | Harris, *Trading and Exchanges*, Oxford 2003 printing outside the repository, SHA-256 3707e56a…caad6a; the 2002 copy used earlier is AES-encrypted and PyPDF2 lacked the cipher, so Ghostscript text of the 2003 printing was used | chap. 22, sec. 22.2.1, pp. 446-447 | independent source for IRR against holding-period return |
+| `eu-2023-1803-ias7` | Regulation (EU) 2023/1803, original OJ XHTML via CELLAR content negotiation (CELEX 32023R1803), SHA-256 7dfd2c91…af3941 | IAS 7 in full | `meth:statement-linked-cash-flows` |
+| `eu-2026-338-ifrs18` | Regulation (EU) 2026/338, OJ XHTML via CELLAR (CELEX 32026R0338), SHA-256 231323db…afd8e | Articles 1-3, IFRS 18 para. C1, all amendments to IAS 7 | effective date, operating-profit starting point, interest and dividend classification |
+| `principles-financial-accounting-2019` | OpenStax, *Principles of Accounting*, vol. 1 (2019), web pages | secs. 16.3, 16.4, 16.6 | further reading; confirms the indirect-method steps |
+
+Searches (standard web search): "IAS 7 Statement of Cash Flows full text Commission Regulation (EU) 2023/1803 indirect method"; "OpenStax Principles of Accounting Volume 1 statement of cash flows indirect method"; "time-weighted versus dollar-weighted rate of return Dietz pension fund performance measurement". A search summary named Regulation (EU) 2026/338 among the later amendments of IAS 7, which led to the IFRS 18 text. Not used: the EUR-Lex HTML endpoint returned an empty body to a script (CELLAR used instead); a Society of Actuaries 1973 discussion paper on time- and dollar-weighted returns returned the site's "File Not Found" page; Dietz (1966) has no open copy. The EU, GIPS and SOA downloads are kept in the ignored `reading_materials/coverage-pilots/` and `reading_materials/method-validation/`.
+
+### Findings
+
+- **Return pilot (reuse).** `def:return-measures` already calculates both returns on one cash-flow history, compares them on matching horizons, explains why the money-weighted return is lower and states when GIPS permits money-weighted returns (1.A.35: control of external cash flows and a closed-end, fixed-life, fixed-commitment or significantly illiquid vehicle). Harris (pp. 446-447) independently gives the IRR as the rate replicating the capital flows, the holding-period return as one unit invested at the start with distributions reinvested, and their difference when flows are not pro rata. All quoted provisions and pages matched. Every figure in the entry recomputed: money-weighted −3.7126 percent per sub-period and −7.2874 percent over two; time-weighted −1.0 percent cumulative and −0.5013 percent per sub-period; 3.95 and 1.2997 percent; 7.4202 percent annualised; real 4.8544 percent; leveraged 13 percent. Nothing was missing for `objective:compare-time-and-money-weighted-returns`, so the entry text is unchanged and the objective is recorded as covered.
+- **Financial-statement pilot (new).** `meth:statement-linked-cash-flows`, in the new local chapter `financial-statement-analysis`. IAS 7 as adopted in 2023 starts the indirect method from profit (para. 18(b)) and lets non-financial entities choose the section for interest and dividends (paras. 33-34). The IFRS 18 amendments, applicable to annual periods beginning on or after 1 January 2027 and adopted for the EU by Regulation 2026/338, start from operating profit or loss and fix dividends paid as financing and, for most entities, interest paid as financing and interest and dividends received as investing (paras. 33A, 34A-34D). The entry states both regimes with dates. Its synthetic example is reconciled three ways (indirect from operating profit, indirect from profit with interest in operating, direct) and the balance sheet balances at 1,005.
+- **Outcomes.** Covered: `objective:compare-time-and-money-weighted-returns`, `objective:link-cash-flow-statement`. Partial: `objective:convert-indirect-to-direct-cash-flow` (prepaid and accrued items not converted; next action `extend`) and `objective:compare-cash-flow-reporting-frameworks` (source gap: FASB ASC 230 not obtained or read; next action `obtain-source`). Outline items covered: `outline:7099c7688942:m003:b01` and `:m030:b01`; partial: `:m030:b02`-`:b04`. An objective supported only by non-provider sources (IAS 7, IFRS 18) is now covered, and one with two outline items exists.
+
+### Checks and their limits
+
+| Check | Result |
+| --- | --- |
+| `notes/artefacts/financial-statement-analysis/cash-flow-linkage-check.py` | All checks pass |
+| `python3 tools/check_compendium.py --check` | 0 problems; 255 entries; 64 pathway notes |
+| `python3 tools/check_coverage.py --check --verify-outlines` | 0 problems; eight outline hashes match |
+| `python3 -m unittest discover -s tools` | 26 tests pass (9 existing, 5 local-section, 12 coverage) |
+
+The mapping of 1,025 unreviewed items is an editorial grouping, not a coverage claim. The paraphrases were written from extracted text; the split ethics headings were checked against the raw page text, and no outline page images were inspected in this pass. Human review of both entries and of the objective grouping is outstanding.
+
+Files changed: see the Batch 0-1 progress section of `implementation_plan.readme`.
+
+## Cash-flow slice and validator corrections, 18 October 2026
+
+The slice of `implementation_plan.readme`, Section 8.3: one section declaration, three coverage-validator corrections and the two partial cash-flow objectives. Source checking and tooling, not study. It supersedes the statements of the record above that the IFRS against US GAAP comparison is unsourced and that the indirect-to-direct conversion lacks prepaid and accrued items.
+
+### Section declaration
+
+`notes/local-sections.json` and its loader, constants, tests and documentation were removed. Both checkers now read the ordered `\qfsections` list in `compendium/compendium.tex` (42 unique keys) as the only section declaration; the guide supplies specialist pathway keys for notes only. Missing, repeated or malformed declarations and keys, collisions with specialist pathway keys, undeclared content folders, wrapper inputs naming no file, and typed entries not reachable from the master through a wrapper's `\input` chain are reported. Declared sections without content need no chapter. All 255 entries are reachable.
+
+### Validator corrections
+
+| Audit finding | Correction | Replayed on the real data |
+| --- | --- | --- |
+| Unreviewed mappings became covered | An outline item is covered only with a review date, covered objectives and no residual gap; otherwise partial | Clearing the review date of `outline:7099c7688942:m003:b01` now reports it partial |
+| Mapped labels and evidence could disagree | Mapped and candidate labels must be typed entries; entry-evidence references must equal the mapped entries, each with a nonempty record naming the entry's file; every listed source must be cited by a mapped entry, with sources read only for review under `review_sources` | Remapping `objective:link-cash-flow-statement` to `def:return-measures` gives four problems |
+| Dropped items went unnoticed | Item and module occurrences per active outline, shared-core copies included, must equal the manifest's counts; occurrences must match their module's | Dropping `outline:7099c7688942:m001:b01` and lowering the counters reports 339 against the manifest's 340 |
+
+The new rule moved `alpha-harris` in `objective:compare-time-and-money-weighted-returns` from `sources` to `review_sources`: Harris was read to confirm `def:return-measures`, which does not cite it.
+
+### Sources, 2026-10-18
+
+| Source key | Identity and copy | Read |
+| --- | --- | --- |
+| `us-cash-flow-classification-amendment-2016` | FASB ASU 2016-15, PDF from storage.fasb.org, SHA-256 6508b9ee…47ed4fd | Effective dates (p. 5); amended ASC 230-10-45-15, -16, -17, -25 (pp. 9-10, 14-15); illustration 230-10-55-10 |
+| `cash-flow-statement-roadmap-2026` | Deloitte DART, Roadmap sec. 3.1, web page | Quotations of ASC 230-10-45-28 to 45-30 only |
+| `cash-flow-standard-setting-2026` | FASB staff slides AP35 (June 2026) and AP20A (October 2025), PDFs from ifrs.org | In full |
+| `eu-2023-1803-ias7`, `eu-2026-338-ifrs18` | As in the record above | IAS 7 paras. 18(b), 19(b), 20, 31-35 and the IFRS 18 amendments reread |
+| `principles-financial-accounting-2019` | As above | Sec. 16.6, prepaid insurance and salaries payable |
+
+Not accessible: the FASB Accounting Standards Codification (login) and DART's Codification view (subscription). Not used: exam-preparation and practice summaries found by search.
+
+### Findings
+
+- **Conversion** (`objective:convert-indirect-to-direct-cash-flow`, now covered). Each income-statement line becomes a cash line by removing the change in its related operating balances (IAS 7 paras. 18(b), 19(b); OpenStax sec. 16.6). The example adds prepaid insurance (10 to 16; expense 30, paid 36) and wages payable (12 to 20; expense 150, paid 142). Operating cash flow becomes 197 by both methods, closing cash 97, and the balance sheet balances at 1,023; checked by hand and by `cash-flow-linkage-check.py`.
+- **Framework comparison** (`objective:compare-cash-flow-reporting-frameworks`, now covered). US GAAP starts from net income, classifies interest and dividends received, interest paid and taxes as operating and dividends paid as financing, and requires a reconciliation of net income even under the direct method. IFRS before IFRS 18 allows choices for interest and dividends; IFRS 18 (periods from 1 January 2027) starts from operating profit and fixes interest paid as financing and interest and dividends received as investing for most entities. FASB staff papers of 2025 and 2026 report interest classification only as research feedback. On the example, US GAAP gives operating cash flow 177 against 197 under IFRS 18; interest paid is the whole difference.
+- **Outline items** `outline:7099c7688942:m030:b02` to `:b04` reviewed; no residual gap remains. Level I: five items covered.
+
+### Checks and their limits
+
+Recorded in `implementation_plan.readme`, Section 8.4. The current Codification text was not read; the US GAAP paragraphs rest on the 2016 Update's reprint and a 2026 secondary quotation, and later amendments other than the pending finance-lease item were not traced. Human review of the entry is outstanding.
+
+## Return measurement and present value: first foundation slice, 18 October 2026
+
+`implementation_plan.readme`, Section 9.3: the cash-tax correction of Section 9.2, the checker docstring warning, and `topic:return-measurement` and `topic:time-value-of-money` only. Source checking and writing, not study.
+
+### Cash-tax correction
+
+The cash-flow entry's line-by-line rule subtracted total deferred-tax balance changes from tax expense. Deferred-tax balances also move through OCI and equity: tax follows the item recognised outside profit or loss (IAS 12 paras. 58, 61A), and a revaluation of property, plant and equipment is such an item (para. 62(a)). The rule now rolls forward the net current tax balance (para. 12): tax paid = current tax recognised in profit or loss, OCI or equity minus the change in current tax payable net of receivable, the current component being disclosed (paras. 79-80, 81(a)-(ab)). The conversion identities state their assumptions (no business combinations, translation, non-cash settlements or OCI/equity movements in the converted balances). Counterexample, checked against an independent ledger of payments: current tax 30 in profit or loss, payable unchanged at 5, a revaluation adding a deferred tax liability of 10 through OCI; tax paid 30, the superseded formula 20. Two more cases (deferred tax wholly in profit or loss; current tax charged in OCI) agree with their ledgers. The distributor example and its figures are unchanged. The US GAAP comparison keeps its 2016-reprint and 2026-quotation vintage and now says so in the entry's Conditions. `tools/check_compendium.py`'s module docstring is raw, removing the `\q` escape warning.
+
+### Sources, 2026-10-18
+
+| Source key | Identity and copy | Read |
+| --- | --- | --- |
+| `eu-2023-1803-ias12` | IAS 12 in Regulation (EU) 2023/1803, same OJ XHTML as `eu-2023-1803-ias7` | paras. 5, 12, 57-65, 79-81(ab) |
+| `principles-of-finance-2026` | Dahlquist and Knight, *Principles of Finance* 2e, OpenStax web edition of 24 June 2026 | secs. 3.4, 7.4, 10.2, 11.2, 15.1 |
+| `inflation-compensation-decomposition-2019` | Kim, Walsh and Wei, FEDS Notes, 21 May 2019, HTML, SHA-256 b6ac47d0…f444c | introduction, model and premia discussion, eqs. (1)-(4) |
+| `s7-hulloptions` | Hull, 11th Global edition, second local copy outside the repository, SHA-256 36748bb6…45ba8e | sec. 4.8, pp. 109-110; sec. 11.4, pp. 255-256; sec. 13.1, pp. 288-290 |
+| `ft-wilshire-5000-2026` | FT Wilshire 5000 methodology, January 2026, local PDF, SHA-256 d1da43d4…f19edff | sec. 1.1, p. 3 (price and total-return indexes) |
+| `wide-gips-2020` | as before | glossary definitions reused, not reread |
+
+Searches: OpenStax dividend discount models; OpenStax holding-period and average returns; OpenStax interest rates, real rates and risk premia; the D'Amico, Kim and Wei TIPS decomposition. Not used: S&P Dow Jones Indices' index-mathematics methodology (the script request returned a web page, as in earlier reviews); the 2008 FEDS working paper (downloaded, superseded by the note); exam-preparation summaries.
+
+### Existing entries inspected first
+
+`def:return-measures` and `meth:relative-performance-evaluation` (returns), `def:interest-rate-measures` (compounding, present value, annuities, zero, par and bond yields), `mod:forward-rates-fra` (continuous forward rates and their lock-in), `res:cost-of-carry-forward-price` (forward prices and currency parity, continuous compounding), `def:derivative-contracts` and `res:synthetic-short-put-call` (payoffs and parity with dividends). Gaps found: holding-period, price and total returns; arithmetic against geometric means; equity and preferred present values; implied required return and growth; required-return components; an explicit statement of cash-flow additivity with discrete-compounding applications. `def:return-measures` was extended in place; the other gaps were written as three entries in a new `common-toolkit` chapter (`def:required-return-components`, `meth:instrument-present-value`, `res:cash-flow-additivity`), which link to the existing entries rather than repeating them.
+
+### Findings and checks
+
+- Exact against approximate: the Fisher relation $1+i=(1+R)(1+h)$ is exact, its additive form an approximation with error $Rh$, and the geometric mean $\approx$ arithmetic $-\sigma^2/2$ an approximation (4.25 against 4.2808 percent in the example); additive premia are a convention.
+- All examples are original and checked in `notes/artefacts/time-value-returns/time-value-return-checks.py` by an independent route: cash-flow summation for every closed form, bisection for yields and implied growth, ledgers of the replicating trades for the forward rate (928.1225 refinanced to 1,000) and the forward exchange rate (1.116098 USD per EUR), state-by-state replication and risk-neutral expectation for the option (call 5.9524, put 3.5714 by replication and by parity). My own first expected values for five results were wrong and were corrected from the computation and a hand check before the entries were written.
+- Objectives now covered: `interpret-return-concepts`, `decompose-required-return`, `calculate-return-types`, `calculate-equity-returns`, `value-instruments-by-present-value`, `solve-implied-return-and-growth`, `apply-cash-flow-additivity`; `compare-time-and-money-weighted-returns` stays covered, its text unchanged. Each of the seven outline items `outline:7099c7688942:m001:b01`, `:m001:b02`, `:m002:b01`, `:m004:b01` to `:b03` and `:m042:b03` was read against its objective and reviewed individually; no other mapping was promoted.
+
+### Limits
+
+The textbook was read as web renderings with partly garbled equations, cited by section. The premia in the required-return example are illustrative; the Federal Reserve decomposition is a model estimate. After-tax returns, pricing between coupon dates, and option pricing beyond one period are outside this slice. Human review is outstanding.
+
+## Time-value corrections and statistics slice, 18 October 2026
+
+`implementation_plan.readme`, Section 10: three corrections to the time-value entries, then `topic:descriptive-statistics` and `topic:probability-distributions` only. Source checking and writing, not study.
+
+### Corrections
+
+| Finding | Correction | Source | Check |
+| --- | --- | --- | --- |
+| Refinancing at the implied forward treated as assured | `res:cash-flow-additivity` shows the trades' dated cash flows: buy the two-year zero for 928.1225 and borrow it for a year, giving 0, $-955.9662$, $+1{,}000$, a forward loan at 4.6062 percent; the reverse locks in forward borrowing; rolling into a new loan at a later rate is a bet (1,032.4434 at 8 percent) | Hull sec. 4.8, p. 110 and Business Snapshot 4.1, p. 111, reread | the cash flows themselves, no future rate assumed |
+| Fisher identity called exact under expected inflation | `def:required-return-components`: identity exact for realised inflation or a specified scenario; ex ante $i-E\pi$ and ex post $i-\pi$; the expected real return under uncertain inflation exceeds deflation by mean inflation (0.8333 against 0 percent for 10 percent nominal and inflation 0 or 20 percent) | Mankiw, *Macroeconomics* 10th ed., chap. 5, sec. 5-3 (user-supplied copy); the Jensen argument is derived | both figures computed |
+| Halving an annual yield without naming its quotation | `meth:instrument-present-value`: halving applies to a nominal annual yield compounded semiannually; an effective annual yield uses $(1+y)^{1/2}-1$ | OpenStax sec. 10.2's convention, kept | 100.2218584 at 10 percent effective and at 9.7618 percent nominal; 100.00 if wrongly halved |
+
+Earlier example values are unchanged; the Fisher example is now labelled as assuming known inflation. A 1981 St. Louis Fed *Review* article was sought for the ex ante distinction; its URL redirected to an index page and the download failed, so it was not used.
+
+### Sources, 2026-10-18
+
+| Source key | Identity | Read |
+| --- | --- | --- |
+| `statistical-methods-handbook` | NIST/SEMATECH e-Handbook, web | 1.3.5.1, 1.3.5.6, 1.3.5.11, 7.2.6.2; 1.3.6.6.1, .2, .4, .9, .18 |
+| `coefficient-of-variation-reference-2017` | NIST Dataplot reference page, 24 January 2017 | whole page |
+| `probability-statistics-random-processes` | Pishro-Nik, probabilitycourse.com | 1.4.3, 5.1.5, 5.3.1, 8.2.2 |
+| `downside-risk-volatility-2026` | Estrada, *Finance Research Open* 2 (2026) 100099, author PDF, SHA-256 052c0108…1bfb1cd | pp. 1-2, eqs. (1)-(3) |
+| `macroeconomics-2019` | Mankiw, 10th ed., user-supplied PDF, SHA-256 249ad416…b7276d6f | chap. 5, sec. 5-3 |
+| `s7-hulloptions` | as before | sec. 15.1, pp. 339-340 |
+
+Not used: Blitzstein and Hwang's free edition (non-downloadable viewer); exam-preparation summaries of semi-deviation; the Cleveland Fed inflation-expectations page (no ex ante definition).
+
+### Existing entries inspected first
+
+`meth:portfolio-covariance-estimation`, `ev:correlation-matrix-noise`, `meth:var-es-estimation-methods`, `mod:mean-variance-portfolio-optimisation` and `ev:high-frequency-stylised-facts`. They own large-matrix estimation, random-matrix noise, VaR methods, optimisation and empirical tails; none gave the foundational definitions, so seven entries were written in two new files of `common-toolkit` (`descriptive-statistics.tex`, `probability.tex`), linking to those entries without repeating them.
+
+### Findings and checks
+
+- Conventions are stated in the entries: population ($N$) against sample ($N-1$) denominators and the bias of $s$; the $p(N+1)$ percentile rule, with the type-7 rule shown to give different quartiles ($-1.25$/2.375 against $-0.75$/2.125); skewness and kurtosis with $N$ denominators, raw against excess kurtosis, and bias-adjusted versions whose sign can differ ($-0.486$ against $+0.379$); semi-deviation targets (zero, the mean) and three denominators; the CV's ratio-scale condition, with a shifted series giving $-37.6$.
+- Probability: a six-cell table reproduces the moments directly and through the laws of total expectation, variance and covariance ($47.0=2.5+44.5$; $-16.25=-1.25-15.0$). Distribution moments match closed forms, scipy and numerical integration; the $t(2)$ second moment grows without bound under truncation. The Bayesian posterior (0.0916, 0.4521, 0.4562) is identical by batch and sequential updating.
+- All in `notes/artefacts/descriptive-probability/statistics-probability-checks.py` and `notes/artefacts/time-value-returns/time-value-return-checks.py`.
+- Objectives now covered: `calculate-location-dispersion`, `interpret-skewness-kurtosis`, `calculate-covariance-correlation`, `calculate-downside-relative-dispersion`, `calculate-expected-moments`, `apply-financial-distributions`, `apply-bayesian-updating`. Outline items `outline:7099c7688942:m005:b01`-`b04` and `m006:b01`-`b04` reviewed one by one.
+
+### Limits
+
+The outline does not name its "key distributions"; chi-square and $F$ are left to the inference objectives. Web sources were read as renderings and are cited by section; Mankiw by section, its copy having no printed page numbers. Examples are synthetic and make no claim about any asset or strategy. Human review is outstanding.
+
+## Statistics corrections and inference and simulation slice, 18 October 2026
+
+`implementation_plan.readme`, Section 11: five bounded corrections to the statistics entries, then `topic:statistical-inference` and `topic:simulation-methods` only. Source checking and writing, not study.
+
+### Environment
+
+Numerical checks of this slice ran with `/opt/homebrew/bin/python3.10` (Python 3.10.16, NumPy 1.23.5, SciPy 1.10.1), which the scripts now print. The previous statistics run used Anaconda Python 3.11 (NumPy 1.26.4, SciPy 1.13.1); both give the same results. A default `python3` without NumPy or SciPy cannot run these scripts.
+
+### Corrections
+
+| Finding | Correction | Counterexample checked |
+| --- | --- | --- |
+| Unbiased $s^2$ stated without sampling assumptions | random sample (i.i.d., finite variance), Pishro-Nik sec. 8.2.2 reread; a fixed dataset is described, a sample is used to estimate | $X_1=X_2=Z$: marginal variance 1, expected sample variance 0; independent pair: 1 |
+| Kurtosis read as mass in tails and centre | NIST sec. 1.3.5.11's wording (heavy tails or outliers); no central-mass claim | 0.495 at $\pm1$, 0.005 at $\pm10$: variance 1.99, kurtosis 25.50, no mass within half a s.d. (normal 0.383) |
+| Sample moments called meaningless when population moments do not exist | finite samples have valid descriptive moments; only their reading as estimates fails; Student-$t$ thresholds for real $\nu$ | $t(1.5)$ sample variance finite, population infinite; $t(0.9)$ no mean, $t(2.5)$ variance 5, $t(3.5)$ infinite kurtosis, $t(4.5)$ finite |
+| GBM drift and mean log return | $\ln S_T\sim N(\ln S_0+(\mu-\sigma^2/2)T,\sigma^2T)$; drift 0.07 in the existing example | mean price 107.25 unchanged |
+| Independence in the Bayesian example | conditional on the hypothesis | $P(\text{up},\text{up})=0.25125>0.25$ |
+
+The check-script path was removed from the printed section introduction; execution details stay in the evidence. Existing example values are unchanged.
+
+### Sources, 2026-10-18
+
+| Source key | Identity | Read |
+| --- | --- | --- |
+| `probability-statistics-random-processes` | Pishro-Nik, online | 7.1.2, 8.3.3, 8.4.3, 8.4.4 (8.2.2 reread) |
+| `statistical-methods-handbook` | NIST/SEMATECH e-Handbook | 1.3.3.4, 1.3.5.2, 1.3.5.8, 1.3.5.9, 1.3.5.10 (1.3.5.11 reread) |
+| `signed-rank-test-reference-2023` | NIST Dataplot, updated 11 December 2023 | whole page |
+| `introductory-statistics-2023` | Illowsky and Dean, OpenStax 2e, 13 December 2023 | sec. 1.2 |
+| `bootstrap-time-series-2003` | Politis, *Statistical Science* 18(2), author PDF, SHA-256 80c1b133…e9a61f | abstract, secs. 2, 2.3, pp. 219-223 |
+| `s7-hulloptions` | as before | sec. 21.6, pp. 489-494; sec. 22.2, pp. 517-521 |
+
+Searches: probabilitycourse.com chapter 8 sections (the guessed URLs 8_3_1 and 8_4_1 returned 404; found by search); NIST signed-rank; Politis 2003. Not used: Kunsch (1989) on Project Euclid (empty page to the fetcher).
+
+### Existing entries inspected first
+
+`meth:skill-luck-significance-tests` (t test, power and data needs), `meth:sharpe-ratio-standard-error`, `meth:multiple-testing-control`, `meth:var-es-estimation-methods` (historical, filtered and Monte Carlo VaR), `meth:sequential-bootstrap`, `meth:resampled-efficiency`. Their applications are linked, not repeated; six foundation entries were written in `common-toolkit/statistical-inference.tex` and `common-toolkit/simulation-methods.tex`.
+
+### Findings and checks
+
+- Inference on twelve invented active returns: exact $t$ interval $-0.17$ to 1.24 against the too-narrow normal interval; chi-square interval for the variance; one-sided $t$ $p=0.062$, sign test 0.194, exact signed-rank 0.076 by enumerating 4,096 patterns; power 0.49 at $n=12$ by the noncentral $t$, matched by simulation; Type I rate 4.9 percent simulated; $F=5.63$ ($p=0.008$). Simulated coverage 95.1 percent for normal samples and 75 percent for AR(1) samples.
+- Simulation: equal-weight historical VaR 12,800 and ES 15,700 against an age-weighted VaR of 8,400 on the same 20 scenarios; i.i.d. bootstrap within 1 percent of its ideal value; for AR(1) with coefficient 0.5 and $n=120$ the i.i.d. bootstrap expects 33 percent of the true variance of the mean and moving blocks of 12 expect 79 percent (exact quadratic forms, confirmed by simulation); Monte Carlo call 7.1161 (s.e. 0.0396) against the closed form 7.1281.
+- Seeds were fixed in advance and tolerances of four standard errors stated before running. Two of my expected values (the chi-square test $p$-value and the signed-rank normal approximation) were wrong guesses and were corrected from the computation before the entries were written.
+- Objectives now covered: `construct-confidence-intervals`, `conduct-hypothesis-tests`, `choose-nonparametric-tests`, `apply-historical-simulation`, `apply-bootstrap-resampling`, `apply-monte-carlo-simulation`. Items `outline:7099c7688942:m007:b01`-`b03` and `m009:b01`-`b03` reviewed one by one; the outline item on sampling also asks for sampling methodologies, so OpenStax sec. 1.2 was read and added before promotion. The scope note on chi-square and $F$ in the distributions mapping is resolved.
+
+### Limits
+
+Examples are synthetic and make no claim about any manager or strategy. Block-size choice is described, not implemented. Web sources were read as renderings and are cited by section. Human review is outstanding.
+
+## Tooling standardisation to Python 3.14 with uv and make, 18 October 2026
+
+No source was read and no entry or coverage status changed. Evidence notes were
+updated to name the environment in which the numerical checks now run.
+
+### Environment and checks
+
+- Locked environment: Python 3.14.7, uv 0.12.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0 (`pyproject.toml`, `uv.lock`); `make examples` runs every check script with warnings as errors.
+- All 55 check scripts pass. Their printed output matches the earlier Anaconda Python 3.11 run apart from a 1e-18 rounding residue, one printed `-0.` and one version line. `inference-simulation-checks.py` gives the same output under Python 3.10.16 (NumPy 1.23.5, SciPy 1.10.1) and 3.14.7 apart from its version line, rechecked on this date.
+- Required code changes: `np.trapz` to `np.trapezoid` (two scripts, output unchanged); `float()` casts where NumPy 2 changed the scalar repr (two scripts); `result_object=False` for `adfuller`. Empirical scripts with git-ignored inputs were compared with HEAD by syntax tree, not rerun.
+- `notes/entry-evidence.json` and `notes/coverage/objectives.json` now give the locked environment for the statistics and inference evidence and keep the first-run versions as history.
+
+### Limits
+
+Results from the data-dependent empirical scripts were not reproduced under the new versions. The PDF build and outline hashes are not part of CI.
+
+## Regression slice and inference corrections, 18 October 2026
+
+Source checking and numerical verification for plan Section 13; not study and not human review. Three corrections were made first, then three foundation objectives of `topic:linear-regression` were written.
+
+### Sources read
+
+| Source key | Identity | Read |
+| --- | --- | --- |
+| `s7-hulloptions` | Hull, 11th Global ed., local copy (printed page = PDF page - 1) | sec. 22.2, p. 517 and n. 2, p. 520, p. 521 (reread) |
+| `acerbi-tasche-2001` | arXiv cond-mat/0104295v3, local copy | Definitions 2.1-2.6, pp. 3-5; Proposition 3.2, p. 6; eq. (3.3), p. 7 (reread) |
+| `applied-statistics-course-notes` | Penn State STAT 500, Lesson 12; Internet Archive capture of 11 August 2026 | sec. 12.1, two-variance test |
+| `statistical-methods-handbook` | NIST/SEMATECH e-Handbook, live site | sec. 1.3.5.9 (reread), sec. 1.3.6.6.9 (lognormal median and mean) |
+| `regression-methods-course-notes` | Penn State STAT 501; Internet Archive captures, 16 December 2025 to 12 May 2026 | secs. 1.2-1.5, 1.8, 2.1, 2.3, 2.6-2.8, 3.2-3.3, 4.1-4.2, 4.4-4.6, 9.1-9.3 |
+| `smearing-retransformation-1983` | Duan, JASA 78(383), local copy supplied by the user, SHA-256 7525fc60…36118885 | abstract, secs. 1-3, pp. 605-606; start of sec. 4 |
+
+Access limits: the live Penn State pages failed TLS verification (incomplete certificate chain) from this environment, so archived captures were read; sections 3.3 and 4.6 had no 2026 capture and were read from captures of 16 December 2025 and 11 January 2026. Figures in the archived pages were not visible. A first search found no open copy of Duan (1983); the user then supplied one. The GitHub documentation on secrets was read through a fetched summary, which quoted that secrets other than `GITHUB_TOKEN` are not passed to workflows triggered from a forked repository.
+
+### Corrections
+
+- `meth:historical-simulation`. The equal-weight example used Hull's rank (second-largest of 20 losses, 12,800), while the age-weighted example used the first cumulative weight exceeding 10 percent (8,400). The second rule is the compendium's lower loss quantile; applied to equal weights it also gives 8,400 (the two worst losses carry exactly 10 percent). The claimed fall of a third came from changing conventions and is withdrawn. ES is now defined by exact tail mass with fractional weight at the VaR loss. On this sample it is 15,700 for equal weights and 14,014 for age weights, so weighting moves ES by about 11 percent and leaves VaR unchanged. The data were not changed. Hull's equal-weight choice and its footnoted alternatives (fifth-highest, sixth-highest or their average) are attributed as a different convention. The evidence check now tests the canonical function against numpy's inverted-CDF quantile and a numerical quantile integral, on uniform weights at an exact CDF boundary, tied losses and a fractional tail (np = 2.5).
+- `meth:hypothesis-testing`. The F example compared two series with sample correlation 0.997 under an F distribution that needs independent samples. The second sample is now an independent draw: N(0, 0.5^2), n = 15, seed 20261018 + 7, the first draw taken, rounded to one decimal. That gives F = 4.996 on (11, 14) d.f., p = 0.0062. The entry states both conditions, normal populations and independent samples (STAT 500 sec. 12.1). It also gives a fixed-seed counterexample (seed + 9, 40,000 replications): with equal variances and correlation 0.9, the ordinary test rejects 0.05 percent of the time at nominal 5 percent; at a true s.d. ratio of 1.5 it rejects 6 percent of the time, against 24 percent for independent samples. Paired variance tests are not covered.
+- Run commands. `jet_fuel_hedge_test.py` reaches `xlrd` through `backwardation_test.series` and now documents `uv run --group empirical`. The other current scripts were checked for imports of sibling scripts: `hedging_pressure_test.py` and `energy-checks.py` use only `backwardation_test` helpers that do not read spreadsheets; `heating_oil_test.py` and the other spreadsheet readers already named the group. Archived `superseded-*` scripts were left unchanged. All 55 check scripts were rerun in a separate clean default-group environment without `xlrd` and passed. README and the workflow comment now record the fork-secret limitation of CI; no remote CI run or secret configuration was exercised.
+
+### Regression foundations
+
+Inspected first: `mod:minimum-variance-hedge-ratio` (OLS slope, R^2 = rho^2), `meth:spread-volatility-regression` (levels and logs, lognormal correction from Lehalle and Laruelle), Jensen's alpha regression in performance evaluation, `pit:parameter-overfitting` and `meth:purged-embargoed-cross-validation`. These are linked, not repeated.
+
+Example: ten invented bonds with leverage fixed at 20, 25, ..., 65 percent and spreads generated as y = 40 + 5x + e, e ~ N(0, 30^2) (seed 20261018 + 11, first draw, rounded to whole basis points).
+- Fit: b1 = 4.802 bp per pp and b0 = 49.30; SSE 14,356.4, SSR 47,568.0, SST 61,924.4; S = 42.36 and R^2 = 0.768.
+- Coefficient tests: t(b1) = 5.148, p = 0.00088; 95 percent interval 2.65 to 6.95; the test of beta1 = 5 is not rejected (t = -0.21).
+- ANOVA: F = 26.507 = 5.1485^2, with the same p as the t test.
+- Prediction at 45 percent leverage: 265.4, with standard error of fit 13.60 and of prediction 44.49. The 95 percent interval for the mean is 234.1-296.8; for a new bond it is 162.8-368.0.
+- Coverage in 20,000 samples simulated under the declared model: mean interval 94.8 percent, prediction interval 95.0 percent. The mean interval used for a new bond covers 49.7 percent (49.9 percent exactly from t with 8 d.f.).
+- Extrapolation to 90 percent leverage: the standard error of fit rises 3.4-fold.
+- Log-level form: slope 0.02075 (median x1.021 per pp). At 45 percent leverage the median is 252.2, the normal-theory mean 258.2 and the smearing estimate 256.8. Duan's mixture bias of 41 percent is reproduced.
+- Other forms: log-log elasticity 0.83; level-log slope 183.9.
+
+Each result was checked by closed form against numpy least squares, statsmodels OLS, the statsmodels formula-API ANOVA table and `get_prediction` intervals. One draft expected value was a wrong guess: about 41 percent coverage for the misused mean interval. It was replaced by the computed 49.9 percent before the entry was written.
+
+Outline review: `outline:7099c7688942:m010:b01`-`b03` were reviewed one by one against the outline page (printed p. 3) and the finished entries, and promoted. `m010:b04` (CAPM) and the four Batch 3 analysis objectives of the topic are not promoted. `m009:b01` and `m007:b02` were re-reviewed after the corrections and stay covered.
+
+### Limits
+
+Examples are synthetic and make no claim about credit markets. Residual diagnostics on ten points are weak evidence; no formal normality, heteroscedasticity or serial-correlation test is taught. Multiple regression, misspecification, time-series regression and the CAPM regression are deferred. Course notes are a secondary, teaching source. Human review is outstanding.
+
+### Correction pass (plan sec. 13.5), 18 October 2026
+
+A bounded correction of the slice above, after an audit of the finished entries. The earlier record is left as written; where it says F = t^2, "median" for back-transformed log predictions, or ES "beyond" VaR leaving 18,600, read this subsection.
+
+Sources read in this pass:
+
+| Source key | Identity and access | Read |
+| --- | --- | --- |
+| `linear-regression-lectures` | Marco Taboga, StatLect, live pages, 2026-10-18 | "Normal linear regression model": Setting; Assumptions; Distribution of the OLS estimator; Estimation of the variance of the error terms. "Linear regression - Hypothesis testing": all sections, including the t, F, z and Chi-square tests. "Gauss Markov theorem": Assumptions; OLS is linear and unbiased; The covariance matrix of the OLS estimator |
+| `back-transformed-forecast-mean-2014` | Rob J Hyndman, "The forecast mean after back-transformation", Hyndsight, 25 February 2014, live page | the whole post; the opening paragraph supports the symmetry condition for the median |
+| `smearing-retransformation-1983` | Duan (1983), local copy, SHA-256 unchanged (7525fc60...36118885) | sec. 2, p. 606, reread |
+
+Access limits: StatLect renders formulas as images. The prose was read from the HTML. The Gauss-Markov assumption formulas, E[eps|X] = 0 and Var[eps|X] = sigma^2 I, were read by cropping the page's equation sprite; the other formula images were not transcribed. A headless browser was unavailable, and WebFetch summaries were cross-checked against the raw HTML text. StatLect does not state that a single-restriction F equals the squared t for the same null value. The entry marks that step as algebra, and the statsmodels check confirms it numerically.
+
+Corrections:
+- `meth:simple-regression-estimation`. The claim "can be computed for any data" was replaced. The intercept and slope exist and are unique for finite data with Sxx > 0, which is the one-predictor case of full rank. Fitting assumes nothing about the errors.
+- `meth:regression-diagnostics-anova`.
+  - MSE, standard errors and tests need n > 2.
+  - Conditions now separate four stages: computing; unbiasedness (linear mean, E[eps|X] = 0); conventional variances and BLUE (Var[eps|X] = sigma^2 I); and exact t/F inference (normal errors).
+  - Without normality, the tests are large-sample approximations. Least squares remains consistent (Duan p. 606).
+  - F = t^2 is restricted to the zero-slope null. ANOVA F = 26.506953 = 5.148490^2. The test of beta1 = 5 has t^2 = 0.044865, which equals the statsmodels f_test F for that restriction (p = 0.83755 for both), not the ANOVA F.
+- `meth:regression-prediction-functional-form`.
+  - exp(E[log Y | x]) is the conditional geometric mean. It is the median only when the log error has median zero.
+  - The normal-theory estimate is consistent for exp(x0 beta + sigma^2/2) whatever the errors. It equals E Y0 under normality but "might not" otherwise (Duan p. 606), so normality is sufficient but not necessary. The arithmetic-mean corrections (normal theory, smearing) and their stated assumptions are unchanged.
+  - The log-log rule is now 100 (1.01^b1 - 1) ≈ b1 percent. For b1 = 0.825869 this gives 0.825153 percent, or a fraction of 0.00825153.
+  - The log-level and 45 percent figures (1.021 factor; 252.2) are now labelled geometric means. A new original counterexample uses eps = 0.5(E - 1) with E standard exponential, which has mean 0 and variance 0.25. Relative to exp(x beta), the factors are: geometric mean 1, median 0.8578, mean 1.2131 and normal-theory 1.1331.
+- `meth:historical-simulation`. The pitfall was stale. At the canonical VaR of 8,400, the mean of strictly greater losses is 15,700. It equals ES only because those two losses carry exactly the 10 percent tail. Only Hull's 12,800 threshold leaves 18,600 alone. Both values were already asserted in `inference-simulation-checks.py`, which is unchanged; data, convention and results are unchanged.
+
+Numerical evidence: `regression-checks.py` gained four targeted checks:
+- matching versus different slope nulls;
+- the geometric-mean identity (exp of the fitted log at mean leverage equals the sample geometric mean, 239.444, by scipy gmean);
+- the skewed log error, by closed form against scipy expon and quadrature;
+- fraction versus percentage for the log-log change.
+
+No seed, data or general framework was added.
+
+Outline re-review: `outline:7099c7688942:m010:b01`-`b03` were re-read against the outline page (PDF and printed p. 3) and the corrected entries. All three remain covered, and b02's "describe and compare the assumptions" is now met more fully. `b04` (CAPM) and the four Batch 3 objectives of `topic:linear-regression` were not promoted.
+
+### Second correction pass (plan sec. 13.6), 18 October 2026
+
+Bounded audit findings on the corrected regression entries; earlier text above is left as written.
+
+- `meth:regression-diagnostics-anova`: the claim that least squares "remains consistent ... whether or not the errors are normal" omitted Duan's condition. Reread sec. 2, pp. 605-606: errors i.i.d. with mean 0 and variance sigma^2, and coefficients and predictions "unbiased and also consistent if the design matrix is asymptotically nondegenerate". The entry now quotes the condition and adds a counterexample, derived here: x_i = 2^-i is full rank in every sample but Sxx tends to 1/3, so Var(b1) = sigma^2/Sxx tends to 3 sigma^2. The check uses exact rational arithmetic against the closed form (1 - 4^-n)/3 - (1 - 2^-n)^2/n and numpy at n = 60; Sxx is 0.2335, 0.3083 and 0.3283 at n = 10, 40 and 200.
+- `meth:regression-prediction-functional-form`: the normal-theory consistency statement now refers to the same design and moment conditions. The smearing estimate's weak consistency is stated with Duan's Theorem 1 (sec. 4, p. 607, read in full for the first time): h continuously differentiable, an intercept, X'X/n tending to a positive-definite matrix, and a moment condition that for logs is E exp(2 eps) < infinity. Duan calls condition (iii) "much stronger than we need".
+- Plan opening: `objective:estimate-capm-regression` belongs to `topic:asset-pricing-factor-models` (as `objectives.json` already records), not `topic:linear-regression`.
+- `notes/readings/linear-regression-lectures.md`: the Gamma(N-K, sigma^2) statement follows StatLect's degrees-of-freedom and mean parameterisation ("Gamma distribution" lecture, Caveat and Definition, live page read 2026-10-18). The note now names that convention and gives the shape/scale equivalent; the statement itself was not wrong.
+
+## Portfolio moments and diversification slice, 18 October 2026
+
+Source checking and numerical verification for `objective:calculate-portfolio-moments` and `objective:explain-diversification` (`topic:portfolio-risk-return`); not study and not human review.
+
+### Existing entries reviewed first
+
+- `def:return-dependence`: covariance, correlation, denominators and limits for two return series.
+- `def:conditional-moments`: probability-weighted moments.
+- `def:return-sample-statistics`: N and N-1.
+- `mod:mean-variance-portfolio-optimisation`: uses mu and Sigma; Narang's rolling correlations.
+- `meth:portfolio-covariance-estimation`: large-N estimation.
+- `def:return-measures`: one-period total return.
+
+None states the portfolio return from value weights, portfolio moments or the correlation sensitivity, so two foundation entries were written and link to these entries rather than repeat them.
+
+### Searches and sources
+
+Searches (2026-10-18): "portfolio variance two assets correlation minus one zero variance weights lecture notes"; "Longin Solnik Extreme Correlation of International Equity Markets pdf". The catalogue (`s6-markowitz`, `w2-longin-solnik`) supplied the two primary sources.
+
+| Source key | Identity and access | Read |
+| --- | --- | --- |
+| `s6-markowitz` | Markowitz, "Portfolio Selection", JF 7(1), 1952; the catalogue's scanned PDF (no text layer), SHA-256 0af6b760...0e473, read as rendered page images | pp. 77-81 |
+| `w2-longin-solnik` | Longin and Solnik, working paper of April 2000 ("Forthcoming in The Journal of Finance"; JF 56(2), 2001); Internet Archive capture of 9 August 2017 of the HEC copy, SHA-256 b4a8c39a...0fa18 | abstract, pp. 1-2; p. 3 skimmed |
+| `probability-statistics-random-processes` | probabilitycourse.com sec. 5.3.1, fetched rendering | Lemma 5.3 item 7; eq. (5.21) |
+| `linear-regression-lectures` (correction) | StatLect "Gamma distribution", live page | Caveat; Definition |
+| `smearing-retransformation-1983` (correction) | Duan (1983), local copy | secs. 2 and 4, pp. 605-607 |
+
+Access limits:
+- The Markowitz formulas were read from page images, and two printing slips on p. 81 are recorded in the reading note.
+- The Longin-Solnik CEPR copy returned a Cloudflare challenge, and hec.fr no longer serves the file, so the archived working paper was used. Journal pagination is unchecked.
+- probabilitycourse.com refused a direct download (HTTP 406), so its section was read through a fetched rendering.
+- OpenStax *Principles of Finance* 2e sec. 15.2 was fetched during the search but is not cited. Its page says the book may not be "ingested into large language models or generative AI offerings" without OpenStax's written permission. The same notice may apply to the earlier use of sec. 15.1 (`principles-of-finance-2026`); that is left for the owner to decide.
+- No source read gives the beginning-of-period value-weight identity, the long-only weighted-average bound, the zero-variance weights, the threshold rho < sigma2/sigma1 or the equal-weight floor in so many words. The entries mark them as derivations and the script checks each.
+
+### Entries and examples
+
+New file `compendium/portfolio-construction-risk/portfolio-moments.tex`, input from the chapter wrapper before the construction models, with two entries:
+- `meth:portfolio-return-moments`.
+- `mech:diversification-correlation`.
+
+Example 1 is a three-state, one-year model in US dollars with 600,000 in E and 400,000 in B:
+- E[R_P] is 5.86. Var(R_P) is 87.57 + 2.8224 - 30.96 = 59.43, a standard deviation of 7.71.
+- Q (30/70) has E 4.63 and Var 3.4461. Cov(P, Q) is 13.894 and corr(P, Q) is 0.971, although the assets' correlation is -0.985.
+
+Example 2 is six hand-typed monthly returns:
+- Variances over N-1 are 7.048 and 0.2907, and the covariance is -1.336; over N, 5.873, 0.2422 and -1.113. The correlation is -0.933 with either denominator.
+- The rebalanced 60/40 series has mean 0.727 and variance 1.9425 = w'Sw. Under buy and hold the weights drift to 0.606/0.394.
+
+Diversification, with weights 0.6/0.4 and volatilities of 20 and 10 percent:
+- The portfolio s.d. is 16.0, 13.74, 12.65 and 8.0 at rho = +1, 0.3, 0 and -1.
+- Variance is zero at w = 1/3 when rho = -1. At rho = 0 the mix is not below the safer asset's 10 percent, while a 20 percent equity weight gives 8.94.
+- An equal-weight portfolio with s.d. 20 and rho 0.3 has a floor of 10.95.
+- Longin and Solnik's 0.21 and 0.62 are reproduced analytically (0.2131 and 0.6184).
+
+The first draft of the check script had several expected values typed before computing, such as a scenario variance of 213.25. They failed and were replaced by the computed values before the entries were written. The data were not changed after that run.
+
+### Coverage
+
+`outline:7099c7688942:m008:b01`, `m087:b04`, `m087:b05` and `m087:b06` were each read on the outline pages (PDF p. 2, and PDF p. 27 = printed p. 1) against the finished entries, and promoted. Both objectives are `covered`; this is editorial coverage, not mastery.
+
+Not promoted:
+- `m008:b02`-`b03` and `m087:b01`-`b03`, `b07`: efficient frontier, optimal portfolio, risk aversion and asset classes.
+- CAPM, beta and systematic risk.
+- The advanced regression objectives.
+
+Totals are 29 of 424 objectives and 33 Level I outline items covered.
+
+### Limits
+
+The examples are synthetic: both happen to show strongly negative stock-bond correlations, which is not a claim about markets. Model moments are taken as given; how expected returns are estimated is not taught. Tail dependence beyond Longin and Solnik's summary, time-varying correlation models and the pricing of systematic risk are deferred. Human review is outstanding.

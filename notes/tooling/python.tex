@@ -47,7 +47,7 @@ Special methods are methods that are meant to be called by the Python interprete
 \begin{lstlisting}[language=Python]
 def __abs__(self):
 	return math.hypot(self.x, self.y)
-	
+
 def __add__(self, value):
 	return Object(self.x + value.x, self.y + value.y)
 

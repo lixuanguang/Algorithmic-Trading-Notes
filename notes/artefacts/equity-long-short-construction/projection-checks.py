@@ -8,10 +8,14 @@ meth:forecast-scaling-ic.
    example E[error | g] = g^2 - 1, so a nonlinear function of g still predicts the error.
 3. Under joint normality the projection and the conditional mean coincide: binned conditional means of r given g
    lie on the projection line (within simulation error).
-Run: python3 projection-checks.py   (numpy; under 1 s). Exits non-zero on failure.
+Run: uv run python projection-checks.py   (numpy; under 1 s). Exits non-zero on failure.
 """
+
+# standard library imports
+import itertools
 import sys
 
+# third party library imports
 import numpy as np
 
 rng = np.random.default_rng(17102026)
@@ -26,34 +30,46 @@ def check(name, ok, detail):
 
 n, s = 2_000_000, 1.0
 g = rng.standard_normal(n)
-r = g ** 2 - 1 + s * rng.standard_normal(n)
+r = g**2 - 1 + s * rng.standard_normal(n)
 ic = np.corrcoef(r, g)[0, 1]
-r2_true = 2 / (2 + s ** 2)
-fitted = g ** 2 - 1
+r2_true = 2 / (2 + s**2)
+fitted = g**2 - 1
 r2_sim = 1 - np.var(r - fitted) / np.var(r)
-print('== 1. Zero IC, nonzero information')
-check('IC is zero within simulation error', abs(ic) < 4 / np.sqrt(n), f'IC {ic:+.5f}')
-check('conditional mean explains 2/(2+s^2) of the variance', abs(r2_sim - r2_true) < 0.005, f'{r2_sim:.4f} against {r2_true:.4f}')
+print("== 1. Zero IC, nonzero information")
+check("IC is zero within simulation error", abs(ic) < 4 / np.sqrt(n), f"IC {ic:+.5f}")
+check(
+    "conditional mean explains 2/(2+s^2) of the variance",
+    abs(r2_sim - r2_true) < 0.005,
+    f"{r2_sim:.4f} against {r2_true:.4f}",
+)
 b = np.cov(r, g)[0, 1] / np.var(g)
-print(f'     linear projection slope {b:+.5f}; linear R^2 {ic ** 2:.6f}')
+print(f"     linear projection slope {b:+.5f}; linear R^2 {ic**2:.6f}")
 
-print('\n== 2. Orthogonality is not mean independence')
+print("\n== 2. Orthogonality is not mean independence")
 u = r - (r.mean() + b * (g - g.mean()))
-check('projection error uncorrelated with g', abs(np.corrcoef(u, g)[0, 1]) < 4 / np.sqrt(n), f'{np.corrcoef(u, g)[0, 1]:+.5f}')
-check('projection error correlated with g^2', np.corrcoef(u, g ** 2)[0, 1] > 0.5, f'{np.corrcoef(u, g ** 2)[0, 1]:+.4f}')
+check(
+    "projection error uncorrelated with g",
+    abs(np.corrcoef(u, g)[0, 1]) < 4 / np.sqrt(n),
+    f"{np.corrcoef(u, g)[0, 1]:+.5f}",
+)
+check(
+    "projection error correlated with g^2",
+    np.corrcoef(u, g**2)[0, 1] > 0.5,
+    f"{np.corrcoef(u, g**2)[0, 1]:+.4f}",
+)
 
-print('\n== 3. Joint normality: projection = conditional mean')
+print("\n== 3. Joint normality: projection = conditional mean")
 cov = np.array([[1.0, 0.3], [0.3, 1.0]])
 x = rng.multivariate_normal([0, 0], cov, size=n)
 gg, rr = x[:, 0], x[:, 1]
 edges = np.linspace(-2, 2, 9)
 worst = 0.0
-for lo, hi in zip(edges[:-1], edges[1:]):
+for lo, hi in itertools.pairwise(edges):
     m = (gg >= lo) & (gg < hi)
     worst = max(worst, abs(rr[m].mean() - 0.3 * gg[m].mean()))
-check('binned conditional means on the line 0.3 g', worst < 0.01, f'largest gap {worst:.4f}')
+check("binned conditional means on the line 0.3 g", worst < 0.01, f"largest gap {worst:.4f}")
 
 if fails:
-    print('\nFAILED:', fails)
+    print("\nFAILED:", fails)
     sys.exit(1)
-print('\nall checks passed')
+print("\nall checks passed")

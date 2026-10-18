@@ -1,14 +1,53 @@
-.DS_Store
+# -----------------------------------------------------------------------------
+# Python bytecode / caches
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
 
-# PDFs are build outputs or local copies; only the compiled compendium is kept
+# -----------------------------------------------------------------------------
+# Virtual environments / local Python envs
+# -----------------------------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# -----------------------------------------------------------------------------
+# Test / type-check / lint / tooling artifacts
+# -----------------------------------------------------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.uv-cache/
+.dependency-cache/
+.coverage
+.coverage*
+htmlcov/
+
+# -----------------------------------------------------------------------------
+# Secrets / local env files
+# -----------------------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+*.secrets
+
+# -----------------------------------------------------------------------------
+# Source copies and build outputs
+# -----------------------------------------------------------------------------
+# PDFs are build outputs or local copies; only the compiled compendium is kept.
 *.pdf
 !compendium/compendium.pdf
 
-# Local copies of sources, never committed
+# Local copies of sources, never committed.
 reading materials/
 reading_materials/
 
+# -----------------------------------------------------------------------------
 # LaTeX intermediate files
+# -----------------------------------------------------------------------------
 *.aux
 *.bbl
 *.blg
@@ -43,6 +82,17 @@ reading_materials/
 *.thm
 *.tdo
 
-# Python bytecode
-__pycache__/
-*.pyc
+# -----------------------------------------------------------------------------
+# IDE / editor
+# -----------------------------------------------------------------------------
+.vscode/*
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# -----------------------------------------------------------------------------
+# OS files
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db

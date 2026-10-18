@@ -20,29 +20,45 @@ Diagnostics added in this batch (not part of the protocol's verdict): the same s
 workbook, and a month-by-month comparison with the 55 values read from the HTML page in method validation (2026-10-17), to detect
 revisions between the two retrievals. The index is computed by BarclayHedge from reporting funds; its constituents and
 past values can change (late reporters, new funds, closures), so every figure is as of the retrieval time.
-Run: python3 global_macro_down_months_2014_test.py <workbook .xls> <French factors csv>
+Run: uv run --group empirical python global_macro_down_months_2014_test.py <workbook .xls> <French factors csv>
      (numpy, scipy, xlrd 2.0.1 for the .xls; under 1 s). Writes global_macro_monthly_2014.csv next to this script.
 """
+
+# standard library imports
 import csv
 import hashlib
 import math
 import os
 import sys
 
+# third party library imports
 import numpy as np
 import xlrd
 from scipy import stats
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 START, END = (2014, 1), (2026, 7)
-WORKBOOK_SHA256 = 'ead890c4274a7cdd7f92e3da23d15dbd0359dd239bf6a3841cddf437853d1097'
+WORKBOOK_SHA256 = "ead890c4274a7cdd7f92e3da23d15dbd0359dd239bf6a3841cddf437853d1097"
 
 
 def workbook(path):
     """Monthly returns {(y, m): r} and the set of months marked as estimated."""
     sh = xlrd.open_workbook(path).sheet_by_index(0)
     header = sh.row_values(1)
-    assert header[1:13] == ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], header
+    assert header[1:13] == [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ], header
     out, estimated = {}, set()
     for i in range(2, sh.nrows):
         row = sh.row_values(i)
@@ -54,7 +70,7 @@ def workbook(path):
             if isinstance(c, float):
                 out[(y, k + 1)] = c
             elif isinstance(c, str) and c.strip():
-                assert '*' in c, (y, k + 1, c)  # any non-numeric cell must be a marked estimate
+                assert "*" in c, (y, k + 1, c)  # any non-numeric cell must be a marked estimate
                 estimated.add((y, k + 1))
     return out, estimated
 
@@ -62,7 +78,7 @@ def workbook(path):
 def french(path):
     out = {}
     for line in open(path):
-        p = [x.strip() for x in line.split(',')]
+        p = [x.strip() for x in line.split(",")]
         if len(p[0]) == 6 and p[0].isdigit():
             out[(int(p[0][:4]), int(p[0][4:]))] = (float(p[1]) / 100, float(p[4]) / 100)
         elif out and (not p[0] or not p[0].isdigit()):
@@ -74,61 +90,99 @@ def report(label, months, r, mk, rf):
     ex = r - rf
     T = len(r)
     sr = ex.mean() / ex.std(ddof=1)
-    print(f'{label}: window {months[0][0]}-{months[0][1]:02d} to {months[-1][0]}-{months[-1][1]:02d}, T = {T} months')
-    print(f'  all months: mean {r.mean()*100:+.2f}%/month, vol {r.std(ddof=1)*math.sqrt(12)*100:.2f}%/yr, '
-          f'monthly Sharpe (excess) {sr:+.3f} (Lo IID s.e. {math.sqrt((1 + sr**2 / 2) / T):.3f}), '
-          f'annualised {sr*math.sqrt(12):+.2f}')
+    print(
+        f"{label}: window {months[0][0]}-{months[0][1]:02d} to {months[-1][0]}-{months[-1][1]:02d}, T = {T} months"
+    )
+    print(
+        f"  all months: mean {r.mean() * 100:+.2f}%/month, vol {r.std(ddof=1) * math.sqrt(12) * 100:.2f}%/yr, "
+        f"monthly Sharpe (excess) {sr:+.3f} (Lo IID s.e. {math.sqrt((1 + sr**2 / 2) / T):.3f}), "
+        f"annualised {sr * math.sqrt(12):+.2f}"
+    )
     res = {}
-    for name, sel in (('down', mk < 0), ('up', mk >= 0)):
+    for name, sel in (("down", mk < 0), ("up", mk >= 0)):
         a, b = r[sel], mk[sel]
         n = len(a)
         tmean = a.mean() / (a.std(ddof=1) / math.sqrt(n))
         rho = np.corrcoef(a, b)[0, 1]
-        z = np.arctanh(rho); half = 1.96 / math.sqrt(n - 3)
+        z = np.arctanh(rho)
+        half = 1.96 / math.sqrt(n - 3)
         lr = stats.linregress(b, a)
         tcrit = stats.t.ppf(0.975, n - 2)
-        print(f'  {name:5s} months (n {n}): mean {a.mean()*100:+.4f}% (t {tmean:+.4f}), correlation {rho:+.2f} '
-              f'[{math.tanh(z-half):+.2f}, {math.tanh(z+half):+.2f}], beta {lr.slope:+.3f} '
-              f'[{lr.slope - tcrit*lr.stderr:+.3f}, {lr.slope + tcrit*lr.stderr:+.3f}]')
+        print(
+            f"  {name:5s} months (n {n}): mean {a.mean() * 100:+.4f}% (t {tmean:+.4f}), correlation {rho:+.2f} "
+            f"[{math.tanh(z - half):+.2f}, {math.tanh(z + half):+.2f}], beta {lr.slope:+.3f} "
+            f"[{lr.slope - tcrit * lr.stderr:+.3f}, {lr.slope + tcrit * lr.stderr:+.3f}]"
+        )
         res[name] = (n, a.mean(), tmean)
-    worst = np.argsort(mk, kind='stable')[:10]
-    print(f'  ten worst benchmark months: benchmark mean {mk[worst].mean()*100:+.2f}%, index mean {r[worst].mean()*100:+.2f}% '
-          f'({", ".join(f"{months[i][0]}-{months[i][1]:02d}" for i in sorted(worst))})')
-    n, m, t = res['down']
+    worst = np.argsort(mk, kind="stable")[:10]
+    print(
+        f"  ten worst benchmark months: benchmark mean {mk[worst].mean() * 100:+.2f}%, index mean {r[worst].mean() * 100:+.2f}% "
+        f"({', '.join(f'{months[i][0]}-{months[i][1]:02d}' for i in sorted(worst))})"
+    )
+    n, m, t = res["down"]
     ok = m > 0 and t > 2
-    print(f'  verdict (pre-set rule): crisis protection {"supported" if ok else "not supported"} in this window')
+    print(
+        f"  verdict (pre-set rule): crisis protection {'supported' if ok else 'not supported'} in this window"
+    )
     return res
 
 
 def main(xls_path, ff_path):
-    digest = hashlib.sha256(open(xls_path, 'rb').read()).hexdigest()
-    print(f'workbook SHA-256 {digest} ({"matches" if digest == WORKBOOK_SHA256 else "DIFFERS FROM"} the audited snapshot)')
+    digest = hashlib.sha256(open(xls_path, "rb").read()).hexdigest()
+    print(
+        f"workbook SHA-256 {digest} ({'matches' if digest == WORKBOOK_SHA256 else 'DIFFERS FROM'} the audited snapshot)"
+    )
     idx, est = workbook(xls_path)
     ff = french(ff_path)
-    print(f'estimated months excluded: {", ".join(f"{y}-{m:02d}" for y, m in sorted(est))}')
-    window = [(y, m) for y in range(START[0], END[0] + 1) for m in range(1, 13) if START <= (y, m) <= END]
+    print(f"estimated months excluded: {', '.join(f'{y}-{m:02d}' for y, m in sorted(est))}")
+    window = [
+        (y, m) for y in range(START[0], END[0] + 1) for m in range(1, 13) if START <= (y, m) <= END
+    ]
     missing = [m for m in window if m not in idx or m not in ff]
-    assert not [m for m in window if m in est], 'an estimated month falls inside the window'
-    assert not missing, f'months missing from the inputs: {missing}'
+    assert not [m for m in window if m in est], "an estimated month falls inside the window"
+    assert not missing, f"months missing from the inputs: {missing}"
     rows = [(m, idx[m], ff[m][0], ff[m][1]) for m in window]
-    with open(os.path.join(HERE, 'global_macro_monthly_2014.csv'), 'w', newline='') as f:
+    with open(os.path.join(HERE, "global_macro_monthly_2014.csv"), "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(['month', 'barclay_global_macro', 'mkt_rf', 'rf'])
+        w.writerow(["month", "barclay_global_macro", "mkt_rf", "rf"])
         for m, r, mk, rf in rows:
-            w.writerow([f'{m[0]}-{m[1]:02d}', f'{r:.4f}', f'{mk:.4f}', f'{rf:.4f}'])
+            w.writerow([f"{m[0]}-{m[1]:02d}", f"{r:.4f}", f"{mk:.4f}", f"{rf:.4f}"])
     arr = lambda k: np.array([x[k] for x in rows])
     r, mk, rf = arr(1), arr(2), arr(3)
-    report('Protocol window (Barclay Global Macro Index workbook, net; French Mkt-RF)', window, r, mk, rf)
+    report(
+        "Protocol window (Barclay Global Macro Index workbook, net; French Mkt-RF)",
+        window,
+        r,
+        mk,
+        rf,
+    )
     sub = [i for i, m in enumerate(window) if m >= (2022, 1)]
-    report('Recent-period comparison from the workbook', [window[i] for i in sub], r[sub], mk[sub], rf[sub])
+    report(
+        "Recent-period comparison from the workbook",
+        [window[i] for i in sub],
+        r[sub],
+        mk[sub],
+        rf[sub],
+    )
     page = {}
-    for row in csv.DictReader(open(os.path.join(HERE, 'global_macro_monthly.csv'))):
-        y, m = row['month'].split('-')
-        page[(int(y), int(m))] = float(row['barclay_global_macro'])
-    diffs = [(m, page[m], round(idx[m], 4)) for m in sorted(page) if abs(page[m] - round(idx[m], 4)) > 5e-5]
-    print(f'revision check against method validation (2026-10-17)\'s page values (55 months, 4 decimals): '
-          f'{len(diffs)} months differ' + (': ' + '; '.join(f'{m[0]}-{m[1]:02d} {a:+.4f} -> {b:+.4f}' for m, a, b in diffs) if diffs else ''))
+    for row in csv.DictReader(open(os.path.join(HERE, "global_macro_monthly.csv"))):
+        y, m = row["month"].split("-")
+        page[(int(y), int(m))] = float(row["barclay_global_macro"])
+    diffs = [
+        (m, page[m], round(idx[m], 4))
+        for m in sorted(page)
+        if abs(page[m] - round(idx[m], 4)) > 5e-5
+    ]
+    print(
+        f"revision check against method validation (2026-10-17)'s page values (55 months, 4 decimals): "
+        f"{len(diffs)} months differ"
+        + (
+            ": " + "; ".join(f"{m[0]}-{m[1]:02d} {a:+.4f} -> {b:+.4f}" for m, a, b in diffs)
+            if diffs
+            else ""
+        )
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2])

@@ -1,0 +1,63 @@
+name: CI
+
+# CI runs once per merge candidate, not per commit: only when a pull request into
+# main is labeled `ready-to-merge`. Commits to other branches and the post-merge
+# push to main run nothing. After new commits, remove and re-add the label.
+on:
+  pull_request:
+    branches: [main]
+    types: [labeled]
+
+permissions:
+  contents: read
+
+jobs:
+  source-validation:
+    name: Source validation
+    if: github.event.label.name == 'ready-to-merge'
+    runs-on: ubuntu-latest
+
+    steps:
+      # The pinned guide is a private submodule; GUIDE_READ_TOKEN is a read-only token
+      # for lixuanguang/institutional_reading_list. The outline PDFs and reading copies
+      # are git-ignored, so `make verify-outlines` and `make pdf` run locally only.
+      # GitHub withholds repository secrets (other than GITHUB_TOKEN) from workflows
+      # triggered from forks, so only same-repository pull requests can be validated.
+      # Do not switch to pull_request_target: it would run untrusted code with secrets.
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          fetch-depth: 0
+          submodules: recursive
+          token: ${{ secrets.GUIDE_READ_TOKEN }}
+
+      - name: Install pinned uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.12.7"
+
+      - name: Install pinned Python
+        run: uv python install
+
+      - name: Install locked environment
+        run: uv sync --frozen
+
+      - name: Verify supported Python runtime
+        run: |
+          uv run --frozen python - <<'PY'
+          """Verify the pinned interpreter and supported platform."""
+
+          # standard library imports
+          import platform
+          import sys
+          import sysconfig
+          from pathlib import Path
+
+          print(sys.version, platform.platform(), platform.machine())
+          assert platform.python_implementation() == "CPython"
+          assert platform.python_version() == Path(".python-version").read_text().strip()
+          assert sys._is_gil_enabled() and not sysconfig.get_config_var("Py_GIL_DISABLED")
+          assert platform.machine() == "x86_64"
+          PY
+
+      - name: Run source validation
+        run: make source-check

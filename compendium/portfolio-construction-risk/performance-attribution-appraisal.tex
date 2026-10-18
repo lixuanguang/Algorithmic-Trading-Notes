@@ -1,0 +1,187 @@
+\section{Performance attribution, benchmarks and appraisal}
+
+These entries take performance evaluation from measurement through attribution to appraisal and the judgement of skill. They extend \hyperref[meth:relative-performance-evaluation]{relative performance evaluation}, \hyperref[def:return-measures]{return measures} and \hyperref[meth:skill-luck-significance-tests]{tests of skill against luck}. Every series and weight in the examples is invented; the arithmetic is checked in \texttt{notes/artefacts/performance-evaluation/performance-evaluation-checks.py}. Returns are percent; attribution effects are percentage points.
+
+\begin{qfdefinition}[The three components of performance evaluation: measurement, attribution and appraisal; the sponsor's and the manager's purposes; the attributes of an effective attribution process]\label{def:performance-evaluation-components}
+\qffield{Statement} Performance evaluation asks three questions: ``What was the account's performance?'', ``Why did the account produce the observed performance?'' and ``Is the account's performance due to luck or skill?''. \emph{Performance measurement} answers the first by calculating rates of return. \emph{Performance attribution} answers the second by investigating ``the sources of the account's performance relative to a specific investment benchmark and the importance of those sources''. \emph{Performance appraisal} answers the third, drawing conclusions about ``the quality (that is, the magnitude and consistency)'' of relative performance \citep[chap.~12 (Bailey, Richards and Tierney), pp.~719--720]{managing-investment-portfolios-2007}. For a fund sponsor, evaluation is the feedback and control mechanism of investment policy and evidence for fiduciaries; for a manager, it monitors each element of the investment process (pp.~718--719).
+
+Bacon defines return attribution as ``a technique used to quantify the excess return of a portfolio against its benchmark into the active decisions of the investment decision process'' \citep[3rd ed., 2023, chap.~6, p.~239]{wide-bacon-attribution}. He reports Lord's characteristics of a good attribution system: a consistent approach; a sound valuation framework; consistent analysis of portfolios and indices; factors consistent with the decision variables of the strategy; summaries built from inspectable security detail; transactions; and robust systems and high-quality data. He adds two requirements on which there is general agreement: consistency with the decision-making process, and compatibility with the organisation's performance and risk measurement systems (pp.~240--241).
+
+\qffield{Practice} Interpretation: an effective attribution reconciles exactly to the reported portfolio and benchmark returns, uses the same benchmark that defines the mandate, decomposes along the decisions actually taken (allocation then selection for a top-down equity manager; duration, curve and spread for a bond manager; factor exposures for a factor process), is computed often enough that intra-period trading does not swamp it, and is accompanied by a risk attribution of the same decisions. Attribution feeds appraisal, which asks whether the attributed value added is large and consistent relative to its variability.
+
+\qffield{Conditions} Attribution explains the arithmetic of excess return given weights and returns; it does not test causality or skill (\hyperref[meth:return-attribution]{return attribution}, Pitfalls).
+
+\qffield{Pitfalls} Using attribution factors that do not mirror the process, so that every effect is uninterpretable. Accepting large unexplained residuals. Running attribution against a benchmark other than the mandate's.
+
+\qffield{See also} \hyperref[def:portfolio-management-process]{portfolio management process} (feedback); \hyperref[meth:benchmark-selection-quality]{benchmark selection}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Risk-adjusted performance: the Sharpe ratio, the Treynor ratio, M-squared, Jensen's alpha and the appraisal ratio; benchmarks implied by each, consistency of their rankings, and criticisms]\label{meth:risk-adjusted-performance-measures}
+\qffield{Statement} With average account return $\bar R_A$, risk-free rate $r_f$, standard deviation $\sigma_A$, beta $\beta_A$ against a market index M, and the index's standard deviation $\sigma_M$:
+\begin{itemize}
+\item \emph{Sharpe ratio} $S_A=(\bar R_A-r_f)/\sigma_A$, reward per unit of total risk, benchmarked on the ex post capital market line;
+\item \emph{Treynor ratio} $T_A=(\bar R_A-r_f)/\beta_A$, reward per unit of systematic risk, benchmarked on the ex post security market line;
+\item \emph{Jensen's alpha}, the intercept $\alpha_A$ of $R_{At}-r_{ft}=\alpha_A+\beta_A(R_{Mt}-r_{ft})+\varepsilon_t$, ``the differential return of the account compared to the return required to compensate for the systematic risk assumed'';
+\item \emph{M-squared} $M_A^2=r_f+S_A\,\sigma_M$, the return of the account levered or delevered to the index's standard deviation, to be compared with the index return
+\end{itemize}
+\citep[chap.~12, pp.~767--769, eqs.~(12-17)--(12-21)]{managing-investment-portfolios-2007}. Alpha and Treynor always agree on the existence of skill, and M-squared agrees with Sharpe; the two pairs can disagree when the account carries much nonsystematic risk (pp.~769--770). The \emph{appraisal ratio} (Treynor and Black) divides Jensen's alpha by specific risk, the standard deviation of the regression residual \citep[3rd ed., 2023, chap.~5, p.~190, eq.~(5.61)]{wide-bacon-attribution}. Bacon writes M-squared as $\tilde r+\text{SR}(\tilde\sigma_b-\tilde\sigma)$, which shows the penalty for risk above the benchmark's and the reward for risk below it, and notes that the Sharpe ratio ranks portfolios but ``is a ratio, not a return''; M-squared converts the ranking into a return (pp.~226--227).
+
+\qffield{Notation} Under a single-index model $\sigma_A^2=\beta_A^2\sigma_M^2+\sigma_\varepsilon^2$; Jensen's alpha equals $\beta_A$ times the difference between the account's and the market's Treynor ratios. Bacon's annualised Jensen's alpha is computed from annualised returns, $\tilde\alpha=\tilde r-\tilde r_F-\beta(\tilde b-\tilde r_F)$; multiplying a monthly alpha by 12 is less accurate (p.~177).
+
+\qffield{Practice} Example, original (annual). $r_f=3$, market return 8 and standard deviation 15 (market Sharpe 0.333, Treynor 5.0).
+\begin{center}\small
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+ & $\bar R$ & $\sigma$ & $\beta$ & Sharpe & Treynor & $M^2$ & Jensen $\alpha$ \\
+\midrule
+P & 9.5 & 14 & 0.90 & 0.464 & 7.22 & 9.96 & 2.00 \\
+Q & 11.0 & 22 & 1.00 & 0.364 & 8.00 & 8.45 & 3.00 \\
+\bottomrule
+\end{tabular}
+\end{center}
+P's M-squared exceeds the market return by 1.96 points; Q's by only 0.45, despite its higher alpha. Q's residual standard deviation is $\sqrt{22^2-15^2}=16.1$ against P's 3.7, so their appraisal ratios are 0.19 and 0.54. Held alone, P is better: total-risk measures prefer it. Added in a small amount to an already diversified portfolio, Q's larger alpha per unit of beta matters more: beta-based measures prefer it. Bacon's Table~5.6 Sharpe ratios (1.07, 1.53 and 1.22 at $r_f=2$) recompute from his inputs (p.~159).
+
+\qffield{Conditions} Beta-based measures inherit the CAPM's assumptions and the choice of market proxy; Roll showed that small changes in the proxy can change the appraisal. Benchmarks cannot be replicated costlessly. Parameters are estimated with error and are unstable as managers change aggressiveness (Bailey et al., pp.~770--771). Sharpe's ratio uses the same risk-free rate for every portfolio compared (Bacon, p.~159).
+
+\qffield{Pitfalls} Mixing annualisation methods across managers. Ranking a concentrated manager by Treynor or alpha when the investor will hold that manager alone. Reading a positive ex post alpha as skill without its standard error (\hyperref[meth:manager-skill-evaluation]{evaluating skill}).
+
+\qffield{See also} \hyperref[meth:active-return-information-ratio]{information ratio}; \hyperref[meth:downside-appraisal-measures]{downside and drawdown measures}; \hyperref[mod:capm-sml]{CAPM}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Return attribution: returns-, holdings- and transactions-based methods; Brinson allocation, selection and interaction; macro and micro levels; multi-period linking; fixed-income attribution; risk attribution; accounting identity against causal claim]\label{meth:return-attribution}
+\qffield{Statement} \emph{Data approaches.} Bacon distinguishes three types \citep[3rd ed., 2023, chap.~6, pp.~244--247, Table~6.2]{wide-bacon-attribution}:
+\begin{itemize}
+\item \emph{returns-based} (regression or factor) attribution, which needs no holdings and suits factor processes but is less accurate, depends on the factors chosen and assumes constant exposures;
+\item \emph{holdings-based} attribution, which uses beginning weights and ignores intra-period transactions, so it does not reconcile to the portfolio return and leaves a residual that grows with activity, cash flows, illiquidity and period length;
+\item \emph{transactions-based} attribution, which ``reconciles exactly to the published return'' and captures trading and costs, but needs complete, accurate data.
+\end{itemize}
+
+\emph{Brinson.} With portfolio and benchmark weights $w_i,W_i$ and returns $r_i,b_i$ by category, $r=\sum w_ir_i$ and $b=\sum W_ib_i$. Brinson, Hood and Beebower split $r-b$ into allocation $(w_i-W_i)b_i$, selection $W_i(r_i-b_i)$ and interaction $(w_i-W_i)(r_i-b_i)$. Interaction ``is not a residual or a balancing item'' but a defined term. Brinson and Fachler measure allocation against the overall benchmark, $(w_i-W_i)(b_i-b)$, which has the same total because $\sum(w_i-W_i)b=0$. It credits overweighting a category that beats the benchmark even if its return is negative (pp.~248--258).
+
+\emph{Macro and micro.} Early UK practice treated sectors as the macro level and securities as the micro; ``it is now common practice to regard asset classes \ldots as the macro level and securities within the asset class as the micro level'' (p.~241). Bailey, Richards and Tierney apply \emph{macro attribution} to a sponsor's total fund and its decisions, and \emph{micro attribution} to an individual portfolio against its benchmark \citep[chap.~12, pp.~746 and~753]{managing-investment-portfolios-2007} (\hyperref[meth:macro-attribution-owner-manager]{owner and manager results}). ``Impact equals weight times return'' underlies both (p.~744).
+
+\emph{Multiple periods.} Arithmetic effects for single periods do not add to the multi-period excess return. Smoothing algorithms (Carino's logarithmic factors $k_t/k$) or linking algorithms redistribute the difference; Bacon calls them ``a presentational convenience'' with ``no economic justification'' beyond making the numbers add \citep[pp.~361--363]{wide-bacon-attribution}.
+
+\emph{Fixed income.} Bond performance is driven by the yield curve, so the Brinson model ``is not suitable'' for most bond strategies. Effects include carry (coupon and roll-down), parallel shift, twist and curvature, credit spread, selection and other effects (pricing differences, trading, currency) (pp.~331--335). Van Breukelen's weighted-duration approach treats duration-weighted exposure $w_iD_i$ like an equity weight and separates an overall duration effect, a duration-weighted sector allocation in Brinson--Fachler form, issue selection and income (pp.~336--338). In Fong, Pearson and Vasicek's approach the external interest-rate environment (expected return from forward rates plus the unexpected change) is separated from management effects: interest-rate management, sector and quality, security selection and trading \citep[chap.~12, pp.~764--765]{managing-investment-portfolios-2007}.
+
+\emph{Risk attribution} decomposes risk along the same lines: total or active variance into market and residual, or common-factor and specific, parts, which are uncorrelated; correlated sources need an allocation rule \citep[chap.~3, p.~78]{alpha-grinold} (\hyperref[meth:active-risk-decomposition]{active risk decomposition}). Interpretation, considerations in choosing a risk attribution: it should decompose the risk measure the mandate is judged on (portfolio volatility or VaR for an absolute mandate, tracking error for a benchmark-relative one); follow the same decision structure as the return attribution (allocation and selection for a top-down process, factor and specific exposures for a factor process, duration, curve and spread for bonds); state how correlated sources are allocated, since marginal contributions weighted by holdings sum to the total but depend on that convention \citep[chap.~3, pp.~67 and~78]{alpha-grinold}; and be compatible with the firm's risk measurement systems (Bacon, p.~241).
+
+\qffield{Practice} \emph{Equity, one period.} Sectors 1--3 have portfolio weights 40, 35 and 25 percent and benchmark weights 30, 40 and 30; returns $(6,2,-1)$ against $(5,3,-2)$. The portfolio returns 2.85 percent, the benchmark 2.10, an excess of 0.75 points.
+\begin{itemize}
+\item BHB: allocation $0.50-0.15+0.10=0.45$, selection $0.30-0.40+0.30=0.20$, interaction $0.10+0.05-0.05=0.10$.
+\item Brinson--Fachler allocation by sector is 0.29, $-0.045$ and 0.205, with the same 0.45 total. It credits the underweight in sector 3 more (0.205 against 0.10), because that sector's $-2$ percent was 4.1 points below the 2.10 benchmark. It charges the underweight in sector 2 less ($-0.045$ against $-0.15$), because that sector beat the benchmark by only 0.9.
+\item Selection at portfolio weights, $w_i(r_i-b_i)=0.40,-0.35,0.25$, absorbs interaction.
+\end{itemize}
+\emph{Two periods.} Period~2 returns 0.545 against 0.650 percent. The arithmetic excesses sum to 0.6450 points, but the compounded excess is 0.6469; Carino-scaled effects sum exactly to 0.6469.
+
+\emph{Fixed income, original.} Government and corporate sectors. The portfolio holds 50/50 with durations 7.0 and 5.0, yield changes $-0.20$ and $-0.10$ and income 0.30 and 0.45. The benchmark holds 60/40 with durations 6.0 and 5.5, yield changes $-0.20$ and $-0.05$ and income 0.30 and 0.42. Returns are approximated as income minus duration times yield change: 1.325 against 1.178 percent, an excess of 0.147. The duration effect is $+0.029$ (duration 6.0 against 5.8 in a rally), duration-weighted allocation $-0.034$, selection $+0.125$ (the corporates tightened 5 basis points more than the benchmark's) and income $+0.027$, summing exactly to 0.147.
+
+\qffield{Conditions} Brinson attribution assumes portfolio and benchmark returns are sums of category contributions; the IRR cannot be disaggregated (Bacon, p.~242). Fixed-income approximations by duration ignore convexity and the residual must be shown. Attribution conventions (which allocation formula, whether interaction is shown, which linking method) change individual effects but not totals and must be disclosed.
+
+\qffield{Pitfalls} \emph{Accounting is not causation.} An allocation effect records that an overweight coincided with a category's relative return; it does not show that the manager decided the overweight for that reason or that the decision was skilful, and one period's effects are mostly noise (\hyperref[meth:manager-skill-evaluation]{evaluating skill}). Attribution against a misspecified benchmark assigns style returns to ``selection''. Comparing contributions to return in portfolio and benchmark conflates allocation and selection (Bacon, p.~240).
+
+\qffield{See also} \hyperref[def:performance-evaluation-components]{components of evaluation}; \hyperref[meth:macro-attribution-owner-manager]{owner and manager results}; \hyperref[def:factor-model-types]{factor models} (returns-based attribution).
+
+\end{qfmethod}
+
+\begin{qfmethod}[Separating the asset owner's results from the managers': macro attribution through net contributions, the risk-free asset, asset categories, manager benchmarks (misfit), managers and allocation effects]\label{meth:macro-attribution-owner-manager}
+\qffield{Statement} A fund sponsor controls the allocation to asset categories, the choice of managers and their styles, and the allocation among them; managers control their own portfolios but ``do not generally determine the amount of assets placed under their management'' \citep[chap.~12, pp.~746 and~752]{managing-investment-portfolios-2007}. Macro attribution therefore treats each decision level as an investment strategy that the sponsor could have held, a valid benchmark for the next level, and computes the incremental return or value of moving from one level to the next (p.~749):
+\begin{enumerate}
+\item \emph{net contributions}, invested at zero return;
+\item \emph{risk-free asset}, all assets and flows at the risk-free rate;
+\item \emph{asset categories}, $\sum_iw_i(r_{Ci}-r_f)$ at policy weights $w_i$ in the category benchmarks;
+\item \emph{benchmarks}, $\sum_i\sum_jw_iw_{ij}(r_{Bij}-r_{Ci})$, the managers' benchmarks at policy weights $w_{ij}$ against the category benchmarks: the \emph{misfit return} or style bias;
+\item \emph{investment managers}, $\sum_i\sum_jw_iw_{ij}(r_{Aij}-r_{Bij})$, the managers' value added assuming they were funded at policy weights;
+\item \emph{allocation effects}, the reconciling difference from actual weights, which is zero if the sponsor held policy weights exactly (pp.~749--753, eqs.~(12-10)--(12-12)).
+\end{enumerate}
+In the value metric, each level's incremental contribution is computed on the fund's beginning value and the dated external cash flows (pp.~750--751).
+
+\qffield{Practice} Example, original (one month, no intra-month flows, fund 500 million). Policy: 70 percent equities, split 60/40 between a growth and a value manager; 30 percent bonds, split 50/50. Category benchmarks return 2.40 and 0.60; manager benchmarks 2.90 and 1.80 (equity), 0.70 and 0.40 (bond); managers 3.10, 1.50, 0.65 and 0.55. Actual weights are 44, 28, 13 and 15 percent; the risk-free return is 0.30.
+\begin{itemize}
+\item risk-free 0.300, asset categories 1.560, misfit 0.027, managers 0.015, allocation effects 0.049;
+\item total fund return 1.951 percent, the sum of the levels; in the value metric the levels add to 9.755 million.
+\end{itemize}
+Owner's results: the strategic allocation (1.56 points over cash), the choice of manager styles (misfit $+0.027$) and the deviation from policy weights ($+0.049$). Managers' results: $+0.015$ in aggregate, which conceals a growth manager $0.20$ ahead of benchmark and a value manager $0.30$ behind.
+
+\qffield{Conditions} The sequence of levels is a convention ordered by increasing risk and complexity; a different order or definition (for example a blended category benchmark) changes what is called misfit (p.~748, n.~18). A defined-benefit sponsor might replace the risk-free asset with a liability-hedging portfolio (p.~750, n.~19).
+
+\qffield{Pitfalls} Charging a manager with the effect of the sponsor's funding decisions, or crediting the sponsor with a manager's selection. Ignoring misfit risk: style differences between the managers' benchmarks and the category benchmark can dominate their active returns (p.~751).
+
+\qffield{See also} \hyperref[meth:return-attribution]{return attribution}; \hyperref[meth:benchmark-selection-quality]{benchmarks}; \hyperref[def:investor-types-needs]{investor types}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Selecting and testing benchmarks: liability-based and asset-based benchmarks, valid-benchmark properties, benchmark types, custom benchmarks, manager universes, quality tests, misspecification, and benchmarks for hedge funds, private equity and real estate]\label{meth:benchmark-selection-quality}
+\qffield{Statement} A benchmark is ``a collection of securities or risk factors and associated weights that represents the persistent and prominent investment characteristics of an asset category or manager's investment process''. Writing the portfolio as $P=M+S+A$ separates the market index M, the manager's style $S=B-M$ and active management $A=P-B$ \citep[chap.~12, pp.~731--733, eqs.~(12-6)--(12-7)]{managing-investment-portfolios-2007}.
+
+\emph{Liability-based and asset-based.} For institutions that must meet liabilities, the liabilities ``may also be treated as a type of benchmark'': a liability is a financial asset held short, so a custom index of the liabilities can benchmark the total fund, and the objective becomes earning at least the ``return'' on liabilities, the percentage change in their present value (p.~734, n.~8). Asset-based benchmarks are of seven types (pp.~734--738): absolute returns (not investable); manager universes; broad market indices; style indices; factor-model benchmarks (a normal beta or normal portfolio, ambiguous because many portfolios share the exposures); returns-based benchmarks (Sharpe's style weights); and custom security-based benchmarks built from the manager's research universe, which meet all the criteria but are expensive.
+
+\emph{Validity.} A valid benchmark is unambiguous, investable, measurable, appropriate, reflective of current investment opinions, specified in advance and owned by the manager (pp.~733--734). The median of a manager universe fails every property except measurability, cannot be specified in advance and suffers survivorship bias (pp.~738--740).
+
+\emph{Quality tests} (Bailey, 1992). (1) Systematic bias: the account's beta against the benchmark near 1, correlation between $A$ and $S$ near zero, and between $S$ and $E=P-M$ significantly positive. (2) Tracking error lower than against alternatives. (3) Risk characteristics sometimes above and sometimes below the account's. (4) High coverage (the share of the portfolio's value held in the benchmark). (5) Low turnover. (6) Mostly positive active positions for a long-only manager (pp.~740--742).
+
+\emph{Misspecification.} ``Poor benchmarks obscure manager skills'', promote inefficient manager allocations and ineffective risk management, and invite counterproductive surprises (p.~740). Interpretation, in attribution a benchmark that omits the manager's style assigns the style return $S$ to allocation or selection; in appraisal it adds $S$'s volatility to tracking error and biases alpha and the information ratio, so a manager can look skilled or unskilled for reasons that are not active decisions.
+
+\emph{Alternative investments.} Hedge funds lack a definable opportunity set. Long-short equity managers can get separate long and short benchmarks combined, but macro managers cannot; peer-universe Sharpe ratios inherit the universe criticisms, and standard deviation misleads for optionality (pp.~742--744). For private assets Bacon describes money-weighted benchmarks, public market equivalents, which re-time an index's returns to the portfolio's cash flows for a like-for-like comparison \citep[3rd ed., 2023, chap.~4, p.~125]{wide-bacon-attribution}. Appraised assets such as real estate report smoothed returns, so volatility and correlation are understated (pp.~234--235).
+
+\qffield{Practice} Example, original (12 months). Market, style and active series are typed; $B=M+S$ and $P=B+A$. The account's beta on B is 0.98; corr$(A,S)=0.11$; corr$(S,E)=0.91$; and tracking error is 0.20 against B but 0.49 against M. All are good-benchmark signs. Measured against M instead, the ``excess return'' $E=S+A$ would credit the manager with the style return. Holdings: the portfolio holds 30, 25, 20, 15 and 10 percent in a, b, c, d and x; the benchmark 20, 20, 25, 10 and 25 in a, b, c, d and e. Coverage is 90 percent; two of six active positions (c and e) are negative.
+
+\qffield{Conditions} The properties and tests are heuristics; none alone is decisive (p.~740). Custom benchmarks need resources and may be seen as opaque (p.~738).
+
+\qffield{Pitfalls} Changing benchmarks after the fact. Using a peer median as a skill benchmark. Benchmarking a style manager to the broad market, or a screened portfolio to an unscreened index. Comparing illiquid, appraised assets with liquid ones on volatility-based measures.
+
+\qffield{See also} \hyperref[def:equity-fixed-income-index-types]{index types}; \hyperref[meth:manager-due-diligence]{manager due diligence} (style analysis); \hyperref[def:investor-types-needs]{investor types} (liabilities).
+
+\end{qfmethod}
+
+\begin{qfmethod}[Downside, capture and drawdown appraisal: downside deviation and the Sortino ratio, the appraisal ratio, upside and downside capture, maximum drawdown, recovery and the Calmar ratio; their definitions, denominators and limits]\label{meth:downside-appraisal-measures}
+\qffield{Statement} Bacon's definitions \citep[3rd ed., 2023]{wide-bacon-attribution} (chap.~5 unless stated):
+\begin{itemize}
+\item \emph{Downside deviation} below a minimum target $r_T$: $\sigma_D=\sqrt{\sum_{i=1}^n\min(r_i-r_T,0)^2/n}$, with $n$ all observations and returns above the target entered as zero. With few observations below the target ``great care must be taken'', and for a normal distribution it is about 0.6 of the standard deviation, so the two are not comparable (eqs.~(5.80)--(5.81), pp.~203--204).
+\item \emph{Sortino ratio} $(\tilde r-\tilde r_T)/\tilde\sigma_D$ in annualised terms; the target should normally exceed the risk-free rate (eq.~(5.103), pp.~207--208).
+\item \emph{Appraisal ratio}: Jensen's alpha over specific risk (eq.~(5.61), p.~190).
+\item \emph{Up-capture} $\bar r^+/\bar b^+$, the average portfolio return over the average benchmark return in periods when the benchmark rose, higher being better. \emph{Down-capture} is the same for periods when it fell, lower being better (chap.~4, eqs.~(4.21)--(4.22), p.~126).
+\item \emph{Maximum drawdown}, the largest loss from a high-water mark to a subsequent low over a stated period. Drawdowns may be defined peak to valley or as continuous losing runs. \emph{Recovery time} is measured from the peak or from the valley. Bacon is ``continually surprised'' how often these are requested without the period, which must always be disclosed (pp.~194--195).
+\item \emph{Calmar ratio}: excess return over maximum drawdown, measured over 36 months (eq.~(5.72), p.~197).
+\end{itemize}
+
+\qffield{Practice} Example, original (24 months; minimum acceptable return 0.25 percent a month).
+\begin{itemize}
+\item The portfolio's mean monthly return is 0.321 percent and its downside deviation 1.440 percent (the denominator counts all 24 months). The annual Sortino ratio is $12(0.321-0.25)/(\sqrt{12}\times1.440)=0.17$.
+\item There are 15 rising and 9 falling benchmark months; up-capture is 0.963 and down-capture 0.777.
+\item Months 18 and 19 lose 4.2 and 1.8 percent from a high-water mark: maximum drawdown $(1-0.042)(1-0.018)-1=-5.92$ percent. The account has not recovered by month 24, so recovery time is censored, not measured. An earlier drawdown, $-3.1$ percent in month~4 after a peak at the end of month~3, recovered at month~8: a duration of 5 months from the peak and 4 from the trough.
+\item Sampled quarterly, the same path shows a shallower drawdown.
+\item With an annualised return of 3.70 percent and $r_f=3$ percent, the Calmar-style ratio over 24 months is 0.12 (Bacon's definition uses 36).
+\end{itemize}
+
+\qffield{Conditions} \emph{Edge cases.} A series never below the target has zero downside deviation and an undefined Sortino ratio. Capture ratios are undefined without up or down benchmark periods, unstable when few, and depend on the arithmetic or compounded averaging convention. Drawdown depends on the sampling frequency and the window, and one extreme period dominates it. Recovery is undefined until the high-water mark is regained. All of these assume accurate valuations: smoothing in illiquid strategies hides volatility and drawdowns (pp.~235--236).
+
+\qffield{Pitfalls} Comparing Sortino ratios with different targets, or a downside deviation with a standard deviation. Reporting drawdown statistics without period and frequency. Ranking managers on many measures and picking the flattering one: Bacon recommends choosing the measure in advance from the owner's objectives (p.~234).
+
+\qffield{See also} \hyperref[meth:risk-adjusted-performance-measures]{risk-adjusted measures}; \hyperref[meth:manager-due-diligence]{manager due diligence} (capture and drawdown in selection); \hyperref[meth:var-es-estimation-methods]{VaR and expected shortfall}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Evaluating whether a manager shows skill: value added relative to its variability, statistical significance and power, the noise in short records, consistency with process and attribution, and a decision rule with its errors]\label{meth:manager-skill-evaluation}
+\qffield{Statement} Bailey, Richards and Tierney define skill as ``the ability to outperform an appropriate benchmark consistently over time''. ``It is the magnitude of the value-added returns relative to the variability of value-added returns that determines a manager's skill'' \citep[chap.~12, p.~767]{managing-investment-portfolios-2007}. If value added is normal with information ratio IR, the probability of beating the benchmark over $T$ years is $\Phi(\text{IR}\sqrt T)$. A genuinely superior manager with IR 0.40 trails the benchmark over three years one time in four (p.~777, Exhibit~12-19), and a sponsor firing every manager behind benchmark over three years ``can expect to follow a busy manager search schedule'' (Exhibit~12-20, pp.~777--778). Harris's $t$-test of mean excess return, its low power and the more than 20 years of data typically needed are in \hyperref[meth:skill-luck-significance-tests]{tests of skill against luck}.
+
+\qffield{Practice} \emph{Decision procedure} (Interpretation, combining the sources):
+\begin{enumerate}
+\item Fix the benchmark that represents the mandate and check its quality (\hyperref[meth:benchmark-selection-quality]{benchmark tests}).
+\item Compute value added, tracking error and IR net of fees, with the conventions disclosed (\hyperref[meth:active-return-information-ratio]{value added and IR}).
+\item Test significance ($t\approx\text{IR}\sqrt{\text{years}}$) and state the power of the test for a plausible skill level.
+\item Check consistency with the stated process: does attribution show value from the decisions the manager says it makes (\hyperref[meth:return-attribution]{attribution}), and is the risk taken the kind described (\hyperref[meth:active-risk-decomposition]{active risk})?
+\item Adjust for selection: survivorship, the best of many records, and regression to the mean.
+\item Decide with explicit error costs, since rejecting the null of no skill wrongly keeps a zero-value manager and failing to reject fires a skilled one (\hyperref[meth:manager-due-diligence]{due diligence}).
+\end{enumerate}
+\emph{Numbers}, from the normal model. Exhibit~12-19's three-year row is reproduced for IRs 0.30--1.00 (0.67 read as 2/3). Three cells differ from $\Phi(\text{IR}\sqrt T)$: 84.03 printed for 84.13 (IR 1.00, one year), and 63.81 and 81.70 for 63.55 and 81.45 (IR 0.20, three and 20 years). Exhibit~12-20 agrees with a binomial distribution with ten managers and probability 0.2442 to within 0.05 points. A true IR of 0.5 passes a one-sided 5 percent test after five years with probability 0.30, and 80 percent power needs 24.7 years. An observed seven-year IR of 0.55 gives $t=1.46$, one-sided $p=0.073$: suggestive, not significant. The one-year record of \hyperref[meth:active-return-information-ratio]{the IR example} ($t=0.80$) says almost nothing.
+
+\qffield{Conditions} The normal, independent model understates uncertainty with fat tails, serial correlation, smoothing or changing risk. Gross-of-fee skill may vanish net of fees.
+
+\qffield{Pitfalls} Inferring skill from a favourable ratio alone. Firing on short-run underperformance. Selecting the best of a large universe and expecting its past alpha to persist (\hyperref[res:zero-sum-skill-luck]{zero-sum trading, skill and luck}).
+
+\qffield{See also} \hyperref[ex:manager-selection-case]{manager selection case}; \hyperref[meth:skill-luck-significance-tests]{tests of skill against luck}.
+
+\end{qfmethod}

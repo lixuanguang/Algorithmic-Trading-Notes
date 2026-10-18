@@ -1180,15 +1180,38 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "def:equity-indices-derivatives"
+   "entries": [
+    "meth:index-value-return-calculation"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:equity-indices-derivatives",
+    "meth:index-value-return-calculation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "index-mathematics-methodology-2026",
+      "locator": "September 2026 (archive capture of 1 Oct 2026), pp. 4-16, 21-22 and 70, eqs. (1), (3), (6)-(7)"
+     },
+     {
+      "key": "equity-index-policies-2026",
+      "locator": "August 2026, pp. 8, 19 and 24"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/index-mathematics-methodology-2026.md",
+     "notes/readings/equity-index-policies-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:index-value-return-calculation"
+    ],
+    "example": "notes/artefacts/market-index-construction/index-construction-checks.py parts 1-4 (price-, capitalisation- and equal-weighted levels and returns, divisor adjustments for a split and a share issue, TR and NTR, turnover); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3561,16 +3584,44 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "def:equity-fixed-income-index-types"
+   ],
    "candidate_entries": [
     "def:equity-indices-derivatives",
-    "def:commodity-indices-risk-return"
+    "def:commodity-indices-risk-return",
+    "def:equity-fixed-income-index-types"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, chap. 4, pp. 105-113"
+     },
+     {
+      "key": "fixed-income-index-methodology-2026",
+      "locator": "version of 8 Jan 2026, pp. 9, 42-43, 47 and 57-61"
+     },
+     {
+      "key": "index-mathematics-methodology-2026",
+      "locator": "September 2026, p. 4"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-bacon-attribution.md",
+     "notes/readings/fixed-income-index-methodology-2026.md",
+     "notes/readings/index-mathematics-methodology-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "def:equity-fixed-income-index-types"
+    ],
+    "example": "notes/artefacts/market-index-construction/index-construction-checks.py part 5 (two-bond index month); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -5195,15 +5246,38 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "meth:relative-performance-evaluation"
+   "entries": [
+    "meth:risk-adjusted-performance-measures"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "meth:relative-performance-evaluation",
+    "meth:risk-adjusted-performance-measures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 12, pp. 767-771"
+     },
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, pp. 159, 177, 189-190 and 226-227"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/wide-bacon-attribution.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:risk-adjusted-performance-measures"
+    ],
+    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py parts 1-2 (Sharpe, Treynor, M-squared, Jensen and appraisal ratio; Bacon Table 5.6); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -5215,13 +5289,31 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:portfolio-management-process"
+   ],
+   "candidate_entries": [
+    "def:portfolio-management-process"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 1, pp. 2-10"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "def:portfolio-management-process"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -5233,13 +5325,36 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:investor-types-needs"
+   ],
+   "candidate_entries": [
+    "def:investor-types-needs"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 1, p. 3 and Exhibit 1-3, p. 15; chap. 3, pp. 64-66 and 79-80"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "2014, chap. 1, pp. 4-5, 13, 24 and 28-31"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "def:investor-types-needs"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -5252,13 +5367,41 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:asset-management-industry"
+   ],
+   "candidate_entries": [
+    "def:asset-management-industry"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 1, pp. 2-4"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "2014, chap. 15, p. 502; chap. 16, pp. 523-527; chap. 17, pp. 581-582"
+     },
+     {
+      "key": "investment-company-fact-book-2026",
+      "locator": "Quick Facts Guide; chap. 2, pp. 13 and 18 (year-end 2025)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/investment-company-fact-book-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "def:asset-management-industry"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -5270,13 +5413,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:investment-policy-statement",
+    "ex:investment-planning-case"
+   ],
+   "candidate_entries": [
+    "meth:investment-policy-statement",
+    "ex:investment-planning-case"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 1, pp. 2, 5-7 and 11-17"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:investment-policy-statement",
+     "ex:investment-planning-case"
+    ],
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py parts 1-2 (Maginn's required returns; the case's 2.70 percent requirement and candidate allocations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -5288,13 +5453,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:investment-policy-statement",
+    "ex:investment-planning-case"
+   ],
+   "candidate_entries": [
+    "meth:investment-policy-statement",
+    "ex:investment-planning-case"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 1, pp. 11-13 and Exhibit 1-2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:investment-policy-statement",
+     "ex:investment-planning-case"
+    ],
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 2 (loss limit applied to candidate allocations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -5306,13 +5493,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:investment-policy-statement",
+    "ex:investment-planning-case"
+   ],
+   "candidate_entries": [
+    "meth:investment-policy-statement",
+    "ex:investment-planning-case"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 1, pp. 15-17"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:investment-policy-statement",
+     "ex:investment-planning-case"
+    ],
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py parts 1 and 3 (liquidity sleeve, tax on the concentrated holding); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -5325,13 +5534,45 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:asset-class-portfolio-construction",
+    "ex:investment-planning-case"
+   ],
+   "candidate_entries": [
+    "meth:asset-class-portfolio-construction",
+    "ex:investment-planning-case"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 5, pp. 231-232 and 248-249; chap. 1, p. 13"
+     },
+     {
+      "key": "sustainable-investment-review-2022",
+      "locator": "Tables 1-2, p. 7"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "2014, chap. 3, pp. 110-112"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/sustainable-investment-review-2022.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:asset-class-portfolio-construction",
+     "ex:investment-planning-case"
+    ],
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 2 (allocation, risk contributions, ranges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -5345,13 +5586,46 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:behavioural-biases"
+   ],
+   "candidate_entries": [
+    "def:behavioural-biases"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-barberis-thaler-survey",
+      "locator": "NBER w9222 (Sept. 2002), secs. 3.1-3.2, pp. 12-21"
+     },
+     {
+      "key": "behavioral-finance-second-generation-2019",
+      "locator": "pp. 3-7, 25-65, 55 and 58"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 2, pp. 28-29"
+     },
+     {
+      "key": "thinking-fast-slow-2011",
+      "locator": "chap. 7, halo-effect section; chap. 24, \"The Premortem\""
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-barberis-thaler-survey.md",
+     "notes/readings/behavioral-finance-second-generation-2019.md",
+     "notes/readings/thinking-fast-slow-2011.md",
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "def:behavioural-biases"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -5363,13 +5637,31 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mech:biases-market-anomalies"
+   ],
+   "candidate_entries": [
+    "mech:biases-market-anomalies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-barberis-thaler-survey",
+      "locator": "NBER w9222, abstract and secs. 2, 5, 6.1 and 7, pp. 3-6, 33-34, 38-39, 44 and 47-50"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-barberis-thaler-survey.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "mech:biases-market-anomalies"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -5383,13 +5675,36 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:risk-management-framework"
+   ],
+   "candidate_entries": [
+    "def:risk-management-framework"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 9, pp. 579-584, 625 and 634-635; chap. 1, p. 13"
+     },
+     {
+      "key": "strategic-risk-taking-2008",
+      "locator": "chap. 9, pp. 303-304"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/strategic-risk-taking-2008.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "def:risk-management-framework"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -5402,13 +5717,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:risk-identification-modification"
+   ],
+   "candidate_entries": [
+    "meth:risk-identification-modification"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 9, pp. 585-586, 596 and 623"
+     },
+     {
+      "key": "strategic-risk-taking-2008",
+      "locator": "chap. 10, pp. 331-339"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/strategic-risk-taking-2008.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:risk-identification-modification"
+    ],
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 4 (futures overlay); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7994,13 +8333,47 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:active-return-information-ratio"
+   ],
+   "candidate_entries": [
+    "meth:active-return-information-ratio"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "alpha-grinold",
+      "locator": "2nd ed., chap. 3, p. 49; chap. 5, pp. 110-123 and Technical Appendix, p. 137"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 12, p. 743"
+     },
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, pp. 167-169"
+     },
+     {
+      "key": "wide-sharpe-1994",
+      "locator": "author-hosted reprint, sections on ex ante and ex post ratios and time dependence"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/alpha-grinold.md",
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/wide-bacon-attribution.md",
+     "notes/readings/wide-sharpe-1994.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:active-return-information-ratio"
+    ],
+    "example": "notes/artefacts/active-management-analysis/active-management-checks.py parts 1-2 (ex post TE and IR, Sharpe ratios, Table 5.3, optimal active risk); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8016,13 +8389,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "res:fundamental-law-active-management"
+   ],
+   "candidate_entries": [
+    "res:fundamental-law-active-management"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "alpha-grinold",
+      "locator": "2nd ed., chap. 6, pp. 147-163"
+     },
+     {
+      "key": "wide-grinold-kahn-advances",
+      "locator": "2020, chap. 3, pp. 23 and 27-29"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/alpha-grinold.md",
+     "notes/readings/wide-grinold-kahn-advances.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "res:fundamental-law-active-management"
+    ],
+    "example": "notes/artefacts/active-management-analysis/active-management-checks.py part 3 (fundamental-law examples, binary example, additivity, transfer coefficient identity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8185,13 +8582,40 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:active-risk-decomposition",
+    "meth:active-return-information-ratio"
+   ],
+   "candidate_entries": [
+    "meth:active-risk-decomposition",
+    "meth:active-return-information-ratio"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "alpha-grinold",
+      "locator": "2nd ed., chap. 3, pp. 49-50, 67 and 76-77; chap. 4, p. 90; chap. 5, pp. 110-117"
+     },
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, p. 167"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/alpha-grinold.md",
+     "notes/readings/wide-bacon-attribution.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:active-risk-decomposition",
+     "meth:active-return-information-ratio"
+    ],
+    "example": "notes/artefacts/active-management-analysis/active-management-checks.py parts 1 and 4 (tracking error and IR; factor and specific, beta and residual decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8945,13 +9369,36 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:performance-evaluation-components"
+   ],
+   "candidate_entries": [
+    "def:performance-evaluation-components"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 12, pp. 718-720"
+     },
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, chap. 6, pp. 239-241"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/wide-bacon-attribution.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "def:performance-evaluation-components"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -8966,13 +9413,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:return-attribution"
+   ],
+   "candidate_entries": [
+    "meth:return-attribution"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, chap. 6, pp. 239-258, 331-338 and 361-363"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 12, pp. 744, 746, 753 and 764-765"
+     },
+     {
+      "key": "alpha-grinold",
+      "locator": "2nd ed., chap. 3, pp. 67 and 78"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-bacon-attribution.md",
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/alpha-grinold.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:return-attribution"
+    ],
+    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py parts 4-5 (BHB and Brinson-Fachler, Carino linking, fixed-income weighted-duration attribution); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8985,13 +9461,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:macro-attribution-owner-manager"
+   ],
+   "candidate_entries": [
+    "meth:macro-attribution-owner-manager"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 12, pp. 746-753, eqs. (12-10)-(12-12), nn. 18-19"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:macro-attribution-owner-manager"
+    ],
+    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 6 (macro attribution levels in return and value metrics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9004,13 +9499,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:benchmark-selection-quality"
+   ],
+   "candidate_entries": [
+    "meth:benchmark-selection-quality"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 12, pp. 731-744 and n. 8"
+     },
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, pp. 125 and 234-235"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/wide-bacon-attribution.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:benchmark-selection-quality"
+    ],
+    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 7 (benchmark quality statistics, coverage and active positions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9024,13 +9543,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:downside-appraisal-measures"
+   ],
+   "candidate_entries": [
+    "meth:downside-appraisal-measures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, pp. 126, 190, 194-197, 203-208 and 234-236"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-bacon-attribution.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:downside-appraisal-measures"
+    ],
+    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 3 (downside deviation, Sortino, capture, maximum drawdown, duration and edge cases); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9042,15 +9580,40 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:manager-skill-evaluation",
     "meth:skill-luck-significance-tests"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "meth:skill-luck-significance-tests",
+    "meth:manager-skill-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 12, pp. 767 and 776-778"
+     },
+     {
+      "key": "alpha-harris",
+      "locator": "chap. 22, secs. 22.4-22.6, pp. 453-474"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/alpha-harris.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:manager-skill-evaluation",
+     "meth:skill-luck-significance-tests"
+    ],
+    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 8 (Exhibits 12-19 and 12-20, power, a t-test); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9063,13 +9626,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:manager-due-diligence"
+   ],
+   "candidate_entries": [
+    "meth:manager-due-diligence"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 7, pp. 436, 442-444 and 466-470; chap. 12, pp. 778-781"
+     },
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, pp. 489-491"
+     },
+     {
+      "key": "wide-sharpe-style",
+      "locator": "author-hosted reprint, sections \"Style Analysis\" and \"Mutual Fund Styles\", Table 2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/wide-bacon-attribution.md",
+     "notes/readings/wide-sharpe-style.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:manager-due-diligence"
+    ],
+    "example": "notes/artefacts/manager-selection/manager-selection-checks.py parts 2-3 (continuation filter error rates; constrained returns-based style analysis); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9083,13 +9675,51 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:manager-philosophy-process-behaviour"
+   ],
+   "candidate_entries": [
+    "meth:manager-philosophy-process-behaviour"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 7, pp. 466 and 468"
+     },
+     {
+      "key": "thinking-fast-slow-2011",
+      "locator": "chaps. 7 and 24"
+     },
+     {
+      "key": "behavioral-finance-second-generation-2019",
+      "locator": "p. 6"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "2014, chap. 15, p. 503"
+     },
+     {
+      "key": "wide-barberis-thaler-survey",
+      "locator": "NBER w9222, p. 15"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/thinking-fast-slow-2011.md",
+     "notes/readings/behavioral-finance-second-generation-2019.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/wide-barberis-thaler-survey.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:manager-philosophy-process-behaviour"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -9105,13 +9735,65 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:vehicle-contract-fee-analysis",
+    "ex:manager-selection-case"
+   ],
+   "candidate_entries": [
+    "meth:vehicle-contract-fee-analysis",
+    "ex:manager-selection-case"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-bacon-attribution",
+      "locator": "3rd ed., 2023, chap. 3, pp. 59-64"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 1, pp. 2-3; chap. 7, p. 467; chap. 9, p. 596; chap. 12, pp. 776-781"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "2014, chap. 15, p. 502; chap. 17, pp. 581-582"
+     },
+     {
+      "key": "usc-15-80b-5",
+      "locator": "subsecs. (a)-(c), as of 2026-10-18"
+     },
+     {
+      "key": "cfr-17-275-205-3",
+      "locator": "paras. (a) and (d)(1), as of 2026-10-18"
+     },
+     {
+      "key": "qualified-client-order-2026",
+      "locator": "secs. II-III, p. 23521"
+     },
+     {
+      "key": "performance-compensation-proposal-2026",
+      "locator": "summary and dates, p. 63676"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-bacon-attribution.md",
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/usc-15-80b-5.md",
+     "notes/readings/cfr-17-275-205-3.md",
+     "notes/readings/qualified-client-order-2026.md",
+     "notes/readings/performance-compensation-proposal-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:vehicle-contract-fee-analysis",
+     "ex:manager-selection-case"
+    ],
+    "example": "notes/artefacts/manager-selection/manager-selection-checks.py parts 1 and 4 (fee schedules, expected fees, high-water mark; IR shrinkage in the case); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9124,13 +9806,41 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:gips-scope-verification"
+   ],
+   "candidate_entries": [
+    "def:gips-scope-verification"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-gips-2020",
+      "locator": "2020 ed., Preface pp. v-vi, Introduction pp. vii-xv, provisions 1.A.1-1.B.4 (pp. 1-6), Glossary p. 75, 4.C.1 (p. 26)"
+     },
+     {
+      "key": "gips-handbook-firms-2020",
+      "locator": "Nov. 2020, Provision 3.A.2, p. 147"
+     },
+     {
+      "key": "gips-verifiers-2020",
+      "locator": "2020 ed., pp. 1-7 and 11-12"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-gips-2020.md",
+     "notes/readings/gips-handbook-firms-2020.md",
+     "notes/readings/gips-verifiers-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "def:gips-scope-verification"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -9143,16 +9853,39 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:gips-return-calculations"
+   ],
    "candidate_entries": [
     "def:return-measures",
-    "meth:gips-composite-presentation"
+    "meth:gips-composite-presentation",
+    "meth:gips-return-calculations"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-gips-2020",
+      "locator": "2020 ed., 1.A.35 and 2.A.8-2.B.6, pp. 5-17"
+     },
+     {
+      "key": "gips-handbook-firms-2020",
+      "locator": "Nov. 2020, Provision 4.A.1(i)-(j), pp. 196-200"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-gips-2020.md",
+     "notes/readings/gips-handbook-firms-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:gips-return-calculations"
+    ],
+    "example": "notes/artefacts/performance-presentation-standards/gips-checks.py parts 1-4 and 6 (true TWR against Modified Dietz, composite weighting methods, dispersion, 36-month sd, model fee); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9165,15 +9898,38 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "meth:gips-composite-presentation"
+   "entries": [
+    "meth:gips-composite-membership"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "meth:gips-composite-presentation",
+    "meth:gips-composite-membership"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-gips-2020",
+      "locator": "2020 ed., 3.A.1-3.B.2, pp. 18-20; 4.C.35, p. 30"
+     },
+     {
+      "key": "gips-handbook-firms-2020",
+      "locator": "Nov. 2020, Provisions 3.A.2, 3.A.7 and 3.A.12, pp. 147, 166-167 and 173-174"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-gips-2020.md",
+     "notes/readings/gips-handbook-firms-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:gips-composite-membership"
+    ],
+    "example": "notes/artefacts/performance-presentation-standards/gips-checks.py part 5 (membership calendar under an invented policy); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9185,15 +9941,40 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "meth:gips-composite-presentation"
+   "entries": [
+    "meth:gips-composite-presentation",
+    "ex:gips-composite-report"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "meth:gips-composite-presentation",
+    "ex:gips-composite-report"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-gips-2020",
+      "locator": "2020 ed., 1.A.11-1.A.16, 1.A.27, 1.A.32-1.A.34, 4.A.1-4.A.8 and 4.C.1-4.C.40, pp. 2-5 and 21-30"
+     },
+     {
+      "key": "gips-handbook-firms-2020",
+      "locator": "Nov. 2020, Provision 1.A.32, pp. 50-52"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-gips-2020.md",
+     "notes/readings/gips-handbook-firms-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#performance-and-planning-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:gips-composite-presentation",
+     "ex:gips-composite-report"
+    ],
+    "example": "notes/artefacts/performance-presentation-standards/gips-checks.py part 7 (synthetic five-year report statistics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {

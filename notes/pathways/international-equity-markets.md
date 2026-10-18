@@ -28,6 +28,14 @@ Written in macro markets and pricing / source review / optimal execution / execu
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
+
+Written in the performance and planning batch (2026-10-18), in `index-construction.tex`, owned by `topic:market-index-construction`:
+
+- `meth:index-value-return-calculation`: capitalisation, price and equal weighting with the divisor and its adjustments (S&P DJI *Index Mathematics Methodology*, September 2026, pp. 4-16; *Equity Indices Policies & Practices*, August 2026, pp. 8, 19 and 24); price, total and net total return (pp. 21-22); one-way turnover (p. 70); a three-stock example with a split, a share issue, a dividend and equal-weight rebalancing.
+- `def:equity-fixed-income-index-types`: Bacon's calculation families (3rd ed., chap. 4, pp. 105-113) and S&P DJI's categories (p. 4); Bloomberg's fixed-income design principles, returns and projected universes, return components and market-value weights (January 2026, pp. 9, 42-43, 47 and 57-61); uses as targets, asset-class proxies and product references; a two-bond month.
+
+Both partly checked 2026-10-18, draft; examples in `notes/artefacts/market-index-construction/index-construction-checks.py`. Coverage records are editorial, not study.
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:equity-index-lists-current` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

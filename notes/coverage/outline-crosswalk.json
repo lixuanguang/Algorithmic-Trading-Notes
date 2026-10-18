@@ -5383,9 +5383,9 @@
    "objectives": [
     "objective:calculate-index-value-and-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:index-value-return-calculation describes price, capitalisation (float-adjusted), equal and capped weighting with their implications (price-level dependence, rebalancing turnover), and calculates and interprets index levels and price, total and net total returns with divisor adjustments for a split and a share issue.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m004:b01",
@@ -8221,9 +8221,9 @@
    "objectives": [
     "objective:describe-index-types"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:equity-fixed-income-index-types describes equity index families (broad capitalisation, price-weighted, equal, fundamental, optimised, style and factor, derived total return) and their uses; regional examples are in def:equity-indices-derivatives.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m042:b01",
@@ -8931,9 +8931,9 @@
    "objectives": [
     "objective:describe-index-types"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:equity-fixed-income-index-types describes fixed-income index categories (issuer, country, currency, rating, maturity, sector), Bloomberg's rules-based market-value weighting, returns and projected universes and return components, with a two-bond example and the bums and duration problems.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m053:b03",
@@ -11065,9 +11065,9 @@
    "objectives": [
     "objective:calculate-risk-adjusted-performance"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:risk-adjusted-performance-measures calculates and interprets the Sharpe ratio, Treynor ratio, M-squared and Jensen's alpha for two funds whose rankings split, with each measure's benchmark and criticisms.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m089:b01",
@@ -11085,9 +11085,9 @@
    "objectives": [
     "objective:describe-portfolio-management-process"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:portfolio-management-process describes the portfolio perspective (aggregate holdings, related risks).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m089:b02",
@@ -11105,9 +11105,9 @@
    "objectives": [
     "objective:describe-portfolio-management-process"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:portfolio-management-process describes the planning, execution and feedback steps and the definition of portfolio management.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m089:b03",
@@ -11125,9 +11125,9 @@
    "objectives": [
     "objective:compare-investor-types"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:investor-types-needs describes individual and institutional investors (pensions, foundations and endowments, insurers, banks, sovereign funds) and their needs, with Exhibit 1-3.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m089:b04",
@@ -11145,9 +11145,9 @@
    "objectives": [
     "objective:compare-investor-types"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:investor-types-needs describes DB and DC plans: where the promise and investment risk lie, liabilities and funded status, portability, participant direction.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m089:b05",
@@ -11165,9 +11165,9 @@
    "objectives": [
     "objective:describe-asset-management-industry"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:asset-management-industry describes the industry's fee economics, roles and approaches, with dated ICI 2026 figures.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m089:b06",
@@ -11186,9 +11186,9 @@
    "objectives": [
     "objective:describe-asset-management-industry"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:asset-management-industry describes mutual funds and compares them with ETFs, closed-end funds, UITs, hedge funds and separately managed accounts on liquidity, pricing, customisation, fees, regulation and transparency.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m090:b01",
@@ -11206,9 +11206,9 @@
    "objectives": [
     "objective:draft-investment-policy-statement"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:investment-policy-statement gives the IPS's purposes (plan executable by any adviser, discipline against ad hoc revisions).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m090:b02",
@@ -11226,9 +11226,9 @@
    "objectives": [
     "objective:draft-investment-policy-statement"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:investment-policy-statement lists the IPS components; ex:investment-planning-case drafts provisions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m090:b03",
@@ -11246,9 +11246,9 @@
    "objectives": [
     "objective:draft-investment-policy-statement"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:investment-policy-statement and ex:investment-planning-case describe and develop risk and return objectives, including a solved required return and a quantified loss limit.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m090:b04",
@@ -11266,9 +11266,9 @@
    "objectives": [
     "objective:assess-risk-tolerance"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:investment-policy-statement explains willingness against ability and their resolution; ex:investment-planning-case resolves an above-average willingness against moderate ability.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m090:b05",
@@ -11286,9 +11286,9 @@
    "objectives": [
     "objective:apply-investment-constraints"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:investment-policy-statement describes the five constraints and their implications; ex:investment-planning-case applies liquidity, horizon, tax and unique constraints.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m090:b06",
@@ -11306,9 +11306,9 @@
    "objectives": [
     "objective:specify-asset-classes-and-construction"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:asset-class-portfolio-construction explains asset-class specification criteria in relation to the strategic allocation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m090:b07",
@@ -11326,9 +11326,9 @@
    "objectives": [
     "objective:specify-asset-classes-and-construction"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:asset-class-portfolio-construction and ex:investment-planning-case describe building the portfolio from the IPS: strategic allocation, ranges, risk budgeting, rebalancing.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m090:b08",
@@ -11346,9 +11346,9 @@
    "objectives": [
     "objective:specify-asset-classes-and-construction"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:asset-class-portfolio-construction describes ESG screening, integration, thematic, stewardship and impact approaches (harmonised definitions) and how each enters the IPS, universe, benchmark and construction.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m091:b01",
@@ -11367,9 +11367,9 @@
    "objectives": [
     "objective:classify-behavioural-biases"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:behavioural-biases compares and contrasts cognitive errors and emotional biases (Statman's classification, System 1 and 2, the blurred border).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m091:b02",
@@ -11387,9 +11387,9 @@
    "objectives": [
     "objective:classify-behavioural-biases"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:behavioural-biases discusses the common biases and their effects on decisions, with remedies and the planning case.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m091:b03",
@@ -11407,9 +11407,9 @@
    "objectives": [
     "objective:link-biases-to-market-anomalies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: mech:biases-market-anomalies describes how biases with limits to arbitrage can produce anomalies, closed-end fund discounts and investor-behaviour patterns.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m092:b01",
@@ -11427,9 +11427,9 @@
    "objectives": [
     "objective:design-risk-management-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:risk-management-framework defines risk management.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m092:b02",
@@ -11447,9 +11447,9 @@
    "objectives": [
     "objective:design-risk-management-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:risk-management-framework describes the process and the features of a framework.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m092:b03",
@@ -11468,9 +11468,9 @@
    "objectives": [
     "objective:design-risk-management-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:risk-management-framework defines risk governance and its elements (structure, ERM, independence, reporting).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m092:b04",
@@ -11488,9 +11488,9 @@
    "objectives": [
     "objective:design-risk-management-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:risk-management-framework explains how risk tolerance sets ranges, limits, retained against hedged risks and corrective action.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m092:b05",
@@ -11508,9 +11508,9 @@
    "objectives": [
     "objective:design-risk-management-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:risk-management-framework describes risk budgeting and limit methods and their role in governance.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m092:b06",
@@ -11529,9 +11529,9 @@
    "objectives": [
     "objective:identify-and-modify-risk-exposures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:risk-identification-modification identifies financial and non-financial risks and how they interact (LTCM).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m092:b07",
@@ -11549,9 +11549,9 @@
    "objectives": [
     "objective:identify-and-modify-risk-exposures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:risk-identification-modification describes measures and the ways of modifying exposures, with the factors in choosing among forwards, futures, options, insurance and self-insurance.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m093:b01",
@@ -18809,9 +18809,9 @@
    "objectives": [
     "objective:measure-value-added"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:active-return-information-ratio describes value added from active weights and its measurement.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m038:b02",
@@ -18831,9 +18831,9 @@
    "objectives": [
     "objective:measure-value-added"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:active-return-information-ratio calculates ex post and ex ante IRs, interprets them and contrasts them with the Sharpe ratio, with units and annualisation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m038:b03",
@@ -18852,9 +18852,9 @@
    "objectives": [
     "objective:apply-fundamental-law"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: res:fundamental-law-active-management describes and interprets IC, breadth, the transfer coefficient and active risk.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m038:b04",
@@ -18872,9 +18872,9 @@
    "objectives": [
     "objective:apply-fundamental-law"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: res:fundamental-law-active-management and meth:active-return-information-ratio explain the IR in combining managers and in choosing active risk.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m038:b05",
@@ -18893,9 +18893,9 @@
    "objectives": [
     "objective:apply-fundamental-law"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: res:fundamental-law-active-management compares market timing with security selection and evaluates strategy changes (adding a research area, rebalancing frequency).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m038:b06",
@@ -18913,9 +18913,9 @@
    "objectives": [
     "objective:apply-fundamental-law"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: res:fundamental-law-active-management states the law's practical strengths and limits (independence, constant IC, optimal use, constraints, costs).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m039:b01",
@@ -19218,9 +19218,9 @@
    "objectives": [
     "objective:decompose-active-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:active-risk-decomposition explains sources of active risk (factor against specific, beta against residual) and interprets tracking risk and the IR.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b01",
@@ -22206,9 +22206,9 @@
    "objectives": [
     "objective:explain-evaluation-components"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:performance-evaluation-components explains measurement, attribution and appraisal and their relationships.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b02",
@@ -22228,9 +22228,9 @@
    "objectives": [
     "objective:explain-evaluation-components"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:performance-evaluation-components describes the attributes of an effective attribution process.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b03",
@@ -22250,9 +22250,9 @@
    "objectives": [
     "objective:apply-return-and-risk-attribution"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:return-attribution contrasts return with risk attribution and macro with micro attribution.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b04",
@@ -22272,9 +22272,9 @@
    "objectives": [
     "objective:apply-return-and-risk-attribution"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:return-attribution describes returns-, holdings- and transactions-based attribution with advantages and disadvantages.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b05",
@@ -22294,9 +22294,9 @@
    "objectives": [
     "objective:apply-return-and-risk-attribution"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:return-attribution interprets BHB and Brinson-Fachler effects in a worked example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b06",
@@ -22316,9 +22316,9 @@
    "objectives": [
     "objective:apply-return-and-risk-attribution"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:return-attribution interprets fixed-income attribution output (duration, allocation, selection, income; external interest-rate and management effects).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b07",
@@ -22338,9 +22338,9 @@
    "objectives": [
     "objective:apply-return-and-risk-attribution"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:return-attribution discusses considerations in choosing a risk attribution (mandate's risk measure, decision structure, allocation of covariance, system compatibility).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b08",
@@ -22361,9 +22361,9 @@
    "objectives": [
     "objective:separate-owner-and-manager-results"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:macro-attribution-owner-manager identifies and interprets owner and manager results through macro attribution levels.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b09",
@@ -22383,9 +22383,9 @@
    "objectives": [
     "objective:select-and-test-benchmarks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:benchmark-selection-quality discusses liability-based benchmarks and surplus objectives.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b10",
@@ -22405,9 +22405,9 @@
    "objectives": [
     "objective:select-and-test-benchmarks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:benchmark-selection-quality describes the seven types of asset-based benchmark.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b11",
@@ -22427,9 +22427,9 @@
    "objectives": [
     "objective:select-and-test-benchmarks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:benchmark-selection-quality discusses Bailey's tests of benchmark quality, with statistics computed in an example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b12",
@@ -22449,9 +22449,9 @@
    "objectives": [
     "objective:select-and-test-benchmarks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:benchmark-selection-quality describes the effects of misspecification on attribution and appraisal.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b13",
@@ -22471,9 +22471,9 @@
    "objectives": [
     "objective:select-and-test-benchmarks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:benchmark-selection-quality describes problems benchmarking hedge funds, private equity (PMEs) and appraised real estate.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b14",
@@ -22494,9 +22494,9 @@
    "objectives": [
     "objective:calculate-appraisal-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:downside-appraisal-measures calculates and interprets the Sortino ratio, appraisal ratio, capture ratios, maximum drawdown and drawdown duration.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b15",
@@ -22516,9 +22516,9 @@
    "objectives": [
     "objective:calculate-appraisal-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:downside-appraisal-measures describes the limits and edge cases of these measures.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b16",
@@ -22538,9 +22538,9 @@
    "objectives": [
     "objective:evaluate-manager-skill"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:manager-skill-evaluation evaluates skill with significance, power, consistency, selection and decision errors; meth:skill-luck-significance-tests supplies Harris's test.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b01",
@@ -22560,9 +22560,9 @@
    "objectives": [
     "objective:run-manager-due-diligence"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:manager-due-diligence describes the selection process, investment and operational due diligence and monitoring.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b02",
@@ -22582,9 +22582,9 @@
    "objectives": [
     "objective:run-manager-due-diligence"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:manager-due-diligence contrasts Type I and II errors in hiring and continuation, with filter error rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b03",
@@ -22604,9 +22604,9 @@
    "objectives": [
     "objective:run-manager-due-diligence"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:manager-due-diligence describes returns- and holdings-based style analysis and their uses, with a constrained example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b04",
@@ -22627,9 +22627,9 @@
     "objective:run-manager-due-diligence",
     "objective:calculate-appraisal-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:manager-due-diligence describes using capture and drawdown measures in evaluating managers; meth:downside-appraisal-measures defines and computes them.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b05",
@@ -22649,9 +22649,9 @@
    "objectives": [
     "objective:evaluate-manager-process-and-behaviour"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:manager-philosophy-process-behaviour evaluates philosophy and decision process with a checklist and hiring rule.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b06",
@@ -22672,9 +22672,9 @@
    "objectives": [
     "objective:evaluate-manager-process-and-behaviour"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:manager-philosophy-process-behaviour discusses team behaviour (groupthink, overconfidence, herding) and recommends mitigations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b07",
@@ -22694,9 +22694,9 @@
    "objectives": [
     "objective:choose-vehicle-and-contract"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:vehicle-contract-fee-analysis evaluates pooled vehicles against separate accounts; ex:manager-selection-case applies it.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b08",
@@ -22716,9 +22716,9 @@
    "objectives": [
     "objective:choose-vehicle-and-contract"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:vehicle-contract-fee-analysis compares segregated agreements with fund documents and lists the provisions an agreement must specify.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b09",
@@ -22738,9 +22738,9 @@
    "objectives": [
     "objective:choose-vehicle-and-contract"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:vehicle-contract-fee-analysis describes three forms of performance-based fee (asymmetric bonus, symmetric fulcrum, high-water-mark profit share), with dated US limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m014:b10",
@@ -22761,9 +22761,9 @@
    "objectives": [
     "objective:choose-vehicle-and-contract"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:vehicle-contract-fee-analysis analyses a three-year fee schedule with a high-water mark, cap and fulcrum alternative and the expected fee for a zero-skill manager.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b01",
@@ -22783,9 +22783,9 @@
    "objectives": [
     "objective:explain-performance-standard-scope"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:gips-scope-verification discusses objectives, scope and benefits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b02",
@@ -22805,9 +22805,9 @@
    "objectives": [
     "objective:explain-performance-standard-scope"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:gips-scope-verification explains firm-wide compliance, the firm definition and discretion.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b03",
@@ -22827,9 +22827,9 @@
    "objectives": [
     "objective:apply-performance-standard-calculations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:gips-return-calculations discusses TWR at large cash flows, cash, transaction costs and fees, with examples.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b04",
@@ -22849,9 +22849,9 @@
    "objectives": [
     "objective:apply-performance-standard-calculations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:gips-return-calculations explains the recommended valuation hierarchy.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b05",
@@ -22871,9 +22871,9 @@
    "objectives": [
     "objective:apply-performance-standard-calculations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:gips-return-calculations explains composite return calculation and the three asset-weighting approaches, with an example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b06",
@@ -22894,9 +22894,9 @@
    "objectives": [
     "objective:construct-composites"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:gips-composite-membership explains discretion and determines it for three described accounts.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b07",
@@ -22916,9 +22916,9 @@
    "objectives": [
     "objective:construct-composites"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:gips-composite-membership explains composite definition by mandate, objective or strategy.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b08",
@@ -22938,9 +22938,9 @@
    "objectives": [
     "objective:construct-composites"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:gips-composite-membership explains switching, inclusion timing and termination, with a membership calendar.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b09",
@@ -22960,9 +22960,9 @@
    "objectives": [
     "objective:prepare-compliant-presentations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:gips-composite-presentation and ex:gips-composite-report explain presentation and reporting requirements.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b10",
@@ -22982,9 +22982,9 @@
    "objectives": [
     "objective:prepare-compliant-presentations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:gips-composite-presentation explains the conditions for linking or using past-firm performance (1.A.32-1.A.34 and the Handbook).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m015:b11",
@@ -23004,9 +23004,9 @@
    "objectives": [
     "objective:explain-performance-standard-scope"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:gips-scope-verification discusses the purpose, scope and process of verification and its limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b01",

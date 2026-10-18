@@ -1,0 +1,121 @@
+\section{Performance presentation standards}
+
+These entries explain the GIPS standards for firms (2020 edition, effective 1 January 2020): their purpose and scope, the calculations they require, composite construction and the composite report. The report entry already present in \hyperref[meth:gips-composite-presentation]{the GIPS composite report} covers required statistics, disclosures and portability. The examples are educational: every firm, portfolio and number is invented, and nothing here claims or implies that any firm complies. Calculations are checked in \texttt{notes/artefacts/performance-presentation-standards/gips-checks.py}. Provisions are cited by number and by the printed page of the 2020 standards.
+
+\begin{qfdefinition}[GIPS objectives, scope and benefits; fundamentals of compliance; definition of the firm; discretion; verification and performance examination and their limits]\label{def:gips-scope-verification}
+\qffield{Statement} The GIPS standards are ``ethical standards for calculating and presenting investment performance based on the principles of fair representation and full disclosure'' \citep[Preface, p.~v]{wide-gips-2020}. They are needed to standardise performance as markets globalise, to act as a ``global passport'' that lets firms from countries with few standards compete on equal footing, and to give investors confidence that performance ``is complete and fairly presented''. Their objectives are to promote investor interests and confidence, ensure accurate and consistent data, obtain worldwide acceptance of a single standard, promote fair global competition and promote industry self-regulation (Introduction, pp.~vii--viii). Organisations that compete for business must comply with the standards for firms; asset owners that do not market their services follow the standards for asset owners (Preface, p.~vi; Introduction, p.~xiii). Requiring all actual, fee-paying, discretionary segregated accounts to be in composites ``prevent[s] firms from cherry-picking their best performance'' (p.~viii).
+
+\emph{Fundamentals of compliance} (sec.~1, pp.~1--6). Compliance ``must be met on a firm-wide basis and cannot be met on a composite, pooled fund, or portfolio basis'' (1.A.1). The firm ``must be defined as an investment firm, subsidiary, or division held out to the public as a distinct business entity'' (1.A.2). A distinct business entity is organisationally and functionally segregated, ``retains discretion over the assets it manages'' and should have autonomy over investment decisions; legal entity, distinct market or client type and a separate investment process are possible criteria (Glossary, p.~75). The firm should adopt ``the broadest, most meaningful definition'' (1.B.4). An initial claim needs at least five years of compliance, or compliance since inception (1.A.3). The firm must follow all Guidance Statements, interpretations and Q\&As (1.A.4), comply with laws, never present false or misleading performance (1.A.7) and never claim partial compliance (``in compliance \ldots except for'', 1.A.8). It must make every reasonable effort to give a GIPS Composite Report to every prospective client, without choosing to whom (1.A.11), and must notify CFA Institute annually (1.A.38).
+
+\emph{Discretion.} ``A discretionary segregated account is one for which the firm has the ability to implement its intended strategy.'' Documented client restrictions that significantly hinder that strategy may make an account non-discretionary; ``There are degrees of discretion'', the firm documents its definition and applies it consistently, and non-discretionary accounts are excluded from composites \citep[Provision 3.A.2, p.~147]{gips-handbook-firms-2020}. The definition of discretion ``establishes criteria to judge which portfolios must be included in a composite'' \citep[Introduction, p.~xiii]{wide-gips-2020}.
+
+\emph{Verification.} Firms ``may choose'' independent third-party verification, a process testing the firm ``on a firm-wide basis''. It provides assurance on whether policies and procedures for composite and pooled fund maintenance and for the calculation, presentation and distribution of performance ``have been designed in compliance'' and ``implemented on a firm-wide basis''. Verification is strongly recommended (1.B.3). A \emph{performance examination} is additional testing of a specific composite or pooled fund (Introduction, p.~ix). The verified compliance statement must say that ``Verification does not provide assurance on the accuracy of any specific performance report'' (4.C.1(a), p.~26). A firm choosing verification must consider the verifier's independence (1.A.39, p.~6).
+
+\emph{Verification process.} Under the standards for verifiers, a qualified, independent verifier issues ``A single verification report \ldots on a firm-wide basis''; verification ``cannot be carried out only on a composite or a pooled fund'', ``provides no assurance about the performance of any specific composite or pooled fund or any specific GIPS report'', and does not cover the claim of compliance in its entirety. The minimum initial period is one year \citep[pp.~1--2]{gips-verifiers-2020}. The engagement letter states that verification gives no assurance on the operating effectiveness of controls. The verifier plans by weighing evidence quality, control environment and materiality, and tests the whole firm, possibly by sampling (pp.~3--4). The required tests cover recordkeeping, policies and procedures, the firm definition, the lists of composites and pooled funds, total firm assets, portfolios excluded as non-discretionary, the assignment of portfolios to composites (timing, moves, minimum asset levels, significant cash flows), outlier returns and input data (pp.~5--10). It ends with a representation letter and a report opining that the policies and procedures have been designed in compliance and implemented firm-wide (pp.~11--12).
+
+\qffield{Conditions} The standards are voluntary: they bind only firms that claim compliance, and where law conflicts the firm must follow the law and disclose the conflict (Introduction, p.~x). Non-compliant performance may be linked only for periods before the minimum effective compliance date, 1 January 2000 for most composites and 1 January 2006 for real estate, private equity and wrap fee (p.~ix; 1.A.29). Reports for periods ending on or after 31 December 2020 must follow the 2020 edition (p.~xv).
+
+\qffield{Practice} Interpretation of the benefits: for a prospective client, comparability across firms and assurance against survivorship and cherry-picking; for a firm, a consistent internal discipline and access to markets that expect compliance. The limits matter as much: verification tests policies and their firm-wide implementation, not the correctness of one composite's numbers (that is the performance examination's role), and neither verification nor compliance says anything about skill.
+
+\qffield{Pitfalls} Defining the ``firm'' narrowly to exclude weak business lines. Claiming that a single composite or strategy complies. Reading a verified firm's report as audited performance of that composite.
+
+\qffield{See also} \hyperref[meth:gips-return-calculations]{GIPS calculations}; \hyperref[meth:gips-composite-membership]{composite construction}; \hyperref[meth:gips-composite-presentation]{the composite report}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[GIPS return calculations: total returns, accrual and trade-date accounting, cash, transaction costs and fees, valuation at least monthly and at large cash flows, time-weighted and money-weighted returns, the recommended valuation hierarchy, composite asset weighting, internal dispersion and the three-year standard deviation]\label{meth:gips-return-calculations}
+\qffield{Statement} Required inputs and calculations \citep[sec.~2, pp.~8--15]{wide-gips-2020}:
+\begin{itemize}
+\item Total returns, trade-date accounting, and accrual accounting for interest-earning investments, with accrued income in beginning and ending values (2.A.8--2.A.10). Returns on cash and cash equivalents ``must be included in all return calculations, even if the firm does not control the specific cash investment(s)'' (2.A.11). Returns for periods under a year ``must not be annualized'' (2.A.12).
+\item All returns after actual transaction costs, with estimates only where actual costs are unknown; with bundled fees, gross returns are reduced by the whole bundled fee or its transaction-cost part, and net returns by the part covering costs and the management fee (2.A.13--2.A.14). Net-of-fee returns use actual fees or a model fee no lower in effect than the actual one (2.A.30--2.A.31).
+\item Portfolios valued at fair value under a composite-specific policy, with estimated values reassessed when final values arrive (2.A.19--2.A.21). The recommended hierarchy runs from unadjusted quoted prices for identical investments in active markets, through quoted prices for similar investments, quotes in inactive markets and other observable inputs, to subjective unobservable inputs (2.B.6, pp.~16--17).
+\item For portfolios in composites (other than private market investments), valuation at least monthly, at calendar month end and ``on the date of all large cash flows'', defined per composite. Time-weighted returns are calculated at least monthly, with sub-period returns at large cash flows if daily returns are not calculated, returns adjusted for daily-weighted external cash flows otherwise, and geometric linking (2.A.23--2.A.24).
+\item Composite time-weighted returns at least monthly, by one of three approaches: ``Asset-weighting the individual portfolio returns using beginning-of-period values''; asset-weighting with ``beginning-of-period values and external cash flows''; or the aggregate method (2.A.35--2.A.36). Money-weighted returns are allowed only where the firm controls external cash flows and the vehicle is closed-end, fixed-life, fixed-commitment or substantially illiquid (1.A.35); they are annualised since inception with daily cash flows (2.A.29).
+\end{itemize}
+Internal dispersion uses only portfolios in the composite for the whole year, measured for example by equal- or asset-weighted standard deviation, high--low, range or interquartile range. For dispersion and for the three-year annualised ex post standard deviation of 36 monthly returns, multiplied by $\sqrt{12}$, $n$ is preferred to $n-1$, but either is acceptable if chosen per composite and applied consistently \citep[Provisions 4.A.1(i)--(j), pp.~196--200]{gips-handbook-firms-2020}.
+
+\qffield{Practice} Examples, educational.
+\begin{itemize}
+\item \emph{Large cash flow.} Portfolio X starts a 30-day month at 10.0 million. It is worth 10.30 million on day~10 just before a 3.0 million inflow, 30 percent of value and above the composite's 10 percent large-cash-flow threshold, and ends at 13.90 million. The true time-weighted return, $(10.30/10.0)(13.90/13.30)-1$, is 7.647 percent. The Modified Dietz approximation, $(13.90-10.0-3.0)/(10.0+3.0\times20/30)$, gives 7.50 percent and is not acceptable for this flow.
+\item \emph{Composite.} With Y (25.0 to 23.6 million, a 2.0 million withdrawal on day~20, which is not large; Modified Dietz 2.466 percent) and Z (40.0 to 41.2, 3.0 percent), the beginning-value-weighted composite return is 3.442 percent. Weighting by beginning value plus weighted flows gives 3.560 percent, and the aggregate method, one Modified Dietz on the summed values, 3.537 percent. The aggregate figure ignores X's large flow, which the composite policy would need to address.
+\item \emph{Dispersion.} Seven portfolios held all of 2025 returned 10.0, 10.9, 9.2, 12.1, 10.6, 8.7 and 11.4 percent with beginning values 12, 30, 8, 20, 15, 5 and 10 million. Equal-weighted standard deviation is 1.11 with $n$ (1.20 with $n-1$); asset-weighted mean 10.79, asset-weighted standard deviation 0.94; high 12.1, low 8.7.
+\item \emph{Net of fees.} A model fee of 1.00 percent a year charged monthly gives net returns $(1+g)/(1+0.01/12)-1$. Because the actual fee is 0.75 percent, the model net return is the lower, as 2.A.31 requires.
+\end{itemize}
+
+\qffield{Conditions} Footnotes date many requirements (for example monthly valuation from 2001, valuation at large cash flows from 2010); earlier periods of a track record follow the earlier rules (pp.~8--15). Private market investments are valued and calculated at least quarterly (2.A.40--2.A.42).
+
+\qffield{Pitfalls} Leaving out cash or the cash portion of a carve-out. Using Modified Dietz across a large cash flow. Choosing the composite weighting method, or $n$ against $n-1$, after seeing which flatters.
+
+\qffield{See also} \hyperref[def:return-measures]{return measures} (time- and money-weighted returns); \hyperref[meth:gips-composite-membership]{composite construction}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Composite construction: discretion, definitions by mandate, objective or strategy, timely inclusion of new portfolios, full-period membership, terminated portfolios, switching between composites, minimum asset levels, significant cash flows and temporary new accounts]\label{meth:gips-composite-membership}
+\qffield{Statement} Provisions 3.A.1--3.A.13 \citep[sec.~3, pp.~18--19]{wide-gips-2020}:
+\begin{itemize}
+\item Composites must exist for every strategy managed for or offered as a segregated account; all actual, fee-paying, discretionary segregated accounts must be in at least one composite, and non-discretionary portfolios in none (3.A.1--3.A.2). Pooled funds that meet a composite's definition must be included; non-fee-paying discretionary portfolios may be, under the same rules (3.A.3--3.A.4).
+\item Composites are defined ``according to investment mandate, objective, or strategy'' and include every portfolio meeting the definition whatever its legal structure; definitions change only prospectively (3.A.5--3.A.6).
+\item New portfolios enter ``on a timely and consistent composite-specific basis'' (3.A.7). Only portfolios managed for the full measurement period are included (3.A.8). Terminated portfolios stay in history ``up to the last full measurement period'' under management (3.A.9).
+\item Portfolios move between composites only for documented client-directed changes or a redefinition, their history stays with the original composite, and never because of the firm's tactical changes (3.A.10).
+\item A minimum asset level excludes smaller portfolios and is not changed retroactively (3.A.11). Removal for significant cash flows needs an ex ante, composite-specific definition of ``significant'' (3.A.12); temporary new accounts that hold such flows are excluded from composite performance (3.A.13), and are recommended for this purpose (3.B.2).
+\end{itemize}
+The Handbook encourages adding new portfolios ``as soon as possible, preferably at the start of the next full performance measurement period'', allowing longer for illiquid strategies or client-specified phased funding \citep[Provision 3.A.7, pp.~166--167]{gips-handbook-firms-2020}. A significant cash flow is client-directed, set as a monetary amount or a percentage of portfolio assets, ``and no other criteria''. It might be 10 percent for an emerging-market bond composite and over 50 percent for European equities. It is not appropriate for composites presenting money-weighted returns, and all portfolios experiencing one must be removed under the policy (Provision 3.A.12, pp.~173--174).
+
+\qffield{Practice} \emph{Determining discretion}, educational (a global equity strategy whose firm defines discretion as the ability to hold the strategy's model portfolio within 2 percentage points of active risk):
+\begin{itemize}
+\item an account that excludes tobacco, about 1 percent of the benchmark, can still implement the strategy: likely discretionary;
+\item an account that must keep 30 percent in a legacy holding and meet monthly withdrawals of 3 percent cannot: likely non-discretionary, documented with the reason \citep[as described in][Provision 3.A.2, p.~147]{gips-handbook-firms-2020};
+\item a group of accounts sharing the same exclusion list could form their own composite rather than being called non-discretionary, as the Handbook encourages (p.~147).
+\end{itemize}
+\emph{Membership}, educational (an invented composite's policy, documented ex ante: new portfolios join at the first full month after funding; a client-directed flow of 25 percent or more of beginning value removes the portfolio for that month and the next; terminated portfolios stay through their last full month; a mandate change moves the portfolio at the next full month).
+\begin{itemize}
+\item P1 is held all year.
+\item P2 is funded on 12 March and first counts in April.
+\item P3 has a 30 percent withdrawal on 15 August and is out for August and September.
+\item P4 terminates on 20 November and counts through October.
+\item P5's client changes its mandate on 10 June; it leaves from July, and January to June stay in this composite's history.
+\item P6 is non-discretionary and never counts.
+\end{itemize}
+Monthly counts are 4, 4, 4, 5, 5, 5, 4, 3, 3, 4, 3 and 3. Only P1 is a full-year member, so with this membership the year's internal dispersion would rest on one portfolio and is not required (more than five full-year portfolios are needed).
+
+\qffield{Conditions} Inclusion timing, significance thresholds and minimum asset levels are firm policies, not GIPS numbers; GIPS requires that they be defined ex ante, disclosed and applied consistently (4.C.35 for significant cash flows).
+
+\qffield{Pitfalls} Moving a portfolio after it underperforms; defining a significant cash flow by its effect on performance; delaying a new account's inclusion until it has done well.
+
+\qffield{See also} \hyperref[def:gips-scope-verification]{scope and discretion}; \hyperref[ex:gips-composite-report]{educational composite report}.
+
+\end{qfmethod}
+
+\begin{qfexample}[An educational GIPS composite report: five annual periods, required statistics, labels, the disclosures it must carry and what it cannot claim]\label{ex:gips-composite-report}
+\qffield{Statement} A fictional ``Global Equity Composite'' with inception on 1 January 2021 presents five annual periods, as an initial report must (4.A.1(a)), with the statistics of 4.A.1. Composite and benchmark returns come from invented monthly series; the three-year standard deviations use 36 monthly returns with $n$; net returns use a 1.00 percent model fee \citep[provisions 4.A.1--4.A.3 and~4.C.1--4.C.11, pp.~21--27]{wide-gips-2020}. Educational example only: no firm, no compliance claim.
+\begin{center}\small
+\begin{tabular}{@{}lrrrrrrrrr@{}}
+\toprule
+Year & Gross & Net & Bench. & No. & Comp. & Firm & Disp. & 3y s.d. & 3y s.d. \\
+ & \% & \% & \% & port. & \$m & \$m & \% & comp. & bench. \\
+\midrule
+2021 & 8.78 & 7.69 & 7.43 & $\le5$ & 60 & 900 & n/a & n/a & n/a \\
+2022 & 8.86 & 7.78 & 7.43 & $\le5$ & 85 & 1{,}050 & n/a & n/a & n/a \\
+2023 & 8.80 & 7.72 & 7.59 & $\le5$ & 120 & 1{,}200 & n/a & 7.77 & 7.26 \\
+2024 & 9.80 & 8.71 & 8.61 & 6 & 150 & 1{,}400 & n/a & 7.83 & 7.34 \\
+2025 & 10.81 & 9.71 & 9.33 & 9 & 230 & 1{,}650 & 0.94 & 8.01 & 7.50 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\qffield{Practice} \emph{Reading the table against the rules.}
+\begin{itemize}
+\item Gross and net columns are labelled (4.A.3). The benchmark is shown for every period (4.A.1(e)).
+\item The number of portfolios is not required with five or fewer, but the report must say so (4.A.1(f); 4.C.39, p.~30).
+\item Dispersion is ``n/a'' while five or fewer portfolios were held all year, with that disclosed (4.C.40, p.~30); in 2024 six portfolios were held at year end but only five for the whole year. In 2025 seven of the nine were full-year members, and the asset-weighted standard deviation of their gross returns is shown, its measure and gross basis disclosed (4.C.10).
+\item The three-year standard deviation starts in 2023, the first year with 36 monthly returns, and the report discloses why earlier years lack it (4.A.1(j); 4.C.36, p.~30).
+\end{itemize}
+\emph{Disclosures} a real report would need include: one of the three compliance statements (4.C.1; omitted here, since no compliance is claimed); the trademark statement (4.C.2); the firm definition (4.C.3); the composite and benchmark descriptions (4.C.4--4.C.5); the model-fee and net-of-fee methodology (4.C.7); the currency (4.C.9); the dispersion measure (4.C.10); the current fee schedule (4.C.11); and the significant cash flow policy if one exists (4.C.35, p.~30).
+
+\qffield{Conditions} The series are synthetic, the asset figures invented and the dispersion taken from \hyperref[meth:gips-return-calculations]{the calculations example}; the table teaches the layout and the conditions for each column, not any strategy's performance.
+
+\qffield{Pitfalls} Presenting such a table without the full disclosures; adding a compliance statement to an illustrative or hypothetical example; linking theoretical performance to actual (1.A.27).
+
+\qffield{See also} \hyperref[meth:gips-composite-presentation]{the GIPS composite report}; \hyperref[meth:gips-composite-membership]{composite construction}.
+
+\end{qfexample}

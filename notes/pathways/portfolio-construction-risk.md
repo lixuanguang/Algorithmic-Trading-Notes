@@ -60,6 +60,36 @@ Correction pass (2026-10-18, PR #22): `meth:efficient-frontier` no longer says c
 
 All partly checked 2026-10-18, draft. The examples are in `notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py` and `notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py`; human review is outstanding.
 
+
+Written in the performance and planning batch (2026-10-18):
+
+In `investment-process-planning.tex` (topics `investment-management-process` and `investment-policy-planning`):
+
+- `def:portfolio-management-process`: the portfolio perspective and the planning, execution and feedback steps (Maginn, Tuttle, McLeavey and Pinto, *Managing Investment Portfolios*, 3rd ed., 2007, chap. 1, pp. 2-10).
+- `def:investor-types-needs`: individual and institutional investors; DB against DC plans, funded status and surplus risk (chap. 3, pp. 64-66 and 79-80); Exhibit 1-3's requirements and tolerances; Ang (2014) on sovereign funds, pension pillars, the US 5 percent foundation payout and individuals (chap. 1).
+- `def:asset-management-industry`: fee economics and roles (MIP chap. 1, pp. 2-4); the four US registered fund types, disclosure, leverage limits and fulcrum fees (Ang chap. 16, pp. 523-527); hedge fund fees (chap. 17, pp. 581-582); separate accounts; ICI 2026 Fact Book figures for year-end 2025.
+- `meth:investment-policy-statement`: purpose and components, risk objective with willingness and ability, return objective and required return, constraints (chap. 1, pp. 2, 5-7 and 11-17); Maginn's required-return examples reproduced.
+- `meth:asset-class-portfolio-construction`: strategic allocation with ranges and asset-class criteria (chap. 5, pp. 231-232 and 248-249); risk budgeting; harmonised ESG approach definitions (GSIA 2022, p. 7) and Ang's view of exclusions as costed constraints (chap. 3, pp. 110-112).
+- `ex:investment-planning-case`: a fictional surgeon's case: required real return 2.70 percent, three candidate allocations, IPS provisions, a concentrated holding and a futures overlay.
+
+In `behavioural-finance.tex` (topic `behavioral-finance`):
+
+- `def:behavioural-biases`: beliefs and preferences (Barberis and Thaler, NBER w9222, secs. 3.1-3.2, pp. 12-21); Statman's cognitive and emotional shortcuts and errors (2019, chaps. 1, 3 and 4); effects on decisions and remedies, including Kahneman's decorrelation and premortem.
+- `mech:biases-market-anomalies`: limits to arbitrage (pp. 3-6); size, reversal, value, momentum and drift with the BSV account (pp. 33-34 and 38-39); closed-end fund discounts (p. 44); home bias, naive diversification, excessive trading and the disposition effect (pp. 47-50).
+
+In `risk-governance.tex` (topic `risk-management-framework`):
+
+- `def:risk-management-framework`: definition, process, governance and ERM, risk tolerance, risk budgeting and limits (MIP chap. 9, pp. 579-584 and 634-635); Damodaran's risk hedging against risk management (2008, pp. 303-304).
+- `meth:risk-identification-modification`: financial and non-financial risks (chap. 9, pp. 585-586, 596 and 623); Damodaran's alternatives for reducing exposure (chap. 10, pp. 331-335); the case's overlay.
+
+In `active-management.tex` (topic `active-management-analysis`):
+
+- `meth:active-return-information-ratio`: value added from active weights (MIP chap. 12, p. 743); ex post and ex ante IR, Table 5.1 and Table 5.3 (Grinold and Kahn, chap. 5, pp. 110-123); Bacon's tracking error and IR conventions (pp. 167-169); Sharpe's (1994) differential-return ratio; optimal active risk and SR_P^2 = SR_B^2 + IR^2, derived.
+- `res:fundamental-law-active-management`: IR = IC sqrt(BR), assumptions, additivity and examples (chap. 6, pp. 147-162); the transfer coefficient (Grinold and Kahn 2020, pp. 23 and 27-29); a constrained five-stock check of IR_P = TC x IR_Q.
+- `meth:active-risk-decomposition`: factor and specific active variance (chap. 3, pp. 76-77), active beta and residual risk (chap. 4, p. 90), marginal contributions (p. 67).
+
+All partly checked 2026-10-18, draft. Examples in `notes/artefacts/investment-planning/investment-planning-checks.py` and `notes/artefacts/active-management-analysis/active-management-checks.py`; human review is outstanding. Coverage records are editorial, not study.
+
 ## Source verification after macro markets and pricing review
 
 method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `ev:trend-following-evidence` resolved by merge into `def:alpha-model-taxonomy`'s pitfalls (Moskowitz, Ooi and Pedersen's abstract; Hurst, Ooi and Pedersen's 1880-2016 Exhibit 1: 7.3 percent net, 9.7 percent volatility, Sharpe 0.76, drawdowns up to 25 percent). The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.

@@ -23,4 +23,4 @@ Prepared on 2026-10-18 by the fixed-income and derivatives batch (2026-10-18) fr
 
 ## Limits
 
-Secondary publication; Treasury rounds intermediate results, so one bill example matches only to 5e-6.
+Secondary publication; Treasury rounds intermediate results, so one bill example matches only to 5e-6. A later final rule (`fr-2026-21069`, effective 15 October 2026) revises Appendix B secs. I.B, III and V on TIPS dated dates and index ratios; the sections used here (II.A, II.D, IV.A, VI) are not amended by it.

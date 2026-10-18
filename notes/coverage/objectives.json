@@ -4305,12 +4305,27 @@
      {
       "key": "wide-bsv-fi-survey",
       "locator": "pp. 1-5"
+     },
+     {
+      "key": "cfr-31-356-auction-limits",
+      "locator": "secs. 356.12(b)(1) and 356.22"
+     },
+     {
+      "key": "fr-2022-13409",
+      "locator": "p. 40438"
+     },
+     {
+      "key": "fr-2026-21069",
+      "locator": "pp. 65456-65457"
      }
     ],
     "reading_notes": [
      "notes/readings/s7-fabozzifixed.md",
      "notes/readings/world-bank-ibrd-ida-factsheet-2026.md",
-     "notes/readings/wide-bsv-fi-survey.md"
+     "notes/readings/wide-bsv-fi-survey.md",
+     "notes/readings/cfr-31-356-auction-limits.md",
+     "notes/readings/fr-2022-13409.md",
+     "notes/readings/fr-2026-21069.md"
     ],
     "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
     "entry_evidence": [
@@ -4505,17 +4520,22 @@
      {
       "key": "cfr-31-356-appendix-b",
       "locator": "secs. VI.A, C and D"
+     },
+     {
+      "key": "nyfed-sofr-averages-index",
+      "locator": "\"Calculation Methodology for the SOFR Averages and Index\""
      }
     ],
     "reading_notes": [
      "notes/readings/s7-fabozzifixed.md",
-     "notes/readings/cfr-31-356-appendix-b.md"
+     "notes/readings/cfr-31-356-appendix-b.md",
+     "notes/readings/nyfed-sofr-averages-index.md"
     ],
     "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
     "entry_evidence": [
      "meth:floating-money-market-yields"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py parts 1 and 5 (Treasury bill and FRN formulas, the Handbook's discount margin, a SOFR+75 FRN, bill and CD money-market conversions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py parts 1 and 5 (Treasury bill and FRN formulas, the Handbook's discount margin, a dated SOFR+75 FRN with business-day SOFR compounding, the New York Fed's SOFR Index example, a coupon-accrual index check and a price round trip, bill and CD money-market conversions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -4774,7 +4794,7 @@
     "entry_evidence": [
      "meth:curve-based-empirical-duration"
     ],
-    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 9 (effective duration and convexity on a zero curve, key-rate durations and a steepener, callable bond under a zero-volatility exercise rule, Handbook Exhibit 5-15, synthetic empirical duration with seed 20261018); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 9 (effective duration and convexity on a zero curve, key-rate durations and a steepener, a sloped-curve counterexample of parallel-zero-curve against yield duration and convexity with flat-curve and single-cash-flow controls, callable bond under a zero-volatility exercise rule, Handbook Exhibit 5-15, synthetic empirical duration with seed 20261018); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5152,7 +5172,7 @@
      "meth:forward-price-value-lifecycle",
      "meth:rate-bond-forward-valuation"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (value at inception, during the life and at expiry); notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3, conversion factors, Examples 6.1-6.2, an original bond forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (value at inception, during the life and at expiry); notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -8729,7 +8749,7 @@
     "entry_evidence": [
      "meth:equity-forward-futures-valuation"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (discrete dividends, replication, continuous yield, index futures); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (discrete dividends, a dated cash-flow ledger of the self-financing replication, continuous yield, index futures); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -8772,7 +8792,7 @@
     "entry_evidence": [
      "meth:rate-bond-forward-valuation"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3, conversion factors, Examples 6.1-6.2, an original bond forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3 derived from SOFR, the 200 bp spread and quarter-year accrual in both rate scenarios, conversion factors, Examples 6.1-6.2, an original bond forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -8808,17 +8828,26 @@
      {
       "key": "s7-fabozzifixed",
       "locator": "chap. 64, pp. 1577-1578"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 34, sec. 34.4, pp. 777-778"
+     },
+     {
+      "key": "hull-tn19",
+      "locator": "Technical Note 19"
      }
     ],
     "reading_notes": [
      "notes/readings/s7-hulloptions.md",
-     "notes/readings/s7-fabozzifixed.md"
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/hull-tn19.md"
     ],
     "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
     "entry_evidence": [
      "meth:swap-valuation-replication"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed swap); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed and equity-for-SOFR swaps with the next equity payment, later payments and net value separated, reset-date limits and a stochastic-rate simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },

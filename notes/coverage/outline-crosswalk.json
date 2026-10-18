@@ -9031,7 +9031,7 @@
    "objectives": [
     "objective:describe-government-funding"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: def:government-agency-supranational-funding describes sovereign, local-government, agency and supranational funding choices, with IBRD's dated currency mix.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:government-agency-supranational-funding describes sovereign, local-government, agency and supranational funding choices, with IBRD's dated currency mix. Re-reviewed 2026-10-18 after the PR #24 correction pass: the Treasury auction description now gives the current $10 million noncompetitive limit (effective 8 August 2022) and the competitive 35 percent rule from 31 CFR 356, with the Handbook's $5 million dated; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -9051,7 +9051,7 @@
    "objectives": [
     "objective:describe-government-funding"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: def:government-agency-supranational-funding contrasts auctioned, benchmarked government issuance and its electronic trading with syndicated, dealer-traded corporate issuance.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:government-agency-supranational-funding contrasts auctioned, benchmarked government issuance and its electronic trading with syndicated, dealer-traded corporate issuance. Re-reviewed 2026-10-18 after the PR #24 correction pass: the contrast is unchanged; the auction rules it relies on are now current; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -9174,7 +9174,7 @@
    "objectives": [
     "objective:calculate-floating-money-market-yields"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: meth:floating-money-market-yields calculates and interprets quoted and discount margins for floaters, reproducing the Handbook and an original SOFR FRN.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:floating-money-market-yields calculates and interprets quoted and discount margins for floaters, reproducing the Handbook and an original SOFR FRN. Re-reviewed 2026-10-18 after the PR #24 correction pass: the SOFR FRN now has an explicit schedule, business-day compounding and consistent margin discounting (discount margin 96.38 bp); still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -9445,7 +9445,7 @@
    "objectives": [
     "objective:apply-curve-based-risk-measures"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: meth:curve-based-empirical-duration explains why effective measures suit bonds with options, with the Handbook's callable and putable exhibits.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:curve-based-empirical-duration explains why effective measures suit bonds with options, with the Handbook's callable and putable exhibits. Re-reviewed 2026-10-18 after the PR #24 correction pass: the entry no longer claims option-free curve and yield measures coincide; it explains the different shocks and when they agree, with a sloped-curve counterexample; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -9465,7 +9465,7 @@
    "objectives": [
     "objective:apply-curve-based-risk-measures"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: meth:curve-based-empirical-duration calculates price change from effective duration and convexity for a benchmark shift.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:curve-based-empirical-duration calculates price change from effective duration and convexity for a benchmark shift. Re-reviewed 2026-10-18 after the PR #24 correction pass: the price-change formula is unchanged and is now stated for the benchmark-curve shift, distinguished from a yield shift; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -10073,7 +10073,7 @@
    "objectives": [
     "objective:value-forward-contracts"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: meth:rate-bond-forward-valuation describes FRAs, their pricing and value and their use to lock in borrowing or lending rates.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:rate-bond-forward-valuation describes FRAs, their pricing and value and their use to lock in borrowing or lending rates. Re-reviewed 2026-10-18 after the PR #24 correction pass: the SOFR futures hedge now states the borrower's SOFR + 200 bp loan and quarter-year accrual and derives the locked 2.01 percent; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -17571,7 +17571,7 @@
    "objectives": [
     "objective:value-equity-forwards-futures"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: meth:equity-forward-futures-valuation describes pricing and calculates and interprets values of equity forwards and futures.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:equity-forward-futures-valuation describes pricing and calculates and interprets values of equity forwards and futures. Re-reviewed 2026-10-18 after the PR #24 correction pass: the discrete-dividend replication is now self-financing (borrow the full spot, dividends repay the loan); still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -17591,7 +17591,7 @@
    "objectives": [
     "objective:value-equity-forwards-futures"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: meth:arbitrage-replication-carry and meth:equity-forward-futures-valuation describe carry arbitrage without and with underlying cash flows.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:arbitrage-replication-carry and meth:equity-forward-futures-valuation describe carry arbitrage without and with underlying cash flows. Re-reviewed 2026-10-18 after the PR #24 correction pass: carry arbitrage with cash flows now uses the self-financing replication; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -17613,7 +17613,7 @@
    "objectives": [
     "objective:value-rate-and-bond-forwards"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: meth:rate-bond-forward-valuation prices and values FRAs and SOFR futures (single-curve, with the multi-curve entry linked).",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:rate-bond-forward-valuation prices and values FRAs and SOFR futures (single-curve, with the multi-curve entry linked). Re-reviewed 2026-10-18 after the PR #24 correction pass: the SOFR futures hedge is derived from the rate, the 200 bp spread, notional and accrual in both of Hull's scenarios; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -17701,7 +17701,7 @@
    "objectives": [
     "objective:value-swaps-by-replication"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline page: meth:swap-valuation-replication prices and values equity swaps at inception and between resets.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:swap-valuation-replication prices and values equity swaps at inception and between resets. Re-reviewed 2026-10-18 after the PR #24 correction pass: between resets the next equity payment is valued as N(E_t/E_0 - P(t,T_next)), separated from the whole leg and the net equity-for-SOFR value; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },

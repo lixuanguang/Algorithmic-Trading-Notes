@@ -2503,3 +2503,50 @@ and the draft PR for the final local results. Remote CI runs only after a merge 
 - Market sizes and spreads are dated to their sources; legal points to 18 October 2026.
 - Several original papers were read only through secondary texts.
 - Human review is outstanding.
+
+### 19.1 Correction pass on PR #24 (executed 2026-10-18)
+
+A fixes-only pass on draft PR #24 at `88bd29e`, after an external audit with six
+findings. No objective was added. This pass is exempt from the 30-objective target
+(Section 17.4), which stands for future expansion prompts.
+
+1. **Discrete-dividend replication** (`meth:equity-forward-futures-valuation`). Borrowing
+   S0 - I left the share purchase unfunded by I = 2.940743. The replication now borrows
+   the full 100 and applies each dividend to the loan, leaving a debt of 101.020320 at
+   maturity. A dated cash-flow ledger replaces the circular check.
+2. **Equity swap** (`meth:swap-valuation-replication`). The next equity payment is worth
+   N(E_t/E_0 - P(t,T_next)), 7.980133 million in the example (N(E_t/E_0 - 1) would give
+   6.000 million).
+   - It is separated from the later payments, the whole leg and the net value.
+   - An equity-for-SOFR leg with realised overnight growth gives a net value of
+     N(E_t/E_0 - A_t).
+   - Checks cover the reset and payment-date limits and a stochastic-rate simulation.
+   - Hull's p. 778 expression is documented as a discrepancy. His Technical Note 19, read
+     from an archived copy because the author's site returns 404, supports the
+     correction.
+3. **Treasury noncompetitive limit** (`def:government-agency-supranational-funding`).
+   The limit is $10 million from 8 August 2022 under 31 CFR 356.12 and 356.22; the
+   Handbook's $5 million is historical. The October 2026 amendment leaves the limit
+   unchanged, and the 35 percent cap is stated as the competitive rule.
+4. **SOFR FRN** (`meth:floating-money-market-yields`). The FRN has a dated schedule, and
+   SOFR is compounded on business days with calendar-day weights, as in the New York Fed
+   methodology.
+   - Discounting is consistent with the projection, so the note is at par at its quoted
+     margin.
+   - The discount margin is 96.38 bp (was 96.4).
+   - Accrual, index and round-trip checks were added.
+5. **SOFR futures hedge** (`meth:rate-bond-forward-valuation`). The SOFR + 200 bp
+   borrowing and the quarter-year accrual are restored. The hedge is derived from rates
+   and locks 2.01 percent in both scenarios.
+6. **Duration equivalence** (`meth:curve-based-empirical-duration`). The two measures are
+   equal only on a flat curve or for a single cash flow. Counterexample: parallel-zero
+   duration 10.218587 against yield duration 11.213091.
+
+Checks rose from 163 to 189 (bond valuation 89, forward and swap 64, term structure 36).
+Five source keys and reading notes were added: `cfr-31-356-auction-limits`,
+`fr-2022-13409`, `fr-2026-21069`, `hull-tn19` and `nyfed-sofr-averages-index`. The
+seven objectives and ten outline items mapped to the corrected entries were reassessed
+and remain covered. Totals are unchanged: 101 of 424 objectives; 125 Level I, 31 Level
+II and 37 shared-core items covered; 837 of 1,030 unreviewed. Details are in
+`notes/source-review-records.md`, *Correction pass on PR #24*. Remote CI was not
+triggered.

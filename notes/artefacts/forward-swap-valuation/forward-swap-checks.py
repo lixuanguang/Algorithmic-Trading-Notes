@@ -10,6 +10,12 @@ currency swap valued by forwards and by bonds (Examples 7.2-7.3). Original examp
 compounding unless stated; money-market periods use act/360. Single-curve examples are labelled; the separate
 projection and discounting curves of mod:multi-curve-fra-swap-valuation are not repeated here.
 
+Corrections pass (2026-10-18, audit of 88bd29e): the discrete-dividend replication is a dated cash-flow ledger (borrow
+the full spot, dividends repay the loan); the SOFR futures hedge derives loan interest and futures P&L from SOFR, the
+200 bp spread, notional and Hull's quarter-year accrual; the equity swap values the next equity payment as
+N(E_t/E_0 - P(t, T_next)) (Hull, p. 778, prints N(E - E_0)/E_0; his Technical Note 19 agrees with the correction), adds
+an equity-for-SOFR leg with realised overnight compounding, reset-date limits, and a stochastic-rate simulation.
+
 Run: uv run python forward-swap-checks.py   (numpy). Exits 1 on failure.
 """
 
@@ -155,12 +161,40 @@ ok(
     "dividends 1.50 at 3 and 9 months: PV 2.9407; forward 101.0203",
     abs(I0 - 2.9407) < 5e-5 and abs(F_div - 101.0203) < 5e-5,
 )
-# Replication: buy the share, borrow S0 - I0, repay with dividends and the loan; at T own the share and owe F_div.
-loan = S0 - I0
-owed_T = loan * math.exp(r * T)
+# Replication as a dated cash-flow ledger: at 0 borrow the full S0 and buy the share; each dividend is paid to the
+# lender when received; the loan accrues at r between events. The ledger is built event by event, not from (S0 - I)e^rT.
+events = sorted({0.0, T, *(tt for tt, _ in divs)})
+divs_at = dict(divs)
+balance, t_prev, ledger = 0.0, 0.0, []
+for tt in events:
+    balance *= math.exp(r * (tt - t_prev))
+    t_prev = tt
+    if tt == 0.0:
+        balance += S0  # borrow S0
+        ledger.append((tt, S0 - S0))  # loan proceeds less share purchase
+    elif tt in divs_at:
+        balance -= divs_at[tt]  # dividend applied to the loan
+        ledger.append((tt, divs_at[tt] - divs_at[tt]))  # dividend received less repayment
+print(
+    f"    loan balance at T {balance:.6f}; net cash by date {[(t_, round(c, 12)) for t_, c in ledger]}"
+)
 ok(
-    "replicating portfolio: share + loan of S0 - I costs nothing net of dividends and owes exactly F at T",
-    close(owed_T, F_div, 1e-10),
+    "ledger: borrowing the full 100 funds the share (net 0 at t=0); each 1.50 dividend repays the loan (net 0)",
+    all(close(c, 0, 1e-12) for _, c in ledger) and len(ledger) == 1 + len(divs),
+)
+ok(
+    "ledger: the debt left at T is 101.020320, the forward price, so at T the position is share - F_0 = S_T - F_0",
+    abs(balance - 101.020320) < 5e-7 and close(balance, F_div, 1e-10),
+)
+# Borrowing only S0 - I instead leaves the share purchase unfunded by I at t=0: not self-financing.
+ok(
+    "borrowing only S0 - I = 97.059257 leaves a funding gap of I = 2.940743 at t=0",
+    abs((S0 - (S0 - I0)) - 2.940743) < 5e-7,
+)
+# Arbitrage: if a dealer quotes 102 for this forward, run the ledger and sell forward: profit 102 - 101.020320 at T.
+ok(
+    "with the forward quoted at 102, ledger plus short forward earns 0.979680 at T and nothing earlier",
+    abs((102 - balance) - 0.979680) < 5e-7,
 )
 I_t = 1.5 * math.exp(-r * (0.75 - t))
 val_div = St - I_t - F_div * math.exp(-r * (T - t))
@@ -237,18 +271,66 @@ ok(
     "existing FRA paying 4.20% fixed on 10m: worth +6,063 to the fixed payer, -6,063 to the receiver",
     abs(val_payfix - 6062.83) < 0.01,
 )
-# Hull Example 6.3: 3-month SOFR futures hedge on 100m (100 contracts, $25 per bp)
-gain = 100 * 25 * (99.990 - 99.200) * 100
+# Hull Example 6.3: borrow 100m for three months at three-month SOFR + 200 bp, hedged by selling 3-month SOFR futures
+# at 99.990. Hull accrues both loan and futures on a quarter year (0.25); every amount is derived from rates here.
+N_loan, tau_q, spread = 100e6, 0.25, 0.02
+contract_face, n_contracts = 1e6, 100
+per_bp = contract_face * 1e-4 * tau_q  # $ per basis point per contract
+quote0 = 99.990
+R_lock = (100 - quote0) / 100  # reference rate implied by the quote
+
+
+def hedge(settle, tau_loan=tau_q, n=n_contracts):
+    R = (100 - settle) / 100
+    interest = N_loan * tau_loan * (R + spread)
+    fut_pnl = (
+        n * per_bp * (quote0 - settle) * 100
+    )  # short futures gain when the quote falls (in bp)
+    return R, interest, fut_pnl, interest - fut_pnl
+
+
 ok(
-    "Hull Ex. 6.3: futures fall 79 bp -> gain 197,500 (Hull's text subtracts 197,000, a slip); net 502,500 = 2.01%",
-    close(gain, 197500, 1e-6)
-    and close(700000 - gain, 502500, 1e-6)
-    and close(0.25 * 1e8 * 0.0201, 502500, 1e-6),
+    "contract value per bp: 1m x 0.0001 x 0.25 = $25; 100 contracts match 100m of quarter-year accrual",
+    close(per_bp, 25.0, 1e-12) and close(n_contracts * contract_face, N_loan, 1e-6),
 )
-loss = 100 * 25 * (100.400 - 99.990) * 100
 ok(
-    "Hull's negative-rate case: 41 bp loss is 102,500 (printed 102,250); 400,000 + 102,500 = 502,500 again",
-    close(loss, 102500, 1e-6) and close(400000 + loss, 502500, 1e-6),
+    "quote 99.990 implies a reference rate of 0.01%; adding the 200 bp spread locks 2.01%",
+    close(R_lock, 0.0001, 1e-12) and close(R_lock + spread, 0.0201, 1e-12),
+)
+R_up, int_up, pnl_up, net_up = hedge(99.200)
+ok(
+    "settles 99.200 (SOFR 0.80%): loan pays 2.80% = 700,000; futures gain 79 bp = 197,500; net 502,500 = 2.01%",
+    close(R_up, 0.008, 1e-12)
+    and close(int_up, 700000, 1e-6)
+    and close(pnl_up, 197500, 1e-6)
+    and close(net_up, 502500, 1e-6)
+    and close(net_up / (N_loan * tau_q), 0.0201, 1e-12),
+)
+R_dn, int_dn, pnl_dn, net_dn = hedge(100.400)
+ok(
+    "settles 100.400 (SOFR -0.40%): loan pays 1.60% = 400,000; futures lose 41 bp = 102,500; net 502,500 again",
+    close(R_dn, -0.004, 1e-12)
+    and close(int_dn, 400000, 1e-6)
+    and close(pnl_dn, -102500, 1e-6)
+    and close(net_dn, 502500, 1e-6),
+)
+ok(
+    "Hull's printed 197,000 and 102,250 differ from the derived 197,500 and 102,500; printed total 502,250 is a slip",
+    not close(pnl_up, 197000, 1) and not close(-pnl_dn, 102250, 1) and not close(net_dn, 502250, 1),
+)
+sweep = [hedge(s)[3] for s in np.linspace(97.0, 101.5, 19)]
+ok(
+    "for any settlement between 97.0 and 101.5 the net cost is 502,500: N x 0.25 x (0.01% + 2%)",
+    np.allclose(sweep, N_loan * tau_q * (R_lock + spread), atol=1e-6),
+)
+# With a loan accrual different from the futures' fixed 0.25 (e.g. a 92-day act/360 period), 100 contracts leave a
+# residual that moves with SOFR; scaling to 100 x (92/360)/0.25 = 102.2 contracts restores the lock.
+t92 = 92 / 360
+res = [hedge(s, t92)[3] for s in (99.2, 100.4)]
+res_scaled = [hedge(s, t92, n_contracts * t92 / tau_q)[3] for s in (99.2, 100.4)]
+ok(
+    "92-day loan: 100 contracts leave the net cost rate-dependent; 102.2 contracts make it constant again",
+    abs(res[0] - res[1]) > 1000 and close(res_scaled[0], res_scaled[1], 1e-6),
 )
 # Conversion factors (6% s.a., maturities rounded to quarters)
 cf1 = (sum(5 / 1.03**i for i in range(1, 41)) + 100 / 1.03**40) / 100
@@ -396,9 +478,106 @@ ok(
     and abs(fix_val / 1e6 - 13.8606) < 5e-4
     and abs(v_eq / 1e6 - 5.2036) < 5e-4,
 )
+# The next equity payment N(E_next/E_reset - 1) is replicated by holding N E_t/E_reset of the total-return index and
+# owing N at the payment date: PV = N(E_t/E_reset - P(t, T_next)). Later payments, each N(E_k/E_(k-1) - 1), are worth
+# N(P_(k-1) - P_k) and telescope to N(P_next - P_n); the whole leg is N(E_t/E_reset - P_n).
+P_next = df_t[0]
+next_eq = 100e6 * (E_rel - P_next)
+later_eq = 100e6 * (P_next - df_t[-1])
+hull_778 = 100e6 * (E_rel - 1)  # the printed expression L(E - E0)/E0
 ok(
-    "immediately after a reset (E/E_reset = 1) on an unchanged curve, the equity-for-floating version is worth zero",
-    close(100e6 * (1 - df[0]) - 100e6 * (fwd[0]) * df[0], 0, 1e-6),
+    "next equity payment PV 100m x (1.06 - e^(-0.02)) = 7.980133m; later payments 11.084044m; sum = equity leg",
+    abs(next_eq / 1e6 - 7.980133) < 5e-7
+    and abs(later_eq / 1e6 - 11.084044) < 5e-7
+    and close(next_eq + later_eq, eq_val, 1e-6),
+)
+ok(
+    "N(E/E0 - 1) = 6.000m undervalues the next payment by N(1 - P) = 1.980m; it is right only as t -> T_next",
+    close(next_eq - hull_778, 100e6 * (1 - P_next), 1e-6)
+    and abs((next_eq - hull_778) / 1e6 - 1.980133) < 5e-7,
+)
+# Payment-date limits: as t -> T_next, P -> 1 and the PV becomes the payment itself; just after a reset, E = E_reset
+# and the next payment is worth N(1 - P), not zero.
+
+
+def next_eq_pv(e_rel, tau_next, rate=0.04):
+    return 100e6 * (e_rel - math.exp(-rate * tau_next))
+
+
+ok(
+    "limits: one second before payment the PV is the payment N(E/E0 - 1); just after a reset (E = E0, a year to\n"
+    "      go) the next equity payment is worth N(1 - e^-0.04) = 3.921056m, not zero",
+    abs(next_eq_pv(E_rel, 1 / 31_536_000) - hull_778) < 1.0
+    and abs(next_eq_pv(1.0, 1.0) / 1e6 - 3.921056) < 5e-7,
+)
+# Equity-for-SOFR: the floating payment compounds overnight SOFR over the period; A_t = 1.019 is the realised
+# compounded return since the reset (1.900%). Investing A_t N in overnight deposits until T_next and owing N
+# replicates it, so its PV is N(A_t - P); later floating payments are worth N(P_(k-1) - P_k), the same as the later
+# equity payments.
+A_t = 1.019
+next_fl = 100e6 * (A_t - P_next)
+fl_leg = next_fl + 100e6 * (P_next - df_t[-1])
+ok(
+    "equity-for-SOFR: next floating payment 3.880133m, floating leg 14.964176m, receive-equity value 4.100m",
+    abs(next_fl / 1e6 - 3.880133) < 5e-7
+    and abs(fl_leg / 1e6 - 14.964176) < 5e-7
+    and close(eq_val - fl_leg, 100e6 * (E_rel - A_t), 1e-6)
+    and abs((eq_val - fl_leg) / 1e6 - 4.100) < 1e-9,
+)
+
+
+def legs(e_rel, a_on, dfs):
+    """Equity and compounded-overnight floating legs, per unit notional, from payment-date discount factors."""
+    later = sum(dfs[k - 1] - dfs[k] for k in range(1, len(dfs)))
+    return (e_rel - dfs[0]) + later, (a_on - dfs[0]) + later
+
+
+at_reset = [legs(1.0, 1.0, d_) for d_ in (df, df_t, np.exp(-0.06 * np.arange(1, 5)))]
+ok(
+    "immediately after a reset (E/E_reset = 1, A = 1) the equity-for-SOFR swap is worth zero on three curves,\n"
+    "      although each leg alone is worth 1 - P_n",
+    all(close(e_ - f_, 0, 1e-15) and e_ > 0 for e_, f_ in at_reset),
+)
+# Independent check by simulation, not replication: Vasicek short rate (kappa 0.5, theta 4%, sigma 1%, r_t 4%) and a
+# total-return index with 20% volatility correlated 0.3 with rates, daily steps over the half year to T_next. The
+# simulated PV of the next equity payment and of the compounded-overnight floating payment should match the formulas
+# with the model's own P(t, T_next), whatever the rate dynamics.
+rng_eq = np.random.default_rng(20261018)
+n_paths, n_steps, h_t = 40000, 126, 0.5
+dt_e = h_t / n_steps
+kap, th, sg_r, sg_e, rho = 0.5, 0.04, 0.01, 0.20, 0.3
+r_path = np.full(n_paths, 0.04)
+log_E = np.zeros(n_paths)
+int_r = np.zeros(n_paths)
+growth_on = np.ones(n_paths)  # overnight compounding, simple daily interest
+for _ in range(n_steps):
+    z1 = rng_eq.standard_normal(n_paths)
+    z2 = rho * z1 + math.sqrt(1 - rho**2) * rng_eq.standard_normal(n_paths)
+    int_r += r_path * dt_e
+    growth_on *= 1 + r_path * dt_e
+    log_E += (r_path - 0.5 * sg_e**2) * dt_e + sg_e * math.sqrt(dt_e) * z2
+    r_path = r_path + kap * (th - r_path) * dt_e + sg_r * math.sqrt(dt_e) * z1
+disc = np.exp(-int_r)
+B_v = (1 - math.exp(-kap * h_t)) / kap
+P_vas = math.exp(
+    (th - sg_r**2 / (2 * kap**2)) * (B_v - h_t) - sg_r**2 * B_v**2 / (4 * kap) - B_v * 0.04
+)
+pay_eq = disc * (E_rel * np.exp(log_E) - 1.0)
+pay_fl = disc * (A_t * growth_on - 1.0)
+se_eq = pay_eq.std() / math.sqrt(n_paths)
+print(
+    f"    simulated next equity PV {pay_eq.mean():.6f} (se {se_eq:.6f}); formula {E_rel - P_vas:.6f}; "
+    f"N(E/E0-1) form {E_rel - 1:.6f}; floating {pay_fl.mean():.6f} vs {A_t - P_vas:.6f}"
+)
+ok(
+    "simulation: next equity payment PV matches E/E0 - P(t,T) within 4 standard errors and rejects E/E0 - 1",
+    abs(pay_eq.mean() - (E_rel - P_vas)) < 4 * se_eq
+    and abs(pay_eq.mean() - (E_rel - 1)) > 20 * se_eq,
+)
+se_fl = pay_fl.std() / math.sqrt(n_paths)
+ok(
+    "simulation: compounded-overnight floating payment PV matches A_t - P(t,T) within 4 standard errors",
+    abs(pay_fl.mean() - (A_t - P_vas)) < 4 * se_fl + 5e-6,
 )
 
 print()

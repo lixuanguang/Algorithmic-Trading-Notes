@@ -49,9 +49,9 @@ In `forward-commitment-valuation.tex` (topic `forward-commitment-valuation`):
 - `meth:forward-price-value-lifecycle`: price against value at inception, during the life and at expiry.
 - `res:forward-futures-price-difference`: equality with known rates and the correlation argument, with a two-period tree (Hull sec. 5.8).
 - `def:swaps-as-forward-strips`: swaps as strips of off-market forwards and as bond packages; swap price against value.
-- `meth:equity-forward-futures-valuation`: dividends, yields, index futures and the value of an existing contract.
-- `meth:rate-bond-forward-valuation`: FRAs and their uses, SOFR futures, bond forwards, conversion factors and the cheapest to deliver.
-- `meth:swap-valuation-replication`: interest-rate, currency and equity swaps by replication (Hull chaps. 7 and 34; Handbook chap. 64).
+- `meth:equity-forward-futures-valuation`: dividends, yields, index futures and the value of an existing contract. Corrected 2026-10-18 (PR #24 pass): the discrete-dividend replication borrows the full spot and repays the loan with each dividend (debt 101.020320 at maturity).
+- `meth:rate-bond-forward-valuation`: FRAs and their uses, SOFR futures, bond forwards, conversion factors and the cheapest to deliver. Corrected 2026-10-18 (PR #24 pass): Hull's Example 6.3 restated with its SOFR + 200 bp borrowing and quarter-year accrual, the hedge derived from rates.
+- `meth:swap-valuation-replication`: interest-rate, currency and equity swaps by replication (Hull chaps. 7 and 34; Handbook chap. 64). Corrected 2026-10-18 (PR #24 pass): the next equity payment is worth N(E_t/E_0 - P(t,T_next)), 7.980133m in the example, separated from the whole equity leg and the net value; Hull's p. 778 expression and his Technical Note 19 are compared.
 
 All partly checked 2026-10-18, draft. Examples in `notes/artefacts/forward-swap-valuation/forward-swap-checks.py`; human review is outstanding. Coverage records are editorial, not study. `def:derivative-contracts` and `res:cost-of-carry-forward-price` are extended by links, not repeated.
 

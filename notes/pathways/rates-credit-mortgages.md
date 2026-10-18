@@ -51,14 +51,14 @@ In `bond-instruments-markets.tex` (topic `bond-instrument-features`):
 - `rule:bond-issuance-legal-tax`: registration and exemptions, shelf, Rule 144A, tax treatment of municipal and Treasury interest, T+1 settlement and the EU prospectus exemptions, each dated.
 - `def:bond-market-segments-trading`: segments, participants, primary methods and OTC secondary trading against equity markets (chaps. 1 and 7; Bessembinder, Spatt and Venkataraman).
 - `meth:corporate-funding-ig-hy`: investment-grade against high-yield funding (chap. 10).
-- `def:government-agency-supranational-funding`: sovereign, local, agency and supranational funding and its contrast with corporate issuance (chaps. 1, 7, 8, 9 and 16; IBRD factsheet FY2026).
+- `def:government-agency-supranational-funding`: sovereign, local, agency and supranational funding and its contrast with corporate issuance (chaps. 1, 7, 8, 9 and 16; IBRD factsheet FY2026). Corrected 2026-10-18 (PR #24 pass): the Treasury noncompetitive limit is $10 million from 8 August 2022 (31 CFR 356.12 and 356.22; 87 FR 40438), not the Handbook's $5 million; the October 2026 amendment leaves it unchanged.
 
 In `bond-pricing-yields.tex` (topic `bond-pricing-yields`):
 
 - `meth:bond-price-from-yield`: full, clean and accrued prices on and between coupon dates; street against Treasury simple-stub pricing (31 CFR 356 App. B); price-yield relations.
 - `meth:matrix-pricing`: IFRS 13 B7 and 79(a), with an interpolated example.
 - `def:bond-yield-spread-measures`: compounding conversions, current yield, yields to call and worst, G-, I- and Z-spreads on one curve.
-- `meth:floating-money-market-yields`: quoted and discount margins, Treasury FRN and bill formulas, money-market conversions.
+- `meth:floating-money-market-yields`: quoted and discount margins, Treasury FRN and bill formulas, money-market conversions. Corrected 2026-10-18 (PR #24 pass): the SOFR FRN example has a dated schedule and business-day SOFR compounding with calendar-day weights (New York Fed methodology); discount margin 96.38 bp.
 
 In `term-structure-returns.tex` (topic `term-structure`):
 
@@ -73,7 +73,7 @@ In `interest-rate-risk.tex` (topic `interest-rate-risk`):
 - `meth:bond-return-decomposition`: coupons, interest on interest, pull to par and rate effect; the Macaulay-duration horizon.
 - `meth:yield-duration-pvbp`: Macaulay, modified, approximate and money duration, PVBP and their drivers.
 - `meth:convexity-portfolio-duration`: convexity and its scaling, the duration-convexity approximation, portfolio measures and their limits.
-- `meth:curve-based-empirical-duration`: effective duration and convexity, key-rate durations, a callable bond and empirical duration.
+- `meth:curve-based-empirical-duration`: effective duration and convexity, key-rate durations, a callable bond and empirical duration. Corrected 2026-10-18 (PR #24 pass): curve and yield measures of an option-free bond are equal only on a flat curve (or for one cash flow); a sloped-curve counterexample gives 10.2186 against 11.2131.
 
 All partly checked 2026-10-18, draft. Examples in `notes/artefacts/bond-valuation-risk/bond-valuation-checks.py` and `notes/artefacts/term-structure-dynamics/term-structure-checks.py`; human review is outstanding. Coverage records are editorial, not study. The existing `def:interest-rate-measures`, `conv:us-rate-quotation`, `mod:forward-rates-fra`, `mod:duration-convexity`, `meth:curve-trades-carry-rolldown`, `def:interest-rate-swaps` and `mod:multi-curve-fra-swap-valuation` are linked, not repeated; the single-curve examples are labelled and the multi-curve entry keeps the projection and discounting distinction.
 

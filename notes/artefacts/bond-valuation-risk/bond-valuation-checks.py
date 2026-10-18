@@ -11,6 +11,11 @@ effective duration and convexity from printed lattice prices). Everything else i
 inputs: a 5% 30/360 corporate bond settling on 21 October 2026, a callable variant, flat or stated curves, and a
 synthetic monthly series for empirical duration (fixed seed).
 
+Corrections pass (2026-10-18, audit of 88bd29e): the SOFR FRN uses an explicit dated schedule with SOFR compounded on
+business days with calendar-day weights (the New York Fed's SOFR Averages and Index arithmetic, whose published Index
+example is reproduced), replacing simple interest on 91.25-day quarters; and part 9 adds a sloped-curve counterexample
+in which parallel-zero-curve and yield duration and convexity differ, with a flat-curve control.
+
 Conventions are stated beside each block: semiannual coupons, bond-equivalent (doubled) yields unless stated, prices
 per 100 of par, durations in years, PVBP per 100 of par for one basis point.
 
@@ -20,7 +25,8 @@ Run: uv run python bond-valuation-checks.py   (numpy, scipy). Exits 1 on failure
 # standard library imports
 import math
 import sys
-from datetime import date
+from datetime import date, timedelta
+from itertools import pairwise
 
 # third party library imports
 import numpy as np
@@ -339,21 +345,160 @@ ok(
     "at par the discount margin equals the quoted margin",
     abs(brentq(lambda m: floater_price(m) - 100, -0.05, 0.05) - 0.008) < 1e-10,
 )
-# Original SOFR FRN: 3-year, quarterly, compounded SOFR + 75 bp (act/360, 91.25-day periods), SOFR assumed flat 4.10%,
-# price 99.40 on a reset date.
-tau = 91.25 / 360
+# Original SOFR FRN, explicit schedule. Issued (and priced) 21 October 2026, matures 21 October 2029; quarterly
+# periods on the 21st of Jan/Apr/Jul/Oct, adjusted modified-following to business days. Coupon: SOFR compounded in
+# arrears over the period with no lookback or observation shift (a simplification; issued notes usually use a 2-5
+# business-day lookback), plus a 75 bp margin, act/360. Compounding follows the New York Fed's SOFR Averages/Index
+# arithmetic: one term per business day, (1 + SOFR_i n_i/360), n_i the calendar days to the next business day, so a
+# Friday rate applies for 3 days in one simple-interest term. Business days here are weekdays other than the eleven
+# Federal Reserve holidays by rule (Sunday holidays move to Monday; Saturday holidays are not observed), an
+# illustrative calendar: SOFR is not published for days SIFMA recommends a full closure, which can differ. Flat SOFR at
+# 4.10%. Discounting: each period at its projected compounded growth plus the discount margin, simple act/360, so the
+# note is at par on a reset date when the discount margin equals the quoted margin.
 
 
-def frn_price(dm, ref=0.041, qm=0.0075, n=12):
-    cf = 100 * (ref + qm) * tau
-    return sum((cf + (100 if k == n else 0)) / (1 + (ref + dm) * tau) ** k for k in range(1, n + 1))
+def nth_weekday(y, m, wd, n):
+    d0 = date(y, m, 1)
+    d0 += timedelta((wd - d0.weekday()) % 7)
+    return d0 + timedelta(7 * (n - 1))
 
 
-dm_s = brentq(lambda m: frn_price(m) - 99.40, -0.05, 0.05)
+def last_weekday(y, m, wd):
+    d0 = date(y + (m == 12), m % 12 + 1, 1) - timedelta(1)
+    return d0 - timedelta((d0.weekday() - wd) % 7)
+
+
+def fed_holidays(y):
+    fixed = [date(y, 1, 1), date(y, 6, 19), date(y, 7, 4), date(y, 11, 11), date(y, 12, 25)]
+    fixed = [d0 + timedelta(1) if d0.weekday() == 6 else d0 for d0 in fixed]
+    rules = [
+        nth_weekday(y, 1, 0, 3),  # Martin Luther King Jr. Day
+        nth_weekday(y, 2, 0, 3),  # Washington's Birthday
+        last_weekday(y, 5, 0),  # Memorial Day
+        nth_weekday(y, 9, 0, 1),  # Labor Day
+        nth_weekday(y, 10, 0, 2),  # Columbus Day
+        nth_weekday(y, 11, 3, 4),  # Thanksgiving
+    ]
+    return {d0 for d0 in fixed + rules if d0.weekday() < 5}
+
+
+HOL = set().union(*(fed_holidays(y) for y in range(2026, 2031)))
+
+
+def is_bd(d0):
+    return d0.weekday() < 5 and d0 not in HOL
+
+
+def mod_following(d0):
+    d1 = d0
+    while not is_bd(d1):
+        d1 += timedelta(1)
+    if d1.month != d0.month:
+        d1 = d0
+        while not is_bd(d1):
+            d1 -= timedelta(1)
+    return d1
+
+
+def period_growth(start, end, rate_of):
+    """Product of (1 + r_i n_i/360) over business days start <= i < end (SOFR Averages arithmetic)."""
+    g, n_sum, d0 = 1.0, 0, start
+    while d0 < end:
+        nxt = d0 + timedelta(1)
+        while nxt < end and not is_bd(nxt):
+            nxt += timedelta(1)
+        n_i = (nxt - d0).days
+        g *= 1 + rate_of(d0) * n_i / 360
+        n_sum += n_i
+        d0 = nxt
+    return g, n_sum
+
+
+unadj = [date(2026 + (10 + 3 * k - 1) // 12, (10 + 3 * k - 1) % 12 + 1, 21) for k in range(13)]
+sched = [mod_following(d0) for d0 in unadj]
+sofr_flat, qm_s = 0.041, 0.0075
+periods = []
+for a, b in pairwise(sched):
+    g, n_sum = period_growth(a, b, lambda _d: sofr_flat)
+    periods.append((a, b, (b - a).days, g, n_sum))
+
+
+def frn_price(dm, qm=qm_s):
+    pv, dfac = 0.0, 1.0
+    for k, (_, _, d_k, g_k, _) in enumerate(periods):
+        dfac /= g_k + dm * d_k / 360
+        cpn = 100 * (g_k - 1 + qm * d_k / 360)
+        pv += (cpn + (100 if k == len(periods) - 1 else 0)) * dfac
+    return pv
+
+
+days = [p[2] for p in periods]
 ok(
-    "SOFR + 75 bp FRN at 99.40: discount margin 96.4 bp, above the quoted margin because it trades below par",
-    abs(dm_s - 0.009641) < 5e-6,
-    f"{1e4 * dm_s:.2f} bp",
+    "schedule: 12 periods of 90-94 days, 1,097 in all (maturity rolls to Monday 22 October 2029); each period's\n"
+    "      weights n_i sum to its calendar days",
+    len(periods) == 12
+    and sum(days) == (sched[-1] - sched[0]).days == 1097
+    and all(p[4] == p[2] for p in periods),
+    f"days {days}",
+)
+# Independent accrual: a daily SOFR Index (calendar-day loop, updated on business days by 1 + r n/360) compared with
+# the business-day product; and the New York Fed's published Index example, reproduced from its own rates.
+idx, d0, index_at = 1.0, sched[0], {}
+while d0 <= sched[-1]:
+    index_at[d0] = idx
+    if is_bd(d0):
+        nxt = d0 + timedelta(1)
+        while not is_bd(nxt):
+            nxt += timedelta(1)
+        idx *= 1 + sofr_flat * (nxt - d0).days / 360
+    d0 += timedelta(1)
+ok(
+    "coupon accrual: index ratios I(end)/I(start) equal each period's business-day compounding product",
+    all(abs(index_at[b] / index_at[a] - g) < 1e-14 for a, b, _, g, _ in periods),
+)
+ny_fed = 1.0
+for rr, nn in [(0.018, 1), (0.0183, 1), (0.0174, 1), (0.0175, 1), (0.0175, 3)]:
+    ny_fed *= 1 + rr * nn / 360
+ok(
+    "New York Fed SOFR Index example (2-6 April 2018, Friday rate for 3 days): 1.00034365",
+    round(ny_fed, 8) == 1.00034365,
+)
+g1, d1 = periods[0][3], periods[0][2]
+weekend_wrong = (1 + sofr_flat / 360) ** d1
+ok(
+    "first period (92 days): growth 1.010532, an annualised compounded rate of 4.1211% against 4.10% simple;\n"
+    "      compounding weekends as separate daily observations would overstate it",
+    abs(g1 - 1.0105316) < 5e-7
+    and abs((g1 - 1) * 360 / d1 - 0.041211) < 5e-6
+    and weekend_wrong > g1,
+    f"{(g1 - 1) * 360 / d1:.6%}; daily-on-weekends {(weekend_wrong - 1) * 360 / d1:.6%}",
+)
+cpn1 = 100 * (g1 - 1 + qm_s * d1 / 360)
+ok(
+    "first coupon per 100: compounded SOFR 1.053160 + margin 0.191667 = 1.244827",
+    abs(100 * (g1 - 1) - 1.053160) < 5e-7 and abs(cpn1 - 1.244827) < 5e-7,
+)
+ok(
+    "round trip: at a discount margin equal to the 75 bp quoted margin the FRN prices at exactly 100 on a reset date",
+    abs(frn_price(qm_s) - 100) < 1e-10,
+)
+dm_s = brentq(lambda m: frn_price(m) - 99.40, -0.05, 0.05, xtol=1e-14)
+ok(
+    "SOFR + 75 bp FRN at 99.40: discount margin 96.38 bp, above the quoted margin because it trades below par;\n"
+    "      repricing at that margin returns 99.40",
+    abs(dm_s - 0.0096381) < 5e-8 and abs(frn_price(dm_s) - 99.40) < 1e-9,
+    f"{1e4 * dm_s:.3f} bp",
+)
+# Independent identity: with this discounting, P = 100 + 100 (qm - dm) sum_k (d_k/360) D_k, the margin annuity.
+dfs_k, dfac = [], 1.0
+for _, _, d_k, g_k, _ in periods:
+    dfac /= g_k + dm_s * d_k / 360
+    dfs_k.append(dfac)
+ann = sum(d_k / 360 * D_k for d_k, D_k in zip(days, dfs_k))
+ok(
+    "identity: 100 + 100 (0.75% - DM) x margin annuity 2.8062 reproduces 99.40",
+    abs(100 + 100 * (qm_s - dm_s) * ann - 99.40) < 1e-9 and abs(ann - 2.8062) < 5e-5,
+    f"annuity {ann:.6f}",
 )
 # Money-market yields: a 182-day bill quoted at a 4.00% discount
 pb182 = 100 * (1 - 0.04 * 182 / 360)
@@ -659,6 +804,85 @@ dP_full = pv_curve(z0 + shock) - P_c
 ok(
     "a steepening: key-rate durations give -1.7477 against -1.7302 by full repricing (the 1% gap is convexity)",
     abs(dP_krd + 1.74765) < 5e-5 and abs(dP_full + 1.73019) < 5e-5,
+)
+# Curve-based against yield-based duration for an option-free bond. A parallel shift of the zero curve and a shift of
+# the bond's own yield are different shocks; with one compounding convention (continuous) for both, they give the same
+# duration and convexity only when the curve is flat. Counterexample: 20-year annual 10% bond, face 100, zero curve
+# z(t) = 1% + 0.3% t (continuous); flat-curve control at the bond's own yield.
+t20 = np.arange(1, 21, dtype=float)
+cf20 = np.full(20, 10.0)
+cf20[-1] += 100
+
+
+def pv_zero_shift(s, zfun):
+    return float(np.sum(cf20 * np.exp(-(zfun(t20) + s) * t20)))
+
+
+def pv_yield(y):
+    return float(np.sum(cf20 * np.exp(-y * t20)))
+
+
+def dur_conv(f, x0, h_d=1e-5, h_c=1e-4):
+    p0 = f(x0)
+    dur = (f(x0 - h_d) - f(x0 + h_d)) / (2 * p0 * h_d)
+    return p0, dur, (f(x0 - h_c) + f(x0 + h_c) - 2 * p0) / (p0 * h_c * h_c)
+
+
+def z_slope(t):
+    return 0.01 + 0.003 * t
+
+
+P20, Dz, Cz = dur_conv(lambda s: pv_zero_shift(s, z_slope), 0.0)
+y20 = brentq(lambda y: pv_yield(y) - P20, -0.5, 0.5)
+_, Dyld, Cyld = dur_conv(pv_yield, y20)
+w_z = cf20 * np.exp(-z_slope(t20) * t20) / P20  # analytic weights: zero-rate discounting
+w_y = cf20 * np.exp(-y20 * t20) / P20  # yield discounting
+print(
+    f"    20y 10% bond on z(t)=1%+0.3%t: price {P20:.6f}, yield {y20:.6%}; parallel-zero D {Dz:.6f} C {Cz:.3f};"
+    f" yield D {Dyld:.6f} C {Cyld:.3f}"
+)
+ok(
+    "sloped curve: price 152.050048; parallel-zero-curve duration 10.218587 against yield duration 11.213091",
+    abs(P20 - 152.050048) < 5e-7 and abs(Dz - 10.218587) < 5e-6 and abs(Dyld - 11.213091) < 5e-6,
+)
+ok(
+    "the finite differences match the analytic weighted times: sum t w_z(t) and sum t w_y(t) (both weights sum to 1)",
+    abs(t20 @ w_z - Dz) < 1e-6 and abs(t20 @ w_y - Dyld) < 1e-6 and abs(w_z.sum() - 1) < 1e-12,
+)
+ok(
+    "convexity differs too: 146.46 by the zero-curve shift, 172.06 by the yield shift (sum t^2 w)",
+    abs(Cz - 146.458) < 5e-3
+    and abs(Cyld - 172.057) < 5e-3
+    and abs((t20**2) @ w_z - Cz) < 1e-3
+    and abs((t20**2) @ w_y - Cyld) < 1e-3,
+)
+up_z = pv_zero_shift(0.01, z_slope) / P20 - 1
+up_y = pv_yield(y20 + 0.01) / P20 - 1
+y_after = brentq(lambda y: pv_yield(y) - pv_zero_shift(0.01, z_slope), -0.5, 0.5)
+ok(
+    "full repricing for +100 bp: -9.525% for the zero-curve shift, -10.400% for the yield shift; the parallel zero\n"
+    "      shift moves this bond's yield by only 91.0 bp",
+    abs(up_z + 0.09525) < 5e-6
+    and abs(up_y + 0.10400) < 5e-6
+    and abs((y_after - y20) - 0.009098) < 5e-7,
+)
+Pf, Dzf, Czf = dur_conv(lambda s: pv_zero_shift(s, lambda t: np.full_like(t, y20)), 0.0)
+_, Dyf, Cyf = dur_conv(pv_yield, y20)
+ok(
+    "flat-curve control (all zero rates at the 5.4546% yield): same price, and the two durations and\n"
+    "      convexities coincide",
+    abs(Pf - P20) < 1e-9 and abs(Dzf - Dyf) < 1e-8 and abs(Czf - Cyf) < 1e-4,
+)
+zc_t = 20.0
+_, Dz0, Cz0 = dur_conv(lambda s: 100 * math.exp(-(z_slope(zc_t) + s) * zc_t), 0.0)
+y0c = z_slope(zc_t)
+_, Dy0, Cy0 = dur_conv(lambda y: 100 * math.exp(-y * zc_t), y0c)
+ok(
+    "single cash flow (20-year zero) on the same sloped curve: both durations are 20 and both convexities 400",
+    abs(Dz0 - 20) < 1e-6
+    and abs(Dy0 - 20) < 1e-6
+    and abs(Cz0 - 400) < 1e-3
+    and abs(Cy0 - 400) < 1e-3,
 )
 # Callable at 102 on the coupon date 2.5 years ahead (period 5), zero-volatility exercise: the issuer calls if the bond's
 # value at the call date, computed from today's (shifted) forward curve, exceeds the call price. This removes option

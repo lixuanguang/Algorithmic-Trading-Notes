@@ -1289,7 +1289,7 @@
   },
   "def:government-agency-supranational-funding": {
     "source": "compendium/rates-credit-mortgages/bond-instruments-markets.tex",
-    "review": "Verification: s7-fabozzifixed chap. 7, pp. 172--176; world-bank-ibrd-ida-factsheet-2026 pp. 1--2; wide-bsv-fi-survey pp. 1--5; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+    "review": "Verification: s7-fabozzifixed chap. 7, pp. 172--176; world-bank-ibrd-ida-factsheet-2026 pp. 1--2; wide-bsv-fi-survey pp. 1--5; locators in the entry text. cfr-31-356-auction-limits secs. 356.12(b)(1) and 356.22 (eCFR, 15 October 2026); fr-2022-13409 p. 40438; fr-2026-21069 pp. 65456-65457. Descriptive entry; no numerical check. Corrected 2026-10-18 (correction pass on PR #24): the noncompetitive limit is $10 million from 8 August 2022 (the Handbook's $5 million is the earlier rule); the 35 percent limit applies to competitive awards, net of reportable long positions. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
   },
   "meth:bond-price-from-yield": {
     "source": "compendium/rates-credit-mortgages/bond-pricing-yields.tex",
@@ -1305,7 +1305,7 @@
   },
   "meth:floating-money-market-yields": {
     "source": "compendium/rates-credit-mortgages/bond-pricing-yields.tex",
-    "review": "Verification: s7-fabozzifixed chap. 14, pp. 312--318; cfr-31-356-appendix-b sec. IV.A; cfr-31-356-appendix-b sec. VI.A; s7-fabozzifixed chap. 13, p. 301; cfr-31-356-appendix-b sec. VI.D; s7-fabozzifixed chap. 4, Exhibit 4-7, p. 86; cfr-31-356-appendix-b secs. VI.A, C and D; locators in the entry text. Checked by bond-valuation-checks.py parts 1 and 5 (Treasury bill and FRN formulas, the Handbook's discount margin, a SOFR+75 FRN, bill and CD money-market conversions). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: s7-fabozzifixed chap. 14, pp. 312--318; cfr-31-356-appendix-b sec. IV.A; cfr-31-356-appendix-b sec. VI.A; s7-fabozzifixed chap. 13, p. 301; cfr-31-356-appendix-b sec. VI.D; s7-fabozzifixed chap. 4, Exhibit 4-7, p. 86; cfr-31-356-appendix-b secs. VI.A, C and D; locators in the entry text. nyfed-sofr-averages-index. Checked by bond-valuation-checks.py parts 1 and 5 (Treasury bill and FRN formulas, the Handbook's discount margin, a dated SOFR+75 FRN with business-day compounding, the New York Fed Index example, accrual and round-trip checks, bill and CD money-market conversions). Corrected 2026-10-18 (correction pass on PR #24): simple interest on 91.25-day quarters replaced by an explicit schedule; discount margin 96.38 bp (was 96.4). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:spot-par-forward-curves": {
     "source": "compendium/rates-credit-mortgages/term-structure-returns.tex",
@@ -1341,7 +1341,7 @@
   },
   "meth:curve-based-empirical-duration": {
     "source": "compendium/rates-credit-mortgages/interest-rate-risk.tex",
-    "review": "Verification: s7-fabozzifixed chap. 5, pp. 117--118 and 128--135; locators in the entry text. Checked by bond-valuation-checks.py part 9 (effective duration and convexity on a zero curve, key-rate durations and a steepener, callable bond under a zero-volatility exercise rule, Handbook Exhibit 5-15, synthetic empirical duration with seed 20261018). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: s7-fabozzifixed chap. 5, pp. 117--118 and 128--135; locators in the entry text. Corrected 2026-10-18 (correction pass on PR #24): the unconditional claim that option-free curve and yield measures coincide removed; conditions for equality and a sloped-curve counterexample added. Checked by bond-valuation-checks.py part 9 (sloped-curve counterexample with flat-curve and single-cash-flow controls; effective duration and convexity on a zero curve, key-rate durations and a steepener, callable bond under a zero-volatility exercise rule, Handbook Exhibit 5-15, synthetic empirical duration with seed 20261018). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "def:derivative-markets-otc-exchange": {
     "source": "compendium/volatility-options/derivative-markets-uses.tex",
@@ -1377,14 +1377,14 @@
   },
   "meth:equity-forward-futures-valuation": {
     "source": "compendium/volatility-options/forward-commitment-valuation.tex",
-    "review": "Verification: s7-hulloptions chap. 5, secs. 5.5--5.6 and 5.9, pp. 130--132 and 135--137; locators in the entry text. Checked by forward-swap-checks.py part 3 (discrete dividends, replication, continuous yield, index futures). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: s7-hulloptions chap. 5, secs. 5.5--5.6 and 5.9, pp. 130--132 and 135--137; locators in the entry text. Checked by forward-swap-checks.py part 3 (discrete dividends, a dated cash-flow ledger of the replication, continuous yield, index futures). Corrected 2026-10-18 (correction pass on PR #24): the replication borrows the full spot and applies each dividend to the loan; the previous text borrowed S0 - I and left the purchase unfunded by I. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:rate-bond-forward-valuation": {
     "source": "compendium/volatility-options/forward-commitment-valuation.tex",
-    "review": "Verification: s7-hulloptions chap. 4, sec. 4.9, pp. 110--112; cbot-treasury-chapters-2026 Rule 18101.B; locators in the entry text. Checked by forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3, conversion factors, Examples 6.1-6.2, an original bond forward). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: s7-hulloptions chap. 4, sec. 4.9, pp. 110--112; cbot-treasury-chapters-2026 Rule 18101.B; locators in the entry text. Checked by forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3 derived from rates, spread, notional and accrual, conversion factors, Examples 6.1-6.2, an original bond forward). Corrected 2026-10-18 (correction pass on PR #24): Example 6.3's SOFR + 200 bp borrowing and quarter-year accrual restored; s7-hulloptions chap. 6, sec. 6.3, pp. 162-163 reread. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:swap-valuation-replication": {
     "source": "compendium/volatility-options/forward-commitment-valuation.tex",
-    "review": "Verification: s7-hulloptions chap. 7, sec. 7.6, pp. 183--185; s7-fabozzifixed chap. 64, pp. 1577--1578; locators in the entry text. Checked by forward-swap-checks.py part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed swap). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: s7-hulloptions chap. 7, sec. 7.6, pp. 183--185; s7-fabozzifixed chap. 64, pp. 1577--1578; locators in the entry text. s7-hulloptions chap. 34, sec. 34.4, pp. 777-778; hull-tn19. Checked by forward-swap-checks.py part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed and equity-for-SOFR swaps, reset-date limits, stochastic-rate simulation). Corrected 2026-10-18 (correction pass on PR #24): the next equity payment is worth N(E_t/E_0 - P(t,T_next)); Hull's p. 778 prints L(E - E_0)/E_0, which his Technical Note 19 does not support. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   }
 }

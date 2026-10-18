@@ -4076,3 +4076,18 @@ All 12 objectives are `covered`; this is editorial coverage, not mastery. Totals
 - Pratt, Tobin, Lintner, Merton (1972) and Chen-Roll-Ross were not read directly.
 - No empirical CAPM or factor test is run.
 - Human review is outstanding.
+
+## Correction pass on PR #22, 18 October 2026
+
+A fixes-only pass on `907e84b`. This is not study and not human review; plan Section 17 has the details.
+
+- `meth:efficient-frontier`: removed the claim that constrained solutions necessarily have zero weights. The entry now states that an unconstrained optimum meeting the limits stays optimal, that binding limits give boundary solutions, and that no single unrestricted formula covers active-set changes. Markowitz p. 87, n. 10 is reused. The added assertion confirms that the 5 and 6 percent long-only optima equal the strictly positive unconstrained weights, and that 7.5 percent does not.
+- `meth:required-return-on-equity`: a historical premium with the current 10-year yield is described as a legitimate CAPM estimate with its own assumption and estimation error:
+  - 13.38 percent arithmetic and 11.60 geometric; two-standard-error band 8.54 to 18.21.
+  - The mechanical mismatch is now described separately: an implied premium paired with a rate other than its own.
+  - Damodaran's corporate finance project notes (cfprojectsumm.htm, SHA-256 6c0e6d5a...0c76, undated; sec. V.a "Riskfree Rates" and V.b "Risk Premiums") were read on 2026-10-18 and are registered as `corporate-finance-project-notes`. No numbers are taken from them because the page is out of date.
+  - Fama and French's 2.4-point standard error is now attributed to the premium over bills.
+- `def:asset-class-characteristics`: one sentence now names both implied and historical premia.
+- CI moved to merged pull requests into `main`, checking out `merge_commit_sha`. This was validated locally by `check-yaml` and an event simulation; a live merge event is unverified.
+- The earlier "CI pending" statement is reconciled: run 39119458178 passed on `907e84b` only.
+- Coverage unchanged: 41 of 424 objectives.

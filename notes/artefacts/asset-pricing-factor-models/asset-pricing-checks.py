@@ -207,6 +207,18 @@ ok(
     "with the 1928-2025 arithmetic stock-T.bond premium of 7.03 instead: k_e 13.38 (a historical, not implied, premium)",
     close(RF + beta_f * 7.0323, 13.377, 1e-3),
 )
+# Historical-premium alternatives (correction pass, 2026-10-18). The 1928-2025 premium statistics are computed from
+# the retained CSV by ../portfolio-risk-return/portfolio-choice-checks.py: arithmetic 7.0323 percent with standard
+# error 2.1028 (years treated as independent), and geometric 10.02 - 4.53 = 5.4831 percent.
+arith_p, se_p, geo_p = 7.032289, 2.102764, 5.483129
+ok(
+    "historical premium with the current 10-year yield: arithmetic 13.38, geometric 11.60; +/- 2 s.e. band 8.54 to 18.21",
+    close(RF + beta_f * arith_p, 13.377133, 1e-5)
+    and close(RF + beta_f * geo_p, 11.595598, 1e-5)
+    and close(RF + beta_f * (arith_p - 2 * se_p), 8.540776, 1e-5)
+    and close(RF + beta_f * (arith_p + 2 * se_p), 18.213489, 1e-5)
+    and close(RF + beta_f * arith_p - (RF + beta_f * geo_p), 1.7815, 1e-3),
+)
 ok(
     "beta interval 0.83-1.68 from part 1 moves k_e from 8.78 to 12.34 at the 4.20 premium",
     close(RF + 0.83091 * ERP, 8.7798, 1e-3) and close(RF + 1.67879 * ERP, 12.3409, 1e-3),

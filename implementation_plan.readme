@@ -13,8 +13,10 @@ portfolio moments and diversification slice (Section 14). The guide became a
 committed copy (Section 15). The portfolio choice and asset pricing batch
 (Section 16) completed the remaining `topic:portfolio-risk-return` objectives
 and all eight `topic:asset-pricing-factor-models` objectives, including the two
-analysis-level ones, after two audit corrections. No next content slice has
-been selected. Not started: the remaining `topic:linear-regression` objectives
+analysis-level ones, after two audit corrections; a fixes-only correction
+pass followed (Section 17), which also moved remote CI to merged pull requests.
+Standing batch preference: future content-expansion prompts target 30 newly
+completed objectives (Section 17.4). No next content slice has been selected. Not started: the remaining `topic:linear-regression` objectives
 (multiple regression, misspecification, extensions); the rest of Batch 2; and
 the rest of Batches 3-6.
 Editorial coverage only: nothing here records or implies learner mastery.
@@ -2173,4 +2175,101 @@ All 12 objectives are covered (editorial coverage, not mastery).
   directly.
 - `outline:0242f4b7ba07:m040:b07` (active risk) and the Sharpe, Treynor, M2 and
   alpha item `m088:b09` belong to other objectives and are not reviewed.
-- Remote CI and human review are pending at the time of writing.
+- Human review is outstanding. Remote CI was pending when this section was
+  written; it then ran on commit `907e84b` (run 39119458178, label-triggered
+  under the workflow of that time) and passed `make source-check`. That run
+  validates `907e84b` only, not later commits (Section 17).
+
+## 17. Correction pass on PR #22 (executed 2026-10-18)
+
+A fixes-only pass on draft PR #22 at `907e84b`. No objective was added and no
+coverage status changed.
+
+### 17.1 Content corrections
+
+1. **Constrained frontier** (`meth:efficient-frontier`). The claim that
+   long-only or inequality-constrained solutions necessarily have zero weights
+   was wrong and has been removed. The entry now says:
+   - An unconstrained optimum that already satisfies the added limits remains
+     optimal.
+   - Binding limits give boundary solutions and move the frontier right.
+   - Each active set has its own closed form, so no single unrestricted formula
+     covers changes of the active set.
+
+   The existing example illustrates both cases. At 5 and 6 percent every weight
+   is strictly positive and the long-only optimum is the same portfolio; at
+   7.5 percent the long-only optimum has a zero bond weight (s.d. 15.49 against
+   15.25). One focused assertion in `portfolio-choice-checks.py` checks this.
+2. **Historical premium** (`meth:required-return-on-equity`, plus one sentence in
+   `def:asset-class-characteristics`). Adding a historical premium to the current
+   10-year yield is no longer called a mismatch: it is a legitimate CAPM estimate.
+   - The entry keeps the dated 10.12 percent implied-premium example. It now
+     gives 13.38 percent with the arithmetic and 11.60 percent with the
+     geometric (5.48 percent) 1928-2025 premium over 10-year bonds.
+   - It states the assumption that past premia inform the expected premium, and
+     the estimation error: a two-standard-error band gives 8.54 to 18.21 percent.
+   - It states that currency, horizon and the risk-free benchmark must match.
+   - It separates these issues from mechanically pairing an implied premium with
+     a rate other than its own (4.20 belongs with 5.29).
+   - Source: Damodaran's corporate finance project notes (new key
+     `corporate-finance-project-notes`, sec. V.a-b, read 2026-10-18). They cover
+     the market-neutral implied premium against the historical premium for those
+     who believe in reversion to averages, the 10-year rate in the analysis
+     currency, and no historical premium for non-US firms.
+   - Fama and French's 2.4-point standard error is now attributed to the premium
+     over Treasury bills. One focused assertion was added to
+     `asset-pricing-checks.py`.
+
+### 17.2 Remote CI on merge only
+
+`.github/workflows/ci.yml` now triggers on `pull_request` activity type
+`closed`, filtered to base branch `main`. The job runs only if
+`github.event.pull_request.merged == true`, and checks out
+`github.event.pull_request.merge_commit_sha`, the merged revision on `main`.
+- Commits, branch pushes, opening, updating and labelling a pull request
+  trigger nothing.
+- Closing an unmerged pull request records a run whose job is skipped.
+- Permissions stay `contents: read`, there is no `pull_request_target`, and the
+  validation steps are unchanged.
+- The README describes the new trigger; local checks and commit hooks remain
+  separate.
+
+The `ready-to-merge` label still exists, with its old description; it no
+longer triggers anything. Repository settings were not changed.
+
+Validation was local only:
+- `check-yaml` passed.
+- A parse-and-simulate script confirmed the trigger, filters, permissions,
+  checkout ref and step. Of seven event cases (push, opened, synchronize,
+  labeled, closed unmerged, merged into another base, merged into main), only a
+  merge into main runs the job.
+- actionlint is not installed.
+
+Live execution on a real merge event is unverified until the next merge.
+Remote CI was not triggered in this pass.
+
+### 17.3 Reconciliation of the earlier CI statement
+
+Section 16 said remote CI was pending. Run 39119458178 on `907e84b`, triggered
+by the `ready-to-merge` label under the previous workflow, passed
+`make source-check`. It does not validate the commits of this pass.
+
+### 17.4 Standing batch preference
+
+Future content-expansion prompts should target **30 newly completed canonical
+learning objectives per prompt**. Fixes-only prompts are exempt.
+- Count objective IDs that move to `covered`, not entries or outline mappings.
+- The source-review (Section 3.5), teaching-depth, worked-example and
+  mapping-review requirements are unchanged.
+- If fewer than 30 objectives can be completed honestly, report the shortfall
+  and its reasons rather than promoting unsupported coverage.
+
+### 17.5 Validation and limits
+
+See the PR #22 description and `notes/source-review-records.md`, *Correction
+pass on PR #22*, for the local check results. Coverage counts are unchanged:
+41 of 424 objectives; 50 Level I and 6 Level II items; 974 of 1,030 unreviewed.
+
+The five untracked `* 2.md` duplicates in `notes/readings/` were present at the
+start of the batch session but were absent when this pass began; this pass did
+not remove them and did not recreate them.

@@ -56,6 +56,8 @@ In `asset-pricing-models.tex`, owned by `topic:asset-pricing-factor-models` and 
 - `mod:multifactor-apt`: Ross's argument and Theorem I; Huberman and Wang's exact and approximate forms; an original arbitrage among well-diversified portfolios and its residual-risk version.
 - `def:factor-model-types`: Connor's three types (1995) and Huberman and Wang's three identification approaches; output interpretation and several risk dimensions.
 
+Correction pass (2026-10-18, PR #22): `meth:efficient-frontier` no longer says constrained solutions must have zero weights, and `meth:required-return-on-equity` treats a historical premium with the current 10-year yield as a legitimate estimate with its own assumption and uncertainty (Damodaran's corporate finance project notes).
+
 All partly checked 2026-10-18, draft. The examples are in `notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py` and `notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py`; human review is outstanding.
 
 ## Source verification after macro markets and pricing review

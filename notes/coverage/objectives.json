@@ -3890,19 +3890,24 @@
      {
       "key": "arbitrage-pricing-review-2005",
       "locator": "FRBNY Staff Report 216, August 2005, sec. 9"
+     },
+     {
+      "key": "corporate-finance-project-notes",
+      "locator": "'Project Emails/Information', sec. V.a 'Riskfree Rates' and V.b 'Risk Premiums', read 2026-10-18"
      }
     ],
     "reading_notes": [
      "notes/readings/capm-theory-evidence-2004.md",
      "notes/readings/implied-equity-premium-2026.md",
-     "notes/readings/arbitrage-pricing-review-2005.md"
+     "notes/readings/arbitrage-pricing-review-2005.md",
+     "notes/readings/corporate-finance-project-notes.md"
     ],
     "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
     "entry_evidence": [
      "meth:required-return-on-equity",
      "mod:return-generating-models"
     ],
-    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py part 3 (k_e = 10.12 percent with sensitivity to the published premia, the beta interval and a historical premium; the sample average as a contrast); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py part 3 (k_e = 10.12 percent with sensitivity to the published premia, the beta interval and historical arithmetic and geometric premia with a two-standard-error band; the sample average as a contrast); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },

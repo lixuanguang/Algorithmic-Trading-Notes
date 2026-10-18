@@ -271,6 +271,20 @@ ok(
     and close(math.sqrt(wEP @ S @ wEP), 0.154871, 1e-6),
     f"multiplier {kkt_B:.6f}, unconstrained s.d. {table[0.075][1]:.4f}",
 )
+# Interior solutions (correction pass, 2026-10-18): where the unconstrained optimum already satisfies w >= 0, the
+# long-only optimum is the same portfolio; the 7.5 percent target is where the constraint changes the answer.
+interior = all(
+    (frontier_w(m) > 1e-3).all()
+    and np.allclose(num_frontier(m, long_only=True).x, frontier_w(m), atol=1e-5)
+    for m in (0.05, 0.06)
+)
+ok(
+    "5 and 6 percent: unconstrained weights strictly positive, so the long-only optimum is identical; "
+    "7.5 percent differs (w_B = 0, s.d. 15.49 against 15.25)",
+    interior
+    and frontier_w(0.075)[1] < 0
+    and math.sqrt(wEP @ S @ wEP) > math.sqrt(frontier_var(0.075)) + 1e-3,
+)
 lo8 = num_frontier(0.08, long_only=True)
 ok("long-only 8 percent: only E is feasible (s.d. 18)", np.allclose(lo8.x, [1, 0, 0], atol=1e-6))
 lo9 = num_frontier(0.09, long_only=True)

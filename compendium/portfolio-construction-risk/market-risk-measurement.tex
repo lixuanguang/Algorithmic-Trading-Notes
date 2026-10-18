@@ -1,0 +1,129 @@
+\section{Market risk measurement and limits}
+
+These entries measure the market risk of a portfolio with value at risk and expected shortfall by three methods, with the contributions of its parts; with sensitivities and scenarios; and they turn the measures into risk budgets, limits and capital. The estimation and backtesting theory is in \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation}. The original examples use a synthetic 100 million portfolio (60 million equities, 40 million bonds) with Student-$t$ daily returns, not market data; numbers are checked in \texttt{notes/artefacts/market-risk-measurement/market-risk-checks.py}.
+
+\begin{qfmethod}[Value at risk for a portfolio: what it measures, the parametric, historical and Monte Carlo methods compared on one portfolio, marginal, incremental and component VaR, and its strengths, limits and extensions]\label{meth:portfolio-var-methods-decomposition}
+\qffield{Statement} VaR asks ``How bad can things get?'': the loss over a horizon that will not be exceeded at a chosen confidence level. Expected shortfall is the average loss beyond it \citep[chap.~11, pp.~233--240]{risk-management-financial-institutions-2023}; definitions with atoms are in \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation}.
+
+\emph{Methods.}
+\begin{itemize}
+\item \emph{Analytical} (variance--covariance, model-building). Assume normal changes with zero mean, so VaR $=z_c\sigma_P$ with $\sigma_P^2=x^\top\Sigma x$. A ten-day figure is $\sqrt{10}$ times the one-day figure if days are independent \citep[chap.~13, sec.~13.1, pp.~279--281]{risk-management-financial-institutions-2023}.
+\item \emph{Historical simulation.} Revalue today's positions under past daily changes and take the empirical quantile.
+\item \emph{Monte Carlo.} Simulate changes from a chosen model.
+\end{itemize}
+MIP compares them: the analytical method is simple but needs normality and handles options poorly; historical simulation needs no distributional assumption but depends on the window; Monte Carlo is flexible but model-dependent and computationally heavy \citep[chap.~9, secs.~5.2.2--5.2.4, pp.~600--610]{managing-investment-portfolios-2007}.
+
+\emph{Contributions.}
+\begin{itemize}
+\item \emph{Marginal VaR} is $\partial\text{VaR}/\partial x_i$.
+\item \emph{Incremental VaR} is VaR with a subportfolio minus VaR without it.
+\item \emph{Component VaR} is $x_i\,\partial\text{VaR}/\partial x_i$.
+\end{itemize}
+Euler's theorem makes the component VaRs of a linearly homogeneous measure sum to the total, which supports risk budgeting. A component approximates the incremental VaR when the subportfolio is small relative to the whole (RMFI, sec.~11.7, pp.~246--248).
+
+\emph{Strengths, limits and extensions.} VaR is easy to understand, aggregates many risks into one number and supports risk budgeting. It can be hard to estimate, and different methods give different values. It can lull users into a false sense of security, often underestimates the worst returns, does not add across positions and ignores the size of losses beyond it, so it must be backtested (MIP, sec.~5.3, pp.~611--613). A VaR limit can be gamed by a book with a 0.9 percent chance of a \$500 million loss (RMFI, p.~237). Extensions are incremental VaR, cash-flow and earnings at risk, tail VaR (expected shortfall) and conditional or regime models (MIP, sec.~5.4, pp.~613--614), plus stressed VaR and ES (RMFI, sec.~12.1).
+
+\qffield{Practice} \emph{Reproduced} (RMFI, sec.~13.1). Positions of \$10 million in Microsoft (2 percent a day) and \$5 million in AT\&T (1 percent), with correlation 0.3, have a one-day standard deviation of 220{,}227.
+\begin{itemize}
+\item The one-day 99 percent VaR is \$512{,}300, the ten-day VaR \$1{,}620{,}100 and the ten-day ES \$1{,}856{,}100.
+\item Separately the ten-day VaRs are \$1{,}471{,}300 and \$367{,}800, so diversification saves \$219{,}000.
+\item Under normality a 95 percent VaR of 1.5 million is a 99 percent VaR of 2.12 million, and a 95 percent ES of 2 million a 99 percent ES of 2.58 million. Segment ESs of 60 and 100 with correlation 0.4 aggregate to 135.6 (sec.~11.6, p.~246; sec.~11.8, p.~248).
+\end{itemize}
+
+\emph{Three methods on one portfolio} (synthetic, 1{,}000 days, Student-$t$ with 4 degrees of freedom, volatilities 1.2 and 0.4 percent, correlation $-0.2$).
+\begin{itemize}
+\item \emph{Parametric.} One-day 99 percent VaR 1.738 million and ES 1.989 million. Monte Carlo from the same normal model gives 1.720 million.
+\item \emph{Historical simulation.} VaR 2.092 million and ES 3.233 million: the fat tails that normality misses.
+\item \emph{Monte Carlo from the true Student-$t$ model}: 1.860 million, within the sampling error of 1{,}000 days.
+\end{itemize}
+
+\emph{Contributions} (parametric).
+\begin{itemize}
+\item The equities' component VaR is 1.717 million and the bonds' only $+$0.012 million. Yet removing the bonds would raise VaR: their incremental VaR is $-0.029$ million.
+\item With a bond position of 1 million instead, component and incremental VaR agree ($-1{,}672$ against $-1{,}696$), as the approximation requires.
+\item A rolling 250-day historical VaR has 7 violations in 750 days against 7.5 expected.
+\end{itemize}
+
+\qffield{Conditions} The square-root-of-time rule needs independent, identically distributed changes. Parametric VaR on options needs a delta--gamma approximation or full revaluation (\hyperref[meth:sensitivity-scenario-risk-measures]{sensitivities}). VaR is not sub-additive in general; ES is coherent (\hyperref[meth:var-es-estimation-methods]{estimation}).
+
+\qffield{Pitfalls} Reading a component VaR as the risk removed by closing the position. Scaling a fat-tailed one-day VaR to ten days by $\sqrt{10}$ and to a higher confidence by normal quantiles. Using VaR alone, without stress tests.
+
+\qffield{See also} \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation}; \hyperref[meth:market-risk-limits-capital]{limits and capital}; \hyperref[mod:garch-volatility-forecast]{conditional volatility}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Sensitivity and scenario risk measures: beta, duration and convexity, option Greeks, historical, hypothetical and reverse stress scenarios, and how they complement VaR]\label{meth:sensitivity-scenario-risk-measures}
+\qffield{Statement} \emph{Sensitivities.} Primary (first-order) measures are linear: beta for equities, duration or PVBP for bonds, delta for options. Secondary measures capture curvature: convexity and gamma. Vega captures volatility (MIP, chap.~9, sec.~5.1, pp.~596--598; \hyperref[meth:yield-duration-pvbp]{duration}; \hyperref[meth:greeks-delta-gamma-hedging]{Greeks}). Traders compute their Greeks daily and must act if the institution's limits are exceeded \citep[chap.~15, p.~319]{risk-management-financial-institutions-2023}. Sensitivities say how much a position changes for a small move, but not how likely the move is, and they are local.
+
+\emph{Scenarios and stress tests} evaluate extreme but plausible moves that VaR and ES, being backward-looking, may not contain \citep[chap.~16, pp.~347--352]{risk-management-financial-institutions-2023}:
+\begin{itemize}
+\item \emph{stressing individual variables}: for example a 100 basis point parallel shift, implied volatilities up or down 50 percent, an equity index $\pm10$ percent, a major currency $\pm6$ percent or a minor one $\pm20$ percent;
+\item \emph{historical scenarios}: repeating past crises;
+\item \emph{management scenarios}: hypothetical events judged plausible;
+\item \emph{reverse stress tests}: searching for the moves that would cause failure, which supervisors now require (sec.~16.1.6, Example~16.1).
+\end{itemize}
+MIP distinguishes scenario analysis from stressing models' parameters (sec.~5.5, pp.~614--616).
+
+\emph{Compared with VaR} (Interpretation). VaR gives a probability-based single number for normal markets and aggregates across risks. Sensitivities are exact, local and additive by factor, but give no probability. Scenarios show losses in named states that may lie beyond any VaR window, but their probability is subjective. They are used together.
+
+\qffield{Practice} \emph{Original} (the synthetic book plus a short position in 1 million puts struck at 95 on an index at 100, three months, 20 percent volatility).
+\begin{itemize}
+\item \emph{Equity.} A beta of 1.1 on 60 million loses 6.6 million for a 10 percent fall.
+\item \emph{Bonds.} Duration 6.5 and convexity 60 on 40 million lose 2.48 million for $+100$ basis points; PVBP is 26{,}000.
+\item \emph{Options.} The delta--gamma--vega approximation is within 1 percent of full revaluation for a 2-point fall. For a 10-point fall with volatility up 10 points it understates the loss by 7 percent ($-5.74$ against $-6.16$ million), because it omits cross terms. At 25 points it overstates the loss by 7 percent.
+\item \emph{Scenarios.} A 2008-style scenario (equities $-35$ percent, yields $-100$ basis points, volatility $+30$ points) loses 48.4 million, against a one-day 99 percent VaR of 1.74 million. A hypothetical crash (equities $-20$ percent, yields $-50$ basis points, volatility $+25$ points) loses 27.0 million. A rates shock ($+150$ basis points, equities $-5$ percent) loses 9.6 million.
+\item \emph{Reverse stress.} With volatility rising one point for every point of fall, an index fall of 14.95 percent loses 20 million.
+\end{itemize}
+
+\qffield{Conditions} Sensitivities hold for small moves and fixed other factors. Scenario results depend on the joint moves assumed; a scenario that moves one variable alone ignores correlations. Full revaluation is preferred for options in large moves.
+
+\qffield{Pitfalls} Summing delta exposures across options with different underlyings and volatilities as if linear. Treating a stress loss as a worst case. Choosing scenarios that the portfolio is already hedged against and calling the result reassuring.
+
+\qffield{See also} \hyperref[meth:portfolio-var-methods-decomposition]{VaR}; \hyperref[meth:market-risk-limits-capital]{limits}; \hyperref[meth:curve-based-empirical-duration]{curve-based measures}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Market risk limits and risk-based capital: risk budgets, position, VaR, scenario and stop-loss limits, capital allocation and RAROC, and the measures used by banks, asset managers, pension funds and insurers]\label{meth:market-risk-limits-capital}
+\qffield{Statement} \emph{Risk budgeting} allocates an acceptable level of risk, often VaR, to units or managers before the fact, and compares their profits with the risk and capital used. Because of diversification, the sum of the units' budgets usually exceeds the whole organisation's \citep[chap.~9, sec.~6.1.1, pp.~626--628]{managing-investment-portfolios-2007}.
+
+\emph{Limits and capital.} MIP lists five ways to allocate and measure capital (sec.~6.4, pp.~634--635):
+\begin{itemize}
+\item \emph{nominal or notional position limits}: simple, but blind to correlation and easy to work around with replicating positions;
+\item \emph{VaR-based limits}: in units of risk, but only as good as the VaR;
+\item \emph{maximum loss limits}: a firm constraint, which extreme discontinuities can still breach;
+\item \emph{internal capital requirements}: for example capital equal to one-year aggregate VaR at the firm's tolerated probability of insolvency;
+\item \emph{regulatory capital requirements}.
+\end{itemize}
+Scenario limits cap the loss in named stress scenarios, and stop-loss limits force a position to be cut after a set loss (Interpretation of RMFI, chap.~16).
+
+\emph{RAROC} compares expected return with economic capital: (revenues $-$ costs $-$ expected losses)$/$economic capital. Strictly it is a return on risk-adjusted capital. Ex ante it guides expansion; ex post, performance and bonuses. Economic capital is allocated to business units by Euler (component) or incremental methods \citep[chap.~28, pp.~609--613]{risk-management-financial-institutions-2023}.
+
+\emph{Measures by institution.}
+\begin{itemize}
+\item \emph{Banks.} Market-risk capital moved from 99 percent ten-day VaR to stressed expected shortfall at 97.5 percent with liquidity horizons under the Fundamental Review of the Trading Book. Under normality the two are almost equal ($2.326\sigma$ against $2.338\sigma$), but not for heavier tails (RMFI, chap.~27, p.~586).
+\item \emph{Asset managers.} Managers judged against benchmarks use tracking risk (active risk) (MIP, p.~597).
+\item \emph{Defined-benefit pension funds} apply VaR to the surplus of assets over liabilities, because liabilities move with rates (MIP, sec.~5.2.5, p.~610).
+\item \emph{EU insurers.} Under Solvency~II the Solvency Capital Requirement covers investment, underwriting and operational risk, assessed by events such as a 32 percent fall in global equities, and internal models must pass statistical-quality, calibration and use tests (RMFI, chap.~25, sec.~25.12, pp.~557--558).
+\end{itemize}
+
+\qffield{Practice} \emph{Reproduced.}
+\begin{itemize}
+\item \emph{MIP's desks} (pp.~626--627). The FX desk has 100 million of capital and a daily VaR budget of 5 million, and earns 20 million in a quarter: 20 percent on capital. The fixed-income desk has 200 million, the same VaR budget, and earns 25 million: 12.5 percent. With weak correlation their combined VaR is 7 million, 70 percent of the sum of their budgets.
+\item \emph{RMFI's lending unit} (p.~612). Economic capital of 4 per 100 of loans and an expected profit of 0.80 give a RAROC of 20 percent, or 22 percent with 2 percent earned on the capital.
+\end{itemize}
+
+\emph{Original.}
+\begin{itemize}
+\item \emph{Stop-loss.} A 2 million daily stop-loss on the synthetic book is 1.15 times its normal 99 percent VaR. The fat-tailed history breaches it on 1.1 percent of days, about 2.8 days a year, against 0.36 percent under normality. A limit calibrated to a normal VaR is hit more often than intended.
+\item \emph{Pension surplus at risk.} A pension fund with assets of 1{,}000 at duration 8 and liabilities of 900 at duration 14 loses 46 of surplus for every 1 percent fall in rates. With a 1 percent annual rate volatility, the 95 percent one-year surplus at risk from rates alone is 75.7, although an asset-only VaR would call the bonds low-risk.
+\item \emph{Tracking error.} A 3 percent tracking error is a 95 percent one-year relative VaR of 4.93 percent of assets.
+\item \emph{Tails.} For Student-$t$ returns with 4 degrees of freedom, 97.5 percent ES ($2.83\sigma$) exceeds 99 percent VaR ($2.66\sigma$).
+\end{itemize}
+
+\qffield{Conditions} Regulatory rules are summarised from RMFI (6th ed., 2023); national implementation dates and details vary and change, and current texts should be checked before use. The examples are synthetic.
+
+\qffield{Pitfalls} Adding unit VaR limits and calling the sum the firm's risk. Setting limits on one measure only, which invites trades that game it. Comparing desks on return on capital or on VaR alone; the MIP example ranks them differently on the two.
+
+\qffield{See also} \hyperref[def:risk-management-framework]{risk-management framework}; \hyperref[meth:portfolio-var-methods-decomposition]{VaR and its decomposition}; \hyperref[meth:active-risk-decomposition]{active risk}.
+
+\end{qfmethod}

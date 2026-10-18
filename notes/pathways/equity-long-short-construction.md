@@ -30,6 +30,20 @@ Partly checked 2026-10-15, draft; human review outstanding.
 
 - `meth:forecast-scaling-ic`: refined forecast = volatility x IC x score, its regression form and the two-signal combination (Grinold and Kahn, chap. 10). Partly checked 2026-10-17, draft.
 
+Written in the derivatives, portfolio and execution batch (2026-10-19):
+
+In `equity-portfolio-management.tex` (topic `equity-portfolio-management`):
+
+- `def:equity-portfolio-roles-mandate`: roles, segmentation, income and costs, engagement (UK Stewardship Code 2026), the active spectrum and benchmark choice.
+- `def:cap-weighted-factor-indexing`: factor-based against cap-weighted indexing, index approaches and vehicles.
+- `meth:index-equity-portfolio-construction`: replication, stratified sampling and optimisation, tracking error and its sources.
+- `def:active-equity-strategies`: fundamental and quantitative approaches; bottom-up, top-down, factor, activist, statistical-arbitrage and microstructure strategies.
+- `meth:active-equity-strategy-creation`: fundamental and quantitative research processes and style classification.
+- `meth:active-equity-portfolio-construction`: construction methods, Active Share against active risk, risk budgets and limits.
+- `meth:equity-portfolio-capacity-structure`: capacity, liquidity and turnover; long-only, long-extension, long-short and market-neutral structures with transfer coefficients.
+
+All partly checked 2026-10-19, draft. Examples in `notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py`; human review is outstanding. Coverage records are editorial, not study.
+
 ## Source verification after macro markets and pricing review
 
 source verification (2026-10-17) (source verification and bounded tests, not study or human review): `meth:forecast-scaling-ic` resolved as a new entry in `systematic-equities/signal-combination.tex` from Grinold and Kahn's second edition, chap. 10 (pp. 261-271, the rule of thumb on p. 266 as a page image; the binary-model IC, the two-signal weights and combined IC, and Table 10.1 recomputed in `notes/artefacts/equity-long-short-construction/forecast-checks.py`). Grinold's 1994 paper (`eq-grinold-1994`) is behind the publisher's login and his 1989 paper was not read. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.

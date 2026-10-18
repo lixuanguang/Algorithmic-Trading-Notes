@@ -2614,3 +2614,86 @@ mapped to these objectives are unaffected by the changed passages.
 Totals are unchanged: 101 of 424 objectives; 125 Level I, 31 Level II and 37 shared-core
 items covered; 837 of 1,030 unreviewed. Details are in `notes/source-review-records.md`,
 *Second correction pass on PR #24*. Remote CI was not triggered.
+
+## 20. Derivatives, portfolio and execution batch (executed 2026-10-19)
+
+**Scope.** Forty-five objectives, the batch size of Section 17.4 as revised in Section 19.2:
+- `topic:short-term-funding`: `objective:compare-short-term-funding`.
+- `topic:arbitrage-free-bond-valuation`: `objective:value-option-free-bond-arbitrage-free`,
+  `objective:build-binomial-rate-tree`, `objective:describe-term-structure-models`.
+- `topic:embedded-option-bonds`: `objective:value-callable-putable-bonds`,
+  `objective:calculate-option-adjusted-spread`, `objective:measure-embedded-option-risk`,
+  `objective:value-capped-floored-floaters`, `objective:value-convertible-bonds`.
+- `topic:option-valuation`: `objective:explain-option-value-drivers`,
+  `objective:apply-put-call-parity`, `objective:value-one-period-binomial`,
+  `objective:value-multi-period-binomial`, `objective:apply-black-scholes-merton`,
+  `objective:manage-option-greeks`.
+- `topic:option-strategies`: `objective:replicate-with-options`,
+  `objective:analyse-covered-and-protective-positions`,
+  `objective:analyse-spread-and-volatility-strategies`, `objective:select-option-strategy`.
+- `topic:derivative-overlay-strategies`: `objective:modify-risk-with-forward-commitments`,
+  `objective:use-volatility-derivatives`, `objective:apply-derivative-overlays`,
+  `objective:compare-derivative-and-cash-implementation`.
+- `topic:market-risk-measurement`: `objective:estimate-value-at-risk`,
+  `objective:apply-sensitivity-scenario-measures`, `objective:set-market-risk-limits`.
+- `topic:fixed-income-portfolio-management`: `objective:classify-fixed-income-mandates`,
+  `objective:manage-bond-leverage-and-tax`, `objective:match-liabilities-with-bonds`,
+  `objective:immunise-liabilities`, `objective:manage-bond-index-exposure`,
+  `objective:position-for-yield-curve-views`, `objective:evaluate-yield-curve-strategy`.
+- `topic:equity-portfolio-management`: `objective:design-equity-portfolio-mandate`,
+  `objective:compare-index-equity-approaches`, `objective:construct-index-equity-portfolio`,
+  `objective:compare-active-equity-strategies`, `objective:create-active-equity-strategy`,
+  `objective:construct-active-equity-portfolio`, `objective:evaluate-equity-portfolio-structure`.
+- `topic:trade-execution`: `objective:measure-execution-costs`,
+  `objective:explain-electronic-markets`, `objective:select-trading-strategy`,
+  `objective:compare-market-implementation`, `objective:evaluate-trade-execution`.
+
+**Starting state.** Draft PR #24 was open and unmerged at `f320d35` (Section 19.2).
+Coverage was 101 of 424 objectives; 125 Level I, 31 Level II and 37 shared-core items
+covered, 837 unreviewed. All 45 objectives were `missing`; their 149 outline items map to
+no objective outside the batch. The batch runs on
+`codex/derivatives-portfolio-execution-20261019`, branched from
+`codex/fixed-income-derivatives-20261018` at `f320d35`, with a stacked draft PR to that
+branch.
+
+**Sources (Section 3.5).** The owner's local library supplied the Handbook of Fixed Income
+Securities (9th ed.), Fixed Income Analysis (2nd ed., 2007), Hull's Options (11th Global
+ed.) and Risk Management and Financial Institutions (6th ed., 2023, added by the owner
+during the batch and used in place of a 4th-edition copy), Natenberg (2nd ed.), Managing
+Investment Portfolios (3rd ed.), Ang and Grinold and Kahn. Papers and official texts:
+Cremers and Petajisto (2009), Brav et al. (2008), Gatev et al. (1999), Avellaneda and Lee
+(2009 version), the UK Stewardship Code 2026, FINRA Rule 5310 and MiFID II article 27.
+Eight source keys were added (`compendium/front/sources.tex`); ten reading notes were
+written and six updated.
+
+**Entries.** Forty-five new entries: one in `portfolio-risk-financing/money-markets.tex`
+and the rest in nine new section files (`arbitrage-free-valuation.tex`,
+`embedded-option-bonds.tex`, `fixed-income-portfolio-management.tex`,
+`option-valuation.tex`, `option-strategies.tex`, `derivative-overlays.tex`,
+`market-risk-measurement.tex`, `equity-portfolio-management.tex`,
+`trade-strategy-governance.tex`). Eleven existing entries were reviewed and linked; those
+that carry part of an objective are mapped alongside the new entries.
+
+**Evidence.** Nine scripts under `notes/artefacts/`, 250 checks. Independent routes include
+spot-curve, lattice and pathwise values; calibration that reprices every par bond; hedge
+against replication; simulation against closed forms; Greeks against finite differences;
+LP and SLSQP optimisation; and small-position limits for VaR decompositions. Source slips
+in the Handbook (chap. 36), Hull (Figures 13.7-13.8, Table 19.4) and MIP (chap. 6) are
+recorded (`notes/source-review-records.md`; `notes/log.md` questions).
+
+**Coverage.** The 149 mapped items were read on their pages (Level I PDF pp. 20 and 24;
+Level II pp. 18, 21-22 and 26-27; Level III core pp. 5-7 and 11-12; Portfolio Management
+pp. 16-18). Gaps in seven bullets were closed before promotion; all 149 are promoted with
+item-specific rationales. All 45 objectives are covered (editorial coverage, not mastery).
+Totals: 146 of 424 objectives; 133 Level I, 83 Level II, 78 shared-core and 48 Portfolio
+Management items covered; 688 of 1,030 unreviewed.
+
+**Validation.** See `notes/source-review-records.md`, *Derivatives, portfolio and execution
+batch*, and the stacked draft PR for the final local results. Remote CI runs only after a
+merge into `main` (Section 17.2) and was not triggered.
+
+**Remaining gaps.**
+- Single-curve lognormal trees; no credit, collateral or funding adjustments.
+- Illustrative market inputs; legal points dated 19 October 2026; MiFID II amendments to
+  article 27 not reviewed.
+- Human review is outstanding.

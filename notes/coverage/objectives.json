@@ -4233,16 +4233,39 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "def:short-term-funding-repo"
+   ],
    "candidate_entries": [
     "def:money-market-reference-rates",
-    "mech:securities-lending-short-sale"
+    "mech:securities-lending-short-sale",
+    "def:short-term-funding-repo"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 13, pp. 306-308; chap. 60, pp. 1485-1486"
+     },
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "chap. 21, sec. 21.2, p. 459"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "def:short-term-funding-repo"
+    ],
+    "example": "notes/artefacts/short-term-funding/funding-repo-checks.py parts 1-3 (Handbook repo interest and haircut, an original 90-day funding comparison and a repo margin call); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -5286,13 +5309,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:option-value-drivers",
+    "meth:option-payoff-profit"
+   ],
+   "candidate_entries": [
+    "def:option-value-drivers",
+    "meth:option-payoff-profit"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 11, sec. 11.1, pp. 247-251, Table 11.1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "def:option-value-drivers",
+     "meth:option-payoff-profit"
+    ],
+    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 1 (exercise and time value, negative time value of a deep in-the-money European put and the sign of each factor by bumping Hull's base case); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -5304,13 +5349,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "res:put-call-forward-parity"
+   ],
+   "candidate_entries": [
+    "res:put-call-forward-parity"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 11, sec. 11.4, eq. (11.6), p. 256; chap. 18, sec. 18.4, eq. (18.1), p. 405"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "res:put-call-forward-parity"
+    ],
+    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 2 (Hull's parity arbitrages, Example 18.5 and put-call-forward parity against Black-Scholes prices); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -5323,13 +5387,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:one-period-binomial-valuation"
+   ],
+   "candidate_entries": [
+    "meth:one-period-binomial-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 13, sec. 13.1, eqs. (13.1)-(13.3), pp. 288-292"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:one-period-binomial-valuation"
+    ],
+    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 3 (Hull's 0.545 call by hedge and by replication, an original arbitrage and independence from the real-world probability); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8453,13 +8536,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:arbitrage-free-bond-valuation"
+   ],
+   "candidate_entries": [
+    "meth:arbitrage-free-bond-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 36, pp. 831-832"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:arbitrage-free-bond-valuation"
+    ],
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 2 (the Handbook bond from bootstrapped spot rates, the same value on the lattice and pathwise, and the arbitrage at a different price); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8472,13 +8574,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:binomial-rate-tree-calibration"
+   ],
+   "candidate_entries": [
+    "meth:binomial-rate-tree-calibration"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 36, pp. 832-834, Exhibits 36-1 and 36-2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:binomial-rate-tree-calibration"
+    ],
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py parts 1-2 (calibration date by date to the par curve, the Handbook trial and calibrated rates, repricing of every par bond, backward induction and the eight-path pathwise value); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8490,13 +8611,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mod:term-structure-models-simulation"
+   ],
+   "candidate_entries": [
+    "mod:term-structure-models-simulation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 31, secs. 31.1-31.2, pp. 719-722; chap. 32, sec. 32.1, pp. 732-736"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 37, pp. 859-860"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "mod:term-structure-models-simulation"
+    ],
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 7 (Monte Carlo paths against the lattice value, Vasicek closed-form bond prices and a Ho-Lee forward-induction fit to the curve); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8510,13 +8655,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:callable-putable-bond-valuation"
+   ],
+   "candidate_entries": [
+    "meth:callable-putable-bond-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 36, pp. 840-845"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:callable-putable-bond-valuation"
+    ],
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 3 (Handbook callable and putable values and option values, the volatility effect and original level and shape recalibrations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8528,13 +8692,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:option-adjusted-spread"
+   ],
+   "candidate_entries": [
+    "meth:option-adjusted-spread"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 36, pp. 849-850"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:option-adjusted-spread"
+    ],
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 4 (the 35 bp OAS at 102.218, the Z-spread, the option cost and the effect of volatility on OAS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8549,13 +8732,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:embedded-option-effective-duration",
+    "meth:curve-based-empirical-duration"
+   ],
+   "candidate_entries": [
+    "meth:embedded-option-effective-duration",
+    "meth:curve-based-empirical-duration"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 36, pp. 850-851"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:embedded-option-effective-duration",
+     "meth:curve-based-empirical-duration"
+    ],
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 5 (effective, one-sided and key-rate durations and effective convexities of callable, putable and straight bonds at constant OAS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8567,13 +8772,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:capped-floored-floater-valuation"
+   ],
+   "candidate_entries": [
+    "meth:capped-floored-floater-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "fixed-income-analysis-2007",
+      "locator": "chap. 9, sec. IX, pp. 244-247"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 36, p. 832"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/fixed-income-analysis-2007.md",
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:capped-floored-floater-valuation"
+    ],
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 6 (capped, floored and collared floaters on the calibrated tree, with cap and floor values); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8588,13 +8817,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:convertible-bond-valuation"
+   ],
+   "candidate_entries": [
+    "meth:convertible-bond-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 38, pp. 883-890"
+     },
+     {
+      "key": "fixed-income-analysis-2007",
+      "locator": "chap. 9, sec. X.B, p. 249"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 27, sec. 27.4, pp. 650-653"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/fixed-income-analysis-2007.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:convertible-bond-valuation"
+    ],
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 8 (conversion measures, premiums and minimum value, Hull's 107.44 default tree and risk-return against the straight bond and stock); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8883,13 +9141,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:multi-period-binomial-valuation"
+   ],
+   "candidate_entries": [
+    "meth:multi-period-binomial-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 13, sec. 13.3, eqs. (13.5)-(13.10), pp. 294-297"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:multi-period-binomial-valuation"
+    ],
+    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 4 (two-period European and American puts, an American put arbitrage and a two-period caplet on the calibrated rate tree); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8903,15 +9180,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:black-model-rates-currencies",
     "mod:black-scholes-merton"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:black-scholes-merton",
+    "meth:black-model-rates-currencies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 17, sec. 17.5, eqs. (17.11)-(17.14), pp. 394-395; chap. 29, sec. 29.2, eq. (29.7), pp. 695-696"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:black-model-rates-currencies",
+     "mod:black-scholes-merton"
+    ],
+    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 5 (the N(d1)-share replication, Garman-Kohlhagen, Black's model for futures options, caplets and swaptions with Hull's Examples 15.6, 17.2, 18.6-18.7 and 29.3-29.4, and cap-floor parity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8926,16 +9223,43 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:greeks-delta-gamma-hedging",
     "mod:black-scholes-merton",
     "def:implied-volatility-surface"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:black-scholes-merton",
+    "def:implied-volatility-surface",
+    "meth:greeks-delta-gamma-hedging"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 19, sec. 19.4, pp. 421-427"
+     },
+     {
+      "key": "s7-natenberg",
+      "locator": "chap. 11, p. 199"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/s7-natenberg.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:greeks-delta-gamma-hedging",
+     "mod:black-scholes-merton",
+     "def:implied-volatility-surface"
+    ],
+    "example": "notes/artefacts/option-valuation/option-valuation-checks.py part 6 (Greeks against finite differences, a delta-hedging simulation against Hull's Table 19.4, the gamma-theta identity against full revaluation, gamma neutrality and implied volatility by root finding); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9470,15 +9794,40 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:portfolio-var-methods-decomposition",
     "meth:var-es-estimation-methods"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "meth:var-es-estimation-methods",
+    "meth:portfolio-var-methods-decomposition"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "chap. 11, pp. 233-240; chap. 13, sec. 13.1, pp. 279-281"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 9, secs. 5.2.2-5.2.4, pp. 600-610"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:portfolio-var-methods-decomposition",
+     "meth:var-es-estimation-methods"
+    ],
+    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py parts 1-2 (RMFI's model-building VaR and ES, parametric, historical and Monte Carlo VaR on one synthetic portfolio, and marginal, component and incremental VaR); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9492,13 +9841,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:sensitivity-scenario-risk-measures"
+   ],
+   "candidate_entries": [
+    "meth:sensitivity-scenario-risk-measures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "chap. 15, p. 319; chap. 16, pp. 347-352"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:sensitivity-scenario-risk-measures"
+    ],
+    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 3 (beta, duration and convexity, delta-gamma-vega measures against full revaluation, and historical, hypothetical and reverse stress scenarios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9511,13 +9879,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:market-risk-limits-capital"
+   ],
+   "candidate_entries": [
+    "meth:market-risk-limits-capital"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 9, sec. 6.1.1, pp. 626-628"
+     },
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "chap. 28, pp. 609-613"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:market-risk-limits-capital"
+    ],
+    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 4 (limit utilisation, risk budgets, RAROC capital allocation and institution-specific measures); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9912,13 +10304,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:equity-portfolio-roles-mandate"
+   ],
+   "candidate_entries": [
+    "def:equity-portfolio-roles-mandate"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 7, sec. 2, pp. 408-410"
+     },
+     {
+      "key": "uk-stewardship-code-2026",
+      "locator": "pp. 5 and 12, Principles 3-4"
+     },
+     {
+      "key": "wide-brav-activism",
+      "locator": "abstract, p. 1729"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/uk-stewardship-code-2026.md",
+     "notes/readings/wide-brav-activism.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "def:equity-portfolio-roles-mandate"
+    ],
+    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 1 (net return after income and costs and the passive, semiactive and active spectrum); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9932,13 +10353,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:fixed-income-mandates-return-model"
+   ],
+   "candidate_entries": [
+    "def:fixed-income-mandates-return-model"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 43, pp. 1081-1083, Exhibit 43-3; chap. 44, pp. 1097-1099"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 6, sec. 4, pp. 346-365"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "def:fixed-income-mandates-return-model"
+    ],
+    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 1 (the expected-return decomposition, portfolio duration and spread duration, and the stock-bond correlation's effect); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9950,13 +10395,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:bond-leverage-taxation"
+   ],
+   "candidate_entries": [
+    "meth:bond-leverage-taxation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 6, sec. 5.2, pp. 369-373"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 60, pp. 1485-1491; chap. 9, p. 221"
+     },
+     {
+      "key": "irs-pub-550-2025",
+      "locator": "chap. 3, Tax-exempt income"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/irs-pub-550-2025.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:bond-leverage-taxation"
+    ],
+    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 2 (leveraged return, repo and futures leverage, and taxable-equivalent yields with loss harvesting); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9968,13 +10442,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:liability-matching-ladders"
+   ],
+   "candidate_entries": [
+    "meth:liability-matching-ladders"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 6, sec. 4.1, pp. 346-348"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 43, p. 1082; chap. 51, pp. 1271-1274"
+     },
+     {
+      "key": "fixed-income-analysis-2007",
+      "locator": "chap. 7, p. 207"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/fixed-income-analysis-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:liability-matching-ladders"
+    ],
+    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 3 (an original least-cost cash-flow-matched portfolio by linear programming, surplus risk and a ladder's reinvestment profile); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10139,18 +10642,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:execution-cost-measures",
+    "def:transaction-costs",
+    "def:implementation-shortfall",
+    "def:spread-measures"
+   ],
    "candidate_entries": [
     "def:transaction-costs",
     "def:implementation-shortfall",
     "def:spread-measures",
-    "def:execution-benchmark"
+    "def:execution-benchmark",
+    "meth:execution-cost-measures"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 10, sec. 3.1, pp. 654-656"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:execution-cost-measures",
+     "def:transaction-costs",
+     "def:implementation-shortfall",
+     "def:spread-measures"
+    ],
+    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 1 (MIP's effective spreads, VWAP cost and the 87 bp implementation shortfall with components and a market adjustment); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10164,17 +10691,50 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "def:electronic-trading-environment",
+    "mech:venue-competition-fragmentation"
+   ],
    "candidate_entries": [
     "def:hft-strategies",
     "mech:venue-competition-fragmentation",
-    "rule:spoofing-securities-markets"
+    "rule:spoofing-securities-markets",
+    "def:electronic-trading-environment"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 10, sec. 5.3, pp. 670-673"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 44, pp. 1098-1099"
+     },
+     {
+      "key": "sec-concept-release-2010",
+      "locator": "sec. IV.B.2, pp. 57-58"
+     },
+     {
+      "key": "cfr-240-15c3-5",
+      "locator": "17 CFR 240.15c3-5(b)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "def:electronic-trading-environment",
+     "mech:venue-competition-fragmentation"
+    ],
+    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 2 (a stale-quote loss and the half-spread that covers adverse selection); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10826,13 +11386,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:option-replication-deltas"
+   ],
+   "candidate_entries": [
+    "meth:option-replication-deltas"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 12, sec. 12.2, eq. (12.1), pp. 270-272"
+     },
+     {
+      "key": "s7-natenberg",
+      "locator": "chap. 17, p. 325"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/s7-natenberg.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:option-replication-deltas"
+    ],
+    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 1 (replication of the asset return with a call, a put and a bond, and deltas of covered calls and protective puts against long asset and short forward positions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10845,13 +11429,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:covered-call-protective-put"
+   ],
+   "candidate_entries": [
+    "meth:covered-call-protective-put"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-natenberg",
+      "locator": "chap. 17, p. 323"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-natenberg.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:covered-call-protective-put"
+    ],
+    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 2 (payoffs, maximum profit and loss and break-evens of covered calls, protective puts and short-position hedges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10864,15 +11467,40 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:option-spreads-volatility-strategies",
     "def:implied-volatility-surface"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:implied-volatility-surface",
+    "meth:option-spreads-volatility-strategies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 12, secs. 12.3-12.4, pp. 272-284; chap. 20, sec. 20.3, pp. 456-458"
+     },
+     {
+      "key": "s7-natenberg",
+      "locator": "chap. 11, p. 199; chap. 24, pp. 502-503"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/s7-natenberg.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:option-spreads-volatility-strategies",
+     "def:implied-volatility-surface"
+    ],
+    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 3 (bull and bear spreads, straddles, collars, calendar spreads and the effect of skew on a collar); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10886,13 +11514,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "ex:option-strategy-selection-case"
+   ],
+   "candidate_entries": [
+    "ex:option-strategy-selection-case"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-natenberg",
+      "locator": "chap. 17, pp. 323-332"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-natenberg.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "ex:option-strategy-selection-case"
+    ],
+    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 4 (candidate strategies for a 10 million single-stock holding and option positions targeting 60% and 125% exposure); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10904,13 +11551,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:forward-commitment-risk-overlays"
+   ],
+   "candidate_entries": [
+    "meth:forward-commitment-risk-overlays"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 62, pp. 1533-1534"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 6, sec. 6.4, pp. 166-167"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 6, sec. 6.2, pp. 393-396"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:forward-commitment-risk-overlays"
+    ],
+    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 1 (futures and swap duration changes including Hull Example 6.5, currency forwards and swaps, hedged returns and equity beta changes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10922,15 +11598,35 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:volatility-derivative-applications",
     "def:vix-variance-dividend-swaps"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:vix-variance-dividend-swaps",
+    "meth:volatility-derivative-applications"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 26, sec. 26.16, pp. 629-632"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:volatility-derivative-applications",
+     "def:vix-variance-dividend-swaps"
+    ],
+    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 2 (variance and volatility swap payoffs, Hull Examples 15.8 and 26.4-26.5 and a VIX futures hedge); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10942,13 +11638,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:derivative-overlay-allocation"
+   ],
+   "candidate_entries": [
+    "meth:derivative-overlay-allocation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 62, pp. 1535-1537"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 11, sec. 3.4, pp. 715-716"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:derivative-overlay-allocation"
+    ],
+    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 3 (joint equity and rate targets, rebalancing with futures and expectations inferred from futures, OIS and options); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11075,13 +11795,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:cap-weighted-factor-indexing"
+   ],
+   "candidate_entries": [
+    "def:cap-weighted-factor-indexing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "chap. 14, pp. 449-451"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 7, secs. 4.2.1-4.2.3, pp. 422-429"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-ang.md",
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "def:cap-weighted-factor-indexing"
+    ],
+    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 2 (turnover, concentration and factor exposures of cap-weighted against factor-based indexes on a synthetic universe); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11095,13 +11839,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:index-equity-portfolio-construction"
+   ],
+   "candidate_entries": [
+    "meth:index-equity-portfolio-construction"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 7, sec. 4.2.1, pp. 425-426"
+     },
+     {
+      "key": "alpha-grinold",
+      "locator": "chap. 14, pp. 394-395"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/alpha-grinold.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:index-equity-portfolio-construction"
+    ],
+    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 3 (full replication, stratified sampling and optimisation tracking error and cash drag against futures equitisation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11115,13 +11883,52 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:active-equity-strategies"
+   ],
+   "candidate_entries": [
+    "def:active-equity-strategies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 7, secs. 5.1.1-5.1.3 and 9.1, pp. 432-436 and 474"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "chap. 14, pp. 449-451"
+     },
+     {
+      "key": "wide-brav-activism",
+      "locator": "pp. 1729-1731"
+     },
+     {
+      "key": "gatev-pairs-trading-1999",
+      "locator": "secs. I and III, pp. 1-8"
+     },
+     {
+      "key": "avellaneda-lee-statarb-2009",
+      "locator": "abstract"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/wide-brav-activism.md",
+     "notes/readings/gatev-pairs-trading-1999.md",
+     "notes/readings/avellaneda-lee-statarb-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "def:active-equity-strategies"
+    ],
+    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 4 (fundamental against quantitative information ratios through skill and breadth); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11134,13 +11941,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:active-equity-strategy-creation"
+   ],
+   "candidate_entries": [
+    "meth:active-equity-strategy-creation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 7, sec. 5.4, pp. 454-455"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:active-equity-strategy-creation"
+    ],
+    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 5 (holdings-based style classification on a synthetic universe); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11154,13 +11980,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:active-equity-portfolio-construction"
+   ],
+   "candidate_entries": [
+    "meth:active-equity-portfolio-construction"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "alpha-grinold",
+      "locator": "chap. 14, p. 393"
+     },
+     {
+      "key": "cremers-petajisto-2009",
+      "locator": "sec. 2.2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/alpha-grinold.md",
+     "notes/readings/cremers-petajisto-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:active-equity-portfolio-construction"
+    ],
+    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 6 (Active Share against active risk, a factor and specific risk budget and a binding risk limit); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11173,13 +12023,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:equity-portfolio-capacity-structure"
+   ],
+   "candidate_entries": [
+    "meth:equity-portfolio-capacity-structure"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "alpha-grinold",
+      "locator": "chap. 16, p. 456"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/alpha-grinold.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:equity-portfolio-capacity-structure"
+    ],
+    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 7 (capacity, liquidation days, turnover cost and transfer coefficients of long-only and 130/30 portfolios by constrained optimisation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11194,13 +12063,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:immunisation-liabilities"
+   ],
+   "candidate_entries": [
+    "meth:immunisation-liabilities"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 6, sec. 4.1.1, pp. 348-351"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:immunisation-liabilities"
+    ],
+    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 4 (MIP's single-liability immunisation, barbell and bullet under shifts and twists, dispersion, and multiple-liability conditions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11214,13 +12102,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:bond-index-exposure-benchmarks"
+   ],
+   "candidate_entries": [
+    "meth:bond-index-exposure-benchmarks"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 43, p. 1081"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:bond-index-exposure-benchmarks"
+    ],
+    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 5 (index replication counts, stratified sampling tracking error and a liability-matched benchmark choice); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11233,13 +12140,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:yield-curve-positioning"
+   ],
+   "candidate_entries": [
+    "meth:yield-curve-positioning"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 32, p. 724; chap. 57, pp. 1418-1425"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 6, sec. 6.2, pp. 393-396"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:yield-curve-positioning"
+    ],
+    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 6 (market-consistent, level, slope, curvature, volatility and hedged cross-currency positions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11252,13 +12183,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:curve-strategy-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:curve-strategy-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 43, pp. 1083-1084"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:curve-strategy-evaluation"
+    ],
+    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 7 (active key-rate durations, scenario returns and the expected return and tracking risk of a curve strategy); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11350,16 +12300,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:trade-strategy-selection",
+    "def:execution-benchmark"
+   ],
    "candidate_entries": [
     "meth:algorithm-benchmark-choice",
-    "mod:almgren-chriss-execution"
+    "mod:almgren-chriss-execution",
+    "meth:trade-strategy-selection",
+    "def:execution-benchmark"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 10, sec. 4, pp. 663-667"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:trade-strategy-selection",
+     "def:execution-benchmark"
+    ],
+    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 3 (Almgren-Chriss schedules at three risk aversions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11371,13 +12342,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:trade-implementation-by-market"
+   ],
+   "candidate_entries": [
+    "def:trade-implementation-by-market"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 44, pp. 1097-1099"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "def:trade-implementation-by-market"
+    ],
+    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 4 (illustrative costs of a 50 million trade in five markets); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11391,15 +12381,43 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "meth:transaction-cost-analysis"
+   "entries": [
+    "meth:trade-execution-evaluation-governance"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "meth:transaction-cost-analysis",
+    "meth:trade-execution-evaluation-governance"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 10, sec. 6.1, pp. 679-680"
+     },
+     {
+      "key": "finra-rule-5310",
+      "locator": "Rule 5310(a)(1) and Supplementary Material .09"
+     },
+     {
+      "key": "eu-2014-65-mifid2",
+      "locator": "art. 27(1), (4)-(5), (7)-(8)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/finra-rule-5310.md",
+     "notes/readings/eu-2014-65-mifid2.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:trade-execution-evaluation-governance"
+    ],
+    "example": "notes/artefacts/trade-execution/trade-execution-checks.py part 5 (a z-score against a pre-trade estimate, a broker comparison with a significance test and the sample size needed); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11432,13 +12450,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "ex:endowment-derivative-overlay-case"
+   ],
+   "candidate_entries": [
+    "ex:endowment-derivative-overlay-case"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 11, sec. 3.4, pp. 715-716"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/managing-investment-portfolios-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
+    "entry_evidence": [
+     "ex:endowment-derivative-overlay-case"
+    ],
+    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 4 (cash against futures for rebalancing and a tactical tilt with scenario outcomes (illustrative)); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {

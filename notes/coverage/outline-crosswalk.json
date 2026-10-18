@@ -8971,9 +8971,9 @@
    "objectives": [
     "objective:compare-short-term-funding"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:short-term-funding-repo compares bank lines, commercial paper with backup lines and letters of credit for companies, and the six liquidity sources of financial institutions with the stability of wholesale and retail deposits, with an original 90-day cost comparison.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m054:b02",
@@ -8991,9 +8991,9 @@
    "objectives": [
     "objective:compare-short-term-funding"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:short-term-funding-repo describes repos (interest, haircut, margin, delivery, tri-party, bankruptcy treatment, rate determinants), their uses, benefits and risks, with the Handbook's repo examples and an original margin call.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m054:b03",
@@ -10173,9 +10173,9 @@
    "objectives": [
     "objective:explain-option-value-drivers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:option-value-drivers explains exercise value, moneyness and time value (with meth:option-payoff-profit), including negative time value for a deep in-the-money European put.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m077:b02",
@@ -10214,9 +10214,9 @@
    "objectives": [
     "objective:explain-option-value-drivers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:option-value-drivers identifies the six factors and the direction of each effect, checked by bumping each input of Hull's base case, with the dividend and rate caveats.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m078:b01",
@@ -10234,9 +10234,9 @@
    "objectives": [
     "objective:apply-put-call-parity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: res:put-call-forward-parity explains put-call parity with Hull's arbitrage examples and synthetic positions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m078:b02",
@@ -10254,9 +10254,9 @@
    "objectives": [
     "objective:apply-put-call-parity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: res:put-call-forward-parity explains put-call-forward parity, c - p = (F - K)e^{-rT}, with Hull's Example 18.5 and an original check against Black-Scholes prices.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m079:b01",
@@ -10274,9 +10274,9 @@
    "objectives": [
     "objective:value-one-period-binomial"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:one-period-binomial-valuation explains the riskless hedge and replication that value a derivative in a one-period model, with Hull's 0.545 call and an original arbitrage.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m079:b02",
@@ -10294,9 +10294,9 @@
    "objectives": [
     "objective:value-one-period-binomial"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:one-period-binomial-valuation describes risk neutrality and shows that the real-world probability does not enter (0.7 against the risk-neutral 0.5503).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m080:b01",
@@ -16784,9 +16784,9 @@
    "objectives": [
     "objective:value-option-free-bond-arbitrage-free"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:arbitrage-free-bond-valuation explains arbitrage-free valuation as the law of one price on cash flows and the requirement that a lattice be calibrated.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m027:b02",
@@ -16804,9 +16804,9 @@
    "objectives": [
     "objective:value-option-free-bond-arbitrage-free"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:arbitrage-free-bond-valuation calculates the arbitrage-free value of the Handbook's 6.5% bond from bootstrapped spot rates (104.643) and the arbitrage at a different price.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m027:b03",
@@ -16824,9 +16824,9 @@
    "objectives": [
     "objective:build-binomial-rate-tree"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:binomial-rate-tree-calibration describes the lognormal binomial framework, adjacent-rate relation and node valuation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m027:b04",
@@ -16844,9 +16844,9 @@
    "objectives": [
     "objective:build-binomial-rate-tree"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:binomial-rate-tree-calibration describes calibration date by date to par bonds, reproducing the Handbook's trial and calibrated rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m027:b05",
@@ -16865,9 +16865,9 @@
    "objectives": [
     "objective:build-binomial-rate-tree"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:binomial-rate-tree-calibration describes backward induction and calculates node values; the calibrated tree reprices every par bond.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m027:b06",
@@ -16885,9 +16885,9 @@
    "objectives": [
     "objective:value-option-free-bond-arbitrage-free"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:arbitrage-free-bond-valuation compares zero-curve and lattice pricing: identical for option-free bonds, the lattice needed when cash flows depend on rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m027:b07",
@@ -16906,9 +16906,9 @@
    "objectives": [
     "objective:build-binomial-rate-tree"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:binomial-rate-tree-calibration describes pathwise valuation and calculates the bond's value as the average over all eight paths.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m027:b08",
@@ -16926,9 +16926,9 @@
    "objectives": [
     "objective:describe-term-structure-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: mod:term-structure-models-simulation describes Monte Carlo simulation of rate paths, its four steps and its use for path-dependent securities such as MBS, with a sampled-path check and a path-dependent note.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m027:b09",
@@ -16946,9 +16946,9 @@
    "objectives": [
     "objective:describe-term-structure-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: mod:term-structure-models-simulation describes equilibrium and no-arbitrage short-rate models and their uses, with Vasicek and Ho-Lee checks.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b01",
@@ -16966,9 +16966,9 @@
    "objectives": [
     "objective:value-callable-putable-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:callable-putable-bond-valuation describes callable, putable, extendible, sinking-fund, capped and floored and convertible bonds, linked to the contingency entries.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b02",
@@ -16986,9 +16986,9 @@
    "objectives": [
     "objective:value-callable-putable-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:callable-putable-bond-valuation explains callable = straight - call and putable = straight + put, with the Handbook's 1.745 call and 0.684 put.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b03",
@@ -17006,9 +17006,9 @@
    "objectives": [
     "objective:value-callable-putable-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:callable-putable-bond-valuation describes the exercise rules applied node by node on the calibrated tree.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b04",
@@ -17026,9 +17026,9 @@
    "objectives": [
     "objective:value-callable-putable-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:callable-putable-bond-valuation explains and shows the volatility effect: at 20% volatility the callable falls to 102.108 and the putable rises to 106.010.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b05",
@@ -17046,9 +17046,9 @@
    "objectives": [
     "objective:value-callable-putable-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:callable-putable-bond-valuation explains level and shape effects with original recalibrations (rates +100 bp; a flat 4.5% curve).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b06",
@@ -17066,9 +17066,9 @@
    "objectives": [
     "objective:value-callable-putable-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:callable-putable-bond-valuation calculates callable and putable values from the tree (102.899, 105.327) and step-up notes.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b07",
@@ -17086,9 +17086,9 @@
    "objectives": [
     "objective:calculate-option-adjusted-spread"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-adjusted-spread explains how OAS is computed (35 bp at 102.218) and used, against the Z-spread (67.8 bp, option cost 32.8 bp).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b08",
@@ -17106,9 +17106,9 @@
    "objectives": [
     "objective:calculate-option-adjusted-spread"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-adjusted-spread explains and shows that a higher assumed volatility lowers the callable's OAS (to -6.0 bp at 20%).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b09",
@@ -17127,9 +17127,9 @@
    "objectives": [
     "objective:measure-embedded-option-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:embedded-option-effective-duration calculates effective duration at constant OAS (2.24 for the callable) and interprets it.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b10",
@@ -17147,9 +17147,9 @@
    "objectives": [
     "objective:measure-embedded-option-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:embedded-option-effective-duration compares effective durations of callable (2.239), putable (2.816) and straight (3.517) bonds.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b11",
@@ -17167,9 +17167,9 @@
    "objectives": [
     "objective:measure-embedded-option-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:embedded-option-effective-duration describes one-sided durations (2.142 and 2.335) and key-rate durations of callable and straight bonds, with meth:curve-based-empirical-duration.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b12",
@@ -17187,9 +17187,9 @@
    "objectives": [
     "objective:measure-embedded-option-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:embedded-option-effective-duration compares effective convexities: negative for the callable, positive for putable and straight bonds.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b13",
@@ -17207,9 +17207,9 @@
    "objectives": [
     "objective:value-capped-floored-floaters"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:capped-floored-floater-valuation calculates capped (99.724, 99.858) and floored (100.992) floaters and a collared floater on the tree.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b14",
@@ -17227,9 +17227,9 @@
    "objectives": [
     "objective:value-convertible-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:convertible-bond-valuation describes convertible features from the Handbook's Tesla prototype: conversion ratio and price, contingent conversion, settlement, calls, make-whole and dilution protection.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b15",
@@ -17248,9 +17248,9 @@
    "objectives": [
     "objective:value-convertible-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:convertible-bond-valuation calculates and interprets parity, bond floor, conversion, points and investment premiums and minimum value.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b16",
@@ -17268,9 +17268,9 @@
    "objectives": [
     "objective:value-convertible-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:convertible-bond-valuation describes arbitrage-free valuation on a stock tree with default, reproducing Hull's 107.44.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m028:b17",
@@ -17288,9 +17288,9 @@
    "objectives": [
     "objective:value-convertible-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:convertible-bond-valuation compares convertible risk and return with the straight bond and the stock (stages; +21.0% / -9.6% for a 30% stock move).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m029:b01",
@@ -17722,9 +17722,9 @@
    "objectives": [
     "objective:value-multi-period-binomial"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:multi-period-binomial-valuation describes and interprets the binomial model's components (u, d, p, steps).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b02",
@@ -17742,9 +17742,9 @@
    "objectives": [
     "objective:value-multi-period-binomial"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:multi-period-binomial-valuation describes option value as the risk-neutral expected payoff discounted at the risk-free rate.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b03",
@@ -17763,9 +17763,9 @@
    "objectives": [
     "objective:value-multi-period-binomial"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:multi-period-binomial-valuation identifies an option arbitrage (an American put quoted at 4.80) and describes it; meth:one-period-binomial-valuation gives the one-period case.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b04",
@@ -17783,9 +17783,9 @@
    "objectives": [
     "objective:value-multi-period-binomial"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:multi-period-binomial-valuation calculates two-period European (4.1927) and American (5.0896) puts.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b05",
@@ -17804,9 +17804,9 @@
    "objectives": [
     "objective:value-multi-period-binomial"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:multi-period-binomial-valuation calculates and interprets a two-period caplet on the calibrated rate tree (7,495).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b06",
@@ -17824,9 +17824,9 @@
    "objectives": [
     "objective:apply-black-scholes-merton"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: mod:black-scholes-merton lists the BSM assumptions; meth:black-model-rates-currencies applies them.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b07",
@@ -17844,9 +17844,9 @@
    "objectives": [
     "objective:apply-black-scholes-merton"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:black-model-rates-currencies interprets the call as N(d1) shares financed by borrowing (32.72 against 27.96, elasticity 6.88).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b08",
@@ -17864,9 +17864,9 @@
    "objectives": [
     "objective:apply-black-scholes-merton"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:black-model-rates-currencies describes BSM for equities and currencies (Garman-Kohlhagen) with Hull's Examples 15.6 and 17.2.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b09",
@@ -17884,9 +17884,9 @@
    "objectives": [
     "objective:apply-black-scholes-merton"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:black-model-rates-currencies describes Black's model for futures options with Hull's Examples 18.6-18.7.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b10",
@@ -17904,9 +17904,9 @@
    "objectives": [
     "objective:apply-black-scholes-merton"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:black-model-rates-currencies describes Black's model for caplets and swaptions with Hull's Examples 29.3-29.4 and cap-floor parity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b11",
@@ -17924,9 +17924,9 @@
    "objectives": [
     "objective:manage-option-greeks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:greeks-delta-gamma-hedging interprets delta, gamma, theta, vega and rho, with formulas in mod:black-scholes-merton.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b12",
@@ -17944,9 +17944,9 @@
    "objectives": [
     "objective:manage-option-greeks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:greeks-delta-gamma-hedging describes executing and rebalancing a delta hedge, with a simulation against Hull's Table 19.4.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b13",
@@ -17964,9 +17964,9 @@
    "objectives": [
     "objective:manage-option-greeks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:greeks-delta-gamma-hedging describes gamma risk with the gamma-theta identity against full revaluation and gamma-neutral hedging.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b14",
@@ -17985,9 +17985,9 @@
    "objectives": [
     "objective:manage-option-greeks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:greeks-delta-gamma-hedging defines implied volatility and explains its use in trading (quoting, VIX, implied against realised); def:implied-volatility-surface covers the smile.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b01",
@@ -19238,9 +19238,9 @@
    "objectives": [
     "objective:estimate-value-at-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition explains VaR in measuring portfolio risk, with meth:var-es-estimation-methods for definitions and backtesting.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b02",
@@ -19258,9 +19258,9 @@
    "objectives": [
     "objective:estimate-value-at-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition compares parametric, historical and Monte Carlo methods on one synthetic portfolio.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b03",
@@ -19279,9 +19279,9 @@
    "objectives": [
     "objective:estimate-value-at-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition estimates and interprets VaR by each method and reproduces RMFI's model-building example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b04",
@@ -19299,9 +19299,9 @@
    "objectives": [
     "objective:estimate-value-at-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition describes VaR's advantages and limits, including gaming and fat tails.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b05",
@@ -19319,9 +19319,9 @@
    "objectives": [
     "objective:estimate-value-at-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition describes extensions: ES, incremental, marginal and component VaR, CFaR, EaR, stressed VaR.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b06",
@@ -19340,9 +19340,9 @@
    "objectives": [
     "objective:apply-sensitivity-scenario-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:sensitivity-scenario-risk-measures describes sensitivity and scenario measures and compares them with VaR.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b07",
@@ -19360,9 +19360,9 @@
    "objectives": [
     "objective:apply-sensitivity-scenario-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:sensitivity-scenario-risk-measures demonstrates equity beta, bond duration and convexity and option delta-gamma-vega measures, including volatility risk.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b08",
@@ -19380,9 +19380,9 @@
    "objectives": [
     "objective:apply-sensitivity-scenario-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:sensitivity-scenario-risk-measures describes the use of sensitivities and of historical, management and reverse stress scenarios.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b09",
@@ -19400,9 +19400,9 @@
    "objectives": [
     "objective:apply-sensitivity-scenario-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:sensitivity-scenario-risk-measures describes their advantages and limits (local, no probability; subjective scenario probabilities).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b10",
@@ -19420,9 +19420,9 @@
    "objectives": [
     "objective:set-market-risk-limits"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:market-risk-limits-capital explains risk budgeting, position, VaR, scenario and stop-loss limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b11",
@@ -19440,9 +19440,9 @@
    "objectives": [
     "objective:set-market-risk-limits"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:market-risk-limits-capital explains risk measures in capital allocation and RAROC.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m041:b12",
@@ -19460,9 +19460,9 @@
    "objectives": [
     "objective:set-market-risk-limits"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:market-risk-limits-capital describes measures used by banks, asset managers, pension funds and insurers.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m042:b01",
@@ -21077,9 +21077,9 @@
    "objectives": [
     "objective:design-equity-portfolio-mandate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:equity-portfolio-roles-mandate describes the roles of equities (growth, diversification, long-run inflation hedge).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m006:b02",
@@ -21099,9 +21099,9 @@
    "objectives": [
     "objective:design-equity-portfolio-mandate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:equity-portfolio-roles-mandate describes segmentation by size and style, geography and sector.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m006:b03",
@@ -21121,9 +21121,9 @@
    "objectives": [
     "objective:design-equity-portfolio-mandate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:equity-portfolio-roles-mandate describes income (dividends, lending) and costs (fees, trading, taxes) with their effect on net return.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m006:b04",
@@ -21143,9 +21143,9 @@
    "objectives": [
     "objective:design-equity-portfolio-mandate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:equity-portfolio-roles-mandate describes the benefits of engagement and the manager's role, from the UK Stewardship Code 2026 and activism evidence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m006:b05",
@@ -21165,9 +21165,9 @@
    "objectives": [
     "objective:design-equity-portfolio-mandate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:equity-portfolio-roles-mandate describes rationales across passive, semiactive and active management and core-satellite.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m006:b06",
@@ -21187,9 +21187,9 @@
    "objectives": [
     "objective:design-equity-portfolio-mandate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:equity-portfolio-roles-mandate discusses benchmark choice (universe, style, investability, misfit).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m007:b01",
@@ -21209,9 +21209,9 @@
    "objectives": [
     "objective:classify-fixed-income-mandates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fixed-income-mandates-return-model discusses roles of bonds and liability-based and total-return mandates along the indexing-to-active spectrum.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m007:b02",
@@ -21231,9 +21231,9 @@
    "objectives": [
     "objective:classify-fixed-income-mandates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fixed-income-mandates-return-model describes duration, key-rate, spread-duration, convexity and tracking measures and the stock-bond correlation's effect.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m007:b03",
@@ -21254,9 +21254,9 @@
    "objectives": [
     "objective:classify-fixed-income-mandates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fixed-income-mandates-return-model describes bond-market liquidity by sub-sector and its effect on management.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m007:b04",
@@ -21277,9 +21277,9 @@
    "objectives": [
     "objective:classify-fixed-income-mandates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fixed-income-mandates-return-model describes and interprets an expected-return model with a worked benchmark.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m007:b05",
@@ -21299,9 +21299,9 @@
    "objectives": [
     "objective:manage-bond-leverage-and-tax"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:bond-leverage-taxation discusses leverage methods (repo, futures, swaps, lending) and their risks, with MIP's examples.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m007:b06",
@@ -21321,9 +21321,9 @@
    "objectives": [
     "objective:manage-bond-leverage-and-tax"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:bond-leverage-taxation discusses taxable against tax-exempt management (equivalent yield, non-deductible carry, loss harvesting, wash sales).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m007:b07",
@@ -21343,9 +21343,9 @@
    "objectives": [
     "objective:match-liabilities-with-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:liability-matching-ladders describes liability-driven investing and surplus risk.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m007:b08",
@@ -21365,9 +21365,9 @@
    "objectives": [
     "objective:match-liabilities-with-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:liability-matching-ladders describes cash-flow matching with an original least-cost dedicated portfolio.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m007:b09",
@@ -21387,9 +21387,9 @@
    "objectives": [
     "objective:match-liabilities-with-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:liability-matching-ladders describes the construction, benefits, limitations and risk-return of a ladder.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m008:b01",
@@ -21872,9 +21872,9 @@
    "objectives": [
     "objective:measure-execution-costs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:execution-cost-measures explains explicit and implicit components, with def:transaction-costs.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b02",
@@ -21895,9 +21895,9 @@
    "objectives": [
     "objective:measure-execution-costs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:execution-cost-measures calculates and interprets effective spreads and VWAP costs from MIP's examples.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b03",
@@ -21917,9 +21917,9 @@
    "objectives": [
     "objective:measure-execution-costs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:execution-cost-measures describes implementation shortfall and its components, with def:implementation-shortfall.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b04",
@@ -21939,9 +21939,9 @@
    "objectives": [
     "objective:explain-electronic-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:electronic-trading-environment describes the drivers of electronic trading.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b05",
@@ -21961,9 +21961,9 @@
    "objectives": [
     "objective:explain-electronic-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:electronic-trading-environment describes fragmentation, linking the venue-competition and dark-pool entries.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b06",
@@ -21984,9 +21984,9 @@
    "objectives": [
     "objective:explain-electronic-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:electronic-trading-environment identifies and contrasts electronic trader types by horizon, inventory and edge.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b07",
@@ -22006,9 +22006,9 @@
    "objectives": [
     "objective:explain-electronic-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:electronic-trading-environment describes trading systems and their uses (OMS/EMS, DMA, routers, co-location).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b08",
@@ -22028,9 +22028,9 @@
    "objectives": [
     "objective:explain-electronic-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:electronic-trading-environment describes low-latency advantages, with a stale-quote example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b09",
@@ -22050,9 +22050,9 @@
    "objectives": [
     "objective:explain-electronic-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:electronic-trading-environment describes the risks of electronic trading and their regulatory mitigation (market access, RTS 6, circuit breakers).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b10",
@@ -22072,9 +22072,9 @@
    "objectives": [
     "objective:explain-electronic-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:electronic-trading-environment describes abuses that surveillance seeks (spoofing, layering, momentum ignition, front running, quote stuffing, wash trades).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m012:b01",
@@ -23026,9 +23026,9 @@
    "objectives": [
     "objective:replicate-with-options"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-replication-deltas demonstrates replication of an asset's return with a call, a put and a bond.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b02",
@@ -23048,9 +23048,9 @@
    "objectives": [
     "objective:analyse-covered-and-protective-positions"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:covered-call-protective-put discusses covered calls: objective, structure, payoff, profit, maximum profit and loss, break-even and risks.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b03",
@@ -23070,9 +23070,9 @@
    "objectives": [
     "objective:analyse-covered-and-protective-positions"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:covered-call-protective-put discusses protective puts on the same list of points, with premium financing.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b04",
@@ -23092,9 +23092,9 @@
    "objectives": [
     "objective:replicate-with-options"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-replication-deltas compares deltas of covered calls and protective puts with long asset and short forward positions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b05",
@@ -23114,9 +23114,9 @@
    "objectives": [
     "objective:analyse-covered-and-protective-positions"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:covered-call-protective-put compares buying a call with selling a put on a short position.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b06",
@@ -23136,9 +23136,9 @@
    "objectives": [
     "objective:analyse-spread-and-volatility-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-spreads-volatility-strategies discusses bull and bear spreads, straddles and collars, with a table of objective, maximum profit and loss and break-even.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b07",
@@ -23158,9 +23158,9 @@
    "objectives": [
     "objective:analyse-spread-and-volatility-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-spreads-volatility-strategies describes calendar spreads and their uses (time decay, vega).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b08",
@@ -23180,9 +23180,9 @@
    "objectives": [
     "objective:analyse-spread-and-volatility-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-spreads-volatility-strategies discusses the skew and smile and their effect on collars, with def:implied-volatility-surface.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b09",
@@ -23203,9 +23203,9 @@
    "objectives": [
     "objective:select-option-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: ex:option-strategy-selection-case identifies and evaluates strategies against stated objectives and constraints.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m016:b10",
@@ -23225,9 +23225,9 @@
    "objectives": [
     "objective:select-option-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: ex:option-strategy-selection-case demonstrates options to reach targeted equity exposures (60% and 125%).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m017:b01",
@@ -23247,9 +23247,9 @@
    "objectives": [
     "objective:modify-risk-with-forward-commitments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:forward-commitment-risk-overlays demonstrates rate futures and swaps to change duration (Hull Example 6.5; an original 400-futures or 37.14m-swap change).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m017:b02",
@@ -23269,9 +23269,9 @@
    "objectives": [
     "objective:modify-risk-with-forward-commitments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:forward-commitment-risk-overlays demonstrates currency forwards and cross-currency swaps and hedged returns.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m017:b03",
@@ -23291,9 +23291,9 @@
    "objectives": [
     "objective:modify-risk-with-forward-commitments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:forward-commitment-risk-overlays demonstrates equity futures, forwards and swaps to change beta or create exposure.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m017:b04",
@@ -23313,9 +23313,9 @@
    "objectives": [
     "objective:use-volatility-derivatives"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:volatility-derivative-applications demonstrates variance and volatility swaps and VIX futures, with Hull's Examples 15.8 and 26.4-26.5; def:vix-variance-dividend-swaps gives the contracts.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m017:b05",
@@ -23335,9 +23335,9 @@
    "objectives": [
     "objective:apply-derivative-overlays"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:derivative-overlay-allocation demonstrates futures to target equity and rate exposures together.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m017:b06",
@@ -23357,9 +23357,9 @@
    "objectives": [
     "objective:apply-derivative-overlays"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:derivative-overlay-allocation demonstrates allocation changes, rebalancing and inferring expectations from futures, OIS and options.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m018:b01",
@@ -24059,9 +24059,9 @@
    "objectives": [
     "objective:compare-index-equity-approaches"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:cap-weighted-factor-indexing compares factor-based with cap-weighted indexing on turnover, concentration, exposures and tracking.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m029:b02",
@@ -24079,9 +24079,9 @@
    "objectives": [
     "objective:compare-index-equity-approaches"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:cap-weighted-factor-indexing compares approaches to index-based strategies: pure, smart-beta and factor investing.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m029:b03",
@@ -24099,9 +24099,9 @@
    "objectives": [
     "objective:compare-index-equity-approaches"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:cap-weighted-factor-indexing compares vehicles for index investing: index funds, ETFs, separate accounts, futures and swaps.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m029:b04",
@@ -24119,9 +24119,9 @@
    "objectives": [
     "objective:construct-index-equity-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:index-equity-portfolio-construction compares full replication, stratified sampling and optimisation, with a sampling example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m029:b05",
@@ -24139,9 +24139,9 @@
    "objectives": [
     "objective:construct-index-equity-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:index-equity-portfolio-construction discusses the causes and control of tracking error.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m029:b06",
@@ -24159,9 +24159,9 @@
    "objectives": [
     "objective:construct-index-equity-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:index-equity-portfolio-construction explains the sources of an index portfolio's return and risk.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m030:b01",
@@ -24179,9 +24179,9 @@
    "objectives": [
     "objective:compare-active-equity-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:active-equity-strategies compares fundamental and quantitative approaches through skill and breadth.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m030:b02",
@@ -24199,9 +24199,9 @@
    "objectives": [
     "objective:compare-active-equity-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:active-equity-strategies analyses bottom-up strategies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m030:b03",
@@ -24219,9 +24219,9 @@
    "objectives": [
     "objective:compare-active-equity-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:active-equity-strategies analyses top-down strategies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m030:b04",
@@ -24239,9 +24239,9 @@
    "objectives": [
     "objective:compare-active-equity-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:active-equity-strategies analyses factor-based strategies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m030:b05",
@@ -24259,9 +24259,9 @@
    "objectives": [
     "objective:compare-active-equity-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:active-equity-strategies analyses activist strategies with Brav et al.'s evidence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m030:b06",
@@ -24279,9 +24279,9 @@
    "objectives": [
     "objective:compare-active-equity-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:active-equity-strategies describes statistical arbitrage (Gatev et al.; Avellaneda and Lee) and microstructure strategies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m030:b07",
@@ -24299,9 +24299,9 @@
    "objectives": [
     "objective:create-active-equity-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-equity-strategy-creation describes the fundamental research process and sell disciplines.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m030:b08",
@@ -24319,9 +24319,9 @@
    "objectives": [
     "objective:create-active-equity-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-equity-strategy-creation describes the quantitative research process.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m030:b09",
@@ -24339,9 +24339,9 @@
    "objectives": [
     "objective:create-active-equity-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-equity-strategy-creation discusses returns- and holdings-based style classification with an example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m031:b01",
@@ -24359,9 +24359,9 @@
    "objectives": [
     "objective:construct-active-equity-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-equity-portfolio-construction describes how philosophy shapes construction.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m031:b02",
@@ -24379,9 +24379,9 @@
    "objectives": [
     "objective:construct-active-equity-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-equity-portfolio-construction discusses screens, stratification and optimisation and their trade-offs.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m031:b03",
@@ -24400,9 +24400,9 @@
    "objectives": [
     "objective:construct-active-equity-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-equity-portfolio-construction distinguishes Active Share from active risk and relates each to strategy types.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m031:b04",
@@ -24420,9 +24420,9 @@
    "objectives": [
     "objective:construct-active-equity-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-equity-portfolio-construction discusses risk budgeting with a factor and specific split.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m031:b05",
@@ -24441,9 +24441,9 @@
    "objectives": [
     "objective:construct-active-equity-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-equity-portfolio-construction discusses risk measures and limits and how a limit binds through mega-cap underweights.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m031:b06",
@@ -24461,9 +24461,9 @@
    "objectives": [
     "objective:evaluate-equity-portfolio-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:equity-portfolio-capacity-structure discusses AUM, position size, liquidity and turnover with capacity and cost calculations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m031:b07",
@@ -24481,9 +24481,9 @@
    "objectives": [
     "objective:evaluate-equity-portfolio-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:equity-portfolio-capacity-structure evaluates structures against mandates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m031:b08",
@@ -24501,9 +24501,9 @@
    "objectives": [
     "objective:evaluate-equity-portfolio-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:equity-portfolio-capacity-structure discusses long-only, long extension, long-short and equitised market-neutral structures with transfer coefficients.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m032:b01",
@@ -24521,9 +24521,9 @@
    "objectives": [
     "objective:immunise-liabilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:immunisation-liabilities evaluates single-liability strategies (zero, barbell, maturity-matched bond).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m032:b02",
@@ -24541,9 +24541,9 @@
    "objectives": [
     "objective:immunise-liabilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:immunisation-liabilities compares single- and multiple-liability strategies and their implementation (cash bonds, derivatives overlays, cash-flow matching).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m032:b03",
@@ -24562,9 +24562,9 @@
    "objectives": [
     "objective:immunise-liabilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:immunisation-liabilities evaluates strategies under parallel shifts and twists and selects one.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m032:b04",
@@ -24582,9 +24582,9 @@
    "objectives": [
     "objective:immunise-liabilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:immunisation-liabilities explains the risks of liability-relative management.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m032:b05",
@@ -24602,9 +24602,9 @@
    "objectives": [
     "objective:manage-bond-index-exposure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:bond-index-exposure-benchmarks discusses bond indexes and why they are hard to replicate.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m032:b06",
@@ -24622,9 +24622,9 @@
    "objectives": [
     "objective:manage-bond-index-exposure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:bond-index-exposure-benchmarks compares passive methods: replication, sampling, enhanced indexing, funds and derivatives.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m032:b07",
@@ -24643,9 +24643,9 @@
    "objectives": [
     "objective:manage-bond-index-exposure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:bond-index-exposure-benchmarks discusses benchmark criteria and justifies a liability-matched choice for an insurer.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m033:b01",
@@ -24663,9 +24663,9 @@
    "objectives": [
     "objective:evaluate-yield-curve-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:curve-strategy-evaluation describes the return effects of benchmark yield changes through active key-rate durations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m033:b02",
@@ -24683,9 +24683,9 @@
    "objectives": [
     "objective:position-for-yield-curve-views"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:yield-curve-positioning formulates positions under a market-consistent view.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m033:b03",
@@ -24703,9 +24703,9 @@
    "objectives": [
     "objective:position-for-yield-curve-views"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:yield-curve-positioning formulates positions for divergent level, slope and curvature views.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m033:b04",
@@ -24723,9 +24723,9 @@
    "objectives": [
     "objective:position-for-yield-curve-views"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:yield-curve-positioning formulates a volatility position (barbell against bullet).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m033:b05",
@@ -24743,9 +24743,9 @@
    "objectives": [
     "objective:evaluate-yield-curve-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:curve-strategy-evaluation evaluates key-rate durations against the benchmark with scenario returns.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m033:b06",
@@ -24763,9 +24763,9 @@
    "objectives": [
     "objective:position-for-yield-curve-views"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:yield-curve-positioning discusses curve strategies across currencies on a hedged basis.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m033:b07",
@@ -24783,9 +24783,9 @@
    "objectives": [
     "objective:evaluate-yield-curve-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:curve-strategy-evaluation evaluates expected return and tracking risk of a curve strategy.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b01",
@@ -25024,9 +25024,9 @@
    "objectives": [
     "objective:select-trading-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-strategy-selection discusses motives to trade and their urgency.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m035:b02",
@@ -25044,9 +25044,9 @@
    "objectives": [
     "objective:select-trading-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-strategy-selection discusses inputs to the choice of strategy.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m035:b03",
@@ -25064,9 +25064,9 @@
    "objectives": [
     "objective:select-trading-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-strategy-selection compares pre-trade, intraday and post-trade benchmarks, with def:execution-benchmark.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m035:b04",
@@ -25085,9 +25085,9 @@
    "objectives": [
     "objective:select-trading-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-strategy-selection recommends and justifies strategies for three orders, with mean-variance schedules.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m035:b05",
@@ -25105,9 +25105,9 @@
    "objectives": [
     "objective:select-trading-strategy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-strategy-selection describes algorithm classes and their selection.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m035:b06",
@@ -25125,9 +25125,9 @@
    "objectives": [
     "objective:compare-market-implementation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:trade-implementation-by-market contrasts implementation in equities, fixed income, listed and OTC derivatives and spot FX.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m035:b07",
@@ -25146,9 +25146,9 @@
    "objectives": [
     "objective:evaluate-trade-execution"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-execution-evaluation-governance explains how trade cost is measured and determined, with meth:execution-cost-measures.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m035:b08",
@@ -25166,9 +25166,9 @@
    "objectives": [
     "objective:evaluate-trade-execution"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-execution-evaluation-governance evaluates executions statistically (broker comparison, sample size).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m035:b09",
@@ -25186,9 +25186,9 @@
    "objectives": [
     "objective:evaluate-trade-execution"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-execution-evaluation-governance evaluates trading procedures against FINRA Rule 5310 and MiFID II article 27: policies, disclosures, reviews and records.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m036:b01",
@@ -25287,9 +25287,9 @@
    "objectives": [
     "objective:compare-derivative-and-cash-implementation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: ex:endowment-derivative-overlay-case analyses derivatives against cash markets on cost, speed, roll, margin, liquidity and tracking.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m036:b06",
@@ -25307,9 +25307,9 @@
    "objectives": [
     "objective:compare-derivative-and-cash-implementation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: ex:endowment-derivative-overlay-case demonstrates a futures overlay for rebalancing and a tactical tilt with scenario outcomes.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m036:b07",

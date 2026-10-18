@@ -77,6 +77,34 @@ In `interest-rate-risk.tex` (topic `interest-rate-risk`):
 
 All partly checked 2026-10-18, draft. Examples in `notes/artefacts/bond-valuation-risk/bond-valuation-checks.py` and `notes/artefacts/term-structure-dynamics/term-structure-checks.py`; human review is outstanding. Coverage records are editorial, not study. The existing `def:interest-rate-measures`, `conv:us-rate-quotation`, `mod:forward-rates-fra`, `mod:duration-convexity`, `meth:curve-trades-carry-rolldown`, `def:interest-rate-swaps` and `mod:multi-curve-fra-swap-valuation` are linked, not repeated; the single-curve examples are labelled and the multi-curve entry keeps the projection and discounting distinction.
 
+Written in the derivatives, portfolio and execution batch (2026-10-19):
+
+In `arbitrage-free-valuation.tex` (topic `arbitrage-free-bond-valuation`):
+
+- `meth:arbitrage-free-bond-valuation`: law of one price on cash flows, spot-curve value of the Handbook's 6.5% bond and the arbitrage at another price; zero-curve against lattice pricing.
+- `meth:binomial-rate-tree-calibration`: the lognormal tree, calibration date by date to par bonds, backward induction and pathwise valuation (Handbook chap. 36).
+- `mod:term-structure-models-simulation`: Monte Carlo rate paths for path-dependent securities; equilibrium (Vasicek) and no-arbitrage (Ho-Lee) short-rate models.
+
+In `embedded-option-bonds.tex` (topic `embedded-option-bonds`):
+
+- `meth:callable-putable-bond-valuation`: embedded-option types, callable and putable values on the calibrated tree, and the effects of volatility, level and shape.
+- `meth:option-adjusted-spread`: OAS against the Z-spread, option cost and the effect of assumed volatility.
+- `meth:embedded-option-effective-duration`: effective, one-sided and key-rate durations and effective convexity at constant OAS.
+- `meth:capped-floored-floater-valuation`: capped, floored and collared floaters on the tree (Fabozzi Fixed Income Analysis 2007, chap. 9).
+- `meth:convertible-bond-valuation`: convertible features, conversion measures and premiums, Hull's default-adjusted stock tree, and risk-return against the straight bond and stock.
+
+In `fixed-income-portfolio-management.tex` (topic `fixed-income-portfolio-management`):
+
+- `def:fixed-income-mandates-return-model`: roles of bonds, mandate types, portfolio risk measures, liquidity and an expected-return model.
+- `meth:bond-leverage-taxation`: leverage through repo, futures, swaps and lending, and taxable against tax-exempt management.
+- `meth:liability-matching-ladders`: liability-driven investing, cash-flow matching by linear programming and ladders.
+- `meth:immunisation-liabilities`: single- and multiple-liability immunisation, shifts and twists, implementation alternatives and risks (MIP chap. 6).
+- `meth:bond-index-exposure-benchmarks`: bond indexes, passive methods and benchmark choice.
+- `meth:yield-curve-positioning`: positions for market-consistent, divergent, volatility and cross-currency curve views.
+- `meth:curve-strategy-evaluation`: active key-rate durations, scenario returns and expected return and tracking risk.
+
+All partly checked 2026-10-19, draft. Examples in `notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py` and `notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py`; human review is outstanding. Coverage records are editorial, not study. `meth:curve-based-empirical-duration` is linked, not repeated.
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:fixed-income-market-size` resolved (SIFMA Fact Book highlights: global fixed-income debt $160.7 trillion and equity market capitalisation $157.8 trillion in 2025; the product-group ranking found ill-posed). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

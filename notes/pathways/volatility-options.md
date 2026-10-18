@@ -55,6 +55,26 @@ In `forward-commitment-valuation.tex` (topic `forward-commitment-valuation`):
 
 All partly checked 2026-10-18, draft. Examples in `notes/artefacts/forward-swap-valuation/forward-swap-checks.py`; human review is outstanding. Coverage records are editorial, not study. `def:derivative-contracts` and `res:cost-of-carry-forward-price` are extended by links, not repeated.
 
+Written in the derivatives, portfolio and execution batch (2026-10-19):
+
+In `option-valuation.tex` (topic `option-valuation`):
+
+- `def:option-value-drivers`: exercise and time value and the six factors, with signs checked by bumping Hull's base case.
+- `res:put-call-forward-parity`: put-call and put-call-forward parity with arbitrages and synthetic positions.
+- `meth:one-period-binomial-valuation`: hedge and replication, risk neutrality and the irrelevance of the real-world probability.
+- `meth:multi-period-binomial-valuation`: two-period European and American options, an option arbitrage and a caplet on the rate tree.
+- `meth:black-model-rates-currencies`: the BSM call as a levered share position, Garman-Kohlhagen, and Black's model for futures options, caplets and swaptions (Hull chaps. 15, 17, 18, 29).
+- `meth:greeks-delta-gamma-hedging`: Greeks, delta hedging against Hull's Table 19.4, gamma risk and implied volatility in trading.
+
+In `option-strategies.tex` (topic `option-strategies`):
+
+- `meth:option-replication-deltas`: replicating an asset with options and the deltas of hedged positions.
+- `meth:covered-call-protective-put`: covered calls, protective puts and short-position hedges.
+- `meth:option-spreads-volatility-strategies`: spreads, straddles, collars, calendar spreads and skew, with a summary table.
+- `ex:option-strategy-selection-case`: strategy choice for a single-stock holding and option positions targeting exposures.
+
+All partly checked 2026-10-19, draft. Examples in `notes/artefacts/option-valuation/option-valuation-checks.py` and `notes/artefacts/option-strategies/option-strategy-checks.py`; human review is outstanding. Coverage records are editorial, not study. `mod:black-scholes-merton`, `def:implied-volatility-surface` and `meth:option-payoff-profit` are linked, not repeated.
+
 ## Source verification after macro markets and pricing review
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.

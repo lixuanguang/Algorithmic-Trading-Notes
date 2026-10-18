@@ -1,0 +1,157 @@
+\section{Trade strategy, implementation across markets and execution governance}
+
+These entries take the portfolio manager's view of trading: measuring execution costs with worked numbers, the electronic environment trades meet, choosing a strategy, benchmark and algorithm for an order, how implementation differs across equity, bond, listed and OTC derivative and currency markets, and evaluating executions and the procedures behind them. Definitions of the benchmarks and of implementation shortfall are in \hyperref[def:execution-benchmark]{execution benchmarks} and \hyperref[def:implementation-shortfall]{implementation shortfall}. Numbers are checked in \texttt{notes/artefacts/trade-execution/trade-execution-checks.py}; market costs in the original examples are stated assumptions, not quotes.
+
+\begin{qfmethod}[Measuring execution costs: explicit and implicit components, and worked effective spread, VWAP and implementation-shortfall calculations with their interpretation]\label{meth:execution-cost-measures}
+\qffield{Statement} \emph{Components.} \emph{Explicit costs} are those ``for which a trader could be given a receipt'': commissions, taxes, stamp duties and fees. \emph{Implicit costs} have no receipt: market impact, missed trade opportunity costs and delay (slippage) \citep[chap.~10, sec.~3.1, pp.~654--656]{managing-investment-portfolios-2007}; definitions with their accounting split are in \hyperref[def:transaction-costs]{transaction costs}.
+
+\emph{Measures.}
+\begin{itemize}
+\item \emph{Effective spread}: twice the deviation of the execution price from the midquote when the order is entered, so price improvement and impact both show (pp.~644--645; \hyperref[def:spread-measures]{spread measures}).
+\item \emph{VWAP cost}: shares times the gap between the execution price and the day's VWAP. It is easy to compute but uninformative for large orders and open to gaming (p.~655).
+\item \emph{Implementation shortfall}: the paper portfolio's return less the actual portfolio's, decomposed into explicit costs, realised profit and loss, delay and missed trade opportunity cost, and adjusted for the market's move (pp.~657--659).
+\end{itemize}
+MIP compares VWAP and implementation shortfall (Exhibit~10-6). VWAP is quick, works best for small trades in non-trending markets and is gameable. Shortfall ties trading to the investment decision, but needs extensive data.
+
+\qffield{Practice} \emph{Reproduced} (MIP, chap.~10).
+\begin{itemize}
+\item \emph{Effective spread.} Buying 500 shares at 20.01 against a 19.97/20.03 quote gives a quoted spread of 0.06 and an effective spread of $2\times(20.01-20.00)=0.02$: price improvement.
+\item \emph{Alpha Company.} Three sells (200 at C\$10.15, 300 at 10.11, 500 at 10.01) have quoted spreads of 0.12, 0.11 and 0.14 and effective spreads of 0.06, 0.11 and 0.22. The average effective spread is 0.13 and the share-weighted one 0.155: the large order walked down the book (pp.~644--646).
+\item \emph{VWAP.} A 500-share buy at \texteuro157.25 against a VWAP of 156.00 has 625 of implicit cost, 650 with 25 of commission.
+\item \emph{Impulse Robotics.} The order is to buy 1{,}000 shares at a decision price of \pounds10.00. 700 fill at 10.07 a day late, with \pounds14 of commission, and the rest are cancelled with the stock at 10.08. The paper portfolio gains 80, the real one $-7$: a shortfall of 87, or 87 basis points. It splits into commissions 14, realised 14, delay 35 and missed trade 24. Adjusted for a 1 percent market rise with beta 1, it is $-13$ basis points.
+\end{itemize}
+
+\emph{Interpretation} (original). Against a pre-trade estimate of 40 basis points with a 30 basis point standard error, the 87 basis point outcome is a $z$-score of 1.57: worth a look, not proof of poor execution, because one order is a noisy sample.
+
+\qffield{Conditions} Midquotes and VWAPs need accurate, time-stamped market data; stale prices or poor transparency undermine every benchmark (p.~658). The market adjustment needs a beta.
+
+\qffield{Pitfalls} Judging a large order by VWAP. Ignoring the unfilled part of an order. Adding a spread measure to a shortfall that already includes it.
+
+\qffield{See also} \hyperref[def:implementation-shortfall]{implementation shortfall}; \hyperref[meth:trade-execution-evaluation-governance]{evaluating executions}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[Electronic trading: what drove it, fragmentation, the main types of electronic traders, trading systems, the advantages of low latency, the risks and how regulation mitigates them, and abuses that surveillance looks for]\label{def:electronic-trading-environment}
+\qffield{Statement} This entry links the parts of the compendium that describe today's electronic markets.
+\begin{itemize}
+\item \emph{Drivers.} Automation began with portfolio trades in the 1980s and rules-based trading in the 1990s, and grew into algorithmic trading that chooses horizon, style and venue \citep[chap.~10, sec.~5.3, pp.~670--673]{managing-investment-portfolios-2007}. Lower costs, decimal ticks, competition among venues and regulation pushed volume onto electronic order books (\hyperref[rule:us-equity-market-structure]{U.S.\ market structure}). In bonds, falling dealer capacity raised the demand for electronic liquidity \citep[chap.~44, pp.~1098--1099]{s7-fabozzifixed}.
+\item \emph{Fragmentation.} Trading in one security spreads across exchanges, alternative trading systems, dark pools and internalisers, linked by routing rules and smart routers (\hyperref[mech:venue-competition-fragmentation]{venue competition}; \hyperref[def:dark-pools-crossing]{dark pools}; \hyperref[def:smart-order-routing]{smart order routing}).
+\item \emph{Electronic traders.} The SEC's 2010 release describes passive market makers, arbitrageurs, structural traders (who exploit stale quotes and market structure) and directional traders, including order anticipation and momentum ignition (\hyperref[def:hft-strategies]{high-frequency strategies}). Buy-side institutions trade through algorithms and direct market access. MIP's motives (information, value, liquidity and passive traders) remain the basis of their urgency (sec.~4.1, pp.~664--667). The types contrast in horizon, inventory and edge (Interpretation): market makers hold little inventory and earn the spread; arbitrageurs and structural traders earn from speed and price relations; directional and order-anticipating traders take short-term views; the buy side trades large orders over hours or days and is the liquidity demand the others supply or anticipate.
+\item \emph{Systems.} Order and execution management systems, direct and sponsored market access, smart routers, co-location and direct data feeds (\hyperref[def:automated-trading-architecture]{trading architecture}).
+\item \emph{Low latency.} Speed matters absolutely and relative to competitors \citep[sec.~IV.B.2, pp.~57--58]{sec-concept-release-2010}. Faster traders can update quotes before being picked off, pick off others' stale quotes, and win queue priority; continuous markets reward the race (\hyperref[res:latency-arbitrage-arms-race]{latency arbitrage}; \hyperref[res:queue-position-value]{queue position}).
+\item \emph{Risks and mitigation.} Runaway algorithms and operational failures (\hyperref[ev:quant-implementation-failures]{Knight Capital}) and liquidity withdrawal and flash crashes (\hyperref[ev:may-2010-flash-crash]{May 2010}). U.S. brokers with market access must have controls that block erroneous orders and breaches of credit or capital thresholds \citep[17 CFR 240.15c3-5(b)]{cfr-240-15c3-5}. EU firms must test algorithms and keep kill functionality (\hyperref[rule:mifid-rts6-algorithmic-controls]{RTS~6}). Circuit breakers and limit-up/limit-down bands pause trading (\hyperref[mech:circuit-breakers-trading-halts]{circuit breakers}).
+\item \emph{Abuses.} Surveillance looks for spoofing and layering (\hyperref[rule:spoofing-securities-markets]{spoofing}), momentum ignition and front running (FINRA Rule~5270, in \hyperref[def:hft-strategies]{high-frequency strategies}), quote stuffing and wash trades (Interpretation).
+\end{itemize}
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Stale quotes.} A dealer's stale 500-share bid at 50.00, hit when fair value has moved to 49.98, loses 10.00.
+\item \emph{The spread that pays for it.} If 10 percent of the dealer's fills are such pick-offs, they cost 0.002 a share on average. A 0.005 half-spread then leaves 0.003 net, and the dealer breaks even at a 0.002 half-spread.
+\end{itemize}
+That is why a dealer pays for speed (to cancel first) and why slower liquidity providers quote wider spreads. Investors pay that cost through the spread.
+
+\qffield{Conditions} Market-structure descriptions are dated in the linked entries; rules change, and venue, fee and latency details differ across markets and jurisdictions.
+
+\qffield{Pitfalls} Treating high-frequency trading as one strategy. Assuming fragmentation always raises costs: competition can narrow spreads while splitting depth. Equating a cancelled order with manipulation; intent decides spoofing.
+
+\qffield{See also} \hyperref[def:market-regulation-design]{regulation as market design}; \hyperref[meth:trade-strategy-selection]{choosing a strategy}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Choosing a trading strategy: trade motives and urgency, inputs to the choice, execution benchmarks, algorithm classes, and a recommended strategy for three orders]\label{meth:trade-strategy-selection}
+\qffield{Statement} \emph{Motives and urgency.} The keystone of the choice is urgency, the importance of certainty of execution \citep[chap.~10, sec.~4, pp.~663--667]{managing-investment-portfolios-2007}.
+\begin{itemize}
+\item \emph{Information-motivated} traders need speed before their information decays.
+\item \emph{Value-motivated} traders wait for prices to come to their value.
+\item \emph{Liquidity-motivated} traders need to move cash or exposure.
+\item \emph{Passive} traders rebalance index portfolios and minimise cost.
+\end{itemize}
+Each favours different order types and venues (sec.~4.2, pp.~665--666).
+
+\emph{Inputs.}
+\begin{itemize}
+\item \emph{Order}: size relative to volume, side, urgency, and the client's constraints.
+\item \emph{Security}: spread, volatility, liquidity, and whether it trades in an auction.
+\item \emph{Market}: current liquidity, news, and the time of day.
+\item \emph{Risk aversion}: the trader's tolerance for the timing risk of trading slowly against the impact of trading fast (MIP, sec.~5.1, pp.~666--668; \hyperref[mod:almgren-chriss-execution]{mean--variance execution}).
+\end{itemize}
+\emph{Benchmarks.} Pre-trade benchmarks (decision, previous close, arrival) suit urgent and information-driven orders. Intraday benchmarks (VWAP, TWAP) suit orders that can be spread across the day. Post-trade benchmarks (the close) suit index orders measured against the close (\hyperref[def:execution-benchmark]{execution benchmarks}; \hyperref[meth:algorithm-benchmark-choice]{choosing a benchmark}).
+
+\emph{Algorithm classes} (MIP, sec.~5.3.2, pp.~673--677).
+\begin{itemize}
+\item \emph{Simple logical participation}: VWAP, TWAP and percentage of volume.
+\item \emph{Implementation shortfall} (arrival price): minimises expected cost plus $\lambda$ times the variance of cost, and is front-loaded.
+\item \emph{Opportunistic}: pegging and discretion, hidden orders and crossing.
+\item \emph{Specialised}: market-on-close, and smart routing as a form of algorithmic trading.
+\end{itemize}
+
+\qffield{Practice} \emph{Mean--variance schedules} (original, Almgren--Chriss with illustrative parameters: 1 million shares, five days, daily volatility 0.95, temporary impact $2.5\times10^{-6}$, fixed cost 0.0625, permanent impact $2.5\times10^{-7}$). With no risk aversion the schedule is linear (TWAP-like), with expected cost 682{,}500 and standard deviation 1{,}189{,}588. Risk aversions of $10^{-6}$ and $10^{-5}$ front-load the trades, raising expected cost to 958{,}704 and 2{,}508{,}655 and cutting the standard deviation to 801{,}877 and 398{,}489.
+
+\emph{Recommendations} (Interpretation).
+\begin{itemize}
+\item \emph{An information-driven buy of a small cap} on news: urgency high and the edge decays. Use an arrival-price algorithm with high risk aversion, or a block with a dealer, benchmarked to arrival.
+\item \emph{An index fund's rebalance} at an index change: the benchmark is the close. Use market-on-close orders, starting early only if the order is large relative to auction volume.
+\item \emph{A value manager's large purchase} with no news: low urgency. Use participation or liquidity-seeking algorithms with price limits over several days, benchmarked to arrival with VWAP as a diagnostic, and accept some opportunity cost.
+\end{itemize}
+
+\qffield{Conditions} Model schedules need impact and volatility estimates; they guide, but real algorithms adapt to fills and news. The benchmark must be set before trading to avoid gaming.
+
+\qffield{Pitfalls} Measuring an urgent trade against VWAP. Using one algorithm for every order. Choosing high risk aversion for an order with no information to protect.
+
+\qffield{See also} \hyperref[mod:almgren-chriss-execution]{mean--variance execution}; \hyperref[def:trading-envelope]{trading envelope}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[Implementing trades across markets: equities, fixed income, listed derivatives, OTC derivatives and spot currencies contrasted]\label{def:trade-implementation-by-market}
+\qffield{Statement} Market structure decides how a trade is implemented (Interpretation, building on the linked entries).
+\begin{itemize}
+\item \emph{Equities.} Continuous electronic order books with opening and closing auctions, many lit and dark venues, and algorithms and smart routers. Most trading is agency and anonymous, with broker risk capital for blocks and portfolio trades (\hyperref[def:portfolio-trading]{portfolio trading}; \hyperref[def:dark-pools-crossing]{dark pools}).
+\item \emph{Fixed income.} Mostly over-the-counter and dealer-intermediated: bilateral or request-for-quote (RFQ) trading, electronic platforms and all-to-all protocols. Liquidity is concentrated in recent issues; prices depend on size, and the executed price can differ much from a screen quote (\citep[chap.~44, pp.~1097--1099]{s7-fabozzifixed}; \hyperref[def:fixed-income-market-structure]{fixed-income market structure}).
+\item \emph{Listed derivatives.} Central limit order books with central clearing and daily margin. Block trades and exchanges for related positions are permitted off the book under exchange rules (\hyperref[conv:cme-globex-trading]{Globex}; \hyperref[conv:futures-block-efrp]{blocks and EFRPs}).
+\item \emph{OTC derivatives.} Bilateral or on swap execution facilities by RFQ or order book, with mandatory clearing for standard swaps and margin for uncleared ones. Each trade carries documentation and counterparty or clearing costs (\hyperref[def:derivative-markets-otc-exchange]{OTC and exchange markets}; \hyperref[mech:otc-clearing-collateral]{clearing and collateral}).
+\item \emph{Spot currencies.} A decentralised dealer market with electronic communication networks, single-dealer and multi-dealer platforms, internalisation, last look and fixings (\hyperref[def:fx-market-structure]{FX market structure}; \hyperref[mech:fx-last-look]{last look}).
+\end{itemize}
+Consequences: transparency, the role of dealers, costs, the choice of benchmark and the meaning of best execution differ by market.
+
+\qffield{Practice} \emph{Original} (50 million one way, illustrative assumptions, not quotes).
+\begin{itemize}
+\item \emph{Large-cap equities}: a half-spread of 1.5 basis points plus 4 of impact, 27{,}500.
+\item \emph{Investment-grade corporate bond} by RFQ: a 10 basis point half-spread, 50{,}000.
+\item \emph{Ten-year Treasury futures}: half a tick on 476 contracts, 3{,}719.
+\item \emph{Ten-year SOFR swap} on a SEF: 0.25 basis points on a DV01 of 44{,}000 per basis point, 11{,}000.
+\item \emph{EUR/USD spot}: a 0.3 pip half-spread, 750.
+\end{itemize}
+The ranking follows liquidity and protocol. Futures and FX are cheapest in liquid sizes; corporate bonds cost most and depend on dealer balance sheets. So a manager adjusting duration quickly uses futures, then trades the cash bonds patiently (\hyperref[ex:endowment-derivative-overlay-case]{overlays}).
+
+\qffield{Conditions} Costs vary greatly with size, time and conditions; these figures illustrate structure, not current quotes.
+
+\qffield{Pitfalls} Applying equity TCA benchmarks to RFQ bond trades. Ignoring the cost of clearing, margin and documentation in comparing OTC and listed derivatives. Treating a last-look FX quote as firm.
+
+\qffield{See also} \hyperref[meth:trade-strategy-selection]{choosing a strategy}; \hyperref[def:best-execution]{best execution}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Evaluating trade execution and trading governance: measuring and attributing cost, judging an execution against benchmarks and peers with statistical care, and the policies, disclosures, reviews and records of best execution]\label{meth:trade-execution-evaluation-governance}
+\qffield{Statement} \emph{Measuring and determining cost.} Choose the benchmark before trading, measure implementation shortfall with its components, and adjust for the market's move (\hyperref[meth:execution-cost-measures]{cost measures}). Compare realised cost with a pre-trade estimate, as a $z$-score, and with peers trading similar orders (\hyperref[meth:transaction-cost-analysis]{transaction cost analysis}).
+
+\emph{Evaluating.} Best execution ``is a prospective, statistical, and qualitative concept''. It can be measured ex post over many trades, but not trade by trade: one would not judge a card player on one hand \citep[chap.~10, sec.~6.1, pp.~679--680]{managing-investment-portfolios-2007}.
+
+\emph{Governance.} The 2002 trade-management guidelines summarised in MIP call for processes, disclosures and record keeping. Current rules require the following (pp.~679--681).
+\begin{itemize}
+\item \emph{U.S. broker-dealers} must use reasonable diligence to find the best market so that the price to the customer is as favourable as possible under prevailing conditions, considering the character of the market, the size and type of transaction, the number of markets checked, the accessibility of the quotation and the order's terms. Firms that route or internalise order flow must review execution quality ``regular and rigorous'', at least quarterly, by security and order type: price improvement and disimprovement, fill likelihood, speed, size, cost, customer needs and payment-for-order-flow arrangements. They must change routing or justify not changing it \citep[Rule~5310(a)(1) and Supplementary Material~.09]{finra-rule-5310}.
+\item \emph{EU investment firms} must take ``all sufficient steps to obtain \dots\ the best possible result'', considering price, costs, speed, likelihood of execution and settlement, size and nature. For retail clients this is total consideration. Firms must have an order execution policy naming venues, disclose it and obtain consent, monitor it regularly and correct deficiencies, and be able to demonstrate compliance on request \citep[art.~27(1), (4)--(5), (7)--(8)]{eu-2014-65-mifid2}.
+\end{itemize}
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Comparing brokers.} Broker B's average shortfall is 7 basis points worse than A's: 32 against 25, with a standard deviation of 40, over 100 and 120 orders. The difference gives $t=1.29$ ($p=0.20$), not significant. Detecting a 7 basis point difference at the 5 percent level with this dispersion needs about 250 orders per broker, or a matched comparison of similar orders.
+\item \emph{Governance decision.} Keep both brokers, route comparable orders to each to build the sample, and record the review and its rationale for the quarterly best-execution file.
+\end{itemize}
+
+\qffield{Conditions} U.S. rule text as retrieved from FINRA on 19~October~2026 (last amended 2014). MiFID~II article~27 as originally enacted in 2014; later amendments to the reporting paragraphs, 27(3) and (6), were not reviewed.
+
+\qffield{Pitfalls} Ranking brokers on raw averages without regard to order difficulty or sample size. Treating a policy document as compliance without the reviews and records behind it. Letting soft-dollar arrangements influence routing (\hyperref[def:broker-agency-conflicts]{broker conflicts}).
+
+\qffield{See also} \hyperref[def:best-execution]{best execution}; \hyperref[meth:execution-cost-measures]{cost measures}.
+
+\end{qfmethod}

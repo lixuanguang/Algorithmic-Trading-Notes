@@ -90,6 +90,23 @@ In `active-management.tex` (topic `active-management-analysis`):
 
 All partly checked 2026-10-18, draft. Examples in `notes/artefacts/investment-planning/investment-planning-checks.py` and `notes/artefacts/active-management-analysis/active-management-checks.py`; human review is outstanding. Coverage records are editorial, not study.
 
+Written in the derivatives, portfolio and execution batch (2026-10-19):
+
+In `market-risk-measurement.tex` (topic `market-risk-measurement`):
+
+- `meth:portfolio-var-methods-decomposition`: parametric, historical and Monte Carlo VaR on one portfolio, ES and VaR decompositions (RMFI 6th ed.).
+- `meth:sensitivity-scenario-risk-measures`: beta, duration, convexity and option Greeks as risk measures; historical, hypothetical and reverse stress tests.
+- `meth:market-risk-limits-capital`: risk budgets and limits, capital allocation with RAROC, and measures by institution type.
+
+In `derivative-overlays.tex` (topic `derivative-overlay-strategies`):
+
+- `meth:forward-commitment-risk-overlays`: futures and swaps for duration, currency forwards and swaps, and equity futures, forwards and swaps for beta.
+- `meth:volatility-derivative-applications`: variance and volatility swaps and VIX futures.
+- `meth:derivative-overlay-allocation`: targeting equity and rate exposure together, rebalancing, and expectations inferred from derivative prices.
+- `ex:endowment-derivative-overlay-case`: cash against futures for rebalancing and a tactical tilt (illustrative).
+
+All partly checked 2026-10-19, draft. Examples in `notes/artefacts/market-risk-measurement/market-risk-checks.py` and `notes/artefacts/derivative-overlays/overlay-checks.py`; human review is outstanding. Coverage records are editorial, not study. `meth:var-es-estimation-methods` and `def:vix-variance-dividend-swaps` are linked, not repeated.
+
 ## Source verification after macro markets and pricing review
 
 method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `ev:trend-following-evidence` resolved by merge into `def:alpha-model-taxonomy`'s pitfalls (Moskowitz, Ooi and Pedersen's abstract; Hurst, Ooi and Pedersen's 1880-2016 Exhibit 1: 7.3 percent net, 9.7 percent volatility, Sharpe 0.76, drawdowns up to 25 percent). The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.

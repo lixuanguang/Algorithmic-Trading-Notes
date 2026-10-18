@@ -4286,3 +4286,73 @@ Check counts: at `642e29c` the scripts executed 90 (bond), 64 (forward and swap)
 Coverage: three objectives were reassessed against the corrected text and remain covered: `explain-bond-legal-tax-factors`, `value-rate-and-bond-forwards` and `value-forward-contracts`. The two outline items whose passages changed, `outline:7099c7688942:m052:b02` and `outline:0242f4b7ba07:m031:b04`, carry re-review notes. Counts are unchanged: 101 of 424 objectives; 125 Level I, 31 Level II and 37 shared-core items covered.
 
 Limits: the holiday calendar is not modelled beyond the weekend rule. The repo curve is flat and simple, so the replication's coupon leg uses the curve forward rather than a quoted forward repo. The tax example omits state taxes, AMT, premium, stripped and short-term obligations and elections.
+
+## Derivatives, portfolio and execution batch, 19 October 2026
+
+Forty-five objectives in ten topics, the batch size of plan Section 17.4: short-term funding (1), arbitrage-free bond valuation (3), bonds with embedded options (5), option valuation (6), option strategies (4), derivative overlay strategies (4), market risk measurement (3), fixed-income portfolio management (7), equity portfolio management (7) and trade execution (5). Branch `codex/derivatives-portfolio-execution-20261019`, from `codex/fixed-income-derivatives-20261018` at `f320d35` (draft PR #24, unmerged). Source checks and numerical verification; not study and not human review.
+
+### Source discovery (plan sec. 3.5)
+
+Retrieval on 2026-10-19 targeted these subjects: binomial rate-tree calibration, OAS and effective duration, capped and floored floaters, convertible valuation with default, put-call-forward parity, Black's model for caplets and swaptions, delta-hedging error, variance swaps, VaR methods and decomposition, RAROC, cash-flow matching and immunisation, Active Share, the transfer coefficient of long-short portfolios, statistical arbitrage, engagement and stewardship, effective spread and implementation shortfall, best-execution rules. The owner's local library was searched first. Sources read, with sections, copies and hashes in their reading notes:
+
+- The Handbook of Fixed Income Securities (9th ed., 2021; `s7-fabozzifixed`): chaps. 13, 32, 36-38, 43-44, 51, 57, 60 and 62 at the pages listed in its reading note.
+- Fabozzi, *Fixed Income Analysis* (2nd ed., 2007; `fixed-income-analysis-2007`), chaps. 7 and 9 (floaters, convertible minimum value). A CFA Institute Investment Series text, used like Managing Investment Portfolios; no examination curriculum volume was used.
+- Hull, *Options, Futures, and Other Derivatives* (11th Global ed.; `s7-hulloptions`): chaps. 11-13, 15, 17-20, 26-27, 29 and 31.
+- Hull, *Risk Management and Financial Institutions* (6th ed., 2023; `risk-management-financial-institutions-2023`): chaps. 11, 13, 15-16, 21 and 28. The owner added this edition to `reading materials/` during the batch; a 4th-edition copy read first was set aside and every locator was re-read in the 6th edition.
+- Natenberg, *Option Volatility and Pricing* (2nd ed.; `s7-natenberg`): chaps. 11, 17 and 24.
+- Maginn, Tuttle, Pinto and McLeavey (eds.), *Managing Investment Portfolios* (3rd ed., 2007; `managing-investment-portfolios-2007`): chaps. 6 (fixed income), 7 (equity), 9 (risk management), 10 (execution) and 11.
+- Ang, *Asset Management* (`s7-ang`), chap. 14; Grinold and Kahn (`alpha-grinold`), chaps. 14 and 16, second local copy (SHA-256 5c2e3efa...).
+- Cremers and Petajisto (2009), Yale working paper; Brav, Jiang, Partnoy and Thomas (2008), published version; Gatev, Goetzmann and Rouwenhorst (NBER WP 7032, 1999); Avellaneda and Lee, version of 15 June 2009 (cited by DOI because the online copy is the July 2008 draft).
+- The UK Stewardship Code 2026 (FRC, effective 1 January 2026); the 2020 Code was downloaded and found superseded.
+- FINRA Rule 5310 with Supplementary Material (rule page, last amended 2014); Directive 2014/65/EU (MiFID II), article 27, original Official Journal text from CELLAR; 17 CFR 240.15c3-5 and the SEC's 2010 concept release (already registered); IRS Publication 550 (2025), chap. 3.
+
+Access limits and substitutions:
+- MiFID II article 27 was read as enacted in 2014; later amendments to paragraphs 27(3) and (6) (reporting) were not reviewed.
+- Clarke, de Silva and Thorley on the transfer coefficient remains paywalled; the long-short transfer coefficients are computed directly by constrained optimisation.
+- No curriculum text was used as a substantive source; the outlines defined scope only.
+
+### Entries
+
+Forty-five new entries, one added to an existing file and the rest in nine new section files:
+- `portfolio-risk-financing/money-markets.tex`: `def:short-term-funding-repo`.
+- `rates-credit-mortgages/arbitrage-free-valuation.tex`: `meth:arbitrage-free-bond-valuation`, `meth:binomial-rate-tree-calibration`, `mod:term-structure-models-simulation`.
+- `rates-credit-mortgages/embedded-option-bonds.tex`: `meth:callable-putable-bond-valuation`, `meth:option-adjusted-spread`, `meth:embedded-option-effective-duration`, `meth:capped-floored-floater-valuation`, `meth:convertible-bond-valuation`.
+- `rates-credit-mortgages/fixed-income-portfolio-management.tex`: `def:fixed-income-mandates-return-model`, `meth:bond-leverage-taxation`, `meth:liability-matching-ladders`, `meth:immunisation-liabilities`, `meth:bond-index-exposure-benchmarks`, `meth:yield-curve-positioning`, `meth:curve-strategy-evaluation`.
+- `volatility-options/option-valuation.tex`: `def:option-value-drivers`, `res:put-call-forward-parity`, `meth:one-period-binomial-valuation`, `meth:multi-period-binomial-valuation`, `meth:black-model-rates-currencies`, `meth:greeks-delta-gamma-hedging`.
+- `volatility-options/option-strategies.tex`: `meth:option-replication-deltas`, `meth:covered-call-protective-put`, `meth:option-spreads-volatility-strategies`, `ex:option-strategy-selection-case`.
+- `portfolio-construction-risk/derivative-overlays.tex`: `meth:forward-commitment-risk-overlays`, `meth:volatility-derivative-applications`, `meth:derivative-overlay-allocation`, `ex:endowment-derivative-overlay-case`.
+- `portfolio-construction-risk/market-risk-measurement.tex`: `meth:portfolio-var-methods-decomposition`, `meth:sensitivity-scenario-risk-measures`, `meth:market-risk-limits-capital`.
+- `systematic-equities/equity-portfolio-management.tex`: `def:equity-portfolio-roles-mandate`, `def:cap-weighted-factor-indexing`, `meth:index-equity-portfolio-construction`, `def:active-equity-strategies`, `meth:active-equity-strategy-creation`, `meth:active-equity-portfolio-construction`, `meth:equity-portfolio-capacity-structure`.
+- `execution-trading-costs/trade-strategy-governance.tex`: `meth:execution-cost-measures`, `def:electronic-trading-environment`, `meth:trade-strategy-selection`, `def:trade-implementation-by-market`, `meth:trade-execution-evaluation-governance`.
+
+Existing entries reviewed first and linked, not repeated, and mapped alongside the new entries where they carry part of an objective: `mod:black-scholes-merton`, `def:implied-volatility-surface`, `meth:option-payoff-profit`, `meth:curve-based-empirical-duration`, `def:vix-variance-dividend-swaps`, `meth:var-es-estimation-methods`, `def:transaction-costs`, `def:implementation-shortfall`, `def:spread-measures`, `def:execution-benchmark` and `mech:venue-competition-fragmentation`. `mod:almgren-chriss-execution` is linked from `meth:trade-strategy-selection`.
+
+### Numerical evidence
+
+Nine scripts, found by `make examples`, 250 checks (one executed `ok()` call per check); seeded simulations use seed 20261019:
+- `short-term-funding/funding-repo-checks.py` (11): Handbook repo interest and haircut; an original 90-day funding comparison; a margin call.
+- `rate-tree-embedded-options/rate-tree-checks.py` (43): calibration to the Handbook par curve; spot-curve, lattice and pathwise values; callable and putable bonds; OAS; effective, one-sided and key-rate durations and convexity; capped, floored and collared floaters; Monte Carlo, Vasicek and Ho-Lee; Hull's convertible tree (107.44).
+- `option-valuation/option-valuation-checks.py` (44): value drivers by bumping; parity arbitrages; one- and two-period trees; Black, Garman-Kohlhagen, caplets and swaptions (Hull Examples 15.6, 17.2, 18.6-18.7, 29.3-29.4); Greeks against finite differences; delta-hedging simulation; gamma-theta identity; implied volatility.
+- `option-strategies/option-strategy-checks.py` (27), `derivative-overlays/overlay-checks.py` (25), `market-risk-measurement/market-risk-checks.py` (26), `fixed-income-portfolio/fixed-income-portfolio-checks.py` (37, including an LP cash-flow match), `equity-portfolio-management/equity-portfolio-checks.py` (23, including SLSQP long-only and 130/30 transfer coefficients; about 55 s) and `trade-execution/trade-execution-checks.py` (14).
+
+Findings from the checks:
+- Handbook chap. 36: the call is worth 1.745 unrounded (printed 1.744), and the difference is written as 104.634 - 102.899, a transposition of 104.643; Exhibit 36-9's top year-3 rate prints 9.1987 against 9.1986.
+- Hull Figures 13.7-13.8: 4.1923 and 9.4636 use p rounded to four places; unrounded values are 4.1927 and 9.4639 (American put 5.0896).
+- Hull Table 19.4: at half and a quarter of a week the simulated hedging error falls by about the square root of two per halving (0.136, 0.098); Hull's 0.16 and 0.13 fall more slowly, and the cause is not stated.
+- MIP chap. 6: the dollar durations 37,315 and 27,526 are averages of three positions, not the portfolio sum (111,945); the rebalancing ratio is unaffected. Cash of 1,077,796 against the book's 1,079,012 comes from rounding.
+- MIP chap. 6, pp. 394-396: the forward from the interest differential approximation is 0.7880; exact parity gives 0.7885.
+- Component and incremental VaR differ for a large position; they agree to first order for a small one, which is checked.
+- Many expected values typed before the first runs failed; they were recomputed by independent routes, checked by hand and replaced before the entries were finalised. Circular or trivial checks (bare constants, restated inputs) were removed.
+
+### Coverage
+
+The 149 outline items mapped to the 45 objectives (8 Level I on PDF pp. 20 and 24; 52 Level II on pp. 18, 21-22 and 26-27; 41 shared Level III core on pp. 5-7 and 11-12; 48 Portfolio Management pathway on pp. 16-18) map to no objective outside the batch. Each was read on its page against the finished entries. Gaps found on that reading were closed before promotion: embedded-option types (m028:b01), ladder risk-return and limitations (m007:b09), implementation alternatives for immunisation (m032:b02), currency swaps and equity forwards in overlays (m017:b02-b03), a strategy summary table (m016:b06), engagement benefits and the manager's role (m006:b04) and the contrast of electronic trader types (m011:b06). All 149 are promoted with item-specific rationales.
+
+All 45 objectives are `covered` (editorial coverage, not mastery). Totals: 146 of 424 objectives (from 101); 133 Level I, 83 Level II, 78 shared-core and 48 Portfolio Management items covered (342 of 1,030, from 193); 688 unreviewed.
+
+### Limits
+
+- Examples are invented or synthetic apart from the reproduced textbook examples. Funding rates, overlay prices, market costs and broker statistics are illustrative, not quotes.
+- Rate trees are single-curve and lognormal at one volatility; credit, collateral and funding adjustments are not modelled. Convertibles follow Hull's default-intensity tree without call notice periods or dilution.
+- Legal points are U.S., EU and U.K. as of 19 October 2026; MiFID II amendments to article 27 were not reviewed; tax points are U.S. federal and not tax advice.
+- Human review is outstanding.

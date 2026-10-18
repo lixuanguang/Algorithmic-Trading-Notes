@@ -38,6 +38,12 @@ Written in derivatives and empirical validation (2026-10-17):
 
 - `ev:money-fund-runs`: March 2020 prime-fund runs, institutional against retail (Cipriani and La Spada).
 
+Written in the derivatives, portfolio and execution batch (2026-10-19):
+
+- `def:short-term-funding-repo`: company and institution funding sources (bank lines, commercial paper with backup lines, letters of credit; deposits and wholesale funding) and repo mechanics, uses, benefits and risks (Handbook chaps. 13 and 60; RMFI 6th ed., chap. 21).
+
+Partly checked 2026-10-19, draft. Example in `notes/artefacts/short-term-funding/funding-repo-checks.py`; human review is outstanding. Coverage records are editorial, not study.
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed; `data:treasury-bill-offering-schedule` resolved (TreasuryDirect: bills of 4 to 52 weeks; 4-, 6-, 8-, 13-, 17- and 26-week weekly, 52-week every four weeks, plus cash management bills). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

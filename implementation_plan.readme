@@ -2420,3 +2420,86 @@ against the corrected teaching and remain covered. Totals are unchanged: 71 of 4
 objectives; 78 Level I, 13 Level II and 37 shared-core items covered; 902 of 1,030
 unreviewed. Details are in `notes/source-review-records.md`, *Correction pass on
 PR #23*. Remote CI was not triggered.
+
+## 19. Fixed-income and derivatives batch (executed 2026-10-18)
+
+**Scope.** Thirty objectives, the standing batch size of Section 17.4:
+- `topic:bond-instrument-features`: `objective:describe-bond-features`,
+  `objective:explain-bond-legal-tax-factors`, `objective:describe-bond-market-structure`,
+  `objective:compare-corporate-long-term-funding`, `objective:describe-government-funding`.
+- `topic:bond-pricing-yields`: `objective:price-bond-from-yield`, `objective:apply-matrix-pricing`,
+  `objective:calculate-yield-measures`, `objective:calculate-floating-money-market-yields`.
+- `topic:term-structure`: `objective:derive-spot-par-forward-curves`, `objective:compare-yield-curves`,
+  `objective:relate-forward-rates-and-returns`, `objective:use-swap-curve-and-spreads`,
+  `objective:explain-term-structure-theories`, `objective:manage-yield-curve-factor-exposure`.
+- `topic:interest-rate-risk`: `objective:decompose-bond-return`, `objective:calculate-yield-duration`,
+  `objective:calculate-convexity-price-change`, `objective:apply-curve-based-risk-measures`.
+- `topic:derivative-instruments`: `objective:describe-derivative-markets`,
+  `objective:compare-derivative-types`, `objective:calculate-option-payoffs`,
+  `objective:explain-derivative-uses-risks`.
+- `topic:forward-commitment-valuation`: `objective:price-by-arbitrage-and-carry`,
+  `objective:value-forward-contracts`, `objective:compare-forward-futures-prices`,
+  `objective:compare-swaps-and-forwards`, `objective:value-equity-forwards-futures`,
+  `objective:value-rate-and-bond-forwards`, `objective:value-swaps-by-replication`.
+
+**Starting state.** PRs #22 and #23 were merged into `main` (`4ffdf57`, `a1cf781`), and
+both merge CI runs passed, the first live run of the merge-only workflow. Coverage was 71
+of 424 objectives, 78 Level I, 13 Level II and 37 Level III core items, 902 items
+unreviewed. All 30 objectives were `missing`; their 65 outline items map to no objective
+outside the batch. The batch runs on `codex/fixed-income-derivatives-20261018`, branched
+from `main` at `a1cf781`, with a separate draft PR to `main`.
+
+**Sources (Section 3.5).** The owner's local library supplied the Handbook of Fixed Income
+Securities (9th ed., 2021; catalogue key `s7-fabozzifixed`) and Hull (11th Global ed.).
+Legal and official texts were read for rules and conventions:
+- U.S. statutes and rules through the Legal Information Institute (sec.gov needs an
+  identifying user agent and was not used);
+- 31 CFR 356 Appendix B (Treasury formulas, with its examples reproduced);
+- FINRA Regulatory Notice 23-15 for the T+1 date;
+- the EU Prospectus Regulation (consolidated to 4 December 2024) and IFRS 13 as adopted,
+  through the EU Publications Office because EUR-Lex returned a bot check;
+- the World Bank's FY2026 IBRD/IDA factsheet;
+- the Federal Reserve's GSW yield-curve file, already in the repository.
+
+Twelve source keys were added (`compendium/front/sources.tex`); 13 reading notes were written
+and one updated.
+
+Access limits:
+- FRED downloads failed, so the commercial-paper tier spread rests on the Handbook.
+- Litterman and Scheinkman (1991) and Hull's Technical Note 24 were not read; their
+  results are cited through Phoa and Hull and checked by original computation.
+- No curriculum text was used as a substantive source.
+
+**Entries.** Thirty new entries in six files: `rates-credit-mortgages/bond-instruments-markets.tex`
+(6), `bond-pricing-yields.tex` (4), `term-structure-returns.tex` (5), `interest-rate-risk.tex` (4),
+`volatility-options/derivative-markets-uses.tex` (4) and `forward-commitment-valuation.tex` (7).
+Existing rate, swap, duration, derivative-contract and carry entries were reviewed and
+linked. Single-curve examples are labelled, and multi-curve valuation stays in
+`mod:multi-curve-fra-swap-valuation`.
+
+**Evidence.** Three scripts under `notes/artefacts/` (`bond-valuation-risk`,
+`term-structure-dynamics`, `forward-swap-valuation`), 163 checks. They reproduce Treasury,
+Handbook and Hull examples and use independent routes: repricing against duration and
+convexity, bonds against FRAs, forwards against bond packages, key-rate sums against
+parallel shifts, a tailed-futures replication and a two-period tree. A small extractor
+writes month-end GSW zero yields (`gsw-month-end-zero.csv`, 489 months). Hull slips in
+Examples 6.3 and 7.2-7.3 and sec. 22.9 are recorded (`notes/log.md` questions).
+
+**Coverage.** The 65 mapped outline items were read on their pages:
+- Level I PDF pp. 19-24;
+- Level II pp. 17 and 21.
+
+Gaps in four bullets were closed before promotion, and all 65 are promoted with
+item-specific rationales. All 30 objectives are covered (editorial coverage, not mastery).
+Totals: 101 of 424 objectives; 125 Level I, 31 Level II and 37 Level III core items covered;
+837 of 1,030 unreviewed.
+
+**Validation.** See `notes/source-review-records.md`, *Fixed-income and derivatives batch*,
+and the draft PR for the final local results. Remote CI runs only after a merge into `main`
+(Section 17.2) and was not triggered by this batch.
+
+**Remaining gaps.**
+- Collateral, funding and credit valuation adjustments are not covered.
+- Market sizes and spreads are dated to their sources; legal points to 18 October 2026.
+- Several original papers were read only through secondary texts.
+- Human review is outstanding.

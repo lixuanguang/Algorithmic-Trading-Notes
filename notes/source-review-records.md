@@ -4180,3 +4180,67 @@ Corrections:
 - `meth:risk-adjusted-performance-measures`. alpha = beta (T_P - T_M), so agreement requires beta > 0; Treynor is undefined at beta 0 and reverses for negative beta (rf 3, market 8, return 0, beta -1: alpha +2, Treynor 3 against 5). Positive, zero and negative beta checks added; a pitfall added. Positive alpha stays separate from skill.
 
 Checks: `investment-planning-checks.py` 41 (was 25), `manager-selection-checks.py` 26 (was 19), `performance-evaluation-checks.py` 41 (was 35); the batch total is 193. Coverage reassessed for the nine objectives mapped to these entries; each still meets its operations and depth with the corrected teaching, so counts are unchanged: 71 of 424 objectives; 78 Level I, 13 Level II and 37 shared-core items covered; 902 of 1,030 unreviewed.
+
+## Fixed-income and derivatives batch, 18 October 2026
+
+Thirty objectives in six topics: bond features, issuance and markets (5), bond pricing and yields (4), the term structure (6), interest-rate risk (4), derivative instruments and markets (4) and forward, futures and swap valuation (7). Branch `codex/fixed-income-derivatives-20261018`, from `main` at `a1cf781` after PRs #22 and #23 were merged. Source checks and numerical verification; not study and not human review.
+
+### Source discovery (plan sec. 3.5)
+
+Retrieval on 2026-10-18 targeted these subjects (Treasury price formula with a simple-interest first period; Rule 15c6-1 T+1 compliance date; Trust Indenture Act exemption threshold; Rule 144A qualified institutional buyer; prospectus exemptions consolidated text; IFRS 13 matrix pricing; IBRD funding programme currency; commercial paper tier spread; empirical duration; key-rate duration; principal components of yield changes). The owner's local library was searched first and supplied the books. Sources read, with sections and identities in their reading notes:
+
+- Fabozzi (ed.), *The Handbook of Fixed Income Securities* (9th ed., 2021), catalogue key `s7-fabozzifixed`, chapters 1, 3-5, 7-11, 13-14, 16, 22, 31-33, 35, 37, 40, 44 and 64 at the pages listed in `notes/readings/s7-fabozzifixed.md`. Authored chapters (Ilmanen; Phoa; Bhattacharya, Fabozzi and Berliner) are cited through the Handbook.
+- Hull, *Options, Futures, and Other Derivatives* (11th Global ed., 2022), chaps. 1, 4-7, 10-11, 13, 22, 25 and 34 at the pages listed in `notes/readings/s7-hulloptions.md`.
+- U.S. law and rules as published by the Legal Information Institute (eCFR and sec.gov were not used because sec.gov requires an identifying user agent): 15 U.S.C. 77c (sec. 3(a)(2)-(3)) and 77ddd; 26 U.S.C. 103; 31 U.S.C. 3124; 17 CFR 230.144A, 230.415, 240.15c6-1 and 260.4a-1; 31 CFR part 356 Appendix B, whose worked examples were reproduced.
+- FINRA Regulatory Notice 23-15 (5 September 2023) for the T+1 compliance date of 28 May 2024.
+- Regulation (EU) 2017/1129, consolidated text of 4 December 2024, and Commission Regulation (EU) 2023/1803 (IFRS 13), both from the EU Publications Office (CELLAR) because EUR-Lex returned a bot check.
+- World Bank Treasury, IBRD/IDA Factsheet (FY2026 currency composition).
+- The Federal Reserve's GSW file `feds200628.csv` (to 9 October 2026), already in the repository's validation data, reduced to month-end zero yields by `gsw-month-end-extract.py`.
+- CBOT Rule 18101.B (conversion factor at 6 percent), already registered.
+
+Access limits and substitutions:
+- FRED downloads failed from this environment; the commercial-paper tier spread is described from the Handbook (chap. 13) and not recomputed.
+- Litterman and Scheinkman (1991) was not read directly; factor results are cited through Phoa (Handbook chap. 33) and Hull sec. 22.9, and recomputed from GSW data.
+- Hull's Technical Note 24 (forward against futures prices) was not fetched; sec. 5.8 is cited and the result is checked with an original tree.
+- Handbook figures date from 2019-2020; its Trust Indenture Act threshold (\$5 million) is superseded by the \$50 million of 17 CFR 260.4a-1 (2015); its chap. 64 description of SEFs as clearing counterparties is corrected against Hull.
+- No curriculum text was used as a substantive source; the outlines defined scope only.
+
+### Entries
+
+Thirty new entries in six section files:
+- `rates-credit-mortgages/bond-instruments-markets.tex`: `def:bond-features-indenture`, `def:bond-cash-flow-contingencies`, `rule:bond-issuance-legal-tax`, `def:bond-market-segments-trading`, `meth:corporate-funding-ig-hy`, `def:government-agency-supranational-funding`.
+- `bond-pricing-yields.tex`: `meth:bond-price-from-yield`, `meth:matrix-pricing`, `def:bond-yield-spread-measures`, `meth:floating-money-market-yields`.
+- `term-structure-returns.tex`: `meth:spot-par-forward-curves`, `meth:forward-rates-expected-returns`, `def:swap-curve-short-term-spreads`, `res:term-structure-theories`, `meth:yield-curve-factor-exposures`.
+- `interest-rate-risk.tex`: `meth:bond-return-decomposition`, `meth:yield-duration-pvbp`, `meth:convexity-portfolio-duration`, `meth:curve-based-empirical-duration`.
+- `volatility-options/derivative-markets-uses.tex`: `def:derivative-markets-otc-exchange`, `def:derivative-types-commitments-contingent`, `meth:option-payoff-profit`, `def:derivative-uses-risks`.
+- `forward-commitment-valuation.tex`: `meth:arbitrage-replication-carry`, `meth:forward-price-value-lifecycle`, `res:forward-futures-price-difference`, `def:swaps-as-forward-strips`, `meth:equity-forward-futures-valuation`, `meth:rate-bond-forward-valuation`, `meth:swap-valuation-replication`.
+
+The existing entries named in the brief were reviewed first: `def:fixed-income-market-structure`, `def:fixed-income-universe`, `def:interest-rate-measures`, `conv:us-rate-quotation`, `mod:forward-rates-fra`, `meth:curve-trades-carry-rolldown`, `def:interest-rate-swaps`, `mod:multi-curve-fra-swap-valuation`, `mod:duration-convexity`, `def:derivative-contracts`, `def:futures-hedge-basis`, `res:cost-of-carry-forward-price` and `mech:futures-margin-settlement`. They are linked, not repeated. Single-curve examples are labelled as such, and FRA and swap valuation with separate projection and discounting curves stays in `mod:multi-curve-fra-swap-valuation`. `def:derivative-contracts` and `res:cost-of-carry-forward-price` are mapped alongside the new entries to `objective:describe-derivative-markets` and `objective:price-by-arbitrage-and-carry`.
+
+### Numerical evidence
+
+Three scripts, found by `make examples`, 163 checks; one seeded synthetic series (seed 20261018) for empirical duration:
+- `bond-valuation-risk/bond-valuation-checks.py` (77): 31 CFR 356 Appendix B examples (simple-stub price 99.730918; bill rates; FRN index 0.095022819 percent); Handbook Exhibit 4-4 and Illustration 4; an original bond between coupon dates (full 102.1316, clean 101.2149; simple stub 102.1249); compounding conversions; yields to call and worst; G-, I- and Z-spreads on one curve; matrix pricing; discount margins; money-market yields; duration, PVBP and convexity with repricing; a three-bond portfolio with parallel and steepening shocks; horizon returns; effective, key-rate and callable-bond measures; Handbook Exhibit 5-15; empirical duration.
+- `term-structure-dynamics/term-structure-checks.py` (36): bootstrapping and repricing; inverted ordering; Ilmanen's example; rolling yield and break-even; convexity bias; swap-curve forwards and spread; Hull Table 22.9 (full 8 x 8 loadings), a two-factor hedge; principal components and volatility of GSW month-end changes (85.3, 10.7 and 2.5 percent of variance; 24.5, 28.7 and 25.5 basis points at 1, 5 and 30 years).
+- `forward-swap-valuation/forward-swap-checks.py` (50): option payoffs; carry arbitrage; Hull Examples 5.1-5.4 and others; forward value over the life; dividends and index futures; a tailed futures replication with deterministic rates; a two-period tree with correlated rates; FRA; Hull Examples 6.1-6.3 and conversion factors; a bond forward; swaps by bonds and by FRAs; Hull Examples 7.2-7.3; a EUR/USD swap; equity swaps.
+
+Findings from the checks:
+- Hull's Example 6.3 subtracts \$197,000 where its own gain is \$197,500, and in the negative-rate case computes \$102,250 for \$102,500; both totals are \$502,500.
+- Hull's Examples 7.2-7.3 print 0.9629 million; his own forward present values and bond values give 0.9628.
+- Hull's PCA standard deviation of 25.45 matches neither the printed loadings (25.40) nor unrounded ones (25.50).
+- The Handbook's convexity measure 112.38 comes from four-decimal prices; exact prices give 112.27.
+- Key-rate durations explain a steepener to within its convexity (-1.7477 against -1.7302); a callable bond's effective duration depends on the shock size near the exercise boundary (6.008 at 5 basis points, 4.956 at 25).
+- Many expected values typed before the first runs failed; they were recomputed by independent probes, checked by hand and replaced before the entries were finalised. A Treasury bill investment rate matches only to 5e-6 because Treasury rounds intermediate results.
+
+### Coverage
+
+The 65 outline items mapped to the 30 objectives (47 Level I on PDF pp. 19-24, 18 Level II on pp. 17 and 21) were each read against the finished entries. Four bullets exposed gaps that were closed before promotion: issuer and investor uses (m072:b02), interest-rate forwards' uses (m074:b02), swap price against value (m076:b02) and arbitrage for commitments against contingent claims (m077:b02). All 65 are promoted with item-specific rationales.
+
+All 30 objectives are `covered` (editorial coverage, not mastery). Totals: 101 of 424 objectives; 125 Level I, 31 Level II and 37 Level III core items covered; 837 of 1,030 unreviewed.
+
+### Limits
+
+- Examples are invented or synthetic apart from the reproduced textbook and Treasury examples and the GSW data. Market sizes, spreads and funding figures are dated to their sources.
+- Legal points are U.S. and EU as of 18 October 2026, from secondary publications (LII) and consolidated texts; later EU amendments were not reviewed.
+- Single-curve valuation is used for teaching; collateral, funding and credit adjustments are not covered.
+- Human review is outstanding.

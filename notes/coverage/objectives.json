@@ -4027,13 +4027,39 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:bond-features-indenture",
+    "def:bond-cash-flow-contingencies"
+   ],
+   "candidate_entries": [
+    "def:bond-features-indenture",
+    "def:bond-cash-flow-contingencies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 10, p. 235"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 1, pp. 5 and 13; chap. 10, p. 244"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "def:bond-features-indenture",
+     "def:bond-cash-flow-contingencies"
+    ],
+    "example": null
+   },
    "supersedes": null
   },
   {
@@ -4045,13 +4071,93 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "rule:bond-issuance-legal-tax"
+   ],
+   "candidate_entries": [
+    "rule:bond-issuance-legal-tax"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "usc-15-77c",
+      "locator": "sec. 3(a)(2)"
+     },
+     {
+      "key": "usc-15-77c",
+      "locator": "sec. 3(a)(3)"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 13, p. 302"
+     },
+     {
+      "key": "cfr-17-230-415",
+      "locator": "para. (a)(1)(x)"
+     },
+     {
+      "key": "cfr-17-230-144a",
+      "locator": "para. (a)(1)"
+     },
+     {
+      "key": "usc-15-77ddd",
+      "locator": "sec. 304(a)(8)-(9)"
+     },
+     {
+      "key": "cfr-17-260-4a-1",
+      "locator": "sec. 260.4a-1"
+     },
+     {
+      "key": "usc-26-103",
+      "locator": "secs. (a)-(b)"
+     },
+     {
+      "key": "usc-31-3124",
+      "locator": "sec. (a)"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 9, pp. 221-223"
+     },
+     {
+      "key": "cfr-17-240-15c6-1",
+      "locator": "para. (a)"
+     },
+     {
+      "key": "finra-regulatory-notice-23-15",
+      "locator": "p. 1"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 7, p. 180"
+     },
+     {
+      "key": "eu-2017-1129-prospectus",
+      "locator": "art. 1(4)(a)-(d), consolidated text of 4 December 2024"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/cfr-17-230-415.md",
+     "notes/readings/cfr-17-230-144a.md",
+     "notes/readings/usc-15-77ddd.md",
+     "notes/readings/cfr-17-260-4a-1.md",
+     "notes/readings/usc-26-103.md",
+     "notes/readings/usc-31-3124.md",
+     "notes/readings/cfr-17-240-15c6-1.md",
+     "notes/readings/finra-regulatory-notice-23-15.md",
+     "notes/readings/eu-2017-1129-prospectus.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "rule:bond-issuance-legal-tax"
+    ],
+    "example": null
+   },
    "supersedes": null
   },
   {
@@ -4064,16 +4170,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "def:bond-market-segments-trading"
+   ],
    "candidate_entries": [
     "def:fixed-income-market-structure",
-    "def:fixed-income-universe"
+    "def:fixed-income-universe",
+    "def:bond-market-segments-trading"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 1, Exhibit 1-1, p. 4"
+     },
+     {
+      "key": "wide-bsv-fi-survey",
+      "locator": "sec. I, pp. 1-5"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 7, p. 180"
+     },
+     {
+      "key": "wide-bsv-fi-survey",
+      "locator": "p. 5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/wide-bsv-fi-survey.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "def:bond-market-segments-trading"
+    ],
+    "example": null
+   },
    "supersedes": null
   },
   {
@@ -4107,13 +4244,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:corporate-funding-ig-hy"
+   ],
+   "candidate_entries": [
+    "meth:corporate-funding-ig-hy"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 10, pp. 252 and 259-260"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:corporate-funding-ig-hy"
+    ],
+    "example": null
+   },
    "supersedes": null
   },
   {
@@ -4126,13 +4282,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:government-agency-supranational-funding"
+   ],
+   "candidate_entries": [
+    "def:government-agency-supranational-funding"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 7, pp. 172-176"
+     },
+     {
+      "key": "world-bank-ibrd-ida-factsheet-2026",
+      "locator": "pp. 1-2"
+     },
+     {
+      "key": "wide-bsv-fi-survey",
+      "locator": "pp. 1-5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/world-bank-ibrd-ida-factsheet-2026.md",
+     "notes/readings/wide-bsv-fi-survey.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "def:government-agency-supranational-funding"
+    ],
+    "example": null
+   },
    "supersedes": null
   },
   {
@@ -4145,16 +4330,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:bond-price-from-yield"
+   ],
    "candidate_entries": [
     "def:interest-rate-measures",
-    "conv:us-rate-quotation"
+    "conv:us-rate-quotation",
+    "meth:bond-price-from-yield"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 4, pp. 65 and 72-76"
+     },
+     {
+      "key": "cfr-31-356-appendix-b",
+      "locator": "sec. II.D"
+     },
+     {
+      "key": "cfr-31-356-appendix-b",
+      "locator": "secs. II.A and II.D"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 4, Exhibit 4-4, pp. 74-75"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/cfr-31-356-appendix-b.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:bond-price-from-yield"
+    ],
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py parts 1-2 (31 CFR 356 Appendix B examples, Handbook Exhibit 4-4 and Illustration 4, the original 5% 2034 bond between coupon dates, street against simple-stub pricing, price-yield relationships); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4166,13 +4382,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:matrix-pricing"
+   ],
+   "candidate_entries": [
+    "meth:matrix-pricing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ifrs13",
+      "locator": "IFRS 13, para. B7"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 44, p. 1119"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ifrs13.md",
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:matrix-pricing"
+    ],
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 4 (interpolated yields and spreads from invented comparable quotes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4186,16 +4426,34 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "def:bond-yield-spread-measures"
+   ],
    "candidate_entries": [
     "def:interest-rate-measures",
-    "conv:us-rate-quotation"
+    "conv:us-rate-quotation",
+    "def:bond-yield-spread-measures"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 4, pp. 76-84"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "def:bond-yield-spread-measures"
+    ],
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 3 (compounding conversions, current yield, yields to call and worst, G-, I- and Z-spreads on one government zero curve, steep-curve contrast); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4208,13 +4466,57 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:floating-money-market-yields"
+   ],
+   "candidate_entries": [
+    "meth:floating-money-market-yields"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 14, pp. 312-318"
+     },
+     {
+      "key": "cfr-31-356-appendix-b",
+      "locator": "sec. IV.A"
+     },
+     {
+      "key": "cfr-31-356-appendix-b",
+      "locator": "sec. VI.A"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 13, p. 301"
+     },
+     {
+      "key": "cfr-31-356-appendix-b",
+      "locator": "sec. VI.D"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 4, Exhibit 4-7, p. 86"
+     },
+     {
+      "key": "cfr-31-356-appendix-b",
+      "locator": "secs. VI.A, C and D"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/cfr-31-356-appendix-b.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:floating-money-market-yields"
+    ],
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py parts 1 and 5 (Treasury bill and FRN formulas, the Handbook's discount margin, a SOFR+75 FRN, bill and CD money-market conversions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4227,16 +4529,39 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:spot-par-forward-curves"
+   ],
    "candidate_entries": [
     "def:interest-rate-measures",
-    "mod:forward-rates-fra"
+    "mod:forward-rates-fra",
+    "meth:spot-par-forward-curves"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 31, pp. 692-693"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "sec. 4.7, pp. 106-108"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:spot-par-forward-curves"
+    ],
+    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4248,13 +4573,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:spot-par-forward-curves"
+   ],
+   "candidate_entries": [
+    "meth:spot-par-forward-curves"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 31, pp. 692-693"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "sec. 4.7, pp. 106-108"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:spot-par-forward-curves"
+    ],
+    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4268,13 +4617,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:bond-return-decomposition"
+   ],
+   "candidate_entries": [
+    "meth:bond-return-decomposition"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 4, pp. 76-79 and 87-90"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:bond-return-decomposition"
+    ],
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 8 (coupons, interest on interest, pull to par and rate effect over three years; horizon equal to Macaulay duration); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4289,15 +4657,40 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "mod:duration-convexity"
+   "entries": [
+    "meth:yield-duration-pvbp",
+    "meth:bond-return-decomposition"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:duration-convexity",
+    "meth:yield-duration-pvbp",
+    "meth:bond-return-decomposition"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 5, pp. 111-112 and 117-120"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 4, pp. 76-79 and 87-90"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:yield-duration-pvbp",
+     "meth:bond-return-decomposition"
+    ],
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 6 (Macaulay, modified, approximate and money duration, PVBP, Handbook 20-year bond); notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 8 (coupons, interest on interest, pull to par and rate effect over three years; horizon equal to Macaulay duration); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4312,15 +4705,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "mod:duration-convexity"
+   "entries": [
+    "meth:convexity-portfolio-duration"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:duration-convexity",
+    "meth:convexity-portfolio-duration"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 5, pp. 124-128"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 4, pp. 84-85"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:convexity-portfolio-duration"
+    ],
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py parts 6-7 (convexity and repricing at +/-100 and 200 bp; Handbook convexity measure; three-bond portfolio duration, convexity, parallel and steepening shocks, cash-flow yield); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4335,13 +4750,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:curve-based-empirical-duration"
+   ],
+   "candidate_entries": [
+    "meth:curve-based-empirical-duration"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 5, pp. 117-118 and 128-135"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:curve-based-empirical-duration"
+    ],
+    "example": "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py part 9 (effective duration and convexity on a zero curve, key-rate durations and a steepener, callable bond under a zero-volatility exercise rule, Handbook Exhibit 5-15, synthetic empirical duration with seed 20261018); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4470,15 +4904,40 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "def:derivative-markets-otc-exchange",
     "def:derivative-contracts"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:derivative-contracts",
+    "def:derivative-markets-otc-exchange"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 1, sec. 1.1, pp. 24-25"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 64, p. 1577"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "def:derivative-markets-otc-exchange",
+     "def:derivative-contracts"
+    ],
+    "example": null
+   },
    "supersedes": null
   },
   {
@@ -4492,15 +4951,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "def:derivative-contracts"
+   "entries": [
+    "def:derivative-types-commitments-contingent"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:derivative-contracts",
+    "def:derivative-types-commitments-contingent"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 1, secs. 1.3-1.5, pp. 28-31, and chap. 7, sec. 7.1, p. 172"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 7, sec. 7.12, pp. 193-194"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "def:derivative-types-commitments-contingent"
+    ],
+    "example": null
+   },
    "supersedes": null
   },
   {
@@ -4512,13 +4993,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:option-payoff-profit"
+   ],
+   "candidate_entries": [
+    "meth:option-payoff-profit"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 10, secs. 10.1-10.2, pp. 227-230, and Figure 10.5, p. 231"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:option-payoff-profit"
+    ],
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 1 (Hull's call and put examples, break-evens, financed premium); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4531,15 +5031,38 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "def:futures-hedge-basis"
+   "entries": [
+    "def:derivative-uses-risks"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:futures-hedge-basis",
+    "def:derivative-uses-risks"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 1, sec. 1.6, p. 33"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 64, p. 1575"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "def:derivative-uses-risks"
+    ],
+    "example": null
+   },
    "supersedes": null
   },
   {
@@ -4552,15 +5075,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:arbitrage-replication-carry",
     "res:cost-of-carry-forward-price"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "res:cost-of-carry-forward-price",
+    "meth:arbitrage-replication-carry"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 1, sec. 1.9, p. 39"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:arbitrage-replication-carry",
+     "res:cost-of-carry-forward-price"
+    ],
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 2 (cash-and-carry and reverse arbitrage, expected spot against forward, Hull Examples 5.1-5.4 and others); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4573,15 +5116,44 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "mod:forward-rates-fra"
+   "entries": [
+    "meth:forward-price-value-lifecycle",
+    "meth:rate-bond-forward-valuation"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:forward-rates-fra",
+    "meth:forward-price-value-lifecycle",
+    "meth:rate-bond-forward-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 5, sec. 5.7, pp. 133-134"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 4, sec. 4.9, pp. 110-112"
+     },
+     {
+      "key": "cbot-treasury-chapters-2026",
+      "locator": "Rule 18101.B"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:forward-price-value-lifecycle",
+     "meth:rate-bond-forward-valuation"
+    ],
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (value at inception, during the life and at expiry); notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3, conversion factors, Examples 6.1-6.2, an original bond forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4594,16 +5166,34 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "res:forward-futures-price-difference"
+   ],
    "candidate_entries": [
     "mech:futures-margin-settlement",
-    "res:cost-of-carry-forward-price"
+    "res:cost-of-carry-forward-price",
+    "res:forward-futures-price-difference"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 5, sec. 5.8, p. 135"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "res:forward-futures-price-difference"
+    ],
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 4 (tailed futures replicate the forward with deterministic rates; two-period tree with positive and negative asset-rate correlation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -4616,15 +5206,38 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "def:interest-rate-swaps"
+   "entries": [
+    "def:swaps-as-forward-strips"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:interest-rate-swaps",
+    "def:swaps-as-forward-strips"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 64, pp. 1577-1578"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 7, sec. 7.7, pp. 185-186"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "def:swaps-as-forward-strips"
+    ],
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 6 (par swap rate, off-market exchanges summing to zero); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7610,15 +8223,45 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "meth:curve-trades-carry-rolldown"
+   "entries": [
+    "meth:forward-rates-expected-returns",
+    "meth:spot-par-forward-curves"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "meth:curve-trades-carry-rolldown",
+    "meth:forward-rates-expected-returns",
+    "meth:spot-par-forward-curves"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 31, pp. 695 and 711-712"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 31, pp. 692-693"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "sec. 4.7, pp. 106-108"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:forward-rates-expected-returns",
+     "meth:spot-par-forward-curves"
+    ],
+    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 2 (forwards as break-evens, Ilmanen's example, rolling yield and break-even shift); notes/artefacts/term-structure-dynamics/term-structure-checks.py part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7633,16 +8276,51 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "def:swap-curve-short-term-spreads"
+   ],
    "candidate_entries": [
     "def:interest-rate-swaps",
-    "mod:multi-curve-fra-swap-valuation"
+    "mod:multi-curve-fra-swap-valuation",
+    "def:swap-curve-short-term-spreads"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 31, p. 692"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "sec. 7.2, pp. 175-176"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 64, pp. 1580-1581"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "sec. 8.2, p. 209"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 13, p. 305"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "def:swap-curve-short-term-spreads"
+    ],
+    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 4 (OIS par curve to forwards, swap spread against a Treasury yield); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7655,13 +8333,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "res:term-structure-theories"
+   ],
+   "candidate_entries": [
+    "res:term-structure-theories"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 3, p. 55"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "res:term-structure-theories"
+    ],
+    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py part 3 (convexity bias under the local and unbiased expectations hypotheses, liquidity premium); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7673,13 +8370,41 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:yield-curve-factor-exposures"
+   ],
+   "candidate_entries": [
+    "meth:yield-curve-factor-exposures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 33, pp. 745-747"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "sec. 22.9, pp. 534-537"
+     },
+     {
+      "key": "fed-gsw-data",
+      "locator": "feds200628.csv, SVENY01-SVENY30 at 1, 2, 3, 5, 7, 10, 20 and 30 years, month-ends January 1986 to September 2026"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:yield-curve-factor-exposures"
+    ],
+    "example": "notes/artefacts/term-structure-dynamics/term-structure-checks.py parts 5-6 (Hull Table 22.9 loadings, exposures, standard deviation and a two-factor hedge; principal components and volatility term structure of GSW month-end zero yields, 489 months, from gsw-month-end-zero.csv); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7980,13 +8705,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:equity-forward-futures-valuation"
+   ],
+   "candidate_entries": [
+    "meth:equity-forward-futures-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 5, secs. 5.5-5.6 and 5.9, pp. 130-132 and 135-137"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:equity-forward-futures-valuation"
+    ],
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 3 (discrete dividends, replication, continuous yield, index futures); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8000,13 +8744,36 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:rate-bond-forward-valuation"
+   ],
+   "candidate_entries": [
+    "meth:rate-bond-forward-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 4, sec. 4.9, pp. 110-112"
+     },
+     {
+      "key": "cbot-treasury-chapters-2026",
+      "locator": "Rule 18101.B"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:rate-bond-forward-valuation"
+    ],
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3, conversion factors, Examples 6.1-6.2, an original bond forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8020,16 +8787,39 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:swap-valuation-replication"
+   ],
    "candidate_entries": [
     "def:interest-rate-swaps",
-    "mod:multi-curve-fra-swap-valuation"
+    "mod:multi-curve-fra-swap-valuation",
+    "meth:swap-valuation-replication"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 7, sec. 7.6, pp. 183-185"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 64, pp. 1577-1578"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:swap-valuation-replication"
+    ],
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed swap); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {

@@ -1,0 +1,73 @@
+\section{Derivative markets, types, payoffs and uses}
+
+These entries extend \hyperref[def:derivative-contracts]{derivative contracts}, which defines forwards, futures and options, to the markets they trade in, the split between forward commitments and contingent claims, option payoffs and profits, and what derivatives are used for and the risks they bring. Numbers are checked in \texttt{notes/artefacts/forward-swap-valuation/forward-swap-checks.py}.
+
+\begin{qfdefinition}[Derivative markets: exchange-traded and over-the-counter trading, clearing through a clearing house or central counterparty or bilaterally, participants, market size and post-crisis reforms]\label{def:derivative-markets-otc-exchange}
+\qffield{Statement} A derivatives \emph{exchange} is ``a market where individuals and companies trade standardized contracts that have been defined by the exchange''; once a trade is agreed the exchange clearing house stands between the two traders, so that each has a contract with the clearing house, and requires margin from both, so that ``traders do not have to worry about the creditworthiness of the people they are trading with'' \citep[chap.~1, sec.~1.1, pp.~24--25]{s7-hulloptions}. In the \emph{over-the-counter} (OTC) market, banks, other large financial institutions, fund managers and corporations trade customised contracts; a trade is either presented to a \emph{central counterparty} (CCP), which like a clearing house stands between the parties, or cleared bilaterally under a master agreement setting out termination, close-out amounts and collateral; large banks act as market makers (sec.~1.2, p.~25).
+
+\emph{Comparison.} Exchange-traded contracts are standardised, margined daily through the clearing house and reported transparently; OTC contracts can be tailored in underlying, size, dates and payoff, but carry counterparty risk where they are not centrally cleared or fully collateralised, and are harder to close out except with the original dealer (Interpretation, from secs.~1.1--1.2 and Table~2.3, p.~65).
+
+\qffield{Conditions} \emph{Reforms, as Hull states them in 2021.} Before the 2007--2008 crisis OTC markets were ``largely unregulated''; since then standardised OTC derivatives between two financial institutions in the United States must whenever possible be traded on swap execution facilities, ``platforms similar to exchanges''; most parts of the world require a CCP for most standardised transactions between financial institutions; and all trades must be reported to a central repository, with the aim of improving transparency and reducing systemic risk (p.~26). Margin and default management at a CCP are in \hyperref[mech:otc-clearing-collateral]{OTC clearing and collateral} and, for an exchange, \hyperref[mech:futures-margin-settlement]{futures margin and settlement}.
+
+\qffield{Practice} \emph{Size.} OTC transactions are fewer than exchange trades but much larger on average; Hull gives \$558.5 trillion of OTC notional in December~2019 against \$96.5 trillion of underlying assets for exchange-traded contracts, with OTC growth held back since 2007 partly by compression (pp.~27--28), and the BIS figures for end-2025 are in \hyperref[def:interest-rate-swaps]{interest-rate swaps}. Notional overstates economic exposure: gross market values are a small fraction of it (\hyperref[def:derivative-contracts]{derivative contracts}). In the Handbook's account, Dodd--Frank moved generic swaps onto swap execution facilities and clearing, while swaps ``with unusual terms and/or that are difficult to value are still executed bilaterally'' \citep[chap.~64, p.~1577]{s7-fabozzifixed}.
+
+\qffield{Pitfalls} The Handbook's sentence describes swap execution facilities as clearing contracts ``by acting as a centralized counterparty''; in the rules Hull describes, the facility is a trading platform and the CCP clears the trade (Hull, p.~26). Treating a cleared OTC swap as free of credit risk: the risk moves to the CCP and its members (Hull, Business Snapshot~1.2, p.~27, on systemic risk). Reading the comparative sizes of OTC and exchange markets from statistics that measure different things, which Hull warns ``are not exactly comparable'' (p.~27).
+
+\qffield{See also} \hyperref[def:derivative-types-commitments-contingent]{forward commitments and contingent claims}; \hyperref[def:derivative-uses-risks]{uses and risks}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Types of derivative: forward commitments (forwards, futures and swaps) against contingent claims (options and credit derivatives), linear and non-linear payoffs, and who pays what at inception]\label{def:derivative-types-commitments-contingent}
+\qffield{Statement} A \emph{forward commitment} obliges both parties to transact at terms fixed today: forwards and futures to buy or sell the underlying at a set price on a set date, and swaps to exchange a series of cash flows, which makes a swap a strip of forward commitments (\hyperref[def:swaps-as-forward-strips]{swaps as forward strips}). Forward commitments have payoffs \emph{linear} in the underlying, symmetric gains and losses, and are normally entered at zero value, apart from margin or collateral \citep[chap.~1, secs.~1.3--1.5, pp.~28--31, and chap.~7, sec.~7.1, p.~172]{s7-hulloptions}. A \emph{contingent claim} pays only if an event occurs: an option pays when it is exercised in the money, so its payoff is \emph{non-linear}, the buyer pays a premium and the holder's loss is limited to it (sec.~1.5, p.~31). A \emph{credit default swap} is a contingent claim on a credit event: the buyer pays a periodic spread and is compensated, typically par less recovery on the reference obligation, only after a credit event \citep[chap.~7, sec.~7.12, pp.~193--194]{s7-hulloptions}; contract terms are in \hyperref[mech:cds-contract-credit-events]{the CDS contract}.
+
+\qffield{Practice} \emph{Hull's comparison}: a forward hedge ``is designed to neutralize risk by fixing the price'', whereas an option hedge ``provide[s] insurance'', keeping the upside for an up-front fee; for speculators, futures and options both give leverage, but a long option position cannot lose more than its premium, while a futures position's loss is unlimited (secs.~1.7--1.8, pp.~36 and~38). Interpretation: a long forward equals a long call and a short put with the same strike and expiry, \hyperref[res:synthetic-short-put-call]{put--call parity} for European options, so the linear and non-linear families are linked by replication. Exotic and embedded derivatives (callable and putable bonds, convertibles, \hyperref[def:bond-cash-flow-contingencies]{bond options}) combine both.
+
+\qffield{Conditions} The labels describe payoffs, not risk: a short option is a contingent claim with unlimited or large loss; a forward commitment entered at zero value can quickly acquire large positive or negative value. Futures are forward commitments settled daily, so their gains and losses are realised as they accrue (\hyperref[res:forward-futures-price-difference]{forwards and futures}).
+
+\qffield{Pitfalls} Calling a CDS ``insurance'' in the legal or accounting sense; Hull says it is ``like an insurance contract'' (p.~193), but the buyer need not own the bond. Treating a swap as one forward rather than a series of them, each with its own value.
+
+\qffield{See also} \hyperref[def:derivative-contracts]{derivative contracts}; \hyperref[meth:option-payoff-profit]{option payoffs}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Option payoff and profit at expiration: long and short calls and puts, break-even prices, maximum gains and losses, moneyness, intrinsic and time value]\label{meth:option-payoff-profit}
+\qffield{Statement} At expiration, with terminal price $S_T$ and strike $K$, a long European call pays $\max(S_T-K,0)$ and a long put $\max(K-S_T,0)$; the writer's payoffs are the negatives, so option trading is zero-sum before costs \citep[chap.~10, secs.~10.1--10.2, pp.~227--230, and Figure~10.5, p.~231]{s7-hulloptions}. \emph{Profit} subtracts the premium $c_0$ or $p_0$; Hull follows the common practice of ignoring the time value of the premium (p.~227).
+
+\begin{center}\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Position & Payoff at $T$ & Break-even $S_T$ & Maximum gain & Maximum loss \\
+\midrule
+Long call & $\max(S_T-K,0)$ & $K+c_0$ & unlimited & $c_0$ \\
+Short call & $-\max(S_T-K,0)$ & $K+c_0$ & $c_0$ & unlimited \\
+Long put & $\max(K-S_T,0)$ & $K-p_0$ & $K-p_0$ & $p_0$ \\
+Short put & $-\max(K-S_T,0)$ & $K-p_0$ & $p_0$ & $K-p_0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+A call is \emph{in the money} when $S>K$, at the money when $S=K$ and out of the money when $S<K$, and a put the reverse. \emph{Intrinsic value} is the value of immediate exercise, $\max(S-K,0)$ for a call and $\max(K-S,0)$ for a put; the excess of an option's value over it is \emph{time value} (sec.~10.4, p.~234). Payoff is the value at expiration; profit can be negative, payoff to the holder cannot.
+
+\qffield{Practice} \emph{Reproduced} (Hull, pp.~228--229, one contract of 100 shares): a call struck at 100 bought for 5 makes 1{,}000 if the stock ends at 115 and loses 300 at 102, being exercised because 2 per share offsets part of the premium; a put struck at 70 bought for 7 makes 800 at 55 and loses 700 if the stock ends above 70. Break-evens are 105 and 63. If the call's 5 premium is financed at 4 percent for three months, the break-even rises to 105.0503.
+
+\qffield{Conditions} European payoffs; an American option can be exercised earlier, and its value is at least its intrinsic value (p.~234). Exchange options are on contracts of a set size, here 100 shares (sec.~10.4).
+
+\qffield{Pitfalls} Confusing payoff with profit, or reading a short put's maximum loss as unlimited: it is $K-p_0$, reached at $S_T=0$. Letting an option that is in the money but below break-even expire, which throws away the payoff that offsets part of the premium. Ignoring margin on written options, which Hull describes for naked options (sec.~10.7, pp.~237--238).
+
+\qffield{See also} \hyperref[def:derivative-types-commitments-contingent]{contingent claims}; \hyperref[res:synthetic-short-put-call]{synthetic positions}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[Uses, benefits and risks of derivatives: hedging, speculation and arbitrage; transaction costs, leverage, price discovery and risk transfer; counterparty, leverage, operational, legal and systemic risks]\label{def:derivative-uses-risks}
+\qffield{Statement} Hull's three groups of users are \emph{hedgers}, who ``use derivatives to reduce the risk that they face from potential future movements in a market variable''; \emph{speculators}, who ``use them to bet on the future direction of a market variable''; and \emph{arbitrageurs}, who ``take offsetting positions in two or more instruments to lock in a profit'' \citep[chap.~1, sec.~1.6, p.~33]{s7-hulloptions}. Both hedgers and speculators often find it ``more attractive to trade a derivative on an asset than to trade the asset itself'' (p.~41). \emph{Benefits}, as interpretation of these sections: risk can be transferred to those willing to bear it without trading the asset; positions need little cash (leverage); trading costs can be lower than in the underlying; and futures and option prices reveal information about expected prices and volatility.
+
+\qffield{Practice} \emph{Hull's examples.} Four sterling futures contracts need \$20{,}000 of margin against \$305{,}500 to buy \textsterling250{,}000 spot, for nearly the same profit (Table~1.4, pp.~36--37); \$2{,}000 in calls at \$1 struck at \$22.50 earns \$7{,}000 if the stock rises from \$20 to \$27 against \$700 from 100 shares, and loses the whole \$2{,}000 if it falls to \$15 against \$500 (Table~1.5, pp.~37--38). Arbitrage keeps the dollar and sterling prices of a dual-listed stock in line: at \$120 in New York, \textsterling100 in London and \$1.2300, buying 100 shares in New York and selling in London locks in \$300 before costs (sec.~1.9, p.~39).
+
+\emph{Issuers and investors.} An issuer uses a swap to change the form of its debt without refinancing: Apple, borrowing at floating plus 10 basis points and paying 3 percent in a swap, has fixed-rate debt at 3.1 percent; Intel, with fixed debt at 3.2 percent, receives 2.97 percent and pays floating, ending at floating plus 23 basis points (Hull, sec.~7.3, pp.~176--177). A currency swap turns debt issued in one currency into debt in another (sec.~7.8, p.~187). An investor uses the same swaps to turn a fixed-rate asset into a floating-rate one (p.~177), puts to set a floor under a holding (sec.~1.7, pp.~35--36), and futures or swaps to change duration or market exposure without trading the securities (\hyperref[def:futures-hedge-basis]{futures hedges}). Financial institutions use them to close a duration mismatch between assets and liabilities \citep[chap.~64, p.~1575]{s7-fabozzifixed}.
+
+\qffield{Conditions} \emph{Risks.} \emph{Leverage} magnifies losses as well as gains. \emph{Counterparty risk} arises in bilateral OTC trades; Hull separates it from market risk, which ``can be hedged by entering into offsetting contracts'' while ``credit risks are less easy to hedge'' (sec.~7.11, p.~193). \emph{Operational} risk: traders with a mandate to hedge or arbitrage can become speculators, as at Soci\'et\'e G\'en\'erale, which lost 4.9 billion euros unwinding Kerviel's positions in January~2008 (Business Snapshot~1.4, p.~40); Hull's remedy is risk limits and daily monitoring (sec.~1.10, p.~39). \emph{Legal} risk: the English courts held the London Borough of Hammersmith and Fulham's swaps of 1987--1989 void for lack of authority (Business Snapshot~7.2, p.~194). \emph{Systemic} risk: a default can spread through the web of OTC exposures (Business Snapshot~1.2, p.~27). \emph{Basis} and model risk arise when the hedge and the exposure differ (\hyperref[def:futures-hedge-basis]{basis}).
+
+\qffield{Pitfalls} Treating the hedge's loss in isolation: a forward hedge gives up the favourable outcome by design. Assuming arbitrage is riskless in practice: execution, funding and short-sale constraints apply, and an arbitrageur who leaves one leg open is speculating (p.~39).
+
+\qffield{See also} \hyperref[def:derivative-markets-otc-exchange]{derivative markets}; \hyperref[meth:arbitrage-replication-carry]{arbitrage and replication}.
+
+\end{qfdefinition}

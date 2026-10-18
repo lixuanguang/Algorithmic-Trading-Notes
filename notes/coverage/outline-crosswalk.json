@@ -8829,9 +8829,9 @@
    "objectives": [
     "objective:describe-bond-features"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:bond-features-indenture describes issuer, maturity, par, coupon, currency and seniority with the Handbook's definitions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m051:b02",
@@ -8850,9 +8850,9 @@
    "objectives": [
     "objective:describe-bond-features"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:bond-features-indenture describes the indenture and trustee and contrasts affirmative with negative covenants, including incurrence tests.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m052:b01",
@@ -8871,9 +8871,9 @@
    "objectives": [
     "objective:describe-bond-features"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:bond-cash-flow-contingencies describes bullet, amortising, sinking-fund, floating, step-up, deferred, PIK and index-linked structures and contrasts call and sinking-fund options (issuer) with put and conversion (holder).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m052:b02",
@@ -8891,9 +8891,9 @@
    "objectives": [
     "objective:explain-bond-legal-tax-factors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: rule:bond-issuance-legal-tax describes registration and its exemptions, shelf and Rule 144A, the Trust Indenture Act threshold, tax exemptions for municipal and Treasury interest, T+1 settlement and the EU prospectus exemptions, each dated.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m053:b01",
@@ -8911,9 +8911,9 @@
    "objectives": [
     "objective:describe-bond-market-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:bond-market-segments-trading describes segments by issuer, maturity, credit, currency and type, with issuer and investor participants.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m053:b02",
@@ -8951,9 +8951,9 @@
    "objectives": [
     "objective:describe-bond-market-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:bond-market-segments-trading compares primary issuance (auction, syndicate or underwriting, competitive bidding) and dealer-based secondary trading with equity listing and exchange trading.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m054:b01",
@@ -9011,9 +9011,9 @@
    "objectives": [
     "objective:compare-corporate-long-term-funding"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:corporate-funding-ig-hy contrasts investment-grade and high-yield issuers' instruments, covenants, call protection, security and investor base.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m055:b01",
@@ -9031,9 +9031,9 @@
    "objectives": [
     "objective:describe-government-funding"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:government-agency-supranational-funding describes sovereign, local-government, agency and supranational funding choices, with IBRD's dated currency mix.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m055:b02",
@@ -9051,9 +9051,9 @@
    "objectives": [
     "objective:describe-government-funding"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:government-agency-supranational-funding contrasts auctioned, benchmarked government issuance and its electronic trading with syndicated, dealer-traded corporate issuance.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m056:b01",
@@ -9071,9 +9071,9 @@
    "objectives": [
     "objective:price-bond-from-yield"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:bond-price-from-yield calculates full, clean and accrued prices between coupon dates with street and Treasury simple-stub conventions, checked against 31 CFR 356 Appendix B and the Handbook.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m056:b02",
@@ -9091,9 +9091,9 @@
    "objectives": [
     "objective:price-bond-from-yield"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:bond-price-from-yield identifies the inverse price-yield relation, premium and discount against coupon and yield, pull to par and the greater sensitivity of long and low-coupon bonds, with computed shocks.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m056:b03",
@@ -9111,9 +9111,9 @@
    "objectives": [
     "objective:apply-matrix-pricing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:matrix-pricing describes the technique with IFRS 13 B7 and 79(a) and a worked interpolation from comparable bonds.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m057:b01",
@@ -9131,9 +9131,9 @@
    "objectives": [
     "objective:calculate-yield-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:bond-yield-spread-measures calculates conversions of a semiannual yield to annual, quarterly, monthly and continuous bases.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m057:b02",
@@ -9153,9 +9153,9 @@
    "objectives": [
     "objective:calculate-yield-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:bond-yield-spread-measures compares, calculates and interprets current yield, yield to maturity, call and worst, and G-, I- and Z-spreads, with a steep-curve contrast.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m058:b01",
@@ -9174,9 +9174,9 @@
    "objectives": [
     "objective:calculate-floating-money-market-yields"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:floating-money-market-yields calculates and interprets quoted and discount margins for floaters, reproducing the Handbook and an original SOFR FRN.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m058:b02",
@@ -9195,9 +9195,9 @@
    "objectives": [
     "objective:calculate-floating-money-market-yields"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:floating-money-market-yields calculates bank discount, money-market, investment (bond-equivalent) and effective yields for bills and CDs, with Treasury's formulas.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m059:b01",
@@ -9216,9 +9216,9 @@
    "objectives": [
     "objective:derive-spot-par-forward-curves"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:spot-par-forward-curves defines spot rates and prices a coupon bond with them.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m059:b02",
@@ -9237,9 +9237,9 @@
    "objectives": [
     "objective:derive-spot-par-forward-curves"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:spot-par-forward-curves defines par and forward rates and converts among par, spot and forward rates, pricing with forwards.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m059:b03",
@@ -9257,9 +9257,9 @@
    "objectives": [
     "objective:compare-yield-curves"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:spot-par-forward-curves compares the three curves and their ordering on upward and inverted curves.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m060:b01",
@@ -9278,9 +9278,9 @@
    "objectives": [
     "objective:decompose-bond-return"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:bond-return-decomposition calculates coupons, interest on interest, pull to par and the rate effect, with horizon returns under three yield paths.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m060:b02",
@@ -9298,9 +9298,9 @@
    "objectives": [
     "objective:decompose-bond-return"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:bond-return-decomposition describes how price and reinvestment risk offset at a horizon equal to Macaulay duration, with numerical checks and the conditions of the match.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m060:b03",
@@ -9320,9 +9320,9 @@
    "objectives": [
     "objective:calculate-yield-duration"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:yield-duration-pvbp defines, calculates and interprets Macaulay duration.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m061:b01",
@@ -9342,9 +9342,9 @@
    "objectives": [
     "objective:calculate-yield-duration"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:yield-duration-pvbp defines and calculates modified, approximate and money duration and PVBP, reproducing the Handbook.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m061:b02",
@@ -9362,9 +9362,9 @@
    "objectives": [
     "objective:calculate-yield-duration"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:yield-duration-pvbp explains the effects of maturity, coupon and yield level on duration.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m062:b01",
@@ -9384,9 +9384,9 @@
    "objectives": [
     "objective:calculate-convexity-price-change"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:convexity-portfolio-duration calculates convexity, the convexity adjustment and its vendor scaling.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m062:b02",
@@ -9404,9 +9404,9 @@
    "objectives": [
     "objective:calculate-convexity-price-change"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:convexity-portfolio-duration calculates price changes from duration and convexity against full repricing at three shocks.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m062:b03",
@@ -9425,9 +9425,9 @@
    "objectives": [
     "objective:calculate-convexity-price-change"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:convexity-portfolio-duration calculates portfolio duration and convexity by market-value weights and explains their limits, with a steepening counterexample.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m063:b01",
@@ -9445,9 +9445,9 @@
    "objectives": [
     "objective:apply-curve-based-risk-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:curve-based-empirical-duration explains why effective measures suit bonds with options, with the Handbook's callable and putable exhibits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m063:b02",
@@ -9465,9 +9465,9 @@
    "objectives": [
     "objective:apply-curve-based-risk-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:curve-based-empirical-duration calculates price change from effective duration and convexity for a benchmark shift.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m063:b03",
@@ -9486,9 +9486,9 @@
    "objectives": [
     "objective:apply-curve-based-risk-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:curve-based-empirical-duration defines key-rate durations and uses them for a non-parallel shift.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m063:b04",
@@ -9506,9 +9506,9 @@
    "objectives": [
     "objective:apply-curve-based-risk-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:curve-based-empirical-duration describes empirical against analytical duration and their limits, with a synthetic regression.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m064:b01",
@@ -9870,9 +9870,9 @@
    "objectives": [
     "objective:describe-derivative-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:derivative-contracts defines a derivative and its features; def:derivative-markets-otc-exchange adds the market context.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m070:b02",
@@ -9891,9 +9891,9 @@
    "objectives": [
     "objective:describe-derivative-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:derivative-markets-otc-exchange describes exchange and OTC markets, clearing, reforms and size and contrasts the two.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m071:b01",
@@ -9912,9 +9912,9 @@
    "objectives": [
     "objective:compare-derivative-types"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:derivative-types-commitments-contingent defines forwards, futures, swaps, options and credit default swaps and compares them, with def:derivative-contracts.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m071:b02",
@@ -9932,9 +9932,9 @@
    "objectives": [
     "objective:calculate-option-payoffs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:option-payoff-profit determines value at expiration and profit for long and short calls and puts, with break-evens and maximum gains and losses.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m071:b03",
@@ -9952,9 +9952,9 @@
    "objectives": [
     "objective:compare-derivative-types"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:derivative-types-commitments-contingent contrasts forward commitments with contingent claims on payoff shape, premium and obligations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m072:b01",
@@ -9972,9 +9972,9 @@
    "objectives": [
     "objective:explain-derivative-uses-risks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:derivative-uses-risks describes benefits and the leverage, counterparty, operational, legal, systemic and basis risks, with Hull's cases.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m072:b02",
@@ -9992,9 +9992,9 @@
    "objectives": [
     "objective:explain-derivative-uses-risks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:derivative-uses-risks compares issuer uses (liability and currency transformation) and investor uses (asset transformation, protection, exposure changes).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m073:b01",
@@ -10012,9 +10012,9 @@
    "objectives": [
     "objective:price-by-arbitrage-and-carry"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:arbitrage-replication-carry explains arbitrage and replication in pricing with cash-and-carry and reverse arbitrage.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m073:b02",
@@ -10032,9 +10032,9 @@
    "objectives": [
     "objective:price-by-arbitrage-and-carry"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:arbitrage-replication-carry contrasts the forward price with the expected spot price and explains carry costs and benefits, with res:cost-of-carry-forward-price.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m074:b01",
@@ -10052,9 +10052,9 @@
    "objectives": [
     "objective:value-forward-contracts"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:forward-price-value-lifecycle explains forward price against value at inception, during the life and at maturity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m074:b02",
@@ -10073,9 +10073,9 @@
    "objectives": [
     "objective:value-forward-contracts"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:rate-bond-forward-valuation describes FRAs, their pricing and value and their use to lock in borrowing or lending rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m075:b01",
@@ -10093,9 +10093,9 @@
    "objectives": [
     "objective:compare-forward-futures-prices"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: res:forward-futures-price-difference compares forward and futures price and value under daily settlement.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m075:b02",
@@ -10113,9 +10113,9 @@
    "objectives": [
     "objective:compare-forward-futures-prices"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: res:forward-futures-price-difference explains why prices differ when rates are stochastic and correlated with the asset, with a tree and practical reasons.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m076:b01",
@@ -10133,9 +10133,9 @@
    "objectives": [
     "objective:compare-swaps-and-forwards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:swaps-as-forward-strips describes a swap as a strip of off-market forwards and as a bond package and contrasts it with forwards.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m076:b02",
@@ -10153,9 +10153,9 @@
    "objectives": [
     "objective:compare-swaps-and-forwards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:swaps-as-forward-strips contrasts the swap's price (the fixed rate) with its value over time.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m077:b01",
@@ -10193,9 +10193,9 @@
    "objectives": [
     "objective:price-by-arbitrage-and-carry"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:arbitrage-replication-carry contrasts static replication of forward commitments with bounds, parity and model-based replication of options.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m077:b03",
@@ -16562,9 +16562,9 @@
    "objectives": [
     "objective:relate-forward-rates-and-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:forward-rates-expected-returns relates spot and forward rates, yield to maturity, expected and realised returns and curve shape.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b02",
@@ -16582,9 +16582,9 @@
    "objectives": [
     "objective:relate-forward-rates-and-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:spot-par-forward-curves describes bootstrapping spot rates from the par curve with a worked example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b03",
@@ -16602,9 +16602,9 @@
    "objectives": [
     "objective:relate-forward-rates-and-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:forward-rates-expected-returns describes the assumption that spot rates evolve as forwards imply and returns when they do not.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b04",
@@ -16622,9 +16622,9 @@
    "objectives": [
     "objective:relate-forward-rates-and-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:forward-rates-expected-returns describes rolling down the curve and its break-even rise.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b05",
@@ -16642,9 +16642,9 @@
    "objectives": [
     "objective:use-swap-curve-and-spreads"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:swap-curve-short-term-spreads explains the swap curve and its uses in valuation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b06",
@@ -16663,9 +16663,9 @@
    "objectives": [
     "objective:use-swap-curve-and-spreads"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:swap-curve-short-term-spreads calculates and interprets the swap spread, with its sign change since 2008.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b07",
@@ -16683,9 +16683,9 @@
    "objectives": [
     "objective:use-swap-curve-and-spreads"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: def:swap-curve-short-term-spreads describes TED, LIBOR-OIS and commercial-paper tier spreads, dated.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b08",
@@ -16704,9 +16704,9 @@
    "objectives": [
     "objective:explain-term-structure-theories"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: res:term-structure-theories explains expectations, liquidity-preference, segmentation and preferred-habitat theories and their implications for forwards and curve shape.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b09",
@@ -16724,9 +16724,9 @@
    "objectives": [
     "objective:manage-yield-curve-factor-exposure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:yield-curve-factor-exposures explains factor exposures from principal components and their use in two-instrument hedges.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b10",
@@ -16744,9 +16744,9 @@
    "objectives": [
     "objective:manage-yield-curve-factor-exposure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:yield-curve-factor-exposures explains the maturity structure of yield volatility from GSW data and its effect on price volatility.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b11",
@@ -16764,9 +16764,9 @@
    "objectives": [
     "objective:manage-yield-curve-factor-exposure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:yield-curve-factor-exposures explains economic drivers of level, slope and curvature views and spread views.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m027:b01",
@@ -17571,9 +17571,9 @@
    "objectives": [
     "objective:value-equity-forwards-futures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:equity-forward-futures-valuation describes pricing and calculates and interprets values of equity forwards and futures.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m031:b02",
@@ -17591,9 +17591,9 @@
    "objectives": [
     "objective:value-equity-forwards-futures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:arbitrage-replication-carry and meth:equity-forward-futures-valuation describe carry arbitrage without and with underlying cash flows.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m031:b03",
@@ -17613,9 +17613,9 @@
    "objectives": [
     "objective:value-rate-and-bond-forwards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:rate-bond-forward-valuation prices and values FRAs and SOFR futures (single-curve, with the multi-curve entry linked).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m031:b04",
@@ -17635,9 +17635,9 @@
    "objectives": [
     "objective:value-rate-and-bond-forwards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:rate-bond-forward-valuation prices and values bond forwards and Treasury futures, with conversion factors and the cheapest to deliver.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m031:b05",
@@ -17657,9 +17657,9 @@
    "objectives": [
     "objective:value-swaps-by-replication"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:swap-valuation-replication prices and values interest-rate swaps by bonds and by forwards.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m031:b06",
@@ -17679,9 +17679,9 @@
    "objectives": [
     "objective:value-swaps-by-replication"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:swap-valuation-replication prices and values fixed-for-fixed currency swaps, reproducing Hull Examples 7.2-7.3.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m031:b07",
@@ -17701,9 +17701,9 @@
    "objectives": [
     "objective:value-swaps-by-replication"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page: meth:swap-valuation-replication prices and values equity swaps at inception and between resets.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m032:b01",

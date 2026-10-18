@@ -1266,5 +1266,125 @@
   "ex:gips-composite-report": {
     "source": "compendium/portfolio-construction-risk/performance-standards.tex",
     "review": "Verification: GIPS 2020 4.A.1-4.A.3 and 4.C.1-4.C.11 (pp. 21-27), 4.C.35-4.C.40 (p. 30), 1.A.27. Checked by gips-checks.py part 7: annual gross, net and benchmark returns and three-year standard deviations from synthetic monthly series; dispersion from part 3. Educational; no compliance claim. Partly checked 2026-10-18 (performance and planning batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:bond-features-indenture": {
+    "source": "compendium/rates-credit-mortgages/bond-instruments-markets.tex",
+    "review": "Verification: s7-fabozzifixed chap. 10, p. 235; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+  },
+  "def:bond-cash-flow-contingencies": {
+    "source": "compendium/rates-credit-mortgages/bond-instruments-markets.tex",
+    "review": "Verification: s7-fabozzifixed chap. 1, pp. 5 and 13; chap. 10, p. 244; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+  },
+  "rule:bond-issuance-legal-tax": {
+    "source": "compendium/rates-credit-mortgages/bond-instruments-markets.tex",
+    "review": "Verification: usc-15-77c sec. 3(a)(2); usc-15-77c sec. 3(a)(3); s7-fabozzifixed chap. 13, p. 302; cfr-17-230-415 para. (a)(1)(x); cfr-17-230-144a para. (a)(1); usc-15-77ddd sec. 304(a)(8)--(9); cfr-17-260-4a-1 sec. 260.4a-1; usc-26-103 secs. (a)--(b); usc-31-3124 sec. (a); s7-fabozzifixed chap. 9, pp. 221--223; cfr-17-240-15c6-1 para. (a); finra-regulatory-notice-23-15 p. 1; s7-fabozzifixed chap. 7, p. 180; eu-2017-1129-prospectus art. 1(4)(a)--(d), consolidated text of 4 December 2024; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+  },
+  "def:bond-market-segments-trading": {
+    "source": "compendium/rates-credit-mortgages/bond-instruments-markets.tex",
+    "review": "Verification: s7-fabozzifixed chap. 1, Exhibit 1-1, p. 4; wide-bsv-fi-survey sec. I, pp. 1--5; s7-fabozzifixed chap. 7, p. 180; wide-bsv-fi-survey p. 5; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+  },
+  "meth:corporate-funding-ig-hy": {
+    "source": "compendium/rates-credit-mortgages/bond-instruments-markets.tex",
+    "review": "Verification: s7-fabozzifixed chap. 10, pp. 252 and 259--260; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+  },
+  "def:government-agency-supranational-funding": {
+    "source": "compendium/rates-credit-mortgages/bond-instruments-markets.tex",
+    "review": "Verification: s7-fabozzifixed chap. 7, pp. 172--176; world-bank-ibrd-ida-factsheet-2026 pp. 1--2; wide-bsv-fi-survey pp. 1--5; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+  },
+  "meth:bond-price-from-yield": {
+    "source": "compendium/rates-credit-mortgages/bond-pricing-yields.tex",
+    "review": "Verification: s7-fabozzifixed chap. 4, pp. 65 and 72--76; cfr-31-356-appendix-b sec. II.D; cfr-31-356-appendix-b secs. II.A and II.D; s7-fabozzifixed chap. 4, Exhibit 4-4, pp. 74--75; locators in the entry text. Checked by bond-valuation-checks.py parts 1-2 (31 CFR 356 Appendix B examples, Handbook Exhibit 4-4 and Illustration 4, the original 5% 2034 bond between coupon dates, street against simple-stub pricing, price-yield relationships). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:matrix-pricing": {
+    "source": "compendium/rates-credit-mortgages/bond-pricing-yields.tex",
+    "review": "Verification: eu-2023-1803-ifrs13 IFRS 13, para. B7; s7-fabozzifixed chap. 44, p. 1119; locators in the entry text. Checked by bond-valuation-checks.py part 4 (interpolated yields and spreads from invented comparable quotes). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:bond-yield-spread-measures": {
+    "source": "compendium/rates-credit-mortgages/bond-pricing-yields.tex",
+    "review": "Verification: s7-fabozzifixed chap. 4, pp. 76--84; locators in the entry text. Checked by bond-valuation-checks.py part 3 (compounding conversions, current yield, yields to call and worst, G-, I- and Z-spreads on one government zero curve, steep-curve contrast). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:floating-money-market-yields": {
+    "source": "compendium/rates-credit-mortgages/bond-pricing-yields.tex",
+    "review": "Verification: s7-fabozzifixed chap. 14, pp. 312--318; cfr-31-356-appendix-b sec. IV.A; cfr-31-356-appendix-b sec. VI.A; s7-fabozzifixed chap. 13, p. 301; cfr-31-356-appendix-b sec. VI.D; s7-fabozzifixed chap. 4, Exhibit 4-7, p. 86; cfr-31-356-appendix-b secs. VI.A, C and D; locators in the entry text. Checked by bond-valuation-checks.py parts 1 and 5 (Treasury bill and FRN formulas, the Handbook's discount margin, a SOFR+75 FRN, bill and CD money-market conversions). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:spot-par-forward-curves": {
+    "source": "compendium/rates-credit-mortgages/term-structure-returns.tex",
+    "review": "Verification: s7-fabozzifixed chap. 31, pp. 692--693; s7-hulloptions sec. 4.7, pp. 106--108; locators in the entry text. Checked by term-structure-checks.py part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:forward-rates-expected-returns": {
+    "source": "compendium/rates-credit-mortgages/term-structure-returns.tex",
+    "review": "Verification: s7-fabozzifixed chap. 31, pp. 695 and 711--712; locators in the entry text. Checked by term-structure-checks.py part 2 (forwards as break-evens, Ilmanen's example, rolling yield and break-even shift). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:swap-curve-short-term-spreads": {
+    "source": "compendium/rates-credit-mortgages/term-structure-returns.tex",
+    "review": "Verification: s7-fabozzifixed chap. 31, p. 692; s7-hulloptions sec. 7.2, pp. 175--176; s7-fabozzifixed chap. 64, pp. 1580--1581; s7-hulloptions sec. 8.2, p. 209; s7-fabozzifixed chap. 13, p. 305; locators in the entry text. Checked by term-structure-checks.py part 4 (OIS par curve to forwards, swap spread against a Treasury yield). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "res:term-structure-theories": {
+    "source": "compendium/rates-credit-mortgages/term-structure-returns.tex",
+    "review": "Verification: s7-fabozzifixed chap. 3, p. 55; locators in the entry text. Checked by term-structure-checks.py part 3 (convexity bias under the local and unbiased expectations hypotheses, liquidity premium). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:yield-curve-factor-exposures": {
+    "source": "compendium/rates-credit-mortgages/term-structure-returns.tex",
+    "review": "Verification: s7-fabozzifixed chap. 33, pp. 745--747; s7-hulloptions sec. 22.9, pp. 534--537; fed-gsw-data feds200628.csv, SVENY01--SVENY30; locators in the entry text. Checked by term-structure-checks.py parts 5-6 (Hull Table 22.9 loadings, exposures, standard deviation and a two-factor hedge; principal components and volatility term structure of GSW month-end zero yields, 489 months, from gsw-month-end-zero.csv). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:bond-return-decomposition": {
+    "source": "compendium/rates-credit-mortgages/interest-rate-risk.tex",
+    "review": "Verification: s7-fabozzifixed chap. 4, pp. 76--79 and 87--90; locators in the entry text. Checked by bond-valuation-checks.py part 8 (coupons, interest on interest, pull to par and rate effect over three years; horizon equal to Macaulay duration). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:yield-duration-pvbp": {
+    "source": "compendium/rates-credit-mortgages/interest-rate-risk.tex",
+    "review": "Verification: s7-fabozzifixed chap. 5, pp. 111--112 and 117--120; locators in the entry text. Checked by bond-valuation-checks.py part 6 (Macaulay, modified, approximate and money duration, PVBP, Handbook 20-year bond). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:convexity-portfolio-duration": {
+    "source": "compendium/rates-credit-mortgages/interest-rate-risk.tex",
+    "review": "Verification: s7-fabozzifixed chap. 5, pp. 124--128; s7-fabozzifixed chap. 4, pp. 84--85; locators in the entry text. Checked by bond-valuation-checks.py parts 6-7 (convexity and repricing at +/-100 and 200 bp; Handbook convexity measure; three-bond portfolio duration, convexity, parallel and steepening shocks, cash-flow yield). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:curve-based-empirical-duration": {
+    "source": "compendium/rates-credit-mortgages/interest-rate-risk.tex",
+    "review": "Verification: s7-fabozzifixed chap. 5, pp. 117--118 and 128--135; locators in the entry text. Checked by bond-valuation-checks.py part 9 (effective duration and convexity on a zero curve, key-rate durations and a steepener, callable bond under a zero-volatility exercise rule, Handbook Exhibit 5-15, synthetic empirical duration with seed 20261018). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:derivative-markets-otc-exchange": {
+    "source": "compendium/volatility-options/derivative-markets-uses.tex",
+    "review": "Verification: s7-hulloptions chap. 1, sec. 1.1, pp. 24--25; s7-fabozzifixed chap. 64, p. 1577; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+  },
+  "def:derivative-types-commitments-contingent": {
+    "source": "compendium/volatility-options/derivative-markets-uses.tex",
+    "review": "Verification: s7-hulloptions chap. 1, secs. 1.3--1.5, pp. 28--31, and chap. 7, sec. 7.1, p. 172; s7-hulloptions chap. 7, sec. 7.12, pp. 193--194; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+  },
+  "meth:option-payoff-profit": {
+    "source": "compendium/volatility-options/derivative-markets-uses.tex",
+    "review": "Verification: s7-hulloptions chap. 10, secs. 10.1--10.2, pp. 227--230, and Figure 10.5, p. 231; locators in the entry text. Checked by forward-swap-checks.py part 1 (Hull's call and put examples, break-evens, financed premium). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:derivative-uses-risks": {
+    "source": "compendium/volatility-options/derivative-markets-uses.tex",
+    "review": "Verification: s7-hulloptions chap. 1, sec. 1.6, p. 33; s7-fabozzifixed chap. 64, p. 1575; locators in the entry text. Descriptive entry; no numerical check. Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft."
+  },
+  "meth:arbitrage-replication-carry": {
+    "source": "compendium/volatility-options/forward-commitment-valuation.tex",
+    "review": "Verification: s7-hulloptions chap. 1, sec. 1.9, p. 39; locators in the entry text. Checked by forward-swap-checks.py part 2 (cash-and-carry and reverse arbitrage, expected spot against forward, Hull Examples 5.1-5.4 and others). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:forward-price-value-lifecycle": {
+    "source": "compendium/volatility-options/forward-commitment-valuation.tex",
+    "review": "Verification: s7-hulloptions chap. 5, sec. 5.7, pp. 133--134; locators in the entry text. Checked by forward-swap-checks.py part 3 (value at inception, during the life and at expiry). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "res:forward-futures-price-difference": {
+    "source": "compendium/volatility-options/forward-commitment-valuation.tex",
+    "review": "Verification: s7-hulloptions chap. 5, sec. 5.8, p. 135; locators in the entry text. Checked by forward-swap-checks.py part 4 (tailed futures replicate the forward with deterministic rates; two-period tree with positive and negative asset-rate correlation). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:swaps-as-forward-strips": {
+    "source": "compendium/volatility-options/forward-commitment-valuation.tex",
+    "review": "Verification: s7-fabozzifixed chap. 64, pp. 1577--1578; s7-hulloptions chap. 7, sec. 7.7, pp. 185--186; locators in the entry text. Checked by forward-swap-checks.py part 6 (par swap rate, off-market exchanges summing to zero). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:equity-forward-futures-valuation": {
+    "source": "compendium/volatility-options/forward-commitment-valuation.tex",
+    "review": "Verification: s7-hulloptions chap. 5, secs. 5.5--5.6 and 5.9, pp. 130--132 and 135--137; locators in the entry text. Checked by forward-swap-checks.py part 3 (discrete dividends, replication, continuous yield, index futures). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:rate-bond-forward-valuation": {
+    "source": "compendium/volatility-options/forward-commitment-valuation.tex",
+    "review": "Verification: s7-hulloptions chap. 4, sec. 4.9, pp. 110--112; cbot-treasury-chapters-2026 Rule 18101.B; locators in the entry text. Checked by forward-swap-checks.py part 5 (FRA rate and value, Hull Example 6.3, conversion factors, Examples 6.1-6.2, an original bond forward). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:swap-valuation-replication": {
+    "source": "compendium/volatility-options/forward-commitment-valuation.tex",
+    "review": "Verification: s7-hulloptions chap. 7, sec. 7.6, pp. 183--185; s7-fabozzifixed chap. 64, pp. 1577--1578; locators in the entry text. Checked by forward-swap-checks.py part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed swap). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   }
 }

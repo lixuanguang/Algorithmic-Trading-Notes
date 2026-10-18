@@ -56,5 +56,5 @@ Cross-referenced, not owned here: `def:macro-regime-asset-map` (`macro-regimes-s
 
 ## Questions carried forward
 
-- Inspect the 2013 revised edition of Drobny that the catalogue names; page numbers here are from the 2006 printing.
+- Drobny: page numbers are from the 2006 printing; the 2013 revised edition (EPUB, compared on 2026-10-18 for the quotations used and Bessent's passages) lacks Andres Drobny's interview, so those attributions rest on 2006 alone. Read the rest of the 2013 edition.
 - Which of the earlier notes' "structural reasons" for macro (policy jumps, sticky capital, under-arbitraged links) do the section's readings support?

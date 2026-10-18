@@ -3546,3 +3546,29 @@ Empirical scripts rerun from retained inputs and compared byte for byte with the
 - Target identifiers given to merged new questions, and the six abstract-only targets counted as narrowed.
 - Archived copies used in place of refused publisher pages; working papers read in place of published versions (Hansen, Romano and Wolf, Patton, GJR, DeMiguel et al.\ excepted, Merton, Brunnermeier and Pedersen, Bai and Perron).
 - The guide's reading note for `cd-anadu-2023` (USD~0.99) against the paper (USD~1); the pin is unchanged.
+
+## Drobny source check: Bessent's passages and the 2013 revised edition, 18 October 2026
+
+Source checking, not study, for `meth:macro-practitioner-frameworks`; it supersedes the earlier records' statements that the 2013 edition was not inspected, for the passages listed here only. The entry stays *draft*.
+
+### Sources, 2026-10-18
+
+- `s7-drobny`, Wiley 2006 printing: local PDF outside the repository, text layer; copyright page "Copyright © 2006", ISBN-13 978-0-471-79447-9 (cloth); printed page = PDF page − 15, checked at pp. 273–286. The file's name carries ISBN 978-0-470-03889-5, which the copyright page does not give.
+- The revised edition the catalogue names: local EPUB outside the repository; metadata publication date 2013-11-16 and identifier ISBN 978-1-118-86572-9; copyright page "Copyright © 2006, 2009, 2014". No printed page numbers; cited by chapter title and the interviewer's question.
+
+### Findings
+
+- **Bessent, bottom-up research** (2006 chap. 13, p. 274; 2013 chap. 12, "The Stock Operator", answer to "So you were running the Soros London office when the pound fell out of the ERM. Can you talk a bit about what happened on that famous trade?"): Soros Fund Management "did a lot of bottom-up research"; "Stan and George believed that if you can find out what's going on at a micro level, you can figure out the big picture". The belief is attributed to Druckenmiller and Soros.
+- **Entry discipline** (2006 p. 285; 2013, answer to "When you initiate a trade, do you have profit targets and stop-loss levels?"): "I don't usually have stop-losses. One of the things that I learned from Stan Druckenmiller is how to enter a trade"; he tries to make his entry point "good enough that I rarely stop myself out of a trade". Self-reported practice and a lesson attributed to Druckenmiller, with no results; the entry does not present it as advice to trade without stops and records the conflict with other interviewees' stop rules.
+- **Paradigm shifts** (2006 p. 285; 2013, answer to "Do interest rates matter once again for currencies? …"): "Soros used to say, 'Don't try to play the game better, try to figure out when the game has changed'"; "Catching a paradigm shift is where you make a lot of money because everyone is still focusing on what mattered". The advice is Soros's as Bessent reports it; the profit remark is Bessent's opinion.
+- These replace the treatment in commit `2606a23`, which listed the three points as not checked against the interview and not adopted.
+- **Edition comparison.** Every quotation in the entry was searched by script in both texts (normalised for ligatures, line-break hyphens and quotation marks), and the paraphrase anchors for Wadhwani (positioning; the 24-hour break), Rogers (the Fortune cover; the front page) and the anonymous currency specialist (credit curve, three blocs, negative gamma, long or flat, gestalt, frozen ice, five-month horizon) were located in both. All recur unchanged in the 2013 EPUB except Andres Drobny's (2006 pp. 109, 125, 130–132): his interview, 2006 chap. 6 "The Researcher", is not in the 2013 edition, whose chapters from Porter on are numbered one lower. One question differs: 2006 "What is your favorite trade at the moment?", 2013 "What is your best trade at the moment?".
+
+### Checks and their limits
+
+| Source | Passages compared | Limits |
+|---|---|---|
+| `s7-drobny`, 2006 printing | pp. 273–286 read; the entry's quotations searched throughout | Text layer; opinions of selected survivors |
+| `s7-drobny`, 2013 EPUB | Chapter 12 (Bessent) read around the three passages; the entry's quotations and anchors searched in all chapters | The rest of the text, the new prefaces and the second Leitner interview ("The Family Office Manager, Part Two") not compared; Thiel and Gorton–Standing not used in either edition |
+
+Files changed: `compendium/multi-asset-systematic-macro/global-macro.tex` (Bessent's Statement item, Notation, Conditions; the earlier "not adopted" sentence removed), `notes/readings/s7-drobny.md`, `notes/entry-evidence.json`, the `multi-asset-systematic-macro` pathway note and the reading row in `notes/log.md`. Human review is outstanding.

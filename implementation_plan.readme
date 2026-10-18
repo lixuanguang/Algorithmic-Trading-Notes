@@ -2374,3 +2374,49 @@ the draft PR for the final local results. Remote CI runs only after a merge into
 - Several original papers were read only through secondary texts.
 - The October 2026 SEC proposal could change the performance-fee rules.
 - Human review is outstanding.
+
+### 18.1 Correction pass on PR #23 (executed 2026-10-18)
+
+A fixes-only pass on draft PR #23 at `0b094ea`, after an external audit. No objective
+was added and no coverage status or outline mapping changed; this pass is exempt from
+the 30-objective target (Section 17.4), which stands for future expansion prompts.
+
+1. **Style analysis** (`meth:manager-due-diligence`). The script minimised the variance
+   of squared tracking differences. It now minimises the variance of the tracking
+   difference, as Sharpe (1992) states. The weights are 1.37/56.60/0/27.13/14.90 percent,
+   and R^2 is still 0.986. Three checks confirm the solution: a centred quadratic form,
+   the KKT conditions, and invariance to a constant added to the fund's returns.
+2. **Transition hedge** (`ex:investment-planning-case`,
+   `meth:risk-identification-modification`). The hedge is now applied with the
+   concentrated stock retained, using the five-asset weights and covariance: volatility
+   falls from 12.19 to 10.89 percent.
+   - It does not meet the loss limit (5th percentile -14.80 against -13). The limit is
+     met only after the first third is sold (-12.52).
+   - The stock's expected return is assumed to be 5.5 percent; a beta-consistent
+     alternative changes no verdict.
+   - Specific risk remains, and the basis, margin and execution limits are kept.
+3. **Tax basis** (planning case, `meth:asset-class-portfolio-construction`).
+   - Forecasts are now stated as pre-tax real and mapped exactly to after-tax real.
+   - The gains tax on the staged sale is paid from the pool, raising the requirement
+     from 2.70 to 2.81 percent.
+   - The balanced mix earns 2.40 percent after tax, and no mix meets both objectives.
+     The case now teaches a funding gap closed by lower spending, higher savings or
+     later retirement.
+   - The IPS return objective is 2.40 percent, with the client's resolution recorded.
+4. **Prior sensitivity** (`ex:manager-selection-case`). The posterior ranking reverses
+   at a prior sd of about 0.42 (0.30: X 0.277, Y 0.234; 0.50: X 0.429, Y 0.471). The
+   hire rests on process, attribution and operational evidence.
+5. **Normal downside deviation** (`meth:downside-appraisal-measures`). Eq. (5.80) gives
+   sigma/sqrt(2) at the mean, and the ratio depends on the target. Bacon's "about 0.6"
+   is attributed to him and matched to the conditional standard deviation below the
+   mean.
+6. **Treynor and alpha** (`meth:risk-adjusted-performance-measures`). They agree only
+   for positive beta; the entry now shows the zero- and negative-beta cases and a
+   counterexample.
+
+Checks rose from 164 to 193 (investment planning 41, manager selection 26, performance
+evaluation 41). The nine objectives mapped to the changed entries were reassessed
+against the corrected teaching and remain covered. Totals are unchanged: 71 of 424
+objectives; 78 Level I, 13 Level II and 37 shared-core items covered; 902 of 1,030
+unreviewed. Details are in `notes/source-review-records.md`, *Correction pass on
+PR #23*. Remote CI was not triggered.

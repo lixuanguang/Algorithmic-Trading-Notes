@@ -24,6 +24,7 @@ Prepared on 2026-10-18 by the performance and planning batch (2026-10-18) from s
 - Asset-class criteria; policy portfolio with ranges.
 - Risk management definition, governance, ERM, identification, measurement of non-financial risks, capital allocation methods; LTCM (p. 623).
 - Three components of evaluation; benchmark properties, types, universes, quality tests, hedge fund benchmarks; macro and micro attribution; Fong-Pearson-Vasicek; appraisal measures and criticisms; Exhibits 12-19 and 12-20 (three cells of 12-19 differ from Phi(IR sqrt(T)): 84.03, 63.81, 81.70 for 84.13, 63.55, 81.45); manager continuation policy and Type I/II errors.
+- p. 769: ex post alpha and the Treynor measure "will always give the same assessment of the existence of investment skill", argued from a positive-alpha account plotting above the ex post SML; the argument holds for positive beta only, since alpha = beta (T_A - T_M).
 
 ## Limits
 

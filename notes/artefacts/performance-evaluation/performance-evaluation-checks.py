@@ -21,6 +21,7 @@ import sys
 # third party library imports
 import numpy as np
 import scipy
+from scipy.integrate import quad
 from scipy.stats import binom, norm
 
 print(f"Python {sys.version.split()[0]}, NumPy {np.__version__}, SciPy {scipy.__version__}")
@@ -90,6 +91,31 @@ ok(
 ok(
     "Jensen's alpha = beta x (Treynor - benchmark Treynor)",
     all(close(out[k][3], funds[k][2] * (out[k][1] - (rB - rf))) for k in funds),
+)
+
+# alpha = beta (T_P - T_M) ranks like Treynor only for beta > 0.
+TM = rB - rf
+
+
+def alpha_treynor(r, beta):
+    alpha = r - rf - beta * (rB - rf)
+    return alpha, (math.inf if beta == 0 else (r - rf) / beta)
+
+
+a_pos, t_pos = alpha_treynor(9.5, 0.90)
+ok(
+    "beta 0.9: alpha +2.00 and Treynor 7.22 > 5.0 agree",
+    close(a_pos, 2.0) and (a_pos > 0) == (t_pos > TM),
+)
+a_zero, t_zero = alpha_treynor(4.0, 0.0)
+ok(
+    "beta 0: alpha +1.00 is defined but the Treynor ratio is not (division by zero)",
+    close(a_zero, 1.0) and t_zero == math.inf,
+)
+a_neg, t_neg = alpha_treynor(0.0, -1.0)
+ok(
+    "beta -1, return 0: alpha +2.00 but Treynor 3.0 < 5.0, so ranking by Treynor reverses the verdict",
+    close(a_neg, 2.0) and close(t_neg, 3.0) and t_neg < TM and close(a_neg, -1.0 * (t_neg - TM)),
 )
 
 print("== part 2: Bacon's Table 5.6")
@@ -178,6 +204,37 @@ ok(
     "a series never below the MAR has zero downside deviation and an undefined (infinite) Sortino",
     sortino_annual(np.array([0.5, 0.6, 0.9]), MAR) == math.inf,
 )
+
+
+# Normal benchmark for the downside deviation (second lower partial moment about a target, all observations in the
+# denominator): sigma_D^2 / sigma^2 = (1 + z^2) Phi(z) + z phi(z), z = (target - mean) / sigma.
+def lpm2_ratio(z):
+    return math.sqrt((1 + z * z) * norm.cdf(z) + z * norm.pdf(z))
+
+
+def lpm2_ratio_numeric(z):
+    return math.sqrt(quad(lambda x: (x - z) ** 2 * norm.pdf(x), -math.inf, z)[0])
+
+
+ok(
+    "normal, target at the mean: downside deviation = sigma / sqrt(2) = 0.7071 sigma (closed form and integration)",
+    abs(lpm2_ratio(0.0) - 1 / math.sqrt(2)) < 1e-12
+    and abs(lpm2_ratio_numeric(0.0) - 1 / math.sqrt(2)) < 1e-9,
+)
+ok(
+    "target one sigma below the mean: 0.2745 sigma; one sigma above: 1.3873 sigma",
+    abs(lpm2_ratio(-1.0) - 0.27448) < 1e-5
+    and abs(lpm2_ratio_numeric(-1.0) - lpm2_ratio(-1.0)) < 1e-9
+    and abs(lpm2_ratio(1.0) - 1.38732) < 1e-5
+    and abs(lpm2_ratio_numeric(1.0) - lpm2_ratio(1.0)) < 1e-9,
+)
+ok(
+    "the 0.6 figure is the conditional sd of observations below the mean, sqrt(1 - 2/pi) = 0.6028; dividing the "
+    "squared shortfalls from the mean by their own count instead gives sigma",
+    abs(math.sqrt(1 - 2 / math.pi) - 0.60281) < 1e-5
+    and abs(lpm2_ratio_numeric(0.0) ** 2 / norm.cdf(0.0) - 1.0) < 1e-9,
+)
+
 up, dn = B > 0, B < 0
 ucap = P[up].mean() / B[up].mean()
 dcap = P[dn].mean() / B[dn].mean()

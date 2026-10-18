@@ -7,8 +7,10 @@ mark and a cap, and a fulcrum (symmetric) fee with a floor and a cap, then the e
 manager with no skill. Part 1 also applies a high-water mark to Ang's NAV path 100, 120, 110, 145 (Asset Management,
 2014, p. 582). Part 2 evaluates a manager-continuation rule as a filter, using Bailey, Richards and Tierney's three
 manager types (+2, 0 and -1 percent a year; MIP 3rd ed., p. 781) with an assumed 5 percent tracking error and normal
-returns. Part 3 is a returns-based style analysis (Sharpe 1992) on 36 invented months. Part 4 shrinks two invented
-track records' information ratios toward zero under an assumed normal prior.
+returns. Part 3 is a returns-based style analysis (Sharpe 1992) on 36 invented months: weights minimise the variance
+of the tracking difference, cross-checked by a centred quadratic form, the KKT conditions and shift invariance. Part 4
+shrinks two invented track records' information ratios toward zero under a normal prior and shows how the ranking
+depends on the assumed prior spread.
 
 No random draws. Run: uv run python manager-selection-checks.py   (numpy, scipy). Exits 1 on failure.
 """
@@ -164,54 +166,123 @@ sel = 0.35 * np.sin(
 true_w = np.array([0.0, 0.55, 0.0, 0.30, 0.15])
 fund = X @ true_w + sel
 ols = np.linalg.lstsq(np.column_stack([np.ones(36), X[:, :4]]), fund, rcond=None)[0]
-res = minimize(
-    lambda wv: ((fund - X @ wv) ** 2).var(),
-    np.full(5, 0.2),
-    method="SLSQP",
-    bounds=[(0, 1)] * 5,
-    constraints=[{"type": "eq", "fun": lambda wv: wv.sum() - 1}],
-    options={"ftol": 1e-14, "maxiter": 500},
-)
+cons = [{"type": "eq", "fun": lambda wv: wv.sum() - 1}]
+
+
+def style_fit(objective):
+    r = minimize(
+        objective,
+        np.full(5, 0.2),
+        method="SLSQP",
+        bounds=[(0, 1)] * 5,
+        constraints=cons,
+        options={"ftol": 1e-15, "maxiter": 1000},
+    )
+    return r
+
+
+# Sharpe (1992): minimise the variance of the tracking difference fund - X w, not its mean or mean square.
+res = style_fit(lambda wv: (fund - X @ wv).var())
 w_hat = res.x
 track = fund - X @ w_hat
 r2 = 1 - track.var() / fund.var()
 print(
-    f"    style weights {np.round(w_hat, 4)}, R^2 {r2:.4f}; unconstrained slopes {np.round(ols[1:], 3)}"
+    f"    style weights {np.round(100 * w_hat, 4)} percent, residual variance {track.var():.8f}, R^2 {r2:.4f}; "
+    f"unconstrained slopes {np.round(ols[1:], 3)}"
 )
 ok(
     "constrained style weights are nonnegative and sum to one",
     res.success and np.all(w_hat >= -1e-9) and abs(w_hat.sum() - 1) < 1e-9,
 )
 ok(
-    "style recovered within 3 points of the 0/55/0/30/15 construction",
+    "weights 1.37, 56.60, 0, 27.13 and 14.90 percent; residual variance 0.05587; R^2 0.986",
+    np.allclose(100 * w_hat, [1.3745, 56.6014, 0.0, 27.1260, 14.8981], atol=2e-4)
+    and abs(track.var() - 0.05586964) < 1e-8
+    and abs(r2 - 0.98568) < 1e-5,
+)
+# Independent formulation: the same objective written as a quadratic form in centred data,
+# w'Qw - 2c'w + const with Q = cov(X), c = cov(X, fund) (divisor n).
+Xc, fc = X - X.mean(axis=0), fund - fund.mean()
+Q, c = Xc.T @ Xc / 36, Xc.T @ fc / 36
+res_q = style_fit(lambda wv: wv @ Q @ wv - 2 * c @ wv + fc @ fc / 36)
+ok(
+    "the centred quadratic form gives the same weights and the same minimum",
+    np.allclose(res_q.x, w_hat, atol=1e-6)
+    and abs(res_q.fun - track.var()) < 1e-10
+    and abs(res_q.fun - (fund - X @ res_q.x).var()) < 1e-12,
+)
+# Optimality certificate (KKT) for this convex problem: with gradient g = 2(Qw - c), every weight held at a positive
+# level has the same g_i (the multiplier of the budget constraint) and every weight at zero has g_i at least as large.
+g = 2 * (Q @ w_hat - c)
+held = w_hat > 1e-6
+lam = g[held].mean()
+ok(
+    "KKT conditions hold: equal gradients on held styles, larger on the excluded small-growth style",
+    np.ptp(g[held]) < 1e-6 and np.all(g[~held] >= lam - 1e-9),
+    f"multiplier {lam:.6f}, small growth {g[2]:.6f}",
+)
+shift = 2.0
+w_shift = style_fit(lambda wv: (fund + shift - X @ wv).var()).x
+ok(
+    "adding 2 points to every fund return leaves the weights unchanged (only the mean tracking difference moves)",
+    np.allclose(w_shift, w_hat, atol=1e-6),
+)
+# The mean-square objective ((fund - X w)^2) is not Sharpe's: it penalises the mean difference, so its solution
+# moves when a constant is added and its tracking variance is higher than the minimum.
+res_ms = style_fit(lambda wv: ((fund - X @ wv) ** 2).mean())
+res_ms_shift = style_fit(lambda wv: ((fund + shift - X @ wv) ** 2).mean())
+ok(
+    "by contrast the mean-square objective is not shift-invariant and does not minimise tracking variance",
+    not np.allclose(res_ms.x, res_ms_shift.x, atol=1e-3)
+    and (fund - X @ res_ms.x).var() > track.var() + 1e-6,
+)
+ok(
+    "style recovered within 3 points of the 0/55/0/30/15 construction (consistent, not proof of the objective)",
     np.allclose(w_hat, true_w, atol=0.03),
 )
 ok("style explains over 98% of return variance; 1 - R^2 is attributed to selection", r2 > 0.98)
 ok(
-    "variance of the tracking difference, not its mean, is minimised: mean tracking difference stays near the built-in selection mean",
-    abs(track.mean() - sel.mean()) < 0.05,
+    "mean tracking difference 0.0096 stays near the built-in selection mean 0.0091",
+    abs(track.mean() - sel.mean()) < 0.001,
 )
 
 print("== part 4: shrinking information ratios toward zero")
-tau = 0.30  # assumed cross-sectional sd of true IRs; sampling se of an annual IR estimate ~ 1/sqrt(years)
-cands = {"X": (0.62, 9), "Y": (1.10, 3)}
-post = {}
-for k, (ir, n) in cands.items():
-    se2 = 1 / n
-    shrink = tau**2 / (tau**2 + se2)
-    post[k] = (ir * shrink, ir * math.sqrt(n), 1 - norm.cdf(ir * math.sqrt(n)))
+cands = {"X": (0.62, 9), "Y": (1.10, 3)}  # sampling se of an annual IR estimate ~ 1/sqrt(years)
+
+
+def posterior_ir(ir, n, tau):
+    """Posterior mean of the true IR under a normal prior N(0, tau^2) and estimate ~ N(true, 1/n)."""
+    return ir * tau**2 / (tau**2 + 1 / n)
+
+
+tstat = {k: ir * math.sqrt(n) for k, (ir, n) in cands.items()}
+for tau in (0.30, 0.50):
     print(
-        f"    {k}: IR {ir} over {n} years, t {post[k][1]:.3f}, p {post[k][2]:.4f}, posterior mean IR {post[k][0]:.4f}"
+        f"    prior sd {tau}: "
+        + ", ".join(f"{k} {posterior_ir(ir, n, tau):.5f}" for k, (ir, n) in cands.items())
     )
 ok(
     "raw IR ranks Y first (1.10 against 0.62); t-statistics are close (1.905 against 1.860)",
-    abs(post["Y"][1] - 1.9053) < 1e-4 and abs(post["X"][1] - 1.86) < 1e-9,
+    abs(tstat["Y"] - 1.9053) < 1e-4 and abs(tstat["X"] - 1.86) < 1e-9,
+)
+px30, py30 = posterior_ir(0.62, 9, 0.30), posterior_ir(1.10, 3, 0.30)
+px50, py50 = posterior_ir(0.62, 9, 0.50), posterior_ir(1.10, 3, 0.50)
+ok(
+    "prior sd 0.30: posterior means reverse the raw ranking, X 0.27746 against Y 0.23386",
+    abs(px30 - 0.277459) < 1e-6 and abs(py30 - 0.233858) < 1e-6 and px30 > py30,
 )
 ok(
-    "posterior means reverse the ranking: X 0.277, Y 0.234",
-    abs(post["X"][0] - 0.277459) < 1e-6
-    and abs(post["Y"][0] - 0.233858) < 1e-6
-    and post["X"][0] > post["Y"][0],
+    "prior sd 0.50: the ranking flips back, X 0.42923 against Y 0.47143",
+    abs(px50 - 0.429231) < 1e-6 and abs(py50 - 0.471429) < 1e-6 and py50 > px50,
+)
+# Crossover: 0.62/(tau^2 + 1/9) = 1.10/(tau^2 + 1/3), so tau^2 = (0.62/3 - 1.10/9)/(1.10 - 0.62).
+tau_star = math.sqrt((0.62 / 3 - 1.10 / 9) / (1.10 - 0.62))
+ok(
+    "the posterior ranking changes at a prior sd of 0.419; X ranks first only below it",
+    abs(tau_star - 0.41944) < 1e-5
+    and abs(posterior_ir(0.62, 9, tau_star) - posterior_ir(1.10, 3, tau_star)) < 1e-12
+    and posterior_ir(0.62, 9, 0.41) > posterior_ir(1.10, 3, 0.41)
+    and posterior_ir(0.62, 9, 0.43) < posterior_ir(1.10, 3, 0.43),
 )
 
 print()

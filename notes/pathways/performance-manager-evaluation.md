@@ -52,19 +52,19 @@ Written in the performance and planning batch (2026-10-18):
 In `performance-attribution-appraisal.tex` (topic `performance-evaluation`):
 
 - `def:performance-evaluation-components`: measurement, attribution and appraisal and the sponsor's and manager's purposes (Bailey, Richards and Tierney, MIP chap. 12, pp. 718-720); Bacon's attribution definition and Lord's characteristics (pp. 239-241).
-- `meth:risk-adjusted-performance-measures`: Sharpe, Treynor, Jensen and M-squared with their benchmarks and criticisms (chap. 12, pp. 767-771); the appraisal ratio and M-squared form (Bacon pp. 190 and 226-227); a two-fund example where rankings split.
+- `meth:risk-adjusted-performance-measures`: Sharpe, Treynor, Jensen and M-squared with their benchmarks and criticisms (chap. 12, pp. 767-771); the appraisal ratio and M-squared form (Bacon pp. 190 and 226-227); a two-fund example where rankings split; alpha and Treynor agree only for positive beta.
 - `meth:return-attribution`: returns-, holdings- and transactions-based attribution; BHB and Brinson-Fachler; macro and micro levels; Carino linking; fixed-income effects (Bacon chap. 6, pp. 239-258, 331-338 and 361-363; Fong, Pearson and Vasicek in chap. 12, pp. 764-765); risk attribution; accounting against causal claims.
 - `meth:macro-attribution-owner-manager`: the six decision levels (chap. 12, pp. 746-753) and an original fund example.
 - `meth:benchmark-selection-quality`: liability- and asset-based benchmarks, validity, seven types, universes, Bailey's quality tests, misspecification and alternative-investment benchmarks (chap. 12, pp. 731-744; Bacon p. 125).
-- `meth:downside-appraisal-measures`: downside deviation, Sortino, appraisal ratio, capture, drawdown, recovery and Calmar with their denominators and edge cases (Bacon pp. 126, 190, 194-197, 203-208 and 234-236).
+- `meth:downside-appraisal-measures`: downside deviation, Sortino, appraisal ratio, capture, drawdown, recovery and Calmar with their denominators and edge cases (Bacon pp. 126, 190, 194-197, 203-208 and 234-236); the normal benchmark of downside deviation depends on the target (sigma/sqrt 2 at the mean).
 - `meth:manager-skill-evaluation`: skill as consistent value added, Exhibits 12-19 and 12-20 reproduced (three cells of 12-19 differ from the normal model), power and a decision procedure.
 
 In `manager-selection.tex` (topic `manager-selection`):
 
-- `meth:manager-due-diligence`: search, questionnaire and the Four Ps (MIP chap. 7, pp. 466-470; Bacon pp. 489-491); Type I and II errors (chap. 12, pp. 778-781); returns- and holdings-based style analysis (Sharpe 1992; chap. 7, pp. 436 and 442-444).
+- `meth:manager-due-diligence`: search, questionnaire and the Four Ps (MIP chap. 7, pp. 466-470; Bacon pp. 489-491); Type I and II errors (chap. 12, pp. 778-781); returns- and holdings-based style analysis, minimising the variance of the tracking difference (Sharpe 1992; chap. 7, pp. 436 and 442-444).
 - `meth:manager-philosophy-process-behaviour`: philosophy and process questions (chap. 7, pp. 466 and 468); team behaviour and mitigations (Kahneman chaps. 7 and 24; Statman p. 6; Ang p. 503).
 - `meth:vehicle-contract-fee-analysis`: fee forms and agreement terms (chap. 7, p. 467; Bacon pp. 59-64); US law: Advisers Act sec. 205, Rule 205-3, the 2026 threshold order and the October 2026 proposal; a three-year fee comparison.
-- `ex:manager-selection-case`: a fictional foundation's choice between two managers with IR shrinkage, process checks, vehicle and contract.
+- `ex:manager-selection-case`: a fictional foundation's choice between two managers with IR shrinkage and its sensitivity to the prior, process checks, vehicle and contract.
 
 In `performance-standards.tex` (topic `performance-presentation-standards`), extending `meth:gips-composite-presentation` (now with presentation duties and portability, 1.A.32-1.A.34 and the Handbook, pp. 50-52):
 

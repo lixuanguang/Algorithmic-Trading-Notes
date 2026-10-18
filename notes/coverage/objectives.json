@@ -5276,7 +5276,7 @@
     "entry_evidence": [
      "meth:risk-adjusted-performance-measures"
     ],
-    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py parts 1-2 (Sharpe, Treynor, M-squared, Jensen and appraisal ratio; Bacon Table 5.6); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py parts 1-2 (Sharpe, Treynor, M-squared, Jensen and appraisal ratio; alpha against Treynor at positive, zero and negative beta; Bacon Table 5.6); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5440,7 +5440,7 @@
      "meth:investment-policy-statement",
      "ex:investment-planning-case"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py parts 1-2 (Maginn's required returns; the case's 2.70 percent requirement and candidate allocations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py parts 1-2 (Maginn's required returns; the case's 2.81 percent real after-tax requirement including the gains tax, after-tax scoring of candidate allocations and the resulting funding gap); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5480,7 +5480,7 @@
      "meth:investment-policy-statement",
      "ex:investment-planning-case"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 2 (loss limit applied to candidate allocations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 2 (loss limit applied to candidate allocations before and after tax; the best mix within the limit); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5520,7 +5520,7 @@
      "meth:investment-policy-statement",
      "ex:investment-planning-case"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py parts 1 and 3 (liquidity sleeve, tax on the concentrated holding); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py parts 1-3 (liquidity sleeve; tax basis of returns and requirement; gains tax on the staged sale of the concentrated holding); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5571,7 +5571,7 @@
      "meth:asset-class-portfolio-construction",
      "ex:investment-planning-case"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 2 (allocation, risk contributions, ranges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 2 (allocation on a consistent after-tax basis, risk contributions, ranges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -5746,7 +5746,7 @@
     "entry_evidence": [
      "meth:risk-identification-modification"
     ],
-    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 4 (futures overlay); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/investment-planning/investment-planning-checks.py part 3 (index-futures hedge with the concentrated stock retained, tested against the loss limit during the staged sale); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9567,7 +9567,7 @@
     "entry_evidence": [
      "meth:downside-appraisal-measures"
     ],
-    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 3 (downside deviation, Sortino, capture, maximum drawdown, duration and edge cases); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/performance-evaluation/performance-evaluation-checks.py part 3 (downside deviation and its normal benchmark at two targets, Sortino, capture, maximum drawdown, duration and edge cases); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9660,7 +9660,7 @@
     "entry_evidence": [
      "meth:manager-due-diligence"
     ],
-    "example": "notes/artefacts/manager-selection/manager-selection-checks.py parts 2-3 (continuation filter error rates; constrained returns-based style analysis); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/manager-selection/manager-selection-checks.py parts 2-3 (continuation filter error rates; constrained returns-based style analysis minimising tracking variance, checked by a centred quadratic form, KKT conditions and shift invariance); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9792,7 +9792,7 @@
      "meth:vehicle-contract-fee-analysis",
      "ex:manager-selection-case"
     ],
-    "example": "notes/artefacts/manager-selection/manager-selection-checks.py parts 1 and 4 (fee schedules, expected fees, high-water mark; IR shrinkage in the case); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/manager-selection/manager-selection-checks.py parts 1 and 4 (fee schedules, expected fees, high-water mark; IR shrinkage in the case and its sensitivity to the prior); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },

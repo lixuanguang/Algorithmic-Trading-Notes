@@ -22,6 +22,7 @@ Prepared on 2026-10-18 by the performance and planning batch (2026-10-18) from s
 - Index families: Carli/price, Jevons/geometric, capitalisation (Laspeyres), equal, fundamental, optimised, style; fixed-income categories and the bums and duration problems (pp. 105-113).
 - Tracking error and IR with disclosure of conventions (pp. 167-169); Jensen and annualised alpha (p. 177); Treynor (p. 189); appraisal ratio (p. 190); M2 (pp. 226-227).
 - Drawdown definitions, recovery and Calmar (pp. 194-197); downside risk with n in the denominator, Sortino (pp. 203-208); capture ratios (p. 126).
+- p. 204, note: for a normal distribution with standard deviation 1 "the semi-standard deviation will be about 0.6"; no target is stated. Under eq. (5.80) (all n in the denominator) with the target at the mean the value is 1/sqrt(2) = 0.707, and it varies with the target; 0.60 matches sqrt(1 - 2/pi), the conditional standard deviation of observations below the mean. The entry uses the definition and explains the difference.
 - Attribution types and Table 6.2 (pp. 244-247); BHB with interaction and Brinson-Fachler (pp. 248-258); fixed-income effects and weighted duration (pp. 331-338); Carino (pp. 361-363).
 - Performance fees: asymmetric and symmetric, crystallisation, agreement parameters, equalisation (pp. 59-64); Four Ps of manager due diligence (pp. 489-491).
 

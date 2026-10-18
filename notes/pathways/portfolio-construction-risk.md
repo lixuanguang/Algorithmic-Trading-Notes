@@ -70,7 +70,7 @@ In `investment-process-planning.tex` (topics `investment-management-process` and
 - `def:asset-management-industry`: fee economics and roles (MIP chap. 1, pp. 2-4); the four US registered fund types, disclosure, leverage limits and fulcrum fees (Ang chap. 16, pp. 523-527); hedge fund fees (chap. 17, pp. 581-582); separate accounts; ICI 2026 Fact Book figures for year-end 2025.
 - `meth:investment-policy-statement`: purpose and components, risk objective with willingness and ability, return objective and required return, constraints (chap. 1, pp. 2, 5-7 and 11-17); Maginn's required-return examples reproduced.
 - `meth:asset-class-portfolio-construction`: strategic allocation with ranges and asset-class criteria (chap. 5, pp. 231-232 and 248-249); risk budgeting; harmonised ESG approach definitions (GSIA 2022, p. 7) and Ang's view of exclusions as costed constraints (chap. 3, pp. 110-112).
-- `ex:investment-planning-case`: a fictional surgeon's case: required real return 2.70 percent, three candidate allocations, IPS provisions, a concentrated holding and a futures overlay.
+- `ex:investment-planning-case`: a fictional surgeon's case: a stated tax basis, a required real after-tax return of 2.81 percent including the gains tax on a staged sale, three candidate allocations scored after tax, a funding gap resolved by changing the plan, IPS provisions, and an index-futures hedge of the retained concentrated stock tested against the loss limit.
 
 In `behavioural-finance.tex` (topic `behavioral-finance`):
 
@@ -80,7 +80,7 @@ In `behavioural-finance.tex` (topic `behavioral-finance`):
 In `risk-governance.tex` (topic `risk-management-framework`):
 
 - `def:risk-management-framework`: definition, process, governance and ERM, risk tolerance, risk budgeting and limits (MIP chap. 9, pp. 579-584 and 634-635); Damodaran's risk hedging against risk management (2008, pp. 303-304).
-- `meth:risk-identification-modification`: financial and non-financial risks (chap. 9, pp. 585-586, 596 and 623); Damodaran's alternatives for reducing exposure (chap. 10, pp. 331-335); the case's overlay.
+- `meth:risk-identification-modification`: financial and non-financial risks (chap. 9, pp. 585-586, 596 and 623); Damodaran's alternatives for reducing exposure (chap. 10, pp. 331-335); the case's transition hedge, which shifts market risk but leaves the stock's specific risk.
 
 In `active-management.tex` (topic `active-management-analysis`):
 

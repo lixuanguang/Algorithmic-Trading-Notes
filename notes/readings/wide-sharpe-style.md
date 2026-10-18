@@ -20,6 +20,7 @@ Prepared on 2026-10-18 by the performance and planning batch (2026-10-18) from s
 ## Key results
 
 - Asset-class factor model with exposures summing to 1; style against selection; quadratic programming minimising the variance of the tracking difference; Table 2: unconstrained, constrained and QP results (R2 95.20, 95.16, 92.22; about 70 percent value and 30 percent small stocks).
+- "Style Analysis": the objective "is not to minimize either the average value of this difference or the sum of the squared differences"; minimising the variance makes the weights invariant to a constant added to the fund's returns.
 
 ## Limits
 

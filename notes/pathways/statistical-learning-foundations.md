@@ -68,3 +68,4 @@ Cross-referenced, not owned here: `pit:label-weight-leakage` (`financial-ml-eval
 ## Questions carried forward
 
 - López de Prado's own slips (the overlap approximation, the time-decay $d[1]$ and $cT$, the expanding-window and FFD index ranges, $E_{i-1}[y_t]$): check the author's errata or a later printing.
+- Which source did the earlier notes' meta-labelling feature list and limitations follow?

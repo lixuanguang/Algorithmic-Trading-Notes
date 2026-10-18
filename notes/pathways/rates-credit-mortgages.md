@@ -61,3 +61,5 @@ Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry
 ## What changed in my view or practice
 
 ## Questions carried forward
+
+- The earlier time-value notes have no recorded source; were they from a CFA curriculum reading?

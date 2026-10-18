@@ -2,15 +2,18 @@
 % Full derivations behind four compendium entries, which state each result with its locator and an idea of
 % the proof: mod:grossman-miller with res:grossman-miller-trading-fees and res:grossman-miller-liquidity-measures,
 % mod:kyle-single-auction, mod:static-limit-order-depth and res:roll-spread-estimator. Notation follows the
-% entries. The working is own derivation following the cited textbook accounts; every closed form below was
-% checked numerically on 2026-10-18 (fee equilibrium by root-finding, the liquidity slope and autocovariance,
-% Kyle's profit, projection and posterior variance by simulation, the limit-order argmax, and Roll's moments).
+% entries. The working is own derivation following the cited textbook accounts; the closed forms are checked
+% numerically, with fixed parameters, seeds and tolerances, by model-derivations-checks.py in this folder
+% (fee equilibrium by root-finding, the liquidity slope and autocovariance, Kyle's profit, projection and
+% posterior variance by simulation, the limit-order argmax, and Roll's moments).
 % Treat it as own working: source checking, not study.
 % Compile inside notes/artefacts/market-making-lob/ with  latexmk -pdf model-derivations.tex
 \PassOptionsToPackage{table}{xcolor}
 \documentclass[a4paper,oneside,openany]{book}
 \input{../../../compendium/preamble}
 \input{../../../compendium/house}
+% Catalogue links are relative to this folder, not to compendium/.
+\renewcommand{\qfcatalogue}{../../../guide/institutional_quantitative_finance_reading_list.pdf}
 \pagestyle{plain}
 \begin{document}
 \chapter*{Market making: model derivations}
@@ -145,5 +148,11 @@ Let $P_t=V_t+\tfrac12SQ_t$ with $V_t=V_{t-1}+\varepsilon_t$, $\mathbb{E}\varepsi
 since every cross-product has zero expectation and $\mathbb{E}Q_{t-1}^2=1$. Autocovariances of order two or more are zero, because $\Delta P_t$ and $\Delta P_{t-k}$ share no sign or innovation for $k\ge2$. Hence, when the first autocovariance is negative,
 \[ S=2\sqrt{-\operatorname{Cov}(\Delta P_t,\Delta P_{t-1})}. \]
 How correlated signs and informed trading bias the estimate is in the entry's Pitfalls.
+
+\section*{Source outside the catalogue}
+
+\qfsource[https://www.nber.org/papers/w2641]{grossman-miller-1988-nber}{Sanford J. Grossman and Merton H. Miller, ``Liquidity and Market Structure'', NBER Working Paper 2641, July 1988; the working-paper version of \nolinkurl{grossman-miller-1988}, whose pages and numbering may differ.}
+
+Every other cited key links to its entry in the pinned reading-list catalogue in the guide submodule.
 
 \end{document}

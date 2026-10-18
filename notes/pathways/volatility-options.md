@@ -49,3 +49,5 @@ Cross-referenced, not owned here: `mech:futures-margin-settlement` (`futures-exe
 ## What changed in my view or practice
 
 ## Questions carried forward
+
+- Which edition of Hull did the earlier notes follow? They match the 11th Global edition's wording closely but are not dated.

@@ -1,6 +1,6 @@
 # Source-review records
 
-The full record of each entry editing, from the baseline to the the topic review, in order: scope, sources and their availability, source findings, checks and their limits. Dates, results and source identities describe the original reviews; topic names and paths use the current naming conventions. Corrections appear beside the findings they qualify. The conventions, current status, topic index and file map are in [source-review-index.md](source-review-index.md). Open questions arising from the topic review are also logged in [log.md](log.md).
+The record of each source review, from the format pilot of 14 October 2026 to the latest validation pass, in order: scope, sources and their availability, source findings, checks and their limits. Dates, results and source identities describe the original reviews; topic names and paths use the current naming conventions. Corrections appear beside the findings they qualify. The conventions, current status, topic index and file map are in [source-review-index.md](source-review-index.md). Open questions arising from the reviews are also logged in [log.md](log.md). Bookkeeping for moving the earlier notes into the compendium (block routing, counts, preservation and build logs) was removed from these records on 18 October 2026, together with the earlier notes and their artefact copies, which remain in the repository history at commit `199ed96`; "left as written" in a follow-up means that the earlier record's findings were not revised.
 
 ## Pilot: `market-making-lob` format pilot, 14 October 2026
 
@@ -11,6 +11,21 @@ A test of the entry format on the formal models named in the plan. Grossman–Mi
 - Grossman–Miller, with its fee extension and liquidity measures, and *Market Making using Limit Orders* follow Cartea, Jaimungal and Penalva, *Algorithmic and High-Frequency Trading* (`crypto-cartea`), chapter "A Primer on the Microstructure of Financial Markets", pp. 20–30, in notation and order; `grossman-miller-1988` and `ho-stoll-1981` were not consulted.
 - The limit-order quoting model is **not** the Ho–Stoll model. The book sets it up as a static simplification in place of Ho and Stoll (1981), which it calls the usual first reference (p. 28). Its citation of `ho-stoll-1981` was therefore wrong for its formulas; the entry cites `crypto-cartea` and lists `ho-stoll-1981` only as further reading. `catalogue-0527`, the route's Ho–Stoll reading, is a topic lead that names no paper and was not substituted for one.
 - The Kyle equilibrium ($\beta=\sigma_u/\sigma_v$, $\lambda=\sigma_v/(2\sigma_u)$, profit $\sigma_v\sigma_u/2$, posterior variance $\sigma_v^2/2$) agrees with O'Hara, *Market Microstructure Theory* (`catalogue-0496`), chapter "Strategic Trader Models I: Informed Traders", pp. 91–98, eqs. (4.3)–(4.5), (4.17), (4.20). `crypto-cartea` p. 33 prints $\lambda=2\sigma_u/\sigma$, the reciprocal, which contradicts its own step $\beta=(2\lambda)^{-1}$; the entry records the conflict in its *Pitfalls*. `s6-kyle` was not consulted.
+
+### Findings on the earlier notes
+
+| Earlier block (file) | Disposition |
+|---|---|
+| same block, *Implications* items on free entry ("until spread capture just covers $c$") and market design (migration to search, block crossing or delayed execution) | Not supported by `crypto-cartea`; kept verbatim in the artefact and stubbed in the pathway backlog as needing `grossman-miller-1988` |
+| *Framework, Not Production Model* caveat (same file) | Merged into the *Pitfalls* of `mod:avellaneda-stoikov`, marked as interpretation |
+
+**Source blockers.** As at the pilot; rechecked in dealer-information models review below, which unblocked Grossman–Miller through its NBER working paper and the `crypto-cartea` p. 33 misprint through the authors' errata. spread and inventory models review rewrote *Inventory-Skew Quoting* from textbook accounts (Hasbrouck's version of Stoll (1978); O'Hara's report of Ho–Stoll); the Ho–Stoll paper itself is still needed, for the backlog stub `res:ho-stoll-dealer-pricing`.
+
+| Needed | Why | Passage required |
+|---|---|---|
+| Ho and Stoll (1981), *Journal of Financial Economics* 9(1) (`ho-stoll-1981`); the route reads it through `catalogue-0527`, which names no paper | `market-making-lob` requires a Ho–Stoll inventory entry; the earlier notes' *Inventory-Skew Quoting* block cannot be sourced without it | The section deriving the dealer's optimal bid and ask as functions of inventory, with the equation numbers |
+| Grossman and Miller (1988), *Journal of Finance* 43(3) (`grossman-miller-1988`) | Two implications in the earlier notes are not in `crypto-cartea` | The participation-cost (entry) stage and the discussion of market structure for large orders |
+| Kyle (1985), *Econometrica* 53(6) (`s6-kyle`) | To check the single-auction results at the original, and the misprint in `crypto-cartea` p. 33 | The single-auction equilibrium theorem and its proof |
 
 ### Checks and their limits
 
@@ -46,6 +61,13 @@ Source checking, not study: the pathway is neither mastered nor consolidated, an
 - **Two `crypto-cartea` misprints are confirmed by the authors' errata.** P. 33: Kyle's $\lambda$ should be $\sigma/(2\sigma_u)$, which settles the pilot's conflict at textbook level, in agreement with `catalogue-0496` (Kyle's paper still unread). P. 37: the bid half-spread prints $F(\Delta_a)$ for $F(\Delta_b)$.
 - **Grossman–Miller (NBER 2641).** Free entry: market makers enter until $\mathbb{E}U(W_0-c+(\bar P_2-P_1)x_1^m)=\mathbb{E}U(W_0)$ (eq. (16), p. 18). With $\mathbb{E}i=0$ this gives $1/\sqrt{1+t}=e^{-ac}$ with $t=a^2\operatorname{Var}_1(\bar P_2)\operatorname{Var}(i)/(1+M)^2$ (eq. (19), pp. 18–19). The number of market makers is set by $ac$ and rises as $c$ or $a$ falls, or as either variance rises (p. 19). Large orders: a specialist can switch to "search mode" when an order exceeds what the specialist and the limit-order book can absorb, and upstairs block desks served mainly as a search market (p. 9). Both are now backlog stubs, not entries.
 - **Harris supports the dealer material** almost line for line (chap. "Dealers", pp. 283–294; chap. "Bid/Ask Spreads", pp. 297–302, 312–313). He does not say that poorly informed dealers *underreact* to informed flow; he says only that they more often mistake uninformed clients for informed ones (p. 293), and the entry states only that.
+
+### Findings on the earlier notes
+
+| Earlier block (file) | Disposition |
+|---|---|
+| Two tables, *Informed-Trader Identification*, *Refusing Flow* (same file) | Merged into `meth:dealer-quote-adjustment` (steps 2 and 3, *Conditions*, *Practice*; "reduces market-wide immediacy" kept as interpretation) |
+| *Two-Sided Flow* (`05_.../01_economics_of_market_making.tex`) | Merged into `meth:dealer-quote-adjustment` (the "risk warehousing" phrase as interpretation) |
 
 ### Checks and their limits
 
@@ -90,6 +112,16 @@ Source checking, not study: no pathway is mastered or consolidated, and no readi
 - **Inventory versus information.** Hasbrouck sec. 11.4 (p. 115): the same short-run quote response, separated by permanence; NYSE specialist inventories add little to quote dynamics.
 - **Spread determinants and outside spreads.** Harris chap. 14, secs. 14.4–14.6 (pp. 304–317, Table 14-2 p. 311) and chap. 16 (pp. 340–346) support the lists almost item by item. His factor is risk replication for hedgers (p. 316), not the availability of close risk substitutes.
 
+### Findings on the earlier notes
+
+| Earlier block (`03_.../03_bid_ask_spread_decomposition.tex` unless stated) | Disposition |
+|---|---|
+| *Spread Component Segmentation* | Merged into the Conditions of `res:adverse-selection-spread-component` (qualified: Harris's split is two-way) |
+| *Adverse-Selection Component Equivalence* | Merged into `res:adverse-selection-spread-component`: symmetry condition in Conditions; the "twice the loss" claim corrected in Pitfalls |
+| *Roll Serial-Covariance Spread Estimator*, *Roll Estimator Limits* | Rewritten as `res:roll-spread-estimator`; the informed-trading direction corrected |
+| *Inventory Spread Component*, *Inventory Cost Segmentation* (`04_inventory_models.tex`) | Merged into `def:dealer-inventory-risk` (Practice; Conditions, with unsupported items named) |
+| *Inventory-Skew Quoting* (`04_...`, assigned to `market-making-lob`) | Rewritten as `mod:inventory-based-quotes` from textbook accounts; Ho–Stoll paper check left as backlog stub `res:ho-stoll-dealer-pricing` |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -127,6 +159,12 @@ Source checking, not study: no pathway is mastered or consolidated, and no readi
 - **Overlap with `res:roll-spread-estimator`.** *Volatility Component Decomposition* ($P_t=M_t+u_t$) is Hasbrouck's random-walk decomposition (sec. 8.6, pp. 72–74): only the random-walk variance is identified, the pricing-error variance has only a lower bound. *Transitory Volatility and Reversal* and *Volatility Source Segmentation* are Harris chap. 20 (pp. 410–416). These went into a new definition, `def:volatility-components`, with Roll's model as its special case; the Roll entry gained a cross-reference only. Negative serial covariance is a strong indicator (Harris p. 414) but neither necessary nor sufficient: perishable spot prices (box p. 413) and lagged adjustment (Hasbrouck Exercise 8.2, p. 74). Harris's episodic volatility (p. 410) describes episodes, not a source of volatility; "continuing" volatility as a source was not found.
 - **Bubbles and crashes** follow Harris chap. 28 almost item by item (pp. 555–563, 570–571): the five-phase dynamics, the price accelerator box (p. 556, after Treynor's unpublished manuscript, not consulted) and the "market failures or corrections" box (p. 559). *Regulating Volatility* is Harris pp. 410 and 575–577 (circuit breakers' net effect on transitory volatility indeterminate).
 - **Flash crash.** The material follows Lehalle and Laruelle chap. 2, sec. 2.5 (pp. 169–183) and app. A.5 (pp. 261–266, page images). Two findings: (1) in the book $\rho$ is the proportion of traders playing the hot-potato game, while the large seller follows volume (p. 264), so $\rho$ is not the fraction of traders following volume; (2) the book's solution (A.14), $I_t^-=I_0\exp\bigl(\tfrac{t^2}{1-\rho}\tfrac{r_0}{2}-\tfrac12\sigma_I^2t+\sigma_IW_t^-\bigr)$, does not follow from its own approximation $R_t\simeq tr_0/(1-\rho)$, which gives an exponent linear in $t$ (own derivation, to be rechecked). Sec. 2.5.3 (pp. 187–189), on circuit breakers, was not read.
+
+### Findings on the earlier notes
+
+| Earlier block (`03_.../08_volatility_and_liquidity_interaction.tex`) | Disposition |
+|---|---|
+| *Volatility Is a Liquidity Price* | Merged into `res:spread-determinants` (Practice; unsupported responses named in Pitfalls) |
 
 ### Checks and their limits
 
@@ -169,6 +207,14 @@ ho)/N]$, consistent with Harris on correlated estimates (p. 237).
 - **Returns by time scale.** *Volatility Scale Segmentation*, *Intraday and Overnight Returns*, *Correlation Interpretation* and *Microstructure to Macro Prices* follow Lehalle and Laruelle sec. 2.5 (p. 169) and sec. 2.5.1 (eqs. (2.2)–(2.3), pp. 174–177). They do not overlap `def:volatility-components` (fundamental against transitory) or `meth:garman-klass-volatility` (an estimator within intervals): they split time scales. So they became `def:intraday-overnight-returns`, with cross-references. The source finds correlation spikes mainly overnight. News revaluation overnight and benchmark paths are not in the passages. The authors' HFT explanation of the 2010 rise is flagged as a conjecture.
 - **Outage.** Lehalle and Laruelle date the Euronext halt to 13 October 2010 in the text but caption Figures 2.31–2.32 "October 10, 2010", a Sunday. The captions are probably wrong (own check of the calendar).
 - **Not reopened.** The volatility and liquidity review question on the toy model's eq. (A.14) does not bear on this material and stays open. Sec. 2.5.3 (pp. 187–189) was not read; nothing here depends on it.
+
+### Findings on the earlier notes
+
+| Earlier block | Disposition |
+|---|---|
+| `01_...`: *Signal Tradability Requires Permission* | Merged into the Practice and Pitfalls of `def:inside-information` (unsupported parts named) |
+| `02_...`: *Value-Trader Profit Source Segmentation* | Merged into `def:outside-spread` (Conditions; correction in Pitfalls) |
+| `02_...`: *Value Traders Supply Liquidity Outside the No-Trade Band* | Merged into the Statement of `def:outside-spread` (Interpretation) |
 
 ### Checks and their limits
 
@@ -225,6 +271,15 @@ Source checking, not study: no pathway is mastered or consolidated, and no readi
 - **Arbitrage band.** $|A_t|>K_t+R_t$ assumes full convergence; with partial or slow convergence the gain is the expected narrowing net of extra carry.
 - **Bluffing example.** Recomputed: \$1.5 million profit with asymmetric impact, a \$3 million loss with symmetric impact, and a \$0.4 million loss in 100-contract trades, all as printed (pp. 270–271).
 
+### Findings on the earlier notes
+
+| Earlier block (`03_.../06_strategic_trading_models.tex`) | Disposition |
+|---|---|
+| *Skilled Speculation vs Inside Information* | Merged into `def:inside-information` (Statement; unsupported examples in Pitfalls) |
+| *Arbitrage Opportunity*, *Basis and Arbitrage Spread*, *No-Trade Band for Basis Arbitrage* | Rewritten as `def:arbitrage` (the band as Interpretation) |
+| *Arbitrage Characterisation Segmentation*, *Arbitrage Type Segmentation*, *Pure Arbitrage Mechanism Segmentation* | Merged into the Conditions of `def:arbitrage` (types corrected) |
+| *Winner's Curse*, *Winner's-Curse Bid Adjustment* | Rewritten as `def:winners-curse` (the bid as a fixed point) |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -276,6 +331,14 @@ Source checking, not study.
 - **Webster's Example 2.7.1** (page image p. 94), rederived. Buying $\Delta$ at $t$ costs $(S_t+\tfrac12\lambda_t\Delta)\Delta$. Selling at $t'$ yields $(S_{t'}+e^{-\int\beta}\lambda_t\Delta-\tfrac12\lambda_{t'}\Delta)\Delta$. The profit is $(S_{t'}-S_t)\Delta+\tfrac12\lambda_t\Delta^2(2e^{-\int\beta}-1-e^{\int\gamma'})=(S_{t'}-S_t)\Delta-\tfrac12\lambda_t(2\beta+\gamma')h\Delta^2+o(h)$, as printed. With constant liquidity ($\gamma'=0$, $\beta>0$) the impact term is a cost. So a model that treats buys and sells alike can still admit manipulation through time-varying liquidity, and impact symmetry is not a general no-manipulation proof.
 - **Volume bound.** $v'/v<4\beta$ gives a doubling time above $\ln2/(4\beta)$, a quarter of the half-life $\ln2/\beta$, as Webster states.
 
+### Findings on the earlier notes
+
+| Earlier block (`03_.../07_liquidity_and_market_impact.tex`) | Disposition |
+|---|---|
+| *Market Impact Lens Segmentation* | Merged into the Practice and Pitfalls of `def:price-impact` (corrected to Webster's four communities) |
+| *Round-Trip Manipulation Profit Test* | Rewritten as `res:no-price-manipulation` (the identity as Interpretation; Webster's example and Bouchaud et al.'s closed-trajectory result as the substance) |
+| *Impact Symmetry Disciplines Bluffing* | Merged into the Practice of `def:bluffing-manipulation`, qualified, with a pointer to `res:no-price-manipulation` |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -325,6 +388,14 @@ The downloads were kept in a scratch folder outside the repository and read only
 - **Book eq. (12.6):** dimensionally consistent, both sides in percent of price, as the authors state.
 - **Bacry et al.'s eq. (21):** cumulates to $W_d-W_{D-1}$ plus the systematic part from $D-1$. Their beta is estimated over $D-20$ to $D+20$, so it is in-sample and can absorb the event. Removing the systematic part also removes any impact of the aggregate flow on the index. The debiasing inherits the error of the square-root model for later flow.
 - **Kept distinct.** Permanent impact (a limit) against impact at a finite post-execution horizon (Bacry et al.'s 20 days). Observed against reaction and prediction impact. The simple common kernel against the extensions (volume weight, event types). No no-manipulation claim was made or changed in the topic review.
+
+### Findings on the earlier notes
+
+| Earlier block (`04_.../05_market_impact_models.tex`) | Disposition |
+|---|---|
+| *Propagator Midprice Dynamics* | Merged into `mod:propagator` (the 2004 original; departures corrected in Pitfalls) |
+| *Price Response Curve* | Merged into `mod:propagator` (definition already there; estimation direction corrected) |
+| *Propagator Kernel Segmentation* | Merged into the Practice of `mod:propagator` (agent-specific kernels flagged unsupported) |
 
 ### Checks and their limits
 
@@ -390,6 +461,12 @@ Not consulted: Glosten and Harris (1988), Madhavan (2002), Moro et al. (2009), H
 - Differencing Hasbrouck's eq. (9.26) gives $\Delta p_t=\lambda_0q_t+\lambda_1q_tV_t+c_0\Delta q_t+c_1\Delta(q_tV_t)+u_t$; Harris's form follows with $\lambda_0=0$.
 - Almgren et al.'s Table 3 recomputed from the fitted coefficients: IBM $I=19.9$ bp, $J=32.2$, $24.6$, $18.4$ bp; DRI $I=21.7$ bp, $J=42.9$, $32.0$, $23.1$ bp. These match the printed 20, 32, 25, 18 and 22, 43, 32, 23 bp to rounding.
 - The duration reconciliation above, from Bacry et al.'s Table 2.
+
+### Findings on the earlier notes
+
+| Earlier block (`04_.../04_price_impact_estimation.tex`) | Disposition |
+|---|---|
+| *Impact Driver Segmentation* | Merged into the Practice and Pitfalls of `ev:intraday-impact-profile` (unsupported drivers named) |
 
 ### Checks and their limits
 
@@ -489,6 +566,14 @@ Units and signs: basis points of the benchmark with a side factor (Kissell eqs. 
 - **Double counting.** With a midpoint decision or arrival price the half-spread is already inside the execution component; adding an effective-spread term counts it twice, and fees enter once as the explicit term. No source checked splits the trading-related part into spread and impact, as the overview's checkpoint asks.
 - **Model against measurement.** Almgren–Chriss's shortfall $XS_0-\sum n_k\tilde S_k$ equals Kissell's trading-related part for a complete sale from the pre-trade price (checked on the sell example: 900 both ways); its mean and variance are model forecasts, it has no opportunity term, and its temporary impact already carries half-spread and fees. Performance against an algorithm's own target (VWAP) is not its cost.
 
+### Findings on the earlier notes
+
+- Asia's rationale: the source speaks of differences between local markets, not "fragmented market conventions".
+- Europe's rationale: the source names avoiding detection by HFT as well as routing efficiency.
+- The table's risk column condensed Lehalle and Laruelle's "do not miss ..." wording and dropped "especially if I have the information" for PoV.
+- The caveat is Interpretation, consistent with the risk–reward reading on p. 228 but not in the source.
+- The table's "benchmarks" are algorithm classes; PoV and liquidity seekers are not benchmark prices.
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -526,6 +611,15 @@ Source checking, not study.
 - **Feedback.** If induced moves persist and retrigger the rule, the total move is $dS/(1-\lambda q')$ for dimensionless $\lambda q'<1$ (1.67 at 0.4, checked by iteration); purely temporary impact gives no amplification.
 - **Portfolio-insurance sizing.** Harris's box multiplies the fall by delta; the rebalancing trade depends on the change in the hedge ratio. A Black–Scholes illustration (zero rate, 20 percent volatility, one year) gives sales of about 1.0, 1.6 and 1.8 percent of insured value per 1 percent fall for floors at 80, 90 and 100 percent.
 - The spread-against-impact accounting gap from execution benchmarks review stays open; no cost already in execution prices was added.
+
+### Findings on the earlier notes
+
+| Earlier block | Entry | Disposition |
+|---|---|---|
+| *Order-Submission Control Segmentation* | `def:order-exposure-decisions` | Rewritten; unsourced levers flagged |
+| *Reactive vs Proactive Execution* | `def:order-exposure-decisions` | Rewritten; conflation with aggressiveness corrected |
+| *Portfolio Trading Segmentation* | `def:portfolio-trading` | Rewritten; basket/package distinction corrected |
+| *What-If Controls* | `meth:execution-decision-support` | Merged; examples corrected |
 
 ### Checks and their limits
 
@@ -569,6 +663,17 @@ Source checking, not study.
 
 Partly addressed, not closed. The split above gives spread (half-spread paid against pre-fill midpoints), timing before arrival (delay), opportunity and fees with explicit references, and reconciles to the total without double-counting spreads already in fill prices. The rest, midpoint drift, mixes own impact with market and other traders' moves. Kissell says impact is an unobservable counterfactual (pp. 91–92), and a market-adjusted residual is impact only under the model used. The checkpoint's impact component is therefore still open, as is the effect of the tick, fee and reporting rules in force.
 
+### Findings on the earlier notes
+
+| Earlier block | Entry | Disposition |
+|---|---|---|
+| *Transaction Cost Component Segmentation* | `def:transaction-costs` | Rewritten; glosses corrected |
+| *Benchmark Failure Modes* | `meth:transaction-cost-analysis` (Pitfalls) | Merged; a synthesis, flagged |
+| *Performance Attribution Segmentation* | `meth:execution-decision-support` | Merged; (A.26) relationship corrected |
+| *Pre-Trade Cost Prediction Variables* | `meth:transaction-cost-analysis` (Conditions) | Merged; unsourced variables flagged |
+| *Gaming the Measure* | `def:execution-benchmark` | Merged; venue-selection gloss flagged |
+| *Block Trade Reporting Trade-Off* | `def:block-trade` | Merged; argument corrected |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -600,6 +705,24 @@ Source checking, not study.
 - **Verified as of 15 October 2026:** Rule 611 obliges a *trading center* to keep and enforce written policies reasonably designed to prevent trade-throughs of protected quotations in NMS stocks, and to surveil them, with nine exceptions (system failures, non-regular-way trades, single-priced opening, reopening and closing transactions, crossed protected quotations, intermarket sweep orders, orders not priced off the quote, quotes inferior within the prior second, stopped customer orders). It is quote protection by venues, not a broker's best-execution duty or a reporting obligation, and it does not require venues to reroute; an intermarket sweep order lets the router take protected quotes itself.
 - **Historical (2018, not verified as current):** Lehalle and Laruelle's statements that U.S. clearing and settlement fees must be equal across venues, and that European executing brokers choose their consolidation and must disclose a best-execution policy.
 - **Historical (2002):** Harris's Rules 11Ac1-5 and 11Ac1-6, unchanged from transaction-cost analysis review.
+
+### Findings on the earlier notes
+
+| Earlier block | Entry | Disposition |
+|---|---|---|
+| *Routing Logic Segmentation* | `def:smart-order-routing` | Merged; a synthesis, flagged |
+| *Child-Order Routing Loop* | `def:smart-order-routing` | Merged; a synthesis, flagged |
+| *Best Execution Differs by Regime* | `def:best-execution` | Merged; Rule 611 verified, European regime dated 2018 |
+| *Active Sweep Segmentation* | `def:smart-order-routing` | Merged; "local best price" corrected |
+| *Payment-for-Order-Flow Routing Conflict* (proposition and proof) | `def:broker-agency-conflicts` | Merged as Interpretation |
+| *Minimum Resting-Time Split* | `meth:passive-order-split` | Rewritten; non-negativity corrected |
+
+- **Three-broker example.** Sweeping Table 3.3's cheapest levels: B1 (Euronext and Chi-X, split) 101.15 and B3 (all three, split) 100.75, as printed. The best single venue for 500 shares is Chi-X at 102.05 (Euronext 102.10, Turquoise 102.20), against the printed 102.50: a likely misprint. B1's bracketed quantities add to 600 and list depth, not fills.
+- **Fee threshold.** Exactly $\delta<\phi/(1+f-\phi)$ for a buy (acquisition cost) and $\delta<\phi/(1-f+\phi)$ for a sell (proceeds), both about $\phi$; illustrative $P=100$, $f=3$ bp, $\phi=1$ bp give thresholds 0.99980 and 1.00020 bp, and $\delta=0.99$ and 1.01 bp flip the choice on both sides. With per-share fees the condition is $P\delta<c-c'$. Fees are proportional and paid by the taker; rebates are negative fees; both quotes are assumed contemporaneous, executable for the whole size and taken; the spread is in the prices and not added again. A favourable fee-adjusted quote does not establish a fill or best execution.
+- **Passive split.** The book prints eq. (3.4) as $(D-\sum Q_n)/\sum r_n$; its footnote and Table 3.5 need $D+\sum Q_n$ (62.5 s, against −12.5 s). Table 3.5 recomputed (35/42.5/22.5 percent; 175/212.5/112.5 shares). A venue with $f_n<0$ must be dropped and $\tau^\star$ recomputed: setting it to zero leaves fractions not summing to one (checked on an illustrative case). Equal finishing times minimise the completion time of the whole order, not an average. The model treats queues and rates as fixed.
+- **Latency.** Displayed depth is not assumed to remain while a sequence of child orders is routed; the book's mirrored-liquidity example is kept as a scenario, not a measured effect.
+- **Routing conflict.** The earlier proposition is a condition under which client- and broker-optimal routing differ; it is not evidence of conflicted routing.
+- The accounting split of transaction-cost analysis review and its limit (midpoint drift is not automatically own impact) are unchanged.
 
 ### Checks and their limits
 
@@ -642,6 +765,12 @@ Source checking, not study.
 - **Lehalle and Laruelle.** From $\psi_B=5.41$, $\psi_N=4.73$ bp and $q=0.4$: $\psi_{\mathrm{HFT}}=3.71$ bp; $\mathbb E[C]$ is 2.705, 3.2615, 3.6325 and 4.56 bp at $r=0$, 0.3, 0.5 and 1, matching Figure 2.24's endpoints and markers. The rise from $r=0.3$ to 0.5 is 0.371 bp, not the text's "approximately 0.5bp". $C$ is measured from the trader's own resting quote (Figure 2.21), not against the midpoint.
 - **Timing and information.** In BCS all fast firms see the jump at the same time and the outcome is decided by serial processing; investors see $y$ later. The cost model is a single-order, ex ante expectation with $r$ fixed.
 
+### Findings on the earlier notes
+
+| Earlier block | Entry | Disposition |
+|---|---|---|
+| *HFT Edge Decays With Diffusion* (principle) | `res:latency-arbitrage-arms-race` (Pitfalls) | Rewritten; premise corrected (the prize is not competed away, rents are dissipated into speed); "lower costs" supported (n. 27); inventory control, better models and privileged order flow unsupported, kept in the artefact only |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -682,6 +811,15 @@ Source checking, not study.
 - **Assumptions stated.** Observed $S,\mu,Q,X$; Markov flow unaffected by the trader; constant coefficients; unconstrained $\nu$ (no sign or inventory constraint); finite $A$ is a penalty, not mandatory completion; $\phi\int Q^2$ equals a mean–variance penalty $\lambda\sigma^2\int Q^2$ only for deterministic schedules. Units and impact signs are in the entry.
 - **Benchmark limit.** With $\mu\equiv0$ and $A\to\infty$, $Q_t=Q_0\sinh(\gamma(T-t))/\sinh(\gamma T)$, $\gamma=\sqrt{\phi/\kappa}$, the continuous Almgren–Chriss schedule (matched to four decimals).
 - **Parameter intuition.** Base $\kappa=0.01$, $\phi=0.001$, $A=0.5$, $T=Q_0=1$: inventory at $T/2$ 0.503 and residual 1.9 percent; tenfold $\phi$ 0.451 and 1.7 percent; tenfold $A$ 0.495 and 0.2 percent; tenfold $\kappa$ 0.582 and 16.6 percent.
+
+### Findings on the earlier notes
+
+| Earlier block | Entry | Disposition |
+|---|---|---|
+| *Stochastic-Control Execution View* (model) | `mod:cartea-jaimungal-execution` (Statement, Notation) | Merged; "value function" corrected to a fixed policy's reward |
+| *Cartea-Jaimungal State Dynamics* (model) | `mod:cartea-jaimungal-execution` (Statement, Notation, Conditions) | Merged; units, signs and constraints added; attribution qualified (Lehalle and Laruelle's account) |
+| *Value Function Intuition* (principle) | `mod:cartea-jaimungal-execution` (Practice) | Merged; qualified by own numerical paths ($A$ governs completion, $\kappa$ also leaves residual) |
+| *Control vs Learning* (taxonomy) | `mod:cartea-jaimungal-execution` (Practice, Pitfalls); backlog stub `meth:hybrid-control-learning-execution` | Control and RL items merged from Hambly, Xu and Yang, with simulator and historical data separated; the hybrid item unsupported, kept in the artefact and stubbed |
 
 ### Checks and their limits
 
@@ -748,6 +886,12 @@ The wealth identity in `mod:cartea-jaimungal-execution` now states that the cash
 - **Own synthesis (Interpretation):** the separation of unknown order state, fill state, reconciliation, retry, cancellation and recovery; the replay use of recorded messages.
 - No supervisory guidance or voluntary framework was relied on.
 
+### Findings on the earlier notes
+
+| Earlier block | Entry | Disposition |
+|---|---|---|
+| *Broker-Dealer Operations Segmentation* | artefact only | Deleted |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -786,6 +930,14 @@ Source checking, not study.
 
 - **Block trades.** Reporting or printing venue, execution priority against the book, and trade-through protection across venues are kept apart in `def:block-trade`; only Harris's 2002 exchange rule is stated.
 - **ETFs.** Creation and redemption between APs and the fund is kept apart from secondary trading of ETF shares, in-kind from cash, and the arbitrage incentive from guaranteed convergence; stale NAV and AP discretion are the stated limits. Pan and Zeng's evidence is labelled corporate-bond-only.
+
+### Findings on the earlier notes
+
+| Earlier block | Entry | Disposition |
+|---|---|---|
+| *Equities as Microstructure Laboratory* (principle) | artefact only | Deleted |
+| *Asset-Class Transfer* (caveat) | artefact only | Deleted |
+| *Equity Block Prints and Size Priority* (marketrule) | `def:block-trade` (Practice, Pitfalls); stub `rule:block-print-trade-through-current` in `market-structure-execution-quality` | Merged as historical; current rules stubbed |
 
 ### Checks and their limits
 
@@ -840,6 +992,17 @@ Source checking, not study, and not the pathway's checkpoint: no roll cost was m
 - **Margin.** Contract standardisation, initial margin (performance bond), variation settlement, intraday cycles, FCM–customer arrangements and residual default risk are separated; daily settlement does not eliminate credit risk.
 - **Blocks and EFRPs.** Eligibility, the related position, reporting and submission are listed per rule; the history of transitory EFPs (Harris 2002; permitted until 4 Aug. 2014) is kept apart from current rules.
 - **Price discovery.** The empirical result (sample March–May 2000) is kept apart from theory (Garbade–Silber, unread) and from untested explanations.
+
+### Findings on the earlier notes
+
+| Earlier block | Entry | Checked locator | Disposition |
+|---|---|---|---|
+| *Centralised Futures Trading* (principle) | `conv:cme-globex-trading` (new) | Harris sec. 15.6.2, p. 334; CME Rulebook Rules 526, 538 | Rewritten; the earlier notes' reasons (margining, fungibility) unsupported, the rule-based reason substituted |
+| *No Call Auction Norm* (caveat) | `conv:cme-globex-trading` | CME wiki "Indicative Opening Price and Quantity" and "Supported Matching Algorithms" (updated 11 Feb. 2025); CFTC filing 22 Sep. 2020 | Corrected: wrong for the Globex open; ES daily settlement is a 30-second VWAP; "liquid trading hours" unsupported |
+| *Lead-Lag With Cash Markets* (mechanism) | `ev:index-futures-price-discovery` (new) | Hasbrouck WP FIN-00-046 abstract, pp. 4–6, 13, 34; Harris p. 489 via `def:portfolio-trading` | Rewritten as evidence; the earlier notes' conditions marked untested |
+| *Large Tick Futures* (principle) | `res:spread-determinants` (merged); stub `ev:futures-tick-size-evidence` in `futures-execution` | Lehalle and Laruelle eq. (2.1), pp. 144–145, and p. 148 | Merged; the futures-specific and equity-comparison claims unchecked |
+| *Futures Architecture Drivers* (taxonomy) | `mech:futures-margin-settlement` (Pitfalls) | CME Rules 802, 814, 820; Harris p. 492; Rule 538 | Merged; standardisation and ETF link unchecked |
+| *Variation Margin* (mechanism) | `mech:futures-margin-settlement` (new) | CME Rules 814, 820, 802.B | Rewritten; "credit risk controlled continuously" corrected |
 
 ### Checks and their limits
 
@@ -935,6 +1098,15 @@ Source checking, not study; the pathway's checkpoint was not attempted.
 - **Costs.** Quoted spreads are kept apart from realised costs, reject ratios and markouts (named as TCA metrics only). No FX evidence on magnitudes was found, so no benchmark, horizon or selection effect is reported for one.
 - **Status of claims.** The Global Code is voluntary guidance (it disclaims legal obligations), the provider sheet is contractual disclosure, Cartea–Jaimungal–Walton is a theoretical prediction, the BIS report is survey evidence, and Butz–Oomen is a model calibrated to survey aggregates.
 
+### Findings on the earlier notes
+
+| Earlier block | Entry | Checked sources | Disposition |
+|---|---|---|---|
+| *FX Is Dealer-Centric and Fragmented* (principle) | `def:fx-market-structure` (new) | BIS pp. 22–23; Cartea–Jaimungal–Walton p. 2 | Rewritten; prime-brokered access unchecked |
+| *FX Venue Segmentation* (taxonomy) | `def:fx-market-structure` (venues, ECNs, RFQ); `mod:fx-internalisation-horizon` (new; internalisation); fixing windows left to `fx-funding-settlement` | BIS pp. 5, 12, 23, 43; Butz–Oomen pp. 1–2, 8, 11 | Split: venues, protocols and internalisation separated; RFQ "for size or less liquid pairs" unsupported as a restriction |
+| *Last Look* (definition) | `mech:fx-last-look` (new) | FX Global Code Principle 17, pp. 22–23 (page images), p. 1; DB cover sheet sec. C.4; CJW abstract | Rewritten; the stale-quote rationale marked as the model premise |
+| *FX Cost Is Relationship-Dependent* (caveat) | `mech:fx-last-look` (Practice, Pitfalls) and `mod:fx-internalisation-horizon` (Practice); stub `ev:fx-last-look-fill-reject-evidence` | BIS Box B p. 11, p. 27; Butz–Oomen abstract, p. 2; DB cover sheet | Merged; "can dominate fill quality" dropped as unsupported; prime-broker limits unchecked |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -979,6 +1151,15 @@ Source checking, not study; the pathway's checkpoint was not attempted.
 - **Risks.** Hedging cost, volatility risk, inventory risk and information risk are separated, each with its source and the source's status (empirical abstract, model prediction).
 - **Costs.** Quoted against effective spreads, both against timing-adjusted spreads with a fair-value benchmark; percent-of-premium against volatility units; outright against multi-leg (the BPS figures are single-leg only).
 - **Market, sample and contract.** Every figure carries its market (U.S.), period (2019–2021), contract set and measure; the abstract-only findings are marked as such, with samples unread.
+
+### Findings on the earlier notes
+
+| Earlier block | Entry | Checked sources | Disposition |
+|---|---|---|---|
+| *Options Are Surface Markets* (principle) | `res:option-market-maker-spreads` (new) | Jameson–Wilhelm, Huh–Lin–Mello, Muravyev (abstracts) | Rewritten; "liquidity lives on a surface" kept as interpretation only, the implied-volatility surface distinguished from uniform liquidity |
+| *Post-Trade Complexity* (caveat) | `res:option-market-maker-spreads` (Pitfalls); stub `mech:options-clearing-exercise-assignment` | Battalio–Hatch–Jennings (abstract) | Clearing, exercise, assignment and margin constraining fragmentation unchecked (no OCC or exchange rule read); "dominated by cross-contract risk" dropped as unmeasured |
+| *Market-Maker-Centric Liquidity* (mechanism) | `res:option-market-maker-spreads` (who supplies quotes); `mech:options-retail-wholesaler-routing` (new) | Bryzgalova–Pavlova–Sikorskaya pp. 2, 11; Muravyev–Pearson (abstract) | Split; "buy-side traders typically consume liquidity" and its explanation not adopted |
+| *Options Liquidity Segmentation* (taxonomy) | items iii–iv `res:option-market-maker-spreads`; items i, ii, v `meth:option-spread-measurement` (new); stub `def:option-complex-orders` | Bryzgalova–Pavlova–Sikorskaya Table I, pp. 15–16 (page images), pp. 12, 14, 17; Jameson–Wilhelm, Huh–Lin–Mello (abstracts) | Split; ATM "deepest" supported only as trade share and percentage quoted spread, not depth; "reduces size" and complex orders unchecked |
 
 ### Checks and their limits
 
@@ -1027,6 +1208,16 @@ Source checking, not study; the pathway's checkpoint was not attempted.
 - **Market organisation.** Trading protocols (runs, voice, RFQ, lists), venues (interdealer platforms, RFQ platforms, all-to-all) and dealer risk-bearing (principal, prearranged) are separated; "balance sheet as venue" is a metaphor.
 - **Rules.** Reporting to FINRA is kept apart from public dissemination; post-trade from pre-trade; product coverage and exceptions are listed; history (2002–2017, from the survey), current text (rulebook, 15 October 2026), an approved-then-superseded change and a pending amendment are dated separately; the EU and U.K. regimes are kept apart, the latter unchecked; proposals (FIMSAC's 48-hour delay) are not presented as rules.
 - **Evidence status.** Empirical associations (the TRACE phase-in studies, through the survey and one abstract), a model prediction (Back–Liu–Teguia) and interpretation are labelled; no causal claim about electronification, and no general claim that transparency helps or harms liquidity.
+
+### Findings on the earlier notes
+
+| Earlier block | Entry | Checked sources | Disposition |
+|---|---|---|---|
+| *Fixed-Income Instrument Range* (taxonomy) | `def:fixed-income-market-structure` (new); stub `ev:credit-derivative-swap-trading-structure` | BSV pp. 1–5, 7–8, 11, 13–16, 30, 32 | Items i–ii rewritten for U.S. Treasuries and corporate bonds (Treasury electronic share is interdealer); structured products and municipals added from the survey; items iii–iv (CDS indices against bespoke, swaps dealer-mediated) unchecked |
+| *RFQ Dominance* (principle) | `def:fixed-income-market-structure` | BSV pp. 2–3, 7–8, 37–38; Hendershott–Madhavan and O'Hara–Zhou (abstracts) | Protocols, venues and risk-bearing separated; "dominance" not supported (19 percent electronic in U.S. IG corporates, 2016); the "because" not adopted |
+| *TRACE and Post-Trade Transparency* (market rule) | `rule:us-eu-bond-transparency` (new); `ev:bond-transparency-trading-costs` ("improving") | FINRA Rules 6730, 6750 and filing pages (2026-10-15); BSV Table 2, pp. 8–10, 29–30; ESMA statement (10 Oct 2025) and manual (12 May 2026) | Reporting and dissemination separated; history, current text and the one-minute change and its supersession dated; EU post-trade deferrals from 2 March 2026; the European "aim" and U.K. regime unchecked; stubs `rule:eu-mifir-bond-transparency-level1`, `rule:uk-bond-transparency` |
+| *Pre-Trade Transparency Limits* (caveat) | `ev:bond-transparency-trading-costs` (Conditions, Pitfalls) | BSV pp. 29, 37–39 | Kept as dealers' argument, a model prediction (Back–Liu–Teguia, as reported) and an open question; not adopted as a finding |
+| *Data Changes the Market* (practitioner note) | `ev:bond-transparency-trading-costs` (Practice); `def:fixed-income-market-structure` (Conditions) | BSV pp. 7–10, 31–32; O'Hara–Zhou (abstract) | Split; data sources and missing 605/606 analogue stated; electronification effects only as O'Hara and Zhou's abstract reports them, not causally; desk governance unchecked |
 
 ### Checks and their limits
 
@@ -1087,6 +1278,13 @@ Source checking, not study; no checkpoint was attempted.
 
 Own script, Black–Scholes prices with $S_0=100$, $K=95$, $r=5\%$, $q=2\%$, $\sigma=25\%$, $T=1$: $C=13.6847$, $P=6.0317$, $P-C=-7.6531=Ke^{-rT}-S_0e^{-qT}=e^{-rT}(K-F)$ with $F=103.0455$; payoff $K-S_T$ at $S_T=60, 95, 100, 140$; terminal wealth of the financed package $F-S_T$, equal to a short sale of $e^{-qT}$ shares with rebate $r_b=r$ ($3.0455$ at $S_T=100$) and not with $r_b=3\%$ ($1.0050$).
 
+### Findings on the earlier notes
+
+| Earlier block | Entry | Checked sources | Disposition |
+|---|---|---|---|
+| *Short Interest Rebate* (definition) | `def:securities-lending-fee-rebate` | ICMA FAQ 13; DGP p. 7; ISLA pp. 7–8; Harris pp. 155–157 | Corrected: cash collateral passes from the borrower (often the broker) to the lender; customer margin separated; negative rebates not exemplified in sources |
+| *Synthetic Short* (principle) | `res:synthetic-short-put-call` (new) | Harris p. 157; Hu–Black p. 5, fn. 6; own derivation and numerical check | Payoff, initial value with dividends, short forward against short stock, American exercise and assignment; "can replace scarce borrow" qualified, not adopted |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -1144,6 +1342,15 @@ Source checking, not study; no checkpoint was attempted.
 
 `notes/artefacts/crypto-mm-microstructure/funding_checks.py` (standard library): Deribit's printed max/min funding formula agrees with an independent piecewise reading of its prose rule at every premium from −10% to +10% in 0.005% steps, for each cap; all of Deribit's worked examples recompute (BTC 0.05% per 8 hours, 0.000001041667 BTC per minute and 0.0005 BTC per 8 hours for 1 BTC; ETH 0.075%, 0.0000015625 and 0.00075 ETH; SOL_USDC 0.075%, 0.15625 and 75 USDC on USDC 100,000; offsetting minutes net to zero; damper examples zero; caps 0.5%, 1.0% and 5.0% binding; ETH uncapped 1.975%); and funding between long and short nets to zero. The page's slips (ETH Example 3 "Index remains at USD 10,000" and "1 BTC long position"; 7.5% inside the ETH formula of Example 5) do not change its stated results. All checks passed.
 
+### Findings on the earlier notes
+
+| Earlier block | Entry | Checked sources | Disposition |
+|---|---|---|---|
+| *Crypto Liquidity Is Exchange-Fragmented* (principle) | `def:crypto-venue-instrument-structure` (new) | Makarov–Schoar DP 782, abstract, pp. 1–3; Deribit Rulebook v2.0 | Rewritten; executable prices, reference prices, fair value and legal best execution separated; 2017–2018 evidence dated; "fair value is venue-dependent" and the consolidated-tape claim not adopted |
+| *Crypto Instrument Segmentation* (taxonomy) | `def:crypto-venue-instrument-structure`; perpetual item to `mech:perpetual-funding`; stubs `def:crypto-options-venue-structure`, `def:amm-pool-mechanics` | Ackerer–Hugonnier–Jermann arXiv v2, pp. 2–3, 7; Deribit Rulebook Rules 1.2, 11.3, App. A | Spot, dated futures, perpetuals (linear, inverse, quanto) and Deribit's options checked; "kept near spot" qualified; options concentration and pool mechanics unchecked |
+| *Perpetual Funding* (definition) | `mech:perpetual-funding` (new); stub `ev:crypto-funding-crowding` | AHJ pp. 2, 4, 7–8, 12; He et al. v7 abstract; Deribit Funding Specifications; Rule 11.4 | Sign convention confirmed (Deribit); anchoring a model result, not guaranteed; one venue's damper, caps, accrual and settlement; "crowding signal" unsupported |
+| *Crypto Microstructure Risk Segmentation* (taxonomy) | `def:crypto-trading-risk-layers` (new); stub `ev:stablecoin-network-settlement-risk` | Deribit Rulebook Rules 1.1, 2, 10.1–10.11, definitions | Liquidation, insurance fund, socialised loss, ADL and custody for Deribit only; insolvency, outages, withdrawal halts, stablecoin and bridge risk unchecked; fragmentation moved to block 1's entry |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -1183,6 +1390,33 @@ Source checking, not study; no checkpoint was attempted, and no reading of the o
 - **Text–figure mismatch, p. 172.** The text gives the two most bearish quintiles average next-day returns of −2.35% and −0.19%. In Exhibit 9.3 these are the signal-bucket labels, and the bars run from about −0.03% to +0.13% (page image). The monotonic ordering holds in the figure.
 - **Arithmetic.** Recomputed in the session, with no script kept: IR 12.1/21.2 = 0.571, Calmar 12.1/39.7 = 0.305, drawdown example 1.10 × 0.85 × 1.15 − 1 = +7.5%, 19/35 = 54.3% of non-zero days won, cost example +$0.10 to −$0.90 per 100 shares, and 746% and 870% over 18.6 years giving 12.2% and 13.0% a year (Narang 12.1% and 12.9%). All consistent within rounding and the period's endpoints.
 
+### Findings on the earlier notes
+
+| Earlier block | Entry | Checked source (`s7-narang`, 3rd ed.) | Disposition |
+|---|---|---|---|
+| *Scientific Method* (definition) | `meth:hypothesis-driven-strategy-research` (new) | sec. 9.1, pp. 161–163 | Rewritten; Narang's deduction of consequences and falsification restored, missing from the earlier notes' three steps; ongoing research added |
+| *Sources of Alpha Idea Generation* (remark) | merged into `meth:hypothesis-driven-strategy-research` | sec. 9.2, pp. 163–165 | Merged; four sources match; Narang's caveat on discretionary patterns added; source of an idea not evidence (interpretation) |
+| same block, items x–xi | `pit:parameter-overfitting` (new); stubs | secs. 9.3.2.10–9.3.4, pp. 176–185; Exhibit 9.5 by page image | Rewritten; underfitting balance added; "flatter curve" corrected |
+| *Other Considerations in Model Testing* (remark) | `pit:backtest-cost-short-assumptions` (new); stub `data:historical-borrow-availability` | sec. 9.3.5, pp. 185–186 | Rewritten; cost asymmetry matches; "naked short … illegal" not adopted; borrow fees and recall linked as interpretation |
+
+**Subclaims of block 3.**
+
+| Item | Earlier claim | Disposition |
+|---|---|---|
+| i | Profit curve not smooth, long inactivity, sharp moves: "the model may have issues" | Rewritten as Narang's reading of his S&P example (p. 168); qualified in Pitfalls: consistency not always the goal (p. 169); smoothness can come from stale valuations (`meth:relative-performance-evaluation`) or unrealised tail losses (convertible arbitrage, p. 170) |
+| ii | Average annual return | Rewritten (p. 168), with the example's 12.1% before costs |
+| iii | "The less variable … the better"; lumpiness | Rewritten with Narang's condition "for a given level of returns" restored (p. 169); lumpiness as his firm's statistic; his "67 percent" within one standard deviation noted as roughly normal (68%) |
+| iv | Lower drawdown and shorter recovery better | Rewritten (pp. 169–170); sample bias and resampling added; shuffle loses serial dependence (interpretation); stub `meth:dependent-resampling-drawdowns` |
+| v | "Exceedingly high R² would be 0.05 out of sample"; decile buckets | Rewritten as Narang's unsourced practitioner judgement ("superb", p. 171), with no horizon, asset or design; stub `ev:out-of-sample-r2-scale`. Buckets: monotonicity (p. 172); the text–figure mismatch of Exhibit 9.3 recorded |
+| vi | Winning trades and periods | Rewritten (pp. 172–173) |
+| vii | Sharpe, information, Sterling, "Calmer", Omega ratios | Rewritten with Narang's own definitions (pp. 173–174); his zero-benchmark IR and downside-deviation Sterling flagged as differing from other usage (not checked); "Calmer" corrected; stubs `meth:sharpe-ratio-standard-error`, `meth:deflated-sharpe-ratio` |
+| viii | Relationship with other strategies | Rewritten (p. 174) |
+| ix | Time decay; "crowdedness of strategy" | Rewritten (pp. 174–176); crowding is Narang's inference, not identified by delay (his MSFT move is a public announcement; his S&P signal improves with delay); stub `ev:signal-decay-crowding` |
+| x | Small parameter changes; else overfitted | Rewritten (p. 176); stability of nearby parameters is not a correction for the number of trials (interpretation); stub `meth:multiple-testing-control` |
+| xi | "Flatter curve with no jumps"; parsimony means less overfitting | Rewritten as Narang's plateau with margins, point B (Exhibit 9.5, pp. 177–179); parsimony with Einstein's caveat; third-edition underfitting balance (pp. 180–183); burning out-of-sample data (pp. 183–185); stub `meth:backtest-protocol` |
+
+**Subclaims of block 4.** Overestimated costs mean holding too long and underestimated costs mean too much turnover and bleed (p. 186): rewritten. Narang's advice to err high, and his 55/45 example, were added and the example recomputed. Short availability and hard-to-borrow lists (p. 186): rewritten. Narang's "naked short sale, which is illegal in the United States" is broader than Regulation SHO as cited in `mech:securities-lending-short-sale` and was not adopted. His remark that historical hard-to-borrow data are hard to obtain was stubbed (`data:historical-borrow-availability`). Borrow fees and recall are not in Narang or the earlier notes; they are linked to `def:securities-lending-fee-rebate` and `mech:securities-lending-short-sale` as interpretation. No subclaim was deleted outright.
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -1203,7 +1437,7 @@ Narrow corrections after an audit of backtest evaluation review; the backtest ev
 
 - **S&P example, `meth:backtest-evaluation-diagnostics`.** backtest evaluation review described the strategy as "long when the index's earnings yield exceeds the 10-year Treasury yield and short otherwise", which leaves out its no-trade state. Narang (third edition) p. 168 reads a higher stock yield as a signal to be long and a lower one as a signal to be short, as "an adjustment to" the equity risk premium. P. 173 says the strategy signals "only when the model perceives that the opportunity is sufficiently attractive to warrant trading at all" and is at zero 65% of the time. The entry now gives both, and says that the adjustment and the threshold are not stated; no threshold was supplied.
 - **Ratio signs, same entry.** Narang defines Calmar as average return divided by the worst drawdown and Omega as the sum of positive returns divided by the sum of negative returns, both of which have negative denominators taken literally. He reports both as positive (0.31 and 1.26, pp. 173–174). The entry now quotes his wording and sets out, as interpretation, the explicit conventions Calmar $=\bar R/\lvert\mathrm{MDD}\rvert$ and $\Omega(0)=\sum\max(R_t,0)/\lvert\sum\min(R_t,0)\rvert$. Hand-check, in the session with no script kept: $12.1/\lvert-39.7\rvert=0.305$ against $-0.305$ taken literally; returns $+2,+1,-1.5,-0.5$ give $\Omega(0)=3/2=1.5$ against $-1.5$. His Sterling and Omega values were not recomputed, since the strategy's returns are not available.
-- **Item count.** The backtest evaluation review *Preservation* paragraph says "all 21 items are present". The 21 counted the substring `\item`, which also matches the three `\setlength{\itemsep}{0pt}` lines. The original has 18 `\item` commands: 3 in *Scientific Method*, 4 in *Sources of Alpha Idea Generation*, 11 in *Model Quality Assessment* and none in *Other Considerations in Model Testing*. Recounted against `9148410:…/sysinv/research.tex` with a pattern that excludes `\itemsep`; all 18 and the three `\itemsep` lines appear in the artefact. No text was lost.
+- **Item count.** The backtest evaluation review's preservation check (since removed from these records) said "all 21 items are present". The 21 counted the substring `\item`, which also matches the three `\setlength{\itemsep}{0pt}` lines. The original has 18 `\item` commands: 3 in *Scientific Method*, 4 in *Sources of Alpha Idea Generation*, 11 in *Model Quality Assessment* and none in *Other Considerations in Model Testing*. Recounted against `9148410:…/sysinv/research.tex` with a pattern that excludes `\itemsep`; all 18 and the three `\itemsep` lines appear in the artefact. No text was lost.
 - **Guidance after the record split.** `compendium/README.md` now points dispositions and checks to `source-review-records.md` (its opening paragraph and entry disposition instructions). In `source-review-index.md` the progress table's "checks table below" now points to the topic review *Checks and their limits*, and the backtest evaluation review index row now gives its commit `c45e2b5`. Historical slice narratives that mention `source-review-index.md` were not changed.
 - **Notes.** The `s7-narang` reading note and the `backtest-inference` pathway note record the corrections. Entries, stubs, ownership and counts are unchanged.
 
@@ -1222,6 +1456,28 @@ Source checking, not study; no checkpoint was attempted, and no reading of eithe
 - **His other pace claims check out.** Value–growth: half the loss in 16 days against 160 gives 5 times (his "five times"); 40% in 6 days against 115 gives 7.7 times (his "almost eight").
 - **Leverage arithmetic.** 4 × 1.5 = 6 and 4 × 2 = 8 gross, matching his "six or eight".
 - All recomputed in the session; no script kept, and no existing numerical script covers this content.
+
+### Findings on the earlier notes
+
+| Earlier block | Entry | Checked source (`s7-narang`, 3rd ed., chap. "Risks Inherent to Quant Strategies") | Disposition |
+|---|---|---|---|
+| *Exogenous Shock Risk* (definition) | merged into `def:quant-strategy-risk-sources`; stub `meth:discretionary-override-governance` | sec. 10.3, pp. 200–202 | Merged; overrides qualified |
+
+**Substantive claims.**
+
+| Block | Earlier claim | Disposition |
+|---|---|---|
+| 1 | Model risk defined; every component can have it | Rewritten (p. 192); Narang's list of components and "explode on a busy trading day" added |
+| 1 | Inapplicability: wrong problem, or misapplied technique | Rewritten (pp. 192–193), with his VaR example |
+| 1 | Misspecification: works most of the time, fails in extreme events | Rewritten (pp. 193–195), with his August 2007 liquidity example |
+| 1 | Implementation errors; "models loaded in a wrong sequence" | Rewritten (pp. 195–196). The sequence claim corrected to his example: servers restarted in the wrong order, execution before alpha, selling 80% of the portfolio. Knight and AXA Rosenberg figures reported as his, unchecked; stub `ev:quant-implementation-failures`. Implementation failure separated as operational, linked to `meth:automated-trading-operational-controls` |
+| 2 | Relationships in historical data change; model loses effectiveness | Rewritten (pp. 196–200), with his SCHW/MER and value–growth examples; distinguished from overfitting (`pit:parameter-overfitting`) and from funding contagion, which his value–growth example mixes in |
+| 3 | Shocks from information outside the market (terrorism, war, bailouts, short-sale rules) | Rewritten (pp. 200–202), with his four 2001–2008 examples; his concession that classification is arguable added |
+| 3 | "May require discretionary overrides" | Qualified: an override is an unvalidated model change; his own 2007 account says discretionary unwinding spread losses (p. 208); the one-firm anecdote is not evidence; governance stubbed |
+| 4 | Risk from others holding the same strategies; crowding; ATM effect forcing exits "in a panic" | Rewritten (p. 202), with his 1998 LTCM example (pp. 202–203) |
+| 4 | 2007 crisis driven by size and popularity, subpar returns, cross-collateralisation, risk targeting | Rewritten as Narang's four drivers (pp. 203–205), presented as his explanation ("likely", "it appears", "in my view"), with no data in the chapter. Not adopted as causal evidence; stubs for Khandani–Lo, margin spirals, volatility-targeting deleveraging and an overlap measure. "Criss" read as crisis |
+| 4 | (Narang, not the earlier notes) losses "solely the result of market impact"; Pulte Homes illustration | Reported as his claims, qualified by the arithmetic below and the square-root impact entry |
+| 5 | Exposure, P&L (hit rate), execution, systems monitors | Rewritten (pp. 209–210); VaR measure, "how money is made" monitors and early-warning purpose added; execution-algorithm indicators cross-referenced, not duplicated |
 
 ### Checks and their limits
 
@@ -1268,6 +1524,40 @@ Source checking, not study; no checkpoint was attempted, and no reading of eithe
 
 Recomputed in the session, with no script kept and no existing script covering this content: slippage–impact example $100.05-100.00=0.05$, $100.20-100.05=0.15$; ECN take fee minus rebate $0.3-0.2=0.1$ cents; the illustration in the new entry: per-share cost $0.5\times0.02\times(q/10^6)^{1/2}$ of a \$50 price gives 10 bp and \$500 at 10,000 shares, 14.14 bp and \$1,414.21 at 20,000, 20 bp and \$4,000 at 40,000; ratios $2^{1/2}=1.414$ per share and $2^{3/2}=2.828$ in total.
 
+### Findings on the earlier notes
+
+| Part | Earlier text | Entry | Checked source (`s7-narang`, 3rd ed., chap. 5) | Disposition |
+|---|---|---|---|---|
+| Intro | Two reasons to trade; benefit above cost; the model informs, does not minimise | `mod:portfolio-transaction-cost-function` (new), Statement and Practice | pp. 85–86, 96 | Rewritten; Narang's framing kept as his; joint optimisation and forced trades added as interpretation |
+| 1 | *Transaction Cost Components* (remark), items i–iii | merged into `def:transaction-costs` (Statement; Pitfalls, "Narang's terms") | sec. 5.1, pp. 86–91; `exp-pfmi` paras 1.12–1.13 | Merged with corrections (subclaims below) |
+| 2 | *Types of Transaction Cost Models* (definition), items i–iv | `mod:portfolio-transaction-cost-function` (new); stubs `meth:convex-cost-portfolio-optimisation`, `res:no-trade-region` | sec. 5.2–5.3 and n. 2, pp. 91–97; Exhibits 5.1–5.4 and n. 2 by page image | Rewritten; rankings not adopted (subclaims below) |
+
+**Subclaims.**
+
+| Where | Earlier claim | Disposition |
+|---|---|---|
+| Intro | "Trade is made only if it increases the odds or magnitude of return … or decreases … loss" | Rewritten as Narang's "only two reasons to make a trade" (p. 85); interpretation: forced trades (flows, margin, constraints) exist |
+| Intro | "This improvement should be higher than cost of trading" | Rewritten as his hurdle (p. 85); interpretation: in an optimiser cost enters jointly with alpha and risk, compared over the same horizon and units, not trade by trade |
+| Intro | Not designed to minimise cost, only to inform portfolio construction | Rewritten (pp. 85–86); his two phases of cost reduction added (p. 96) |
+| 1.i | Commissions and fees paid to brokerages (access), exchanges (security), regulators (infrastructure) | Corrected: the text lists three payers and three services without pairing them; p. 87 credits exchanges with access to liquidity and with guaranteeing performance; that guarantee is a central counterparty's function (`exp-pfmi` para. 1.13), as interpretation |
+| 1.i | Quants use the bank's infrastructure; commissions small per trade | Merged (p. 86) |
+| 1.i | Brokers collect clearing and settlement fees | Merged: usually a component of commissions (p. 86) |
+| 1.i | Clearing = regulatory reporting and monitoring, tax handling, handling failure, before settlement | Reported as Narang's description, not adopted as a definition. The CPMI glossary was not retrieved; the PFMI paragraphs read describe settlement systems' clearing functions (confirmation of instructions) and CCP netting, not his list. Stubbed (`def:clearing-settlement`, `execution-trading-costs`) |
+| 1.i | Settlement = delivery of securities against payment in full | Reported as his; set beside the PFMI's free-of-payment and DvP transfers (para. 1.12) |
+| 1.ii | Slippage from decision to the order at the exchange | Merged and mapped to the delay term $S(P_0-P_d)$, signed by side; his CVX example (pp. 87–88) |
+| 1.ii | Trend-following suffers most, mean-reverting least | Kept as Narang's conditional claim about the expected drift over the delay relative to trade side; no data in the source |
+| 1.ii | Lower latency, smaller slippage | Qualified: shortens the delay; lowers expected cost only with adverse expected drift (his accurate-forecast condition, p. 88) |
+| 1.ii | More volatile, bigger slippage | Qualified: widens the dispersion; raises expected cost only with adverse drift (pp. 88, 91). His GOOG figure not used (undated, unsourced) |
+| 1.iii | Impact: how much an order moves the market by demanding liquidity | Merged with his operational definition, arrival price to fill (pp. 88–89), mapped to the trading-related part of shortfall, not causal impact (`def:price-impact`) |
+| 1.iii | "Unknown until the trade has already been completed" | Corrected: after completion the fills and realised cost are known, but impact is not, since the unaffected price is never observed (Kissell pp. 91–92 as cited in the entry; `def:price-impact`) |
+| 1.iii | Slippage–impact interaction when selling into an uptrend | Merged with his example ($100.00, $100.05, $100.20; −$0.05 and −$0.15, checked) and his concession that they may be inseparable (pp. 89–90) |
+| 2.i | Flat: same cost regardless of size; reasonable if size nearly constant and liquidity constant | Rewritten (pp. 92–93) with units; interpretation: a per-share commission is linear, only a per-ticket charge is flat |
+| 2.ii | Linear: constant rate; "better estimate than flat" | Rewritten (pp. 93–94); the comparison held against his drawn curve only, not adopted generally |
+| 2.iii | Piecewise-linear: balance of simplicity and accuracy; "better accuracy than flat or linear" | Rewritten as his "happy medium" (p. 94); accuracy ranking not adopted |
+| 2.iv | Quadratic: "most computationally intensive, but also most accurate" | Not adopted as fact. Narang's exhibits are schematic, against an assumed convex curve from zero; his note 2 says quadratic is "not universally accepted" and reports square-root per-share costs for U.S. equities; computational cost depends on the optimiser formulation (interpretation, stubbed) |
+
+**Units and conventions** (all in `mod:portfolio-transaction-cost-function`): total cost $C(q)$ in currency against signed size $q$; per-unit cost $C/\lvert q\rvert$ in currency per share or basis points. A quadratic total is a linear per-unit cost; square-root per-unit cost is a 3/2-power total. Narang's note 2, "cost per share scales with an exponent of 1.5, or in other words, as the square root of trade size" (p. 97), conflates the two conventions; recorded, not repeated.
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -1313,6 +1603,39 @@ Recomputed in the session with numpy and by hand; no script kept, and no existin
 - Pairs: $2000^2=4{,}000{,}000$; $2000\times1999/2=1{,}999{,}000$.
 - Grinold–Kahn example: $0.01\times0.6-0.01\times0.4=0.002$.
 - Sharpe scale invariance: $\Sigma^{-1}\mu$ and $3\Sigma^{-1}\mu$ give the same ratio, 0.5596, for an illustrative two-asset $\mu$, $\Sigma$.
+
+### Findings on the earlier notes
+
+| Part | Earlier text | Entry | Checked source | Disposition |
+|---|---|---|---|---|
+| 1 | *Rule-Based Models* (definition), items i–iv | `meth:rule-based-position-sizing` (new); stub `meth:equal-risk-contribution` | secs. 6.1–6.1.4, 6.4, pp. 100–104, 123; Exhibit 6.1 by page image | Rewritten with corrections (subclaims below) |
+| 2 | *Optimisers Models Parameters* (remark): prose and items i–iii | `mod:mean-variance-portfolio-optimisation` (new); stubs `meth:portfolio-covariance-estimation`, `mod:garch-volatility-forecast` | sec. 6.2–6.2.1, pp. 104–113; Exhibits 6.2, 6.4, 6.5 by page image; Boyd et al. secs. 1.1, 3.2, 3.4 | Rewritten with corrections |
+| 3 | *Optimisation Techniques* (method), items i–vi | `mod:mean-variance-portfolio-optimisation`; `meth:signal-portfolio-allocation` (new); stubs `mod:black-litterman`, `meth:resampled-efficiency` | secs. 6.2.2–6.3, pp. 113–123; Exhibits 6.6, 6.7 and the p. 118 example by page image; Boyd et al. secs. 1.3–1.4, 2.4, 4.3, 5.6 | Rewritten, item vi not adopted |
+
+**Subclaims.**
+
+| Where | Earlier claim | Disposition |
+|---|---|---|
+| Intro | Rule-based from experience; optimisers use an objective and algorithms | Rewritten (pp. 99–100) |
+| 1.i | Equal position: no other information needed; signal strength not used | Rewritten (pp. 100–101), with the implicit homogeneity assumption |
+| 1.i | "Assumes sufficient statistical strength … to predict … magnitude"; "few large bets on 'best' forecast, many smaller bets"; adverse selection | **Misplaced in the earlier notes**: these are Narang's two arguments *against unequal* weighting, which equal weighting avoids (pp. 101–102). Restored to that role; bad-data and winsorisation points added |
+| 1.ii | Equal risk: inverse to volatility or another risk measure | Rewritten (p. 102). Exhibit 6.1's 39/61 shown to be inverse-variance (inverse-volatility gives 44.4/55.6); Narang's "risk the allocation contributes to the portfolio" kept apart from inverse volatility: equal risk contribution uses the full covariance matrix and differs for three or more assets (computed). Stub `meth:equal-risk-contribution` |
+| 1.ii | Backward-looking risk; changing volatility misleads | Rewritten with his 2008 bank-stock example (p. 103) |
+| 1.iii | Alpha-driven: size by signal with position and group limits; forecast-to-size function | Rewritten (pp. 103–104), with his 3% and 20% example |
+| 1.iii | Futures trend following "might suffer sharp drawdowns"; reliance on alpha | Rewritten as his "relatively frequently", with his reason (largest position at the reversal) (p. 104) |
+| 1.iv | Decision tree: path by alpha and instrument type; percentage limits; size grows dramatically | Only the name and one sentence are in the third edition (p. 100); the details are not, perhaps from an earlier edition (not checked); kept in the artefact, not adopted |
+| 2 prose | MVO the pioneer; MPT; inputs mean, variance, correlation | Rewritten with Boyd et al.'s two formulations and closed form (sec. 1.1, pp. 4–5) and Narang (pp. 104–105) |
+| 2 prose | Other inputs: currency size, desired risk level "(volatility or expected drawdown)", constraints | Qualified: Narang calls them not required by the optimiser and "mostly arbitrary" (p. 105); expected drawdown is not part of mean–variance, and a return-to-drawdown objective is a different model (p. 124) |
+| 2 prose | Objective "usually maximising return … relative to volatility" | Qualified: Sharpe maximisation is a distinct objective from the variance-target and risk-aversion forms (Boyd et al. sec. 3.2, p. 20); tangency portfolio (Exhibit 6.7) |
+| 2.i | Expected return from alpha models, including direction | Rewritten (p. 108): sign-only forecasts set equal |
+| 2.ii | Stochastic volatility methods common; "GARCH model is most used" | Reported as Narang's unsourced claim (pp. 108–109), with his own EWMA remark; his calling GARCH a stochastic-volatility model and his reading of a negative autoregression as trending not adopted; Boyd et al.'s EWMA, DCC, iterated EWMA listed. Stub `mod:garch-volatility-forecast` |
+| 2.iii | Correlations unstable, so "group assets together before computing correlation within the group" | Qualified: Narang's grouping is "in the definition of relative … and/or in the specification of the risk model" (p. 111), shown with two pairs over one sample (Exhibit 6.5), not a method for estimating a covariance matrix. His 1,998,000 pairs corrected to 1,999,000. Stub `meth:portfolio-covariance-estimation` |
+| 3.i | Unconstrained: "might provide a single-instrument portfolio" | Corrected: not a property of mean–variance; the closed form generally holds every asset, and Narang's own unconstrained example (85% CVX, 75% NFLX, p. 106, Exhibit 6.2) holds both; the case where a single asset results is stated as interpretation |
+| 3.ii | Constraints; may drive the portfolio more than the optimiser | Rewritten with his 1.5% cap example (p. 114); penalties, costs (cross-referenced to `mod:portfolio-transaction-cost-function`), sign flips and the substitution effect (pp. 114–121) |
+| 3.iii | Black–Litterman blends expectations, confidence and history; "adjusts historically observed correlation levels" | Narang's description kept as his (p. 117); the correlation claim is in neither Narang nor Boyd et al., where the method shrinks the means toward market-implied returns (secs. 1.3, 3.4); not adopted. Note 5's 1982 against the text's 1992 recorded. Stub `mod:black-litterman` |
+| 3.iv | Grinold–Kahn: portfolio of signals; rule-based factor portfolios backtested and optimised; "not more than 20"; inputs | `meth:signal-portfolio-allocation`: Narang's account with his 0.2% example checked; "about 20" kept as his unsourced statement; Grinold and Kahn unread |
+| 3.v | Resampled efficiency reduces estimation error by Monte Carlo resampling | Qualified: Narang describes reordering observed returns and says mean and volatility stay the same (pp. 118–119), so the reordering he describes cannot change the optimiser's inputs; his example is strategy robustness. Michaud's actual procedure and its claimed improvement not checked. Stub `meth:resampled-efficiency` |
+| 3.vi | Data mining: supervised learning or genetic algorithms because MVO searches many portfolios | Not in the third edition, which says few strictly ML portfolio models are seen (pp. 113–114). Not adopted: supervised learning fits forecasts, and convex problems need no generic search (Boyd et al. secs. 1.4, 4.3) |
 
 ### Checks and their limits
 
@@ -1362,6 +1685,36 @@ In the session with numpy; no script kept, and no existing script covers this co
 - Neutrality: loadings $(1,0.5)$, $(1,-0.5)$, $(0.8,1)$, $\Sigma_f=\begin{pmatrix}0.04&0.012\\0.012&0.01\end{pmatrix}$, $w=(0.5,-0.5,0)$: exposures $(0,0.5)$, covariance with the factors $(0.006,0.005)$.
 - PCA sign: the eigenvectors of a 2×2 correlation matrix with $\rho=0.6$ are returned with arbitrary sign (eigenvalues 0.4 and 1.6).
 
+### Findings on the earlier notes
+
+| Part | Earlier text | Entry | Checked source | Disposition |
+|---|---|---|---|---|
+| Intro | Risk model concerns intentional selection and sizing of exposures; alpha exposure accepted for long-run profit | `mod:factor-risk-model` (Statement, Pitfalls) | Narang chap. 4, pp. 71–73; Exhibit 4.1, p. 83 by page image | Corrected: Narang says this of risk *management*; the risk model is an input to the portfolio decision |
+| 1 | *Factor-Based Models* (method), items i–iv | `mod:factor-risk-model` (new) | Boyd et al. sec. 3.3, pp. 20–21; Narang pp. 71–72, 77–78 | Rewritten with the factor covariance and its assumptions; the factor list qualified |
+| 2 | *Statistical Models* (method), items i–iii | stub `meth:var-es-estimation-methods` (new note) | none in Narang's chapter | Stubbed, not written as an entry |
+| 3 | *Limiting Size of Risk* (method), prose | merged into `mod:mean-variance-portfolio-optimisation` (Practice, Pitfalls) | Narang secs. 4.1–4.1.3, pp. 73–76; Boyd et al. sec. 4.2, pp. 25–27 | Merged with corrections |
+
+**Subclaims.**
+
+| Where | Earlier claim | Disposition |
+|---|---|---|
+| Intro | "Risk model concerns the intentional selection and sizing of exposures to improve the quality and consistency of returns" | Corrected: Narang's sentence is about risk management (p. 71); the risk model measures and flags exposures and feeds portfolio construction (p. 72, Exhibit 4.1) |
+| Intro | Alpha exposure accepted for long-run profit | Rewritten as his definition: risks are the exposures not intentionally forecast (pp. 71–72) |
+| 1 stem | Returns decomposed into systematic factors and idiosyncratic components | Rewritten with Boyd et al.'s $r=Ff+\epsilon$, $\Sigma=F\Sigma_fF^\top+D$ and its assumptions (uncorrelated $f$ and $\epsilon$, diagonal $D$) |
+| 1.i–iv | Market, size, value, momentum as "the most common factors"; size and value as risks; momentum as a tendency | Qualified: the list is not in Narang's chap. 4, which names market, sector and market-cap risk (pp. 77–78) and uses value as an alpha (pp. 71–72); whether a factor is a risk, a signal or a premium depends on the strategy's forecasts. Boyd et al.'s market, industry and style (Fama–French) factors cited |
+| 1 close | Lets traders see what drives risk and adjust exposures | Rewritten as Narang's uses: measure, explain P&L, model residuals (pp. 72, 82–83); the adjustment is the portfolio decision |
+| 2.i–iii | Historical simulation, Monte Carlo, parametric methods | Stubbed in `risk-tail-systemic`, with the methods treated as overlapping (filtered historical simulation mixes a volatility model with historical residuals; Monte Carlo draws from a parametric or resampled model) |
+| 2 close | "Useful for dynamically updating risk assessments" | Stubbed with the qualification that updating is not evidence of better forecasts |
+| 3 | Limits vary by how size is limited, how risk is measured, what is limited | Merged (p. 73) |
+| 3 | Hard constraints and penalties; penalty lets a position pass the limit only for a larger expected return | Merged with his 3% example (pp. 73–74) and Boyd et al.'s softening, which replaces a hard constraint by a penalty and keeps mandated limits hard (pp. 25–27): a penalty does not permit breaching a separate hard cap |
+| 3 | Levels from theory or data | Merged (p. 74), with the overfitting link |
+| 3 | Two ways to measure risk: volatility (longitudinal) and correlation/covariance (dispersion) | Corrected: Narang's dispersion is the cross-sectional standard deviation or correlation (pp. 74–75); a covariance risk model contains volatilities and correlations together; his "higher dispersion, less risky" not adopted |
+| 3 | Limits on positions, groups, risk types, leverage | Merged (p. 75); his VaR-based leverage critique noted, and his description of VaR as a one-standard-deviation move not adopted (pp. 75–76) |
+| 4 stem | Eliminate unintentional exposure, "no expectation of being compensated" | Kept as Narang's rule (p. 76), qualified: unintended is not the same as uncompensated; his CVX/XOM and value-sector examples given |
+| 4 stem | Through theoretical or empirical risk models | Rewritten (pp. 76–80), with his preference for building exposure control into alpha models (pp. 80–81) |
+| 4.i | Theory-driven: systematic factors from economic theory; "cannot be diversified away"; market, sector, cap; rates | Rewritten (pp. 77–78), with the diversification condition shown numerically (residuals diversify only if uncorrelated) |
+| 4.ii | Empirical: PCA finds unnamed systematic risks; used by stat-arb traders | Rewritten (p. 78): PCA factors need not have stable names (sign, order and composition can change; interpretation), may be spurious (his caution); "used by" corrected to his "most commonly found among"; adaptiveness against data needs (p. 79) |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -1400,6 +1753,55 @@ A multi-file batch: the last three files of Narang's systematic-investing notes.
 ### Numerical checks
 
 Recomputed in the session; no script kept and none existing covers this content: Exhibit 2.2 trades (+5, +5, −15, −15 percent); linear blend $0.7\times20+0.3\times(-10)=11$; carry $4.25-2=2.25$; variants $2\times4\times2\times4=64$; the conditional blend gives no signal or $+20$ percent. risk models review follow-up: equicorrelated and disjoint-pair residual variances (above).
+
+### Findings on the earlier notes
+
+| File and block | Entry | Checked source | Disposition |
+|---|---|---|---|
+| overview: introduction, figure, module list, bridge prose | `def:quant-strategy-components` (new), Figure (redrawn) | Narang chap. 2, pp. 16–19; Exhibit 2.1 by page image | Rewritten; return arrow restored |
+| alpha: introduction, *Theory Driven Models* (5), data-driven paragraph | `def:alpha-model-taxonomy` (new); stubs `ev:trend-following-evidence`, `meth:residual-reversion-strategy`, `ev:value-carry-premia` | Narang chap. 3, secs. 3.1–3.3, pp. 23–52; Exhibit 3.2 by page image | Rewritten; three classes added; claims qualified |
+| alpha: *Blending of Models* items i–ii | `meth:alpha-signal-combination` (new); stubs `meth:forecast-scaling-ic`, `meth:signal-mixing-vs-integration` | sec. 3.5, pp. 64–68; Exhibits 3.9–3.10 by page image | Rewritten; "independence" corrected |
+| alpha: *Blending of Models* item iii | merged into `meth:strategy-production-lifecycle` | López de Prado pp. 5–6 | Merged; source corrected (not Narang) |
+| execution: *High Frequency Trading* | merged into `def:hft-strategies` | chap. 15, pp. 291–293; chap. 7, pp. 129–134 | Merged; ML claim not adopted |
+| execution: *HFT Shark Strategy* | merged into `def:hft-strategies` (Pitfalls) | Appendix, pp. 312–314; FINRA Rule 5270; SEC 2010 release as already cited | Kept as historical description, qualified |
+| execution: *HFT Trading Infrastructure* | merged into `def:automated-trading-architecture` | chap. 7, pp. 138–141 | Merged; FIX reversal corrected |
+
+**Subclaims.**
+
+| Where | Earlier claim | Disposition |
+|---|---|---|
+| overview intro | Schematic of a live production strategy, without research tools | Rewritten (p. 17); data and research added from Exhibit 2.3 (p. 19) |
+| overview figure | Three modules → portfolio construction → execution | Redrawn with Exhibit 2.1's return arrow (portfolio construction and execution "interact"); original kept verbatim and rendered in the artefact |
+| overview list i–iii | Alpha predicts; risk limits unrewarded exposure, "i.e. directional exposure limit on an asset class"; t-cost model decides if costs are "desirable" | Rewritten (pp. 17–18); the risk example generalised by the earlier notes, qualified; the t-cost model estimates costs, the portfolio model decides |
+| overview bridge | Portfolio construction balances profit and risk; trades are the differences; execution uses urgency and liquidity | Rewritten (p. 18); costs added to the balance; Exhibit 2.2 checked |
+| chain i–v | Data curation, feature analysis, strategists, backtesters, deployment | Rewritten from AFML pp. 7–8; "good back-tested" read as backtester; probability of overfitting from the number of trials added |
+| chain vi.1–5 | Embargo, paper trading, graduation, re-allocation ("follows a concave function"), decommission | Rewritten (pp. 8–9); "in general" and the decommission condition restored; no quantitative criteria in the source (stub) |
+| alpha intro | Theory-driven tests theories; price data → trend and reversion; fundamental → value, growth, quality; models combined | Rewritten (pp. 25–29): eight classes, not five; technical sentiment, supply/demand and tactical/events added |
+| theory i | Trend: consensus-building; moving-average crossover "has less than one point of return for every point of downside risk" | Consensus and greater-fools rationales kept (pp. 29–30); the return-to-downside sentence restored to its subject, "the typical successful trend follower" (p. 32), unsourced; evidence stubbed |
+| theory ii | Mean reversion; stat arb; trends and reversions coexist | Rewritten (pp. 33–35); coexistence by horizon (Exhibit 3.5); March 2020 pitfall noted; evidence stubbed |
+| theory iii | Value as inverted ratios; "buying undervalued … selling overvalued … is a carry trade"; QLS | Rewritten (pp. 38–41); carry restored to a yield spread (p. 40, example checked); value and carry kept apart as interpretation; stub |
+| theory iv–v | Growth; quality | Rewritten (pp. 42–46) |
+| data-driven paragraph | Harder, data mining, less practised, more used at high frequency | Rewritten (pp. 47–52); his "in general … do not work" kept as judgement |
+| params i | Signal strength → bigger bet | Kept as his "in general, though certainly not always" (p. 53), with his large-signal caution; calibration, risk, correlation, costs and constraints added as interpretation |
+| params ii | Short-term strategies vary more | Rewritten (pp. 53–55) as his generalisation |
+| params iii | Pairs, clusters, statistical or heuristic grouping; relative alpha smoother in normal times | Rewritten (pp. 55–57); the smoothness claim kept as a conditional generalisation without data |
+| params iv | Universe; "biotech stocks are excluded" | Rewritten (pp. 57–59); "some quants exclude" restored |
+| params v | Model specification; ML for parameters; refitting raises overfitting | Rewritten (pp. 59–60); his "without overfitting" claim not adopted |
+| params vi | Run frequency trade-offs | Rewritten (pp. 61–62) |
+| (omitted) | Conditioning variables | Added (pp. 60–61) |
+| blending stem | Linear, nonlinear, ML; or separate portfolios | Rewritten (pp. 64, 68) |
+| blending i | Linear "require independence of factors" | Corrected: additivity, not statistical independence (p. 65; interpretation); regression weights; example checked |
+| blending ii | Nonlinear: conditional; rotational weights favour recent performance | Rewritten (pp. 66–67); rotation qualified as a bet on factor trends, no evidence |
+| blending iii | ML research effort; macroscopic against microscopic alpha | Source corrected to López de Prado (pp. 5–6); merged into the lifecycle entry as opinion |
+| exec intro | Electronic or human; DMA; build/broker/vendor; portfolio bidding | Merged (pp. 127–128) |
+| exec i | Aggressive/passive; rebates; momentum aggressive, reversion passive; signal strength; middle ground | Merged (pp. 130–133); side-dependence of "aggressive" made explicit; venue-specific fees and inverted venues noted; inside-spread orders need spread > tick |
+| exec ii | Splitting large orders | Merged (pp. 136–137) |
+| exec iii | Hidden orders lose priority; iceberging | Merged (pp. 131, 134–135); "most exchanges", venue rules |
+| exec iv | Smart order routing | Cross-referenced to `def:smart-order-routing` (Narang pp. 137–138; his dated venue names and his Reg NMS description not adopted) |
+| exec v | Orders "with no intention of execution", cancelled; small sell orders to "improve market perception" | Not in the third edition. Kept as a description of conduct, not a technique: for futures and swaps on registered entities, 7 U.S.C. §6c(a)(5)(C) makes "spoofing" unlawful; the securities and non-U.S. positions are unresolved (stub). Narang's defence of routine cancellation cited |
+| HFT block | Microstructure alphas; ML discerns others' execution patterns, "somewhat stable" | Microstructure alpha mapped to fast alpha (pp. 291–293); the ML claim not in the third edition, not adopted |
+| shark | Detect icebergs with small orders, front-run, "relatively riskless profit" | Not in the third edition; kept as a historical description of pinging for order anticipation; "front-run" qualified against Narang's fiduciary definition and FINRA Rule 5270; not riskless |
+| infrastructure | Broker as agent; colocation; sponsored access; "software that implements FIX … free and open source"; own FIX engines | Merged (pp. 138–140); protocol and engine reversed back to Narang's wording; sponsored access referred to Rule 15c3-5; FIX licence unchecked |
 
 ### Checks and their limits
 
@@ -1464,6 +1866,65 @@ Independent of the formulas being checked, in a scratch script (numpy/scipy, not
 - **Returns**: TWR −1.00% against MWR −3.71% in a contribution example; cumulative 3.95%, geometric mean 1.30%; annualised 7.42%; IRR roots 10% and 40%; a no-root case (maximum NPV −0.75); real 4.854% against $n-\pi=5\%$; leveraged 13%.
 - **Quotes**: 2.6957, 2.7111, T-bill quote 4.00, \$120,156.25, accrued 1.64; gold margin balance \$7,980 on day 7.
 
+### Findings on the earlier notes
+
+| Earlier block | Entry | Hull 11th Global ed. / other source | Disposition |
+|---|---|---|---|
+| *call/put option* | `def:derivative-contracts` | sec. 1.5, p. 31 | **Corrected**: the earlier notes reversed the rights |
+| *FRA* | `mod:forward-rates-fra` | sec. 4.9, pp. 110–112 | Rewritten; value **corrected** to a present value |
+| *Duration* | `mod:duration-convexity` (new) | secs. 4.10–4.11, pp. 112–117 | Rewritten; approximations marked |
+| *Time Value of Money Formulas* | `def:interest-rate-measures` | none (derived here) | Rewritten; "Expected Annual Rate" corrected to effective |
+| *Return Metrics* | `def:return-measures` (new) | GIPS 2020 | Rewritten; TWR root and real-return "risk" factor corrected |
+
+**Subclaims outside and inside the blocks.**
+
+| Where | Earlier claim | Disposition |
+|---|---|---|
+| basic intro | Derivatives market much larger than stocks by underlying assets; hedging, speculation, arbitrage; risk transfer | Kept as Hull's (p. 23); qualified: notional (\$558.5 tn OTC) is not value (\$11.6 tn), pp. 27–28 |
+| basic | Exchanges trade standardised contracts; clearing house "takes care of credit risk" by margin | Rewritten (p. 25); qualified: margin reduces, does not remove, credit risk (`mech:otc-clearing-collateral`) |
+| basic, items i–iii | OTC reforms: SEFs, CCP clearing, reporting | Kept as Hull's account with his qualifiers restored ("whenever possible", "most parts of the world", p. 26); primary rules unchecked → stub `rule:otc-derivatives-reforms` |
+| basic | Forward payoffs $S_T-K$, $K-S_T$ | Rewritten (p. 29); option payoff and profit with premium added (p. 32, examples recomputed) |
+| basic | Futures on exchange; most closed out | Rewritten (pp. 30, 47–48) |
+| basic | Delivery notice, grade, size, place, months, last trading; price limits "trading ceases" | Rewritten (pp. 48–50); limits contract-specific, exchanges can change them, controversial |
+| basic + figure | Convergence by arbitrage | Rewritten (pp. 50–51) with the deliverability condition as interpretation; figure redrawn in TikZ, original PNG (a reproduction of Hull's Figure 2.1) preserved |
+| basic | Margin accounts, daily settlement, variation, maintenance, margin call, withdrawal, brokers pay interest; minimum levels by clearing house | Merged into `mech:futures-margin-settlement` as Hull's generic account (pp. 51–54): "most brokers"; maintenance about 75%; not any clearing house's rules |
+| basic | Clearing house members: net basis, maintenance = initial, guaranty fund | Merged (pp. 53–54), with Hull's "about 99%" sizing |
+| basic | OTC CCPs, novation-like substitution, CCP takes credit risk; bilateral ISDA/CSA; 2016 margin rules | `mech:otc-clearing-collateral` (pp. 54–57; PFMI para. 1.13); scope of the 2016 rules from Hull's footnote; CCPs mitigate, not eliminate |
+| basic | Treasury rates risk-free "as there is no chance" of default | Qualified: "usually assumed" (p. 99), default in own currency only; not the derivatives discount rate (p. 101) |
+| basic | Fed funds; EFFR as weighted average of brokered rates; Fed may intervene | **Corrected** with the New York Fed: volume-weighted median of FR 2420 transactions since 1 March 2016 (`exp-sofr-data`); Hull's p. 99 description superseded |
+| basic | Repo rates; overnight and term repo | Rewritten (p. 99); SOFR methodology added (`exp-sofr-data`) |
+| basic | Compounding $A(1+R/m)^{mn}$, $Ae^R$, "equivalent annual interest rate" | Rewritten (pp. 102–104) with conversions |
+| basic | Spot rate, bond price, bond yield, par yield | Rewritten (pp. 104–106); examples recomputed |
+| basic | $R_F$ formulas; instantaneous forward | Rewritten (pp. 109–110); finite-difference check |
+| basic | FRA value $\tau(R_K-R_F)L$ | **Corrected**: present value; settlement timing; single-curve caveat; SOFR backward-looking |
+| basic | Duration definition and relations; modified duration; convexity Taylor | Rewritten with approximation signs; ±200 bp checks |
+| basic | Parallel-shift assumption for portfolios | Kept (p. 115), with yield change against curve shift |
+| basic | Expectations, segmentation, liquidity-preference theories; "forward rates are greater" | Kept as Hull's conjectures (pp. 117–119); "are" qualified; evidence stubbed (`ev:term-premia`, home `curve-term-structure`) |
+| fwdfut, items i–iv | Four assumptions | Rewritten (p. 126): needed for some participants only |
+| fwdfut, numbered lists (no-short-sale arbitrage, yield strategy, commodity arbitrage) | Arbitrage strategies | Rewritten (pp. 127–142); the commodity reverse arbitrage limited to investment assets; consumption assets give only an upper bound |
+| fwdfut | Income $I$, yield $q$, forward value $f$ "close to zero" | Rewritten (pp. 130–133); $K$ set so $f=0$ at inception |
+| fwdfut | Index arbitrage | Rewritten (pp. 135–137), with October 1987 failure |
+| fwdfut | Currency parity with $S_0$ as "local in foreign" | **Corrected** to Hull's quote direction (p. 138) |
+| fwdfut | Commodities, storage $U$, $u$, convenience yield, cost of carry items i–iv | Rewritten (pp. 141–144) |
+| fwdfut, items in B9 | Short and long hedges | Rewritten (pp. 71–72) |
+| fwdfut, 1–3 | Causes of imperfect hedges | Kept (pp. 75–76) |
+| fwdfut | Hedge-ratio derivation, $h^*$, figure | Rewritten with the entry's own variance derivation; figure redrawn from Hull's Table 3.2 data; original PNG (a reproduction of Hull's Figure 3.3) preserved |
+| fwdfut | Hedge effectiveness $=R^2=\rho^2$ | Kept (p. 81), qualified as in-sample |
+| fwdfut | $N^*$, daily-settlement versions | Rewritten (pp. 81–83); price-change and return regressions kept apart |
+| fwdfut | Tailing $N^*/(1+0.01r)$ | Qualified: one year at simple rate only (Hull's 1.05 example, p. 83) |
+| fwdfut | Index futures, CAPM beta, changing beta | Rewritten (pp. 85–88); Hull's table assumptions noted |
+| fwdfut | Reasons for index hedging | Kept as motivations (pp. 87–88), not evidence |
+| fwdfut | Stack and roll | Rewritten (pp. 89–90), with Metallgesellschaft's liquidity mismatch |
+| fwdfut, items i–iii | U.S. day counts | `conv:us-rate-quotation` (pp. 152–153) |
+| fwdfut | T-bill quote, T-bond 32nds, clean/dirty | `conv:us-rate-quotation` (p. 154); examples recomputed |
+| tvm table | EAR, continuous FV, PV, ordinary annuity, annuity due, perpetuity | Derived here (no source); "Expected" → effective; timing, $r\to0$ and perpetuity limits stated |
+| tvm table | IRR, MWR | `def:return-measures` (GIPS p. 78); existence and multiple roots added |
+| tvm table | TWR $\sqrt[1/n]{\cdot}$ "geometric mean" | **Corrected**: malformed root; cumulative, geometric mean and annualised kept apart; split at external cash flows (GIPS 2.A.24) |
+| tvm table | Annualised, log return | Kept, derived |
+| tvm table | Gross, net, pre-tax, after-tax | Gross and net from GIPS glossary (pp. 76, 78); tax measures not checked |
+| tvm table | Real return with $(1+r_{\mathrm{Risk}})$ factor | **Corrected**: $(1+r_{\mathrm{nom}})/(1+\pi)-1$; the risk factor has no basis |
+| tvm table | Leveraged return | Kept, derived with its funding assumptions |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -1524,6 +1985,64 @@ Independent of the formulas being checked, kept as `notes/artefacts/statistical-
 - **Fractional differencing**: recurrence equals the binomial form for $d=0,0.4,1,1.5,2$; signs; ratio $\to1$ and power-law decay $|\omega_k|k^{1+d}\to1/|\Gamma(-d)|$; FFD window 11, 55, 1,458 weights at $\tau=10^{-2},10^{-3},10^{-5}$ with residual sums 0.264, 0.136, 0.036; expanding-window weight loss; a random walk's FFD($d$), $\tau=10^{-4}$, rejecting a unit root by one-lag ADF already at $d=0.2$ ($-5.3$) and at $d=0.4$ ($-10.2$), although I($1-d$), not stationary, in theory.
 
 The group-B review's own script (`checkB.py`, scratch, not kept) reproduced the toy, bootstrap, decay and fractional-differencing results independently, with the sequential bootstrap less unique in 23 percent of its 3,000 runs.
+
+### Findings on the earlier notes
+
+- `datastruct.tex`, `datalabel.tex` (except as below), `datasampleweights.tex` and `fracdifffeat.tex`: López de Prado chaps. 2–5, close paraphrase with the source's own slips copied (below).
+- `taxonomy.tex`: its table and four remarks follow López de Prado sec. 2.2 (pp. 23–25); its five definitions follow Velu, Hardy and Nehren chap. 1, sec. 1.4 (pp. 26–44), not named in the file. The "Binned Data" definition holds Velu's *Daily Statistics* (pp. 39–40); his *Binned Data* is p. 42.
+- `datalabel.tex` meta-labelling: the steps (high-recall primary model, threshold possibly from ROC curves, concatenated features and predictions, positive "only where both are true") follow the Hudson & Thames blog "Meta Labeling (A Toy Example)" (`ht-meta-labeling-toy`, read 2026-10-16); `metalabel.tikz` follows its architecture. The five feature groups beyond the concatenation and the three "Limitations of Meta-Labelling" were found in neither source nor by web search; they are not adopted.
+- Figures: `standardbars.png` reproduces AFML Figure 2.1 (p. 28); `fracdiffexpandwindow.png` and `fracdifffixedwidthwind.png` reproduce AFML Figures 5.3(b) (p. 81) and 5.4 (p. 83); none was credited. They are kept only in the artefact, with attribution there; no entry uses them.
+
+| Earlier block | Entry | Source | Disposition |
+|---|---|---|---|
+| *Fundamental Data Characteristics* | `def:financial-data-types` (new) | AFML sec. 2.2.1, pp. 23–24 | Rewritten; Bloomberg-specific lag restored, backfill and reinstatement defined |
+| *Market Data Characteristics* | `def:financial-data-types` | sec. 2.2.2, pp. 24–25 | Rewritten; "over 10TB" and its "appealing" context restored, marked unsourced |
+| *Alternative Data Characteristics* | `def:financial-data-types` | sec. 2.2.4, p. 25 (Kolanovic–Krishnamachari split) | Rewritten; "annoys your data infrastructure team" marked opinion, in context |
+| *Reference Data* | `data:trading-reference-data` (new) | Velu sec. 1.4.1, pp. 26–35 | Rewritten; dividend conflation **corrected**; rule histories restored |
+| *Market Data Feed* | `data:market-data-levels` (new) | Velu sec. 1.4.2, pp. 35–39, Table 1.10 | Rewritten; "divide by 1000" **corrected** to 10000; consolidation and latency restored |
+| *Binned Data* | `data:derived-market-statistics` (new) | Velu sec. 1.4.3, pp. 39–40 (Daily Statistics) | Rewritten; mislabelled heading **corrected** |
+| *Fundamental Data and Other Data* | `def:financial-data-types` | Velu sec. 1.4.4, pp. 42–44 | Rewritten; hedges ("might", "thought to be", "generally") restored; claims stubbed as evidence |
+| *Standard Bars* | `meth:activity-sampled-bars` (new) | AFML sec. 2.3.1, pp. 26–28 | Rewritten; dollar-bar robustness narrowed; distributional evidence qualified (Ané–Geman abstract read) |
+| *Information-Driven Bars* | `meth:information-driven-bars` (new) | sec. 2.3.2, pp. 29–32 | Rewritten; runs statistics and imbalance thresholds **corrected**; $b_0$ and causal EWMAs stated |
+| *ETF Trick* (method) | `meth:etf-trick` | p. 34 | Rewritten; $o_{i,t+1}$ **corrected**; timing, positivity and cost limits added |
+| *ETF Trick: Computation of Allocation Vector with PCA* | `mod:pca-risk-distribution-weights` (new) | sec. 2.4.2, pp. 35–36 | Rewritten; two formula slips **corrected**; eigenvalue and sign conditions added |
+| *ETF Trick: Single Futures Roll* | `meth:etf-trick` | sec. 2.4.3, pp. 36–37 | Rewritten; denominator **corrected** to the previous raw price; roll gaps added |
+| *Event-Based Sampling: CUSUM Filter* | `meth:event-based-sampling` | sec. 2.5.2.1, pp. 38–40, Snippet 2.4 | Rewritten; zero condition and run condition **corrected**; sampling, reset and strict-inequality rules added |
+| *Triple-Barrier Method Configurations* | `meth:triple-barrier-labelling` | p. 46 | Rewritten; "physical", "loose", "immediate" corrected |
+| *Limitations of Meta-Labelling* | `meth:meta-labelling` (Pitfalls) | no source found | Not adopted; first item contradicts AFML p. 53; kept in the artefact |
+| *Estimating Uniqueness of Label* | `def:label-concurrency-uniqueness` | sec. 4.3, p. 60 | Rewritten; $r_{t-1,t}$ **corrected** |
+| *Average Uniqueness of Label* | `def:label-concurrency-uniqueness` | sec. 4.4, pp. 61–62 | Rewritten; training-set condition restored |
+| *IID and Oversampling* | `meth:sequential-bootstrap` (new) | sec. 4.5, p. 62 | Rewritten; AFML's $e^{-K/I}$ **corrected** to $e^{-I/K}$, "overlapping" to non-overlapping |
+| *Sequential Bootstrap* | `meth:sequential-bootstrap` | secs. 4.5.1–4.5.4, pp. 63–68 | Rewritten; normaliser **corrected**; Monte Carlo evidence qualified |
+| *Weighting Observations by Uniqueness and Absolute Return* | `meth:sample-weights-attribution-decay` (new) | sec. 4.6, pp. 68–69 | Rewritten; factor $I$ and the weighting direction **corrected** |
+| *Time Decay Weighting* | `meth:sample-weights-attribution-decay` | sec. 4.7, pp. 70–71 | Rewritten; AFML's $d[1]$ and $cT$ slips **corrected** |
+| *Properties of Fractionally Differentiated Features* | `mod:fractional-differencing-weights` | secs. 5.4.1–5.4.3, pp. 77–80 | Rewritten; weight formula **corrected**; "makes stationary" corrected to AFML's "necessary"; decay rate added |
+| *Fixed-Width Window* | `meth:fixed-width-fractional-differencing` | sec. 5.5.2, pp. 82–83; secs. 5.6–5.7, pp. 84–88 | Rewritten; FFD range **corrected**; "it is stationary" qualified; minimum-$d$ procedure added |
+
+**Subclaims outside the blocks and inside them, beyond the rows above.**
+
+| Where | Earlier claim | Disposition |
+|---|---|---|
+| taxonomy opening and table | "brief overview"; the four-column table | Table rewritten as AFML Table 2.1 in `def:financial-data-types`; the "increasing diversity" ordering restored |
+| D1 | Time bars oversample quiet periods; poor statistical properties | Kept as AFML's with "often" and his citation |
+| D1 | "returns closer to IID Normal" (Ané–Geman) | Qualified: abstract claims normality under a trade-count clock, ranks trades above volume; "IID" is AFML's gloss; replication stubbed |
+| D1 | Volume bars "better statistical properties" | Kept as AFML's report of Clark (1973), with the conflict noted |
+| D2 | TIBs are "buckets of trades containing equal amounts of information" | Kept as AFML's interpretation, untested |
+| D2 | VIB/DIB address corporate actions | Kept (p. 31) |
+| D4 | Series "strictly positive" | Qualified with AFML's own "at worst, infinitesimal"; a short-leg counterexample computed |
+| D4 | $c_t$ not embedded in $K_t$ "as shorting will generate fictitious proceeds" | Rewritten ("profits" when the spread is shorted, p. 34) |
+| prose before D7 | ML algorithms scale badly; learn better from relevant examples | Kept (p. 38) |
+| D8 | "IID observations from a locally stationary process" | Kept as AFML's words; the snippet's level-series convention stated |
+| L5 | Meta-labelling achieves higher F1 | Kept as AFML's unsupported claim; F1 not guaranteed (derived) |
+| datasampleweights opening | ML literature assumes IID; fails in finance | Kept as AFML's (p. 59) in `def:label-concurrency-uniqueness` |
+| W3 | "no information leakage" | Qualified with AFML's training-set condition; `pit:label-weight-leakage` |
+| W6 | "much close to IID, verified by increase" | Qualified: Monte Carlo evidence on synthetic spans |
+| W7 | "Lower returns should be assigned higher weights" | **Corrected**: applies only to a neutral class, which AFML advises dropping |
+| W8 | "$c<0$ ... oldest portion $cT$" | **Corrected**: a share $-c$ of cumulative uniqueness |
+| fracdiff opening | Integer differencing removes memory; stationarity needed for inference | Kept as AFML's (pp. 75–76), with "stationarity does not ensure predictive power" added |
+| fracdiff opening | Fractional processes "enhance forecasting power compared to ARIMA" | Kept as AFML's account of Hosking (1981), unchecked |
+| F3 | Negative drift on an expanding window "still substantial" | Kept (pp. 80–82) |
+| F4 | FFD output "is stationary" | Qualified: ADF outcome on one sample; I(1-d) theory; truncation residue computed |
 
 ### Checks and their limits
 
@@ -1587,6 +2106,40 @@ Source checking, not study; no checkpoint was attempted.
 - **Deseasonalisation**: multiplicative coefficients recovered within 0.0052; a later shock moves the centred average at the six earlier times.
 - **Hawkes**: exponential kernel, branching ratio 0.6: rate 2.471 against 2.500, clustering ratio 6.38 against the long-window 6.25; compensator-rescaled durations mean 1.005, KS $p=0.35$ (raw durations $p\approx10^{-268}$). **Inhibition**: linear intensity $-0.30$ after one event; positive-part link: rate 0.369, clustering ratio 0.62. **A/R ratio**: drifts $+0.091$ and $-0.111$ per event at 1.2 and 0.8. **Waiting-time estimator**: 0.594 from uniform starts against 0.405 from events on a Hawkes sample.
 
+### Findings on the earlier notes
+
+No file named a source. Block by block, the material follows:
+- **Lehalle and Laruelle** (`alpha-laruelle`, 2nd ed. 2018): chap. 3, sec. 3.3 (pp. 216–227) for the CLOB and RFQ contrast, messages and channels, the three event types, conditioning, the Poisson baseline and its estimation, queue-reactive Models I–III, the A/R ratio, mean reversion and reset, and imbalance; chap. 1, sec. 1.3 (pp. 74–90) for tick size, binding probability and leeway, quoted depth, order-to-trade ratio, cumulative depth, queue jumping; app. A, sec. A.6 (pp. 266–273) for the Harris model and its counterfactual, nearly symbol for symbol; secs. A.11–A.13 (pp. 298–319) for decomposition, moving averages, deseasonalisation, the volume model, point processes, Hawkes processes, signature plot and Epps effect, also nearly symbol for symbol.
+- **Harris** (`alpha-harris`): limit-price placement, limit orders as options, their two risks and absent traders (chap. 4, pp. 73–78); price clustering (p. 91); open and closed books (p. 109); the block statistic and block-price rule (sec. 15.5, pp. 332–333); Lee–Ready and its limits (p. 423).
+- **Hasbrouck** (`s6-hasbrouck`): signing and signed volume (sec. 9.7, pp. 89–90); event against wall-clock time (p. 90); duration analysis (sec. 15.2.3, pp. 163–164).
+- **Bouchaud et al.** (`catalogue-0528`): queue imbalance $I$ (chap. 7), Hawkes conditions and inhibition (chap. 9), stylised facts (chaps. 2, 4, 10), priority rules (chap. 3) and the "order-flow imbalance" of signed market orders (p. 222).
+- Not found in any source read: the five-state lifecycle as worded, the "latency race boundary", queue imbalance's "less likely to reverse", the horizon caveat on imbalance, clustering's three reasons, the consolidated-tape caveat, refresh-time sampling, "false persistence", and the claim that marked Hawkes models can inhibit. Each is either rewritten as interpretation, corrected, or not adopted, as below.
+
+| Earlier block | Entry | Disposition |
+|---|---|---|
+| *Limit-Order Lifecycle* | `mech:order-lifecycle` (new) | Rewritten; "loses priority when price worsens" **corrected** to CME FIFO's rule (any price change, size increase, account change) and made venue-specific |
+| *Lifecycle Tags Change Priority* | `mech:order-lifecycle` (new) | Partly adopted (time in force, iceberg priority, IOC); minimum quantity and cancel-on-disconnect stubbed |
+| *Limit Price Placement* | `def:limit-order-book` (new) | Rewritten as Harris's Table 4-1; "far: low immediacy cost" **corrected** |
+| *Standing Limit Orders Are Trading Options* | `res:limit-order-options` (new) | Rewritten (Harris pp. 75–76; TQP p. 46); payoff and proof idea kept as derived, conditions added |
+| *Limit Orders Give Timing Options* | `res:limit-order-options` | Merged; monitoring speed marked as beyond the pages read |
+| *Price Clustering* | `def:tick-size` (new) | Rewritten as Harris p. 91; the earlier notes' reasons not adopted |
+| *Binding Tick Constraint* | `def:tick-size` (new) | Rewritten (LL p. 77); "further reductions mostly change queue behaviour" not adopted |
+| *Tick-Size Counterfactual* | `mod:harris-discretised-spread` (new) | Units **corrected**: an observed $k$-tick spread is $k\delta$ new ticks; the model re-rounds the latent spread, $E=\sum_k(k/\delta)f_\delta(k)$ in old ticks (page images pp. 272–273) |
+| *Value of a Quote* | `ev:tick-size-market-quality` | Value of quote adopted (LL p. 84); consolidated-tape clause not adopted |
+| *RFQ Can Mimic a Book* | `def:limit-order-book` | Rewritten (LL p. 216); conditional depth as interpretation |
+| *Queue Imbalance* | `def:queue-imbalance` (new) | Merged with 04/02 #3; the reversal claim not adopted |
+| *Latency Race Boundary* | same (Pitfalls) | Kept as interpretation, with LL p. 89 and TQP p. 59 |
+| *Signed Volume* | `meth:trade-sign-classification` (new) | Rewritten; transforms (p. 89); "false persistence" not adopted |
+| *Block Initiator Asymmetry* | `meth:trade-sign-classification` (new) | Kept as Harris's report ("approximately 80 percent", no sample); primary evidence stubbed |
+| *Order Flow Imbalance* | `def:order-flow-imbalance` (new) | **Corrected**: defined as Cont–Kukanov–Stoikov's event-based $e_n$, not signed trades |
+| *Imbalance Feature Segmentation* | `def:order-flow-imbalance` | Kept as a menu, not results; multi-level OFI stubbed |
+| *Imbalance Is Horizon-Dependent* | same (Pitfalls) | Not found; not adopted as a claim; CKS fits are contemporaneous; stubbed |
+| *Realised Covariance* | `meth:realised-variance-signature-plot` (new) | Rewritten; refresh-time not adopted (stub); previous-tick shown to cause Epps |
+| *Centred Moving Average* | `meth:intraday-deseasonalisation` (new) | Rewritten; $A_t$ typo and window rule **corrected**; look-ahead added |
+| *Activity Time Can Hide Stress* | same (Practice) | Kept as interpretation |
+| *Integrated Intensity* | `def:order-event-point-processes` | Rewritten; LL's printed condition $\int\lambda=1$ **corrected** to divergence (page image p. 308); time rescaling computed |
+| *Marked Flow Segmentation* | `mod:hawkes-order-flow` | **Corrected**: inhibition needs a non-linear link (TQP p. 181; BMM p. 8); agent classes from LL pp. 315–316 |
+
 ### Checks and their limits
 
 | Source | Passages compared | Limits |
@@ -1640,6 +2193,25 @@ Source checking, not study.
 
 `notes/artefacts/market-structure-execution-quality/order-routing-fragmentation-checks.py` (numpy, scipy; fixed seeds; run with `/opt/homebrew/bin/python3.10`): Harris's Table 6-1 call clears 7 at 20.0 by maximum volume, surplus 1.6 against 1.0 continuously (exact fractions), Bif's average 20.15; pro-rata 18 against 10 and 20 gives 6 and 12, POSIT 1,000 and 2,000, 10 against three 3s leaves one lot after floors and 7 against 1, 1 and 100 floors the small orders to nothing; the posting threshold's sign in three cases; the ex-fixing share 0.50 against the printed 0.60; FEI 0.854 and 0.676 with an empty venue; Lorenz and mean-difference Gini agree (0.565); KS fails to reject different normals in 89 percent of 30-sample trials; the binomial standard error 0.010 against 0.047 with venue choices repeated in runs of 20; the SOR model with the described update takes (0.95, 0.03, 0.02) to (0.52, 0.27, 0.21), and at a grid optimum the size-weighted first-order terms are near equal; a cross-venue gap beyond costs.
 
+### Findings on the earlier notes
+
+- **Harris** (`alpha-harris`): order instructions (chap. 4, pp. 68–86), precedence, matching and trade pricing, crossing networks, price ownership and derivative-price risks (chap. 6, pp. 115–136), order choice (chap. 14, p. 304), sunshine trading (sec. 15.3, pp. 327–328), exposure (chap. 18, pp. 382–384), internal crossing (sec. 25.4, pp. 520–521), consolidation and fragmentation (chap. 26, pp. 526–534).
+- **Lehalle and Laruelle** (`alpha-laruelle`): market share and its metrics (chap. 1, sec. 1.1.1, pp. 33–39), SOR (sec. 1.2, pp. 62–73), dark pools (sec. 1.4, pp. 102–115), auctions, matching curves and volume curves (chap. 2, sec. 2.1, pp. 117–140), spreads, resilience and coverage (secs. 2.3–2.4, pp. 153–163), Spain and the 2010 outage (sec. 2.5, pp. 170–185), FEI (app. A.1), the SOR toy model (A.3), market-share estimation (A.8), Gini and KS (A.9); sec. 3.4.2 was already the source of the existing routing entries.
+- **Bouchaud et al.** (`catalogue-0528`): order categories and order types (pp. 45, 55), the auction price (p. 56).
+- **FIX 4.4** code sets (`fix44-orchestra`): OrdType, TimeInForce, ExecInst.
+- Not found in any source read: the earlier notes' venue-selection list and routing-cost formula, frequent batch auctions' "muted" time priority (Budish et al.'s batch-auction sections not read), pegging references, the Gini for participants and time segments, leave-one-out estimators, and "subsidised share" beyond Turquoise's 2009 episode; each is marked interpretation, narrowed or stubbed.
+
+| Blocks | Entry | Disposition |
+|---|---|---|
+| *Order*; *Order-Instruction Segmentation*; *Core Order-Type Segmentation*; *Market Order Cost Segmentation*; *Conditional Activation*; *Stops Are Not Limits*; *Tick-Sensitive Orders*; *Time-in-Force*; *Quantity and Handling*; *Special Instruction*; *Instruction Semantics Are Venue-Specific* (11) | `def:order-instructions` (new) | Rewritten from Harris chap. 4 and FIX 4.4; IOC/FOK naming conflict recorded; pegs attributed to FIX, not Harris; T+3 marked historical; venue semantics stubbed |
+| *Order Choice Trades Certainty for Leakage*; *Market vs Limit Order Choice*; *Limit-Order Fill Threshold* (with proof); *Spread-Only Rules Fail* (4) | `res:limit-order-options` | Merged; Harris p. 304 and Table 14-1; threshold derived and computed; spread-only rule reframed by information |
+| all 18 (principle, procedure, continuous and call matching, frequent batch auctions, pricing rules and incidence, auction rules, surplus, schedules, lemma and proposition with proofs, randomised uncrossing, priority, public order precedence, pro-rata, matching curve, indicative volume) | `mech:order-matching-pricing` (new) | Rewritten from Harris chap. 6 and Lehalle–Laruelle chap. 2; pro-rata remainders computed; frequent batch auctions stubbed (`hft-market-design`); public order precedence and random ends dated |
+| *Dark Pool*; *Reference Price Trading*; *Crossing Network Rules*; *Price Ownership*; *Dark Liquidity Pools*; *Integrated vs Midpoint Books*; *Dark Pools and Price Discovery*; *Derivative Pricing Risks*; *Dark Activity Drivers*; *Why Investors Use Dark Pools*; *Dark Liquidity Is Conditional*; *Toxic Liquidity and Gaming*; *Bilateral vs Multilateral*; *Internal Crossing Agency* (14) | `def:dark-pools-crossing` (new) | Rewritten; "volatile periods" **qualified** (true of LL's dark turnover, not of dark share, against Buti et al. as reported); Zhu and Buti not read |
+| *Routing After Fragmentation*; *Smart Order Routing*; *Temporal Then Spatial*; *SOR Feedback Loop*; *Venue Selection*; *Consolidation Loop*; *Consolidation Bound* (with proof); *Aggregated Liquidity*; *Average Trade Size*; *Duplicate Liquidity*; *Transparency Is Not Certainty*; *Fragmented Routing Objective* (12) | `def:smart-order-routing` | Merged; LL sec. 1.2.1 and Harris sec. 26.4; bound derived; venue list and cost formula marked as the notes' synthesis |
+| *Toy SOR Model*; *SOR Share Feedback*; *SOR Fragmentation Drivers*; *Primary-Market Variance Feedback* (4) | `mod:sor-market-share-dynamics` (new) | Rewritten; three printed slips and the first-order condition **corrected**; the "finding" reclassified as a model result |
+| *Market Share as Routing Prior*; *Venue-Share Estimator*; *Index-Level Venue Share*; *Estimator Comparison*; *Metric Choice*; *Market Share Segmentation*; *Market Share Is Conditional*; *Intraday Non-Stationarity*; *Volume-Curve Segmentation*; *Event-Driven Volume Clustering*; *Reference Rules Create Volume* (11) | `meth:venue-market-share` (new) | Rewritten; ex-fixing formula **corrected**; Bernoulli assumption tested |
+| *FEI*; *Fragmentation Measurement Segmentation*; *FEI Venue Count*; *Fragmentation of What*; *Coverage*; *Gini Liquidity Imbalance*; *Lorenz-Curve Gini*; *Gini Measurement Segmentation*; *KS Test*; *Venue-Share Distribution Comparison* (10) | `meth:fragmentation-concentration-metrics` (new) | Rewritten; LL's "H0 accepted ... same distribution" **corrected** to failure to reject; Gini inconsistency flagged |
+
 ### Checks and their limits
 
 | Source | Passages | Limits |
@@ -1690,6 +2262,25 @@ Source statements and derived corrections are kept apart: items 1, 2 and 5 are d
 
 `notes/artefacts/execution-market-making/liquidity-market-design-checks.py` (numpy, fixed seed; exit 0 with `/opt/homebrew/bin/python3.10`; about 3 s): skill and luck (slopes 0.200 against 0.200; −0.006; 0.501 for persistent luck; incremental 0.0005); zero-sum and the two corollaries (gross sum $-7\times10^{-13}$; value-weighted active return $10^{-18}$; not zero when actives do not hold the market); credit counts (Harris's 999,999,000,000 and 2,009,900, ratio 497,537; the unordered 499,999,500,000 and 1,004,950; enumeration $n=12$, $B=3$ gives 15); depth–width duality and its counterexample; Harris's camera arithmetic and a reservation-value search (0.80; net 0.8005 against 0.784 and 0.792); book-size replenishment (1,900 against 20); the latency staleness probabilities ($e^{-1}=0.368$, $e^{-2}=0.135$; 250 and 125 Hz recomputed); queueing (M/M/1 means 2, 10, 100 ms; bursts 12.5 against 3.9 ms mean, 74 against 21 ms 99th percentile; growth at utilisation 1.05); Harris's volume-counting example; the order-flow externality inequality.
 
+### Findings on the earlier notes
+
+The first five files paraphrase Harris (chaps. 1, 3, 5, 7, 8, 9, 15, 19, 22, 24, 26–28) and Hasbrouck (chaps. 1–2) closely, with Lehalle and Laruelle's introduction and chap. 2 for the four liquidity variables, flow reactivity and the "Nyquist–Shannon latency bound". The regulatory file mixes Harris (chaps. 3, 9, 18, 26, 28, 29), Lehalle and Laruelle (introduction, chap. 1, sec. 2.5) and undated statements of U.S. and EU rules; every dated rule statement was rebuilt from primary texts. Additions in the earlier notes with no source found are named in each entry's Pitfalls (for example "funding" among spread components, "payoff convexity" for gamblers, the trading-edge list, "liquidity risk", "price continuity", "measurement risk", the tick-policy principle). Four propositions in the earlier notes were wrong or incomplete as stated (below).
+
+| Blocks | Entry | Outcome |
+|---|---|---|
+| *Trading Game View*; *Long and Short Positions*; *Motive Segmentation*; *Multiple Trader Identities*; *Patience Defines the Liquidity Side*; *Buy-Side Motives*; *Instrument Choice Follows the Problem*; *Hedge-Vehicle Fit*; *Profit-Motivated Trader Segmentation*; *Speculation Requires Comparative Advantage*; *Trading Edge Segmentation*; *Noise and Liquidity Traders*; *Futile Trader Segmentation* (13) | `def:trader-motives` (new) | Rewritten from Harris chap. 8; "payoff convexity", the edge list and the noise-trader definition flagged as the earlier notes' own |
+| *Tighter Spread, Different Cost*; *Investor Size Asymmetry* (2) | `res:hft-spread-investor-cost` | Merged as restatements; size asymmetry flagged as the earlier notes' own |
+| *Venue as Rule System*; *Market-Structure Segmentation*; *Access Form Segmentation*; *Market-Centre Segmentation*; *Exchanges*; *Exchanges as Search Engines*; *OTC Markets*; *ECNs and ATSs*; *RFQ vs CLOB*; *Designated Market Maker Segmentation*; *Market Information Systems*; *Post-Trade Infrastructure*; *Brokered Credit Compression* (proposition with proof); *Architecture Choice*; *Straight-Through Processing* (15) | `def:market-structures-venues` (new) | Rewritten from Harris chaps. 3, 5, 7, 24, 26; the credit count's conventions and assumptions stated and checked |
+| *Execution-System Segmentation*; *Trading Session Segmentation*; *Continuous Auctions*; *Call Auctions*; *Fixing Auctions*; *Auction Session Segmentation*; *Dealer Markets*; *Brokered Markets*; *Hybrid Markets*; *Specialist Role Segmentation*; *Gold Fixing as Sequential Auction*; *Why Large Orders Like Calls*; *Auction Transparency Trade-Off* (13) | `def:trading-sessions-execution-systems` (new) | Rewritten from Harris chaps. 5, 24, 28 and Hasbrouck chap. 2; the gold fixing **dated** (1919–2015 from LBMA, the IBA auction as of October 2026) |
+| *Market Quality*; *Liquidity*; *Liquidity as Bilateral Search*; *Search Stopping Rule* (proposition with proof); *Liquidity Search Strategy Segmentation*; *Four Liquidity Variables*; *Liquidity Risk*; *Tightness, Depth, and Resiliency*; *Price Continuity*; *Search-Output Liquidity Dimensions*; *Depth-Width Duality* (proposition with proof); *Displayed, Undisclosed, and Latent Liquidity*; *Book Size*; *Book Size Is a Lower Bound*; *Resiliency as Synchronisation*; *Value-Trader Resiliency*; *Liquidity State Drivers*; *Quality Trade-Offs*; *Intraday Liquidity Seasonality*; *Flow Reactivity* (20) | `def:liquidity-dimensions` (new) | Rewritten from Harris chap. 19, Hasbrouck chap. 1, Lehalle and Laruelle secs. 2.2–2.3; duality **given its attainment condition**; the search rule stated as one-step; "book size is a lower bound" **corrected** |
+| *Latency and Book State*; *Nyquist-Shannon Latency Bound* (2) | `def:smart-order-routing` | Merged; the bound **not adopted as a theorem**: restated as a staleness condition with a computed probability |
+| *Bid-Ask Bounce*; *Spread and Depth Substitute Imperfectly* (2) | `res:spread-determinants` | Merged; already present, interpretations recorded |
+| *Fragmentation*; *Order-Flow Externality* (proposition with proof); *Levels of Fragmentation*; *Structural Evolution of Fragmentation*; *Post-MiFID Phases*; *Early MiFID Failures*; *Liquidity Segmentation*; *Market-Segmentation Motives*; *Technology Fragmentation*; *Cross-Market Precedence Failure*; *Consolidated Tape as Resilience*; *Competition to Merger*; *Electronification Beyond Equities* (13) | `mech:venue-competition-fragmentation` (new) | Rewritten from Harris chap. 26, Hasbrouck chap. 1, Lehalle and Laruelle; their inconsistent dates recorded; electronification also in `def:market-structures-venues` |
+| *MiFID and MiFID II*; *Transparency and Dark Trading*; *MiFID II Dark Caps*; *MiFID Venue Statuses* (4) | `rule:eu-trading-venue-transparency` (new) | Rebuilt from EU texts (Publications Office) and ESMA statements; the double-to-single volume cap transition dated |
+| *Insider-Trading Restrictions*; *Insider-Trading Control Segmentation* (2) | `def:inside-information` | Merged; Rule 10b5-1 (2022 amendments), Form 4 and Regulation FD checked as of October 2026; Harris's superseded statements marked |
+
+**Corrections to the earlier propositions.** (i) *Past profit and skill*: the proof needed $E[L_{t+1}\mid\mathcal F_t,\Pi_t]=E[L_{t+1}\mid\mathcal F_t]$; unconditional zero-mean luck does not suffice (AR(1) luck with mean zero gives a slope of 0.5), and when skill is unknown past profit is informative (slope $\tau^2/(\tau^2+\sigma^2)$). (ii) *Brokered credit*: correct as an unordered count under stated assumptions; Harris's sidebar counts ordered relationships ($2n+B(B-1)$ = 2,009,900; ratio 497,537, his "500,000"). (iii) *Depth–width duality*: needs the maximum to be attained (counterexample with a jump). (iv) *Capacity*: $N\lambda<\mu$ is necessary, not sufficient (queueing delays and bursts). The *Nyquist–Shannon latency bound* is Lehalle and Laruelle's heuristic (p. 23, page image), not a sampling-theorem result; the *halt-value* and *insider-trading trade-off* propositions are definitional; the *order-flow externality* is a rearrangement whose content is in its specification.
+
 ### Checks and their limits
 
 | Source | Passages | Limits |
@@ -1715,7 +2306,7 @@ An integrated review by the same session after writing. Every quotation in the n
 - Using the EU Publications Office's CELLAR service and WebFetch for SEC PDFs where EUR-Lex and sec.gov refuse plain scripted requests; no bot check was solved or bypassed.
 - The compliance status of the U.S. 2024 tick and fee amendments (exempted to November 2027) and the EU single volume cap, which change often.
 
-## market design and liquidity review follow-up: liquidity units, the current systematic-internaliser definition and U.S. currency, queue stability and bursts, and preservation counts, 16 October 2026
+## market design and liquidity review follow-up: liquidity units, the current systematic-internaliser definition and U.S. currency, and queue stability and bursts, 16 October 2026
 
 Corrections to market design and liquidity review (`063de31`), run before dealer models and information review; the market design and liquidity review record above is left as written, and this record supersedes it where they differ. No entry label or entry count changed (170 entries); one backlog stub was added and one narrowed (*Systematic internaliser and U.S. currency*). Numerical corrections are reproduced, with assertions, in the rewritten sections 4 and 8 of `notes/artefacts/execution-market-making/liquidity-market-design-checks.py` (numpy; fixed seeds; exit 0 with `/opt/homebrew/bin/python3.10`); its other sections give byte-identical output (compared by script with the output before the change).
 
@@ -1723,7 +2314,73 @@ Corrections to market design and liquidity review (`063de31`), run before dealer
 2. **Systematic internaliser and U.S. currency, `rule:eu-trading-venue-transparency` and `rule:us-equity-market-structure`.** The 2014 definition ("organised, frequent systematic and substantial basis", pre-set quantitative limits for both, opt-in already available) is now dated as historical. The current definition is quoted from Directive (EU) 2024/790, Art. 1 point (3)(b): "on an organised, frequent and systematic basis, deals on own account in equity instruments \dots\ or which opts in"; recital (7) gives the reasons (excessive burden of the quantitative criteria; qualitative assessment for equity instruments only; non-equity pre-trade transparency removed for systematic internalisers by Regulation (EU) 2024/791; opt-in possible for non-equity instruments), and Commission Delegated Regulation (EU) 2026/392, recital (1), reads it the same way. Dates: the directive of 28 February 2024, published 8 March 2024, in force on the twentieth day, transposition due 29 September 2025 (Arts. 2--3), national measures not checked; the delegated regulation of 20 February 2026, published 1 June 2026, in force on the twentieth day (Art. 2). U.S.: Release 34-104612 (15 January 2026) exempts the plan participants from Rule 600(b)(69)(ii), aggregate odd-lot depth at or between the NBBO, until the first business day of May 2028, and not from Rule 600(b)(69)(iii), the best odd-lot order; Release 34-94441 (16 March 2022) approved NYSE's market-wide circuit breakers on a permanent basis, with Amendment No. 1's testing and reporting duties (other venues' 2022 filings not read); the 2024 tick and fee amendments took effect on 9 December 2024 (Federal Register record) and are effective rule text whose compliance Release 34-105656, read in full in its Federal Register version, exempts to the first business day of November 2027. Six source keys added or updated: `eu-dir-2024-790`, `eu-reg-del-2026-392`, `fr-2024-21867`, `sec-34-104612`, `sec-34-94441`, `sec-34-105656` (updated).
 3. **Queue stability and bursts, `def:floor-automated-trading-systems`.** For the M/M/1 queue the condition $\mu>N\lambda$ is necessary and sufficient for stability; market design and liquidity review called it "necessary, not sufficient", conflating stability with delay. The entry now separates stability from waiting time ($\rho/(\mu-N\lambda)$), time in system ($1/(\mu-N\lambda)$) and deadline misses ($e^{-(\mu-N\lambda)d}$), and replaces "peak, not average, rates decide" with conditions on burst duration, backlog, buffering and deadlines. The market design and liquidity review burst simulation drew each gap from the rate at the previous arrival, inexact across rate boundaries; reproduced, its realised rate was 799.8 per second against the stated 798, and it did not separate waits from time in system. Section 8 now samples arrivals by thinning (exact for the piecewise-constant rate), sets the low rate so the average is exactly 0.8 of capacity (0.7222 of capacity outside bursts; realised 800.2 per second), checks the constant-rate case against the M/M/1 formulas (mean wait 3.94 against 4.00 ms, mean time in system 4.94 against 5.00 ms, 99th percentiles 20.6 and 21.7 against 21.9 and 23.0 ms, $P(T>10\text{ ms})$ 0.131 against 0.135, all asserted), and reports the bursts (mean wait 12.53 ms, time in system 13.53 ms, 99th percentile 72.9 ms, share over 10 ms 0.343; backlog at the end of a burst near the fluid 50 messages), shorter bursts at the same peak and average (99th percentiles 25.8 and 22.5 ms for 20 and 5 ms bursts), a finite buffer of 20 (4.8 percent rejected with bursts, 0.29 percent at a constant rate against 0.23 percent in the M/M/1/20 formula) and overload at 1.05 (waits of 2.5 and 4.6 s after 50 and 100 s). Every affected number in the entry was refreshed.
 
-Source statements and derived corrections are kept apart: items 1 (units) and 2 restate sources more exactly; items 1 (attainment), 3 and 4 are derivations, computations and counts. Notes changed: the `execution-market-making` and `market-structure-execution-quality` pathway notes (two backlog stubs updated or added: `rule:us-market-wide-circuit-breakers-current` narrowed, `rule:eu-si-national-transposition` new). The market design and liquidity review index row in `notes/source-review-index.md` keeps its commit.
+Source statements and derived corrections are kept apart: items 1 (units) and 2 restate sources more exactly; items 1 (attainment) and 3 are derivations and computations. Notes changed: the `execution-market-making` and `market-structure-execution-quality` pathway notes (two backlog stubs updated or added: `rule:us-market-wide-circuit-breakers-current` narrowed, `rule:eu-si-national-transposition` new). The market design and liquidity review index row in `notes/source-review-index.md` keeps its commit.
+
+## dealer models and information review: market making, information and volatility, and feature and data engineering in the earlier microstructure notes, 16 October 2026
+
+Source checking of the remaining earlier microstructure notes (market making; information and volatility; feature and data engineering), run after the first market design and liquidity review follow-up (above). Not study.
+
+### Source identification
+
+- **Market making.** The economics and optimal-quoting notes paraphrase Harris chap. 13 (dealers, pp. 278--283), chap. 16 (p. 344) and chap. 24 (specialists, pp. 495--511, the tick-size box on p. 500); the participation-option inequality is the earlier notes' formalisation of p. 499. The latency notes' previously unidentified source is Lehalle and Laruelle's app. A.2 (pp. 250--254, page images of pp. 252--253), a summary of Foucault, Kadan and Kandel (2009 working paper; not read); their "latency as queue option" is unsourced, and was checked against Moallemi and Yuan (`wide-moallemi-yuan-queue`, previously unread; the June 2017 revision read in part). The cross-asset notes paraphrase Harris chap. 17 (pp. 349--378).
+- **Information and volatility.** Lehalle and Laruelle sec. 2.5 (pp. 169--186) and app. A.5 (pp. 261--266, page images), with the 2010 CFTC--SEC staff report (executive summary) for the event and Hasbrouck chap. 10 for price discovery across venues.
+- **Feature and data engineering.** The feature notes have no source; their content is relative-value arbitrage material in Harris's terms (chap. 17), a comparative-advantage principle (Harris p. 196) and label design (López de Prado chap. 3). The data-engineering notes follow Lehalle and Laruelle's apps. A.8, A.10 and A.14 (proportions, regression, the averaging effect), Harris chap. 22 (tests of skill and luck, unattributed in the earlier notes) and, for feeds and identifiers, match Velu, Hardy and Nehren chaps. 1 and 11; drop copies, clearing feeds and the identifier attribute list are the earlier notes' own. Neither file states a multilevel or cross-asset OFI result.
+
+### Source findings
+
+- **Dealers and specialists** (`def:dealer-quotes-order-flow`, `def:specialist-obligations-privileges`, `def:outside-spread`). Rewritten from Harris chaps. 13 and 24 (as of 2002); the compensation list and "wide quote is information" marked as the notes' interpretation; the 2002 U.S. figures dated; current designated-market-maker rules not read. The participation-option inequality is marked as an interpretation of p. 499; the tick-size box is p. 500. The dealer-against-outside-spread comparison restates pp. 344--345.
+- **Queue position** (`res:queue-position-value`). Rewritten from Moallemi and Yuan; the earlier claim that queue value matters in "thin" queues is **contradicted**: the value is large in long, large-tick queues.
+- **Make--take fees and the speed race** (`mod:make-take-fee-speed-race`). Source identified as LL app. A.2; the race intensities $\bar\mu,\bar\tau$ are sums, not "averages" (**corrected**); eq. (A.4) re-derived as the trade-maximising fee split and checked against exact finite-population equilibria; printed slips recorded; the cost list and the competition diagnostic marked as interpretation. The claim that fast liquidity improves price discovery is marked as interpretation (the model has no price discovery), with LL's question about fee schedules and the PFP.
+- **Arbitrage** (`def:arbitrage`, `res:arbitrage-risks`). Harris's arbitrage material (pp. 349--378, 366--367); the triangular FX equality after costs restated as a bid--ask band, derived and checked; Harris's currency box (p. 357) found internally inconsistent and recomputed; the capital-constraint generalisation marked as the notes'. The factor-residual view **corrected** for a hedge ratio $h$: exposure $\beta_i-h\beta_j$, not $\beta_i-\beta_j$.
+- **Fragmentation, outages and systemic risk** (`mech:venue-competition-fragmentation`, `ev:european-fragmentation-evidence`). Hasbrouck's information shares; the general fragmentation claim marked as synthesis; the systemic-risk conditions (LL pp. 169, 177) marked as plausible mechanisms. The Euronext outage of 13 October 2010 (pp. 183--186), with the captions' date slip recorded.
+- **Flash crashes** (`mod:depth-overflow-flash-crash`, `ev:may-2010-flash-crash`). Rewritten from LL and the staff report; the time term of (A.14) **resolved by derivation** (rounds, the overflow bound; (A.14) needs the overflow); the earlier $\rho$ wording corrected; the control list marked as synthesis; the reference-price channel placed with the Euronext outage.
+- **Trade count as an HFT proxy** (`def:hft-strategies`). LL pp. 20--21 and 170--171, with the staff report's warning about volume.
+- **Comparative advantage and labels** (`def:trader-motives`, `meth:triple-barrier-labelling`). Harris p. 196; AFML p. 44, with the earlier label categories marked as the notes'. No source was read for microstructure-alpha evaluation; it stays a backlog stub (`meth:lob-signal-transaction-usefulness`).
+- **Market data and identifiers** (`data:market-data-levels`, `data:trading-reference-data`). Timestamps, sequencing, availability and corrections added from Hasbrouck p. 105 and Velu chap. 11; drop copies and clearing feeds marked as the notes'.
+- **Proportions** (`meth:venue-market-share`). LL A.8; the normal-approximation rule of thumb stated with the true $p$, not its estimate; Wald and Wilson coverage computed.
+- **Regression and averaging** (`meth:spread-volatility-regression`, `meth:intraday-deseasonalisation`). LL A.10 and A.14; the two $R^2$ forms distinguished; the spread-aggregation identity limited to price-unit spreads; LL's $\bar a_1$ slip recorded; the averaging effect from A.14.1.
+- **Skill and luck** (`meth:skill-luck-significance-tests`). Rewritten from Harris chap. 22; the power proposition restated with its error rates, $n=((z_{1-\alpha}+z_{1-\beta})\sigma/\mu)^2$, the expected-$t$ statement large-sample only; Harris's tables recomputed (the Buffett-box probabilities not reproduced exactly; its method unstated).
+
+Source slips recorded, not silently fixed: Harris's currency box (p. 357); Lehalle and Laruelle's A.2 indices and cost scaling, its "$\Gamma-\bar c$ obviously larger than $s\Delta$" (a counterexample was computed), A.5's round-indexed $t$ and (A.14), A.14.2's $\bar a_1$, and the outage captions' date.
+
+### Sources, 2026-10-16
+
+- `alpha-harris` (printed = PDF − 13): pp. 278--283, 344--345, 354--357 (page image of p. 357), 366--367, 452--474, 495--511.
+- `alpha-laruelle` (printed = PDF − 27): pp. 20--21, 169--186 (figure captions pp. 185--186), 250--254 (page images of pp. 252--253), 261--266 (page images), 284--286, 292--298, 318--321.
+- `s6-hasbrouck` (printed = PDF − 11): pp. 99--105.
+- `s3-velu` (printed = PDF − 17): pp. 383--386.
+- `wide-moallemi-yuan-queue`: the authors' working paper, June 2017 revision (the catalogue records 2016), pp. 1--6 and 18--25.
+- `alpha-afml`: p. 44 (already read in financial data and labels review).
+- New source key `sec-cftc-may6-2010`: the staff report of 30 September 2010 from the CFTC's site (sec.gov returned HTTP 403 to a plain request; the CFTC copy was used, nothing circumvented), cover and pp. 1--7.
+- Not read: Foucault, Kadan and Kandel; Kirilenko et al. and Menkveld--Yueshen; the staff report's detailed sections; Gliner and Drobny (not needed here); current designated-market-maker rules; multilevel and cross-asset OFI papers (`wide-cont-cross-impact-ofi`, `wide-kolm-deep-ofi`); Agresti and Caffo; the pathway readings of `performance-manager-evaluation`, `point-in-time-data` and `lob-deep-learning`.
+
+### Numerical checks
+
+`notes/artefacts/execution-market-making/dealer-queue-information-checks.py` (numpy, scipy; fixed seed; exit 0 with `/opt/homebrew/bin/python3.10`; about 1.5 s), each with assertions: Harris's inside spread (0.10 from five 0.50 spreads); Harris's currency box (121, not 100, yen per euro; the printed cycle loses 0.1 million yen; a consistent cycle gains 0.1 million, about \$909) and the cyclic band (20,000 random quote sets, exact agreement between "a cycle earns money" and "the direct quote leaves the synthetic band"); eq. (A.4) against exact finite-population equilibria (0.4463, 0.4429, 0.4425 against 0.4425) and the rebate signs; a counterexample to "$\Gamma-\bar c$ obviously larger than $s\Delta$"; the hot-potato sums (rounds; overflow gap up to 3.75 $r_0$ at $\rho=0.6$) and the time term by simulation (2.459 against 2.455 linear; 1.210 against 1.205 quadratic); the staff report's arithmetic (an index near 1,090; about 55,000 contracts in 14 seconds); Moallemi and Yuan's Table 3 gaps; Wald and Wilson coverage; Harris's power and data tables (0.157, 0.229; 22.3, 132.6, 33.1, 33.1 and 5.6 years), sampling frequency (mean $t$ 0.91 monthly, 0.90 daily), AR(1) standard errors (1.36), the best of many managers (0.37 and 3.6 percent against Harris's 0.5 and 5), regression to the mean (0.20) and a short-volatility stream; the two $R^2$ forms, price-unit and basis-point spread aggregation, subadditive index volatility, index against average slopes (3.108 against 2.507), LL's $\bar a_1$ slip, mean against path; and a hedged spread's factor exposure and variance.
+
+### Checks and their limits
+
+| Source | Passages | Limits |
+|---|---|---|
+| `alpha-harris` | as listed | U.S. institutions as of 2002; the currency box inconsistent; the Buffett box's method unstated |
+| `alpha-laruelle` | as listed | Its A.2 summarises an unread paper; A.5 is illustrative and unestimated; several printed slips |
+| `s6-hasbrouck` | pp. 99--105 | Method and data advice, no venue evidence |
+| `s3-velu` | pp. 383--386 | One firm's order path; no drop-copy or clearing-feed detail |
+| `wide-moallemi-yuan-queue` | pp. 1--6, 18--25 | Working paper; sec. 3 not checked; U.S. large-tick names, August 2013 |
+| `sec-cftc-may6-2010` | cover, pp. 1--7 | Executive summary only; staff findings, no Commission view |
+
+The seven new entries and fourteen changed entries are *partly checked*, *draft*; **human review is outstanding**.
+
+### Independent review
+
+An integrated review by the same session after writing, against the diff. Every quotation on added lines (181 distinct) was checked by script against the text layers of the sources and the earlier notes; the misses were pre-existing quotations on modified lines, metadata strings checked by eye, or math stripped by the script, except two, fixed: Harris's "by decreasing the cost of stepping in front of booked orders" (the draft had "decreases") and the earlier notes' "follows volume mechanically". Locators were checked against the printed-page offsets. Also fixed: a generalisation that the index slope "is steeper" (now what the simulation and a derivation show), the claim that Harris "does not discuss" ETFs or ADRs (limited to his arbitrage chapter), the opt-in described as new in the follow-up's first draft (it was already in the 2014 text) and a Delegated Regulation citation narrowed to its recital. **Human review is outstanding.**
+
+### For review
+
+- Placing the cross-asset notes with the arbitrage entries rather than with inventory hedging or latency races, and the data-engineering material with point-in-time data, venue market share, spread regression and skill-and-luck tests.
+- Reading eq. (A.4) as the trade-maximising fee split, and the resolution of (A.14)'s time term, both by derivation without the original paper or errata.
+- Correcting Harris's currency box, and the Buffett-box probabilities not reproduced exactly.
+- Using Moallemi and Yuan's 2017 revision where the catalogue records 2016, and the staff report's executive summary only.
 
 ## dealer models and information review follow-up: the triangular no-arbitrage band, 16 October 2026
 
@@ -1741,6 +2398,63 @@ A second correction to market design and liquidity review (`063de31`), after the
 
 Notes changed: the `execution-market-making` pathway note; the entry's *Notation*, *Statement* and *Status*.
 
+## macro markets and pricing review: global macro, regimes and data, cross-asset transmission and practitioner frameworks in the earlier macro notes, 16 October 2026
+
+Source checking of the earlier macro notes (global macro, regimes and data; transmission across FX, equities, rates, credit and commodities; practitioner frameworks), run after the two follow-ups above. Not study.
+
+### Source identification
+
+- **Gliner, *Global Macro Trading* (`s7-gliner`).** A local PDF of the Wiley 2014 ebook (copyright page: Greg Gliner, Wiley, 2014; ISBN 978-1-118-36242-6 hardback, 978-1-118-42038-6 ePDF), 462 PDF pages, in the ignored `reading materials/`. The ebook has no printed page numbers; locators are chapter, section and PDF page, mapped from the PDF's outline and checked against the text, with no offset assumed. The regimes notes follow chaps. 1, 3, 11 and 12; the transmission notes chaps. 2, 4 and 7--10, often closely; chaps. 5 and 6 were not used.
+- **Drobny, *Inside the House of Money* (`s7-drobny`).** The local copy is the Wiley 2006 printing (copyright 2006; ISBN-13 978-0-471-79447-9 cloth), not the catalogue's revised 2013 edition; printed page = PDF page $-$ 15. Every practitioner claim was compared with the interview it named; several belong to other interviewees (below).
+- **Additions in the earlier notes without a source**: the "structural reasons" for macro (policy jumps, sticky capital, under-arbitraged links), the three policy regimes, QE channels, the regime map's ordering claims, several indicator rules of thumb, LTCM/2015/2020 stress scenarios, BoJ/PBOC/APP/TLTRO/2015 SNB details, Greece 2012 and Argentina 2020, El Niño, Buxl and Schatz bands, and others, each marked in its entry.
+
+### Source findings
+
+- **Global macro** (`def:global-macro-strategy`, `ev:global-macro-crisis-performance`). Rewritten from Gliner chap. 1; the "structural reasons" and "structural inefficiency" kept as unsourced hypotheses; liquidity consequences qualified; Gliner's index figures given with their limits and the crisis mechanisms marked as generalisation; the product-group and view-thesis framing marked as the earlier notes'.
+- **Central banks** (`def:central-bank-policy-framework`, `mod:taylor-rule`, `rule:major-central-banks-current`). QE figures **qualified** as announcement-day sums (Bauer via Gliner); "base only via OMO" corrected; regimes and channels marked as synthesis. Taylor's rule checked against Taylor (1993): $r^*$ "2--3\%" corrected to Taylor's 2\%, and Gliner's printed slip recorded. Current facts dated from primary pages: ECB "25 members", "HICP $<2\%$" and "6 meetings" **corrected** (27 members; decisions every six weeks); BoE minutes timing qualified; TARGET2 described correctly; BoJ, PBOC, APP and OMT-use claims left as backlog stubs.
+- **Currency regimes** (`def:currency-regimes-intervention`). The impossible trinity from Gliner p. 363 (Mundell, Frankel); the earlier notes' intervention arguments marked as hypotheses.
+- **Data and indicators** (`meth:macro-event-queries`, `def:macroeconomic-indicators`, `data:us-macro-release-calendar`). The six-event hit rate given its binomial probability; "central banks target core" and Gliner's "core PCE" **corrected** (the FOMC's goal is headline PCE); the demographic column mix-up resolved; BDI, capacity and payroll-scope claims qualified or stubbed; ECB "6 per year" **corrected**, with agency calendars as the record.
+- **Regime and asset map** (`def:macro-regime-asset-map`). Relationships between assets, sector rotation and fixed-income and commodity behaviour across regimes kept as hypotheses with Gliner's chap. 4 and 8 passages.
+- **Sizing and risk** (`meth:macro-position-sizing-risk`). Turtle $N$ as a standard deviation **corrected** (it is an average range); perfect correlation is not equal moves (Gliner's slip); the earlier notes' stress additions marked.
+- **FX** (`def:fx-market-structure`, `def:us-dollar-dxy-sdr`, `meth:fx-valuation-signals`, `mod:fx-carry-trade`). "5.5 days" corrected and BIS 2025 turnover added; the IMF factsheet for the current SDR basket; Gliner's valuation factors, with the Balassa--Samuelson and Meese--Rogoff descriptions **corrected**; carry skew and crash claims stubbed.
+- **Equities and volatility** (`meth:equity-index-valuation`, `def:equity-indices-derivatives`, `def:vix-variance-dividend-swaps`, `meth:equity-macro-leading-indicators`). Tobin's $q$ slip recorded; variance-swap strikes are set ex ante (Gliner's "priced with realized volatility" **corrected**); daily move stated as a standard deviation; the claim that the BDI "cannot be speculated" **contradicted** (unsupported; freight forwards exist).
+- **Rates and money markets** (`def:fixed-income-universe`, `def:money-market-reference-rates`, `meth:policy-path-ois-futures`, `def:interest-rate-swaps`, `mod:forward-rates-fra`, `conv:government-bond-futures`, `meth:curve-trades-carry-rolldown`, `def:tips-breakevens`). Gliner's Table 9.5; LIBOR and EONIA ends dated from primary pages; the conditions for OIS-implied probabilities derived (a meeting-dated swap is needed); Eurodollar futures treated as historical, with the conversion dated from the CBOT filing (date discrepancy stubbed); Gliner's FRA fixing-date slip recorded; Treasury futures sit below the bond because of positive carry, not term premium (**corrected**), with ticks recomputed; the steepener's carry sign shown to depend on the curve and repo; "every recession since 1970" **corrected** to Estrella--Trubin's record; Gliner's rolldown misdefinition recorded; the TIPS schedule from TreasuryDirect; "trades at 105" and breakeven-as-expectations **corrected** (a TIPS price is not the adjusted principal; breakevens contain risk and liquidity premia).
+- **Credit** (`def:sovereign-credit-defaults`, `mech:cds-contract-credit-events`, `mod:duration-convexity`). Moody's recovery test depends on $n$; Greece 2012 and Argentina 2020 stubbed; CDS payout is par minus recovery, with Gliner's upside **corrected** and the post-2009 contract stubbed; the convexity formula's missing price **corrected** (the formula is proportional).
+- **Commodities** (`def:contango-backwardation-stocks`, `def:commodity-indices-risk-return`, `def:crude-oil-markets`, `def:natural-gas-market`, `def:metals-markets`, `def:agricultural-markets`). The ending-stocks balance identity extended for trade; DBC's energy weight moved back from the GSCI; kerosene and Saudi Aramco slips recorded and Brent delivery stubbed; the flaring explanation **corrected**; platinum's density ratio is 1.11, and the copper-consumption and Chile copper-share slips recorded; El Niño and the coffee contract marked as the earlier notes' additions.
+- **Practitioner frameworks** (`meth:macro-practitioner-frameworks`). Checked interview by interview. **Drobny attributions corrected**: the "75 percent of price movement", long-gamma leverage, forced-seller and "inevitable" points are the anonymous currency specialist's (not Siva-Jothy's); 4:1, cooling-off and three or four trades a year are Andres Drobny's (not Wadhwani's); time-horizon arbitrage is Porter's; front-page contrarianism is Rogers's and Porter's (not Anderson's); Porter's "90 percent explained by the direction of interest rates" restored; the anonymous manager's blocs are Europe, Asia and Latin America. Bessent's 50/30/20 (p. 280), Dimitrijević's internal stops and one-month cool-off (pp. 295--296), Yra Harris's 80 percent, probes, clearing the books and three or four positions (pp. 210, 214--215) and the five-month horizon (p. 334) were all found.
+
+Misstated by Gliner and corrected or recorded in their entries: Balassa--Samuelson, Tobin's $q$, TARGET2, rolldown, the FRA fixing date, kerosene, Saudi Aramco, Chile's copper share and V2X.
+
+### Sources, 2026-10-16
+
+- `s7-gliner` (PDF pages, no printed numbers): chap. 1 pp. 29--40; chap. 2 pp. 50--69; chap. 3 pp. 79--86; chap. 4 pp. 91--102; chap. 7 pp. 179--209; chap. 8 pp. 214--240; chap. 9 pp. 245--280; chap. 10 pp. 291--348; chap. 11 pp. 355--398; chap. 12 pp. 401--428.
+- `s7-drobny` (2006 printing; printed = PDF $-$ 15): pp. 50, 54, 60--63, 78--79, 85, 109, 125, 130--131, 135, 139, 147--148, 152, 163, 177, 204--210, 214--215, 217, 230, 249--262, 280, 283, 293--296, 327--336.
+- New source keys (`compendium/front/sources.tex`), retrieved 2026-10-16: `fomc-page`, `fomc-longer-run-goals`, `ecb-governing-council`, `ecb-strategy`, `ecb-estr`, `emmi-eonia`, `boe-mpc-page`, `boe-mps-minutes`, `boj-policy-board`, `snb-strategy`, `arrc-sofr-transition`, `cbot-23-214` (CBOT filing with the CFTC, 1 June 2023), `treasurydirect-tips`, `bls-ces-page`, `imf-sdr-factsheet`, `bis-triennial-2025`, `estrella-trubin-2006` (read in full) and `taylor-1993` (p. 202, page image). Catalogue keys reused: `exp-sofr-data` (EFFR and SOFR); several unread catalogue readings named only in *Further reading* or as "catalogue entry only, not read".
+- Not retrievable or not read: CME's Eurodollar conversion notices and contract pages (403 or time-outs); ICE's dollar-index methodology (404); the FCA's announcement page (403); the ISDA Determinations Committee's 2012 Greece decision; the BLS handbook page on CES concepts; the BIS 2025 currency shares; Bauer (2012), Moody's (2007), Goldman Sachs (2007) and the other secondary sources Gliner reproduces; Gliner's chaps. 5--6; the 2013 edition of Drobny; every pathway's required readings.
+
+### Numerical checks
+
+`notes/artefacts/multi-asset-systematic-macro/macro-pricing-risk-checks.py` (numpy, scipy; fixed seed; exit 0 with `/opt/homebrew/bin/python3.10`), 17 sections with assertions: Turtle $N$ against a standard deviation; risk/reward arithmetic; correlation against beta; the six-event hit rate; the Taylor rule and Gliner's slip; OIS probabilities and dilution; Eurodollar and Treasury futures ticks; futures below spot with positive carry; steepener carry signs; duration, DV01 and convexity; TIPS index ratio, floor and breakevens; CDS settlement and Moody's recovery test; variance swaps and daily moves; commodity notionals, the 3:2:1 crack spread and platinum density; Gliner's Table 12.2 columns; ending stocks with trade; carry-to-risk rankings.
+
+### Checks and their limits
+
+| Source | Passages | Limits |
+|---|---|---|
+| `s7-gliner` | as listed | A 2013--2014 practitioner text; market figures, contract terms and memberships dated; many slips recorded; its own sources not read |
+| `s7-drobny` | as listed | 2006 printing, not the catalogue's 2013 edition; opinions of selected survivors |
+| Central-bank, benchmark, Treasury, BLS, IMF and BIS pages | as retrieved | Living pages: current as of 16 October 2026 only; history of changes mostly unchecked |
+| `cbot-23-214` | secs. 1--2 | An exchange's account in a rule filing; the conversion date conflicts with the weekday |
+| `estrella-trubin-2006`, `taylor-1993` | as listed | Record to 2005; Taylor read from a page image |
+
+The 34 new entries and the merged entries are *partly checked*, *draft*; **human review is outstanding**. Quotations: every quotation on added lines (363 distinct) was compared by script with the text layers of Gliner, Drobny, the retrieved pages and the earlier notes; 330 matched, and the 33 misses were inspected by eye: earlier wording containing LaTeX math, quotations broken by a page marker or hyphenation in the text layer, Gliner's misprints quoted with "[sic]", and pre-existing quotations on modified lines. Paraphrases that had been put in quotation marks were rewritten or quoted exactly before the count.
+
+### For review
+
+- Placing the central-bank and data material with the monetary-policy, nowcasting and announcement pathways, and the transmission material with the asset-class pathways.
+- Every correction of Gliner listed above, and the reattributions in Drobny (the 2013 edition not inspected).
+- Current-status statements dated 16 October 2026 (FOMC, ECB, BoE, BoJ, SNB, LIBOR, EONIA, TIPS schedule, payroll date), against their pages.
+- The backlog stubs that stand in for unread primary sources: the Eurodollar conversion date, BoE minutes history, BLS payroll scope, ISDA's 2012 Greece decision, the BIS dollar share, ICE's index methodology and current exchange contract terms.
+
 ## macro markets and pricing review follow-up: audit corrections, a source-verification pass over the 37 macro entries and merges, and the 36 macro markets and pricing review backlog items, 16 October 2026
 
 Corrections and source checks after macro markets and pricing review (`f73498d`); the macro markets and pricing review record above is left as written, and this record supersedes it where they differ. This is source verification, not human review or study: every entry stays *draft*, and verification statuses were extended only for the passages actually read.
@@ -1752,7 +2466,7 @@ Corrections and source checks after macro markets and pricing review (`f73498d`)
 3. **VIX, `def:vix-variance-dividend-swaps`.** Cboe's methodology (v6.0, 26 February 2026): $\text{VIX}=100\sigma$ with $\sigma^2$ an annualised 30-day variance computed from option prices, minutes-based annualisation (43,200 and 525,600); VIX~20 means variance 0.04 (0.0033 over 30 days); first value date January 1990, current method from 2003; VIX derivatives settle to a Special Opening Quotation. Gliner's implied-volatility description and a remark on VIX futures corrected.
 4. **Gold and silver, `def:metals-markets`.** Gliner p.~320 names China, the United States, Australia and South Africa (``more than 40 percent'') and states that China overtook South Africa; the entry had dropped two countries and called the overtaking unstated. USGS gives 38.9 and 37.8 percent for 2011 and 2012. Table~10.9 (p.~322) is internally inconsistent: Mexico 162.2 plus China 117.0 over the stated 787.0 total is 35.5 percent, the printed shares imply a denominator near 594 and sum to 132.5 percent, and Gliner's 47 and 83 percent follow the printed shares; USGS gives 33.5 percent for 2012. Recorded, not repaired; the World Silver Survey was not read.
 5. **Drobny, `meth:macro-practitioner-frameworks` and the reading note.** Andres Drobny (pp.~131--132): re-entry on a single trade with a very tight stop and the incurred loss counted (4:1 becoming 4:3 after two stops), ``On a specific trade, no'' cooling-off; a month away only after a portfolio-wide stop-out and big losses. Siva-Jothy (p.~85): ``50 to 60 percent options'' with no stated denominator (not ``of risk''); three or four opportunities a year and overtrading are his; Andres Drobny only accepts the interviewer's framing (p.~125).
-6. **Chapter 8 and 12 locators, `def:macro-regime-asset-map` and `def:macroeconomic-indicators`.** Figure~8.3 (p.~217) compared phase by phase with common sector-rotation tables (partly matching; a late-cycle energy-and-materials list contradicts the figure's defensive slowing-growth phase). The U.S.-consumer figure is Gliner's (p.~416); the macro markets and pricing review statement that it was not in the passages read was wrong. Table~12.2 is on pp.~424 (heading) and~425 (data), not pp.~422--423.
+6. **Chapter 8 and 12 locators, `def:macro-regime-asset-map` and `def:macroeconomic-indicators`.** Figure~8.3 (p.~217) compared phase by phase with the sector-rotation table in these notes (partly matching; that table's late-cycle energy-and-materials list contradicts the figure's defensive slowing-growth phase). The U.S.-consumer figure is Gliner's (p.~416); the macro markets and pricing review statement that it was not in the passages read was wrong. Table~12.2 is on pp.~424 (heading) and~425 (data), not pp.~422--423.
 7. **Commercial paper, `def:money-market-reference-rates`.** Section 3(a)(3) quoted (``not exceeding nine months'', with the current-transaction condition); SEC interpretations 219.01--219.02; the Richmond Fed's account of the other historical conditions (not ordinarily purchased by the general public, prime quality and Federal Reserve discountability under Release 33-4412, discounting dropped in 1980). Gliner's ``less than 270 days'' kept as attributed.
 8. **GSCI history, `def:commodity-indices-risk-return`.** ``Pre-2000 back-filled'' corrected: the index dates from 1991 (Dunsby and Nelson; S\&P pages refused access, and the supplied 11 April 1991 date could not be confirmed, search listings showing April 1991), so 1970--1990 of Gliner's Table~10.1 is back-calculated; spot, excess-return and total-return variants distinguished, without assuming which the 2007 study used.
 9. **FX carry and CDS.** `mod:fx-carry-trade` states the quote convention ($S$ domestic per foreign), simple rates, the exact covered-parity and funded-P\&L formulas and their first-order forms (example: $+0.2550$ against $+0.2500$ percent). `mech:cds-contract-credit-events` presents the physical/cash equivalence as an illustration under a common recovery valuation, with a counterexample (62 against 60), and dates the 2009 Big Bang changes and the 2012 Greek determination.

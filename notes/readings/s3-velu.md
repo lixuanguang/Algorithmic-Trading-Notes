@@ -42,4 +42,5 @@ dealer models and information review: `data:market-data-levels` (the order path 
 
 ## Open questions
 
+- The earlier notes' "divide by 1000" and mislabelled "Binned Data" heading were the notes' slips, not the book's; were the notes made from another printing?
 - The 13F, 13D and Form 4 thresholds and deadlines in the footnotes (p. 43) are not checked against the rules.

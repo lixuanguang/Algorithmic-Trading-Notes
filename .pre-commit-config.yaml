@@ -1,3 +1,5 @@
+# guide/ is a vendored copy of the learning guide; it is updated by copying, not edited here.
+exclude: ^guide/
 repos:
   - repo: local
     hooks:

@@ -194,6 +194,8 @@ implemented changes and the follow-up audit; Section 3 defines the revised targe
   the entry-evidence schema, general Markdown links or LaTeX input reachability.
 - `guide/` is a separate pinned Git submodule. Editing its generated documents or
   inventing guide pathway IDs in local notes would create an inconsistent state.
+  (Superseded on 2026-10-18, Section 15: `guide/` is now a committed copy of the
+  same pinned commit, not a submodule; the rule against editing it still applies.)
 - [The coverage log](notes/log.md) and existing pathway notes distinguish draft
   entries, consolidation and mastery. Preserve that distinction.
 
@@ -2042,3 +2044,25 @@ objectives are covered (editorial coverage, not mastery). Not promoted:
 - The OpenStax licence question is open in the log.
 - Empirical scripts, remote CI and human review are not done.
 - The next content slice has not been chosen.
+
+## 15. Guide copied into the repository (executed 2026-10-18)
+
+CI on pull request #21 failed at checkout. The workflow needed a
+`GUIDE_READ_TOKEN` secret to fetch the private `guide` submodule, and the
+repository had none. At the owner's request, the submodule was replaced by a
+plain copy:
+- The 15 tracked files of `lixuanguang/institutional_reading_list` at
+  `343d145909ba5384202b50604bf5ebe7e5b6ed86`, the commit already pinned, were
+  added under `guide/` without change. They comprise the two PDFs, the catalogue
+  `.tex`/`.aux` and the JSON, Markdown and HTML views.
+- `.gitmodules` and the gitlink were removed.
+
+Follow-on changes:
+- `.gitignore` keeps the two guide PDFs and the catalogue `.aux`.
+- Pre-commit excludes `guide/`.
+- The workflow checks out without a token or submodules.
+- README and two comments describe the copy.
+
+Earlier sections that mention the submodule or the token are historical. The
+pinned commit, the guide keys and every checker result are unchanged.
+

@@ -27,7 +27,7 @@ A source-based reference on quantitative trading and the financial analysis behi
 Prerequisites: [uv](https://docs.astral.sh/uv/) 0.12.7, which installs the pinned Python 3.14.7 from `.python-version`, and a LuaLaTeX installation with `latexmk` for the PDF.
 
 ```sh
-git clone --recurse-submodules https://github.com/lixuanguang/Algorithmic-Trading-Notes.git
+git clone https://github.com/lixuanguang/Algorithmic-Trading-Notes.git
 cd Algorithmic-Trading-Notes
 make sync           # install the locked environment from uv.lock
 uv run pre-commit install
@@ -45,9 +45,9 @@ make check          # source-check, the outline hash check and the PDF build
 | `make pdf` | `latexmk -lualatex` in `compendium/` |
 | `make pre-commit` | every pre-commit hook on all files |
 
-Dependencies are pinned exactly in `pyproject.toml` and resolved in `uv.lock`; after changing them, run `uv lock` and commit both files. Scripts that read spreadsheet data need the `empirical` group: `uv run --group empirical python <script>`. CI runs `make source-check` when a pull request into `main` is labelled `ready-to-merge`; the outline check and the PDF build need git-ignored local copies, so they run locally. The workflow checks out the private guide with a read-only `GUIDE_READ_TOKEN` repository secret. GitHub passes no secrets other than `GITHUB_TOKEN` to workflows triggered from a forked repository, so CI can validate only pull requests from branches of this repository; supporting forks would be a separate decision, and the workflow must not switch to a privileged trigger that runs untrusted pull-request code. `make examples` runs in the default environment; scripts that read spreadsheets, directly or through another script (for example `jet_fuel_hedge_test.py` through `backwardation_test.series`), need `--group empirical`.
+Dependencies are pinned exactly in `pyproject.toml` and resolved in `uv.lock`; after changing them, run `uv lock` and commit both files. Scripts that read spreadsheet data need the `empirical` group: `uv run --group empirical python <script>`. CI runs `make source-check` when a pull request into `main` is labelled `ready-to-merge`; the outline check and the PDF build need git-ignored local copies, so they run locally. The guide is committed in this repository, so the workflow needs no secrets; it must not switch to a privileged trigger that runs untrusted pull-request code. `make examples` runs in the default environment; scripts that read spreadsheets, directly or through another script (for example `jet_fuel_hedge_test.py` through `backwardation_test.series`), need `--group empirical`.
 
-For an existing clone, initialise the guide with `git submodule update --init`. Catalogue citations link to its PDF in `guide/`.
+Catalogue citations link to the reading-list PDF in `guide/`.
 
 ## Write an entry
 
@@ -65,13 +65,4 @@ The ordered `\qfsections` list in `compendium/compendium.tex` declares every com
 
 ## Update the guide
 
-```sh
-cd guide
-git fetch
-git checkout <commit>
-cd ..
-git add guide
-git commit -m "Update learning guide"
-```
-
-Compare catalogue and pathway keys using the guide's maintenance instructions before committing. Local reading PDFs and downloaded research inputs are ignored by Git.
+`guide/` is a plain copy of the tracked files of the `institutional_reading_list` repository, taken at commit `343d145909ba5384202b50604bf5ebe7e5b6ed86`; it is no longer a submodule. To update it, replace those files with the tracked files of a newer commit of that repository, record the commit in the commit message, and run `make check`. Compare catalogue and pathway keys using the guide's maintenance instructions before committing; do not edit the copied files here. Local reading PDFs and downloaded research inputs are ignored by Git.

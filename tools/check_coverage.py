@@ -96,7 +96,7 @@ def naming_problems(names, where):
 def maintained_paths(root):
     """Return folders and files under the maintained trees.
 
-    The ignored source copies and the guide submodule are not maintained trees.
+    The ignored source copies and the vendored guide are not maintained trees.
     """
     out = []
     for top in ("compendium", "notes", "tools"):

@@ -40,6 +40,9 @@ htmlcov/
 # PDFs are build outputs or local copies; only the compiled compendium is kept.
 *.pdf
 !compendium/compendium.pdf
+# The learning guide is a vendored copy; its compiled PDFs and catalogue .aux are kept.
+!guide/*.pdf
+!guide/institutional_quantitative_finance_reading_list.aux
 
 # Local copies of sources, never committed.
 reading materials/

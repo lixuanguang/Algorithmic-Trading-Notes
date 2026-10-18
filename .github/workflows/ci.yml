@@ -18,17 +18,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # The pinned guide is a private submodule; GUIDE_READ_TOKEN is a read-only token
-      # for lixuanguang/institutional_reading_list. The outline PDFs and reading copies
-      # are git-ignored, so `make verify-outlines` and `make pdf` run locally only.
-      # GitHub withholds repository secrets (other than GITHUB_TOKEN) from workflows
-      # triggered from forks, so only same-repository pull requests can be validated.
-      # Do not switch to pull_request_target: it would run untrusted code with secrets.
+      # The learning guide is committed under guide/, so no submodule or secret is
+      # needed. The outline PDFs and reading copies are git-ignored, so
+      # `make verify-outlines` and `make pdf` run locally only.
+      # Do not switch to pull_request_target: it would run untrusted pull-request code
+      # with write permissions.
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           fetch-depth: 0
-          submodules: recursive
-          token: ${{ secrets.GUIDE_READ_TOKEN }}
 
       - name: Install pinned uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0

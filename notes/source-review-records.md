@@ -3988,3 +3988,106 @@ Totals are 29 of 424 objectives and 33 Level I outline items covered.
 ### Limits
 
 The examples are synthetic: both happen to show strongly negative stock-bond correlations, which is not a claim about markets. Model moments are taken as given; how expected returns are estimated is not taught. Tail dependence beyond Longin and Solnik's summary, time-varying correlation models and the pricing of systematic risk are deferred. Human review is outstanding.
+
+## Portfolio choice and asset pricing batch, 18 October 2026
+
+Source checking, implementation and numerical verification for the four remaining objectives of `topic:portfolio-risk-return` and the eight of `topic:asset-pricing-factor-models`. This is not study and not human review.
+
+### Audit corrections first
+
+- `mech:diversification-correlation`: the equal-correlation limit is now qualified by sign. A fixed positive correlation leaves a positive floor; zero correlation gives sigma^2/N, which tends to zero; a fixed negative correlation cannot be kept as N grows. For N > 1 an equicorrelation matrix is valid only for -1/(N-1) <= rho <= 1 (eigenvalues 1 + (N-1) rho and 1 - rho). Markowitz's p. 79 sentence is kept and attributed. `portfolio-moments-checks.py` gained six boundary checks.
+- `notes/readings/s6-markowitz.md`: the matching-hash scan at `reading_materials/derivatives-validation/src/Markowitz1952.pdf` has a JSTOR cover as one-based PDF page 1. Printed p. 81 is PDF p. 6, so PDF page = printed page - 75; the earlier "- 76" was wrong.
+
+### Existing entries reviewed first
+
+- `meth:portfolio-return-moments` and `mech:diversification-correlation`: reused for moments and diversification.
+- `mod:mean-variance-portfolio-optimisation`: has Boyd et al.'s closed form for the risk-aversion objective and the infeasibility of a small target, but no frontier, GMV, CAL or CML. It stays a candidate; the new entries link to it and state gamma = A/2.
+- `mod:factor-risk-model`: covers the factor covariance decomposition and economic against statistical factors (Narang; Boyd et al.). It is reused for `objective:compare-factor-model-types`; the three-way comparison, outputs and pricing are new.
+- `meth:relative-performance-evaluation`: Harris's realised alpha and Jensen's alpha, and appraisal smoothing. Cross-referenced, not repeated.
+- `meth:simple-regression-estimation`, `meth:regression-diagnostics-anova`: the OLS mechanics and assumptions are reused by the CAPM regression rather than repeated.
+
+### Searches and sources
+
+Searches (2026-10-18): "Fama French 2004 Capital Asset Pricing Model Theory and Evidence pdf"; "Huberman Wang Arbitrage Pricing Theory staff report 216"; "Connor Korajczyk factor models of asset returns"; "Sharpe 1964 Capital Asset Prices pdf"; "Ross 1976 arbitrage theory of capital asset pricing pdf"; "Connor 1995 three types of factor models pdf"; "Pratt 1964 risk aversion in the small and in the large pdf"; "Damodaran historical returns 1928-2025"; "UBS Global Investment Returns Yearbook 2025 summary"; "investor.gov beginners guide asset allocation".
+
+| Source key | Identity and access | Read |
+| --- | --- | --- |
+| `s6-markowitz` | JF 7(1), 1952; matching-hash scan, page images | pp. 82-91 (added to pp. 77-81) |
+| `capm-theory-evidence-2004` | Fama and French, JEP 18(3), 2004, DOI checked; published pages from a Tuck course-site copy (AEA refused download) | whole article |
+| `capital-asset-prices-1964` | Sharpe, JF 19(3), 1964, DOI checked; JSTOR scan filed with the Kentucky PSC, page images, PDF = printed - 423 | pp. 430, 432-435, 437-440 |
+| `arbitrage-theory-1976` | Ross, JET 13(3), 1976, DOI checked; journal scan on an HEC faculty page | pp. 341-348, 352-355 |
+| `arbitrage-pricing-review-2005` | Huberman and Wang, FRBNY Staff Report 216 | abstract, secs. 1-9 |
+| `factor-model-types-1995` | Connor, FAJ May-June 1995; author deposit at Maynooth (CC BY-NC-SA) | pp. 42-46 |
+| `risk-choice-review-2013` | Gollier, Hammitt and Treich, IDEI WP 804 | pp. 1-5, 13-14 |
+| `us-asset-returns-1928-2025` | Damodaran histretSP.xls, January 2026 update | "Returns by year", "Explanations and FAQ", "Small Cap" |
+| `implied-equity-premium-2026` | Damodaran home page, implied ERP on 1 October 2026 | that section; histimpl.html 2020-2025 |
+| `asset-allocation-investor-guide` | SEC investor guide, investor.gov PDF | pp. 1-3 |
+| `ust-par-yield-curve` (existing key) | Treasury daily par yields, 2026 file retrieved again | 30 September 2026 row |
+
+Hashes, versions and page offsets are in the reading notes. Access limits:
+- Pratt (1964) is paywalled (JSTOR, Econometric Society), so the Arrow-Pratt result is cited from the Gollier-Hammitt-Treich review.
+- The UBS yearbook (Dimson, Marsh and Staunton) returned HTTP 403, so the historical table is US-only, with the survivorship caveat stated as interpretation.
+- Connor and Korajczyk's 2010 chapter was found only as a listing; Connor (1995) was used.
+- The AEA, ScienceDirect, Springer, SEC HTML and UBS pages refused automated download. Authorised or author-hosted copies were used, and DOIs were confirmed with Crossref.
+- Damodaran's small-cap column was excluded: its geometric mean is inconsistent with its arithmetic mean, and its 2025 value is partial.
+- Tobin (1958), Lintner (1965), Merton (1972) and Chen, Roll and Ross (1986) were not read; their results are cited only as reported by the sources above.
+
+### Entries and examples
+
+New topic files, input after `portfolio-moments`:
+- `portfolio-choice.tex`: `def:asset-class-characteristics`, `def:risk-aversion-utility`, `meth:efficient-frontier` and `meth:capital-allocation-line`, with figure `figures/mean-sd-frontier.tikz`.
+- `asset-pricing-models.tex`: `mech:systematic-risk-pricing`, `mod:return-generating-models`, `mod:capm-sml`, `meth:capm-regression`, `meth:required-return-on-equity`, `mod:multifactor-apt` and `def:factor-model-types`, with figure `figures/security-market-line.tikz`.
+
+`portfolio-choice-checks.py` (49 checks) covers the following:
+- The 1928-2025 table: the workbook's six arithmetic and geometric means are reproduced to 0.005 points.
+- Utility: in decimal and percent units; CARA-normal certainty equivalent by integration.
+- The three-fund frontier: closed forms against SLSQP; long-only boundary solution with its KKT multiplier; infeasible 9 percent target; dominated portfolios; simplex grid.
+- The tangency against maximum-Sharpe SLSQP, and y* for A = 2, 4, 8 against grids.
+- Borrowing at 3.5 percent. At 5 percent, above the GMV mean of 3.87, the tangency formula gives a lower-branch point; the first draft used 5 percent and was changed for that reason.
+- The figure coordinates.
+
+`asset-pricing-checks.py` covers the following:
+- The twelve-month regression by closed form, numpy lstsq and statsmodels OLS: beta 1.2548, alpha 0.1108 percent a month (t 0.26), R^2 0.813.
+- Raw against excess returns (a - alpha = -0.0949, of which -0.0932 is (1 - beta) mean r_f).
+- SML and CML numbers and the SML figure.
+- The cost of equity: 10.12 percent; 9.09 to 11.81 across published premia; 8.78 to 12.34 across the beta interval.
+- The APT arbitrage: replica weights (1.0, 0.2, -0.2), an 8,000 sure profit, and 25/sqrt(n) residual risk in the single-stock version.
+- Factor attribution: x'Fx = 16.48, factor share 80.5 percent.
+
+Several expected values in both scripts were typed before the first run and failed: a stock count of 27 (actual 26), real T-bill losses of 37 (actual 40), factor variance 20.04 (actual 16.48), replica weights and the stock's mean return. They were replaced by computed values before the entries were written; no data were changed after that.
+
+### Layout correction
+
+The PDF review found entry titles stranded at the foot of a page, apart from their Statement: printed pp. 75 (new) and three earlier pages (PDF pp. 107, 139, 149). The `\label` after `\begin{qf<type>}` writes a whatsit after the title's `\nopagebreak`, which makes the following glue a legal break. `house.tex` now repeats `\nopagebreak` at the first field of an entry, and a scan of all 209 pages finds no stranded title.
+
+### Coverage
+
+The 23 outline items mapped to the 12 objectives were each read on their outline pages and against the finished entries, and all 23 were promoted:
+- Level I: `m008:b02`-`b03` (PDF p. 2), `m010:b04` (p. 3), `m050:b01`-`b02` (p. 17), `m087:b01`-`b03` and `b07` (p. 27), `m088:b01`-`b08` (pp. 27-28).
+- Level II: `m040:b01`-`b06` (p. 26). `m040:b07` (active risk and the information ratio) maps to another objective and was not reviewed.
+
+All 12 objectives are `covered`; this is editorial coverage, not mastery. Totals: 41 of 424 objectives covered; 50 Level I and 6 Level II items covered; 974 of 1,030 items unreviewed.
+
+### Limits
+
+- The examples are synthetic except the dated US table and the 1 October 2026 inputs, and the beta of 1.15 is assumed.
+- The historical table is one country's and excludes small caps.
+- The implied premium is one practitioner's model, and his method paper was not read.
+- Pratt, Tobin, Lintner, Merton (1972) and Chen-Roll-Ross were not read directly.
+- No empirical CAPM or factor test is run.
+- Human review is outstanding.
+
+## Correction pass on PR #22, 18 October 2026
+
+A fixes-only pass on `907e84b`. This is not study and not human review; plan Section 17 has the details.
+
+- `meth:efficient-frontier`: removed the claim that constrained solutions necessarily have zero weights. The entry now states that an unconstrained optimum meeting the limits stays optimal, that binding limits give boundary solutions, and that no single unrestricted formula covers active-set changes. Markowitz p. 87, n. 10 is reused. The added assertion confirms that the 5 and 6 percent long-only optima equal the strictly positive unconstrained weights, and that 7.5 percent does not.
+- `meth:required-return-on-equity`: a historical premium with the current 10-year yield is described as a legitimate CAPM estimate with its own assumption and estimation error:
+  - 13.38 percent arithmetic and 11.60 geometric; two-standard-error band 8.54 to 18.21.
+  - The mechanical mismatch is now described separately: an implied premium paired with a rate other than its own.
+  - Damodaran's corporate finance project notes (cfprojectsumm.htm, SHA-256 6c0e6d5a...0c76, undated; sec. V.a "Riskfree Rates" and V.b "Risk Premiums") were read on 2026-10-18 and are registered as `corporate-finance-project-notes`. No numbers are taken from them because the page is out of date.
+  - Fama and French's 2.4-point standard error is now attributed to the premium over bills.
+- `def:asset-class-characteristics`: one sentence now names both implied and historical premia.
+- CI moved to merged pull requests into `main`, checking out `merge_commit_sha`. This was validated locally by `check-yaml` and an event simulation; a live merge event is unverified.
+- The earlier "CI pending" statement is reconciled: run 39119458178 passed on `907e84b` only.
+- Coverage unchanged: 41 of 424 objectives.

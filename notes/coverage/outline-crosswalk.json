@@ -5729,9 +5729,9 @@
    "objectives": [
     "objective:derive-efficient-frontier"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: meth:efficient-frontier describes the minimum-variance frontier and the global minimum-variance portfolio, calculates them (closed forms under a budget constraint with their conditions, and a three-fund table checked by optimiser) and interprets efficient against dominated portfolios, long-only boundary solutions and infeasible targets.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m008:b03",
@@ -5749,9 +5749,9 @@
    "objectives": [
     "objective:select-optimal-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: meth:capital-allocation-line explains choosing the point on the CAL from risk aversion (y* with a worked table and figure, def:risk-aversion-utility for the utility) and its extension to the market portfolio and the CML under the equilibrium assumptions of Sharpe and Fama-French.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m009:b01",
@@ -5900,9 +5900,9 @@
    "objectives": [
     "objective:estimate-capm-regression"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: meth:capm-regression calculates alpha, beta, standard errors, intervals and R^2 from a declared twelve-month sample by closed forms and two least-squares routes, and interprets units, fit, uncertainty, raw against excess returns and why alpha is not skill.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m011:b01",
@@ -8789,9 +8789,9 @@
    "objectives": [
     "objective:estimate-required-return-on-equity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: meth:required-return-on-equity explains combining a forward-looking risk-free rate, implied premium and beta (inputs for 1 October 2026) with sensitivity, and the market model's role in supplying beta (mod:return-generating-models) rather than a required return.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m050:b02",
@@ -8809,9 +8809,9 @@
    "objectives": [
     "objective:explain-multifactor-pricing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: mod:multifactor-apt describes the APT (Ross's argument, assumptions, exact and approximate forms) and multifactor pricing; def:factor-model-types describes the uses of multifactor models in equity investing (risk, attribution, cost of capital, performance, construction).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m051:b01",
@@ -10758,9 +10758,9 @@
    "objectives": [
     "objective:describe-asset-class-characteristics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: def:asset-class-characteristics describes cash, government and corporate bonds, equities, property and gold by claim, risks, liquidity and inflation exposure, with a dated 1928-2025 US table and the distinction between historical and expected returns.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m087:b02",
@@ -10778,9 +10778,9 @@
    "objectives": [
     "objective:explain-risk-aversion-utility"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: def:risk-aversion-utility explains risk aversion as concavity, the certainty equivalent and the Arrow-Pratt coefficient, the mean-variance utility with its assumptions and units, and the implication that more risk-averse investors hold less risky portfolios; meth:capital-allocation-line shows it numerically.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m087:b03",
@@ -10798,9 +10798,9 @@
    "objectives": [
     "objective:select-optimal-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: meth:capital-allocation-line and def:risk-aversion-utility explain the optimal portfolio as the tangency of the highest indifference curve with the CAL, with y* for A = 2, 4 and 8 and the A = 4 indifference curve drawn.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m087:b04",
@@ -10881,9 +10881,9 @@
    "objectives": [
     "objective:derive-efficient-frontier"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: meth:efficient-frontier describes and interprets the minimum-variance frontier, its efficient branch and the global minimum-variance portfolio of risky assets, with a labelled mean-standard deviation figure.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m088:b01",
@@ -10901,9 +10901,9 @@
    "objectives": [
     "objective:select-optimal-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: meth:capital-allocation-line describes the linear risk-return combinations of a risk-free asset with a risky portfolio, lending and borrowing, separation, leverage limits and a higher borrowing rate.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m088:b02",
@@ -10921,9 +10921,9 @@
    "objectives": [
     "objective:select-optimal-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: meth:capital-allocation-line explains the CAL, its slope, the tangency CAL and the CML as the CAL through the market portfolio under stated equilibrium assumptions, and how they differ.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m088:b03",
@@ -10941,9 +10941,9 @@
    "objectives": [
     "objective:explain-systematic-risk-pricing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: mech:systematic-risk-pricing explains systematic and nonsystematic risk, the variance decomposition, why residual risk diversifies and why, under the CAPM or APT, it earns no premium, with the conditions on which that depends.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m088:b04",
@@ -10961,9 +10961,9 @@
    "objectives": [
     "objective:explain-return-generating-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: mod:return-generating-models explains return-generating models, the market (single-index) model and multifactor versions, how they differ from pricing restrictions, and their uses.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m088:b05",
@@ -10982,9 +10982,9 @@
    "objectives": [
     "objective:apply-capm-sml"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: Beta is calculated from data in meth:capm-regression (1.2548 with interval) and defined and interpreted in mod:capm-sml and mech:systematic-risk-pricing (covariance ratio, correlation form, portfolio beta).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m088:b06",
@@ -11002,9 +11002,9 @@
    "objectives": [
     "objective:apply-capm-sml"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: mod:capm-sml explains the CAPM's assumptions (Fama-French p. 26; Sharpe pp. 433-434), the Sharpe-Lintner and Black versions and the SML against the CML.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m088:b07",
@@ -11023,9 +11023,9 @@
    "objectives": [
     "objective:apply-capm-sml"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: mod:capm-sml calculates CAPM expected returns for several betas with forward-looking inputs and interprets them as required returns; meth:required-return-on-equity adds a sensitivity analysis.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m088:b08",
@@ -11044,9 +11044,9 @@
    "objectives": [
     "objective:apply-capm-sml"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: mod:capm-sml describes and demonstrates applications: required returns, portfolio beta, security selection against the SML, hedging, Jensen's alpha and the CML against SML comparison, with the empirical caveats.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:7099c7688942:m088:b09",
@@ -19094,9 +19094,9 @@
    "objectives": [
     "objective:apply-arbitrage-pricing-theory"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: mod:multifactor-apt describes the APT, its assumptions (factor structure, many assets, diversifiable residuals, bounded risk aversion, no arbitrage) and its relation to multifactor models and the ICAPM.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m040:b02",
@@ -19115,9 +19115,9 @@
    "objectives": [
     "objective:apply-arbitrage-pricing-theory"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: mod:multifactor-apt defines arbitrage (Ross; Huberman) and determines whether one exists in an original example by solving the premia, replicating a mispriced portfolio and checking zero cost and zero exposure, and distinguishes the residual-risk case.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m040:b03",
@@ -19135,9 +19135,9 @@
    "objectives": [
     "objective:apply-arbitrage-pricing-theory"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: mod:multifactor-apt calculates expected returns from factor sensitivities and premia (7.0 percent for sensitivities 1.2 and -0.4; D's fair 6.70).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m040:b04",
@@ -19156,9 +19156,9 @@
    "objectives": [
     "objective:compare-factor-model-types"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: def:factor-model-types describes and compares macroeconomic, fundamental and statistical models by inputs, estimation, outputs, strengths and limitations, with Connor's evidence; mod:factor-risk-model supplies the covariance decomposition.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m040:b05",
@@ -19177,9 +19177,9 @@
    "objectives": [
     "objective:compare-factor-model-types"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: def:factor-model-types describes the uses of multifactor models and interprets an attribution and a risk decomposition (factor and specific parts, contributions by factor).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m040:b06",
@@ -19197,9 +19197,9 @@
    "objectives": [
     "objective:compare-factor-model-types"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-18 against the outline page and the finished entries: def:factor-model-types describes the benefits of several risk dimensions with an example of two portfolios that share a market beta but differ in inflation sensitivity, linked to the ICAPM.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-18"
   },
   {
    "id": "outline:0242f4b7ba07:m040:b07",

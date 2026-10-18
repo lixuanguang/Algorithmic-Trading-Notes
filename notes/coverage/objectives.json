@@ -1774,15 +1774,38 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "mod:mean-variance-portfolio-optimisation"
+   "entries": [
+    "meth:efficient-frontier"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:mean-variance-portfolio-optimisation",
+    "meth:efficient-frontier"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s6-markowitz",
+      "locator": "Journal of Finance 7(1), 1952, pp. 82-89, Figs. 1-2 and n. 10"
+     },
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 26-27 and Fig. 1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s6-markowitz.md",
+     "notes/readings/capm-theory-evidence-2004.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:efficient-frontier"
+    ],
+    "example": "notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py part 3 and figure (closed-form frontier and GMV against SLSQP; long-only boundary solution with KKT; infeasible target; dominated portfolios; simplex grid; figure coordinates); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -1795,15 +1818,54 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "mod:mean-variance-portfolio-optimisation"
+   "entries": [
+    "meth:capital-allocation-line",
+    "def:risk-aversion-utility",
+    "meth:efficient-frontier"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:mean-variance-portfolio-optimisation",
+    "meth:capital-allocation-line",
+    "def:risk-aversion-utility",
+    "meth:efficient-frontier"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 26-30 and n. 2"
+     },
+     {
+      "key": "capital-asset-prices-1964",
+      "locator": "Journal of Finance 19(3), 1964, pp. 432-435 and nn. 15, 19"
+     },
+     {
+      "key": "s6-markowitz",
+      "locator": "Journal of Finance 7(1), 1952, pp. 82 and 90"
+     },
+     {
+      "key": "risk-choice-review-2013",
+      "locator": "IDEI WP 804, July 2013, p. 3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/capm-theory-evidence-2004.md",
+     "notes/readings/capital-asset-prices-1964.md",
+     "notes/readings/s6-markowitz.md",
+     "notes/readings/risk-choice-review-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:capital-allocation-line",
+     "def:risk-aversion-utility",
+     "meth:efficient-frontier"
+    ],
+    "example": "notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py part 4 and figure (tangency against maximum-Sharpe SLSQP; y* grid checks; A = 4 point and indifference curve; borrowing at 3.5 and 5 percent); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -2075,13 +2137,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:capm-regression"
+   ],
+   "candidate_entries": [
+    "meth:capm-regression"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 31-32 and p. 44, n. 7"
+     },
+     {
+      "key": "arbitrage-pricing-review-2005",
+      "locator": "FRBNY Staff Report 216, August 2005, sec. 7, eqs. (14)-(17)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/capm-theory-evidence-2004.md",
+     "notes/readings/arbitrage-pricing-review-2005.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:capm-regression"
+    ],
+    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py part 1 (twelve declared synthetic months: closed forms, numpy lstsq and statsmodels OLS; standard errors, intervals, R^2; raw against excess regressions; constant-rate identity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -3775,13 +3861,54 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:required-return-on-equity",
+    "mod:return-generating-models"
+   ],
+   "candidate_entries": [
+    "meth:required-return-on-equity",
+    "mod:return-generating-models"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 39-40 and 43-44"
+     },
+     {
+      "key": "implied-equity-premium-2026",
+      "locator": "home page, 'Equity Risk Premiums', implied ERP on 1 October 2026, read 2026-10-18"
+     },
+     {
+      "key": "ust-par-yield-curve",
+      "locator": "2026 file, 10-year par yield on 30 September 2026, retrieved 2026-10-18"
+     },
+     {
+      "key": "arbitrage-pricing-review-2005",
+      "locator": "FRBNY Staff Report 216, August 2005, sec. 9"
+     },
+     {
+      "key": "corporate-finance-project-notes",
+      "locator": "'Project Emails/Information', sec. V.a 'Riskfree Rates' and V.b 'Risk Premiums', read 2026-10-18"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/capm-theory-evidence-2004.md",
+     "notes/readings/implied-equity-premium-2026.md",
+     "notes/readings/arbitrage-pricing-review-2005.md",
+     "notes/readings/corporate-finance-project-notes.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "meth:required-return-on-equity",
+     "mod:return-generating-models"
+    ],
+    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py part 3 (k_e = 10.12 percent with sensitivity to the published premia, the beta interval and historical arithmetic and geometric premia with a two-standard-error band; the sample average as a contrast); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -3793,13 +3920,50 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mod:multifactor-apt",
+    "def:factor-model-types"
+   ],
+   "candidate_entries": [
+    "mod:multifactor-apt",
+    "def:factor-model-types"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "arbitrage-theory-1976",
+      "locator": "Journal of Economic Theory 13, 1976, pp. 341-347 and 353-355"
+     },
+     {
+      "key": "arbitrage-pricing-review-2005",
+      "locator": "FRBNY Staff Report 216, August 2005, secs. 2-4, 6, 8-9"
+     },
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 37-39"
+     },
+     {
+      "key": "factor-model-types-1995",
+      "locator": "Financial Analysts Journal, May-June 1995, pp. 42-46"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/arbitrage-theory-1976.md",
+     "notes/readings/arbitrage-pricing-review-2005.md",
+     "notes/readings/capm-theory-evidence-2004.md",
+     "notes/readings/factor-model-types-1995.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "mod:multifactor-apt",
+     "def:factor-model-types"
+    ],
+    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py parts 4-5 (expected return from sensitivities; arbitrage among well-diversified portfolios; factor attribution); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -4728,13 +4892,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:asset-class-characteristics"
+   ],
+   "candidate_entries": [
+    "def:asset-class-characteristics"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "asset-allocation-investor-guide",
+      "locator": "investor.gov PDF (file dated February 2019), pp. 1-3"
+     },
+     {
+      "key": "us-asset-returns-1928-2025",
+      "locator": "histretSP.xls, January 2026 update, sheets 'Returns by year' (1928-2025) and 'Explanations and FAQ'"
+     },
+     {
+      "key": "s6-markowitz",
+      "locator": "Journal of Finance 7(1), 1952, p. 91 and n. 15"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/asset-allocation-investor-guide.md",
+     "notes/readings/us-asset-returns-1928-2025.md",
+     "notes/readings/s6-markowitz.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "def:asset-class-characteristics"
+    ],
+    "example": "notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py part 1 (1928-2025 US table reproduced from the workbook's summary rows; s.d., real means, worst years, premium standard error, subperiod means and correlations); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -4746,13 +4939,55 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:risk-aversion-utility",
+    "meth:capital-allocation-line"
+   ],
+   "candidate_entries": [
+    "def:risk-aversion-utility",
+    "meth:capital-allocation-line"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-choice-review-2013",
+      "locator": "IDEI WP 804, July 2013, pp. 3-5 and 13-14"
+     },
+     {
+      "key": "s6-markowitz",
+      "locator": "Journal of Finance 7(1), 1952, pp. 90-91"
+     },
+     {
+      "key": "arbitrage-theory-1976",
+      "locator": "Journal of Economic Theory 13, 1976, sec. I, eq. (9), p. 344"
+     },
+     {
+      "key": "asset-allocation-investor-guide",
+      "locator": "investor.gov PDF, p. 1"
+     },
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 26-28"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-choice-review-2013.md",
+     "notes/readings/s6-markowitz.md",
+     "notes/readings/arbitrage-theory-1976.md",
+     "notes/readings/asset-allocation-investor-guide.md",
+     "notes/readings/capm-theory-evidence-2004.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "def:risk-aversion-utility",
+     "meth:capital-allocation-line"
+    ],
+    "example": "notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py parts 2 and 4 (utility in decimal and percent units; CARA-normal certainty equivalent by integration; log-utility premia; y* for A = 2, 4, 8); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -4806,13 +5041,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mech:systematic-risk-pricing"
+   ],
+   "candidate_entries": [
+    "mech:systematic-risk-pricing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "capital-asset-prices-1964",
+      "locator": "Journal of Finance 19(3), 1964, pp. 438-440, Fig. 8"
+     },
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 28-29, n. 3, and pp. 37-40"
+     },
+     {
+      "key": "arbitrage-pricing-review-2005",
+      "locator": "FRBNY Staff Report 216, August 2005, sec. 1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/capital-asset-prices-1964.md",
+     "notes/readings/capm-theory-evidence-2004.md",
+     "notes/readings/arbitrage-pricing-review-2005.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "mech:systematic-risk-pricing"
+    ],
+    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py parts 1-2 (variance decomposition; equal-weight diversification of residual risk; CML against SML for the same asset); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -4828,13 +5092,40 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mod:capm-sml",
+    "meth:capm-regression"
+   ],
+   "candidate_entries": [
+    "mod:capm-sml",
+    "meth:capm-regression"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 25-44 (assumptions p. 26; SML pp. 28-29; Black pp. 29-30; evidence pp. 32-36 and 41-42; applications pp. 43-44)"
+     },
+     {
+      "key": "capital-asset-prices-1964",
+      "locator": "Journal of Finance 19(3), 1964, pp. 433-434"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/capm-theory-evidence-2004.md",
+     "notes/readings/capital-asset-prices-1964.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "mod:capm-sml",
+     "meth:capm-regression"
+    ],
+    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py parts 1-2 and SML figure (beta by regression; SML returns; portfolio beta; alpha against the SML; CML against SML); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -4846,13 +5137,52 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mod:return-generating-models"
+   ],
+   "candidate_entries": [
+    "mod:return-generating-models"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "arbitrage-pricing-review-2005",
+      "locator": "FRBNY Staff Report 216, August 2005, secs. 2 and 6"
+     },
+     {
+      "key": "arbitrage-theory-1976",
+      "locator": "Journal of Economic Theory 13, 1976, eqs. (2) and (15), pp. 342 and 347"
+     },
+     {
+      "key": "capital-asset-prices-1964",
+      "locator": "Journal of Finance 19(3), 1964, pp. 438-439 and n. 23"
+     },
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 31-32 and 39"
+     },
+     {
+      "key": "s6-markowitz",
+      "locator": "Journal of Finance 7(1), 1952, p. 89"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/arbitrage-pricing-review-2005.md",
+     "notes/readings/arbitrage-theory-1976.md",
+     "notes/readings/capital-asset-prices-1964.md",
+     "notes/readings/capm-theory-evidence-2004.md",
+     "notes/readings/s6-markowitz.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "mod:return-generating-models"
+    ],
+    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py part 1 (raw-return market-model regression; parameter count for a single-index covariance); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7747,13 +8077,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mod:multifactor-apt"
+   ],
+   "candidate_entries": [
+    "mod:multifactor-apt"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "arbitrage-theory-1976",
+      "locator": "Journal of Economic Theory 13, 1976, pp. 341-347 (heuristic, counterexample, Theorem I) and pp. 353-355 (eq. (24), bound)"
+     },
+     {
+      "key": "arbitrage-pricing-review-2005",
+      "locator": "FRBNY Staff Report 216, August 2005, abstract and secs. 2, 4, 6, 8, 9"
+     },
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 37-39"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/arbitrage-theory-1976.md",
+     "notes/readings/arbitrage-pricing-review-2005.md",
+     "notes/readings/capm-theory-evidence-2004.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "mod:multifactor-apt"
+    ],
+    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py part 4 (lambdas solved from three portfolios; mispriced D; replica weights; zero-cost, zero-exposure trade and its profit; residual-risk version; expected return from sensitivities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7767,15 +8126,53 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "def:factor-model-types",
     "mod:factor-risk-model"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:factor-risk-model",
+    "def:factor-model-types"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "factor-model-types-1995",
+      "locator": "Financial Analysts Journal, May-June 1995, pp. 42-46 and Tables 1-5"
+     },
+     {
+      "key": "arbitrage-pricing-review-2005",
+      "locator": "FRBNY Staff Report 216, August 2005, secs. 8-9"
+     },
+     {
+      "key": "capm-theory-evidence-2004",
+      "locator": "JEP 18(3), 2004, pp. 37-38"
+     },
+     {
+      "key": "wide-boyd-markowitz-seventy",
+      "locator": "author version of 5 Jan. 2024, sec. 3.3, pp. 20-21"
+     },
+     {
+      "key": "s7-narang",
+      "locator": "chap. 4, pp. 77-80"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/factor-model-types-1995.md",
+     "notes/readings/arbitrage-pricing-review-2005.md",
+     "notes/readings/capm-theory-evidence-2004.md"
+    ],
+    "review_record": "notes/source-review-records.md#portfolio-choice-and-asset-pricing-batch-18-october-2026",
+    "entry_evidence": [
+     "def:factor-model-types",
+     "mod:factor-risk-model"
+    ],
+    "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py part 5 (active exposures and return attribution; factor and specific variance with contributions by factor; several risk dimensions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {

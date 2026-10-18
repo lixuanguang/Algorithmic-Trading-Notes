@@ -1,12 +1,14 @@
 name: CI
 
-# CI runs once per merge candidate, not per commit: only when a pull request into
-# main is labeled `ready-to-merge`. Commits to other branches and the post-merge
-# push to main run nothing. After new commits, remove and re-add the label.
+# Remote source validation runs once per merge into main, on the merged revision:
+# only when a pull request whose base is main is closed *and merged*. Commits,
+# branch pushes, opening, updating or labelling a pull request, and closing one
+# without merging run nothing. Local checks (`make check`, pre-commit hooks) are
+# separate and should be run before merging.
 on:
   pull_request:
     branches: [main]
-    types: [labeled]
+    types: [closed]
 
 permissions:
   contents: read
@@ -14,7 +16,7 @@ permissions:
 jobs:
   source-validation:
     name: Source validation
-    if: github.event.label.name == 'ready-to-merge'
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +25,11 @@ jobs:
       # `make verify-outlines` and `make pdf` run locally only.
       # Do not switch to pull_request_target: it would run untrusted pull-request code
       # with write permissions.
+      # merge_commit_sha is the commit the merge created on main (merge, squash or
+      # rebase), so the job validates the merged revision rather than the head branch.
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
           fetch-depth: 0
 
       - name: Install pinned uv

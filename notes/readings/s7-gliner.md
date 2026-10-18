@@ -7,7 +7,7 @@ read:
 status: draft
 ---
 
-Prepared on 2026-10-16 by macro markets and pricing review from source checks, not from study: the headings that need your own reading are left empty. its transmission file paraphrases chapters 2, 4 and 7-10 closely, its regimes file chapters 1, 3, 11 and 12.
+Prepared on 2026-10-16 by macro markets and pricing review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

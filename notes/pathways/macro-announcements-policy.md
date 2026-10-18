@@ -24,7 +24,7 @@ Not attempted.
 
 Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
-- `data:us-macro-release-calendar`: the usual U.S. release cadence, FOMC and ECB meeting frequency, and agencies' calendars as the record.
+- `data:us-macro-release-calendar`: the usual U.S. release cadence, FOMC and ECB meeting frequency ("ECB 6 per year" corrected), and agencies' calendars as the record.
 - `meth:macro-event-queries`: Gliner's conditional back-tests around events (the BoE's 2012 QE example), surprises and revisions, and why six events cannot support a hit rate.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.

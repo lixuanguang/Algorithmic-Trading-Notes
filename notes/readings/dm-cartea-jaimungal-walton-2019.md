@@ -2,10 +2,12 @@
 key: dm-cartea-jaimungal-walton-2019
 pathways: [fx-dealer-market-making]
 version: Álvaro Cartea, Sebastian Jaimungal and Jamie Walton, "Foreign exchange markets with Last Look", Mathematics and Financial Economics 13(1), 1-30, 2019 (DOI 10.1007/s11579-018-0218-3). Copy used: arXiv 1806.04460v1, 12 June 2018 ("Forthcoming"), downloaded 2026-10-15 with a generic header; text layer. The published version was not checked
-sections: abstract; sec. 1, p. 2
+sections: abstract; sec. 1, p. 2 (checked for FX market structure review)
 read:
 status: draft
 ---
+
+Prepared on 2026-10-15 by FX market structure review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 

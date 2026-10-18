@@ -26,6 +26,8 @@ Written in macro markets and pricing / source review / optimal execution / execu
 
 - `def:macro-regime-asset-map`: a map of asset and sector responses to growth, recession, inflation, deflation, liquidity and geopolitical shocks, kept as hypotheses, with Gliner's risk-on/risk-off and sector-rotation passages.
 
+All: verification partly checked 2026-10-16, stability draft; human review outstanding.
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:regime-asset-responses-tested` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

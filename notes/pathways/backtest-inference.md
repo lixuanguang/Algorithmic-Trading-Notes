@@ -10,7 +10,7 @@ Pathway outcome, from the guide: report a strategy result with the number of tri
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. The entries come from source checking against `s7-narang` (third edition, Wiley 2024, chapter "Research"), which is not a reading of this pathway. None of the pathway's readings has been read, and the checkpoint was not attempted. The entries therefore describe one practitioner's diagnostics and say where the pathway's statistics are missing; they do not supply those statistics.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by backtest evaluation review (`notes/source-review-records.md`). The entries come from source checking against `s7-narang` (third edition, Wiley 2024, chapter "Research"), which is not a reading of this pathway. None of the pathway's readings has been read, and the checkpoint was not attempted. The entries therefore describe one practitioner's diagnostics and say where the pathway's statistics are missing; they do not supply those statistics.
 
 ## Outcome in my own words
 
@@ -24,7 +24,7 @@ Not attempted.
 
 Written in backtest evaluation / source review / optimal execution / high-frequency strategies reviews:
 
-- `meth:hypothesis-driven-strategy-research`: Narang's scientific method (observation, theory, deduced consequences, attempted falsification, capital risked only on confidence) and his four sources of ideas.
+- `meth:hypothesis-driven-strategy-research`: Narang's scientific method (observation, theory, deduced consequences, attempted falsification, capital risked only on confidence) and his four sources of ideas; the evidential weight of idea sources qualified.
 - `meth:backtest-evaluation-diagnostics`: cumulative profit curve, average return, variability and lumpiness, drawdowns and recovery, $R^2$ and quantile buckets, win rates, Sharpe, information, Sterling, Calmar and Omega ratios as Narang defines them, fit with other strategies, and time decay; the smooth-P&L and lower-volatility heuristics, the $R^2$ of 0.05, the bucket text–figure mismatch and time decay as crowding qualified.
 - `pit:parameter-overfitting`: isolated optima, nearby-parameter checks, plateaus, parsimony, the out-of-sample $R^2$ ratio and burnt out-of-sample data, and the third edition's balance against underfitting; parameter stability is not a correction for the number of trials.
 - `pit:backtest-cost-short-assumptions`: over- and underestimated trading costs, and hard-to-borrow names a backtest could not have shorted; Narang's "naked short sale \dots illegal" not adopted, and borrow fees and recall added from the lending entries as interpretation.

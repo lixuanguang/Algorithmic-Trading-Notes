@@ -23,7 +23,7 @@ Prepared on 2026-10-15 by dealer-information models review from source checks, n
 - Proposition 1: $A_t\ge\mathbb{E}_t[V]\ge B_t$, strictly if adverse selection is possible (p. 8). Proposition 2: transaction prices are a martingale (p. 10).
 - Proposition 3: with buy and sell probabilities bounded below, the root-mean-square spread over $k$ trades is at most $\sqrt{\operatorname{Var}(V)/(\alpha\beta k)}$ (p. 11); average spread of order one over the square root of volume with Poisson arrivals (pp. 18–19).
 - Proposition 5: spreads widen with finer insider information, a higher ratio of informed to uninformed arrivals, or less dispersed liquidity parameters (pp. 15–16). The market can shut down, a lemons problem (pp. 9, 17).
-- Section III: with discounting, observed returns are approximately a normal return plus what the uninformed expect to lose to insiders (pp. 19–23).
+- Section III: with discounting, observed returns are approximately a normal return plus what the uninformed expect to lose to insiders (pp. 19–23); not used in the entries.
 
 ## Limits
 

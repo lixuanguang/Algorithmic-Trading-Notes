@@ -10,7 +10,7 @@ Pathway outcome, from the guide: build or select a market simulator and validate
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 16 October 2026 by order books and order flow review (`notes/source-review-index.md`). (`catalogue-0528`) and Hasbrouck (`s6-hasbrouck`). None of the pathway's required readings has been read; the checkpoint has not been attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 16 October 2026 by order books and order flow review (`notes/source-review-index.md`), which wrote five entries for this pathway, checked against Lehalle and Laruelle (`alpha-laruelle`), Bouchaud et al. (`catalogue-0528`) and Hasbrouck (`s6-hasbrouck`). None of the pathway's required readings has been read; the checkpoint has not been attempted.
 
 ## Outcome in my own words
 

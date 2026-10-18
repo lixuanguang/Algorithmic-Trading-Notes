@@ -10,7 +10,7 @@ Pathway outcome, from the guide: estimate a price-impact model from executions, 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 15 October 2026 by liquidity and impact review (`notes/source-review-index.md`). The entries were checked against Webster's handbook (`wide-webster-price-impact`, a required reading of this pathway) and against Bouchaud, Bonart, Donier and Gould (`catalogue-0528`, on no route). That is source checking, not study of the readings. Gatheral (`catalogue-0501`) was not consulted and is cited only through Webster. In market-impact models review three required readings were read in open versions for source checking: `alpha-almgren` (author preprint of December 2000), `wide-bouchaud-propagator` (arXiv cond-mat/0307332v2) and `wide-bacry-life-cycle` (arXiv preprint of December 2014); their journal versions and pagination were not checked. In impact estimation review `wide-almgren-direct-impact` was read in the authors' preprint of 10 May 2005; `wide-toth-square-root` remains unread.
+Not mastered and not consolidated: no dates in `notes/log.md`. This note was opened on 15 October 2026 by liquidity and impact review (`notes/source-review-index.md`), which wrote three entries on price impact into the new canonical chapter `compendium/execution-trading-costs/`. The entries were checked against Webster's handbook (`wide-webster-price-impact`, a required reading of this pathway) and against Bouchaud, Bonart, Donier and Gould (`catalogue-0528`, on no route). That is source checking, not study of the readings. Gatheral (`catalogue-0501`) was not consulted and is cited only through Webster. In market-impact models review three required readings were read in open versions for source checking: `alpha-almgren` (author preprint of December 2000), `wide-bouchaud-propagator` (arXiv cond-mat/0307332v2) and `wide-bacry-life-cycle` (arXiv preprint of December 2014); their journal versions and pagination were not checked. In impact estimation review `wide-almgren-direct-impact` was read in the authors' preprint of 10 May 2005; `wide-toth-square-root` remains unread.
 
 ## Outcome in my own words
 
@@ -33,7 +33,7 @@ Written in market-impact models / source review / optimal execution / high-frequ
 - `ev:square-root-impact`: the square-root law of metaorder impact, its range and conditions (`catalogue-0528`; confirmed in `wide-bacry-life-cycle`).
 - `meth:post-execution-impact-profile`: Bacry et al.'s debiasing for later metaorders and index decomposition of post-execution prices.
 
-Changed in market-impact models review: `def:price-impact` (model families from the Almgren–Chriss original; the three meanings of "temporary impact"; mechanical and informational views of permanent impact) and `mod:propagator`.
+Changed in market-impact models review: `def:price-impact` (model families from the Almgren–Chriss original; the three meanings of "temporary impact"; mechanical and informational views of permanent impact) and `mod:propagator` (the 2004 original read; kernel shapes and the fine balance; order splitting as the source of sign memory).
 
 Written in impact estimation / source review / optimal execution / high-frequency strategies reviews:
 

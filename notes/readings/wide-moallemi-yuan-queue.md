@@ -35,7 +35,7 @@ Prepared on 2026-10-16 by dealer models and information review from source check
 
 ## Entries
 
-dealer models and information review: `res:queue-position-value`.
+dealer models and information review: `res:queue-position-value` (owned by `hft-market-design`; the paper contradicts the claim that queues are thin).
 
 ## Open questions
 

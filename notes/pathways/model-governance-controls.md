@@ -30,12 +30,12 @@ Verification partly checked 2026-10-15, stability draft; human review outstandin
 
 Written in model risk and contagion / source review / optimal execution / high-frequency strategies reviews, from Narang's chapter "Risks Inherent to Quant Strategies" (`s7-narang`, third edition, 2024, not a reading of this pathway):
 
-- `def:quant-strategy-risk-sources`: model risk (inapplicability, misspecification, implementation errors), regime change and exogenous shocks, kept apart from funding contagion (`funding-crowding`) and operational failure.
+- `def:quant-strategy-risk-sources`: model risk (inapplicability, misspecification, implementation errors), regime change and exogenous shocks, kept apart from funding contagion (`funding-crowding`) and operational failure; discretionary overrides qualified by separating ad hoc intervention outside the validated design, in effect an unvalidated model change, from approved and tested contingency responses (de-risking rules, limits, kill switches), which are part of the design.
 - `meth:quant-strategy-monitoring`: exposure, profit-and-loss (including how money is made and hit rate), execution and systems monitors as early warnings; execution-algorithm indicators left to the decision-support entry of `execution-trading-costs` (see below).
 
 Changed in the model risk and contagion review follow-up, 2026-10-15: `def:quant-strategy-risk-sources` no longer calls every override an unvalidated model change; operational controls are described as mitigating failure, not guaranteeing its prevention; and the five causes are presented as overlapping questions rather than exclusive categories.
 
-Both verification partly checked 2026-10-15, stability draft; human review outstanding.
+Both verification partly checked 2026-10-15, stability draft; human review outstanding. The contagion material is owned by `funding-crowding` (its entry is listed below, under related entries).
 
 Written in systematic-investing architecture / source review / optimal execution / high-frequency strategies reviews, from López de Prado (`alpha-afml`, 2018, chap. 1, pp. 5-9)
 

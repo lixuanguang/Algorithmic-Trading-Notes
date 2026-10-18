@@ -39,7 +39,7 @@ Use `\begin{qf<type>}[Title]\label{<prefix>:<name>}` and the matching end comman
 
 Keep explanations, assumptions, evidence dates and substantive caveats in the entry. Keep verification diaries, study progress and edit history in `notes/`; do not print Status blocks or keyword dumps. See [the compendium conventions](compendium/README.md).
 
-Name files and functions for their subject or operation. Store figures beside their chapter and use paths relative to `compendium/`. The source archive in `notes/artefacts/` contains historical text and derivations; it is not compiled into the reference.
+Name files and functions for their subject or operation. Store figures beside their chapter and use paths relative to `compendium/`. `notes/artefacts/` holds derivations, numerical checks, protocols and research outputs; it is not compiled into the reference.
 
 ## Update the guide
 

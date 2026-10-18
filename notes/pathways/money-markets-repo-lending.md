@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price short-term cash and collateral financing,
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by securities lending and synthetic shorts review (`notes/source-review-index.md`). The entries come from source checking against Harris (`alpha-harris`, chap. 7), `al-duffie` in its September 2001 working paper, `al-icma` and `al-isla` as retrieved, Regulation SHO on eCFR (October 2026) and Hu–Black's working paper. That is not study of the readings, and no checkpoint was attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by securities lending and synthetic shorts review (`notes/source-review-index.md`). The entries' subject is the lending market itself, which this pathway's outcome and readings cover. The entries come from source checking against Harris (`alpha-harris`, chap. 7), `al-duffie` in its September 2001 working paper, `al-icma` and `al-isla` as retrieved, Regulation SHO on eCFR (October 2026) and Hu–Black's working paper. That is not study of the readings, and no checkpoint was attempted.
 
 ## Outcome in my own words
 

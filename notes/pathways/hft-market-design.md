@@ -32,16 +32,18 @@ All three: verification partly checked 2026-10-15, stability draft; human review
 
 Changed in systematic-investing architecture / source review / optimal execution / high-frequency strategies reviews:
 
-- `def:hft-strategies`: Narang's fast alpha (chap. 15, pp. 291-293) and footprints (chap. 7).
+- `def:hft-strategies`: Narang's fast alpha (chap. 15, pp. 291-293) and footprints (chap. 7); a machine-learning claim and an "HFT shark strategy", neither in Narang's third edition, kept as historical descriptions: "front-run" read against Narang's fiduciary definition (Appendix, pp. 312-314) and FINRA Rule 5270, the profit not riskless.
+
+Partly checked 2026-10-15, draft.
 
 Changed in the systematic-investing architecture review follow-up, 2026-10-15: `def:hft-strategies`' Currency field records FINRA Rule 5270 as the one current rule checked.
 
 Written in dealer models and information / source review / optimal execution / execution control reviews:
 
-- `res:queue-position-value`: Moallemi and Yuan's static and dynamic components of queue value, the large-tick condition, the race after a price change, Table 3's front-against-back gaps (0.03 to 0.22 ticks); a reading of `market-making-lob`).
+- `res:queue-position-value`: Moallemi and Yuan's static and dynamic components of queue value, the large-tick condition, the race after a price change, Table 3's front-against-back gaps (0.03 to 0.22 ticks); the claim that queues are thin contradicted (`wide-moallemi-yuan-queue`, June 2017 revision, read in part; a reading of `market-making-lob`).
 - `mod:make-take-fee-speed-race`: Lehalle and Laruelle's app. A.2, summarising Foucault, Kadan and Kandel; eq. (A.4) re-derived as the trade-maximising fee split and checked against finite-population equilibria; printed slips recorded; $\bar\mu$ and $\bar\tau$ are sums, not averages.
-- `mod:depth-overflow-flash-crash`: Lehalle and Laruelle's toy model (app.
-- `ev:may-2010-flash-crash`: the CFTC and SEC staff findings of 30 September 2010 (executive summary), compared with Lehalle and Laruelle's account.
+- `mod:depth-overflow-flash-crash`: Lehalle and Laruelle's toy model (app. A.5); the time term resolved: the hot-potato $t$ counts rounds, the overflow approximation bounded, and (A.14) follows only if the overflow $R$, not the rate $r$, drives impact (derived and simulated); the remedies and a control list.
+- `ev:may-2010-flash-crash`: the CFTC and SEC staff findings of 30 September 2010 (executive summary), compared with Lehalle and Laruelle's account; the case study and propagation channels checked against them.
 
 Changed in dealer models and information review: `def:hft-strategies` (trade counts as an HFT proxy, Lehalle and Laruelle pp. 20--21 and 170--171, against the report's volume warning). Fast liquidity provision is part of `mod:make-take-fee-speed-race`. All partly checked 2026-10-16, draft; human review outstanding. Checks: `notes/artefacts/execution-market-making/dealer-queue-information-checks.py`.
 
@@ -57,7 +59,7 @@ Second source follow-up, 2026-10-16 (source verification, not study or human rev
 
 Cross-referenced, not owned here: `def:order-anticipation`, `def:bluffing-manipulation`, `def:arbitrage`, `def:spread-measures`, `mod:glosten-milgrom` (`execution-market-making` and `market-making-lob`); `def:smart-order-routing` (`market-structure-execution-quality`).
 
-Changed in market design and liquidity / source review / optimal execution / execution control reviews: `def:hft-strategies` and `res:hft-spread-investor-cost`. Partly checked 2026-10-16, draft; human review outstanding.
+Changed in market design and liquidity / source review / optimal execution / execution control reviews: `def:hft-strategies` (Lehalle and Laruelle's high-frequency liquidity bridges and role blurring, Introduction pp. 5--6 and 22; identification markers recorded) and `res:hft-spread-investor-cost` (caveats recorded as restatements). Partly checked 2026-10-16, draft; human review outstanding.
 
 ## Entry backlog
 

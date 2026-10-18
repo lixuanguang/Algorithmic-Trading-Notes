@@ -10,7 +10,7 @@ Pathway outcome, from the guide: price a CFD or equity total return swap from it
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by securities lending and synthetic shorts review (`notes/source-review-index.md`). Hull was not available. That is not study of the readings, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by securities lending and synthetic shorts review (`notes/source-review-index.md`). The entry comes from Harris (2002), Hu–Black's working paper and an own derivation checked numerically; Hull was not available. That is not study of the readings, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 

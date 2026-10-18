@@ -10,7 +10,7 @@ Pathway outcome, from the guide: trace how margin, leverage, funding runs and cr
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. The entry concerns crowded positions, cross-collateralisation, volatility targeting and forced exits, which is this pathway's outcome. The entry comes from source checking against `s7-narang` (third edition, 2024), which is not a reading of this pathway. None of the pathway's readings has been read, and the checkpoint was not attempted.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by model risk and contagion review (`notes/source-review-records.md`). The entry concerns crowded positions, cross-collateralisation, volatility targeting and forced exits, which is this pathway's outcome. The entry comes from source checking against `s7-narang` (third edition, 2024), which is not a reading of this pathway. None of the pathway's readings has been read, and the checkpoint was not attempted.
 
 ## Outcome in my own words
 

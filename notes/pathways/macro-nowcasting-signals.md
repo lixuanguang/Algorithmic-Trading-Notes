@@ -31,7 +31,7 @@ All: verification partly checked 2026-10-16, stability draft; human review outst
 
 ## Source verification after macro markets and pricing review
 
-macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:bls-ces-scope` resolved; `data:demographic-projections-current` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
+macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:bls-ces-scope` resolved (CES scope from the BLS Handbook of Methods and CES FAQ: nonprofits are in scope, the other listed exclusions are right; release typically on the third Friday after the reference week); `data:demographic-projections-current` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
 
 Second macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:demographic-projections-current` resolved (UN World Population Prospects 2024, medium variant, five-year age groups: 15-64 and 35-69 peak years for the thirteen Table 12.2 countries, with several moved by decades; the Census Bureau's International Database API now requires a key). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review second follow-up*.
 

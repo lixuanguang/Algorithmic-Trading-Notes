@@ -24,7 +24,7 @@ Not attempted.
 
 Written in systematic-investing architecture / source review / optimal execution / high-frequency strategies reviews:
 
-- `def:quant-strategy-components`: Narang's alpha, risk and transaction cost models feeding portfolio construction, which interacts with execution, with data and research around them (chap. 2, pp. 16-19).
+- `def:quant-strategy-components`: Narang's alpha, risk and transaction cost models feeding portfolio construction, which interacts with execution, with data and research around them (chap. 2, pp. 16-19); the diagram, in this chapter's figures, has the return arrow of his Exhibit 2.1.
 - `def:alpha-model-taxonomy`: alpha as skill in timing selection and sizing; theory-driven against data-driven; Narang's eight theory-driven classes by input; the trend follower's return-to-downside claim restored to its subject; carry kept apart from value as interpretation.
 - `meth:alpha-strategy-specification`: forecast target, horizon, bet structure, universe, model specification, conditioning variables and run frequency; forecast strength tied to size only through calibration and the portfolio decision; Narang's claim that machine learning tests specifications "without overfitting" not adopted.
 

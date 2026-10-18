@@ -7,7 +7,7 @@ read:
 status: draft
 ---
 
-Prepared on 2026-10-16 by financial data and labels review from source checks, not from study: the headings that need your own reading are left empty. the book is cited in the compendium's preface. No route checked here names it as a required reading.
+Prepared on 2026-10-16 by financial data and labels review from source checks, not from study: the headings that need your own reading are left empty. Sec. 1.4 is the source of five data definitions (reference data, market data feed, binned data, granular intraday activity, fundamental and other data) used in the entries; the book is cited in the compendium's preface. No route checked here names it as a required reading.
 
 source verification (2026-10-17) (source checks, not study): the 13F, 13D and Form 3/4 remarks on p. 43 were compared with the rules in force (`data:holdings-insider-filing-lags`); the 13D ten-day deadline predates the 2024 amendments and the 13F test counts section 13(f) securities, not assets.
 

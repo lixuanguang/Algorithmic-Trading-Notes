@@ -10,7 +10,7 @@ Pathway outcome, from the guide: construct a constrained portfolio from noisy fo
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. The overview's outcome makes costs explicit and testable in a portfolio, but its goal for constrained portfolios "with factor risk models, shrinkage and costs" names this pathway. The entry comes from source checking against `s7-narang` (third edition, 2024). That is source checking, not study: no reading has been studied, and the checkpoint was not attempted. financial data and labels review (16 October 2026) added material from López de Prado's data-structures chapter, checked against `alpha-afml`, which is not a reading of this pathway.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by transaction-cost models review (`notes/source-review-records.md`). The overview's outcome makes costs explicit and testable in a portfolio, but its goal for constrained portfolios "with factor risk models, shrinkage and costs" names this pathway. The entry comes from source checking against `s7-narang` (third edition, 2024), which is not a reading of this pathway. Portfolio construction review checked Narang's chap. 6 and read one of the pathway's readings, Boyd et al. (`wide-boyd-markowitz-seventy`, authors' version of 5 January 2024, selected sections), for method mechanics. That is source checking, not study: no reading has been studied, and the checkpoint was not attempted. financial data and labels review (16 October 2026) added material from López de Prado's data-structures chapter, checked against `alpha-afml`, which is not a reading of this pathway.
 
 ## Outcome in my own words
 
@@ -44,7 +44,7 @@ All three new entries partly checked 2026-10-15, draft; human review outstanding
 
 Written in risk models / source review / optimal execution / high-frequency strategies reviews, from Narang's chap. 4, "Risk Models" (`s7-narang`, third edition, pp. 71-84), with Boyd et al. secs. 3.3 and 4.2:
 
-- `mod:factor-risk-model`: risk as an unforecast exposure and the risk model as an input to the portfolio decision, not the decision; the factor model $r=Ff+\epsilon$ with $\Sigma=F\Sigma_fF^\top+D$ and its assumptions; diversification of residual risk under stated correlation conditions (computed; corrected in the risk models review follow-up); economic against PCA factors, whose labels are after-the-fact; exposure limits and neutrality, with zero covariance kept apart from zero exposure (computed); "unintended" not the same as "uncompensated"; updating not evidence of better forecasts.
+- `mod:factor-risk-model`: risk as an unforecast exposure and the risk model as an input to the portfolio decision, not the decision; the factor model $r=Ff+\epsilon$ with $\Sigma=F\Sigma_fF^\top+D$ and its assumptions; diversification of residual risk under stated correlation conditions (computed; corrected in the risk models review follow-up); economic against PCA factors, whose labels are after-the-fact; exposure limits and neutrality, with zero covariance kept apart from zero exposure (computed); a market, size, value and momentum list, not in Narang's chapter, read as roles that depend on the strategy; "unintended" not the same as "uncompensated"; updating not evidence of better forecasts.
 - Merged into `mod:mean-variance-portfolio-optimisation`: hard limits against penalties, with Boyd et al.'s softening (a penalty replaces a limit; mandated limits stay hard); limit levels from theory or data; where limits apply; volatility and dispersion read as parts of one covariance model, with Narang's dispersion inference and VaR description not adopted.
 
 Changed in the risk models review follow-up, 2026-10-15: `mod:factor-risk-model` now treats a diagonal residual covariance as sufficient, not necessary, for residual diversification (constant equicorrelation leaves a floor; correlation within disjoint pairs gives $0.108/n$ and still diversifies); the CVX-XOM pair is an approximate hedge that Narang says "substantially eliminated" market risk, exact only with equal betas; and his rule is quoted as no expectation of being compensated *sufficiently*, not of earning nothing.
@@ -53,13 +53,13 @@ Both partly checked 2026-10-15, draft; human review outstanding.
 
 Written in financial data and labels / source review / optimal execution / execution control reviews:
 
-- `mod:pca-risk-distribution-weights`: López de Prado's weights that deliver a chosen distribution of risk across principal components (`alpha-afml`, chap. 2, sec. 2.4.2, pp. 35-36).
+- `mod:pca-risk-distribution-weights`: López de Prado's weights that deliver a chosen distribution of risk across principal components (`alpha-afml`, chap. 2, sec. 2.4.2, pp. 35-36), with two formula slips corrected, the positive-eigenvalue requirement, the sign indeterminacy ($2^k$ allocations per risk distribution, $k$ the components given risk, when eigenvalues are distinct) and the estimation-error caveat for the smallest eigenvalues.
 
 Partly checked 2026-10-16, draft; human review outstanding. Checks: `afml-checks.py`.
 
 method validation (2026-10-17):
 
-- `mod:black-litterman`: equilibrium returns, views and the posterior mean, with numerical checks. Partly checked 2026-10-17, draft.
+- `mod:black-litterman`: equilibrium returns, views and the posterior mean, with numerical checks; a claim that it adjusts correlations corrected. Partly checked 2026-10-17, draft.
 - `meth:portfolio-covariance-estimation`: linear and nonlinear shrinkage of large covariance matrices, with an own simulation. Partly checked 2026-10-17, draft.
 
 Written in empirical extensions (2026-10-17) (source verification and bounded checks, not study or human review):
@@ -80,7 +80,7 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 ## Related entries owned elsewhere
 
-Cross-referenced, not owned here: `def:transaction-costs` and `meth:transaction-cost-analysis`; `mod:almgren-chriss-execution` (`execution-trading-costs`); `ev:square-root-impact` and `meth:almgren-impact-estimation` (`price-impact-execution`; the empirical shape of costs, not changed);
+Cross-referenced, not owned here: `def:transaction-costs` and `meth:transaction-cost-analysis` (`execution-trading-costs`; the cost components are in the first, listed in that note); `mod:almgren-chriss-execution` (`execution-trading-costs`); `ev:square-root-impact` and `meth:almgren-impact-estimation` (`price-impact-execution`; the empirical shape of costs, not changed); `pit:backtest-cost-short-assumptions` (`backtest-inference`; the effect of misestimated costs, not changed); from portfolio construction review, `pit:parameter-overfitting` and `meth:backtest-evaluation-diagnostics` (`backtest-inference`) and `def:common-investor-contagion` (`funding-crowding`), cross-referenced and not changed; from risk models review, `def:quant-strategy-risk-sources` (`model-governance-controls`), cross-referenced and not changed, and the stub `meth:var-es-estimation-methods` in `risk-tail-systemic`, which holds this pathway's statistical-methods item.
 
 ## Entry backlog
 

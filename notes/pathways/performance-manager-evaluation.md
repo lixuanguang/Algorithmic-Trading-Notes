@@ -10,7 +10,7 @@ Pathway outcome, from the guide: attribute returns, adjust for factor exposure, 
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by transaction-cost analysis review (`notes/source-review-index.md`). The entry comes from source checking against Harris (`alpha-harris`, chap. 22), not from this pathway's readings. That is not study.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by transaction-cost analysis review (`notes/source-review-index.md`). Its topics (performance measurement, risk-adjusted excess return, selection and timing, smoothed returns) evaluate managers, not executions, and this pathway's outcome names factor adjustment and smoothing. The entry comes from source checking against Harris (`alpha-harris`, chap. 22), not from this pathway's readings. That is not study.
 
 ## Outcome in my own words
 
@@ -30,7 +30,7 @@ Verification partly checked 2026-10-15, stability draft; human review outstandin
 
 Written in derivatives and hedging / source review / optimal execution / high-frequency strategies reviews:
 
-- `def:return-measures`: GIPS 2020 definitions of time- and money-weighted returns, external cash flows, gross and net of fees; cumulative, geometric-mean and annualised returns; IRR existence and multiple roots; real and leveraged returns. formulas derived and checked numerically.
+- `def:return-measures`: GIPS 2020 definitions of time- and money-weighted returns, external cash flows, gross and net of fees; cumulative, geometric-mean and annualised returns; IRR existence and multiple roots; real and leveraged returns; a malformed TWR root and an unexplained "risk" factor in the real return corrected; formulas derived and checked numerically.
 
 Partly checked 2026-10-15, draft; human review outstanding.
 
@@ -56,4 +56,4 @@ method validation (2026-10-17) (audit repairs and a source-review coverage; sour
 
 ## Questions carried forward
 
-- Harris's realised alpha omits the risk-free rate and uses concurrent betas. Which does the pathway's checkpoint (Carhart alphas) need, and how should smoothing be corrected (`wide-getmansky-lo-makarov`, unread)?
+- Harris's realised alpha omits the risk-free rate and uses concurrent betas; the regression form is Jensen's alpha. Which does the pathway's checkpoint (Carhart alphas) need, and how should smoothing be corrected (`wide-getmansky-lo-makarov`, unread)?

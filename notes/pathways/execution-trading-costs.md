@@ -10,7 +10,7 @@ Overview outcome, from the guide: plan the execution of an equity order, a futur
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by optimal execution review (`notes/source-review-index.md`). execution benchmarks review added the execution-benchmark entries: the overview's outcome and checkpoint ask for realised implementation shortfall against arrival price, and its first reading is Perold's paper. execution algorithms review added the execution-algorithms entries: how an algorithm pursues its benchmark, how a large order is exposed and routed, and how portfolios are traded, which is the outcome's planning of a venue, mechanism and schedule. transaction-cost analysis review added the transaction-cost entries: measuring and splitting realised shortfall is the outcome's last clause; best execution and broker conflicts are owned by `market-structure-execution-quality`, and manager performance by `performance-manager-evaluation`. The entries come from source checking against Lehalle and Laruelle (`alpha-laruelle`, on no route), the Almgren–Chriss author preprint of December 2000 (`alpha-almgren`, selected passages), Harris (`alpha-harris`) and Kissell (`s7-kissellscience`, on no route). Perold's paper (`wide-perold-shortfall`) was not available and has not been read. That is not study of the readings.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by optimal execution review (`notes/source-review-index.md`) and extended by execution benchmarks / transaction-cost analysis reviews: the overview's outcome asks for a schedule and an expected cost with its uncertainty from a stated impact model, and `alpha-almgren` is one of its readings. execution benchmarks review added the execution-benchmark entries: the overview's outcome and checkpoint ask for realised implementation shortfall against arrival price, and its first reading is Perold's paper. execution algorithms review added the execution-algorithms entries: how an algorithm pursues its benchmark, how a large order is exposed and routed, and how portfolios are traded, which is the outcome's planning of a venue, mechanism and schedule. transaction-cost analysis review added the transaction-cost entries: measuring and splitting realised shortfall is the outcome's last clause; best execution and broker conflicts are owned by `market-structure-execution-quality`, and manager performance by `performance-manager-evaluation`. The entries come from source checking against Lehalle and Laruelle (`alpha-laruelle`, on no route), the Almgren–Chriss author preprint of December 2000 (`alpha-almgren`, selected passages), Harris (`alpha-harris`) and Kissell (`s7-kissellscience`, on no route). Perold's paper (`wide-perold-shortfall`) was not available and has not been read. That is not study of the readings.
 
 ## Outcome in my own words
 
@@ -54,7 +54,7 @@ All thirteen: verification partly checked 2026-10-15, stability draft; human rev
 Written in trading infrastructure / source review / optimal execution / high-frequency strategies reviews:
 
 - `def:automated-trading-architecture`: Lehalle and Laruelle's architecture (Figure 3.1) and the inputs of trading tools: market data with fast analytics, two-way venue connections, historical data with recorded messages and context, and models with an accuracy check.
-- Merged: indicator publication into `meth:execution-decision-support`.
+- Merged: indicator publication into `meth:execution-decision-support` (pp. 200–202; the book calls trading algorithms "stateless agents").
 
 Both partly checked 2026-10-15, draft. The operational controls and the floor-against-automated comparison are owned by `model-governance-controls` and `execution-market-making` and are not listed here.
 
@@ -76,9 +76,11 @@ Changed in the transaction-cost models review follow-up, 2026-10-15: `def:transa
 
 Changed in systematic-investing architecture / source review / optimal execution / high-frequency strategies reviews:
 
-- `def:order-exposure-decisions`: Narang's execution-algorithm choices (aggressive against passive, side-dependent; rebates and inverted fees; signal strength and strategy type; the inside-spread middle ground; micro price; hidden orders and icebergs; order sizing; footprints), chap. 7, pp. 127-137.
+- `def:order-exposure-decisions`: Narang's execution-algorithm choices (aggressive against passive, side-dependent; rebates and inverted fees; signal strength and strategy type; the inside-spread middle ground; micro price; hidden orders and icebergs; order sizing; footprints), chap. 7, pp. 127-137; cancel-and-replace without intent to execute kept as an unresolved pitfall, with the U.S. futures spoofing clause (7 U.S.C. 6c(a)(5)(C)).
 - `def:portfolio-trading`: Narang's portfolio bid (p. 128).
 - `def:automated-trading-architecture`: Narang's DMA, colocation, FIX and hardware (pp. 138-141); sponsored access referred to Rule 15c3-5.
+
+Partly checked 2026-10-15, draft.
 
 Changed in the systematic-investing architecture review follow-up, 2026-10-15: `def:order-exposure-decisions` no longer says hidden orders "reveal nothing"; they remove the pre-trade display, while executions and pinging (SEC 2010 release, p. 47, n. 69) still leak information. Its Currency field and that of `def:automated-trading-architecture` now date the 2024 U.S. Code passage and Narang's 2024 account.
 

@@ -2,7 +2,7 @@
 key: exp-fx-algos
 pathways: [fx-dealer-market-making, execution-trading-costs]
 version: BIS Markets Committee, "FX execution algorithms and market functioning", report of a study group chaired by Andréa M Maechler, October 2020 (Markets Committee Papers 13); official PDF from bis.org, downloaded 2026-10-15 with a generic header; text layer; printed page = PDF page - 6
-sections: pp. 5, 11-13, 21-24, 27-28, 43
+sections: pp. 5, 11-13, 21-24, 27-28, 43 (checked for FX market structure review)
 read:
 status: draft
 ---

@@ -24,7 +24,7 @@ Not attempted.
 
 Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
-- `def:us-dollar-dxy-sdr`: the dollar's share of turnover and reserves (2013), the dollar index weights, the SDR basket as of 2022.
+- `def:us-dollar-dxy-sdr`: the dollar's share of turnover and reserves (2013), the dollar index weights, the SDR basket as of 2022, and FX's three roles in macro.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 

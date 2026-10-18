@@ -24,7 +24,7 @@ Not attempted.
 
 Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
-- `def:global-macro-strategy`: global macro as Gliner defines it: discretionary, systematic, high-frequency and CTA approaches; directional, relative-value and thematic trades; the four product groups; multi-asset expression of a view.
+- `def:global-macro-strategy`: global macro as Gliner defines it: discretionary, systematic, high-frequency and CTA approaches; directional, relative-value and thematic trades; the four product groups; multi-asset expression of a view; unsourced "structural reasons" for the strategy kept as hypotheses.
 - `ev:global-macro-crisis-performance`: Gliner's index record (Barclays Global Macro Index 2002--2012, DJCS 1995--2013) and conditional correlation with equities, with the limits of hedge-fund index data.
 - `meth:macro-position-sizing-risk`: Turtle-style volatility units (N is an average true range, not a standard deviation), 1:3 risk/reward, gap risk, P&L-contingent VaR utilisation, stress tests, performance ratios and correlation against beta.
 - `meth:macro-practitioner-frameworks`: Drobny's interviewees with attributions corrected (anonymous currency manager, Andres Drobny, Porter, Rogers) and Porter's "90 percent" quote restored.

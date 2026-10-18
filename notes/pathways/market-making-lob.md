@@ -10,7 +10,7 @@ Pathway outcome, from the guide: derive inventory-aware quotes, model queue dyna
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. They are supplemental models; of the pathway's required readings they touch only `s6-stoikov`, and the checkpoint has not been attempted. A third slice, the same day. A fourth slice, also on 15 October 2026. A fifth slice moved the entries that serve the section overview route to its new note, `execution-market-making.md`. That is source checking, not study of the readings.
+Not mastered and not consolidated: no dates in `notes/log.md`. On 14 October 2026 the format pilot (`notes/source-review-index.md`) wrote the entries below as a test of the entry format. They are supplemental models; of the pathway's required readings they touch only `s6-stoikov`, and the checkpoint has not been attempted. On 15 October 2026 dealer-information models review added Glosten–Milgrom, from its 1983 working paper (`glosten-milgrom-1983`) rather than the journal version `s6-glosten`, and Harris's account of dealer inventory and quoting. Spread and inventory models review, the same day, added spread decomposition and inventory models, checked against Harris and Hasbrouck (`s6-hasbrouck`, a required reading of the section overview route, not of this pathway) and O'Hara's account of Ho–Stoll. Volatility and liquidity review, also on 15 October 2026, added the volatility, bubble-and-crash and spread–volatility entries, checked against Harris, Hasbrouck and Lehalle and Laruelle (`alpha-laruelle`), and assigned the flash-crash and systemic material to `hft-market-design`. Information and price discovery review moved the entries that serve the section overview route to its new note, `execution-market-making.md`. That is source checking, not study of the readings.
 
 ## Outcome in my own words
 
@@ -38,16 +38,16 @@ Not attempted.
 
 - `mod:inventory-based-quotes`: Stoll's CARA reservation quotes (Hasbrouck's version) and the Ho–Stoll properties as O'Hara reports them; the original papers not consulted.
 
-Changed in spread and inventory models review: `res:adverse-selection-spread-component`, `def:dealer-inventory-risk` (inventory costs and the inventory premium) and `meth:dealer-quote-adjustment` (cross-references only).
+Changed in spread and inventory models review: `res:adverse-selection-spread-component` (now also the total spread, Figure 14-1, the uninformed-traders lesson, and a correction of a "twice the loss" claim; title changed, label kept), `def:dealer-inventory-risk` (inventory costs and the inventory premium) and `meth:dealer-quote-adjustment` (cross-references only).
 
-The first six: verification partly checked 2026-10-14, stability draft. The next six: partly checked 2026-10-15, draft. The last: partly checked 2026-10-15 (spread and inventory models review), draft. `mod:kyle-single-auction` was changed on 2026-10-15: the `crypto-cartea` errata confirm its p. 33 misprint. Human review outstanding for all thirteen.
+The first six: verification partly checked 2026-10-14, stability draft. The next six: partly checked 2026-10-15, draft. The last: partly checked 2026-10-15 (spread and inventory models review), draft. `mod:kyle-single-auction` was changed on 2026-10-15: the `crypto-cartea` errata confirm its p. 33 misprint. Human review outstanding for all thirteen. Full derivations of the Grossman--Miller, Kyle and static limit-order models: `notes/artefacts/market-making-lob/model-derivations.tex`.
 
 Moved on 2026-10-15 (information and price discovery review) to the note for the section overview route, `execution-market-making.md`: the five spread-measurement entries of spread and inventory models review and the four volatility entries of volatility and liquidity review, which serve that route more than this pathway and were listed here only because it had no note.
 
 Written in order books and order flow / source review / optimal execution / execution control reviews:
 
 - `def:queue-imbalance`: Bouchaud et al.'s $I$ and $QI=2I-1$; INTC and CSCO, 2015.
-- `mod:queue-reactive-intensities`: the Poisson baseline, Huang--Lehalle--Rosenbaum conditioning as Lehalle and Laruelle report it, the arrival--departure ratio, mean reversion and the reset.
+- `mod:queue-reactive-intensities`: the Poisson baseline, Huang--Lehalle--Rosenbaum conditioning as Lehalle and Laruelle report it, the arrival--departure ratio, mean reversion and the reset; the latency boundary as interpretation.
 - `mod:hawkes-order-flow`: linear Hawkes processes with their conditions (non-negative causal kernels, norm or spectral radius below 1), parameterisations, inhibition only through a non-linear link, and calibrations with their samples; from Lehalle and Laruelle, Bouchaud et al. and `wide-bacry-hawkes` (a required reading, read in its arXiv version 2 for the topic review; not studied).
 
 All three: partly checked 2026-10-16, draft; human review outstanding. Checks: `notes/artefacts/market-simulation/order-flow-checks.py`. The point-process definitions of the same file are owned by `market-simulation`.

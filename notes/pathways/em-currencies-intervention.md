@@ -24,7 +24,7 @@ Not attempted.
 
 Written in macro markets and pricing / source review / optimal execution / execution control reviews:
 
-- `def:currency-regimes-intervention`: Gliner's 2013 regime grouping, sterilised and unsterilised intervention, the impossible trinity.
+- `def:currency-regimes-intervention`: Gliner's 2013 regime grouping, sterilised and unsterilised intervention, the impossible trinity, and standard intervention arguments kept as hypotheses.
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 

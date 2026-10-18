@@ -42,6 +42,6 @@ Prepared on 2026-10-16 by order books and order flow review from source checks, 
 
 ## Open questions
 
-- The fits are contemporaneous.
+- The fits are contemporaneous; forecasting use was not tested in the passages read.
 
 ## Retrieval cards

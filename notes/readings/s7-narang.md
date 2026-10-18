@@ -7,7 +7,7 @@ read:
 status: draft
 ---
 
-Prepared on 2026-10-15 by backtest evaluation review from source checks, not from study: the headings that need your own reading are left empty. which edition they followed is not recorded, but their wording and order match this edition's chapter 9.
+Prepared on 2026-10-15 by backtest evaluation review from source checks, not from study: the headings that need your own reading are left empty.
 
 ## Question and claim
 
@@ -20,7 +20,7 @@ Prepared on 2026-10-15 by backtest evaluation review from source checks, not fro
 ## Key results
 
 - Scientific method: observe, theorise, deduce consequences, test by attempted falsification; at best, enough confidence to risk capital; research must continue because markets change (sec. 9.1, pp. 161-163).
-- Four sources of ideas: market observation, academic literature (and other sciences).
+- Four sources of ideas: market observation, academic literature (and other sciences), migration of researchers, discretionary traders' lessons (sec. 9.2, pp. 163-165).
 - Diagnostics on a daily S&P 500 equity-risk-premium strategy, June 1982 to December 2000: 746% cumulative, 12.1% a year before costs; volatility 21.2%; worst drawdown -39.7%; R² 0.0085; zero signal 65% of days, 19% wins, 16% losses; IR 0.57, Sterling 0.87, Calmar 0.31, Omega 1.26; one-day delay raises the total to 870% (12.9% a year) (sec. 9.3.2, pp. 168-176).
 - Correction 2026-10-15 (backtest evaluation review follow-up): the S&P strategy is not always in the market. Its signal reads a higher stock earnings yield than the 10-year Treasury yield as long and a lower one as short (p. 168), but it trades only when the opportunity seems attractive enough, with a zero signal on 65% of days (p. 173); the adjustment and the threshold are not stated. Calmar (0.31) and Omega (1.26) are reported as positive, so the drawdown and the sum of negative returns are used as magnitudes, although his wording divides by negative numbers (pp. 173-174).
 - Correction 2026-10-15 (model risk and contagion review follow-up): his printed inputs give Calmar $12.1/39.7\approx0.3048$, which rounds to 0.30, not his reported 0.31 (pp. 173-174); the difference is not explained in the text. In the Pulte Homes passage he calls the episode "an interesting illustration of the quadratic nature of market impact" (p. 206); aggregate crisis-period returns and volume do not identify a metaorder impact exponent, so it is not evidence for or against any exponent.

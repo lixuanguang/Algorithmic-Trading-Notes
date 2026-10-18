@@ -1,11 +1,13 @@
 """Numerical checks for res:synthetic-short-put-call (securities lending and synthetic shorts review follow-up, 2026-10-15).
 
-Run from the repository root:  python3 notes/artefacts/synthetic-equity-cfd-trs/synthetic_short_checks.py
+Run from the repository root:  uv run python notes/artefacts/synthetic-equity-cfd-trs/synthetic_short_checks.py
 Standard library only. Each check computes the quantity by a route independent of the
 closed form it is compared with, and the script exits non-zero if a check fails.
 """
-from math import erf, exp, log, pi, sqrt
+
+# standard library imports
 import sys
+from math import erf, exp, log, pi, sqrt
 
 TOL = 1e-6
 failures = []
@@ -22,13 +24,15 @@ def check(name, got, want, tol=TOL):
 K = 95.0
 print("1. Terminal cash flows (K = 95): put, -call, bond paying K, total")
 for ST in (60.0, 95.0, 100.0, 140.0):
-    put = K - ST if ST < K else 0.0          # long put pays only below the strike
-    call = ST - K if ST > K else 0.0         # short call owes only above the strike
+    put = K - ST if ST < K else 0.0  # long put pays only below the strike
+    call = ST - K if ST > K else 0.0  # short call owes only above the strike
     package = put - call
-    with_long_bond = package + K             # Harris's wording: plus a long bond paying K
-    with_short_bond = package - K            # package plus a short bond (borrowing) repaying K
-    print(f"   S_T={ST:6.1f}: put {put:6.1f}, call {-call:6.1f}, "
-          f"put-call {package:6.1f}, +bond {with_long_bond:6.1f}, -bond {with_short_bond:6.1f}")
+    with_long_bond = package + K  # Harris's wording: plus a long bond paying K
+    with_short_bond = package - K  # package plus a short bond (borrowing) repaying K
+    print(
+        f"   S_T={ST:6.1f}: put {put:6.1f}, call {-call:6.1f}, "
+        f"put-call {package:6.1f}, +bond {with_long_bond:6.1f}, -bond {with_short_bond:6.1f}"
+    )
     check(f"   put-call = K - S_T at {ST}", package, K - ST)
     check(f"   put-call-bond = -S_T at {ST}", with_short_bond, -ST)
     check(f"   put-call+bond = 2K - S_T at {ST}", with_long_bond, 2 * K - ST)
@@ -40,8 +44,10 @@ def bs(S, K, r, q, s, T):
     N = lambda x: 0.5 * (1 + erf(x / sqrt(2)))
     d1 = (log(S / K) + (r - q + 0.5 * s * s) * T) / (s * sqrt(T))
     d2 = d1 - s * sqrt(T)
-    return (S * exp(-q * T) * N(d1) - K * exp(-r * T) * N(d2),
-            K * exp(-r * T) * N(-d2) - S * exp(-q * T) * N(-d1))
+    return (
+        S * exp(-q * T) * N(d1) - K * exp(-r * T) * N(d2),
+        K * exp(-r * T) * N(-d2) - S * exp(-q * T) * N(-d1),
+    )
 
 
 def by_quadrature(S, K, r, q, s, T, n=200000, zmax=10.0):
@@ -65,7 +71,9 @@ F = S0 * exp((r - q) * T)
 print(f"   Black-Scholes C={c_bs:.4f} P={p_bs:.4f} P-C={p_bs - c_bs:.4f}; F={F:.4f}")
 check("   call, quadrature vs closed form", c_q, c_bs, 1e-4)
 check("   put, quadrature vs closed form", p_q, p_bs, 1e-4)
-check("   P-C (quadrature) = K e^-rT - S0 e^-qT", p_q - c_q, K * exp(-r * T) - S0 * exp(-q * T), 1e-4)
+check(
+    "   P-C (quadrature) = K e^-rT - S0 e^-qT", p_q - c_q, K * exp(-r * T) - S0 * exp(-q * T), 1e-4
+)
 check("   P-C = e^-rT (K - F)", p_bs - c_bs, exp(-r * T) * (K - F))
 
 
@@ -84,16 +92,25 @@ def account(start, rate, T, days=365):
 print("3. Rebate comparison, q = 0, S0=100, K=95, r=5%, sigma=25%, T=1")
 c0, p0 = bs(S0, K, r, 0.0, s, T)
 premium = p0 - c0
-print(f"   q=0 values C={c0:.4f} P={p0:.4f} P-C={premium:.4f} = K e^-rT - S0 = {K * exp(-r * T) - S0:.4f}")
+print(
+    f"   q=0 values C={c0:.4f} P={p0:.4f} P-C={premium:.4f} = K e^-rT - S0 = {K * exp(-r * T) - S0:.4f}"
+)
 for rb in (0.05, 0.03, -0.01):
     for ST in (80.0, 100.0, 120.0):
         short_sale = account(S0, rb, T) - ST
         package = (K - ST) - account(premium, r, T)
-        check(f"   short sale, r_b={rb:+.2f}, S_T={ST}: S0 e^(r_b T) - S_T", short_sale, S0 * exp(rb * T) - ST)
+        check(
+            f"   short sale, r_b={rb:+.2f}, S_T={ST}: S0 e^(r_b T) - S_T",
+            short_sale,
+            S0 * exp(rb * T) - ST,
+        )
         check(f"   package, S_T={ST}: S0 e^(rT) - S_T", package, S0 * exp(r * T) - ST)
     gap = ((K - 100.0) - account(premium, r, T)) - (account(S0, rb, T) - 100.0)
-    check(f"   r_b={rb:+.2f}: package minus short sale = S0 (e^rT - e^(r_b T))", gap,
-          S0 * (exp(r * T) - exp(rb * T)))
+    check(
+        f"   r_b={rb:+.2f}: package minus short sale = S0 (e^rT - e^(r_b T))",
+        gap,
+        S0 * (exp(r * T) - exp(rb * T)),
+    )
 
 if failures:
     print(f"{len(failures)} check(s) failed")

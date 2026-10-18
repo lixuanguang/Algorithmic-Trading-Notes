@@ -20,42 +20,70 @@ Inference repair (derivatives and empirical validation (2026-10-17), after the r
   t statistic is fx_ppp_oos_test.panel_nw_t (sum within origin month, Bartlett over h-1 calendar months; h lags as a
   sensitivity). Pooling weights (each currency-month 1/N), forecasts, OOS R^2 and the carry portfolio (already one
   observation per month) are unchanged.
-Run: python3 fx_carry_test.py <folder with the FRED csv files>  (numpy). Writes fx_carry_monthly.csv.
+Run: uv run python fx_carry_test.py <folder with the FRED csv files>  (numpy). Writes fx_carry_monthly.csv.
 """
+
+# standard library imports
 import csv
 import math
 import os
 import sys
 
+# third party library imports
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+# third party library imports
 import fx_ppp_oos_test as v2  # noqa: E402
 
 START, FIRST_FC = (1985, 1), (1995, 1)
 
 
 def main(src):
-    us = v2.load(src, 'IR3TIB01USM156N')
+    us = v2.load(src, "IR3TIB01USM156N")
     spot, rate = {}, {}
     for c, (sid, inv, _cid, _q, rid) in v2.CCY.items():
         sp = v2.load(src, sid)
         spot[c] = {t: (-math.log(v) if inv else math.log(v)) for t, v in sp.items()}
         rate[c] = v2.load(src, rid)
-    x = {c: {t: rate[c][v2.add(t, -1)] - us[v2.add(t, -1)] for t in spot[c]
-             if v2.add(t, -1) in rate[c] and v2.add(t, -1) in us and t >= START} for c in v2.CCY}
-    with open(os.path.join(HERE, 'fx_carry_monthly.csv'), 'w', newline='') as f:
+    x = {
+        c: {
+            t: rate[c][v2.add(t, -1)] - us[v2.add(t, -1)]
+            for t in spot[c]
+            if v2.add(t, -1) in rate[c] and v2.add(t, -1) in us and t >= START
+        }
+        for c in v2.CCY
+    }
+    with open(os.path.join(HERE, "fx_carry_monthly.csv"), "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(['ccy', 'month', 's_ln_usd_per_fx', 'x_diff_prev_month', 'i_fx_month', 'i_us_month'])
+        w.writerow(
+            ["ccy", "month", "s_ln_usd_per_fx", "x_diff_prev_month", "i_fx_month", "i_us_month"]
+        )
         for c in v2.CCY:
             for t in sorted(x[c]):
-                w.writerow([c, f'{t[0]}-{t[1]:02d}', f'{spot[c][t]:.6f}', f'{x[c][t]:.4f}',
-                            rate[c].get(t, ''), us.get(t, '')])
-    print('Samples (predictor available): ' + '; '.join(f'{c} {min(x[c])}-{max(x[c])}' for c in v2.CCY if x[c]))
+                w.writerow(
+                    [
+                        c,
+                        f"{t[0]}-{t[1]:02d}",
+                        f"{spot[c][t]:.6f}",
+                        f"{x[c][t]:.4f}",
+                        rate[c].get(t, ""),
+                        us.get(t, ""),
+                    ]
+                )
+    print(
+        "Samples (predictor available): "
+        + "; ".join(f"{c} {min(x[c])}-{max(x[c])}" for c in v2.CCY if x[c])
+    )
     stat_ok = False
     for h in (1, 12):
-        pairs = [(t, c, x[c][t], spot[c][v2.add(t, h)] - spot[c][t]) for c in v2.CCY for t in x[c] if v2.add(t, h) in spot[c]]
+        pairs = [
+            (t, c, x[c][t], spot[c][v2.add(t, h)] - spot[c][t])
+            for c in v2.CCY
+            for t in x[c]
+            if v2.add(t, h) in spot[c]
+        ]
         pairs.sort()
         months = sorted({p[0] for p in pairs if p[0] >= FIRST_FC})
         a_all, f_all, o_all, by_c = [], [], [], {}
@@ -70,24 +98,35 @@ def main(src):
             for p in pairs:
                 if p[0] == t:
                     fc = b[0] + b[1] * p[2]
-                    f_all.append(fc); a_all.append(p[3]); o_all.append(t)
+                    f_all.append(fc)
+                    a_all.append(p[3])
+                    o_all.append(t)
                     by_c.setdefault(p[1], []).append((fc, p[3]))
         a, f = np.array(a_all), np.array(f_all)
-        r2 = 1 - ((a - f) ** 2).sum() / (a ** 2).sum()
-        cw = a ** 2 - ((a - f) ** 2 - f ** 2)
+        r2 = 1 - ((a - f) ** 2).sum() / (a**2).sum()
+        cw = a**2 - ((a - f) ** 2 - f**2)
         cwt = v2.panel_nw_t(list(zip(o_all, cw)), max(h - 1, 0))
         A = np.column_stack([np.ones(len(pairs)), [p[2] for p in pairs]])
         bfull = np.linalg.lstsq(A, np.array([p[3] for p in pairs]), rcond=None)[0]
-        print(f'\n== h = {h}: pooled expanding OLS of ds on x, forecasts {months[0]} onward, n = {len(a)}')
-        print(f'  full-sample pooled slope b = {bfull[1]:+.5f} per percentage point (UIP benchmark {-h/1200:+.5f}); '
-              f'last expanding b = {last_b[1]:+.5f}')
+        print(
+            f"\n== h = {h}: pooled expanding OLS of ds on x, forecasts {months[0]} onward, n = {len(a)}"
+        )
+        print(
+            f"  full-sample pooled slope b = {bfull[1]:+.5f} per percentage point (UIP benchmark {-h / 1200:+.5f}); "
+            f"last expanding b = {last_b[1]:+.5f}"
+        )
         for c in v2.CCY:
             if c in by_c:
-                ff = np.array([q[0] for q in by_c[c]]); aa = np.array([q[1] for q in by_c[c]])
-                print(f'  {c}: n = {len(aa)}, OOS R^2 vs RW = {(1 - ((aa - ff) ** 2).sum() / (aa ** 2).sum())*100:+.2f}%')
-        print(f'  pooled OOS R^2 vs RW = {r2*100:+.2f}%, Clark-West t = {cwt:+.2f} (scores summed by forecast-origin '
-              f'month, Newey-West {max(h-1,0)} calendar-month lags); sensitivity with {h} lags: '
-              f'{v2.panel_nw_t(list(zip(o_all, cw)), h):+.2f}; superseded row-stacked t: {v2.nw_t(cw, max(h-1,0)):+.2f}')
+                ff = np.array([q[0] for q in by_c[c]])
+                aa = np.array([q[1] for q in by_c[c]])
+                print(
+                    f"  {c}: n = {len(aa)}, OOS R^2 vs RW = {(1 - ((aa - ff) ** 2).sum() / (aa**2).sum()) * 100:+.2f}%"
+                )
+        print(
+            f"  pooled OOS R^2 vs RW = {r2 * 100:+.2f}%, Clark-West t = {cwt:+.2f} (scores summed by forecast-origin "
+            f"month, Newey-West {max(h - 1, 0)} calendar-month lags); sensitivity with {h} lags: "
+            f"{v2.panel_nw_t(list(zip(o_all, cw)), h):+.2f}; superseded row-stacked t: {v2.nw_t(cw, max(h - 1, 0)):+.2f}"
+        )
         if h == 12:
             stat_ok = r2 > 0 and cwt > 1.65
     # economic: median-split portfolio
@@ -98,26 +137,39 @@ def main(src):
         if len(av) < 6:
             continue
         med = float(np.median([x[c][t] for c in av]))
-        lo = [c for c in av if x[c][t] > med]; sh = [c for c in av if x[c][t] < med]
+        lo = [c for c in av if x[c][t] > med]
+        sh = [c for c in av if x[c][t] < med]
         if not lo or not sh:
             continue
         wts = {**{c: 1 / len(lo) for c in lo}, **{c: -1 / len(sh) for c in sh}}
         turn = sum(abs(wts.get(c, 0) - prev.get(c, 0)) for c in set(wts) | set(prev))
         prev = wts
-        g = sum(wv * (spot[c][t1] - spot[c][t] + (rate[c][t] - us[t]) / 1200) for c, wv in wts.items())
-        rets.append((g, g - 0.0005 * turn)); used.append(t)
-    gr = np.array([r[0] for r in rets]); nt = np.array([r[1] for r in rets])
+        g = sum(
+            wv * (spot[c][t1] - spot[c][t] + (rate[c][t] - us[t]) / 1200) for c, wv in wts.items()
+        )
+        rets.append((g, g - 0.0005 * turn))
+        used.append(t)
+    gr = np.array([r[0] for r in rets])
+    nt = np.array([r[1] for r in rets])
     tn = v2.nw_t(nt, 12)
-    sp_only = None
-    print(f'\n== Carry portfolio (median split on x), {used[0]} to {used[-1]}, n = {len(nt)} months')
-    print(f'  gross: mean {gr.mean()*1200:+.2f}%/yr; net: mean {nt.mean()*1200:+.2f}%/yr, vol {nt.std(ddof=1)*math.sqrt(12)*100:.2f}%/yr, '
-          f'Sharpe {nt.mean()/nt.std(ddof=1)*math.sqrt(12):+.2f}, NW t = {tn:+.2f}')
+    print(
+        f"\n== Carry portfolio (median split on x), {used[0]} to {used[-1]}, n = {len(nt)} months"
+    )
+    print(
+        f"  gross: mean {gr.mean() * 1200:+.2f}%/yr; net: mean {nt.mean() * 1200:+.2f}%/yr, vol {nt.std(ddof=1) * math.sqrt(12) * 100:.2f}%/yr, "
+        f"Sharpe {nt.mean() / nt.std(ddof=1) * math.sqrt(12):+.2f}, NW t = {tn:+.2f}"
+    )
     worst = np.argsort(nt)[:3]
-    print('  three worst months: ' + ', '.join(f'{used[i][0]}-{used[i][1]:02d} {nt[i]*100:+.2f}%' for i in sorted(worst)))
+    print(
+        "  three worst months: "
+        + ", ".join(f"{used[i][0]}-{used[i][1]:02d} {nt[i] * 100:+.2f}%" for i in sorted(worst))
+    )
     econ_ok = nt.mean() > 0 and tn > 2
-    print(f'\nVerdict: statistical (h = 12) {"supported" if stat_ok else "not supported"}; '
-          f'economic (statistical portfolio) {"supported" if econ_ok else "not supported"}')
+    print(
+        f"\nVerdict: statistical (h = 12) {'supported' if stat_ok else 'not supported'}; "
+        f"economic (statistical portfolio) {'supported' if econ_ok else 'not supported'}"
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(sys.argv[1])

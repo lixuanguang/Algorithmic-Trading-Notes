@@ -1,0 +1,232 @@
+{
+ "schema_version": 1,
+ "description": "External topic outlines used as scope references. Provider, edition, level and pathway are descriptive metadata of each source, not parts of any internal identifier.",
+ "outlines": [
+  {
+   "id": "outline:7099c7688942",
+   "title": "2027 Level I Topic Outlines",
+   "provider": "CFA Institute",
+   "edition_year": 2027,
+   "level": "Level I",
+   "pathway": null,
+   "role": "scope-reference",
+   "local_path": "reading_materials/outlines/outline-7099c7688942.pdf",
+   "sha256": "7099c76889428357ffb4f562a88fe7974e71808054f02df90526c2b6102c3c01",
+   "bytes": 633918,
+   "pdf_pages": 31,
+   "modules": 102,
+   "bullets": 340,
+   "provenance": {
+    "original_filename": "2027levelitopicoutline_online.pdf",
+    "original_path": "reading_materials/curriculum_cfa/2027levelitopicoutline_online.pdf",
+    "relocated": "2026-10-18",
+    "hash_verified_before_and_after_move": true
+   },
+   "url": null,
+   "url_status": "not verified; no official URL was confirmed for this copy"
+  },
+  {
+   "id": "outline:0242f4b7ba07",
+   "title": "2027 Level II Topic Outlines",
+   "provider": "CFA Institute",
+   "edition_year": 2027,
+   "level": "Level II",
+   "pathway": null,
+   "role": "scope-reference",
+   "local_path": "reading_materials/outlines/outline-0242f4b7ba07.pdf",
+   "sha256": "0242f4b7ba0767123ac6ad9f915f9330eafbed30cb465562e72706f37fd68fee",
+   "bytes": 624070,
+   "pdf_pages": 30,
+   "modules": 51,
+   "bullets": 382,
+   "provenance": {
+    "original_filename": "2027-cfa_l2_topic_outline.pdf",
+    "original_path": "reading_materials/curriculum_cfa/2027-cfa_l2_topic_outline.pdf",
+    "relocated": "2026-10-18",
+    "hash_verified_before_and_after_move": true
+   },
+   "url": null,
+   "url_status": "not verified; no official URL was confirmed for this copy"
+  },
+  {
+   "id": "outline:2e1d62d8f585",
+   "title": "2027 Level III Core and Portfolio Management Pathway Topic Outlines",
+   "provider": "CFA Institute",
+   "edition_year": 2027,
+   "level": "Level III",
+   "pathway": "Portfolio Management",
+   "role": "scope-reference",
+   "local_path": "reading_materials/outlines/outline-2e1d62d8f585.pdf",
+   "sha256": "2e1d62d8f5855be0c11d67c8f55b0d939ecaa23d281bd48cdd77f4c5208ca65c",
+   "bytes": 264515,
+   "pdf_pages": 18,
+   "modules": 36,
+   "bullets": 247,
+   "provenance": {
+    "original_filename": "2027leveliii-portfolio-management-pathwaytopicoutline_online.pdf",
+    "original_path": "reading_materials/curriculum_cfa/2027leveliii-portfolio-management-pathwaytopicoutline_online.pdf",
+    "relocated": "2026-10-18",
+    "hash_verified_before_and_after_move": true
+   },
+   "url": null,
+   "url_status": "not verified; no official URL was confirmed for this copy",
+   "shared_core": {
+    "modules": 28,
+    "bullets": 183,
+    "pdf_pages": "1-15",
+    "pathway_pdf_pages": "16-18",
+    "note": "printed page numbering restarts at 1 where the pathway begins"
+   }
+  },
+  {
+   "id": "outline:2f25110282bf",
+   "title": "2027 Level III Core and Private Markets Pathway Topic Outlines",
+   "provider": "CFA Institute",
+   "edition_year": 2027,
+   "level": "Level III",
+   "pathway": "Private Markets",
+   "role": "scope-reference",
+   "local_path": "reading_materials/outlines/outline-2f25110282bf.pdf",
+   "sha256": "2f25110282bfb2ed02dee492e40e38369f35c44000736cd02843755b0643a689",
+   "bytes": 260626,
+   "pdf_pages": 18,
+   "modules": 35,
+   "bullets": 217,
+   "provenance": {
+    "original_filename": "2027leveliii-private-markets-pathwaytopicoutline_online.pdf",
+    "original_path": "reading_materials/curriculum_cfa/2027leveliii-private-markets-pathwaytopicoutline_online.pdf",
+    "relocated": "2026-10-18",
+    "hash_verified_before_and_after_move": true
+   },
+   "url": null,
+   "url_status": "not verified; no official URL was confirmed for this copy",
+   "shared_core": {
+    "modules": 28,
+    "bullets": 183,
+    "pdf_pages": "1-15",
+    "pathway_pdf_pages": "16-18",
+    "note": "printed page numbering restarts at 1 where the pathway begins"
+   }
+  },
+  {
+   "id": "outline:5bc9c1013387",
+   "title": "2027 Level III Core and Private Wealth Pathway Topic Outlines",
+   "provider": "CFA Institute",
+   "edition_year": 2027,
+   "level": "Level III",
+   "pathway": "Private Wealth",
+   "role": "scope-reference",
+   "local_path": "reading_materials/outlines/outline-5bc9c1013387.pdf",
+   "sha256": "5bc9c10133875c7bfdf2e4e7dd619399791a32e5a5ab5d91ac2f7da00c3c8428",
+   "bytes": 260407,
+   "pdf_pages": 18,
+   "modules": 35,
+   "bullets": 210,
+   "provenance": {
+    "original_filename": "2027leveliii-private-wealth-pathwaytopicoutline_online.pdf",
+    "original_path": "reading_materials/curriculum_cfa/2027leveliii-private-wealth-pathwaytopicoutline_online.pdf",
+    "relocated": "2026-10-18",
+    "hash_verified_before_and_after_move": true
+   },
+   "url": null,
+   "url_status": "not verified; no official URL was confirmed for this copy",
+   "shared_core": {
+    "modules": 28,
+    "bullets": 183,
+    "pdf_pages": "1-15",
+    "pathway_pdf_pages": "16-18",
+    "note": "printed page numbering restarts at 1 where the pathway begins"
+   }
+  },
+  {
+   "id": "outline:063c461ba7ab",
+   "title": "2026 Level III Core and Portfolio Management Pathway Topic Outlines",
+   "provider": "CFA Institute",
+   "edition_year": 2026,
+   "level": "Level III",
+   "pathway": "Portfolio Management",
+   "role": "historical-comparison",
+   "local_path": "reading_materials/outlines/outline-063c461ba7ab.pdf",
+   "sha256": "063c461ba7ab369b3ad4945e620b4077f28d49c893b9af76980ba9a4923a36d2",
+   "bytes": 600235,
+   "pdf_pages": 17,
+   "modules": 30,
+   "bullets": 235,
+   "provenance": {
+    "original_filename": "2026leveliii-portfolio-management-pathwaytopicoutline_online.pdf",
+    "original_path": "reading_materials/curriculum_cfa/2026leveliii-portfolio-management-pathwaytopicoutline_online.pdf",
+    "relocated": "2026-10-18",
+    "hash_verified_before_and_after_move": true
+   },
+   "url": null,
+   "url_status": "not verified; no official URL was confirmed for this copy",
+   "shared_core": {
+    "modules": 22,
+    "bullets": 171,
+    "pdf_pages": "1-14",
+    "pathway_pdf_pages": "15-17",
+    "note": "printed page numbering restarts at 1 where the pathway begins"
+   }
+  },
+  {
+   "id": "outline:b6d663443715",
+   "title": "2026 Level III Core and Private Markets Pathway Topic Outlines",
+   "provider": "CFA Institute",
+   "edition_year": 2026,
+   "level": "Level III",
+   "pathway": "Private Markets",
+   "role": "historical-comparison",
+   "local_path": "reading_materials/outlines/outline-b6d663443715.pdf",
+   "sha256": "b6d663443715f02b90e9cec34c78fa05d6eb45f7e1e8eb46f854a247ed4fab1a",
+   "bytes": 592529,
+   "pdf_pages": 17,
+   "modules": 29,
+   "bullets": 205,
+   "provenance": {
+    "original_filename": "2026leveliii-private-markets-pathwaytopicoutline_online.pdf",
+    "original_path": "reading_materials/curriculum_cfa/2026leveliii-private-markets-pathwaytopicoutline_online.pdf",
+    "relocated": "2026-10-18",
+    "hash_verified_before_and_after_move": true
+   },
+   "url": null,
+   "url_status": "not verified; no official URL was confirmed for this copy",
+   "shared_core": {
+    "modules": 22,
+    "bullets": 171,
+    "pdf_pages": "1-14",
+    "pathway_pdf_pages": "15-17",
+    "note": "printed page numbering restarts at 1 where the pathway begins"
+   }
+  },
+  {
+   "id": "outline:674aec45b29e",
+   "title": "2026 Level III Core and Private Wealth Pathway Topic Outlines",
+   "provider": "CFA Institute",
+   "edition_year": 2026,
+   "level": "Level III",
+   "pathway": "Private Wealth",
+   "role": "historical-comparison",
+   "local_path": "reading_materials/outlines/outline-674aec45b29e.pdf",
+   "sha256": "674aec45b29e7204239f654b2d907dc0193e38ff4767327e88e97bb2d775bd84",
+   "bytes": 591956,
+   "pdf_pages": 17,
+   "modules": 29,
+   "bullets": 198,
+   "provenance": {
+    "original_filename": "2026leveliii-private-wealth-pathwaytopicoutline_online.pdf",
+    "original_path": "reading_materials/curriculum_cfa/2026leveliii-private-wealth-pathwaytopicoutline_online.pdf",
+    "relocated": "2026-10-18",
+    "hash_verified_before_and_after_move": true
+   },
+   "url": null,
+   "url_status": "not verified; no official URL was confirmed for this copy",
+   "shared_core": {
+    "modules": 22,
+    "bullets": 171,
+    "pdf_pages": "1-14",
+    "pathway_pdf_pages": "15-17",
+    "note": "printed page numbering restarts at 1 where the pathway begins"
+   }
+  }
+ ]
+}

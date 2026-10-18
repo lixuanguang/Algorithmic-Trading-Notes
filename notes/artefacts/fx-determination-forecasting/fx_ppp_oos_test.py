@@ -30,27 +30,30 @@ Inference repair (derivatives and empirical validation (2026-10-17), after the r
   calendar months (h-1 lags, the protocol's lag count, now in months; h lags as a sensitivity, because 12-month changes
   of monthly-average prices overlap for h months, not h-1). Each currency-month keeps weight 1/N, so the pooled mean
   and the pooled OOS R^2 are unchanged; only the standard error changes. Forecast-origin months are kept with each score.
-Run: python3 fx_ppp_oos_test.py <folder with the FRED csv files>  (numpy only; about 2 s).
+Run: uv run python fx_ppp_oos_test.py <folder with the FRED csv files>  (numpy only; about 2 s).
 Writes fx_ppp_monthly.csv (derived panel) next to this script.
 """
+
+# standard library imports
 import csv
 import math
 import os
 import sys
 
+# third party library imports
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CCY = {  # spot id, quoted as foreign per USD?, CPI id, quarterly?, rate id
-    'JPY': ('EXJPUS', True, 'JPNCPIALLMINMEI', False, 'IR3TIB01JPM156N'),
-    'GBP': ('EXUSUK', False, 'GBRCPIALLMINMEI', False, 'IR3TIB01GBM156N'),
-    'CHF': ('EXSZUS', True, 'CHECPIALLMINMEI', False, 'IR3TIB01CHM156N'),
-    'CAD': ('EXCAUS', True, 'CANCPIALLMINMEI', False, 'IR3TIB01CAM156N'),
-    'AUD': ('EXUSAL', False, 'AUSCPIALLQINMEI', True, 'IR3TIB01AUM156N'),
-    'NZD': ('EXUSNZ', False, 'NZLCPIALLQINMEI', True, 'IR3TIB01NZM156N'),
-    'SEK': ('EXSDUS', True, 'SWECPIALLMINMEI', False, 'IR3TIB01SEM156N'),
-    'NOK': ('EXNOUS', True, 'NORCPIALLMINMEI', False, 'IR3TIB01NOM156N'),
-    'DKK': ('EXDNUS', True, 'DNKCPIALLMINMEI', False, 'IR3TIB01DKM156N'),
+    "JPY": ("EXJPUS", True, "JPNCPIALLMINMEI", False, "IR3TIB01JPM156N"),
+    "GBP": ("EXUSUK", False, "GBRCPIALLMINMEI", False, "IR3TIB01GBM156N"),
+    "CHF": ("EXSZUS", True, "CHECPIALLMINMEI", False, "IR3TIB01CHM156N"),
+    "CAD": ("EXCAUS", True, "CANCPIALLMINMEI", False, "IR3TIB01CAM156N"),
+    "AUD": ("EXUSAL", False, "AUSCPIALLQINMEI", True, "IR3TIB01AUM156N"),
+    "NZD": ("EXUSNZ", False, "NZLCPIALLQINMEI", True, "IR3TIB01NZM156N"),
+    "SEK": ("EXSDUS", True, "SWECPIALLMINMEI", False, "IR3TIB01SEM156N"),
+    "NOK": ("EXNOUS", True, "NORCPIALLMINMEI", False, "IR3TIB01NOM156N"),
+    "DKK": ("EXDNUS", True, "DNKCPIALLMINMEI", False, "IR3TIB01DKM156N"),
 }
 MONTHLY_LAG = 2
 QTR_MIN_AGE, QTR_MAX_AGE = 4, 6
@@ -59,12 +62,12 @@ START = (1985, 1)
 
 def load(src, i):
     out = {}
-    with open(os.path.join(src, i + '.csv')) as f:
+    with open(os.path.join(src, i + ".csv")) as f:
         r = csv.reader(f)
         next(r)
         for d, v in r:
-            if v not in ('', '.'):
-                y, m, _ = map(int, d.split('-'))
+            if v not in ("", "."):
+                y, m, _ = map(int, d.split("-"))
                 out[(y, m)] = float(v)
     return out
 
@@ -93,7 +96,7 @@ def known_price(cpi, t, quarterly):
 
 
 def build(src):
-    us_cpi, us_r = load(src, 'CPIAUCNS'), load(src, 'IR3TIB01USM156N')
+    us_cpi, us_r = load(src, "CPIAUCNS"), load(src, "IR3TIB01USM156N")
     spot, pred = {}, {}
     for c, (sid, inv, cid, qtr, rid) in CCY.items():
         sp, cpi, rate = load(src, sid), load(src, cid), load(src, rid)
@@ -106,15 +109,24 @@ def build(src):
                 continue
             q = spot[c][t] + math.log(kp[0]) - math.log(us_cpi[ku])
             qs.append(q)
-            rows[t] = dict(q=q, age=kp[1], z=(q - sum(qs) / len(qs)) if len(qs) >= 60 else None,
-                           i=rate.get(t), iu=us_r.get(t))
+            rows[t] = dict(
+                q=q,
+                age=kp[1],
+                z=(q - sum(qs) / len(qs)) if len(qs) >= 60 else None,
+                i=rate.get(t),
+                iu=us_r.get(t),
+            )
         pred[c] = rows
     return spot, pred
 
 
 def nw_t(x, lags):
-    x = np.asarray(x); xc = x - x.mean(); n = len(x)
-    s2 = (xc @ xc) / n + 2 * sum((1 - L / (lags + 1)) * (xc[L:] @ xc[:-L]) / n for L in range(1, lags + 1))
+    x = np.asarray(x)
+    xc = x - x.mean()
+    n = len(x)
+    s2 = (xc @ xc) / n + 2 * sum(
+        (1 - L / (lags + 1)) * (xc[L:] @ xc[:-L]) / n for L in range(1, lags + 1)
+    )
     return x.mean() / math.sqrt(s2 / n)
 
 
@@ -125,24 +137,27 @@ def panel_nw_t(rows, lags):
     with no rows count as zero on a complete monthly grid. With mu the pooled mean (every row weighted 1/N), the
     long-run variance of sum_m (S_m - n_m mu) is estimated with Bartlett weights over `lags` calendar months, and
     Var(mu) = LRV / N^2. Contemporaneous dependence across currencies is absorbed in S_m; overlap is handled by the lags.
-    With one row per month this equals nw_t."""
+    With one row per month this equals nw_t.
+    """
     by = {}
     for m, v in rows:
         s, n = by.get(m, (0.0, 0))
         by[m] = (s + v, n + 1)
     lo, hi = min(by), max(by)
     grid = [add(lo, k) for k in range(mdiff(hi, lo) + 1)]
-    S = np.array([by.get(m, (0.0, 0))[0] for m in grid]); n = np.array([by.get(m, (0.0, 0))[1] for m in grid])
-    N = n.sum(); mu = S.sum() / N
+    S = np.array([by.get(m, (0.0, 0))[0] for m in grid])
+    n = np.array([by.get(m, (0.0, 0))[1] for m in grid])
+    N = n.sum()
+    mu = S.sum() / N
     u = S - n * mu
     lrv = u @ u + 2 * sum((1 - L / (lags + 1)) * (u[L:] @ u[:-L]) for L in range(1, lags + 1))
-    return mu / math.sqrt(lrv / N ** 2)
+    return mu / math.sqrt(lrv / N**2)
 
 
 def forecasts(spot, pred, c, h):
     """Expanding-OLS forecasts for currency c: list of (t, forecast, actual)."""
-    ts = [t for t in sorted(pred[c]) if pred[c][t]['z'] is not None and add(t, h) in spot[c]]
-    X = {t: pred[c][t]['z'] for t in ts}
+    ts = [t for t in sorted(pred[c]) if pred[c][t]["z"] is not None and add(t, h) in spot[c]]
+    X = {t: pred[c][t]["z"] for t in ts}
     Y = {t: spot[c][add(t, h)] - spot[c][t] for t in ts}
     out = []
     for j, t in enumerate(ts):
@@ -159,46 +174,81 @@ def forecasts(spot, pred, c, h):
 
 def main(src):
     spot, pred = build(src)
-    with open(os.path.join(HERE, 'fx_ppp_monthly.csv'), 'w', newline='') as f:
+    with open(os.path.join(HERE, "fx_ppp_monthly.csv"), "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(['ccy', 'month', 's_ln_usd_per_fx', 'predictor_eligible', 'cpi_age_months', 'q_ln_real', 'z_dev', 'i_fx', 'i_us'])
+        w.writerow(
+            [
+                "ccy",
+                "month",
+                "s_ln_usd_per_fx",
+                "predictor_eligible",
+                "cpi_age_months",
+                "q_ln_real",
+                "z_dev",
+                "i_fx",
+                "i_us",
+            ]
+        )
         for c in CCY:
             for t in sorted(spot[c]):
                 r = pred[c].get(t)
-                w.writerow([c, f'{t[0]}-{t[1]:02d}', f'{spot[c][t]:.6f}', int(r is not None),
-                            '' if r is None else r['age'], '' if r is None else f"{r['q']:.6f}",
-                            '' if r is None or r['z'] is None else f"{r['z']:.6f}",
-                            '' if r is None or r['i'] is None else r['i'], '' if r is None or r['iu'] is None else r['iu']])
+                w.writerow(
+                    [
+                        c,
+                        f"{t[0]}-{t[1]:02d}",
+                        f"{spot[c][t]:.6f}",
+                        int(r is not None),
+                        "" if r is None else r["age"],
+                        "" if r is None else f"{r['q']:.6f}",
+                        "" if r is None or r["z"] is None else f"{r['z']:.6f}",
+                        "" if r is None or r["i"] is None else r["i"],
+                        "" if r is None or r["iu"] is None else r["iu"],
+                    ]
+                )
 
-    print('Samples per currency: spot range; predictor-eligible range (first z, last eligible month); CPI ages')
+    print(
+        "Samples per currency: spot range; predictor-eligible range (first z, last eligible month); CPI ages"
+    )
     for c in CCY:
-        zt = [t for t in sorted(pred[c]) if pred[c][t]['z'] is not None]
-        ages = [pred[c][t]['age'] for t in zt]
-        print(f'  {c}: spot {min(spot[c])}-{max(spot[c])}; z {zt[0]}-{zt[-1]}; age {min(ages)}-{max(ages)} months '
-              f'(mean {np.mean(ages):.1f}); spot months after the last eligible predictor: {sum(t > zt[-1] for t in spot[c])}')
+        zt = [t for t in sorted(pred[c]) if pred[c][t]["z"] is not None]
+        ages = [pred[c][t]["age"] for t in zt]
+        print(
+            f"  {c}: spot {min(spot[c])}-{max(spot[c])}; z {zt[0]}-{zt[-1]}; age {min(ages)}-{max(ages)} months "
+            f"(mean {np.mean(ages):.1f}); spot months after the last eligible predictor: {sum(t > zt[-1] for t in spot[c])}"
+        )
 
     stat_ok = False
     for h in (1, 12):
         sse_m = sse_rw = 0.0
         cw_all, bsum = [], []
-        print(f'\n== h = {h} months: expanding OLS of ds on z, forecasts from {START[0]}-{START[1]:02d}')
+        print(
+            f"\n== h = {h} months: expanding OLS of ds on z, forecasts from {START[0]}-{START[1]:02d}"
+        )
         for c in CCY:
             fc, ts, X, Y = forecasts(spot, pred, c, h)
-            f = np.array([x[1] for x in fc]); a = np.array([x[2] for x in fc])
-            r2 = 1 - ((a - f) ** 2).sum() / (a ** 2).sum()
+            f = np.array([x[1] for x in fc])
+            a = np.array([x[2] for x in fc])
+            r2 = 1 - ((a - f) ** 2).sum() / (a**2).sum()
             A = np.column_stack([np.ones(len(ts)), [X[t] for t in ts]])
             bfull = np.linalg.lstsq(A, np.array([Y[t] for t in ts]), rcond=None)[0]
             bsum.append(bfull[1])
-            print(f'  {c}: n = {len(a)} ({fc[0][0]} to {fc[-1][0]}), OOS R^2 vs RW = {r2*100:+.2f}%, full-sample b = {bfull[1]:+.4f}')
-            sse_m += ((a - f) ** 2).sum(); sse_rw += (a ** 2).sum()
-            cw_all.extend(zip([x[0] for x in fc], a ** 2 - ((a - f) ** 2 - f ** 2)))
+            print(
+                f"  {c}: n = {len(a)} ({fc[0][0]} to {fc[-1][0]}), OOS R^2 vs RW = {r2 * 100:+.2f}%, full-sample b = {bfull[1]:+.4f}"
+            )
+            sse_m += ((a - f) ** 2).sum()
+            sse_rw += (a**2).sum()
+            cw_all.extend(zip([x[0] for x in fc], a**2 - ((a - f) ** 2 - f**2)))
         lags = max(h - 1, 0)
         cwt = panel_nw_t(cw_all, lags)
         r2p = 1 - sse_m / sse_rw
-        print(f'  pooled OOS R^2 vs RW = {r2p*100:+.2f}%, Clark-West t = {cwt:+.2f} (scores summed by forecast-origin '
-              f'month, Newey-West {lags} calendar-month lags); sensitivity with {h} lags: {panel_nw_t(cw_all, h):+.2f}; '
-              f'superseded row-stacked t: {nw_t([v for _, v in cw_all], lags):+.2f}')
-        print(f'  full-sample slopes negative for {sum(b < 0 for b in bsum)} of {len(bsum)} currencies')
+        print(
+            f"  pooled OOS R^2 vs RW = {r2p * 100:+.2f}%, Clark-West t = {cwt:+.2f} (scores summed by forecast-origin "
+            f"month, Newey-West {lags} calendar-month lags); sensitivity with {h} lags: {panel_nw_t(cw_all, h):+.2f}; "
+            f"superseded row-stacked t: {nw_t([v for _, v in cw_all], lags):+.2f}"
+        )
+        print(
+            f"  full-sample slopes negative for {sum(b < 0 for b in bsum)} of {len(bsum)} currencies"
+        )
         if h == 12:
             stat_ok = r2p > 0 and cwt > 1.65
 
@@ -210,39 +260,60 @@ def main(src):
         if t < START:
             continue
         t1 = add(t, 1)
-        av = [c for c in CCY if t in pred[c] and pred[c][t]['z'] is not None and t1 in spot[c]]
+        av = [c for c in CCY if t in pred[c] and pred[c][t]["z"] is not None and t1 in spot[c]]
         if len(av) < 6:
             continue
-        av.sort(key=lambda c: pred[c][t]['z'])
+        av.sort(key=lambda c: pred[c][t]["z"])
         wts = {c: 1 / 3 for c in av[:3]}
         wts.update({c: -1 / 3 for c in av[-3:]})
         turn = sum(abs(wts.get(c, 0) - prev_w.get(c, 0)) for c in set(wts) | set(prev_w))
         prev_w = wts
         ds = sum(wv * (spot[c][t1] - spot[c][t]) for c, wv in wts.items())
-        spot_r.append(ds); costs.append(0.0005 * turn); used.append(t)
-        if all(pred[c][t]['i'] is not None and pred[c][t]['iu'] is not None for c in wts):
-            exc.append((ds + sum(wv * (pred[c][t]['i'] - pred[c][t]['iu']) / 1200 for c, wv in wts.items()), 0.0005 * turn))
+        spot_r.append(ds)
+        costs.append(0.0005 * turn)
+        used.append(t)
+        if all(pred[c][t]["i"] is not None and pred[c][t]["iu"] is not None for c in wts):
+            exc.append(
+                (
+                    ds
+                    + sum(
+                        wv * (pred[c][t]["i"] - pred[c][t]["iu"]) / 1200 for c, wv in wts.items()
+                    ),
+                    0.0005 * turn,
+                )
+            )
 
     def summ(label, x):
         x = np.array(x)
         t = nw_t(x, 12)
-        print(f'  {label}: n = {len(x)}, mean {x.mean()*1200:+.2f}%/yr, vol {x.std(ddof=1)*math.sqrt(12)*100:.2f}%/yr, '
-              f'Sharpe {x.mean()/x.std(ddof=1)*math.sqrt(12):+.2f}, NW t = {t:+.2f}')
+        print(
+            f"  {label}: n = {len(x)}, mean {x.mean() * 1200:+.2f}%/yr, vol {x.std(ddof=1) * math.sqrt(12) * 100:.2f}%/yr, "
+            f"Sharpe {x.mean() / x.std(ddof=1) * math.sqrt(12):+.2f}, NW t = {t:+.2f}"
+        )
         return x.mean(), t
 
-    print(f'\n== Value portfolio on monthly-average rates (long 3 cheapest, short 3 dearest by z), {used[0]} to {used[-1]}')
-    print('   A statistical portfolio return on averaged prices with interbank-rate carry: not an executable result.')
-    summ('spot, gross', spot_r)
-    summ('spot, net of 5 bp turnover cost', np.array(spot_r) - np.array(costs))
-    ex = np.array([e for e, _ in exc]); exn = np.array([e - c for e, c in exc])
-    summ('with interest differential, gross', ex)
-    m, tt = summ('with interest differential, net of costs', exn)
-    print(f'  mean turnover cost {np.mean(costs)*1200:.2f}%/yr; breakeven cost per unit turnover '
-          f'{np.mean(spot_r)/np.mean(np.array(costs)/0.0005)*1e4:.1f} bp (spot)')
+    print(
+        f"\n== Value portfolio on monthly-average rates (long 3 cheapest, short 3 dearest by z), {used[0]} to {used[-1]}"
+    )
+    print(
+        "   A statistical portfolio return on averaged prices with interbank-rate carry: not an executable result."
+    )
+    summ("spot, gross", spot_r)
+    summ("spot, net of 5 bp turnover cost", np.array(spot_r) - np.array(costs))
+    ex = np.array([e for e, _ in exc])
+    exn = np.array([e - c for e, c in exc])
+    summ("with interest differential, gross", ex)
+    m, tt = summ("with interest differential, net of costs", exn)
+    print(
+        f"  mean turnover cost {np.mean(costs) * 1200:.2f}%/yr; breakeven cost per unit turnover "
+        f"{np.mean(spot_r) / np.mean(np.array(costs) / 0.0005) * 1e4:.1f} bp (spot)"
+    )
     econ_ok = m > 0 and tt > 2
-    print(f'\nVerdict: statistical (h = 12) {"supported" if stat_ok else "not supported"}; '
-          f'economic (statistical portfolio) {"supported" if econ_ok else "not supported"}')
+    print(
+        f"\nVerdict: statistical (h = 12) {'supported' if stat_ok else 'not supported'}; "
+        f"economic (statistical portfolio) {'supported' if econ_ok else 'not supported'}"
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(sys.argv[1])

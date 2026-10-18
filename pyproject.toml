@@ -1,0 +1,65 @@
+[project]
+name = "algorithmic-trading-notes"
+version = "0.1.0"
+description = "Structural checkers and numerical evidence scripts for the compendium"
+readme = "README.md"
+requires-python = "==3.14.*"
+classifiers = ["Private :: Do Not Upload"]
+# Numerical check scripts in notes/artefacts/ (numpy, scipy; statsmodels for one ML check).
+dependencies = [
+    "numpy==2.4.6",
+    "scipy==1.18.1",
+    "statsmodels==0.15.0",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit==4.6.2",
+    "pre-commit-hooks==6.0.0",
+    "pytest==9.1.1",
+    "ruff==0.16.5",
+]
+# Empirical reruns that read retained spreadsheets; not needed for `make check`.
+empirical = [
+    "openpyxl==3.1.5",
+    "xlrd==2.0.2",
+]
+
+[tool.uv]
+required-version = "==0.12.7"
+package = false
+default-groups = ["dev"]
+# Transitive versions kept equal to the other research repository where they overlap.
+constraint-dependencies = ["pandas==3.0.5"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+src = ["tools"]
+# Preserved historical runs are kept exactly as they were executed.
+extend-exclude = ["notes/artefacts/**/superseded-*", "guide", "reading_materials", "reading materials"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "RUF", "D", "ANN401"]
+
+[tool.ruff.lint.per-file-ignores]
+# Evidence scripts record one computation each and are documented by their module
+# docstring and the source-review records, not as a library API. Their long data,
+# formula and printed-result lines, source-notation variable names (l, I, O), named
+# lambdas for numeric functions and math-symbol first words (mu, lambda, t) are kept.
+"notes/artefacts/**/*.py" = ["E501", "D1", "D205", "D403", "E731", "E741"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.isort.import-heading]
+standard-library = "standard library imports"
+third-party = "third party library imports"
+first-party = "project library imports"
+local-folder = "project library imports"
+
+[tool.pytest.ini_options]
+testpaths = ["tools"]
+python_files = ["test_*.py"]
+addopts = "--strict-config --strict-markers"
+filterwarnings = ["error"]

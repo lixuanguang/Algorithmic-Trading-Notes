@@ -50,6 +50,10 @@ method validation (2026-10-17):
 
 method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `meth:gips-composite-presentation` resolved as a new entry in `portfolio-construction-risk/performance-evaluation.tex` (GIPS for Firms 2020, provisions 3.A.1-3.A.11, 4.A.1-4.A.3, 4.C.1-4.C.5, 5.A.1). The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.
 
+Coverage pilot (2026-10-18) (source checks, not study): `def:return-measures` reviewed against `objective:compare-time-and-money-weighted-returns` in `notes/coverage/objectives.json`; GIPS glossary and provisions reread at their cited pages, Harris chap. 22, pp. 446-447, read as an independent source, and every worked figure recomputed. No text change was needed. The record is in `notes/source-review-records.md`, *Coverage inventory and pilot integrations*.
+
+First foundation slice (2026-10-18) (source checks, not study): `def:return-measures` extended with holding-period, price and total returns (OpenStax *Principles of Finance 2e*, sec. 15.1; FT Wilshire methodology, sec. 1.1, p. 3) and the arithmetic against geometric mean; the TWR and MWR text is unchanged. Examples in `notes/artefacts/time-value-returns/time-value-return-checks.py`.
+
 ## Entry backlog
 
 ## What changed in my view or practice

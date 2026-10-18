@@ -1,0 +1,4 @@
+# Keep uv-generated resolutions reviewable without treating them as authored code.
+**/uv.lock linguist-generated=true
+# The compiled compendium is a build output kept in git; review the LaTeX sources instead.
+compendium/compendium.pdf binary linguist-generated=true

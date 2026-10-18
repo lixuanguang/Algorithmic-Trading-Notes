@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.out
+institutional_quantitative_finance_learning_guide.aux

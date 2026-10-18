@@ -16,11 +16,14 @@ Checks (Monte Carlo):
      tail frequencies near the normal ones at T = 10 000;
   2. the three-point law {-sqrt(3), 0, +sqrt(3)} with probabilities {1/6, 2/3, 1/6} (variance 1, skewness 0,
      kurtosis 3, not normal), shifted to SR = 0.5: T Var(SR_hat) near 1 + 0.5^2/2 = 1.125.
-Run: python3 sharpe-zero-check.py   (numpy; about 10 s). Exits non-zero on failure.
+Run: uv run python sharpe-zero-check.py   (numpy; about 10 s). Exits non-zero on failure.
 """
+
+# standard library imports
 import math
 import sys
 
+# third party library imports
 import numpy as np
 
 rng = np.random.default_rng(31)
@@ -42,25 +45,26 @@ def root_t_sr(draw, T, reps, sr_true=0.0, chunk=250):
     return np.concatenate(out)
 
 
-print('== 1. centred Student-t3, SR = 0')
+print("== 1. centred Student-t3, SR = 0")
 T, reps = 10000, 4000
 z = root_t_sr(lambda size: rng.standard_t(3, size), T, reps)
 v = z.var()
 tail = np.mean(np.abs(z) > 1.96)
-check('Var(sqrt(T) SR_hat) within 0.08 of 1', abs(v - 1) < 0.08, f'{v:.3f}')
-check('P(|sqrt(T) SR_hat| > 1.96) within 0.012 of 0.05', abs(tail - 0.05) < 0.012, f'{tail:.4f}')
+check("Var(sqrt(T) SR_hat) within 0.08 of 1", abs(v - 1) < 0.08, f"{v:.3f}")
+check("P(|sqrt(T) SR_hat| > 1.96) within 0.012 of 0.05", abs(tail - 0.05) < 0.012, f"{tail:.4f}")
 
-print('== 2. a non-normal law with skewness 0 and kurtosis 3 gives 1 + SR^2/2')
+print("== 2. a non-normal law with skewness 0 and kurtosis 3 gives 1 + SR^2/2")
 vals = np.array([-math.sqrt(3), 0.0, math.sqrt(3)])
 probs = np.array([1 / 6, 2 / 3, 1 / 6])
-m2 = float((probs * vals ** 2).sum()); m4 = float((probs * vals ** 4).sum())
-check('kurtosis of the three-point law is 3', abs(m4 / m2 ** 2 - 3) < 1e-12, f'{m4 / m2 ** 2:.3f}')
+m2 = float((probs * vals**2).sum())
+m4 = float((probs * vals**4).sum())
+check("kurtosis of the three-point law is 3", abs(m4 / m2**2 - 3) < 1e-12, f"{m4 / m2**2:.3f}")
 sr = 0.5
 T2, reps2 = 2000, 8000
 y = root_t_sr(lambda size: vals[rng.choice(3, size=size, p=probs)] + sr, T2, reps2, sr_true=sr)
 v2 = y.var()
-check('T Var(SR_hat) within 0.06 of 1.125', abs(v2 - 1.125) < 0.06, f'{v2:.3f}')
+check("T Var(SR_hat) within 0.06 of 1.125", abs(v2 - 1.125) < 0.06, f"{v2:.3f}")
 if fails:
-    print('\nFAILED:', fails)
+    print("\nFAILED:", fails)
     sys.exit(1)
-print('\nall checks passed')
+print("\nall checks passed")

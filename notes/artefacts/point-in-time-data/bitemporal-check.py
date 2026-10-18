@@ -7,8 +7,10 @@ carries an actual-time range and a record-time range, and record history is appe
 2. the factor "as known now" is the corrected one;
 3. before the record date of the first entry, no split is known even for actual dates after the split;
 4. the correction appends rows and closes record ranges; no earlier row is overwritten.
-Synthetic data only. Run: python3 bitemporal-check.py (standard library). Exits non-zero on failure.
+Synthetic data only. Run: uv run python bitemporal-check.py (standard library). Exits non-zero on failure.
 """
+
+# standard library imports
 import datetime as dt
 import sys
 
@@ -56,10 +58,10 @@ def same(name, got, want):
         fails.append(name)
 
 
-same('as known on 2026-03-10, factor for 2026-03-05', factor_at(D(2026, 3, 5), D(2026, 3, 10)), 2.0)
-same('as known now, factor for 2026-03-05', factor_at(D(2026, 3, 5), D(2026, 10, 17)), 1.5)
-same('as known on 2026-03-02, factor for 2026-03-05', factor_at(D(2026, 3, 5), D(2026, 3, 2)), 1.0)
-same('closed rows survive the correction unchanged', all(r in rows for r in snapshot), True)
+same("as known on 2026-03-10, factor for 2026-03-05", factor_at(D(2026, 3, 5), D(2026, 3, 10)), 2.0)
+same("as known now, factor for 2026-03-05", factor_at(D(2026, 3, 5), D(2026, 10, 17)), 1.5)
+same("as known on 2026-03-02, factor for 2026-03-05", factor_at(D(2026, 3, 5), D(2026, 3, 2)), 1.0)
+same("closed rows survive the correction unchanged", all(r in rows for r in snapshot), True)
 if fails:
     sys.exit(1)
-print('all checks passed')
+print("all checks passed")

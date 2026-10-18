@@ -1,0 +1,65 @@
+\section{Probability and distributions in finance}
+
+\begin{qfdefinition}[Moments of random variables: unconditional and conditional expectation, variance and covariance, and the laws of total expectation, variance and covariance]\label{def:conditional-moments}
+\qffield{Statement} For discrete random variables the conditional expectation $E[X\mid Y=y]=\sum_i x_iP_{X\mid Y}(x_i\mid y)$ is a function of $y$, and $E[X\mid Y]$ is the random variable that takes that value when $Y=y$; the conditional variance is $\mathrm{Var}(X\mid Y=y)=E[X^2\mid Y=y]-E[X\mid Y=y]^2$. The law of iterated expectations gives $E[X]=E\bigl[E[X\mid Y]\bigr]$ and the law of total variance $\mathrm{Var}(X)=E[\mathrm{Var}(X\mid Y)]+\mathrm{Var}(E[X\mid Y])$, so conditioning reduces variance on average \citep[sec.~5.1.5]{probability-statistics-random-processes}.
+
+\qffield{Notation} Unconditional moments of a random variable with probabilities $p_j$: $E[X]=\sum p_jx_j$, $\mathrm{Var}X=\sum p_j(x_j-EX)^2=E[X^2]-(EX)^2$, $\mathrm{Cov}(X,Z)=\sum p_j(x_j-EX)(z_j-EZ)$. Interpretation, derived from the two laws above: the law of total covariance, $\mathrm{Cov}(X,Z)=E[\mathrm{Cov}(X,Z\mid Y)]+\mathrm{Cov}(E[X\mid Y],E[Z\mid Y])$. These are \emph{population} moments of a model; sample statistics (\hyperref[def:return-sample-statistics]{location and dispersion}) estimate them from data.
+
+\qffield{Conditions} The probabilities and conditional distributions are model inputs; the decomposition is exact for the model, not evidence about markets. Expected values are probability-weighted averages, not the most likely outcome.
+
+\qffield{Practice} Example, original probability table (returns in percent):
+
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+State $Y$ & Probability & Equity $X$ & Bond $Z$ \\
+\midrule
+Boom & 0.125 & 12 & 0 \\
+Boom & 0.125 & 8 & 2 \\
+Normal & 0.25 & 6 & 2 \\
+Normal & 0.25 & 4 & 3 \\
+Recession & 0.125 & $-6$ & 6 \\
+Recession & 0.125 & $-10$ & 8 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Directly: $E[X]=3.0$, $E[Z]=3.25$, $\mathrm{Var}X=47.0$, $\mathrm{Var}Z=5.6875$, $\mathrm{Cov}(X,Z)=-16.25$, correlation $-0.994$. By state, $E[X\mid Y]$ is 10, 5 and $-8$ with probabilities 0.25, 0.5 and 0.25, and $\mathrm{Var}(X\mid Y)$ is 4, 1 and 4. Then $E[E[X\mid Y]]=3.0$ and $E[\mathrm{Var}(X\mid Y)]+\mathrm{Var}(E[X\mid Y])=2.5+44.5=47.0$: almost all the equity risk here comes from the state of the economy, not from variation within a state. Likewise $-1.25+(-15.0)=-16.25$ for the covariance.
+
+\qffield{Pitfalls} A conditional variance is not the unconditional variance with fewer data; $\mathrm{Var}(X\mid Y=y)$ can exceed $\mathrm{Var}X$ in some states, though not on average. Conditioning on information unavailable at decision time (look-ahead) gives moments no investor could have used.
+
+\qffield{See also} \hyperref[def:return-dependence]{covariance and correlation}; \hyperref[meth:bayesian-updating]{Bayesian updating}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Distributions used in finance: normal, lognormal, Student $t$, binomial and uniform, their moments and when the moments exist]\label{def:financial-distributions}
+\qffield{Statement} \emph{Normal} with location $\mu$ and scale $\sigma$: mean $\mu$, standard deviation $\sigma$, skewness 0, kurtosis 3 \citep[sec.~1.3.6.6.1]{statistical-methods-handbook}. \emph{Lognormal} with shape $\sigma$ (the standard deviation of the log) and scale $m$ (the median): mean $m\,e^{\sigma^2/2}$, mode $m\,e^{-\sigma^2}$, standard deviation $m\sqrt{e^{\sigma^2}(e^{\sigma^2}-1)}$, skewness $(w+2)\sqrt{w-1}$ and kurtosis $w^4+2w^3+3w^2-3$ with $w=e^{\sigma^2}$ (sec.~1.3.6.6.9, stated for $m=1$). \emph{Student $t$} with $\nu$ degrees of freedom: mean 0, undefined for $\nu=1$; standard deviation $\sqrt{\nu/(\nu-2)}$, undefined for $\nu=1$ or 2; skewness 0 for $\nu>3$; kurtosis $3(\nu-2)/(\nu-4)$, undefined for $\nu\le4$ (sec.~1.3.6.6.4, stated for integer $\nu$). \emph{Binomial} with $n$ trials and success probability $p$: $P(x)=\binom nx p^x(1-p)^{n-x}$, mean $np$, standard deviation $\sqrt{np(1-p)}$, skewness $(1-2p)/\sqrt{np(1-p)}$, kurtosis $3-6/n+1/(np(1-p))$ (sec.~1.3.6.6.18); with $n=1$ it is the Bernoulli distribution. \emph{Uniform} on $[A,B]$: density $1/(B-A)$, mean $(A+B)/2$, standard deviation $\sqrt{(B-A)^2/12}$, skewness 0, kurtosis $9/5$ (sec.~1.3.6.6.2).
+
+In finance: if the continuously compounded return is normal, the price is lognormal. With expected return (drift) $\mu$ and volatility $\sigma$ a year, $\ln S_T$ is normal with mean $\ln S_0+(\mu-\sigma^2/2)T$ and variance $\sigma^2T$, $E(S_T)=S_0e^{\mu T}$ and $\mathrm{var}(S_T)=S_0^2e^{2\mu T}(e^{\sigma^2T}-1)$; a lognormal variable lies between zero and infinity and its mean, median and mode differ \citep[chap.~15, sec.~15.1, pp.~339--340]{s7-hulloptions}. Short-horizon returns have heavier tails than the normal, often fitted by a Student $t$ with a tail parameter near 3 (\hyperref[ev:high-frequency-stylised-facts]{stylised facts}).
+
+\qffield{Notation} Interpretation: kurtosis here is raw; excess kurtosis subtracts 3, giving $6/(\nu-4)$ for the $t$. A $t$ variable scaled by $\sqrt{(\nu-2)/\nu}$ has unit variance for $\nu>2$, the form used to give a fat-tailed shock the same variance as a standard normal. Moment existence: for real $\nu>0$ the $k$th moment of the $t$ exists only for $k<\nu$, so the mean needs $\nu>1$, a finite variance $\nu>2$, skewness $\nu>3$ and kurtosis $\nu>4$; for $1<\nu\le2$ the variance is infinite, and for $\nu\le1$ the mean is undefined. All moments of the normal, lognormal, binomial and uniform exist. In the lognormal price model the drift $\mu$ is the expected rate of price growth; the mean log return is $\mu-\sigma^2/2$, and the mean price adds back half the log variance: $E(S_T)=S_0\exp\bigl((\mu-\sigma^2/2)T+\sigma^2T/2\bigr)$. The chi-square and $F$ distributions are treated with \hyperref[meth:hypothesis-testing]{hypothesis tests}.
+
+\qffield{Conditions} A distribution is a modelling assumption. Sample moments of any finite set of returns are finite and remain valid descriptions of those data; they do not show that the population moments exist, and where those do not exist the sample figures estimate nothing. The lognormal price model assumes constant $\mu$ and $\sigma$ (Hull, chap.~15).
+
+\qffield{Practice} Examples, original. A monthly return that is normal with mean 0.8 percent and standard deviation 4.0 percent falls below $-5$ percent with probability 7.35 percent; its 5th percentile is $0.8-1.6449\times4.0=-5.78$ percent. A price of 100 with log return normal, mean 0.05 and standard deviation 0.20 over a year, (so a drift of $0.05+0.02=0.07$) has median $100e^{0.05}=105.13$, mean $100e^{0.05+0.02}=107.25$ and mode $100e^{0.05-0.04}=101.01$, standard deviation 21.67, skewness 0.614 and kurtosis 3.678. A $t$ with 5 degrees of freedom has variance $5/3$ and excess kurtosis 6; with 10, variance 1.25 and excess kurtosis 1; with 3, a finite variance (3) but no kurtosis; with 2, no variance: its second moment truncated at $\pm10$, $\pm100$ and $\pm1{,}000$ is 3.33, 7.90 and 12.51 and keeps growing. Twelve independent months with an up-probability of 0.55 give a binomial number of up months with mean 6.6, variance 2.97, skewness $-0.058$ and kurtosis 2.837. A return equally likely anywhere between $-3$ and $+5$ percent has mean 1.0 percent and standard deviation $8/\sqrt{12}=2.31$ percent, with thinner tails than a normal (excess kurtosis $-1.2$). Each moment was also obtained by numerical integration or enumeration.
+
+\qffield{Pitfalls} Applying a normal quantile to returns with heavy tails understates extreme losses. Reading the median of a lognormal price as its mean. Treating a sample kurtosis as an estimate of a $t$ model's kurtosis when $\nu\le4$, or a sample variance as an estimate of its variance when $\nu\le2$: the figures describe the sample, but there is no finite population value to estimate. Confusing the drift with the mean log return.
+
+\qffield{See also} \hyperref[def:return-shape-statistics]{skewness and kurtosis}; \hyperref[mod:black-scholes-merton]{Black--Scholes--Merton} (lognormal prices); \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Bayesian updating of a discrete prior: prior, likelihood, normalising constant, posterior and predictive probability]\label{meth:bayesian-updating}
+\qffield{Statement} For a partition $B_1,B_2,\dots$ of the possibilities and observed data $A$, Bayes' rule gives $P(B_j\mid A)=\frac{P(A\mid B_j)P(B_j)}{\sum_iP(A\mid B_i)P(B_i)}$, the denominator being the probability of the data by the law of total probability. A rare condition with an accurate test still leaves a low posterior probability: with prevalence 1 in 10{,}000, a 99 percent true-positive and 2 percent false-positive rate, a positive result raises the probability only to about 0.0049 \citep[sec.~1.4.3]{probability-statistics-random-processes}.
+
+\qffield{Notation} Hypotheses $h_j$ with prior $\pi_j$; likelihood $L_j=P(\text{data}\mid h_j)$; evidence $E=\sum_j\pi_jL_j$; posterior $\pi_j'=\pi_jL_j/E$, which sums to one. Predictive probability of the next observation: $\sum_j\pi_j'P(\text{next}\mid h_j)$. Interpretation: with observations independent \emph{conditional on} the hypothesis, updating one at a time and normalising each time gives the same posterior as using all the data at once, in any order. They are not independent unconditionally: under the prior below, two right calls in a row have probability $0.25\times0.45^2+0.5\times0.5^2+0.25\times0.55^2=0.25125$, more than $0.5\times0.5=0.25$, because each success raises the probability of high-skill hypotheses.
+
+\qffield{Conditions} The posterior is only as good as the prior and the likelihood model; here the months are assumed independent given the up-probability, which is constant, and the true value is assumed to be one of the listed hypotheses. Interpretation: a prior concentrated on few values cannot learn values it excludes.
+
+\qffield{Practice} Example, original and synthetic, not evidence about any strategy. The monthly probability that a signal is right is 0.45, 0.50 or 0.55, with prior probabilities 0.25, 0.50 and 0.25. In 20 independent months it is right 14 times. The binomial likelihoods $\binom{20}{14}h^{14}(1-h)^6$ are 0.01498, 0.03696 and 0.07460; weighted by the priors they sum to the evidence 0.04088; the posterior is 0.0916, 0.4521 and 0.4562. The predictive probability of a right call next month rises from 0.5000 to 0.5182, well below the sample frequency of 0.70, because the prior allows nothing above 0.55. Updating month by month gives the same posterior.
+
+\qffield{Pitfalls} Omitting the denominator (the posterior then does not sum to one); confusing $P(\text{data}\mid h)$ with $P(h\mid\text{data})$; treating the sample frequency as the posterior. Choosing the prior after seeing the data.
+
+\qffield{See also} \hyperref[def:conditional-moments]{conditional moments}; \hyperref[meth:skill-luck-significance-tests]{skill against luck} (a frequentist test of the same question).
+
+\end{qfmethod}

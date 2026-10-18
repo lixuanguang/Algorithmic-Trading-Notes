@@ -1,6 +1,6 @@
 # Compendium conventions
 
-The compendium is a reference organised by subject. `compendium.tex` includes each existing `<section-key>/section.tex` in guide order; each chapter wrapper contains its heading, label and topic inputs.
+The compendium is a reference organised by subject. The ordered `\qfsections` list in `compendium.tex` is the only declaration of sections and their order; `compendium.tex` includes each existing `<section-key>/section.tex` in that order. Each chapter wrapper contains its heading, label and topic inputs. Create a wrapper together with its first substantive topic file and its overview note in `notes/pathways/`; declared sections without content need no empty chapter.
 
 ## Content
 
@@ -21,14 +21,8 @@ The document uses `extbook` at 8 pt, with Source Sans Pro text, Source Code Pro 
 From the repository root:
 
 ```sh
-python3 tools/check_compendium.py --check
-python3 -m unittest discover -s tools
+make source-check   # checkers, tests and numerical examples
+make pdf            # latexmk -lualatex -interaction=nonstopmode -halt-on-error compendium.tex
 ```
 
-Build from this directory:
-
-```sh
-latexmk -lualatex -interaction=nonstopmode -halt-on-error compendium.tex
-```
-
-The checker validates entry structure, known citation keys and locators, duplicate labels and links from pathway notes. It does not establish the truth of a claim. After layout changes, inspect rendered pages containing chapter headings, lists, tables, equations and figures, and check the LaTeX log for overfull boxes and unresolved references.
+The checker validates entry structure, known citation keys and locators, duplicate labels, links from pathway notes, the section declaration in `compendium.tex`, and that every typed entry is reachable from it through a wrapper's `\input` chain. `check_coverage.py` validates the objective and outline-crosswalk records in `notes/coverage/`; a covered objective needs mapped entries, sources with locators, entry evidence and a review record. It does not establish the truth of a claim. After layout changes, inspect rendered pages containing chapter headings, lists, tables, equations and figures, and check the LaTeX log for overfull boxes and unresolved references.

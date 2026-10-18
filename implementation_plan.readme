@@ -9,13 +9,14 @@ audit in Section 13 identified bounded content and run-command corrections and
 three foundation regression objectives; both were implemented the same day
 (Section 13.4), and a bounded correction pass on that regression slice followed
 (Section 13.5), then a second bounded correction (Section 13.6) and the
-portfolio moments and diversification slice (Section 14). No next content slice
-has been selected. Not started: the remaining `topic:linear-regression`
-objectives (multiple regression, misspecification, extensions);
-`objective:estimate-capm-regression`, which belongs to
-`topic:asset-pricing-factor-models`, not `topic:linear-regression`; the
-remaining `topic:portfolio-risk-return` objectives (efficient frontier, optimal
-portfolio, risk aversion, asset classes); the rest of Batch 2; and Batches 3-6.
+portfolio moments and diversification slice (Section 14). The guide became a
+committed copy (Section 15). The portfolio choice and asset pricing batch
+(Section 16) completed the remaining `topic:portfolio-risk-return` objectives
+and all eight `topic:asset-pricing-factor-models` objectives, including the two
+analysis-level ones, after two audit corrections. No next content slice has
+been selected. Not started: the remaining `topic:linear-regression` objectives
+(multiple regression, misspecification, extensions); the rest of Batch 2; and
+the rest of Batches 3-6.
 Editorial coverage only: nothing here records or implies learner mastery.
 Audit date: 2026-10-18, Asia/Singapore.
 Repository baseline: `dc74b55`; pinned guide: `343d145909ba5384202b50604bf5ebe7e5b6ed86`.
@@ -2066,3 +2067,110 @@ Follow-on changes:
 Earlier sections that mention the submodule or the token are historical. The
 pinned commit, the guide keys and every checker result are unchanged.
 
+## 16. Portfolio choice and asset pricing batch (executed 2026-10-18)
+
+**Scope.** Twelve objectives:
+- `topic:portfolio-risk-return`: `objective:describe-asset-class-characteristics`,
+  `objective:explain-risk-aversion-utility`, `objective:derive-efficient-frontier`
+  and `objective:select-optimal-portfolio`.
+- `topic:asset-pricing-factor-models`: `objective:explain-systematic-risk-pricing`,
+  `objective:explain-return-generating-models`, `objective:apply-capm-sml`,
+  `objective:estimate-capm-regression`, `objective:estimate-required-return-on-equity`,
+  `objective:explain-multifactor-pricing`, and the analysis-level
+  `objective:apply-arbitrage-pricing-theory` and `objective:compare-factor-model-types`.
+
+The starting state was reconciled before work began: 29 of 424 objectives and 33
+Level I items covered, 997 items unreviewed, 0 problems. The batch ran on branch
+`codex/portfolio-asset-pricing-20261018` from `2b42e4d`.
+
+**Audit corrections first.**
+- `mech:diversification-correlation` now qualifies the equal-correlation limit.
+  A fixed positive correlation leaves a positive floor; zero correlation gives
+  sigma^2/N, tending to zero; a fixed negative correlation cannot be kept as N
+  grows, because an equicorrelation matrix is valid only for
+  -1/(N-1) <= rho <= 1. Markowitz's statement is kept and attributed. Six
+  boundary checks were added to `portfolio-moments-checks.py`.
+- `notes/readings/s6-markowitz.md`: the matching-hash scan has a cover page, so
+  one-based PDF page = printed page - 75 (printed p. 81 is PDF p. 6).
+
+**Entries.** Two topic files, input from the chapter wrapper after
+`portfolio-moments`:
+- `portfolio-choice.tex`: `def:asset-class-characteristics` (with a dated
+  1928-2025 US table), `def:risk-aversion-utility`, `meth:efficient-frontier`
+  and `meth:capital-allocation-line`, with the figure
+  `figures/mean-sd-frontier.tikz`.
+- `asset-pricing-models.tex`, owned by `topic:asset-pricing-factor-models`:
+  `mech:systematic-risk-pricing`, `mod:return-generating-models`,
+  `mod:capm-sml`, `meth:capm-regression`, `meth:required-return-on-equity`,
+  `mod:multifactor-apt` and `def:factor-model-types`, with the figure
+  `figures/security-market-line.tikz`.
+
+The existing moments, diversification, mean-variance, factor-risk, performance
+and regression entries were reviewed first and are linked, not repeated.
+`mod:factor-risk-model` is mapped, with the new entry, to
+`objective:compare-factor-model-types`.
+
+**Sources read** (Section 3.5; identities, hashes and access in the reading
+notes):
+- Markowitz (1952), pp. 82-91, from page images.
+- Sharpe (1964), pp. 430-440, from page images.
+- Fama and French (2004), the whole article.
+- Ross (1976), pp. 341-348 and 352-355.
+- Huberman and Wang (2005), secs. 1-9.
+- Connor (1995), pp. 42-46.
+- Gollier, Hammitt and Treich (2013), pp. 1-5 and 13-14.
+- Damodaran's histretSP workbook (January 2026) and his implied premium for
+  1 October 2026.
+- The SEC investor guide, pp. 1-3.
+- The Treasury's 2026 par-yield file.
+
+Nine new source keys are registered in `compendium/front/sources.tex`.
+
+Access limits:
+- Pratt (1964) is paywalled, so his result is cited from the review.
+- The UBS (Dimson-Marsh-Staunton) yearbook was refused, so the table is US-only.
+- Publisher sites refused automated download, so author-hosted or filed copies
+  were used and the DOIs checked with Crossref.
+
+**Evidence.** Three scripts, found by `make examples`:
+- `notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py` (49 checks)
+  reads the retained CSV `us-asset-class-returns-1928-2025.csv`.
+- `notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py` (38 checks).
+- `portfolio-moments-checks.py` (29 checks).
+
+The checks use closed forms against SLSQP, KKT conditions, grids, numerical
+integration and two least-squares routes, and they recompute the figure
+coordinates. No random draws are used.
+
+**Layout correction.** An entry title could be stranded at the foot of a page
+because the `\label` after it inserts a whatsit after `\nopagebreak`. This
+happened on printed p. 75 and on three earlier pages. `house.tex` now repeats
+the `\nopagebreak` at the first field; a scan of all pages finds no stranded
+title.
+
+**Coverage.** The 23 mapped outline items were reviewed individually against
+their pages and promoted:
+- Level I: `m008:b02`-`b03`, `m010:b04`, `m050:b01`-`b02`, `m087:b01`-`b03` and
+  `b07`, and `m088:b01`-`b08`.
+- Level II: `m040:b01`-`b06`.
+
+All 12 objectives are covered (editorial coverage, not mastery).
+
+**Validation (2026-10-18).**
+
+| Check | Result |
+| --- | --- |
+| `make check` | exit 0; lock, lint and format pass; both checkers 0 problems (287 entries, 65 pathway notes); 36 tests; 59 numerical scripts; outline hashes match; 41 of 424 objectives covered; 50 Level I and 6 Level II items covered; 974 of 1,030 items unreviewed |
+| `pre-commit run --all-files` | all hooks pass after end-of-file-fixer removed a trailing blank line from this file |
+| PDF | 209 pages; no overfull boxes or undefined references; the existing underfull paragraph (printed p. 5) and duplicate `page.i` warning remain; printed pp. 69-78 and both figures rendered and read; the three earlier pages with stranded titles checked after the fix |
+
+**Remaining gaps.**
+- The examples are synthetic apart from the dated US table and the
+  1 October 2026 inputs, and the beta of 1.15 is assumed.
+- No empirical CAPM or factor test is run, and the table excludes small caps
+  and other countries.
+- Pratt, Tobin, Lintner, Merton (1972) and Chen, Roll and Ross were not read
+  directly.
+- `outline:0242f4b7ba07:m040:b07` (active risk) and the Sharpe, Treynor, M2 and
+  alpha item `m088:b09` belong to other objectives and are not reviewed.
+- Remote CI and human review are pending at the time of writing.

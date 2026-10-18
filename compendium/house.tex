@@ -5,15 +5,19 @@
 \newcounter{qfentry}[chapter]
 \renewcommand{\theqfentry}{\thechapter.\arabic{qfentry}}
 % \qftype{type}{Name} declares the environment qf<type>; its title wraps like a paragraph.
+% The \label that follows \begin{qf<type>} writes a whatsit after the title's \nopagebreak, which
+% would make the next glue a legal page break; the first field therefore repeats the \nopagebreak.
+\newif\ifqfafterhead
 \newcommand{\qftype}[2]{\newenvironment{qf#1}[1][]{\par\addvspace{\medskipamount}%
   \refstepcounter{qfentry}{\raggedright\noindent\bfseries #2 \theqfentry
-  \if\relax\detokenize{##1}\relax\else\quad ##1\fi\par}\nopagebreak}%
-  {\par\addvspace{\medskipamount}}}
+  \if\relax\detokenize{##1}\relax\else\quad ##1\fi\par}\nopagebreak\global\qfafterheadtrue}%
+  {\par\global\qfafterheadfalse\addvspace{\medskipamount}}}
 \qftype{definition}{Definition}\qftype{convention}{Convention}\qftype{result}{Result}
 \qftype{model}{Model}\qftype{method}{Method}\qftype{mechanism}{Mechanism}
 \qftype{evidence}{Evidence}\qftype{data}{Data}\qftype{rule}{Rule}
 \qftype{pitfall}{Pitfall}\qftype{example}{Example}
-\newcommand{\qffield}[1]{\par\textbf{#1.}\enspace}   % starts one of an entry's fields
+\newcommand{\qffield}[1]{\par\ifqfafterhead\nopagebreak\global\qfafterheadfalse\fi
+  \textbf{#1.}\enspace}   % starts one of an entry's fields
 % \citep[locator]{key} links the key to its line in the sources if it has one,
 % and otherwise to its entry in the pinned catalogue PDF.
 \newcommand{\qfcatalogue}{../guide/institutional_quantitative_finance_reading_list.pdf}

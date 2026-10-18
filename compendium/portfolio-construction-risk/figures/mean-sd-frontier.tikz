@@ -1,0 +1,39 @@
+% compendium/portfolio-construction-risk/figures/mean-sd-frontier.tikz
+% Invented three-fund example of meth:efficient-frontier and meth:capital-allocation-line: one year, US dollars,
+% percent. Coordinates (standard deviation, expected return) are computed and rechecked by
+% notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py.
+\begin{tikzpicture}[>=stealth, x=0.36cm, y=0.62cm, font=\scriptsize]
+  % dominated region: interior of the unconstrained feasible set below the efficient branch (illustrative shading)
+  \fill[gray!12] (5.82,3.87) -- (6.31,4.50) -- (8.59,5.50) -- (11.75,6.50) -- (15.25,7.50) -- (18.91,8.50) -- (22.64,9.50) -- (26.42,10.50) -- (26.42,1.50) -- (10.91,1.50) -- (9.33,2.00) -- (7.90,2.50) -- (6.74,3.00) -- (6.00,3.50) -- cycle;
+  \node[gray!70!black, align=center] at (19,4.2) {feasible risky portfolios\\(dominated except\\on the efficient branch)};
+  \draw[->] (0,0) -- (28,0);
+  \node at (14,-0.95) {standard deviation (percent a year)};
+  \draw[->] (0,0) -- (0,11.6) node[above right] {expected return (percent a year)};
+  \foreach \x in {0,5,10,15,20,25} \draw (\x,0) -- (\x,-0.12) node[below] {\x};
+  \foreach \y in {2,4,6,8,10} \draw (0,\y) -- (-0.25,\y) node[left] {\y};
+  % efficient
+  \draw[very thick] plot[smooth] coordinates {(5.82,3.87) (5.84,4.00) (6.31,4.50) (7.28,5.00) (8.59,5.50) (10.11,6.00) (11.75,6.50) (13.48,7.00) (15.25,7.50) (17.07,8.00) (18.91,8.50) (20.77,9.00) (22.64,9.50) (24.52,10.00) (26.42,10.50)};
+  % inefficient
+  \draw[thick, dashed] plot[smooth] coordinates {(5.82,3.87) (5.84,3.75) (6.00,3.50) (6.31,3.25) (6.74,3.00) (7.28,2.75) (7.90,2.50) (8.59,2.25) (9.33,2.00) (10.10,1.75) (10.91,1.50)};
+  % long-only
+  \draw[thick, dotted] plot[smooth] coordinates {(13.48,7.00) (15.49,7.50) (18.00,8.00)};
+  % capital allocation line from the risk-free rate through the tangency portfolio, slope 0.2978
+  \draw[thin] (0,3) -- (11.55,6.44);
+  \draw[thin, dash pattern=on 3pt off 1.5pt] (11.55,6.44) -- (24,10.147);
+  % indifference curve of A = 4 through its optimum on the CAL: E = 4.108 + 0.02 s^2
+  \draw[thin, gray] plot[smooth] coordinates {(0.00,4.11) (1.50,4.15) (3.00,4.29) (4.50,4.51) (6.00,4.83) (7.50,5.23) (9.00,5.73) (10.50,6.31)};
+  \fill (11.55,6.44) circle (2.2pt) node[above left=-1pt] {T};
+  \fill (5.82,3.87) circle (2pt) node[left=2pt] {GMV};
+  \fill (18,8) circle (1.8pt) node[right] {E};
+  \fill (6,3.5) circle (1.8pt) node[right=2pt] {B};
+  \fill (12,6) circle (1.8pt) node[below right] {P};
+  \fill (0,3) circle (1.8pt);
+  \node[anchor=north west] at (0.3,2.85) {$r_f=3$};
+  \fill (7.44,5.22) circle (1.6pt) node[above left=-1pt] {$A=4$};
+  \node[anchor=east] at (20.5,9.6) {CAL};
+  \draw[thin] (20.6,9.55) -- (21.2,9.33);
+  \node[anchor=south east] at (26.6,10.75) {efficient frontier};
+  \node[anchor=west] at (11.2,1.5) {inefficient branch};
+  \node[anchor=west] at (18.4,7.55) {long-only};
+  \node[gray, anchor=west] at (0.4,4.55) {$U=4.11$};
+\end{tikzpicture}

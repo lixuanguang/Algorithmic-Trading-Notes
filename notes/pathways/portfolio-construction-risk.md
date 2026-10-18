@@ -35,7 +35,28 @@ Written in the portfolio moments and diversification slice (2026-10-18), owned h
 - `meth:portfolio-return-moments`: one-period arithmetic portfolio return from beginning-of-period value weights (units, horizon, base currency, no intra-period cash flows); expected return, variance, standard deviation, covariance and correlation of portfolios in expanded and matrix form (Markowitz 1952, pp. 80-81; covariance of weighted sums); model moments against historical estimates and their denominators; rebalanced against buy-and-hold weights.
 - `mech:diversification-correlation`: portfolio standard deviation against correlation for long-only weights; zero variance at a correlation of -1 only; reduction relative to the weighted average of volatilities, not a guarantee of beating the safer asset; Markowitz's "Diversification cannot eliminate all variance" with the equal-weight floor; Longin and Solnik on conditional and bear-market correlation.
 
-Both partly checked 2026-10-18, draft; examples in `notes/artefacts/portfolio-risk-return/portfolio-moments-checks.py`; human review outstanding. Coverage records are editorial, not study. Efficient frontiers, optimal portfolio selection and CAPM are not written here.
+Both partly checked 2026-10-18, draft; examples in `notes/artefacts/portfolio-risk-return/portfolio-moments-checks.py`; human review outstanding. Coverage records are editorial, not study.
+
+Audit correction (2026-10-18): `mech:diversification-correlation` now qualifies the equal-correlation limit: a positive floor for a fixed positive correlation, sigma^2/N for zero correlation, and no fixed negative correlation as N grows, because an equicorrelation matrix needs -1/(N-1) <= rho <= 1. The boundary cases are checked in the same script.
+
+Written in the portfolio choice and asset pricing batch (2026-10-18), in `portfolio-choice.tex`:
+
+- `def:asset-class-characteristics`: what distinguishes cash, government and corporate bonds, equities, property and gold (SEC investor guide, pp. 1-3). Dated US table for 1928-2025 from Damodaran's January 2026 workbook (arithmetic and geometric means reproduced; standard deviations, real means and worst years computed). Historical averages against forward-looking expected returns; the stock-bond correlation by subperiod.
+- `def:risk-aversion-utility`: concavity, the certainty equivalent and the Arrow-Pratt coefficient (Gollier, Hammitt and Treich 2013); Markowitz's U(E, V) and fair bets (p. 90). E - A sigma^2/2 exact under CARA-normal (Ross 1976, eq. (9)), with its units and gamma = A/2.
+- `meth:efficient-frontier`: Markowitz pp. 82-89 and Fama-French Fig. 1. Closed forms under a budget constraint and their conditions; GMV; a three-fund example with a long-only boundary solution, an infeasible target and dominated portfolios. Figure `figures/mean-sd-frontier.tikz`.
+- `meth:capital-allocation-line`: CAL, tangency and separation (Fama-French pp. 27-28; Sharpe pp. 432-435); y* for A = 2, 4, 8; a higher borrowing rate; the tangency condition r_f below the GMV mean; CAL against CML and the equilibrium assumptions.
+
+In `asset-pricing-models.tex`, owned by `topic:asset-pricing-factor-models` and printed in this chapter:
+
+- `mech:systematic-risk-pricing`: Sharpe's systematic and unsystematic components (pp. 438-440); the model-dependent pricing claim.
+- `mod:return-generating-models`: the market and single-index models and multifactor return-generating models against pricing restrictions; uses.
+- `mod:capm-sml`: assumptions, beta and the SML against the CML; the Black version; applications; Fama and French's evidence. Figure `figures/security-market-line.tikz`.
+- `meth:capm-regression`: a declared twelve-month synthetic regression; raw against excess returns; uncertainty; alpha is not skill.
+- `meth:required-return-on-equity`: inputs for 1 October 2026 (Damodaran's implied ERP 4.20 percent with a 5.29 percent Treasury rate; an assumed beta of 1.15); sensitivity; the difference from a historical average return.
+- `mod:multifactor-apt`: Ross's argument and Theorem I; Huberman and Wang's exact and approximate forms; an original arbitrage among well-diversified portfolios and its residual-risk version.
+- `def:factor-model-types`: Connor's three types (1995) and Huberman and Wang's three identification approaches; output interpretation and several risk dimensions.
+
+All partly checked 2026-10-18, draft. The examples are in `notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py` and `notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py`; human review is outstanding.
 
 ## Source verification after macro markets and pricing review
 

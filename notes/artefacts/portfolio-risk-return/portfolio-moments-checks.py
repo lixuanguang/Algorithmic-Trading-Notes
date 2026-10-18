@@ -232,6 +232,56 @@ ok(
     and close(lim, 10.9545, 1e-4),
 )
 
+# Boundary cases of the equal-correlation limit (audit correction, 2026-10-18): the eigenvalues of the
+# equicorrelation matrix are 1 + (N - 1) r (once) and 1 - r (N - 1 times), so it is positive semidefinite
+# only for -1/(N - 1) <= r <= 1.
+
+
+def equicorr(N, r):
+    C = np.full((N, N), r)
+    np.fill_diagonal(C, 1.0)
+    return C
+
+
+ok(
+    "r = 0: equal-weight variance sigma^2/N, 400, 40, 4 and 0.4 for N = 1, 10, 100, 1000, tending to zero",
+    all(close(sig**2 * (1 / N + (1 - 1 / N) * 0.0), sig**2 / N) for N in (1, 10, 100, 1000))
+    and close(sig**2 / 1000, 0.4),
+)
+eig_ok = True
+for N in (2, 5, 11, 12, 50):
+    for r_ in (-1 / (N - 1), -0.1, 0.0, 0.3, 1.0):
+        ev = np.linalg.eigvalsh(equicorr(N, r_))
+        expected = sorted([1 + (N - 1) * r_] + [1 - r_] * (N - 1))
+        eig_ok &= np.allclose(ev, expected, atol=1e-12)
+ok("equicorrelation eigenvalues are 1 + (N - 1) r and 1 - r (N = 2, 5, 11, 12, 50)", eig_ok)
+psd_ok = True
+for N in (2, 5, 12, 50):
+    lo = -1 / (N - 1)
+    psd_ok &= np.linalg.eigvalsh(equicorr(N, lo)).min() > -1e-12
+    psd_ok &= np.linalg.eigvalsh(equicorr(N, lo - 1e-6)).min() < 0
+    psd_ok &= np.linalg.eigvalsh(equicorr(N, 1.0)).min() > -1e-12
+ok(
+    "valid exactly for -1/(N - 1) <= r <= 1: PSD at both bounds, not PSD just below -1/(N - 1)",
+    psd_ok,
+)
+zero_ok = True
+for N in (2, 5, 12, 50):
+    ew = np.full(N, 1 / N)
+    zero_ok &= close(ew @ (sig**2 * equicorr(N, -1 / (N - 1))) @ ew, 0.0, 1e-9)
+ok("at r = -1/(N - 1) the equal-weight variance is exactly zero", zero_ok)
+ok(
+    "a fixed r = -0.1 is valid for N = 11 (bound -0.1) but not for N = 12 (bound -0.0909; eigenvalue 1 + 11 r = -0.1)",
+    np.linalg.eigvalsh(equicorr(11, -0.1)).min() > -1e-12
+    and np.linalg.eigvalsh(equicorr(12, -0.1)).min() < 0
+    and close(1 + 11 * -0.1, -0.1, 1e-12),
+)
+ok(
+    "the variance formula itself turns negative for an impossible r: N = 12, r = -0.1 gives -3.33 percent^2",
+    sig**2 * (1 / 12 + (11 / 12) * -0.1) < 0
+    and close(sig**2 * (1 / 12 + (11 / 12) * -0.1), -400 / 12 * 0.1, 1e-9),
+)
+
 print(
     "== example 4: correlation conditional on the size of one return (Longin and Solnik's illustration)"
 )

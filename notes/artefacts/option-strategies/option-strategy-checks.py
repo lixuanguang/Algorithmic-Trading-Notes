@@ -4,12 +4,14 @@ meth:covered-call-protective-put, meth:option-spreads-volatility-strategies and 
 Reproduced: Hull, Options, Futures, and Other Derivatives, 11th Global ed. (2022), chap. 12 (bull spread Example 12.2,
 bear spread Example 12.3, the 70-strike straddle) and sec. 17.2 (zero-cost range forward 1.3000 / 1.3414, both 0.0273);
 Natenberg, Option Volatility and Pricing, 2nd ed. (2015), chap. 17 (covered writes against stock at 100: the 95 call at
-6.50 and the 105 call at 2.00; a protective euro call). Original: payoff identities for synthetic positions, deltas of
-hedged positions, a protective put and covered call priced by Black-Scholes with financing of the premium, a buy-call
-against sell-put comparison for a short seller, a calendar spread valued at the first expiry, the cost of a collar under
+6.50 and the 105 call at 2.00; a protective euro call). Original: value, terminal cash-flow and delta identities for synthetic positions with zero, continuous and discrete
+dividends, including the -e^(-qT) spot delta of a fixed-strike short forward (added 2026-10-19, PR #25 pass), a protective put and covered call priced by Black-Scholes with financing of the premium, a buy-call
+against sell-put comparison for a short seller, a calendar spread valued at the first expiry (value and
+profit reported separately since the PR #25 pass), the cost of a collar under
 a flat and a skewed volatility curve, and a strategy-selection case for a 10 million holding.
 
-Conventions: profit = payoff at expiry - premium paid, with the premium also shown financed to expiry where stated;
+Conventions: value = what the position is worth on the valuation date; profit = value (or payoff at expiry) - premium
+paid, with the premium also shown financed to expiry where stated;
 Black-Scholes prices with continuous dividend yield; per share unless stated.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
@@ -68,47 +70,83 @@ print("== part 1: replicating asset returns with options, and the deltas of hedg
 S0, K, T, R, Q, SIG = 100.0, 100.0, 0.5, 0.04, 0.0, 0.20
 c, p = bs(S0, K, T, R, SIG), bs(S0, K, T, R, SIG, kind="p")
 ok(
-    "synthetic long stock: long call + short put + bond paying K has payoff S_T at every price and costs S0",
-    np.allclose(call(ST, K) - put(ST, K) + K, ST)
-    and close(c - p + K * math.exp(-R * T), S0, 1e-10),
-)
-ok(
-    "synthetic long forward: long call - short put at K = F costs zero (F = 102.0201)",
+    "synthetic long forward: long call - short put at K = F costs zero (F = 102.0201, no dividend)",
     abs(bs(S0, S0 * math.exp(R * T), T, R, SIG) - bs(S0, S0 * math.exp(R * T), T, R, SIG, kind="p"))
     < 1e-10,
 )
 ok(
-    "covered call = stock - call = short put + bond (payoff identity) and their costs agree",
-    np.allclose(ST - call(ST, K), K - put(ST, K))
-    and close(S0 - c, K * math.exp(-R * T) - p, 1e-10),
+    "terminal payoffs (any dividend policy): call - put + K pays S_T; stock - call pays K - (K - S_T)+; stock + put"
+    " pays (S_T - K)+ + K. Dividends are extra cash to the stockholder only",
+    np.allclose(call(ST, K) - put(ST, K) + K, ST)
+    and np.allclose(ST - call(ST, K), K - put(ST, K))
+    and np.allclose(ST + put(ST, K), call(ST, K) + K),
 )
+for q_ in (0.0, 0.02):
+    c_q, p_q = bs(S0, K, T, R, SIG, q_), bs(S0, K, T, R, SIG, q_, "p")
+    pv_div = S0 * (1 - math.exp(-q_ * T))  # PV of the yield paid over the life
+    ok(
+        f"q = {q_:.0%}: values. Synthetic stock costs S0 e^(-qT) = {S0 * math.exp(-q_ * T):.4f}; stock = synthetic +"
+        f" PV(dividends) {pv_div:.4f}; covered call = short put + bond + PV(div); protective put = call + bond +"
+        " PV(div)",
+        close(c_q - p_q + K * math.exp(-R * T), S0 * math.exp(-q_ * T), 1e-10)
+        and close(S0 - c_q, K * math.exp(-R * T) - p_q + pv_div, 1e-10)
+        and close(S0 + p_q, c_q + K * math.exp(-R * T) + pv_div, 1e-10),
+    )
+# discrete dividend: 1.00 paid at three months; options priced on the escrowed price S0 - D (Hull sec. 15.12)
+d_amt, t_d = 1.00, 0.25
+D = d_amt * math.exp(-R * t_d)
+c_d, p_d = bs(S0 - D, K, T, R, SIG), bs(S0 - D, K, T, R, SIG, kind="p")
+st_paths = np.array([70.0, 100.0, 130.0])
+stock_cash = st_paths + d_amt * math.exp(R * (T - t_d))  # dividend reinvested at r to expiry
+synth_cash = call(st_paths, K) - put(st_paths, K) + K
 ok(
-    "protective put = stock + put = call + bond",
-    np.allclose(ST + put(ST, K), call(ST, K) + K)
-    and close(S0 + p, c + K * math.exp(-R * T), 1e-10),
+    "discrete dividend 1.00 at 3 months: p + S0 = c + Ke^(-rT) + D with D = 0.9900; at expiry the stock (dividend"
+    " reinvested) exceeds the synthetic by 1.0101 in every state, whose present value is D",
+    close(p_d + S0, c_d + K * math.exp(-R * T) + D, 1e-10)
+    and np.allclose(stock_cash - synth_cash, d_amt * math.exp(R * (T - t_d)))
+    and close(d_amt * math.exp(R * (T - t_d)) * math.exp(-R * T), D, 1e-12),
+)
+
+
+def fd_delta(f, s, h=1e-4):
+    return (f(s + h) - f(s - h)) / (2 * h)
+
+
+for q_ in (0.0, 0.02):
+    dc, dp = bs_delta(S0, K, T, R, SIG, q_), bs_delta(S0, K, T, R, SIG, q_, "p")
+    fwd_short = fd_delta(lambda s, q_=q_: -(s * math.exp(-q_ * T) - K * math.exp(-R * T)), S0)
+    fd_c = fd_delta(lambda s, q_=q_: bs(s, K, T, R, SIG, q_), S0)
+    fd_p = fd_delta(lambda s, q_=q_: bs(s, K, T, R, SIG, q_, "p"), S0)
+    gap = (-1 + dc) - dp
+    ok(
+        f"q = {q_:.0%}: spot deltas by finite difference match BSM; a fixed-strike short forward has delta"
+        f" -e^(-qT) = {fwd_short:.7f}; call - put = e^(-qT); short stock + call - put delta = {gap:+.7f}"
+        " (zero only without dividends)",
+        abs(fd_c - dc) < 1e-7
+        and abs(fd_p - dp) < 1e-7
+        and abs(fwd_short + math.exp(-q_ * T)) < 1e-9
+        and abs(dc - dp - math.exp(-q_ * T)) < 1e-12
+        and abs(gap - (math.exp(-q_ * T) - 1)) < 1e-12,
+        f"call {dc:.4f}, put {dp:.4f}, covered call {1 - dc:.4f}, protective put {1 + dp:.4f}",
+    )
+
+
+def share_plus_forwards(s, n_fwd, q_=0.02):
+    """Value of one share (held, dividends to be received) plus n_fwd short fixed-strike forwards."""
+    return s - n_fwd * (s * math.exp(-q_ * T) - K * math.exp(-R * T))
+
+
+ok(
+    "at q = 2%, T = 0.5 (finite differences): one share plus one short forward keeps delta +0.00995, although the"
+    " forward's payoff slope at expiry is -1; e^(qT) = 1.01005 short forwards per share are needed for delta zero",
+    abs(fd_delta(lambda s: share_plus_forwards(s, 1.0), S0) - (1 - math.exp(-0.01))) < 1e-8
+    and abs(fd_delta(lambda s: share_plus_forwards(s, 1.0), S0) - 0.00995) < 5e-6
+    and abs(fd_delta(lambda s: share_plus_forwards(s, math.exp(0.01)), S0)) < 1e-8,
 )
 dc, dp = bs_delta(S0, K, T, R, SIG), bs_delta(S0, K, T, R, SIG, kind="p")
-deltas = {
-    "long stock": 1.0,
-    "short forward": -1.0,
-    "synthetic long (call - put)": dc - dp,
-    "covered call": 1 - dc,
-    "protective put": 1 + dp,
-    "short stock + long call": -1 + dc,
-}
 ok(
-    "deltas: stock +1, short forward -1, call - put +1 exactly (no dividend), covered call 1 - 0.5840 = 0.4160,"
-    " protective put 1 - 0.4160 = 0.5840, short stock + call = put delta -0.4160",
-    close(deltas["synthetic long (call - put)"], 1.0, 1e-12)
-    and abs(dc - 0.5840) < 5e-5
-    and close(deltas["covered call"], -dp, 1e-12)
-    and close(deltas["short stock + long call"], dp, 1e-12),
-    " ".join(f"{k_}: {v:+.4f}" for k_, v in deltas.items()),
-)
-ok(
-    "with a 2% dividend yield the synthetic long has delta e^{-qT} = 0.9900, below the stock's 1",
-    abs(bs_delta(S0, K, T, R, SIG, 0.02) - bs_delta(S0, K, T, R, SIG, 0.02, "p") - math.exp(-0.01))
-    < 1e-12,
+    "no dividend: call delta 0.5840, covered call 0.4160, protective put 0.5840, short stock + call -0.4160",
+    abs(dc - 0.5840) < 5e-5 and abs((1 + dp) - 0.5840) < 5e-5 and abs((-1 + dc) + 0.4160) < 5e-5,
 )
 
 print("== part 2: covered calls, protective puts and short-position hedges")
@@ -187,22 +225,41 @@ ok(
     abs(k2 - 1.3414) < 5e-5
     and abs(bs(1.32, k1, 0.25, 0.02, 0.14, q=0.02, kind="p") - 0.0273) < 5e-5,
 )
-# calendar spread: sell 3-month 100 call, buy 6-month 100 call; value at the first expiry
+# calendar spread: sell 3-month 100 call, buy 6-month 100 call. Valuation date: the 3-month expiry, with 0.25 years
+# left on the long call and the BSM inputs unchanged. Value = long call - payoff of the expiring short call;
+# profit = value - initial cost (premium paid at inception, not financed); the financed profit subtracts the cost
+# grown at r for the three months.
 c3, c6 = bs(S0, 100, 0.25, R, SIG), bs(S0, 100, 0.5, R, SIG)
 cost_cal = c6 - c3
-cal = [bs(s, 100, 0.25, R, SIG) - max(s - 100, 0) - cost_cal for s in (80, 95, 100, 105, 120)]
+grid_s = (80, 95, 100, 105, 120)
+cal_value = [bs(s, 100, 0.25, R, SIG) - max(s - 100, 0) for s in grid_s]
+cal_profit = [v - cost_cal for v in cal_value]
+cal_profit_fin = [v - cost_cal * math.exp(R * 0.25) for v in cal_value]
 ok(
-    "calendar spread (buy 6m, sell 3m 100 calls, cost 2.1418): at the 3-month expiry it profits near 100 and loses"
-    " most of its cost far from 100",
-    abs(cost_cal - 2.1418) < 5e-4
-    and cal[2] > 0
-    and cal[0] < 0
-    and cal[4] < 0
-    and cal[2] == max(cal),
-    " ".join(f"{x:+.3f}" for x in cal),
+    "calendar spread (buy 6m, sell 3m 100 calls, cost 2.141842): at the 3-month expiry its value is 0.052704,"
+    " 2.190593, 4.485236, 2.747684 and 1.108320 at 80-120; profits after the cost are -2.089, +0.049, +2.343,"
+    " +0.606 and -1.034, peaking at the strike",
+    abs(cost_cal - 2.141842) < 5e-7
+    and np.allclose(cal_value, [0.052704, 2.190593, 4.485236, 2.747684, 1.108320], atol=5e-7)
+    and min(cal_value) > 0
+    and cal_profit[2] == max(cal_profit)
+    and cal_profit[0] < 0 < cal_profit[2],
+    "value "
+    + " ".join(f"{x:.6f}" for x in cal_value)
+    + "; profit "
+    + " ".join(f"{x:+.3f}" for x in cal_profit),
 )
 ok(
-    "a long calendar spread is long vega: a 2-point rise in implied volatility raises its value",
+    "value never falls below zero (the long call is worth at least the expiring call's payoff), so the maximum loss"
+    " is the 2.141842 cost; financing the cost at 4% for three months lowers every profit by 0.021526",
+    all(v >= 0 for v in cal_value)
+    and np.allclose(
+        np.subtract(cal_profit, cal_profit_fin), cost_cal * (math.exp(R * 0.25) - 1), atol=1e-12
+    )
+    and abs(cost_cal * (math.exp(R * 0.25) - 1) - 0.021526) < 5e-7,
+)
+ok(
+    "a long calendar spread is long vega: at inception, a 2-point rise in implied volatility raises its value",
     bs(S0, 100, 0.5, R, 0.22) - bs(S0, 100, 0.25, R, 0.22) > cost_cal,
 )
 

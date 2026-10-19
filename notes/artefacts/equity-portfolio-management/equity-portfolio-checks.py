@@ -11,7 +11,9 @@ cap-weighted, equal-weighted and value-tilted indexes compared on turnover, conc
 full replication, stratified sampling and optimised sampling compared on tracking error, and cash drag with and
 without futures; breadth and skill of fundamental and quantitative approaches; holdings-based style classification;
 active share against active risk for four portfolio types; a risk budget; position limits; capacity from liquidity;
-turnover costs; and transfer coefficients of long-only, 130/30 and long-short implementations.
+turnover costs; and transfer coefficients of long-only and 130/30 implementations against the analytical optimum of
+the same residual-risk objective under zero net active weight (corrected 2026-10-19, PR #25 pass: the earlier
+reference rescaled the unconstrained solution by benchmark weights, which is feasible but not optimal).
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
@@ -300,10 +302,47 @@ ok(
 alpha = 0.02 * (0.6 * value + 0.8 * rng.standard_normal(N)) * idio / 0.25
 lam = 10.0
 D = np.diag(idio**2)
-q = np.linalg.solve(
-    2 * lam * D, alpha
-)  # unconstrained active weights against specific risk only (residual)
-q -= w_cap * q.sum() / w_cap.sum()  # make Q fully invested and benchmark-neutral in sum
+# Reference portfolio Q: maximise alpha'a - lam a'Da subject only to zero net active weight (1'a = 0), i.e. fully
+# invested with no bounds, no long-only and no short limits. Lagrangian: alpha - 2 lam D a = eta 1, so
+# a = D^-1 (alpha - eta 1) / (2 lam) with eta = 1'D^-1 alpha / 1'D^-1 1.
+ones = np.ones(N)
+Dinv_alpha, Dinv_one = alpha / idio**2, ones / idio**2
+eta = Dinv_alpha.sum() / Dinv_one.sum()
+q = (Dinv_alpha - eta * Dinv_one) / (2 * lam)
+# independent route: the bordered KKT system [2 lam D, 1; 1', 0] [a; mu] = [alpha; 0]
+kkt = np.zeros((N + 1, N + 1))
+kkt[:N, :N] = 2 * lam * D
+kkt[:N, N] = kkt[N, :N] = 1.0
+sol = np.linalg.solve(kkt, np.concatenate([alpha, [0.0]]))
+q_naive = np.linalg.solve(2 * lam * D, alpha)
+q_naive -= (
+    w_cap * q_naive.sum() / w_cap.sum()
+)  # the earlier reference: scaled back to zero net active weight
+
+
+def util(a_):
+    return a_ @ alpha - lam * a_ @ D @ a_
+
+
+ok(
+    "reference Q: feasible (net active weight 0), first-order optimal (alpha - 2 lam D q is a constant vector equal to"
+    " eta), equal to the bordered-KKT solution, and better than the earlier benchmark-scaled reference",
+    abs(q.sum()) < 1e-12
+    and np.ptp(alpha - 2 * lam * D @ q) < 1e-12
+    and abs((alpha - 2 * lam * D @ q)[0] - eta) < 1e-12
+    and np.allclose(sol[:N], q, atol=1e-14)
+    and abs(sol[N] - eta) < 1e-12
+    and abs(q_naive.sum()) < 1e-12
+    and util(q) > util(q_naive),
+    f"eta {eta:.6f}; utility {util(q):.6f} against {util(q_naive):.6f}",
+)
+ok(
+    "any feasible perturbation of Q lowers the objective (strict concavity along the constraint plane)",
+    all(
+        util(q + 1e-3 * (z - z.mean())) < util(q)
+        for z in np.random.default_rng(7).standard_normal((50, N))
+    ),
+)
 
 
 def solve(short_budget, short_cap=0.006):
@@ -354,18 +393,22 @@ r_lo, lo, _ = solve(0.0)
 r_13, mid, gross_short = solve(0.30)
 tc_lo, tc_mid = corr_tc(lo), corr_tc(mid)
 ok(
-    "transfer coefficient: long-only below 1, a 130/30 short budget (30% gross short) raises it, unconstrained"
-    " long-short is 1 by construction",
-    r_lo.success
-    and r_13.success
-    and 0 < tc_lo < tc_mid < 1.0
-    and abs(corr_tc(q) - 1) < 1e-12
-    and abs(gross_short - 0.30) < 1e-6,
-    f"long-only {tc_lo:.3f}, 130/30 {tc_mid:.3f}, gross short {gross_short:.1%}",
+    "transfer coefficient against Q (D-weighted correlation of active weights): long-only below 1 and a 130/30"
+    " short budget (30% gross short) raises it",
+    r_lo.success and r_13.success and 0 < tc_lo < tc_mid < 1.0 and abs(gross_short - 0.30) < 1e-6,
+    f"long-only {tc_lo:.6f}, 130/30 {tc_mid:.6f}, gross short {gross_short:.1%}",
+)
+tc_lo_naive = (lo @ D @ q_naive) / math.sqrt((lo @ D @ lo) * (q_naive @ D @ q_naive))
+tc_mid_naive = (mid @ D @ q_naive) / math.sqrt((mid @ D @ mid) * (q_naive @ D @ q_naive))
+ok(
+    "against the earlier benchmark-scaled reference the coefficients were higher (0.616, 0.786): the choice of"
+    " reference changes the reported transfer",
+    tc_lo_naive > tc_lo and tc_mid_naive > tc_mid,
+    f"{tc_lo_naive:.6f}, {tc_mid_naive:.6f}",
 )
 ok(
-    "with IR = TC x IC x sqrt(BR), the 130/30 version keeps 28% more of the same signal's IR than long-only",
-    abs(tc_mid / tc_lo - 1.276) < 0.01,
+    "with IR = TC x IC x sqrt(BR), the 130/30 version keeps about 28% more of the same signal's IR than long-only",
+    1.2 < tc_mid / tc_lo < 1.35,
     f"ratio {tc_mid / tc_lo:.3f}",
 )
 ok(

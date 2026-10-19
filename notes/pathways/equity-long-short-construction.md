@@ -40,7 +40,7 @@ In `equity-portfolio-management.tex` (topic `equity-portfolio-management`):
 - `def:active-equity-strategies`: fundamental and quantitative approaches; bottom-up, top-down, factor, activist, statistical-arbitrage and microstructure strategies.
 - `meth:active-equity-strategy-creation`: fundamental and quantitative research processes and style classification.
 - `meth:active-equity-portfolio-construction`: construction methods, Active Share against active risk, risk budgets and limits.
-- `meth:equity-portfolio-capacity-structure`: capacity, liquidity and turnover; long-only, long-extension, long-short and market-neutral structures with transfer coefficients.
+- `meth:equity-portfolio-capacity-structure`: capacity, liquidity and turnover; long-only, long-extension, long-short and market-neutral structures with transfer coefficients. Corrected 2026-10-19 (PR #25 pass): transfer coefficients measured against the analytical optimum under zero net active weight (0.609 and 0.781, not 0.616 and 0.786).
 
 All partly checked 2026-10-19, draft. Examples in `notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py`; human review is outstanding. Coverage records are editorial, not study.
 

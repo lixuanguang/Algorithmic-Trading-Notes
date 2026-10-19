@@ -68,9 +68,9 @@ In `option-valuation.tex` (topic `option-valuation`):
 
 In `option-strategies.tex` (topic `option-strategies`):
 
-- `meth:option-replication-deltas`: replicating an asset with options and the deltas of hedged positions.
+- `meth:option-replication-deltas`: replicating an asset with options and the deltas of hedged positions. Corrected 2026-10-19 (PR #25 pass): dividends carried through the identities; a fixed-strike short forward has spot delta -e^(-qT).
 - `meth:covered-call-protective-put`: covered calls, protective puts and short-position hedges.
-- `meth:option-spreads-volatility-strategies`: spreads, straddles, collars, calendar spreads and skew, with a summary table.
+- `meth:option-spreads-volatility-strategies`: spreads, straddles, collars, calendar spreads and skew, with a summary table. Corrected 2026-10-19 (PR #25 pass): calendar-spread values and profits distinguished.
 - `ex:option-strategy-selection-case`: strategy choice for a single-stock holding and option positions targeting exposures.
 
 All partly checked 2026-10-19, draft. Examples in `notes/artefacts/option-valuation/option-valuation-checks.py` and `notes/artefacts/option-strategies/option-strategy-checks.py`; human review is outstanding. Coverage records are editorial, not study. `mod:black-scholes-merton`, `def:implied-volatility-surface` and `meth:option-payoff-profit` are linked, not repeated.

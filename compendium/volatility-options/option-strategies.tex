@@ -4,25 +4,35 @@ These entries use options to replicate and reshape exposure to an asset: synthet
 
 \begin{qfmethod}[Replicating asset returns with options: synthetic stock and forwards, covered calls and protective puts as option-plus-bond packages, and the deltas of hedged positions against the asset and a short forward]\label{meth:option-replication-deltas}
 \qffield{Statement} \emph{Replication} follows from put--call parity, $p+S_0=c+Ke^{-rT}+D$, with $D$ the present value of dividends \citep[chap.~12, sec.~12.2, eq.~(12.1), pp.~270--272]{s7-hulloptions}.
+Cash flows differ by the dividends: the stockholder receives them, the option positions do not.
 \begin{itemize}
-\item \emph{Synthetic long stock}: a long call, a short put and a bond paying $K$. The payoff is $S_T$ in every state.
+\item \emph{Synthetic long stock}: a long call, a short put and a bond paying $K$. It pays $S_T$ at expiry in every state, but costs $c-p+Ke^{-rT}=S_0-D$, so it replicates the price, not the total return. With a continuous yield $q$, $D=S_0(1-e^{-qT})$ and the package is worth $S_0e^{-qT}$.
 \item \emph{Synthetic long forward}: a long call and a short put struck at the forward, at zero cost.
-\item \emph{Covered call}: stock less a call, which equals a short put plus a bond.
-\item \emph{Protective put}: stock plus a put, which equals a call plus a bond. This is why Hull's four profit patterns for an option combined with the stock resemble a short put, a long put, a long call and a short call (Figure~12.1).
+\item \emph{Covered call}: stock less a call, worth a short put plus a bond plus the dividends ($S_0-c=Ke^{-rT}-p+D$). Its terminal payoff, $K-(K-S_T)^+$, is the short put's plus the bond's; the dividends are additional cash to the writer.
+\item \emph{Protective put}: stock plus a put, worth a call plus a bond plus the dividends ($S_0+p=c+Ke^{-rT}+D$). This is why Hull's four profit patterns for an option combined with the stock resemble a short put, a long put, a long call and a short call (Figure~12.1).
 \end{itemize}
-Natenberg puts it as ``Long underlying $+$ long put $\approx$ synthetic long call'' and ``Short underlying $+$ long call $\approx$ synthetic long put'' \citep[chap.~17, p.~325]{s7-natenberg}.
+Natenberg puts it as ``Long underlying $+$ long put $\approx$ synthetic long call'' and ``Short underlying $+$ long call $\approx$ synthetic long put'' \citep[chap.~17, p.~325]{s7-natenberg}; the approximation sign hides the dividends and carry. European options on a stock with known dividends are priced by replacing $S_0$ with $S_0-D$ \citep[chap.~15, sec.~15.12, p.~360]{s7-hulloptions}.
 
-\emph{Deltas.} The long asset has delta $+1$ and a short forward $-1$. A synthetic long stock has delta $\Delta_c-\Delta_p=e^{-qT}$, which is 1 without dividends. A covered call has $1-\Delta_c$, a protective put $1+\Delta_p$, and short stock plus a long call $-1+\Delta_c=\Delta_p$, the delta of a long put (Interpretation from BSM deltas, \hyperref[mod:black-scholes-merton]{BSM}).
-
-\qffield{Practice} \emph{Original} (stock 100, six months, 4 percent, 20 percent volatility, no dividend).
+\emph{Deltas} (spot deltas; Interpretation from BSM deltas, \hyperref[mod:black-scholes-merton]{BSM}). With a continuous yield $q$:
 \begin{itemize}
-\item The at-the-money call has a delta of 0.5840. A covered call therefore has a delta of 0.4160, a protective put 0.5840 and short stock plus a call $-0.4160$.
-\item Call less put has a delta of exactly 1, the same as the stock, and pays $S_T-K$. With a bond paying $K$ added, the package pays $S_T$ at every terminal price checked.
-\item With a 2 percent dividend yield the synthetic long has a delta of $e^{-0.01}=0.9900$: it does not receive the dividends, which a holder of the stock would.
+\item the share has delta $+1$; the call $e^{-qT}N(d_1)$; the put $e^{-qT}[N(d_1)-1]$;
+\item a fixed-strike short forward, worth $-(Se^{-qT}-Ke^{-rT})$, has delta $-e^{-qT}$, not $-1$; its payoff slope at expiry, $-1$, is a different quantity;
+\item call less put has delta $e^{-qT}$;
+\item a covered call has $1-\Delta_c$ and a protective put $1+\Delta_p$;
+\item short stock plus a long call has $-1+\Delta_c=\Delta_p-(1-e^{-qT})$, the delta of a long put only when $q=0$.
 \end{itemize}
-\emph{Interpretation.} A covered call is the sale of upside for income, with the exposure of a short put; a protective put is the purchase of downside insurance, with the exposure of a long call. A short forward offsets the asset exactly, with delta $-1$ at every price; an option hedge offsets only part, and that part changes with the price (gamma).
 
-\qffield{Conditions} European options, same strike and expiry, no transaction costs; with borrowing costs and scarce borrow the synthetic short differs from a stock short (\hyperref[res:synthetic-short-put-call]{synthetic short}). Deltas are model values at one volatility.
+\qffield{Practice} \emph{Original} (stock 100, strike 100, six months, 4 percent, 20 percent volatility).
+\begin{itemize}
+\item \emph{No dividend} ($q=0$). The call delta is 0.5840, so a covered call has 0.4160, a protective put 0.5840 and short stock plus a call $-0.4160$, equal to the put's delta. Call less put has delta 1 and, with a bond paying $K$, pays $S_T$ at every terminal price checked and costs $S_0$.
+\item \emph{Yield $q=2$ percent.} The synthetic stock costs 99.0050: the 0.9950 difference is the present value of the yield it forgoes. The call delta is 0.5507 and the put $-0.4394$; call less put has delta $e^{-0.01}=0.9900$. A fixed-strike short forward has delta $-0.9900498$. One share plus one short forward therefore keeps a delta of $+0.00995$; $e^{qT}=1.01005$ forwards per share are needed to neutralise it. Short stock plus a call has delta 0.0099502 below the put's.
+\item \emph{Discrete dividend} of 1.00 at three months: $D=0.9900$, and $p+S_0=c+Ke^{-rT}+D$ holds with options priced on $S_0-D$. At expiry the stock with its dividend reinvested is worth 1.0101 more than the synthetic in every state, whose present value is $D$.
+\end{itemize}
+Values, terminal cash flows and deltas are checked for both zero and nonzero dividends, the deltas by finite differences.
+
+\emph{Interpretation.} A covered call is the sale of upside for income, with the exposure of a short put; a protective put is the purchase of downside insurance, with the exposure of a long call. A short forward on the dividend-adjusted quantity offsets the share's delta at every price; on one share per share, it leaves the dividend exposure. An option hedge offsets only part, and that part changes with the price (gamma).
+
+\qffield{Conditions} European options, same strike and expiry, no transaction costs. Zero dividends are assumed only where stated ($q=0$); otherwise dividends are known (a continuous yield or a discrete amount), not uncertain. With borrowing costs and scarce borrow the synthetic short differs from a stock short (\hyperref[res:synthetic-short-put-call]{synthetic short}). Deltas are model values at one volatility.
 
 \qffield{Pitfalls} Treating a covered call as low-risk because it is ``covered'': its downside is the stock's, less the premium. Hedging a fixed share count with options as if their deltas stayed constant. Forgetting the dividends that a synthetic long gives up.
 
@@ -109,7 +119,7 @@ The risks are the premium for the long-option strategies, the capped upside of t
 
 \emph{Original} (stock 100, 4 percent).
 \begin{itemize}
-\item \emph{Calendar spread.} Buying the six-month 100 call and selling the three-month one costs 2.1418. At the three-month expiry the spread is worth $-2.089$, $+0.049$, $+2.343$, $+0.606$ and $-1.034$ for the stock at 80, 95, 100, 105 and 120. A two-point rise in implied volatility raises its value: it is long vega.
+\item \emph{Calendar spread.} Buying the six-month 100 call and selling the three-month one costs 2.141842. Valued at the three-month expiry (the long call then has three months left; volatility and rate unchanged), the position is worth 0.052704, 2.190593, 4.485236, 2.747684 and 1.108320 for the stock at 80, 95, 100, 105 and 120. Less the initial cost, paid at inception and not financed, the profits are $-2.089$, $+0.049$, $+2.343$, $+0.606$ and $-1.034$; financing the cost for three months at 4 percent lowers each by 0.0215. The value cannot fall below zero, so the loss on unwinding then is at most the cost. At inception, a two-point rise in implied volatility raises its value: it is long vega.
 \item \emph{Skew and collars.} With a flat 20 percent volatility, a six-month 90 put pays for a 116.80 call. Under a skew that adds three points of volatility per 10 percent of downside moneyness, the put's volatility is 23.2 percent, and the call that pays for it must be struck at 110.29. The skew gives away more upside for the same protection.
 \end{itemize}
 

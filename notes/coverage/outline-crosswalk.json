@@ -17127,7 +17127,7 @@
    "objectives": [
     "objective:measure-embedded-option-risk"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:embedded-option-effective-duration calculates effective duration at constant OAS (2.24 for the callable) and interprets it.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:embedded-option-effective-duration calculates effective duration at constant OAS (2.24 for the callable) and interprets it. Re-reviewed 2026-10-19 after the PR #25 correction pass: convexity restated in the compendium convention alongside the Handbook's half-scaled figure; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -17187,7 +17187,7 @@
    "objectives": [
     "objective:measure-embedded-option-risk"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:embedded-option-effective-duration compares effective convexities: negative for the callable, positive for putable and straight bonds.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:embedded-option-effective-duration compares effective convexities: negative for the callable, positive for putable and straight bonds. Re-reviewed 2026-10-19 after the PR #25 correction pass: convexities restated in the compendium convention (-77.15, +11.13, +16.36) with repricing checks; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -17227,7 +17227,7 @@
    "objectives": [
     "objective:value-convertible-bonds"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:convertible-bond-valuation describes convertible features from the Handbook's Tesla prototype: conversion ratio and price, contingent conversion, settlement, calls, make-whole and dilution protection.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:convertible-bond-valuation describes convertible features from the Handbook's Tesla prototype: conversion ratio and price, contingent conversion, settlement, calls, make-whole and dilution protection. Re-reviewed 2026-10-19 after the PR #25 correction pass: Tesla's features now come from the prospectus: no issuer call, a holders' fundamental-change put, a separate make-whole conversion adjustment and contingent conversion; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -19258,7 +19258,7 @@
    "objectives": [
     "objective:estimate-value-at-risk"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition compares parametric, historical and Monte Carlo methods on one synthetic portfolio.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition compares parametric, historical and Monte Carlo methods on one synthetic portfolio. Re-reviewed 2026-10-19 after the PR #25 correction pass: all three methods now use one zero-mean convention on the named 100m book; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -19279,7 +19279,7 @@
    "objectives": [
     "objective:estimate-value-at-risk"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition estimates and interprets VaR by each method and reproduces RMFI's model-building example.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition estimates and interprets VaR by each method and reproduces RMFI's model-building example. Re-reviewed 2026-10-19 after the PR #25 correction pass: VaR figures restated on one zero-mean convention (parametric 1,729,125, historical 2.084m); still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -19319,7 +19319,7 @@
    "objectives": [
     "objective:estimate-value-at-risk"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition describes extensions: ES, incremental, marginal and component VaR, CFaR, EaR, stressed VaR.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:portfolio-var-methods-decomposition describes extensions: ES, incremental, marginal and component VaR, CFaR, EaR, stressed VaR. Re-reviewed 2026-10-19 after the PR #25 correction pass: component VaRs now sum to the reported total; marginal and incremental figures use the same risk function; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -19340,7 +19340,7 @@
    "objectives": [
     "objective:apply-sensitivity-scenario-measures"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:sensitivity-scenario-risk-measures describes sensitivity and scenario measures and compares them with VaR.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:sensitivity-scenario-risk-measures describes sensitivity and scenario measures and compares them with VaR. Re-reviewed 2026-10-19 after the PR #25 correction pass: the scenario-against-VaR comparison now names the book each figure covers; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -19380,7 +19380,7 @@
    "objectives": [
     "objective:apply-sensitivity-scenario-measures"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:sensitivity-scenario-risk-measures describes the use of sensitivities and of historical, management and reverse stress scenarios.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:sensitivity-scenario-risk-measures describes the use of sensitivities and of historical, management and reverse stress scenarios. Re-reviewed 2026-10-19 after the PR #25 correction pass: the stress and reverse stress results now state which positions they cover; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -19420,7 +19420,7 @@
    "objectives": [
     "objective:set-market-risk-limits"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:market-risk-limits-capital explains risk budgeting, position, VaR, scenario and stop-loss limits.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:market-risk-limits-capital explains risk budgeting, position, VaR, scenario and stop-loss limits. Re-reviewed 2026-10-19 after the PR #25 correction pass: the stop-loss limit is compared with the VaR of the named book on the same convention; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -21387,7 +21387,7 @@
    "objectives": [
     "objective:match-liabilities-with-bonds"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:liability-matching-ladders describes the construction, benefits, limitations and risk-return of a ladder.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:liability-matching-ladders describes the construction, benefits, limitations and risk-return of a ladder. Re-reviewed 2026-10-19 after the PR #25 correction pass: the ladder's risk is now measured by its key-rate profile and a twist, with equal-face, equal-market-value and equal-risk allocations; the slope-neutrality claim is removed; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -23026,7 +23026,7 @@
    "objectives": [
     "objective:replicate-with-options"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-replication-deltas demonstrates replication of an asset's return with a call, a put and a bond.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-replication-deltas demonstrates replication of an asset's return with a call, a put and a bond. Re-reviewed 2026-10-19 after the PR #25 correction pass: replication now carries dividends through the identities, with zero-dividend assumptions stated; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -23092,7 +23092,7 @@
    "objectives": [
     "objective:replicate-with-options"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-replication-deltas compares deltas of covered calls and protective puts with long asset and short forward positions.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-replication-deltas compares deltas of covered calls and protective puts with long asset and short forward positions. Re-reviewed 2026-10-19 after the PR #25 correction pass: deltas now use spot deltas with a dividend yield; a fixed-strike short forward has delta -e^(-qT); still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -23158,7 +23158,7 @@
    "objectives": [
     "objective:analyse-spread-and-volatility-strategies"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-spreads-volatility-strategies describes calendar spreads and their uses (time decay, vega).",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:option-spreads-volatility-strategies describes calendar spreads and their uses (time decay, vega). Re-reviewed 2026-10-19 after the PR #25 correction pass: calendar-spread values and profits are now distinguished, with the valuation date and financing convention stated; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -24461,7 +24461,7 @@
    "objectives": [
     "objective:evaluate-equity-portfolio-structure"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:equity-portfolio-capacity-structure discusses AUM, position size, liquidity and turnover with capacity and cost calculations.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:equity-portfolio-capacity-structure discusses AUM, position size, liquidity and turnover with capacity and cost calculations. Re-reviewed 2026-10-19 after the PR #25 correction pass: the capacity and structure entry's transfer comparison was corrected; capacity, liquidity and turnover figures are unchanged; still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -24501,7 +24501,7 @@
    "objectives": [
     "objective:evaluate-equity-portfolio-structure"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:equity-portfolio-capacity-structure discusses long-only, long extension, long-short and equitised market-neutral structures with transfer coefficients.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:equity-portfolio-capacity-structure discusses long-only, long extension, long-short and equitised market-neutral structures with transfer coefficients. Re-reviewed 2026-10-19 after the PR #25 correction pass: the transfer coefficients now use the analytical optimum under zero net active weight as reference (0.609 long-only, 0.781 for 130/30); still met.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },

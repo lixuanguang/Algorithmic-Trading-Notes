@@ -2697,3 +2697,37 @@ merge into `main` (Section 17.2) and was not triggered.
 - Illustrative market inputs; legal points dated 19 October 2026; MiFID II amendments to
   article 27 not reviewed.
 - Human review is outstanding.
+
+### 20.1 Correction pass on PR #25 (executed 2026-10-19)
+
+A fixes-only pass on draft PR #25 at `edbf4bf`, after an audit with seven findings. No objective was added; the pass is exempt from the batch target (Section 17.4).
+
+1. **Transfer coefficient** (`meth:equity-portfolio-capacity-structure`). The reference is now the
+   optimum of the same residual-risk objective under zero net active weight,
+   a_Q = D^-1(alpha - eta 1)/(2 lambda), eta = 1'D^-1 alpha / 1'D^-1 1. It is checked for
+   feasibility and first-order optimality, against the bordered KKT system and by
+   perturbation. Long-only 0.609280 and 130/30 0.781364.
+2. **VaR convention** (`meth:portfolio-var-methods-decomposition`, with the scenario and
+   stop-loss figures). Zero expected P&L throughout, with the history centred. Components
+   sum to the reported 1,729,124.91, and finite differences use the same function. Each
+   stress figure names its book.
+3. **Ladder risk** (`meth:liability-matching-ladders`). The key-rate profile (0.1304 to
+   0.6363, sum 4.686245) and a twist (-0.493%) replace the equal-key-rate claim. Equal-face,
+   equal-market-value and equal-risk allocations are compared.
+4. **Dividends in replication** (`meth:option-replication-deltas`). The identities carry D.
+   A fixed-strike short forward has spot delta -e^-qT (-0.9900498 at 2% and six months).
+   Checked for zero and nonzero dividends.
+5. **Convexity convention** (`meth:embedded-option-effective-duration`). Figures are in the
+   compendium convention (callable -77.149899), and both conventions are stated with
+   matching price formulas.
+6. **Tesla convertible** (`meth:convertible-bond-valuation`). Terms come from the 2019
+   prospectus supplement: no issuer redemption, a holders' fundamental-change put, a
+   separate make-whole conversion adjustment and contingent conversion.
+7. **Calendar spread** (`meth:option-spreads-volatility-strategies`). Values and profits are
+   separated, with the valuation date and financing convention stated.
+
+One source key and reading note were added (`tesla-2024-notes-prospectus-2019`). Nine
+objectives were reassessed and remain covered, and fifteen outline items carry re-review
+notes. The nine batch scripts now run 264 checks (was 250). Totals are unchanged: 146 of 424
+objectives, 342 of 1,030 items. Details are in `notes/source-review-records.md`,
+*Correction pass on PR #25*. Remote CI was not triggered.

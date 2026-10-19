@@ -18,6 +18,8 @@ curve-shape effects, one-sided and key-rate durations, a floored floater, a Mont
 a path-dependent note it can value, Vasicek closed form against simulation, a Ho-Lee drift that fits the curve, and
 convertible scenario returns against a straight bond and the stock.
 
+Convexity is (V+ + V- - 2V0)/(V0 dr^2), the compendium convention, with dP/P ~ -D dr + C dr^2/2; the Handbook's
+half-scaled figure is reported beside it (corrected 2026-10-19, PR #25 pass).
 Conventions: annual periods, cash flows at period ends, risk-neutral probability 1/2 on each branch, prices per 100.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
@@ -267,16 +269,20 @@ dr = 0.0025
 v0 = value_tree(lows, [6.5] * 4, spread=oas, call=100.0)
 vp, vm = value_shifted(dr), value_shifted(-dr)
 d_eff = (vm - vp) / (2 * v0 * dr)
-c_eff = (vm + vp - 2 * v0) / (2 * v0 * dr**2)
+c_eff = (vm + vp - 2 * v0) / (v0 * dr**2)  # compendium convention: dP/P ~ -D dr + C dr^2 / 2
 ok(
     "callable at constant OAS: V+ = 101.621, V- = 102.765, effective duration 2.24",
     abs(vp - 101.621) < 1e-3 and abs(vm - 102.765) < 1e-3 and abs(d_eff - 2.24) < 0.005,
     f"{vp:.4f} {vm:.4f} D {d_eff:.4f}",
 )
 ok(
-    "effective convexity is negative for the callable (Handbook: -39.1 with the per-2 convention)",
-    c_eff < 0,
-    f"{c_eff:.2f}",
+    "callable effective convexity -77.149899 in the compendium convention (V0 dr^2); the Handbook divides by"
+    " 2 V0 dr^2 and prints -39.1 from rounded prices, -38.574949 unrounded",
+    abs(c_eff + 77.149899) < 1e-6
+    and close(c_eff / 2, (vm + vp - 2 * v0) / (2 * v0 * dr**2), 1e-12)
+    and abs(c_eff / 2 + 38.574949) < 1e-6
+    and abs((102.765 + 101.621 - 2 * 102.218) / (2 * 102.218 * dr**2) + 39.1) < 0.05,
+    f"{c_eff:.6f}",
 )
 d_down = (vm - v0) / (v0 * dr)
 d_up = (v0 - vp) / (v0 * dr)
@@ -289,17 +295,34 @@ oas_s = brentq(lambda s: value_tree(lows, [6.5] * 4, spread=s) - straight, -0.01
 sp_ = value_shifted(dr, "straight", 0.0)
 sm_ = value_shifted(-dr, "straight", 0.0)
 d_str = (sm_ - sp_) / (2 * straight * dr)
-c_str = (sm_ + sp_ - 2 * straight) / (2 * straight * dr**2)
+c_str = (sm_ + sp_ - 2 * straight) / (straight * dr**2)
 oas_p = brentq(lambda s: value_tree(lows, [6.5] * 4, spread=s, put=100.0) - putable, -0.01, 0.01)
 pp_ = value_shifted(dr, "put", oas_p)
 pm_ = value_shifted(-dr, "put", oas_p)
 d_put = (pm_ - pp_) / (2 * putable * dr)
-c_put = (pm_ + pp_ - 2 * putable) / (2 * putable * dr**2)
+c_put = (pm_ + pp_ - 2 * putable) / (putable * dr**2)
 ok(
     "durations: callable 2.24 < putable < straight; convexity: callable negative, straight and putable positive",
     abs(oas_s) < 1e-9 and d_eff < d_put < d_str and c_eff < 0 < c_str and c_put > 0,
     f"straight D {d_str:.3f} C {c_str:.2f}; putable D {d_put:.3f} C {c_put:.2f}",
 )
+ok(
+    "callable: with C = -77.15, -D dr + C dr^2/2 reproduces V+ and V- exactly at the measuring shift; the half-scaled"
+    " -38.57 in the same formula misses each by C dr^2 / 4",
+    close(-d_eff * dr + 0.5 * c_eff * dr**2, vp / v0 - 1, 1e-12)
+    and close(d_eff * dr + 0.5 * c_eff * dr**2, vm / v0 - 1, 1e-12)
+    and close((-d_eff * dr + 0.25 * c_eff * dr**2) - (vp / v0 - 1), -0.25 * c_eff * dr**2, 1e-12),
+)
+for sh in (0.005, -0.005):
+    full = value_shifted(sh, "straight", 0.0) / straight - 1
+    approx = -d_str * sh + 0.5 * c_str * sh**2
+    approx_half = -d_str * sh + 0.25 * c_str * sh**2
+    ok(
+        f"straight bond, {sh * 1e4:+.0f} bp (twice the measuring shift, option-free so smooth): -D dr + C dr^2/2 with"
+        f" C = {c_str:.2f} is within 0.5 bp of full revaluation and closer than with the half-scaled figure",
+        abs(approx - full) < 5e-5 and abs(approx - full) < abs(approx_half - full),
+        f"full {full:.6%}, approx {approx:.6%}, half-scaled {approx_half:.6%}",
+    )
 krd = [(value_shifted(-dr, key=k) - value_shifted(dr, key=k)) / (2 * v0 * dr) for k in range(4)]
 ok(
     "callable key-rate durations (par-rate shifts of 25 bp, recalibrated) are 0.443 / 0.143 / 0.166 / 1.539 and sum"

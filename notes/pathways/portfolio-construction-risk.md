@@ -94,9 +94,9 @@ Written in the derivatives, portfolio and execution batch (2026-10-19):
 
 In `market-risk-measurement.tex` (topic `market-risk-measurement`):
 
-- `meth:portfolio-var-methods-decomposition`: parametric, historical and Monte Carlo VaR on one portfolio, ES and VaR decompositions (RMFI 6th ed.).
-- `meth:sensitivity-scenario-risk-measures`: beta, duration, convexity and option Greeks as risk measures; historical, hypothetical and reverse stress tests.
-- `meth:market-risk-limits-capital`: risk budgets and limits, capital allocation with RAROC, and measures by institution type.
+- `meth:portfolio-var-methods-decomposition`: parametric, historical and Monte Carlo VaR on one portfolio, ES and VaR decompositions (RMFI 6th ed.). Corrected 2026-10-19 (PR #25 pass): one zero-mean convention throughout; components sum to the reported 1,729,125.
+- `meth:sensitivity-scenario-risk-measures`: beta, duration, convexity and option Greeks as risk measures; historical, hypothetical and reverse stress tests. Corrected 2026-10-19 (PR #25 pass): each stress and VaR comparison names the book it covers.
+- `meth:market-risk-limits-capital`: risk budgets and limits, capital allocation with RAROC, and measures by institution type. Corrected 2026-10-19 (PR #25 pass): the stop-loss comparison names the book and convention (1.16 times VaR).
 
 In `derivative-overlays.tex` (topic `derivative-overlay-strategies`):
 

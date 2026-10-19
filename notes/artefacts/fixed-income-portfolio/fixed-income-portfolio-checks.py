@@ -7,7 +7,9 @@ five-year GIC target of 13,934,413 from 9,642,899 at 7.5% (sec. 4.1.1.1), contin
 474.90 required, 25.10 cushion; sec. 4.1.1), and the dollar-duration rebalancing ratio (sec. 4.1.1.5). Handbook chap. 9:
 equivalent taxable yield 10% (6% at a 40% rate). Original, on an invented annual zero curve (3.00% + 0.15% x years to
 10 years, flat after): an expected-return model for a benchmark, leverage through repo with a haircut, after-tax
-comparison of municipal and taxable bonds, a cash-flow-matched portfolio and a ladder, single- and multiple-liability
+comparison of municipal and taxable bonds, a cash-flow-matched portfolio and a ladder with its
+key-rate profile and twist risk under equal-face, equal-market-value and equal-risk allocations (added 2026-10-19,
+PR #25 pass), single- and multiple-liability
 immunisation under parallel shifts and twists, a stratified-sampling tracking estimate, curve trades for market-
 consistent, divergent and volatility views, a currency-hedged comparison, and key-rate exposures of a portfolio against
 its benchmark with scenario returns.
@@ -164,6 +166,77 @@ ok(
     " reinvestment or spending",
     abs(ladder_dur - 4.686) < 0.001,
     f"{ladder_dur:.3f}",
+)
+
+
+def rung_cfs(weights):
+    """Annual cash flows (years 1-10) of a ladder holding `weights` units of face in each rung."""
+    cf = np.zeros(10)
+    for w_, (cfs_, times_) in zip(weights, ladder, strict=True):
+        for c_, t_ in zip(cfs_, times_, strict=True):
+            cf[t_ - 1] += w_ * c_
+    return cf
+
+
+def pv_bumped(cf, bumps):
+    return sum(cf[k] / (1 + zero(k + 1) + bumps[k]) ** (k + 1) for k in range(10))
+
+
+def key_rates(cf, h=1e-5):
+    """Key-rate durations to each annual zero rate, by central bumps of one rate at a time."""
+    v = pv_bumped(cf, np.zeros(10))
+    eye = np.eye(10)
+    return np.array(
+        [-(pv_bumped(cf, h * eye[k]) - pv_bumped(cf, -h * eye[k])) / (2 * h * v) for k in range(10)]
+    )
+
+
+tw_vec = np.array(
+    [zero(t, twist=0.005) - zero(t) for t in range(1, 11)]
+)  # -50 bp at 1y to +50 bp at 10y
+eq_face = rung_cfs(np.ones(10))
+krd_face = key_rates(eq_face)
+analytic = np.array(
+    [(k + 1) * eq_face[k] / (1 + zero(k + 1)) ** (k + 2) for k in range(10)]
+) / pv_bumped(eq_face, np.zeros(10))
+twist_face = pv_bumped(eq_face, tw_vec) / pv_bumped(eq_face, np.zeros(10)) - 1
+ok(
+    "equal-face ladder: key-rate durations rise from 0.1304 (1y) to 0.6363 (10y), not equal; they match the analytic"
+    " t CF_t / (1+z_t)^(t+1) / V and sum to its duration 4.686245",
+    np.allclose(krd_face, analytic, atol=1e-8)
+    and abs(krd_face[0] - 0.1304) < 5e-5
+    and abs(krd_face[-1] - 0.6363) < 5e-5
+    and abs(krd_face.sum() - 4.686245) < 1e-6
+    and abs(krd_face.sum() - ladder_dur) < 1e-4
+    and np.all(np.diff(krd_face) > 0),
+    " ".join(f"{x:.4f}" for x in krd_face),
+)
+ok(
+    "a steepening twist (-50 bp at 1y, +50 bp at 10y) changes the equal-face ladder's value by -0.493% by full"
+    " repricing; the key-rate first-order estimate is -0.510%: the ladder carries slope risk",
+    abs(twist_face + 0.00493) < 5e-6 and abs(-(krd_face * tw_vec).sum() + 0.00510) < 5e-6,
+    f"{twist_face:.4%}",
+)
+unit_pv = np.array([pv_bumped(rung_cfs(np.eye(10)[i]), np.zeros(10)) for i in range(10)])
+unit_dd = np.array([unit_pv[i] * key_rates(rung_cfs(np.eye(10)[i])).sum() for i in range(10)])
+eq_mv = rung_cfs(1 / unit_pv)  # equal market value per rung (Fabozzi's definition)
+eq_risk = rung_cfs(1 / unit_dd)  # equal dollar duration per rung
+krd_mv, krd_risk = key_rates(eq_mv), key_rates(eq_risk)
+twist_mv = pv_bumped(eq_mv, tw_vec) / pv_bumped(eq_mv, np.zeros(10)) - 1
+twist_risk = pv_bumped(eq_risk, tw_vec) / pv_bumped(eq_risk, np.zeros(10)) - 1
+mv_share_1y = (unit_pv[0] / unit_dd[0]) / np.sum(unit_pv / unit_dd)
+ok(
+    "equal market value per rung barely changes the profile (0.13 to 0.63, twist -0.48%); equal dollar duration per"
+    " rung flattens it (0.25 to 0.35) and nearly removes the twist exposure (+0.10%), but shortens duration to 3.14"
+    " and puts 32% of value in the 1-year rung",
+    krd_mv[-1] / krd_mv[0] > 4
+    and abs(twist_mv + 0.00483) < 5e-5
+    and krd_risk.max() / krd_risk.min() < 1.4
+    and abs(twist_risk - 0.00104) < 5e-5
+    and abs(krd_risk.sum() - 3.137) < 1e-3
+    and abs(mv_share_1y - 0.324) < 1e-3,
+    f"MV {krd_mv[0]:.4f}-{krd_mv[-1]:.4f} twist {twist_mv:.3%}; risk {krd_risk.min():.4f}-{krd_risk.max():.4f}"
+    f" twist {twist_risk:.3%}, duration {krd_risk.sum():.3f}",
 )
 
 print("== part 4: immunising single and multiple liabilities (MIP chap. 6, sec. 4.1)")

@@ -8,7 +8,8 @@ at correlation 0.4 -> 135.6) (sec. 11.6-11.8), RAROC of 20% and 22% (sec. 28.6),
 VaR = 2.326 sigma (sec. 27.1). From Managing Investment Portfolios (2007), chap. 9: the FX and fixed-income desks'
 returns on capital (20% and 12.5%) under the same VaR budget. Original, synthetic data (fixed seed): a 100m two-asset
 portfolio with Student-t returns for parametric, historical and Monte Carlo VaR and ES, Euler component, marginal and
-incremental VaR, and a backtest count; equity, bond and option sensitivities against full revaluation; historical,
+incremental VaR, and a backtest count, all on one zero-mean convention (corrected 2026-10-19, PR #25 pass: the
+reported total had included the sample mean while the components did not); equity, bond and option sensitivities against full revaluation; historical,
 hypothetical and reverse stress scenarios; limits, surplus at risk and relative VaR.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
@@ -99,12 +100,31 @@ rets = z / np.sqrt(w) * vols * math.sqrt((nu - 2) / nu)  # Student-t with the ta
 pos = np.array([60e6, 40e6])
 pnl = rets @ pos
 cov = np.cov(rets, rowvar=False)
+# One convention throughout parts 2-4: one-day losses measured from a zero expected P&L (RMFI's model-building
+# assumption). The parametric and Monte Carlo models have zero mean, and the historical P&L is centred on its
+# sample mean, so every VaR, ES, marginal, component and incremental figure below uses the same risk function.
+mu_hist = pnl.mean()
+pnl_c = pnl - mu_hist
+
+
+def var_fn(x):
+    """Zero-mean normal 99% one-day VaR of positions x under the sample covariance."""
+    return norm.ppf(0.99) * math.sqrt(x @ cov @ x)
+
+
 sd_p = math.sqrt(pos @ cov @ pos)
-var_par = norm.ppf(0.99) * sd_p - pnl.mean()
-es_par = es_normal(sd_p) - pnl.mean()
-srt = np.sort(-pnl)[::-1]  # losses, largest first
-var_hs = np.quantile(-pnl, 0.99, method="higher")
+var_par = var_fn(pos)
+es_par = es_normal(sd_p)
+srt = np.sort(-pnl_c)[::-1]  # centred losses, largest first
+var_hs = np.quantile(-pnl_c, 0.99, method="higher")
 es_hs = srt[: int(0.01 * n)].mean()
+ok(
+    "the sample mean P&L of the 1,000 days (-8,472) is excluded from every figure: the uncentred historical VaR is"
+    " exactly 8,472 higher, and adding the mean to the parametric total alone would break the Euler sum",
+    abs(mu_hist + 8_471.74) < 0.01
+    and close(np.quantile(-pnl, 0.99, method="higher"), var_hs - mu_hist, 1e-6),
+    f"mean {mu_hist:,.2f}",
+)
 sim_n = 200_000
 zs = rng.standard_normal((sim_n, 2)) @ np.linalg.cholesky(cov).T
 pnl_mc = zs @ pos
@@ -123,7 +143,7 @@ ok(
 wt = rng.chisquare(nu, size=(sim_n, 1)) / nu
 pnl_t = (
     rng.standard_normal((sim_n, 2)) @ L.T / np.sqrt(wt) * vols * math.sqrt((nu - 2) / nu)
-) @ pos
+) @ pos  # zero-mean model, same convention as the centred history
 ok(
     "Monte Carlo from the true Student-t model agrees with historical VaR within 15% (sampling error of 1,000 days)",
     abs(np.quantile(-pnl_t, 0.99) / var_hs - 1) < 0.15,
@@ -133,12 +153,12 @@ ok(
 marg = (cov @ pos) / sd_p * norm.ppf(0.99)
 comp = pos * marg
 ok(
-    "component VaRs (Euler) sum to the parametric VaR (zero-mean form)",
-    close(comp.sum(), norm.ppf(0.99) * sd_p, 1e-6),
-    f"equity {comp[0]:,.0f}, bonds {comp[1]:,.0f}",
+    "component VaRs (Euler) sum to the reported parametric VaR of the 100m book, 1,729,125",
+    close(comp.sum(), var_par, 1e-6) and abs(var_par - 1_729_124.91) < 0.01,
+    f"equity {comp[0]:,.2f}, bonds {comp[1]:,.2f}, total {var_par:,.2f}",
 )
-var_eq_only = norm.ppf(0.99) * math.sqrt(pos[0] ** 2 * cov[0, 0])
-incr_bonds = norm.ppf(0.99) * sd_p - var_eq_only
+var_eq_only = var_fn(np.array([pos[0], 0.0]))
+incr_bonds = var_par - var_eq_only
 ok(
     "the 40m bond book has a component VaR near zero (+11,899) but an incremental VaR of -28,794: removing it would"
     " raise VaR. Component approximates incremental only for small positions",
@@ -148,7 +168,7 @@ ok(
 small = np.array([60e6, 1e6])
 sd_s = math.sqrt(small @ cov @ small)
 comp_s = small[1] * (cov @ small)[1] / sd_s * norm.ppf(0.99)
-incr_s = norm.ppf(0.99) * sd_s - var_eq_only
+incr_s = var_fn(small) - var_eq_only
 ok(
     "with a 1m bond position instead, component and incremental VaR agree within 5%",
     abs(comp_s - incr_s) < 0.05 * abs(incr_s),
@@ -156,14 +176,26 @@ ok(
 )
 bump = 1e5
 bumped = pos + np.array([bump, 0.0])
-var_bumped = norm.ppf(0.99) * math.sqrt(bumped @ cov @ bumped)
 ok(
-    "marginal VaR by a 100,000 bump of equities matches the analytic marginal VaR",
-    abs((var_bumped - norm.ppf(0.99) * sd_p) / bump - marg[0]) < 1e-4,
+    "marginal VaRs by central 100,000 bumps of the same risk function match the analytic ones for both assets",
+    all(
+        abs(
+            (var_fn(pos + bump * np.eye(2)[i]) - var_fn(pos - bump * np.eye(2)[i])) / (2 * bump)
+            - marg[i]
+        )
+        < 1e-6
+        for i in range(2)
+    ),
 )
+# backtest: realised losses against a rolling 250-day historical VaR estimated from each window centred on its mean
 viol = np.sum(
     -pnl[250:]
-    > np.array([np.quantile(-pnl[i - 250 : i], 0.99, method="higher") for i in range(250, n)])
+    > np.array(
+        [
+            np.quantile(-(pnl[i - 250 : i] - pnl[i - 250 : i].mean()), 0.99, method="higher")
+            for i in range(250, n)
+        ]
+    )
 )
 ok(
     "rolling 250-day historical VaR has 750 out-of-sample days and an expected 7.5 violations; the count is reported",
@@ -229,10 +261,15 @@ for name, (eq, dy, dvol) in scen.items():
     bd_pnl = bond_pos * (-dur * dy + 0.5 * cvx * dy**2)
     opt_pnl = qty * bs(S * (1 + eq), K, T, r, sig + dvol, "p") - v0
     res[name] = eq_pnl + bd_pnl + opt_pnl
+eq_bd_2008 = beta * eq_pos * -0.35 + bond_pos * (-dur * -0.01 + 0.5 * cvx * 0.01**2)
 ok(
-    "the 2008-style scenario loses far more than the 99% one-day VaR: VaR says nothing about such tails",
-    -res["historical 2008-style"] > 5 * var_par,
-    f"{res['historical 2008-style'] / 1e6:.1f}m vs VaR {var_par / 1e6:.2f}m",
+    "the 2008-style scenario on the 100m equity-and-bond book alone loses 20.38m, over 11 times that book's 1.73m"
+    " one-day 99% VaR; the whole book with the short puts loses 48.4m. VaR says nothing about such tails",
+    abs(eq_bd_2008 + 20.38e6) < 0.01e6
+    and -eq_bd_2008 > 11 * var_par
+    and abs(res["historical 2008-style"] + 48.4e6) < 0.05e6,
+    f"equity-and-bond {eq_bd_2008 / 1e6:.2f}m, whole book {res['historical 2008-style'] / 1e6:.1f}m,"
+    f" VaR {var_par / 1e6:.3f}m",
 )
 
 
@@ -291,11 +328,11 @@ ok(
     abs(norm.ppf(0.95) * 0.03 - 0.0493) < 5e-5,
 )
 daily_stop = 2.0
-hit_rate = np.mean(-pnl > daily_stop * 1e6)
+hit_rate = np.mean(-pnl_c > daily_stop * 1e6)
 ok(
-    "a 2m daily stop-loss is 1.15 times the normal 99% VaR, yet the fat-tailed history breaches it on 1.1% of days"
+    "a 2m daily stop-loss is 1.16 times the normal 99% VaR of the 100m book, yet the fat-tailed history breaches it on 1.1% of days"
     " (about 2.8 days a year) against the 0.36% normality implies",
-    abs(daily_stop * 1e6 / var_par - 1.15) < 0.01
+    abs(daily_stop * 1e6 / var_par - 1.157) < 0.001
     and abs(hit_rate - 0.011) < 0.0015
     and hit_rate > 1 - norm.cdf(daily_stop * 1e6 / sd_p),
     f"{hit_rate:.4f} vs normal {1 - norm.cdf(daily_stop * 1e6 / sd_p):.4f}",

@@ -51,7 +51,7 @@ These entries value callable, putable, capped, floored and convertible bonds on 
 \end{qfmethod}
 
 \begin{qfmethod}[Interest-rate risk of bonds with embedded options: effective duration and convexity at constant OAS, one-sided and key-rate durations, and callable, putable and straight bonds compared]\label{meth:embedded-option-effective-duration}
-\qffield{Statement} \emph{Effective duration and convexity} for a bond with options use $D=(V_--V_+)/(2V_0\Delta r)$ and $C=(V_-+V_+-2V_0)/(2V_0\Delta r^2)$, where $V_\pm$ are values after the benchmark curve shifts by $\pm\Delta r$. The Handbook's procedure keeps the OAS constant (\hyperref[meth:option-adjusted-spread]{OAS}):
+\qffield{Statement} \emph{Effective duration and convexity} for a bond with options use $D=(V_--V_+)/(2V_0\Delta r)$ and, in the convention used throughout this compendium (\hyperref[meth:convexity-portfolio-duration]{convexity}), $C=(V_-+V_+-2V_0)/(V_0\Delta r^2)$, with the price change $\Delta V/V_0\approx-D\,\Delta r+\tfrac12C\,\Delta r^2$; $V_\pm$ are values after the benchmark curve shifts by $\pm\Delta r$. The Handbook divides by $2V_0\Delta r^2$, which gives half the figure; with that convention the price change is $-D\,\Delta r+C_{\text{half}}\,\Delta r^2$. A convexity number must be quoted with its convention. The Handbook's procedure keeps the OAS constant (\hyperref[meth:option-adjusted-spread]{OAS}):
 \begin{enumerate}
 \item compute the OAS from the market price;
 \item shift the par curve;
@@ -65,12 +65,12 @@ The callable bond ``exhibits negative convexity'' \citep[chap.~36, pp.~850--851]
 
 \emph{Key-rate durations} shift one par rate at a time, recalibrating the tree and holding the OAS. They show where on the curve the exposure sits.
 
-\qffield{Practice} \emph{Reproduced} (Handbook, $\Delta r=25$ basis points, OAS 35 basis points): $V_+=101.621$, $V_-=102.765$, $V_0=102.218$, an effective duration of 2.24 and a negative convexity ($-38.6$ unrounded).
+\qffield{Practice} \emph{Reproduced} (Handbook, $\Delta r=25$ basis points, OAS 35 basis points): $V_+=101.621$, $V_-=102.765$, $V_0=102.218$, an effective duration of 2.24 and a negative convexity, printed as $-39.1$ in the Handbook's half-scaled convention from rounded prices. Unrounded it is $-38.574949$ in that convention and $-77.149899$ in this compendium's.
 
 \emph{Original comparisons} (same tree and shift).
 \begin{itemize}
 \item \emph{One-sided.} The callable's down-duration is 2.142 and its up-duration 2.335.
-\item \emph{Callable, putable and straight.} Effective durations are 2.239 for the callable, 2.816 for the putable and 3.517 for the straight bond. Convexities are $-38.6$, $+5.56$ and $+8.18$. Both options shorten duration, because each makes an early redemption at par likely in some states. The call adds negative convexity; the put keeps convexity positive.
+\item \emph{Callable, putable and straight.} Effective durations are 2.239 for the callable, 2.816 for the putable and 3.517 for the straight bond. Convexities (compendium convention) are $-77.15$, $+11.13$ and $+16.36$. With $C=-77.15$, $-D\Delta r+\tfrac12C\Delta r^2$ returns $V_\pm$ exactly at the 25 basis point shift; for the straight bond at $\pm50$ basis points it is within 0.02 basis points of full revaluation, while putting the half-scaled figure into the same formula misses by about 1 basis point. Both options shorten duration, because each makes an early redemption at par likely in some states. The call adds negative convexity; the put keeps convexity positive.
 \item \emph{Key rates.} The straight bond's key-rate durations, 0.010, 0.020, 0.031 and 3.455, sum to its effective duration (3.517 within 0.005); almost all its exposure sits at the four-year rate. The callable's, 0.443, 0.143, 0.166 and 1.539, move exposure to shorter rates, because the bond may be redeemed early. They sum to 2.290 rather than 2.239: a single-rate shift changes exercise decisions, so key-rate durations of an option-embedded bond are not exactly additive at a 25 basis point shift.
 \end{itemize}
 
@@ -100,14 +100,18 @@ The callable bond ``exhibits negative convexity'' \citep[chap.~36, pp.~850--851]
 \end{qfmethod}
 
 \begin{qfmethod}[Convertible bonds: features, conversion value, premiums and minimum value, arbitrage-free valuation on a stock tree with default, and risk and return against straight bonds and stock]\label{meth:convertible-bond-valuation}
-\qffield{Statement} \emph{Features.} A convertible note can be exchanged for a set number of the issuer's shares, the \emph{conversion ratio}, so the \emph{conversion price} is par divided by the ratio. The Handbook's prototype is Tesla's 2 percent notes of May~2024 \citep[chap.~38, pp.~883--890]{s7-fabozzifixed}:
+\qffield{Statement} \emph{Features.} A convertible note can be exchanged for a set number of the issuer's shares, the \emph{conversion ratio}, so the \emph{conversion price} is par divided by the ratio. The Handbook's prototype is Tesla's 2 percent notes of May~2024 \citep[chap.~38, pp.~883--890]{s7-fabozzifixed}. Their terms, from the prospectus supplement of 2~May~2019 \citep[The Offering; Description of Notes]{tesla-2024-notes-prospectus-2019}:
 \begin{itemize}
-\item conversion premium 27.5 percent over the \$243 reference price, so a conversion price of \$309.83;
-\item conversion only after mid-February~2024, or earlier on contingent triggers such as the stock trading at 130 percent of the conversion price for 20 of 30 trading days;
-\item settlement in shares, cash or a mixture;
-\item no call, except on a fundamental change, with a make-whole adjustment to the conversion ratio;
-\item dilution protection.
+\item \$1.6 billion (\$1.84 billion with the underwriters' option) of 2.00 percent senior notes, interest from 7~May~2019 paid on 15~May and 15~November, maturing on 15~May~2024;
+\item an initial conversion rate of 3.2276 shares per \$1{,}000, a conversion price of about \$309.83, which the Handbook describes as a 27.5 percent premium over a \$243 reference price;
+\item \emph{contingent conversion}: before 15~February~2024 holders may convert only if a trigger is met (the stock at 130 percent or more of the conversion price on at least 20 of the last 30 trading days of a quarter; the notes trading below 98 percent of their conversion value; or specified corporate events); from that date to just before maturity they may convert at any time;
+\item settlement in cash, shares or a combination at Tesla's election, combination settlement with a \$1{,}000 specified amount being the default;
+\item \emph{no issuer call}: ``We may not redeem the notes prior to the maturity date,'' and there is no sinking fund;
+\item a \emph{fundamental-change put}: after a fundamental change (such as a takeover or delisting) holders may require Tesla to buy the notes for cash at 100 percent of principal plus accrued interest;
+\item a \emph{make-whole conversion adjustment}, separate from that put: a holder who converts in connection with a make-whole fundamental change receives additional shares from a table indexed by date and stock price, with the rate capped at 4.1152 shares per \$1{,}000, compensating for lost option time value;
+\item anti-dilution adjustments to the conversion rate for dividends, splits and similar events.
 \end{itemize}
+The fundamental-change put is a holder's right to cash at par; the make-whole adjustment raises what a converting holder receives; contingent conversion limits when conversion is possible. None is an issuer call. The Hull example below is hypothetical and has different terms (a call at 113).
 Most convertibles are senior unsecured, without financial covenants, and unrated or below investment grade. Callable issues usually have a hard non-call period followed by a soft call conditional on the share price.
 
 \emph{Components.} \emph{Parity} or conversion value is the conversion ratio times the share price. The \emph{bond floor} or investment value is the value without conversion. Above parity, the \emph{conversion premium} is (price/parity $-1$); the \emph{points premium} is (price $-$ parity)/10 per 1{,}000 of par; the \emph{investment premium} is (price/investment value $-1$) (eqs.~(38-4)--(38-6), p.~890). The holder is long a straight bond and a call on the stock, or, by put--call parity, long the stock with a put (pp.~888--889, eqs.~(38-1)--(38-3)). Minimum value: a convertible should not trade below the greater of parity and the bond floor, or buying and converting (or holding as a bond) would be profitable \citep[chap.~9, sec.~X.B, p.~249]{fixed-income-analysis-2007}.

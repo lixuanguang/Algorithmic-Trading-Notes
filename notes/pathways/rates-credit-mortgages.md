@@ -89,15 +89,15 @@ In `embedded-option-bonds.tex` (topic `embedded-option-bonds`):
 
 - `meth:callable-putable-bond-valuation`: embedded-option types, callable and putable values on the calibrated tree, and the effects of volatility, level and shape.
 - `meth:option-adjusted-spread`: OAS against the Z-spread, option cost and the effect of assumed volatility.
-- `meth:embedded-option-effective-duration`: effective, one-sided and key-rate durations and effective convexity at constant OAS.
+- `meth:embedded-option-effective-duration`: effective, one-sided and key-rate durations and effective convexity at constant OAS. Corrected 2026-10-19 (PR #25 pass): convexities in the compendium convention (callable -77.15) beside the Handbook's half-scaled figures.
 - `meth:capped-floored-floater-valuation`: capped, floored and collared floaters on the tree (Fabozzi Fixed Income Analysis 2007, chap. 9).
-- `meth:convertible-bond-valuation`: convertible features, conversion measures and premiums, Hull's default-adjusted stock tree, and risk-return against the straight bond and stock.
+- `meth:convertible-bond-valuation`: convertible features, conversion measures and premiums, Hull's default-adjusted stock tree, and risk-return against the straight bond and stock. Corrected 2026-10-19 (PR #25 pass): Tesla's terms from the 2019 prospectus supplement: no issuer call, a holders' fundamental-change put, a separate make-whole adjustment.
 
 In `fixed-income-portfolio-management.tex` (topic `fixed-income-portfolio-management`):
 
 - `def:fixed-income-mandates-return-model`: roles of bonds, mandate types, portfolio risk measures, liquidity and an expected-return model.
 - `meth:bond-leverage-taxation`: leverage through repo, futures, swaps and lending, and taxable against tax-exempt management.
-- `meth:liability-matching-ladders`: liability-driven investing, cash-flow matching by linear programming and ladders.
+- `meth:liability-matching-ladders`: liability-driven investing, cash-flow matching by linear programming and ladders. Corrected 2026-10-19 (PR #25 pass): the ladder's key-rate profile (0.13 to 0.64) and twist risk (-0.493%) replace the claim of equal key-rate durations; equal-face, equal-market-value and equal-risk allocations compared.
 - `meth:immunisation-liabilities`: single- and multiple-liability immunisation, shifts and twists, implementation alternatives and risks (MIP chap. 6).
 - `meth:bond-index-exposure-benchmarks`: bond indexes, passive methods and benchmark choice.
 - `meth:yield-curve-positioning`: positions for market-consistent, divergent, volatility and cross-currency curve views.

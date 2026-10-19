@@ -8759,7 +8759,7 @@
      "meth:embedded-option-effective-duration",
      "meth:curve-based-empirical-duration"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 5 (effective, one-sided and key-rate durations and effective convexities of callable, putable and straight bonds at constant OAS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 5 (effective, one-sided and key-rate durations and effective convexities of callable, putable and straight bonds at constant OAS); corrected 2026-10-19 (PR #25 pass): convexity in the compendium convention with repricing checks; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -8840,18 +8840,23 @@
      {
       "key": "s7-hulloptions",
       "locator": "chap. 27, sec. 27.4, pp. 650-653"
+     },
+     {
+      "key": "tesla-2024-notes-prospectus-2019",
+      "locator": "The Offering; Description of Notes, No Redemption, Settlement upon Conversion, Make Whole Fundamental Change adjustment, Fundamental Change repurchase"
      }
     ],
     "reading_notes": [
      "notes/readings/s7-fabozzifixed.md",
      "notes/readings/fixed-income-analysis-2007.md",
-     "notes/readings/s7-hulloptions.md"
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/tesla-2024-notes-prospectus-2019.md"
     ],
     "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
     "entry_evidence": [
      "meth:convertible-bond-valuation"
     ],
-    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 8 (conversion measures, premiums and minimum value, Hull's 107.44 default tree and risk-return against the straight bond and stock); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py part 8 (conversion measures, premiums and minimum value, Hull's 107.44 default tree and risk-return against the straight bond and stock); corrected 2026-10-19 (PR #25 pass): Tesla terms from the prospectus supplement; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9826,7 +9831,7 @@
      "meth:portfolio-var-methods-decomposition",
      "meth:var-es-estimation-methods"
     ],
-    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py parts 1-2 (RMFI's model-building VaR and ES, parametric, historical and Monte Carlo VaR on one synthetic portfolio, and marginal, component and incremental VaR); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py parts 1-2 (RMFI's model-building VaR and ES, parametric, historical and Monte Carlo VaR on one synthetic portfolio, and marginal, component and incremental VaR); corrected 2026-10-19 (PR #25 pass): one zero-mean convention; components sum to the reported 1,729,124.91; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9865,7 +9870,7 @@
     "entry_evidence": [
      "meth:sensitivity-scenario-risk-measures"
     ],
-    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 3 (beta, duration and convexity, delta-gamma-vega measures against full revaluation, and historical, hypothetical and reverse stress scenarios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 3 (beta, duration and convexity, delta-gamma-vega measures against full revaluation, and historical, hypothetical and reverse stress scenarios); corrected 2026-10-19 (PR #25 pass): scenario and VaR comparisons on the same named book; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -9908,7 +9913,7 @@
     "entry_evidence": [
      "meth:market-risk-limits-capital"
     ],
-    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 4 (limit utilisation, risk budgets, RAROC capital allocation and institution-specific measures); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 4 (limit utilisation, risk budgets, RAROC capital allocation and institution-specific measures); corrected 2026-10-19 (PR #25 pass): stop-loss comparison on the named book and convention; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -10476,7 +10481,7 @@
     "entry_evidence": [
      "meth:liability-matching-ladders"
     ],
-    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 3 (an original least-cost cash-flow-matched portfolio by linear programming, surplus risk and a ladder's reinvestment profile); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py part 3 (an original least-cost cash-flow-matched portfolio by linear programming, surplus risk and a ladder's reinvestment profile); corrected 2026-10-19 (PR #25 pass): ladder key-rate profile and twist risk under three allocations; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -11400,7 +11405,7 @@
     "sources": [
      {
       "key": "s7-hulloptions",
-      "locator": "chap. 12, sec. 12.2, eq. (12.1), pp. 270-272"
+      "locator": "chap. 12, sec. 12.2, eq. (12.1), pp. 270-272; chap. 15, sec. 15.12, p. 360"
      },
      {
       "key": "s7-natenberg",
@@ -11415,7 +11420,7 @@
     "entry_evidence": [
      "meth:option-replication-deltas"
     ],
-    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 1 (replication of the asset return with a call, a put and a bond, and deltas of covered calls and protective puts against long asset and short forward positions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 1 (replication of the asset return with a call, a put and a bond, and deltas of covered calls and protective puts against long asset and short forward positions); corrected 2026-10-19 (PR #25 pass): dividend-consistent replication and spot deltas; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -11499,7 +11504,7 @@
      "meth:option-spreads-volatility-strategies",
      "def:implied-volatility-surface"
     ],
-    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 3 (bull and bear spreads, straddles, collars, calendar spreads and the effect of skew on a collar); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 3 (bull and bear spreads, straddles, collars, calendar spreads and the effect of skew on a collar); corrected 2026-10-19 (PR #25 pass): calendar-spread value and profit separated; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -12047,7 +12052,7 @@
     "entry_evidence": [
      "meth:equity-portfolio-capacity-structure"
     ],
-    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 7 (capacity, liquidation days, turnover cost and transfer coefficients of long-only and 130/30 portfolios by constrained optimisation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py part 7 (capacity, liquidation days, turnover cost and transfer coefficients of long-only and 130/30 portfolios by constrained optimisation); corrected 2026-10-19 (PR #25 pass): transfer coefficients against the analytical zero-net-weight optimum; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },

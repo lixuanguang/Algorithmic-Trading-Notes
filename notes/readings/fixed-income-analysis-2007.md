@@ -21,7 +21,7 @@ Prepared on 2026-10-19 by the derivatives, portfolio and execution batch (2026-1
 
 - On the Handbook's tree (10% volatility), a floater at the one-year rate is worth 100; with a 7.25% cap 99.724; with a 7.75% cap 99.858 (pp. 246-247).
 - Minimum value of a convertible is the greater of conversion and straight value (p. 249).
-- A ladder has roughly equal amounts per maturity and flat key-rate durations (p. 207).
+- A ladder has "approximately equal dollar amounts (market values) in each maturity sector"; Exhibit 7 shows a 1997 Treasury ladder with roughly equal key-rate durations from year 2 on, a property of that portfolio and its key-rate grid, not of equal amounts in general (p. 207; reread 2026-10-19).
 
 ## Limits
 

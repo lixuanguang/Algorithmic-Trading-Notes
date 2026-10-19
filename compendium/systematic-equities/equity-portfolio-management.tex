@@ -201,7 +201,11 @@ The stock picker's active variance is 11 percent factor and 89 percent stock-spe
 \item \emph{Long extension} (130/30) adds limited shorts.
 \item \emph{Long--short} and \emph{market-neutral} portfolios hold equal longs and shorts with beta near zero, earning cash plus alpha, and can be equitised with futures (MIP, chap.~7, secs.~5.3--5.3.3, pp.~450--454).
 \end{itemize}
-The transfer coefficient measures how much of the unconstrained portfolio's information reaches the constrained one (\hyperref[res:fundamental-law-active-management]{fundamental law}).
+The transfer coefficient measures how much of the unconstrained portfolio's information reaches the constrained one (\hyperref[res:fundamental-law-active-management]{fundamental law}). Its value depends on which unconstrained reference is used, so the reference must be stated. Here it is the portfolio $Q$ that maximises $\alpha^\top a-\lambda\,a^\top Da$ (alpha less a residual-variance penalty, $D$ the diagonal specific covariance) subject only to $\mathbf1^\top a=0$: fully invested, with no bounds on positions. The first-order condition $\alpha-2\lambda Da=\eta\mathbf1$ gives
+\[
+a_Q=\frac{D^{-1}(\alpha-\eta\mathbf1)}{2\lambda},\qquad \eta=\frac{\mathbf1^\top D^{-1}\alpha}{\mathbf1^\top D^{-1}\mathbf1}.
+\]
+The transfer coefficient of a constrained portfolio with active weights $a$ is then the $D$-weighted correlation $a^\top Da_Q/\sqrt{(a^\top Da)(a_Q^\top Da_Q)}$, which is the correlation of its risk-scaled positions with $\alpha-\eta\mathbf1$ (Interpretation). Simply rescaling $D^{-1}\alpha/(2\lambda)$ to zero net weight with benchmark weights is feasible but not optimal, and it reports a different coefficient.
 
 \emph{Evaluating a structure against the mandate} (Interpretation). Long-only suits mandates that forbid leverage and shorting, at the cost of transfer. 130/30 keeps net exposure at 100 percent with more transfer, but needs borrowing, a prime broker and leverage approval. Market-neutral suits an absolute-return mandate, with borrow costs, recall risk and the risk of factor crowding.
 
@@ -209,7 +213,7 @@ The transfer coefficient measures how much of the unconstrained portfolio's info
 \begin{itemize}
 \item \emph{Capacity.} A 2 percent position for a 5 billion fund in a stock trading 20 million a day, at 20 percent participation, takes 25 days to build. Capacity at a five-day limit is 1 billion.
 \item \emph{Turnover.} 100 percent turnover at 30 basis points a side costs 0.60 percent a year, a large share of a 2 percent alpha target.
-\item \emph{Transfer} (synthetic universe, alphas tilted to value and scaled by residual risk). Optimised against residual risk with a 20 percent position cap, a long-only portfolio has a transfer coefficient of 0.616. A 130/30 portfolio (30 percent gross short, at most 0.6 percent short per stock) has 0.786, keeping 28 percent more of the same signal's information ratio. The 130/30 holds 130 percent long and 30 percent short: 160 percent gross and 100 percent net, with shorts that must be borrowed and financed.
+\item \emph{Transfer} (synthetic universe, alphas tilted to value and scaled by residual risk). Optimised against residual risk ($\lambda=10$) with a 20 percent position cap, a long-only portfolio has a transfer coefficient of 0.609 against $a_Q$. A 130/30 portfolio (30 percent gross short, at most 0.6 percent short per stock) has 0.781, keeping 28 percent more of the same signal's information ratio. The reference is checked independently: $a_Q$ sums to zero, $\alpha-2\lambda Da_Q$ is constant, it equals the solution of the bordered KKT system, and every feasible perturbation lowers the objective. Against the benchmark-rescaled reference, which has a lower objective, the coefficients would read 0.616 and 0.786. The 130/30 holds 130 percent long and 30 percent short: 160 percent gross and 100 percent net, with shorts that must be borrowed and financed.
 \end{itemize}
 
 \qffield{Conditions} Capacity estimates depend on volume forecasts and impact models; transfer coefficients on the alpha and risk inputs. The 130/30 example ignores borrow fees and recall.

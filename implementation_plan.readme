@@ -2831,7 +2831,7 @@ passed all hooks. PDF pages96-110 and118-119 were rendered and inspected, coveri
 all corrections and both complete client cases; no clipping or overlap observed.
 
 
-## 23. Accounting expansion: selected scope (confirmed before content edits, 2026-10-19)
+## 23. Accounting expansion: completed scope (selected before content edits, 2026-10-19)
 
 The following 45 canonical objectives are all `missing` at `bcc3551`, selected in
 prerequisite order. The three covered cash-flow objectives are excluded. This is
@@ -2922,3 +2922,5 @@ be delivered in a new stacked draft PR.
 - `objective:apply-integrated-analysis-framework` (decision; demonstrate).
 - `objective:adjust-for-comparability` (analysis; identify, explain, evaluate, recommend).
 - `objective:analyse-accounting-change-effects` (analysis; evaluate, analyze, interpret).
+
+Accounting expansion implementation (19 October2026): all45 selected missing IDs have substantive entries, operation/depth reviews and72 individually reviewed outline mappings.46 new entries include one shared case.85 numerical checks pass. Source records explicitly distinguish2026 requirements,2027 IFRS18 and2028 software changes, and historical primary texts. The coverage report confirms236/424 objectives and532/1,030 outline items. make check passed (36 tests,3 subtests,85 numerical scripts,8 outline hashes); the299-page PDF and all13 accounting pages were inspected. Pre-commit passed after an EOF cleanup. Final layout checks passed. Delivery branch is codex/accounting-statement-analysis-20261019, based on corrected893622d, targeting the still-open PR26 branch as a draft. Corrections/restored decisions contribute zero to this45 count.

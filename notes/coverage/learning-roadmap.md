@@ -138,3 +138,7 @@ Two routes have been followed end to end, from roadmap to compiled entry to sour
 | `topic:wealth-planning` Goals-based wealth and investment planning | `private-wealth-management` | `topic:private-wealth-clients`, `topic:strategic-asset-allocation` | 5 |
 | `topic:wealth-preservation` Human-capital and purchasing-power protection | `private-wealth-management` | `topic:wealth-planning` | 2 |
 | `topic:wealth-transfer-advice` Advising complex families and transferring wealth | `private-wealth-management` | `topic:wealth-planning` | 3 |
+
+### Accounting expansion,19 October2026
+
+The45-objective accounting slice follows framework → income/balance/cash-flow analysis → inventory/long-lived assets → leases/compensation/taxes → quality → ratios → integrated forecast and credit decision. Existing three cash-flow objectives remain prerequisites, not newly counted. See the [semantic review](../source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026) for all operations and depth. These are editorial completions, not learner mastery; the remaining financial-statement topics are not silently promoted.

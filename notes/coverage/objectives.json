@@ -2925,13 +2925,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:statement-analysis-process"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap.1 solutions1-19, PDF173-174"
+     },
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS1 paras10,15,25,27,106"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/adopted-accounting-standards-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:statement-analysis-process"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes the purpose, collection, processing, interpretation, communication and monitoring stages; distinguishes reporting roles and period/point statements with a lender/equity contrast."
+   },
    "supersedes": null
   },
   {
@@ -2943,13 +2965,30 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:filings-notes-audit-evidence"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap.1 solutions9-19, PDF174"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:filings-notes-audit-evidence"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes notes, filings, management commentary, audit opinions and external evidence; applies delivery, collection and inventory corroboration and dates the information set."
+   },
    "supersedes": null
   },
   {
@@ -2961,13 +3000,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:reporting-framework-transitions"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap.2 solutions1-15, PDF175-176"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "art2; IFRS18 paras47,69,117-125,C1-C3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/eu-2026-338-ifrs18.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:reporting-framework-transitions"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes IASB versus endorsed IFRS and US GAAP, authority and issued/effective status; contrasts2026 scope with IFRS18 and software transitions and their analytical implications."
+   },
    "supersedes": null
   },
   {
@@ -2979,13 +3040,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:revenue-recognition-analysis"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IFRS15 paras9,22,27,31,35,38,47,56,73,B34-B35,B77-B82"
+     },
+     {
+      "key": "us-revenue-2014",
+      "locator": "Summary pp2-5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-revenue-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:revenue-recognition-analysis"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes all five revenue steps, over-time criteria, allocation, variable consideration, principal/agent, consignment and bill-and-hold; reconciles device revenue and the support liability by date."
+   },
    "supersedes": null
   },
   {
@@ -2998,13 +3081,40 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:expense-capitalization-analysis"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS2 paras10-16,34; IAS16 paras7,15,43,50-51; IAS38 paras54,57; IAS8 para36"
+     },
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap8 solutions1-9,39-48, PDF201-205"
+     },
+     {
+      "key": "us-research-2023",
+      "locator": "ASC730-10-25-1, printed pp37-38 / PDF42-43"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/us-research-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:expense-capitalization-analysis"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes recognition and contrasts expensing/capitalization with a120 development project, asset90/DTL22.5/equity67.5, cash classification and subsequent amortization; criteria precede numbers."
+   },
    "supersedes": null
   },
   {
@@ -3016,13 +3126,30 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:nonrecurring-policy-estimate-adjustments"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS1 paras87,97; IAS8 paras14,19,22,34,36,42; IFRS5 paras32-33"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:nonrecurring-policy-estimate-adjustments"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes discontinued/nonrecurring items and policy/estimate/error treatment; normalizes profit without deleting recurring restructuring and calculates prospective residual-value depreciation."
+   },
    "supersedes": null
   },
   {
@@ -3036,13 +3163,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:basic-diluted-eps-analysis"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS33 paras10,19,26,31,33,41,43,45,47,64,70"
+     },
+     {
+      "key": "us-convertibles-2020",
+      "locator": "ASC260-10-45-40 pp16-17"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-convertibles-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:basic-diluted-eps-analysis"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes simple/complex structures; calculates weighted/basic, option, if-converted and sequential diluted EPS, antidilution, loss control and split adjustment; interprets artificial repurchases."
+   },
    "supersedes": null
   },
   {
@@ -3054,13 +3203,30 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:common-size-income-performance"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap3 solution23 PDF179; chap6 solutions12-19 PDF191"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:common-size-income-performance"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Evaluates two years of common-size margins, sales and profit growth, financing and collection signals; gives peer-presentation and sustainability caveats."
+   },
    "supersedes": null
   },
   {
@@ -3072,13 +3238,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:intangibles-goodwill-analysis"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS38 paras12,21,33,48,97,107,118; IFRS3 paras10,18,32; IAS36 paras10,104,124"
+     },
+     {
+      "key": "us-goodwill-2017",
+      "locator": "Summary pp1-3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-goodwill-2017.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:intangibles-goodwill-analysis"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains finite/indefinite intangibles, acquisition goodwill30, disclosure, impairment and the current US single-step quantitative mechanism; distinguishes economic value from collateral."
+   },
    "supersedes": null
   },
   {
@@ -3090,13 +3278,50 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:instruments-liabilities-reporting"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IFRS9 paras4.1.1-4.1.4,5.7.5; B5.7.1-B5.7.1A"
+     },
+     {
+      "key": "us-instruments-2016",
+      "locator": "Summary pp1-3"
+     },
+     {
+      "key": "us-debt-costs-2015",
+      "locator": "Summary pp1-2"
+     },
+     {
+      "key": "liability-covenants-2024",
+      "locator": "IASB announcement 31 October2022, covenant treatment/effective date"
+     },
+     {
+      "key": "financial-instrument-amendments-2026",
+      "locator": "IASB announcement30 May2024, classification/settlement/effective date"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-instruments-2016.md",
+     "notes/readings/us-debt-costs-2015.md",
+     "notes/readings/liability-covenants-2024.md",
+     "notes/readings/financial-instrument-amendments-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:instruments-liabilities-reporting"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains instrument categories and debt/non-current liability presentation and disclosure; a discounted bond reconciles effective interest, cash coupon and FVOCI; dates2024/2026 amendments."
+   },
    "supersedes": null
   },
   {
@@ -3109,13 +3334,30 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:common-size-balance-sheet-analysis"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap4 solutions18,25-34 PDF182-183"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:common-size-balance-sheet-analysis"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Calculates both common-size balance-sheet sides and current/quick/cash and alternative leverage ratios; interprets improving solvency with weakening immediate liquidity."
+   },
    "supersedes": null
   },
   {
@@ -3270,13 +3512,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:reported-common-size-cash-flows"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap5 solutions25-30 PDF187-188"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:reported-common-size-cash-flows"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Analyzes sources/uses, direct/indirect bridges and two explicit common-size denominators; interprets capex/distribution funding, supplier timing and classification risks."
+   },
    "supersedes": null
   },
   {
@@ -3289,15 +3548,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:free-cash-flow-and-cash-coverage"
+   ],
    "candidate_entries": [
     "meth:statement-linked-cash-flows"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap5 solutions29-30 PDF188"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:free-cash-flow-and-cash-coverage"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Calculates FCFF by CFO and independent EBIT routes, FCFE and distribution bridge, performance/coverage ratios; interprets denominators, tax shields and payment timing."
+   },
    "supersedes": null
   },
   {
@@ -3309,13 +3585,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:inventory-cost-nrv"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS2 paras9-16,28,33-34"
+     },
+     {
+      "key": "us-inventory-2015",
+      "locator": "ASC330-10-35-1A through35-7 pp4-6; effective datep2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-inventory-2015.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:inventory-cost-nrv"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes inventory cost/NRV, IFRS reversal and US scope distinctions; write-down reconciles inventory, deferred tax and equity and explains ratio/cash effects."
+   },
    "supersedes": null
   },
   {
@@ -3328,13 +3626,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:inventory-cost-flow-comparison"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS2 paras23-25"
+     },
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap7 solutions4-14 PDF193-194"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:inventory-cost-flow-comparison"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Calculates FIFO/LIFO/average under rising and falling lot prices using a unit-cost ledger; explains tax, liquidation and reserve-change versus closing-reserve effects."
+   },
    "supersedes": null
   },
   {
@@ -3347,13 +3667,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:inventory-disclosure-diagnostics"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS2 para36"
+     },
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap7 solutions52-55 PDF199-200"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:inventory-disclosure-diagnostics"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes disclosures and explains stock classes, production/demand, cost-basis and price/quantity effects; applies an aged-stock diagnostic and conditional collateral response."
+   },
    "supersedes": null
   },
   {
@@ -3365,13 +3707,45 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:purchased-developed-acquired-intangibles"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS38 paras21,33,48,54,57,63"
+     },
+     {
+      "key": "us-software-2025",
+      "locator": "Summary pp1-4"
+     },
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap8 solutions1-8 PDF201"
+     },
+     {
+      "key": "us-research-2023",
+      "locator": "ASC730-10-25-1, printed pp37-38 / PDF42-43"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-software-2025.md",
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/us-research-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:purchased-developed-acquired-intangibles"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Compares purchased, internally developed and acquired intangibles and their margins/ROA; distinguishes general R&D from software and issued2025 rules mandatory from2028."
+   },
    "supersedes": null
   },
   {
@@ -3386,13 +3760,40 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:asset-impairment-disposal-analysis"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS36 paras9-10,18,59,110,117,124,130; IAS16 paras30-31,39,67-68,73; IAS38 para118"
+     },
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap8 solutions24-32 PDF203-204"
+     },
+     {
+      "key": "us-impairment-2001",
+      "locator": "paras7-8,15, PDF9-11; historical primary basis, compare workbook2020"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/us-impairment-2001.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:asset-impairment-disposal-analysis"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains/evaluates impairment and disposal with IFRS and US screens, analyzes asset roll-forwards and disclosure evidence, and interprets smaller-denominator and cash consequences."
+   },
    "supersedes": null
   },
   {
@@ -3404,13 +3805,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:lessee-lessor-accounting"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IFRS16 paras5,9,22,26,32,36,50,61-67,81"
+     },
+     {
+      "key": "us-leases-2016",
+      "locator": "ASC842-20-25-1 to25-6 pp101-102;45-5 pp108-109;842-30-25-1 to25-11 pp126-129"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-leases-2016.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:lessee-lessor-accounting"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains both lessee and lessor reporting, exemptions and balance-sheet treatment; computes lease liability/ROU, expense patterns and identical cash under IFRS/US conventions."
+   },
    "supersedes": null
   },
   {
@@ -3423,13 +3846,40 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:defined-contribution-benefit-reporting"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS19 paras51,63-64,83,120,122-127"
+     },
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap14 solutions1-11,19-23 PDF229-231"
+     },
+     {
+      "key": "us-pension-2017",
+      "locator": "ASC715-20-45-3A p6"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/us-pension-2017.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:defined-contribution-benefit-reporting"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains and contrasts DC/DB promises and risk; reconciles gross obligation/assets, cash, net liability, P&L/OCI and IFRS/US expected-return differences."
+   },
    "supersedes": null
   },
   {
@@ -3442,13 +3892,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:share-based-compensation-reporting"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IFRS2 paras7,11,15,19-21,30"
+     },
+     {
+      "key": "us-share-pay-2016",
+      "locator": "Summary pp1-3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-share-pay-2016.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:share-based-compensation-reporting"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains and contrasts salary, equity/cash-settled awards and deferred compensation; grant/vesting calculation, forfeiture rules, market conditions and tax presentation are explicit."
+   },
    "supersedes": null
   },
   {
@@ -3460,13 +3932,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:long-term-obligation-disclosures"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IFRS16 paras53,89; IAS19 paras135,140,144; IFRS2 paras44-47"
+     },
+     {
+      "key": "us-leases-2016",
+      "locator": "ASC842-20-50-4 p110"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-leases-2016.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:long-term-obligation-disclosures"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes debt, lease, pension and share-pay presentation/disclosures; distinguishes discounted liability from maturity totals and reconciles award movements without conflating grants and shares."
+   },
    "supersedes": null
   },
   {
@@ -3478,13 +3972,30 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:accounting-taxable-profit-differences"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS12 paras7-8,15,24,47,58"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:accounting-taxable-profit-differences"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Contrasts accounting/taxable income, tax expense/payable and permanent/temporary differences with depreciation, warranty and nondeductible-fine reconciliation."
+   },
    "supersedes": null
   },
   {
@@ -3497,13 +4008,40 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:deferred-tax-recovery-analysis"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS12 paras24,34,47,53,56,58,61A,81"
+     },
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap9 solutions9-22 PDF207-208"
+     },
+     {
+      "key": "us-deferred-tax-1992",
+      "locator": "paras17-18,20-24, PDF11-14; historical primary basis, compare workbook2020"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/us-deferred-tax-1992.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:deferred-tax-recovery-analysis"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains DTA/DTL recognition, enacted/substantively enacted rates and recovery; analyzes partial allowance, rate remeasurement, OCI and disclosure/valuation consequences."
+   },
    "supersedes": null
   },
   {
@@ -3519,13 +4057,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:tax-rate-reconciliation"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS12 paras58,61A,81"
+     },
+     {
+      "key": "us-tax-disclosures-2023",
+      "locator": "ASC740-10-50-12A pp10-11;50-22-23 p14;Summary p5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/us-tax-disclosures-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:tax-rate-reconciliation"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Calculates and interprets statutory/effective/two stated cash rate denominators; contrasts timing/permanent effects, analyzes the reconciliation and explains current US disaggregation and transition."
+   },
    "supersedes": null
   },
   {
@@ -3538,13 +4098,30 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:reporting-results-quality-spectrum"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap11 solutions1-12 PDF217-218"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:reporting-results-quality-spectrum"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Compares reporting and results quality, describes a spectrum and conservative/aggressive effects; uses truthful poor results and balanced but misstated statements as counterexamples."
+   },
    "supersedes": null
   },
   {
@@ -3556,13 +4133,30 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:reporting-incentives-controls"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap11 solutions13-20 PDF218-219"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:reporting-incentives-controls"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes incentives/opportunity/rationalization and governance, audit, lender and regulator discipline with their limits; applies an EBITDA bonus/covenant capitalization example."
+   },
    "supersedes": null
   },
   {
@@ -3575,13 +4169,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:earnings-management-choices"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap11 solutions8,10-12,22-27 PDF218-220"
+     },
+     {
+      "key": "non-gaap-disclosures-2022",
+      "locator": "Questions100.01-100.06"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/non-gaap-disclosures-2022.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:earnings-management-choices"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains/describes recognition, estimation, real-action and non-GAAP presentation choices with the linked variant; distinguishes legitimate judgment from unsupported recognition."
+   },
    "supersedes": null
   },
   {
@@ -3593,13 +4209,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:accounting-warning-sign-investigation"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap11 solutions23-27 PDF219-220;chap17 solutions5-9 PDF252"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:accounting-warning-sign-investigation"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes warning signs and a detection process with hypotheses, alternative explanations, transaction corroboration and a cash-above-income false reassurance control."
+   },
    "supersedes": null
   },
   {
@@ -3613,13 +4246,30 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:activity-liquidity-solvency-profitability"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap6 solutions1-19 PDF189-191"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:activity-liquidity-solvency-profitability"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes tools/limits and calculates/interprets activity, liquidity, solvency and profitability with average versus closing stocks and purchases denominator explicitly stated."
+   },
    "supersedes": null
   },
   {
@@ -3632,13 +4282,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:company-ratio-evaluation"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap6 solutions5-19 PDF189-191;chap12 solutions1-7 PDF221"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:company-ratio-evaluation"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes ratio relationships and evaluates two-year company results and peers; computes distributor profit per delivery and contrasts service fill rates before reaching a conditional conclusion."
+   },
    "supersedes": null
   },
   {
@@ -3652,13 +4319,30 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:dupont-roe-analysis"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap6 solutions16-19 PDF191;chap18 solutions1-2 PDF255"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:dupont-roe-analysis"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Demonstrates/calculates three/five-factor DuPont matching direct ROE and interprets an independent leverage-versus-margin counterexample."
+   },
    "supersedes": null
   },
   {
@@ -3670,13 +4354,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:ratio-driven-earnings-forecast"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap6 solution22 PDF192;chap12 solutions1-2 PDF221"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "chap11 pp285,301-302"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:ratio-driven-earnings-forecast"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes and applies sales/cost/working-capital/debt/tax drivers with one-point cost and five-point collection sensitivities; distinguishes forecast closing ratios from historical averages."
+   },
    "supersedes": null
   },
   {
@@ -3688,13 +4394,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:integrated-pro-forma-statements"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap12 solutions1-2 PDF221"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "chap11 pp301-302"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md",
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:integrated-pro-forma-statements"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Demonstrates a fully linked opening-to-closing2027 model, direct/indirect cash, PPE/debt/equity schedules and bounded financing rule, with no unexplained balancing plug."
+   },
    "supersedes": null
   },
   {
@@ -3707,13 +4435,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:forecast-bias-remedies"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "chap1 pp2-5;chap11 pp282-285"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:forecast-bias-remedies"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains analyst biases and recommends a feasible driver-based remedy under a two-hour resource constraint, comparing consensus reuse and full rebuild with falsification/error tracking."
+   },
    "supersedes": null
   },
   {
@@ -3725,13 +4470,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:competition-price-cost-forecast"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "competitive-forces-framework",
+      "locator": "HBS Institute for Strategy and Competitiveness, The Five Forces, five descriptions"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "chap11 pp301-302"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/competitive-forces-framework.md",
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:competition-price-cost-forecast"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains five forces through price/volume/cost/payment drivers; calculates inflation, blocked pass-through and deflation sensitivities and connects them to margins and working capital."
+   },
    "supersedes": null
   },
   {
@@ -3743,13 +4510,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:forecast-horizon-terminal-assumptions"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "chap12 pp306-314"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:forecast-horizon-terminal-assumptions"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains a reasoned2027-2031 horizon, alternative transition lengths and terminal risk/reinvestment/growth consistency; independently reconciles long-run growth and value mechanics."
+   },
    "supersedes": null
   },
   {
@@ -7864,13 +8648,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:share-pay-shares-forecast"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IFRS2 paras15,19-21,44-47; IAS33 paras19,31,45"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:share-pay-shares-forecast"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains an explicit cohort expense forecast and dated share/buyback schedule, weighted EPS versus closing shares, sensitivities and valuation treatment without double counting."
+   },
    "supersedes": null
   },
   {
@@ -7882,13 +8683,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:pension-model-valuation"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS19 paras83,120,123,127,140,144"
+     },
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap14 solutions8-15,23 PDF230-232"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:pension-model-valuation"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Explains future gross pension schedules, expense versus cash funding, risk sensitivity and consistent deficit/equity-valuation alternatives; checks funded-status reconciliation."
+   },
    "supersedes": null
   },
   {
@@ -8021,13 +8844,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:financial-report-quality-case"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap17 solutions1-4,10-11 PDF251-252"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:financial-report-quality-case"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Demonstrates a conceptual report-quality process, explains/describes problems, and evaluates the linked variant through full before/after statements and a justified lender response."
+   },
    "supersedes": null
   },
   {
@@ -8041,13 +8881,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:earnings-persistence-accruals"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap17 solutions3,7,10,12 PDF251-253"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:earnings-persistence-accruals"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes/explains earnings indicators and accrual mean reversion, evaluates two accrual diagnostics and the premature-sale reversal, and separates persistence from reporting compliance."
+   },
    "supersedes": null
   },
   {
@@ -8060,13 +8917,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:cash-balance-quality-risk"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap17 solutions13-19 PDF253;chap1 solutions9-19 PDF174"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:cash-balance-quality-risk"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Describes/evaluates cash sources and balance-sheet recovery/completeness, factoring classification, capex/distribution funding and risk information; applies lender evidence requirements."
+   },
    "supersedes": null
   },
   {
@@ -8078,13 +8952,30 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:integrated-credit-facility-decision"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap12 solutions3-7 PDF221;chap18 solutions1-7 PDF255-256"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:integrated-credit-facility-decision"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Demonstrates a decision under lender30 limit, cash50 floor and leverage2 cap; compares decline, unconditional60,30 without dividend suspension and conditional30, with fully funded stress balance sheet and justified recommendation."
+   },
    "supersedes": null
   },
   {
@@ -8099,13 +8990,30 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:statement-comparability-adjustments"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "statement-analysis-workbook-2020",
+      "locator": "chap12 solutions7-13 PDF221-222"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/statement-analysis-workbook-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:statement-comparability-adjustments"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Identifies/explains reporting biases, evaluates LIFO/development/lease/pension comparability bridges and recommends supported corrections and uncertainty ranges for the stated lending purpose."
+   },
    "supersedes": null
   },
   {
@@ -8119,13 +9027,45 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:accounting-change-statement-bridges"
+   ],
    "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "adopted-accounting-standards-2023",
+      "locator": "IAS8 paras19,22,34,36,42;IAS16 para39;IAS12 para61A"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "IFRS18 parasC1-C3"
+     },
+     {
+      "key": "us-debt-costs-2015",
+      "locator": "Summary pp1-2"
+     },
+     {
+      "key": "us-software-2025",
+      "locator": "Summary pp3-4"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/adopted-accounting-standards-2023.md",
+     "notes/readings/eu-2026-338-ifrs18.md",
+     "notes/readings/us-debt-costs-2015.md",
+     "notes/readings/us-software-2025.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026",
+    "entry_evidence": [
+     "meth:accounting-change-statement-bridges"
+    ],
+    "example": "notes/artefacts/statement-accounting/statement-accounting-checks.py; Evaluates/analyzes/interprets policy/estimate/error/normalization and balance-sheet modifications, with revaluation tax/OCI, maintenance cash reclassification, asset-sale and standards-transition bridges."
+   },
    "supersedes": null
   },
   {

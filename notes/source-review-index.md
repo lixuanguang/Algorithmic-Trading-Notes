@@ -7,3 +7,5 @@ Research protocols and outputs are stored under `artefacts/<topic>/`; reading no
 Use `make check-compendium` from the repository root to check entry structure and references. It does not verify source claims or measure learning progress.
 
 - [Correction pass on PR #26, 19 October 2026](source-review-records.md#correction-pass-on-pr-26-19-october-2026): units, conventions, probability interpretation and allocation decisions.
+
+- [Accounting and statement analysis:45 objectives,19 October2026](source-review-records.md#accounting-and-statement-analysis-45-objectives-19-october-2026): semantic review, original linked company cases, standards dates and source limitations.

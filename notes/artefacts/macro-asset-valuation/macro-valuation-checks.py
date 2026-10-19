@@ -145,11 +145,26 @@ def pe(real, erp, infl=0.02):
 
 ok(
     "Gordon multiple (payout 50%, nominal growth 5%): with a 1.5% real rate, 2% inflation and a 4% equity premium the"
-    " forward P/E is 21.0; a 0.5-point lower real rate lifts it to 26.25; a 1-point higher premium cuts it to 15.0",
+    " trailing P/E is 21.0; a 0.5-point lower real rate lifts it to 26.25; a 1-point higher premium cuts it to 15.0",
     abs(pe(0.015, 0.04) - 21.0) < 1e-9
     and abs(pe(0.010, 0.04) - 26.25) < 1e-9
     and abs(pe(0.015, 0.05) - 15.0) < 1e-9,
 )
+E0, E1, D1 = 10.0, 10.5, 5.25
+for required, trailing, forward in (
+    (0.075, 21.0, 20.0),
+    (0.07, 26.25, 25.0),
+    (0.085, 15.0, 100 / 7),
+):
+    # Direct dividend PV sum independently verifies both earnings denominators.
+    terms = np.arange(1, 3001)
+    price = np.sum(D1 * (1.05 / (1 + required)) ** terms / 1.05)
+    ok(
+        f"Gordon price {price:.4f}: matching trailing and forward denominators",
+        close(price / E0, trailing, 1e-8)
+        and close(price / E1, forward, 1e-8)
+        and close(D1 / E1, payout),
+    )
 noi, cap0, cap1 = 5.0, 0.05, 0.055
 ok(
     "property: NOI of 5 at a 5.0% cap rate is worth 100; a rise in the cap rate to 5.5% (higher rates or premia, weaker"

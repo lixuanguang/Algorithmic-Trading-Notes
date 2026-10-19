@@ -79,3 +79,5 @@ Cross-referenced, not owned here: `def:macro-regime-asset-map` (`macro-regimes-s
 
 - Drobny: page numbers are from the 2006 printing; the 2013 revised edition (EPUB, compared on 2026-10-18 for the quotations used and Bessent's passages) lacks Andres Drobny's interview, so those attributions rest on 2006 alone. Read the rest of the 2013 edition.
 - Which of the earlier notes' "structural reasons" for macro (policy jumps, sticky capital, under-arbitraged links) do the section's readings support?
+
+Audit corrections, 19 October 2026: units, timing, pricing probabilities and source conventions corrected; Cedar and Lins decisions add complete alternatives and funding. See [correction record](../source-review-records.md#correction-pass-on-pr-26-19-october-2026). Editorial evidence only; not study, mastery or human review.

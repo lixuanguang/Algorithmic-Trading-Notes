@@ -65,11 +65,11 @@ avoiding a capital estimate but mixing capital deepening and TFP in one term.
 \begin{qfmodel}[Growth theories and convergence: classical (Malthusian), neoclassical (Solow) and endogenous growth models compared, the steady state, and absolute, conditional and club convergence with the evidence]\label{mod:growth-theories-convergence}
 \qffield{Statement} \emph{Classical} \citep[chap.~11, sec.~5, pp.~664--684]{economics-investment-decision-makers-2013}: with a fixed factor (land) and population rising whenever income exceeds subsistence, income per person returns to subsistence; technology raises population, not living standards. History refuted it because population growth slowed and technology progressed.
 
-\emph{Neoclassical (Solow)}: with diminishing returns to capital, capital per worker converges to a steady state where saving just covers depreciation, population growth and the deepening needed to keep pace with technology,
+\emph{Neoclassical (Solow)}: for $Y=AK^\alpha L^{1-\alpha}$, raw capital and output per worker are $k=K/L$ and $y=Y/L=Ak^\alpha$. Define labour efficiency $E=A^{1/(1-\alpha)}$, effective labour $EL$, normalized capital $\tilde k=K/(EL)$ and output $\tilde y=Y/(EL)=\tilde k^\alpha$. If continuous TFP growth is $\theta$, efficiency grows at $g_E=\theta/(1-\alpha)$. It is \emph{normalized} capital that converges to a stationary value satisfying
 \[
-sf(k)=\Big[\delta+n+\tfrac{\theta}{1-\alpha}\Big]k,
+s\tilde k^{\alpha}=(\delta+n+g_E)\tilde k.
 \]
-and output per worker grows at $\theta/(1-\alpha)$, output at $\theta/(1-\alpha)+n$ (eqs.~11-8 and~11-9, pp.~665--669). A higher saving rate raises the \emph{level} of capital and output per worker but not the steady-state \emph{growth} rate; growth in output per worker requires TFP growth, which the model takes as exogenous.
+On the balanced growth path, $\tilde k$, $\tilde y$ and $Y/K$ are constant, while raw $k$ and $y$ grow at $g_E$ and aggregate $K$ and $Y$ at $n+g_E$ (eqs.~11-8 and~11-9, pp.~665--669). A higher saving rate raises the \emph{level} of capital and output per worker but not the steady-state \emph{growth} rate; growth in output per worker requires TFP growth, which the model takes as exogenous.
 
 \emph{Endogenous growth} (pp.~677--680): technology is produced by investment in R\&D and knowledge capital, which have positive externalities, so returns to capital broadly defined need not diminish and saving can raise growth permanently. In Mankiw's AK model $\Delta Y/Y=sA-\delta$ \citep[chap.~9, sec.~9-4]{macroeconomics-2019}.
 
@@ -81,7 +81,7 @@ and output per worker grows at $\theta/(1-\alpha)$, output at $\theta/(1-\alpha)
 
 \qffield{Practice} \emph{Reproduced} (Example~11-10, pp.~666--667): with TFP growth 2.5 percent, labour share 0.465 and labour growth 1.2 percent, China's steady-state growth is $2.5/0.465+1.2=6.58$ percent; Japan's, with 0.2 percent and 0.573, is 0.35 percent; another economy at 0.8 percent and 0.567 is 1.41 percent. \emph{Original} ($\alpha=1/3$, $\delta=5\%$, $n=1\%$, $\theta=1.5\%$):
 \begin{itemize}
-\item saving rates of 20 and 30 percent give the same long-run growth of output per worker (2.26 percent, the discrete-time $\theta/(1-\alpha)$), with the high saver's level 22 percent higher;
+\item saving rates of 20 and 30 percent give the same long-run growth of output per worker (2.26 percent, the discrete-time $\theta/(1-\alpha)$), with the high saver's level 22 percent higher. In the annual model, $E$ grows by $(1.015)^{1/(1-1/3)}-1=2.2584\%$; $\tilde k$ converges to $[s/((1+n)(1+g_E)-(1-\delta))]^{1/(1-\alpha)}$, while $k=E\tilde k$ keeps growing;
 \item two economies differing only in initial capital per worker (0.5 against 8.0) converge, the poorer growing faster; near the steady state the model's convergence rate is $(1-\alpha)(n+g+\delta)=5.5$ percent a year (half-life 12.6 years), and 3.5 percent with a broad capital share of 2/3, both faster than the empirical 2 percent;
 \item without technology growth the steady state is $k^*=(s/(\delta+n))^{1/(1-\alpha)}=8.51$ at $s=25\%$, and the golden-rule saving rate equals the capital share, 1/3;
 \item in the AK model ($s=20\%$, $A=0.25$, $\delta=3\%$) growth is 2.0 percent and rises permanently to 3.25 percent if saving rises to 25 percent.

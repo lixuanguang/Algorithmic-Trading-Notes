@@ -2787,8 +2787,7 @@ mapped alongside where they carry part of an objective.
 them by independent routes: summing multiplier rounds, Markov chains against judgemental
 horizon forecasts, simulated forward and random-walk forecasts, reverse-optimisation round
 trips, binomial rebalancing payoffs, Monte Carlo spending plans, regression and grid-search
-hedge ratios and option pricing. Source slips (EIDM Exhibits 9-9 and 11-3; PMiP Example 7
-and the Smiths' rounding) are recorded.
+hedge ratios and option pricing. Source discrepancies and rounding differences were recorded; Section22 supersedes the error interpretation of PMiP Example7 and notes that the Smiths explicitly use unrounded rates.
 
 **Coverage.** The 118 items were read on their pages (Level I PDF pp. 5-7; Level II pp. 5-6
 and 25; Level III core pp. 1-3 and 12) and promoted with item-specific rationales. All 45
@@ -2804,3 +2803,122 @@ was not triggered.
 - Macro data are dated to their sources; scenario probabilities are subjective.
 - Several papers were read at abstract or introduction level.
 - Human review is outstanding.
+
+
+## 22. Audit corrections on PR #26 (completed, 2026-10-19)
+
+Verified clean starting head `bcc3551`; live PRs #24, #25 and #26 remain open drafts
+at `f320d35`, `bea4f8e` and `bcc3551`, with the expected stacked bases. Recorded
+coverage is 191/424 objectives and 460/1,030 items. Correct cap-rate units and
+cash timing, cross-hedge numeraire/notionals, physical versus pricing probabilities,
+Solow normalization, trailing/forward P/E, two allocation decisions, the original
+continuously compounded Markov convention and four consistency issues. Reassess
+all affected operations, renew numerical/source/mapping evidence and inspect the
+rendered pages before committing to PR #26. Corrections do not count as new coverage.
+
+Corrections implemented with151 checks across six changed scripts; all pass.
+Eleven objectives and35 items reassessed; baseline remains191/424 and460/1,030.
+Cochrane source identity additionally corrected from the actual title page.
+See the correction record for source locators and limits.
+
+Validation completed: `make check` passed lock/lint/format, both structural
+validators,36 tests plus3 subtests,84 numerical scripts and all8 outline hashes.
+Its PDF step initially failed because the sandbox denied the default font cache;
+with TEXMFVAR/TEXMFCACHE set to a writable temporary directory, a forced LuaLaTeX
+rebuild passed (287 pages, no overfull boxes or undefined references). Existing
+underfull/page-destination warnings are not treated as new errors. `make pre-commit`
+passed all hooks. PDF pages96-110 and118-119 were rendered and inspected, covering
+all corrections and both complete client cases; no clipping or overlap observed.
+
+
+## 23. Accounting expansion: selected scope (confirmed before content edits, 2026-10-19)
+
+The following 45 canonical objectives are all `missing` at `bcc3551`, selected in
+prerequisite order. The three covered cash-flow objectives are excluded. This is
+a scope record, not a completion claim. Work directly without delegation. Use
+substantive library readings and primary standards with edition, jurisdiction and
+effective dates; read every mapped outline item on its actual page. Reconcile
+company statements, adjustments, forecasts and decision constraints before
+coverage promotion. Expansion will branch from the corrected PR #26 head and
+be delivered in a new stacked draft PR.
+
+**topic:financial-reporting-framework**
+
+- `objective:describe-statement-analysis-framework` (foundation; describe).
+- `objective:use-filings-and-disclosures` (foundation; describe).
+- `objective:compare-reporting-frameworks` (foundation; describe).
+
+**topic:income-statement-analysis**
+
+- `objective:analyse-revenue-recognition` (foundation; describe).
+- `objective:analyse-expense-recognition` (foundation; describe, contrast).
+- `objective:adjust-non-recurring-items` (foundation; describe).
+- `objective:calculate-earnings-per-share` (foundation; describe, calculate, interpret).
+- `objective:analyse-income-statement-ratios` (foundation; evaluate).
+
+**topic:balance-sheet-analysis**
+
+- `objective:analyse-intangibles-goodwill` (foundation; explain).
+- `objective:analyse-financial-instruments-liabilities` (foundation; explain).
+- `objective:analyse-common-size-balance-sheet` (foundation; calculate, interpret).
+
+**topic:cash-flow-analysis**
+
+- `objective:interpret-cash-flow-statements` (analysis; analyze, interpret).
+- `objective:calculate-free-cash-flow-and-coverage` (foundation; calculate, interpret).
+
+**topic:inventory-accounting**
+
+- `objective:analyse-inventory-measurement` (foundation; describe).
+- `objective:compare-inventory-cost-methods` (foundation; calculate, explain).
+- `objective:evaluate-inventory-disclosures` (analysis; describe, explain).
+
+**topic:long-lived-asset-accounting**
+
+- `objective:compare-intangible-asset-reporting` (foundation; compare).
+- `objective:analyse-impairment-derecognition` (analysis; explain, evaluate, analyze, interpret).
+
+**topic:leases-employee-compensation**
+
+- `objective:analyse-lease-reporting` (foundation; explain).
+- `objective:analyse-pension-reporting` (foundation; explain, contrast).
+- `objective:analyse-share-based-compensation` (foundation; explain, contrast).
+- `objective:describe-long-term-liability-disclosures` (foundation; describe).
+- `objective:model-share-based-compensation` (analysis; explain).
+- `objective:model-post-employment-benefits` (analysis; explain).
+
+**topic:income-tax-accounting**
+
+- `objective:distinguish-tax-differences` (foundation; contrast).
+- `objective:analyse-deferred-taxes` (analysis; explain, analyze).
+- `objective:calculate-tax-rate-measures` (foundation; calculate, interpret, contrast, analyze, explain).
+
+**topic:financial-reporting-quality**
+
+- `objective:distinguish-reporting-and-results-quality` (foundation; compare, describe).
+- `objective:explain-reporting-incentives-discipline` (foundation; describe).
+- `objective:identify-earnings-management-methods` (analysis; explain, describe).
+- `objective:detect-reporting-warning-signs` (analysis; describe).
+- `objective:evaluate-report-quality` (analysis; demonstrate, explain, describe, evaluate).
+- `objective:evaluate-earnings-quality` (analysis; describe, explain, evaluate).
+- `objective:evaluate-cash-flow-balance-sheet-quality` (analysis; evaluate, describe).
+
+**topic:ratio-analysis**
+
+- `objective:calculate-financial-ratios` (foundation; describe, calculate, interpret).
+- `objective:evaluate-company-with-ratios` (analysis; describe, evaluate).
+- `objective:decompose-return-on-equity` (foundation; demonstrate, calculate, interpret).
+- `objective:forecast-earnings-with-ratios` (analysis; describe).
+
+**topic:financial-statement-modelling**
+
+- `objective:build-pro-forma-model` (analysis; demonstrate).
+- `objective:correct-forecast-biases` (analysis; explain, recommend).
+- `objective:forecast-under-competition-and-inflation` (analysis; explain).
+- `objective:choose-forecast-horizon` (analysis; explain).
+
+**topic:integrated-statement-analysis**
+
+- `objective:apply-integrated-analysis-framework` (decision; demonstrate).
+- `objective:adjust-for-comparability` (analysis; identify, explain, evaluate, recommend).
+- `objective:analyse-accounting-change-effects` (analysis; evaluate, analyze, interpret).

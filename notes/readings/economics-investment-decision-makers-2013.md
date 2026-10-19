@@ -28,3 +28,7 @@ Prepared on 2026-10-19 by the macro, allocation and currency batch from source c
 ## Limits
 
 Data and institutional descriptions date from 2010-2012 (OECD figures to 2008-2010, Libor discounting, Conference Board composition). Sign losses in the text layer were checked against arithmetic.
+
+## Correction reread, 19 October 2026
+
+Read pp.386-387,393-394 and665-669 (PDF pages +26). Accommodation raises the cited multiplier. The balanced-growth path has growing raw capital per worker; Exhibit11-13 is explicitly a snapshot whose equilibrium moves with technology (p.669). Normalized effective-worker capital is stationary.

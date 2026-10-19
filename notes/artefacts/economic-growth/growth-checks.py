@@ -99,16 +99,45 @@ for name, theta, labour_share, n, target in (
 a_s, s_, d_, n_, th_ = 1 / 3, 0.25, 0.05, 0.01, 0.015
 
 
-def solow_path(s, k0, years=400):
+def solow_path(s, k0, years=400, theta=th_, return_capital=False):
     """Annual Solow model in per-worker terms with TFP growing at theta; returns output per worker."""
-    a, k, ys = 1.0, k0, []
+    a, k, ys, raw_k, normalized_k = 1.0, k0, [], [], []
     for _ in range(years):
         y = a * k**a_s
         ys.append(y)
+        raw_k.append(k)
+        normalized_k.append(k / a ** (1 / (1 - a_s)))
         k = (s * y + (1 - d_) * k) / (1 + n_)
-        a *= 1 + th_
-    return np.array(ys)
+        a *= 1 + theta
+    return (np.array(raw_k), np.array(normalized_k)) if return_capital else np.array(ys)
 
+
+raw_k, norm_k = solow_path(0.25, 1.0, return_capital=True)
+eff_g = (1 + th_) ** (1 / (1 - a_s)) - 1
+norm_star = (0.25 / ((1 + n_) * (1 + eff_g) - (1 - d_))) ** (1 / (1 - a_s))
+ok(
+    "positive technology: normalized capital converges while raw capital per worker grows",
+    abs(norm_k[-1] - norm_star) < 1e-6
+    and abs(raw_k[-1] / raw_k[-2] - 1 - eff_g) < 1e-7
+    and raw_k[-1] > 1000 * norm_k[-1],
+)
+# Aggregate capital accumulation supplies an independent normalization route.
+K, L, A = 1.0, 1.0, 1.0
+for _ in range(399):
+    Y = A * K**a_s * L ** (1 - a_s)
+    K = (1 - d_) * K + 0.25 * Y
+    L *= 1 + n_
+    A *= 1 + th_
+ok(
+    "aggregate production and capital ledger matches per-worker simulation",
+    abs(K / L / raw_k[-1] - 1) < 1e-10 and abs(K / (L * A ** (1 / (1 - a_s))) - norm_star) < 1e-6,
+)
+zero_k, zero_norm = solow_path(0.25, 1.0, theta=0, return_capital=True)
+ok(
+    "zero-technology control: raw and normalized capital coincide and converge",
+    np.allclose(zero_k, zero_norm)
+    and abs(zero_k[-1] - (0.25 / (d_ + n_)) ** (1 / (1 - a_s))) < 1e-5,
+)
 
 y_lo, y_hi = solow_path(0.20, 1.0), solow_path(0.30, 1.0)
 g_lo, g_hi = y_lo[-1] / y_lo[-2] - 1, y_hi[-1] / y_hi[-2] - 1

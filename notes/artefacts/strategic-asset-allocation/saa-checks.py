@@ -349,6 +349,112 @@ ok(
     0.5 * 12 - 0.5 * 2.25 * 10 < 0 < 0.5 * 12 - 0.5 * 10,
 )
 
+
+print("== part 10: client decisions and complete funding")
+# Cedar: the covariance above belongs to the same four asset classes.
+client_mu = np.array([0.07, 0.08, 0.035, 0.02])
+client_stress = np.array([-0.30, -0.40, 0.05, 0.02])
+# cov was reused later in this script; rebuild the declared four-asset input explicitly.
+client_vol = np.array([0.16, 0.18, 0.06, 0.01])
+client_corr = np.array([[1, 0.75, 0.2, 0], [0.75, 1, 0.15, 0], [0.2, 0.15, 1, 0.1], [0, 0, 0.1, 1]])
+client_cov = np.outer(client_vol, client_vol) * client_corr
+mixes = np.array(
+    [[0.45, 0.2, 0.3, 0.05], [0.2, 0.05, 0.6, 0.15], [0.35, 0.1, 0.45, 0.1], [0.3, 0.15, 0.45, 0.1]]
+)
+means = mixes @ client_mu
+vols = np.sqrt(np.einsum("ij,jk,ik->i", mixes, client_cov, mixes))
+stresses = mixes @ client_stress
+utilities = means - 2.5 * vols**2
+feasible = (
+    (means >= 0.05)
+    & (vols <= 0.085)
+    & (stresses >= -0.15)
+    & (mixes[:, 3] >= 0.1)
+    & (mixes.max(axis=1) <= 0.45)
+)
+ok(
+    "Cedar alternatives satisfy or fail the stated constraints",
+    np.array_equal(feasible, [False, False, True, True]),
+)
+ok(
+    "recommended candidate has higher specified utility than the other feasible mix",
+    utilities[3] > utilities[2],
+)
+# Dated dollar ledger, independently sum dollar asset gains then deduct spending.
+amounts = mixes[3] * 10_000_000
+expected_close = sum(amounts * (1 + client_mu)) - 300_000
+stress_close = sum(amounts * (1 + client_stress)) - 300_000
+ok(
+    "Cedar dollar ledger, liquidity and stress outcomes",
+    close(expected_close, 10_207_500, 1e-6)
+    and close(stress_close, 8_445_000, 1e-6)
+    and amounts[3] >= 3 * 300_000,
+)
+for i in range(4):
+    print(
+        f"Cedar {i}: mean {means[i]:.6%}, volatility {vols[i]:.6%}, stress {stresses[i]:.6%}, utility {utilities[i]:.6%}"
+    )
+# Lins: lognormal single-payment budgets, using direct distribution CDF as a check.
+modules = np.array([[0, 0, 1], [0.4, 0.6, 0], [0.8, 0.2, 0]])
+log_mu = np.array([0.02, 0.04, 0.055])
+log_sd = np.array([0, 0.07, 0.13])
+goals = [(250_000.0, 5, 0.95), (900_000.0, 15, 0.80)]
+capital, choices = [], []
+for amount, horizon, success in goals:
+    costs = amount * np.exp(-log_mu * horizon + norm.ppf(success) * log_sd * math.sqrt(horizon))
+    choice = int(np.argmin(costs))
+    choices.append(choice)
+    capital.append(costs[choice])
+    for j in range(3):
+        terminal_quantile = costs[j] * math.exp(
+            log_mu[j] * horizon - norm.ppf(success) * log_sd[j] * math.sqrt(horizon)
+        )
+        probability = (
+            1.0
+            if j == 0
+            else norm.sf(
+                (math.log(amount / costs[j]) - log_mu[j] * horizon)
+                / (log_sd[j] * math.sqrt(horizon))
+            )
+        )
+        ok(
+            f"goal {horizon} years module {j}: wealth quantile and independent CDF",
+            close(terminal_quantile, amount, 1e-6) and probability >= success - 1e-10,
+        )
+ok("lowest funding costs select cash for education and growth for home", choices == [0, 2])
+reserve = 100_000.0
+surplus = 1_000_000 - reserve - sum(capital)
+assets_by_goal = np.array([capital[i] * modules[j] for i, j in enumerate(choices)])
+aggregate = assets_by_goal.sum(axis=0) + np.array([0, 0, reserve + surplus])
+ok(
+    "Lins total funding reconciles to aggregate asset balances",
+    close(aggregate.sum(), 1_000_000, 1e-6)
+    and np.allclose(aggregate, [482_025.6193409, 120_506.4048352, 397_467.9758239], atol=0.001),
+)
+heuristic_cost = [
+    a * math.exp(-0.0475 * t + norm.ppf(p) * 0.10 * math.sqrt(t)) for a, t, p in goals
+]
+ok(
+    "same-client 60/40 budgets are more expensive but feasible",
+    sum(heuristic_cost) + reserve <= 1_000_000 and sum(heuristic_cost) > sum(capital),
+)
+education_probability_6040 = norm.sf(
+    (math.log(250_000 / capital[0]) - 0.0475 * 5) / (0.10 * math.sqrt(5))
+)
+ok(
+    "60/40 applied to cheaper education capital fails 95% success",
+    education_probability_6040 < 0.95,
+)
+remaining = 900_000 - reserve - capital[0]
+revised_home = remaining * math.exp(0.055 * 15 - norm.ppf(0.80) * 0.13 * math.sqrt(15))
+ok(
+    "infeasible 900,000 wealth case reduces the flexible goal explicitly",
+    remaining < capital[1] and close((capital[1] - remaining), 28_741.3786851, 0.001),
+)
+print(
+    f"Lins budgets {capital}, surplus {surplus:.6f}, aggregate {aggregate}, 60/40 total {sum(heuristic_cost) + reserve:.6f}, reduced home {revised_home:.6f}"
+)
+
 print()
 if fails:
     print(f"{len(fails)} check(s) failed: {fails}")

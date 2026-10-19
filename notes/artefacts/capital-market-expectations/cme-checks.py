@@ -22,6 +22,7 @@ Run: uv run python cme-checks.py   (numpy, scipy). Exits 1 on failure.
 # standard library imports
 import math
 import sys
+from itertools import pairwise, product
 
 # third party library imports
 import numpy as np
@@ -97,7 +98,7 @@ stationary = np.linalg.lstsq(
 )[0]
 ok(
     "Example 7: expected spells of 39 and 20 months put the economy in expansion 66.1% of the time; the unconditional"
-    " return is 0.645% a month, about 8% a year (the text rounds to two-thirds and 0.67%)",
+    " log return is 0.644% a month, about 8% a year (the text rounds to two-thirds and 0.67%)",
     abs(stationary[0] - 39 / 59) < 1e-12 and abs(stationary @ mu - 0.006441) < 1e-6,
 )
 
@@ -113,9 +114,9 @@ def horizon_return(months, start=1):
 
 r3, r12, r60, r120 = (horizon_return(m) for m in (3, 12, 60, 120))
 ok(
-    "starting in contraction, the exact chain gives -5.4% over 3 months, -13.6% over 1 year, 0.8% a year over 5 years"
-    " and 4.2% a year over 10: the longer the horizon, the closer to the unconditional mean; the text's judgemental"
-    " -6%, -18%, 4.8% and ~8% have the same shape but converge faster than the chain implies",
+    "starting in contraction, the homogeneous chain gives expected cumulative log returns of -5.4% over 3 months, -13.6% over 1 year, 0.8% a year over 5 years"
+    " and 4.2% a year over 10: the longer the horizon, the closer to the unconditional log mean; the book's qualitative"
+    " -6%, -18%, 4.8% and ~8% are guideline estimates, not exact outputs of this specified chain",
     abs(r3 + 0.0542) < 5e-4
     and abs(r12 + 0.1362) < 5e-4
     and abs(r60 / 5 - 0.0080) < 5e-4
@@ -123,6 +124,32 @@ ok(
     and r3 / 3 < r12 / 12 < r60 / 60 < r120 / 120 < stationary @ mu,
     f"{r3:.4f} {r12:.4f} {r60 / 5:.4f} {r120 / 10:.4f}",
 )
+# Conditional means alone do not identify wealth. Add deterministic state log returns
+# only for the wealth illustration. Exhaustively enumerate short paths independently.
+D = np.diag(np.exp(mu))
+for horizon in (1, 3, 12):
+    logs, wealth = 0.0, 0.0
+    for tail in product((0, 1), repeat=horizon - 1):
+        path = (1, *tail)
+        probability = math.prod(P[a, b] for a, b in pairwise(path))
+        log_total = sum(mu[j] for j in path)
+        logs += probability * log_total
+        wealth += probability * math.exp(log_total)
+    matrix_wealth = np.eye(2)[1] @ D @ np.linalg.matrix_power(P @ D, horizon - 1) @ np.ones(2)
+    ok(
+        f"{horizon} months: path enumeration reconciles log sums and expected wealth",
+        close(logs, horizon_return(horizon)) and close(wealth, matrix_wealth),
+    )
+    ok(
+        f"{horizon} months: geometric equivalent is not expected wealth",
+        wealth >= math.exp(logs) - 1e-12 and (horizon == 1 or wealth > math.exp(logs) + 1e-7),
+    )
+ok(
+    "stationary annual log return and geometric equivalent",
+    close(12 * stationary @ mu, 0.07728813559322034)
+    and abs(math.expm1(12 * stationary @ mu) - 0.080353) < 1e-6,
+)
+
 trade_share, elasticity, shock = 0.25, 0.8, -0.04
 ok(
     "cross-economy linkage: if exports to a partner are 25% of GDP and respond with elasticity 0.8 to its 4% fall in"
@@ -177,9 +204,31 @@ ok(
     and round(0.03 + rp["equity"], 4) == 0.0693
     and round(0.03 + rp["bond"], 4) == 0.0416,
 )
+# Forward-NOI timing: income in year one is 5; the sale capitalizes year-two NOI.
+price0, income1, income2, cap1 = 100.0, 5.0, 5.125, 0.053
+sale1 = income2 / cap1
+ledger_return = (income1 + sale1 - price0) / price0
+cap0 = income1 / price0
+relative_cap_change = cap1 / cap0 - 1
+approx_return = cap0 + income2 / income1 - 1 - relative_cap_change
 ok(
-    "real estate (eq. 8): cap rate 5.0% + NOI growth 2.5% - expected 0.3%/year rise in the cap rate gives about 7.2%",
-    close(0.05 + 0.025 - 0.003, 0.072, 1e-12),
+    "cap change is 6% relative, and first-order return 1.5%",
+    close(relative_cap_change, 0.06) and close(approx_return, 0.015),
+)
+ok(
+    "cash-income plus terminal-value ledger gives 1.698113%, within 0.2 point of first order",
+    close(ledger_return, 0.0169811320754717) and abs(ledger_return - approx_return) < 0.002,
+)
+ok(
+    "stable-cap-rate control: value 102.5 plus income 5 gives exactly 7.5%",
+    close((income1 + income2 / cap0 - price0) / price0, 0.075),
+)
+# Independent finite perturbation checks the first derivative of the cash ledger.
+eps = 1e-5
+near = (income1 + income1 * (1 + eps * 0.025) / (cap0 * (1 + eps * 0.06))) / price0 - 1
+ok(
+    "small changes converge to first-order cap-rate sensitivity",
+    abs((near - cap0) / eps - (0.025 - 0.06)) < 1e-7,
 )
 
 print("== part 5: exchange rates and volatility")
@@ -238,12 +287,13 @@ w0 = np.array([0.30, 0.30, 0.20, 0.20])
 w1 = np.array([0.38, 0.24, 0.18, 0.20])  # equities from B to A, a little less bond A
 sr = lambda w: (w @ er - 0.02) / math.sqrt(w @ cov @ w)
 ok(
-    "macro views (A near its trough: higher expected equity return; B near its peak) moving 8 points of equity from B to"
-    " A and 2 points out of A bonds raise expected return from 5.40% to 5.60% and the ratio of excess return to risk",
+    "macro views (A near its trough: higher expected equity return; B near its peak) adding 8 points to equity"
+    " A, funded by 6 points from equity B and 2 from bond A, raises expected return from 5.40% to 5.60% and the ratio of excess return to risk",
     abs(w0 @ er - 0.0540) < 1e-12
     and abs(w1 @ er - 0.0560) < 1e-12
     and sr(w1) > sr(w0)
-    and close(w1.sum(), 1.0),
+    and close(w1.sum(), 1.0)
+    and np.allclose(w1 - w0, [0.08, -0.06, -0.02, 0.0]),
     f"Sharpe {sr(w0):.3f} -> {sr(w1):.3f}",
 )
 

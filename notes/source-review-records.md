@@ -4441,3 +4441,48 @@ All 45 objectives are `covered` (editorial coverage, not mastery). Totals: 191 o
 - Policy and geopolitical descriptions are frameworks, not forecasts; scenario probabilities are subjective.
 - Several papers were read only at abstract or introduction level (Jordà et al., Campbell et al., MSSS, the IMF note beyond its summary and sec. II); their detailed results are not relied on.
 - Human review is outstanding.
+
+## Correction pass on PR #26, 19 October 2026
+
+Verified clean `bcc3551` and live draft/open PR stack before changes. This record
+supersedes the earlier source-error interpretation of PMiP Example7 and the
+misidentification of Cochrane's matching-hash 2000 manuscript as the2005 edition.
+No new objective is counted for these corrections.
+
+- `meth:asset-class-return-forecasts`: Cap-rate change is relative (6%), first order 1.5%; forward-NOI cash ledger gives 1.6981%, stable cap control 7.5%. PMiP pp.118-119/PDF146-147 reread, including reinvestment caveat.
+- `meth:currency-hedge-cost-reduction`: USD-valued exposure ratio 0.935 converted at USD/NZD 0.60 and USD/AUD 0.66 to 0.85 AUD per NZD; USD P&L and currency-unit scaling checked; forward delta assumptions explicit. PMiP pp.424-426 reread.
+- `meth:geopolitical-risk-assessment`: Physical scenarios separated from state prices and pricing probabilities; cash-funded premium, tail-loss/premium constraints and negative-expected-P&L insurance counterexample. Cochrane actual copy is 12 June 2000 manuscript, secs.1.2 and 3.1-3.2, pp.16-17 and54-56.
+- `mod:growth-theories-convergence`: Raw K/L grows on the balanced path; K/(L A^(1/(1-alpha))) converges. Aggregate-capital ledger and zero-technology control. EIDM pp.665-669 reread (Exhibit11-13 explicitly a snapshot).
+- `meth:cycle-equities-property`: E0, E1 and D1 explicit; trailing 21/26.25/15 and forward 20/25/14.2857 reconciled to independent dividend PV sums.
+- `meth:asset-only-allocation-mvo`: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread.
+- `meth:goals-based-allocation-heuristics`: Lins USD1m available wealth; dated education and home goals, success requirements, explicit module weights, capital budgets, aggregate assets and cash surplus reconciled. Same-client60/40 comparison and USD900k infeasibility resolution. Exact lognormal single-payment example distinguished from book approximation. PMiP pp.268-275,279-282 reread.
+- `meth:cycle-policy-curve-expectations`: PMiP p.65/PDF93 explicitly specifies continuously compounded monthly returns. Restored expected cumulative/annualised log labels, homogeneous transition timing, geometric equivalents and separate expected wealth with added deterministic-state assumption; enumeration confirms results. Guideline estimates are qualitative, not proven source errors.
+- `def:fiscal-policy-tools-stance`: Monetary accommodation distinguished from offset; EIDM pp.386-387,393-394 reread. Debt scenario uses nominal rate3%, nominal growth5%, zero primary balance.
+- `meth:active-currency-strategies`: Rising risk aversion means reducing carry and adding long-volatility hedges within premium budget.
+- `ex:global-portfolio-macro-rebalancing`: Weights30/30/20/20 to38/24/18/20: equity A +8, equity B -6, bond A -2. Budget checked.
+
+All 11 affected objectives and 35 mapped outline items were reassessed against
+all operations and depth. Actual outline pages reread: Level I p.6; Level II
+pp.6,25; shared core pp.1-3,12. The two missing decision applications are now
+present; baseline coverage remains191/424 objectives and460/1,030 items.
+
+Six changed scripts execute151 checks: CME28, growth22, currency21, macro
+valuation16, policy/trade25, allocation39. A check is one executed ok() call,
+including each loop iteration. These are numerical checks, separate from unit
+tests, scripts, entries, objectives and outline items. Focused checks passed.
+The first allocation calculation exposed an incorrect candidate utility claim;
+the final recommendation selects the actual higher-utility feasible candidate.
+
+Sources: exact reread locators are in the reading notes. Optional macro papers
+and annexes have not been supplied or newly reviewed. Earlier abstract-only
+limitations remain; no new empirical claim relies on those papers. Human review
+and learner mastery remain outstanding. Full validation and rendering follow.
+
+Validation completed: `make check` passed lock/lint/format, both structural
+validators,36 tests plus3 subtests,84 numerical scripts and all8 outline hashes.
+Its PDF step initially failed because the sandbox denied the default font cache;
+with TEXMFVAR/TEXMFCACHE set to a writable temporary directory, a forced LuaLaTeX
+rebuild passed (287 pages, no overfull boxes or undefined references). Existing
+underfull/page-destination warnings are not treated as new errors. `make pre-commit`
+passed all hooks. PDF pages96-110 and118-119 were rendered and inspected, covering
+all corrections and both complete client cases; no clipping or overlap observed.

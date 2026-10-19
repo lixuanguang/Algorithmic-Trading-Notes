@@ -24,3 +24,11 @@ Prepared on 2026-10-19 by the macro, allocation and currency batch from source c
 ## Limits
 
 Only sec. 1.4 was read; later chapters on the equity premium and term structure were not used.
+
+## Version correction, 19 October 2026
+
+The previously recorded local bytes are a manuscript dated **12 June 2000** on
+the title page, despite filenames claiming 2005. Their 462 pages and hash are
+unchanged. Use `asset-pricing-manuscript-2000` for the macro passages supported
+by this copy. The catalogue's published-edition entry remains separate. The earlier
+version assertion above is superseded; it does not prove access to the 2005 edition.

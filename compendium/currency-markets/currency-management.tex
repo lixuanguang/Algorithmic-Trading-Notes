@@ -68,7 +68,7 @@ for a portfolio, where $R_{FX}$ is the change in the foreign currency measured w
 \item \emph{Carry}: long high-yield, short low-yield currencies, profitable when uncovered interest parity fails, as it typically does over short horizons; returns are negatively skewed, with crashes when volatility and risk aversion rise (\hyperref[meth:carry-trade-uip]{carry trade}).
 \item \emph{Volatility trading}: using options (straddles, strangles, risk reversals) or delta-hedged positions to take views on future realised against implied volatility, or on skew; a long volatility position profits when realised volatility exceeds implied.
 \end{itemize}
-\emph{Tactical drivers}: rising volatility or risk aversion argues for cutting carry and long-volatility hedges; diverging monetary policy and real rates feed fundamental views; trends and momentum signal technical entries and exits; crowded positioning raises crash risk. Strategies are often combined because they pay off in different environments.
+\emph{Tactical drivers}: rising volatility or risk aversion argues for reducing carry exposure and adding long-volatility hedges, subject to their premiums and the hedge budget; diverging monetary policy and real rates feed fundamental views; trends and momentum signal technical entries and exits; crowded positioning raises crash risk. Strategies are often combined because they pay off in different environments.
 
 \qffield{Notation} Carry P\&L per unit of funding $(S_T/S_0)(1+i_f)-(1+i_d)$; delta-hedged option P\&L $\approx\tfrac12\Gamma S^2(\sigma^2_{\text{realised}}-\sigma^2_{\text{implied}})\Delta t$.
 
@@ -93,7 +93,7 @@ for a portfolio, where $R_{FX}$ is the change in the foreign currency measured w
 
 \emph{Emerging markets} (sec.~7, pp.~435--440): higher trading costs and wider spreads, especially in stress; thin liquidity and event risk (sudden devaluations, capital controls) with fat-tailed, skewed returns; contagion; and in currencies with capital controls, hedging through \emph{non-deliverable forwards}, cash-settled in a major currency against an official fixing, so that the controlled currency is neither delivered nor received; NDFs have lower credit exposure than deliverable forwards because principal does not change hands.
 
-\qffield{Notation} Garman--Kohlhagen option prices (\hyperref[meth:black-model-rates-currencies]{currency options}); cross-hedge ratio $\rho\sigma_X/\sigma_Y$ and residual volatility $\sigma_X\sqrt{1-\rho^2}$; NDF settlement $N(F_{NDF}-S_{\text{fix}})/S_{\text{fix}}$ in the settlement currency.
+\qffield{Notation} Garman--Kohlhagen option prices (\hyperref[meth:black-model-rates-currencies]{currency options}); cross-hedge ratio $h=\rho\sigma_X/\sigma_Y$ of exposures valued in one domestic numeraire, and residual volatility $\sigma_X\sqrt{1-\rho^2}$; NDF settlement $N(F_{NDF}-S_{\text{fix}})/S_{\text{fix}}$ in the settlement currency.
 
 \qffield{Conditions} Option prices below are model values at one volatility (8 percent, 3 months, 4.3 percent dollar and 2.5 percent euro rates); real quotes include skew and spreads.
 
@@ -102,7 +102,11 @@ for a portfolio, where $R_{FX}$ is the change in the foreign currency measured w
 \item \emph{Puts.} An at-the-money put costs 1.37 percent of notional; one struck 3.2 percent out of the money (1.05) 0.37 percent.
 \item \emph{Risk reversal.} Selling a 1.1323 call pays for the 1.05 put: zero premium, upside capped above 1.1323.
 \item \emph{Put spread and seagull.} Selling a 1.01 put cuts the 1.05 put's cost by about a tenth; adding the short call makes the package receive a small premium, but losses below 1.01 return in full.
-\item \emph{Cross hedge.} Hedging New Zealand dollars with Australian-dollar forwards (correlation 0.85, volatilities 11 and 10 percent) uses 0.935 Australian dollars per New Zealand dollar and leaves 5.8 percent residual volatility.
+\item \emph{Cross hedge.} For a USD investor, define $S_{USD/NZD}$ and $S_{USD/AUD}$ as USD per one NZD and AUD, respectively. With spot-return volatilities 11 and 10 percent and correlation 0.85, $h=0.85(0.11/0.10)=0.935$ means sell AUD exposure worth 93.5 percent of the NZD exposure's USD value. Currency units require
+\[
+N_{AUD}=h N_{NZD}\frac{S_{USD/NZD}}{S_{USD/AUD}}.
+\]
+At spots 0.60 and 0.66, one million NZD requires selling 850{,}000 AUD, not 935{,}000. For spot moves $-10\%$ in NZD and $-8\%$ in AUD, the USD loss of 60{,}000 is partly offset by 44{,}880 on the hedge, leaving $-15{,}120$, or $-2.52\%$ of the initial USD 600{,}000. Residual return volatility is 5.8 percent of that initial exposure. This spot-return approximation holds notionals fixed, ignores asset/FX interaction and uses zero rates, forward points and costs. At nonzero rates a sold AUD forward's spot delta magnitude is $N_{AUD}e^{-r_{AUD}\tau}$ under deterministic rates; delta matching therefore divides the spot-based notional by that discount factor. Changing AUD to cents multiplies notional by 100 and divides its quote by 100, leaving USD P\&L unchanged.
 \item \emph{Minimum-variance hedge.} On 120 simulated months in which the asset falls 0.4 percent for each 1 percent currency rise, the regression slope (0.61) and a grid search on hedged variance (0.61) agree.
 \item \emph{NDF.} Selling USD 10 million against rupees at 83.50 settles, at a fixing of 85.00, by a payment of USD 176{,}471, with no rupees exchanged.
 \end{itemize}

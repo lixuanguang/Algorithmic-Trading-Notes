@@ -49,3 +49,5 @@ Cross-referenced, not owned here: `def:fx-market-structure` (`fx-dealer-market-m
 ## What changed in my view or practice
 
 ## Questions carried forward
+
+Audit corrections, 19 October 2026: units, timing, pricing probabilities and source conventions corrected; Cedar and Lins decisions add complete alternatives and funding. See [correction record](../source-review-records.md#correction-pass-on-pr-26-19-october-2026). Editorial evidence only; not study, mastery or human review.

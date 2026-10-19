@@ -20,6 +20,7 @@ Run: uv run python macro-policy-trade-checks.py   (numpy, scipy). Exits 1 on fai
 """
 
 # standard library imports
+import math
 import sys
 
 # third party library imports
@@ -290,11 +291,33 @@ ok(
     and abs(hedged["escalation"] + 0.042) < 1e-12
     and abs(exp_hedged - 0.036) < 1e-12,
 )
+# An event state price is not a physical probability. At zero interest it
+# equals the risk-neutral probability only for this binary fixed-date payoff.
+state_price = put_cost / put_payoff_esc
+bond_price = math.exp(-0.04)
+pricing_probability = state_price / bond_price
 ok(
-    "if the market prices escalation at the same 20%, the fair put premium for that payoff is 3.0% before discounting;"
-    " a 1.2% premium implies the market assigns it about 8%, so the hedge is cheap only if your probability is right",
-    close(0.20 * put_payoff_esc, 0.03, 1e-12) and abs(put_cost / put_payoff_esc - 0.08) < 1e-12,
+    "premium/payoff identifies a state price; discounting recovers pricing probability",
+    close(state_price, 0.08) and close(bond_price * pricing_probability * put_payoff_esc, put_cost),
 )
+# The stated portfolio objective can favour insurance despite negative expected net payoff.
+low_probability = np.array([0.85, 0.05, 0.10])
+base_returns = np.array([0.06, -0.18, 0.12])
+insured_returns = base_returns - put_cost + np.array([0, 0.15, 0])
+ok(
+    "5% physical probability: expected hedge P&L is -0.45%, yet the loss and premium limits are met",
+    close(low_probability @ (insured_returns - base_returns), -0.0045)
+    and insured_returns.min() >= -0.05
+    and base_returns.min() < -0.05
+    and put_cost <= 0.015,
+)
+# Exponential utility supplies a second, preference-dependent criterion.
+util = lambda r: -np.exp(-30 * r)
+ok(
+    "risk-averse utility can prefer insurance below the pricing probability",
+    low_probability @ util(insured_returns) > low_probability @ util(base_returns),
+)
+
 
 print()
 if fails:

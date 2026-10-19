@@ -19,7 +19,7 @@ Prepared on 2026-10-19 by the macro, allocation and currency batch from source c
 
 ## Key results
 
-- Example 7 (p. 65): the guideline horizon forecasts (-6%, -18%, 4.8% and about 8%) are judgemental; an exact Markov chain with the stated 39- and 20-month spells gives -5.4%, -13.6%, 0.8% and 4.2% a year, the same shape but slower convergence.
+- Example 7 (printed p.65/PDF93) explicitly states continuously compounded monthly returns. The homogeneous-chain implementation (current state earns first, transitions at month end) gives expected cumulative log returns -5.4%/three months and -13.6%/year, annualised expected log returns 0.8%/five years and4.2%/ten years. The book gives qualitative guideline estimates -6%, -18%,4.8% and about8%; the difference is not proof of a source error. Expected wealth requires more distributional assumptions than the stated conditional log means.
 - Grinold-Kroner Example 4 (pp. 109-110) 9.5% against a sustainable 7.25%; Singer-Terhaar German example (p. 114) 6.93% and 4.16%.
 - Exhibit 5 (pp. 74-75) maps persistent policy mixes to the level of real and nominal rates, not to the slope.
 - Goals-based minimum-expectation returns equal mu - z sigma / sqrt(T) to within 0.1 point (Exhibit 36); the Smiths' 6,671 and 2,679 thousand need unrounded rates of about 4.13% and 6.81% (pp. 274-275).
@@ -28,3 +28,7 @@ Prepared on 2026-10-19 by the macro, allocation and currency batch from source c
 ## Limits
 
 The book collects readings written for practitioners; worked numbers are illustrative. The persistence symbol in the ARCH equation is lost in the text layer.
+
+## Correction reread, 19 October 2026
+
+Read p.65/PDF93, pp.118-120/PDF146-148, pp.220-223/PDF248-251, pp.268-275/PDF296-303, pp.279-282/PDF307-310, pp.424-426/PDF452-454. Cap-rate growth is relative; NOI may need reinvestment (p.118 n.19). Complete original client decisions now supply weights, budgets and alternatives. The Smiths use unrounded discount rates explicitly (p.274), so rounding differences are not source errors. The cross-hedge notional conversion is original dimensional analysis.

@@ -152,10 +152,39 @@ s_nzd, s_aud, rho_cross = 0.11, 0.10, 0.85
 h_cross = rho_cross * s_nzd / s_aud
 resid = s_nzd * math.sqrt(1 - rho_cross**2)
 ok(
-    "cross hedge: hedging NZD exposure with AUD forwards (correlation 0.85) uses 0.935 AUD per NZD and leaves 5.8%"
+    "cross hedge: hedging NZD exposure with AUD forwards (correlation 0.85) uses a USD-valued exposure ratio of 0.935 and leaves 5.8%"
     " residual volatility out of 11%: basis risk remains",
     abs(h_cross - 0.935) < 1e-12 and abs(resid - 0.05795) < 1e-4,
 )
+n_nzd, usd_nzd, usd_aud = 1_000_000.0, 0.60, 0.66
+n_aud = h_cross * n_nzd * usd_nzd / usd_aud
+ok("currency units: sell 850,000 AUD against one million NZD", close(n_aud, 850_000, 1e-7))
+# Reprice two currency balances, rather than reusing the return-hedge formula.
+spot_nzd1, spot_aud1 = 0.54, 0.6072
+pnl_asset = n_nzd * (spot_nzd1 - usd_nzd)
+pnl_forward = n_aud * (usd_aud - spot_aud1)  # F0=S0, zero rates and costs
+pnl = pnl_asset + pnl_forward
+ok(
+    "USD ledger: -60,000 + 44,880 = -15,120",
+    close(pnl, -15_120, 1e-7) and close(pnl / (n_nzd * usd_nzd), -0.0252),
+)
+for scale_nzd, scale_aud in ((1, 100), (100, 1), (100, 100)):
+    nn = n_nzd * scale_nzd
+    sn, sa = usd_nzd / scale_nzd, usd_aud / scale_aud
+    na = h_cross * nn * sn / sa
+    ledger = nn * (spot_nzd1 / scale_nzd - sn) + na * (sa - spot_aud1 / scale_aud)
+    ok(
+        f"unit invariance with NZD scale {scale_nzd}, AUD scale {scale_aud}",
+        close(ledger, pnl, 1e-7) and close(na / scale_aud, n_aud, 1e-7),
+    )
+rf_aud, tau = 0.04, 0.5
+forward_notional = n_aud * math.exp(rf_aud * tau)
+# Central difference of the forward present value: N(F Dd - S Df).
+delta = (
+    (-forward_notional * (usd_aud + 1e-5) * math.exp(-rf_aud * tau))
+    - (-forward_notional * (usd_aud - 1e-5) * math.exp(-rf_aud * tau))
+) / 2e-5
+ok("nonzero-rate forward delta matches the desired AUD spot exposure", abs(delta + n_aud) < 1e-4)
 rng = np.random.default_rng(20261019)
 n = 120
 r_fx = rng.normal(0, 0.03, n)

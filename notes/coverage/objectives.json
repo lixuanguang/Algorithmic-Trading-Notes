@@ -2385,11 +2385,11 @@
     "reading_notes": [
      "notes/readings/economics-investment-decision-makers-2013.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "def:fiscal-policy-tools-stance"
     ],
-    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 2 (EIDM's 3.57 multiplier by summing spending rounds, a balanced-budget expansion, debt dynamics and the debt-stabilising primary balance, a structural deficit and Ricardian equivalence); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 2 (EIDM's 3.57 multiplier by summing spending rounds, a balanced-budget expansion, debt dynamics and the debt-stabilising primary balance, a structural deficit and Ricardian equivalence); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Monetary accommodation distinguished from offset; EIDM pp.386-387,393-394 reread. Debt scenario uses nominal rate3%, nominal growth5%, zero primary balance."
    },
    "supersedes": null
   },
@@ -2542,16 +2542,21 @@
      {
       "key": "caldara-iacoviello-2022",
       "locator": "introduction, pp. 1194-1196; Figure 1 notes, p. 1201"
+     },
+     {
+      "key": "asset-pricing-manuscript-2000",
+      "locator": "secs.1.2 and3.1-3.2 pp.16-17 and54-56, manuscript dated12 June2000"
      }
     ],
     "reading_notes": [
-     "notes/readings/caldara-iacoviello-2022.md"
+     "notes/readings/caldara-iacoviello-2022.md",
+     "notes/readings/asset-pricing-manuscript-2000.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "meth:geopolitical-risk-assessment"
     ],
-    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 5 (a GPR-style news-share index and a scenario-weighted assessment with a hedge and its market-implied probability); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 5 (a GPR-style news-share index and a scenario-weighted assessment with a hedge and its market-implied probability); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Physical scenarios separated from state prices and pricing probabilities; cash-funded premium, tail-loss/premium constraints and negative-expected-P&L insurance counterexample. Cochrane actual copy is 12 June 2000 manuscript, secs.1.2 and 3.1-3.2, pp.16-17 and54-56."
    },
    "supersedes": null
   },
@@ -7762,11 +7767,11 @@
      "notes/readings/economics-investment-decision-makers-2013.md",
      "notes/readings/macroeconomics-2019.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "mod:growth-theories-convergence"
     ],
-    "example": "notes/artefacts/economic-growth/growth-checks.py parts 3-4 (EIDM Example 11-10, a Solow simulation of level against growth effects, convergence and its speed, the golden rule and the AK model); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/economic-growth/growth-checks.py parts 3-4 (EIDM Example 11-10, a Solow simulation of level against growth effects, convergence and its speed, the golden rule and the AK model); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Raw K/L grows on the balanced path; K/(L A^(1/(1-alpha))) converges. Aggregate-capital ledger and zero-technology control. EIDM pp.665-669 reread (Exhibit11-13 explicitly a snapshot)."
    },
    "supersedes": null
   },
@@ -9893,7 +9898,7 @@
    "evidence": {
     "sources": [
      {
-      "key": "s6-cochrane",
+      "key": "asset-pricing-manuscript-2000",
       "locator": "sec. 1.4, pp. 20-23"
      },
      {
@@ -9908,7 +9913,8 @@
     "reading_notes": [
      "notes/readings/s6-cochrane.md",
      "notes/readings/s7-ang.md",
-     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+     "notes/readings/portfolio-management-in-practice-v1-2020.md",
+     "notes/readings/asset-pricing-manuscript-2000.md"
     ],
     "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
     "entry_evidence": [
@@ -9941,7 +9947,7 @@
    "evidence": {
     "sources": [
      {
-      "key": "s6-cochrane",
+      "key": "asset-pricing-manuscript-2000",
       "locator": "sec. 1.4.1, eq. (1.7), p. 20"
      },
      {
@@ -9961,7 +9967,8 @@
      "notes/readings/s6-cochrane.md",
      "notes/readings/economics-investment-decision-makers-2013.md",
      "notes/readings/portfolio-management-in-practice-v1-2020.md",
-     "notes/readings/s7-ang.md"
+     "notes/readings/s7-ang.md",
+     "notes/readings/asset-pricing-manuscript-2000.md"
     ],
     "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
     "entry_evidence": [
@@ -10011,11 +10018,11 @@
      "notes/readings/s7-ang.md",
      "notes/readings/portfolio-management-in-practice-v1-2020.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "meth:cycle-equities-property"
     ],
-    "example": "notes/artefacts/macro-asset-valuation/macro-valuation-checks.py part 4 (operating leverage, Gordon multiples and cap-rate valuation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/macro-asset-valuation/macro-valuation-checks.py part 4 (operating leverage, Gordon multiples and cap-rate valuation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: E0, E1 and D1 explicit; trailing 21/26.25/15 and forward 20/25/14.2857 reconciled to independent dividend PV sums."
    },
    "supersedes": null
   },
@@ -10601,11 +10608,11 @@
     "reading_notes": [
      "notes/readings/portfolio-management-in-practice-v1-2020.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "meth:cycle-policy-curve-expectations"
     ],
-    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 3 (PMiP Example 7 against an exact Markov chain and a trade linkage); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 3 (PMiP Example 7 against an exact Markov chain and a trade linkage); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: PMiP p.65/PDF93 explicitly specifies continuously compounded monthly returns. Restored expected cumulative/annualised log labels, homogeneous transition timing, geometric equivalents and separate expected wealth with added deterministic-state assumption; enumeration confirms results. Guideline estimates are qualitative, not proven source errors."
    },
    "supersedes": null
   },
@@ -10639,11 +10646,11 @@
     "reading_notes": [
      "notes/readings/portfolio-management-in-practice-v1-2020.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "meth:asset-class-return-forecasts"
     ],
-    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 4 (PMiP Examples 1 and 4, P/E reversion rates, Singer-Terhaar, building blocks and real estate); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 4 (PMiP Examples 1 and 4, P/E reversion rates, Singer-Terhaar, building blocks and real estate); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Cap-rate change is relative (6%), first order 1.5%; forward-NOI cash ledger gives 1.6981%, stable cap control 7.5%. PMiP pp.118-119/PDF146-147 reread, including reinvestment caveat."
    },
    "supersedes": null
   },
@@ -10714,11 +10721,11 @@
     "reading_notes": [
      "notes/readings/portfolio-management-in-practice-v1-2020.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "ex:global-portfolio-macro-rebalancing"
     ],
-    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 6 (a reweighting whose quantified views raise expected return and the excess-return-to-risk ratio); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 6 (a reweighting whose quantified views raise expected return and the excess-return-to-risk ratio); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Weights30/30/20/20 to38/24/18/20: equity A +8, equity B -6, bond A -2. Budget checked."
    },
    "supersedes": null
   },
@@ -10916,13 +10923,13 @@
     "reading_notes": [
      "notes/readings/portfolio-management-in-practice-v1-2020.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "meth:asset-only-allocation-mvo",
      "mod:mean-variance-portfolio-optimisation",
      "mod:black-litterman"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 4 (the utility function, the reverse-optimisation round trip, input sensitivity and constrained optima); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 4 (the utility function, the reverse-optimisation round trip, input sensitivity and constrained optima); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread."
    },
    "supersedes": null
   },
@@ -11079,11 +11086,11 @@
     "reading_notes": [
      "notes/readings/portfolio-management-in-practice-v1-2020.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "meth:goals-based-allocation-heuristics"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 8 (PMiP Exhibit 36 minimum expectations, module choice, the Smiths' capital and heuristics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 8 (PMiP Exhibit 36 minimum expectations, module choice, the Smiths' capital and heuristics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Lins USD1m available wealth; dated education and home goals, success requirements, explicit module weights, capital budgets, aggregate assets and cash surplus reconciled. Same-client60/40 comparison and USD900k infeasibility resolution. Exact lognormal single-payment example distinguished from book approximation. PMiP pp.268-275,279-282 reread."
    },
    "supersedes": null
   },
@@ -12653,11 +12660,11 @@
     "reading_notes": [
      "notes/readings/portfolio-management-in-practice-v1-2020.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "meth:active-currency-strategies"
     ],
-    "example": "notes/artefacts/currency-management/currency-management-checks.py part 5 (carry and volatility-trading P&L); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/currency-management/currency-management-checks.py part 5 (carry and volatility-trading P&L); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Rising risk aversion means reducing carry and adding long-volatility hedges within premium budget."
    },
    "supersedes": null
   },
@@ -12693,12 +12700,12 @@
     "reading_notes": [
      "notes/readings/portfolio-management-in-practice-v1-2020.md"
     ],
-    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "review_record": "notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026",
     "entry_evidence": [
      "meth:currency-hedge-cost-reduction",
      "mod:minimum-variance-hedge-ratio"
     ],
-    "example": "notes/artefacts/currency-management/currency-management-checks.py parts 3-4 (Garman-Kohlhagen puts, risk reversals, put spreads and seagulls, a cross hedge, a regression hedge and NDF settlement); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/currency-management/currency-management-checks.py parts 3-4 (Garman-Kohlhagen puts, risk reversals, put spreads and seagulls, a cross hedge, a regression hedge and NDF settlement); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: USD-valued exposure ratio 0.935 converted at USD/NZD 0.60 and USD/AUD 0.66 to 0.85 AUD per NZD; USD P&L and currency-unit scaling checked; forward delta assumptions explicit. PMiP pp.424-426 reread."
    },
    "supersedes": null
   },

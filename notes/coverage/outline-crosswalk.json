@@ -6122,7 +6122,7 @@
    "objectives": [
     "objective:explain-fiscal-policy"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: def:fiscal-policy-tools-stance describes the roles and objectives of fiscal policy, deficits and debt, and the arguments for and against concern about public debt, with debt-dynamics calculations.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fiscal-policy-tools-stance describes the roles and objectives of fiscal policy, deficits and debt, and the arguments for and against concern about public debt, with debt-dynamics calculations. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Monetary accommodation distinguished from offset; EIDM pp.386-387,393-394 reread. Debt scenario uses nominal rate3%, nominal growth5%, zero primary balance.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -6142,7 +6142,7 @@
    "objectives": [
     "objective:explain-fiscal-policy"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: def:fiscal-policy-tools-stance describes spending and tax tools and their advantages and disadvantages, and the multiplier.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fiscal-policy-tools-stance describes spending and tax tools and their advantages and disadvantages, and the multiplier. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Monetary accommodation distinguished from offset; EIDM pp.386-387,393-394 reread. Debt scenario uses nominal rate3%, nominal growth5%, zero primary balance.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -6162,7 +6162,7 @@
    "objectives": [
     "objective:explain-fiscal-policy"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: def:fiscal-policy-tools-stance explains implementation lags, automatic stabilisers, the structural deficit as a measure of stance and Ricardian equivalence.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fiscal-policy-tools-stance explains implementation lags, automatic stabilisers, the structural deficit as a measure of stance and Ricardian equivalence. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Monetary accommodation distinguished from offset; EIDM pp.386-387,393-394 reread. Debt scenario uses nominal rate3%, nominal growth5%, zero primary balance.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -6324,7 +6324,7 @@
    "objectives": [
     "objective:assess-geopolitical-risk"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:geopolitical-risk-assessment describes geopolitical risk as defined and measured by Caldara and Iacoviello (threats and acts).",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:geopolitical-risk-assessment describes geopolitical risk as defined and measured by Caldara and Iacoviello (threats and acts). Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Physical scenarios separated from state prices and pricing probabilities; cash-funded premium, tail-loss/premium constraints and negative-expected-P&L insurance counterexample. Cochrane actual copy is 12 June 2000 manuscript, secs.1.2 and 3.1-3.2, pp.16-17 and54-56.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -6364,7 +6364,7 @@
    "objectives": [
     "objective:assess-geopolitical-risk"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:geopolitical-risk-assessment describes the effects on investment and assesses risk by likelihood, velocity and size with scenarios and hedges.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:geopolitical-risk-assessment describes the effects on investment and assesses risk by likelihood, velocity and size with scenarios and hedges. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Physical scenarios separated from state prices and pricing probabilities; cash-funded premium, tail-loss/premium constraints and negative-expected-P&L insurance counterexample. Cochrane actual copy is 12 June 2000 manuscript, secs.1.2 and 3.1-3.2, pp.16-17 and54-56.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -13463,7 +13463,7 @@
    "objectives": [
     "objective:compare-growth-theories"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: mod:growth-theories-convergence compares classical, neoclassical and endogenous growth theories, with steady-state calculations.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: mod:growth-theories-convergence compares classical, neoclassical and endogenous growth theories, with steady-state calculations. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Raw K/L grows on the balanced path; K/(L A^(1/(1-alpha))) converges. Aggregate-capital ledger and zero-technology control. EIDM pp.665-669 reread (Exhibit11-13 explicitly a snapshot).",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -13484,7 +13484,7 @@
    "objectives": [
     "objective:compare-growth-theories"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: mod:growth-theories-convergence explains and evaluates absolute, conditional and club convergence and the evidence.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: mod:growth-theories-convergence explains and evaluates absolute, conditional and club convergence and the evidence. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Raw K/L grows on the balanced path; K/(L A^(1/(1-alpha))) converges. Aggregate-capital ledger and zero-technology control. EIDM pp.665-669 reread (Exhibit11-13 explicitly a snapshot).",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -18709,7 +18709,7 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property explains product markets, operating leverage and credit quality over the cycle.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property explains product markets, operating leverage and credit quality over the cycle. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: E0, E1 and D1 explicit; trailing 21/26.25/15 and forward 20/25/14.2857 reconciled to independent dividend PV sums.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -18729,7 +18729,7 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property explains consumption hedging and the equity premium; res:economy-discount-rates-cash-flows gives the two-state example.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property explains consumption hedging and the equity premium; res:economy-discount-rates-cash-flows gives the two-state example. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: E0, E1 and D1 explicit; trailing 21/26.25/15 and forward 20/25/14.2857 reconciled to independent dividend PV sums.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -18749,7 +18749,7 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property explains earnings expectations over the cycle.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property explains earnings expectations over the cycle. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: E0, E1 and D1 explicit; trailing 21/26.25/15 and forward 20/25/14.2857 reconciled to independent dividend PV sums.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -18769,7 +18769,7 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property describes cyclical effects on multiples with Gordon-model sensitivities.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property describes cyclical effects on multiples with Gordon-model sensitivities. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: E0, E1 and D1 explicit; trailing 21/26.25/15 and forward 20/25/14.2857 reconciled to independent dividend PV sums.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -18789,7 +18789,7 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property describes the economic drivers of commercial real estate and cap rates.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property describes the economic drivers of commercial real estate and cap rates. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: E0, E1 and D1 explicit; trailing 21/26.25/15 and forward 20/25/14.2857 reconciled to independent dividend PV sums.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20115,7 +20115,7 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations discusses cycle phases and horizons, with an exact regime chain against PMiP Example 7.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations discusses cycle phases and horizons, with an exact regime chain against PMiP Example 7. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: PMiP p.65/PDF93 explicitly specifies continuously compounded monthly returns. Restored expected cumulative/annualised log labels, homogeneous transition timing, geometric equivalents and separate expected wealth with added deterministic-state assumption; enumeration confirms results. Guideline estimates are qualitative, not proven source errors.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20137,7 +20137,7 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations explains inflation over the cycle and its effects on cash, bonds, equities and real estate.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations explains inflation over the cycle and its effects on cash, bonds, equities and real estate. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: PMiP p.65/PDF93 explicitly specifies continuously compounded monthly returns. Restored expected cumulative/annualised log labels, homogeneous transition timing, geometric equivalents and separate expected wealth with added deterministic-state assumption; enumeration confirms results. Guideline estimates are qualitative, not proven source errors.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20159,7 +20159,7 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations discusses monetary and fiscal policy and the policy mix.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations discusses monetary and fiscal policy and the policy mix. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: PMiP p.65/PDF93 explicitly specifies continuously compounded monthly returns. Restored expected cumulative/annualised log labels, homogeneous transition timing, geometric equivalents and separate expected wealth with added deterministic-state assumption; enumeration confirms results. Guideline estimates are qualitative, not proven source errors.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20182,7 +20182,7 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations interprets the yield curve as a predictor and its link to policy.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations interprets the yield curve as a predictor and its link to policy. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: PMiP p.65/PDF93 explicitly specifies continuously compounded monthly returns. Restored expected cumulative/annualised log labels, homogeneous transition timing, geometric equivalents and separate expected wealth with added deterministic-state assumption; enumeration confirms results. Guideline estimates are qualitative, not proven source errors.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20205,7 +20205,7 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations identifies and interprets linkages between economies.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations identifies and interprets linkages between economies. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: PMiP p.65/PDF93 explicitly specifies continuously compounded monthly returns. Restored expected cumulative/annualised log labels, homogeneous transition timing, geometric equivalents and separate expected wealth with added deterministic-state assumption; enumeration confirms results. Guideline estimates are qualitative, not proven source errors.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20227,7 +20227,7 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses fixed-income forecasts from yields and building blocks, reproducing PMiP Example 1.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses fixed-income forecasts from yields and building blocks, reproducing PMiP Example 1. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cap-rate change is relative (6%), first order 1.5%; forward-NOI cash ledger gives 1.6981%, stable cap control 7.5%. PMiP pp.118-119/PDF146-147 reread, including reinvestment caveat.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20249,7 +20249,7 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses EM debt risks and country indicators.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses EM debt risks and country indicators. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cap-rate change is relative (6%), first order 1.5%; forward-NOI cash ledger gives 1.6981%, stable cap control 7.5%. PMiP pp.118-119/PDF146-147 reread, including reinvestment caveat.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20271,7 +20271,7 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses equity forecasts by Grinold-Kroner and Singer-Terhaar.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses equity forecasts by Grinold-Kroner and Singer-Terhaar. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cap-rate change is relative (6%), first order 1.5%; forward-NOI cash ledger gives 1.6981%, stable cap control 7.5%. PMiP pp.118-119/PDF146-147 reread, including reinvestment caveat.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20293,7 +20293,7 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses EM equity risks.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses EM equity risks. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cap-rate change is relative (6%), first order 1.5%; forward-NOI cash ledger gives 1.6981%, stable cap control 7.5%. PMiP pp.118-119/PDF146-147 reread, including reinvestment caveat.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20315,7 +20315,7 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts explains real-estate forecasts from cap rates.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts explains real-estate forecasts from cap rates. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cap-rate change is relative (6%), first order 1.5%; forward-NOI cash ledger gives 1.6981%, stable cap control 7.5%. PMiP pp.118-119/PDF146-147 reread, including reinvestment caveat.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20382,7 +20382,7 @@
    "objectives": [
     "objective:rebalance-global-portfolio-on-macro-views"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: ex:global-portfolio-macro-rebalancing recommends and justifies reweighting a global portfolio from macro views with a quantified example.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: ex:global-portfolio-macro-rebalancing recommends and justifies reweighting a global portfolio from macro views with a quantified example. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Weights30/30/20/20 to38/24/18/20: equity A +8, equity B -6, bond A -2. Budget checked.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20539,7 +20539,7 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo recommends and justifies an allocation from objectives, constraints and risk preferences.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo recommends and justifies an allocation from objectives, constraints and risk preferences. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20628,7 +20628,7 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo describes and evaluates MVO, its criticisms and remedies.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo describes and evaluates MVO, its criticisms and remedies. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20651,7 +20651,7 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo recommends allocations by constrained MVO for investors of different risk aversion.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo recommends allocations by constrained MVO for investors of different risk aversion. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20697,7 +20697,7 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo recommends from the global market portfolio via reverse optimisation; meth:asset-class-factor-specification reproduces Exhibit 12.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo recommends from the global market portfolio via reverse optimisation; meth:asset-class-factor-specification reproduces Exhibit 12. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20785,7 +20785,7 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo describes client risk preferences (willingness and ability) in the utility function.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo describes client risk preferences (willingness and ability) in the utility function. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20898,7 +20898,7 @@
    "objectives": [
     "objective:recommend-goals-based-allocation"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:goals-based-allocation-heuristics recommends goals-based allocation with modules, reproducing Exhibit 36 and the Smiths' goals.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:goals-based-allocation-heuristics recommends goals-based allocation with modules, reproducing Exhibit 36 and the Smiths' goals. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Lins USD1m available wealth; dated education and home goals, success requirements, explicit module weights, capital budgets, aggregate assets and cash surplus reconciled. Same-client60/40 comparison and USD900k infeasibility resolution. Exact lognormal single-payment example distinguished from book approximation. PMiP pp.268-275,279-282 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -20921,7 +20921,7 @@
    "objectives": [
     "objective:recommend-goals-based-allocation"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:goals-based-allocation-heuristics describes and evaluates 120-minus-age, 60/40, the endowment model, risk parity and 1/N.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:goals-based-allocation-heuristics describes and evaluates 120-minus-age, 60/40, the endowment model, risk parity and 1/N. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Lins USD1m available wealth; dated education and home goals, success requirements, explicit module weights, capital budgets, aggregate assets and cash surplus reconciled. Same-client60/40 comparison and USD900k infeasibility resolution. Exact lognormal single-payment example distinguished from book approximation. PMiP pp.268-275,279-282 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -23445,7 +23445,7 @@
    "objectives": [
     "objective:compare-active-currency-strategies"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-currency-strategies compares fundamental, technical, carry and volatility strategies.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-currency-strategies compares fundamental, technical, carry and volatility strategies. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Rising risk aversion means reducing carry and adding long-volatility hedges within premium budget.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -23467,7 +23467,7 @@
    "objectives": [
     "objective:compare-active-currency-strategies"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-currency-strategies describes how changes in volatility, policy and positioning drive tactical decisions.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-currency-strategies describes how changes in volatility, policy and positioning drive tactical decisions. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: Rising risk aversion means reducing carry and adding long-volatility hedges within premium budget.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -23511,7 +23511,7 @@
    "objectives": [
     "objective:reduce-hedging-costs"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedge-cost-reduction describes over-/under-hedging, OTM puts, risk reversals, put spreads, seagulls and exotics.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedge-cost-reduction describes over-/under-hedging, OTM puts, risk reversals, put spreads, seagulls and exotics. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: USD-valued exposure ratio 0.935 converted at USD/NZD 0.60 and USD/AUD 0.66 to 0.85 AUD per NZD; USD P&L and currency-unit scaling checked; forward delta assumptions explicit. PMiP pp.424-426 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -23533,7 +23533,7 @@
    "objectives": [
     "objective:reduce-hedging-costs"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedge-cost-reduction describes cross, macro and minimum-variance hedges and basis risk; mod:minimum-variance-hedge-ratio derives the ratio.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedge-cost-reduction describes cross, macro and minimum-variance hedges and basis risk; mod:minimum-variance-hedge-ratio derives the ratio. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: USD-valued exposure ratio 0.935 converted at USD/NZD 0.60 and USD/AUD 0.66 to 0.85 AUD per NZD; USD P&L and currency-unit scaling checked; forward delta assumptions explicit. PMiP pp.424-426 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },
@@ -23555,7 +23555,7 @@
    "objectives": [
     "objective:reduce-hedging-costs"
    ],
-   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedge-cost-reduction discusses EM currency challenges and non-deliverable forwards.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedge-cost-reduction discusses EM currency challenges and non-deliverable forwards. Re-reviewed against actual outline page on 2026-10-19 after PR #26 corrections: USD-valued exposure ratio 0.935 converted at USD/NZD 0.60 and USD/AUD 0.66 to 0.85 AUD per NZD; USD P&L and currency-unit scaling checked; forward delta assumptions explicit. PMiP pp.424-426 reread.",
    "residual_gap": null,
    "reviewed": "2026-10-19"
   },

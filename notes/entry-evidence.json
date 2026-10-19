@@ -1566,5 +1566,185 @@
   "meth:trade-execution-evaluation-governance": {
     "source": "compendium/execution-trading-costs/trade-strategy-governance.tex",
     "review": "Verification: managing-investment-portfolios-2007 chap. 10, sec. 6.1, pp. 679--680; finra-rule-5310 Rule 5310(a)(1) and Supplementary Material .09; eu-2014-65-mifid2 art. 27(1), (4)--(5), (7)--(8); locators in the entry text. Checked by trade-execution-checks.py part 5 (a z-score against a pre-trade estimate, a broker comparison with a significance test and the sample size needed). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:business-credit-cycles": {
+    "source": "compendium/multi-asset-systematic-macro/business-cycles-policy.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 6, sec. 2.1, pp. 280--284, Exhibits 6-1a and 6-1b; jorda-schularick-taylor-2011 abstract; locators in the entry text. Checked by macro-policy-trade-checks.py part 1 (the two-quarter rule on a sequence it misses and an excess-credit measure). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:business-cycle-indicators": {
+    "source": "compendium/multi-asset-systematic-macro/business-cycles-policy.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 6, sec. 5, pp. 319--320; estrella-trubin-2006 pp. 4--5; locators in the entry text. Checked by macro-policy-trade-checks.py part 1 (a diffusion index and an inventory-to-sales ratio through a turn). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:fiscal-policy-tools-stance": {
+    "source": "compendium/multi-asset-systematic-macro/business-cycles-policy.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 7, sec. 3, p. 374; locators in the entry text. Checked by macro-policy-trade-checks.py part 2 (EIDM's 3.57 multiplier by summing spending rounds, a balanced-budget expansion, debt dynamics and the debt-stabilising primary balance, a structural deficit and Ricardian equivalence). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:monetary-policy-transmission-regimes": {
+    "source": "compendium/rates-credit-mortgages/monetary-fiscal-policy.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 7, sec. 2.2, pp. 348--350; locators in the entry text. Checked by macro-policy-trade-checks.py part 3 (the quantity identity, EIDM's 4.5% neutral rate, a Taylor benchmark and the zero bound). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:monetary-fiscal-policy-mix": {
+    "source": "compendium/rates-credit-mortgages/monetary-fiscal-policy.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 7, sec. 4, p. 392; locators in the entry text. Checked by macro-policy-trade-checks.py parts 2-3 (the stance measures and Ricardian offset used to classify policy mixes). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:geopolitics-institutions-tools": {
+    "source": "compendium/multi-asset-systematic-macro/business-cycles-policy.tex",
+    "review": "Verification: imf-sdn-2023-001 Executive Summary, p. 4; economics-investment-decision-makers-2013 chap. 8, sec. 5, pp. 451--456; locators in the entry text. No numerical check (descriptive; the tools feed the scenario assessment in meth:geopolitical-risk-assessment). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft."
+  },
+  "meth:geopolitical-risk-assessment": {
+    "source": "compendium/multi-asset-systematic-macro/business-cycles-policy.tex",
+    "review": "Verification: caldara-iacoviello-2022 introduction, pp. 1194--1196; Figure 1 notes, p. 1201; locators in the entry text. Checked by macro-policy-trade-checks.py part 5 (a GPR-style news-share index and a scenario-weighted assessment with a hedge and its market-implied probability). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:trade-benefits-restrictions-blocs": {
+    "source": "compendium/multi-asset-systematic-macro/business-cycles-policy.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 8, secs. 2.3--2.4, pp. 411--423; locators in the entry text. Checked by macro-policy-trade-checks.py part 4 (comparative advantage, EIDM Example 8-5, quota rents, a small-country export subsidy and a large-country tariff). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:fx-market-real-exchange-rates": {
+    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 9, sec. 2, pp. 473--484; bis-triennial-2025 preliminary results; locators in the entry text. Checked by fx-checks.py part 1 (percentage changes in both directions, bid-offer inversion and the real exchange rate). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:cross-forward-rates": {
+    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 9, sec. 3.2, pp. 488--492; locators in the entry text. Checked by fx-checks.py part 2 (EIDM cross rates, forward points, the 77 bp CIP arbitrage and CIP with money-market day counts). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:fx-bid-offer-triangular-arbitrage": {
+    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 10, sec. 2, pp. 531--533; locators in the entry text. Checked by fx-checks.py part 3 (implied cross bid-offers, EIDM Example 10-1 and dealer arbitrage). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:currency-forward-mark-to-market": {
+    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 10, sec. 2.2, pp. 538--542; locators in the entry text. Checked by fx-checks.py part 4 (EIDM's AUD 237,154 mark-to-market and Example 10-3). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:exchange-rate-regimes-capital-flows": {
+    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 9, sec. 4.1, p. 500; locators in the entry text. Checked by fx-checks.py part 5 (the Marshall-Lerner condition from EIDM Exhibit 9-9). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "res:international-parity-conditions": {
+    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 10, sec. 3.1, pp. 549--565; locators in the entry text. Checked by fx-checks.py part 6 (the parity conditions tied together from Fisher, PPP and UIP). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:exchange-rate-forecasting-fair-value": {
+    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 10, secs. 3.1--3.3 and 9, pp. 553--569 and 605--610; locators in the entry text. Checked by fx-checks.py part 7 (the real-interest-differential model, PPP fair value and forward against random-walk forecasts on a simulated series). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:carry-trade-uip": {
+    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 10, sec. 4, pp. 569--572; msss-2012 abstract; locators in the entry text. Checked by fx-checks.py part 8 (carry P&L against the UIP prediction and the skew of a crash-prone return stream). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:flows-policy-exchange-rates": {
+    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 10, sec. 5, pp. 573--584; locators in the entry text. Checked by fx-checks.py part 9 (the current-account identity and crisis warning signals). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:growth-determinants-factors": {
+    "source": "compendium/multi-asset-systematic-macro/economic-growth.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 11, sec. 2, pp. 622--631; locators in the entry text. Checked by growth-checks.py parts 2 and 4 (diminishing returns in Cobb-Douglas and a stylised Dutch disease). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:potential-gdp-growth-accounting": {
+    "source": "compendium/multi-asset-systematic-macro/economic-growth.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 11, sec. 4.3, pp. 640--641; locators in the entry text. Checked by growth-checks.py parts 1-2 (EIDM Exhibit 11-3 and Example 11-2, the TFP residual and a potential-GDP forecast with demographics). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "mod:growth-theories-convergence": {
+    "source": "compendium/multi-asset-systematic-macro/economic-growth.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 11, sec. 5, pp. 664--684; macroeconomics-2019 chap. 9, sec. 9-4; locators in the entry text. Checked by growth-checks.py parts 3-4 (EIDM Example 11-10, a Solow simulation of level against growth effects, convergence and its speed, the golden rule and the AK model). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:growth-policies-technology-trade": {
+    "source": "compendium/multi-asset-systematic-macro/economic-growth.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 11, sec. 5.3, pp. 677--680; macroeconomics-2019 chap. 9, sec. 9-4; locators in the entry text. Checked by growth-checks.py part 4 (a research externality and a transition from opening to capital). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "res:economy-discount-rates-cash-flows": {
+    "source": "compendium/multi-asset-systematic-macro/macro-asset-valuation.tex",
+    "review": "Verification: s6-cochrane sec. 1.4, pp. 20--23; s7-ang chap. 6, secs. 3.6--4, pp. 202--206; portfolio-management-in-practice-v1-2020 chap. 3, sec. 3.4.2, p. 64; locators in the entry text. Checked by macro-valuation-checks.py parts 1-2 (news against expectations in a growing perpetuity and a two-state consumption economy). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:cycle-rates-breakevens-spreads": {
+    "source": "compendium/multi-asset-systematic-macro/macro-asset-valuation.tex",
+    "review": "Verification: s6-cochrane sec. 1.4.1, eq. (1.7), p. 20; economics-investment-decision-makers-2013 chap. 11, sec. 3, p. 633; portfolio-management-in-practice-v1-2020 chap. 3, sec. 3.4.1, pp. 62--64; s7-ang chap. 9, sec. 3, pp. 291--292; locators in the entry text. Checked by macro-valuation-checks.py parts 2-3 (Cochrane's real-rate formula, the Ang-Piazzesi decomposition, breakevens and credit spreads over the cycle). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:cycle-equities-property": {
+    "source": "compendium/multi-asset-systematic-macro/macro-asset-valuation.tex",
+    "review": "Verification: economics-investment-decision-makers-2013 chap. 6, sec. 2.2, pp. 284--292; s7-ang chap. 7, sec. 2.1, Table 7.2, pp. 215--217; portfolio-management-in-practice-v1-2020 chap. 3, sec. 3.4.1, pp. 62--64; locators in the entry text. Checked by macro-valuation-checks.py part 4 (operating leverage, Gordon multiples and cap-rate valuation). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:cme-framework-forecasting": {
+    "source": "compendium/multi-asset-systematic-macro/capital-market-expectations.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 3, sec. 2.1, pp. 39--42; locators in the entry text. Checked by cme-checks.py part 1 (the standard error of a historical mean and smoothing, formula and simulation). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:growth-shocks-long-run-expectations": {
+    "source": "compendium/multi-asset-systematic-macro/capital-market-expectations.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 3, sec. 3.2.2, pp. 54--56; locators in the entry text. Checked by cme-checks.py part 2 (PMiP Example 5 and three types of growth shock). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:cycle-policy-curve-expectations": {
+    "source": "compendium/multi-asset-systematic-macro/capital-market-expectations.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 3, sec. 3.4, pp. 61--68; locators in the entry text. Checked by cme-checks.py part 3 (PMiP Example 7 against an exact Markov chain and a trade linkage). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:asset-class-return-forecasts": {
+    "source": "compendium/multi-asset-systematic-macro/capital-market-expectations.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 4, sec. 3, pp. 96--104; locators in the entry text. Checked by cme-checks.py part 4 (PMiP Examples 1 and 4, P/E reversion rates, Singer-Terhaar, building blocks and real estate). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:fx-volatility-forecasts": {
+    "source": "compendium/multi-asset-systematic-macro/capital-market-expectations.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 4, sec. 6, pp. 124--131; locators in the entry text. Checked by cme-checks.py part 5 (the ARCH update, shrinkage against the sample covariance and a combined currency view). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "ex:global-portfolio-macro-rebalancing": {
+    "source": "compendium/multi-asset-systematic-macro/capital-market-expectations.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 4, sec. 8, pp. 138--142; locators in the entry text. Checked by cme-checks.py part 6 (a reweighting whose quantified views raise expected return and the excess-return-to-risk ratio). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:investment-governance-allocation": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 5, sec. 3, pp. 158--164; locators in the entry text. No numerical check (descriptive; interpretation of PMiP Example 2). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft."
+  },
+  "meth:economic-balance-sheet-allocation": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 5, sec. 4, pp. 165--168; locators in the entry text. Checked by saa-checks.py part 1 (an economic balance sheet with human capital, a glide path and an equity-like job). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:allocation-approaches-risk": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 5, sec. 5, pp. 169--180; locators in the entry text. Checked by saa-checks.py part 2 (asset, surplus and shortfall risk of one portfolio). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:asset-class-factor-specification": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 5, sec. 6.1, pp. 180--188; s7-ang chap. 6, pp. 193--206; locators in the entry text. Checked by saa-checks.py part 3 (PMiP Exhibit 12 reverse optimisation and a factor-based correlation). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:asset-only-allocation-mvo": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 6, sec. 2, pp. 213--241; locators in the entry text. Checked by saa-checks.py part 4 (the utility function, the reverse-optimisation round trip, input sensitivity and constrained optima). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:allocation-implementation-rebalancing": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 5, sec. 7, pp. 195--201; s7-ang chap. 4, pp. 125--127 and 135--140; locators in the entry text. Checked by saa-checks.py part 5 (rebalancing as short volatility on a binomial tree and a corridor). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:allocation-robustness-liquidity-risk-budget": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 6, secs. 2.2 and 3.3, pp. 225--228 and 264--266; locators in the entry text. Checked by saa-checks.py part 6 (Monte Carlo success rates, the denominator effect and risk budgets at the Sharpe-maximising mix). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:liability-relative-allocation": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 6, sec. 3.1, pp. 250--253; locators in the entry text. Checked by saa-checks.py part 7 (surplus optimisation and a hedging/return-seeking split). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:goals-based-allocation-heuristics": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 6, sec. 4, pp. 268--283; locators in the entry text. Checked by saa-checks.py part 8 (PMiP Exhibit 36 minimum expectations, module choice, the Smiths' capital and heuristics). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:allocation-constraints-taxes-revision": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 7, sec. 2, pp. 308--327; locators in the entry text. Checked by saa-checks.py part 9 (after-tax returns, a size constraint and a revision after a funding change). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:tactical-shifts-behavioural-biases": {
+    "source": "compendium/multi-asset-systematic-macro/strategic-asset-allocation.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 7, sec. 5, pp. 343--348; locators in the entry text. Checked by saa-checks.py part 10 (a tactical tilt's information ratio and loss aversion). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:currency-portfolio-effects": {
+    "source": "compendium/currency-markets/currency-management.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 8, sec. 3, pp. 378--383; campbell-viceira-currency-hedging-2007 abstract; locators in the entry text. Checked by currency-management-checks.py part 1 (PMiP's 15.5% and 12.4% and hedged volatilities and minimum-variance hedge ratios). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:currency-hedging-programme": {
+    "source": "compendium/currency-markets/currency-management.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 8, sec. 4.4, pp. 389--393; locators in the entry text. Checked by currency-management-checks.py part 2 (rolling and resizing a hedge, roll yield and a hedging-cost budget). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:active-currency-strategies": {
+    "source": "compendium/currency-markets/currency-management.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 8, sec. 5, pp. 396--404; locators in the entry text. Checked by currency-management-checks.py part 5 (carry and volatility-trading P&L). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:currency-hedge-cost-reduction": {
+    "source": "compendium/currency-markets/currency-management.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 8, sec. 6.3, pp. 416--423; locators in the entry text. Checked by currency-management-checks.py parts 3-4 (Garman-Kohlhagen puts, risk reversals, put spreads and seagulls, a cross hedge, a regression hedge and NDF settlement). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   }
 }

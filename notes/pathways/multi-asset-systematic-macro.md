@@ -31,6 +31,27 @@ Written in macro markets and pricing / source review / optimal execution / execu
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
+Written in the macro, allocation and currency batch (2026-10-19):
+
+In `business-cycles-policy.tex`:
+
+- `def:business-credit-cycles`: cycle phases and dating, resource use, competing explanations, and credit-intensive expansions followed by deeper recessions (EIDM chap. 6; Jordà, Schularick and Taylor).
+- `meth:business-cycle-indicators`: leading, coincident and lagging indicators and composites, diffusion indexes, and how to read them.
+- `def:fiscal-policy-tools-stance`: roles, deficits and debt, tools, the multiplier, lags, the structural deficit and Ricardian equivalence (EIDM chap. 7).
+- `def:geopolitics-institutions-tools`: cooperation and competition, globalisation and fragmentation (IMF SDN/2023/001), the IMF, World Bank and WTO, and geopolitical tools.
+- `meth:geopolitical-risk-assessment`: the Caldara-Iacoviello GPR index, likelihood, velocity and size, scenarios and hedges.
+- `meth:trade-benefits-restrictions-blocs`: comparative advantage, tariffs, quotas, subsidies, large-country effects and trading blocs (EIDM chap. 8).
+
+In `economic-growth.tex`: `def:growth-determinants-factors`, `meth:potential-gdp-growth-accounting`, `mod:growth-theories-convergence` and `def:growth-policies-technology-trade` (EIDM chap. 11; Mankiw chap. 9).
+
+In `macro-asset-valuation.tex`: `res:economy-discount-rates-cash-flows`, `meth:cycle-rates-breakevens-spreads` and `meth:cycle-equities-property` (Cochrane sec. 1.4; Ang chaps. 6, 7 and 9; PMiP chaps. 3-4).
+
+In `capital-market-expectations.tex`: `meth:cme-framework-forecasting`, `meth:growth-shocks-long-run-expectations`, `meth:cycle-policy-curve-expectations`, `meth:asset-class-return-forecasts`, `meth:fx-volatility-forecasts` and `ex:global-portfolio-macro-rebalancing` (PMiP chaps. 3-4).
+
+In `strategic-asset-allocation.tex`: `def:investment-governance-allocation`, `meth:economic-balance-sheet-allocation`, `def:allocation-approaches-risk`, `meth:asset-class-factor-specification`, `meth:asset-only-allocation-mvo`, `meth:allocation-implementation-rebalancing`, `meth:allocation-robustness-liquidity-risk-budget`, `meth:liability-relative-allocation`, `meth:goals-based-allocation-heuristics`, `meth:allocation-constraints-taxes-revision` and `meth:tactical-shifts-behavioural-biases` (PMiP chaps. 5-7; Ang chap. 4).
+
+All partly checked 2026-10-19, draft. Examples in `notes/artefacts/macro-policy-trade/`, `economic-growth/`, `macro-asset-valuation/`, `capital-market-expectations/` and `strategic-asset-allocation/`; human review is outstanding. Coverage records are editorial, not study. `def:macroeconomic-indicators`, `def:macro-regime-asset-map`, `mod:mean-variance-portfolio-optimisation` and `mod:black-litterman` are linked, not repeated.
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:global-macro-returns-after-2013` narrowed; `ev:practitioner-rules-tested` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

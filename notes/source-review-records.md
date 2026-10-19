@@ -4380,3 +4380,64 @@ Checks after this pass: `rate-tree-checks.py` 46 (was 43), `option-strategy-chec
 Coverage: the seven objectives mapped to the corrected entries (`evaluate-equity-portfolio-structure`, `estimate-value-at-risk`, `match-liabilities-with-bonds`, `replicate-with-options`, `measure-embedded-option-risk`, `value-convertible-bonds`, `analyse-spread-and-volatility-strategies`) and the two whose text changed with them (`apply-sensitivity-scenario-measures`, `set-market-risk-limits`) were reassessed against their operations and depth and remain covered. The fifteen outline items whose passages changed carry re-review notes. Counts are unchanged: 146 of 424 objectives; 342 of 1,030 outline items.
 
 Limits: the prospectus was read through a fetching tool, without a local copy or hash, and its make-whole table was not transcribed. The VaR convention ignores the drift, which matters little at one day but would not over longer horizons. Human review is outstanding.
+
+## Macro, allocation and currency batch, 19 October 2026
+
+Forty-five objectives in eleven topics, the batch size of plan Section 17.4: business cycles (2), fiscal policy (1), monetary policy (2), geopolitics and trade (3), exchange-rate mechanics (4), exchange-rate determination (5), economic growth (4), macro asset valuation (3), capital market expectations (6), strategic asset allocation (11) and currency management (4). Branch `codex/macro-allocation-currency-20261019`, from `codex/derivatives-portfolio-execution-20261019` at `bea4f8e` (draft PR #25 after its correction pass). Source checks and numerical verification; not study and not human review.
+
+### Source discovery (plan sec. 3.5)
+
+Retrieval on 2026-10-19 targeted these subjects: business-cycle phases and dating, credit and financial cycles, leading indicators, fiscal multipliers and debt dynamics, monetary transmission and the neutral rate, geopolitical risk measurement and fragmentation, tariff welfare, FX quotes, cross and forward rates, triangular arbitrage, forward valuation, parity conditions and fair value, carry, balance of payments and crises, growth accounting and convergence, the consumption-based real rate, breakevens and credit spreads over the cycle, capital market expectations, strategic asset allocation and currency hedging. The owner's local library was searched first. Sources read, with sections, copies and hashes in their reading notes:
+
+- Piros and Pinto (eds.), *Economics for Investment Decision Makers* (CFA Institute Investment Series, 2013; `economics-investment-decision-makers-2013`), chaps. 6-11.
+- *Portfolio Management in Practice, Volume 1* (CFA Institute Investment Series, 2020; `portfolio-management-in-practice-v1-2020`), chaps. 3-8.
+- Mankiw, *Macroeconomics* (10th ed.; `macroeconomics-2019`), chap. 9, secs. 9-2 to 9-4.
+- Cochrane, *Asset Pricing* (rev. ed., 2005; `s6-cochrane`), sec. 1.4.
+- Ang, *Asset Management* (2014; `s7-ang`), chaps. 4, 6, 7 and 9.
+- Jordà, Schularick and Taylor, NBER WP 17621 (rev. 2012); Caldara and Iacoviello, *AER* 2022; Aiyar, Ilyina et al., IMF SDN/2023/001; Campbell, Serfaty-de Medeiros and Viceira, NBER WP 13088 (rev. 2009); Menkhoff, Sarno, Schmeling and Schrimpf (accepted version, already held locally) for carry and FX volatility.
+- Already registered and reused: the NBER dating page, Estrella and Trubin (2006) on the yield curve, the BIS Triennial Survey 2025.
+
+Access limits and substitutions:
+- BIS Working Paper 380 (Drehmann, Borio and Tsatsaronis) returned a bot-check page to scripted downloads; only its abstract was read and it is not cited. Jordà, Schularick and Taylor supply the credit-cycle evidence instead.
+- The IMF site refused the SDN download; a copy without annexes hosted by Florida State University was read. The Harvard copy of the published Campbell et al. article returned HTTP 403; the NBER working paper was read.
+- Two Investment Series books are substantive sources here, as Managing Investment Portfolios was in earlier batches; non-CFA sources (Mankiw, Cochrane, Ang, the papers and the IMF note) supply theory and evidence. The outlines defined scope only.
+
+### Entries
+
+Forty-five new entries in eight new section files:
+- `multi-asset-systematic-macro/business-cycles-policy.tex`: `def:business-credit-cycles`, `meth:business-cycle-indicators`, `def:fiscal-policy-tools-stance`, `def:geopolitics-institutions-tools`, `meth:geopolitical-risk-assessment`, `meth:trade-benefits-restrictions-blocs`.
+- `rates-credit-mortgages/monetary-fiscal-policy.tex`: `def:monetary-policy-transmission-regimes`, `meth:monetary-fiscal-policy-mix`.
+- `currency-markets/fx-mechanics-parity.tex`: `def:fx-market-real-exchange-rates`, `meth:cross-forward-rates`, `meth:fx-bid-offer-triangular-arbitrage`, `meth:currency-forward-mark-to-market`, `def:exchange-rate-regimes-capital-flows`, `res:international-parity-conditions`, `meth:exchange-rate-forecasting-fair-value`, `meth:carry-trade-uip`, `def:flows-policy-exchange-rates`.
+- `multi-asset-systematic-macro/economic-growth.tex`: `def:growth-determinants-factors`, `meth:potential-gdp-growth-accounting`, `mod:growth-theories-convergence`, `def:growth-policies-technology-trade`.
+- `multi-asset-systematic-macro/macro-asset-valuation.tex`: `res:economy-discount-rates-cash-flows`, `meth:cycle-rates-breakevens-spreads`, `meth:cycle-equities-property`.
+- `multi-asset-systematic-macro/capital-market-expectations.tex`: `meth:cme-framework-forecasting`, `meth:growth-shocks-long-run-expectations`, `meth:cycle-policy-curve-expectations`, `meth:asset-class-return-forecasts`, `meth:fx-volatility-forecasts`, `ex:global-portfolio-macro-rebalancing`.
+- `multi-asset-systematic-macro/strategic-asset-allocation.tex`: `def:investment-governance-allocation`, `meth:economic-balance-sheet-allocation`, `def:allocation-approaches-risk`, `meth:asset-class-factor-specification`, `meth:asset-only-allocation-mvo`, `meth:allocation-implementation-rebalancing`, `meth:allocation-robustness-liquidity-risk-budget`, `meth:liability-relative-allocation`, `meth:goals-based-allocation-heuristics`, `meth:allocation-constraints-taxes-revision`, `meth:tactical-shifts-behavioural-biases`.
+- `currency-markets/currency-management.tex`: `meth:currency-portfolio-effects`, `meth:currency-hedging-programme`, `meth:active-currency-strategies`, `meth:currency-hedge-cost-reduction`.
+
+Existing entries reviewed first and linked, not repeated; those carrying part of an objective are mapped alongside the new entries: `def:macroeconomic-indicators`, `def:central-bank-policy-framework`, `mod:taylor-rule`, `def:fx-market-structure`, `def:currency-regimes-intervention`, `ev:cip-deviations`, `mod:fx-carry-trade`, `mod:mean-variance-portfolio-optimisation`, `mod:black-litterman` and `mod:minimum-variance-hedge-ratio`. `def:macro-regime-asset-map` and `meth:asset-class-portfolio-construction` are cross-referenced.
+
+### Numerical evidence
+
+Seven scripts, found by `make examples`, 140 checks (one executed `ok()` call per check); seeded simulations use seed 20261019: `macro-policy-trade-checks.py` (23), `fx-checks.py` (27), `growth-checks.py` (19), `macro-valuation-checks.py` (13), `cme-checks.py` (18), `saa-checks.py` (25), `currency-management-checks.py` (15). Two governance and geopolitics entries are descriptive and have no numerical check.
+
+Findings from the checks:
+- EIDM Exhibit 11-3: the components sum to the 10.82% return only if the EPS/GDP entry is -0.12 (the text layer shows 0.12; the text's combined 0.20 confirms the sign).
+- EIDM Exhibit 9-9: the printed working "0.65 - 4" is a slip for 0.65 - 1; the result 0.09 is right.
+- PMiP Example 7: the guideline horizon forecasts (-6%, -18%, 4.8% and about 8%) converge faster than an exact Markov chain with the stated 39- and 20-month spells, which gives -5.4%, -13.6%, 0.8% and 4.2% a year.
+- PMiP Exhibit 5 maps policy mixes to the level of rates, not the slope; an earlier draft of the CME entry had it wrong and was corrected before promotion.
+- PMiP pp. 274-275: the Smiths' required capital of 6,671 and 2,679 thousand implies unrounded rates near 4.13% and 6.81%; the table's 4.1% and 6.8% give 6,691 and 2,683.
+- The Solow model's own convergence speed (5.5% a year at alpha = 1/3, 3.5% at 2/3) exceeds the roughly 2% Mankiw reports among similar economies.
+- Many expected values typed before the first runs failed (option premia, surplus volatilities, simulated success rates, large-country tariff welfare); they were recomputed and replaced before the entries were finalised. Two checks that only restated inputs were rewritten to test outcomes.
+
+### Coverage
+
+The 118 outline items mapped to the 45 objectives (25 Level I on PDF pp. 5-7, 36 Level II on pp. 5-6 and 25, 57 shared Level III core on pp. 1-3 and 12) map to no objective outside the batch. Each was read on its page against the finished entries; all are promoted with item-specific rationales.
+
+All 45 objectives are `covered` (editorial coverage, not mastery). Totals: 191 of 424 objectives (from 146); 158 Level I, 119 Level II, 135 shared-core and 48 Portfolio Management items covered (460 of 1,030, from 342); 570 unreviewed.
+
+### Limits
+
+- Macro data quoted from the sources are dated (EIDM to 2010-2012; Ang and Piazzesi's sample; PMiP's 2018-2019 figures); original examples are invented or simulated.
+- Policy and geopolitical descriptions are frameworks, not forecasts; scenario probabilities are subjective.
+- Several papers were read only at abstract or introduction level (Jordà et al., Campbell et al., MSSS, the IMF note beyond its summary and sec. II); their detailed results are not relied on.
+- Human review is outstanding.

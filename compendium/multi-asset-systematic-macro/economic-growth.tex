@@ -1,0 +1,115 @@
+\section{Economic growth and its investment implications}
+
+These entries explain long-run growth and why investors forecast it: the factors that favour and limit growth, growth accounting and the forecast of potential GDP, the classical, neoclassical and endogenous theories and the convergence debate, and the policies that support technology and openness. Numbers are checked in \texttt{notes/artefacts/economic-growth/growth-checks.py}.
+
+\begin{qfdefinition}[Determinants of economic growth: factors favouring and limiting growth in developed and developing economies, capital deepening against technological progress, natural resources, demographics and labour, human and physical capital, and technology]\label{def:growth-determinants-factors}
+\qffield{Statement} \emph{Developed and developing economies} \citep[chap.~11, sec.~2, pp.~622--631]{economics-investment-decision-makers-2013}. Growth is favoured by saving and investment, developed financial markets and intermediaries, political stability, the rule of law and property rights, education and health care, efficient tax and regulatory systems, and free trade and capital flows; developing economies are limited by low saving and investment, weak financial systems and institutions, poor education and health, and restrictions on trade and capital (p.~628 summarises). Developed economies, near the technological frontier, grow mainly through innovation; developing economies can grow faster by adopting existing technology and accumulating capital.
+
+\emph{Capital deepening against technology} (secs.~4.1--4.2, pp.~635--640). With a Cobb--Douglas production function $Y=AK^\alpha L^{1-\alpha}$, output per worker is $y=Ak^\alpha$. Raising capital per worker (\emph{capital deepening}) moves along the function and runs into diminishing marginal returns, the more strongly the smaller $\alpha$; an increase in total factor productivity $A$ shifts the whole function up. So sustained growth in output per worker requires technological progress; capital deepening matters most where capital per worker is low.
+
+\emph{Natural resources} (sec.~4.5, pp.~642--645). Renewable and non-renewable resources are inputs, but resource wealth does not guarantee growth: countries rich in resources may neglect institutions (the \emph{resource curse}) or suffer \emph{Dutch disease}, where currency appreciation from resource exports erodes other tradable industries; resource-poor Singapore, Japan and South Korea grew faster than many resource-rich economies (p.~642).
+
+\emph{Demographics and labour} (sec.~4.6, pp.~645--649). Labour input is the number of workers times average hours: population growth, the labour-force participation rate (rising with women's participation, falling with ageing), net migration and average hours all matter. Ageing populations face slower labour growth and must rely on productivity.
+
+\emph{Physical and human capital and technology} (secs.~4.7--4.10, pp.~649--657). Human capital (education, skills, health) raises labour quality and can raise the rate of innovation; ICT investment has raised productivity growth directly and through network effects; technology comes from R\&D and its diffusion; public infrastructure raises private-sector productivity.
+
+\qffield{Notation} $Y$ output, $K$ capital, $L$ labour, $A$ total factor productivity, $\alpha$ capital's share of income; $y=Y/L$, $k=K/L$.
+
+\qffield{Conditions} The Cobb--Douglas form is a convenient fit, not a law; $\alpha$ is estimated from capital's share in national income (about 0.3 in the United States, p.~640). Country examples are from EIDM's data to 2010.
+
+\qffield{Practice} \emph{Original.} With $\alpha=0.3$, doubling capital per worker raises output per worker by only 23.1 percent and lowers the marginal product of capital by 38.4 percent. A resource windfall worth 4 percent of GDP for 15 years that erodes tradable output by up to 1 percent of GDP raises income while it lasts but leaves output 1 percent lower afterwards: a stylised Dutch disease.
+
+\qffield{Pitfalls} Extrapolating growth from capital accumulation without allowing for diminishing returns. Treating natural resources as a reliable source of long-run growth. Ignoring participation and hours when forecasting labour input.
+
+\qffield{See also} \hyperref[meth:potential-gdp-growth-accounting]{potential GDP}; \hyperref[mod:growth-theories-convergence]{growth theories}; \hyperref[def:growth-policies-technology-trade]{growth policies}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Forecasting potential GDP and relating it to asset returns: growth accounting and the TFP residual, the labour-productivity method, potential GDP and equity appreciation, and why potential growth matters to bond investors]\label{meth:potential-gdp-growth-accounting}
+\qffield{Statement} \emph{Growth accounting} \citep[chap.~11, sec.~4.3, pp.~640--641]{economics-investment-decision-makers-2013} writes the production function in growth rates:
+\[
+\frac{\Delta Y}{Y}=\frac{\Delta A}{A}+\alpha\frac{\Delta K}{K}+(1-\alpha)\frac{\Delta L}{L}\qquad\text{(eq.~11-4)},
+\]
+with $\alpha$ and $1-\alpha$ both output elasticities and income shares. TFP growth is the residual, the output growth not explained by capital and labour (Solow, 1957). \emph{Potential GDP} is estimated with trend labour and capital and a time-series forecast of TFP. The simpler \emph{labour-productivity} method uses
+\[
+\text{potential growth}=\text{labour force growth}+\text{labour productivity growth}\qquad\text{(eq.~11-5)},
+\]
+avoiding a capital estimate but mixing capital deepening and TFP in one term.
+
+\emph{Equity appreciation} (sec.~3, pp.~631--633). Writing the market's value as $P=\text{GDP}\times(E/\text{GDP})\times(P/E)$, appreciation equals nominal GDP growth plus the changes in the profit share and in the P/E. Neither ratio can trend forever, so ``the drivers of potential GDP are ultimately the drivers of stock market price performance''; the ratios matter for volatility, not long-run return.
+
+\emph{Bonds and credit} (pp.~633--634). Actual growth above potential pressures inflation and rates; higher potential growth implies higher real interest rates and expected real returns, better credit quality, and a central-bank focus on the output gap; rating agencies use potential growth in sovereign risk, and structural deficits are judged at potential.
+
+\qffield{Notation} $\Delta A/A$ TFP growth; $E/\text{GDP}$ aggregate earnings share; potential GDP is real.
+
+\qffield{Conditions} TFP is a residual that absorbs measurement error and omitted inputs; potential GDP is unobservable and revised. The equity identity assumes no net issuance and ignores the gap between national earnings and those of listed firms (footnote~5, p.~631).
+
+\qffield{Practice} \emph{Reproduced}:
+\begin{itemize}
+\item U.S.\ equities, 1946--2007 (Exhibit~11-3, p.~633): a log return of 10.82 percent a year, of which price appreciation 7.15 percent against nominal GDP growth of 6.95 percent (real 3.01 plus inflation 3.94); the earnings share and P/E together added 0.20 percent. The components sum to 10.82 only if the earnings-share entry is $-0.12$ ($-0.12+0.32=0.20$); the extracted table text shows 0.12.
+\item A forecast of 11 percent appreciation with real growth of 3.25 percent and inflation of 3.75 percent implies 4 percent a year from rising profit share and P/E forever; 7 percent appreciation, or 9.5 percent with a 2.5 percent yield, is sustainable (Example~11-2, pp.~634--635).
+\item Labour force growth of 1 percent and productivity growth of 2 percent give potential growth of 3 percent (p.~641).
+\end{itemize}
+\emph{Original.}
+\begin{itemize}
+\item Output growth 3.0 percent, capital 4.0 percent, labour 1.0 percent and $\alpha=0.3$ leave a TFP residual of 1.1 percent.
+\item A working-age population falling 0.5 percent a year, participation rising 0.3 percent and hours falling 0.1 percent give labour input of $-0.30$ percent; with productivity growth of 1.5 percent, potential growth is 1.19 percent.
+\end{itemize}
+
+\qffield{Pitfalls} Extrapolating past GDP growth (Japan's slowdown after 1990, p.~633). Forecasting equity returns from recent appreciation driven by rising margins and multiples. Treating the TFP residual as pure technology.
+
+\qffield{See also} \hyperref[def:growth-determinants-factors]{growth determinants}; \hyperref[meth:growth-shocks-long-run-expectations]{growth in capital market expectations}; \hyperref[res:economy-discount-rates-cash-flows]{economy and asset values}.
+
+\end{qfmethod}
+
+\begin{qfmodel}[Growth theories and convergence: classical (Malthusian), neoclassical (Solow) and endogenous growth models compared, the steady state, and absolute, conditional and club convergence with the evidence]\label{mod:growth-theories-convergence}
+\qffield{Statement} \emph{Classical} \citep[chap.~11, sec.~5, pp.~664--684]{economics-investment-decision-makers-2013}: with a fixed factor (land) and population rising whenever income exceeds subsistence, income per person returns to subsistence; technology raises population, not living standards. History refuted it because population growth slowed and technology progressed.
+
+\emph{Neoclassical (Solow)}: with diminishing returns to capital, capital per worker converges to a steady state where saving just covers depreciation, population growth and the deepening needed to keep pace with technology,
+\[
+sf(k)=\Big[\delta+n+\tfrac{\theta}{1-\alpha}\Big]k,
+\]
+and output per worker grows at $\theta/(1-\alpha)$, output at $\theta/(1-\alpha)+n$ (eqs.~11-8 and~11-9, pp.~665--669). A higher saving rate raises the \emph{level} of capital and output per worker but not the steady-state \emph{growth} rate; growth in output per worker requires TFP growth, which the model takes as exogenous.
+
+\emph{Endogenous growth} (pp.~677--680): technology is produced by investment in R\&D and knowledge capital, which have positive externalities, so returns to capital broadly defined need not diminish and saving can raise growth permanently. In Mankiw's AK model $\Delta Y/Y=sA-\delta$ \citep[chap.~9, sec.~9-4]{macroeconomics-2019}.
+
+\emph{Convergence} (pp.~680--684). \emph{Absolute} convergence: poorer countries grow faster than richer ones regardless of their characteristics; \emph{conditional} convergence: they converge only to the steady state set by their own saving, population growth and technology, so countries with the same characteristics converge; \emph{club} convergence: countries converge only if they join a club with the right institutions, and others can fall into a non-convergence trap. Neoclassical theory predicts convergence; endogenous theory need not. Evidence: most of EIDM's 32 economies grew faster than the United States over 1950--2010, but several fell further behind (p.~684); among economies with similar institutions, Mankiw reports convergence of about 2 percent a year (sec.~9-2).
+
+\qffield{Notation} $s$ saving rate, $\delta$ depreciation, $n$ labour growth, $\theta$ TFP growth, $\alpha$ capital share.
+
+\qffield{Conditions} Steady-state results are for a closed economy with exogenous saving; EIDM's growth rates are continuous-time approximations, which the discrete simulation below matches to within its compounding.
+
+\qffield{Practice} \emph{Reproduced} (Example~11-10, pp.~666--667): with TFP growth 2.5 percent, labour share 0.465 and labour growth 1.2 percent, China's steady-state growth is $2.5/0.465+1.2=6.58$ percent; Japan's, with 0.2 percent and 0.573, is 0.35 percent; another economy at 0.8 percent and 0.567 is 1.41 percent. \emph{Original} ($\alpha=1/3$, $\delta=5\%$, $n=1\%$, $\theta=1.5\%$):
+\begin{itemize}
+\item saving rates of 20 and 30 percent give the same long-run growth of output per worker (2.26 percent, the discrete-time $\theta/(1-\alpha)$), with the high saver's level 22 percent higher;
+\item two economies differing only in initial capital per worker (0.5 against 8.0) converge, the poorer growing faster; near the steady state the model's convergence rate is $(1-\alpha)(n+g+\delta)=5.5$ percent a year (half-life 12.6 years), and 3.5 percent with a broad capital share of 2/3, both faster than the empirical 2 percent;
+\item without technology growth the steady state is $k^*=(s/(\delta+n))^{1/(1-\alpha)}=8.51$ at $s=25\%$, and the golden-rule saving rate equals the capital share, 1/3;
+\item in the AK model ($s=20\%$, $A=0.25$, $\delta=3\%$) growth is 2.0 percent and rises permanently to 3.25 percent if saving rises to 25 percent.
+\end{itemize}
+
+\qffield{Pitfalls} Reading a high saving rate as a permanently higher growth rate in the Solow model. Expecting absolute convergence. Investing on convergence without checking the institutions that conditional and club convergence require.
+
+\qffield{See also} \hyperref[def:growth-determinants-factors]{growth determinants}; \hyperref[def:growth-policies-technology-trade]{growth policies}; \hyperref[meth:potential-gdp-growth-accounting]{growth accounting}.
+
+\end{qfmodel}
+
+\begin{qfdefinition}[Policies for growth: why support investment in technology and knowledge, and how removing trade and capital barriers affects growth in an open economy]\label{def:growth-policies-technology-trade}
+\qffield{Statement} \emph{Supporting technology} \citep[chap.~11, sec.~5.3, pp.~677--680]{economics-investment-decision-makers-2013}. Spending on R\&D and knowledge capital has ``large positive externalities or spillover effects'': one company's research raises the knowledge available to others. Because firms capture only part of the return, the private sector underinvests, which justifies government support such as subsidies for private R\&D, funding of basic research and education; EIDM contrasts subsidising all investment, which mainly deepens capital and runs into diminishing returns, with subsidising R\&D and the adoption of new technology, which can raise growth in endogenous models (p.~679). Mankiw adds that research is profitable to firms only through temporary monopolies such as patents, and that whether firms do too little or too much research depends on whether the positive ``standing on shoulders'' externality outweighs the negative ``stepping on toes'' duplication effect \citep[chap.~9, sec.~9-4]{macroeconomics-2019}; knowledge spillovers make the social return to capital exceed the private return (sec.~9-3).
+
+\emph{Removing trade barriers} (sec.~6, pp.~684--694). Opening an economy can raise growth because (1) investment is no longer limited by domestic saving, (2) resources shift to industries of comparative advantage, (3) firms reach larger markets and exploit economies of scale, (4) technology can be imported, and (5) competition forces productivity improvements. In the neoclassical model, capital flows from capital-rich to capital-poor countries raise growth in the latter during the transition, with convergence faster in open economies; in endogenous models openness can raise the long-run growth rate through larger markets and knowledge spillovers. Inward-oriented (import-substitution) policies, followed by many African and Latin American countries, performed worse than the outward-oriented policies of East Asian economies such as Hong Kong and Singapore (pp.~686--687).
+
+\qffield{Notation} Private return $r_p$, social return $r_s>r_p$ when spillovers exist.
+
+\qffield{Conditions} Gains are aggregate and long-run; adjustment costs fall on displaced industries (\hyperref[meth:trade-benefits-restrictions-blocs]{trade}). Whether support raises growth depends on its design and on institutions; neoclassical models predict level effects, endogenous models growth effects.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item A research project costing 100 that yields 8 a year to the firm and 12 a year in spillovers to others has a private NPV of $-20$ and a social NPV of $+100$ at 10 percent; a subsidy of 20 (a fifth of the cost) makes the firm indifferent, aligning the private decision with the social one.
+\item Removing barriers to capital lets capital per worker rise 20 percent in a capital-poor economy; with $\alpha=1/3$, output per worker rises 6.3 percent over the transition, while long-run growth still depends on TFP.
+\end{itemize}
+
+\qffield{Pitfalls} Subsidising all investment and expecting faster long-run growth. Assuming openness benefits every sector. Ignoring that capital inflows can reverse (\hyperref[def:flows-policy-exchange-rates]{crises}).
+
+\qffield{See also} \hyperref[mod:growth-theories-convergence]{growth theories}; \hyperref[meth:trade-benefits-restrictions-blocs]{trade}; \hyperref[def:growth-determinants-factors]{growth determinants}.
+
+\end{qfdefinition}

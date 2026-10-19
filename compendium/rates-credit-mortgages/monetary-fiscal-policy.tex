@@ -1,0 +1,68 @@
+\section{Monetary policy and its interaction with fiscal policy}
+
+These entries explain what central banks are for, how their tools reach output, inflation, rates and the exchange rate, which regimes make them effective and where they fail, and how monetary and fiscal policy combine. Gliner's practitioner account, the balance sheet and QE evidence are in \hyperref[def:central-bank-policy-framework]{central-bank policy framework}, and the rule-based benchmark in \hyperref[mod:taylor-rule]{the Taylor rule}. Numbers are checked in \texttt{notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py}.
+
+\begin{qfdefinition}[Monetary policy: central-bank roles and objectives, tools, the transmission mechanism to growth, inflation, rates and the exchange rate, qualities of an effective central bank, inflation and exchange-rate targeting, the neutral rate, and limits]\label{def:monetary-policy-transmission-regimes}
+\qffield{Statement} \emph{Roles} \citep[chap.~7, sec.~2.2, pp.~348--350]{economics-investment-decision-makers-2013}: a central bank is the monopoly supplier of the currency, banker to the government and to banks, lender of last resort, regulator or supervisor of payments and banks, and manager of the policy rate and often of foreign reserves. Its \emph{objective} is usually price stability, sometimes with employment or growth (the Fed's dual mandate), and increasingly financial stability (sec.~2.3, pp.~351--353).
+
+\emph{Tools} (pp.~354--356): open market operations (buying or selling securities to add or drain reserves), the official policy rate, achieved through short-term repo operations and the rate at which the bank lends, and reserve requirements, now rarely varied in advanced economies but still used in many developing ones.
+
+\emph{Transmission} (pp.~356--357, Exhibit~7-7). A change in the policy rate passes to market rates, asset prices, expectations and confidence, and the exchange rate. These change domestic demand (consumption and investment) and net external demand; together with import prices, demand moves inflation, with long and variable lags. Interpretation: a rise in the policy rate typically raises short rates by about as much, raises long rates by less or not at all if it lowers expected inflation, strengthens the currency if foreign rates are unchanged, and lowers equity and property values.
+
+\emph{An effective central bank} has independence (operational, and sometimes target-setting), credibility (its commitment is believed, so expectations anchor at the target) and transparency (published forecasts, reports and minutes) (sec.~2.3.4, pp.~359--360).
+
+\emph{Regimes}. \emph{Inflation targeting}, usually 2 percent on a consumer price index with a tolerance band, is the most common (pp.~361--363); the target is set above zero partly to avoid deflation and measurement bias. \emph{Exchange-rate targeting} fixes the currency against an anchor: interest rates must then defend the peg and are subordinate to it, the target must be credible, and the country imports the anchor's monetary policy; it is used mainly by developing economies (pp.~365--367). Interpretation: monetary-aggregate targeting has largely been abandoned because the link between money and inflation proved unstable.
+
+\emph{Stance and the neutral rate} (sec.~2.4, pp.~367--368). The neutral rate ``neither spurs on nor slows down the underlying economy''; policy is contractionary above it and expansionary below. It has two components, trend real growth and long-run expected inflation: $2.5\%+2\%=4.5\%$ (eq.~(7-4), p.~368). Estimates differ across economists and are revised.
+
+\emph{Limits} (sec.~2.5, pp.~369--373): central banks cannot control the money that agents hold in banks or the willingness of banks to lend; long rates may rise if markets doubt the commitment to inflation control (``bond market vigilantes''); in a \emph{liquidity trap} or deflation, rate cuts stop working at the zero bound, and quantitative easing, buying long-dated or private assets with newly created reserves, is used instead, as in Japan from 2001 and in several economies from 2008; in developing economies, illiquid bond markets, fiscal dominance and rapid financial change weaken control.
+
+\qffield{Notation} $MV=PY$: money, velocity, price level, real output; $i_n=g^*+\pi^e$ the neutral nominal rate from trend growth and expected inflation (EIDM's form); compare $r^*+\pi^*$ in \hyperref[mod:taylor-rule]{the Taylor rule}.
+
+\qffield{Conditions} The transmission diagram is stylised; the strength of each channel depends on the financial system (floating or fixed-rate mortgages, bank or market finance), the exchange-rate regime and expectations. EIDM's examples date to 2010--2012; the current frameworks of major central banks are in \hyperref[rule:major-central-banks-current]{major central banks}.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Quantity identity.} With constant velocity, 7 percent money growth and 3 percent real growth give 3.88 percent inflation (4 percent to first order).
+\item \emph{Stance.} With trend growth 2.5 percent and a 2 percent target the neutral rate is 4.5 percent: a policy rate of 5.25 percent is contractionary, one of 3.5 percent expansionary. Against a Taylor benchmark with $r^*=2$ percent, inflation 3 percent and an output gap of $-1$ percent, the rule gives 5.0 percent, so a 4.5 percent policy rate is easier than the rule. The two benchmarks need not agree: each depends on an unobservable equilibrium rate.
+\item \emph{Zero bound.} With inflation at $-1$ percent a zero policy rate is a real rate of $+1$ percent; if a rule calls for $-2$ percent nominal, policy is two points too tight, which is the case for asset purchases and forward guidance.
+\end{itemize}
+
+\qffield{Pitfalls} Reading a high nominal rate as tight policy without comparing it with inflation and the neutral rate. Expecting a policy-rate rise to raise long yields one for one. Treating an exchange-rate peg as compatible with an independent interest-rate policy under free capital flows (\hyperref[def:currency-regimes-intervention]{the impossible trinity}).
+
+\qffield{See also} \hyperref[meth:monetary-fiscal-policy-mix]{monetary--fiscal interaction}; \hyperref[def:central-bank-policy-framework]{central-bank policy framework}; \hyperref[mod:taylor-rule]{Taylor rule}; \hyperref[meth:policy-path-ois-futures]{policy path}; \hyperref[def:flows-policy-exchange-rates]{policy and exchange rates}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Monetary and fiscal policy compared and combined: different channels and composition of demand, the four policy mixes, factors behind the mix, quantitative easing and fiscal financing, and credibility and commitment]\label{meth:monetary-fiscal-policy-mix}
+\qffield{Statement} Both policies move aggregate demand, but ``through differing channels with differing impact on the composition of aggregate demand. The two policies are not interchangeable'' \citep[chap.~7, sec.~4, p.~392]{economics-investment-decision-makers-2013}:
+\begin{itemize}
+\item \emph{monetary policy} works through interest rates, credit, asset prices and the exchange rate, changes private spending, can be changed quickly and is usually delegated to an independent central bank; it cannot target particular groups;
+\item \emph{fiscal policy} changes public spending and taxes directly, can target sectors and the income distribution, and changes the public share of output, but is slower to decide and implement and is set by elected governments (\hyperref[def:fiscal-policy-tools-stance]{fiscal policy}).
+\end{itemize}
+
+\emph{The four mixes}, with sticky wages and prices (pp.~392--393):
+\begin{itemize}
+\item \emph{easy fiscal, tight monetary}: output up, interest rates up, government a larger share of output;
+\item \emph{tight fiscal, easy monetary}: low rates stimulate the private sector, which grows as a share of output while the public sector shrinks;
+\item \emph{easy fiscal, easy monetary}: strongly expansionary, with growing private and public sectors and lower rates if the monetary effect dominates;
+\item \emph{tight fiscal, tight monetary}: higher rates and lower public and private demand.
+\end{itemize}
+
+\emph{What shapes the mix} (sec.~4.1, pp.~393--394): the aim of encouraging private investment (easy money, tight budget), the need for public investment in skills or infrastructure, and politics; a weak government may spend to satisfy interest groups and leave the central bank to restrain demand. \emph{Accommodation matters}: in IMF simulations reported by EIDM (a two-year coordinated fiscal loosening in the Global Integrated Monetary and Fiscal Model), the cumulative multiplier of government spending is 3.9 when interest rates are held unchanged against 1.6 when they rise with demand, and of transfers targeted at the poorest 1.7 against 0.5 (pp.~393--394); persistent deficits raise real interest rates (p.~395). \emph{QE and interaction} (sec.~4.2, pp.~394--395): when the central bank buys government debt on a large scale it is effectively funding the deficit, and ``the independence of monetary policy is an illusion''. \emph{Credibility and commitment} (sec.~4.3, pp.~395--396): a government that cannot commit to sustainable finances may face higher rates whatever the central bank does, and a central bank seen as financing the government loses its inflation credibility (fiscal dominance).
+
+\qffield{Notation} ``Easy'' and ``tight'' relative to neutral: the structural budget balance for fiscal policy and the policy rate against the neutral rate for monetary policy.
+
+\qffield{Conditions} The mixes assume rigid wages and prices; at full employment, expansion raises inflation rather than output. Ricardian households weaken fiscal effects; a liquidity trap weakens monetary ones and strengthens fiscal ones.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Comparing stances.} A structural deficit widening by 2 percent of GDP while the policy rate rises from neutral 4.5 to 5.25 percent is the easy-fiscal, tight-monetary mix: expect higher short and long rates, a currency supported by higher rates (\hyperref[def:flows-policy-exchange-rates]{policy and exchange rates}) and a larger public share; private investment is crowded out.
+\item \emph{Ricardian offset.} If households save the whole of a debt-financed tax cut, its effect on demand is zero, and only the monetary side moves demand (\hyperref[def:fiscal-policy-tools-stance]{fiscal policy}, Practice).
+\end{itemize}
+
+\qffield{Pitfalls} Adding the effects of the two policies as if independent. Treating central-bank purchases of government debt as neutral for inflation expectations. Reading the actual deficit as the fiscal stance.
+
+\qffield{See also} \hyperref[def:monetary-policy-transmission-regimes]{monetary policy}; \hyperref[def:fiscal-policy-tools-stance]{fiscal policy}; \hyperref[meth:cycle-policy-curve-expectations]{policy analysis for expectations}.
+
+\end{qfmethod}

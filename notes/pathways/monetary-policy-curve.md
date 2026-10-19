@@ -31,6 +31,13 @@ Written in macro markets and pricing / source review / optimal execution / execu
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
+Written in the macro, allocation and currency batch (2026-10-19):
+
+- `def:monetary-policy-transmission-regimes`: central-bank roles, tools, transmission, effective central banks, inflation and exchange-rate targeting, the neutral rate and limits (EIDM chap. 7).
+- `meth:monetary-fiscal-policy-mix`: the two policies compared, the four mixes, accommodation and credibility.
+
+Both partly checked 2026-10-19, draft. Examples in `notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py`; human review is outstanding. `def:central-bank-policy-framework` and `mod:taylor-rule` are linked, not repeated.
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:eurodollar-sofr-conversion-date` narrowed; `rule:boe-minutes-publication-history` resolved (Bank of England minutes about a fortnight after each meeting until July 2015 (Warsh review; 9 and 22 July 2015), published with the Monetary Policy Summary from 6 August 2015); `ev:qe-announcement-effects` narrowed; `rule:central-bank-policy-history` narrowed; `data:fomc-communication-current` resolved (FOMC press conferences after every meeting in 2025 and 2026 so far, projections at four meetings (March, June, September, December), minutes about three weeks later). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

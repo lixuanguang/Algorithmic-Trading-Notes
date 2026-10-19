@@ -28,6 +28,14 @@ Written in macro markets and pricing / source review / optimal execution / execu
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
+Written in the macro, allocation and currency batch (2026-10-19):
+
+In `fx-mechanics-parity.tex`: `def:fx-market-real-exchange-rates`, `meth:cross-forward-rates`, `meth:fx-bid-offer-triangular-arbitrage`, `meth:currency-forward-mark-to-market`, `def:exchange-rate-regimes-capital-flows`, `res:international-parity-conditions`, `meth:exchange-rate-forecasting-fair-value`, `meth:carry-trade-uip` and `def:flows-policy-exchange-rates` (EIDM chaps. 9-10).
+
+In `currency-management.tex`: `meth:currency-portfolio-effects`, `meth:currency-hedging-programme`, `meth:active-currency-strategies` and `meth:currency-hedge-cost-reduction` (PMiP chap. 8; Campbell, Serfaty-de Medeiros and Viceira).
+
+All partly checked 2026-10-19, draft. Examples in `notes/artefacts/fx-mechanics-determination/fx-checks.py` and `notes/artefacts/currency-management/currency-management-checks.py`; human review is outstanding. Coverage records are editorial, not study. `def:fx-market-structure`, `def:currency-regimes-intervention`, `ev:cip-deviations`, `mod:fx-carry-trade` and `mod:minimum-variance-hedge-ratio` are linked, not repeated.
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:bis-2025-currency-shares` resolved (BIS 2025: the dollar on one side of 89.2 percent of trades in April 2025 (88.4 in 2022)); `conv:dxy-methodology` resolved (ICE's U.S. Dollar Index FAQ (June 2015): geometric average, constant 50.14348112, weights as Gliner gives them). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

@@ -2277,15 +2277,38 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "def:macro-regime-asset-map"
+   "entries": [
+    "def:business-credit-cycles"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:macro-regime-asset-map",
+    "def:business-credit-cycles"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 6, sec. 2.1, pp. 280-284, Exhibits 6-1a and 6-1b"
+     },
+     {
+      "key": "jorda-schularick-taylor-2011",
+      "locator": "abstract"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md",
+     "notes/readings/jorda-schularick-taylor-2011.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:business-credit-cycles"
+    ],
+    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 1 (the two-quarter rule on a sequence it misses and an excess-credit measure); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2297,15 +2320,39 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:business-cycle-indicators",
     "def:macroeconomic-indicators"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:macroeconomic-indicators",
+    "meth:business-cycle-indicators"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 6, sec. 5, pp. 319-320"
+     },
+     {
+      "key": "estrella-trubin-2006",
+      "locator": "pp. 4-5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:business-cycle-indicators",
+     "def:macroeconomic-indicators"
+    ],
+    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 1 (a diffusion index and an inventory-to-sales ratio through a turn); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2318,13 +2365,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:fiscal-policy-tools-stance"
+   ],
+   "candidate_entries": [
+    "def:fiscal-policy-tools-stance"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 7, sec. 3, p. 374"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:fiscal-policy-tools-stance"
+    ],
+    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 2 (EIDM's 3.57 multiplier by summing spending rounds, a balanced-budget expansion, debt dynamics and the debt-stabilising primary balance, a structural deficit and Ricardian equivalence); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2337,13 +2403,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:monetary-fiscal-policy-mix"
+   ],
+   "candidate_entries": [
+    "meth:monetary-fiscal-policy-mix"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 7, sec. 4, p. 392"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:monetary-fiscal-policy-mix"
+    ],
+    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py parts 2-3 (the stance measures and Ricardian offset used to classify policy mixes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2357,16 +2442,38 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "def:monetary-policy-transmission-regimes",
     "def:central-bank-policy-framework",
     "mod:taylor-rule"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:central-bank-policy-framework",
+    "mod:taylor-rule",
+    "def:monetary-policy-transmission-regimes"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 7, sec. 2.2, pp. 348-350"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:monetary-policy-transmission-regimes",
+     "def:central-bank-policy-framework",
+     "mod:taylor-rule"
+    ],
+    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 3 (the quantity identity, EIDM's 4.5% neutral rate, a Taylor benchmark and the zero bound); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2378,13 +2485,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:geopolitics-institutions-tools"
+   ],
+   "candidate_entries": [
+    "def:geopolitics-institutions-tools"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "imf-sdn-2023-001",
+      "locator": "Executive Summary, p. 4"
+     },
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 8, sec. 5, pp. 451-456"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/imf-sdn-2023-001.md",
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:geopolitics-institutions-tools"
+    ],
+    "example": "no numerical example (descriptive; the tools feed the scenario assessment in meth:geopolitical-risk-assessment)"
+   },
    "supersedes": null
   },
   {
@@ -2396,13 +2527,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:geopolitical-risk-assessment"
+   ],
+   "candidate_entries": [
+    "meth:geopolitical-risk-assessment"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "caldara-iacoviello-2022",
+      "locator": "introduction, pp. 1194-1196; Figure 1 notes, p. 1201"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/caldara-iacoviello-2022.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:geopolitical-risk-assessment"
+    ],
+    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 5 (a GPR-style news-share index and a scenario-weighted assessment with a hedge and its market-implied probability); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2416,13 +2566,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:trade-benefits-restrictions-blocs"
+   ],
+   "candidate_entries": [
+    "meth:trade-benefits-restrictions-blocs"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 8, secs. 2.3-2.4, pp. 411-423"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:trade-benefits-restrictions-blocs"
+    ],
+    "example": "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py part 4 (comparative advantage, EIDM Example 8-5, quota rents, a small-country export subsidy and a large-country tariff); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2437,15 +2606,39 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "def:fx-market-real-exchange-rates",
     "def:fx-market-structure"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:fx-market-structure",
+    "def:fx-market-real-exchange-rates"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 9, sec. 2, pp. 473-484"
+     },
+     {
+      "key": "bis-triennial-2025",
+      "locator": "preliminary results"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:fx-market-real-exchange-rates",
+     "def:fx-market-structure"
+    ],
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 1 (percentage changes in both directions, bid-offer inversion and the real exchange rate); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2458,15 +2651,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "def:exchange-rate-regimes-capital-flows",
     "def:currency-regimes-intervention"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:currency-regimes-intervention",
+    "def:exchange-rate-regimes-capital-flows"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 9, sec. 4.1, p. 500"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:exchange-rate-regimes-capital-flows",
+     "def:currency-regimes-intervention"
+    ],
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 5 (the Marshall-Lerner condition from EIDM Exhibit 9-9); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2480,13 +2693,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cross-forward-rates"
+   ],
+   "candidate_entries": [
+    "meth:cross-forward-rates"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 9, sec. 3.2, pp. 488-492"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:cross-forward-rates"
+    ],
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 2 (EIDM cross rates, forward points, the 77 bp CIP arbitrage and CIP with money-market day counts); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7187,13 +7419,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:fx-bid-offer-triangular-arbitrage"
+   ],
+   "candidate_entries": [
+    "meth:fx-bid-offer-triangular-arbitrage"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 10, sec. 2, pp. 531-533"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:fx-bid-offer-triangular-arbitrage"
+    ],
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 3 (implied cross bid-offers, EIDM Example 10-1 and dealer arbitrage); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7206,13 +7457,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:currency-forward-mark-to-market"
+   ],
+   "candidate_entries": [
+    "meth:currency-forward-mark-to-market"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 10, sec. 2.2, pp. 538-542"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:currency-forward-mark-to-market"
+    ],
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 4 (EIDM's AUD 237,154 mark-to-market and Example 10-3); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7225,15 +7495,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "res:international-parity-conditions",
     "ev:cip-deviations"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "ev:cip-deviations",
+    "res:international-parity-conditions"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 10, sec. 3.1, pp. 549-565"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "res:international-parity-conditions",
+     "ev:cip-deviations"
+    ],
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 6 (the parity conditions tied together from Fisher, PPP and UIP); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7246,13 +7536,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:exchange-rate-forecasting-fair-value"
+   ],
+   "candidate_entries": [
+    "meth:exchange-rate-forecasting-fair-value"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 10, secs. 3.1-3.3 and 9, pp. 553-569 and 605-610"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:exchange-rate-forecasting-fair-value"
+    ],
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 7 (the real-interest-differential model, PPP fair value and forward against random-walk forecasts on a simulated series); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7265,15 +7574,39 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:carry-trade-uip",
     "mod:fx-carry-trade"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:fx-carry-trade",
+    "meth:carry-trade-uip"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 10, sec. 4, pp. 569-572"
+     },
+     {
+      "key": "msss-2012",
+      "locator": "abstract"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:carry-trade-uip",
+     "mod:fx-carry-trade"
+    ],
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 8 (carry P&L against the UIP prediction and the skew of a crash-prone return stream); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7286,13 +7619,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:flows-policy-exchange-rates"
+   ],
+   "candidate_entries": [
+    "def:flows-policy-exchange-rates"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 10, sec. 5, pp. 573-584"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:flows-policy-exchange-rates"
+    ],
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 9 (the current-account identity and crisis warning signals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7307,13 +7659,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:growth-determinants-factors"
+   ],
+   "candidate_entries": [
+    "def:growth-determinants-factors"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 11, sec. 2, pp. 622-631"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:growth-determinants-factors"
+    ],
+    "example": "notes/artefacts/economic-growth/growth-checks.py parts 2 and 4 (diminishing returns in Cobb-Douglas and a stylised Dutch disease); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7327,13 +7698,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:potential-gdp-growth-accounting"
+   ],
+   "candidate_entries": [
+    "meth:potential-gdp-growth-accounting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 11, sec. 4.3, pp. 640-641"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:potential-gdp-growth-accounting"
+    ],
+    "example": "notes/artefacts/economic-growth/growth-checks.py parts 1-2 (EIDM Exhibit 11-3 and Example 11-2, the TFP residual and a potential-GDP forecast with demographics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7347,13 +7737,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mod:growth-theories-convergence"
+   ],
+   "candidate_entries": [
+    "mod:growth-theories-convergence"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 11, sec. 5, pp. 664-684"
+     },
+     {
+      "key": "macroeconomics-2019",
+      "locator": "chap. 9, sec. 9-4"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md",
+     "notes/readings/macroeconomics-2019.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "mod:growth-theories-convergence"
+    ],
+    "example": "notes/artefacts/economic-growth/growth-checks.py parts 3-4 (EIDM Example 11-10, a Solow simulation of level against growth effects, convergence and its speed, the golden rule and the AK model); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7365,13 +7779,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:growth-policies-technology-trade"
+   ],
+   "candidate_entries": [
+    "def:growth-policies-technology-trade"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 11, sec. 5.3, pp. 677-680"
+     },
+     {
+      "key": "macroeconomics-2019",
+      "locator": "chap. 9, sec. 9-4"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md",
+     "notes/readings/macroeconomics-2019.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:growth-policies-technology-trade"
+    ],
+    "example": "notes/artefacts/economic-growth/growth-checks.py part 4 (a research externality and a transition from opening to capital); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9442,13 +9880,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "res:economy-discount-rates-cash-flows"
+   ],
+   "candidate_entries": [
+    "res:economy-discount-rates-cash-flows"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s6-cochrane",
+      "locator": "sec. 1.4, pp. 20-23"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "chap. 6, secs. 3.6-4, pp. 202-206"
+     },
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 3, sec. 3.4.2, p. 64"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s6-cochrane.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "res:economy-discount-rates-cash-flows"
+    ],
+    "example": "notes/artefacts/macro-asset-valuation/macro-valuation-checks.py parts 1-2 (news against expectations in a growing perpetuity and a two-state consumption economy); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9461,13 +9928,47 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cycle-rates-breakevens-spreads"
+   ],
+   "candidate_entries": [
+    "meth:cycle-rates-breakevens-spreads"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s6-cochrane",
+      "locator": "sec. 1.4.1, eq. (1.7), p. 20"
+     },
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 11, sec. 3, p. 633"
+     },
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 3, sec. 3.4.1, pp. 62-64"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "chap. 9, sec. 3, pp. 291-292"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s6-cochrane.md",
+     "notes/readings/economics-investment-decision-makers-2013.md",
+     "notes/readings/portfolio-management-in-practice-v1-2020.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:cycle-rates-breakevens-spreads"
+    ],
+    "example": "notes/artefacts/macro-asset-valuation/macro-valuation-checks.py parts 2-3 (Cochrane's real-rate formula, the Ang-Piazzesi decomposition, breakevens and credit spreads over the cycle); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9480,13 +9981,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cycle-equities-property"
+   ],
+   "candidate_entries": [
+    "meth:cycle-equities-property"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "economics-investment-decision-makers-2013",
+      "locator": "chap. 6, sec. 2.2, pp. 284-292"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "chap. 7, sec. 2.1, Table 7.2, pp. 215-217"
+     },
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 3, sec. 3.4.1, pp. 62-64"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/economics-investment-decision-makers-2013.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:cycle-equities-property"
+    ],
+    "example": "notes/artefacts/macro-asset-valuation/macro-valuation-checks.py part 4 (operating leverage, Gordon multiples and cap-rate valuation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9973,13 +10503,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cme-framework-forecasting"
+   ],
+   "candidate_entries": [
+    "meth:cme-framework-forecasting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 3, sec. 2.1, pp. 39-42"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:cme-framework-forecasting"
+    ],
+    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 1 (the standard error of a historical mean and smoothing, formula and simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9992,13 +10541,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:growth-shocks-long-run-expectations"
+   ],
+   "candidate_entries": [
+    "meth:growth-shocks-long-run-expectations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 3, sec. 3.2.2, pp. 54-56"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:growth-shocks-long-run-expectations"
+    ],
+    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 2 (PMiP Example 5 and three types of growth shock); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10013,13 +10581,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cycle-policy-curve-expectations"
+   ],
+   "candidate_entries": [
+    "meth:cycle-policy-curve-expectations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 3, sec. 3.4, pp. 61-68"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:cycle-policy-curve-expectations"
+    ],
+    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 3 (PMiP Example 7 against an exact Markov chain and a trade linkage); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10032,13 +10619,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:asset-class-return-forecasts"
+   ],
+   "candidate_entries": [
+    "meth:asset-class-return-forecasts"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 4, sec. 3, pp. 96-104"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:asset-class-return-forecasts"
+    ],
+    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 4 (PMiP Examples 1 and 4, P/E reversion rates, Singer-Terhaar, building blocks and real estate); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10050,13 +10656,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:fx-volatility-forecasts"
+   ],
+   "candidate_entries": [
+    "meth:fx-volatility-forecasts"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 4, sec. 6, pp. 124-131"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:fx-volatility-forecasts"
+    ],
+    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 5 (the ARCH update, shrinkage against the sample covariance and a combined currency view); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10069,13 +10694,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "ex:global-portfolio-macro-rebalancing"
+   ],
+   "candidate_entries": [
+    "ex:global-portfolio-macro-rebalancing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 4, sec. 8, pp. 138-142"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "ex:global-portfolio-macro-rebalancing"
+    ],
+    "example": "notes/artefacts/capital-market-expectations/cme-checks.py part 6 (a reweighting whose quantified views raise expected return and the excess-return-to-risk ratio); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10087,13 +10731,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:investment-governance-allocation"
+   ],
+   "candidate_entries": [
+    "def:investment-governance-allocation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 5, sec. 3, pp. 158-164"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:investment-governance-allocation"
+    ],
+    "example": "no numerical example (descriptive; interpretation of PMiP Example 2)"
+   },
    "supersedes": null
   },
   {
@@ -10107,13 +10770,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:economic-balance-sheet-allocation"
+   ],
+   "candidate_entries": [
+    "meth:economic-balance-sheet-allocation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 5, sec. 4, pp. 165-168"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:economic-balance-sheet-allocation"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 1 (an economic balance sheet with human capital, a glide path and an equity-like job); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10126,13 +10808,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:allocation-approaches-risk"
+   ],
+   "candidate_entries": [
+    "def:allocation-approaches-risk"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 5, sec. 5, pp. 169-180"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "def:allocation-approaches-risk"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 2 (asset, surplus and shortfall risk of one portfolio); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10146,13 +10847,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:asset-class-factor-specification"
+   ],
+   "candidate_entries": [
+    "meth:asset-class-factor-specification"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 5, sec. 6.1, pp. 180-188"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "chap. 6, pp. 193-206"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:asset-class-factor-specification"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 3 (PMiP Exhibit 12 reverse optimisation and a factor-based correlation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10167,16 +10892,38 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:asset-only-allocation-mvo",
     "mod:mean-variance-portfolio-optimisation",
     "mod:black-litterman"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:mean-variance-portfolio-optimisation",
+    "mod:black-litterman",
+    "meth:asset-only-allocation-mvo"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 6, sec. 2, pp. 213-241"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:asset-only-allocation-mvo",
+     "mod:mean-variance-portfolio-optimisation",
+     "mod:black-litterman"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 4 (the utility function, the reverse-optimisation round trip, input sensitivity and constrained optima); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10188,13 +10935,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:allocation-implementation-rebalancing"
+   ],
+   "candidate_entries": [
+    "meth:allocation-implementation-rebalancing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 5, sec. 7, pp. 195-201"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "chap. 4, pp. 125-127 and 135-140"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:allocation-implementation-rebalancing"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 5 (rebalancing as short volatility on a binomial tree and a corridor); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10207,13 +10978,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:allocation-robustness-liquidity-risk-budget"
+   ],
+   "candidate_entries": [
+    "meth:allocation-robustness-liquidity-risk-budget"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 6, secs. 2.2 and 3.3, pp. 225-228 and 264-266"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:allocation-robustness-liquidity-risk-budget"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 6 (Monte Carlo success rates, the denominator effect and risk budgets at the Sharpe-maximising mix); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10229,13 +11019,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:liability-relative-allocation"
+   ],
+   "candidate_entries": [
+    "meth:liability-relative-allocation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 6, sec. 3.1, pp. 250-253"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:liability-relative-allocation"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 7 (surplus optimisation and a hedging/return-seeking split); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10250,13 +11059,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:goals-based-allocation-heuristics"
+   ],
+   "candidate_entries": [
+    "meth:goals-based-allocation-heuristics"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 6, sec. 4, pp. 268-283"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:goals-based-allocation-heuristics"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 8 (PMiP Exhibit 36 minimum expectations, module choice, the Smiths' capital and heuristics); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10270,13 +11098,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:allocation-constraints-taxes-revision"
+   ],
+   "candidate_entries": [
+    "meth:allocation-constraints-taxes-revision"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 7, sec. 2, pp. 308-327"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:allocation-constraints-taxes-revision"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 9 (after-tax returns, a size constraint and a revision after a funding change); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10290,13 +11137,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:tactical-shifts-behavioural-biases"
+   ],
+   "candidate_entries": [
+    "meth:tactical-shifts-behavioural-biases"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 7, sec. 5, pp. 343-348"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:tactical-shifts-behavioural-biases"
+    ],
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 10 (a tactical tilt's information ratio and loss aversion); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11686,13 +12552,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:currency-portfolio-effects"
+   ],
+   "candidate_entries": [
+    "meth:currency-portfolio-effects"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 8, sec. 3, pp. 378-383"
+     },
+     {
+      "key": "campbell-viceira-currency-hedging-2007",
+      "locator": "abstract"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md",
+     "notes/readings/campbell-viceira-currency-hedging-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:currency-portfolio-effects"
+    ],
+    "example": "notes/artefacts/currency-management/currency-management-checks.py part 1 (PMiP's 15.5% and 12.4% and hedged volatilities and minimum-variance hedge ratios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11705,13 +12595,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:currency-hedging-programme"
+   ],
+   "candidate_entries": [
+    "meth:currency-hedging-programme"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 8, sec. 4.4, pp. 389-393"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:currency-hedging-programme"
+    ],
+    "example": "notes/artefacts/currency-management/currency-management-checks.py part 2 (rolling and resizing a hedge, roll yield and a hedging-cost budget); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11724,13 +12633,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:active-currency-strategies"
+   ],
+   "candidate_entries": [
+    "meth:active-currency-strategies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 8, sec. 5, pp. 396-404"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:active-currency-strategies"
+    ],
+    "example": "notes/artefacts/currency-management/currency-management-checks.py part 5 (carry and volatility-trading P&L); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -11743,15 +12671,35 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:currency-hedge-cost-reduction",
     "mod:minimum-variance-hedge-ratio"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:minimum-variance-hedge-ratio",
+    "meth:currency-hedge-cost-reduction"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 8, sec. 6.3, pp. 416-423"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
+    "entry_evidence": [
+     "meth:currency-hedge-cost-reduction",
+     "mod:minimum-variance-hedge-ratio"
+    ],
+    "example": "notes/artefacts/currency-management/currency-management-checks.py parts 3-4 (Garman-Kohlhagen puts, risk reversals, put spreads and seagulls, a cross hedge, a regression hedge and NDF settlement); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {

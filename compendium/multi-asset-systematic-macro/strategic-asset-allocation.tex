@@ -1,0 +1,258 @@
+\section{Strategic asset allocation}
+
+These entries build a strategic asset allocation from governance to revision: who decides; the economic balance sheet; asset-only, liability-relative and goals-based approaches and their risk concepts; asset classes, factors and the global market portfolio; mean--variance allocation and its remedies; implementation and rebalancing; robustness, liquidity and risk budgets; liability-relative and goals-based allocation; real-world constraints and taxes; and short-term shifts and behavioural biases. Planning and the IPS are in \hyperref[meth:investment-policy-statement]{the investment policy statement} and \hyperref[meth:asset-class-portfolio-construction]{asset classes and portfolio construction}. Numbers are checked in \texttt{notes/artefacts/strategic-asset-allocation/saa-checks.py}.
+
+\begin{qfdefinition}[Investment governance and asset allocation: the three-level structure, the six elements of effective governance, investment objectives, the allocation of rights and responsibilities, policy documents, reporting and the governance audit]\label{def:investment-governance-allocation}
+\qffield{Statement} \emph{Investment governance} ``represents the organization of decision-making responsibilities and oversight activities''; effective governance ensures assets are invested to achieve the investor's objectives within its risk tolerance and constraints and in compliance with law \citep[chap.~5, sec.~3, pp.~158--164]{portfolio-management-in-practice-v1-2020}. A common structure has three levels: a governing investment committee, investment staff and third-party resources (consultants, managers, custodians). Effective models:
+\begin{enumerate}
+\item articulate the long- and short-term objectives of the investment programme;
+\item allocate decision rights and responsibilities among the units according to their knowledge, capacity, time and position;
+\item specify processes for developing and approving the investment policy statement;
+\item specify processes for developing and approving the strategic asset allocation;
+\item establish a reporting framework to monitor progress toward the objectives;
+\item periodically undertake a governance audit.
+\end{enumerate}
+\emph{Objectives} differ by investor: a defined-benefit fund to pay benefits with acceptable contribution risk, an endowment to earn enough to support spending while preserving intergenerational equity, an individual to fund retirement and other goals; liquidity needs must be considered. \emph{Rights and responsibilities}: the committee approves the IPS and strategic allocation; staff, with more expertise and time, typically handle manager selection, rebalancing within ranges and implementation (Exhibit~2, pp.~160--162). Governance should guard against short-termism, key-person risk and decisions driven by non-economic considerations, and give the committee time for asset allocation and risk rather than manager detail (Examples~1--2, pp.~164--165).
+
+\qffield{Notation} IPS investment policy statement; SAA strategic asset allocation.
+
+\qffield{Conditions} Allocation of decision rights depends on the investor's size and resources; small investors may delegate most functions to an outsourced CIO or adviser. The framework is built for a pension plan and adapts to others.
+
+\qffield{Practice} \emph{Interpretation of Example~2} (pp.~164--165). A sovereign fund whose staff draft policy for the committee to approve is sound; a committee that spends its time selecting and evaluating individual managers, with political influence on local private equity, is questionable: manager selection is an implementation decision best left to staff and consultants, and the political influence shows weak checks and balances.
+
+\qffield{Pitfalls} A committee absorbed in manager selection rather than allocation and risk. Unclear rights that let implementation drift from strategy. Reporting that measures managers but not progress toward the objective.
+
+\qffield{See also} \hyperref[meth:investment-policy-statement]{IPS}; \hyperref[meth:allocation-implementation-rebalancing]{implementation and rebalancing}; \hyperref[meth:strategy-production-lifecycle]{strategy lifecycle governance}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[The economic balance sheet in asset allocation: financial and extended assets and liabilities, human capital and its equity and bond character, the life-cycle glide path, and evaluating an allocation against it]\label{meth:economic-balance-sheet-allocation}
+\qffield{Statement} An \emph{economic balance sheet} adds to conventional financial assets and liabilities the \emph{extended portfolio} assets and liabilities relevant to allocation \citep[chap.~5, sec.~4, pp.~165--168]{portfolio-management-in-practice-v1-2020}. For individuals, extended assets include \emph{human capital} (the present value of future earnings), the present value of pension income and expected inheritances, and extended liabilities the present value of future consumption. For institutions, extended assets might include underground resources or future royalties, and extended liabilities the present value of planned payouts. Allocation should consider the whole balance sheet: an individual whose earnings move with the equity market already holds equity risk. Human capital is on average about 30 percent equity-like and 70 percent bond-like, varying by industry (p.~167). With roughly constant risk tolerance, the allocation of \emph{total} wealth should be roughly constant, so financial assets should shift toward bonds as human capital is converted into financial capital: the logic of life-cycle (target-date) funds and their glide paths (Exhibits~3--4).
+
+\qffield{Notation} Total wealth $=$ financial capital $FC$ $+$ human capital $HC$; with target equity share $e^*$ and equity-like share $h$ of human capital, the financial equity share is $[e^*(FC+HC)-h\,HC]/FC$.
+
+\qffield{Conditions} Human capital is hard to estimate and illiquid; it cannot be sold or rebalanced, so the financial portfolio does the adjusting. Institutional extended items (sponsor strength, future gifts) are judgemental.
+
+\qffield{Practice} \emph{Original.} With a 45 percent equity target for total wealth and human capital 30 percent equity-like, a 35-year-old with 400{,}000 of financial assets and 1.0 million of human capital should hold 82.5 percent equities in the financial portfolio; at 55, with 1.2 million and 300{,}000, 48.75 percent: a glide path. If the 35-year-old's earnings are 60 percent equity-like (a job in finance), the same target needs only 7.5 percent equities: an allocation that ignores human capital would double up on equity risk.
+
+\qffield{Pitfalls} Optimising the financial portfolio alone. Treating every client's human capital as bond-like. Ignoring a sponsor's or employer's correlation with the portfolio.
+
+\qffield{See also} \hyperref[def:allocation-approaches-risk]{approaches and risk}; \hyperref[meth:goals-based-allocation-heuristics]{goals-based allocation}; \hyperref[def:investor-types-needs]{investor types}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[Approaches to asset allocation: asset-only, liability-relative and goals-based objectives, their risk concepts (volatility, tracking risk, surplus risk, shortfall and the probability of meeting goals), and the investors each suits]\label{def:allocation-approaches-risk}
+\qffield{Statement} \citep[chap.~5, sec.~5, pp.~169--180]{portfolio-management-in-practice-v1-2020}
+\begin{itemize}
+\item \emph{Asset-only}: the objective is the best risk--return trade-off for the assets alone, typically a target Sharpe ratio or the mean--variance efficient mix for the investor's risk aversion; risk is portfolio volatility, or tracking risk against a policy benchmark. It suits investors without explicit liabilities, such as many foundations and sovereign funds.
+\item \emph{Liability-relative}: the objective is to fund liabilities, or to keep a surplus; risk is the volatility of the surplus (assets less liabilities), the probability of a deficit or of a required contribution. It suits defined-benefit plans, insurers and banks.
+\item \emph{Goals-based}: the objective is to meet each of a client's goals (needs, wants, wishes, aspirations) with its own horizon and required probability of success; risk is the probability of falling short of each goal. It suits individuals and families.
+\end{itemize}
+The approaches differ less than they seem: all allocate to risk factors, and asset-only optimisation can include liabilities as a short position (surplus optimisation).
+
+\qffield{Notation} Surplus $S=A-L$; surplus return $(\Delta A-\Delta L)/A$; shortfall probability $\Pr(R_T<R_{\text{req}})$.
+
+\qffield{Conditions} The same portfolio can look safe on one risk concept and risky on another; the measure must match the objective.
+
+\qffield{Practice} \emph{Original.} A portfolio expecting 6.5 percent with 11 percent volatility shows three faces: 11 percent asset volatility; surplus volatility of 11.6 percent of assets for a plan 110 percent funded whose liabilities have 10 percent volatility and a 0.35 correlation with the assets; and a 15.7 percent chance that the ten-year annualised return falls short of a 3 percent goal.
+
+\qffield{Pitfalls} Measuring a pension plan's risk by asset volatility. Treating goals-based allocation as merely labelling sub-portfolios. Ignoring that low asset volatility can mean high surplus risk.
+
+\qffield{See also} \hyperref[meth:liability-relative-allocation]{liability-relative allocation}; \hyperref[meth:goals-based-allocation-heuristics]{goals-based allocation}; \hyperref[meth:asset-only-allocation-mvo]{asset-only allocation}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Specifying asset classes and risk factors: criteria for asset classes, the risk factors behind them, why factor exposures overlap across classes, and the global market portfolio as a baseline]\label{meth:asset-class-factor-specification}
+\qffield{Statement} \emph{Asset classes} \citep[chap.~5, sec.~6.1, pp.~180--188]{portfolio-management-in-practice-v1-2020} should be homogeneous within, mutually exclusive, diversifying (pairwise correlations not too high), together cover most investable wealth, and be able to absorb meaningful investment without impairing liquidity (\hyperref[meth:asset-class-portfolio-construction]{asset-class criteria}). Classes are often grouped by function: growth (equities), income or deflation hedge (high-quality bonds), inflation hedge (real assets, inflation-linked bonds), and diversifiers.
+
+\emph{Risk factors} (pp.~185--187; chap.~6, sec.~2.7, pp.~246--249). Asset classes are bundles of factor exposures (growth or equity market, inflation, real rates or duration, credit, currency, volatility, liquidity), so classes that look different can share risk: high-yield bonds carry substantial equity risk; private equity is levered public equity; real estate has rate and growth exposure. A factor-based allocation sets exposures to factors, often implemented with long--short factor portfolios, and makes hidden concentrations visible; it is harder to implement and communicate. Ang argues that factors, not asset classes, earn risk premia and that each factor defines its own ``bad times'' \citep[chap.~6, pp.~193--206]{s7-ang}.
+
+\emph{The global market portfolio as a baseline} (chap.~5, sec.~6, pp.~187--188; chap.~6, sec.~2.4.1, pp.~231--232). The market-capitalisation-weighted portfolio of all investable assets is the CAPM's optimal risky portfolio and a neutral starting point; departures need a reason (liabilities, constraints, views). \emph{Reverse optimisation} infers the expected returns that make market weights optimal, $E(R_i)=R_F+\beta_i\times\text{market premium}$, which gives well-diversified optimiser outputs (Exhibit~12).
+
+\qffield{Notation} $\beta_i$ beta of class $i$ against the working global market portfolio.
+
+\qffield{Conditions} The global market portfolio is approximated by investable indexes and excludes many assets (human capital, private businesses); market weights reflect issuance, not optimality for any one investor.
+
+\qffield{Practice} \emph{Reproduced} (Exhibit~12, p.~232): with a 2.5 percent risk-free rate and a 4 percent market premium, UK large caps (beta 1.03) imply 6.62 percent, Japan equities (0.98) 6.43 percent and global ex-UK bonds (0.39) 4.05 percent; the formula reproduces the printed figures to within 0.02 point, the remaining gaps coming from rounded betas, as the text notes. \emph{Original}: a high-yield bond class loading 0.9 on the equity factor has a correlation of 0.96 with equities in a two-factor model, though it is labelled ``fixed income''.
+
+\qffield{Pitfalls} Adding asset classes that are the same factor exposure under another name. Treating market weights as a forecast. Defining classes by vehicle rather than by exposure.
+
+\qffield{See also} \hyperref[mod:black-litterman]{Black--Litterman}; \hyperref[mod:multifactor-apt]{multifactor models}; \hyperref[meth:asset-only-allocation-mvo]{mean--variance allocation}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Recommending an asset-only allocation: objectives, constraints and client risk preferences, mean--variance optimisation and its utility function, its criticisms and remedies (reverse optimisation, Black--Litterman, constraints, resampling), and the global market portfolio as a starting point]\label{meth:asset-only-allocation-mvo}
+\qffield{Statement} \emph{Mean--variance optimisation} \citep[chap.~6, sec.~2, pp.~213--241]{portfolio-management-in-practice-v1-2020} chooses weights to maximise
+\[
+U_m=E(R_m)-0.005\,\lambda\,\sigma_m^2
+\]
+(returns and volatility in percent; with decimals the factor is 0.5), a certainty-equivalent return, subject to weights summing to one and usually no short sales; $\lambda$ (1 to 10, around 4 typical) captures the client's risk aversion, and risk \emph{preferences} come from both willingness and ability to bear risk (eq.~(1), p.~213). Tracing $\lambda$ gives the efficient frontier and corner portfolios.
+
+\emph{Criticisms} (pp.~228--230): outputs are highly sensitive to inputs, especially expected returns, so small changes produce extreme, concentrated weights; it maximises estimation error; it ignores liabilities, higher moments and the factor structure; and it is single-period. \emph{Remedies} (pp.~230--241): reverse optimisation from market weights; Black--Litterman, which blends the implied returns with views weighted by confidence (\hyperref[mod:black-litterman]{Black--Litterman}); constraints (asset-class limits, a minimum in each class, limits relative to the global market portfolio); resampled optimisation, which averages frontiers from simulated inputs (\hyperref[meth:resampled-efficiency]{resampling}); and non-normal objectives (conditional VaR, downside measures).
+
+\emph{Recommending and justifying} (Examples~1--2, pp.~220--224; Example~6 of chap.~5, p.~186): state the objective and constraints, choose the efficient mix whose risk matches the client's risk tolerance and required return, check it against the global market portfolio and against simulated outcomes (\hyperref[meth:allocation-robustness-liquidity-risk-budget]{robustness}), and explain why it beats close alternatives.
+
+\qffield{Notation} $\lambda$ risk aversion; $\Pi=\lambda\Sigma w_{\text{mkt}}$ implied excess returns.
+
+\qffield{Conditions} Single-period, normal-return assumptions; inputs are forecasts with large errors.
+
+\qffield{Practice} \emph{Reproduced}: $U=10-0.005\times2\times20^2=6$ percent (p.~213). \emph{Original} (four classes: two equity classes, bonds and cash):
+\begin{itemize}
+\item implied excess returns from market weights 45/20/30/5 percent with $\lambda=3$, fed back into the unconstrained optimiser, return exactly the market weights;
+\item raising one equity class's expected return by 0.5 point moves its unconstrained weight from 20 to 31.8 percent and cuts the other equity class from 45 to 35.1 percent;
+\item with budget and no-short constraints, an investor with $\lambda=2$ holds more equity than one with $\lambda=8$.
+\end{itemize}
+
+\qffield{Pitfalls} Optimising on historical means. Over-constraining until the optimiser merely reproduces the constraints. Ignoring the client's ability as well as willingness to bear risk.
+
+\qffield{See also} \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}; \hyperref[meth:asset-class-factor-specification]{global market portfolio}; \hyperref[def:risk-aversion-utility]{risk aversion and utility}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Implementing and rebalancing an allocation: passive and active management of weights and of each asset class, vehicles, risk budgeting in implementation, calendar and percent-range rebalancing, corridor width, and rebalancing as a short-volatility strategy]\label{meth:allocation-implementation-rebalancing}
+\qffield{Statement} \emph{Implementation} \citep[chap.~5, sec.~7, pp.~195--201]{portfolio-management-in-practice-v1-2020}. Asset-class \emph{weights} can be managed passively (held at the strategic targets) or actively (tactical deviations, \hyperref[meth:tactical-shifts-behavioural-biases]{tactical shifts}); each \emph{class} can be implemented passively (index funds, ETFs, derivatives) or actively (selection of managers or securities), or with a core--satellite mix. The choice depends on market efficiency, costs, the investor's skill and resources, tax and governance. A risk budget allocates active risk to where expected information ratios are highest.
+
+\emph{Rebalancing} (sec.~8, pp.~201--207; chap.~6, sec.~6, pp.~289--292). \emph{Calendar} rebalancing (monthly, quarterly) is simple and cheap to monitor; \emph{percent-range} (corridor) rebalancing trades only when a weight leaves its band and controls risk more tightly. Corridors should be \emph{wider} with higher transaction costs, higher risk tolerance, higher correlation with the rest of the portfolio and, for taxable investors, higher capital-gains taxes; \emph{narrower} with higher volatility of the rest of the portfolio; the class's own volatility has offsetting effects (Exhibit~48, pp.~289--290). Cash flows can be used to rebalance cheaply. Rebalancing is counter-cyclical, ``buying when prices are low'', and is mechanically ``a short volatility strategy'', so it earns the volatility premium in calm, mean-reverting markets and lags in strong trends \citep[chap.~4, pp.~125--127 and~135--140]{s7-ang}.
+
+\qffield{Notation} Corridor $w^*\pm b$; drifted weight $w_t=w^*_0(1+r_i)/(1+r_p)$.
+
+\qffield{Conditions} Optimal rebalancing depends on costs, taxes and return dynamics; with trending returns, wider bands or less frequent rebalancing perform better.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Short volatility.} A 50/50 stock and cash portfolio over two periods, the stock up 25 percent or down 20 percent: rebalanced, it ends at 1.0125 when the stock reverses against 1.0 for buy-and-hold, but at 1.2656 against 1.2813 after two rises and 0.81 against 0.82 after two falls: a concave payoff.
+\item \emph{Corridor.} With a 60 percent equity target and a $\pm5$-point band, equities up 12 percent and bonds down 1 percent take the weight to 62.9 percent, inside the band, so no trade; a further 8 percent equity rise leaves it below 65 percent.
+\end{itemize}
+
+\qffield{Pitfalls} Rebalancing so often that costs exceed the risk-control benefit. Letting a winning class drift far from target in a trend. Treating active implementation as free of tracking risk.
+
+\qffield{See also} \hyperref[meth:allocation-robustness-liquidity-risk-budget]{risk budgets}; \hyperref[meth:derivative-overlay-allocation]{rebalancing with futures}; \hyperref[def:investment-governance-allocation]{governance}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Robustness, liquidity and risk budgets in allocation: Monte Carlo and scenario analysis of allocations, allocating to less liquid asset classes, and absolute and relative risk budgets with marginal and absolute contributions to risk]\label{meth:allocation-robustness-liquidity-risk-budget}
+\qffield{Statement} \emph{Monte Carlo and scenarios} \citep[chap.~6, secs.~2.2 and~3.3, pp.~225--228 and~264--266]{portfolio-management-in-practice-v1-2020}: simulating multi-period paths, with cash flows, spending, taxes and rebalancing, shows the distribution of terminal wealth and the probability of meeting goals or of depletion, which single-period means and variances cannot; scenario and stress tests show how allocations fare in named environments (inflation shock, recession, rate rise).
+
+\emph{Less liquid asset classes} (sec.~2.5, pp.~241--243): private equity, real estate and infrastructure lack investable indexes, their reported returns are smoothed, and implementation vehicles carry idiosyncratic risk. Options are to exclude them from the optimisation and treat funds as implementation, to model the vehicles' characteristics, or to model diversified asset-class characteristics using listed proxies. Liquidity needs and commitments limit the feasible allocation; a fall in public markets raises the private share (the denominator effect).
+
+\emph{Risk budgets} (sec.~2.6, pp.~243--246): a risk budget allocates total (or active) risk among classes; the marginal contribution to total risk is $\text{MCTR}_i=\beta_{i,p}\sigma_p$, the absolute contribution $\text{ACTR}_i=w_i\,\text{MCTR}_i$, summing to $\sigma_p$; a budget is optimal when the ratio of excess return to MCTR is equal for all classes (it equals the portfolio's Sharpe ratio, 0.368 in Exhibit~19, p.~244). Absolute budgets limit total volatility or drawdown; relative budgets limit tracking risk against the policy portfolio.
+
+\qffield{Notation} $\beta_{i,p}$ beta of class $i$ against the portfolio.
+
+\qffield{Conditions} Monte Carlo results depend on the assumed return process (normal returns understate tails); risk budgets depend on the covariance estimate.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Monte Carlo.} A 1 million portfolio withdrawing 50{,}000 a year, rising 2 percent a year, with returns of 5.5 percent mean and 11 percent volatility, survives 30 years on about 52 percent of 20{,}000 simulated paths: a plan that looks fine on mean returns has a coin-flip chance of failure.
+\item \emph{Denominator effect.} A 20 percent private allocation becomes 26.3 percent after a 30 percent fall in public assets with private valuations unchanged, breaching a 25 percent cap with no purchase.
+\item \emph{Risk budget.} At the Sharpe-maximising mix of three classes, absolute contributions sum to portfolio volatility and the ratio of excess return to marginal contribution is the same for every class.
+\end{itemize}
+
+\qffield{Pitfalls} Judging an allocation by its expected return alone. Using smoothed private returns, which understate risk. Allocating risk by capital weights.
+
+\qffield{See also} \hyperref[meth:asset-only-allocation-mvo]{mean--variance allocation}; \hyperref[meth:cme-framework-forecasting]{smoothing}; \hyperref[meth:active-risk-decomposition]{active-risk decomposition}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Liability-relative allocation: characterising liabilities, surplus optimisation, the hedging and return-seeking portfolios, the integrated asset--liability approach, comparing them, and recommending an allocation]\label{meth:liability-relative-allocation}
+\qffield{Statement} \emph{Characterising liabilities} \citep[chap.~6, sec.~3.1, pp.~250--253]{portfolio-management-in-practice-v1-2020}: fixed or contingent amounts; legal or quasi-liabilities; timing and certainty; sensitivity to interest rates and inflation; the sponsor's ability to contribute; and whether they can be hedged with traded instruments. Their present value, the surplus and the funding ratio are the starting point.
+
+\emph{Approaches} (sec.~3.2, pp.~253--264):
+\begin{itemize}
+\item \emph{surplus optimisation}: mean--variance on surplus return, $U=E(R_s)-0.005\lambda\sigma^2(R_s)$, with liabilities in the covariance matrix, which exploits natural hedges (long bonds) and gives a surplus efficient frontier;
+\item \emph{hedging/return-seeking portfolios}: a portfolio that matches the liabilities' rate and inflation exposure (ideally cash-flow or duration matched) plus a return-seeking portfolio funded by any surplus; simple and transparent, but needs a surplus, and a deficit requires contributions or partial hedging;
+\item \emph{integrated asset--liability}: asset and liability decisions taken jointly, as by banks and insurers, which can choose their liabilities.
+\end{itemize}
+Surplus optimisation is a linear model of the relation between assets and liabilities; the two-portfolio approach is easy to communicate; the integrated approach is the most complete and the most complex (sec.~3.2.4, pp.~263--264). Robustness is examined with simulations of the funding ratio, contributions and the probability of underfunding (sec.~3.3).
+
+\qffield{Notation} $R_s=(\Delta A-\Delta L)/A$; funding ratio $A/L$.
+
+\qffield{Conditions} Liabilities modelled as a bond-like asset with given volatility and correlation; actual liabilities have longevity, inflation and other risks not traded.
+
+\qffield{Practice} \emph{Original} (assets 1.10, liabilities 1.00 behaving like long bonds with 10 percent volatility).
+\begin{itemize}
+\item A 60/20/20 equity/long-bond/credit mix has surplus volatility of 11.6 percent of assets; a 25/65/10 liability-matching mix cuts it to 5.3 percent, giving up 0.97 point of expected surplus return.
+\item In the two-portfolio approach, 90.9 percent of assets go to the hedging portfolio and the 9.1 percent surplus to return-seeking assets.
+\item \emph{Recommendation}: for a plan whose sponsor cannot absorb contribution volatility, the liability-matching mix is justified, because surplus risk, not asset volatility, measures the risk to beneficiaries and sponsor; a plan with a strong sponsor and a large surplus can hold more return-seeking assets.
+\end{itemize}
+
+\qffield{Pitfalls} Measuring the hedge by duration while ignoring inflation-linked liabilities. Using a two-portfolio approach with a deficit as if a surplus existed. Ignoring the sponsor's own correlation with the portfolio.
+
+\qffield{See also} \hyperref[meth:liability-matching-ladders]{liability-driven investing}; \hyperref[meth:immunisation-liabilities]{immunisation}; \hyperref[def:allocation-approaches-risk]{approaches and risk}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Goals-based allocation and heuristics: describing goals, sub-portfolio modules and minimum-expectation returns, sizing each goal's capital, the overall portfolio, and evaluating the 120-minus-age rule, 60/40, the endowment model, risk parity and 1/N]\label{meth:goals-based-allocation-heuristics}
+\qffield{Statement} \emph{Process} \citep[chap.~6, sec.~4, pp.~268--283]{portfolio-management-in-practice-v1-2020}: describe each goal by amount, timing, and required probability of success (needs high, such as 95 percent; wishes lower, such as 75 percent); map each goal to the pre-optimised module that offers the highest \emph{minimum-expectation} return, the return exceeded with the required probability over the goal's horizon; size the capital for each goal by discounting its cash flows at that return; combine the sub-portfolios into the overall allocation; and revisit periodically. Surplus capital can fund new goals. Issues: goals-based allocation is mental accounting made explicit; the total portfolio may be inefficient in mean--variance terms, though usually close; and goals change (sec.~4.7).
+
+\emph{Heuristics} (sec.~5, pp.~283--289): ``120 minus age'' as the equity share (a simple glide path that ignores human capital and risk tolerance); the 60/40 stock/bond mix (a long-standing default, close to many institutions' reference portfolios, but its risk is dominated by equities); the endowment model (large allocations to illiquid alternatives, requiring a long horizon, skill in manager selection and liquidity tolerance); risk parity (each class contributes equally to risk, which levers low-volatility bonds and depends on the covariance estimate); and 1/N (equal weights, which performs surprisingly well against optimised portfolios when estimation error is large).
+
+\qffield{Notation} Minimum-expectation return $\mu-z_p\sigma/\sqrt{T}$, with $z_p$ the normal quantile for the required probability $p$.
+
+\qffield{Conditions} The module table assumes normal annualised returns; goal capital depends on the discount rate chosen.
+
+\qffield{Practice} \emph{Reproduced}: $\mu-z\sigma/\sqrt T$ reproduces Exhibit~36's five-year 99 percent row (1.5, 0.9, 0.2, $-0.6$, $-2.4$, $-4.3$ percent for modules A--F) to within 0.1 point; for a five-year need at 95 percent the best module is A (2.3 percent), for a ten-year wish at 75 percent module F (6.0 percent) (pp.~272--273). For the Smiths (pp.~274--275), a 10 million payment in 10 years at 4.1 percent needs 6{,}691 thousand and one in 20 years at 6.8 percent 2{,}683 thousand; the printed 6{,}671 and 2{,}679 imply unrounded rates of about 4.13 and 6.81 percent. \emph{Original}: inverse-volatility weights over two equity classes and bonds are 22.0, 19.5 and 58.5 percent; ``120 minus age'' gives 75 percent equities at 45.
+
+\qffield{Pitfalls} Using one risk tolerance for all goals. Treating heuristics as optimal rather than as defaults to be checked. Forgetting that a module chosen by minimum expectation may still lose money.
+
+\qffield{See also} \hyperref[def:allocation-approaches-risk]{approaches}; \hyperref[meth:equal-risk-contribution]{equal risk contribution}; \hyperref[meth:economic-balance-sheet-allocation]{economic balance sheet}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Allocation with real-world constraints: asset size, liquidity, time horizon and regulation, taxes in allocation and rebalancing, strategies to reduce tax drag, and revising the strategic allocation when goals, constraints or beliefs change]\label{meth:allocation-constraints-taxes-revision}
+\qffield{Statement} \emph{Constraints} \citep[chap.~7, sec.~2, pp.~308--327]{portfolio-management-in-practice-v1-2020}:
+\begin{itemize}
+\item \emph{asset size}: large investors face capacity limits and market impact in small or illiquid markets and may need internal management; small investors lack access to minimum commitments, diversified alternatives and staff;
+\item \emph{liquidity}: spending, benefit payments, capital calls and potential crises limit illiquid holdings;
+\item \emph{time horizon}: changing human capital and changing liabilities alter the appropriate allocation over time;
+\item \emph{regulation and other external constraints}: insurers (risk-based capital, asset--liability matching), pension funds (funding rules, accounting), endowments and foundations (spending rules, tax status) and sovereign funds (mandate, politics).
+\end{itemize}
+\emph{Taxes} (sec.~3, pp.~327--336): after-tax return $r_{at}=r_{pt}(1-t)$, or $p_dr_{pt}(1-t_d)+p_ar_{pt}(1-t_{cg})$ for mixed income, and after-tax risk $\sigma_{at}=\sigma_{pt}(1-t)$, so optimisation should use after-tax inputs; asset location places tax-inefficient assets in tax-advantaged accounts; rebalancing realises gains and taxes, which argues for wider corridors and using cash flows; strategies include tax-loss harvesting and holding appreciated assets.
+
+\emph{Revising the SAA} (sec.~4, pp.~336--343) is warranted by changes in \emph{goals} (a new liability, a change in risk tolerance), \emph{constraints} (liquidity, horizon, regulation, tax) or \emph{beliefs} (a lasting change in capital market expectations, after careful review), not by short-term views or recent performance.
+
+\qffield{Notation} $t,t_d,t_{cg}$ tax rates on income, dividends and capital gains; $p_d,p_a$ shares of return from income and appreciation.
+
+\qffield{Conditions} The simple after-tax formulas ignore deferral, step-ups and holding periods.
+
+\qffield{Practice} \emph{Reproduced} (pp.~328--329): a 3 percent coupon at a 40 percent tax rate earns 1.80 percent after tax; 8 percent taxed at 25 percent earns 6 percent. \emph{Original.}
+\begin{itemize}
+\item \emph{Size.} A 20 million foundation cannot build an eight-fund private-equity programme with 5 million minimum commitments (40 million needed).
+\item \emph{Revision.} A pension plan whose funding rises from 95 to 120 percent can de-risk from 60 to 35 percent return-seeking assets, lowering surplus volatility, because it no longer needs return to close a deficit: a change in circumstances, not a market view.
+\end{itemize}
+
+\qffield{Pitfalls} Optimising pre-tax for a taxable investor. Revising the strategic allocation after a bad year. Ignoring capacity when copying a large investor's allocation.
+
+\qffield{See also} \hyperref[meth:asset-only-allocation-mvo]{mean--variance allocation}; \hyperref[meth:bond-leverage-taxation]{tax-aware fixed income}; \hyperref[meth:investment-policy-statement]{IPS constraints}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Short-term shifts and behavioural biases in allocation: discretionary and systematic tactical allocation, evaluating tactical decisions, and recognising and mitigating loss aversion, illusion of control, mental accounting, representativeness, framing and availability]\label{meth:tactical-shifts-behavioural-biases}
+\qffield{Statement} \emph{Tactical asset allocation} \citep[chap.~7, sec.~5, pp.~343--348]{portfolio-management-in-practice-v1-2020} deliberately deviates from the strategic weights to exploit short-term views. \emph{Discretionary} TAA uses judgement about the economy and markets (\hyperref[ex:global-portfolio-macro-rebalancing]{macro reweighting}); \emph{systematic} TAA uses quantitative signals with documented return predictability, such as valuation (earnings or dividend yields), momentum and trend, carry and term spreads. Deviations are limited by policy ranges and a tracking-risk budget, and each decision should be evaluated against the strategic portfolio, ex ante by expected information ratio and ex post by realised return, risk and costs relative to the SAA.
+
+\emph{Behavioural biases} (sec.~6, pp.~348--356), with mitigations:
+\begin{itemize}
+\item \emph{loss aversion}: reluctance to accept volatility and to rebalance into losers; mitigate with goals-based framing that secures needs and with pre-committed rebalancing;
+\item \emph{illusion of control}: overconfident active bets and concentrated portfolios; use the global market portfolio as a baseline and require evidence for deviations;
+\item \emph{mental accounting}: treating sources of money separately; use it constructively in goals-based allocation but evaluate the whole portfolio;
+\item \emph{representativeness} (recency): extrapolating recent returns into expectations; rely on long-run evidence and systematic rebalancing;
+\item \emph{framing}: answers depend on how risk is presented; show several measures and outcome ranges;
+\item \emph{availability}: overweighting vivid or familiar information, home bias; use a structured process and diversified opportunity set.
+\end{itemize}
+A sound governance structure and IPS are the main defences (\hyperref[def:investment-governance-allocation]{governance}; \hyperref[def:behavioural-biases]{behavioural biases}).
+
+\qffield{Notation} Information ratio $IR=\alpha/\text{tracking error}$.
+
+\qffield{Conditions} Tactical skill is hard to verify; short track records are statistically weak.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item A tactical programme adding 0.6 percent a year with 2 percent tracking error has an information ratio of 0.30; after five years its $t$-statistic is only 0.67, so neither skill nor its absence can be confirmed.
+\item With losses weighted 2.25 times gains, a 50/50 bet of $+12$/$-10$ ``feels'' negative ($0.5\times12-0.5\times2.25\times10<0$) though its expected value is $+1$: framing returns as losses leads to under-allocation to risky assets.
+\end{itemize}
+
+\qffield{Pitfalls} Calling every deviation tactical without measuring it. Trading on recent performance. Letting framing of short-term losses override the strategic plan.
+
+\qffield{See also} \hyperref[mech:biases-market-anomalies]{biases and anomalies}; \hyperref[meth:allocation-implementation-rebalancing]{rebalancing}; \hyperref[meth:skill-luck-significance-tests]{skill and luck}.
+
+\end{qfmethod}

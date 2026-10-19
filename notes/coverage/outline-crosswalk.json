@@ -6042,9 +6042,9 @@
    "objectives": [
     "objective:describe-business-credit-cycles"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:business-credit-cycles describes the phases (recovery, late expansion, peak, contraction) with activity, employment, spending and inflation in each, and dating by NBER rather than the two-quarter rule.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m013:b02",
@@ -6062,9 +6062,9 @@
    "objectives": [
     "objective:describe-business-credit-cycles"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:business-credit-cycles describes credit cycles: credit-intensive expansions followed by deeper recessions (Jorda, Schularick and Taylor), with an excess-credit calculation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m013:b03",
@@ -6082,9 +6082,9 @@
    "objectives": [
     "objective:interpret-cycle-indicators"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:business-cycle-indicators explains how inventories, employment and investment move over the cycle and interprets leading, coincident and lagging indicators, diffusion indexes and the inventory-to-sales ratio; def:business-credit-cycles covers resource use.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m014:b01",
@@ -6102,9 +6102,9 @@
    "objectives": [
     "objective:compare-fiscal-monetary-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:monetary-fiscal-policy-mix compares the channels, speed, targeting and composition effects of monetary and fiscal policy.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m014:b02",
@@ -6122,9 +6122,9 @@
    "objectives": [
     "objective:explain-fiscal-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fiscal-policy-tools-stance describes the roles and objectives of fiscal policy, deficits and debt, and the arguments for and against concern about public debt, with debt-dynamics calculations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m014:b03",
@@ -6142,9 +6142,9 @@
    "objectives": [
     "objective:explain-fiscal-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fiscal-policy-tools-stance describes spending and tax tools and their advantages and disadvantages, and the multiplier.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m014:b04",
@@ -6162,9 +6162,9 @@
    "objectives": [
     "objective:explain-fiscal-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fiscal-policy-tools-stance explains implementation lags, automatic stabilisers, the structural deficit as a measure of stance and Ricardian equivalence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m015:b01",
@@ -6182,9 +6182,9 @@
    "objectives": [
     "objective:explain-monetary-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:monetary-policy-transmission-regimes describes central-bank roles and objectives (price stability, dual mandate, financial stability).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m015:b02",
@@ -6203,9 +6203,9 @@
    "objectives": [
     "objective:explain-monetary-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:monetary-policy-transmission-regimes describes open market operations, the policy rate and reserve requirements and explains transmission to growth, inflation, rates and the exchange rate; def:central-bank-policy-framework adds QE evidence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m015:b03",
@@ -6224,9 +6224,9 @@
    "objectives": [
     "objective:explain-monetary-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:monetary-policy-transmission-regimes describes independence, credibility and transparency, contrasts inflation and exchange-rate targeting, and explains the neutral rate and the limits of policy (liquidity trap, QE).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m015:b04",
@@ -6244,9 +6244,9 @@
    "objectives": [
     "objective:compare-fiscal-monetary-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:monetary-fiscal-policy-mix explains the four policy mixes, the factors behind the mix, QE and deficit financing, and credibility.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m016:b01",
@@ -6264,9 +6264,9 @@
    "objectives": [
     "objective:describe-geopolitics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:geopolitics-institutions-tools describes cooperation against competition between states.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m016:b02",
@@ -6284,9 +6284,9 @@
    "objectives": [
     "objective:describe-geopolitics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:geopolitics-institutions-tools describes globalisation and the risk of geoeconomic fragmentation from the IMF staff note.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m016:b03",
@@ -6304,9 +6304,9 @@
    "objectives": [
     "objective:describe-geopolitics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:geopolitics-institutions-tools describes the roles of the IMF, World Bank Group and WTO.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m016:b04",
@@ -6324,9 +6324,9 @@
    "objectives": [
     "objective:assess-geopolitical-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:geopolitical-risk-assessment describes geopolitical risk as defined and measured by Caldara and Iacoviello (threats and acts).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m016:b05",
@@ -6344,9 +6344,9 @@
    "objectives": [
     "objective:describe-geopolitics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:geopolitics-institutions-tools describes national-security, economic and financial tools and their uneven regional effects.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m016:b06",
@@ -6364,9 +6364,9 @@
    "objectives": [
     "objective:assess-geopolitical-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:geopolitical-risk-assessment describes the effects on investment and assesses risk by likelihood, velocity and size with scenarios and hedges.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m017:b01",
@@ -6384,9 +6384,9 @@
    "objectives": [
     "objective:analyse-international-trade"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-benefits-restrictions-blocs describes the benefits and costs of trade, with a comparative-advantage example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m017:b02",
@@ -6404,9 +6404,9 @@
    "objectives": [
     "objective:analyse-international-trade"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-benefits-restrictions-blocs compares tariffs, quotas and export subsidies and their welfare effects, reproducing EIDM Example 8-5.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m017:b03",
@@ -6424,9 +6424,9 @@
    "objectives": [
     "objective:analyse-international-trade"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:trade-benefits-restrictions-blocs explains free-trade areas, customs unions, common markets and economic and monetary unions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m018:b01",
@@ -6447,9 +6447,9 @@
    "objectives": [
     "objective:describe-fx-market-and-real-rates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:fx-market-real-exchange-rates describes the FX market and its participants, distinguishes nominal and real rates and calculates percentage changes in both directions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m018:b02",
@@ -6468,9 +6468,9 @@
    "objectives": [
     "objective:explain-exchange-rate-regimes-flows"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:exchange-rate-regimes-capital-flows describes regimes from dollarisation to free floats and explains their effects on trade (Marshall-Lerner, absorption) and capital flows.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m018:b03",
@@ -6488,9 +6488,9 @@
    "objectives": [
     "objective:explain-exchange-rate-regimes-flows"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:exchange-rate-regimes-capital-flows describes the objectives of capital restrictions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m019:b01",
@@ -6509,9 +6509,9 @@
    "objectives": [
     "objective:calculate-cross-and-forward-rates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cross-forward-rates calculates and interprets cross rates, reproducing EIDM's CAD/EUR, JPY/CAD and GBP/EUR examples.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m019:b02",
@@ -6531,9 +6531,9 @@
    "objectives": [
     "objective:calculate-cross-and-forward-rates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cross-forward-rates explains covered interest arbitrage and calculates forwards from points and percentages, interpreting premiums and discounts.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:7099c7688942:m020:b01",
@@ -13038,9 +13038,9 @@
    "objectives": [
     "objective:calculate-fx-bid-offer-arbitrage"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:fx-bid-offer-triangular-arbitrage calculates and interprets bid-offer spreads and describes their drivers.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b02",
@@ -13059,9 +13059,9 @@
    "objectives": [
     "objective:calculate-fx-bid-offer-arbitrage"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:fx-bid-offer-triangular-arbitrage identifies triangular arbitrage and calculates its profit from implied cross bid-offers.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b03",
@@ -13080,9 +13080,9 @@
    "objectives": [
     "objective:value-currency-forwards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-forward-mark-to-market explains the spot, forward and forward premium and calculates all-in forward rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b04",
@@ -13100,9 +13100,9 @@
    "objectives": [
     "objective:value-currency-forwards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-forward-mark-to-market calculates the mark-to-market value of a forward, reproducing EIDM's AUD 237,154 and Example 10-3.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b05",
@@ -13120,9 +13120,9 @@
    "objectives": [
     "objective:apply-international-parity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: res:international-parity-conditions explains covered and uncovered interest parity, forward rate parity, PPP, the Fisher effect and real interest parity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b06",
@@ -13140,9 +13140,9 @@
    "objectives": [
     "objective:apply-international-parity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: res:international-parity-conditions describes how the parity conditions connect, including the international Fisher effect.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b07",
@@ -13160,9 +13160,9 @@
    "objectives": [
     "objective:forecast-exchange-rates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:exchange-rate-forecasting-fair-value evaluates forward, PPP, UIP and random-walk forecasts with a simulation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b08",
@@ -13180,9 +13180,9 @@
    "objectives": [
     "objective:forecast-exchange-rates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:exchange-rate-forecasting-fair-value explains long-run fair value (PPP, the IMF's three approaches, the real-interest-differential model).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b09",
@@ -13201,9 +13201,9 @@
    "objectives": [
     "objective:analyse-carry-trade"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:carry-trade-uip describes the carry trade and its relation to UIP and calculates its profit; mod:fx-carry-trade gives conventions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b10",
@@ -13221,9 +13221,9 @@
    "objectives": [
     "objective:explain-flows-policy-and-fx"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:flows-policy-exchange-rates explains how current and capital account flows affect exchange rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b11",
@@ -13241,9 +13241,9 @@
    "objectives": [
     "objective:explain-flows-policy-and-fx"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:flows-policy-exchange-rates explains monetary and fiscal policy effects (Mundell-Fleming, monetary models, portfolio balance).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b12",
@@ -13261,9 +13261,9 @@
    "objectives": [
     "objective:explain-flows-policy-and-fx"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:flows-policy-exchange-rates describes intervention and capital controls and their effectiveness.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b13",
@@ -13281,9 +13281,9 @@
    "objectives": [
     "objective:explain-flows-policy-and-fx"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:flows-policy-exchange-rates describes the warning signs of currency crises from the IMF study EIDM summarises.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b01",
@@ -13301,9 +13301,9 @@
    "objectives": [
     "objective:explain-growth-determinants"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:growth-determinants-factors compares factors favouring and limiting growth in developed and developing economies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b02",
@@ -13321,9 +13321,9 @@
    "objectives": [
     "objective:forecast-potential-gdp"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:potential-gdp-growth-accounting describes the link between equity appreciation and sustainable growth, reproducing EIDM Exhibit 11-3.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b03",
@@ -13341,9 +13341,9 @@
    "objectives": [
     "objective:forecast-potential-gdp"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:potential-gdp-growth-accounting explains why potential GDP matters to equity and bond investors.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b04",
@@ -13362,9 +13362,9 @@
    "objectives": [
     "objective:explain-growth-determinants"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:growth-determinants-factors contrasts capital deepening and technological progress and explains diminishing returns.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b05",
@@ -13382,9 +13382,9 @@
    "objectives": [
     "objective:forecast-potential-gdp"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:potential-gdp-growth-accounting demonstrates forecasting potential GDP by growth accounting and the labour-productivity method.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b06",
@@ -13403,9 +13403,9 @@
    "objectives": [
     "objective:explain-growth-determinants"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:growth-determinants-factors explains and evaluates natural resources, the resource curse and Dutch disease.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b07",
@@ -13423,9 +13423,9 @@
    "objectives": [
     "objective:explain-growth-determinants"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:growth-determinants-factors explains demographics, participation, migration and hours in labour supply.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b08",
@@ -13443,9 +13443,9 @@
    "objectives": [
     "objective:explain-growth-determinants"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:growth-determinants-factors explains physical and human capital, ICT and technology.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b09",
@@ -13463,9 +13463,9 @@
    "objectives": [
     "objective:compare-growth-theories"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: mod:growth-theories-convergence compares classical, neoclassical and endogenous growth theories, with steady-state calculations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b10",
@@ -13484,9 +13484,9 @@
    "objectives": [
     "objective:compare-growth-theories"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: mod:growth-theories-convergence explains and evaluates absolute, conditional and club convergence and the evidence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b11",
@@ -13504,9 +13504,9 @@
    "objectives": [
     "objective:evaluate-growth-policies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:growth-policies-technology-trade describes the externality case for supporting technology investment.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m009:b12",
@@ -13524,9 +13524,9 @@
    "objectives": [
     "objective:evaluate-growth-policies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:growth-policies-technology-trade describes the effects of removing trade and capital barriers in an open economy.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m010:b01",
@@ -18589,9 +18589,9 @@
    "objectives": [
     "objective:link-economy-to-discount-rates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: res:economy-discount-rates-cash-flows explains that economic factors act through default-free rates, cash flows and risk premia.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b02",
@@ -18609,9 +18609,9 @@
    "objectives": [
     "objective:link-economy-to-discount-rates"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: res:economy-discount-rates-cash-flows explains that only news relative to expectations moves values.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b03",
@@ -18629,9 +18629,9 @@
    "objectives": [
     "objective:relate-cycle-to-rates-and-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-rates-breakevens-spreads explains how expected growth and its volatility set real short rates (Cochrane eq. 1.7).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b04",
@@ -18649,9 +18649,9 @@
    "objectives": [
     "objective:relate-cycle-to-rates-and-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-rates-breakevens-spreads explains policy rates, the curve's slope and bond returns over the cycle.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b05",
@@ -18669,9 +18669,9 @@
    "objectives": [
     "objective:relate-cycle-to-rates-and-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-rates-breakevens-spreads describes nominal against inflation-indexed yields and breakevens.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b06",
@@ -18689,9 +18689,9 @@
    "objectives": [
     "objective:relate-cycle-to-rates-and-bonds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-rates-breakevens-spreads explains why credit spreads widen in downturns.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b07",
@@ -18709,9 +18709,9 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property explains product markets, operating leverage and credit quality over the cycle.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b08",
@@ -18729,9 +18729,9 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property explains consumption hedging and the equity premium; res:economy-discount-rates-cash-flows gives the two-state example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b09",
@@ -18749,9 +18749,9 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property explains earnings expectations over the cycle.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b10",
@@ -18769,9 +18769,9 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property describes cyclical effects on multiples with Gordon-model sensitivities.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b11",
@@ -18789,9 +18789,9 @@
    "objectives": [
     "objective:relate-cycle-to-equities-property"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-equities-property describes the economic drivers of commercial real estate and cap rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:0242f4b7ba07:m038:b01",
@@ -20005,9 +20005,9 @@
    "objectives": [
     "objective:build-capital-market-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cme-framework-forecasting discusses the role of CME and the seven-step framework.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b02",
@@ -20027,9 +20027,9 @@
    "objectives": [
     "objective:build-capital-market-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cme-framework-forecasting discusses forecasting challenges, from data limits to psychological biases and model uncertainty.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b03",
@@ -20049,9 +20049,9 @@
    "objectives": [
     "objective:analyse-growth-and-shocks-for-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:growth-shocks-long-run-expectations explains exogenous shocks and their effect on growth trends.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b04",
@@ -20071,9 +20071,9 @@
    "objectives": [
     "objective:analyse-growth-and-shocks-for-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:growth-shocks-long-run-expectations discusses anchoring long-run expectations to trend growth, reproducing PMiP Example 5.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b05",
@@ -20093,9 +20093,9 @@
    "objectives": [
     "objective:build-capital-market-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cme-framework-forecasting compares econometric, indicator and checklist approaches.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b06",
@@ -20115,9 +20115,9 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations discusses cycle phases and horizons, with an exact regime chain against PMiP Example 7.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b07",
@@ -20137,9 +20137,9 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations explains inflation over the cycle and its effects on cash, bonds, equities and real estate.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b08",
@@ -20159,9 +20159,9 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations discusses monetary and fiscal policy and the policy mix.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b09",
@@ -20182,9 +20182,9 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations interprets the yield curve as a predictor and its link to policy.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b10",
@@ -20205,9 +20205,9 @@
    "objectives": [
     "objective:analyse-cycle-policy-for-expectations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:cycle-policy-curve-expectations identifies and interprets linkages between economies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m002:b01",
@@ -20227,9 +20227,9 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses fixed-income forecasts from yields and building blocks, reproducing PMiP Example 1.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m002:b02",
@@ -20249,9 +20249,9 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses EM debt risks and country indicators.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m002:b03",
@@ -20271,9 +20271,9 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses equity forecasts by Grinold-Kroner and Singer-Terhaar.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m002:b04",
@@ -20293,9 +20293,9 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts discusses EM equity risks.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m002:b05",
@@ -20315,9 +20315,9 @@
    "objectives": [
     "objective:forecast-asset-class-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-return-forecasts explains real-estate forecasts from cap rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m002:b06",
@@ -20337,9 +20337,9 @@
    "objectives": [
     "objective:forecast-fx-and-volatility"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:fx-volatility-forecasts discusses exchange-rate forecasting from trade, PPP, current-account and capital-flow perspectives.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m002:b07",
@@ -20359,9 +20359,9 @@
    "objectives": [
     "objective:forecast-fx-and-volatility"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:fx-volatility-forecasts discusses sample, factor, shrinkage, de-smoothed and ARCH volatility estimates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m002:b08",
@@ -20382,9 +20382,9 @@
    "objectives": [
     "objective:rebalance-global-portfolio-on-macro-views"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: ex:global-portfolio-macro-rebalancing recommends and justifies reweighting a global portfolio from macro views with a quantified example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b01",
@@ -20404,9 +20404,9 @@
    "objectives": [
     "objective:govern-asset-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:investment-governance-allocation describes governance structures, the six elements and the allocation of rights.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b02",
@@ -20427,9 +20427,9 @@
    "objectives": [
     "objective:formulate-economic-balance-sheet"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:economic-balance-sheet-allocation formulates and interprets an economic balance sheet with human capital.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b03",
@@ -20449,9 +20449,9 @@
    "objectives": [
     "objective:compare-allocation-approaches"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:allocation-approaches-risk compares asset-only, liability-relative and goals-based objectives.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b04",
@@ -20471,9 +20471,9 @@
    "objectives": [
     "objective:compare-allocation-approaches"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: def:allocation-approaches-risk contrasts volatility, surplus risk and shortfall probability for one portfolio.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b05",
@@ -20494,9 +20494,9 @@
    "objectives": [
     "objective:specify-asset-classes-and-factors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-factor-specification explains and discusses asset-class criteria.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b06",
@@ -20516,9 +20516,9 @@
    "objectives": [
     "objective:specify-asset-classes-and-factors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-factor-specification explains risk factors against asset classes.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b07",
@@ -20539,9 +20539,9 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo recommends and justifies an allocation from objectives, constraints and risk preferences.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b08",
@@ -20561,9 +20561,9 @@
    "objectives": [
     "objective:specify-asset-classes-and-factors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-factor-specification describes the global market portfolio as a baseline.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b09",
@@ -20583,9 +20583,9 @@
    "objectives": [
     "objective:implement-and-rebalance-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:allocation-implementation-rebalancing discusses passive and active implementation and vehicles.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m003:b10",
@@ -20605,9 +20605,9 @@
    "objectives": [
     "objective:implement-and-rebalance-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:allocation-implementation-rebalancing discusses strategic rebalancing considerations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b01",
@@ -20628,9 +20628,9 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo describes and evaluates MVO, its criticisms and remedies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b02",
@@ -20651,9 +20651,9 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo recommends allocations by constrained MVO for investors of different risk aversion.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b03",
@@ -20674,9 +20674,9 @@
    "objectives": [
     "objective:formulate-economic-balance-sheet"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:economic-balance-sheet-allocation interprets and evaluates an allocation against the economic balance sheet.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b04",
@@ -20697,9 +20697,9 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo recommends from the global market portfolio via reverse optimisation; meth:asset-class-factor-specification reproduces Exhibit 12.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b05",
@@ -20719,9 +20719,9 @@
    "objectives": [
     "objective:evaluate-allocation-robustness"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:allocation-robustness-liquidity-risk-budget discusses Monte Carlo and scenario robustness with a spending simulation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b06",
@@ -20741,9 +20741,9 @@
    "objectives": [
     "objective:evaluate-allocation-robustness"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:allocation-robustness-liquidity-risk-budget discusses less liquid asset classes and the denominator effect.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b07",
@@ -20763,9 +20763,9 @@
    "objectives": [
     "objective:evaluate-allocation-robustness"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:allocation-robustness-liquidity-risk-budget explains absolute and relative risk budgets with MCTR and ACTR.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b08",
@@ -20785,9 +20785,9 @@
    "objectives": [
     "objective:recommend-asset-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-only-allocation-mvo describes client risk preferences (willingness and ability) in the utility function.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b09",
@@ -20807,9 +20807,9 @@
    "objectives": [
     "objective:specify-asset-classes-and-factors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:asset-class-factor-specification describes factor-based allocation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b10",
@@ -20830,9 +20830,9 @@
    "objectives": [
     "objective:recommend-liability-relative-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:liability-relative-allocation describes and evaluates liability characteristics.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b11",
@@ -20852,9 +20852,9 @@
    "objectives": [
     "objective:recommend-liability-relative-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:liability-relative-allocation discusses surplus optimisation, hedging/return-seeking and integrated approaches.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b12",
@@ -20875,9 +20875,9 @@
    "objectives": [
     "objective:recommend-liability-relative-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:liability-relative-allocation recommends and justifies a liability-relative allocation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b13",
@@ -20898,9 +20898,9 @@
    "objectives": [
     "objective:recommend-goals-based-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:goals-based-allocation-heuristics recommends goals-based allocation with modules, reproducing Exhibit 36 and the Smiths' goals.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b14",
@@ -20921,9 +20921,9 @@
    "objectives": [
     "objective:recommend-goals-based-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:goals-based-allocation-heuristics describes and evaluates 120-minus-age, 60/40, the endowment model, risk parity and 1/N.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m004:b15",
@@ -20943,9 +20943,9 @@
    "objectives": [
     "objective:implement-and-rebalance-allocation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:allocation-implementation-rebalancing discusses calendar and corridor rebalancing and the factors setting corridor width.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m005:b01",
@@ -20965,9 +20965,9 @@
    "objectives": [
     "objective:revise-allocation-for-constraints"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:allocation-constraints-taxes-revision discusses size, liquidity, horizon and regulatory constraints.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m005:b02",
@@ -20987,9 +20987,9 @@
    "objectives": [
     "objective:revise-allocation-for-constraints"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:allocation-constraints-taxes-revision discusses after-tax returns and risk, asset location and taxes in rebalancing.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m005:b03",
@@ -21010,9 +21010,9 @@
    "objectives": [
     "objective:revise-allocation-for-constraints"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:allocation-constraints-taxes-revision recommends and justifies revising an allocation after a funding change.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m005:b04",
@@ -21032,9 +21032,9 @@
    "objectives": [
     "objective:manage-tactical-shifts-and-biases"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:tactical-shifts-behavioural-biases discusses discretionary and systematic tactical allocation and its evaluation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m005:b05",
@@ -21055,9 +21055,9 @@
    "objectives": [
     "objective:manage-tactical-shifts-and-biases"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:tactical-shifts-behavioural-biases identifies six behavioural biases and recommends mitigations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m006:b01",
@@ -23379,9 +23379,9 @@
    "objectives": [
     "objective:analyse-currency-portfolio-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-portfolio-effects analyses domestic-currency return and variance, reproducing PMiP's 15.5% and 12.4%.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m018:b02",
@@ -23401,9 +23401,9 @@
    "objectives": [
     "objective:analyse-currency-portfolio-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-portfolio-effects discusses strategic hedging choices for equities and bonds with Campbell et al.'s evidence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m018:b03",
@@ -23423,9 +23423,9 @@
    "objectives": [
     "objective:design-currency-programme"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedging-programme formulates a programme along the passive-to-overlay spectrum from client factors.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m018:b04",
@@ -23445,9 +23445,9 @@
    "objectives": [
     "objective:compare-active-currency-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-currency-strategies compares fundamental, technical, carry and volatility strategies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m018:b05",
@@ -23467,9 +23467,9 @@
    "objectives": [
     "objective:compare-active-currency-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:active-currency-strategies describes how changes in volatility, policy and positioning drive tactical decisions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m018:b06",
@@ -23489,9 +23489,9 @@
    "objectives": [
     "objective:design-currency-programme"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedging-programme describes adjusting hedge ratios with forwards and FX swaps and roll yield.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m018:b07",
@@ -23511,9 +23511,9 @@
    "objectives": [
     "objective:reduce-hedging-costs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedge-cost-reduction describes over-/under-hedging, OTM puts, risk reversals, put spreads, seagulls and exotics.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m018:b08",
@@ -23533,9 +23533,9 @@
    "objectives": [
     "objective:reduce-hedging-costs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedge-cost-reduction describes cross, macro and minimum-variance hedges and basis risk; mod:minimum-variance-hedge-ratio derives the ratio.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m018:b09",
@@ -23555,9 +23555,9 @@
    "objectives": [
     "objective:reduce-hedging-costs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-19 against the outline page: meth:currency-hedge-cost-reduction discusses EM currency challenges and non-deliverable forwards.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-19"
   },
   {
    "id": "outline:2e1d62d8f585:m019:b01",

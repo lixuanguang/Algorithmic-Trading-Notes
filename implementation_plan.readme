@@ -2731,3 +2731,76 @@ objectives were reassessed and remain covered, and fifteen outline items carry r
 notes. The nine batch scripts now run 264 checks (was 250). Totals are unchanged: 146 of 424
 objectives, 342 of 1,030 items. Details are in `notes/source-review-records.md`,
 *Correction pass on PR #25*. Remote CI was not triggered.
+
+## 21. Macro, allocation and currency batch (executed 2026-10-19)
+
+**Scope.** Forty-five objectives, the batch size of Section 17.4:
+- `topic:business-cycles`: `objective:describe-business-credit-cycles`, `objective:interpret-cycle-indicators`.
+- `topic:fiscal-policy`: `objective:explain-fiscal-policy`.
+- `topic:monetary-policy`: `objective:compare-fiscal-monetary-policy`, `objective:explain-monetary-policy`.
+- `topic:geopolitics-trade`: `objective:describe-geopolitics`, `objective:assess-geopolitical-risk`,
+  `objective:analyse-international-trade`.
+- `topic:exchange-rate-mechanics`: `objective:describe-fx-market-and-real-rates`,
+  `objective:calculate-cross-and-forward-rates`, `objective:calculate-fx-bid-offer-arbitrage`,
+  `objective:value-currency-forwards`.
+- `topic:exchange-rate-determination`: `objective:explain-exchange-rate-regimes-flows`,
+  `objective:apply-international-parity`, `objective:forecast-exchange-rates`,
+  `objective:analyse-carry-trade`, `objective:explain-flows-policy-and-fx`.
+- `topic:economic-growth`: `objective:explain-growth-determinants`, `objective:forecast-potential-gdp`,
+  `objective:compare-growth-theories`, `objective:evaluate-growth-policies`.
+- `topic:macro-asset-valuation`: `objective:link-economy-to-discount-rates`,
+  `objective:relate-cycle-to-rates-and-bonds`, `objective:relate-cycle-to-equities-property`.
+- `topic:capital-market-expectations`: `objective:build-capital-market-expectations`,
+  `objective:analyse-growth-and-shocks-for-expectations`, `objective:analyse-cycle-policy-for-expectations`,
+  `objective:forecast-asset-class-returns`, `objective:forecast-fx-and-volatility`,
+  `objective:rebalance-global-portfolio-on-macro-views`.
+- `topic:strategic-asset-allocation`: `objective:govern-asset-allocation`,
+  `objective:formulate-economic-balance-sheet`, `objective:compare-allocation-approaches`,
+  `objective:specify-asset-classes-and-factors`, `objective:recommend-asset-allocation`,
+  `objective:implement-and-rebalance-allocation`, `objective:evaluate-allocation-robustness`,
+  `objective:recommend-liability-relative-allocation`, `objective:recommend-goals-based-allocation`,
+  `objective:revise-allocation-for-constraints`, `objective:manage-tactical-shifts-and-biases`.
+- `topic:currency-management`: `objective:analyse-currency-portfolio-effects`,
+  `objective:design-currency-programme`, `objective:compare-active-currency-strategies`,
+  `objective:reduce-hedging-costs`.
+
+**Starting state.** Draft PRs #24 (`f320d35`) and #25 (`bea4f8e`, after the Section 20.1
+corrections) were open and unmerged. Coverage was 146 of 424 objectives and 342 of 1,030
+outline items. All 45 objectives were `missing`; their 118 outline items map to no
+objective outside the batch, and every declared prerequisite was covered or in the batch.
+The batch runs on `codex/macro-allocation-currency-20261019`, branched from
+`codex/derivatives-portfolio-execution-20261019` at `bea4f8e`, with a stacked draft PR to
+that branch.
+
+**Sources (Section 3.5).** Economics for Investment Decision Makers (2013) and Portfolio
+Management in Practice, Volume 1 (2020) from the owner's library, with Mankiw (10th ed.),
+Cochrane's Asset Pricing, Ang's Asset Management, Jordà--Schularick--Taylor (credit
+cycles), Caldara--Iacoviello (geopolitical risk), the IMF's fragmentation note,
+Campbell--Serfaty-de Medeiros--Viceira (currency hedging) and Menkhoff et al.\ (carry). Six
+source keys were added; seven reading notes were written and two updated. BIS WP 380 was
+blocked and is not cited.
+
+**Entries.** Forty-five new entries in eight new section files; ten existing entries are
+mapped alongside where they carry part of an objective.
+
+**Evidence.** Seven scripts, 140 checks, reproducing EIDM and PMiP examples and testing
+them by independent routes: summing multiplier rounds, Markov chains against judgemental
+horizon forecasts, simulated forward and random-walk forecasts, reverse-optimisation round
+trips, binomial rebalancing payoffs, Monte Carlo spending plans, regression and grid-search
+hedge ratios and option pricing. Source slips (EIDM Exhibits 9-9 and 11-3; PMiP Example 7
+and the Smiths' rounding) are recorded.
+
+**Coverage.** The 118 items were read on their pages (Level I PDF pp. 5-7; Level II pp. 5-6
+and 25; Level III core pp. 1-3 and 12) and promoted with item-specific rationales. All 45
+objectives are covered (editorial coverage, not mastery). Totals: 191 of 424 objectives; 158
+Level I, 119 Level II, 135 shared-core and 48 Portfolio Management items covered; 570 of
+1,030 unreviewed.
+
+**Validation.** See `notes/source-review-records.md`, *Macro, allocation and currency batch*,
+and the stacked draft PR. Remote CI runs only after a merge into `main` (Section 17.2) and
+was not triggered.
+
+**Remaining gaps.**
+- Macro data are dated to their sources; scenario probabilities are subjective.
+- Several papers were read at abstract or introduction level.
+- Human review is outstanding.

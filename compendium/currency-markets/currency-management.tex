@@ -1,0 +1,114 @@
+\section{Currency management}
+
+These entries manage the currency exposure of an international portfolio: how currencies change portfolio return and risk and the strategic choices this implies; formulating a currency programme and keeping hedge ratios on target with forwards and FX swaps; active currency strategies; and ways to cut hedging costs, hedge many currencies at once and manage emerging-market currencies. Numbers are checked in \texttt{notes/artefacts/currency-management/currency-management-checks.py}.
+
+\begin{qfmethod}[Currency effects on portfolio return and risk: the domestic-currency return of single and multi-currency portfolios, the variance decomposition, and strategic currency choices for equity and bond portfolios]\label{meth:currency-portfolio-effects}
+\qffield{Statement} \emph{Return} \citep[chap.~8, sec.~3, pp.~378--383]{portfolio-management-in-practice-v1-2020}. The domestic-currency return of a foreign asset is
+\[
+R_{DC}=(1+R_{FC})(1+R_{FX})-1,\qquad R_{DC}=\sum_i\omega_i(1+R_{FC,i})(1+R_{FX,i})-1
+\]
+for a portfolio, where $R_{FX}$ is the change in the foreign currency measured with the domestic currency as price currency: market quotes may need inverting first (eqs.~(1)--(2)). \emph{Risk}: to first order $R_{DC}\approx R_{FC}+R_{FX}$, so
+\[
+\sigma^2(R_{DC})\approx\sigma^2(R_{FC})+\sigma^2(R_{FX})+2\sigma(R_{FC})\sigma(R_{FX})\rho(R_{FC},R_{FX})
+\]
+(eq.~(5)); currency exposure usually adds risk, except when currency and asset returns are negatively correlated.
+
+\emph{Strategic choices} (sec.~4, pp.~384--393). Over the long run, unhedged currency exposure adds volatility without adding expected return (currency returns net to roughly zero), which argues for hedging; but currency also diversifies, especially for equities, where some currencies move against asset returns in stress. Evidence differs by asset and base currency: hedging is more clearly beneficial for bonds, whose local volatility is small relative to currency volatility, than for equities. Campbell, Serfaty-de Medeiros and Viceira find that the U.S.\ dollar, euro and Swiss franc ``have moved against world equity markets'', so risk-minimising global equity investors should hold some of them unhedged, whereas ``The risk-minimizing currency strategy for a global bond investor is close to a full currency hedge'' \citep[abstract]{campbell-viceira-currency-hedging-2007}. Hedging also has costs: bid--offer spreads, roll yield, cash flows to settle forwards, administration, and the opportunity cost of forgoing favourable moves (pp.~388--389).
+
+\qffield{Notation} $R_{FC}$ foreign-currency asset return; $R_{FX}$ change in the foreign currency against the domestic one; $\omega_i$ weights in domestic currency; hedge ratio $h$ (hedge notional over asset value), so the hedged exposure is $(1-h)R_{FX}$.
+
+\qffield{Conditions} The variance formula is a first-order approximation; correlations between currencies and assets change in crises. The Campbell et al.\ results are for 1975--2005 and from their working-paper version (revised January 2009).
+
+\qffield{Practice} \emph{Reproduced}: a 10 percent foreign return and a 5 percent currency gain give 15.5 percent (p.~378); an Indian investor with 80 percent in sterling assets (43.80 to 50.70 million, INR/GBP 84.12 to 85.78) and 20 percent in euro assets (14.08 to 12.17 million, INR/EUR 65.36 to 67.81) earns 12.4 percent in rupees (pp.~379--380). \emph{Original.}
+\begin{itemize}
+\item Unhedged equities (16 percent local and 10 percent currency volatility, correlation $-0.3$) have 16.1 percent domestic volatility, barely more than local; unhedged bonds (4 percent and 10 percent, $-0.05$) have 10.6 percent, dominated by currency.
+\item The minimum-variance hedge ratio $h^*=1+\rho\,\sigma_{FC}/\sigma_{FX}$ is 52 percent for the equities and 98 percent for the bonds.
+\end{itemize}
+
+\qffield{Pitfalls} Computing currency returns from a quote in the wrong direction. Assuming hedging always lowers risk. Applying the same hedge ratio to bonds and equities.
+
+\qffield{See also} \hyperref[meth:currency-hedging-programme]{currency programme}; \hyperref[def:fx-market-real-exchange-rates]{quotes and direction}; \hyperref[meth:forward-commitment-risk-overlays]{currency overlays}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Formulating a currency management programme: the IPS and optimisation, passive hedging, discretionary hedging, active management and overlays, client factors favouring more or less hedging, and adjusting hedge ratios with forwards, FX swaps and roll yield]\label{meth:currency-hedging-programme}
+\qffield{Statement} \emph{Where to sit on the spectrum} \citep[chap.~8, sec.~4.4, pp.~389--393]{portfolio-management-in-practice-v1-2020}:
+\begin{itemize}
+\item \emph{passive hedging}: keep the portfolio's currency exposures close to a benchmark (often fully hedged), rebalancing the hedge periodically;
+\item \emph{discretionary hedging}: allow the manager limited deviations around a hedged benchmark to reduce costs or add value;
+\item \emph{active currency management}: wider limits, with currency treated as a source of return within a risk budget;
+\item \emph{currency overlay}: currency decisions delegated to a specialist manager, separate from the asset managers.
+\end{itemize}
+\emph{Client factors} (sec.~4.5, pp.~393--395): a programme should be closer to full hedging the shorter the investment horizon, the more risk-averse and regret-averse the beneficial owners, the more immediate the income or liquidity needs, the larger the share of foreign fixed income, the cheaper hedging is, the more volatile financial markets are, and the more sceptical the owners are of active currency management; the reverse points to less hedging or more active management. The IPS should specify the benchmark hedge ratio, permitted deviations and instruments, and the optimisation should consider hedged and unhedged versions of foreign assets jointly (sec.~4.2, pp.~385--386).
+
+\emph{Forwards and FX swaps} (sec.~6.1, pp.~407--413). A hedge is usually a rolling series of forwards; as the asset's value changes, the hedge ratio drifts. At each roll the maturing forward is settled at spot and a new forward is entered for the new notional: an FX swap, with any increase or decrease in size dealt on the appropriate side of the market. Settling a forward produces cash flows that must be funded. The \emph{roll yield}, $|(F-S)/S|$ per roll, is positive when the hedge sells the base currency at a forward premium or buys it at a discount, and negative otherwise; it reflects the interest differential under covered interest parity.
+
+\qffield{Notation} Hedge ratio $h=$ forward notional $/$ asset value; roll yield $(F-S)/S$ in the direction of the hedge.
+
+\qffield{Conditions} Static hedge ratios drift between rolls; a mismatch between hedge maturity and roll frequency, or between the hedged index and the actual holdings, leaves residual exposure.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Rolling and resizing.} A U.S.\ investor sold EUR 8 million one month forward at 1.1000 to hedge euro assets now worth 8.5 million. At maturity, with spot at 1.0850, the forward settles for a USD 120{,}000 gain; the FX swap buys EUR 8 million spot and sells EUR 8.5 million one month forward at $1.0850+0.0012=1.0862$, restoring a 100 percent hedge ratio.
+\item \emph{Roll yield.} Selling euros at a 12-point premium earns about 0.11 percent a month (1.3 percent a year) as the forward rolls toward spot, all else equal.
+\item \emph{Cost against benefit.} If hedging costs 1.5 percent a year in negative roll, fully hedging the bond holding above cuts its volatility by 6.6 points, while hedging the equity holding cuts it by only 0.1 point: a case for hedging bonds and leaving part of the equity exposure open.
+\end{itemize}
+
+\qffield{Pitfalls} Letting hedge ratios drift far from target between rolls. Ignoring the cash needed to settle losing forwards. Treating roll yield as free return independent of the currency's move.
+
+\qffield{See also} \hyperref[meth:currency-forward-mark-to-market]{forward valuation}; \hyperref[meth:currency-portfolio-effects]{currency effects}; \hyperref[meth:currency-hedge-cost-reduction]{reducing hedging costs}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Active currency strategies: economic fundamentals, technical analysis, the carry trade and volatility trading compared, and how changes in market and economic factors drive tactical currency decisions]\label{meth:active-currency-strategies}
+\qffield{Statement} \citep[chap.~8, sec.~5, pp.~396--404]{portfolio-management-in-practice-v1-2020}
+\begin{itemize}
+\item \emph{Fundamentals}: in the long run currencies converge to fair value (PPP and real-interest-rate models); a currency is expected to appreciate with an upward revision of its long-run value, higher relative real rates, lower relative inflation or a lower risk premium, and current-account and fiscal developments matter (\hyperref[meth:exchange-rate-forecasting-fair-value]{fair value}).
+\item \emph{Technical analysis}: past prices contain information about future moves in the short run; market psychology produces trends, overbought or oversold levels and support and resistance; trend following is the common systematic form.
+\item \emph{Carry}: long high-yield, short low-yield currencies, profitable when uncovered interest parity fails, as it typically does over short horizons; returns are negatively skewed, with crashes when volatility and risk aversion rise (\hyperref[meth:carry-trade-uip]{carry trade}).
+\item \emph{Volatility trading}: using options (straddles, strangles, risk reversals) or delta-hedged positions to take views on future realised against implied volatility, or on skew; a long volatility position profits when realised volatility exceeds implied.
+\end{itemize}
+\emph{Tactical drivers}: rising volatility or risk aversion argues for cutting carry and long-volatility hedges; diverging monetary policy and real rates feed fundamental views; trends and momentum signal technical entries and exits; crowded positioning raises crash risk. Strategies are often combined because they pay off in different environments.
+
+\qffield{Notation} Carry P\&L per unit of funding $(S_T/S_0)(1+i_f)-(1+i_d)$; delta-hedged option P\&L $\approx\tfrac12\Gamma S^2(\sigma^2_{\text{realised}}-\sigma^2_{\text{implied}})\Delta t$.
+
+\qffield{Conditions} Each strategy's edge is a statistical tendency with long losing periods; skill in currency management is hard to verify over short records.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Carry.} Funding in dollars at 4.3 percent and investing in an emerging-market currency at 10.5 percent earns 1.78 percent even if the currency falls 4 percent; a 12 percent crash turns it into a loss of 7.06 percent.
+\item \emph{Volatility.} A delta-hedged long option earns about half its dollar gamma times the gap between realised and implied variance: positive if realised volatility is 12 percent against 8 percent implied, negative if realised is 6 percent.
+\end{itemize}
+
+\qffield{Pitfalls} Running carry with leverage into a volatility spike. Trading technical signals without accounting for costs. Selling volatility as an income strategy without sizing for crashes.
+
+\qffield{See also} \hyperref[mod:fx-carry-trade]{FX carry}; \hyperref[meth:fx-valuation-signals]{FX valuation signals}; \hyperref[meth:greeks-delta-gamma-hedging]{gamma and implied volatility}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Reducing hedging costs and hedging many currencies: over- and under-hedging, out-of-the-money puts, risk reversals, put spreads, seagulls and exotics; cross, macro and minimum-variance hedges and basis risk; and emerging-market currencies with non-deliverable forwards]\label{meth:currency-hedge-cost-reduction}
+\qffield{Statement} \emph{Cheaper hedges} \citep[chap.~8, sec.~6.3, pp.~416--423]{portfolio-management-in-practice-v1-2020} trade protection for cost: over- or under-hedging with forwards (a directional view); a protective put struck out of the money (cheaper, with a deductible); a risk reversal or collar (sell an out-of-the-money call to pay for the put, giving up upside); a put spread (sell a lower-strike put, losing protection below it); a seagull (put spread plus a short call, possibly at zero or positive premium, with protection only in a band); and exotic (barrier, digital) options that cut premium at the cost of complexity. The general rule: lower premium means less protection, more upside given up, or both (sec.~6.3.7).
+
+\emph{Many currencies} (sec.~6.4, pp.~424--431): a \emph{cross hedge} uses a correlated currency (proxy hedge); a \emph{macro hedge} hedges a portfolio-wide risk factor (for example a basket or the dollar) rather than each currency; a \emph{minimum-variance hedge ratio} is the slope of a regression of domestic-currency returns on currency returns, which captures the correlation between the asset and the currency; all leave \emph{basis risk} when the hedge instrument and exposure diverge.
+
+\emph{Emerging markets} (sec.~7, pp.~435--440): higher trading costs and wider spreads, especially in stress; thin liquidity and event risk (sudden devaluations, capital controls) with fat-tailed, skewed returns; contagion; and in currencies with capital controls, hedging through \emph{non-deliverable forwards}, cash-settled in a major currency against an official fixing, so that the controlled currency is neither delivered nor received; NDFs have lower credit exposure than deliverable forwards because principal does not change hands.
+
+\qffield{Notation} Garman--Kohlhagen option prices (\hyperref[meth:black-model-rates-currencies]{currency options}); cross-hedge ratio $\rho\sigma_X/\sigma_Y$ and residual volatility $\sigma_X\sqrt{1-\rho^2}$; NDF settlement $N(F_{NDF}-S_{\text{fix}})/S_{\text{fix}}$ in the settlement currency.
+
+\qffield{Conditions} Option prices below are model values at one volatility (8 percent, 3 months, 4.3 percent dollar and 2.5 percent euro rates); real quotes include skew and spreads.
+
+\qffield{Practice} \emph{Original} (a U.S.\ investor long euro assets, spot 1.0850).
+\begin{itemize}
+\item \emph{Puts.} An at-the-money put costs 1.37 percent of notional; one struck 3.2 percent out of the money (1.05) 0.37 percent.
+\item \emph{Risk reversal.} Selling a 1.1323 call pays for the 1.05 put: zero premium, upside capped above 1.1323.
+\item \emph{Put spread and seagull.} Selling a 1.01 put cuts the 1.05 put's cost by about a tenth; adding the short call makes the package receive a small premium, but losses below 1.01 return in full.
+\item \emph{Cross hedge.} Hedging New Zealand dollars with Australian-dollar forwards (correlation 0.85, volatilities 11 and 10 percent) uses 0.935 Australian dollars per New Zealand dollar and leaves 5.8 percent residual volatility.
+\item \emph{Minimum-variance hedge.} On 120 simulated months in which the asset falls 0.4 percent for each 1 percent currency rise, the regression slope (0.61) and a grid search on hedged variance (0.61) agree.
+\item \emph{NDF.} Selling USD 10 million against rupees at 83.50 settles, at a fixing of 85.00, by a payment of USD 176{,}471, with no rupees exchanged.
+\end{itemize}
+
+\qffield{Pitfalls} Buying cheap hedges that fail in the large moves they were meant to cover. Cross-hedging with a currency whose correlation breaks in stress. Ignoring convertibility and fixing risk in NDFs.
+
+\qffield{See also} \hyperref[meth:currency-hedging-programme]{currency programme}; \hyperref[mod:minimum-variance-hedge-ratio]{minimum-variance hedge ratio}; \hyperref[meth:covered-call-protective-put]{collars}.
+
+\end{qfmethod}

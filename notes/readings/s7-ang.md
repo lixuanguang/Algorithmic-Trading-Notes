@@ -2,7 +2,7 @@
 key: s7-ang
 pathways: [portfolio-construction-risk, performance-manager-evaluation]
 version: Andrew Ang, Asset Management: A Systematic Approach to Factor Investing, Oxford University Press, 2014 (Financial Management Association Survey and Synthesis Series). Copy used: local PDF (SHA-256 895fb9b0db1a3dbbe92d724ca7d101a0ea937fa1daa23a1ba742054290cdf61f), text layer; printed page = PDF page - 13
-sections: chap. 1, pp. 4-31 (asset owners); chap. 3, pp. 110-112 (socially responsible investing); chap. 15, pp. 502-503 (separate accounts, career concerns); chap. 16, pp. 523-527 (40-Act funds); chap. 17, pp. 581-582 (hedge fund contracts); derivatives, portfolio and execution batch (2026-10-19): chap. 14, pp. 447-453 (benchmarks and dynamic factors, long-only factor exposures) and pp. 481-487 (market weights for sovereign bonds, factor-based weighting)
+sections: chap. 1, pp. 4-31 (asset owners); chap. 3, pp. 110-112 (socially responsible investing); chap. 15, pp. 502-503 (separate accounts, career concerns); chap. 16, pp. 523-527 (40-Act funds); chap. 17, pp. 581-582 (hedge fund contracts); derivatives, portfolio and execution batch (2026-10-19): chap. 14, pp. 447-453 (benchmarks and dynamic factors, long-only factor exposures) and pp. 481-487 (market weights for sovereign bonds, factor-based weighting); macro, allocation and currency batch (2026-10-19): chap. 4, pp. 113-140 (rebalancing counter-cyclical and short volatility); chap. 6, pp. 193-206 (factor theory, bad times, SDF); chap. 7, pp. 213-218 (growth, inflation and volatility factors, Table 7.2); chap. 9, pp. 271-296 (level factor, term spread, Ang-Piazzesi decomposition p. 291, credit spreads p. 295)
 read:
 status: draft
 ---

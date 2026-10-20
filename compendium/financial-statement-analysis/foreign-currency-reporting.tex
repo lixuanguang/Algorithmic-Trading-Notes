@@ -1,0 +1,157 @@
+\section{Foreign currency in financial statements}
+
+\begin{qfdefinition}[Presentation, functional and local currencies, and foreign-currency transactions: initial recognition, remeasurement of monetary items and where the differences are reported]\label{def:functional-currency-transactions}
+\qffield{Statement} Three currencies matter for a multinational's statements:
+\begin{itemize}
+\item the \emph{presentation currency}, in which the financial statements are presented \citep[para.~8]{eu-2023-1803-ias21};
+\item the \emph{functional currency}, ``the currency of the primary economic environment in which the entity operates'' (para.~8), normally the one in which it ``primarily generates and expends cash'' (para.~9);
+\item the \emph{local currency} of the country where an operation is located. It is not a defined term in IAS~21, and the functional currency need not be the local one (Interpretation).
+\end{itemize}
+
+\emph{Determining the functional currency} \citep[paras.~9--12]{eu-2023-1803-ias21}:
+\begin{itemize}
+\item primary factors: the currency that mainly influences sales prices and the country whose competition and regulation set them; the currency that mainly influences labour, material and other costs (para.~9);
+\item supporting factors: the currency in which financing is raised and operating receipts are retained (para.~10);
+\item for a foreign operation: whether it is an extension of the reporting entity or largely autonomous, how much of its business is with the parent, whether its cash flows directly affect the parent's and are readily remitted, and whether it can service its own debt (para.~11);
+\item when the indicators are mixed, management uses judgement, giving priority to the primary factors (para.~12).
+\end{itemize}
+US GAAP rests on the same idea: functional currency is that of the environment in which cash is generated and expended, and it is ``in principle, a matter of fact'' \citep[para.~39]{us-foreign-currency-1981}.
+
+\emph{Transactions.} A foreign-currency transaction is recorded at the spot rate on its date \citep[para.~21]{eu-2023-1803-ias21}. At each reporting date monetary items are translated at the closing rate, non-monetary items at historical cost at the historical rate, and those at fair value at the rate when it was measured (para.~23). Exchange differences on settling or retranslating monetary items go to profit or loss (para.~28). The exception is a monetary item forming part of the net investment in a foreign operation, whose differences go to other comprehensive income on consolidation (para.~32). FAS~52 also puts transaction gains and losses in net income \citep[para.~15]{us-foreign-currency-1981}. \emph{Disclosure}: the exchange differences recognised in profit or loss, the net differences in other comprehensive income with a reconciliation of the accumulated amount, and, if the presentation currency differs from the functional currency, that fact and the reason \citep[paras.~52--53]{eu-2023-1803-ias21}. Companies do not usually disclose where in the income statement the transaction gains and losses sit, so their effect on margins may need to be inferred (Interpretation).
+
+\qffield{Practice} \emph{A USD receivable on Penrose's EUR books} (original; \texttt{intercorporate-fx-institutions-checks.py}). Penrose sells goods for USD~10 when the rate is EUR~0.90 per USD and records revenue of 9.0.
+\begin{itemize}
+\item At the year end the rate is 0.95. The receivable is remeasured to 9.5, a gain of 0.5 in profit.
+\item It is settled next year at 0.93, a loss of 0.2.
+\item The total of 0.3 equals $10\times(0.93-0.90)$; revenue stays at 9.0.
+\end{itemize}
+The gain arises from holding a monetary item, not from selling: it belongs in the analysis of financing, not of margins.
+
+\emph{Which functional currency?} A US subsidiary that buys from Penrose in EUR, resells in the US at prices set against EUR, and remits its cash to Penrose is an extension of the parent: its functional currency is the euro. One that buys, sells, borrows and keeps its cash in dollars has the dollar as its functional currency.
+
+\qffield{Conditions} Functional currency is a judgement made once and changed only when the underlying conditions change. Translation exposure, transaction exposure and economic exposure are different: the statements show the first two; the third, the effect of rates on future cash flows, is not reported.
+
+\qffield{Pitfalls} Treating a transaction gain as operating income. Assuming that the functional currency is the local currency. Confusing the presentation currency, a choice, with the functional currency, a fact.
+
+\qffield{See also} \hyperref[meth:currency-translation-methods]{translation methods}; \hyperref[meth:multinational-currency-tax-analysis]{multinational results}; \hyperref[meth:currency-hedging-programme]{hedging programmes}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Translating a foreign operation: the current rate method against the temporal method, their exposures and ratio effects, and hyperinflationary economies under IAS 29 and US GAAP]\label{meth:currency-translation-methods}
+\qffield{Statement} \emph{Current rate method} (translation into a different presentation currency). Assets and liabilities are translated at the closing rate, income and expenses at transaction-date rates or an average approximating them, and all resulting differences go to other comprehensive income \citep[paras.~39--40]{eu-2023-1803-ias21}. The cumulative amount is reclassified to profit when the operation is disposed of (para.~48). FAS~52 is the same: translation adjustments are accumulated in equity and recognised on sale or liquidation \citep[paras.~12--14]{us-foreign-currency-1981}.
+
+\emph{Temporal method} (remeasurement into the functional currency). Monetary items are at the current rate; inventory, property and equity at historical rates; cost of sales and depreciation follow the historical cost of the assets. Remeasurement gains and losses go to the income statement \citep[pp.~302--304]{financial-statement-analysis-2009}. It applies when the operation's books are not in its functional currency, typically an operation that is an extension of the parent, or in hyperinflation under US GAAP.
+
+\emph{Exposure} \citep[pp.~307--311]{financial-statement-analysis-2009}:
+\begin{itemize}
+\item under the temporal method, exposure is the net monetary position: a subsidiary with net monetary liabilities gains when the parent's currency strengthens;
+\item under the current rate method, exposure is the net investment, all of it, and goes to equity rather than profit;
+\item translated income varies directly with the average rate; the cumulative translation adjustment can move equity and debt to equity substantially for a company with a small equity base.
+\end{itemize}
+
+\emph{Ratios} (Derivation). The current rate method scales every balance-sheet line by one rate and every income line by another, so ratios within a statement keep their local values. Ratios across statements change only by the ratio of closing to average rate. The temporal method mixes rates and changes ratios.
+
+\emph{Hyperinflation.} Indicators include a population that holds wealth in non-monetary assets or a stable foreign currency, prices quoted in that currency, indexation, and cumulative three-year inflation approaching or exceeding 100 percent \citep[para.~3]{eu-2023-1803-ias29}. The two frameworks then diverge:
+\begin{itemize}
+\item \emph{IFRS.} The statements are first restated into the measuring unit current at the reporting date: non-monetary items by the change in a general price index (paras.~11--12), with the gain or loss on the net monetary position in profit (paras.~27--28). Everything is then translated at the closing rate \citep[paras.~42--43]{eu-2023-1803-ias21}.
+\item \emph{US GAAP.} The currency of a highly inflationary economy (about 100 percent over three years) is not used as the functional currency; the parent's reporting currency is used and the statements are remeasured \citep[para.~11]{us-foreign-currency-1981}.
+\end{itemize}
+
+\qffield{Practice} \emph{Source reproduction} \citep[pp.~304--306]{financial-statement-analysis-2009}. BritCo's net assets of 350,000 pounds at the start of the year and profit of 150,000 translate into a year's adjustment of $350{,}000\times(1.40-1.20)+150{,}000\times(1.40-1.30)=85{,}000$ dollars. The balance sheet gives the same figure as a plug, and the cumulative balance is 115,000.
+
+\emph{Penrose Inc.} (original; EUR per USD: 0.85 when property was bought, 0.90 at the start of the year, 0.92 average, 0.94 in the fourth quarter, 0.95 at the end).
+\begin{itemize}
+\item \emph{In dollars.} Sales are 600, cost of sales 420 and net income 50. Net assets rise from 190 to 240, and the net monetary position from $-200$ to $-130$.
+\item \emph{Current rate.} Net income is $50\times0.92=46.0$ and net assets 228.0. The translation adjustment rises from 9.5 to 20.5. The year's gain of 11.0 equals opening net assets $190\times0.05$ plus profit $50\times0.03$, and goes to other comprehensive income.
+\item \emph{Temporal.} Cost of sales at historical rates is 384.6, profit before remeasurement 49.9, and the remeasurement loss 6.5: $-200\times0.05+140\times0.03-70\times0.01$, on the opening position, the year's net monetary inflows and the fourth-quarter purchases. Net income is 43.4.
+\end{itemize}
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & Current rate & Temporal \\
+\midrule
+Gross margin & 30.0\% & 30.3\% \\
+Current ratio & 3.33 & 3.32 \\
+Liabilities / equity & 1.08 & 1.25 \\
+Net income (EUR) & 46.0 & 43.4 \\
+Effect of a further 0.05 rise in the USD & $+12.0$ to OCI & $-6.5$ to profit \\
+\bottomrule
+\end{tabular}
+\end{center}
+The current rate keeps the dollar ratios. The temporal method raises leverage, because equity carries property at the old rate while debt is at the new. It also reverses the sign of the exposure: Penrose Inc. is a net monetary borrower, so a stronger dollar is a loss in profit, though the net investment gains.
+
+\emph{Hyperinflation} (original). Penrose Andina bought plant for 1,000 local units when the price index was 100 and the euro bought 50 units (0.020 euro each); the index is now 250, cumulative inflation of 150 percent.
+\begin{itemize}
+\item Under IFRS the plant is restated to 2,500 units and translated at the closing 0.008: EUR~20.0. Under US GAAP it is remeasured at the historical 0.020: also EUR~20.0, but only because the currency fell exactly with prices. Had it fallen to 0.010, IFRS would give 25.0 and US GAAP still 20.0.
+\item Holding 400 units of net monetary assets while the index rose from 180 to 250 loses 155.6 units of purchasing power, reported in profit.
+\end{itemize}
+
+\qffield{Conditions} The ratios hold only when the whole operation is translated at one rate. Average rates are a practical approximation that becomes inappropriate when rates fluctuate significantly \citep[para.~40]{eu-2023-1803-ias21}. Hyperinflation is a judgement on several indicators, not the 100 percent figure alone.
+
+\qffield{Pitfalls} Reading the translation adjustment as a cash gain or loss. Comparing margins of a company using the temporal method with one using the current rate. Forgetting that the cumulative adjustment is recycled to profit on disposal. Treating the hyperinflation restatement as a valuation of the assets.
+
+\qffield{See also} \hyperref[def:functional-currency-transactions]{functional currency}; \hyperref[meth:multinational-currency-tax-analysis]{multinational results}; \hyperref[meth:consolidation-ratio-effects]{consolidation effects}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Analysing a multinational's results: currency effects on reported sales and profit, constant-currency growth and its sustainability, and the reconciliation of the effective tax rate]\label{meth:multinational-currency-tax-analysis}
+\qffield{Statement} \emph{Sales.} Under the current rate method translated income ``varies directly with changes in exchange rates'' \citep[p.~310]{financial-statement-analysis-2009}. Reported growth can therefore be split into two parts (Derivation):
+\begin{itemize}
+\item growth at constant currency, this year's local sales at last year's rates;
+\item a currency effect, the difference between this year's sales at this year's and at last year's rates.
+\end{itemize}
+Growth from volume and price in local currency can persist; growth from a weak home currency reverses when it recovers (Interpretation, consistent with pp.~310--311).
+
+\emph{Profit and equity.} A weaker home currency raises translated income and also equity through the translation adjustment, which lowers return on equity; transaction gains and remeasurement results also sit in income (p.~310).
+
+\emph{Tax rate.} IFRS requires a numerical reconciliation between tax expense and accounting profit times the applicable rate, or between the effective and applicable rates \citep[para.~81(c)]{eu-2023-1803-ias12}. The reconciling items show:
+\begin{itemize}
+\item foreign rates that differ from the parent's;
+\item non-deductible items;
+\item prior-year adjustments.
+\end{itemize}
+The effective rate changes with the geographic mix of profit even if no rate changes (Derivation; \hyperref[meth:tax-rate-measures]{tax rate measures}).
+
+\qffield{Practice} \emph{Larch Brands} (original; EUR presentation currency):
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Segment & Year 1 local & Year 2 local & Rate year 1 & Rate year 2 \\
+\midrule
+Euro area & 500 & 520 & 1.00 & 1.00 \\
+United States & 400 & 440 & 0.92 & 0.86 \\
+United Kingdom & 200 & 196 & 1.15 & 1.18 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item Reported sales are 1,098.0 and 1,129.68, growth of 2.89 percent.
+\item At year-1 rates year 2 is 1,150.20, constant-currency growth of 4.75 percent; the currency effect is $-1.87$ points.
+\item The US grew 10 percent in dollars, but the dollar's fall turns that into 2.8 percent in euros. The UK shrank 2 percent in pounds and the pound's rise hides it.
+\end{itemize}
+The sustainable signal is the local growth: strong in the US, negative in the UK.
+
+\emph{Tax.} Profit before tax is 60 in the euro area, 50 in the US and 20 in the UK: 130 in all. Rates are 25, 21 and 25 percent, with 4 of non-deductible costs and a prior-year credit of 1.5.
+\begin{center}\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+Reconciliation & EUR \\
+\midrule
+130 at the parent's 25\% & 32.5 \\
+Lower US rate: $50\times(21\%-25\%)$ & $-2.0$ \\
+Non-deductible costs: $4\times25\%$ & $+1.0$ \\
+Prior-year adjustment & $-1.5$ \\
+\midrule
+Tax expense (23.08\%) & 30.0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Shifting 10 of profit from the euro area to the US lowers tax to 29.6 and the effective rate to 22.77 percent, with no change in any rate. The prior-year credit will not recur: excluding it the rate is 24.2 percent, the better basis for forecasting.
+
+\qffield{Conditions} Constant-currency figures are not defined by IFRS; companies choose the base rates and whether to include hedging, so the definition must be read. Mix effects assume the statutory rates and the non-deductible items stay unchanged.
+
+\qffield{Pitfalls} Extrapolating growth that came from currency. Comparing a company's effective tax rate across years without separating mix, rate changes and one-off items. Ignoring hedging gains that offset translation in a different line.
+
+\qffield{See also} \hyperref[meth:currency-translation-methods]{translation}; \hyperref[meth:tax-rate-measures]{tax rate measures}; \hyperref[meth:ratio-based-earnings-forecast]{earnings forecasts}.
+
+\end{qfmethod}

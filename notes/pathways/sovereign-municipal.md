@@ -28,6 +28,12 @@ Written in macro markets and pricing / source review / optimal execution / execu
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py` (part 9):
+
+- `meth:sovereign-credit-analysis`: indicators, debt dynamics and the debt-stabilising primary balance (Fabozzi handbook eqs. 17-1 to 17-3, verified against a nominal roll-forward), debt structure, gross financing needs, local- against foreign-currency debt, and US general obligation against revenue bonds.
+
+Written for the curriculum objective; the pathway's 11 required readings were not read for it. Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:isda-greece-2012-determination` resolved (ISDA EMEA Determinations Committee: Restructuring Credit Event for the Hellenic Republic, unanimous, 9 March 2012, after the collective action clauses; auction held 19 March 2012 (final price not read in a primary document)); `ev:sovereign-restructurings-after-2006` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
@@ -49,3 +55,4 @@ None open after the second source follow-up of 2026-10-16.
 ## What changed in my view or practice
 
 ## Questions carried forward
+- The IMF's sovereign risk and debt sustainability framework guidance refused access on 2026-10-20; how does its fan-chart approach change the single-year debt-dynamics calculation?

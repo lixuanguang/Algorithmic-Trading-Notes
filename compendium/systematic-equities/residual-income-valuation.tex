@@ -1,0 +1,109 @@
+\section{Residual income valuation}
+
+\begin{qfdefinition}[Residual income, economic value added and market value added: the charge for equity or total capital, and the determinants of each]\label{def:residual-income-eva}
+\qffield{Statement} \emph{Residual income} is comprehensive net income less a charge for the equity capital at the start of the period \citep[pp.~42, 499, 502]{financial-statement-analysis-2009}:
+\[ \mathrm{RI}_t=\mathrm{NI}_t-k_e\,B_{t-1}=(\mathrm{ROE}_t-k_e)\,B_{t-1},\qquad \mathrm{ROE}_t=\mathrm{NI}_t/B_{t-1}. \]
+It is positive only when the return on book equity exceeds the cost of equity. Its determinants are therefore the spread $\mathrm{ROE}-k_e$ and the book equity it applies to. Competition tends to pull ROE towards the cost of capital, mostly within about five years, though not completely (p.~502).
+
+\emph{Economic value added} applies the same idea to the whole firm: after-tax operating income less the cost of capital times capital invested \citep[pp.~870--871]{investment-valuation-2012},
+\[ \mathrm{EVA}=\mathrm{NOPAT}-\mathrm{WACC}\times\text{capital invested}=(\mathrm{ROC}-\mathrm{WACC})\times\text{capital invested}. \]
+Capital invested is book capital adjusted for operating leases, capitalised research and one-time charges; the cost of capital uses market weights (p.~871). \emph{Market value added} is the market value of the firm less capital invested. It equals the present value of expected future EVA and is positive only if returns are expected to exceed the cost of capital (pp.~873--874).
+
+\qffield{Notation} $B_{t-1}$ book equity at the start of year $t$; $k_e$ cost of equity; ROC return on capital.
+
+\qffield{Practice} \emph{Original.} Book equity 20, ROE 12 percent and cost of equity 9 percent give net income 2.40, an equity charge 1.80 and residual income 0.60.
+
+\emph{Harbour, 2025} (\hyperref[ex:harbour-tools-statements]{case}), with capital invested measured as book equity plus debt, leases and the after-tax pension deficit, less cash:
+\begin{itemize}
+\item NOPAT is $93-0.25\times(93+9)=67.50$, with share-based pay not deductible. On opening capital of 945.00 that is a return of 7.14 percent, below the 8.02 percent WACC, so EVA is $67.50-0.0802\times945.00=-8.29$.
+\item Adding back the 18 restructuring charge after tax gives NOPAT 81.00 and EVA 5.21. Whether the charge is one-off decides whether 2025 created value.
+\item Market value of the firm 1,479.77, less capital invested of 1,000.96 at the end of 2025, is MVA of 478.81. The market expects future returns well above the cost of capital; 2025 did not deliver them.
+\end{itemize}
+
+\emph{EVA and DCF agree} (original). A firm has capital of 200 earning 14 percent with a WACC of 9 percent. It invests 20 at the start of each of the next four years at 14 percent, all in perpetuity. Capital 200, plus the present value of EVA on existing assets, $(0.14-0.09)\times200/0.09=111.11$, plus that of the new investments gives 350.35. Discounting the free cash flows gives the same 350.35.
+
+\qffield{Conditions} The equivalence of EVA and DCF needs capital, NOPAT and the cost of capital measured consistently. Residual income needs comprehensive income and book values that satisfy clean surplus, or the violations adjusted (\hyperref[meth:residual-income-comparison]{accounting issues}).
+
+\qffield{Pitfalls} Using ROE on average rather than opening equity in the charge. Charging the cost of capital on market rather than invested capital. Comparing EVA across firms whose capital excludes leases or capitalised research differently. Rewarding a year's EVA that was bought by cutting investment.
+
+\qffield{See also} \hyperref[meth:residual-income-valuation]{valuation}; \hyperref[meth:justified-multiples]{justified P/B}; \hyperref[meth:forecast-horizon-steady-state]{return on capital in steady state}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Valuing equity with residual income: single-stage and multistage models, continuing residual income with a persistence factor, and the terminal value in a finite horizon]\label{meth:residual-income-valuation}
+\qffield{Statement} Equity value equals current book value plus the present value of expected residual income \citep[pp.~42, 499]{financial-statement-analysis-2009}:
+\[ V_0=B_0+\sum_{t=1}^{\infty}\frac{\mathrm{RI}_t}{(1+k_e)^t}. \]
+\begin{itemize}
+\item \emph{Single stage.} With constant ROE, payout and growth $g=b\times\mathrm{ROE}$, $V_0=B_0+(\mathrm{ROE}-k_e)B_0/(k_e-g)$.
+\item \emph{Multistage.} Forecast RI explicitly for the horizon, then add a continuing value. Subramanyam and Wild let the last forecast RI grow at inflation (pp.~500--501).
+\item \emph{Persistence.} A common alternative assumes that residual income decays at a rate $\omega$, $0\le\omega\le1$, so $\mathrm{RI}_{T+j}=\omega^j\mathrm{RI}_T$ and the continuing value at $T$ is $\omega\,\mathrm{RI}_T/(1+k_e-\omega)$ (Derivation, a geometric series).
+\begin{itemize}
+\item $\omega=0$: residual income stops at the horizon.
+\item $\omega=1$: it continues forever.
+\item Low persistence suits firms whose high returns competitors will erode, consistent with the reversion of ROE (p.~502).
+\end{itemize}
+\end{itemize}
+For a finite horizon $T$ with terminal price $P_T$, the exact form is $V_0=B_0+\sum_{t=1}^T\mathrm{RI}_t/(1+k_e)^t+(P_T-B_T)/(1+k_e)^T$.
+
+\qffield{Practice} \emph{Single stage} (original). Book value 20, ROE 12 percent, cost of equity 9 percent and payout 50 percent, so $g=6$ percent: $20+0.60/(9\%-6\%)=40.00$. The dividend model gives $1.20/3\%=40$ too.
+
+\emph{Multistage with persistence} (original). ROE is 15, 14 and 13 percent for three years, with half of earnings retained. Residual income is 1.20, 1.08 and 0.92, worth 2.72 today. With $\omega=0.6$ the continuing value at year 3 is $0.6\times0.92/(1.09-0.6)=1.13$, and the value 23.59; an explicit sum of the decaying stream agrees. At $\omega=0$ the value is 22.72, at $\omega=1$ 30.61. Persistence is the main judgement.
+
+\emph{Harbour, 2026--2028} (\hyperref[ex:harbour-pro-forma-model]{forecast}), with a cost of equity of 9.32 percent:
+\begin{itemize}
+\item ROE on opening book is 11.34 percent in 2026, and residual income is 13.04, 10.12 and 9.86.
+\item The terminal price is set by the justified P/B on 2028 book, 1.2148 at a sustained ROE of 10.79 percent and growth of 2.5 percent (\hyperref[meth:justified-multiples]{justified multiples}).
+\item Residual income on reported book then gives 809.24, or 8.03 a share.
+\item The dividend model with the same terminal price gives 834.16, or 8.28.
+\end{itemize}
+The 24.92 difference is the present value of the equity credited for share-based pay (\hyperref[meth:residual-income-comparison]{accounting issues}). The DCF value is 8.49.
+
+\emph{Implied growth from the market price.} Rearranging the single-stage model, $g=k_e-(\mathrm{ROE}-k_e)/(P/B-1)$. At Harbour's price of 11.00, P/B is 1.71. With a sustained ROE of 10.79 percent and $k_e=9.32$ percent, residual income would have to grow at 7.27 percent a year for ever, far above the economy. At 2.5 percent growth the price needs a sustained ROE of 14.18 percent. Either way, the market price embeds more than the forecast supports.
+
+\qffield{Conditions} The cost of equity must be the one applied to book equity at the start of each year. The continuing value depends on whether ROE is assumed to stay above, or fade to, the cost of equity.
+
+\qffield{Pitfalls} Holding residual income constant forever for a firm without a durable advantage. Using a terminal P/B with a ROE inconsistent with the forecast. Discounting residual income at the WACC.
+
+\qffield{See also} \hyperref[def:residual-income-eva]{residual income}; \hyperref[meth:fcf-valuation-models]{free cash flow models}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Residual income compared with dividend and free cash flow models: when each fits, the link to justified P/B, and the accounting adjustments clean surplus requires]\label{meth:residual-income-comparison}
+\qffield{Statement} \emph{Equivalence.} Dividend, free cash flow to equity and residual income models are identical and exact over an infinite horizon. In a finite horizon they differ in how much of the value sits in the continuing value \citep[p.~42]{financial-statement-analysis-2009}. The residual income model ``usually outperforms both'' because it starts from book value and puts less weight on the continuing value; most of the reversion of ROE is complete within about five years (pp.~42, 502).
+
+\emph{Strengths and weaknesses} (Interpretation, consistent with the sources):
+\begin{itemize}
+\item \emph{Residual income} works for firms that pay no dividends or have negative free cash flow, and uses information in the balance sheet. It depends on accounting quality and on clean surplus.
+\item \emph{Dividends} suit stable payers.
+\item \emph{Free cash flow} suits firms whose payout differs from capacity, but puts more of the value in the terminal value.
+\end{itemize}
+
+\emph{Justified P/B.} From the model, $P_0/B_0=1+\sum\mathrm{PV}(\mathrm{RI}_t)/B_0$. With constant ROE and growth this is $(\mathrm{ROE}-g)/(k_e-g)$ (\hyperref[meth:justified-multiples]{justified multiples}); P/B exceeds one only if ROE exceeds the cost of equity.
+
+\emph{Accounting issues.} The model requires \emph{clean surplus}: book equity changes only through comprehensive income and transactions with owners, $B_t=B_{t-1}+\mathrm{NI}_t-D_t$ (Derivation from the definitions above). Violations have to be adjusted:
+\begin{itemize}
+\item items taken directly to equity, such as translation differences and pension remeasurements, are added to income;
+\item non-recurring items are removed from forecast ROE;
+\item intangible investment expensed under IFRS or US GAAP understates book value and overstates later ROE;
+\item equity credited for share-based pay or other non-cash contributions enters book value without passing through income.
+\end{itemize}
+With a contribution $C_t$, the finite-horizon identity becomes (Derivation)
+\[ B_0+\sum_{t=1}^{T}\frac{\mathrm{RI}_t}{(1+k_e)^t}+\frac{P_T-B_T}{(1+k_e)^T}=\sum_{t=1}^{T}\frac{D_t}{(1+k_e)^t}+\frac{P_T}{(1+k_e)^T}-\sum_{t=1}^{T}\frac{C_t}{(1+k_e)^t}. \]
+
+\qffield{Practice} \emph{Harbour} (\hyperref[meth:residual-income-valuation]{valuation}). Forecast book equity grows by profit less dividends plus the equity credited for share-based pay: 9.45, 9.92 and 10.42 in 2026--2028. With the same terminal price:
+\begin{itemize}
+\item residual income on reported book, 809.24, equals the dividend value of 834.16 less the present value of the credits, 24.92;
+\item the dividend model counts all future dividends at a fixed share count, including those that will go to employees whose awards vest;
+\item residual income on reported book charges the grants once, as expense, and leaves the credit out of the value to existing shareholders.
+\end{itemize}
+\emph{Value recognition.} In the residual income value, current book equity is 80 percent and the terminal premium over 2028 book 17 percent; in the dividend value the terminal price is 91 percent. Residual income recognises value earlier, which is why it depends less on the continuing value.
+
+Neither is wrong; they value different claims. The residual income figure is the one consistent with the DCF, which also deducts share-based pay. Harbour's P/B of 1.71 implies a sustained ROE of 14.18 percent; its forecast reaches 11.34 percent.
+
+\qffield{Conditions} The adjustment uses grant-date fair value as the employees' claim. Other dirty-surplus items are handled the same way, as income if they belong to shareholders' wealth and as contributions if they come from new holders.
+
+\qffield{Pitfalls} Using a book value inflated by revaluations without adjusting ROE. Ignoring items recognised directly in equity. Comparing RI and dividend values that use different terminal assumptions, then attributing the gap to the model.
+
+\qffield{See also} \hyperref[meth:share-based-compensation-modelling]{share-based pay}; \hyperref[meth:cash-flow-proxies]{dividends against FCFE}.
+
+\end{qfmethod}

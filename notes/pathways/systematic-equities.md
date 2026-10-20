@@ -6,7 +6,7 @@ status: not started (draft entries only, not from study)
 
 # Systematic equities: equity securities and valuation (section overview)
 
-A compendium section declared in `compendium/compendium.tex`. This note lists the equity-securities and valuation entries that precede the signal and portfolio sections; the guide's specialist pathways for the section (`equity-long-short-construction` and others) have their own notes. The guide pathway `equity-events-fundamentals` assumes the valuation entries listed here. Topics and objectives are in `notes/coverage/objectives.json` (topics `equity-securities-markets`, `equity-valuation-foundations`, `industry-company-analysis`, `dividend-discount-models`, `market-multiples-valuation`).
+A compendium section declared in `compendium/compendium.tex`. This note lists the equity-securities and valuation entries that precede the signal and portfolio sections; the guide's specialist pathways for the section (`equity-long-short-construction` and others) have their own notes. The guide pathway `equity-events-fundamentals` assumes the valuation entries listed here. Topics and objectives are in `notes/coverage/objectives.json` (topics `equity-securities-markets`, `equity-valuation-foundations`, `industry-company-analysis`, `dividend-discount-models`, `market-multiples-valuation`, `equity-research-reporting`, `free-cash-flow-valuation`, `residual-income-valuation`, `private-company-valuation`).
 
 ## Status
 
@@ -32,6 +32,15 @@ Corporate-finance and equity-valuation batch (2026-10-20); numbers checked by `n
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026).
 
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py`, which rebuilds the Harbour value from its forecast:
+
+- Equity research and forecast models: `meth:forecast-model-valuation`, `def:research-report-evaluation`.
+- Free cash flow valuation: `meth:fcff-fcfe-derivation`, `meth:fcf-forecasting`, `meth:fcf-valuation-models`, `meth:cash-flow-proxies`.
+- Residual income: `def:residual-income-eva`, `meth:residual-income-valuation`, `meth:residual-income-comparison`.
+- Private companies: `meth:private-earnings-normalisation`, `meth:private-discount-rate`, `meth:private-company-valuation`.
+
+Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice
@@ -40,4 +49,5 @@ Partly checked 2026-10-20, draft; human review outstanding. See [record](../sour
 
 - The peer table for Harbour is hypothetical; would a real peer set of listed tool makers change the conclusion that comparables controlled for growth point to overvaluation?
 - Fair market value is described without the US tax authority's definition (Rev. Rul. 59-60 and the estate-tax regulations), which was not consulted.
+- Ohlson (1995) was not read; the persistence factor in the residual-income entry is stated as a derivation. Would Ohlson's linear information dynamics change the Harbour continuing value?
 - Cooper and Lambertides select peers on expected growth with US data; does the ten-firm result hold for European mid-caps?

@@ -1,0 +1,234 @@
+\section{Credit risk and credit analysis}
+
+\begin{qfdefinition}[The components of credit risk: default probability, loss given default and exposure; physical against risk-neutral default probabilities; recovery conventions; ratings, their uses and limits; and the drivers of yield spreads]\label{def:credit-risk-components}
+\qffield{Statement} \emph{Expected loss.} Credit loss depends on three things (Interpretation, consistent with \citep[pp.~371--372, 395--396]{risk-management-financial-institutions-2023}):
+\begin{itemize}
+\item whether the borrower defaults: the \emph{probability of default} (PD) over a horizon;
+\item how much is owed then: the \emph{exposure at default} (EAD), which for a loan with undrawn commitments or a derivative is itself uncertain;
+\item how much is lost: \emph{loss given default} (LGD), one minus the recovery rate.
+\end{itemize}
+Expected loss is $\mathrm{PD}\times\mathrm{LGD}\times\mathrm{EAD}$ when the three are independent.
+
+\emph{Default probabilities.}
+\begin{itemize}
+\item From rating agencies' cumulative default tables the probability of default in a year, seen from today, is the difference between successive cumulative rates; conditional on survival, it is divided by the survival probability \citep[pp.~369--370]{risk-management-financial-institutions-2023}.
+\item The \emph{hazard rate} $\lambda(t)$ is the default probability per unit time conditional on survival, so $Q(t)=1-e^{-\bar\lambda(t)\,t}$ with $\bar\lambda$ the average hazard to $t$ (pp.~370--371).
+\item Default probability per year rises with time for investment-grade issuers and can fall for the weakest, who either default soon or recover (p.~370).
+\end{itemize}
+
+\emph{Physical against risk-neutral.} Probabilities from historical defaults are real-world or physical; those implied by credit spreads are risk-neutral and much higher. Use risk-neutral ones for valuation and real-world ones for scenario analysis (pp.~383--386, 389). The gap is compensation for systematic default risk, mainly; illiquidity explains perhaps 25 basis points (p.~384).
+
+\emph{Recovery.} The recovery rate on a bond is normally its price about one month after default, as a percentage of face value. Moody's averages for 1983--2021 run from 54.6 percent for first-lien bonds to 22.3 percent for junior subordinated ones. Recoveries fall in years when defaults are high, so a bad year is doubly bad (pp.~371--372). Other conventions measure recovery as a share of market value or of a default-free bond's value (Interpretation).
+
+\emph{Ratings.} Agencies aim for stability and ``rate through the cycle'', changing a rating only on a long-term change in creditworthiness (pp.~367--368). Ratings therefore serve investment rules, such as funds limited to investment grade, but respond slowly; equity-based models react faster \citep[p.~368]{risk-management-financial-institutions-2023}, and rating changes lag the market \citep[p.~568]{financial-statement-analysis-2009}. A rating describes an issue, not a company, though often all of a company's bonds share it (p.~367 n.~1).
+
+\emph{Yield spreads} compensate expected default loss, a premium for systematic default risk, illiquidity and the tax and benchmark effects of the reference rate (pp.~378--384). Their level and volatility depend on:
+\begin{itemize}
+\item \emph{macroeconomic} conditions: default rates vary from year to year with the economy, and recoveries fall when defaults rise (pp.~372, 384);
+\item \emph{market} conditions: liquidity, the price investors demand for systematic risk, and contagion, as when Russia's default in 1998 widened spreads on all bonds; spreads soared in the 2008 crisis (pp.~383--385);
+\item \emph{issuer-specific} factors: leverage, coverage, asset quality and the seniority of the issue (\hyperref[meth:corporate-credit-analysis]{corporate credit analysis}).
+\end{itemize}
+As credit quality falls the debt behaves more like equity and the excess return demanded rises (p.~384).
+
+\qffield{Practice} \emph{Reproducing Hull} (\texttt{notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py}).
+\begin{itemize}
+\item A constant hazard of 1.5 percent gives cumulative default probabilities of 1.49, 2.96, 4.40, 5.82 and 7.23 percent over five years. Default in year 4 is 1.42 percent unconditionally and 1.49 percent conditional on survival (Example~17.2).
+\item From Table~17.1, a BBB issuer defaults in year 2 with probability 0.27 percent. A CCC/C issuer surviving two years defaults in year 3 with probability $5.09/61.67=8.25$ percent.
+\item Annual default probabilities rise for A (0.05, 0.08, 0.09, 0.11 percent) and fall for CCC/C (28.30, 10.03, 5.09, 2.94 percent).
+\item Seven-year hazard rates rebuilt from Table~17.4 are 0.109 percent physical against 1.145 percent risk-neutral for A, and 0.328 against 2.126 percent for BBB (Table~17.5).
+\end{itemize}
+
+\emph{A loan} (original). A facility of 10 is drawn by 6, and half the undrawn 4 is expected to be drawn before any default. EAD is 8.0; at a PD of 2 percent and LGD of 60 percent, expected loss is 0.096.
+
+\qffield{Conditions} Expected loss as a product assumes independence; recovery falls when defaults rise, which breaks it. Cumulative default tables are averages over 1981--2020 and cycles.
+
+\qffield{Pitfalls} Valuing with physical default probabilities. Treating a rating as a default probability that moves with the market. Using an average recovery for a bad year.
+
+\qffield{See also} \hyperref[meth:corporate-credit-analysis]{corporate credit analysis}; \hyperref[meth:risky-bond-cva]{risky bond valuation}; \hyperref[meth:rating-migration-returns]{rating migration}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Analysing corporate creditworthiness: qualitative factors, credit ratios against rating benchmarks, distress scores, covenants, and recovery by priority of claims]\label{meth:corporate-credit-analysis}
+\qffield{Statement} \emph{What agencies look at.} In rating an industrial bond, agencies weigh asset protection, financial resources, earning power, management and the debt's provisions, together with size, market share, industry position and the cycle. The mix is a committee judgement and is not disclosed \citep[p.~567]{financial-statement-analysis-2009}. Subramanyam and Wild quote rules of thumb by rating (p.~567):
+\begin{center}\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+ & AAA & AA & A & BBB \\
+\midrule
+Earnings / fixed charges & 5--7$\times$ & $>4\times$ & $>3\times$ & $>2\times$ \\
+Operating cash flow / long-term debt & $>65\%$ & 45--60\% & 35--45\% & 25--30\% \\
+Long-term debt / capital & $<25\%$ & $\approx30\%$ & $\approx35\%$ & $\approx40\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Earnings are the most reliable source of debt service; capital-structure ratios are screens, and coverage shows whether cash is there to pay (pp.~547, 555--556). Covenants give lenders a chance to act before distress but ``cannot assure lenders against operating losses'' (p.~547).
+
+\emph{Distress scores.} Altman's Z-score, $1.2X_1+1.4X_2+3.3X_3+0.6X_4+0.999X_5$, combines working capital, retained earnings, EBIT and sales over total assets with market equity over liabilities. Above 3.0 a company was considered unlikely to default; below 1.8 the probability of distress was very high \citep[pp.~368--369]{risk-management-financial-institutions-2023}. Banks' internal ratings convert a borrower's statements to cash flows, since cash repays loans (p.~368).
+
+\emph{Priority.} Secured debt is paid from its collateral first, then senior unsecured, then subordinated, with equity last, in absolute priority. Average recoveries follow the ranking (p.~372). In practice reorganisations can deviate from absolute priority (Interpretation). Because a rating attaches to an issue, not the company \citep[p.~367 n.~1]{risk-management-financial-institutions-2023}, agencies can rate subordinated issues below the issuer's senior rating and secured issues above it, reflecting expected recovery (Interpretation; agency notching criteria were not read).
+
+\qffield{Practice} \emph{Hull's Example~17.1 reproduced.} The ratios are 0.254, 0.448, 0.0896, 1.583 and 3.284, so $Z=5.46$: not in danger.
+
+\emph{Kestrel Logistics} (original, EUR millions). EBITDA is 120, capital spending 40, interest 42, tax 10 and cash 20. Debt of 700 comprises a first-lien revolver of 150, a first-lien term loan of 250, senior notes of 200 and subordinated notes of 100.
+\begin{itemize}
+\item Debt is 5.83 times EBITDA (5.67 net of cash). EBITDA covers interest 2.86 times, and 1.90 times after capital spending. Funds from operations are 9.7 percent of debt. Against the table above, that is speculative grade.
+\item \emph{Recovery if Kestrel fails} with EBITDA down to 80 and 20 of administrative claims. At 5 times EBITDA the 380 left covers first-lien claims of 400 at 95 percent, and nothing reaches the notes. At 6 times, first lien recovers in full, senior notes 30 percent and subordinated notes nothing.
+\end{itemize}
+\emph{Conclusion.} For a first-lien lender the question is the multiple in distress; for a senior noteholder it is everything, since a one-turn change in the multiple moves recovery from 0 to 30 percent. The notes need a spread for a high loss given default, not only a high default probability.
+
+\qffield{Conditions} The ratio benchmarks are rules of thumb from one agency's published practice as reported in 2009, not current criteria; S\&P and Moody's methodologies were not read. Z-score weights were fitted on 66 manufacturers.
+
+\qffield{Pitfalls} Reading leverage without coverage, or coverage without maturities. Applying the original Z-score to private or non-manufacturing firms. Assuming recovery equals the average for the seniority class.
+
+\qffield{See also} \hyperref[def:credit-risk-components]{components of credit risk}; \hyperref[meth:balance-sheet-ratios]{balance-sheet ratios}; \hyperref[ex:integrated-credit-decision]{an integrated credit decision}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Valuing a risky bond: expected exposure, loss given default, probability of default and the credit valuation adjustment; the bond's fair value and credit spread]\label{meth:risky-bond-cva}
+\qffield{Statement} The \emph{credit valuation adjustment} is the present value of expected loss from default. For each possible default time $t_i$ \citep[pp.~395--396]{risk-management-financial-institutions-2023}:
+\[ \mathrm{CVA}=\sum_i(1-R)\,q_i\,v_i, \]
+with $q_i$ the risk-neutral probability of default in interval $i$ and $v_i$ the present value of expected exposure then. For a bond the exposure is known: the value of the remaining cash flows at $t_i$. It is common to write the loss directly as exposure less recovery on par (Interpretation). The bond's value is the value without default less CVA, and its yield less the risk-free yield is the credit spread.
+
+Hull runs the calculation backwards: he equates the expected loss to the gap between a risk-free and a risky bond price and solves for the default probability (pp.~381--382). Spreads give risk-neutral default probabilities; a rough version is $\bar\lambda\approx s/(1-R)$ (p.~380).
+
+\qffield{Practice} \emph{Hull's Table~17.3 reproduced.} A five-year bond with a 6 percent coupon paid semiannually yields 7 percent; the risk-free yield is 5 percent (both continuously compounded).
+\begin{itemize}
+\item The prices are 95.34 and 104.09, so expected loss is 8.75.
+\item Defaults can occur at 0.5, 1.5, \dots, 4.5 years. At 3.5 years the risk-free value of the remaining flows is 104.34, so with recovery of 40 the loss is 64.34.
+\item The present values of the losses sum to $288.48\,Q$, so $Q=3.03$ percent a year.
+\item Checked another way: survival-weighted cash flows plus discounted recoveries give the same 95.34.
+\end{itemize}
+
+\emph{The Arden bond} (original): three years, 5 percent annual coupon, risk-free rate 3 percent, risk-neutral hazard 1.5 percent a year with defaults just before each payment, recovery 40 percent of par.
+\begin{center}\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Year & Exposure & LGD & PD & Discount factor & Expected loss (PV) \\
+\midrule
+1 & 108.83 & 68.83 & 1.500\% & 0.9709 & 1.00 \\
+2 & 106.94 & 66.94 & 1.478\% & 0.9426 & 0.93 \\
+3 & 105.00 & 65.00 & 1.455\% & 0.9151 & 0.87 \\
+\midrule
+CVA &&&&& 2.80 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The value without default is 105.66, so the fair value is $105.66-2.80=102.86$. That is a yield of 3.97 percent and a credit spread of 97 basis points. Survival-weighted cash flows confirm 102.86. Sensitivities: at 30 percent recovery CVA is 3.22; at a hazard of 3 percent, 5.52. With the physical default rate of a BBB issuer (0.16 percent) CVA would be only 0.30, far too low to price the bond.
+
+\qffield{Conditions} The bond case assumes default independent of interest rates and recovery as a share of par. For derivatives the exposure is random and is simulated in a risk-neutral world, with collateral and a cure period (pp.~396--398).
+
+\qffield{Pitfalls} Using physical default probabilities. Confusing the unconditional default probability per period with the hazard rate. Ignoring that the coupon due at the default date is part of the exposure.
+
+\qffield{See also} \hyperref[def:credit-risk-components]{components}; \hyperref[meth:credit-spread-term-structure]{credit spread term structure}; \hyperref[meth:cds-pricing]{CDS pricing}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Credit scores, ratings and rating migration: transition matrices, multi-year transitions, and the expected return of a bond allowing for downgrades and default]\label{meth:rating-migration-returns}
+\qffield{Statement} \emph{Scores and ratings.} A credit score is a number from a statistical model, such as Altman's Z or a bank's internal rating model on a borrower's ratios and cash flows. A rating is an agency's ordinal grade from AAA down, set by committee \citep[pp.~367--369]{risk-management-financial-institutions-2023}. Ratings below BBB are speculative grade, and investment rules often turn on that line (p.~368).
+
+\emph{Transition matrices} give the probability of moving from each rating to each other rating, or to default, in a period. Assuming that transitions in successive periods are independent, the $n$-year matrix is the one-year matrix raised to the power $n$ \citep[pp.~414--415]{risk-management-financial-institutions-2023}. The assumption is not exactly true: a recent downgrade makes another more likely (p.~415).
+
+\emph{Expected return.} A bond's yield is its return only if its rating never changes. Over a horizon the expected excess return is approximately (Derivation):
+\[ \mathrm{E}[r]-r_f\approx s_0-\sum_j p_j\,D\,(s_j-s_0)-p_D\,(1-R), \]
+where $s_0$ is the initial spread, $p_j$ the probability of migrating to rating $j$ with spread $s_j$, $D$ modified duration and $p_D$ the probability of default.
+
+\qffield{Practice} \emph{Hull's Table~19.1 reproduced.}
+\begin{itemize}
+\item A BBB issuer stays BBB over a year with probability 91.93 percent, is downgraded to BB with 3.78 percent and defaults with 0.17 percent.
+\item The fifth power of the matrix reproduces Table~19.2: over five years a BBB issuer stays BBB with probability 68.51 percent and defaults with 1.53 percent.
+\end{itemize}
+
+\emph{A BBB bond} (original assumptions) with modified duration 7 and spreads of 60, 80, 110, 160, 300, 500 and 1,000 basis points for AAA to CCC/C:
+\begin{itemize}
+\item carry is 1.60 percent;
+\item expected migration, mostly downgrades, costs 0.42 percent;
+\item default at 40 percent recovery costs 0.10 percent;
+\item the expected excess return is 1.08 percent, against 1.60 percent if the rating never moved.
+\end{itemize}
+The downgrade to BB alone costs 0.37 percent: the distribution is skewed, with a small chance of a large loss.
+
+\qffield{Conditions} The spreads by rating are assumptions held constant over the year; in a downturn all spreads widen as transitions worsen, so the loss is larger. Transition matrices are historical averages, physical not risk-neutral.
+
+\qffield{Pitfalls} Treating yield as expected return. Raising a one-year matrix to a power for an issuer just downgraded. Ignoring convexity for large spread moves.
+
+\qffield{See also} \hyperref[def:credit-risk-components]{components}; \hyperref[meth:corporate-credit-analysis]{corporate credit analysis}.
+
+\end{qfmethod}
+
+\begin{qfmodel}[Structural and reduced-form credit models compared: Merton's model of equity as a call on assets, distance to default and its calibration, against hazard-rate models calibrated to spreads]\label{mod:structural-reduced-form-credit}
+\qffield{Statement} \emph{Structural (Merton).} The firm has assets $V$ with volatility $\sigma_V$ and one zero-coupon debt $D$ due at $T$. Equity is a call option on the assets, $E_T=\max(V_T-D,0)$, so \citep[pp.~386--387]{risk-management-financial-institutions-2023}
+\[ E_0=V_0N(d_1)-De^{-rT}N(d_2),\qquad \sigma_EE_0=N(d_1)\sigma_VV_0, \]
+and the risk-neutral default probability is $N(-d_2)$. Given the equity value and volatility, the two equations give $V_0$ and $\sigma_V$. The distance to default is $d_2$ in one definition (p.~388). Because real-world asset growth exceeds the risk-free rate, real-world default probabilities are lower than risk-neutral ones (p.~388). The model ranks default risk well and is mapped to real-world probabilities by vendors (p.~388).
+
+\emph{Reduced form.} Default arrives at a hazard rate, calibrated to bond or CDS spreads with an assumed recovery; the cause of default is not modelled (pp.~380--382; Interpretation of the method).
+
+\emph{Compared} (Interpretation):
+\begin{itemize}
+\item \emph{Structural} models explain why default happens, link credit to equity and leverage, and need no traded credit. But asset values are unobserved, the capital structure is simplified, and they imply near-zero short-dated spreads unless extended with jumps or barriers.
+\item \emph{Reduced-form} models fit market prices exactly, handle any maturity and suit pricing and hedging. But they say nothing about the drivers, take recovery as given and need liquid spreads.
+\end{itemize}
+
+\qffield{Practice} \emph{Hull's Example~17.4 reproduced.} Equity worth 3 with volatility 80 percent, debt of 10 due in a year and a 5 percent rate give:
+\begin{itemize}
+\item $V_0=12.40$ and $\sigma_V=0.2123$;
+\item $d_2=1.141$, a default probability of 12.7 percent;
+\item debt worth 9.40 against 9.51 promised, an expected loss of about 1.2 percent.
+\end{itemize}
+The implied spread is 1.24 percent, and Hull's closed form (Problem~17.17) gives the same.
+
+A reduced-form model matching that spread with 40 percent recovery needs a hazard of only 2.06 percent a year. The models disagree on the default probability because Merton's recovery is endogenous: if $V<D$, debt holders take assets expected to be worth about 90 percent of face value. Probabilities from one model cannot be fed into the other without its recovery assumption.
+
+\qffield{Conditions} Merton assumes lognormal assets, constant volatility and default only at debt maturity. Reduced-form calibration needs a recovery assumption and an interest-rate curve.
+
+\qffield{Pitfalls} Treating $N(-d_2)$ as a real-world probability. Comparing default probabilities across models without their recoveries. Using a reduced-form model to forecast defaults rather than to price.
+
+\qffield{See also} \hyperref[meth:credit-spread-term-structure]{spread term structure}; \hyperref[meth:risky-bond-cva]{risky bond valuation}.
+
+\end{qfmodel}
+
+\begin{qfmethod}[The term structure of credit spreads: hazard rates by maturity, why curves slope up or invert, what moves spreads, and how securitised credit analysis differs from corporate]\label{meth:credit-spread-term-structure}
+\qffield{Statement} \emph{From spreads to hazards.} With $\bar\lambda(T)\approx s(T)/(1-R)$, spreads at several maturities give average hazard rates, and differences between them give forward hazards for each interval \citep[pp.~380--381]{risk-management-financial-institutions-2023}.
+
+\emph{Shape} (Interpretation, consistent with p.~370):
+\begin{itemize}
+\item an investment-grade issuer's conditional default rate rises with horizon, so its curve slopes up;
+\item a distressed issuer either defaults soon or recovers, so its near-term risk is highest and its curve inverts;
+\item the slope therefore signals how the market sees the issuer's path, not only its level of risk.
+\end{itemize}
+
+\emph{Spread changes.} A spread widens when expected default loss rises (higher hazard or lower recovery), when the premium for systematic risk rises, as in a crisis, or when liquidity falls (pp.~383--385). Contagion can widen spreads in unrelated sectors (p.~385).
+
+\emph{Securitised against corporate analysis.}
+\begin{itemize}
+\item Corporate analysis studies one issuer's business, cash flows and capital structure.
+\item Securitised analysis studies a pool of assets and the structure around it. A retail pool is analysed top-down, applying pool-level default, delinquency and prepayment rates. A corporate-loan pool is analysed bottom-up, loan by loan, and has a fatter tail \citep[p.~218]{fabozzi-kothari-securitisation-2008}.
+\item The tranche's loss depends on the pool's loss distribution and on its attachment point, not on any single obligor (Interpretation).
+\end{itemize}
+
+\qffield{Practice} \emph{Hull's Example~17.3 reproduced.} CDS spreads of 50, 60 and 100 basis points at 3, 5 and 10 years with 60 percent recovery give:
+\begin{itemize}
+\item average hazards of 1.25, 1.5 and 2.5 percent;
+\item forward hazards of $(5\times1.5-3\times1.25)/2=1.875$ percent for years 3--5 and 3.5 percent for years 5--10.
+\end{itemize}
+
+\emph{Three hazard paths priced} (original; CDS par spreads at 1, 3 and 5 years, 40 percent recovery, 5 percent rates):
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Hazard path & 1 year & 3 years & 5 years \\
+\midrule
+Flat 2\% & 123 & 123 & 123 \\
+Rising from 1\% to 3\% & 74 & 97 & 120 \\
+Falling from 6\% to 2\% & 344 & 298 & 255 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The rule of thumb $\lambda(1-R)=120$ is close to the flat case. The falling path, typical of a distressed name, produces an inverted curve.
+
+\qffield{Conditions} The approximation $s\approx\lambda(1-R)$ holds best for CDS spreads and for bonds near par (p.~381). Spreads include more than default risk, so implied hazards overstate physical default rates.
+
+\qffield{Pitfalls} Reading an inverted credit curve as a forecast of improvement. Bootstrapping hazards with inconsistent recoveries across maturities. Applying a corporate default model to a tranche.
+
+\qffield{See also} \hyperref[mod:structural-reduced-form-credit]{credit models}; \hyperref[meth:cds-pricing]{CDS pricing}; \hyperref[meth:abs-structures-credit-enhancement]{ABS structures}.
+
+\end{qfmethod}

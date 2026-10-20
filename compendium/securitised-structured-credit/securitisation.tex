@@ -1,0 +1,150 @@
+\section{Securitisation}
+
+\begin{qfdefinition}[Securitisation: what it is, how it differs from secured lending, the parties and their roles, true sale and the special purpose vehicle, and the benefits to issuers, investors and the economy]\label{def:securitisation-process}
+\qffield{Statement} \emph{Definition.} Securitisation pools income-producing assets, transfers them to a special purpose vehicle (SPV) and issues securities paid from the pool's cash flows. The credit risk of the pool is delinked from that of the originator, and the securities can be of higher credit quality than the originator's own secured debt. In secured lending, by contrast, the borrower remains responsible for any shortfall \citep[pp.~5--6]{fabozzi-kothari-securitisation-2008}. EU law defines a securitisation as a transaction in which the credit risk of an exposure or pool is tranched, payments depend on the pool's performance, and the subordination of tranches determines how losses are distributed \citep[Art.~2(1)]{eu-2017-2402-securitisation}.
+
+\emph{Parties} \citep[pp.~8--12]{fabozzi-kothari-securitisation-2008}:
+\begin{itemize}
+\item the \emph{originator/seller}, which makes the loans under its underwriting standards and sells the pool. The sale must be a \emph{true sale}, or a bankruptcy court could treat the assets as the originator's;
+\item the \emph{SPV}, which buys the pool with the proceeds of the securities and issues one or more bond classes. EU law requires its structure to isolate its obligations from those of the originator \citep[Art.~2(2)]{eu-2017-2402-securitisation};
+\item the \emph{servicer}, which collects payments, often the originator, retaining a fee;
+\item \emph{investors}, the rating agencies, which say how much credit enhancement each rating needs, and a trustee (Interpretation for the trustee's role, which was not read in detail).
+\end{itemize}
+EU law also requires the originator, sponsor or original lender to retain at least 5 percent of the net economic interest. It may hold 5 percent of each tranche, 5 percent of randomly selected exposures, or the first-loss tranche \citep[Art.~6]{eu-2017-2402-securitisation}.
+
+\emph{Benefits.}
+\begin{itemize}
+\item \emph{To issuers}: funding at the rating of the pool, not of the company, so a single-B company can issue AAA bonds; diversified funding sources; risk transfer; management of regulatory capital; and off-balance-sheet financing, though analysts now look at managed leverage \citep[pp.~13--20]{fabozzi-kothari-securitisation-2008}.
+\item \emph{To investors}: securities tailored in maturity, prepayment and credit risk to their liabilities (pp.~21--24).
+\item \emph{To the economy}: originating and distributing rather than holding loans. Residential mortgages were illiquid, undiversified and uncertain in timing, and securitisation turned them into tradable securities; several studies find it lowered mortgage rates (pp.~284--286).
+\end{itemize}
+Hull's account of 2000--2007 shows the cost: originators that do not hold the loans have weaker incentives to check them, and lending standards fell \citep[pp.~205--206]{s7-hulloptions}.
+
+\qffield{Practice} \emph{Fabozzi and Kothari's Ace Corporation} (pp.~8--10). Ace sells 320 million of instalment contracts to its SPV, FACET, for cash. FACET might issue senior class A of 290 million and subordinated class B of 30 million, so that B absorbs the first 30 million of losses. Or it might split class A into A1 of 120 million, repaid first, and A2 of 200 million, to create different maturities. Ace, rated single B, raises funds at the cost of the senior tranche rather than its own high-yield spread (p.~14).
+
+\emph{Retention} (original). On a 500 million deal, 5 percent of each tranche is 25 million in total, spread across the structure. A first-loss piece of 25 million would also satisfy the rule, concentrating the risk the originator keeps.
+
+\qffield{Conditions} Legal isolation depends on the jurisdiction's true-sale and bankruptcy law; a US court allowed LTV Steel to use securitised cash flows in its bankruptcy (p.~17). EU rules are those of Regulation (EU) 2017/2402 as read in October 2026.
+
+\qffield{Pitfalls} Treating a securitisation as the originator's debt, or as free of the originator's conduct. Assuming that the senior tranche's rating describes the pool. Overlooking retained interests and servicing in the originator's leverage.
+
+\qffield{See also} \hyperref[meth:abs-structures-credit-enhancement]{ABS structures}; \hyperref[meth:mortgage-securities-prepayment]{mortgage securities}; \hyperref[meth:credit-spread-term-structure]{securitised against corporate analysis}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Asset-backed structures and credit enhancement: covered bonds against securitisation, excess spread, overcollateralisation, reserve accounts, subordination and third-party guarantees, sizing by rating, non-mortgage ABS and CDOs]\label{meth:abs-structures-credit-enhancement}
+\qffield{Statement} \emph{Covered bonds.} A covered bond is issued by a credit institution and secured by a segregated cover pool to which investors have direct recourse as preferred creditors \citep[Art.~3(1), (3)]{eu-dir-2019-2162-covered-bonds}. Investors have \emph{dual recourse}: a claim on the issuer, and, in insolvency, a priority claim on the cover assets, with any shortfall ranking alongside unsecured creditors (Art.~4). All liabilities must be covered by the cover assets (Art.~15), and a liquidity buffer must cover the maximum net outflow over 180 days (Art.~16). Unlike a securitisation, the pool stays on the issuer's balance sheet, and prepayments and defaults do not usually reach investors \citep[p.~7]{wide-fuster-mbs-review}.
+
+\emph{Credit enhancement} \citep[pp.~85--97]{fabozzi-kothari-securitisation-2008}:
+\begin{itemize}
+\item \emph{Excess spread}: asset yield less servicing and bond coupons. It is the first loss absorber but ``soft'', since it cannot be measured or relied on at inception (pp.~86--88).
+\item \emph{Cash collateral and reserve accounts} funded by the originator.
+\item \emph{Overcollateralisation}: assets exceeding the bonds issued (pp.~89--90).
+\item \emph{Subordination}: junior classes absorb losses before senior ones (pp.~90--91).
+\item \emph{Third-party enhancement}: monoline insurance, letters of credit, pool insurance, each adding the guarantor's own credit risk (pp.~91--93).
+\end{itemize}
+\emph{Sizing.} Agencies set the base-case loss from comparable static pools and require support equal to a multiple of it for each rating: 4--5 times for AAA, 3--4 for AA, 2--3 for A, 1.75--2 for BBB and 1.5--1.75 for BB (pp.~93--96).
+
+\emph{Non-mortgage ABS} \citep[pp.~153--164]{fabozzi-kothari-securitisation-2008}:
+\begin{itemize}
+\item \emph{Credit card receivables} are short-term but revolve. In a revolving period principal collections buy new receivables, and amortisation starts later; a master trust pools receivables for many series, and a seller's interest absorbs fluctuations and dilutions (pp.~153--157).
+\item Card ABS are analysed by portfolio yield, charge-offs, payment rate and the base rate of servicing plus coupon. Yield less charge-offs less base rate is the excess spread. Early amortisation triggers, such as a three-month average excess spread below zero or a fall in the seller's interest, end the revolving period: a liquidity crisis for the originator and a prepayment risk for investors (pp.~159--161).
+\item \emph{Auto loans} run three to six years and amortise, so deals are mostly principal pass-throughs. Excess spread, cash reserves and subordination are the usual enhancement. Prepayments and repossessions cut the excess spread, and subsidised low-rate loans may need a yield supplement. Pool quality depends on underwriting, loan-to-value and the vehicle's depreciation against the loan's amortisation (pp.~161--164).
+\end{itemize}
+
+\emph{CDOs.} A CDO tranches a pool of bonds, loans or ABS tranches. Over-collateralisation and interest-coverage tests, on par or market values, divert cash to the senior notes when the assets deteriorate. With fewer, larger obligors its loss distribution has a longer tail, so it is analysed bottom-up (pp.~217--218). An ABS CDO of mezzanine tranches turns BBB paper into AAA paper, and its senior tranche is far riskier than the ABS senior tranche of the same rating \citep[pp.~204--205]{s7-hulloptions}.
+
+\qffield{Practice} \emph{Fabozzi and Kothari's sizing reproduced} (\texttt{credit-cds-securitisation-checks.py}). A base-case loss of 1.68 percent times multiples of 5, 4, 3, 2 and 1.75 gives support of 8.40, 6.72, 5.04, 3.36 and 2.94 percent:
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Class & Support below it & Size \\
+\midrule
+AAA & 8.40\% & 91.60\% \\
+AA & 6.72\% & 1.68\% \\
+A & 5.04\% & 1.68\% \\
+BBB & 3.36\% & 1.68\% \\
+BB & 2.94\% & 0.42\% \\
+Unrated & -- & 2.94\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+Their mortality table on p.~94 prints an A five-year default rate (0.28 percent) below AA (0.50 percent), which looks like a misprint; it does not affect the sizing.
+
+\emph{Excess spread} (p.~87): assets yielding 9.5 percent, servicing of 1.5 percent and a bond coupon of 5 percent leave 3 percent a year.
+
+\emph{A card trust} (original): portfolio yield 18 percent, charge-offs 5 percent, servicing 2 percent and coupon 5 percent leave excess spread of 6 percent. Charge-offs would have to reach 11 percent before the three-month average hit zero and triggered early amortisation.
+
+\emph{Hull's ABS and ABS CDO reproduced} (Table~8.1). The ABS has tranches of 80, 15 and 5 percent; the CDO of its mezzanine tranches has 65, 25 and 10 percent.
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Asset losses & ABS mezzanine & CDO equity & CDO mezzanine & CDO senior \\
+\midrule
+10\% & 33.3\% & 100\% & 93.3\% & 0\% \\
+13\% & 53.3\% & 100\% & 100\% & 28.2\% \\
+17\% & 80.0\% & 100\% & 100\% & 69.2\% \\
+20\% & 100\% & 100\% & 100\% & 100\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+The CDO's AAA tranche loses from asset losses of 10.25 percent, the ABS AAA tranche only beyond 20 percent, though both carried the same rating. About 90 percent of the original assets ended up rated AAA.
+
+\qffield{Conditions} The multiples are those quoted in 2008; agencies vary them by asset type and data. Hull's table assumes all underlying pools have the same loss rate, which makes correlation total; with less correlated pools the CDO senior is safer.
+
+\qffield{Pitfalls} Counting excess spread as hard support. Comparing tranches by rating alone. Ignoring the guarantor's credit in a wrapped deal, as monoline downgrades showed after 2007 (p.~93).
+
+\qffield{See also} \hyperref[def:securitisation-process]{securitisation process}; \hyperref[meth:mortgage-securities-prepayment]{mortgage securities}; \hyperref[meth:credit-spread-term-structure]{credit spreads}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Mortgage-backed securities: residential mortgages and prepayment, CPR, SMM and the PSA benchmark, pass-throughs, sequential-pay and PAC CMOs with support bonds, agency and non-agency RMBS, and CMBS call protection]\label{meth:mortgage-securities-prepayment}
+\qffield{Statement} \emph{Residential mortgage loans.} Features that drive the securities:
+\begin{itemize}
+\item \emph{amortisation}: level-payment loans repay scheduled principal monthly \citep[pp.~34--35]{fabozzi-kothari-securitisation-2008};
+\item \emph{rate type}: fixed or adjustable; subprime adjustable loans often had a two- or three-year teaser rate followed by a floating rate such as six-month LIBOR plus 6 percent \citep[p.~206]{s7-hulloptions};
+\item \emph{prepayment}: agency borrowers can repay at par with no penalty \citep[p.~10]{wide-fuster-mbs-review}, whereas subprime loans often carried high prepayment penalties \citep[p.~206 n.~3]{s7-hulloptions};
+\item \emph{credit terms}: Fannie Mae and Freddie Mac buy conforming loans within loan limits, and loans above 80 percent loan-to-value only with mortgage insurance \citep[p.~2 n.~2]{wide-fuster-mbs-review}.
+\end{itemize}
+
+\emph{MBS.} A mortgage-backed security is a bond whose cash flows come from the principal and interest on a pool of mortgages \citep[pp.~1--2]{wide-fuster-mbs-review}:
+\begin{itemize}
+\item \emph{Agency} MBS carry a guarantee from Fannie Mae, Freddie Mac or Ginnie Mae. \emph{Non-agency} MBS are not guaranteed and are tranched by seniority instead (p.~2).
+\item A \emph{pass-through} pays all principal, interest and prepayments pro rata after servicing and guarantee fees (p.~7).
+\item \emph{CMOs} re-tranche pools: sequential-pay classes, interest-only and principal-only strips. Non-agency deals use senior--subordinated structures (p.~8).
+\end{itemize}
+
+\emph{Prepayment risk.} Borrowers can repay at par at any time, so they refinance when rates fall. MBS prices therefore have capped upside and \emph{negative convexity}; duration itself is uncertain (p.~10). Prepayment speeds vary widely: across agency pools the median three-month CPR was 27.8 percent, with 5th and 95th percentiles of 2.6 and 52.6 percent (p.~6). Investors face \emph{contraction} risk when prepayments speed up and \emph{extension} risk when they slow \citep[p.~43]{fabozzi-kothari-securitisation-2008}.
+
+\emph{Measures} \citep[pp.~32--34]{fabozzi-kothari-securitisation-2008}:
+\begin{itemize}
+\item the conditional prepayment rate (CPR) is an annual rate, converted to a single monthly mortality rate $\mathrm{SMM}=1-(1-\mathrm{CPR})^{1/12}$;
+\item prepayment in a month is SMM times the balance after scheduled principal;
+\item the PSA benchmark (100\% PSA) assumes CPR rises by 0.2 percent a month to 6 percent at month 30 and stays there; 165\% PSA is 1.65 times it. The benchmark is a market convention, not a prepayment model.
+\end{itemize}
+Average life is the principal-weighted average time to principal payments.
+
+\emph{Tranching} (pp.~38--47):
+\begin{itemize}
+\item \emph{Sequential pay}: all principal goes to class A until it is retired, then to B, and so on. Short classes are protected against extension, long ones against contraction.
+\item \emph{PAC}: a planned amortisation class receives the lower of the principal generated at two structuring speeds; support bonds absorb both contraction and extension, protecting the PAC within the band.
+\end{itemize}
+
+\emph{CMBS.} Commercial mortgages are larger, more complex and more heterogeneous \citep[p.~2]{wide-fuster-mbs-review}. Their loans carry call protection: lockouts, yield maintenance, point penalties and defeasance. Prepayments can still be hard to predict, for example when floating-rate borrowers refinance or penalties decline with age \citep[pp.~1--2]{fhfa-ab-2021-02}. The junior CMBS tranche is usually held by the special servicer, the ``B-piece buyer'', who negotiates workouts \citep[p.~8]{wide-fuster-mbs-review}. Many commercial loans amortise only partly and need refinancing at maturity, so balloon risk is credit risk (Interpretation).
+
+\qffield{Practice} \emph{Fabozzi and Kothari's pool reproduced} (\texttt{credit-cds-securitisation-checks.py}): 660 million of 6 percent mortgages, a 5.5 percent pass-through, 358 months remaining, 165\% PSA.
+\begin{itemize}
+\item \emph{Month 1}: SMM 0.00083 (the pool is seasoned two months), payment 3,964,947, net interest 3,025,000, scheduled principal 664,947, prepayment 546,435, total principal 1,211,383.
+\item \emph{Average life} at 165\% PSA is 8.54 years; the book prints 8.6. It is 11.2 years at 100\% PSA and 3.7 at 500\%.
+\item \emph{Sequential classes} A (320.925m), B (59.4m), C (159.225m) and D (120.45m): A is retired in month 78 and B in month 97. That matches the book's Table~3.2, whose text says 98. The same table prints balances for C and D (96.5m and 73m) that do not match the structure as stated.
+\item \emph{PAC} with a 100--250\% PSA band: the schedule is the lower of the two principal paths, 995,525 in month 1, and sums to 470,224,580, leaving 189,775,420 of support bonds, as the book gives.
+\end{itemize}
+\emph{For an investor}: a bank worried about extension prefers class A, whose average life stays under five years at slow speeds while the collateral's reaches 11. A pension plan worried about contraction prefers class D, whose average life falls only to 8.3 years at 500\% PSA against the collateral's 3.7 (p.~43). Within its band the PAC is protected both ways; beyond the band, once the support bonds are paid off, it is not.
+
+\qffield{Conditions} The figures use one constant speed for the whole life; actual prepayments vary with rates, house prices and seasoning. Agency MBS carry no credit loss to investors; non-agency and CMBS tranches do.
+
+\qffield{Pitfalls} Treating PSA as a forecast. Valuing an MBS at its yield without the prepayment option. Reading a PAC as riskless when the support bonds are thin.
+
+\qffield{See also} \hyperref[def:securitisation-process]{securitisation process}; \hyperref[meth:abs-structures-credit-enhancement]{credit enhancement}; \hyperref[meth:option-adjusted-spread]{option-adjusted spread}.
+
+\end{qfmethod}

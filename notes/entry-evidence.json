@@ -5,7 +5,7 @@
   },
   "mech:cds-contract-credit-events": {
     "source": "compendium/corporate-credit-capital/credit-default-swaps.tex",
-    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~272--279; settlement equivalence computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: ISDA's Big Bang Protocol page and the 9 and 19 March 2012 Greece releases read; second follow-up, 2026-10-16: the protocol FAQ's coverage, notice, tolling, settlement and 100/500 answers read; the 2014 Definitions, a purchased document, not read; second source follow-up, 2026-10-16: ISDA's release of 21 February 2014 on the 2014 Definitions; source verification (2026-10-17): the ISDA 2014 Credit Derivatives Definitions Protocol of 21 August 2014, PDF pp.~1 and~13, and its web page). Stability: draft. Currency: Gliner's account as of 2013, largely pre-2009 practice."
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~272--279; settlement equivalence computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: ISDA's Big Bang Protocol page and the 9 and 19 March 2012 Greece releases read; second follow-up, 2026-10-16: the protocol FAQ's coverage, notice, tolling, settlement and 100/500 answers read; the 2014 Definitions, a purchased document, not read; second source follow-up, 2026-10-16: ISDA's release of 21 February 2014 on the 2014 Definitions; source verification (2026-10-17): the ISDA 2014 Credit Derivatives Definitions Protocol of 21 August 2014, PDF pp.~1 and~13, and its web page). Stability: draft. Currency: Gliner's account as of 2013, largely pre-2009 practice. Mapped 2026-10-20 (credit, time-series and valuation batch) to objective:describe-cds-contracts alongside `def:cds-contract-features`, which supplies the batch's worked numbers; no change to this entry."
   },
   "def:us-dollar-dxy-sdr": {
     "source": "compendium/currency-markets/macro-fx.tex",
@@ -577,7 +577,7 @@
   },
   "def:sovereign-credit-defaults": {
     "source": "compendium/government-bond-markets/sovereign-credit.tex",
-    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~269--279, with Tables~9.3--9.4 and Figure~9.10; Moody's 2007 report itself not read; the recovery test computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: ISDA's Greece determination and auction releases read; second follow-up, 2026-10-16: IMF Country Reports 12/57, 17/44 and 22/92 read at the pages cited; second source follow-up, 2026-10-16: CRS IF10991 v6, Reinhart's 2010 chartbook (table checked as a page image) and Fitch's 2020 sovereign default study). Stability: draft. Currency: default record to 2006; Greece 2012 and Argentina 2020 from IMF reports of 2012--2022; Argentine default counts as published in 2010 (Reinhart), 2020 (CRS) and 2021 (Fitch)."
+    "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~269--279, with Tables~9.3--9.4 and Figure~9.10; Moody's 2007 report itself not read; the recovery test computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: ISDA's Greece determination and auction releases read; second follow-up, 2026-10-16: IMF Country Reports 12/57, 17/44 and 22/92 read at the pages cited; second source follow-up, 2026-10-16: CRS IF10991 v6, Reinhart's 2010 chartbook (table checked as a page image) and Fitch's 2020 sovereign default study). Stability: draft. Currency: default record to 2006; Greece 2012 and Argentina 2020 from IMF reports of 2012--2022; Argentine default counts as published in 2010 (Reinhart), 2020 (CRS) and 2021 (Fitch). Mapped 2026-10-20 (credit, time-series and valuation batch) to objective:analyse-sovereign-credit alongside `meth:sovereign-credit-analysis`, which supplies the batch's worked numbers; no change to this entry."
   },
   "def:equity-indices-derivatives": {
     "source": "compendium/international-equity-markets/equity-indices.tex",
@@ -773,7 +773,7 @@
   },
   "mod:garch-volatility-forecast": {
     "source": "compendium/portfolio-construction-risk/risk-models.tex",
-    "review": "Verification: partly checked 2026-10-17 (against \\texttt{wide-christoffersen-elements} in a local uncorrected proof, chap.~4, printed pp.~70--71, text layer; Hansen and Lunde's working paper of 8 March 2001, abstract and secs.~1, 2.4 and~6, text layer; own synthetic check; derivatives and empirical validation (2026-10-17): GJR's Model~2 from the 1992 working paper as a page image, and Corsi's HAR-RV, pp.~177--181, with an own lag-mapping check). Stability: draft. Currency: methods 1986--2005; evidence on 1987--1999 data."
+    "review": "Verification: partly checked 2026-10-17 (against \\texttt{wide-christoffersen-elements} in a local uncorrected proof, chap.~4, printed pp.~70--71, text layer; Hansen and Lunde's working paper of 8 March 2001, abstract and secs.~1, 2.4 and~6, text layer; own synthetic check; derivatives and empirical validation (2026-10-17): GJR's Model~2 from the 1992 working paper as a page image, and Corsi's HAR-RV, pp.~177--181, with an own lag-mapping check). Stability: draft. Currency: methods 1986--2005; evidence on 1987--1999 data. Mapped 2026-10-20 (credit, time-series and valuation batch) to objective:model-conditional-heteroskedasticity alongside `mod:arch-conditional-variance`, which supplies the batch's worked numbers; no change to this entry."
   },
   "meth:volatility-forecast-loss": {
     "source": "compendium/portfolio-construction-risk/risk-models.tex",
@@ -2106,5 +2106,185 @@
   "meth:comparables-evaluation": {
     "source": "compendium/systematic-equities/market-multiples.tex",
     "review": "Verification: investment-valuation-2012 pp. 458-459; pp. 463-465; pp. 463, 477-479; pp. 124-125, 131-132, optimal-multiples-2023 pp. 3-6; locators in the entry text. Checked by equity-valuation-checks.py parts 10, 12, 13 and 18 (mean, median, harmonic mean, terminal multiple implied growth, SUE, relative strength). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (audit of PR #31; record: corporate-equity audit correction pass): EV/EBITDA comparables 11.39 and 9.75 after options; justified 7.81."
+  },
+  "meth:forecast-model-valuation": {
+    "source": "compendium/systematic-equities/equity-research-reporting.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp.~492--499; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 1 (Harbour value rebuilt from the forecast: 8.49 a share; scenarios 4.44-10.42; WACC/growth grid 6.14-13.35). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:research-report-evaluation": {
+    "source": "compendium/systematic-equities/equity-research-reporting.tex",
+    "review": "Verification: eu-2016-958-recommendations Arts.~2--4; finra-rule-2241 para.~(c)(1)--(4); investment-valuation-2012 p.~283 n.~5; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 2 (three targets 13.11, 11.39, 8.49 bridged; implied WACC 6.95%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:fcff-fcfe-derivation": {
+    "source": "compendium/systematic-equities/free-cash-flow-valuation.tex",
+    "review": "Verification: investment-valuation-2012 pp.~351--352; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 3 (Avon Fittings FCFF 44.50 by four routes; FCFE 45.50). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:fcf-forecasting": {
+    "source": "compendium/systematic-equities/free-cash-flow-valuation.tex",
+    "review": "Verification: investment-valuation-2012 pp.~352--353; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 4 (Harbour FCFE forecasts; constant-leverage borrowing). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:fcf-valuation-models": {
+    "source": "compendium/systematic-equities/free-cash-flow-valuation.tex",
+    "review": "Verification: investment-valuation-2012 pp.~358--362, 383; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 5 (Brent Utilities firm 1,500 and equity 900 by FCFF and FCFE; two-stage value 48.13; three-stage value 51.05). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:cash-flow-proxies": {
+    "source": "compendium/systematic-equities/free-cash-flow-valuation.tex",
+    "review": "Verification: investment-valuation-2012 p.~372; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 6 (dividends, net income and EBITDA against FCFE and FCFF for Harbour). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:residual-income-eva": {
+    "source": "compendium/systematic-equities/residual-income-valuation.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp.~42, 499, 502; investment-valuation-2012 pp.~870--871; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 7 (RI 0.60; Harbour EVA -8.29 or 5.21; MVA 478.81; EVA = DCF 350.35). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:residual-income-valuation": {
+    "source": "compendium/systematic-equities/residual-income-valuation.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp.~42, 499; locators in the entry text. Checked by equity-fcf-ri-private-checks.py parts 8-9 (single stage 40.00; multistage with persistence 23.59; Harbour 809.24; implied RI growth 7.27% at P/B 1.71). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:residual-income-comparison": {
+    "source": "compendium/systematic-equities/residual-income-valuation.tex",
+    "review": "Verification: financial-statement-analysis-2009 p.~42; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 9 (RI 809.24 = DDM 834.16 less PV of equity credits 24.92; value recognition 80% from book against 91% terminal in the DDM). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-earnings-normalisation": {
+    "source": "compendium/systematic-equities/private-company-valuation.tex",
+    "review": "Verification: investment-valuation-2012 pp.~667--668; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 10 (Fenton normalised EBIT 5.75, FCFF 3.51). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-discount-rate": {
+    "source": "compendium/systematic-equities/private-company-valuation.tex",
+    "review": "Verification: investment-valuation-2012 pp.~669--672; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 11 (CAPM 9.20%, expanded 12.70%, build-up 12.50%, total beta 18.51%; WACC 8.34% and 15.93%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-company-valuation": {
+    "source": "compendium/systematic-equities/private-company-valuation.tex",
+    "review": "Verification: investment-valuation-2012 pp.~681--682; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 12 (EV 59.93 and 26.05; GPC 52.13; transactions 47.26; NAV 22.5; DLOC/DLOM compounded to 37.91%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:intercorporate-investment-classification": {
+    "source": "compendium/financial-statement-analysis/intercorporate-investments.tex",
+    "review": "Verification: eu-2023-1803-ifrs10 paras.~6--7, para.~22, para.~7; eu-2023-1803-ifrs11 paras.~15--16, 20, 24; eu-2023-1803-ias28 para.~5, para.~10; eu-2023-1803-ifrs9 paras.~5.7.5--5.7.6; eu-2023-1803-ifrs3 para.~32; us-equity-investments-2016 Summary; financial-statement-analysis-2009 p.~272; us-business-combinations-2007 para.~20; us-noncontrolling-interests-2007 Summary; eu-2023-1803-ifrs12 App.~A, para.~B21, paras.~24--31; us-variable-interest-entities-2009 Summary; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py parts 1-2 (classification cases including a structured entity; equity method 115.8 by two routes; FVPL against FVOCI). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:consolidation-ratio-effects": {
+    "source": "compendium/financial-statement-analysis/intercorporate-investments.tex",
+    "review": "Verification: financial-statement-analysis-2009 p.~273; eu-2023-1803-ifrs11 para.~24; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 3 (goodwill 22 or 25; parent profit 105.2 both ways; balance sheet 1,585.0; ratios by method). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:functional-currency-transactions": {
+    "source": "compendium/financial-statement-analysis/foreign-currency-reporting.tex",
+    "review": "Verification: eu-2023-1803-ias21 para.~8, paras.~9--12, para.~21, paras.~52--53; us-foreign-currency-1981 para.~39, para.~15; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 6 (USD receivable: gain 0.5, loss 0.2, total 0.3). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:currency-translation-methods": {
+    "source": "compendium/financial-statement-analysis/foreign-currency-reporting.tex",
+    "review": "Verification: eu-2023-1803-ias21 paras.~39--40, paras.~42--43, para.~40; us-foreign-currency-1981 paras.~12--14, para.~11; financial-statement-analysis-2009 pp.~302--304, pp.~307--311, pp.~304--306; eu-2023-1803-ias29 para.~3; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py parts 4-5 (Subramanyam and Wild's BritCo reproduced; Penrose Inc. current rate against temporal; hyperinflation). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:multinational-currency-tax-analysis": {
+    "source": "compendium/financial-statement-analysis/foreign-currency-reporting.tex",
+    "review": "Verification: financial-statement-analysis-2009 p.~310; eu-2023-1803-ias12 para.~81(c); locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 7 (Larch Brands constant-currency growth 4.75%; ETR 23.08% reconciliation; mix shift 22.77%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:financial-institution-features": {
+    "source": "compendium/financial-statement-analysis/financial-institution-analysis.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 p.~28, pp.~65--66; basel-framework-2026 RBC20.1; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 8 (Hull's DLC reproduced: 12% pre-tax ROE; insolvency at 1% equity). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:bank-camels-analysis": {
+    "source": "compendium/financial-statement-analysis/financial-institution-analysis.tex",
+    "review": "Verification: fdic-ufirs-1997 pp.~752--753; risk-management-financial-institutions-2023 pp.~459--460; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 8 (Tamar Bank capital, asset quality, earnings, liquidity and repricing-gap ratios against Basel minimums). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:insurer-analysis": {
+    "source": "compendium/financial-statement-analysis/financial-institution-analysis.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 pp.~57--64, pp.~557--558; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 9 (Hull's Table 3.2 reproduced; Wren combined ratio 97.5% -> 104.9%, development, solvency). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:credit-risk-components": {
+    "source": "compendium/corporate-credit-capital/credit-risk-analysis.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 pp.~371--372, 395--396, pp.~369--370, p.~368; financial-statement-analysis-2009 p.~568; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 1 (Hull Example 17.2 and Tables 17.1, 17.4-17.5 reproduced; loan expected loss 0.096). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:corporate-credit-analysis": {
+    "source": "compendium/corporate-credit-capital/credit-risk-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 p.~567; risk-management-financial-institutions-2023 pp.~368--369, p.~367 n.~1; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 2 (Hull Example 17.1 Z = 5.46; Kestrel ratios; recovery waterfall at 5x and 6x). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:risky-bond-cva": {
+    "source": "compendium/corporate-credit-capital/credit-risk-analysis.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 pp.~395--396; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 3 (Hull Table 17.3, Q = 3.03%, by two routes; Arden bond CVA 2.80, value 102.86, spread 97 bp; sensitivities). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:rating-migration-returns": {
+    "source": "compendium/corporate-credit-capital/credit-risk-analysis.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 pp.~367--369, pp.~414--415; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 4 (Table 19.1 and its fifth power, Table 19.2; BBB expected excess return 1.08% against 1.60%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "mod:structural-reduced-form-credit": {
+    "source": "compendium/corporate-credit-capital/credit-risk-analysis.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 pp.~386--387; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 5 (Hull Example 17.4 solved; spread 1.24% two ways; matching hazard 2.06%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:credit-spread-term-structure": {
+    "source": "compendium/corporate-credit-capital/credit-risk-analysis.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 pp.~380--381; fabozzi-kothari-securitisation-2008 p.~218; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 6 (Hull Example 17.3 forward hazards; CDS curves for flat, rising and falling hazards). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:cds-contract-features": {
+    "source": "compendium/corporate-credit-capital/credit-default-swaps.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 pp.~372--374, pp.~376--377; s7-hulloptions p.~596, Example~25.1; locators in the entry text. Checked by credit-cds-securitisation-checks.py parts 7-8 (OFOD Example 25.1 upfront 0.27; index payment 1,660,000 and 13,280 per default). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:cds-pricing": {
+    "source": "compendium/corporate-credit-capital/credit-default-swaps.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 pp.~689--691; s7-hulloptions pp.~594--595, p.~594; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 7 (Appendix K: 4.1150s, 0.0506, 123 bp, MTM 0.0111; binary 205 bp; implied hazard 1.63%; recovery insensitivity). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:cds-strategies": {
+    "source": "compendium/corporate-credit-capital/credit-default-swaps.tex",
+    "review": "Verification: risk-management-financial-institutions-2023 p.~378; berd-mashal-wang-2004 p.~13; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 8 (hedged bond; negative basis; equity-implied spread 124 bp against CDS 200 bp; Credit01-neutral and equal-notional steepeners; jump to default -4.23m). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:sovereign-credit-analysis": {
+    "source": "compendium/government-bond-markets/sovereign-credit.tex",
+    "review": "Verification: s7-fabozzifixed pp.~370--371, pp.~206--207; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 9 (Veloria: eq. 17-1 against a nominal roll-forward, +4.05 points; pb* 3.05%; GFN 13.55%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:securitisation-process": {
+    "source": "compendium/securitised-structured-credit/securitisation.tex",
+    "review": "Verification: fabozzi-kothari-securitisation-2008 pp.~5--6, pp.~8--12, pp.~13--20; eu-2017-2402-securitisation Art.~2(1), Art.~2(2), Art.~6; s7-hulloptions pp.~205--206; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 10 (sizing and structure checks; retention arithmetic in the entry). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:abs-structures-credit-enhancement": {
+    "source": "compendium/securitised-structured-credit/securitisation.tex",
+    "review": "Verification: eu-dir-2019-2162-covered-bonds Art.~3(1), (3); wide-fuster-mbs-review p.~7; fabozzi-kothari-securitisation-2008 pp.~85--97, pp.~153--164; s7-hulloptions pp.~204--205; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 10 (Fabozzi-Kothari sizing 8.40% AAA; excess spread 3%; card trust excess spread 6% and trigger; Hull Table 8.1 ABS CDO losses). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:mortgage-securities-prepayment": {
+    "source": "compendium/securitised-structured-credit/securitisation.tex",
+    "review": "Verification: fabozzi-kothari-securitisation-2008 pp.~34--35, p.~43, pp.~32--34; s7-hulloptions p.~206, p.~206 n.~3; wide-fuster-mbs-review p.~10, p.~2 n.~2, pp.~1--2, p.~2, p.~8; fhfa-ab-2021-02 pp.~1--2; locators in the entry text. Checked by credit-cds-securitisation-checks.py part 10 (Table 3.1 month 1; average life 8.54/11.2/3.7 years; sequential payoffs months 78 and 97; PAC 470,224,580). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:multiple-regression-formulation": {
+    "source": "compendium/common-toolkit/multiple-regression.tex",
+    "review": "Verification: regression-methods-course-notes Lessons~5.3--5.4; us-asset-returns-1928-2025 sheet ``Returns by year''; s7-hyndman sec.~7.5; locators in the entry text. Checked by multiple-regression-checks.py part 1 (Baa excess return on Treasury and equity excess returns, 1928-2025; omitted-variable identity in a seeded simulation). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:multiple-regression-fit-tests": {
+    "source": "compendium/common-toolkit/multiple-regression.tex",
+    "review": "Verification: regression-methods-course-notes Lesson~6.2; locators in the entry text. Checked by multiple-regression-checks.py part 2 (ANOVA R2 0.597, F 70.4; nested F 0.40; partial R2 29.2%; prediction interval -9.0% to +11.4%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:regression-misspecification": {
+    "source": "compendium/common-toolkit/multiple-regression.tex",
+    "review": "Verification: regression-methods-course-notes Lessons~7.6, 13.1; locators in the entry text. Checked by multiple-regression-checks.py part 3 (Breusch-Pagan, White, HC1 and Newey-West errors, Durbin-Watson, VIF; simulated collinearity VIF 12.3). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:regression-extensions": {
+    "source": "compendium/common-toolkit/multiple-regression.tex",
+    "review": "Verification: regression-methods-course-notes Lesson~11.2, Lesson~13.2; s7-hyndman sec.~7.4; locators in the entry text. Checked by multiple-regression-checks.py part 4 (leverage, studentized deleted residuals, Cook's distance; post-1980 dummies; logistic regression by Newton-Raphson and statsmodels). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:trend-models": {
+    "source": "compendium/common-toolkit/time-series-models.tex",
+    "review": "Verification: s7-hyndman sec.~7.4, sec.~7.5; us-asset-returns-1928-2025 sheet ``Returns by year''; locators in the entry text. Checked by time-series-checks.py part 1 (linear and log-linear CPI trends; Durbin-Watson 0.013 and 0.051). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:stationarity-unit-roots": {
+    "source": "compendium/common-toolkit/time-series-models.tex",
+    "review": "Verification: s7-tsay pp.~30--31, p.~72, p.~54; s7-hyndman sec.~9.1; locators in the entry text. Checked by time-series-checks.py part 2 (simulated random-walk variance; ADF and KPSS on the price level and inflation; hand-run Dickey-Fuller t). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:autoregressive-forecasting": {
+    "source": "compendium/common-toolkit/time-series-models.tex",
+    "review": "Verification: regression-methods-course-notes Lesson~14.1; s7-tsay pp.~37--40, p.~56; s7-hyndman sec.~7.4; locators in the entry text. Checked by time-series-checks.py part 3 (AR(1) inflation: mean 3.22%, half-life 1.40 years; residual autocorrelations; chain-rule forecasts; seasonal lag and seasonal-lag forecasts 5.16 and 4.38 in a seeded simulation). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:forecast-accuracy-evaluation": {
+    "source": "compendium/common-toolkit/time-series-models.tex",
+    "review": "Verification: s7-hyndman sec.~5.8; locators in the entry text. Checked by time-series-checks.py part 4 (chronological split 1928-1989/1990-2025: RMSE 1.46% AR(1), 1.66% random walk, 1.60% mean; expanding window 1.45%; Chow F 1.03; half-lives 1.40 and 0.83). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "mod:arch-conditional-variance": {
+    "source": "compendium/common-toolkit/time-series-models.tex",
+    "review": "Verification: s7-tsay pp.~115--116; locators in the entry text. Checked by time-series-checks.py part 5 (Engle LM 52.1 on simulated ARCH(1); OLS 0.29 against MLE 0.54; variance forecasts 0.000379 to the long-run 0.000469; annual S&P LM 2.22). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:cointegration-testing": {
+    "source": "compendium/common-toolkit/time-series-models.tex",
+    "review": "Verification: s7-tsay pp.~428--430, pp.~430--431; s7-hyndman sec.~7.5; locators in the entry text. Checked by time-series-checks.py part 6 (spurious regression t 4.74, DW 0.025; Engle-Granger t -16.0 against -3.36). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:time-series-model-selection": {
+    "source": "compendium/common-toolkit/time-series-models.tex",
+    "review": "Verification: s7-tsay pp.~46--47; s7-hyndman sec.~7.5; locators in the entry text. Checked by time-series-checks.py part 7 (AIC/BIC prefer AR(4); out-of-sample RMSE 1.60% against 1.45% for AR(1)). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:scenario-simulation-analysis": {
+    "source": "compendium/research-engineering-validation/scenario-simulation.tex",
+    "review": "Verification: investment-valuation-2012 pp.~894--897; us-asset-returns-1928-2025 sheet ``Returns by year''; locators in the entry text. Checked by scenario-simulation-checks.py parts 1-3 (historical scenarios 1931, 1973-74, 2008, 2022; bootstrap against normal Monte Carlo; sensitivities with common random numbers). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   }
 }

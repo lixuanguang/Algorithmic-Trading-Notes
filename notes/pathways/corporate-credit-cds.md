@@ -28,6 +28,13 @@ Written in macro markets and pricing / source review / optimal execution / execu
 
 All: verification partly checked 2026-10-16, stability draft; human review outstanding.
 
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py`, which reproduces Hull's (2023) Examples 17.1-17.4, Tables 17.1-17.5 and 19.1-19.2 and Appendix K, and Hull's (2021) Example 25.1:
+
+- Credit risk and credit analysis: `def:credit-risk-components`, `meth:corporate-credit-analysis`, `meth:risky-bond-cva`, `meth:rating-migration-returns`, `mod:structural-reduced-form-credit`, `meth:credit-spread-term-structure`.
+- Credit default swaps: `def:cds-contract-features`, `meth:cds-pricing`, `meth:cds-strategies` (with Berd, Mashal and Wang 2004 on curve steepeners).
+
+These entries serve the curriculum objectives of the section; none of the pathway's 14 required readings was read for them. Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `conv:cds-standard-contract` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.
@@ -46,7 +53,7 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 ## Related entries owned elsewhere
 
-Cross-referenced, not owned here: `def:sovereign-credit-defaults` (`sovereign-municipal`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).
+Cross-referenced, not owned here: `def:sovereign-credit-defaults` and `meth:sovereign-credit-analysis` (`sovereign-municipal`); `def:securitisation-process`, `meth:abs-structures-credit-enhancement`, `meth:mortgage-securities-prepayment` (`securitised-structured-credit`); `meth:equity-macro-leading-indicators` (`macro-nowcasting-signals`).
 
 ## Entry backlog
 
@@ -55,3 +62,5 @@ Cross-referenced, not owned here: `def:sovereign-credit-defaults` (`sovereign-mu
 ## What changed in my view or practice
 
 ## Questions carried forward
+- Hull's Table K.1 prints the year-4 survival probability as 0.9321 against 0.9231 in Table K.2; is it in the author's errata for the 6th edition?
+- The CDS-bond basis is described from Hull; how large has it been since 2020 for European investment-grade names?

@@ -1,0 +1,152 @@
+\section{Banks and insurers}
+
+\begin{qfdefinition}[How financial institutions differ from industrial companies, and the main elements of their regulation: capital, leverage and liquidity requirements for banks, deposit insurance, and solvency regulation of insurers]\label{def:financial-institution-features}
+\qffield{Statement} \emph{What is different.}
+\begin{itemize}
+\item \emph{Leverage and funding.} Hull's illustrative bank funds 90 percent of its assets with deposits, 5 percent with subordinated debt and 5 percent with equity \citep[p.~28]{risk-management-financial-institutions-2023}.
+\item \emph{Financial assets.} Most assets are loans and securities, measured at amortised cost or fair value, so the balance sheet is the business and the allowance for losses is the main estimate.
+\item \emph{Liabilities as products.} An insurer has exposure on the liability side as well as the asset side: policy reserves are actuaries' estimates of the present value of future payouts (p.~63).
+\item \emph{Systemic importance.} Failure spreads through deposits and markets, which is why institutions are regulated for solvency and liquidity, not only for conduct (Interpretation).
+\end{itemize}
+
+\emph{How much capital a bank needs.} In Hull's example, net interest income is 3 percent of assets and pre-tax income 0.6 percent, a 12 percent pre-tax return on 5 percent equity (pp.~28--29). Loan losses higher by 3.2 percent of assets give a pre-tax loss of 2.6 percent. With equity of 5 percent the bank survives; with 1 percent it would be insolvent (pp.~29--30). Equity is the best protection; subordinated debt ranks below deposits but does not prevent insolvency (p.~30). Deposit insurance maintains confidence but creates moral hazard: insured depositors have no reason to watch the bank's risk, which risk-based premiums partly address (pp.~30--31).
+
+\emph{Bank regulation} (Basel Framework, as generated on 20 October 2026):
+\begin{itemize}
+\item \emph{Risk-based capital.} Common Equity Tier~1 of at least 4.5 percent, Tier~1 of 6 percent and total capital of 8.0 percent of risk-weighted assets, at all times \citep[RBC20.1]{basel-framework-2026}, plus a conservation buffer of 2.5 percent of CET1 above the minimum, within which distributions are constrained (RBC30.2).
+\item \emph{Leverage.} Tier~1 capital over an exposure measure close to accounting values, at least 3 percent (LEV20.3, LEV20.7).
+\item \emph{Liquidity.} The liquidity coverage ratio, high-quality liquid assets over total net cash outflows for 30 calendar days of stress, no lower than 100 percent outside stress (LCR20.4--20.5); the net stable funding ratio, available over required stable funding over one year, at least 100 percent (NSF20.2).
+\end{itemize}
+
+\emph{Insurance regulation.} In the United States insurers are regulated by the states, with NAIC risk-based capital standards and state guaranty associations funded by levies on other insurers after an insolvency. In the EU Solvency~II, in force since 2016, sets capital for a wider range of risks than Solvency~I \citep[pp.~65--66]{risk-management-financial-institutions-2023}.
+
+\qffield{Practice} \emph{Reproducing Hull's DLC} (\texttt{intercorporate-fx-institutions-checks.py}). Net interest income 3.0, loan losses $-0.8$, non-interest income 0.9 and non-interest expense $-2.5$ give pre-tax income of 0.6 on assets of 100 and equity of 5: a 12 percent pre-tax ROE. Losses higher by 3.2 give a pre-tax loss of 2.6 and an after-tax loss of about 1.8 at a 30 percent tax rate. Equity falls from 5 to 3.2; at 1 percent equity it would be negative.
+
+\emph{Why industrial ratios mislead.} For a bank, debt to equity of 19 is normal, and interest is revenue, not a financing cost. Free cash flow is not a useful measure, since lending is the operation. Return on equity and capital ratios replace margins and leverage (Interpretation).
+
+\qffield{Conditions} The Basel standards are minimums set by the Basel Committee; each jurisdiction implements them with its own buffers and definitions, which must be checked for any real bank. Hull's descriptions of insurance regulation are as of 2023.
+
+\qffield{Pitfalls} Applying the debt ratios of industrial companies to banks. Treating deposit insurance as removing risk rather than moving it. Comparing capital ratios across jurisdictions with different risk-weight rules.
+
+\qffield{See also} \hyperref[meth:bank-camels-analysis]{CAMELS analysis}; \hyperref[meth:insurer-analysis]{insurer analysis}; \hyperref[def:short-term-funding-repo]{short-term funding}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Analysing a bank with the CAMELS framework: capital, asset quality, management, earnings, liquidity and sensitivity to market risk, the ratios behind each, other factors and the limits of the approach]\label{meth:bank-camels-analysis}
+\qffield{Statement} US supervisors rate a bank on six components: capital adequacy, asset quality, management, earnings, liquidity and sensitivity to market risk. Each component and the composite are rated from 1, strongest, to 5, weakest. The composite ``is not derived by computing an arithmetic average of the component ratings''; components may carry different weights depending on the institution \citep[pp.~752--753]{fdic-ufirs-1997}. An analyst can mirror the framework with public data, though not the supervisors' confidential ratings (Interpretation):
+\begin{center}\small
+\begin{tabular}{@{}p{0.2\linewidth}p{0.38\linewidth}p{0.34\linewidth}@{}}
+\toprule
+Component & What the supervisor assesses (UFIRS) & Public ratios (Interpretation) \\
+\midrule
+Capital & Level and quality of capital, ability to raise more, problem assets (p.~754) & CET1, Tier 1, total capital, leverage ratio \\
+Asset quality & Existing and potential credit risk, adequacy of the allowance (p.~754) & Non-performing loans, coverage, cost of risk \\
+Management & Board and management's ability to identify, measure, monitor and control risk (pp.~754--755) & Track record, controls, governance, disclosures \\
+Earnings & Quantity, trend and sustainability of earnings (p.~755) & ROA, ROE, net interest margin, cost/income \\
+Liquidity & Funding sources against needs (p.~756) & LCR, NSFR, loans/deposits \\
+Sensitivity & Effect of rate, FX, commodity and equity moves on earnings or economic capital (p.~756) & Repricing gap, earnings and value sensitivities \\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{Other factors} (Interpretation): government support and resolution regime, business mix and concentration, off-balance-sheet commitments, accounting choices in the allowance, and the macroeconomic outlook for borrowers.
+
+\emph{Limits.} Ratios are backward-looking and reported quarterly; the allowance and the risk weights are the bank's own estimates; liquidity can vanish faster than any reported ratio shows. Wholesale deposits ``can disappear quickly'' \citep[pp.~459--460]{risk-management-financial-institutions-2023}.
+
+\qffield{Practice} \emph{Tamar Bank} (original, EUR billions):
+\begin{center}\small
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Component & Measure & 2025 & 2026 \\
+\midrule
+Capital & CET1 / RWA & 11.0\% & 10.0\% \\
+ & Tier 1 / RWA & 12.67\% & 11.56\% \\
+ & Total capital / RWA & 15.0\% & 13.75\% \\
+ & Leverage ratio & 5.07\% & 4.68\% \\
+Asset quality & Non-performing loans / loans & 2.50\% & 3.98\% \\
+ & Allowance / non-performing loans & 60\% & 44\% \\
+ & Provisions / loans (cost of risk) & 0.40\% & 1.02\% \\
+Earnings & ROE & 12.19\% & 3.85\% \\
+ & Cost / income & 60.5\% & 65.1\% \\
+ & Net interest margin & 2.44\% & 2.43\% \\
+Liquidity & LCR & 122\% & 103\% \\
+ & NSFR & 112\% & 103\% \\
+ & Loans / deposits & 91\% & 96\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item \emph{Capital.} Every Basel minimum, including the 2.5 percent buffer, is met in 2026 (CET1 10.0 against 7.0 percent), but with a narrower margin.
+\item \emph{Asset quality} is the problem. Non-performing loans rose by more than half, and coverage fell to 44 percent: provisions did not keep pace with the bad loans.
+\item \emph{Earnings} fell because of provisions; the margin is stable and costs rose.
+\item \emph{Liquidity} still exceeds 100 percent but is close to it.
+\item \emph{Sensitivity.} Assets repricing within a year fall short of liabilities by 12 billion. A rise of 200 basis points would cut net interest income by 0.24 billion, 16 percent of 2026 income before provisions.
+\end{itemize}
+\emph{Conclusion.} Asset quality is weakest, and earnings and capital are under pressure from it. Raising coverage to 2025's 60 percent would take about 0.68 billion of provisions before tax, more than 2026's pre-tax profit of 0.40 billion. Management's provisioning is the question to put to the bank. The composite judgement is not the average of these: a bank with adequate capital but deteriorating assets and thin liquidity is weaker than its capital ratios suggest.
+
+\qffield{Conditions} The ratios use reported figures and the bank's own risk weights. Coverage depends on collateral as well as the allowance. Repricing gaps ignore optionality in deposits and loans.
+
+\qffield{Pitfalls} Scoring each component mechanically and averaging. Reading a high capital ratio as safety when the allowance is too small. Ignoring liquidity until it binds.
+
+\qffield{See also} \hyperref[def:financial-institution-features]{features and regulation}; \hyperref[meth:insurer-analysis]{insurers}; \hyperref[meth:market-risk-limits-capital]{risk-based capital}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Analysing an insurer: life against property-casualty business, loss, expense, combined and operating ratios, reserve development, investment results and solvency]\label{meth:insurer-analysis}
+\qffield{Statement} \emph{Two businesses} \citep[pp.~57--64]{risk-management-financial-institutions-2023}:
+\begin{itemize}
+\item \emph{Property-casualty} policies are usually renewed yearly and repriced; payouts are hard to predict, so equity is higher and investments shorter and more liquid. Hull's illustrative balance sheet has policy reserves of 45, unearned premiums of 15 and equity of 30 per 100 of assets.
+\item \emph{Life} policies run for many years at fixed premiums. Investments are mostly corporate bonds matched to the liabilities, and reserves are 80 per 100 of assets with equity of 10. Mortality and longevity risks partly offset each other.
+\end{itemize}
+
+\emph{Property-casualty ratios} (pp.~59--60):
+\begin{itemize}
+\item the \emph{loss ratio} is payouts to premiums earned, typically 60--80 percent in the United States;
+\item the \emph{expense ratio} is expenses to premiums earned, typically 25--30 percent;
+\item the \emph{combined ratio} is their sum, and after policyholder dividends the combined ratio after dividends;
+\item the \emph{operating ratio} deducts investment income as a share of premiums, since premiums are invested until claims are paid.
+\end{itemize}
+Hull puts loss adjustment expenses in the expense ratio; many insurers put them with losses, so the definition must be read (Interpretation).
+
+\emph{Other factors} (pp.~64--66 and Interpretation):
+\begin{itemize}
+\item reserve adequacy, seen in the development of prior years' reserves;
+\item credit, liquidity and concentration in the investment portfolio;
+\item reinsurance and counterparty exposure;
+\item capital against the regulatory requirement, such as own funds over the Solvency~II capital requirement \citep[pp.~557--558]{risk-management-financial-institutions-2023};
+\item catastrophe exposure and premium growth relative to capital.
+\end{itemize}
+
+\qffield{Practice} \emph{Hull's Table~3.2 reproduced} (p.~60): loss ratio 75 percent plus expense ratio 30 percent is a combined ratio of 105 percent, 106 after 1 percent of dividends. Less investment income of 9 percent of premiums gives an operating ratio of 97 percent.
+
+\emph{Wren Insurance} (original, EUR millions; losses include loss adjustment expenses):
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & 2025 & 2026 \\
+\midrule
+Net earned premiums & 800 & 840 \\
+Loss ratio & 72.5\% & 80.5\% \\
+Expense ratio & 25.0\% & 24.4\% \\
+Combined ratio & 97.5\% & 104.9\% \\
+Operating ratio & 88.5\% & 96.5\% \\
+Reserve development / opening reserves & $-1.3\%$ (release) & $+2.8\%$ (strengthening) \\
+Investment yield & 3.0\% & 2.9\% \\
+Own funds / solvency capital requirement & 180\% & 161\% \\
+Premiums / equity & 0.94 & 1.02 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item The 2026 underwriting loss of 41 is covered by investment income of 70.
+\item Without the 35 of adverse development on prior years, the combined ratio would have been 100.7 percent.
+\item The 2025 ratio was flattered by a release of 15.
+\end{itemize}
+\emph{Conclusion.} The current-year business is roughly break-even. The question is whether earlier reserves are adequate: two years of opposite development call for the claims triangles. Solvency remains well above 100 percent, but the fall from 180 percent narrows the room for growth or a catastrophe year.
+
+\qffield{Conditions} Ratios are on net earned premiums after reinsurance. Life insurers are analysed instead with embedded value, the margin on new business and the sensitivity of reserves to interest rates and mortality, which this entry does not develop.
+
+\qffield{Pitfalls} Comparing combined ratios that treat loss adjustment expenses differently. Reading a low combined ratio without the reserve development behind it. Treating investment income on premiums as permanent when rates fall.
+
+\qffield{See also} \hyperref[def:financial-institution-features]{features and regulation}; \hyperref[meth:bank-camels-analysis]{banks}.
+
+\end{qfmethod}

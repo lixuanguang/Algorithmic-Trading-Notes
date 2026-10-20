@@ -1,0 +1,116 @@
+\section{Private company valuation}
+
+\begin{qfmethod}[Private and public companies contrasted, and normalising a private company's earnings and cash flows: owner compensation, related-party terms, personal expenses and non-recurring items]\label{meth:private-earnings-normalisation}
+\qffield{Statement} \emph{How private firms differ.} Damodaran lists four differences that change how valuation inputs are estimated \citep[pp.~667--668]{investment-valuation-2012}:
+\begin{enumerate}
+\item looser and less comparable accounting standards;
+\item less information, both in years of history and in detail such as segment data;
+\item no market price for the equity, and costly liquidation of a stake;
+\item owners who manage the firm and hold much of their wealth in it, so business and personal spending mix and risk is not diversified.
+\end{enumerate}
+The valuation principle is unchanged; the differences enter through discount rates, cash flows and growth (p.~668).
+
+\emph{Normalisation.} Earnings are restated to what the business would earn under arm's-length management (pp.~677--680):
+\begin{itemize}
+\item an owner who takes no salary, or a salary unrelated to the work done, is charged what it would cost to hire a replacement for each role;
+\item personal expenses run through the business are removed;
+\item tax is computed at the rate the likely buyer would pay, since buyers' tax rates differ more than public firms' do;
+\item one-off items are removed, as for public companies (\hyperref[meth:non-recurring-items]{non-recurring items}).
+\end{itemize}
+Damodaran's Chez Pierre example adds a market chef's salary and capitalises the lease (p.~680). Related-party transactions, such as rent paid to the owner, are restated to market terms (Interpretation).
+
+\qffield{Practice} \emph{Fenton Engineering} (original, private, EUR millions). Revenue is 40.0 and reported EBIT 5.6. Adjustments:
+\begin{itemize}
+\item the owner-manager's salary of 0.15 against a market cost of 0.45: $-0.30$;
+\item rent of 0.40 paid to the owner for premises worth 0.70 at market: $-0.30$;
+\item a one-off litigation settlement charged in the year: $+0.60$;
+\item personal travel and car costs in administration: $+0.15$.
+\end{itemize}
+Normalised EBIT is 5.75, a margin of 14.4 percent, and normalised EBITDA 6.95. At a 25 percent tax rate NOPAT is 4.31. Free cash flow to the firm, after depreciation of 1.2, capital spending of 1.6 and working capital of 0.4, is 3.51. Without the owner's below-market salary and rent the business earns 0.60 a year less than reported; the litigation and personal costs work the other way.
+
+\qffield{Conditions} Each adjustment needs evidence: payroll benchmarks for the owner's role, a market rent valuation, documents showing the litigation was one-off. A buyer who will keep the owner on a below-market salary or the rent unchanged is buying that arrangement, not the normalised business.
+
+\qffield{Pitfalls} Adding back every expense the owner calls discretionary. Normalising only the adjustments that raise earnings. Applying a public company's tax rate to a buyer who is an individual. Forgetting key-person risk when the normalised salary replaces an owner who brings the customers (pp.~682--683).
+
+\qffield{See also} \hyperref[meth:private-discount-rate]{discount rates}; \hyperref[meth:private-company-valuation]{valuation}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Required returns for private companies: CAPM with a bottom-up beta, total beta for an undiversified owner, expanded CAPM and build-up premiums, and the cost of debt and debt ratio]\label{meth:private-discount-rate}
+\qffield{Statement} \emph{Beta.} Without a share price, a private firm's beta is estimated from accounting earnings, from fundamentals, or bottom-up from comparable listed firms. The last has the lowest standard error and is relevered at the industry's or the target debt ratio, not the book ratio \citep[pp.~669--672]{investment-valuation-2012}.
+
+\emph{Total beta.} A market beta measures only the risk a diversified investor bears. An owner with most of their wealth in the business bears total risk, measured by the total beta: the market beta divided by the correlation of comparable firms with the market (pp.~672--673). Which beta is right depends on the buyer:
+\begin{itemize}
+\item an initial public offering or a sale to a listed company calls for the market beta;
+\item a sale to an undiversified individual calls for the total beta;
+\item venture capitalists and private equity funds lie in between, with the correlation of their own portfolio (pp.~673, 693).
+\end{itemize}
+
+\emph{Expanded CAPM and build-up.} Two alternatives add premiums to a conventional estimate (p.~674):
+\begin{itemize}
+\item a small-cap premium and an illiquidity premium, with the risk of counting the same thing twice, since small firms are less liquid;
+\item a venture-capital premium from investors' historical excess returns.
+\end{itemize}
+An expanded CAPM adds a size premium and a company-specific premium to the CAPM. A build-up adds them to the risk-free rate and equity premium, often with an industry adjustment instead of beta (Interpretation, consistent with p.~674).
+
+\emph{Debt.} The cost of debt comes from recent borrowing, from industry averages for an IPO, or from a synthetic rating built on a schedule for smaller firms; a private sale may add a spread (pp.~675--676). The debt ratio should match the one used to relever beta (p.~676).
+
+\qffield{Practice} \emph{Fenton Engineering} (original). Risk-free 3.0 percent, equity premium 5.5 percent, comparable unlevered beta 0.95, industry debt to equity 25 percent, tax 25 percent, pre-tax cost of debt 6.5 percent:
+\begin{itemize}
+\item levered beta $0.95\times(1+0.75\times0.25)=1.128$; CAPM cost of equity $3.0+1.128\times5.5=9.20$ percent;
+\item expanded CAPM with a 2-point size and 1.5-point specific premium: 12.70 percent;
+\item build-up of 3.0 + 5.5 + 2.0 (size) + 0.5 (industry) + 1.5 (specific): 12.50 percent;
+\item total beta with a correlation of 0.40: $1.128/0.40=2.82$, cost of equity 18.51 percent.
+\end{itemize}
+At 20 percent debt the WACC is 8.34 percent for a diversified buyer. For an undiversified owner it is 15.93 percent, with the total-beta cost of equity and one point more on debt.
+
+\qffield{Conditions} The premiums in the expanded CAPM and build-up are judgements unless supported by data for comparable firms. The total-beta adjustment assumes the owner bears all the firm's risk; a partly diversified owner calls for a correlation between the comparables' and one.
+
+\qffield{Pitfalls} Adding a size premium to a total beta, which already includes the diversifiable risk. Relevering beta at the book debt ratio. Using a private owner's discount rate to value the firm for sale to a listed company.
+
+\qffield{See also} \hyperref[meth:cost-of-debt-equity-estimation]{costs of debt and equity}; \hyperref[meth:private-company-valuation]{valuation}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Valuing a private company: income, market and asset approaches, the motive and buyer for the valuation, and discounts for lack of control and marketability]\label{meth:private-company-valuation}
+\qffield{Statement} \emph{Approaches.}
+\begin{itemize}
+\item \emph{Income approach.} The present value of normalised cash flows at a rate suited to the likely buyer. The firm may have a finite life ending in a liquidation value, for example when the owner retires \citep[pp.~681--682]{investment-valuation-2012}.
+\item \emph{Market approach.} Multiples from guideline public companies or from transactions in private businesses. Transaction data suffer from non-arm's-length deals, stale dates, inconsistent accounting and non-standard equity claims. Enterprise-value multiples of revenue or of business-specific units are preferred to equity multiples (pp.~695--697). Public multiples overvalue a private business unless adjusted for survival, diversification and liquidity (pp.~697--698).
+\item \emph{Asset approach.} The assets at fair or liquidation value less liabilities. It suits holding companies and businesses worth more dead than alive (Interpretation, consistent with \hyperref[def:valuation-model-families]{model families}).
+\end{itemize}
+
+\emph{The motive changes the inputs} (pp.~688--689, Table~24.2):
+\begin{itemize}
+\item a sale to a private buyer uses a total-beta cost of equity, a possible extra debt spread, the buyer's personal tax rate, a finite life and an illiquidity discount;
+\item an IPO or a sale to a listed firm uses the market beta, corporate tax, a perpetual life and no illiquidity discount.
+\end{itemize}
+
+\emph{Control.} A controlling stake is worth the value of the firm run optimally; a minority stake the value under incumbent management (pp.~691--692).
+
+\emph{Marketability.} Restricted-stock studies found discounts of about 34--35 percent. Silber's regression relates the discount to revenue, block size, profitability and customer ties (pp.~685--686). Rules of thumb of 20--30 percent applied to every firm ignore that the discount falls with size and financial health (p.~685).
+
+\qffield{Practice} \emph{Fenton Engineering} (\hyperref[meth:private-earnings-normalisation]{normalised earnings}), net debt 6.0:
+\begin{itemize}
+\item \emph{Income.} In steady state, with 2.5 percent growth and a 12 percent return on new capital, FCFF next year is $4.31\times1.025\times(1-2.5/12)=3.50$. Enterprise value is 59.93 at the diversified buyer's 8.34 percent and 26.05 at the owner's 15.93 percent.
+\item \emph{Market.} Listed peers at 7.5 times EBITDA give 52.13, a marketable minority value before size and liquidity adjustments. Transactions at 6.8 times give 47.26, a control value.
+\item \emph{Asset.} Assets at fair value of 38.0, less net debt and other liabilities, leave equity of 22.5, a floor.
+\end{itemize}
+
+\emph{A 30 percent stake for a private investor.}
+\begin{itemize}
+\item Control equity is $59.93-6.0=53.93$.
+\item A 25 percent control premium implies a discount for lack of control of $1-1/1.25=20$ percent.
+\item The Silber regression gives a discount of 48.94 percent at revenue of 10 million and 46.33 percent at 40 million. A 25 percent benchmark for a profitable firm with revenue of 10 million therefore becomes 22.39 percent for Fenton.
+\item The discounts multiply: $0.30\times53.93\times0.80\times0.7761=10.05$, a combined discount of 37.91 percent, not $20+22.39=42.39$ percent.
+\end{itemize}
+
+\emph{Recommendation.} For a sale of the whole business, seek a listed or private-equity buyer, whose diversification is worth over 30 of value to the seller; the transaction multiple brackets the result. For the minority stake, 10 is a central estimate, sensitive to the control premium and the marketability benchmark.
+
+\qffield{Conditions} The control premium, marketability benchmark, correlation and premiums are illustrative inputs. The Silber regression was estimated on restricted stock of listed firms in 1984--1989 and is extended to private firms only as a guide (p.~686). For US tax valuations, ``fair market value'' rests on Revenue Ruling 59-60, which was not read; it is not described here.
+
+\qffield{Pitfalls} Applying a discount for lack of marketability to an income-approach value already built on an undiversified owner's discount rate, which double counts. Applying a control premium to a value already on a control basis. Adding discounts instead of compounding them. Using a single average discount for every firm.
+
+\qffield{See also} \hyperref[meth:comparables-evaluation]{comparables}; \hyperref[meth:private-discount-rate]{discount rates}; \hyperref[meth:valuation-approach-choice]{approach choice}.
+
+\end{qfmethod}

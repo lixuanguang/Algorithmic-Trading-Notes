@@ -1,0 +1,112 @@
+\section{Intercorporate investments}
+
+\begin{qfdefinition}[Intercorporate investments: financial assets, associates, joint arrangements and subsidiaries; how each is classified, measured and disclosed under IFRS and US GAAP]\label{def:intercorporate-investment-classification}
+\qffield{Statement} An investment in another company's equity is classified by the influence it gives, not by the size of the stake alone. Under IFRS the tests run in order:
+\begin{enumerate}
+\item \emph{Control} makes the investee a subsidiary, which is consolidated. An investor controls an investee ``if and only if'' it has power over the investee, exposure or rights to variable returns, and the ability to use its power to affect those returns \citep[paras.~6--7]{eu-2023-1803-ifrs10}.
+\item \emph{Joint control} makes it a joint arrangement \citep[paras.~15--16, 20, 24]{eu-2023-1803-ifrs11}:
+\begin{itemize}
+\item a \emph{joint operation}, whose parties have rights to the assets and obligations for the liabilities, is reported line by line as the operator's share of assets, liabilities, revenue and expenses;
+\item a \emph{joint venture}, whose parties have rights to the net assets, is carried under the equity method.
+\end{itemize}
+\item \emph{Significant influence} makes it an associate, carried under the equity method. A holding of 20 percent or more of the voting power is presumed to give significant influence, and less than 20 percent presumed not to, unless clearly demonstrated otherwise \citep[para.~5]{eu-2023-1803-ias28}. Influence is usually evidenced by board representation, participation in policy-making, material transactions, interchange of managers or provision of essential technical information (para.~6).
+\item Otherwise the stake is a \emph{financial asset} at fair value through profit or loss. An equity instrument not held for trading may instead be irrevocably designated at fair value through other comprehensive income, with dividends still in profit \citep[paras.~5.7.5--5.7.6]{eu-2023-1803-ifrs9}.
+\end{enumerate}
+
+\emph{The equity method.} The investment starts at cost and is increased or decreased by the investor's share of the investee's profit or loss; distributions received reduce it \citep[para.~10]{eu-2023-1803-ias28}. Goodwill in the cost stays in the carrying amount and is not amortised; the share of profit is adjusted for extra depreciation on the excess of fair value over book value (para.~32). Losses stop being recognised once they exhaust the interest, including long-term loans that are in substance part of it (para.~38).
+
+\emph{Business combinations.} Goodwill is the consideration plus any non-controlling interest, less the identifiable net assets at fair value \citep[para.~32]{eu-2023-1803-ifrs3}. IFRS lets the acquirer measure the non-controlling interest at fair value, giving ``full'' goodwill, or at its share of net assets, giving ``partial'' goodwill (para.~19). The non-controlling interest is presented within equity, separately from the parent's \citep[para.~22]{eu-2023-1803-ifrs10}, and profit is attributed between the two (para.~B94).
+
+\emph{US GAAP differences.}
+\begin{itemize}
+\item Equity securities without significant influence are measured at fair value through net income. ASU 2016-01 removed the available-for-sale category for equities, so there is no equivalent of the IFRS other comprehensive income election \citep[Summary]{us-equity-investments-2016}.
+\item The equity method generally applies to holdings of 20 to 50 percent, but the criterion is significant influence regardless of the percentage \citep[p.~272]{financial-statement-analysis-2009}.
+\item The acquirer measures the non-controlling interest at fair value, so only full goodwill arises \citep[para.~20]{us-business-combinations-2007}. It is reported within equity, and consolidated net income is split between the parent and the non-controlling interest on the face of the income statement \citep[Summary]{us-noncontrolling-interests-2007}.
+\item Control is assessed under a voting-interest model and a separate variable-interest model (below).
+\end{itemize}
+
+\emph{Special purpose and variable interest entities.} Some entities are designed so that voting rights do not decide who controls them, for example a vehicle that holds leased assets or securitised receivables under contractual rules.
+\begin{itemize}
+\item IFRS calls them \emph{structured entities} \citep[App.~A, para.~B21]{eu-2023-1803-ifrs12} and applies the same control test: power, exposure to variable returns and the link between them \citep[para.~7]{eu-2023-1803-ifrs10}. Interests in unconsolidated structured entities must be disclosed \citep[paras.~24--31]{eu-2023-1803-ifrs12}.
+\item US GAAP consolidates a \emph{variable interest entity} by its primary beneficiary: the party with the power to direct the activities that most significantly affect its performance and the obligation to absorb losses or right to receive benefits that could be significant. FAS~167 replaced the earlier quantitative test of who absorbs most expected losses with this largely qualitative one \citep[Summary]{us-variable-interest-entities-2009}.
+\end{itemize}
+Off-balance-sheet vehicles were where leverage hid before 2009, so the consolidation judgement matters for analysis (Interpretation).
+
+\emph{Disclosure.} The notes give the classification judgements, summarised financial information of material associates and joint ventures, the non-controlling interests and the fair values of financial assets. These are what an analyst needs to rebuild the investee's balance sheet (Interpretation).
+
+\qffield{Practice} \emph{Penrose Group} (original, EUR millions; \nolinkurl{notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py}). Seven stakes, classified in the order above:
+\begin{center}\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Holding and rights & Classification & Measurement \\
+\midrule
+10\%, no other evidence & Financial asset & FVPL, or FVOCI if elected \\
+15\% with a board seat & Associate & Equity method \\
+30\% & Associate & Equity method \\
+50\%, joint control over net assets & Joint venture & Equity method \\
+50\%, joint control over assets and obligations & Joint operation & Share of each line \\
+45\% with power through an agreement & Subsidiary & Consolidation \\
+0\% voting; a leasing vehicle Penrose designed and whose losses it bears & Structured entity (VIE) & Consolidation \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\emph{Equity method.} Penrose pays 108 for 30 percent of Quay, whose book net assets are 300. Quay's plant is worth 40 more than book, over a ten-year life.
+\begin{itemize}
+\item Penrose's share of fair-value net assets is $0.30\times340=102$, leaving goodwill of 6.
+\item Quay earns 40 and pays 10 in dividends. Penrose's share of profit is $12-1.2=10.8$, after its share of the extra depreciation.
+\item The carrying amount is $108+10.8-3=115.8$. Checked independently: 30 percent of Quay's year-end fair-value net assets of 366, plus the goodwill of 6.
+\end{itemize}
+
+\emph{A 10 percent stake} bought for 36 rises to 39 and pays a dividend of 1. At fair value through profit, all 4 is in profit. Under the election the 3 gain goes to other comprehensive income and is never recycled; the 1 dividend is in profit. Under US GAAP all 4 is in net income.
+
+\qffield{Conditions} The rules are IFRS as adopted in the EU and US GAAP in the pre-Codification texts cited; only the summary of FAS~167 was read, not the detailed VIE criteria. Investment entities and step acquisitions are outside this entry. The 20 percent presumption is rebuttable both ways.
+
+\qffield{Pitfalls} Classifying on the percentage alone when contracts give power or influence. Treating the equity-method carrying amount as a fair value. Forgetting that an elected fair-value-through-OCI equity never passes its gains through profit, even on sale.
+
+\qffield{See also} \hyperref[meth:consolidation-ratio-effects]{effects on statements and ratios}; \hyperref[meth:intangibles-goodwill-reporting]{goodwill}; \hyperref[meth:financial-instruments-liabilities]{financial instruments}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Analysing how the investment method changes the statements and ratios: the equity method as a one-line consolidation, full consolidation with non-controlling interests, and proportionate consolidation as an analyst's restatement]\label{meth:consolidation-ratio-effects}
+\qffield{Statement} The equity method and consolidation give the same profit attributable to the parent and the same parent equity; they differ in how much detail they show. Subramanyam and Wild call the equity method a ``one-line consolidation'' because consolidation ``does not affect either total stockholders' equity or the net income of the investor company'' \citep[p.~273]{financial-statement-analysis-2009}. The consequences for analysis (pp.~274--275):
+\begin{itemize}
+\item \emph{Hidden capital.} Behind the one-line investment lie the investee's assets and liabilities. Coca-Cola's 36 percent stake in a bottler was 5 percent of its reported assets but stood for a share of 26.4 billion of assets and 21.0 billion of liabilities.
+\item \emph{Earnings that are not cash.} A dollar earned by the investee may not be available to the investor because of regulation, remittance limits, loan covenants or a powerful minority.
+\item \emph{Which statements to analyse.} The reported ones, the investee consolidated in, or only the investor's proportionate share of each line. The choice is the analyst's and changes turnover and solvency.
+\end{itemize}
+Consolidation adds 100 percent of the subsidiary's revenue, expenses, assets and liabilities, with the non-controlling interest shown in equity and in the attribution of profit. Proportionate consolidation adds only the parent's share. IFRS no longer permits it for joint ventures \citep[para.~24]{eu-2023-1803-ifrs11}, but it remains a useful analyst's restatement for a joint venture or associate (Interpretation, consistent with p.~275).
+
+\qffield{Practice} \emph{Penrose buys 70 percent of Quay instead} (original) for 260. Quay's fair-value net assets are 340 at acquisition.
+\begin{itemize}
+\item \emph{Goodwill.} Non-controlling interest at its share of net assets (102) gives goodwill of $260+102-340=22$. At its fair value of 105, goodwill is 25.
+\item \emph{Profit.} Attributable to Penrose it is 105.2 either way: consolidated, $80+40-4-10.8$, the last being the non-controlling share; or one line, $80+0.70\times36$.
+\item \emph{Balance sheet.} The consolidated balance sheet balances at assets 1,585.0 against liabilities 900.0, parent equity 575.2 and non-controlling interest 109.8. Under the equity method, parent equity is the same 575.2 and assets are 1,275.2.
+\end{itemize}
+
+Profit attributable to Penrose is the same in each case; the ratios are not (liabilities to equity uses total equity, including the non-controlling interest, for the consolidated statements):
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Method & Net margin & ROA & Asset turnover & Liabilities / equity \\
+\midrule
+Equity method (one line) & 10.52\% & 8.25\% & 0.78 & 1.22 \\
+Proportionate (70\%) & 8.22\% & 7.43\% & 0.90 & 1.46 \\
+Full consolidation & 7.51\% & 6.64\% & 0.88 & 1.31 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item The equity method shows the highest margin and return on assets and the lowest leverage, because Quay's revenue and liabilities are off the face of the statements.
+\item Full consolidation shows the lowest margin and return on assets, with all of Quay's revenue and assets but only Penrose's share of its profit attributed to the parent.
+\item Proportionate consolidation shows the highest liabilities to equity, because it adds Penrose's 70 percent share of Quay's liabilities with no non-controlling interest in equity to absorb them.
+\end{itemize}
+\emph{Conclusion.} To compare Penrose with a peer that owns its operations outright, consolidate the investee; to judge Penrose's own claims, look at the one-line figures and the cash dividends received.
+
+\qffield{Conditions} Profit and equity agree across methods only when the equity method uses the same fair-value adjustments as the consolidation and intragroup transactions are eliminated in both. The ratios depend on the investee's size and leverage relative to the investor.
+
+\qffield{Pitfalls} Comparing returns on assets of a company that uses the equity method with one that consolidates. Ignoring the debt behind a large associate or joint venture. Counting the investee's profit as cash available to the parent.
+
+\qffield{See also} \hyperref[def:intercorporate-investment-classification]{classification}; \hyperref[meth:return-on-equity-decomposition]{ROE decomposition}; \hyperref[meth:balance-sheet-ratios]{balance sheet ratios}.
+
+\end{qfmethod}

@@ -1,0 +1,93 @@
+\section{Equity research and forecast models}
+
+\begin{qfmethod}[From a financial-statement forecast to a value: building the model, checking it, turning it into an equity value and testing how much the conclusion depends on its drivers]\label{meth:forecast-model-valuation}
+\qffield{Statement} A forecast model projects the income statement, balance sheet and cash-flow statement from a small set of drivers, and an equity value is then computed from the projected cash flows or earnings. Subramanyam and Wild build the projection in a fixed order \citep[pp.~492--499]{financial-statement-analysis-2009}:
+\begin{enumerate}
+\item sales growth, from macroeconomic conditions, competition and the company's plans;
+\item margins and expense ratios, each tied to the line that drives it (depreciation to opening property, interest to opening debt);
+\item balance-sheet items from turnover ratios and capital spending;
+\item cash as the balancing item, with debt or equity raised when cash falls too low.
+\end{enumerate}
+The projected statements feed a valuation model, such as residual income (p.~499) or discounted free cash flow. Sensitivity analysis then varies the assumptions to find those with the greatest effect on financing needs, returns and value (pp.~498--499).
+
+\emph{Evaluating the model.} Before the value is used, the model should pass four checks (Interpretation):
+\begin{itemize}
+\item \emph{Mechanics}: the balance sheet balances without a plug other than cash or the revolver, and the cash-flow statement reconciles to the change in cash.
+\item \emph{Plausibility}: margins, turnover and return on net operating assets lie within the company's history and its peers' unless a stated reason says otherwise.
+\item \emph{Consistency with the valuation}: the forecast ends in a steady state, with reinvestment equal to growth over the return on new capital (\hyperref[meth:forecast-horizon-steady-state]{steady state}).
+\item \emph{Sensitivity}: the value is reported with the drivers that move it most, not only as a point.
+\end{itemize}
+
+\qffield{Practice} \emph{Harbour Tools} (\hyperref[ex:harbour-pro-forma-model]{pro forma model}). The 2026--2028 forecast balances in every year. It drives the free cash flow to the firm, and with a terminal value at 8 percent and 2.5 percent growth gives enterprise value of 1,218.45 and 8.49 a share (\hyperref[meth:forecast-horizon-steady-state]{valuation}). About 90 percent of enterprise value comes from the terminal value, so the explicit years matter mainly through the level they hand on to it.
+
+Rerunning the whole model under alternative drivers:
+\begin{center}\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+Scenario & Value a share \\
+\midrule
+Base & 8.49 \\
+Volume growth 0, 1, 2\% and price inflation 2\% & 4.44 \\
+Volume growth 5, 5, 4\% & 10.42 \\
+Selling and administrative costs 18.5\% of revenue (17.5\%) & 7.16 \\
+Capital spending 9.5\% of revenue (8.5\%) & 8.05 \\
+\bottomrule
+\end{tabular}
+\end{center}
+A grid over WACC (7, 8, 9 percent) and terminal growth (1.5, 2.5, 3.5 percent) runs from 6.14 to 13.35.
+
+\emph{Interpretation.} Volume growth and the cost ratio move value far more than capital spending. The price of 11.00 is reached only with the upside volume path, a WACC near 7 percent, or both. The model therefore shifts the debate to evidence on volume and costs.
+
+\qffield{Conditions} Every figure is conditional on the forecast's assumptions and on the conventions of the valuation (leases as debt, share-based pay as a cost, the pension deficit as a claim). A scenario changes several statements at once; changing one ratio in isolation can break the model's identities.
+
+\qffield{Pitfalls} Forecasting free cash flow directly without a balance sheet, so that reinvestment and growth drift apart. Letting a plug other than cash or debt balance the model. Reporting a value without the drivers behind it. Ending the forecast while margins or reinvestment are still moving.
+
+\qffield{See also} \hyperref[def:research-report-evaluation]{research reports}; \hyperref[meth:fcf-valuation-models]{free cash flow models}; \hyperref[meth:valuation-price-judgement]{valuation against price}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[Equity research reports: required contents, sell-side against buy-side research, and why analysts' value estimates for the same company differ]\label{def:research-report-evaluation}
+\qffield{Statement} \emph{Contents.} A research report sets out the company, the analyst's forecasts, a valuation, a recommendation or price target, and the risks to it. EU law fixes minimum contents for anyone who recommends investments \citep[Arts.~2--4]{eu-2016-958-recommendations}:
+\begin{itemize}
+\item the identity of the people who produced it and, for regulated firms, their authority (Art.~2);
+\item facts clearly distinguished from opinions and estimates, material sources indicated, and projections and price targets labelled as such with their material assumptions (Art.~3(1));
+\item for professional producers, a summary of the valuation method and assumptions and changes to them, the meaning and time horizon of ``buy'', ``sell'' or ``hold'', a risk warning including a sensitivity analysis of the assumptions, and the previous twelve months' recommendations (Art.~4(1)).
+\end{itemize}
+FINRA's rule for US members requires a reasonable basis for any rating or target with ``a clear explanation of any valuation method used and a fair presentation of the risks'', definitions of each rating, the distribution of buy, hold and sell ratings, a price chart for ratings held a year or more, and disclosure of conflicts, such as investment-banking business with the company \citep[para.~(c)(1)--(4)]{finra-rule-2241}.
+
+\emph{Sell-side and buy-side.} Sell-side analysts work for brokers and investment banks, and their research is a service to the firm's clients; buy-side analysts work for institutional investors, and their research is generally proprietary \citep[p.~283 n.~5]{investment-valuation-2012}. Analysts are better than models based on history at forecasting the next one or two quarters, but the evidence for superior forecasts over three to five years is weak, and their forecasts lean on past growth (pp.~282--284).
+
+\emph{Divergent estimates} (Interpretation). Two analysts can value the same company differently because they use:
+\begin{itemize}
+\item different methods, intrinsic against relative;
+\item different forecasts of growth, margins and reinvestment;
+\item different discount rates;
+\item different claim definitions, such as whether options, leases or pensions are deducted;
+\item different horizons, such as a one-year price target against a value.
+\end{itemize}
+Reconciling the estimates means bridging them one assumption at a time.
+
+\qffield{Practice} \emph{Three estimates for Harbour at a price of 11.00} (illustrative):
+\begin{itemize}
+\item \emph{A sell-side report.} It applies the peer median forward P/E of 18 to forecast EPS of 0.7285 and gets 13.11 (\hyperref[meth:comparables-evaluation]{comparables}).
+\item \emph{A second sell-side report.} It applies the peer median EV/EBITDA of 7.8 and gets 11.39 after the options (\hyperref[meth:enterprise-value-multiples]{EV multiples}).
+\item \emph{A buy-side model.} The DCF gives 8.49 (\hyperref[meth:forecast-model-valuation]{forecast model}).
+\end{itemize}
+The 4.62 gap between the highest and the lowest splits into 1.72 between the two multiples and 2.90 between the EV multiple and the DCF. Holding everything else, the DCF matches 11.39 only at a WACC of about 6.95 percent. The multiples import the peers' growth (5--12 percent against Harbour's 4) and returns, so the bridge points to growth and the discount rate as the questions to resolve.
+
+\emph{Reading a report critically.} Check the following:
+\begin{itemize}
+\item whether the target and its horizon are explained;
+\item whether the forecasts are labelled and their assumptions stated;
+\item whether a sensitivity is given;
+\item whether the firm's banking or market-making ties are disclosed;
+\item whether the rating distribution shows buy ratings for most companies covered.
+\end{itemize}
+
+\qffield{Conditions} The EU and FINRA texts cited are those in force when read in October 2026; other jurisdictions differ. Disclosure requirements make conflicts visible; they do not remove them.
+
+\qffield{Pitfalls} Comparing a twelve-month price target with an intrinsic value as if they answered the same question. Averaging analysts' targets as if they were independent. Treating a forecast as fact when the report does not label it.
+
+\qffield{See also} \hyperref[meth:valuation-price-judgement]{valuation against price}; \hyperref[meth:forecast-biases-remedies]{forecast biases}.
+
+\end{qfdefinition}

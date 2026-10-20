@@ -1,0 +1,86 @@
+\section{Scenarios, simulation and sensitivity}
+
+\begin{qfmethod}[Historical scenarios, Monte Carlo against historical simulation, and sensitivity analysis for an investment decision: what each answers, how to set one up, and how to read the results]\label{meth:scenario-simulation-analysis}
+\qffield{Statement} \emph{Scenario analysis} values an investment under a few discrete states. Damodaran gives four components \citep[pp.~894--897]{investment-valuation-2012}:
+\begin{enumerate}
+\item the two or three factors the scenarios turn on;
+\item the number of scenarios;
+\item the outcome in each;
+\item the probabilities, if a weighted value is wanted.
+\end{enumerate}
+\begin{itemize}
+\item Best and worst cases set each input to its extreme, which may be infeasible; consistent scenarios respect the links between inputs (pp.~894--895).
+\item Scenarios can be ``plausible future narratives'' rather than probable outcomes; their value is the range (p.~896).
+\item The weakness is ``garbage in, garbage out'': the scenarios must be realistic and cover the spectrum (p.~897).
+\end{itemize}
+\emph{Historical scenarios} replay actual episodes on today's position: they are realistic by construction but cannot include what has not happened (\hyperref[meth:historical-simulation]{historical simulation}).
+
+\emph{Simulation} examines continuous risk (pp.~908--910):
+\begin{enumerate}
+\item choose the few variables that matter;
+\item give them distributions from historical, cross-sectional or statistical sources;
+\item check correlations among them;
+\item run many draws.
+\end{enumerate}
+\begin{itemize}
+\item \emph{Monte Carlo} samples from a fitted model, so it can extend beyond the data but inherits the model's shape (\hyperref[meth:monte-carlo-simulation]{Monte Carlo}).
+\item \emph{Historical simulation} resamples actual data, so it keeps fat tails and the joint behaviour of the variables, but only those seen (\hyperref[meth:bootstrap-resampling]{bootstrap}).
+\end{itemize}
+Simulation gives a full distribution where scenario analysis gives a few points (p.~919).
+
+\emph{Sensitivity analysis} changes one assumption at a time and records the effect on a chosen statistic. Using the same random draws in the base and changed runs (common random numbers) isolates the change from simulation noise (Interpretation).
+
+\qffield{Practice} \emph{A 60/40 portfolio} of the S\&P~500 and 10-year Treasuries, rebalanced yearly and held ten years (\texttt{notes/artefacts/backtest-inference/scenario-simulation-checks.py}; data 1928--2025 \citep[sheet ``Returns by year'']{us-asset-returns-1928-2025}; 20,000 paths each).
+
+\emph{Historical scenarios}:
+\begin{center}\small
+\begin{tabular}{@{}lrl@{}}
+\toprule
+Episode & Portfolio return & Note \\
+\midrule
+1931 & $-27.3\%$ & Depression \\
+1973--74 & $-20.8\%$ & $-35.2\%$ real after 22.1\% inflation \\
+2008 & $-13.9\%$ & Stocks $-36.6\%$, Treasuries $+20.1\%$ \\
+2022 & $-18.0\%$ & Stocks $-18.0\%$, Treasuries $-17.8\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Treasuries cushioned 2008 but not 2022, so the hedge depends on the source of the shock. A three-scenario view (20 percent recession at $-12$ percent, 60 percent base at $+6$, 20 percent boom at $+18$) has an expected return of 4.8 percent and a one-in-five chance of a double-digit loss.
+
+\emph{Historical simulation against Monte Carlo}, ten-year wealth per 1 invested:
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ & 5th pct. & Median & 95th pct. & Loss over 10 years \\
+\midrule
+Bootstrap of whole years & 1.21 & 2.26 & 3.92 & 1.8\% \\
+Normal with the same mean and covariance & 1.22 & 2.23 & 3.97 & 1.4\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item The two agree on the centre: mean return 9.0 percent, volatility 12.1 percent.
+\item They differ in the tail. The one-year 5th percentile is $-13.4$ percent in the data against $-10.8$ percent under the normal, and the chance of losing money over ten years is 1.8 against 1.4 percent.
+\end{itemize}
+
+\emph{Sensitivity} of the Monte Carlo result, with common random numbers:
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Change & 5th percentile & Median \\
+\midrule
+Equity mean 2 points lower & $-0.14$ & $-0.24$ \\
+Stock--bond correlation 0.5 (historical 0.02) & $-0.10$ & $-0.03$ \\
+80/20 instead of 60/40 & $-0.11$ & $+0.20$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{Interpretation.} The median depends on the return assumption, the tail on the correlation; a move to 80/20 buys median wealth with tail risk. For a client whose constraint is the downside, the correlation assumption, which 2022 showed can change, deserves as much scrutiny as the equity premium.
+
+\qffield{Conditions} Bootstrapping whole years keeps the stock--bond pairing within each year but not dependence across years, and it assumes the 1928--2025 distribution is today's. The normal model assumes constant parameters. Neither includes fees, taxes or rebalancing costs.
+
+\qffield{Pitfalls} Presenting the Monte Carlo median as a forecast. Choosing scenarios that confirm a view. Changing inputs one at a time when they move together, as returns and correlations do in a crisis.
+
+\qffield{See also} \hyperref[meth:historical-simulation]{historical simulation}; \hyperref[meth:monte-carlo-simulation]{Monte Carlo}; \hyperref[meth:sensitivity-scenario-risk-measures]{scenario risk measures}; \hyperref[meth:forecast-model-valuation]{forecast-model scenarios}.
+
+\end{qfmethod}

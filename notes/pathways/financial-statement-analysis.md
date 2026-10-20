@@ -10,7 +10,7 @@ A compendium section declared in `compendium/compendium.tex`. The pinned guide h
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 18 October 2026 by the coverage pilot. Expanded on 20 October 2026 by the accounting and statement-analysis batch: 46 new entries in thirteen sections, from primary IFRS (EU-adopted) and FASB texts, SEC rules, the EU audit regulation, Subramanyam and Wild (2009), Damodaran (2012), Porter (2008), Sloan (1996) and Kahneman (2011). That is source checking, not study.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 18 October 2026 by the coverage pilot. Expanded on 20 October 2026 by the accounting and statement-analysis batch and, later the same day, by eight entries of the credit, time-series and valuation batch (intercorporate investments, foreign currency, banks and insurers). The accounting batch added 46 new entries in thirteen sections, from primary IFRS (EU-adopted) and FASB texts, SEC rules, the EU audit regulation, Subramanyam and Wild (2009), Damodaran (2012), Porter (2008), Sloan (1996) and Kahneman (2011). That is source checking, not study.
 
 ## Outcome in my own words
 
@@ -48,6 +48,14 @@ Accounting and statement-analysis batch (2026-10-20), one shared case and 45 obj
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026).
 
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py`, with Penrose Group, Larch Brands, Tamar Bank and Wren Insurance as hypothetical cases and reproductions of Subramanyam and Wild's BritCo and Hull's DLC and Table 3.2:
+
+- Intercorporate investments: `def:intercorporate-investment-classification`, `meth:consolidation-ratio-effects`.
+- Foreign currency: `def:functional-currency-transactions`, `meth:currency-translation-methods`, `meth:multinational-currency-tax-analysis`.
+- Banks and insurers: `def:financial-institution-features`, `meth:bank-camels-analysis`, `meth:insurer-analysis`.
+
+Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice
@@ -60,3 +68,5 @@ Partly checked 2026-10-20, draft; human review outstanding. See [record](../sour
 - Does the PCAOB critical-audit-matter requirement (AS 3101) change what a US auditor's report adds for analysis? The PCAOB site refused access on 2026-10-20.
 - How did real issuers' operating cash flows and covenant definitions change on adopting IFRS 18 in 2027, against the Harbour illustration?
 - Read Beneish (1999) and Richardson, Tuna and Wysocki (2010) to test the warning-sign and accrual entries against the detection and post-publication evidence.
+- APB Opinion 18 (the US equity-method standard) could not be retrieved (access denied on 2026-10-20); the 20 percent US presumption rests on Subramanyam and Wild. Does the current Codification (Topic 323) state it in the same terms?
+- The CAMELS mapping to public ratios is my own; how do rating agencies' bank methodologies, which were not read, weight the same factors?

@@ -22,7 +22,8 @@ covered 30 objectives in index construction, investment planning, behavioural fi
 governance, active management, performance evaluation, manager selection and GIPS, on a
 branch stacked on PR #22. No next content slice has been selected. Not started: the remaining `topic:linear-regression` objectives
 (multiple regression, misspecification, extensions); the rest of Batch 2; and
-the rest of Batches 3-6.
+the rest of Batches 3-6. (Later batches are in Sections 20-29; the linear-regression objectives
+named here were completed in Section 29.)
 Editorial coverage only: nothing here records or implies learner mastery.
 Audit date: 2026-10-18, Asia/Singapore.
 Repository baseline: `dc74b55`; pinned guide: `343d145909ba5384202b50604bf5ebe7e5b6ed86`.
@@ -3085,3 +3086,53 @@ items rechecked; coverage unchanged.
 
 Standing preference: Section 17.4 already recorded 45 objectives per expansion prompt; the summary
 at the top of this file, which still said 30, now agrees with it.
+
+## 29. Credit, time-series and valuation batch (executed 2026-10-20)
+
+**Verified state.** PRs #29 (draft, head `6157abb`, base `main`), #30 (draft, head `1f51fcf`,
+base `codex/macro-source-corrections-20261020`) and #31 (draft, base
+`codex/accounting-statement-analysis-20261020`) were open; PR #31 carried the Section 28
+corrections at `59df95b`. Branch `codex/credit-timeseries-valuation-20261020` starts from that
+head, with a stacked draft PR to `codex/corporate-equity-valuation-20261020`.
+
+**Scope.** 45 objectives, all `missing` at the start: equity research and free cash flow,
+residual income and private company valuation (12); intercorporate investments, foreign
+currency and financial institutions (8); credit risk, credit models, CDS, sovereign credit and
+securitisation (13); multiple regression and time series (11); scenario analysis and
+simulation (1). Their 119 outline items map to no outside objective. The audit fixes of
+Section 28 do not count toward the 45, and no objective was split or redefined.
+
+**Sources (Section 3.5).** Damodaran (2012), Subramanyam and Wild (2009), Hull (2023 and
+2021), the Fabozzi handbook (2021), Fabozzi and Kothari (2008), Tsay (2010), FPP3 and STAT 501
+for analysis; primary texts for rules: IAS 21, 28, 29 and IFRS 10-12 (EU 2023/1803), FAS 52
+and the summaries of FAS 141R, 160 and 167, the Basel Framework, the UFIRS, EU 2017/2402,
+Directive 2019/2162, EU 2016/958, FINRA Rule 2241 and FHFA AB 2021-02. Curriculum volumes and
+workbooks were not used. 18 source keys were registered and three catalogue keys used for the first time;
+21 reading notes were written and 12 extended.
+
+**Entries.** 45 new entries: four sections in `systematic-equities` (12), three in
+`financial-statement-analysis` (8), two sections in `corporate-credit-capital` plus additions to
+its CDS section (9), one in `government-bond-markets` (1), the first section of
+`securitised-structured-credit` (3), two sections in `common-toolkit` (11) and one in
+`research-engineering-validation` (1). Three existing entries are also mapped
+(`mech:cds-contract-credit-events`, `def:sovereign-credit-defaults`,
+`mod:garch-volatility-forecast`). The regression, time-series and scenario examples use the
+1928-2025 US returns already in the repository.
+
+**Evidence.** Six scripts, 207 checks: `equity-fcf-ri-private-checks.py` (48),
+`intercorporate-fx-institutions-checks.py` (44), `credit-cds-securitisation-checks.py` (52),
+`multiple-regression-checks.py` (21), `time-series-checks.py` (32),
+`scenario-simulation-checks.py` (10). Source discrepancies found while reproducing published
+examples (Hull Table K.1; Fabozzi and Kothari's average life, Table 3.2 and mortality table) are
+recorded in the review record.
+
+**Coverage.** 326 of 424 objectives; 774 of 1,030 outline items (Level I 279, Level II 312,
+Portfolio Management 48, shared core 135); 256 unreviewed. All 119 items were reviewed
+individually against their outline pages. Editorial coverage only.
+
+**Remaining gaps.**
+- APB 18, the IMF debt sustainability guidance, MSRB pages, Ohlson (1995), rating-agency methodologies, Newey-West and Engle-Granger originals, and the 2014 ISDA Definitions were not read.
+- Hypothetical companies, spread schedules and CDS quotes are illustrative.
+- Human review is outstanding.
+
+Details: `notes/source-review-records.md`, *Credit, time-series and valuation batch, 20 October 2026*.

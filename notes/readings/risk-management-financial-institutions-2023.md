@@ -2,12 +2,14 @@
 key: risk-management-financial-institutions-2023
 pathways: [portfolio-construction-risk, portfolio-risk-financing]
 version: John C. Hull, Risk Management and Financial Institutions, 6th ed., John Wiley & Sons, 2023 (ISBN 978-1-119-93248-2). Copy used: local PDF supplied by the owner in `reading materials/` on 2026-10-19 (SHA-256 18d308d777cc9f4fc8d7f53a8ca519716a304a148509e996445ef2b397109a45), text layer; printed page = PDF page - 28. An earlier 4th ed. (2015) copy was consulted first and set aside for this edition
-sections: chap. 11, pp. 233-249 (VaR and ES, confidence-level changes, marginal, incremental and component measures, Euler allocation, aggregation, the VaR-limit gaming example on p. 237); chap. 13, sec. 13.1, pp. 279-281 (model-building VaR for Microsoft and AT&T); chap. 15, p. 319 (Greeks and limits); chap. 16, pp. 347-352 (stress testing, stressing individual variables, management scenarios, reverse stress testing); chap. 21, sec. 21.2, pp. 458-460 (liquidity funding risk and its sources); chap. 25, sec. 25.12, pp. 557-558 (Solvency II); chap. 27, p. 586 (FRTB 97.5% ES); chap. 28, pp. 609-613 (economic capital allocation, RAROC)
+sections: chap. 11, pp. 233-249 (VaR and ES, confidence-level changes, marginal, incremental and component measures, Euler allocation, aggregation, the VaR-limit gaming example on p. 237); chap. 13, sec. 13.1, pp. 279-281 (model-building VaR for Microsoft and AT&T); chap. 15, p. 319 (Greeks and limits); chap. 16, pp. 347-352 (stress testing, stressing individual variables, management scenarios, reverse stress testing); chap. 21, sec. 21.2, pp. 458-460 (liquidity funding risk and its sources); chap. 25, sec. 25.12, pp. 557-558 (Solvency II); chap. 27, p. 586 (FRTB 97.5% ES); chap. 28, pp. 609-613 (economic capital allocation, RAROC); credit, time-series and valuation batch (2026-10-20): chap. 2 pp. 28-34 (DLC bank, capital, deposit insurance), chap. 3 pp. 57-66 (insurers, ratios, regulation), chap. 17 pp. 367-391 (default probabilities, recovery, CDS, spreads, Merton), chap. 18 pp. 393-401 (CVA), chap. 19 pp. 413-415 (transition matrices), App. K pp. 689-691 (CDS valuation)
 read:
 status: draft
 ---
 
 Prepared on 2026-10-19 by the derivatives, portfolio and execution batch (2026-10-19) from source checks, not from study: the headings that need your own reading are left empty. Used for `def:short-term-funding-repo`, `meth:portfolio-var-methods-decomposition`, `meth:sensitivity-scenario-risk-measures` and `meth:market-risk-limits-capital`. Search: none; the owner supplied the 6th edition during the batch.
+
+Also used by the credit, time-series and valuation batch (2026-10-20) for `def:financial-institution-features`, `meth:bank-camels-analysis`, `meth:insurer-analysis`, `def:credit-risk-components`, `meth:corporate-credit-analysis`, `meth:risky-bond-cva`, `meth:rating-migration-returns`, `mod:structural-reduced-form-credit`, `meth:credit-spread-term-structure`, `def:cds-contract-features`, `meth:cds-pricing`, `meth:cds-strategies`.
 
 ## Question and claim
 
@@ -23,6 +25,9 @@ Prepared on 2026-10-19 by the derivatives, portfolio and execution batch (2026-1
 - Component VaRs sum to total VaR by Euler's theorem; component approximates incremental VaR for small subportfolios (pp. 246-248).
 - RAROC = (revenues - costs - expected losses)/economic capital; 0.80/4 = 20%, 22% with interest on capital (pp. 612-613).
 - Six sources of funding liquidity; wholesale deposits ``can disappear quickly'' (pp. 459-460).
+
+- Reproduced by credit-cds-securitisation-checks.py: Examples 17.1-17.4, Tables 17.1-17.5 (Q = 3.03%), 19.1-19.2, Appendix K (123 bp, MTM 0.0111); Table K.1 misprints year-4 survival 0.9321 (Table K.2: 0.9231).
+- DLC: 12% pre-tax ROE on 5% equity; a 3.2% rise in loan losses makes a 1%-equity bank insolvent (pp. 28-30); combined and operating ratios, Table 3.2 (pp. 59-60).
 
 ## Limits
 

@@ -4893,3 +4893,87 @@ Coverage unchanged: 281/424 objectives and 655/1,030 items.
 
 **Limits.** Option inputs, the 2021-2023 ROEs and the peer data remain illustrative. Delaware
 case law and other states' partnership statutes were not read.
+
+## Credit, time-series and valuation batch, 20 October 2026
+
+**Starting state.** Branch `codex/credit-timeseries-valuation-20261020` from the corrected
+PR #31 head `59df95b` (`codex/corporate-equity-valuation-20261020`). All 45 objectives were
+`missing`; three had candidate entries (`mech:cds-contract-credit-events`,
+`def:sovereign-credit-defaults`, `mod:garch-volatility-forecast`). Their 119 outline items map
+to no objective outside the batch. Coverage before: 281/424 objectives, 655/1,030 outline items.
+
+**Scope (45).**
+- equity-research-reporting: 2; free-cash-flow-valuation: 4; residual-income-valuation: 3; private-company-valuation: 3
+- intercorporate-investments: 2; foreign-currency-reporting: 3; financial-institution-analysis: 3
+- credit-risk-analysis: 2; credit-models: 4; credit-default-swaps: 3; sovereign-credit-analysis: 1; securitisation: 3
+- linear-regression: 4; time-series-models: 7; backtesting-simulation: 1
+
+Implemented in prerequisite order: forecast models and research reports, free cash flow,
+residual income, private companies; intercorporate investments, foreign currency, financial
+institutions; credit risk and corporate credit, credit models, CDS, sovereign credit,
+securitisation; multiple regression, then time series; scenario analysis last.
+
+**Outline pages read.** Level I (`7099c7688942`) PDF pp. 16-17, 21-22; Level II
+(`0242f4b7ba07`) PDF pp. 1-2, 8, 14-16, 18-19, 27. Each of the 119 items was reviewed against
+its page and given an item-specific rationale in `outline-crosswalk.json`. The review found
+gaps that were then written into the entries rather than recorded as residual gaps: the types
+of heteroskedasticity and the direction of serial-correlation bias, the regression process and
+problem types, a seasonal-lag forecast value, numerical ARCH variance forecasts, implied
+residual-income growth from P/B, value recognition across models, three-stage FCFE and
+multiple-based terminal values, special purpose and variable interest entities, IAS 21
+disclosures, card and auto ABS, residential loan features, spread drivers by macro, market and
+issuer factors, issue ratings by seniority, and CDS against equity and loans.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Books: Damodaran, *Investment Valuation*, 3rd ed. (2012), pp. 157, 167-168, 282-284, 351-363, 372-376, 380-383, 667-698, 870-877, 894-919; Subramanyam and Wild (2009), pp. 41-43, 262-275, 301-311, 492-502, 547-558, 566-568; Hull, *Risk Management and Financial Institutions*, 6th ed. (2023), pp. 28-34, 57-66, 367-401, 413-415, 689-691; Hull, *Options, Futures, and Other Derivatives*, 11th Global ed. (2021), pp. 201-206, 587-598; Fabozzi (ed.), *Handbook of Fixed Income Securities*, 9th ed. (2021), pp. 204-207, 362, 370-374, 1021-1024; Fabozzi and Kothari, *Introduction to Securitization* (2008), pp. 3-24, 31-46, 85-97, 153-166, 217-218, 284-286; Tsay, *Analysis of Financial Time Series*, 3rd ed. (2010), pp. 30-31, 37-47, 53-56, 71-78, 114-117, 428-431.
+- Online texts and papers: Hyndman and Athanasopoulos, FPP3 secs. 5.2, 5.8, 5.10, 7.4, 7.5, 9.1; Penn State STAT 501 lessons 5-8 and 10-14 (Internet Archive copies); Fuster, Lucca and Vickery, NY Fed Staff Report 1001 (2022), pp. 1-10; Berd, Mashal and Wang (2004, arXiv 0912.4618), p. 13.
+- Standards, law and supervision: IAS 21, IAS 28, IAS 29, IFRS 10, IFRS 11, IFRS 12 and paragraphs of IAS 12, IFRS 3 and IFRS 9 (EU 2023/1803); FAS 52 (paras. 5-16, 39) and the summaries of FAS 141R, FAS 160, FAS 167 and ASU 2016-01; Basel Framework RBC20, RBC30, LEV20, LCR20, NSF20 (generated 20/10/2026); UFIRS, 62 FR 752-757 (1997); Regulation (EU) 2017/2402 Arts. 2, 6; Directive (EU) 2019/2162 Arts. 3, 4, 15, 16; Delegated Regulation (EU) 2016/958 Arts. 2-5; FINRA Rule 2241(c); FHFA AB 2021-02.
+- Data: Damodaran's US annual returns 1928-2025 (already in the repository) for the regression, time-series and scenario examples.
+- Curriculum volumes and answer workbooks were not used; the outlines were used only to map and review items.
+
+**Access limits and unread sources.**
+- The IMF sovereign risk and debt sustainability framework guidance and MSRB pages refused access (403 and access denied); APB Opinion 18 returned an access-denied file, so the US 20 percent equity-method presumption rests on Subramanyam and Wild.
+- Ohlson (1995) is paywalled; the persistence factor is stated as a derivation. Diebold's and Hamilton's PDFs were image-only. S&P and Moody's rating methodologies (including notching) were not read; issue ratings by seniority are marked Interpretation.
+- Newey and West (1987) and Engle and Granger (1987) were not read; HAC errors and the two-step test are used through statsmodels and marked Interpretation. The 2014 ISDA Definitions remain unread (sold by ISDA).
+- The STAT 501 copies were fetched through the Internet Archive; their capture timestamps were not retained in the saved files. Only the summaries of FAS 160 and FAS 167 were read.
+- CMBS balloon risk lacks a primary source read here and is marked Interpretation.
+
+**Discrepancies found in sources** (recorded in the entries and reading notes):
+- Hull (2023) Table K.1 prints the year-4 survival probability as 0.9321; Table K.2 and $e^{-0.08}$ give 0.9231.
+- Fabozzi and Kothari: the average life at 165% PSA rebuilds to 8.54 years against a printed 8.6; Table 3.2 retires class B in month 97 while the text says 98, and prints balances for classes C and D (96.5m, 73m) that differ from Structure 1 as stated (159.225m, 120.45m); the p. 94 mortality table lists A (0.28%) below AA (0.50%). The PAC total of 470,224,580 reproduces to the dollar.
+- Hull (2021) Example 25.1: the implied hazard rebuilds to 0.5721% against a printed 0.5717%, with the same duration (4.447) and price (100.27); the difference is within payment and default timing conventions.
+
+**Conventions protected by the examples.**
+- Risk-neutral default probabilities for valuation, physical ones for scenarios; recovery as a share of par; CVA with exposure including the coupon due at default.
+- CDS hazards implied and values computed with the same recovery; Credit01 neutrality distinguished from jump-to-default neutrality.
+- Translation: current rate preserves local ratios; temporal exposure is the net monetary position; hyperinflation restated before translation under IFRS.
+- Time series: every forecast comparison is chronological (train to 1989, test 1990-2025, expanding window); stationarity is tested before regressions on levels; Engle-Granger residuals use their own critical values.
+- Simulation: the bootstrap resamples whole years to keep the stock-bond pairing; sensitivities use common random numbers.
+
+**Numerical evidence** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; all run with `python -W error` by `make examples`):
+- `notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py`: 12 parts, 48 checks; rebuilds the Harbour value from its forecast; FCFF by four routes; FCFF and FCFE values equal at constant leverage and against a 3,000-year sum; RI against DDM with the dirty-surplus identity; EVA against DCF.
+- `notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py`: 9 parts, 44 checks; equity method by two routes; consolidated balance sheet against one-line parent equity; translation adjustment as a plug against its decomposition, including Subramanyam and Wild's BritCo; Hull's DLC and Table 3.2.
+- `notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py`: 10 parts, 52 checks; Hull Examples 17.1-17.4, Tables 17.1-17.5, 19.1-19.2 and Appendix K; OFOD Example 25.1 and Table 8.1; the sovereign debt formula against a nominal roll-forward; Fabozzi and Kothari's pool, sequential and PAC tranches rebuilt month by month.
+- `notes/artefacts/linear-regression/multiple-regression-checks.py`: 4 parts, 21 checks; normal equations against statsmodels; nested F by SSE; the omitted-variable identity; logit by Newton-Raphson against statsmodels.
+- `notes/artefacts/time-series-models/time-series-checks.py`: 7 parts, 32 checks; hand-run Dickey-Fuller and LM statistics against statsmodels; forecasts by recursion against closed form; Chow test from subsample SSE.
+- `notes/artefacts/backtest-inference/scenario-simulation-checks.py`: 3 parts, 10 checks; scenario returns against data rows; Monte Carlo moments against analytic values.
+
+**Errors caught during development** (all corrected before the text was final):
+- many expected figures were set before computing (ARCH estimates, cointegration critical value, AR(4) out-of-sample RMSE, Merton spread, CDS strategy notionals, sovereign debt change, scenario percentiles, regression residual years and others); the text uses the computed values;
+- the Quay balance sheet first used book assets of 540 instead of 530, which broke the consolidated balance sheet; the residual-income identity was first written with the wrong sign for the equity credits; the temporal-method direct route was first mis-specified and was rewritten with fully specified dollar flows;
+- the consolidation ratio check claimed full consolidation had the highest leverage; proportionate consolidation does, and the text says so;
+- the Silber regression needed exponentiation and division by 100;
+- a claim that restoring Tamar Bank's coverage would cost "a full year" of profit was wrong (0.68 against 0.40); an unsourced historical example of capital-structure arbitrage losses was removed; a paraphrase of Hull on speculative-grade spreads was tightened to what p. 384 says;
+- a cross-reference to a nonexistent ROIC entry and a \citealp macro the house style does not define were replaced.
+
+**Coverage.** All 45 objectives were reassessed operation by operation at their stated depth
+and moved to `covered`, mapped to 45 new entries plus the three candidates above. Objectives
+move from 281/424 to 326/424, and outline items from 655/1,030 to 774/1,030 (Level I 279,
+Level II 312, Portfolio Management 48, shared core 135). This is editorial coverage, not
+learner mastery or independent human review.
+
+**Limits.** Penrose, Quay, Larch Brands, Tamar Bank, Wren Insurance, Kestrel Logistics, the
+Arden bond, Larkspur, Veloria, Avon Fittings, Brent Utilities and Fenton Engineering are
+hypothetical, as are the rating-spread schedule, the scenario probabilities and the CDS market
+quotes used in the strategies. Regulatory texts are as read in October 2026; national
+implementations of Basel and of the covered bond directive were not read.

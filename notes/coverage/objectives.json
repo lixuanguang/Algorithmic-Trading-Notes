@@ -5857,13 +5857,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:forecast-model-valuation"
+   ],
+   "candidate_entries": [
+    "meth:forecast-model-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp.~492--499"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:forecast-model-valuation"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 1 (Harbour value rebuilt from the forecast: 8.49 a share; scenarios 4.44-10.42; WACC/growth grid 6.14-13.35); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -5970,13 +5989,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:research-report-evaluation"
+   ],
+   "candidate_entries": [
+    "def:research-report-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2016-958-recommendations",
+      "locator": "Arts.~2--4"
+     },
+     {
+      "key": "finra-rule-2241",
+      "locator": "para.~(c)(1)--(4)"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p.~283 n.~5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2016-958-recommendations.md",
+     "notes/readings/finra-rule-2241.md",
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:research-report-evaluation"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 2 (three targets 13.11, 11.39, 8.49 bridged; implied WACC 6.95%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -6916,13 +6964,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:credit-risk-components"
+   ],
+   "candidate_entries": [
+    "def:credit-risk-components"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~371--372, 395--396; pp.~369--370; p.~368"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p.~568"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:credit-risk-components"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 1 (Hull Example 17.2 and Tables 17.1, 17.4-17.5 reproduced; loan expected loss 0.096); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -6934,15 +7006,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "meth:sovereign-credit-analysis",
     "def:sovereign-credit-defaults"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:sovereign-credit-defaults",
+    "meth:sovereign-credit-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "pp.~370--371; pp.~206--207"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:sovereign-credit-analysis",
+     "def:sovereign-credit-defaults"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 9 (Veloria: eq. 17-1 against a nominal roll-forward, +4.05 points; pb* 3.05%; GFN 13.55%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -6956,13 +7048,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:corporate-credit-analysis"
+   ],
+   "candidate_entries": [
+    "meth:corporate-credit-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p.~567"
+     },
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~368--369; p.~367 n.~1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:corporate-credit-analysis"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 2 (Hull Example 17.1 Z = 5.46; Kestrel ratios; recovery waterfall at 5x and 6x); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -6975,13 +7091,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:securitisation-process"
+   ],
+   "candidate_entries": [
+    "def:securitisation-process"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "fabozzi-kothari-securitisation-2008",
+      "locator": "pp.~5--6; pp.~8--12; pp.~13--20"
+     },
+     {
+      "key": "eu-2017-2402-securitisation",
+      "locator": "Art.~2(1); Art.~2(2); Art.~6"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "pp.~205--206"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/fabozzi-kothari-securitisation-2008.md",
+     "notes/readings/eu-2017-2402-securitisation.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:securitisation-process"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 10 (sizing and structure checks; retention arithmetic in the entry); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -6993,13 +7138,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:abs-structures-credit-enhancement"
+   ],
+   "candidate_entries": [
+    "meth:abs-structures-credit-enhancement"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-dir-2019-2162-covered-bonds",
+      "locator": "Art.~3(1), (3)"
+     },
+     {
+      "key": "wide-fuster-mbs-review",
+      "locator": "p.~7"
+     },
+     {
+      "key": "fabozzi-kothari-securitisation-2008",
+      "locator": "pp.~85--97; pp.~153--164"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "pp.~204--205"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-dir-2019-2162-covered-bonds.md",
+     "notes/readings/wide-fuster-mbs-review.md",
+     "notes/readings/fabozzi-kothari-securitisation-2008.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:abs-structures-credit-enhancement"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 10 (Fabozzi-Kothari sizing 8.40% AAA; excess spread 3%; card trust excess spread 6% and trigger; Hull Table 8.1 ABS CDO losses); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7013,13 +7192,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:mortgage-securities-prepayment"
+   ],
+   "candidate_entries": [
+    "meth:mortgage-securities-prepayment"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "fabozzi-kothari-securitisation-2008",
+      "locator": "pp.~34--35; p.~43; pp.~32--34"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "p.~206; p.~206 n.~3"
+     },
+     {
+      "key": "wide-fuster-mbs-review",
+      "locator": "p.~10; p.~2 n.~2; pp.~1--2; p.~2; p.~8"
+     },
+     {
+      "key": "fhfa-ab-2021-02",
+      "locator": "pp.~1--2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/fabozzi-kothari-securitisation-2008.md",
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-fuster-mbs-review.md",
+     "notes/readings/fhfa-ab-2021-02.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:mortgage-securities-prepayment"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 10 (Table 3.1 month 1; average life 8.54/11.2/3.7 years; sequential payoffs months 78 and 97; PAC 470,224,580); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -8926,13 +9139,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:multiple-regression-formulation"
+   ],
+   "candidate_entries": [
+    "meth:multiple-regression-formulation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "regression-methods-course-notes",
+      "locator": "Lessons~5.3--5.4"
+     },
+     {
+      "key": "us-asset-returns-1928-2025",
+      "locator": "sheet ``Returns by year''"
+     },
+     {
+      "key": "s7-hyndman",
+      "locator": "sec.~7.5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/regression-methods-course-notes.md",
+     "notes/readings/us-asset-returns-1928-2025.md",
+     "notes/readings/s7-hyndman.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:multiple-regression-formulation"
+    ],
+    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 1 (Baa excess return on Treasury and equity excess returns, 1928-2025; omitted-variable identity in a seeded simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -8947,13 +9189,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:multiple-regression-fit-tests"
+   ],
+   "candidate_entries": [
+    "meth:multiple-regression-fit-tests"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "regression-methods-course-notes",
+      "locator": "Lesson~6.2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/regression-methods-course-notes.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:multiple-regression-fit-tests"
+    ],
+    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 2 (ANOVA R2 0.597, F 70.4; nested F 0.40; partial R2 29.2%; prediction interval -9.0% to +11.4%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -8966,13 +9227,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:regression-misspecification"
+   ],
+   "candidate_entries": [
+    "meth:regression-misspecification"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "regression-methods-course-notes",
+      "locator": "Lessons~7.6, 13.1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/regression-methods-course-notes.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:regression-misspecification"
+    ],
+    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 3 (Breusch-Pagan, White, HC1 and Newey-West errors, Durbin-Watson, VIF; simulated collinearity VIF 12.3); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -8986,13 +9266,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:regression-extensions"
+   ],
+   "candidate_entries": [
+    "meth:regression-extensions"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "regression-methods-course-notes",
+      "locator": "Lesson~11.2; Lesson~13.2"
+     },
+     {
+      "key": "s7-hyndman",
+      "locator": "sec.~7.4"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/regression-methods-course-notes.md",
+     "notes/readings/s7-hyndman.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:regression-extensions"
+    ],
+    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 4 (leverage, studentized deleted residuals, Cook's distance; post-1980 dummies; logistic regression by Newton-Raphson and statsmodels); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9006,13 +9310,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:trend-models"
+   ],
+   "candidate_entries": [
+    "meth:trend-models"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hyndman",
+      "locator": "sec.~7.4; sec.~7.5"
+     },
+     {
+      "key": "us-asset-returns-1928-2025",
+      "locator": "sheet ``Returns by year''"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hyndman.md",
+     "notes/readings/us-asset-returns-1928-2025.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:trend-models"
+    ],
+    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 1 (linear and log-linear CPI trends; Durbin-Watson 0.013 and 0.051); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9027,13 +9355,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:stationarity-unit-roots"
+   ],
+   "candidate_entries": [
+    "def:stationarity-unit-roots"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-tsay",
+      "locator": "pp.~30--31; p.~72; p.~54"
+     },
+     {
+      "key": "s7-hyndman",
+      "locator": "sec.~9.1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-tsay.md",
+     "notes/readings/s7-hyndman.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:stationarity-unit-roots"
+    ],
+    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 2 (simulated random-walk variance; ADF and KPSS on the price level and inflation; hand-run Dickey-Fuller t); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9048,13 +9400,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:autoregressive-forecasting"
+   ],
+   "candidate_entries": [
+    "meth:autoregressive-forecasting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "regression-methods-course-notes",
+      "locator": "Lesson~14.1"
+     },
+     {
+      "key": "s7-tsay",
+      "locator": "pp.~37--40; p.~56"
+     },
+     {
+      "key": "s7-hyndman",
+      "locator": "sec.~7.4"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/regression-methods-course-notes.md",
+     "notes/readings/s7-tsay.md",
+     "notes/readings/s7-hyndman.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:autoregressive-forecasting"
+    ],
+    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 3 (AR(1) inflation: mean 3.22%, half-life 1.40 years; residual autocorrelations; chain-rule forecasts; seasonal lag and seasonal-lag forecasts 5.16 and 4.38 in a seeded simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9068,13 +9449,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:forecast-accuracy-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:forecast-accuracy-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hyndman",
+      "locator": "sec.~5.8"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hyndman.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:forecast-accuracy-evaluation"
+    ],
+    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 4 (chronological split 1928-1989/1990-2025: RMSE 1.46% AR(1), 1.66% random walk, 1.60% mean; expanding window 1.45%; Chow F 1.03; half-lives 1.40 and 0.83); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9087,15 +9487,35 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "mod:arch-conditional-variance",
     "mod:garch-volatility-forecast"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mod:arch-conditional-variance",
+    "mod:garch-volatility-forecast"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-tsay",
+      "locator": "pp.~115--116"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-tsay.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "mod:arch-conditional-variance",
+     "mod:garch-volatility-forecast"
+    ],
+    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 5 (Engle LM 52.1 on simulated ARCH(1); OLS 0.29 against MLE 0.54; variance forecasts 0.000379 to the long-run 0.000469; annual S&P LM 2.22); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9107,13 +9527,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cointegration-testing"
+   ],
+   "candidate_entries": [
+    "meth:cointegration-testing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-tsay",
+      "locator": "pp.~428--430; pp.~430--431"
+     },
+     {
+      "key": "s7-hyndman",
+      "locator": "sec.~7.5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-tsay.md",
+     "notes/readings/s7-hyndman.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:cointegration-testing"
+    ],
+    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 6 (spurious regression t 4.74, DW 0.025; Engle-Granger t -16.0 against -3.36); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9126,13 +9570,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:time-series-model-selection"
+   ],
+   "candidate_entries": [
+    "meth:time-series-model-selection"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-tsay",
+      "locator": "pp.~46--47"
+     },
+     {
+      "key": "s7-hyndman",
+      "locator": "sec.~7.5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-tsay.md",
+     "notes/readings/s7-hyndman.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:time-series-model-selection"
+    ],
+    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 7 (AIC/BIC prefer AR(4); out-of-sample RMSE 1.60% against 1.45% for AR(1)); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9667,13 +10135,82 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:intercorporate-investment-classification"
+   ],
+   "candidate_entries": [
+    "def:intercorporate-investment-classification"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ifrs10",
+      "locator": "paras.~6--7; para.~22; para.~7"
+     },
+     {
+      "key": "eu-2023-1803-ifrs11",
+      "locator": "paras.~15--16, 20, 24"
+     },
+     {
+      "key": "eu-2023-1803-ias28",
+      "locator": "para.~5; para.~10"
+     },
+     {
+      "key": "eu-2023-1803-ifrs9",
+      "locator": "paras.~5.7.5--5.7.6"
+     },
+     {
+      "key": "eu-2023-1803-ifrs3",
+      "locator": "para.~32"
+     },
+     {
+      "key": "us-equity-investments-2016",
+      "locator": "Summary"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p.~272"
+     },
+     {
+      "key": "us-business-combinations-2007",
+      "locator": "para.~20"
+     },
+     {
+      "key": "us-noncontrolling-interests-2007",
+      "locator": "Summary"
+     },
+     {
+      "key": "eu-2023-1803-ifrs12",
+      "locator": "App.~A, para.~B21; paras.~24--31"
+     },
+     {
+      "key": "us-variable-interest-entities-2009",
+      "locator": "Summary"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ifrs10.md",
+     "notes/readings/eu-2023-1803-ifrs11.md",
+     "notes/readings/eu-2023-1803-ias28.md",
+     "notes/readings/eu-2023-1803-ifrs9.md",
+     "notes/readings/eu-2023-1803-ifrs3.md",
+     "notes/readings/us-equity-investments-2016.md",
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/us-business-combinations-2007.md",
+     "notes/readings/us-noncontrolling-interests-2007.md",
+     "notes/readings/eu-2023-1803-ifrs12.md",
+     "notes/readings/us-variable-interest-entities-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:intercorporate-investment-classification"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: parts 1-2 (classification cases including a structured entity; equity method 115.8 by two routes; FVPL against FVOCI); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9685,13 +10222,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:consolidation-ratio-effects"
+   ],
+   "candidate_entries": [
+    "meth:consolidation-ratio-effects"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p.~273"
+     },
+     {
+      "key": "eu-2023-1803-ifrs11",
+      "locator": "para.~24"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2023-1803-ifrs11.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:consolidation-ratio-effects"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 3 (goodwill 22 or 25; parent profit 105.2 both ways; balance sheet 1,585.0; ratios by method); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9804,13 +10365,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:functional-currency-transactions"
+   ],
+   "candidate_entries": [
+    "def:functional-currency-transactions"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias21",
+      "locator": "para.~8; paras.~9--12; para.~21; paras.~52--53"
+     },
+     {
+      "key": "us-foreign-currency-1981",
+      "locator": "para.~39; para.~15"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias21.md",
+     "notes/readings/us-foreign-currency-1981.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:functional-currency-transactions"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 6 (USD receivable: gain 0.5, loss 0.2, total 0.3); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9826,13 +10411,47 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:currency-translation-methods"
+   ],
+   "candidate_entries": [
+    "meth:currency-translation-methods"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias21",
+      "locator": "paras.~39--40; paras.~42--43; para.~40"
+     },
+     {
+      "key": "us-foreign-currency-1981",
+      "locator": "paras.~12--14; para.~11"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp.~302--304; pp.~307--311; pp.~304--306"
+     },
+     {
+      "key": "eu-2023-1803-ias29",
+      "locator": "para.~3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias21.md",
+     "notes/readings/us-foreign-currency-1981.md",
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2023-1803-ias29.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:currency-translation-methods"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: parts 4-5 (Subramanyam and Wild's BritCo reproduced; Penrose Inc. current rate against temporal; hyperinflation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9846,13 +10465,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:multinational-currency-tax-analysis"
+   ],
+   "candidate_entries": [
+    "meth:multinational-currency-tax-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p.~310"
+     },
+     {
+      "key": "eu-2023-1803-ias12",
+      "locator": "para.~81(c)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2023-1803-ias12.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:multinational-currency-tax-analysis"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 7 (Larch Brands constant-currency growth 4.75%; ETR 23.08% reconciliation; mix shift 22.77%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9864,13 +10507,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:financial-institution-features"
+   ],
+   "candidate_entries": [
+    "def:financial-institution-features"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "p.~28; pp.~65--66"
+     },
+     {
+      "key": "basel-framework-2026",
+      "locator": "RBC20.1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/basel-framework-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:financial-institution-features"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 8 (Hull's DLC reproduced: 12% pre-tax ROE; insolvency at 1% equity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9884,13 +10551,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:bank-camels-analysis"
+   ],
+   "candidate_entries": [
+    "meth:bank-camels-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "fdic-ufirs-1997",
+      "locator": "pp.~752--753"
+     },
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~459--460"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/fdic-ufirs-1997.md",
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:bank-camels-analysis"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 8 (Tamar Bank capital, asset quality, earnings, liquidity and repricing-gap ratios against Basel minimums); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -9902,13 +10593,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:insurer-analysis"
+   ],
+   "candidate_entries": [
+    "meth:insurer-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~57--64; pp.~557--558"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:insurer-analysis"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 9 (Hull's Table 3.2 reproduced; Wren combined ratio 97.5% -> 104.9%, development, solvency); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11005,13 +11715,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:fcff-fcfe-derivation"
+   ],
+   "candidate_entries": [
+    "meth:fcff-fcfe-derivation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp.~351--352"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:fcff-fcfe-derivation"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 3 (Avon Fittings FCFF 44.50 by four routes; FCFE 45.50); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11024,13 +11753,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:fcf-forecasting"
+   ],
+   "candidate_entries": [
+    "meth:fcf-forecasting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp.~352--353"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:fcf-forecasting"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 4 (Harbour FCFE forecasts; constant-leverage borrowing); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11046,13 +11794,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:fcf-valuation-models"
+   ],
+   "candidate_entries": [
+    "meth:fcf-valuation-models"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp.~358--362, 383"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:fcf-valuation-models"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 5 (Brent Utilities firm 1,500 and equity 900 by FCFF and FCFE; two-stage value 48.13; three-stage value 51.05); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11065,13 +11832,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cash-flow-proxies"
+   ],
+   "candidate_entries": [
+    "meth:cash-flow-proxies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p.~372"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:cash-flow-proxies"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 6 (dividends, net income and EBITDA against FCFE and FCFF for Harbour); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11295,13 +12081,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:residual-income-eva"
+   ],
+   "candidate_entries": [
+    "def:residual-income-eva"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp.~42, 499, 502"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp.~870--871"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:residual-income-eva"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 7 (RI 0.60; Harbour EVA -8.29 or 5.21; MVA 478.81; EVA = DCF 350.35); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11317,13 +12127,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:residual-income-valuation"
+   ],
+   "candidate_entries": [
+    "meth:residual-income-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp.~42, 499"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:residual-income-valuation"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: parts 8-9 (single stage 40.00; multistage with persistence 23.59; Harbour 809.24; implied RI growth 7.27% at P/B 1.71); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11338,13 +12167,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:residual-income-comparison"
+   ],
+   "candidate_entries": [
+    "meth:residual-income-comparison"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p.~42"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:residual-income-comparison"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 9 (RI 809.24 = DDM 834.16 less PV of equity credits 24.92; value recognition 80% from book against 91% terminal in the DDM); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11357,13 +12205,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-earnings-normalisation"
+   ],
+   "candidate_entries": [
+    "meth:private-earnings-normalisation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp.~667--668"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-earnings-normalisation"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 10 (Fenton normalised EBIT 5.75, FCFF 3.51); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11376,13 +12243,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-discount-rate"
+   ],
+   "candidate_entries": [
+    "meth:private-discount-rate"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp.~669--672"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-discount-rate"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 11 (CAPM 9.20%, expanded 12.70%, build-up 12.50%, total beta 18.51%; WACC 8.34% and 15.93%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11397,13 +12283,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-company-valuation"
+   ],
+   "candidate_entries": [
+    "meth:private-company-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp.~681--682"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-company-valuation"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 12 (EV 59.93 and 26.05; GPC 52.13; transactions 47.26; NAV 22.5; DLOC/DLOM compounded to 37.91%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11944,13 +12849,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:risky-bond-cva"
+   ],
+   "candidate_entries": [
+    "meth:risky-bond-cva"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~395--396"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:risky-bond-cva"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 3 (Hull Table 17.3, Q = 3.03%, by two routes; Arden bond CVA 2.80, value 102.86, spread 97 bp; sensitivities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11963,13 +12887,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:rating-migration-returns"
+   ],
+   "candidate_entries": [
+    "meth:rating-migration-returns"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~367--369; pp.~414--415"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:rating-migration-returns"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 4 (Table 19.1 and its fifth power, Table 19.2; BBB expected excess return 1.08% against 1.60%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -11981,13 +12924,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mod:structural-reduced-form-credit"
+   ],
+   "candidate_entries": [
+    "mod:structural-reduced-form-credit"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~386--387"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "mod:structural-reduced-form-credit"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 5 (Hull Example 17.4 solved; spread 1.24% two ways; matching hazard 2.06%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -12001,13 +12963,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:credit-spread-term-structure"
+   ],
+   "candidate_entries": [
+    "meth:credit-spread-term-structure"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~380--381"
+     },
+     {
+      "key": "fabozzi-kothari-securitisation-2008",
+      "locator": "p.~218"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/fabozzi-kothari-securitisation-2008.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:credit-spread-term-structure"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 6 (Hull Example 17.3 forward hazards; CDS curves for flat, rising and falling hazards); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -12019,15 +13005,40 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
+   "entries": [
+    "def:cds-contract-features",
     "mech:cds-contract-credit-events"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:cds-contract-features",
+    "mech:cds-contract-credit-events"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~372--374; pp.~376--377"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "p.~596; Example~25.1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:cds-contract-features",
+     "mech:cds-contract-credit-events"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: parts 7-8 (OFOD Example 25.1 upfront 0.27; index payment 1,660,000 and 13,280 per default); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -12039,13 +13050,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cds-pricing"
+   ],
+   "candidate_entries": [
+    "meth:cds-pricing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp.~689--691"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "pp.~594--595; p.~594"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:cds-pricing"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 7 (Appendix K: 4.1150s, 0.0506, 123 bp, MTM 0.0111; binary 205 bp; implied hazard 1.63%; recovery insensitivity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -12057,13 +13092,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cds-strategies"
+   ],
+   "candidate_entries": [
+    "meth:cds-strategies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "p.~378"
+     },
+     {
+      "key": "berd-mashal-wang-2004",
+      "locator": "p.~13"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/berd-mashal-wang-2004.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:cds-strategies"
+    ],
+    "example": "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py: part 8 (hedged bond; negative basis; equity-implied spread 124 bp against CDS 200 bp; Credit01-neutral and equal-notional steepeners; jump to default -4.23m); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13122,13 +14181,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:scenario-simulation-analysis"
+   ],
+   "candidate_entries": [
+    "meth:scenario-simulation-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp.~894--897"
+     },
+     {
+      "key": "us-asset-returns-1928-2025",
+      "locator": "sheet ``Returns by year''"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/us-asset-returns-1928-2025.md"
+    ],
+    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:scenario-simulation-analysis"
+    ],
+    "example": "notes/artefacts/backtest-inference/scenario-simulation-checks.py: parts 1-3 (historical scenarios 1931, 1973-74, 2008, 2022; bootstrap against normal Monte Carlo; sensitivities with common random numbers); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {

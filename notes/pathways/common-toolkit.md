@@ -71,6 +71,13 @@ All three partly checked 2026-10-18, draft; examples in `notes/artefacts/linear-
 
 Correction pass of 2026-10-18 (plan sec. 13.5): `meth:simple-regression-estimation` states when the estimates exist (finite data, $S_{xx}>0$); `meth:regression-diagnostics-anova` separates the assumptions for computing, unbiasedness, conventional variances and exact $t$/$F$ inference, requires $n>2$, and restricts $F=t^2$ to the zero-slope null; `meth:regression-prediction-functional-form` treats the back-transformed log prediction as a geometric mean (a median only under a median-zero log error), qualifies Duan's consistency statement and corrects the log--log percentage rule; the ES pitfall of `meth:historical-simulation` now matches the canonical VaR of 8,400.
 
+Credit, time-series and valuation batch (2026-10-20), on annual US data for 1928-2025 and seeded simulations:
+
+- Multiple regression (`notes/artefacts/linear-regression/multiple-regression-checks.py`): `meth:multiple-regression-formulation`, `meth:multiple-regression-fit-tests`, `meth:regression-misspecification`, `meth:regression-extensions`, built on a regression of Baa corporate bond excess returns on Treasury and equity excess returns.
+- Time-series models (`notes/artefacts/time-series-models/time-series-checks.py`): `meth:trend-models`, `def:stationarity-unit-roots`, `meth:autoregressive-forecasting`, `meth:forecast-accuracy-evaluation`, `mod:arch-conditional-variance`, `meth:cointegration-testing`, `meth:time-series-model-selection`, built mainly on US inflation.
+
+Sources: STAT 501 lessons 5-8 and 10-14 (Internet Archive copies), Tsay (2010, 3rd ed.) chaps. 2, 3 and 8, Hyndman and Athanasopoulos (FPP3) secs. 5.8, 5.10, 7.4, 7.5 and 9.1. Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice
@@ -78,3 +85,5 @@ Correction pass of 2026-10-18 (plan sec. 13.5): `meth:simple-regression-estimati
 ## Questions carried forward
 
 - The equity-risk-premium and credit-spread figures in the required-return example are illustrative; which estimates should replace them, and from what data?
+- Newey-West standard errors and the Engle-Granger critical values are used from statsmodels without having read Newey and West (1987) or Engle and Granger (1987); which textbook treatment should be read to state their conditions?
+- Does the AR(1) preference over AR(4) for US inflation survive a test of equal predictive accuracy (Diebold-Mariano) rather than a comparison of RMSEs?

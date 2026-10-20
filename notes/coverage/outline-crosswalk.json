@@ -8527,9 +8527,9 @@
    "objectives": [
     "objective:value-equity-from-forecast-model"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:forecast-model-valuation explains why a forecast model is built (projecting statements from drivers to value) and the order of construction, citing Subramanyam and Wild pp. 492-499.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m046:b02",
@@ -8547,9 +8547,9 @@
    "objectives": [
     "objective:value-equity-from-forecast-model"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:forecast-model-valuation gives four checks of a model's construction (mechanics, plausibility against history and peers, steady-state consistency, sensitivity) and applies them to Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m046:b03",
@@ -8568,9 +8568,9 @@
    "objectives": [
     "objective:value-equity-from-forecast-model"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:forecast-model-valuation turns the Harbour forecast into 8.49 a share and interprets it through scenario values (4.44-10.42) and a WACC-growth grid; checked by equity-fcf-ri-private-checks.py part 1.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m047:b01",
@@ -8729,9 +8729,9 @@
    "objectives": [
     "objective:evaluate-research-reports"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:research-report-evaluation lists a report's elements from EU 2016/958 Arts. 2-4 and FINRA Rule 2241(c), and a checklist for reading one critically.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m049:b02",
@@ -8749,9 +8749,9 @@
    "objectives": [
     "objective:evaluate-research-reports"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:research-report-evaluation contrasts sell-side and buy-side research (Damodaran p. 283 n. 5) and the evidence on analysts' forecasts (pp. 282-284).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m049:b03",
@@ -8769,9 +8769,9 @@
    "objectives": [
     "objective:evaluate-research-reports"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:research-report-evaluation explains divergent estimates by method, forecasts, discount rate, claims and horizon, and bridges three Harbour estimates (13.11, 11.39, 8.49) one assumption at a time.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m050:b01",
@@ -9526,9 +9526,9 @@
    "objectives": [
     "objective:explain-credit-risk-components"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:credit-risk-components describes PD, LGD and EAD, hazard rates, physical against risk-neutral probabilities and recovery conventions, reproducing Hull Example 17.2 and Tables 17.1-17.5.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m064:b02",
@@ -9546,9 +9546,9 @@
    "objectives": [
     "objective:explain-credit-risk-components"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:credit-risk-components describes the uses of ratings (investment rules), rating through the cycle and their lag behind markets (Hull pp. 367-368; Subramanyam and Wild p. 568).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m064:b03",
@@ -9566,9 +9566,9 @@
    "objectives": [
     "objective:explain-credit-risk-components"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:credit-risk-components describes macroeconomic, market and issuer-specific drivers of the level and volatility of spreads from Hull pp. 372 and 378-385.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m065:b01",
@@ -9586,9 +9586,9 @@
    "objectives": [
     "objective:analyse-sovereign-credit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:sovereign-credit-analysis covers sovereign indicators, debt dynamics, structure and financing needs, local- against foreign-currency debt, and US general obligation and revenue bonds (Fabozzi handbook chaps. 9, 17, 41), with the Veloria example; def:sovereign-credit-defaults covers default and recovery history.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m066:b01",
@@ -9606,9 +9606,9 @@
    "objectives": [
     "objective:analyse-corporate-credit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:corporate-credit-analysis describes the qualitative and quantitative rating factors and rules of thumb (Subramanyam and Wild pp. 547-568) and Altman's Z-score.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m066:b02",
@@ -9627,9 +9627,9 @@
    "objectives": [
     "objective:analyse-corporate-credit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:corporate-credit-analysis calculates and interprets leverage, coverage and FFO/debt for Kestrel Logistics against rating benchmarks; checked by credit-cds-securitisation-checks.py part 2.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m066:b03",
@@ -9647,9 +9647,9 @@
    "objectives": [
     "objective:analyse-corporate-credit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:corporate-credit-analysis describes seniority, security and absolute priority, Moody's recoveries by class, issue ratings that reflect recovery, and a recovery waterfall for Kestrel at two distressed multiples.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m067:b01",
@@ -9667,9 +9667,9 @@
    "objectives": [
     "objective:explain-securitisation-process"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:securitisation-process explains benefits to issuers, investors and the economy (Fabozzi and Kothari pp. 13-24, 284-286) and Hull's incentive costs.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m067:b02",
@@ -9687,9 +9687,9 @@
    "objectives": [
     "objective:explain-securitisation-process"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:securitisation-process describes the originator, SPV, servicer, investors and rating agencies, true sale, and EU risk retention (Regulation 2017/2402 Arts. 2, 6), with Fabozzi and Kothari's Ace Corporation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m068:b01",
@@ -9707,9 +9707,9 @@
    "objectives": [
     "objective:describe-abs-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes covered bonds (Directive 2019/2162 Arts. 3, 4, 15, 16: dual recourse, segregated cover pool, coverage, liquidity buffer) and how they differ from securitisation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m068:b02",
@@ -9727,9 +9727,9 @@
    "objectives": [
     "objective:describe-abs-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes excess spread, reserves, overcollateralisation, subordination and third-party enhancement, and reproduces Fabozzi and Kothari's sizing (AAA support 8.40%).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m068:b03",
@@ -9747,9 +9747,9 @@
    "objectives": [
     "objective:describe-abs-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes credit card ABS (revolving period, master trust, seller's interest, excess spread and early amortisation triggers) and auto loan ABS (amortising pass-throughs, enhancement, prepayment and LTV risk) from Fabozzi and Kothari pp. 153-164.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m068:b04",
@@ -9767,9 +9767,9 @@
    "objectives": [
     "objective:describe-abs-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes CDO pools, coverage tests and bottom-up analysis (Fabozzi and Kothari pp. 217-218) and reproduces Hull's ABS CDO loss table.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m069:b01",
@@ -9788,9 +9788,9 @@
    "objectives": [
     "objective:describe-mortgage-securities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:mortgage-securities-prepayment defines prepayment, contraction and extension risk and shows sequential and PAC time tranching rebuilt from Fabozzi and Kothari's 660m pool.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m069:b02",
@@ -9808,9 +9808,9 @@
    "objectives": [
     "objective:describe-mortgage-securities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:mortgage-securities-prepayment describes amortisation, fixed and adjustable rates with teasers, prepayment terms and conforming-loan credit terms (Fabozzi and Kothari; Hull 2021 p. 206; Fuster, Lucca and Vickery p. 2).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m069:b03",
@@ -9829,9 +9829,9 @@
    "objectives": [
     "objective:describe-mortgage-securities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:mortgage-securities-prepayment describes pass-throughs, CMOs, agency and non-agency RMBS, CPR, SMM and PSA, with Table 3.1 and the tranche cash flows reproduced.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m069:b04",
@@ -9849,9 +9849,9 @@
    "objectives": [
     "objective:describe-mortgage-securities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:mortgage-securities-prepayment describes CMBS call protection, prepayment risks (FHFA AB 2021-02 pp. 1-2) and B-piece buyers (Fuster, Lucca and Vickery p. 8); balloon risk is marked as interpretation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m070:b01",
@@ -12230,9 +12230,9 @@
    "objectives": [
     "objective:formulate-multiple-regression"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-formulation lists typical investment uses of multiple regression and the regression process from specification to checking to inference.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m001:b02",
@@ -12252,9 +12252,9 @@
    "objectives": [
     "objective:formulate-multiple-regression"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-formulation formulates the Baa excess-return regression on Treasury and equity factors (1928-2025) and interprets the partial slopes; checked by multiple-regression-checks.py part 1.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m001:b03",
@@ -12273,9 +12273,9 @@
    "objectives": [
     "objective:formulate-multiple-regression"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-formulation explains what residual plots can show (STAT 501 7.4) and why least squares forces zero-mean residuals, with the largest residuals interpreted; assumptions link to meth:regression-diagnostics-anova.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m002:b01",
@@ -12293,9 +12293,9 @@
    "objectives": [
     "objective:test-multiple-regression-fit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-fit-tests evaluates the ANOVA table, R2, adjusted R2, F and standard error of estimate for the Baa regression.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m002:b02",
@@ -12314,9 +12314,9 @@
    "objectives": [
     "objective:test-multiple-regression-fit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-fit-tests formulates and interprets the general linear F test (STAT 501 6.2), a nested test of two added factors (F 0.40) and partial R2.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m002:b03",
@@ -12335,9 +12335,9 @@
    "objectives": [
     "objective:test-multiple-regression-fit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multiple-regression-fit-tests calculates a predicted Baa excess return with its interval by hand and by statsmodels; checked by multiple-regression-checks.py part 2.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m003:b01",
@@ -12355,9 +12355,9 @@
    "objectives": [
     "objective:diagnose-regression-misspecification"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification describes forms of misspecification (omitted variables, functional form, scaling, pooling), their effects and avoidance; the omitted-variable identity is checked in a seeded simulation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m003:b02",
@@ -12375,9 +12375,9 @@
    "objectives": [
     "objective:diagnose-regression-misspecification"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification explains unconditional against conditional heteroskedasticity, its effect on standard errors, Breusch-Pagan and White tests, and robust errors, applied to the Baa regression.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m003:b03",
@@ -12395,9 +12395,9 @@
    "objectives": [
     "objective:diagnose-regression-misspecification"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification explains serial correlation's effect on inference, Durbin-Watson, Ljung-Box, Cochrane-Orcutt and Newey-West errors, with the Baa regression's DW of 1.88.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m003:b04",
@@ -12415,9 +12415,9 @@
    "objectives": [
     "objective:diagnose-regression-misspecification"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification explains multicollinearity, VIF thresholds (STAT 501 12.4) and remedies, with a seeded simulation showing VIF 12.3 and inflated standard errors.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m004:b01",
@@ -12435,9 +12435,9 @@
    "objectives": [
     "objective:extend-regression-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-extensions describes leverage, studentized deleted residuals and Cook's distance with STAT 501 thresholds, applied to the Baa regression (2009 an outlier, not influential).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m004:b02",
@@ -12456,9 +12456,9 @@
    "objectives": [
     "objective:extend-regression-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-extensions formulates intercept and slope dummies (post-1980) and interprets them; checked by multiple-regression-checks.py part 4.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m004:b03",
@@ -12477,9 +12477,9 @@
    "objectives": [
     "objective:extend-regression-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-extensions formulates and interprets a logistic regression of Baa underperformance on equity returns, fitted by Newton-Raphson and statsmodels, with probabilities and odds ratios.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b01",
@@ -12498,9 +12498,9 @@
    "objectives": [
     "objective:fit-trend-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:trend-models calculates and evaluates linear and log-linear trend values for the US price level; checked by time-series-checks.py part 1.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b02",
@@ -12519,9 +12519,9 @@
    "objectives": [
     "objective:fit-trend-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:trend-models describes when a log-linear trend fits (compounding series) and evaluates the limits of trend models through serially correlated residuals and forecasts that start far from the data.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b03",
@@ -12540,9 +12540,9 @@
    "objectives": [
     "objective:test-stationarity-unit-roots"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:stationarity-unit-roots explains covariance stationarity (Tsay pp. 30-31; FPP3 9.1) and why non-stationarity invalidates inference and AR fits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b04",
@@ -12561,9 +12561,9 @@
    "objectives": [
     "objective:forecast-autoregressive-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:autoregressive-forecasting describes AR(p) structure and calculates one- to three-step inflation forecasts by the chain rule and in closed form.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b05",
@@ -12581,9 +12581,9 @@
    "objectives": [
     "objective:forecast-autoregressive-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:autoregressive-forecasting explains testing residual autocorrelations against 2/sqrt(T) and Ljung-Box, finding a significant lag 3 in the AR(1) for inflation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b06",
@@ -12602,9 +12602,9 @@
    "objectives": [
     "objective:forecast-autoregressive-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:autoregressive-forecasting explains mean reversion, calculates the mean-reverting level (3.22%) and half-life (Tsay p. 56).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b07",
@@ -12623,9 +12623,9 @@
    "objectives": [
     "objective:evaluate-forecast-accuracy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:forecast-accuracy-evaluation contrasts in-sample and out-of-sample RMSE on a chronological split and compares AR(1), random-walk and mean forecasts (FPP3 5.8, 5.10).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b08",
@@ -12643,9 +12643,9 @@
    "objectives": [
     "objective:evaluate-forecast-accuracy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:forecast-accuracy-evaluation explains coefficient instability with subsample estimates (0.617 against 0.435) and a Chow test.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b09",
@@ -12664,9 +12664,9 @@
    "objectives": [
     "objective:test-stationarity-unit-roots"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:stationarity-unit-roots describes random walks (Tsay p. 72) and contrasts them with stationary series, with simulated variance growth.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b10",
@@ -12686,9 +12686,9 @@
    "objectives": [
     "objective:test-stationarity-unit-roots"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:stationarity-unit-roots describes implications of unit roots, when they arise (price levels), how to test (ADF, KPSS) and differencing to model inflation instead of the price level.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b11",
@@ -12707,9 +12707,9 @@
    "objectives": [
     "objective:test-stationarity-unit-roots"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:stationarity-unit-roots describes the Dickey-Fuller regression and augmentation (Tsay pp. 76-77) and its link to the AR(1) coefficient, with a hand-run DF statistic.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b12",
@@ -12729,9 +12729,9 @@
    "objectives": [
     "objective:forecast-autoregressive-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:autoregressive-forecasting explains detecting seasonality from the residual autocorrelation at the seasonal lag, correcting it with a lag-4 term, and calculates seasonal-lag forecasts (5.16 and 4.38) in a seeded quarterly series.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b13",
@@ -12750,9 +12750,9 @@
    "objectives": [
     "objective:model-conditional-heteroskedasticity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: mod:arch-conditional-variance explains ARCH (Tsay pp. 114-116), Engle's LM test and variance forecasts with numbers; mod:garch-volatility-forecast covers GARCH and EWMA.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b14",
@@ -12770,9 +12770,9 @@
    "objectives": [
     "objective:test-cointegration"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cointegration-testing explains testing each series for unit roots and the residuals for cointegration before regression, with spurious and cointegrated simulated pairs.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m005:b15",
@@ -12791,9 +12791,9 @@
    "objectives": [
     "objective:select-time-series-model"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:time-series-model-selection determines and justifies a model for US inflation, weighing trend, random-walk, AR(1) and AR(4) alternatives with information criteria and out-of-sample evidence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m006:b01",
@@ -13544,9 +13544,9 @@
    "objectives": [
     "objective:classify-intercorporate-investments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:intercorporate-investment-classification describes the IFRS treatment of financial assets (IFRS 9), associates (IAS 28), joint ventures (IFRS 11), business combinations (IFRS 3, 10) and structured entities (IFRS 10, 12).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m010:b02",
@@ -13565,9 +13565,9 @@
    "objectives": [
     "objective:classify-intercorporate-investments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:intercorporate-investment-classification contrasts US GAAP: no FVOCI equity election (ASU 2016-01), full goodwill (FAS 141R), NCI presentation (FAS 160) and the VIE primary-beneficiary model (FAS 167).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m010:b03",
@@ -13585,9 +13585,9 @@
    "objectives": [
     "objective:analyse-consolidation-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:consolidation-ratio-effects analyses equity-method, proportionate and full consolidation for Penrose and Quay: same profit and parent equity, different margins, ROA and leverage; checked by intercorporate-fx-institutions-checks.py part 3.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m011:b01",
@@ -13707,9 +13707,9 @@
    "objectives": [
     "objective:distinguish-functional-currency"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:functional-currency-transactions compares presentation, functional and local currencies with IAS 21 paras. 8-12 and FAS 52 para. 39.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b02",
@@ -13727,9 +13727,9 @@
    "objectives": [
     "objective:distinguish-functional-currency"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:functional-currency-transactions describes transaction exposure, its accounting (IAS 21 paras. 21-32; FAS 52 para. 15) and disclosures (IAS 21 paras. 52-53), with a USD receivable example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b03",
@@ -13747,9 +13747,9 @@
    "objectives": [
     "objective:analyse-multinational-results"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multinational-currency-tax-analysis analyses how rates change translated sales, splitting Larch Brands' reported growth into constant-currency growth and a currency effect.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b04",
@@ -13769,9 +13769,9 @@
    "objectives": [
     "objective:apply-translation-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:currency-translation-methods compares the current rate and temporal methods, their effects on the balance sheet and income statement, and when each applies (Subramanyam and Wild pp. 302-308; IAS 21; FAS 52).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b05",
@@ -13790,9 +13790,9 @@
    "objectives": [
     "objective:apply-translation-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:currency-translation-methods calculates the translation of Penrose Inc. under both methods and reproduces Subramanyam and Wild's BritCo adjustment of 85,000.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b06",
@@ -13810,9 +13810,9 @@
    "objectives": [
     "objective:apply-translation-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:currency-translation-methods analyses ratio effects: the current rate preserves local ratios, the temporal method changes margins, current ratio and leverage and reverses the exposure.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b07",
@@ -13830,9 +13830,9 @@
    "objectives": [
     "objective:apply-translation-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:currency-translation-methods analyses hyperinflation under IAS 29 with IAS 21.42 against US GAAP remeasurement (FAS 52 para. 11), including the net monetary position loss.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b08",
@@ -13850,9 +13850,9 @@
    "objectives": [
     "objective:analyse-multinational-results"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multinational-currency-tax-analysis describes the IAS 12.81(c) reconciliation and how geographic mix moves the effective rate (23.08% to 22.77%).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b09",
@@ -13870,9 +13870,9 @@
    "objectives": [
     "objective:analyse-multinational-results"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multinational-currency-tax-analysis explains which components of sales growth (local volume and price against currency) are sustainable.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b10",
@@ -13890,9 +13890,9 @@
    "objectives": [
     "objective:analyse-multinational-results"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:multinational-currency-tax-analysis analyses currency effects by country of operation for Larch Brands' euro, US and UK segments.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m013:b01",
@@ -13910,9 +13910,9 @@
    "objectives": [
     "objective:explain-financial-institution-features"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:financial-institution-features describes how banks and insurers differ: leverage, financial assets, liabilities as products, systemic importance, with Hull's DLC reproduced.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m013:b02",
@@ -13930,9 +13930,9 @@
    "objectives": [
     "objective:explain-financial-institution-features"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:financial-institution-features describes Basel capital, leverage and liquidity standards (RBC20.1, RBC30.2, LEV20.7, LCR20.5, NSF20.2), deposit insurance and insurance regulation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m013:b03",
@@ -13950,9 +13950,9 @@
    "objectives": [
     "objective:analyse-bank-with-camels"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:bank-camels-analysis explains the six CAMELS components from the UFIRS (62 FR 752-756), the ratios behind each and the limits of the approach.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m013:b04",
@@ -13970,9 +13970,9 @@
    "objectives": [
     "objective:analyse-bank-with-camels"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:bank-camels-analysis analyses Tamar Bank over two years by component and reaches a composite judgement; checked by intercorporate-fx-institutions-checks.py part 8.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m013:b05",
@@ -13990,9 +13990,9 @@
    "objectives": [
     "objective:analyse-bank-with-camels"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:bank-camels-analysis describes other factors: government support and resolution, business mix and concentration, off-balance-sheet items, allowance choices and the macro outlook (marked as interpretation).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m013:b06",
@@ -14010,9 +14010,9 @@
    "objectives": [
     "objective:analyse-insurer"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:insurer-analysis describes life and property-casualty business, loss, expense, combined and operating ratios (Hull pp. 57-66), reserve development, investments and solvency, with Wren Insurance.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b01",
@@ -15516,9 +15516,9 @@
    "objectives": [
     "objective:value-equity-with-free-cash-flow"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-valuation-models compares FCFF at the WACC with FCFE at the cost of equity and reconciles them for Brent Utilities at constant leverage.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b02",
@@ -15536,9 +15536,9 @@
    "objectives": [
     "objective:derive-fcff-fcfe"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation explains the control perspective implicit in FCFE against dividends for a minority holder.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b03",
@@ -15556,9 +15556,9 @@
    "objectives": [
     "objective:derive-fcff-fcfe"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation explains the adjustments from net income, EBIT, EBITDA and CFO to FCFF and FCFE, including the IFRS interest-classification point.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b04",
@@ -15576,9 +15576,9 @@
    "objectives": [
     "objective:derive-fcff-fcfe"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation calculates FCFF 44.50 by four routes and FCFE 45.50 for Avon Fittings; checked by equity-fcf-ri-private-checks.py part 3.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b05",
@@ -15596,9 +15596,9 @@
    "objectives": [
     "objective:forecast-free-cash-flows"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-forecasting describes component forecasting and the target-debt-ratio shortcut (Damodaran pp. 352-354), applied to Avon and Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b06",
@@ -15616,9 +15616,9 @@
    "objectives": [
     "objective:forecast-free-cash-flows"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-forecasting explains how dividends, buybacks, share issues and leverage affect FCFF and FCFE, with borrowing and payout cases.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b07",
@@ -15636,9 +15636,9 @@
    "objectives": [
     "objective:critique-cash-flow-proxies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cash-flow-proxies compares FCFE and dividend discount models and when their values differ (Damodaran pp. 372-376).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b08",
@@ -15656,9 +15656,9 @@
    "objectives": [
     "objective:critique-cash-flow-proxies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cash-flow-proxies evaluates net income and EBITDA as cash-flow proxies, showing that capitalising Harbour's EBITDA overstates value more than threefold.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b09",
@@ -15676,9 +15676,9 @@
    "objectives": [
     "objective:value-equity-with-free-cash-flow"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-valuation-models explains sensitivity analysis with a stable cost of equity and growth grid (38.46-67.46); meth:forecast-model-valuation adds driver scenarios.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b10",
@@ -15697,9 +15697,9 @@
    "objectives": [
     "objective:value-equity-with-free-cash-flow"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-valuation-models explains single-, two- and three-stage models, gives two- and three-stage FCFE values (48.13 and 51.05) and how to choose the number of stages.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b11",
@@ -15717,9 +15717,9 @@
    "objectives": [
     "objective:value-equity-with-free-cash-flow"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-valuation-models estimates values with FCFF and FCFE models (Brent Utilities 900; two- and three-stage per-share values) and Harbour by FCFF.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b12",
@@ -15737,9 +15737,9 @@
    "objectives": [
     "objective:value-equity-with-free-cash-flow"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-valuation-models describes stable-growth terminal values with consistent reinvestment (Damodaran pp. 359-363) and multiple-based terminal values with a link to meth:comparables-evaluation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b13",
@@ -16155,9 +16155,9 @@
    "objectives": [
     "objective:calculate-residual-income"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:residual-income-eva calculates and interprets residual income, EVA and MVA for an original firm and Harbour; checked by equity-fcf-ri-private-checks.py part 7.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b02",
@@ -16175,9 +16175,9 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison describes when residual income models are useful (no dividends, negative FCF, balance-sheet information).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b03",
@@ -16196,9 +16196,9 @@
    "objectives": [
     "objective:value-with-residual-income"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation calculates Harbour's residual income value and meth:residual-income-comparison compares value recognition (80% from book against 91% in the dividend terminal value).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b04",
@@ -16216,9 +16216,9 @@
    "objectives": [
     "objective:calculate-residual-income"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:residual-income-eva explains the determinants of residual income: the ROE-cost of equity spread, book equity and the fade of ROE (Subramanyam and Wild p. 502).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b05",
@@ -16236,9 +16236,9 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison explains the link to justified P/B, which exceeds one only when ROE exceeds the cost of equity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b06",
@@ -16257,9 +16257,9 @@
    "objectives": [
     "objective:value-with-residual-income"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation calculates single-stage (40.00) and multistage values with persistence (23.59) and Harbour's three-year model.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b07",
@@ -16277,9 +16277,9 @@
    "objectives": [
     "objective:value-with-residual-income"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation calculates the residual-income growth implied by Harbour's P/B of 1.71 (7.27%) and the sustained ROE it needs at 2.5% growth (14.18%).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b08",
@@ -16298,9 +16298,9 @@
    "objectives": [
     "objective:value-with-residual-income"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation explains continuing residual income with a persistence factor and justifies its choice by competitive fade (omega 0 to 1 bounds 22.72-30.61).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b09",
@@ -16318,9 +16318,9 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison compares residual income with dividend and free cash flow models, including the dirty-surplus identity for Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b10",
@@ -16339,9 +16339,9 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison explains strengths and weaknesses of each model and when residual income should be selected.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b11",
@@ -16359,9 +16359,9 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison describes accounting issues: clean surplus, items in OCI, non-recurring items, expensed intangibles and equity credits for share-based pay.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m025:b01",
@@ -16379,9 +16379,9 @@
    "objectives": [
     "objective:adjust-private-company-earnings"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-earnings-normalisation contrasts private and public firms on accounting, information, liquidity and owner-managers (Damodaran pp. 667-668).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m025:b02",
@@ -16400,9 +16400,9 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation describes valuation motives (sale to a private buyer, IPO, sale to a listed firm) and how each changes the inputs (Damodaran Table 24.2).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m025:b03",
@@ -16420,9 +16420,9 @@
    "objectives": [
     "objective:adjust-private-company-earnings"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-earnings-normalisation explains normalising owner compensation, related-party terms, personal expenses, taxes and one-off items, with Fenton Engineering.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m025:b04",
@@ -16440,9 +16440,9 @@
    "objectives": [
     "objective:estimate-private-discount-rate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-discount-rate explains bottom-up beta, total beta for undiversified owners, illiquidity and size premiums, and the cost of debt and debt ratio for private firms.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m025:b05",
@@ -16460,9 +16460,9 @@
    "objectives": [
     "objective:estimate-private-discount-rate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-discount-rate compares CAPM, expanded CAPM, build-up and total-beta costs of equity for Fenton (9.20%, 12.70%, 12.50%, 18.51%).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m025:b06",
@@ -16481,9 +16481,9 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation explains and evaluates control premiums and marketability discounts, compounding them for a 30% stake (combined 37.91%).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m025:b07",
@@ -16501,9 +16501,9 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation explains the income, market and asset approaches and when each fits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m025:b08",
@@ -16521,9 +16521,9 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation calculates income-approach values for Fenton at a diversified and an undiversified buyer's rate (59.93 and 26.05).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m025:b09",
@@ -16542,9 +16542,9 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation calculates guideline-company and transaction values and describes the weaknesses of transaction data and public multiples (Damodaran pp. 695-698).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m026:b01",
@@ -17308,9 +17308,9 @@
    "objectives": [
     "objective:calculate-credit-valuation-adjustment"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:risky-bond-cva explains expected exposure, LGD, PD and CVA (Hull pp. 393-398).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m029:b02",
@@ -17328,9 +17328,9 @@
    "objectives": [
     "objective:analyse-rating-migration-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:rating-migration-returns explains credit scores (Altman Z, internal ratings) and agency ratings.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m029:b03",
@@ -17348,9 +17348,9 @@
    "objectives": [
     "objective:analyse-rating-migration-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:rating-migration-returns calculates a BBB bond's expected excess return under Table 19.1 transitions (1.08% against 1.60%).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m029:b04",
@@ -17368,9 +17368,9 @@
    "objectives": [
     "objective:compare-structural-reduced-form"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: mod:structural-reduced-form-credit explains Merton and hazard-rate models, their assumptions, strengths and weaknesses, solving Hull Example 17.4.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m029:b05",
@@ -17388,9 +17388,9 @@
    "objectives": [
     "objective:calculate-credit-valuation-adjustment"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:risky-bond-cva calculates bond values and spreads from credit parameters: Hull Table 17.3 and the Arden bond (CVA 2.80, 97 bp).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m029:b06",
@@ -17408,9 +17408,9 @@
    "objectives": [
     "objective:interpret-credit-spread-term-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-spread-term-structure interprets spread changes through expected loss, the systematic-risk premium, liquidity and contagion.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m029:b07",
@@ -17429,9 +17429,9 @@
    "objectives": [
     "objective:interpret-credit-spread-term-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-spread-term-structure explains hazard term structures and curve shapes, reproducing Hull Example 17.3 and pricing three hazard paths.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m029:b08",
@@ -17449,9 +17449,9 @@
    "objectives": [
     "objective:interpret-credit-spread-term-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-spread-term-structure compares securitised pool analysis (top-down retail, bottom-up corporate pools; Fabozzi and Kothari p. 218) with corporate issuer analysis.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m030:b01",
@@ -17469,9 +17469,9 @@
    "objectives": [
     "objective:describe-cds-contracts"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:cds-contract-features describes single-name and index CDS and their parameters, fixed coupons and upfronts (Hull 2023 pp. 372-377; Hull 2021 Example 25.1).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m030:b02",
@@ -17489,9 +17489,9 @@
    "objectives": [
     "objective:describe-cds-contracts"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:cds-contract-features describes credit events, cheapest-to-deliver and auction settlement; mech:cds-contract-credit-events covers the 2009 and 2014 ISDA protocols.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m030:b03",
@@ -17509,9 +17509,9 @@
    "objectives": [
     "objective:price-cds"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cds-pricing explains the premium and protection legs, hazard rates, recovery and the par spread, reproducing Hull Appendix K and the implied-hazard and binary cases.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m030:b04",
@@ -17529,9 +17529,9 @@
    "objectives": [
     "objective:apply-cds-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cds-strategies describes hedging and credit exposure, index against single names, and bearish and Credit01-neutral curve steepeners (Berd, Mashal and Wang p. 13) with jump-to-default risk.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m030:b05",
@@ -17549,9 +17549,9 @@
    "objectives": [
     "objective:apply-cds-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cds-strategies describes the CDS-bond basis (Hull pp. 379-380), capital-structure trades against equity via a structural model, and loan and convertible comparisons.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m031:b01",
@@ -19562,9 +19562,9 @@
    "objectives": [
     "objective:run-scenario-and-simulation-analysis"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:scenario-simulation-analysis evaluates and interprets historical scenarios (1931, 1973-74, 2008, 2022) for a 60/40 portfolio.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m042:b06",
@@ -19582,9 +19582,9 @@
    "objectives": [
     "objective:run-scenario-and-simulation-analysis"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:scenario-simulation-analysis contrasts a bootstrap of historical years with a fitted-normal Monte Carlo for ten-year wealth and the one-year tail.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m042:b07",
@@ -19603,9 +19603,9 @@
    "objectives": [
     "objective:run-scenario-and-simulation-analysis"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:scenario-simulation-analysis explains the inputs and decisions in simulation (Damodaran pp. 908-910: variables, distributions, correlations, runs) and interprets the output distribution.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m042:b08",
@@ -19623,9 +19623,9 @@
    "objectives": [
     "objective:run-scenario-and-simulation-analysis"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:scenario-simulation-analysis demonstrates one-at-a-time sensitivities with common random numbers (equity mean, correlation, allocation).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m043:b01",

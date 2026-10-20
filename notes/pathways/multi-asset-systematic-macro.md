@@ -52,6 +52,8 @@ In `strategic-asset-allocation.tex`: `def:investment-governance-allocation`, `me
 
 All partly checked 2026-10-19, draft. Examples in `notes/artefacts/macro-policy-trade/`, `economic-growth/`, `macro-asset-valuation/`, `capital-market-expectations/` and `strategic-asset-allocation/`; human review is outstanding. Coverage records are editorial, not study. `def:macroeconomic-indicators`, `def:macro-regime-asset-map`, `mod:mean-variance-portfolio-optimisation` and `mod:black-litterman` are linked, not repeated.
 
+Written in the alternatives batch (2026-10-20): in `firms-market-structure.tex`, `meth:cost-output-shutdown` (breakeven and shutdown prices, scale and structure), `def:market-structures-pricing` (the four structures, monopolistic competition and oligopoly models with one market's five outcomes) and `meth:market-structure-identification` (concentration ratios, the HHI, its link to Cournot markups, limitations) (Varian 2014 chaps. 22-28; OpenStax Microeconomics 3e; 2023 Merger Guidelines). Examples in `notes/artefacts/firms-market-structure/`; draft, human review outstanding.
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `ev:global-macro-returns-after-2013` narrowed; `ev:practitioner-rules-tested` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

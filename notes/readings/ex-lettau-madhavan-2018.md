@@ -9,6 +9,8 @@ status: draft
 
 Prepared on 2026-10-15 by equity market structure review from source checks, not from study: the headings that need your own reading are left empty. The working paper discloses that Madhavan was then head of ETF and index investing research at BlackRock (p. 1).
 
+Also used by the alternatives batch (2026-10-20) for `meth:etf-trading-tracking-premiums`.
+
 ## Question and claim
 
 ## Mechanism

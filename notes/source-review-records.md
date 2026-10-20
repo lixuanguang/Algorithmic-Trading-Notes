@@ -5079,3 +5079,95 @@ data to each origin.
 remain covered; their 32 outline items keep their mappings, with rationales noting the recheck, and
 `objective:analyse-insurer` now maps both insurer entries. Coverage unchanged: 326/424 objectives and
 774/1,030 items.
+
+## Alternatives batch, 20 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` from `main` at `191edb2`, after the
+audit commit `0d62a5d` (*Valuation and inference audit correction pass*), which counts toward no
+objective. All 45 objectives were `missing`; three had candidate entries
+(`def:contango-backwardation-stocks`, `def:commodity-indices-risk-return`,
+`mech:etf-creation-redemption`). Their 113 outline items map to no objective outside the batch;
+two items are shared by two batch objectives (`7099c7688942:m084:b03`, `2f25110282bf:m034:b04`)
+and carry one rationale each. Coverage before: 326/424 objectives, 774/1,030 outline items.
+Untracked copies named "... 2" in the working tree were neither deleted nor committed; the full
+checks ran in a separate worktree.
+
+**Scope (45).**
+- firms-market-structure: 3 (cost and output, market structures, identification)
+- private-capital-allocator: 17 (structures, fees and returns 3; private equity and debt 9; programmes 5)
+- real-asset-investor: 10 (real estate 6; infrastructure 3; land, timber and farmland 1)
+- commodity-investing-premia: 4; portfolio-construction-risk: hedge funds 3, allocation to alternatives 2
+- execution-trading-costs: ETFs 2; corporate-credit-capital: credit portfolio strategies 4
+
+Implemented in prerequisite order: market structure; alternative structures, fees and returns;
+private equity and debt; private-market programmes; real estate, infrastructure and land;
+commodities; hedge funds; ETFs; credit portfolios; allocation to alternatives last, because it
+draws on all of the above.
+
+**Outline pages read.** Level I (`7099c7688942`) PDF pp. 5, 25-26; Level II (`0242f4b7ba07`)
+PDF pp. 23-24, 26; Level III core and Portfolio Management (`2e1d62d8f585`) PDF pp. 6, 18;
+Level III core and Private Markets (`2f25110282bf`) PDF pp. 16-18. Each of the 113 items was
+read against its page and given an item-specific rationale in `outline-crosswalk.json`. Gaps
+found in review were written into the entries rather than left as residual gaps: specialist and
+multi-manager hedge fund families, vehicles beyond limited partnerships (managed accounts,
+registered funds), ETF spread components and the Rule 6c-11 disclosures, international credit
+and analytical tools, commitment pacing, the denominator effect and programme monitoring.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Books (owner's library PDFs outside the repository, cited by printed page): Varian (2014); Demaria et al., *Asset Allocation and Private Markets* (2021); Ippolito, *Private Capital Investing* (2020); Tsolacos and Andrew (2021); Lynn et al. (2009); Larreur, *Structured Finance* (2021); Geman, *Commodities and Commodity Derivatives* (2005); Jaeger, *Alternative Beta Strategies and Hedge Fund Replication* (2008); Abner, *The ETF Handbook*, 2nd ed. (2016); Ben Dor et al., *Quantitative Credit Portfolio Management* (2012) and *Systematic Investing in Credit* (2021); and further chapters of Ang (2014) chaps. 11, 13, 14, 17; Damodaran, *Investment Valuation* (2012) chap. 26; Hull, *Options, Futures, and Other Derivatives* (2022) pp. 195, 781; Hull, *Risk Management and Financial Institutions* (2023) chap. 19.
+- Papers (working-paper versions, retrieved 2026-10-20): Gorton and Rouwenhorst (NBER WP 10595, revised March 2006); Erb and Harvey (NBER WP 11222, March 2005); Getmansky, Lo and Makarov (NBER WP 9571); Kaplan and Schoar (WP 9807); Kaplan and Strömberg (WP 14207); Harris, Jenkinson and Kaplan (WP 17874); Gompers, Kaplan and Mukharlyamov (WP 21133); Metrick and Yasuda (WP 16652); Luxenberg et al. (arXiv 2207.07767).
+- Law, standards and data: SEC Rule 6c-11 (eCFR, last amended 85 FR 83291); 11 U.S.C. 1126 and 1129; the 2023 Merger Guidelines (already held); Nareit FFO White Paper (2018 restatement); NCREIF NPI snapshot 2Q 2026 and a Timberland Index commentary (1Q 2023); USDA ERS Farmland Value page (2026 update); OpenStax *Principles of Microeconomics* 3e secs. 7.5, 8.2, 10.1, 10.2, 11.1.
+- Curriculum volumes and answer workbooks were not used; the outlines were used only to map and review items.
+
+**Access limits and unread sources.**
+- The published *Financial Analysts Journal* versions of Gorton and Rouwenhorst and of Erb and Harvey (catalogue entries `s16-r34`, `wide-erb-harvey-commodity`), the *Journal of Finance* and *JFE* versions of the private equity papers, and the ICAIF version of Luxenberg et al. were not read; the working papers are cited and the entries say so.
+- Takahashi and Alexander (2002) is paywalled; its model is described through Luxenberg et al. (p. 3). Petajisto (2017) and Ben-David, Franzoni and Moussawi on ETFs were not read.
+- Lhabitant's *Hedge Funds: Quantitative Insights* copy has no text layer and was set aside. The USDA NASS land values PDF and a farmland dissertation could not be retrieved; the ERS summary was used. The NCREIF NPI full methodology and TPI methodology were not obtained.
+- Specialist hedge fund niches (insurance-linked, sector specialists), basis swaps, securities-lending offsets, international credit currency considerations and analytical-tool inputs lack a primary source read here and are marked Interpretation.
+
+**Discrepancies found in sources** (recorded in the entries and reading notes):
+- Erb and Harvey (2005) p. 13: oil's roll return printed 13.1% but $40.95/$36.65 - 1 = 11.73%; the far contract is dated June and then July 2005; p. 25 gives the same diversification return as 3.4% and "about 3.5%" (half of 12.8 - 5.3 is 3.75).
+- Ang (2014): backfill bias printed 7.3% where 14.7 - 7.3 = 7.4 (p. 565); the 2000s negative roll return attributed to "highly backwardated" oil, contradicting the book's rule that backwardation gives positive roll (pp. 369-370); Table 11.7's 1970s row adds to 21.7 against 21.6 printed.
+- Gorton and Rouwenhorst: abstract sample ends March 2004, figures run to December 2004.
+- Demaria et al. (2021): net exposure "at best between 40 and 60 percent" (p. 186) against 45-65% (p. 175); n. 103 repeats n. 96; growth pooled IRR above the printed top quartile; the IRR footnote formula and the farmland passage across pp. 143-144 (details in the reading note).
+- Ippolito (2020) p. 175: dilution divides by (1 + D) while D is described as the later investors' share.
+- Damodaran (2012) Illustration 26.4: intercept printed -2,535.50 and -2,535.70.
+- Abner (2016) p. 48: the redemption fee per share printed as 200,000/$2,000 for 2,000/200,000.
+- Ben Dor et al. (2012) p. 257: position-size ratio printed "2:6 : 1.5 : 1.0" for 2.6.
+
+**Conventions protected by the examples.**
+- Fees, carry and clawback computed on dated LP cash flows; PME and IRR on the same flows; smoothing reversed before risk statistics are used.
+- Commodity futures returns compound contract by contract; the roll is measured from the curve, not as a cash flow; the diversification return belongs to a rebalanced portfolio, not one commodity.
+- Hedge fund exposures summed across lags; allocation tested on de-smoothed volatility and full-cycle correlation, net of avoidable fees.
+- ETF premium measured at NAV time; the Rule 6c-11 median uses 10-second NBBO snapshots.
+- Credit exposure in DTS; issuer limits on DTS contribution; Vasicek's percentile checked against simulation.
+- Private exposure measured as NAV plus uncalled commitments; commitments sized from the steady-state gain, not set equal to the target NAV.
+
+**Numerical evidence** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; all run with `python -W error` by `make examples`):
+- `notes/artefacts/firms-market-structure/market-structure-checks.py`: 4 parts, 13 checks; shutdown and breakeven prices; Cournot closed form against iteration; CR4, HHI and merger change.
+- `notes/artefacts/private-capital/private-capital-checks.py`: 8 parts, 29 checks; hedge fund fees with a high-water mark; fund waterfall, carry and clawback; J-curve, PME, gross and net IRR; venture method; LBO returns; credit ratios; smoothing; allocation.
+- `notes/artefacts/real-assets/real-asset-checks.py`: 6 parts, 24 checks; direct capitalisation against DCF; NCREIF chain-linking; REIT NAV, FFO, AFFO and DDM; levered underwriting; DSCR-sculpted project debt; farmland and raw land.
+- `notes/artefacts/commodity-investment/commodity-return-checks.py`: 4 parts, 15 checks; Ang's Table 11.7 and eq. 11.3; Erb and Harvey's roll and diversification figures; a quarterly roll simulated in backwardation and contango; rebalancing and roll schedules; swap values.
+- `notes/artefacts/hedge-funds/hedge-fund-checks.py`: 6 parts, 17 checks; fund-of-funds fee layers; merger, long/short and convertible arithmetic; smoothing closed forms against simulation; factor regression with lags against generating loadings; the Sharpe-ratio allocation test.
+- `notes/artefacts/etf-mechanics/etf-checks.py`: 5 parts, 13 checks; Abner's fee and cash arithmetic; the market maker's quote; Rule 6c-11 premium, seven-day and median-spread tests; leveraged paths; costs of ownership.
+- `notes/artefacts/credit-portfolios/credit-portfolio-checks.py`: 4 parts, 17 checks; DTS by two routes; spread measures; ESP and DTS-neutral hedges; LCS; issuer caps; Vasicek against simulation; CDS overlay, hedged yield and CLO OC test.
+- `notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py`: 5 parts, 13 checks; crisis scenarios; factor-mapped exposure; steady-state pacing against simulation; denominator effect; liquidity coverage.
+
+**Errors caught during development** (all corrected before the text was final):
+- many expected figures were set before computing and differed (contango excess return, hedged-fund Sharpe ratios, Vasicek percentile, ETF quote, merger annualisation, factor-mapped beta, real-asset and private-capital figures); the text uses the computed values;
+- a first spread-median test had a tie at the median and was redesigned; a cash merger's annualised spread was misstated by 0.01 point;
+- undefined macros (`\citealp`, `\euro`) and a cross-reference to a nonexistent non-GAAP label were replaced; a Gorton and Rouwenhorst point stated in prose was given a citation so the evidence key is cited by its entry; an overfull Vasicek formula was moved to a display;
+- a claim that ETF prices "fell far below fair value" in the 2015 flash crash was narrowed to what Abner reports (widened quotes, hard pricing, stop orders in 2010).
+
+**Coverage.** All 45 objectives were reassessed operation by operation at their stated depth
+and moved to `covered`, mapped to 45 new entries plus `mech:etf-creation-redemption` (one
+sentence updated to point to the new Rule 6c-11 material). Objectives move from 326/424 to
+371/424, and outline items from 774/1,030 to 887/1,030 (Level I 302, Level II 349, Portfolio
+Management 59, Private Markets 34, shared core 143). This is editorial coverage, not learner
+mastery or independent human review.
+
+**Limits.** Brook Relative Value, Ashby Fund I, Novaro, Corran Industrial, Halden, Marlow House,
+Kestrel REIT, Ferris Park, Ashdown Hospital and the commodity, hedge fund, ETF, credit and
+allocation portfolios are hypothetical. Practitioner books (Demaria, Ippolito, Larreur, Jaeger,
+Abner, Ben Dor) describe market practice of their dates; the Ben Dor results are back-tests by a
+sell-side research group. Human review is outstanding.

@@ -35,6 +35,15 @@ Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/
 
 These entries serve the curriculum objectives of the section; none of the pathway's 14 required readings was read for them. Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
 
+Alternatives batch (2026-10-20), in `credit-portfolio-management.tex`:
+
+- `meth:credit-spread-portfolio-risk`: risks of spread portfolios, spread duration and DTS, and the spread measures with the case for OAS.
+- `meth:credit-selection-positioning`: bottom-up (excess spread to peers) and top-down (cycle, sectors, equity momentum) approaches, and positioning by DTS, curve, quality and instrument.
+- `meth:credit-liquidity-tail-risk`: liquidity cost scores, liquidity management, credit VaR (Vasicek), stress tests and issuer limits by downgrade risk or DTS.
+- `meth:credit-cds-international-structured`: CDS overlays and replication, international credit, structured instruments against corporates (tranching, CLO tests) and analytical tools.
+
+Sources: Ben Dor et al. (2012, 2021), Hull (2023) chap. 19, Larreur (2021). Examples in `notes/artefacts/credit-portfolios/credit-portfolio-checks.py`. Partly checked 2026-10-20, draft; human review outstanding; none of the pathway's required readings was read for them.
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `conv:cds-standard-contract` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

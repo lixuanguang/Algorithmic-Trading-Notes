@@ -2221,13 +2221,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cost-output-shutdown"
+   ],
+   "candidate_entries": [
+    "meth:cost-output-shutdown"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "varian-microeconomics-2014",
+      "locator": "pp. 359-361, 405-409, 416-419, 426, 433-437, 469-471, 494-497"
+     },
+     {
+      "key": "openstax-microeconomics-3e",
+      "locator": "secs. 7.5, 8.2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/openstax-microeconomics-3e.md",
+     "notes/readings/varian-microeconomics-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:cost-output-shutdown"
+    ],
+    "example": "notes/artefacts/firms-market-structure/market-structure-checks.py: parts 1-2 (shutdown 24, breakeven 40.42; MES 707, natural monopoly, tangency at 289); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -2240,13 +2264,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:market-structures-pricing"
+   ],
+   "candidate_entries": [
+    "def:market-structures-pricing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "varian-microeconomics-2014",
+      "locator": "pp. 458-461, 494-497, 516-537; chaps. 23-28"
+     },
+     {
+      "key": "openstax-microeconomics-3e",
+      "locator": "chap. 10; secs. 10.1, 10.2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/openstax-microeconomics-3e.md",
+     "notes/readings/varian-microeconomics-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:market-structures-pricing"
+    ],
+    "example": "notes/artefacts/firms-market-structure/market-structure-checks.py: part 3 (Cournot closed form against iteration; Stackelberg, Bertrand, cartel deviation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -2259,13 +2307,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:market-structure-identification"
+   ],
+   "candidate_entries": [
+    "meth:market-structure-identification"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "openstax-microeconomics-3e",
+      "locator": "sec. 11.1"
+     },
+     {
+      "key": "merger-guidelines-2023",
+      "locator": "pp. 5-6, n. 14"
+     },
+     {
+      "key": "varian-microeconomics-2014",
+      "locator": "pp. 529-530"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/merger-guidelines-2023.md",
+     "notes/readings/openstax-microeconomics-3e.md",
+     "notes/readings/varian-microeconomics-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:market-structure-identification"
+    ],
+    "example": "notes/artefacts/firms-market-structure/market-structure-checks.py: part 4 (CR4 80, HHI 1,950, merger +300; HHI/elasticity markup); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7714,13 +7791,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:alternative-investment-categories"
+   ],
+   "candidate_entries": [
+    "def:alternative-investment-categories"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 58-66, 95-98"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 416-426, 559-562, 594"
+     },
+     {
+      "key": "metrick-yasuda-survey-2011",
+      "locator": "pp. 5-7"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/metrick-yasuda-survey-2011.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:alternative-investment-categories"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py (no numbers; the method choice is qualitative); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7732,13 +7838,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:alternative-fund-terms"
+   ],
+   "candidate_entries": [
+    "def:alternative-fund-terms"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 13-16"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 581-585, 594, 610-612"
+     },
+     {
+      "key": "metrick-yasuda-survey-2011",
+      "locator": "pp. 6-7, 35"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ippolito-private-capital-2020.md",
+     "notes/readings/metrick-yasuda-survey-2011.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:alternative-fund-terms"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 2 (European against American waterfall, clawback 1.36); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7752,13 +7887,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:alternative-returns-after-fees"
+   ],
+   "candidate_entries": [
+    "meth:alternative-returns-after-fees"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "pp. 416-426, 597-602"
+     },
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "p. 67"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:alternative-returns-after-fees"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: parts 1-3 (Brook 2/20 with high-water mark and hurdle: net 124.74 against 139.10 gross; Ashby gross 16.87% against net 11.71%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7770,13 +7929,62 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:private-equity-features"
+   ],
+   "candidate_entries": [
+    "def:private-equity-features"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "pp. 594-596"
+     },
+     {
+      "key": "metrick-yasuda-survey-2011",
+      "locator": "pp. 5-7"
+     },
+     {
+      "key": "pe-kaplan-stromberg-2009",
+      "locator": "pp. 3, 11-16"
+     },
+     {
+      "key": "w5-gompers-kaplan-mukharlyamov",
+      "locator": "p. 27"
+     },
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 16-18"
+     },
+     {
+      "key": "pe-harris-jenkinson-kaplan-2014",
+      "locator": "abstract"
+     },
+     {
+      "key": "pe-kaplan-schoar-2005",
+      "locator": "pp. 1-2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ippolito-private-capital-2020.md",
+     "notes/readings/metrick-yasuda-survey-2011.md",
+     "notes/readings/pe-harris-jenkinson-kaplan-2014.md",
+     "notes/readings/pe-kaplan-schoar-2005.md",
+     "notes/readings/pe-kaplan-stromberg-2009.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/w5-gompers-kaplan-mukharlyamov.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:private-equity-features"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 3 (Ashby J-curve); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7788,13 +7996,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:private-debt-features"
+   ],
+   "candidate_entries": [
+    "def:private-debt-features"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 13, 21, 39-44"
+     },
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 61-62, 127-134"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/ippolito-private-capital-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:private-debt-features"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 5 (Corran unitranche against senior plus mezzanine); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7806,13 +8038,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-capital-diversification"
+   ],
+   "candidate_entries": [
+    "meth:private-capital-diversification"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 160-166"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 416-421"
+     },
+     {
+      "key": "wide-getmansky-lo-makarov",
+      "locator": "abstract"
+     },
+     {
+      "key": "pe-harris-jenkinson-kaplan-2014",
+      "locator": "abstract"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/pe-harris-jenkinson-kaplan-2014.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/wide-getmansky-lo-makarov.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-capital-diversification"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 7 (smoothing halves volatility and cuts beta to 0.40; unsmoothing restores them); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7824,13 +8090,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:real-estate-characteristics"
+   ],
+   "candidate_entries": [
+    "def:real-estate-characteristics"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 739-741, 747"
+     },
+     {
+      "key": "tsolacos-real-estate-2021",
+      "locator": "pp. 5-18"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 376-381"
+     },
+     {
+      "key": "ncreif-npi-2026q2",
+      "locator": "p. 1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/ncreif-npi-2026q2.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/tsolacos-real-estate-2021.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:real-estate-characteristics"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: part 1 (Marlow House NOI and value); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7842,13 +8142,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:infrastructure-characteristics"
+   ],
+   "candidate_entries": [
+    "def:infrastructure-characteristics"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "larreur-structured-finance-2021",
+      "locator": "pp. 97-99, 110-116, 121-122, 149-156"
+     },
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 141-142"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/larreur-structured-finance-2021.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:infrastructure-characteristics"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: part 5 (Ashdown cash flows); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7862,13 +8186,52 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:land-timber-farmland"
+   ],
+   "candidate_entries": [
+    "meth:land-timber-farmland"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 742-743, 753"
+     },
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "p. 143"
+     },
+     {
+      "key": "nr-usda-farmland-2026",
+      "locator": "ERS Farmland Value page, 2026 update"
+     },
+     {
+      "key": "ncreif-timberland-2023q1",
+      "locator": "p. 28"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 416-421"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/ncreif-timberland-2023q1.md",
+     "notes/readings/nr-usda-farmland-2026.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:land-timber-farmland"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: part 6 (raw land 12.24%, farmland 2.66% gross yield and 5.22% Gordon return, timber decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7881,13 +8244,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:commodity-features"
+   ],
+   "candidate_entries": [
+    "def:commodity-features"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s16-r34",
+      "locator": "pp. 2, 6"
+     },
+     {
+      "key": "physical-geman-commodities-2005",
+      "locator": "pp. 1-2, 28, 251"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 365-367"
+     },
+     {
+      "key": "wide-erb-harvey-commodity",
+      "locator": "pp. 10-12, 24-25"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/physical-geman-commodities-2005.md",
+     "notes/readings/s16-r34.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/wide-erb-harvey-commodity.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:commodity-features"
+    ],
+    "example": "notes/artefacts/commodity-investment/commodity-return-checks.py: part 1 (Gorton and Rouwenhorst premium example; Ang decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -7902,13 +8299,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:hedge-fund-features"
+   ],
+   "candidate_entries": [
+    "def:hedge-fund-features"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "pp. 559-570, 585-587"
+     },
+     {
+      "key": "jaeger-alternative-beta-2008",
+      "locator": "pp. 4, 10-15, 28"
+     },
+     {
+      "key": "wide-getmansky-lo-makarov",
+      "locator": "pp. 21-23"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/jaeger-alternative-beta-2008.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/wide-getmansky-lo-makarov.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:hedge-fund-features"
+    ],
+    "example": "notes/artefacts/hedge-funds/hedge-fund-checks.py: parts 1-2 and 4 (Ang and Jaeger figures; fund of funds fee layers 1.20%/2.40%/0.18%; smoothing ratios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13449,13 +13875,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:commodity-sectors-participants"
+   ],
+   "candidate_entries": [
+    "meth:commodity-sectors-participants"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "physical-geman-commodities-2005",
+      "locator": "pp. 6-10, 24-25, 33-34, 143-144, 169, 201, 251-252"
+     },
+     {
+      "key": "s16-r34",
+      "locator": "p. 2"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 365, 370"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/physical-geman-commodities-2005.md",
+     "notes/readings/s16-r34.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:commodity-sectors-participants"
+    ],
+    "example": "notes/artefacts/commodity-investment/commodity-return-checks.py: part 1 (stocks-to-use 20%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13472,16 +13927,49 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:commodity-futures-return-components"
+   ],
    "candidate_entries": [
     "def:contango-backwardation-stocks",
-    "def:commodity-indices-risk-return"
+    "def:commodity-indices-risk-return",
+    "meth:commodity-futures-return-components"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "physical-geman-commodities-2005",
+      "locator": "pp. 24-28, 33-34"
+     },
+     {
+      "key": "wide-erb-harvey-commodity",
+      "locator": "pp. 10-13"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 367-370"
+     },
+     {
+      "key": "s16-r34",
+      "locator": "p. 6, n. 7"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/physical-geman-commodities-2005.md",
+     "notes/readings/s16-r34.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/wide-erb-harvey-commodity.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:commodity-futures-return-components"
+    ],
+    "example": "notes/artefacts/commodity-investment/commodity-return-checks.py: parts 1-2 (Ang Table 11.7 and eq. 11.3; Erb and Harvey roll returns; quarterly roll simulation in backwardation and contango, excess 8.42%/-7.62%, total 12.73%/-3.79%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13493,15 +13981,43 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "def:commodity-indices-risk-return"
+   "entries": [
+    "meth:commodity-swaps-index-construction"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:commodity-indices-risk-return",
+    "meth:commodity-swaps-index-construction"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "pp. 195, 781"
+     },
+     {
+      "key": "wide-erb-harvey-commodity",
+      "locator": "pp. 24-25"
+     },
+     {
+      "key": "s16-r34",
+      "locator": "p. 9"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s16-r34.md",
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-erb-harvey-commodity.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:commodity-swaps-index-construction"
+    ],
+    "example": "notes/artefacts/commodity-investment/commodity-return-checks.py: parts 3-4 (rebalancing return 8.51%; roll schedule; swap value 1.01m; total return swap net 2.85%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13515,13 +14031,52 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:real-estate-value-drivers"
+   ],
+   "candidate_entries": [
+    "meth:real-estate-value-drivers"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 750-752, 759-761"
+     },
+     {
+      "key": "tsolacos-real-estate-2021",
+      "locator": "pp. 5-15"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 376-381"
+     },
+     {
+      "key": "lynn-real-estate-2009",
+      "locator": "pp. 11-17"
+     },
+     {
+      "key": "ncreif-npi-2026q2",
+      "locator": "p. 1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/lynn-real-estate-2009.md",
+     "notes/readings/ncreif-npi-2026q2.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/tsolacos-real-estate-2021.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:real-estate-value-drivers"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: part 1 (occupancy and cap-rate sensitivity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13534,13 +14089,47 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:real-estate-valuation-indexes"
+   ],
+   "candidate_entries": [
+    "meth:real-estate-valuation-indexes"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 748-752, 759-761"
+     },
+     {
+      "key": "ncreif-npi-2026q2",
+      "locator": "p. 3"
+     },
+     {
+      "key": "tsolacos-real-estate-2021",
+      "locator": "p. 18"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 377-378, 427-428"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/ncreif-npi-2026q2.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/tsolacos-real-estate-2021.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:real-estate-valuation-indexes"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: parts 1-2 (four approaches; NCREIF formulas; appraisal lag); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13558,13 +14147,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:reit-valuation"
+   ],
+   "candidate_entries": [
+    "meth:reit-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "nareit-ffo-2018",
+      "locator": "pp. 2-3, 7"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 376-380"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/nareit-ffo-2018.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:reit-valuation"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: part 3 (Kestrel NAVPS 17.00, FFO 1.74, AFFO 1.36, P/FFO 17.40, P/AFFO 17.00, DDM 16.55); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13576,13 +14189,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:hedge-fund-strategy-classification"
+   ],
+   "candidate_entries": [
+    "meth:hedge-fund-strategy-classification"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "jaeger-alternative-beta-2008",
+      "locator": "pp. 11-15, 37-81, 107"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 571-573"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/jaeger-alternative-beta-2008.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:hedge-fund-strategy-classification"
+    ],
+    "example": "notes/artefacts/hedge-funds/hedge-fund-checks.py: part 3 (merger spread 4.17%, implied completion 80%, break -16.67%; long/short gross 200%, net 60%, beta-adjusted 80%; convertible hedge 1.2 shares); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13595,13 +14232,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:hedge-fund-factor-exposures"
+   ],
+   "candidate_entries": [
+    "meth:hedge-fund-factor-exposures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "pp. 572-576"
+     },
+     {
+      "key": "jaeger-alternative-beta-2008",
+      "locator": "pp. 107-109, 161-168, 176"
+     },
+     {
+      "key": "wide-getmansky-lo-makarov",
+      "locator": "pp. 21-22"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/jaeger-alternative-beta-2008.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/wide-getmansky-lo-makarov.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:hedge-fund-factor-exposures"
+    ],
+    "example": "notes/artefacts/hedge-funds/hedge-fund-checks.py: parts 4-6 (simulated factor regression with lags; Sharpe-ratio rule on reported and de-smoothed statistics, 0.384 against 0.366); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13865,15 +14531,45 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "mech:etf-creation-redemption"
+   "entries": [
+    "mech:etf-creation-redemption",
+    "meth:etf-trading-tracking-premiums"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "mech:etf-creation-redemption",
+    "meth:etf-trading-tracking-premiums"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ex-lettau-madhavan-2018",
+      "locator": "pp. 4-8, 18"
+     },
+     {
+      "key": "abner-etf-handbook-2016",
+      "locator": "pp. 36-37, 46-48, 96-98, 133, 140-142, 213-215"
+     },
+     {
+      "key": "sec-rule-6c-11",
+      "locator": "paras. (a)(1), (b)(2), (c)(1)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/abner-etf-handbook-2016.md",
+     "notes/readings/ex-lettau-madhavan-2018.md",
+     "notes/readings/sec-rule-6c-11.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "mech:etf-creation-redemption",
+     "meth:etf-trading-tracking-premiums"
+    ],
+    "example": "notes/artefacts/etf-mechanics/etf-checks.py: parts 1-4 (creation fee 2 cents; quote 49.936/50.064; premium 0.60%; Rule 6c-11 median spread and seven-day test; tracking difference and error); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -13886,13 +14582,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:etf-costs-risks-uses"
+   ],
+   "candidate_entries": [
+    "meth:etf-costs-risks-uses"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "abner-etf-handbook-2016",
+      "locator": "pp. 30, 42-43, 64-67, 105, 140, 158, 181-187, 214, 266-284"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/abner-etf-handbook-2016.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:etf-costs-risks-uses"
+    ],
+    "example": "notes/artefacts/etf-mechanics/etf-checks.py: parts 4-5 (leveraged fund paths; cost of ownership 0.13%/0.49%/1.40%; lending offset); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -15120,13 +15835,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:alternatives-roles-opportunity-set"
+   ],
+   "candidate_entries": [
+    "def:alternatives-roles-opportunity-set"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "pp. 195, 211, 366-367, 438-439, 572-573"
+     },
+     {
+      "key": "jaeger-alternative-beta-2008",
+      "locator": "p. 107"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/jaeger-alternative-beta-2008.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "def:alternatives-roles-opportunity-set"
+    ],
+    "example": "notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py: parts 2-3 (crisis losses 16.0/18.8/15.0/20.7%; equity beta 0.645, equity share of variance 97%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -15138,13 +15877,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:alternatives-allocation-approaches"
+   ],
+   "candidate_entries": [
+    "meth:alternatives-allocation-approaches"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "pp. 438-442"
+     },
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 101, 175-180, 186"
+     },
+     {
+      "key": "depth-pe-luxenberg-2022",
+      "locator": "pp. 3, 6, 8-9, 20"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/depth-pe-luxenberg-2022.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:alternatives-allocation-approaches"
+    ],
+    "example": "notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py: parts 1, 4-5 (pacing: steady-state NAV 4.348, commitment 23.0, exposure 152.6; denominator effect 11.98%; liquidity coverage 1.09); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -16934,13 +17702,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:credit-spread-portfolio-risk"
+   ],
+   "candidate_entries": [
+    "meth:credit-spread-portfolio-risk"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ben-dor-credit-portfolio-2012",
+      "locator": "pp. xxviii, 3-4, 39, 55, 133-134"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ben-dor-credit-portfolio-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:credit-spread-portfolio-risk"
+    ],
+    "example": "notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 1 (DTS equivalence 12; 0.90% from absolute and relative changes; volatility ratio 3; G 120, I 90, OAS 140 bp); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -16952,13 +17739,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:credit-selection-positioning"
+   ],
+   "candidate_entries": [
+    "meth:credit-selection-positioning"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ben-dor-systematic-credit-2021",
+      "locator": "pp. 413-415, 515-516"
+     },
+     {
+      "key": "ben-dor-credit-portfolio-2012",
+      "locator": "pp. 213-214"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ben-dor-credit-portfolio-2012.md",
+     "notes/readings/ben-dor-systematic-credit-2021.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:credit-selection-positioning"
+    ],
+    "example": "notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 2 (ESP 30 bp; steepener hedge 30 against 16.67; DTS overweight 12 bp); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -16971,13 +17782,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:credit-liquidity-tail-risk"
+   ],
+   "candidate_entries": [
+    "meth:credit-liquidity-tail-risk"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ben-dor-credit-portfolio-2012",
+      "locator": "pp. 81-82, 249, 257-258, 337-338"
+     },
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "pp. 413, 416-417"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ben-dor-credit-portfolio-2012.md",
+     "notes/readings/risk-management-financial-institutions-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:credit-liquidity-tail-risk"
+    ],
+    "example": "notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 3 (LCS 0.70%, portfolio 0.87%; DTS caps 2.50%/0.83%; WCDR 7.75%, loss 4.65%, simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -16990,13 +17825,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:credit-cds-international-structured"
+   ],
+   "candidate_entries": [
+    "meth:credit-cds-international-structured"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ben-dor-credit-portfolio-2012",
+      "locator": "pp. 55, 113-114, 257, 337-338"
+     },
+     {
+      "key": "larreur-structured-finance-2021",
+      "locator": "pp. 256-257, 309"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ben-dor-credit-portfolio-2012.md",
+     "notes/readings/larreur-structured-finance-2021.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:credit-cds-international-structured"
+    ],
+    "example": "notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 4 (CDS overlay 11.1m; hedged yield 5.5%; CLO OC 120% to 114%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17237,13 +18096,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-public-market-comparison"
+   ],
+   "candidate_entries": [
+    "meth:private-public-market-comparison"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "pp. 416-428, 594"
+     },
+     {
+      "key": "pe-harris-jenkinson-kaplan-2014",
+      "locator": "abstract"
+     },
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "p. 63"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/pe-harris-jenkinson-kaplan-2014.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-public-market-comparison"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 8 (reported inputs put 100% in PE; unsmoothed inputs 32%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17255,13 +18143,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-fund-structures"
+   ],
+   "candidate_entries": [
+    "meth:private-fund-structures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 60-66, 95-98"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 595-596"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-fund-structures"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py (structures are qualitative; the secondary-sale case uses no numbers); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17275,13 +18187,47 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-fund-multiples-pme"
+   ],
+   "candidate_entries": [
+    "meth:private-fund-multiples-pme"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 16-19"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 598-600"
+     },
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 68-69"
+     },
+     {
+      "key": "pe-kaplan-schoar-2005",
+      "locator": "pp. 8-9"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/ippolito-private-capital-2020.md",
+     "notes/readings/pe-kaplan-schoar-2005.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-fund-multiples-pme"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 3 (DPI, RVPI, TVPI and IRR by year; KS-PME 1.23); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17295,13 +18241,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:gp-alignment-net-returns"
+   ],
+   "candidate_entries": [
+    "meth:gp-alignment-net-returns"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 13-16"
+     },
+     {
+      "key": "metrick-yasuda-survey-2011",
+      "locator": "pp. 33, 35"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 610-614"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ippolito-private-capital-2020.md",
+     "notes/readings/metrick-yasuda-survey-2011.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:gp-alignment-net-returns"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 2 (European waterfall: carry 11.85; LP net IRR 11.71%; deal-by-deal 13.21 with clawback 1.36); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17313,13 +18288,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-deal-process-exits"
+   ],
+   "candidate_entries": [
+    "meth:private-deal-process-exits"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "w5-gompers-kaplan-mukharlyamov",
+      "locator": "pp. 3, 13-17, 25-28"
+     },
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 71-94, 125-130, 188-189, 218-225"
+     },
+     {
+      "key": "pe-kaplan-stromberg-2009",
+      "locator": "pp. 11, 13-16"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ippolito-private-capital-2020.md",
+     "notes/readings/pe-kaplan-stromberg-2009.md",
+     "notes/readings/w5-gompers-kaplan-mukharlyamov.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-deal-process-exits"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 4 (Corran exit at 9.0x against 8.0x); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17331,13 +18335,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-equity-strategies"
+   ],
+   "candidate_entries": [
+    "meth:private-equity-strategies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 58-59, 111-118, 126-127"
+     },
+     {
+      "key": "metrick-yasuda-survey-2011",
+      "locator": "pp. 33-34"
+     },
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 167-173"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/ippolito-private-capital-2020.md",
+     "notes/readings/metrick-yasuda-survey-2011.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-equity-strategies"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py (strategy choice qualitative; numbers in the valuation entry); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17351,13 +18384,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-equity-valuation"
+   ],
+   "candidate_entries": [
+    "meth:private-equity-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 20-21, 173-175, 209-210"
+     },
+     {
+      "key": "w5-gompers-kaplan-mukharlyamov",
+      "locator": "pp. 3, 13-17"
+     },
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 162-163"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/ippolito-private-capital-2020.md",
+     "notes/readings/w5-gompers-kaplan-mukharlyamov.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-equity-valuation"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 4 (Novaro VC method: 37.70%, pre-money 13.22; Corran LBO: MOIC 2.03, IRR 15.2%, maximum entry 6.9x); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17369,13 +18431,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-capital-allocation"
+   ],
+   "candidate_entries": [
+    "meth:private-capital-allocation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 116-117, 123, 130, 133-134, 163"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 427-428"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-capital-allocation"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: parts 7-8 (unsmoothed risk; allocation sensitivity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17388,13 +18474,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-debt-financing-structures"
+   ],
+   "candidate_entries": [
+    "meth:private-debt-financing-structures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "p. 58"
+     },
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 31-45, 57-58, 192-193"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/ippolito-private-capital-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-debt-financing-structures"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 5 (unitranche against senior plus mezzanine: cost and cover); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17408,13 +18518,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-debt-credit-analysis"
+   ],
+   "candidate_entries": [
+    "meth:private-debt-credit-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 234-238"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ippolito-private-capital-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-debt-credit-analysis"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 5 (leverage 5.0x, LTV 55.6%, cover 2.36x against 3.03x, DSCR 1.43x, downside 6.25x); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17426,13 +18555,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:special-situations-distressed"
+   ],
+   "candidate_entries": [
+    "meth:special-situations-distressed"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 126-130"
+     },
+     {
+      "key": "ippolito-private-capital-2020",
+      "locator": "pp. 291-297"
+     },
+     {
+      "key": "us-bankruptcy-code-11",
+      "locator": "secs. 1126(c), 1129(b)(2)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/ippolito-private-capital-2020.md",
+     "notes/readings/us-bankruptcy-code-11.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:special-situations-distressed"
+    ],
+    "example": "notes/artefacts/private-capital/private-capital-checks.py: part 6 (Halden recovery waterfall and loan-to-own); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17444,13 +18602,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-real-estate-underwriting"
+   ],
+   "candidate_entries": [
+    "meth:private-real-estate-underwriting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "pp. 137-141"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-real-estate-underwriting"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: part 4 (Ferris Park unlevered 11.69%, levered 16.96%; exit-cap sensitivity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17462,13 +18639,47 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:real-assets-allocation"
+   ],
+   "candidate_entries": [
+    "meth:real-assets-allocation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "pp. 376-381"
+     },
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "p. 143"
+     },
+     {
+      "key": "ncreif-timberland-2023q1",
+      "locator": "p. 28"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 743"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/ncreif-timberland-2023q1.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:real-assets-allocation"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: parts 4 and 6 (property returns; farmland yield); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17480,13 +18691,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:infrastructure-underwriting"
+   ],
+   "candidate_entries": [
+    "meth:infrastructure-underwriting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "larreur-structured-finance-2021",
+      "locator": "pp. 97-103, 117-131, 149-176"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/larreur-structured-finance-2021.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:infrastructure-underwriting"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: part 5 (DSCR-sized debt 165.8, LLCR 1.30, equity IRR 10.70%, deduction and demand-risk stresses); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {
@@ -17498,13 +18728,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:infrastructure-allocation"
+   ],
+   "candidate_entries": [
+    "meth:infrastructure-allocation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "demaria-private-markets-2021",
+      "locator": "p. 142"
+     },
+     {
+      "key": "larreur-structured-finance-2021",
+      "locator": "p. 122"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/demaria-private-markets-2021.md",
+     "notes/readings/larreur-structured-finance-2021.md"
+    ],
+    "review_record": "notes/source-review-records.md#alternatives-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:infrastructure-allocation"
+    ],
+    "example": "notes/artefacts/real-assets/real-asset-checks.py: part 5 (availability against demand-risk equity returns); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+   },
    "supersedes": null
   },
   {

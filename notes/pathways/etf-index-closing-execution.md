@@ -30,6 +30,13 @@ Corrected in a follow-up the same day (`notes/source-review-index.md`, *equity m
 
 Verification partly checked 2026-10-15, stability draft; human review outstanding.
 
+Written in the alternatives batch (2026-10-20), in `etf-mechanics.tex`:
+
+- `meth:etf-trading-tracking-premiums`: secondary trading, sources of tracking error, the market maker's quote from the basket and spread factors, premiums and discounts, and SEC Rule 6c-11's disclosures (median spread, 2% for more than seven days).
+- `meth:etf-costs-risks-uses`: costs of ownership over a holding period, structural, counterparty, leverage, market-structure and closure risks, ETNs, and portfolio uses.
+
+`mech:etf-creation-redemption` now points to the first for Rule 6c-11. Sources: Abner (2016), Rule 6c-11 (eCFR, retrieved 2026-10-20), Lettau and Madhavan (2018). Examples in `notes/artefacts/etf-mechanics/etf-checks.py`. Partly checked 2026-10-20, draft; human review outstanding; none of the pathway's required readings beyond Lettau and Madhavan was read.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:portfolio-trading` (`execution-trading-costs`); `ev:index-reconstitution-impact` (`price-impact-execution`).

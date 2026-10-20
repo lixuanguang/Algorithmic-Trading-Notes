@@ -107,6 +107,21 @@ In `derivative-overlays.tex` (topic `derivative-overlay-strategies`):
 
 All partly checked 2026-10-19, draft. Examples in `notes/artefacts/market-risk-measurement/market-risk-checks.py` and `notes/artefacts/derivative-overlays/overlay-checks.py`; human review is outstanding. Coverage records are editorial, not study. `meth:var-es-estimation-methods` and `def:vix-variance-dividend-swaps` are linked, not repeated.
 
+Written in the alternatives batch (2026-10-20):
+
+In `hedge-fund-strategies.tex`:
+
+- `def:hedge-fund-features`: features against other asset classes, vehicles (single funds, funds of funds, managed accounts, registered funds), data biases, performance, smoothing, and fee layers in a fund of funds.
+- `meth:hedge-fund-strategy-classification`: classification and the equity-related, event-driven, relative value, opportunistic, specialist and multi-manager families, with merger, long/short and convertible arithmetic.
+- `meth:hedge-fund-factor-exposures`: factor models with lagged factors for smoothing, and the Sharpe-ratio test for adding a fund to a 60/40 portfolio on reported and de-smoothed statistics.
+
+In `alternatives-allocation.tex`:
+
+- `def:alternatives-roles-opportunity-set`: roles of alternatives, alternatives against bonds as equity risk mitigators, and label-based against factor-based opportunity sets.
+- `meth:alternatives-allocation-approaches`: considerations by type, suitability, allocation approaches, commitment pacing (Takahashi-Alexander and Luxenberg et al.), overcommitment, the denominator effect, liquidity reserves and monitoring.
+
+Sources: Ang (2014) chaps. 13, 14 and 17; Jaeger (2008); Getmansky, Lo and Makarov (NBER WP 9571); Demaria et al. (2021); Luxenberg et al. (arXiv 2207.07767). Examples in `notes/artefacts/hedge-funds/hedge-fund-checks.py` and `notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py`. Partly checked 2026-10-20, draft; human review outstanding. Coverage records are editorial, not study.
+
 ## Source verification after macro markets and pricing review
 
 method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `ev:trend-following-evidence` resolved by merge into `def:alpha-model-taxonomy`'s pitfalls (Moskowitz, Ooi and Pedersen's abstract; Hurst, Ooi and Pedersen's 1880-2016 Exhibit 1: 7.3 percent net, 9.7 percent volatility, Sharpe 0.76, drawdowns up to 25 percent). The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.

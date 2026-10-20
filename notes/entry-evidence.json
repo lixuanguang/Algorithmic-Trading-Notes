@@ -389,7 +389,7 @@
   },
   "mech:etf-creation-redemption": {
     "source": "compendium/execution-trading-costs/etf-mechanics.tex",
-    "review": "Verification: partly checked 2026-10-15 (against \\texttt{ex-lettau-madhavan-2018} in NBER Working Paper 24250, January 2018, pp.~1 and 4--8, 18, text layer; \\texttt{wide-pan-zeng-etf} in ESRB Working Paper 59, December 2017, abstract and pp.~1--4, text layer, p.~4 added in a follow-up the same day; and the text layer of \\texttt{alpha-harris}, 2002 Oxford printing, sec.~23.5, pp.~491--492). Stability: draft. Currency: ETF practice as described for the United States, 2014--2018; Harris's products as of 2001--2002; no current rule checked."
+    "review": "Verification: partly checked 2026-10-15 (against \\texttt{ex-lettau-madhavan-2018} in NBER Working Paper 24250, January 2018, pp.~1 and 4--8, 18, text layer; \\texttt{wide-pan-zeng-etf} in ESRB Working Paper 59, December 2017, abstract and pp.~1--4, text layer, p.~4 added in a follow-up the same day; and the text layer of \\texttt{alpha-harris}, 2002 Oxford printing, sec.~23.5, pp.~491--492). Stability: draft. Currency: ETF practice as described for the United States, 2014--2018; Harris's products as of 2001--2002; no current rule checked. Revised 2026-10-20 (alternatives batch): the closing sentence of Pitfalls now points to meth:etf-trading-tracking-premiums for SEC Rule 6c-11 (17 CFR 270.6c-11, eCFR text retrieved 2026-10-20); the entry's own claims are unchanged."
   },
   "def:automated-trading-architecture": {
     "source": "compendium/execution-trading-costs/execution-algorithms.tex",
@@ -2290,5 +2290,185 @@
   "meth:life-insurer-analysis": {
     "source": "compendium/financial-statement-analysis/financial-institution-analysis.tex",
     "review": "Verification: eu-2023-1803-ifrs17 paras. 32, 37-38, 44, 47-48, 83, 85; eu-2009-138-solvency2 Arts. 77, 101, 105 and Annex IV; eu-2015-35-solvency2-dr Arts. 37, 39, 136-138, 142; risk-management-financial-institutions-2023 pp. 52, 56-57, 62-63; cnp-mcev-2017 pp. 6, 12, 21-22; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 10 (Linden and Rowan Life shocks, SCR aggregation, ratios 191.5% and 156.0%; new business CSM 14.70 and VNB 7.21; onerous group at a 15% loading). Written 2026-10-20 (PR #32 audit correction, objective:analyse-insurer). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:cost-output-shutdown": {
+    "source": "compendium/multi-asset-systematic-macro/firms-market-structure.tex",
+    "review": "Verification: varian-microeconomics-2014 pp. 359-361, 405-409, 416-419, 426, 433-437, 469-471, 494-497; openstax-microeconomics-3e secs. 7.5, 8.2; locators in the entry text. Checked by notes/artefacts/firms-market-structure/market-structure-checks.py: parts 1-2 (shutdown 24, breakeven 40.42; MES 707, natural monopoly, tangency at 289). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:market-structures-pricing": {
+    "source": "compendium/multi-asset-systematic-macro/firms-market-structure.tex",
+    "review": "Verification: varian-microeconomics-2014 pp. 458-461, 494-497, 516-537; chaps. 23-28; openstax-microeconomics-3e chap. 10; secs. 10.1, 10.2; locators in the entry text. Checked by notes/artefacts/firms-market-structure/market-structure-checks.py: part 3 (Cournot closed form against iteration; Stackelberg, Bertrand, cartel deviation). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:market-structure-identification": {
+    "source": "compendium/multi-asset-systematic-macro/firms-market-structure.tex",
+    "review": "Verification: openstax-microeconomics-3e sec. 11.1; merger-guidelines-2023 pp. 5-6, n. 14; varian-microeconomics-2014 pp. 529-530; locators in the entry text. Checked by notes/artefacts/firms-market-structure/market-structure-checks.py: part 4 (CR4 80, HHI 1,950, merger +300; HHI/elasticity markup). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:alternative-investment-categories": {
+    "source": "compendium/private-capital-allocator/alternative-investment-structures.tex",
+    "review": "Verification: demaria-private-markets-2021 pp. 58-66, 95-98; s7-ang pp. 416-426, 559-562, 594; metrick-yasuda-survey-2011 pp. 5-7; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py (no numbers; the method choice is qualitative). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:alternative-fund-terms": {
+    "source": "compendium/private-capital-allocator/alternative-investment-structures.tex",
+    "review": "Verification: ippolito-private-capital-2020 pp. 13-16; s7-ang pp. 581-585, 594, 610-612; metrick-yasuda-survey-2011 pp. 6-7, 35; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 2 (European against American waterfall, clawback 1.36). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:alternative-returns-after-fees": {
+    "source": "compendium/private-capital-allocator/alternative-investment-structures.tex",
+    "review": "Verification: s7-ang pp. 416-426, 597-602; demaria-private-markets-2021 p. 67; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: parts 1-3 (Brook 2/20 with high-water mark and hurdle: net 124.74 against 139.10 gross; Ashby gross 16.87% against net 11.71%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:private-equity-features": {
+    "source": "compendium/private-capital-allocator/private-capital-foundations.tex",
+    "review": "Verification: s7-ang pp. 594-596; metrick-yasuda-survey-2011 pp. 5-7; pe-kaplan-stromberg-2009 pp. 3, 11-16; w5-gompers-kaplan-mukharlyamov p. 27; ippolito-private-capital-2020 pp. 16-18; pe-harris-jenkinson-kaplan-2014 abstract; pe-kaplan-schoar-2005 pp. 1-2; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 3 (Ashby J-curve). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:private-debt-features": {
+    "source": "compendium/private-capital-allocator/private-capital-foundations.tex",
+    "review": "Verification: ippolito-private-capital-2020 pp. 13, 21, 39-44; demaria-private-markets-2021 pp. 61-62, 127-134; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 5 (Corran unitranche against senior plus mezzanine). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-capital-diversification": {
+    "source": "compendium/private-capital-allocator/private-capital-foundations.tex",
+    "review": "Verification: demaria-private-markets-2021 pp. 160-166; s7-ang pp. 416-421; wide-getmansky-lo-makarov abstract; pe-harris-jenkinson-kaplan-2014 abstract; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 7 (smoothing halves volatility and cuts beta to 0.40; unsmoothing restores them). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-public-market-comparison": {
+    "source": "compendium/private-capital-allocator/private-market-programmes.tex",
+    "review": "Verification: s7-ang pp. 416-428, 594; pe-harris-jenkinson-kaplan-2014 abstract; demaria-private-markets-2021 p. 63; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 8 (reported inputs put 100% in PE; unsmoothed inputs 32%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-fund-structures": {
+    "source": "compendium/private-capital-allocator/private-market-programmes.tex",
+    "review": "Verification: demaria-private-markets-2021 pp. 60-66, 95-98; s7-ang pp. 595-596; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py (structures are qualitative; the secondary-sale case uses no numbers). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-fund-multiples-pme": {
+    "source": "compendium/private-capital-allocator/private-market-programmes.tex",
+    "review": "Verification: ippolito-private-capital-2020 pp. 16-19; s7-ang pp. 598-600; demaria-private-markets-2021 pp. 68-69; pe-kaplan-schoar-2005 pp. 8-9; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 3 (DPI, RVPI, TVPI and IRR by year; KS-PME 1.23). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:gp-alignment-net-returns": {
+    "source": "compendium/private-capital-allocator/private-market-programmes.tex",
+    "review": "Verification: ippolito-private-capital-2020 pp. 13-16; metrick-yasuda-survey-2011 pp. 33, 35; s7-ang pp. 610-614; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 2 (European waterfall: carry 11.85; LP net IRR 11.71%; deal-by-deal 13.21 with clawback 1.36). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-deal-process-exits": {
+    "source": "compendium/private-capital-allocator/private-market-programmes.tex",
+    "review": "Verification: w5-gompers-kaplan-mukharlyamov pp. 3, 13-17, 25-28; ippolito-private-capital-2020 pp. 71-94, 125-130, 188-189, 218-225; pe-kaplan-stromberg-2009 pp. 11, 13-16; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 4 (Corran exit at 9.0x against 8.0x). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-equity-strategies": {
+    "source": "compendium/private-capital-allocator/private-equity-strategies.tex",
+    "review": "Verification: demaria-private-markets-2021 pp. 58-59, 111-118, 126-127; metrick-yasuda-survey-2011 pp. 33-34; ippolito-private-capital-2020 pp. 167-173; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py (strategy choice qualitative; numbers in the valuation entry). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-equity-valuation": {
+    "source": "compendium/private-capital-allocator/private-equity-strategies.tex",
+    "review": "Verification: ippolito-private-capital-2020 pp. 20-21, 173-175, 209-210; w5-gompers-kaplan-mukharlyamov pp. 3, 13-17; demaria-private-markets-2021 pp. 162-163; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 4 (Novaro VC method: 37.70%, pre-money 13.22; Corran LBO: MOIC 2.03, IRR 15.2%, maximum entry 6.9x). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-capital-allocation": {
+    "source": "compendium/private-capital-allocator/private-equity-strategies.tex",
+    "review": "Verification: demaria-private-markets-2021 pp. 116-117, 123, 130, 133-134, 163; s7-ang pp. 427-428; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: parts 7-8 (unsmoothed risk; allocation sensitivity). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-debt-financing-structures": {
+    "source": "compendium/private-capital-allocator/private-debt-special-situations.tex",
+    "review": "Verification: demaria-private-markets-2021 p. 58; ippolito-private-capital-2020 pp. 31-45, 57-58, 192-193; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 5 (unitranche against senior plus mezzanine: cost and cover). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-debt-credit-analysis": {
+    "source": "compendium/private-capital-allocator/private-debt-special-situations.tex",
+    "review": "Verification: ippolito-private-capital-2020 pp. 234-238; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 5 (leverage 5.0x, LTV 55.6%, cover 2.36x against 3.03x, DSCR 1.43x, downside 6.25x). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:special-situations-distressed": {
+    "source": "compendium/private-capital-allocator/private-debt-special-situations.tex",
+    "review": "Verification: demaria-private-markets-2021 pp. 126-130; ippolito-private-capital-2020 pp. 291-297; us-bankruptcy-code-11 secs. 1126(c), 1129(b)(2); locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 6 (Halden recovery waterfall and loan-to-own). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:real-estate-characteristics": {
+    "source": "compendium/real-asset-investor/real-estate.tex",
+    "review": "Verification: investment-valuation-2012 pp. 739-741, 747; tsolacos-real-estate-2021 pp. 5-18; s7-ang pp. 376-381; ncreif-npi-2026q2 p. 1; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: part 1 (Marlow House NOI and value). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:real-estate-value-drivers": {
+    "source": "compendium/real-asset-investor/real-estate.tex",
+    "review": "Verification: investment-valuation-2012 pp. 750-752, 759-761; tsolacos-real-estate-2021 pp. 5-15; s7-ang pp. 376-381; lynn-real-estate-2009 pp. 11-17; ncreif-npi-2026q2 p. 1; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: part 1 (occupancy and cap-rate sensitivity). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:real-estate-valuation-indexes": {
+    "source": "compendium/real-asset-investor/real-estate.tex",
+    "review": "Verification: investment-valuation-2012 pp. 748-752, 759-761; ncreif-npi-2026q2 p. 3; tsolacos-real-estate-2021 p. 18; s7-ang pp. 377-378, 427-428; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: parts 1-2 (four approaches; NCREIF formulas; appraisal lag). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:reit-valuation": {
+    "source": "compendium/real-asset-investor/real-estate.tex",
+    "review": "Verification: nareit-ffo-2018 pp. 2-3, 7; s7-ang pp. 376-380; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: part 3 (Kestrel NAVPS 17.00, FFO 1.74, AFFO 1.36, P/FFO 17.40, P/AFFO 17.00, DDM 16.55). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:private-real-estate-underwriting": {
+    "source": "compendium/real-asset-investor/real-estate.tex",
+    "review": "Verification: demaria-private-markets-2021 pp. 137-141; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: part 4 (Ferris Park unlevered 11.69%, levered 16.96%; exit-cap sensitivity). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:real-assets-allocation": {
+    "source": "compendium/real-asset-investor/real-estate.tex",
+    "review": "Verification: s7-ang pp. 376-381; demaria-private-markets-2021 p. 143; ncreif-timberland-2023q1 p. 28; investment-valuation-2012 p. 743; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: parts 4 and 6 (property returns; farmland yield). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:infrastructure-characteristics": {
+    "source": "compendium/real-asset-investor/infrastructure.tex",
+    "review": "Verification: larreur-structured-finance-2021 pp. 97-99, 110-116, 121-122, 149-156; demaria-private-markets-2021 pp. 141-142; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: part 5 (Ashdown cash flows). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:infrastructure-underwriting": {
+    "source": "compendium/real-asset-investor/infrastructure.tex",
+    "review": "Verification: larreur-structured-finance-2021 pp. 97-103, 117-131, 149-176; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: part 5 (DSCR-sized debt 165.8, LLCR 1.30, equity IRR 10.70%, deduction and demand-risk stresses). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:infrastructure-allocation": {
+    "source": "compendium/real-asset-investor/infrastructure.tex",
+    "review": "Verification: demaria-private-markets-2021 p. 142; larreur-structured-finance-2021 p. 122; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: part 5 (availability against demand-risk equity returns). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:land-timber-farmland": {
+    "source": "compendium/real-asset-investor/land-timber-farmland.tex",
+    "review": "Verification: investment-valuation-2012 pp. 742-743, 753; demaria-private-markets-2021 p. 143; nr-usda-farmland-2026 ERS Farmland Value page, 2026 update; ncreif-timberland-2023q1 p. 28; s7-ang pp. 416-421; locators in the entry text. Checked by notes/artefacts/real-assets/real-asset-checks.py: part 6 (raw land 12.24%, farmland 2.66% gross yield and 5.22% Gordon return, timber decomposition). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:commodity-features": {
+    "source": "compendium/commodity-investing-premia/commodity-futures-investing.tex",
+    "review": "Verification: s16-r34 pp. 2, 6; physical-geman-commodities-2005 pp. 1-2, 28, 251; s7-ang pp. 365-367; wide-erb-harvey-commodity pp. 10-12, 24-25; locators in the entry text. Checked by notes/artefacts/commodity-investment/commodity-return-checks.py: part 1 (Gorton and Rouwenhorst premium example; Ang decomposition). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:commodity-sectors-participants": {
+    "source": "compendium/commodity-investing-premia/commodity-futures-investing.tex",
+    "review": "Verification: physical-geman-commodities-2005 pp. 6-10, 24-25, 33-34, 143-144, 169, 201, 251-252; s16-r34 p. 2; s7-ang pp. 365, 370; locators in the entry text. Checked by notes/artefacts/commodity-investment/commodity-return-checks.py: part 1 (stocks-to-use 20%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:commodity-futures-return-components": {
+    "source": "compendium/commodity-investing-premia/commodity-futures-investing.tex",
+    "review": "Verification: physical-geman-commodities-2005 pp. 24-28, 33-34; wide-erb-harvey-commodity pp. 10-13; s7-ang pp. 367-370; s16-r34 p. 6, n. 7; locators in the entry text. Checked by notes/artefacts/commodity-investment/commodity-return-checks.py: parts 1-2 (Ang Table 11.7 and eq. 11.3; Erb and Harvey roll returns; quarterly roll simulation in backwardation and contango, excess 8.42%/-7.62%, total 12.73%/-3.79%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:commodity-swaps-index-construction": {
+    "source": "compendium/commodity-investing-premia/commodity-futures-investing.tex",
+    "review": "Verification: s7-hulloptions pp. 195, 781; wide-erb-harvey-commodity pp. 24-25; s16-r34 p. 9; locators in the entry text. Checked by notes/artefacts/commodity-investment/commodity-return-checks.py: parts 3-4 (rebalancing return 8.51%; roll schedule; swap value 1.01m; total return swap net 2.85%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:hedge-fund-features": {
+    "source": "compendium/portfolio-construction-risk/hedge-fund-strategies.tex",
+    "review": "Verification: s7-ang pp. 559-570, 585-587; jaeger-alternative-beta-2008 pp. 4, 10-15, 28; wide-getmansky-lo-makarov pp. 21-23; locators in the entry text. Checked by notes/artefacts/hedge-funds/hedge-fund-checks.py: parts 1-2 and 4 (Ang and Jaeger figures; fund of funds fee layers 1.20%/2.40%/0.18%; smoothing ratios). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:hedge-fund-strategy-classification": {
+    "source": "compendium/portfolio-construction-risk/hedge-fund-strategies.tex",
+    "review": "Verification: jaeger-alternative-beta-2008 pp. 11-15, 37-81, 107; s7-ang pp. 571-573; locators in the entry text. Checked by notes/artefacts/hedge-funds/hedge-fund-checks.py: part 3 (merger spread 4.17%, implied completion 80%, break -16.67%; long/short gross 200%, net 60%, beta-adjusted 80%; convertible hedge 1.2 shares). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:hedge-fund-factor-exposures": {
+    "source": "compendium/portfolio-construction-risk/hedge-fund-strategies.tex",
+    "review": "Verification: s7-ang pp. 572-576; jaeger-alternative-beta-2008 pp. 107-109, 161-168, 176; wide-getmansky-lo-makarov pp. 21-22; locators in the entry text. Checked by notes/artefacts/hedge-funds/hedge-fund-checks.py: parts 4-6 (simulated factor regression with lags; Sharpe-ratio rule on reported and de-smoothed statistics, 0.384 against 0.366). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:etf-trading-tracking-premiums": {
+    "source": "compendium/execution-trading-costs/etf-mechanics.tex",
+    "review": "Verification: ex-lettau-madhavan-2018 pp. 4-8, 18; abner-etf-handbook-2016 pp. 36-37, 46-48, 96-98, 133, 140-142, 213-215; sec-rule-6c-11 paras. (a)(1), (b)(2), (c)(1); locators in the entry text. Checked by notes/artefacts/etf-mechanics/etf-checks.py: parts 1-4 (creation fee 2 cents; quote 49.936/50.064; premium 0.60%; Rule 6c-11 median spread and seven-day test; tracking difference and error). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:etf-costs-risks-uses": {
+    "source": "compendium/execution-trading-costs/etf-mechanics.tex",
+    "review": "Verification: abner-etf-handbook-2016 pp. 30, 42-43, 64-67, 105, 140, 158, 181-187, 214, 266-284; locators in the entry text. Checked by notes/artefacts/etf-mechanics/etf-checks.py: parts 4-5 (leveraged fund paths; cost of ownership 0.13%/0.49%/1.40%; lending offset). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:credit-spread-portfolio-risk": {
+    "source": "compendium/corporate-credit-capital/credit-portfolio-management.tex",
+    "review": "Verification: ben-dor-credit-portfolio-2012 pp. xxviii, 3-4, 39, 55, 133-134; locators in the entry text. Checked by notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 1 (DTS equivalence 12; 0.90% from absolute and relative changes; volatility ratio 3; G 120, I 90, OAS 140 bp). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:credit-selection-positioning": {
+    "source": "compendium/corporate-credit-capital/credit-portfolio-management.tex",
+    "review": "Verification: ben-dor-systematic-credit-2021 pp. 413-415, 515-516; ben-dor-credit-portfolio-2012 pp. 213-214; locators in the entry text. Checked by notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 2 (ESP 30 bp; steepener hedge 30 against 16.67; DTS overweight 12 bp). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:credit-liquidity-tail-risk": {
+    "source": "compendium/corporate-credit-capital/credit-portfolio-management.tex",
+    "review": "Verification: ben-dor-credit-portfolio-2012 pp. 81-82, 249, 257-258, 337-338; risk-management-financial-institutions-2023 pp. 413, 416-417; locators in the entry text. Checked by notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 3 (LCS 0.70%, portfolio 0.87%; DTS caps 2.50%/0.83%; WCDR 7.75%, loss 4.65%, simulation). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:credit-cds-international-structured": {
+    "source": "compendium/corporate-credit-capital/credit-portfolio-management.tex",
+    "review": "Verification: ben-dor-credit-portfolio-2012 pp. 55, 113-114, 257, 337-338; larreur-structured-finance-2021 pp. 256-257, 309; locators in the entry text. Checked by notes/artefacts/credit-portfolios/credit-portfolio-checks.py: part 4 (CDS overlay 11.1m; hedged yield 5.5%; CLO OC 120% to 114%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:alternatives-roles-opportunity-set": {
+    "source": "compendium/portfolio-construction-risk/alternatives-allocation.tex",
+    "review": "Verification: s7-ang pp. 195, 211, 366-367, 438-439, 572-573; jaeger-alternative-beta-2008 p. 107; locators in the entry text. Checked by notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py: parts 2-3 (crisis losses 16.0/18.8/15.0/20.7%; equity beta 0.645, equity share of variance 97%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:alternatives-allocation-approaches": {
+    "source": "compendium/portfolio-construction-risk/alternatives-allocation.tex",
+    "review": "Verification: s7-ang pp. 438-442; demaria-private-markets-2021 pp. 101, 175-180, 186; depth-pe-luxenberg-2022 pp. 3, 6, 8-9, 20; locators in the entry text. Checked by notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py: parts 1, 4-5 (pacing: steady-state NAV 4.348, commitment 23.0, exposure 152.6; denominator effect 11.98%; liquidity coverage 1.09). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   }
 }

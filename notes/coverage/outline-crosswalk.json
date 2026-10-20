@@ -5941,9 +5941,9 @@
    "objectives": [
     "objective:analyse-cost-and-output-decisions"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cost-output-shutdown determines breakeven (40.42) and shutdown (24) prices from cost curves, interprets operating at a loss between them, and shows how minimum efficient scale relative to demand separates competition, natural monopoly and the excess capacity of monopolistic competition.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m012:b02",
@@ -5961,9 +5961,9 @@
    "objectives": [
     "objective:compare-market-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:market-structures-pricing describes perfect competition, monopolistic competition, oligopoly and monopoly by sellers, product, entry, pricing power, non-price competition and long-run profit.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m012:b03",
@@ -5981,9 +5981,9 @@
    "objectives": [
     "objective:compare-market-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:market-structures-pricing explains demand, short- and long-run price and output (tangency, excess capacity) and differentiation and advertising strategy under monopolistic competition.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m012:b04",
@@ -6001,9 +6001,9 @@
    "objectives": [
     "objective:compare-market-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:market-structures-pricing explains oligopoly pricing and output under Cournot, Stackelberg, price leadership, Bertrand, collusion and kinked demand, with one market's five outcomes and the cartel's incentive to cheat.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m012:b05",
@@ -6022,9 +6022,9 @@
    "objectives": [
     "objective:identify-market-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:market-structure-identification identifies the structure from sellers, product, entry and conduct and describes the use of CR4 and HHI (merger presumption, link to Cournot markups) and their limitations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m013:b01",
@@ -10314,9 +10314,9 @@
    "objectives": [
     "objective:describe-alternative-investments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:alternative-investment-categories describes the families (private capital, real assets, hedge funds, commodities, digital assets) and their common features: illiquidity, appraisal valuation, complex contracts, specialist managers, biased data.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m080:b02",
@@ -10334,9 +10334,9 @@
    "objectives": [
     "objective:describe-alternative-investments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:alternative-investment-categories compares fund, co-investment and direct investment on diversification, fees, control, resources and adverse selection, with Demaria's evidence and a choice for three investors.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m080:b03",
@@ -10354,9 +10354,9 @@
    "objectives": [
     "objective:explain-alternative-fee-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:alternative-fund-terms describes LP/GP ownership, management fees, carry, hurdles, catch-up, clawbacks, waterfalls, hedge-fund incentive fees and high-water marks, and other fees, with the Ashby waterfall.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m081:b01",
@@ -10374,9 +10374,9 @@
    "objectives": [
     "objective:calculate-alternative-returns-after-fees"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:alternative-returns-after-fees describes appraisal by return type and the biases (survivorship, smoothing, selection, IRR manipulation), and net against gross.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m081:b02",
@@ -10395,9 +10395,9 @@
    "objectives": [
     "objective:calculate-alternative-returns-after-fees"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:alternative-returns-after-fees calculates and interprets hedge-fund returns year by year before and after 2/20 with a high-water mark and hurdle, soft-hurdle and no-high-water-mark variants, and private-fund gross against net returns.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m082:b01",
@@ -10415,9 +10415,9 @@
    "objectives": [
     "objective:explain-private-equity-features"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:private-equity-features explains the features (intermediation, private companies, control, exits), strategies, value-creation levers and investment characteristics (J-curve, return evidence and dispersion, cyclicality, holding periods).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m082:b02",
@@ -10435,9 +10435,9 @@
    "objectives": [
     "objective:explain-private-debt-features"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:private-debt-features explains direct lending, unitranche, mezzanine and distressed debt and their characteristics: contractual floating income, seniority-ranked target returns, short investment periods, default and recovery risk, illiquidity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m082:b03",
@@ -10455,9 +10455,9 @@
    "objectives": [
     "objective:assess-private-capital-diversification"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-capital-diversification describes the diversification claimed for private capital (unlisted exposures, cycle-dependent strategies), why appraisal smoothing overstates it, the unsmoothing correction and the opposing view, with a simulation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m083:b01",
@@ -10475,9 +10475,9 @@
    "objectives": [
     "objective:explain-real-estate-characteristics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:real-estate-characteristics explains the features of real estate (heterogeneous, fixed, durable, land and building, occupier, development and investment segments) and the forms of ownership.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m083:b02",
@@ -10495,9 +10495,9 @@
    "objectives": [
     "objective:explain-real-estate-characteristics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:real-estate-characteristics explains the investment characteristics: income, illiquidity, appraisal-based returns and smoothing, partial inflation protection and leverage.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m083:b03",
@@ -10515,9 +10515,9 @@
    "objectives": [
     "objective:explain-infrastructure-characteristics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:infrastructure-characteristics explains infrastructure features: essential long-lived assets, monopoly and regulation, revenue models and stages.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m083:b04",
@@ -10535,9 +10535,9 @@
    "objectives": [
     "objective:explain-infrastructure-characteristics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:infrastructure-characteristics explains the investment characteristics: stable, often indexed income, claimed low correlation, and regulatory, construction, leverage and rate risks.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m084:b01",
@@ -10555,9 +10555,9 @@
    "objectives": [
     "objective:analyse-land-timber-farmland"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:land-timber-farmland explains raw land (carrying costs, option value), timberland (biological growth, harvest flexibility) and farmland (rents, land value drivers) and their investment characteristics.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m084:b02",
@@ -10575,9 +10575,9 @@
    "objectives": [
     "objective:describe-commodity-characteristics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:commodity-features describes commodity features (derivative, short-maturity claims on real assets, seasonality, storability, physical or financial settlement), forms of access and investment characteristics: return sources, volatility, correlations and inflation hedging by sector.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m084:b03",
@@ -10596,9 +10596,9 @@
     "objective:analyse-land-timber-farmland",
     "objective:describe-commodity-characteristics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:land-timber-farmland and def:commodity-features analyse sources of risk, return and diversification among natural-resource investments: income, growth, appreciation, commodity prices, appraisal bias.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m085:b01",
@@ -10617,9 +10617,9 @@
    "objectives": [
     "objective:analyse-hedge-fund-investing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:hedge-fund-features explains hedge fund features (40-Act exemption, investors, minimums, leverage and shorting, liquidity terms, disclosure, fees) and contrasts them with other asset classes: same securities, different factor exposures.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m085:b02",
@@ -10637,9 +10637,9 @@
    "objectives": [
     "objective:analyse-hedge-fund-investing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:hedge-fund-features describes forms and vehicles: limited partnerships and offshore funds, direct investment, funds of funds with a second fee layer, managed accounts and registered liquid alternatives.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m085:b03",
@@ -10657,9 +10657,9 @@
    "objectives": [
     "objective:analyse-hedge-fund-investing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:hedge-fund-features analyses risk, return and diversification: data biases, failure rates, declining alphas and rising equity correlation, factor exposures and smoothing.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m086:b01",
@@ -18005,9 +18005,9 @@
    "objectives": [
     "objective:compare-commodity-sectors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-sectors-participants compares sector characteristics: agriculture's annual supply and weather, metals' slow supply and storability, energy's marker grades and financialisation, electricity's non-storability.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b02",
@@ -18025,9 +18025,9 @@
    "objectives": [
     "objective:compare-commodity-sectors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-sectors-participants compares life cycles from planting to harvest, ore to refined ingot, and crude to refined products, and the role of carry-over and stocks-to-use.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b03",
@@ -18045,9 +18045,9 @@
    "objectives": [
     "objective:compare-commodity-sectors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-sectors-participants contrasts discounted cash-flow valuation of stocks and bonds with commodity prices set by supply, demand, inventory, storage, convenience yield and risk premia.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b04",
@@ -18065,9 +18065,9 @@
    "objectives": [
     "objective:compare-commodity-sectors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-sectors-participants describes hedgers, speculators, arbitrageurs, exchanges, clearing houses, FCMs and the CFTC.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b05",
@@ -18085,9 +18085,9 @@
    "objectives": [
     "objective:analyse-futures-curve-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-futures-return-components analyses spot and futures prices under the theory of storage: contango with ample stocks, backwardation with scarcity and high convenience yield, convergence at expiry.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b06",
@@ -18105,9 +18105,9 @@
    "objectives": [
     "objective:analyse-futures-curve-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-futures-return-components compares insurance (normal backwardation), hedging pressure and storage theories, with the evidence against a universal premium.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b07",
@@ -18127,9 +18127,9 @@
    "objectives": [
     "objective:analyse-futures-curve-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-futures-return-components describes, calculates and interprets spot, roll and collateral returns of a fully collateralised position (GSCI 1970-2011 decomposition; simulated quarterly rolls).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b08",
@@ -18147,9 +18147,9 @@
    "objectives": [
     "objective:analyse-futures-curve-returns"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-futures-return-components contrasts positive roll returns in backwardation with negative roll returns in contango, with Erb and Harvey's oil and gold curves.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b09",
@@ -18167,9 +18167,9 @@
    "objectives": [
     "objective:use-commodity-swaps-indexes"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-swaps-index-construction describes commodity swaps (fixed-for-floating, total return and excess return, basis, volatility) used to obtain or modify exposure, and values a fixed-price swap.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m033:b10",
@@ -18187,9 +18187,9 @@
    "objectives": [
     "objective:use-commodity-swaps-indexes"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:commodity-swaps-index-construction describes how weighting, rebalancing (diversification return), roll rules and return variants affect index returns.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m034:b01",
@@ -18207,9 +18207,9 @@
    "objectives": [
     "objective:analyse-real-estate-value-drivers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-estate-value-drivers compares the property features that matter for valuation: location, leases, occupancy, costs, land and building life.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m034:b02",
@@ -18227,9 +18227,9 @@
    "objectives": [
     "objective:analyse-real-estate-value-drivers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-estate-value-drivers explains the economic value drivers (rents, occupancy, supply, growth, required return) and the portfolio role, with sensitivities.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m034:b03",
@@ -18247,9 +18247,9 @@
    "objectives": [
     "objective:analyse-real-estate-value-drivers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-estate-value-drivers discusses office, retail, industrial, multifamily and hotel characteristics.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m034:b04",
@@ -18267,9 +18267,9 @@
    "objectives": [
     "objective:value-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-estate-valuation-indexes explains due diligence and the income (direct capitalisation and DCF), sales comparison and cost approaches, reconciled for Marlow House.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m034:b05",
@@ -18287,9 +18287,9 @@
    "objectives": [
     "objective:value-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-estate-valuation-indexes discusses appraisal- and transaction-based indexes, NCREIF's construction and formulas, and smoothing, selection, leverage and investability biases.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m035:b01",
@@ -18307,9 +18307,9 @@
    "objectives": [
     "objective:value-listed-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:reit-valuation discusses equity and mortgage REITs, listed property companies and funds.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m035:b02",
@@ -18328,9 +18328,9 @@
    "objectives": [
     "objective:value-listed-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:reit-valuation justifies NAVPS and estimates it from forward cash NOI for Kestrel REIT, with a cap-rate sensitivity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m035:b03",
@@ -18348,9 +18348,9 @@
    "objectives": [
     "objective:value-listed-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:reit-valuation describes Nareit FFO and AFFO, their reconciliations and limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m035:b04",
@@ -18369,9 +18369,9 @@
    "objectives": [
     "objective:value-listed-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:reit-valuation calculates and interprets NAV, P/FFO, P/AFFO and DCF values for Kestrel REIT.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m035:b05",
@@ -18389,9 +18389,9 @@
    "objectives": [
     "objective:value-listed-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:reit-valuation explains the advantages and disadvantages of listed against private real estate (liquidity, leverage, correlation, agency costs, price discovery).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m036:b01",
@@ -18409,9 +18409,9 @@
    "objectives": [
     "objective:classify-hedge-fund-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:hedge-fund-strategy-classification discusses classification by assets, directionality and discretionary or systematic process, and Jaeger's consensus families, with the caution that labels are self-reported.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m036:b02",
@@ -18429,9 +18429,9 @@
    "objectives": [
     "objective:classify-hedge-fund-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:hedge-fund-strategy-classification discusses long/short equity, equity market neutral and short selling: characteristics, implementation and role.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m036:b03",
@@ -18449,9 +18449,9 @@
    "objectives": [
     "objective:classify-hedge-fund-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:hedge-fund-strategy-classification discusses merger arbitrage, distressed and other event-driven strategies, with a cash and a stock merger example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m036:b04",
@@ -18469,9 +18469,9 @@
    "objectives": [
     "objective:classify-hedge-fund-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:hedge-fund-strategy-classification discusses fixed income, convertible and capital structure arbitrage and their short-put character.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m036:b05",
@@ -18489,9 +18489,9 @@
    "objectives": [
     "objective:classify-hedge-fund-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:hedge-fund-strategy-classification discusses global macro and managed futures and their role as diversifiers in sell-offs.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m036:b06",
@@ -18509,9 +18509,9 @@
    "objectives": [
     "objective:classify-hedge-fund-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:hedge-fund-strategy-classification discusses specialist strategies such as volatility trading, and marks the niche categories as interpretation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m036:b07",
@@ -18529,9 +18529,9 @@
    "objectives": [
     "objective:classify-hedge-fund-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:hedge-fund-strategy-classification discusses multi-strategy funds and funds of funds: diversification, infrastructure, fee layers and netting risk.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m036:b08",
@@ -18549,9 +18549,9 @@
    "objectives": [
     "objective:analyse-hedge-fund-exposures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:hedge-fund-factor-exposures describes factor models of hedge fund returns (equity, short-volatility, spread, style and option-like factors; lagged factors for smoothing) and their uses and limits, with a simulated regression.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m036:b09",
@@ -18569,9 +18569,9 @@
    "objectives": [
     "objective:analyse-hedge-fund-exposures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:hedge-fund-factor-exposures evaluates a 10% hedge fund allocation in a 60/40 portfolio with the Sharpe-ratio rule on reported and de-smoothed statistics and after avoidable fees.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m037:b01",
@@ -18933,9 +18933,9 @@
    "objectives": [
     "objective:explain-etf-mechanics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: mech:etf-creation-redemption explains creation and redemption by authorised participants in kind or in cash and the arbitrage it supports; meth:etf-trading-tracking-premiums adds Rule 6c-11's definitions and Abner's account of APs flattening books.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m039:b02",
@@ -18953,9 +18953,9 @@
    "objectives": [
     "objective:explain-etf-mechanics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:etf-trading-tracking-premiums describes secondary trading at market prices, liquidity from the basket, NAV executions through APs and order handling.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m039:b03",
@@ -18973,9 +18973,9 @@
    "objectives": [
     "objective:explain-etf-mechanics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:etf-trading-tracking-premiums describes sources of tracking error and tracking difference: fees, sampling, rebalancing costs, cash drag, lending, taxes and derivative effects.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m039:b04",
@@ -18993,9 +18993,9 @@
    "objectives": [
     "objective:explain-etf-mechanics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:etf-trading-tracking-premiums describes the market maker's quote from the basket, creation fee, slippage and financing, and the factors that widen or narrow spreads, with Rule 6c-11's median spread.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m039:b05",
@@ -19013,9 +19013,9 @@
    "objectives": [
     "objective:explain-etf-mechanics"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:etf-trading-tracking-premiums describes sources of premiums and discounts: stale NAV, late trading, interrupted arbitrage and creation costs, with the rule's disclosure.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m039:b06",
@@ -19033,9 +19033,9 @@
    "objectives": [
     "objective:evaluate-etf-costs-risks-uses"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:etf-costs-risks-uses describes the costs of owning an ETF: expense ratio, commissions, spreads, premiums, tracking difference and taxes, with a holding-period comparison.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m039:b07",
@@ -19053,9 +19053,9 @@
    "objectives": [
     "objective:evaluate-etf-costs-risks-uses"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:etf-costs-risks-uses describes ETF risks: structure (1940 Act funds, 1933 Act trusts, ETNs' issuer credit), counterparty, leverage and daily reset, market-structure events, closure, liquidity mismatch and tracking.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m039:b08",
@@ -19074,9 +19074,9 @@
    "objectives": [
     "objective:evaluate-etf-costs-risks-uses"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:etf-costs-risks-uses identifies and describes portfolio uses: core and satellite, tactical and factor tilts, cash equitisation, transitions, liquidity sleeves, hedging and market access.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m040:b01",
@@ -21409,9 +21409,9 @@
    "objectives": [
     "objective:define-alternatives-roles"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:alternatives-roles-opportunity-set explains the roles of alternatives: return enhancement, diversification, inflation protection, income and risk mitigation, with Ang's caution on skill.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m008:b02",
@@ -21431,9 +21431,9 @@
    "objectives": [
     "objective:define-alternatives-roles"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:alternatives-roles-opportunity-set compares alternatives with bonds as equity risk mitigators, with a crisis scenario for hedge funds, trend following and private equity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m008:b03",
@@ -21453,9 +21453,9 @@
    "objectives": [
     "objective:define-alternatives-roles"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:alternatives-roles-opportunity-set compares label-based and factor-based opportunity sets and shows the equity beta hidden in a diversified-looking portfolio.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m008:b04",
@@ -21475,9 +21475,9 @@
    "objectives": [
     "objective:allocate-to-alternatives"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:alternatives-allocation-approaches discusses investment considerations by type: return driver, risk measurement, access, fees, liquidity and manager dispersion.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m008:b05",
@@ -21497,9 +21497,9 @@
    "objectives": [
     "objective:allocate-to-alternatives"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:alternatives-allocation-approaches discusses suitability: horizon, liquidity needs, size, governance, skill, regulation and tax.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m008:b06",
@@ -21519,9 +21519,9 @@
    "objectives": [
     "objective:allocate-to-alternatives"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:alternatives-allocation-approaches discusses mean-variance with adjusted inputs, risk-factor budgets, liquidity-constrained models with Ang's hurdles, cash-flow simulation and rules of thumb.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m008:b07",
@@ -21541,9 +21541,9 @@
    "objectives": [
     "objective:allocate-to-alternatives"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:alternatives-allocation-approaches discusses liquidity planning: pacing models (Takahashi-Alexander and Luxenberg et al.), overcommitment, the denominator effect and liquidity reserves, with a pacing and coverage example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m008:b08",
@@ -21563,9 +21563,9 @@
    "objectives": [
     "objective:allocate-to-alternatives"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:alternatives-allocation-approaches discusses monitoring exposure, pacing, performance against PMEs and factors, cash flows, managers, valuations and liquidity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m009:b01",
@@ -24803,9 +24803,9 @@
    "objectives": [
     "objective:measure-spread-portfolio-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-spread-portfolio-risk describes risks in spread portfolios (rates, spread, migration, default, liquidity) and measures spread exposure by spread duration and DTS.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b02",
@@ -24824,9 +24824,9 @@
    "objectives": [
     "objective:measure-spread-portfolio-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-spread-portfolio-risk discusses yield, G-, I-, asset swap, Z- and option-adjusted spreads, their advantages and disadvantages, and why OAS is preferred, with its decomposition.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b03",
@@ -24844,9 +24844,9 @@
    "objectives": [
     "objective:apply-credit-selection-approaches"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-selection-positioning discusses bottom-up credit: fundamental analysis and relative value within peer groups by excess spread to peers.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b04",
@@ -24864,9 +24864,9 @@
    "objectives": [
     "objective:apply-credit-selection-approaches"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-selection-positioning discusses top-down credit: cycle, quality, sector and region allocation, with equity momentum for sector timing, and combining it with bottom-up selection.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b05",
@@ -24884,9 +24884,9 @@
    "objectives": [
     "objective:manage-credit-liquidity-tail-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-liquidity-tail-risk discusses liquidity risk in credit markets, its measurement by LCS and its management with liquid sleeves, derivatives and limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b06",
@@ -24904,9 +24904,9 @@
    "objectives": [
     "objective:manage-credit-liquidity-tail-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-liquidity-tail-risk describes assessing tail risk by credit VaR and expected shortfall, scenarios and concentration, and managing it with issuer and DTS limits and protection.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b07",
@@ -24924,9 +24924,9 @@
    "objectives": [
     "objective:use-cds-and-structured-credit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured discusses single-name and index CDS for exposure, hedging, curve and basis trades, and CDS-based replication.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b08",
@@ -24944,9 +24944,9 @@
    "objectives": [
     "objective:apply-credit-selection-approaches"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-selection-positioning discusses positioning for a spread view: DTS level, curve (DTS-sized steepeners), quality and sector rotation, and cash against CDS.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b09",
@@ -24964,9 +24964,9 @@
    "objectives": [
     "objective:use-cds-and-structured-credit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured discusses international credit portfolios: market differences, EM and sovereign spread risk, currency hedging, legal and liquidity considerations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b10",
@@ -24984,9 +24984,9 @@
    "objectives": [
     "objective:use-cds-and-structured-credit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured describes structured instruments (ABS, CLO, CMBS, covered bonds) as alternatives to corporates: tranching, coverage tests, benefits and risks.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m034:b11",
@@ -25004,9 +25004,9 @@
    "objectives": [
     "objective:use-cds-and-structured-credit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured describes inputs, outputs and considerations of analytical portfolio tools.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m035:b01",
@@ -25348,9 +25348,9 @@
    "objectives": [
     "objective:compare-private-and-public-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-public-market-comparison contrasts public and private investments and markets on trading, costs, valuation, horizon, contracts, information and the owner's role.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m029:b02",
@@ -25368,9 +25368,9 @@
    "objectives": [
     "objective:evaluate-private-fund-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-fund-structures discusses closed-end LPs, evergreen, funds of funds, mandates, co-investment, secondary and listed vehicles, their uses and matches them to four investors.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m029:b03",
@@ -25390,9 +25390,9 @@
    "objectives": [
     "objective:calculate-private-fund-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-fund-multiples-pme discusses why public and private performance differ, and calculates and interprets DPI, RVPI and TVPI by year for Ashby Fund I with the J-curve and a KS-PME.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m029:b04",
@@ -25410,9 +25410,9 @@
    "objectives": [
     "objective:compare-private-and-public-markets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-public-market-comparison compares risk and return for a strategic allocation (reported against unsmoothed inputs, Ang against Harris-Jenkinson-Kaplan) and recommends a liquidity-bound weight.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m030:b01",
@@ -25430,9 +25430,9 @@
    "objectives": [
     "objective:evaluate-gp-alignment-and-fees"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:gp-alignment-net-returns discusses the GP's roles: fundraising, sourcing, investing, monitoring, value creation, valuation and reporting, exit.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m030:b02",
@@ -25452,9 +25452,9 @@
    "objectives": [
     "objective:evaluate-gp-alignment-and-fees"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:gp-alignment-net-returns discusses alignment devices and their limits and calculates LP returns after management fees and carry under whole-fund and deal-by-deal waterfalls.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m030:b03",
@@ -25472,9 +25472,9 @@
    "objectives": [
     "objective:assess-private-deal-process"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-deal-process-exits discusses favourable target characteristics, sourcing and selection evidence and the sources of value creation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m030:b04",
@@ -25492,9 +25492,9 @@
    "objectives": [
     "objective:assess-private-deal-process"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-deal-process-exits discusses business and accounting due diligence and the business plan, and how they set price, debt and target return.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m030:b05",
@@ -25512,9 +25512,9 @@
    "objectives": [
     "objective:assess-private-deal-process"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-deal-process-exits discusses IPO, trade sale, secondary buyout and other exits, their effect on value and the exit evidence, with Corran's exit-multiple sensitivity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m031:b01",
@@ -25532,9 +25532,9 @@
    "objectives": [
     "objective:compare-private-equity-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-equity-strategies discusses venture, growth, buyout and turnaround strategies across the company life cycle and matches them to three investors.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m031:b02",
@@ -25552,9 +25552,9 @@
    "objectives": [
     "objective:compare-private-equity-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-equity-strategies discusses venture and growth equity: stages, staging, minority stakes, instruments, loss ratios and dispersion.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m031:b03",
@@ -25572,9 +25572,9 @@
    "objectives": [
     "objective:compare-private-equity-strategies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-equity-strategies discusses buyouts: control, financial and tax leverage, holding periods and loss ratio.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m031:b04",
@@ -25594,9 +25594,9 @@
    "objectives": [
     "objective:value-private-equity-investments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-equity-valuation estimates inputs (target return, exit value, dilution, leverage, exit multiple) and calculates and interprets venture, growth and buyout values, including the sponsor's maximum price and a source discrepancy in the dilution formula.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m031:b05",
@@ -25614,9 +25614,9 @@
    "objectives": [
     "objective:allocate-across-private-capital"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-capital-allocation discusses risk and return among private equity strategies and against other investments in a strategic allocation, with Cambridge Associates evidence and an endowment recommendation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m032:b01",
@@ -25634,9 +25634,9 @@
    "objectives": [
     "objective:structure-private-debt-financing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-debt-financing-structures discusses debt financing at each stage of the investment life cycle, from venture lending to rescue financing.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m032:b02",
@@ -25654,9 +25654,9 @@
    "objectives": [
     "objective:structure-private-debt-financing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-debt-financing-structures discusses leveraged loans (TLA, TLB, revolver), high-yield bonds and convertibles in private-market strategies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m032:b03",
@@ -25674,9 +25674,9 @@
    "objectives": [
     "objective:structure-private-debt-financing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-debt-financing-structures contrasts mezzanine and unitranche on structure, pricing, repayment, prepayment, covenants and the borrower's trade-offs, with Corran.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m032:b04",
@@ -25696,9 +25696,9 @@
    "objectives": [
     "objective:analyse-private-debt-credit"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-debt-credit-analysis analyses a private debt profile and calculates and interprets leverage, coverage, debt service cover, loan to value and downside ratios, with a lending decision.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m032:b05",
@@ -25716,9 +25716,9 @@
    "objectives": [
     "objective:allocate-across-private-capital"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-capital-allocation discusses private debt's risk and return against other private investments and its income role in the allocation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m033:b01",
@@ -25736,9 +25736,9 @@
    "objectives": [
     "objective:evaluate-special-situations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses the characteristics and risks of special situations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m033:b02",
@@ -25756,9 +25756,9 @@
    "objectives": [
     "objective:evaluate-special-situations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses distressed debt (trading and loan-to-own), financing alternatives in distress (asset sales, secured and DIP financing, equity, repurchases, exchange offers, OCR and ICR) and strategies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m033:b03",
@@ -25776,9 +25776,9 @@
    "objectives": [
     "objective:evaluate-special-situations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses complex situations (non-performing loans, non-core assets, dislocations).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m033:b04",
@@ -25796,9 +25796,9 @@
    "objectives": [
     "objective:evaluate-special-situations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses due diligence and recovery valuation: going-concern value, priority, fulcrum, process, with Halden's waterfall across values.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m033:b05",
@@ -25816,9 +25816,9 @@
    "objectives": [
     "objective:allocate-across-private-capital"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-capital-allocation discusses special situations and distressed debt against other private debt: countercyclical opportunity set, return evidence and their role.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m034:b01",
@@ -25836,9 +25836,9 @@
    "objectives": [
     "objective:underwrite-private-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-real-estate-underwriting discusses private real estate features: core to opportunistic strategies, leverage and return composition.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m034:b02",
@@ -25856,9 +25856,9 @@
    "objectives": [
     "objective:underwrite-private-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-real-estate-underwriting discusses value drivers of private real estate (property drivers plus the business plan) and its portfolio role.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m034:b03",
@@ -25876,9 +25876,9 @@
    "objectives": [
     "objective:underwrite-private-real-estate"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-real-estate-underwriting discusses due diligence and valuation, with a levered value-added underwriting and its sensitivity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m034:b04",
@@ -25897,9 +25897,9 @@
     "objective:allocate-to-real-assets",
     "objective:analyse-land-timber-farmland"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-assets-allocation and meth:land-timber-farmland discuss the distinctive characteristics of timberland and farmland: biological growth, commodity-linked income, land, inflation hedge and access.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m034:b05",
@@ -25917,9 +25917,9 @@
    "objectives": [
     "objective:allocate-to-real-assets"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-assets-allocation discusses risk and return of private real estate, timberland and farmland against other investments in a strategic allocation and recommends a sleeve for a pension.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m035:b01",
@@ -25937,9 +25937,9 @@
    "objectives": [
     "objective:underwrite-infrastructure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting and def:infrastructure-characteristics discuss infrastructure investment features and revenue models.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m035:b02",
@@ -25957,9 +25957,9 @@
    "objectives": [
     "objective:underwrite-infrastructure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting discusses methods and vehicles: direct stakes, closed-end funds, listed companies and funds, yieldcos and debt funds.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m035:b03",
@@ -25977,9 +25977,9 @@
    "objectives": [
     "objective:underwrite-infrastructure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting discusses the project life cycle and the roles of non-recourse debt and equity, with DSCR and gearing sizing for Ashdown.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m035:b04",
@@ -25997,9 +25997,9 @@
    "objectives": [
     "objective:underwrite-infrastructure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting discusses due diligence on project risks and valuation by phase and revenue model.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m035:b05",
@@ -26017,9 +26017,9 @@
    "objectives": [
     "objective:allocate-to-infrastructure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-allocation discusses infrastructure's risk and return against other investments (fund evidence, PME, return targets by strategy, rate sensitivity) and recommends an allocation for an insurer.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m029:b01",

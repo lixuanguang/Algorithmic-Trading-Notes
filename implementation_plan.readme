@@ -3164,3 +3164,25 @@ correction pass*):
 
 **Evidence.** Four scripts extended (57, 54, 24 and 36 checks). Eleven objectives and 32 outline items
 rechecked; coverage unchanged. Corrections count toward no new objective.
+
+## 31. Alternatives batch (executed 2026-10-20)
+
+**Verified state.** Same branch and draft PR as section 30, after the audit commit. Coverage
+before: 326/424 objectives and 774/1,030 outline items. All 45 selected objectives were
+`missing`; their 113 outline items map to no objective outside the batch.
+
+**Scope.** Market structure (3); alternative structures, private equity and debt, private-market
+programmes (17, new chapter `private-capital-allocator`); real estate, infrastructure and land
+(10, new chapter `real-asset-investor`); commodity investment (4); hedge funds (3); ETFs (2);
+credit portfolio strategies (4); allocation to alternatives (2).
+
+**Method.** Each outline item read on its page; non-curriculum sources only (books held by the
+owner, working papers, law and index documents); one checked example script per area, reused
+through `make examples`; records through the existing objectives, crosswalk, entry-evidence,
+reading-note and pathway files. No new validation framework.
+
+**Result.** 45 new entries (plus one existing ETF entry remapped), eight scripts with 141 checks,
+17 new sources, 27 new and 14 extended reading notes. Coverage 371/424 objectives and 887/1,030
+items. Editorial coverage only; human review is outstanding.
+
+Details: `notes/source-review-records.md`, *Alternatives batch, 20 October 2026*.

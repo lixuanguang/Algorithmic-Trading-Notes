@@ -11910,9 +11910,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion. Revalidated 2026-10-21 after the PR #33 correction pass: III(B) now states that allocation depends on how a family account is managed, not on the member's interest, and that beneficial ownership of a family client account adds preclearance and reporting (Handbook pp. 77, 165, 167-168, VI(B) Example 3); the allocation case adds a jointly held family client account; every case still reaches a conclusion.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:7099c7688942:m097:b02",
@@ -11930,9 +11930,9 @@
    "objectives": [
     "objective:prevent-violations-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality). Revalidated 2026-10-20 after the final audit corrections: the Linton allocation policy now classifies personal accounts (beneficial interest, excluded from oversubscribed issues) separately from family client accounts (allocated pro rata, flagged and reviewed), replacing a blanket family exclusion that would breach III(A) and VI(B) (Handbook pp. 74, 77, 165), with a worked pro-rata example.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality). Revalidated 2026-10-20 after the final audit corrections: the Linton allocation policy now classifies personal accounts (beneficial interest, excluded from oversubscribed issues) separately from family client accounts (allocated pro rata, flagged and reviewed), replacing a blanket family exclusion that would breach III(A) and VI(B) (Handbook pp. 74, 77, 165), with a worked pro-rata example. Revalidated 2026-10-21 after the PR #33 correction pass: the Linton policy now decides allocation class by management and conflict controls by beneficial interest, so a family client account with an employee beneficial interest is allocated pro rata after preclearance and with reporting, a case the earlier classification left unclassified; worked joint-account example (Handbook pp. 77, 165-168).",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:7099c7688942:m097:b03",
@@ -11950,9 +11950,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients labels each original case as conforming or violating, with reasons, across III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients labels each original case as conforming or violating, with reasons, across III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion. Revalidated 2026-10-21 after the PR #33 correction pass: III(B) now states that allocation depends on how a family account is managed, not on the member's interest, and that beneficial ownership of a family client account adds preclearance and reporting (Handbook pp. 77, 165, 167-168, VI(B) Example 3); the allocation case adds a jointly held family client account; every case still reaches a conclusion.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:7099c7688942:m098:b01",
@@ -12090,9 +12090,9 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167). Revalidated 2026-10-21 after the PR #33 correction pass: VI(B) now covers family client accounts with beneficial ownership (Example 3, pp. 167-168) and adds a contrasting original case: a jointly held family client account filled pro rata after preclearance and with reporting conforms; cutting, skipping controls or topping it up violates.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:7099c7688942:m100:b02",
@@ -12110,9 +12110,9 @@
    "objectives": [
     "objective:prevent-violations-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees). Revalidated 2026-10-20 after the final audit corrections: the Brook Lane code's IPO ban now applies to personal and beneficially owned accounts only, with relatives' client accounts allocated as clients (Handbook pp. 165-167).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees). Revalidated 2026-10-20 after the final audit corrections: the Brook Lane code's IPO ban now applies to personal and beneficially owned accounts only, with relatives' client accounts allocated as clients (Handbook pp. 165-167). Revalidated 2026-10-21 after the PR #33 correction pass: the Brook Lane code allocates relatives' client accounts as clients even with an employee beneficial interest, keeping preclearance and duplicate statements and exempting block participation from the blackout (Handbook pp. 165-168).",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:7099c7688942:m100:b03",
@@ -12130,9 +12130,9 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest labels each original case as conforming or violating, with reasons, across VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest labels each original case as conforming or violating, with reasons, across VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167). Revalidated 2026-10-21 after the PR #33 correction pass: VI(B) now covers family client accounts with beneficial ownership (Example 3, pp. 167-168) and adds a contrasting original case: a jointly held family client account filled pro rata after preclearance and with reporting conforms; cutting, skipping controls or topping it up violates.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:7099c7688942:m101:b01",
@@ -19763,9 +19763,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion. Revalidated 2026-10-21 after the PR #33 correction pass: III(B) now states that allocation depends on how a family account is managed, not on the member's interest, and that beneficial ownership of a family client account adds preclearance and reporting (Handbook pp. 77, 165, 167-168, VI(B) Example 3); the allocation case adds a jointly held family client account; every case still reaches a conclusion.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:0242f4b7ba07:m046:b02",
@@ -19783,9 +19783,9 @@
    "objectives": [
     "objective:prevent-violations-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality). Revalidated 2026-10-20 after the final audit corrections: the Linton allocation policy now classifies personal accounts (beneficial interest, excluded from oversubscribed issues) separately from family client accounts (allocated pro rata, flagged and reviewed), replacing a blanket family exclusion that would breach III(A) and VI(B) (Handbook pp. 74, 77, 165), with a worked pro-rata example.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality). Revalidated 2026-10-20 after the final audit corrections: the Linton allocation policy now classifies personal accounts (beneficial interest, excluded from oversubscribed issues) separately from family client accounts (allocated pro rata, flagged and reviewed), replacing a blanket family exclusion that would breach III(A) and VI(B) (Handbook pp. 74, 77, 165), with a worked pro-rata example. Revalidated 2026-10-21 after the PR #33 correction pass: the Linton policy now decides allocation class by management and conflict controls by beneficial interest, so a family client account with an employee beneficial interest is allocated pro rata after preclearance and with reporting, a case the earlier classification left unclassified; worked joint-account example (Handbook pp. 77, 165-168).",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:0242f4b7ba07:m047:b01",
@@ -19883,9 +19883,9 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167). Revalidated 2026-10-21 after the PR #33 correction pass: VI(B) now covers family client accounts with beneficial ownership (Example 3, pp. 167-168) and adds a contrasting original case: a jointly held family client account filled pro rata after preclearance and with reporting conforms; cutting, skipping controls or topping it up violates.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:0242f4b7ba07:m049:b02",
@@ -19903,9 +19903,9 @@
    "objectives": [
     "objective:prevent-violations-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees). Revalidated 2026-10-20 after the final audit corrections: the Brook Lane code's IPO ban now applies to personal and beneficially owned accounts only, with relatives' client accounts allocated as clients (Handbook pp. 165-167).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees). Revalidated 2026-10-20 after the final audit corrections: the Brook Lane code's IPO ban now applies to personal and beneficially owned accounts only, with relatives' client accounts allocated as clients (Handbook pp. 165-167). Revalidated 2026-10-21 after the PR #33 correction pass: the Brook Lane code allocates relatives' client accounts as clients even with an employee beneficial interest, keeping preclearance and duplicate statements and exempting block participation from the blackout (Handbook pp. 165-168).",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:0242f4b7ba07:m050:b01",
@@ -21629,9 +21629,9 @@
    "objectives": [
     "objective:formulate-private-client-ips"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips justifies return, risk, objectives and constraints from human and financial capital for the hypothetical clients. Revalidated 2026-10-20 after the final audit corrections: the IPS now holds the 60k reserve outside the 540k policy portfolio (no double counting), gives the required real return of 2.30% (1.96% only if the reserve is counted twice), a 60/40 policy governed by moderate willingness and the 35% joint federal band (Rev. Proc. 2025-32 sec. 4.01); checked in parts 1 and 3.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips justifies return, risk, objectives and constraints from human and financial capital for the hypothetical clients. Revalidated 2026-10-20 after the final audit corrections: the IPS now holds the 60k reserve outside the 540k policy portfolio (no double counting), gives the required real return of 2.30% (1.96% only if the reserve is counted twice), a 60/40 policy governed by moderate willingness and the 35% joint federal band (Rev. Proc. 2025-32 sec. 4.01); checked in parts 1 and 3. Revalidated 2026-10-21 after the PR #33 correction pass: the IPS tax constraint now specifies the household's 2026 income and stacks 66,000 of qualified dividends and gains on 571,200 of ordinary taxable income: 42,500 at 15% to the 613,700 ceiling and 23,500 at 20%, plus NIIT on the lesser of investment income and MAGI over 250,000 (Rev. Proc. 2025-32 secs. 4.03, 4.14; IRC 1(h), 1411), replacing a 15% rate inferred from the 35% band; the item's return, risk and constraint justification still holds; checked in part 3.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m009:b04",
@@ -21674,9 +21674,9 @@
    "objectives": [
     "objective:formulate-private-client-ips"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips discusses private against institutional clients and formulates a private-client IPS. Revalidated 2026-10-20 after the final audit corrections: the IPS now holds the 60k reserve outside the 540k policy portfolio (no double counting), gives the required real return of 2.30% (1.96% only if the reserve is counted twice), a 60/40 policy governed by moderate willingness and the 35% joint federal band (Rev. Proc. 2025-32 sec. 4.01); checked in parts 1 and 3.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips discusses private against institutional clients and formulates a private-client IPS. Revalidated 2026-10-20 after the final audit corrections: the IPS now holds the 60k reserve outside the 540k policy portfolio (no double counting), gives the required real return of 2.30% (1.96% only if the reserve is counted twice), a 60/40 policy governed by moderate willingness and the 35% joint federal band (Rev. Proc. 2025-32 sec. 4.01); checked in parts 1 and 3. Revalidated 2026-10-21 after the PR #33 correction pass: the IPS tax constraint now specifies the household's 2026 income and stacks 66,000 of qualified dividends and gains on 571,200 of ordinary taxable income: 42,500 at 15% to the 613,700 ceiling and 23,500 at 20%, plus NIIT on the lesser of investment income and MAGI over 250,000 (Rev. Proc. 2025-32 secs. 4.03, 4.14; IRC 1(h), 1411), replacing a 15% rate inferred from the 35% band; the item's return, risk and constraint justification still holds; checked in part 3.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b01",
@@ -21696,9 +21696,9 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses common characteristics: large pools governed for others, long horizons, governance, regulation and external managers (Ang chap. 1). Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses common characteristics: large pools governed for others, long horizons, governance, regulation and external managers (Ang chap. 1). Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets. Revalidated 2026-10-21 after the PR #33 correction pass: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b02",
@@ -21718,9 +21718,9 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses investment policy: mission, return and risk objectives, constraints and the governance of policy. Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses investment policy: mission, return and risk objectives, constraints and the governance of policy. Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets. Revalidated 2026-10-21 after the PR #33 correction pass: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b03",
@@ -21740,9 +21740,9 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses stakeholders, liabilities, horizons and liquidity needs by investor type: DB plans, SWFs, endowments, foundations, banks and insurers. Revalidated 2026-10-20 after the final audit corrections: DB funding now distinguishes the funding target from the PBO and states the 15-year amortisation for single-employer plans from 2022 (IRC 430(c)(8); Notice 2021-48) instead of Ang's seven years; the endowment constraint now gives New York's rebuttable presumption, five-year quarterly average and its applicability, and says 7% is no safe harbour (NPC 553(a), (d)).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses stakeholders, liabilities, horizons and liquidity needs by investor type: DB plans, SWFs, endowments, foundations, banks and insurers. Revalidated 2026-10-20 after the final audit corrections: DB funding now distinguishes the funding target from the PBO and states the 15-year amortisation for single-employer plans from 2022 (IRC 430(c)(8); Notice 2021-48) instead of Ang's seven years; the endowment constraint now gives New York's rebuttable presumption, five-year quarterly average and its applicability, and says 7% is no safe harbour (NPC 553(a), (d)). Revalidated 2026-10-21 after the PR #33 correction pass: the DB funding statement now says each year's new base is the shortfall less the present value of installments still due on earlier bases (IRC 430(c)(3)); the endowment constraint is unchanged.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b04",
@@ -21762,9 +21762,9 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics describes legal, regulatory and tax constraints by type, including the Santiago Principles and the US foundation payout rule (26 USC 4942). Revalidated 2026-10-20 after the final audit corrections: DB funding now distinguishes the funding target from the PBO and states the 15-year amortisation for single-employer plans from 2022 (IRC 430(c)(8); Notice 2021-48) instead of Ang's seven years; the endowment constraint now gives New York's rebuttable presumption, five-year quarterly average and its applicability, and says 7% is no safe harbour (NPC 553(a), (d)).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics describes legal, regulatory and tax constraints by type, including the Santiago Principles and the US foundation payout rule (26 USC 4942). Revalidated 2026-10-20 after the final audit corrections: DB funding now distinguishes the funding target from the PBO and states the 15-year amortisation for single-employer plans from 2022 (IRC 430(c)(8); Notice 2021-48) instead of Ang's seven years; the endowment constraint now gives New York's rebuttable presumption, five-year quarterly average and its applicability, and says 7% is no safe harbour (NPC 553(a), (d)). Revalidated 2026-10-21 after the PR #33 correction pass: the DB funding statement now says each year's new base is the shortfall less the present value of installments still due on earlier bases (IRC 430(c)(3)); the endowment constraint is unchanged.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b05",
@@ -21784,9 +21784,9 @@
    "objectives": [
     "objective:evaluate-pension-risk"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:db-pension-risk evaluates funded status, sponsor strength, correlation between sponsor and plan assets, plan design and workforce characteristics, with a hypothetical sponsor. Revalidated 2026-10-20 after the final audit corrections: Harlow now separates statutory shortfall (0.40bn on a stylised funding target), accounting deficit (1.0bn) and economic deficit (1.81bn); the 96.34m and 172.82m annuities are labelled policy illustrations, not the legal minimum, and the conclusion separates moderate cash burden from high economic risk; checked in institutional-checks.py part 1.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:db-pension-risk evaluates funded status, sponsor strength, correlation between sponsor and plan assets, plan design and workforce characteristics, with a hypothetical sponsor. Revalidated 2026-10-20 after the final audit corrections: Harlow now separates statutory shortfall (0.40bn on a stylised funding target), accounting deficit (1.0bn) and economic deficit (1.81bn); the 96.34m and 172.82m annuities are labelled policy illustrations, not the legal minimum, and the conclusion separates moderate cash burden from high economic risk; checked in institutional-checks.py part 1. Revalidated 2026-10-21 after the PR #33 correction pass: the Harlow minimum now nets the present value of installments on the open 2022-2025 bases (303.2m) from the 400m shortfall, giving a 96.8m base under IRC 430(c)(3) (Notice 2021-48 sec. III.B.1), and computes the full contribution (151.91m at the valuation date: target normal cost 110m, shortfall charge 41.91m) with its timing; statutory, accounting and economic measures stay separate and the conclusion states that the true minimum needs Harlow's valuation; checked in part 1.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b06",
@@ -21806,9 +21806,9 @@
    "objectives": [
     "objective:evaluate-institutional-portfolios"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates institutional IPSs against mission, liabilities and constraints. Revalidated 2026-10-20 after the final audit corrections: the Elmsworth spending evaluation now specifies a New York institution and post-enactment donor-restricted gifts and tests spending against the five-year quarterly average (peak 5.28%), stating that staying below 7% does not establish prudence; checked in institutional-checks.py part 2.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates institutional IPSs against mission, liabilities and constraints. Revalidated 2026-10-20 after the final audit corrections: the Elmsworth spending evaluation now specifies a New York institution and post-enactment donor-restricted gifts and tests spending against the five-year quarterly average (peak 5.28%), stating that staying below 7% does not establish prudence; checked in institutional-checks.py part 2. Revalidated 2026-10-21 after the PR #33 correction pass: the pure 5% rule is now tested against averages of its own quarterly values (peak 5.24%, previously 5.25% on the smoothed rule's values), with a check that detects cross-policy denominator reuse; the evaluation's conclusion is unchanged.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b07",
@@ -21828,9 +21828,9 @@
    "objectives": [
     "objective:evaluate-institutional-portfolios"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates DB, SWF, endowment and foundation portfolios (NBIM's GPFG pages; Lerner, Schoar and Wang). Revalidated 2026-10-20 after the final audit corrections: the Elmsworth spending evaluation now specifies a New York institution and post-enactment donor-restricted gifts and tests spending against the five-year quarterly average (peak 5.28%), stating that staying below 7% does not establish prudence; checked in institutional-checks.py part 2.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates DB, SWF, endowment and foundation portfolios (NBIM's GPFG pages; Lerner, Schoar and Wang). Revalidated 2026-10-20 after the final audit corrections: the Elmsworth spending evaluation now specifies a New York institution and post-enactment donor-restricted gifts and tests spending against the five-year quarterly average (peak 5.28%), stating that staying below 7% does not establish prudence; checked in institutional-checks.py part 2. Revalidated 2026-10-21 after the PR #33 correction pass: the pure 5% rule is now tested against averages of its own quarterly values (peak 5.24%, previously 5.25% on the smoothed rule's values), with a check that detects cross-policy denominator reuse; the evaluation's conclusion is unchanged.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b08",
@@ -21850,9 +21850,9 @@
    "objectives": [
     "objective:evaluate-institutional-portfolios"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios describes bank and insurer balance-sheet management (duration gap, regulatory liquidity and capital consumption), cross-referencing the existing bank and insurer entries. Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios describes bank and insurer balance-sheet management (duration gap, regulatory liquidity and capital consumption), cross-referencing the existing bank and insurer entries. Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets. Revalidated 2026-10-21 after the PR #33 correction pass: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b01",
@@ -23709,9 +23709,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion. Revalidated 2026-10-21 after the PR #33 correction pass: III(B) now states that allocation depends on how a family account is managed, not on the member's interest, and that beneficial ownership of a family client account adds preclearance and reporting (Handbook pp. 77, 165, 167-168, VI(B) Example 3); the allocation case adds a jointly held family client account; every case still reaches a conclusion.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m022:b02",
@@ -23731,9 +23731,9 @@
    "objectives": [
     "objective:prevent-violations-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality). Revalidated 2026-10-20 after the final audit corrections: the Linton allocation policy now classifies personal accounts (beneficial interest, excluded from oversubscribed issues) separately from family client accounts (allocated pro rata, flagged and reviewed), replacing a blanket family exclusion that would breach III(A) and VI(B) (Handbook pp. 74, 77, 165), with a worked pro-rata example.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality). Revalidated 2026-10-20 after the final audit corrections: the Linton allocation policy now classifies personal accounts (beneficial interest, excluded from oversubscribed issues) separately from family client accounts (allocated pro rata, flagged and reviewed), replacing a blanket family exclusion that would breach III(A) and VI(B) (Handbook pp. 74, 77, 165), with a worked pro-rata example. Revalidated 2026-10-21 after the PR #33 correction pass: the Linton policy now decides allocation class by management and conflict controls by beneficial interest, so a family client account with an employee beneficial interest is allocated pro rata after preclearance and with reporting, a case the earlier classification left unclassified; worked joint-account example (Handbook pp. 77, 165-168).",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m023:b01",
@@ -23841,9 +23841,9 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167). Revalidated 2026-10-21 after the PR #33 correction pass: VI(B) now covers family client accounts with beneficial ownership (Example 3, pp. 167-168) and adds a contrasting original case: a jointly held family client account filled pro rata after preclearance and with reporting conforms; cutting, skipping controls or topping it up violates.",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m025:b02",
@@ -23863,9 +23863,9 @@
    "objectives": [
     "objective:prevent-violations-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees). Revalidated 2026-10-20 after the final audit corrections: the Brook Lane code's IPO ban now applies to personal and beneficially owned accounts only, with relatives' client accounts allocated as clients (Handbook pp. 165-167).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees). Revalidated 2026-10-20 after the final audit corrections: the Brook Lane code's IPO ban now applies to personal and beneficially owned accounts only, with relatives' client accounts allocated as clients (Handbook pp. 165-167). Revalidated 2026-10-21 after the PR #33 correction pass: the Brook Lane code allocates relatives' client accounts as clients even with an employee beneficial interest, keeping preclearance and duplicate statements and exempting block participation from the blackout (Handbook pp. 165-168).",
    "residual_gap": null,
-   "reviewed": "2026-10-20"
+   "reviewed": "2026-10-21"
   },
   {
    "id": "outline:2e1d62d8f585:m026:b01",

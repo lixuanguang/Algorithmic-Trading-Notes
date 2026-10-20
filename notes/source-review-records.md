@@ -5429,3 +5429,66 @@ with no overfull boxes or undefined references) and `make pre-commit` (12 hooks 
 **Limitations.** The Okafor capital market assumptions, willingness threshold, Harlow funding target and Treasury
 spread, and Elmsworth's pre-example values are stated assumptions, not data. The New York article's effective date was
 not taken from a primary page. Editorial coverage only; human review and study are outstanding.
+
+## PR #33 correction pass, 21 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` at `394d15c`, draft PR #33 to `main` open, working
+tree clean. Coverage at the start: 424/424 objectives and 1,030/1,030 items. Corrections only: no objective created,
+no denominator or requirement changed. Each finding was reproduced before the entry changed; old values are kept for
+comparison.
+
+**Findings and corrections.**
+1. *Okafor tax assumptions* (`meth:private-client-ips`; `private-wealth-checks.py` part 3). Reproduced: the IPS read a
+   15 percent rate on qualified dividends and gains from the 35 percent ordinary band, but Rev. Proc. 2025-32 sec. 4.03
+   (p. 13) puts the 2026 joint 15 percent ceiling at 613,700, inside that band (512,450 to 768,700, sec. 4.01 Table 1).
+   Read: IRC sec. 1(h)(1)(A)-(D), (h)(11), (j)(5) (LII, saved 2026-10-21); sec. 1411(a)(1), (b)(1); Rev. Proc. sec.
+   4.14 (standard deduction 32,200). Stated 2026 return: wages 650,000 less 49,000 of 401(k) deferrals, interest
+   2,400, qualified dividends 6,000, net long-term gains 60,000; AGI 669,400; taxable income 637,200; ordinary taxable
+   income 571,200. Stacked: 42,500 at 15 percent and 23,500 at 20 percent; income tax 148,533.50 (the old inference
+   gives 1,175 less); NIIT 3.8 percent of 68,400 = 2,599.20 (MAGI exceeds 250,000 by 419,400). Marginal rates by finite
+   difference: 23.8 percent on gains (not 18.8), 40 percent on wages, 43.8 percent on interest. Checks: published
+   cumulative bracket amounts (116,896 at 512,450; 206,583.50 at 768,700); the statutory formula against layer
+   stacking; boundaries at 613,700 (all 15 percent at the ceiling, 20 percent on the next dollar), ordinary income at
+   613,700 (all 20 percent), the zero-rate amount (38,900 at 0 percent on 60,000 of ordinary income), ordinary income of
+   547,700 (all 66,000 at 15 percent); NIIT below the threshold and on the MAGI excess when it is the smaller amount.
+2. *Harlow pension contributions* (`meth:db-pension-risk`, `def:institutional-investor-characteristics`;
+   `institutional-checks.py` part 1). Reproduced: the entry treated the whole 0.40bn shortfall as a new base (38.5m)
+   and then said the minimum adds installments on 2022-2025 bases, amortising the open bases twice. Read: IRC sec.
+   430(a), (c)(1)-(3), (c)(5)-(6), (c)(8), (g)(2), (j)(1)-(3) (LII, saved 2026-10-21); Notice 2021-48 sec. III.B.1 (p. 5,
+   PDF saved 2026-10-21), which lists the present value of remaining installments "for purposes of determining any
+   shortfall amortization base established in the current plan year under § 430(c)(3)". Stated assumptions: valuation
+   date 1 January 2026; one 5 percent effective rate for the segment rates; open bases 0.20, 0.08, 0.03 and 0.05bn set in
+   2022-2025, a shortfall in every year; no waiver, prefunding or carryover balances; target normal cost 110m. Result:
+   old installments 33.03m a year worth 303.2m; 2026 base 96.8m (installment 8.88m); shortfall charge 41.91m; minimum
+   required contribution 151.91m at the valuation date (12.7 percent of EBITDA; deficit repair 3.5 percent), 165.12m if
+   paid in one sum on 15 September 2027, before any surcharge on missed quarterly installments. The double-counting
+   construction gives 69.73m (27.82m too high). The 38.5m was also an end-of-year annuity; valued at the valuation date
+   a single base costs 36.70m. Checks: the present value of all installments still due equals the shortfall; each
+   base's balance reaches zero after 15 installments; no open bases (base = shortfall); assets above target (TNC less
+   the excess, 60m); a negative base when the shortfall (0.25bn) is below the open installments' value (-53.2m, charge
+   28.15m, floored at zero in aggregate by 430(c)(1)). Conclusion: deficit-repair cash is moderate under the stated
+   assumptions; the true minimum cannot be determined without Harlow's valuation; accounting (1.0bn) and economic
+   (1.81bn) deficits kept separate.
+3. *Family client IPO allocations* (`rule:standard-duties-to-clients`, `meth:preventing-client-duty-violations`,
+   `rule:standard-conflicts-of-interest`, `meth:preventing-conflict-violations`). Reproduced: the Linton family-client
+   class required no employee beneficial interest and the personal class covered only accounts not managed under the
+   client process, so a managed family account with an employee interest fitted neither. Read: Handbook III(B), p. 77;
+   VI(B) guidance, p. 165; compliance practices, p. 166; Example 3, pp. 167-168 ("If Toffler has beneficial ownership in
+   the account, however, ... she may have to preclear the trades and report the transactions"). The policy now asks two
+   separate questions: allocation class by how the account is managed, conflict controls (register, holdings report,
+   duplicate statements, preclearance of block participation that cannot change the pro-rata share) by beneficial
+   interest. New original case: a taxable account the manager holds jointly with her mother, managed in the strategy on
+   standard terms, receives the same 1,200 of a 60 percent fill after preclearance and with reporting; cutting it,
+   skipping the controls or topping it up are violations. The Brook Lane code and the III(B) and VI(B) statements are
+   aligned; Example 3's page reference corrected to pp. 167-168.
+4. *Endowment spending comparison* (`meth:institutional-ips-portfolios`; `institutional-checks.py` part 2).
+   Reproduced: pure 5 percent spending was divided by five-year averages of quarterly values generated by the smoothed
+   rule. Each rule now carries its own quarterly history: pure peak 5.242401 percent (5.24, published 5.25, which the
+   cross-policy construction gives as 5.245031); smoothed 5.28 and 5.07 unchanged. A check rebuilds the pure rule's 40
+   quarter-end values from its own spending and confirms the cross-policy construction differs.
+
+**Coverage revalidation.** Eight objectives and their 24 outline items, all at decision depth. Each item was reread
+against the corrected entry; 21 rationales gained a specific revalidation note and 3 a note that the corrections do
+not touch them. All remain covered: 424/424 objectives and 1,030/1,030 items. No new source keys; IRC sec. 1(h) and
+(j)(5) added to `us-internal-revenue-code-26`, sec. 4.14 to `irs-rev-proc-2025-32`, sec. III.B.1 to
+`irs-notice-2021-48`. Editorial coverage only; it does not establish learner mastery, and human review is outstanding.

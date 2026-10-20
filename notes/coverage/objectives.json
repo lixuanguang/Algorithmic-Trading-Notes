@@ -9635,13 +9635,13 @@
     "sources": [
      {
       "key": "standards-practice-handbook-2024",
-      "locator": "pp. 65-70, 74, 76-78"
+      "locator": "pp. 65-70, 74, 76-78, 165, 167-168"
      }
     ],
     "reading_notes": [
      "notes/readings/standards-practice-handbook-2024.md"
     ],
-    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
+    "review_record": "notes/source-review-records.md#pr-33-correction-pass-21-october-2026",
     "entry_evidence": [
      "rule:standard-duties-to-clients"
     ],
@@ -9672,13 +9672,13 @@
     "sources": [
      {
       "key": "standards-practice-handbook-2024",
-      "locator": "pp. 70-71, 77-80, 90, 95-96, 102-103, 165"
+      "locator": "pp. 70-71, 77-80, 90, 95-96, 102-103, 165-168"
      }
     ],
     "reading_notes": [
      "notes/readings/standards-practice-handbook-2024.md"
     ],
-    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
+    "review_record": "notes/source-review-records.md#pr-33-correction-pass-21-october-2026",
     "entry_evidence": [
      "meth:preventing-client-duty-violations"
     ],
@@ -9860,7 +9860,7 @@
     "sources": [
      {
       "key": "standards-practice-handbook-2024",
-      "locator": "pp. 157-160, 164-165, 167"
+      "locator": "pp. 157-160, 164-168"
      },
      {
       "key": "sec-adviser-standard-of-conduct-2019",
@@ -9871,7 +9871,7 @@
      "notes/readings/standards-practice-handbook-2024.md",
      "notes/readings/sec-adviser-standard-of-conduct-2019.md"
     ],
-    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
+    "review_record": "notes/source-review-records.md#pr-33-correction-pass-21-october-2026",
     "entry_evidence": [
      "rule:standard-conflicts-of-interest"
     ],
@@ -9902,13 +9902,13 @@
     "sources": [
      {
       "key": "standards-practice-handbook-2024",
-      "locator": "pp. 157-160, 165-167, 169"
+      "locator": "pp. 157-160, 165-169"
      }
     ],
     "reading_notes": [
      "notes/readings/standards-practice-handbook-2024.md"
     ],
-    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
+    "review_record": "notes/source-review-records.md#pr-33-correction-pass-21-october-2026",
     "entry_evidence": [
      "meth:preventing-conflict-violations"
     ],
@@ -16678,20 +16678,25 @@
      },
      {
       "key": "irs-rev-proc-2025-32",
-      "locator": "sec. 4.01, Table 1"
+      "locator": "secs. 4.01, Table 1; 4.03; 4.14"
+     },
+     {
+      "key": "us-internal-revenue-code-26",
+      "locator": "sec. 1(h)(1), (h)(11), (j)(5); sec. 1411(a)(1), (b)(1)"
      }
     ],
     "reading_notes": [
      "notes/readings/ibbotson-lifetime-financial-advice-2007.md",
      "notes/readings/esma-suitability-guidelines-2022.md",
      "notes/readings/standards-practice-handbook-2024.md",
-     "notes/readings/irs-rev-proc-2025-32.md"
+     "notes/readings/irs-rev-proc-2025-32.md",
+     "notes/readings/us-internal-revenue-code-26.md"
     ],
-    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
+    "review_record": "notes/source-review-records.md#pr-33-correction-pass-21-october-2026",
     "entry_evidence": [
      "meth:private-client-ips"
     ],
-    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: parts 1 and 3 (reserve outside the 540k policy portfolio; required real return 2.30% by root and by forward projection; allocations against willingness and goals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: parts 1 and 3 (reserve outside the 540k policy portfolio; required real return 2.30% by root and by forward projection; allocations against willingness and goals; 2026 federal tax by the sec. 1(h) formula against layer stacking, with marginal rates and boundary cases); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16727,11 +16732,11 @@
      },
      {
       "key": "us-internal-revenue-code-26",
-      "locator": "sec. 4942(e); sec. 430(a), (c)(8), (d)(1)"
+      "locator": "sec. 4942(e); sec. 430(a), (c)(3), (c)(8), (d)(1)"
      },
      {
       "key": "irs-notice-2021-48",
-      "locator": "secs. II.B, III.A"
+      "locator": "secs. II.B, III.A, III.B.1"
      },
      {
       "key": "ny-npc-553",
@@ -16745,7 +16750,7 @@
      "notes/readings/irs-notice-2021-48.md",
      "notes/readings/ny-npc-553.md"
     ],
-    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
+    "review_record": "notes/source-review-records.md#pr-33-correction-pass-21-october-2026",
     "entry_evidence": [
      "def:institutional-investor-characteristics"
     ],
@@ -16780,7 +16785,11 @@
      },
      {
       "key": "us-internal-revenue-code-26",
-      "locator": "sec. 430(c)(8), (d)(1), (h)(2)(C)(iv)"
+      "locator": "sec. 430(a), (c)(1)-(3), (c)(5)-(6), (c)(8), (d)(1), (g)(2), (h)(2)(C)(iv), (j)(1)-(3)"
+     },
+     {
+      "key": "irs-notice-2021-48",
+      "locator": "secs. II.B, III.A, III.B.1"
      }
     ],
     "reading_notes": [
@@ -16788,11 +16797,11 @@
      "notes/readings/us-internal-revenue-code-26.md",
      "notes/readings/irs-notice-2021-48.md"
     ],
-    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
+    "review_record": "notes/source-review-records.md#pr-33-correction-pass-21-october-2026",
     "entry_evidence": [
      "meth:db-pension-risk"
     ],
-    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 1 (funded status, hedge ratios, surplus volatility with Monte Carlo, surplus at risk; 15- against 7-year policy annuities 96.34m and 172.82m; statutory shortfall installment 38.5m); locked uv environment, Python 3.14.7, NumPy 2.4.6"
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 1 (funded status, hedge ratios, surplus volatility with Monte Carlo, surplus at risk; 15- against 7-year policy annuities 96.34m and 172.82m; sec. 430(c)(3) base of 96.8m net of 303.2m of open installments, minimum required contribution 151.91m with the present-value identity and boundary cases); locked uv environment, Python 3.14.7, NumPy 2.4.6"
    },
    "supersedes": null
   },
@@ -16841,11 +16850,11 @@
      "notes/readings/s7-ang.md",
      "notes/readings/ny-npc-553.md"
     ],
-    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
+    "review_record": "notes/source-review-records.md#pr-33-correction-pass-21-october-2026",
     "entry_evidence": [
      "meth:institutional-ips-portfolios"
     ],
-    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: parts 2-3 (spending rules and the New York statutory average, foundation payout, bank and insurer duration, GPFG and Vardø); locked uv environment, Python 3.14.7, NumPy 2.4.6"
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: parts 2-3 (spending rules and the New York statutory average, each rule on its own quarterly history with a cross-policy detection check; foundation payout, bank and insurer duration, GPFG and Vardø); locked uv environment, Python 3.14.7, NumPy 2.4.6"
    },
    "supersedes": null
   },

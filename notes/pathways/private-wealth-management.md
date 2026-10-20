@@ -35,6 +35,8 @@ Partly checked 2026-10-20, draft; human review outstanding. See [record](../sour
 
 Final audit correction pass (2026-10-20): the Okafor case reconciled (reserve outside the policy portfolio, retirement at 62, one set of savings, education dates and tax assumptions), asset location under one convention, UK residence band taper and the gift-and-estate chronology. See [record](../source-review-records.md#final-audit-correction-pass-20-october-2026).
 
+PR #33 correction pass (2026-10-21): the Okafors' 2026 federal tax specified and computed by stacking (42,500 of dividends and gains at 15 percent, 23,500 at 20 percent, NIIT 2,599.20) instead of a 15 percent rate inferred from the 35 percent band. See [record](../source-review-records.md#pr-33-correction-pass-21-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice

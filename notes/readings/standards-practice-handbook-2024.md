@@ -24,6 +24,7 @@ Prepared on 2026-10-20 by the completion batch (2026-10-20) from source checks, 
 - Supervisors must make reasonable efforts to prevent violations by those they supervise (Standard IV(C), pp. 122-125).
 
 - Final audit correction pass (2026-10-20): family accounts. III(A) Example 7, p. 74 (excluding a brother's fee-paying account from a suitable IPO violates III(A)); III(B) guidance, p. 77 (forgo sales to self and immediate family in oversubscribed issues, but family-member accounts managed like other clients' must not be excluded); VI(B) guidance, p. 165 (personal transactions include immediate family accounts; family client accounts neither favoured nor disadvantaged) and Examples 2-3, p. 167. Same text on the issuer's web pages for III(B) (updated April 2024) and VI(B) (updated January 2024), checked 2026-10-20.
+- PR #33 correction pass (2026-10-21): VI(B) Example 3 runs over pp. 167-168: excluding the parents' retirement account until all other clients are filled violates VI(B); "If Toffler has beneficial ownership in the account, however, and Esposito Investments has preclearance and reporting requirements for personal transactions, she may have to preclear the trades and report the transactions" (p. 168). Beneficial ownership therefore adds controls without removing a family client account from fair allocation; p. 166 (members must follow employer reporting, duplicate-confirmation and preclearance policies). Used to classify allocation by management and controls by beneficial interest.
 
 ## Limits
 

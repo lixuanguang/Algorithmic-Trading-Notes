@@ -11,10 +11,15 @@ policy portfolio + a 540k policy portfolio that funds the goals; the reserve is 
 Adaeze (40) and Tunde (42) retire together when she is 62, in 22 years, so her human capital runs to 62. The plan counts
 planned saving of 50k a year (end of each year, mostly 401(k) deferrals) and two 200k education payments at the ends of
 years 8 and 10; amounts are in today's dollars, retirement spending is before income tax on withdrawals, and the taxable
-account's tax drag is ignored in the funding model. Their joint 2026 taxable income is in the 35% federal band
-(Rev. Proc. 2025-32 sec. 4.01 Table 1: 512,450 to 768,700), so qualified dividends and long-term gains are taxed at 15%
-plus the 3.8% NIIT. Capital market assumptions (illustrative, real): equity 5.0% expected, 17% volatility; bonds 1.5%,
-6%; correlation 0.2. The asset-location client in part 7 is a separate, top-bracket US client.
+account's tax drag is ignored in the funding model. Their 2026 federal return (married filing jointly, stated
+assumptions): wages 650k (Adaeze 250k, Tunde 400k of salary, commissions and vested RSUs) less 49k of 401(k)
+deferrals; 2.4k of interest on the reserve; 6k of qualified dividends and 60k of net long-term gains (vested employer
+shares sold to stay below 10%); standard deduction 32.2k (Rev. Proc. 2025-32 sec. 4.14). Ordinary taxable income
+571.2k lies in the 35% band (sec. 4.01 Table 1: 512,450 to 768,700), but the band does not fix the rate on dividends
+and gains: under 26 U.S.C. 1(h)(1) and 1(j)(5) they are stacked on top of ordinary income and taxed at 15% only up to
+taxable income of 613,700 (sec. 4.03), 20% above, plus the 3.8% NIIT on the lesser of net investment income and MAGI
+above 250k (sec. 1411). Capital market assumptions (illustrative, real): equity 5.0% expected, 17% volatility; bonds
+1.5%, 6%; correlation 0.2. The asset-location client in part 7 is a separate, top-bracket US client.
 
 Corrections (2026-10-20, final audit): the reserve was double counted inside a 70/25/5 policy on the full 600k
 (required return 1.96%, now 2.30% on 540k); human capital ran to 65 against retirement at 62; part 1 saved 40k growing
@@ -34,7 +39,12 @@ the equal-rate identity; UK pension relief by the gross-up identity; the substan
 rule; QSBS exclusion against the statutory cap; gift against bequest by full after-tax terminal wealth;
 the UK gift and estate as one chronology against the no-gift estate, the difference being the taper relief; the
 residence nil-rate band taper against its boundary cases; the CRAT
-remainder by annuity factors.
+remainder by annuity factors; the Okafors' federal tax by the sec. 1(h)(1)(A)-(D) formula against layer-by-layer
+stacking, the published cumulative bracket amounts, finite-difference marginal rates and boundary cases.
+
+Corrections (2026-10-21, PR #33 correction pass): the IPS inferred a 15% rate on dividends and gains from the 35%
+ordinary band, although the 2026 joint 15% ceiling (613,700) lies inside that band; the household's income is now
+specified and the rate is computed by stacking.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
@@ -43,6 +53,7 @@ Run: uv run python private-wealth-checks.py   (numpy, scipy). Exits 1 on failure
 
 # standard library imports
 import datetime
+import itertools
 import math
 import sys
 
@@ -72,7 +83,21 @@ def annuity(r, n):
     return n if r == 0 else (1 - (1 + r) ** -n) / r
 
 
-# US 2026 federal parameters (Rev. Proc. 2025-32 secs. 3.14, 4.01, 4.03, 4.37-4.38, 4.42; Notice 2025-67)
+# US 2026 federal parameters (Rev. Proc. 2025-32 secs. 3.14, 4.01, 4.03, 4.14, 4.37-4.38, 4.42; Notice 2025-67)
+US_MFJ_BRACKETS = [  # sec. 4.01 Table 1, married filing jointly: (lower edge of the band, rate)
+    (0, 0.10),
+    (24_800, 0.12),
+    (100_800, 0.22),
+    (211_400, 0.24),
+    (403_550, 0.32),
+    (512_450, 0.35),
+    (768_700, 0.37),
+]
+US_MFJ_ZERO_MAX, US_MFJ_15_MAX = (
+    98_900,
+    613_700,
+)  # sec. 4.03 maximum zero and 15% rate amounts, joint
+US_MFJ_STD_DED, US_NIIT_JOINT = 32_200, 250_000  # sec. 4.14; sec. 1411(b)(1), not indexed
 US_TOP_ORD, US_NIIT = 0.37, 0.038
 US_LTCG_TOP = 0.20
 US_ORD_INV = US_TOP_ORD + US_NIIT  # 40.8% on interest for a top-bracket investor
@@ -270,6 +295,135 @@ ok(
     "allocation against willingness: the Okafors would sell after a one-year loss of about 15%; the one-in-twenty "
     "one-year return is -15.1% for 70/30 (at the limit), -13.4% for 60/40 and -10.2% for 40/60",
     [round(cands[w][3] * 100, 1) for w in (0.7, 0.6, 0.4)] == [-15.1, -13.4, -10.2],
+)
+
+
+def ord_tax(ti):
+    """Regular tax on joint taxable income ti from the sec. 4.01 Table 1 bands."""
+    edges = [*US_MFJ_BRACKETS, (math.inf, None)]
+    return sum(
+        rate * max(0.0, min(ti, hi) - lo) for (lo, rate), (hi, _) in itertools.pairwise(edges)
+    )
+
+
+def cg_tax(ti, ancg):
+    """Sec. 1(h)(1)(A)-(D) as modified by 1(j)(5): ancg is adjusted net capital gain (qualified dividends included,
+    sec. 1(h)(11)); returns (tax, amount at 0%, at 15%, at 20%). No unrecaptured 1250 or collectibles gain.
+    """
+    ancg = min(ancg, ti)
+    a = ti - ancg  # (A): taxable income reduced by the gain, taxed at ordinary rates
+    b = min(ancg, max(0.0, US_MFJ_ZERO_MAX - a))  # (B): 0% up to the maximum zero rate amount
+    c = min(ancg - b, max(0.0, US_MFJ_15_MAX - (a + b)))  # (C): 15% up to the maximum 15% amount
+    d = ancg - b - c  # (D): 20% on the rest
+    return min(ord_tax(a) + 0.15 * c + 0.20 * d, ord_tax(ti)), b, c, d
+
+
+def stacked_tax(ti, pref):
+    """Independent route: ordinary income fills the bands first; each preferential dollar from ti - pref to ti is taxed
+    at the rate of the layer it occupies, integrated piece by piece.
+    """
+    tax, lo = ord_tax(ti - pref), ti - pref
+    for top, rate in ((US_MFJ_ZERO_MAX, 0.0), (US_MFJ_15_MAX, 0.15), (math.inf, 0.20)):
+        hi = min(ti, top)
+        if hi > lo:
+            tax += rate * (hi - lo)
+            lo = hi
+    return tax
+
+
+def okafor_tax(wages=650_000.0, deferral=49_000.0, interest=2_400.0, qdiv=6_000.0, ltcg=60_000.0):
+    """The Okafors' 2026 federal income tax and NIIT (state taxes, payroll taxes and phase-outs ignored)."""
+    agi = (
+        wages - deferral + interest + qdiv + ltcg
+    )  # MAGI equals AGI: no foreign earned income excluded
+    ti = agi - US_MFJ_STD_DED
+    tax, at0, at15, at20 = cg_tax(ti, qdiv + ltcg)
+    niit = US_NIIT * min(interest + qdiv + ltcg, max(0.0, agi - US_NIIT_JOINT))
+    return {
+        "agi": agi,
+        "ti": ti,
+        "ord": ti - qdiv - ltcg,
+        "tax": tax,
+        "niit": niit,
+        "at0": at0,
+        "at15": at15,
+        "at20": at20,
+    }
+
+
+tx = okafor_tax()
+ok(
+    "2026 joint brackets (Rev. Proc. 2025-32 sec. 4.01 Table 1): the band formula reproduces the published tax of "
+    "116,896 at 512,450 and 206,583.50 at 768,700; the 15% ceiling of 613,700 (sec. 4.03) lies inside the 35% band, "
+    "so the ordinary band alone cannot fix the rate on dividends and gains",
+    close(ord_tax(512_450), 116_896, 1e-6)
+    and close(ord_tax(768_700), 206_583.5, 1e-6)
+    and 512_450 < US_MFJ_15_MAX < 768_700,
+)
+ok(
+    "the Okafors' 2026 return: AGI 669,400; taxable income 637,200 after the 32,200 standard deduction; ordinary "
+    "taxable income 571,200 (35% band); of the 66,000 of qualified dividends and long-term gains stacked on top, "
+    "42,500 fill the 15% layer to 613,700 and 23,500 are taxed at 20%; income tax 148,533.50; NIIT 3.8% of the "
+    "68,400 of investment income (less than MAGI over 250k) = 2,599.20",
+    close(tx["agi"], 669_400)
+    and close(tx["ti"], 637_200)
+    and close(tx["ord"], 571_200)
+    and 512_450 < tx["ord"] < 768_700
+    and close(tx["at0"], 0.0)
+    and close(tx["at15"], 42_500)
+    and close(tx["at20"], 23_500)
+    and close(tx["tax"], 148_533.5, 1e-6)
+    and close(tx["niit"], 2_599.2, 1e-6),
+    f"tax {tx['tax']:,.2f}, NIIT {tx['niit']:,.2f}",
+)
+ok(
+    "independent route: integrating the preferential layers piece by piece above ordinary income gives the same "
+    "tax; the old inference (all 66,000 at 15%) understates it by 1,175 = 23,500 x 5 points",
+    close(stacked_tax(tx["ti"], 66_000), tx["tax"], 1e-6)
+    and close(tx["tax"] - (ord_tax(tx["ord"]) + 0.15 * 66_000), 1_175, 1e-6),
+)
+mtax = {
+    k: (lambda t: t["tax"] + t["niit"])(okafor_tax(**{k: v + 1.0})) - (tx["tax"] + tx["niit"])
+    for k, v in (("wages", 650_000.0), ("interest", 2_400.0), ("ltcg", 60_000.0))
+}
+ok(
+    "marginal federal rates by finite difference: a further dollar of gains or qualified dividends costs 23.8% (20% + "
+    "NIIT), not 18.8%; a further dollar of wages costs 40% (35% plus the 5 points of one gain dollar pushed from 15% to "
+    "20%), and of interest 43.8%: each deferred 401(k) dollar saves 40%, and bonds belong in tax-deferred accounts",
+    round(mtax["ltcg"], 3) == 0.238
+    and round(mtax["wages"], 3) == 0.400
+    and round(mtax["interest"], 3) == 0.438,
+    f"{ {k: round(v, 4) for k, v in mtax.items()} }",
+)
+b_low, b_at, b_high = (cg_tax(o + 40_000, 40_000) for o in (571_200, 573_700, 613_700))
+ok(
+    "boundary cases: with 40,000 of gains on 571,200 of ordinary income (total 611,200) all gains are at 15%; at "
+    "exactly 613,700 still all at 15%, and one more dollar of gain is taxed at 20%; with ordinary income at 613,700 "
+    "every gain dollar is at 20%; with ordinary income of 60,000 the first 38,900 of gains are at 0%; the Okafors' "
+    "66,000 would all be at 15% only if ordinary income fell to 547,700 (613,700 - 66,000)",
+    close(cg_tax(547_700 + 66_000, 66_000)[2], 66_000)
+    and close(cg_tax(547_701 + 66_000, 66_000)[3], 1.0, 1e-6)
+    and close(b_low[2], 40_000)
+    and close(b_low[3], 0.0)
+    and close(b_at[2], 40_000)
+    and close(cg_tax(613_701, 40_001)[0] - b_at[0], 0.20, 1e-6)
+    and close(b_high[3], 40_000)
+    and close(cg_tax(100_000, 40_000)[1], 38_900),
+)
+ok(
+    "NIIT boundaries (sec. 1411(a)(1)): MAGI of 240,000 owes none; MAGI of 260,000 with 30,000 of investment income "
+    "owes 3.8% of the 10,000 excess (380), not of the 30,000; the Okafors' MAGI exceeds 250,000 by more than their "
+    "investment income, so the whole 68,400 is taxed",
+    okafor_tax(wages=240_000.0, deferral=30_000.0, interest=0.0, qdiv=0.0, ltcg=30_000.0)["niit"]
+    == 0.0
+    and close(
+        okafor_tax(wages=260_000.0, deferral=30_000.0, interest=0.0, qdiv=0.0, ltcg=30_000.0)[
+            "niit"
+        ],
+        380.0,
+        1e-9,
+    )
+    and tx["agi"] - US_NIIT_JOINT > 68_400,
 )
 
 # ---------------------------------------------------------------------------------------------

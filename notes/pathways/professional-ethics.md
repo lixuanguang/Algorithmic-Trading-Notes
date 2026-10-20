@@ -36,6 +36,8 @@ Partly checked 2026-10-20, draft; human review outstanding. See [record](../sour
 
 Final audit correction pass (2026-10-20): family accounts under Standards III(B) and VI(B): personal and beneficially owned accounts separated from family client accounts, with contrasting cases. See [record](../source-review-records.md#final-audit-correction-pass-20-october-2026).
 
+PR #33 correction pass (2026-10-21): allocation class decided by how an account is managed, conflict controls by beneficial interest; family client accounts with an employee beneficial interest allocated pro rata after preclearance and with reporting (VI(B) Example 3), with a contrasting joint-account case. See [record](../source-review-records.md#pr-33-correction-pass-21-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice

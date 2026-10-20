@@ -3260,3 +3260,22 @@ objective created and no denominator or requirement changed.
 coverage unchanged at 424/424 and 1,030/1,030. Four sources added. `make check` and `make pre-commit` pass on the
 committed tree; PDF 424 pages, no overfull boxes or undefined references. Editorial coverage only; human review is
 outstanding.
+
+## 35. PR #33 correction pass (executed 2026-10-21)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `394d15c`, draft PR #33 to `main` open, working tree
+clean. Coverage before: 424/424 objectives and 1,030/1,030 items. Corrections only; no denominator or requirement
+changed.
+
+**Corrections** (figures and sources: `notes/source-review-records.md`, *PR #33 correction pass*):
+1. Okafor tax: 2026 return specified; dividends and gains stacked under IRC 1(h) against the 613,700 ceiling (42,500
+   at 15 percent, 23,500 at 20), NIIT 2,599.20; marginal 23.8 percent on gains, 40 on wages, 43.8 on interest.
+2. Harlow: 430(c)(3) base 96.8m net of 303.2m of open installments (not 400m); minimum 151.91m at the valuation date
+   (TNC 110m, charge 41.91m), 165.12m on the final due date; true minimum needs the actuarial valuation.
+3. Family client accounts: allocation by management, controls by beneficial interest (VI(B) Example 3); joint-account
+   case; Brook Lane code aligned.
+4. Endowment: each spending rule on its own quarterly history; pure peak 5.24 percent (5.25); detection check.
+
+**Evidence.** Two scripts extended (private wealth 59 checks, institutional 28). Eight objectives and 24 outline items
+revalidated; coverage unchanged at 424/424 and 1,030/1,030. `make check` and `make pre-commit` pass; PDF 425
+pages, no overfull boxes or undefined references. Editorial coverage only; human review is outstanding.

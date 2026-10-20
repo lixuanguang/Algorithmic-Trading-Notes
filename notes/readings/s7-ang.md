@@ -41,6 +41,8 @@ Also used by the alternatives batch (2026-10-20) for `def:alternatives-roles-opp
 - Hedge funds (alternatives batch, hedge fund entries): 40-Act exemption and features (pp. 559-562); backfill 14.7% against 7.3% printed as a 7.3% bias although the difference is 7.4 (p. 565); partial correlations of the HFR index 0.67 with equities and 0.26 with volatility, long/short equity 0.11 (pp. 572-573); Fung et al. alpha 6 bp with equity, bond and volatility factors (p. 576); lock-ups, notice periods, gates; lock-up funds earn 4-7% more (pp. 585-587).
 - Alternatives allocation (alternatives batch): 'factors matter, not assets'; assets are bundles of factors; asset class labels misled investors in 2008 (pp. 195, 211). Illiquidity hurdles 0.70% (six months), about 1% (one year), 6% (ten years); optimal illiquid holdings modest (p. 438); the Swensen case rests on skill (p. 439); Harvard's 2008 liquidity crunch and $2.5bn bond issue (pp. 441-442).
 
+- Final audit correction pass (2026-10-20): Ang's seven-year amortisation (chap. 1, pp. 16-22) describes the Pension Protection Act as at publication (2014); for plan years beginning after 31 December 2021 IRC 430(c)(8) uses 15 years (`irs-notice-2021-48`). His UPMIFA 7 percent statement (pp. 23-27) is now replaced in the entries by a state-specific statement (`ny-npc-553`). The book is not used for current law.
+
 ## Limits
 
 US legal descriptions as of 2014; the catalogue records the edition as not established; this copy is the 2014 OUP edition.

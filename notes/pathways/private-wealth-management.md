@@ -33,6 +33,8 @@ Related existing entries: `meth:goals-based-allocation-heuristics`, `meth:econom
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#completion-batch-20-october-2026).
 
+Final audit correction pass (2026-10-20): the Okafor case reconciled (reserve outside the policy portfolio, retirement at 62, one set of savings, education dates and tax assumptions), asset location under one convention, UK residence band taper and the gift-and-estate chronology. See [record](../source-review-records.md#final-audit-correction-pass-20-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice

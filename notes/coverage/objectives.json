@@ -9635,13 +9635,13 @@
     "sources": [
      {
       "key": "standards-practice-handbook-2024",
-      "locator": "pp. 65-70"
+      "locator": "pp. 65-70, 74, 76-78"
      }
     ],
     "reading_notes": [
      "notes/readings/standards-practice-handbook-2024.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "rule:standard-duties-to-clients"
     ],
@@ -9672,13 +9672,13 @@
     "sources": [
      {
       "key": "standards-practice-handbook-2024",
-      "locator": "pp. 70-71, 78-80, 90, 95-96, 102-103"
+      "locator": "pp. 70-71, 77-80, 90, 95-96, 102-103, 165"
      }
     ],
     "reading_notes": [
      "notes/readings/standards-practice-handbook-2024.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:preventing-client-duty-violations"
     ],
@@ -9860,7 +9860,7 @@
     "sources": [
      {
       "key": "standards-practice-handbook-2024",
-      "locator": "pp. 157-160"
+      "locator": "pp. 157-160, 164-165, 167"
      },
      {
       "key": "sec-adviser-standard-of-conduct-2019",
@@ -9871,7 +9871,7 @@
      "notes/readings/standards-practice-handbook-2024.md",
      "notes/readings/sec-adviser-standard-of-conduct-2019.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "rule:standard-conflicts-of-interest"
     ],
@@ -9908,7 +9908,7 @@
     "reading_notes": [
      "notes/readings/standards-practice-handbook-2024.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:preventing-conflict-violations"
     ],
@@ -15544,11 +15544,11 @@
     "reading_notes": [
      "notes/readings/alpha-afml.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:backtest-design-evaluation"
     ],
-    "example": "notes/artefacts/backtest-inference/backtest-design-checks.py: parts 1-5 (synthetic universe without predictability: survivorship, look-ahead, costs and turnover, drawdown, best-of-24 against walk-forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/backtest-inference/backtest-design-checks.py: parts 1-5, 19 checks (synthetic universe without predictability: survivorship, look-ahead, costs from a dollar ledger of traded notional with drift and hand-reconciled small cases, drawdown including initial wealth with decisive cases, best-of-24 against walk-forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16581,11 +16581,11 @@
      "notes/readings/fed-scf-2022.md",
      "notes/readings/ibbotson-lifetime-financial-advice-2007.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:individual-wealth-capital"
     ],
-    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 1 (the Okafors' human capital, financial capital and economic net worth); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 1 (Okafor base case: human capital to retirement at 62, projection with saving and education payments, economic net worth, capacity view); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16675,18 +16675,23 @@
      {
       "key": "standards-practice-handbook-2024",
       "locator": "pp. 87-90"
+     },
+     {
+      "key": "irs-rev-proc-2025-32",
+      "locator": "sec. 4.01, Table 1"
      }
     ],
     "reading_notes": [
      "notes/readings/ibbotson-lifetime-financial-advice-2007.md",
      "notes/readings/esma-suitability-guidelines-2022.md",
-     "notes/readings/standards-practice-handbook-2024.md"
+     "notes/readings/standards-practice-handbook-2024.md",
+     "notes/readings/irs-rev-proc-2025-32.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:private-client-ips"
     ],
-    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 3 (the Okafors' required return and IPS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: parts 1 and 3 (reserve outside the 540k policy portfolio; required real return 2.30% by root and by forward projection; allocations against willingness and goals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -16722,19 +16727,29 @@
      },
      {
       "key": "us-internal-revenue-code-26",
-      "locator": "sec. 4942(e)"
+      "locator": "sec. 4942(e); sec. 430(a), (c)(8), (d)(1)"
+     },
+     {
+      "key": "irs-notice-2021-48",
+      "locator": "secs. II.B, III.A"
+     },
+     {
+      "key": "ny-npc-553",
+      "locator": "sec. 553(a), (d)"
      }
     ],
     "reading_notes": [
      "notes/readings/s7-ang.md",
      "notes/readings/santiago-principles-2008.md",
-     "notes/readings/us-internal-revenue-code-26.md"
+     "notes/readings/us-internal-revenue-code-26.md",
+     "notes/readings/irs-notice-2021-48.md",
+     "notes/readings/ny-npc-553.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "def:institutional-investor-characteristics"
     ],
-    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 2 (spending rules, a foundation's payout, bank and insurer balance sheets); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: parts 1-2 (statutory, accounting and economic deficits; New York five-year quarterly average test); locked uv environment, Python 3.14.7, NumPy 2.4.6"
    },
    "supersedes": null
   },
@@ -16762,16 +16777,22 @@
      {
       "key": "s7-ang",
       "locator": "chap. 1, pp. 16-22"
+     },
+     {
+      "key": "us-internal-revenue-code-26",
+      "locator": "sec. 430(c)(8), (d)(1), (h)(2)(C)(iv)"
      }
     ],
     "reading_notes": [
-     "notes/readings/s7-ang.md"
+     "notes/readings/s7-ang.md",
+     "notes/readings/us-internal-revenue-code-26.md",
+     "notes/readings/irs-notice-2021-48.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:db-pension-risk"
     ],
-    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 1 (Harlow Industrial's DB plan: funded status, surplus risk and the sponsor); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 1 (funded status, hedge ratios, surplus volatility with Monte Carlo, surplus at risk; 15- against 7-year policy annuities 96.34m and 172.82m; statutory shortfall installment 38.5m); locked uv environment, Python 3.14.7, NumPy 2.4.6"
    },
    "supersedes": null
   },
@@ -16808,18 +16829,23 @@
      {
       "key": "s7-ang",
       "locator": "pp. 26-27"
+     },
+     {
+      "key": "ny-npc-553",
+      "locator": "sec. 553(d)"
      }
     ],
     "reading_notes": [
      "notes/readings/nbim-gpfg-2026.md",
      "notes/readings/lerner-schoar-wang-endowments-2008.md",
-     "notes/readings/s7-ang.md"
+     "notes/readings/s7-ang.md",
+     "notes/readings/ny-npc-553.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:institutional-ips-portfolios"
     ],
-    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: parts 1-3 (DB plan, spending rules, foundation payout, bank and insurer balance sheets, GPFG rules); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: parts 2-3 (spending rules and the New York statutory average, foundation payout, bank and insurer duration, GPFG and Vardø); locked uv environment, Python 3.14.7, NumPy 2.4.6"
    },
    "supersedes": null
   },
@@ -18904,11 +18930,11 @@
     "reading_notes": [
      "notes/readings/s7-ang.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:endowment-liquidity-allocation"
     ],
-    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 4 (Elmsworth endowment: liquidity stress, denominator effect, commitment pacing); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 4 (stress, coverage 1.87 of net needs, 185.6m left after net outflows, denominator effect); locked uv environment, Python 3.14.7, NumPy 2.4.6"
    },
    "supersedes": null
   },
@@ -19852,11 +19878,11 @@
      "notes/readings/portfolio-management-in-practice-v1-2020.md",
      "notes/readings/ibbotson-lifetime-financial-advice-2007.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:goals-based-financial-plan"
     ],
-    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 5 (goals, funded ratio and liquidity tiers); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: parts 3 and 5 (funded ratio 1.16 at 3.5% and 0.91 at 1.5% with the reserve on neither side; saving of 58.1k restores full funding); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -19890,11 +19916,11 @@
     "reading_notes": [
      "notes/readings/ibbotson-lifetime-financial-advice-2007.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:lifetime-exposures"
     ],
-    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 6 (mortality, disability and longevity; illustrative Gompertz mortality); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 6 (Gompertz survival, annuity against ladder, life cover 1.95m on human capital to 62, disability cover to 62); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -19934,11 +19960,11 @@
      "notes/readings/us-internal-revenue-code-26.md",
      "notes/readings/govuk-isa-2026.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:tax-in-planning"
     ],
-    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 7 (asset location and loss harvesting, US 2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: parts 2 and 7 (one dividend and reinvestment convention in both placements; one-year cash and basis reconciliation; zero-tax comparison; 2,454,619 against 2,316,409; loss harvesting, wash sale); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -19983,11 +20009,11 @@
      "notes/readings/asset-manager-code-2010.md",
      "notes/readings/standards-practice-handbook-2024.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:private-client-allocation-review"
     ],
-    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 8 (allocation, reporting and review); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: parts 3 and 8 (70/30, 60/40 and 40/60 against the 2.30% requirement and the willingness limit; first-year TWR 11.72%, MWR 11.78%, funded ratio 1.16 to 1.20); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20279,19 +20305,29 @@
      {
       "key": "govuk-iht-thresholds-2026",
       "locator": "thresholds table"
+     },
+     {
+      "key": "govuk-rnrb-guidance-2019",
+      "locator": "\"Gifts and lifetime transfers\"; \"How residence nil rate band tapers\""
+     },
+     {
+      "key": "hmrc-ihtm46023-2026",
+      "locator": "IHTM46023"
      }
     ],
     "reading_notes": [
      "notes/readings/irs-rev-proc-2025-32.md",
      "notes/readings/us-internal-revenue-code-26.md",
      "notes/readings/govuk-iht-2026.md",
-     "notes/readings/govuk-iht-thresholds-2026.md"
+     "notes/readings/govuk-iht-thresholds-2026.md",
+     "notes/readings/govuk-rnrb-guidance-2019.md",
+     "notes/readings/hmrc-ihtm46023-2026.md"
     ],
-    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#final-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:wealth-transfer-strategies"
     ],
-    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 13 (gifts, bequests and philanthropy); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 13 (US gift against bequest; residence band taper boundary cases; UK gift and estate as one chronology: 42,000 + 960,000 against 1,030,000; CRAT remainder); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   }

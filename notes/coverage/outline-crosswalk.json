@@ -11910,7 +11910,7 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -11930,7 +11930,7 @@
    "objectives": [
     "objective:prevent-violations-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality). Revalidated 2026-10-20 after the final audit corrections: the Linton allocation policy now classifies personal accounts (beneficial interest, excluded from oversubscribed issues) separately from family client accounts (allocated pro rata, flagged and reviewed), replacing a blanket family exclusion that would breach III(A) and VI(B) (Handbook pp. 74, 77, 165), with a worked pro-rata example.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -11950,7 +11950,7 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients labels each original case as conforming or violating, with reasons, across III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients labels each original case as conforming or violating, with reasons, across III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12090,7 +12090,7 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12110,7 +12110,7 @@
    "objectives": [
     "objective:prevent-violations-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees). Revalidated 2026-10-20 after the final audit corrections: the Brook Lane code's IPO ban now applies to personal and beneficially owned accounts only, with relatives' client accounts allocated as clients (Handbook pp. 165-167).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12130,7 +12130,7 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest labels each original case as conforming or violating, with reasons, across VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest labels each original case as conforming or violating, with reasons, across VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19480,7 +19480,7 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation describes the objective of a backtest: estimating a fully specified rule's past performance with the information and constraints available, to test a prior hypothesis.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation describes the objective of a backtest: estimating a fully specified rule's past performance with the information and constraints available, to test a prior hypothesis. Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19501,7 +19501,7 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation describes the steps and contrasts walk-forward (expanding and rolling), cross-validated and simulation procedures (AFML pp. 161-166).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation describes the steps and contrasts walk-forward (expanding and rolling), cross-validated and simulation procedures (AFML pp. 161-166). Revalidated 2026-10-20 after the final audit corrections: costs now come from the traded notional of a dollar ledger with drift, including establishment, with stated NAV, gross-exposure and cash conventions, and drawdown includes the initial wealth of 1 (decisive cases added); net Sharpe -0.40, cost drag 2.62% a year, net maximum drawdown 50%; checked by backtest-design-checks.py (19 checks).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19521,7 +19521,7 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation interprets return, volatility, Sharpe and Sortino ratios, drawdown, hit rate, turnover, cost drag and trial counts, and the cumulative, underwater and rolling charts, linking meth:backtest-evaluation-diagnostics.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation interprets return, volatility, Sharpe and Sortino ratios, drawdown, hit rate, turnover, cost drag and trial counts, and the cumulative, underwater and rolling charts, linking meth:backtest-evaluation-diagnostics. Revalidated 2026-10-20 after the final audit corrections: costs now come from the traded notional of a dollar ledger with drift, including establishment, with stated NAV, gross-exposure and cash conventions, and drawdown includes the initial wealth of 1 (decisive cases added); net Sharpe -0.40, cost drag 2.62% a year, net maximum drawdown 50%; checked by backtest-design-checks.py (19 checks).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19541,7 +19541,7 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation identifies survivorship, look-ahead, data snooping, cost, outlier, storytelling and shorting problems (AFML pp. 151-152), each shown on a synthetic universe.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation identifies survivorship, look-ahead, data snooping, cost, outlier, storytelling and shorting problems (AFML pp. 151-152), each shown on a synthetic universe. Revalidated 2026-10-20 after the final audit corrections: costs now come from the traded notional of a dollar ledger with drift, including establishment, with stated NAV, gross-exposure and cash conventions, and drawdown includes the initial wealth of 1 (decisive cases added); net Sharpe -0.40, cost drag 2.62% a year, net maximum drawdown 50%; checked by backtest-design-checks.py (19 checks).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19763,7 +19763,7 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19783,7 +19783,7 @@
    "objectives": [
     "objective:prevent-violations-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality). Revalidated 2026-10-20 after the final audit corrections: the Linton allocation policy now classifies personal accounts (beneficial interest, excluded from oversubscribed issues) separately from family client accounts (allocated pro rata, flagged and reviewed), replacing a blanket family exclusion that would breach III(A) and VI(B) (Handbook pp. 74, 77, 165), with a worked pro-rata example.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19883,7 +19883,7 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -19903,7 +19903,7 @@
    "objectives": [
     "objective:prevent-violations-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees). Revalidated 2026-10-20 after the final audit corrections: the Brook Lane code's IPO ban now applies to personal and beneficially owned accounts only, with relatives' client accounts allocated as clients (Handbook pp. 165-167).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21585,7 +21585,7 @@
    "objectives": [
     "objective:analyse-individual-wealth-capital"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:individual-wealth-capital discusses types of wealth, its creation and its distribution (Survey of Consumer Finances 2022).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:individual-wealth-capital discusses types of wealth, its creation and its distribution (Survey of Consumer Finances 2022). Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21607,7 +21607,7 @@
    "objectives": [
     "objective:analyse-individual-wealth-capital"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:individual-wealth-capital evaluates how human capital, financial capital and economic net worth change over life and influence decisions, with the hypothetical Okafors.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:individual-wealth-capital evaluates how human capital, financial capital and economic net worth change over life and influence decisions, with the hypothetical Okafors. Revalidated 2026-10-20 after the final audit corrections: the Okafor case is reconciled: human capital runs to retirement at 62 (3.00m at 40, against 3.29m to 65), the projection uses the plan's 50k saving and pays both education bills (8 and 10 years), economic net worth 2.90m, and the capacity view is separated from willingness; checked in private-wealth-checks.py part 1.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21629,7 +21629,7 @@
    "objectives": [
     "objective:formulate-private-client-ips"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips justifies return, risk, objectives and constraints from human and financial capital for the hypothetical clients.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips justifies return, risk, objectives and constraints from human and financial capital for the hypothetical clients. Revalidated 2026-10-20 after the final audit corrections: the IPS now holds the 60k reserve outside the 540k policy portfolio (no double counting), gives the required real return of 2.30% (1.96% only if the reserve is counted twice), a 60/40 policy governed by moderate willingness and the 35% joint federal band (Rev. Proc. 2025-32 sec. 4.01); checked in parts 1 and 3.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21674,7 +21674,7 @@
    "objectives": [
     "objective:formulate-private-client-ips"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips discusses private against institutional clients and formulates a private-client IPS.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips discusses private against institutional clients and formulates a private-client IPS. Revalidated 2026-10-20 after the final audit corrections: the IPS now holds the 60k reserve outside the 540k policy portfolio (no double counting), gives the required real return of 2.30% (1.96% only if the reserve is counted twice), a 60/40 policy governed by moderate willingness and the 35% joint federal band (Rev. Proc. 2025-32 sec. 4.01); checked in parts 1 and 3.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21696,7 +21696,7 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses common characteristics: large pools governed for others, long horizons, governance, regulation and external managers (Ang chap. 1).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses common characteristics: large pools governed for others, long horizons, governance, regulation and external managers (Ang chap. 1). Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21718,7 +21718,7 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses investment policy: mission, return and risk objectives, constraints and the governance of policy.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses investment policy: mission, return and risk objectives, constraints and the governance of policy. Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21740,7 +21740,7 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses stakeholders, liabilities, horizons and liquidity needs by investor type: DB plans, SWFs, endowments, foundations, banks and insurers.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses stakeholders, liabilities, horizons and liquidity needs by investor type: DB plans, SWFs, endowments, foundations, banks and insurers. Revalidated 2026-10-20 after the final audit corrections: DB funding now distinguishes the funding target from the PBO and states the 15-year amortisation for single-employer plans from 2022 (IRC 430(c)(8); Notice 2021-48) instead of Ang's seven years; the endowment constraint now gives New York's rebuttable presumption, five-year quarterly average and its applicability, and says 7% is no safe harbour (NPC 553(a), (d)).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21762,7 +21762,7 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics describes legal, regulatory and tax constraints by type, including the Santiago Principles and the US foundation payout rule (26 USC 4942).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics describes legal, regulatory and tax constraints by type, including the Santiago Principles and the US foundation payout rule (26 USC 4942). Revalidated 2026-10-20 after the final audit corrections: DB funding now distinguishes the funding target from the PBO and states the 15-year amortisation for single-employer plans from 2022 (IRC 430(c)(8); Notice 2021-48) instead of Ang's seven years; the endowment constraint now gives New York's rebuttable presumption, five-year quarterly average and its applicability, and says 7% is no safe harbour (NPC 553(a), (d)).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21784,7 +21784,7 @@
    "objectives": [
     "objective:evaluate-pension-risk"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:db-pension-risk evaluates funded status, sponsor strength, correlation between sponsor and plan assets, plan design and workforce characteristics, with a hypothetical sponsor.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:db-pension-risk evaluates funded status, sponsor strength, correlation between sponsor and plan assets, plan design and workforce characteristics, with a hypothetical sponsor. Revalidated 2026-10-20 after the final audit corrections: Harlow now separates statutory shortfall (0.40bn on a stylised funding target), accounting deficit (1.0bn) and economic deficit (1.81bn); the 96.34m and 172.82m annuities are labelled policy illustrations, not the legal minimum, and the conclusion separates moderate cash burden from high economic risk; checked in institutional-checks.py part 1.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21806,7 +21806,7 @@
    "objectives": [
     "objective:evaluate-institutional-portfolios"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates institutional IPSs against mission, liabilities and constraints.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates institutional IPSs against mission, liabilities and constraints. Revalidated 2026-10-20 after the final audit corrections: the Elmsworth spending evaluation now specifies a New York institution and post-enactment donor-restricted gifts and tests spending against the five-year quarterly average (peak 5.28%), stating that staying below 7% does not establish prudence; checked in institutional-checks.py part 2.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21828,7 +21828,7 @@
    "objectives": [
     "objective:evaluate-institutional-portfolios"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates DB, SWF, endowment and foundation portfolios (NBIM's GPFG pages; Lerner, Schoar and Wang).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates DB, SWF, endowment and foundation portfolios (NBIM's GPFG pages; Lerner, Schoar and Wang). Revalidated 2026-10-20 after the final audit corrections: the Elmsworth spending evaluation now specifies a New York institution and post-enactment donor-restricted gifts and tests spending against the five-year quarterly average (peak 5.28%), stating that staying below 7% does not establish prudence; checked in institutional-checks.py part 2.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -21850,7 +21850,7 @@
    "objectives": [
     "objective:evaluate-institutional-portfolios"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios describes bank and insurer balance-sheet management (duration gap, regulatory liquidity and capital consumption), cross-referencing the existing bank and insurer entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios describes bank and insurer balance-sheet management (duration gap, regulatory liquidity and capital consumption), cross-referencing the existing bank and insurer entries. Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -23709,7 +23709,7 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: III(B) now states that oversubscribed issues exclude the member and immediate family but not family-member accounts managed like other clients' (Handbook p. 77), and the allocation case adds a brother's fee-paying account that must not be excluded (III(A), p. 74); every case still reaches a conclusion.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -23731,7 +23731,7 @@
    "objectives": [
     "objective:prevent-violations-duties-to-clients"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality). Revalidated 2026-10-20 after the final audit corrections: the Linton allocation policy now classifies personal accounts (beneficial interest, excluded from oversubscribed issues) separately from family client accounts (allocated pro rata, flagged and reviewed), replacing a blanket family exclusion that would breach III(A) and VI(B) (Handbook pp. 74, 77, 165), with a worked pro-rata example.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -23841,7 +23841,7 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions. Revalidated 2026-10-20 after the final audit corrections: VI(B) now defines personal transactions to include immediate family and beneficially owned accounts and adds contrasting original cases: hot issues routed to a spouse's personal account (violation) and a parent's fee-paying account filled pro rata (conforming), with filling it last also a violation (Handbook pp. 165, 167).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -23863,7 +23863,7 @@
    "objectives": [
     "objective:prevent-violations-conflicts-of-interest"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees). Revalidated 2026-10-20 after the final audit corrections: the Brook Lane code's IPO ban now applies to personal and beneficially owned accounts only, with relatives' client accounts allocated as clients (Handbook pp. 165-167).",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25206,7 +25206,7 @@
    "objectives": [
     "objective:manage-endowment-liquidity"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:endowment-liquidity-allocation discusses liquidity-risk tools: stress tests, commitment pacing, credit lines and secondary sales (Ang chap. 13).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:endowment-liquidity-allocation discusses liquidity-risk tools: stress tests, commitment pacing, credit lines and secondary sales (Ang chap. 13). Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25226,7 +25226,7 @@
    "objectives": [
     "objective:manage-endowment-liquidity"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:endowment-liquidity-allocation discusses capturing the illiquidity premium and its limits.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:endowment-liquidity-allocation discusses capturing the illiquidity premium and its limits. Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25247,7 +25247,7 @@
    "objectives": [
     "objective:manage-endowment-liquidity"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:endowment-liquidity-allocation analyses allocation against liquidity, risk and return needs, including the denominator effect, and recommends actions for the hypothetical Elmsworth endowment.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:endowment-liquidity-allocation analyses allocation against liquidity, risk and return needs, including the denominator effect, and recommends actions for the hypothetical Elmsworth endowment. Revalidated 2026-10-20 after the final audit corrections: the remaining liquidity now nets distributions consistently with the coverage ratio (185.6m, not 173m) and the recommendation is unchanged; checked in institutional-checks.py part 4.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26199,7 +26199,7 @@
    "objectives": [
     "objective:build-goals-based-plan"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:goals-based-financial-plan formulates a goals-based plan (goals valued, funded ratio) and recommends strategies to close gaps.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:goals-based-financial-plan formulates a goals-based plan (goals valued, funded ratio) and recommends strategies to close gaps. Revalidated 2026-10-20 after the final audit corrections: the plan now excludes the emergency reserve from goal-funding resources, uses education payments at 8 and 10 years, and gives funded ratios of 1.16 (3.5%) and 0.91 (1.5%) with a derived saving of 58.1k to close the low-yield gap; checked in parts 3 and 5.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26220,7 +26220,7 @@
    "objectives": [
     "objective:manage-lifetime-exposures"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:lifetime-exposures recommends and justifies managing mortality, disability, longevity, health and liability exposures across life and retirement with insurance, annuities and reserves.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:lifetime-exposures recommends and justifies managing mortality, disability, longevity, health and liability exposures across life and retirement with insurance, annuities and reserves. Revalidated 2026-10-20 after the final audit corrections: life and disability cover now run to retirement at 62 (1.95m of term cover on 3.00m of human capital); the recommendation is unchanged; checked in part 6.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26240,7 +26240,7 @@
    "objectives": [
     "objective:integrate-tax-in-planning"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:tax-in-planning evaluates how deferral, exemption, rate differences and wrappers change goals-based plans, with dated US and UK rules.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:tax-in-planning evaluates how deferral, exemption, rate differences and wrappers change goals-based plans, with dated US and UK rules. Revalidated 2026-10-20 after the final audit corrections: asset location now applies one dividend timing, price-growth and reinvestment convention to both placements with reinvested after-tax dividends in basis, reconciles one year of cash and basis, shows zero-tax equality, and gives 2,454,619 against 2,316,409; the recommendation (bonds in the IRA) stands with a 138,211 advantage; checked in part 7.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26260,7 +26260,7 @@
    "objectives": [
     "objective:build-goals-based-plan"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:goals-based-financial-plan recommends liquidity strategies from emergency reserves and short-bond buckets to committed and securities-backed credit lines.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:goals-based-financial-plan recommends liquidity strategies from emergency reserves and short-bond buckets to committed and securities-backed credit lines. Revalidated 2026-10-20 after the final audit corrections: the plan now excludes the emergency reserve from goal-funding resources, uses education payments at 8 and 10 years, and gives funded ratios of 1.16 (3.5%) and 0.91 (1.5%) with a derived saving of 58.1k to close the low-yield gap; checked in parts 3 and 5.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26281,7 +26281,7 @@
    "objectives": [
     "objective:recommend-private-client-portfolio"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-allocation-review recommends and justifies a private client's allocation.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-allocation-review recommends and justifies a private client's allocation. Revalidated 2026-10-20 after the final audit corrections: the recommendation is now 60/40 on the 540k policy portfolio, assessed against the 2.30% requirement, the stated willingness limit and goal surplus, with 70/30 and the lower-risk 40/60 alternative compared; the review uses the Okafors' own portfolio and saving (TWR 11.72%, MWR 11.78%, funded ratio 1.16 to 1.20); checked in parts 3 and 8.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26302,7 +26302,7 @@
    "objectives": [
     "objective:integrate-tax-in-planning"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:tax-in-planning discusses tax efficiency across asset types and recommends asset location, loss harvesting, holding periods and wrappers.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:tax-in-planning discusses tax efficiency across asset types and recommends asset location, loss harvesting, holding periods and wrappers. Revalidated 2026-10-20 after the final audit corrections: asset location now applies one dividend timing, price-growth and reinvestment convention to both placements with reinvested after-tax dividends in basis, reconciles one year of cash and basis, shows zero-tax equality, and gives 2,454,619 against 2,316,409; the recommendation (bonds in the IRA) stands with a 138,211 advantage; checked in part 7.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26343,7 +26343,7 @@
    "objectives": [
     "objective:recommend-private-client-portfolio"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-allocation-review evaluates the programme through reporting and review, against benchmarks and against goals.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-allocation-review evaluates the programme through reporting and review, against benchmarks and against goals. Revalidated 2026-10-20 after the final audit corrections: the recommendation is now 60/40 on the 540k policy portfolio, assessed against the 2.30% requirement, the stated willingness limit and goal surplus, with 70/30 and the lower-risk 40/60 alternative compared; the review uses the Okafors' own portfolio and saving (TWR 11.72%, MWR 11.78%, funded ratio 1.16 to 1.20); checked in parts 3 and 8.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26529,7 +26529,7 @@
    "objectives": [
     "objective:plan-wealth-transfer"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:wealth-transfer-strategies discusses and recommends lifetime gifts: US annual exclusion and unified exclusion, carryover basis, UK potentially exempt transfers and taper.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:wealth-transfer-strategies discusses and recommends lifetime gifts: US annual exclusion and unified exclusion, carryover basis, UK potentially exempt transfers and taper. Revalidated 2026-10-20 after the final audit corrections: the UK case is one chronology: death 4.5 years after the gift (24%), the gift consumes the nil-rate band, and the residence band tapers by 1 for every 2 above 2m on the estate excluding gifts (GOV.UK RNRB guidance; IHTM46023), giving 1,002,000 against 1,030,000 without the gift; checked in part 13.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26550,7 +26550,7 @@
    "objectives": [
     "objective:plan-wealth-transfer"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:wealth-transfer-strategies discusses and recommends bequests: US estate tax and stepped-up basis, UK inheritance tax bands and spouse exemption.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:wealth-transfer-strategies discusses and recommends bequests: US estate tax and stepped-up basis, UK inheritance tax bands and spouse exemption. Revalidated 2026-10-20 after the final audit corrections: the UK case is one chronology: death 4.5 years after the gift (24%), the gift consumes the nil-rate band, and the residence band tapers by 1 for every 2 above 2m on the estate excluding gifts (GOV.UK RNRB guidance; IHTM46023), giving 1,002,000 against 1,030,000 without the gift; checked in part 13.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26571,7 +26571,7 @@
    "objectives": [
     "objective:plan-wealth-transfer"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:wealth-transfer-strategies discusses and recommends philanthropy across generations: charitable remainder trusts, donor-advised funds and private foundations (26 USC 664, 4942).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:wealth-transfer-strategies discusses and recommends philanthropy across generations: charitable remainder trusts, donor-advised funds and private foundations (26 USC 664, 4942). Revalidated 2026-10-20 after the final audit corrections: the corrections to the mapped entry do not touch this item's requirement, which the entry still meets.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   }

@@ -2505,11 +2505,11 @@
   },
   "rule:standard-duties-to-clients": {
     "source": "compendium/professional-ethics/standards-clients-employers.tex",
-    "review": "Verification: standards-practice-handbook-2024 pp. 65-70; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+    "review": "Verification: standards-practice-handbook-2024 pp. 65-70; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): III(B) family-member accounts and the III(A) brother case (standards-practice-handbook-2024 pp. 74, 77)."
   },
   "meth:preventing-client-duty-violations": {
     "source": "compendium/professional-ethics/standards-clients-employers.tex",
-    "review": "Verification: standards-practice-handbook-2024 pp. 70-71, 78-80, 90, 95-96, 102-103; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+    "review": "Verification: standards-practice-handbook-2024 pp. 70-71, 78-80, 90, 95-96, 102-103; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): allocation policy separates personal and beneficially owned accounts from family client accounts (pp. 74, 77, 165); worked allocation with both."
   },
   "rule:standard-duties-to-employers": {
     "source": "compendium/professional-ethics/standards-clients-employers.tex",
@@ -2529,11 +2529,11 @@
   },
   "rule:standard-conflicts-of-interest": {
     "source": "compendium/professional-ethics/standards-analysis-conflicts-members.tex",
-    "review": "Verification: standards-practice-handbook-2024 pp. 157-160; sec-adviser-standard-of-conduct-2019 84 FR 33676; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+    "review": "Verification: standards-practice-handbook-2024 pp. 157-160; sec-adviser-standard-of-conduct-2019 84 FR 33676; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): VI(B) personal transactions and family client accounts; two contrasting original cases (pp. 165, 167)."
   },
   "meth:preventing-conflict-violations": {
     "source": "compendium/professional-ethics/standards-analysis-conflicts-members.tex",
-    "review": "Verification: standards-practice-handbook-2024 pp. 157-160, 165-167, 169; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+    "review": "Verification: standards-practice-handbook-2024 pp. 157-160, 165-167, 169; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): personal-trading IPO ban scoped to personal and beneficially owned accounts (pp. 165-167)."
   },
   "rule:standard-member-responsibilities": {
     "source": "compendium/professional-ethics/standards-analysis-conflicts-members.tex",
@@ -2561,7 +2561,7 @@
   },
   "meth:individual-wealth-capital": {
     "source": "compendium/private-wealth-management/clients-industry.tex",
-    "review": "Verification: fed-scf-2022 pp. 11-13, 20; ibbotson-lifetime-financial-advice-2007 pp. 13-16, 74-76; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 1 (the Okafors' human capital, financial capital and economic net worth). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: fed-scf-2022 pp. 11-13, 20; ibbotson-lifetime-financial-advice-2007 pp. 13-16, 74-76; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 1 (the Okafors' human capital, financial capital and economic net worth). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): human capital to retirement at 62; projection with the plan's saving and education payments; capacity separated from willingness."
   },
   "meth:private-client-tax-inflation": {
     "source": "compendium/private-wealth-management/clients-industry.tex",
@@ -2569,7 +2569,7 @@
   },
   "meth:private-client-ips": {
     "source": "compendium/private-wealth-management/clients-industry.tex",
-    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 13-16, 74-79; esma-suitability-guidelines-2022 paras. 12, 33-34, 44; standards-practice-handbook-2024 pp. 87-90; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 3 (the Okafors' required return and IPS). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 13-16, 74-79; esma-suitability-guidelines-2022 paras. 12, 33-34, 44; standards-practice-handbook-2024 pp. 87-90; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 3 (the Okafors' required return and IPS). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): reserve outside the 540k policy portfolio; required real return 2.30%; 60/40 policy under moderate willingness; 35% joint bracket from irs-rev-proc-2025-32 sec. 4.01, Table 1."
   },
   "def:wealth-management-industry": {
     "source": "compendium/private-wealth-management/clients-industry.tex",
@@ -2581,19 +2581,19 @@
   },
   "meth:goals-based-financial-plan": {
     "source": "compendium/private-wealth-management/wealth-planning.tex",
-    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 6, sec. 4, pp. 268-283; ibbotson-lifetime-financial-advice-2007 pp. 74-75; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 5 (goals, funded ratio and liquidity tiers). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 6, sec. 4, pp. 268-283; ibbotson-lifetime-financial-advice-2007 pp. 74-75; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 5 (goals, funded ratio and liquidity tiers). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): reserve on neither side of the funded ratio; education at 8 and 10 years; funded ratios 1.16 and 0.91; saving of 58.1k derived."
   },
   "meth:lifetime-exposures": {
     "source": "compendium/private-wealth-management/wealth-planning.tex",
-    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 28-31, 41-44, 74-79; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 6 (mortality, disability and longevity; illustrative Gompertz mortality). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 28-31, 41-44, 74-79; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 6 (mortality, disability and longevity; illustrative Gompertz mortality). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): life and disability cover to retirement at 62 (1.95m term cover)."
   },
   "meth:tax-in-planning": {
     "source": "compendium/private-wealth-management/wealth-planning.tex",
-    "review": "Verification: us-internal-revenue-code-26 sec. 1091(a); sec. 1014(a); govuk-isa-2026 overview; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 7 (asset location and loss harvesting, US 2026). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: us-internal-revenue-code-26 sec. 1091(a); sec. 1014(a); govuk-isa-2026 overview; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 7 (asset location and loss harvesting, US 2026). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): asset location under one dividend and reinvestment convention with basis tracking, one-year reconciliation and zero-tax equality (2,454,619 against 2,316,409)."
   },
   "meth:private-client-allocation-review": {
     "source": "compendium/private-wealth-management/wealth-planning.tex",
-    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 13-18; asset-manager-code-2010 pp. 21-22; standards-practice-handbook-2024 pp. 87-90; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 8 (allocation, reporting and review). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 13-18; asset-manager-code-2010 pp. 21-22; standards-practice-handbook-2024 pp. 87-90; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 8 (allocation, reporting and review). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): 60/40 recommended against 70/30 and 40/60 on required return, willingness and goal surplus; review rebuilt on the Okafors' 540k portfolio."
   },
   "meth:retirement-across-jurisdictions": {
     "source": "compendium/private-wealth-management/wealth-planning.tex",
@@ -2617,19 +2617,19 @@
   },
   "meth:wealth-transfer-strategies": {
     "source": "compendium/private-wealth-management/wealth-transfer.tex",
-    "review": "Verification: irs-rev-proc-2025-32 secs. 3.14, 4.42; us-internal-revenue-code-26 sec. 2001(c); secs. 1014(a), 1015(a); sec. 4942(e); sec. 664(d); govuk-iht-2026 overview; gifts; govuk-iht-thresholds-2026 thresholds table; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 13 (gifts, bequests and philanthropy). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: irs-rev-proc-2025-32 secs. 3.14, 4.42; us-internal-revenue-code-26 sec. 2001(c); secs. 1014(a), 1015(a); sec. 4942(e); sec. 664(d); govuk-iht-2026 overview; gifts; govuk-iht-thresholds-2026 thresholds table; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 13 (gifts, bequests and philanthropy). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): residence band taper (govuk-rnrb-guidance-2019; hmrc-ihtm46023-2026 IHTM46023); gift and estate as one chronology with death 4.5 years after the gift and the nil-rate band carried forward."
   },
   "def:institutional-investor-characteristics": {
     "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
-    "review": "Verification: s7-ang chap. 1, pp. 4-28; p. 24; santiago-principles-2008 GAPP 1, 4, 6, 18-19, 22; us-internal-revenue-code-26 sec. 4942(e); locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 2 (spending rules, a foundation's payout, bank and insurer balance sheets). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: s7-ang chap. 1, pp. 4-28; p. 24; santiago-principles-2008 GAPP 1, 4, 6, 18-19, 22; us-internal-revenue-code-26 sec. 4942(e); locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 2 (spending rules, a foundation's payout, bank and insurer balance sheets). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): IRC sec. 430(a), (c)(8), (d)(1) and irs-notice-2021-48 secs. II.B, III.A replace the seven-year rule for single-employer plans from 2022; ny-npc-553 sec. 553(a), (d) replaces the unqualified UPMIFA 7% statement."
   },
   "meth:db-pension-risk": {
     "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
-    "review": "Verification: s7-ang chap. 1, pp. 16-22; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 1 (Harlow Industrial's DB plan: funded status, surplus risk and the sponsor). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: s7-ang chap. 1, pp. 16-22; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 1 (Harlow Industrial's DB plan: funded status, surplus risk and the sponsor). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): statutory funding target, accounting PBO and economic liability distinguished (IRC sec. 430(c)(8), (d)(1), (h)(2)(C)(iv)); deficit annuities labelled policy illustrations (96.34m over 15 years, 172.82m over 7); sponsor-burden conclusion revised."
   },
   "meth:institutional-ips-portfolios": {
     "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
-    "review": "Verification: nbim-gpfg-2026 benchmark index; risk management; about the fund; lerner-schoar-wang-endowments-2008 NBER WP 14341, abstract, pp. 1-2; s7-ang pp. 26-27; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: parts 1-3 (DB plan, spending rules, foundation payout, bank and insurer balance sheets, GPFG rules). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: nbim-gpfg-2026 benchmark index; risk management; about the fund; lerner-schoar-wang-endowments-2008 NBER WP 14341, abstract, pp. 1-2; s7-ang pp. 26-27; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: parts 1-3 (DB plan, spending rules, foundation payout, bank and insurer balance sheets, GPFG rules). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): Elmsworth spending tested against New York's five-year quarterly average (ny-npc-553 sec. 553(d)); below 7% is not a safe harbour."
   },
   "meth:swf-risk-case": {
     "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
@@ -2637,7 +2637,7 @@
   },
   "meth:endowment-liquidity-allocation": {
     "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
-    "review": "Verification: s7-ang chap. 13, pp. 410-412; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 4 (Elmsworth endowment: liquidity stress, denominator effect, commitment pacing). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: s7-ang chap. 13, pp. 410-412; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 4 (Elmsworth endowment: liquidity stress, denominator effect, commitment pacing). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): remaining liquidity nets distributions (185.6m)."
   },
   "meth:institutional-esg-integration": {
     "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
@@ -2673,7 +2673,7 @@
   },
   "meth:backtest-design-evaluation": {
     "source": "compendium/research-engineering-validation/backtest-evaluation.tex",
-    "review": "Verification: alpha-afml pp. 151-154; pp. 161-166; locators in the entry text. Checked by notes/artefacts/backtest-inference/backtest-design-checks.py: parts 1-5 (synthetic universe without predictability: survivorship, look-ahead, costs and turnover, drawdown, best-of-24 against walk-forward). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+    "review": "Verification: alpha-afml pp. 151-154; pp. 161-166; locators in the entry text. Checked by notes/artefacts/backtest-inference/backtest-design-checks.py: parts 1-5 (synthetic universe without predictability: survivorship, look-ahead, costs and turnover, drawdown, best-of-24 against walk-forward). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): NAV, gross-exposure, cash and cost conventions stated; costs on traded notional from a dollar ledger with drift and establishment (19 checks, including hand-reconciled ledgers); drawdown includes initial wealth with decisive cases."
   },
   "def:distributed-ledger-applications": {
     "source": "compendium/digital-assets-prediction-markets/digital-asset-investing.tex",

@@ -23,6 +23,8 @@ Prepared on 2026-10-20 by the completion batch (2026-10-20) from source checks, 
 - Gift annual exclusion USD 19,000 per donee; basic exclusion USD 15 million; annual exclusion for gifts to a non-citizen spouse USD 194,000.
 - Expatriation thresholds for covered expatriates (secs. 4.37-4.38).
 
+- Final audit correction pass (2026-10-20): sec. 4.01 Table 1 (p. 10), married filing jointly: 35 percent over 512,450 to 768,700, 37 percent above; used for the Okafors' marginal bracket.
+
 ## Limits
 
 US federal only, tax year 2026; state taxes not covered.

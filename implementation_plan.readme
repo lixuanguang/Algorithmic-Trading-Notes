@@ -24,8 +24,8 @@ branch stacked on PR #22. No next content slice has been selected. Not started: 
 (multiple regression, misspecification, extensions); the rest of Batch 2; and
 the rest of Batches 3-6. (Later batches are in Sections 20-29; the linear-regression objectives
 named here were completed in Section 29.)
-Current summary (2026-10-20): after the audit corrections of Section 32 and the completion batch
-of Section 33, all 424 objectives and all 1,030 outline items are covered (editorial coverage),
+Current summary (2026-10-20): after the audit corrections of Section 32, the completion batch
+of Section 33 and the final audit corrections of Section 34, all 424 objectives and all 1,030 outline items are covered (editorial coverage),
 with professional ethics and private wealth management added as chapters. Remaining work is
 human review of the draft entries and study; no content batch is pending.
 Editorial coverage only: nothing here records or implies learner mastery.
@@ -3236,3 +3236,27 @@ extended reading notes. Coverage 424/424 objectives and 1,030/1,030 items. Edito
 is outstanding.
 
 Details: `notes/source-review-records.md`, *Completion batch, 20 October 2026*.
+
+## 34. Final audit corrections on PR #33 (executed 2026-10-20)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `316c07e`, draft PR #33 to `main` open, working tree
+clean. Coverage before: 424/424 objectives and 1,030/1,030 items. No new expansion quota: corrections only, with no
+objective created and no denominator or requirement changed.
+
+**Corrections** (figures and sources: `notes/source-review-records.md`, *Final audit correction pass*):
+1. Backtest costs from the traded notional of a dollar ledger with drift and establishment, conventions stated;
+   cost drag 2.62 percent a year (1.17), net Sharpe -0.40 (-0.17).
+2. Maximum drawdown from initial wealth 1, with decisive cases the old check fails; net 50 percent (39).
+3. Asset location under one dividend and reinvestment convention with basis; 2,454,619 (2,474,630); zero-tax equality.
+4. Okafor case reconciled: reserve outside the 540k policy portfolio, required return 2.30 percent (1.96), retirement
+   at 62 throughout, one saving, education and tax assumption; recommendation 60/40 (was 70/25/5).
+5. Pension funding: IRC 430(c)(8) 15-year amortisation for single-employer plan years after 2021 (Notice 2021-48);
+   funding target, PBO and economic liability distinguished; 96.34m and 172.82m labelled policy illustrations.
+6. Endowment law: New York NPC 553(d) rebuttable presumption on a five-year quarterly average; liquidity 185.6m (173).
+7. Family accounts: personal and beneficially owned accounts separated from family client accounts; contrasting cases.
+8. UK IHT: residence band taper; death 4.5 years after the gift; one chronology carrying the nil-rate band forward.
+
+**Evidence.** Three scripts extended (19, 53 and 22 checks). Sixteen objectives and 43 outline items revalidated;
+coverage unchanged at 424/424 and 1,030/1,030. Four sources added. `make check` and `make pre-commit` pass on the
+committed tree; PDF 424 pages, no overfull boxes or undefined references. Editorial coverage only; human review is
+outstanding.

@@ -6,6 +6,26 @@ institution is hypothetical (Harlow Industrial's DB plan, the Elmsworth Universi
 Bank Ardent and the Vardø Fund, a commodity sovereign fund), except the published benchmark parameters of Norway's
 Government Pension Fund Global quoted in the entries (NBIM web pages, 2026).
 
+Pension measures (part 1). The accounting PBO (9.0bn) projects final salaries and discounts at an ASC 715 corporate
+rate; the statutory funding target of a US single-employer plan (IRC 430(d)(1)) is the present value of benefits
+accrued at the start of the plan year, at stabilised segment rates (430(h)(2)); an economic liability discounts the
+promised benefits at near risk-free rates. For plan years beginning after 31 December 2021 (earlier by election),
+430(c)(8), added by ARPA 2021 sec. 9705 (IRS Notice 2021-48, IRB 2021-33), reduced earlier shortfall bases to zero and
+amortises each new shortfall base over 15 plan years instead of 7. The minimum required contribution is target normal
+cost plus the installments on all open bases (430(a)); it is not an annuity on the accounting deficit. The funding
+target of 8.4bn and the 0.75-point Treasury spread are stylised assumptions, not Harlow's actuarial valuation.
+
+Endowment law (part 2). Elmsworth is a New York not-for-profit corporation; its endowment is donor-restricted under gift
+instruments executed after the effective date of New York's Prudent Management of Institutional Funds Act, none of
+which sets a spending rate. NPC 553(d) presumes imprudence for an appropriation above 7% of fair market value averaged
+over quarterly values for at least the five preceding years; spending at or below 7% creates no presumption of
+prudence, which turns on the factors in 553(a). The five years of quarterly history before the simulation are a stated
+assumption (flat at 2,000m).
+
+Corrections (2026-10-20, final audit): the deficit annuity over seven years was presented as the current legal
+requirement; the UPMIFA check compared spending with the current value instead of the statutory average and read 7% as
+a safe harbour; remaining liquidity deducted gross needs although coverage netted distributions.
+
 Independent routes: surplus volatility from the covariance matrix against a Monte Carlo of asset and liability
 returns; hedge ratios from dollar durations; deficit amortisation against an annuity schedule; spending rules
 simulated year by year against closed forms; the equity duration gap against a full repricing of assets and
@@ -106,10 +126,34 @@ ok(
     round(sar, 2) == 1.64 and round(sar / MCAP * 100) == 27,
 )
 deficit = L - A
-pay = deficit / annuity(0.05, 7)
+EBITDA = 1.2
+pay7, pay15 = deficit / annuity(0.05, 7), deficit / annuity(0.05, 15)
+sched, bal = [], deficit
+for _ in range(15):
+    bal = bal * 1.05 - pay15
+    sched.append(bal)
 ok(
-    "closing the 1.0bn deficit over seven years at 5% needs 0.173bn a year, 14% of the sponsor's 1.2bn EBITDA",
-    round(pay, 3) == 0.173 and round(pay / 1.2 * 100) == 14,
+    "policy illustration, not the legal minimum: a level end-of-year annuity at 5% that clears the 1.0bn accounting "
+    "deficit costs 96.34m a year over 15 years (8.0% of EBITDA) against 172.82m over 7 (14.4%); a year-by-year "
+    "balance schedule reaches zero",
+    round(pay15 * 1000, 2) == 96.34
+    and round(pay7 * 1000, 2) == 172.82
+    and round(pay15 / EBITDA * 100, 1) == 8.0
+    and round(pay7 / EBITDA * 100, 1) == 14.4
+    and abs(sched[-1]) < 1e-12,
+)
+FT, TSY_SPREAD = 8.4, 0.0075  # stylised funding target; accounting rate minus Treasury rate
+shortfall = max(0.0, FT - A)
+econ = L * (1 + D_L * TSY_SPREAD)  # first-order repricing at the lower risk-free rate
+ok(
+    "three measures differ: statutory shortfall 0.40bn (funding target 8.4bn of accrued benefits, no salary "
+    "projection), accounting deficit 1.00bn (PBO 9.0bn), economic deficit about 1.81bn (9.0bn repriced 0.75 points "
+    "lower with duration 12); a new 0.40bn base amortised over 15 years at 5% is 38.5m a year, before target normal "
+    "cost and installments on earlier bases; with assets at or above the funding target no new base arises",
+    close(shortfall, 0.4)
+    and round(econ - A, 2) == 1.81
+    and round(shortfall / annuity(0.05, 15) * 1000, 1) == 38.5
+    and max(0.0, 8.0 - A) == 0.0,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -138,15 +182,33 @@ ok(
 )
 mv_track = MV0
 sp_track = SPEND_RATE * MV0
-rates = []
+rates, avg_rates, avg_rates_p = [], [], []
+quarters = [MV0] * 20  # assumed quarter-end values for the five years before the simulation
+mv_p2 = MV0
 for rr in returns:
     sp_track = 0.7 * sp_track * (1 + INFL) + 0.3 * SPEND_RATE * mv_track
+    avg5 = (
+        sum(quarters[-20:]) / 20
+    )  # NPC 553(d): quarterly values averaged over the five preceding years
     rates.append(sp_track / mv_track)
-    mv_track = (mv_track - sp_track) * (1 + rr)
+    avg_rates.append(sp_track / avg5)
+    sp_p2 = SPEND_RATE * mv_p2
+    avg_rates_p.append(sp_p2 / avg5)
+    start = mv_track - sp_track
+    quarters += [start * (1 + rr) ** (q / 4) for q in range(1, 5)]
+    mv_track = start * (1 + rr)
+    mv_p2 = (mv_p2 - sp_p2) * (1 + rr)
 ok(
-    "UPMIFA: spending above 7% of value creates a rebuttable presumption of imprudence; the smoothed rule's rate "
-    "peaks at 6.6% of the post-crash value (98.5m on 1,497m), below it",
-    round(max(rates) * 100, 1) == 6.6 and max(rates) < 0.07,
+    "New York's test uses the five-year average of quarterly values, not the current value: the smoothed rule's "
+    "peak of 6.6% of the post-crash value is 5.07% of the statutory average, and neither rule exceeds 5.3% of the "
+    "average in any year (smoothed peak 5.28%, pure 5.25%), so neither triggers NPC 553(d)'s presumption of "
+    "imprudence; staying below 7% does not by itself make the spending prudent",
+    round(max(rates) * 100, 1) == 6.6
+    and round(avg_rates[3] * 100, 2) == 5.07
+    and round(max(avg_rates) * 100, 2) == 5.28
+    and round(max(avg_rates_p) * 100, 2) == 5.25
+    and max(avg_rates) < 0.07,
+    f"smoothed {[round(x * 100, 2) for x in avg_rates]}; pure {[round(x * 100, 2) for x in avg_rates_p]}",
 )
 req_found = (1 + 0.05) * (1 + INFL) * (1 + 0.005) - 1
 real_erosion = (1.065 / ((1 + 0.05 + 0.005) * (1 + INFL))) ** 20
@@ -237,11 +299,17 @@ ok(
     and round(w_priv_after * 100, 1) == 37.3
     and round((after["private"] + unfunded) / total_after * 100) == 67,
 )
+left = liquid - (needs - dists)
 ok(
     "liquidity policy: keep liquid sources of at least two years of spending plus a stressed year of calls "
-    "(2 x 100 + 125 = 325); Elmsworth's 398 passes, but after drawing 225 it has 173 and must rebuild before new "
-    "commitments",
-    close(2 * spend + calls, 325.0) and liquid >= 325 and round(liquid - needs) == 173,
+    "(2 x 100 + 125 = 325); Elmsworth's 398 passes, but after paying calls and spending (225) and receiving "
+    "distributions (12.6) it has 186 (398 - 212.4), below the floor, and must rebuild before new commitments",
+    close(2 * spend + calls, 325.0)
+    and liquid >= 325
+    and round(left, 1) == 185.6
+    and close(
+        left, after["cash"] + after["bonds"] + after["hedge"] / 4 + dists - calls - spend, 1e-9
+    ),
 )
 prem_needed = 0.02
 ok(

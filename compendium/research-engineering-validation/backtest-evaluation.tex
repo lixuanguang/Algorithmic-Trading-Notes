@@ -125,7 +125,11 @@ With a monthly Sharpe ratio of 0.108, so $S^2=1.2$ percent, the earnings--price 
 
 \emph{Problems}: \emph{survivorship bias} (testing on today's constituents), \emph{look-ahead bias} (using data before its release), \emph{data snooping} or selection bias (reporting the best of many trials), ignoring transaction costs and short-sale constraints, outliers, the story told after the fact, and the shorting of instruments that could not be borrowed; L\'opez de Prado's ``seven sins'' (pp.~151--152). Remedies: develop models for asset classes or universes rather than single names, use bagging, record all trials and deflate the Sharpe ratio for them (\hyperref[meth:deflated-sharpe-ratio]{deflated Sharpe}), and backtest scenarios rather than a single history (p.~154).
 
-\qffield{Practice} \emph{Synthetic evidence} (\texttt{backtest-design-checks.py}, 10 checks). A universe of 300 simulated stocks over 240 months has no true cross-sectional predictability; a stock is delisted after losing 75 percent of its value.
+\emph{Book accounting}. NAV is cash plus the signed market value of the positions. A long-short target holds $+1$ of NAV long and $-1$ short, a gross exposure of 2 and a net exposure of zero; short-sale proceeds stay in cash. The pre-trade holdings at a rebalance are the previous positions after their own returns, so unchanged target weights still require trades when assets have earned different returns. The cost is the cost rate times the traded notional, purchases and sales (cover-buys and short sales included), paid from cash; the first rebalance from cash pays for establishing the whole book. With targets set as fractions of post-trade NAV $V-f$, the fee solves $f=c\sum_i|w^*_i(V-f)-h_i|$. The net return of a month is then $(1-f/V)(1+w^{*\top}r)-1$. Maximum drawdown is measured on the wealth path that starts at 1, so a first-month loss counts.
+
+\qffield{Practice} \emph{Small ledgers} at $c=20$~bp. From 100 of cash, a 50/50 book pays $f=0.2/1.002=0.1996$ and leaves zero cash. After returns of $+10$ and $-10$ percent the holdings are 55 and 45; holding the targets at 50/50 means selling 5.01 and buying 4.99, a traded notional of 10 and a fee of 0.02, although successive target weights are identical. Swapping one of two longs and one of two shorts trades 2.0 of NAV and costs 0.004, leaving cash 0.996, longs 0.996 and shorts $-0.996$. Paths $(-10\%,+5\%)$ and $(-5\%)$ have drawdowns of 10 and 5 percent; a path that only rises has none.
+
+\emph{Synthetic evidence} (\texttt{backtest-design-checks.py}, 19 checks). A universe of 300 simulated stocks over 240 months has no true cross-sectional predictability; a stock is delisted after losing 75 percent of its value, and a position in it is sold at its last value.
 \begin{center}\small
 \begin{tabular}{@{}p{0.36\linewidth}p{0.26\linewidth}p{0.28\linewidth}@{}}
 \toprule
@@ -133,15 +137,15 @@ Design error & Flawed result & Correct result \\
 \midrule
 Survivors only (249 of 300) & 14.85\% a year & 13.18\% point in time \\
 Signal uses the same month's return & Sharpe 78.9 & 0.27 with last month's \\
-Momentum gross of costs, 20~bp a trade & 1.17\% a year higher & Turnover 0.24 a side a month \\
+Momentum gross of costs & 0.12\% a year, Sharpe 0.02 & Net $-2.51$\%, Sharpe $-0.40$ \\
 Best of 24 rules, first 10 years & In-sample Sharpe 0.83 & $-0.16$ in the next 10 years \\
 Re-select each year from trailing 5 years & --- & Walk-forward Sharpe 0.16 \\
 \bottomrule
 \end{tabular}
 \end{center}
-The in-sample winner's 0.83 exceeds the approximate expected maximum of 24 null Sharpe ratios over ten years (0.57), but it does not survive the next decade. The net series's maximum drawdown, 39 percent, matches a brute-force search over all start and end months; expanding-window estimates move less from year to year than five-year rolling ones.
+The momentum book is established by trading 1.99 of opening NAV and then trades 1.09 of NAV a month, more than the 0.96 change in successive targets because drift is traded back; at 20~bp of traded notional the cost drag is 2.62 percent a year, and the net maximum drawdown is 50 percent against 32 percent gross. The in-sample winner's 0.83 exceeds the approximate expected maximum of 24 null Sharpe ratios over ten years (0.57), but it does not survive the next decade. Expanding-window estimates move less from year to year than five-year rolling ones.
 
-\qffield{Conditions} Simulated data with no predictability; real markets add non-stationarity, regime changes and capacity limits that a backtest can only approximate.
+\qffield{Conditions} Simulated data with no predictability; real markets add non-stationarity, regime changes and capacity limits that a backtest can only approximate. Cash, collateral and short rebates earn zero and there is no borrow fee or margin, so the returns are excess of cash; a proportional cost per unit traded ignores spreads that vary with size and market impact.
 
 \qffield{Pitfalls} Treating a walk-forward on one path as conclusive. Reporting the best trial without the number of trials. Rerunning the out-of-sample test after changes until it passes.
 

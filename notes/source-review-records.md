@@ -5338,3 +5338,94 @@ mastery or independent human review.
 people, the default classifier and the crypto allocation are hypothetical. Tax and regulatory
 figures are dated and jurisdiction-specific and will change. Ethics entries interpret the Standards
 for original cases; the issuer's own guidance governs. Human review is outstanding.
+
+## Final audit correction pass, 20 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` at `316c07e`, draft PR #33 to `main` open, working
+tree clean. Coverage at the start: 424/424 objectives and 1,030/1,030 items. No new objectives; denominators and
+requirements unchanged. Every number below was reproduced by an identity, a boundary case or the primary text before
+the entry changed; old values are kept for comparison.
+
+**Findings and corrections.**
+1. *Backtest costs* (`meth:backtest-design-evaluation`; `backtest-design-checks.py`). The old rule measured turnover as
+   a quarter of the change in successive target weights and deducted twice that times 20 bp: for absolute trades of 2.0
+   it charged 0.002 instead of 0.004, and unchanged targets after unequal returns cost nothing. Conventions now stated
+   (NAV = cash + signed positions; long-short target +1/-1, gross 2; short proceeds in cash; cash, rebates and borrow
+   at zero; targets on post-trade NAV, so f = c sum|w*(V - f) - h|; establishment charged; delisted positions sold).
+   Hand-reconciled ledgers: establishment from 100 (fee 0.2/1.002 = 0.19960, cash 0); 55/45 rebalanced to 50/50
+   (sell 5.01, buy 4.99, traded 10, fee 0.02); the long-short swap (traded 2.0, fee 0.004, cash 0.996); long-short
+   drift (fee 0.2c/(1+c)). The full simulation checks cash + positions = NAV after every trade, zero-cost equality
+   with the gross target book, and (1 - f/V)(1 + w*.r) month by month. Momentum: traded 1.09 of NAV a month against
+   0.96 from target changes; cost drag 2.62 percent a year (1.17 before); net -2.51 percent a year, Sharpe -0.40
+   (was -1.05 and -0.17); hit rate 0.43 (0.47).
+2. *Maximum drawdown*. The running peak and its brute-force check both started after the first return. Now both include
+   the initial wealth of 1; [-0.10, +0.05] gives 10 percent, [-0.05] 5 percent, a rising path 0, and the old peak gives 0
+   on the first two, so the cases detect the error. Net maximum drawdown 50 percent (39 before); gross 32 percent.
+   The other two drawdown implementations (`drawdown-resampling-checks.py`, `performance-evaluation-checks.py`)
+   already included the start.
+3. *Asset location* (`meth:tax-in-planning`; `private-wealth-checks.py` part 7). Taxable stocks compounded
+   (1 + d(1 - t))(1 + g) while IRA stocks compounded 1 + d + g. One convention now: price +5 percent and a 2 percent
+   dividend on opening value, dividend at year-end, after-tax dividend reinvested and added to basis. Year 1: value
+   532,620, basis 507,620, gain 25,000; IRA 535,000. Bonds in the IRA: 2,454,619 (2,474,630 before); reverse
+   2,316,409. With zero taxes both placements give 3,140,699, whereas the old conventions would have shown 36,488.
+4. *The Okafor case* (`meth:individual-wealth-capital`, `meth:private-client-ips`, `meth:goals-based-financial-plan`,
+   `meth:lifetime-exposures`, `meth:private-client-allocation-review`). The 60,000 reserve now sits outside the
+   540,000 policy portfolio and on neither side of the funded ratio: required real return 2.30 percent (1.96
+   percent counted the reserve twice), confirmed by projecting forward to the 1.76m need. Human capital to retirement at
+   62: 3.00m at 40 (3.29m to 65). One saving figure (50,000), education at 8 and 10 years in every calculation (parts
+   1 and 5 had used 10 for both), the 35 percent joint band (Rev. Proc. 2025-32 sec. 4.01, Table 1, p. 10) instead of
+   "top bracket". Funded ratio 1.16 at 3.5 percent and 0.91 at 1.5 percent (1.22 and 0.95); saving of 58.1k restores
+   1.0. Allocation, on stated illustrative real assumptions: 70/30, 60/40 and 40/60 give compound 3.22, 3.03 and 2.57
+   percent, one-in-twenty one-year returns of -15.1, -13.4 and -10.2 percent, and surpluses of 0.28, 0.22 and 0.08m.
+   The recommendation changes from 70/25/5 to 60/40, which willingness governs; 40/60 is the lower-risk alternative
+   if paired with higher saving. Life cover 1.95m (2.17m). The review uses the Okafors' own 540,000 and saving:
+   TWR 11.72, MWR 11.78 percent, funded ratio 1.16 to 1.20.
+5. *Pension funding law* (`def:institutional-investor-characteristics`, `meth:db-pension-risk`). Read: IRS Notice
+   2021-48, IRB 2021-33, p. 305, secs. I-IV (https://www.irs.gov/irb/2021-33_irb); 26 U.S.C. 430(a), (c)(1)-(2),
+   (c)(5), (c)(8), (d)(1), (g)(3), (h)(2)(C)(iv) on LII. For single-employer plans, plan years beginning after 31
+   December 2021 (earlier by election), earlier shortfall bases are reduced to zero and new bases amortised over 15
+   plan years; the minimum is target normal cost plus installments when assets fall short of the funding target of
+   accrued benefits; the segment-rate corridor is 95-105 percent through 2030. Ang's seven years (2014) is now
+   attributed to the Pension Protection Act. Harlow: statutory shortfall 0.40bn on a stylised funding target of
+   8.4bn, accounting deficit 1.0bn, economic deficit about 1.81bn; a single new base over 15 years costs 38.5m; the
+   96.34m (15-year) and 172.82m (7-year) annuities on the accounting deficit are labelled policy illustrations. The
+   conclusion now separates a moderate cash burden from high economic risk.
+6. *Endowment spending law* (`def:institutional-investor-characteristics`, `meth:institutional-ips-portfolios`,
+   `meth:endowment-liquidity-allocation`). Read: New York NPC sec. 553(a), (b), (d), (e) and the Article 5-A table
+   (NY Senate site, revision of 14 July 2017). The presumption is rebuttable, applies to post-enactment gift
+   instruments, uses quarterly values averaged over at least five years, and gives no presumption of prudence below 7
+   percent. Elmsworth is now a New York corporation with donor-restricted, post-enactment gifts setting no rate; with
+   five prior years assumed flat at 2,000m, spending peaks at 5.28 percent of the statutory average (6.6 percent of the
+   post-crash value). The uniform-act text was not obtained, so the entry says only that states differ. Liquidity:
+   185.6m remain after net outflows of 212.4m (173 before, which ignored the 12.6m of distributions counted in the
+   coverage ratio).
+7. *Family accounts and IPOs* (`rule:standard-duties-to-clients`, `meth:preventing-client-duty-violations`,
+   `rule:standard-conflicts-of-interest`, `meth:preventing-conflict-violations`). Read: Standards of Practice Handbook,
+   12th ed., III(A) Example 7, p. 74; III(B) guidance, p. 77; VI(B) guidance, p. 165, Examples 2-3, p. 167; the issuer's
+   III(B) (updated April 2024) and VI(B) (updated January 2024) web pages. The blanket exclusion of family accounts is
+   replaced by a classification of personal and beneficially owned accounts (excluded from oversubscribed issues) and
+   family client accounts (allocated pro rata, flagged and reviewed); contrasting original cases added.
+8. *UK inheritance tax* (`meth:wealth-transfer-strategies`; part 13). Read: HMRC, "Inheritance Tax: residence nil rate
+   band" (published 8 November 2016, updated 5 September 2019); IHTM46023 (updated 7 April 2026); the thresholds table
+   (updated 6 April 2026) and the gifts page. The band now tapers by 1 for every 2 above 2m on the estate excluding
+   lifetime gifts (175k at 2.0m, 125k at 2.1m, 0 at 2.35m), capped at the home's value. The gift example now has the
+   donor dying 4.5 years after the gift (24 percent, 42,000). The examples form one chronology: the gift consumes the
+   nil-rate band, so the 2.4m estate pays 960,000 (830,000 before, which reused the band); total 1,002,000 against
+   1,030,000 without the gift, the difference being the taper relief of 28,000.
+
+**Coverage revalidation.** Sixteen objectives and their 43 outline items, all at their recorded depth (15 decision,
+1 analysis). Each item was reread against the corrected entry; 35 rationales gained a specific revalidation note and
+8 a note that the correction does not touch them. All remain covered: 424/424 objectives and 1,030/1,030 items.
+New sources: `irs-notice-2021-48`, `ny-npc-553`, `govuk-rnrb-guidance-2019`, `hmrc-ihtm46023-2026`, with reading
+notes; IRC sec. 430 added to `us-internal-revenue-code-26`.
+
+**Validation** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; LuaLaTeX from TeX Live 2023).
+Focused: `backtest-design-checks.py` 19 checks (10 before), `private-wealth-checks.py` 53 (43), `institutional-checks.py`
+22 (21), each with `python -W error`. Final: `make check` (lock, ruff lint and format, check-compendium 0 problems,
+check-coverage 0 problems, pytest 36 passed, 106 check scripts, `--verify-outlines` 0 problems, PDF of 424 pages
+with no overfull boxes or undefined references) and `make pre-commit` (12 hooks passed). Pages 18-19, 265-267,
+276-282 and 36-38 were rendered and inspected.
+
+**Limitations.** The Okafor capital market assumptions, willingness threshold, Harlow funding target and Treasury
+spread, and Elmsworth's pre-example values are stated assumptions, not data. The New York article's effective date was
+not taken from a primary page. Editorial coverage only; human review and study are outstanding.

@@ -23,6 +23,8 @@ Prepared on 2026-10-20 by the completion batch (2026-10-20) from source checks, 
 - Sec. 1202 excludes gain on qualified small business stock held long enough, within limits; sec. 1411 imposes a 3.8 percent net investment income tax.
 - Sec. 7701(b) defines residence for aliens (substantial presence); secs. 877 and 877A tax covered expatriates; sec. 4942 requires private foundations to distribute about 5 percent of assets.
 
+- Final audit correction pass (2026-10-20): sec. 430 read for single-employer minimum funding: 430(a) minimum required contribution, (c)(1)-(2) installments, (c)(5) zero base when assets reach the funding target, (c)(8) 15-year amortisation for plan years beginning after 31 December 2021, (d)(1) funding target of accrued benefits, (g)(3) asset averaging limits, (h)(2)(C)(iv) corridor of 95-105 percent for 2020-2030.
+
 ## Limits
 
 Statute text only; regulations and case law were not read.

@@ -9,15 +9,15 @@
 \[ \mathrm{HC}(x)=\sum_{t=1}^{R-x}\frac{E[h_{x+t}]}{(1+r+\nu)^{t}}, \]
 with $h$ real after-tax earnings, $R$ the retirement age and $\nu$ a premium for the riskiness of the income (p.~17, simplified here by omitting mortality). \emph{Economic net worth} adds human capital and pension claims to financial net worth and deducts the present value of committed liabilities and goals.
 
-\qffield{Practice} \emph{The Okafors} (United States, 2026; original). Adaeze, 40, a salaried hospital physician, earns USD~180,000 a year after tax, expected to rise 1 percent a year in real terms to 65; Tunde, 42, sells software on commission. They hold USD~600,000 of financial assets, a USD~400,000 mortgage, and want USD~200,000 for each of two children's education in about ten years.
+\qffield{Practice} \emph{The Okafors} (United States, 2026; original; the same base case runs through the IPS, plan, insurance, tax and review entries of this chapter). Adaeze, 40, a salaried hospital physician, earns USD~180,000 a year after tax, expected to rise 1 percent a year in real terms; Tunde, 42, sells software on commission. They plan to retire together when she is 62, in 22 years. They hold USD~600,000 of financial assets, a USD~400,000 mortgage, and want USD~200,000 for each of two children's education, due in 8 and 10 years. The plan counts saving of 50,000 a year, mostly 401(k) deferrals.
 \begin{itemize}
-\item Adaeze's human capital, discounted at 3.5 percent real for a stable income, is USD~3.29 million at 40, 2.44 million at 50 and 1.01 million at 60; at 6 percent, as if it were as risky as equity, it would be 2.52 million.
-\item Saving USD~40,000 a year at 4 percent real, their financial capital grows to 1.39 million at 50 and 3.44 million at 65 while her human capital falls to zero.
-\item Economic net worth at 40 is $0.60+3.29-0.40-0.28=3.21$ million; human capital is 85 percent of gross economic assets.
-\item Counting half of Tunde's USD~2.0 million of human capital as equity-like, a 40 percent equity target on total wealth of 5.89 million calls for 1.36 million of financial equity, more than all their financial assets. They should therefore hold mostly equities now; the same rule moves them towards bonds as human capital is used up.
+\item Adaeze's human capital to 62, discounted at 3.5 percent real for a stable income, is USD~3.00 million at 40, 2.02 million at 50 and 0.42 million at 60; at 6 percent, as if it were as risky as equity, it would be 2.36 million. Valuing her earnings to 65 instead would add 0.30 million that the retirement plan will not earn.
+\item Saving 50,000 a year, paying both education bills and earning the recommended policy's expected 3.03 percent real, their financial capital is 0.95 million at 50, 1.83 million at 60 and 2.04 million at 62, while her human capital falls to zero.
+\item Economic net worth at 40 is $0.60+3.00-0.40-0.29=2.90$ million, deducting the mortgage and the present value of the education payments; human capital is 83 percent of gross economic assets.
+\item \emph{Capacity}: counting half of Tunde's USD~2.0 million of human capital as equity-like, a 40 percent equity target on total wealth of 5.60 million calls for 1.24 million of financial equity, more than the whole 0.54 million policy portfolio. On capacity alone they could hold only equities; their moderate willingness is the binding constraint (\hyperref[meth:private-client-ips]{IPS}). The same total-wealth rule moves them towards bonds as human capital is used up.
 \end{itemize}
 
-\qffield{Conditions} The SCF figures are 2022 survey values in 2022 dollars. The human-capital model omits mortality, taxes beyond the after-tax earnings assumed, and labour flexibility, all of which Ibbotson and co-authors treat; earnings, discount rates and the 50 percent equity share of commission income are illustrative.
+\qffield{Conditions} The SCF figures are 2022 survey values in 2022 dollars. The human-capital model omits mortality, taxes beyond the after-tax earnings assumed, and labour flexibility, all of which Ibbotson and co-authors treat; earnings, discount rates, the expected returns and the 50 percent equity share of commission income are illustrative.
 
 \qffield{Pitfalls} Analysing a young client's portfolio without their human capital. Treating all human capital as bond-like. Confusing mean with median wealth.
 
@@ -72,19 +72,20 @@ The deferred US gain's effective annual tax rate is 15.7 percent. With 2.5 perce
 
 \emph{Components}: client and accounts; return objective; risk tolerance (capacity and willingness); time horizons by goal; liquidity needs; taxes; legal and regulatory constraints; unique circumstances; review schedule and benchmark.
 
-\qffield{Practice} \emph{IPS for the Okafors} (original; \texttt{private-wealth-checks.py}, parts~1 and 3).
+\qffield{Practice} \emph{IPS for the Okafors} (original; \texttt{private-wealth-checks.py}, parts~1 and 3). \emph{Capital}: of the 600,000 of financial assets, a 60,000 emergency reserve is held in cash \emph{outside} the policy portfolio; the remaining 540,000 is the policy portfolio that funds the goals. The reserve is never counted as goal capital.
 \begin{itemize}
-\item \emph{Return}: retirement at 62 needs USD~150,000 a year in today's money for 30 years; Social Security is assumed to provide 60,000, so the gap is worth 1.76 million at 62 at 3 percent real. With 600,000 today, 50,000 saved a year for 22 years and two 200,000 education payments, the required real return is 1.96 percent.
-\item \emph{Risk}: high capacity (3.29 million of stable human capital, 22 years to retirement, required return modest); Tunde's commission income is equity-like and reduces it; their stated willingness is moderate. Policy: 70 percent diversified equity, 25 percent high-quality bonds, 5 percent cash, with Tunde's employer stock below 10 percent of liquid assets.
+\item \emph{Return}: retirement at 62 needs USD~150,000 a year in today's money for 30 years, before income tax on withdrawals; Social Security is assumed to provide 60,000, so the gap is worth 1.76 million at 62 at 3 percent real. With 540,000 today, 50,000 saved at the end of each of the next 22 years and 200,000 paid out in years 8 and 10, the required real return is 2.30 percent. Counting the reserve as goal capital as well would give 1.96 percent while spending the same 60,000 on emergencies.
+\item \emph{Risk}: capacity is high (3.00 million of stable human capital, 22 years to retirement, a modest required return), though Tunde's equity-like commission income reduces it. Their willingness is moderate: they say they would sell after a one-year loss of about 15 percent. Willingness is the lower of the two and governs.
+\item \emph{Policy}: 60 percent diversified equity and 40 percent high-quality bonds in the policy portfolio, with Tunde's employer stock below 10 percent of liquid assets. Across all 600,000 this is 54 percent equity, 36 percent bonds and 10 percent cash (the reserve).
 \item \emph{Horizons}: education in 8 and 10 years; retirement in 22 years and lasting about 30.
-\item \emph{Liquidity}: six months' spending (60,000) in cash; education funds moved to short bonds two years before each payment.
-\item \emph{Taxes}: top federal bracket; maximise 401(k) deferrals; bonds in tax-deferred accounts.
+\item \emph{Liquidity}: the reserve covers six months' spending (60,000); education funds move to short bonds two years before each payment.
+\item \emph{Taxes}: joint 2026 taxable income in the 35 percent federal band (USD~512,450 to 768,700 \citep[sec.~4.01, Table~1]{irs-rev-proc-2025-32}), so qualified dividends and long-term gains are taxed at 15 percent plus the 3.8 percent net investment income tax; maximise both 401(k) deferrals (49,000 in 2026); bonds in tax-deferred accounts.
 \item \emph{Legal and unique}: no restrictions; Tunde's restricted stock units vest quarterly.
 \item \emph{Review}: annually, and when a child starts university, income changes by more than 20 percent, or either spouse changes job.
 \end{itemize}
-The required return justifies taking less risk than their capacity would allow, so the moderate willingness can govern.
+The modest required return lets the moderate willingness govern without leaving the goals short; the allocation is tested against both in \hyperref[meth:private-client-allocation-review]{the allocation review}.
 
-\qffield{Conditions} The Social Security figure, return assumptions and spending goal are illustrative; ESMA's guidelines apply to EU firms giving advice or managing portfolios.
+\qffield{Conditions} The Social Security figure, return assumptions and spending goal are illustrative. The funding model works in today's dollars with year-end flows, treats savings and the retirement goal as before tax on withdrawal, and ignores the taxable account's tax drag; saving from variable commissions above the planned 50,000 is not counted until received; ESMA's guidelines apply to EU firms giving advice or managing portfolios.
 
 \qffield{Pitfalls} Setting risk from questionnaire answers alone. Writing one IPS for a couple without recording whose goals and accounts it covers. Never revisiting the IPS after a life event.
 

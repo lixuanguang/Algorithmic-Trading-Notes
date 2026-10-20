@@ -60,7 +60,7 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 ## Entries created by the completion batch (2026-10-20)
 
-Backtest design, in `research-engineering-validation/backtest-evaluation.tex`, checked by `notes/artefacts/backtest-inference/backtest-design-checks.py` (a simulated universe with no predictability): `meth:backtest-design-evaluation`. Sources: López de Prado chaps. 11--12 (pp. 151--154, 161--166); existing diagnostics, overfitting, cost, deflated-Sharpe and multiple-testing entries are cross-referenced. Partly checked 2026-10-20, draft; human review outstanding. The record is in `notes/source-review-records.md`, *Completion batch, 20 October 2026*.
+Backtest design, in `research-engineering-validation/backtest-evaluation.tex`, checked by `notes/artefacts/backtest-inference/backtest-design-checks.py` (a simulated universe with no predictability): `meth:backtest-design-evaluation`. Sources: López de Prado chaps. 11--12 (pp. 151--154, 161--166); existing diagnostics, overfitting, cost, deflated-Sharpe and multiple-testing entries are cross-referenced. Partly checked 2026-10-20, draft; human review outstanding. The records are in `notes/source-review-records.md`, *Completion batch, 20 October 2026*, and *Final audit correction pass, 20 October 2026* (cost accounting on traded notional and drawdown from initial wealth).
 
 ## Related entries owned elsewhere
 

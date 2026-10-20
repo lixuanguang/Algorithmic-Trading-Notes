@@ -6,12 +6,34 @@ moving to London) and Luis Rivera (a US founder). Tax parameters are the publish
 2025-32; Notice 2025-67; 26 U.S.C.) and the 2026 to 2027 UK figures on GOV.UK; state, local and Scottish taxes,
 phase-outs and credits are ignored. Mortality follows a Gompertz law chosen for illustration, not a life table.
 
+The Okafor case is one linked base case. Financial assets of 600k = a 60k emergency reserve in cash held OUTSIDE the
+policy portfolio + a 540k policy portfolio that funds the goals; the reserve is never counted as goal-funding capital.
+Adaeze (40) and Tunde (42) retire together when she is 62, in 22 years, so her human capital runs to 62. The plan counts
+planned saving of 50k a year (end of each year, mostly 401(k) deferrals) and two 200k education payments at the ends of
+years 8 and 10; amounts are in today's dollars, retirement spending is before income tax on withdrawals, and the taxable
+account's tax drag is ignored in the funding model. Their joint 2026 taxable income is in the 35% federal band
+(Rev. Proc. 2025-32 sec. 4.01 Table 1: 512,450 to 768,700), so qualified dividends and long-term gains are taxed at 15%
+plus the 3.8% NIIT. Capital market assumptions (illustrative, real): equity 5.0% expected, 17% volatility; bonds 1.5%,
+6%; correlation 0.2. The asset-location client in part 7 is a separate, top-bracket US client.
+
+Corrections (2026-10-20, final audit): the reserve was double counted inside a 70/25/5 policy on the full 600k
+(required return 1.96%, now 2.30% on 540k); human capital ran to 65 against retirement at 62; part 1 saved 40k growing
+1% and ignored the education payments, and parts 1 and 5 discounted both education payments at 10 years; the asset
+location compounded taxable dividends and price growth multiplicatively but IRA stocks additively (2.47m, now 2.45m);
+the UK gift example said the son survived the donor rather than the donor dying 4.5 years after the gift, the estate
+example reused the nil-rate band the gift had consumed, and the residence band was treated as lost above 2m instead
+of tapered by 1 for every 2.
+
 Independent routes: human capital by direct discounting against the backward recursion HC(x) = (e + HC(x+1))/(1+r);
 after-tax accumulation by formula against year-by-year simulation; the required return by root-finding against the
 funded-ratio identity; fees by year-by-year simulation against closed forms; annuity factors by summation against
-the survival integral; asset location by simulation of both placements; the Roth and traditional comparison against
+the survival integral; asset location by a year-by-year cash and basis ledger against
+the closed form, a zero-tax comparison and a one-year hand reconciliation; the Okafor funding by the required-return root
+against a forward projection at that return; the Roth and traditional comparison against
 the equal-rate identity; UK pension relief by the gross-up identity; the substantial presence test and UK ties by
-rule; QSBS exclusion against the statutory cap; gift against bequest by full after-tax terminal wealth; the CRAT
+rule; QSBS exclusion against the statutory cap; gift against bequest by full after-tax terminal wealth;
+the UK gift and estate as one chronology against the no-gift estate, the difference being the taper relief; the
+residence nil-rate band taper against its boundary cases; the CRAT
 remainder by annuity factors.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
@@ -73,8 +95,32 @@ E40, G, R_SAFE, RET = (
     180_000.0,
     0.01,
     0.035,
-    65,
-)  # Adaeze's after-tax real earnings at 40, growth, discount rate
+    62,
+)  # Adaeze's after-tax real earnings at 40, growth, discount rate, retirement age (the household retires together)
+FIN, RESERVE = 600_000.0, 60_000.0
+POLICY = FIN - RESERVE  # the goal-funding policy portfolio; the reserve sits outside it
+SAVE, YEARS = 50_000.0, 22  # planned saving at each year-end until retirement
+EDU = [(8, 200_000.0), (10, 200_000.0)]  # years from now (children now 10 and 8)
+MU_E, SD_E, MU_B, SD_B, RHO_EB = 0.05, 0.17, 0.015, 0.06, 0.2  # real capital market assumptions
+
+
+def mix(w_eq):
+    """Arithmetic mean, volatility and compound (lognormal median-adjusted) expected real return of a stock-bond mix."""
+    m = w_eq * MU_E + (1 - w_eq) * MU_B
+    sd = math.sqrt(
+        (w_eq * SD_E) ** 2 + ((1 - w_eq) * SD_B) ** 2 + 2 * w_eq * (1 - w_eq) * RHO_EB * SD_E * SD_B
+    )
+    s2 = math.log(1 + sd**2 / (1 + m) ** 2)
+    ml = math.log(1 + m) - s2 / 2
+    return m, sd, math.exp(ml) - 1, math.exp(ml - 1.645 * math.sqrt(s2)) - 1
+
+
+def project(rr, years=YEARS, p0=POLICY, save=SAVE):
+    """Policy portfolio after `years` at return rr, with saving and education payments at year-ends."""
+    x = p0
+    for t in range(1, years + 1):
+        x = x * (1 + rr) + save - sum(c for tt, c in EDU if tt == t)
+    return x
 
 
 def hc(age, r=R_SAFE, e40=E40, g=G, ret=RET):
@@ -83,49 +129,52 @@ def hc(age, r=R_SAFE, e40=E40, g=G, ret=RET):
 
 
 ok(
-    "Adaeze's human capital (after-tax 180k real at 40, +1% a year, to 65, discounted at 3.5%) is 3.29m at 40, "
-    "2.44m at 50, 1.01m at 60",
-    round(hc(40) / 1e6, 2) == 3.29
-    and round(hc(50) / 1e6, 2) == 2.44
-    and round(hc(60) / 1e6, 2) == 1.01,
+    "Adaeze's human capital (after-tax 180k real at 40, +1% a year, to retirement at 62, discounted at 3.5%) is "
+    "3.00m at 40, 2.02m at 50, 0.42m at 60; running it to 65 would overstate it at 40 by 0.30m (3.29m)",
+    round(hc(40) / 1e6, 2) == 3.00
+    and round(hc(50) / 1e6, 2) == 2.02
+    and round(hc(60) / 1e6, 2) == 0.42
+    and round(hc(40, ret=65) / 1e6, 2) == 3.29,
 )
 ok(
     "recursion: HC(40) = (earnings in year 1 + HC(41)) / 1.035",
     close(hc(40), (E40 + hc(41)) / (1 + R_SAFE), 1e-6),
 )
 ok(
-    "the same income discounted at 6% (equity-like risk) is worth 2.52m: riskier income is less valuable human capital",
-    round(hc(40, r=0.06) / 1e6, 2) == 2.52 and hc(40, r=0.06) < hc(40),
+    "the same income discounted at 6% (equity-like risk) is worth 2.36m: riskier income is less valuable human capital",
+    round(hc(40, r=0.06) / 1e6, 2) == 2.36 and hc(40, r=0.06) < hc(40),
 )
-fc = {40: 600_000.0}
-x = fc[40]
-for age in range(40, 65):
-    x = x * 1.04 + 40_000 * 1.01 ** (age - 40)
-    fc[age + 1] = x
+g60 = mix(0.60)[2]
+fc = {40: FIN}
+for k in range(1, YEARS + 1):
+    fc[40 + k] = RESERVE + project(g60, years=k)
 ok(
-    "saving 40k a year (growing 1%) at a 4% real return, financial capital rises from 0.60m at 40 to 1.39m at 50, "
-    "2.61m at 60 and 3.44m at 65 while human capital falls to zero",
-    round(fc[50] / 1e6, 2) == 1.39
-    and round(fc[60] / 1e6, 2) == 2.61
-    and round(fc[65] / 1e6, 2) == 3.44,
+    "with the recommended 60/40 policy earning its expected compound 3.03% real, 50k saved a year and the two "
+    "education payments made, financial capital (reserve included) rises from 0.60m at 40 to 0.95m at 50 (after both "
+    "education payments), 1.83m at 60 and 2.04m at 62, while human capital falls to zero",
+    round(g60 * 100, 2) == 3.03
+    and round(fc[50] / 1e6, 2) == 0.95
+    and round(fc[60] / 1e6, 2) == 1.83
+    and round(fc[62] / 1e6, 2) == 2.04,
 )
-pv_edu = 2 * 200_000 / 1.035**10
-enw40 = fc[40] + hc(40) - 400_000 - pv_edu
+pv_edu = sum(c / 1.035**t for t, c in EDU)
+enw40 = FIN + hc(40) - 400_000 - pv_edu
 ok(
-    "economic net worth at 40: financial 0.60m + human capital 3.29m - mortgage 0.40m - PV of two 200k education "
-    "goals in 10 years (0.28m) = 3.21m; human capital is 85% of gross economic assets",
-    round(enw40 / 1e6, 2) == 3.21 and round(hc(40) / (hc(40) + fc[40]), 2) == 0.85,
+    "economic net worth at 40: financial 0.60m + human capital 3.00m - mortgage 0.40m - PV of the 200k education "
+    "payments in 8 and 10 years (0.29m) = 2.90m; human capital is 83% of gross economic assets",
+    round(pv_edu / 1e6, 2) == 0.29
+    and round(enw40 / 1e6, 2) == 2.90
+    and round(hc(40) / (hc(40) + FIN), 2) == 0.83,
 )
 # Total-wealth allocation: Adaeze's HC bond-like; Tunde's HC (2.0m) 50% equity-like. Target 40% equity on total wealth.
 HC_T = 2_000_000.0
-total = fc[40] + hc(40) + HC_T
+total = FIN + hc(40) + HC_T
 eq_needed = 0.40 * total - 0.5 * HC_T
-w_fin_eq = eq_needed / fc[40]
 ok(
-    "with Tunde's 2.0m of commission income counted as half equity, a 40% equity target on total wealth (5.89m) "
-    "needs 1.36m of financial equity: more than the 0.60m of financial assets, so the financial portfolio is 100% "
-    "equity and the household is still below target",
-    round(total / 1e6, 2) == 5.89 and eq_needed > fc[40] and min(w_fin_eq, 1.0) == 1.0,
+    "capacity view: with Tunde's 2.0m of commission income counted as half equity, a 40% equity target on total "
+    "wealth (5.60m) needs 1.24m of financial equity, more than the whole 0.54m policy portfolio; capacity alone would "
+    "put all of it in equities, so willingness, not capacity, is the binding constraint",
+    round(total / 1e6, 2) == 5.60 and round(eq_needed / 1e6, 2) == 1.24 and eq_needed > POLICY,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -179,26 +228,48 @@ ok(
 print("== part 3: the Okafors' required return and IPS")
 SPEND, SOCSEC, YEARS_RET = 150_000.0, 60_000.0, 30
 pv_ret_at62 = (SPEND - SOCSEC) * annuity(0.03, YEARS_RET)
-edu = [(8, 200_000.0), (10, 200_000.0)]  # years from now (children now 10 and 8)
 
 
-def funded_gap(rr):
-    fv_assets = fc[40] * (1 + rr) ** 22 + sum(50_000 * (1 + rr) ** (22 - t) for t in range(1, 23))
-    fv_edu = sum(c * (1 + rr) ** (22 - t) for t, c in edu)
+def funded_gap(rr, p0=POLICY):
+    fv_assets = p0 * (1 + rr) ** YEARS + sum(
+        SAVE * (1 + rr) ** (YEARS - t) for t in range(1, YEARS + 1)
+    )
+    fv_edu = sum(c * (1 + rr) ** (YEARS - t) for t, c in EDU)
     return fv_assets - fv_edu - pv_ret_at62
 
 
 req = brentq(funded_gap, -0.05, 0.20)
+req_double = brentq(lambda rr: funded_gap(rr, p0=FIN), -0.05, 0.20)
 ok(
     "retirement at 62 needing 150k real a year for 30 years, 60k from Social Security: PV at 62 of the 90k gap at a "
     "3% real rate is 1.76m",
     round(pv_ret_at62 / 1e6, 2) == 1.76,
 )
 ok(
-    "with 0.60m now, 50k saved a year for 22 years and two 200k education payments, the required real return is "
-    "1.96%: modest, so the IPS can favour reliability over maximum growth",
-    round(req * 100, 2) == 1.96 and close(funded_gap(req), 0.0, 1e-3),
+    "with the 60k reserve held outside, the 0.54m policy portfolio, 50k saved a year for 22 years and the two 200k "
+    "education payments need a real return of 2.30%; counting the reserve as goal capital too (0.60m) would give "
+    "1.96% while also spending it on emergencies, which double counts it",
+    round(req * 100, 2) == 2.30 and round(req_double * 100, 2) == 1.96,
     f"{req:.4%}",
+)
+ok(
+    "independent route: projecting the policy portfolio year by year at 2.30%, with saving and both education "
+    "payments, reaches exactly the 1.76m retirement need at 62",
+    close(project(req), pv_ret_at62, 1e-3),
+)
+cands = {w: mix(w) for w in (0.7, 0.6, 0.4)}
+ok(
+    "allocation against the goals (real, illustrative assumptions): 70/30, 60/40 and 40/60 have expected compound "
+    "returns of 3.22%, 3.03% and 2.57%, all above 2.30%; projected surpluses over the 1.76m need at 62 of 0.28m, 0.22m "
+    "and 0.08m",
+    [round(cands[w][2] * 100, 2) for w in (0.7, 0.6, 0.4)] == [3.22, 3.03, 2.57]
+    and [round((project(cands[w][2]) - pv_ret_at62) / 1e6, 2) for w in (0.7, 0.6, 0.4)]
+    == [0.28, 0.22, 0.08],
+)
+ok(
+    "allocation against willingness: the Okafors would sell after a one-year loss of about 15%; the one-in-twenty "
+    "one-year return is -15.1% for 70/30 (at the limit), -13.4% for 60/40 and -10.2% for 40/60",
+    [round(cands[w][3] * 100, 1) for w in (0.7, 0.6, 0.4)] == [-15.1, -13.4, -10.2],
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -237,25 +308,33 @@ reserve = 0.5 * SPENDING_NOW
 edu_bucket = (
     200_000 / 1.03**2
 )  # first payment brought within 2 years later; here PV of a payment in 2 years at 3%
-pv_goals = pv_edu + pv_ret_at62 / 1.035**22
-pv_resources = fc[40] + sum(50_000 / 1.035**t for t in range(1, 23))
+
+
+def funded_ratio(d, save=SAVE):
+    """PV of goal-funding resources over PV of goals at discount rate d; the reserve is on neither side."""
+    res_ = POLICY + sum(save / (1 + d) ** t for t in range(1, YEARS + 1))
+    goals_ = sum(c / (1 + d) ** t for t, c in EDU) + pv_ret_at62 / (1 + d) ** YEARS
+    return res_, goals_, res_ / goals_
+
+
+pv_resources, pv_goals, fr35 = funded_ratio(0.035)
+save_needed = brentq(lambda sv: funded_ratio(0.015, sv)[2] - 1, 0, 200_000)
 ok(
-    "liquidity tiers: a six-month emergency reserve of 60k in cash; education money moves to a cash or short-bond "
-    "bucket once a payment is within two years (188.5k for a 200k payment at 3%)",
-    close(reserve, 60_000.0) and round(edu_bucket / 1e3, 1) == 188.5,
+    "liquidity tiers: a six-month emergency reserve of 60k in cash, outside the 540k policy portfolio (600k in total); "
+    "education money moves to a cash or short-bond bucket once a payment is within two years (188.5k for a 200k "
+    "payment at 3%)",
+    close(reserve, RESERVE)
+    and close(POLICY + RESERVE, FIN)
+    and round(edu_bucket / 1e3, 1) == 188.5,
 )
 ok(
-    "funded ratio at a 3.5% discount rate: PV of savings and assets 1.36m against PV of goals 1.11m: 1.22, so "
-    "the plan is funded with a margin; at a 1.5% rate the ratio falls to 0.95 and the plan is short",
-    round(pv_resources / 1e6, 2) == 1.36
-    and round(pv_goals / 1e6, 2) == 1.11
-    and round(pv_resources / pv_goals, 2) == 1.22
-    and round(
-        (fc[40] + sum(50_000 / 1.015**t for t in range(1, 23)))
-        / (400_000 / 1.015**10 + pv_ret_at62 / 1.015**22),
-        2,
-    )
-    == 0.95,
+    "funded ratio at a 3.5% discount rate: PV of the policy portfolio and savings 1.30m against PV of goals 1.12m: "
+    "1.16; at a 1.5% rate the ratio falls to 0.91 and the plan is short unless saving rises to about 58.1k a year",
+    round(pv_resources / 1e6, 2) == 1.30
+    and round(pv_goals / 1e6, 2) == 1.12
+    and round(fr35, 2) == 1.16
+    and round(funded_ratio(0.015)[2], 2) == 0.91
+    and round(save_needed / 1e3, 1) == 58.1,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -288,12 +367,12 @@ ok(
 )
 ins_need = 0.75 * hc(40) - 300_000
 ok(
-    "Adaeze's life insurance need: 75% of her 3.29m human capital (the part that supports the family) less 0.30m of "
-    "assets set aside = 2.17m of term cover, falling as she ages",
-    round(ins_need / 1e6, 2) == 2.17 and 0.75 * hc(50) - 300_000 < ins_need,
+    "Adaeze's life insurance need: 75% of her 3.00m human capital (the part that supports the family) less 0.30m of "
+    "assets set aside = 1.95m of term cover to 62, falling as she ages",
+    round(ins_need / 1e6, 2) == 1.95 and 0.75 * hc(50) - 300_000 < ins_need,
 )
 ok(
-    "disability cover of 60% of 250k pre-tax pay (150k a year) to 65 replaces 83% of her 180k after-tax pay if the "
+    "disability cover of 60% of 250k pre-tax pay (150k a year) to 62 replaces 83% of her 180k after-tax pay if the "
     "benefit is untaxed (individually paid premiums)",
     round(150_000 / 180_000, 2) == 0.83,
 )
@@ -303,27 +382,77 @@ print("== part 7: tax management - asset location and loss harvesting (US 2026)"
 BONDS, STOCKS, YB, DY, GY = 500_000.0, 500_000.0, 0.045, 0.02, 0.05
 
 
-def location(bonds_in_ira, years=20):
-    """IRA withdrawals taxed at 24% at the end; taxable account taxed at US top rates."""
+def stock_ledger(years, tax_div, tax_gain):
+    """Taxable stock account, one convention for both placements: each year price rises GY on the opening value, a
+    dividend of DY times the opening value is paid at year-end, tax on it is paid, and the rest is reinvested and added
+    to basis. Returns (value, basis, after-tax value on liquidation).
+    """
+    value = basis = STOCKS
+    for _ in range(years):
+        div = DY * value
+        net_div = div * (1 - tax_div)
+        value += GY * value + net_div
+        basis += net_div
+    return value, basis, value - tax_gain * (value - basis)
+
+
+def location(
+    bonds_in_ira, years=20, t_ira=0.24, t_int=US_ORD_INV, t_div=US_QD_INV, t_gain=US_QD_INV
+):
+    """After-tax wealth when the IRA (taxed at t_ira on withdrawal) holds bonds or stocks and the taxable account the other."""
     if bonds_in_ira:
         ira = BONDS * (1 + YB) ** years
-        tx = STOCKS * (1 + DY * (1 - US_QD_INV)) ** years * (1 + GY) ** years
-        basis = STOCKS + sum(
-            STOCKS * (1 + DY * (1 - US_QD_INV)) ** k * (1 + GY) ** k * DY * (1 - US_QD_INV)
-            for k in range(years)
-        )
-        tx_after = tx - US_QD_INV * (tx - basis)
+        tx_after = stock_ledger(years, t_div, t_gain)[2]
     else:
-        ira = STOCKS * (1 + DY + GY) ** years
-        tx_after = BONDS * (1 + YB * (1 - US_ORD_INV)) ** years
-    return ira * (1 - 0.24) + tx_after
+        ira = stock_ledger(years, 0.0, 0.0)[0]  # inside the IRA: the same dividend timing, untaxed
+        tx_after = (
+            BONDS * (1 + YB * (1 - t_int)) ** years
+        )  # interest taxed yearly; basis equals value
+    return ira * (1 - t_ira) + tx_after
 
 
 good, bad = location(True), location(False)
+v1, b1, _ = stock_ledger(1, US_QD_INV, US_QD_INV)
 ok(
-    "500k of bonds (4.5%) and 500k of stocks (2% yield, 5% growth), 20 years, top-bracket taxes, IRA taxed at 24% "
-    "on withdrawal: bonds in the IRA and stocks in the taxable account end with 2.47m against 2.32m the other way",
-    round(good / 1e6, 2) == 2.47 and round(bad / 1e6, 2) == 2.32 and good > bad,
+    "one-year reconciliation of the taxable stock account: 500k rises 25,000 in price; the 10,000 dividend bears "
+    "2,380 of tax and 7,620 is reinvested, so value is 532,620, basis 507,620 and the unrealised gain exactly the "
+    "25,000 price rise; in the IRA the whole dividend is reinvested (535,000)",
+    close(v1, 532_620.0, 1e-6)
+    and close(b1, 507_620.0, 1e-6)
+    and close(v1 - b1, 25_000.0, 1e-6)
+    and close(stock_ledger(1, 0.0, 0.0)[0], 535_000.0, 1e-6),
+)
+v20, b20, _ = stock_ledger(20, US_QD_INV, US_QD_INV)
+ok(
+    "closed form: the taxable stock grows by 1 + g + d(1 - t) = 1.06524 a year, and its basis is the original "
+    "cost plus every reinvested after-tax dividend",
+    close(v20, STOCKS * (1 + GY + DY * (1 - US_QD_INV)) ** 20, 1e-6)
+    and close(
+        b20,
+        STOCKS
+        + sum(
+            STOCKS * (1 + GY + DY * (1 - US_QD_INV)) ** k * DY * (1 - US_QD_INV) for k in range(20)
+        ),
+        1e-6,
+    ),
+)
+zero = {k: 0.0 for k in ("t_ira", "t_int", "t_div", "t_gain")}
+earlier_tx = (
+    STOCKS * (1 + DY) ** 20 * (1 + GY) ** 20
+)  # the earlier multiplicative taxable convention, at zero tax
+ok(
+    "with every tax at zero, location cannot change gross performance: both placements end with 500k x 1.045^20 + "
+    "500k x 1.07^20 = 3,140,699; the earlier convention (taxable stocks compounding (1 + d)(1 + g), IRA stocks 1 + d + g) "
+    "would have shown a 36,488 location effect even without tax",
+    close(location(True, **zero), location(False, **zero), 1e-6)
+    and round(location(True, **zero)) == 3_140_699
+    and round(earlier_tx - STOCKS * 1.07**20) == 36_488,
+)
+ok(
+    "500k of bonds (4.5%) and 500k of stocks (2% yield on opening value, 5% price growth), 20 years, top-bracket "
+    "taxes, IRA taxed at 24% on withdrawal: bonds in the IRA and stocks in the taxable account end with 2,454,619 "
+    "after tax against 2,316,409 the other way, an advantage of 138,211",
+    round(good) == 2_454_619 and round(bad) == 2_316_409 and good > bad,
     f"{good:,.0f} vs {bad:,.0f}",
 )
 harvest = 50_000 * US_QD_INV
@@ -352,21 +481,27 @@ ok(
 
 # ---------------------------------------------------------------------------------------------
 print("== part 8: allocation, reporting and review")
-v0, flow, v1 = (
-    1_000_000.0,
-    200_000.0,
-    1_330_000.0,
-)  # contribution at mid-year; mid-year value before flow 1.05m
-mid = 1_050_000.0
+v0, flow = POLICY, SAVE  # the Okafors' policy portfolio; the year's saving arrives at mid-year
+mid = v0 * 1.05  # +5.0% in the first half
+v1 = (mid + flow) * 1.064  # +6.4% in the second half
 twr = (mid / v0) * (v1 / (mid + flow)) - 1
 mwr = brentq(lambda rr: v0 * (1 + rr) + flow * (1 + rr) ** 0.5 - v1, -0.5, 1)
 ok(
-    "a year with a 200k mid-year contribution: TWR 11.72% (chain-linked) measures the manager; MWR 11.85% measures "
-    "the client's experience; the client's goal funded ratio is reported beside both; against an assumed 11.0% benchmark the manager added 0.72 points",
-    round(twr * 100, 2) == 11.72
-    and round(mwr * 100, 2) == 11.85
+    "the Okafors' first year: 540,000 grows to 567,000 by mid-year, 50,000 is added, and the year ends at 656,488. "
+    "TWR 11.72% (chain-linked) measures the manager; MWR 11.78% measures the client's experience; against an "
+    "assumed 11.0% benchmark the manager added 0.72 points",
+    close(v1, 656_488.0, 1e-6)
+    and round(twr * 100, 2) == 11.72
+    and round(mwr * 100, 2) == 11.78
     and round((twr - 0.11) * 100, 2) == 0.72,
     f"TWR {twr:.4%}, MWR {mwr:.4%}",
+)
+res1 = v1 + sum(SAVE / 1.035**t for t in range(1, YEARS))
+goals1 = sum(c / 1.035 ** (t - 1) for t, c in EDU) + pv_ret_at62 / 1.035 ** (YEARS - 1)
+ok(
+    "progress against the plan (treating the year's return as real): the funded ratio at 3.5% rises from 1.16 to "
+    "1.20 after the year",
+    round(fr35, 2) == 1.16 and round(res1 / goals1, 2) == 1.20,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -556,19 +691,70 @@ ok(
     and round((heirs_a - heirs_b_sell) / 1e6, 2) == 0.14
     and estate_tax(VD, US_BASIC_EXCL) == 0.0,
 )
-gift_uk, nrb_left = 500_000.0, UK_NRB
-taper = {3: 0.32, 4: 0.24, 5: 0.16, 6: 0.08}
+UK_TAPER_THRESHOLD = 2_000_000.0  # IHTA 1984 s. 8D; IHTM46023 (updated 7 April 2026)
+
+
+def taper_rate(years_before_death):
+    """Rate on a failed potentially exempt transfer above the nil-rate band (GOV.UK, rules on giving gifts)."""
+    for limit, rate in ((3, 0.40), (4, 0.32), (5, 0.24), (6, 0.16), (7, 0.08)):
+        if years_before_death < limit:
+            return rate
+    return 0.0
+
+
+def rnrb(estate, home, allowance=UK_RNRB, transferred=0.0):
+    """Residence nil-rate band: the allowance (plus any transferred) less 1 for every 2 of estate above 2m, capped
+    at the value of the qualifying home passing to direct descendants. `estate` is the net value at death before
+    exemptions and reliefs, excluding lifetime gifts.
+    """
+    adjusted = max(0.0, allowance + transferred - max(0.0, estate - UK_TAPER_THRESHOLD) / 2)
+    return min(home, adjusted)
+
+
 ok(
-    "UK: a 500k gift to a son with death 4.5 years later: the 325k nil-rate band covers the first part; 175k is "
-    "taxed at the 24% taper rate: 42k, against 70k at 40% within 3 years and nothing after 7",
-    close((gift_uk - nrb_left) * taper[4], 42_000.0)
-    and close((gift_uk - nrb_left) * 0.40, 70_000.0),
+    "residence nil-rate band taper (175k allowance, none transferred, a qualifying home worth at least the band): "
+    "175k at an estate of 2.0m, 125k at 2.1m, nothing at 2.35m or above; a home worth 100k caps it at 100k",
+    close(rnrb(2_000_000, 900_000), 175_000.0)
+    and close(rnrb(2_100_000, 900_000), 125_000.0)
+    and close(rnrb(2_350_000, 900_000), 0.0)
+    and close(rnrb(2_400_000, 900_000), 0.0)
+    and close(rnrb(1_900_000, 100_000), 100_000.0),
+)
+# One chronology: Margaret gives 500k to her son (annual exemptions already used) and dies 4.5 years later, leaving a
+# 2.4m estate, including a home worth 900k, to her children. She has no band transferred from a former spouse.
+GIFT, YRS_TO_DEATH, ESTATE, HOME = 500_000.0, 4.5, 2_400_000.0, 900_000.0
+nrb_used_by_gift = min(GIFT, UK_NRB)
+tax_gift = (GIFT - nrb_used_by_gift) * taper_rate(YRS_TO_DEATH)
+nrb_left = UK_NRB - nrb_used_by_gift
+tax_estate = UK_IHT * max(0.0, ESTATE - rnrb(ESTATE, HOME) - nrb_left)
+tax_no_gift = UK_IHT * max(0.0, ESTATE + GIFT - rnrb(ESTATE + GIFT, HOME) - UK_NRB)
+ok(
+    "the gift fails because Margaret dies 4.5 years after making it (the 4 to 5 year band): the 325k nil-rate band "
+    "covers the first part, and 175k is taxed at 24%: 42,000, against 70,000 within 3 years and nothing after 7",
+    taper_rate(4.5) == 0.24
+    and close(tax_gift, 42_000.0)
+    and close((GIFT - UK_NRB) * taper_rate(2.9), 70_000.0)
+    and taper_rate(7.0) == 0.0,
 )
 ok(
-    "Margaret's estate of 2.4m, left to her children with the home: GOV.UK makes an estate below 2m a condition "
-    "of the 175k residence band, so only the 325k nil-rate band applies: tax 830k at 40%; leaving 10% of the net "
-    "estate to charity cuts the rate to 36%",
-    round((2_400_000 - UK_NRB) * UK_IHT / 1e3) == 830 and close(UK_IHT - 0.04, 0.36),
+    "the estate: the gift has consumed the whole nil-rate band, and 2.4m tapers the residence band to zero, so all "
+    "2.4m is taxed at 40%: 960,000 (reusing the 325k band, as the earlier example did, would give 830,000)",
+    close(nrb_left, 0.0)
+    and close(tax_estate, 960_000.0)
+    and close(UK_IHT * (ESTATE - UK_NRB), 830_000.0),
+)
+ok(
+    "total 1,002,000 against 1,030,000 had she kept the 500k (estate 2.9m): the gift saved exactly its taper relief, "
+    "16% of 175k = 28,000, because it only moved the nil-rate band forward in time",
+    close(tax_gift + tax_estate, 1_002_000.0)
+    and close(tax_no_gift, 1_030_000.0)
+    and close(tax_no_gift - tax_gift - tax_estate, (0.40 - 0.24) * (GIFT - UK_NRB)),
+)
+ok(
+    "had the estate at death been 2.1m instead, 125k of residence band would remain and the tax would be 790,000; "
+    "leaving 10% of the net estate to charity lowers the rate to 36%",
+    close(UK_IHT * (2_100_000 - rnrb(2_100_000, HOME) - nrb_left), 790_000.0)
+    and close(UK_IHT - 0.04, 0.36),
 )
 pv_payments = 50_000 * annuity(0.05, 20)
 ok(

@@ -34,6 +34,8 @@ Related existing entries: `def:inside-information`, `rule:spoofing-securities-ma
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#completion-batch-20-october-2026).
 
+Final audit correction pass (2026-10-20): family accounts under Standards III(B) and VI(B): personal and beneficially owned accounts separated from family client accounts, with contrasting cases. See [record](../source-review-records.md#final-audit-correction-pass-20-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice

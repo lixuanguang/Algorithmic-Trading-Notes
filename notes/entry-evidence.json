@@ -2470,5 +2470,217 @@
   "meth:alternatives-allocation-approaches": {
     "source": "compendium/portfolio-construction-risk/alternatives-allocation.tex",
     "review": "Verification: s7-ang pp. 438-442; demaria-private-markets-2021 pp. 101, 175-180, 186; depth-pe-luxenberg-2022 pp. 3, 6, 8-9, 20; locators in the entry text. Checked by notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py: parts 1, 4-5 (pacing: steady-state NAV 4.348, commitment 23.0, exposure 152.6; denominator effect 11.98%; liquidity coverage 1.09). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "def:ethics-trust-professions": {
+    "source": "compendium/professional-ethics/ethics-trust-framework.tex",
+    "review": "Verification: standards-practice-handbook-2024 p. xiii; gennaioli-shleifer-vishny-money-doctors-2012 NBER WP 18174, pp. 1-5; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:ethical-decision-framework": {
+    "source": "compendium/professional-ethics/ethics-trust-framework.tex",
+    "review": "Verification: standards-practice-handbook-2024 p. xvii; ethical-decision-framework-2014 p. 1; sec-adviser-standard-of-conduct-2019 84 FR 33669, at 33672, 33676; locators in the entry text. Worked material: original case worked through identify, consider, act and reflect in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "def:professional-conduct-programme": {
+    "source": "compendium/professional-ethics/code-standards-enforcement.tex",
+    "review": "Verification: standards-practice-handbook-2024 p. ix; conduct-rules-of-procedure-2022 Rules 1.1-1.2; locators in the entry text. Worked material: process described step by step in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "def:code-of-ethics-standards": {
+    "source": "compendium/professional-ethics/code-standards-enforcement.tex",
+    "review": "Verification: standards-practice-handbook-2024 p. xviii; locators in the entry text. Worked material: components and sub-sections tabulated in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "rule:standard-professionalism": {
+    "source": "compendium/professional-ethics/standards-professionalism-markets.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 1-6; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:preventing-professionalism-violations": {
+    "source": "compendium/professional-ethics/standards-professionalism-markets.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 6, 14-15, 25-26, 37, 43; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "rule:standard-market-integrity": {
+    "source": "compendium/professional-ethics/standards-professionalism-markets.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 47-52; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:preventing-market-integrity-violations": {
+    "source": "compendium/professional-ethics/standards-professionalism-markets.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 52-54; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "rule:standard-duties-to-clients": {
+    "source": "compendium/professional-ethics/standards-clients-employers.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 65-70; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:preventing-client-duty-violations": {
+    "source": "compendium/professional-ethics/standards-clients-employers.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 70-71, 78-80, 90, 95-96, 102-103; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "rule:standard-duties-to-employers": {
+    "source": "compendium/professional-ethics/standards-clients-employers.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 107-111; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:preventing-employer-duty-violations": {
+    "source": "compendium/professional-ethics/standards-clients-employers.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 111, 117-118, 122-125; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "rule:standard-investment-analysis": {
+    "source": "compendium/professional-ethics/standards-analysis-conflicts-members.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 129-134; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:preventing-analysis-violations": {
+    "source": "compendium/professional-ethics/standards-analysis-conflicts-members.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 133-134, 146, 154; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "rule:standard-conflicts-of-interest": {
+    "source": "compendium/professional-ethics/standards-analysis-conflicts-members.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 157-160; sec-adviser-standard-of-conduct-2019 84 FR 33676; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:preventing-conflict-violations": {
+    "source": "compendium/professional-ethics/standards-analysis-conflicts-members.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 157-160, 165-167, 169; locators in the entry text. Worked material: procedures by sub-standard with an original firm example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "rule:standard-member-responsibilities": {
+    "source": "compendium/professional-ethics/standards-analysis-conflicts-members.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 173-175; locators in the entry text. Worked material: original conforming and violating cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:preventing-member-violations": {
+    "source": "compendium/professional-ethics/standards-analysis-conflicts-members.tex",
+    "review": "Verification: standards-practice-handbook-2024 p. 183; locators in the entry text. Worked material: procedures by sub-standard with an original example in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:evaluating-conduct-cases": {
+    "source": "compendium/professional-ethics/conduct-cases.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 36, 110-111, 120; locators in the entry text. Worked material: three original multi-standard cases with reasoned conclusions in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "def:asset-manager-code": {
+    "source": "compendium/professional-ethics/asset-manager-code.tex",
+    "review": "Verification: asset-manager-code-2010 pp. 1-2; standards-practice-handbook-2024 p. xi; locators in the entry text. Worked material: principles and provisions tabulated in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:asset-manager-code-compliance": {
+    "source": "compendium/professional-ethics/asset-manager-code.tex",
+    "review": "Verification: asset-manager-code-2010 pp. 9-22; locators in the entry text. Worked material: original hedge-fund manager reviewed provision by provision in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:standards-in-manager-selection": {
+    "source": "compendium/professional-ethics/conduct-cases.tex",
+    "review": "Verification: standards-practice-handbook-2024 pp. 13, 132-133; locators in the entry text. Worked material: original endowment manager-selection case in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:individual-wealth-capital": {
+    "source": "compendium/private-wealth-management/clients-industry.tex",
+    "review": "Verification: fed-scf-2022 pp. 11-13, 20; ibbotson-lifetime-financial-advice-2007 pp. 13-16, 74-76; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 1 (the Okafors' human capital, financial capital and economic net worth). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:private-client-tax-inflation": {
+    "source": "compendium/private-wealth-management/clients-industry.tex",
+    "review": "Verification: irs-rev-proc-2025-32 secs. 4.01, 4.03; us-internal-revenue-code-26 sec. 1411; govuk-income-tax-rates-2026 tables; govuk-cgt-rates-2026 rates page; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 2 (after-tax and real returns, US 2026 and UK 2026-27). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:private-client-ips": {
+    "source": "compendium/private-wealth-management/clients-industry.tex",
+    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 13-16, 74-79; esma-suitability-guidelines-2022 paras. 12, 33-34, 44; standards-practice-handbook-2024 pp. 87-90; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 3 (the Okafors' required return and IPS). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:wealth-management-industry": {
+    "source": "compendium/private-wealth-management/clients-industry.tex",
+    "review": "Verification: gennaioli-shleifer-vishny-money-doctors-2012 pp. 1-5; sec-adviser-standard-of-conduct-2019 84 FR 33672, 33676; sec-reg-bi-rule para. (a); eu-2014-65-mifid2 Art. 24(4), (7)-(9); locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 4 (fee models over 20 years on 2m). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:advising-families": {
+    "source": "compendium/private-wealth-management/clients-industry.tex",
+    "review": "Verification: esma-suitability-guidelines-2022 paras. 11-16, 44, 53; gennaioli-shleifer-vishny-money-doctors-2012 pp. 3-5; locators in the entry text. Worked material: original family case and joint-decision framework in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "meth:goals-based-financial-plan": {
+    "source": "compendium/private-wealth-management/wealth-planning.tex",
+    "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 6, sec. 4, pp. 268-283; ibbotson-lifetime-financial-advice-2007 pp. 74-75; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 5 (goals, funded ratio and liquidity tiers). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:lifetime-exposures": {
+    "source": "compendium/private-wealth-management/wealth-planning.tex",
+    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 28-31, 41-44, 74-79; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 6 (mortality, disability and longevity; illustrative Gompertz mortality). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:tax-in-planning": {
+    "source": "compendium/private-wealth-management/wealth-planning.tex",
+    "review": "Verification: us-internal-revenue-code-26 sec. 1091(a); sec. 1014(a); govuk-isa-2026 overview; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 7 (asset location and loss harvesting, US 2026). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:private-client-allocation-review": {
+    "source": "compendium/private-wealth-management/wealth-planning.tex",
+    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 13-18; asset-manager-code-2010 pp. 21-22; standards-practice-handbook-2024 pp. 87-90; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 8 (allocation, reporting and review). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:retirement-across-jurisdictions": {
+    "source": "compendium/private-wealth-management/wealth-planning.tex",
+    "review": "Verification: irs-notice-2025-67 secs. 402(g), 414(v), 219(b); us-internal-revenue-code-26 sec. 401(a)(9)(C)(v); govuk-pension-tax-2026 annual allowance; lump sum allowance; uk-us-double-taxation-convention-2001 Arts. 1(4)-(5), 4(4), 18; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 9 (retirement saving across jurisdictions). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:human-capital-risks": {
+    "source": "compendium/private-wealth-management/wealth-preservation.tex",
+    "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 13-16, 28-31, 75-76; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 10 (protecting human capital). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:purchasing-power-fx": {
+    "source": "compendium/private-wealth-management/wealth-preservation.tex",
+    "review": "Verification: treasurydirect-tips web page; campbell-viceira-currency-hedging-2007 NBER WP 13088, pp. 1-3; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 10 (purchasing power and exchange rates). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:residency-citizenship": {
+    "source": "compendium/private-wealth-management/wealth-transfer.tex",
+    "review": "Verification: uk-us-double-taxation-convention-2001 Art. 1(4); us-internal-revenue-code-26 sec. 7701(b)(3); sec. 877(a)(2); sec. 877A(a); irs-rev-proc-2025-32 sec. 4.37; sec. 4.38; hmrc-rdr3-2026 secs. 2-4, Tables A and B; govuk-nondom-reform-2024 policy summary; hmrc-ihtm-2026 IHTM47020; iras-tax-residency-2026 residency rules; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 11 (residence and citizenship tests). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:complex-client-situations": {
+    "source": "compendium/private-wealth-management/wealth-transfer.tex",
+    "review": "Verification: irs-rev-proc-2025-32 sec. 4.42(2); us-internal-revenue-code-26 sec. 1202(a)(1), (a)(5), (b)(1), (b)(4); sec-rule-10b5-1 para. (c)(1)(ii)(B); locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 12 (founders and executives). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:wealth-transfer-strategies": {
+    "source": "compendium/private-wealth-management/wealth-transfer.tex",
+    "review": "Verification: irs-rev-proc-2025-32 secs. 3.14, 4.42; us-internal-revenue-code-26 sec. 2001(c); secs. 1014(a), 1015(a); sec. 4942(e); sec. 664(d); govuk-iht-2026 overview; gifts; govuk-iht-thresholds-2026 thresholds table; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 13 (gifts, bequests and philanthropy). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:institutional-investor-characteristics": {
+    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "review": "Verification: s7-ang chap. 1, pp. 4-28; p. 24; santiago-principles-2008 GAPP 1, 4, 6, 18-19, 22; us-internal-revenue-code-26 sec. 4942(e); locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 2 (spending rules, a foundation's payout, bank and insurer balance sheets). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:db-pension-risk": {
+    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "review": "Verification: s7-ang chap. 1, pp. 16-22; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 1 (Harlow Industrial's DB plan: funded status, surplus risk and the sponsor). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:institutional-ips-portfolios": {
+    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "review": "Verification: nbim-gpfg-2026 benchmark index; risk management; about the fund; lerner-schoar-wang-endowments-2008 NBER WP 14341, abstract, pp. 1-2; s7-ang pp. 26-27; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: parts 1-3 (DB plan, spending rules, foundation payout, bank and insurer balance sheets, GPFG rules). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:swf-risk-case": {
+    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "review": "Verification: s7-ang chap. 1, pp. 7-12; chap. 3, pp. 71-73; nbim-gpfg-2026 climate action plan; risk management; santiago-principles-2008 GAPP 22; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 3 (the GPFG rules and the hypothetical Vardø Fund's risks). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:endowment-liquidity-allocation": {
+    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "review": "Verification: s7-ang chap. 13, pp. 410-412; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 4 (Elmsworth endowment: liquidity stress, denominator effect, commitment pacing). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:institutional-esg-integration": {
+    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "review": "Verification: nbim-gpfg-2026 climate action plan; s7-ang chap. 3, pp. 71-73, 112; sustainable-investment-review-2022 Tables 1-2, p. 7; santiago-principles-2008 GAPP 19.1; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 5 (ESG constraints in a long-term portfolio). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:financial-data-science-uses": {
+    "source": "compendium/ml-alternative-data/data-science-workflow.tex",
+    "review": "Verification: fsb-ai-ml-2017 pp. 4-6; locators in the entry text. Worked material: original asset-manager fintech case in the entry; no calculation. Written 2026-10-20 (completion batch). Stability: draft. No numerical checks; human review outstanding."
+  },
+  "def:learning-methods-overfitting": {
+    "source": "compendium/ml-alternative-data/machine-learning-methods.tex",
+    "review": "Verification: s6-isl pp. 26-27; pp. 403-407; pp. 31-36; fsb-ai-ml-2017 pp. 5-6; locators in the entry text. Checked by notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 1 (synthetic overfitting, degrees 1-12). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:supervised-algorithm-selection": {
+    "source": "compendium/ml-alternative-data/machine-learning-methods.tex",
+    "review": "Verification: s6-isl pp. 25-39, 237-250, 327-383; wide-gentzkow-kelly-taddy NBER WP 23276, pp. 12-15; locators in the entry text. Checked by notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 2 (synthetic lasso, ridge, trees, forest, KNN and SVM comparisons). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:unsupervised-algorithm-selection": {
+    "source": "compendium/ml-alternative-data/machine-learning-methods.tex",
+    "review": "Verification: s6-isl pp. 498-531; fsb-ai-ml-2017 p. 5; locators in the entry text. Checked by notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 3 (synthetic PCA, k-means and hierarchical clustering). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:data-analysis-project": {
+    "source": "compendium/ml-alternative-data/data-science-workflow.tex",
+    "review": "Verification: wide-gentzkow-kelly-taddy pp. 2-8; alpha-afml pp. 23-28; locators in the entry text. Checked by notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 4 (synthetic look-ahead, fitted transforms and outliers). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:text-feature-engineering": {
+    "source": "compendium/ml-alternative-data/data-science-workflow.tex",
+    "review": "Verification: wide-gentzkow-kelly-taddy NBER WP 23276, pp. 5-8; p. 31; locators in the entry text. Checked by notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 5 (synthetic corpus: training vocabulary, tf-idf, chi-square, logistic). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:ml-model-training-evaluation": {
+    "source": "compendium/ml-alternative-data/data-science-workflow.tex",
+    "review": "Verification: s6-isl pp. 198-206; pp. 150-151; locators in the entry text. Checked by notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 6 (synthetic default classifier: validation tuning, confusion matrix, ROC AUC, threshold). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:backtest-design-evaluation": {
+    "source": "compendium/research-engineering-validation/backtest-evaluation.tex",
+    "review": "Verification: alpha-afml pp. 151-154; pp. 161-166; locators in the entry text. Checked by notes/artefacts/backtest-inference/backtest-design-checks.py: parts 1-5 (synthetic universe without predictability: survivorship, look-ahead, costs and turnover, drawdown, best-of-24 against walk-forward). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:distributed-ledger-applications": {
+    "source": "compendium/digital-assets-prediction-markets/digital-asset-investing.tex",
+    "review": "Verification: bis-aer-2018-cryptocurrencies ch. V, \"Distributed ledger technology in cryptocurrencies\"; s6-bitcoin secs. 3, 7-8, pp. 2-5; crypto-narayanan draft of 9 February 2016, p. 62; pp. 285-287; ethereum-pos-2026 \"Proof-of-stake\" and \"The Merge\" pages; locators in the entry text. Checked by notes/artefacts/digital-assets/digital-asset-checks.py: parts 1-4 (SHA-256 toy chain and Merkle branch, proof-of-work, Nakamoto attacker table and exact count, issuance schedule, PoS timing). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:digital-asset-investment-analysis": {
+    "source": "compendium/digital-assets-prediction-markets/digital-asset-investing.tex",
+    "review": "Verification: bis-aer-2018-cryptocurrencies ch. V, \"A new petal in the money flower?\" and \"Assessing the economic limitations\"; crypto-narayanan draft of 9 February 2016, secs. 4.2-4.4, pp. 103-118; sec-spot-bitcoin-etp-order-2024 89 FR 3008, 3009-3013; roadmap-crypto-risks-returns NBER WP 24877, August 2018, pp. 1-2 and Table 1, pp. 6-7; locators in the entry text. Checked by notes/artefacts/digital-assets/digital-asset-checks.py: parts 5-7 (Liu-Tsyvinski consistency checks, hypothetical allocation risk shares, hypothetical multisig custody). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   }
 }

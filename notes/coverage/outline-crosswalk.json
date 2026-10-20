@@ -5920,9 +5920,9 @@
    "objectives": [
     "objective:describe-financial-data-science"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:financial-data-science-uses describes big data, AI and ML (FSB pp. 3-6) and their uses in customer services, operations, trading and portfolio management, and compliance (pp. 11-23), with an original asset-manager fintech case.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m012:b01",
@@ -10677,9 +10677,9 @@
    "objectives": [
     "objective:describe-distributed-ledgers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:distributed-ledger-applications describes ledger mechanics (hash-chained blocks, Merkle trees, signatures, proof-of-work and proof-of-stake) and financial applications: cryptocurrencies, smart contracts, tokenisation, stablecoins, DeFi, trade finance and settlement.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m086:b02",
@@ -10698,9 +10698,9 @@
    "objectives": [
     "objective:analyse-digital-asset-investing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:digital-asset-investment-analysis explains features (no issuer liability, protocol-fixed supply, no cash flows) and contrasts them with currencies, commodities and stocks (BIS 2018; Liu and Tsyvinski's factor exposures).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m086:b03",
@@ -10718,9 +10718,9 @@
    "objectives": [
     "objective:analyse-digital-asset-investing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:digital-asset-investment-analysis describes direct holdings with hot, cold and multisignature custody or exchange custody, spot ETPs (SEC order of 10 January 2024), futures and futures funds, perpetuals, private funds and related equities.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m086:b04",
@@ -10738,9 +10738,9 @@
    "objectives": [
     "objective:analyse-digital-asset-investing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:digital-asset-investment-analysis analyses risk, return and diversification: Liu and Tsyvinski's 2011-2018 statistics and factor exposures, checked for consistency, and a hypothetical allocation's risk contributions; it warns that short-sample correlations are weak evidence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m087:b01",
@@ -11569,9 +11569,9 @@
    "objectives": [
     "objective:explain-ethics-and-trust"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:ethics-trust-professions explains ethics as principles guiding conduct that affects others and the balance of self-interest against consequences (Handbook p. xiii).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m093:b02",
@@ -11589,9 +11589,9 @@
    "objectives": [
     "objective:explain-ethics-and-trust"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:ethics-trust-professions describes how a code of ethics defines a profession's obligations and signals them to the public.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m093:b03",
@@ -11609,9 +11609,9 @@
    "objectives": [
     "objective:explain-ethics-and-trust"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:ethics-trust-professions describes how professions build trust when members with specialised knowledge clients cannot check are bound by a published, enforced code, with Gennaioli, Shleifer and Vishny's model of trust in delegated management.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m093:b04",
@@ -11629,9 +11629,9 @@
    "objectives": [
     "objective:explain-ethics-and-trust"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:ethics-trust-professions describes why investment management needs standards above the law: information asymmetry, delegated control of others' assets and market integrity.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m093:b05",
@@ -11649,9 +11649,9 @@
    "objectives": [
     "objective:explain-ethics-and-trust"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:ethics-trust-professions explains professionalism in investment management: competence, client focus, integrity and commitment to the profession's standards.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m093:b06",
@@ -11669,9 +11669,9 @@
    "objectives": [
     "objective:apply-ethical-decision-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:ethical-decision-framework identifies challenges to ethical behaviour: situational influences, conformity, obedience to authority, short-term incentives and overconfidence (Handbook p. xvii; framework card).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m093:b07",
@@ -11690,9 +11690,9 @@
    "objectives": [
     "objective:apply-ethical-decision-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:ethical-decision-framework compares and contrasts ethical and legal standards: law as a minimum that can lag practice, with the SEC's 2019 interpretation of advisers' duties as the legal comparison.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m093:b08",
@@ -11710,9 +11710,9 @@
    "objectives": [
     "objective:apply-ethical-decision-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:ethical-decision-framework describes the identify-consider-act-reflect framework and applies it to an original case.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m094:b01",
@@ -11730,9 +11730,9 @@
    "objectives": [
     "objective:explain-conduct-programme-enforcement"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:professional-conduct-programme describes the structure of the conduct programme and the enforcement process (Rules of Procedure 2022).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m094:b02",
@@ -11750,9 +11750,9 @@
    "objectives": [
     "objective:explain-code-and-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:code-of-ethics-standards identifies the six components of the Code and the seven Standards with their sub-sections.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m094:b03",
@@ -11770,9 +11770,9 @@
    "objectives": [
     "objective:explain-code-and-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:code-of-ethics-standards explains the responsibilities each Standard and sub-section imposes; the Standard-specific entries give the detail.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m095:b01",
@@ -11790,9 +11790,9 @@
    "objectives": [
     "objective:apply-standard-professionalism"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-professionalism applies I(A) knowledge of the law, I(B) independence and objectivity, I(C) misrepresentation, I(D) misconduct and I(E) competence to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m095:b02",
@@ -11810,9 +11810,9 @@
    "objectives": [
     "objective:prevent-violations-professionalism"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-professionalism-violations recommends practices and procedures by sub-standard (I(A) knowledge of the law, I(B) independence and objectivity, I(C) misrepresentation, I(D) misconduct and I(E) competence).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m095:b03",
@@ -11830,9 +11830,9 @@
    "objectives": [
     "objective:apply-standard-professionalism"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-professionalism labels each original case as conforming or violating, with reasons, across I(A) knowledge of the law, I(B) independence and objectivity, I(C) misrepresentation, I(D) misconduct and I(E) competence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m096:b01",
@@ -11850,9 +11850,9 @@
    "objectives": [
     "objective:apply-standard-market-integrity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-market-integrity applies II(A) material nonpublic information and the mosaic theory and II(B) market manipulation to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m096:b02",
@@ -11870,9 +11870,9 @@
    "objectives": [
     "objective:prevent-violations-market-integrity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-market-integrity-violations recommends practices and procedures by sub-standard (II(A) material nonpublic information and the mosaic theory and II(B) market manipulation).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m096:b03",
@@ -11890,9 +11890,9 @@
    "objectives": [
     "objective:apply-standard-market-integrity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-market-integrity labels each original case as conforming or violating, with reasons, across II(A) material nonpublic information and the mosaic theory and II(B) market manipulation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m097:b01",
@@ -11910,9 +11910,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m097:b02",
@@ -11930,9 +11930,9 @@
    "objectives": [
     "objective:prevent-violations-duties-to-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m097:b03",
@@ -11950,9 +11950,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients labels each original case as conforming or violating, with reasons, across III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m098:b01",
@@ -11970,9 +11970,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-employers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-employers applies IV(A) loyalty, IV(B) additional compensation and IV(C) responsibilities of supervisors to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m098:b02",
@@ -11990,9 +11990,9 @@
    "objectives": [
     "objective:prevent-violations-duties-to-employers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-employer-duty-violations recommends practices and procedures by sub-standard (IV(A) loyalty, IV(B) additional compensation and IV(C) responsibilities of supervisors).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m098:b03",
@@ -12010,9 +12010,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-employers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-employers labels each original case as conforming or violating, with reasons, across IV(A) loyalty, IV(B) additional compensation and IV(C) responsibilities of supervisors.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m099:b01",
@@ -12030,9 +12030,9 @@
    "objectives": [
     "objective:apply-standard-investment-analysis-recommendations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-investment-analysis applies V(A) diligence and reasonable basis, V(B) communication with clients and V(C) record retention to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m099:b02",
@@ -12050,9 +12050,9 @@
    "objectives": [
     "objective:prevent-violations-investment-analysis-recommendations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-analysis-violations recommends practices and procedures by sub-standard (V(A) diligence and reasonable basis, V(B) communication with clients and V(C) record retention).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m099:b03",
@@ -12070,9 +12070,9 @@
    "objectives": [
     "objective:apply-standard-investment-analysis-recommendations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-investment-analysis labels each original case as conforming or violating, with reasons, across V(A) diligence and reasonable basis, V(B) communication with clients and V(C) record retention.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m100:b01",
@@ -12090,9 +12090,9 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m100:b02",
@@ -12110,9 +12110,9 @@
    "objectives": [
     "objective:prevent-violations-conflicts-of-interest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m100:b03",
@@ -12130,9 +12130,9 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest labels each original case as conforming or violating, with reasons, across VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m101:b01",
@@ -12150,9 +12150,9 @@
    "objectives": [
     "objective:apply-standard-member-responsibilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-member-responsibilities applies VII(A) conduct in programmes and VII(B) references to membership and the designation to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m101:b02",
@@ -12170,9 +12170,9 @@
    "objectives": [
     "objective:prevent-violations-member-responsibilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-member-violations recommends practices and procedures by sub-standard (VII(A) conduct in programmes and VII(B) references to membership and the designation).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m102:b01",
@@ -12190,9 +12190,9 @@
    "objectives": [
     "objective:evaluate-conduct-against-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:evaluating-conduct-cases evaluates practices, policies and conduct in three original multi-standard cases with a stated sequence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m102:b02",
@@ -12210,9 +12210,9 @@
    "objectives": [
     "objective:evaluate-conduct-against-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:evaluating-conduct-cases explains for each of three original cases which Standards are or are not violated and why.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m001:b01",
@@ -12811,9 +12811,9 @@
    "objectives": [
     "objective:classify-learning-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:learning-methods-overfitting describes supervised, unsupervised and deep learning (ISLR pp. 26-27, 403-407; FSB pp. 5-6).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m006:b02",
@@ -12832,9 +12832,9 @@
    "objectives": [
     "objective:classify-learning-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:learning-methods-overfitting describes overfitting and the bias-variance decomposition and identifies remedies (validation, cross-validation, penalties, pruning, ensembles, early stopping, purged CV), with a synthetic demonstration.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m006:b03",
@@ -12853,9 +12853,9 @@
    "objectives": [
     "objective:select-supervised-algorithms"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:supervised-algorithm-selection describes penalised regression, SVM, KNN, CART, ensembles and random forests and determines the problems each suits, with synthetic comparisons on untouched test sets.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m006:b04",
@@ -12874,9 +12874,9 @@
    "objectives": [
     "objective:select-unsupervised-algorithms"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:unsupervised-algorithm-selection describes PCA, k-means and hierarchical clustering and determines the problems each suits, with synthetic demonstrations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m007:b01",
@@ -12895,9 +12895,9 @@
    "objectives": [
     "objective:run-data-analysis-project"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:data-analysis-project identifies and explains the steps from conceptualisation to deployment and monitoring.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m007:b02",
@@ -12915,9 +12915,9 @@
    "objectives": [
     "objective:run-data-analysis-project"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:data-analysis-project describes objectives, steps and examples of cleansing, transformation, outlier treatment and scaling, with training-only fitted transforms.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m007:b03",
@@ -12935,9 +12935,9 @@
    "objectives": [
     "objective:train-and-evaluate-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:ml-model-training-evaluation evaluates fit with the confusion matrix, precision, recall, accuracy, F1, ROC and AUC, and RMSE, on a synthetic classifier.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m007:b04",
@@ -12955,9 +12955,9 @@
    "objectives": [
     "objective:run-data-analysis-project"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:data-analysis-project describes objectives, methods and examples of exploration for structured and text data.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m007:b05",
@@ -12975,9 +12975,9 @@
    "objectives": [
     "objective:engineer-text-features"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:text-feature-engineering describes extraction (bag of words, n-grams, tf-idf), selection (frequency, chi-square, mutual information) and engineering of text features.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m007:b06",
@@ -12995,9 +12995,9 @@
    "objectives": [
     "objective:train-and-evaluate-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:ml-model-training-evaluation describes objectives, steps and techniques of training: splits, tuning on validation, refitting, class imbalance and one evaluation on an untouched test set.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m007:b07",
@@ -13016,9 +13016,9 @@
     "objective:run-data-analysis-project",
     "objective:engineer-text-features"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:data-analysis-project covers preparing, wrangling and exploring text (document unit, cleaning, tokenising, word frequencies), and meth:text-feature-engineering covers time-stamping and aligning text features with forecast horizons.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m008:b01",
@@ -19480,9 +19480,9 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation describes the objective of a backtest: estimating a fully specified rule's past performance with the information and constraints available, to test a prior hypothesis.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m042:b02",
@@ -19501,9 +19501,9 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation describes the steps and contrasts walk-forward (expanding and rolling), cross-validated and simulation procedures (AFML pp. 161-166).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m042:b03",
@@ -19521,9 +19521,9 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation interprets return, volatility, Sharpe and Sortino ratios, drawdown, hit rate, turnover, cost drag and trial counts, and the cumulative, underwater and rolling charts, linking meth:backtest-evaluation-diagnostics.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m042:b04",
@@ -19541,9 +19541,9 @@
    "objectives": [
     "objective:design-strategy-backtest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:backtest-design-evaluation identifies survivorship, look-ahead, data snooping, cost, outlier, storytelling and shorting problems (AFML pp. 151-152), each shown on a synthetic universe.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m042:b05",
@@ -19643,9 +19643,9 @@
    "objectives": [
     "objective:explain-conduct-programme-enforcement"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:professional-conduct-programme describes the conduct programme and the disciplinary review process: investigation, proposed sanction, hearing panels, the preponderance standard and sanctions (Rules of Procedure 2022).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m043:b02",
@@ -19663,9 +19663,9 @@
    "objectives": [
     "objective:explain-code-and-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:code-of-ethics-standards explains the responsibilities required by the Code and each Standard's sub-sections.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m044:b01",
@@ -19683,9 +19683,9 @@
    "objectives": [
     "objective:apply-standard-professionalism"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-professionalism applies I(A) knowledge of the law, I(B) independence and objectivity, I(C) misrepresentation, I(D) misconduct and I(E) competence to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m044:b02",
@@ -19703,9 +19703,9 @@
    "objectives": [
     "objective:prevent-violations-professionalism"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-professionalism-violations recommends practices and procedures by sub-standard (I(A) knowledge of the law, I(B) independence and objectivity, I(C) misrepresentation, I(D) misconduct and I(E) competence).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m045:b01",
@@ -19723,9 +19723,9 @@
    "objectives": [
     "objective:apply-standard-market-integrity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-market-integrity applies II(A) material nonpublic information and the mosaic theory and II(B) market manipulation to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m045:b02",
@@ -19743,9 +19743,9 @@
    "objectives": [
     "objective:prevent-violations-market-integrity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-market-integrity-violations recommends practices and procedures by sub-standard (II(A) material nonpublic information and the mosaic theory and II(B) market manipulation).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m046:b01",
@@ -19763,9 +19763,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m046:b02",
@@ -19783,9 +19783,9 @@
    "objectives": [
     "objective:prevent-violations-duties-to-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m047:b01",
@@ -19803,9 +19803,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-employers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-employers applies IV(A) loyalty, IV(B) additional compensation and IV(C) responsibilities of supervisors to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m047:b02",
@@ -19823,9 +19823,9 @@
    "objectives": [
     "objective:prevent-violations-duties-to-employers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-employer-duty-violations recommends practices and procedures by sub-standard (IV(A) loyalty, IV(B) additional compensation and IV(C) responsibilities of supervisors).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m048:b01",
@@ -19843,9 +19843,9 @@
    "objectives": [
     "objective:apply-standard-investment-analysis-recommendations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-investment-analysis applies V(A) diligence and reasonable basis, V(B) communication with clients and V(C) record retention to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m048:b02",
@@ -19863,9 +19863,9 @@
    "objectives": [
     "objective:prevent-violations-investment-analysis-recommendations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-analysis-violations recommends practices and procedures by sub-standard (V(A) diligence and reasonable basis, V(B) communication with clients and V(C) record retention).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m049:b01",
@@ -19883,9 +19883,9 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m049:b02",
@@ -19903,9 +19903,9 @@
    "objectives": [
     "objective:prevent-violations-conflicts-of-interest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m050:b01",
@@ -19923,9 +19923,9 @@
    "objectives": [
     "objective:apply-standard-member-responsibilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-member-responsibilities applies VII(A) conduct in programmes and VII(B) references to membership and the designation to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m050:b02",
@@ -19943,9 +19943,9 @@
    "objectives": [
     "objective:prevent-violations-member-responsibilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-member-violations recommends practices and procedures by sub-standard (VII(A) conduct in programmes and VII(B) references to membership and the designation).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m051:b01",
@@ -19963,9 +19963,9 @@
    "objectives": [
     "objective:evaluate-conduct-against-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:evaluating-conduct-cases evaluates practices, policies and conduct in three original multi-standard cases with a stated sequence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m051:b02",
@@ -19983,9 +19983,9 @@
    "objectives": [
     "objective:evaluate-conduct-against-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:evaluating-conduct-cases explains for each of three original cases which Standards are or are not violated and why.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m001:b01",
@@ -21585,9 +21585,9 @@
    "objectives": [
     "objective:analyse-individual-wealth-capital"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:individual-wealth-capital discusses types of wealth, its creation and its distribution (Survey of Consumer Finances 2022).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m009:b02",
@@ -21607,9 +21607,9 @@
    "objectives": [
     "objective:analyse-individual-wealth-capital"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:individual-wealth-capital evaluates how human capital, financial capital and economic net worth change over life and influence decisions, with the hypothetical Okafors.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m009:b03",
@@ -21629,9 +21629,9 @@
    "objectives": [
     "objective:formulate-private-client-ips"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips justifies return, risk, objectives and constraints from human and financial capital for the hypothetical clients.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m009:b04",
@@ -21651,9 +21651,9 @@
    "objectives": [
     "objective:assess-private-client-tax-inflation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-tax-inflation evaluates income, gains, wealth and transfer taxes, accrual and deferral, and inflation, with dated US 2026 and UK 2026-27 rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m009:b05",
@@ -21674,9 +21674,9 @@
    "objectives": [
     "objective:formulate-private-client-ips"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-ips discusses private against institutional clients and formulates a private-client IPS.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b01",
@@ -21696,9 +21696,9 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses common characteristics: large pools governed for others, long horizons, governance, regulation and external managers (Ang chap. 1).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b02",
@@ -21718,9 +21718,9 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses investment policy: mission, return and risk objectives, constraints and the governance of policy.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b03",
@@ -21740,9 +21740,9 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics discusses stakeholders, liabilities, horizons and liquidity needs by investor type: DB plans, SWFs, endowments, foundations, banks and insurers.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b04",
@@ -21762,9 +21762,9 @@
    "objectives": [
     "objective:characterise-institutional-investors"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:institutional-investor-characteristics describes legal, regulatory and tax constraints by type, including the Santiago Principles and the US foundation payout rule (26 USC 4942).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b05",
@@ -21784,9 +21784,9 @@
    "objectives": [
     "objective:evaluate-pension-risk"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:db-pension-risk evaluates funded status, sponsor strength, correlation between sponsor and plan assets, plan design and workforce characteristics, with a hypothetical sponsor.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b06",
@@ -21806,9 +21806,9 @@
    "objectives": [
     "objective:evaluate-institutional-portfolios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates institutional IPSs against mission, liabilities and constraints.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b07",
@@ -21828,9 +21828,9 @@
    "objectives": [
     "objective:evaluate-institutional-portfolios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios evaluates DB, SWF, endowment and foundation portfolios (NBIM's GPFG pages; Lerner, Schoar and Wang).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m010:b08",
@@ -21850,9 +21850,9 @@
    "objectives": [
     "objective:evaluate-institutional-portfolios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-ips-portfolios describes bank and insurer balance-sheet management (duration gap, regulatory liquidity and capital consumption), cross-referencing the existing bank and insurer entries.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m011:b01",
@@ -22094,9 +22094,9 @@
    "objectives": [
     "objective:analyse-institutional-risk-case"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:swf-risk-case discusses the financial risks of a sovereign fund's strategy: market, currency, liquidity, concentration and spending-rule risks.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m012:b02",
@@ -22116,9 +22116,9 @@
    "objectives": [
     "objective:analyse-institutional-risk-case"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:swf-risk-case discusses environmental and social risks, including climate transition and physical risks (NBIM climate plan; Ang chap. 3).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m012:b03",
@@ -22139,9 +22139,9 @@
    "objectives": [
     "objective:analyse-institutional-risk-case"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:swf-risk-case analyses and evaluates financial and non-financial exposures for the hypothetical Vardø Fund.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m012:b04",
@@ -22161,9 +22161,9 @@
    "objectives": [
     "objective:analyse-institutional-risk-case"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:swf-risk-case discusses managing the risks of long-term direct investments: governance rights, co-investment, valuation and exit.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m012:b05",
@@ -22184,9 +22184,9 @@
    "objectives": [
     "objective:analyse-institutional-risk-case"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:swf-risk-case evaluates the fund's enterprise risk management against GAPP 22 and recommends improvements.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m013:b01",
@@ -23577,9 +23577,9 @@
    "objectives": [
     "objective:explain-conduct-programme-enforcement"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:professional-conduct-programme describes the conduct programme and the disciplinary review process: investigation, proposed sanction, hearing panels, the preponderance standard and sanctions (Rules of Procedure 2022).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m019:b02",
@@ -23599,9 +23599,9 @@
    "objectives": [
     "objective:explain-code-and-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:code-of-ethics-standards explains the responsibilities required by the Code and each Standard's sub-sections.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m020:b01",
@@ -23621,9 +23621,9 @@
    "objectives": [
     "objective:apply-standard-professionalism"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-professionalism applies I(A) knowledge of the law, I(B) independence and objectivity, I(C) misrepresentation, I(D) misconduct and I(E) competence to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m020:b02",
@@ -23643,9 +23643,9 @@
    "objectives": [
     "objective:prevent-violations-professionalism"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-professionalism-violations recommends practices and procedures by sub-standard (I(A) knowledge of the law, I(B) independence and objectivity, I(C) misrepresentation, I(D) misconduct and I(E) competence).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m021:b01",
@@ -23665,9 +23665,9 @@
    "objectives": [
     "objective:apply-standard-market-integrity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-market-integrity applies II(A) material nonpublic information and the mosaic theory and II(B) market manipulation to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m021:b02",
@@ -23687,9 +23687,9 @@
    "objectives": [
     "objective:prevent-violations-market-integrity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-market-integrity-violations recommends practices and procedures by sub-standard (II(A) material nonpublic information and the mosaic theory and II(B) market manipulation).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m022:b01",
@@ -23709,9 +23709,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-clients applies III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m022:b02",
@@ -23731,9 +23731,9 @@
    "objectives": [
     "objective:prevent-violations-duties-to-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-client-duty-violations recommends practices and procedures by sub-standard (III(A) loyalty, prudence and care, III(B) fair dealing, III(C) suitability, III(D) performance presentation and III(E) confidentiality).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m023:b01",
@@ -23753,9 +23753,9 @@
    "objectives": [
     "objective:apply-standard-duties-to-employers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-duties-to-employers applies IV(A) loyalty, IV(B) additional compensation and IV(C) responsibilities of supervisors to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m023:b02",
@@ -23775,9 +23775,9 @@
    "objectives": [
     "objective:prevent-violations-duties-to-employers"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-employer-duty-violations recommends practices and procedures by sub-standard (IV(A) loyalty, IV(B) additional compensation and IV(C) responsibilities of supervisors).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m024:b01",
@@ -23797,9 +23797,9 @@
    "objectives": [
     "objective:apply-standard-investment-analysis-recommendations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-investment-analysis applies V(A) diligence and reasonable basis, V(B) communication with clients and V(C) record retention to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m024:b02",
@@ -23819,9 +23819,9 @@
    "objectives": [
     "objective:prevent-violations-investment-analysis-recommendations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-analysis-violations recommends practices and procedures by sub-standard (V(A) diligence and reasonable basis, V(B) communication with clients and V(C) record retention).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m025:b01",
@@ -23841,9 +23841,9 @@
    "objectives": [
     "objective:apply-standard-conflicts-of-interest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-conflicts-of-interest applies VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m025:b02",
@@ -23863,9 +23863,9 @@
    "objectives": [
     "objective:prevent-violations-conflicts-of-interest"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-conflict-violations recommends practices and procedures by sub-standard (VI(A) avoid or disclose conflicts, VI(B) priority of transactions and VI(C) referral fees).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m026:b01",
@@ -23885,9 +23885,9 @@
    "objectives": [
     "objective:apply-standard-member-responsibilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: rule:standard-member-responsibilities applies VII(A) conduct in programmes and VII(B) references to membership and the designation to original situations with conforming and violating cases and conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m026:b02",
@@ -23907,9 +23907,9 @@
    "objectives": [
     "objective:prevent-violations-member-responsibilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:preventing-member-violations recommends practices and procedures by sub-standard (VII(A) conduct in programmes and VII(B) references to membership and the designation).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m027:b01",
@@ -23929,9 +23929,9 @@
    "objectives": [
     "objective:evaluate-conduct-against-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:evaluating-conduct-cases evaluates practices, policies and conduct in three original multi-standard cases with a stated sequence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m027:b02",
@@ -23951,9 +23951,9 @@
    "objectives": [
     "objective:evaluate-conduct-against-standards"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:evaluating-conduct-cases explains for each of three original cases which Standards are or are not violated and why.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m028:b01",
@@ -23973,9 +23973,9 @@
    "objectives": [
     "objective:explain-asset-manager-code"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:asset-manager-code explains the Code's purpose and the benefits to an adopting firm (pp. 1-2).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m028:b02",
@@ -23995,9 +23995,9 @@
    "objectives": [
     "objective:explain-asset-manager-code"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:asset-manager-code explains the six General Principles of Conduct and the provisions implementing them.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m028:b03",
@@ -24017,9 +24017,9 @@
    "objectives": [
     "objective:assess-asset-manager-compliance"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:asset-manager-code-compliance determines, provision by provision, whether an original hedge-fund manager's practices are consistent with the Code.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m028:b04",
@@ -24039,9 +24039,9 @@
    "objectives": [
     "objective:assess-asset-manager-compliance"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:asset-manager-code-compliance recommends procedures to correct each inconsistency found (pp. 9-22).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m029:b01",
@@ -25206,9 +25206,9 @@
    "objectives": [
     "objective:manage-endowment-liquidity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:endowment-liquidity-allocation discusses liquidity-risk tools: stress tests, commitment pacing, credit lines and secondary sales (Ang chap. 13).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m036:b02",
@@ -25226,9 +25226,9 @@
    "objectives": [
     "objective:manage-endowment-liquidity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:endowment-liquidity-allocation discusses capturing the illiquidity premium and its limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m036:b03",
@@ -25247,9 +25247,9 @@
    "objectives": [
     "objective:manage-endowment-liquidity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:endowment-liquidity-allocation analyses allocation against liquidity, risk and return needs, including the denominator effect, and recommends actions for the hypothetical Elmsworth endowment.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m036:b04",
@@ -25267,9 +25267,9 @@
    "objectives": [
     "objective:apply-standards-to-manager-selection"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:standards-in-manager-selection demonstrates the Code and Standards for committee members, staff, consultants and managers in an original endowment manager selection.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2e1d62d8f585:m036:b05",
@@ -25327,9 +25327,9 @@
    "objectives": [
     "objective:integrate-esg-in-institutional-portfolios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:institutional-esg-integration discusses ESG in long-term portfolios: motives, approaches from exclusion to stewardship, the cost of constraints, climate risk and measurement.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:2f25110282bf:m029:b01",
@@ -26037,9 +26037,9 @@
    "objectives": [
     "objective:analyse-wealth-management-industry"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:wealth-management-industry discusses business models (private banks, independent advisers, family offices, digital platforms) and segment strategies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m029:b02",
@@ -26057,9 +26057,9 @@
    "objectives": [
     "objective:analyse-wealth-management-industry"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:wealth-management-industry discusses fee, revenue and compensation structures, with the fee comparison of private-wealth-checks.py part 4.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m029:b03",
@@ -26077,9 +26077,9 @@
    "objectives": [
     "objective:analyse-wealth-management-industry"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:wealth-management-industry discusses the lawyers, accountants, trustees, insurance and other specialists who support advisers and clients.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m029:b04",
@@ -26098,9 +26098,9 @@
    "objectives": [
     "objective:analyse-wealth-management-industry"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:wealth-management-industry describes and evaluates regulation of advice: the US adviser fiduciary interpretation (2019), Regulation Best Interest and MiFID II inducement and suitability rules.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m030:b01",
@@ -26118,9 +26118,9 @@
    "objectives": [
     "objective:advise-families-and-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:advising-families describes family and human dynamics in wealth: generations, roles, communication and conflict.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m030:b02",
@@ -26138,9 +26138,9 @@
    "objectives": [
     "objective:advise-families-and-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:advising-families describes profiling, acquiring, advising, communicating with and educating clients (ESMA suitability guidelines).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m030:b03",
@@ -26158,9 +26158,9 @@
    "objectives": [
     "objective:advise-families-and-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:advising-families describes ultra-high-net-worth characteristics: complexity, concentrated and private assets, multiple jurisdictions and family offices.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m030:b04",
@@ -26178,9 +26178,9 @@
    "objectives": [
     "objective:advise-families-and-clients"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:advising-families recommends developing, implementing, adhering to and amending a joint family decision framework (family constitution, councils and review).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m031:b01",
@@ -26199,9 +26199,9 @@
    "objectives": [
     "objective:build-goals-based-plan"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:goals-based-financial-plan formulates a goals-based plan (goals valued, funded ratio) and recommends strategies to close gaps.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m031:b02",
@@ -26220,9 +26220,9 @@
    "objectives": [
     "objective:manage-lifetime-exposures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:lifetime-exposures recommends and justifies managing mortality, disability, longevity, health and liability exposures across life and retirement with insurance, annuities and reserves.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m031:b03",
@@ -26240,9 +26240,9 @@
    "objectives": [
     "objective:integrate-tax-in-planning"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:tax-in-planning evaluates how deferral, exemption, rate differences and wrappers change goals-based plans, with dated US and UK rules.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m031:b04",
@@ -26260,9 +26260,9 @@
    "objectives": [
     "objective:build-goals-based-plan"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:goals-based-financial-plan recommends liquidity strategies from emergency reserves and short-bond buckets to committed and securities-backed credit lines.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m032:b01",
@@ -26281,9 +26281,9 @@
    "objectives": [
     "objective:recommend-private-client-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-allocation-review recommends and justifies a private client's allocation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m032:b02",
@@ -26302,9 +26302,9 @@
    "objectives": [
     "objective:integrate-tax-in-planning"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:tax-in-planning discusses tax efficiency across asset types and recommends asset location, loss harvesting, holding periods and wrappers.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m032:b03",
@@ -26323,9 +26323,9 @@
    "objectives": [
     "objective:plan-retirement-across-jurisdictions"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:retirement-across-jurisdictions discusses and recommends retirement planning from legal, tax and jurisdictional perspectives (US 2026 limits, UK allowances, UK-US treaty Art. 18).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m032:b04",
@@ -26343,9 +26343,9 @@
    "objectives": [
     "objective:recommend-private-client-portfolio"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-client-allocation-review evaluates the programme through reporting and review, against benchmarks and against goals.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m033:b01",
@@ -26363,9 +26363,9 @@
    "objectives": [
     "objective:protect-human-capital"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:human-capital-risks analyses mortality, disability, unemployment, wage, industry and health risks to human capital and their correlation with financial assets.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m033:b02",
@@ -26384,9 +26384,9 @@
    "objectives": [
     "objective:protect-human-capital"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:human-capital-risks describes and recommends insurance, diversification away from the employer's industry and reserves.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m033:b03",
@@ -26404,9 +26404,9 @@
    "objectives": [
     "objective:preserve-purchasing-power"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:purchasing-power-fx recommends inflation-protection strategies for spending and investments (TIPS and real assets, with their limits).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m033:b04",
@@ -26424,9 +26424,9 @@
    "objectives": [
     "objective:preserve-purchasing-power"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:purchasing-power-fx describes how exchange rates affect allocation and plans and ways to reduce the risk (hedging, matching currency of assets and goals).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m034:b01",
@@ -26445,9 +26445,9 @@
    "objectives": [
     "objective:advise-on-residency"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residency-citizenship discusses and recommends citizenship, nationality and residency approaches: US citizenship-based taxation and exit tax, the US substantial presence test, the UK statutory residence test and 2025 regimes, Singapore, and treaty tie-breakers, all dated.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m034:b02",
@@ -26466,9 +26466,9 @@
    "objectives": [
     "objective:advise-complex-client-situations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:complex-client-situations discusses and recommends approaches for blended, cross-border and special-needs families, including the US non-citizen spouse gift exclusion.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m034:b03",
@@ -26487,9 +26487,9 @@
    "objectives": [
     "objective:advise-complex-client-situations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:complex-client-situations discusses and recommends approaches for entrepreneurs and business owners: concentration, liquidity events and qualified small business stock (26 USC 1202).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m034:b04",
@@ -26508,9 +26508,9 @@
    "objectives": [
     "objective:advise-complex-client-situations"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:complex-client-situations discusses and recommends approaches for professionals and executives: equity awards, concentration and Rule 10b5-1 trading plans.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m035:b01",
@@ -26529,9 +26529,9 @@
    "objectives": [
     "objective:plan-wealth-transfer"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:wealth-transfer-strategies discusses and recommends lifetime gifts: US annual exclusion and unified exclusion, carryover basis, UK potentially exempt transfers and taper.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m035:b02",
@@ -26550,9 +26550,9 @@
    "objectives": [
     "objective:plan-wealth-transfer"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:wealth-transfer-strategies discusses and recommends bequests: US estate tax and stepped-up basis, UK inheritance tax bands and spouse exemption.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:5bc9c1013387:m035:b03",
@@ -26571,9 +26571,9 @@
    "objectives": [
     "objective:plan-wealth-transfer"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:wealth-transfer-strategies discusses and recommends philanthropy across generations: charitable remainder trusts, donor-advised funds and private foundations (26 USC 664, 4942).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   }
  ]
 }

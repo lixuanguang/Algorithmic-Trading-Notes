@@ -116,6 +116,39 @@ With a monthly Sharpe ratio of 0.108, so $S^2=1.2$ percent, the earnings--price 
 
 \end{qfpitfall}
 
+\begin{qfmethod}[Designing and evaluating a strategy backtest: objectives, procedures (historical, walk-forward, cross-validated and simulated), metrics and visuals, and the problems that inflate results]\label{meth:backtest-design-evaluation}
+\qffield{Statement} \emph{Objectives}: a backtest estimates how a fully specified rule would have performed with the information, universe, costs and constraints available at each past decision; it tests a hypothesis stated in advance (\hyperref[meth:hypothesis-driven-strategy-research]{hypothesis-first research}) and is not a research tool for finding one \citep[pp.~151--154]{alpha-afml}.
+
+\emph{Procedures} (Interpretation, organising \citep[pp.~161--166]{alpha-afml}): (1) fix the investment universe as it stood at each date, including names later delisted; (2) define signals using only data released before the decision, with release lags and point-in-time revisions; (3) set rebalancing frequency, portfolio construction rules and constraints; (4) model costs, borrow and capacity; (5) choose the evaluation scheme: a \emph{walk-forward} (historical) test that re-estimates on past data and records the following period, with an expanding or a rolling window; \emph{cross-validation}, purged and embargoed, which tests every period but not in time order; or \emph{simulation} of many synthetic paths, including combinatorial purged cross-validation, so that a strategy is judged on a distribution of outcomes rather than one path; (6) record every trial.
+
+\emph{Metrics and visuals}: annualised return and volatility, Sharpe and Sortino ratios, maximum drawdown and time to recovery, hit rate, turnover and cost drag, exposures to known factors, and the number of trials; the cumulative return and drawdown (underwater) charts, rolling Sharpe ratios and return distributions (\hyperref[meth:backtest-evaluation-diagnostics]{diagnostics}).
+
+\emph{Problems}: \emph{survivorship bias} (testing on today's constituents), \emph{look-ahead bias} (using data before its release), \emph{data snooping} or selection bias (reporting the best of many trials), ignoring transaction costs and short-sale constraints, outliers, the story told after the fact, and the shorting of instruments that could not be borrowed; L\'opez de Prado's ``seven sins'' (pp.~151--152). Remedies: develop models for asset classes or universes rather than single names, use bagging, record all trials and deflate the Sharpe ratio for them (\hyperref[meth:deflated-sharpe-ratio]{deflated Sharpe}), and backtest scenarios rather than a single history (p.~154).
+
+\qffield{Practice} \emph{Synthetic evidence} (\texttt{backtest-design-checks.py}, 10 checks). A universe of 300 simulated stocks over 240 months has no true cross-sectional predictability; a stock is delisted after losing 75 percent of its value.
+\begin{center}\small
+\begin{tabular}{@{}p{0.36\linewidth}p{0.26\linewidth}p{0.28\linewidth}@{}}
+\toprule
+Design error & Flawed result & Correct result \\
+\midrule
+Survivors only (249 of 300) & 14.85\% a year & 13.18\% point in time \\
+Signal uses the same month's return & Sharpe 78.9 & 0.27 with last month's \\
+Momentum gross of costs, 20~bp a trade & 1.17\% a year higher & Turnover 0.24 a side a month \\
+Best of 24 rules, first 10 years & In-sample Sharpe 0.83 & $-0.16$ in the next 10 years \\
+Re-select each year from trailing 5 years & --- & Walk-forward Sharpe 0.16 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The in-sample winner's 0.83 exceeds the approximate expected maximum of 24 null Sharpe ratios over ten years (0.57), but it does not survive the next decade. The net series's maximum drawdown, 39 percent, matches a brute-force search over all start and end months; expanding-window estimates move less from year to year than five-year rolling ones.
+
+\qffield{Conditions} Simulated data with no predictability; real markets add non-stationarity, regime changes and capacity limits that a backtest can only approximate.
+
+\qffield{Pitfalls} Treating a walk-forward on one path as conclusive. Reporting the best trial without the number of trials. Rerunning the out-of-sample test after changes until it passes.
+
+\qffield{See also} \hyperref[pit:parameter-overfitting]{parameter overfitting}; \hyperref[pit:backtest-cost-short-assumptions]{cost assumptions}; \hyperref[meth:purged-embargoed-cross-validation]{purged CV}; \hyperref[meth:multiple-testing-control]{multiple testing}.
+
+\end{qfmethod}
+
 \begin{qfmethod}[Standard errors of an estimated Sharpe ratio: IID returns, serial correlation and time aggregation]\label{meth:sharpe-ratio-standard-error}
 \qffield{Statement} Lo derives the asymptotic distribution of the estimated Sharpe ratio $\widehat{SR}=(\hat\mu-R_f)/\hat\sigma$ by the delta method \citep[``IID Returns'', eqs.~(5)--(9), pp.~37--38]{wide-lo-sharpe}.
 

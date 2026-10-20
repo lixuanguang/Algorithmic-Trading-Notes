@@ -1,0 +1,154 @@
+\section{Private clients and the wealth management industry}
+
+\begin{qfmethod}[Individual wealth: its types, creation and distribution; human capital, financial capital and economic net worth over the life cycle, and how they shape decisions]\label{meth:individual-wealth-capital}
+\qffield{Statement} \emph{Types and creation.} A household's wealth is financial (deposits, securities, retirement accounts), real (homes, other property), business equity, and claims to future income: \emph{human capital}, the present value of future labour income, and pension and social-security entitlements. Wealth is created by saving earned income, by building or owning businesses, by holding assets that appreciate, and by inheritance (Interpretation).
+
+\emph{Distribution} (United States, 2022). Median family net worth was USD~192,900 and the mean USD~1,063,700: the gap shows how concentrated wealth is. Families in the top tenth by net worth had a median of USD~3.79 million; by age, medians rise from USD~39,000 for heads under 35 to USD~410,000 at 65--74, the life-cycle pattern of saving for retirement and spending in it. Business equity, held by 14.6 percent of families, had a conditional median of USD~90,000 against a mean of USD~1.62 million, because a few private businesses are very valuable \citep[pp.~11--13, 20]{fed-scf-2022}.
+
+\emph{Human and financial capital over the life cycle.} Human capital is often the largest asset early in life; saving converts it into financial capital, so financial capital rises and human capital falls to zero at retirement. Human capital has its own risk and correlation with markets: a tenured professor's income behaves like an inflation-linked bond, a broker's like equity. Financial assets should therefore diversify human capital, and rules such as ``100 minus age'' ignore this \citep[pp.~13--16, 74--76]{ibbotson-lifetime-financial-advice-2007}:
+\[ \mathrm{HC}(x)=\sum_{t=1}^{R-x}\frac{E[h_{x+t}]}{(1+r+\nu)^{t}}, \]
+with $h$ real after-tax earnings, $R$ the retirement age and $\nu$ a premium for the riskiness of the income (p.~17, simplified here by omitting mortality). \emph{Economic net worth} adds human capital and pension claims to financial net worth and deducts the present value of committed liabilities and goals.
+
+\qffield{Practice} \emph{The Okafors} (United States, 2026; original). Adaeze, 40, a salaried hospital physician, earns USD~180,000 a year after tax, expected to rise 1 percent a year in real terms to 65; Tunde, 42, sells software on commission. They hold USD~600,000 of financial assets, a USD~400,000 mortgage, and want USD~200,000 for each of two children's education in about ten years.
+\begin{itemize}
+\item Adaeze's human capital, discounted at 3.5 percent real for a stable income, is USD~3.29 million at 40, 2.44 million at 50 and 1.01 million at 60; at 6 percent, as if it were as risky as equity, it would be 2.52 million.
+\item Saving USD~40,000 a year at 4 percent real, their financial capital grows to 1.39 million at 50 and 3.44 million at 65 while her human capital falls to zero.
+\item Economic net worth at 40 is $0.60+3.29-0.40-0.28=3.21$ million; human capital is 85 percent of gross economic assets.
+\item Counting half of Tunde's USD~2.0 million of human capital as equity-like, a 40 percent equity target on total wealth of 5.89 million calls for 1.36 million of financial equity, more than all their financial assets. They should therefore hold mostly equities now; the same rule moves them towards bonds as human capital is used up.
+\end{itemize}
+
+\qffield{Conditions} The SCF figures are 2022 survey values in 2022 dollars. The human-capital model omits mortality, taxes beyond the after-tax earnings assumed, and labour flexibility, all of which Ibbotson and co-authors treat; earnings, discount rates and the 50 percent equity share of commission income are illustrative.
+
+\qffield{Pitfalls} Analysing a young client's portfolio without their human capital. Treating all human capital as bond-like. Confusing mean with median wealth.
+
+\qffield{See also} \hyperref[meth:economic-balance-sheet-allocation]{economic balance sheet}; \hyperref[meth:private-client-ips]{private-client IPS}; \hyperref[meth:human-capital-risks]{risks to human capital}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Taxes and inflation in individual investment decisions: types of taxes on individuals, accrual, deferral and wealth taxes, after-tax and real returns, with US and UK rates]\label{meth:private-client-tax-inflation}
+\qffield{Statement} \emph{Types of tax.} Individuals pay tax on income (wages, interest, dividends), on realised capital gains, on consumption, on property, sometimes on wealth, and on transfers at death or by gift (Interpretation). For investors, the relevant 2026 rates are:
+\begin{itemize}
+\item \emph{United States} (federal): ordinary income up to 37 percent above USD~640,600 single or 768,700 joint; long-term gains and qualified dividends at 0, 15 or 20 percent, the 20 percent rate above USD~545,500 single or 613,700 joint \citep[secs.~4.01, 4.03]{irs-rev-proc-2025-32}; plus a 3.8 percent net investment income tax on investment income above modified adjusted gross income of USD~200,000 single or 250,000 joint \citep[sec.~1411]{us-internal-revenue-code-26}.
+\item \emph{United Kingdom} (2026--27, outside Scotland): personal allowance GBP~12,570, basic rate 20 percent on the next 37,700, higher 40 percent, additional 45 percent above 125,140; dividends above a 500 allowance at 10.75, 35.75 and 39.35 percent \citep[tables]{govuk-income-tax-rates-2026}; gains above a 3,000 allowance at 18 percent within the basic-rate band and 24 percent above it \citep[rates page]{govuk-cgt-rates-2026}.
+\end{itemize}
+
+\emph{How taxes compound.} With return $r$ over $n$ years:
+\begin{itemize}
+\item tax on accrual each year at $t$: $(1+r(1-t))^n$;
+\item deferred gains taxed once at sale: $(1+r)^n(1-t)+t$ per unit invested;
+\item a wealth tax at $t_w$ on value each year: $[(1+r)(1-t_w)]^n$.
+\end{itemize}
+Deferral lowers the effective annual rate below the statutory rate; tax-exempt accounts remove it. \emph{Inflation} raises the effective tax on real returns, because nominal income and gains are taxed even when they only keep pace with prices (Derivation).
+
+\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part 2). One hundred invested at 6 percent for 20 years:
+\begin{center}\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+Treatment & Ending value \\
+\midrule
+Tax-exempt & 320.71 \\
+US interest taxed yearly at 40.8\% (37\% + 3.8\%) & 200.99 \\
+US gains deferred, taxed at 23.8\% at the end & 268.18 \\
+UK dividends taxed yearly at 39.35\% & 204.39 \\
+UK gains deferred, 24\% at the end & 267.74 \\
+1\% annual wealth tax & 262.31 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The deferred US gain's effective annual tax rate is 15.7 percent. With 2.5 percent inflation, interest taxed at 40.8 percent earns 1.03 percent real, against 3.41 percent before tax: the tax takes 70 percent of the real return. \emph{Decision}: for a top-bracket client, hold income-producing assets in tax-exempt or deferred accounts and growth assets in taxable accounts; prefer inflation-linked instruments in tax-advantaged accounts, where the inflation uplift is not taxed (\hyperref[meth:tax-in-planning]{tax management}).
+
+\qffield{Conditions} Federal US and non-Scottish UK rates for the tax years starting in 2026; state, local and Scottish taxes, phase-outs, allowances for savings income and treaty credits are ignored. The chapter uses these two jurisdictions because they contrast citizenship- with residence-based taxation, estate with inheritance tax and two pension designs; it is not advice to any real person.
+
+\qffield{Pitfalls} Comparing pre-tax returns across accounts with different tax treatment. Ignoring inflation when judging a tax rate. Assuming deferral is worth nothing because the rate is the same at the end.
+
+\qffield{See also} \hyperref[meth:allocation-constraints-taxes-revision]{taxes in allocation}; \hyperref[meth:tax-in-planning]{tax management}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Private clients against institutions, objectives and constraints from human and financial capital, and formulating a private-client investment policy statement]\label{meth:private-client-ips}
+\qffield{Statement} \emph{Private against institutional clients} (Interpretation, from \citep[pp.~13--16, 74--79]{ibbotson-lifetime-financial-advice-2007} and the sources on suitability): private clients have finite, uncertain lives and changing goals; they pay personal taxes and hold assets across taxable and tax-advantaged accounts; their human capital, health and family drive both risk capacity and liabilities; they decide emotionally and often jointly with family members; and they are protected by suitability and conduct rules. Institutions have long or perpetual horizons, defined liabilities or spending rules, boards and fiduciary governance, and usually a single tax status.
+
+\emph{Relating objectives to capital.} Risk capacity rises with human capital that is safe and uncorrelated with markets, with financial capital large relative to goals, and with flexibility of spending and work; it falls with goals that are near and essential. Willingness to bear risk is measured separately and the lower of the two governs. Return requirements follow from goals and resources. Before advising, firms must collect information on knowledge and experience, financial situation including the ability to bear losses, and objectives including risk tolerance, checking its reliability rather than relying on self-assessment \citep[paras.~12, 33--34, 44]{esma-suitability-guidelines-2022}; the Standards require an IPS reviewed regularly \citep[pp.~87--90]{standards-practice-handbook-2024}.
+
+\emph{Components}: client and accounts; return objective; risk tolerance (capacity and willingness); time horizons by goal; liquidity needs; taxes; legal and regulatory constraints; unique circumstances; review schedule and benchmark.
+
+\qffield{Practice} \emph{IPS for the Okafors} (original; \texttt{private-wealth-checks.py}, parts~1 and 3).
+\begin{itemize}
+\item \emph{Return}: retirement at 62 needs USD~150,000 a year in today's money for 30 years; Social Security is assumed to provide 60,000, so the gap is worth 1.76 million at 62 at 3 percent real. With 600,000 today, 50,000 saved a year for 22 years and two 200,000 education payments, the required real return is 1.96 percent.
+\item \emph{Risk}: high capacity (3.29 million of stable human capital, 22 years to retirement, required return modest); Tunde's commission income is equity-like and reduces it; their stated willingness is moderate. Policy: 70 percent diversified equity, 25 percent high-quality bonds, 5 percent cash, with Tunde's employer stock below 10 percent of liquid assets.
+\item \emph{Horizons}: education in 8 and 10 years; retirement in 22 years and lasting about 30.
+\item \emph{Liquidity}: six months' spending (60,000) in cash; education funds moved to short bonds two years before each payment.
+\item \emph{Taxes}: top federal bracket; maximise 401(k) deferrals; bonds in tax-deferred accounts.
+\item \emph{Legal and unique}: no restrictions; Tunde's restricted stock units vest quarterly.
+\item \emph{Review}: annually, and when a child starts university, income changes by more than 20 percent, or either spouse changes job.
+\end{itemize}
+The required return justifies taking less risk than their capacity would allow, so the moderate willingness can govern.
+
+\qffield{Conditions} The Social Security figure, return assumptions and spending goal are illustrative; ESMA's guidelines apply to EU firms giving advice or managing portfolios.
+
+\qffield{Pitfalls} Setting risk from questionnaire answers alone. Writing one IPS for a couple without recording whose goals and accounts it covers. Never revisiting the IPS after a life event.
+
+\qffield{See also} \hyperref[meth:investment-policy-statement]{IPS components}; \hyperref[meth:goals-based-financial-plan]{goals-based plan}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[The private wealth management industry: business models and client segments, fee and compensation structures, supporting professionals, and the regulation of advice]\label{def:wealth-management-industry}
+\qffield{Statement} \emph{Business models} (Interpretation): broker-dealers and wire houses, paid mainly by commissions and product revenue; independent registered investment advisers, paid by asset-based or flat fees; private banks, which combine advice with lending, custody and trust services; multi-family offices serving several wealthy families with planning and administration; single-family offices owned by one family; and digital advisers that automate allocation for lower balances. Firms segment clients by investable assets (mass affluent, high net worth, ultra-high net worth) and offer more customised, multi-disciplinary service as wealth rises.
+
+\emph{Fees and compensation.} Clients pay asset-based fees, commissions and product charges (including fund expenses and trails), flat retainers, hourly fees or, rarely, performance fees. Advisers are paid salary and bonus, a share of revenue, or both. Each structure creates a conflict: asset-based fees reward gathering assets and discourage paying down debt; commissions reward trading and product sales; flat fees are neutral to products but not to effort. Trust allows fees above cost even without better performance \citep[pp.~1--5]{gennaioli-shleifer-vishny-money-doctors-2012}.
+
+\emph{Supporting professionals}: estate and tax lawyers, accountants, trustees, insurance specialists, custodians, appraisers and family-office administrators, coordinated by the lead adviser.
+
+\emph{Regulation} (two regimes, as examples):
+\begin{itemize}
+\item \emph{United States}: investment advisers owe a fiduciary duty of care and loyalty; disclosure and consent permit conflicts but do not satisfy the duty to act in the client's best interest \citep[84 FR 33672, 33676]{sec-adviser-standard-of-conduct-2019}. Broker-dealers recommending to retail customers must act in their best interest under Regulation Best Interest, which requires written disclosure of the capacity, fees, services and conflicts, reasonable care, and conflict procedures \citep[para.~(a)]{sec-reg-bi-rule}.
+\item \emph{European Union}: firms must disclose all costs and their cumulative effect on return, at least annually; firms advising on an \emph{independent} basis must assess a sufficiently wide range of products and may not keep third-party commissions, nor may portfolio managers; other inducements are allowed only if they enhance the service and are disclosed \citep[Art.~24(4), (7)--(9)]{eu-2014-65-mifid2}. The Standards add a cost-and-services disclosure for members worldwide (V(B)).
+\end{itemize}
+
+\qffield{Practice} \emph{Three fee models on USD~2 million over 20 years at 6 percent gross} (original; \texttt{private-wealth-checks.py}, part~4):
+\begin{center}\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+Model & Ending value (USD m) \\
+\midrule
+No fees & 6.41 \\
+1\% of assets a year & 5.25 \\
+Trails and product costs of 0.75\% & 5.52 \\
+Flat retainer of 12,000 rising 2\% a year & 5.90 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The asset-based fee costs 1.17 million of terminal wealth, the flat fee 0.52 million. \emph{Evaluation}: for a client who needs planning more than portfolio management, a flat or hourly fee aligns better; for one who needs discretionary management and family-office services, the asset fee may be justified if disclosed and benchmarked. In the EU, a firm calling its advice independent could not keep the trails.
+
+\qffield{Conditions} US rules as of the 2019 releases; MiFID II as adopted in 2014 (later amendments not compared). Fee levels are illustrative.
+
+\qffield{Pitfalls} Comparing advisers' fees without fund-level costs. Assuming ``fiduciary'' means conflict-free.
+
+\qffield{See also} \hyperref[rule:standard-conflicts-of-interest]{Standard VI}; \hyperref[def:asset-management-industry]{asset management industry}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Working with wealthy families: family and human dynamics, profiling and educating clients, ultra-high-net-worth characteristics, and a framework for joint family decisions]\label{meth:advising-families}
+\qffield{Statement} \emph{Family and human dynamics} (Interpretation): wealth creates roles (founder, spouse, heirs, in-laws), different generations' values and risk attitudes, questions of fairness against equality among children, and conflicts when the family business is also the family's wealth. Communication, trust and preparation of heirs matter as much as investment returns.
+
+\emph{Profiling, acquiring, advising and educating.} The adviser must learn goals, finances and attitudes through structured conversation, explain why information is needed, check its reliability, and update it \citep[paras.~11--16, 44, 53]{esma-suitability-guidelines-2022}. For couples, families and entities, the firm must decide in advance whose knowledge, objectives and financial situation are assessed and tell the clients how (paras.~60--66). Education of younger members and plain-language communication are part of the service; trust built on personal relationships must not be used to pander to mistaken beliefs \citep[pp.~3--5]{gennaioli-shleifer-vishny-money-doctors-2012}.
+
+\emph{Ultra-high-net-worth clients} (Interpretation): concentrated or illiquid wealth (operating businesses, private holdings, real estate), several jurisdictions and residences, complex structures (trusts, holding companies, foundations), multi-generational horizons, public profile and privacy concerns, and direct access to institutional-style investments. They often use a family office and several providers, so the adviser coordinates rather than supplies everything.
+
+\emph{A joint decision framework} (recommended approach):
+\begin{enumerate}
+\item \emph{Develop}: a family assembly agrees a written charter or constitution: shared values and purpose of the wealth, who belongs, decision bodies (family council for family matters, investment committee for portfolios, board for the business), voting rules, eligibility to work in the business, distribution and lending policies, and conflict resolution.
+\item \emph{Implement}: appoint members, independent advisers or directors; adopt an IPS for the family portfolio; schedule meetings and education.
+\item \emph{Adhere}: report against the charter; minutes and reviews; an independent chair or mediator for disputes.
+\item \emph{Amend}: review at set intervals and on events (marriage, death, a sale of the business, a new generation); amendments need a qualified majority across branches.
+\end{enumerate}
+
+\qffield{Practice} \emph{The Rivera family} (original). Luis, 63, founded a logistics company worth USD~120 million; two of his three children work in it. The children disagree about selling. The adviser (1) interviews each member separately and records each one's goals and understanding; (2) proposes a family council with one representative per branch and an independent facilitator; (3) drafts a charter that separates ownership from employment, sets a dividend policy and a rule that family members may sell shares to each other at an independent valuation; (4) creates an investment committee with two family members and an outside professional for the liquid portfolio; and (5) schedules an annual education day for the next generation. Under ESMA's group-client guidance, the firm tells the family whose risk profile governs the jointly held portfolio (the committee's agreed IPS) and documents it.
+
+\qffield{Conditions} ESMA's guidelines apply to EU firms from 3 October 2023; the governance design is the author's recommendation, not a statutory requirement.
+
+\qffield{Pitfalls} Advising only the patriarch. Treating equal shares as fair when children's roles differ. Letting the adviser's relationship with one member determine the family's decisions.
+
+\qffield{See also} \hyperref[meth:complex-client-situations]{complex situations}; \hyperref[meth:wealth-transfer-strategies]{transferring wealth}.
+
+\end{qfmethod}

@@ -2,12 +2,14 @@
 key: campbell-viceira-currency-hedging-2007
 pathways: [currency-markets]
 version: John Y. Campbell, Karine Serfaty-de Medeiros and Luis M. Viceira, Global Currency Hedging, NBER Working Paper 13088, May 2007, revised January 2009 (published Journal of Finance 65(1), 2010). Copy: NBER PDF retrieved 2026-10-19 into the git-ignored reading_materials/macro-allocation-currency/ (SHA-256 263170fc0a40ad13410e26172c95aec107d14eb54ebe668fb6c327d41d30eead), 116 pages; the Harvard-hosted published version returned HTTP 403
-sections: abstract
+sections: abstract; NBER WP 13088 pp. 1-3 (completion batch, 2026-10-20)
 read:
 status: draft
 ---
 
 Prepared on 2026-10-19 by the macro, allocation and currency batch from source checks, not from study. Used for `meth:currency-portfolio-effects`.
+
+Extended on 2026-10-20 by the completion batch (2026-10-20), from source checks, not from study: used also for `meth:purchasing-power-fx` (currency risk and hedging for a private client).
 
 ## Question and claim
 

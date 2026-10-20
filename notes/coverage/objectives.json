@@ -2202,13 +2202,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:financial-data-science-uses"
+   ],
+   "candidate_entries": [
+    "def:financial-data-science-uses"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "fsb-ai-ml-2017",
+      "locator": "pp. 4-6"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/fsb-ai-ml-2017.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "def:financial-data-science-uses"
+    ],
+    "example": "original asset-manager fintech case in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -8351,15 +8370,48 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "def:amm-pool-mechanics"
+   "entries": [
+    "def:distributed-ledger-applications"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:amm-pool-mechanics",
+    "def:distributed-ledger-applications"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "bis-aer-2018-cryptocurrencies",
+      "locator": "ch. V, \"Distributed ledger technology in cryptocurrencies\""
+     },
+     {
+      "key": "s6-bitcoin",
+      "locator": "secs. 3, 7-8, pp. 2-5"
+     },
+     {
+      "key": "crypto-narayanan",
+      "locator": "draft of 9 February 2016, p. 62; pp. 285-287"
+     },
+     {
+      "key": "ethereum-pos-2026",
+      "locator": "\"Proof-of-stake\" and \"The Merge\" pages"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/bis-aer-2018-cryptocurrencies.md",
+     "notes/readings/s6-bitcoin.md",
+     "notes/readings/crypto-narayanan.md",
+     "notes/readings/ethereum-pos-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "def:distributed-ledger-applications"
+    ],
+    "example": "notes/artefacts/digital-assets/digital-asset-checks.py: parts 1-4 (SHA-256 toy chain and Merkle branch, proof-of-work, Nakamoto attacker table and exact count, issuance schedule, PoS timing); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8374,15 +8426,48 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "def:crypto-venue-instrument-structure"
+   "entries": [
+    "meth:digital-asset-investment-analysis"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:crypto-venue-instrument-structure",
+    "meth:digital-asset-investment-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "bis-aer-2018-cryptocurrencies",
+      "locator": "ch. V, \"A new petal in the money flower?\" and \"Assessing the economic limitations\""
+     },
+     {
+      "key": "crypto-narayanan",
+      "locator": "draft of 9 February 2016, secs. 4.2-4.4, pp. 103-118"
+     },
+     {
+      "key": "sec-spot-bitcoin-etp-order-2024",
+      "locator": "89 FR 3008, 3009-3013"
+     },
+     {
+      "key": "roadmap-crypto-risks-returns",
+      "locator": "NBER WP 24877, August 2018, pp. 1-2 and Table 1, pp. 6-7"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/bis-aer-2018-cryptocurrencies.md",
+     "notes/readings/crypto-narayanan.md",
+     "notes/readings/sec-spot-bitcoin-etp-order-2024.md",
+     "notes/readings/roadmap-crypto-risks-returns.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:digital-asset-investment-analysis"
+    ],
+    "example": "notes/artefacts/digital-assets/digital-asset-checks.py: parts 5-7 (Liu-Tsyvinski consistency checks, hypothetical allocation risk shares, hypothetical multisig custody); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -9211,13 +9296,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:ethics-trust-professions"
+   ],
+   "candidate_entries": [
+    "def:ethics-trust-professions"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "p. xiii"
+     },
+     {
+      "key": "gennaioli-shleifer-vishny-money-doctors-2012",
+      "locator": "NBER WP 18174, pp. 1-5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md",
+     "notes/readings/gennaioli-shleifer-vishny-money-doctors-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "def:ethics-trust-professions"
+    ],
+    "example": "original conforming and violating cases with reasoned conclusions in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9232,13 +9341,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:ethical-decision-framework"
+   ],
+   "candidate_entries": [
+    "meth:ethical-decision-framework"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "p. xvii"
+     },
+     {
+      "key": "ethical-decision-framework-2014",
+      "locator": "p. 1"
+     },
+     {
+      "key": "sec-adviser-standard-of-conduct-2019",
+      "locator": "84 FR 33669, at 33672, 33676"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md",
+     "notes/readings/ethical-decision-framework-2014.md",
+     "notes/readings/sec-adviser-standard-of-conduct-2019.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:ethical-decision-framework"
+    ],
+    "example": "original case worked through identify, consider, act and reflect in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9250,13 +9388,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:professional-conduct-programme"
+   ],
+   "candidate_entries": [
+    "def:professional-conduct-programme"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "p. ix"
+     },
+     {
+      "key": "conduct-rules-of-procedure-2022",
+      "locator": "Rules 1.1-1.2"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md",
+     "notes/readings/conduct-rules-of-procedure-2022.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "def:professional-conduct-programme"
+    ],
+    "example": "process described step by step in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9269,13 +9431,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:code-of-ethics-standards"
+   ],
+   "candidate_entries": [
+    "def:code-of-ethics-standards"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "p. xviii"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "def:code-of-ethics-standards"
+    ],
+    "example": "components and sub-sections tabulated in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9288,13 +9469,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "rule:standard-professionalism"
+   ],
+   "candidate_entries": [
+    "rule:standard-professionalism"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 1-6"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "rule:standard-professionalism"
+    ],
+    "example": "original conforming and violating cases with reasoned conclusions in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9306,13 +9506,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:preventing-professionalism-violations"
+   ],
+   "candidate_entries": [
+    "meth:preventing-professionalism-violations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 6, 14-15, 25-26, 37, 43"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:preventing-professionalism-violations"
+    ],
+    "example": "procedures by sub-standard with an original firm example in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9325,16 +9544,34 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "rule:standard-market-integrity"
+   ],
    "candidate_entries": [
     "def:inside-information",
-    "rule:spoofing-securities-markets"
+    "rule:spoofing-securities-markets",
+    "rule:standard-market-integrity"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 47-52"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "rule:standard-market-integrity"
+    ],
+    "example": "original conforming and violating cases with reasoned conclusions in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9346,13 +9583,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:preventing-market-integrity-violations"
+   ],
+   "candidate_entries": [
+    "meth:preventing-market-integrity-violations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 52-54"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:preventing-market-integrity-violations"
+    ],
+    "example": "procedures by sub-standard with an original firm example in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9365,13 +9621,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "rule:standard-duties-to-clients"
+   ],
+   "candidate_entries": [
+    "rule:standard-duties-to-clients"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 65-70"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "rule:standard-duties-to-clients"
+    ],
+    "example": "original conforming and violating cases with reasoned conclusions in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9383,13 +9658,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:preventing-client-duty-violations"
+   ],
+   "candidate_entries": [
+    "meth:preventing-client-duty-violations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 70-71, 78-80, 90, 95-96, 102-103"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:preventing-client-duty-violations"
+    ],
+    "example": "procedures by sub-standard with an original firm example in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9402,13 +9696,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "rule:standard-duties-to-employers"
+   ],
+   "candidate_entries": [
+    "rule:standard-duties-to-employers"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 107-111"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "rule:standard-duties-to-employers"
+    ],
+    "example": "original conforming and violating cases with reasoned conclusions in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9420,13 +9733,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:preventing-employer-duty-violations"
+   ],
+   "candidate_entries": [
+    "meth:preventing-employer-duty-violations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 111, 117-118, 122-125"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:preventing-employer-duty-violations"
+    ],
+    "example": "procedures by sub-standard with an original firm example in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9439,13 +9771,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "rule:standard-investment-analysis"
+   ],
+   "candidate_entries": [
+    "rule:standard-investment-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 129-134"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "rule:standard-investment-analysis"
+    ],
+    "example": "original conforming and violating cases with reasoned conclusions in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9457,13 +9808,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:preventing-analysis-violations"
+   ],
+   "candidate_entries": [
+    "meth:preventing-analysis-violations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 133-134, 146, 154"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:preventing-analysis-violations"
+    ],
+    "example": "procedures by sub-standard with an original firm example in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9476,13 +9846,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "rule:standard-conflicts-of-interest"
+   ],
+   "candidate_entries": [
+    "rule:standard-conflicts-of-interest"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 157-160"
+     },
+     {
+      "key": "sec-adviser-standard-of-conduct-2019",
+      "locator": "84 FR 33676"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md",
+     "notes/readings/sec-adviser-standard-of-conduct-2019.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "rule:standard-conflicts-of-interest"
+    ],
+    "example": "original conforming and violating cases with reasoned conclusions in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9494,13 +9888,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:preventing-conflict-violations"
+   ],
+   "candidate_entries": [
+    "meth:preventing-conflict-violations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 157-160, 165-167, 169"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:preventing-conflict-violations"
+    ],
+    "example": "procedures by sub-standard with an original firm example in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9512,13 +9925,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "rule:standard-member-responsibilities"
+   ],
+   "candidate_entries": [
+    "rule:standard-member-responsibilities"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 173-175"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "rule:standard-member-responsibilities"
+    ],
+    "example": "original conforming and violating cases with reasoned conclusions in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9530,13 +9962,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:preventing-member-violations"
+   ],
+   "candidate_entries": [
+    "meth:preventing-member-violations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "p. 183"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:preventing-member-violations"
+    ],
+    "example": "procedures by sub-standard with an original example in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -9549,13 +10000,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:evaluating-conduct-cases"
+   ],
+   "candidate_entries": [
+    "meth:evaluating-conduct-cases"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 36, 110-111, 120"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:evaluating-conduct-cases"
+    ],
+    "example": "three original multi-standard cases with reasoned conclusions in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -10044,13 +10514,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:learning-methods-overfitting"
+   ],
+   "candidate_entries": [
+    "def:learning-methods-overfitting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s6-isl",
+      "locator": "pp. 26-27; pp. 403-407; pp. 31-36"
+     },
+     {
+      "key": "fsb-ai-ml-2017",
+      "locator": "pp. 5-6"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s6-isl.md",
+     "notes/readings/fsb-ai-ml-2017.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "def:learning-methods-overfitting"
+    ],
+    "example": "notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 1 (synthetic overfitting, degrees 1-12); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10063,13 +10557,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:supervised-algorithm-selection"
+   ],
+   "candidate_entries": [
+    "meth:supervised-algorithm-selection"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s6-isl",
+      "locator": "pp. 25-39, 237-250, 327-383"
+     },
+     {
+      "key": "wide-gentzkow-kelly-taddy",
+      "locator": "NBER WP 23276, pp. 12-15"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s6-isl.md",
+     "notes/readings/wide-gentzkow-kelly-taddy.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:supervised-algorithm-selection"
+    ],
+    "example": "notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 2 (synthetic lasso, ridge, trees, forest, KNN and SVM comparisons); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10082,13 +10600,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:unsupervised-algorithm-selection"
+   ],
+   "candidate_entries": [
+    "meth:unsupervised-algorithm-selection"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s6-isl",
+      "locator": "pp. 498-531"
+     },
+     {
+      "key": "fsb-ai-ml-2017",
+      "locator": "p. 5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s6-isl.md",
+     "notes/readings/fsb-ai-ml-2017.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:unsupervised-algorithm-selection"
+    ],
+    "example": "notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 3 (synthetic PCA, k-means and hierarchical clustering); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10102,13 +10644,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:data-analysis-project"
+   ],
+   "candidate_entries": [
+    "meth:data-analysis-project"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-gentzkow-kelly-taddy",
+      "locator": "pp. 2-8"
+     },
+     {
+      "key": "alpha-afml",
+      "locator": "pp. 23-28"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-gentzkow-kelly-taddy.md",
+     "notes/readings/alpha-afml.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:data-analysis-project"
+    ],
+    "example": "notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 4 (synthetic look-ahead, fitted transforms and outliers); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10120,13 +10686,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:text-feature-engineering"
+   ],
+   "candidate_entries": [
+    "meth:text-feature-engineering"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-gentzkow-kelly-taddy",
+      "locator": "NBER WP 23276, pp. 5-8; p. 31"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-gentzkow-kelly-taddy.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:text-feature-engineering"
+    ],
+    "example": "notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 5 (synthetic corpus: training vocabulary, tf-idf, chi-square, logistic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -10139,15 +10724,33 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "meth:purged-embargoed-cross-validation"
+   "entries": [
+    "meth:ml-model-training-evaluation"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "meth:purged-embargoed-cross-validation",
+    "meth:ml-model-training-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s6-isl",
+      "locator": "pp. 198-206; pp. 150-151"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s6-isl.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:ml-model-training-evaluation"
+    ],
+    "example": "notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 6 (synthetic default classifier: validation tuning, confusion matrix, ROC AUC, threshold); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -14919,16 +15522,34 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:backtest-design-evaluation"
+   ],
    "candidate_entries": [
     "meth:backtest-evaluation-diagnostics",
-    "pit:parameter-overfitting"
+    "pit:parameter-overfitting",
+    "meth:backtest-design-evaluation"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "alpha-afml",
+      "locator": "pp. 151-154; pp. 161-166"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/alpha-afml.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:backtest-design-evaluation"
+    ],
+    "example": "notes/artefacts/backtest-inference/backtest-design-checks.py: parts 1-5 (synthetic universe without predictability: survivorship, look-ahead, costs and turnover, drawdown, best-of-24 against walk-forward); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -15935,13 +16556,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:individual-wealth-capital"
+   ],
+   "candidate_entries": [
+    "meth:individual-wealth-capital"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "fed-scf-2022",
+      "locator": "pp. 11-13, 20"
+     },
+     {
+      "key": "ibbotson-lifetime-financial-advice-2007",
+      "locator": "pp. 13-16, 74-76"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/fed-scf-2022.md",
+     "notes/readings/ibbotson-lifetime-financial-advice-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:individual-wealth-capital"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 1 (the Okafors' human capital, financial capital and economic net worth); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -15953,13 +16598,47 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-client-tax-inflation"
+   ],
+   "candidate_entries": [
+    "meth:private-client-tax-inflation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "irs-rev-proc-2025-32",
+      "locator": "secs. 4.01, 4.03"
+     },
+     {
+      "key": "us-internal-revenue-code-26",
+      "locator": "sec. 1411"
+     },
+     {
+      "key": "govuk-income-tax-rates-2026",
+      "locator": "tables"
+     },
+     {
+      "key": "govuk-cgt-rates-2026",
+      "locator": "rates page"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/irs-rev-proc-2025-32.md",
+     "notes/readings/us-internal-revenue-code-26.md",
+     "notes/readings/govuk-income-tax-rates-2026.md",
+     "notes/readings/govuk-cgt-rates-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-client-tax-inflation"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 2 (after-tax and real returns, US 2026 and UK 2026-27); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -15973,13 +16652,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-client-ips"
+   ],
+   "candidate_entries": [
+    "meth:private-client-ips"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ibbotson-lifetime-financial-advice-2007",
+      "locator": "pp. 13-16, 74-79"
+     },
+     {
+      "key": "esma-suitability-guidelines-2022",
+      "locator": "paras. 12, 33-34, 44"
+     },
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 87-90"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ibbotson-lifetime-financial-advice-2007.md",
+     "notes/readings/esma-suitability-guidelines-2022.md",
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-client-ips"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 3 (the Okafors' required return and IPS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -15992,13 +16700,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:institutional-investor-characteristics"
+   ],
+   "candidate_entries": [
+    "def:institutional-investor-characteristics"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "chap. 1, pp. 4-28; p. 24"
+     },
+     {
+      "key": "santiago-principles-2008",
+      "locator": "GAPP 1, 4, 6, 18-19, 22"
+     },
+     {
+      "key": "us-internal-revenue-code-26",
+      "locator": "sec. 4942(e)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-ang.md",
+     "notes/readings/santiago-principles-2008.md",
+     "notes/readings/us-internal-revenue-code-26.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "def:institutional-investor-characteristics"
+    ],
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 2 (spending rules, a foundation's payout, bank and insurer balance sheets); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -16010,13 +16747,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:db-pension-risk"
+   ],
+   "candidate_entries": [
+    "meth:db-pension-risk"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "chap. 1, pp. 16-22"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:db-pension-risk"
+    ],
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 1 (Harlow Industrial's DB plan: funded status, surplus risk and the sponsor); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -16029,13 +16785,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:institutional-ips-portfolios"
+   ],
+   "candidate_entries": [
+    "meth:institutional-ips-portfolios"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "nbim-gpfg-2026",
+      "locator": "benchmark index; risk management; about the fund"
+     },
+     {
+      "key": "lerner-schoar-wang-endowments-2008",
+      "locator": "NBER WP 14341, abstract, pp. 1-2"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "pp. 26-27"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/nbim-gpfg-2026.md",
+     "notes/readings/lerner-schoar-wang-endowments-2008.md",
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:institutional-ips-portfolios"
+    ],
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: parts 1-3 (DB plan, spending rules, foundation payout, bank and insurer balance sheets, GPFG rules); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -16157,13 +16942,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:swf-risk-case"
+   ],
+   "candidate_entries": [
+    "meth:swf-risk-case"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "chap. 1, pp. 7-12; chap. 3, pp. 71-73"
+     },
+     {
+      "key": "nbim-gpfg-2026",
+      "locator": "climate action plan; risk management"
+     },
+     {
+      "key": "santiago-principles-2008",
+      "locator": "GAPP 22"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-ang.md",
+     "notes/readings/nbim-gpfg-2026.md",
+     "notes/readings/santiago-principles-2008.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:swf-risk-case"
+    ],
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 3 (the GPFG rules and the hypothetical Vardø Fund's risks); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -17248,13 +18062,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:asset-manager-code"
+   ],
+   "candidate_entries": [
+    "def:asset-manager-code"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "asset-manager-code-2010",
+      "locator": "pp. 1-2"
+     },
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "p. xi"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/asset-manager-code-2010.md",
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "def:asset-manager-code"
+    ],
+    "example": "principles and provisions tabulated in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -17267,13 +18105,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:asset-manager-code-compliance"
+   ],
+   "candidate_entries": [
+    "meth:asset-manager-code-compliance"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "asset-manager-code-2010",
+      "locator": "pp. 9-22"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/asset-manager-code-2010.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:asset-manager-code-compliance"
+    ],
+    "example": "original hedge-fund manager reviewed provision by provision in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -18027,13 +18884,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:endowment-liquidity-allocation"
+   ],
+   "candidate_entries": [
+    "meth:endowment-liquidity-allocation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-ang",
+      "locator": "chap. 13, pp. 410-412"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-ang.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:endowment-liquidity-allocation"
+    ],
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 4 (Elmsworth endowment: liquidity stress, denominator effect, commitment pacing); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18083,13 +18959,47 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:institutional-esg-integration"
+   ],
+   "candidate_entries": [
+    "meth:institutional-esg-integration"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "nbim-gpfg-2026",
+      "locator": "climate action plan"
+     },
+     {
+      "key": "s7-ang",
+      "locator": "chap. 3, pp. 71-73, 112"
+     },
+     {
+      "key": "sustainable-investment-review-2022",
+      "locator": "Tables 1-2, p. 7"
+     },
+     {
+      "key": "santiago-principles-2008",
+      "locator": "GAPP 19.1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/nbim-gpfg-2026.md",
+     "notes/readings/s7-ang.md",
+     "notes/readings/sustainable-investment-review-2022.md",
+     "notes/readings/santiago-principles-2008.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:institutional-esg-integration"
+    ],
+    "example": "notes/artefacts/institutional-portfolios/institutional-checks.py: part 5 (ESG constraints in a long-term portfolio); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18101,13 +19011,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:standards-in-manager-selection"
+   ],
+   "candidate_entries": [
+    "meth:standards-in-manager-selection"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 13, 132-133"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:standards-in-manager-selection"
+    ],
+    "example": "original endowment manager-selection case in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -18802,13 +19731,47 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:wealth-management-industry"
+   ],
+   "candidate_entries": [
+    "def:wealth-management-industry"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "gennaioli-shleifer-vishny-money-doctors-2012",
+      "locator": "pp. 1-5"
+     },
+     {
+      "key": "sec-adviser-standard-of-conduct-2019",
+      "locator": "84 FR 33672, 33676"
+     },
+     {
+      "key": "sec-reg-bi-rule",
+      "locator": "para. (a)"
+     },
+     {
+      "key": "eu-2014-65-mifid2",
+      "locator": "Art. 24(4), (7)-(9)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/gennaioli-shleifer-vishny-money-doctors-2012.md",
+     "notes/readings/sec-adviser-standard-of-conduct-2019.md",
+     "notes/readings/sec-reg-bi-rule.md",
+     "notes/readings/eu-2014-65-mifid2.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "def:wealth-management-industry"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 4 (fee models over 20 years on 2m); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18821,13 +19784,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:advising-families"
+   ],
+   "candidate_entries": [
+    "meth:advising-families"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "esma-suitability-guidelines-2022",
+      "locator": "paras. 11-16, 44, 53"
+     },
+     {
+      "key": "gennaioli-shleifer-vishny-money-doctors-2012",
+      "locator": "pp. 3-5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/esma-suitability-guidelines-2022.md",
+     "notes/readings/gennaioli-shleifer-vishny-money-doctors-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:advising-families"
+    ],
+    "example": "original family case and joint-decision framework in the entry; no calculation"
+   },
    "supersedes": null
   },
   {
@@ -18840,13 +19827,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:goals-based-financial-plan"
+   ],
+   "candidate_entries": [
+    "meth:goals-based-financial-plan"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 6, sec. 4, pp. 268-283"
+     },
+     {
+      "key": "ibbotson-lifetime-financial-advice-2007",
+      "locator": "pp. 74-75"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/portfolio-management-in-practice-v1-2020.md",
+     "notes/readings/ibbotson-lifetime-financial-advice-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:goals-based-financial-plan"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 5 (goals, funded ratio and liquidity tiers); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18859,13 +19870,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:lifetime-exposures"
+   ],
+   "candidate_entries": [
+    "meth:lifetime-exposures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ibbotson-lifetime-financial-advice-2007",
+      "locator": "pp. 28-31, 41-44, 74-79"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ibbotson-lifetime-financial-advice-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:lifetime-exposures"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 6 (mortality, disability and longevity; illustrative Gompertz mortality); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18879,13 +19909,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:tax-in-planning"
+   ],
+   "candidate_entries": [
+    "meth:tax-in-planning"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "us-internal-revenue-code-26",
+      "locator": "sec. 1091(a); sec. 1014(a)"
+     },
+     {
+      "key": "govuk-isa-2026",
+      "locator": "overview"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/us-internal-revenue-code-26.md",
+     "notes/readings/govuk-isa-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:tax-in-planning"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 7 (asset location and loss harvesting, US 2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18899,13 +19953,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:private-client-allocation-review"
+   ],
+   "candidate_entries": [
+    "meth:private-client-allocation-review"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ibbotson-lifetime-financial-advice-2007",
+      "locator": "pp. 13-18"
+     },
+     {
+      "key": "asset-manager-code-2010",
+      "locator": "pp. 21-22"
+     },
+     {
+      "key": "standards-practice-handbook-2024",
+      "locator": "pp. 87-90"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ibbotson-lifetime-financial-advice-2007.md",
+     "notes/readings/asset-manager-code-2010.md",
+     "notes/readings/standards-practice-handbook-2024.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:private-client-allocation-review"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 8 (allocation, reporting and review); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18918,13 +20001,47 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:retirement-across-jurisdictions"
+   ],
+   "candidate_entries": [
+    "meth:retirement-across-jurisdictions"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "irs-notice-2025-67",
+      "locator": "secs. 402(g), 414(v), 219(b)"
+     },
+     {
+      "key": "us-internal-revenue-code-26",
+      "locator": "sec. 401(a)(9)(C)(v)"
+     },
+     {
+      "key": "govuk-pension-tax-2026",
+      "locator": "annual allowance; lump sum allowance"
+     },
+     {
+      "key": "uk-us-double-taxation-convention-2001",
+      "locator": "Arts. 1(4)-(5), 4(4), 18"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/irs-notice-2025-67.md",
+     "notes/readings/us-internal-revenue-code-26.md",
+     "notes/readings/govuk-pension-tax-2026.md",
+     "notes/readings/uk-us-double-taxation-convention-2001.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:retirement-across-jurisdictions"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 9 (retirement saving across jurisdictions); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18938,13 +20055,32 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:human-capital-risks"
+   ],
+   "candidate_entries": [
+    "meth:human-capital-risks"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ibbotson-lifetime-financial-advice-2007",
+      "locator": "pp. 13-16, 28-31, 75-76"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ibbotson-lifetime-financial-advice-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:human-capital-risks"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 10 (protecting human capital); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18957,13 +20093,37 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:purchasing-power-fx"
+   ],
+   "candidate_entries": [
+    "meth:purchasing-power-fx"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "treasurydirect-tips",
+      "locator": "web page"
+     },
+     {
+      "key": "campbell-viceira-currency-hedging-2007",
+      "locator": "NBER WP 13088, pp. 1-3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/treasurydirect-tips.md",
+     "notes/readings/campbell-viceira-currency-hedging-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:purchasing-power-fx"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 10 (purchasing power and exchange rates); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18976,13 +20136,62 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:residency-citizenship"
+   ],
+   "candidate_entries": [
+    "meth:residency-citizenship"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "uk-us-double-taxation-convention-2001",
+      "locator": "Art. 1(4)"
+     },
+     {
+      "key": "us-internal-revenue-code-26",
+      "locator": "sec. 7701(b)(3); sec. 877(a)(2); sec. 877A(a)"
+     },
+     {
+      "key": "irs-rev-proc-2025-32",
+      "locator": "sec. 4.37; sec. 4.38"
+     },
+     {
+      "key": "hmrc-rdr3-2026",
+      "locator": "secs. 2-4, Tables A and B"
+     },
+     {
+      "key": "govuk-nondom-reform-2024",
+      "locator": "policy summary"
+     },
+     {
+      "key": "hmrc-ihtm-2026",
+      "locator": "IHTM47020"
+     },
+     {
+      "key": "iras-tax-residency-2026",
+      "locator": "residency rules"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/uk-us-double-taxation-convention-2001.md",
+     "notes/readings/us-internal-revenue-code-26.md",
+     "notes/readings/irs-rev-proc-2025-32.md",
+     "notes/readings/hmrc-rdr3-2026.md",
+     "notes/readings/govuk-nondom-reform-2024.md",
+     "notes/readings/hmrc-ihtm-2026.md",
+     "notes/readings/iras-tax-residency-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:residency-citizenship"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 11 (residence and citizenship tests); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -18995,13 +20204,42 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:complex-client-situations"
+   ],
+   "candidate_entries": [
+    "meth:complex-client-situations"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "irs-rev-proc-2025-32",
+      "locator": "sec. 4.42(2)"
+     },
+     {
+      "key": "us-internal-revenue-code-26",
+      "locator": "sec. 1202(a)(1), (a)(5), (b)(1), (b)(4)"
+     },
+     {
+      "key": "sec-rule-10b5-1",
+      "locator": "para. (c)(1)(ii)(B)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/irs-rev-proc-2025-32.md",
+     "notes/readings/us-internal-revenue-code-26.md",
+     "notes/readings/sec-rule-10b5-1.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:complex-client-situations"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 12 (founders and executives); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -19014,13 +20252,47 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:wealth-transfer-strategies"
+   ],
+   "candidate_entries": [
+    "meth:wealth-transfer-strategies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 5,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "irs-rev-proc-2025-32",
+      "locator": "secs. 3.14, 4.42"
+     },
+     {
+      "key": "us-internal-revenue-code-26",
+      "locator": "sec. 2001(c); secs. 1014(a), 1015(a); sec. 4942(e); sec. 664(d)"
+     },
+     {
+      "key": "govuk-iht-2026",
+      "locator": "overview; gifts"
+     },
+     {
+      "key": "govuk-iht-thresholds-2026",
+      "locator": "thresholds table"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/irs-rev-proc-2025-32.md",
+     "notes/readings/us-internal-revenue-code-26.md",
+     "notes/readings/govuk-iht-2026.md",
+     "notes/readings/govuk-iht-thresholds-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:wealth-transfer-strategies"
+    ],
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 13 (gifts, bequests and philanthropy); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   }
  ]

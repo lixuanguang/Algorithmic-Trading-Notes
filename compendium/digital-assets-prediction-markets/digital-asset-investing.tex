@@ -1,0 +1,60 @@
+\section{Distributed ledgers and digital-asset investing}
+
+\begin{qfdefinition}[Distributed ledger technology and its financial applications: hash-chained blocks, consensus by proof-of-work or proof-of-stake, permissioned and permissionless ledgers, smart contracts, tokenisation, and the limits on finality and scale]\label{def:distributed-ledger-applications}
+\qffield{Statement} \emph{Ledger mechanics.} A distributed ledger is a record of transactions of which each participant keeps a copy; it lets parties transfer a digital asset without a central record-keeper by solving the \emph{double-spending} problem, that digital information can be copied and spent twice \citep[ch.~V, ``Distributed ledger technology in cryptocurrencies'']{bis-aer-2018-cryptocurrencies}. A cryptocurrency combines a protocol (the rules in code), the ledger and a decentralised network that updates, stores and reads it (same section). In a \emph{blockchain} the ledger is updated in blocks: each block holds a hash of the previous block, so altering a past transaction changes every later hash; transactions in a block are summarised by a Merkle-tree root, which lets a light client verify that a transaction is included from a short branch of hashes \citep[secs.~3, 7--8, pp.~2--5]{s6-bitcoin}. Ownership passes by digital signatures: a coin is a chain of signatures, each owner signing a hash of the previous transaction and the next owner's public key (sec.~2, p.~2).
+
+\emph{Consensus.} Under \emph{proof-of-work}, a block is accepted only if its hash falls below a target; finding one takes costly computation and checking it takes one hash; honest nodes follow the chain with the most work, and an attacker with less than half the computing power falls behind exponentially in the number of blocks added after a transaction (secs.~4--5, 11, pp.~3, 6--8). Bitcoin's protocol fixes supply: the block reward halves every 210{,}000 blocks, about four years, so issuance converges to 21 million coins \citep[draft of 9 February 2016, p.~62]{crypto-narayanan}. Under \emph{proof-of-stake}, validators deposit stake (32~ETH on Ethereum), are chosen at random to propose blocks in 12-second slots, attest to blocks in 32-slot epochs, and lose stake (``slashing'') for provable misbehaviour; a block is final once two-thirds of staked ETH links two checkpoints. Ethereum moved from proof-of-work to proof-of-stake on 15 September 2022 \citep[``Proof-of-stake'' and ``The Merge'' pages]{ethereum-pos-2026}.
+
+\emph{Permissioned and permissionless.} In \emph{permissioned} ledgers only trusted nodes, chosen and overseen by an authority, may update the ledger; trust still rests on an institution. In \emph{permissionless} ledgers anyone may take part and no one holds a special key (BIS, ch.~V, same section).
+
+\emph{Financial applications}: cryptocurrencies; \emph{smart contracts}, programs on the ledger that execute payment flows automatically (Ethereum) \citep[pp.~285--287]{crypto-narayanan}; \emph{tokenisation} of assets and initial coin offerings, which may be securities or ``utility tokens'' giving access to a service; stablecoins (\hyperref[rule:stablecoin-standards]{stablecoin standards}); decentralised finance such as \hyperref[def:amm-pool-mechanics]{automated market makers}; and permissioned uses in trade finance, low-value cross-border payments and post-trade settlement, which do not need a cryptocurrency at all (BIS, ch.~V, ``Beyond the bubble'' and Boxes V.B and V.C).
+
+\emph{Limits} (BIS, ch.~V, ``Assessing the economic limitations''): proof-of-work uses large amounts of energy; every full participant stores and checks the whole history, so throughput is capped and fees rise under congestion; finality under proof-of-work is probabilistic, never reaching certainty; and forks can split a chain, as on 11~March~2013 when Bitcoin's two branches were reconciled only by miners departing from protocol.
+
+\qffield{Practice} \emph{Toy ledger} (\texttt{digital-asset-checks.py}, parts~1--4, real SHA-256 hashing).
+\begin{itemize}
+\item Changing ``A pays B~5'' to ``A pays B~50'' in the first of three blocks breaks the chain's verification; a two-hash Merkle branch confirms a transaction in a four-transaction block and rejects an altered one.
+\item With a 12-bit target, finding a valid nonce took 3{,}507 hashes on average over 60 blocks, against an expectation of $2^{12}=4{,}096$; checking took one.
+\item The white paper's attacker-success formula reproduces its table: with 10~percent of hashing power the attacker's chance after 5 blocks is 0.09~percent; to keep it below 0.1~percent a merchant waits 5, 24 and 340 blocks against attackers with 10, 30 and 45~percent. An exact negative-binomial count (Derivation), confirmed by simulation, gives 0.18~percent after 5 blocks: the paper's Poisson step understates the risk, so its waiting times are a lower bound.
+\item Summing the halving schedule in integer satoshis gives 20{,}999{,}999.9769 coins over 33 halving eras.
+\end{itemize}
+
+\qffield{Conditions} The mechanics describe Bitcoin and Ethereum as specified in these sources; other ledgers differ, and the BIS assessment is of 2018.
+
+\qffield{Pitfalls} Calling a ledger immutable: it is costly to rewrite, not impossible, and consensus can fail. Assuming a blockchain is needed whenever several parties share data: a permissioned database may do. Treating an application of the technology as an investment in a coin.
+
+\qffield{See also} \hyperref[meth:digital-asset-investment-analysis]{digital-asset investing}; \hyperref[def:crypto-venue-instrument-structure]{crypto venues and instruments}; \hyperref[mech:defi-lending-liquidation]{DeFi lending}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Digital-asset investing: features, vehicles (direct holdings, exchange-traded products, futures, funds and related equities), custody and liquidity, and the analysis of risk, return and diversification]\label{meth:digital-asset-investment-analysis}
+\qffield{Statement} \emph{Ledger mechanics are not the investment.} The ledger determines how ownership is recorded and transferred; the investor's \emph{exposure} is to the price of a token, through a \emph{vehicle}, held by a \emph{custodian} or by the investor, and traded where \emph{liquidity} exists. Each layer carries separate risks.
+
+\emph{Features.} A cryptocurrency is no one's liability: it cannot be redeemed, and its value depends only on the expectation that others will accept it; its supply is fixed by protocol rather than adjusted to demand, so demand shocks move price \citep[ch.~V, ``A new petal in the money flower?'' and ``Assessing the economic limitations'']{bis-aer-2018-cryptocurrencies}. It produces no cash flows, so valuation rests on adoption, scarcity and network arguments rather than discounted income (Interpretation).
+
+\emph{Vehicles} (Interpretation, with sources where given):
+\begin{itemize}
+\item \emph{Direct holdings}, self-custodied (private keys held in ``hot'' online or ``cold'' offline storage, possibly split by multisignature or threshold signatures) or held at an exchange or wallet provider, which then has bank-like risks of a run on fractional reserves, fraud and hacking \citep[draft of 9 February 2016, secs.~4.2--4.4, pp.~103--118]{crypto-narayanan}; the BIS notes that many users who distrust banks end up relying on unregulated intermediaries, some of them fraudulent or hacked (ch.~V, ``Regulatory challenges'').
+\item \emph{Spot exchange-traded products}. The SEC approved eleven spot bitcoin ETPs on 10 January 2024, finding that a surveillance-sharing agreement with the CME could detect manipulation because its own correlation analysis showed that manipulation of spot prices would likely also affect CME bitcoin futures; investor-protection rules such as Regulation Best Interest apply to brokers recommending them; it noted that custodians hold keys, not the bitcoin itself, which could introduce risks \citep[89~FR 3008, 3009--3013]{sec-spot-bitcoin-etp-order-2024}.
+\item \emph{Futures} and futures-based funds, which earn spot plus or minus the roll yield (\hyperref[ev:crypto-dated-futures-carry]{dated-futures carry}); \emph{perpetuals} on crypto venues (\hyperref[mech:perpetual-funding]{funding}); private funds and venture investments in tokens; and equities of miners, exchanges or holders of tokens, which add company risk.
+\end{itemize}
+
+\emph{Risk, return and diversification.} Liu and Tsyvinski find, for Bitcoin from 2011 to May 2018, a weekly mean return of 3.79~percent and standard deviation of 16.64~percent; positive skew rising from 0.80 daily to 4.32 monthly; daily falls beyond 20~percent on 0.48~percent of days and rises beyond 20~percent on 0.95~percent; no significant exposure to the Fama--French factors, major currencies, precious metals (except Ethereum to gold) or macroeconomic factors; and predictability from crypto-specific momentum and investor attention, such as Google searches \citep[NBER WP 24877, August 2018, pp.~1--2 and Table~1, pp.~6--7]{roadmap-crypto-risks-returns}. Low measured correlations over a short, special sample are weak evidence of diversification in a crisis.
+
+\emph{Analysis} (Interpretation): define the exposure and vehicle; size by risk budget, not capital; check custody (segregation, key control, insurance, proof of reserves), liquidity (venue depth, ETP creations and redemptions, weekend trading when traditional markets are shut), legal and tax status in the investor's jurisdiction, and operational and governance risks (forks, protocol changes, slashing for staking).
+
+\qffield{Practice} \emph{Checks and a hypothetical allocation} (\texttt{digital-asset-checks.py}, parts~5--7).
+\begin{itemize}
+\item Liu and Tsyvinski's Sharpe ratios equal mean over standard deviation at each frequency (0.09, 0.23, 0.31), and their extreme-day frequencies imply about 2{,}708 observed days, every calendar day from 2011 to May 2018: crypto trades seven days a week. A weekly standard deviation of 16.64~percent annualises to about 120~percent.
+\item \emph{Hypothetical}: a 60/40 portfolio with 10~percent volatility, a crypto asset with 70~percent volatility and a correlation of 0.3. Weights of 1, 2.5 and 5~percent supply 2.5, 7.5 and 18.2~percent of portfolio risk and raise its volatility to 10.13, 10.41 and 11.07~percent.
+\item \emph{Hypothetical custody}: each key independently lost with probability 5~percent a year and compromised with 2~percent. A single key loses or exposes the holding with those probabilities; a 2-of-3 multisignature arrangement cuts them to 0.73 and 0.12~percent, provided failures are independent.
+\end{itemize}
+\emph{Decision} for an endowment considering a 1~percent allocation: use a spot ETP or a regulated custodian rather than self-custody; count the position in the risk budget at its contribution, not its weight; set rebalancing bands; and state in the investment policy that the allocation is a speculative position on adoption, not a diversifier expected to hold up in a crisis.
+
+\qffield{Conditions} The return statistics cover 2011--2018; markets, vehicles and regulation have since changed. The allocation and custody inputs are hypothetical. Regulatory treatment differs by jurisdiction and the U.S. order is dated January 2024.
+
+\qffield{Pitfalls} Treating a token's past Sharpe ratio as an expected one. Measuring diversification from a short sample. Ignoring the difference between owning a token and owning a claim on an intermediary that holds it.
+
+\qffield{See also} \hyperref[def:distributed-ledger-applications]{distributed ledgers}; \hyperref[def:crypto-trading-risk-layers]{crypto trading risk layers}; \hyperref[ev:stablecoin-runs]{stablecoin runs}.
+
+\end{qfmethod}

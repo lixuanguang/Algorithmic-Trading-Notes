@@ -2,12 +2,14 @@
 key: sustainable-investment-review-2022
 pathways: [portfolio-construction-risk]
 version: Global Sustainable Investment Alliance, Global Sustainable Investment Review 2022 (published November 2023), 47 pp., PDF (SHA-256 5741c6a4d02a92bb507b20149b681a7cc31652d3075b02e1169d9c20ea1d81f7)
-sections: p. 7, Tables 1-2 (harmonised definitions from CFA Institute, GSIA and PRI)
+sections: p. 7, Tables 1-2 (harmonised definitions from CFA Institute, GSIA and PRI); same tables reused by the completion batch (2026-10-20)
 read:
 status: draft
 ---
 
 Prepared on 2026-10-18 by the performance and planning batch (2026-10-18) from source checks, not from study: the headings that need your own reading are left empty. Used for `meth:asset-class-portfolio-construction`.
+
+Extended on 2026-10-20 by the completion batch (2026-10-20), from source checks, not from study: used also for `meth:institutional-esg-integration` (approach definitions).
 
 ## Question and claim
 

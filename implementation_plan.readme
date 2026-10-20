@@ -24,6 +24,10 @@ branch stacked on PR #22. No next content slice has been selected. Not started: 
 (multiple regression, misspecification, extensions); the rest of Batch 2; and
 the rest of Batches 3-6. (Later batches are in Sections 20-29; the linear-regression objectives
 named here were completed in Section 29.)
+Current summary (2026-10-20): after the audit corrections of Section 32 and the completion batch
+of Section 33, all 424 objectives and all 1,030 outline items are covered (editorial coverage),
+with professional ethics and private wealth management added as chapters. Remaining work is
+human review of the draft entries and study; no content batch is pending.
 Editorial coverage only: nothing here records or implies learner mastery.
 Audit date: 2026-10-18, Asia/Singapore.
 Repository baseline: `dc74b55`; pinned guide: `343d145909ba5384202b50604bf5ebe7e5b6ed86`.
@@ -3207,3 +3211,28 @@ tree clean, no "... 2" copies present. Coverage 371/424 objectives and 887/1,030
 
 **Evidence.** Three scripts extended (37, 38 and 25 checks). Ten objectives and 27 outline items rechecked;
 coverage unchanged. Corrections count toward no new objective.
+
+## 33. Completion batch: the remaining 53 objectives (executed 2026-10-20)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `2d9f2f3` (the Section 32 corrections), draft
+PR #33 open, no "... 2" copies present. Coverage before: 371/424 objectives and 887/1,030 outline items; the 143
+remaining items map only to the 53 remaining objectives. At the user's request this batch covers all of them,
+superseding the 45-objective preference for this prompt only.
+
+**Scope.** Professional ethics (22, new chapter `professional-ethics`): ethics and trust, the code and its
+enforcement, Standards I-VII applied with prevention, conduct evaluation, the Asset Manager Code and manager
+selection. Private wealth (15, new chapter `private-wealth-management`). Institutional investors (6). Machine
+learning and the data-science workflow (7). Backtest design (1). Distributed ledgers and digital-asset investing (2).
+
+**Method.** Each outline item read on its page; issuer texts for the ethics code (no curriculum readings), law,
+regulators' pages and tax tables dated to 2026, books held by the owner, working papers; original hypothetical
+clients and cases; synthetic data, labelled, for machine learning and backtesting. One checked example script per
+area, run by `make examples`. Records through the existing objectives, crosswalk, entry-evidence, reading-note and
+pathway files; four source keys renamed to keep the provider token out of maintained names. No new validation
+framework and no checker changed.
+
+**Result.** 53 new entries; five new scripts with 118 checks (43, 21, 23, 10, 21); 32 new sources; 38 new and six
+extended reading notes. Coverage 424/424 objectives and 1,030/1,030 items. Editorial coverage only; human review
+is outstanding.
+
+Details: `notes/source-review-records.md`, *Completion batch, 20 October 2026*.

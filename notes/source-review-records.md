@@ -5253,3 +5253,88 @@ updated; mapping and coverage unchanged (371/424, 887/1,030).
 is cited from its exposure draft; national covered-bond transpositions and the CRR minimum
 overcollateralisation were not read; construction delay and reserve accounts remain outside the
 Ashdown model.
+
+## Completion batch, 20 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` at `2d9f2f3` (*Alternatives audit
+correction pass*, which counts toward no objective), draft PR #33 open. Coverage before: 371/424
+objectives and 887/1,030 outline items. All 53 remaining objectives were `missing`; five had
+candidate entries (`def:inside-information`, `rule:spoofing-securities-markets`,
+`meth:purged-embargoed-cross-validation`, `meth:backtest-evaluation-diagnostics` with
+`pit:parameter-overfitting`, `def:amm-pool-mechanics`, `def:crypto-venue-instrument-structure`),
+none of which performs the objectives' operations, so new entries were written and the candidates
+kept as cross-references. The 143 remaining outline items map only to these 53 objectives; one item
+(`0242f4b7ba07:m007:b07`) maps to two and carries one rationale. No "... 2" copies were present.
+This batch supersedes the standing 45-objective preference at the user's request: all remaining
+objectives and items.
+
+**Scope (53).**
+- professional-ethics (new chapter): 22 (ethics and trust 2; code, programme and enforcement 2; Standards I-VII applied and prevention 14; evaluating conduct 1; Asset Manager Code 2; manager selection 1)
+- private-wealth-management (new chapter): 15 (clients and industry 5; planning 5; preservation 2; transfer and complex clients 3)
+- portfolio-construction-risk: institutional investors 6
+- ml-alternative-data: 7 (learning methods 3; data-science workflow 4)
+- research-engineering-validation: backtest design 1
+- digital-assets-prediction-markets: distributed ledgers and digital-asset investing 2
+
+Implemented in prerequisite order: ethics (framework, code, Standards, cases, firm code, manager
+selection); private wealth (capital and taxes before the IPS, planning before preservation and
+transfer); institutional investors (characteristics before DB risk, IPS evaluation, the SWF case,
+endowment liquidity and ESG); machine learning (methods before workflow, text and evaluation);
+backtest design; ledger mechanics before digital-asset investing.
+
+**Outline pages read.** Level I (`7099c7688942`) PDF pp. 3, 26, 29-31; Level II (`0242f4b7ba07`)
+PDF pp. 2-3, 27, 29-30; Level III core (`2e1d62d8f585`) PDF pp. 6-7, 13-15, 18; Private Wealth
+(`5bc9c1013387`) PDF pp. 16-18. Each of the 143 items was read on its page and given an
+item-specific rationale naming the entry and what it does for that item. Gaps found in review were
+written into entries rather than left as residual gaps: bank and insurer balance sheets in the
+institutional IPS entry, liquidity strategies in the goals-based plan, the joint family decision
+framework, enterprise risk management against GAPP 22, preventive procedures for each Asset
+Manager Code provision, and the custody and vehicle layer for digital assets.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Ethics (issuer's official texts, not curriculum readings): *Standards of Practice Handbook*, 12th ed. (2024); *Rules of Procedure for Conduct Related to the Profession* (2022); the *Ethical Decision-Making Framework* card (2014, member-society copy); *Asset Manager Code*, 2nd ed.; SEC Release IA-5248 (2019) on advisers' standard of conduct; Gennaioli, Shleifer and Vishny, *Money Doctors* (NBER WP 18174).
+- Private wealth: Survey of Consumer Finances 2022 (Federal Reserve Bulletin, October 2023); Ibbotson et al., *Lifetime Financial Advice* (2007); IRS Rev. Proc. 2025-32 and Notice 2025-67; 26 USC 401(a)(9), 664, 877, 877A, 1014, 1015, 1091, 1202, 1411, 2001, 4942, 7701(b); 17 CFR 240.10b5-1 and 240.15l-1; ESMA suitability guidelines (2022); MiFID II art. 24; GOV.UK and HMRC pages for income tax, CGT, ISAs, pensions, inheritance tax, the statutory residence test (RDR3), IHTM47020 and the 2024 non-dom reform; IRAS residency rules; the UK-US double taxation convention (2001/2002); and *Portfolio Management in Practice*, vol. 1, chap. 6 (read in an earlier batch).
+- Institutional: Ang (2014) chaps. 1, 3, 13; the Santiago Principles (2008); NBIM's GPFG pages (2026); Lerner, Schoar and Wang (NBER WP 14341); the GSIA review (2022).
+- Machine learning and backtesting: James et al., *ISLR*, 2nd ed. (owner's copy); Gentzkow, Kelly and Taddy (NBER WP 23276); FSB, *AI and Machine Learning in Financial Services* (2017); López de Prado, *AFML*, chaps. 2, 11-12.
+- Digital assets: Nakamoto (2008); BIS Annual Economic Report 2018, chap. V; Narayanan et al. (draft of 9 February 2016); ethereum.org proof-of-stake and Merge pages (2026); Liu and Tsyvinski (NBER WP 24877); SEC Release 34-99306 (89 FR 3008, January 2024).
+- Curriculum volumes and answer workbooks were not used; the outlines were used only to map and review items. Handbook examples were read but not reproduced: every case in the ethics entries is original.
+
+**Access limits and unread sources.**
+- sec.gov, the IRS treaty page, regjeringen.no, SSA life tables and the ISLR/ESL sites refused automated download; the Federal Register (govinfo) copies of the SEC releases, the GOV.UK treaty text, NBIM's own pages and the owner's ISLR copy were used instead. The private-wealth mortality example uses an illustrative Gompertz law, labelled as such, not an official life table.
+- EUR-Lex returned blank pages; MiFID II was read from the Publications Office (CELLAR) copy. The BIS chapter PDF link returned HTML; the HTML version is cited by section heading.
+- The published *Bitcoin and Cryptocurrency Technologies* (2016), the RFS version of Liu and Tsyvinski, the *Journal of Finance* version of *Money Doctors* and the *JEP* version of Lerner et al. were not read; the drafts and working papers are cited and the entries say so.
+- State and local taxes, case law, Treasury regulations, HMRC manuals beyond IHTM47020, the SEC's 10b5-1 and Reg BI adopting releases, and later spot-ETP orders (in-kind creation, ether) were not read.
+
+**Discrepancies and approximations found in sources.**
+- Nakamoto (2008) sec. 11 treats the attacker's progress as Poisson; the exact negative-binomial count gives 0.178 percent after 5 blocks at q = 0.1 against the printed 0.091 percent, so the paper's waiting times are lower bounds (`digital-asset-checks.py` part 3, with a simulation).
+- The FSB report (2017) and the BIS chapter (2018) describe their dates; Ethereum moved to proof-of-stake in September 2022, after both and after the Narayanan draft.
+
+**Conventions protected by the examples.**
+- Taxes and thresholds are dated (US tax year 2026, UK 2026-27) and every client is hypothetical.
+- Machine-learning examples are synthetic, labelled as such, with training, validation and an untouched test set; every fitted transform, vocabulary and idf weight is estimated on training data only.
+- Backtest examples use a simulated universe with no predictability, so any performance is an artefact of design.
+- Ledger mechanics (hashing, consensus, finality) are kept separate from investment exposure, vehicle, custody and liquidity.
+
+**Numerical evidence** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; all run with `python -W error` by `make examples`):
+- `notes/artefacts/private-wealth/private-wealth-checks.py`: 13 parts, 43 checks; human capital and economic net worth; after-tax and real returns; required return; fee models; goals and funded ratio; illustrative mortality, disability and longevity; asset location and harvesting; reporting; retirement accounts; residence tests; founders and executives; gifts against bequests (counting exemption use) and philanthropy.
+- `notes/artefacts/institutional-portfolios/institutional-checks.py`: 5 parts, 21 checks; DB funded status and surplus risk; spending rules, a foundation's payout, bank and insurer gaps; the GPFG fiscal rule and a hypothetical sovereign fund; endowment liquidity stress, the denominator effect and pacing; ESG constraint costs.
+- `notes/artefacts/financial-ml-methods/ml-methods-checks.py`: 6 parts, 23 checks; overfitting; lasso KKT and ridge closed form; trees, forest, KNN and SVM; PCA, k-means and hierarchical clustering; leakage; text features; classifier metrics and ROC.
+- `notes/artefacts/backtest-inference/backtest-design-checks.py`: 5 parts, 10 checks; survivorship, look-ahead, turnover and costs, drawdown by two routes, best-of-24 against walk-forward, expanding against rolling windows.
+- `notes/artefacts/digital-assets/digital-asset-checks.py`: 7 parts, 21 checks; SHA-256 chain and Merkle branch; proof-of-work cost; Nakamoto's table, the exact count and a simulation; issuance schedule; proof-of-stake timing; Liu and Tsyvinski consistency; hypothetical allocation and multisignature custody.
+
+**Errors caught during development** (all corrected before the text was final):
+- expected values set before computing differed from the computed ones (survivorship and look-ahead figures, risk share of a 5 percent crypto weight, simulated attacker probability, ML test errors); the text uses the computed values, and placeholder checks were replaced by computations (10b5-1 dates, wash-sale window, denominator effect);
+- the gift-against-bequest comparison first ignored the use of the lifetime exclusion; four source keys carried the provider token and were renamed (`standards-practice-handbook-2024`, `conduct-rules-of-procedure-2022`, `ethical-decision-framework-2014`, `asset-manager-code-2010`);
+- cross-references to labels that do not exist (thirteen across the batch) were corrected; missing locators were added;
+- reading-note statements not supported by the saved texts were corrected before commit: the conduct panel and standard of proof, UK dividend rates, a "pandering" claim, the Lerner et al. findings, NBIM's risk limit, the Santiago principle numbers and Singapore's three-year concession.
+
+**Coverage.** All 53 objectives were reassessed operation by operation at their stated depth and
+moved to `covered`, each mapped to one new entry. Objectives move from 371/424 to 424/424, and
+outline items from 887/1,030 to 1,030/1,030 (Level I 340, Level II 382, Portfolio Management 64,
+Private Markets 34, Private Wealth 27, shared core 183). This is editorial coverage, not learner
+mastery or independent human review.
+
+**Limits.** The Okafors, Harlow Industrial, the Vardø Fund, Elmsworth, the ethics firms and
+people, the default classifier and the crypto allocation are hypothetical. Tax and regulatory
+figures are dated and jurisdiction-specific and will change. Ethics entries interpret the Standards
+for original cases; the issuer's own guidance governs. Human review is outstanding.

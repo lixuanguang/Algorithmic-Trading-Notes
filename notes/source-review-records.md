@@ -4486,3 +4486,494 @@ rebuild passed (287 pages, no overfull boxes or undefined references). Existing
 underfull/page-destination warnings are not treated as new errors. `make pre-commit`
 passed all hooks. PDF pages96-110 and118-119 were rendered and inspected, covering
 all corrections and both complete client cases; no clipping or overlap observed.
+
+## Macro source-correction pass, 20 October 2026
+
+Starting state verified before edits: `main` at `0b78e4d`, clean. PRs #24, #25 and #26
+are closed, and their corrected stack, through `893622d`, was merged into `main` by PR #28
+on 20 October 2026. The accounting expansion `644f5d0` was reverted by `4196920` before
+that merge, so it is absent from `main`. PR #26's branch therefore cannot receive this pass;
+it runs on `codex/macro-source-corrections-20261020` from `main`.
+
+**Re-audit of the eight PR #26 findings.** Each correction in the record above was
+recomputed by an independent scratch script, not by the repository scripts:
+- cap rate: forward-NOI cash ledger 1.6981 percent and stable-cap control 7.5 percent;
+- cross hedge: 850,000 AUD and USD P&L -15,120;
+- Solow: raw K/L grows at 2.2584 percent, while K/(L A^(1/(1-alpha))) reaches the closed-form 3.7534;
+- P/E: trailing 21, 26.25 and 15 against forward 20, 25 and 14.2857, with Gordon prices 210, 262.5 and 150;
+- Markov: cumulative log returns -5.415, -13.625, 4.0 and 42.335 percent, confirmed by 200,000 simulated paths (-13.59 percent at 12 months);
+- Cedar: all four mixes' mean, volatility, stress and utility;
+- Lins: all budgets, the 60/40 comparison, the reduced home goal and a simulated 80.1 percent home success;
+- the debt ratio 58.857 and the rebalancing weights.
+
+The pricing-probability and fiscal-multiplier wording, as now on `main`, was reread.
+All match. One residual error was found: the Cedar text's normal-model fifth
+percentile "about -8.2%" is -8.13% (5.075 - 1.645 x 8.031). It was not computed by any
+check.
+
+- `meth:asset-only-allocation-mvo`: now "about -8.1%". `saa-checks.py` part 10 adds one check: the closed form, and the empirical quantile of 400,000 simulated multivariate-normal asset returns (-8.1353%). That script now executes 40 checks, up from 39. No allocation decision changes.
+- `def:business-credit-cycles`: BIS Working Paper 380 (Drehmann, Borio and Tsatsaronis, June 2012) was supplied by the owner. Its abstract was read in the earlier batch, but it was not cited. Now read:
+  - introduction, printed pp. 1-3;
+  - sec. 3.3 with Table 8, pp. 16-17;
+  - sec. 4 with Graph 3 and Table 9, pp. 18-20.
+
+  One paragraph cites it for:
+  - the medium-term financial cycle (credit, credit/GDP, house prices; seven countries, 1960-2011);
+  - average duration of about 16 years (nearly 20 after 1998, 11 before);
+  - domestic crises at or near its peaks;
+  - average recession depths of -3.4 against -2.2 percent by financial-cycle phase.
+
+  The authors' "indicative" caveat is kept. New key `financial-cycle-medium-term-2012`, with a reading note. The Jordà-Schularick-Taylor note's retrieval remark was updated.
+- `imf-sdn-2023-001`: the owner supplied the IMF-published PDF (15 January 2023) and its Online Annexes. The Executive Summary is identical, after whitespace normalisation, to the earlier copy without annexes, so the entry's p. 4 locator is unchanged. The reading note's "p. 9" for export bans and national-security restrictions was a locator error: both copies print that passage on p. 10. Box Figure 1.1 (p. 15) and its comparability caveat were added to the note. The annexes were inspected at heading level only and are not relied on. The source description in `sources.tex` now names the official copy.
+
+Coverage is unchanged: 191/424 objectives and 460/1,030 outline items. The affected
+objectives (`describe-business-credit-cycles`, `recommend-asset-allocation`) were
+reassessed and remain covered at their stated depth. No new objective is counted.
+
+## Accounting and statement-analysis batch, 20 October 2026
+
+**Starting state.** Branch `codex/accounting-statement-analysis-20261020` from
+`codex/macro-source-corrections-20261020` at `6157abb` (draft PR #29 to `main`). The
+earlier attempt at this batch (`644f5d0`) was reverted by `4196920` before PR #28 merged.
+It was not reused: its main secondary source was the answer section of a workbook. All
+45 objectives were `missing`. Their 72 outline items map to no objective outside the batch,
+and every declared prerequisite topic is covered or in the batch.
+
+**Scope (45, exactly the Section 23 list).**
+- financial-reporting-framework: 3
+- income-statement-analysis: 5
+- balance-sheet-analysis: 3
+- cash-flow-analysis: 2 (interpret, free cash flow; the three covered objectives are excluded)
+- inventory-accounting: 3
+- long-lived-asset-accounting: 2
+- leases-employee-compensation: 6
+- income-tax-accounting: 3
+- financial-reporting-quality: 7
+- ratio-analysis: 4
+- financial-statement-modelling: 4
+- integrated-statement-analysis: 3
+
+**Outline pages read.** Level I topic outline PDF pp. 11-14 (modules on introduction,
+income statements, balance sheets, cash flows II, inventories, long-term assets, liabilities
+and equity, income taxes, reporting quality, analysis techniques, modelling). Level II
+PDF pp. 7-9 (employee compensation, evaluating quality of financial reports, integration of
+techniques). Each of the 72 items has an item-specific rationale in `outline-crosswalk.json`.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Primary IFRS: the original EU text of Regulation 2023/1803 for IAS 1, 2, 7, 8, 12, 16, 19, 23, 33, 36 and 38 and IFRS 2, 3, 5, 7, 9, 15 and 16, by paragraph.
+- Later EU amending regulations: 2023/2822 (IAS 1 classification and covenants, applied from 2024), 2023/2468 (IAS 12 Pillar Two) and 2024/1317 (supplier finance, from 2024).
+- IFRS 18 in Regulation 2026/338: categories, subtotals, expense disclosure, management-defined performance measures, B50-B55 and transition C1-C8.
+- FASB: 18 Accounting Standards Updates (summaries and effective dates) and 8 pre-Codification Statements (paragraphs cited). The current Codification was not consulted.
+- SEC: Regulation G, Regulation S-K Items 10(e), 105, 303 and 308 (LII display of 17 CFR, retrieved 2026-10-20), and Release 33-8879 (73 FR 986) on IFRS filings by foreign private issuers.
+- EU: Regulation 537/2014, Art. 10 (audit report).
+- Books: Subramanyam and Wild, *Financial Statement Analysis*, 10th ed. (2009), read on the pages cited; Damodaran, *Investment Valuation*, 3rd ed. (2012), pp. 2-3, 282-284, 307-313, 364, 380-381, 571-576.
+- Articles: Porter (2008), HBR reprint pp. 2-10; Sloan (1996), pp. 289-300 incl. Tables 1-3; Kahneman (2011), chap. 23; Barberis and Thaler (pp. 12-15, already recorded).
+- The 2024 CFA Program curriculum volumes in the owner's library were deliberately not used, consistent with earlier batches (Section 3.4 prefers non-curriculum sources).
+
+**Access limits and unread sources.**
+- PCAOB AS 3101 was refused (HTTP 403 and a bot check), so the EU audit regulation is cited instead.
+- SEC.gov rate-limits scripted requests without a declared contact address; the owner's email was not sent, and the LII copies of the CFR were used.
+- Beneish (1999) is paywalled and was not read; no manipulation-model variables or weights are given.
+- Richardson, Tuna and Wysocki (2010), Penman, and Nissim and Penman (2001) were not read. The last is named only as the textbook's source for an 84 percent average.
+- The textbook's research summaries (inventory signals, LIFO reserve and value, cash-flow usefulness) are attributed to the textbook.
+
+**Disagreements and supersessions recorded.** The 2009 textbook predates several standards. In each case the entries cite the current standard and note the change:
+- the SEC's 2008 acceptance of IFRS without reconciliation (the textbook says reconciliation is required);
+- ASU 2015-11 lower of cost and NRV (the textbook describes lower of cost or market);
+- ASU 2015-01, which removed extraordinary items;
+- Topic 842 leases (the textbook capitalises operating leases analytically);
+- IFRS 15 and Topic 606;
+- ASU 2017-04 goodwill;
+- ASU 2017-07 pension presentation.
+
+Issued against effective is stated for IFRS 18 (2027), ASU 2024-03 (annual periods after 15 December 2026), ASU 2025-06 (after 15 December 2027) and ASU 2023-09 (public business entities from 2025).
+
+**Numerical evidence.** `notes/artefacts/financial-statement-analysis/statement-analysis-checks.py`,
+21 parts, 111 checks (one check is one executed `ok()` call). These are checks, not tests or
+objectives. The independent routes are:
+- a double-entry ledger whose direct-method cash flow is summed from tagged postings and compared with an indirect derivation from statements;
+- equity roll-forwards;
+- brute-force subset search for the most dilutive EPS;
+- unit-layer inventory simulation;
+- annuity schedules against closed forms;
+- Black-Scholes-Merton against Monte Carlo;
+- a forecast whose balance sheet must balance with cash from the cash-flow statement;
+- an explicit FCFF bridge;
+- simulation for interval coverage and persistence;
+- currency-unit invariance.
+
+The checks exposed errors during development, all corrected before the text was finalised:
+- a reversed cumulative probability in the variable-consideration constraint;
+- sign errors in accumulated depreciation and the remeasurement reserve, which the forecast balance-sheet identity caught;
+- inventory omitting absorbed depreciation;
+- acquisition revenue double-counted and its amortisation not added back, caught by a 2-per-year imbalance;
+- an expected sign for the accrual measure under supplier finance (the measured accruals fall, which became the teaching point);
+- an expected leverage ranking in the comparability case;
+- three text figures (the FCFF bridge, the cash-flow adequacy ratio, and the covenant-breach current ratio 0.94).
+
+Tautological checks were removed before counting.
+
+**Coverage.** All 45 objectives were reassessed operation by operation at their stated depth
+and moved to `covered`, mapped to 46 entries (45 objective entries plus the shared case
+`ex:harbour-tools-statements`). The decision objective
+(`objective:apply-integrated-analysis-framework`) has constraints, three alternatives, base and
+downside scenarios and a justified recommendation with monitoring. Editorial coverage moves
+from 191/424 to 236/424 objectives, and outline items from 460/1,030 to 532/1,030 (Level I
+207, Level II 142, Portfolio Management 48, shared core 135). This is editorial coverage, not
+learner mastery or independent human review.
+
+**Limits.** Harbour, Kestrel and Ridgeline are hypothetical; simulations are synthetic and
+illustrate methods, not evidence. Pass-through rates and credit-policy thresholds are
+scenario inputs. The Codification paragraphs that replaced the cited FASB Statements are an
+open question in the pathway note.
+
+## Accounting correction pass, 20 October 2026
+
+**Starting state.** Verified before edits: PR #29 (draft, `codex/macro-source-corrections-20261020`,
+head `6157abb`, base `main`) and PR #30 (draft, `codex/accounting-statement-analysis-20261020`,
+head `4a9edbc`, stacked on #29) open; `main` at `0b78e4d` is an ancestor of `6157abb`, which is
+an ancestor of `4a9edbc`; the checkout was clean at `4a9edbc`; coverage 236/424 objectives and
+532/1,030 items. The reverted attempt `644f5d0` was not used. These corrections are commits on
+PR #30's branch. They count toward no new objective; the record of the batch above is kept as
+history, and the statements below supersede it where they differ.
+
+**Findings reproduced first.** Each audit claim was recomputed before changes:
+- FCFF 48.54 omits the 2025 right-of-use addition of 30 (18.54 with it), and the 2026-2028
+  additions of 25 have present value 64.4274 at 8 percent;
+- `forecast()` added share-based expense back to CFO and part 17 used that CFO in valuation with no
+  deduction; the three add-backs (9.45, 9.9225, 10.418625) have present value 25.5276;
+- opening development / 5 leaves 0.8^5 = 32.768 percent of an isolated balance after five years;
+  the acquired 20, pooled with development and also charged `acquisition["amort"]`, was charged
+  2, 5.6 and 4.48 in 2026-2028; acquired PP&E was added at the end of 2026 and never had its own
+  depreciation, while the acquired business earned a full 2026 of EBITDA although the decision
+  was dated 1 March 2026;
+- `tv_value(nopat_2028 (1 + g), ...) / (1 + g)` is NOPAT_2028/WACC by construction, so the check
+  could not fail and its label TV/NOPAT_2028 described a quantity it did not compute.
+
+**Sources read for the corrections.**
+- Damodaran, *Leases, Debt and Value* (April 2009, NYU Stern), PDF pp. 25-32: lease additions as
+  capital expenditure; FCFE unchanged; lease debt in the bridge. Written for US operating leases;
+  the reinvestment logic is applied to IFRS 16 right-of-use additions.
+- Damodaran, *A Primer on Free Cash Flows* (slides, October 2022), slide 14 (text slides 3, 9, 16,
+  21, 24 also read; chart slides not relied on).
+- Damodaran, *Investment Valuation*, 3rd ed., pp. 445-449: options valued as claims at the
+  estimated value per share with iteration; future grants as an expense.
+- IAS 7 paras. 43-44 (non-cash transactions), IAS 38 para. 97 and IAS 16 para. 55 (charge from
+  availability for use), IFRS 9 paras. 4.1.4, 5.7.5-5.7.6, B5.7.1 and the Appendix A definition
+  of held for trading, all in the EU 2023/1803 Official Journal text already held locally.
+- SEC Division of Corporation Finance C&DIs on non-GAAP measures (last updated 13 December 2022),
+  Questions 102.03 (17 May 2016) and 100.01 (13 December 2022), read on the SEC website; a
+  scripted download returned an access page, so no local copy is kept and no contact address was
+  sent.
+
+**Corrections.**
+1. *Leases in valuation* (`meth:free-cash-flow-coverage`, `meth:forecast-horizon-steady-state`).
+   Statement presentation and valuation are separated. The non-cash lease inception stays out of
+   the statutory cash-flow statement. Valuation FCFF deducts right-of-use additions (2025: 48.54 to
+   18.54), lease liabilities are claims, and FCFE is unchanged (28.04; forecast years checked).
+   A lease-versus-buy-with-debt check shows the superseded convention created 25/1.08 = 23.15 of
+   artificial value for one vintage; the corrected convention creates none.
+2. *Share-based pay* (`meth:share-based-compensation-modelling`, FCFF and horizon entries).
+   Statutory CFO keeps the add-back. Valuation deducts the expense for future grants (non-deductible,
+   so no tax effect), keeps it in terminal NOPAT (EBIT - t(EBIT + SBC)), deducts the 5m vested
+   options as BSM claims at the iterated value per share (9.28; 8.49 a share; treasury stock 8.56),
+   and does not deduct unvested awards whose cost is in the forecast.
+3. *Asset schedules* (`ex:harbour-pro-forma-model`, `ex:integrated-credit-decision`). The opening
+   development balance of 60 is amortised straight-line over 2026-2030; each year's development is
+   available for use on 1 January of the next year and amortised over five years; acquired
+   intangibles (ten years) and acquired PP&E (five years) have their own schedules from completion
+   on 1 April 2026 (nine months in 2026), are excluded from the development pool and the organic
+   depreciation base, and are deductible as an asset purchase. Capital expenditure is 8.5 percent
+   of total revenue, as the entry always stated. Base 2026 is unchanged; 2027-2028 profit falls to
+   75.47 and 80.36 because development amortisation rises to 16.58 and 21.42. Covenant EBITDA is
+   pro forma for the acquisition. Re-running all six original lender scenarios: A and C fail as
+   before; B now fails the downside on liquidity alone (1.84 undrawn against 10). A fourth
+   alternative, D (lock-up tested on pro forma leverage at completion, 1.85x, so no 2026 dividend),
+   passes both scenarios with 19.02 undrawn and is now recommended; a 170 facility, a 1 July
+   completion and a capital-expenditure cut are shown as sensitivities.
+4. *IFRS 9 equity election* (`meth:financial-instruments-liabilities`): timing, instrument-by-
+   instrument basis, both exclusions, and an eligible stake against an ineligible trading holding.
+5. *SEC non-GAAP restructuring* (`meth:earnings-management-presentation`): the two-year condition
+   restricts the description; adjustment remains possible unless misleading, and excluding normal,
+   recurring cash operating expenses may mislead.
+6. *Terminal-value check* (`meth:forecast-horizon-steady-state`): NOPAT_2029 fixed gives
+   TV = NOPAT_2029/WACC (1,202.48) for g = 0, 2, 4 percent; NOPAT_2028 fixed gives 1,173.16,
+   1,196.62 and 1,220.08, each 1,173.16 net of the 2028 reinvestment the growth requires.
+   Enterprise value is now 1,218.45 (superseding 1,376.78); equity 855.59.
+
+**Numerical evidence.** `statement-analysis-checks.py` now executes 138 checks (from 111): new
+checks detect each audit error (the 32.768 percent residual, the 2/5.6/4.48 pooling, the omitted
+lease and share-based PVs, the artificial lease value, both terminal quantities) and verify the
+replacements by independent routes (vintage sums against the balance; CFO against NOPAT routes for
+valuation FCFF; FCFE as dividends plus change in cash under both lease presentations; an option
+fixed point with bounds). The former "only B passes" check was replaced by the recomputed verdict.
+
+**Coverage.** The eight affected objectives (FCFF and coverage, share-based and pension modelling,
+pro forma model, forecast horizon, integrated decision, financial instruments, earnings management)
+were reassessed at their stated depth and remain covered; their 11 outline items were reread on
+their pages (Level I PDF pp. 11-14, Level II PDF pp. 7-9) and their rationales record the
+revalidation. Coverage unchanged: 236/424 objectives and 532/1,030 items.
+
+**Limits.** The after-tax pension deficit follows the credit-analysis convention; under Harbour's
+simplified tax rule the pre-tax deficit would lower equity by 12.04, as the entry states. WACC,
+RONIC, option inputs and credit-policy thresholds are illustrative inputs.
+
+## Corporate-finance and equity-valuation batch, 20 October 2026
+
+**Starting state.** Branch `codex/corporate-equity-valuation-20261020` from the corrected
+PR #30 head `1f51fcf` (`codex/accounting-statement-analysis-20261020`). All 45 objectives
+were `missing`, with no entries or candidates; their 123 outline items map to no objective
+outside the batch. Coverage before: 236/424 objectives, 532/1,030 outline items.
+
+**Scope (45).**
+- corporate-ownership-governance: 5
+- business-models: 1
+- working-capital-liquidity: 2
+- capital-investment-decisions: 2
+- capital-structure-cost-of-capital: 4
+- payout-policy: 4
+- equity-securities-markets: 4
+- equity-valuation-foundations: 6
+- industry-company-analysis: 2
+- dividend-discount-models: 6
+- market-multiples-valuation: 7
+- corporate-restructuring: 2
+
+Implemented in prerequisite order: governance, business models, working capital, capital
+investment, capital structure, payout, equity securities, valuation foundations, industry,
+dividend models, multiples, and restructuring last, after multiples.
+
+**Outline pages read.** Level I topic outline (`7099c7688942`) PDF pp. 9-10 and 15-17;
+Level II (`0242f4b7ba07`) PDF pp. 11-15. Each of the 123 items has an item-specific
+rationale in `outline-crosswalk.json`.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Books: Damodaran, *Applied Corporate Finance*, 4th ed. (2014), chaps. 1-2, 4-11 and pp. 556-557; *Investment Valuation*, 3rd ed. (2012), pp. 1-25, 75, 124-132, 285-289, 323-348, 453-517, 542-545, 596-597, 702-728; *Narrative and Numbers* (2017), pp. 83-85; Subramanyam and Wild (2009), pp. 535-544; OpenStax *Principles of Finance*, 2nd ed., secs. 2.1 and 19.1-19.5.
+- Articles: Modigliani and Miller (1958), pp. 268-273; Osterwalder, Pigneur and Tucci (2005 manuscript); Rochet and Tirole (2005 manuscript); Berg, Kölbel and Rigobon (2022); Lang and Stulz (1993 working paper); Cooper and Lambertides (2023); Porter (2008), pp. 12-15 added to the pages already read.
+- Governance and law: G20/OECD Principles (2023); OECD *Owners of the World's Listed Companies* (2019); EU Shareholder Rights Directive II (2017/828); Delaware General Corporation Law secs. 151, 170, 212, 214, 216; 15 U.S.C. 78l(g); IRS business-structure pages.
+- Standards and rules: simplified ESRS (Delegated Regulation 2026/1563), ESRS 1; IAS 1 para. 25 and IFRS 13 paras. 2, 9 and 57 (EU 2023/1803); SEC Rules 10b-18 and 13e-4(f); FINRA Rule 11140 as amended in 2024; US Merger Guidelines (2023); GICS methodology (2023); FTSE Russell free-float rules v3.6 (October 2026); CIPD PESTLE factsheet (2026).
+- Curriculum volumes and answer workbooks were not used; the outlines were used only to map items.
+
+**Access limits and unread sources.**
+- The ISSB's IFRS S1 and S2 require registration and were not read; ESG materiality follows ESRS.
+- The OECD site refused the ownership report; a reproduction in Columbia Business School course materials was read and is identified as such.
+- Berg et al.'s PDF download was refused; the open-access Oxford Academic HTML was read, cited by section.
+- Rev. Rul. 59-60 (US fair market value) and Nasdaq Rule 5550 (minimum bid price) were not read; fair market value is described as Interpretation, and reverse splits without listing-rule detail.
+- Primary studies summarised in the books (Gompers-Ishii-Metrick, Lintner, Jensen-Ruback, Myers-Majluf, Smith 1986, KPMG and McKinsey acquisition studies) were not read; they are attributed to Damodaran.
+- SEC.gov pages were not fetched by script; LII renderings of the CFR were used, and the owner's email was not sent anywhere.
+
+**Conventions protected by the examples.**
+- Project cash flows are incremental and after tax; sunk costs excluded, opportunity costs and cannibalisation included; financing not deducted when discounting at the WACC (`meth:capital-project-evaluation`).
+- NPV ranks mutually exclusive projects; IRR conflicts and multiple IRRs are shown.
+- WACC uses market-value weights (`meth:wacc-calculation`).
+- Leverage effects follow MM with and without taxes and a trade-off curve; costs of debt and equity rise with leverage.
+- Dividends, stock dividends, splits and buybacks are reconciled to value per share, EPS and BVPS.
+- Trailing and leading P/E and PVGO are reconciled; multistage terminal values are dated at the start of stable growth, with two dating errors computed.
+- Comparables use matched numerators (EV with leases and pensions against post-IFRS 16 EBITDA; US GAAP lease and IAS 38 development adjustments).
+- Restructuring separates value created from value transferred; EPS accretion is not a value test.
+- Recommendations (Harbour valuation, payout, bolt-on) state alternatives and sensitivity.
+
+**Harbour assumptions added.** Share price EUR 11.00 at 31 December 2025; risk-free rate
+3.0 percent; equity premium 5.5 percent; peer unlevered beta 0.93; pre-tax cost of debt
+5.2 percent (a 4 percent 2030 bond at 94.83, BBB); an illustrative rating-to-spread
+schedule calibrated so Harbour's coverage maps to BBB; cycle ROEs for 2021-2023; a
+hypothetical peer table. Computed WACC 8.02 percent supports the 8 percent input of the
+earlier valuation.
+
+**Numerical evidence.**
+- `notes/artefacts/corporate-finance/corporate-finance-checks.py`: 16 parts, 65 checks. Independent routes: NPV from a cash-flow vector against a line-by-line build; IRR by root search; profitability-index ranking against brute-force search of every combination; equivalent annual cost against replication; MM equity returns from income against the Proposition II formula; trade-off optimum by grid against the first-order condition; Lintner recursion against its closed form; a discrete rating fixed point for the cost-of-capital curve.
+- `notes/artefacts/systematic-equities/equity-valuation-checks.py`: 18 parts, 62 checks. Independent routes: Gordon and two-stage values against explicit sums of thousands of years; the H-model against an exact linear decline; implied returns by root search against closed forms; DDM, FCFE and residual income equal under clean surplus, closed form and year by year; harmonic mean against the average earnings yield; regression by least squares; Harbour values reproduced from the statement-analysis script before sensitivities.
+- Both scripts execute the Harbour script with output suppressed, so balances and the 8.49 value come from one source.
+
+**Errors caught during development** (all corrected before the text was final):
+- several expected figures set before computing (NPV, IRR, ROIC path, the NPV crossover, the expansion option, book-weight WACC, Lintner dispersion, multistage values, harmonic mean, terminal-multiple growth, SUE, HHI); the text uses the computed values;
+- a first spread schedule mapped Harbour to AAA at its own debt level, inconsistent with its 5.2 percent cost of debt; it was recalibrated, and the curve now uses a rating fixed point;
+- the claim that no return on new capital could justify the price was false (a terminal RONIC of 124 percent does); the text states the reverse-engineered values instead;
+- the valuation FCFE of 19.04 was first described as deducting right-of-use additions; it deducts share-based pay (the lease presentation leaves FCFE unchanged);
+- a homemade-leverage label and a cumulative-dividend reconciliation label were wrong;
+- a quotation of Damodaran's definition of intrinsic value was reconstructed from memory and has been replaced with the printed text (IV p. 12);
+- the Paccar example and the capital-allocation process were first attributed beyond what the sources say; the text now follows Porter pp. 12-13 and marks the process as Interpretation;
+- unescaped `%` in two source URLs broke the PDF build.
+
+**Coverage.** All 45 objectives were reassessed operation by operation at their stated depth
+and moved to `covered`, mapped to 44 entries (`meth:gordon-growth-model` and
+`meth:multistage-ddm` together carry the Level I growth-model objective; the basic
+constant-growth formula is already in `meth:instrument-present-value`). Objectives move
+from 236/424 to 281/424, and outline items from 532/1,030 to 655/1,030 (Level I 256,
+Level II 216, Portfolio Management 48, shared core 135). This is editorial coverage, not
+learner mastery or independent human review.
+
+**Limits.** Harbour, Kestrel, Ridgeway, Norland, Calder, Ashby, Company R and the peers are
+hypothetical. Rating spreads, factor loadings, carbon prices and peer data are scenario
+inputs. Damodaran's market data and tax descriptions are as of 2012-2014.
+
+## Corporate-equity audit correction pass, 20 October 2026
+
+**Starting state.** Verified before edits: PR #29 (draft, head `6157abb`, base `main`), PR #30
+(draft, head `1f51fcf`, base `codex/macro-source-corrections-20261020`) and PR #31 (draft, head
+`a6b6c64`, base `codex/accounting-statement-analysis-20261020`) open and unchanged; the checkout
+was clean on `codex/corporate-equity-valuation-20261020` at `a6b6c64`; coverage 281/424 objectives
+and 655/1,030 items. These corrections are ordinary commits on PR #31's branch. They count toward
+no new objective. The batch record above is kept as history; where it differs, this record
+supersedes it.
+
+**Findings reproduced first.** Each audit claim was recomputed from the canonical Harbour inputs
+before the text was changed: the five million vested options are worth 17.94 at the market price on
+the equity-bridge inputs, so market EV omitting them (1,461.83) is not on the DCF bridge's claim
+set; dividing the whole EV/EBITDA residual by the shares gave 11.59 and 9.88; the justified P/E
+route multiplied ROE x B0, already E1, by 1.025, so it exceeded the P/B route by exactly 2.5
+percent; the Harbour FCFE sentence omitted the 6 of issue proceeds; FCFE for Ridgeway already
+contained borrowing; the bolt-on's 8.33 percent was pre-tax; the 102.19 assumed redemption; the
+cumulative-voting notation used the holder's shares where the total belongs, and the displayed
+1/6 product was not an integer.
+
+**Corrections.**
+1. *Options in enterprise value* (`def:price-value-indicators`, `meth:enterprise-value-multiples`,
+   `meth:comparables-evaluation`, `meth:valuation-price-judgement`). Market EV 1,479.77 includes
+   options at 17.94; the intrinsic bridge with the same claims rebuilds the DCF EV of 1,218.45
+   (options 9.28 at 8.49). EV/EBITDA 7.59 (from 7.50); the lease-omission mismatch 7.07 (from 6.98);
+   development-adjusted 8.55 (from 8.45). Peer-multiple values solve
+   p = (residual - 5 C(p)) / 100.75: 11.39 (options 19.45) and 9.75 (options 13.40), superseding
+   11.59 and 9.88.
+   *WACC claim definitions* (`meth:wacc-calculation`, `meth:cost-of-debt-equity-estimation`,
+   `meth:capital-structure-benchmarking`, `ex:restructuring-valuation-effects`). The entry defined
+   equity options as equity but omitted them from the weights. With them: equity 1,126.19, D/E
+   31.52 percent, beta 1.1499, ke 9.32 percent (from 9.34), WACC 8.02 percent (unchanged at two
+   decimals); book weights 7.40 percent; pension as debt 8.017 percent. The cost-of-capital curve at
+   firm value 1,481.19 gives 10.90 percent at 40 percent debt and 12.73 percent at 50 percent (from
+   10.15 and 11.60); covenant leverage 1.33, 2.09 and 2.47 at 20, 30 and 35 percent; the bolt-on's
+   pro forma D/E 36.85 percent, beta 1.1870, ke 9.53 percent, re-rated WACC 8.17 percent (from 8.18).
+2. *ROE timing* (`meth:justified-multiples`, `meth:normalised-earnings`, `meth:sustainable-growth`,
+   `meth:alternative-multiples`). Convention chosen: ROE_t = E_t / B_{t-1} wherever ROE drives a
+   valuation or growth formula. Harbour's 2024-2025 ROE on opening equity is 12.01 and 9.15 percent
+   (11.52 and 8.84 on average equity, which the ratio analysis keeps); the cycle average is 10.79
+   percent (from 10.63). With ke 9.32 percent: payout 76.8 percent, leading P/E 11.26, P/B 1.22,
+   D1 0.533; P/E x E1 = P/B x B0 = D1/(ke - g) = 7.81, and a 4,000-year dividend sum agrees. The
+   superseded double growth gives 8.00 on these inputs (7.83 against 7.64 on the old ones); the
+   average-equity variant gives 7.66 on every route. Normalised EPS 0.6935 is dated 2026; the
+   like-dated 2025 figure is 0.6505 against underlying 0.6862. Sustainable growth 3.86 percent (from
+   3.73), equal to retained profit over opening equity. P/S 0.58; implied ROE 14.18 percent.
+   The audit's expected 7.64 assumed the average-equity cycle ROE; it is not adopted because that
+   ROE is not E1/B0.
+3. *FCFE and dividend funding* (`meth:dividend-sustainability`). Harbour: FCFE 28.04 = dividends 32
+   - issue proceeds 6 + cash increase 2.04; the 3.96 by which dividends exceeded FCFE was met by the
+   share issue. Ridgeway now states free cash flow before borrowing (60, 52, 34), actual net
+   borrowing (30, 18, 21), FCFE (90, 70, 55), opening debt 1,050 and cash 200: the 121 gap is met
+   from cash (200 to 79); net debt rises 190 = 69 + 121 = 336 - 146; target-policy borrowing at
+   2.25x EBITDA (0, -45, -45) gives policy FCFE 56, cover 0.17. Share-based pay remains a separate
+   valuation charge (19.04).
+4. *LP, LLP and LLC* (`def:organisational-forms-issuers`). Rewritten from 6 Del. C. secs. 15-306(a),
+   (c), (e), 15-1001, 17-303(a), 17-403(b) and 18-303, read in the official online code; the
+   inference that a partner remains liable for its own wrongs is marked as Interpretation.
+5. *Acquisition return* (`ex:restructuring-valuation-effects`). After tax 5.0 x 0.75 / 60 = 6.25
+   percent, 1.77 points below the 8.02 percent WACC. EPS accretion, the one-year accounting return
+   and DCF value are listed as different measures. The recommendation is unchanged because it rests
+   on the standalone DCF (52 against 60), which the after-tax return confirms.
+6. *Callable preferred* (`meth:preferred-stock-valuation`). 102.19 is a deterministic value
+   conditional on redemption at year five with the yield held at 4.5 percent; at a year-five yield
+   of 5 percent or more redemption at 100 gains the issuer nothing; 8.92 is the cost on that path,
+   not an option value.
+7. *Cumulative voting* (`def:equity-rights-voting`). N is the total number of shares voting;
+   floor(N k/(D+1)) + 1 shares guarantee k seats when all shares vote, plurality elects and ties are
+   lost; 1,666,667 retained.
+
+**Numerical evidence.** `corporate-finance-checks.py` now executes 75 checks (from 65) and
+`equity-valuation-checks.py` 72 (from 62). New checks would detect each original error: the
+superseded EV equals the corrected EV less the option value; the old peer value exceeds the
+iterated one; the old P/E route exceeds P/B by exactly g; dividends + cash change - FCFE = 6; net
+debt growth equals borrowing + cash drawn, so counting the 121 as borrowing would double count;
+EBIT/price is 8.33 percent and after tax 6.25 percent; the voting threshold is minimal by an exact
+integer test for k = 1 to 5 and one share fewer fails; redemption is tested against several
+year-five yields. Independent routes: the option fixed point against the DCF bridge, the dividend
+sum against the closed forms, the cash identity for Ridgeway.
+
+**Coverage.** The 17 objectives whose entries changed were reassessed at their stated depth and
+remain covered; their 43 outline items keep their mappings, with rationales noting the recheck.
+Coverage unchanged: 281/424 objectives and 655/1,030 items.
+
+**Limits.** Option inputs, the 2021-2023 ROEs and the peer data remain illustrative. Delaware
+case law and other states' partnership statutes were not read.
+
+## Credit, time-series and valuation batch, 20 October 2026
+
+**Starting state.** Branch `codex/credit-timeseries-valuation-20261020` from the corrected
+PR #31 head `59df95b` (`codex/corporate-equity-valuation-20261020`). All 45 objectives were
+`missing`; three had candidate entries (`mech:cds-contract-credit-events`,
+`def:sovereign-credit-defaults`, `mod:garch-volatility-forecast`). Their 119 outline items map
+to no objective outside the batch. Coverage before: 281/424 objectives, 655/1,030 outline items.
+
+**Scope (45).**
+- equity-research-reporting: 2; free-cash-flow-valuation: 4; residual-income-valuation: 3; private-company-valuation: 3
+- intercorporate-investments: 2; foreign-currency-reporting: 3; financial-institution-analysis: 3
+- credit-risk-analysis: 2; credit-models: 4; credit-default-swaps: 3; sovereign-credit-analysis: 1; securitisation: 3
+- linear-regression: 4; time-series-models: 7; backtesting-simulation: 1
+
+Implemented in prerequisite order: forecast models and research reports, free cash flow,
+residual income, private companies; intercorporate investments, foreign currency, financial
+institutions; credit risk and corporate credit, credit models, CDS, sovereign credit,
+securitisation; multiple regression, then time series; scenario analysis last.
+
+**Outline pages read.** Level I (`7099c7688942`) PDF pp. 16-17, 21-22; Level II
+(`0242f4b7ba07`) PDF pp. 1-2, 8, 14-16, 18-19, 27. Each of the 119 items was reviewed against
+its page and given an item-specific rationale in `outline-crosswalk.json`. The review found
+gaps that were then written into the entries rather than recorded as residual gaps: the types
+of heteroskedasticity and the direction of serial-correlation bias, the regression process and
+problem types, a seasonal-lag forecast value, numerical ARCH variance forecasts, implied
+residual-income growth from P/B, value recognition across models, three-stage FCFE and
+multiple-based terminal values, special purpose and variable interest entities, IAS 21
+disclosures, card and auto ABS, residential loan features, spread drivers by macro, market and
+issuer factors, issue ratings by seniority, and CDS against equity and loans.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Books: Damodaran, *Investment Valuation*, 3rd ed. (2012), pp. 157, 167-168, 282-284, 351-363, 372-376, 380-383, 667-698, 870-877, 894-919; Subramanyam and Wild (2009), pp. 41-43, 262-275, 301-311, 492-502, 547-558, 566-568; Hull, *Risk Management and Financial Institutions*, 6th ed. (2023), pp. 28-34, 57-66, 367-401, 413-415, 689-691; Hull, *Options, Futures, and Other Derivatives*, 11th Global ed. (2021), pp. 201-206, 587-598; Fabozzi (ed.), *Handbook of Fixed Income Securities*, 9th ed. (2021), pp. 204-207, 362, 370-374, 1021-1024; Fabozzi and Kothari, *Introduction to Securitization* (2008), pp. 3-24, 31-46, 85-97, 153-166, 217-218, 284-286; Tsay, *Analysis of Financial Time Series*, 3rd ed. (2010), pp. 30-31, 37-47, 53-56, 71-78, 114-117, 428-431.
+- Online texts and papers: Hyndman and Athanasopoulos, FPP3 secs. 5.2, 5.8, 5.10, 7.4, 7.5, 9.1; Penn State STAT 501 lessons 5-8 and 10-14 (Internet Archive copies); Fuster, Lucca and Vickery, NY Fed Staff Report 1001 (2022), pp. 1-10; Berd, Mashal and Wang (2004, arXiv 0912.4618), p. 13.
+- Standards, law and supervision: IAS 21, IAS 28, IAS 29, IFRS 10, IFRS 11, IFRS 12 and paragraphs of IAS 12, IFRS 3 and IFRS 9 (EU 2023/1803); FAS 52 (paras. 5-16, 39) and the summaries of FAS 141R, FAS 160, FAS 167 and ASU 2016-01; Basel Framework RBC20, RBC30, LEV20, LCR20, NSF20 (generated 20/10/2026); UFIRS, 62 FR 752-757 (1997); Regulation (EU) 2017/2402 Arts. 2, 6; Directive (EU) 2019/2162 Arts. 3, 4, 15, 16; Delegated Regulation (EU) 2016/958 Arts. 2-5; FINRA Rule 2241(c); FHFA AB 2021-02.
+- Data: Damodaran's US annual returns 1928-2025 (already in the repository) for the regression, time-series and scenario examples.
+- Curriculum volumes and answer workbooks were not used; the outlines were used only to map and review items.
+
+**Access limits and unread sources.**
+- The IMF sovereign risk and debt sustainability framework guidance and MSRB pages refused access (403 and access denied); APB Opinion 18 returned an access-denied file, so the US 20 percent equity-method presumption rests on Subramanyam and Wild.
+- Ohlson (1995) is paywalled; the persistence factor is stated as a derivation. Diebold's and Hamilton's PDFs were image-only. S&P and Moody's rating methodologies (including notching) were not read; issue ratings by seniority are marked Interpretation.
+- Newey and West (1987) and Engle and Granger (1987) were not read; HAC errors and the two-step test are used through statsmodels and marked Interpretation. The 2014 ISDA Definitions remain unread (sold by ISDA).
+- The STAT 501 copies were fetched through the Internet Archive; their capture timestamps were not retained in the saved files. Only the summaries of FAS 160 and FAS 167 were read.
+- CMBS balloon risk lacks a primary source read here and is marked Interpretation.
+
+**Discrepancies found in sources** (recorded in the entries and reading notes):
+- Hull (2023) Table K.1 prints the year-4 survival probability as 0.9321; Table K.2 and $e^{-0.08}$ give 0.9231.
+- Fabozzi and Kothari: the average life at 165% PSA rebuilds to 8.54 years against a printed 8.6; Table 3.2 retires class B in month 97 while the text says 98, and prints balances for classes C and D (96.5m, 73m) that differ from Structure 1 as stated (159.225m, 120.45m); the p. 94 mortality table lists A (0.28%) below AA (0.50%). The PAC total of 470,224,580 reproduces to the dollar.
+- Hull (2021) Example 25.1: the implied hazard rebuilds to 0.5721% against a printed 0.5717%, with the same duration (4.447) and price (100.27); the difference is within payment and default timing conventions.
+
+**Conventions protected by the examples.**
+- Risk-neutral default probabilities for valuation, physical ones for scenarios; recovery as a share of par; CVA with exposure including the coupon due at default.
+- CDS hazards implied and values computed with the same recovery; Credit01 neutrality distinguished from jump-to-default neutrality.
+- Translation: current rate preserves local ratios; temporal exposure is the net monetary position; hyperinflation restated before translation under IFRS.
+- Time series: every forecast comparison is chronological (train to 1989, test 1990-2025, expanding window); stationarity is tested before regressions on levels; Engle-Granger residuals use their own critical values.
+- Simulation: the bootstrap resamples whole years to keep the stock-bond pairing; sensitivities use common random numbers.
+
+**Numerical evidence** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; all run with `python -W error` by `make examples`):
+- `notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py`: 12 parts, 48 checks; rebuilds the Harbour value from its forecast; FCFF by four routes; FCFF and FCFE values equal at constant leverage and against a 3,000-year sum; RI against DDM with the dirty-surplus identity; EVA against DCF.
+- `notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py`: 9 parts, 44 checks; equity method by two routes; consolidated balance sheet against one-line parent equity; translation adjustment as a plug against its decomposition, including Subramanyam and Wild's BritCo; Hull's DLC and Table 3.2.
+- `notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py`: 10 parts, 52 checks; Hull Examples 17.1-17.4, Tables 17.1-17.5, 19.1-19.2 and Appendix K; OFOD Example 25.1 and Table 8.1; the sovereign debt formula against a nominal roll-forward; Fabozzi and Kothari's pool, sequential and PAC tranches rebuilt month by month.
+- `notes/artefacts/linear-regression/multiple-regression-checks.py`: 4 parts, 21 checks; normal equations against statsmodels; nested F by SSE; the omitted-variable identity; logit by Newton-Raphson against statsmodels.
+- `notes/artefacts/time-series-models/time-series-checks.py`: 7 parts, 32 checks; hand-run Dickey-Fuller and LM statistics against statsmodels; forecasts by recursion against closed form; Chow test from subsample SSE.
+- `notes/artefacts/backtest-inference/scenario-simulation-checks.py`: 3 parts, 10 checks; scenario returns against data rows; Monte Carlo moments against analytic values.
+
+**Errors caught during development** (all corrected before the text was final):
+- many expected figures were set before computing (ARCH estimates, cointegration critical value, AR(4) out-of-sample RMSE, Merton spread, CDS strategy notionals, sovereign debt change, scenario percentiles, regression residual years and others); the text uses the computed values;
+- the Quay balance sheet first used book assets of 540 instead of 530, which broke the consolidated balance sheet; the residual-income identity was first written with the wrong sign for the equity credits; the temporal-method direct route was first mis-specified and was rewritten with fully specified dollar flows;
+- the consolidation ratio check claimed full consolidation had the highest leverage; proportionate consolidation does, and the text says so;
+- the Silber regression needed exponentiation and division by 100;
+- a claim that restoring Tamar Bank's coverage would cost "a full year" of profit was wrong (0.68 against 0.40); an unsourced historical example of capital-structure arbitrage losses was removed; a paraphrase of Hull on speculative-grade spreads was tightened to what p. 384 says;
+- a cross-reference to a nonexistent ROIC entry and a \citealp macro the house style does not define were replaced.
+
+**Coverage.** All 45 objectives were reassessed operation by operation at their stated depth
+and moved to `covered`, mapped to 45 new entries plus the three candidates above. Objectives
+move from 281/424 to 326/424, and outline items from 655/1,030 to 774/1,030 (Level I 279,
+Level II 312, Portfolio Management 48, shared core 135). This is editorial coverage, not
+learner mastery or independent human review.
+
+**Limits.** Penrose, Quay, Larch Brands, Tamar Bank, Wren Insurance, Kestrel Logistics, the
+Arden bond, Larkspur, Veloria, Avon Fittings, Brent Utilities and Fenton Engineering are
+hypothetical, as are the rating-spread schedule, the scenario probabilities and the CDS market
+quotes used in the strategies. Regulatory texts are as read in October 2026; national
+implementations of Basel and of the covered bond directive were not read.

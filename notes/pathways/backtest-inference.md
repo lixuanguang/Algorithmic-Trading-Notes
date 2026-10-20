@@ -42,6 +42,12 @@ method validation (2026-10-17):
 
 - `meth:multiple-testing-control`: familywise error, Bonferroni and Holm, the Reality Check and Romano and Wolf's StepM, with conditions and an own Monte Carlo. Partly checked 2026-10-17, draft.
 
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/backtest-inference/scenario-simulation-checks.py`:
+
+- `meth:scenario-simulation-analysis`: historical scenarios, a bootstrap of whole years against a fitted normal Monte Carlo, and one-at-a-time sensitivities with common random numbers, for a 60/40 portfolio on 1928-2025 data; scenario and simulation steps from Damodaran (2012) chap. 33.
+
+Written for the curriculum objective, not from the pathway's required readings. Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 source verification (2026-10-17) (source verification and bounded tests, not study or human review): `meth:sharpe-ratio-standard-error` and `meth:deflated-sharpe-ratio` resolved as new entries in `research-engineering-validation/backtest-evaluation.tex`: Lo (FAJ 2002, read in a copy hosted by a Berkeley student organisation, provenance not established; eqs. (9), (15), (17)-(22) and Table 2 checked as page images and recomputed) and Bailey and López de Prado (author version of 31 July 2014; SR0 = 0.1132 and DSR = 0.9004, 0.9505 at N = 46 and 0.9505 under normal returns at N = 88, all reproduced in `notes/artefacts/backtest-inference/sharpe-checks.py`). The 2026 López de Prado and Porcu paper was not obtained. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.

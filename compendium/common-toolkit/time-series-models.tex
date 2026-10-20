@@ -1,0 +1,220 @@
+\section{Time-series models}
+
+\begin{qfmethod}[Linear and log-linear trend models: fitting time as the regressor, constant absolute against constant percentage growth, and why serially correlated residuals make a trend model inadequate]\label{meth:trend-models}
+\qffield{Statement} A trend model regresses a series on time:
+\begin{itemize}
+\item \emph{linear}, $y_t=b_0+b_1t+\epsilon_t$: a constant change per period;
+\item \emph{log-linear}, $\ln y_t=b_0+b_1t+\epsilon_t$: a constant growth rate $e^{b_1}-1$, suited to series that compound.
+\end{itemize}
+Both are regressions with time as the predictor and can use trend and seasonal dummies \citep[sec.~7.4]{s7-hyndman}.
+
+A trend model is adequate only if its residuals are uncorrelated. Persistent residuals, shown by a Durbin--Watson statistic well below 2, mean that the series wanders around the line. The standard errors are then wrong, and the forecast starts from the line rather than from where the series is. A series with a stochastic trend is better modelled in differences (\hyperref[def:stationarity-unit-roots]{unit roots}).
+
+\qffield{Practice} \emph{The US price level 1928--2025} (\texttt{notes/artefacts/time-series-models/time-series-checks.py}; cumulative CPI-U from \citep[sheet ``Returns by year'']{us-asset-returns-1928-2025}, 1927 $=1$). The index rises from 0.99 to 18.7.
+\begin{itemize}
+\item \emph{Linear}: $+0.177$ a year, $R^2=0.896$.
+\item \emph{Log-linear}: $0.0367$ log points a year, 3.73 percent compound growth, $R^2=0.975$. Compounding suits a price level, and the fit is better.
+\item \emph{Residuals}: Durbin--Watson is 0.013 and 0.051. Both models leave long runs of residuals of one sign.
+\item \emph{The cost}: the log-linear line puts 2025 at 21.8 against an actual 18.7, and 2030 at 26.2. Fitted through the 1930s deflation and the 1970s inflation, the trend starts its forecasts 17 percent away from the series.
+\end{itemize}
+\emph{Conclusion.} Use the log-linear trend to describe a century's average growth, not to forecast; model inflation, the log difference, instead.
+
+\qffield{Conditions} Trend coefficients and $R^2$ are not meaningful tests when residuals are serially correlated; the regression may be spurious \citep[sec.~7.5]{s7-hyndman}.
+
+\qffield{Pitfalls} Choosing between linear and log-linear by $R^2$ alone. Extrapolating a trend from a sample whose regimes differ from today's.
+
+\qffield{See also} \hyperref[def:stationarity-unit-roots]{stationarity}; \hyperref[meth:autoregressive-forecasting]{autoregressive models}; \hyperref[meth:regression-prediction-functional-form]{log functional forms}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[Covariance stationarity, random walks and unit roots: definitions, why regressions on non-stationary series mislead, Dickey--Fuller and KPSS tests, and differencing]\label{def:stationarity-unit-roots}
+\qffield{Statement} \emph{Covariance stationarity.} A series is weakly stationary if its mean and variance are constant and its autocovariances depend only on the lag \citep[pp.~30--31]{s7-tsay}. A series with a trend or seasonality is not stationary; one with aperiodic cycles can be \citep[sec.~9.1]{s7-hyndman}.
+
+\emph{Random walk and unit root.} A random walk $p_t=p_{t-1}+a_t$ has a variance that grows with time and no mean to revert to \citep[p.~72]{s7-tsay}. An AR(1) $x_t=b_0+b_1x_{t-1}+\epsilon_t$ with $b_1=1$ has a \emph{unit root}. A random walk with drift has differences with a non-zero mean \citep[sec.~9.1]{s7-hyndman}. For such series:
+\begin{itemize}
+\item least-squares inference is invalid and $R^2$ can be high by accident (spurious regression; \hyperref[meth:cointegration-testing]{cointegration});
+\item the $R^2$ of an AR(1) fit converges to one whatever the true model \citep[p.~54]{s7-tsay}.
+\end{itemize}
+
+\emph{Tests.}
+\begin{itemize}
+\item The Dickey--Fuller test uses the $t$ ratio of $\hat b_1-1$ in a regression of the change on the lagged level, against non-standard critical values. The augmented version adds lagged changes for serial correlation (pp.~76--77).
+\item The KPSS test reverses the null: stationarity is the null, and small $p$-values call for differencing \citep[sec.~9.1]{s7-hyndman}.
+\end{itemize}
+Differencing a unit-root series makes it stationary; log differences of prices are returns.
+
+\qffield{Practice} \emph{Simulated random walks.} Over 5,000 paths of standard normal steps, the variance is 10.1 at $t=10$ and 97.8 at $t=100$.
+
+\emph{US prices and inflation.}
+\begin{itemize}
+\item \emph{Price level}: ADF on the log CPI with a trend gives $-2.50$ ($p=0.33$). A unit root is not rejected, so the level is treated as I(1).
+\item \emph{Inflation, Dickey--Fuller}: with no augmentation the $t$ ratio is $-4.85$, by hand and by statsmodels.
+\item \emph{Inflation, augmented}: with lags chosen by AIC the statistic is $-2.95$ ($p=0.040$). On the log difference it is $-2.55$ ($p=0.105$). At fixed lags 0--4 every $p$-value is below 0.02.
+\item \emph{KPSS} does not reject stationarity of inflation (0.25, $p>0.10$).
+\end{itemize}
+\emph{Conclusion.} Inflation is persistent but mean-reverting over 1928--2025, and is modelled in levels; the price level is modelled through inflation. The verdict on inflation is close enough that the lag choice can push it across 5 percent.
+
+\qffield{Conditions} Unit-root tests have low power against persistent stationary alternatives in short samples, and structural breaks look like unit roots. Deterministic terms (constant, trend) must match the series.
+
+\qffield{Pitfalls} Treating failure to reject a unit root as proof of one. Differencing a stationary series, which induces negative autocorrelation. Regressing one trending series on another.
+
+\qffield{See also} \hyperref[meth:trend-models]{trend models}; \hyperref[meth:autoregressive-forecasting]{AR models}; \hyperref[meth:cointegration-testing]{cointegration}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Autoregressive models: specification, testing residual autocorrelation, the mean-reverting level and half-life, multi-period forecasts by the chain rule, and seasonal lags]\label{meth:autoregressive-forecasting}
+\qffield{Statement} An AR($p$) model regresses a stationary series on its own lags \citep[Lesson~14.1]{regression-methods-course-notes}; \citep[pp.~37--40]{s7-tsay}:
+\[ x_t=b_0+b_1x_{t-1}+\dots+b_px_{t-p}+\epsilon_t. \]
+\begin{itemize}
+\item \emph{Order}: the partial autocorrelation function cuts off after lag $p$ (Lesson~14.1; pp.~44--47).
+\item \emph{Checking}: if the model is right its residuals are uncorrelated. Each residual autocorrelation is compared with about $2/\sqrt{T}$, or several are tested jointly with Ljung--Box (Lesson~14.3). Durbin--Watson is not valid with a lagged dependent variable (Interpretation).
+\item \emph{Mean reversion}: an AR(1) with $|b_1|<1$ reverts to $b_0/(1-b_1)$. Tsay measures its speed by the half-life $\ln0.5/\ln|b_1|$ \citep[p.~56]{s7-tsay}.
+\item \emph{Forecasts}: by the chain rule, $\hat x_{t+h}=b_0+b_1\hat x_{t+h-1}$, equivalently $\mu+b_1^h(x_t-\mu)$. Forecast errors grow with the horizon towards the unconditional variance (p.~56).
+\item \emph{Seasonality}: a significant residual autocorrelation at the seasonal lag (4 for quarterly data) is fixed by adding that lag (Interpretation; seasonal dummies are the alternative, \citep[sec.~7.4]{s7-hyndman}).
+\end{itemize}
+
+\qffield{Practice} \emph{US inflation, AR(1)}, 1928--2025:
+\begin{itemize}
+\item $\hat x_t=0.0125+0.610\,x_{t-1}$;
+\item mean-reverting level 3.22 percent; half-life 1.40 years;
+\item residual autocorrelations at lags 1--4 are 0.07, $-0.11$, $-0.31$ and 0.19 against a limit of 0.20. Lag 3 exceeds it, and Ljung--Box at four lags gives $p=0.005$: the AR(1) leaves structure (\hyperref[meth:time-series-model-selection]{model choice});
+\item from 2025's 2.74 percent the forecasts are 2.92, 3.04 and 3.11 percent for 2026--2028, the same by recursion and by the closed form.
+\end{itemize}
+
+\emph{Seasonality} (simulated quarterly series, 120 quarters, $x_t=1+0.2x_{t-1}+0.6x_{t-4}+\epsilon_t$). An AR(1) leaves a residual autocorrelation of 0.58 at lag 4, against a limit of 0.19. Adding the lag-4 term removes it (all residual autocorrelations below 0.04): $\hat x_t=1.193+0.164\,x_{t-1}+0.589\,x_{t-4}$. With the last value 4.94 and the value four quarters earlier 5.35, next quarter's forecast is $1.193+0.164\times4.94+0.589\times5.35=5.16$. The quarter after uses that forecast and the observed 3.97 from four quarters before it: 4.38.
+
+\qffield{Conditions} AR models need stationarity; with a unit root, model the differences. Coefficients estimated over a long sample average over regimes (\hyperref[meth:forecast-accuracy-evaluation]{instability}).
+
+\qffield{Pitfalls} Using Durbin--Watson to test an AR model. Forgetting that multi-step forecasts converge to the mean regardless of the latest observation. Fitting more lags until residuals look clean, then forecasting with an overfitted model.
+
+\qffield{See also} \hyperref[def:stationarity-unit-roots]{stationarity}; \hyperref[meth:forecast-accuracy-evaluation]{forecast evaluation}; \hyperref[meth:time-series-model-selection]{model choice}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Evaluating forecasts chronologically: training and test periods, in-sample against out-of-sample RMSE, benchmarks, time-series cross-validation, and coefficient instability]\label{meth:forecast-accuracy-evaluation}
+\qffield{Statement} Residuals are not a reliable guide to forecast errors. Accuracy can only be judged on data not used to fit the model, so data are split chronologically into a training and a test period \citep[sec.~5.8]{s7-hyndman}.
+\begin{itemize}
+\item The root mean squared error, $\sqrt{\mathrm{mean}(e_t^2)}$, favours forecasts of the mean; the mean absolute error favours the median (sec.~5.8).
+\item \emph{Time-series cross-validation} uses many test sets, each forecast only from earlier observations (sec.~5.10).
+\item Simple methods such as the naive (random-walk) forecast and the mean ``serve as benchmarks'': any new method should beat them (sec.~5.2).
+\end{itemize}
+\emph{Instability.} Coefficients estimated over one period may not hold in another. Comparing subperiod estimates, or a Chow test of equal coefficients, checks this (Interpretation). An in-sample RMSE and an out-of-sample RMSE from different periods are not comparable, because the volatility of the series differs between them (Interpretation).
+
+\qffield{Practice} \emph{Inflation forecasts}, trained on 1928--1989 (AR coefficient 0.621) and tested year by year on 1990--2025:
+\begin{center}\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+One-year-ahead forecast & RMSE, 1990--2025 \\
+\midrule
+AR(1), coefficients fixed at 1989 & 1.46\% \\
+AR(1), re-estimated each year (expanding window) & 1.45\% \\
+Random walk (last year's inflation) & 1.66\% \\
+Training mean & 1.60\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item The AR(1) beats both benchmarks.
+\item The in-sample RMSE over 1928--1989 is 3.69 percent, larger than any test RMSE. The earlier period was more volatile; the model did not improve out of sample.
+\item The AR coefficient is 0.617 for 1928--1979 and 0.435 for 1980--2025. A Chow test gives $F=1.03$ ($p=0.36$): the estimates move, but the data cannot reject stability.
+\end{itemize}
+
+\qffield{Conditions} One test period gives one estimate of accuracy; differences of a few hundredths of a point between models need a formal comparison before they decide anything.
+
+\qffield{Pitfalls} Selecting a model on the test set and then reporting its test RMSE as out of sample. Comparing RMSEs across different periods or series. Random cross-validation folds that let the model see the future.
+
+\qffield{See also} \hyperref[meth:autoregressive-forecasting]{AR models}; \hyperref[meth:time-series-model-selection]{model choice}; \hyperref[meth:purged-embargoed-cross-validation]{purged cross-validation}.
+
+\end{qfmethod}
+
+\begin{qfmodel}[ARCH: conditional heteroskedasticity in the errors, Engle's LM test, estimation, and variance forecasts that revert to the unconditional level]\label{mod:arch-conditional-variance}
+\qffield{Statement} In an ARCH($m$) model the shocks are serially uncorrelated but dependent: their variance depends on past squared shocks \citep[pp.~115--116]{s7-tsay}:
+\[ a_t=\sigma_t\epsilon_t,\qquad \sigma_t^2=\alpha_0+\alpha_1a_{t-1}^2+\dots+\alpha_ma_{t-m}^2. \]
+This produces the volatility clustering of asset returns (p.~116).
+\begin{itemize}
+\item \emph{Testing}: Engle's Lagrange multiplier test regresses squared residuals on $m$ of their lags and compares $(T-m)R^2$ with $\chi^2_m$; alternatively apply Ljung--Box to the squared residuals (p.~114).
+\item \emph{Estimation}: by maximum likelihood (Interpretation for the method; the estimation pages were not part of this reading).
+\item \emph{Forecasting}: for ARCH(1), $\sigma^2_{t+1}=\alpha_0+\alpha_1a_t^2$, and further forecasts revert to $\alpha_0/(1-\alpha_1)$ at rate $\alpha_1$ per step (Derivation).
+\item \emph{Consequences}: ARCH does not bias regression coefficients, but standard errors and prediction intervals that assume constant variance are wrong in volatile periods (Interpretation). GARCH adds lagged variance (\hyperref[mod:garch-volatility-forecast]{GARCH and EWMA}).
+\end{itemize}
+
+\qffield{Practice} \emph{Simulated} (600 shocks, $\alpha_0=0.0002$, $\alpha_1=0.5$):
+\begin{itemize}
+\item Engle's LM statistic is $599\times R^2=52.1$, $p<10^{-12}$; statsmodels agrees.
+\item Least squares on squared shocks estimates $\alpha_1=0.29$; maximum likelihood 0.54. Squared shocks are fat-tailed, so least squares is inefficient and biased in moderate samples.
+\item The last shock was $-1.74$ percent, so next-period variance is $0.000217+0.539\times0.0174^2=0.000379$, a volatility of 1.95 percent. Forecasts rise to 0.000421 at two steps and 0.000462 at five, towards the long-run 0.000469 (2.17 percent).
+\end{itemize}
+\emph{Annual S\&P~500 returns}, 1928--2025: the LM statistic is 2.22 ($p=0.14$). Volatility clustering, strong in daily and monthly data, barely shows at an annual frequency.
+
+\qffield{Conditions} ARCH models assume a correctly specified mean equation; test residuals, not raw series with a mean. A large $\alpha_1$ near 1 signals persistence better handled by GARCH.
+
+\qffield{Pitfalls} Testing for ARCH on a series whose mean has not been modelled. Using annual data to rule out volatility clustering at shorter horizons.
+
+\qffield{See also} \hyperref[mod:garch-volatility-forecast]{GARCH and EWMA}; \hyperref[meth:regression-misspecification]{heteroskedasticity in regressions}.
+
+\end{qfmodel}
+
+\begin{qfmethod}[Cointegration: testing that two series are non-stationary before regressing one on the other, spurious regression, and the Engle--Granger residual test]\label{meth:cointegration-testing}
+\qffield{Statement} Two unit-root series are \emph{cointegrated} if some linear combination of them is stationary: they share a common stochastic trend \citep[pp.~428--430]{s7-tsay}.
+
+\emph{Before regressing one time series on another} (Interpretation, applying the definitions above):
+\begin{enumerate}
+\item test each series for a unit root;
+\item if neither has one, regress as usual;
+\item if one has a unit root and the other not, the regression is invalid;
+\item if both have unit roots, regress and test the residuals: if they are stationary the series are cointegrated, and the regression estimates the long-run relation; if not, the regression is spurious.
+\end{enumerate}
+The residual test (Engle and Granger's two-step method, cited by Tsay but not read here) applies a Dickey--Fuller test to the residuals. Its critical values are more negative than the ordinary ones, because the coefficients were chosen to make the residuals look stationary.
+
+A spurious regression shows a high $t$ statistic and high residual autocorrelation; it may forecast well briefly but will not continue to \citep[sec.~7.5]{s7-hyndman}. Tsay notes that cointegration tests can be hard to apply because they overlook the scaling of the series \citep[pp.~430--431]{s7-tsay}.
+
+\qffield{Practice} \emph{Simulated} (250 observations): $x$ is a random walk (ADF $p=0.11$), $y=2+0.8x+$ noise, and $w$ an independent random walk.
+\begin{itemize}
+\item \emph{Spurious}: regressing $w$ on $x$ gives a slope $t$ of 4.74, $R^2=0.08$ and Durbin--Watson 0.025. The coint test gives $p=0.84$.
+\item \emph{Cointegrated}: regressing $y$ on $x$ recovers a slope of 0.81. The residuals' Dickey--Fuller $t$ is $-16.0$, against an Engle--Granger 5 percent critical value of about $-3.36$ (the ordinary one is about $-2.88$).
+\end{itemize}
+\emph{For a pairs trade} (Interpretation): only the cointegrated pair has a spread that reverts. Trading the spurious pair's residual would be betting on a random walk.
+
+\qffield{Conditions} Engle--Granger finds at most one cointegrating relation and depends on which series is the dependent variable; with more than two series a system method is needed. Cointegration estimated in-sample can break.
+
+\qffield{Pitfalls} Using ordinary Dickey--Fuller critical values on regression residuals. Regressing the levels of two trending series and reporting the $t$ statistic. Treating correlation of levels as cointegration.
+
+\qffield{See also} \hyperref[def:stationarity-unit-roots]{unit roots}; \hyperref[meth:time-series-model-selection]{model choice}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Choosing a time-series model for an investment problem: a sequence of checks from plotting to stationarity, order selection by information criteria, residual and ARCH tests, cointegration for several series, and out-of-sample confirmation]\label{meth:time-series-model-selection}
+\qffield{Statement} A defensible sequence (Interpretation, assembling the steps of the entries above):
+\begin{enumerate}
+\item \emph{Understand the question and plot the series}: trend, seasonality, breaks, outliers.
+\item \emph{Trend}: if the series grows by a constant amount or percentage, consider a trend model, but check its residuals (\hyperref[meth:trend-models]{trend models}).
+\item \emph{Stationarity}: test for a unit root, and difference if needed (\hyperref[def:stationarity-unit-roots]{unit roots}).
+\item \emph{Order}: choose AR lags by the partial autocorrelations and by information criteria, AIC or BIC, which penalise extra parameters and should be compared on the same sample \citep[pp.~46--47]{s7-tsay}; \citep[sec.~7.5]{s7-hyndman}.
+\item \emph{Residuals}: test for remaining autocorrelation, including seasonal lags, and for ARCH (\hyperref[mod:arch-conditional-variance]{ARCH}).
+\item \emph{Several series}: test for cointegration before relating their levels (\hyperref[meth:cointegration-testing]{cointegration}).
+\item \emph{Confirm out of sample} against simple benchmarks (\hyperref[meth:forecast-accuracy-evaluation]{evaluation}).
+\end{enumerate}
+
+\qffield{Practice} \emph{A model for US inflation}, to set an inflation assumption for a five-year liability plan.
+\begin{itemize}
+\item \emph{Alternatives}: a random walk; AR(1); AR(4); a log-linear trend in the price level.
+\item \emph{Evidence}:
+\begin{itemize}
+\item the trend model's residuals are persistent and its forecasts start 17 percent from the current level;
+\item inflation rejects a unit root at every fixed lag, though at 4 percent with AIC-chosen lags;
+\item on a common sample both AIC ($-410.0$ against $-395.0$) and BIC ($-397.3$ against $-389.9$) prefer AR(4) to AR(1). AR(1)'s residuals show autocorrelation at lag 3;
+\item but AR(4)'s lag-4 coefficient, 0.43 when estimated to 1989, comes from the wartime inflation cycles. Out of sample over 1990--2025 AR(4) has an RMSE of 1.60 percent against 1.45 percent for AR(1), with re-estimation each year;
+\item AR(1) beats the random walk (1.66 percent) and the mean (1.60 percent).
+\end{itemize}
+\item \emph{Constraints}: annual data, about a hundred observations, regimes that differ (gold standard, wartime controls, inflation targeting).
+\item \emph{Sensitivity}: estimated on 1980--2025 alone, persistence falls from 0.61 to 0.44, shortening the half-life from 1.4 to 0.8 years and moving the five-year path faster to the mean.
+\end{itemize}
+\emph{Conclusion.} Use the AR(1), re-estimated as data arrive, with a mean-reverting level near 3 percent. Report the subsample sensitivity, and treat the in-sample preference for AR(4) as an artefact of the 1940s.
+
+\qffield{Conditions} Information criteria rank models on the sample they are fitted to; they cannot see a change of regime. With very persistent series the stationarity decision dominates everything else.
+
+\qffield{Pitfalls} Letting AIC choose lags over a sample that contains a different regime. Choosing the model that wins one out-of-sample comparison by a small margin without asking whether the margin is meaningful. Skipping the stationarity step because the regression fits well.
+
+\qffield{See also} \hyperref[meth:autoregressive-forecasting]{AR models}; \hyperref[meth:forecast-accuracy-evaluation]{evaluation}; \hyperref[meth:cme-framework-forecasting]{capital market expectations}.
+
+\end{qfmethod}

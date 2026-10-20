@@ -1,0 +1,102 @@
+\section{Inventories}
+
+These entries cover the cost of inventories and their measurement at the lower of cost and net realisable value, the cost formulas and their effects under rising and falling costs, and what inventory disclosures reveal.
+
+\begin{qfmethod}[Measuring inventories: cost, net realisable value, write-downs and reversals under IFRS and US GAAP, and their effects on statements and ratios]\label{meth:inventory-measurement-nrv}
+\qffield{Statement} Inventories are measured at the lower of cost and net realisable value (NRV) \citep[IAS~2 para.~9]{eu-2023-1803-ias2}. Cost comprises purchase, conversion and other costs of bringing inventories to their present location and condition (para.~10). Conversion costs include a systematic allocation of fixed production overheads based on normal capacity; unallocated overhead from low production is expensed (paras.~12--13). Abnormal waste, most storage, administrative overhead and selling costs are excluded (para.~16).
+
+NRV is estimated selling price less costs of completion and sale, an entity-specific value that may differ from fair value (paras.~6--7). Write-downs are made item by item or for similar items, not for whole classifications (para.~29), and NRV is reassessed each period. When the circumstances reverse, the write-down is reversed, limited to the original amount (para.~33), as a reduction in inventory expense (para.~34).
+
+\emph{US GAAP.} Inventory measured by FIFO or average cost has been carried at the lower of cost and net realisable value since 2016, aligning with IFRS. LIFO and retail-method inventory keeps lower of cost or market \citep[pp.~1--2]{us-inventory-2015}. Recoveries of declines may be recognised as gains in later \emph{interim} periods of the same fiscal year, not exceeding the losses recognised (p.~9).
+
+\qffield{Notation} Carrying amount $=\min(\text{cost},\,\mathrm{NRV})$. Reversal $=\min\bigl(\text{prior write-down},\ \min(\text{cost},\mathrm{NRV}_{\text{new}})-\text{carrying amount}\bigr)$.
+
+\qffield{Conditions} IAS~2 as adopted in 2023. The US texts read cover the measurement change and interim recoveries; the general treatment of annual write-downs was not read in the current Codification. Producers measuring certain commodities at NRV and commodity broker-traders at fair value less costs to sell are outside the measurement requirements (IAS~2 paras.~3--5).
+
+\qffield{Practice} \emph{Original.} Goods costing 100 are written down to an NRV of 80, an expense of 20. The next year NRV recovers to 95, and IAS~2 reverses 15: the carrying amount becomes 95, below cost. The write-down lowers that year's gross margin and inventory turnover's denominator; the reversal raises the next year's margin. An analyst looking at a margin ``recovery'' should check whether it is a reversal rather than better pricing (IAS~2 para.~36(f)--(g) requires the amounts and the circumstances).
+
+\emph{Absorption effect.} Producing more than is sold carries fixed overhead into inventory and raises profit. Producing less releases it into cost of sales \citep[p.~236]{financial-statement-analysis-2009}. A rising inventory-to-sales ratio with stable margins can signal this.
+
+\qffield{Pitfalls} Reading an inventory write-down reversal as an operating improvement. Treating normal-capacity overhead absorption as neutral when production diverges from sales. Comparing margins of a company that wrote inventory down with one that did not without adjusting.
+
+\qffield{See also} \hyperref[meth:inventory-cost-formulas]{cost formulas}; \hyperref[meth:inventory-disclosure-analysis]{disclosures}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Inventory cost formulas under inflation and deflation: FIFO, weighted average and LIFO effects on profit, balances, taxes, cash flows and ratios, the LIFO reserve and LIFO liquidations]\label{meth:inventory-cost-formulas}
+\qffield{Statement} Items that are not interchangeable use specific identification. Other inventories use FIFO or weighted average, applied consistently to inventories of similar nature and use \citep[IAS~2 paras.~23--27]{eu-2023-1803-ias2}; IFRS does not permit LIFO. US GAAP permits LIFO, and US tax law requires a company using LIFO for tax to use it for financial reporting. The difference between FIFO and LIFO inventory, the \emph{LIFO reserve}, is disclosed \citep[pp.~228--235]{financial-statement-analysis-2009}.
+
+\emph{Effects when costs rise} (pp.~229--232):
+\begin{itemize}
+\item FIFO matches older, cheaper costs to current prices, so gross profit includes a holding gain;
+\item LIFO cost of sales approximates current cost, but the balance sheet carries old layers, understating inventory, working capital and the current ratio and overstating turnover;
+\item LIFO lowers taxable profit and so taxes paid, which raises operating cash flow;
+\item when costs fall, every effect reverses.
+\end{itemize}
+A \emph{LIFO liquidation}, selling more units than are bought, releases old layers into cost of sales and raises profit when prices have risen (pp.~232--233).
+
+\emph{Restatements} (pp.~233--235):
+\begin{itemize}
+\item LIFO to FIFO: inventory $+$ reserve; deferred tax $+$ reserve$\times t$; equity $+$ reserve$\times(1-t)$; cost of sales $-\Delta$reserve;
+\item FIFO to LIFO: $\text{COGS}_{\text{LIFO}}\approx\text{COGS}_{\text{FIFO}}+\text{BI}_{\text{FIFO}}\times r$, where $r$ is inventory-specific inflation, estimable from a LIFO peer as $\Delta$reserve over prior-year FIFO inventory.
+\end{itemize}
+
+\qffield{Notation} Goods available $=$ opening inventory $+$ purchases $=$ cost of sales $+$ closing inventory, under every formula. FIFO gross profit $=$ economic profit (sales less replacement cost) $+$ holding gain.
+
+\qffield{Conditions} Periodic systems; the weighted average is computed over goods available. The restatements assume the reserve's tax effect at a single rate and that the analyst's chosen basis is preferable for the ratio at hand: FIFO for balance-sheet ratios, LIFO for cost of sales.
+
+\qffield{Practice} \emph{Reproduced and extended.} The book's example has 40 units at 500 in opening inventory and 60 bought at 600; 30 are sold at 800 (pp.~229--230).
+\begin{itemize}
+\item Gross profit is 9{,}000 (FIFO), 7{,}200 (weighted average) and 6{,}000 (LIFO). The FIFO figure is economic profit $30\times(800-600)=6{,}000$ plus a holding gain of $30\times(600-500)=3{,}000$.
+\item \emph{Original:} if the 60 units cost 400 instead, the ordering reverses: 9{,}000 (FIFO), 10{,}800 (weighted average), 12{,}000 (LIFO).
+\item A unit-by-unit layer simulation confirms that cost of sales plus closing inventory equals goods available in each case.
+\item If only 10 rather than 30 units are bought when 30 are sold, LIFO dips into the 500 layer, and gross profit rises by 2{,}000.
+\end{itemize}
+
+\emph{Reproduced inputs} (Deere, p.~232): LIFO inventory 1{,}999, reserve 950 rising to 1{,}002. FIFO inventory is 3{,}001. LIFO cost of sales was 52 higher than FIFO that year. The after-tax equity uplift at 35~percent is 651.3, and the implied inventory inflation from the reserve's change over prior FIFO inventory (2{,}316) is 2.25~percent.
+
+\qffield{Pitfalls} Comparing a LIFO and a FIFO company's margins or current ratios unadjusted. Reading a LIFO liquidation gain as recurring. Applying general CPI rather than inventory-specific inflation in the FIFO-to-LIFO bridge.
+
+\qffield{See also} \hyperref[meth:inventory-measurement-nrv]{measurement}; \hyperref[meth:accounting-analysis-adjustments]{comparability adjustments}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Inventory presentation and disclosures, and the issues an analyst examines: classifications, cost formula, write-downs and reversals, turnover, and evidence from other sources]\label{meth:inventory-disclosure-analysis}
+\qffield{Statement} Entities disclose \citep[IAS~2 para.~36]{eu-2023-1803-ias2}:
+\begin{itemize}
+\item the accounting policies, including the cost formula;
+\item the carrying amount in suitable classifications (merchandise, supplies, materials, work in progress, finished goods; para.~37);
+\item any amounts carried at fair value less costs to sell;
+\item the amount expensed;
+\item write-downs, reversals and the circumstances of reversals;
+\item inventories pledged as security.
+\end{itemize}
+Cost of sales comprises inventory sold, unallocated production overhead and abnormal production costs (para.~38). From 2027 an IFRS reporter presenting expenses by function must show cost of sales including that inventory expense, and disclose inventory write-downs in a single note \citep[Annex, IFRS~18 paras.~82--83]{eu-2026-338-ifrs18}.
+
+\emph{Issues to examine} \citep[pp.~228--236]{financial-statement-analysis-2009}:
+\begin{itemize}
+\item inventory growth relative to sales, by classification: research summarised there finds that rising finished goods tends to precede higher sales but lower earnings, as excess stock is cleared at lower margins, whereas rising raw materials and work in progress tends to precede both higher sales and earnings (p.~231);
+\item changes in cost formula or LIFO reserve;
+\item write-downs and their reversals;
+\item the production-to-sales gap;
+\item pledged inventory;
+\item industry and competitor data on prices and obsolescence.
+\end{itemize}
+
+\qffield{Notation} Inventory turnover $=$ cost of sales$/$average inventory; days of inventory $=365/$turnover.
+
+\qffield{Conditions} The research findings are as summarised in the textbook (2009) for US companies; the underlying studies were not read here. Classification detail varies by company and may be immaterial for some.
+
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-tools-statements]{Harbour}). Inventory rose from 200 to 212 (6~percent) while cost of sales rose 8.9~percent, so days of inventory improved slightly from 108.4 to 107.9. That does not suggest excess stock. Several questions remain:
+\begin{itemize}
+\item whether finished goods grew faster than materials;
+\item whether any write-down was reversed in 2025;
+\item whether the restructuring closed product lines whose stock now needs clearance.
+\end{itemize}
+In the \hyperref[meth:report-quality-evaluation]{aggressive variant}, a bill-and-hold shipment lowers inventory by 19.5 and raises receivables by 30. Turnover then looks better, a reason to read inventory and receivables together.
+
+\qffield{Pitfalls} Judging turnover on totals when classifications move differently. Ignoring pledged inventory in a credit analysis. Overlooking reversals in the note when margins improve.
+
+\qffield{See also} \hyperref[meth:inventory-measurement-nrv]{measurement}; \hyperref[meth:reporting-warning-signs]{warning signs}.
+
+\end{qfmethod}

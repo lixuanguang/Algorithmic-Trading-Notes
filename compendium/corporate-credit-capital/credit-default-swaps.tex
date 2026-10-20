@@ -32,3 +32,95 @@ The adoption protocol itself, published by ISDA on 21 August 2014, amends adheri
 \qffield{Further reading} The ISDA CDS standard model \citep{add-cds-model}.
 
 \end{qfmechanism}
+
+\begin{qfdefinition}[Single-name and index CDS: reference entity, notional, spread, maturity and standard dates; fixed coupons and upfront payments; credit events; cheapest-to-deliver and auction settlement; index composition and rolls]\label{def:cds-contract-features}
+\qffield{Statement} \emph{Single-name CDS.} The buyer of protection pays a spread on the notional, usually quarterly in arrears, until maturity or a credit event; the seller then compensates the buyer for the loss on the reference entity's debt \citep[pp.~372--374]{risk-management-financial-institutions-2023}.
+\begin{itemize}
+\item \emph{Parameters}: reference entity, notional, spread, maturity, the credit events, and the seniority of deliverable obligations.
+\item \emph{Dates}: contracts usually mature on 20 March, June, September or December, and five years is the most common maturity (p.~375).
+\item \emph{Credit events}: usually failure to pay, restructuring and bankruptcy; restructuring is sometimes excluded in North American contracts (p.~376).
+\item \emph{Settlement}: physical delivery of bonds for their face value, or, as is now usual, cash equal to par less the price of the cheapest deliverable bond set in a two-stage auction. After a default the buyer pays the premium accrued since the last payment date (p.~374).
+\item \emph{Cheapest to deliver}: several bonds of the same seniority are deliverable but may trade at different prices after default, because claims include accrued interest and reorganisations treat bondholders differently. The buyer delivers the cheapest (p.~376).
+\end{itemize}
+
+\emph{Index CDS.} CDX NA IG and iTraxx Europe each reference 125 investment-grade companies and are updated each March and September, dropping names no longer investment grade. Buying index protection is roughly buying protection on every name at the index spread. When a name defaults its notional is paid out and removed, and the annual payment falls in proportion. The index is slightly below the average single-name spread, because high spreads are paid for a shorter expected time \citep[pp.~376--377]{risk-management-financial-institutions-2023}.
+
+\emph{Fixed coupons.} Standard contracts and indices trade like bonds. A fixed coupon and recovery rate are specified, the market quotes a spread, and the present value of the difference between them changes hands at the trade date: the buyer pays if the spread exceeds the coupon, the seller if not (p.~377). Hull gives the price as $P=100-100\,D\,(s-c)$, with $D$ the risky duration \citep[p.~596]{s7-hulloptions}. The 2009 protocols and the 2014 Definitions that standardised these terms are covered with their sources in \hyperref[mech:cds-contract-credit-events]{the CDS mechanism entry}.
+
+\qffield{Practice} \emph{Hull's index example reproduced} (\texttt{credit-cds-securitisation-checks.py}). Protection of 800,000 on each of 125 names at 166 basis points costs 1,660,000 a year. Each default cuts the payment by 13,280 and triggers the usual payout on that name.
+
+\emph{Upfront on a standard index trade} \citep[Example~25.1]{s7-hulloptions}. iTraxx is quoted at 0.345 percent against a coupon of 0.406 percent, with quarterly payments, 4 percent rates and 40 percent recovery. The risky duration is 4.447 and the price 100.27. Since the spread is below the coupon, the seller of protection pays the buyer 0.27 per 100 at the start, and the buyer then pays the 0.406 percent coupon.
+
+\qffield{Conditions} Hull's descriptions are of standard terms as of 2021--2023; regional standard terms and the current Definitions' wording were not read.
+
+\qffield{Pitfalls} Treating the quoted spread as the running payment on a fixed-coupon contract. Forgetting the accrued premium on default. Assuming every bond of the reference entity is deliverable.
+
+\qffield{See also} \hyperref[mech:cds-contract-credit-events]{CDS mechanism and credit events}; \hyperref[meth:cds-pricing]{pricing}; \hyperref[meth:cds-strategies]{strategies}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Pricing a CDS: the premium and protection legs, risk-neutral hazard rates, the par spread, upfront and mark-to-market values, and the role of recovery]\label{meth:cds-pricing}
+\qffield{Statement} A CDS is priced by equating the present values of its two legs under risk-neutral default probabilities \citep[pp.~689--691]{risk-management-financial-institutions-2023}:
+\begin{itemize}
+\item the \emph{premium leg} is the spread times the survival-weighted, discounted payment dates, plus accrued premium paid on default. Per unit of spread this is the \emph{risky duration} (or risky annuity);
+\item the \emph{protection leg} is the discounted expected payout $1-R$ at each possible default time.
+\end{itemize}
+The par spread is protection divided by risky duration. A contract struck at another spread is worth the difference times the risky duration (p.~691). Factors: the hazard rate and its term structure, recovery, the risk-free curve, and the payment and default timing. Approximately, $s\approx\lambda(1-R)$ (p.~380).
+
+\emph{Implied hazard and recovery.} Hazard rates are implied from quoted spreads as volatilities are from option prices. Provided the same recovery is used to imply the hazard and to value the contract, the value is not very sensitive to recovery, since implied default probabilities scale with $1/(1-R)$ and payoffs with $1-R$. A binary CDS, which pays a fixed amount, is sensitive \citep[pp.~594--595]{s7-hulloptions}.
+
+\qffield{Practice} \emph{Hull's Appendix~K reproduced}: hazard 2 percent, rates 5 percent, recovery 40 percent, annual payments, defaults at mid-year.
+\begin{itemize}
+\item Survival probabilities are 0.9802, 0.9608, 0.9418, 0.9231 and 0.9048. Table~K.1 prints year 4 as 0.9321; Table~K.2 has 0.9231, which is $e^{-0.08}$.
+\item The premium leg is $4.0728s$, plus accrual of $0.0422s$: $4.1150s$. The protection leg is 0.0506.
+\item The par spread is $0.0506/4.1150=123$ basis points, close to the rule-of-thumb 120.
+\item A contract struck at 150 basis points is worth $4.1150\times0.015-0.0506=0.0111$ to the seller.
+\item A binary CDS paying 1 has a protection leg of 0.0844 and a spread of 205 basis points.
+\item A quoted spread of 100 basis points implies a hazard of 1.63 percent \citep[p.~594]{s7-hulloptions}.
+\end{itemize}
+
+\emph{Recovery} (original extension). Implying the hazard from 123 basis points at 30 percent recovery gives 1.71 percent instead of 2 percent. The 150 basis point contract is then worth 0.0112 rather than 0.0111: recovery barely matters, provided it is used consistently.
+
+\qffield{Conditions} The simple model treats default as independent of rates and of the seller's own credit; counterparty risk and the CDS--bond basis are outside it.
+
+\qffield{Pitfalls} Implying hazards with one recovery and valuing with another. Ignoring the accrued premium. Using the quoted spread, not the coupon, as the running payment on a standard contract.
+
+\qffield{See also} \hyperref[def:cds-contract-features]{contract features}; \hyperref[meth:risky-bond-cva]{risky bonds}; \hyperref[meth:cds-strategies]{strategies}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[CDS strategies: hedging and taking credit exposure, the CDS--bond basis, single-name against index trades, and curve trades sized by Credit01 with their jump-to-default risk]\label{meth:cds-strategies}
+\qffield{Statement} \emph{Exposure.} Buying protection is short credit: it hedges a bond or loan, or expresses a view that spreads will widen. Selling protection is long credit without funding a bond. A bond hedged with a CDS earns roughly the risk-free rate, so the CDS spread should be close to the bond's par yield spread \citep[p.~378]{risk-management-financial-institutions-2023}.
+
+\emph{Basis.} The CDS--bond basis is the CDS spread less the bond yield spread. It is not an exact arbitrage. The cheapest-to-deliver option and restructuring clauses push it up; counterparty risk in the CDS and the exclusion of accrued interest from the payout push it down; bonds above par tend to give a negative basis. Before 2007 it was positive, about 16 basis points in 2004--2005; in the crisis it was at times very negative but hard to arbitrage for lack of liquidity; since then it has usually been small and negative (pp.~379--380). A negative-basis trade buys the bond and buys protection.
+
+\emph{Index against single names.} An index trade takes diversified exposure to the market; long the index and short a single name, or the reverse, isolates one company's spread relative to the market (Interpretation).
+
+\emph{Curve trades.} Comparing the CDS curve with a curve implied by the issuer's bonds can suggest the CDS curve is too flat \citep[p.~13]{berd-mashal-wang-2004}:
+\begin{itemize}
+\item a \emph{bearish steepener} sells short-dated protection and buys long-dated protection in equal notionals; it gains if spreads widen or steepen;
+\item a \emph{bullish steepener} uses notionals that make the trade Credit01-neutral, so parallel moves matter little and it gains if the front end tightens more.
+\end{itemize}
+Credit01 is the change in value for a one basis point spread change, approximately notional times risky duration (Interpretation).
+
+\emph{Other markets} (Interpretation). The same credit appears in loans, equity and convertibles. A structural model turns the equity price and volatility into an implied spread (\hyperref[mod:structural-reduced-form-credit]{structural models}); if the CDS trades well above it, selling protection and selling equity bets that the two will converge (capital-structure arbitrage). Loan CDS and convertibles allow the same comparison against loans and equity-linked bonds. Each trade depends on a model linking the markets, and the link can break.
+
+\qffield{Practice} \emph{Larkspur} (original): flat hazard 2 percent, recovery 40 percent, rates 5 percent; risky durations 4.11 at 5 years and 7.01 at 10 years.
+\begin{itemize}
+\item \emph{Credit01-neutral steepener}: buy 10m of 10-year protection and sell $10\times7.01/4.11=17.05$m of 5-year. To first order a parallel 50 basis point widening nets zero. The 10-year widening by 50 basis points alone gains 0.351m; the 5-year alone loses 0.351m.
+\item \emph{The cost}: the trade is net short 7.05m of protection, so an immediate default loses $7.05\times0.6=4.23$m. Credit01 neutrality is not default neutrality.
+\item \emph{Equal notionals} of 10m: the trade is net long 29.0k of risky duration per unit of spread, gaining 0.145m on a parallel 50 basis point widening, with no jump-to-default exposure.
+\end{itemize}
+\emph{Equity against CDS} (original, using Hull's Example~17.4 firm). The Merton-implied spread is 124 basis points. A market CDS at 200 basis points is 76 basis points rich relative to the equity, but the gap is only as reliable as the model's asset volatility.
+
+\emph{Basis} (original). With the CDS at 200 basis points and the bond spread at 240, buying the bond and protection locks in about 40 basis points a year if the bond can be financed at the risk-free rate. If funding costs 40 basis points more, the trade earns nothing.
+
+\emph{Choice.} A view that the issuer's near-term risk is overpriced, with no view on default itself, suits the equal-notional trade. A view only on the shape, with no view on direction, suits the Credit01-neutral trade, accepting the jump-to-default loss.
+
+\qffield{Conditions} Durations are first-order measures; large spread moves change them. Funding, collateral and the cheapest-to-deliver option decide whether a basis trade earns its apparent spread.
+
+\qffield{Pitfalls} Calling a Credit01-neutral trade hedged. Treating a negative basis as free money without financing costs. Ignoring index rolls and composition changes.
+
+\qffield{See also} \hyperref[meth:cds-pricing]{CDS pricing}; \hyperref[meth:credit-spread-term-structure]{credit curves}; \hyperref[mech:cds-contract-credit-events]{contract mechanics}.
+
+\end{qfmethod}

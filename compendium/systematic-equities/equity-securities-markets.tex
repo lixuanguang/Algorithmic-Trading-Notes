@@ -1,0 +1,145 @@
+\section{Equity securities and markets}
+
+\begin{qfdefinition}[Equity instruments: common shares, share classes, preferred stock, warrants, rights and other equity-linked claims, and listed against private equity]\label{def:equity-instruments}
+\qffield{Statement} Equity is a residual claim on a company's cash flows and assets, after all contractual claims. Its holders control the company through voting, its return is not limited, and it has no maturity. Debt is contractual, has priority, has tax-deductible interest and a fixed maturity, and carries control only through covenants or in default \citep[pp.~285--286]{applied-corporate-finance-2014}.
+
+Equity instruments \citep[pp.~286--291]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item \emph{Owner's equity, venture capital and private equity}: ownership stakes in private firms, priced by negotiation.
+\item \emph{Common stock}: sold at an offering price to the public and then traded. Companies may issue classes with different dividend or voting rights.
+\item \emph{Warrants}: long-term call options issued by the company, which dilute existing holders when exercised (p.~288).
+\item \emph{Contingent value rights}: puts sold by the company on its own shares (p.~289).
+\item \emph{Preferred stock}: a fixed dividend, usually cumulative, paid before common dividends; no maturity; votes only on matters affecting its claims; junior to debt; dividends not deductible (p.~291). Damodaran treats it as a third component of capital, between debt and equity.
+\end{itemize}
+Convertible bonds and convertible preferred combine a fixed claim with an option on the common.
+
+Under Delaware law a corporation may issue classes and series of stock with full, limited or no voting powers, and with preferences and special rights. These are stated in the certificate of incorporation or in a board resolution under authority the certificate gives \citep[sec.~151(a)]{delaware-gcl-2026}. Stock may be redeemable, provided that some fully voting stock remains outstanding (sec.~151(b)).
+
+\emph{Listed against private equity.}
+\begin{itemize}
+\item \emph{Listed equity} trades on exchanges at observable prices. It is liquid, subject to periodic disclosure and listing rules, and held by diversified investors.
+\item \emph{Private equity}, held by founders, venture-capital and buyout funds, is illiquid. It is valued by negotiation or by appraisal, and its holders usually take board seats and contractual rights such as liquidation preferences, vetoes and drag-along or tag-along rights.
+\end{itemize}
+The private holder is paid for illiquidity and for the work of monitoring. It is often undiversified, which changes its required return (\hyperref[meth:cost-of-debt-equity-estimation]{private-company cost of equity}).
+
+\qffield{Practice} \emph{Original.} An investor compares three claims on the same company:
+\begin{itemize}
+\item a common share at 11.00, with no fixed dividend, one vote and the residual upside;
+\item a 5 percent cumulative preferred share on 100 par, with dividends fixed at 5, paid before common dividends, and arrears accumulating if skipped;
+\item a warrant to buy one common share at 12 within five years, worth more as volatility and time rise and diluting the common when exercised.
+\end{itemize}
+In liquidation, the preferred is paid its par value after creditors and before common shareholders. In a takeover, the common captures the premium, and the preferred only its contractual terms.
+
+\qffield{Conditions} Rights attaching to shares are set by company law, the articles or certificate, and the terms of issue. ``Preferred'' and ``common'' are labels whose content varies by jurisdiction and issue. Private-equity preferred shares in venture deals often carry conversion and liquidation preferences that public preferred shares lack.
+
+\qffield{Pitfalls} Treating preferred stock as debt in a valuation without checking whether dividends are cumulative and whether there is a maturity or call. Ignoring warrants and options when computing equity value per share. Assuming one share, one vote.
+
+\qffield{See also} \hyperref[def:equity-rights-voting]{rights and voting}; \hyperref[meth:preferred-stock-valuation]{valuing preferred stock}; \hyperref[def:organisational-forms-issuers]{public against private issuers}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Shareholder rights across jurisdictions and share classes, and the voting process: one share one vote, dual-class and non-voting shares, cumulative voting, proxies, quorum, intermediaries, proxy advisers and say-on-pay]\label{def:equity-rights-voting}
+\qffield{Statement} \emph{Basic rights.} The G20/OECD Principles list shareholders' basic rights \citep[principle~II.A, p.~15]{oecd-g20-principles-2023}:
+\begin{itemize}
+\item to secure registration of ownership and to transfer shares;
+\item to obtain relevant information on time;
+\item to participate and vote in general meetings;
+\item to elect and remove directors;
+\item to share in profits.
+\end{itemize}
+All shares of a series within a class should carry the same rights. Changes to economic or voting rights should be approved by the classes affected (principle~II.E, p.~19).
+
+\emph{Classes and jurisdictions.} Rules differ across jurisdictions.
+\begin{itemize}
+\item \emph{Delaware.} Each share has one vote unless the certificate provides otherwise \citep[sec.~212(a)]{delaware-gcl-2026}, so dual-class and non-voting structures are permitted. The certificate may provide for cumulative voting for directors (sec.~214). By default a majority of shares entitled to vote is a quorum (the quorum may not be set below one third), and other matters pass by a majority of the shares present, with directors elected by plurality (sec.~216).
+\item \emph{Elsewhere.} Many jurisdictions require pre-emption rights for new issues, set supermajorities for constitutional changes, or limit multiple-vote shares. Some states hold golden shares with veto rights, as at Vale \citep[p.~23]{applied-corporate-finance-2014}.
+\end{itemize}
+
+\emph{The voting process.} Most votes are cast by proxy before the meeting. Delaware proxies are valid for three years unless they state a longer period \citep[sec.~212(b)]{delaware-gcl-2026}. Shares are often held through chains of custodians and nominees.
+
+EU law requires intermediaries to transmit information along the chain. They must facilitate the exercise of rights, by voting on the shareholder's instructions or arranging for the shareholder to vote, and must confirm electronic votes. Companies have a right to identify their shareholders, which member states may limit to holders above a threshold no higher than 0.5 percent \citep[Arts.~3a--3c of Directive 2007/36/EC as inserted]{eu-2017-828-srd2}.
+
+Proxy advisers recommend votes to institutional investors. They must disclose their code of conduct, research methods, sources and conflicts (Art.~3j). Shareholders vote on directors' remuneration policy, with binding or advisory effect, and on the annual remuneration report (Arts.~9a--9b).
+
+\emph{Participants.} The participants are the company and its board, which set the agenda; shareholders and their investment managers; custodians and other intermediaries; proxy advisers; proxy solicitors; and, in contests, activists running their own slates.
+
+\qffield{Notation} Cumulative voting: with $N$ shares voting in total and $D$ directors to elect, each share carries $D$ votes that may be concentrated on one candidate. A holder can be sure of electing $k$ directors with $S=\lfloor Nk/(D+1)\rfloor+1$ shares, assuming every share votes, each director is elected by plurality and ties count against the holder. Then each of the holder's $k$ candidates receives $SD/k$ votes, more than the $(N-S)D/(D-k+1)$ that the other holders can give each of $D-k+1$ rivals; one share fewer does not guarantee it.
+
+\qffield{Practice} \emph{Original.} A company has 10 million voting shares and elects five directors. Under straight voting, a holder of 49 percent elects nobody against an opposed majority. Under cumulative voting, $\lfloor10{,}000{,}000\times1/6\rfloor+1=1{,}666{,}666+1=1{,}666{,}667$ shares, 16.7 percent, guarantee one seat; 1,666,666 shares would leave the majority able to tie. This is why minority-protection codes favour cumulative voting where control is concentrated \citep[principle~II.G, p.~21]{oecd-g20-principles-2023}.
+
+A dual-class company in which the founder holds 15 percent of the equity with 63.83 percent of the votes (\hyperref[def:global-ownership-structures]{ownership structures}) can pass any ordinary resolution alone. Outside holders' rights then rest on class votes, listing rules and the duties of directors.
+
+\qffield{Conditions} Delaware sections are read as of October 2026; the EU articles apply to companies with registered offices in the EU and shares admitted to an EU regulated market. Listing rules add requirements, for example on dual-class listings, that company law does not.
+
+\qffield{Pitfalls} Assuming that institutional ownership means active voting: many funds follow proxy-adviser recommendations or vote with management. Ignoring the chain of intermediaries that can lose votes. Reading ``majority vote'' without checking whether it is of shares present, shares outstanding or votes cast.
+
+\qffield{See also} \hyperref[meth:corporate-governance-evaluation]{governance}; \hyperref[def:equity-instruments]{equity instruments}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Equity issuance and trading: primary and secondary markets, IPOs, seasoned and rights offerings, exchange, off-exchange and over-the-counter trading, and liquidity measures including free float, average daily volume, turnover and spreads]\label{def:equity-issuance-trading-liquidity}
+\qffield{Statement} \emph{Primary markets.} In the primary market a company sells new shares and receives the proceeds.
+\begin{itemize}
+\item \emph{Initial public offering.} An investment bank advises on pricing, builds a book of investor demand through road shows, files the registration statement and allocates shares on the offering date. Google used a Dutch auction in 2004 \citep[pp.~302--305]{applied-corporate-finance-2014}. Costs include legal and administrative fees, the underwriting spread, which falls with issue size, and underpricing. Average first-day returns run 10 to 15 percent and are higher in hot markets.
+\item \emph{Seasoned offerings} are sold by general subscription (firm commitment, best efforts or standby) or by private placement, which is cheaper and goes to fewer investors (pp.~307--309).
+\item \emph{Rights offerings} give existing holders the right to buy new shares at a subscription price. Holders lose nothing if they use or sell their rights, and the cost is lower. The value of one right is $(P_{\text{rights-on}}-P_{\text{sub}})/(n+1)$, where $n$ rights buy one share (p.~309).
+\end{itemize}
+
+\emph{Secondary markets.} In the secondary market investors trade existing shares with each other, and the company receives nothing. Trading takes place in three settings (Interpretation, detail in \hyperref[def:market-structures-venues]{market structures}):
+\begin{itemize}
+\item \emph{Exchanges}: regulated venues with transparent order books and auctions.
+\item \emph{Off-exchange} venues, such as alternative trading systems, dark pools and broker internalisation. They offer lower impact for large or uninformed orders, with less pre-trade transparency.
+\item \emph{Over-the-counter} dealing in unlisted shares.
+\end{itemize}
+Exchanges provide price discovery and the auctions that set closing prices; off-exchange trading competes on cost and execution quality.
+
+\emph{Liquidity measures.}
+\begin{itemize}
+\item \emph{Free float}: shares available to the public. Index providers exclude holdings of corporations, founders, directors, governments, treasury shares and private equity, and portfolio holdings of 30 percent or more \citep[pp.~2--3]{ftse-free-float-2026}. Shares under lock-up are excluded until it expires (p.~4).
+\item \emph{Average daily volume} (ADV): in shares or currency over a window.
+\item \emph{Turnover}: ADV over float.
+\item \emph{Days to trade}: position over the volume one can take without excessive impact.
+\item \emph{Bid--ask spread}: the cost of immediacy for small trades.
+\end{itemize}
+Depth and resiliency matter for larger trades (\hyperref[def:liquidity-dimensions]{liquidity dimensions}).
+
+\qffield{Practice} \emph{Harbour Tools, illustrative trading data.} Of 100.75 million shares, the founding family holds 20 million, directors 1 million and an employee trust 0.75 million.
+\begin{itemize}
+\item Free float is 79.0 million shares (78.41 percent), worth 869 at 11.00.
+\item ADV of 0.40 million shares is EUR~4.40 million a day, 0.506 percent of float.
+\item A fund wanting 2 million shares, about 2 percent of the company, at no more than 15 percent of daily volume needs about 33 trading days.
+\item A quoted market of 10.98--11.02 is a spread of 36.4 basis points.
+\end{itemize}
+The position is liquid enough to build over six weeks but would be expensive to exit quickly. Size and expected holding period should reflect that.
+
+\qffield{Conditions} Free-float rules differ between index providers and change; the FTSE Russell rules cited are version 3.6 of October 2026. ADV is unstable around index events, earnings and market stress. Off-exchange shares and practices depend on each market's rules (\hyperref[rule:us-equity-market-structure]{US equity market structure}).
+
+\qffield{Pitfalls} Measuring liquidity by market capitalisation instead of float and volume. Treating an IPO's first-day return as an investor return available to all. Ignoring that a rights issue at a deep discount is not a price cut for holders who take up their rights.
+
+\qffield{See also} \hyperref[def:liquidity-dimensions]{liquidity}; \hyperref[def:market-structures-venues]{market structures}; \hyperref[def:global-ownership-structures]{ownership structures}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Corporate distributions as a source of equity return: cash dividends, share repurchases, stock dividends and splits, and the dividend chronology of declaration, ex-dividend, record and payment dates]\label{def:corporate-distribution-mechanics}
+\qffield{Statement} An equity investor's return is the price change plus distributions. A company distributes cash through dividends (regular, special or liquidating) and share repurchases, and changes the number of shares, without distributing value, through stock dividends and splits \citep[pp.~438--439, 473]{applied-corporate-finance-2014}.
+
+\emph{Dividend chronology} \citep[pp.~438--439]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item the board \emph{declares} the dividend, its amount and its dates; the announcement carries information and moves the price;
+\item on the \emph{ex-dividend date} the share starts trading without the right to the dividend, and the price drops by about the dividend;
+\item the \emph{record date} is when the company determines who is a holder entitled to the dividend;
+\item on the \emph{payment date} the cash is paid, usually two to three weeks later in the US.
+\end{itemize}
+US companies typically pay quarterly; elsewhere semi-annual or annual payments are common.
+
+With settlement one business day after trade, US markets set the ex-dividend date for cash dividends of less than 25 percent of the share's value on the record date. A buyer on the ex-date would not be a holder of record in time. For distributions of 25 percent or more, including splits, the ex-date is the first business day after the payable date \citep[paras.~(b)(1)--(b)(2)]{finra-rule-11140}. Before the 2024 change, with two-day settlement, the ex-date preceded the record date by one business day.
+
+\qffield{Practice} \emph{Original.} Harbour, at 11.00, declares a dividend of 0.32 on 2~March, with record date 13~March and payment 3~April. Under the US rule the ex-date is also 13~March. A holder who sells on 12~March loses the dividend; one who sells on 13~March keeps it. Before taxes the holder is indifferent: the price opens about 0.32 lower, at 10.68, and the holder gets 0.32 in cash. A total-return index reinvests the dividend; a price index records a fall. If dividends are taxed more than capital gains, the price drop on the ex-date tends to be less than the dividend \citep[pp.~454--455]{applied-corporate-finance-2014}.
+
+\qffield{Conditions} Ex-date conventions follow the settlement cycle and local rules; markets with two-day settlement still set the ex-date before the record date. Dividend dates apply also to depositary receipts, which may differ.
+
+\qffield{Pitfalls} Treating the record date as the last day to buy. Measuring performance from a price series that ignores dividends. Counting a stock dividend or split as income.
+
+\qffield{See also} \hyperref[meth:distribution-effects]{effects of distributions}; \hyperref[meth:payout-policy-comparison]{repurchase methods}.
+
+\end{qfdefinition}

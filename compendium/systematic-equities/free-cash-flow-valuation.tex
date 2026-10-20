@@ -1,0 +1,142 @@
+\section{Free cash flow valuation}
+
+\begin{qfmethod}[Free cash flow to the firm and to equity: definitions, calculation from net income, EBIT, EBITDA and operating cash flow, and the ownership perspective each represents]\label{meth:fcff-fcfe-derivation}
+\qffield{Statement} \emph{Free cash flow to equity} is the cash left after operating expenses, taxes, debt payments and reinvestment: the cash a firm could pay to its shareholders \citep[pp.~351--352]{investment-valuation-2012}. \emph{Free cash flow to the firm} is the cash flow to all claimholders, before any payment to lenders or preferred shareholders (pp.~380--381):
+\[ \mathrm{FCFF}=\mathrm{EBIT}(1-t)+\mathrm{Dep}-\mathrm{FCInv}-\mathrm{WCInv},\qquad \mathrm{FCFE}=\mathrm{FCFF}-\mathrm{Int}(1-t)+\text{net borrowing}. \]
+Interest's tax saving is left out of FCFF because the after-tax cost of debt in the WACC already counts it (p.~381). Equivalent routes (Derivation, from the identities $\mathrm{EBIT}=\mathrm{EBITDA}-\mathrm{Dep}$ and $\mathrm{NI}=(\mathrm{EBIT}-\mathrm{Int})(1-t)$):
+\begin{align*}
+\mathrm{FCFF}&=\mathrm{NI}+\mathrm{NCC}+\mathrm{Int}(1-t)-\mathrm{FCInv}-\mathrm{WCInv}\\
+&=\mathrm{EBITDA}(1-t)+\mathrm{Dep}\times t-\mathrm{FCInv}-\mathrm{WCInv}\\
+&=\mathrm{CFO}+\mathrm{Int}(1-t)-\mathrm{FCInv},
+\end{align*}
+where NCC are non-cash charges and CFO deducts interest paid, as US GAAP does. If interest paid is presented in financing, as IFRS allows, the interest term is not added back to CFO. FCFE equals net income plus non-cash charges, less investment, plus net borrowing (p.~352). Preferred dividends are deducted, and new preferred issued is added, when preferred stock exists (p.~353).
+
+\emph{Ownership perspective.} FCFE measures what equity holders could receive. Dividends are what a minority holder actually receives; FCFE is what a holder who controlled payout could take out. Valuing FCFE when a firm pays less than it could therefore values control of payout policy (pp.~374--375).
+
+\qffield{Notation} $t$ tax rate; Dep depreciation and amortisation; FCInv investment in fixed capital; WCInv investment in working capital; Int interest expense.
+
+\qffield{Practice} \emph{Avon Fittings} (original, one year). Revenue 500, cash costs 380, depreciation 30, interest 12, tax 25 percent, fixed-capital investment 45, working-capital investment 8, net borrowing 10:
+\begin{itemize}
+\item EBITDA 120, EBIT 90, net income $(90-12)\times0.75=58.50$, CFO $58.5+30-8=80.50$;
+\item FCFF from net income: $58.5+30+9-45-8=44.50$; from EBIT: $67.5+30-53=44.50$; from EBITDA: $90+7.5-53=44.50$; from CFO: $80.5+9-45=44.50$;
+\item FCFE: $44.5-9+10=45.50$, equal to $58.5+30-53+10$.
+\end{itemize}
+
+\emph{Harbour, 2026 forecast} (\hyperref[meth:free-cash-flow-coverage]{FCFF and FCFE}). Valuation FCFF of 31.93 follows two routes. One starts from CFO, adds after-tax interest and pension financing, and deducts capital spending, right-of-use additions and share-based pay. The other starts from EBIT less cash operating taxes, adds depreciation and deducts working capital and all reinvestment. Both give the same 31.93.
+
+\qffield{Conditions} The routes agree only when each counts the same reinvestment and the same claims. Leases treated as debt make right-of-use additions reinvestment; share-based pay treated as a cost is not added back.
+
+\qffield{Pitfalls} Adding back depreciation and also deducting gross rather than net capital spending inconsistently. Subtracting after-tax interest from FCFF and discounting at the WACC, which counts the tax saving twice. Using CFO without checking where interest and dividends paid are classified.
+
+\qffield{See also} \hyperref[meth:fcf-forecasting]{forecasting}; \hyperref[meth:cash-flow-interpretation]{cash flow statement}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Forecasting FCFF and FCFE: forecasting the components or applying a target debt ratio, and what dividends, buybacks, share issues and changes in leverage do to each]\label{meth:fcf-forecasting}
+\qffield{Statement} Free cash flows are forecast either by forecasting each component (net income or EBIT, depreciation, capital spending, working capital and borrowing) or, for FCFE, by assuming that a fixed share $\delta$ of net reinvestment is financed by debt \citep[pp.~352--353]{investment-valuation-2012}:
+\[ \mathrm{FCFE}=\mathrm{NI}-(1-\delta)(\mathrm{FCInv}-\mathrm{Dep})-(1-\delta)\,\mathrm{WCInv}. \]
+The second form keeps leverage stable by construction and smooths the forecast (p.~354).
+
+\emph{Effects of financing decisions.} Neither measure includes dividends, buybacks or share issues, which are uses or sources of equity cash, not operating flows. A firm paying dividends above FCFE must issue shares or borrow; one paying less accumulates cash (p.~355). Borrowing more raises FCFE in the year by the amount borrowed less the after-tax interest, and lowers later FCFE by the interest and repayments. FCFF is unaffected, but leverage raises the cost of equity, so more FCFE does not mean more equity value (p.~361).
+
+\qffield{Practice} \emph{Avon Fittings} (\hyperref[meth:fcff-fcfe-derivation]{derivation}). With 30 percent of net reinvestment financed by debt, $\mathrm{FCFE}=58.50-0.70\times(45-30+8)=42.40$. A dividend or buyback leaves FCFF and FCFE unchanged. Borrowing 20 more at 6 percent raises FCFE by $20-0.90=19.10$ in the year and leaves FCFF at 44.50.
+
+\emph{Harbour, 2026--2028} (\hyperref[ex:harbour-pro-forma-model]{forecast}). The model holds cash at about 40 by drawing on the revolver. FCFE therefore equals dividends plus the change in cash: 31.82, 30.19 and 32.14. In 2026, 29.36 of dividends and 2.46 of cash increase use it all. Net borrowing, including new lease debt, is part of FCFE.
+\begin{itemize}
+\item If Harbour raised its payout, FCFE would not change; the revolver drawing would rise, and next year's FCFE would fall by the extra interest.
+\item If it issued shares, FCFE would not change either, but cash or debt would.
+\end{itemize}
+
+\qffield{Conditions} The target-ratio shortcut is consistent only if the debt ratio is held in book terms and the cost of equity reflects that ratio. Net borrowing in the forecast must follow a stated policy, not be whatever balances the model.
+
+\qffield{Pitfalls} Treating equity raised as part of FCFE. Forecasting FCFE with large one-off borrowing that is not repeated, then capitalising it. Letting forecast leverage drift while the cost of equity stays fixed.
+
+\qffield{See also} \hyperref[meth:fcf-valuation-models]{valuation models}; \hyperref[meth:dividend-sustainability]{dividend sustainability}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Valuing equity with free cash flow: choosing FCFF or FCFE, single-stage and multistage models, terminal values consistent with stable growth, and sensitivity analysis]\label{meth:fcf-valuation-models}
+\qffield{Statement} \emph{Models.}
+\begin{itemize}
+\item FCFE discounted at the cost of equity values equity directly.
+\item FCFF discounted at the WACC values the operating assets; debt and other claims are then deducted and non-operating assets added \citep[pp.~358--362, 383]{investment-valuation-2012}.
+\item In stable growth, $V_E=\mathrm{FCFE}_1/(k_e-g)$ and $V_F=\mathrm{FCFF}_1/(\mathrm{WACC}-g)$.
+\item A two-stage model adds the present value of high-growth cash flows to a terminal value $P_n=\mathrm{FCFE}_{n+1}/(k_{e,st}-g_n)$ (p.~362).
+\item A three-stage model inserts a transition in which growth, the reinvestment rate and the cost of equity move from their high-growth to their stable values, discounting at the cumulated cost of equity (pp.~374--375).
+\end{itemize}
+
+\emph{Choosing the number of stages} (Interpretation, consistent with Damodaran's examples): a firm already growing at about the economy's rate needs one stage; a firm with a clear advantage that ends abruptly, such as a patent, two; a firm whose growth will fade gradually as competition arrives, three.
+
+\emph{Choosing between FCFF and FCFE.} FCFE suits firms with stable leverage. FCFF is better when leverage is high or changing, or FCFE is negative, because the WACC is less sensitive to leverage than the cost of equity (Interpretation, consistent with pp.~361 and~402). Both give the same equity value if leverage is held constant and the discount rates are consistent.
+
+\emph{Terminal value.} Stable growth cannot exceed the growth of the economy. The firm must also look stable: capital spending close to depreciation and a beta near one, or reinvestment set at $g/\mathrm{ROE}$ for FCFE and $g/\mathrm{ROC}$ for FCFF (pp.~359--363, 383). Damodaran's example shows that letting capital spending of twice depreciation grow into perpetuity understates the terminal value (pp.~362--363). The alternative, a multiple of terminal-year earnings or EBITDA, imports the market's pricing of peers and must imply a growth and return consistent with the forecast (\hyperref[meth:comparables-evaluation]{terminal values from multiples}).
+
+\qffield{Practice} \emph{Brent Utilities} (original, stable growth with debt held at 40 percent of value). FCFF next year is 60, growth 3 percent, WACC 7 percent, pre-tax cost of debt 5 percent, tax 25 percent:
+\begin{itemize}
+\item firm value $60/(7\%-3\%)=1{,}500$; debt 600; equity 900;
+\item cost of equity $k_e=(0.07\times1{,}500-0.0375\times600)/900=9.17$ percent;
+\item FCFE $=60-0.0375\times600+0.03\times600=55.50$, since debt grows with the firm; $55.50/(9.17\%-3\%)=900$, the same equity value, confirmed by an explicit 3,000-year sum;
+\item discounting FCFE at the WACC instead would give 1,387.50, a mismatch of cash flow and rate.
+\end{itemize}
+
+\emph{Two-stage FCFE} (original, per share). FCFE of 2.00 grows 12 percent for five years, to 3.52 in year 5. The cost of equity is 10 percent in high growth, then 9 percent with 3 percent growth. The terminal value is $3.52\times1.03/6\%=60.51$, and the value is 48.13. Stable growth with ROE of 12 percent needs equity reinvestment of $3\%/12\%=25$ percent.
+
+\emph{Three-stage} (same firm). Growth falls to 9, 6 and 3 percent over years 6--8 while the cost of equity steps down to 9 percent. The terminal value at year 8 is 72.01 and the value 51.05, 2.92 more than the two-stage value: the transition years carry growth that the two-stage model drops at once.
+
+The stable-stage inputs dominate the value:
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Stable $k_e$ & $g=2\%$ & $g=3\%$ & $g=4\%$ \\
+\midrule
+8\% & 47.76 & 55.64 & 67.46 \\
+9\% & 42.45 & 48.13 & 56.08 \\
+10\% & 38.46 & 42.76 & 48.49 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\emph{Harbour} uses FCFF because its revolver drawing and lease debt change from year to year (\hyperref[meth:forecast-model-valuation]{forecast model}).
+
+\qffield{Conditions} The constant-leverage reconciliation assumes debt is rebalanced to a fixed share of value, so the interest tax saving carries the firm's operating risk. A firm with a fixed debt amount needs adjusted present value or a year-by-year cost of capital.
+
+\qffield{Pitfalls} Discounting FCFE at the WACC or FCFF at the cost of equity. A terminal growth rate above the economy's. Stable growth with high-growth reinvestment or beta. Reporting a value without its sensitivity to the stable-stage inputs.
+
+\qffield{See also} \hyperref[meth:fcff-fcfe-derivation]{FCFF and FCFE}; \hyperref[meth:multistage-ddm]{multistage dividend models}; \hyperref[meth:forecast-horizon-steady-state]{steady state}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Cash-flow proxies compared: FCFE against dividend discount models, and net income and EBITDA as stand-ins for free cash flow]\label{meth:cash-flow-proxies}
+\qffield{Statement} \emph{FCFE against dividends.} The two models give the same value when dividends equal FCFE, or when the excess cash is invested at a net present value of zero \citep[p.~372]{investment-valuation-2012}. FCFE gives the higher value when excess cash is wasted or held earning less than its cost, and the lower value when dividends above FCFE are financed by costly issues or excess debt (pp.~372--373). The FCFE value is the better estimate when control of payout can change, as in a takeover, and the dividend value when it cannot (p.~374).
+
+\emph{Net income and EBITDA as proxies.} Damodaran relates each to FCFF (p.~382, Table~15.1):
+\begin{align*}
+\mathrm{EBIT}(1-t)&=\mathrm{FCFF}+\text{capex}-\text{depreciation}+\Delta\mathrm{WC},\\
+\mathrm{EBITDA}&=\mathrm{FCFF}+\mathrm{EBIT}\times t+\text{capex}+\Delta\mathrm{WC}.
+\end{align*}
+\begin{itemize}
+\item Discounting after-tax operating income assumes no net reinvestment, so it allows no growth (p.~382).
+\item Discounting EBITDA assumes no taxes and that the firm disinvests; an infinite life or growth is then inconsistent (p.~382).
+\item Net income ignores reinvestment and borrowing, so it equals FCFE only if net investment is entirely debt-financed.
+\end{itemize}
+
+\qffield{Practice} \emph{Harbour, 2026 forecast.}
+\begin{itemize}
+\item EBITDA 227.28;
+\item NOPAT 87.28 (EBIT 119.52 less tax on EBIT plus non-deductible share-based pay);
+\item net income 73.40;
+\item valuation FCFF 31.93;
+\item FCFE 31.82;
+\item dividends 29.36.
+\end{itemize}
+The gap between EBITDA and FCFF is taxes, capital spending of 120.31, right-of-use additions of 25 and share-based pay. Capitalising EBITDA as if it were FCFF, $227.28/(8\%-2.5\%)$, would give 4,132 against a DCF enterprise value of 1,218. Dividends are close to FCFE because the model holds cash at a target and pays 40 percent of profit. A dividend model and an FCFE model would give similar values, unless payout changed.
+
+\emph{Avon Fittings} (\hyperref[meth:fcff-fcfe-derivation]{derivation}): $\mathrm{EBIT}(1-t)=67.50=44.50+45-30+8$ and $\mathrm{EBITDA}=120=44.50+22.50+45+8$.
+
+\qffield{Conditions} The comparisons use the valuation conventions of the Harbour case. For banks and insurers, debt is raw material, and dividend or excess-return models are used instead (\hyperref[meth:bank-camels-analysis]{banks}).
+
+\qffield{Pitfalls} Calling EBITDA cash flow. Valuing a firm by its dividends when it pays far less than its FCFE and has no investor able to change that, or by FCFE when no one can. Using net income growth as FCFE growth when the firm is changing its leverage.
+
+\qffield{See also} \hyperref[meth:enterprise-value-multiples]{EV multiples}; \hyperref[meth:fcf-valuation-models]{valuation models}; \hyperref[meth:dividend-sustainability]{dividend cover}.
+
+\end{qfmethod}

@@ -7,7 +7,7 @@ read:
 status: draft
 ---
 
-Prepared on 2026-10-19 by the macro, allocation and currency batch from source checks, not from study. Used for `def:business-credit-cycles`. Retrieval: the BIS Working Paper 380 (Drehmann, Borio and Tsatsaronis) was sought first; the BIS site returned a bot-check page to scripted downloads, so only its abstract was read and it is not cited.
+Prepared on 2026-10-19 by the macro, allocation and currency batch from source checks, not from study. Used for `def:business-credit-cycles`. Retrieval: the BIS Working Paper 380 (Drehmann, Borio and Tsatsaronis) was sought first; the BIS site returned a bot-check page to scripted downloads, so only its abstract was read and it is not cited. Update 2026-10-20: the owner supplied the paper, which is now read and cited separately (`financial-cycle-medium-term-2012`).
 
 ## Question and claim
 

@@ -15,13 +15,15 @@ committed copy (Section 15). The portfolio choice and asset pricing batch
 and all eight `topic:asset-pricing-factor-models` objectives, including the two
 analysis-level ones, after two audit corrections; a fixes-only correction
 pass followed (Section 17), which also moved remote CI to merged pull requests.
-Standing batch preference: future content-expansion prompts target 30 newly
-completed objectives (Section 17.4). The performance and planning batch (Section 18) then
+Standing batch preference: each content-expansion prompt targets 45 newly
+completed objectives in addition to any audit fixes (Section 17.4; raised from 30
+on 2026-10-19, and the batches of Sections 18 and 19 keep their 30-objective records). The performance and planning batch (Section 18) then
 covered 30 objectives in index construction, investment planning, behavioural finance, risk
 governance, active management, performance evaluation, manager selection and GIPS, on a
 branch stacked on PR #22. No next content slice has been selected. Not started: the remaining `topic:linear-regression` objectives
 (multiple regression, misspecification, extensions); the rest of Batch 2; and
-the rest of Batches 3-6.
+the rest of Batches 3-6. (Later batches are in Sections 20-29; the linear-regression objectives
+named here were completed in Section 29.)
 Editorial coverage only: nothing here records or implies learner mastery.
 Audit date: 2026-10-18, Asia/Singapore.
 Repository baseline: `dc74b55`; pinned guide: `343d145909ba5384202b50604bf5ebe7e5b6ed86`.
@@ -2833,6 +2835,9 @@ all corrections and both complete client cases; no clipping or overlap observed.
 
 ## 23. Accounting expansion: selected scope (confirmed before content edits, 2026-10-19)
 
+Status 2026-10-20: the 2026-10-19 attempt was reverted before PR #28; the scope below was
+completed afresh in Section 25.
+
 The following 45 canonical objectives are all `missing` at `bcc3551`, selected in
 prerequisite order. The three covered cash-flow objectives are excluded. This is
 a scope record, not a completion claim. Work directly without delegation. Use
@@ -2922,3 +2927,212 @@ be delivered in a new stacked draft PR.
 - `objective:apply-integrated-analysis-framework` (decision; demonstrate).
 - `objective:adjust-for-comparability` (analysis; identify, explain, evaluate, recommend).
 - `objective:analyse-accounting-change-effects` (analysis; evaluate, analyze, interpret).
+
+
+## 24. Macro source corrections after the PR #28 merge (executed 2026-10-20)
+
+**Verified state.** `main` was clean at `0b78e4d`. PRs #24--#26 are closed; PR #28
+merged their corrected stack, whose tree equals `893622d`, into `main`. The accounting
+expansion `644f5d0` was reverted by `4196920` before the merge, so Section 23 is still a
+scope record only. The PR #26 branch is no longer an open delivery target. The
+corrections run on `codex/macro-source-corrections-20261020` from `main`, with a draft
+PR to `main`.
+
+**Re-audit.** All eight PR #26 findings (Section 22) are present on `main`. An
+independent scratch script, not the repository scripts, reproduced them:
+- cap-rate ledger and stable control;
+- cross-hedge notionals and USD P&L;
+- Solow raw and normalised paths;
+- trailing and forward P/E against Gordon prices;
+- Markov log returns, including a simulation;
+- Cedar and Lins decision tables;
+- debt and rebalancing arithmetic.
+
+One residual error was corrected: the Cedar fifth percentile is about -8.1%, not -8.2%.
+It is now checked in closed form and by simulation (`saa-checks.py`, 40 checks).
+
+**Supplied papers.** BIS WP 380 (June 2012) was read on its relevant pages and is now
+cited in `def:business-credit-cycles`. The official IMF SDN/2023/001 and its annexes
+replace the third-party copy in the source record. The entry locator is unchanged, a
+reading-note locator was corrected (p. 10), and the annexes were inspected only at
+heading level.
+
+**Coverage.** Unchanged: 191/424 objectives and 460/1,030 items. Corrections count
+toward no new objective. Details: `notes/source-review-records.md`, *Macro
+source-correction pass, 20 October 2026*.
+
+
+## 25. Accounting and statement-analysis batch (executed 2026-10-20)
+
+**Scope.** The 45 objectives of Section 23, confirmed against the live
+`objectives.json` before any content edit: all `missing`, no outside mappings for
+their 72 outline items, prerequisites satisfied. Branch
+`codex/accounting-statement-analysis-20261020` from the Section 24 correction head,
+with a stacked draft PR to `codex/macro-source-corrections-20261020`.
+
+**Sources (Section 3.5).** Primary standards for every rule:
+- EU-adopted IFRS (Regulation 2023/1803 and the 2023/2822, 2023/2468 and 2024/1317 amendments; IFRS 18 in 2026/338);
+- 18 FASB Updates and 8 pre-Codification Statements;
+- SEC Regulation G and S-K Items 10(e), 105, 303 and 308, and the 2008 IFRS acceptance release;
+- EU Audit Regulation Art. 10.
+
+Analysis is drawn from Subramanyam and Wild (2009), Damodaran (2012), Porter (2008),
+Sloan (1996) and Kahneman (2011). Curriculum volumes were not used. PCAOB AS 3101
+(blocked) and Beneish (1999) (paywalled) were not read. 55 source keys were added, 56
+reading notes written and 5 updated.
+
+**Entries.** 46 new entries: 44 in twelve new section files and two added to the existing
+cash-flow section. One hypothetical company (Harbour Tools) carries reconciled 2024-2025 statements, a
+2026-2028 forecast that balances without a plug, a quality variant, a comparability peer,
+the IFRS 18 transition and a lender decision with alternatives.
+
+**Evidence.** `statement-analysis-checks.py`: 21 parts, 111 checks (the source-review record
+lists the independent routes and the errors they exposed).
+
+**Coverage.** 236 of 424 objectives; 532 of 1,030 outline items (Level I 207,
+Level II 142, Portfolio Management 48, shared core 135); 498 unreviewed. Editorial
+coverage only.
+
+**Remaining gaps.**
+- The current FASB Codification is not consulted.
+- PCAOB critical audit matters, Beneish's model and post-1996 accrual literature are unread.
+- Human review is outstanding.
+
+Details: `notes/source-review-records.md`, *Accounting and statement-analysis batch, 20 October 2026*.
+
+## 26. Accounting audit corrections on PR #30 (executed 2026-10-20)
+
+**Verified state.** PRs #29 (draft, head `6157abb`, base `main`) and #30 (draft, head
+`4a9edbc`, stacked on #29) were open and unchanged; `main` (`0b78e4d`) is an ancestor of both;
+the checkout was clean at `4a9edbc`; coverage 236/424 objectives and 532/1,030 items. The six
+corrections are ordinary commits on PR #30's branch.
+
+**Corrections** (details and figures: `notes/source-review-records.md`, *Accounting correction pass*):
+1. valuation separates statement presentation from reinvestment: right-of-use additions are
+   reinvestment when leases are debt (2025 FCFF 48.54 to 18.54; FCFE unchanged), with an
+   enterprise-to-equity bridge;
+2. share-based pay stays added back in statutory CFO but is a cost in valuation, with outstanding
+   options deducted as claims and no double count of unvested awards;
+3. development and acquired assets have explicit straight-line schedules from availability for
+   use; the acquisition completes 1 April 2026; all lender scenarios were re-run, B now fails the
+   downside liquidity test and a pro forma lock-up (D) is recommended;
+4. the IFRS 9 equity FVOCI election is restated from paras. 4.1.4 and 5.7.5;
+5. the SEC two-year non-GAAP condition is restated from staff interpretations 102.03 and 100.01;
+6. the terminal-value check states what is held fixed.
+
+**Evidence.** `statement-analysis-checks.py`: 138 checks (from 111), including checks that detect
+each audited error. Eight objectives and 11 outline items revalidated; coverage unchanged.
+
+## 27. Corporate-finance and equity-valuation batch (executed 2026-10-20)
+
+**Scope.** 45 objectives (20 corporate finance, 25 equity), all `missing` at the start, with
+123 outline items mapped to no outside objective. Branch
+`codex/corporate-equity-valuation-20261020` from the corrected PR #30 head `1f51fcf`, with a
+stacked draft PR to `codex/accounting-statement-analysis-20261020`. Implemented in
+prerequisite order, with market multiples before corporate restructuring.
+
+**Sources (Section 3.5).** Damodaran's *Applied Corporate Finance* (2014) and *Investment
+Valuation* (2012) for the analysis; primary texts for rules: the G20/OECD Principles,
+SRD II, Delaware law, 15 U.S.C. 78l(g), SEC Rules 10b-18 and 13e-4, FINRA Rule 11140,
+ESRS 1 (2026), IAS 1 and IFRS 13, the US Merger Guidelines, GICS and FTSE Russell free-float
+rules; articles by Modigliani and Miller, Lang and Stulz, Berg et al., Cooper and
+Lambertides, Rochet and Tirole, and Osterwalder et al. Curriculum volumes and workbooks were
+not used. ISSB S1/S2, Rev. Rul. 59-60 and Nasdaq Rule 5550 were not read. 22 source keys were
+added, 22 reading notes written and 6 extended.
+
+**Entries.** 44 new entries: a new `corporate-finance` chapter of seven sections (20 entries)
+and five new sections at the start of `systematic-equities` (24 entries). Harbour Tools is
+reused for the WACC (8.02 percent at market weights), the cost-of-capital curve, payout
+sustainability, the valuation judgement against a price of 11.00 and the bolt-on
+acquisition; other examples are stand-alone hypothetical companies.
+
+**Evidence.** `corporate-finance-checks.py` (16 parts, 65 checks) and
+`equity-valuation-checks.py` (18 parts, 62 checks); both reuse the Harbour script's
+outputs.
+
+**Coverage.** 281 of 424 objectives; 655 of 1,030 outline items (Level I 256, Level II
+216, Portfolio Management 48, shared core 135); 375 unreviewed. Editorial coverage only.
+
+**Remaining gaps.**
+- The rating-to-spread schedule is illustrative.
+- ISSB standards and the US tax definition of fair market value are unread.
+- Primary studies cited through Damodaran are unread.
+- Human review is outstanding.
+
+Details: `notes/source-review-records.md`, *Corporate-finance and equity-valuation batch, 20 October 2026*.
+
+## 28. Corporate-equity audit corrections on PR #31 (executed 2026-10-20)
+
+**Verified state.** PRs #29 (draft, head `6157abb`, base `main`), #30 (draft, head `1f51fcf`,
+stacked on #29) and #31 (draft, head `a6b6c64`, stacked on #30) were open and unchanged; the
+checkout was clean at `a6b6c64`; coverage 281/424 objectives and 655/1,030 items. The seven
+corrections are ordinary commits on PR #31's branch.
+
+**Corrections** (figures: `notes/source-review-records.md`, *Corporate-equity audit correction pass*):
+1. options are a claim in market EV (1,479.77), in the WACC weights (ke 9.32 percent, WACC 8.02
+   percent) and in peer-multiple values, iterated at the implied price (11.39 and 9.75, superseding
+   11.59 and 9.88);
+2. ROE is E_t/B_{t-1} in every valuation and growth formula; P/E, P/B and the DDM reconcile at 7.81
+   (superseding 7.83 and 7.64), sustainable growth 3.86 percent;
+3. FCFE 28.04 = dividends 32 - issue proceeds 6 + cash 2.04; Ridgeway's gap is met from cash, with
+   actual and target-policy borrowing kept apart;
+4. LP, LLP and LLC liability restated from Delaware Title 6;
+5. the bolt-on earns 6.25 percent after tax against an 8.02 percent WACC; recommendation unchanged;
+6. the callable preferred value is conditional on redemption;
+7. cumulative voting uses N, total shares voting, with an integer floor.
+
+**Evidence.** 75 and 72 checks in the two scripts (from 65 and 62). 17 objectives and 43 outline
+items rechecked; coverage unchanged.
+
+Standing preference: Section 17.4 already recorded 45 objectives per expansion prompt; the summary
+at the top of this file, which still said 30, now agrees with it.
+
+## 29. Credit, time-series and valuation batch (executed 2026-10-20)
+
+**Verified state.** PRs #29 (draft, head `6157abb`, base `main`), #30 (draft, head `1f51fcf`,
+base `codex/macro-source-corrections-20261020`) and #31 (draft, base
+`codex/accounting-statement-analysis-20261020`) were open; PR #31 carried the Section 28
+corrections at `59df95b`. Branch `codex/credit-timeseries-valuation-20261020` starts from that
+head, with a stacked draft PR to `codex/corporate-equity-valuation-20261020`.
+
+**Scope.** 45 objectives, all `missing` at the start: equity research and free cash flow,
+residual income and private company valuation (12); intercorporate investments, foreign
+currency and financial institutions (8); credit risk, credit models, CDS, sovereign credit and
+securitisation (13); multiple regression and time series (11); scenario analysis and
+simulation (1). Their 119 outline items map to no outside objective. The audit fixes of
+Section 28 do not count toward the 45, and no objective was split or redefined.
+
+**Sources (Section 3.5).** Damodaran (2012), Subramanyam and Wild (2009), Hull (2023 and
+2021), the Fabozzi handbook (2021), Fabozzi and Kothari (2008), Tsay (2010), FPP3 and STAT 501
+for analysis; primary texts for rules: IAS 21, 28, 29 and IFRS 10-12 (EU 2023/1803), FAS 52
+and the summaries of FAS 141R, 160 and 167, the Basel Framework, the UFIRS, EU 2017/2402,
+Directive 2019/2162, EU 2016/958, FINRA Rule 2241 and FHFA AB 2021-02. Curriculum volumes and
+workbooks were not used. 18 source keys were registered and three catalogue keys used for the first time;
+21 reading notes were written and 12 extended.
+
+**Entries.** 45 new entries: four sections in `systematic-equities` (12), three in
+`financial-statement-analysis` (8), two sections in `corporate-credit-capital` plus additions to
+its CDS section (9), one in `government-bond-markets` (1), the first section of
+`securitised-structured-credit` (3), two sections in `common-toolkit` (11) and one in
+`research-engineering-validation` (1). Three existing entries are also mapped
+(`mech:cds-contract-credit-events`, `def:sovereign-credit-defaults`,
+`mod:garch-volatility-forecast`). The regression, time-series and scenario examples use the
+1928-2025 US returns already in the repository.
+
+**Evidence.** Six scripts, 207 checks: `equity-fcf-ri-private-checks.py` (48),
+`intercorporate-fx-institutions-checks.py` (44), `credit-cds-securitisation-checks.py` (52),
+`multiple-regression-checks.py` (21), `time-series-checks.py` (32),
+`scenario-simulation-checks.py` (10). Source discrepancies found while reproducing published
+examples (Hull Table K.1; Fabozzi and Kothari's average life, Table 3.2 and mortality table) are
+recorded in the review record.
+
+**Coverage.** 326 of 424 objectives; 774 of 1,030 outline items (Level I 279, Level II 312,
+Portfolio Management 48, shared core 135); 256 unreviewed. All 119 items were reviewed
+individually against their outline pages. Editorial coverage only.
+
+**Remaining gaps.**
+- APB 18, the IMF debt sustainability guidance, MSRB pages, Ohlson (1995), rating-agency methodologies, Newey-West and Engle-Granger originals, and the 2014 ISDA Definitions were not read.
+- Hypothetical companies, spread schedules and CDS quotes are illustrative.
+- Human review is outstanding.
+
+Details: `notes/source-review-records.md`, *Credit, time-series and valuation batch, 20 October 2026*.

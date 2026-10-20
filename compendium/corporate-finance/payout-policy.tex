@@ -1,0 +1,182 @@
+\section{Payout policy}
+
+\begin{qfmethod}[Effects of distributions: cash, special and liquidating dividends, stock dividends, splits and reverse splits, and share repurchases on price, shares, earnings per share, book value per share and leverage, including the effect of how a buyback is financed]\label{meth:distribution-effects}
+\qffield{Statement} \emph{Dividends.}
+\begin{itemize}
+\item \emph{Cash dividends} transfer cash to shareholders. They reduce the company's cash and book equity, and the share price falls by about the dividend on the ex-dividend date.
+\item \emph{Regular and special dividends.} Regular dividends are paid on a schedule; special dividends are one-off. A \emph{liquidating} dividend exceeds retained earnings and is a return of capital \citep[p.~439]{applied-corporate-finance-2014}.
+\item \emph{Stock dividends} issue new shares in proportion to holdings. They reduce the price per share but transfer no cash, so the holder's wealth and the company's value are unchanged; in the accounts retained earnings are reclassified to share capital (p.~439).
+\end{itemize}
+
+\emph{Splits.} A stock split, such as two shares for one, divides each share; a reverse split consolidates them. Neither changes the value of the company or a holder's stake, apart from effects on trading costs, the investor base and listing requirements such as minimum bid prices (Interpretation). For distributions of 25 percent or more of a share's value, including splits, US markets set the ex-date as the first business day after the payable date \citep[para.~(b)(2)]{finra-rule-11140}.
+
+\emph{Repurchases.} A buyback also pays cash and reduces book equity, but it reduces the number of shares instead of the price per share. Only selling shareholders receive cash \citep[p.~473]{applied-corporate-finance-2014}.
+\begin{itemize}
+\item \emph{Fair price.} A buyback at the fair price leaves the value per share of continuing holders unchanged.
+\item \emph{Earnings per share.} EPS rises if, and only if, the after-tax cost of the funds is below the earnings yield, earnings per share over price. The funds may be interest forgone on cash or interest paid on new debt.
+\item \emph{Book value per share.} BVPS falls if the buyback price exceeds book value per share and rises if it is below. Buying 10 percent of shares at five times book reduces book equity by half (p.~473).
+\end{itemize}
+A higher EPS from a debt-financed buyback does not mean a higher price, because the remaining equity is riskier and deserves a lower P/E (p.~479).
+
+\qffield{Notation} With net income $\mathrm{NI}$, $N$ shares at price $P$, a buyback of $n$ shares funded at after-tax cost $c$:
+\[ \mathrm{EPS}_1=\frac{\mathrm{NI}-c\,nP}{N-n},\qquad \mathrm{EPS}_1>\mathrm{EPS}_0\iff c<\mathrm{NI}/(NP). \]
+Since book equity falls by $nP$, $\mathrm{BVPS}_1=(\mathrm{BV}-nP)/(N-n)$.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Stock dividend and split.} Harbour, at 11.00 on 100.75 million shares, pays a 10 percent stock dividend: 110.825 million shares at 10.00, still worth 1,108.25. A two-for-one split gives 201.5 million shares at 5.50.
+\item \emph{Reverse split.} A company at 0.80 with 500 million shares does a one-for-ten reverse split: 50 million shares at 8.00, value 400 either way.
+\item \emph{Buyback and EPS.} Company R earns 80 on 100 million shares at 16, so EPS is 0.80 and the earnings yield 5 percent. It buys back 10 percent of its shares for 160:
+\begin{itemize}
+\item from cash earning 2 percent after tax, EPS rises to $(80-3.2)/90=0.8533$;
+\item with debt costing 4 percent after tax, EPS rises to $(80-6.4)/90=0.8178$;
+\item with debt costing 6 percent after tax, it falls to $(80-9.6)/90=0.7822$.
+\end{itemize}
+\item \emph{Buyback and book value.} Book equity is 400, or 4.00 a share. Buying at 16, BVPS falls to $(400-160)/90=2.67$. A buyback of the same number of shares at 3, below book, would raise it to $(400-30)/90=4.11$.
+\item \emph{Leverage.} If R borrows the 160, its debt-to-equity ratio rises on both book and market values. At a fair price, value per share is unchanged: $(1{,}600-160)/90=16$.
+\end{itemize}
+Any gain in value per share comes only from tax shields, from returning cash that would otherwise be wasted, or from buying below intrinsic value at the expense of sellers.
+
+\qffield{Conditions} The no-value-effect results assume no taxes, no information effects and a buyback at the fair price. A buyback below intrinsic value transfers value from selling to continuing holders; one above it does the reverse. Book-value effects are accounting effects and can push book equity negative for firms with large buybacks, making P/B and ROE uninformative (\hyperref[meth:alternative-multiples]{book multiples}).
+
+\qffield{Pitfalls} Treating a stock dividend or split as a distribution of value. Judging a buyback by its effect on EPS. Comparing EPS growth of a company that buys back shares with one that pays dividends without adjusting for the share count. Ignoring that a debt-financed buyback raises financial risk.
+
+\qffield{See also} \hyperref[meth:payout-policy-comparison]{dividends against buybacks}; \hyperref[def:corporate-distribution-mechanics]{distribution dates}; \hyperref[meth:earnings-per-share]{EPS}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Evaluating dividend policy: irrelevance, tax-preference and bird-in-hand theories, clienteles, signalling, agency costs, practical constraints, effective tax rates under double-taxation, imputation and split-rate systems, and trends in payouts]\label{meth:dividend-policy-evaluation}
+\qffield{Statement} \emph{Theories.} Damodaran describes three schools \citep[pp.~437--438, 449--452]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item \emph{Irrelevance} (Miller and Modigliani, 1961). With no tax differences, no transaction or issuance costs, no wasted cash and fair pricing, a firm's value depends on its investments, not on how it splits returns between dividends and price changes. A shareholder who wants cash can sell shares; one who does not can reinvest (pp.~449--451).
+\item \emph{Dividends are bad} where they are taxed more heavily than capital gains, which can be deferred (pp.~451--455). The ex-dividend price drop relative to the dividend reveals the marginal investor's tax preference; Elton and Gruber found a drop of 78 percent of the dividend.
+\item \emph{Dividends are good}: some investors prefer current income (the ``bird in hand''), dividends signal information, and they discipline managers (pp.~459--467).
+\end{itemize}
+
+\emph{Clienteles.} Investors sort by tax status and income needs, so a firm gets the investors its policy attracts. Changing policy imposes costs on the clientele (pp.~462--463).
+
+\emph{Signals.} Managers are reluctant to cut, so an increase signals confidence in sustainable earnings and is followed by positive excess returns; a cut is followed by negative ones. An initiation might signal fewer projects, but evidence finds no decline in performance. The information content of dividends has fallen over time (pp.~464--465).
+
+\emph{Agency costs.} Paying out free cash flow keeps it from managers who might waste it, especially where ownership is separated from control. But large dividends can transfer wealth from lenders, whose bond prices fall on big increases (pp.~466--467).
+
+\emph{Practical factors.} Boards weigh several factors in setting dividends \citep[pp.~442--448, 468]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item investment opportunities and the firm's stage of the life cycle;
+\item the stability of earnings;
+\item access to capital markets and flotation costs;
+\item legal limits, such as US state rules that allow dividends only out of surplus or recent profits \citep[sec.~170(a)]{delaware-gcl-2026};
+\item lenders' covenants;
+\item taxes, and the wish to keep dividends in line with peers.
+\end{itemize}
+In surveys, managers say they avoid cuts, follow peers, protect their rating and value flexibility.
+
+\emph{Tax systems.} The effective tax rate on a unit of pre-tax profit paid out depends on the system \citep[pp.~453--454]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item \emph{double taxation}: $1-(1-t_c)(1-t_d)$;
+\item \emph{split rate}: a lower corporate rate on distributed profit, as Germany once used;
+\item \emph{imputation}: the corporate tax is credited against the shareholder's tax, so the total equals the shareholder's rate;
+\item \emph{lower personal rates on dividends}, as in the US from 2003.
+\end{itemize}
+
+\emph{Trends.} US payout has shifted from dividends to buybacks. The S\&P~500 dividend yield fell from about 5.5 percent in 1980 to below 2 percent by 1999 (pp.~440--441). From 1989 to 2012, dividends grew about 2 percent a year and buybacks about 10 percent, with buybacks first exceeding dividends in 1999. Buybacks are less common elsewhere because of tax credits on dividends, legal limits and governance (p.~475).
+
+\qffield{Practice} \emph{Original, effective tax rates on 100 of pre-tax profit, fully distributed.}
+\begin{itemize}
+\item \emph{Double taxation}, corporate 25 percent and dividend 30 percent: the shareholder keeps $100\times0.75\times0.70=52.50$, an effective rate of 47.5 percent.
+\item \emph{Split rate}, 20 percent on distributed profit and 30 percent personal: $1-0.8\times0.7=44$ percent.
+\item \emph{Full imputation}, corporate 30 percent and personal 45 percent. The company pays 30 and distributes 70. The shareholder includes the grossed-up 100 in income, owes 45 and uses the 30 credit, paying 15 more. The total is 45 percent, the personal rate, so a high-rate investor still pays more than a low-rate one, but there is no double taxation.
+\end{itemize}
+The system changes clienteles: under imputation, tax-exempt investors who can reclaim credits prefer dividends; under double taxation, they are indifferent while taxable investors prefer capital gains.
+
+\emph{Harbour.} A mature manufacturer with moderate growth, cyclical earnings and BBB credit would be expected to pay a steady dividend below its earnings. Its 2025 payout of 58 percent of depressed earnings was not covered by free cash flow to equity (\hyperref[meth:dividend-sustainability]{sustainability}). Lenders made it subject to a lock-up (\hyperref[ex:integrated-credit-decision]{credit decision}).
+
+\qffield{Conditions} The tax examples use illustrative rates. Damodaran's lists of imputation countries and rates describe 2013--2014 and have changed since. Dividend-signal evidence is mostly US and varies by period.
+
+\qffield{Pitfalls} Arguing that dividends add value without stating which assumption of irrelevance fails. Confusing the irrelevance of dividend policy with irrelevance of investment policy: cutting good projects to pay dividends destroys value (p.~451). Treating a dividend increase as good news when it is funded by borrowing that the business cannot support.
+
+\qffield{See also} \hyperref[meth:payout-policy-comparison]{payout policies}; \hyperref[meth:distribution-effects]{distribution effects}; \hyperref[def:organisational-forms-issuers]{double taxation and the corporate form}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Comparing payout policies: stable, constant-payout and residual dividend policies, Lintner's target-adjustment model, repurchase methods (open market, fixed-price and Dutch-auction tenders, direct negotiation), and dividends against repurchases]\label{meth:payout-policy-comparison}
+\qffield{Statement} \emph{Dividend policies.}
+\begin{itemize}
+\item \emph{Stable dividend.} The dividend changes rarely and lags earnings.
+\item \emph{Constant payout ratio.} The dividend is a fixed fraction of each year's earnings, so it is as volatile as earnings.
+\item \emph{Residual policy.} The firm pays what is left after funding all positive-NPV projects at its target capital structure, so the dividend moves with investment needs.
+\end{itemize}
+In practice dividends are sticky. They follow earnings with a lag and are smoother: from 1960 to 2012 the standard deviation of annual changes was 6.45 percent for US dividends and 14.9 percent for earnings. Lintner (1956) found that firms have a target payout ratio, adjust partly towards it each year and care about changes, not levels \citep[pp.~442--444]{applied-corporate-finance-2014}.
+
+\emph{Repurchase methods} \citep[p.~474]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item \emph{Open-market purchases} at prevailing prices: flexible, spread over time and usually smaller. US issuers use a safe harbour from manipulation liability. It applies if they use one broker a day, avoid the opening trade and the last 10 or 30 minutes, pay no more than the highest independent bid or last trade, and buy no more than 25 percent of average daily volume. The safe harbour is not mandatory, and failing it creates no presumption of manipulation \citep[paras.~(b)--(d)]{cfr-240-10b-18}.
+\item \emph{Fixed-price tender offers} for a stated number of shares in a stated period. They are larger, fast and usually at a premium. US issuer tender offers stay open at least 20 business days. Tendering holders have withdrawal rights. If more shares are tendered than sought, the issuer buys pro rata, and every holder gets the best price paid \citep[para.~(f)]{cfr-240-13e-4}.
+\item \emph{Dutch-auction tenders} set a price range. Holders state the lowest price they will accept, and the issuer pays the lowest price that buys the target number of shares to everyone tendering at or below it (Interpretation; the tender-offer rules above apply).
+\item \emph{Direct negotiation} with a large holder, which can be used to pay greenmail (p.~474).
+\end{itemize}
+
+\emph{Dividends against repurchases.} Repurchases offer a one-time payout with no implied commitment and flexibility to reverse. They give holders tax deferral and the choice whether to sell, can support the price, and can shift control towards insiders who do not sell. Dividends suit clienteles that want steady income and send a stronger signal because they are harder to cut \citep[pp.~476--477]{applied-corporate-finance-2014}. With equal taxes and fair prices, the two are equivalent for value.
+
+\qffield{Notation} Lintner: $D_t=D_{t-1}+s\,(p^{*}E_t-D_{t-1})$, with target payout $p^{*}$ and speed $s$. Unrolling, $D_t$ is a weighted average of past target dividends $p^{*}E_{t-j}$ with weights $s(1-s)^j$, plus $(1-s)^{t}D_0$.
+
+\qffield{Practice} \emph{Original.} Earnings per share run 2.00, 2.50, 1.80, 2.60, 2.90; the last dividend was 0.70; the target payout is 40 percent.
+\begin{itemize}
+\item A \emph{constant-payout} policy pays 0.80, 1.00, 0.72, 1.04, 1.16. That includes a 28 percent cut in year 3.
+\item \emph{Lintner} with $s=0.5$ pays 0.75, 0.875, 0.7975, 0.9188, 1.0394. It cuts by only 9 percent in year 3 and reaches the target level more slowly.
+\item The standard deviation of annual dividend changes is 0.2014 for constant payout and 0.0779 for Lintner.
+\end{itemize}
+A firm with cyclical earnings, such as Harbour, would choose a stable base dividend plus buybacks or specials when cash is surplus. That avoids both cuts and commitments it cannot keep.
+
+\emph{Choosing a method.} A company with surplus cash of 100 and an undervalued share would choose an open-market programme. That gives flexibility and buys only when the price is below its estimate of value. A company recapitalising quickly with debt would use a tender offer to retire many shares at once and signal the board's view.
+
+\qffield{Conditions} The safe-harbour and tender-offer rules are US federal rules read in October 2026; other markets limit buybacks by volume, price or shareholder authority. The policies compared assume the firm's investment plans are fixed.
+
+\qffield{Pitfalls} Calling a constant-payout policy ``stable''. Treating an announced buyback programme as completed: open-market programmes are authorisations, not commitments. Ignoring that buybacks at high prices transfer value to sellers.
+
+\qffield{See also} \hyperref[meth:distribution-effects]{distribution effects}; \hyperref[meth:dividend-policy-evaluation]{dividend theories}; \hyperref[meth:dividend-sustainability]{sustainability}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Dividend coverage and sustainability: earnings and free-cash-flow coverage, the ratio of cash returned to free cash flow to equity, and the signs of an unsustainable dividend]\label{meth:dividend-sustainability}
+\qffield{Statement} A dividend is sustainable if the company can keep paying it from operating cash flow after funding the investment its business needs, at a debt level it can carry. Measures:
+\begin{itemize}
+\item \emph{Earnings cover}: net income over dividends, the inverse of the payout ratio.
+\item \emph{FCFE cover}: free cash flow to equity over dividends, where FCFE is net income less net capital expenditure and the change in working capital, plus net borrowing \citep[pp.~480--481]{applied-corporate-finance-2014}.
+\item \emph{Cash returned to FCFE}: dividends plus buybacks, over FCFE (pp.~484--485).
+\end{itemize}
+The third ratio interprets cash returns. Near 100 percent, the firm pays out what it can afford. Below 100 percent it is accumulating cash. Above 100 percent it is drawing down cash or issuing debt or equity to pay. A ratio persistently above 100 percent cannot continue. For banks, FCFE is net income less the increase in regulatory capital (p.~482).
+
+\emph{Signs of an unsustainable dividend} (Interpretation):
+\begin{itemize}
+\item payout above 100 percent of normalised earnings;
+\item FCFE cover below one for several years;
+\item rising net debt or falling cash funding the dividend;
+\item covenants or ratings near their limits;
+\item a high dividend yield relative to peers, which may mean the market expects a cut;
+\item management statements that the dividend will be ``maintained'' despite falling earnings.
+\end{itemize}
+
+\qffield{Practice} \emph{Harbour, 2025} (\hyperref[ex:harbour-tools-statements]{case}). Profit was 55.38 and dividends 32, so earnings cover was 1.73 times (payout 57.8 percent). FCFE, operating cash flow less capital spending and lease principal plus net borrowing, was 28.04, so FCFE cover was 0.88. It reconciles to the uses of that cash: dividends of 32, less 6 raised by issuing shares on the exercise of options, plus the 2.04 increase in cash, $32-6+2.04=28.04$. The dividend exceeded FCFE by 3.96; the share issue, not further borrowing, covered it, because the year-end revolver drawing is already inside FCFE. On the valuation convention, which also charges the 9 of share-based pay as an operating cost (\hyperref[meth:free-cash-flow-coverage]{FCFF and FCFE}), FCFE was 19.04, covering the dividend only 0.595 times.
+
+The 2026 forecast has profit of 73.40 and dividends of 29.36, at a 40 percent payout, and earnings cover of 2.5. Whether that is sustainable depends on capital spending falling back after 2025's peak. The lender's lock-up (\hyperref[ex:integrated-credit-decision]{credit decision}) makes the dividend conditional on leverage.
+
+\emph{Ridgeway Utilities} (original, three years; no share issues or buybacks; opening debt 1,050 and cash 200, EBITDA 400 the year before):
+\begin{itemize}
+\item net income 120, 100, 85; dividends 110, 112, 114;
+\item free cash flow before net borrowing (operating cash flow after interest, less net capital spending) 60, 52, 34;
+\item actual net borrowing 30, 18, 21, so FCFE is 90, 70, 55;
+\item cash falls by FCFE less dividends, 20, 42 and 59, to 79; net debt is 900, 960 and 1,040 against EBITDA of 400, 380 and 360.
+\end{itemize}
+Payout rises from 92 to 134 percent; FCFE cover falls from 0.82 to 0.48; net debt to EBITDA rises from 2.25 to 2.89.
+
+\emph{Funding, without double counting.} FCFE already includes the 69 actually borrowed. Cumulative dividends of 336 exceed cumulative FCFE of 215 by 121, and that gap was met by running cash down from 200 to 79, not by further borrowing. Against free cash flow before borrowing, 146, the dividends needed 190: 69 of new debt and 121 of cash, which is the 190 rise in net debt. Two questions are then separate. Can the actual borrowing continue? And what would FCFE be under the target debt policy? If Ridgeway holds net debt at 2.25 times EBITDA, falling EBITDA cuts its borrowing capacity by 0, 45 and 45, so FCFE on that policy is 60, 7 and $-11$: 56 against dividends of 336, cover of 0.17.
+
+The dividend is unsustainable on every measure. The cash will run out within two years at this rate, and the borrowing already moves leverage away from the policy ratio. Either earnings recover, or the dividend or the investment programme will be cut.
+
+\qffield{Conditions} FCFE depends on definitions: whether leases, share-based pay and pension contributions are treated as reinvestment or financing changes the cover. Use one definition and say which. One year's cover is noisy, especially in a heavy investment year; use several years and normalised figures.
+
+\qffield{Pitfalls} Judging sustainability by earnings cover alone. Counting borrowing as FCFE without asking whether the borrowing can continue. Saying a dividend above FCFE was ``funded by borrowing'' when FCFE already includes the borrowing; the gap is met by cash, share issues or asset sales. Mixing actual and target-policy borrowing in one cover ratio. Comparing cover ratios computed on different FCFE definitions. Ignoring buybacks when assessing total cash returned.
+
+\qffield{See also} \hyperref[meth:free-cash-flow-coverage]{free cash flow}; \hyperref[meth:dividend-policy-evaluation]{dividend policy}; \hyperref[meth:payout-policy-comparison]{payout policies}.
+
+\end{qfmethod}

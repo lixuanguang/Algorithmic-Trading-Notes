@@ -1,0 +1,46 @@
+---
+key: corporate-finance
+section: corporate-finance
+status: not started (draft entries only, not from study)
+---
+
+# Corporate finance (section overview)
+
+A compendium section declared in `compendium/compendium.tex`. The pinned guide has no pathway for corporate finance; its `equity-events-fundamentals` and `corporate-hybrids-preferred` pathways assume it. The section's topics and neutral objectives are in `notes/coverage/objectives.json` (topics whose section is `corporate-finance`), and the learning order is in `notes/coverage/learning-roadmap.md`. There is no guide outcome, checkpoint or reading list for this section.
+
+## Status
+
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 20 October 2026 by the corporate-finance and equity-valuation batch: 20 entries in seven sections, from Damodaran's *Applied Corporate Finance* (2014) and *Investment Valuation* (2012), Modigliani and Miller (1958), the G20/OECD Principles (2023), the OECD ownership study (2019), the simplified ESRS (2026), Berg, Kölbel and Rigobon (2022), OpenStax *Principles of Finance* (2nd ed.), Subramanyam and Wild (2009), Delaware and EU company law, SEC and FINRA rules, and Lang and Stulz (1993). That is source checking, not study.
+
+## Outcome in my own words
+
+## How the readings fit together
+
+## Checkpoint
+
+Not attempted. No checkpoint has been set for this section.
+
+## Entries created or changed
+
+Corporate-finance and equity-valuation batch (2026-10-20). Harbour Tools plc, the case of the statement-analysis section, is reused for the cost of capital, payout and the bolt-on acquisition; numbers are checked by `notes/artefacts/corporate-finance/corporate-finance-checks.py`:
+
+- Issuers, ownership and governance: `def:organisational-forms-issuers`, `def:stakeholder-claims`, `meth:corporate-governance-evaluation`, `def:global-ownership-structures`, `meth:esg-exposure-evaluation`.
+- Business models: `def:business-model-features-types`.
+- Working capital: `meth:cash-conversion-cycle`, `meth:working-capital-policy`.
+- Capital investment: `meth:capital-project-evaluation`, `meth:capital-allocation-principles`.
+- Capital structure and the cost of capital: `meth:wacc-calculation`, `mod:capital-structure-theory`, `meth:cost-of-debt-equity-estimation`, `meth:capital-structure-benchmarking`.
+- Payout policy: `meth:distribution-effects`, `meth:dividend-policy-evaluation`, `meth:payout-policy-comparison`, `meth:dividend-sustainability`.
+- Restructuring: `meth:restructuring-evaluation`, `ex:restructuring-valuation-effects`.
+
+Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026).
+
+## Entry backlog
+
+## What changed in my view or practice
+
+## Questions carried forward
+
+- The rating-to-spread schedule in `meth:capital-structure-benchmarking` is illustrative; a current published schedule (for example Damodaran's annual ratings table) would test whether Harbour's optimum near 20 percent debt is robust.
+- Applied Corporate Finance describes dividend tax systems and imputation countries as of 2013-2014; which have changed since?
+- The ESRS cited are the 2026 simplified standards; how do the ISSB's IFRS S1 and S2, which were not accessible, differ for an investor's materiality assessment?
+- Are the acquisition-return studies summarised in Investment Valuation (1970s-1990s US deals) borne out by recent evidence?

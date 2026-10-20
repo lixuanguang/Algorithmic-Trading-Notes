@@ -390,6 +390,15 @@ ok(
     and close(stress_close, 8_445_000, 1e-6)
     and amounts[3] >= 3 * 300_000,
 )
+# Normal-model fifth percentile of the recommended mix: closed form, and independently the
+# empirical quantile of simulated multivariate-normal asset returns (2026-10-20 correction: -8.1%, not -8.2%).
+q05 = means[3] + norm.ppf(0.05) * vols[3]
+sim = np.random.default_rng(20261020).multivariate_normal(client_mu, client_cov, 400_000) @ mixes[3]
+ok(
+    "Cedar normal-model fifth percentile is about -8.1%",
+    round(q05 * 100, 1) == -8.1 and abs(np.quantile(sim, 0.05) - q05) < 0.0005,
+    f"closed form {q05:.4%}, simulated {np.quantile(sim, 0.05):.4%}",
+)
 for i in range(4):
     print(
         f"Cedar {i}: mean {means[i]:.6%}, volatility {vols[i]:.6%}, stress {stresses[i]:.6%}, utility {utilities[i]:.6%}"

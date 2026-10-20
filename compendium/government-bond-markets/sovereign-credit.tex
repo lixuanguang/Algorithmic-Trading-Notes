@@ -28,3 +28,41 @@ These sources support neither a 20--80 percent range of recovery rates nor highe
 \qffield{Further reading} Restructuring practice \citep{gap-sovereign-restructuring-playbook}.
 
 \end{qfdefinition}
+
+\begin{qfmethod}[Analysing sovereign and sub-sovereign credit: economic, fiscal, external and institutional indicators; debt dynamics and the debt-stabilising primary balance; debt structure and gross financing needs; local- against foreign-currency debt; general obligation against revenue bonds]\label{meth:sovereign-credit-analysis}
+\qffield{Statement} \emph{Indicators.} Emerging-market debt investors monitor real growth, inflation, the current account, the fiscal balance, public debt, the net external position, reserves against short-term external debt, foreign direct investment, private credit, bank loans to deposits and non-performing loans, and external debt to exports. They also weigh political and institutional stability \citep[pp.~370--371]{s7-fabozzifixed}.
+
+\emph{Debt sustainability in three steps} (pp.~371--374):
+\begin{enumerate}
+\item \emph{Debt dynamics.} With $D$ debt to GDP, $pb$ the primary balance, $g$ real growth, $\pi$ inflation, $i$ the effective nominal rate, $i^f$ the rate on foreign-currency debt, $\alpha$ its share and $e$ the depreciation,
+\[ D_t-D_{t-1}=-pb+\frac{i-\pi(1+g)-g+\alpha e(1+i^f)}{1+g+\pi+g\pi}\,D_{t-1}\qquad\text{(eq.~17-1)}. \]
+The debt-stabilising primary balance $pb^*$ sets the change to zero (eq.~17-2). It is typically a surplus when growth is below the real interest rate.
+\item \emph{Debt structure.} Foreign-currency debt raises the ratio when the currency falls. Floating-rate and short-maturity debt raise exposure to rate rises and refinancing. Captive domestic holders lower rollover risk. Domestic-law debt is easier to restructure than New York- or English-law debt.
+\item \emph{Gross financing needs.} The primary deficit plus debt service, interest and amortisation (eq.~17-3), exposed to interest-rate risk and to rollover risk, the loss of market access.
+\end{enumerate}
+
+\emph{Local against foreign currency.} Local-currency debt carries currency, convertibility and capital-control risk for foreign holders, and its yields have been more volatile (p.~362). A government can in principle print its own currency but not a foreign one, so foreign-currency debt is usually the weaker credit; losing market access forces drawing on reserves or printing money (p.~374; Interpretation for the ranking).
+
+\emph{Non-sovereign government issuers.} US municipal bonds come in two security structures \citep[pp.~206--207]{s7-fabozzifixed}:
+\begin{itemize}
+\item \emph{General obligation} bonds are secured by the issuer's taxing power, unlimited or limited, sometimes ``double barreled'' with fees or grants.
+\item \emph{Revenue} bonds are secured by a project's or enterprise's revenues: airports, hospitals, universities, utilities.
+\end{itemize}
+Credit analysis covers the legal documents, politics and management, the underwriter, economic and credit indicators, and red flags (p.~1022). For revenue bonds it covers the limits of the pledged revenues, the flow of funds, the rate covenant, the priority of claims and the additional-bonds test (pp.~1023--1024). New York City's note defaults of 1975 showed that legal protections can give way under budget pressure, and Detroit's and Puerto Rico's defaults of 2013--2016 drew attention to the reliability of municipal ratings (pp.~1021--1022).
+
+\qffield{Practice} \emph{Veloria} (original; \texttt{credit-cds-securitisation-checks.py}).
+\begin{itemize}
+\item Debt is 70 percent of GDP, 40 percent of it in dollars at 5 percent. The effective interest rate is 6.5 percent, real growth 2 percent, inflation 4 percent and the primary deficit 1 percent of GDP. The currency falls 10 percent.
+\item By eq.~17-1 the debt ratio rises 4.05 points, to 74.05 percent. Rolling nominal domestic debt, dollar debt and GDP forward gives the same.
+\item The debt-stabilising primary balance is a surplus of 3.05 percent of GDP. Without the depreciation it would be 0.28 percent.
+\item Gross financing needs are 1 percent deficit + 4.55 percent interest + 8 percent amortisation = 13.55 percent of GDP.
+\end{itemize}
+\emph{Conclusion.} The currency, not the budget, drives this year's deterioration. A fiscal adjustment of 4 points is implausible in one year, so the sustainability question turns on the exchange rate, the dollar share and the ability to roll 8 percent of GDP. Veloria's foreign-currency debt is the weaker claim; its local-currency debt carries currency risk for a foreign investor even if repayment is likely.
+
+\qffield{Conditions} The formula treats the effective rate as a weighted average and the depreciation as applying to foreign-currency debt at the start of the year. IMF debt-sustainability guidance and the rating agencies' sovereign methodologies were not accessible or not read.
+
+\qffield{Pitfalls} Judging sustainability on the debt level without its currency, maturity and holders. Treating a primary surplus as sufficient when growth is below the real rate. Treating a municipal revenue bond as backed by the issuer's taxes.
+
+\qffield{See also} \hyperref[def:sovereign-credit-defaults]{sovereign defaults and recoveries}; \hyperref[def:government-agency-supranational-funding]{government funding}; \hyperref[def:credit-risk-components]{credit risk}.
+
+\end{qfmethod}

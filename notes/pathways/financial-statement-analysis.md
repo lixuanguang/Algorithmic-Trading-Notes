@@ -10,7 +10,7 @@ A compendium section declared in `compendium/compendium.tex`. The pinned guide h
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 18 October 2026 by the coverage pilot (`notes/source-review-records.md`, *Coverage inventory and pilot integrations*). The one entry comes from source checking against IAS 7 as adopted in the EU, the IFRS 18 amendments and an open textbook. That is not study.
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 18 October 2026 by the coverage pilot. Expanded on 20 October 2026 by the accounting and statement-analysis batch and, later the same day, by eight entries of the credit, time-series and valuation batch (intercorporate investments, foreign currency, banks and insurers). The accounting batch added 46 new entries in thirteen sections, from primary IFRS (EU-adopted) and FASB texts, SEC rules, the EU audit regulation, Subramanyam and Wild (2009), Damodaran (2012), Porter (2008), Sloan (1996) and Kahneman (2011). That is source checking, not study.
 
 ## Outcome in my own words
 
@@ -30,6 +30,32 @@ Partly checked 2026-10-18, draft; human review outstanding.
 
 Cash-flow slice (2026-10-18): the example now includes a prepaid expense and an accrued expense, the Notation gives the line-by-line direct conversion, and the Conditions compare IFRS before and after IFRS 18 with US GAAP Topic 230 (ASU 2016-15's reprint of the Codification paragraphs, Deloitte's quotation of 230-10-45-28 to 45-30, FASB staff papers of 2025-2026). Rechecked by `cash-flow-linkage-check.py`. Partly checked, draft; human review outstanding.
 
+Accounting and statement-analysis batch (2026-10-20), one shared case and 45 objective entries; numbers checked by `notes/artefacts/financial-statement-analysis/statement-analysis-checks.py`:
+
+- Framework and sources: `def:statement-analysis-framework`, `def:filings-disclosures-information-sources`, `def:ifrs-us-gaap-reporting-systems`.
+- Company case: `ex:harbour-tools-statements` (ledger-built statements; direct = indirect cash flow; equity roll-forward).
+- Income statement: `meth:revenue-recognition-analysis`, `meth:expense-recognition-capitalisation`, `meth:non-recurring-items`, `meth:earnings-per-share`, `meth:income-statement-ratios`.
+- Balance sheet: `meth:intangibles-goodwill-reporting`, `meth:financial-instruments-liabilities`, `meth:balance-sheet-ratios`.
+- Cash flows: `meth:cash-flow-interpretation`, `meth:free-cash-flow-coverage`.
+- Inventories: `meth:inventory-measurement-nrv`, `meth:inventory-cost-formulas`, `meth:inventory-disclosure-analysis`.
+- Long-lived assets: `meth:intangible-acquisition-routes`, `meth:impairment-derecognition`.
+- Leases and compensation: `meth:lease-reporting`, `meth:post-employment-benefit-reporting`, `meth:share-based-compensation-reporting`, `def:long-term-liability-compensation-disclosures`, `meth:share-based-compensation-modelling`, `meth:post-employment-benefit-modelling`.
+- Income taxes: `def:accounting-taxable-profit-differences`, `meth:deferred-tax-analysis`, `meth:tax-rate-measures`.
+- Reporting quality: `def:reporting-results-quality`, `def:reporting-incentives-discipline`, `meth:earnings-management-presentation`, `meth:reporting-warning-signs`, `meth:report-quality-evaluation`, `meth:earnings-quality-persistence`, `meth:cash-flow-balance-sheet-quality`.
+- Ratios: `meth:financial-ratio-families`, `meth:ratio-based-evaluation`, `meth:return-on-equity-decomposition`, `meth:ratio-based-earnings-forecast`.
+- Modelling: `ex:harbour-pro-forma-model`, `meth:forecast-biases-remedies`, `meth:competition-inflation-forecasting`, `meth:forecast-horizon-steady-state`.
+- Integrated analysis: `ex:integrated-credit-decision`, `meth:accounting-analysis-adjustments`, `meth:accounting-change-effects`.
+
+Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026).
+
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py`, with Penrose Group, Larch Brands, Tamar Bank and Wren Insurance as hypothetical cases and reproductions of Subramanyam and Wild's BritCo and Hull's DLC and Table 3.2:
+
+- Intercorporate investments: `def:intercorporate-investment-classification`, `meth:consolidation-ratio-effects`.
+- Foreign currency: `def:functional-currency-transactions`, `meth:currency-translation-methods`, `meth:multinational-currency-tax-analysis`.
+- Banks and insurers: `def:financial-institution-features`, `meth:bank-camels-analysis`, `meth:insurer-analysis`.
+
+Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice
@@ -38,3 +64,9 @@ Cash-flow slice (2026-10-18): the example now includes a prepaid expense and an 
 
 - The current FASB Codification was not accessible; is any Topic 230 paragraph cited in the entry amended after 2016 beyond the finance-lease item?
 - How did reported operating cash flows of non-financial issuers change on adopting IFRS 18 in 2027? A real filing would test the interest reclassification shown in the synthetic example.
+- Which current Codification paragraphs replace the pre-Codification Statements cited (FAS 2, 86, 87, 109, 141R, 142, 144, 158), and have any been amended in ways that change the entries?
+- Does the PCAOB critical-audit-matter requirement (AS 3101) change what a US auditor's report adds for analysis? The PCAOB site refused access on 2026-10-20.
+- How did real issuers' operating cash flows and covenant definitions change on adopting IFRS 18 in 2027, against the Harbour illustration?
+- Read Beneish (1999) and Richardson, Tuna and Wysocki (2010) to test the warning-sign and accrual entries against the detection and post-publication evidence.
+- APB Opinion 18 (the US equity-method standard) could not be retrieved (access denied on 2026-10-20); the 20 percent US presumption rests on Subramanyam and Wild. Does the current Codification (Topic 323) state it in the same terms?
+- The CAMELS mapping to public ratios is my own; how do rating agencies' bank methodologies, which were not read, weight the same factors?

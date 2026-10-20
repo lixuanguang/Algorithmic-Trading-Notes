@@ -1,0 +1,138 @@
+\section{Multiple regression}
+
+\begin{qfmethod}[Formulating a multiple regression for an investment question: the model, partial slope coefficients, what least squares guarantees about residuals, residual plots, and omitted-variable bias]\label{meth:multiple-regression-formulation}
+\qffield{Statement} A multiple regression models the mean of $y$ as a linear function of $k$ predictors, estimated by least squares \citep[Lessons~5.3--5.4]{regression-methods-course-notes}:
+\[ y_i=\beta_0+\beta_1x_{i1}+\dots+\beta_kx_{ik}+\epsilon_i,\qquad \hat{\boldsymbol\beta}=(X'X)^{-1}X'y. \]
+\begin{itemize}
+\item Each slope $\beta_j$ is a \emph{partial} effect: the change in mean $y$ per unit increase in $x_j$ ``when all the other predictors are held constant''. Correlated predictors can make it very different from the simple-regression slope (Lesson~5.3).
+\item The formulation starts from the question: which variables an investment theory says should matter, in what units, measured when. Typical investment uses are explaining returns by factor exposures, attributing performance, modelling determinants of spreads or valuation multiples, and testing whether a variable adds information (Interpretation).
+\item The process: specify the model from theory, estimate it, check the assumptions with residual plots and tests, revise, and only then test hypotheses or predict (Interpretation, following the lesson order of the source).
+\end{itemize}
+
+\emph{Residual plots.} Plotting residuals against fitted values, against each predictor and over time checks linearity, constant spread and independence (Lesson~7.4). Least squares makes the residuals sum to zero and be uncorrelated with every predictor and with the fitted values, so such a plot cannot show a non-zero overall mean; it shows shape (Interpretation for the list):
+\begin{itemize}
+\item curvature, suggesting a missing term;
+\item a fan, suggesting non-constant variance;
+\item runs over time, suggesting serial correlation;
+\item isolated points, suggesting outliers.
+\end{itemize}
+
+\emph{Omitted variables.} If the true model contains $x_2$ but $y$ is regressed on $x_1$ alone, the short-regression slope is $b_1+b_2\delta$, where $\delta$ is the slope of $x_2$ on $x_1$ (Derivation; the identity holds exactly in sample). The bias vanishes only if $x_2$ does not matter or is uncorrelated with $x_1$.
+
+\qffield{Practice} \emph{What drives corporate bond returns?} (\texttt{notes/artefacts/linear-regression/multiple-regression-checks.py}; annual US data 1928--2025 \citep[sheet ``Returns by year'']{us-asset-returns-1928-2025}.) The Baa corporate bond return in excess of bills is regressed on the 10-year Treasury excess return (duration) and the S\&P~500 excess return (credit risk that behaves like equity):
+\[ \widehat{y}=0.0118+0.660\,x_{\text{bond}}+0.163\,x_{\text{stock}}. \]
+\begin{itemize}
+\item Holding the stock return fixed, a 1-point Treasury excess return comes with 0.66 points on Baa bonds, less than one-for-one because Baa bonds are shorter or callable (Interpretation).
+\item Holding the Treasury return fixed, a 10-point equity excess return adds 1.6 points: the equity component of credit risk.
+\item The intercept of 1.18 percent a year is the average return not explained by either factor.
+\end{itemize}
+The two predictors are nearly uncorrelated (0.044), so the one-predictor slopes (0.678 and 0.174) are close to the partial ones. The largest residuals are 2009 (+21.9 points), 1932 (+17.8) and 1934 (+12.5): rebounds after credit crises that neither factor captures.
+
+\emph{Omitted-variable bias} (simulated, 400 draws). With $y=1+0.5x_1+0.8x_2+\epsilon$ and $x_2$ correlated 0.6 with $x_1$, regressing $y$ on $x_1$ alone gives 0.865. That is exactly $0.422+0.797\times0.556$ in the sample, against a true partial effect of 0.5.
+
+\qffield{Conditions} The coefficients describe association in this sample; reading them as causal needs an argument that nothing omitted is correlated with the predictors. Annual data give only 98 observations and span different monetary regimes.
+
+\qffield{Pitfalls} Interpreting a slope as a total effect. Dropping a predictor because a scatterplot against $y$ looks flat; the effect may be hidden by the other predictors \citep[sec.~7.5]{s7-hyndman}. Reading a zero-mean residual plot as evidence of a correct model.
+
+\qffield{See also} \hyperref[meth:simple-regression-estimation]{simple regression}; \hyperref[meth:multiple-regression-fit-tests]{fit and tests}; \hyperref[meth:regression-misspecification]{misspecification}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Evaluating multiple-regression fit: the ANOVA table, $R^2$ and adjusted $R^2$, coefficient $t$ tests, the overall and general linear $F$ tests, partial $R^2$, and predicted values with their intervals]\label{meth:multiple-regression-fit-tests}
+\qffield{Statement} \emph{ANOVA.} The total sum of squares splits into regression and error parts, $\mathrm{SST}=\mathrm{SSR}+\mathrm{SSE}$, with $R^2=\mathrm{SSR}/\mathrm{SST}$. Because $R^2$ never falls when a predictor is added, compare models with
+\[ \bar R^2=1-(1-R^2)\frac{n-1}{n-k-1}. \]
+The standard error of estimate is $\sqrt{\mathrm{SSE}/(n-k-1)}$.
+
+\emph{Tests.}
+\begin{itemize}
+\item Each coefficient's $t$ statistic tests $\beta_j=0$ given the other predictors.
+\item The overall $F=(\mathrm{SSR}/k)/(\mathrm{SSE}/(n-k-1))$ tests all slopes at once.
+\item The \emph{general linear F test} compares a reduced model with a full one \citep[Lesson~6.2]{regression-methods-course-notes}:
+\[ F=\frac{(\mathrm{SSE}_R-\mathrm{SSE}_F)/(df_R-df_F)}{\mathrm{SSE}_F/df_F}. \]
+\item \emph{Partial $R^2$} is the share of the variation left unexplained by the reduced model that the added predictors explain, $(\mathrm{SSE}_R-\mathrm{SSE}_F)/\mathrm{SSE}_R$ (Lesson~6.5).
+\end{itemize}
+
+\emph{Prediction.} The fitted value at $x_0$ is $x_0'\hat\beta$. Its standard error for the mean is $s\sqrt{x_0'(X'X)^{-1}x_0}$, and for a new observation $s\sqrt{1+x_0'(X'X)^{-1}x_0}$ (Lessons~7.1--7.2).
+
+\qffield{Practice} \emph{The corporate bond regression} (\hyperref[meth:multiple-regression-formulation]{formulation}).
+\begin{itemize}
+\item $R^2=0.597$, $\bar R^2=0.589$, $F=70.4$ on (2, 95) degrees of freedom; standard error of estimate 5.06 percent.
+\item $t$ statistics: bond 9.80, stock 6.26, intercept 2.10 ($p=0.038$).
+\item \emph{Joint test}: adding the real-estate and gold excess returns gives $F=0.40$ ($p=0.67$). The reduced model stands.
+\item \emph{Partial $R^2$} of the stock factor given the bond factor is 29.2 percent.
+\item \emph{Prediction} for a year with Treasuries 5 points above bills and stocks 20 points below: a Baa excess return of 1.2 percent. The 95 percent interval for that year is $-9.0$ to $+11.4$ percent, computed by hand and by statsmodels.
+\end{itemize}
+\emph{Conclusion.} The two factors explain 60 percent of the annual variation and are jointly and individually significant. A single year remains very uncertain: the prediction interval is 20 points wide.
+
+\qffield{Conditions} The $t$ and $F$ distributions assume normal, homoskedastic, independent errors (\hyperref[meth:regression-diagnostics-anova]{assumptions}); with heteroskedasticity or autocorrelation, use robust standard errors (\hyperref[meth:regression-misspecification]{misspecification}).
+
+\qffield{Pitfalls} Choosing predictors to maximise $R^2$. Testing several coefficients one at a time instead of jointly. Reporting the interval for the mean response as the range of next year's outcome.
+
+\qffield{See also} \hyperref[meth:regression-prediction-functional-form]{prediction and functional form}; \hyperref[meth:hypothesis-testing]{hypothesis tests}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Diagnosing and correcting misspecification: omitted variables and functional form, heteroskedasticity (Breusch--Pagan, White, robust standard errors), serial correlation (Durbin--Watson, Newey--West, Cochrane--Orcutt), and multicollinearity (VIF)]\label{meth:regression-misspecification}
+\qffield{Statement} \emph{Misspecification} takes several forms (Interpretation): omitting a relevant variable, using the wrong functional form (levels where logs or squares belong), scaling variables inappropriately, and pooling data from different regimes. These bias the coefficients themselves (\hyperref[meth:multiple-regression-formulation]{the omitted-variable identity}). The remedy is to start from theory, add the variable or a proxy, transform the variables, or split the sample.
+
+\emph{Heteroskedasticity} leaves least-squares coefficients unbiased but makes the usual standard errors wrong \citep[Lessons~7.6, 13.1]{regression-methods-course-notes}.
+\begin{itemize}
+\item \emph{Types}: unconditional heteroskedasticity, where the variance changes but not with the predictors, does little harm to inference; conditional heteroskedasticity, where the variance moves with the predictors, makes the usual standard errors wrong, usually too small (Interpretation).
+\item The Breusch--Pagan test regresses squared residuals on the predictors; it assumes normal errors and a variance linked to the predictors (Lesson~7.6). White's test adds squares and cross-products, so it also picks up nonlinear patterns (Interpretation).
+\item Remedies: heteroskedasticity-consistent (White) standard errors, or weighted least squares if the variance pattern is known (Lesson~13.1).
+\end{itemize}
+
+\emph{Serial correlation} in time-series regressions likewise biases the standard errors (Lesson~14.3).
+\begin{itemize}
+\item Positive serial correlation, the common case, makes the usual standard errors too small and $t$ statistics too large; negative serial correlation does the reverse (Interpretation).
+\item The Durbin--Watson statistic is about $2(1-r_1)$, with $r_1$ the first-order residual autocorrelation. The Ljung--Box test checks several lags.
+\item Remedies: transform the model (Cochrane--Orcutt for AR(1) errors), or keep least squares with heteroskedasticity- and autocorrelation-consistent (Newey--West) standard errors (Interpretation; the latter was not in the sources read).
+\item With a lagged dependent variable, serial correlation also biases the coefficients (Interpretation).
+\end{itemize}
+
+\emph{Multicollinearity} arises when predictors are moderately or highly correlated (Lesson~12.1). It inflates the coefficients' variances by $\mathrm{VIF}_j=1/(1-R_j^2)$, where $R_j^2$ comes from regressing $x_j$ on the other predictors. VIFs above 4 warrant investigation and above 10 signal serious multicollinearity (Lesson~12.4). The symptom is a significant $F$ with insignificant $t$ statistics. Remedies are more data, combining or dropping predictors, or accepting it when only predictions matter.
+
+\qffield{Practice} \emph{The corporate bond regression.}
+\begin{itemize}
+\item \emph{Heteroskedasticity.} Breusch--Pagan gives 0.88 ($p=0.65$), but White's test gives 13.7 ($p=0.017$): the variance depends on the predictors nonlinearly, as in crisis years with large stock moves. Robust standard errors rise from 0.067 to 0.085 (bond) and from 0.026 to 0.030 (stock).
+\item \emph{Serial correlation.} Durbin--Watson is 1.88, with $r_1=0.05$, so none to speak of. Newey--West standard errors with two lags are 0.104 and 0.032. Both slopes remain significant under every correction.
+\item \emph{Multicollinearity.} VIFs are 1.002.
+\end{itemize}
+\emph{Multicollinearity, simulated} (200 draws, predictors correlated 0.95, true slopes 0.5 each): the VIF is 12.3 and the slope's standard error 3.5 times that of a one-predictor fit, close to $\sqrt{12.3}$. The $t$ statistics are 3.73 and 0.59, yet the joint $F$ test is overwhelming. Dropping one predictor would give a good forecast but a misleading partial effect.
+
+\qffield{Conditions} The tests have power only against the alternatives they model. Robust standard errors need large samples. Newey--West requires a lag choice.
+
+\qffield{Pitfalls} Concluding from a Breusch--Pagan test alone that variance is constant. Correcting standard errors when the real problem is an omitted variable. Dropping a collinear predictor that theory says belongs, which trades variance for omitted-variable bias.
+
+\qffield{See also} \hyperref[meth:regression-diagnostics-anova]{diagnostics}; \hyperref[meth:regression-extensions]{influential points}; \hyperref[meth:autoregressive-forecasting]{autoregression}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Extending the regression: leverage, outliers and influence (studentized deleted residuals, Cook's distance), dummy variables for groups and changes, interaction terms, and logistic regression for binary outcomes]\label{meth:regression-extensions}
+\qffield{Statement} \emph{Unusual observations} come in three kinds:
+\begin{itemize}
+\item \emph{high leverage}, an unusual $x$: the diagonal $h_{ii}$ of the hat matrix averages $p/n$, and values above $3p/n$ are flagged \citep[Lesson~11.2]{regression-methods-course-notes};
+\item \emph{outliers}, an unusual $y$: the studentized deleted residual compares $y_i$ with a fit that excludes it (Lesson~11.4);
+\item \emph{influential points}, whose removal changes the fit: Cook's distance $D_i$ above 0.5 merits investigation and above 1 is quite likely influential (Lesson~11.5).
+\end{itemize}
+
+\emph{Dummy variables} code categories or periods as 0--1 (Lesson~8.2). An intercept dummy shifts the line; its product with a predictor, an interaction term, lets the slope differ by group (Lesson~8.6). A dummy can also absorb a one-off event \citep[sec.~7.4]{s7-hyndman}.
+
+\emph{Logistic regression} models a binary outcome. The log odds are linear in the predictors, $\ln[\pi/(1-\pi)]=X\beta$, and $e^{\beta_j}$ is the odds ratio for a unit change in $x_j$ \citep[Lesson~13.2]{regression-methods-course-notes}. It is fitted by maximum likelihood, not least squares.
+
+\qffield{Practice} \emph{The corporate bond regression.}
+\begin{itemize}
+\item \emph{Leverage}: above $3p/n=0.092$ are 1931 (0.094), 2008 (0.125) and 2022 (0.109), years of extreme predictor values. In 2022 stocks and Treasuries fell together.
+\item \emph{Outliers and influence}: 2009 has a studentized deleted residual of 4.95, but Cook's distance of 0.33; no year exceeds 0.5. Dropping 2009 moves the bond slope from 0.660 to 0.713 and the stock slope from 0.163 to 0.152. The conclusions hold, but the 2009 rebound is a feature the model misses, not noise to delete.
+\item \emph{Dummies}: a post-1980 intercept shift is 0.12 points ($p=0.91$) and a post-1980 change in the stock slope 0.065 ($p=0.25$). There is no evidence that the relation changed after the Volcker disinflation.
+\end{itemize}
+
+\emph{Logistic regression.} Baa bonds underperformed Treasuries in 31 of the 98 years. Modelling that event on the stock excess return gives $\ln[\pi/(1-\pi)]=-0.486-5.01\,x_{\text{stock}}$, the same by hand-coded Newton--Raphson and statsmodels. The probability of underperformance is 62.6 percent after a $-20$ percent stock year, 38.1 percent at zero and 18.4 percent at $+20$ percent. Each 10 points of stock return cuts the odds by 39 percent.
+
+\qffield{Conditions} The rules of thumb for leverage and Cook's distance are screening devices, not tests. Logistic coefficients are not marginal effects on the probability, which depend on where the curve is evaluated.
+
+\qffield{Pitfalls} Deleting outliers because they are inconvenient. Including a dummy for every category and an intercept, which makes the design singular. Reading a logit coefficient as a change in probability.
+
+\qffield{See also} \hyperref[meth:regression-misspecification]{misspecification}; \hyperref[meth:multiple-regression-fit-tests]{fit and tests}.
+
+\end{qfmethod}

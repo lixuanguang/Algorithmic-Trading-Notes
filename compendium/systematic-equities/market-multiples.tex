@@ -1,0 +1,252 @@
+\section{Price and enterprise-value multiples}
+
+\begin{qfmethod}[Valuation with multiples: the method of comparables and the method of forecasted fundamentals, price and enterprise-value multiples and their uses, and trailing, current and forward definitions]\label{meth:multiples-valuation-basics}
+\qffield{Statement} Relative valuation prices an asset from the prices of similar assets, standardised by a common variable \citep[pp.~453--455]{investment-valuation-2012}. Standardising variables include:
+\begin{itemize}
+\item earnings: P/E, EV/EBIT and EV/EBITDA;
+\item book value: P/B, EV to invested capital and Tobin's Q;
+\item revenue: P/S and EV/sales;
+\item sector measures, such as value per subscriber.
+\end{itemize}
+Damodaran's four steps are to define the multiple consistently, describe its distribution, analyse its fundamentals and apply it to comparables (pp.~455--457).
+
+\emph{Two methods.}
+\begin{itemize}
+\item The \emph{method of comparables} applies the peers' multiple to the company's measure. It assumes the market prices the peers correctly on average.
+\item The \emph{method of forecasted fundamentals} derives the multiple from a DCF model using the company's own growth, payout and risk: the justified multiple (\hyperref[meth:justified-multiples]{justified multiples}).
+\end{itemize}
+The first answers ``cheap relative to peers?'', the second ``cheap relative to its fundamentals?''. Relative valuation is popular because it needs fewer explicit assumptions, is easy to explain and reflects current market mood. For the same reasons it ignores differences in risk and growth unless controlled for, and imports market errors (pp.~453--454).
+
+\emph{Price and enterprise-value multiples.} A price multiple has equity value in the numerator and must have an equity measure in the denominator: earnings, book equity, or revenue only with care. An enterprise-value multiple has the value of all operating claims and must have a measure before financing: EBITDA, EBIT, revenue, invested capital. Mixing them, as in price to EBITDA, makes levered firms look cheap (p.~456).
+
+\emph{Timing.} The definitions differ by period \citep[pp.~455--456, 468--469]{investment-valuation-2012}:
+\begin{itemize}
+\item \emph{current} P/E uses the last fiscal year's earnings;
+\item \emph{trailing} P/E uses the last four quarters;
+\item \emph{forward} P/E uses expected earnings for the next year or quarters.
+\end{itemize}
+For a growing firm, current P/E exceeds trailing, which exceeds forward. Analysts who are bullish tend to quote forward multiples. Use primary or diluted earnings consistently across firms.
+
+\qffield{Practice} \emph{Harbour at 11.00} (\hyperref[ex:harbour-tools-statements]{case}):
+\begin{itemize}
+\item reported 2025 basic EPS of 0.5517 gives a trailing P/E of 19.94;
+\item underlying EPS, excluding the restructuring charge, of 0.6862 gives 16.03;
+\item forecast 2026 EPS of 0.7285 gives a forward P/E of 15.10;
+\item P/B is 1.71, P/S 1.03 and EV/EBITDA 7.50.
+\end{itemize}
+The three P/Es differ by a quarter for the same stock on the same day. A comparison with peers is meaningful only on the same definition, here forward P/E against peers' forward P/E.
+
+\qffield{Conditions} The method of comparables carries the peers' mispricing into the estimate. The method of fundamentals carries the analyst's forecast errors. Fiscal years should be aligned or calendarised before comparison (p.~457).
+
+\qffield{Pitfalls} Comparing a trailing multiple with a forward one. Mixing equity and enterprise measures. Treating a peer average as a fair value without asking why the company might deserve a different multiple.
+
+\qffield{See also} \hyperref[meth:peer-group-selection]{peer groups}; \hyperref[meth:comparables-evaluation]{comparables in practice}; \hyperref[def:price-value-indicators]{price and value}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Selecting a peer group for relative valuation: similarity in cash flows, growth and risk, industry classification, the number of comparables, and global peers]\label{meth:peer-group-selection}
+\qffield{Statement} A comparable firm has cash flows, growth and risk similar to the company valued. Being in the same industry is a starting point, not a test \citep[pp.~462--463]{investment-valuation-2012}. Two approaches:
+\begin{itemize}
+\item a narrow list of close peers, which is small and may still differ;
+\item a broad list, perhaps the whole sector or market, with differences controlled statistically.
+\end{itemize}
+Damodaran prefers a larger, less comparable sample with controls to a small, hand-picked one. Controls include subjective adjustment, modified multiples such as the PEG and regressions on fundamentals (pp.~462--465).
+
+Evidence on the number of peers \citep[pp.~1--5]{optimal-multiples-2023}:
+\begin{itemize}
+\item brokers typically use four to six comparables;
+\item ten firms selected as close comparables on expected growth value a company as accurately as the whole industry, and five slightly less accurately;
+\item prior studies find industry peers better than the whole cross-section; three-digit SIC industries do as well as other selection rules (Alford 1992);
+\item forward earnings are the best value driver (Liu, Nissim and Thomas 2002).
+\end{itemize}
+
+Classification systems provide a first cut. GICS classifies by the source of most revenue and is demand-oriented (\hyperref[meth:industry-analysis]{classification}). Global peers enlarge the sample but bring differences in risk, growth, accounting and currency (p.~463).
+
+\emph{Steps} (Interpretation):
+\begin{enumerate}
+\item start from the sub-industry and adjacent ones serving the same customers;
+\item screen on business mix, size, growth, profitability and leverage;
+\item check accounting standards and fiscal years;
+\item drop firms in distress or under offer;
+\item report the list, the screens and how the result changes when the list changes.
+\end{enumerate}
+
+\qffield{Practice} \emph{Harbour.} GICS places a power-tool maker in Household Appliances, alongside makers of kitchen appliances whose economics differ. A better list is tool and hardware makers across sub-industries. Seven listed tool makers, Arden to Glenco, have expected EPS growth from 5 to 12 percent, betas from 0.90 to 1.20 and forward P/Es from 14 to 35. Glenco, at 35 times with 12 percent growth, is an outlier whose growth Harbour does not share; dropping it lowers the mean P/E from 20.29 to 17.83 but barely moves the median.
+
+None of the peers has growth as low as Harbour's 4 percent. That is the strongest reason to use a regression or a justified multiple alongside the median (\hyperref[meth:comparables-evaluation]{comparables}).
+
+\qffield{Conditions} The Cooper and Lambertides evidence uses US data and forward earnings, and selects peers on expected growth. Results may differ in other markets or with other multiples.
+
+\qffield{Pitfalls} Choosing peers to support a conclusion: in an IPO a P/E of 24 can become 27 or 21 by changing the sample \citep[p.~21]{investment-valuation-2012}. Excluding loss-making peers without saying so. Mixing peers that report under different standards without adjustment.
+
+\qffield{See also} \hyperref[meth:multiples-valuation-basics]{multiples}; \hyperref[meth:industry-analysis]{industry classification}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Justified multiples from fundamentals: P/E, P/B and P/S from the Gordon model, the P/E predicted by a cross-sectional regression, and what the market price implies]\label{meth:justified-multiples}
+\qffield{Statement} Each multiple can be derived from a dividend discount model, which shows the fundamentals that drive it \citep[pp.~460--461, 515, 545]{investment-valuation-2012}. With payout $1-b$, growth $g$, required return $r$ and $\mathrm{ROE}=E_1/\mathrm{BV}_0$:
+\[ \frac{P_0}{E_1}=\frac{1-b}{r-g},\qquad\frac{P_0}{B_0}=\frac{\mathrm{ROE}-g}{r-g},\qquad\frac{P_0}{S_0}=\frac{\text{net margin}\times(1-b)(1+g)}{r-g}. \]
+\emph{Timing convention.} ROE here is next year's earnings over today's book value, so $E_1=\mathrm{ROE}\times B_0$ and book value grows by $b\times\mathrm{ROE}\times B_0$. With that convention the three routes are one model: $\frac{P_0}{E_1}E_1=\frac{(1-b)\,\mathrm{ROE}\,B_0}{r-g}=\frac{\mathrm{ROE}-g}{r-g}B_0$ when $g=b\,\mathrm{ROE}$, which is also $D_1/(r-g)$. Growing $\mathrm{ROE}\times B_0$ by $(1+g)$ before applying the leading P/E counts a year's growth twice. Historical ROE used as an input must be measured the same way, on opening equity; ROE on average equity, as in ratio analysis, is a different quantity.
+
+P/B exceeds one if and only if ROE exceeds $r$. Damodaran's Jenapharm example gives $(15.52-5)/(11.375-5)=1.65$ (p.~515). The P/S also depends on the margin, the driver that P/S comparisons most often hide. Stable-growth payout should be $1-g/\mathrm{ROE}$.
+
+\emph{Regression.} A cross-sectional regression of P/E on growth, risk and payout predicts a firm's P/E from the market's pricing of those fundamentals. Damodaran's beverage regression explains 51 percent of the variance in P/E (pp.~463--465). Market-wide regressions quantify the relation and can be used where industries have few firms. Their problems are that the explanatory variables are correlated (multicollinearity), the relations are non-linear, and the coefficients are unstable over time (p.~486). Treat the prediction as one estimate among several.
+
+\qffield{Practice} \emph{Harbour.} Inputs: a cost of equity of 9.32 percent (\hyperref[meth:wacc-calculation]{WACC}), long-run growth of 2.5 percent, and a normalised ROE of 10.79 percent on opening book equity (\hyperref[meth:normalised-earnings]{normalised earnings}).
+\begin{itemize}
+\item \emph{Payout.} The stable payout is $1-2.5/10.79=76.8$ percent.
+\item \emph{P/E.} The justified leading P/E is $0.768/(0.0932-0.025)=11.26$. Next year's normalised EPS is $\mathrm{ROE}\times B_0=0.1079\times6.43=0.6935$, which already is $E_1$; the value is $11.26\times0.6935=7.81$ a share.
+\item \emph{P/B.} The justified P/B is $(10.79-2.5)/(9.32-2.5)=1.22$, or 7.81 on book value per share of 6.43.
+\item \emph{Dividend model.} $D_1=0.768\times0.6935=0.533$, and $0.533/(0.0932-0.025)=7.81$. A year-by-year sum of the dividends, with book value growing 2.5 percent from retention, gives the same value.
+\item \emph{P/S.} At a 5 percent net margin on trailing sales, the justified P/S is 0.58 against an actual 1.03.
+\item \emph{Implied ROE.} The market P/B of 1.71 implies a sustained ROE of $2.5+1.712\times6.824=14.18$ percent.
+\end{itemize}
+Growing $E_1$ again, as $0.6935\times1.025$, would give 8.00 on the P/E route, 2.5 percent more than the identical P/B and dividend routes. With the 2024--2025 ROE measured on average equity instead, the cycle average would be 10.63 percent and every route would give 7.66.
+
+\emph{Regression.} Across the seven peers, ordinary least squares gives $\mathrm{P/E}=4.43+250\,g-4.29\,\beta$. With Harbour's 4 percent growth and beta of 1.15 it predicts 9.50, against its actual forward P/E of 15.10. Seven observations and a growth rate below every peer's make this an extrapolation, but it points the same way as the justified multiples.
+
+The justified multiples, at 7.81 a share, are close to the DCF value of 8.49. Both imply that Harbour's price assumes returns well above its recent record (\hyperref[meth:valuation-price-judgement]{judgement}).
+
+\qffield{Conditions} The formulas assume stable growth forever. For a firm in high growth, use the two-stage versions or a full DCF \citep[pp.~471--473]{investment-valuation-2012}. ROE in the P/B formula is next year's earnings over current book value.
+
+\qffield{Pitfalls} Using a justified multiple with inputs inconsistent with each other, such as high growth with a high payout. Applying a regression outside the range of its data. Comparing a justified leading multiple with a trailing market multiple.
+
+\qffield{See also} \hyperref[meth:pvgo-justified-pe]{PVGO and P/E}; \hyperref[meth:alternative-multiples]{other multiples}; \hyperref[meth:comparables-evaluation]{comparables}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Underlying and normalised earnings per share: removing non-recurring items, normalising cyclical earnings by historical average EPS or average ROE, and using the earnings yield when earnings are negative or small]\label{meth:normalised-earnings}
+\qffield{Statement} \emph{Underlying earnings} exclude items that will not recur, such as restructuring charges, impairments, gains on disposals and litigation settlements, so that the multiple is applied to persistent earnings. Adjust the comparables the same way (\hyperref[meth:non-recurring-items]{non-recurring items}).
+
+\emph{Normalised earnings} are what the company would earn in a normal year of the business cycle. Damodaran recommends averaging earnings across a cycle, adjusted for inflation, and normalising the comparables' earnings too \citep[p.~487]{investment-valuation-2012}. Two methods are common:
+\begin{itemize}
+\item \emph{historical average EPS} over a full cycle, which ignores changes in the size of the business;
+\item \emph{average ROE} over the cycle times current book value per share, which scales to the current size of the business.
+\end{itemize}
+
+\emph{Earnings yield.} The earnings yield, E/P, is the inverse of the P/E. When earnings are negative the P/E is meaningless, but the yield can still be computed and ranked. Dropping loss-making firms biases a sample's P/E upwards. Alternatives are aggregate multiples, total market value over total earnings, or averaging yields \citep[pp.~458--459]{investment-valuation-2012}. Averaging yields is the harmonic mean of P/E (\hyperref[meth:comparables-evaluation]{averages}).
+
+\qffield{Practice} \emph{Harbour.}
+\begin{itemize}
+\item \emph{Underlying EPS.} 2025 profit of 55.38 plus the 18 restructuring charge after tax at 25 percent, $13.50$, over 100.375 million weighted shares, is 0.6862, against reported 0.5517. The trailing P/E falls from 19.94 to 16.03.
+\item \emph{Average ROE.} ROE is measured on opening book equity, the convention of the \hyperref[meth:justified-multiples]{justified multiples}. With 10.0, 12.0 and 10.8 percent assumed for 2021--2023 and the actual 12.01 ($67/558$) and 9.15 percent ($55.38/605$) for 2024--2025, the average is 10.79 percent. Times book value per share at the end of 2025, 6.43, that is 0.6935: normalised EPS for 2026, not for 2025.
+\end{itemize}
+Compared at the same date, normalised 2025 EPS is the average ROE times opening 2025 equity, $0.1079\times605/100.375=0.6505$, against underlying EPS of 0.6862. The two measures are close; they would not be if the restructuring recurred. A restructuring charge every other year is an operating cost, and underlying EPS should keep it.
+
+\emph{Earnings yield.} Harbour's forward earnings yield is $0.7285/11=6.62$ percent. A loss-making peer with forward EPS of $-0.40$ at 8.00 has a yield of $-5.0$ percent: ranked last, but included.
+
+\qffield{Conditions} Normalisation needs a full cycle of data from a business that has not changed materially. The average-ROE method assumes the company will earn its past average return on its current book value, which fails if book value has been inflated by poor acquisitions or reduced by buybacks.
+
+\qffield{Pitfalls} Excluding every charge as ``non-recurring''. Normalising the company's earnings but not the peers'. Using the earnings yield as a cost of equity: it equals the cost of equity only with no growth and full payout.
+
+\qffield{See also} \hyperref[meth:non-recurring-items]{non-recurring items}; \hyperref[meth:earnings-quality-persistence]{earnings persistence}; \hyperref[meth:justified-multiples]{justified multiples}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Alternative price multiples and their drivers: price to book, sales and cash flow, dividend yield and the PEG ratio, the rationales and drawbacks of each, and the fundamentals behind each multiple]\label{meth:alternative-multiples}
+\qffield{Statement} \emph{P/E} reflects earning power. It is widely reported but meaningless when earnings are negative or volatile, and is affected by accounting choices.
+
+\emph{P/B} offers a stable benchmark, consistent comparisons where accounting is consistent, and usefulness for loss-making firms and financial firms. Its drawbacks: book value depends on accounting choices and means little for service and technology firms, and it can be negative \citep[p.~511]{investment-valuation-2012}. Buybacks shrink book value and raise P/B, so adjust for buybacks and goodwill and exclude preferred stock (pp.~512--513).
+
+\emph{P/S} is available for loss-making firms, harder to manipulate and less volatile than earnings. It ignores margins, and as a price multiple on an enterprise measure it makes levered firms look cheap; EV/sales is consistent \citep[pp.~542--543]{investment-valuation-2012}.
+
+\emph{P/CF} uses cash-flow measures, less affected by accruals; definitions vary, from earnings plus non-cash charges to free cash flow to equity.
+
+\emph{Dividend yield} is part of total return and is meaningful for mature payers. Many firms pay no dividend, and a high yield may signal an expected cut.
+
+\emph{Drivers.} From the dividend model, each multiple rises with payout and growth and falls with risk. P/B also rises with ROE, P/S with margin, and EV/EBITDA falls with taxes and reinvestment needs \citep[pp.~460--461, 504]{investment-valuation-2012}. A ``cheap'' multiple may simply reflect weaker fundamentals; the companion variable for each multiple (ROE for P/B, margin for P/S, growth for P/E) must be compared alongside it.
+
+\emph{PEG} is the P/E divided by expected EPS growth in percent. The growth base must match the earnings in the P/E, never a forward P/E with growth measured from next year. Direct comparison assumes similar risk and payout, and the relation between P/E and growth is not linear, so the PEG favours high-growth firms (pp.~487, 493).
+
+\qffield{Practice} \emph{Harbour against the peers.}
+\begin{itemize}
+\item \emph{Dividend yield}: 32 of dividends over 1,108.25 is 2.89 percent.
+\item \emph{P/B} 1.71 against a justified 1.22 (\hyperref[meth:justified-multiples]{justified multiples}).
+\item \emph{P/S} 1.03 against a justified 0.58 at a 5 percent margin.
+\item \emph{PEG}: on the forward P/E of 15.10 with 4 percent growth, 3.77. The peers range from 2.20 (Fenwick) to 2.92 (Glenco).
+\end{itemize}
+Every multiple says Harbour is expensive for its fundamentals. But each comparison assumes peers and Harbour share risk and payout. A PEG of 3.77 partly reflects the low growth it divides by: at near-zero growth the ratio becomes meaningless.
+
+\qffield{Conditions} The P/B for banks is meaningful because their assets are marked close to market; for firms with large internally generated intangibles, it is not. Revenue multiples assume margins will converge to the peers'.
+
+\qffield{Pitfalls} Calling a low P/B cheap when ROE is below the cost of equity. Comparing P/S across firms with different margins. Using PEG across firms of different risk or as if it were linear.
+
+\qffield{See also} \hyperref[meth:justified-multiples]{justified multiples}; \hyperref[meth:enterprise-value-multiples]{EV multiples}; \hyperref[meth:distribution-effects]{buybacks and book value}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Enterprise-value multiples: EV/EBITDA, EV/EBIT and EV/sales, cash-flow definitions (EBITDA, FFO, FCFE, FCFF) and their uses, matching numerators to denominators, and leases and accounting differences]\label{meth:enterprise-value-multiples}
+\qffield{Statement} Enterprise value is equity plus debt and debt-like claims less cash (\hyperref[def:price-value-indicators]{EV}). EV multiples suit comparisons across firms with different leverage because both numerator and denominator are before financing. \emph{EV/EBITDA} has further advantages: fewer firms have negative EBITDA, depreciation methods do not affect it, and it suits infrastructure businesses with long-lived assets \citep[pp.~500--501, 507]{investment-valuation-2012}. Cross-holdings distort it: a minority holding inflates the numerator without adding to EBITDA, and a consolidated majority holding does the reverse.
+
+\emph{Cash-flow definitions.}
+\begin{itemize}
+\item \emph{EBITDA} is a proxy for pre-tax operating cash flow before capital spending and working capital.
+\item \emph{Funds from operations} is profit plus non-cash charges.
+\item \emph{FCFE} and \emph{FCFF} deduct reinvestment.
+\end{itemize}
+EBITDA is not cash flow: a capital-intensive firm can have high EBITDA and no free cash flow (p.~507). Its EV/EBITDA justified by fundamentals falls with the tax rate, the share of depreciation in EBITDA and reinvestment needs, and rises with growth, and falls with the WACC (p.~504).
+
+\emph{Matching.} Every claim whose cost is excluded from the denominator must be in the numerator.
+\begin{itemize}
+\item Employee options, warrants and the conversion value of convertibles are equity claims: count them in market EV, and when an EV multiple is turned into a value per share, deduct them, valued at the share price the multiple implies.
+\item Under IFRS~16, EBITDA excludes lease costs, so lease liabilities belong in EV.
+\item Under US GAAP, operating lease cost is in EBITDA, so operating lease liabilities do not belong in EV unless the cost is added back.
+\item Pension deficits belong in EV if EBITDA excludes pension interest.
+\item Minority interests belong in EV if EBITDA is consolidated.
+\end{itemize}
+
+\qffield{Practice} \emph{Harbour, 2025.} EV of 1,479.77, including the options at 17.94 (\hyperref[def:price-value-indicators]{EV}), over EBITDA of 195 is 7.59.
+\begin{itemize}
+\item \emph{Mismatch.} Omitting the 65 of leases and the 36.12 pension from EV, while EBITDA still excludes lease costs, gives 7.07: too cheap.
+\item \emph{Price to EBITDA}, $1{,}108.25/195=5.68$, mixes equity and enterprise measures.
+\end{itemize}
+
+\emph{A US GAAP peer} has EV of 2,400 and EBITDA of 300 after operating lease costs of 30, with lease liabilities of 150. Putting it on Harbour's basis, adding 30 to EBITDA and 150 to EV, moves its multiple from 8.00 to 7.73.
+
+\emph{Development costs.} Harbour capitalised 22 of development in 2025 under IAS~38, amortising 12. A peer that expenses development, as US GAAP generally requires, would report EBITDA 22 lower. On that basis Harbour's EBITDA is 173 and its multiple 8.55, and its EBIT is 10 lower.
+
+\emph{Applying the peer median} of 7.8 to Harbour's EBITDA of 195 gives EV of 1,521.00. Less debt, leases and pension net of cash, 353.58, leaves 1,167.42 for the shares and the options together. The options must be valued at the share price this estimate implies, so the value per share solves $p=(1{,}167.42-5\,C(p))/100.75$, where $C$ is the option value per option on the equity-bridge inputs. That gives 11.39 a share, with the options worth 19.45. On the development-adjusted basis, 7.8 times 173 leaves 995.82, or 9.75 a share. Dividing the whole residual by the shares, as 11.59 and 9.88 do, gives the option holders' value to the shareholders.
+
+\qffield{Conditions} EV should use market values of debt where they differ materially from book. EBITDA definitions vary, especially for share-based pay and one-off items, so recompute them on one basis.
+
+\qffield{Pitfalls} Leaving leases, pensions or minority interests out of EV while EBITDA excludes their costs. Comparing EV/EBITDA across firms with very different capital intensity. Treating EBITDA as free cash flow.
+
+\qffield{See also} \hyperref[meth:lease-reporting]{lease reporting}; \hyperref[meth:accounting-analysis-adjustments]{comparability adjustments}; \hyperref[meth:comparables-evaluation]{comparables}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Evaluating a stock with comparables: multiples for terminal values, over- and undervaluation from multiples, combining comparables with fundamentals, cross-border comparisons, momentum indicators, and means, medians and harmonic means]\label{meth:comparables-evaluation}
+\qffield{Statement} \emph{Averages.} Distributions of multiples are skewed to the right, so the mean exceeds the median. Use the median or percentiles, and treat outliers explicitly \citep[pp.~458--459]{investment-valuation-2012}. The harmonic mean, $n/\sum(1/m_j)$, equals the inverse of the average earnings yield. It gives less weight to high multiples. In the literature, the harmonic mean is the best statistic for P/E, and simple regressions are weighting schemes that do worse \citep[pp.~3--6]{optimal-multiples-2023}.
+
+\emph{Comparables with fundamentals.} Judge a stock against peers after controlling for differences in growth, risk and payout. Methods include subjective adjustment, modified multiples such as the PEG, and regressions \citep[pp.~463--465]{investment-valuation-2012}. A stock is undervalued if its multiple is below what its fundamentals and its peers' pricing justify. A gap explained by fundamentals is not mispricing.
+
+\emph{Terminal values from multiples.} A terminal value can be estimated as a multiple of the final year's EBITDA or earnings. That is consistent only if the multiple's implied growth, reinvestment and risk match the steady state assumed. Otherwise the DCF becomes a relative valuation with a discount (\hyperref[meth:forecast-horizon-steady-state]{terminal value}).
+
+\emph{Cross-border comparisons.} International peers differ in accounting standards, risk, growth and interest rates \citep[pp.~463, 477--479]{investment-valuation-2012}. Countries with higher real interest rates have lower P/Es, and countries with higher real growth or ROE have higher ones. Adjust earnings for differences in accounting before comparing (\hyperref[meth:enterprise-value-multiples]{leases and development}), and compare multiples relative to each market's fundamentals.
+
+\emph{Momentum indicators.} Some relative measures compare a stock's recent prices or earnings news with its own past or with the market \citep[pp.~124--125, 131--132]{investment-valuation-2012}:
+\begin{itemize}
+\item \emph{Earnings surprise}: actual less expected earnings. Its standardised version (SUE) divides by the standard deviation of past forecast errors. Returns follow the sign of the surprise, with drift before and after announcements.
+\item \emph{Relative strength}: a stock's return relative to the market's or its own past average. It assumes price momentum persists.
+\end{itemize}
+Damodaran notes that filter rules based on price trends do not beat buy-and-hold after costs. Earnings-momentum and price-momentum measures act as proxies for expected returns (p.~75).
+
+\qffield{Practice} \emph{Harbour against seven peers.} Their forward P/Es are 14, 16, 17, 18, 20, 22 and 35.
+\begin{itemize}
+\item \emph{Averages.} The mean is 20.29, the median 18.00 and the harmonic mean 18.80, the inverse of the average earnings yield. The mean is pulled up by Glenco.
+\item \emph{Applied to Harbour.} At the median, forward EPS of 0.7285 gives 13.11. At the harmonic mean it gives 13.70. At the peer median EV/EBITDA of 7.8 the value is 11.39 after the options, or 9.75 on development-adjusted EBITDA (\hyperref[meth:enterprise-value-multiples]{EV multiples}). On the P/E comparables Harbour looks cheap at 11.00; on EV/EBITDA it looks fairly priced, and expensive once development costs are put on the peers' basis.
+\item \emph{With fundamentals.} The peers' growth of 5 to 12 percent is all above Harbour's 4 percent. The regression predicts 9.50 times, about 6.92 a share. Justified multiples give 7.81 (\hyperref[meth:justified-multiples]{justified multiples}).
+\end{itemize}
+Comparables alone say undervalued; comparables controlled for growth say overvalued. The second is more credible, unless Harbour's growth will rise to the peers'.
+
+\emph{Terminal value check.} The \hyperref[meth:forecast-horizon-steady-state]{Harbour valuation}'s terminal value at end-2028, 1,384.68, is 5.33 times 2028 EBITDA. The peer multiple of 7.8 would give 2,024.92. At the same reinvestment that needs perpetual growth of about 4.18 percent, above the 2.5 percent assumed and above long-run nominal growth.
+
+\emph{Momentum.} Harbour beat a consensus EPS forecast of 0.15 for a quarter with 0.19. Past forecast errors have a standard deviation of 0.0212, so the SUE is 1.89. Over the last five months its shares rose 19.57 percent against the index's 5 percent, a relative strength of 1.139. These indicators describe sentiment; they do not change the estimate of value.
+
+\qffield{Conditions} The averages are only as good as the peer list. Cross-country P/E relations are from cross-sectional regressions in Damodaran's data and vary over time. Momentum evidence is sample-specific and returns net of costs are smaller.
+
+\qffield{Pitfalls} Using the mean of a skewed distribution. Applying a terminal multiple that implies growth inconsistent with the explicit forecast. Comparing multiples across countries without adjusting for accounting and interest rates. Treating momentum as a valuation input.
+
+\qffield{See also} \hyperref[meth:peer-group-selection]{peer groups}; \hyperref[meth:valuation-price-judgement]{judging value against price}.
+
+\end{qfmethod}

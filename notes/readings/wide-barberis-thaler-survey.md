@@ -27,3 +27,5 @@ Prepared on 2026-10-18 by the performance and planning batch (2026-10-18) from s
 ## Limits
 
 OCR text; page numbers are those printed on the working paper. Evidence mostly US before 2000.
+
+Update 2026-10-20: the belief biases on pp. 12-15 (overconfidence, representativeness, conservatism, confirmation, anchoring) are also cited in `meth:forecast-biases-remedies`; no new pages read.

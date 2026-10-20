@@ -1,0 +1,171 @@
+\section{Financial statement modelling}
+
+These entries build a sales-driven three-statement forecast that balances without a plug, address behavioural biases in forecasting, translate competitive position and inflation into prices, costs and margins, and choose the explicit forecast horizon and what follows it.
+
+\begin{qfexample}[A sales-based pro forma model for Harbour Tools, 2026--2028: drivers, linked statements, an explicit revolver rule, reconciled balances and sensitivity]\label{ex:harbour-pro-forma-model}
+\qffield{Statement} \emph{Design.} The forecast starts from the 2025 closing balances (\hyperref[ex:harbour-tools-statements]{case}) and projects revenue, costs, investment, working capital and financing from stated drivers. Each balance rolls forward as opening plus flows. Cash comes from the forecast cash-flow statement. The revolving facility draws or repays to keep cash at a minimum of 40. The balance sheet must then balance as a test, not by construction.
+
+The book's procedure sets cash as the balancing figure and then adjusts debt or equity to target liquidity and leverage \citep[pp.~494--498]{financial-statement-analysis-2009}. The design here makes that financing decision an explicit rule instead. Interest on the revolver uses the average balance, a circularity solved by iteration (nine passes to $10^{-12}$).
+
+\emph{Drivers} (base case):
+\begin{itemize}
+\item volume $+3$~percent a year; price $+3$, $+2.5$, $+2.5$~percent;
+\item variable cost per unit (2025: 4.8 against a price of 10.8) $+4$, $+3$, $+2.5$~percent; fixed production cash cost 151 rising 3~percent;
+\item depreciation 6.9~percent of opening gross PP\&E; capital expenditure 8.5~percent of revenue;
+\item development spending 2~percent of revenue, each year's spending available for use from 1~January of the next year and amortised straight-line over five years; the 31~December 2025 balance of 60 amortised straight-line over 2026--2030, 12 a year;
+\item selling and administrative cash cost 17.5~percent of revenue, with share-based expense $+5$~percent, pension service cost $+3$~percent and right-of-use depreciation 24;
+\item receivables 61 days of revenue, inventory 111 days of cost of sales, payables 94 days of variable cost;
+\item tax at 25~percent, with tax depreciation 20 above book each year and the restructuring paid in 2026;
+\item new leases of 25 a year, payments of 28; the term loan repaid at 25 a year; dividends of 40~percent of profit; pension contributions of 15; RCF interest at 6~percent.
+\end{itemize}
+
+\qffield{Notation} Every balance: closing $=$ opening $+$ additions $-$ reductions. Cash: closing $=$ opening $+$ CFO $+$ CFI $+$ CFF, with the RCF draw $=\max(-\text{RCF}_{\text{open}},\ 40-\text{cash before draw})$.
+
+\qffield{Conditions} Hypothetical inputs; the acquisition and downside scenarios are in the \hyperref[ex:integrated-credit-decision]{credit decision}. Interest on the term loan and leases uses opening balances. The model ignores currency and seasonality; the only intra-year timing is the acquisition's completion date.
+
+\emph{Asset schedules.} Each group of assets has its own useful life and starts its charge when available for use, as required for intangible assets \citep[IAS~38 para.~97]{eu-2023-1803-ias38} and for property, plant and equipment \citep[IAS~16 para.~55]{eu-2023-1803-ias16}. Each asset is charged once, until its carrying amount reaches zero. Development vintages are tracked separately from the opening balance. Acquired intangibles and acquired PP\&E have their own schedules from completion and are excluded from the development pool and from the organic depreciation rate. Charging a fixed fraction of the opening balance each year is a declining-balance rule: one fifth a year leaves $0.8^5=32.8$~percent of an isolated balance after five years.
+
+\qffield{Practice} \emph{Results} (base case, EUR millions).
+
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+ & 2026 & 2027 & 2028\\
+\midrule
+Revenue & 1{,}145.77 & 1{,}209.65 & 1{,}277.09\\
+Gross margin (\%) & 35.29 & 35.17 & 35.28\\
+Operating profit (EBIT) & 119.52 & 122.59 & 128.61\\
+Finance costs & 18.50 & 18.65 & 17.99\\
+Profit & 73.40 & 75.47 & 80.36\\
+Operating cash flow & 171.07 & 197.42 & 212.79\\
+Investing cash flow & $-120.31$ & $-127.01$ & $-134.09$\\
+Dividends & 29.36 & 30.19 & 32.14\\
+Development amortisation & 12.00 & 16.58 & 21.42\\
+RCF draw (closing balance) & 30.81 (70.81) & 9.52 (80.33) & 3.17 (83.50)\\
+Net debt$/$EBITDA & 1.41 & 1.27 & 1.10\\
+EBITDA$/$interest & 12.28 & 12.95 & 14.43\\
+Total assets $=$ liabilities $+$ equity & 1{,}340.52 & 1{,}397.13 & 1{,}449.36\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\emph{Reconciliation and interpretation.}
+\begin{itemize}
+\item The balance sheet balances in each year to rounding error without any plug, which tests the cash-flow statement.
+\item The 2026 operating cash flow absorbs the 12 restructuring payment.
+\item The RCF rises every year despite rising profit, because capital spending, lease and loan repayments and dividends exceed operating cash flow. By 2028 it is at 84 of a 100 facility in the base case. That is why Harbour seeks a larger facility.
+\end{itemize}
+
+\emph{Sensitivity.} A one-point lower EBIT margin cuts 2026 profit by 8.76 (\hyperref[meth:ratio-based-earnings-forecast]{ratio forecast}). A cost shock passed only half into price cuts 2026 EBIT to 109.63 (\hyperref[meth:competition-inflation-forecasting]{pass-through}).
+
+\qffield{Pitfalls} Using cash or debt as an unexplained plug, which hides errors and the funding need. Computing interest on closing balances without resolving the circularity. Ignoring payments already committed, such as provisions, lease payments and loan repayments. Pooling assets with different lives, or adding acquired assets to a pool that is also charged separately, which charges the same asset twice.
+
+\qffield{See also} \hyperref[meth:ratio-based-earnings-forecast]{ratio forecasts}; \hyperref[meth:forecast-horizon-steady-state]{horizon}; \hyperref[meth:accounting-change-effects]{IFRS~18 in the forecast years}.
+
+\end{qfexample}
+
+\begin{qfmethod}[Behavioural biases in analysts' forecasts and remedies: overconfidence, anchoring, conservatism, confirmation and representativeness, the planning fallacy and the outside view]\label{meth:forecast-biases-remedies}
+\qffield{Statement} \emph{Biases} (definitions in \hyperref[def:behavioural-biases]{behavioural biases}):
+\begin{itemize}
+\item \emph{overconfidence}: intervals too narrow; 98~percent intervals contain the truth only about 60~percent of the time \citep[p.~12]{wide-barberis-thaler-survey};
+\item \emph{anchoring}: too little adjustment from a starting value, such as last year's numbers or management guidance (pp.~14--15);
+\item \emph{conservatism}: too little weight on new evidence (p.~14);
+\item \emph{confirmation}: seeking or crediting only evidence for an existing view (p.~14);
+\item \emph{representativeness}: extrapolating a short record (pp.~13--14).
+\end{itemize}
+Kahneman's \emph{planning fallacy} names forecasts ``unrealistically close to best-case scenarios'' that ignore the statistics of similar cases. He cites a study of rail projects from 1969 to 1998 in which passenger forecasts were overestimated by 106~percent on average \citep[chap.~23, ``The Planning Fallacy'']{thinking-fast-slow-2011}.
+
+\emph{Analysts' context.} Valuation inputs are subjective and coloured by prior positions and institutional incentives. Buy recommendations have outnumbered sells by about ten to one, reflecting access, client and banking pressures \citep[pp.~2--3]{investment-valuation-2012}. Analysts' earnings forecasts beat time-series models one or two quarters ahead, but the advantage fades with horizon and is small for long-term growth, which past growth largely drives. Analysts' revisions are highly correlated (pp.~282--284).
+
+\emph{Remedies:}
+\begin{itemize}
+\item take the \emph{outside view}, or reference-class forecasting: identify a reference class, use its statistics as the baseline, then adjust for specifics \citep[chap.~23, ``Mitigating the Planning Fallacy'']{thinking-fast-slow-2011};
+\item set intervals from the distribution of past forecast errors;
+\item record views independently before discussion and run a premortem (\hyperref[def:behavioural-biases]{remedies});
+\item avoid public positions and stakes in the answer before the analysis \citep[p.~2]{investment-valuation-2012};
+\item write down the evidence that would change the view, and track forecast accuracy.
+\end{itemize}
+
+\qffield{Notation} Coverage of a nominal $1-\alpha$ interval built with standard deviation $s$ when the true one is $\sigma$: $2\Phi(z_{1-\alpha/2}\,s/\sigma)-1$.
+
+\qffield{Conditions} Laboratory and field evidence on biases is summarised from the sources cited; their magnitude varies with incentives and feedback. The simulation below is synthetic.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item An analyst builds 80~percent intervals with half the true dispersion of forecast errors. Coverage is $2\Phi(1.2816\times0.5)-1=47.8$~percent, and 200{,}000 simulated errors give 48.0~percent.
+\item Setting the interval at the 10th and 90th percentiles of a reference class of 5{,}000 past errors restores coverage to 80.9~percent.
+\item For Harbour, an inside view of a full return to the 11~percent 2024 margin in 2026 is anchored on the pre-restructuring year. The base case assumes 10.43~percent, and the pass-through analysis spans EBIT margins of 7.45 to 11.56~percent (\hyperref[meth:competition-inflation-forecasting]{competition}).
+\end{itemize}
+
+\qffield{Pitfalls} Equating a more detailed model with a more accurate one. Updating too little after a disappointing quarter, or too much after one good one. Using management guidance as the baseline instead of the reference class.
+
+\qffield{See also} \hyperref[def:behavioural-biases]{behavioural biases}; \hyperref[meth:tactical-shifts-behavioural-biases]{biases in allocation}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Competitive position, prices and costs: the five competitive forces, cost pass-through, and forecasting sales and costs under inflation and deflation]\label{meth:competition-inflation-forecasting}
+\qffield{Statement} \emph{Industry structure.} Porter's five forces (rivalry, buyers, suppliers, potential entrants and substitutes) determine how the value an industry creates is divided, and so its medium- and long-run profitability \citep[pp.~2--3, 10]{five-competitive-forces-2008}.
+\begin{itemize}
+\item The threat of entry caps prices or forces investment (p.~3).
+\item Powerful suppliers capture value through higher prices and squeeze industries that cannot pass on cost increases (p.~6).
+\item Powerful, price-sensitive buyers force prices down or demand more service at higher cost (p.~7).
+\item Substitutes put a ceiling on prices (p.~8).
+\item Price rivalry, which transfers profit to customers, is most likely with near-identical products and low switching costs, high fixed and low marginal costs, lumpy capacity additions, or perishable output (p.~9).
+\end{itemize}
+Growth is not attractiveness: fast growth can strengthen suppliers or attract entrants (p.~10). Sales forecasts should consider the competitive landscape and its effect on the ability to raise prices \citep[pp.~492--493]{financial-statement-analysis-2009}.
+
+\emph{Forecasting under inflation.} Revenue growth is volume growth compounded with price growth. Costs are projected by component with their own inflation (materials, labour, overhead). The margin then depends on \emph{pass-through}, the share of cost inflation recovered in price, which the five forces govern. Fixed costs create operating leverage in both directions. In deflation, revenue falls while fixed or contractual costs may not, so profit falls proportionately more. Nominal growth, discount rates and the currency must be consistent: a nominal forecast includes expected inflation, and a high-inflation currency implies a higher nominal growth rate \citep[p.~307]{investment-valuation-2012}.
+
+\qffield{Notation} Nominal growth $=(1+g_{\text{volume}})(1+\pi_{\text{price}})-1$. Pass-through $\theta$: price inflation $=\theta\times$ unit-cost inflation for a uniform shock. Contribution margin $=(p-c)/p$.
+
+\qffield{Conditions} Pass-through rates are scenario inputs informed by industry analysis, not estimates from data here. Volume responses to price are ignored in the illustration.
+
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-pro-forma-model]{Harbour}, 2026). Harbour faces large retail buyers and close substitutes from rivals: strong buyer power and rivalry suggest pass-through below one. Variable unit costs rise 6~percent:
+\begin{itemize}
+\item full pass-through (price $+6$~percent) keeps the 55.56~percent contribution margin and lifts EBIT to 136.36 (gross margin 36.28~percent);
+\item half pass-through gives EBIT of 109.63 (34.42~percent);
+\item none gives 82.90 (32.46~percent).
+\end{itemize}
+The base case (price $+3$, cost $+4$) gives 119.52. Under 2~percent deflation of both price and variable cost, with fixed costs flat, revenue falls 2.00~percent but EBIT falls 6.77~percent. In 2027, nominal growth of 5.575~percent is $1.03\times1.025-1$.
+
+\qffield{Pitfalls} Applying a single inflation rate to revenue and all costs. Assuming pass-through equal to one in a buyer-power industry. Mixing real growth with nominal discount rates.
+
+\qffield{See also} \hyperref[meth:income-statement-ratios]{margins}; \hyperref[meth:forecast-horizon-steady-state]{horizon}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Choosing the explicit forecast horizon and projecting beyond it: steady state, competitive advantage periods, growth and reinvestment consistency, and terminal values]\label{meth:forecast-horizon-steady-state}
+\qffield{Statement} The explicit horizon covers the period the analyst can forecast with the most confidence, typically about five years, and must end when the company has reached a steady state that can be projected mechanically \citep[p.~501]{financial-statement-analysis-2009}. The length of high growth depends on three things \citep[pp.~308--309]{investment-valuation-2012}:
+\begin{itemize}
+\item the firm's size relative to its market;
+\item its current growth and excess returns;
+\item above all, the magnitude and sustainability of competitive advantages and barriers to entry.
+\end{itemize}
+Excess returns attract competition and fade, so high growth that creates value ends; the ``competitive advantage period'' names that span.
+
+\emph{Beyond the horizon.}
+\begin{itemize}
+\item Stable growth cannot exceed the economy's long-run growth, is nominal if the cash flows are, and should generally not exceed the risk-free rate (p.~307).
+\item Stable firms have average risk, more debt, lower excess returns and lower reinvestment (p.~310).
+\item Reinvestment must be consistent with growth: reinvestment rate $=g/\text{RONIC}$, the return on new invested capital (p.~313).
+\item If RONIC equals the cost of capital, growth adds no value.
+\end{itemize}
+
+\qffield{Notation} Terminal value at $T$: $\text{TV}_T=\text{NOPAT}_{T+1}(1-g/\text{RONIC})/(\text{WACC}-g)$. With $\text{RONIC}=\text{WACC}$, $\text{TV}_T=\text{NOPAT}_{T+1}/\text{WACC}$. That is independent of $g$ only when $\text{NOPAT}_{T+1}$ is held fixed. If instead $\text{NOPAT}_T$ is fixed and $\text{NOPAT}_{T+1}=\text{NOPAT}_T(1+g)$, then $\text{TV}_T=\text{NOPAT}_T(1+g)/\text{WACC}$ rises with $g$. The growth into year $T+1$ needs reinvestment of $g\,\text{NOPAT}_T/\text{RONIC}$ in year $T$; deducting it leaves $\text{NOPAT}_T/\text{WACC}$ at $T$.
+
+\qffield{Conditions} The terminal value typically dominates value, so its assumptions need the same scrutiny as the explicit years. Negative stable growth is possible for declining businesses (p.~308). Free cash flow, NOPAT and the enterprise-to-equity bridge must use one set of conventions: whatever is treated as a claim (leases, pension deficits, outstanding options) is deducted once from enterprise value, and its flows stay out of FCFF (\hyperref[meth:free-cash-flow-coverage]{free cash flow}).
+
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-pro-forma-model]{Harbour}, valuation at 31~December 2025, year-end cash flows, WACC 8~percent).
+\begin{itemize}
+\item \emph{Cash flows.} Valuation FCFF for 2026--2028 is 31.93, 50.95 and 57.95, with leases as debt (right-of-use additions of 25 a year as reinvestment), share-based expense as a cost and the pension deficit as debt. Operating cash flow plus after-tax interest less capital spending would give 63.19, 83.00 and 90.84. The difference includes lease additions with a present value of 64.43 and share-based expense with a present value of 25.53.
+\item \emph{Terminal value.} NOPAT for 2028 is $128.61-0.25\times(128.61+10.42)=93.85$, since share-based expense is not deductible. With steady-state growth of 2.5~percent and RONIC of 12~percent, $\text{TV}_{2028}=1{,}384.68$ and enterprise value is 1{,}218.45, of which the terminal value is 90.2~percent. Extending the explicit forecast to 2040 under the same steady-state rule gives the same value, as it must. The accounting cash flows above, with share-based expense deducted for tax, would give 1{,}331.49: 113 too much.
+\item \emph{Value-neutral growth.} With RONIC equal to WACC and 2029 NOPAT fixed at 96.20, $\text{TV}_{2028}$ is 1{,}202.48, 12.5 times that NOPAT, for growth of 0, 2 or 4~percent alike. With 2028 NOPAT fixed instead, the terminal value is 1{,}173.16, 1{,}196.62 and 1{,}220.08; less the 2028 reinvestment that each growth rate needs, it is 1{,}173.16 in every case.
+\item \emph{Equity.} $1{,}218.45+37.54-250-40-65-36.12-9.28=855.59$: enterprise value plus cash, less the term loan, RCF, lease liabilities, after-tax pension deficit and the 5 million vested options valued as options (\hyperref[meth:share-based-compensation-modelling]{share-based pay}). That is 8.49 per share on 100.75 million shares.
+\item \emph{A horizon that ends too early.} Capitalising 2028's FCFF at its 5.57~percent revenue growth gives a terminal value of 2{,}522.86, against 1{,}384.68 at steady state. In 2028 Harbour reinvests 38.3~percent of NOPAT against the steady-state 20.8~percent ($2.5/12$), and its growth still contains price recovery and above-trend volume. Three years is too short unless those are assumed to end.
+\end{itemize}
+
+\qffield{Pitfalls} Ending the horizon while growth, margins or reinvestment are still changing. Assuming high growth in perpetuity with low reinvestment. Using a stable growth rate above the economy's nominal growth or in a different currency from the cash flows.
+
+\qffield{See also} \hyperref[meth:free-cash-flow-coverage]{free cash flow}; \hyperref[meth:competition-inflation-forecasting]{competitive advantage}.
+
+\end{qfmethod}

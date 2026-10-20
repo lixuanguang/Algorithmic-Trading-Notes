@@ -1,0 +1,189 @@
+\section{Capital structure and the cost of capital}
+
+\begin{qfmethod}[The weighted-average cost of capital: market-value weights, after-tax cost of debt, cost of equity and preferred stock, what the WACC measures, and the factors that move it]\label{meth:wacc-calculation}
+\qffield{Statement} The weighted-average cost of capital is the return investors require on the firm's operating assets as a whole. Each source of capital's required return is weighted by its share of total market value, and the cost of debt is taken after tax because interest is deductible \citep[pp.~137, 144--148]{applied-corporate-finance-2014}:
+\[ \mathrm{WACC}=\frac{E}{V}k_e+\frac{D}{V}k_d(1-t)+\frac{P}{V}k_p,\qquad V=E+D+P. \]
+\begin{itemize}
+\item \emph{Cost of debt.} $k_d$ is the rate at which the firm could borrow long-term today, the risk-free rate plus a default spread, and $t$ is the marginal tax rate.
+\item \emph{Cost of preferred stock.} For a straight perpetual preferred, $k_p$ is the preferred dividend over its market price; it lies between the pre-tax cost of debt and the cost of equity and gives no tax saving (p.~144).
+\item \emph{Cost of equity.} $k_e$ usually comes from the CAPM (\hyperref[meth:required-return-on-equity]{required return}).
+\end{itemize}
+The weights must be market values. Equity is shares outstanding at today's price, including all classes, and equity options are part of equity. Debt includes all interest-bearing debt and leases, with book debt revalued as a bond at the current rate where it differs materially from market. Book weights are backward-looking and usually understate the weight of equity, and hence the WACC (pp.~146--148).
+
+The WACC is the right discount rate for free cash flow to the firm, cash flows before any financing payment. It applies to new investment only if the investment has the firm's average risk and is financed in the firm's target proportions (\hyperref[meth:capital-project-evaluation]{projects}).
+
+\emph{Factors.} The WACC moves with factors outside and inside the firm:
+\begin{itemize}
+\item \emph{Market factors}: interest rates and inflation through the risk-free rate, the equity risk premium, credit spreads, and tax rates (pp.~88--105).
+\item \emph{Company factors}: business risk and operating leverage in the unlevered beta (pp.~116--117), financial leverage in the levered beta and the default spread, and the debt weight.
+\end{itemize}
+Raising the debt weight replaces expensive equity with cheaper after-tax debt, but raises the cost of both. Whether the WACC falls depends on which effect dominates (\hyperref[mod:capital-structure-theory]{capital structure}).
+
+\qffield{Practice} \emph{Harbour Tools at 31 December 2025} (\hyperref[ex:harbour-tools-statements]{case}). Assumptions:
+\begin{itemize}
+\item share price EUR~11.00 on 100.75 million shares, 1,108.25, plus the 5 million vested options at their value at that price, 17.94 (strike 8, three years, the inputs of the valuation's equity bridge), giving equity 1,126.19;
+\item debt: term loan 250, RCF 40 and leases 65, total 355;
+\item risk-free rate 3.0 percent, equity premium 5.5 percent;
+\item a peer unlevered beta of 0.93, a pre-tax cost of debt of 5.2 percent (its BBB bond yield, \hyperref[meth:cost-of-debt-equity-estimation]{cost of debt}) and a 25 percent tax rate.
+\end{itemize}
+
+Calculation:
+\begin{itemize}
+\item $D/E=355/1{,}126.19=31.52$ percent; levered beta $0.93\times(1+0.75\times0.3152)=1.1499$.
+\item $k_e=3.0+1.1499\times5.5=9.32$ percent; after-tax $k_d=5.2\times0.75=3.90$ percent.
+\item Weights are 76.03 percent equity and 23.97 percent debt, so $\mathrm{WACC}=0.7603\times9.32+0.2397\times3.90=8.02$ percent.
+\end{itemize}
+Leaving the options out of equity gives $k_e$ of 9.34 percent and the same WACC to two decimals; the point is consistency with the bridges, which count the options as a claim (\hyperref[def:price-value-indicators]{EV}).
+This supports the 8 percent used in the \hyperref[meth:forecast-horizon-steady-state]{Harbour valuation}.
+
+Alternatives:
+\begin{itemize}
+\item Book weights, with equity at 647.38, put debt at 35.42 percent and give 7.40 percent. That is 0.62 points lower, which would raise the valuation by more than the cash flows justify.
+\item A one-point rise in the risk-free rate, holding spreads, beta and weights, adds 0.94 points to the WACC.
+\end{itemize}
+The after-tax pension deficit of 36.12 is deducted as a debt-like claim in the equity bridge but is not in these weights. Counting it as debt at the after-tax cost of debt gives 8.017 percent against 8.024 percent; a fuller treatment would use the pension's own cost.
+
+\qffield{Conditions} The weights, rates and tax rate must refer to the same date and the same capital structure as the cash flows. A firm whose structure is expected to change should use target weights, or a year-by-year WACC (p.~148). The marginal tax rate applies only if the firm has taxable income to shield. Using the market price to set the weights assumes the market value is a reasonable estimate; with Harbour's estimated value of 8.49 instead of 11.00, equity including options would be 864.87 and the debt weight about 29 percent.
+
+\qffield{Pitfalls} Using book values or the coupon rate on old debt. Using the effective or average tax rate. Forgetting leases and other debt-like claims, or deducting them in the equity bridge while omitting them from the weights. Applying the firm's WACC to a project of different risk. Treating short-term debt as cheaper capital for the hurdle rate (pp.~139--140).
+
+\qffield{See also} \hyperref[meth:cost-of-debt-equity-estimation]{costs of debt and equity}; \hyperref[mod:capital-structure-theory]{capital structure theory}; \hyperref[meth:capital-structure-benchmarking]{benchmarking}; \hyperref[meth:required-return-on-equity]{CAPM cost of equity}.
+
+\end{qfmethod}
+
+\begin{qfmodel}[Capital structure theory: Modigliani--Miller propositions with and without taxes, the cost of equity under leverage, the trade-off between tax shields and distress and agency costs, pecking order and signalling, and optimal and target structures]\label{mod:capital-structure-theory}
+\qffield{Statement} \emph{Modigliani and Miller (1958)}, assuming perfect markets with no taxes:
+\begin{itemize}
+\item \emph{Proposition~I.} A firm's market value is independent of its capital structure; it equals expected operating income capitalised at the rate for its risk class, $V_j=(S_j+D_j)=\bar X_j/\rho_k$, so the average cost of capital is independent of leverage and equals $\rho_k$ \citep[p.~268, eqs.~(3)--(4)]{modigliani-miller-1958}. The proof is arbitrage: if two firms with identical operating income were priced differently, an investor could create the same income stream more cheaply through personal borrowing (pp.~268--271).
+\item \emph{Proposition~II.} The expected return on equity rises linearly with the debt-to-equity ratio, $i_j=\rho_k+(\rho_k-r)D_j/S_j$ (p.~271, eq.~(8)). Cheaper debt is offset exactly by riskier equity.
+\end{itemize}
+Damodaran states the assumptions: no taxes, no issuance costs, no bankruptcy costs and no agency costs. Investment and financing decisions are then separable \citep[pp.~320--325]{applied-corporate-finance-2014}.
+
+\emph{With corporate taxes.} Interest is deductible, so debt creates a tax shield. For perpetual debt its present value is $tD$ and $V_L=V_U+tD$. Equity's required return becomes $k_e=\rho+(\rho-k_d)(1-t)D/E$. Without offsetting costs the optimum would be all debt (pp.~310--311, 322--323). Personal taxes on interest and equity income reduce the advantage: with Miller's 1977 argument the gain is $[1-(1-t_c)(1-t_e)/(1-t_d)]D$ (pp.~323--324).
+
+\emph{Trade-off.} Debt's benefits are the tax shield and the discipline it imposes on managers with free cash flow (Jensen). Its costs are expected bankruptcy costs, the probability of distress times its direct and indirect costs; agency costs between shareholders and lenders; and lost financial flexibility (pp.~310--319). The direct costs are estimated at about 5 percent of firm value at bankruptcy. Indirect costs, such as lost customers and suppliers, are larger for firms whose products need long-term service. Expected distress costs are higher for firms with volatile cash flows and intangible assets that are hard to sell or monitor.
+
+\emph{Pecking order.} Managers know more than investors, so issuing equity signals that shares are overvalued. Firms prefer retained earnings, then debt, then equity, and undervalued firms may forgo good projects rather than issue (Myers and Majluf). Surveys of managers find this ranking \citep[pp.~329--331]{applied-corporate-finance-2014}.
+
+\emph{Optimal and target structures.} An optimum exists when the marginal benefit of debt equals its marginal cost (pp.~326--327). In practice firms set a target range and drift around it as profits, investment and share prices move. Evidence on leverage changes is consistent with firms staying below their optimum: leverage-increasing actions earn positive announcement returns and decreasing ones negative (Smith 1986, p.~327).
+
+\qffield{Practice} \emph{Original.} Expected operating income is 100 a year in perpetuity, the unlevered required return $\rho$ is 10 percent and debt of 400 costs 5 percent.
+\begin{itemize}
+\item \emph{No taxes.} $V=1{,}000$ whatever the leverage. With debt of 400, equity is 600 and earns $(100-20)/600=13.33$ percent $=10+(10-5)\times400/600$. The WACC stays at 10 percent.
+\item \emph{Homemade leverage.} An investor who buys 10 percent of an otherwise identical unlevered firm with 40 of personal borrowing at 5 percent receives $0.1\times100-0.05\times40=8$, the same as 10 percent of the levered firm's equity income, $0.1\times80$. The two positions also cost the same, $100-40=60$ against $0.1\times600$, so the levered firm's equity cannot trade at a premium without an arbitrage.
+\item \emph{Corporate tax at 25 percent.} $V_U=75/0.10=750$ and $V_L=750+0.25\times400=850$. Equity is worth 450 and earns $60/450=13.33$ percent $=10+5\times0.75\times400/450$. The WACC is $75/850=8.82$ percent.
+\item \emph{Trade-off.} Let the present value of expected distress costs be $200(D/V_U)^2$. Then $V(D)=750+0.25D-200(D/750)^2$ peaks where $0.25=400D/750^2$, at $D=351.56$, with $V=793.95$.
+\end{itemize}
+Beyond that, each extra unit of debt costs more in expected distress than it saves in tax.
+
+\qffield{Conditions} The propositions hold under their assumptions: perfect and frictionless markets, investors able to borrow on the firm's terms, fixed investment policy and, for the tax version, permanent debt and taxable profits. They are a benchmark. They show that financing changes value only through taxes, costs, incentives or information. The trade-off curve above is illustrative; real distress costs are hard to estimate.
+
+\qffield{Pitfalls} Concluding from Proposition~I that capital structure never matters, or from the tax version that more debt is always better. Holding the cost of equity constant as leverage rises. Forgetting that a tax shield is worth only as much as the profits it shelters. Reading a firm's debt ratio as its target when it reflects recent share-price moves.
+
+\qffield{See also} \hyperref[meth:wacc-calculation]{WACC}; \hyperref[meth:capital-structure-benchmarking]{benchmarking capital structure}; \hyperref[def:stakeholder-claims]{lender and shareholder conflicts}.
+
+\end{qfmodel}
+
+\begin{qfmethod}[Estimating the costs of debt and equity: yields to maturity, ratings and synthetic ratings for debt; historical, implied and survey equity risk premiums; CAPM, multifactor, build-up and bond-yield-plus-premium models; and public against private companies]\label{meth:cost-of-debt-equity-estimation}
+\qffield{Statement} \emph{Cost of debt.} The pre-tax cost of debt is the rate at which the firm could borrow long-term now. Damodaran gives three routes, in order of preference \citep[pp.~137--141]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item the yield to maturity on the firm's traded, liquid, straight long-term bonds;
+\item the risk-free rate plus the default spread for its bond rating;
+\item for unrated firms, a \emph{synthetic rating} from financial ratios, usually interest coverage.
+\end{itemize}
+A synthetic rating relies on one year's income and one ratio, so average the income and check other ratios. The book rate, interest expense over book debt, reflects past conditions and should not be used. Debt betas are inappropriate because debt payoffs are asymmetric. All debt, including leases, should be costed at the long-term rate.
+
+\emph{Equity risk premium.} Three approaches \citep[pp.~94--105]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item \emph{Surveys} of investors, managers or academics. They are volatile, reactive and short-term, with no reasonableness constraint.
+\item \emph{Historical} excess returns of stocks over government securities. These range widely with the period, the risk-free instrument and the averaging, and carry large standard errors; they assume risk aversion and risk have not changed.
+\item \emph{Implied} premiums solved from current prices and expected cash flows. With a stable-growth model the required return is the cash yield plus growth. Damodaran's November 2013 S\&P~500 example used normalised cash flows including buybacks.
+\end{itemize}
+The approaches diverge because historical premiums rise as prices rise while implied premiums fall. Damodaran suggests the current implied premium for valuations meant to be market-neutral, and a long-term average if one believes premiums revert (pp.~104--105). The premium must be paired with the risk-free rate it was measured against (\hyperref[meth:required-return-on-equity]{required return}).
+
+\emph{Required return on equity.} Several models:
+\begin{itemize}
+\item \emph{CAPM}: $r_f+\beta\,\mathrm{ERP}$, with a bottom-up beta from comparable firms, unlevered, cash-corrected and relevered at the firm's leverage. A bottom-up beta needs no price history and averages out estimation error (pp.~119--123).
+\item \emph{Multifactor models} add premiums for size, value or other factors (\hyperref[mod:multifactor-apt]{multifactor models}).
+\item \emph{Build-up}: $r_f+\mathrm{ERP}+$ size premium $+$ company-specific premium, common for private firms. The small-firm premium was about 3 percent over 1926--2012 but volatile, absent since the 1980s and concentrated in the smallest firms (pp.~117--118).
+\item \emph{Bond yield plus risk premium}: the firm's own long-term bond yield plus a judgemental premium, typically 3 to 5 points.
+\end{itemize}
+
+\emph{Private companies.} A private owner is often undiversified and bears total risk, not just market risk. Damodaran's total beta is the market beta divided by the correlation of comparable firms with the market. In his Bookscape example a market beta of 0.8558 and correlation of 0.5099 give a total beta of 1.6783 (pp.~135--136). Use a market beta if the likely buyer is diversified, such as a listed acquirer or an IPO; use total beta, or a higher premium, for a sale to an undiversified owner. Private firms also pay higher spreads, and their debt ratio should come from the industry rather than book values.
+
+\qffield{Practice} \emph{Harbour, with the inputs of the \hyperref[meth:wacc-calculation]{WACC} entry.}
+\begin{itemize}
+\item \emph{Debt.} Its 4 percent bond due 2030, priced at 94.83, yields 5.20 percent; its BBB rating implies $3.0+2.2=5.2$ percent on an illustrative spread schedule. A synthetic rating from 2025 operating profit before the restructuring charge, 111, over interest at 5.2 percent on 355 (18.46), gives coverage of 6.01. On that schedule this is BBB, confirming 5.2 percent. The book rate, 2025 interest over average debt, is lower because the debt was arranged when rates were lower.
+\item \emph{Equity.} Methods give:
+\begin{itemize}
+\item CAPM: 9.32 percent;
+\item a three-factor model with market loading 1.10 and loadings of 0.30 and 0.20 on premiums of 2 and 3 points: 10.25 percent;
+\item build-up with a 2-point size and 1-point specific premium: 11.50 percent;
+\item bond yield plus a 4-point premium: 9.20 percent.
+\end{itemize}
+The spread of 2.3 points is a reminder that the estimate is a range.
+\item \emph{A private competitor}, Kestrel, has a debt-to-equity ratio of 50 percent. Its relevered market beta is $0.93\times(1+0.75\times0.5)=1.2788$, giving $k_e=10.03$ percent. If its correlation with the market is 0.45, its total beta is 2.8417 and $k_e=18.63$ percent. The first suits a sale to a listed acquirer, the second the value to its undiversified founder.
+\end{itemize}
+
+\emph{Implied premium.} An index whose expected cash yield, dividends plus buybacks, is 4.2 percent and whose cash flows grow at 4 percent has an expected return of 8.2 percent. Against a 4.0 percent government yield, the implied premium is 4.2 percent.
+
+\qffield{Conditions} The spread schedule, factor loadings and premiums in the example are illustrative inputs. Rating spreads and the implied premium change daily. Damodaran's figures cited above are from 2013--2014. Size and company-specific premiums in build-up models are judgements and should be justified, not added by habit.
+
+\qffield{Pitfalls} Using the coupon or book rate as the cost of debt. Using a promised yield on distressed debt as its expected return: it overstates the cost because it ignores expected default losses. Pairing a premium with a different risk-free rate from the one it was measured against. Using a regression beta for a firm whose business or leverage has changed. Adding size and specific premiums to a total-beta estimate, which double counts.
+
+\qffield{See also} \hyperref[meth:required-return-on-equity]{CAPM cost of equity}; \hyperref[meth:wacc-calculation]{WACC}; \hyperref[meth:capital-structure-benchmarking]{debt capacity}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Benchmarking capital structure: top-down and bottom-up drivers of leverage and the cost of capital, the cost-of-capital approach to an optimal debt ratio, and comparison with peers]\label{meth:capital-structure-benchmarking}
+\qffield{Statement} \emph{Drivers.} Top-down factors set the environment:
+\begin{itemize}
+\item interest rates and credit spreads;
+\item tax rates and the deductibility of interest;
+\item the depth of bond and loan markets;
+\item legal protection of creditors;
+\item country risk.
+\end{itemize}
+Bottom-up factors are company-specific \citep[pp.~310--319]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item stable cash flows support more debt;
+\item tangible, saleable assets support more debt;
+\item a high marginal tax rate favours debt, while non-debt tax shields reduce its benefit;
+\item intangible-heavy and R\&D-intensive businesses support less;
+\item growth opportunities that need flexibility support less.
+\end{itemize}
+Cross-sectional evidence fits these: debt ratios fall with earnings volatility, advertising and R\&D \citep[pp.~326--327]{applied-corporate-finance-2014}.
+
+\emph{The cost-of-capital approach.} Value is the present value of free cash flow to the firm at the WACC. If cash flows do not change with leverage, the debt ratio that minimises the WACC maximises value (pp.~343--344). For each debt ratio:
+\begin{enumerate}
+\item relever the beta and compute the cost of equity;
+\item find interest coverage at that debt level, map it to a rating and spread, and so to the cost of debt;
+\item weight the two at that ratio.
+\end{enumerate}
+Damodaran's Disney example gives a current WACC of 7.81 percent (pp.~348--350). Adjusted present value gives similar answers (pp.~381--382).
+
+\emph{Peer comparison.} Comparing with the industry average assumes the peers are comparable and, on average, right. Both are questionable. Use market-value ratios on the same definition, net or gross of cash, and control for differences such as profitability and tax rate, for example with a regression across firms (pp.~382--385). Firms herd towards peer ratios, so the industry average is not evidence of an optimum.
+
+\qffield{Practice} \emph{Harbour.} Hold firm value at 1,481.19 (equity including options, plus debt) and normalised operating profit at 111. Use an illustrative coverage-to-spread schedule calibrated so that Harbour's current coverage gives its BBB spread of 2.2 points; an unlevered beta of 0.93; and a 25 percent tax rate. The WACC by debt-to-value ratio:
+
+\begin{center}\small
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Debt / value & 0\% & 20\% & 25\% & 30\% & 40\% & 50\% \\
+Pre-tax cost of debt & 3.7\% & 3.9\% & 5.2\% & 6.8\% & 15.0\% & 18.0\% \\
+WACC & 8.12\% & 7.84\% & 8.02\% & 8.36\% & 10.90\% & 12.73\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The minimum is near 20 percent. Harbour's 23.97 percent is close to it, and more debt quickly worsens its rating because its operating profit is modest relative to its market value. The lenders' 2.50 times net debt to EBITDA covenant would bind just above 35 percent: net debt to EBITDA is 1.33 at 20 percent, 2.09 at 30 percent and 2.47 at 35 percent.
+
+Five listed peers have debt-to-value ratios of 18, 22, 28, 31 and 35 percent, a median of 28 percent. That alone would suggest room for more debt. The cost-of-capital analysis says otherwise because Harbour's profitability is below the peers'. The comparison should be on coverage and debt to EBITDA, not on the debt ratio alone.
+
+\qffield{Conditions} The approach assumes operating cash flows do not change with leverage. In practice, distress hurts sales and margins, which the WACC curve misses. The spread schedule is illustrative, and the curve is only as good as the rating mapping. A firm should also hold back debt capacity for flexibility and for acquisitions such as Harbour's bolt-on (\hyperref[ex:restructuring-valuation-effects]{restructuring effects}).
+
+\qffield{Pitfalls} Recommending the peer average without checking comparability. Holding the cost of debt fixed as leverage rises. Using book values for the ratios. Ignoring covenants, rating triggers and the cost of lost flexibility.
+
+\qffield{See also} \hyperref[mod:capital-structure-theory]{capital structure theory}; \hyperref[meth:wacc-calculation]{WACC}; \hyperref[ex:integrated-credit-decision]{Harbour credit decision}.
+
+\end{qfmethod}

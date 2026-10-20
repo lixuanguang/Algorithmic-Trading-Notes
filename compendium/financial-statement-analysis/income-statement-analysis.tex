@@ -1,0 +1,187 @@
+\section{Income-statement analysis}
+
+These entries cover when revenue and expenses are recognised, how capitalisation shifts expense between periods and cash-flow sections, how non-recurring items and accounting changes are reported and adjusted, how earnings per share is computed, and how a common-size income statement and its ratios are used to evaluate performance.
+
+\begin{qfmethod}[Revenue recognition: the contract-based model of IFRS~15 and Topic~606, timing and measurement choices, contract balances, gross versus net reporting, and implications for analysis]\label{meth:revenue-recognition-analysis}
+\qffield{Statement} \emph{Core principle.} Revenue depicts the transfer of promised goods or services to customers at the amount of consideration to which the entity expects to be entitled \citep[IFRS~15 para.~2]{eu-2023-1803-ifrs15}. The model has five steps:
+\begin{enumerate}
+\item identify a contract: approved, with identifiable rights and payment terms, commercial substance, and collection of the consideration probable (para.~9);
+\item identify each distinct good or service as a performance obligation (para.~22);
+\item measure the transaction price, excluding amounts collected for third parties (para.~47); variable consideration (discounts, rebates, refunds, bonuses, penalties) is estimated (paras.~50--51) and included only to the extent that it is highly probable that a significant reversal will not occur (para.~56);
+\item allocate the price to performance obligations by relative stand-alone selling price (paras.~73--74);
+\item recognise revenue when or as control passes (para.~31): over time if the customer consumes the benefit as the entity performs, controls the asset as it is created, or the asset has no alternative use and the entity has an enforceable right to payment for performance to date (para.~35); otherwise at a point in time, judged by indicators such as a present right to payment, legal title, physical possession, risks and rewards, and acceptance (para.~38).
+\end{enumerate}
+
+\emph{Balances and disclosures.} A contract liability arises when the customer pays before performance and a contract asset when performance precedes an unconditional right to payment; an unconditional right is a receivable (paras.~105--108). Incremental costs of obtaining a contract that are expected to be recovered are capitalised (para.~91). Entities disaggregate revenue by factors affecting its nature, timing and uncertainty, and disclose the price allocated to unsatisfied obligations with its expected timing (paras.~114 and~120). An entity that controls a good before transfer is a \emph{principal} and reports gross revenue; an agent reports only its fee or commission (paras.~B35--B37).
+
+\emph{US GAAP.} Topic~606 was developed jointly with IFRS~15 and reaches the same conclusions on all requirements with minor differences. The word ``probable'' in the collectability threshold has different meanings in the two frameworks. Topic~606 prohibits reversing impairment of capitalised contract costs, which IFRS~15 requires. Interim disclosure requirements also differ \citep[pp.~10--11]{us-revenue-2014}. Public business entities apply it to annual periods beginning after 15~December 2017, after a one-year deferral \citep[p.~1]{us-revenue-deferral-2015}; IFRS~15 applies from 1~January 2018 \citep[IFRS~15 para.~C1]{eu-2023-1803-ifrs15}.
+
+\qffield{Notation} SSP stand-alone selling price; TP transaction price; allocation to obligation $j$: $\mathrm{TP}\times \mathrm{SSP}_j/\sum_i\mathrm{SSP}_i$.
+
+\qffield{Conditions} IFRS~15 as adopted in the EU in 2023. The constraint's ``highly probable'' has no numerical threshold in the standard; the 90~percent below is an illustration. Licences, contract modifications and repurchase agreements were not reviewed here.
+
+\qffield{Practice} \emph{Original.} A customer pays 1{,}000 on 1~October 2025 for equipment (SSP 900), installation (SSP 100) and 24 months of service (SSP 200).
+\begin{itemize}
+\item Allocation gives 750.00, 83.33 and 166.67.
+\item The equipment is delivered on 1~November and installed by 30~November; service runs from 1~December. Revenue is 840.28 in 2025, 83.33 in 2026 and 76.39 in 2027, together the full price.
+\item The contract liability at 31~December 2025 is 159.72.
+\item A volume rebate makes the unit price 100, 95 or 90 with probabilities 0.5, 0.3 and 0.2. The expected value is 96.50, but only 90 is at least 90~percent likely not to reverse, so 90 enters the transaction price until the uncertainty resolves.
+\item A marketplace selling a third party's goods for 100 and paying the vendor 85 reports revenue of 100 as principal or 15 as agent. Profit is 15 either way, but the margin is 15 against 100~percent, and revenue-based multiples and turnover change.
+\end{itemize}
+
+\emph{Analysis implications.} Revenue judgements (timing of control, estimates of returns and rebates, principal or agent) are where earnings management concentrates \citep[pp.~110--111]{financial-statement-analysis-2009}. Check them in this order:
+\begin{itemize}
+\item growth in receivables and contract assets against revenue;
+\item movements in contract liabilities, which give advance billings visibility;
+\item the backlog of unsatisfied obligations;
+\item changes in disaggregated revenue mix.
+\end{itemize}
+
+\qffield{Pitfalls} Comparing gross-reporting and net-reporting businesses on revenue multiples or margins. Reading a fall in contract liabilities as weaker demand without checking billing terms. Treating bill-and-hold or channel-loading shipments as sales without evidence that control passed (\hyperref[meth:reporting-warning-signs]{warning signs}).
+
+\qffield{See also} \hyperref[meth:expense-recognition-capitalisation]{expense recognition}; \hyperref[meth:earnings-management-presentation]{earnings management}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Expense recognition and capitalisation: matching through inventories and depreciation, research and development, borrowing costs and software, and how capitalising rather than expensing changes profit, cash-flow sections, assets and ratios]\label{meth:expense-recognition-capitalisation}
+\qffield{Statement} \emph{Matching through assets.} When inventories are sold their carrying amount is expensed in the period the related revenue is recognised \citep[IAS~2 para.~34]{eu-2023-1803-ias2}. An item of property, plant and equipment is capitalised only if future benefits are probable and its cost is reliably measurable \citep[IAS~16 para.~7]{eu-2023-1803-ias16}. Day-to-day servicing is expensed, while replacement parts that meet the recognition principle are capitalised (paras.~12--13). The depreciable amount is allocated systematically over the useful life; lives, residual values and methods are reviewed each year and revised as changes in estimate (paras.~50--51 and~61). Borrowing costs directly attributable to a qualifying asset are capitalised \citep[IAS~23 para.~8]{eu-2023-1803-ias23}.
+
+\emph{Research and development.} Under IFRS, research is expensed \citep[IAS~38 para.~54]{eu-2023-1803-ias38}. Development is capitalised only when the entity can demonstrate six conditions: technical feasibility, intention, ability to use or sell, probable economic benefits, adequate resources, and reliable measurement (para.~57). Expenditure first expensed is never later capitalised (para.~71). US GAAP expenses all research and development costs within its scope \citep[para.~12]{us-research-development-1974}. Software to be sold is capitalised only after technological feasibility is established \citep[paras.~3--4]{us-software-1985}. For internal-use software, from annual periods beginning after 15~December 2027 capitalisation starts once management has authorised and committed funding and completion is probable \citep[pp.~2--3]{us-software-2025}.
+
+\emph{Capitalise or expense.} The total cost and total cash are the same either way. Capitalising changes four things:
+\begin{itemize}
+\item timing: profit is higher while spending exceeds amortisation;
+\item cash-flow section: the outlay becomes investing rather than operating;
+\item asset base: assets and equity are larger;
+\item ratios: interest coverage rises when borrowing costs are capitalised.
+\end{itemize}
+Delaying expense recognition by capitalising costs is a classic income-shifting device \citep[pp.~110--111]{financial-statement-analysis-2009}.
+
+\qffield{Notation} With annual spend $x_t$ amortised straight-line over $L$ years from the year after spending, the pre-tax profit difference is $x_t-\sum_{k=1}^{L}x_{t-k}/L$. The cumulative difference equals the capitalised asset balance.
+
+\qffield{Conditions} The comparison holds total cash constant and ignores tax unless stated; with a tax deduction for the spending, capitalisation also creates a deferred tax liability. US GAAP references are to the issuing Statements and Updates, not the current Codification.
+
+\qffield{Practice} \emph{Original.} Development spending of 30 a year is amortised over three years.
+\begin{itemize}
+\item With constant spending, the profit uplift from capitalising is 30, 20 and 10 in years 1--3, then zero once amortisation catches up. The asset settles at 60.
+\item With spending growing 10~percent a year, the uplift persists: 8.26 in year~6, with an asset of 90.91. The cumulative uplift equals that asset.
+\item Operating cash flow is 30 higher and investing cash flow 30 lower in every year. Total cash is unchanged.
+\item Capitalising 8 of 20 borrowing costs on an asset under construction lifts reported interest cover from 3.0 to 5.0 times. Cash interest is unchanged.
+\end{itemize}
+Harbour capitalised development of 22 and amortised 12 in 2025 (\hyperref[ex:harbour-tools-statements]{case}). Expensing it would cut 2025 operating profit by 10 and operating cash flow by 22.
+
+\qffield{Pitfalls} Comparing operating cash flow or EBITDA between a capitaliser and an expenser without moving the capitalised outlay to the same section. Reading a rising capitalised balance as investment success without checking amortisation lives and impairments. Applying the IAS~38 conditions to US GAAP statements.
+
+\qffield{See also} \hyperref[meth:intangible-acquisition-routes]{intangible assets}; \hyperref[meth:accounting-analysis-adjustments]{comparability adjustments}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Non-recurring items and accounting changes: material and unusual items, discontinued operations, changes in policies and estimates, error corrections, and adjusting earnings for analysis]\label{meth:non-recurring-items}
+\qffield{Statement} \emph{Presentation.} IFRS prohibits presenting any income or expense as extraordinary \citep[IAS~1 para.~87]{eu-2023-1803-ias1}. Material items are disclosed separately by nature and amount (para.~97). Examples include write-downs of inventory or PP\&E and their reversals, restructurings, disposals of PP\&E and investments, discontinued operations, litigation settlements and reversals of provisions (para.~98). US GAAP eliminated the extraordinary-items concept for fiscal years beginning after 15~December 2015, retaining presentation guidance for items that are unusual or infrequent \citep[p.~2]{us-extraordinary-items-2015}.
+
+A \emph{discontinued operation} is a component that has been disposed of or is held for sale and that is a separate major line of business or geographical area, part of a single plan to dispose of one, or a subsidiary acquired exclusively for resale \citep[IFRS~5 para.~32]{eu-2023-1803-ifrs5}. Its post-tax result and disposal gain or loss are shown as a single amount, analysed in the notes or on the face (para.~33).
+
+\emph{Accounting changes} \citep[IAS~8]{eu-2023-1803-ias8}:
+\begin{itemize}
+\item a policy changes only if a standard requires it or the change gives reliable and more relevant information (para.~14); it applies retrospectively unless a transition provision says otherwise, adjusting the opening equity of the earliest period presented (paras.~19 and~22);
+\item an estimate is a monetary amount subject to measurement uncertainty (para.~5); a change in estimate is recognised prospectively (para.~36) and its nature and amount disclosed (para.~39);
+\item a material prior-period error is corrected retrospectively by restating comparatives (para.~42), with the per-line and EPS effects disclosed (para.~49).
+\end{itemize}
+
+\emph{Analysis.} Recast the income statement to separate recurring from transitory components, tax-effecting each item so the total still reconciles to profit; then assign items to the periods they belong to \citep[pp.~602--603]{financial-statement-analysis-2009}. Transitory items are excluded from \emph{permanent} (sustainable) income but included in \emph{economic} income, and they reveal risk exposures that may recur (p.~338). Remove a discontinued operation's results from current and past income, and its assets and liabilities from the balance sheet (p.~340).
+
+\qffield{Notation} Adjusted profit $=$ reported profit $+$ transitory charges $\times(1-t)$ $-$ transitory gains $\times(1-t)$, with $t$ the tax rate applicable to each item.
+
+\qffield{Conditions} IAS~1 is cited as adopted in 2023; for periods from 1~January 2027 IFRS~18 supersedes it. IFRS~18 also requires disclosure of management-defined performance measures that exclude such items (\hyperref[meth:accounting-change-effects]{IFRS~18}). Whether an item recurs is a judgement for the analyst, not a label in the accounts.
+
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-tools-statements]{Harbour}, 2025). Adding back the 18 restructuring charge, tax-effected at 25~percent, gives adjusted profit of 68.88 rather than 55.38, and return on equity of 11.00 rather than 8.84~percent. The adjustment is defensible only if restructuring does not recur. A company that restructures every year has a recurring cost whatever its label.
+
+Recasting also captures changes:
+\begin{itemize}
+\item extending a machine's life from 10 to 14 years after four years spreads the remaining 60 over 10 years, cutting depreciation from 10 to 6 with no restatement;
+\item changing the inventory cost formula is a policy change: a 4 lower opening inventory restates opening retained earnings by $-3$ after tax.
+\end{itemize}
+
+\qffield{Pitfalls} Adding back ``non-recurring'' charges that recur (big-bath and serial restructurers). Removing charges but keeping the related gains. Forgetting the tax effect. Comparing a restated comparative year with an earlier unrestated year.
+
+\qffield{See also} \hyperref[meth:accounting-change-effects]{effects of accounting changes}; \hyperref[meth:earnings-quality-persistence]{earnings persistence}; \hyperref[meth:earnings-management-presentation]{non-GAAP measures}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Earnings per share: basic and diluted EPS for simple and complex capital structures, the treasury-stock and if-converted methods, ordering and antidilution]\label{meth:earnings-per-share}
+\qffield{Statement} \emph{Basic EPS} is profit attributable to ordinary equity holders of the parent divided by the weighted average number of ordinary shares outstanding \citep[IAS~33 para.~10]{eu-2023-1803-ias33}. The numerator deducts after-tax preference dividends. For cumulative preference shares the deduction is the dividend required for the period, whether declared or not (paras.~12 and~14). Shares are time-weighted by days outstanding (paras.~19--20). Bonus issues and share splits are applied retrospectively to all periods presented (paras.~26 and~64).
+
+\emph{Diluted EPS} adjusts both terms for all dilutive potential ordinary shares (para.~31), deemed converted at the start of the period or at issue if later (para.~36):
+\begin{itemize}
+\item \emph{options and warrants}, by the treasury-stock method: proceeds are deemed used to buy shares at the period's average market price, and only the shortfall counts as issued for no consideration (paras.~45--46); they dilute only when in the money (para.~47). For share-based payments, the ``price'' includes the fair value of services still to be received (para.~47A);
+\item \emph{convertibles}, by the if-converted method: add back after-tax interest or dividends and add the shares on conversion (paras.~33 and~49).
+\end{itemize}
+Potential shares are antidilutive if they would raise EPS from continuing operations, which is the control number (paras.~41--43). Each issue is tested separately, from the lowest earnings per incremental share to the highest, to maximise dilution (para.~44). Disclosure reconciles numerators and denominators and lists antidilutive instruments (para.~70).
+
+\emph{US GAAP} uses the same structure, presented with equal prominence \citep[p.~374]{financial-statement-analysis-2009}. Since 2020 convertible instruments must use the if-converted method; the treasury-stock method is no longer allowed for them, and share settlement is presumed where cash or shares may be used \citep[pp.~5--6]{us-convertibles-eps-2020}. This applies to SEC-filer public business entities (excluding smaller reporting companies) from fiscal years beginning after 15~December 2021 (p.~6).
+
+\qffield{Notation} Treasury-stock increment $n(1-K/\bar P)$ for $n$ options with exercise price $K$ below the average price $\bar P$. Earnings per incremental share $=\Delta$numerator$/\Delta$shares.
+
+\qffield{Conditions} IAS~33 as adopted in 2023. Control number: continuing operations. The ordering rule matters only when some potential shares are antidilutive in combination.
+
+\qffield{Practice} \emph{Original} (Kestrel, illustrative):
+\begin{itemize}
+\item Shares were 40m on 1~January, 6m were issued on 1~April and 2m bought back on 1~October; a 1-for-10 bonus issue followed on 30~November. The weighted average is $(40+4.5-0.5)\times1.1=48.4$m, which a month-by-month average confirms.
+\item Profit is 50, less a cumulative preference dividend of 2 and a convertible preference dividend of 3, leaving 45. Basic EPS is 0.9298.
+\item Vested options over 3m shares at 8, with an average price of 12, add 1m shares (EPI 0). A convertible bond adds 4.5 after-tax interest and 5m shares (EPI 0.90). Including both gives 0.9099.
+\item The convertible preference shares (EPI $3/2.5=1.20$) would raise EPS and are antidilutive.
+\item Unvested options at 9 with 3.50 of service still to be rendered have an effective price of 12.50, above the average of 12, so they add nothing.
+\item A brute-force search over all combinations confirms 0.9099 as the most dilutive figure.
+\end{itemize}
+\emph{Harbour} 2025: weighted shares $100+0.75\times0.5=100.375$m give basic EPS of 0.5517. Five million vested options at 8, with an average price of 11, add 1.364m shares, giving diluted EPS of 0.5443.
+
+\qffield{Pitfalls} Using year-end rather than weighted shares. Forgetting to restate prior-period EPS for a bonus issue. Including in-the-money options without the treasury-stock offset. Treating EPS growth from buybacks as operating improvement (\hyperref[meth:return-on-equity-decomposition]{ROE decomposition}).
+
+\qffield{See also} \hyperref[meth:share-based-compensation-modelling]{forecasting dilution}; \hyperref[meth:income-statement-ratios]{income-statement ratios}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Common-size income statements and income-statement ratios: margins, expense structure, operating leverage, and evaluating performance across years and companies]\label{meth:income-statement-ratios}
+\qffield{Statement} A common-size income statement expresses every line as a percentage of revenue. It shows the cost structure and how it changes, and it allows companies of different size to be compared \citep[pp.~28--33]{financial-statement-analysis-2009}. Year-to-year change analysis, in amounts and percentages, complements it. Percentage changes from negative, zero or very small bases are not meaningful (p.~28). Margins, such as gross, operating and net profit over revenue, are interpreted against the company's history, predetermined standards and competitors, and their variability matters as well as their trend (p.~35).
+
+Classification affects comparability. IAS~1 lets entities analyse expenses by nature or by function, the latter needing allocation judgements \citep[IAS~1 paras.~99 and~103]{eu-2023-1803-ias1}. From 2027 IFRS~18 requires operating profit and profit before financing and income taxes as subtotals \citep[Annex, IFRS~18 para.~69]{eu-2026-338-ifrs18}. A function presentation must then present cost of sales separately and disclose, in one note, total depreciation, amortisation, employee benefits, impairments and inventory write-downs (paras.~82--83). US public business entities will disclose purchases of inventory, employee compensation, depreciation and intangible amortisation within each relevant expense caption, plus total selling expenses, for annual periods beginning after 15~December 2026 \citep[pp.~1--3]{us-expense-disaggregation-2024}.
+
+\qffield{Notation} Gross margin $=(\text{revenue}-\text{cost of sales})/\text{revenue}$; operating margin $=$ operating profit$/$revenue; net margin $=$ profit$/$revenue; effective tax rate $=$ tax$/$profit before tax.
+
+\qffield{Conditions} Margins are only comparable when classification is: one company's cost of sales may hold expenses another reports in administration. Different revenue recognition (\hyperref[meth:revenue-recognition-analysis]{gross versus net}) changes every margin.
+
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-tools-statements]{Harbour}).
+
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Percent of revenue & 2025 & 2024\\
+\midrule
+Cost of sales & 64.54 & 64.00\\
+Gross profit & 35.46 & 36.00\\
+Selling and administration & 21.57 & 21.80\\
+Research and development & 3.52 & 3.50\\
+Restructuring & 1.67 & 0.00\\
+Operating profit & 8.61 & 11.00\\
+Finance costs & 1.50 & 1.80\\
+Income tax & 1.99 & 2.50\\
+Profit & 5.13 & 6.70\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\emph{Evaluation.} Revenue rose 8~percent, but operating margin fell 2.39 points:
+\begin{itemize}
+\item 1.67 points came from restructuring;
+\item 0.54 points came from gross margin, as cost of sales grew 8.9~percent against revenue of 8~percent, so price increases did not fully offset cost inflation;
+\item 0.39 points came from the swing from a disposal gain of 3 in 2024 to a loss of 1;
+\item selling and administrative costs fell by 0.23 points as a share of revenue, a modest operating-leverage benefit.
+\end{itemize}
+Net margin fell less, by 1.57 points, because finance costs and tax were lower relative to revenue.
+The effective tax rate rose from 27.17 to 27.93~percent because the non-deductible share-based expense of 9 weighs more on a smaller profit. Excluding restructuring, operating margin was 10.28~percent, still below 2024. The gross-margin pressure is the issue that the forecast (\hyperref[meth:competition-inflation-forecasting]{pass-through}) must address.
+
+\qffield{Pitfalls} Reading a lower expense ratio as efficiency when it reflects cuts to discretionary spending such as advertising or research, which harm future sales \citep[p.~35]{financial-statement-analysis-2009}. Comparing margins across companies that classify expenses differently. Ignoring the tax-rate effect of permanent differences.
+
+\qffield{See also} \hyperref[meth:financial-ratio-families]{ratio families}; \hyperref[meth:return-on-equity-decomposition]{ROE decomposition}; \hyperref[meth:tax-rate-measures]{tax-rate measures}.
+
+\end{qfmethod}

@@ -125,17 +125,29 @@ An accounting alternative is NOPAT less the increase in net operating assets. Th
 
 \qffield{Notation} Starting from reported operating cash flow (with interest paid inside it): $\mathrm{FCFF}=\mathrm{CFO}+\text{interest paid}\times(1-t)-\text{net investment}$ and $\mathrm{FCFE}=\mathrm{CFO}-\text{net investment}+\text{net borrowing}$.
 
-\qffield{Conditions} The two FCFF routes agree only if non-cash items are treated consistently. The EBIT route uses statutory tax on EBIT and omits share-based expense, pension cost above contributions and disposal results; the operating-cash-flow route uses actual cash taxes. Leases: with IFRS~16 lease liabilities treated as debt, lease payments are financing and FCFF excludes them. Whether share-based expense is deducted is a valuation choice; it must be either deducted or reflected as dilution, not neither.
+\qffield{Conditions} The two FCFF routes agree only if non-cash items are treated consistently. The EBIT route uses statutory tax on EBIT and omits share-based expense, pension cost above contributions and disposal results; the operating-cash-flow route uses actual cash taxes.
 
-\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-tools-statements]{Harbour}, 2025). Net investment is 124 (capex 105, development 22, disposal proceeds $-3$).
+\emph{Presentation against valuation.} The statement of cash flows and a valuation answer different questions, so the same item can be treated differently in each without contradiction. A lease starting in the year uses no cash: the right-of-use asset and the liability are a non-cash investing and financing transaction, excluded from the statement \citep[IAS~7 paras.~43--44]{eu-2023-1803-ias7}. A valuation that treats lease liabilities as debt must then treat the asset acquired as capital expenditure financed by that debt. FCFF deducts the right-of-use addition, lease payments are debt service outside FCFF, and the liability is deducted from enterprise value. FCFE is unchanged, because the new lease debt offsets the addition \citep[pp.~25--27, 30--32]{leases-debt-value-2009}. Omitting the addition while deducting the liability counts the debt but never pays for the asset.
+
+Share-based expense is added back in operating cash flow because no cash is paid, which is correct for the statement. It is still compensation paid in shares. Adding it back in valuation assumes either that employees will work for nothing or that equity can be given away without affecting value per share \citep[slide~14]{free-cash-flow-primer-2022}. Valuation FCFF therefore deducts it, and awards already outstanding are deducted as claims (\hyperref[meth:share-based-compensation-modelling]{share-based pay in valuation}). A pension deficit treated as debt-like makes service cost operating and contributions above it debt service.
+
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-tools-statements]{Harbour}, 2025). Net investment in the cash-flow statement is 124 (capex 105, development 22, disposal proceeds $-3$).
 \begin{itemize}
-\item From operating cash flow, FCFF $=162.04+14\times0.75-124=48.54$.
+\item \emph{Accounting FCFF.} From operating cash flow, $162.04+14\times0.75-124=48.54$.
 \item The EBIT route gives $93\times0.75+102-124-8=39.75$. Four items bridge it exactly: the share-based expense (9), pension service cost less contributions ($11-15=-4$), the disposal loss (1), and cash rather than statutory taxes on EBIT (2.79). That is $39.75+9-4+1+2.79=48.54$.
-\item FCFE $=162.04-124-10=28.04$, after net borrowing of $-10$. It equals dividends 32, less options exercised 6, plus the increase in cash of 2.04.
+\item \emph{FCFE} $=162.04-124-10=28.04$, after net borrowing of $-10$. It equals dividends 32, less options exercised 6, plus the increase in cash of 2.04.
 \end{itemize}
+\emph{Valuation FCFF}, one convention at a time:
+\begin{itemize}
+\item leases as debt: the 2025 right-of-use addition of 30 is reinvestment, so FCFF is $48.54-30=18.54$;
+\item share-based expense as a cost: $18.54-9=9.54$, with no tax effect because Harbour's expense is not deductible;
+\item pension deficit as debt: contributions above service cost, less the tax saved on net interest, are financing: $15-11-0.25\times2.16=3.46$, so FCFF is 13.00.
+\end{itemize}
+FCFE with leases as debt is still 28.04: the addition of 30 is offset by 30 of new lease debt. After the share-based expense it is 19.04. The two reconcile: $13.00=19.04+10.50+1.62-20.00+1.84$, adding after-tax interest on loans and leases (10.50) and on the pension deficit (1.62), and subtracting net borrowing including the new lease (20.00) and the pension deficit's net change before remeasurement ($-1.84$).
+
 Coverage: operating cash flow over debt 0.46; cash interest cover 13.8 times; debt equal to 2.2 years of operating cash flow; two-year cash-flow adequacy 0.91. Harbour funds its investment internally but not its dividends as well, which matches the RCF drawing.
 
-\qffield{Pitfalls} Mixing FCFF with equity discount rates, or FCFE with WACC. Counting interest twice (in operating cash flow and in the discount rate). Adding back share-based expense in FCF and ignoring dilution.
+\qffield{Pitfalls} Mixing FCFF with equity discount rates, or FCFE with WACC. Counting interest twice (in operating cash flow and in the discount rate). Adding back share-based expense in FCF and ignoring dilution. Deducting lease liabilities as debt while leaving right-of-use additions out of reinvestment, which values leased assets as free. Deducting a pension deficit as debt while also charging all contributions to FCFF.
 
 \qffield{See also} \hyperref[meth:cash-flow-interpretation]{interpretation}; \hyperref[meth:forecast-horizon-steady-state]{terminal value}; \hyperref[meth:share-based-compensation-modelling]{share-based pay in valuation}.
 

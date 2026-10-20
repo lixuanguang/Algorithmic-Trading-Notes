@@ -11,7 +11,8 @@ The book's procedure sets cash as the balancing figure and then adjusts debt or 
 \begin{itemize}
 \item volume $+3$~percent a year; price $+3$, $+2.5$, $+2.5$~percent;
 \item variable cost per unit (2025: 4.8 against a price of 10.8) $+4$, $+3$, $+2.5$~percent; fixed production cash cost 151 rising 3~percent;
-\item depreciation 6.9~percent of opening gross PP\&E; capital expenditure 8.5~percent of revenue; development 2~percent of revenue, amortised over five years;
+\item depreciation 6.9~percent of opening gross PP\&E; capital expenditure 8.5~percent of revenue;
+\item development spending 2~percent of revenue, each year's spending available for use from 1~January of the next year and amortised straight-line over five years; the 31~December 2025 balance of 60 amortised straight-line over 2026--2030, 12 a year;
 \item selling and administrative cash cost 17.5~percent of revenue, with share-based expense $+5$~percent, pension service cost $+3$~percent and right-of-use depreciation 24;
 \item receivables 61 days of revenue, inventory 111 days of cost of sales, payables 94 days of variable cost;
 \item tax at 25~percent, with tax depreciation 20 above book each year and the restructuring paid in 2026;
@@ -20,7 +21,9 @@ The book's procedure sets cash as the balancing figure and then adjusts debt or 
 
 \qffield{Notation} Every balance: closing $=$ opening $+$ additions $-$ reductions. Cash: closing $=$ opening $+$ CFO $+$ CFI $+$ CFF, with the RCF draw $=\max(-\text{RCF}_{\text{open}},\ 40-\text{cash before draw})$.
 
-\qffield{Conditions} Hypothetical inputs; the acquisition and downside scenarios are in the \hyperref[ex:integrated-credit-decision]{credit decision}. Interest on the term loan and leases uses opening balances. The model ignores currency, seasonality and intra-year timing.
+\qffield{Conditions} Hypothetical inputs; the acquisition and downside scenarios are in the \hyperref[ex:integrated-credit-decision]{credit decision}. Interest on the term loan and leases uses opening balances. The model ignores currency and seasonality; the only intra-year timing is the acquisition's completion date.
+
+\emph{Asset schedules.} Each group of assets has its own useful life and starts its charge when available for use, as required for intangible assets \citep[IAS~38 para.~97]{eu-2023-1803-ias38} and for property, plant and equipment \citep[IAS~16 para.~55]{eu-2023-1803-ias16}. Each asset is charged once, until its carrying amount reaches zero. Development vintages are tracked separately from the opening balance. Acquired intangibles and acquired PP\&E have their own schedules from completion and are excluded from the development pool and from the organic depreciation rate. Charging a fixed fraction of the opening balance each year is a declining-balance rule: one fifth a year leaves $0.8^5=32.8$~percent of an isolated balance after five years.
 
 \qffield{Practice} \emph{Results} (base case, EUR millions).
 
@@ -31,16 +34,17 @@ The book's procedure sets cash as the balancing figure and then adjusts debt or 
 \midrule
 Revenue & 1{,}145.77 & 1{,}209.65 & 1{,}277.09\\
 Gross margin (\%) & 35.29 & 35.17 & 35.28\\
-Operating profit (EBIT) & 119.52 & 124.99 & 133.85\\
-Finance costs & 18.50 & 18.68 & 18.11\\
-Profit & 73.40 & 77.25 & 84.20\\
-Operating cash flow & 171.07 & 197.27 & 211.93\\
+Operating profit (EBIT) & 119.52 & 122.59 & 128.61\\
+Finance costs & 18.50 & 18.65 & 17.99\\
+Profit & 73.40 & 75.47 & 80.36\\
+Operating cash flow & 171.07 & 197.42 & 212.79\\
 Investing cash flow & $-120.31$ & $-127.01$ & $-134.09$\\
-Dividends & 29.36 & 30.90 & 33.68\\
-RCF draw (closing balance) & 30.81 (70.81) & 10.38 (81.19) & 5.56 (86.75)\\
-Net debt$/$EBITDA & 1.41 & 1.27 & 1.11\\
-EBITDA$/$interest & 12.28 & 12.94 & 14.33\\
-Total assets $=$ liabilities $+$ equity & 1{,}340.52 & 1{,}399.53 & 1{,}457.00\\
+Dividends & 29.36 & 30.19 & 32.14\\
+Development amortisation & 12.00 & 16.58 & 21.42\\
+RCF draw (closing balance) & 30.81 (70.81) & 9.52 (80.33) & 3.17 (83.50)\\
+Net debt$/$EBITDA & 1.41 & 1.27 & 1.10\\
+EBITDA$/$interest & 12.28 & 12.95 & 14.43\\
+Total assets $=$ liabilities $+$ equity & 1{,}340.52 & 1{,}397.13 & 1{,}449.36\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -49,12 +53,12 @@ Total assets $=$ liabilities $+$ equity & 1{,}340.52 & 1{,}399.53 & 1{,}457.00\\
 \begin{itemize}
 \item The balance sheet balances in each year to rounding error without any plug, which tests the cash-flow statement.
 \item The 2026 operating cash flow absorbs the 12 restructuring payment.
-\item The RCF rises every year despite rising profit, because capital spending, lease and loan repayments and dividends exceed operating cash flow. By 2028 it is at 87 of a 100 facility in the base case. That is why Harbour seeks a larger facility.
+\item The RCF rises every year despite rising profit, because capital spending, lease and loan repayments and dividends exceed operating cash flow. By 2028 it is at 84 of a 100 facility in the base case. That is why Harbour seeks a larger facility.
 \end{itemize}
 
 \emph{Sensitivity.} A one-point lower EBIT margin cuts 2026 profit by 8.76 (\hyperref[meth:ratio-based-earnings-forecast]{ratio forecast}). A cost shock passed only half into price cuts 2026 EBIT to 109.63 (\hyperref[meth:competition-inflation-forecasting]{pass-through}).
 
-\qffield{Pitfalls} Using cash or debt as an unexplained plug, which hides errors and the funding need. Computing interest on closing balances without resolving the circularity. Ignoring payments already committed, such as provisions, lease payments and loan repayments.
+\qffield{Pitfalls} Using cash or debt as an unexplained plug, which hides errors and the funding need. Computing interest on closing balances without resolving the circularity. Ignoring payments already committed, such as provisions, lease payments and loan repayments. Pooling assets with different lives, or adding acquired assets to a pool that is also charged separately, which charges the same asset twice.
 
 \qffield{See also} \hyperref[meth:ratio-based-earnings-forecast]{ratio forecasts}; \hyperref[meth:forecast-horizon-steady-state]{horizon}; \hyperref[meth:accounting-change-effects]{IFRS~18 in the forecast years}.
 
@@ -147,15 +151,17 @@ Excess returns attract competition and fade, so high growth that creates value e
 \item If RONIC equals the cost of capital, growth adds no value.
 \end{itemize}
 
-\qffield{Notation} Terminal value at $T$: $\text{TV}_T=\text{NOPAT}_{T+1}(1-g/\text{RONIC})/(\text{WACC}-g)$. With $\text{RONIC}=\text{WACC}$, $\text{TV}_T=\text{NOPAT}_{T+1}/\text{WACC}$, independent of $g$.
+\qffield{Notation} Terminal value at $T$: $\text{TV}_T=\text{NOPAT}_{T+1}(1-g/\text{RONIC})/(\text{WACC}-g)$. With $\text{RONIC}=\text{WACC}$, $\text{TV}_T=\text{NOPAT}_{T+1}/\text{WACC}$. That is independent of $g$ only when $\text{NOPAT}_{T+1}$ is held fixed. If instead $\text{NOPAT}_T$ is fixed and $\text{NOPAT}_{T+1}=\text{NOPAT}_T(1+g)$, then $\text{TV}_T=\text{NOPAT}_T(1+g)/\text{WACC}$ rises with $g$. The growth into year $T+1$ needs reinvestment of $g\,\text{NOPAT}_T/\text{RONIC}$ in year $T$; deducting it leaves $\text{NOPAT}_T/\text{WACC}$ at $T$.
 
-\qffield{Conditions} The terminal value typically dominates value, so its assumptions need the same scrutiny as the explicit years. Negative stable growth is possible for declining businesses (p.~308).
+\qffield{Conditions} The terminal value typically dominates value, so its assumptions need the same scrutiny as the explicit years. Negative stable growth is possible for declining businesses (p.~308). Free cash flow, NOPAT and the enterprise-to-equity bridge must use one set of conventions: whatever is treated as a claim (leases, pension deficits, outstanding options) is deducted once from enterprise value, and its flows stay out of FCFF (\hyperref[meth:free-cash-flow-coverage]{free cash flow}).
 
-\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-pro-forma-model]{Harbour}, WACC 8~percent).
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-pro-forma-model]{Harbour}, valuation at 31~December 2025, year-end cash flows, WACC 8~percent).
 \begin{itemize}
-\item \emph{Value-neutral growth.} With RONIC equal to WACC, the terminal value is 12.5 times NOPAT for growth of 0, 2 or 4~percent alike.
-\item \emph{Consistency.} With steady-state growth of 2.5~percent and RONIC of 12~percent, the value from the three explicit years plus a terminal value is 1{,}376.78; the terminal value is 85.4~percent of it. Extending the explicit forecast to 2040 under the same steady-state rule gives the same value, as it must.
-\item \emph{A horizon that ends too early.} Capitalising 2028's FCFF at its 5.57~percent revenue growth gives a terminal value of 3{,}921.54, against 1{,}481.05 at steady state. Harbour's 2028 growth still contains price recovery and above-trend volume, so three years is too short unless those are assumed to end.
+\item \emph{Cash flows.} Valuation FCFF for 2026--2028 is 31.93, 50.95 and 57.95, with leases as debt (right-of-use additions of 25 a year as reinvestment), share-based expense as a cost and the pension deficit as debt. Operating cash flow plus after-tax interest less capital spending would give 63.19, 83.00 and 90.84. The difference includes lease additions with a present value of 64.43 and share-based expense with a present value of 25.53.
+\item \emph{Terminal value.} NOPAT for 2028 is $128.61-0.25\times(128.61+10.42)=93.85$, since share-based expense is not deductible. With steady-state growth of 2.5~percent and RONIC of 12~percent, $\text{TV}_{2028}=1{,}384.68$ and enterprise value is 1{,}218.45, of which the terminal value is 90.2~percent. Extending the explicit forecast to 2040 under the same steady-state rule gives the same value, as it must. The accounting cash flows above, with share-based expense deducted for tax, would give 1{,}331.49: 113 too much.
+\item \emph{Value-neutral growth.} With RONIC equal to WACC and 2029 NOPAT fixed at 96.20, $\text{TV}_{2028}$ is 1{,}202.48, 12.5 times that NOPAT, for growth of 0, 2 or 4~percent alike. With 2028 NOPAT fixed instead, the terminal value is 1{,}173.16, 1{,}196.62 and 1{,}220.08; less the 2028 reinvestment that each growth rate needs, it is 1{,}173.16 in every case.
+\item \emph{Equity.} $1{,}218.45+37.54-250-40-65-36.12-9.28=855.59$: enterprise value plus cash, less the term loan, RCF, lease liabilities, after-tax pension deficit and the 5 million vested options valued as options (\hyperref[meth:share-based-compensation-modelling]{share-based pay}). That is 8.49 per share on 100.75 million shares.
+\item \emph{A horizon that ends too early.} Capitalising 2028's FCFF at its 5.57~percent revenue growth gives a terminal value of 2{,}522.86, against 1{,}384.68 at steady state. In 2028 Harbour reinvests 38.3~percent of NOPAT against the steady-state 20.8~percent ($2.5/12$), and its growth still contains price recovery and above-trend volume. Three years is too short unless those are assumed to end.
 \end{itemize}
 
 \qffield{Pitfalls} Ending the horizon while growth, margins or reinvestment are still changing. Assuming high growth in perpetuity with low reinvestment. Using a stable growth rate above the economy's nominal growth or in a different currency from the cash flows.

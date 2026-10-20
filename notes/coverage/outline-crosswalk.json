@@ -7242,7 +7242,7 @@
    "objectives": [
     "objective:analyse-financial-instruments-liabilities"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:financial-instruments-liabilities explains IFRS 9 classification, ECL, own-credit presentation and US ASU 2016-01/2016-13, with IFRS 7 risk disclosures.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:financial-instruments-liabilities explains IFRS 9 classification, ECL, own-credit presentation and US ASU 2016-01/2016-13, with IFRS 7 risk disclosures. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: the equity FVOCI election now states initial-recognition timing and the held-for-trading and contingent-consideration exclusions (IFRS 9 paras. 4.1.4, 5.7.5); the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -7262,7 +7262,7 @@
    "objectives": [
     "objective:analyse-financial-instruments-liabilities"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:financial-instruments-liabilities explains non-current liabilities at amortised cost, issuance costs and IAS 1 current/non-current classification with covenants, with a checked breach scenario on Harbour.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:financial-instruments-liabilities explains non-current liabilities at amortised cost, issuance costs and IAS 1 current/non-current classification with covenants, with a checked breach scenario on Harbour. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: the equity FVOCI election now states initial-recognition timing and the held-for-trading and contingent-consideration exclusions (IFRS 9 paras. 4.1.4, 5.7.5); the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -7406,7 +7406,7 @@
    "objectives": [
     "objective:calculate-free-cash-flow-and-coverage"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:free-cash-flow-coverage calculates FCFF and FCFE by two routes with an exact bridge and interprets cash-flow performance and coverage ratios for Harbour.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:free-cash-flow-coverage calculates FCFF and FCFE by two routes with an exact bridge and interprets cash-flow performance and coverage ratios for Harbour. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: FCFF now separates statement presentation from valuation reinvestment (lease additions, share-based pay, pension deficit) with reconciled FCFE; the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -7735,7 +7735,7 @@
    "objectives": [
     "objective:identify-earnings-management-methods"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:earnings-management-presentation explains conservative versus aggressive accounting and its reversal over time.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:earnings-management-presentation explains conservative versus aggressive accounting and its reversal over time. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: the non-GAAP restructuring example now follows SEC staff interpretations 102.03 and 100.01; the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -7795,7 +7795,7 @@
    "objectives": [
     "objective:identify-earnings-management-methods"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:earnings-management-presentation describes presentation choices incl. non-GAAP measures (Regulation G, Item 10(e)) and IFRS 18 management-defined performance measures.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:earnings-management-presentation describes presentation choices incl. non-GAAP measures (Regulation G, Item 10(e)) and IFRS 18 management-defined performance measures. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: the non-GAAP restructuring example now follows SEC staff interpretations 102.03 and 100.01; the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -7815,7 +7815,7 @@
    "objectives": [
     "objective:identify-earnings-management-methods"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:earnings-management-presentation describes choices and estimates that manage earnings, cash flows and balance-sheet items, illustrated by Harbour's checked variant.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:earnings-management-presentation describes choices and estimates that manage earnings, cash flows and balance-sheet items, illustrated by Harbour's checked variant. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: the non-GAAP restructuring example now follows SEC staff interpretations 102.03 and 100.01; the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -7979,7 +7979,7 @@
    "objectives": [
     "objective:build-pro-forma-model"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 14): ex:harbour-pro-forma-model demonstrates a sales-based three-statement model that balances without a plug, with an explicit revolver rule and iteration.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 14): ex:harbour-pro-forma-model demonstrates a sales-based three-statement model that balances without a plug, with an explicit revolver rule and iteration. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: asset schedules now charge each development vintage and acquired asset once over explicit lives from availability for use; 2027-2028 figures recomputed; the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -8060,7 +8060,7 @@
    "objectives": [
     "objective:choose-forecast-horizon"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 14): meth:forecast-horizon-steady-state explains the choice of explicit horizon and projections beyond it (steady state, reinvestment consistency, terminal value), with checked invariance tests.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 14): meth:forecast-horizon-steady-state explains the choice of explicit horizon and projections beyond it (steady state, reinvestment consistency, terminal value), with checked invariance tests. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: the terminal-value check now states what is held fixed and the valuation uses consistent conventions with an equity bridge; the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -13646,7 +13646,7 @@
    "objectives": [
     "objective:model-share-based-compensation"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 7): meth:share-based-compensation-modelling explains forecasting share-based expense and shares outstanding and their consistent use in valuation.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 7): meth:share-based-compensation-modelling explains forecasting share-based expense and shares outstanding and their consistent use in valuation. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: valuation now deducts share-based expense and values outstanding options as claims, with statutory CFO unchanged; the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -13686,7 +13686,7 @@
    "objectives": [
     "objective:model-post-employment-benefits"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 7): meth:post-employment-benefit-modelling explains modelling and valuation considerations (operating/financing split, debt-like deficit, sensitivity).",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 7): meth:post-employment-benefit-modelling explains modelling and valuation considerations (operating/financing split, debt-like deficit, sensitivity). Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: the deficit's valuation treatment is stated consistently with FCFF; the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14290,7 +14290,7 @@
    "objectives": [
     "objective:apply-integrated-analysis-framework"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 9): ex:integrated-credit-decision demonstrates the framework for a specific problem (critiquing a facility request and leverage) with constraints, alternatives, stress tests and a recommendation.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 9): ex:integrated-credit-decision demonstrates the framework for a specific problem (critiquing a facility request and leverage) with constraints, alternatives, stress tests and a recommendation. Revalidated 2026-10-20 after the accounting correction pass, with the outline page reread: the decision was recomputed with corrected schedules and consistent acquisition timing; the recommendation changed from B to D with stated sensitivities; the mapping and coverage are unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },

@@ -4626,3 +4626,94 @@ learner mastery or independent human review.
 illustrate methods, not evidence. Pass-through rates and credit-policy thresholds are
 scenario inputs. The Codification paragraphs that replaced the cited FASB Statements are an
 open question in the pathway note.
+
+## Accounting correction pass, 20 October 2026
+
+**Starting state.** Verified before edits: PR #29 (draft, `codex/macro-source-corrections-20261020`,
+head `6157abb`, base `main`) and PR #30 (draft, `codex/accounting-statement-analysis-20261020`,
+head `4a9edbc`, stacked on #29) open; `main` at `0b78e4d` is an ancestor of `6157abb`, which is
+an ancestor of `4a9edbc`; the checkout was clean at `4a9edbc`; coverage 236/424 objectives and
+532/1,030 items. The reverted attempt `644f5d0` was not used. These corrections are commits on
+PR #30's branch. They count toward no new objective; the record of the batch above is kept as
+history, and the statements below supersede it where they differ.
+
+**Findings reproduced first.** Each audit claim was recomputed before changes:
+- FCFF 48.54 omits the 2025 right-of-use addition of 30 (18.54 with it), and the 2026-2028
+  additions of 25 have present value 64.4274 at 8 percent;
+- `forecast()` added share-based expense back to CFO and part 17 used that CFO in valuation with no
+  deduction; the three add-backs (9.45, 9.9225, 10.418625) have present value 25.5276;
+- opening development / 5 leaves 0.8^5 = 32.768 percent of an isolated balance after five years;
+  the acquired 20, pooled with development and also charged `acquisition["amort"]`, was charged
+  2, 5.6 and 4.48 in 2026-2028; acquired PP&E was added at the end of 2026 and never had its own
+  depreciation, while the acquired business earned a full 2026 of EBITDA although the decision
+  was dated 1 March 2026;
+- `tv_value(nopat_2028 (1 + g), ...) / (1 + g)` is NOPAT_2028/WACC by construction, so the check
+  could not fail and its label TV/NOPAT_2028 described a quantity it did not compute.
+
+**Sources read for the corrections.**
+- Damodaran, *Leases, Debt and Value* (April 2009, NYU Stern), PDF pp. 25-32: lease additions as
+  capital expenditure; FCFE unchanged; lease debt in the bridge. Written for US operating leases;
+  the reinvestment logic is applied to IFRS 16 right-of-use additions.
+- Damodaran, *A Primer on Free Cash Flows* (slides, October 2022), slide 14 (text slides 3, 9, 16,
+  21, 24 also read; chart slides not relied on).
+- Damodaran, *Investment Valuation*, 3rd ed., pp. 445-449: options valued as claims at the
+  estimated value per share with iteration; future grants as an expense.
+- IAS 7 paras. 43-44 (non-cash transactions), IAS 38 para. 97 and IAS 16 para. 55 (charge from
+  availability for use), IFRS 9 paras. 4.1.4, 5.7.5-5.7.6, B5.7.1 and the Appendix A definition
+  of held for trading, all in the EU 2023/1803 Official Journal text already held locally.
+- SEC Division of Corporation Finance C&DIs on non-GAAP measures (last updated 13 December 2022),
+  Questions 102.03 (17 May 2016) and 100.01 (13 December 2022), read on the SEC website; a
+  scripted download returned an access page, so no local copy is kept and no contact address was
+  sent.
+
+**Corrections.**
+1. *Leases in valuation* (`meth:free-cash-flow-coverage`, `meth:forecast-horizon-steady-state`).
+   Statement presentation and valuation are separated. The non-cash lease inception stays out of
+   the statutory cash-flow statement. Valuation FCFF deducts right-of-use additions (2025: 48.54 to
+   18.54), lease liabilities are claims, and FCFE is unchanged (28.04; forecast years checked).
+   A lease-versus-buy-with-debt check shows the superseded convention created 25/1.08 = 23.15 of
+   artificial value for one vintage; the corrected convention creates none.
+2. *Share-based pay* (`meth:share-based-compensation-modelling`, FCFF and horizon entries).
+   Statutory CFO keeps the add-back. Valuation deducts the expense for future grants (non-deductible,
+   so no tax effect), keeps it in terminal NOPAT (EBIT - t(EBIT + SBC)), deducts the 5m vested
+   options as BSM claims at the iterated value per share (9.28; 8.49 a share; treasury stock 8.56),
+   and does not deduct unvested awards whose cost is in the forecast.
+3. *Asset schedules* (`ex:harbour-pro-forma-model`, `ex:integrated-credit-decision`). The opening
+   development balance of 60 is amortised straight-line over 2026-2030; each year's development is
+   available for use on 1 January of the next year and amortised over five years; acquired
+   intangibles (ten years) and acquired PP&E (five years) have their own schedules from completion
+   on 1 April 2026 (nine months in 2026), are excluded from the development pool and the organic
+   depreciation base, and are deductible as an asset purchase. Capital expenditure is 8.5 percent
+   of total revenue, as the entry always stated. Base 2026 is unchanged; 2027-2028 profit falls to
+   75.47 and 80.36 because development amortisation rises to 16.58 and 21.42. Covenant EBITDA is
+   pro forma for the acquisition. Re-running all six original lender scenarios: A and C fail as
+   before; B now fails the downside on liquidity alone (1.84 undrawn against 10). A fourth
+   alternative, D (lock-up tested on pro forma leverage at completion, 1.85x, so no 2026 dividend),
+   passes both scenarios with 19.02 undrawn and is now recommended; a 170 facility, a 1 July
+   completion and a capital-expenditure cut are shown as sensitivities.
+4. *IFRS 9 equity election* (`meth:financial-instruments-liabilities`): timing, instrument-by-
+   instrument basis, both exclusions, and an eligible stake against an ineligible trading holding.
+5. *SEC non-GAAP restructuring* (`meth:earnings-management-presentation`): the two-year condition
+   restricts the description; adjustment remains possible unless misleading, and excluding normal,
+   recurring cash operating expenses may mislead.
+6. *Terminal-value check* (`meth:forecast-horizon-steady-state`): NOPAT_2029 fixed gives
+   TV = NOPAT_2029/WACC (1,202.48) for g = 0, 2, 4 percent; NOPAT_2028 fixed gives 1,173.16,
+   1,196.62 and 1,220.08, each 1,173.16 net of the 2028 reinvestment the growth requires.
+   Enterprise value is now 1,218.45 (superseding 1,376.78); equity 855.59.
+
+**Numerical evidence.** `statement-analysis-checks.py` now executes 138 checks (from 111): new
+checks detect each audit error (the 32.768 percent residual, the 2/5.6/4.48 pooling, the omitted
+lease and share-based PVs, the artificial lease value, both terminal quantities) and verify the
+replacements by independent routes (vintage sums against the balance; CFO against NOPAT routes for
+valuation FCFF; FCFE as dividends plus change in cash under both lease presentations; an option
+fixed point with bounds). The former "only B passes" check was replaced by the recomputed verdict.
+
+**Coverage.** The eight affected objectives (FCFF and coverage, share-based and pension modelling,
+pro forma model, forecast horizon, integrated decision, financial instruments, earnings management)
+were reassessed at their stated depth and remain covered; their 11 outline items were reread on
+their pages (Level I PDF pp. 11-14, Level II PDF pp. 7-9) and their rationales record the
+revalidation. Coverage unchanged: 236/424 objectives and 532/1,030 items.
+
+**Limits.** The after-tax pension deficit follows the credit-analysis convention; under Harbour's
+simplified tax rule the pre-tax deficit would lower equity by 12.04, as the entry states. WACC,
+RONIC, option inputs and credit-policy thresholds are illustrative inputs.

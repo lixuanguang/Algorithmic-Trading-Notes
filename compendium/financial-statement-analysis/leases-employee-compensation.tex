@@ -150,7 +150,13 @@ Harbour's 2025 share-based expense of 9 is non-deductible, which explains its 2.
 
 Shares outstanding are forecast from existing shares, exercises (cash in, shares out), buybacks and new grants. Dilution uses the treasury-stock method at the forecast average share price \citep[IAS~33 paras.~45--47A]{eu-2023-1803-ias33}.
 
-\emph{Valuation.} Free cash flow either deducts share-based expense as an economic cost, in which case value per share uses existing shares plus the dilution from awards already granted, or excludes it and must then count all expected future dilution. Doing neither overstates value. Adding the expense back as ``non-cash'' while ignoring dilution is that error. Growth in earnings per share from buybacks financed by debt is a capital-structure effect, not operating growth.
+\emph{Valuation.} Statutory operating cash flow adds the expense back because no cash is paid; a valuation must not. The consistent convention separates three groups of awards \citep[pp.~445--449]{investment-valuation-2012}:
+\begin{itemize}
+\item \emph{future grants}: an operating expense, usually forecast as a share of revenue and deducted from free cash flow; keeping today's margin in the terminal value assumes grants continue at today's rate;
+\item \emph{awards already outstanding}: claims on equity, valued with an option-pricing model and deducted from equity value before dividing by the primary shares, at the estimated value per share, which makes the calculation iterative;
+\item \emph{outstanding but unvested awards whose cost is still to be recognised}: either in the forecast expense or deducted as claims, never both.
+\end{itemize}
+Adding the expense back while ignoring the shares given away treats compensation as free \citep[slide~14]{free-cash-flow-primer-2022}. The treasury-stock method ignores the options' time value and so overstates value per share. Growth in earnings per share from buybacks financed by debt is a capital-structure effect, not operating growth.
 
 \qffield{Notation} Incremental diluted shares $=\sum_j n_j\max(0,1-K_j/\bar P)$ for tranches $j$ with $n_j$ options at exercise price $K_j$, with $\bar P$ the forecast average price; unvested tranches add unrecognised service cost to $K_j$.
 
@@ -158,12 +164,13 @@ Shares outstanding are forecast from existing shares, exercises (cash in, shares
 
 \qffield{Practice} \emph{Original.}
 \begin{itemize}
-\item In the \hyperref[ex:harbour-pro-forma-model]{Harbour forecast} share-based expense grows 5~percent a year: 9.45, 9.92 and 10.42 in 2026--2028. It is deducted in operating profit, not added back to cash flow.
+\item In the \hyperref[ex:harbour-pro-forma-model]{Harbour forecast} share-based expense grows 5~percent a year: 9.45, 9.92 and 10.42 in 2026--2028. It is deducted in operating profit and, being non-cash, added back in the forecast operating cash flow, as the statement requires. Valuation FCFF reverses the add-back: at 8~percent the three years' expense has a present value of 25.53, which an add-back would have counted as value. Because it is not deductible, there is no tax effect. Terminal NOPAT keeps the expense as an operating cost, so grants continue at the 2028 rate (\hyperref[meth:forecast-horizon-steady-state]{valuation}).
+\item Harbour's 5 million vested options (exercise price 8, three years remaining, volatility 30~percent) are the outstanding claim. Valued with Black--Scholes--Merton at the iterated value per share of 8.49, they are worth 9.28, deducted from equity before dividing by 100.75 million shares. Treasury-stock dilution at the same value would give 8.56, higher because it ignores time value. Unvested awards are not deducted again because their remaining cost is in the forecast expense.
 \item For the 2.55 million options vesting from the grant above (exercise price 20), forecast dilution is 0.51 million shares at an average price of 25 and nil at 18. The dilution therefore enters only in scenarios where the share price rises.
 \item Harbour's 5 million vested options at 8 add 1.364 million diluted shares at an average price of 11 (\hyperref[meth:earnings-per-share]{EPS}).
 \end{itemize}
 
-\qffield{Pitfalls} Holding the share count fixed while adding back share-based expense. Using the current share price for dilution in a scenario where the price differs. Ignoring the cash received on exercise.
+\qffield{Pitfalls} Holding the share count fixed while adding back share-based expense. Deducting the expense for future grants and also dividing by a share count that includes those future grants. Using the current share price for dilution in a scenario where the price differs. Ignoring the cash received on exercise.
 
 \qffield{See also} \hyperref[meth:share-based-compensation-reporting]{reporting}; \hyperref[meth:free-cash-flow-coverage]{free cash flow}.
 
@@ -196,7 +203,8 @@ Remeasurements are not forecast in a base case but are stress-tested with the di
 \begin{itemize}
 \item The 2025 deficit is 48.16. Service cost of 11 is in selling and administration, net interest of 2.16 in finance costs, and contributions of 15 in operating cash flow.
 \item The forecast grows service cost 3~percent a year, charges 4~percent net interest on the opening deficit and assumes contributions of 15, so the deficit falls as contributions exceed cost.
-\item As a debt-like claim after tax, the deficit adds 36.12. That raises 2025 debt to equity from 0.55 to 0.60, and the lender's downside leverage for the conditional option from 2.05 to 2.24 times (\hyperref[ex:integrated-credit-decision]{decision}).
+\item As a debt-like claim after tax, the deficit adds 36.12. That raises 2025 debt to equity from 0.55 to 0.60, and the lender's downside leverage for the recommended option from 1.99 to 2.18 times (\hyperref[ex:integrated-credit-decision]{decision}).
+\item In valuation the after-tax deficit is deducted from enterprise value, so FCFF excludes contributions above service cost (\hyperref[meth:free-cash-flow-coverage]{free cash flow}). Under Harbour's simplified tax rule the cost is deducted when recognised, so settling the existing deficit brings no further deduction and the pre-tax 48.16 would be the stricter claim, lowering equity by 12.04.
 \end{itemize}
 \emph{Sensitivity.} For a 25-year level benefit stream discounted at 4~percent (modified duration 10.57), a 50~bp rate rise lowers the obligation by 5.08~percent exactly, against 5.28~percent by the duration approximation.
 

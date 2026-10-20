@@ -13,6 +13,12 @@ simulated or iterated quantities; amortisation schedules versus annuity formulas
 versus summary formulas; invariance checks (currency units, classification changes that move but do not change
 cash). Numbers are illustrative, not data about any real company.
 
+Corrections of 2026-10-20 (accounting correction pass): part 3 separates the statutory cash-flow presentation from
+valuation reinvestment (right-of-use additions, share-based pay, the pension deficit as debt); part 15 replaces the
+opening-balance / 5 development rule and the pooled acquired intangibles with explicit straight-line schedules;
+part 17 values Harbour with consistent conventions, an enterprise-to-equity bridge and a terminal check that states
+what is held fixed; part 21 times the acquisition at 1 April 2026 and re-evaluates the facility decision.
+
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
 Run: uv run python statement-analysis-checks.py   (numpy, scipy). Exits 1 on failure.
@@ -661,6 +667,45 @@ ok(
     "FCFF bridge: EBIT route + SBC + (service cost - contributions) + disposal loss + tax difference = CFO route",
     close(fcff_ebit_book + sum(bridge.values()), fcff_cfo, 1e-9),
     ", ".join(f"{k} {v:+.2f}" for k, v in bridge.items()),
+)
+# Valuation conventions (correction of 2026-10-20). The accounting FCFF above treats leases as financing (lease
+# payments outside FCFF, liabilities in debt) but omits the right-of-use asset added in 2025 (30, non-cash, so
+# correctly absent from the statutory cash-flow statement, IAS 7 paras. 43-44). Economically the addition is
+# capital expenditure financed by new lease debt (Damodaran, Leases, Debt and Value, 2009, pp. 25-27).
+rou_add = p25["new_lease"]
+fcff_lease = fcff_cfo - rou_add
+ok(
+    "leases as debt: deducting the 30 right-of-use addition as reinvestment changes FCFF from 48.54 to 18.54",
+    close(fcff_cfo, 48.54, 1e-9) and close(fcff_lease, 18.54, 1e-9),
+)
+fcfe_debt_view = s25["cfo"] - capex_net - rou_add + (net_borrowing + rou_add)
+ok(
+    "FCFE is unchanged by the lease presentation: the addition is offset by the new lease debt (28.04)",
+    close(fcfe_debt_view, fcfe, 1e-9),
+)
+# Share-based pay: statutory CFO adds the non-cash expense back; valuation deducts it (non-deductible here, so
+# no tax effect). Pension: deficit as a debt-like claim, so contributions above service cost and the tax shield
+# on net interest are financing flows, not FCFF.
+pens_int25 = statements[2025]["flows"]["fin_pension"]
+pension_fin = p25["db_contrib"] - p25["service_cost"] - TAX * pens_int25
+fcff_val25 = fcff_lease - p25["sbc"] + pension_fin
+fcfe_val25 = fcfe - p25["sbc"]
+pension_borrow25 = p25["service_cost"] + pens_int25 - p25["db_contrib"]
+ok(
+    "2025 valuation FCFF 13.00 = 18.54 - share-based expense 9 + pension financing 3.46",
+    close(fcff_val25, 13.0, 1e-9) and close(pension_fin, 3.46, 1e-9),
+)
+ok(
+    "valuation FCFF = valuation FCFE + after-tax interest (loan, lease, pension) - net borrowing (incl. lease, pension)",
+    close(
+        fcff_val25,
+        fcfe_val25
+        + (interest_paid + pens_int25) * (1 - TAX)
+        - (net_borrowing + rou_add)
+        - pension_borrow25,
+        1e-9,
+    ),
+    f"FCFE after share-based expense {fcfe_val25:.2f}; pension net borrowing {pension_borrow25:+.2f}",
 )
 debt_close = bs_view(2025)["debt"]
 cov = dict(
@@ -1330,6 +1375,32 @@ print(
 )
 
 
+LEGACY_DEV_LIFE = (
+    5  # the 31 Dec 2025 development balance of 60 is amortised straight-line over 2026-2030
+)
+DEV_LIFE = (
+    5  # each year's capitalised development is available for use on 1 January of the next year
+)
+ACQ_INTANGIBLE_LIFE = 10  # acquired customer relationships: straight-line from completion
+ACQ_PPE_LIFE = 5  # acquired PP&E at fair value: straight-line from completion
+
+
+def straight_line(cost, life, start, years, fraction_first=1.0):
+    """Charge per calendar year for an asset available for use in year `start`; the first year may be partial.
+
+    The asset is charged once per period until its cost is exhausted, so the schedule never goes negative.
+    """
+    remaining, out = cost, {}
+    for y in years:
+        if y < start or remaining <= 1e-12:
+            out[y] = 0.0
+            continue
+        charge = min(remaining, cost / life * (fraction_first if y == start else 1.0))
+        out[y] = charge
+        remaining -= charge
+    return out
+
+
 def forecast(
     price_infl=(0.03, 0.025, 0.025),
     vol_growth=(0.03, 0.03, 0.03),
@@ -1342,35 +1413,69 @@ def forecast(
     capex_rate=0.085,
     lockup=None,
     sga_rate=0.175,
+    lockup_pro_forma=False,
 ):
     """Return yearly statements. Cash comes from the cash-flow statement; the revolver tops cash up to min_cash
     (repays when cash is above it). Interest on the revolver uses the average balance, solved by iteration.
+
+    Asset schedules (corrected 2026-10-20): the opening development balance, each later development vintage,
+    acquired intangibles and acquired PP&E are separate assets with their own useful lives and available-for-use
+    dates, each charged once. An acquisition completes part-way through 2026 (acquisition["fraction_2026"] of the
+    year); its revenue, EBITDA, amortisation and depreciation start at completion, and covenant EBITDA adds the
+    pre-completion part of the acquired business's EBITDA (pro forma), as facility agreements usually define it.
     """
     o = dict(B[2025])
     o = {
         k: (v if (k in ASSETS and k != "acc_dep") else -v) for k, v in o.items()
     }  # credits and acc_dep positive
+    o["acq_intangibles"] = 0.0
     vol, price, vcost, fixed = 100.0, 10.8, 4.8, 151.0
     out = []
+    years = range(2026, 2050)
+    legacy_dev = straight_line(o["development"], LEGACY_DEV_LIFE, 2026, years)
+    dev_vintages = {}  # year spent -> cost
+    frac = acquisition["fraction_2026"] if acquisition else 0.0
+    acq_int = straight_line(
+        acquisition["intangibles"] if acquisition else 0.0, ACQ_INTANGIBLE_LIFE, 2026, years, frac
+    )
+    acq_ppe_dep = straight_line(
+        acquisition["ppe"] if acquisition else 0.0, ACQ_PPE_LIFE, 2026, years, frac
+    )
+    acq_ppe_in_gross = (
+        0.0  # acquired PP&E is depreciated by its own schedule, not by the organic rate
+    )
     prior_lev = (bs_view(2025)["debt"] - B[2025]["cash"]) / R[2025]["ebitda"]
+    if (
+        acquisition and lockup_pro_forma
+    ):  # 2026 dividend tested on leverage pro forma for the acquisition
+        prior_lev = (bs_view(2025)["debt"] - B[2025]["cash"] + acquisition["price"]) / (
+            R[2025]["ebitda"] + acquisition["ebitda"]
+        )
     for k in range(3):
         y = 2026 + k
         vol *= 1 + vol_growth[k]
         price *= 1 + price_infl[k]
         vcost *= 1 + var_cost_infl[k]
         fixed *= 1 + fixed_infl
-        acq_ebitda = acquisition["ebitda"] * (1 + 0.03) ** k if acquisition else 0.0
+        share = (frac if k == 0 else 1.0) if acquisition else 0.0
+        acq_run_ebitda = acquisition["ebitda"] * 1.03**k if acquisition else 0.0
+        acq_ebitda = acq_run_ebitda * share
         organic = vol * price
-        acq_rev = acquisition["revenue"] * 1.03**k if acquisition else 0.0
+        acq_rev = acquisition["revenue"] * 1.03**k * share if acquisition else 0.0
         revenue = organic + acq_rev
-        dep = 0.069 * o["ppe_gross"]
-        cogs = vol * vcost + fixed + dep
+        dep_organic = 0.069 * (o["ppe_gross"] - acq_ppe_in_gross)
+        dep_acq = acq_ppe_dep[y]
+        dep = dep_organic + dep_acq
+        cogs = vol * vcost + fixed + dep_organic
         sga_cash = sga_rate * organic
         sbc = 9.0 * 1.05 ** (k + 1)
         service = 11.0 * 1.03 ** (k + 1)
         rou_dep = 24.0
         research = 0.024 * organic
-        dev_amort = o["development"] / 5
+        dev_amort = legacy_dev[y] + sum(
+            straight_line(c, DEV_LIFE, sy + 1, years)[y] for sy, c in dev_vintages.items()
+        )
+        acq_amort = acq_int[y]
         op = (
             organic
             - cogs
@@ -1381,13 +1486,15 @@ def forecast(
             - research
             - dev_amort
             + acq_ebitda
-            - (acquisition["amort"] if acquisition else 0.0)
+            - acq_amort
+            - dep_acq
         )
         lease_int = LEASE_RATE * o["lease_liab"]
         loan_int = LOAN_RATE * o["term_loan"]
         pens_int = DB_RATE * o["db_liab"]
-        acq_amort = acquisition["amort"] if acquisition else 0.0
-        capex = capex_rate * organic
+        capex = (
+            capex_rate * revenue
+        )  # 8.5% of revenue, including the acquired business from completion
         dev_capex = 0.02 * organic
         receivables = (
             organic * 61 / 365
@@ -1433,7 +1540,7 @@ def forecast(
             cfi = -capex - dev_capex - acq_cash
             divs = (0.0 if (lockup is not None and prior_lev > lockup) else payout) * profit
             lease_principal = lease_pay - lease_int
-            cff_pre = -loan_repay - lease_principal - divs - lease_int * 0
+            cff_pre = -loan_repay - lease_principal - divs
             # Interest paid is inside CFO (profit after finance costs); the revolver closes the gap to min_cash.
             cash_pre = o["cash"] + cfo + cfi + cff_pre
             new_draw = max(-o["revolver"], min_cash - cash_pre)
@@ -1448,6 +1555,7 @@ def forecast(
             acc_dep=o["acc_dep"] + dep,
             rou=o["rou"] + lease_new - rou_dep,
             development=o["development"] + dev_capex - dev_amort,
+            acq_intangibles=o["acq_intangibles"] - acq_amort,
             goodwill=o["goodwill"] + (acquisition["goodwill"] if (acquisition and k == 0) else 0.0),
             payables=payables,
             accrued_wages=accrued,
@@ -1464,11 +1572,11 @@ def forecast(
             retained=o["retained"] + profit - divs,
         )
         if acquisition and k == 0:
-            # Acquired intangibles and PP&E (net of goodwill) arrive with the purchase price.
+            # Acquired PP&E and intangibles arrive at completion at fair value (the price less goodwill).
             c["ppe_gross"] += acquisition["ppe"]
-            c["development"] += acquisition["intangibles"]
-        if acquisition:
-            c["development"] -= acq_amort
+            c["acq_intangibles"] += acquisition["intangibles"]
+            acq_ppe_in_gross = acquisition["ppe"]
+        dev_vintages[y] = dev_capex
         assets = (
             c["cash"]
             + c["receivables"]
@@ -1477,6 +1585,7 @@ def forecast(
             - c["acc_dep"]
             + c["rou"]
             + c["development"]
+            + c["acq_intangibles"]
             + c["goodwill"]
         )
         liab_eq = (
@@ -1487,6 +1596,9 @@ def forecast(
             + c["retained"]
         )
         ebitda = op + dep + rou_dep + dev_amort + acq_amort
+        cov_ebitda = ebitda + (
+            acq_run_ebitda - acq_ebitda
+        )  # pro forma for a full year of the acquisition
         debt = c["term_loan"] + c["revolver"] + c["lease_liab"]
         out.append(
             dict(
@@ -1497,6 +1609,7 @@ def forecast(
                 fin=fin,
                 pbt=pbt,
                 tax=tax,
+                current=current,
                 profit=profit,
                 cfo=cfo,
                 cfi=cfi,
@@ -1506,23 +1619,37 @@ def forecast(
                 assets=assets,
                 liab_eq=liab_eq,
                 bs=c,
+                open=o,
                 ebitda=ebitda,
+                cov_ebitda=cov_ebitda,
                 debt=debt,
                 net_debt=debt - c["cash"],
                 gross_margin=(organic - cogs) / organic,
-                interest_cover=ebitda / fin,
+                interest_cover=cov_ebitda / fin,
                 rcf=c["revolver"],
                 liquidity=c["cash"] + rcf_limit - c["revolver"],
                 interest_paid=lease_int + loan_int + rcf_int,
+                lease_int=lease_int,
+                pens_int=pens_int,
                 capex=capex + dev_capex,
+                acq_cash=acq_cash,
                 organic=organic,
                 vol=vol,
                 price=price,
                 vcost=vcost,
                 lease_principal=lease_principal,
+                lease_new=lease_new,
+                loan_repay=loan_repay,
+                sbc=sbc,
+                service=service,
+                dep=dep,
+                dev_amort=dev_amort,
+                acq_amort=acq_amort,
+                dep_acq=dep_acq,
+                rou_dep=rou_dep,
             )
         )
-        prior_lev = (debt - c["cash"]) / ebitda
+        prior_lev = (debt - c["cash"]) / cov_ebitda
         o = c
     return out
 
@@ -1543,6 +1670,72 @@ for f in base:
 ok(
     "revenue growth decomposes into volume and price: (1.03)(1.03) - 1 = 6.09% in 2026",
     close(base[0]["revenue"] / 1080.0 - 1, 1.03 * 1.03 - 1, 1e-12),
+)
+# Asset schedules (correction of 2026-10-20). The superseded rule charged opening development / 5 each year,
+# a declining-balance rule that leaves 0.8^5 = 32.768% of an isolated balance after five years; it also pooled
+# acquired intangibles with development and charged acquisition["amort"] on top.
+residual_old = 1.0
+for _ in range(5):
+    residual_old -= residual_old / 5
+ok(
+    "superseded development rule (opening balance / 5) leaves 32.768% of an isolated balance after five years",
+    close(residual_old, 0.32768, 1e-12),
+)
+pool, old_charges = 0.0, []
+for k in range(
+    3
+):  # isolated acquired 20: added to the pool at the end of 2026, plus a separate 2 a year
+    charge = pool / 5 + 2.0
+    old_charges.append(charge)
+    pool += (20.0 if k == 0 else 0.0) - charge
+ok(
+    "superseded pooling charged the acquired 20 at 2, 5.6 and 4.48 instead of 2 a year",
+    all(close(a, b, 1e-12) for a, b in zip(old_charges, (2.0, 5.6, 4.48))),
+)
+yrs = range(2026, 2045)
+for label, cost, life, start, frac in (
+    ("opening development 60 over 2026-2030", 60.0, LEGACY_DEV_LIFE, 2026, 1.0),
+    ("2026 development vintage from 1 Jan 2027", 22.0, DEV_LIFE, 2027, 1.0),
+    ("acquired intangibles 20 from 1 Apr 2026", 20.0, ACQ_INTANGIBLE_LIFE, 2026, 0.75),
+    ("acquired PP&E 10 from 1 Apr 2026", 10.0, ACQ_PPE_LIFE, 2026, 0.75),
+):
+    sched = straight_line(cost, life, start, yrs, frac)
+    carrying, path = cost, []
+    for y in yrs:
+        carrying -= sched[y]
+        path.append(carrying)
+    ok(
+        f"{label}: charges sum to cost, carrying amount ends at zero and never goes negative",
+        close(sum(sched.values()), cost, 1e-9) and close(path[-1], 0.0, 1e-9) and min(path) > -1e-9,
+        f"first charges {[round(sched[y], 4) for y in range(2026, 2030)]}",
+    )
+acq_case = forecast(
+    acquisition=dict(
+        price=60.0,
+        revenue=50.0,
+        ebitda=9.0,
+        goodwill=30.0,
+        ppe=10.0,
+        intangibles=20.0,
+        fraction_2026=0.75,
+    )
+)
+ok(
+    "acquired intangibles are charged once: 1.5, 2 and 2 in 2026-2028 (nine months, then full years)",
+    all(close(f["acq_amort"], a, 1e-12) for f, a in zip(acq_case, (1.5, 2.0, 2.0)))
+    and all(close(f["dep_acq"], a, 1e-12) for f, a in zip(acq_case, (1.5, 2.0, 2.0))),
+)
+# Independent route: the forecast development balance equals the sum of vintage carrying amounts.
+vint_bal = 60.0 - sum(straight_line(60.0, LEGACY_DEV_LIFE, 2026, yrs)[y] for y in range(2026, 2029))
+for f in base:
+    spend = 0.02 * f["organic"]
+    vint_bal += spend - sum(
+        straight_line(spend, DEV_LIFE, f["year"] + 1, yrs)[y] for y in range(2026, 2029)
+    )
+ok(
+    "2028 development balance equals the sum of vintage carrying amounts (legacy and 2026-2028 spend)",
+    close(base[2]["bs"]["development"], vint_bal, 1e-9),
+    f"{vint_bal:.4f}; charges {[round(f['dev_amort'], 4) for f in base]}",
 )
 
 
@@ -1593,24 +1786,141 @@ ok(
 
 
 # ---------------------------------------------------------------------------------------------
-print("== part 17: forecast horizon, steady state and terminal value consistency")
+print(
+    "== part 17: valuation conventions, forecast horizon, steady state and terminal value consistency"
+)
+# Valuation date 31 Dec 2025, end-of-year cash flows, WACC 8% (an input, not estimated here). Conventions
+# (corrected 2026-10-20): leases are debt, so right-of-use additions are reinvestment and lease liabilities are
+# claims; share-based pay is an operating cost for future grants (deducted, no tax effect because it is not
+# deductible here), and vested options already outstanding are a separate claim; the pension deficit is a
+# debt-like claim, so service cost is operating and contributions above it are financing.
 wacc = 0.08
-fcff = [f["cfo"] + f["interest_paid"] * (1 - TAX) - f["capex"] for f in base]
-nopat_2028 = base[2]["op"] * (1 - TAX)
+
+
+def fcff_accounting(f):
+    """The superseded valuation input: CFO + after-tax interest paid - capex and development."""
+    return f["cfo"] + f["interest_paid"] * (1 - TAX) - f["capex"]
+
+
+def fcff_valuation(f):
+    pension_fin = 15.0 - f["service"] - TAX * f["pens_int"]
+    return (
+        f["cfo"]
+        + f["interest_paid"] * (1 - TAX)
+        + pension_fin
+        - f["capex"]
+        - f["acq_cash"]
+        - f["lease_new"]
+        - f["sbc"]
+    )
+
+
+def fcff_nopat_route(f):
+    """Independent route: EBIT - cash operating taxes + D&A - working capital - all reinvestment."""
+    o, c = f["open"], f["bs"]
+    cash_tax = f["current"] - (c["tax_payable"] - o["tax_payable"])
+    op_tax = (
+        cash_tax + TAX * f["fin"]
+    )  # all finance costs are deductible; their shield belongs to WACC
+    dwc = (
+        (c["receivables"] - o["receivables"])
+        + (c["inventory"] - o["inventory"])
+        - (c["payables"] - o["payables"])
+        - (c["accrued_wages"] - o["accrued_wages"])
+        - (c["restructuring_prov"] - o["restructuring_prov"])
+    )
+    da = f["dep"] + f["rou_dep"] + f["dev_amort"] + f["acq_amort"]
+    return f["op"] - op_tax + da - dwc - f["capex"] - f["acq_cash"] - f["lease_new"]
+
+
+fcff_old = [fcff_accounting(f) for f in base]
+fcff = [fcff_valuation(f) for f in base]
+ok(
+    "valuation FCFF: CFO route equals the NOPAT route in every forecast year",
+    all(close(a, fcff_nopat_route(f), 1e-9) for a, f in zip(fcff, base)),
+    ", ".join(f"{f['year']} {a:.4f} (accounting {b:.4f})" for f, a, b in zip(base, fcff, fcff_old)),
+)
+disc = [(1 + wacc) ** -(t + 1) for t in range(3)]
+pv_rou = sum(f["lease_new"] * d for f, d in zip(base, disc))
+pv_sbc = sum(f["sbc"] * d for f, d in zip(base, disc))
+ok(
+    "PV at 8% of the omitted right-of-use additions (25 a year, 2026-2028) is 64.4274",
+    close(pv_rou, 25 * (1 - 1.08**-3) / 0.08, 1e-12) and round(pv_rou, 4) == 64.4274,
+)
+ok(
+    "PV at 8% of the share-based expense added back in 2026-2028 (9.45, 9.9225, 10.4186) is 25.5276",
+    round(pv_sbc, 4) == 25.5276,
+)
+for f in base:
+    o, c = f["open"], f["bs"]
+    fcfe_stat = f["cfo"] - f["capex"] - f["lease_principal"] - f["loan_repay"] + f["draw"]
+    fcfe_debt = (
+        f["cfo"]
+        - f["capex"]
+        - f["lease_new"]
+        + (f["lease_new"] - f["lease_principal"])
+        - f["loan_repay"]
+        + f["draw"]
+    )
+    pension_borrow = f["service"] + f["pens_int"] - 15.0
+    ok(
+        f"{f['year']}: FCFE equals dividends + change in cash and is the same with leases as debt; "
+        "FCFF = FCFE + after-tax interest - net borrowing (lease and pension included)",
+        close(fcfe_stat, f["divs"] + c["cash"] - o["cash"], 1e-9)
+        and close(fcfe_stat, fcfe_debt, 1e-12)
+        and close(
+            fcff_valuation(f),
+            (fcfe_debt - f["sbc"])
+            + (f["interest_paid"] + f["pens_int"]) * (1 - TAX)
+            - (f["lease_new"] - f["lease_principal"] - f["loan_repay"] + f["draw"])
+            - pension_borrow,
+            1e-9,
+        ),
+        f"FCFE {fcfe_stat:.4f}",
+    )
+# Lease presentation: a 25 asset leased on 1 Jan 2026 versus bought with a 25 loan on identical terms. Both give
+# the same depreciation, interest and payments; only the corrected convention gives them the same FCFF.
+lease_vs_buy = {}
+for conv in ("corrected", "superseded"):
+    buy = -25.0 / (1 + wacc)
+    lease = (-25.0 if conv == "corrected" else 0.0) / (1 + wacc)
+    lease_vs_buy[conv] = lease - buy
+ok(
+    "equivalent lease and buy-with-debt presentations give equal value only when lease additions are reinvestment",
+    close(lease_vs_buy["corrected"], 0.0, 1e-12)
+    and close(lease_vs_buy["superseded"], 25 / 1.08, 1e-12),
+    f"artificial value under the superseded convention {lease_vs_buy['superseded']:.4f}",
+)
+
+# Terminal value. NOPAT uses book taxes on EBIT with share-based pay non-deductible: EBIT - t(EBIT + SBC).
+nopat_2028 = base[2]["op"] - TAX * (base[2]["op"] + base[2]["sbc"])
 
 
 def tv_value(nopat_next, g, ronic, r):
     return nopat_next * (1 - g / ronic) / (r - g)
 
 
-tvs = [tv_value(nopat_2028 * (1 + g), g, wacc, wacc) / (1 + g) for g in (0.0, 0.02, 0.04)]
-ok(
-    "value-neutral growth: with return on new capital equal to WACC the terminal value does not depend on g",
-    max(tvs) - min(tvs) < 1e-9,
-    f"TV / NOPAT_2028 = {tvs[0] / nopat_2028:.4f} = 1/WACC",
-)
 g_ss, ronic_ss = 0.025, 0.12
-tv_2028 = tv_value(nopat_2028 * (1 + g_ss), g_ss, ronic_ss, wacc)
+nopat_2029 = nopat_2028 * (1 + g_ss)
+# (a) NOPAT_2029 held fixed: with RONIC = WACC the terminal value is NOPAT_2029 / WACC whatever g is.
+tv_fixed_next = [tv_value(nopat_2029, g, wacc, wacc) for g in (0.0, 0.02, 0.04)]
+ok(
+    "value-neutral growth, NOPAT_2029 fixed: TV_2028 = NOPAT_2029 / WACC for g = 0, 2, 4%",
+    max(tv_fixed_next) - min(tv_fixed_next) < 1e-9
+    and close(tv_fixed_next[0], nopat_2029 / wacc, 1e-9),
+    f"TV_2028 / NOPAT_2029 = {tv_fixed_next[0] / nopat_2029:.4f}",
+)
+# (b) NOPAT_2028 held fixed and NOPAT_2029 = NOPAT_2028 (1 + g): TV rises with g, because growth into 2029 needs
+# reinvestment of g NOPAT_2028 / RONIC during 2028; deducting it restores NOPAT_2028 / WACC.
+tv_fixed_cur = {g: tv_value(nopat_2028 * (1 + g), g, wacc, wacc) for g in (0.0, 0.02, 0.04)}
+net_of_2028_reinv = [tv_fixed_cur[g] - g * nopat_2028 / wacc for g in tv_fixed_cur]
+ok(
+    "NOPAT_2028 fixed: TV_2028 = NOPAT_2028 (1 + g) / WACC rises with g; less 2028 reinvestment it is invariant",
+    tv_fixed_cur[0.04] > tv_fixed_cur[0.02] > tv_fixed_cur[0.0]
+    and all(close(v, nopat_2028 / wacc, 1e-9) for v in net_of_2028_reinv),
+    ", ".join(f"g {g:.0%}: {v:.4f}" for g, v in tv_fixed_cur.items()),
+)
+tv_2028 = tv_value(nopat_2029, g_ss, ronic_ss, wacc)
 v_short = sum(c / (1 + wacc) ** (t + 1) for t, c in enumerate(fcff)) + tv_2028 / (1 + wacc) ** 3
 # Explicit extension 2029-2040 with the same steady-state rule, then a terminal value: must give the same value.
 ext, nop = [], nopat_2028
@@ -1626,15 +1936,72 @@ v_long = (
 ok(
     "lengthening the explicit horizon with the steady-state rule leaves value unchanged",
     close(v_short, v_long, 1e-6),
-    f"enterprise value {v_short:.2f}; terminal share {tv_2028 / (1 + wacc) ** 3 / v_short:.1%}",
+    f"enterprise value {v_short:.4f}; terminal share {tv_2028 / (1 + wacc) ** 3 / v_short:.1%}",
+)
+v_superseded = (
+    sum(c / (1 + wacc) ** (t + 1) for t, c in enumerate(fcff_old))
+    + tv_value(base[2]["op"] * (1 - TAX) * (1 + g_ss), g_ss, ronic_ss, wacc) / (1 + wacc) ** 3
+)
+print(
+    f"  superseded inputs (accounting FCFF, deductible-SBC NOPAT): enterprise value {v_superseded:.4f}"
 )
 # A horizon that ends before steady state: capitalising 2028's transitory revenue growth in a Gordon value of FCFF.
 g_bad = base[2]["revenue"] / base[1]["revenue"] - 1
 naive_tv = fcff[2] * (1 + g_bad) / (wacc - g_bad)
+print(
+    f"  Gordon on 2028 FCFF at transitory growth {g_bad:.2%}: TV {naive_tv:.2f} vs steady-state TV {tv_2028:.2f}"
+)
 ok(
-    "ending the horizon before steady state (Gordon on 2028 FCFF at transitory growth) overstates the terminal value",
-    naive_tv > 1.5 * tv_2028,
-    f"2028 revenue growth {g_bad:.2%}; naive TV {naive_tv:.2f} vs steady-state TV {tv_2028:.2f}",
+    "ending the horizon before steady state overstates the terminal value; 2028 reinvestment is not g / RONIC",
+    naive_tv > 1.5 * tv_2028 and abs((1 - fcff[2] / nopat_2028) - g_ss / ronic_ss) > 0.05,
+    f"2028 reinvestment rate {1 - fcff[2] / nopat_2028:.2%} vs steady state {g_ss / ronic_ss:.2%}",
+)
+# Enterprise-to-equity bridge at 31 Dec 2025. Claims: term loan, RCF and lease liabilities; the after-tax pension
+# deficit (the credit-analysis convention); 5m vested options at EUR 8 valued as claims (Black-Scholes-Merton,
+# 3 years, volatility 30%, rate 3%, dividend yield 2.5%) at the estimated value per share. Unvested awards are not
+# deducted: their cost is inside the forecast share-based expense. Shares: 100.75m.
+b25 = B[2025]
+claims = dict(
+    term_loan=-b25["term_loan"],
+    rcf=-b25["revolver"],
+    lease=-b25["lease_liab"],
+    pension_after_tax=-b25["db_liab"] * (1 - TAX),
+)
+equity_pre_options = v_short + b25["cash"] - sum(claims.values())
+shares_out, n_opt = 100.75, 5.0
+price_iv = equity_pre_options / shares_out
+for _ in range(200):
+    opt = n_opt * bs_call(price_iv, 8.0, 3.0, 0.03, 0.30, 0.025)
+    new_price = (equity_pre_options - opt) / shares_out
+    if abs(new_price - price_iv) < 1e-12:
+        break
+    price_iv = new_price
+opt_unit = bs_call(price_iv, 8.0, 3.0, 0.03, 0.30, 0.025)
+ok(
+    "equity bridge: value per share is a fixed point after deducting outstanding options valued at that price",
+    close(price_iv * shares_out + n_opt * opt_unit, equity_pre_options, 1e-9)
+    and max(0.0, price_iv * math.exp(-0.075) - 8.0 * math.exp(-0.09)) <= opt_unit <= price_iv,
+    f"EV {v_short:.2f} + cash {b25['cash']:.2f} - "
+    + ", ".join(f"{k} {v:.2f}" for k, v in claims.items())
+    + f" - options {n_opt * opt_unit:.2f} = equity {price_iv * shares_out:.2f}; per share {price_iv:.4f}",
+)
+treasury = equity_pre_options / (shares_out + n_opt * (1 - 8.0 / price_iv))
+print(
+    f"  comparison: treasury-stock dilution at that price gives {treasury:.4f} a share (exercise value only)"
+)
+ok(
+    "printed valuation figures: FCFF 31.93/50.95/57.95, NOPAT_2028 93.85, TV 1,384.68, EV 1,218.45, options 9.28, "
+    "8.49 a share (treasury stock 8.56), accounting-input EV 1,331.49",
+    [round(x, 2) for x in fcff] == [31.93, 50.95, 57.95]
+    and [round(x, 2) for x in fcff_old] == [63.19, 83.0, 90.84]
+    and round(nopat_2028, 2) == 93.85
+    and round(tv_2028, 2) == 1384.68
+    and round(v_short, 2) == 1218.45
+    and round(n_opt * opt_unit, 2) == 9.28
+    and round(price_iv, 2) == 8.49
+    and round(treasury, 2) == 8.56
+    and round(v_superseded, 2) == 1331.49
+    and round(price_iv * shares_out, 2) == 855.59,
 )
 # Forecast reasonableness: 2026 RNOA implied by the forecast against the 2025 actual (Subramanyam's ROIC check).
 f0 = base[0]
@@ -1819,8 +2186,15 @@ ok(
 print(
     "== part 21: integrated analysis - lender decision on Harbour's facility request (1 March 2026)"
 )
+# Completion on 1 April 2026, after the 1 March decision: nine months of the acquired business in 2026.
 acq = dict(
-    price=60.0, revenue=50.0, ebitda=9.0, amort=2.0, goodwill=30.0, ppe=10.0, intangibles=20.0
+    price=60.0,
+    revenue=50.0,
+    ebitda=9.0,
+    goodwill=30.0,
+    ppe=10.0,
+    intangibles=20.0,
+    fraction_2026=0.75,
 )
 down = dict(
     price_infl=(0.015, 0.02, 0.025),
@@ -1836,18 +2210,29 @@ options = {
         acquisition=acq, rcf_limit=160.0, lockup=1.75
     ),
     "C: keep 100, no acquisition": dict(rcf_limit=100.0, lockup=1.75),
+    "D: 160 facility, lock-up above 1.75x tested pro forma from completion": dict(
+        acquisition=acq, rcf_limit=160.0, lockup=1.75, lockup_pro_forma=True
+    ),
 }
-verdict = {}
+pro_forma_lev = (bs_view(2025)["debt"] - B[2025]["cash"] + acq["price"]) / (
+    R[2025]["ebitda"] + acq["ebitda"]
+)
+ok(
+    "pro forma leverage at completion: (317.46 + 60) / (195 + 9) = 1.85x, above the 1.75x trigger",
+    round(pro_forma_lev, 2) == 1.85,
+    f"{pro_forma_lev:.4f}",
+)
+verdict, results = {}, {}
 for name, kw in options.items():
     passes = True
     for scen, extra in (("base", {}), ("downside", down)):
         r = forecast(**kw, **extra)
         peak = max(x["rcf"] for x in r)
         undrawn = kw["rcf_limit"] - peak
-        lev = max(x["net_debt"] / x["ebitda"] for x in r)
+        lev = max(x["net_debt"] / x["cov_ebitda"] for x in r)
         cover = min(x["interest_cover"] for x in r)
         pens_adj_lev = max(
-            (x["net_debt"] + x["bs"]["db_liab"] * (1 - TAX)) / x["ebitda"] for x in r
+            (x["net_debt"] + x["bs"]["db_liab"] * (1 - TAX)) / x["cov_ebitda"] for x in r
         )
         good = (
             undrawn >= policy["min_undrawn"]
@@ -1855,6 +2240,9 @@ for name, kw in options.items():
             and cover >= policy["min_cover"]
         )
         passes &= good
+        results[(name[0], scen)] = dict(
+            peak=peak, undrawn=undrawn, lev=lev, cover=cover, plev=pens_adj_lev
+        )
         print(
             f"  {name} [{scen}]: peak RCF {peak:.2f}, undrawn {undrawn:.2f}, max net debt/EBITDA {lev:.3f} "
             f"(with after-tax pension deficit {pens_adj_lev:.3f}), min EBITDA/interest {cover:.2f}, "
@@ -1862,14 +2250,47 @@ for name, kw in options.items():
         )
     verdict[name] = passes
 ok(
-    "only the conditional option B meets the liquidity, leverage and cover tests in both scenarios",
-    verdict
-    == {
-        "A: 160 facility, no conditions": False,
-        "B: 160 facility, dividend lock-up above 1.75x": True,
-        "C: keep 100, no acquisition": False,
-    },
+    "corrected schedules: A, B and C fail the downside; only D (pro forma lock-up) meets every test in both scenarios",
+    verdict == {name: name.startswith("D") for name in options},
     str(verdict),
+)
+ok(
+    "B's downside failure is liquidity alone: 1.84 undrawn against 10, with leverage and cover inside policy",
+    round(results[("B", "downside")]["undrawn"], 2) == 1.84
+    and results[("B", "downside")]["lev"] <= policy["max_lev"]
+    and results[("B", "downside")]["cover"] >= policy["min_cover"],
+)
+ok(
+    "printed decision figures: B pays 15.15 in 2026 in the downside; D's downside pension-adjusted leverage is 2.18x",
+    round(
+        forecast(**options["B: 160 facility, dividend lock-up above 1.75x"], **down)[0]["divs"], 2
+    )
+    == 15.15
+    and round(results[("D", "downside")]["plev"], 2) == 2.18
+    and round(results[("D", "downside")]["undrawn"], 2) == 19.02,
+)
+capex_cut = forecast(acquisition=acq, rcf_limit=160.0, lockup=1.75, capex_rate=0.075, **down)
+ok(
+    "sensitivity: capex at 7.5% of revenue would let B pass the downside (a management lever, not a facility term)",
+    160.0 - max(x["rcf"] for x in capex_cut) >= policy["min_undrawn"]
+    and max(x["net_debt"] / x["cov_ebitda"] for x in capex_cut) <= policy["max_lev"],
+    f"undrawn {160.0 - max(x['rcf'] for x in capex_cut):.2f}",
+)
+# Sensitivities of the recommendation: a 170 facility instead of the pro forma test, and a later completion.
+alt_170 = forecast(acquisition=acq, rcf_limit=170.0, lockup=1.75, **down)
+late = forecast(
+    acquisition=dict(acq, fraction_2026=0.5),
+    rcf_limit=160.0,
+    lockup=1.75,
+    lockup_pro_forma=True,
+    **down,
+)
+ok(
+    "sensitivity: a 170 facility without the pro forma test keeps only 11.84 undrawn; D with completion on "
+    "1 July still keeps more than 10",
+    round(170.0 - max(x["rcf"] for x in alt_170), 2) == 11.84
+    and 160.0 - max(x["rcf"] for x in late) > 10,
+    f"D with July completion: undrawn {160.0 - max(x['rcf'] for x in late):.2f}",
 )
 
 print(f"\n{n_checks} checks executed")

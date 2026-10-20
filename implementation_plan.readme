@@ -2997,3 +2997,26 @@ coverage only.
 - Human review is outstanding.
 
 Details: `notes/source-review-records.md`, *Accounting and statement-analysis batch, 20 October 2026*.
+
+## 26. Accounting audit corrections on PR #30 (executed 2026-10-20)
+
+**Verified state.** PRs #29 (draft, head `6157abb`, base `main`) and #30 (draft, head
+`4a9edbc`, stacked on #29) were open and unchanged; `main` (`0b78e4d`) is an ancestor of both;
+the checkout was clean at `4a9edbc`; coverage 236/424 objectives and 532/1,030 items. The six
+corrections are ordinary commits on PR #30's branch.
+
+**Corrections** (details and figures: `notes/source-review-records.md`, *Accounting correction pass*):
+1. valuation separates statement presentation from reinvestment: right-of-use additions are
+   reinvestment when leases are debt (2025 FCFF 48.54 to 18.54; FCFE unchanged), with an
+   enterprise-to-equity bridge;
+2. share-based pay stays added back in statutory CFO but is a cost in valuation, with outstanding
+   options deducted as claims and no double count of unvested awards;
+3. development and acquired assets have explicit straight-line schedules from availability for
+   use; the acquisition completes 1 April 2026; all lender scenarios were re-run, B now fails the
+   downside liquidity test and a pro forma lock-up (D) is recommended;
+4. the IFRS 9 equity FVOCI election is restated from paras. 4.1.4 and 5.7.5;
+5. the SEC two-year non-GAAP condition is restated from staff interpretations 102.03 and 100.01;
+6. the terminal-value check states what is held fixed.
+
+**Evidence.** `statement-analysis-checks.py`: 138 checks (from 111), including checks that detect
+each audited error. Eight objectives and 11 outline items revalidated; coverage unchanged.

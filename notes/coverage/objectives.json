@@ -3513,7 +3513,7 @@
     "entry_evidence": [
      "meth:financial-instruments-liabilities"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (covenant-breach reclassification: current ratio 1.84 to 0.94); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (covenant-breach reclassification: current ratio 1.84 to 0.94); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): conceptual equity-election example (eligible versus held-for-trading holding), no new numerical check"
    },
    "supersedes": null
   },
@@ -3811,17 +3811,32 @@
      {
       "key": "financial-statement-analysis-2009",
       "locator": "pp. 415, 417-419"
+     },
+     {
+      "key": "leases-debt-value-2009",
+      "locator": "PDF pp. 25-27, 30-32"
+     },
+     {
+      "key": "free-cash-flow-primer-2022",
+      "locator": "slide 14"
+     },
+     {
+      "key": "eu-2023-1803-ias7",
+      "locator": "IAS 7 paras. 43-44"
      }
     ],
     "reading_notes": [
      "notes/readings/investment-valuation-2012.md",
-     "notes/readings/financial-statement-analysis-2009.md"
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/leases-debt-value-2009.md",
+     "notes/readings/free-cash-flow-primer-2022.md",
+     "notes/readings/eu-2023-1803-ias7.md"
     ],
     "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
     "entry_evidence": [
      "meth:free-cash-flow-coverage"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 3 (FCFF two routes with explicit bridge; FCFE from CFO and from FCFF; FCFE = distributions + change in cash; coverage ratios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 3 (FCFF two routes with explicit bridge; FCFE from CFO and from FCFF; FCFE = distributions + change in cash; coverage ratios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 3 adds lease-addition, FCFE-invariance, valuation-FCFF and FCFF-FCFE identity checks; part 17 adds forecast-year CFO and NOPAT routes and FCFE invariance"
    },
    "supersedes": null
   },
@@ -4601,19 +4616,24 @@
      {
       "key": "eu-2026-338-ifrs18",
       "locator": "Annex, IFRS 18 paras. 117-118, 121-123"
+     },
+     {
+      "key": "sec-non-gaap-cdi-2022",
+      "locator": "Questions 100.01 and 102.03"
      }
     ],
     "reading_notes": [
      "notes/readings/financial-statement-analysis-2009.md",
      "notes/readings/sec-regulation-g.md",
      "notes/readings/sec-sk-item-10e.md",
-     "notes/readings/eu-2026-338-ifrs18.md"
+     "notes/readings/eu-2026-338-ifrs18.md",
+     "notes/readings/sec-non-gaap-cdi-2022.md"
     ],
     "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
     "entry_evidence": [
      "meth:earnings-management-presentation"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 14 and 20 (variant effects; MPM reconciliation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 14 and 20 (variant effects; MPM reconciliation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): SEC staff interpretation of the two-year condition applied to the restructuring example, conceptual"
    },
    "supersedes": null
   },
@@ -4841,16 +4861,26 @@
      {
       "key": "financial-statement-analysis-2009",
       "locator": "pp. 494-498"
+     },
+     {
+      "key": "eu-2023-1803-ias38",
+      "locator": "IAS 38 para. 97"
+     },
+     {
+      "key": "eu-2023-1803-ias16",
+      "locator": "IAS 16 para. 55"
      }
     ],
     "reading_notes": [
-     "notes/readings/financial-statement-analysis-2009.md"
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2023-1803-ias38.md",
+     "notes/readings/eu-2023-1803-ias16.md"
     ],
     "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
     "entry_evidence": [
      "ex:harbour-pro-forma-model"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 15 (balance sheet balances without a plug; revolver rule; iteration; growth decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 15 (balance sheet balances without a plug; revolver rule; iteration; growth decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 15 asset-schedule checks (superseded rules detected; each schedule exhausts cost once; vintage-sum route)"
    },
    "supersedes": null
   },
@@ -4987,7 +5017,7 @@
     "entry_evidence": [
      "meth:forecast-horizon-steady-state"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 17 (value-neutral growth; horizon extension invariance; naive terminal value); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 17 (value-neutral growth; horizon extension invariance; naive terminal value); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 17 separates NOPAT_2029-fixed and NOPAT_2028-fixed terminal checks, consistent valuation conventions and equity bridge"
    },
    "supersedes": null
   },
@@ -9122,17 +9152,27 @@
      {
       "key": "eu-2023-1803-ias33",
       "locator": "IAS 33 paras. 45-47A"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 445-449"
+     },
+     {
+      "key": "free-cash-flow-primer-2022",
+      "locator": "slide 14"
      }
     ],
     "reading_notes": [
      "notes/readings/eu-2023-1803-ifrs2.md",
-     "notes/readings/eu-2023-1803-ias33.md"
+     "notes/readings/eu-2023-1803-ias33.md",
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/free-cash-flow-primer-2022.md"
     ],
     "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
     "entry_evidence": [
      "meth:share-based-compensation-modelling"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 4, 12 and 15 (treasury-stock dilution at forecast prices; forecast SBC); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 4, 12 and 15 (treasury-stock dilution at forecast prices; forecast SBC); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 17 PV of add-backs (25.5276) and option claims by iterated BSM"
    },
    "supersedes": null
   },
@@ -9179,7 +9219,7 @@
     "entry_evidence": [
      "meth:post-employment-benefit-modelling"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 11, 15 and 21 (duration vs exact repricing; after-tax deficit; deficit in forecast and decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 11, 15 and 21 (duration vs exact repricing; after-tax deficit; deficit in forecast and decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): valuation treatment of the deficit checked in parts 3 and 17"
    },
    "supersedes": null
   },
@@ -9504,7 +9544,7 @@
      "ex:integrated-credit-decision",
      "def:statement-analysis-framework"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 21 (three alternatives, base and downside, all balanced; only B passes); applied in part 21 (credit decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 21 (three alternatives, base and downside, all balanced; only B passes); applied in part 21 (credit decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction 2026-10-20 (source-review-records.md, Accounting correction pass): part 21 recomputed with corrected schedules and 1 April completion: A, B, C fail the downside, D passes; sensitivities"
    },
    "supersedes": null
   },

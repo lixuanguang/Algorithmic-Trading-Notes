@@ -3,7 +3,7 @@
 These entries apply the framework to a decision, make companies comparable by adjusting for reporting choices and standards, and evaluate how changes in standards, methods and assumptions affect statements and ratios.
 
 \begin{qfexample}[Integrated analysis for a decision: a lender's response to Harbour Tools' request to raise its revolving facility, with constraints, alternatives, stress tests and a justified recommendation]\label{ex:integrated-credit-decision}
-\qffield{Statement} \emph{Objective and question} (\hyperref[def:statement-analysis-framework]{framework}). On 1~March 2026 Harbour Tools asks its relationship bank to raise the revolving credit facility (RCF) from 100 to 160. The purpose is to fund a 60 cash acquisition, at the start of 2026, of a bolt-on business with revenue of 50 and EBITDA of 9, which brings 20 of amortising intangibles, 10 of PP\&E and 30 of goodwill. The lender's question is whether Harbour can service and repay the facility under a plausible downside, and on what terms. A lender's credit analysis focuses on downside risk: the variability of cash flows matters more than their level, and its criteria are the borrower's ability to repay from identified sources over the term \citep[pp.~8--9 and~636--637]{financial-statement-analysis-2009}.
+\qffield{Statement} \emph{Objective and question} (\hyperref[def:statement-analysis-framework]{framework}). On 1~March 2026 Harbour Tools asks its relationship bank to raise the revolving credit facility (RCF) from 100 to 160. The purpose is to fund a 60 cash acquisition of a bolt-on business with annual revenue of 50 and EBITDA of 9, completing on 1~April 2026 if the facility is approved. It brings 20 of customer relationships amortised over ten years, 10 of PP\&E depreciated over five years from completion, and 30 of goodwill; the acquired business is bought free of working capital, and the purchase of its assets makes their amortisation and depreciation deductible. The lender's question is whether Harbour can service and repay the facility under a plausible downside, and on what terms. A lender's credit analysis focuses on downside risk: the variability of cash flows matters more than their level, and its criteria are the borrower's ability to repay from identified sources over the term \citep[pp.~8--9 and~636--637]{financial-statement-analysis-2009}.
 
 \emph{Constraints} (the lender's credit policy for this risk grade):
 \begin{itemize}
@@ -11,13 +11,13 @@ These entries apply the framework to a decision, make companies comparable by ad
 \item net debt to EBITDA at most 2.25 times, which gives 10~percent EBITDA headroom under a 2.50~times covenant;
 \item EBITDA cover of interest at least 6 times.
 \end{itemize}
-Net debt includes lease liabilities. The after-tax pension deficit is shown as a sensitivity.
+Net debt includes lease liabilities. Covenant EBITDA is pro forma: in 2026 it adds the acquired business's EBITDA for the three months before completion (2.25), as facility agreements usually allow. The after-tax pension deficit is shown as a sensitivity.
 
 \emph{Evidence and adjustments} (\hyperref[meth:accounting-analysis-adjustments]{accounting analysis}). The 2025 statements are of adequate quality (\hyperref[meth:cash-flow-balance-sheet-quality]{evaluation}): debt-like items are on the balance sheet, and 12 of restructuring is unpaid. 2025 leverage was 1.63 times (1.49 excluding restructuring), and margins are under cost pressure (\hyperref[meth:ratio-based-evaluation]{ratios}).
 
-\emph{Scenarios} (\hyperref[ex:harbour-pro-forma-model]{forecast model}). The base case is the model's. The downside has volume $-4$~percent, variable costs $+6$~percent and price $+1.5$~percent in 2026, then gradual recovery (pass-through about one-quarter; \hyperref[meth:competition-inflation-forecasting]{competition}).
+\emph{Scenarios} (\hyperref[ex:harbour-pro-forma-model]{forecast model}). The base case is the model's, with nine months of the acquired business in 2026 and capital expenditure of 8.5~percent of its revenue from completion. The downside has volume $-4$~percent, variable costs $+6$~percent and price $+1.5$~percent in 2026, then gradual recovery (pass-through about one-quarter; \hyperref[meth:competition-inflation-forecasting]{competition}).
 
-\qffield{Notation} Undrawn $=$ facility $-$ peak year-end RCF. Lock-up: no dividend in a year when the previous year-end net debt to EBITDA exceeds the trigger.
+\qffield{Notation} Undrawn $=$ facility $-$ peak year-end RCF. Lock-up: no dividend in a year when the previous year-end net debt to covenant EBITDA exceeds the trigger. A pro forma test applies the trigger in 2026 to leverage at completion: $(317.46+60)/(195+9)=1.85$ times.
 
 \qffield{Conditions} Hypothetical company and policy; the decision illustrates the method. All scenarios balance in the model without a plug. Covenant definitions, such as EBITDA adjustments and the treatment of leases and pensions, must be fixed in the facility agreement. A covenant tested at the reporting date that is breached makes the loan current even if a waiver follows; covenants tested later are disclosed with the risk of breach \citep[Annex, IAS~1 paras.~72B, 74 and~76ZA]{eu-2023-2822-ias1}.
 
@@ -28,24 +28,29 @@ Net debt includes lease liabilities. The after-tax pension deficit is shown as a
 \toprule
 Alternative and scenario & Peak RCF & Undrawn & Max net debt$/$EBITDA & Min EBITDA$/$interest\\
 \midrule
-A: 160, no conditions, base & 130.79 & 29.21 & 1.59 & 11.5\\
-A: 160, no conditions, downside & 169.16 & $-9.16$ & 2.05 & 8.1\\
-B: 160 with dividend lock-up above 1.75$\times$, base & 130.79 & 29.21 & 1.59 & 11.5\\
-B: 160 with dividend lock-up above 1.75$\times$, downside & 145.03 & 14.97 & 2.05 & 8.2\\
-C: keep 100, no acquisition, base & 86.75 & 13.25 & 1.41 & 12.3\\
-C: keep 100, no acquisition, downside & 102.11 & $-2.11$ & 1.85 & 9.1\\
+A: 160, no conditions, base & 141.42 & 18.58 & 1.61 & 11.3\\
+A: 160, no conditions, downside & 180.48 & $-20.48$ & 2.10 & 8.0\\
+B: 160, lock-up above 1.75$\times$, base & 141.42 & 18.58 & 1.61 & 11.3\\
+B: 160, lock-up above 1.75$\times$, downside & 158.16 & 1.84 & 2.07 & 8.1\\
+C: keep 100, no acquisition, base & 83.50 & 16.50 & 1.41 & 12.3\\
+C: keep 100, no acquisition, downside & 101.22 & $-1.22$ & 1.85 & 9.1\\
+D: 160, lock-up tested pro forma, base & 108.66 & 51.34 & 1.48 & 12.2\\
+D: 160, lock-up tested pro forma, downside & 140.98 & 19.02 & 1.99 & 8.5\\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \emph{Evaluation.}
 \begin{itemize}
-\item \emph{A} exceeds the facility in the downside, because dividends continue while the RCF funds investment.
+\item \emph{A} exceeds the facility in the downside, because dividends continue while the RCF funds investment and the acquisition.
+\item \emph{B} stops dividends in 2027--2028 in the downside but still pays 15.15 in 2026, because 2025 leverage of 1.63 is below the trigger although the acquisition lifts it. Leverage and cover stay inside policy, but only 1.84 remains undrawn, against the required 10.
 \item \emph{C}, declining the increase and the acquisition, does not remove the risk. Even without the acquisition the downside overdraws a 100 facility, because the base business already relies on the RCF to fund capital spending and dividends.
-\item \emph{B} meets every test in both scenarios. The lock-up stops dividends in 2027--2028 in the downside (16.16 then 0, 0) and keeps 14.97 undrawn. Including the after-tax pension deficit, its downside leverage is 2.24 times, just inside the 2.25 limit.
+\item \emph{D} tests the lock-up on leverage at completion (1.85 times), so no dividend is paid for 2026 in either scenario. Dividends resume in the base case from 2027 (31.21 and 33.19); in the downside none is paid in 2026--2028. It meets every test with 19.02 undrawn. Including the after-tax pension deficit, downside leverage is 2.18 times, inside the 2.25 limit.
 \end{itemize}
 
-\emph{Recommendation.} Approve option B: a 160 facility with a dividend lock-up while net debt to EBITDA exceeds 1.75 times, a 2.50~times leverage covenant and a 6~times interest-cover covenant. Covenant EBITDA should exclude only defined restructuring costs up to a cap, so that recurring charges cannot be added back. Because pension deficit headroom is thin, the agreement should define leverage including the after-tax deficit, or add a separate test on the deficit.
+\emph{Sensitivity.} A 170 facility on B's terms would also pass, but with only 11.84 undrawn and 10 more of exposure. If completion slipped to 1~July, D would still keep 18.01 undrawn. Cutting capital expenditure to 7.5~percent of revenue would let even B pass, but that lever belongs to management and cannot be relied on in the facility terms.
+
+\emph{Recommendation.} Approve option D: a 160 facility with a dividend lock-up while net debt to covenant EBITDA exceeds 1.75 times, tested from completion on pro forma leverage, a 2.50~times leverage covenant and a 6~times interest-cover covenant. The cost to shareholders is the 2026 dividend in the base case; in exchange the lender keeps headroom in the downside. Covenant EBITDA should allow the acquisition's pre-completion EBITDA and exclude only defined restructuring costs up to a cap, so that recurring charges cannot be added back. Because pension headroom is thin, the agreement should define leverage including the after-tax deficit, or add a separate test on the deficit.
 
 \emph{Monitoring.} Quarterly compliance certificates; the gross margin and pass-through against the forecast; capital expenditure (which management can defer in a downside); any new supplier finance, which would be counted as debt (\hyperref[meth:report-quality-evaluation]{supplier finance}); and the 2027 IFRS~18 transition, which raises reported operating cash flow by interest paid without changing cash (\hyperref[meth:accounting-change-effects]{IFRS~18}).
 

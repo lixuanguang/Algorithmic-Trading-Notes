@@ -3020,3 +3020,41 @@ corrections are ordinary commits on PR #30's branch.
 
 **Evidence.** `statement-analysis-checks.py`: 138 checks (from 111), including checks that detect
 each audited error. Eight objectives and 11 outline items revalidated; coverage unchanged.
+
+## 27. Corporate-finance and equity-valuation batch (executed 2026-10-20)
+
+**Scope.** 45 objectives (20 corporate finance, 25 equity), all `missing` at the start, with
+123 outline items mapped to no outside objective. Branch
+`codex/corporate-equity-valuation-20261020` from the corrected PR #30 head `1f51fcf`, with a
+stacked draft PR to `codex/accounting-statement-analysis-20261020`. Implemented in
+prerequisite order, with market multiples before corporate restructuring.
+
+**Sources (Section 3.5).** Damodaran's *Applied Corporate Finance* (2014) and *Investment
+Valuation* (2012) for the analysis; primary texts for rules: the G20/OECD Principles,
+SRD II, Delaware law, 15 U.S.C. 78l(g), SEC Rules 10b-18 and 13e-4, FINRA Rule 11140,
+ESRS 1 (2026), IAS 1 and IFRS 13, the US Merger Guidelines, GICS and FTSE Russell free-float
+rules; articles by Modigliani and Miller, Lang and Stulz, Berg et al., Cooper and
+Lambertides, Rochet and Tirole, and Osterwalder et al. Curriculum volumes and workbooks were
+not used. ISSB S1/S2, Rev. Rul. 59-60 and Nasdaq Rule 5550 were not read. 22 source keys were
+added, 22 reading notes written and 6 extended.
+
+**Entries.** 44 new entries: a new `corporate-finance` chapter of seven sections (20 entries)
+and five new sections at the start of `systematic-equities` (24 entries). Harbour Tools is
+reused for the WACC (8.02 percent at market weights), the cost-of-capital curve, payout
+sustainability, the valuation judgement against a price of 11.00 and the bolt-on
+acquisition; other examples are stand-alone hypothetical companies.
+
+**Evidence.** `corporate-finance-checks.py` (16 parts, 65 checks) and
+`equity-valuation-checks.py` (18 parts, 62 checks); both reuse the Harbour script's
+outputs.
+
+**Coverage.** 281 of 424 objectives; 655 of 1,030 outline items (Level I 256, Level II
+216, Portfolio Management 48, shared core 135); 375 unreviewed. Editorial coverage only.
+
+**Remaining gaps.**
+- The rating-to-spread schedule is illustrative.
+- ISSB standards and the US tax definition of fair market value are unread.
+- Primary studies cited through Damodaran are unread.
+- Human review is outstanding.
+
+Details: `notes/source-review-records.md`, *Corporate-finance and equity-valuation batch, 20 October 2026*.

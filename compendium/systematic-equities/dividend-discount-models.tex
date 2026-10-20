@@ -1,0 +1,153 @@
+\section{Dividend discount models}
+
+\begin{qfmethod}[The dividend discount model and the Gordon growth model: single- and multiple-period values, the constant-growth assumptions and their shortcomings, strengths and limits, implied growth and the required return]\label{meth:gordon-growth-model}
+\qffield{Statement} \emph{The general model.} The value of a share is the present value of expected dividends through infinity. When the share is sold, its price is itself determined by the dividends that follow \citep[p.~323]{investment-valuation-2012}. For a holding period of $n$ years,
+\[ V_0=\sum_{t=1}^{n}\frac{D_t}{(1+r)^t}+\frac{P_n}{(1+r)^n}, \]
+and for one period $V_0=(D_1+P_1)/(1+r)$. Expected dividends depend on growth and the payout ratio; the discount rate is the cost of equity.
+
+\emph{Gordon growth model.} If dividends grow at a constant rate $g<r$ forever, $V_0=D_1/(r-g)=D_0(1+g)/(r-g)$ \citep[p.~324]{investment-valuation-2012}. The model assumes stable growth in earnings and dividends at the same rate; otherwise the payout ratio drifts towards zero or above 100 percent. Several conditions keep the inputs consistent:
+\begin{itemize}
+\item growth no higher than the nominal growth of the economy, for which the risk-free rate is a proxy;
+\item a payout consistent with growth and the return on equity, $1-g/\mathrm{ROE}$ (p.~330);
+\item the cost of equity of a mature firm, with beta near one.
+\end{itemize}
+
+\emph{Shortcomings of the growth assumption.} Value rises without limit as $g$ approaches $r$, so the model is very sensitive to $g$ near $r$ (p.~325). Growth is not free: higher growth needs a lower payout. Constant growth is an approximation even for a cyclical firm, acceptable if $g$ is the average rate. The model suits firms growing at or below the economy with established payouts. It undervalues firms that pay less than they can and accumulate cash (p.~326).
+
+\emph{Implied growth and required return.} Solving the model for a market price gives the growth rate the market expects, $g=(rP-D_0)/(P+D_0)$, or the required return, $r=D_1/P+g$. Damodaran's Con Ed example values the share at 57.46 against a price of 53.47, which implies growth of 3.21 percent (pp.~326--327). Any DDM can be solved numerically for the rate that equates its dividends with the price (\hyperref[meth:multistage-ddm]{multistage models}). That rate is an expected return only if the forecast dividends are unbiased.
+
+\qffield{Practice} \emph{Original: Norland Water}, a regulated utility. It paid $D_0=1.20$, dividends grow 3 percent a year, and the required return is 7.5 percent.
+\begin{itemize}
+\item \emph{Value.} $1.236/0.045=27.47$; a 4,000-year explicit summation gives the same.
+\item \emph{One period.} Next year's price is $1.2731/0.045=28.29$, and $(1.236+28.29)/1.075=27.47$.
+\item \emph{Sensitivity.} At a required return of 7.0 percent the value is 30.90; at 8.0 percent it is 24.72. One point of required return moves the value by about a fifth.
+\item \emph{Implied growth.} At a market price of 30, $g=(0.075\times30-1.20)/(31.20)=3.365$ percent. Equivalently, at 3 percent growth the price implies a required return of $1.236/30+0.03=7.12$ percent.
+\end{itemize}
+An analyst who thinks 3.365 percent nominal growth is too high for a regulated utility, whose allowed returns are reset periodically, would call the stock overvalued at 30. Another who thinks the cost of equity is 7.1 percent rather than 7.5 would not.
+
+\emph{Choosing the model.} Gordon suits Norland: stable regulated earnings, a high payout tied to capacity, and growth below the economy. It would not suit a firm with high growth, irregular payouts or changing leverage.
+
+\qffield{Conditions} The model needs $r>g$ and a stable payout ratio, leverage and return on equity. It is a terminal-value tool for firms that will reach that state (\hyperref[meth:multistage-ddm]{multistage models}).
+
+\qffield{Pitfalls} Using $D_0$ in the numerator. Using a growth rate above long-run nominal growth. Combining a high growth rate with a high payout that the ROE cannot fund. Treating the implied return as a forecast without testing the dividend forecast.
+
+\qffield{See also} \hyperref[meth:instrument-present-value]{present value of equity cash flows}; \hyperref[meth:pvgo-justified-pe]{PVGO and P/E}; \hyperref[meth:sustainable-growth]{sustainable growth}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Valuing preferred stock: perpetual fixed-rate preferred, cumulative and non-cumulative dividends, and the effect of call, put (retractable), conversion and floating-rate features]\label{meth:preferred-stock-valuation}
+\qffield{Statement} A straight perpetual preferred share pays a fixed dividend $D$ forever and is valued as a perpetuity, $V=D/r_p$. Equivalently, its required return is the dividend over the price \citep[p.~144]{applied-corporate-finance-2014}. Preferred dividends are usually cumulative: missed dividends accumulate as arrears that must be paid before any common dividend. Preferred holders have no votes except on matters affecting their claims and rank after creditors \citep[p.~291]{applied-corporate-finance-2014}. Some issues give voting rights if dividends go unpaid, as Vale's preferred shares did (pp.~447--448).
+
+\emph{Contingency features} change the cash flows and therefore the value (Interpretation):
+\begin{itemize}
+\item \emph{Callable}: the issuer may redeem at a call price. When rates fall, the call caps the value near the call price, so the investor holds a short call and the share is worth less than a non-callable equivalent.
+\item \emph{Retractable or puttable}: the holder may sell back at a set price. When rates rise, the put sets a floor, so the share is worth more than a non-puttable equivalent.
+\item \emph{Convertible}: the holder may exchange for common shares. The share is worth at least its conversion value and its straight-preferred value.
+\item \emph{Floating or reset rate}: the dividend resets with market rates, which reduces price sensitivity.
+\end{itemize}
+Under Delaware law, preferred stock may be made redeemable at the company's option, the holder's option or on a specified event \citep[sec.~151(b)]{delaware-gcl-2026}.
+
+\qffield{Practice} \emph{Original.} A 5 percent preferred on 100 par pays 5 a year.
+\begin{itemize}
+\item \emph{Perpetual.} At a required return of 6.25 percent it is worth $5/0.0625=80.00$. The existing \hyperref[meth:instrument-present-value]{present-value} entry gives a similar case: 6 at 7.5 percent is 80.00.
+\item \emph{Callable.} If yields fall to 4.5 percent, a non-callable perpetual is worth 111.11. If the issuer can call at 100 in five years, it will, and the share is worth the present value of five dividends and 100 at year five, 102.19. The call costs the holder 8.92.
+\item \emph{Cumulative.} If two dividends are skipped, arrears of 10 must be paid before the common receives anything. A non-cumulative issue would simply lose them.
+\end{itemize}
+
+\qffield{Conditions} The perpetuity formula assumes the dividend is paid forever with the risk built into $r_p$. For a preferred share with significant default risk, the promised dividend overstates the expected one. Tax treatment of preferred dividends for corporate holders, such as the US dividends-received deduction, affects who holds them and at what yield.
+
+\qffield{Pitfalls} Valuing a callable preferred as a perpetuity when rates are below its coupon. Treating preferred stock as equity in the WACC weights, or as debt, without checking its terms. Ignoring arrears on cumulative issues when valuing the common.
+
+\qffield{See also} \hyperref[def:equity-instruments]{equity instruments}; \hyperref[meth:wacc-calculation]{cost of preferred stock in the WACC}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[The present value of growth opportunities and the justified P/E: splitting value into no-growth value and PVGO, justified leading and trailing P/E from the Gordon model, and when growth adds value]\label{meth:pvgo-justified-pe}
+\qffield{Statement} \emph{PVGO.} A share's value can be split into the value of current earnings as a no-growth perpetuity and the present value of growth opportunities:
+\[ V_0=\frac{E_1}{r}+\mathrm{PVGO}. \]
+Damodaran decomposes value into assets in place, stable growth and extraordinary growth. In his example these are 44.94, 8.71 and 15.25. Growth adds value only when investments earn more than the cost of equity; when ROE equals $r$, growth is worthless \citep[pp.~337--338]{investment-valuation-2012}.
+
+\emph{Justified P/E.} Dividing the Gordon model by earnings gives the P/E justified by fundamentals \citep[pp.~460--461, 471--473]{investment-valuation-2012}:
+\[ \frac{P_0}{E_1}=\frac{1-b}{r-g}\ \text{(leading)},\qquad\frac{P_0}{E_0}=\frac{(1-b)(1+g)}{r-g}\ \text{(trailing)}, \]
+with payout $1-b$ and $g=b\times\mathrm{ROE}$. The P/E rises with growth and payout and falls with risk. Higher growth from lower payout raises the P/E only if ROE exceeds $r$. Combining the two expressions, $P_0/E_1=1/r+\mathrm{PVGO}/E_1$: the P/E is the no-growth P/E plus the value of growth per unit of earnings.
+
+\qffield{Practice} \emph{Original.} $E_1=2.00$, $r=9$ percent, ROE 12 percent and retention 50 percent, so $g=6$ percent.
+\begin{itemize}
+\item Value is $1.00/0.03=33.33$. The no-growth value is $2.00/0.09=22.22$, so PVGO is 11.11, a third of the price.
+\item The justified leading P/E is $0.5/0.03=16.67=11.11+5.56$, where $1/r=11.11$ and $\mathrm{PVGO}/E_1=5.56$.
+\item The justified trailing P/E, on $E_0=2.00/1.06=1.8868$, is $0.5\times1.06/0.03=17.67$.
+\item If ROE were 9 percent, equal to $r$, retention of half the earnings would give 4.5 percent growth but the value would be $1.00/0.045=22.22$. PVGO would be zero, and retention would buy growth worth nothing.
+\end{itemize}
+A stock at 25 times leading earnings with the same risk would need PVGO of $25\times2-22.22=27.78$, more than half its price. That requires either ROE well above 12 percent or a longer period of high growth.
+
+\qffield{Conditions} The decomposition depends on the earnings definition. Use normalised earnings for $E_1$ in a cyclical firm (\hyperref[meth:normalised-earnings]{normalised EPS}). Leading and trailing P/E differ by the factor $1+g$ and must not be compared with each other.
+
+\qffield{Pitfalls} Treating a high P/E as evidence of growth without asking whether ROE exceeds the cost of equity. Mixing trailing earnings with a leading justified P/E. Reading PVGO as certain: it is the part of value most exposed to disappointment.
+
+\qffield{See also} \hyperref[meth:gordon-growth-model]{Gordon model}; \hyperref[meth:justified-multiples]{justified multiples}; \hyperref[meth:sustainable-growth]{sustainable growth}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Multistage dividend discount models: growth, transition and maturity phases, two-stage, H-model and three-stage models, correctly dated terminal values, required returns from multistage models, and spreadsheet modelling]\label{meth:multistage-ddm}
+\qffield{Statement} \emph{Phases.} Companies typically pass through three phases \citep[pp.~329--331, 340--341]{investment-valuation-2012}:
+\begin{itemize}
+\item \emph{high growth}, with low payout and high reinvestment;
+\item \emph{transition}, as growth and returns fade towards the industry and payout rises;
+\item \emph{maturity}, with stable growth, a payout consistent with it, and beta, ROE and leverage near industry norms.
+\end{itemize}
+Multistage models forecast dividends explicitly through the early phases and capitalise the mature phase in a terminal value.
+
+\emph{Models.}
+\begin{itemize}
+\item \emph{Two-stage}: high growth for $n$ years, then stable growth (pp.~329--331). The terminal value at the end of year $n$ is $P_n=D_{n+1}/(r-g_n)$, using the first dividend of the stable phase, and is discounted $n$ years. In stable growth, payout $=1-g_n/\mathrm{ROE}_n$, with beta between 0.8 and 1.2 and ROE near the industry or the cost of equity. Its weakness is the abrupt drop in growth.
+\item \emph{H-model} (Fuller and Hsia): growth declines linearly from $g_a$ to $g_n$ over $2H$ years, with a constant payout (pp.~338--340),
+\[ V_0=\frac{D_0(1+g_n)}{r-g_n}+\frac{D_0H(g_a-g_n)}{r-g_n}. \]
+It is an approximation, and its constant payout is inconsistent with falling growth.
+\item \emph{Three-stage}: high growth, a transition and stable growth. It is the most general and needs the most inputs (pp.~340--341).
+\end{itemize}
+
+\emph{Choosing.} Use two stages for a firm with a clear competitive advantage expected to end, such as a patent, and with modest initial growth. Use the H-model for a firm whose growth is already fading and whose payout is stable. Use three stages when growth will stay high for a while and then fade gradually (pp.~330--331, 340). Spreadsheet models generalise all three, with a year-by-year growth, payout and discount rate. They let assumptions such as fading ROE and rising payout change consistently, at the cost of more inputs to justify.
+
+\emph{Required return.} The rate that equates a multistage model's dividends with the price is found numerically. For the H-model it has a closed form, $r=(D_0/P_0)[(1+g_n)+H(g_a-g_n)]+g_n$.
+
+\qffield{Practice} \emph{Original: Calder Software, two-stage.} $D_0=0.50$, with 15 percent growth for four years, then 4 percent, and $r=10$ percent.
+\begin{itemize}
+\item Dividends are 0.575, 0.6613, 0.7604 and 0.8745.
+\item The terminal value at the end of year 4 is $D_5/(r-g)=0.8745\times1.04/0.06=15.16$.
+\item Value is 12.59, and an explicit 5,000-year sum agrees.
+\item \emph{Two dating errors.} Discounting $P_4$ five years instead of four gives 11.65. Capitalising $D_4$ instead of $D_5$ gives 12.19.
+\item At a market price of 14.00 the model implies a required return of 9.41 percent.
+\end{itemize}
+
+\emph{H-model.} $D_0=1.00$, growth fading linearly from 12 to 4 percent over ten years ($H=5$), and $r=9$ percent. The value is $1.04/0.05+1.00\times5\times0.08/0.05=20.80+8.00=28.80$. Modelling the linear decline year by year gives 29.94, so the approximation is close but low. At a price of 28.80 the closed form returns exactly 9 percent.
+
+\emph{Three-stage.} $D_0=0.80$, with 14 percent growth for three years, falling by 2.5 points a year to 4 percent in year 7, then 4 percent forever, and $r=9$ percent. Value is 24.44, of which the terminal value at year 7 (33.19) is most.
+
+\qffield{Conditions} The terminal value must be computed at the date when stable growth begins and discounted from that date. Stable-phase inputs (growth, payout, ROE and risk) must be mutually consistent. The models assume a constant discount rate; if risk falls as the firm matures, use period-specific rates.
+
+\qffield{Pitfalls} Discounting the terminal value one period too far, or capitalising the last high-growth dividend. Keeping the high-growth payout in the stable phase. Letting the terminal value carry growth above the economy's. Treating the H-model value as exact.
+
+\qffield{See also} \hyperref[meth:gordon-growth-model]{Gordon model}; \hyperref[meth:forecast-horizon-steady-state]{forecast horizon and terminal value}; \hyperref[meth:sustainable-growth]{sustainable growth}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Sustainable growth: the retention ratio times return on equity, the DuPont decomposition of ROE into margin, turnover and leverage, and what changes in each imply for growth]\label{meth:sustainable-growth}
+\qffield{Statement} If a firm issues no new equity and its ROE is constant, earnings per share grow at the retention ratio times ROE, $g=b\times\mathrm{ROE}$ \citep[pp.~285--286]{investment-valuation-2012}. The rate is ``sustainable'' because it can be financed internally without changing leverage. Net income growth equals the equity reinvestment rate times ROE (p.~287).
+
+ROE can be decomposed into operating return and leverage, $\mathrm{ROE}=\mathrm{ROC}+(D/E)[\mathrm{ROC}-i(1-t)]$. A high ROE from leverage, a low tax rate or non-operating profits may not be sustainable (p.~288). If ROE changes, growth includes an extra term for the change on existing assets (p.~289).
+
+With the DuPont identity (\hyperref[meth:return-on-equity-decomposition]{DuPont}), $\mathrm{ROE}=$ net margin $\times$ asset turnover $\times$ equity multiplier, so
+\[ g=b\times\frac{\mathrm{NI}}{\text{sales}}\times\frac{\text{sales}}{\text{assets}}\times\frac{\text{assets}}{\text{equity}}. \]
+Growth can come from retaining more, earning higher margins, using assets more efficiently or borrowing more. Only the first three change the business; borrowing raises risk and the cost of equity.
+
+\qffield{Practice} \emph{Original.} Net margin 6 percent, asset turnover 1.25 and equity multiplier 1.6 give ROE of 12 percent. With 60 percent retention, $g=7.2$ percent. Book equity grows from 100 to 107.20 when 7.20 of the 12 earned is retained, so assets and sales can grow 7.2 percent at constant ratios.
+
+\emph{Harbour.} ROE was 11.52 percent in 2024 and 8.84 percent in 2025. At 2025's payout of 57.8 percent, retention is 42.2 percent, so the sustainable growth rate is 3.73 percent. That is below the 6.09 percent revenue growth forecast for 2026 (3 percent volume and 3 percent price). Faster growth needs a higher ROE, a lower payout or more debt. The forecast assumes a margin recovery and a 40 percent payout; the dividend lock-up enforces the payout (\hyperref[ex:integrated-credit-decision]{credit decision}).
+
+\qffield{Conditions} The formula assumes a constant ROE on new and existing equity, no new shares and constant leverage. For a firm buying back shares, use the augmented payout including buybacks; buybacks also shrink book equity and inflate ROE \citep[pp.~333--334]{investment-valuation-2012}.
+
+\qffield{Pitfalls} Applying $b\times\mathrm{ROE}$ with a ROE inflated by one-off gains or by leverage. Treating sustainable growth as a forecast rather than a constraint. Using the same ROE for new investment as for existing assets when competition will erode it.
+
+\qffield{See also} \hyperref[meth:return-on-equity-decomposition]{DuPont analysis}; \hyperref[meth:pvgo-justified-pe]{PVGO}; \hyperref[meth:gordon-growth-model]{stable payout}.
+
+\end{qfmethod}

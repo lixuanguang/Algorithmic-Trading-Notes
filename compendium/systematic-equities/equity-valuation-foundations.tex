@@ -1,0 +1,196 @@
+\section{Equity valuation foundations}
+
+\begin{qfdefinition}[Price against value, and book value, market capitalisation and enterprise value as indicators of value]\label{def:price-value-indicators}
+\qffield{Statement} \emph{Price and value.} Price is what a share trades at; value is what it is worth given the cash flows it is expected to generate and their risk. Damodaran's first principle is not to pay more for an asset than it is worth. Buying on the expectation that someone else will pay more, the ``bigger fool'' theory, does not rest on value \citep[p.~1]{investment-valuation-2012}. Markets need valuation to become efficient: prices converge on value only because investors act on their estimates of it (p.~5).
+
+\emph{Book value} is shareholders' equity in the balance sheet: assets at historical cost less depreciation, or at fair value for some items, minus liabilities. It reflects past investment and accounting choices, and excludes internally generated intangibles. It is a measure of capital invested, not of value.
+
+\emph{Market capitalisation} is the share price times shares outstanding: the market's current price for the equity.
+
+\emph{Enterprise value} is the market value of the claims on the operating business: equity, plus debt and debt-like claims such as leases, pension deficits, preferred stock and minority interests, less cash and non-operating assets. Cash is netted because operating income excludes the interest earned on it \citep[pp.~500--501]{investment-valuation-2012}. It is the price of the business independent of how it is financed, and the numerator for operating measures such as EBITDA.
+
+\qffield{Practice} \emph{Harbour Tools at 31 December 2025} (\hyperref[ex:harbour-tools-statements]{case}), at a share price of 11.00:
+\begin{itemize}
+\item \emph{Market capitalisation}: $11.00\times100.75=1{,}108.25$.
+\item \emph{Book equity}: 647.38, or 6.43 a share, so price to book is 1.71.
+\item \emph{Enterprise value}: $1{,}108.25+355+36.12-37.54=1{,}461.83$. The 355 is the term loan, revolver and leases, 36.12 is the after-tax pension deficit, and 37.54 is cash.
+\item \emph{Estimated value}: the discounted cash flow value (\hyperref[meth:forecast-horizon-steady-state]{Harbour valuation}) is 855.59 of equity, or 8.49 a share.
+\end{itemize}
+Price is 29.5 percent above that estimate, or the estimate is 22.8 percent below price. Book value, market capitalisation and estimated value answer different questions: what was invested, what the market charges, and what an analyst thinks the cash flows are worth.
+
+\qffield{Conditions} Enterprise value must include every claim whose cost is excluded from the operating measure it is paired with. Leases belong in EV when EBITDA excludes lease costs, as under IFRS~16. The market price is for a marginal trade in a minority stake; it is not the price of the whole company, which in a takeover includes a control premium.
+
+\qffield{Pitfalls} Treating book value as a floor on value. Netting all cash when some is trapped or needed for operations. Using basic market capitalisation when options and convertibles are a material claim. Calling price ``value'' when it is the thing value is compared with.
+
+\qffield{See also} \hyperref[def:intrinsic-value-mispricing]{intrinsic value}; \hyperref[meth:enterprise-value-multiples]{EV multiples}; \hyperref[def:valuation-model-families]{model families}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Families of valuation models: discounted cash flow (present value), relative valuation with multiples, asset-based valuation and contingent-claim (option) valuation, with their advantages and disadvantages]\label{def:valuation-model-families}
+\qffield{Statement} Damodaran groups models into three main approaches \citep[pp.~11--25]{investment-valuation-2012}, with asset-based valuation as a fourth that is usually derived from the others.
+\begin{itemize}
+\item \emph{Discounted cash flow} (present value) models value an asset at the present value of its expected cash flows: dividends, free cash flow to equity or to the firm, or residual income. They force explicit assumptions about growth, reinvestment and risk, and value the business independently of current market mood. They need many inputs, are sensitive to them, and are hard to apply to firms in distress, with options-like assets or with no history (pp.~12--18).
+\item \emph{Relative valuation} (multiples) values an asset from the prices of comparable assets, standardised by earnings, book value, revenue or a sector measure. It needs fewer explicit assumptions, is quick and reflects the market's current view. It builds in any mispricing of the comparables and is easy to manipulate through the choice of multiple and peers (pp.~19--23).
+\item \emph{Contingent-claim} models value assets whose payoffs resemble options: patents, undeveloped reserves, the equity of distressed firms, warrants and contingent value rights (pp.~23--25).
+\item \emph{Asset-based} valuation sums the values of assets: liquidation value, replacement cost or adjusted book value. It needs DCF or market values for the assets, and equals DCF value only for a firm without growth or excess returns (p.~22).
+\end{itemize}
+
+\qffield{Practice} \emph{Choosing a family, by example} (Interpretation):
+\begin{itemize}
+\item A utility paying out most of its stable earnings: a dividend discount model, cross-checked against peers' dividend yields and P/E.
+\item A manufacturer with cyclical earnings and significant leverage, such as Harbour: free cash flow to the firm at the WACC, cross-checked with EV/EBITDA on normalised figures.
+\item A bank: dividends or residual income on equity, since its debt is raw material, not financing.
+\item An exploration company with undeveloped reserves: an option model for the reserves plus DCF for producing assets.
+\item A holding company in run-off: sum of the asset values.
+\end{itemize}
+
+\qffield{Conditions} The families are not independent. Multiples are compressed DCF models, and each multiple has fundamentals that justify it (\hyperref[meth:justified-multiples]{justified multiples}). Asset values need one of the other methods.
+
+\qffield{Pitfalls} Treating a DCF value as precise. Treating a relative value as an intrinsic value. Applying a going-concern model to a firm likely to be liquidated.
+
+\qffield{See also} \hyperref[meth:present-value-model-inputs]{present-value inputs}; \hyperref[meth:valuation-approach-choice]{choosing an approach}; \hyperref[meth:multiples-valuation-basics]{multiples}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Inputs to present-value models: dividends, free cash flow to equity, free cash flow to the firm and residual income, which discount rate goes with each, and when each is the appropriate measure of return]\label{meth:present-value-model-inputs}
+\qffield{Statement} A present-value model needs a stream of expected cash flows or returns and a matching discount rate.
+\begin{itemize}
+\item \emph{Dividends}, discounted at the cost of equity. Price itself is ultimately determined by future dividends, so value is the present value of dividends through infinity \citep[p.~323]{investment-valuation-2012}.
+\item \emph{Free cash flow to equity}, net income less net reinvestment plus net borrowing, discounted at the cost of equity: what the firm could pay its shareholders.
+\item \emph{Free cash flow to the firm}, after-tax operating income less net reinvestment, discounted at the WACC: cash available to all capital providers, valued as the firm, then net claims deducted (pp.~12--15).
+\item \emph{Residual income}: equity value equals book equity plus the present value of expected excess returns, $(\mathrm{ROE}-k_e)\times$ equity capital invested \citep[pp.~596--597]{investment-valuation-2012}.
+\end{itemize}
+
+Mismatches give wrong answers. In Damodaran's illustration, discounting cash flows to equity at the WACC overstates equity by 175, and discounting cash flows to the firm at the cost of equity understates firm value by 260 (pp.~13--15).
+
+\emph{Which to use} (pp.~330--331, 596--597):
+\begin{itemize}
+\item \emph{Dividends} when the firm pays out roughly what it can afford, has a stable payout and leverage, and the investor is a minority holder with no control over payout. Financial firms are an example.
+\item \emph{FCFE} when dividends diverge from capacity, through cash accumulation or borrowing to pay, but leverage is stable.
+\item \emph{FCFF} when leverage is high or changing, or free cash flows are negative in early years; and for a controlling buyer.
+\item \emph{Residual income} when free cash flows are negative for years but accounting is reliable and book value is meaningful, as for banks and financial firms. The terminal value is a smaller share of the total.
+\end{itemize}
+
+\qffield{Notation} Residual income $\mathrm{RI}_t=\mathrm{NI}_t-k_e\mathrm{BV}_{t-1}$; with clean-surplus accounting, $\mathrm{BV}_t=\mathrm{BV}_{t-1}+\mathrm{NI}_t-D_t$, so $V_0=\mathrm{BV}_0+\sum_t\mathrm{RI}_t/(1+k_e)^t$.
+
+\qffield{Practice} \emph{Original, three routes to one value.} Book equity is 20, ROE 12 percent forever, cost of equity 9 percent and payout 50 percent, so growth is $0.5\times12\%=6$ percent.
+\begin{itemize}
+\item \emph{Dividends.} $D_1=1.20$ and $V=1.20/(0.09-0.06)=40$.
+\item \emph{FCFE.} Net income 2.40 less the 1.20 of equity reinvestment that funds growth, with no borrowing, is 1.20. That is the dividend, so $V=40$.
+\item \emph{Residual income.} $\mathrm{RI}_1=(0.12-0.09)\times20=0.60$, growing at 6 percent, so $V=20+0.60/0.03=40$.
+\end{itemize}
+Year-by-year sums of each give the same 40.
+
+The routes differ in practice only when their assumptions differ: payout not equal to capacity, accounting that violates clean surplus, or leverage that changes.
+
+\emph{Harbour.} Its 2025 dividends of 32 exceeded free cash flow to equity, and its leverage changes with the revolver and the acquisition. So FCFF at the WACC is the primary model, and dividends would mislead (\hyperref[meth:dividend-sustainability]{sustainability}).
+
+\qffield{Conditions} Clean-surplus accounting is needed for the residual-income identity. Items in other comprehensive income break it, for example remeasurements recognised outside profit. Book equity affected by buybacks or one-time charges may understate capital invested \citep[p.~597]{investment-valuation-2012}.
+
+\qffield{Pitfalls} Discounting FCFE at the WACC or FCFF at the cost of equity. Using dividends for a firm whose dividend is unrelated to capacity. Using book values that buybacks have pushed close to zero in a residual-income model.
+
+\qffield{See also} \hyperref[meth:free-cash-flow-coverage]{FCFF and FCFE}; \hyperref[meth:gordon-growth-model]{Gordon model}; \hyperref[def:valuation-model-families]{model families}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[Intrinsic value and mispricing; going-concern and liquidation value; fair market value, fair value, investment value and intrinsic value as definitions of value]\label{def:intrinsic-value-mispricing}
+\qffield{Statement} \emph{Valuation} is the estimation of an asset's value from its expected cash flows and risk, or from the prices of comparable assets. Damodaran defines \emph{intrinsic value} as ``the value that would be attached to the firm by an unbiased analyst, who not only estimates the expected cash flows for the firm correctly, given the information available at the time, but also attaches the right discount rate to value these cash flows'' \citep[p.~12]{investment-valuation-2012}. Since no analyst does both perfectly, an estimate differs from intrinsic value, and price may differ from both. Prices can deviate from intrinsic value, with the hope that they converge on it (same page).
+
+\emph{Mispricing.} Perceived mispricing, estimate minus price, equals true mispricing, intrinsic value minus price, plus the valuation error, estimate minus intrinsic value. Only the first is observable; acting on it is profitable only if the valuation error is small relative to the true mispricing and prices converge within the investor's horizon.
+
+\emph{Going concern and liquidation.} Financial statements are prepared on a going-concern basis unless management intends or has no realistic alternative but to liquidate or cease trading \citep[IAS~1 para.~25]{eu-2023-1803-ias1}. Going-concern value includes the value of growth and assets working together. Liquidation value is what the assets fetch if sold separately, orderly or forced, less the costs of closing. It is an asset-based value appropriate when the business is worth less alive than dead \citep[p.~22]{investment-valuation-2012}.
+
+\emph{Definitions of value.}
+\begin{itemize}
+\item \emph{Fair value} under IFRS~13 is ``the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date'' \citep[IFRS~13 para.~9]{eu-2023-1803-ifrs13}. It is a market-based exit price, not an entity-specific value (para.~2), and can differ from the entry price paid (para.~57).
+\item \emph{Fair market value}, used in tax and many legal contexts, is the price at which a willing buyer and willing seller, both informed and under no compulsion, would transact (Interpretation).
+\item \emph{Investment value} is the value to a particular investor, given its own synergies, tax position, diversification and required return. Damodaran's private-business examples show that the value to an undiversified owner differs from the value to a diversified buyer \citep[pp.~556--557]{applied-corporate-finance-2014}.
+\item \emph{Intrinsic value} is the analyst's estimate of the value justified by fundamentals.
+\end{itemize}
+The purpose determines the definition: financial reporting uses fair value; tax and estate disputes fair market value; an acquirer investment value; and an investor deciding whether to buy, intrinsic value.
+
+\qffield{Practice} \emph{Harbour.} The estimate is 8.49 and the price 11.00, so perceived mispricing is $-2.51$. If true intrinsic value were 10.00, that would be true mispricing of $-1.00$ and valuation error of $-1.51$. The analyst would be selling a stock that is less overvalued than believed. The \hyperref[meth:valuation-price-judgement]{price judgement} entry tests how large the error could be.
+
+A stock trading at 0.6 times book in a firm losing money may still be worth more as a going concern than in liquidation if its brand and distribution would be lost in a sale of assets. If its assets are standard machinery with an active second-hand market, liquidation value sets a floor.
+
+\qffield{Conditions} The IFRS~13 paragraphs are cited as adopted in the EU in 2023. Legal definitions of fair market value differ by jurisdiction and purpose; in the US the tax standard is set by regulation and IRS rulings, which were not consulted.
+
+\qffield{Pitfalls} Treating the difference between estimate and price as profit. Using a going-concern value when the company cannot fund itself. Mixing definitions, for example quoting fair value in a takeover where investment value with synergies is what matters.
+
+\qffield{See also} \hyperref[def:price-value-indicators]{price and value}; \hyperref[meth:valuation-price-judgement]{judging value against price}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Choosing a valuation approach: applications of equity valuation, absolute against relative models, sum-of-the-parts valuation and the conglomerate discount, and matching the model to the company and purpose]\label{meth:valuation-approach-choice}
+\qffield{Statement} \emph{Applications.} Damodaran describes three settings \citep[pp.~6--8]{investment-valuation-2012}:
+\begin{itemize}
+\item portfolio management, where fundamental analysts, franchise buyers, information traders and market timers use valuation differently, and even believers in efficient markets use it to infer what prices imply;
+\item acquisitions, where synergy and control must be valued and bias is a risk;
+\item corporate finance, where decisions are judged by their effect on value.
+\end{itemize}
+Other uses follow from these: evaluating spin-offs and buybacks, fairness opinions, planning and performance assessment, and communicating with investors (Interpretation).
+
+\emph{Absolute and relative models.} An absolute model estimates intrinsic value from the company's own cash flows and risk. A relative model estimates value relative to comparable assets' prices. Damodaran explains the difference as a view of market efficiency. Relative valuation assumes that markets are right on average across comparables but may be wrong about individual firms. DCF assumes markets make mistakes that are corrected over time (pp.~19--21, 466). Relative values carry any sector-wide mispricing into the estimate: in a bubble, a stock can be cheap relative to its peers and still overvalued (pp.~22--23).
+
+\emph{Sum of the parts.} A company with distinct businesses can be valued segment by segment, each with its own model and peers. Unallocated head-office costs are capitalised and deducted, along with net debt and other claims. The difference between the sum and the market value is the \emph{conglomerate discount}. Lang and Stulz found that diversified US firms had lower Tobin's q than portfolios of single-segment firms in the same industries. They also found that firms diversified when internal growth opportunities were exhausted, and saw no evidence that diversification created a valuable intangible \citep[pp.~2--3]{lang-stulz-1993}. Sources of a discount include inefficient internal capital markets, cross-subsidies, opacity and governance. A sum-of-the-parts value is realised only if a restructuring, such as a spin-off or sale, can capture it (\hyperref[meth:restructuring-evaluation]{restructuring}).
+
+\emph{Choosing.} Match the model to the cash flows, the data and the purpose (Interpretation):
+\begin{itemize}
+\item a mature payer suits dividends;
+\item an operating business with changing leverage suits FCFF;
+\item a financial firm suits dividends or residual income;
+\item a firm with option-like assets needs an option model for those assets;
+\item a firm in liquidation needs liquidation value;
+\item a fairness opinion or a quick screen uses multiples, cross-checked with DCF.
+\end{itemize}
+
+\qffield{Practice} \emph{Original: Ashby Group}, with three divisions:
+\begin{itemize}
+\item tools: EBITDA 120 at a peer multiple of 8.0, giving 960;
+\item equipment rental: EBITDA 60 at 6.0, giving 360;
+\item software: EBITDA 40 at 15.0, giving 600.
+\end{itemize}
+The segments sum to 1,920. Central costs of 15 a year, capitalised at 7 times, are $-105$; net debt is 600. Sum-of-the-parts equity is 1,215, against a market value of 1,100, a 9.47 percent discount.
+
+Before calling Ashby undervalued, ask three questions. Are the central costs fully captured? Would separation cost money or lose synergies? Will management act? A spin-off of the software business could release the discount, but dis-synergies of 20 a year after tax capitalised at 8 percent (250) would more than offset it.
+
+\qffield{Conditions} Segment data from financial statements follow the internal reporting basis and may allocate costs and capital arbitrarily. Peer multiples for segments should be on the same basis as the segment figures. Lang and Stulz's evidence is from US firms in the 1980s; later studies dispute how much of the discount reflects selection rather than value destruction.
+
+\qffield{Pitfalls} Using the highest multiple available for each segment. Forgetting central costs, tax leakage on separation, pension and other claims. Treating a conglomerate discount as free money without a catalyst.
+
+\qffield{See also} \hyperref[def:valuation-model-families]{model families}; \hyperref[meth:comparables-evaluation]{method of comparables}; \hyperref[ex:restructuring-valuation-effects]{restructuring effects}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Judging whether a stock is over- or undervalued: comparing estimates from dividend, free-cash-flow and multiple-based models with price, reverse-engineering the price, sensitivity, and the margin of safety]\label{meth:valuation-price-judgement}
+\qffield{Statement} A judgement of over- or undervaluation compares an estimate of value with price. To be useful it must state what the estimate assumes, how sensitive it is, and what the price implies \citep[pp.~1--5, 466]{investment-valuation-2012}.
+\begin{itemize}
+\item \emph{From a DDM or FCF model}, the stock is undervalued if the estimate exceeds price by more than the plausible valuation error, and overvalued if it falls short by more.
+\item \emph{From multiples}, it is cheap if its multiple is below what its fundamentals justify or below comparable peers after controlling for growth and risk.
+\end{itemize}
+Damodaran warns that valuations are not precise, change with information, and are subject to bias (pp.~2--5).
+
+A useful discipline is to reverse-engineer the price: solve for the growth rate, return on capital or discount rate that makes the model equal the price, and judge whether that is plausible. If DCF and relative valuations disagree, the reason is usually that the peers are priced on expectations different from the analyst's, or that the sector is mispriced (pp.~19--23).
+
+\qffield{Practice} \emph{From a dividend model: Norland Water at 30} (\hyperref[meth:gordon-growth-model]{Gordon model}). The Gordon value is 27.47, so the price is 9 percent above it. The price implies dividend growth of 3.365 percent, or a required return of 7.12 percent. A regulated utility whose allowed returns are reset is unlikely to sustain nominal growth near 3.4 percent, so the stock is modestly overvalued. The judgement reverses if the cost of equity is nearer 7 percent, so it is not a strong sell.
+
+\emph{Harbour, at 11.00.} The estimates:
+\begin{itemize}
+\item \emph{FCFF.} The discounted value is 8.49 (\hyperref[meth:forecast-horizon-steady-state]{valuation}). At WACC of 7, 8 and 9 percent it is 11.22, 8.49 and 6.59.
+\item \emph{Justified multiples.} With normalised ROE of 10.63 percent, 2.5 percent growth and a 9.34 percent cost of equity, the justified leading P/E gives 7.83 and the justified P/B gives 7.64 (\hyperref[meth:justified-multiples]{justified multiples}).
+\item \emph{Comparables.} The peer median forward P/E of 18.0 on forecast EPS of 0.7285 gives 13.11. The peer median EV/EBITDA of 7.8 gives 11.59 (\hyperref[meth:comparables-evaluation]{comparables}).
+\end{itemize}
+
+Reverse-engineering the price at 8 percent: 11.00 needs a WACC of 7.07 percent with the other inputs held. Alternatively it needs a terminal return on new capital of 124 percent with 2.5 percent growth, or perpetual growth of 3.60 percent with a 16 percent return on new capital. Even growth with no reinvestment at all gives at most 11.27. The price-to-book of 1.71 implies a sustained ROE of 14.21 percent, against 8.84 percent in 2025 and 11.52 percent in 2024.
+
+\emph{Judgement.} The absolute models say overvalued by about a quarter. The multiples say fairly valued or cheap, but the peers grow faster and earn more, and a regression of P/E on growth and beta predicts 9.50 times for Harbour, below its 15.10. The price is consistent with a return to ROE of about 14 percent, above anything Harbour has earned in the case.
+
+The evidence leans to overvaluation. The conclusion is sensitive to the WACC: one point lower removes it. A recommendation should therefore be a moderate underweight, conditional on margins, with the WACC and terminal assumptions disclosed, rather than a confident sell.
+
+\qffield{Conditions} The figures are illustrative. A margin of safety, buying only well below estimated value, protects against valuation error but cannot correct a systematic bias in the inputs.
+
+\qffield{Pitfalls} Reporting a point estimate without sensitivity. Calling a stock cheap on multiples without checking whether its fundamentals justify a lower multiple. Treating DCF and comparables as independent confirmation when the inputs share the same optimism. Ignoring what the price implies.
+
+\qffield{See also} \hyperref[def:intrinsic-value-mispricing]{intrinsic value and mispricing}; \hyperref[meth:comparables-evaluation]{comparables}; \hyperref[meth:gordon-growth-model]{implied returns}.
+
+\end{qfmethod}

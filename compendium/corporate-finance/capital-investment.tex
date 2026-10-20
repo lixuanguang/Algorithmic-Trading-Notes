@@ -1,0 +1,105 @@
+\section{Capital investment and allocation}
+
+\begin{qfmethod}[Evaluating capital projects: types of investment, incremental after-tax cash flows, NPV, IRR and return on invested capital, and why NPV and IRR can disagree]\label{meth:capital-project-evaluation}
+\qffield{Statement} \emph{Types.} A project is any use of scarce resources: strategic entries, acquisitions, new ventures, changes to existing operations, and support services \citep[pp.~160--162]{applied-corporate-finance-2014}. Damodaran classifies projects by how they relate to each other (prerequisite, complementary, independent or mutually exclusive) and by purpose. Practitioners also separate maintenance and replacement, cost reduction, expansion, new products and markets, and regulatory or safety projects; these differ in how much analysis they need and how uncertain their benefits are (Interpretation).
+
+\emph{Allocation process} (Interpretation). Generate ideas; analyse each proposal's cash flows; plan the budget and set priorities among acceptable projects; monitor results. Damodaran's post-mortems compare actual with forecast cash flows and review whether ongoing investments should continue (pp.~266--269).
+
+\emph{Cash flows.} Value a project from the incremental after-tax cash flows the decision causes, not from accounting earnings or totals \citep[pp.~171--173]{applied-corporate-finance-2014}:
+\begin{itemize}
+\item include working-capital investment and its recovery, and the salvage or terminal value (pp.~199--200);
+\item include the opportunity cost of resources the project uses (pp.~245--247);
+\item include sales lost by other products unless competitors would take them anyway (p.~249);
+\item exclude sunk costs, such as past research or test markets;
+\item exclude allocated overheads that do not change.
+\end{itemize}
+Financing costs are excluded from cash flows to the firm because the discount rate, the WACC, already charges for them.
+
+\emph{Decision rules.} The net present value is the cash flows discounted at the project's hurdle rate; accept independent projects with positive NPV (p.~196). NPVs add: firm value equals the value of assets in place plus the NPV of future projects (pp.~202--203). The internal rate of return is the rate that sets NPV to zero; accept if it exceeds the hurdle rate (pp.~204--206). For a conventional independent project, with one outflow followed by inflows, the two rules agree.
+
+\emph{Return on invested capital.} ROIC is after-tax operating income over the book value of capital invested (debt plus equity less cash). Over a project's life it can be computed as average income over average capital and compared with the cost of capital (pp.~189--191). Because book capital falls as assets depreciate, ROIC is low early and high late; it measures performance with accounting conventions, not value.
+
+\qffield{Notation} $\mathrm{NPV}(r)=\sum_{t=0}^{T}\mathrm{CF}_t/(1+r)^t$; IRR solves $\mathrm{NPV}(\mathrm{IRR})=0$. Operating cash flow $=\mathrm{EBIT}(1-t)+$ depreciation; free cash flow $=$ operating cash flow $-$ capital expenditure $-\Delta$working capital.
+
+\qffield{Practice} \emph{Original: Harbour's battery-pack line} (EUR millions, WACC 8~percent, tax 25~percent).
+\begin{itemize}
+\item \emph{Investment.} Equipment 100 and working capital 15 at the start; salvage 10 after five years, equal to book value, and the working capital is recovered then.
+\item \emph{Annual profit.} Revenue 130 with variable costs at 60 percent and fixed cash costs 12. Deduct 5 of contribution lost on the existing corded range and 3 of rent forgone on factory space that could be let. Depreciation is $(100-10)/5=18$, so EBIT is $130-78-12-5-3-18=14$.
+\item \emph{Cash flows.} NOPAT is 10.50 and operating cash flow $10.50+18=28.50$ a year, plus 25 in year~5.
+\item \emph{Result.} NPV at 8~percent is 15.81 and IRR 12.61~percent, so accept.
+\end{itemize}
+
+Common errors, from the same project:
+\begin{itemize}
+\item charging the 12 of development already spent gives an NPV of 3.81, which is still positive but understated;
+\item deducting after-tax interest on 50 of debt while discounting at the WACC gives 8.32, because financing is counted twice;
+\item omitting the cannibalisation and the rent forgone would overstate NPV.
+\end{itemize}
+Accounting ROIC on the project rises from 9.91 percent in year~1 to 30.88 percent in year~5 as the asset depreciates. Judged by first-year ROIC against an 8~percent WACC it looks marginal; judged by year~5 it looks excellent. The IRR of 12.61 percent is the single rate that describes its economics.
+
+\emph{NPV against IRR for mutually exclusive projects.} Project A costs 40 and returns 22, 18 and 12. Project B costs 100 and returns 20, 35, 45 and 40.
+\begin{itemize}
+\item A has the higher IRR, 16.05 percent against 13.36 percent.
+\item At 8 percent B has the higher NPV, 13.65 against 5.33.
+\item The NPV profiles cross at 12.39 percent. Below that rate B adds more value; above it A does.
+\end{itemize}
+IRR favours the smaller, faster project because it ranks by rate and implicitly reinvests at that rate, not at the hurdle rate \citep[pp.~207--208, 232--233]{applied-corporate-finance-2014}. Choose by NPV.
+
+\emph{Multiple IRRs.} Cash flows $-100$, $+230$, $-132$ change sign twice and have IRRs of 10 and 20 percent. At an 8~percent hurdle the NPV is $-0.21$, so reject, although both IRRs exceed 8~percent. Damodaran's example has IRRs of 6.60 and 36.55 percent and recommends using NPV (pp.~207--208).
+
+\qffield{Conditions} The hurdle rate must reflect the project's risk, not the firm's average. Using the firm's rate for all projects over-invests in risky projects and under-invests in safe ones; a large project in a different business needs its own beta, and the debt weight comes from the firm's target ratio, not from how this project happens to be financed \citep[pp.~162--164]{applied-corporate-finance-2014}. Nominal cash flows need a nominal rate, and cash flows in a currency need that currency's rate (pp.~200--201).
+
+\qffield{Pitfalls} Using accounting profit instead of cash flow. Including sunk costs or allocated overhead. Ignoring working capital and its recovery. Deducting interest and also discounting at the WACC. Choosing among mutually exclusive projects by IRR. Applying the IRR rule to cash flows with more than one sign change. Reading early-life ROIC as the project's return.
+
+\qffield{See also} \hyperref[meth:capital-allocation-principles]{allocation principles and real options}; \hyperref[meth:wacc-calculation]{WACC}; \hyperref[meth:free-cash-flow-coverage]{free cash flow}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Capital allocation principles and pitfalls: opportunity costs and cannibalisation, capital rationing and the profitability index, unequal lives and equivalent annual cost, sunk-cost and earnings pressure, post-audits, and real options to delay, expand and abandon]\label{meth:capital-allocation-principles}
+\qffield{Statement} \emph{Principles.} Decisions rest on incremental after-tax cash flows, discounted at a rate that reflects the project's risk. Timing matters. Opportunity costs are included and sunk costs excluded \citep[pp.~171--173, 245--249]{applied-corporate-finance-2014}.
+\begin{itemize}
+\item \emph{Opportunity cost.} The value of a resource the firm owns is the best alternative forgone: rent, net sale proceeds after tax, or replacement cost.
+\item \emph{Excess capacity.} Spare capacity is not free if the project brings forward new capacity or causes lost sales.
+\item \emph{Cannibalisation.} Lost sales of other products count unless competitors would take them anyway.
+\end{itemize}
+
+\emph{Common pitfalls} in practice:
+\begin{itemize}
+\item \emph{Inertia}: last year's budget allocation repeated without review.
+\item \emph{Pet projects}: favoured projects pass without challenge.
+\item \emph{Earnings pressure}: Damodaran cites a survey in which more than 40 percent of CFOs would reject a value-creating investment that caused them to miss earnings estimates \citep[p.~171]{applied-corporate-finance-2014}.
+\item \emph{Sunk-cost bias}: continuing failing projects because of money already spent (the Concorde fallacy, p.~172).
+\item \emph{Mismatched hurdle rates}: one rate applied to projects of different risk (pp.~162--164).
+\item \emph{Too few alternatives}: proposals compared only with doing nothing.
+\end{itemize}
+Remedies are post-audits, periodic reviews with hard termination rules, and assessors separate from sponsors (pp.~266--269). An existing investment should continue only while the present value of its continuing cash flows exceeds its salvage or divestiture value.
+
+\emph{Capital rationing.} When funds are limited, maximise total NPV within the budget. The profitability index, NPV over initial investment, ranks projects, but it is a single-period heuristic that can leave funds idle. With small numbers of projects, check combinations; with several periods, solve an integer program. Raising the hurdle rate to ration capital is a poor substitute because NPV loses its meaning \citep[pp.~228--236]{applied-corporate-finance-2014}.
+
+\emph{Unequal lives.} For mutually exclusive projects of different lives, compare equivalent annual cash flows, $\mathrm{NPV}\times r/(1-(1+r)^{-n})$, which implicitly assumes each is replicated (pp.~239--242).
+
+\emph{Real options.} Discounted cash flows miss the value of choices the firm can make later (pp.~255--265):
+\begin{itemize}
+\item an option to \emph{delay} gives value to rights over negative-NPV projects;
+\item an option to \emph{expand} can justify a first phase with negative NPV;
+\item an option to \emph{abandon} is a put that limits losses.
+\end{itemize}
+Options are worth more when uncertainty is greater. They have value only when the firm has an exclusive right or competitive advantage to exercise them (pp.~259--264).
+
+\qffield{Practice} \emph{Original, WACC 8 percent.}
+\begin{itemize}
+\item \emph{Rationing.} Five projects have costs and NPVs of P1 115/15.81 (the battery line in \hyperref[meth:capital-project-evaluation]{project evaluation}), P2 60/9.0, P3 50/8.0, P4 40/7.5 and P5 30/3.0. With a budget of 150, ranking by the profitability index (P4, P3, P2, P1, P5) picks P4, P3 and P2 for an NPV of 24.50; searching every combination confirms this is best. With a budget of 145 the ranking picks P4, P3 and P5 (NPV 18.50) and leaves 25 idle, but P2, P3 and P5 cost 140 and add 20.00.
+\item \emph{Unequal lives.} Machine X costs 60 and 10 a year for three years; machine Y costs 90 and 8 a year for five. Present-value costs are 85.77 and 121.94, which wrongly favours X. Equivalent annual costs are 33.28 and 30.54, so choose Y. Replicating both chains over fifteen years gives the same choice.
+\item \emph{Expansion option.} A pilot costs 5 now, with no other cash flows. In two years a 120 expansion can be built that will be worth 150 or 80 with equal probability. Committing now to both phases is worth $-5+(115-120)/1.08^2=-9.29$. Keeping the choice, building only if the value is 150, is worth $-5+0.5\times30/1.08^2=7.86$.
+\end{itemize}
+The pilot's value lies in the information it buys.
+
+The tree discounts at the cost of capital for simplicity. Because the option changes the risk of the payoff, an option-pricing model is more accurate, but the decision-tree logic is the same.
+
+\qffield{Conditions} The profitability index works when there is one constraint period and projects are divisible or many and small. Equivalent annuities assume replication on the same terms, which may be unrealistic when technology changes. A real option has value only if the firm can wait, learn and act exclusively. If competitors can take the opportunity, delaying may forfeit it.
+
+\qffield{Pitfalls} Counting an asset the firm owns as free. Calling a negative-NPV project ``strategic'' without identifying a specific, exclusive option and valuing it. Ranking by IRR or the index when combinations would add more NPV. Comparing projects of different lives by NPV alone. Continuing a project because of money already spent.
+
+\qffield{See also} \hyperref[meth:capital-project-evaluation]{project evaluation}; \hyperref[meth:restructuring-evaluation]{restructuring decisions}; \hyperref[meth:one-period-binomial-valuation]{binomial valuation}; \hyperref[def:option-value-drivers]{option value drivers}.
+
+\end{qfmethod}

@@ -1930,5 +1930,181 @@
   "meth:accounting-change-effects": {
     "source": "compendium/financial-statement-analysis/integrated-statement-analysis.tex",
     "review": "Verification: eu-2023-1803-ias8 IAS 8 paras. 19, 22, 36, 42; eu-2026-338-ifrs18 Annex, IFRS 18 paras. C1-C3, 47, 69, 117-123; financial-statement-analysis-2009 p. 603; locators in the entry text. Checked by statement-analysis-checks.py part 20 (IFRS 18 reclassification; MPM; IFRS 16 vs operating-lease model; estimate and policy changes). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:business-model-features-types": {
+    "source": "compendium/corporate-finance/business-models.tex",
+    "review": "Verification: clarifying-business-models-2005 pp. 17-18 and Table 3, two-sided-markets-2005 pp. 1-2, narrative-and-numbers-2017 pp. 83-85; locators in the entry text. Checked by corporate-finance-checks.py part 5 (platform take rate). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:capital-project-evaluation": {
+    "source": "compendium/corporate-finance/capital-investment.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 160-162; pp. 171-173; pp. 207-208, 232-233; pp. 162-164; locators in the entry text. Checked by corporate-finance-checks.py part 8 (incremental cash flows two ways, NPV, IRR by root search, ROIC, NPV-IRR conflict, multiple IRRs). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:capital-allocation-principles": {
+    "source": "compendium/corporate-finance/capital-investment.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 171-173, 245-249; p. 171; pp. 228-236; locators in the entry text. Checked by corporate-finance-checks.py part 8 (rationing by PI against brute-force search, equivalent annual cost against replication, expansion option). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:wacc-calculation": {
+    "source": "compendium/corporate-finance/capital-structure-cost-of-capital.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 137, 144-148; locators in the entry text. Checked by corporate-finance-checks.py part 9 (market against book weights, rate sensitivity). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "mod:capital-structure-theory": {
+    "source": "compendium/corporate-finance/capital-structure-cost-of-capital.tex",
+    "review": "Verification: modigliani-miller-1958 p. 268, eqs. (3)-(4), applied-corporate-finance-2014 pp. 320-325; pp. 329-331; locators in the entry text. Checked by corporate-finance-checks.py part 10 (MM without and with taxes, homemade leverage, trade-off optimum by grid and first-order condition). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:cost-of-debt-equity-estimation": {
+    "source": "compendium/corporate-finance/capital-structure-cost-of-capital.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 137-141; pp. 94-105; locators in the entry text. Checked by corporate-finance-checks.py part 11 (YTM, synthetic rating, implied ERP, CAPM, three-factor, build-up, bond-yield-plus, total beta). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:capital-structure-benchmarking": {
+    "source": "compendium/corporate-finance/capital-structure-cost-of-capital.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 310-319; pp. 326-327; locators in the entry text. Checked by corporate-finance-checks.py part 12 (cost-of-capital curve with rating fixed point, covenant, peers). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:organisational-forms-issuers": {
+    "source": "compendium/corporate-finance/corporate-ownership-governance.tex",
+    "review": "Verification: principles-of-finance-2026 sec. 2.1, irs-business-structures-2026 \"Business Structures\"; \"S Corporations\", applied-corporate-finance-2014 pp. 1-2; p. 302, usc-15-78l subsec. (g)(1)(A); locators in the entry text. Checked by corporate-finance-checks.py part 1 (tax wedge by organisational form). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:stakeholder-claims": {
+    "source": "compendium/corporate-finance/corporate-ownership-governance.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 1-2, 26-27; pp. 33-35; pp. 13-14, oecd-g20-principles-2023 principles VI.D and VI.D.6, pp. 48-49, eu-2026-1563-esrs Annex, ESRS 1 paras. 22-25; locators in the entry text. Checked by corporate-finance-checks.py part 2 (risk shifting under limited liability). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:corporate-governance-evaluation": {
+    "source": "compendium/corporate-finance/corporate-ownership-governance.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 14-19, 27-29; pp. 38-42; pp. 25-26; pp. 42-43, oecd-g20-principles-2023 principle II.G, pp. 20-21; principles V.E and V.E.2, pp. 39-41; principle II.F, pp. 19-20; pp. 15-21, 39-41; principle II.G, p. 20, eu-2017-828-srd2 Arts. 3g and 9a of Directive 2007/36/EC as inserted; locators in the entry text. Checked by corporate-finance-checks.py part 3 (control against cash-flow rights). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:global-ownership-structures": {
+    "source": "compendium/corporate-finance/corporate-ownership-governance.tex",
+    "review": "Verification: oecd-g20-principles-2023 principle II.G, p. 20; principles II.F-II.G, pp. 19-21, oecd-owners-listed-2019 pp. 5-6, applied-corporate-finance-2014 pp. 16-17, 23-24; locators in the entry text. Checked by corporate-finance-checks.py part 3 (dual class, pyramid, tunnelling). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:esg-exposure-evaluation": {
+    "source": "compendium/corporate-finance/corporate-ownership-governance.tex",
+    "review": "Verification: eu-2026-1563-esrs Annex, ESRS 1 paras. 38-44; Arts. 2-3, oecd-g20-principles-2023 principle VI.A.1, p. 45, applied-corporate-finance-2014 Interpretation; pp. 44-45, aggregate-confusion-2022 abstract and sec. 1; locators in the entry text. Checked by corporate-finance-checks.py part 4 (carbon cost in cash flows and value). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:restructuring-evaluation": {
+    "source": "compendium/corporate-finance/corporate-restructuring.tex",
+    "review": "Verification: investment-valuation-2012 pp. 702-704; pp. 706-710; pp. 709-710; pp. 704-705, 723-724, applied-corporate-finance-2014 pp. 437-438, lang-stulz-1993 pp. 2-3; locators in the entry text. Checked by corporate-finance-checks.py part 16 (cost programme NPV, spin-off and dis-synergies). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "ex:restructuring-valuation-effects": {
+    "source": "compendium/corporate-finance/corporate-restructuring.tex",
+    "review": "Verification: investment-valuation-2012 p. 725; pp. 702-705; locators in the entry text. Checked by corporate-finance-checks.py part 16 (methods, value created and transferred, EPS, pro forma leverage, WACC with and without re-rating, walk-away price). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:distribution-effects": {
+    "source": "compendium/corporate-finance/payout-policy.tex",
+    "review": "Verification: applied-corporate-finance-2014 p. 439; p. 473, finra-rule-11140 para. (b)(2); locators in the entry text. Checked by corporate-finance-checks.py part 13 (stock dividend, split, buyback EPS by financing, BVPS, value per share). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:dividend-policy-evaluation": {
+    "source": "compendium/corporate-finance/payout-policy.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 437-438, 449-452; pp. 442-448, 468; pp. 453-454, delaware-gcl-2026 sec. 170(a); locators in the entry text. Checked by corporate-finance-checks.py part 14 (double taxation, split rate, imputation). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:payout-policy-comparison": {
+    "source": "compendium/corporate-finance/payout-policy.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 442-444; p. 474; pp. 476-477, cfr-240-10b-18 paras. (b)-(d), cfr-240-13e-4 para. (f); locators in the entry text. Checked by corporate-finance-checks.py part 14 (Lintner recursion against closed form; smoothing). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:dividend-sustainability": {
+    "source": "compendium/corporate-finance/payout-policy.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 480-481; locators in the entry text. Checked by corporate-finance-checks.py part 15 (Harbour earnings and FCFE cover; Ridgeway). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:cash-conversion-cycle": {
+    "source": "compendium/corporate-finance/working-capital-liquidity.tex",
+    "review": "Verification: principles-of-finance-2026 sec. 19.1, financial-statement-analysis-2009 pp. 535-542; p. 539; pp. 537-539; locators in the entry text. Checked by corporate-finance-checks.py part 6 (Harbour CCC, peer, cash release, liquidity ratios). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:working-capital-policy": {
+    "source": "compendium/corporate-finance/working-capital-liquidity.tex",
+    "review": "Verification: principles-of-finance-2026 sec. 19.4; sec. 19.5; sec. 19.1; sec. 19.2, applied-corporate-finance-2014 pp. 411-413, financial-statement-analysis-2009 p. 544; locators in the entry text. Checked by corporate-finance-checks.py part 7 (trade-credit cost; matching, conservative and aggressive financing). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:equity-instruments": {
+    "source": "compendium/systematic-equities/equity-securities-markets.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 285-286; pp. 286-291, delaware-gcl-2026 sec. 151(a); locators in the entry text. No numerical example; checked against the sources only. Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft."
+  },
+  "def:equity-rights-voting": {
+    "source": "compendium/systematic-equities/equity-securities-markets.tex",
+    "review": "Verification: oecd-g20-principles-2023 principle II.A, p. 15; principle II.G, p. 21, delaware-gcl-2026 sec. 212(a); sec. 212(b), applied-corporate-finance-2014 p. 23, eu-2017-828-srd2 Arts. 3a-3c of Directive 2007/36/EC as inserted; locators in the entry text. Checked by corporate-finance-checks.py part 3 (cumulative voting, dual-class votes). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:equity-issuance-trading-liquidity": {
+    "source": "compendium/systematic-equities/equity-securities-markets.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 302-305, ftse-free-float-2026 pp. 2-3; locators in the entry text. Checked by equity-valuation-checks.py part 1 (free float, ADV, turnover, days to trade, spread). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:corporate-distribution-mechanics": {
+    "source": "compendium/systematic-equities/equity-securities-markets.tex",
+    "review": "Verification: applied-corporate-finance-2014 pp. 438-439, 473; pp. 438-439; pp. 454-455, finra-rule-11140 paras. (b)(1)-(b)(2); locators in the entry text. Checked by equity-valuation-checks.py part 2 (ex-date price adjustment, reverse split). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:price-value-indicators": {
+    "source": "compendium/systematic-equities/equity-valuation-foundations.tex",
+    "review": "Verification: investment-valuation-2012 p. 1; pp. 500-501; locators in the entry text. Checked by equity-valuation-checks.py part 3 (market cap, book, EV, estimate against price). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:valuation-model-families": {
+    "source": "compendium/systematic-equities/equity-valuation-foundations.tex",
+    "review": "Verification: investment-valuation-2012 pp. 11-25; locators in the entry text. No numerical example; checked against the sources only. Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft."
+  },
+  "meth:present-value-model-inputs": {
+    "source": "compendium/systematic-equities/equity-valuation-foundations.tex",
+    "review": "Verification: investment-valuation-2012 p. 323; pp. 596-597; p. 597; locators in the entry text. Checked by equity-valuation-checks.py part 17 (DDM, FCFE and residual income equal under clean surplus, closed form and year by year). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:intrinsic-value-mispricing": {
+    "source": "compendium/systematic-equities/equity-valuation-foundations.tex",
+    "review": "Verification: investment-valuation-2012 p. 12; p. 22, eu-2023-1803-ias1 IAS 1 para. 25, eu-2023-1803-ifrs13 IFRS 13 para. 9, applied-corporate-finance-2014 pp. 556-557; locators in the entry text. Checked by equity-valuation-checks.py part 16 (mispricing decomposition). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:valuation-approach-choice": {
+    "source": "compendium/systematic-equities/equity-valuation-foundations.tex",
+    "review": "Verification: investment-valuation-2012 pp. 6-8, lang-stulz-1993 pp. 2-3; locators in the entry text. Checked by equity-valuation-checks.py part 15 (sum of the parts and discount). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:valuation-price-judgement": {
+    "source": "compendium/systematic-equities/equity-valuation-foundations.tex",
+    "review": "Verification: investment-valuation-2012 pp. 1-5, 466; locators in the entry text. Checked by equity-valuation-checks.py parts 4, 5, 10 and 18 (Harbour sensitivity and reverse engineering; Norland DDM judgement). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:industry-analysis": {
+    "source": "compendium/systematic-equities/industry-company-analysis.tex",
+    "review": "Verification: five-competitive-forces-2008 p. 15; pp. 2-3, 10, gics-methodology-2023 p. 13, merger-guidelines-2023 pp. 5-6 and nn. 13-14, cipd-pestle-2026 sections on the definition, the nine steps and the limitations; locators in the entry text. Checked by equity-valuation-checks.py part 14 (size, CAGR, share, HHI, merger change). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:company-position-analysis": {
+    "source": "compendium/systematic-equities/industry-company-analysis.tex",
+    "review": "Verification: five-competitive-forces-2008 p. 12; locators in the entry text. Checked by corporate-finance-checks.py parts 6 and 16 (Harbour cash cycle, pro forma leverage). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:gordon-growth-model": {
+    "source": "compendium/systematic-equities/dividend-discount-models.tex",
+    "review": "Verification: investment-valuation-2012 p. 323; p. 324; locators in the entry text. Checked by equity-valuation-checks.py part 5 (Gordon against long sum, one-period, implied growth and return, sensitivity). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:preferred-stock-valuation": {
+    "source": "compendium/systematic-equities/dividend-discount-models.tex",
+    "review": "Verification: applied-corporate-finance-2014 p. 144; p. 291, delaware-gcl-2026 sec. 151(b); locators in the entry text. Checked by equity-valuation-checks.py parts 6 and 18 (perpetual, callable to the call date, arrears). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:pvgo-justified-pe": {
+    "source": "compendium/systematic-equities/dividend-discount-models.tex",
+    "review": "Verification: investment-valuation-2012 pp. 337-338; pp. 460-461, 471-473; locators in the entry text. Checked by equity-valuation-checks.py part 7 (PVGO split, ROE = r, leading and trailing P/E). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:multistage-ddm": {
+    "source": "compendium/systematic-equities/dividend-discount-models.tex",
+    "review": "Verification: investment-valuation-2012 pp. 329-331, 340-341; locators in the entry text. Checked by equity-valuation-checks.py part 8 (two-stage against long sum, dating errors, implied return, H-model against exact decline, three-stage). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:sustainable-growth": {
+    "source": "compendium/systematic-equities/dividend-discount-models.tex",
+    "review": "Verification: investment-valuation-2012 pp. 285-286; pp. 333-334; locators in the entry text. Checked by equity-valuation-checks.py parts 9 and 18 (DuPont, equity growth, Harbour). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:multiples-valuation-basics": {
+    "source": "compendium/systematic-equities/market-multiples.tex",
+    "review": "Verification: investment-valuation-2012 pp. 453-455; pp. 455-456, 468-469; locators in the entry text. Checked by equity-valuation-checks.py parts 10-11 (Harbour P/E definitions, P/B, P/S, EV/EBITDA). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:peer-group-selection": {
+    "source": "compendium/systematic-equities/market-multiples.tex",
+    "review": "Verification: investment-valuation-2012 pp. 462-463; p. 21, optimal-multiples-2023 pp. 1-5; locators in the entry text. Checked by equity-valuation-checks.py parts 10 and 18 (peer statistics with and without the outlier). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:justified-multiples": {
+    "source": "compendium/systematic-equities/market-multiples.tex",
+    "review": "Verification: investment-valuation-2012 pp. 460-461, 515, 545; pp. 471-473; locators in the entry text. Checked by equity-valuation-checks.py part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:normalised-earnings": {
+    "source": "compendium/systematic-equities/market-multiples.tex",
+    "review": "Verification: investment-valuation-2012 p. 487; pp. 458-459; locators in the entry text. Checked by equity-valuation-checks.py part 10 (underlying EPS, average-ROE EPS, earnings yields). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:alternative-multiples": {
+    "source": "compendium/systematic-equities/market-multiples.tex",
+    "review": "Verification: investment-valuation-2012 p. 511; pp. 542-543; pp. 460-461, 504; locators in the entry text. Checked by equity-valuation-checks.py part 10 (PEG range, dividend yield, P/S). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:enterprise-value-multiples": {
+    "source": "compendium/systematic-equities/market-multiples.tex",
+    "review": "Verification: investment-valuation-2012 pp. 500-501, 507; locators in the entry text. Checked by equity-valuation-checks.py parts 11 and 18 (EV/EBITDA, mismatches, lease and development adjustments, peer-implied value). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:comparables-evaluation": {
+    "source": "compendium/systematic-equities/market-multiples.tex",
+    "review": "Verification: investment-valuation-2012 pp. 458-459; pp. 463-465; pp. 463, 477-479; pp. 124-125, 131-132, optimal-multiples-2023 pp. 3-6; locators in the entry text. Checked by equity-valuation-checks.py parts 10, 12, 13 and 18 (mean, median, harmonic mean, terminal multiple implied growth, SUE, relative strength). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   }
 }

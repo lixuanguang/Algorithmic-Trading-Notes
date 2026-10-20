@@ -6551,9 +6551,9 @@
    "objectives": [
     "objective:compare-organisational-forms"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:organisational-forms-issuers compares proprietorships, partnerships, corporations, S corporations, LLCs and LLPs on liability, taxation, life, transfer and capital, with a worked tax wedge.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m020:b02",
@@ -6571,9 +6571,9 @@
    "objectives": [
     "objective:compare-organisational-forms"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:organisational-forms-issuers describes the corporate issuer: separate entity, limited liability, residual equity against fixed debt claims, separation of ownership and control.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m020:b03",
@@ -6591,9 +6591,9 @@
    "objectives": [
     "objective:compare-organisational-forms"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:organisational-forms-issuers compares public and private issuers on capital access, liquidity, disclosure, control and the Exchange Act registration thresholds.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m021:b01",
@@ -6611,9 +6611,9 @@
    "objectives": [
     "objective:compare-stakeholder-claims"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:stakeholder-claims compares fixed and residual claims, priority and payoff shapes, and shows risk shifting with a worked example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m021:b02",
@@ -6632,9 +6632,9 @@
    "objectives": [
     "objective:compare-stakeholder-claims"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:stakeholder-claims describes the interests of managers, employees, customers, suppliers, governments and society and compares their conflicts with shareholders.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m021:b03",
@@ -6652,9 +6652,9 @@
    "objectives": [
     "objective:compare-stakeholder-claims"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:stakeholder-claims describes environmental, social and governance factors of issuers and double materiality under ESRS 1.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m022:b01",
@@ -6672,9 +6672,9 @@
    "objectives": [
     "objective:evaluate-corporate-governance"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:corporate-governance-evaluation describes manager-shareholder, controller-minority, shareholder-lender and firm-society conflicts.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m022:b02",
@@ -6692,9 +6692,9 @@
    "objectives": [
     "objective:evaluate-corporate-governance"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:corporate-governance-evaluation describes internal mechanisms (voting, board, committees, pay, controls) and external ones (control market, activists, lenders, auditors, regulation, SRD II engagement and say-on-pay).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m022:b03",
@@ -6712,9 +6712,9 @@
    "objectives": [
     "objective:evaluate-corporate-governance"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:corporate-governance-evaluation describes the risks of weak governance and the evidence on benefits, including its limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m023:b01",
@@ -6733,9 +6733,9 @@
    "objectives": [
     "objective:analyse-cash-conversion-cycle"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:cash-conversion-cycle defines DSO, DIO, DPO and the cycle, computes Harbour's 75.11 days against a peer's 55 and the cash released by shorter inventory days.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m023:b02",
@@ -6754,9 +6754,9 @@
    "objectives": [
     "objective:analyse-cash-conversion-cycle"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:cash-conversion-cycle explains and compares current, quick, cash and cash-flow ratios and financial flexibility for Harbour against a peer.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m023:b03",
@@ -6775,9 +6775,9 @@
    "objectives": [
     "objective:choose-working-capital-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:working-capital-policy describes conservative, matching and aggressive investment and financing policies, trade credit, receivables and inventory policy, and compares policy costs with rollover risk.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m024:b01",
@@ -6795,9 +6795,9 @@
    "objectives": [
     "objective:evaluate-capital-projects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:capital-project-evaluation describes project types (by relation and purpose) and the allocation process.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m024:b02",
@@ -6817,9 +6817,9 @@
    "objectives": [
     "objective:evaluate-capital-projects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:capital-project-evaluation calculates NPV, IRR and ROIC on incremental after-tax cash flows and contrasts them, including the NPV-IRR conflict and multiple IRRs.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m024:b03",
@@ -6837,9 +6837,9 @@
    "objectives": [
     "objective:apply-capital-allocation-principles"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:capital-allocation-principles describes principles (opportunity cost, cannibalisation, sunk costs) and pitfalls (inertia, earnings pressure, sunk-cost bias, mismatched hurdles), with rationing and unequal lives.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m024:b04",
@@ -6857,9 +6857,9 @@
    "objectives": [
     "objective:apply-capital-allocation-principles"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:capital-allocation-principles describes options to delay, expand and abandon, with a worked expansion option.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m025:b01",
@@ -6878,9 +6878,9 @@
    "objectives": [
     "objective:calculate-wacc"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:wacc-calculation calculates Harbour's WACC from market weights and interprets it against book weights and a rate shock.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m025:b02",
@@ -6899,9 +6899,9 @@
     "objective:calculate-wacc",
     "objective:explain-capital-structure-theory"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:wacc-calculation and mod:capital-structure-theory explain the market and company factors that move the WACC and leverage (taxes, distress, agency, flexibility, asset tangibility).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m025:b03",
@@ -6919,9 +6919,9 @@
    "objectives": [
     "objective:explain-capital-structure-theory"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: mod:capital-structure-theory explains MM Propositions I and II without and with taxes, with the arbitrage argument and a worked example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m025:b04",
@@ -6939,9 +6939,9 @@
    "objectives": [
     "objective:explain-capital-structure-theory"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: mod:capital-structure-theory describes the trade-off optimum, pecking order and target ranges, with a worked optimum.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m026:b01",
@@ -6959,9 +6959,9 @@
    "objectives": [
     "objective:describe-business-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:business-model-features-types describes the nine building blocks and the distinction from strategy, applied to Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m026:b02",
@@ -6979,9 +6979,9 @@
    "objectives": [
     "objective:describe-business-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:business-model-features-types describes product-sale, subscription, razor-and-blades, asset-light and platform models, with a take-rate example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m027:b01",
@@ -8080,9 +8080,9 @@
    "objectives": [
     "objective:describe-equity-instruments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:equity-instruments describes common and preferred stock, classes, warrants and contingent value rights and their features.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m039:b02",
@@ -8100,9 +8100,9 @@
    "objectives": [
     "objective:describe-equity-instruments"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:equity-instruments contrasts listed and private equity on liquidity, pricing, disclosure, rights and required return.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m040:b01",
@@ -8120,9 +8120,9 @@
    "objectives": [
     "objective:compare-equity-rights-and-voting"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:equity-rights-voting describes basic rights (G20/OECD), class rights, Delaware defaults and differences across jurisdictions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m040:b02",
@@ -8140,9 +8140,9 @@
    "objectives": [
     "objective:compare-equity-rights-and-voting"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:equity-rights-voting describes proxies, quorum, intermediaries, proxy advisers and say-on-pay, with cumulative voting worked.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m041:b01",
@@ -8160,9 +8160,9 @@
    "objectives": [
     "objective:describe-equity-markets-trading"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:equity-issuance-trading-liquidity describes IPOs, seasoned and rights offerings and secondary trading.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m041:b02",
@@ -8180,9 +8180,9 @@
    "objectives": [
     "objective:describe-equity-markets-trading"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:equity-issuance-trading-liquidity compares exchange, off-exchange and OTC trading, linking to the market-structure entries.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m041:b03",
@@ -8201,9 +8201,9 @@
    "objectives": [
     "objective:describe-equity-markets-trading"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:equity-issuance-trading-liquidity describes free float, ADV, turnover, days to trade and spreads and calculates them for Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m041:b04",
@@ -8241,9 +8241,9 @@
    "objectives": [
     "objective:describe-corporate-distributions"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:corporate-distribution-mechanics and meth:distribution-effects describe cash dividends, repurchases, stock dividends and splits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m042:b02",
@@ -8261,9 +8261,9 @@
    "objectives": [
     "objective:describe-corporate-distributions"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:corporate-distribution-mechanics describes declaration, ex-dividend, record and payment dates under the current US rule.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m042:b03",
@@ -8301,9 +8301,9 @@
    "objectives": [
     "objective:contrast-price-and-value"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:price-value-indicators contrasts price and value, with Harbour's price against its estimate.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m043:b02",
@@ -8321,9 +8321,9 @@
    "objectives": [
     "objective:contrast-price-and-value"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:price-value-indicators contrasts book value, market capitalisation and enterprise value, computed for Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m043:b03",
@@ -8342,9 +8342,9 @@
    "objectives": [
     "objective:compare-valuation-model-families"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:valuation-model-families describes DCF, relative, asset-based and contingent-claim models with advantages, disadvantages and fit.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m044:b01",
@@ -8363,9 +8363,9 @@
    "objectives": [
     "objective:compare-present-value-model-inputs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:present-value-model-inputs contrasts dividends, FCFE, FCFF and residual income and their discount rates, with three routes to one value.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m044:b02",
@@ -8384,9 +8384,9 @@
    "objectives": [
     "objective:value-equity-with-growth-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:gordon-growth-model and meth:multistage-ddm calculate and interpret constant-growth and multistage values.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m044:b03",
@@ -8404,9 +8404,9 @@
    "objectives": [
     "objective:value-equity-with-growth-models"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:gordon-growth-model explains shortcomings of the growth assumption (sensitivity near r, consistency with payout and ROE, abrupt changes).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m044:b04",
@@ -8425,9 +8425,9 @@
    "objectives": [
     "objective:value-preferred-stock"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:preferred-stock-valuation calculates perpetual preferred value and describes call, put, conversion, floating-rate and cumulative features, with a callable example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m045:b01",
@@ -8445,9 +8445,9 @@
    "objectives": [
     "objective:value-equity-with-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:multiples-valuation-basics explains the method of comparables and the method of forecasted fundamentals.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m045:b02",
@@ -8467,9 +8467,9 @@
    "objectives": [
     "objective:value-equity-with-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:multiples-valuation-basics calculates and interprets Harbour's price and EV multiples and describes their uses.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m045:b03",
@@ -8487,9 +8487,9 @@
    "objectives": [
     "objective:select-peer-group"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:peer-group-selection determines a peer group for Harbour with screens, the evidence on peer numbers and an outlier.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m045:b04",
@@ -8507,9 +8507,9 @@
    "objectives": [
     "objective:value-equity-with-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:multiples-valuation-basics describes trailing, current and forward multiples with Harbour's three P/Es.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m046:b01",
@@ -8588,9 +8588,9 @@
    "objectives": [
     "objective:analyse-industry-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:industry-analysis describes Porter's steps of industry and competitive analysis.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m047:b02",
@@ -8609,9 +8609,9 @@
    "objectives": [
     "objective:analyse-industry-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:industry-analysis describes and compares statistical, production- and demand-oriented classification and GICS rules.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m047:b03",
@@ -8629,9 +8629,9 @@
    "objectives": [
     "objective:analyse-industry-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:industry-analysis determines industry size, growth, market share and concentration (HHI) in a worked example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m047:b04",
@@ -8649,9 +8649,9 @@
    "objectives": [
     "objective:analyse-industry-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:industry-analysis analyses the five forces and PESTLE for a power-tool industry.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m048:b01",
@@ -8669,9 +8669,9 @@
    "objectives": [
     "objective:analyse-company-position"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:company-position-analysis explains positioning against the forces (Paccar) and applies it to Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m048:b02",
@@ -8689,9 +8689,9 @@
    "objectives": [
     "objective:analyse-company-position"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:company-position-analysis evaluates revenue drivers, profitability and pricing power for Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m048:b03",
@@ -8709,9 +8709,9 @@
    "objectives": [
     "objective:analyse-company-position"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:company-position-analysis evaluates Harbour's working capital, investment and capital structure.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m049:b01",
@@ -14393,9 +14393,9 @@
    "objectives": [
     "objective:analyse-distribution-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:distribution-effects describes the effects of cash, special, liquidating and stock dividends, splits and reverse splits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b02",
@@ -14414,9 +14414,9 @@
    "objectives": [
     "objective:evaluate-dividend-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-policy-evaluation compares irrelevance, tax-preference and bird-in-hand theories and explains clienteles.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b03",
@@ -14434,9 +14434,9 @@
    "objectives": [
     "objective:evaluate-dividend-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-policy-evaluation describes signalling evidence for increases, cuts and initiations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b04",
@@ -14454,9 +14454,9 @@
    "objectives": [
     "objective:evaluate-dividend-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-policy-evaluation explains agency costs between managers, shareholders and lenders and payout.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b05",
@@ -14474,9 +14474,9 @@
    "objectives": [
     "objective:evaluate-dividend-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-policy-evaluation explains practical factors: investment, earnings stability, access to capital, legal limits, covenants, taxes, peers.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b06",
@@ -14495,9 +14495,9 @@
    "objectives": [
     "objective:evaluate-dividend-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-policy-evaluation calculates and interprets effective tax rates under double taxation, split rate and imputation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b07",
@@ -14516,9 +14516,9 @@
    "objectives": [
     "objective:compare-payout-policies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:payout-policy-comparison compares stable, constant-payout and residual policies with a Lintner calculation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b08",
@@ -14536,9 +14536,9 @@
    "objectives": [
     "objective:evaluate-dividend-policy"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-policy-evaluation describes payout trends: falling dividend yields and the rise of buybacks.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b09",
@@ -14556,9 +14556,9 @@
    "objectives": [
     "objective:compare-payout-policies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:payout-policy-comparison compares open-market, fixed-price and Dutch-auction tenders and direct negotiation, with US rules.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b10",
@@ -14577,9 +14577,9 @@
    "objectives": [
     "objective:analyse-distribution-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:distribution-effects calculates EPS after buybacks funded by cash and by debt at two rates and compares them with the earnings-yield rule.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b11",
@@ -14597,9 +14597,9 @@
    "objectives": [
     "objective:analyse-distribution-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:distribution-effects calculates BVPS after buybacks above and below book value.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b12",
@@ -14617,9 +14617,9 @@
    "objectives": [
     "objective:compare-payout-policies"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:payout-policy-comparison explains the choice between dividends and repurchases.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b13",
@@ -14638,9 +14638,9 @@
    "objectives": [
     "objective:assess-dividend-sustainability"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-sustainability calculates and interprets earnings cover, FCFE cover and cash returned to FCFE for Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b14",
@@ -14658,9 +14658,9 @@
    "objectives": [
     "objective:assess-dividend-sustainability"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-sustainability identifies signs of unsustainable dividends with the Ridgeway example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m017:b01",
@@ -14678,9 +14678,9 @@
    "objectives": [
     "objective:compare-ownership-structures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:global-ownership-structures describes dispersed and concentrated ownership, owner types (OECD data) and control-enhancing devices.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m017:b02",
@@ -14698,9 +14698,9 @@
    "objectives": [
     "objective:evaluate-corporate-governance"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:corporate-governance-evaluation evaluates a company's governance with four questions and a worked case.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m017:b03",
@@ -14718,9 +14718,9 @@
    "objectives": [
     "objective:evaluate-esg-exposures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:esg-exposure-evaluation describes identifying exposures and opportunities with impact and financial materiality.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m017:b04",
@@ -14738,9 +14738,9 @@
    "objectives": [
     "objective:evaluate-esg-exposures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:esg-exposure-evaluation evaluates Harbour's material ESG exposures and quantifies one in cash flows and value.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m018:b01",
@@ -14758,9 +14758,9 @@
    "objectives": [
     "objective:benchmark-capital-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:capital-structure-benchmarking explains top-down (rates, taxes, markets, law) and bottom-up (cash-flow stability, tangibility, intangibles, growth) factors.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m018:b02",
@@ -14778,9 +14778,9 @@
    "objectives": [
     "objective:estimate-cost-of-debt-and-equity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation compares YTM, rating and synthetic-rating methods and the book rate, applied to Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m018:b03",
@@ -14798,9 +14798,9 @@
    "objectives": [
     "objective:estimate-cost-of-debt-and-equity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation explains survey, historical and implied premiums and when to use each, with an implied-premium calculation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m018:b04",
@@ -14818,9 +14818,9 @@
    "objectives": [
     "objective:estimate-cost-of-debt-and-equity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation compares CAPM, multifactor, build-up and bond-yield-plus-premium estimates for Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m018:b05",
@@ -14838,9 +14838,9 @@
    "objectives": [
     "objective:estimate-cost-of-debt-and-equity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation estimates public and private costs (market against total beta) for Harbour and Kestrel.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m018:b06",
@@ -14858,9 +14858,9 @@
    "objectives": [
     "objective:benchmark-capital-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:capital-structure-benchmarking evaluates Harbour's structure against a cost-of-capital curve and peers, with the covenant.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m019:b01",
@@ -14878,9 +14878,9 @@
    "objectives": [
     "objective:evaluate-restructurings"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:restructuring-evaluation explains investment, divestment and restructuring actions and their motives.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m019:b02",
@@ -14898,9 +14898,9 @@
    "objectives": [
     "objective:evaluate-restructurings"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:restructuring-evaluation explains the initial evaluation of a proposed restructuring.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m019:b03",
@@ -14919,9 +14919,9 @@
    "objectives": [
     "objective:value-restructuring-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: ex:restructuring-valuation-effects demonstrates comparable companies, precedent transactions, premiums paid and DCF and interprets value created against value transferred.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m019:b04",
@@ -14939,9 +14939,9 @@
    "objectives": [
     "objective:value-restructuring-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: ex:restructuring-valuation-effects demonstrates EPS, net debt/EBITDA and WACC effects of Harbour's bolt-on.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m019:b05",
@@ -14959,9 +14959,9 @@
    "objectives": [
     "objective:evaluate-restructurings"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:restructuring-evaluation and ex:restructuring-valuation-effects evaluate acquisitions against synergy, premium and evidence.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m019:b06",
@@ -14979,9 +14979,9 @@
    "objectives": [
     "objective:evaluate-restructurings"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:restructuring-evaluation evaluates sales, spin-offs, split-offs and carve-outs, with a spin-off and dis-synergies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m019:b07",
@@ -14999,9 +14999,9 @@
    "objectives": [
     "objective:evaluate-restructurings"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:restructuring-evaluation evaluates cost programmes as projects and balance-sheet restructurings through capital-structure effects.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m020:b01",
@@ -15020,9 +15020,9 @@
    "objectives": [
     "objective:define-intrinsic-value-and-mispricing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:intrinsic-value-mispricing defines valuation and intrinsic value and explains mispricing with its decomposition.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m020:b02",
@@ -15041,9 +15041,9 @@
    "objectives": [
     "objective:define-intrinsic-value-and-mispricing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:intrinsic-value-mispricing explains and contrasts going-concern and liquidation value with IAS 1 para. 25.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m020:b03",
@@ -15062,9 +15062,9 @@
    "objectives": [
     "objective:define-intrinsic-value-and-mispricing"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: def:intrinsic-value-mispricing describes fair value (IFRS 13), fair market value, investment value and intrinsic value and justifies which purpose uses each.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m020:b04",
@@ -15082,9 +15082,9 @@
    "objectives": [
     "objective:choose-valuation-approach"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:valuation-approach-choice describes applications of valuation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m020:b05",
@@ -15102,9 +15102,9 @@
    "objectives": [
     "objective:analyse-industry-structure"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:industry-analysis describes the industry and competitive questions a valuation must answer.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m020:b06",
@@ -15123,9 +15123,9 @@
    "objectives": [
     "objective:choose-valuation-approach"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:valuation-approach-choice contrasts absolute and relative models through their views of market efficiency.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m020:b07",
@@ -15143,9 +15143,9 @@
    "objectives": [
     "objective:choose-valuation-approach"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:valuation-approach-choice describes sum-of-the-parts valuation and the conglomerate discount with the Ashby example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m020:b08",
@@ -15163,9 +15163,9 @@
    "objectives": [
     "objective:choose-valuation-approach"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:valuation-approach-choice explains how to choose an approach by cash flows, data and purpose.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b01",
@@ -15184,9 +15184,9 @@
    "objectives": [
     "objective:compare-present-value-model-inputs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:present-value-model-inputs compares dividends, FCF and residual income and identifies when each is appropriate.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b02",
@@ -15205,9 +15205,9 @@
    "objectives": [
     "objective:value-with-gordon-growth"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:gordon-growth-model calculates single- and multiple-period DDM values for Norland.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b03",
@@ -15226,9 +15226,9 @@
    "objectives": [
     "objective:value-with-gordon-growth"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:gordon-growth-model calculates the Gordon value and explains its assumptions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b04",
@@ -15246,9 +15246,9 @@
    "objectives": [
     "objective:value-preferred-stock"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:preferred-stock-valuation calculates perpetual preferred value.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b05",
@@ -15267,9 +15267,9 @@
    "objectives": [
     "objective:value-with-gordon-growth"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:gordon-growth-model describes strengths and limits and justifies its selection for Norland.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b06",
@@ -15288,9 +15288,9 @@
    "objectives": [
     "objective:value-with-gordon-growth"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:gordon-growth-model calculates and interprets implied dividend growth.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b07",
@@ -15309,9 +15309,9 @@
    "objectives": [
     "objective:analyse-pvgo-justified-pe"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:pvgo-justified-pe calculates PVGO and interprets its link to the P/E.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b08",
@@ -15330,9 +15330,9 @@
    "objectives": [
     "objective:analyse-pvgo-justified-pe"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:pvgo-justified-pe calculates and interprets justified leading and trailing P/E.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b09",
@@ -15351,9 +15351,9 @@
     "objective:value-with-gordon-growth",
     "objective:value-with-multistage-ddm"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:gordon-growth-model and meth:multistage-ddm estimate the required return from Gordon, two-stage and H-models.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b10",
@@ -15371,9 +15371,9 @@
    "objectives": [
     "objective:judge-valuation-relative-to-price"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:valuation-price-judgement evaluates Norland at 30 against its Gordon value and implied growth.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b11",
@@ -15391,9 +15391,9 @@
    "objectives": [
     "objective:value-with-multistage-ddm"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:multistage-ddm explains growth, transition and maturity phases.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b12",
@@ -15412,9 +15412,9 @@
    "objectives": [
     "objective:value-with-multistage-ddm"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:multistage-ddm explains and justifies the choice among two-stage, H and three-stage models.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b13",
@@ -15433,9 +15433,9 @@
    "objectives": [
     "objective:value-with-multistage-ddm"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:multistage-ddm describes and explains correctly dated terminal values, with two dating errors computed.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b14",
@@ -15454,9 +15454,9 @@
    "objectives": [
     "objective:value-with-multistage-ddm"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:multistage-ddm calculates and interprets two-stage, H-model and three-stage values.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b15",
@@ -15474,9 +15474,9 @@
    "objectives": [
     "objective:value-with-multistage-ddm"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:multistage-ddm explains year-by-year spreadsheet models and their trade-off.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m021:b16",
@@ -15496,9 +15496,9 @@
    "objectives": [
     "objective:estimate-sustainable-growth"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:sustainable-growth calculates g = b x ROE, demonstrates the DuPont decomposition and interprets Harbour's rate.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m022:b01",
@@ -15757,9 +15757,9 @@
    "objectives": [
     "objective:judge-valuation-relative-to-price"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:valuation-price-judgement evaluates Harbour at 11 against its FCFF value with sensitivity and reverse engineering.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b01",
@@ -15778,9 +15778,9 @@
    "objectives": [
     "objective:value-equity-with-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:multiples-valuation-basics contrasts and explains comparables and fundamentals.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b02",
@@ -15799,9 +15799,9 @@
    "objectives": [
     "objective:calculate-justified-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified multiples for Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b03",
@@ -15819,9 +15819,9 @@
    "objectives": [
     "objective:apply-alternative-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples describes rationales and drawbacks of P/E, P/B, P/S, P/CF and dividend yield.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b04",
@@ -15840,9 +15840,9 @@
    "objectives": [
     "objective:apply-alternative-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples calculates and interprets Harbour's alternative multiples and dividend yield.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b05",
@@ -15862,9 +15862,9 @@
    "objectives": [
     "objective:normalise-earnings"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:normalised-earnings calculates and interprets underlying and normalised EPS by two methods and explains when to use them.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b06",
@@ -15883,9 +15883,9 @@
    "objectives": [
     "objective:normalise-earnings"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:normalised-earnings explains and justifies the earnings yield for negative or small earnings.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b07",
@@ -15903,9 +15903,9 @@
    "objectives": [
     "objective:apply-alternative-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples describes the fundamental drivers of each multiple.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b08",
@@ -15925,9 +15925,9 @@
    "objectives": [
     "objective:calculate-justified-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates a P/E predicted by a cross-sectional regression and explains its limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b09",
@@ -15946,9 +15946,9 @@
    "objectives": [
     "objective:calculate-justified-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified P/E, P/B and P/S.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b10",
@@ -15968,9 +15968,9 @@
    "objectives": [
     "objective:apply-alternative-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples calculates, interprets and explains the PEG ratio and its limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b11",
@@ -15989,9 +15989,9 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation calculates a terminal value from a multiple and explains the growth it implies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b12",
@@ -16010,9 +16010,9 @@
     "objective:judge-valuation-relative-to-price",
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation and meth:valuation-price-judgement evaluate Harbour against peer multiples with and without controls.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b13",
@@ -16031,9 +16031,9 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation evaluates and explains combining comparables with fundamentals.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b14",
@@ -16052,9 +16052,9 @@
    "objectives": [
     "objective:apply-enterprise-value-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:enterprise-value-multiples explains EBITDA, FFO, FCFE and FCFF definitions and their uses.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b15",
@@ -16074,9 +16074,9 @@
    "objectives": [
     "objective:apply-enterprise-value-multiples"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:enterprise-value-multiples calculates and evaluates EV/EBITDA with matched numerators, lease and development adjustments.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b16",
@@ -16094,9 +16094,9 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation explains cross-border comparisons (accounting, rates, growth, risk).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b17",
@@ -16114,9 +16114,9 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation describes earnings-surprise, SUE and relative-strength indicators with calculations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m023:b18",
@@ -16134,9 +16134,9 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation explains means, medians and harmonic means of multiples with a worked comparison.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m024:b01",

@@ -4717,3 +4717,92 @@ revalidation. Coverage unchanged: 236/424 objectives and 532/1,030 items.
 **Limits.** The after-tax pension deficit follows the credit-analysis convention; under Harbour's
 simplified tax rule the pre-tax deficit would lower equity by 12.04, as the entry states. WACC,
 RONIC, option inputs and credit-policy thresholds are illustrative inputs.
+
+## Corporate-finance and equity-valuation batch, 20 October 2026
+
+**Starting state.** Branch `codex/corporate-equity-valuation-20261020` from the corrected
+PR #30 head `1f51fcf` (`codex/accounting-statement-analysis-20261020`). All 45 objectives
+were `missing`, with no entries or candidates; their 123 outline items map to no objective
+outside the batch. Coverage before: 236/424 objectives, 532/1,030 outline items.
+
+**Scope (45).**
+- corporate-ownership-governance: 5
+- business-models: 1
+- working-capital-liquidity: 2
+- capital-investment-decisions: 2
+- capital-structure-cost-of-capital: 4
+- payout-policy: 4
+- equity-securities-markets: 4
+- equity-valuation-foundations: 6
+- industry-company-analysis: 2
+- dividend-discount-models: 6
+- market-multiples-valuation: 7
+- corporate-restructuring: 2
+
+Implemented in prerequisite order: governance, business models, working capital, capital
+investment, capital structure, payout, equity securities, valuation foundations, industry,
+dividend models, multiples, and restructuring last, after multiples.
+
+**Outline pages read.** Level I topic outline (`7099c7688942`) PDF pp. 9-10 and 15-17;
+Level II (`0242f4b7ba07`) PDF pp. 11-15. Each of the 123 items has an item-specific
+rationale in `outline-crosswalk.json`.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Books: Damodaran, *Applied Corporate Finance*, 4th ed. (2014), chaps. 1-2, 4-11 and pp. 556-557; *Investment Valuation*, 3rd ed. (2012), pp. 1-25, 75, 124-132, 285-289, 323-348, 453-517, 542-545, 596-597, 702-728; *Narrative and Numbers* (2017), pp. 83-85; Subramanyam and Wild (2009), pp. 535-544; OpenStax *Principles of Finance*, 2nd ed., secs. 2.1 and 19.1-19.5.
+- Articles: Modigliani and Miller (1958), pp. 268-273; Osterwalder, Pigneur and Tucci (2005 manuscript); Rochet and Tirole (2005 manuscript); Berg, Kölbel and Rigobon (2022); Lang and Stulz (1993 working paper); Cooper and Lambertides (2023); Porter (2008), pp. 12-15 added to the pages already read.
+- Governance and law: G20/OECD Principles (2023); OECD *Owners of the World's Listed Companies* (2019); EU Shareholder Rights Directive II (2017/828); Delaware General Corporation Law secs. 151, 170, 212, 214, 216; 15 U.S.C. 78l(g); IRS business-structure pages.
+- Standards and rules: simplified ESRS (Delegated Regulation 2026/1563), ESRS 1; IAS 1 para. 25 and IFRS 13 paras. 2, 9 and 57 (EU 2023/1803); SEC Rules 10b-18 and 13e-4(f); FINRA Rule 11140 as amended in 2024; US Merger Guidelines (2023); GICS methodology (2023); FTSE Russell free-float rules v3.6 (October 2026); CIPD PESTLE factsheet (2026).
+- Curriculum volumes and answer workbooks were not used; the outlines were used only to map items.
+
+**Access limits and unread sources.**
+- The ISSB's IFRS S1 and S2 require registration and were not read; ESG materiality follows ESRS.
+- The OECD site refused the ownership report; a reproduction in Columbia Business School course materials was read and is identified as such.
+- Berg et al.'s PDF download was refused; the open-access Oxford Academic HTML was read, cited by section.
+- Rev. Rul. 59-60 (US fair market value) and Nasdaq Rule 5550 (minimum bid price) were not read; fair market value is described as Interpretation, and reverse splits without listing-rule detail.
+- Primary studies summarised in the books (Gompers-Ishii-Metrick, Lintner, Jensen-Ruback, Myers-Majluf, Smith 1986, KPMG and McKinsey acquisition studies) were not read; they are attributed to Damodaran.
+- SEC.gov pages were not fetched by script; LII renderings of the CFR were used, and the owner's email was not sent anywhere.
+
+**Conventions protected by the examples.**
+- Project cash flows are incremental and after tax; sunk costs excluded, opportunity costs and cannibalisation included; financing not deducted when discounting at the WACC (`meth:capital-project-evaluation`).
+- NPV ranks mutually exclusive projects; IRR conflicts and multiple IRRs are shown.
+- WACC uses market-value weights (`meth:wacc-calculation`).
+- Leverage effects follow MM with and without taxes and a trade-off curve; costs of debt and equity rise with leverage.
+- Dividends, stock dividends, splits and buybacks are reconciled to value per share, EPS and BVPS.
+- Trailing and leading P/E and PVGO are reconciled; multistage terminal values are dated at the start of stable growth, with two dating errors computed.
+- Comparables use matched numerators (EV with leases and pensions against post-IFRS 16 EBITDA; US GAAP lease and IAS 38 development adjustments).
+- Restructuring separates value created from value transferred; EPS accretion is not a value test.
+- Recommendations (Harbour valuation, payout, bolt-on) state alternatives and sensitivity.
+
+**Harbour assumptions added.** Share price EUR 11.00 at 31 December 2025; risk-free rate
+3.0 percent; equity premium 5.5 percent; peer unlevered beta 0.93; pre-tax cost of debt
+5.2 percent (a 4 percent 2030 bond at 94.83, BBB); an illustrative rating-to-spread
+schedule calibrated so Harbour's coverage maps to BBB; cycle ROEs for 2021-2023; a
+hypothetical peer table. Computed WACC 8.02 percent supports the 8 percent input of the
+earlier valuation.
+
+**Numerical evidence.**
+- `notes/artefacts/corporate-finance/corporate-finance-checks.py`: 16 parts, 65 checks. Independent routes: NPV from a cash-flow vector against a line-by-line build; IRR by root search; profitability-index ranking against brute-force search of every combination; equivalent annual cost against replication; MM equity returns from income against the Proposition II formula; trade-off optimum by grid against the first-order condition; Lintner recursion against its closed form; a discrete rating fixed point for the cost-of-capital curve.
+- `notes/artefacts/systematic-equities/equity-valuation-checks.py`: 18 parts, 62 checks. Independent routes: Gordon and two-stage values against explicit sums of thousands of years; the H-model against an exact linear decline; implied returns by root search against closed forms; DDM, FCFE and residual income equal under clean surplus, closed form and year by year; harmonic mean against the average earnings yield; regression by least squares; Harbour values reproduced from the statement-analysis script before sensitivities.
+- Both scripts execute the Harbour script with output suppressed, so balances and the 8.49 value come from one source.
+
+**Errors caught during development** (all corrected before the text was final):
+- several expected figures set before computing (NPV, IRR, ROIC path, the NPV crossover, the expansion option, book-weight WACC, Lintner dispersion, multistage values, harmonic mean, terminal-multiple growth, SUE, HHI); the text uses the computed values;
+- a first spread schedule mapped Harbour to AAA at its own debt level, inconsistent with its 5.2 percent cost of debt; it was recalibrated, and the curve now uses a rating fixed point;
+- the claim that no return on new capital could justify the price was false (a terminal RONIC of 124 percent does); the text states the reverse-engineered values instead;
+- the valuation FCFE of 19.04 was first described as deducting right-of-use additions; it deducts share-based pay (the lease presentation leaves FCFE unchanged);
+- a homemade-leverage label and a cumulative-dividend reconciliation label were wrong;
+- a quotation of Damodaran's definition of intrinsic value was reconstructed from memory and has been replaced with the printed text (IV p. 12);
+- the Paccar example and the capital-allocation process were first attributed beyond what the sources say; the text now follows Porter pp. 12-13 and marks the process as Interpretation;
+- unescaped `%` in two source URLs broke the PDF build.
+
+**Coverage.** All 45 objectives were reassessed operation by operation at their stated depth
+and moved to `covered`, mapped to 44 entries (`meth:gordon-growth-model` and
+`meth:multistage-ddm` together carry the Level I growth-model objective; the basic
+constant-growth formula is already in `meth:instrument-present-value`). Objectives move
+from 236/424 to 281/424, and outline items from 532/1,030 to 655/1,030 (Level I 256,
+Level II 216, Portfolio Management 48, shared core 135). This is editorial coverage, not
+learner mastery or independent human review.
+
+**Limits.** Harbour, Kestrel, Ridgeway, Norland, Calder, Ashby, Company R and the peers are
+hypothetical. Rating spreads, factor loadings, carbon prices and peer data are scenario
+inputs. Damodaran's market data and tax descriptions are as of 2012-2014.

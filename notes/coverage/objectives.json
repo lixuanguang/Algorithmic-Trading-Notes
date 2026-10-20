@@ -2741,13 +2741,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:organisational-forms-issuers"
+   ],
+   "candidate_entries": [
+    "def:organisational-forms-issuers"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "principles-of-finance-2026",
+      "locator": "sec. 2.1"
+     },
+     {
+      "key": "irs-business-structures-2026",
+      "locator": "\"Business Structures\"; \"S Corporations\""
+     },
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 1-2; p. 302"
+     },
+     {
+      "key": "usc-15-78l",
+      "locator": "subsec. (g)(1)(A)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/principles-of-finance-2026.md",
+     "notes/readings/irs-business-structures-2026.md",
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/usc-15-78l.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:organisational-forms-issuers"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 1 (tax wedge by organisational form)"
+   },
    "supersedes": null
   },
   {
@@ -2760,13 +2794,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:stakeholder-claims"
+   ],
+   "candidate_entries": [
+    "def:stakeholder-claims"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 1-2, 26-27; pp. 33-35; pp. 13-14"
+     },
+     {
+      "key": "oecd-g20-principles-2023",
+      "locator": "principles VI.D and VI.D.6, pp. 48-49"
+     },
+     {
+      "key": "eu-2026-1563-esrs",
+      "locator": "Annex, ESRS 1 paras. 22-25"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/oecd-g20-principles-2023.md",
+     "notes/readings/eu-2026-1563-esrs.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:stakeholder-claims"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 2 (risk shifting under limited liability)"
+   },
    "supersedes": null
   },
   {
@@ -2779,13 +2842,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:corporate-governance-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:corporate-governance-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 14-19, 27-29; pp. 38-42; pp. 25-26; pp. 42-43"
+     },
+     {
+      "key": "oecd-g20-principles-2023",
+      "locator": "principle II.G, pp. 20-21; principles V.E and V.E.2, pp. 39-41; principle II.F, pp. 19-20; pp. 15-21, 39-41; principle II.G, p. 20"
+     },
+     {
+      "key": "eu-2017-828-srd2",
+      "locator": "Arts. 3g and 9a of Directive 2007/36/EC as inserted"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/oecd-g20-principles-2023.md",
+     "notes/readings/eu-2017-828-srd2.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:corporate-governance-evaluation"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 3 (control against cash-flow rights)"
+   },
    "supersedes": null
   },
   {
@@ -2798,13 +2890,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cash-conversion-cycle"
+   ],
+   "candidate_entries": [
+    "meth:cash-conversion-cycle"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "principles-of-finance-2026",
+      "locator": "sec. 19.1"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 535-542; p. 539; pp. 537-539"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/principles-of-finance-2026.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:cash-conversion-cycle"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 6 (Harbour CCC, peer, cash release, liquidity ratios)"
+   },
    "supersedes": null
   },
   {
@@ -2817,13 +2933,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:working-capital-policy"
+   ],
+   "candidate_entries": [
+    "meth:working-capital-policy"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "principles-of-finance-2026",
+      "locator": "sec. 19.4; sec. 19.5; sec. 19.1; sec. 19.2"
+     },
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 411-413"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p. 544"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/principles-of-finance-2026.md",
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:working-capital-policy"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 7 (trade-credit cost; matching, conservative and aggressive financing)"
+   },
    "supersedes": null
   },
   {
@@ -2837,13 +2982,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:capital-project-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:capital-project-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 160-162; pp. 171-173; pp. 207-208, 232-233; pp. 162-164"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:capital-project-evaluation"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 8 (incremental cash flows two ways, NPV, IRR by root search, ROIC, NPV-IRR conflict, multiple IRRs)"
+   },
    "supersedes": null
   },
   {
@@ -2855,13 +3019,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:capital-allocation-principles"
+   ],
+   "candidate_entries": [
+    "meth:capital-allocation-principles"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 171-173, 245-249; p. 171; pp. 228-236"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:capital-allocation-principles"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 8 (rationing by PI against brute-force search, equivalent annual cost against replication, expansion option)"
+   },
    "supersedes": null
   },
   {
@@ -2875,13 +3058,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:wacc-calculation"
+   ],
+   "candidate_entries": [
+    "meth:wacc-calculation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 137, 144-148"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:wacc-calculation"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 9 (market against book weights, rate sensitivity)"
+   },
    "supersedes": null
   },
   {
@@ -2894,13 +3096,40 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "mod:capital-structure-theory",
+    "meth:wacc-calculation"
+   ],
+   "candidate_entries": [
+    "mod:capital-structure-theory",
+    "meth:wacc-calculation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "modigliani-miller-1958",
+      "locator": "p. 268, eqs. (3)-(4)"
+     },
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 320-325; pp. 329-331; pp. 137, 144-148"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/modigliani-miller-1958.md",
+     "notes/readings/applied-corporate-finance-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "mod:capital-structure-theory",
+     "meth:wacc-calculation"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 10 (MM without and with taxes, homemade leverage, trade-off optimum by grid and first-order condition); part 9 (market against book weights, rate sensitivity)"
+   },
    "supersedes": null
   },
   {
@@ -2912,13 +3141,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:business-model-features-types"
+   ],
+   "candidate_entries": [
+    "def:business-model-features-types"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "clarifying-business-models-2005",
+      "locator": "pp. 17-18 and Table 3"
+     },
+     {
+      "key": "two-sided-markets-2005",
+      "locator": "pp. 1-2"
+     },
+     {
+      "key": "narrative-and-numbers-2017",
+      "locator": "pp. 83-85"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/clarifying-business-models-2005.md",
+     "notes/readings/two-sided-markets-2005.md",
+     "notes/readings/narrative-and-numbers-2017.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:business-model-features-types"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 5 (platform take rate)"
+   },
    "supersedes": null
   },
   {
@@ -5031,13 +5289,36 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:equity-instruments"
+   ],
+   "candidate_entries": [
+    "def:equity-instruments"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 285-286; pp. 286-291"
+     },
+     {
+      "key": "delaware-gcl-2026",
+      "locator": "sec. 151(a)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/delaware-gcl-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:equity-instruments"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -5049,13 +5330,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:equity-rights-voting"
+   ],
+   "candidate_entries": [
+    "def:equity-rights-voting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "oecd-g20-principles-2023",
+      "locator": "principle II.A, p. 15; principle II.G, p. 21"
+     },
+     {
+      "key": "delaware-gcl-2026",
+      "locator": "sec. 212(a); sec. 212(b)"
+     },
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "p. 23"
+     },
+     {
+      "key": "eu-2017-828-srd2",
+      "locator": "Arts. 3a-3c of Directive 2007/36/EC as inserted"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/oecd-g20-principles-2023.md",
+     "notes/readings/delaware-gcl-2026.md",
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/eu-2017-828-srd2.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:equity-rights-voting"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 3 (cumulative voting, dual-class votes)"
+   },
    "supersedes": null
   },
   {
@@ -5069,16 +5384,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "def:market-structures-venues",
-    "def:liquidity-dimensions"
+   "entries": [
+    "def:equity-issuance-trading-liquidity"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "def:equity-issuance-trading-liquidity"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 302-305"
+     },
+     {
+      "key": "ftse-free-float-2026",
+      "locator": "pp. 2-3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/ftse-free-float-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:equity-issuance-trading-liquidity"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 1 (free float, ADV, turnover, days to trade, spread)"
+   },
    "supersedes": null
   },
   {
@@ -5139,13 +5475,40 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:corporate-distribution-mechanics",
+    "meth:distribution-effects"
+   ],
+   "candidate_entries": [
+    "def:corporate-distribution-mechanics",
+    "meth:distribution-effects"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 438-439, 473; pp. 438-439; pp. 454-455; p. 439; p. 473"
+     },
+     {
+      "key": "finra-rule-11140",
+      "locator": "paras. (b)(1)-(b)(2); para. (b)(2)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/finra-rule-11140.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:corporate-distribution-mechanics",
+     "meth:distribution-effects"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 13 (stock dividend, split, buyback EPS by financing, BVPS, value per share); notes/artefacts/systematic-equities/equity-valuation-checks.py: part 2 (ex-date price adjustment, reverse split)"
+   },
    "supersedes": null
   },
   {
@@ -5198,13 +5561,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:price-value-indicators"
+   ],
+   "candidate_entries": [
+    "def:price-value-indicators"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 1; pp. 500-501"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:price-value-indicators"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 3 (market cap, book, EV, estimate against price)"
+   },
    "supersedes": null
   },
   {
@@ -5217,13 +5599,31 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:valuation-model-families"
+   ],
+   "candidate_entries": [
+    "def:valuation-model-families"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 11-25"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:valuation-model-families"
+    ]
+   },
    "supersedes": null
   },
   {
@@ -5238,13 +5638,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:present-value-model-inputs"
+   ],
+   "candidate_entries": [
+    "meth:present-value-model-inputs"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 323; pp. 596-597; p. 597"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:present-value-model-inputs"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 17 (DDM, FCFE and residual income equal under clean surplus, closed form and year by year)"
+   },
    "supersedes": null
   },
   {
@@ -5258,13 +5677,35 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:gordon-growth-model",
+    "meth:multistage-ddm"
+   ],
+   "candidate_entries": [
+    "meth:gordon-growth-model",
+    "meth:multistage-ddm"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 323; p. 324; pp. 329-331, 340-341"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:gordon-growth-model",
+     "meth:multistage-ddm"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 5 (Gordon against long sum, one-period, implied growth and return, sensitivity); part 8 (two-stage against long sum, dating errors, implied return, H-model against exact decline, three-stage)"
+   },
    "supersedes": null
   },
   {
@@ -5277,13 +5718,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:preferred-stock-valuation"
+   ],
+   "candidate_entries": [
+    "meth:preferred-stock-valuation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "p. 144; p. 291"
+     },
+     {
+      "key": "delaware-gcl-2026",
+      "locator": "sec. 151(b)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/delaware-gcl-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:preferred-stock-valuation"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 6 and 18 (perpetual, callable to the call date, arrears)"
+   },
    "supersedes": null
   },
   {
@@ -5299,15 +5764,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [
-    "meth:equity-index-valuation"
+   "entries": [
+    "meth:multiples-valuation-basics"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "candidate_entries": [
+    "meth:multiples-valuation-basics"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 453-455; pp. 455-456, 468-469"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:multiples-valuation-basics"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 10-11 (Harbour P/E definitions, P/B, P/S, EV/EBITDA)"
+   },
    "supersedes": null
   },
   {
@@ -5319,13 +5801,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:peer-group-selection"
+   ],
+   "candidate_entries": [
+    "meth:peer-group-selection"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 462-463; p. 21"
+     },
+     {
+      "key": "optimal-multiples-2023",
+      "locator": "pp. 1-5"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/optimal-multiples-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:peer-group-selection"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 10 and 18 (peer statistics with and without the outlier)"
+   },
    "supersedes": null
   },
   {
@@ -5361,13 +5867,47 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:industry-analysis"
+   ],
+   "candidate_entries": [
+    "meth:industry-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "five-competitive-forces-2008",
+      "locator": "p. 15; pp. 2-3, 10"
+     },
+     {
+      "key": "gics-methodology-2023",
+      "locator": "p. 13"
+     },
+     {
+      "key": "merger-guidelines-2023",
+      "locator": "pp. 5-6 and nn. 13-14"
+     },
+     {
+      "key": "cipd-pestle-2026",
+      "locator": "sections on the definition, the nine steps and the limitations"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/five-competitive-forces-2008.md",
+     "notes/readings/gics-methodology-2023.md",
+     "notes/readings/merger-guidelines-2023.md",
+     "notes/readings/cipd-pestle-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:industry-analysis"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 14 (size, CAGR, share, HHI, merger change)"
+   },
    "supersedes": null
   },
   {
@@ -5380,13 +5920,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:company-position-analysis"
+   ],
+   "candidate_entries": [
+    "meth:company-position-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "five-competitive-forces-2008",
+      "locator": "p. 12"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/five-competitive-forces-2008.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:company-position-analysis"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: parts 6 and 16 (Harbour cash cycle, pro forma leverage)"
+   },
    "supersedes": null
   },
   {
@@ -9691,13 +10250,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:distribution-effects"
+   ],
+   "candidate_entries": [
+    "meth:distribution-effects"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "p. 439; p. 473"
+     },
+     {
+      "key": "finra-rule-11140",
+      "locator": "para. (b)(2)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/finra-rule-11140.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:distribution-effects"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 13 (stock dividend, split, buyback EPS by financing, BVPS, value per share)"
+   },
    "supersedes": null
   },
   {
@@ -9713,13 +10296,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:dividend-policy-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:dividend-policy-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 437-438, 449-452; pp. 442-448, 468; pp. 453-454"
+     },
+     {
+      "key": "delaware-gcl-2026",
+      "locator": "sec. 170(a)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/delaware-gcl-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:dividend-policy-evaluation"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 14 (double taxation, split rate, imputation)"
+   },
    "supersedes": null
   },
   {
@@ -9733,13 +10340,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:payout-policy-comparison"
+   ],
+   "candidate_entries": [
+    "meth:payout-policy-comparison"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 442-444; p. 474; pp. 476-477"
+     },
+     {
+      "key": "cfr-240-10b-18",
+      "locator": "paras. (b)-(d)"
+     },
+     {
+      "key": "cfr-240-13e-4",
+      "locator": "para. (f)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/cfr-240-10b-18.md",
+     "notes/readings/cfr-240-13e-4.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:payout-policy-comparison"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 14 (Lintner recursion against closed form; smoothing)"
+   },
    "supersedes": null
   },
   {
@@ -9753,13 +10389,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:dividend-sustainability"
+   ],
+   "candidate_entries": [
+    "meth:dividend-sustainability"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 480-481"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:dividend-sustainability"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 15 (Harbour earnings and FCFE cover; Ridgeway)"
+   },
    "supersedes": null
   },
   {
@@ -9771,13 +10426,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:global-ownership-structures"
+   ],
+   "candidate_entries": [
+    "def:global-ownership-structures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "oecd-g20-principles-2023",
+      "locator": "principle II.G, p. 20; principles II.F-II.G, pp. 19-21"
+     },
+     {
+      "key": "oecd-owners-listed-2019",
+      "locator": "pp. 5-6"
+     },
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 16-17, 23-24"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/oecd-g20-principles-2023.md",
+     "notes/readings/oecd-owners-listed-2019.md",
+     "notes/readings/applied-corporate-finance-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:global-ownership-structures"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 3 (dual class, pyramid, tunnelling)"
+   },
    "supersedes": null
   },
   {
@@ -9790,13 +10474,47 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:esg-exposure-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:esg-exposure-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2026-1563-esrs",
+      "locator": "Annex, ESRS 1 paras. 38-44; Arts. 2-3"
+     },
+     {
+      "key": "oecd-g20-principles-2023",
+      "locator": "principle VI.A.1, p. 45"
+     },
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "Interpretation; pp. 44-45"
+     },
+     {
+      "key": "aggregate-confusion-2022",
+      "locator": "abstract and sec. 1"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2026-1563-esrs.md",
+     "notes/readings/oecd-g20-principles-2023.md",
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/aggregate-confusion-2022.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:esg-exposure-evaluation"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 4 (carbon cost in cash flows and value)"
+   },
    "supersedes": null
   },
   {
@@ -9810,13 +10528,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cost-of-debt-equity-estimation"
+   ],
+   "candidate_entries": [
+    "meth:cost-of-debt-equity-estimation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 137-141; pp. 94-105"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:cost-of-debt-equity-estimation"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 11 (YTM, synthetic rating, implied ERP, CAPM, three-factor, build-up, bond-yield-plus, total beta)"
+   },
    "supersedes": null
   },
   {
@@ -9829,13 +10566,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:capital-structure-benchmarking"
+   ],
+   "candidate_entries": [
+    "meth:capital-structure-benchmarking"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 310-319; pp. 326-327"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/applied-corporate-finance-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:capital-structure-benchmarking"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 12 (cost-of-capital curve with rating fixed point, covenant, peers)"
+   },
    "supersedes": null
   },
   {
@@ -9848,13 +10604,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:restructuring-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:restructuring-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 702-704; pp. 706-710; pp. 709-710; pp. 704-705, 723-724"
+     },
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 437-438"
+     },
+     {
+      "key": "lang-stulz-1993",
+      "locator": "pp. 2-3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/applied-corporate-finance-2014.md",
+     "notes/readings/lang-stulz-1993.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:restructuring-evaluation"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 16 (cost programme NPV, spin-off and dis-synergies)"
+   },
    "supersedes": null
   },
   {
@@ -9867,13 +10652,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "ex:restructuring-valuation-effects"
+   ],
+   "candidate_entries": [
+    "ex:restructuring-valuation-effects"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 725; pp. 702-705"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "ex:restructuring-valuation-effects"
+    ],
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 16 (methods, value created and transferred, EPS, pro forma leverage, WACC with and without re-rating, walk-away price)"
+   },
    "supersedes": null
   },
   {
@@ -9889,13 +10693,47 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:intrinsic-value-mispricing"
+   ],
+   "candidate_entries": [
+    "def:intrinsic-value-mispricing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 12; p. 22"
+     },
+     {
+      "key": "eu-2023-1803-ias1",
+      "locator": "IAS 1 para. 25"
+     },
+     {
+      "key": "eu-2023-1803-ifrs13",
+      "locator": "IFRS 13 para. 9"
+     },
+     {
+      "key": "applied-corporate-finance-2014",
+      "locator": "pp. 556-557"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/eu-2023-1803-ias1.md",
+     "notes/readings/eu-2023-1803-ifrs13.md",
+     "notes/readings/applied-corporate-finance-2014.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "def:intrinsic-value-mispricing"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 16 (mispricing decomposition)"
+   },
    "supersedes": null
   },
   {
@@ -9909,13 +10747,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:valuation-approach-choice"
+   ],
+   "candidate_entries": [
+    "meth:valuation-approach-choice"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 6-8"
+     },
+     {
+      "key": "lang-stulz-1993",
+      "locator": "pp. 2-3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/lang-stulz-1993.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:valuation-approach-choice"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 15 (sum of the parts and discount)"
+   },
    "supersedes": null
   },
   {
@@ -9932,13 +10794,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:gordon-growth-model"
+   ],
+   "candidate_entries": [
+    "meth:gordon-growth-model"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 323; p. 324"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:gordon-growth-model"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 5 (Gordon against long sum, one-period, implied growth and return, sensitivity)"
+   },
    "supersedes": null
   },
   {
@@ -9951,13 +10832,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:pvgo-justified-pe"
+   ],
+   "candidate_entries": [
+    "meth:pvgo-justified-pe"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 337-338; pp. 460-461, 471-473"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:pvgo-justified-pe"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 7 (PVGO split, ROE = r, leading and trailing P/E)"
+   },
    "supersedes": null
   },
   {
@@ -9974,13 +10874,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:multistage-ddm"
+   ],
+   "candidate_entries": [
+    "meth:multistage-ddm"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 329-331, 340-341"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:multistage-ddm"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 8 (two-stage against long sum, dating errors, implied return, H-model against exact decline, three-stage)"
+   },
    "supersedes": null
   },
   {
@@ -9994,13 +10913,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:sustainable-growth"
+   ],
+   "candidate_entries": [
+    "meth:sustainable-growth"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 285-286; pp. 333-334"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:sustainable-growth"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 9 and 18 (DuPont, equity growth, Harbour)"
+   },
    "supersedes": null
   },
   {
@@ -10012,13 +10950,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:valuation-price-judgement"
+   ],
+   "candidate_entries": [
+    "meth:valuation-price-judgement"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 1-5, 466"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:valuation-price-judgement"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 4, 5, 10 and 18 (Harbour sensitivity and reverse engineering; Norland DDM judgement)"
+   },
    "supersedes": null
   },
   {
@@ -10111,13 +11068,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:justified-multiples"
+   ],
+   "candidate_entries": [
+    "meth:justified-multiples"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 460-461, 515, 545; pp. 471-473"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:justified-multiples"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares)"
+   },
    "supersedes": null
   },
   {
@@ -10132,13 +11108,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:normalised-earnings"
+   ],
+   "candidate_entries": [
+    "meth:normalised-earnings"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 487; pp. 458-459"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:normalised-earnings"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (underlying EPS, average-ROE EPS, earnings yields)"
+   },
    "supersedes": null
   },
   {
@@ -10153,13 +11148,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:alternative-multiples"
+   ],
+   "candidate_entries": [
+    "meth:alternative-multiples"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 511; pp. 542-543; pp. 460-461, 504"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:alternative-multiples"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (PEG range, dividend yield, P/S)"
+   },
    "supersedes": null
   },
   {
@@ -10175,13 +11189,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:enterprise-value-multiples"
+   ],
+   "candidate_entries": [
+    "meth:enterprise-value-multiples"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 500-501, 507"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:enterprise-value-multiples"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 11 and 18 (EV/EBITDA, mismatches, lease and development adjustments, peer-implied value)"
+   },
    "supersedes": null
   },
   {
@@ -10196,13 +11229,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:comparables-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:comparables-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 458-459; pp. 463-465; pp. 463, 477-479; pp. 124-125, 131-132"
+     },
+     {
+      "key": "optimal-multiples-2023",
+      "locator": "pp. 3-6"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/optimal-multiples-2023.md"
+    ],
+    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:comparables-evaluation"
+    ],
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 10, 12, 13 and 18 (mean, median, harmonic mean, terminal multiple implied growth, SUE, relative strength)"
+   },
    "supersedes": null
   },
   {

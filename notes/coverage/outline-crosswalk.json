@@ -9707,7 +9707,7 @@
    "objectives": [
     "objective:describe-abs-structures"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes covered bonds (Directive 2019/2162 Arts. 3, 4, 15, 16: dual recourse, segregated cover pool, coverage, liquidity buffer) and how they differ from securitisation.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes covered bonds (Directive 2019/2162 Arts. 3, 4, 15, 16: dual recourse, segregated cover pool, coverage, liquidity buffer) and how they differ from securitisation. Rechecked 2026-10-20 after the PR #33 audit corrections (covered-bond description reconciled with the credit-portfolio entry (Arts. 4, 5, 15(4), recital 17; Reg. 2017/2402 Art. 2(1))); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -9727,7 +9727,7 @@
    "objectives": [
     "objective:describe-abs-structures"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes excess spread, reserves, overcollateralisation, subordination and third-party enhancement, and reproduces Fabozzi and Kothari's sizing (AAA support 8.40%).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes excess spread, reserves, overcollateralisation, subordination and third-party enhancement, and reproduces Fabozzi and Kothari's sizing (AAA support 8.40%). Rechecked 2026-10-20 after the PR #33 audit corrections (covered-bond description reconciled with the credit-portfolio entry (Arts. 4, 5, 15(4), recital 17; Reg. 2017/2402 Art. 2(1))); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -9747,7 +9747,7 @@
    "objectives": [
     "objective:describe-abs-structures"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes credit card ABS (revolving period, master trust, seller's interest, excess spread and early amortisation triggers) and auto loan ABS (amortising pass-throughs, enhancement, prepayment and LTV risk) from Fabozzi and Kothari pp. 153-164.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes credit card ABS (revolving period, master trust, seller's interest, excess spread and early amortisation triggers) and auto loan ABS (amortising pass-throughs, enhancement, prepayment and LTV risk) from Fabozzi and Kothari pp. 153-164. Rechecked 2026-10-20 after the PR #33 audit corrections (covered-bond description reconciled with the credit-portfolio entry (Arts. 4, 5, 15(4), recital 17; Reg. 2017/2402 Art. 2(1))); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -9767,7 +9767,7 @@
    "objectives": [
     "objective:describe-abs-structures"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes CDO pools, coverage tests and bottom-up analysis (Fabozzi and Kothari pp. 217-218) and reproduces Hull's ABS CDO loss table.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:abs-structures-credit-enhancement describes CDO pools, coverage tests and bottom-up analysis (Fabozzi and Kothari pp. 217-218) and reproduces Hull's ABS CDO loss table. Rechecked 2026-10-20 after the PR #33 audit corrections (covered-bond description reconciled with the credit-portfolio entry (Arts. 4, 5, 15(4), recital 17; Reg. 2017/2402 Art. 2(1))); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -10515,7 +10515,7 @@
    "objectives": [
     "objective:explain-infrastructure-characteristics"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:infrastructure-characteristics explains infrastructure features: essential long-lived assets, monopoly and regulation, revenue models and stages.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:infrastructure-characteristics explains infrastructure features: essential long-lived assets, monopoly and regulation, revenue models and stages. Rechecked 2026-10-20 after the PR #33 audit corrections (Ashdown's underwriting restated with dated construction financing); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -10535,7 +10535,7 @@
    "objectives": [
     "objective:explain-infrastructure-characteristics"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:infrastructure-characteristics explains the investment characteristics: stable, often indexed income, claimed low correlation, and regulatory, construction, leverage and rate risks.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:infrastructure-characteristics explains the investment characteristics: stable, often indexed income, claimed low correlation, and regulatory, construction, leverage and rate risks. Rechecked 2026-10-20 after the PR #33 audit corrections (Ashdown's underwriting restated with dated construction financing); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -10555,7 +10555,7 @@
    "objectives": [
     "objective:analyse-land-timber-farmland"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:land-timber-farmland explains raw land (carrying costs, option value), timberland (biological growth, harvest flexibility) and farmland (rents, land value drivers) and their investment characteristics.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:land-timber-farmland explains raw land (carrying costs, option value), timberland (biological growth, harvest flexibility) and farmland (rents, land value drivers) and their investment characteristics. Rechecked 2026-10-20 after the PR #33 audit corrections (timber stand reconciled from opening to closing NAV plus distributions (3.905%, not 10%), with the zero-growth harvest case); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -10596,7 +10596,7 @@
     "objective:analyse-land-timber-farmland",
     "objective:describe-commodity-characteristics"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:land-timber-farmland and def:commodity-features analyse sources of risk, return and diversification among natural-resource investments: income, growth, appreciation, commodity prices, appraisal bias.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:land-timber-farmland and def:commodity-features analyse sources of risk, return and diversification among natural-resource investments: income, growth, appreciation, commodity prices, appraisal bias. Rechecked 2026-10-20 after the PR #33 audit corrections (timber stand reconciled from opening to closing NAV plus distributions (3.905%, not 10%), with the zero-growth harvest case); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -18267,7 +18267,7 @@
    "objectives": [
     "objective:value-real-estate"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-estate-valuation-indexes explains due diligence and the income (direct capitalisation and DCF), sales comparison and cost approaches, reconciled for Marlow House.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-estate-valuation-indexes explains due diligence and the income (direct capitalisation and DCF), sales comparison and cost approaches, reconciled for Marlow House. Rechecked 2026-10-20 after the PR #33 audit corrections (replacement cost no longer a floor; obsolescence, substitution and reconciliation with income and comparable sales (IVS 105 ED; Damodaran pp. 537-538), with Harbour Point valued below cost); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -18287,7 +18287,7 @@
    "objectives": [
     "objective:value-real-estate"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-estate-valuation-indexes discusses appraisal- and transaction-based indexes, NCREIF's construction and formulas, and smoothing, selection, leverage and investability biases.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-estate-valuation-indexes discusses appraisal- and transaction-based indexes, NCREIF's construction and formulas, and smoothing, selection, leverage and investability biases. Rechecked 2026-10-20 after the PR #33 audit corrections (replacement cost no longer a floor; obsolescence, substitution and reconciliation with income and comparable sales (IVS 105 ED; Damodaran pp. 537-538), with Harbour Point valued below cost); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -24884,7 +24884,7 @@
    "objectives": [
     "objective:manage-credit-liquidity-tail-risk"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-liquidity-tail-risk discusses liquidity risk in credit markets, its measurement by LCS and its management with liquid sleeves, derivatives and limits.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-liquidity-tail-risk discusses liquidity risk in credit markets, its measurement by LCS and its management with liquid sleeves, derivatives and limits. Rechecked 2026-10-20 after the PR #33 audit corrections (LCS kept round-trip; one-way liquidation cost 0.10% against mid marks, with the mark stated and cash and weights reconciled); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -24904,7 +24904,7 @@
    "objectives": [
     "objective:manage-credit-liquidity-tail-risk"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-liquidity-tail-risk describes assessing tail risk by credit VaR and expected shortfall, scenarios and concentration, and managing it with issuer and DTS limits and protection.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-liquidity-tail-risk describes assessing tail risk by credit VaR and expected shortfall, scenarios and concentration, and managing it with issuer and DTS limits and protection. Rechecked 2026-10-20 after the PR #33 audit corrections (LCS kept round-trip; one-way liquidation cost 0.10% against mid marks, with the mark stated and cash and weights reconciled); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -24924,7 +24924,7 @@
    "objectives": [
     "objective:use-cds-and-structured-credit"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured discusses single-name and index CDS for exposure, hedging, curve and basis trades, and CDS-based replication.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured discusses single-name and index CDS for exposure, hedging, curve and basis trades, and CDS-based replication. Rechecked 2026-10-20 after the PR #33 audit corrections (covered bonds (issuer obligation, dual recourse) separated from pool-only securitisation tranches; tranche proportions and coupon and prepayment claims scoped); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -24964,7 +24964,7 @@
    "objectives": [
     "objective:use-cds-and-structured-credit"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured discusses international credit portfolios: market differences, EM and sovereign spread risk, currency hedging, legal and liquidity considerations.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured discusses international credit portfolios: market differences, EM and sovereign spread risk, currency hedging, legal and liquidity considerations. Rechecked 2026-10-20 after the PR #33 audit corrections (covered bonds (issuer obligation, dual recourse) separated from pool-only securitisation tranches; tranche proportions and coupon and prepayment claims scoped); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -24984,7 +24984,7 @@
    "objectives": [
     "objective:use-cds-and-structured-credit"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured describes structured instruments (ABS, CLO, CMBS, covered bonds) as alternatives to corporates: tranching, coverage tests, benefits and risks.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured describes structured instruments (ABS, CLO, CMBS, covered bonds) as alternatives to corporates: tranching, coverage tests, benefits and risks. Rechecked 2026-10-20 after the PR #33 audit corrections (covered bonds (issuer obligation, dual recourse) separated from pool-only securitisation tranches; tranche proportions and coupon and prepayment claims scoped); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25004,7 +25004,7 @@
    "objectives": [
     "objective:use-cds-and-structured-credit"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured describes inputs, outputs and considerations of analytical portfolio tools.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:credit-cds-international-structured describes inputs, outputs and considerations of analytical portfolio tools. Rechecked 2026-10-20 after the PR #33 audit corrections (covered bonds (issuer obligation, dual recourse) separated from pool-only securitisation tranches; tranche proportions and coupon and prepayment claims scoped); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25390,7 +25390,7 @@
    "objectives": [
     "objective:calculate-private-fund-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-fund-multiples-pme discusses why public and private performance differ, and calculates and interprets DPI, RVPI and TVPI by year for Ashby Fund I with the J-curve and a KS-PME.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-fund-multiples-pme discusses why public and private performance differ, and calculates and interprets DPI, RVPI and TVPI by year for Ashby Fund I with the J-curve and a KS-PME. Rechecked 2026-10-20 after the PR #33 audit corrections (PME with residual NAV, an interim example and the benchmark-matching case; deflated IRR described as a money-weighted geometric excess); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25736,7 +25736,7 @@
    "objectives": [
     "objective:evaluate-special-situations"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses the characteristics and risks of special situations.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses the characteristics and risks of special situations. Rechecked 2026-10-20 after the PR #33 audit corrections (class acceptance under 11 USC 1126(c) separated from confirmation under 1129(a)(8), (a)(10) and (b); DIP priority qualified by sec. 364; waterfall assumptions stated; threshold corrected to 250); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25756,7 +25756,7 @@
    "objectives": [
     "objective:evaluate-special-situations"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses distressed debt (trading and loan-to-own), financing alternatives in distress (asset sales, secured and DIP financing, equity, repurchases, exchange offers, OCR and ICR) and strategies.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses distressed debt (trading and loan-to-own), financing alternatives in distress (asset sales, secured and DIP financing, equity, repurchases, exchange offers, OCR and ICR) and strategies. Rechecked 2026-10-20 after the PR #33 audit corrections (class acceptance under 11 USC 1126(c) separated from confirmation under 1129(a)(8), (a)(10) and (b); DIP priority qualified by sec. 364; waterfall assumptions stated; threshold corrected to 250); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25776,7 +25776,7 @@
    "objectives": [
     "objective:evaluate-special-situations"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses complex situations (non-performing loans, non-core assets, dislocations).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses complex situations (non-performing loans, non-core assets, dislocations). Rechecked 2026-10-20 after the PR #33 audit corrections (class acceptance under 11 USC 1126(c) separated from confirmation under 1129(a)(8), (a)(10) and (b); DIP priority qualified by sec. 364; waterfall assumptions stated; threshold corrected to 250); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25796,7 +25796,7 @@
    "objectives": [
     "objective:evaluate-special-situations"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses due diligence and recovery valuation: going-concern value, priority, fulcrum, process, with Halden's waterfall across values.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:special-situations-distressed discusses due diligence and recovery valuation: going-concern value, priority, fulcrum, process, with Halden's waterfall across values. Rechecked 2026-10-20 after the PR #33 audit corrections (class acceptance under 11 USC 1126(c) separated from confirmation under 1129(a)(8), (a)(10) and (b); DIP priority qualified by sec. 364; waterfall assumptions stated; threshold corrected to 250); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25897,7 +25897,7 @@
     "objective:allocate-to-real-assets",
     "objective:analyse-land-timber-farmland"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-assets-allocation and meth:land-timber-farmland discuss the distinctive characteristics of timberland and farmland: biological growth, commodity-linked income, land, inflation hedge and access.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:real-assets-allocation and meth:land-timber-farmland discuss the distinctive characteristics of timberland and farmland: biological growth, commodity-linked income, land, inflation hedge and access. Rechecked 2026-10-20 after the PR #33 audit corrections (timber stand reconciled from opening to closing NAV plus distributions (3.905%, not 10%), with the zero-growth harvest case); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25937,7 +25937,7 @@
    "objectives": [
     "objective:underwrite-infrastructure"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting and def:infrastructure-characteristics discuss infrastructure investment features and revenue models.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting and def:infrastructure-characteristics discuss infrastructure investment features and revenue models. Rechecked 2026-10-20 after the PR #33 audit corrections (dated construction financing with interest during construction, sources and uses, sculpted repayment, LLCR from the start of operations and equity IRR 9.63%); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25957,7 +25957,7 @@
    "objectives": [
     "objective:underwrite-infrastructure"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting discusses methods and vehicles: direct stakes, closed-end funds, listed companies and funds, yieldcos and debt funds.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting discusses methods and vehicles: direct stakes, closed-end funds, listed companies and funds, yieldcos and debt funds. Rechecked 2026-10-20 after the PR #33 audit corrections (dated construction financing with interest during construction, sources and uses, sculpted repayment, LLCR from the start of operations and equity IRR 9.63%); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25977,7 +25977,7 @@
    "objectives": [
     "objective:underwrite-infrastructure"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting discusses the project life cycle and the roles of non-recourse debt and equity, with DSCR and gearing sizing for Ashdown.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting discusses the project life cycle and the roles of non-recourse debt and equity, with DSCR and gearing sizing for Ashdown. Rechecked 2026-10-20 after the PR #33 audit corrections (dated construction financing with interest during construction, sources and uses, sculpted repayment, LLCR from the start of operations and equity IRR 9.63%); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -25997,7 +25997,7 @@
    "objectives": [
     "objective:underwrite-infrastructure"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting discusses due diligence on project risks and valuation by phase and revenue model.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-underwriting discusses due diligence on project risks and valuation by phase and revenue model. Rechecked 2026-10-20 after the PR #33 audit corrections (dated construction financing with interest during construction, sources and uses, sculpted repayment, LLCR from the start of operations and equity IRR 9.63%); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -26017,7 +26017,7 @@
    "objectives": [
     "objective:allocate-to-infrastructure"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-allocation discusses infrastructure's risk and return against other investments (fund evidence, PME, return targets by strategy, rate sensitivity) and recommends an allocation for an insurer.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:infrastructure-allocation discusses infrastructure's risk and return against other investments (fund evidence, PME, return targets by strategy, rate sensitivity) and recommends an allocation for an insurer. Rechecked 2026-10-20 after the PR #33 audit corrections (Ashdown's equity return restated at 9.6% on 81% gearing); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },

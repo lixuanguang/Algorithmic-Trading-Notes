@@ -9,6 +9,8 @@ status: draft
 
 Prepared on 2026-10-20 by the credit, time-series and valuation batch (2026-10-20) from source checks, not from study: the headings that need your own reading are left empty. Used for `meth:abs-structures-credit-enhancement`, `meth:mortgage-securities-prepayment`.
 
+Also used by the PR #33 audit corrections (2026-10-20) for `meth:credit-cds-international-structured`.
+
 ## Question and claim
 
 ## Mechanism

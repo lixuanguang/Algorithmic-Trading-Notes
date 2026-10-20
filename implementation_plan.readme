@@ -3186,3 +3186,24 @@ reading-note and pathway files. No new validation framework.
 items. Editorial coverage only; human review is outstanding.
 
 Details: `notes/source-review-records.md`, *Alternatives batch, 20 October 2026*.
+
+## 32. Alternatives audit corrections on PR #33 (executed 2026-10-20)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `505a13f`, draft PR #33 to `main` open, working
+tree clean, no "... 2" copies present. Coverage 371/424 objectives and 887/1,030 items.
+
+**Corrections** (figures and sources: `notes/source-review-records.md`, *Alternatives audit correction pass*):
+1. Timber return from an opening-to-closing NAV reconciliation (3.905 percent, not about 10); zero-growth harvest
+   returns only the costs.
+2. Ashdown construction financing dated: pro-rata draws, 4.04 of capitalised interest, sources = uses 204.04,
+   sculpted repayment, LLCR from the start of operations, equity IRR 9.63 percent (9.65 with equity-funded
+   interest); allocation entry restated.
+3. Chapter 11: class acceptance (1126(c)) separated from confirmation (1129(a)(8), (a)(10), (b)); fair and
+   equitable by class; DIP priority under sec. 364; Halden threshold 250.
+4. PME with residual NAV, an interim example and the benchmark-matching case; deflated IRR described exactly.
+5. Covered bonds separated from securitisation tranches; tranche, coupon and prepayment claims scoped.
+6. Replacement cost not a floor: obsolescence, substitution, reconciliation; Harbour Point below cost.
+7. One-way liquidation cost against a stated mark (0.10 percent against mid), cash and weights reconciled.
+
+**Evidence.** Three scripts extended (37, 38 and 25 checks). Ten objectives and 27 outline items rechecked;
+coverage unchanged. Corrections count toward no new objective.

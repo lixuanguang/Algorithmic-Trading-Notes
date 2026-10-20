@@ -5171,3 +5171,85 @@ Kestrel REIT, Ferris Park, Ashdown Hospital and the commodity, hedge fund, ETF, 
 allocation portfolios are hypothetical. Practitioner books (Demaria, Ippolito, Larreur, Jaeger,
 Abner, Ben Dor) describe market practice of their dates; the Ben Dor results are back-tests by a
 sell-side research group. Human review is outstanding.
+
+## Alternatives audit correction pass, 20 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` at `505a13f`, draft PR #33 to `main`
+open, working tree clean; no files named "... 2" were present. Coverage at the start: 371/424
+objectives and 887/1,030 items. These corrections count toward no new objective.
+
+**Findings reproduced first**, each by an identity, boundary case or primary text before the entry
+changed:
+1. *Timberland accounting* (`meth:land-timber-farmland`). Adding 5.04 percent of growth and price,
+   a 3 percent harvest yield and 2 percent land appreciation counts the harvested wood twice (it is
+   inside the 5.04 percent) and weights land as if it were the whole stand. A stand of 100 m3 at 30
+   on land of 1,000 (NAV 4,000), growing 4 percent, harvesting 3 m3 at 30.30 and paying costs of 15,
+   closes at NAV 4,080.30 with distributions of 75.90: 3.905 percent. The opening-weight
+   decomposition (0.75 x 5.04 + 0.25 x 2 - 0.375) reproduces it. With no growth and unchanged prices
+   the harvest returns only the costs (-0.375 percent). The NCREIF split into income and appreciation
+   on one denominator (p. 28) is the index analogue; the accounting itself is derivation.
+2. *Infrastructure construction financing* (`meth:infrastructure-underwriting`,
+   `meth:infrastructure-allocation`). The old script subtracted the debt sized at completion (165.83)
+   from the cost of 200 and spread the 34.17 of equity over two years, so lenders implicitly funded
+   construction interest-free; its "LLCR at financial close" was an operating-start figure. Dated
+   convention adopted: close at t = 0, payments of 100 at t = 1 and 2, pro-rata draws of 80.89 with
+   the first draw's 4.04 of interest capitalised, opening operating balance 165.83 at t = 2, sculpted
+   repayment to zero over 22 years. Sources 165.83 + 38.21 = uses 200 + 4.04; equity IRR 9.63
+   percent. The alternative (draws of 82.92, interest of 4.15 paid by equity) gives 9.65 percent,
+   matching the audit's orientation figures; at a zero construction rate both collapse to 10.70.
+   Larreur pp. 157-158 (staged drawdowns) and p. 171 (equity first, pro rata or back-ended) support
+   the conventions; the interest treatment is derivation. The allocation entry now says 9.6 percent
+   on 81 percent gearing of total cost.
+3. *Distressed debt* (`meth:special-situations-distressed`). Primary text read for 11 U.S.C. 364,
+   506(a), 1124, 1126(c)-(e) and 1129(a)(7)-(10), (b)(1)-(2) (LII pages saved in
+   `reading_materials/completion-20261020/`). The entry had conflated a blocking position in the
+   class vote with preventing confirmation, and described absolute priority as "no junior class
+   receives anything while it is impaired". Cramdown needs an accepting impaired non-insider class
+   (a)(10) and fair and equitable treatment, which differs for secured classes ((b)(2)(A)) and
+   unsecured ones ((b)(2)(B)). DIP priority over existing liens requires a sec. 364(d) finding
+   (credit unavailable otherwise, adequate protection) or consent; the example's assumptions are now
+   stated. Threshold corrected from 260 to 250 (40 + 10 + 200); at 255 the bonds receive 5. Boundary
+   cases: a holder of two-thirds by amount still fails the number test against ten small holders;
+   reinstated senior debt is unimpaired (1124(2)) and cannot supply the accepting class.
+4. *Private-fund PME* (`meth:private-fund-multiples-pme`). The formula omitted residual NAV. With it,
+   Ashby's year-4 PME is 1.10 (0.56 without); a contribution of 100 with NAV 110 after a 10 percent
+   index rise gives exactly 1. Kaplan and Schoar's main sample is of largely liquidated funds (p. 6);
+   Harris, Jenkinson and Kaplan state the residual-value treatment (p. 10) and distinguish the
+   Long-Nickels excess return (p. 11). The deflated-flow IRR (5.67 percent) is a money-weighted
+   excess; with a constant 5 percent index it equals (1 + IRR)/1.05 - 1 = 6.39, not 6.71.
+5. *Covered bonds* (`meth:credit-cds-international-structured`, `meth:abs-structures-credit-enhancement`).
+   The credit entry listed covered bonds with ABS as pool exposures with subordination, a 50-70
+   percent senior tranche and floating coupons. Directive 2019/2162 Arts. 4, 5 and 15(4) and recital
+   17 make covered bonds bank obligations with dual recourse, no acceleration and a cover pool kept
+   at coverage; Regulation 2017/2402 Art. 2(1) defines securitisation by tranching and pool-dependent
+   payments. Larreur's 68.5 percent senior share and Libor coupons belong to his corporate-loan
+   securitisation (Table 10.1, p. 260); prepayment pass-through belongs to mortgage pass-throughs
+   (Fuster et al. pp. 7, 10). Bank Corvel cases check issuer-solvent, issuer-insolvent and
+   prepayment outcomes against a tranched securitisation of the same pool.
+6. *Replacement cost* (`meth:real-estate-valuation-indexes`). The entry called the cost approach a
+   floor. IVS 105 (2016 exposure draft, paras 70.1-70.3, 80.2-80.5, 90.1-90.7) sets out substitution,
+   modern-equivalent replacement cost and physical, functional and economic obsolescence; Damodaran
+   pp. 537-538 (Tobin's Q) gives value below replacement cost when assets earn less than their
+   required return. Harbour Point: depreciated for physical wear only, 58; income 40, comparables 42,
+   reconciled 41; functional 5.33 and economic 11.67 obsolescence close the gap. The text says cost
+   is neither a floor nor an unconditional ceiling.
+7. *Credit liquidity costs* (`meth:credit-liquidity-tail-risk`). LCS is a round-trip cost (Ben Dor
+   et al. pp. 81-82, 88). Applying the full 0.40 percent to a one-way sale of half the portfolio gave
+   0.20 percent; against mid marks it is 0.10 (proceeds 49.90; 100 = 49.90 + 50 + 0.10), against bid
+   marks 0 and against ask marks 0.20. Remaining bonds 60/40 with LCS 1.34 percent. Index removals at
+   the bid (p. 274) and quote indications (p. 90) are noted.
+
+**Numerical evidence.** `real-asset-checks.py` 37 checks (was 24), `private-capital-checks.py` 38
+(was 29), `credit-portfolio-checks.py` 25 (was 17), all passing in the locked uv environment
+(Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1). New checks test identities (sources = uses, NAV
+reconciliation, distribution totals, cash identity), boundary cases (zero growth, zero construction
+rate, benchmark-matching PME, junior DIP lien, voting by number) and statutory conditions, not only
+restated constants.
+
+**Coverage.** Ten objectives and 27 outline items rechecked, with their rationales and evidence
+updated; mapping and coverage unchanged (371/424, 887/1,030).
+
+**Limits.** Case law on cramdown, unfair discrimination, new value and priming was not read; IVS 105
+is cited from its exposure draft; national covered-bond transpositions and the CRR minimum
+overcollateralisation were not read; construction delay and reserve accounts remain outside the
+Ashdown model.

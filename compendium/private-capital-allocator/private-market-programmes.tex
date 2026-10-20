@@ -79,9 +79,11 @@ DPI is realised cash; DPI above one means the fund has returned what was paid in
 
 \emph{IRR and the J-curve.} The since-inception IRR of calls, distributions and the current NAV is negative early, because fees and investments at cost precede gains, and rises as exits occur: the J-curve (pp.~16--18). The IRR measures return on capital invested, not on capital committed; it rewards early distributions and can be raised by pooling funds \citep[pp.~598--600]{s7-ang}; \citep[pp.~68--69]{demaria-private-markets-2021}.
 
-\emph{Public market equivalent.} Kaplan and Schoar discount the fund's distributions and calls at the realised return of a public index:
-\[ \mathrm{PME}=\frac{\sum_t D_t/I_t}{\sum_t C_t/I_t}, \]
-with $I_t$ the index's cumulative value; a PME above one means the fund beat the index net of fees \citep[NBER WP 9807, p.~8]{pe-kaplan-schoar-2005}. It assumes the fund's beta is one; if it is higher, PME overstates risk-adjusted performance (pp.~8--9).
+\emph{Public market equivalent.} Kaplan and Schoar discount the fund's distributions and calls at the realised total return of a public index, and divide the first sum by the second; a PME above one means the fund beat the index net of fees \citep[NBER WP 9807, pp.~6, 8]{pe-kaplan-schoar-2005}. Their main sample is of largely liquidated funds, whose unrealised value is under 10 percent of commitments (p.~6). For a fund still holding investments, the residual NAV at the valuation date $T$ is treated as a final distribution \citep[pp.~10--12]{pe-harris-jenkinson-kaplan-2014}:
+\[ \mathrm{PME}_T=\frac{\sum_{t\le T} D_t/I_t+\mathrm{NAV}_T/I_T}{\sum_{t\le T} C_t/I_t}. \]
+Here $C_t$ and $D_t$ are the LP's calls and distributions net of fees and carry, $\mathrm{NAV}_T$ is the LP's share of residual value after accrued carry, and $I_t$ is the total-return index level on the same dates. For a liquidated fund $\mathrm{NAV}_T=0$ and the formula is Kaplan and Schoar's. The measure assumes the fund's beta is one; if it is higher, PME overstates risk-adjusted performance \citep[pp.~8--9]{pe-kaplan-schoar-2005}.
+
+\emph{Excess-return versions.} The IRR of the index-deflated flows $C_t/I_t$ and $D_t/I_t$ (with $\mathrm{NAV}_T/I_T$) is a money-weighted excess return over the index. It is not the fund's IRR less the index's annualised return: with a constant index return $g$ it equals $(1+\mathrm{IRR})/(1+g)-1$, and with a varying index it depends on the timing of the flows (Derivation). Harris, Jenkinson and Kaplan describe a different measure, the Long--Nickels excess return, which subtracts the IRR of an index investment with the same calls (p.~11).
 
 \emph{Why private and public performance differ.} Private returns are money-weighted and depend on the GP's timing of calls and exits; public returns are time-weighted. NAVs are appraisals that lag; multiples ignore time; and fees are paid on committed capital (Interpretation, from the sources above).
 
@@ -100,12 +102,14 @@ IRR since inception & $-14.8\%$ & 3.0\% & 8.0\% & 10.1\% & 11.0\% & 11.7\% \\
 \end{center}
 \begin{itemize}
 \item DPI passes one in year 5 and dips to 1.10 in year 6 as fees are still called.
-\item With an index that returns 10, $-5$, 12, 8, 6, 15, $-10$ and 9 percent, the PME is 1.23. The IRR of the index-deflated cash flows is 5.67 percent a year, the annual margin over the index.
+\item With an index that returns 10, $-5$, 12, 8, 6, 15, $-10$ and 9 percent in years 1 to 8, the PME at liquidation is 1.23. The IRR of the index-deflated cash flows is 5.67 percent a year, a money-weighted margin over the index.
+\item At the end of year 4 the LP holds NAV worth 0.64 of paid-in capital, and the interim PME including it is 1.10. Leaving the NAV out gives 0.56, as if the unrealised value were lost.
+\item \emph{Benchmark case}: an LP contributes 100, receives nothing and holds NAV of 110 a year later while the index rises 10 percent. $\mathrm{PME}=(110/1.10)/(100/1.00)=1$: the fund matched the index. The distributions-only formula would give 0.
 \end{itemize}
 
-\qffield{Conditions} RVPI and interim IRRs depend on the GP's valuations (IPEV guidelines in Europe). The PME uses one index; a small-cap or sector index may be the better comparator.
+\qffield{Conditions} RVPI, interim IRRs and interim PMEs depend on the GP's valuations (IPEV guidelines in Europe). The PME uses one index, measured with dividends reinvested on the cash-flow dates; a small-cap or sector index may be the better comparator.
 
-\qffield{Pitfalls} Ranking funds of different ages by TVPI. Reading a high interim IRR from a quick early exit as skill. Treating PME as a risk adjustment for leverage.
+\qffield{Pitfalls} Ranking funds of different ages by TVPI. Reading a high interim IRR from a quick early exit as skill. Treating PME as a risk adjustment for leverage. Computing an interim PME without the residual NAV.
 
 \qffield{See also} \hyperref[meth:gp-alignment-net-returns]{net returns and fees}; \hyperref[meth:alternative-returns-after-fees]{returns after fees}; \hyperref[meth:gips-return-calculations]{GIPS returns}.
 

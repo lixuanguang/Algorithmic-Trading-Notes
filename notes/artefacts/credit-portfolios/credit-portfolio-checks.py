@@ -1,5 +1,5 @@
 """Credit portfolios: spread risk and DTS, spread measures, selection, liquidity and tail risk, CDS, international
-and structured credit (2026-10-20).
+and structured credit (2026-10-20; liquidity-cost marks and covered bonds corrected the same day).
 
 Worked numbers of meth:credit-spread-portfolio-risk, meth:credit-selection-positioning, meth:credit-liquidity-tail-risk
 and meth:credit-cds-international-structured. Bonds, portfolios and rates are hypothetical except where a check
@@ -8,7 +8,9 @@ Larreur 2021, p. 309).
 
 Independent routes: excess returns from absolute spread changes against relative changes times DTS; issuer caps from a
 DTS budget against position-size ratios; Vasicek's worst-case default rate from the closed form against a one-factor
-simulation; hedge ratios by duration against DTS; OC tests before and after defaults.
+simulation; hedge ratios by duration against DTS; OC tests before and after defaults; a one-way sale from mid
+against the round-trip LCS and the cash identity (start value = proceeds + remaining bonds + cost); a covered bond's
+issuer and pool claims against securitisation tranches paid from the pool alone.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
@@ -114,12 +116,47 @@ ok(
 )
 w = np.array([0.5, 0.3, 0.2])
 lcs_b = np.array([0.40, 0.90, 2.00])
+PORT = 100.0  # portfolio value at mid prices
 ok(
-    "a portfolio with LCS 0.40/0.90/2.00 weighted 50/30/20 has an LCS of 0.87%; selling the most liquid half first "
-    "costs 0.20% of the portfolio and leaves an LCS of 1.34% on the rest",
-    round(float(w @ lcs_b), 2) == 0.87
-    and close(0.5 * 0.40, 0.20)
-    and round(float(w[1:] @ lcs_b[1:]) / w[1:].sum(), 2) == 1.34,
+    "a portfolio with LCS 0.40/0.90/2.00 weighted 50/30/20 has an LCS of 0.87%, a round-trip cost",
+    round(float(w @ lcs_b), 2) == 0.87,
+)
+# A round trip pays the whole bid-ask spread; a one-way sale from mid pays half of it. Against a bid-side mark the
+# sale costs nothing relative to the mark (the cost was already taken in the valuation); against an ask mark it costs
+# the full spread.
+sold = w[0] * PORT
+cost_mid = sold * lcs_b[0] / 100 / 2
+cost_round = sold * lcs_b[0] / 100
+cost_bid_mark = 0.0
+cost_ask_mark = sold * lcs_b[0] / 100
+proceeds = sold - cost_mid
+ok(
+    "selling the most liquid half (50 at mid) one way costs half its LCS against mid: 0.10, or 0.10% of the "
+    "portfolio, not the 0.20% round-trip figure; proceeds 49.90",
+    close(cost_mid, 0.10) and close(cost_round, 0.20) and close(proceeds, 49.90),
+)
+ok(
+    "the same sale against other marks: zero against a bid-side mark, 0.20 against an ask-side mark; mark-to-mid "
+    "cost + bid-marked cost = half the round trip for a symmetric spread",
+    close(cost_bid_mark, 0.0)
+    and close(cost_ask_mark, 0.20)
+    and close(cost_mid, (cost_round + cost_bid_mark) / 2),
+)
+rest = w[1:] * PORT
+rest_lcs = float(rest @ lcs_b[1:]) / rest.sum()
+total_after = proceeds + rest.sum()
+ok(
+    "after the sale: cash 49.90 and bonds 50 (weights 60/40 within the bonds) with an LCS of 1.34%; the whole "
+    "portfolio of 99.90 has a value-weighted LCS of 0.67% (cash at zero), and liquidating the rest later would cost "
+    "a further 0.335 one way at mid",
+    round(rest_lcs, 2) == 1.34
+    and close(total_after, 99.90)
+    and round(rest.sum() * rest_lcs / total_after, 2) == 0.67
+    and round(rest.sum() * rest_lcs / 100 / 2, 3) == 0.335,
+)
+ok(
+    "accounting identity: start value 100 = cash proceeds + remaining bonds at mid + one-way cost",
+    close(PORT, proceeds + rest.sum() + cost_mid),
 )
 ok(
     "Ben Dor et al. p. 257: issuer position-size ratios 9.2 : 3.1 : 1 on downgrade risk and 4.0 : 2.5 : 1 with all "
@@ -172,6 +209,58 @@ ok(
     close(oc0, 1.20) and close(oc1, 1.14) and oc1 < 1.15,
 )
 
+
+# Covered bond against a securitisation of the same pool (Directive (EU) 2019/2162 Arts 4, 15; Regulation (EU)
+# 2017/2402 Art 2(1)). Bank Corvel: covered bonds 100 on a cover pool of 110; the same 110 pool securitised instead
+# into a senior 80, mezzanine 15 and equity 15.
+COVERED, POOL = 100.0, 110.0
+TRANCHES = [("senior", 80.0), ("mezzanine", 15.0), ("equity", 15.0)]
+
+
+def tranche_payoff(pool_value):
+    out, left = {}, pool_value
+    for k, size in TRANCHES:
+        out[k] = min(left, size)
+        left -= out[k]
+    return out
+
+
+def covered_payoff(pool_value, issuer_solvent, unsecured_recovery):
+    if issuer_solvent:
+        return COVERED  # the issuer pays; the pool is security, not the source of payment
+    priority = min(pool_value, COVERED)
+    return priority + (COVERED - priority) * unsecured_recovery
+
+
+ok(
+    "pool loses 15 (worth 95) with the bank solvent: covered bonds are paid 100 by the issuer; the securitisation's "
+    "equity absorbs the loss and the senior 80 is intact",
+    close(covered_payoff(95.0, True, 0.4), 100.0)
+    and close(tranche_payoff(95.0)["equity"], 0.0)
+    and close(tranche_payoff(95.0)["senior"], 80.0),
+)
+ok(
+    "pool worth 90 and the bank insolvent: covered bonds take 90 from the pool and claim the 10 shortfall pari passu "
+    "with unsecured creditors (40% recovery): 94; in the securitisation the equity is wiped, the mezzanine loses 5 "
+    "of 15 and the senior is whole",
+    close(covered_payoff(90.0, False, 0.4), 94.0)
+    and close(tranche_payoff(90.0)["equity"], 0.0)
+    and close(tranche_payoff(90.0)["mezzanine"], 10.0)
+    and close(tranche_payoff(90.0)["senior"], 80.0),
+)
+ok(
+    "the senior tranche is 80/110 = 72.7% of this structure: tranche proportions describe securitisations; covered "
+    "bonds are a single untranched class backed by overcollateralisation of 10%",
+    round(80.0 / POOL * 100, 1) == 72.7 and close(POOL / COVERED - 1, 0.10),
+)
+prepay = 20.0
+ok(
+    "the pool prepays 20: a pass-through investor receives 20 of principal early, whereas the covered bonds stay at "
+    "100; coverage falls to 90% and the issuer must add at least 10 of eligible or substitution assets (Art 15(6))",
+    (POOL - prepay) / COVERED < 1.0
+    and close(COVERED - (POOL - prepay), 10.0)
+    and close(COVERED, 100.0),
+)
 print(f"\n{n_checks} checks executed")
 if fails:
     print("FAILED:", fails)

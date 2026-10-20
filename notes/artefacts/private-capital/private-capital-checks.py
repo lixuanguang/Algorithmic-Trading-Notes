@@ -12,7 +12,8 @@ American waterfall deal by deal against the whole-fund carry, giving the clawbac
 NPV = 0 checks; the KS-PME against its definition with an index path; the VC method's stake against the pre- and
 post-money identities; the LBO equity value bridge (EBITDA growth + multiple change + deleveraging) against the exit
 equity less the entry equity; private-debt ratios from their definitions; the distressed recovery waterfall against
-absolute priority totals; desmoothed volatility against the closed form for an AR(1) smoother.
+absolute priority totals and the 250 threshold; class voting under 1126(c) against confirmation under 1129(a)(10)
+and (b); the PME with residual NAV against an index-matching benchmark case; desmoothed volatility against the closed form for an AR(1) smoother.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
@@ -236,6 +237,7 @@ for t in range(T):
             rvpi=lp_nav / paid,
             tvpi=(dist + lp_nav) / paid,
             irr=irr(cf) if t else None,
+            nav=lp_nav,
         )
     )
 for r in rows3:
@@ -276,13 +278,58 @@ ok(
     f"gross {gross_irr:.4f}, net {net_irr:.4f}",
 )
 IDX_R = [0.0, 0.10, -0.05, 0.12, 0.08, 0.06, 0.15, -0.10, 0.09]
-index = np.cumprod([1 + r for r in IDX_R])
-ks_pme = sum(lp_eu[t] / index[t] for t in range(T)) / sum(calls[t] / index[t] for t in range(T))
+index = np.cumprod(
+    [1 + r for r in IDX_R]
+)  # index level at each year-end, 1.10 at the end of year 1
+
+
+def ks_pme_at(T_, nav_T=0.0):
+    """Kaplan-Schoar PME at valuation date T_: index-deflated LP distributions plus residual NAV, over deflated calls.
+    Calls and distributions are the LP's net-of-fee and net-of-carry cash flows; NAV is the LP's share after accrued
+    carry; the index is a total-return level observed on the same dates.
+    """
+    num = sum(lp_eu[t] / index[t] for t in range(T_ + 1)) + nav_T / index[T_]
+    den = sum(calls[t] / index[t] for t in range(T_ + 1))
+    return num / den
+
+
+ks_pme = ks_pme_at(T - 1)
+ok(
+    "KS-PME 1.23 at liquidation (year 8 index, NAV 0): distributions and calls discounted by the index",
+    round(ks_pme, 2) == 1.23 and close(rows3[-1]["nav"], 0.0, 1e-12),
+    f"PME {ks_pme:.4f}",
+)
+pme4_nav = ks_pme_at(4, rows3[4]["nav"])
+pme4_no_nav = ks_pme_at(4)
+ok(
+    "interim PME at the end of year 4 includes the LP's residual NAV: 1.10; leaving NAV out gives 0.56, which "
+    "treats unrealised value as lost",
+    round(pme4_nav, 2) == 1.10 and round(pme4_no_nav, 2) == 0.56,
+    f"with NAV {pme4_nav:.4f}, without {pme4_no_nav:.4f}",
+)
+bench = (110.0 / 1.10) / (100.0 / 1.0)
+ok(
+    "benchmark-matching case: contribute 100 at t = 0, no distributions, NAV 110 at t = 1 with the index up 10%: "
+    "PME = (0 + 110/1.10) / (100/1.00) = 1 exactly; the distributions-only formula would give 0",
+    close(bench, 1.0) and close(0.0 / (100.0 / 1.0), 0.0),
+)
 pme_irr = irr(lp_eu / index - calls / index)
 ok(
-    "KS-PME 1.23: distributions and calls discounted by the index; the IRR of the index-deflated flows is 5.67% a year",
-    round(ks_pme, 2) == 1.23 and round(pme_irr * 100, 2) == 5.67,
-    f"PME {ks_pme:.4f}, direct alpha {pme_irr:.4f}",
+    "the IRR of the index-deflated flows (5.67% a year) is a money-weighted excess return; it is not the fund's IRR "
+    "(11.71%) less the index's annualised return",
+    round(pme_irr * 100, 2) == 5.67
+    and abs(pme_irr - (net_irr - (index[-1] ** (1 / (T - 1)) - 1))) > 0.001,
+    f"direct alpha {pme_irr:.4f}",
+)
+g_c = 0.05
+flat_index = (1 + g_c) ** np.arange(T)
+r_defl = irr(lp_eu / flat_index - calls / flat_index)
+ok(
+    "with a constant 5% index the deflated IRR is the geometric excess (1 + IRR)/(1.05) - 1 = 6.39%, not the "
+    "arithmetic 11.71% - 5% = 6.71%",
+    close(r_defl, (1 + net_irr) / (1 + g_c) - 1, 1e-9)
+    and round(r_defl * 100, 2) == 6.39
+    and round((net_irr - g_c) * 100, 2) == 6.71,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -411,12 +458,17 @@ ok(
 print(
     "== part 6: special situations - Halden Retail's recovery waterfall and a loan-to-own position"
 )
+# Assumed waterfall (stated in the entry): the DIP lenders hold a priming first lien granted under 11 U.S.C. 364(d)
+# with the pre-petition lenders' consent; the senior lenders agreed a carve-out for administrative claims; the senior
+# claim is fully secured (collateral worth at least 200, so no 506(a) deficiency claim); the unsecured bonds are one
+# class; old equity is junior to all.
 CLAIMS = [("DIP", 40.0), ("administrative", 10.0), ("senior secured", 200.0), ("unsecured", 150.0)]
+SENIOR_TO_UNSECURED = sum(c for k, c in CLAIMS if k != "unsecured")
 
 
-def waterfall(ev):
+def waterfall(ev, claims=CLAIMS):
     rec, left = {}, ev
-    for k, c in CLAIMS:
+    for k, c in claims:
         pay = min(left, c)
         rec[k] = pay / c
         left -= pay
@@ -424,31 +476,110 @@ def waterfall(ev):
     return rec
 
 
-rec = {ev: waterfall(ev) for ev in (220.0, 260.0, 300.0, 350.0)}
+def fulcrum(ev):
+    """The most senior class not paid in full: the class that takes the new equity."""
+    for k, c in CLAIMS:
+        if waterfall(ev)[k] < 1.0:
+            return k
+    return "equity"
+
+
+rec = {ev: waterfall(ev) for ev in (220.0, 250.0, 255.0, 300.0, 350.0)}
 ok(
     "absolute priority at EV 300: DIP, administrative and senior claims paid in full; unsecured recover 33.3%; "
-    "old equity nothing",
+    "old equity nothing; distributions sum to EV",
     rec[300.0]["senior secured"] == 1.0
     and round(rec[300.0]["unsecured"] * 100, 1) == 33.3
-    and rec[300.0]["equity"] == 0.0,
+    and rec[300.0]["equity"] == 0.0
+    and close(sum(rec[300.0][k] * c for k, c in CLAIMS) + rec[300.0]["equity"], 300.0),
 )
 ok(
-    "the fulcrum moves with value: at 220 the senior class recovers 85% and unsecured nothing; at 260 unsecured get "
-    "6.7%; at 350, 66.7%",
+    "threshold: claims senior to the bonds are 40 + 10 + 200 = 250; at 250 the bonds get nothing and the senior "
+    "class is just paid; at 255 the bonds still receive 5 (3.3%) and remain the fulcrum",
+    close(SENIOR_TO_UNSECURED, 250.0)
+    and rec[250.0]["senior secured"] == 1.0
+    and rec[250.0]["unsecured"] == 0.0
+    and close(rec[255.0]["unsecured"] * 150.0, 5.0)
+    and fulcrum(255.0) == "unsecured"
+    and fulcrum(249.0) == "senior secured",
+)
+ok(
+    "below 250 the senior class becomes the fulcrum: at 220 it recovers 85% and the bonds nothing; at 350 the bonds "
+    "recover 66.7%",
     round(rec[220.0]["senior secured"] * 100, 1) == 85.0
     and rec[220.0]["unsecured"] == 0.0
-    and round(rec[260.0]["unsecured"] * 100, 1) == 6.7
+    and fulcrum(220.0) == "senior secured"
     and round(rec[350.0]["unsecured"] * 100, 1) == 66.7,
+)
+junior_dip = [
+    ("senior secured", 200.0),
+    ("DIP", 40.0),
+    ("administrative", 10.0),
+    ("unsecured", 150.0),
+]
+ok(
+    "boundary on the DIP's priority: with only a junior lien on encumbered assets (364(c)(3)) and no carve-out, the "
+    "senior lenders' collateral comes first; at EV 220 the senior class is paid in full, the DIP receives 20 of 40 and "
+    "administrative claims nothing, against 85% for the senior class under the priming assumption",
+    waterfall(220.0, junior_dip)["senior secured"] == 1.0
+    and close(waterfall(220.0, junior_dip)["DIP"] * 40.0, 20.0)
+    and waterfall(220.0, junior_dip)["administrative"] == 0.0
+    and round(waterfall(220.0)["senior secured"] * 100, 1) == 85.0,
 )
 face, cost = 100.0, 20.0
 new_equity = 300.0 - (40.0 + 10.0) - 200.0
 ok(
-    "loan-to-own: unsecured receive all of the new equity, 300 - 50 exit facility - 200 reinstated senior = 50; "
-    "holding 100 of the 150 face bought at 20 gives 33.3, a 66.7% gain; with two-thirds of the class amount the holder "
-    "can block any plan the class votes on (11 U.S.C. 1126(c) also needs more than half of holders by number to accept)",
+    "loan-to-own: an exit facility of 50 repays the DIP and administrative claims and the 200 senior debt is "
+    "reinstated, leaving 50 of new equity for the bonds; 100 of the 150 face bought at 20 becomes 33.3, a 66.7% gain",
     close(new_equity, 50.0)
     and round(face / 150.0 * new_equity, 1) == 33.3
     and round((face / 150.0 * new_equity) / cost - 1, 3) == 0.667,
+)
+
+
+def class_accepts(votes):
+    """11 U.S.C. 1126(c): at least two-thirds in amount and more than half in number of the claims voting accept."""
+    yes = [a for a, v in votes if v]
+    amount = sum(yes) / sum(a for a, _ in votes)
+    number = len(yes) / len(votes)
+    return amount >= 2 / 3 and number > 0.5
+
+
+fund_yes = [(100.0, True)] + [(5.0, False)] * 10
+fund_no = [(100.0, False)] + [(5.0, True)] * 10
+ok(
+    "voting (1126(c)): the fund's 100 of 150 is two-thirds in amount, but one holder against ten voting no fails the "
+    "number test, so the class rejects; voting no, the fund blocks acceptance (50/150 in amount) even with ten yeses",
+    not class_accepts(fund_yes) and not class_accepts(fund_no) and close(100.0 / 150.0, 2 / 3),
+)
+few = [(100.0, True), (25.0, True), (25.0, False)]
+ok(
+    "with only three holders voting, the fund and one other accepting (125/150 in amount, 2 of 3 in number) carries "
+    "the class",
+    class_accepts(few),
+)
+
+
+def confirmable(
+    impaired_accepting_classes, dissenting_impaired, junior_gets_value, unfair_discrimination
+):
+    """1129(a)(8), (a)(10) and (b): a dissenting impaired class can be crammed down only if another impaired class
+    accepted and the plan is fair and equitable (for unsecured claims, full value or nothing to juniors) and does not
+    discriminate unfairly; the remaining 1129(a) tests (feasibility, best interests) are assumed met.
+    """
+    if not dissenting_impaired:
+        return impaired_accepting_classes >= 1
+    return impaired_accepting_classes >= 1 and not junior_gets_value and not unfair_discrimination
+
+
+ok(
+    "confirmation (1129(b)) differs from class acceptance: a plan that reinstates the senior debt leaves it "
+    "unimpaired (1124(2)), so if the bonds reject there is no accepting impaired class (1129(a)(10)) and no cramdown; "
+    "if the senior lenders are impaired (new terms) and accept, the plan can be confirmed over the bonds' rejection "
+    "provided old equity receives nothing",
+    not confirmable(0, True, False, False)
+    and confirmable(1, True, False, False)
+    and not confirmable(1, True, True, False),
 )
 
 # ---------------------------------------------------------------------------------------------

@@ -1,15 +1,20 @@
-"""Real assets: property valuation, indexes, REITs, private real estate, infrastructure and land (2026-10-20).
+"""Real assets: property valuation, indexes, REITs, private real estate, infrastructure and land (2026-10-20;
+construction financing, timber accounting and the cost approach corrected the same day).
 
 Worked numbers of the entries in compendium/real-asset-investor/. Every property, REIT, project and parcel is
-hypothetical (Marlow House, Kestrel REIT, Ferris Park, Ashdown Hospital PPP, a farmland parcel and a timber stand),
+hypothetical (Marlow House, Harbour Point, Kestrel REIT, Ferris Park, Ashdown Hospital PPP, a farmland parcel and a
+timber stand),
 except the reported USDA 2026 farmland averages and NCREIF index returns quoted in the entries.
 
 Independent routes: the 10-year DCF with constant growth and an exit cap of r - g against the direct capitalisation
 NOI1 / (r - g); the NCREIF quarterly income and appreciation returns against their sum and the property's change in
 value; appraisal smoothing against the closed-form variance ratio; REIT NAV built asset by asset against equity per
 share; FFO and AFFO reconciled line by line from net income; levered and unlevered IRRs against cash-flow NPV = 0;
-PPP debt sized by sculpting to a target DSCR against the LLCR identity (LLCR = target DSCR at financial close) and
-the gearing cap; farmland return as income yield plus growth against the Gordon identity.
+PPP debt sized by sculpting to a target DSCR against the LLCR identity (LLCR = target DSCR on every calculation date
+from the start of operations), the gearing cap, sources = uses with interest during construction, and a repayment
+schedule that amortises to zero; farmland return as income yield plus growth against the Gordon identity; the timber
+stand's total return from closing NAV plus distributions against an opening-weight decomposition and a no-growth
+boundary case; the cost approach after all three kinds of obsolescence against income and comparable-sale values.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
@@ -109,6 +114,39 @@ v_cost = 25e6 + 330 * AREA * (1 - 0.20)
 ok(
     "cost approach: land 25m plus replacement cost 330 a sq ft less 20% depreciation: 77.80m",
     round(v_cost / 1e6, 2) == 77.80,
+)
+# Cost approach is not a floor (IVS 105 exposure draft paras 70.1, 90.2, 90.7; Damodaran pp. 537-538): Harbour Point,
+# an older office in a weak submarket. Land 10, replacement cost new of a modern equivalent 60, physical deterioration
+# 20%, functional obsolescence (deep floor plates, excess operating cost) and economic obsolescence (oversupply).
+HP_LAND, HP_RCN, HP_PHYS = 10.0, 60.0, 0.20
+hp_noi, hp_cap = 3.0, 0.075
+hp_income = hp_noi / hp_cap
+hp_comps = 42.0
+hp_phys_only = HP_LAND + HP_RCN * (1 - HP_PHYS)
+hp_reconciled = 0.5 * hp_income + 0.5 * hp_comps
+hp_obsolescence = hp_phys_only - hp_reconciled
+excess_opex = 0.4  # a year, against a modern equivalent
+func = excess_opex / hp_cap
+econ = hp_obsolescence - func
+ok(
+    "Harbour Point: land 10 + replacement cost 60 less 20% physical deterioration = 58, but NOI 3.0 at a 7.5% cap "
+    "gives 40 and comparable sales 42; reconciled 41: depreciated replacement cost exceeds market value by 17",
+    close(hp_phys_only, 58.0)
+    and close(hp_income, 40.0)
+    and close(hp_reconciled, 41.0)
+    and close(hp_obsolescence, 17.0),
+)
+ok(
+    "the 17 gap splits into functional obsolescence (0.4 a year of excess operating cost capitalised at 7.5%: 5.33) "
+    "and economic obsolescence (11.67); a cost approach with all three deductions reproduces 41",
+    round(func, 2) == 5.33
+    and round(econ, 2) == 11.67
+    and close(HP_LAND + HP_RCN * (1 - HP_PHYS) - func - econ, hp_reconciled),
+)
+ok(
+    "Tobin's Q of the building and land: 41 / (10 + 60) = 0.59 < 1; nobody would build it, so replacement cost does "
+    "not support its price; for Marlow House the income value (80.55) is above the cost-approach 77.80 (Q > 1)",
+    round(hp_reconciled / (HP_LAND + HP_RCN), 2) == 0.59 and v_cap > v_cost,
 )
 ok(
     "a 50 bp move in the cap rate moves value by about 8%: 87.88m at 5.5%, 74.36m at 6.5%",
@@ -233,63 +271,152 @@ ok(
 )
 
 # ---------------------------------------------------------------------------------------------
-print("== part 5: Ashdown Hospital PPP - debt sizing by DSCR and gearing, LLCR, equity returns")
-COST = [100.0, 100.0]  # construction years 1-2
+print(
+    "== part 5: Ashdown Hospital PPP - dated construction financing, debt sizing, LLCR and equity returns"
+)
+# Dates are year-ends: t = 0 financial close; construction payments of 100 at t = 1 and t = 2; completion and
+# commercial operation at t = 2; operating years 1-25 end at t = 3..27. Senior debt at 5% is sized at completion on
+# sculpted debt service and drawn pro rata with construction at t = 1 and t = 2; interest during construction on the
+# first draw is capitalised (added to the balance), so the opening operating balance equals the sized amount.
+COST = {1: 100.0, 2: 100.0}
 OPS = 25
 AP0, OPEX0 = 20.0, 6.0
-cfads = np.array([AP0 * 1.02**t - OPEX0 * 1.025**t for t in range(OPS)])  # operating years 1..25
+cfads = np.array([AP0 * 1.02**t - OPEX0 * 1.025**t for t in range(OPS)])  # at t = 3..27
 TENOR, KD, TARGET = 22, 0.05, 1.30
+disc = (1 + KD) ** np.arange(1, TENOR + 1)
 ds = cfads[:TENOR] / TARGET
-debt_dscr = float(np.sum(ds / (1 + KD) ** np.arange(1, TENOR + 1)))
-debt_cap = 0.85 * sum(COST)
-debt = min(debt_dscr, debt_cap)
-llcr = float(np.sum(cfads[:TENOR] / (1 + KD) ** np.arange(1, TENOR + 1))) / debt_dscr
+debt_ops = float(np.sum(ds / disc))  # opening operating balance at t = 2
+draw = debt_ops / (1 + KD + 1)  # equal draws at t = 1 and t = 2; first draw accrues one year
+idc = KD * draw
+equity = {t: COST[t] - draw for t in COST}
+uses = sum(COST.values()) + idc
+sources = 2 * draw + idc + sum(equity.values())
+gearing = debt_ops / uses
+cap_ok = debt_ops <= 0.85 * uses
 ok(
-    "CFADS 14.00 in the first operating year; debt sculpted to a 1.30x DSCR over 22 years at 5% supports 165.8, "
-    "below the 85% gearing cap of 170, so the DSCR binds (gearing 82.9%); LLCR at financial close equals 1.30",
-    round(cfads[0], 2) == 14.0
-    and round(debt_dscr, 1) == 165.8
-    and debt == debt_dscr
-    and round(debt / sum(COST) * 100, 1) == 82.9
-    and close(llcr, TARGET, 1e-12),
+    "debt sculpted to a 1.30x DSCR over 22 operating years at 5% supports an opening operating balance of 165.83 at "
+    "completion (t = 2); it is reached by draws of 80.89 at t = 1 and t = 2 plus 4.04 of capitalised interest",
+    round(debt_ops, 2) == 165.83
+    and round(draw, 2) == 80.89
+    and round(idc, 2) == 4.04
+    and close(draw * (1 + KD) + draw, debt_ops, 1e-9),
 )
-scale = debt / debt_dscr
-service = ds * scale
-equity_in = sum(COST) - debt
-equity_cf = [-equity_in / 2, -equity_in / 2, *list(cfads[:TENOR] - service), *list(cfads[TENOR:])]
-eq_irr = irr([0.0, *equity_cf])
-min_dscr = float(np.min(cfads[:TENOR] / service))
 ok(
-    "sculpted debt service keeps the DSCR at 1.30x every year; equity of 34.2, paid in during construction, earns "
-    "an IRR of 10.70% from dividends after debt service and the three post-debt years",
-    round(min_dscr, 2) == 1.30 and round(equity_in, 1) == 34.2 and round(eq_irr * 100, 2) == 10.70,
-    f"{eq_irr:.4f}",
+    "sources and uses: uses = construction 200 + interest during construction 4.04 = 204.04; sources = debt 165.83 + "
+    "equity 38.21 (19.11 at t = 1 and t = 2); gearing 81.3% of total cost, below the 85% cap, so the DSCR binds",
+    close(uses, sources, 1e-9)
+    and round(uses, 2) == 204.04
+    and round(sum(equity.values()), 2) == 38.21
+    and round(gearing * 100, 1) == 81.3
+    and cap_ok,
 )
-cf_stress = cfads.copy()
-cf_stress[:3] -= 0.10 * AP0 * 1.02 ** np.arange(3)
+bal, rows = debt_ops, []
+for t in range(TENOR):
+    interest = KD * bal
+    principal = ds[t] - interest
+    rows.append((bal, interest, principal))
+    bal -= principal
 ok(
-    "a 10% availability deduction in the first three years cuts the DSCR to 1.11x, just above a 1.10x lock-up",
-    round(float(np.min(cf_stress[:TENOR] / service)), 2) == 1.11,
+    "sculpted repayment: year-1 debt service 10.77 = interest 8.29 + principal 2.48; principal positive every year "
+    "and the balance reaches zero after 22 years; DSCR 1.30 every year",
+    round(ds[0], 2) == 10.77
+    and round(rows[0][1], 2) == 8.29
+    and round(rows[0][2], 2) == 2.48
+    and min(r[2] for r in rows) > 0
+    and close(bal, 0.0, 1e-8)
+    and close(float(np.min(cfads[:TENOR] / ds)), TARGET, 1e-12),
 )
-merchant_debt = float(np.sum(cfads[:TENOR] / 1.60 / (1 + KD) ** np.arange(1, TENOR + 1)))
+llcr_cod = float(np.sum(cfads[:TENOR] / disc)) / debt_ops
+llcr_y5 = float(np.sum(cfads[5:TENOR] / (1 + KD) ** np.arange(1, TENOR - 4))) / rows[5][0]
 ok(
-    "the same cash flows with demand risk, at a 1.60x DSCR, support only 134.7 of debt; on the same cash flows the "
-    "equity IRR falls to 8.47%, so a demand-risk bid must price higher or accept a lower return",
-    round(merchant_debt, 1) == 134.7
+    "LLCR at the start of operations = PV(CFADS over the loan life) / opening balance = 1.30, and still 1.30 five "
+    "years later: sculpting fixes the LLCR at the target DSCR on every calculation date",
+    close(llcr_cod, TARGET, 1e-12) and close(llcr_y5, TARGET, 1e-9),
+)
+eq_cf = [0.0, -equity[1], -equity[2], *list(cfads[:TENOR] - ds), *list(cfads[TENOR:])]
+eq_irr = irr(eq_cf)
+ok(
+    "equity IRR 9.63% from dated cash flows (t = 0 close; -19.11 at t = 1 and t = 2; CFADS after debt service, then "
+    "the three post-debt years); 10.70% if construction interest and draw timing are ignored",
+    round(eq_irr * 100, 2) == 9.63
     and round(
         irr(
             [
                 0.0,
-                -(200 - merchant_debt) / 2,
-                -(200 - merchant_debt) / 2,
-                *list(cfads[:TENOR] - cfads[:TENOR] / 1.6),
+                -(200 - debt_ops) / 2,
+                -(200 - debt_ops) / 2,
+                *list(cfads[:TENOR] - ds),
                 *list(cfads[TENOR:]),
             ]
         )
         * 100,
         2,
     )
-    == 8.47,
+    == 10.70,
+    f"{eq_irr:.4f}",
+)
+alt_draw = debt_ops / 2
+alt_idc = KD * alt_draw
+alt_cf = [
+    0.0,
+    -(100 - alt_draw),
+    -(100 - alt_draw + alt_idc),
+    *list(cfads[:TENOR] - ds),
+    *list(cfads[TENOR:]),
+]
+ok(
+    "alternative convention: draw 82.92 at t = 1 and t = 2 and pay the first draw's 4.15 of interest from equity at "
+    "t = 2: equity 38.31 and IRR 9.65%; sources 165.83 + 38.31 = uses 200 + 4.15",
+    round(alt_draw, 2) == 82.92
+    and round(alt_idc, 2) == 4.15
+    and round(200 - 2 * alt_draw + alt_idc, 2) == 38.31
+    and round(irr(alt_cf) * 100, 2) == 9.65
+    and close(2 * alt_draw + (200 - 2 * alt_draw + alt_idc), 200 + alt_idc),
+)
+ok(
+    "boundary: at a 0% construction rate both conventions collapse to the undated-interest case, equity 34.17 at "
+    "t = 1 and t = 2 and IRR 10.70%",
+    round(200 - debt_ops, 2) == 34.17
+    and close(2 * (debt_ops / (1 + 0.0 + 1)), debt_ops)
+    and round(
+        irr(
+            [
+                0.0,
+                -(100 - debt_ops / 2),
+                -(100 - debt_ops / 2),
+                *list(cfads[:TENOR] - ds),
+                *list(cfads[TENOR:]),
+            ]
+        )
+        * 100,
+        2,
+    )
+    == 10.70,
+)
+cf_stress = cfads.copy()
+cf_stress[:3] -= 0.10 * AP0 * 1.02 ** np.arange(3)
+ok(
+    "a 10% availability deduction in the first three operating years cuts the DSCR to 1.11x, just above a 1.10x "
+    "lock-up",
+    round(float(np.min(cf_stress[:TENOR] / ds)), 2) == 1.11,
+)
+m_debt = float(np.sum(cfads[:TENOR] / 1.60 / disc))
+m_draw = m_debt / (2 + KD)
+m_cf = [
+    0.0,
+    -(100 - m_draw),
+    -(100 - m_draw),
+    *list(cfads[:TENOR] - cfads[:TENOR] / 1.6),
+    *list(cfads[TENOR:]),
+]
+ok(
+    "the same cash flows with demand risk, at a 1.60x DSCR, support 134.74 of debt (draws 65.73, capitalised "
+    "interest 3.29); equity rises to 68.55 and its IRR falls to 8.02%",
+    round(m_debt, 2) == 134.74
+    and round(m_draw, 2) == 65.73
+    and round(KD * m_draw, 2) == 3.29
+    and round(200 - 2 * m_draw, 2) == 68.55
+    and round(irr(m_cf) * 100, 2) == 8.02,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -305,13 +432,77 @@ ok(
     and round(net_rent / VALUE * 100, 2) == 2.16
     and round(implied * 100, 2) == 5.22,
 )
-vol0, growth, price0, dprice, land_g, harvest = 100.0, 0.04, 30.0, 0.01, 0.02, 0.03
-stand0 = vol0 * price0
-timber_ret = (1 + growth) * (1 + dprice) - 1
+# Timber stand, opening to closing (all values at stumpage prices; a year).
+# Opening: 100 m3 standing at 30 = 3,000 of timber on land worth 1,000; NAV 4,000.
+# Biological growth 4% of opening volume; harvest 3 m3 sold at the closing price; stumpage price +1%;
+# land +2%; management, tax and harvest costs 15 paid in cash.
+V0, P0, L0 = 100.0, 30.0, 1000.0
+G, H, DP, DL, COSTS = 0.04, 3.0, 0.01, 0.02, 15.0
+
+
+def stand_year(growth, harvest, dprice, dland, costs):
+    p1 = P0 * (1 + dprice)
+    v1 = V0 * (1 + growth) - harvest
+    proceeds = harvest * p1
+    dist = proceeds - costs
+    nav0, nav1 = V0 * P0 + L0, v1 * p1 + L0 * (1 + dland)
+    return dict(
+        v1=v1,
+        p1=p1,
+        proceeds=proceeds,
+        dist=dist,
+        nav0=nav0,
+        nav1=nav1,
+        total=(nav1 + dist - nav0) / nav0,
+    )
+
+
+y = stand_year(G, H, DP, DL, COSTS)
 ok(
-    "timber stand: 4% biological growth and a 1% stumpage price rise lift timber value 5.04% without any market "
-    "move; with a 3% harvest yield and 2% land appreciation the total is about 10%",
-    round(timber_ret * 100, 2) == 5.04 and round((timber_ret + harvest + land_g) * 100, 1) == 10.0,
+    "timber stand reconciliation: volume 100 + growth 4 - harvest 3 = 101 m3 at 30.30 = 3,060.30; land 1,020; "
+    "closing NAV 4,080.30; harvest proceeds 90.90 less costs 15 = distribution 75.90",
+    close(y["v1"], 101.0)
+    and close(y["p1"], 30.30)
+    and close(y["nav1"], 4080.30, 1e-9)
+    and close(y["proceeds"], 90.90, 1e-9)
+    and close(y["dist"], 75.90, 1e-9),
+)
+ok(
+    "total return = (closing NAV + distributions - opening NAV) / opening NAV = 156.20 / 4,000 = 3.905%, not the "
+    "10.04% obtained by adding growth-and-price 5.04%, harvest yield 3% and land 2%",
+    close(y["total"], 0.03905, 1e-12) and round((0.0504 + 0.03 + 0.02) * 100, 2) == 10.04,
+)
+timber_gross = ((y["v1"] + H) * y["p1"] - V0 * P0) / (V0 * P0)
+w_t, w_l = V0 * P0 / y["nav0"], L0 / y["nav0"]
+ok(
+    "decomposition on opening weights: timber 75% x 5.04% (growth and price on harvested plus standing wood) + land "
+    "25% x 2% - costs 15/4,000 = 3.78% + 0.50% - 0.375% = 3.905%; the harvest is inside the 5.04%",
+    round(timber_gross * 100, 2) == 5.04
+    and close(w_t * timber_gross + w_l * DL - COSTS / y["nav0"], y["total"], 1e-12),
+)
+ok(
+    "income and appreciation: cash yield 75.90 / 4,000 = 1.90% and appreciation 80.30 / 4,000 = 2.01% sum to the "
+    "total, as an index's income and appreciation components do",
+    round(y["dist"] / y["nav0"] * 100, 2) == 1.90
+    and round((y["nav1"] - y["nav0"]) / y["nav0"] * 100, 2) == 2.01
+    and close((y["dist"] + y["nav1"] - y["nav0"]) / y["nav0"], y["total"], 1e-12),
+)
+z = stand_year(0.0, H, 0.0, 0.0, COSTS)
+z0 = stand_year(0.0, H, 0.0, 0.0, 0.0)
+ok(
+    "no growth, unchanged prices and land: harvesting 3 m3 turns 90 of standing timber into 90 of cash; the return "
+    "is -0.375% (the costs), or exactly zero without costs: harvesting realises value, it does not create it",
+    close(z["proceeds"], 90.0)
+    and close(z["total"], -COSTS / 4000.0, 1e-12)
+    and close(z0["total"], 0.0, 1e-12),
+)
+s_ = stand_year(G, 4.0, 0.0, 0.0, 0.0)
+ok(
+    "sustained yield: harvesting exactly the 4 m3 of growth at unchanged prices keeps the stand at 100 m3 and pays "
+    "a 3.0% cash return (120 / 4,000) with zero appreciation; deferring the harvest instead adds 4 m3 to inventory",
+    close(s_["v1"], V0)
+    and close(s_["total"], 0.03, 1e-12)
+    and close(stand_year(G, 0.0, 0.0, 0.0, 0.0)["v1"], 104.0),
 )
 
 g_land = 1.10 / (1 - 0.02) - 1

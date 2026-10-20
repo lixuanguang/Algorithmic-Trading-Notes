@@ -9,6 +9,8 @@ status: draft
 
 Prepared on 2026-10-20 by the alternatives batch (2026-10-20) from source checks, not from study: the headings that need your own reading are left empty. Used for `meth:real-assets-allocation`, `meth:land-timber-farmland`.
 
+Also used by the PR #33 audit corrections (2026-10-20) for the income and appreciation split in `meth:land-timber-farmland`.
+
 ## Question and claim
 
 ## Mechanism

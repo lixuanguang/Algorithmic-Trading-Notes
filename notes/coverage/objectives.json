@@ -9247,11 +9247,11 @@
     "reading_notes": [
      "notes/readings/regression-methods-course-notes.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:regression-misspecification"
     ],
-    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 3 (Breusch-Pagan, White, HC1 and Newey-West errors, Durbin-Watson, VIF; simulated collinearity VIF 12.3); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/linear-regression/multiple-regression-checks.py: part 3 (Breusch-Pagan, White, HC1 and Newey-West errors, Durbin-Watson, VIF; simulated collinearity VIF 12.3); Corrected 2026-10-20 (PR #32 audit): OLS covariance formula; AR(1) errors with trend and alternating regressors (variance ratios 2.75, 0.41, 0.43, 2.96) and a seeded simulation; units rescaling leaves t and R2 unchanged; unbiasedness conditioned on strict exogeneity; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -9595,11 +9595,11 @@
      "notes/readings/s7-tsay.md",
      "notes/readings/s7-hyndman.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:time-series-model-selection"
     ],
-    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 7 (AIC/BIC prefer AR(4); out-of-sample RMSE 1.60% against 1.45% for AR(1)); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/time-series-models/time-series-checks.py: part 7 (AIC/BIC prefer AR(4); out-of-sample RMSE 1.60% against 1.45% for AR(1)); Corrected 2026-10-20 (PR #32 audit): target five-year cumulative inflation; 31 common origins 1990-2020: RMSE AR(1) 5.94, mean 6.12, AR(4) 7.27, random walk 7.56, trend 19.36; overlap (lag-1 autocorrelation 0.76) and Diebold-Mariano t 2.61, -0.40, -1.45; 1990-2025 is selection validation, not a holdout; the pre-1953 dependence of AR(4) qualified; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10149,7 +10149,7 @@
     "sources": [
      {
       "key": "eu-2023-1803-ifrs10",
-      "locator": "paras.~6--7; para.~22; para.~7"
+      "locator": "paras.~6--7; para.~22; para.~7; paras.~10, B8, B9, B22, B51, B53, B54, B58--B60"
      },
      {
       "key": "eu-2023-1803-ifrs11",
@@ -10189,7 +10189,7 @@
      },
      {
       "key": "us-variable-interest-entities-2009",
-      "locator": "Summary"
+      "locator": "Summary; paras.~14A--14F, C2--C12"
      }
     ],
     "reading_notes": [
@@ -10205,11 +10205,11 @@
      "notes/readings/eu-2023-1803-ifrs12.md",
      "notes/readings/us-variable-interest-entities-2009.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "def:intercorporate-investment-classification"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: parts 1-2 (classification cases including a structured entity; equity method 115.8 by two routes; FVPL against FVOCI); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: parts 1-2 (classification cases including a structured entity; equity method 115.8 by two routes; FVPL against FVOCI); Corrected 2026-10-20 (PR #32 audit): control derived from power, returns and link; design and losses alone not determinable; servicer case without power; FAS 167 Example 1; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -10594,10 +10594,12 @@
    "depth": "analysis",
    "prerequisites": [],
    "entries": [
-    "meth:insurer-analysis"
+    "meth:insurer-analysis",
+    "meth:life-insurer-analysis"
    ],
    "candidate_entries": [
-    "meth:insurer-analysis"
+    "meth:insurer-analysis",
+    "meth:life-insurer-analysis"
    ],
    "coverage": "covered",
    "next_action": null,
@@ -10607,17 +10609,38 @@
     "sources": [
      {
       "key": "risk-management-financial-institutions-2023",
-      "locator": "pp.~57--64; pp.~557--558"
+      "locator": "pp.~52, 56--64; pp.~557--558"
+     },
+     {
+      "key": "eu-2023-1803-ifrs17",
+      "locator": "paras.~32, 37--38, 44, 47--48, 83, 85"
+     },
+     {
+      "key": "eu-2009-138-solvency2",
+      "locator": "Arts.~77, 101, 105; Annex~IV"
+     },
+     {
+      "key": "eu-2015-35-solvency2-dr",
+      "locator": "Arts.~37, 39, 136--138, 142"
+     },
+     {
+      "key": "cnp-mcev-2017",
+      "locator": "pp.~6, 12, 21--22"
      }
     ],
     "reading_notes": [
-     "notes/readings/risk-management-financial-institutions-2023.md"
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/eu-2023-1803-ifrs17.md",
+     "notes/readings/eu-2009-138-solvency2.md",
+     "notes/readings/eu-2015-35-solvency2-dr.md",
+     "notes/readings/cnp-mcev-2017.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
-     "meth:insurer-analysis"
+     "meth:insurer-analysis",
+     "meth:life-insurer-analysis"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 9 (Hull's Table 3.2 reproduced; Wren combined ratio 97.5% -> 104.9%, development, solvency); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 9 (Hull's Table 3.2 reproduced; Wren combined ratio 97.5% -> 104.9%, development, solvency); part 10, added 2026-10-20 after the PR #32 audit (Linden and Rowan Life: Solvency II rate, longevity, mortality and mass-lapse shocks, SCR aggregation, ratios 191.5% and 156.0%; new business VNB 7.21 against CSM 14.70, and an onerous group at a 15% loading; CNP 2017 reported VNB margin and sensitivities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11730,16 +11753,26 @@
      {
       "key": "investment-valuation-2012",
       "locator": "pp.~351--352"
+     },
+     {
+      "key": "eu-2023-1803-ias7",
+      "locator": "paras.~33, 35"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "IAS~7 para.~34A as amended"
      }
     ],
     "reading_notes": [
-     "notes/readings/investment-valuation-2012.md"
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/eu-2023-1803-ias7.md",
+     "notes/readings/eu-2026-338-ifrs18.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:fcff-fcfe-derivation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 3 (Avon Fittings FCFF 44.50 by four routes; FCFE 45.50); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 3 (Avon Fittings FCFF 44.50 by four routes; FCFE 45.50); Corrected 2026-10-20 (PR #32 audit): interest paid in financing with taxes in operating: CFO 92.50, FCFF = CFO - Int x t - FCInv = 44.50; omitting the shield gives 47.50; IAS 7 paras. 33, 34A, 35 distinguish the pre- and post-IFRS 18 rules; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11773,11 +11806,11 @@
     "reading_notes": [
      "notes/readings/investment-valuation-2012.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:fcf-forecasting"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 4 (Harbour FCFE forecasts; constant-leverage borrowing); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 4 (Harbour FCFE forecasts; constant-leverage borrowing); Corrected 2026-10-20 (PR #32 audit): fixed against revolver financing; payout 40% -> 50% raises 2026 actual FCFE 31.82 -> 39.08 (dividends + change in cash), FCFE before the revolver 1.01 -> 0.80, FCFF 31.93 -> 31.88; Damodaran p. 355 restated (cash or share issues); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11852,11 +11885,11 @@
     "reading_notes": [
      "notes/readings/investment-valuation-2012.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:cash-flow-proxies"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 6 (dividends, net income and EBITDA against FCFE and FCFF for Harbour); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 6 (dividends, net income and EBITDA against FCFE and FCFF for Harbour); Corrected 2026-10-20 (PR #32 audit): dividends equal actual FCFE by construction under the revolver; comparison needs target-policy FCFE; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11891,11 +11924,11 @@
     "reading_notes": [
      "notes/readings/investment-valuation-2012.md"
     ],
-    "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:justified-multiples"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares); corrected 2026-10-20 (PR #31 audit): ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown",
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares); corrected 2026-10-20 (PR #31 audit): ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown; Corrected 2026-10-20 (PR #32 audit): justified P/B x book 786.43 values all equity claims; 7.74 a common share after the vested options; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -12147,11 +12180,11 @@
     "reading_notes": [
      "notes/readings/financial-statement-analysis-2009.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:residual-income-valuation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: parts 8-9 (single stage 40.00; multistage with persistence 23.59; Harbour 809.24; implied RI growth 7.27% at P/B 1.71); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: parts 8-9 (single stage 40.00; multistage with persistence 23.59; Harbour 809.24; implied RI growth 7.27% at P/B 1.71); Corrected 2026-10-20 (PR #32 audit): RI 809.24 values all equity claims; 7.9557 a common share after the five million vested options (7.70); implied growth 7.34% and ROE 14.37% on all equity claims (P/B 1.74); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -12182,16 +12215,21 @@
      {
       "key": "financial-statement-analysis-2009",
       "locator": "p.~42"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp.~445--448"
      }
     ],
     "reading_notes": [
-     "notes/readings/financial-statement-analysis-2009.md"
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/investment-valuation-2012.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:residual-income-comparison"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 9 (RI 809.24 = DDM 834.16 less PV of equity credits 24.92; value recognition 80% from book against 91% terminal in the DDM); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 9 (RI 809.24 = DDM 834.16 less PV of equity credits 24.92; value recognition 80% from book against 91% terminal in the DDM); Corrected 2026-10-20 (PR #32 audit): 834.16 - 24.92 - 7.70 = 801.54 = 7.9557 x 100.75 by both routes; 8.28 and 8.03 superseded; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -12297,17 +12335,17 @@
     "sources": [
      {
       "key": "investment-valuation-2012",
-      "locator": "pp.~681--682"
+      "locator": "pp.~681--682; pp.~672--674, 684--690, Table~24.2"
      }
     ],
     "reading_notes": [
      "notes/readings/investment-valuation-2012.md"
     ],
-    "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
+    "review_record": "notes/source-review-records.md#valuation-and-inference-audit-correction-pass-20-october-2026",
     "entry_evidence": [
      "meth:private-company-valuation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 12 (EV 59.93 and 26.05; GPC 52.13; transactions 47.26; NAV 22.5; DLOC/DLOM compounded to 37.91%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/systematic-equities/equity-fcf-ri-private-checks.py: part 12 (EV 59.93 and 26.05; GPC 52.13; transactions 47.26; NAV 22.5; DLOC/DLOM compounded to 37.91%); Corrected 2026-10-20 (PR #32 audit): total beta and marketability are different effects (Table 24.2 applies both); undiversified buyer's stake 3.73; Fenton basis stated; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },

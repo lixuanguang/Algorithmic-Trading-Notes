@@ -4977,3 +4977,105 @@ Arden bond, Larkspur, Veloria, Avon Fittings, Brent Utilities and Fenton Enginee
 hypothetical, as are the rating-spread schedule, the scenario probabilities and the CDS market
 quotes used in the strategies. Regulatory texts are as read in October 2026; national
 implementations of Basel and of the covered bond directive were not read.
+
+## Valuation and inference audit correction pass, 20 October 2026
+
+**Starting state.** `main` at `191edb2` (PR #32 merged); branch `codex/alternatives-audit-20261020`
+from it. The untracked copies whose names end in " 2" were left in place and excluded from every
+commit; because the checker reads them as duplicate labels, the final validation ran in a separate
+worktree. Coverage at the start: 326/424 objectives and 774/1,030 items. These corrections count
+toward no new objective.
+
+**Findings reproduced first**, each by an independent identity or counterexample before the text
+changed:
+1. *FCFF and interest classification* (`meth:fcff-fcfe-derivation`). Built from receipts and
+   payments, Avon's CFO with interest paid in financing and taxes in operating is 120 - 19.50 - 8 =
+   92.50. CFO less capital investment is 47.50, 3.00 (= 12 x 0.25) above the 44.50 that the EBIT,
+   net-income and EBITDA routes give; CFO - Int x t - FCInv restores it. If the tax saving were also
+   classified in financing, CFO would be 89.50. The superseded check described the CFO difference as
+   9; it is 12. IAS 7 before IFRS 18 allowed either classification (para. 33); IAS 7 para. 34A as
+   amended by IFRS 18 requires financing for entities without a specified main business activity;
+   taxes stay in operating (para. 35) in both versions.
+2. *FCFE, payout and endogenous borrowing* (`meth:fcf-forecasting`, `meth:cash-flow-proxies`).
+   `forecast(payout=0.50)` raises the 2026 dividend to 36.62 and the revolver draw from 30.81 to
+   38.28; actual FCFE goes from 31.82 to 39.08, still equal to dividends plus the unchanged 2.46 cash
+   increase. FCFE before the revolver moves only from 1.01 to 0.80, and valuation FCFF from 31.93 to
+   31.88 (0.8 x t x the extra interest: the model settles a fifth of current tax in-year). The claim
+   that FCFE is unchanged was wrong under the revolver policy and right only with borrowing fixed in
+   advance (Avon: dividends 30 + buyback 10 + cash 5.50 = 45.50). Damodaran p. 355 says dividends
+   above FCFE are financed from cash or new stock; the entry had attributed "or borrow" to him.
+3. *Residual income and outstanding options* (`meth:residual-income-valuation`,
+   `meth:residual-income-comparison`, `meth:justified-multiples`). The RI aggregate 809.2412 values
+   all equity claims, including the five million vested options; the DDM aggregate 834.1610 also
+   includes future grantees (PV of credits 24.9198). The option fixed point
+   p = (809.2412 - 5C(p))/100.75 gives 7.9557 (options 7.70), confirmed by a root-finder; 834.16 -
+   24.92 - 7.70 = 801.54 = 7.9557 x 100.75. Simple division gave 8.0322 and 8.2795. The dirty-surplus
+   identity is unchanged; future grants enter only through the RI charge, so deducting the vested
+   options does not double count. On all equity claims (1,126.19, P/B 1.74) the implied RI growth is
+   7.34 percent and the implied ROE 14.37 percent; the shares alone give 7.27 and 14.18 percent. The
+   justified P/B aggregate 786.43 becomes 7.74 a common share (7.81 by division); the multiples
+   entry now says so.
+4. *Diversification versus marketability* (`meth:private-company-valuation`). Damodaran's Table 24.2
+   (p. 689) applies both a total-beta cost of equity and an illiquidity discount to a private sale,
+   and Illustrations 24.10-24.11 (pp. 687-690) pair a 15.27 percent total-beta cost of capital with
+   a 12.94-28.75 percent illiquidity discount. The blanket double-counting pitfall was therefore
+   wrong. Double counting arises when an illiquidity premium is already in the rate (the p. 674 box
+   warns of this for build-ups) or in the comparables. Fenton's basis is now stated: a control,
+   marketable value to a diversified buyer; an undiversified buyer's 30 percent stake is 3.73 with
+   the marketability discount, 4.81 without.
+5. *Structured-entity control* (`def:intercorporate-investment-classification`). IFRS 10 paras. 7,
+   10, B8-B9, B22, B51 (design ``alone is not sufficient''), B53-B54 and B58-B60, and FAS 167 paras.
+   14A-14F and Example 1 (bondholders bear losses without power; the special servicer is the primary
+   beneficiary). The Penrose table now has three vehicle cases: power and returns (subsidiary),
+   returns without power (unconsolidated structured entity, IFRS 12 disclosure), and design plus
+   losses only (not determinable). The check script derives control from power, returns and the
+   principal test; the hardcoded `control=True` input is gone.
+6. *Regression inference* (`meth:regression-misspecification`). Var(b|X) = (X'X)^-1 X'Omega X
+   (X'X)^-1. With ten observations, an intercept and AR(1) errors, the ratio of true slope variance
+   to the expected usual estimate is 2.75 and 0.41 for a trend at rho = +0.5 and -0.5, and 0.43 and
+   2.96 for an alternating regressor; a seeded 20,000-draw simulation gives 0.42 for the alternating
+   case. Rescaling the stock regressor to percentage points divides its slope and standard error by
+   100 and leaves t, R2 and fitted values unchanged, so units are not a specification error.
+   Unbiasedness is now conditioned on strict exogeneity; the lagged-dependent-variable case is
+   described as inconsistency.
+7. *Forecast validation matched to the decision* (`meth:time-series-model-selection`). Target:
+   cumulative inflation over the five years after each origin. On the 31 common origins 1990-2020,
+   with estimation on data to each origin only: RMSE AR(1) 5.94, mean 6.12, AR(4) 7.27, random walk
+   7.56, trend 19.36 percentage points; mean errors -3.21, -4.10, -4.63, +0.60, -10.44. AR(1) errors
+   autocorrelate at 0.76 at lag 1 (about six independent windows). Diebold-Mariano with Newey-West (4
+   lags): AR(4) against AR(1) t = 2.61; AR(1) against the mean -0.40 and against the random walk
+   -1.45. The 1990-2025 data are described as selection validation, not a holdout. The wartime
+   claim is qualified: from 1953 BIC prefers AR(1) and AIC barely separates the models, and the
+   lag-4 coefficient falls from 0.43 to 0.17, which fits but does not demonstrate the explanation.
+8. *Insurer coverage* (`meth:insurer-analysis`, new `meth:life-insurer-analysis`). The outline item
+   (Level II p. 8) asks for key ratios and other factors for an insurance company, which includes
+   life insurers; the existing entry explicitly did not develop them. Sources read: IFRS 17 paras.
+   32, 37-38, 43-44, 47-50, 83-85 (EU 2023/1803); Solvency II Directive Arts. 75-78, 101, 105 and
+   Annex IV and Delegated Regulation 2015/35 Arts. 37-39, 136-140, 142 (original OJ texts, CELEX
+   32009L0138, SHA-256 8b71252cb8de50200e6b2257e753777779c23eb6cdd8c6978563cfd6f182e96e; CELEX
+   32015R0035, SHA-256 210316eaa3ef18510c137bbcab8d3fbe824be408e1cb147c4bacc0ec1f7b8471); Hull (2023)
+   pp. 52, 56-57, 62-63; CNP Assurances' 2017 MCEV report pp. 6, 12, 21-22. The new entry covers
+   new-business value and the CSM, technical provisions and the SCR, matching, mortality, longevity
+   and lapse, with limits; a two-insurer comparison and a new-business case are reproduced in
+   `intercorporate-fx-institutions-checks.py` part 10. The item stays covered with both entries
+   mapped.
+
+**Access and source limits.** EUR-Lex HTML returned empty responses; the Publications Office
+CELLAR XHTML was used. The CFO Forum MCEV Principles could not be retrieved (the download did not
+return the PDF); an issuer's MCEV report prepared under them is cited instead, as company-defined
+measures. The Solvency II texts are the original ones; the 2025 review and later delegated
+amendments are not reflected. US risk-based capital was not read.
+
+**Numerical evidence.** `equity-fcf-ri-private-checks.py` 57 checks (from 48);
+`intercorporate-fx-institutions-checks.py` 54 (from 44); `multiple-regression-checks.py` 24 (from
+21); `time-series-checks.py` 36 (from 32). Each new check would fail on the superseded statement:
+CFO - FCInv = 47.50 differs from 44.50; FCFE moves by 7.26 with the payout; simple division exceeds
+the option-adjusted value by C(p) x 5 / 100.75; the stake without the marketability discount is
+4.81, not 3.73; the design-and-losses case is not determinable; positive autocorrelation gives a
+ratio below one for the alternating regressor; the five-year RMSEs and overlap are recomputed from
+data to each origin.
+
+**Coverage.** The 11 objectives whose entries changed were reassessed at their stated depth and
+remain covered; their 32 outline items keep their mappings, with rationales noting the recheck, and
+`objective:analyse-insurer` now maps both insurer entries. Coverage unchanged: 326/424 objectives and
+774/1,030 items.

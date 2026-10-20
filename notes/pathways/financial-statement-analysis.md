@@ -52,7 +52,7 @@ Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/
 
 - Intercorporate investments: `def:intercorporate-investment-classification`, `meth:consolidation-ratio-effects`.
 - Foreign currency: `def:functional-currency-transactions`, `meth:currency-translation-methods`, `meth:multinational-currency-tax-analysis`.
-- Banks and insurers: `def:financial-institution-features`, `meth:bank-camels-analysis`, `meth:insurer-analysis`.
+- Banks and insurers: `def:financial-institution-features`, `meth:bank-camels-analysis`, `meth:insurer-analysis`, `meth:life-insurer-analysis`.
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
 

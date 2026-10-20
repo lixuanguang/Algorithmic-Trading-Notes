@@ -3,8 +3,9 @@
 Worked numbers of the entries for the intercorporate-investment, foreign-currency and financial-institution
 objectives. Penrose Group (an IFRS reporter in EUR millions), its investee Quay Ltd, its US subsidiary Penrose Inc.,
 its hyperinflationary subsidiary Penrose Andina, the multinational Larch Brands, Tamar Bank and Wren Insurance are
-hypothetical; none of the numbers describe a real company. Rule references: IAS 28 paras. 5-6, 10, 32, 38; IFRS 10
-paras. 7, 22, B86, B94; IFRS 12 App. A, B21; FAS 167 summary; IFRS 11 paras. 15-16, 20, 24; IFRS 3 paras. 19, 32; IFRS 9 paras. 4.1.4, 5.7.5; IAS 21
+hypothetical, as are Linden Life and Rowan Life (part 10, added 2026-10-20 after the audit); none of their numbers
+describe a real company. Rule references: IAS 28 paras. 5-6, 10, 32, 38; IFRS 10
+paras. 7, 22, B86, B94; IFRS 12 App. A, B21; FAS 167 summary, paras. 14A-14G and Example 1 (C2-C12); IFRS 11 paras. 15-16, 20, 24; IFRS 3 paras. 19, 32; IFRS 9 paras. 4.1.4, 5.7.5; IAS 21
 paras. 21, 23, 28, 39-42, 48; IAS 29 paras. 3, 11-12, 27-28; FAS 52 paras. 5-16; FAS 141R para. 20; ASU 2016-01
 (summary); Basel Framework RBC20.1, RBC30.2, LEV20.7, LCR20.5, NSF20.2; Hull (2023) pp. 28-30 and 59-60;
 Subramanyam and Wild (2009) pp. 304-306 (BritCo).
@@ -48,9 +49,26 @@ def close(a, b, tol=1e-9):
 print("== part 1: classifying an intercorporate investment (IFRS, with the US GAAP contrast)")
 
 
-def classify(stake, influence_evidence=False, control=False, joint=False, rights="net assets"):
-    """IFRS 10 control first; then IFRS 11 joint control; then IAS 28 significant influence; else IFRS 9."""
-    if control:
+def classify(
+    stake,
+    influence_evidence=False,
+    power=False,
+    variable_returns=False,
+    principal=True,
+    joint=False,
+    rights="net assets",
+):
+    """IFRS 10 control first; then IFRS 11 joint control; then IAS 28 significant influence; else IFRS 9.
+
+    Corrected 2026-10-20 (audit): control is derived from its three elements (IFRS 10 para. 7) instead of being
+    passed in as a conclusion. power is True, False or None (the facts about who directs the relevant activities
+    are not given); designing a vehicle or bearing its losses is not an input to power (paras. B51, B54).
+    """
+    if power is None and variable_returns:
+        return (
+            "not determinable: identify who holds substantive rights over the relevant activities"
+        )
+    if power and variable_returns and principal:
         return "subsidiary: consolidate (IFRS 10)"
     if joint:
         return (
@@ -60,30 +78,69 @@ def classify(stake, influence_evidence=False, control=False, joint=False, rights
         )
     if stake >= 0.20 or influence_evidence:
         return "associate: equity method (IAS 28.16)"
+    if variable_returns and stake == 0.0:
+        return "interest in an unconsolidated structured entity: IFRS 9 measurement, IFRS 12 disclosure"
     return "financial asset: FVPL, or FVOCI if elected for equity not held for trading (IFRS 9)"
 
 
+# (stake, influence, power, variable returns, joint, rights, expected)
 cases = [
-    (0.10, False, False, False, "net assets", "financial asset"),
-    (0.15, True, False, False, "net assets", "associate"),
-    (0.30, False, False, False, "net assets", "associate"),
-    (0.50, False, False, True, "net assets", "joint venture"),
-    (0.50, False, False, True, "assets and obligations", "joint operation"),
-    (0.45, False, True, False, "net assets", "subsidiary"),
+    (0.10, False, False, True, False, "net assets", "financial asset"),
+    (0.15, True, False, True, False, "net assets", "associate"),
+    (0.30, False, False, True, False, "net assets", "associate"),
+    (0.50, False, False, True, True, "net assets", "joint venture"),
+    (0.50, False, False, True, True, "assets and obligations", "joint operation"),
+    (0.45, False, True, True, False, "net assets", "subsidiary"),
+    # Structured leasing vehicle, 0% of the (administrative) votes, Penrose holds the first-loss note:
     (
         0.0,
         False,
         True,
+        True,
         False,
         "net assets",
         "subsidiary",
-    ),  # structured entity / VIE: control by design
+    ),  # Penrose decides remarketing and defaults
+    (
+        0.0,
+        False,
+        False,
+        True,
+        False,
+        "net assets",
+        "interest in an unconsolidated",
+    ),  # servicer decides
+    (
+        0.0,
+        False,
+        None,
+        True,
+        False,
+        "net assets",
+        "not determinable",
+    ),  # designed it, bears losses, no more
 ]
-for st, inf, ctl, jt, rt, expect in cases:
+for st, inf, pw, vr, jt, rt, expect in cases:
     ok(
-        f"stake {st:.0%}, influence {inf}, control {ctl}, joint {jt} ({rt}) -> {expect}",
-        classify(st, inf, ctl, jt, rt).startswith(expect),
+        f"stake {st:.0%}, influence {inf}, power {pw}, variable returns {vr}, joint {jt} ({rt}) -> {expect}",
+        classify(st, inf, pw, vr, True, jt, rt).startswith(expect),
     )
+# FAS 167 Example 1 (paras. C2-C12), the US contrast: bondholders absorb losses after the $6 equity but have no rights
+# to direct the defaulted loans; the special servicer, which directs them and holds the equity, is the primary
+# beneficiary; the primary servicer's administrative activities are not the significant ones.
+holders = {
+    "special servicer (equity)": dict(power=True, loss_absorption=True),
+    "bondholders": dict(power=False, loss_absorption=True),
+    "primary servicer (fixed fee)": dict(power=False, loss_absorption=False),
+}
+pb = [k for k, v in holders.items() if v["power"] and v["loss_absorption"]]
+ok(
+    "FAS 167 Example 1: only the special servicer has both power and significant loss exposure; the bondholders "
+    "have variable returns without power",
+    pb == ["special servicer (equity)"]
+    and holders["bondholders"]["loss_absorption"]
+    and not holders["bondholders"]["power"],
+)
 
 # ---------------------------------------------------------------------------------------------
 print("== part 2: the equity method - Penrose buys 30% of Quay on 1 January 2026")
@@ -652,6 +709,179 @@ ok(
     and round(rat[2025]["lcr"], 2) == 1.22
     and round(rat[2025]["nsfr"], 2) == 1.12
     and [round(rat[y]["ltd"], 2) for y in (2025, 2026)] == [0.91, 0.96],
+)
+
+# ---------------------------------------------------------------------------------------------
+print(
+    "== part 10: life insurers - Solvency II shocks, rate matching and new-business value (Linden, Rowan)"
+)
+# Hypothetical, EUR millions. Flat risk-free rate 3%; Gompertz mortality q_x = 0.00005 exp(0.095 x). Shocks from
+# Delegated Regulation (EU) 2015/35 Arts. 137 (mortality +15%), 138 (longevity -20%), 142(6)(b) (mass lapse 40%);
+# correlations Art. 136 and Directive 2009/138/EC Annex IV (life-market 0.25). Risk margin held at 40 (an input).
+R_F = 0.03
+
+
+def q_x(age, mult=1.0):
+    return np.minimum(1.0, mult * 0.00005 * np.exp(0.095 * age))
+
+
+def alive(age0, n, mult=1.0):
+    qs = q_x(age0 + np.arange(n), mult)
+    return np.concatenate([[1.0], np.cumprod(1 - qs)[:-1]]), qs
+
+
+def disc(n, r):
+    return (1 + r) ** -np.arange(1, n + 1)
+
+
+def annuity_bel(pay, r=R_F, m=1.0, n=46):  # paid at the end of each year to survivors from age 65
+    s_, q_ = alive(65, n, m)
+    return float(np.sum(pay * s_ * (1 - q_) * disc(n, r)))
+
+
+def term_bel(S, P, r=R_F, m=1.0, n=20):  # claims at year end, premiums in advance, ages 45-64
+    s_, q_ = alive(45, n, m)
+    d_ = disc(n, r)
+    return float(np.sum(S * s_ * q_ * d_) - np.sum(P * s_ * d_ * (1 + r)))
+
+
+def savings_bel(G, r=R_F, T=10):
+    return G / (1 + r) ** T
+
+
+CORR_LIFE = np.array(
+    [[1, -0.25, 0.0], [-0.25, 1, 0.25], [0.0, 0.25, 1]]
+)  # mortality, longevity, lapse
+
+
+def life_insurer(pay, S, P, G, SV, A, TA, RM=40.0):
+    def bel(r=R_F, ma=1.0, mt=1.0):
+        return annuity_bel(pay, r, ma) + term_bel(S, P, r, mt) + savings_bel(G, r)
+
+    def assets(r):
+        return A * ((1 + R_F) / (1 + r)) ** TA
+
+    b0 = bel()
+    of_ = A - b0 - RM
+    up = (assets(R_F + 0.005) - bel(R_F + 0.005)) - (A - b0)
+    dn = (assets(R_F - 0.005) - bel(R_F - 0.005)) - (A - b0)
+    mkt = max(0.0, -up, -dn)
+    longev, mort = bel(ma=0.8) - b0, bel(mt=1.15) - b0
+    lapse = 0.4 * max(SV - savings_bel(G), 0.0)
+    v = np.array([max(mort, 0.0), max(longev, 0.0), lapse])
+    life = float(np.sqrt(v @ CORR_LIFE @ v))
+    scr = float(np.sqrt(life**2 + mkt**2 + 2 * 0.25 * life * mkt))
+    return dict(
+        ann=annuity_bel(pay),
+        term=term_bel(S, P),
+        sav=savings_bel(G),
+        bel=b0,
+        of=of_,
+        up=up,
+        dn=dn,
+        longev=longev,
+        mort=mort,
+        lapse=lapse,
+        life=life,
+        scr=scr,
+        ratio=of_ / scr,
+    )
+
+
+lin = life_insurer(100, 2000, 22, 1250, 1000, 2170, 10)
+row = life_insurer(20, 20000, 220, 2500, 2000, 2100, 6)
+keys = ("ann", "term", "sav", "of", "up", "dn", "longev", "mort", "lapse", "life", "scr")
+print("  Linden " + ", ".join(f"{k_} {lin[k_]:.2f}" for k_ in keys) + f", ratio {lin['ratio']:.4f}")
+print("  Rowan  " + ", ".join(f"{k_} {row[k_]:.2f}" for k_ in keys) + f", ratio {row['ratio']:.4f}")
+ok(
+    "Linden: best estimates 1,046.7 / -62.7 / 930.1; own funds 215.8; rates +50/-50 bp -15.6/+15.7; longevity "
+    "99.5, mortality 37.3, mass lapse 28.0; life SCR 107.8, SCR 112.7, ratio 191.5%",
+    [round(lin[k_], 1) for k_ in keys]
+    == [1046.7, -62.7, 930.1, 215.8, -15.6, 15.7, 99.5, 37.3, 28.0, 107.8, 112.7]
+    and round(lin["ratio"], 3) == 1.915,
+)
+ok(
+    "Rowan: best estimates 209.3 / -626.5 / 1,860.2; own funds 617.0; rates +59.7/-66.6; longevity 19.9, "
+    "mortality 373.1, mass lapse 55.9; life SCR 373.6, SCR 395.6, ratio 156.0%; 139% after the rate fall alone",
+    [round(row[k_], 1) for k_ in keys]
+    == [209.3, -626.5, 1860.2, 617.0, 59.7, -66.6, 19.9, 373.1, 55.9, 373.6, 395.6]
+    and round(row["ratio"], 3) == 1.560
+    and round((row["of"] + row["dn"]) / row["scr"], 2) == 1.39,
+)
+# Independent route for the annuity best estimate: a backward recursion V_x = (1 - q_x)(pay + V_{x+1}) / (1 + r).
+v_rec = 0.0
+for age_ in range(65 + 46 - 1, 64, -1):
+    v_rec = (1 - q_x(age_)) * (100 + v_rec) / (1 + R_F)
+ok(
+    "the annuity best estimate by backward recursion equals the expected-cash-flow sum; the longevity shock raises "
+    "it and the mortality shock lowers it (the offset in Hull, pp. 56-57)",
+    close(v_rec, annuity_bel(100), 1e-9)
+    and annuity_bel(100, m=0.8) > annuity_bel(100) > annuity_bel(100, m=1.15),
+)
+v_check = np.array([lin["mort"], lin["longev"], lin["lapse"]])
+ok(
+    "aggregation by hand: life SCR^2 = sum of squares - 2 x 0.25 x mortality x longevity + 2 x 0.25 x longevity "
+    "x lapse; the diversified life SCR is below the 164.8 simple sum",
+    close(
+        lin["life"] ** 2,
+        float(np.sum(v_check**2)) - 0.5 * v_check[0] * v_check[1] + 0.5 * v_check[1] * v_check[2],
+        1e-9,
+    )
+    and lin["life"] < v_check.sum()
+    and round(v_check.sum(), 1) == 164.8,
+)
+
+
+def new_business(S, load, acq=5.0, exp_rate=0.03, tax=0.25, coc=0.06, ra_rate=0.05, n=20):
+    s_, q_ = alive(45, n)
+    d_ = disc(n, R_F)
+    claims = S * s_ * q_
+    P = (1 + load) * np.sum(claims * d_) / np.sum(s_ * d_ * (1 + R_F))
+    pv_claims = float(np.sum(claims * d_))
+    pvnbp = float(np.sum(P * s_ * d_ * (1 + R_F)))
+    pv_exp = acq + exp_rate * pvnbp
+    s2, q2 = alive(45, n, 1.15)
+    scr_new = float(np.sum(S * s2 * q2 * d_)) - pv_claims
+    remaining = np.array(
+        [np.sum(claims[t_:] * (1 + R_F) ** -(np.arange(t_, n) - t_ + 1)) for t_ in range(n)]
+    )
+    coc_cost = coc * scr_new * float(np.sum(remaining / remaining[0] * d_))
+    ra = ra_rate * pv_claims
+    profit = pvnbp - pv_claims - pv_exp
+    return dict(
+        pvnbp=pvnbp,
+        claims=pv_claims,
+        exp=pv_exp,
+        profit=profit,
+        ra=ra,
+        csm=max(profit - ra, 0.0),
+        loss=max(ra - profit, 0.0),
+        vnb=profit * (1 - tax) - coc_cost,
+    )
+
+
+nb40, nb15 = new_business(500, 0.40), new_business(500, 0.15)
+ok(
+    "new term business at a 40% loading: PVNBP 89.55, claims 63.96, expenses 7.69, risk adjustment 3.20, CSM 14.70; "
+    "VNB 7.21, a margin of 8.05% of PVNBP; fulfilment cash flows + CSM = PV premiums (no day-one profit)",
+    [round(nb40[k_], 2) for k_ in ("pvnbp", "claims", "exp", "ra", "csm", "vnb")]
+    == [89.55, 63.96, 7.69, 3.20, 14.70, 7.21]
+    and round(nb40["vnb"] / nb40["pvnbp"], 4) == 0.0805
+    and close(nb40["claims"] + nb40["exp"] + nb40["ra"] + nb40["csm"], nb40["pvnbp"], 1e-9),
+)
+ok(
+    "at a 15% loading expected profit is still 2.39, but after the risk adjustment the group is onerous: loss 0.81 "
+    "at once, no CSM; VNB -4.42",
+    round(nb15["profit"], 2) == 2.39
+    and nb15["csm"] == 0.0
+    and round(nb15["loss"], 2) == 0.81
+    and round(nb15["vnb"], 2) == -4.42,
+)
+cnp = dict(vnb=782.0, pvnbp=28201.0, up=1248.0, dn=-1158.0)
+ok(
+    "CNP Assurances 2017 (reported): VNB / PVNBP = 2.8%; the rate sensitivities are asymmetric (+1,248 against "
+    "-1,158)",
+    round(cnp["vnb"] / cnp["pvnbp"], 3) == 0.028 and cnp["up"] + cnp["dn"] > 0,
 )
 
 print(f"\n{n_checks} checks executed")

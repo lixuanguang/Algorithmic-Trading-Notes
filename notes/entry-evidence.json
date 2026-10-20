@@ -2089,7 +2089,7 @@
   },
   "meth:justified-multiples": {
     "source": "compendium/systematic-equities/market-multiples.tex",
-    "review": "Verification: investment-valuation-2012 pp. 460-461, 515, 545; pp. 471-473; locators in the entry text. Checked by equity-valuation-checks.py part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (audit of PR #31; record: corporate-equity audit correction pass): ROE = E1/B0 throughout: P/E, P/B and DDM reconcile at 7.81 with a 4,000-year dividend sum; ke 9.32%; superseded double-growth error detected by a check."
+    "review": "Verification: investment-valuation-2012 pp. 460-461, 515, 545; pp. 471-473; locators in the entry text. Checked by equity-valuation-checks.py part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares). Written 2026-10-20 (corporate-finance and equity-valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (audit of PR #31; record: corporate-equity audit correction pass): ROE = E1/B0 throughout: P/E, P/B and DDM reconcile at 7.81 with a 4,000-year dividend sum; ke 9.32%; superseded double-growth error detected by a check. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): justified P/B x book 786.43 values all equity claims; 7.74 a common share after the vested options (equity-fcf-ri-private-checks.py part 9)."
   },
   "meth:normalised-earnings": {
     "source": "compendium/systematic-equities/market-multiples.tex",
@@ -2117,11 +2117,11 @@
   },
   "meth:fcff-fcfe-derivation": {
     "source": "compendium/systematic-equities/free-cash-flow-valuation.tex",
-    "review": "Verification: investment-valuation-2012 pp.~351--352; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 3 (Avon Fittings FCFF 44.50 by four routes; FCFE 45.50). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: investment-valuation-2012 pp.~351--352; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 3 (Avon Fittings FCFF 44.50 by four routes; FCFE 45.50). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): interest classification - with interest paid in financing and taxes in operating (IAS 7 paras. 33, 35; para. 34A as amended by IFRS 18) FCFF = CFO - Int x t - FCInv; Avon CFO 92.50, FCFF 44.50, 47.50 if the shield is omitted, 89.50 CFO if the tax saving is also in financing (equity-fcf-ri-private-checks.py part 3)."
   },
   "meth:fcf-forecasting": {
     "source": "compendium/systematic-equities/free-cash-flow-valuation.tex",
-    "review": "Verification: investment-valuation-2012 pp.~352--353; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 4 (Harbour FCFE forecasts; constant-leverage borrowing). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: investment-valuation-2012 pp.~352--353; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 4 (Harbour FCFE forecasts; constant-leverage borrowing). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): fixed against revolver financing; Harbour payout 50% gives 2026 actual FCFE 39.08 (from 31.82), FCFE before the revolver 0.80 (from 1.01), FCFF 31.88; FCFE = dividends + buybacks - issues + change in cash; Damodaran p. 355 restated as cash or share issues (part 4)."
   },
   "meth:fcf-valuation-models": {
     "source": "compendium/systematic-equities/free-cash-flow-valuation.tex",
@@ -2129,7 +2129,7 @@
   },
   "meth:cash-flow-proxies": {
     "source": "compendium/systematic-equities/free-cash-flow-valuation.tex",
-    "review": "Verification: investment-valuation-2012 p.~372; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 6 (dividends, net income and EBITDA against FCFE and FCFF for Harbour). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: investment-valuation-2012 p.~372; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 6 (dividends, net income and EBITDA against FCFE and FCFF for Harbour). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): dividends track actual FCFE by construction under the revolver; the comparison uses target-policy FCFE (part 4)."
   },
   "def:residual-income-eva": {
     "source": "compendium/systematic-equities/residual-income-valuation.tex",
@@ -2137,11 +2137,11 @@
   },
   "meth:residual-income-valuation": {
     "source": "compendium/systematic-equities/residual-income-valuation.tex",
-    "review": "Verification: financial-statement-analysis-2009 pp.~42, 499; locators in the entry text. Checked by equity-fcf-ri-private-checks.py parts 8-9 (single stage 40.00; multistage with persistence 23.59; Harbour 809.24; implied RI growth 7.27% at P/B 1.71). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: financial-statement-analysis-2009 pp.~42, 499; locators in the entry text. Checked by equity-fcf-ri-private-checks.py parts 8-9 (single stage 40.00; multistage with persistence 23.59; Harbour 809.24; implied RI growth 7.27% at P/B 1.71). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): aggregates value all equity claims; 7.9557 a common share after the five million vested options (7.70), not 8.0322; implied growth 7.34% and ROE 14.37% on all equity claims (part 9)."
   },
   "meth:residual-income-comparison": {
     "source": "compendium/systematic-equities/residual-income-valuation.tex",
-    "review": "Verification: financial-statement-analysis-2009 p.~42; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 9 (RI 809.24 = DDM 834.16 less PV of equity credits 24.92; value recognition 80% from book against 91% terminal in the DDM). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: financial-statement-analysis-2009 p.~42; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 9 (RI 809.24 = DDM 834.16 less PV of equity credits 24.92; value recognition 80% from book against 91% terminal in the DDM). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): claims reconciled: 834.16 - 24.92 - 7.70 = 801.54 = 7.9557 x 100.75; Damodaran pp. 445-448 for the option deduction (part 9)."
   },
   "meth:private-earnings-normalisation": {
     "source": "compendium/systematic-equities/private-company-valuation.tex",
@@ -2153,11 +2153,11 @@
   },
   "meth:private-company-valuation": {
     "source": "compendium/systematic-equities/private-company-valuation.tex",
-    "review": "Verification: investment-valuation-2012 pp.~681--682; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 12 (EV 59.93 and 26.05; GPC 52.13; transactions 47.26; NAV 22.5; DLOC/DLOM compounded to 37.91%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: investment-valuation-2012 pp.~681--682; locators in the entry text. Checked by equity-fcf-ri-private-checks.py part 12 (EV 59.93 and 26.05; GPC 52.13; transactions 47.26; NAV 22.5; DLOC/DLOM compounded to 37.91%). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): total beta and marketability distinguished from Damodaran pp. 672-674, 684-690 and Table 24.2 (both applied for a private sale); Fenton's basis stated; undiversified buyer's stake 3.73 (part 12)."
   },
   "def:intercorporate-investment-classification": {
     "source": "compendium/financial-statement-analysis/intercorporate-investments.tex",
-    "review": "Verification: eu-2023-1803-ifrs10 paras.~6--7, para.~22, para.~7; eu-2023-1803-ifrs11 paras.~15--16, 20, 24; eu-2023-1803-ias28 para.~5, para.~10; eu-2023-1803-ifrs9 paras.~5.7.5--5.7.6; eu-2023-1803-ifrs3 para.~32; us-equity-investments-2016 Summary; financial-statement-analysis-2009 p.~272; us-business-combinations-2007 para.~20; us-noncontrolling-interests-2007 Summary; eu-2023-1803-ifrs12 App.~A, para.~B21, paras.~24--31; us-variable-interest-entities-2009 Summary; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py parts 1-2 (classification cases including a structured entity; equity method 115.8 by two routes; FVPL against FVOCI). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: eu-2023-1803-ifrs10 paras.~6--7, para.~22, para.~7; eu-2023-1803-ifrs11 paras.~15--16, 20, 24; eu-2023-1803-ias28 para.~5, para.~10; eu-2023-1803-ifrs9 paras.~5.7.5--5.7.6; eu-2023-1803-ifrs3 para.~32; us-equity-investments-2016 Summary; financial-statement-analysis-2009 p.~272; us-business-combinations-2007 para.~20; us-noncontrolling-interests-2007 Summary; eu-2023-1803-ifrs12 App.~A, para.~B21, paras.~24--31; us-variable-interest-entities-2009 Summary; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py parts 1-2 (classification cases including a structured entity; equity method 115.8 by two routes; FVPL against FVOCI). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): structured-entity control restated from IFRS 10 paras. 7, 10, B8-B9, B22, B51, B53-B54, B58-B60 and FAS 167 paras. 14A-14F and Example 1; contrasting cases; control derived from its elements in intercorporate-fx-institutions-checks.py part 1."
   },
   "meth:consolidation-ratio-effects": {
     "source": "compendium/financial-statement-analysis/intercorporate-investments.tex",
@@ -2185,7 +2185,7 @@
   },
   "meth:insurer-analysis": {
     "source": "compendium/financial-statement-analysis/financial-institution-analysis.tex",
-    "review": "Verification: risk-management-financial-institutions-2023 pp.~57--64, pp.~557--558; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 9 (Hull's Table 3.2 reproduced; Wren combined ratio 97.5% -> 104.9%, development, solvency). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: risk-management-financial-institutions-2023 pp.~57--64, pp.~557--558; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 9 (Hull's Table 3.2 reproduced; Wren combined ratio 97.5% -> 104.9%, development, solvency). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): Conditions now point to meth:life-insurer-analysis for life-insurer measures."
   },
   "def:credit-risk-components": {
     "source": "compendium/corporate-credit-capital/credit-risk-analysis.tex",
@@ -2249,7 +2249,7 @@
   },
   "meth:regression-misspecification": {
     "source": "compendium/common-toolkit/multiple-regression.tex",
-    "review": "Verification: regression-methods-course-notes Lessons~7.6, 13.1; locators in the entry text. Checked by multiple-regression-checks.py part 3 (Breusch-Pagan, White, HC1 and Newey-West errors, Durbin-Watson, VIF; simulated collinearity VIF 12.3). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: regression-methods-course-notes Lessons~7.6, 13.1; locators in the entry text. Checked by multiple-regression-checks.py part 3 (Breusch-Pagan, White, HC1 and Newey-West errors, Durbin-Watson, VIF; simulated collinearity VIF 12.3). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): direction of standard-error bias depends on the design (OLS covariance formula; trend and alternating regressors with AR(1) errors; seeded simulation); units versus specification; exogeneity conditions (multiple-regression-checks.py part 3)."
   },
   "meth:regression-extensions": {
     "source": "compendium/common-toolkit/multiple-regression.tex",
@@ -2281,10 +2281,14 @@
   },
   "meth:time-series-model-selection": {
     "source": "compendium/common-toolkit/time-series-models.tex",
-    "review": "Verification: s7-tsay pp.~46--47; s7-hyndman sec.~7.5; locators in the entry text. Checked by time-series-checks.py part 7 (AIC/BIC prefer AR(4); out-of-sample RMSE 1.60% against 1.45% for AR(1)). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+    "review": "Verification: s7-tsay pp.~46--47; s7-hyndman sec.~7.5; locators in the entry text. Checked by time-series-checks.py part 7 (AIC/BIC prefer AR(4); out-of-sample RMSE 1.60% against 1.45% for AR(1)). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Corrected 2026-10-20 (PR #32 audit; record: valuation-and-inference audit correction pass): validation at the five-year cumulative-inflation horizon on 31 common origins, overlapping errors and Diebold-Mariano comparisons; descriptive, selection and post-selection evidence separated; pre-1953 dependence qualified (time-series-checks.py part 7)."
   },
   "meth:scenario-simulation-analysis": {
     "source": "compendium/research-engineering-validation/scenario-simulation.tex",
     "review": "Verification: investment-valuation-2012 pp.~894--897; us-asset-returns-1928-2025 sheet ``Returns by year''; locators in the entry text. Checked by scenario-simulation-checks.py parts 1-3 (historical scenarios 1931, 1973-74, 2008, 2022; bootstrap against normal Monte Carlo; sensitivities with common random numbers). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
+  },
+  "meth:life-insurer-analysis": {
+    "source": "compendium/financial-statement-analysis/financial-institution-analysis.tex",
+    "review": "Verification: eu-2023-1803-ifrs17 paras. 32, 37-38, 44, 47-48, 83, 85; eu-2009-138-solvency2 Arts. 77, 101, 105 and Annex IV; eu-2015-35-solvency2-dr Arts. 37, 39, 136-138, 142; risk-management-financial-institutions-2023 pp. 52, 56-57, 62-63; cnp-mcev-2017 pp. 6, 12, 21-22; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 10 (Linden and Rowan Life shocks, SCR aggregation, ratios 191.5% and 156.0%; new business CSM 14.70 and VNB 7.21; onerous group at a 15% loading). Written 2026-10-20 (PR #32 audit correction, objective:analyse-insurer). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   }
 }

@@ -192,28 +192,46 @@ A spurious regression shows a high $t$ statistic and high residual autocorrelati
 \item \emph{Order}: choose AR lags by the partial autocorrelations and by information criteria, AIC or BIC, which penalise extra parameters and should be compared on the same sample \citep[pp.~46--47]{s7-tsay}; \citep[sec.~7.5]{s7-hyndman}.
 \item \emph{Residuals}: test for remaining autocorrelation, including seasonal lags, and for ARCH (\hyperref[mod:arch-conditional-variance]{ARCH}).
 \item \emph{Several series}: test for cointegration before relating their levels (\hyperref[meth:cointegration-testing]{cointegration}).
-\item \emph{Confirm out of sample} against simple benchmarks (\hyperref[meth:forecast-accuracy-evaluation]{evaluation}).
+\item \emph{Confirm out of sample} against simple benchmarks, for the quantity and horizon the decision uses, from origins common to every model (\hyperref[meth:forecast-accuracy-evaluation]{evaluation}).
 \end{enumerate}
 
-\qffield{Practice} \emph{A model for US inflation}, to set an inflation assumption for a five-year liability plan.
+\qffield{Practice} \emph{A model for US inflation}, to set the inflation assumption of a five-year liability plan.
 \begin{itemize}
-\item \emph{Alternatives}: a random walk; AR(1); AR(4); a log-linear trend in the price level.
-\item \emph{Evidence}:
+\item \emph{Target.} The plan's payments are indexed to the price level, so the quantity to forecast is cumulative inflation over the next five years, $\prod_{h=1}^{5}(1+\pi_{t+h})-1$. One-year accuracy is a different target.
+\item \emph{Alternatives}: a random walk (this year's rate for five years); the expanding mean; AR(1) and AR(4), iterated five steps; a log-linear trend in the price level.
+\end{itemize}
+
+\emph{Three kinds of evidence, kept apart.}
+\begin{enumerate}
+\item \emph{Full-sample description}, 1928--2025, which every later step has seen:
 \begin{itemize}
 \item the trend model's residuals are persistent and its forecasts start 17 percent from the current level;
 \item inflation rejects a unit root at every fixed lag, though at 4 percent with AIC-chosen lags;
 \item on a common sample both AIC ($-410.0$ against $-395.0$) and BIC ($-397.3$ against $-389.9$) prefer AR(4) to AR(1). AR(1)'s residuals show autocorrelation at lag 3;
-\item but AR(4)'s lag-4 coefficient, 0.43 when estimated to 1989, comes from the wartime inflation cycles. Out of sample over 1990--2025 AR(4) has an RMSE of 1.60 percent against 1.45 percent for AR(1), with re-estimation each year;
-\item AR(1) beats the random walk (1.66 percent) and the mean (1.60 percent).
+\item from 1953 BIC prefers AR(1) and AIC barely separates them ($-350.7$ against $-349.7$). The full-sample preference for AR(4) therefore depends on the years before 1953, and its lag-4 coefficient falls from 0.43 (to 1989) to 0.17 (1953--1989). This fits the view that the wartime and Depression swings drive it, but it does not show that they cause it.
 \end{itemize}
-\item \emph{Constraints}: annual data, about a hundred observations, regimes that differ (gold standard, wartime controls, inflation targeting).
-\item \emph{Sensitivity}: estimated on 1980--2025 alone, persistence falls from 0.61 to 0.44, shortening the half-life from 1.4 to 0.8 years and moving the five-year path faster to the mean.
-\end{itemize}
-\emph{Conclusion.} Use the AR(1), re-estimated as data arrive, with a mean-reverting level near 3 percent. Report the subsample sensitivity, and treat the in-sample preference for AR(4) as an artefact of the 1940s.
+\item \emph{Model-selection validation.} At each origin from 1990 to 2020, every model is estimated on data to that year only and forecasts the next five years. The 31 origins are common to all models and each outcome is observed by 2025. RMSEs of cumulative inflation:
+\begin{center}\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & AR(1) & Mean & AR(4) & Random walk & Trend \\
+\midrule
+RMSE (pp) & 5.94 & 6.12 & 7.27 & 7.56 & 19.36 \\
+Mean error (pp) & $-3.21$ & $-4.10$ & $-4.63$ & $+0.60$ & $-10.44$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Consecutive five-year windows share four years, so the errors overlap: AR(1)'s autocorrelate at 0.76 at lag 1, and the 31 errors carry about the information of six separate windows. A Diebold--Mariano comparison with Newey--West standard errors over four lags gives $t=2.61$ for AR(4) against AR(1), but $-0.40$ against the mean and $-1.45$ against the random walk. With so few effective observations even the first is only indicative. One-year forecasts tell the same story: RMSE 1.45 against 1.60 percent for AR(4).
+\item \emph{Evidence about the selected model.} None remains untouched. The 1990--2025 data chose the model, so its validation error is an optimistic estimate of future error. They are not a holdout and should not be relabelled as one. Honest evidence about the choice can come only from data after the choice, such as the plan's annual review.
+\end{enumerate}
 
-\qffield{Conditions} Information criteria rank models on the sample they are fitted to; they cannot see a change of regime. With very persistent series the stationarity decision dominates everything else.
+\emph{Constraints}: annual data, about a hundred observations, regimes that differ (gold standard, wartime controls, inflation targeting). \emph{Sensitivity}: estimated on 1980--2025 alone, persistence falls from 0.61 to 0.44, shortening the half-life from 1.4 to 0.8 years and moving the five-year path faster to the mean.
 
-\qffield{Pitfalls} Letting AIC choose lags over a sample that contains a different regime. Choosing the model that wins one out-of-sample comparison by a small margin without asking whether the margin is meaningful. Skipping the stationarity step because the regression fits well.
+\emph{Conclusion.} AR(1) and the mean cannot be separated at the plan's horizon. Both have lower errors than AR(4) and the random walk, though only the margin over AR(4) is large relative to its overlap-adjusted noise. Use AR(1), re-estimated each year: 16.4 percent cumulative for 2026--2030 from 2025's 2.7 percent. Over the 1990--2020 origins AR(1) over-forecast five-year inflation by 3.2 points on average. That is consistent with its reversion towards a long-run mean estimated from the whole history (3.1 percent over 1928--2025), above the 2.6 percent average of 1991--2025. The plan should therefore show a range, for example the AR(1) path against the post-1990 average, and report the model's validation error as optimistic.
+
+\qffield{Conditions} Information criteria rank models on the sample they are fitted to; they cannot see a change of regime. With very persistent series the stationarity decision dominates everything else. Validation at the decision's horizon uses only data available at each origin, on origins common to all the models compared.
+
+\qffield{Pitfalls} Letting AIC choose lags over a sample that contains a different regime. Validating one-year forecasts for a decision that depends on five-year cumulative inflation. Treating overlapping multi-year errors as independent. Choosing the model that wins one out-of-sample comparison by a small margin without asking whether the margin is meaningful. Calling data already used to choose a model a holdout. Skipping the stationarity step because the regression fits well.
 
 \qffield{See also} \hyperref[meth:autoregressive-forecasting]{AR models}; \hyperref[meth:forecast-accuracy-evaluation]{evaluation}; \hyperref[meth:cme-framework-forecasting]{capital market expectations}.
 

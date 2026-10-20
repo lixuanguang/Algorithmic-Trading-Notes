@@ -3136,3 +3136,31 @@ individually against their outline pages. Editorial coverage only.
 - Human review is outstanding.
 
 Details: `notes/source-review-records.md`, *Credit, time-series and valuation batch, 20 October 2026*.
+
+## 30. Valuation and inference audit corrections after PR #32 (executed 2026-10-20)
+
+**Verified state.** `main` at `191edb2` (PR #32 merged; the earlier stacked arrangement is finished).
+Branch `codex/alternatives-audit-20261020` from `main`, with a draft PR to `main`. Untracked copies
+named "... 2" were present and were neither deleted nor committed; validation runs in a separate
+worktree because the checker reads them. Coverage 326/424 objectives and 774/1,030 items.
+
+**Corrections** (figures and sources: `notes/source-review-records.md`, *Valuation and inference audit
+correction pass*):
+1. FCFF with interest paid in financing deducts the interest tax shield (Avon CFO 92.50, FCFF 44.50,
+   47.50 if omitted); IAS 7 before and after IFRS 18 distinguished.
+2. FCFE under a revolver rises with the payout (31.82 to 39.08 in 2026); fixed and endogenous
+   borrowing distinguished; uses of FCFE reconciled; Damodaran p. 355 restated.
+3. Residual-income and dividend aggregates reduced to the common shares through the vested-option
+   claim: 7.96 a share, not 8.03 or 8.28; implied growth and ROE on all equity claims.
+4. Total beta and marketability are different effects (Damodaran Table 24.2); Fenton's basis stated.
+5. Structured-entity control from substantive power, returns and their link, with contrasting cases
+   (IFRS 10 B51, FAS 167 Example 1); the check derives control instead of assuming it.
+6. The direction of OLS standard-error bias under serial correlation depends on the design
+   (counterexample); units are not misspecification; exogeneity conditions stated.
+7. Inflation model choice validated at the five-year cumulative horizon on common origins, with
+   overlap and Diebold-Mariano comparisons; 1990-2025 is not a holdout; the wartime claim qualified.
+8. Life insurers added (`meth:life-insurer-analysis`): IFRS 17, Solvency II, Hull and an issuer MCEV
+   report; `objective:analyse-insurer` retained as covered with both entries.
+
+**Evidence.** Four scripts extended (57, 54, 24 and 36 checks). Eleven objectives and 32 outline items
+rechecked; coverage unchanged. Corrections count toward no new objective.

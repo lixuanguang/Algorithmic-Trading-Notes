@@ -143,10 +143,72 @@ Premiums / equity & 0.94 & 1.02 \\
 \end{itemize}
 \emph{Conclusion.} The current-year business is roughly break-even. The question is whether earlier reserves are adequate: two years of opposite development call for the claims triangles. Solvency remains well above 100 percent, but the fall from 180 percent narrows the room for growth or a catastrophe year.
 
-\qffield{Conditions} Ratios are on net earned premiums after reinsurance. Life insurers are analysed instead with embedded value, the margin on new business and the sensitivity of reserves to interest rates and mortality, which this entry does not develop.
+\qffield{Conditions} Ratios are on net earned premiums after reinsurance. Life insurers are analysed with new-business value, solvency capital and the sensitivity of own funds to rates, mortality, longevity and lapses (\hyperref[meth:life-insurer-analysis]{life insurers}).
 
 \qffield{Pitfalls} Comparing combined ratios that treat loss adjustment expenses differently. Reading a low combined ratio without the reserve development behind it. Treating investment income on premiums as permanent when rates fall.
 
 \qffield{See also} \hyperref[def:financial-institution-features]{features and regulation}; \hyperref[meth:bank-camels-analysis]{banks}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Analysing a life insurer: new-business profitability (value of new business and the IFRS~17 contractual service margin), Solvency~II capital and technical provisions, asset--liability matching, and mortality, longevity and lapse sensitivities]\label{meth:life-insurer-analysis}
+\qffield{Statement} A life insurer's results come from long contracts valued with models, so its analysis rests on what the models assume and how sensitive the answers are (Interpretation, from the sources below).
+
+\emph{Profitability and new business.}
+\begin{itemize}
+\item Under IFRS~17 a group of contracts is measured at its \emph{fulfilment cash flows}, the discounted expected cash flows plus a \emph{risk adjustment} for non-financial risk, and a \emph{contractual service margin} (CSM) \citep[IFRS~17 paras.~32, 37]{eu-2023-1803-ifrs17}. The CSM is the unearned profit, recognised as service is provided (para.~38). A group whose fulfilment cash flows are a net outflow is \emph{onerous}, and the loss goes to profit at once (paras.~47--48). Premiums are not revenue: insurance revenue depicts the services provided (paras.~83, 85).
+\item The CSM added by new contracts, and its release, are the accounting measures of new-business profit. Unfavourable changes in assumptions about future service first reduce the CSM; only the excess is a loss (paras.~44, 48).
+\item \emph{Embedded value} reporting measures the value of in-force business and of new business directly. The \emph{value of new business} (VNB) is the present value of future profits on the year's new contracts, less the time value of options and guarantees, the frictional cost of required capital and a charge for non-hedgeable risks. It is compared with the \emph{present value of new business premiums} (PVNBP) as a new-business margin \citep[pp.~6, 12]{cnp-mcev-2017}. These are company-defined, non-GAAP measures; definitions differ between groups (p.~6).
+\end{itemize}
+
+\emph{Capital and reserves under Solvency~II.}
+\begin{itemize}
+\item Technical provisions are a \emph{best estimate}, the probability-weighted present value of future cash flows at the risk-free curve, plus a \emph{risk margin} \citep[Art.~77(1)--(2)]{eu-2009-138-solvency2}. The risk margin is the cost of holding the capital requirement over the run-off of the obligations (Art.~77(5)), at a cost-of-capital rate of 6 percent \citep[Arts.~37, 39]{eu-2015-35-solvency2-dr}.
+\item The solvency capital requirement (SCR) is the one-year value-at-risk of basic own funds at 99.5 percent (Directive Art.~101(3)). The solvency ratio is eligible own funds over the SCR.
+\item In the standard formula, the life module combines mortality, longevity, disability, expense, revision, lapse and catastrophe sub-modules (Art.~105(3)). Each is the loss of own funds under a prescribed shock: mortality rates up 15 percent, down 20 percent for longevity, lapse rates up or down 50 percent or a mass lapse of 40 percent of policies (Delegated Regulation Arts.~137, 138, 142). They are aggregated with a correlation matrix, $-0.25$ between mortality and longevity and $0.25$ between longevity and lapse (Art.~136); life and market risk correlate at $0.25$ (Directive Annex~IV).
+\end{itemize}
+
+\emph{Asset--liability matching.} Most investments are corporate bonds whose maturities the insurer tries to match to its liabilities, taking credit risk in the process; reserves are estimates that prove low if policyholders die earlier or annuitants live longer than expected \citep[p.~63]{risk-management-financial-institutions-2023}. Own funds change with rates by the difference between the rate sensitivities of assets and liabilities. Guarantees make the response asymmetric: guaranteed annuity rates written without pricing the option ruined at least one UK insurer when rates fell and lifetimes lengthened (p.~52).
+
+\emph{Mortality and longevity.} Longer lives cost annuity writers and benefit life cover; earlier deaths do the reverse, so the two books partly offset, and actuaries must assess the net exposure (pp.~56--57). Buyers of life cover tend to die earlier, and buyers of annuities to live longer, than population tables suggest (p.~62).
+
+\emph{Lapse.} Lapses hurt when the surrender value exceeds the best estimate of the policy, and help when it is below; profitable protection business loses future profit if it lapses. The standard formula therefore tests both directions and a mass lapse (Delegated Regulation Art.~142).
+
+\qffield{Practice} \emph{Linden Life against Rowan Life} (original, EUR millions, flat risk-free rate 3 percent, Gompertz mortality, risk margin taken as 40 for each; \nolinkurl{notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py}). Linden writes mostly annuities and matches its bonds to them; Rowan writes mostly protection and savings with shorter bonds.
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & Linden & Rowan \\
+\midrule
+Best estimate: annuities / protection / savings & 1,046.7 / $-62.7$ / 930.1 & 209.3 / $-626.5$ / 1,860.2 \\
+Assets / own funds & 2,170 / 215.8 & 2,100 / 617.0 \\
+Own funds change, rates $+50$ / $-50$ bp & $-15.6$ / $+15.7$ & $+59.7$ / $-66.6$ \\
+Longevity ($-20\%$) / mortality ($+15\%$) & 99.5 / 37.3 & 19.9 / 373.1 \\
+Mass lapse (40\%) & 28.0 & 55.9 \\
+Life SCR / total SCR & 107.8 / 112.7 & 373.6 / 395.6 \\
+Solvency ratio & 191.5\% & 156.0\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item Negative protection best estimates are future premiums above expected claims: future profit already counted in own funds, and lost if policies lapse.
+\item Linden's risk is longevity, partly offset by its protection book through the $-0.25$ correlation. Rowan's is mortality on a large protection book, and its shorter assets lose 66.6 if rates fall 50 basis points.
+\item Rowan has nearly three times Linden's own funds but the lower ratio. Its ratio would fall from 156 to 139 percent on the rate fall alone, before any second-order effect on the risk margin or SCR.
+\end{itemize}
+
+\emph{New business} (Linden, 500 of term cover at age 45 for 20 years, acquisition cost 5, renewal expenses 3 percent of premium, tax 25 percent):
+\begin{itemize}
+\item at a 40 percent loading: PVNBP 89.55, expected claims 63.96, expenses 7.69, risk adjustment 3.20 (5 percent of claims, an assumption), CSM 14.70; VNB after tax and a 6 percent cost of capital on the mortality SCR is 7.21, a margin of 8.05 percent of PVNBP;
+\item at a 15 percent loading: expected profit is still 2.39, but after the risk adjustment the group is onerous and 0.81 is a loss at once; VNB is $-4.42$.
+\end{itemize}
+The two measures differ because the CSM deducts a risk adjustment before tax, while VNB deducts tax and a cost of capital; neither recognises the profit at sale.
+
+\emph{CNP Assurances, 2017} (reported, not reproduced): VNB 782 million euros on PVNBP of 28,201, a margin of 2.8 percent; MCEV 23,241 million. Sensitivities show the asymmetry of guarantees: $+1{,}248$ for rates up 50 basis points against $-1{,}158$ for rates down; $+251$ for surrenders 10 percent lower; $-61$ for 5 percent lower longevity claims and $+177$ for 5 percent lower mortality and disability claims \citep[pp.~12, 21--22]{cnp-mcev-2017}.
+
+\qffield{Conditions} The Solvency~II texts cited are the Directive and Delegated Regulation as originally adopted (2009 and 2015); later amendments, including the 2025 review, are not reflected, and the transitional measures, matching and volatility adjustments that move reported ratios are not covered. US insurers use risk-based capital instead. The Linden and Rowan models omit spread, equity, expense and catastrophe risk, hold the risk margin fixed and use a single-factor rate shock.
+
+\qffield{Pitfalls} Comparing solvency ratios without the size and composition of the SCR. Treating VNB or embedded value as comparable across insurers whose definitions differ. Reading a stable CSM without the assumption changes it absorbed. Ignoring the asymmetry that guarantees give rate sensitivities.
+
+\qffield{See also} \hyperref[meth:insurer-analysis]{property-casualty insurers}; \hyperref[def:financial-institution-features]{solvency regulation}; \hyperref[meth:market-risk-limits-capital]{capital and limits}.
 
 \end{qfmethod}

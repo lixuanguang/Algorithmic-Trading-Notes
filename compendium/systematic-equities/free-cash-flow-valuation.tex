@@ -9,7 +9,11 @@ Interest's tax saving is left out of FCFF because the after-tax cost of debt in 
 &=\mathrm{EBITDA}(1-t)+\mathrm{Dep}\times t-\mathrm{FCInv}-\mathrm{WCInv}\\
 &=\mathrm{CFO}+\mathrm{Int}(1-t)-\mathrm{FCInv},
 \end{align*}
-where NCC are non-cash charges and CFO deducts interest paid, as US GAAP does. If interest paid is presented in financing, as IFRS allows, the interest term is not added back to CFO. FCFE equals net income plus non-cash charges, less investment, plus net borrowing (p.~352). Preferred dividends are deducted, and new preferred issued is added, when preferred stock exists (p.~353).
+where NCC are non-cash charges and CFO deducts interest paid, as US GAAP requires.
+
+\emph{Where interest and its tax saving are classified.} IAS~7 before IFRS~18 let a non-financial entity classify interest paid in operating or financing \citep[IAS~7 para.~33]{eu-2023-1803-ias7}. Once IFRS~18 applies, interest paid is financing for entities whose main business is not investing or lending \citep[IAS~7 para.~34A as amended]{eu-2026-338-ifrs18}. Under both versions, income taxes paid stay in operating unless specifically identified with financing or investing (para.~35). CFO is then before interest but after the actual tax paid, which is already reduced by the interest deduction. The tax saving has to come out (Derivation, from the identities above):
+\[ \mathrm{FCFF}=\mathrm{CFO}_{\text{interest in financing}}-\mathrm{Int}\times t-\mathrm{FCInv}. \]
+Only if the tax effect of interest were also classified in financing would CFO equal operating cash flow after tax on EBIT, and FCFF be $\mathrm{CFO}-\mathrm{FCInv}$. FCFE equals net income plus non-cash charges, less investment, plus net borrowing (p.~352). Preferred dividends are deducted, and new preferred issued is added, when preferred stock exists (p.~353).
 
 \emph{Ownership perspective.} FCFE measures what equity holders could receive. Dividends are what a minority holder actually receives; FCFE is what a holder who controlled payout could take out. Valuing FCFE when a firm pays less than it could therefore values control of payout policy (pp.~374--375).
 
@@ -21,12 +25,13 @@ where NCC are non-cash charges and CFO deducts interest paid, as US GAAP does. I
 \item FCFF from net income: $58.5+30+9-45-8=44.50$; from EBIT: $67.5+30-53=44.50$; from EBITDA: $90+7.5-53=44.50$; from CFO: $80.5+9-45=44.50$;
 \item FCFE: $44.5-9+10=45.50$, equal to $58.5+30-53+10$.
 \end{itemize}
+Taxes paid are 19.50, on profit before tax of 78. With interest paid in financing and taxes in operating, CFO is $120-19.5-8=92.50$, and FCFF is $92.5-12\times0.25-45=44.50$. Deducting only capital investment would give 47.50, crediting the interest tax saving to FCFF a second time. CFO would be 89.50, and FCFF $89.5-45$, only if the tax saving of 3 were also shown in financing. All three presentations describe the same 44.50.
 
 \emph{Harbour, 2026 forecast} (\hyperref[meth:free-cash-flow-coverage]{FCFF and FCFE}). Valuation FCFF of 31.93 follows two routes. One starts from CFO, adds after-tax interest and pension financing, and deducts capital spending, right-of-use additions and share-based pay. The other starts from EBIT less cash operating taxes, adds depreciation and deducts working capital and all reinvestment. Both give the same 31.93.
 
-\qffield{Conditions} The routes agree only when each counts the same reinvestment and the same claims. Leases treated as debt make right-of-use additions reinvestment; share-based pay treated as a cost is not added back.
+\qffield{Conditions} The routes agree only when each counts the same reinvestment and the same claims. Leases treated as debt make right-of-use additions reinvestment; share-based pay treated as a cost is not added back. The CFO routes assume taxes paid are classified in operating activities, as IAS~7 para.~35 requires unless they can be identified with another activity, and that interest is fully deductible at the rate $t$ in the year it is paid.
 
-\qffield{Pitfalls} Adding back depreciation and also deducting gross rather than net capital spending inconsistently. Subtracting after-tax interest from FCFF and discounting at the WACC, which counts the tax saving twice. Using CFO without checking where interest and dividends paid are classified.
+\qffield{Pitfalls} Adding back depreciation and also deducting gross rather than net capital spending inconsistently. Subtracting after-tax interest from FCFF and discounting at the WACC, which counts the tax saving twice. Using CFO without checking where interest, dividends and the related taxes paid are classified; with interest in financing, CFO less capital investment overstates FCFF by the interest tax saving.
 
 \qffield{See also} \hyperref[meth:fcf-forecasting]{forecasting}; \hyperref[meth:cash-flow-interpretation]{cash flow statement}.
 
@@ -37,19 +42,30 @@ where NCC are non-cash charges and CFO deducts interest paid, as US GAAP does. I
 \[ \mathrm{FCFE}=\mathrm{NI}-(1-\delta)(\mathrm{FCInv}-\mathrm{Dep})-(1-\delta)\,\mathrm{WCInv}. \]
 The second form keeps leverage stable by construction and smooths the forecast (p.~354).
 
-\emph{Effects of financing decisions.} Neither measure includes dividends, buybacks or share issues, which are uses or sources of equity cash, not operating flows. A firm paying dividends above FCFE must issue shares or borrow; one paying less accumulates cash (p.~355). Borrowing more raises FCFE in the year by the amount borrowed less the after-tax interest, and lowers later FCFE by the interest and repayments. FCFF is unaffected, but leverage raises the cost of equity, so more FCFE does not mean more equity value (p.~361).
+\emph{Effects of financing decisions.} Neither measure includes dividends, buybacks or share issues, which are uses or sources of equity cash, not operating flows. Because FCFE already contains the net borrowing actually done, its uses reconcile exactly (Derivation, from the cash-flow statement):
+\[ \mathrm{FCFE}=\text{dividends}+\text{buybacks}-\text{share issues}+\Delta\text{cash}. \]
+Dividends above this FCFE are therefore met by issuing shares or running down cash, not by further borrowing, as Damodaran says; a firm paying less accumulates cash (p.~355). Measured against FCFE at a target debt policy instead, borrowing beyond the policy is a third source of the excess (Interpretation). Borrowing more raises FCFE in the year by the amount borrowed less the after-tax interest, and lowers later FCFE by the interest and repayments. FCFF is unaffected, but leverage raises the cost of equity, so more FCFE does not mean more equity value (p.~361).
 
-\qffield{Practice} \emph{Avon Fittings} (\hyperref[meth:fcff-fcfe-derivation]{derivation}). With 30 percent of net reinvestment financed by debt, $\mathrm{FCFE}=58.50-0.70\times(45-30+8)=42.40$. A dividend or buyback leaves FCFF and FCFE unchanged. Borrowing 20 more at 6 percent raises FCFE by $20-0.90=19.10$ in the year and leaves FCFF at 44.50.
-
-\emph{Harbour, 2026--2028} (\hyperref[ex:harbour-pro-forma-model]{forecast}). The model holds cash at about 40 by drawing on the revolver. FCFE therefore equals dividends plus the change in cash: 31.82, 30.19 and 32.14. In 2026, 29.36 of dividends and 2.46 of cash increase use it all. Net borrowing, including new lease debt, is part of FCFE.
+\emph{Fixed against endogenous borrowing.} Whether payout changes FCFE depends on the financing policy in the forecast (Interpretation):
 \begin{itemize}
-\item If Harbour raised its payout, FCFE would not change; the revolver drawing would rise, and next year's FCFE would fall by the extra interest.
-\item If it issued shares, FCFE would not change either, but cash or debt would.
+\item with net borrowing fixed in advance, a higher dividend reduces cash and leaves FCFE unchanged;
+\item with a revolver that tops cash up to a minimum, the higher dividend is borrowed, so actual FCFE rises by roughly the extra dividend and later FCFE falls by the interest.
+\end{itemize}
+A valuation should therefore use FCFE at a target borrowing policy, which does not move with the payout chosen, and keep actual borrowing for the cash reconciliation.
+
+\qffield{Practice} \emph{Avon Fittings} (\hyperref[meth:fcff-fcfe-derivation]{derivation}). With 30 percent of net reinvestment financed by debt, $\mathrm{FCFE}=58.50-0.70\times(45-30+8)=42.40$. Net borrowing is fixed at 10, so a dividend or buyback changes cash, not FCFF or FCFE: dividends of 30 and a buyback of 10 leave a cash increase of 5.50, and five more of dividends cut it to 0.50. Borrowing 20 more at 6 percent, drawn at the start of the year, raises FCFE by $20-0.90=19.10$ in the year and leaves FCFF at 44.50.
+
+\emph{Harbour, 2026--2028} (\hyperref[ex:harbour-pro-forma-model]{forecast}). The model holds cash at about 40 by drawing on the revolver, and issues and buys back no shares. Actual FCFE therefore equals dividends plus the change in cash: 31.82, 30.19 and 32.14. In 2026, 29.36 of dividends and 2.46 of cash increase use it all. Net borrowing, including new lease debt, is part of FCFE.
+\begin{itemize}
+\item At a 50 percent payout instead of 40, the 2026 dividend is 36.62 and the revolver draw 38.28 instead of 30.81. Actual FCFE becomes 39.08, again dividends plus the unchanged 2.46 of cash.
+\item FCFE before the revolver, with only scheduled loan and lease flows, is 1.01 at 40 percent and 0.80 at 50 percent: the payout moves it only through the extra interest.
+\item Valuation FCFF moves from 31.93 to 31.88. FCFF credits the whole tax saving on the extra interest, but the model settles only a fifth of current tax within the year, so most of that saving is not yet received in cash.
+\item A share issue would add to cash or replace revolver drawing, so it would change actual FCFE only through borrowing.
 \end{itemize}
 
-\qffield{Conditions} The target-ratio shortcut is consistent only if the debt ratio is held in book terms and the cost of equity reflects that ratio. Net borrowing in the forecast must follow a stated policy, not be whatever balances the model.
+\qffield{Conditions} The target-ratio shortcut is consistent only if the debt ratio is held in book terms and the cost of equity reflects that ratio. Net borrowing in the forecast must follow a stated policy, not be whatever balances the model. With a revolver that balances the model, actual FCFE measures what the policy paid out, not what the firm could pay.
 
-\qffield{Pitfalls} Treating equity raised as part of FCFE. Forecasting FCFE with large one-off borrowing that is not repeated, then capitalising it. Letting forecast leverage drift while the cost of equity stays fixed.
+\qffield{Pitfalls} Treating equity raised as part of FCFE. Forecasting FCFE with large one-off borrowing that is not repeated, then capitalising it. Letting forecast leverage drift while the cost of equity stays fixed. Valuing an FCFE that includes revolver drawings that rise with the dividend, which makes the value depend on the payout chosen. Saying a dividend above actual FCFE was funded by borrowing, when the borrowing is already inside FCFE.
 
 \qffield{See also} \hyperref[meth:fcf-valuation-models]{valuation models}; \hyperref[meth:dividend-sustainability]{dividend sustainability}.
 
@@ -129,7 +145,7 @@ Stable $k_e$ & $g=2\%$ & $g=3\%$ & $g=4\%$ \\
 \item FCFE 31.82;
 \item dividends 29.36.
 \end{itemize}
-The gap between EBITDA and FCFF is taxes, capital spending of 120.31, right-of-use additions of 25 and share-based pay. Capitalising EBITDA as if it were FCFF, $227.28/(8\%-2.5\%)$, would give 4,132 against a DCF enterprise value of 1,218. Dividends are close to FCFE because the model holds cash at a target and pays 40 percent of profit. A dividend model and an FCFE model would give similar values, unless payout changed.
+The gap between EBITDA and FCFF is taxes, capital spending of 120.31, right-of-use additions of 25 and share-based pay. Capitalising EBITDA as if it were FCFF, $227.28/(8\%-2.5\%)$, would give 4,132 against a DCF enterprise value of 1,218. Dividends are close to actual FCFE by construction: the revolver borrows whatever the 40 percent payout and the cash target need, so actual FCFE follows the payout (39.08 at 50 percent; \hyperref[meth:fcf-forecasting]{forecasting}). Comparing a dividend model with an FCFE model needs FCFE at a target debt policy, not the actual borrowing.
 
 \emph{Avon Fittings} (\hyperref[meth:fcff-fcfe-derivation]{derivation}): $\mathrm{EBIT}(1-t)=67.50=44.50+45-30+8$ and $\mathrm{EBITDA}=120=44.50+22.50+45+8$.
 

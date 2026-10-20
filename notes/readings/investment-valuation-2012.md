@@ -2,7 +2,7 @@
 key: investment-valuation-2012
 pathways: [financial-statement-analysis, systematic-equities, corporate-finance]
 version: Aswath Damodaran, Investment Valuation, 3rd ed., Wiley, 2012 (ISBN 978-1-118-01152-2). Copy used: owner's library PDF (SHA-256 3596d78ad37e81ee15163209b0f74e3c3b74620c6339e0dc630aec569bbf52fc, 993 pages), outside the repository; printed page = PDF page - 19. The catalogue key gap-damodaran4 is the 4th edition (2025), not read
-sections: chap. 1 pp. 2-3; chap. 11 pp. 282-284; chap. 12 pp. 307-310, 313; chap. 14 p. 364; chap. 15 pp. 380-381; chap. 16 pp. 445-450 (options outstanding, future grants, voting shares; read 2026-10-20 for the share-based pay correction); chap. 20 pp. 571-576; corporate-finance and equity-valuation batch (2026-10-20): pp. 1-25, 75, 124-132, 285-289, 323-348, 453-517, 542-545, 596-597, 702-728; credit, time-series and valuation batch (2026-10-20): pp. 157, 167-168, 282-284 (analysts' forecasts), 351-363, 372-376, 380-383 (FCFF and FCFE models), 667-698 (private companies), 870-877 (EVA), 894-919 (scenario analysis, decision trees, simulation)
+sections: chap. 1 pp. 2-3; chap. 11 pp. 282-284; chap. 12 pp. 307-310, 313; chap. 14 p. 364; chap. 15 pp. 380-381; chap. 16 pp. 445-450 (options outstanding, future grants, voting shares; read 2026-10-20 for the share-based pay correction); chap. 20 pp. 571-576; corporate-finance and equity-valuation batch (2026-10-20): pp. 1-25, 75, 124-132, 285-289, 323-348, 453-517, 542-545, 596-597, 702-728; credit, time-series and valuation batch (2026-10-20): pp. 157, 167-168, 282-284 (analysts' forecasts), 351-363, 372-376, 380-383 (FCFF and FCFE models), 667-698 (private companies), 870-877 (EVA), 894-919 (scenario analysis, decision trees, simulation); PR #32 audit (2026-10-20): p. 355 (dividends above FCFE financed from cash or new stock), pp. 672-674 and 684-690 (total beta, alternatives box, illiquidity discount, Illustrations 24.10-24.11, Table 24.2)
 read:
 status: draft
 ---
@@ -33,6 +33,7 @@ Also used by the credit, time-series and valuation batch (2026-10-20) for `meth:
 - Private firms: total beta = market beta / correlation for an undiversified owner (pp. 672-673); restricted-stock discounts about 34-35%; Silber regression (pp. 685-686); motive changes the inputs (Table 24.2, pp. 688-689).
 - EVA = (ROC - WACC) x capital invested; MVA = PV of expected EVA (pp. 870-874).
 - Scenario analysis has four components; best/worst cases may be infeasible; 'garbage in, garbage out' (pp. 894-897); simulation steps: probabilistic variables, distributions (historical, cross-sectional, statistical), correlation check, run (pp. 908-910); simulations give a full distribution (p. 919).
+- P. 355: firms paying dividends above FCFE finance them out of existing cash balances or new stock issues. Table 24.2 (p. 689): a private sale uses a total-beta cost of equity and an illiquidity discount; an IPO or sale to a listed firm uses the market beta and no illiquidity discount. Chez Pierre (24.10-24.11): illiquidity discount 28.75% (restricted-stock route) or 12.94% (bid-ask route) alongside a 15.27% total-beta cost of capital. P. 674 box: a build-up with a small-cap and an illiquidity premium risks double counting.
 
 ## Limits
 

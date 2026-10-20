@@ -12355,7 +12355,7 @@
    "objectives": [
     "objective:diagnose-regression-misspecification"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification describes forms of misspecification (omitted variables, functional form, scaling, pooling), their effects and avoidance; the omitted-variable identity is checked in a seeded simulation.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification describes forms of misspecification (omitted variables, functional form, scaling, pooling), their effects and avoidance; the omitted-variable identity is checked in a seeded simulation. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12375,7 +12375,7 @@
    "objectives": [
     "objective:diagnose-regression-misspecification"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification explains unconditional against conditional heteroskedasticity, its effect on standard errors, Breusch-Pagan and White tests, and robust errors, applied to the Baa regression.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification explains unconditional against conditional heteroskedasticity, its effect on standard errors, Breusch-Pagan and White tests, and robust errors, applied to the Baa regression. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12395,7 +12395,7 @@
    "objectives": [
     "objective:diagnose-regression-misspecification"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification explains serial correlation's effect on inference, Durbin-Watson, Ljung-Box, Cochrane-Orcutt and Newey-West errors, with the Baa regression's DW of 1.88.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification explains serial correlation's effect on inference, Durbin-Watson, Ljung-Box, Cochrane-Orcutt and Newey-West errors, with the Baa regression's DW of 1.88. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12415,7 +12415,7 @@
    "objectives": [
     "objective:diagnose-regression-misspecification"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification explains multicollinearity, VIF thresholds (STAT 501 12.4) and remedies, with a seeded simulation showing VIF 12.3 and inflated standard errors.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:regression-misspecification explains multicollinearity, VIF thresholds (STAT 501 12.4) and remedies, with a seeded simulation showing VIF 12.3 and inflated standard errors. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -12791,7 +12791,7 @@
    "objectives": [
     "objective:select-time-series-model"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:time-series-model-selection determines and justifies a model for US inflation, weighing trend, random-walk, AR(1) and AR(4) alternatives with information criteria and out-of-sample evidence.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:time-series-model-selection determines and justifies a model for US inflation, weighing trend, random-walk, AR(1) and AR(4) alternatives with information criteria and out-of-sample evidence. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -13544,7 +13544,7 @@
    "objectives": [
     "objective:classify-intercorporate-investments"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:intercorporate-investment-classification describes the IFRS treatment of financial assets (IFRS 9), associates (IAS 28), joint ventures (IFRS 11), business combinations (IFRS 3, 10) and structured entities (IFRS 10, 12).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:intercorporate-investment-classification describes the IFRS treatment of financial assets (IFRS 9), associates (IAS 28), joint ventures (IFRS 11), business combinations (IFRS 3, 10) and structured entities (IFRS 10, 12). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -13565,7 +13565,7 @@
    "objectives": [
     "objective:classify-intercorporate-investments"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: def:intercorporate-investment-classification contrasts US GAAP: no FVOCI equity election (ASU 2016-01), full goodwill (FAS 141R), NCI presentation (FAS 160) and the VIE primary-beneficiary model (FAS 167).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: def:intercorporate-investment-classification contrasts US GAAP: no FVOCI equity election (ASU 2016-01), full goodwill (FAS 141R), NCI presentation (FAS 160) and the VIE primary-beneficiary model (FAS 167). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14010,7 +14010,7 @@
    "objectives": [
     "objective:analyse-insurer"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:insurer-analysis describes life and property-casualty business, loss, expense, combined and operating ratios (Hull pp. 57-66), reserve development, investments and solvency, with Wren Insurance.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (insurance companies, life and property-casualty). Reassessed 2026-10-20 after the PR #32 audit: meth:insurer-analysis covers property-casualty ratios, reserve development, investments and solvency (Hull pp. 57-66, Wren Insurance); meth:life-insurer-analysis adds life measures: new-business value and the IFRS 17 CSM, Solvency II technical provisions and SCR, asset-liability matching, mortality, longevity and lapse shocks, with limits and a two-insurer comparison and new-business case. Covered only with both entries.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15536,7 +15536,7 @@
    "objectives": [
     "objective:derive-fcff-fcfe"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation explains the control perspective implicit in FCFE against dividends for a minority holder.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation explains the control perspective implicit in FCFE against dividends for a minority holder. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15556,7 +15556,7 @@
    "objectives": [
     "objective:derive-fcff-fcfe"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation explains the adjustments from net income, EBIT, EBITDA and CFO to FCFF and FCFE, including the IFRS interest-classification point.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation explains the adjustments from net income, EBIT, EBITDA and CFO to FCFF and FCFE, including the IFRS interest-classification point. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15576,7 +15576,7 @@
    "objectives": [
     "objective:derive-fcff-fcfe"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation calculates FCFF 44.50 by four routes and FCFE 45.50 for Avon Fittings; checked by equity-fcf-ri-private-checks.py part 3.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcff-fcfe-derivation calculates FCFF 44.50 by four routes and FCFE 45.50 for Avon Fittings; checked by equity-fcf-ri-private-checks.py part 3. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15596,7 +15596,7 @@
    "objectives": [
     "objective:forecast-free-cash-flows"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-forecasting describes component forecasting and the target-debt-ratio shortcut (Damodaran pp. 352-354), applied to Avon and Harbour.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-forecasting describes component forecasting and the target-debt-ratio shortcut (Damodaran pp. 352-354), applied to Avon and Harbour. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15616,7 +15616,7 @@
    "objectives": [
     "objective:forecast-free-cash-flows"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-forecasting explains how dividends, buybacks, share issues and leverage affect FCFF and FCFE, with borrowing and payout cases.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:fcf-forecasting explains how dividends, buybacks, share issues and leverage affect FCFF and FCFE, with borrowing and payout cases. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15636,7 +15636,7 @@
    "objectives": [
     "objective:critique-cash-flow-proxies"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cash-flow-proxies compares FCFE and dividend discount models and when their values differ (Damodaran pp. 372-376).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cash-flow-proxies compares FCFE and dividend discount models and when their values differ (Damodaran pp. 372-376). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15656,7 +15656,7 @@
    "objectives": [
     "objective:critique-cash-flow-proxies"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cash-flow-proxies evaluates net income and EBITDA as cash-flow proxies, showing that capitalising Harbour's EBITDA overstates value more than threefold.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:cash-flow-proxies evaluates net income and EBITDA as cash-flow proxies, showing that capitalising Harbour's EBITDA overstates value more than threefold. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15799,7 +15799,7 @@
    "objectives": [
     "objective:calculate-justified-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified multiples for Harbour. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown); mapping and coverage unchanged.",
+   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified multiples for Harbour. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown); mapping and coverage unchanged. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15925,7 +15925,7 @@
    "objectives": [
     "objective:calculate-justified-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates a P/E predicted by a cross-sectional regression and explains its limits. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown); mapping and coverage unchanged.",
+   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates a P/E predicted by a cross-sectional regression and explains its limits. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown); mapping and coverage unchanged. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15946,7 +15946,7 @@
    "objectives": [
     "objective:calculate-justified-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified P/E, P/B and P/S. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown); mapping and coverage unchanged.",
+   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified P/E, P/B and P/S. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown); mapping and coverage unchanged. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16175,7 +16175,7 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison describes when residual income models are useful (no dividends, negative FCF, balance-sheet information).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison describes when residual income models are useful (no dividends, negative FCF, balance-sheet information). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16196,7 +16196,7 @@
    "objectives": [
     "objective:value-with-residual-income"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation calculates Harbour's residual income value and meth:residual-income-comparison compares value recognition (80% from book against 91% in the dividend terminal value).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation calculates Harbour's residual income value and meth:residual-income-comparison compares value recognition (80% from book against 91% in the dividend terminal value). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16236,7 +16236,7 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison explains the link to justified P/B, which exceeds one only when ROE exceeds the cost of equity.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison explains the link to justified P/B, which exceeds one only when ROE exceeds the cost of equity. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16257,7 +16257,7 @@
    "objectives": [
     "objective:value-with-residual-income"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation calculates single-stage (40.00) and multistage values with persistence (23.59) and Harbour's three-year model.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation calculates single-stage (40.00) and multistage values with persistence (23.59) and Harbour's three-year model. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16277,7 +16277,7 @@
    "objectives": [
     "objective:value-with-residual-income"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation calculates the residual-income growth implied by Harbour's P/B of 1.71 (7.27%) and the sustained ROE it needs at 2.5% growth (14.18%).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation calculates the residual-income growth implied by Harbour's P/B of 1.71 (7.27%) and the sustained ROE it needs at 2.5% growth (14.18%). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16298,7 +16298,7 @@
    "objectives": [
     "objective:value-with-residual-income"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation explains continuing residual income with a persistence factor and justifies its choice by competitive fade (omega 0 to 1 bounds 22.72-30.61).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-valuation explains continuing residual income with a persistence factor and justifies its choice by competitive fade (omega 0 to 1 bounds 22.72-30.61). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16318,7 +16318,7 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison compares residual income with dividend and free cash flow models, including the dirty-surplus identity for Harbour.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison compares residual income with dividend and free cash flow models, including the dirty-surplus identity for Harbour. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16339,7 +16339,7 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison explains strengths and weaknesses of each model and when residual income should be selected.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison explains strengths and weaknesses of each model and when residual income should be selected. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16359,7 +16359,7 @@
    "objectives": [
     "objective:compare-residual-income-models"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison describes accounting issues: clean surplus, items in OCI, non-recurring items, expensed intangibles and equity credits for share-based pay.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:residual-income-comparison describes accounting issues: clean surplus, items in OCI, non-recurring items, expensed intangibles and equity credits for share-based pay. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16400,7 +16400,7 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation describes valuation motives (sale to a private buyer, IPO, sale to a listed firm) and how each changes the inputs (Damodaran Table 24.2).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation describes valuation motives (sale to a private buyer, IPO, sale to a listed firm) and how each changes the inputs (Damodaran Table 24.2). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16481,7 +16481,7 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation explains and evaluates control premiums and marketability discounts, compounding them for a 30% stake (combined 37.91%).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation explains and evaluates control premiums and marketability discounts, compounding them for a 30% stake (combined 37.91%). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16501,7 +16501,7 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation explains the income, market and asset approaches and when each fits.",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation explains the income, market and asset approaches and when each fits. Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16521,7 +16521,7 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation calculates income-approach values for Fenton at a diversified and an undiversified buyer's rate (59.93 and 26.05).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation calculates income-approach values for Fenton at a diversified and an undiversified buyer's rate (59.93 and 26.05). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16542,7 +16542,7 @@
    "objectives": [
     "objective:value-private-company"
    ],
-   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation calculates guideline-company and transaction values and describes the weaknesses of transaction data and public multiples (Damodaran pp. 695-698).",
+   "rationale": "Reviewed 2026-10-20 against the outline page: meth:private-company-valuation calculates guideline-company and transaction values and describes the weaknesses of transaction data and public multiples (Damodaran pp. 695-698). Rechecked 2026-10-20 after the PR #32 audit corrections (valuation-and-inference correction pass); mapping retained.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },

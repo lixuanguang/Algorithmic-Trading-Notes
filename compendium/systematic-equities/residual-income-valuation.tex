@@ -53,16 +53,16 @@ For a finite horizon $T$ with terminal price $P_T$, the exact form is $V_0=B_0+\
 \begin{itemize}
 \item ROE on opening book is 11.34 percent in 2026, and residual income is 13.04, 10.12 and 9.86.
 \item The terminal price is set by the justified P/B on 2028 book, 1.2148 at a sustained ROE of 10.79 percent and growth of 2.5 percent (\hyperref[meth:justified-multiples]{justified multiples}).
-\item Residual income on reported book then gives 809.24, or 8.03 a share.
-\item The dividend model with the same terminal price gives 834.16, or 8.28.
+\item Residual income on reported book then gives 809.24.
+\item The dividend model with the same terminal price gives 834.16.
 \end{itemize}
-The 24.92 difference is the present value of the equity credited for share-based pay (\hyperref[meth:residual-income-comparison]{accounting issues}). The DCF value is 8.49.
+Neither aggregate is yet the value of the common shares. The 24.92 difference is the present value of the equity credited for future share-based pay (\hyperref[meth:residual-income-comparison]{accounting issues}). The 809.24 still includes the claim of the five million vested options already outstanding, which their past expense does not remove. Deducting the options at the value per share they imply, as in the DCF bridge, gives $p=(809.24-5C(p))/100.75=7.96$, with the options worth 7.70. Dividing 809.24 by the shares, 8.03, ignores that claim. The DCF value on the same bridge is 8.49.
 
-\emph{Implied growth from the market price.} Rearranging the single-stage model, $g=k_e-(\mathrm{ROE}-k_e)/(P/B-1)$. At Harbour's price of 11.00, P/B is 1.71. With a sustained ROE of 10.79 percent and $k_e=9.32$ percent, residual income would have to grow at 7.27 percent a year for ever, far above the economy. At 2.5 percent growth the price needs a sustained ROE of 14.18 percent. Either way, the market price embeds more than the forecast supports.
+\emph{Implied growth from the market price.} Rearranging the single-stage model, $g=k_e-(\mathrm{ROE}-k_e)/(P/B-1)$. Book equity supports every equity claim, so the market price is compared on the same claims: the shares at 11.00 (1,108.25) plus the options at 17.94 make 1,126.19, a P/B of 1.74. With a sustained ROE of 10.79 percent and $k_e=9.32$ percent, residual income would have to grow at 7.34 percent a year for ever, far above the economy. At 2.5 percent growth the price needs a sustained ROE of 14.37 percent. The shares alone, a P/B of 1.71, give 7.27 and 14.18 percent but leave the options' claim on the same book unpriced. Either way, the market price embeds more than the forecast supports.
 
-\qffield{Conditions} The cost of equity must be the one applied to book equity at the start of each year. The continuing value depends on whether ROE is assumed to stay above, or fade to, the cost of equity.
+\qffield{Conditions} The cost of equity must be the one applied to book equity at the start of each year. The continuing value depends on whether ROE is assumed to stay above, or fade to, the cost of equity. Book value plus residual income values all the equity claims that book equity supports, including vested options and warrants; a value per common share deducts them first.
 
-\qffield{Pitfalls} Holding residual income constant forever for a firm without a durable advantage. Using a terminal P/B with a ROE inconsistent with the forecast. Discounting residual income at the WACC.
+\qffield{Pitfalls} Holding residual income constant forever for a firm without a durable advantage. Using a terminal P/B with a ROE inconsistent with the forecast. Discounting residual income at the WACC. Dividing the aggregate value by common shares while options are outstanding.
 
 \qffield{See also} \hyperref[def:residual-income-eva]{residual income}; \hyperref[meth:fcf-valuation-models]{free cash flow models}.
 
@@ -93,14 +93,15 @@ With a contribution $C_t$, the finite-horizon identity becomes (Derivation)
 \qffield{Practice} \emph{Harbour} (\hyperref[meth:residual-income-valuation]{valuation}). Forecast book equity grows by profit less dividends plus the equity credited for share-based pay: 9.45, 9.92 and 10.42 in 2026--2028. With the same terminal price:
 \begin{itemize}
 \item residual income on reported book, 809.24, equals the dividend value of 834.16 less the present value of the credits, 24.92;
-\item the dividend model counts all future dividends at a fixed share count, including those that will go to employees whose awards vest;
-\item residual income on reported book charges the grants once, as expense, and leaves the credit out of the value to existing shareholders.
+\item the dividend model discounts the firm's total future dividends, including those that will go to employees whose future awards vest and to holders of the options outstanding today once they exercise;
+\item residual income on reported book charges future grants once, as expense, and leaves their credit out of the value; the vested options are not in future expense, so their claim remains in the 809.24.
 \end{itemize}
+\emph{Claims reconciled.} The common shares are worth $834.16-24.92-7.70=801.54$, or 7.96 a share, by either route. The 7.70 is the five million options valued at that price. The older figures of 8.28 and 8.03 divided the two aggregates by the common shares. Deducting the existing options does not double count future grants, which reach the value only through the residual income charge.
 \emph{Value recognition.} In the residual income value, current book equity is 80 percent and the terminal premium over 2028 book 17 percent; in the dividend value the terminal price is 91 percent. Residual income recognises value earlier, which is why it depends less on the continuing value.
 
-Neither is wrong; they value different claims. The residual income figure is the one consistent with the DCF, which also deducts share-based pay. Harbour's P/B of 1.71 implies a sustained ROE of 14.18 percent; its forecast reaches 11.34 percent.
+The two aggregates value different sets of claims; once both are reduced to the common shares they agree at 7.96, against 8.49 from the DCF on the same bridge. Measured on all equity claims, Harbour's P/B of 1.74 implies a sustained ROE of 14.37 percent; its forecast reaches 11.34 percent.
 
-\qffield{Conditions} The adjustment uses grant-date fair value as the employees' claim. Other dirty-surplus items are handled the same way, as income if they belong to shareholders' wealth and as contributions if they come from new holders.
+\qffield{Conditions} The adjustment uses grant-date fair value as the employees' claim on future grants, and an option-pricing value at the implied share price for the vested options, as Damodaran does \citep[pp.~445--448]{investment-valuation-2012}. Other dirty-surplus items are handled the same way, as income if they belong to shareholders' wealth and as contributions if they come from new holders.
 
 \qffield{Pitfalls} Using a book value inflated by revaluations without adjusting ROE. Ignoring items recognised directly in equity. Comparing RI and dividend values that use different terminal assumptions, then attributing the gap to the model.
 

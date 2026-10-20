@@ -73,21 +73,26 @@ The standard error of estimate is $\sqrt{\mathrm{SSE}/(n-k-1)}$.
 \end{qfmethod}
 
 \begin{qfmethod}[Diagnosing and correcting misspecification: omitted variables and functional form, heteroskedasticity (Breusch--Pagan, White, robust standard errors), serial correlation (Durbin--Watson, Newey--West, Cochrane--Orcutt), and multicollinearity (VIF)]\label{meth:regression-misspecification}
-\qffield{Statement} \emph{Misspecification} takes several forms (Interpretation): omitting a relevant variable, using the wrong functional form (levels where logs or squares belong), scaling variables inappropriately, and pooling data from different regimes. These bias the coefficients themselves (\hyperref[meth:multiple-regression-formulation]{the omitted-variable identity}). The remedy is to start from theory, add the variable or a proxy, transform the variables, or split the sample.
+\qffield{Statement} \emph{Misspecification} takes several forms (Interpretation): omitting a relevant variable that is correlated with the included ones, using the wrong functional form (levels where logs or squares belong), and pooling data from different regimes. These bias the coefficients relative to the effect the model is meant to estimate (\hyperref[meth:multiple-regression-formulation]{the omitted-variable identity}). The remedy is to start from theory, add the variable or a proxy, transform the variables, or split the sample.
 
-\emph{Heteroskedasticity} leaves least-squares coefficients unbiased but makes the usual standard errors wrong \citep[Lessons~7.6, 13.1]{regression-methods-course-notes}.
+\emph{Units are not a specification error.} Rescaling a predictor, for example from decimals to percentage points, divides its coefficient and standard error by the same factor. The $t$ statistic, the fitted values and $R^2$ do not change. What matters is reading the coefficient in the units used; a scaling choice becomes a problem only when it changes the model, as when a level is replaced by a ratio or a log (Derivation, from $\hat\beta=(X'X)^{-1}X'y$).
+
+\emph{Heteroskedasticity} leaves least-squares coefficients unbiased, provided the errors have mean zero given all the predictors (strict exogeneity), but makes the usual standard errors wrong \citep[Lessons~7.6, 13.1]{regression-methods-course-notes}.
 \begin{itemize}
 \item \emph{Types}: unconditional heteroskedasticity, where the variance changes but not with the predictors, does little harm to inference; conditional heteroskedasticity, where the variance moves with the predictors, makes the usual standard errors wrong, usually too small (Interpretation).
 \item The Breusch--Pagan test regresses squared residuals on the predictors; it assumes normal errors and a variance linked to the predictors (Lesson~7.6). White's test adds squares and cross-products, so it also picks up nonlinear patterns (Interpretation).
 \item Remedies: heteroskedasticity-consistent (White) standard errors, or weighted least squares if the variance pattern is known (Lesson~13.1).
 \end{itemize}
 
-\emph{Serial correlation} in time-series regressions likewise biases the standard errors (Lesson~14.3).
+\emph{Serial correlation} in time-series regressions likewise makes the usual standard errors wrong (Lesson~14.3). Under strict exogeneity the coefficients stay unbiased, and their covariance given the predictors is (Derivation)
+\[ \mathrm{Var}(\hat\beta\mid X)=(X'X)^{-1}X'\Omega X(X'X)^{-1},\qquad \Omega=\mathrm{Var}(\varepsilon\mid X), \]
+against the usual $s^2(X'X)^{-1}$. Which is larger depends on the predictors as well as the errors.
 \begin{itemize}
-\item Positive serial correlation, the common case, makes the usual standard errors too small and $t$ statistics too large; negative serial correlation does the reverse (Interpretation).
+\item The cross-products $x_s x_t$ multiply the error covariances in $X'\Omega X$. Errors positively autocorrelated inflate the true variance when the predictor is also positively autocorrelated, as trending or persistent macro series are. That is the common case in which the usual standard errors are too small and $t$ statistics too large (Interpretation).
+\item With a predictor that alternates in sign, the same errors make the true variance smaller than the usual estimate, and negative error autocorrelation then understates it. The direction is not a property of the errors alone (Practice).
 \item The Durbin--Watson statistic is about $2(1-r_1)$, with $r_1$ the first-order residual autocorrelation. The Ljung--Box test checks several lags.
 \item Remedies: transform the model (Cochrane--Orcutt for AR(1) errors), or keep least squares with heteroskedasticity- and autocorrelation-consistent (Newey--West) standard errors (Interpretation; the latter was not in the sources read).
-\item With a lagged dependent variable, serial correlation also biases the coefficients (Interpretation).
+\item With a lagged dependent variable, the predictors are not strictly exogenous, and serially correlated errors make least squares inconsistent, not only its standard errors wrong (Interpretation).
 \end{itemize}
 
 \emph{Multicollinearity} arises when predictors are moderately or highly correlated (Lesson~12.1). It inflates the coefficients' variances by $\mathrm{VIF}_j=1/(1-R_j^2)$, where $R_j^2$ comes from regressing $x_j$ on the other predictors. VIFs above 4 warrant investigation and above 10 signal serious multicollinearity (Lesson~12.4). The symptom is a significant $F$ with insignificant $t$ statistics. Remedies are more data, combining or dropping predictors, or accepting it when only predictions matter.
@@ -98,6 +103,21 @@ The standard error of estimate is $\sqrt{\mathrm{SSE}/(n-k-1)}$.
 \item \emph{Serial correlation.} Durbin--Watson is 1.88, with $r_1=0.05$, so none to speak of. Newey--West standard errors with two lags are 0.104 and 0.032. Both slopes remain significant under every correction.
 \item \emph{Multicollinearity.} VIFs are 1.002.
 \end{itemize}
+\emph{Serial correlation: the direction depends on the design} (deterministic, ten observations with an intercept and AR(1) errors with unit innovation variance). The variance ratios compare the true slope variance with the expected usual estimate, $E(s^2)\,[(X'X)^{-1}]_{22}$:
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Predictor & $\rho=+0.5$ & $\rho=-0.5$ \\
+\midrule
+Time trend $1,\dots,10$ & 2.75 & 0.41 \\
+Alternating $-1,+1,\dots$ & 0.43 & 2.96 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Above one, the usual standard error is too small. Positive autocorrelation understates it for the trend and overstates it for the alternating predictor. Newey--West or a correctly specified GLS estimate avoids having to know which case applies.
+
+\emph{Units.} Expressing the stock excess return in percentage points multiplies its values by 100 and divides its slope and standard error by 100. The $t$ statistic and $R^2$ are unchanged.
+
 \emph{Multicollinearity, simulated} (200 draws, predictors correlated 0.95, true slopes 0.5 each): the VIF is 12.3 and the slope's standard error 3.5 times that of a one-predictor fit, close to $\sqrt{12.3}$. The $t$ statistics are 3.73 and 0.59, yet the joint $F$ test is overwhelming. Dropping one predictor would give a good forecast but a misleading partial effect.
 
 \qffield{Conditions} The tests have power only against the alternatives they model. Robust standard errors need large samples. Newey--West requires a lag choice.

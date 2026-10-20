@@ -393,14 +393,102 @@ for i in test_idx:
     f_ar4.append(pr[0] + pr[1:] @ infl[i - 1 : i - 5 : -1])
 f_ar4 = np.array(f_ar4)
 ok(
-    "out of sample (expanding window, 1990-2025) AR(4) has RMSE 1.60% against 1.45% for AR(1): the extra lags "
-    "fit the 1940s, not the later data",
+    "one-year forecasts (expanding window, 1990-2025): AR(4) RMSE 1.60% against 1.45% for AR(1)",
     round(rmse(f_ar4) * 100, 2) == 1.60 and rmse(f_ar4) > rmse(f_exp),
 )
 pre = fit_arp(infl[yr <= 1989], 4)
+post53 = fit_arp(infl[(yr >= 1953) & (yr <= 1989)], 4)
+crit53 = {}
+s53 = infl[yr >= 1953]
+for p in (1, 4):
+    Xp = np.column_stack([s53[4 - j : len(s53) - j] for j in range(1, p + 1)])
+    r = sm.OLS(s53[4:], sm.add_constant(Xp)).fit()
+    crit53[p] = (r.aic, r.bic)
 ok(
-    "the AR(4) lag-4 coefficient estimated to 1989 is 0.43, driven by the wartime inflation cycles",
-    round(pre[4], 2) == 0.43,
+    "the AR(4) lag-4 coefficient is 0.43 estimated to 1989 but 0.17 on 1953-1989; from 1953 BIC prefers AR(1) "
+    "(-345.3 against -339.6) and AIC barely separates them (-350.7 against -349.7): the full-sample preference "
+    "depends on the pre-1953 years (consistent with, not proof of, a wartime and Depression effect)",
+    round(pre[4], 2) == 0.43
+    and round(post53[4], 2) == 0.17
+    and [round(v, 1) for v in crit53[1]] == [-349.7, -345.3]
+    and [round(v, 1) for v in crit53[4]] == [-350.7, -339.6],
+)
+
+# Corrected 2026-10-20 (audit): validate at the decision's horizon. Target: cumulative inflation over the five years
+# after each origin. Every model is estimated on data to the origin only; origins 1990-2020 are common to all models
+# and have their five-year outcome observed by 2025. The 1990-2025 data have been examined before, so this is
+# model-selection validation, not a holdout.
+H5 = 5
+
+
+def path_arp(x, p, h=H5):
+    pr = fit_arp(x, p)
+    hist, out = list(x[-p:][::-1]), []
+    for _ in range(h):
+        f_ = pr[0] + pr[1:] @ np.array(hist[:p])
+        out.append(f_)
+        hist.insert(0, f_)
+    return np.array(out)
+
+
+def cum5(path):
+    return np.prod(1 + path) - 1
+
+
+origins = [i for i in range(T) if 1990 <= yr[i] <= 2020]
+act5 = np.array([cum5(infl[i + 1 : i + 1 + H5]) for i in origins])
+fc5 = {"ar1": [], "mean": [], "ar4": [], "rw": [], "trend": []}
+for i in origins:
+    xo = infl[: i + 1]
+    fc5["ar1"].append(cum5(path_arp(xo, 1)))
+    fc5["ar4"].append(cum5(path_arp(xo, 4)))
+    fc5["mean"].append(cum5(np.repeat(xo.mean(), H5)))
+    fc5["rw"].append(cum5(np.repeat(xo[-1], H5)))
+    lp = np.log(np.cumprod(1 + xo))
+    tt = np.arange(len(lp))
+    slope_, icpt_ = np.polyfit(tt, lp, 1)
+    fc5["trend"].append(np.exp(icpt_ + slope_ * (len(lp) - 1 + H5) - lp[-1]) - 1)
+err5 = {k_: act5 - np.array(v) for k_, v in fc5.items()}
+rmse5 = {k_: np.sqrt(np.mean(e**2)) * 100 for k_, e in err5.items()}
+ok(
+    "31 common origins (1990-2020), five-year cumulative inflation: RMSE AR(1) 5.94, mean 6.12, AR(4) 7.27, random "
+    "walk 7.56, trend 19.36 percentage points; mean errors -3.21, -4.10, -4.63, +0.60, -10.44",
+    len(origins) == 31
+    and [round(rmse5[k_], 2) for k_ in ("ar1", "mean", "ar4", "rw", "trend")]
+    == [5.94, 6.12, 7.27, 7.56, 19.36]
+    and [round(err5[k_].mean() * 100, 2) for k_ in ("ar1", "mean", "ar4", "rw", "trend")]
+    == [-3.21, -4.10, -4.63, 0.60, -10.44],
+    ", ".join(f"{k_} {rmse5[k_]:.3f} ({err5[k_].mean() * 100:+.3f})" for k_ in rmse5),
+)
+e1 = err5["ar1"]
+ac1 = np.corrcoef(e1[:-1], e1[1:])[0, 1]
+ok(
+    "overlapping windows: AR(1)'s five-year errors autocorrelate at 0.76 at lag 1, so 31 origins carry about "
+    "31 / 5 = 6 separate windows",
+    round(ac1, 2) == 0.76,
+)
+
+
+def dm_t(a, b):
+    dl = err5[a] ** 2 - err5[b] ** 2
+    return sm.OLS(dl, np.ones_like(dl)).fit(cov_type="HAC", cov_kwds={"maxlags": 4}).tvalues[0]
+
+
+ok(
+    "Diebold-Mariano with Newey-West (4 lags) on squared-error differences: AR(4) vs AR(1) t 2.61; AR(1) vs mean "
+    "-0.40; AR(1) vs random walk -1.45 - only the AR(4) gap stands out, and with about six effective windows "
+    "even that is indicative",
+    [round(dm_t(*pair), 2) for pair in (("ar4", "ar1"), ("ar1", "mean"), ("ar1", "rw"))]
+    == [2.61, -0.40, -1.45],
+)
+latest = path_arp(infl, 1)
+ok(
+    "AR(1) on 1928-2025 forecasts 16.4% cumulative for 2026-2030 from 2025's 2.7%; long-run mean 3.1% against a "
+    "1991-2025 average of 2.6%",
+    round(cum5(latest) * 100, 1) == 16.4
+    and round(infl[-1] * 100, 1) == 2.7
+    and round(infl.mean() * 100, 1) == 3.1
+    and round(infl[yr >= 1991].mean() * 100, 1) == 2.6,
 )
 
 print(f"\n{n_checks} checks executed")

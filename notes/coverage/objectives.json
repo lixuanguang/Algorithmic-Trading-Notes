@@ -2768,19 +2768,25 @@
      {
       "key": "usc-15-78l",
       "locator": "subsec. (g)(1)(A)"
+     },
+     {
+      "key": "delaware-partnership-llc-2026",
+      "locator": "6 Del. C. secs. 15-306(a), (c), (e); 15-1001(a)-(c); 17-303(a); 17-403(b); 18-303(a)-(b)"
      }
     ],
     "reading_notes": [
      "notes/readings/principles-of-finance-2026.md",
      "notes/readings/irs-business-structures-2026.md",
      "notes/readings/applied-corporate-finance-2014.md",
-     "notes/readings/usc-15-78l.md"
+     "notes/readings/usc-15-78l.md",
+     "notes/readings/delaware-partnership-llc-2026.md"
     ],
     "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
     "entry_evidence": [
      "def:organisational-forms-issuers"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 1 (tax wedge by organisational form)"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 1 (tax wedge by organisational form); corrected 2026-10-20 (PR #31 audit): LP, LLP and LLC liability separated from Delaware primary law (6 Del. C. secs. 15-306, 15-1001, 17-303, 17-403, 18-303)",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -3082,7 +3088,8 @@
     "entry_evidence": [
      "meth:wacc-calculation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 9 (market against book weights, rate sensitivity)"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 9 (market against book weights, rate sensitivity); corrected 2026-10-20 (PR #31 audit): options counted in market equity (17.94): ke 9.32%, WACC 8.02% unchanged; pension-as-debt effect quantified",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -3128,7 +3135,8 @@
      "mod:capital-structure-theory",
      "meth:wacc-calculation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 10 (MM without and with taxes, homemade leverage, trade-off optimum by grid and first-order condition); part 9 (market against book weights, rate sensitivity)"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 10 (MM without and with taxes, homemade leverage, trade-off optimum by grid and first-order condition); part 9 (market against book weights, rate sensitivity); corrected 2026-10-20 (PR #31 audit): WACC example claim definitions corrected (options in equity); theory content unchanged",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -5369,7 +5377,8 @@
     "entry_evidence": [
      "def:equity-rights-voting"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 3 (cumulative voting, dual-class votes)"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 3 (cumulative voting, dual-class votes); corrected 2026-10-20 (PR #31 audit): cumulative-voting rule restated with N total shares voting and an integer floor, minimality checked",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -5585,7 +5594,8 @@
     "entry_evidence": [
      "def:price-value-indicators"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 3 (market cap, book, EV, estimate against price)"
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 3 (market cap, book, EV, estimate against price); corrected 2026-10-20 (PR #31 audit): market EV includes the option claim (1,479.77) and reconciles to the DCF bridge with the same claims",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -5747,7 +5757,8 @@
     "entry_evidence": [
      "meth:preferred-stock-valuation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 6 and 18 (perpetual, callable to the call date, arrears)"
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 6 and 18 (perpetual, callable to the call date, arrears); corrected 2026-10-20 (PR #31 audit): callable value 102.19 restated as conditional on redemption at an unchanged yield, not an option value",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -10413,7 +10424,8 @@
     "entry_evidence": [
      "meth:dividend-sustainability"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 15 (Harbour earnings and FCFE cover; Ridgeway)"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 15 (Harbour earnings and FCFE cover; Ridgeway); corrected 2026-10-20 (PR #31 audit): Harbour FCFE reconciled with equity-issue proceeds; Ridgeway split into FCF before borrowing and actual borrowing, with a target-policy alternative",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -10552,7 +10564,8 @@
     "entry_evidence": [
      "meth:cost-of-debt-equity-estimation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 11 (YTM, synthetic rating, implied ERP, CAPM, three-factor, build-up, bond-yield-plus, total beta)"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 11 (YTM, synthetic rating, implied ERP, CAPM, three-factor, build-up, bond-yield-plus, total beta); corrected 2026-10-20 (PR #31 audit): CAPM cost of equity 9.32% with options in market equity",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -10590,7 +10603,8 @@
     "entry_evidence": [
      "meth:capital-structure-benchmarking"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 12 (cost-of-capital curve with rating fixed point, covenant, peers)"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 12 (cost-of-capital curve with rating fixed point, covenant, peers); corrected 2026-10-20 (PR #31 audit): cost-of-capital curve recomputed at firm value 1,481.19 incl. options (10.90% at 40%, 12.73% at 50%; covenant near 35%)",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -10676,7 +10690,8 @@
     "entry_evidence": [
      "ex:restructuring-valuation-effects"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 16 (methods, value created and transferred, EPS, pro forma leverage, WACC with and without re-rating, walk-away price)"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 16 (methods, value created and transferred, EPS, pro forma leverage, WACC with and without re-rating, walk-away price); corrected 2026-10-20 (PR #31 audit): acquisition return compared after tax (6.25%) with the WACC; EPS, accounting return and DCF value kept distinct; WACC effect recomputed",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -10937,7 +10952,8 @@
     "entry_evidence": [
      "meth:sustainable-growth"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 9 and 18 (DuPont, equity growth, Harbour)"
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 9 and 18 (DuPont, equity growth, Harbour); corrected 2026-10-20 (PR #31 audit): ROE on opening equity (9.15% for 2025): sustainable growth 3.86%",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -10974,7 +10990,8 @@
     "entry_evidence": [
      "meth:valuation-price-judgement"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 4, 5, 10 and 18 (Harbour sensitivity and reverse engineering; Norland DDM judgement)"
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 4, 5, 10 and 18 (Harbour sensitivity and reverse engineering; Norland DDM judgement); corrected 2026-10-20 (PR #31 audit): justified value 7.81 by P/E, P/B and DDM; EV/EBITDA comparables 11.39 and 9.75 after options; implied ROE 14.18%",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -11092,7 +11109,8 @@
     "entry_evidence": [
      "meth:justified-multiples"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares)"
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (justified P/E, P/B, P/S, implied ROE, regression by least squares); corrected 2026-10-20 (PR #31 audit): ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -11132,7 +11150,8 @@
     "entry_evidence": [
      "meth:normalised-earnings"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (underlying EPS, average-ROE EPS, earnings yields)"
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (underlying EPS, average-ROE EPS, earnings yields); corrected 2026-10-20 (PR #31 audit): normalised ROE on opening equity (10.79%); 0.6935 dated as 2026 EPS and compared like-dated with underlying 2025 EPS",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -11172,7 +11191,8 @@
     "entry_evidence": [
      "meth:alternative-multiples"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (PEG range, dividend yield, P/S)"
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: part 10 (PEG range, dividend yield, P/S); corrected 2026-10-20 (PR #31 audit): justified P/B 1.22 and P/S 0.58 recomputed",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -11213,7 +11233,8 @@
     "entry_evidence": [
      "meth:enterprise-value-multiples"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 11 and 18 (EV/EBITDA, mismatches, lease and development adjustments, peer-implied value)"
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 11 and 18 (EV/EBITDA, mismatches, lease and development adjustments, peer-implied value); corrected 2026-10-20 (PR #31 audit): options in EV (7.59x) and deducted at the implied price in peer-multiple values (11.39; 9.75 development-adjusted)",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },
@@ -11258,7 +11279,8 @@
     "entry_evidence": [
      "meth:comparables-evaluation"
     ],
-    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 10, 12, 13 and 18 (mean, median, harmonic mean, terminal multiple implied growth, SUE, relative strength)"
+    "example": "notes/artefacts/systematic-equities/equity-valuation-checks.py: parts 10, 12, 13 and 18 (mean, median, harmonic mean, terminal multiple implied growth, SUE, relative strength); corrected 2026-10-20 (PR #31 audit): EV/EBITDA comparables restated after options (11.39, 9.75); justified value 7.81",
+    "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
   },

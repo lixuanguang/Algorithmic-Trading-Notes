@@ -7,6 +7,12 @@ come from one source. Assumptions added in this batch: a share price of EUR 11.0
 rate of 3.0%, an equity risk premium of 5.5%, a peer unlevered beta of 0.93 and a pre-tax cost of debt of 5.2%.
 Other companies (Kestrel, the platform, the projects, Company R, Ridgeway) are stand-alone hypothetical examples.
 
+Corrections of 2026-10-20 (audit of PR #31): the WACC weights count the 5m vested options (17.94 at the market
+price) in equity; cumulative voting uses N, the total shares voting, with an integer floor and a brute-force
+minimality check; the 2025 FCFE reconciliation includes the 6 of equity-issue proceeds; Ridgeway's FCFE is split
+into free cash flow before borrowing and actual net borrowing, with cash and debt reconciled and a target-policy
+alternative; the acquisition's return on price is compared after tax (6.25%) with the after-tax WACC.
+
 Independent routes: NPV against IRR found by root search; profitability-index ranking against brute-force search
 of every project combination; equity value from levered cash flows against firm value less debt (Modigliani-Miller);
 EPS after a buyback from the income statement against the earnings-yield rule; Lintner dividends from the
@@ -110,11 +116,36 @@ ok(
     "diverting 10 through a related-party sale costs the controller 2.60 and gains it 10",
     close(pyramid_cash, 0.2601) and round(diverted * pyramid_cash, 2) == 2.6,
 )
+# Cumulative voting (corrected 2026-10-20): N is the total number of shares voting, not the holder's
+# shares. A holder of S shares casts S x D votes; spread over k candidates each gets S D / k, and the other
+# holders' (N - S) D votes can give at most (N - S) D / (D - k + 1) to each of D - k + 1 rivals. k seats are
+# guaranteed (ties lost) iff S / k > (N - S) / (D - k + 1), i.e. S > N k / (D + 1).
 shares_voting, seats = 10_000_000, 5
-need_one = shares_voting * 1 // (seats + 1) + 1
+
+
+def guarantees(S, k, N=shares_voting, D=seats):
+    """Exact integer test: each of k candidates strictly beats the best D - k + 1 rivals can do."""
+    return S * D * (D - k + 1) > (N - S) * D * k
+
+
+def need_shares(k, N=shares_voting, D=seats):
+    return N * k // (D + 1) + 1
+
+
 ok(
-    "cumulative voting: 1,666,667 shares of 10m elect one of five directors (S/(D+1) + 1)",
-    need_one == 1_666_667,
+    "cumulative voting: floor(N k/(D+1)) + 1 = 1,666,667 of N = 10m shares voting guarantees one of five seats",
+    need_shares(1) == 1_666_667,
+)
+ok(
+    "the threshold is minimal for k = 1..5: it guarantees k seats and one share fewer does not",
+    all(
+        guarantees(need_shares(k), k) and not guarantees(need_shares(k) - 1, k) for k in range(1, 6)
+    ),
+    ", ".join(f"k={k}: {need_shares(k):,}" for k in range(1, 6)),
+)
+ok(
+    "the superseded display N/(D+1) + 1 = 1,666,667.67 is not an integer share count",
+    round(shares_voting / (seats + 1) + 1, 2) == 1_666_667.67,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -357,7 +388,12 @@ ok(
 print("== part 9: Harbour's WACC with market-value weights")
 rf, erp, beta_u, kd_pre = 0.03, 0.055, 0.93, 0.052
 debt = -(B25["term_loan"] + B25["revolver"] + B25["lease_liab"])
-mkt_eq = PRICE * SHARES
+# Claim definitions (corrected 2026-10-20): the 5m vested options are an equity claim, valued here at the
+# market price with the inputs of the Harbour equity bridge (strike 8, three years, volatility 30%, rate 3%,
+# dividend yield 2.5%), so market equity is shares plus options, as the entry's own definition says.
+opt_mkt = 5.0 * H["bs_call"](PRICE, 8.0, 3.0, 0.03, 0.30, 0.025)
+mkt_shares = PRICE * SHARES
+mkt_eq = mkt_shares + opt_mkt
 de = debt / mkt_eq
 beta_l = beta_u * (1 + (1 - TAX) * de)
 ke = rf + beta_l * erp
@@ -365,21 +401,34 @@ kd = kd_pre * (1 - TAX)
 w_e, w_d = mkt_eq / (mkt_eq + debt), debt / (mkt_eq + debt)
 wacc_mkt = w_e * ke + w_d * kd
 ok(
-    "debt 355 (term loan 250, RCF 40, leases 65), equity 1,108.25; D/E 32.03%, levered beta 1.1534, "
-    "ke 9.34%, after-tax kd 3.90%, WACC 8.02%",
+    "options at the market price: 5m x 3.5878 = 17.94; market equity 1,108.25 + 17.94 = 1,126.19",
+    round(opt_mkt, 2) == 17.94 and round(mkt_eq, 2) == 1126.19,
+)
+ok(
+    "debt 355 (term loan 250, RCF 40, leases 65), equity incl. options 1,126.19; D/E 31.52%, levered beta "
+    "1.1499, ke 9.32%, after-tax kd 3.90%, WACC 8.02%",
     close(debt, 355)
-    and round(de, 4) == 0.3203
-    and round(beta_l, 4) == 1.1534
-    and round(ke, 4) == 0.0934
+    and round(de, 4) == 0.3152
+    and round(beta_l, 4) == 1.1499
+    and round(ke, 4) == 0.0932
     and round(wacc_mkt, 4) == 0.0802,
     f"weights E {w_e:.4f} D {w_d:.4f}",
+)
+de_sup = debt / mkt_shares
+ke_sup = rf + beta_u * (1 + (1 - TAX) * de_sup) * erp
+wacc_sup = (mkt_shares * ke_sup + debt * kd) / (mkt_shares + debt)
+ok(
+    "the superseded shares-only weights gave ke 9.34% and WACC 8.02%: the option claim moves ke by 0.02 points "
+    "and leaves the WACC unchanged at two decimals",
+    round(ke_sup, 4) == 0.0934 and round(wacc_sup, 4) == 0.0802 and abs(wacc_sup - wacc_mkt) < 2e-5,
+    f"ke {ke_sup:.5f} -> {ke:.5f}; WACC {wacc_sup:.5f} -> {wacc_mkt:.5f}",
 )
 book_eq = H["bs_view"](2025)["eq"]
 w_book = debt / (debt + book_eq)
 wacc_book = (1 - w_book) * ke + w_book * kd
 ok(
-    "book weights (equity 647.38) put debt at 35.42% and give 7.42%, understating the market-value WACC",
-    round(book_eq, 2) == 647.38 and round(w_book, 4) == 0.3542 and round(wacc_book, 4) == 0.0742,
+    "book weights (equity 647.38) put debt at 35.42% and give 7.40%, understating the market-value WACC",
+    round(book_eq, 2) == 647.38 and round(w_book, 4) == 0.3542 and round(wacc_book, 4) == 0.0740,
 )
 wacc_rate_up = w_e * (ke + 0.01) + w_d * (kd_pre + 0.01) * (1 - TAX)
 ok(
@@ -387,9 +436,14 @@ ok(
     round(wacc_rate_up - wacc_mkt, 4) == 0.0094,
 )
 pension_after_tax = -B25["db_liab"] * (1 - TAX)
+d_p = debt + pension_after_tax
+ke_p = rf + beta_u * (1 + (1 - TAX) * d_p / mkt_eq) * erp
+wacc_p = (mkt_eq * ke_p + d_p * kd) / (mkt_eq + d_p)
 ok(
-    "the after-tax pension deficit 36.12 is a debt-like claim in the bridge but is left out of the WACC weights",
-    round(pension_after_tax, 2) == 36.12,
+    "the after-tax pension deficit 36.12 is a debt-like claim in the bridge; counted as debt at the after-tax "
+    "cost of debt it would give WACC 8.02% (8.017% against 8.024%)",
+    round(pension_after_tax, 2) == 36.12 and round(wacc_p, 4) == 0.0802 and wacc_p < wacc_mkt,
+    f"{wacc_p:.5f}",
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -493,8 +547,8 @@ ff3 = 0.03 + 1.10 * 0.055 + 0.30 * 0.02 + 0.20 * 0.03
 build_up = 0.03 + 0.055 + 0.02 + 0.01
 bond_plus = kd_pre + 0.04
 ok(
-    "Harbour ke by method: CAPM 9.34%, three-factor 10.25%, build-up 11.50%, bond yield plus 4% = 9.20%",
-    [round(x, 4) for x in (ke, ff3, build_up, bond_plus)] == [0.0934, 0.1025, 0.115, 0.092],
+    "Harbour ke by method: CAPM 9.32%, three-factor 10.25%, build-up 11.50%, bond yield plus 4% = 9.20%",
+    [round(x, 4) for x in (ke, ff3, build_up, bond_plus)] == [0.0932, 0.1025, 0.115, 0.092],
 )
 beta_kestrel = beta_u * (1 + (1 - TAX) * 0.5)
 total_beta = beta_kestrel / 0.45
@@ -533,22 +587,25 @@ def wacc_at(dv, ebit=ebit_2026):
 curve = {dv: wacc_at(dv) for dv in np.round(np.arange(0.0, 0.71, 0.05), 2)}
 best_dv = min(curve, key=lambda k: curve[k][0])
 ok(
-    "illustrative schedule: WACC 8.12% unlevered, lowest 7.84% at 20% debt, 8.02% at 25% (Harbour's rating), "
-    "then rising as the rating falls: 8.36% at 30%, 10.15% at 40%",
+    "illustrative schedule (firm value 1,481.19 incl. options): WACC 8.12% unlevered, lowest 7.84% at 20% debt, "
+    "8.02% at 25% (Harbour's rating), then rising as the rating falls: 8.36% at 30%, 10.90% at 40%",
     best_dv == 0.2
-    and [round(curve[k][0], 4) for k in (0.0, 0.2, 0.25, 0.3, 0.4)]
-    == [0.0812, 0.0784, 0.0802, 0.0836, 0.1015],
+    and [round(curve[k][0], 4) for k in (0.0, 0.2, 0.25, 0.3, 0.4, 0.5)]
+    == [0.0812, 0.0784, 0.0802, 0.0836, 0.109, 0.1273]
+    and [round(curve[k][1], 3) for k in (0.0, 0.2, 0.25, 0.3, 0.4, 0.5)]
+    == [0.037, 0.039, 0.052, 0.068, 0.15, 0.18]
+    and round(V_firm, 2) == 1481.19,
     ", ".join(f"{k:.0%}: {v[0]:.2%} (kd {v[1]:.1%})" for k, v in curve.items()),
 )
 lev_at = {dv: (dv * V_firm - B25["cash"]) / R25["ebitda"] for dv in (0.2, 0.3, 0.35)}
 ok(
-    "the 2.50x leverage covenant binds near 35% debt: net debt/EBITDA 1.31 at 20%, 2.06 at 30%, 2.43 at 35%",
-    [round(v, 2) for v in lev_at.values()] == [1.31, 2.06, 2.43],
+    "the 2.50x leverage covenant binds just above 35% debt: net debt/EBITDA 1.33 at 20%, 2.09 at 30%, 2.47 at 35%",
+    [round(v, 2) for v in lev_at.values()] == [1.33, 2.09, 2.47],
 )
 peers_dv = np.array([0.18, 0.22, 0.28, 0.31, 0.35])
 ok(
-    "peer median debt/value 28% against Harbour's 24.26%",
-    close(np.median(peers_dv), 0.28) and round(w_d, 4) == 0.2426,
+    "peer median debt/value 28% against Harbour's 23.97%",
+    close(np.median(peers_dv), 0.28) and round(w_d, 4) == 0.2397,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -632,11 +689,22 @@ ok(
 print("== part 15: dividend coverage and sustainability")
 profit25, divs25 = 55.38, 32.0
 fcfe25 = H["fcfe"]
+t25 = H["t25"]
+issue25 = t25[("fin", "share_issue")]
+dcash25 = B25["cash"] - H["B"][2024]["cash"]
 ok(
     "Harbour 2025: earnings cover 1.73x, payout 57.8%; FCFE 28.04 covers dividends 0.88x",
     round(profit25 / divs25, 2) == 1.73
     and round(divs25 / profit25, 3) == 0.578
     and round(fcfe25 / divs25, 2) == 0.88,
+)
+ok(
+    "statutory FCFE reconciliation (corrected): FCFE 28.04 = dividends 32 - equity-issue proceeds 6 + cash "
+    "increase 2.04; omitting the issue proceeds would leave a gap of 6",
+    close(fcfe25, divs25 - issue25 + dcash25, 1e-9)
+    and close(issue25, 6.0)
+    and round(dcash25, 2) == 2.04
+    and round(divs25 + dcash25 - fcfe25, 2) == 6.0,
 )
 fcfe_val25 = H["fcfe_val25"]
 ok(
@@ -650,18 +718,37 @@ ok(
     and round(f26["divs"], 2) == 29.36
     and round(f26["profit"] / f26["divs"], 2) == 2.5,
 )
+# Ridgeway (corrected 2026-10-20). FCFE already contains actual net borrowing, so the dividend-FCFE gap
+# cannot be "funded by borrowing" again. Each year: free cash flow before net borrowing (CFO after interest
+# less net capital spending), actual net borrowing, FCFE, dividends, no share issues or buybacks, and cash.
 ridge = dict(
     ni=[120.0, 100.0, 85.0],
     div=[110.0, 112.0, 114.0],
-    fcfe=[90.0, 70.0, 55.0],
-    net_debt=[900.0, 960.0, 1040.0],
+    fcf_pre=[60.0, 52.0, 34.0],
+    borrow=[30.0, 18.0, 21.0],
     ebitda=[400.0, 380.0, 360.0],
 )
+ridge_debt0, ridge_cash0, ridge_ebitda0 = 1050.0, 200.0, 400.0
+ridge["fcfe"] = [a + b for a, b in zip(ridge["fcf_pre"], ridge["borrow"])]
+debt_t, cash_t = [], []
+dbt, csh = ridge_debt0, ridge_cash0
+for fc, bo, dv in zip(ridge["fcfe"], ridge["borrow"], ridge["div"]):
+    dbt += bo
+    csh += fc - dv  # the cash identity: FCFE - dividends (no issues or buybacks) = change in cash
+    debt_t.append(dbt)
+    cash_t.append(csh)
+ridge["net_debt"] = [d - c for d, c in zip(debt_t, cash_t)]
 payout = [d / n for d, n in zip(ridge["div"], ridge["ni"])]
 fc = [f / d for f, d in zip(ridge["fcfe"], ridge["div"])]
 lev = [n / e for n, e in zip(ridge["net_debt"], ridge["ebitda"])]
 ok(
-    "Ridgeway: payout 92% -> 134%, FCFE cover 0.82 -> 0.48, net debt/EBITDA 2.25 -> 2.89: borrowing to pay",
+    "Ridgeway: FCFE 90, 70, 55 = FCF before borrowing 60, 52, 34 + actual net borrowing 30, 18, 21; net debt "
+    "900, 960, 1,040",
+    ridge["fcfe"] == [90.0, 70.0, 55.0] and ridge["net_debt"] == [900.0, 960.0, 1040.0],
+    f"debt {debt_t}, cash {cash_t}",
+)
+ok(
+    "payout 92% -> 134%, FCFE cover 0.82 -> 0.48, net debt/EBITDA 2.25 -> 2.89",
     round(payout[0], 2) == 0.92
     and round(payout[-1], 2) == 1.34
     and round(fc[0], 2) == 0.82
@@ -669,9 +756,31 @@ ok(
     and round(lev[0], 2) == 2.25
     and round(lev[-1], 2) == 2.89,
 )
+gap = sum(ridge["div"]) - sum(ridge["fcfe"])
 ok(
-    "cumulative dividends exceed cumulative FCFE by 121 over the three years",
-    close(sum(ridge["div"]) - sum(ridge["fcfe"]), 121.0),
+    "dividends exceed FCFE by 121 over three years, met from cash (200 -> 79), not by further borrowing: "
+    "actual borrowing 69 is already inside FCFE",
+    close(gap, 121.0)
+    and close(ridge_cash0 - cash_t[-1], gap)
+    and close(sum(ridge["borrow"]), 69.0),
+)
+ok(
+    "net debt rises 190 = borrowing 69 + cash drawn 121 = dividends 336 - FCF before borrowing 146 "
+    "(no double count)",
+    close(ridge["net_debt"][-1] - (ridge_debt0 - ridge_cash0), 190.0)
+    and close(sum(ridge["borrow"]) + gap, 190.0)
+    and close(sum(ridge["div"]) - sum(ridge["fcf_pre"]), 190.0),
+)
+# Target-policy borrowing: holding net debt at 2.25x EBITDA lets net debt change by 2.25 x the change in
+# EBITDA (0, -45, -45 as EBITDA falls 400 -> 360). FCFE on that policy = FCF before borrowing + policy borrowing.
+policy = [2.25 * (e - p) for e, p in zip(ridge["ebitda"], [ridge_ebitda0, *ridge["ebitda"][:-1]])]
+fcfe_policy = [a + b for a, b in zip(ridge["fcf_pre"], policy)]
+ok(
+    "at a 2.25x net-debt policy the borrowing capacity is 0, -45, -45: policy FCFE 60, 7, -11 (56) against "
+    "dividends 336, cover 0.17",
+    policy == [0.0, -45.0, -45.0]
+    and fcfe_policy == [60.0, 7.0, -11.0]
+    and round(sum(fcfe_policy) / sum(ridge["div"]), 2) == 0.17,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -703,11 +812,24 @@ eps_base = profit25 / 100.375
 eps_pf = (profit25 + target_ni) / 100.375
 ok(
     "EPS effect (2025 basis, full year): target EBIT 5.00 less interest 3.12 at 5.2%, after tax 1.41; "
-    "EPS 0.5517 -> 0.5658 (+2.5%), though the deal earns 5.0/60 = 8.3% pre-tax on the price",
+    "EPS 0.5517 -> 0.5658 (+2.5%)",
     close(target_ebit, 5.0)
     and round(target_ni, 2) == 1.41
     and round(eps_base, 4) == 0.5517
     and round(eps_pf, 4) == 0.5658,
+)
+ok(
+    "return on the price (corrected): EBIT/price 8.33% is pre-tax; after tax 5.0 x 0.75 / 60 = 6.25%, "
+    "1.77 points below the 8.02% after-tax WACC, although EPS rises",
+    round(target_ebit / acq["price"], 4) == 0.0833
+    and close(target_ebit * (1 - TAX) / acq["price"], 0.0625)
+    and round(wacc_mkt - 0.0625, 4) == 0.0177
+    and eps_pf > eps_base,
+)
+ok(
+    "accretion test: EPS rises because the after-tax return 6.25% exceeds the after-tax cost of debt 3.90%, "
+    "a test that ignores the equity cost of the risk added",
+    0.0625 > kd and close(target_ni, (0.0625 - kd) * acq["price"]),
 )
 eq_pf = mkt_eq
 debt_pf = debt + acq["price"]
@@ -720,11 +842,14 @@ wacc_pf_rerated = eq_pf / (eq_pf + debt_pf) * ke_pf + debt_pf / (eq_pf + debt_pf
     1 - TAX
 )
 ok(
-    "WACC effect: debt 415, D/E 37.45%, beta 1.1912, ke 9.55%; at an unchanged 5.2% kd WACC is 8.01%, but cover "
-    "116/(415 x kd) re-rates the debt and WACC rises",
-    round(de_pf, 4) == 0.3745
-    and round(beta_pf, 4) == 1.1912
+    "WACC effect: debt 415 against equity incl. options 1,126.19, D/E 36.85%, beta 1.1870, ke 9.53%; at an "
+    "unchanged 5.2% kd WACC is 8.01%, but cover 116/(415 x kd) re-rates the debt to BB+ (6.0%) and WACC is 8.17%",
+    round(de_pf, 4) == 0.3685
+    and round(beta_pf, 4) == 1.187
+    and round(ke_pf, 4) == 0.0953
     and round(wacc_pf, 4) == 0.0801
+    and rating_pf == "BB+"
+    and round(wacc_pf_rerated, 4) == 0.0817
     and wacc_pf_rerated > wacc_mkt,
     f"re-rated {rating_pf} kd {kd_pf:.2%} WACC {wacc_pf_rerated:.2%}",
 )

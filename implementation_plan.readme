@@ -15,8 +15,9 @@ committed copy (Section 15). The portfolio choice and asset pricing batch
 and all eight `topic:asset-pricing-factor-models` objectives, including the two
 analysis-level ones, after two audit corrections; a fixes-only correction
 pass followed (Section 17), which also moved remote CI to merged pull requests.
-Standing batch preference: future content-expansion prompts target 30 newly
-completed objectives (Section 17.4). The performance and planning batch (Section 18) then
+Standing batch preference: each content-expansion prompt targets 45 newly
+completed objectives in addition to any audit fixes (Section 17.4; raised from 30
+on 2026-10-19, and the batches of Sections 18 and 19 keep their 30-objective records). The performance and planning batch (Section 18) then
 covered 30 objectives in index construction, investment planning, behavioural finance, risk
 governance, active management, performance evaluation, manager selection and GIPS, on a
 branch stacked on PR #22. No next content slice has been selected. Not started: the remaining `topic:linear-regression` objectives
@@ -3058,3 +3059,29 @@ outputs.
 - Human review is outstanding.
 
 Details: `notes/source-review-records.md`, *Corporate-finance and equity-valuation batch, 20 October 2026*.
+
+## 28. Corporate-equity audit corrections on PR #31 (executed 2026-10-20)
+
+**Verified state.** PRs #29 (draft, head `6157abb`, base `main`), #30 (draft, head `1f51fcf`,
+stacked on #29) and #31 (draft, head `a6b6c64`, stacked on #30) were open and unchanged; the
+checkout was clean at `a6b6c64`; coverage 281/424 objectives and 655/1,030 items. The seven
+corrections are ordinary commits on PR #31's branch.
+
+**Corrections** (figures: `notes/source-review-records.md`, *Corporate-equity audit correction pass*):
+1. options are a claim in market EV (1,479.77), in the WACC weights (ke 9.32 percent, WACC 8.02
+   percent) and in peer-multiple values, iterated at the implied price (11.39 and 9.75, superseding
+   11.59 and 9.88);
+2. ROE is E_t/B_{t-1} in every valuation and growth formula; P/E, P/B and the DDM reconcile at 7.81
+   (superseding 7.83 and 7.64), sustainable growth 3.86 percent;
+3. FCFE 28.04 = dividends 32 - issue proceeds 6 + cash 2.04; Ridgeway's gap is met from cash, with
+   actual and target-policy borrowing kept apart;
+4. LP, LLP and LLC liability restated from Delaware Title 6;
+5. the bolt-on earns 6.25 percent after tax against an 8.02 percent WACC; recommendation unchanged;
+6. the callable preferred value is conditional on redemption;
+7. cumulative voting uses N, total shares voting, with an integer floor.
+
+**Evidence.** 75 and 72 checks in the two scripts (from 65 and 62). 17 objectives and 43 outline
+items rechecked; coverage unchanged.
+
+Standing preference: Section 17.4 already recorded 45 objectives per expansion prompt; the summary
+at the top of this file, which still said 30, now agrees with it.

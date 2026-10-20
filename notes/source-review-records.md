@@ -4806,3 +4806,90 @@ learner mastery or independent human review.
 **Limits.** Harbour, Kestrel, Ridgeway, Norland, Calder, Ashby, Company R and the peers are
 hypothetical. Rating spreads, factor loadings, carbon prices and peer data are scenario
 inputs. Damodaran's market data and tax descriptions are as of 2012-2014.
+
+## Corporate-equity audit correction pass, 20 October 2026
+
+**Starting state.** Verified before edits: PR #29 (draft, head `6157abb`, base `main`), PR #30
+(draft, head `1f51fcf`, base `codex/macro-source-corrections-20261020`) and PR #31 (draft, head
+`a6b6c64`, base `codex/accounting-statement-analysis-20261020`) open and unchanged; the checkout
+was clean on `codex/corporate-equity-valuation-20261020` at `a6b6c64`; coverage 281/424 objectives
+and 655/1,030 items. These corrections are ordinary commits on PR #31's branch. They count toward
+no new objective. The batch record above is kept as history; where it differs, this record
+supersedes it.
+
+**Findings reproduced first.** Each audit claim was recomputed from the canonical Harbour inputs
+before the text was changed: the five million vested options are worth 17.94 at the market price on
+the equity-bridge inputs, so market EV omitting them (1,461.83) is not on the DCF bridge's claim
+set; dividing the whole EV/EBITDA residual by the shares gave 11.59 and 9.88; the justified P/E
+route multiplied ROE x B0, already E1, by 1.025, so it exceeded the P/B route by exactly 2.5
+percent; the Harbour FCFE sentence omitted the 6 of issue proceeds; FCFE for Ridgeway already
+contained borrowing; the bolt-on's 8.33 percent was pre-tax; the 102.19 assumed redemption; the
+cumulative-voting notation used the holder's shares where the total belongs, and the displayed
+1/6 product was not an integer.
+
+**Corrections.**
+1. *Options in enterprise value* (`def:price-value-indicators`, `meth:enterprise-value-multiples`,
+   `meth:comparables-evaluation`, `meth:valuation-price-judgement`). Market EV 1,479.77 includes
+   options at 17.94; the intrinsic bridge with the same claims rebuilds the DCF EV of 1,218.45
+   (options 9.28 at 8.49). EV/EBITDA 7.59 (from 7.50); the lease-omission mismatch 7.07 (from 6.98);
+   development-adjusted 8.55 (from 8.45). Peer-multiple values solve
+   p = (residual - 5 C(p)) / 100.75: 11.39 (options 19.45) and 9.75 (options 13.40), superseding
+   11.59 and 9.88.
+   *WACC claim definitions* (`meth:wacc-calculation`, `meth:cost-of-debt-equity-estimation`,
+   `meth:capital-structure-benchmarking`, `ex:restructuring-valuation-effects`). The entry defined
+   equity options as equity but omitted them from the weights. With them: equity 1,126.19, D/E
+   31.52 percent, beta 1.1499, ke 9.32 percent (from 9.34), WACC 8.02 percent (unchanged at two
+   decimals); book weights 7.40 percent; pension as debt 8.017 percent. The cost-of-capital curve at
+   firm value 1,481.19 gives 10.90 percent at 40 percent debt and 12.73 percent at 50 percent (from
+   10.15 and 11.60); covenant leverage 1.33, 2.09 and 2.47 at 20, 30 and 35 percent; the bolt-on's
+   pro forma D/E 36.85 percent, beta 1.1870, ke 9.53 percent, re-rated WACC 8.17 percent (from 8.18).
+2. *ROE timing* (`meth:justified-multiples`, `meth:normalised-earnings`, `meth:sustainable-growth`,
+   `meth:alternative-multiples`). Convention chosen: ROE_t = E_t / B_{t-1} wherever ROE drives a
+   valuation or growth formula. Harbour's 2024-2025 ROE on opening equity is 12.01 and 9.15 percent
+   (11.52 and 8.84 on average equity, which the ratio analysis keeps); the cycle average is 10.79
+   percent (from 10.63). With ke 9.32 percent: payout 76.8 percent, leading P/E 11.26, P/B 1.22,
+   D1 0.533; P/E x E1 = P/B x B0 = D1/(ke - g) = 7.81, and a 4,000-year dividend sum agrees. The
+   superseded double growth gives 8.00 on these inputs (7.83 against 7.64 on the old ones); the
+   average-equity variant gives 7.66 on every route. Normalised EPS 0.6935 is dated 2026; the
+   like-dated 2025 figure is 0.6505 against underlying 0.6862. Sustainable growth 3.86 percent (from
+   3.73), equal to retained profit over opening equity. P/S 0.58; implied ROE 14.18 percent.
+   The audit's expected 7.64 assumed the average-equity cycle ROE; it is not adopted because that
+   ROE is not E1/B0.
+3. *FCFE and dividend funding* (`meth:dividend-sustainability`). Harbour: FCFE 28.04 = dividends 32
+   - issue proceeds 6 + cash increase 2.04; the 3.96 by which dividends exceeded FCFE was met by the
+   share issue. Ridgeway now states free cash flow before borrowing (60, 52, 34), actual net
+   borrowing (30, 18, 21), FCFE (90, 70, 55), opening debt 1,050 and cash 200: the 121 gap is met
+   from cash (200 to 79); net debt rises 190 = 69 + 121 = 336 - 146; target-policy borrowing at
+   2.25x EBITDA (0, -45, -45) gives policy FCFE 56, cover 0.17. Share-based pay remains a separate
+   valuation charge (19.04).
+4. *LP, LLP and LLC* (`def:organisational-forms-issuers`). Rewritten from 6 Del. C. secs. 15-306(a),
+   (c), (e), 15-1001, 17-303(a), 17-403(b) and 18-303, read in the official online code; the
+   inference that a partner remains liable for its own wrongs is marked as Interpretation.
+5. *Acquisition return* (`ex:restructuring-valuation-effects`). After tax 5.0 x 0.75 / 60 = 6.25
+   percent, 1.77 points below the 8.02 percent WACC. EPS accretion, the one-year accounting return
+   and DCF value are listed as different measures. The recommendation is unchanged because it rests
+   on the standalone DCF (52 against 60), which the after-tax return confirms.
+6. *Callable preferred* (`meth:preferred-stock-valuation`). 102.19 is a deterministic value
+   conditional on redemption at year five with the yield held at 4.5 percent; at a year-five yield
+   of 5 percent or more redemption at 100 gains the issuer nothing; 8.92 is the cost on that path,
+   not an option value.
+7. *Cumulative voting* (`def:equity-rights-voting`). N is the total number of shares voting;
+   floor(N k/(D+1)) + 1 shares guarantee k seats when all shares vote, plurality elects and ties are
+   lost; 1,666,667 retained.
+
+**Numerical evidence.** `corporate-finance-checks.py` now executes 75 checks (from 65) and
+`equity-valuation-checks.py` 72 (from 62). New checks would detect each original error: the
+superseded EV equals the corrected EV less the option value; the old peer value exceeds the
+iterated one; the old P/E route exceeds P/B by exactly g; dividends + cash change - FCFE = 6; net
+debt growth equals borrowing + cash drawn, so counting the 121 as borrowing would double count;
+EBIT/price is 8.33 percent and after tax 6.25 percent; the voting threshold is minimal by an exact
+integer test for k = 1 to 5 and one share fewer fails; redemption is tested against several
+year-five yields. Independent routes: the option fixed point against the DCF bridge, the dividend
+sum against the closed forms, the cash identity for Ridgeway.
+
+**Coverage.** The 17 objectives whose entries changed were reassessed at their stated depth and
+remain covered; their 43 outline items keep their mappings, with rationales noting the recheck.
+Coverage unchanged: 281/424 objectives and 655/1,030 items.
+
+**Limits.** Option inputs, the 2021-2023 ROEs and the peer data remain illustrative. Delaware
+case law and other states' partnership statutes were not read.

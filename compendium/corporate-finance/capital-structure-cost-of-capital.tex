@@ -21,7 +21,7 @@ Raising the debt weight replaces expensive equity with cheaper after-tax debt, b
 
 \qffield{Practice} \emph{Harbour Tools at 31 December 2025} (\hyperref[ex:harbour-tools-statements]{case}). Assumptions:
 \begin{itemize}
-\item share price EUR~11.00 on 100.75 million shares, giving equity 1,108.25;
+\item share price EUR~11.00 on 100.75 million shares, 1,108.25, plus the 5 million vested options at their value at that price, 17.94 (strike 8, three years, the inputs of the valuation's equity bridge), giving equity 1,126.19;
 \item debt: term loan 250, RCF 40 and leases 65, total 355;
 \item risk-free rate 3.0 percent, equity premium 5.5 percent;
 \item a peer unlevered beta of 0.93, a pre-tax cost of debt of 5.2 percent (its BBB bond yield, \hyperref[meth:cost-of-debt-equity-estimation]{cost of debt}) and a 25 percent tax rate.
@@ -29,20 +29,21 @@ Raising the debt weight replaces expensive equity with cheaper after-tax debt, b
 
 Calculation:
 \begin{itemize}
-\item $D/E=355/1{,}108.25=32.03$ percent; levered beta $0.93\times(1+0.75\times0.3203)=1.1534$.
-\item $k_e=3.0+1.1534\times5.5=9.34$ percent; after-tax $k_d=5.2\times0.75=3.90$ percent.
-\item Weights are 75.74 percent equity and 24.26 percent debt, so $\mathrm{WACC}=0.7574\times9.34+0.2426\times3.90=8.02$ percent.
+\item $D/E=355/1{,}126.19=31.52$ percent; levered beta $0.93\times(1+0.75\times0.3152)=1.1499$.
+\item $k_e=3.0+1.1499\times5.5=9.32$ percent; after-tax $k_d=5.2\times0.75=3.90$ percent.
+\item Weights are 76.03 percent equity and 23.97 percent debt, so $\mathrm{WACC}=0.7603\times9.32+0.2397\times3.90=8.02$ percent.
 \end{itemize}
+Leaving the options out of equity gives $k_e$ of 9.34 percent and the same WACC to two decimals; the point is consistency with the bridges, which count the options as a claim (\hyperref[def:price-value-indicators]{EV}).
 This supports the 8 percent used in the \hyperref[meth:forecast-horizon-steady-state]{Harbour valuation}.
 
 Alternatives:
 \begin{itemize}
-\item Book weights, with equity at 647.38, put debt at 35.42 percent and give 7.42 percent. That is 0.60 points lower, which would raise the valuation by more than the cash flows justify.
+\item Book weights, with equity at 647.38, put debt at 35.42 percent and give 7.40 percent. That is 0.62 points lower, which would raise the valuation by more than the cash flows justify.
 \item A one-point rise in the risk-free rate, holding spreads, beta and weights, adds 0.94 points to the WACC.
 \end{itemize}
-The after-tax pension deficit of 36.12 is deducted as a debt-like claim in the equity bridge but is not in these weights. A fuller treatment would include it in debt and use the pension's own cost; the effect here is small.
+The after-tax pension deficit of 36.12 is deducted as a debt-like claim in the equity bridge but is not in these weights. Counting it as debt at the after-tax cost of debt gives 8.017 percent against 8.024 percent; a fuller treatment would use the pension's own cost.
 
-\qffield{Conditions} The weights, rates and tax rate must refer to the same date and the same capital structure as the cash flows. A firm whose structure is expected to change should use target weights, or a year-by-year WACC (p.~148). The marginal tax rate applies only if the firm has taxable income to shield. Using the market price to set the weights assumes the market value is a reasonable estimate; with Harbour's estimated value of 8.49 instead of 11.00, equity would be 855.59 and the debt weight about 29 percent.
+\qffield{Conditions} The weights, rates and tax rate must refer to the same date and the same capital structure as the cash flows. A firm whose structure is expected to change should use target weights, or a year-by-year WACC (p.~148). The marginal tax rate applies only if the firm has taxable income to shield. Using the market price to set the weights assumes the market value is a reasonable estimate; with Harbour's estimated value of 8.49 instead of 11.00, equity including options would be 864.87 and the debt weight about 29 percent.
 
 \qffield{Pitfalls} Using book values or the coupon rate on old debt. Using the effective or average tax rate. Forgetting leases and other debt-like claims, or deducting them in the equity bridge while omitting them from the weights. Applying the firm's WACC to a project of different risk. Treating short-term debt as cheaper capital for the hurdle rate (pp.~139--140).
 
@@ -115,7 +116,7 @@ The approaches diverge because historical premiums rise as prices rise while imp
 \item \emph{Debt.} Its 4 percent bond due 2030, priced at 94.83, yields 5.20 percent; its BBB rating implies $3.0+2.2=5.2$ percent on an illustrative spread schedule. A synthetic rating from 2025 operating profit before the restructuring charge, 111, over interest at 5.2 percent on 355 (18.46), gives coverage of 6.01. On that schedule this is BBB, confirming 5.2 percent. The book rate, 2025 interest over average debt, is lower because the debt was arranged when rates were lower.
 \item \emph{Equity.} Methods give:
 \begin{itemize}
-\item CAPM: 9.34 percent;
+\item CAPM: 9.32 percent;
 \item a three-factor model with market loading 1.10 and loadings of 0.30 and 0.20 on premiums of 2 and 3 points: 10.25 percent;
 \item build-up with a 2-point size and 1-point specific premium: 11.50 percent;
 \item bond yield plus a 4-point premium: 9.20 percent.
@@ -163,19 +164,19 @@ Damodaran's Disney example gives a current WACC of 7.81 percent (pp.~348--350). 
 
 \emph{Peer comparison.} Comparing with the industry average assumes the peers are comparable and, on average, right. Both are questionable. Use market-value ratios on the same definition, net or gross of cash, and control for differences such as profitability and tax rate, for example with a regression across firms (pp.~382--385). Firms herd towards peer ratios, so the industry average is not evidence of an optimum.
 
-\qffield{Practice} \emph{Harbour.} Hold firm value at 1,463.25 and normalised operating profit at 111. Use an illustrative coverage-to-spread schedule calibrated so that Harbour's current coverage gives its BBB spread of 2.2 points; an unlevered beta of 0.93; and a 25 percent tax rate. The WACC by debt-to-value ratio:
+\qffield{Practice} \emph{Harbour.} Hold firm value at 1,481.19 (equity including options, plus debt) and normalised operating profit at 111. Use an illustrative coverage-to-spread schedule calibrated so that Harbour's current coverage gives its BBB spread of 2.2 points; an unlevered beta of 0.93; and a 25 percent tax rate. The WACC by debt-to-value ratio:
 
 \begin{center}\small
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
 Debt / value & 0\% & 20\% & 25\% & 30\% & 40\% & 50\% \\
-Pre-tax cost of debt & 3.7\% & 3.9\% & 5.2\% & 6.8\% & 12.5\% & 15.0\% \\
-WACC & 8.12\% & 7.84\% & 8.02\% & 8.36\% & 10.15\% & 11.60\% \\
+Pre-tax cost of debt & 3.7\% & 3.9\% & 5.2\% & 6.8\% & 15.0\% & 18.0\% \\
+WACC & 8.12\% & 7.84\% & 8.02\% & 8.36\% & 10.90\% & 12.73\% \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The minimum is near 20 percent. Harbour's 24.26 percent is close to it, and more debt quickly worsens its rating because its operating profit is modest relative to its market value. The lenders' 2.50 times net debt to EBITDA covenant would bind near 35 percent: net debt to EBITDA is 1.31 at 20 percent, 2.06 at 30 percent and 2.43 at 35 percent.
+The minimum is near 20 percent. Harbour's 23.97 percent is close to it, and more debt quickly worsens its rating because its operating profit is modest relative to its market value. The lenders' 2.50 times net debt to EBITDA covenant would bind just above 35 percent: net debt to EBITDA is 1.33 at 20 percent, 2.09 at 30 percent and 2.47 at 35 percent.
 
 Five listed peers have debt-to-value ratios of 18, 22, 28, 31 and 35 percent, a median of 28 percent. That alone would suggest room for more debt. The cost-of-capital analysis says otherwise because Harbour's profitability is below the peers'. The comparison should be on coverage and debt to EBITDA, not on the debt ratio alone.
 

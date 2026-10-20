@@ -7,20 +7,22 @@
 
 \emph{Market capitalisation} is the share price times shares outstanding: the market's current price for the equity.
 
-\emph{Enterprise value} is the market value of the claims on the operating business: equity, plus debt and debt-like claims such as leases, pension deficits, preferred stock and minority interests, less cash and non-operating assets. Cash is netted because operating income excludes the interest earned on it \citep[pp.~500--501]{investment-valuation-2012}. It is the price of the business independent of how it is financed, and the numerator for operating measures such as EBITDA.
+\emph{Enterprise value} is the market value of the claims on the operating business: equity, including employee options, warrants and other equity claims, plus debt and debt-like claims such as leases, pension deficits, preferred stock and minority interests, less cash and non-operating assets. Cash is netted because operating income excludes the interest earned on it \citep[pp.~500--501]{investment-valuation-2012}. It is the price of the business independent of how it is financed, and the numerator for operating measures such as EBITDA.
 
 \qffield{Practice} \emph{Harbour Tools at 31 December 2025} (\hyperref[ex:harbour-tools-statements]{case}), at a share price of 11.00:
 \begin{itemize}
 \item \emph{Market capitalisation}: $11.00\times100.75=1{,}108.25$.
 \item \emph{Book equity}: 647.38, or 6.43 a share, so price to book is 1.71.
-\item \emph{Enterprise value}: $1{,}108.25+355+36.12-37.54=1{,}461.83$. The 355 is the term loan, revolver and leases, 36.12 is the after-tax pension deficit, and 37.54 is cash.
+\item \emph{Options}: the 5 million vested options (strike 8, three years) are worth 17.94 at the market price, on the inputs used in the valuation's equity bridge.
+\item \emph{Enterprise value}: $1{,}108.25+17.94+355+36.12-37.54=1{,}479.77$. The 355 is the term loan, revolver and leases, 36.12 is the after-tax pension deficit, and 37.54 is cash.
 \item \emph{Estimated value}: the discounted cash flow value (\hyperref[meth:forecast-horizon-steady-state]{Harbour valuation}) is 855.59 of equity, or 8.49 a share.
 \end{itemize}
+The market and intrinsic bridges use the same claims. The DCF's enterprise value of 1,218.45 equals $855.59+9.28+355+36.12-37.54$, with the options valued at 8.49 rather than 11.00. Leaving the options out of the market figure, as $1{,}461.83$ would, compares an enterprise value without a claim against a valuation that deducts it.
 Price is 29.5 percent above that estimate, or the estimate is 22.8 percent below price. Book value, market capitalisation and estimated value answer different questions: what was invested, what the market charges, and what an analyst thinks the cash flows are worth.
 
 \qffield{Conditions} Enterprise value must include every claim whose cost is excluded from the operating measure it is paired with. Leases belong in EV when EBITDA excludes lease costs, as under IFRS~16. The market price is for a marginal trade in a minority stake; it is not the price of the whole company, which in a takeover includes a control premium.
 
-\qffield{Pitfalls} Treating book value as a floor on value. Netting all cash when some is trapped or needed for operations. Using basic market capitalisation when options and convertibles are a material claim. Calling price ``value'' when it is the thing value is compared with.
+\qffield{Pitfalls} Treating book value as a floor on value. Netting all cash when some is trapped or needed for operations. Using basic market capitalisation when options and convertibles are a material claim, or valuing them at intrinsic value in one bridge and at option value in the other. Calling price ``value'' when it is the thing value is compared with.
 
 \qffield{See also} \hyperref[def:intrinsic-value-mispricing]{intrinsic value}; \hyperref[meth:enterprise-value-multiples]{EV multiples}; \hyperref[def:valuation-model-families]{model families}.
 
@@ -177,11 +179,11 @@ A useful discipline is to reverse-engineer the price: solve for the growth rate,
 \emph{Harbour, at 11.00.} The estimates:
 \begin{itemize}
 \item \emph{FCFF.} The discounted value is 8.49 (\hyperref[meth:forecast-horizon-steady-state]{valuation}). At WACC of 7, 8 and 9 percent it is 11.22, 8.49 and 6.59.
-\item \emph{Justified multiples.} With normalised ROE of 10.63 percent, 2.5 percent growth and a 9.34 percent cost of equity, the justified leading P/E gives 7.83 and the justified P/B gives 7.64 (\hyperref[meth:justified-multiples]{justified multiples}).
-\item \emph{Comparables.} The peer median forward P/E of 18.0 on forecast EPS of 0.7285 gives 13.11. The peer median EV/EBITDA of 7.8 gives 11.59 (\hyperref[meth:comparables-evaluation]{comparables}).
+\item \emph{Justified multiples.} With normalised ROE on opening book equity of 10.79 percent, 2.5 percent growth and a 9.32 percent cost of equity, the justified leading P/E, the justified P/B and the dividend model each give 7.81 (\hyperref[meth:justified-multiples]{justified multiples}).
+\item \emph{Comparables.} The peer median forward P/E of 18.0 on forecast EPS of 0.7285 gives 13.11. The peer median EV/EBITDA of 7.8 gives 11.39 after the options are paid at that price, or 9.75 on development-adjusted EBITDA (\hyperref[meth:enterprise-value-multiples]{EV multiples}).
 \end{itemize}
 
-Reverse-engineering the price at 8 percent: 11.00 needs a WACC of 7.07 percent with the other inputs held. Alternatively it needs a terminal return on new capital of 124 percent with 2.5 percent growth, or perpetual growth of 3.60 percent with a 16 percent return on new capital. Even growth with no reinvestment at all gives at most 11.27. The price-to-book of 1.71 implies a sustained ROE of 14.21 percent, against 8.84 percent in 2025 and 11.52 percent in 2024.
+Reverse-engineering the price at 8 percent: 11.00 needs a WACC of 7.07 percent with the other inputs held. Alternatively it needs a terminal return on new capital of 124 percent with 2.5 percent growth, or perpetual growth of 3.60 percent with a 16 percent return on new capital. Even growth with no reinvestment at all gives at most 11.27. The price-to-book of 1.71 implies a sustained ROE of 14.18 percent, against 9.15 percent in 2025 and 12.01 percent in 2024 on opening equity.
 
 \emph{Judgement.} The absolute models say overvalued by about a quarter. The multiples say fairly valued or cheap, but the peers grow faster and earn more, and a regression of P/E on growth and beta predicts 9.50 times for Harbour, below its 15.10. The price is consistent with a return to ROE of about 14 percent, above anything Harbour has earned in the case.
 

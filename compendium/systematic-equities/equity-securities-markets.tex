@@ -63,9 +63,9 @@ Proxy advisers recommend votes to institutional investors. They must disclose th
 
 \emph{Participants.} The participants are the company and its board, which set the agenda; shareholders and their investment managers; custodians and other intermediaries; proxy advisers; proxy solicitors; and, in contests, activists running their own slates.
 
-\qffield{Notation} Cumulative voting: a holder voting $S$ shares in an election of $D$ directors can be sure of electing $k$ of them with $S\,k/(D+1)+1$ shares.
+\qffield{Notation} Cumulative voting: with $N$ shares voting in total and $D$ directors to elect, each share carries $D$ votes that may be concentrated on one candidate. A holder can be sure of electing $k$ directors with $S=\lfloor Nk/(D+1)\rfloor+1$ shares, assuming every share votes, each director is elected by plurality and ties count against the holder. Then each of the holder's $k$ candidates receives $SD/k$ votes, more than the $(N-S)D/(D-k+1)$ that the other holders can give each of $D-k+1$ rivals; one share fewer does not guarantee it.
 
-\qffield{Practice} \emph{Original.} A company has 10 million voting shares and elects five directors. Under straight voting, a holder of 49 percent elects nobody against an opposed majority. Under cumulative voting, $10{,}000{,}000\times1/6+1=1{,}666{,}667$ shares, 16.7 percent, guarantee one seat. This is why minority-protection codes favour cumulative voting where control is concentrated \citep[principle~II.G, p.~21]{oecd-g20-principles-2023}.
+\qffield{Practice} \emph{Original.} A company has 10 million voting shares and elects five directors. Under straight voting, a holder of 49 percent elects nobody against an opposed majority. Under cumulative voting, $\lfloor10{,}000{,}000\times1/6\rfloor+1=1{,}666{,}666+1=1{,}666{,}667$ shares, 16.7 percent, guarantee one seat; 1,666,666 shares would leave the majority able to tie. This is why minority-protection codes favour cumulative voting where control is concentrated \citep[principle~II.G, p.~21]{oecd-g20-principles-2023}.
 
 A dual-class company in which the founder holds 15 percent of the equity with 63.83 percent of the votes (\hyperref[def:global-ownership-structures]{ownership structures}) can pass any ordinary resolution alone. Outside holders' rights then rest on class votes, listing rules and the duties of directors.
 

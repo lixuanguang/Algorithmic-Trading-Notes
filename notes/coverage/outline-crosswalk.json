@@ -6551,7 +6551,7 @@
    "objectives": [
     "objective:compare-organisational-forms"
    ],
-   "rationale": "Reviewed 2026-10-20: def:organisational-forms-issuers compares proprietorships, partnerships, corporations, S corporations, LLCs and LLPs on liability, taxation, life, transfer and capital, with a worked tax wedge.",
+   "rationale": "Reviewed 2026-10-20: def:organisational-forms-issuers compares proprietorships, partnerships, corporations, S corporations, LLCs and LLPs on liability, taxation, life, transfer and capital, with a worked tax wedge. Rechecked 2026-10-20 after the PR #31 audit corrections (LP, LLP and LLC liability separated from Delaware primary law (6 Del. C. secs. 15-306, 15-1001, 17-303, 17-403, 18-303)); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -6571,7 +6571,7 @@
    "objectives": [
     "objective:compare-organisational-forms"
    ],
-   "rationale": "Reviewed 2026-10-20: def:organisational-forms-issuers describes the corporate issuer: separate entity, limited liability, residual equity against fixed debt claims, separation of ownership and control.",
+   "rationale": "Reviewed 2026-10-20: def:organisational-forms-issuers describes the corporate issuer: separate entity, limited liability, residual equity against fixed debt claims, separation of ownership and control. Rechecked 2026-10-20 after the PR #31 audit corrections (LP, LLP and LLC liability separated from Delaware primary law (6 Del. C. secs. 15-306, 15-1001, 17-303, 17-403, 18-303)); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -6591,7 +6591,7 @@
    "objectives": [
     "objective:compare-organisational-forms"
    ],
-   "rationale": "Reviewed 2026-10-20: def:organisational-forms-issuers compares public and private issuers on capital access, liquidity, disclosure, control and the Exchange Act registration thresholds.",
+   "rationale": "Reviewed 2026-10-20: def:organisational-forms-issuers compares public and private issuers on capital access, liquidity, disclosure, control and the Exchange Act registration thresholds. Rechecked 2026-10-20 after the PR #31 audit corrections (LP, LLP and LLC liability separated from Delaware primary law (6 Del. C. secs. 15-306, 15-1001, 17-303, 17-403, 18-303)); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -6878,7 +6878,7 @@
    "objectives": [
     "objective:calculate-wacc"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:wacc-calculation calculates Harbour's WACC from market weights and interprets it against book weights and a rate shock.",
+   "rationale": "Reviewed 2026-10-20: meth:wacc-calculation calculates Harbour's WACC from market weights and interprets it against book weights and a rate shock. Rechecked 2026-10-20 after the PR #31 audit corrections (options counted in market equity (17.94): ke 9.32%, WACC 8.02% unchanged; pension-as-debt effect quantified); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -6899,7 +6899,7 @@
     "objective:calculate-wacc",
     "objective:explain-capital-structure-theory"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:wacc-calculation and mod:capital-structure-theory explain the market and company factors that move the WACC and leverage (taxes, distress, agency, flexibility, asset tangibility).",
+   "rationale": "Reviewed 2026-10-20: meth:wacc-calculation and mod:capital-structure-theory explain the market and company factors that move the WACC and leverage (taxes, distress, agency, flexibility, asset tangibility). Rechecked 2026-10-20 after the PR #31 audit corrections (options counted in market equity (17.94): ke 9.32%, WACC 8.02% unchanged; pension-as-debt effect quantified; WACC example claim definitions corrected (options in equity); theory content unchanged); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -6919,7 +6919,7 @@
    "objectives": [
     "objective:explain-capital-structure-theory"
    ],
-   "rationale": "Reviewed 2026-10-20: mod:capital-structure-theory explains MM Propositions I and II without and with taxes, with the arbitrage argument and a worked example.",
+   "rationale": "Reviewed 2026-10-20: mod:capital-structure-theory explains MM Propositions I and II without and with taxes, with the arbitrage argument and a worked example. Rechecked 2026-10-20 after the PR #31 audit corrections (WACC example claim definitions corrected (options in equity); theory content unchanged); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -6939,7 +6939,7 @@
    "objectives": [
     "objective:explain-capital-structure-theory"
    ],
-   "rationale": "Reviewed 2026-10-20: mod:capital-structure-theory describes the trade-off optimum, pecking order and target ranges, with a worked optimum.",
+   "rationale": "Reviewed 2026-10-20: mod:capital-structure-theory describes the trade-off optimum, pecking order and target ranges, with a worked optimum. Rechecked 2026-10-20 after the PR #31 audit corrections (WACC example claim definitions corrected (options in equity); theory content unchanged); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -8120,7 +8120,7 @@
    "objectives": [
     "objective:compare-equity-rights-and-voting"
    ],
-   "rationale": "Reviewed 2026-10-20: def:equity-rights-voting describes basic rights (G20/OECD), class rights, Delaware defaults and differences across jurisdictions.",
+   "rationale": "Reviewed 2026-10-20: def:equity-rights-voting describes basic rights (G20/OECD), class rights, Delaware defaults and differences across jurisdictions. Rechecked 2026-10-20 after the PR #31 audit corrections (cumulative-voting rule restated with N total shares voting and an integer floor, minimality checked); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -8140,7 +8140,7 @@
    "objectives": [
     "objective:compare-equity-rights-and-voting"
    ],
-   "rationale": "Reviewed 2026-10-20: def:equity-rights-voting describes proxies, quorum, intermediaries, proxy advisers and say-on-pay, with cumulative voting worked.",
+   "rationale": "Reviewed 2026-10-20: def:equity-rights-voting describes proxies, quorum, intermediaries, proxy advisers and say-on-pay, with cumulative voting worked. Rechecked 2026-10-20 after the PR #31 audit corrections (cumulative-voting rule restated with N total shares voting and an integer floor, minimality checked); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -8301,7 +8301,7 @@
    "objectives": [
     "objective:contrast-price-and-value"
    ],
-   "rationale": "Reviewed 2026-10-20: def:price-value-indicators contrasts price and value, with Harbour's price against its estimate.",
+   "rationale": "Reviewed 2026-10-20: def:price-value-indicators contrasts price and value, with Harbour's price against its estimate. Rechecked 2026-10-20 after the PR #31 audit corrections (market EV includes the option claim (1,479.77) and reconciles to the DCF bridge with the same claims); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -8321,7 +8321,7 @@
    "objectives": [
     "objective:contrast-price-and-value"
    ],
-   "rationale": "Reviewed 2026-10-20: def:price-value-indicators contrasts book value, market capitalisation and enterprise value, computed for Harbour.",
+   "rationale": "Reviewed 2026-10-20: def:price-value-indicators contrasts book value, market capitalisation and enterprise value, computed for Harbour. Rechecked 2026-10-20 after the PR #31 audit corrections (market EV includes the option claim (1,479.77) and reconciles to the DCF bridge with the same claims); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -8425,7 +8425,7 @@
    "objectives": [
     "objective:value-preferred-stock"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:preferred-stock-valuation calculates perpetual preferred value and describes call, put, conversion, floating-rate and cumulative features, with a callable example.",
+   "rationale": "Reviewed 2026-10-20: meth:preferred-stock-valuation calculates perpetual preferred value and describes call, put, conversion, floating-rate and cumulative features, with a callable example. Rechecked 2026-10-20 after the PR #31 audit corrections (callable value 102.19 restated as conditional on redemption at an unchanged yield, not an option value); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14638,7 +14638,7 @@
    "objectives": [
     "objective:assess-dividend-sustainability"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:dividend-sustainability calculates and interprets earnings cover, FCFE cover and cash returned to FCFE for Harbour.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-sustainability calculates and interprets earnings cover, FCFE cover and cash returned to FCFE for Harbour. Rechecked 2026-10-20 after the PR #31 audit corrections (Harbour FCFE reconciled with equity-issue proceeds; Ridgeway split into FCF before borrowing and actual borrowing, with a target-policy alternative); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14658,7 +14658,7 @@
    "objectives": [
     "objective:assess-dividend-sustainability"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:dividend-sustainability identifies signs of unsustainable dividends with the Ridgeway example.",
+   "rationale": "Reviewed 2026-10-20: meth:dividend-sustainability identifies signs of unsustainable dividends with the Ridgeway example. Rechecked 2026-10-20 after the PR #31 audit corrections (Harbour FCFE reconciled with equity-issue proceeds; Ridgeway split into FCF before borrowing and actual borrowing, with a target-policy alternative); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14758,7 +14758,7 @@
    "objectives": [
     "objective:benchmark-capital-structure"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:capital-structure-benchmarking explains top-down (rates, taxes, markets, law) and bottom-up (cash-flow stability, tangibility, intangibles, growth) factors.",
+   "rationale": "Reviewed 2026-10-20: meth:capital-structure-benchmarking explains top-down (rates, taxes, markets, law) and bottom-up (cash-flow stability, tangibility, intangibles, growth) factors. Rechecked 2026-10-20 after the PR #31 audit corrections (cost-of-capital curve recomputed at firm value 1,481.19 incl. options (10.90% at 40%, 12.73% at 50%; covenant near 35%)); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14778,7 +14778,7 @@
    "objectives": [
     "objective:estimate-cost-of-debt-and-equity"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation compares YTM, rating and synthetic-rating methods and the book rate, applied to Harbour.",
+   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation compares YTM, rating and synthetic-rating methods and the book rate, applied to Harbour. Rechecked 2026-10-20 after the PR #31 audit corrections (CAPM cost of equity 9.32% with options in market equity); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14798,7 +14798,7 @@
    "objectives": [
     "objective:estimate-cost-of-debt-and-equity"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation explains survey, historical and implied premiums and when to use each, with an implied-premium calculation.",
+   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation explains survey, historical and implied premiums and when to use each, with an implied-premium calculation. Rechecked 2026-10-20 after the PR #31 audit corrections (CAPM cost of equity 9.32% with options in market equity); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14818,7 +14818,7 @@
    "objectives": [
     "objective:estimate-cost-of-debt-and-equity"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation compares CAPM, multifactor, build-up and bond-yield-plus-premium estimates for Harbour.",
+   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation compares CAPM, multifactor, build-up and bond-yield-plus-premium estimates for Harbour. Rechecked 2026-10-20 after the PR #31 audit corrections (CAPM cost of equity 9.32% with options in market equity); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14838,7 +14838,7 @@
    "objectives": [
     "objective:estimate-cost-of-debt-and-equity"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation estimates public and private costs (market against total beta) for Harbour and Kestrel.",
+   "rationale": "Reviewed 2026-10-20: meth:cost-of-debt-equity-estimation estimates public and private costs (market against total beta) for Harbour and Kestrel. Rechecked 2026-10-20 after the PR #31 audit corrections (CAPM cost of equity 9.32% with options in market equity); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14858,7 +14858,7 @@
    "objectives": [
     "objective:benchmark-capital-structure"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:capital-structure-benchmarking evaluates Harbour's structure against a cost-of-capital curve and peers, with the covenant.",
+   "rationale": "Reviewed 2026-10-20: meth:capital-structure-benchmarking evaluates Harbour's structure against a cost-of-capital curve and peers, with the covenant. Rechecked 2026-10-20 after the PR #31 audit corrections (cost-of-capital curve recomputed at firm value 1,481.19 incl. options (10.90% at 40%, 12.73% at 50%; covenant near 35%)); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14919,7 +14919,7 @@
    "objectives": [
     "objective:value-restructuring-effects"
    ],
-   "rationale": "Reviewed 2026-10-20: ex:restructuring-valuation-effects demonstrates comparable companies, precedent transactions, premiums paid and DCF and interprets value created against value transferred.",
+   "rationale": "Reviewed 2026-10-20: ex:restructuring-valuation-effects demonstrates comparable companies, precedent transactions, premiums paid and DCF and interprets value created against value transferred. Rechecked 2026-10-20 after the PR #31 audit corrections (acquisition return compared after tax (6.25%) with the WACC; EPS, accounting return and DCF value kept distinct; WACC effect recomputed); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -14939,7 +14939,7 @@
    "objectives": [
     "objective:value-restructuring-effects"
    ],
-   "rationale": "Reviewed 2026-10-20: ex:restructuring-valuation-effects demonstrates EPS, net debt/EBITDA and WACC effects of Harbour's bolt-on.",
+   "rationale": "Reviewed 2026-10-20: ex:restructuring-valuation-effects demonstrates EPS, net debt/EBITDA and WACC effects of Harbour's bolt-on. Rechecked 2026-10-20 after the PR #31 audit corrections (acquisition return compared after tax (6.25%) with the WACC; EPS, accounting return and DCF value kept distinct; WACC effect recomputed); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15246,7 +15246,7 @@
    "objectives": [
     "objective:value-preferred-stock"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:preferred-stock-valuation calculates perpetual preferred value.",
+   "rationale": "Reviewed 2026-10-20: meth:preferred-stock-valuation calculates perpetual preferred value. Rechecked 2026-10-20 after the PR #31 audit corrections (callable value 102.19 restated as conditional on redemption at an unchanged yield, not an option value); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15371,7 +15371,7 @@
    "objectives": [
     "objective:judge-valuation-relative-to-price"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:valuation-price-judgement evaluates Norland at 30 against its Gordon value and implied growth.",
+   "rationale": "Reviewed 2026-10-20: meth:valuation-price-judgement evaluates Norland at 30 against its Gordon value and implied growth. Rechecked 2026-10-20 after the PR #31 audit corrections (justified value 7.81 by P/E, P/B and DDM; EV/EBITDA comparables 11.39 and 9.75 after options; implied ROE 14.18%); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15496,7 +15496,7 @@
    "objectives": [
     "objective:estimate-sustainable-growth"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:sustainable-growth calculates g = b x ROE, demonstrates the DuPont decomposition and interprets Harbour's rate.",
+   "rationale": "Reviewed 2026-10-20: meth:sustainable-growth calculates g = b x ROE, demonstrates the DuPont decomposition and interprets Harbour's rate. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE on opening equity (9.15% for 2025): sustainable growth 3.86%); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15757,7 +15757,7 @@
    "objectives": [
     "objective:judge-valuation-relative-to-price"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:valuation-price-judgement evaluates Harbour at 11 against its FCFF value with sensitivity and reverse engineering.",
+   "rationale": "Reviewed 2026-10-20: meth:valuation-price-judgement evaluates Harbour at 11 against its FCFF value with sensitivity and reverse engineering. Rechecked 2026-10-20 after the PR #31 audit corrections (justified value 7.81 by P/E, P/B and DDM; EV/EBITDA comparables 11.39 and 9.75 after options; implied ROE 14.18%); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15799,7 +15799,7 @@
    "objectives": [
     "objective:calculate-justified-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified multiples for Harbour.",
+   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified multiples for Harbour. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15819,7 +15819,7 @@
    "objectives": [
     "objective:apply-alternative-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples describes rationales and drawbacks of P/E, P/B, P/S, P/CF and dividend yield.",
+   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples describes rationales and drawbacks of P/E, P/B, P/S, P/CF and dividend yield. Rechecked 2026-10-20 after the PR #31 audit corrections (justified P/B 1.22 and P/S 0.58 recomputed); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15840,7 +15840,7 @@
    "objectives": [
     "objective:apply-alternative-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples calculates and interprets Harbour's alternative multiples and dividend yield.",
+   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples calculates and interprets Harbour's alternative multiples and dividend yield. Rechecked 2026-10-20 after the PR #31 audit corrections (justified P/B 1.22 and P/S 0.58 recomputed); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15862,7 +15862,7 @@
    "objectives": [
     "objective:normalise-earnings"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:normalised-earnings calculates and interprets underlying and normalised EPS by two methods and explains when to use them.",
+   "rationale": "Reviewed 2026-10-20: meth:normalised-earnings calculates and interprets underlying and normalised EPS by two methods and explains when to use them. Rechecked 2026-10-20 after the PR #31 audit corrections (normalised ROE on opening equity (10.79%); 0.6935 dated as 2026 EPS and compared like-dated with underlying 2025 EPS); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15883,7 +15883,7 @@
    "objectives": [
     "objective:normalise-earnings"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:normalised-earnings explains and justifies the earnings yield for negative or small earnings.",
+   "rationale": "Reviewed 2026-10-20: meth:normalised-earnings explains and justifies the earnings yield for negative or small earnings. Rechecked 2026-10-20 after the PR #31 audit corrections (normalised ROE on opening equity (10.79%); 0.6935 dated as 2026 EPS and compared like-dated with underlying 2025 EPS); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15903,7 +15903,7 @@
    "objectives": [
     "objective:apply-alternative-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples describes the fundamental drivers of each multiple.",
+   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples describes the fundamental drivers of each multiple. Rechecked 2026-10-20 after the PR #31 audit corrections (justified P/B 1.22 and P/S 0.58 recomputed); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15925,7 +15925,7 @@
    "objectives": [
     "objective:calculate-justified-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates a P/E predicted by a cross-sectional regression and explains its limits.",
+   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates a P/E predicted by a cross-sectional regression and explains its limits. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15946,7 +15946,7 @@
    "objectives": [
     "objective:calculate-justified-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified P/E, P/B and P/S.",
+   "rationale": "Reviewed 2026-10-20: meth:justified-multiples calculates and interprets justified P/E, P/B and P/S. Rechecked 2026-10-20 after the PR #31 audit corrections (ROE = E1/B0 convention: P/E, P/B and DDM reconcile at 7.81; the superseded double growth and the average-equity sensitivity are shown); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15968,7 +15968,7 @@
    "objectives": [
     "objective:apply-alternative-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples calculates, interprets and explains the PEG ratio and its limits.",
+   "rationale": "Reviewed 2026-10-20: meth:alternative-multiples calculates, interprets and explains the PEG ratio and its limits. Rechecked 2026-10-20 after the PR #31 audit corrections (justified P/B 1.22 and P/S 0.58 recomputed); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -15989,7 +15989,7 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation calculates a terminal value from a multiple and explains the growth it implies.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation calculates a terminal value from a multiple and explains the growth it implies. Rechecked 2026-10-20 after the PR #31 audit corrections (EV/EBITDA comparables restated after options (11.39, 9.75); justified value 7.81); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16010,7 +16010,7 @@
     "objective:judge-valuation-relative-to-price",
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation and meth:valuation-price-judgement evaluate Harbour against peer multiples with and without controls.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation and meth:valuation-price-judgement evaluate Harbour against peer multiples with and without controls. Rechecked 2026-10-20 after the PR #31 audit corrections (justified value 7.81 by P/E, P/B and DDM; EV/EBITDA comparables 11.39 and 9.75 after options; implied ROE 14.18%; EV/EBITDA comparables restated after options (11.39, 9.75); justified value 7.81); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16031,7 +16031,7 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation evaluates and explains combining comparables with fundamentals.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation evaluates and explains combining comparables with fundamentals. Rechecked 2026-10-20 after the PR #31 audit corrections (EV/EBITDA comparables restated after options (11.39, 9.75); justified value 7.81); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16052,7 +16052,7 @@
    "objectives": [
     "objective:apply-enterprise-value-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:enterprise-value-multiples explains EBITDA, FFO, FCFE and FCFF definitions and their uses.",
+   "rationale": "Reviewed 2026-10-20: meth:enterprise-value-multiples explains EBITDA, FFO, FCFE and FCFF definitions and their uses. Rechecked 2026-10-20 after the PR #31 audit corrections (options in EV (7.59x) and deducted at the implied price in peer-multiple values (11.39; 9.75 development-adjusted)); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16074,7 +16074,7 @@
    "objectives": [
     "objective:apply-enterprise-value-multiples"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:enterprise-value-multiples calculates and evaluates EV/EBITDA with matched numerators, lease and development adjustments.",
+   "rationale": "Reviewed 2026-10-20: meth:enterprise-value-multiples calculates and evaluates EV/EBITDA with matched numerators, lease and development adjustments. Rechecked 2026-10-20 after the PR #31 audit corrections (options in EV (7.59x) and deducted at the implied price in peer-multiple values (11.39; 9.75 development-adjusted)); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16094,7 +16094,7 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation explains cross-border comparisons (accounting, rates, growth, risk).",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation explains cross-border comparisons (accounting, rates, growth, risk). Rechecked 2026-10-20 after the PR #31 audit corrections (EV/EBITDA comparables restated after options (11.39, 9.75); justified value 7.81); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16114,7 +16114,7 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation describes earnings-surprise, SUE and relative-strength indicators with calculations.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation describes earnings-surprise, SUE and relative-strength indicators with calculations. Rechecked 2026-10-20 after the PR #31 audit corrections (EV/EBITDA comparables restated after options (11.39, 9.75); justified value 7.81); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },
@@ -16134,7 +16134,7 @@
    "objectives": [
     "objective:evaluate-stock-with-comparables"
    ],
-   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation explains means, medians and harmonic means of multiples with a worked comparison.",
+   "rationale": "Reviewed 2026-10-20: meth:comparables-evaluation explains means, medians and harmonic means of multiples with a worked comparison. Rechecked 2026-10-20 after the PR #31 audit corrections (EV/EBITDA comparables restated after options (11.39, 9.75); justified value 7.81); mapping and coverage unchanged.",
    "residual_gap": null,
    "reviewed": "2026-10-20"
   },

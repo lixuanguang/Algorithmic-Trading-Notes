@@ -15,6 +15,12 @@ against consolidated figures.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
+Corrections of 2026-10-20 (audit of PR #31): market EV and the peer-multiple values include the 5m vested
+options (17.94 at the market price; iterated at the implied price for multiples), so market and intrinsic
+bridges share one claim set; ROE is profit over opening book equity throughout the valuation formulas, so
+ROE x B0 is E1 and the justified P/E, P/B and dividend model give one value (7.81); the cost of equity is
+taken from the WACC with options in equity (9.32%); the callable preferred value is conditional on redemption.
+
 Run: uv run python equity-valuation-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
@@ -56,10 +62,34 @@ HARBOUR = (
 with contextlib.redirect_stdout(io.StringIO()):
     H = runpy.run_path(str(HARBOUR))
 B25, R, TAX = H["B"][2025], H["R"], H["TAX"]
-PRICE, SHARES, KE = 11.0, 100.75, 0.0934
+PRICE, SHARES = 11.0, 100.75
 DEBT = 355.0
 PENSION_AT = -B25["db_liab"] * (1 - TAX)
 BOOK_EQ = H["bs_view"](2025)["eq"]
+bs_call = H["bs_call"]
+N_OPT = 5.0
+
+
+def option_claim(p):
+    """The 5m vested options (strike 8, 3 years, 30% vol, 3% rate, 2.5% yield) valued at share price p."""
+    return N_OPT * bs_call(p, 8.0, 3.0, 0.03, 0.30, 0.025)
+
+
+def per_share_after_options(equity_pre_options):
+    """Iterated value per share: equity before options less options valued at that same price."""
+    p = equity_pre_options / SHARES
+    for _ in range(200):
+        new = (equity_pre_options - option_claim(p)) / SHARES
+        if abs(new - p) < 1e-12:
+            break
+        p = new
+    return p
+
+
+OPT_MKT = option_claim(PRICE)
+# Cost of equity (corrected 2026-10-20) from the corporate-finance WACC, with options in market equity:
+# beta 0.93 relevered at D/E = 355 / (1,108.25 + 17.94), rf 3%, ERP 5.5%; 9.32% (9.34% on shares alone).
+KE = 0.03 + 0.93 * (1 + (1 - TAX) * DEBT / (PRICE * SHARES + OPT_MKT)) * 0.055
 PROFIT = {2024: 67.0, 2025: 55.38}
 
 # ---------------------------------------------------------------------------------------------
@@ -100,17 +130,32 @@ ok(
 # ---------------------------------------------------------------------------------------------
 print("== part 3: price, book value, market capitalisation and enterprise value")
 mcap = PRICE * SHARES
-ev = mcap + DEBT + PENSION_AT - B25["cash"]
+ev = mcap + OPT_MKT + DEBT + PENSION_AT - B25["cash"]
+ev_superseded = mcap + DEBT + PENSION_AT - B25["cash"]
 ok(
-    "Harbour: market cap 1,108.25; book equity 647.38 (6.43 a share, P/B 1.71); EV 1,461.83 incl. leases and "
-    "after-tax pension deficit, net of cash 37.54",
+    "Harbour: market cap 1,108.25; book equity 647.38 (6.43 a share, P/B 1.71); options at the market price "
+    "17.94; EV 1,479.77 incl. options, leases and after-tax pension deficit, net of cash 37.54",
     round(mcap, 2) == 1108.25
     and round(BOOK_EQ, 2) == 647.38
     and round(BOOK_EQ / SHARES, 2) == 6.43
     and round(mcap / BOOK_EQ, 2) == 1.71
-    and round(ev, 2) == 1461.83,
+    and round(OPT_MKT, 2) == 17.94
+    and round(ev, 2) == 1479.77,
+)
+ok(
+    "the superseded EV 1,461.83 omitted the option claim that the DCF bridge deducts",
+    round(ev_superseded, 2) == 1461.83 and close(ev - ev_superseded, OPT_MKT),
 )
 iv = H["price_iv"]
+# Market and intrinsic bridges use one claim set: EV = shares + options + debt + pension - cash.
+opt_iv = option_claim(iv)
+ev_iv_rebuilt = iv * SHARES + opt_iv + DEBT + PENSION_AT - B25["cash"]
+ok(
+    "intrinsic bridge with the same claims: 855.59 + options 9.28 + 355 + 36.12 - 37.54 = DCF EV 1,218.45",
+    round(opt_iv, 2) == 9.28
+    and close(ev_iv_rebuilt, H["v_short"], 1e-9)
+    and round(ev_iv_rebuilt, 2) == 1218.45,
+)
 ok(
     "DCF value 8.49 against price 11.00: price 29.5% above the estimate (estimate 22.8% below price)",
     round(iv, 2) == 8.49
@@ -122,20 +167,12 @@ ok(
 print("== part 4: Harbour sensitivity - what the price implies")
 fcff, nopat_2028 = H["fcff"], H["nopat_2028"]
 claims_ex_opt = DEBT + PENSION_AT - B25["cash"]
-bs_call = H["bs_call"]
 
 
 def value_per_share(wacc, g=0.025, ronic=0.12):
     tv = nopat_2028 * (1 + g) * (1 - g / ronic) / (wacc - g)
     ev_ = sum(c / (1 + wacc) ** (t + 1) for t, c in enumerate(fcff)) + tv / (1 + wacc) ** 3
-    eq = ev_ - claims_ex_opt
-    p = eq / SHARES
-    for _ in range(200):
-        new = (eq - 5.0 * bs_call(p, 8.0, 3.0, 0.03, 0.30, 0.025)) / SHARES
-        if abs(new - p) < 1e-12:
-            break
-        p = new
-    return p
+    return per_share_after_options(ev_ - claims_ex_opt)
 
 
 ok("the function reproduces 8.49 at 8%", close(value_per_share(0.08), iv, 1e-9))
@@ -190,9 +227,18 @@ y = 0.045
 perp = 5.0 / y
 to_call = sum(5.0 / (1 + y) ** t for t in range(1, 6)) + 100.0 / (1 + y) ** 5
 ok(
-    "if yields fall to 4.5%: non-callable 111.11; callable at 100 in five years, valued to the call date, 102.19",
+    "if yields fall to 4.5%: non-callable 111.11; value conditional on redemption at 100 in year five, 102.19",
     round(perp, 2) == 111.11 and round(to_call, 2) == 102.19 and to_call < perp,
 )
+# Conditionality (corrected 2026-10-20): 102.19 is the value if the share is redeemed at year five with the
+# yield unchanged at 4.5%. If yields at year five are 5% or more the issuer would not redeem at 100 (the
+# perpetual would then be worth 5/y <= 100), so the cash flows, and the value, depend on future rates.
+for y5, redeem in ((0.04, True), (0.045, True), (0.05, False), (0.06, False)):
+    ok(
+        f"at a year-five yield of {y5:.1%} the share is worth {5 / y5:.2f} unredeemed, so the issuer "
+        f"{'redeems' if redeem else 'does not redeem'} at 100",
+        (5 / y5 > 100) == redeem or close(5 / y5, 100.0),
+    )
 ok(
     "cumulative arrears: two missed dividends of 5 must be paid before any common dividend (10 in arrears)",
     close(2 * 5.0, 10.0),
@@ -302,12 +348,26 @@ ok(
     "equity grows 7.2% when ROE and retention are held and no shares are issued",
     close(eq1 / eq0 - 1, 0.072),
 )
-roe_h = {y: R[y]["roe"] for y in (2024, 2025)}
+# ROE timing (corrected 2026-10-20). The valuation formulas use ROE_t = E_t / B_{t-1}, profit over opening
+# book equity, so that b x ROE is the growth of book equity from retention and ROE x B_0 is E_1. The ratio
+# analysis reports ROE on average equity (11.52%, 8.84%); those figures are not reused here.
+bv = {y: H["bs_view"](y)["eq"] for y in (2023, 2024, 2025)}
+roe_avg = {y: R[y]["roe"] for y in (2024, 2025)}
+roe_h = {y: PROFIT[y] / bv[y - 1] for y in (2024, 2025)}
 ok(
-    "Harbour ROE 11.52% (2024) and 8.84% (2025); at 2025's 57.8% payout g = 0.422 x 8.84% = 3.73%",
-    round(roe_h[2024], 4) == 0.1152
-    and round(roe_h[2025], 4) == 0.0884
-    and round((1 - 32 / PROFIT[2025]) * roe_h[2025], 4) == 0.0373,
+    "Harbour ROE on opening equity 12.01% (67/558) and 9.15% (55.38/605); on average equity 11.52% and 8.84%",
+    round(roe_h[2024], 4) == 0.1201
+    and round(roe_h[2025], 4) == 0.0915
+    and round(roe_avg[2024], 4) == 0.1152
+    and round(roe_avg[2025], 4) == 0.0884,
+)
+g_sus = (1 - 32 / PROFIT[2025]) * roe_h[2025]
+ok(
+    "sustainable growth at 2025's 57.8% payout: 0.422 x 9.15% = 3.86%, equal to retained profit over opening "
+    "equity (23.38 / 605); the average-equity ROE gave 3.73%",
+    round(g_sus, 4) == 0.0386
+    and close(g_sus, (PROFIT[2025] - 32) / bv[2024], 1e-12)
+    and round((1 - 32 / PROFIT[2025]) * roe_avg[2025], 4) == 0.0373,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -356,41 +416,72 @@ ok(
     and round(peg.max(), 2) == 2.92
     and round(PRICE / eps_fwd / 4, 2) == 3.77,
 )
-roe_cycle = [0.100, 0.120, 0.108, roe_h[2024], roe_h[2025]]
+roe_cycle = [0.100, 0.120, 0.108, roe_h[2024], roe_h[2025]]  # 2021-2023 assumed on the same basis
 roe_norm = float(np.mean(roe_cycle))
 bvps = BOOK_EQ / SHARES
-eps_norm = roe_norm * bvps
+eps_norm = roe_norm * bvps  # E_2026 = ROE x B_2025: already next year's earnings
 ok(
-    "normalised EPS by average ROE 2021-2025 (10.0, 12.0, 10.8, 11.52, 8.84 -> 10.63%) x BVPS 6.43 = 0.683",
-    round(roe_norm, 4) == 0.1063 and round(eps_norm, 3) == 0.683,
+    "normalised ROE 2021-2025 on opening equity (10.0, 12.0, 10.8, 12.01, 9.15 -> 10.79%) x BVPS 6.43 = 0.6935, "
+    "normalised 2026 EPS",
+    round(roe_norm, 4) == 0.1079 and round(eps_norm, 4) == 0.6935,
 )
 underlying = (PROFIT[2025] + 18.0 * (1 - TAX)) / 100.375
+eps_norm_trailing = roe_norm * bv[2024] / 100.375
 ok(
-    "underlying 2025 EPS adds back the 18 restructuring charge after tax: 0.6862 against reported 0.5517",
-    round(underlying, 4) == 0.6862 and round(PROFIT[2025] / 100.375, 4) == 0.5517,
+    "underlying 2025 EPS adds back the 18 restructuring charge after tax: 0.6862 against reported 0.5517; "
+    "the like-dated normalised 2025 EPS is 10.79% x 605 / 100.375m = 0.6505",
+    round(underlying, 4) == 0.6862
+    and round(PROFIT[2025] / 100.375, 4) == 0.5517
+    and round(eps_norm_trailing, 4) == 0.6505,
 )
 g_lr = 0.025
 payout_ss = 1 - g_lr / roe_norm
 pe_lead = payout_ss / (KE - g_lr)
 pb = (roe_norm - g_lr) / (KE - g_lr)
+v_pe = pe_lead * eps_norm
+v_pb = pb * bvps
+v_ddm = payout_ss * eps_norm / (KE - g_lr)
+# Independent route: book value grows at g_lr from retention, so the dividend stream is explicit.
+bvt, v_sum = bvps, 0.0
+for t in range(1, 4000):
+    e_t = roe_norm * bvt
+    v_sum += e_t * payout_ss / (1 + KE) ** t
+    bvt += e_t * (1 - payout_ss)
 ok(
-    "justified at ROE 10.63%, g 2.5%, ke 9.34%: payout 76.5%, leading P/E 11.18 (7.83 a share on 0.700), "
-    "P/B 1.19 (7.64 a share)",
-    round(payout_ss, 3) == 0.765
-    and round(pe_lead, 2) == 11.18
-    and round(pe_lead * eps_norm * (1 + g_lr), 2) == 7.83
-    and round(pb, 2) == 1.19
-    and round(pb * bvps, 2) == 7.64,
+    "justified at ROE 10.79%, g 2.5%, ke 9.32%: payout 76.8%, leading P/E 11.26 x E1 0.6935 = P/B 1.22 x B0 6.43 = "
+    "DDM D1 0.533/(ke - g) = 7.81 a share; a 4,000-year dividend sum agrees",
+    round(payout_ss, 3) == 0.768
+    and round(pe_lead, 2) == 11.26
+    and round(pb, 2) == 1.22
+    and round(payout_ss * eps_norm, 3) == 0.533
+    and round(v_pe, 2) == 7.81
+    and close(v_pe, v_pb, 1e-12)
+    and close(v_pe, v_ddm, 1e-12)
+    and close(v_sum, v_pb, 1e-6),
+    f"P/E route {v_pe:.4f}, P/B route {v_pb:.4f}, DDM {v_ddm:.4f}, sum {v_sum:.4f}",
+)
+v_pe_superseded = pe_lead * eps_norm * (1 + g_lr)
+ok(
+    "the superseded P/E route grew E1 again (E1 x 1.025), overstating the P/E value by exactly 2.5% (8.00 here; "
+    "7.83 against 7.64 on the superseded inputs)",
+    close(v_pe_superseded / v_pb - 1, g_lr, 1e-12) and round(v_pe_superseded, 2) == 8.0,
+)
+ok(
+    "sensitivity: the average-equity ROE cycle (10.63%) would give 7.66 by every route",
+    round(
+        (np.mean([0.10, 0.12, 0.108, roe_avg[2024], roe_avg[2025]]) - g_lr) / (KE - g_lr) * bvps, 2
+    )
+    == 7.66,
 )
 roe_implied = g_lr + (PRICE / bvps) * (KE - g_lr)
 ok(
-    "the price-to-book of 1.71 implies a sustained ROE of 14.21% at the same ke and growth",
-    round(PRICE / bvps, 2) == 1.71 and round(roe_implied, 4) == 0.1421,
+    "the price-to-book of 1.71 implies a sustained ROE of 14.18% at the same ke and growth",
+    round(PRICE / bvps, 2) == 1.71 and round(roe_implied, 4) == 0.1418,
 )
 ps_just = 0.05 * payout_ss * (1 + g_lr) / (KE - g_lr)
 ok(
-    "justified P/S at a 5% net margin: 0.57 (Harbour trades at 1,108.25/1,080 = 1.03)",
-    round(ps_just, 2) == 0.57 and round(mcap / 1080, 2) == 1.03,
+    "justified P/S on trailing sales at a 5% net margin: 0.58 (Harbour trades at 1,108.25/1,080 = 1.03)",
+    round(ps_just, 2) == 0.58 and round(mcap / 1080, 2) == 1.03,
 )
 eyield = {"Harbour": eps_fwd / PRICE, "LossCo": -0.40 / 8.0}
 ok(
@@ -403,11 +494,11 @@ ok("Harbour trailing dividend yield 32/100.75m/11 = 2.89%", round(dy, 4) == 0.02
 # ---------------------------------------------------------------------------------------------
 print("== part 11: enterprise-value multiples and matched numerators")
 ebitda25 = R[2025]["ebitda"]
-ok("Harbour EV/EBITDA 2025: 1,461.83 / 195 = 7.50", round(ev / ebitda25, 2) == 7.50)
-ev_wrong = mcap + 290.0 - B25["cash"]
+ok("Harbour EV/EBITDA 2025: 1,479.77 / 195 = 7.59", round(ev / ebitda25, 2) == 7.59)
+ev_wrong = mcap + OPT_MKT + 290.0 - B25["cash"]
 ok(
-    "leaving the 65 of lease liabilities and pension out of EV while EBITDA excludes lease costs gives 6.98",
-    round(ev_wrong / ebitda25, 2) == 6.98,
+    "leaving the 65 of lease liabilities and the pension out of EV while EBITDA excludes lease costs gives 7.07",
+    round(ev_wrong / ebitda25, 2) == 7.07,
 )
 ok(
     "P/EBITDA mixes claims: 1,108.25/195 = 5.68 makes a levered firm look cheap",
@@ -421,17 +512,25 @@ ok(
 )
 dev_capitalised, dev_amort = 22.0, 12.0
 ok(
-    "IFRS development capitalisation: expensing 2025's 22 as a US GAAP peer would cuts EBITDA to 173 (8.45x) and EBIT by 10",
-    round(ev / (ebitda25 - dev_capitalised), 2) == 8.45
+    "IFRS development capitalisation: expensing 2025's 22 as a US GAAP peer would cut EBITDA to 173 (8.55x) and EBIT by 10",
+    round(ev / (ebitda25 - dev_capitalised), 2) == 8.55
     and close(dev_capitalised - dev_amort, 10.0),
 )
 ev_ebitda_peer_median = float(np.median([v[1] for v in peers.values()]))
 eq_from_ev = ev_ebitda_peer_median * ebitda25 - (DEBT + PENSION_AT - B25["cash"])
+p_peer = per_share_after_options(eq_from_ev)
 ok(
-    "at the peer median 7.8x EBITDA: EV 1,521.00, less net claims 353.58 = equity 1,167.42, 11.59 a share",
+    "at the peer median 7.8x EBITDA: EV 1,521.00, less debt-like claims net of cash 353.58 = 1,167.42 for shares "
+    "and options; options at the implied price 19.45 leave 1,147.97, 11.39 a share",
     close(ev_ebitda_peer_median, 7.8)
     and round(eq_from_ev, 2) == 1167.42
-    and round(eq_from_ev / SHARES, 2) == 11.59,
+    and round(option_claim(p_peer), 2) == 19.45
+    and round(p_peer, 2) == 11.39
+    and close(p_peer * SHARES + option_claim(p_peer), eq_from_ev, 1e-9),
+)
+ok(
+    "the superseded 11.59 divided the whole residual by shares, leaving the option claim unpaid",
+    round(eq_from_ev / SHARES, 2) == 11.59 and eq_from_ev / SHARES > p_peer,
 )
 
 # ---------------------------------------------------------------------------------------------
@@ -542,15 +641,24 @@ ok(
     round(harm * eps_fwd, 2) == 13.70 and round(pred * eps_fwd, 2) == 6.92,
 )
 eq_dev = ev_ebitda_peer_median * (ebitda25 - dev_capitalised) - (DEBT + PENSION_AT - B25["cash"])
+p_dev = per_share_after_options(eq_dev)
 ok(
-    "peer 7.8x on development-adjusted EBITDA 173: equity 995.82, 9.88 a share",
-    round(eq_dev, 2) == 995.82 and round(eq_dev / SHARES, 2) == 9.88,
+    "peer 7.8x on development-adjusted EBITDA 173: shares and options 995.82; options 13.40; 9.75 a share "
+    "(superseded 9.88)",
+    round(eq_dev, 2) == 995.82
+    and round(p_dev, 2) == 9.75
+    and round(option_claim(p_dev), 2) == 13.40
+    and round(eq_dev / SHARES, 2) == 9.88,
 )
 ok("Norland at 30 is 9% above its Gordon value", round(30 / v_gordon - 1, 2) == 0.09)
-ok("the call costs the preferred holder 111.11 - 102.19 = 8.92", round(perp - to_call, 2) == 8.92)
 ok(
-    "Harbour sustainable growth 3.73% against forecast 2026 revenue growth 6.09%",
-    round(H["base"][0]["revenue"] / 1080 - 1, 4) == 0.0609,
+    "if yields stay at 4.5% and the issuer redeems at year five, the redemption-conditional value is 8.92 below "
+    "the non-callable perpetual (not an option value)",
+    round(perp - to_call, 2) == 8.92,
+)
+ok(
+    "Harbour sustainable growth 3.86% against forecast 2026 revenue growth 6.09%",
+    round(g_sus, 4) == 0.0386 and round(H["base"][0]["revenue"] / 1080 - 1, 4) == 0.0609,
 )
 
 mcap_check = math.isclose(mcap, 1108.25)

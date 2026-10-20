@@ -86,22 +86,26 @@ None of the peers has growth as low as Harbour's 4 percent. That is the stronges
 \begin{qfmethod}[Justified multiples from fundamentals: P/E, P/B and P/S from the Gordon model, the P/E predicted by a cross-sectional regression, and what the market price implies]\label{meth:justified-multiples}
 \qffield{Statement} Each multiple can be derived from a dividend discount model, which shows the fundamentals that drive it \citep[pp.~460--461, 515, 545]{investment-valuation-2012}. With payout $1-b$, growth $g$, required return $r$ and $\mathrm{ROE}=E_1/\mathrm{BV}_0$:
 \[ \frac{P_0}{E_1}=\frac{1-b}{r-g},\qquad\frac{P_0}{B_0}=\frac{\mathrm{ROE}-g}{r-g},\qquad\frac{P_0}{S_0}=\frac{\text{net margin}\times(1-b)(1+g)}{r-g}. \]
+\emph{Timing convention.} ROE here is next year's earnings over today's book value, so $E_1=\mathrm{ROE}\times B_0$ and book value grows by $b\times\mathrm{ROE}\times B_0$. With that convention the three routes are one model: $\frac{P_0}{E_1}E_1=\frac{(1-b)\,\mathrm{ROE}\,B_0}{r-g}=\frac{\mathrm{ROE}-g}{r-g}B_0$ when $g=b\,\mathrm{ROE}$, which is also $D_1/(r-g)$. Growing $\mathrm{ROE}\times B_0$ by $(1+g)$ before applying the leading P/E counts a year's growth twice. Historical ROE used as an input must be measured the same way, on opening equity; ROE on average equity, as in ratio analysis, is a different quantity.
+
 P/B exceeds one if and only if ROE exceeds $r$. Damodaran's Jenapharm example gives $(15.52-5)/(11.375-5)=1.65$ (p.~515). The P/S also depends on the margin, the driver that P/S comparisons most often hide. Stable-growth payout should be $1-g/\mathrm{ROE}$.
 
 \emph{Regression.} A cross-sectional regression of P/E on growth, risk and payout predicts a firm's P/E from the market's pricing of those fundamentals. Damodaran's beverage regression explains 51 percent of the variance in P/E (pp.~463--465). Market-wide regressions quantify the relation and can be used where industries have few firms. Their problems are that the explanatory variables are correlated (multicollinearity), the relations are non-linear, and the coefficients are unstable over time (p.~486). Treat the prediction as one estimate among several.
 
-\qffield{Practice} \emph{Harbour.} Inputs: a cost of equity of 9.34 percent (\hyperref[meth:wacc-calculation]{WACC}), long-run growth of 2.5 percent, and a normalised ROE of 10.63 percent (\hyperref[meth:normalised-earnings]{normalised earnings}).
+\qffield{Practice} \emph{Harbour.} Inputs: a cost of equity of 9.32 percent (\hyperref[meth:wacc-calculation]{WACC}), long-run growth of 2.5 percent, and a normalised ROE of 10.79 percent on opening book equity (\hyperref[meth:normalised-earnings]{normalised earnings}).
 \begin{itemize}
-\item \emph{Payout.} The stable payout is $1-2.5/10.63=76.5$ percent.
-\item \emph{P/E.} The justified leading P/E is $0.765/(0.0934-0.025)=11.18$. On next year's normalised EPS of $0.683\times1.025=0.700$, that gives 7.83 a share.
-\item \emph{P/B.} The justified P/B is $(10.63-2.5)/(9.34-2.5)=1.19$, or 7.64 on book value per share of 6.43.
-\item \emph{P/S.} At a 5 percent net margin, the justified P/S is 0.57 against an actual 1.03.
-\item \emph{Implied ROE.} The market P/B of 1.71 implies a sustained ROE of $2.5+1.71\times6.84=14.21$ percent.
+\item \emph{Payout.} The stable payout is $1-2.5/10.79=76.8$ percent.
+\item \emph{P/E.} The justified leading P/E is $0.768/(0.0932-0.025)=11.26$. Next year's normalised EPS is $\mathrm{ROE}\times B_0=0.1079\times6.43=0.6935$, which already is $E_1$; the value is $11.26\times0.6935=7.81$ a share.
+\item \emph{P/B.} The justified P/B is $(10.79-2.5)/(9.32-2.5)=1.22$, or 7.81 on book value per share of 6.43.
+\item \emph{Dividend model.} $D_1=0.768\times0.6935=0.533$, and $0.533/(0.0932-0.025)=7.81$. A year-by-year sum of the dividends, with book value growing 2.5 percent from retention, gives the same value.
+\item \emph{P/S.} At a 5 percent net margin on trailing sales, the justified P/S is 0.58 against an actual 1.03.
+\item \emph{Implied ROE.} The market P/B of 1.71 implies a sustained ROE of $2.5+1.712\times6.824=14.18$ percent.
 \end{itemize}
+Growing $E_1$ again, as $0.6935\times1.025$, would give 8.00 on the P/E route, 2.5 percent more than the identical P/B and dividend routes. With the 2024--2025 ROE measured on average equity instead, the cycle average would be 10.63 percent and every route would give 7.66.
 
 \emph{Regression.} Across the seven peers, ordinary least squares gives $\mathrm{P/E}=4.43+250\,g-4.29\,\beta$. With Harbour's 4 percent growth and beta of 1.15 it predicts 9.50, against its actual forward P/E of 15.10. Seven observations and a growth rate below every peer's make this an extrapolation, but it points the same way as the justified multiples.
 
-The justified multiples, at about 7.6 to 7.8 a share, agree with the DCF value of 8.49. Both imply that Harbour's price assumes returns well above its recent record (\hyperref[meth:valuation-price-judgement]{judgement}).
+The justified multiples, at 7.81 a share, are close to the DCF value of 8.49. Both imply that Harbour's price assumes returns well above its recent record (\hyperref[meth:valuation-price-judgement]{judgement}).
 
 \qffield{Conditions} The formulas assume stable growth forever. For a firm in high growth, use the two-stage versions or a full DCF \citep[pp.~471--473]{investment-valuation-2012}. ROE in the P/B formula is next year's earnings over current book value.
 
@@ -125,9 +129,9 @@ The justified multiples, at about 7.6 to 7.8 a share, agree with the DCF value o
 \qffield{Practice} \emph{Harbour.}
 \begin{itemize}
 \item \emph{Underlying EPS.} 2025 profit of 55.38 plus the 18 restructuring charge after tax at 25 percent, $13.50$, over 100.375 million weighted shares, is 0.6862, against reported 0.5517. The trailing P/E falls from 19.94 to 16.03.
-\item \emph{Average ROE.} With ROE of 10.0, 12.0 and 10.8 percent assumed for 2021--2023 and the actual 11.52 and 8.84 for 2024--2025, the average is 10.63 percent. Times book value per share of 6.43 that is 0.683.
+\item \emph{Average ROE.} ROE is measured on opening book equity, the convention of the \hyperref[meth:justified-multiples]{justified multiples}. With 10.0, 12.0 and 10.8 percent assumed for 2021--2023 and the actual 12.01 ($67/558$) and 9.15 percent ($55.38/605$) for 2024--2025, the average is 10.79 percent. Times book value per share at the end of 2025, 6.43, that is 0.6935: normalised EPS for 2026, not for 2025.
 \end{itemize}
-The two measures agree here; they would not if the restructuring recurred. A restructuring charge every other year is an operating cost, and underlying EPS should keep it.
+Compared at the same date, normalised 2025 EPS is the average ROE times opening 2025 equity, $0.1079\times605/100.375=0.6505$, against underlying EPS of 0.6862. The two measures are close; they would not be if the restructuring recurred. A restructuring charge every other year is an operating cost, and underlying EPS should keep it.
 
 \emph{Earnings yield.} Harbour's forward earnings yield is $0.7285/11=6.62$ percent. A loss-making peer with forward EPS of $-0.40$ at 8.00 has a yield of $-5.0$ percent: ranked last, but included.
 
@@ -157,8 +161,8 @@ The two measures agree here; they would not if the restructuring recurred. A res
 \qffield{Practice} \emph{Harbour against the peers.}
 \begin{itemize}
 \item \emph{Dividend yield}: 32 of dividends over 1,108.25 is 2.89 percent.
-\item \emph{P/B} 1.71 against a justified 1.19 (\hyperref[meth:justified-multiples]{justified multiples}).
-\item \emph{P/S} 1.03 against a justified 0.57 at a 5 percent margin.
+\item \emph{P/B} 1.71 against a justified 1.22 (\hyperref[meth:justified-multiples]{justified multiples}).
+\item \emph{P/S} 1.03 against a justified 0.58 at a 5 percent margin.
 \item \emph{PEG}: on the forward P/E of 15.10 with 4 percent growth, 3.77. The peers range from 2.20 (Fenwick) to 2.92 (Glenco).
 \end{itemize}
 Every multiple says Harbour is expensive for its fundamentals. But each comparison assumes peers and Harbour share risk and payout. A PEG of 3.77 partly reflects the low growth it divides by: at near-zero growth the ratio becomes meaningless.
@@ -184,23 +188,24 @@ EBITDA is not cash flow: a capital-intensive firm can have high EBITDA and no fr
 
 \emph{Matching.} Every claim whose cost is excluded from the denominator must be in the numerator.
 \begin{itemize}
+\item Employee options, warrants and the conversion value of convertibles are equity claims: count them in market EV, and when an EV multiple is turned into a value per share, deduct them, valued at the share price the multiple implies.
 \item Under IFRS~16, EBITDA excludes lease costs, so lease liabilities belong in EV.
 \item Under US GAAP, operating lease cost is in EBITDA, so operating lease liabilities do not belong in EV unless the cost is added back.
 \item Pension deficits belong in EV if EBITDA excludes pension interest.
 \item Minority interests belong in EV if EBITDA is consolidated.
 \end{itemize}
 
-\qffield{Practice} \emph{Harbour, 2025.} EV of 1,461.83 over EBITDA of 195 is 7.50.
+\qffield{Practice} \emph{Harbour, 2025.} EV of 1,479.77, including the options at 17.94 (\hyperref[def:price-value-indicators]{EV}), over EBITDA of 195 is 7.59.
 \begin{itemize}
-\item \emph{Mismatch.} Omitting the 65 of leases and the 36.12 pension from EV, while EBITDA still excludes lease costs, gives 6.98: too cheap.
+\item \emph{Mismatch.} Omitting the 65 of leases and the 36.12 pension from EV, while EBITDA still excludes lease costs, gives 7.07: too cheap.
 \item \emph{Price to EBITDA}, $1{,}108.25/195=5.68$, mixes equity and enterprise measures.
 \end{itemize}
 
 \emph{A US GAAP peer} has EV of 2,400 and EBITDA of 300 after operating lease costs of 30, with lease liabilities of 150. Putting it on Harbour's basis, adding 30 to EBITDA and 150 to EV, moves its multiple from 8.00 to 7.73.
 
-\emph{Development costs.} Harbour capitalised 22 of development in 2025 under IAS~38, amortising 12. A peer that expenses development, as US GAAP generally requires, would report EBITDA 22 lower. On that basis Harbour's EBITDA is 173 and its multiple 8.45, and its EBIT is 10 lower.
+\emph{Development costs.} Harbour capitalised 22 of development in 2025 under IAS~38, amortising 12. A peer that expenses development, as US GAAP generally requires, would report EBITDA 22 lower. On that basis Harbour's EBITDA is 173 and its multiple 8.55, and its EBIT is 10 lower.
 
-\emph{Applying the peer median} of 7.8 to Harbour's EBITDA of 195 gives EV of 1,521.00. Less net claims of 353.58 that is equity of 1,167.42, or 11.59 a share. On the development-adjusted basis, 7.8 times 173 gives equity of 995.82, or 9.88 a share.
+\emph{Applying the peer median} of 7.8 to Harbour's EBITDA of 195 gives EV of 1,521.00. Less debt, leases and pension net of cash, 353.58, leaves 1,167.42 for the shares and the options together. The options must be valued at the share price this estimate implies, so the value per share solves $p=(1{,}167.42-5\,C(p))/100.75$, where $C$ is the option value per option on the equity-bridge inputs. That gives 11.39 a share, with the options worth 19.45. On the development-adjusted basis, 7.8 times 173 leaves 995.82, or 9.75 a share. Dividing the whole residual by the shares, as 11.59 and 9.88 do, gives the option holders' value to the shareholders.
 
 \qffield{Conditions} EV should use market values of debt where they differ materially from book. EBITDA definitions vary, especially for share-based pay and one-off items, so recompute them on one basis.
 
@@ -229,8 +234,8 @@ Damodaran notes that filter rules based on price trends do not beat buy-and-hold
 \qffield{Practice} \emph{Harbour against seven peers.} Their forward P/Es are 14, 16, 17, 18, 20, 22 and 35.
 \begin{itemize}
 \item \emph{Averages.} The mean is 20.29, the median 18.00 and the harmonic mean 18.80, the inverse of the average earnings yield. The mean is pulled up by Glenco.
-\item \emph{Applied to Harbour.} At the median, forward EPS of 0.7285 gives 13.11. At the harmonic mean it gives 13.70. At the peer median EV/EBITDA of 7.8 the value is 11.59 (\hyperref[meth:enterprise-value-multiples]{EV multiples}). On comparables alone Harbour looks cheap at 11.00.
-\item \emph{With fundamentals.} The peers' growth of 5 to 12 percent is all above Harbour's 4 percent. The regression predicts 9.50 times, about 6.92 a share. Justified multiples give 7.6 to 7.8 (\hyperref[meth:justified-multiples]{justified multiples}).
+\item \emph{Applied to Harbour.} At the median, forward EPS of 0.7285 gives 13.11. At the harmonic mean it gives 13.70. At the peer median EV/EBITDA of 7.8 the value is 11.39 after the options, or 9.75 on development-adjusted EBITDA (\hyperref[meth:enterprise-value-multiples]{EV multiples}). On the P/E comparables Harbour looks cheap at 11.00; on EV/EBITDA it looks fairly priced, and expensive once development costs are put on the peers' basis.
+\item \emph{With fundamentals.} The peers' growth of 5 to 12 percent is all above Harbour's 4 percent. The regression predicts 9.50 times, about 6.92 a share. Justified multiples give 7.81 (\hyperref[meth:justified-multiples]{justified multiples}).
 \end{itemize}
 Comparables alone say undervalued; comparables controlled for growth say overvalued. The second is more credible, unless Harbour's growth will rise to the peers'.
 

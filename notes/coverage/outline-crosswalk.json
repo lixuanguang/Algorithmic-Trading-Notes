@@ -6999,9 +6999,9 @@
    "objectives": [
     "objective:describe-statement-analysis-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 11): def:statement-analysis-framework describes the four steps (objective, questions and criteria, tools, interpretation) and the report sections, applied in ex:integrated-credit-decision.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m027:b02",
@@ -7019,9 +7019,9 @@
    "objectives": [
     "objective:describe-statement-analysis-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 11): def:statement-analysis-framework describes the roles of analysis for credit (asymmetric, downside variability), equity (symmetric, intrinsic value) and other users.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m027:b03",
@@ -7039,9 +7039,9 @@
    "objectives": [
     "objective:use-filings-and-disclosures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 11): def:filings-disclosures-information-sources describes the complete set of statements, notes (judgements, estimation uncertainty), 10-K/10-Q/8-K/proxy filings, MD&A (Item 303), risk factors (Item 105), the EU audit report (Art. 10) and ICFR reports (Item 308).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m027:b04",
@@ -7059,9 +7059,9 @@
    "objectives": [
     "objective:compare-reporting-frameworks"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 11): def:ifrs-us-gaap-reporting-systems describes IFRS and US GAAP, EU adoption, the SEC's 2008 acceptance of IFRS, the main differences with cross-references, and issued-but-not-effective requirements (IFRS 18, ASU 2024-03, 2023-09, 2025-06).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m027:b05",
@@ -7079,9 +7079,9 @@
    "objectives": [
     "objective:use-filings-and-disclosures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 11): def:filings-disclosures-information-sources describes sources beyond the reports: earnings announcements, voluntary disclosure, economy/industry/company news and information intermediaries, mapped to Harbour's questions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m028:b01",
@@ -7099,9 +7099,9 @@
    "objectives": [
     "objective:analyse-revenue-recognition"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF pp. 11-12): meth:revenue-recognition-analysis describes the IFRS 15/Topic 606 principles and applications (allocation, timing, variable consideration, principal/agent, contract balances) and their analysis implications, with a checked worked contract.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m028:b02",
@@ -7120,9 +7120,9 @@
    "objectives": [
     "objective:analyse-expense-recognition"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF pp. 11-12): meth:expense-recognition-capitalisation describes expense recognition (IAS 2, 16, 23, 38; FAS 2, 86; ASU 2025-06) and contrasts capitalising with expensing for profit, cash-flow sections, assets and coverage, with checked paths.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m028:b03",
@@ -7140,9 +7140,9 @@
    "objectives": [
     "objective:adjust-non-recurring-items"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF pp. 11-12): meth:non-recurring-items describes material and unusual items, IFRS 5 discontinued operations, the US elimination of extraordinary items, IAS 8 policy, estimate and error changes, and tax-effected adjustment (Harbour restructuring).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m028:b04",
@@ -7162,9 +7162,9 @@
    "objectives": [
     "objective:calculate-earnings-per-share"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF pp. 11-12): meth:earnings-per-share describes and calculates basic and diluted EPS (weighted shares, bonus issue, treasury-stock, if-converted, 47A, antidilution, sequencing) for a complex structure and Harbour, and interprets them; checked by subset search.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m028:b05",
@@ -7182,9 +7182,9 @@
    "objectives": [
     "objective:analyse-income-statement-ratios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF pp. 11-12): meth:income-statement-ratios evaluates Harbour's performance with common-size statements and margins, attributing the 2.39-point operating-margin fall to restructuring, gross margin and disposal swing.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m029:b01",
@@ -7202,9 +7202,9 @@
    "objectives": [
     "objective:analyse-intangibles-goodwill"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:intangibles-goodwill-reporting explains recognition, measurement, impairment testing and IAS 38 disclosures of intangible assets, with US contrasts.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m029:b02",
@@ -7222,9 +7222,9 @@
    "objectives": [
     "objective:analyse-intangibles-goodwill"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:intangibles-goodwill-reporting explains goodwill measurement (IFRS 3), CGU allocation, impairment and its non-reversal (IAS 36), US ASU 2017-04, and disclosure-based analysis, with a checked purchase-price allocation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m029:b03",
@@ -7242,9 +7242,9 @@
    "objectives": [
     "objective:analyse-financial-instruments-liabilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:financial-instruments-liabilities explains IFRS 9 classification, ECL, own-credit presentation and US ASU 2016-01/2016-13, with IFRS 7 risk disclosures.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m029:b04",
@@ -7262,9 +7262,9 @@
    "objectives": [
     "objective:analyse-financial-instruments-liabilities"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:financial-instruments-liabilities explains non-current liabilities at amortised cost, issuance costs and IAS 1 current/non-current classification with covenants, with a checked breach scenario on Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m029:b05",
@@ -7283,9 +7283,9 @@
    "objectives": [
     "objective:analyse-common-size-balance-sheet"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:balance-sheet-ratios calculates and interprets Harbour's common-size balance sheets and liquidity and solvency ratios for 2024-2025, incl. the pension-adjusted leverage.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m030:b01",
@@ -7385,9 +7385,9 @@
    "objectives": [
     "objective:interpret-cash-flow-statements"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:cash-flow-interpretation analyses and interprets Harbour's reported and common-size cash flows: sources and uses, sustainability of CFO components, growth versus distress, supplier finance and classification.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m031:b02",
@@ -7406,9 +7406,9 @@
    "objectives": [
     "objective:calculate-free-cash-flow-and-coverage"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:free-cash-flow-coverage calculates FCFF and FCFE by two routes with an exact bridge and interprets cash-flow performance and coverage ratios for Harbour.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m032:b01",
@@ -7426,9 +7426,9 @@
    "objectives": [
     "objective:analyse-inventory-measurement"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:inventory-measurement-nrv describes cost and lower of cost and NRV (IAS 2), US LCNRV and interim recoveries, reversals and the absorption effect, with effects on statements and ratios.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m032:b02",
@@ -7447,9 +7447,9 @@
    "objectives": [
     "objective:compare-inventory-cost-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:inventory-cost-formulas calculates FIFO, weighted average and LIFO under rising and falling costs by layer simulation and explains effects on profit, balances, taxes, cash flows and ratios, the LIFO reserve and liquidations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m032:b03",
@@ -7468,9 +7468,9 @@
    "objectives": [
     "objective:evaluate-inventory-disclosures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:inventory-disclosure-analysis describes IAS 2 and IFRS 18 disclosures and explains the issues to examine (classification trends, write-downs, production gap), applied to Harbour and its variant.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m033:b01",
@@ -7488,9 +7488,9 @@
    "objectives": [
     "objective:compare-intangible-asset-reporting"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:intangible-acquisition-routes compares purchased, internally developed and business-combination intangibles under IFRS and US GAAP, with a numerical comparison of three companies.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m033:b02",
@@ -7509,9 +7509,9 @@
    "objectives": [
     "objective:analyse-impairment-derecognition"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:impairment-derecognition explains and evaluates IAS 36 versus US impairment, reversals and derecognition gains, with checked effects on statements and ROA.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m033:b03",
@@ -7530,9 +7530,9 @@
    "objectives": [
     "objective:analyse-impairment-derecognition"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 12): meth:impairment-derecognition analyses PP&E and intangible disclosures (IAS 16, 36) and interprets Harbour's average age, total and remaining life and capex-to-depreciation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m034:b01",
@@ -7550,9 +7550,9 @@
    "objectives": [
     "objective:analyse-lease-reporting"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:lease-reporting explains lessee (IFRS 16 vs Topic 842 finance/operating) and lessor reporting, with a checked five-year lease and lessor comparison.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m034:b02",
@@ -7571,9 +7571,9 @@
     "objective:analyse-pension-reporting",
     "objective:analyse-share-based-compensation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:post-employment-benefit-reporting explains DC and DB reporting (IAS 19 vs FAS 87/158, ASU 2017-07); meth:share-based-compensation-reporting explains stock-based plans (IFRS 2, ASU 2016-09).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m034:b03",
@@ -7591,9 +7591,9 @@
    "objectives": [
     "objective:describe-long-term-liability-disclosures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): def:long-term-liability-compensation-disclosures describes the presentation and disclosures for debt and covenants, leases, post-employment benefits and share-based payment.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m035:b01",
@@ -7611,9 +7611,9 @@
    "objectives": [
     "objective:distinguish-tax-differences"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): def:accounting-taxable-profit-differences contrasts accounting profit, taxable profit, current tax and tax expense and temporary versus permanent differences, with Harbour's reconciliation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m035:b02",
@@ -7631,9 +7631,9 @@
    "objectives": [
     "objective:analyse-deferred-taxes"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:deferred-tax-analysis explains how DTLs and DTAs arise, recognition and measurement (IAS 12, FAS 109, Pillar Two), and their analytical treatment, with checked reversal simulations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m035:b03",
@@ -7653,9 +7653,9 @@
    "objectives": [
     "objective:calculate-tax-rate-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:tax-rate-measures calculates, interprets and contrasts Harbour's statutory, effective, current and cash tax rates.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m035:b04",
@@ -7675,9 +7675,9 @@
     "objective:analyse-deferred-taxes",
     "objective:calculate-tax-rate-measures"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:deferred-tax-analysis and meth:tax-rate-measures analyse deferred-tax and rate-reconciliation disclosures (IAS 12 paras. 79-81, ASU 2023-09) and their effects on statements and ratios.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m036:b01",
@@ -7695,9 +7695,9 @@
    "objectives": [
     "objective:distinguish-reporting-and-results-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): def:reporting-results-quality compares reporting quality with results quality for earnings, cash flows and balance-sheet items.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m036:b02",
@@ -7715,9 +7715,9 @@
    "objectives": [
     "objective:distinguish-reporting-and-results-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): def:reporting-results-quality describes a six-level spectrum (labelled interpretation) and places Harbour and its variant on it.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m036:b03",
@@ -7735,9 +7735,9 @@
    "objectives": [
     "objective:identify-earnings-management-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:earnings-management-presentation explains conservative versus aggressive accounting and its reversal over time.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m036:b04",
@@ -7755,9 +7755,9 @@
    "objectives": [
     "objective:explain-reporting-incentives-discipline"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): def:reporting-incentives-discipline describes motivations (contracting, stock price, other) and conditions (opportunity from flexibility, history).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m036:b05",
@@ -7775,9 +7775,9 @@
    "objectives": [
     "objective:explain-reporting-incentives-discipline"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): def:reporting-incentives-discipline describes discipline mechanisms (regulators, audit, ICFR, governance, litigation) and their limitations.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m036:b06",
@@ -7795,9 +7795,9 @@
    "objectives": [
     "objective:identify-earnings-management-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:earnings-management-presentation describes presentation choices incl. non-GAAP measures (Regulation G, Item 10(e)) and IFRS 18 management-defined performance measures.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m036:b07",
@@ -7815,9 +7815,9 @@
    "objectives": [
     "objective:identify-earnings-management-methods"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:earnings-management-presentation describes choices and estimates that manage earnings, cash flows and balance-sheet items, illustrated by Harbour's checked variant.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m036:b08",
@@ -7835,9 +7835,9 @@
    "objectives": [
     "objective:detect-reporting-warning-signs"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:reporting-warning-signs describes warning signs and detection methods, incl. Sloan's accrual measure, with a checked table showing how supplier finance masks accruals.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m037:b01",
@@ -7855,9 +7855,9 @@
    "objectives": [
     "objective:calculate-financial-ratios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:financial-ratio-families describes the tools (comparative, common-size, ratio, cash-flow, valuation) and their uses and limits.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m037:b02",
@@ -7876,9 +7876,9 @@
    "objectives": [
     "objective:calculate-financial-ratios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:financial-ratio-families calculates and interprets Harbour's activity, liquidity, solvency and profitability ratios for 2024-2025.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m037:b03",
@@ -7897,9 +7897,9 @@
    "objectives": [
     "objective:evaluate-company-with-ratios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:ratio-based-evaluation describes relationships among ratios and evaluates Harbour with them.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m037:b04",
@@ -7919,9 +7919,9 @@
    "objectives": [
     "objective:decompose-return-on-equity"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:return-on-equity-decomposition demonstrates three- and five-factor DuPont and RNOA + FLEV x spread for Harbour and calculates and interprets the exact attribution of the ROE change.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m037:b05",
@@ -7939,9 +7939,9 @@
    "objectives": [
     "objective:evaluate-company-with-ratios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:ratio-based-evaluation describes uses and limits of industry-specific ratios and sector-specific multiples.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m037:b06",
@@ -7959,9 +7959,9 @@
    "objectives": [
     "objective:forecast-earnings-with-ratios"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 13): meth:ratio-based-earnings-forecast describes how ratios model and forecast earnings, with reasonableness and sensitivity checks on Harbour's 2026 forecast.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m038:b01",
@@ -7979,9 +7979,9 @@
    "objectives": [
     "objective:build-pro-forma-model"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 14): ex:harbour-pro-forma-model demonstrates a sales-based three-statement model that balances without a plug, with an explicit revolver rule and iteration.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m038:b02",
@@ -8000,9 +8000,9 @@
    "objectives": [
     "objective:correct-forecast-biases"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 14): meth:forecast-biases-remedies explains how biases affect analysts' forecasts and recommends remedies (outside view, error-based intervals, independent views), with a checked calibration example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m038:b03",
@@ -8020,9 +8020,9 @@
    "objectives": [
     "objective:forecast-under-competition-and-inflation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 14): meth:competition-inflation-forecasting explains how the five forces affect prices and costs (pass-through), applied to Harbour's 2026 scenarios.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m038:b04",
@@ -8040,9 +8040,9 @@
    "objectives": [
     "objective:forecast-under-competition-and-inflation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 14): meth:competition-inflation-forecasting explains forecasting sales and costs under inflation and deflation (volume x price, cost components, operating leverage, nominal consistency), with checked scenarios.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m038:b05",
@@ -8060,9 +8060,9 @@
    "objectives": [
     "objective:choose-forecast-horizon"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level I PDF p. 14): meth:forecast-horizon-steady-state explains the choice of explicit horizon and projections beyond it (steady state, reinvestment consistency, terminal value), with checked invariance tests.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:7099c7688942:m039:b01",
@@ -13606,9 +13606,9 @@
     "objective:analyse-share-based-compensation",
     "objective:analyse-pension-reporting"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 7): meth:post-employment-benefit-reporting contrasts types of employee compensation (short-term, post-employment DC/DB, other long-term, termination, share-based).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m011:b02",
@@ -13626,9 +13626,9 @@
    "objectives": [
     "objective:analyse-share-based-compensation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 7): meth:share-based-compensation-reporting explains effects of share-based compensation on the statements (grant-date fair value, vesting, true-up, cash-settled, tax).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m011:b03",
@@ -13646,9 +13646,9 @@
    "objectives": [
     "objective:model-share-based-compensation"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 7): meth:share-based-compensation-modelling explains forecasting share-based expense and shares outstanding and their consistent use in valuation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m011:b04",
@@ -13666,9 +13666,9 @@
    "objectives": [
     "objective:analyse-pension-reporting"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 7): meth:post-employment-benefit-reporting explains how post-employment benefits affect the statements, with a checked IAS 19 vs US GAAP example.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m011:b05",
@@ -13686,9 +13686,9 @@
    "objectives": [
     "objective:model-post-employment-benefits"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 7): meth:post-employment-benefit-modelling explains modelling and valuation considerations (operating/financing split, debt-like deficit, sensitivity).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m012:b01",
@@ -14030,9 +14030,9 @@
    "objectives": [
     "objective:evaluate-report-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:report-quality-evaluation demonstrates a six-step framework for assessing report quality on Harbour and its variant.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b02",
@@ -14050,9 +14050,9 @@
    "objectives": [
     "objective:evaluate-report-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:report-quality-evaluation explains problems affecting quality (recognition and measurement, classification, omission and presentation).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b03",
@@ -14070,9 +14070,9 @@
    "objectives": [
     "objective:evaluate-report-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:report-quality-evaluation describes how to evaluate report quality step by step.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b04",
@@ -14090,9 +14090,9 @@
    "objectives": [
     "objective:evaluate-report-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:report-quality-evaluation evaluates the variant's report quality and restates it to a defensible basis.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b05",
@@ -14110,9 +14110,9 @@
    "objectives": [
     "objective:evaluate-earnings-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:earnings-quality-persistence describes indicators of earnings quality.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b06",
@@ -14130,9 +14130,9 @@
    "objectives": [
     "objective:evaluate-earnings-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:earnings-quality-persistence describes sustainable (persistent) earnings and earning power.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b07",
@@ -14150,9 +14150,9 @@
    "objectives": [
     "objective:evaluate-earnings-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:earnings-quality-persistence explains mean reversion and why the accrual component reverts faster (Sloan 1996), with a simulated persistence regression.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b08",
@@ -14170,9 +14170,9 @@
    "objectives": [
     "objective:evaluate-earnings-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:earnings-quality-persistence evaluates Harbour's earnings quality (accruals, restructuring, sustainable profit).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b09",
@@ -14190,9 +14190,9 @@
    "objectives": [
     "objective:evaluate-cash-flow-balance-sheet-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:cash-flow-balance-sheet-quality evaluates Harbour's cash-flow quality.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b10",
@@ -14210,9 +14210,9 @@
    "objectives": [
     "objective:evaluate-cash-flow-balance-sheet-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:cash-flow-balance-sheet-quality describes balance-sheet quality indicators (completeness, measurement, classification).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b11",
@@ -14230,9 +14230,9 @@
    "objectives": [
     "objective:evaluate-cash-flow-balance-sheet-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:cash-flow-balance-sheet-quality evaluates Harbour's balance-sheet quality.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b12",
@@ -14250,9 +14250,9 @@
    "objectives": [
     "objective:evaluate-cash-flow-balance-sheet-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 8): meth:cash-flow-balance-sheet-quality describes cash-flow quality indicators.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m014:b13",
@@ -14270,9 +14270,9 @@
    "objectives": [
     "objective:evaluate-cash-flow-balance-sheet-quality"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 9): meth:cash-flow-balance-sheet-quality describes sources of risk information (IFRS 7, IAS 1.125, covenants, Items 105/303/308, auditor's report, market and industry).",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m015:b01",
@@ -14290,9 +14290,9 @@
    "objectives": [
     "objective:apply-integrated-analysis-framework"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 9): ex:integrated-credit-decision demonstrates the framework for a specific problem (critiquing a facility request and leverage) with constraints, alternatives, stress tests and a recommendation.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m015:b02",
@@ -14311,9 +14311,9 @@
    "objectives": [
     "objective:adjust-for-comparability"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 9): meth:accounting-analysis-adjustments identifies reporting choices and biases affecting quality and comparability and explains their effect on decisions; def:ifrs-us-gaap-reporting-systems lists framework differences.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m015:b03",
@@ -14332,9 +14332,9 @@
    "objectives": [
     "objective:adjust-for-comparability"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 9): meth:accounting-analysis-adjustments evaluates data quality and recommends adjustments for standards, methods and assumptions, restating Harbour and Ridgeline to a common basis.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m015:b04",
@@ -14352,9 +14352,9 @@
    "objectives": [
     "objective:analyse-accounting-change-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 9): meth:accounting-change-effects evaluates how changes in standards (IFRS 18, IFRS 16), methods and assumptions affect statements and ratios, with checked effects.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m015:b05",
@@ -14373,9 +14373,9 @@
    "objectives": [
     "objective:analyse-accounting-change-effects"
    ],
-   "rationale": "Grouped by subject: the mapped objective(s) restate this item's operations; not yet reviewed against entries.",
+   "rationale": "Reviewed 2026-10-20 against the outline page (Level II PDF p. 9): meth:accounting-change-effects analyses balance-sheet, earnings-normalisation and cash-flow modifications and their effect on conclusions.",
    "residual_gap": null,
-   "reviewed": null
+   "reviewed": "2026-10-20"
   },
   {
    "id": "outline:0242f4b7ba07:m016:b01",

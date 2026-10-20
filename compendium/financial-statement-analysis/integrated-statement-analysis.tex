@@ -1,0 +1,146 @@
+\section{Integrated analysis}
+
+These entries apply the framework to a decision, make companies comparable by adjusting for reporting choices and standards, and evaluate how changes in standards, methods and assumptions affect statements and ratios.
+
+\begin{qfexample}[Integrated analysis for a decision: a lender's response to Harbour Tools' request to raise its revolving facility, with constraints, alternatives, stress tests and a justified recommendation]\label{ex:integrated-credit-decision}
+\qffield{Statement} \emph{Objective and question} (\hyperref[def:statement-analysis-framework]{framework}). On 1~March 2026 Harbour Tools asks its relationship bank to raise the revolving credit facility (RCF) from 100 to 160. The purpose is to fund a 60 cash acquisition, at the start of 2026, of a bolt-on business with revenue of 50 and EBITDA of 9, which brings 20 of amortising intangibles, 10 of PP\&E and 30 of goodwill. The lender's question is whether Harbour can service and repay the facility under a plausible downside, and on what terms. A lender's credit analysis focuses on downside risk: the variability of cash flows matters more than their level, and its criteria are the borrower's ability to repay from identified sources over the term \citep[pp.~8--9 and~636--637]{financial-statement-analysis-2009}.
+
+\emph{Constraints} (the lender's credit policy for this risk grade):
+\begin{itemize}
+\item at least 10 of the facility undrawn at every year-end in the downside;
+\item net debt to EBITDA at most 2.25 times, which gives 10~percent EBITDA headroom under a 2.50~times covenant;
+\item EBITDA cover of interest at least 6 times.
+\end{itemize}
+Net debt includes lease liabilities. The after-tax pension deficit is shown as a sensitivity.
+
+\emph{Evidence and adjustments} (\hyperref[meth:accounting-analysis-adjustments]{accounting analysis}). The 2025 statements are of adequate quality (\hyperref[meth:cash-flow-balance-sheet-quality]{evaluation}): debt-like items are on the balance sheet, and 12 of restructuring is unpaid. 2025 leverage was 1.63 times (1.49 excluding restructuring), and margins are under cost pressure (\hyperref[meth:ratio-based-evaluation]{ratios}).
+
+\emph{Scenarios} (\hyperref[ex:harbour-pro-forma-model]{forecast model}). The base case is the model's. The downside has volume $-4$~percent, variable costs $+6$~percent and price $+1.5$~percent in 2026, then gradual recovery (pass-through about one-quarter; \hyperref[meth:competition-inflation-forecasting]{competition}).
+
+\qffield{Notation} Undrawn $=$ facility $-$ peak year-end RCF. Lock-up: no dividend in a year when the previous year-end net debt to EBITDA exceeds the trigger.
+
+\qffield{Conditions} Hypothetical company and policy; the decision illustrates the method. All scenarios balance in the model without a plug. Covenant definitions, such as EBITDA adjustments and the treatment of leases and pensions, must be fixed in the facility agreement. A covenant tested at the reporting date that is breached makes the loan current even if a waiver follows; covenants tested later are disclosed with the risk of breach \citep[Annex, IAS~1 paras.~72B, 74 and~76ZA]{eu-2023-2822-ias1}.
+
+\qffield{Practice} \emph{Alternatives and results} (2026--2028, worst year shown).
+
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Alternative and scenario & Peak RCF & Undrawn & Max net debt$/$EBITDA & Min EBITDA$/$interest\\
+\midrule
+A: 160, no conditions, base & 130.79 & 29.21 & 1.59 & 11.5\\
+A: 160, no conditions, downside & 169.16 & $-9.16$ & 2.05 & 8.1\\
+B: 160 with dividend lock-up above 1.75$\times$, base & 130.79 & 29.21 & 1.59 & 11.5\\
+B: 160 with dividend lock-up above 1.75$\times$, downside & 145.03 & 14.97 & 2.05 & 8.2\\
+C: keep 100, no acquisition, base & 86.75 & 13.25 & 1.41 & 12.3\\
+C: keep 100, no acquisition, downside & 102.11 & $-2.11$ & 1.85 & 9.1\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\emph{Evaluation.}
+\begin{itemize}
+\item \emph{A} exceeds the facility in the downside, because dividends continue while the RCF funds investment.
+\item \emph{C}, declining the increase and the acquisition, does not remove the risk. Even without the acquisition the downside overdraws a 100 facility, because the base business already relies on the RCF to fund capital spending and dividends.
+\item \emph{B} meets every test in both scenarios. The lock-up stops dividends in 2027--2028 in the downside (16.16 then 0, 0) and keeps 14.97 undrawn. Including the after-tax pension deficit, its downside leverage is 2.24 times, just inside the 2.25 limit.
+\end{itemize}
+
+\emph{Recommendation.} Approve option B: a 160 facility with a dividend lock-up while net debt to EBITDA exceeds 1.75 times, a 2.50~times leverage covenant and a 6~times interest-cover covenant. Covenant EBITDA should exclude only defined restructuring costs up to a cap, so that recurring charges cannot be added back. Because pension deficit headroom is thin, the agreement should define leverage including the after-tax deficit, or add a separate test on the deficit.
+
+\emph{Monitoring.} Quarterly compliance certificates; the gross margin and pass-through against the forecast; capital expenditure (which management can defer in a downside); any new supplier finance, which would be counted as debt (\hyperref[meth:report-quality-evaluation]{supplier finance}); and the 2027 IFRS~18 transition, which raises reported operating cash flow by interest paid without changing cash (\hyperref[meth:accounting-change-effects]{IFRS~18}).
+
+\qffield{Pitfalls} Testing only the base case. Declining a request as the ``safe'' option without checking that the existing facility is adequate. Defining covenants on reported figures that a standard change or classification can move.
+
+\qffield{See also} \hyperref[def:statement-analysis-framework]{framework}; \hyperref[meth:post-employment-benefit-modelling]{pension as debt}.
+
+\end{qfexample}
+
+\begin{qfmethod}[Reporting choices, biases and comparability: evaluating data quality and adjusting for differences in standards, methods and assumptions]\label{meth:accounting-analysis-adjustments}
+\qffield{Statement} Accounting analysis evaluates how far accounting reflects economic reality and adjusts the statements so that they do. Distortions come from four sources:
+\begin{itemize}
+\item the standards themselves: political compromise, historical cost and conservatism;
+\item estimation error;
+\item the trade-off of reliability against relevance;
+\item management's discretion.
+\end{itemize}
+Comparability suffers when companies account differently for similar transactions, or when one company changes its accounting \citep[pp.~12--13 and~106--108]{financial-statement-analysis-2009}.
+
+\emph{Common adjustments} (p.~113):
+\begin{itemize}
+\item capitalising operating leases;
+\item recognising share-based expense;
+\item removing one-time charges;
+\item recognising the funded status of pensions;
+\item treating deferred taxes analytically.
+\end{itemize}
+Others restate LIFO to FIFO or the reverse (pp.~233--235), align development capitalisation, and reclassify cash flows such as interest, dividends and supplier finance.
+
+\emph{Recommendation rule.} Choose the basis that best serves the analysis and apply it to all companies, not necessarily the more conservative one. For balance-sheet ratios use FIFO inventory; for operating margins use current costs. For credit leverage include all debt-like claims. For comparison across IFRS and US GAAP use one lease model.
+
+\qffield{Notation} Each adjustment must keep the balance sheet balanced: $\Delta$assets $=\Delta$liabilities (including deferred tax) $+\Delta$equity.
+
+\qffield{Conditions} Adjustments rely on disclosures: LIFO reserves, lease notes, pension notes and development spending. Where a disclosure is missing, an approximation must be stated. Adjusted figures are analytical, not compliant statements.
+
+\qffield{Practice} \emph{Original.} Ridgeline Tools Inc., a US GAAP peer, reports 2025 revenue of 1{,}200 and EBIT of 105 (8.75~percent). It uses LIFO (reserve 40 rising to 48) and has operating leases (cost 30 in selling and administration, liability 120, right-of-use asset 115), with debt of 200 and cash of 50.
+
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{EBIT margin (\%)} & \multicolumn{2}{c}{Net debt$/$EBITDA}\\
+ & Reported & Common basis & Reported & Common basis\\
+\midrule
+Harbour (IFRS) & 8.61 & 7.69 & 1.63 & 1.84\\
+Ridgeline (US GAAP) & 8.75 & 10.00 & 1.03 & 1.48\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\emph{Adjustments.}
+\begin{enumerate}
+\item Ridgeline, LIFO to FIFO: inventory $+48$, deferred tax $+12$, equity $+36$; cost of sales $-8$.
+\item Ridgeline, leases to the IFRS~16 basis: remove the lease cost of 30, add right-of-use depreciation of 23 and lease interest of 6, and include the 120 liability in debt; EBITDA rises by $30+8=38$ to 183.
+\item Harbour, development expensed (both on the expensing basis): EBIT $-10$, EBITDA $-22$.
+\end{enumerate}
+
+\emph{Evaluation.} On reported numbers the companies look similarly profitable and Ridgeline far less levered. On a common basis Ridgeline earns 2.31 points more margin, and the leverage gap narrows from 0.59 to 0.36 times. The reporting differences masked a real profitability gap and overstated a leverage gap. The recommendation is to benchmark Harbour's margin recovery against Ridgeline's 10~percent common-basis margin, not its reported 8.75.
+
+\qffield{Pitfalls} Adjusting only one company. Forgetting the tax effect of adjustments. Treating adjusted figures as precise when based on approximated disclosures.
+
+\qffield{See also} \hyperref[def:ifrs-us-gaap-reporting-systems]{framework differences}; \hyperref[meth:report-quality-evaluation]{report quality}; \hyperref[meth:inventory-cost-formulas]{LIFO restatement}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Effects of changes in accounting standards, methods and assumptions on statements and ratios, and the balance-sheet, earnings and cash-flow modifications that restore comparability]\label{meth:accounting-change-effects}
+\qffield{Statement} \emph{Types of change} \citep[IAS~8]{eu-2023-1803-ias8}:
+\begin{itemize}
+\item a new standard applies under its own transition rules;
+\item a voluntary policy change is retrospective (paras.~19 and~22);
+\item an estimate change is prospective (para.~36);
+\item an error is restated (para.~42).
+\end{itemize}
+New standards often change presentation and ratios without changing cash or economics. IFRS~16 put lease liabilities on balance sheets from 2019. IFRS~18, effective 2027, applies retrospectively with a reconciliation of each comparative income-statement line \citep[Annex, IFRS~18 paras.~C1--C3]{eu-2026-338-ifrs18}. Its main effects are:
+\begin{itemize}
+\item new subtotals and categories (paras.~47 and~69);
+\item audited management-defined performance measures (paras.~117--123);
+\item amendments to IAS~7 that fix interest paid as financing and interest and dividends received as investing, for entities whose main business is not investing or financing (\hyperref[meth:statement-linked-cash-flows]{cash flows}).
+\end{itemize}
+
+\emph{Analysis.} Recast every year on one basis before trend or ratio analysis, restating earlier years to the new basis where disclosures allow, and assign items to the periods they belong to \citep[p.~603]{financial-statement-analysis-2009}. Modifications fall into three groups: balance-sheet (debt-like items, inventory basis, capitalised costs), earnings (normalising transitory items, aligning policies) and cash-flow (classification of interest, dividends, supplier finance and capitalised outlays).
+
+\qffield{Notation} Retrospective policy change: opening equity of the earliest period $\mathrel{+}=$ after-tax cumulative effect. Estimate change: new charge $=$ (carrying amount $-$ residual)$/$revised remaining life.
+
+\qffield{Conditions} IFRS~18 as adopted in the EU in 2026, effective for annual periods beginning on or after 1~January 2027. Its operating, investing and financing categories have detailed requirements for entities with specified main business activities, not reviewed here.
+
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-tools-statements]{Harbour}).
+\begin{itemize}
+\item \emph{IFRS~18 in 2027, comparative 2026.} Interest paid of 16.57 moves from operating to financing. Operating cash flow rises from 171.07 to 187.64, and operating cash flow over debt from 0.474 to 0.520, with the change in cash unchanged. Lease interest and pension net interest are already in finance costs, so operating profit (119.52) is unchanged, and profit before financing and income taxes equals it because Harbour has no investing income.
+\item \emph{MPM disclosure.} An ``adjusted operating profit'' for 2025 that excludes restructuring (111.00) would need a note: description, calculation, reconciliation to operating profit, and the tax effect of 4.50.
+\item \emph{IFRS~16 against an operating-lease model} (2025). Expensing the lease payments of 28 instead would give operating profit of 89, EBITDA of 167 instead of 195, net debt to EBITDA of 1.51 instead of 1.63 (lease liabilities excluded) and EBIT interest cover of 6.76 instead of 5.76. A covenant written on the earlier basis would have changed on adoption.
+\item \emph{Estimate and policy changes.} Extending a machine's life from 10 to 14 years after four years cuts depreciation from 10 to 6 prospectively. Moving inventory from FIFO to weighted average lowers 1~January 2025 inventory by 4 and restates opening retained earnings by $-3$.
+\end{itemize}
+
+\qffield{Pitfalls} Comparing pre- and post-change years without restating. Reading higher operating cash flow after IFRS~18 as better cash generation. Covenants defined on figures that a standard change moves (\hyperref[ex:integrated-credit-decision]{credit decision}).
+
+\qffield{See also} \hyperref[meth:non-recurring-items]{non-recurring items}; \hyperref[def:ifrs-us-gaap-reporting-systems]{monitoring standards}.
+
+\end{qfmethod}

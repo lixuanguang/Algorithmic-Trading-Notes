@@ -2930,13 +2930,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:statement-analysis-framework"
+   ],
+   "candidate_entries": [
+    "def:statement-analysis-framework"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "chap. 1, pp. 4-14; Comprehensive Case pp. 636-639"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "def:statement-analysis-framework"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: applied in part 21 (credit decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2948,13 +2967,57 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:filings-disclosures-information-sources"
+   ],
+   "candidate_entries": [
+    "def:filings-disclosures-information-sources"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias1",
+      "locator": "IAS 1 paras. 10, 122, 125"
+     },
+     {
+      "key": "sec-sk-item-303",
+      "locator": "paras. (a)-(b)"
+     },
+     {
+      "key": "sec-sk-item-105",
+      "locator": "paras. (a)-(b)"
+     },
+     {
+      "key": "eu-audit-regulation-2014",
+      "locator": "Art. 10(2)"
+     },
+     {
+      "key": "sec-sk-item-308",
+      "locator": "para. (a)"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 27-28, 68-70, 74-75"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias1.md",
+     "notes/readings/sec-sk-item-303.md",
+     "notes/readings/sec-sk-item-105.md",
+     "notes/readings/eu-audit-regulation-2014.md",
+     "notes/readings/sec-sk-item-308.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "def:filings-disclosures-information-sources"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: descriptive; no numerical check; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2966,13 +3029,72 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:ifrs-us-gaap-reporting-systems"
+   ],
+   "candidate_entries": [
+    "def:ifrs-us-gaap-reporting-systems"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias1",
+      "locator": "Regulation (EU) 2023/1803, recitals 1-2"
+     },
+     {
+      "key": "eu-2023-2822-ias1",
+      "locator": "Art. 2"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 70-72"
+     },
+     {
+      "key": "sec-ifrs-acceptance-2008",
+      "locator": "p. 986"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "Annex, IFRS 18 paras. C1-C3, C8"
+     },
+     {
+      "key": "us-expense-disaggregation-2024",
+      "locator": "p. 3"
+     },
+     {
+      "key": "us-expense-disaggregation-date-2025",
+      "locator": "p. 1"
+     },
+     {
+      "key": "us-tax-disclosures-2023",
+      "locator": "p. 5"
+     },
+     {
+      "key": "us-software-2025",
+      "locator": "p. 3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias1.md",
+     "notes/readings/eu-2023-2822-ias1.md",
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/sec-ifrs-acceptance-2008.md",
+     "notes/readings/eu-2026-338-ifrs18.md",
+     "notes/readings/us-expense-disaggregation-2024.md",
+     "notes/readings/us-expense-disaggregation-date-2025.md",
+     "notes/readings/us-tax-disclosures-2023.md",
+     "notes/readings/us-software-2025.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "def:ifrs-us-gaap-reporting-systems"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 19 (Harbour against Ridgeline on a common basis); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -2984,13 +3106,47 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:revenue-recognition-analysis"
+   ],
+   "candidate_entries": [
+    "meth:revenue-recognition-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ifrs15",
+      "locator": "IFRS 15 paras. 2, 9, 22, 31, 35, 38, 47, 50-51, 56, 73-74, 91, 105-108, 114, 120, B35-B37, C1"
+     },
+     {
+      "key": "us-revenue-2014",
+      "locator": "pp. 10-11"
+     },
+     {
+      "key": "us-revenue-deferral-2015",
+      "locator": "p. 1"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 110-111"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ifrs15.md",
+     "notes/readings/us-revenue-2014.md",
+     "notes/readings/us-revenue-deferral-2015.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:revenue-recognition-analysis"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 5 (allocation, timing, contract liability, constraint, principal/agent); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3003,13 +3159,67 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:expense-recognition-capitalisation"
+   ],
+   "candidate_entries": [
+    "meth:expense-recognition-capitalisation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias2",
+      "locator": "IAS 2 para. 34"
+     },
+     {
+      "key": "eu-2023-1803-ias16",
+      "locator": "IAS 16 paras. 7, 12-13, 50-51, 61"
+     },
+     {
+      "key": "eu-2023-1803-ias23",
+      "locator": "IAS 23 para. 8"
+     },
+     {
+      "key": "eu-2023-1803-ias38",
+      "locator": "IAS 38 paras. 54, 57, 71"
+     },
+     {
+      "key": "us-research-development-1974",
+      "locator": "para. 12"
+     },
+     {
+      "key": "us-software-1985",
+      "locator": "paras. 3-4"
+     },
+     {
+      "key": "us-software-2025",
+      "locator": "pp. 2-3"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 110-111"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias2.md",
+     "notes/readings/eu-2023-1803-ias16.md",
+     "notes/readings/eu-2023-1803-ias23.md",
+     "notes/readings/eu-2023-1803-ias38.md",
+     "notes/readings/us-research-development-1974.md",
+     "notes/readings/us-software-1985.md",
+     "notes/readings/us-software-2025.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:expense-recognition-capitalisation"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 6 (constant and growing spend; cumulative difference = asset; capitalised interest and coverage); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3021,13 +3231,52 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:non-recurring-items"
+   ],
+   "candidate_entries": [
+    "meth:non-recurring-items"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias1",
+      "locator": "IAS 1 paras. 87, 97-98"
+     },
+     {
+      "key": "us-extraordinary-items-2015",
+      "locator": "p. 2"
+     },
+     {
+      "key": "eu-2023-1803-ifrs5",
+      "locator": "IFRS 5 paras. 32-33"
+     },
+     {
+      "key": "eu-2023-1803-ias8",
+      "locator": "IAS 8 paras. 5, 14, 19, 22, 36, 39, 42, 49"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 338, 340, 602-603"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias1.md",
+     "notes/readings/us-extraordinary-items-2015.md",
+     "notes/readings/eu-2023-1803-ifrs5.md",
+     "notes/readings/eu-2023-1803-ias8.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:non-recurring-items"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 2 and 20 (restructuring add-back and ROE; estimate and policy changes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3041,13 +3290,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:earnings-per-share"
+   ],
+   "candidate_entries": [
+    "meth:earnings-per-share"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias33",
+      "locator": "IAS 33 paras. 10, 12, 14, 19-20, 26, 31, 33, 36, 41-47A, 49, 64, 70"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p. 374"
+     },
+     {
+      "key": "us-convertibles-eps-2020",
+      "locator": "pp. 5-6"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias33.md",
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/us-convertibles-eps-2020.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:earnings-per-share"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 4 (weighted shares by formula and month by month; IAS 33 sequencing = subset minimum; antidilution; Harbour EPS); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3059,13 +3337,65 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:income-statement-ratios",
+    "ex:harbour-tools-statements"
+   ],
+   "candidate_entries": [
+    "ex:harbour-tools-statements",
+    "meth:income-statement-ratios"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 28-35"
+     },
+     {
+      "key": "eu-2023-1803-ias1",
+      "locator": "IAS 1 paras. 99, 103"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "Annex, IFRS 18 paras. 69, 82-83"
+     },
+     {
+      "key": "us-expense-disaggregation-2024",
+      "locator": "pp. 1-3"
+     },
+     {
+      "key": "eu-2023-1803-ias7",
+      "locator": "IAS 7 paras. 31-33"
+     },
+     {
+      "key": "eu-2023-1803-ias2",
+      "locator": "IAS 2 para. 12"
+     },
+     {
+      "key": "eu-2023-2822-ias1",
+      "locator": "Annex, IAS 1 para. 73"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2023-1803-ias1.md",
+     "notes/readings/eu-2026-338-ifrs18.md",
+     "notes/readings/us-expense-disaggregation-2024.md",
+     "notes/readings/eu-2023-1803-ias7.md",
+     "notes/readings/eu-2023-1803-ias2.md",
+     "notes/readings/eu-2023-2822-ias1.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:income-statement-ratios",
+     "ex:harbour-tools-statements"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (common-size income statement reconciles to 100%; margins); part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3077,13 +3407,52 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:intangibles-goodwill-reporting"
+   ],
+   "candidate_entries": [
+    "meth:intangibles-goodwill-reporting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias38",
+      "locator": "IAS 38 paras. 21, 48, 63-64, 72, 75, 88, 97, 104, 107-108, 118, 126"
+     },
+     {
+      "key": "eu-2023-1803-ifrs3",
+      "locator": "IFRS 3 paras. 32, B31"
+     },
+     {
+      "key": "eu-2023-1803-ias36",
+      "locator": "IAS 36 paras. 10, 80, 104, 124, 134"
+     },
+     {
+      "key": "us-goodwill-intangibles-2001",
+      "locator": "paras. 16-18"
+     },
+     {
+      "key": "us-goodwill-2017",
+      "locator": "pp. 2-3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias38.md",
+     "notes/readings/eu-2023-1803-ifrs3.md",
+     "notes/readings/eu-2023-1803-ias36.md",
+     "notes/readings/us-goodwill-intangibles-2001.md",
+     "notes/readings/us-goodwill-2017.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:intangibles-goodwill-reporting"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 8 (goodwill from a purchase-price allocation with deferred tax); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3095,13 +3464,57 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:financial-instruments-liabilities"
+   ],
+   "candidate_entries": [
+    "meth:financial-instruments-liabilities"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ifrs9",
+      "locator": "IFRS 9 paras. 4.1.1-4.1.4, 4.2.1, 5.1.1, 5.5.3, 5.5.5, 5.7.7, B5.7.1"
+     },
+     {
+      "key": "us-equity-investments-2016",
+      "locator": "p. 1"
+     },
+     {
+      "key": "us-credit-losses-2016",
+      "locator": "p. 2"
+     },
+     {
+      "key": "us-debt-issuance-costs-2015",
+      "locator": "p. 1"
+     },
+     {
+      "key": "eu-2023-2822-ias1",
+      "locator": "Annex, IAS 1 paras. 69, 72B, 73-74, 76ZA; Art. 2"
+     },
+     {
+      "key": "eu-2023-1803-ifrs7",
+      "locator": "IFRS 7 paras. 31-34, 39-40"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ifrs9.md",
+     "notes/readings/us-equity-investments-2016.md",
+     "notes/readings/us-credit-losses-2016.md",
+     "notes/readings/us-debt-issuance-costs-2015.md",
+     "notes/readings/eu-2023-2822-ias1.md",
+     "notes/readings/eu-2023-1803-ifrs7.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:financial-instruments-liabilities"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (covenant-breach reclassification: current ratio 1.84 to 0.94); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3114,13 +3527,50 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:balance-sheet-ratios",
+    "ex:harbour-tools-statements"
+   ],
+   "candidate_entries": [
+    "ex:harbour-tools-statements",
+    "meth:balance-sheet-ratios"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 28-35"
+     },
+     {
+      "key": "eu-2023-1803-ias7",
+      "locator": "IAS 7 paras. 31-33"
+     },
+     {
+      "key": "eu-2023-1803-ias2",
+      "locator": "IAS 2 para. 12"
+     },
+     {
+      "key": "eu-2023-2822-ias1",
+      "locator": "Annex, IAS 1 para. 73"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2023-1803-ias7.md",
+     "notes/readings/eu-2023-1803-ias2.md",
+     "notes/readings/eu-2023-2822-ias1.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:balance-sheet-ratios",
+     "ex:harbour-tools-statements"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (common-size assets sum to 100%; liquidity and solvency ratios; pension-adjusted debt to equity); part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3275,13 +3725,60 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cash-flow-interpretation",
+    "ex:harbour-tools-statements"
+   ],
+   "candidate_entries": [
+    "ex:harbour-tools-statements",
+    "meth:cash-flow-interpretation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 411-416"
+     },
+     {
+      "key": "eu-2024-1317-supplier-finance",
+      "locator": "Annex, IAS 7 paras. 44F-44H, 62"
+     },
+     {
+      "key": "us-supplier-finance-2022",
+      "locator": "pp. 1-2"
+     },
+     {
+      "key": "eu-2023-1803-ias7",
+      "locator": "IAS 7 paras. 31-33"
+     },
+     {
+      "key": "eu-2023-1803-ias2",
+      "locator": "IAS 2 para. 12"
+     },
+     {
+      "key": "eu-2023-2822-ias1",
+      "locator": "Annex, IAS 1 para. 73"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2024-1317-supplier-finance.md",
+     "notes/readings/us-supplier-finance-2022.md",
+     "notes/readings/eu-2023-1803-ias7.md",
+     "notes/readings/eu-2023-1803-ias2.md",
+     "notes/readings/eu-2023-2822-ias1.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:cash-flow-interpretation",
+     "ex:harbour-tools-statements"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 3 (common-size cash flows; adequacy); part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3294,15 +3791,38 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
+   "entries": [
+    "meth:free-cash-flow-coverage"
+   ],
    "candidate_entries": [
+    "meth:free-cash-flow-coverage",
     "meth:statement-linked-cash-flows"
    ],
-   "coverage": "missing",
-   "next_action": "review",
-   "missing": "All operations: no entry has been reviewed against this objective.",
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 364, 380-381"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 415, 417-419"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/investment-valuation-2012.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:free-cash-flow-coverage"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 3 (FCFF two routes with explicit bridge; FCFE from CFO and from FCFF; FCFE = distributions + change in cash; coverage ratios); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3314,13 +3834,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:inventory-measurement-nrv"
+   ],
+   "candidate_entries": [
+    "meth:inventory-measurement-nrv"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias2",
+      "locator": "IAS 2 paras. 3-7, 9-16, 29, 33-34, 36"
+     },
+     {
+      "key": "us-inventory-2015",
+      "locator": "pp. 1-2, 9"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p. 236"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias2.md",
+     "notes/readings/us-inventory-2015.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:inventory-measurement-nrv"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 7 (NRV write-down and capped reversal); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3333,13 +3882,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:inventory-cost-formulas"
+   ],
+   "candidate_entries": [
+    "meth:inventory-cost-formulas"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias2",
+      "locator": "IAS 2 paras. 23-27"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 228-235"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias2.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:inventory-cost-formulas"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 7 (layer simulation for FIFO, WAC, LIFO under rising and falling costs; holding gain; LIFO reserve restatement and inflation bridge; liquidation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3352,13 +3925,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:inventory-disclosure-analysis"
+   ],
+   "candidate_entries": [
+    "meth:inventory-disclosure-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias2",
+      "locator": "IAS 2 paras. 36-38"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "Annex, IFRS 18 paras. 82-83"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 228-236"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias2.md",
+     "notes/readings/eu-2026-338-ifrs18.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:inventory-disclosure-analysis"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 2 and 14 (days of inventory; variant); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3370,13 +3972,57 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:intangible-acquisition-routes"
+   ],
+   "candidate_entries": [
+    "meth:intangible-acquisition-routes"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias38",
+      "locator": "IAS 38 paras. 21, 33-34, 48, 54, 57, 63, 71, 97, 107-108"
+     },
+     {
+      "key": "eu-2023-1803-ifrs3",
+      "locator": "IFRS 3 paras. 10, 18, B31"
+     },
+     {
+      "key": "us-goodwill-intangibles-2001",
+      "locator": "paras. 16-17"
+     },
+     {
+      "key": "us-research-development-1974",
+      "locator": "para. 12"
+     },
+     {
+      "key": "us-software-1985",
+      "locator": "paras. 3-4"
+     },
+     {
+      "key": "us-business-combinations-2007",
+      "locator": "para. 66(a), pp. 20-21"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias38.md",
+     "notes/readings/eu-2023-1803-ifrs3.md",
+     "notes/readings/us-goodwill-intangibles-2001.md",
+     "notes/readings/us-research-development-1974.md",
+     "notes/readings/us-software-1985.md",
+     "notes/readings/us-business-combinations-2007.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:intangible-acquisition-routes"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 8 (internal project IFRS vs US; purchase-price allocation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3391,13 +4037,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:impairment-derecognition"
+   ],
+   "candidate_entries": [
+    "meth:impairment-derecognition"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias36",
+      "locator": "IAS 36 paras. 9-10, 12, 18, 30, 59-60, 110, 114, 117, 124, 126, 130, 134"
+     },
+     {
+      "key": "us-impairment-2001",
+      "locator": "paras. 7, 15, 34"
+     },
+     {
+      "key": "eu-2023-1803-ias16",
+      "locator": "IAS 16 paras. 67-68, 71, 73, 79"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias36.md",
+     "notes/readings/us-impairment-2001.md",
+     "notes/readings/eu-2023-1803-ias16.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:impairment-derecognition"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 9 (IAS 36 vs US test; capped reversal; ROA after write-down; disposal gain from the ledger; PP&E age identity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3409,13 +4084,37 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:lease-reporting"
+   ],
+   "candidate_entries": [
+    "meth:lease-reporting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ifrs16",
+      "locator": "IFRS 16 paras. 5-6, 22-23, 26, 31, 36, 49-50, 61-63, 67, 81, C1"
+     },
+     {
+      "key": "us-leases-2016",
+      "locator": "pp. 1-4, 7-8"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ifrs16.md",
+     "notes/readings/us-leases-2016.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:lease-reporting"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 10 (schedule vs annuity; expense profiles; ROU assets; lessor totals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3428,13 +4127,52 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:post-employment-benefit-reporting"
+   ],
+   "candidate_entries": [
+    "meth:post-employment-benefit-reporting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias19",
+      "locator": "IAS 19 paras. 8, 51, 63, 67, 83, 120, 122-123, 127"
+     },
+     {
+      "key": "us-pension-funded-status-2006",
+      "locator": "p. 1"
+     },
+     {
+      "key": "us-pensions-1985",
+      "locator": "paras. 20, 30, 32, 34"
+     },
+     {
+      "key": "us-pension-cost-presentation-2017",
+      "locator": "pp. 2-3"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 163-165"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias19.md",
+     "notes/readings/us-pension-funded-status-2006.md",
+     "notes/readings/us-pensions-1985.md",
+     "notes/readings/us-pension-cost-presentation-2017.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:post-employment-benefit-reporting"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 11 (roll-forward; IFRS vs US P&L and OCI totals; economic cost); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3447,13 +4185,70 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:share-based-compensation-reporting",
+    "meth:post-employment-benefit-reporting"
+   ],
+   "candidate_entries": [
+    "meth:post-employment-benefit-reporting",
+    "meth:share-based-compensation-reporting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ifrs2",
+      "locator": "IFRS 2 paras. 7, 10-11, 15, 19-21, 30"
+     },
+     {
+      "key": "eu-2023-1803-ias12",
+      "locator": "IAS 12 paras. 68A-68C"
+     },
+     {
+      "key": "us-share-payment-2016",
+      "locator": "pp. 1-3"
+     },
+     {
+      "key": "eu-2023-1803-ias19",
+      "locator": "IAS 19 paras. 8, 51, 63, 67, 83, 120, 122-123, 127"
+     },
+     {
+      "key": "us-pension-funded-status-2006",
+      "locator": "p. 1"
+     },
+     {
+      "key": "us-pensions-1985",
+      "locator": "paras. 20, 30, 32, 34"
+     },
+     {
+      "key": "us-pension-cost-presentation-2017",
+      "locator": "pp. 2-3"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 163-165"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ifrs2.md",
+     "notes/readings/eu-2023-1803-ias12.md",
+     "notes/readings/us-share-payment-2016.md",
+     "notes/readings/eu-2023-1803-ias19.md",
+     "notes/readings/us-pension-funded-status-2006.md",
+     "notes/readings/us-pensions-1985.md",
+     "notes/readings/us-pension-cost-presentation-2017.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:share-based-compensation-reporting",
+     "meth:post-employment-benefit-reporting"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 12 (BSM vs Monte Carlo; forfeiture true-up); part 11 (roll-forward; IFRS vs US P&L and OCI totals; economic cost); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3465,13 +4260,57 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:long-term-liability-compensation-disclosures"
+   ],
+   "candidate_entries": [
+    "def:long-term-liability-compensation-disclosures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-2822-ias1",
+      "locator": "Annex, IAS 1 paras. 69-76ZA"
+     },
+     {
+      "key": "eu-2023-1803-ifrs7",
+      "locator": "IFRS 7 para. 39"
+     },
+     {
+      "key": "us-debt-issuance-costs-2015",
+      "locator": "p. 1"
+     },
+     {
+      "key": "eu-2023-1803-ifrs16",
+      "locator": "IFRS 16 paras. 47, 53"
+     },
+     {
+      "key": "eu-2023-1803-ias19",
+      "locator": "IAS 19 paras. 135, 139-140, 144-145, 147"
+     },
+     {
+      "key": "eu-2023-1803-ifrs2",
+      "locator": "IFRS 2 paras. 44-47, 50-51"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-2822-ias1.md",
+     "notes/readings/eu-2023-1803-ifrs7.md",
+     "notes/readings/us-debt-issuance-costs-2015.md",
+     "notes/readings/eu-2023-1803-ifrs16.md",
+     "notes/readings/eu-2023-1803-ias19.md",
+     "notes/readings/eu-2023-1803-ifrs2.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "def:long-term-liability-compensation-disclosures"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 11 (duration sensitivity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3483,13 +4322,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:accounting-taxable-profit-differences"
+   ],
+   "candidate_entries": [
+    "def:accounting-taxable-profit-differences"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias12",
+      "locator": "IAS 12 paras. 5, 7-8"
+     },
+     {
+      "key": "us-income-taxes-1992",
+      "locator": "paras. 16-17"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 369-373, 603"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias12.md",
+     "notes/readings/us-income-taxes-1992.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "def:accounting-taxable-profit-differences"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 1 and 13 (taxable profit, current and deferred tax in the ledger); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3502,13 +4370,52 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:deferred-tax-analysis"
+   ],
+   "candidate_entries": [
+    "meth:deferred-tax-analysis"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias12",
+      "locator": "IAS 12 paras. 15, 24, 34, 47, 51, 53, 56, 58, 79-81"
+     },
+     {
+      "key": "us-income-taxes-1992",
+      "locator": "paras. 17-18, 27"
+     },
+     {
+      "key": "us-deferred-tax-classification-2015",
+      "locator": "p. 1"
+     },
+     {
+      "key": "eu-2023-2468-ias12",
+      "locator": "Annex, IAS 12 paras. 4A, 88A-88B"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 370-373"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias12.md",
+     "notes/readings/us-income-taxes-1992.md",
+     "notes/readings/us-deferred-tax-classification-2015.md",
+     "notes/readings/eu-2023-2468-ias12.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:deferred-tax-analysis"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 13 (DTL roll-forward; rate change; reversal simulation with and without growth); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3524,13 +4431,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:tax-rate-measures"
+   ],
+   "candidate_entries": [
+    "meth:tax-rate-measures"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias12",
+      "locator": "IAS 12 paras. 81(c), 86"
+     },
+     {
+      "key": "us-tax-disclosures-2023",
+      "locator": "pp. 2-5"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p. 373"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias12.md",
+     "notes/readings/us-tax-disclosures-2023.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:tax-rate-measures"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 13 (rate reconciliation; ETR, current and cash rates); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3543,13 +4479,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:reporting-results-quality"
+   ],
+   "candidate_entries": [
+    "def:reporting-results-quality"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias1",
+      "locator": "IAS 1 para. 15"
+     },
+     {
+      "key": "eu-2023-1803-ias8",
+      "locator": "IAS 8 para. 41"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 108-112, 389"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias1.md",
+     "notes/readings/eu-2023-1803-ias8.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "def:reporting-results-quality"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 14 (variant); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3561,13 +4526,42 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "def:reporting-incentives-discipline"
+   ],
+   "candidate_entries": [
+    "def:reporting-incentives-discipline"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 69, 72-73, 109-112, 118-119"
+     },
+     {
+      "key": "eu-audit-regulation-2014",
+      "locator": "Art. 10(2)"
+     },
+     {
+      "key": "sec-sk-item-308",
+      "locator": "para. (a)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-audit-regulation-2014.md",
+     "notes/readings/sec-sk-item-308.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "def:reporting-incentives-discipline"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: descriptive; no numerical check; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3580,13 +4574,47 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:earnings-management-presentation"
+   ],
+   "candidate_entries": [
+    "meth:earnings-management-presentation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 108-111, 119-121"
+     },
+     {
+      "key": "sec-regulation-g",
+      "locator": "paras. (a)-(b)"
+     },
+     {
+      "key": "sec-sk-item-10e",
+      "locator": "para. (e)(1)"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "Annex, IFRS 18 paras. 117-118, 121-123"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/sec-regulation-g.md",
+     "notes/readings/sec-sk-item-10e.md",
+     "notes/readings/eu-2026-338-ifrs18.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:earnings-management-presentation"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 14 and 20 (variant effects; MPM reconciliation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3598,13 +4626,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:reporting-warning-signs"
+   ],
+   "candidate_entries": [
+    "meth:reporting-warning-signs"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p. 113"
+     },
+     {
+      "key": "wide-sloan-accruals",
+      "locator": "pp. 293-294"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/wide-sloan-accruals.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:reporting-warning-signs"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 14 (indicators reported vs variant; supplier finance masks accruals; Sloan measure); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3618,13 +4670,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:financial-ratio-families"
+   ],
+   "candidate_entries": [
+    "meth:financial-ratio-families"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 28-35, 449, 462"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:financial-ratio-families"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (ratio families 2024-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3637,13 +4708,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:ratio-based-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:ratio-based-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 35, 638, 640"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 571-576"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:ratio-based-evaluation"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3657,13 +4752,32 @@
    ],
    "depth": "foundation",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:return-on-equity-decomposition"
+   ],
+   "candidate_entries": [
+    "meth:return-on-equity-decomposition"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 2,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 449, 463-465"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:return-on-equity-decomposition"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 2 (three- and five-factor identities; RNOA + FLEV x spread; exact log attribution); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3675,13 +4789,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:ratio-based-earnings-forecast"
+   ],
+   "candidate_entries": [
+    "meth:ratio-based-earnings-forecast"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 492-499, 617-620"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:ratio-based-earnings-forecast"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 15 and 17 (forecast; RNOA reasonableness; one-point margin sensitivity in the full model); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3693,13 +4826,32 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "ex:harbour-pro-forma-model"
+   ],
+   "candidate_entries": [
+    "ex:harbour-pro-forma-model"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 494-498"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "ex:harbour-pro-forma-model"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 15 (balance sheet balances without a plug; revolver rule; iteration; growth decomposition); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3712,13 +4864,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:forecast-biases-remedies"
+   ],
+   "candidate_entries": [
+    "meth:forecast-biases-remedies"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-barberis-thaler-survey",
+      "locator": "pp. 12-15"
+     },
+     {
+      "key": "thinking-fast-slow-2011",
+      "locator": "chap. 23, sections The Planning Fallacy and Mitigating the Planning Fallacy"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 2-3, 282-284"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-barberis-thaler-survey.md",
+     "notes/readings/thinking-fast-slow-2011.md",
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:forecast-biases-remedies"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 18 (interval coverage closed form vs simulation; reference-class intervals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3730,13 +4911,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:competition-inflation-forecasting"
+   ],
+   "candidate_entries": [
+    "meth:competition-inflation-forecasting"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "five-competitive-forces-2008",
+      "locator": "reprint pp. 2-3, 6-10"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 492-493"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "p. 307"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/five-competitive-forces-2008.md",
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:competition-inflation-forecasting"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 16 (pass-through scenarios; contribution margin; nominal growth; deflation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -3748,13 +4958,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:forecast-horizon-steady-state"
+   ],
+   "candidate_entries": [
+    "meth:forecast-horizon-steady-state"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p. 501"
+     },
+     {
+      "key": "investment-valuation-2012",
+      "locator": "pp. 307-310, 313"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/investment-valuation-2012.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:forecast-horizon-steady-state"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 17 (value-neutral growth; horizon extension invariance; naive terminal value); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7869,13 +9103,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:share-based-compensation-modelling"
+   ],
+   "candidate_entries": [
+    "meth:share-based-compensation-modelling"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ifrs2",
+      "locator": "IFRS 2 paras. 45, 47"
+     },
+     {
+      "key": "eu-2023-1803-ias33",
+      "locator": "IAS 33 paras. 45-47A"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ifrs2.md",
+     "notes/readings/eu-2023-1803-ias33.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:share-based-compensation-modelling"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 4, 12 and 15 (treasury-stock dilution at forecast prices; forecast SBC); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -7887,13 +9145,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:post-employment-benefit-modelling"
+   ],
+   "candidate_entries": [
+    "meth:post-employment-benefit-modelling"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 163-166"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "Annex, IFRS 18 paras. B53-B55"
+     },
+     {
+      "key": "eu-2023-1803-ias19",
+      "locator": "IAS 19 para. 145"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2026-338-ifrs18.md",
+     "notes/readings/eu-2023-1803-ias19.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:post-employment-benefit-modelling"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 11, 15 and 21 (duration vs exact repricing; after-tax deficit; deficit in forecast and decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8026,13 +9313,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:report-quality-evaluation"
+   ],
+   "candidate_entries": [
+    "meth:report-quality-evaluation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 111-113"
+     },
+     {
+      "key": "eu-2024-1317-supplier-finance",
+      "locator": "Annex, IAS 7 paras. 44F-44H"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2024-1317-supplier-finance.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:report-quality-evaluation"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 14 (demonstration and restatement); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8046,13 +9357,37 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:earnings-quality-persistence"
+   ],
+   "candidate_entries": [
+    "meth:earnings-quality-persistence"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 118-121, 602-603, 617"
+     },
+     {
+      "key": "wide-sloan-accruals",
+      "locator": "pp. 290, 293, 298-300"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/wide-sloan-accruals.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:earnings-quality-persistence"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 14 (simulated persistence regression; Harbour accruals); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8065,13 +9400,67 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:cash-flow-balance-sheet-quality"
+   ],
+   "candidate_entries": [
+    "meth:cash-flow-balance-sheet-quality"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 120-121, 415"
+     },
+     {
+      "key": "eu-2024-1317-supplier-finance",
+      "locator": "Annex, IAS 7 paras. 44F-44H"
+     },
+     {
+      "key": "eu-2023-1803-ifrs7",
+      "locator": "IFRS 7 paras. 31-34, 39-40"
+     },
+     {
+      "key": "eu-2023-1803-ias1",
+      "locator": "IAS 1 para. 125"
+     },
+     {
+      "key": "sec-sk-item-105",
+      "locator": "paras. (a)-(b)"
+     },
+     {
+      "key": "sec-sk-item-303",
+      "locator": "para. (a)"
+     },
+     {
+      "key": "eu-audit-regulation-2014",
+      "locator": "Art. 10(2)(c)"
+     },
+     {
+      "key": "sec-sk-item-308",
+      "locator": "para. (a)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2024-1317-supplier-finance.md",
+     "notes/readings/eu-2023-1803-ifrs7.md",
+     "notes/readings/eu-2023-1803-ias1.md",
+     "notes/readings/sec-sk-item-105.md",
+     "notes/readings/sec-sk-item-303.md",
+     "notes/readings/eu-audit-regulation-2014.md",
+     "notes/readings/sec-sk-item-308.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:cash-flow-balance-sheet-quality"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: parts 3 and 14; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8083,13 +9472,40 @@
    ],
    "depth": "decision",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "ex:integrated-credit-decision",
+    "def:statement-analysis-framework"
+   ],
+   "candidate_entries": [
+    "def:statement-analysis-framework",
+    "ex:integrated-credit-decision"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 4,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 8-9, 636-637"
+     },
+     {
+      "key": "eu-2023-2822-ias1",
+      "locator": "Annex, IAS 1 paras. 72B, 74, 76ZA"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2023-2822-ias1.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "ex:integrated-credit-decision",
+     "def:statement-analysis-framework"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 21 (three alternatives, base and downside, all balanced; only B passes); applied in part 21 (credit decision); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8104,13 +9520,75 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:accounting-analysis-adjustments",
+    "def:ifrs-us-gaap-reporting-systems"
+   ],
+   "candidate_entries": [
+    "def:ifrs-us-gaap-reporting-systems",
+    "meth:accounting-analysis-adjustments"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "pp. 12-13, 106-108, 113, 233-235"
+     },
+     {
+      "key": "eu-2023-1803-ias1",
+      "locator": "Regulation (EU) 2023/1803, recitals 1-2"
+     },
+     {
+      "key": "eu-2023-2822-ias1",
+      "locator": "Art. 2"
+     },
+     {
+      "key": "sec-ifrs-acceptance-2008",
+      "locator": "p. 986"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "Annex, IFRS 18 paras. C1-C3, C8"
+     },
+     {
+      "key": "us-expense-disaggregation-2024",
+      "locator": "p. 3"
+     },
+     {
+      "key": "us-expense-disaggregation-date-2025",
+      "locator": "p. 1"
+     },
+     {
+      "key": "us-tax-disclosures-2023",
+      "locator": "p. 5"
+     },
+     {
+      "key": "us-software-2025",
+      "locator": "p. 3"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/financial-statement-analysis-2009.md",
+     "notes/readings/eu-2023-1803-ias1.md",
+     "notes/readings/eu-2023-2822-ias1.md",
+     "notes/readings/sec-ifrs-acceptance-2008.md",
+     "notes/readings/eu-2026-338-ifrs18.md",
+     "notes/readings/us-expense-disaggregation-2024.md",
+     "notes/readings/us-expense-disaggregation-date-2025.md",
+     "notes/readings/us-tax-disclosures-2023.md",
+     "notes/readings/us-software-2025.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:accounting-analysis-adjustments",
+     "def:ifrs-us-gaap-reporting-systems"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 19 (LIFO restatement balances; EBITDA bridge; common-basis margins and leverage); part 19 (Harbour against Ridgeline on a common basis); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {
@@ -8124,13 +9602,42 @@
    ],
    "depth": "analysis",
    "prerequisites": [],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
-   "next_action": "write",
-   "missing": "All operations: no entry has been reviewed against this objective. Source discovery not yet done.",
+   "entries": [
+    "meth:accounting-change-effects"
+   ],
+   "candidate_entries": [
+    "meth:accounting-change-effects"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
    "planned_batch": 3,
-   "evidence": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "eu-2023-1803-ias8",
+      "locator": "IAS 8 paras. 19, 22, 36, 42"
+     },
+     {
+      "key": "eu-2026-338-ifrs18",
+      "locator": "Annex, IFRS 18 paras. C1-C3, 47, 69, 117-123"
+     },
+     {
+      "key": "financial-statement-analysis-2009",
+      "locator": "p. 603"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/eu-2023-1803-ias8.md",
+     "notes/readings/eu-2026-338-ifrs18.md",
+     "notes/readings/financial-statement-analysis-2009.md"
+    ],
+    "review_record": "notes/source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026",
+    "entry_evidence": [
+     "meth:accounting-change-effects"
+    ],
+    "example": "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py: part 20 (IFRS 18 reclassification; MPM; IFRS 16 vs operating-lease model; estimate and policy changes); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
    "supersedes": null
   },
   {

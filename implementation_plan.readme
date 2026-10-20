@@ -2833,6 +2833,9 @@ all corrections and both complete client cases; no clipping or overlap observed.
 
 ## 23. Accounting expansion: selected scope (confirmed before content edits, 2026-10-19)
 
+Status 2026-10-20: the 2026-10-19 attempt was reverted before PR #28; the scope below was
+completed afresh in Section 25.
+
 The following 45 canonical objectives are all `missing` at `bcc3551`, selected in
 prerequisite order. The three covered cash-flow objectives are excluded. This is
 a scope record, not a completion claim. Work directly without delegation. Use
@@ -2955,3 +2958,42 @@ heading level.
 **Coverage.** Unchanged: 191/424 objectives and 460/1,030 items. Corrections count
 toward no new objective. Details: `notes/source-review-records.md`, *Macro
 source-correction pass, 20 October 2026*.
+
+
+## 25. Accounting and statement-analysis batch (executed 2026-10-20)
+
+**Scope.** The 45 objectives of Section 23, confirmed against the live
+`objectives.json` before any content edit: all `missing`, no outside mappings for
+their 72 outline items, prerequisites satisfied. Branch
+`codex/accounting-statement-analysis-20261020` from the Section 24 correction head,
+with a stacked draft PR to `codex/macro-source-corrections-20261020`.
+
+**Sources (Section 3.5).** Primary standards for every rule:
+- EU-adopted IFRS (Regulation 2023/1803 and the 2023/2822, 2023/2468 and 2024/1317 amendments; IFRS 18 in 2026/338);
+- 18 FASB Updates and 8 pre-Codification Statements;
+- SEC Regulation G and S-K Items 10(e), 105, 303 and 308, and the 2008 IFRS acceptance release;
+- EU Audit Regulation Art. 10.
+
+Analysis is drawn from Subramanyam and Wild (2009), Damodaran (2012), Porter (2008),
+Sloan (1996) and Kahneman (2011). Curriculum volumes were not used. PCAOB AS 3101
+(blocked) and Beneish (1999) (paywalled) were not read. 55 source keys were added, 56
+reading notes written and 5 updated.
+
+**Entries.** 46 new entries: 44 in twelve new section files and two added to the existing
+cash-flow section. One hypothetical company (Harbour Tools) carries reconciled 2024-2025 statements, a
+2026-2028 forecast that balances without a plug, a quality variant, a comparability peer,
+the IFRS 18 transition and a lender decision with alternatives.
+
+**Evidence.** `statement-analysis-checks.py`: 21 parts, 111 checks (the source-review record
+lists the independent routes and the errors they exposed).
+
+**Coverage.** 236 of 424 objectives; 532 of 1,030 outline items (Level I 207,
+Level II 142, Portfolio Management 48, shared core 135); 498 unreviewed. Editorial
+coverage only.
+
+**Remaining gaps.**
+- The current FASB Codification is not consulted.
+- PCAOB critical audit matters, Beneish's model and post-1996 accrual literature are unread.
+- Human review is outstanding.
+
+Details: `notes/source-review-records.md`, *Accounting and statement-analysis batch, 20 October 2026*.

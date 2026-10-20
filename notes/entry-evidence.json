@@ -1746,5 +1746,189 @@
   "meth:currency-hedge-cost-reduction": {
     "source": "compendium/currency-markets/currency-management.tex",
     "review": "Verification: portfolio-management-in-practice-v1-2020 chap. 8, sec. 6.3, pp. 416--423; locators in the entry text. Checked by currency-management-checks.py parts 3-4 (Garman-Kohlhagen puts, risk reversals, put spreads and seagulls, a cross hedge, a regression hedge and NDF settlement). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Correction 2026-10-19: USD-valued exposure ratio 0.935 converted at USD/NZD 0.60 and USD/AUD 0.66 to 0.85 AUD per NZD; USD P&L and currency-unit scaling checked; forward delta assumptions explicit. PMiP pp.424-426 reread. See notes/source-review-records.md#correction-pass-on-pr-26-19-october-2026. Editorial review only; human review outstanding."
+  },
+  "def:statement-analysis-framework": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-framework.tex",
+    "review": "Verification: financial-statement-analysis-2009 chap. 1, pp. 4-14; Comprehensive Case pp. 636-639; locators in the entry text. Checked by statement-analysis-checks.py applied in part 21 (credit decision). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:filings-disclosures-information-sources": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-framework.tex",
+    "review": "Verification: eu-2023-1803-ias1 IAS 1 paras. 10, 122, 125; sec-sk-item-303 paras. (a)-(b); sec-sk-item-105 paras. (a)-(b); eu-audit-regulation-2014 Art. 10(2); sec-sk-item-308 para. (a); financial-statement-analysis-2009 pp. 27-28, 68-70, 74-75; locators in the entry text. No numerical check (descriptive). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:ifrs-us-gaap-reporting-systems": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-framework.tex",
+    "review": "Verification: eu-2023-1803-ias1 Regulation (EU) 2023/1803, recitals 1-2; eu-2023-2822-ias1 Art. 2; financial-statement-analysis-2009 pp. 70-72; sec-ifrs-acceptance-2008 p. 986; eu-2026-338-ifrs18 Annex, IFRS 18 paras. C1-C3, C8; us-expense-disaggregation-2024 p. 3; us-expense-disaggregation-date-2025 p. 1; us-tax-disclosures-2023 p. 5; us-software-2025 p. 3; locators in the entry text. Checked by statement-analysis-checks.py part 19 (Harbour against Ridgeline on a common basis). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "ex:harbour-tools-statements": {
+    "source": "compendium/financial-statement-analysis/company-case.tex",
+    "review": "Verification: eu-2023-1803-ias7 IAS 7 paras. 31-33; eu-2023-1803-ias2 IAS 2 para. 12; eu-2023-2822-ias1 Annex, IAS 1 para. 73; locators in the entry text. Checked by statement-analysis-checks.py part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:revenue-recognition-analysis": {
+    "source": "compendium/financial-statement-analysis/income-statement-analysis.tex",
+    "review": "Verification: eu-2023-1803-ifrs15 IFRS 15 paras. 2, 9, 22, 31, 35, 38, 47, 50-51, 56, 73-74, 91, 105-108, 114, 120, B35-B37, C1; us-revenue-2014 pp. 10-11; us-revenue-deferral-2015 p. 1; financial-statement-analysis-2009 pp. 110-111; locators in the entry text. Checked by statement-analysis-checks.py part 5 (allocation, timing, contract liability, constraint, principal/agent). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:expense-recognition-capitalisation": {
+    "source": "compendium/financial-statement-analysis/income-statement-analysis.tex",
+    "review": "Verification: eu-2023-1803-ias2 IAS 2 para. 34; eu-2023-1803-ias16 IAS 16 paras. 7, 12-13, 50-51, 61; eu-2023-1803-ias23 IAS 23 para. 8; eu-2023-1803-ias38 IAS 38 paras. 54, 57, 71; us-research-development-1974 para. 12; us-software-1985 paras. 3-4; us-software-2025 pp. 2-3; financial-statement-analysis-2009 pp. 110-111; locators in the entry text. Checked by statement-analysis-checks.py part 6 (constant and growing spend; cumulative difference = asset; capitalised interest and coverage). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:non-recurring-items": {
+    "source": "compendium/financial-statement-analysis/income-statement-analysis.tex",
+    "review": "Verification: eu-2023-1803-ias1 IAS 1 paras. 87, 97-98; us-extraordinary-items-2015 p. 2; eu-2023-1803-ifrs5 IFRS 5 paras. 32-33; eu-2023-1803-ias8 IAS 8 paras. 5, 14, 19, 22, 36, 39, 42, 49; financial-statement-analysis-2009 pp. 338, 340, 602-603; locators in the entry text. Checked by statement-analysis-checks.py parts 2 and 20 (restructuring add-back and ROE; estimate and policy changes). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:earnings-per-share": {
+    "source": "compendium/financial-statement-analysis/income-statement-analysis.tex",
+    "review": "Verification: eu-2023-1803-ias33 IAS 33 paras. 10, 12, 14, 19-20, 26, 31, 33, 36, 41-47A, 49, 64, 70; financial-statement-analysis-2009 p. 374; us-convertibles-eps-2020 pp. 5-6; locators in the entry text. Checked by statement-analysis-checks.py part 4 (weighted shares by formula and month by month; IAS 33 sequencing = subset minimum; antidilution; Harbour EPS). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:income-statement-ratios": {
+    "source": "compendium/financial-statement-analysis/income-statement-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 28-35; eu-2023-1803-ias1 IAS 1 paras. 99, 103; eu-2026-338-ifrs18 Annex, IFRS 18 paras. 69, 82-83; us-expense-disaggregation-2024 pp. 1-3; locators in the entry text. Checked by statement-analysis-checks.py part 2 (common-size income statement reconciles to 100%; margins). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:intangibles-goodwill-reporting": {
+    "source": "compendium/financial-statement-analysis/balance-sheet-analysis.tex",
+    "review": "Verification: eu-2023-1803-ias38 IAS 38 paras. 21, 48, 63-64, 72, 75, 88, 97, 104, 107-108, 118, 126; eu-2023-1803-ifrs3 IFRS 3 paras. 32, B31; eu-2023-1803-ias36 IAS 36 paras. 10, 80, 104, 124, 134; us-goodwill-intangibles-2001 paras. 16-18; us-goodwill-2017 pp. 2-3; locators in the entry text. Checked by statement-analysis-checks.py part 8 (goodwill from a purchase-price allocation with deferred tax). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:financial-instruments-liabilities": {
+    "source": "compendium/financial-statement-analysis/balance-sheet-analysis.tex",
+    "review": "Verification: eu-2023-1803-ifrs9 IFRS 9 paras. 4.1.1-4.1.4, 4.2.1, 5.1.1, 5.5.3, 5.5.5, 5.7.7, B5.7.1; us-equity-investments-2016 p. 1; us-credit-losses-2016 p. 2; us-debt-issuance-costs-2015 p. 1; eu-2023-2822-ias1 Annex, IAS 1 paras. 69, 72B, 73-74, 76ZA; Art. 2; eu-2023-1803-ifrs7 IFRS 7 paras. 31-34, 39-40; locators in the entry text. Checked by statement-analysis-checks.py part 2 (covenant-breach reclassification: current ratio 1.84 to 0.94). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:balance-sheet-ratios": {
+    "source": "compendium/financial-statement-analysis/balance-sheet-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 28-35; locators in the entry text. Checked by statement-analysis-checks.py part 2 (common-size assets sum to 100%; liquidity and solvency ratios; pension-adjusted debt to equity). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:cash-flow-interpretation": {
+    "source": "compendium/financial-statement-analysis/cash-flow-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 411-416; eu-2024-1317-supplier-finance Annex, IAS 7 paras. 44F-44H, 62; us-supplier-finance-2022 pp. 1-2; locators in the entry text. Checked by statement-analysis-checks.py part 3 (common-size cash flows; adequacy). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:free-cash-flow-coverage": {
+    "source": "compendium/financial-statement-analysis/cash-flow-analysis.tex",
+    "review": "Verification: investment-valuation-2012 pp. 364, 380-381; financial-statement-analysis-2009 pp. 415, 417-419; locators in the entry text. Checked by statement-analysis-checks.py part 3 (FCFF two routes with explicit bridge; FCFE from CFO and from FCFF; FCFE = distributions + change in cash; coverage ratios). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:inventory-measurement-nrv": {
+    "source": "compendium/financial-statement-analysis/inventory-accounting.tex",
+    "review": "Verification: eu-2023-1803-ias2 IAS 2 paras. 3-7, 9-16, 29, 33-34, 36; us-inventory-2015 pp. 1-2, 9; financial-statement-analysis-2009 p. 236; locators in the entry text. Checked by statement-analysis-checks.py part 7 (NRV write-down and capped reversal). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:inventory-cost-formulas": {
+    "source": "compendium/financial-statement-analysis/inventory-accounting.tex",
+    "review": "Verification: eu-2023-1803-ias2 IAS 2 paras. 23-27; financial-statement-analysis-2009 pp. 228-235; locators in the entry text. Checked by statement-analysis-checks.py part 7 (layer simulation for FIFO, WAC, LIFO under rising and falling costs; holding gain; LIFO reserve restatement and inflation bridge; liquidation). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:inventory-disclosure-analysis": {
+    "source": "compendium/financial-statement-analysis/inventory-accounting.tex",
+    "review": "Verification: eu-2023-1803-ias2 IAS 2 paras. 36-38; eu-2026-338-ifrs18 Annex, IFRS 18 paras. 82-83; financial-statement-analysis-2009 pp. 228-236; locators in the entry text. Checked by statement-analysis-checks.py parts 2 and 14 (days of inventory; variant). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:intangible-acquisition-routes": {
+    "source": "compendium/financial-statement-analysis/long-lived-asset-accounting.tex",
+    "review": "Verification: eu-2023-1803-ias38 IAS 38 paras. 21, 33-34, 48, 54, 57, 63, 71, 97, 107-108; eu-2023-1803-ifrs3 IFRS 3 paras. 10, 18, B31; us-goodwill-intangibles-2001 paras. 16-17; us-research-development-1974 para. 12; us-software-1985 paras. 3-4; us-business-combinations-2007 para. 66(a), pp. 20-21; locators in the entry text. Checked by statement-analysis-checks.py part 8 (internal project IFRS vs US; purchase-price allocation). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:impairment-derecognition": {
+    "source": "compendium/financial-statement-analysis/long-lived-asset-accounting.tex",
+    "review": "Verification: eu-2023-1803-ias36 IAS 36 paras. 9-10, 12, 18, 30, 59-60, 110, 114, 117, 124, 126, 130, 134; us-impairment-2001 paras. 7, 15, 34; eu-2023-1803-ias16 IAS 16 paras. 67-68, 71, 73, 79; locators in the entry text. Checked by statement-analysis-checks.py part 9 (IAS 36 vs US test; capped reversal; ROA after write-down; disposal gain from the ledger; PP&E age identity). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:lease-reporting": {
+    "source": "compendium/financial-statement-analysis/leases-employee-compensation.tex",
+    "review": "Verification: eu-2023-1803-ifrs16 IFRS 16 paras. 5-6, 22-23, 26, 31, 36, 49-50, 61-63, 67, 81, C1; us-leases-2016 pp. 1-4, 7-8; locators in the entry text. Checked by statement-analysis-checks.py part 10 (schedule vs annuity; expense profiles; ROU assets; lessor totals). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:post-employment-benefit-reporting": {
+    "source": "compendium/financial-statement-analysis/leases-employee-compensation.tex",
+    "review": "Verification: eu-2023-1803-ias19 IAS 19 paras. 8, 51, 63, 67, 83, 120, 122-123, 127; us-pension-funded-status-2006 p. 1; us-pensions-1985 paras. 20, 30, 32, 34; us-pension-cost-presentation-2017 pp. 2-3; financial-statement-analysis-2009 pp. 163-165; locators in the entry text. Checked by statement-analysis-checks.py part 11 (roll-forward; IFRS vs US P&L and OCI totals; economic cost). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:share-based-compensation-reporting": {
+    "source": "compendium/financial-statement-analysis/leases-employee-compensation.tex",
+    "review": "Verification: eu-2023-1803-ifrs2 IFRS 2 paras. 7, 10-11, 15, 19-21, 30; eu-2023-1803-ias12 IAS 12 paras. 68A-68C; us-share-payment-2016 pp. 1-3; locators in the entry text. Checked by statement-analysis-checks.py part 12 (BSM vs Monte Carlo; forfeiture true-up). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:long-term-liability-compensation-disclosures": {
+    "source": "compendium/financial-statement-analysis/leases-employee-compensation.tex",
+    "review": "Verification: eu-2023-2822-ias1 Annex, IAS 1 paras. 69-76ZA; eu-2023-1803-ifrs7 IFRS 7 para. 39; us-debt-issuance-costs-2015 p. 1; eu-2023-1803-ifrs16 IFRS 16 paras. 47, 53; eu-2023-1803-ias19 IAS 19 paras. 135, 139-140, 144-145, 147; eu-2023-1803-ifrs2 IFRS 2 paras. 44-47, 50-51; locators in the entry text. Checked by statement-analysis-checks.py part 11 (duration sensitivity). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:share-based-compensation-modelling": {
+    "source": "compendium/financial-statement-analysis/leases-employee-compensation.tex",
+    "review": "Verification: eu-2023-1803-ifrs2 IFRS 2 paras. 45, 47; eu-2023-1803-ias33 IAS 33 paras. 45-47A; locators in the entry text. Checked by statement-analysis-checks.py parts 4, 12 and 15 (treasury-stock dilution at forecast prices; forecast SBC). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:post-employment-benefit-modelling": {
+    "source": "compendium/financial-statement-analysis/leases-employee-compensation.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 163-166; eu-2026-338-ifrs18 Annex, IFRS 18 paras. B53-B55; eu-2023-1803-ias19 IAS 19 para. 145; locators in the entry text. Checked by statement-analysis-checks.py parts 11, 15 and 21 (duration vs exact repricing; after-tax deficit; deficit in forecast and decision). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:accounting-taxable-profit-differences": {
+    "source": "compendium/financial-statement-analysis/income-tax-accounting.tex",
+    "review": "Verification: eu-2023-1803-ias12 IAS 12 paras. 5, 7-8; us-income-taxes-1992 paras. 16-17; financial-statement-analysis-2009 pp. 369-373, 603; locators in the entry text. Checked by statement-analysis-checks.py parts 1 and 13 (taxable profit, current and deferred tax in the ledger). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:deferred-tax-analysis": {
+    "source": "compendium/financial-statement-analysis/income-tax-accounting.tex",
+    "review": "Verification: eu-2023-1803-ias12 IAS 12 paras. 15, 24, 34, 47, 51, 53, 56, 58, 79-81; us-income-taxes-1992 paras. 17-18, 27; us-deferred-tax-classification-2015 p. 1; eu-2023-2468-ias12 Annex, IAS 12 paras. 4A, 88A-88B; financial-statement-analysis-2009 pp. 370-373; locators in the entry text. Checked by statement-analysis-checks.py part 13 (DTL roll-forward; rate change; reversal simulation with and without growth). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:tax-rate-measures": {
+    "source": "compendium/financial-statement-analysis/income-tax-accounting.tex",
+    "review": "Verification: eu-2023-1803-ias12 IAS 12 paras. 81(c), 86; us-tax-disclosures-2023 pp. 2-5; financial-statement-analysis-2009 p. 373; locators in the entry text. Checked by statement-analysis-checks.py part 13 (rate reconciliation; ETR, current and cash rates). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:reporting-results-quality": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-quality.tex",
+    "review": "Verification: eu-2023-1803-ias1 IAS 1 para. 15; eu-2023-1803-ias8 IAS 8 para. 41; financial-statement-analysis-2009 pp. 108-112, 389; locators in the entry text. Checked by statement-analysis-checks.py part 14 (variant). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "def:reporting-incentives-discipline": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-quality.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 69, 72-73, 109-112, 118-119; eu-audit-regulation-2014 Art. 10(2); sec-sk-item-308 para. (a); locators in the entry text. No numerical check (descriptive). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:earnings-management-presentation": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-quality.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 108-111, 119-121; sec-regulation-g paras. (a)-(b); sec-sk-item-10e para. (e)(1); eu-2026-338-ifrs18 Annex, IFRS 18 paras. 117-118, 121-123; locators in the entry text. Checked by statement-analysis-checks.py parts 14 and 20 (variant effects; MPM reconciliation). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:reporting-warning-signs": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-quality.tex",
+    "review": "Verification: financial-statement-analysis-2009 p. 113; wide-sloan-accruals pp. 293-294; locators in the entry text. Checked by statement-analysis-checks.py part 14 (indicators reported vs variant; supplier finance masks accruals; Sloan measure). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:report-quality-evaluation": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-quality.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 111-113; eu-2024-1317-supplier-finance Annex, IAS 7 paras. 44F-44H; locators in the entry text. Checked by statement-analysis-checks.py part 14 (demonstration and restatement). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:earnings-quality-persistence": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-quality.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 118-121, 602-603, 617; wide-sloan-accruals pp. 290, 293, 298-300; locators in the entry text. Checked by statement-analysis-checks.py part 14 (simulated persistence regression; Harbour accruals). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:cash-flow-balance-sheet-quality": {
+    "source": "compendium/financial-statement-analysis/financial-reporting-quality.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 120-121, 415; eu-2024-1317-supplier-finance Annex, IAS 7 paras. 44F-44H; eu-2023-1803-ifrs7 IFRS 7 paras. 31-34, 39-40; eu-2023-1803-ias1 IAS 1 para. 125; sec-sk-item-105 paras. (a)-(b); sec-sk-item-303 para. (a); eu-audit-regulation-2014 Art. 10(2)(c); sec-sk-item-308 para. (a); locators in the entry text. Checked by statement-analysis-checks.py parts 3 and 14. Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:financial-ratio-families": {
+    "source": "compendium/financial-statement-analysis/ratio-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 28-35, 449, 462; locators in the entry text. Checked by statement-analysis-checks.py part 2 (ratio families 2024-2025). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:ratio-based-evaluation": {
+    "source": "compendium/financial-statement-analysis/ratio-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 35, 638, 640; investment-valuation-2012 pp. 571-576; locators in the entry text. Checked by statement-analysis-checks.py part 2. Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:return-on-equity-decomposition": {
+    "source": "compendium/financial-statement-analysis/ratio-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 449, 463-465; locators in the entry text. Checked by statement-analysis-checks.py part 2 (three- and five-factor identities; RNOA + FLEV x spread; exact log attribution). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:ratio-based-earnings-forecast": {
+    "source": "compendium/financial-statement-analysis/ratio-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 492-499, 617-620; locators in the entry text. Checked by statement-analysis-checks.py parts 15 and 17 (forecast; RNOA reasonableness; one-point margin sensitivity in the full model). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "ex:harbour-pro-forma-model": {
+    "source": "compendium/financial-statement-analysis/financial-statement-modelling.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 494-498; locators in the entry text. Checked by statement-analysis-checks.py part 15 (balance sheet balances without a plug; revolver rule; iteration; growth decomposition). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:forecast-biases-remedies": {
+    "source": "compendium/financial-statement-analysis/financial-statement-modelling.tex",
+    "review": "Verification: wide-barberis-thaler-survey pp. 12-15; thinking-fast-slow-2011 chap. 23, sections The Planning Fallacy and Mitigating the Planning Fallacy; investment-valuation-2012 pp. 2-3, 282-284; locators in the entry text. Checked by statement-analysis-checks.py part 18 (interval coverage closed form vs simulation; reference-class intervals). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:competition-inflation-forecasting": {
+    "source": "compendium/financial-statement-analysis/financial-statement-modelling.tex",
+    "review": "Verification: five-competitive-forces-2008 reprint pp. 2-3, 6-10; financial-statement-analysis-2009 pp. 492-493; investment-valuation-2012 p. 307; locators in the entry text. Checked by statement-analysis-checks.py part 16 (pass-through scenarios; contribution margin; nominal growth; deflation). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:forecast-horizon-steady-state": {
+    "source": "compendium/financial-statement-analysis/financial-statement-modelling.tex",
+    "review": "Verification: financial-statement-analysis-2009 p. 501; investment-valuation-2012 pp. 307-310, 313; locators in the entry text. Checked by statement-analysis-checks.py part 17 (value-neutral growth; horizon extension invariance; naive terminal value). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "ex:integrated-credit-decision": {
+    "source": "compendium/financial-statement-analysis/integrated-statement-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 8-9, 636-637; eu-2023-2822-ias1 Annex, IAS 1 paras. 72B, 74, 76ZA; locators in the entry text. Checked by statement-analysis-checks.py part 21 (three alternatives, base and downside, all balanced; only B passes). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:accounting-analysis-adjustments": {
+    "source": "compendium/financial-statement-analysis/integrated-statement-analysis.tex",
+    "review": "Verification: financial-statement-analysis-2009 pp. 12-13, 106-108, 113, 233-235; locators in the entry text. Checked by statement-analysis-checks.py part 19 (LIFO restatement balances; EBITDA bridge; common-basis margins and leverage). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
+  },
+  "meth:accounting-change-effects": {
+    "source": "compendium/financial-statement-analysis/integrated-statement-analysis.tex",
+    "review": "Verification: eu-2023-1803-ias8 IAS 8 paras. 19, 22, 36, 42; eu-2026-338-ifrs18 Annex, IFRS 18 paras. C1-C3, 47, 69, 117-123; financial-statement-analysis-2009 p. 603; locators in the entry text. Checked by statement-analysis-checks.py part 20 (IFRS 18 reclassification; MPM; IFRS 16 vs operating-lease model; estimate and policy changes). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   }
 }

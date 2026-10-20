@@ -8,3 +8,4 @@ Use `make check-compendium` from the repository root to check entry structure an
 
 - [Correction pass on PR #26, 19 October 2026](source-review-records.md#correction-pass-on-pr-26-19-october-2026): units, conventions, probability interpretation and allocation decisions.
 - [Macro source-correction pass, 20 October 2026](source-review-records.md#macro-source-correction-pass-20-october-2026): independent re-audit of the PR #26 corrections, one quantile correction, BIS WP 380 and the official IMF note.
+- [Accounting and statement-analysis batch, 20 October 2026](source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026): 45 accounting objectives, primary IFRS/FASB/SEC sources, Harbour case and 111 numerical checks.

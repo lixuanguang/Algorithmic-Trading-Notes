@@ -1,0 +1,130 @@
+\section{Income taxes}
+
+These entries distinguish accounting profit, taxable profit, taxes payable and tax expense; explain how deferred tax liabilities and assets arise and how to treat them in analysis; and compute and reconcile statutory, effective, current and cash tax rates.
+
+\begin{qfdefinition}[Accounting profit, taxable profit, taxes payable and income tax expense; temporary against permanent differences]\label{def:accounting-taxable-profit-differences}
+\qffield{Statement} \citep[IAS~12 para.~5]{eu-2023-1803-ias12}:
+\begin{itemize}
+\item \emph{Accounting profit}: profit before tax expense.
+\item \emph{Taxable profit}: the profit on which income taxes are payable, determined by the tax authority's rules.
+\item \emph{Current tax}: the tax payable on taxable profit for the period.
+\item \emph{Tax expense}: current tax plus deferred tax recognised in profit or loss.
+\end{itemize}
+A \emph{temporary difference} is the difference between an asset's or liability's carrying amount and its tax base, the amount attributed to it for tax purposes (para.~5). It is \emph{taxable} if it will increase taxable profit when the carrying amount is recovered or settled, and \emph{deductible} if it will reduce it. For example, a machine costing 100 on which tax depreciation of 30 has been claimed has a tax base of 70 (para.~7). An accrued expense deductible when paid has a liability tax base of nil (para.~8).
+
+US GAAP's approach is the same in substance: tax expense is current tax plus the change in deferred tax assets and liabilities \citep[paras.~16--17]{us-income-taxes-1992}.
+
+\emph{Permanent differences} is the analysts' term for items that enter accounting profit but never taxable profit, or the reverse, such as non-deductible expenses or exempt income. They create no deferred tax and appear only in the rate reconciliation \citep[pp.~369--373, 603]{financial-statement-analysis-2009}.
+
+\qffield{Notation} Temporary difference $=$ carrying amount $-$ tax base (asset); deferred tax $=$ temporary difference $\times$ enacted rate.
+
+\qffield{Conditions} IAS~12 as adopted in 2023; the initial-recognition exemption and the 2023 Pillar Two exception (\hyperref[meth:deferred-tax-analysis]{deferred tax}) can leave differences without deferred tax.
+
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-tools-statements]{Harbour}).
+
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & 2025 & 2024\\
+\midrule
+Accounting profit before tax & 76.84 & 92.00\\
+Non-deductible share-based expense (permanent) & 9.00 & 8.00\\
+Tax depreciation in excess of book (temporary) & $-26.00$ & $-30.00$\\
+Restructuring provision unpaid (temporary) & 12.00 & 0.00\\
+Taxable profit & 71.84 & 70.00\\
+Current tax at 25\% & 17.96 & 17.50\\
+Deferred tax (DTL $+6.50$ less DTA $3.00$; 2024 $+7.50$) & 3.50 & 7.50\\
+Income tax expense & 21.46 & 25.00\\
+Tax paid in cash & 16.96 & 15.50\\
+\bottomrule
+\end{tabular}
+\end{center}
+The temporary items reverse: tax depreciation will fall below book depreciation, and the provision becomes deductible when paid in 2026. The share-based expense never will.
+
+\qffield{Pitfalls} Calling every book-tax gap ``permanent'' or every one ``temporary''. Using tax expense as tax paid in cash-flow analysis.
+
+\qffield{See also} \hyperref[meth:deferred-tax-analysis]{deferred tax}; \hyperref[meth:tax-rate-measures]{tax-rate measures}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[How deferred tax liabilities and assets arise, their recognition and measurement, the related disclosures, and their treatment in financial analysis]\label{meth:deferred-tax-analysis}
+\qffield{Statement} \emph{Recognition} \citep[IAS~12]{eu-2023-1803-ias12}:
+\begin{itemize}
+\item a deferred tax liability is recognised for all taxable temporary differences, except on the initial recognition of goodwill and of some assets and liabilities outside business combinations (para.~15);
+\item a deferred tax asset is recognised for deductible differences and unused tax losses to the extent that taxable profit is probable (paras.~24 and~34), and is reviewed each period (para.~56);
+\item US GAAP recognises all deferred tax assets and reduces them with a valuation allowance if it is more likely than not (above 50~percent) that some portion will not be realised \citep[para.~17]{us-income-taxes-1992}.
+\end{itemize}
+
+\emph{Measurement.} Deferred tax uses rates enacted or substantively enacted at the reporting date for the expected period of reversal \citep[IAS~12 para.~47]{eu-2023-1803-ias12}, reflects the expected manner of recovery (para.~51), and is not discounted (para.~53). US GAAP uses enacted rates and recognises the effect of a rate change in continuing operations in the period of enactment \citep[paras.~18 and~27]{us-income-taxes-1992}. Under IFRS, deferred tax follows the item into OCI or equity (IAS~12 para.~58). Deferred tax balances are non-current under both frameworks \citep[p.~1]{us-deferred-tax-classification-2015}.
+
+\emph{Pillar Two.} The 2023 amendments require entities neither to recognise nor to disclose deferred tax related to the OECD global minimum tax, and to disclose current Pillar Two tax separately \citep[Annex, IAS~12 paras.~4A and~88A--88B]{eu-2023-2468-ias12}.
+
+\emph{Disclosures.} Components of tax expense include current tax, prior-year adjustments, originating and reversing differences, rate changes and the use of previously unrecognised losses \citep[IAS~12 paras.~79--80]{eu-2023-1803-ias12}. Entities also give a reconciliation of tax expense to accounting profit at the applicable rate (para.~81(c)).
+
+\emph{Analysis} \citep[pp.~370--373]{financial-statement-analysis-2009}:
+\begin{itemize}
+\item a liability signals that past tax was low relative to book profit, so future payments should be relatively higher, but only if the differences reverse;
+\item growth can prevent reversal indefinitely, so a growing company's liability from accelerated depreciation behaves like equity, while a shrinking one's is debt;
+\item valuation-allowance changes are a known earnings-management tool;
+\item large liabilities can indicate book profit above taxable profit, an aggressive policy.
+\end{itemize}
+
+\qffield{Notation} Deferred tax expense $=\Delta$DTL $-\Delta$DTA (in profit or loss). Present value of a liability reversing in $T$ years $=\text{DTL}/(1+r)^{T}$ if it reverses at all.
+
+\qffield{Conditions} The analytical treatment depends on expected reversal; growth assumptions should match the forecast (\hyperref[ex:harbour-pro-forma-model]{Harbour forecast}). FAS~109 is cited as issued in 1992 and has since been codified and amended.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item Harbour's DTL rose from 30 to 41: plus 7.50 and 6.50 from accelerated depreciation, less a 3.00 asset on the unpaid restructuring provision.
+\item A cut in the enacted rate from 25 to 20~percent would remeasure the underlying temporary differences of 164 to a liability of 32.80. That gives deferred tax income of 8.20, a one-off gain to exclude from sustainable earnings.
+\item \emph{Reversal test.} Assets are depreciated over ten years in the books and five for tax. With capital spending growing 5~percent a year, the liability keeps rising: 80.15 after 10 years, 130.55 after 20 and 212.66 after 30. If spending stops after year~10, the liability of 62.50 fully reverses by year~20.
+\end{itemize}
+Harbour's forecast assumes continued investment, so its depreciation-related liability is closer to equity than to debt.
+
+\qffield{Pitfalls} Treating a DTL as debt in a credit ratio when it will not reverse, or as equity when the asset base is shrinking. Taking deferred tax income from a rate cut as operating profit. Ignoring valuation-allowance releases that lift earnings.
+
+\qffield{See also} \hyperref[def:accounting-taxable-profit-differences]{differences}; \hyperref[meth:tax-rate-measures]{rate reconciliation}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Statutory, effective, current and cash tax rates: calculation, interpretation, the rate reconciliation, and their use in forecasting and comparison]\label{meth:tax-rate-measures}
+\qffield{Statement}
+\begin{itemize}
+\item The \emph{effective tax rate} (ETR) is tax expense over accounting profit before tax \citep[IAS~12 para.~86]{eu-2023-1803-ias12}.
+\item The \emph{statutory rate} is the enacted rate on taxable profit. It approximates the marginal rate on an extra unit of profit, whereas the ETR is an average rate.
+\item The \emph{cash tax rate}, cash taxes paid over profit before tax, measures the cash burden.
+\item The \emph{current tax rate} is current tax over profit before tax.
+\end{itemize}
+Permanent differences move the ETR away from the statutory rate. Temporary differences move the cash and current rates away from it. Forecasts use the statutory rate for marginal effects, and the persistent part of a multi-year ETR for average tax. Temporary differences forecast cash taxes only when their reversal is predictable, and the ETR is volatile year to year \citep[p.~373]{financial-statement-analysis-2009}.
+
+\emph{Disclosure.} IFRS requires a reconciliation either of tax expense to accounting profit times the applicable rate, or of the average effective rate to the applicable rate, with the basis of the rate \citep[IAS~12 para.~81(c)]{eu-2023-1803-ias12}. US public business entities must, for annual periods beginning after 15~December 2024, present the reconciliation in percentages and amounts with eight prescribed categories \citep[pp.~2--5]{us-tax-disclosures-2023}:
+\begin{itemize}
+\item state and local taxes;
+\item foreign tax effects;
+\item enacted changes;
+\item cross-border tax laws;
+\item tax credits;
+\item valuation allowance changes;
+\item non-taxable or non-deductible items;
+\item unrecognised tax benefits.
+\end{itemize}
+Items at or above 5~percent of the statutory-rate tax are shown separately. Entities also disclose income taxes paid by jurisdiction where at least 5~percent of the total.
+
+\qffield{Notation} ETR $=$ tax expense$/$PBT; current rate $=$ current tax$/$PBT; cash rate $=$ tax paid$/$PBT; reconciliation: tax expense $=t_s\times$PBT $+\sum$(permanent items $\times t_s$) $+$ rate differences $+$ other.
+
+\qffield{Conditions} The rates use profit before tax including non-recurring items; for comparison, compute them also on adjusted profit. The US categories apply to public business entities prospectively, with retrospective application permitted (p.~5).
+
+\qffield{Practice} \emph{Original} (\hyperref[ex:harbour-tools-statements]{Harbour}, 2025).
+\begin{itemize}
+\item Statutory tax $25\%\times76.84=19.21$, plus the non-deductible share-based expense $25\%\times9=2.25$, equals the tax expense of 21.46.
+\item The ETR is 27.93~percent, the current rate 23.37~percent and the cash rate 22.07~percent.
+\item The ETR exceeds the statutory rate because of the permanent difference. The current and cash rates are below it because accelerated tax depreciation defers tax, partly offset by the unpaid restructuring provision. The cash rate is lower still because of the timing of instalments: payable rose from 14 to 15.
+\item In 2024 the ETR was 27.17~percent; the share-based effect weighs more as profit falls.
+\end{itemize}
+For forecasting, the model uses 25~percent on taxable profit plus the share-based effect, and models the depreciation difference separately.
+
+\qffield{Pitfalls} Forecasting with a one-year ETR that contains discrete items such as rate changes or allowance releases. Comparing ETRs across companies with different profit mixes by country without the reconciliation. Equating a low cash tax rate with a permanent advantage.
+
+\qffield{See also} \hyperref[meth:deferred-tax-analysis]{deferred tax}; \hyperref[meth:income-statement-ratios]{income-statement ratios}.
+
+\end{qfmethod}

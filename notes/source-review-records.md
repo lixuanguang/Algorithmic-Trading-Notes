@@ -4529,3 +4529,100 @@ check.
 Coverage is unchanged: 191/424 objectives and 460/1,030 outline items. The affected
 objectives (`describe-business-credit-cycles`, `recommend-asset-allocation`) were
 reassessed and remain covered at their stated depth. No new objective is counted.
+
+## Accounting and statement-analysis batch, 20 October 2026
+
+**Starting state.** Branch `codex/accounting-statement-analysis-20261020` from
+`codex/macro-source-corrections-20261020` at `6157abb` (draft PR #29 to `main`). The
+earlier attempt at this batch (`644f5d0`) was reverted by `4196920` before PR #28 merged.
+It was not reused: its main secondary source was the answer section of a workbook. All
+45 objectives were `missing`. Their 72 outline items map to no objective outside the batch,
+and every declared prerequisite topic is covered or in the batch.
+
+**Scope (45, exactly the Section 23 list).**
+- financial-reporting-framework: 3
+- income-statement-analysis: 5
+- balance-sheet-analysis: 3
+- cash-flow-analysis: 2 (interpret, free cash flow; the three covered objectives are excluded)
+- inventory-accounting: 3
+- long-lived-asset-accounting: 2
+- leases-employee-compensation: 6
+- income-tax-accounting: 3
+- financial-reporting-quality: 7
+- ratio-analysis: 4
+- financial-statement-modelling: 4
+- integrated-statement-analysis: 3
+
+**Outline pages read.** Level I topic outline PDF pp. 11-14 (modules on introduction,
+income statements, balance sheets, cash flows II, inventories, long-term assets, liabilities
+and equity, income taxes, reporting quality, analysis techniques, modelling). Level II
+PDF pp. 7-9 (employee compensation, evaluating quality of financial reports, integration of
+techniques). Each of the 72 items has an item-specific rationale in `outline-crosswalk.json`.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Primary IFRS: the original EU text of Regulation 2023/1803 for IAS 1, 2, 7, 8, 12, 16, 19, 23, 33, 36 and 38 and IFRS 2, 3, 5, 7, 9, 15 and 16, by paragraph.
+- Later EU amending regulations: 2023/2822 (IAS 1 classification and covenants, applied from 2024), 2023/2468 (IAS 12 Pillar Two) and 2024/1317 (supplier finance, from 2024).
+- IFRS 18 in Regulation 2026/338: categories, subtotals, expense disclosure, management-defined performance measures, B50-B55 and transition C1-C8.
+- FASB: 18 Accounting Standards Updates (summaries and effective dates) and 8 pre-Codification Statements (paragraphs cited). The current Codification was not consulted.
+- SEC: Regulation G, Regulation S-K Items 10(e), 105, 303 and 308 (LII display of 17 CFR, retrieved 2026-10-20), and Release 33-8879 (73 FR 986) on IFRS filings by foreign private issuers.
+- EU: Regulation 537/2014, Art. 10 (audit report).
+- Books: Subramanyam and Wild, *Financial Statement Analysis*, 10th ed. (2009), read on the pages cited; Damodaran, *Investment Valuation*, 3rd ed. (2012), pp. 2-3, 282-284, 307-313, 364, 380-381, 571-576.
+- Articles: Porter (2008), HBR reprint pp. 2-10; Sloan (1996), pp. 289-300 incl. Tables 1-3; Kahneman (2011), chap. 23; Barberis and Thaler (pp. 12-15, already recorded).
+- The 2024 CFA Program curriculum volumes in the owner's library were deliberately not used, consistent with earlier batches (Section 3.4 prefers non-curriculum sources).
+
+**Access limits and unread sources.**
+- PCAOB AS 3101 was refused (HTTP 403 and a bot check), so the EU audit regulation is cited instead.
+- SEC.gov rate-limits scripted requests without a declared contact address; the owner's email was not sent, and the LII copies of the CFR were used.
+- Beneish (1999) is paywalled and was not read; no manipulation-model variables or weights are given.
+- Richardson, Tuna and Wysocki (2010), Penman, and Nissim and Penman (2001) were not read. The last is named only as the textbook's source for an 84 percent average.
+- The textbook's research summaries (inventory signals, LIFO reserve and value, cash-flow usefulness) are attributed to the textbook.
+
+**Disagreements and supersessions recorded.** The 2009 textbook predates several standards. In each case the entries cite the current standard and note the change:
+- the SEC's 2008 acceptance of IFRS without reconciliation (the textbook says reconciliation is required);
+- ASU 2015-11 lower of cost and NRV (the textbook describes lower of cost or market);
+- ASU 2015-01, which removed extraordinary items;
+- Topic 842 leases (the textbook capitalises operating leases analytically);
+- IFRS 15 and Topic 606;
+- ASU 2017-04 goodwill;
+- ASU 2017-07 pension presentation.
+
+Issued against effective is stated for IFRS 18 (2027), ASU 2024-03 (annual periods after 15 December 2026), ASU 2025-06 (after 15 December 2027) and ASU 2023-09 (public business entities from 2025).
+
+**Numerical evidence.** `notes/artefacts/financial-statement-analysis/statement-analysis-checks.py`,
+21 parts, 111 checks (one check is one executed `ok()` call). These are checks, not tests or
+objectives. The independent routes are:
+- a double-entry ledger whose direct-method cash flow is summed from tagged postings and compared with an indirect derivation from statements;
+- equity roll-forwards;
+- brute-force subset search for the most dilutive EPS;
+- unit-layer inventory simulation;
+- annuity schedules against closed forms;
+- Black-Scholes-Merton against Monte Carlo;
+- a forecast whose balance sheet must balance with cash from the cash-flow statement;
+- an explicit FCFF bridge;
+- simulation for interval coverage and persistence;
+- currency-unit invariance.
+
+The checks exposed errors during development, all corrected before the text was finalised:
+- a reversed cumulative probability in the variable-consideration constraint;
+- sign errors in accumulated depreciation and the remeasurement reserve, which the forecast balance-sheet identity caught;
+- inventory omitting absorbed depreciation;
+- acquisition revenue double-counted and its amortisation not added back, caught by a 2-per-year imbalance;
+- an expected sign for the accrual measure under supplier finance (the measured accruals fall, which became the teaching point);
+- an expected leverage ranking in the comparability case;
+- three text figures (the FCFF bridge, the cash-flow adequacy ratio, and the covenant-breach current ratio 0.94).
+
+Tautological checks were removed before counting.
+
+**Coverage.** All 45 objectives were reassessed operation by operation at their stated depth
+and moved to `covered`, mapped to 46 entries (45 objective entries plus the shared case
+`ex:harbour-tools-statements`). The decision objective
+(`objective:apply-integrated-analysis-framework`) has constraints, three alternatives, base and
+downside scenarios and a justified recommendation with monitoring. Editorial coverage moves
+from 191/424 to 236/424 objectives, and outline items from 460/1,030 to 532/1,030 (Level I
+207, Level II 142, Portfolio Management 48, shared core 135). This is editorial coverage, not
+learner mastery or independent human review.
+
+**Limits.** Harbour, Kestrel and Ridgeline are hypothetical; simulations are synthetic and
+illustrate methods, not evidence. Pass-through rates and credit-policy thresholds are
+scenario inputs. The Codification paragraphs that replaced the cited FASB Statements are an
+open question in the pathway note.

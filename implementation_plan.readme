@@ -3271,7 +3271,9 @@ changed.
 1. Okafor tax: 2026 return specified; dividends and gains stacked under IRC 1(h) against the 613,700 ceiling (42,500
    at 15 percent, 23,500 at 20), NIIT 2,599.20; marginal 23.8 percent on gains, 40 on wages, 43.8 on interest.
 2. Harlow: 430(c)(3) base 96.8m net of 303.2m of open installments (not 400m); minimum 151.91m at the valuation date
-   (TNC 110m, charge 41.91m), 165.12m on the final due date; true minimum needs the actuarial valuation.
+   (TNC 110m, charge 41.91m); 165.12m on 15 September 2027 is only its ordinary-interest equivalent (26 CFR
+   1.430(j)-1(b)(4)(i)), since late quarterly installments are discounted at the effective rate plus 5 points
+   ((b)(4)(ii), (c)), so an actual single payment then would be larger; true minimum needs the actuarial valuation.
 3. Family client accounts: allocation by management, controls by beneficial interest (VI(B) Example 3); joint-account
    case; Brook Lane code aligned.
 4. Endowment: each spending rule on its own quarterly history; pure peak 5.24 percent (5.25); detection check.
@@ -3279,3 +3281,13 @@ changed.
 **Evidence.** Two scripts extended (private wealth 59 checks, institutional 28). Eight objectives and 24 outline items
 revalidated; coverage unchanged at 424/424 and 1,030/1,030. `make check` and `make pre-commit` pass; PDF 425
 pages, no overfull boxes or undefined references. Editorial coverage only; human review is outstanding.
+
+## 36. PR #33 close-out (executed 2026-10-21)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `f3d8791`, draft PR #33 open, working tree clean.
+
+**Change.** Documentation only: the Harlow 165.12m September 2027 figure is labelled an ordinary-interest equivalent
+of the 151.91m valuation-date minimum under 26 CFR 1.430(j)-1(b)(4)(i), distinct from the two-step adjustment for late
+quarterly installments in (b)(4)(ii) and (c), in the compendium, the script's check text, this plan, the review record
+and the PR description. New source `cfr-26-1-430j-1` with a reading note. No figure, objective, denominator or
+requirement changed; coverage 424/424 and 1,030/1,030, editorial only; human review outstanding.

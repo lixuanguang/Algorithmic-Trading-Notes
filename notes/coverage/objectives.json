@@ -16790,12 +16790,17 @@
      {
       "key": "irs-notice-2021-48",
       "locator": "secs. II.B, III.A, III.B.1"
+     },
+     {
+      "key": "cfr-26-1-430j-1",
+      "locator": "paras. (b)(4)(i)-(ii), (c)(1), (c)(5)-(6)"
      }
     ],
     "reading_notes": [
      "notes/readings/s7-ang.md",
      "notes/readings/us-internal-revenue-code-26.md",
-     "notes/readings/irs-notice-2021-48.md"
+     "notes/readings/irs-notice-2021-48.md",
+     "notes/readings/cfr-26-1-430j-1.md"
     ],
     "review_record": "notes/source-review-records.md#pr-33-correction-pass-21-october-2026",
     "entry_evidence": [

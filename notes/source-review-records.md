@@ -5461,7 +5461,8 @@ comparison.
    2022-2025, a shortfall in every year; no waiver, prefunding or carryover balances; target normal cost 110m. Result:
    old installments 33.03m a year worth 303.2m; 2026 base 96.8m (installment 8.88m); shortfall charge 41.91m; minimum
    required contribution 151.91m at the valuation date (12.7 percent of EBITDA; deficit repair 3.5 percent), 165.12m if
-   paid in one sum on 15 September 2027, before any surcharge on missed quarterly installments. The double-counting
+   paid in one sum on 15 September 2027, before any surcharge on missed quarterly installments (an ordinary-interest
+   illustration; see the close-out below). The double-counting
    construction gives 69.73m (27.82m too high). The 38.5m was also an end-of-year annuity; valued at the valuation date
    a single base costs 36.70m. Checks: the present value of all installments still due equals the shortfall; each
    base's balance reaches zero after 15 installments; no open bases (base = shortfall); assets above target (TNC less
@@ -5492,3 +5493,17 @@ against the corrected entry; 21 rationales gained a specific revalidation note a
 not touch them. All remain covered: 424/424 objectives and 1,030/1,030 items. No new source keys; IRC sec. 1(h) and
 (j)(5) added to `us-internal-revenue-code-26`, sec. 4.14 to `irs-rev-proc-2025-32`, sec. III.B.1 to
 `irs-notice-2021-48`. Editorial coverage only; it does not establish learner mastery, and human review is outstanding.
+
+**Close-out, 21 October 2026 (documentation only).** Branch at `f3d8791`, tree clean, draft PR #33 open. The
+independent re-audit found the four corrections above resolved and all checks passing; it flagged that the 165.12m
+September 2027 figure was qualified in the script and this record but not in the implementation plan, the PR
+description or, explicitly enough, the compendium. Read: 26 CFR 1.430(j)-1(b)(4)(i)-(ii) and (c)(1), (c)(5)-(6) (eCFR
+current text, saved 2026-10-21). Paragraph (b)(4)(i) adjusts a payment made after the valuation date at the plan's
+effective rate; (b)(4)(ii) treats any part of a payment that settles a late required installment in two steps, first
+discounting it to the installment's due date at the effective rate plus 5 percentage points; (c) requires quarterly
+installments of 25 percent of the lesser of 90 percent of the current minimum and 100 percent of the prior year's after
+a shortfall year, due on the 15th of the 4th, 7th and 10th plan months and 15 days after the year. The 165.12m is
+therefore labelled an ordinary-interest equivalent of the 151.91m valuation-date minimum, not a payable amount; an
+actual single September 2027 payment would have to be larger by an amount that depends on Harlow's 2025 minimum, which
+is not modelled. New source `cfr-26-1-430j-1` with a reading note; no figure, objective, denominator or requirement
+changed: 424/424 objectives and 1,030/1,030 items, editorial coverage only.

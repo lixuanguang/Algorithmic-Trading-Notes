@@ -207,9 +207,10 @@ ok(
 )
 ok(
     "minimum required contribution valued at 1 January 2026: target normal cost 110.0m + shortfall charge 41.91m = "
-    "151.91m (12.7% of EBITDA), of which deficit repair is 41.91m (3.5%); paid in one sum on the last due date, 15 "
-    "September 2027 (8.5 months after the plan year, 430(j)(1)), it grows at the effective rate to 165.12m "
-    "(430(j)(2)), before any 5-point surcharge on missed quarterly installments (430(j)(3))",
+    "151.91m (12.7% of EBITDA), of which deficit repair is 41.91m (3.5%); its ordinary-interest equivalent on the last "
+    "due date, 15 September 2027 (430(j)(1)), at the effective rate alone (26 CFR 1.430(j)-1(b)(4)(i)) is 165.12m, "
+    "an illustration only: late quarterly installments (1.430(j)-1(c)) are discounted at the effective rate plus 5 "
+    "points under (b)(4)(ii), so an actual single September 2027 payment would have to be larger",
     round(mrc * 1000, 2) == 151.91
     and round(mrc / EBITDA * 100, 1) == 12.7
     and round((mrc - TNC) / EBITDA * 100, 1) == 3.5

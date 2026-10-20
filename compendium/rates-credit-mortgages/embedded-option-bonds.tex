@@ -1,0 +1,145 @@
+\section{Bonds with embedded options}
+
+These entries value callable, putable, capped, floored and convertible bonds on the calibrated tree of \hyperref[meth:binomial-rate-tree-calibration]{the rate tree}, measure their spread and their interest-rate risk, and compare convertibles with straight bonds and stock. The examples use the Handbook's tree (par rates 3.5 to 5.2 percent, 10 percent volatility) so that each figure can be checked against the source; numbers are verified in \texttt{notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py}.
+
+\begin{qfmethod}[Callable and putable bonds: decomposition into a straight bond and an option, valuation on a rate tree, and the effects of volatility and of the level and shape of the curve]\label{meth:callable-putable-bond-valuation}
+\qffield{Statement} \emph{Securities with embedded options.} Callable bonds let the issuer redeem early, putable bonds let the holder sell back, extendible bonds let the holder extend maturity (economically a putable bond), sinking-fund bonds retire principal on a schedule, capped and floored floaters limit their coupons, and convertibles add an option on the issuer's shares (\hyperref[def:bond-cash-flow-contingencies]{cash-flow contingencies}; \hyperref[meth:capped-floored-floater-valuation]{floaters}; \hyperref[meth:convertible-bond-valuation]{convertibles}). \emph{Decomposition.} A callable bond is a straight bond less the call option the investor has sold to the issuer; a putable bond is a straight bond plus the put the investor holds (\hyperref[def:bond-cash-flow-contingencies]{cash-flow contingencies}). So $V_{\text{callable}}=V_{\text{straight}}-V_{\text{call}}$ and $V_{\text{putable}}=V_{\text{straight}}+V_{\text{put}}$.
+
+\emph{Valuation on the tree.} Backward induction proceeds as for an option-free bond, but at every node where the option can be exercised the value is replaced by the exercise outcome: $V_t=\min[\text{call price},PV(\text{future cash flows})]$ for a call and $V_t=\max[\text{put price},PV]$ for a put. The option is worth the difference from the straight bond on the same tree \citep[chap.~36, pp.~840--845]{s7-fabozzifixed}. A bond that is both callable and putable tests the call first and then the put at each node (p.~845). A step-up callable note changes the coupon at each node according to its schedule (pp.~845--847).
+
+\emph{Volatility.} Higher volatility raises the value of any option, so it lowers the callable's value and raises the putable's; the straight bond does not change. \emph{Level and shape of the curve.} Lower rates move the call into the money and the put out of it. A flatter curve whose later forward rates are lower makes the call more valuable, because exercise is likelier on the later nodes. Interpretation, checked numerically below.
+
+\qffield{Practice} \emph{Reproduced} (Handbook, 6.5 percent four-year bond, exercisable at par after year 1, $\sigma=10$ percent).
+\begin{itemize}
+\item The straight bond is worth 104.643, the callable 102.899 and the putable 105.327. The call is worth 1.745 unrounded; the Handbook prints 1.744, from rounded values, and writes the difference as $104.634-102.899$, a transposition of 104.643. The put is worth 0.684.
+\item At node HLL in year 3 the callable's continuation value is 100.315, so it is called and 100 enters the recursion (p.~841).
+\item A step-up note paying 4.25 percent for two years and 7.50 percent for two is worth 102.082 noncallable and 100.031 callable at par at years 2 and 3, an option worth 2.051.
+\end{itemize}
+
+\emph{Checked effects} (original, same curve).
+\begin{itemize}
+\item \emph{Volatility.} Recalibrated at 20 percent volatility, the straight bond is still 104.643, but the callable falls to 102.108 and the putable rises to 106.010.
+\item \emph{Level.} With par rates 100 basis points higher, the call is worth 0.419 instead of 1.745 and the put 1.669 instead of 0.684.
+\item \emph{Shape.} On a flat 4.5 percent curve the call is worth 5.261, because the later rates the option depends on are lower than on the upward-sloping curve.
+\end{itemize}
+
+\qffield{Conditions} The exercise rule (call whenever the continuation value exceeds the call price) ignores notice periods, refunding costs and the issuer's own credit. The tree assumes one factor and a constant volatility; option values are model outputs and change with both.
+
+\qffield{Pitfalls} Valuing a callable bond to its first call date or to maturity (yield to worst) and treating that as its value. Forgetting that the investor is short the call. Expecting a higher volatility to change the straight bond's value.
+
+\qffield{See also} \hyperref[meth:option-adjusted-spread]{option-adjusted spread}; \hyperref[meth:embedded-option-effective-duration]{effective duration}; \hyperref[meth:capped-floored-floater-valuation]{capped and floored floaters}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Option-adjusted spread: the constant spread to the tree that reprices a bond with embedded options, how it is used, and why it falls as assumed volatility rises]\label{meth:option-adjusted-spread}
+\qffield{Statement} The OAS is ``the fixed spread (usually measured in basis points) over the benchmark rates that equates the output from the valuation process with the actual market price of the security''. It is found by adding a constant spread to every rate on the calibrated tree and searching until the model value equals the price. Because the option's value depends on volatility, ``the OAS \dots\ is volatility-dependent'' \citep[chap.~36, pp.~849--850]{s7-fabozzifixed}. The spread can change exercise decisions on the tree, which is why the search needs a full revaluation at each trial (p.~849).
+
+\emph{Use.} The OAS is the spread an investor earns for the bond's credit and liquidity risk after the option has been valued. It compares bonds with different options on a like-for-like basis. The \emph{Z-spread}, a constant spread over the spot curve that ignores the option, includes the option's cost, so for a callable bond option cost $\approx$ Z-spread $-$ OAS (Interpretation).
+
+\emph{Volatility.} A higher assumed volatility raises the value of the call the investor has sold, lowers the model value of the callable and so leaves less spread to reprice it: the callable's OAS falls (Interpretation).
+
+\qffield{Practice} \emph{Reproduced} (Handbook, pp.~849--850). The 6.5 percent callable bond is worth 102.899 on the tree but trades at 102.218. Adding 35 basis points to every rate reprices it; the solver gives 35.0 basis points. With the shift, node HLL is worth 99.985 and is no longer called (Exhibit~36-19).
+
+\emph{Original.} The same callable has a Z-spread of 67.8 basis points, so the option costs about 32.8 basis points of spread. Assuming 20 percent volatility instead of 10, the OAS falls to $-6.0$ basis points: the bond looks rich rather than cheap. Two analysts who quote OAS at different volatilities are not comparing the same number.
+
+\qffield{Conditions} The OAS depends on the benchmark curve, the volatility and the rate model; it is a relative-value measure under those assumptions, not a market observable. It assumes the spread is constant across nodes and dates.
+
+\qffield{Pitfalls} Comparing OAS figures computed with different volatilities or benchmark curves. Reading a high Z-spread on a callable as cheapness when it pays for the call. Computing OAS without rerunning the exercise decisions at each trial spread.
+
+\qffield{See also} \hyperref[def:bond-yield-spread-measures]{yield spreads}; \hyperref[meth:callable-putable-bond-valuation]{callable bonds}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Interest-rate risk of bonds with embedded options: effective duration and convexity at constant OAS, one-sided and key-rate durations, and callable, putable and straight bonds compared]\label{meth:embedded-option-effective-duration}
+\qffield{Statement} \emph{Effective duration and convexity} for a bond with options use $D=(V_--V_+)/(2V_0\Delta r)$ and, in the convention used throughout this compendium (\hyperref[meth:convexity-portfolio-duration]{convexity}), $C=(V_-+V_+-2V_0)/(V_0\Delta r^2)$, with the price change $\Delta V/V_0\approx-D\,\Delta r+\tfrac12C\,\Delta r^2$; $V_\pm$ are values after the benchmark curve shifts by $\pm\Delta r$. The Handbook divides by $2V_0\Delta r^2$, which gives half the figure; with that convention the price change is $-D\,\Delta r+C_{\text{half}}\,\Delta r^2$. A convexity number must be quoted with its convention. The Handbook's procedure keeps the OAS constant (\hyperref[meth:option-adjusted-spread]{OAS}):
+\begin{enumerate}
+\item compute the OAS from the market price;
+\item shift the par curve;
+\item rebuild and recalibrate the tree;
+\item add the OAS to every rate;
+\item revalue the bond to get $V_+$ (and likewise $V_-$).
+\end{enumerate}
+The callable bond ``exhibits negative convexity'' \citep[chap.~36, pp.~850--851]{s7-fabozzifixed}. Yield-based measures do not capture options (\hyperref[meth:curve-based-empirical-duration]{curve-based measures}).
+
+\emph{One-sided durations} use only the down-shift or only the up-shift: $D^-=(V_--V_0)/(V_0\Delta r)$ and $D^+=(V_0-V_+)/(V_0\Delta r)$. They differ when an option is near the money. A callable gains less when rates fall, because the call caps its price, than it loses when rates rise. A putable loses less when rates rise, because the put floors its price (Interpretation).
+
+\emph{Key-rate durations} shift one par rate at a time, recalibrating the tree and holding the OAS. They show where on the curve the exposure sits.
+
+\qffield{Practice} \emph{Reproduced} (Handbook, $\Delta r=25$ basis points, OAS 35 basis points): $V_+=101.621$, $V_-=102.765$, $V_0=102.218$, an effective duration of 2.24 and a negative convexity, printed as $-39.1$ in the Handbook's half-scaled convention from rounded prices. Unrounded it is $-38.574949$ in that convention and $-77.149899$ in this compendium's.
+
+\emph{Original comparisons} (same tree and shift).
+\begin{itemize}
+\item \emph{One-sided.} The callable's down-duration is 2.142 and its up-duration 2.335.
+\item \emph{Callable, putable and straight.} Effective durations are 2.239 for the callable, 2.816 for the putable and 3.517 for the straight bond. Convexities (compendium convention) are $-77.15$, $+11.13$ and $+16.36$. With $C=-77.15$, $-D\Delta r+\tfrac12C\Delta r^2$ returns $V_\pm$ exactly at the 25 basis point shift; for the straight bond at $\pm50$ basis points it is within 0.02 basis points of full revaluation, while putting the half-scaled figure into the same formula misses by about 1 basis point. Both options shorten duration, because each makes an early redemption at par likely in some states. The call adds negative convexity; the put keeps convexity positive.
+\item \emph{Key rates.} The straight bond's key-rate durations, 0.010, 0.020, 0.031 and 3.455, sum to its effective duration (3.517 within 0.005); almost all its exposure sits at the four-year rate. The callable's, 0.443, 0.143, 0.166 and 1.539, move exposure to shorter rates, because the bond may be redeemed early. They sum to 2.290 rather than 2.239: a single-rate shift changes exercise decisions, so key-rate durations of an option-embedded bond are not exactly additive at a 25 basis point shift.
+\end{itemize}
+
+\qffield{Conditions} Measures depend on the rate model, the volatility, the shift size and the constant-OAS assumption; near an exercise boundary they change with the size of the shift (\hyperref[meth:curve-based-empirical-duration]{curve-based measures} shows a zero-volatility example). Key-rate durations depend on the chosen vertices.
+
+\qffield{Pitfalls} Holding the price, rather than the OAS, constant when shifting the curve. Hedging a callable with its effective duration alone through a large move. Summing key-rate durations of an option-embedded bond and expecting the parallel-shift figure exactly.
+
+\qffield{See also} \hyperref[meth:yield-duration-pvbp]{yield duration}; \hyperref[meth:yield-curve-factor-exposures]{factor exposures}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Capped and floored floating-rate bonds: valuation on a rate tree with coupons set in advance and paid in arrears, and the cap and floor as separate options]\label{meth:capped-floored-floater-valuation}
+\qffield{Statement} A floater's coupon is set from the reference rate at the start of each period and paid at its end, in arrears. On the tree, the value at a node is $\bigl[\tfrac12(V_H+V_L)+100\,c(r^*)\bigr]/(1+r^*)$, where $c(r^*)$ is the coupon set from the node rate $r^*$ \citep[chap.~9, sec.~IX, pp.~244--247]{fixed-income-analysis-2007}. A floater paying the reference rate flat is worth par at every node. With a cap $K$, $c=\min(r^*,K)$; with a floor $F$, $c=\max(r^*,F)$. ``The higher the cap, the closer the capped floater will trade to par'' (p.~246). The lattice can value floaters with option-type features, caps, floors and swaptions in the same way \citep[chap.~36, p.~832]{s7-fabozzifixed}.
+
+\emph{As options.} A capped floater is a floater less a cap that the investor has sold, a strip of caplets paying $\max(r-K,0)$ in arrears. A floored floater is a floater plus a floor, paying $\max(F-r,0)$. A collared floater combines both (Interpretation; cap and floor contracts in \hyperref[meth:black-model-rates-currencies]{Black's model}).
+
+\qffield{Practice} \emph{Reproduced} (Fixed Income Analysis, Exhibits~21--22, the Handbook's tree): a floater at the one-year rate is worth 100; with a 7.25 percent cap 99.724; with a 7.75 percent cap 99.858.
+
+\emph{Original} (same tree). The 7.25 percent cap valued alone is worth 0.276, so $100-0.276=99.724$. A 4.5 percent floor raises the floater to 100.992; the floor valued alone is worth 0.992. A collared floater with the 4.5 percent floor and the 7.25 percent cap is worth $100+0.992-0.276=100.716$.
+
+\qffield{Conditions} The reference rate and the discount rate are the same tree rate, and the floater pays no margin; with a quoted margin or a different discount curve the uncapped floater is not at par (\hyperref[meth:floating-money-market-yields]{floating-rate measures}).
+
+\qffield{Pitfalls} Applying the cap to the rate observed at the payment date instead of the reset date. Discounting the period's coupon at the next node's rate. Valuing the cap as if the investor held it.
+
+\qffield{See also} \hyperref[meth:callable-putable-bond-valuation]{callable bonds}; \hyperref[meth:option-adjusted-spread]{OAS}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Convertible bonds: features, conversion value, premiums and minimum value, arbitrage-free valuation on a stock tree with default, and risk and return against straight bonds and stock]\label{meth:convertible-bond-valuation}
+\qffield{Statement} \emph{Features.} A convertible note can be exchanged for a set number of the issuer's shares, the \emph{conversion ratio}, so the \emph{conversion price} is par divided by the ratio. The Handbook's prototype is Tesla's 2 percent notes of May~2024 \citep[chap.~38, pp.~883--890]{s7-fabozzifixed}. Their terms, from the prospectus supplement of 2~May~2019 \citep[The Offering; Description of Notes]{tesla-2024-notes-prospectus-2019}:
+\begin{itemize}
+\item \$1.6 billion (\$1.84 billion with the underwriters' option) of 2.00 percent senior notes, interest from 7~May~2019 paid on 15~May and 15~November, maturing on 15~May~2024;
+\item an initial conversion rate of 3.2276 shares per \$1{,}000, a conversion price of about \$309.83, which the Handbook describes as a 27.5 percent premium over a \$243 reference price;
+\item \emph{contingent conversion}: before 15~February~2024 holders may convert only if a trigger is met (the stock at 130 percent or more of the conversion price on at least 20 of the last 30 trading days of a quarter; the notes trading below 98 percent of their conversion value; or specified corporate events); from that date to just before maturity they may convert at any time;
+\item settlement in cash, shares or a combination at Tesla's election, combination settlement with a \$1{,}000 specified amount being the default;
+\item \emph{no issuer call}: ``We may not redeem the notes prior to the maturity date,'' and there is no sinking fund;
+\item a \emph{fundamental-change put}: after a fundamental change (such as a takeover or delisting) holders may require Tesla to buy the notes for cash at 100 percent of principal plus accrued interest;
+\item a \emph{make-whole conversion adjustment}, separate from that put: a holder who converts in connection with a make-whole fundamental change receives additional shares from a table indexed by date and stock price, with the rate capped at 4.1152 shares per \$1{,}000, compensating for lost option time value;
+\item anti-dilution adjustments to the conversion rate for dividends, splits and similar events.
+\end{itemize}
+The fundamental-change put is a holder's right to cash at par; the make-whole adjustment raises what a converting holder receives; contingent conversion limits when conversion is possible. None is an issuer call. The Hull example below is hypothetical and has different terms (a call at 113).
+Most convertibles are senior unsecured, without financial covenants, and unrated or below investment grade. Callable issues usually have a hard non-call period followed by a soft call conditional on the share price.
+
+\emph{Components.} \emph{Parity} or conversion value is the conversion ratio times the share price. The \emph{bond floor} or investment value is the value without conversion. Above parity, the \emph{conversion premium} is (price/parity $-1$); the \emph{points premium} is (price $-$ parity)/10 per 1{,}000 of par; the \emph{investment premium} is (price/investment value $-1$) (eqs.~(38-4)--(38-6), p.~890). The holder is long a straight bond and a call on the stock, or, by put--call parity, long the stock with a put (pp.~888--889, eqs.~(38-1)--(38-3)). Minimum value: a convertible should not trade below the greater of parity and the bond floor, or buying and converting (or holding as a bond) would be profitable \citep[chap.~9, sec.~X.B, p.~249]{fixed-income-analysis-2007}.
+
+\emph{Valuation.} Hull's practical model puts the stock on a binomial tree with a default branch: in each step the stock moves up by $u=e^{\sigma\sqrt{\Delta t}}$ or down by $d=1/u$, or defaults with probability $1-e^{-\lambda\Delta t}$, when the stock goes to zero and the bond recovers a set amount. At each node the holder converts if that is worth more, and the issuer calls if that lowers the value, after which the holder converts if conversion beats the call price \citep[chap.~27, sec.~27.4, pp.~650--653]{s7-hulloptions}.
+
+\emph{Risk and return.} The Handbook classifies convertibles by stage (chap.~38, pp.~892--894).
+\begin{itemize}
+\item \emph{Balanced}: conversion premium about 15--40 percent and delta 55--75 percent; they respond to both equity and rates.
+\item \emph{Equity substitutes}: conversion premium 15 percent or less, investment premium above 40 percent and delta above 80--85 percent.
+\item \emph{Busted}: conversion premium usually above 50 percent; the bond trades near its floor and credit analysis matters.
+\item \emph{Distressed}: credit spreads widen as the stock falls and the floor gives way.
+\end{itemize}
+The investment premium is the more reliable guide to how far in the money the note is.
+
+\qffield{Practice} \emph{Reproduced.}
+\begin{itemize}
+\item \emph{Handbook} (p.~890). A note with ratio 40, the stock at \$23, a price of \$1{,}100 and a floor of \$865 has a conversion premium of 19.57 percent, a points premium of 18.00 and an investment premium of 27.17 percent. The stock rose 15 percent and the note 11 percent.
+\item \emph{Tesla's terms.} $243\times1.275=309.825$ and $1000/309.825=3.2276$ shares, as printed; the text's ``\$1000 / 309.63'' transposes digits.
+\item \emph{Hull's example} (nine-month zero-coupon bond, face 100, convertible into two shares and callable at 113; stock 50, $\sigma=30$ percent, hazard 1 percent, $r=5$ percent, recovery 40, three steps). The tree has $u=1.1618$, $d=0.8607$, $p_u=0.5115$, $p_d=0.4860$ and default probability 0.0025, and the convertible is worth 107.44, above both its conversion value (100) and its straight value.
+\end{itemize}
+
+\emph{Original, against stock and a straight bond} (Hull's tree). If the stock jumps 30 percent to 65, the convertible gains 21.0 percent; if it falls 30 percent to 35, the convertible loses 9.6 percent, while a straight bond moves only with rates and credit. Its delta is 0.73 per conversion share. The asymmetry is the call option, bought by giving up some yield and paying the conversion premium; Interpretation.
+
+\qffield{Conditions} Hull's model makes the default probability independent of the stock price, which researchers have relaxed (p.~653). Real notes add contingent conversion, soft calls, make-whole and dilution adjustments, which a tree must encode node by node.
+
+\qffield{Pitfalls} Treating the bond floor as fixed: it falls when rates or credit spreads rise, and in distress it gives way. Using the conversion premium alone to classify a note with long call protection on a volatile stock. Ignoring the call, which forces conversion and caps the value.
+
+\qffield{See also} \hyperref[meth:callable-putable-bond-valuation]{embedded options}; \hyperref[mod:black-scholes-merton]{option pricing}; \hyperref[mech:cds-contract-credit-events]{credit events}.
+
+\end{qfmethod}

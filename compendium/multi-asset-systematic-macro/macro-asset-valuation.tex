@@ -1,0 +1,80 @@
+\section{The economy and asset values}
+
+These entries explain how economic conditions reach asset prices: through default-free rates, expected cash flows and risk premia, and only to the extent that news differs from expectations; how growth and the cycle move real and policy rates, the yield curve, breakeven inflation and credit spreads; and how they move credit quality, earnings, equity premia, multiples and commercial property. Numbers are checked in \texttt{notes/artefacts/macro-asset-valuation/macro-valuation-checks.py}.
+
+\begin{qfresult}[How the economy moves asset values: expected cash flows discounted at the default-free rate plus risk premia, risk premia as rewards for losses in bad times, and why only news relative to expectations moves prices]\label{res:economy-discount-rates-cash-flows}
+\qffield{Statement} An asset's value is its expected cash flows discounted at a rate made of the real default-free rate, expected inflation and risk premia; equivalently, $p=E(mx)$, where the stochastic discount factor $m$ is high in bad times \citep[sec.~1.4, pp.~20--23]{asset-pricing-manuscript-2000}. Economic factors therefore act through three channels: (1) \emph{default-free rates}, set by time preference, expected growth and inflation; (2) \emph{expected cash flows}, through growth, margins and defaults; (3) \emph{risk premia}, compensation for how an asset pays off in bad times. ``Assets that pay off in bad times are valuable to hold, so prices for these assets are high'' and their expected returns low; ``Bad times are characterized by times of high inflation, low economic growth'' and low market returns \citep[chap.~6, secs.~3.6--4, pp.~202--206]{s7-ang}. With a stochastic discount factor, the risk premium is $E(R)-R^f=-R^f\operatorname{cov}(m,R)$.
+
+\emph{Expectations.} Prices already discount expected developments. A forecast matters for returns only where it differs from what the market expects: the return on an asset whose cash flows evolve exactly as expected equals its required return; prices move on revisions of expected cash flows, rates or premia. Markets take a weighted view across all horizons, so the same economic news can move prices through several channels at once, sometimes with opposite signs (a growth surprise raises cash flows but may raise rates) \citep[chap.~3, sec.~3.4.2, p.~64]{portfolio-management-in-practice-v1-2020}.
+
+\qffield{Notation} $m$ stochastic discount factor; $x$ payoff; $R^f=1/E(m)$; Gordon value $P=D_1/(r-g)$ with $r$ the required return.
+
+\qffield{Conditions} The decomposition into rates, cash flows and premia is an accounting identity for a discounted-cash-flow value; which channel dominates depends on the asset and the shock. The consumption-based statements assume a representative investor.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Expected news.} A perpetuity paying 4 and growing 4 percent, discounted at 8 percent, is worth 100; a year later, with growth as expected, it is worth 104, a total return of exactly 8 percent. If expected growth is revised to 4.5 percent the value jumps to 118.86. A 1-point rise in the discount rate cuts the original value to 80.
+\item \emph{Bad-times payoffs.} In a two-state economy with consumption growth of $+4$ percent (probability 0.8) or $-1$ percent, power utility with $\gamma=2$ and $\delta=1\%$, an asset paying 1.20 in the boom and 0.85 in the recession earns a premium of 0.54 percent over the risk-free rate, while one paying 1.02 and 1.08 earns $-0.10$ percent; the premia equal $-R^f\operatorname{cov}(m,R)$.
+\end{itemize}
+
+\qffield{Pitfalls} Forecasting growth well and expecting returns to follow when the forecast is consensus. Treating a high expected return as ``cheap'' rather than as compensation for bad-times exposure. Reading a price move as information about cash flows when it may reflect a change in rates or premia.
+
+\qffield{See also} \hyperref[meth:cycle-rates-breakevens-spreads]{the cycle and bond markets}; \hyperref[meth:cycle-equities-property]{the cycle, equities and property}; \hyperref[mod:capm-sml]{CAPM}.
+
+\end{qfresult}
+
+\begin{qfmethod}[Growth, the business cycle and bond markets: real short rates and the volatility of growth, policy rates, the slope of the yield curve and bond returns over the cycle, nominal against inflation-indexed yields, and credit spreads]\label{meth:cycle-rates-breakevens-spreads}
+\qffield{Statement} \emph{Real short rates.} With power utility and lognormal consumption growth,
+\[
+r^f_t=\delta+\gamma E_t\Delta\ln c_{t+1}-\tfrac{\gamma^2}{2}\sigma_t^2(\Delta\ln c_{t+1}),
+\]
+so ``Real interest rates are high when people are impatient ($\delta$), when expected consumption growth is high (intertemporal substitution), or when risk is low (precautionary saving)'' \citep[sec.~1.4.1, eq.~(1.7), p.~20]{asset-pricing-manuscript-2000}. EIDM makes the same link from potential growth: faster expected income growth makes future consumption less valuable, so ``higher rates of potential GDP growth translate into higher real interest rates'' \citep[chap.~11, sec.~3, p.~633]{economics-investment-decision-makers-2013}.
+
+\emph{Policy rates, slope and bond returns over the cycle} \citep[chap.~3, sec.~3.4.1, pp.~62--64]{portfolio-management-in-practice-v1-2020}. In initial recovery short rates and yields are low; in early expansion the central bank withdraws stimulus, short rates rise and the curve flattens; in late expansion policy becomes restrictive and the curve keeps flattening; in a slowdown short rates peak, long yields top out and may fall sharply and the curve may invert; in contraction short rates and yields fall and the curve steepens substantially. Ang adds that long-bond risk premia are counter-cyclical, so long yields are high relative to short rates in recessions and the term spread predicts recessions; the 10-year minus 3-month spread ``has been negative prior to every recession since the 1960s'' \citep[chap.~9, sec.~3, pp.~291--292]{s7-ang}. Government bonds hedge recessions: in Ang's Table~7.2 they return 12.3 percent in NBER recessions against 5.9 percent in expansions (pp.~215--217).
+
+\emph{Nominal against inflation-indexed yields.} The spread between a nominal and an inflation-indexed bond of the same maturity, the \emph{breakeven}, equals expected inflation plus an inflation risk premium, less any liquidity premium on the indexed bond. In the Ang--Piazzesi decomposition the short nominal yield of 5.4 percent is 1.2 real, 3.9 expected inflation and 0.3 risk premium, and the long yield of 6.3 percent is 1.3, 3.9 and 1.1: most of the upward slope is risk premium, and 70 percent of the variance of the long yield comes from expected inflation (p.~291). Breakevens fall when growth and inflation expectations fall, in recessions and deflation scares (\hyperref[def:tips-breakevens]{TIPS and breakevens}).
+
+\emph{Credit spreads} widen in recessions as expected defaults rise and investors demand more for bearing default risk; they rose in the mid-1970s, early-1980s and early-2000s recessions and spiked in the financial crisis, more for high yield (Ang, sec.~4, p.~295; PMiP, pp.~63--64).
+
+\qffield{Notation} $\delta$ time preference, $\gamma$ risk aversion (inverse elasticity of intertemporal substitution), $\Delta\ln c$ consumption growth; breakeven $=y_{\text{nominal}}-y_{\text{real}}$.
+
+\qffield{Conditions} Cycle patterns are tendencies; each cycle differs, and secular forces (low rates after 2008) can dominate (PMiP, p.~64). The decomposition numbers are from Ang and Piazzesi's model sample, not current markets.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Real rate.} With $\delta=1\%$, $\gamma=2$, expected consumption growth 2 percent and volatility 1 percent, the log real rate is 4.98 percent; it rises with expected growth and falls with growth volatility.
+\item \emph{Breakeven.} A 4.3 percent nominal and 1.9 percent real yield give a 2.4 percent breakeven; with an inflation risk premium of 0.3 and a liquidity premium of 0.2 points, expected inflation is 2.3 percent.
+\item \emph{Credit.} A high-yield spread made of expected loss (PD 1.5 percent, LGD 60 percent: 0.9 percent) and a 1.0-point premium widens from 1.9 to 5.2 percent in a recession that triples the default probability and lifts the premium to 2.5 points.
+\end{itemize}
+
+\qffield{Pitfalls} Reading the breakeven as a pure inflation forecast. Expecting long yields to move one for one with policy rates. Treating a wide spread as cheap without separating expected loss from premium.
+
+\qffield{See also} \hyperref[res:economy-discount-rates-cash-flows]{economy and values}; \hyperref[def:monetary-policy-transmission-regimes]{monetary policy}; \hyperref[meth:curve-trades-carry-rolldown]{curve inversion}; \hyperref[meth:cycle-policy-curve-expectations]{cycle analysis for expectations}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[The business cycle, equities and property: product markets and credit quality, consumption hedging and the equity premium, earnings expectations and multiples over the cycle, and the economic drivers of commercial real estate]\label{meth:cycle-equities-property}
+\qffield{Statement} \emph{Credit quality and product markets.} Firms with high operating leverage and cyclical demand see profits fall faster than sales in a downturn, weakening interest cover and raising default risk; defensive sectors with steady demand hold up \citep[chap.~6, sec.~2.2, pp.~284--292]{economics-investment-decision-makers-2013}.
+
+\emph{Consumption hedging and the equity premium.} Equities pay off poorly when consumption and income are low, so they require a premium; government bonds hedge such times and command less. In Ang's data large stocks return 5.6 percent in NBER recessions against 12.4 percent in expansions, with volatility of 23.7 against 14.0 percent \citep[chap.~7, sec.~2.1, Table~7.2, pp.~215--217]{s7-ang}; the premium is $-R^f\operatorname{cov}(m,R)$ (\hyperref[res:economy-discount-rates-cash-flows]{economy and values}).
+
+\emph{Earnings and multiples over the cycle} \citep[chap.~3, sec.~3.4.1, pp.~62--64]{portfolio-management-in-practice-v1-2020}: profits rise rapidly in early expansion and drop sharply in contraction; stocks rise briskly in initial recovery as recession fears fade, trend up in early expansion, become volatile late in the expansion, fall in a slowdown (with interest-sensitive and quality stocks best) and fall early in a contraction but rise well before the recovery. Multiples move with the discount rate and expected growth: define $E_0$ as current annual earnings, $E_1=E_0(1+g)$ as next year's earnings and $D_1=pE_1$ as the dividend paid at year-end, where $p$ is the payout ratio. The Gordon price is $P_0=D_1/(r-g)$, so the trailing multiple is $P_0/E_0=p(1+g)/(r-g)$ and the forward multiple is $P_0/E_1=p/(r-g)$, so lower real rates or premia, or higher expected growth, raise multiples; Interpretation: multiples tend to be low at cyclical troughs, when premia are high, and high late in expansions, though depressed trough earnings can make trailing P/Es look high.
+
+\emph{Commercial real estate} (chap.~4, secs.~5.2--5.3, pp.~117--120). Demand for property services rises and falls with activity while supply is fixed in the short run, so values, rents and occupancy are cyclical, more so for low-quality properties and short leases. Booms invite overbuilding and busts take years to absorb. The cap rate (NOI over value) is like an earnings yield; long-run expected return is about cap rate plus NOI growth (close to GDP growth), and over finite horizons less the change in the cap rate (eqs.~(7)--(8)). Cap rates rise with real rates, risk premia and weaker growth expectations.
+
+\qffield{Notation} DOL degree of operating leverage $=\%\Delta\text{EBIT}/\%\Delta\text{sales}$; cap rate $=\text{NOI}/V$.
+
+\qffield{Conditions} Appraisal-based property returns are smoothed and understate volatility and correlation (p.~117). The cycle descriptions are stylised; the size and timing of market responses are as uncertain as the cycle itself (p.~64).
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Operating leverage.} A 5 percent fall in sales with fixed costs of 30 and variable costs of half of sales cuts operating profit 12.5 percent (DOL 2.5).
+\item \emph{Multiples.} With payout 50 percent, nominal growth 5 percent, a 1.5 percent real rate, 2 percent inflation and a 4 percent equity premium, the trailing P/E is 21.0; a real rate half a point lower gives 26.25 and a premium a point higher 15.0. The corresponding forward multiples are 20.0, 25.0 and 14.2857. With $E_0=10$, $E_1=10.5$ and $D_1=5.25$, independently discounting the growing dividend stream gives prices 210, 262.5 and 150, respectively; dividing each price by the matching earnings reconciles both conventions.
+\item \emph{Property.} NOI of 5 at a 5.0 percent cap rate is worth 100; a rise to 5.5 percent cuts the value 9.1 percent with NOI unchanged, and 13.6 percent if NOI also falls 5 percent; with stable cap rates and NOI growth of 2 percent the expected return is about 7 percent.
+\end{itemize}
+
+\qffield{Pitfalls} Buying cyclicals on low P/Es at the peak of earnings. Treating appraisal-based property returns as low-risk. Ignoring that the equity premium itself varies over the cycle.
+
+\qffield{See also} \hyperref[meth:cycle-rates-breakevens-spreads]{the cycle and bonds}; \hyperref[def:macro-regime-asset-map]{regime map and sector rotation}; \hyperref[meth:asset-class-return-forecasts]{asset-class forecasts}.
+
+\end{qfmethod}

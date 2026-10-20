@@ -1,0 +1,151 @@
+\section{Capital market expectations}
+
+These entries set expectations for asset-class returns, risks and currencies: a disciplined framework and the pitfalls of forecasting; long-run expectations anchored on trend growth and exposed to shocks; the cycle, inflation, policy and the yield curve over shorter horizons; return forecasts for bonds, equities, real estate and emerging markets; exchange-rate and volatility forecasts; and a macro-based reweighting of a global portfolio.
+
+\begin{qfmethod}[A framework for capital market expectations: the seven steps, qualities of good forecasts, the main forecasting challenges and biases, and econometric, indicator and checklist approaches to economic forecasting]\label{meth:cme-framework-forecasting}
+\qffield{Statement} \emph{Framework} \citep[chap.~3, sec.~2.1, pp.~39--42]{portfolio-management-in-practice-v1-2020}:
+\begin{enumerate}
+\item specify the expectations needed and their horizons;
+\item research the historical record and the factors behind it;
+\item specify the methods and models and their information needs;
+\item determine the best information sources;
+\item interpret the current environment with a common set of assumptions and judgement;
+\item provide the expectations and document the conclusions;
+\item monitor outcomes against forecasts and feed the lessons back.
+\end{enumerate}
+Good forecasts are unbiased, objective and well researched; efficient (small errors); and internally consistent across asset classes and over time.
+
+\emph{Challenges} (sec.~2.2, pp.~42--50): limitations of economic data (lags, revisions, rebasing); measurement errors and biases (transcription, survivorship and appraisal smoothing); limitations of historical estimates (regime changes and non-stationarity, the trade-off between long samples and relevance, and wide sampling errors for means); ex post risk as a biased measure of ex ante risk (the peso problem); analysts' biases (data mining, time-period bias); failure to use conditioning information; misread correlations (spurious, or with omitted common drivers); psychological biases (anchoring, status quo, confirmation, overconfidence, prudence, availability); and model uncertainty.
+
+\emph{Economic forecasting approaches} (sec.~3.3, pp.~57--61): \emph{econometric models}, systematic and able to produce internally consistent forecasts with impulse responses, but complex, data-hungry and poor at turning points; \emph{indicators}, simple and intuitive with a track record at turning points, but subject to revisions, false signals and changing relationships (\hyperref[meth:business-cycle-indicators]{cycle indicators}); and \emph{checklists}, flexible and able to use judgement and new information, but subjective, time-consuming and hard to keep consistent. Many practitioners combine them.
+
+\qffield{Notation} Standard error of a mean return $\sigma/\sqrt{T}$; smoothed returns $R_t=(1-\lambda)r_t+\lambda R_{t-1}$, with $\operatorname{var}(r)=\frac{1+\lambda}{1-\lambda}\operatorname{var}(R)$ (chap.~4, eqs.~(15)--(16), p.~135).
+
+\qffield{Conditions} The framework is a process discipline; it does not supply the forecasts. The challenges interact: a long sample reduces sampling error but spans regime changes.
+
+\qffield{Practice} \emph{Reproduced}: with $\lambda=0.8$ the true variance is nine times the observed one, so appraisal-based volatility understates the truth by a factor of three (p.~135). \emph{Original}: 60 years of returns with 16 percent volatility estimate the mean with a standard error of 2.07 points; a simulated series smoothed with $\lambda=0.8$ shows a variance ratio of 8.9 against the formula's 9.
+
+\qffield{Pitfalls} Treating a long-run historical average as a forecast without testing its stability. Using smoothed private-asset returns in an optimiser. Building inconsistent forecasts asset class by asset class.
+
+\qffield{See also} \hyperref[meth:growth-shocks-long-run-expectations]{growth and shocks}; \hyperref[meth:asset-class-return-forecasts]{asset-class forecasts}; \hyperref[def:behavioural-biases]{behavioural biases}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Trend growth and exogenous shocks in long-run expectations: decomposing GDP growth, anchoring bond yields and equity appreciation to trend growth, and the three types of shock to growth]\label{meth:growth-shocks-long-run-expectations}
+\qffield{Statement} \emph{Decomposition} \citep[chap.~3, sec.~3.2.2, pp.~54--56]{portfolio-management-in-practice-v1-2020}: trend growth is growth in labour input (potential labour force and participation) plus growth in labour productivity (capital deepening and TFP); these change slowly, so trend growth is the most forecastable macro variable over long horizons (\hyperref[meth:potential-gdp-growth-accounting]{potential GDP}). \emph{Anchors}: default-free bond yields are pulled toward the trend rate of growth (real yields toward real growth, nominal toward nominal), and equity value $V^e=\text{GDP}\times S^k\times PE$ grows with nominal GDP in the long run because the profit share $S^k$ and the P/E cannot trend forever; the dividend yield equals payout over P/E (p.~55).
+
+\emph{Exogenous shocks} (sec.~3.2.1, pp.~51--54): policy changes (sound fiscal policy, low regulation, free trade, a well-run central bank, or their reversal); new products and technologies; geopolitics; natural disasters; natural resources and critical inputs; and financial crises. Financial crises can (1) cause a persistent decline in the level of output with no change in trend growth, (2) leave the level unchanged but lower the trend growth rate, or (3) both.
+
+\qffield{Notation} $S^k$ earnings/GDP; $PE$ price/earnings; growth rates continuously compounded in the anchoring identity.
+
+\qffield{Conditions} Countries with faster growth do not reliably deliver higher equity returns, because expected growth is priced and listed firms' earnings differ from GDP (p.~56); the anchor works for the total value of equity in an economy, not per share or for an index with different composition.
+
+\qffield{Practice} \emph{Reproduced} (Example~5, pp.~55--56). With labour input growing 0.9 percent, productivity 1.5 percent, inflation 2.1 percent, a 2.25 percent dividend yield and no change in P/E, the baseline long-run U.S.\ equity return is 6.75 percent. A rising P/E that added 0.95 percent a year over 1946--1999 left the market 51.3 percent (67 percent in levels) above growth-consistent value; unwinding it over 30 years lowers the projection by 1.71 points a year, over five years by 10.26 points to $-3.51$ percent. \emph{Original}: from a 2 percent trend, after ten years a 5 percent level loss (type~1) leaves output at 1.158, a cut in trend growth to 1.5 percent (type~2) at 1.161 and diverging further, and both (type~3) at 1.103, against 1.219 without the shock.
+
+\qffield{Pitfalls} Extrapolating a period of rising valuations into long-run expectations. Assuming a crisis lowers only the level of output. Buying high-growth markets on growth alone.
+
+\qffield{See also} \hyperref[meth:potential-gdp-growth-accounting]{potential GDP}; \hyperref[meth:cme-framework-forecasting]{CME framework}; \hyperref[meth:geopolitical-risk-assessment]{geopolitical risk}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[The cycle, inflation, policy and the yield curve in expectations: phases and horizons, inflation and deflation across the cycle, monetary and fiscal policy and the policy mix, the yield curve as a predictor, and linkages between economies]\label{meth:cycle-policy-curve-expectations}
+\qffield{Statement} \emph{Cycle and horizon} \citep[chap.~3, sec.~3.4, pp.~61--68]{portfolio-management-in-practice-v1-2020}. U.S.\ cycles since 1854 have averaged 56 months peak to peak, with contractions of 17 and expansions of 39 months on average. Over five phases (initial recovery, early expansion, late expansion, slowdown, contraction) rates, curve, spreads and equities behave differently (\hyperref[meth:cycle-rates-breakevens-spreads]{bonds over the cycle}; \hyperref[meth:cycle-equities-property]{equities over the cycle}). Cycle analysis is a noisy signal, most useful over one to three years; over longer horizons forecasts should revert toward unconditional averages.
+
+\emph{Inflation} (sec.~3.4.3, pp.~66--68). Central banks act more forcefully against weak demand than strong demand, and deflation harms debt-financed investment and the power of monetary policy, so positive inflation is targeted and priced. Inflation is procyclical, accelerating late in the expansion and slowing when the output gap is large; with a credible target, long-horizon expectations barely move, so the ``horizon structure'' of expected inflation is countercyclical (upward sloping at the trough, inverted at the peak). Cash is close to an inflation-protected floating real asset; nominal bonds lose when inflation rises above expectations, sharply at long maturities if it leaves the expected range, and the best credits gain in persistent deflation; equities are little affected while inflation stays in its expected range but threatened when it leaves it; real estate passes inflation into rents as leases reset, tends to gain when inflation is unexpectedly high and suffers in deflation, especially less-than-prime property (pp.~66--68).
+
+\emph{Policy} (sec.~3.5, pp.~68--77). Monetary policy is countercyclical, benchmarked by the Taylor rule (\hyperref[mod:taylor-rule]{Taylor rule}); near zero or negative rates it relies on asset purchases and guidance. A persistent policy mix sets the average \emph{level} of rates: loose fiscal policy raises real rates (saving must be induced or capital attracted) and loose monetary policy raises expected inflation, so both loose gives high nominal rates, both tight low nominal rates, and the mixed cases high real rates with low inflation or low real rates with high inflation, each ``mid'' nominal rates (Exhibit~5, pp.~74--75). The \emph{slope} depends on the expected path of short rates and a maturity premium, and changes with the cycle and policy (Exhibit~6, pp.~75--76). \emph{The yield curve} tends to be steep at the cycle's bottom, flatten during the expansion until very flat or inverted at the peak, and re-steepen in the next downturn; its predictive power reflects the central bank's reaction function and must be judged against what policy is doing (pp.~76--77).
+
+\emph{Linkages} (sec.~3.6, pp.~77--81): economies are linked through trade, capital flows and exchange rates; interest rates converge under pegs and with mobile capital, and shocks transmit through export demand, asset prices and funding.
+
+\qffield{Notation} Phases as above; the slope as the long rate minus the short rate.
+
+\qffield{Conditions} Cycle lengths and phase behaviour vary widely; cyclical and secular forces are hard to separate in real time (p.~64). The policy-mix table describes persistent mixes, not single policy moves.
+
+\qffield{Practice} Example~7 (p.~65; PDF p.~93) specifies expected \emph{continuously compounded monthly returns} of $+2\%$ in expansion and $-2\%$ in contraction. An original homogeneous two-state Markov implementation takes transition probabilities $P_{EC}=1/39$, $P_{CE}=1/20$, with the other probabilities completing each row. Month one earns the return of the currently observed contraction; the transition occurs at month end. The stationary expansion probability is $39/59=66.10\%$, giving expected monthly log return $0.6441\%$, annual log return $7.7288\%$, and the geometric-equivalent annual rate $e^{0.077288}-1=8.0353\%$.
+
+Starting in contraction, expected cumulative log returns are $-5.42\%$ over three months and $-13.62\%$ over one year; annualised expected log returns are $0.80\%$ over five years and $4.23\%$ over ten. Geometric-equivalent annual rates are $\exp(12E[\sum r_t]/H)-1$ for a horizon of $H$ months. They are not $E[W_H]/W_0-1$: Jensen's inequality distinguishes expected log return from expected wealth. Conditional log-return means alone do not determine expected wealth; under the additional illustrative assumption that each state's return is deterministic, $E[W_H]/W_0=e_C' D(PD)^{H-1}\mathbf1$, $D=\operatorname{diag}(e^{0.02},e^{-0.02})$.
+
+The book's $-6\%$, $-18\%$, $4.8\%$ and about $8\%$ are qualitative guideline estimates illustrating horizon effects. They are not exact outputs of this particular homogeneous chain; their difference does not establish a source error, since the book does not fully specify this transition and timing implementation. With exports to a partner at 25 percent of GDP and an elasticity of 0.8, a 4 percent fall in partner demand cuts the exporter's GDP by 0.8 percent before second-round effects.
+
+\qffield{Pitfalls} Projecting the current phase over a ten-year horizon. Reading an inverted curve without considering why the central bank is tight. Ignoring that policy reacts to the same data the forecaster uses.
+
+\qffield{See also} \hyperref[def:business-credit-cycles]{business cycles}; \hyperref[meth:monetary-fiscal-policy-mix]{policy mix}; \hyperref[ex:global-portfolio-macro-rebalancing]{macro reweighting}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Asset-class return expectations: fixed income from yields and building blocks, emerging-market debt, equities from Grinold--Kroner and Singer--Terhaar, emerging-market equity risks, and real estate from cap rates]\label{meth:asset-class-return-forecasts}
+\qffield{Statement} \emph{Fixed income} \citep[chap.~4, sec.~3, pp.~96--104]{portfolio-management-in-practice-v1-2020}. Yield to maturity is a first approximation of expected return; over horizons shorter than duration, capital gains or losses from rate changes dominate, over longer horizons reinvestment does, and the two roughly offset at the Macaulay duration. The \emph{building block} approach adds premia to the short default-free rate: a term premium (positive on average, larger with steeper curves and more inflation uncertainty, counter-cyclical), a credit premium (rising in downturns) and a liquidity premium. \emph{Emerging-market debt} (pp.~104--106) adds economic risks (ability to pay) and political and legal risks (willingness to pay); warning thresholds include fiscal deficits above 4 percent of GDP, debt above 70--80 percent, persistent current-account deficits above 4 percent, foreign debt above 50 percent of GDP or 200 percent of current-account receipts, and reserves below 100 percent of short-term debt (p.~105).
+
+\emph{Equities} (sec.~4, pp.~107--117). The \emph{Grinold--Kroner} model
+\[
+E(R_e)\approx\frac{D}{P}+(\%\Delta E-\%\Delta S)+\%\Delta P/E
+\]
+splits the expected return into income ($D/P-\%\Delta S$), nominal earnings growth and repricing; in the very long run only $\%\Delta E=$ nominal GDP growth, $\%\Delta S=0$ and $\%\Delta P/E=0$ are plausible, and horizon-specific P/E changes must not be extrapolated (eq.~(1), pp.~108--110). The \emph{Singer--Terhaar} model blends a fully integrated premium $\rho_{i,GM}\sigma_i\times\text{global Sharpe ratio}$ with a fully segmented premium $\sigma_i\times\text{local Sharpe ratio}$, weighted by the degree of integration $\varphi$ (0.75--0.90 for developed, 0.50--0.75 for emerging markets) (eqs.~(4)--(6), pp.~112--114); liquidity premia are added separately. Emerging-market equities carry the same economic and political risks plus weaker governance and minority-shareholder protection (pp.~115--116).
+
+\emph{Real estate} (sec.~5, pp.~117--122): $E(R)\approx c_0+g_{NOI}-\Delta c/c_0$ (eqs.~(7)--(8)). The last term is the relative change in the cap rate, not its percentage-point change. Specify whether the cap rate uses current or forward NOI, and replace NOI with distributable cash income if maintenance capital expenditure is required: the book warns that NOI is not necessarily a cash yield (p.~118, n.~19). Appraisal-based data need de-smoothing (\hyperref[meth:cycle-equities-property]{property}).
+
+\qffield{Notation} $\%\Delta S$ change in shares outstanding (negative with buybacks); $\varphi$ degree of integration.
+
+\qffield{Conditions} Premia estimates are uncertain; the 1900--2017 equity premia by country are statistically indistinguishable (p.~111). Real-estate and EM figures are guidelines, not thresholds.
+
+\qffield{Practice} \emph{Reproduced}:
+\begin{itemize}
+\item Example~1 (pp.~97--98): modified duration 4.84 and YTM 3.25 percent with yields rising 200 bp over two years give about $-1.09$ percent a year over two years, 2.71 percent over five and 3.44 percent over seven;
+\item Example~4 (pp.~109--110): $2.25\%+[6.0\%-(-1.0\%)]+0.25\%=9.5\%$, plausible for ten years but not for the long run, where $2.25\%+5.0\%=7.25\%$;
+\item a P/E reverting from 16 to 20 implies 4.56, 2.26 and 0.75 percent a year over 5, 10 and 30 years (p.~109);
+\item German assets (p.~114): integrated premia 3.57 and 1.05 percent, segmented 5.95 and 1.75 percent, at $\varphi=0.85$ 3.93 and 1.16 percent, expected returns 6.93 and 4.16 percent with a 3 percent risk-free rate.
+\end{itemize}
+\emph{Original}: building blocks of 2.0 percent short rate, 1.0 term, 1.2 credit and 0.3 liquidity give 4.5 percent for an investment-grade corporate fund; a cap rate rising from 5.0 to 5.3 percent changes by $0.003/0.05=6\%$ relative to its starting value. The first-order return is $5+2.5-6=1.5\%$. For a timing-consistent forward-NOI example, buy at $t=0$ for $V_0=100$, receive year-one cash NOI of 5 at $t=1$, and sell immediately afterwards at $V_1=NOI_2/c_1=5.125/0.053=96.6981$. With no capital expenditure, financing, tax or sale costs, the exact return is $(5+96.6981)/100-1=1.6981\%$. The difference from 1.5 percent is the nonlinear denominator effect: exactly $c_0+(1+g)/(1+\Delta c/c_0)-1$. Holding the cap rate at 5 percent gives terminal value 102.5 and exactly 7.5 percent total return. These are deterministic scenario returns, not expectations over unspecified random cap rates.
+
+\qffield{Pitfalls} Equating yield with expected return over short horizons when rates are expected to move. Extrapolating buybacks or P/E expansion. Using a developed-market integration weight for an emerging market.
+
+\qffield{See also} \hyperref[meth:cycle-rates-breakevens-spreads]{bonds and the cycle}; \hyperref[meth:potential-gdp-growth-accounting]{growth and equity returns}; \hyperref[meth:required-return-on-equity]{required return on equity}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Forecasting exchange rates and volatility: trade flows, PPP, current-account sustainability, capital flows and portfolio balance for currencies; sample, factor-model, shrinkage, de-smoothed and ARCH estimates of risk]\label{meth:fx-volatility-forecasts}
+\qffield{Statement} \emph{Exchange rates} \citep[chap.~4, sec.~6, pp.~124--131]{portfolio-management-in-practice-v1-2020}. Two perspectives: \emph{goods, services and the current account} (trade flows matter mainly through their persistence; PPP is a weak short-run but useful long-run guide; a persistent current-account imbalance must eventually be corrected, partly by the currency) and \emph{capital flows} (with mobile capital, currencies are driven by the relative attractiveness of each country's assets; uncovered interest parity often fails over short horizons and ``hot money'' flows can push currencies beyond sustainable levels before reversing; under portfolio balance, investors absorb a growing supply of a country's assets only at lower prices or a weaker currency). The analyst must judge which perspective dominates for a given currency and horizon (\hyperref[meth:exchange-rate-forecasting-fair-value]{forecasting and fair value}).
+
+\emph{Volatility} (sec.~7, pp.~131--137). A covariance matrix from sample statistics needs many observations (the number of parameters grows with the square of the number of assets); a factor model imposes structure, reducing noise but possibly misspecified; \emph{shrinkage} averages the sample matrix with a target (for example a factor-model matrix) and generally has smaller mean squared error despite bias; smoothed returns must be de-smoothed; and time-varying volatility can be modelled with ARCH-type models,
+\[
+\sigma_t^2=\gamma+\alpha\sigma_{t-1}^2+\beta\eta_t^2,\qquad \alpha+\beta<1,
+\]
+with long-run variance $\gamma/(1-\alpha-\beta)$ (eq.~(17), p.~137).
+
+\qffield{Notation} $\eta_t$ unexpected return; $\gamma,\alpha,\beta$ non-negative parameters (the book's persistence symbol is lost in extraction; written $\alpha$ here).
+
+\qffield{Conditions} Exchange-rate forecasts have wide error bands; volatility forecasts are more reliable than return forecasts, especially at short horizons.
+
+\qffield{Practice} \emph{Reproduced} (p.~137): with $\gamma=0.000002$, $\alpha=0.9$ and $\beta=0.08$ the long-run variance is 0.0001 (1 percent a day); from a variance of 0.0004, a 3 percent surprise gives a daily volatility of 2.0833 percent and a 2 percent surprise 1.9849 percent. \emph{Original.}
+\begin{itemize}
+\item \emph{Shrinkage.} With ten assets and 60 observations, an equal-weight average of the sample covariance and a constant-correlation target cuts the mean squared error against the true matrix by about a quarter (ratio 0.77 over 300 simulations).
+\item \emph{A combined currency view.} Relative PPP and the interest differential both imply a 1.5 percent annual decline of a foreign currency, because both reflect the inflation differential; with a further 1 percent from current-account adjustment the view is $-2.5$ percent, not $-4$ percent from adding overlapping signals.
+\end{itemize}
+
+\qffield{Pitfalls} Double-counting parity signals that share a cause. Using the sample covariance of many assets from short histories. Treating appraisal-based volatility as true risk.
+
+\qffield{See also} \hyperref[meth:exchange-rate-forecasting-fair-value]{exchange-rate forecasting}; \hyperref[mod:garch-volatility-forecast]{GARCH}; \hyperref[meth:portfolio-covariance-estimation]{covariance estimation}.
+
+\end{qfmethod}
+
+\begin{qfexample}[Reweighting a global portfolio on macro views: trend growth, integration, cycle phases, policy, current accounts and currencies as a checklist, and quantifying the views]\label{ex:global-portfolio-macro-rebalancing}
+\qffield{Statement} Starting from a reasonable strategic mix of global equities and bonds, the analyst may change the equity/bond split, reallocate between countries, adjust credit quality, duration and curve position, and change currency exposure \citep[chap.~4, sec.~8, pp.~138--142]{portfolio-management-in-practice-v1-2020}. The checklist:
+\begin{enumerate}
+\item \emph{Trend growth}: a rise not yet priced favours equities and, through higher real rates, hurts existing bonds; global changes move the equity/bond split, local ones the country mix.
+\item \emph{Integration}: a market becoming more integrated should see its required return fall and its price rise, favouring it (often emerging over developed markets).
+\item \emph{Cycle phase}: the best time to buy equities is near the trough, when multiples and expected earnings growth are low and term and credit premia high; then reduce bonds and duration, barbell the curve and move down in quality; reverse near the peak; reallocate between markets whose cycles are out of phase.
+\item \emph{Policy}: expected countercyclical policy is priced; opportunities come from structural policy changes or unexpected responses.
+\item \emph{Current accounts}: reallocate from countries with secularly rising deficits to those with rising surpluses.
+\item \emph{Currencies}: assess whether inflows have already overshot; if so, assets may still be attractive only after hedging costs.
+\end{enumerate}
+In every case the question is what is already reflected in prices. Views can be quantified by estimating the covariance matrix, deriving equilibrium returns with Singer--Terhaar, adjusting equities with Grinold--Kroner and bonds with building blocks, adding currency views, and combining the results, for example with Black--Litterman (pp.~140--142; \hyperref[mod:black-litterman]{Black--Litterman}).
+
+\qffield{Practice} \emph{Original.} A portfolio of 30 percent each in equities of countries A and B and 20 percent each in their bonds expects 5.40 percent (equity A 7.5, equity B 5.5, bonds A 3.5, bonds B 4.0 percent). Country A is judged near its trough, so its equity forecast from Grinold--Kroner is higher; B is near its peak. Moving from weights $[30,30,20,20]$ to $[38,24,18,20]$ adds eight percentage points to equity A, funded by six from equity B and two from bond A; this raises the expected return to 5.60 percent and the ratio of excess return (over 2 percent) to volatility from 0.358 to 0.361: the recommendation is justified by the quantified views, but modestly, because equity A also adds risk.
+
+\qffield{Conditions} The expected returns are the analyst's quantified views; the gain disappears if A's recovery is already priced.
+
+\qffield{Pitfalls} Acting on a macro view the market already prices. Raising risk without checking that the expected-return gain compensates. Ignoring currency overshoot when shifting between countries.
+
+\qffield{See also} \hyperref[meth:cycle-policy-curve-expectations]{cycle analysis}; \hyperref[meth:asset-class-return-forecasts]{asset-class forecasts}; \hyperref[meth:tactical-shifts-behavioural-biases]{tactical shifts}.
+
+\end{qfexample}

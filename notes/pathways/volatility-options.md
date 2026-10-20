@@ -34,6 +34,47 @@ Written in empirical extensions (2026-10-17) (source verification and bounded ch
 - `mod:black-scholes-merton`: the model, its PDE, Greeks and Merton's no-early-exercise result, with own checks (`bsm-svi-checks.py`). Partly checked 2026-10-17, draft; human review outstanding.
 - `def:implied-volatility-surface`: implied volatility, static-arbitrage conditions, SVI and Lee's wing formula, with a recorded source discrepancy. Partly checked 2026-10-17, draft; human review outstanding.
 
+Written in the fixed-income and derivatives batch (2026-10-18):
+
+In `derivative-markets-uses.tex` (topic `derivative-instruments`):
+
+- `def:derivative-markets-otc-exchange`: exchange and OTC markets, clearing house and CCP, reforms as Hull states them in 2021, size (Hull chap. 1); the Handbook's SEF wording corrected.
+- `def:derivative-types-commitments-contingent`: forwards, futures and swaps against options and CDS; linear and non-linear payoffs.
+- `meth:option-payoff-profit`: payoffs, profits, break-evens, moneyness, intrinsic and time value (Hull chap. 10).
+- `def:derivative-uses-risks`: hedgers, speculators and arbitrageurs; issuer and investor uses; leverage, counterparty, operational, legal and systemic risks (Hull chaps. 1 and 7).
+
+In `forward-commitment-valuation.tex` (topic `forward-commitment-valuation`):
+
+- `meth:arbitrage-replication-carry`: arbitrage, replication, forward against expected spot, carry; commitments against contingent claims.
+- `meth:forward-price-value-lifecycle`: price against value at inception, during the life and at expiry.
+- `res:forward-futures-price-difference`: equality with known rates and the correlation argument, with a two-period tree (Hull sec. 5.8).
+- `def:swaps-as-forward-strips`: swaps as strips of off-market forwards and as bond packages; swap price against value.
+- `meth:equity-forward-futures-valuation`: dividends, yields, index futures and the value of an existing contract. Corrected 2026-10-18 (PR #24 pass): the discrete-dividend replication borrows the full spot and repays the loan with each dividend (debt 101.020320 at maturity).
+- `meth:rate-bond-forward-valuation`: FRAs and their uses, SOFR futures, bond forwards, conversion factors and the cheapest to deliver. Corrected 2026-10-18 (PR #24 pass): Hull's Example 6.3 restated with its SOFR + 200 bp borrowing and quarter-year accrual, the hedge derived from rates. Corrected 2026-10-19 (second PR #24 pass): the original bond forward is built on one dated coupon calendar (Sunday coupon paid Monday, T+1 spot, act/360 repo), with a two-repo ledger and a carry identity.
+- `meth:swap-valuation-replication`: interest-rate, currency and equity swaps by replication (Hull chaps. 7 and 34; Handbook chap. 64). Corrected 2026-10-18 (PR #24 pass): the next equity payment is worth N(E_t/E_0 - P(t,T_next)), 7.980133m in the example, separated from the whole equity leg and the net value; Hull's p. 778 expression and his Technical Note 19 are compared.
+
+All partly checked 2026-10-18, draft. Examples in `notes/artefacts/forward-swap-valuation/forward-swap-checks.py`; human review is outstanding. Coverage records are editorial, not study. `def:derivative-contracts` and `res:cost-of-carry-forward-price` are extended by links, not repeated.
+
+Written in the derivatives, portfolio and execution batch (2026-10-19):
+
+In `option-valuation.tex` (topic `option-valuation`):
+
+- `def:option-value-drivers`: exercise and time value and the six factors, with signs checked by bumping Hull's base case.
+- `res:put-call-forward-parity`: put-call and put-call-forward parity with arbitrages and synthetic positions.
+- `meth:one-period-binomial-valuation`: hedge and replication, risk neutrality and the irrelevance of the real-world probability.
+- `meth:multi-period-binomial-valuation`: two-period European and American options, an option arbitrage and a caplet on the rate tree.
+- `meth:black-model-rates-currencies`: the BSM call as a levered share position, Garman-Kohlhagen, and Black's model for futures options, caplets and swaptions (Hull chaps. 15, 17, 18, 29).
+- `meth:greeks-delta-gamma-hedging`: Greeks, delta hedging against Hull's Table 19.4, gamma risk and implied volatility in trading.
+
+In `option-strategies.tex` (topic `option-strategies`):
+
+- `meth:option-replication-deltas`: replicating an asset with options and the deltas of hedged positions. Corrected 2026-10-19 (PR #25 pass): dividends carried through the identities; a fixed-strike short forward has spot delta -e^(-qT).
+- `meth:covered-call-protective-put`: covered calls, protective puts and short-position hedges.
+- `meth:option-spreads-volatility-strategies`: spreads, straddles, collars, calendar spreads and skew, with a summary table. Corrected 2026-10-19 (PR #25 pass): calendar-spread values and profits distinguished.
+- `ex:option-strategy-selection-case`: strategy choice for a single-stock holding and option positions targeting exposures.
+
+All partly checked 2026-10-19, draft. Examples in `notes/artefacts/option-valuation/option-valuation-checks.py` and `notes/artefacts/option-strategies/option-strategy-checks.py`; human review is outstanding. Coverage records are editorial, not study. `mod:black-scholes-merton`, `def:implied-volatility-surface` and `meth:option-payoff-profit` are linked, not repeated.
+
 ## Source verification after macro markets and pricing review
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.

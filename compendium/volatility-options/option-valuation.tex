@@ -1,0 +1,170 @@
+\section{Option valuation: value drivers, parity, binomial trees, Black's model and the Greeks}
+
+These entries explain what an option's value is made of, the parity relations that link calls, puts, the underlying and forwards, binomial valuation over one and two periods, Black's model for currency, futures and interest-rate options, and how the Greeks are used to hedge. Payoffs and profit at expiry are in \hyperref[meth:option-payoff-profit]{option payoff and profit}; the Black--Scholes--Merton derivation and Greek formulas are in \hyperref[mod:black-scholes-merton]{the BSM model}. Numbers are checked in \texttt{notes/artefacts/option-valuation/option-valuation-checks.py}; rates are continuously compounded unless stated.
+
+\begin{qfdefinition}[What determines an option's value: exercise (intrinsic) value, moneyness and time value, the six factors and their signs, and the arbitrage bounds]\label{def:option-value-drivers}
+\qffield{Statement} \emph{Exercise value and time value.} Exercise (intrinsic) value is what immediate exercise would pay, $\max(S-K,0)$ for a call and $\max(K-S,0)$ for a put; moneyness is the sign of that payoff (\hyperref[meth:option-payoff-profit]{in, at or out of the money}). The rest of the premium is time value.
+
+\emph{Six factors.} Six factors affect a stock option's price: the stock price, the strike, the time to expiry, the volatility, the risk-free rate and expected dividends \citep[chap.~11, sec.~11.1, pp.~247--251, Table~11.1]{s7-hulloptions}.
+\begin{itemize}
+\item A call rises with the stock price and falls with the strike; a put does the reverse.
+\item Both American calls and American puts gain, or at least do not lose, with longer life, because the holder keeps every exercise opportunity. A European option need not: a large dividend before the longer expiry can make the shorter call worth more.
+\item Both gain with volatility, because the holder benefits from large moves and their loss is limited to the premium.
+\item A higher rate, other things fixed, raises calls and lowers puts.
+\item A dividend lowers calls and raises puts.
+\end{itemize}
+
+\emph{Bounds.} A call is worth no more than the stock, and an American put no more than $K$, a European put no more than $Ke^{-rT}$. Without dividends a European call is worth at least $S_0-Ke^{-rT}$ and a European put at least $Ke^{-rT}-S_0$; outside these bounds there is an arbitrage (sec.~11.3, pp.~252--254). An American call on a non-dividend-paying stock is never exercised early, while an American put may be (secs.~11.5--11.6, pp.~257--262).
+
+\qffield{Practice} \emph{Reproduced} (Hull).
+\begin{itemize}
+\item With $S_0=K=50$, $r=5$ percent, $\sigma=30$ percent and $T=1$, the call is worth 7.116 and the put 4.677, all of it time value (p.~248).
+\item Bumping each input reproduces the signs of Table~11.1.
+\item With $S_0=20$, $K=18$, $r=10$ percent and $T=1$, the lower bound is 3.71. A call quoted at 3.00 lets an arbitrageur short the stock, buy the call and invest 17, earning at least 0.79 at expiry (p.~253).
+\end{itemize}
+\emph{Original.} A dividend of 2 in six months lowers the 7.116 call to 5.947 and raises the put to 5.459. A European put struck at 50 with the stock at 30 is worth 17.865, below its exercise value of 20: its time value is negative, which an American put would avoid by early exercise.
+
+\qffield{Conditions} The signs hold one factor at a time. In practice rates and stock prices tend to move in opposite directions, so a rate rise with its accompanying stock fall can lower a call (Hull, p.~250). Bounds assume no transaction costs, one tax rate and borrowing and lending at the risk-free rate (sec.~11.2).
+
+\qffield{Pitfalls} Reading the whole premium as an expected profit; most of an at-the-money option's price is time value that decays. Assuming a European option always gains from a longer life.
+
+\qffield{See also} \hyperref[res:put-call-forward-parity]{put--call parity}; \hyperref[meth:greeks-delta-gamma-hedging]{the Greeks}.
+
+\end{qfdefinition}
+
+\begin{qfresult}[Put--call parity and put--call--forward parity: the relations, the arbitrage when they fail, synthetic positions, and bounds for American options]\label{res:put-call-forward-parity}
+\qffield{Statement} For European options on a non-dividend-paying stock with the same strike and expiry, a call plus cash $Ke^{-rT}$ and a put plus one share both pay $\max(S_T,K)$, so
+\[ c+Ke^{-rT}=p+S_0 \]
+\citep[chap.~11, sec.~11.4, eq.~(11.6), p.~256]{s7-hulloptions}. With a forward or futures price $F_0$ for the expiry date the share is replaced by $F_0e^{-rT}$ (\emph{put--call--forward parity}):
+\[ c+Ke^{-rT}=p+F_0e^{-rT},\qquad c-p=(F_0-K)e^{-rT} \]
+\citep[chap.~18, sec.~18.4, eq.~(18.1), p.~405]{s7-hulloptions}. Parity holds only for European options. For American options on a non-dividend-paying stock, $S_0-K\le C-P\le S_0-Ke^{-rT}$ (eq.~(11.7), p.~256).
+
+\emph{Uses.} Parity defines synthetic positions, the convertible-bond view (\hyperref[meth:convertible-bond-valuation]{convertibles}) and the arbitrage when quotes disagree. A long call and a short put at the same strike form a synthetic forward at $K$. A put plus the stock less a bond is a synthetic call. Long put plus short call is a short forward (\hyperref[res:synthetic-short-put-call]{synthetic short}).
+
+\qffield{Practice} \emph{Reproduced} (Hull, Table~11.3, p.~257). The stock is at 31 and the strike 30, with $r=10$ percent, three months to expiry and the call at 3.
+\begin{itemize}
+\item With the put at 2.25, $c+Ke^{-rT}=32.26$ and $p+S_0=33.25$. Buying the call and shorting the put and the stock raises 30.25, which grows to 31.02; whichever option is exercised, the share is bought for 30, a profit of 1.02.
+\item With the put at 1, short the call and buy the put and the stock for 29, borrowed. Repaying 29.73 leaves 0.27.
+\end{itemize}
+\emph{American bounds} (Example~11.3, p.~256). With the call at 1.50, $S_0=19$, $K=20$, $r=10$ percent and five months, the put must lie between 1.68 and 2.50. \emph{Forward parity} (Example~18.5, p.~406). A commodity call at 0.56 with $K=8.50$, futures 8.00, 10 percent and six months implies a put of 1.04.
+
+\emph{Original.} With $S_0=100$, $K=95$, $r=4$ percent, a dividend yield of 1.5 percent and six months, the forward is 101.2578. Black--Scholes prices satisfy $c-p=6.1339=(F_0-K)e^{-rT}=S_0e^{-qT}-Ke^{-rT}$. The synthetic call, the put plus the dividend-adjusted stock less the bond, equals the call to machine precision.
+
+\qffield{Conditions} Same strike, expiry, underlying and settlement; European exercise; dividends known (replace $S_0$ by $S_0-D$ or $S_0e^{-qT}$). With borrowing costs and short-sale constraints parity becomes a band, and violations line up with scarce borrow (\hyperref[res:synthetic-short-put-call]{evidence}).
+
+\qffield{Pitfalls} Applying European parity to American options. Using the spot price in put--call--forward parity when the forward embeds carry and dividends. Ignoring the bid--ask spread when declaring a violation.
+
+\qffield{See also} \hyperref[meth:arbitrage-replication-carry]{arbitrage and replication}; \hyperref[def:option-value-drivers]{value drivers}.
+
+\end{qfresult}
+
+\begin{qfmethod}[One-period binomial valuation: the riskless hedge, replication, the risk-neutral probability, and why real-world probabilities do not enter]\label{meth:one-period-binomial-valuation}
+\qffield{Statement} Let the stock move from $S_0$ to $S_0u$ or $S_0d$, with option payoffs $f_u$ and $f_d$. A portfolio long $\Delta=(f_u-f_d)/(S_0u-S_0d)$ shares and short one option has the same value in both states, so it must earn the risk-free rate. This gives
+\[ f=e^{-rT}[pf_u+(1-p)f_d],\qquad p=\frac{e^{rT}-d}{u-d} \]
+\citep[chap.~13, sec.~13.1, eqs.~(13.1)--(13.3), pp.~288--292]{s7-hulloptions}. Equivalently, buying $\Delta$ shares and borrowing $(\Delta S_0d-f_d)e^{-rT}$ \emph{replicates} the option. The probabilities of up and down moves do not enter, because the option is priced relative to the stock. $p$ is the probability of an up move in a risk-neutral world, where every asset earns the risk-free rate. Pricing by expected payoff discounted at the risk-free rate in that world gives the right price in the real world as well (\emph{risk-neutral valuation}, sec.~13.2, pp.~292--294).
+
+\qffield{Practice} \emph{Reproduced} (Hull, Figure~13.1). The stock is at 20 and moves to 22 or 18 in three months; the call is struck at 21 and $r=4$ percent. $\Delta=0.25$ makes the portfolio worth 4.5 in both states, its present value is 4.455, and the call is worth $20\times0.25-4.455=0.545$. The risk-neutral probability is 0.5503, and $e^{-0.01}\times0.5503\times1=0.545$.
+
+\emph{Original.}
+\begin{itemize}
+\item \emph{Real-world probabilities.} If the up move has a real-world probability of 0.7, the stock is expected to earn 4 percent a quarter, yet the call is still 0.545. Discounting the real-world expected payoff at the risk-free rate would give 0.693, which replication shows is wrong.
+\item \emph{Arbitrage.} If the call is quoted at 0.60, write 400 calls for 240 and buy 100 shares for 2{,}000, borrowing 1{,}782.09. That leaves 22.09 today, and the position is worth zero in both states at expiry.
+\end{itemize}
+
+\qffield{Conditions} Two states and frictionless trading; with more states one stock and one bond cannot replicate an arbitrary payoff in a single period, which multi-period trees solve by rebalancing (\hyperref[meth:multi-period-binomial-valuation]{two-period trees}). No arbitrage requires $d<e^{rT}<u$.
+
+\qffield{Pitfalls} Reading $p$ as a forecast. Discounting a real-world expected payoff at the risk-free rate. Forgetting that $\Delta$ changes as the stock moves.
+
+\qffield{See also} \hyperref[meth:arbitrage-replication-carry]{arbitrage}; \hyperref[mod:black-scholes-merton]{BSM as the limit of many steps}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Two-period binomial valuation: European and American options by backward induction, option value as an expected discounted payoff, identifying option arbitrage, and an interest-rate option on a rate tree]\label{meth:multi-period-binomial-valuation}
+\qffield{Statement} \emph{Components.} A binomial model has an up factor $u$, a down factor $d$, a risk-free rate per step and the risk-neutral probability $p$. Over two steps of length $\Delta t$, $f=e^{-2r\Delta t}[p^2f_{uu}+2p(1-p)f_{ud}+(1-p)^2f_{dd}]$, the option's expected payoff in a risk-neutral world discounted at the risk-free rate \citep[chap.~13, sec.~13.3, eqs.~(13.5)--(13.10), pp.~294--297]{s7-hulloptions}. Matching volatility sets $u=e^{\sigma\sqrt{\Delta t}}$ and $d=1/u$ (secs.~13.7--13.8, pp.~300--303). \emph{American options} are valued by comparing, at each node, the value of continuing with the payoff from early exercise and keeping the larger (sec.~13.5, pp.~298--299). The hedge ratio changes from node to node, so the replicating portfolio must be rebalanced (sec.~13.6).
+
+\emph{Option arbitrage.} A quoted price that differs from the tree value under the same inputs is an arbitrage if the replicating portfolio can be traded and rebalanced: buy the cheap option and sell the replicating portfolio, rebalancing at each node. The same rule identifies the early-exercise premium of an American option.
+
+\emph{Interest-rate options.} On a calibrated rate tree (\hyperref[meth:binomial-rate-tree-calibration]{rate tree}) the same induction values an option on a rate, with each node's rate as its discount rate.
+
+\qffield{Practice} \emph{Reproduced} (Hull, Figures~13.7--13.8). A two-year put has $S_0=50$, $K=52$, $u=1.2$, $d=0.8$ and $r=5$ percent, so $p=0.6282$. The European put is worth 4.1927; Hull's 4.1923 uses $p$ rounded to four places. As an American option, node C's continuation value of 9.4639 (Hull 9.4636) is below the exercise value of 12, so the put is exercised there and the value rises to 5.0896 (Hull 5.0894).
+
+\emph{Arbitrage} (original). If that American put is quoted at 4.80, it is cheap by 0.29. Buy it and sell its replicating portfolio of stock and borrowing, rebalancing at node B and exercising at node C.
+
+\emph{Interest-rate option} (original, on the Handbook's tree with rates 3.5, then 4.4448 or 5.4289, then 4.6958, 5.7354 or 7.0053 percent). A caplet on 1 million fixes at year 2 on the one-year rate with a strike of 5 percent and pays at year 3. It pays 0, 7{,}354 or 20{,}053. Discounting each payoff at its node's year-2 rate and averaging back gives 7{,}495, the same as averaging the discounted payoffs over the four equally likely paths. The payoff is interpreted as the excess rate on the notional paid in arrears, the convention of \hyperref[meth:capped-floored-floater-valuation]{caps on floaters}.
+
+\qffield{Conditions} A recombining tree with constant $u$, $d$ and $r$; trading at each node without costs. Two steps illustrate the method and do not give an accurate price; more steps converge to Black--Scholes for European options.
+
+\qffield{Pitfalls} Testing early exercise only at the final nodes. Mixing rounded intermediate values into later steps. Discounting a rate option's payoff from the fixing date instead of the payment date.
+
+\qffield{See also} \hyperref[meth:one-period-binomial-valuation]{one-period model}; \hyperref[meth:callable-putable-bond-valuation]{embedded options on the rate tree}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Black--Scholes--Merton in practice and Black's model: the call as a leveraged position in the underlying, currency options, options on futures, caps, floors and swaptions]\label{meth:black-model-rates-currencies}
+\qffield{Statement} \emph{Assumptions} are those of \hyperref[mod:black-scholes-merton]{the BSM model}: lognormal prices, constant volatility and rate, continuous frictionless trading and no arbitrage. \emph{Components.} In $c=S_0N(d_1)-Ke^{-rT}N(d_2)$, the first term is $N(d_1)$ shares, the hedge ratio, and the second is a loan of $Ke^{-rT}N(d_2)$, where $N(d_2)$ is the risk-neutral probability of exercise. A call is therefore a leveraged long position in the stock, rebalanced continuously (Interpretation of Hull, chap.~15).
+
+\emph{Currencies and equities.} A foreign currency is an asset paying a yield equal to the foreign risk-free rate $r_f$, so $c=S_0e^{-r_fT}N(d_1)-Ke^{-rT}N(d_2)$, the Garman--Kohlhagen formula. Using the forward $F_0=S_0e^{(r-r_f)T}$ gives the same value as Black's formula \citep[chap.~17, sec.~17.5, eqs.~(17.11)--(17.14), pp.~394--395]{s7-hulloptions}. Index options use the dividend yield in the same way (sec.~17.4).
+
+\emph{Black's model for futures options.} $c=e^{-rT}[F_0N(d_1)-KN(d_2)]$ and $p=e^{-rT}[KN(-d_2)-F_0N(-d_1)]$, with $d_{1,2}=[\ln(F_0/K)\pm\sigma^2T/2]/(\sigma\sqrt T)$ (chap.~18, sec.~18.7, eqs.~(18.7)--(18.8), p.~408). Traders use it also for European spot options, because the futures or forward price carries the income or convenience yield (sec.~18.8, p.~409).
+
+\emph{Interest-rate options.} A caplet on a forward rate $F_k$ for the period $t_k$ to $t_{k+1}$, with accrual $\delta_k$ and notional $L$, is worth $L\delta_kP(0,t_{k+1})[F_kN(d_1)-R_KN(d_2)]$, with volatility over $t_k$ \citep[chap.~29, sec.~29.2, eq.~(29.7), pp.~695--696]{s7-hulloptions}. Cap minus floor equals a swap (Business Snapshot~29.1, p.~695). A European payer swaption is $LA[s_FN(d_1)-s_KN(d_2)]$, with $A$ the annuity of the underlying swap and $s_F$ the forward swap rate (sec.~29.3, pp.~699--702).
+
+\qffield{Practice} \emph{Reproduced} (Hull).
+\begin{itemize}
+\item \emph{Equity} (Example~15.6). With $S_0=42$, $K=40$, 10 percent, 20 percent volatility and six months, $c=4.76$ and $p=0.81$.
+\item \emph{Currency} (Example~17.2). A four-month sterling call at the money, with 8 percent dollar and 11 percent sterling rates and a price of 4.3 cents, implies 14.1 percent volatility. Black's model on the forward gives the same value.
+\item \emph{Futures} (Examples~18.6--18.7). A four-month futures put with $F=K=20$, 9 percent and 25 percent volatility is worth 1.12. A six-month gold call with futures at 1{,}240, strike 1{,}200, 5 percent and 20 percent volatility is worth 88.37.
+\item \emph{Caplet} (Example~29.3). On 10 million, with an 8 percent cap, a 7 percent forward, 20 percent volatility, fixing at one year and paying at 1.25 years with 6.5 percent zero rates, the caplet is worth 0.00519 million.
+\item \emph{Swaption} (Example~29.4). The right to pay 6.2 percent in a three-year swap starting in five years, with a forward of 6.194 percent semiannual, 20 percent volatility, an annuity of 2.0035 and 100 million, is worth 2.19 million.
+\end{itemize}
+
+\emph{Leverage} (original, Example~15.6). The call equals 0.7791 shares (32.72) financed by borrowing 27.96. Its elasticity is $\Delta S/c=6.88$, so a 1 percent stock move changes the call by about 6.9 percent. Caplet minus floorlet equals the present value of $(F-K)$ on the accrual, as parity requires.
+
+\qffield{Conditions} Lognormal underlying with constant volatility; Black's model for rates treats each forward or swap rate as lognormal under its own measure, an internally consistent market convention that cannot hold for all rates at once (Hull sec.~29.3) and fails with negative rates, where normal (Bachelier) or shifted models are used. The smile (\hyperref[def:implied-volatility-surface]{implied volatility surface}) means one volatility per strike.
+
+\qffield{Pitfalls} Using the spot price and a dividend estimate when a liquid forward exists. Discounting a caplet from the fixing date. Quoting a swaption volatility without the model it belongs to.
+
+\qffield{See also} \hyperref[mod:black-scholes-merton]{BSM}; \hyperref[meth:capped-floored-floater-valuation]{caps on floaters}; \hyperref[mod:sabr-smile]{SABR}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[The Greeks in use: interpreting them, executing and rebalancing a delta hedge, gamma risk and gamma-neutral hedging, and implied volatility in trading]\label{meth:greeks-delta-gamma-hedging}
+\qffield{Statement} \emph{Interpretation.}
+\begin{itemize}
+\item Delta is the change in option value per unit change in the underlying.
+\item Gamma is the change in delta.
+\item Theta is the change with the passage of time.
+\item Vega is the change per unit of volatility.
+\item Rho is the change per unit of interest rate.
+\end{itemize}
+Formulas are in \hyperref[mod:black-scholes-merton]{the BSM model}. A position with zero delta is delta neutral, but only for a short time, so it must be rebalanced: \emph{dynamic hedging} \citep[chap.~19, sec.~19.4, pp.~421--427]{s7-hulloptions}.
+
+\emph{Executing a delta hedge.} A bank that sells calls buys $N(d_1)$ shares per call and adjusts the holding as delta changes. If the hedge worked perfectly, the discounted cost of writing and hedging the option would equal its BSM price on every path; weekly rebalancing leaves a dispersion that falls as rebalancing becomes more frequent (Tables~19.2--19.4, pp.~424--426).
+
+\emph{Gamma risk.} For a delta-neutral portfolio $\Delta\Pi\approx\Theta\Delta t+\tfrac12\Gamma\Delta S^2$ (eq.~(19.3), p.~430). With negative gamma the portfolio gains if the price does not move and loses on large moves of either sign. The underlying has zero gamma, so a portfolio is made gamma neutral with $-\Gamma/\Gamma_T$ traded options and then delta neutral again with the underlying (pp.~430--431). Vega is hedged the same way, with options (sec.~19.8).
+
+\emph{Implied volatility in trading.} The implied volatility is the volatility that makes the model price equal the market price. Traders quote options in implied volatility, and the VIX indexes the 30-day implied volatility of S\&P~500 options (chap.~15, sec.~15.11, pp.~358--359). A delta-hedged long option earns, roughly, $\tfrac12\Gamma S^2(\sigma_{\text{realised}}^2-\sigma_{\text{implied}}^2)\Delta t$ each period. So buying options is a view that realised volatility will exceed implied: ``If implied volatility is low, such that options generally appear underpriced, look for spreads with a positive vega'' \citep[chap.~11, p.~199]{s7-natenberg}.
+
+\qffield{Practice} \emph{Reproduced} (Hull, Example~19.1 and sec.~19.6).
+\begin{itemize}
+\item A call with $S=49$, $K=50$, 5 percent, 20 percent volatility and 20 weeks has a delta of 0.522; 100{,}000 calls are worth about \$240{,}000.
+\item A delta-neutral book with gamma $-3{,}000$ and a traded call with delta 0.62 and gamma 1.50 needs 2{,}000 calls bought and 1{,}240 shares sold.
+\item A book with gamma $-10{,}000$ loses about 20{,}000 on a move of 2.
+\end{itemize}
+
+\emph{Checked} (original, the Example~19.1 call).
+\begin{itemize}
+\item \emph{Rebalancing frequency.} Simulating 20{,}000 paths with a 13 percent drift, the ratio of the standard deviation of hedging cost to the BSM price is 0.415, 0.373, 0.270 and 0.192 for rebalancing every 5, 4, 2 and 1 weeks, within 0.03 of Hull's 0.42, 0.38, 0.28 and 0.21. The mean cost, 2.4035, is close to the 2.40 price.
+\item \emph{Short intervals.} At half a week and a quarter of a week the simulation gives 0.136 and 0.098, falling by about $\sqrt2$ per halving as discrete-hedging theory predicts. Hull's Table~19.4 gives 0.16 and 0.13, ratios of 1.31 and 1.23; the cause is not stated, and the discrepancy is recorded.
+\item \emph{Gamma--theta.} A short call hedged with delta shares over one day changes by $-0.1176$ for a move of $-2$ and $-0.1095$ for $+2$ on full revaluation, against $-0.1140$ from $\Theta\Delta t+\tfrac12\Gamma\Delta S^2$.
+\item \emph{Implied against realised.} Buying the call at 20 percent implied and hedging daily at that volatility, while realised volatility is 25 percent, earns 0.62 on average per call (standard error 0.006).
+\item \emph{Vega.} Vega is 12.1 per unit of volatility, so one point of implied volatility moves the call by about 0.12.
+\end{itemize}
+
+\qffield{Conditions} Constant volatility, no transaction costs and continuous trading make the hedge perfect in theory. In practice traders rebalance to delta daily and manage gamma and vega by watching them, because options to neutralise them are expensive, and they use scenario tables of profit and loss across prices and volatilities (secs.~19.10--19.11, pp.~437--438). Greeks computed at one implied volatility per option ignore smile dynamics (\hyperref[def:implied-volatility-surface]{volatility surface}).
+
+\qffield{Pitfalls} Treating a delta-neutral book as riskless. Hedging gamma with the underlying. Reading a profit on a delta-hedged option as alpha when it is the realised-minus-implied variance spread, earned at the cost of gamma risk.
+
+\qffield{See also} \hyperref[mod:black-scholes-merton]{BSM}; \hyperref[meth:option-spreads-volatility-strategies]{volatility strategies}; \hyperref[def:vix-variance-dividend-swaps]{the VIX}.
+
+\end{qfmethod}

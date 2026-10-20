@@ -50,3 +50,46 @@ That is one official monitor's choice, not a survey of what market studies use; 
 \qffield{Further reading} \nolinkurl{gap-money-sec-2023-reform}; \nolinkurl{gap-money-nmfp-data}.
 
 \end{qfevidence}
+
+\begin{qfdefinition}[Short-term funding alternatives compared, and repurchase agreements: mechanics, haircuts and margin, delivery, uses, benefits and risks]\label{def:short-term-funding-repo}
+\qffield{Statement} \emph{Non-financial companies.} A revolving bank line lets a borrower draw up to a limit while it stays out of default. It pays an agreed rate on the drawn amount and an unused-line fee on the rest. Commercial paper reaches investors directly and is usually cheaper, but it must be rolled continually, so the issuer faces \emph{rollover} (fragility) risk: a run in which investors refuse to roll. The industry standard is to issue paper while keeping an untouched \emph{backup line}, for which the issuer pays the unused-line fee. Investors and rating agencies usually require issuance to stay below the line. The line is not a guarantee: the bank need not advance funds if the issuer is in default under the loan agreement. A letter of credit, a separate product, does commit the bank to pay the paper \citep[chap.~13, pp.~306--308]{s7-fabozzifixed}. A company that owns securities can also borrow against them in repo.
+
+\emph{Financial institutions} draw liquidity from six sources: holdings of cash and Treasuries, liquidating trading-book positions, borrowing at short notice, attracting retail and wholesale deposits, securitisation, and borrowing from the central bank \citep[chap.~21, sec.~21.2, p.~459]{risk-management-financial-institutions-2023}. Cash and Treasuries are reliable but expensive to hold. Wholesale deposits ``can disappear quickly in stressed market conditions''. Even retail deposits are less stable than they were, because rates are easy to compare and money easy to move online. Securitisation dried up ``almost overnight'' in August~2007 (p.~460). Solvent institutions can still fail from funding problems when they finance long assets with short liabilities (p.~458).
+
+\emph{Repurchase agreement.} A repo is a sale of a security with a commitment to buy it back at a set price on a set date: in substance a collateralised loan. Dollar interest is principal $\times$ repo rate $\times$ days$/360$. An overnight repo lasts one day and a term repo longer. A \emph{reverse repo}, buying a security with a commitment to sell it back, lets a dealer borrow a bond to cover a short sale \citep[chap.~60, pp.~1485--1486]{s7-fabozzifixed}. The lender advances less than the collateral's value, the \emph{haircut} or repo margin. The Handbook gives 1--3 percent as usual and 10 percent or more for weaker borrowers or less liquid collateral.
+\begin{itemize}
+\item \emph{Margin.} Collateral is marked to market. Under the Master Repurchase Agreement a margin deficit is cured with cash or acceptable securities, netted across all repos with the counterparty (pp.~1487--1488).
+\item \emph{Delivery.} Collateral may be delivered out to the lender. In a \emph{hold-in-custody} repo the borrower keeps it, which is cheaper but leaves the lender exposed to the collateral being pledged twice. In a \emph{tri-party} repo it sits in a custodial account at the borrower's clearing bank (p.~1488).
+\item \emph{Default.} U.S. bankruptcy law exempts qualifying repos from the automatic stay, so the cash lender can sell the collateral at once (p.~1488).
+\item \emph{Repo rate.} Rates vary with the quality of the collateral, the term, the delivery arrangement, the availability of the collateral (scarce ``special'' bonds lend cash cheaply) and the federal funds rate (p.~1489).
+\end{itemize}
+
+\qffield{Notation} Haircut $h$ as a share of collateral market value: loan $=(1-h)\times$ collateral. The Handbook states it as collateral $=102$ percent of the loan, which is $h=1-1/1.02=1.96$ percent. Act/360 day count throughout.
+
+\qffield{Conditions} U.S. practice as described in 2021. Repo is cheaper than bank credit because it is secured and liquid, and gives cash lenders a short, secured, liquid investment (p.~1486). The illustrative rates in the example below are not quotes for any date.
+
+\qffield{Practice} \emph{Reproduced} (Handbook, pp.~1486--1487). A 10-day repo of a Treasury note with full value \$10{,}015{,}455 at 0.08 percent costs \$222.57. With collateral at 102 percent of the loan, \$9{,}819{,}073.53 is lent, interest is \$218.20 and the repurchase price \$9{,}819{,}291.73.
+
+\emph{Original comparison} (illustrative rates). A company needs 20 million for 90 days.
+\begin{itemize}
+\item \emph{Commercial paper} at a 4.40 percent discount needs a face value of 20{,}222{,}446.92, a money-market yield of 4.4489 percent. A dealer fee of 5 basis points and 10 basis points on a 25 million backup line bring the all-in cost to 4.6245 percent.
+\item \emph{A drawn revolver}, at expected SOFR of 4.20 percent plus 125 basis points with 20 basis points on the undrawn 10 million of a 30 million facility, costs 5.55 percent.
+\item \emph{Repo} at 4.25 percent costs least, but it needs 20.41 million of unencumbered Treasuries at a 2 percent haircut.
+\end{itemize}
+If the paper cannot be rolled for the last 30 days and the backup line is drawn, the paper's all-in cost rises to 4.9413 percent, still below the revolver. The choice turns on who holds what. A company with no securities chooses paper with a backup line, provided it can keep the rating, the covenants and the line. A dealer with Treasuries chooses repo. A borrower that cannot carry rollover risk pays for a drawn line.
+
+\emph{Margin call} (original). A 50 million repo against 51.02 million of collateral (2 percent haircut) faces a 3 percent fall in the collateral to 49.49 million. The margin deficit is 1.53 million of securities, or 1.50 million of cash repaid. Without the call, the lender would be exposed by 0.51 million.
+
+\emph{Uses, benefits and risks.} Interpretation.
+\begin{itemize}
+\item \emph{Uses.} Dealers and leveraged investors finance long positions. A reverse repo covers a short. Cash-rich investors lend against collateral. Central banks also operate through repo (\hyperref[def:money-market-reference-rates]{reference rates}).
+\item \emph{Benefits.} Funding is secured, cheaper than unsecured borrowing, available at short notice and liquid for the lender.
+\item \emph{Risks for the borrower.} Overnight funding must be rolled daily and haircuts can rise in stress, so a leveraged holder may have to sell into a falling market.
+\item \emph{Risks for the lender.} The lender bears the counterparty's default plus any shortfall in the collateral's value after a fall, which the haircut and daily margining are meant to cover. Hold-in-custody repos add operational and fraud risk.
+\end{itemize}
+
+\qffield{Pitfalls} Reading a backup line as a guarantee. Comparing a commercial-paper discount rate with a loan rate without converting it to a money-market yield and adding the line and dealer fees. Treating overnight repo as long-term funding because it is usually rolled. Stating a haircut as collateral over loan and as a share of collateral interchangeably.
+
+\qffield{See also} \hyperref[def:money-market-reference-rates]{money-market instruments}; \hyperref[ev:money-fund-runs]{money-fund runs}; \hyperref[meth:corporate-funding-ig-hy]{long-term corporate funding}.
+
+\end{qfdefinition}

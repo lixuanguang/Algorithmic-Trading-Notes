@@ -5,3 +5,5 @@ The reference content is in `compendium/`. Detailed source findings, numerical c
 Research protocols and outputs are stored under `artefacts/<topic>/`; reading notes and pathway notes link to the relevant entries. Historical records retain dates and evidence identities. Descriptive filenames and topic names replace numbered editing identifiers. Renaming a record does not renew its verification.
 
 Use `make check-compendium` from the repository root to check entry structure and references. It does not verify source claims or measure learning progress.
+
+- [Correction pass on PR #26, 19 October 2026](source-review-records.md#correction-pass-on-pr-26-19-october-2026): units, conventions, probability interpretation and allocation decisions.

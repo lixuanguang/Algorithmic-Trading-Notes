@@ -4180,3 +4180,309 @@ Corrections:
 - `meth:risk-adjusted-performance-measures`. alpha = beta (T_P - T_M), so agreement requires beta > 0; Treynor is undefined at beta 0 and reverses for negative beta (rf 3, market 8, return 0, beta -1: alpha +2, Treynor 3 against 5). Positive, zero and negative beta checks added; a pitfall added. Positive alpha stays separate from skill.
 
 Checks: `investment-planning-checks.py` 41 (was 25), `manager-selection-checks.py` 26 (was 19), `performance-evaluation-checks.py` 41 (was 35); the batch total is 193. Coverage reassessed for the nine objectives mapped to these entries; each still meets its operations and depth with the corrected teaching, so counts are unchanged: 71 of 424 objectives; 78 Level I, 13 Level II and 37 shared-core items covered; 902 of 1,030 unreviewed.
+
+## Fixed-income and derivatives batch, 18 October 2026
+
+Thirty objectives in six topics: bond features, issuance and markets (5), bond pricing and yields (4), the term structure (6), interest-rate risk (4), derivative instruments and markets (4) and forward, futures and swap valuation (7). Branch `codex/fixed-income-derivatives-20261018`, from `main` at `a1cf781` after PRs #22 and #23 were merged. Source checks and numerical verification; not study and not human review.
+
+### Source discovery (plan sec. 3.5)
+
+Retrieval on 2026-10-18 targeted these subjects (Treasury price formula with a simple-interest first period; Rule 15c6-1 T+1 compliance date; Trust Indenture Act exemption threshold; Rule 144A qualified institutional buyer; prospectus exemptions consolidated text; IFRS 13 matrix pricing; IBRD funding programme currency; commercial paper tier spread; empirical duration; key-rate duration; principal components of yield changes). The owner's local library was searched first and supplied the books. Sources read, with sections and identities in their reading notes:
+
+- Fabozzi (ed.), *The Handbook of Fixed Income Securities* (9th ed., 2021), catalogue key `s7-fabozzifixed`, chapters 1, 3-5, 7-11, 13-14, 16, 22, 31-33, 35, 37, 40, 44 and 64 at the pages listed in `notes/readings/s7-fabozzifixed.md`. Authored chapters (Ilmanen; Phoa; Bhattacharya, Fabozzi and Berliner) are cited through the Handbook.
+- Hull, *Options, Futures, and Other Derivatives* (11th Global ed., 2022), chaps. 1, 4-7, 10-11, 13, 22, 25 and 34 at the pages listed in `notes/readings/s7-hulloptions.md`.
+- U.S. law and rules as published by the Legal Information Institute (eCFR and sec.gov were not used because sec.gov requires an identifying user agent): 15 U.S.C. 77c (sec. 3(a)(2)-(3)) and 77ddd; 26 U.S.C. 103; 31 U.S.C. 3124; 17 CFR 230.144A, 230.415, 240.15c6-1 and 260.4a-1; 31 CFR part 356 Appendix B, whose worked examples were reproduced.
+- FINRA Regulatory Notice 23-15 (5 September 2023) for the T+1 compliance date of 28 May 2024.
+- Regulation (EU) 2017/1129, consolidated text of 4 December 2024, and Commission Regulation (EU) 2023/1803 (IFRS 13), both from the EU Publications Office (CELLAR) because EUR-Lex returned a bot check.
+- World Bank Treasury, IBRD/IDA Factsheet (FY2026 currency composition).
+- The Federal Reserve's GSW file `feds200628.csv` (to 9 October 2026), already in the repository's validation data, reduced to month-end zero yields by `gsw-month-end-extract.py`.
+- CBOT Rule 18101.B (conversion factor at 6 percent), already registered.
+
+Access limits and substitutions:
+- FRED downloads failed from this environment; the commercial-paper tier spread is described from the Handbook (chap. 13) and not recomputed.
+- Litterman and Scheinkman (1991) was not read directly; factor results are cited through Phoa (Handbook chap. 33) and Hull sec. 22.9, and recomputed from GSW data.
+- Hull's Technical Note 24 (forward against futures prices) was not fetched; sec. 5.8 is cited and the result is checked with an original tree.
+- Handbook figures date from 2019-2020; its Trust Indenture Act threshold (\$5 million) is superseded by the \$50 million of 17 CFR 260.4a-1 (2015); its chap. 64 description of SEFs as clearing counterparties is corrected against Hull.
+- No curriculum text was used as a substantive source; the outlines defined scope only.
+
+### Entries
+
+Thirty new entries in six section files:
+- `rates-credit-mortgages/bond-instruments-markets.tex`: `def:bond-features-indenture`, `def:bond-cash-flow-contingencies`, `rule:bond-issuance-legal-tax`, `def:bond-market-segments-trading`, `meth:corporate-funding-ig-hy`, `def:government-agency-supranational-funding`.
+- `bond-pricing-yields.tex`: `meth:bond-price-from-yield`, `meth:matrix-pricing`, `def:bond-yield-spread-measures`, `meth:floating-money-market-yields`.
+- `term-structure-returns.tex`: `meth:spot-par-forward-curves`, `meth:forward-rates-expected-returns`, `def:swap-curve-short-term-spreads`, `res:term-structure-theories`, `meth:yield-curve-factor-exposures`.
+- `interest-rate-risk.tex`: `meth:bond-return-decomposition`, `meth:yield-duration-pvbp`, `meth:convexity-portfolio-duration`, `meth:curve-based-empirical-duration`.
+- `volatility-options/derivative-markets-uses.tex`: `def:derivative-markets-otc-exchange`, `def:derivative-types-commitments-contingent`, `meth:option-payoff-profit`, `def:derivative-uses-risks`.
+- `forward-commitment-valuation.tex`: `meth:arbitrage-replication-carry`, `meth:forward-price-value-lifecycle`, `res:forward-futures-price-difference`, `def:swaps-as-forward-strips`, `meth:equity-forward-futures-valuation`, `meth:rate-bond-forward-valuation`, `meth:swap-valuation-replication`.
+
+The existing entries named in the brief were reviewed first: `def:fixed-income-market-structure`, `def:fixed-income-universe`, `def:interest-rate-measures`, `conv:us-rate-quotation`, `mod:forward-rates-fra`, `meth:curve-trades-carry-rolldown`, `def:interest-rate-swaps`, `mod:multi-curve-fra-swap-valuation`, `mod:duration-convexity`, `def:derivative-contracts`, `def:futures-hedge-basis`, `res:cost-of-carry-forward-price` and `mech:futures-margin-settlement`. They are linked, not repeated. Single-curve examples are labelled as such, and FRA and swap valuation with separate projection and discounting curves stays in `mod:multi-curve-fra-swap-valuation`. `def:derivative-contracts` and `res:cost-of-carry-forward-price` are mapped alongside the new entries to `objective:describe-derivative-markets` and `objective:price-by-arbitrage-and-carry`.
+
+### Numerical evidence
+
+Three scripts, found by `make examples`, 163 checks; one seeded synthetic series (seed 20261018) for empirical duration:
+- `bond-valuation-risk/bond-valuation-checks.py` (77): 31 CFR 356 Appendix B examples (simple-stub price 99.730918; bill rates; FRN index 0.095022819 percent); Handbook Exhibit 4-4 and Illustration 4; an original bond between coupon dates (full 102.1316, clean 101.2149; simple stub 102.1249); compounding conversions; yields to call and worst; G-, I- and Z-spreads on one curve; matrix pricing; discount margins; money-market yields; duration, PVBP and convexity with repricing; a three-bond portfolio with parallel and steepening shocks; horizon returns; effective, key-rate and callable-bond measures; Handbook Exhibit 5-15; empirical duration.
+- `term-structure-dynamics/term-structure-checks.py` (36): bootstrapping and repricing; inverted ordering; Ilmanen's example; rolling yield and break-even; convexity bias; swap-curve forwards and spread; Hull Table 22.9 (full 8 x 8 loadings), a two-factor hedge; principal components and volatility of GSW month-end changes (85.3, 10.7 and 2.5 percent of variance; 24.5, 28.7 and 25.5 basis points at 1, 5 and 30 years).
+- `forward-swap-valuation/forward-swap-checks.py` (50): option payoffs; carry arbitrage; Hull Examples 5.1-5.4 and others; forward value over the life; dividends and index futures; a tailed futures replication with deterministic rates; a two-period tree with correlated rates; FRA; Hull Examples 6.1-6.3 and conversion factors; a bond forward; swaps by bonds and by FRAs; Hull Examples 7.2-7.3; a EUR/USD swap; equity swaps.
+
+Findings from the checks:
+- Hull's Example 6.3 subtracts \$197,000 where its own gain is \$197,500, and in the negative-rate case computes \$102,250 for \$102,500; both totals are \$502,500.
+- Hull's Examples 7.2-7.3 print 0.9629 million; his own forward present values and bond values give 0.9628.
+- Hull's PCA standard deviation of 25.45 matches neither the printed loadings (25.40) nor unrounded ones (25.50).
+- The Handbook's convexity measure 112.38 comes from four-decimal prices; exact prices give 112.27.
+- Key-rate durations explain a steepener to within its convexity (-1.7477 against -1.7302); a callable bond's effective duration depends on the shock size near the exercise boundary (6.008 at 5 basis points, 4.956 at 25).
+- Many expected values typed before the first runs failed; they were recomputed by independent probes, checked by hand and replaced before the entries were finalised. A Treasury bill investment rate matches only to 5e-6 because Treasury rounds intermediate results.
+
+### Coverage
+
+The 65 outline items mapped to the 30 objectives (47 Level I on PDF pp. 19-24, 18 Level II on pp. 17 and 21) were each read against the finished entries. Four bullets exposed gaps that were closed before promotion: issuer and investor uses (m072:b02), interest-rate forwards' uses (m074:b02), swap price against value (m076:b02) and arbitrage for commitments against contingent claims (m077:b02). All 65 are promoted with item-specific rationales.
+
+All 30 objectives are `covered` (editorial coverage, not mastery). Totals: 101 of 424 objectives; 125 Level I, 31 Level II and 37 Level III core items covered; 837 of 1,030 unreviewed.
+
+### Limits
+
+- Examples are invented or synthetic apart from the reproduced textbook and Treasury examples and the GSW data. Market sizes, spreads and funding figures are dated to their sources.
+- Legal points are U.S. and EU as of 18 October 2026, from secondary publications (LII) and consolidated texts; later EU amendments were not reviewed.
+- Single-curve valuation is used for teaching; collateral, funding and credit adjustments are not covered.
+- Human review is outstanding.
+
+## Correction pass on PR #24, 18 October 2026
+
+A fixes-only pass on `88bd29e`, after an external audit with six findings. This is not study and not human review; plan Section 19.1 has the scope. No objective was added; the seven objectives and ten outline items whose teaching changed were reassessed and stay covered.
+
+Sources read or re-read for this pass:
+- Hull (11th Global ed.), second local copy (SHA-256 36748bb6...ba8e): sec. 6.3, pp. 162-163 (Example 6.3: SOFR plus 200 basis points on \$100 million for three months from 16 December 2021, 0.25 accrual, quote 99.990); sec. 34.4, pp. 777-778 (the next equity cash flow "is L(E - E0)/E0").
+- Hull, Technical Note 19, "Valuation of an Equity Swap" (`hull-tn19`). The author's site returned HTTP 404 for the note and the index on 2026-10-18; the Internet Archive capture of 28 August 2025 was read (SHA-256 fbd0c0b8...4356). It values the swap to the equity receiver at L E/E0 - L(1 + R0 tau0)/(1 + R tau), whose equity part is L E/E0 - L/(1 + R tau).
+- 31 CFR 356.12(b)(1) and 356.22 from eCFR (point-in-time XML for 15 October 2026); 87 FR 40438 (7 July 2022, effective 8 August 2022) and 91 FR 65456 (15 October 2026), both PDFs from TreasuryDirect's auction-regulations page (hashes in the reading notes); the Handbook, chap. 7, pp. 173-174.
+- The New York Fed's methodology page for the SOFR Averages and Index (HTML SHA-256 1ab21c57...82d4).
+
+Corrections:
+- `meth:equity-forward-futures-valuation` (discrete-dividend replication). Borrowing only S0 - I left the share purchase unfunded by I = 2.940743. The replication now borrows the full 100, applies each 1.50 dividend to the loan when received, and owes 101.020320 at maturity, the forward price. The script's check, which compared (S0 - I)e^{rT} with itself, is replaced by a dated ledger built event by event: net cash zero at 0, 0.25 and 0.75; terminal debt 101.020320; a 0.979680 arbitrage profit against a quote of 102. The forward price and the 7.4949 value at six months are unchanged.
+- `meth:swap-valuation-replication` (equity swap). Under a total-return index, one curve and payment at the reset, the next equity payment is worth N(E_t/E_0 - P(t,T_next)): 7.980133 million in the example, against 6.000 million from N(E_t/E_0 - 1). It is separated from the later payments (11.084044 million), the whole equity leg (19.064 million, unchanged) and the net values. An equity-for-SOFR version with realised overnight growth A_t = 1.019 values the next floating payment at N(A_t - P) = 3.880133 million and the swap at N(E_t/E_0 - A_t) = 4.100 million. New checks cover the payment-date and reset limits, three curves at reset and a Vasicek simulation with correlated equity (40,000 paths, seed 20261018). The simulation gives 0.079516 (se 0.000750) against the formula's 0.079800 and rejects 0.060000; the floating payment agrees within four standard errors. Hull's p. 778 expression is documented as a discrepancy, not quoted as the correction.
+- `def:government-agency-supranational-funding`. Noncompetitive bids and awards are limited to \$10 million, except bids made solely to reinvest maturing securities held directly with Treasury (secs. 356.12(b)(1) and 356.22(a)), effective 8 August 2022. The Handbook's \$5 million is the earlier rule. The October 2026 amendment changes how noncompetitive customer bids are submitted, not the limit. The 35 percent rule is now stated as the competitive award cap net of the reportable long position (sec. 356.22(b)).
+- `meth:floating-money-market-yields` (SOFR FRN). Simple interest on 91.25-day quarters is replaced by a dated schedule. The note is issued on 21 October 2026, with quarterly modified-following dates to 22 October 2029 (12 periods, 1,097 days). Coupons compound SOFR on business days with calendar-day weights, as in the New York Fed's methodology, with no lookback, Federal Reserve holidays as an illustrative calendar and a 75 bp margin at act/360. Each period is discounted at its projected growth plus the margin, so the note is at par when the discount margin equals the quoted margin. The discount margin at 99.40 is 96.38 bp (previously 96.4). Independent checks: the New York Fed's index example (1.00034365); daily-index ratios against the business-day product; the weights summing to the calendar days; the first coupon, 1.244827 per 100; the price round trip; and the identity P = 100 + 100(qm - dm) x margin annuity (2.8062).
+- `meth:rate-bond-forward-valuation` (Hull Example 6.3). The SOFR plus 200 bp borrowing and Hull's 0.25 accrual are now stated. Loan interest and futures P&L are derived from rates, spread, notional and accrual; $25 per basis point comes from 1 million x 0.0001 x 0.25. Quote 99.990 locks the SOFR component at 0.01 percent and the all-in rate at 2.01 percent. Both scenarios (0.80 and -0.40 percent) give \$502,500, as does a sweep from 97.0 to 101.5. A 92-day act/360 loan would need 102.2 contracts. The futures' reference quarter (15 December 2021 to 16 March 2022, 91 days) differs from the loan's 90 days.
+- `meth:curve-based-empirical-duration`. The unconditional claim that option-free curve and yield measures coincide is removed. They are equal on a flat curve in a common compounding, or for a single cash flow. Counterexample (continuous compounding for both): a 20-year 10 percent annual bond on z(t) = 0.01 + 0.003t prices at 152.050048 with a yield of 5.454571 percent. Durations are 10.218587 for the parallel zero-curve shift and 11.213091 for the yield shift; convexities are 146.458 and 172.057. Repricing at +100 bp gives -9.525 and -10.400 percent, and the zero shift raises the yield by 91.0 bp. Finite differences match the analytic weighted times. The flat-curve control and a 20-year zero give equal measures. A first probe gave the yield convexity as 172.052 because of round-off at a step of 1e-5; the analytic value 172.0566 was adopted.
+
+Checks: `forward-swap-checks.py` 64 (was 50), `bond-valuation-checks.py` 89 (was 77), `term-structure-checks.py` 36 (unchanged); the batch total is 189. Coverage was reassessed for the seven objectives mapped to the corrected entries (`describe-government-funding`, `calculate-floating-money-market-yields`, `apply-curve-based-risk-measures`, `value-forward-contracts`, `value-equity-forwards-futures`, `value-rate-and-bond-forwards`, `value-swaps-by-replication`) and for the ten outline items they map to. Each still meets its operations and depth, so counts are unchanged: 101 of 424 objectives; 125 Level I, 31 Level II and 37 shared-core items covered; 837 of 1,030 unreviewed.
+
+Limits: Hull's Technical Note 19 was read from an archived copy; his errata were not checked. The FRN calendar is approximate, and real notes' lookback and payment-delay terms are not modelled. Human review is outstanding.
+
+## Second correction pass on PR #24, 19 October 2026
+
+A fixes-only pass on `642e29c`, after an audit that confirmed the six corrections of the first pass and found three further issues. This is not study and not human review; plan Section 19.2 has the scope. No objective was added.
+
+Sources read for this pass (search date 2026-10-19):
+- IRS Publication 550 (2025) and Publication 1212 (revised December 2025), HTML editions supplied by the audit and downloaded in full (hashes in the reading notes `irs-pub-550-2025` and `irs-pub-1212-2025`). Read: Pub. 550, chap. 1, Tax-Exempt Interest and Market Discount Bonds; chap. 4, Discounted tax-exempt obligations and Tax-exempt state and local government bonds. Pub. 1212, Information for Owners of OID Debt Instruments, the constant-yield sections and Tax-Exempt Bonds and Coupons.
+- 31 CFR 356.30(a) from the eCFR versioner (point-in-time text for 15 October 2026; last amended 8 August 2022): a weekend payment date is paid the next business day without additional interest.
+- Hull (11th Global ed.), second local copy (SHA-256 36748bb6...ba8e), sec. 6.1, pp. 152-153: actual/actual (in period) for Treasury bonds; act/360 for money-market instruments.
+- The Handbook (9th ed.), chap. 9, pp. 221-223, reread. P. 221 says "only the coupon interest is exempt from federal income taxes" and computes a discount bond's yield after an assumed capital gains tax. P. 223 states the de minimis cut-off consistently with the IRS, but defines the market discount segment as the purchase price minus the revised issue price, the reverse sign.
+
+Corrections:
+- `meth:rate-bond-forward-valuation`. The original bond forward's inputs (accrued interest 0.90 now and 0.375 at delivery, a coupon in 0.35 years, delivery in 0.50 years) did not fit a regular semiannual calendar. The example now has one schedule: a 5 percent note paying on 15 May and 15 November; spot trade on Friday 16 October 2026 for T+1 settlement on Monday 19 October; delivery on Monday 19 April 2027; term repo at 4.20 percent, simple act/360. 15 November 2026 is a Sunday, so the coupon is paid on 16 November (28 days) while accrual restarts on the 15th. Results: accrued interest 2.133152 (157/184) and 2.140884 (155/181); full spot 103.333152; coupon PV 2.491860; forward full 102.982489; quoted forward 100.841605; later value 0.395798 for a 0.40 rise with 91 days left. Independent checks: coupon dates generated back from maturity; accrual equal to the full coupon at the scheduled date and zero after it; a two-repo ledger (B0 - I to delivery, I to the coupon date) with zero net cash at settlement and on the coupon date and a debt equal to the forward full price at delivery; the exact carry identity, quoted forward - spot quote = financing 2.194107 - coupon income 2.507732 - interest on the paid coupon 0.044770 = -0.358395. Sensitivities: discounting the coupon from the Sunday moves the forward by -0.000296; reinvesting it at the 154-day term rate instead of the curve forward moves it by -0.000146.
+- `rule:bond-issuance-legal-tax`. The claim that the exemption covers coupon interest only is replaced. A holder's share of OID on a qualifying tax-exempt bond is tax-exempt interest, accrued by constant yield and added to basis (issued after 3 September 1982 and acquired after 1 March 1984). Market discount is not exempt: for a purchase after 30 April 1993 it is ordinary income on disposal or redemption unless included currently, and zero below 0.25 percent times the full years to maturity. Other gains and losses are capital, against the adjusted basis. The earlier text said a discount "below the de minimis cut-off" produced ordinary income; that direction was reversed and is corrected. Example: a 20-year 3 percent bond issued at 900 (3.7128 percent semiannual yield). The adjusted issue price after five years is 918.58 by both accrual routes. A holder at issue who sells at 850 has a capital loss of 68.58. A buyer at 850 has market discount of 68.58, above the 37.50 de minimis amount, and exempt OID of 81.42; the 68.58 redemption gain is ordinary. A purchase at 900 has a discount of 18.58, below 37.50, so the gain is capital. A sale at 950 gives a capital gain of 31.42. Scope: U.S. federal income tax for individuals; it is not tax advice.
+
+Check counts: at `642e29c` the scripts executed 90 (bond), 64 (forward and swap) and 36 (term structure), 190 in all, one more than the 89 and 189 reported in the first correction pass. The convention, stated in both scripts, is one executed `ok()` call per check. After this pass: `bond-valuation-checks.py` 94, `forward-swap-checks.py` 69, `term-structure-checks.py` 36, total 199.
+
+Coverage: three objectives were reassessed against the corrected text and remain covered: `explain-bond-legal-tax-factors`, `value-rate-and-bond-forwards` and `value-forward-contracts`. The two outline items whose passages changed, `outline:7099c7688942:m052:b02` and `outline:0242f4b7ba07:m031:b04`, carry re-review notes. Counts are unchanged: 101 of 424 objectives; 125 Level I, 31 Level II and 37 shared-core items covered.
+
+Limits: the holiday calendar is not modelled beyond the weekend rule. The repo curve is flat and simple, so the replication's coupon leg uses the curve forward rather than a quoted forward repo. The tax example omits state taxes, AMT, premium, stripped and short-term obligations and elections.
+
+## Derivatives, portfolio and execution batch, 19 October 2026
+
+Forty-five objectives in ten topics, the batch size of plan Section 17.4: short-term funding (1), arbitrage-free bond valuation (3), bonds with embedded options (5), option valuation (6), option strategies (4), derivative overlay strategies (4), market risk measurement (3), fixed-income portfolio management (7), equity portfolio management (7) and trade execution (5). Branch `codex/derivatives-portfolio-execution-20261019`, from `codex/fixed-income-derivatives-20261018` at `f320d35` (draft PR #24, unmerged). Source checks and numerical verification; not study and not human review.
+
+### Source discovery (plan sec. 3.5)
+
+Retrieval on 2026-10-19 targeted these subjects: binomial rate-tree calibration, OAS and effective duration, capped and floored floaters, convertible valuation with default, put-call-forward parity, Black's model for caplets and swaptions, delta-hedging error, variance swaps, VaR methods and decomposition, RAROC, cash-flow matching and immunisation, Active Share, the transfer coefficient of long-short portfolios, statistical arbitrage, engagement and stewardship, effective spread and implementation shortfall, best-execution rules. The owner's local library was searched first. Sources read, with sections, copies and hashes in their reading notes:
+
+- The Handbook of Fixed Income Securities (9th ed., 2021; `s7-fabozzifixed`): chaps. 13, 32, 36-38, 43-44, 51, 57, 60 and 62 at the pages listed in its reading note.
+- Fabozzi, *Fixed Income Analysis* (2nd ed., 2007; `fixed-income-analysis-2007`), chaps. 7 and 9 (floaters, convertible minimum value). A CFA Institute Investment Series text, used like Managing Investment Portfolios; no examination curriculum volume was used.
+- Hull, *Options, Futures, and Other Derivatives* (11th Global ed.; `s7-hulloptions`): chaps. 11-13, 15, 17-20, 26-27, 29 and 31.
+- Hull, *Risk Management and Financial Institutions* (6th ed., 2023; `risk-management-financial-institutions-2023`): chaps. 11, 13, 15-16, 21 and 28. The owner added this edition to `reading materials/` during the batch; a 4th-edition copy read first was set aside and every locator was re-read in the 6th edition.
+- Natenberg, *Option Volatility and Pricing* (2nd ed.; `s7-natenberg`): chaps. 11, 17 and 24.
+- Maginn, Tuttle, Pinto and McLeavey (eds.), *Managing Investment Portfolios* (3rd ed., 2007; `managing-investment-portfolios-2007`): chaps. 6 (fixed income), 7 (equity), 9 (risk management), 10 (execution) and 11.
+- Ang, *Asset Management* (`s7-ang`), chap. 14; Grinold and Kahn (`alpha-grinold`), chaps. 14 and 16, second local copy (SHA-256 5c2e3efa...).
+- Cremers and Petajisto (2009), Yale working paper; Brav, Jiang, Partnoy and Thomas (2008), published version; Gatev, Goetzmann and Rouwenhorst (NBER WP 7032, 1999); Avellaneda and Lee, version of 15 June 2009 (cited by DOI because the online copy is the July 2008 draft).
+- The UK Stewardship Code 2026 (FRC, effective 1 January 2026); the 2020 Code was downloaded and found superseded.
+- FINRA Rule 5310 with Supplementary Material (rule page, last amended 2014); Directive 2014/65/EU (MiFID II), article 27, original Official Journal text from CELLAR; 17 CFR 240.15c3-5 and the SEC's 2010 concept release (already registered); IRS Publication 550 (2025), chap. 3.
+
+Access limits and substitutions:
+- MiFID II article 27 was read as enacted in 2014; later amendments to paragraphs 27(3) and (6) (reporting) were not reviewed.
+- Clarke, de Silva and Thorley on the transfer coefficient remains paywalled; the long-short transfer coefficients are computed directly by constrained optimisation.
+- No curriculum text was used as a substantive source; the outlines defined scope only.
+
+### Entries
+
+Forty-five new entries, one added to an existing file and the rest in nine new section files:
+- `portfolio-risk-financing/money-markets.tex`: `def:short-term-funding-repo`.
+- `rates-credit-mortgages/arbitrage-free-valuation.tex`: `meth:arbitrage-free-bond-valuation`, `meth:binomial-rate-tree-calibration`, `mod:term-structure-models-simulation`.
+- `rates-credit-mortgages/embedded-option-bonds.tex`: `meth:callable-putable-bond-valuation`, `meth:option-adjusted-spread`, `meth:embedded-option-effective-duration`, `meth:capped-floored-floater-valuation`, `meth:convertible-bond-valuation`.
+- `rates-credit-mortgages/fixed-income-portfolio-management.tex`: `def:fixed-income-mandates-return-model`, `meth:bond-leverage-taxation`, `meth:liability-matching-ladders`, `meth:immunisation-liabilities`, `meth:bond-index-exposure-benchmarks`, `meth:yield-curve-positioning`, `meth:curve-strategy-evaluation`.
+- `volatility-options/option-valuation.tex`: `def:option-value-drivers`, `res:put-call-forward-parity`, `meth:one-period-binomial-valuation`, `meth:multi-period-binomial-valuation`, `meth:black-model-rates-currencies`, `meth:greeks-delta-gamma-hedging`.
+- `volatility-options/option-strategies.tex`: `meth:option-replication-deltas`, `meth:covered-call-protective-put`, `meth:option-spreads-volatility-strategies`, `ex:option-strategy-selection-case`.
+- `portfolio-construction-risk/derivative-overlays.tex`: `meth:forward-commitment-risk-overlays`, `meth:volatility-derivative-applications`, `meth:derivative-overlay-allocation`, `ex:endowment-derivative-overlay-case`.
+- `portfolio-construction-risk/market-risk-measurement.tex`: `meth:portfolio-var-methods-decomposition`, `meth:sensitivity-scenario-risk-measures`, `meth:market-risk-limits-capital`.
+- `systematic-equities/equity-portfolio-management.tex`: `def:equity-portfolio-roles-mandate`, `def:cap-weighted-factor-indexing`, `meth:index-equity-portfolio-construction`, `def:active-equity-strategies`, `meth:active-equity-strategy-creation`, `meth:active-equity-portfolio-construction`, `meth:equity-portfolio-capacity-structure`.
+- `execution-trading-costs/trade-strategy-governance.tex`: `meth:execution-cost-measures`, `def:electronic-trading-environment`, `meth:trade-strategy-selection`, `def:trade-implementation-by-market`, `meth:trade-execution-evaluation-governance`.
+
+Existing entries reviewed first and linked, not repeated, and mapped alongside the new entries where they carry part of an objective: `mod:black-scholes-merton`, `def:implied-volatility-surface`, `meth:option-payoff-profit`, `meth:curve-based-empirical-duration`, `def:vix-variance-dividend-swaps`, `meth:var-es-estimation-methods`, `def:transaction-costs`, `def:implementation-shortfall`, `def:spread-measures`, `def:execution-benchmark` and `mech:venue-competition-fragmentation`. `mod:almgren-chriss-execution` is linked from `meth:trade-strategy-selection`.
+
+### Numerical evidence
+
+Nine scripts, found by `make examples`, 250 checks (one executed `ok()` call per check); seeded simulations use seed 20261019:
+- `short-term-funding/funding-repo-checks.py` (11): Handbook repo interest and haircut; an original 90-day funding comparison; a margin call.
+- `rate-tree-embedded-options/rate-tree-checks.py` (43): calibration to the Handbook par curve; spot-curve, lattice and pathwise values; callable and putable bonds; OAS; effective, one-sided and key-rate durations and convexity; capped, floored and collared floaters; Monte Carlo, Vasicek and Ho-Lee; Hull's convertible tree (107.44).
+- `option-valuation/option-valuation-checks.py` (44): value drivers by bumping; parity arbitrages; one- and two-period trees; Black, Garman-Kohlhagen, caplets and swaptions (Hull Examples 15.6, 17.2, 18.6-18.7, 29.3-29.4); Greeks against finite differences; delta-hedging simulation; gamma-theta identity; implied volatility.
+- `option-strategies/option-strategy-checks.py` (27), `derivative-overlays/overlay-checks.py` (25), `market-risk-measurement/market-risk-checks.py` (26), `fixed-income-portfolio/fixed-income-portfolio-checks.py` (37, including an LP cash-flow match), `equity-portfolio-management/equity-portfolio-checks.py` (23, including SLSQP long-only and 130/30 transfer coefficients; about 55 s) and `trade-execution/trade-execution-checks.py` (14).
+
+Findings from the checks:
+- Handbook chap. 36: the call is worth 1.745 unrounded (printed 1.744), and the difference is written as 104.634 - 102.899, a transposition of 104.643; Exhibit 36-9's top year-3 rate prints 9.1987 against 9.1986.
+- Hull Figures 13.7-13.8: 4.1923 and 9.4636 use p rounded to four places; unrounded values are 4.1927 and 9.4639 (American put 5.0896).
+- Hull Table 19.4: at half and a quarter of a week the simulated hedging error falls by about the square root of two per halving (0.136, 0.098); Hull's 0.16 and 0.13 fall more slowly, and the cause is not stated.
+- MIP chap. 6: the dollar durations 37,315 and 27,526 are averages of three positions, not the portfolio sum (111,945); the rebalancing ratio is unaffected. Cash of 1,077,796 against the book's 1,079,012 comes from rounding.
+- MIP chap. 6, pp. 394-396: the forward from the interest differential approximation is 0.7880; exact parity gives 0.7885.
+- Component and incremental VaR differ for a large position; they agree to first order for a small one, which is checked.
+- Many expected values typed before the first runs failed; they were recomputed by independent routes, checked by hand and replaced before the entries were finalised. Circular or trivial checks (bare constants, restated inputs) were removed.
+
+### Coverage
+
+The 149 outline items mapped to the 45 objectives (8 Level I on PDF pp. 20 and 24; 52 Level II on pp. 18, 21-22 and 26-27; 41 shared Level III core on pp. 5-7 and 11-12; 48 Portfolio Management pathway on pp. 16-18) map to no objective outside the batch. Each was read on its page against the finished entries. Gaps found on that reading were closed before promotion: embedded-option types (m028:b01), ladder risk-return and limitations (m007:b09), implementation alternatives for immunisation (m032:b02), currency swaps and equity forwards in overlays (m017:b02-b03), a strategy summary table (m016:b06), engagement benefits and the manager's role (m006:b04) and the contrast of electronic trader types (m011:b06). All 149 are promoted with item-specific rationales.
+
+All 45 objectives are `covered` (editorial coverage, not mastery). Totals: 146 of 424 objectives (from 101); 133 Level I, 83 Level II, 78 shared-core and 48 Portfolio Management items covered (342 of 1,030, from 193); 688 unreviewed.
+
+### Limits
+
+- Examples are invented or synthetic apart from the reproduced textbook examples. Funding rates, overlay prices, market costs and broker statistics are illustrative, not quotes.
+- Rate trees are single-curve and lognormal at one volatility; credit, collateral and funding adjustments are not modelled. Convertibles follow Hull's default-intensity tree without call notice periods or dilution.
+- Legal points are U.S., EU and U.K. as of 19 October 2026; MiFID II amendments to article 27 were not reviewed; tax points are U.S. federal and not tax advice.
+- Human review is outstanding.
+
+## Correction pass on PR #25, 19 October 2026
+
+A fixes-only pass on `edbf4bf`, after an audit with seven findings. This is not study and not human review; plan Section 20.1 has the scope. No objective was added.
+
+Sources read for this pass:
+- Tesla, Inc., prospectus supplement of 2 May 2019 for the 2.00% Convertible Senior Notes due 2024 (Rule 424(b)(5), Registration No. 333-231168), read through the fetching tool because the shell download returned HTTP 403 (`tesla-2024-notes-prospectus-2019`): The Offering and the named Description of Notes sections.
+- Fabozzi, *Fixed Income Analysis* (2007), chap. 7, p. 207, reread: a ladder is "approximately equal dollar amounts (market values) in each maturity sector", and Exhibit 7's 1997 Treasury ladder has roughly equal key-rate durations from year 2 on.
+- Hull (11th Global ed.), chap. 15, sec. 15.12, p. 360: European options on stocks with known dividends use the stock price less the present value of the dividends.
+
+Corrections:
+- `meth:equity-portfolio-capacity-structure`. The reference portfolio rescaled D^-1 alpha/(2 lambda) by benchmark weights, which gives zero net active weight but does not maximise alpha - lambda a'Da under that constraint. The reference is now the constrained optimum a_Q = D^-1(alpha - eta 1)/(2 lambda) with eta = 1'D^-1 alpha / 1'D^-1 1. Checks: sum zero; alpha - 2 lambda D a_Q constant and equal to eta; equal to the bordered KKT solution; higher utility than the old reference; 50 random feasible perturbations all lower the objective. Transfer coefficients: long-only 0.609280 and 130/30 0.781364 (previously 0.616167 and 0.786273 against the old reference). The ratio, 1.282, still supports "about 28 percent more". The check that the reference correlates perfectly with itself was dropped.
+- `meth:portfolio-var-methods-decomposition` (with the stress comparison in `meth:sensitivity-scenario-risk-measures` and the stop-loss in `meth:market-risk-limits-capital`). The parametric total subtracted the sample mean while Monte Carlo and the Euler components used zero mean: components summed to 1,729,124.91 against a reported 1,737,596.65, the gap being the mean, -8,471.74. The convention is now zero expected P&L throughout, with the historical P&L centred on its sample mean (the uncentred historical VaR is exactly 8,472 higher). Revised figures: parametric VaR 1,729,125 and ES 1.981m; historical VaR 2.084m and ES 3.225m; the backtest, with each window centred, has 8 violations in 750 days. Marginal VaRs from central bumps of the same function match the analytic values for both assets. The 2008-style scenario is compared with VaR on the same 100m equity-and-bond book (20.38m against 1.73m). The 48.4m loss covers the whole book with the short puts, and the reverse stress test covers equities and puts only. The stop-loss is 1.16 times the 100m book's VaR.
+- `meth:liability-matching-ladders`. The inference that equal amounts per maturity give about equal key-rate durations and little slope exposure is removed. On annual zero rates the equal-face ladder's key-rate durations rise from 0.1304 to 0.6363 and sum to 4.686245, matching the analytic t C_t (1+z_t)^-(t+1)/V. A -50/+50 bp twist changes its value by -0.493% (-0.510% to first order). Equal market value per rung gives 0.13 to 0.63 and -0.48%. Equal dollar duration per rung gives 0.25 to 0.35 and +0.10%, but a duration of 3.14 with 32% of value in the one-year rung. Fabozzi's flat profile is attributed to his portfolio and key-rate grid.
+- `meth:option-replication-deltas`. Dividends are carried through the identities: the synthetic stock costs S0 - D (S0 e^-qT with a yield), the covered call equals a short put plus a bond plus D, and the protective put a call plus a bond plus D. A discrete 1.00 dividend gives D = 0.9900 and a terminal difference of 1.0101 in every state. Spot deltas with q = 2%, T = 0.5: a fixed-strike short forward has delta -e^-qT = -0.9900498, distinct from its payoff slope of -1; one share plus one short forward keeps +0.00995; -1 + delta_call = delta_put - (1 - e^-qT). Value, cash-flow and delta identities are checked for q = 0 and q = 2%, the deltas by finite differences.
+- `meth:embedded-option-effective-duration`. Convexity was divided by 2 V0 dr^2 while the compendium uses V0 dr^2 with a half in the price formula. Figures are now in the compendium convention: callable -77.149899 (Handbook half-scaled -38.574949, printed -39.1), putable 11.13, straight 16.36. Both conventions and their price formulas are stated. With the stated convention the approximation returns V+ and V- exactly at the measuring shift, and for the straight bond at +-50 bp it is within 0.02 bp of full revaluation; the half-scaled figure misses by about 1 bp.
+- `meth:convertible-bond-valuation`. "No call, except on a fundamental change" is replaced by the prospectus terms: Tesla may not redeem before maturity and there is no sinking fund; holders may require repurchase at par plus accrued interest after a fundamental change; a make-whole fundamental change raises the conversion rate for converting holders up to 4.1152 shares per 1,000; conversion before 15 February 2024 depends on price, trading-price and corporate-event triggers; settlement in cash, shares or a combination at Tesla's election, with combination settlement and a 1,000 specified amount as the default. Hull's hypothetical convertible stays separate.
+- `meth:option-spreads-volatility-strategies`. The figures -2.089, +0.049, +2.343, +0.606 and -1.034 were profits after the 2.141842 cost, not values. Values at the three-month expiry are 0.052704, 2.190593, 4.485236, 2.747684 and 1.108320. The premium is paid at inception and not financed; financing lowers each profit by 0.021526.
+
+Checks after this pass: `rate-tree-checks.py` 46 (was 43), `option-strategy-checks.py` 31 (27), `market-risk-checks.py` 27 (26), `fixed-income-portfolio-checks.py` 40 (37), `equity-portfolio-checks.py` 26 (23); the others are unchanged (funding 11, option valuation 44, overlays 25, trade execution 14). The nine scripts total 264, counted as executed `ok()` calls.
+
+Coverage: the seven objectives mapped to the corrected entries (`evaluate-equity-portfolio-structure`, `estimate-value-at-risk`, `match-liabilities-with-bonds`, `replicate-with-options`, `measure-embedded-option-risk`, `value-convertible-bonds`, `analyse-spread-and-volatility-strategies`) and the two whose text changed with them (`apply-sensitivity-scenario-measures`, `set-market-risk-limits`) were reassessed against their operations and depth and remain covered. The fifteen outline items whose passages changed carry re-review notes. Counts are unchanged: 146 of 424 objectives; 342 of 1,030 outline items.
+
+Limits: the prospectus was read through a fetching tool, without a local copy or hash, and its make-whole table was not transcribed. The VaR convention ignores the drift, which matters little at one day but would not over longer horizons. Human review is outstanding.
+
+## Macro, allocation and currency batch, 19 October 2026
+
+Forty-five objectives in eleven topics, the batch size of plan Section 17.4: business cycles (2), fiscal policy (1), monetary policy (2), geopolitics and trade (3), exchange-rate mechanics (4), exchange-rate determination (5), economic growth (4), macro asset valuation (3), capital market expectations (6), strategic asset allocation (11) and currency management (4). Branch `codex/macro-allocation-currency-20261019`, from `codex/derivatives-portfolio-execution-20261019` at `bea4f8e` (draft PR #25 after its correction pass). Source checks and numerical verification; not study and not human review.
+
+### Source discovery (plan sec. 3.5)
+
+Retrieval on 2026-10-19 targeted these subjects: business-cycle phases and dating, credit and financial cycles, leading indicators, fiscal multipliers and debt dynamics, monetary transmission and the neutral rate, geopolitical risk measurement and fragmentation, tariff welfare, FX quotes, cross and forward rates, triangular arbitrage, forward valuation, parity conditions and fair value, carry, balance of payments and crises, growth accounting and convergence, the consumption-based real rate, breakevens and credit spreads over the cycle, capital market expectations, strategic asset allocation and currency hedging. The owner's local library was searched first. Sources read, with sections, copies and hashes in their reading notes:
+
+- Piros and Pinto (eds.), *Economics for Investment Decision Makers* (CFA Institute Investment Series, 2013; `economics-investment-decision-makers-2013`), chaps. 6-11.
+- *Portfolio Management in Practice, Volume 1* (CFA Institute Investment Series, 2020; `portfolio-management-in-practice-v1-2020`), chaps. 3-8.
+- Mankiw, *Macroeconomics* (10th ed.; `macroeconomics-2019`), chap. 9, secs. 9-2 to 9-4.
+- Cochrane, *Asset Pricing* (rev. ed., 2005; `s6-cochrane`), sec. 1.4.
+- Ang, *Asset Management* (2014; `s7-ang`), chaps. 4, 6, 7 and 9.
+- Jordà, Schularick and Taylor, NBER WP 17621 (rev. 2012); Caldara and Iacoviello, *AER* 2022; Aiyar, Ilyina et al., IMF SDN/2023/001; Campbell, Serfaty-de Medeiros and Viceira, NBER WP 13088 (rev. 2009); Menkhoff, Sarno, Schmeling and Schrimpf (accepted version, already held locally) for carry and FX volatility.
+- Already registered and reused: the NBER dating page, Estrella and Trubin (2006) on the yield curve, the BIS Triennial Survey 2025.
+
+Access limits and substitutions:
+- BIS Working Paper 380 (Drehmann, Borio and Tsatsaronis) returned a bot-check page to scripted downloads; only its abstract was read and it is not cited. Jordà, Schularick and Taylor supply the credit-cycle evidence instead.
+- The IMF site refused the SDN download; a copy without annexes hosted by Florida State University was read. The Harvard copy of the published Campbell et al. article returned HTTP 403; the NBER working paper was read.
+- Two Investment Series books are substantive sources here, as Managing Investment Portfolios was in earlier batches; non-CFA sources (Mankiw, Cochrane, Ang, the papers and the IMF note) supply theory and evidence. The outlines defined scope only.
+
+### Entries
+
+Forty-five new entries in eight new section files:
+- `multi-asset-systematic-macro/business-cycles-policy.tex`: `def:business-credit-cycles`, `meth:business-cycle-indicators`, `def:fiscal-policy-tools-stance`, `def:geopolitics-institutions-tools`, `meth:geopolitical-risk-assessment`, `meth:trade-benefits-restrictions-blocs`.
+- `rates-credit-mortgages/monetary-fiscal-policy.tex`: `def:monetary-policy-transmission-regimes`, `meth:monetary-fiscal-policy-mix`.
+- `currency-markets/fx-mechanics-parity.tex`: `def:fx-market-real-exchange-rates`, `meth:cross-forward-rates`, `meth:fx-bid-offer-triangular-arbitrage`, `meth:currency-forward-mark-to-market`, `def:exchange-rate-regimes-capital-flows`, `res:international-parity-conditions`, `meth:exchange-rate-forecasting-fair-value`, `meth:carry-trade-uip`, `def:flows-policy-exchange-rates`.
+- `multi-asset-systematic-macro/economic-growth.tex`: `def:growth-determinants-factors`, `meth:potential-gdp-growth-accounting`, `mod:growth-theories-convergence`, `def:growth-policies-technology-trade`.
+- `multi-asset-systematic-macro/macro-asset-valuation.tex`: `res:economy-discount-rates-cash-flows`, `meth:cycle-rates-breakevens-spreads`, `meth:cycle-equities-property`.
+- `multi-asset-systematic-macro/capital-market-expectations.tex`: `meth:cme-framework-forecasting`, `meth:growth-shocks-long-run-expectations`, `meth:cycle-policy-curve-expectations`, `meth:asset-class-return-forecasts`, `meth:fx-volatility-forecasts`, `ex:global-portfolio-macro-rebalancing`.
+- `multi-asset-systematic-macro/strategic-asset-allocation.tex`: `def:investment-governance-allocation`, `meth:economic-balance-sheet-allocation`, `def:allocation-approaches-risk`, `meth:asset-class-factor-specification`, `meth:asset-only-allocation-mvo`, `meth:allocation-implementation-rebalancing`, `meth:allocation-robustness-liquidity-risk-budget`, `meth:liability-relative-allocation`, `meth:goals-based-allocation-heuristics`, `meth:allocation-constraints-taxes-revision`, `meth:tactical-shifts-behavioural-biases`.
+- `currency-markets/currency-management.tex`: `meth:currency-portfolio-effects`, `meth:currency-hedging-programme`, `meth:active-currency-strategies`, `meth:currency-hedge-cost-reduction`.
+
+Existing entries reviewed first and linked, not repeated; those carrying part of an objective are mapped alongside the new entries: `def:macroeconomic-indicators`, `def:central-bank-policy-framework`, `mod:taylor-rule`, `def:fx-market-structure`, `def:currency-regimes-intervention`, `ev:cip-deviations`, `mod:fx-carry-trade`, `mod:mean-variance-portfolio-optimisation`, `mod:black-litterman` and `mod:minimum-variance-hedge-ratio`. `def:macro-regime-asset-map` and `meth:asset-class-portfolio-construction` are cross-referenced.
+
+### Numerical evidence
+
+Seven scripts, found by `make examples`, 140 checks (one executed `ok()` call per check); seeded simulations use seed 20261019: `macro-policy-trade-checks.py` (23), `fx-checks.py` (27), `growth-checks.py` (19), `macro-valuation-checks.py` (13), `cme-checks.py` (18), `saa-checks.py` (25), `currency-management-checks.py` (15). Two governance and geopolitics entries are descriptive and have no numerical check.
+
+Findings from the checks:
+- EIDM Exhibit 11-3: the components sum to the 10.82% return only if the EPS/GDP entry is -0.12 (the text layer shows 0.12; the text's combined 0.20 confirms the sign).
+- EIDM Exhibit 9-9: the printed working "0.65 - 4" is a slip for 0.65 - 1; the result 0.09 is right.
+- PMiP Example 7: the guideline horizon forecasts (-6%, -18%, 4.8% and about 8%) converge faster than an exact Markov chain with the stated 39- and 20-month spells, which gives -5.4%, -13.6%, 0.8% and 4.2% a year.
+- PMiP Exhibit 5 maps policy mixes to the level of rates, not the slope; an earlier draft of the CME entry had it wrong and was corrected before promotion.
+- PMiP pp. 274-275: the Smiths' required capital of 6,671 and 2,679 thousand implies unrounded rates near 4.13% and 6.81%; the table's 4.1% and 6.8% give 6,691 and 2,683.
+- The Solow model's own convergence speed (5.5% a year at alpha = 1/3, 3.5% at 2/3) exceeds the roughly 2% Mankiw reports among similar economies.
+- Many expected values typed before the first runs failed (option premia, surplus volatilities, simulated success rates, large-country tariff welfare); they were recomputed and replaced before the entries were finalised. Two checks that only restated inputs were rewritten to test outcomes.
+
+### Coverage
+
+The 118 outline items mapped to the 45 objectives (25 Level I on PDF pp. 5-7, 36 Level II on pp. 5-6 and 25, 57 shared Level III core on pp. 1-3 and 12) map to no objective outside the batch. Each was read on its page against the finished entries; all are promoted with item-specific rationales.
+
+All 45 objectives are `covered` (editorial coverage, not mastery). Totals: 191 of 424 objectives (from 146); 158 Level I, 119 Level II, 135 shared-core and 48 Portfolio Management items covered (460 of 1,030, from 342); 570 unreviewed.
+
+### Limits
+
+- Macro data quoted from the sources are dated (EIDM to 2010-2012; Ang and Piazzesi's sample; PMiP's 2018-2019 figures); original examples are invented or simulated.
+- Policy and geopolitical descriptions are frameworks, not forecasts; scenario probabilities are subjective.
+- Several papers were read only at abstract or introduction level (Jordà et al., Campbell et al., MSSS, the IMF note beyond its summary and sec. II); their detailed results are not relied on.
+- Human review is outstanding.
+
+## Correction pass on PR #26, 19 October 2026
+
+Verified clean `bcc3551` and live draft/open PR stack before changes. This record
+supersedes the earlier source-error interpretation of PMiP Example7 and the
+misidentification of Cochrane's matching-hash 2000 manuscript as the2005 edition.
+No new objective is counted for these corrections.
+
+- `meth:asset-class-return-forecasts`: Cap-rate change is relative (6%), first order 1.5%; forward-NOI cash ledger gives 1.6981%, stable cap control 7.5%. PMiP pp.118-119/PDF146-147 reread, including reinvestment caveat.
+- `meth:currency-hedge-cost-reduction`: USD-valued exposure ratio 0.935 converted at USD/NZD 0.60 and USD/AUD 0.66 to 0.85 AUD per NZD; USD P&L and currency-unit scaling checked; forward delta assumptions explicit. PMiP pp.424-426 reread.
+- `meth:geopolitical-risk-assessment`: Physical scenarios separated from state prices and pricing probabilities; cash-funded premium, tail-loss/premium constraints and negative-expected-P&L insurance counterexample. Cochrane actual copy is 12 June 2000 manuscript, secs.1.2 and 3.1-3.2, pp.16-17 and54-56.
+- `mod:growth-theories-convergence`: Raw K/L grows on the balanced path; K/(L A^(1/(1-alpha))) converges. Aggregate-capital ledger and zero-technology control. EIDM pp.665-669 reread (Exhibit11-13 explicitly a snapshot).
+- `meth:cycle-equities-property`: E0, E1 and D1 explicit; trailing 21/26.25/15 and forward 20/25/14.2857 reconciled to independent dividend PV sums.
+- `meth:asset-only-allocation-mvo`: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread.
+- `meth:goals-based-allocation-heuristics`: Lins USD1m available wealth; dated education and home goals, success requirements, explicit module weights, capital budgets, aggregate assets and cash surplus reconciled. Same-client60/40 comparison and USD900k infeasibility resolution. Exact lognormal single-payment example distinguished from book approximation. PMiP pp.268-275,279-282 reread.
+- `meth:cycle-policy-curve-expectations`: PMiP p.65/PDF93 explicitly specifies continuously compounded monthly returns. Restored expected cumulative/annualised log labels, homogeneous transition timing, geometric equivalents and separate expected wealth with added deterministic-state assumption; enumeration confirms results. Guideline estimates are qualitative, not proven source errors.
+- `def:fiscal-policy-tools-stance`: Monetary accommodation distinguished from offset; EIDM pp.386-387,393-394 reread. Debt scenario uses nominal rate3%, nominal growth5%, zero primary balance.
+- `meth:active-currency-strategies`: Rising risk aversion means reducing carry and adding long-volatility hedges within premium budget.
+- `ex:global-portfolio-macro-rebalancing`: Weights30/30/20/20 to38/24/18/20: equity A +8, equity B -6, bond A -2. Budget checked.
+
+All 11 affected objectives and 35 mapped outline items were reassessed against
+all operations and depth. Actual outline pages reread: Level I p.6; Level II
+pp.6,25; shared core pp.1-3,12. The two missing decision applications are now
+present; baseline coverage remains191/424 objectives and460/1,030 items.
+
+Six changed scripts execute151 checks: CME28, growth22, currency21, macro
+valuation16, policy/trade25, allocation39. A check is one executed ok() call,
+including each loop iteration. These are numerical checks, separate from unit
+tests, scripts, entries, objectives and outline items. Focused checks passed.
+The first allocation calculation exposed an incorrect candidate utility claim;
+the final recommendation selects the actual higher-utility feasible candidate.
+
+Sources: exact reread locators are in the reading notes. Optional macro papers
+and annexes have not been supplied or newly reviewed. Earlier abstract-only
+limitations remain; no new empirical claim relies on those papers. Human review
+and learner mastery remain outstanding. Full validation and rendering follow.
+
+Validation completed: `make check` passed lock/lint/format, both structural
+validators,36 tests plus3 subtests,84 numerical scripts and all8 outline hashes.
+Its PDF step initially failed because the sandbox denied the default font cache;
+with TEXMFVAR/TEXMFCACHE set to a writable temporary directory, a forced LuaLaTeX
+rebuild passed (287 pages, no overfull boxes or undefined references). Existing
+underfull/page-destination warnings are not treated as new errors. `make pre-commit`
+passed all hooks. PDF pages96-110 and118-119 were rendered and inspected, covering
+all corrections and both complete client cases; no clipping or overlap observed.

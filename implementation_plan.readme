@@ -2259,13 +2259,18 @@ by the `ready-to-merge` label under the previous workflow, passed
 
 ### 17.4 Standing batch preference
 
-Future content-expansion prompts should target **30 newly completed canonical
-learning objectives per prompt**. Fixes-only prompts are exempt.
-- Count objective IDs that move to `covered`, not entries or outline mappings.
+Future content-expansion prompts should target **45 newly completed canonical
+learning objectives per prompt** (raised from 30 on 2026-10-19; Section 19.2).
+Fixes-only prompts are exempt.
+- Count only previously uncovered objective IDs that move to `covered`. Entries,
+  outline mappings and corrections to covered objectives do not count.
 - The source-review (Section 3.5), teaching-depth, worked-example and
   mapping-review requirements are unchanged.
-- If fewer than 30 objectives can be completed honestly, report the shortfall
+- If fewer than 45 objectives can be completed honestly, report the shortfall
   and its reasons rather than promoting unsupported coverage.
+
+History: the batches of Sections 18 and 19 were run under the earlier
+30-objective preference, and their records keep that figure.
 
 ### 17.5 Validation and limits
 
@@ -2420,3 +2425,500 @@ against the corrected teaching and remain covered. Totals are unchanged: 71 of 4
 objectives; 78 Level I, 13 Level II and 37 shared-core items covered; 902 of 1,030
 unreviewed. Details are in `notes/source-review-records.md`, *Correction pass on
 PR #23*. Remote CI was not triggered.
+
+## 19. Fixed-income and derivatives batch (executed 2026-10-18)
+
+**Scope.** Thirty objectives, the standing batch size of Section 17.4:
+- `topic:bond-instrument-features`: `objective:describe-bond-features`,
+  `objective:explain-bond-legal-tax-factors`, `objective:describe-bond-market-structure`,
+  `objective:compare-corporate-long-term-funding`, `objective:describe-government-funding`.
+- `topic:bond-pricing-yields`: `objective:price-bond-from-yield`, `objective:apply-matrix-pricing`,
+  `objective:calculate-yield-measures`, `objective:calculate-floating-money-market-yields`.
+- `topic:term-structure`: `objective:derive-spot-par-forward-curves`, `objective:compare-yield-curves`,
+  `objective:relate-forward-rates-and-returns`, `objective:use-swap-curve-and-spreads`,
+  `objective:explain-term-structure-theories`, `objective:manage-yield-curve-factor-exposure`.
+- `topic:interest-rate-risk`: `objective:decompose-bond-return`, `objective:calculate-yield-duration`,
+  `objective:calculate-convexity-price-change`, `objective:apply-curve-based-risk-measures`.
+- `topic:derivative-instruments`: `objective:describe-derivative-markets`,
+  `objective:compare-derivative-types`, `objective:calculate-option-payoffs`,
+  `objective:explain-derivative-uses-risks`.
+- `topic:forward-commitment-valuation`: `objective:price-by-arbitrage-and-carry`,
+  `objective:value-forward-contracts`, `objective:compare-forward-futures-prices`,
+  `objective:compare-swaps-and-forwards`, `objective:value-equity-forwards-futures`,
+  `objective:value-rate-and-bond-forwards`, `objective:value-swaps-by-replication`.
+
+**Starting state.** PRs #22 and #23 were merged into `main` (`4ffdf57`, `a1cf781`), and
+both merge CI runs passed, the first live run of the merge-only workflow. Coverage was 71
+of 424 objectives, 78 Level I, 13 Level II and 37 Level III core items, 902 items
+unreviewed. All 30 objectives were `missing`; their 65 outline items map to no objective
+outside the batch. The batch runs on `codex/fixed-income-derivatives-20261018`, branched
+from `main` at `a1cf781`, with a separate draft PR to `main`.
+
+**Sources (Section 3.5).** The owner's local library supplied the Handbook of Fixed Income
+Securities (9th ed., 2021; catalogue key `s7-fabozzifixed`) and Hull (11th Global ed.).
+Legal and official texts were read for rules and conventions:
+- U.S. statutes and rules through the Legal Information Institute (sec.gov needs an
+  identifying user agent and was not used);
+- 31 CFR 356 Appendix B (Treasury formulas, with its examples reproduced);
+- FINRA Regulatory Notice 23-15 for the T+1 date;
+- the EU Prospectus Regulation (consolidated to 4 December 2024) and IFRS 13 as adopted,
+  through the EU Publications Office because EUR-Lex returned a bot check;
+- the World Bank's FY2026 IBRD/IDA factsheet;
+- the Federal Reserve's GSW yield-curve file, already in the repository.
+
+Twelve source keys were added (`compendium/front/sources.tex`); 13 reading notes were written
+and one updated.
+
+Access limits:
+- FRED downloads failed, so the commercial-paper tier spread rests on the Handbook.
+- Litterman and Scheinkman (1991) and Hull's Technical Note 24 were not read; their
+  results are cited through Phoa and Hull and checked by original computation.
+- No curriculum text was used as a substantive source.
+
+**Entries.** Thirty new entries in six files: `rates-credit-mortgages/bond-instruments-markets.tex`
+(6), `bond-pricing-yields.tex` (4), `term-structure-returns.tex` (5), `interest-rate-risk.tex` (4),
+`volatility-options/derivative-markets-uses.tex` (4) and `forward-commitment-valuation.tex` (7).
+Existing rate, swap, duration, derivative-contract and carry entries were reviewed and
+linked. Single-curve examples are labelled, and multi-curve valuation stays in
+`mod:multi-curve-fra-swap-valuation`.
+
+**Evidence.** Three scripts under `notes/artefacts/` (`bond-valuation-risk`,
+`term-structure-dynamics`, `forward-swap-valuation`), 163 checks. They reproduce Treasury,
+Handbook and Hull examples and use independent routes: repricing against duration and
+convexity, bonds against FRAs, forwards against bond packages, key-rate sums against
+parallel shifts, a tailed-futures replication and a two-period tree. A small extractor
+writes month-end GSW zero yields (`gsw-month-end-zero.csv`, 489 months). Hull slips in
+Examples 6.3 and 7.2-7.3 and sec. 22.9 are recorded (`notes/log.md` questions).
+
+**Coverage.** The 65 mapped outline items were read on their pages:
+- Level I PDF pp. 19-24;
+- Level II pp. 17 and 21.
+
+Gaps in four bullets were closed before promotion, and all 65 are promoted with
+item-specific rationales. All 30 objectives are covered (editorial coverage, not mastery).
+Totals: 101 of 424 objectives; 125 Level I, 31 Level II and 37 Level III core items covered;
+837 of 1,030 unreviewed.
+
+**Validation.** See `notes/source-review-records.md`, *Fixed-income and derivatives batch*,
+and the draft PR for the final local results. Remote CI runs only after a merge into `main`
+(Section 17.2) and was not triggered by this batch.
+
+**Remaining gaps.**
+- Collateral, funding and credit valuation adjustments are not covered.
+- Market sizes and spreads are dated to their sources; legal points to 18 October 2026.
+- Several original papers were read only through secondary texts.
+- Human review is outstanding.
+
+### 19.1 Correction pass on PR #24 (executed 2026-10-18)
+
+A fixes-only pass on draft PR #24 at `88bd29e`, after an external audit with six
+findings. No objective was added. This pass is exempt from the 30-objective target
+(Section 17.4), which stands for future expansion prompts.
+
+1. **Discrete-dividend replication** (`meth:equity-forward-futures-valuation`). Borrowing
+   S0 - I left the share purchase unfunded by I = 2.940743. The replication now borrows
+   the full 100 and applies each dividend to the loan, leaving a debt of 101.020320 at
+   maturity. A dated cash-flow ledger replaces the circular check.
+2. **Equity swap** (`meth:swap-valuation-replication`). The next equity payment is worth
+   N(E_t/E_0 - P(t,T_next)), 7.980133 million in the example (N(E_t/E_0 - 1) would give
+   6.000 million).
+   - It is separated from the later payments, the whole leg and the net value.
+   - An equity-for-SOFR leg with realised overnight growth gives a net value of
+     N(E_t/E_0 - A_t).
+   - Checks cover the reset and payment-date limits and a stochastic-rate simulation.
+   - Hull's p. 778 expression is documented as a discrepancy. His Technical Note 19, read
+     from an archived copy because the author's site returns 404, supports the
+     correction.
+3. **Treasury noncompetitive limit** (`def:government-agency-supranational-funding`).
+   The limit is $10 million from 8 August 2022 under 31 CFR 356.12 and 356.22; the
+   Handbook's $5 million is historical. The October 2026 amendment leaves the limit
+   unchanged, and the 35 percent cap is stated as the competitive rule.
+4. **SOFR FRN** (`meth:floating-money-market-yields`). The FRN has a dated schedule, and
+   SOFR is compounded on business days with calendar-day weights, as in the New York Fed
+   methodology.
+   - Discounting is consistent with the projection, so the note is at par at its quoted
+     margin.
+   - The discount margin is 96.38 bp (was 96.4).
+   - Accrual, index and round-trip checks were added.
+5. **SOFR futures hedge** (`meth:rate-bond-forward-valuation`). The SOFR + 200 bp
+   borrowing and the quarter-year accrual are restored. The hedge is derived from rates
+   and locks 2.01 percent in both scenarios.
+6. **Duration equivalence** (`meth:curve-based-empirical-duration`). The two measures are
+   equal only on a flat curve or for a single cash flow. Counterexample: parallel-zero
+   duration 10.218587 against yield duration 11.213091.
+
+Checks rose from 163 to 189 (bond valuation 89, forward and swap 64, term structure 36).
+Five source keys and reading notes were added: `cfr-31-356-auction-limits`,
+`fr-2022-13409`, `fr-2026-21069`, `hull-tn19` and `nyfed-sofr-averages-index`. The
+seven objectives and ten outline items mapped to the corrected entries were reassessed
+and remain covered. Totals are unchanged: 101 of 424 objectives; 125 Level I, 31 Level
+II and 37 shared-core items covered; 837 of 1,030 unreviewed. Details are in
+`notes/source-review-records.md`, *Correction pass on PR #24*. Remote CI was not
+triggered.
+
+### 19.2 Second correction pass on PR #24 (executed 2026-10-19)
+
+A fixes-only pass on draft PR #24 at `642e29c`, after an audit that confirmed the six
+corrections of Section 19.1 and found three further issues. No objective was added and none
+was newly completed; the pass is exempt from the batch target (Section 17.4).
+
+1. **Bond forward schedule** (`meth:rate-bond-forward-valuation`). The original example
+   (accrued interest 0.90 now and 0.375 at delivery, a coupon in 0.35 years, delivery in
+   0.50 years) fitted no regular semiannual calendar. It now uses one dated schedule:
+   - a 5 percent note with coupons on 15 May and 15 November, accrued actual/actual in
+     period on the scheduled dates (Hull, sec. 6.1, pp. 152-153);
+   - the Sunday 15 November 2026 coupon is paid on Monday 16 November without extra
+     interest (31 CFR 356.30(a));
+   - spot trade on 16 October 2026, settling T+1 on 19 October; delivery on 19 April 2027;
+     term repo at 4.20 percent, simple act/360.
+
+   Accrued interest is 2.133152 (157 of 184 days) at spot and 2.140884 (155 of 181) at
+   delivery. The full spot price is 103.333152, the coupon PV 2.491860, the forward full
+   price 102.982489 and the quoted forward 100.841605. Independent checks: a coupon
+   calendar generated back from maturity, a two-repo dated ledger with zero net cash
+   before delivery, and the carry identity (quoted forward - spot quote = financing
+   2.194107 - coupon income 2.507732 - interest on the paid coupon 0.044770). The later
+   value of the long is 0.395798.
+2. **Municipal discount** (`rule:bond-issuance-legal-tax`). "The exemption covers coupon
+   interest only" is replaced, from IRS Publication 550 (2025) and Publication 1212
+   (December 2025):
+   - a holder's share of original-issue discount on a qualifying tax-exempt bond is
+     tax-exempt interest, accrued by constant yield and added to basis;
+   - market discount is not exempt and is ordinary income for purchases after 30 April
+     1993, unless it is below the de minimis amount (the earlier text had the direction
+     reversed);
+   - other price changes are capital gains or losses against the adjusted basis.
+
+   A worked example compares a holder at issue (basis 918.58 after five years, capital
+   loss 68.58 on a sale at 850) with a secondary buyer at 850 (market discount 68.58 above
+   the 37.50 de minimis amount, exempt OID 81.42, ordinary gain 68.58 at redemption).
+   The Handbook's statement (chap. 9, p. 221) and its reversed market-discount sign
+   (p. 223) are recorded as discrepancies.
+3. **Check counts.** At `642e29c` the scripts executed 90 bond, 64 forward-and-swap and 36
+   term-structure checks, 190 in all. Section 19.1 and the review record reported 89 and
+   189, one fewer than the bond script executes; the record does not show how 89 was
+   counted. The convention is now stated in both script
+   docstrings: one check is one executed `ok()` call, so a call in a loop counts once per
+   iteration. After this pass the counts are 94, 69 and 36, a total of 199.
+4. **Batch preference.** Section 17.4 now asks for 45 newly completed objectives per
+   expansion prompt. The earlier 30-objective batches keep their records.
+
+Three source keys and reading notes were added: `cfr-31-356-30-payment-dates`,
+`irs-pub-550-2025` and `irs-pub-1212-2025`. Three objectives were reassessed against
+the corrected teaching and remain covered: `explain-bond-legal-tax-factors`,
+`value-rate-and-bond-forwards` and `value-forward-contracts`. So were their
+corrected outline items (`outline:7099c7688942:m052:b02`,
+`outline:0242f4b7ba07:m031:b04`), which carry re-review notes. The other items
+mapped to these objectives are unaffected by the changed passages.
+
+Totals are unchanged: 101 of 424 objectives; 125 Level I, 31 Level II and 37 shared-core
+items covered; 837 of 1,030 unreviewed. Details are in `notes/source-review-records.md`,
+*Second correction pass on PR #24*. Remote CI was not triggered.
+
+## 20. Derivatives, portfolio and execution batch (executed 2026-10-19)
+
+**Scope.** Forty-five objectives, the batch size of Section 17.4 as revised in Section 19.2:
+- `topic:short-term-funding`: `objective:compare-short-term-funding`.
+- `topic:arbitrage-free-bond-valuation`: `objective:value-option-free-bond-arbitrage-free`,
+  `objective:build-binomial-rate-tree`, `objective:describe-term-structure-models`.
+- `topic:embedded-option-bonds`: `objective:value-callable-putable-bonds`,
+  `objective:calculate-option-adjusted-spread`, `objective:measure-embedded-option-risk`,
+  `objective:value-capped-floored-floaters`, `objective:value-convertible-bonds`.
+- `topic:option-valuation`: `objective:explain-option-value-drivers`,
+  `objective:apply-put-call-parity`, `objective:value-one-period-binomial`,
+  `objective:value-multi-period-binomial`, `objective:apply-black-scholes-merton`,
+  `objective:manage-option-greeks`.
+- `topic:option-strategies`: `objective:replicate-with-options`,
+  `objective:analyse-covered-and-protective-positions`,
+  `objective:analyse-spread-and-volatility-strategies`, `objective:select-option-strategy`.
+- `topic:derivative-overlay-strategies`: `objective:modify-risk-with-forward-commitments`,
+  `objective:use-volatility-derivatives`, `objective:apply-derivative-overlays`,
+  `objective:compare-derivative-and-cash-implementation`.
+- `topic:market-risk-measurement`: `objective:estimate-value-at-risk`,
+  `objective:apply-sensitivity-scenario-measures`, `objective:set-market-risk-limits`.
+- `topic:fixed-income-portfolio-management`: `objective:classify-fixed-income-mandates`,
+  `objective:manage-bond-leverage-and-tax`, `objective:match-liabilities-with-bonds`,
+  `objective:immunise-liabilities`, `objective:manage-bond-index-exposure`,
+  `objective:position-for-yield-curve-views`, `objective:evaluate-yield-curve-strategy`.
+- `topic:equity-portfolio-management`: `objective:design-equity-portfolio-mandate`,
+  `objective:compare-index-equity-approaches`, `objective:construct-index-equity-portfolio`,
+  `objective:compare-active-equity-strategies`, `objective:create-active-equity-strategy`,
+  `objective:construct-active-equity-portfolio`, `objective:evaluate-equity-portfolio-structure`.
+- `topic:trade-execution`: `objective:measure-execution-costs`,
+  `objective:explain-electronic-markets`, `objective:select-trading-strategy`,
+  `objective:compare-market-implementation`, `objective:evaluate-trade-execution`.
+
+**Starting state.** Draft PR #24 was open and unmerged at `f320d35` (Section 19.2).
+Coverage was 101 of 424 objectives; 125 Level I, 31 Level II and 37 shared-core items
+covered, 837 unreviewed. All 45 objectives were `missing`; their 149 outline items map to
+no objective outside the batch. The batch runs on
+`codex/derivatives-portfolio-execution-20261019`, branched from
+`codex/fixed-income-derivatives-20261018` at `f320d35`, with a stacked draft PR to that
+branch.
+
+**Sources (Section 3.5).** The owner's local library supplied the Handbook of Fixed Income
+Securities (9th ed.), Fixed Income Analysis (2nd ed., 2007), Hull's Options (11th Global
+ed.) and Risk Management and Financial Institutions (6th ed., 2023, added by the owner
+during the batch and used in place of a 4th-edition copy), Natenberg (2nd ed.), Managing
+Investment Portfolios (3rd ed.), Ang and Grinold and Kahn. Papers and official texts:
+Cremers and Petajisto (2009), Brav et al. (2008), Gatev et al. (1999), Avellaneda and Lee
+(2009 version), the UK Stewardship Code 2026, FINRA Rule 5310 and MiFID II article 27.
+Eight source keys were added (`compendium/front/sources.tex`); ten reading notes were
+written and six updated.
+
+**Entries.** Forty-five new entries: one in `portfolio-risk-financing/money-markets.tex`
+and the rest in nine new section files (`arbitrage-free-valuation.tex`,
+`embedded-option-bonds.tex`, `fixed-income-portfolio-management.tex`,
+`option-valuation.tex`, `option-strategies.tex`, `derivative-overlays.tex`,
+`market-risk-measurement.tex`, `equity-portfolio-management.tex`,
+`trade-strategy-governance.tex`). Eleven existing entries were reviewed and linked; those
+that carry part of an objective are mapped alongside the new entries.
+
+**Evidence.** Nine scripts under `notes/artefacts/`, 250 checks. Independent routes include
+spot-curve, lattice and pathwise values; calibration that reprices every par bond; hedge
+against replication; simulation against closed forms; Greeks against finite differences;
+LP and SLSQP optimisation; and small-position limits for VaR decompositions. Source slips
+in the Handbook (chap. 36), Hull (Figures 13.7-13.8, Table 19.4) and MIP (chap. 6) are
+recorded (`notes/source-review-records.md`; `notes/log.md` questions).
+
+**Coverage.** The 149 mapped items were read on their pages (Level I PDF pp. 20 and 24;
+Level II pp. 18, 21-22 and 26-27; Level III core pp. 5-7 and 11-12; Portfolio Management
+pp. 16-18). Gaps in seven bullets were closed before promotion; all 149 are promoted with
+item-specific rationales. All 45 objectives are covered (editorial coverage, not mastery).
+Totals: 146 of 424 objectives; 133 Level I, 83 Level II, 78 shared-core and 48 Portfolio
+Management items covered; 688 of 1,030 unreviewed.
+
+**Validation.** See `notes/source-review-records.md`, *Derivatives, portfolio and execution
+batch*, and the stacked draft PR for the final local results. Remote CI runs only after a
+merge into `main` (Section 17.2) and was not triggered.
+
+**Remaining gaps.**
+- Single-curve lognormal trees; no credit, collateral or funding adjustments.
+- Illustrative market inputs; legal points dated 19 October 2026; MiFID II amendments to
+  article 27 not reviewed.
+- Human review is outstanding.
+
+### 20.1 Correction pass on PR #25 (executed 2026-10-19)
+
+A fixes-only pass on draft PR #25 at `edbf4bf`, after an audit with seven findings. No objective was added; the pass is exempt from the batch target (Section 17.4).
+
+1. **Transfer coefficient** (`meth:equity-portfolio-capacity-structure`). The reference is now the
+   optimum of the same residual-risk objective under zero net active weight,
+   a_Q = D^-1(alpha - eta 1)/(2 lambda), eta = 1'D^-1 alpha / 1'D^-1 1. It is checked for
+   feasibility and first-order optimality, against the bordered KKT system and by
+   perturbation. Long-only 0.609280 and 130/30 0.781364.
+2. **VaR convention** (`meth:portfolio-var-methods-decomposition`, with the scenario and
+   stop-loss figures). Zero expected P&L throughout, with the history centred. Components
+   sum to the reported 1,729,124.91, and finite differences use the same function. Each
+   stress figure names its book.
+3. **Ladder risk** (`meth:liability-matching-ladders`). The key-rate profile (0.1304 to
+   0.6363, sum 4.686245) and a twist (-0.493%) replace the equal-key-rate claim. Equal-face,
+   equal-market-value and equal-risk allocations are compared.
+4. **Dividends in replication** (`meth:option-replication-deltas`). The identities carry D.
+   A fixed-strike short forward has spot delta -e^-qT (-0.9900498 at 2% and six months).
+   Checked for zero and nonzero dividends.
+5. **Convexity convention** (`meth:embedded-option-effective-duration`). Figures are in the
+   compendium convention (callable -77.149899), and both conventions are stated with
+   matching price formulas.
+6. **Tesla convertible** (`meth:convertible-bond-valuation`). Terms come from the 2019
+   prospectus supplement: no issuer redemption, a holders' fundamental-change put, a
+   separate make-whole conversion adjustment and contingent conversion.
+7. **Calendar spread** (`meth:option-spreads-volatility-strategies`). Values and profits are
+   separated, with the valuation date and financing convention stated.
+
+One source key and reading note were added (`tesla-2024-notes-prospectus-2019`). Nine
+objectives were reassessed and remain covered, and fifteen outline items carry re-review
+notes. The nine batch scripts now run 264 checks (was 250). Totals are unchanged: 146 of 424
+objectives, 342 of 1,030 items. Details are in `notes/source-review-records.md`,
+*Correction pass on PR #25*. Remote CI was not triggered.
+
+## 21. Macro, allocation and currency batch (executed 2026-10-19)
+
+**Scope.** Forty-five objectives, the batch size of Section 17.4:
+- `topic:business-cycles`: `objective:describe-business-credit-cycles`, `objective:interpret-cycle-indicators`.
+- `topic:fiscal-policy`: `objective:explain-fiscal-policy`.
+- `topic:monetary-policy`: `objective:compare-fiscal-monetary-policy`, `objective:explain-monetary-policy`.
+- `topic:geopolitics-trade`: `objective:describe-geopolitics`, `objective:assess-geopolitical-risk`,
+  `objective:analyse-international-trade`.
+- `topic:exchange-rate-mechanics`: `objective:describe-fx-market-and-real-rates`,
+  `objective:calculate-cross-and-forward-rates`, `objective:calculate-fx-bid-offer-arbitrage`,
+  `objective:value-currency-forwards`.
+- `topic:exchange-rate-determination`: `objective:explain-exchange-rate-regimes-flows`,
+  `objective:apply-international-parity`, `objective:forecast-exchange-rates`,
+  `objective:analyse-carry-trade`, `objective:explain-flows-policy-and-fx`.
+- `topic:economic-growth`: `objective:explain-growth-determinants`, `objective:forecast-potential-gdp`,
+  `objective:compare-growth-theories`, `objective:evaluate-growth-policies`.
+- `topic:macro-asset-valuation`: `objective:link-economy-to-discount-rates`,
+  `objective:relate-cycle-to-rates-and-bonds`, `objective:relate-cycle-to-equities-property`.
+- `topic:capital-market-expectations`: `objective:build-capital-market-expectations`,
+  `objective:analyse-growth-and-shocks-for-expectations`, `objective:analyse-cycle-policy-for-expectations`,
+  `objective:forecast-asset-class-returns`, `objective:forecast-fx-and-volatility`,
+  `objective:rebalance-global-portfolio-on-macro-views`.
+- `topic:strategic-asset-allocation`: `objective:govern-asset-allocation`,
+  `objective:formulate-economic-balance-sheet`, `objective:compare-allocation-approaches`,
+  `objective:specify-asset-classes-and-factors`, `objective:recommend-asset-allocation`,
+  `objective:implement-and-rebalance-allocation`, `objective:evaluate-allocation-robustness`,
+  `objective:recommend-liability-relative-allocation`, `objective:recommend-goals-based-allocation`,
+  `objective:revise-allocation-for-constraints`, `objective:manage-tactical-shifts-and-biases`.
+- `topic:currency-management`: `objective:analyse-currency-portfolio-effects`,
+  `objective:design-currency-programme`, `objective:compare-active-currency-strategies`,
+  `objective:reduce-hedging-costs`.
+
+**Starting state.** Draft PRs #24 (`f320d35`) and #25 (`bea4f8e`, after the Section 20.1
+corrections) were open and unmerged. Coverage was 146 of 424 objectives and 342 of 1,030
+outline items. All 45 objectives were `missing`; their 118 outline items map to no
+objective outside the batch, and every declared prerequisite was covered or in the batch.
+The batch runs on `codex/macro-allocation-currency-20261019`, branched from
+`codex/derivatives-portfolio-execution-20261019` at `bea4f8e`, with a stacked draft PR to
+that branch.
+
+**Sources (Section 3.5).** Economics for Investment Decision Makers (2013) and Portfolio
+Management in Practice, Volume 1 (2020) from the owner's library, with Mankiw (10th ed.),
+Cochrane's Asset Pricing, Ang's Asset Management, Jordà--Schularick--Taylor (credit
+cycles), Caldara--Iacoviello (geopolitical risk), the IMF's fragmentation note,
+Campbell--Serfaty-de Medeiros--Viceira (currency hedging) and Menkhoff et al.\ (carry). Six
+source keys were added; seven reading notes were written and two updated. BIS WP 380 was
+blocked and is not cited.
+
+**Entries.** Forty-five new entries in eight new section files; ten existing entries are
+mapped alongside where they carry part of an objective.
+
+**Evidence.** Seven scripts, 140 checks, reproducing EIDM and PMiP examples and testing
+them by independent routes: summing multiplier rounds, Markov chains against judgemental
+horizon forecasts, simulated forward and random-walk forecasts, reverse-optimisation round
+trips, binomial rebalancing payoffs, Monte Carlo spending plans, regression and grid-search
+hedge ratios and option pricing. Source discrepancies and rounding differences were recorded; Section22 supersedes the error interpretation of PMiP Example7 and notes that the Smiths explicitly use unrounded rates.
+
+**Coverage.** The 118 items were read on their pages (Level I PDF pp. 5-7; Level II pp. 5-6
+and 25; Level III core pp. 1-3 and 12) and promoted with item-specific rationales. All 45
+objectives are covered (editorial coverage, not mastery). Totals: 191 of 424 objectives; 158
+Level I, 119 Level II, 135 shared-core and 48 Portfolio Management items covered; 570 of
+1,030 unreviewed.
+
+**Validation.** See `notes/source-review-records.md`, *Macro, allocation and currency batch*,
+and the stacked draft PR. Remote CI runs only after a merge into `main` (Section 17.2) and
+was not triggered.
+
+**Remaining gaps.**
+- Macro data are dated to their sources; scenario probabilities are subjective.
+- Several papers were read at abstract or introduction level.
+- Human review is outstanding.
+
+
+## 22. Audit corrections on PR #26 (completed, 2026-10-19)
+
+Verified clean starting head `bcc3551`; live PRs #24, #25 and #26 remain open drafts
+at `f320d35`, `bea4f8e` and `bcc3551`, with the expected stacked bases. Recorded
+coverage is 191/424 objectives and 460/1,030 items. Correct cap-rate units and
+cash timing, cross-hedge numeraire/notionals, physical versus pricing probabilities,
+Solow normalization, trailing/forward P/E, two allocation decisions, the original
+continuously compounded Markov convention and four consistency issues. Reassess
+all affected operations, renew numerical/source/mapping evidence and inspect the
+rendered pages before committing to PR #26. Corrections do not count as new coverage.
+
+Corrections implemented with151 checks across six changed scripts; all pass.
+Eleven objectives and35 items reassessed; baseline remains191/424 and460/1,030.
+Cochrane source identity additionally corrected from the actual title page.
+See the correction record for source locators and limits.
+
+Validation completed: `make check` passed lock/lint/format, both structural
+validators,36 tests plus3 subtests,84 numerical scripts and all8 outline hashes.
+Its PDF step initially failed because the sandbox denied the default font cache;
+with TEXMFVAR/TEXMFCACHE set to a writable temporary directory, a forced LuaLaTeX
+rebuild passed (287 pages, no overfull boxes or undefined references). Existing
+underfull/page-destination warnings are not treated as new errors. `make pre-commit`
+passed all hooks. PDF pages96-110 and118-119 were rendered and inspected, covering
+all corrections and both complete client cases; no clipping or overlap observed.
+
+
+## 23. Accounting expansion: selected scope (confirmed before content edits, 2026-10-19)
+
+The following 45 canonical objectives are all `missing` at `bcc3551`, selected in
+prerequisite order. The three covered cash-flow objectives are excluded. This is
+a scope record, not a completion claim. Work directly without delegation. Use
+substantive library readings and primary standards with edition, jurisdiction and
+effective dates; read every mapped outline item on its actual page. Reconcile
+company statements, adjustments, forecasts and decision constraints before
+coverage promotion. Expansion will branch from the corrected PR #26 head and
+be delivered in a new stacked draft PR.
+
+**topic:financial-reporting-framework**
+
+- `objective:describe-statement-analysis-framework` (foundation; describe).
+- `objective:use-filings-and-disclosures` (foundation; describe).
+- `objective:compare-reporting-frameworks` (foundation; describe).
+
+**topic:income-statement-analysis**
+
+- `objective:analyse-revenue-recognition` (foundation; describe).
+- `objective:analyse-expense-recognition` (foundation; describe, contrast).
+- `objective:adjust-non-recurring-items` (foundation; describe).
+- `objective:calculate-earnings-per-share` (foundation; describe, calculate, interpret).
+- `objective:analyse-income-statement-ratios` (foundation; evaluate).
+
+**topic:balance-sheet-analysis**
+
+- `objective:analyse-intangibles-goodwill` (foundation; explain).
+- `objective:analyse-financial-instruments-liabilities` (foundation; explain).
+- `objective:analyse-common-size-balance-sheet` (foundation; calculate, interpret).
+
+**topic:cash-flow-analysis**
+
+- `objective:interpret-cash-flow-statements` (analysis; analyze, interpret).
+- `objective:calculate-free-cash-flow-and-coverage` (foundation; calculate, interpret).
+
+**topic:inventory-accounting**
+
+- `objective:analyse-inventory-measurement` (foundation; describe).
+- `objective:compare-inventory-cost-methods` (foundation; calculate, explain).
+- `objective:evaluate-inventory-disclosures` (analysis; describe, explain).
+
+**topic:long-lived-asset-accounting**
+
+- `objective:compare-intangible-asset-reporting` (foundation; compare).
+- `objective:analyse-impairment-derecognition` (analysis; explain, evaluate, analyze, interpret).
+
+**topic:leases-employee-compensation**
+
+- `objective:analyse-lease-reporting` (foundation; explain).
+- `objective:analyse-pension-reporting` (foundation; explain, contrast).
+- `objective:analyse-share-based-compensation` (foundation; explain, contrast).
+- `objective:describe-long-term-liability-disclosures` (foundation; describe).
+- `objective:model-share-based-compensation` (analysis; explain).
+- `objective:model-post-employment-benefits` (analysis; explain).
+
+**topic:income-tax-accounting**
+
+- `objective:distinguish-tax-differences` (foundation; contrast).
+- `objective:analyse-deferred-taxes` (analysis; explain, analyze).
+- `objective:calculate-tax-rate-measures` (foundation; calculate, interpret, contrast, analyze, explain).
+
+**topic:financial-reporting-quality**
+
+- `objective:distinguish-reporting-and-results-quality` (foundation; compare, describe).
+- `objective:explain-reporting-incentives-discipline` (foundation; describe).
+- `objective:identify-earnings-management-methods` (analysis; explain, describe).
+- `objective:detect-reporting-warning-signs` (analysis; describe).
+- `objective:evaluate-report-quality` (analysis; demonstrate, explain, describe, evaluate).
+- `objective:evaluate-earnings-quality` (analysis; describe, explain, evaluate).
+- `objective:evaluate-cash-flow-balance-sheet-quality` (analysis; evaluate, describe).
+
+**topic:ratio-analysis**
+
+- `objective:calculate-financial-ratios` (foundation; describe, calculate, interpret).
+- `objective:evaluate-company-with-ratios` (analysis; describe, evaluate).
+- `objective:decompose-return-on-equity` (foundation; demonstrate, calculate, interpret).
+- `objective:forecast-earnings-with-ratios` (analysis; describe).
+
+**topic:financial-statement-modelling**
+
+- `objective:build-pro-forma-model` (analysis; demonstrate).
+- `objective:correct-forecast-biases` (analysis; explain, recommend).
+- `objective:forecast-under-competition-and-inflation` (analysis; explain).
+- `objective:choose-forecast-horizon` (analysis; explain).
+
+**topic:integrated-statement-analysis**
+
+- `objective:apply-integrated-analysis-framework` (decision; demonstrate).
+- `objective:adjust-for-comparability` (analysis; identify, explain, evaluate, recommend).
+- `objective:analyse-accounting-change-effects` (analysis; evaluate, analyze, interpret).

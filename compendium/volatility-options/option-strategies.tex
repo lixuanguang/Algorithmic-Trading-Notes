@@ -1,0 +1,175 @@
+\section{Option strategies}
+
+These entries use options to replicate and reshape exposure to an asset: synthetic positions and their deltas, covered calls, protective puts and the choices open to a short seller, spreads, straddles, collars and calendar spreads with the volatility skew, and a strategy chosen for a client's stated objectives. Single-option payoffs are in \hyperref[meth:option-payoff-profit]{payoff and profit}; valuation is in \hyperref[def:option-value-drivers]{option valuation}. Profit is payoff less premium unless the premium is shown financed to expiry; numbers are checked in \texttt{notes/artefacts/option-strategies/option-strategy-checks.py}.
+
+\begin{qfmethod}[Replicating asset returns with options: synthetic stock and forwards, covered calls and protective puts as option-plus-bond packages, and the deltas of hedged positions against the asset and a short forward]\label{meth:option-replication-deltas}
+\qffield{Statement} \emph{Replication} follows from put--call parity, $p+S_0=c+Ke^{-rT}+D$, with $D$ the present value of dividends \citep[chap.~12, sec.~12.2, eq.~(12.1), pp.~270--272]{s7-hulloptions}.
+Cash flows differ by the dividends: the stockholder receives them, the option positions do not.
+\begin{itemize}
+\item \emph{Synthetic long stock}: a long call, a short put and a bond paying $K$. It pays $S_T$ at expiry in every state, but costs $c-p+Ke^{-rT}=S_0-D$, so it replicates the price, not the total return. With a continuous yield $q$, $D=S_0(1-e^{-qT})$ and the package is worth $S_0e^{-qT}$.
+\item \emph{Synthetic long forward}: a long call and a short put struck at the forward, at zero cost.
+\item \emph{Covered call}: stock less a call, worth a short put plus a bond plus the dividends ($S_0-c=Ke^{-rT}-p+D$). Its terminal payoff, $K-(K-S_T)^+$, is the short put's plus the bond's; the dividends are additional cash to the writer.
+\item \emph{Protective put}: stock plus a put, worth a call plus a bond plus the dividends ($S_0+p=c+Ke^{-rT}+D$). This is why Hull's four profit patterns for an option combined with the stock resemble a short put, a long put, a long call and a short call (Figure~12.1).
+\end{itemize}
+Natenberg puts it as ``Long underlying $+$ long put $\approx$ synthetic long call'' and ``Short underlying $+$ long call $\approx$ synthetic long put'' \citep[chap.~17, p.~325]{s7-natenberg}; the approximation sign hides the dividends and carry. European options on a stock with known dividends are priced by replacing $S_0$ with $S_0-D$ \citep[chap.~15, sec.~15.12, p.~360]{s7-hulloptions}.
+
+\emph{Deltas} (spot deltas; Interpretation from BSM deltas, \hyperref[mod:black-scholes-merton]{BSM}). With a continuous yield $q$:
+\begin{itemize}
+\item the share has delta $+1$; the call $e^{-qT}N(d_1)$; the put $e^{-qT}[N(d_1)-1]$;
+\item a fixed-strike short forward, worth $-(Se^{-qT}-Ke^{-rT})$, has delta $-e^{-qT}$, not $-1$; its payoff slope at expiry, $-1$, is a different quantity;
+\item call less put has delta $e^{-qT}$;
+\item a covered call has $1-\Delta_c$ and a protective put $1+\Delta_p$;
+\item short stock plus a long call has $-1+\Delta_c=\Delta_p-(1-e^{-qT})$, the delta of a long put only when $q=0$.
+\end{itemize}
+
+\qffield{Practice} \emph{Original} (stock 100, strike 100, six months, 4 percent, 20 percent volatility).
+\begin{itemize}
+\item \emph{No dividend} ($q=0$). The call delta is 0.5840, so a covered call has 0.4160, a protective put 0.5840 and short stock plus a call $-0.4160$, equal to the put's delta. Call less put has delta 1 and, with a bond paying $K$, pays $S_T$ at every terminal price checked and costs $S_0$.
+\item \emph{Yield $q=2$ percent.} The synthetic stock costs 99.0050: the 0.9950 difference is the present value of the yield it forgoes. The call delta is 0.5507 and the put $-0.4394$; call less put has delta $e^{-0.01}=0.9900$. A fixed-strike short forward has delta $-0.9900498$. One share plus one short forward therefore keeps a delta of $+0.00995$; $e^{qT}=1.01005$ forwards per share are needed to neutralise it. Short stock plus a call has delta 0.0099502 below the put's.
+\item \emph{Discrete dividend} of 1.00 at three months: $D=0.9900$, and $p+S_0=c+Ke^{-rT}+D$ holds with options priced on $S_0-D$. At expiry the stock with its dividend reinvested is worth 1.0101 more than the synthetic in every state, whose present value is $D$.
+\end{itemize}
+Values, terminal cash flows and deltas are checked for both zero and nonzero dividends, the deltas by finite differences.
+
+\emph{Interpretation.} A covered call is the sale of upside for income, with the exposure of a short put; a protective put is the purchase of downside insurance, with the exposure of a long call. A short forward on the dividend-adjusted quantity offsets the share's delta at every price; on one share per share, it leaves the dividend exposure. An option hedge offsets only part, and that part changes with the price (gamma).
+
+\qffield{Conditions} European options, same strike and expiry, no transaction costs. Zero dividends are assumed only where stated ($q=0$); otherwise dividends are known (a continuous yield or a discrete amount), not uncertain. With borrowing costs and scarce borrow the synthetic short differs from a stock short (\hyperref[res:synthetic-short-put-call]{synthetic short}). Deltas are model values at one volatility.
+
+\qffield{Pitfalls} Treating a covered call as low-risk because it is ``covered'': its downside is the stock's, less the premium. Hedging a fixed share count with options as if their deltas stayed constant. Forgetting the dividends that a synthetic long gives up.
+
+\qffield{See also} \hyperref[res:put-call-forward-parity]{put--call parity}; \hyperref[meth:greeks-delta-gamma-hedging]{delta hedging}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Covered calls, protective puts and hedging a short position: objectives, payoff and profit, break-evens, maximum gain and loss, and risks, including buying a call against selling a put]\label{meth:covered-call-protective-put}
+\qffield{Statement} ``Every hedging decision is a tradeoff: what is the hedger willing to give up under one set of market conditions in return for protection under a different set of market conditions'' \citep[chap.~17, p.~323]{s7-natenberg}.
+\begin{itemize}
+\item \emph{Protective option.} Buying a put protects a long position, and buying a call a short. The gap between the strike and the current price works like an insurance deductible, and the premium like the insurance premium (pp.~323--325).
+\item \emph{Covered write.} Selling a call against stock gives an immediate credit and limited protection, and caps the upside. An in-the-money call protects more and leaves less upside; an out-of-the-money call the reverse (pp.~325--329).
+\item \emph{Collar.} A protective put combined with a covered call sells upside to pay for protection (pp.~329--332; \hyperref[meth:option-spreads-volatility-strategies]{collars}).
+\end{itemize}
+
+\emph{Payoffs and profit} (per share, stock bought at $S_0$, premium $c$ or $p$).
+\begin{itemize}
+\item \emph{Covered call.} Profit is $\min(S_T,K)+c-S_0$. The maximum is $K+c-S_0$; the break-even is $S_0-c$; the maximum loss, at $S_T=0$, is $S_0-c$.
+\item \emph{Protective put.} Profit is $\max(S_T,K)-p-S_0$. The maximum loss is $S_0-K+p$; the break-even is $S_0+p$; the gain is unlimited.
+\end{itemize}
+
+\emph{A short seller's alternatives.} \emph{Buying a call} caps the loss at $K-S_0+c$ however high the stock goes, at the cost of the premium. \emph{Selling a put} collects a premium that cushions a rise by that amount only, leaves the loss unlimited, and caps the gain at $S_0-K+p$ below the strike. The first is insurance, the second income (Interpretation; Hull Figure~12.1b and~d).
+
+\qffield{Practice} \emph{Reproduced} (Natenberg, pp.~324--326).
+\begin{itemize}
+\item \emph{Covered writes.} With the stock at 100, selling the 95 call at 6.50 breaks even at 93.50 and earns at most 1.50, the time premium. Selling the 105 call at 2.00 breaks even at 98 and earns at most 7, at or above 105.
+\item \emph{Protective call.} A firm owing \texteuro{}1 million buys the 1.40 call at 0.02, capping its cost at \$1.42 million. If the euro falls to 1.25, it pays \$1.27 million.
+\end{itemize}
+
+\emph{Original} (stock 100, six months, 4 percent, 20 percent volatility).
+\begin{itemize}
+\item \emph{Protective put.} The 95 put costs 2.6786. The maximum loss is 7.68, or 7.73 with the premium financed to expiry, and the break-even is 102.68 (102.73 financed).
+\item \emph{Short seller at 100.} A long 105 call (4.3770) caps the loss at 9.38. A short 95 put (2.6786) leaves the loss unlimited as the stock rises and caps the gain at 7.68.
+\end{itemize}
+
+\emph{Risks.}
+\begin{itemize}
+\item \emph{Covered call}: the full downside of the stock less the premium; early assignment near ex-dividend dates on American calls; the opportunity cost if the stock rallies.
+\item \emph{Protective put}: the premium, lost if the stock does not fall, and time decay. Volatility matters: puts are dear when implied volatility is high and, on equities, the skew makes out-of-the-money puts dearer still.
+\end{itemize}
+
+\qffield{Conditions} European options held to expiry; American options can be assigned early. Margin is required on written options that are not covered (Hull, sec.~10.7). Taxes, which may treat the sale of calls or the purchase of puts against a position differently, are not considered.
+
+\qffield{Pitfalls} Quoting a covered-call ``yield'' as if the premium were free income. Comparing a hedged and an unhedged position without financing the premium. A short seller who sells puts for protection and is surprised by a squeeze.
+
+\qffield{See also} \hyperref[meth:option-replication-deltas]{replication and deltas}; \hyperref[ex:option-strategy-selection-case]{strategy selection}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Spreads and volatility strategies: bull and bear spreads, straddles, collars and calendar spreads, and what the volatility skew and smile mean for choosing them]\label{meth:option-spreads-volatility-strategies}
+\qffield{Statement} \citep[chap.~12, secs.~12.3--12.4, pp.~272--284]{s7-hulloptions}
+\begin{itemize}
+\item \emph{Bull spread}: buy a call at $K_1$ and sell one at $K_2>K_1$, or the same with puts. It profits from a rise, with gain and loss both limited.
+\item \emph{Bear spread}: buy a put at $K_2$ and sell one at $K_1<K_2$. It profits from a fall.
+\item \emph{Straddle}: buy a call and a put at the same strike and expiry. It profits from a large move in either direction and loses most if the price ends at the strike. A short straddle is ``a highly risky strategy'' (p.~281).
+\item \emph{Calendar spread}: sell a short-dated option and buy a longer-dated one at the same strike. Measured when the short option expires, it profits if the price is then near the strike and loses most of its cost far from it (pp.~279--280).
+\item \emph{Collar}: a long put and a short call around the current price, struck so that the call pays for the put. Hull calls it a range forward; its other names include zero-cost collar and cylinder (chap.~17, sec.~17.2, pp.~387--388; chap.~26, p.~615 n.~1).
+\end{itemize}
+
+\emph{Volatility.} Straddles and long calendar spreads are long vega and suit a view that implied volatility will rise or realised volatility will exceed implied; short straddles and short calendars the reverse. Natenberg: buy positive-vega spreads when implied volatility looks low and negative-vega spreads when it looks high \citep[chap.~11, p.~199]{s7-natenberg}. \emph{Skew and smile.} Since 1987 equity implied volatilities fall as the strike rises: the implied distribution has a heavier left tail than the lognormal, so out-of-the-money puts are dear and out-of-the-money calls cheap relative to one flat volatility \citep[chap.~20, sec.~20.3, pp.~456--458]{s7-hulloptions}. A trader with a view on the skew's slope trades risk reversals, often in 25-delta options, delta-hedged and usually vega-matched \citep[chap.~24, pp.~502--503]{s7-natenberg}. Skew also shifts the trade-offs of directional spreads: protection costs more and selling calls raises less.
+
+\qffield{Practice} \emph{Reproduced} (Hull).
+\begin{itemize}
+\item \emph{Bull spread} (Example~12.2). Buy the 30 call at 3 and sell the 35 call at 1, for a cost of 2. Profit is $-2$ below 30, $S_T-32$ between the strikes and $+3$ above 35.
+\item \emph{Bear spread} (Example~12.3). Buy the 35 put at 3 and sell the 30 put at 1. Profit is $+3$ below 30 and $-2$ above 35.
+\item \emph{Straddle} at 70 (call 4, put 3). Profit is $-6$ at 69, $-7$ at 70, $+13$ at 90 and $+8$ at 55, with break-evens of 63 and 77.
+\item \emph{Range forward} (pp.~387--388). With spot and forward at 1.3200, 2 percent rates in both currencies and 14 percent volatility, a 1.3000 put and a 1.3414 call are both worth 0.0273: a zero-cost collar.
+\end{itemize}
+
+\emph{Summary at expiry} (Hull's prices; the collar is the original zero-cost collar below, stock bought at 100).
+\begin{center}\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Strategy & Objective & Max profit & Max loss & Break-even \\
+\midrule
+Bull call spread 30/35 (cost 2) & moderate rise, cheaper than a call & 3 & 2 & 32 \\
+Bear put spread 35/30 (cost 2) & moderate fall, cheaper than a put & 3 & 2 & 33 \\
+Long straddle 70 (cost 7) & large move either way & unlimited & 7 & 63 and 77 \\
+Collar: stock, long 90 put, short 116.80 call & protect at low cost & 16.80 & 10 & 100 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The risks are the premium for the long-option strategies, the capped upside of the spreads and the collar, and for a short straddle unlimited loss. The value at expiration is the payoff; profit subtracts the net premium.
+
+\emph{Original} (stock 100, 4 percent).
+\begin{itemize}
+\item \emph{Calendar spread.} Buying the six-month 100 call and selling the three-month one costs 2.141842. Valued at the three-month expiry (the long call then has three months left; volatility and rate unchanged), the position is worth 0.052704, 2.190593, 4.485236, 2.747684 and 1.108320 for the stock at 80, 95, 100, 105 and 120. Less the initial cost, paid at inception and not financed, the profits are $-2.089$, $+0.049$, $+2.343$, $+0.606$ and $-1.034$; financing the cost for three months at 4 percent lowers each by 0.0215. The value cannot fall below zero, so the loss on unwinding then is at most the cost. At inception, a two-point rise in implied volatility raises its value: it is long vega.
+\item \emph{Skew and collars.} With a flat 20 percent volatility, a six-month 90 put pays for a 116.80 call. Under a skew that adds three points of volatility per 10 percent of downside moneyness, the put's volatility is 23.2 percent, and the call that pays for it must be struck at 110.29. The skew gives away more upside for the same protection.
+\end{itemize}
+
+\qffield{Conditions} Profit diagrams at expiry ignore the time value of the premium (Hull, sec.~12.2) and, for calendars, assume the long option is valued at the short option's expiry with unchanged volatility. Skew figures here are illustrative, not market quotes.
+
+\qffield{Pitfalls} Buying straddles because a large move is expected when option prices already reflect it (Business Snapshot~12.2). Reading a calendar spread as direction-neutral: it is short gamma near expiry of the short leg. Pricing collars with one volatility when the market charges skew.
+
+\qffield{See also} \hyperref[def:implied-volatility-surface]{implied volatility surface}; \hyperref[meth:greeks-delta-gamma-hedging]{vega and gamma}.
+
+\end{qfmethod}
+
+\begin{qfexample}[Choosing an option strategy for a concentrated holding: income, protection, a collar and a targeted change in equity exposure, evaluated against the client's objectives]\label{ex:option-strategy-selection-case}
+\qffield{Statement} Fictional case. A client holds 100{,}000 shares of one stock at 100, 10 million in all, for the next six months. The client states three objectives:
+\begin{itemize}
+\item limit a fall to about 15 percent;
+\item spend no more than 1.5 percent of the holding on premium;
+\item keep meaningful upside.
+\end{itemize}
+The trustee also asks how to cut exposure to 60 percent, or to raise it to 125 percent, without trading the shares, which carry a low tax basis. Implied volatility follows an equity skew: 20 percent at the money, plus three points per 10 percent of downside moneyness. The rate is 4 percent. Strategies are drawn from \hyperref[meth:covered-call-protective-put]{covered calls and protective puts} and \hyperref[meth:option-spreads-volatility-strategies]{collars}; the hedger's trade-off between protection and give-up follows \citep[chap.~17, pp.~323--332]{s7-natenberg}.
+
+\qffield{Practice} \emph{Alternatives} (per share, six months).
+\begin{itemize}
+\item \emph{Protective 85 put}, at 24.9 percent volatility, costs 1.24, or 1.24 percent of the holding. Delta 0.870.
+\item \emph{Covered 110 call}, at 17.1 percent, raises 2.05. Delta 0.713.
+\item \emph{Zero-cost collar}: the 85 put paid for by selling a call struck at 113.05. Delta 0.667.
+\end{itemize}
+
+\emph{Scenarios at expiry} (premium financed at 4 percent).
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Stock & Shares alone & Protective put & Covered call & Collar \\
+\midrule
+70 ($-30\%$) & $-30.00$ & $-16.27$ & $-27.91$ & $-15.00$ \\
+130 ($+30\%$) & $+30.00$ & $+28.73$ & $+12.09$ & $+13.05$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{Evaluation.} The covered call fails the first objective: it leaves almost the full fall. The put meets all three: loss limited to about 16 percent, cost 1.24 percent, upside kept less the premium. The collar meets the loss limit at no premium but caps the gain near 13 percent. Recommendation: the protective put. The collar is the fallback if the premium budget is cut, at the cost of giving up upside above 113, which the skew makes expensive.
+
+\emph{Targeted exposure.}
+\begin{itemize}
+\item \emph{Cutting exposure to 60 percent} with 110 calls would need $0.4/0.287=1.39$ calls per share. That is more calls than shares: part would be naked, with unlimited loss. At-the-money calls need 0.685 per share and stay covered.
+\item \emph{Raising exposure to 125 percent} needs $0.25/0.584=0.428$ at-the-money calls per share. The premium is 0.284 million (2.8 percent of the holding), compared with buying 2.5 million of stock. The added exposure decays with time and must be rolled, and the calls' delta changes as the price moves.
+\end{itemize}
+
+\qffield{Conditions} European, exchange-listed options on 100-share contracts, without counterparty risk; Black--Scholes prices from an illustrative skew. Deltas drift as the price moves, so an exposure target needs monitoring and rolling. Taxes on option positions against a low-basis holding are jurisdiction-specific and outside this case.
+
+\qffield{Pitfalls} Choosing the strategy with the best payoff in one scenario. Selling more calls than shares held to hit a delta target. Treating a zero-cost collar as free: its cost is the upside given away.
+
+\qffield{See also} \hyperref[meth:option-replication-deltas]{deltas of hedged positions}; \hyperref[ex:investment-planning-case]{a planning case with a concentrated holding}.
+
+\end{qfexample}

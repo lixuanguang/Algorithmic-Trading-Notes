@@ -1,0 +1,210 @@
+\section{Fixed-income portfolio management}
+
+These entries manage bond portfolios against an index or against liabilities: the roles of bonds and how mandates are classified, an expected-return model, leverage and taxes, liability-driven investing with cash-flow matching, ladders and immunisation, indexed and enhanced-index portfolios, and positioning for and evaluating yield-curve views. Price, yield, duration and curve mechanics are earlier in this chapter. The original examples use an invented annual zero curve, 3.00 percent plus 0.15 percent per year to ten years and flat beyond; numbers are checked in \texttt{notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py}.
+
+\begin{qfdefinition}[Fixed-income mandates: roles of bonds, liability-based against total-return mandates and the indexing-to-active spectrum, portfolio risk and correlation measures, bond-market liquidity, and an expected-return model]\label{def:fixed-income-mandates-return-model}
+\qffield{Statement} \emph{Roles.} Bonds diversify equity risk, provide income, hedge liabilities that are themselves rate-sensitive, and, if indexed, hedge inflation (Interpretation; \hyperref[def:asset-class-characteristics]{asset classes}). Which risk matters depends on the objective \citep[chap.~43, pp.~1081--1083, Exhibit~43-3]{s7-fabozzifixed}.
+\begin{itemize}
+\item Short portfolios have the lowest market-value risk but the highest income risk.
+\item Long portfolios have the most stable income.
+\item For a pension or insurer, a short portfolio is ``much riskier when the portfolio market value is compared to the present value of the pension liability''.
+\end{itemize}
+
+\emph{Mandates.} \emph{Liability-based} mandates fund specified liabilities, by dedication through immunisation or cash-flow matching \citep[chap.~6, sec.~4, pp.~346--365]{managing-investment-portfolios-2007}. \emph{Total-return} mandates are managed against an index, along a spectrum (MIP, sec.~3.1, p.~331; Handbook, pp.~1075--1078):
+\begin{itemize}
+\item pure indexing;
+\item enhanced indexing by matching primary risk factors;
+\item enhanced indexing with small mismatches;
+\item active management with larger mismatches;
+\item full active management.
+\end{itemize}
+A core--satellite structure keeps an indexed or enhanced core, typically under 40 basis points of ex-ante tracking error, and gives satellites in less liquid sectors larger risk budgets (pp.~1078--1079).
+
+\emph{Risk measures.} The portfolio measures are duration, key-rate durations, spread duration and convexity, with tracking error for index mandates (\hyperref[meth:convexity-portfolio-duration]{portfolio duration}; \hyperref[meth:yield-curve-factor-exposures]{key rates}). Correlations with other assets decide how much bonds diversify. \emph{Liquidity.} The bid--ask spread is the most used measure, but the executed price of a bond depends on the size traded, prices are less observable over the counter, and dealer capacity has shrunk \citep[chap.~44, pp.~1097--1099]{s7-fabozzifixed}.
+
+\emph{Return model.} Expected return $\approx$ yield income $+$ rolldown $+$ value of convexity $-$ duration $\times$ expected yield change $+$ spread change and expected credit losses $+$ currency. Ilmanen's four-term expected return adds local rich/cheap effects as a fifth (chap.~32, pp.~724--727; \hyperref[meth:forward-rates-expected-returns]{forward rates and returns}; \hyperref[meth:bond-return-decomposition]{sources of return}).
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Expected return.} A benchmark yielding 4.60 percent rolls down 0.30 percent, with duration 6.2 and convexity 60. A view of $+25$ basis points costs 1.55 percent, convexity is worth 0.30 percent at 1 percent yield volatility, and expected credit losses on its 30 percent credit weight cost 0.06 percent: 3.59 percent in all. The rate risk, $6.2\times1\%$, is 6.2 percent a year.
+\item \emph{Diversification.} A 60/40 portfolio with 16 percent equity volatility has 9.42 percent volatility at a stock--bond correlation of $-0.2$, but 10.83 percent at $+0.4$.
+\item \emph{Liquidity.} Selling 50 million costs about 5{,}000 in on-the-run Treasuries, 100{,}000 in investment-grade corporates and 250{,}000 in high yield, at half illustrative spreads of 2, 40 and 100 basis points.
+\end{itemize}
+
+\qffield{Conditions} Exposures and correlations are estimates and change; the stock--bond correlation has changed sign in past regimes. Liquidity costs are illustrative and widen in stress.
+
+\qffield{Pitfalls} Judging a liability-hedging portfolio by its market-value risk alone. Reading yield as expected return without rolldown, convexity, a rate view and credit losses.
+
+\qffield{See also} \hyperref[meth:bond-index-exposure-benchmarks]{indexing}; \hyperref[meth:immunisation-liabilities]{immunisation}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Leverage and taxes in bond portfolios: the leveraged return and its risks, repo, futures, swaps and securities lending as sources of leverage, and managing taxable against tax-exempt portfolios]\label{meth:bond-leverage-taxation}
+\qffield{Statement} \emph{Leverage.} Borrowing $B$ against equity $E$ at cost $c$ and investing all at $r$ gives a return on equity of $R_E=r+(B/E)(r-c)$. The greater the leverage and the more variable $r$, the wider the outcomes \citep[chap.~6, sec.~5.2, pp.~369--373]{managing-investment-portfolios-2007}.
+\begin{itemize}
+\item \emph{Collateralised loans}: repo, dollar rolls, securities lending and margin buying \citep[chap.~60, pp.~1485--1491]{s7-fabozzifixed}.
+\item \emph{Synthetic leverage}: futures, whose margin buys much larger exposure, and receive-fixed swaps, which are like borrowing at a floating rate to hold a fixed-rate bond (p.~1485).
+\end{itemize}
+\emph{Risks}: magnified losses; funding that must be rolled; margin calls and haircut increases that force sales in falling markets; counterparty risk (\hyperref[def:short-term-funding-repo]{repo}).
+
+\emph{Taxes} (U.S. federal, individual holder, IRS Publication~550 for 2025). Tax-exempt investors compare pre-tax returns and do not benefit from municipal exemption. Taxable investors compare after-tax returns: the equivalent taxable yield is the tax-exempt yield over one minus the marginal rate \citep[chap.~9, p.~221]{s7-fabozzifixed}.
+\begin{itemize}
+\item Discount and premium bonds are taxed by component (\hyperref[rule:bond-issuance-legal-tax]{municipal discount}).
+\item Interest on money borrowed to buy tax-exempt securities is not deductible \citep[chap.~3, Tax-exempt income]{irs-pub-550-2025}.
+\item Realised losses offset gains, but the loss is disallowed if substantially identical securities are bought within 30 days before or after the sale (chap.~4, Wash Sales).
+\end{itemize}
+So taxable portfolios manage turnover, holding periods and tax lots, and harvest losses (Interpretation).
+
+\qffield{Practice} \emph{Reproduced} (MIP, pp.~369--371). Equity of 40 million plus 100 million borrowed at 4 percent, invested at 4.5 percent, earns 5.75 percent on equity; at 3.5 percent it earns 2.25 percent. 100 million of equity and 50 million borrowed at 6 percent, invested at 6.5 percent, earn 6.75 percent. \emph{Handbook} (p.~221): 6 percent tax-exempt at a 40 percent rate is a 10 percent equivalent taxable yield.
+
+\emph{Original.}
+\begin{itemize}
+\item \emph{Repo leverage.} A 2 percent haircut caps leverage at 50 times equity, at which a 3 percent price fall loses 1.5 times the equity.
+\item \emph{Municipal against taxable.} For a 37 percent taxpayer a 3.6 percent municipal beats a 5.0 percent taxable bond (3.15 percent after tax). For a tax-exempt pension fund the taxable bond is better by 1.4 percent.
+\item \emph{Leveraged municipals.} Borrowing at 4 percent to hold the municipal loses 0.4 percent before and after tax, because the interest is not deductible.
+\item \emph{Loss harvesting.} Harvesting a 120{,}000 loss against 150{,}000 of realised gains saves 45{,}600 at a 38 percent rate, provided the replacement bond is not substantially identical within the 30-day window.
+\end{itemize}
+
+\qffield{Conditions} Tax rules are U.S. federal, from the 2025 publication read on 19 October 2026; state taxes and the alternative minimum tax are excluded. Leverage limits are set by the investment policy, regulators and lenders.
+
+\qffield{Pitfalls} Measuring leverage by notional alone, ignoring duration and haircut terms. Holding municipals in a tax-exempt account. Harvesting a loss and rebuying the same bond within 30 days.
+
+\qffield{See also} \hyperref[def:short-term-funding-repo]{repo}; \hyperref[meth:forward-commitment-risk-overlays]{futures and swaps overlays}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Liability-driven investing, cash-flow matching and laddered portfolios: matching assets to liabilities, the least-cost dedicated portfolio, and ladders for liquidity and reinvestment diversification]\label{meth:liability-matching-ladders}
+\qffield{Statement} \emph{Liability-driven investing} manages assets against the liabilities they fund, and measures risk as the surplus, assets minus the present value of liabilities. The more uncertain the liabilities, the less a passive dedication strategy works and the more active elements are added \citep[chap.~6, sec.~4.1, pp.~346--348]{managing-investment-portfolios-2007}. For a pension fund, a short portfolio may look safe on market value but is risky against long liabilities \citep[chap.~43, p.~1082]{s7-fabozzifixed}.
+
+\emph{Cash-flow matching} (cash-flow driven investment, CDI) funds a liability stream from the portfolio's coupons and principal \citep[chap.~51, pp.~1271--1274]{s7-fabozzifixed}.
+\begin{itemize}
+\item It suits the most certain liabilities, a pension plan's retired lives.
+\item It uses option-free bonds within the plan's credit and sector limits.
+\item An optimiser leans towards longer, higher-yielding bonds to cut cost.
+\item Any excess cash flows are reinvested, and the less excess the better.
+\end{itemize}
+An exact match with STRIPS is possible but costly (defeasance). Compared with multiple-liability immunisation, cash-flow matching needs no duration rebalancing for the matched cash flows and is easier to understand, but it usually costs more (MIP, sec.~4.2, pp.~365--368; \hyperref[meth:immunisation-liabilities]{immunisation}).
+
+\emph{Ladders.} A ladder spreads its holdings across maturities. Fabozzi defines it as ``approximately equal dollar amounts (market values) in each maturity sector'' and shows a 1997 Treasury ladder whose key-rate durations are roughly equal ``for all the key maturities from year 2 on'', against a barbell's concentration at the wings and a bullet's at one point \citep[chap.~7, p.~207]{fixed-income-analysis-2007}. That flat profile belongs to his portfolio and his grid of unevenly spaced key rates; equal amounts do not by themselves give equal key-rate durations. Measured against each annual zero rate, a rung's sensitivity grows with its maturity, so a ladder of equal face or equal market value has a key-rate profile that rises with maturity and carries slope risk (Practice). Three allocations differ: \emph{equal face} (the same principal maturing each year), \emph{equal market value} (Fabozzi's definition) and \emph{equal risk} (the same dollar duration in each rung, which needs much more in the short rungs). Only the last approaches a flat profile, at the cost of a shorter duration. Insurers use balanced or laddered maturity schedules to ensure a steady rollover of assets for liquidity (MIP, chap.~3, p.~117). A maturing rung provides cash each year, and reinvestment is spread across rate environments. \emph{Risk and return} (Interpretation): a ladder's duration is near the middle of its range, its convexity lies between a bullet's and a barbell's, and its return is spread across the curve's segments. Its slope exposure must be measured from its key-rate profile, not assumed away. \emph{Limitations}: it matches no particular liability, it gives up any yield pick-up from concentrating where the curve is steepest, its rungs are reinvested at whatever rates prevail, and in credit it needs enough issues per rung to diversify.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Cash-flow matching.} Liabilities of 10, 10, 12, 12 and 15 million fall due in years 1 to 5. A least-cost portfolio of five annual-coupon bonds (1 to 5 years, 3.0 to 4.0 percent coupons) meets every payment exactly and costs 52.80 million, the liabilities' present value on the curve, because with one bond per date the match is exact. With fewer bond maturities than liability dates, the optimiser would hold surplus cash at some dates and cost more.
+\item \emph{Ladder.} A ladder of equal face values maturing in years 1 to 10 has a duration of 4.69 and returns a tenth of its face every year to spend or reinvest. Its key-rate durations to the annual zero rates rise from 0.1304 at year 1 to 0.6363 at year 10 (0.2456, 0.3455, 0.4298, 0.4989, 0.5532, 0.5932, 0.6197, 0.6337 between) and sum to 4.686245. A steepening twist from $-50$ basis points at year 1 to $+50$ at year 10 lowers its value by 0.493 percent by full repricing (0.510 percent to first order). Equal market value per rung barely changes this (0.13 to 0.63; $-0.48$ percent in the twist). Equal dollar duration per rung flattens the profile to 0.25--0.35 and turns the twist result into $+0.10$ percent, but the duration falls to 3.14 and 32 percent of the value sits in the one-year rung. Key-rate figures are checked against the analytic $tC_t(1+z_t)^{-(t+1)}/V$.
+\end{itemize}
+
+\qffield{Conditions} Matching needs projected liabilities; actuarial updates require rebalancing. Callable and prepayable bonds disturb the cash flows. Ladders suit investors who value liquidity and simplicity over matching a particular liability or benchmark.
+
+\qffield{Pitfalls} Cash-flow matching uncertain active-member liabilities. Measuring a pension portfolio's risk on market value. Treating a ladder as immunised: its duration still has to match the liabilities. Assuming that equal amounts per maturity mean equal key-rate durations or no slope risk.
+
+\qffield{See also} \hyperref[meth:immunisation-liabilities]{immunisation}; \hyperref[def:fixed-income-mandates-return-model]{mandates}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Immunising single and multiple liabilities: duration matching and its conditions, evaluating strategies under parallel shifts and twists, rebalancing, contingent immunisation, and the risks of liability-relative management]\label{meth:immunisation-liabilities}
+\qffield{Statement} \emph{Single liability.} Immunisation locks in a return over a horizon by balancing price risk against reinvestment risk. It needs (1) a portfolio duration equal to the horizon and (2) a present value equal to the liability's. It protects against parallel shifts, and duration drifts with time and rates, so the portfolio must be rebalanced, trading transaction costs against duration wander \citep[chap.~6, sec.~4.1.1, pp.~348--351]{managing-investment-portfolios-2007}. Dollar duration (duration $\times$ value $\times$ 0.01) is restored by scaling positions by the ratio of the original to the new dollar duration (pp.~351--353).
+
+\emph{Risks.} Interest-rate risk is the largest. Contingent-claim risk (calls and prepayments) and cap risk on floaters add to it (pp.~358--359). Non-parallel shifts create immunisation risk, measured by the dispersion of the portfolio's cash flows around the horizon: a bullet is less exposed than a barbell, and a zero maturing at the horizon not at all (pp.~360--361).
+
+\emph{Multiple liabilities.} Fong and Vasicek's conditions for parallel shifts are that the portfolio's composite duration equals the liabilities' and that the distribution of the assets' durations is wider than the liabilities' (pp.~362--363). Matching the average duration alone is not sufficient.
+
+\emph{Implementation.} Single and multiple liabilities can be met with cash bonds (zeros, bullets, dedicated portfolios), or by holding physical assets and adjusting duration with interest-rate swaps or futures, a derivatives overlay that uses less capital but adds basis, counterparty and margin risk (\hyperref[meth:forward-commitment-risk-overlays]{rate overlays}). A single liability is best met by a matched zero or a low-dispersion bullet; multiple liabilities need the Fong--Vasicek conditions or cash-flow matching, which costs more but needs less rebalancing (\hyperref[meth:liability-matching-ladders]{cash-flow matching}). \emph{Contingent immunisation.} An active portfolio is managed until its return falls to a safety-net level, then immunised. It is possible when the available immunised rate exceeds the required rate; the difference is the cushion spread (p.~357).
+
+\qffield{Practice} \emph{Reproduced} (MIP).
+\begin{itemize}
+\item \emph{GIC.} A five-year GIC promising 7.5 percent on 9{,}642{,}899 needs 13{,}934{,}413 at the horizon.
+\item \emph{Contingent immunisation.} 500 million with a 3 percent safety net must reach 546.72 million in three years. Immunising at 4.75 percent needs 474.90 million, a cushion of 25.10 million.
+\item \emph{Rebalancing.} Dollar durations of 53{,}548, 12{,}054 and 46{,}343 fall to 43{,}465, 3{,}063 and 36{,}049 a year later, a rebalancing ratio of 1.356, so each position grows 35.6 percent. MIP reports the portfolio's dollar duration as 37{,}315 and 27{,}526, which are averages of the three; the sum, 111{,}945, is the portfolio's dollar duration, and the ratio is unaffected. The cash needed is 1{,}077{,}796, or MIP's 1{,}079{,}012 with the ratio rounded to 1.356.
+\end{itemize}
+
+\emph{Evaluating strategies} (original; a flat 5 percent annual curve, a target of 100 in five years).
+\begin{itemize}
+\item \emph{Parallel shifts.} A five-year zero meets the target exactly. A barbell of a one-year zero and a ten-year 5 percent bond (56.3 percent by value), matched to Macaulay duration 5, ends at 100.32 for $-200$ basis points and 100.31 for $+200$: always at or above target, because of convexity. A five-year 5 percent coupon bond, matched in maturity but not duration, ends at 99.15 for $-200$ and 100.88 for $+200$.
+\item \emph{Twist.} If reinvestment rates fall 100 basis points while long rates rise 100, the barbell ends at 96.26, short of the target, and the zero is untouched.
+\item \emph{Selection.} A single known liability is best met by a matched zero or a low-dispersion bullet; a barbell is chosen only if the manager wants convexity and accepts twist risk.
+\end{itemize}
+
+\emph{Multiple liabilities} (original). Liabilities of 10 million at 2, 5 and 8 years have a present value of 23.67 million and a duration of 4.71. Zeros at 1 and 12 years with the same present value and duration bracket every liability date. The surplus stays non-negative for parallel shifts from $-200$ to $+200$ basis points, but a twist (rates beyond five years $+100$, within five years $-100$) leaves a deficit of 0.77 million.
+
+\emph{Contingent trigger} (original, MIP's case). If the 500 million is held in a ten-year 4.75 percent bond, the cushion is exhausted when its yield rises to 5.80 percent, about 105 basis points. The manager must then immunise.
+
+\qffield{Conditions} Classical immunisation assumes parallel shifts, no default, and rebalancing; spreads and curve twists break it. Contingent immunisation needs continuous monitoring and liquid instruments to switch.
+
+\qffield{Pitfalls} Matching maturity instead of duration. Matching duration but with a widely dispersed portfolio against a single liability. Forgetting to rebalance as time passes and rates move. Letting a contingent portfolio fall through its trigger in a gap move.
+
+\qffield{See also} \hyperref[meth:bond-return-decomposition]{duration and the horizon}; \hyperref[meth:liability-matching-ladders]{cash-flow matching}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Bond indexes and passive exposure: what indexes contain and why they are hard to replicate, full replication, stratified sampling and optimisation, funds and derivatives, enhanced indexing, and choosing a benchmark]\label{meth:bond-index-exposure-benchmarks}
+\qffield{Statement} \emph{Indexes.} A bond index is a set of rules (maturity, size, sector and quality) applied to the market, with issues weighted by market value \citep[chap.~43, p.~1081]{s7-fabozzifixed}; construction rules are in \hyperref[def:equity-fixed-income-index-types]{index types}. Broad indexes are hard to replicate: the U.S. Aggregate had about 12{,}000 issues at the end of 2020, many illiquid or locked in long-term holdings, so full replication is ``inefficient, if not impossible'' (p.~1075).
+
+\emph{Passive methods.} \emph{Enhanced indexing by matching primary risk factors} holds a sample whose risk factors match the index's. The factors to match are duration, key-rate durations or the distribution of cash flows, sector and quality weights, the duration contributed by each sector and quality, call exposure and issuer exposure (pp.~1083--1087, Exhibit~43-4). MIP lists pure indexing, enhanced indexing by matching risk factors or with small mismatches, and the risks of market value, income and liability framework (chap.~6, secs.~3.1--3.2, pp.~331--333). Funds (index funds and ETFs) and derivatives (index total-return swaps, futures for duration) are alternatives (Interpretation; \hyperref[meth:forward-commitment-risk-overlays]{overlays}).
+
+\emph{Benchmark selection.} ``Generally, the broader the index, the better the benchmark.'' But the choice should follow the objective: principal-sensitive investors may prefer short or intermediate indexes, income-oriented investors long ones, and liability-driven investors a benchmark matched to their liabilities (Handbook, pp.~1081--1083). A good benchmark is investable, measurable and specified in advance (\hyperref[meth:benchmark-selection-quality]{benchmark tests}).
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Sampling error.} A sample matching every risk cell with equally weighted issues, each with 2 percent of issue-specific volatility, has issue-specific tracking error of about 0.20 percent with 100 issues, 0.10 percent with 400 and 0.05 percent with 1{,}600, from a 10{,}000-issue index. The error falls with the square root of the number held, while transaction costs rise with it.
+\item \emph{Implementation} (illustrative). Full replication of a liquid Treasury index costs about 5 basis points a year with no sampling error. A 400-bond sample costs about 3 basis points with 10 basis points of tracking. An ETF costs about 5 basis points with 2 of tracking. A total-return swap carries a financing spread of about 35 basis points and counterparty exposure. These are assumptions for comparison, not quotes.
+\item \emph{Benchmark choice.} An insurer with 7-year liabilities benchmarked to a 6.2-duration aggregate keeps 0.8 years of surplus duration on assets equal to liabilities. A liability-matched index is the justified choice there; an endowment with no specific liabilities is better served by the broad market index.
+\end{itemize}
+
+\qffield{Conditions} Sampling estimates assume issue-specific risks are independent; correlated issuer events (one issuer's several bonds) raise them. Costs and spreads vary with market conditions.
+
+\qffield{Pitfalls} Matching duration only and leaving key-rate, sector and issuer mismatches. Choosing a market-value-weighted index as a liability benchmark. Ignoring that the broad index's duration and credit mix drift with issuance.
+
+\qffield{See also} \hyperref[def:fixed-income-mandates-return-model]{mandates}; \hyperref[meth:index-equity-portfolio-construction]{equity index construction}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Positioning for yield-curve views: market-consistent expectations, divergent level, slope and curvature views, volatility views, and curve trades across currencies]\label{meth:yield-curve-positioning}
+\qffield{Statement} \emph{Market-consistent view.} If forwards are realised, every bond earns the short rate and no curve position adds return. If the curve stays unchanged, longer bonds earn their rolling yields, so a manager with that view buys and rides the curve (\hyperref[meth:forward-rates-expected-returns]{forward rates and returns}). A manager must state which baseline a view departs from.
+
+\emph{Divergent views.}
+\begin{itemize}
+\item \emph{Level}: lengthen or shorten duration against the benchmark.
+\item \emph{Slope}: DV01-neutral steepeners and flatteners (\hyperref[meth:curve-trades-carry-rolldown]{curve trades}).
+\item \emph{Curvature}: duration-neutral butterflies, barbell against bullet.
+\end{itemize}
+A duration-neutral barbell against a bullet is evaluated by computing each component's expected return and weighting them by market value \citep[chap.~32, p.~724]{s7-fabozzifixed}.
+
+\emph{Volatility views.} A barbell has more convexity than a bullet of the same duration. It gains relative to the bullet when yields move a lot and gives up yield or rolldown when they do not, so it is a long-volatility position; options and callable or mortgage securities give the opposite exposure (Interpretation; \hyperref[meth:callable-putable-bond-valuation]{callables}).
+
+\emph{Across currencies.} Hedged returns differ by local risk premia, so a foreign bond is compared on its hedged yield. Curve positions can be taken in several markets, with currency hedged or kept as a separate decision \citep[chap.~6, sec.~6.2, pp.~393--396]{managing-investment-portfolios-2007}; \citep[chap.~57, pp.~1418--1425]{s7-fabozzifixed}.
+
+\qffield{Practice} \emph{Original} (the invented curve).
+\begin{itemize}
+\item \emph{Market-consistent.} If forwards are realised, every zero earns the one-year rate of 3.15 percent. If the curve is unchanged, the five-year zero earns 4.352 percent over the year.
+\item \emph{Slope.} A DV01-neutral 2s10s steepener buys 4.18 two-year bonds per ten-year bond sold and gains 6.36 per 100 of ten-year face on a 100 basis point twist that lowers the short end and raises the long.
+\item \emph{Volatility.} A duration-matched barbell of the one-year and ten-year bonds beats the five-year bullet by 0.15 percent for a 150 basis point parallel move up and also for one down, and earns the same at no move.
+\item \emph{Currency.} A Bund yielding 2.6 percent, hedged into dollars with U.S. and euro three-month rates of 4.3 and 2.2 percent, earns about 4.7 percent before hedging costs, more than a 4.5 percent Treasury of similar duration. The view is then on the German local risk premium, not on the euro.
+\end{itemize}
+
+\qffield{Conditions} DV01-neutral trades are neutral to parallel moves only; hedge ratios drift. Hedged comparisons assume covered interest parity and ignore the cross-currency basis and roll costs.
+
+\qffield{Pitfalls} Positioning against the current curve when the market already prices the move in the forwards. Calling a barbell-against-bullet trade a duration trade. Comparing foreign yields unhedged with domestic yields.
+
+\qffield{See also} \hyperref[meth:curve-strategy-evaluation]{evaluating curve strategies}; \hyperref[meth:yield-curve-factor-exposures]{curve factors}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Evaluating a yield-curve strategy: return effects of benchmark yield changes, key-rate durations against the benchmark, and the expected return and risk of the strategy]\label{meth:curve-strategy-evaluation}
+\qffield{Statement} \emph{Return effects.} A portfolio's return relative to its benchmark from a change in yields is approximately $-\sum_k(KRD^P_k-KRD^B_k)\Delta y_k$, the active key-rate durations times the key-rate changes. Index managers match key-rate durations to remove this tracking (\citep[chap.~43, pp.~1083--1084]{s7-fabozzifixed}; \hyperref[meth:yield-curve-factor-exposures]{key-rate durations}). Equal total duration with different key-rate profiles means exposure to slope and curvature.
+
+\emph{Expected return and risk.} The strategy's expected relative return is the sum of differences in yield income, rolldown and value of convexity plus the effect of the rate view on its active key-rate exposures. Ilmanen's framework evaluates duration-neutral positions this way (chap.~32, pp.~724--727). Its risk is the volatility of the active key-rate exposure, $\sqrt{a^\top\Sigma a}$ with $a$ the active key-rate durations and $\Sigma$ the covariance of key-rate yield changes (Interpretation).
+
+\qffield{Practice} \emph{Original.} A portfolio and its benchmark both have duration 6.2.
+\begin{itemize}
+\item \emph{Key rates.} The benchmark's key-rate durations at 2, 5, 10 and 30 years are 0.6, 1.4, 2.4 and 1.8; the portfolio's 0.9, 1.0, 2.0 and 2.3. The portfolio is therefore long 2s and 30s and short 5s and 10s, a barbell against a bulletier benchmark.
+\item \emph{Scenarios.} A parallel $+50$ basis point shift leaves relative return unchanged. A bear steepener (2-year unchanged, 5-year $+25$, 10-year $+50$, 30-year $+75$ basis points) costs 0.075 percent. A butterfly (wings $-25$, belly $+25$) earns 0.40 percent.
+\item \emph{Expected return and risk.} Assuming the barbell rolls down 4 basis points less and is worth 3 basis points more in convexity, its expected relative return with no view is $-1$ basis point a year. With key-rate yield volatilities of 75 to 90 basis points and correlations of 0.7 to 0.95, its tracking error is about 0.23 percent. The trade is worth taking only with a conviction on curvature that pays for the carry.
+\end{itemize}
+
+\qffield{Conditions} Linear key-rate approximations; scenario returns ignore convexity, spread and carry differences unless added. Covariances are estimates.
+
+\qffield{Pitfalls} Calling a portfolio neutral because its total duration matches the benchmark's. Evaluating a curve trade on scenarios without carry and rolldown. Using key-rate durations computed with different vertices for portfolio and benchmark.
+
+\qffield{See also} \hyperref[meth:yield-curve-positioning]{curve positioning}; \hyperref[meth:active-risk-decomposition]{active risk}.
+
+\end{qfmethod}

@@ -88,6 +88,18 @@ Changed in order matching and fragmentation / source review / optimal execution 
 
 Changed in market design and liquidity / source review / optimal execution / execution control reviews: `def:block-trade` (Harris's block dealers against block brokers in the upstairs market, pp. 328--330) and `def:order-exposure-decisions` (how markets protect exposure: time precedence with a meaningful tick, undisclosed orders, audit trails, delayed reporting, p. 389). Partly checked 2026-10-16, draft; human review outstanding.
 
+Written in the derivatives, portfolio and execution batch (2026-10-19):
+
+In `trade-strategy-governance.tex` (topic `trade-execution`):
+
+- `meth:execution-cost-measures`: effective spread, VWAP cost and implementation shortfall with MIP chap. 10's examples.
+- `def:electronic-trading-environment`: drivers, fragmentation, trader types, systems, latency, risks, mitigations and abuses.
+- `meth:trade-strategy-selection`: motives, inputs, benchmarks, strategies for three orders and algorithm classes.
+- `def:trade-implementation-by-market`: implementation in equities, fixed income, listed and OTC derivatives and spot FX.
+- `meth:trade-execution-evaluation-governance`: cost measurement, statistical evaluation and procedures under FINRA Rule 5310 and MiFID II article 27.
+
+All partly checked 2026-10-19, draft. Examples in `notes/artefacts/trade-execution/trade-execution-checks.py`; human review is outstanding. Coverage records are editorial, not study. `def:transaction-costs`, `def:implementation-shortfall`, `def:spread-measures`, `def:execution-benchmark` and `mech:venue-competition-fragmentation` are linked, not repeated.
+
 ## Source verification after macro markets and pricing review
 
 source verification (2026-10-17) (source verification and bounded tests, not study or human review): `def:clearing-settlement` resolved by merge into `def:transaction-costs` (its clearing-and-settlement item): the CPSS-IOSCO principles' Annex H definitions of clearing, final settlement, delivery versus payment, principal risk, central counterparty, novation and open offer (pp. 174-178, BIS PDF). The CPMI's online glossary page renders its terms by script and was not compared; the CPSS glossary of 2003 was not read. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.

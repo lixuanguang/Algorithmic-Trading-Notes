@@ -1,0 +1,121 @@
+\section{Derivative overlays for portfolio exposures}
+
+These entries use swaps, forwards, futures and volatility derivatives on top of a portfolio to change its interest-rate, currency, equity and volatility exposure, to implement allocation changes and rebalancing, and to read market expectations from prices; the last is a case comparing derivatives with cash trades. Contract mechanics and valuation are in \hyperref[meth:rate-bond-forward-valuation]{rate and bond forwards}, \hyperref[meth:swap-valuation-replication]{swaps} and \hyperref[def:vix-variance-dividend-swaps]{the VIX and variance swaps}. Numbers are checked in \texttt{notes/artefacts/derivative-overlays/overlay-checks.py}; costs and prices in the original examples are illustrative.
+
+\begin{qfmethod}[Modifying portfolio risk with forward commitments: interest-rate swaps and futures to change duration, currency forwards to hedge foreign assets, and equity futures and swaps to change beta or create exposure]\label{meth:forward-commitment-risk-overlays}
+\qffield{Statement} \emph{Interest rates.} Managers with a rate view lengthen or shorten duration, and benchmark-relative managers keep duration matched; futures do this ``quick and less expensive'', especially temporarily \citep[chap.~62, pp.~1533--1534]{s7-fabozzifixed}. The duration-based hedge ratio is $N^*=PD_P/(V_FD_F)$, with $P$ the portfolio's value, $D_P$ its duration, $V_F$ the futures contract price and $D_F$ the duration of the cheapest-to-deliver bond. A futures price falls when rates rise, so a portfolio that loses from rising rates is hedged by selling futures \citep[chap.~6, sec.~6.4, pp.~166--167]{s7-hulloptions}. A receive-fixed swap adds duration roughly like a long bond financed at the floating rate, and a pay-fixed swap removes it (\hyperref[def:swaps-as-forward-strips]{swaps as bond packages}).
+
+\emph{Currencies.} A foreign bond's unhedged home-currency return is approximately its local return plus the currency return. Fully hedged with forwards, it earns the local return plus the forward premium, which under interest-rate parity is approximately the domestic short rate plus the bond's local risk premium: $HR\approx r_l+f\approx i_d+(r_l-i_f)$. So hedged returns across markets differ only by local risk premia \citep[chap.~6, sec.~6.2, pp.~393--396]{managing-investment-portfolios-2007}.
+
+A \emph{cross-currency swap} converts a foreign-currency bond's coupons and principal into domestic-currency flows for the bond's life, a hedge that rolling forwards gives only period by period (\hyperref[meth:swap-valuation-replication]{currency swaps}). \emph{Equities.} An index-futures position of $(\beta-\beta^*)V_A/V_F$ contracts moves a portfolio's beta from $\beta$ to $\beta^*$ (Hull, chap.~3, sec.~3.5, eq.~(3.5), pp.~85--88). Equity forwards do the same off exchange for a set date. An equity swap, receiving the index's total return and paying a floating rate, turns cash into equity exposure without buying shares (\hyperref[meth:swap-valuation-replication]{equity swaps}).
+
+\qffield{Practice} \emph{Reproduced.}
+\begin{itemize}
+\item \emph{Duration hedge} (Hull Example~6.5). Hedging \$10 million of bonds with duration 6.80 using T-bond futures at 93-02, with a cheapest-to-deliver duration of 9.20, takes $10{,}000{,}000\times6.80/(93{,}062.50\times9.20)=79.42$, or 79 contracts short.
+\item \emph{Beta} (Hull, sec.~3.5). For a \$5.05 million portfolio with beta 1.5 and futures worth 252{,}500, a full hedge is 30 contracts short. Reducing beta to 0.75 takes 15 short, and raising it to 2.0 takes 10 long.
+\item \emph{Currency} (MIP, pp.~394--396). With eurozone rates at 3.0 percent, U.S. rates at 4.5 percent and spot at \texteuro0.8000 per dollar, the forward discount is $-1.5$ percent, giving the book's \texteuro0.7880; exact parity, $0.8\times1.03/1.045$, gives 0.7885. For a U.K. investor, fully hedged Japanese and Canadian ten-year bonds differ by their local risk premia, 0.91 against 1.86 percent, so the Canadian bond is preferred hedged.
+\end{itemize}
+
+\emph{Original.}
+\begin{itemize}
+\item Raising a 200 million portfolio from duration 5.0 to 6.5 needs 30{,}000 of added DV01: 400 futures at a DV01 of 75 each, or 37.14 million of a ten-year receive-fixed swap with a DV01 of 807.8 per million on a flat 4 percent curve.
+\item A euro bond earning 3.1 percent locally loses 3.1 percent unhedged if the euro falls 6.2 percent, and earns 1.9 percent hedged at a forward premium of $-1.2$ percent.
+\item 50 million in cash earning SOFR, plus a swap receiving index total return and paying SOFR $+$ 30 basis points, earns the index less 30 basis points.
+\end{itemize}
+
+\qffield{Conditions} The duration hedge assumes parallel shifts and a stable cheapest-to-deliver bond; basis risk remains in cross-hedges (Handbook, p.~1534). Futures need margin and rolling; swaps add counterparty and collateral terms; currency hedges cover expected cash flows only, so a variable-coupon asset is over- or under-hedged (MIP, p.~395).
+
+\qffield{Pitfalls} Using futures notional instead of DV01 to size a duration change. Hedging currency at the spot amount and forgetting coupons and the forward points. Treating an equity swap as cash-equivalent without its financing spread and counterparty exposure.
+
+\qffield{See also} \hyperref[def:futures-hedge-basis]{futures hedging and basis}; \hyperref[meth:derivative-overlay-allocation]{allocation overlays}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Using volatility derivatives: variance and volatility swaps valued by option replication, vega and variance notionals, VIX futures as hedges and their roll cost, and selling variance]\label{meth:volatility-derivative-applications}
+\qffield{Statement} \emph{Instruments.}
+\begin{itemize}
+\item A \emph{variance swap} pays $L_{\text{var}}(\bar V-V_K)$ at expiry, where $\bar V$ is the realised variance and $V_K$ the strike.
+\item A \emph{volatility swap} pays $L_{\text{vol}}(\bar\sigma-\sigma_K)$.
+\end{itemize}
+Variance swaps are easier to value, because the expected variance can be replicated from a strip of out-of-the-money options. In Hull's eq.~(26.8),
+\[ \hat E(\bar V)=\frac2T\ln\frac{F_0}{S^*}-\frac2T\Bigl(\frac{F_0}{S^*}-1\Bigr)+\frac2T\sum_i\frac{\Delta K_i}{K_i^2}e^{rT}Q(K_i), \]
+with $Q(K_i)$ the put price below $S^*$ and the call price above it. A volatility swap needs the variance of realised variance as well \citep[chap.~26, sec.~26.16, pp.~629--632]{s7-hulloptions}. Exchange alternatives are \emph{VIX futures and options}, bets ``only on volatility'' rather than on the level of the index (chap.~15, sec.~15.11, Example~15.8, pp.~358--359). Contract terms and the VIX's construction are in \hyperref[def:vix-variance-dividend-swaps]{the VIX and variance swaps}.
+
+\emph{Uses} (Interpretation).
+\begin{itemize}
+\item \emph{Hedge.} A long variance swap or VIX calls pay when realised or implied volatility jumps, which on equity indices tends to coincide with falls, so they hedge an equity portfolio's crash risk. Their convexity in volatility helps.
+\item \emph{Vega hedging.} An options book that is short vega offsets its vega with a long variance swap, which does not need delta hedging.
+\item \emph{Selling variance.} Selling variance collects the gap between implied and later realised variance, but pays out in crises.
+\item \emph{Cost.} In calm markets the VIX futures curve usually slopes upward, so a long futures hedge loses as each contract converges to a lower spot index.
+\end{itemize}
+
+\qffield{Practice} \emph{Reproduced} (Hull).
+\begin{itemize}
+\item \emph{VIX futures} (Example~15.8). One VIX future bought at 18.5 and sold at 19.3 gains \$800, at \$1{,}000 per point.
+\item \emph{Variance swap} (Example~26.4). The index is at 1{,}020, with $r=4$ percent, $q=1$ percent, three months and strikes 800 to 1{,}200 at implied volatilities from 29 down to 21 percent. The forward is 1{,}027.68, and the strip prices $Q(K)$ are 2.22, 5.22, 11.05, 21.27, 51.21, 38.94, 20.69, 9.44 and 3.57. The expected variance is 0.0621, a volatility of 24.9 percent, so receiving variance against 0.045 on 100 million is worth 1.69 million.
+\item \emph{Volatility swap} (Example~26.5). Receiving realised volatility against 23 percent is worth 1.82 million when the standard deviation of realised variance is 0.01.
+\end{itemize}
+
+\emph{Original.}
+\begin{itemize}
+\item \emph{Vega notional.} A vega notional of 100{,}000 at a strike of 24 is 2{,}083.3 variance units. Realised volatility of 16 loses 666{,}667 and 32 gains 933{,}333: the payoff is convex in volatility, so equal moves either way do not cancel.
+\item \emph{Roll cost.} A one-month VIX future bought at 20 in contango, with the index steady at 18, loses 2{,}000 per contract at expiry. That is the running cost of the hedge in calm markets.
+\end{itemize}
+
+\qffield{Conditions} The replication assumes no jumps and a continuum of strikes; a finite strip and jumps bias it, the larger issue for selling variance. Realised-variance definitions (zero mean, $n$ or $n-1$, daily closes) are set in the contract. VIX futures settle to a special opening quotation from one expiry, not to the spot index (\hyperref[def:vix-variance-dividend-swaps]{settlement}).
+
+\qffield{Pitfalls} Treating a VIX future as the spot VIX. Sizing a variance swap in variance notional when the risk view is in vega. Selling variance on the evidence of a premium in calm years without stressing a crash.
+
+\qffield{See also} \hyperref[meth:greeks-delta-gamma-hedging]{vega and gamma}; \hyperref[def:volatility-components]{volatility components}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Derivative overlays for allocation: targeting equity and rate exposure, implementing allocation changes and rebalancing with futures, and inferring market expectations from derivative prices]\label{meth:derivative-overlay-allocation}
+\qffield{Statement} \emph{Allocation.} Interest-rate and stock-index futures change a fund's stock--bond mix efficiently without trading the underlying holdings. A long cash bond plus short bond futures is a synthetic short-term riskless position, and cash plus long futures a synthetic bond (eqs.~(62-4)--(62-6)). Futures with a riskless position also underlie portable alpha \citep[chap.~62, pp.~1535--1537]{s7-fabozzifixed}.
+
+\emph{Rebalancing.} Derivative trades (futures, total return swaps) can be ``carried out so that the total exposure to asset classes \dots\ closely mimics the effect of rebalancing'', with lower costs, faster implementation and active managers left undisturbed. Some exposures cannot be replicated, derivatives markets have liquidity limits, and for taxable investors tax may favour cash trades. ``Many investors, including tax-exempt investors, find it appropriate to use both'' \citep[chap.~11, sec.~3.4, pp.~715--716]{managing-investment-portfolios-2007}.
+
+\emph{Inferring expectations.} Derivative prices encode risk-neutral expectations.
+\begin{itemize}
+\item \emph{Policy rates.} Policy-rate futures and meeting-dated OIS give implied probabilities of policy moves (\hyperref[meth:policy-path-ois-futures]{reading the policy path}).
+\item \emph{Forward rates} combine expected rates and term premia (\hyperref[meth:forward-rates-expected-returns]{forward rates and returns}).
+\item \emph{Option prices} give implied volatility and the risk-neutral probability of ending above a strike, $-e^{rT}\partial C/\partial K$, which a narrow call spread approximates.
+\end{itemize}
+Each is a risk-neutral quantity, which includes risk premia, not a forecast (Interpretation).
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Synthetic 60/40 to 50/50.} A 1 billion fund moves from 60/40 to 50/50 by selling 333 equity index futures (multiplier 50, index 6{,}000, 300{,}000 notional each) and buying 750 bond futures (DV01 80, adding 100 million at duration 6.0). The underlying holdings and managers are untouched.
+\item \emph{Implied probability from options.} With the index at 6{,}000, 18 percent volatility, 4 percent and three months, a 5{,}975/6{,}025 call spread implies a risk-neutral probability of 0.5264 that the index ends above 6{,}000, matching $N(d_2)=0.5264$.
+\item \emph{Implied probability from OIS.} A meeting-dated OIS 18 basis points below the policy rate, when only a 25 basis point cut is possible, implies a 72 percent probability of the cut.
+\end{itemize}
+
+\qffield{Conditions} Futures overlays need liquid contracts close to the exposures, margin and a roll policy; the beta and duration matches are estimates. Risk-neutral probabilities shift weight toward bad states, so they overstate the real-world probability of a crash and understate that of a rally (Interpretation).
+
+\qffield{Pitfalls} Reading a risk-neutral probability as a forecast. Rebalancing with futures that track the asset class poorly. Leaving an overlay unwound after the cash rebalance is done, doubling the change.
+
+\qffield{See also} \hyperref[meth:forward-commitment-risk-overlays]{modifying risk}; \hyperref[ex:endowment-derivative-overlay-case]{endowment case}.
+
+\end{qfmethod}
+
+\begin{qfexample}[Endowment case: derivatives against cash markets for rebalancing a drifted portfolio and for a tactical equity tilt]\label{ex:endowment-derivative-overlay-case}
+\qffield{Statement} Fictional case. A 2 billion endowment has a policy weight of 60 percent in global equities, with the rest in bonds and alternatives, and a rebalancing band of $\pm4$ percent. After a rally, equities are 66 percent of the fund. The investment committee also wants a tactical tilt of $+5$ percent to equities for three months. It asks whether to trade the underlying holdings or use futures. The trade-offs are those of \citep[chap.~11, sec.~3.4, pp.~715--716]{managing-investment-portfolios-2007} and of \hyperref[meth:derivative-overlay-allocation]{allocation overlays}; costs below are illustrative.
+
+\qffield{Practice} \emph{Rebalancing 120 million} (6 percent of 2 billion).
+\begin{itemize}
+\item \emph{Cash trades.} Selling equities at 25 basis points one-way and buying bonds at 10 costs about 420{,}000. The trades go through the active managers' portfolios and take days.
+\item \emph{Futures.} At about 2 basis points a side, futures cost about 48{,}000 and execute in minutes, leaving the managers untouched.
+\item \emph{Holding the overlay for a year} adds four quarterly rolls; at 10 basis points of mispricing each, that is 480{,}000, more than the cash trade.
+\item \emph{Margin and liquidity.} Initial margin of 6 percent (7.2 million) and a 10 percent adverse move (12 million of variation margin) must be met from liquid assets.
+\end{itemize}
+\emph{Decision.} Use futures to restore the 60 percent weight at once, then move the cash over the following weeks as the managers trim, unwinding the futures as the cash trades settle. Keep a liquidity reserve for margin. A cash rebalance alone suits the part that futures track poorly: alternatives, and active managers' idiosyncratic holdings.
+
+\emph{Tactical tilt.} The tilt is implemented with 100 million of equity futures against bond futures, so it can be reversed cheaply. If equities lose 8 percent against bonds, the tilt loses 8 million; if they gain 6 percent, it gains 6 million. With a 15 percent volatility of the equity--bond return spread, it adds about 0.75 percent of tracking risk a year. The committee's risk budget and stop-loss limit, not the futures, decide whether it is acceptable (\hyperref[meth:market-risk-limits-capital]{limits}).
+
+\qffield{Conditions} Exposures that futures replicate closely (developed equity indices, government bonds) suit overlays; idiosyncratic and illiquid holdings do not. Taxable investors face different tax treatment of futures and cash trades, which can reverse the choice (MIP, p.~715).
+
+\qffield{Pitfalls} Leaving futures on after the cash rebalance, doubling the move. Ignoring roll and margin when comparing costs over a long holding period. Running a tactical tilt without a stop and a review date.
+
+\qffield{See also} \hyperref[meth:derivative-overlay-allocation]{allocation overlays}; \hyperref[meth:asset-class-portfolio-construction]{asset-class construction}.
+
+\end{qfexample}

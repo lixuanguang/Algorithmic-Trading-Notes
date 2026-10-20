@@ -1,0 +1,88 @@
+\section{Bond returns and interest-rate risk}
+
+These entries decompose a fixed-rate bond's return, measure its sensitivity to its own yield (Macaulay, modified and money duration, PVBP, convexity) and to the curve (effective, key-rate and empirical duration), and aggregate the measures across a portfolio. Hull's continuous-compounding treatment, the parallel-shift assumption and the long-convexity trade are in \hyperref[mod:duration-convexity]{duration and convexity}. Numbers are checked in \texttt{notes/artefacts/bond-valuation-risk/bond-valuation-checks.py}; semiannual coupons and bond-equivalent yields; durations in years.
+
+\begin{qfmethod}[Sources of return on a fixed-rate bond: coupons, reinvestment income, pull to par and the effect of yield changes; horizon return; and why a horizon equal to Macaulay duration balances price and reinvestment risk]\label{meth:bond-return-decomposition}
+\qffield{Statement} A bond held to a horizon returns its coupons, interest on reinvested coupons, and the difference between its sale (or redemption) price and its purchase price. The price change splits into the \emph{pull to par}, the change the bond would show if its yield did not move, and the effect of any yield change. The \emph{total} (horizon) return is the rate that grows the full purchase price into the coupons with interest on interest plus the sale price; it needs an assumed reinvestment rate and an assumed yield at the horizon \citep[chap.~4, pp.~76--79 and~87--90]{s7-fabozzifixed}. If the yield stays at its purchase level and coupons are reinvested at it, the horizon return equals the yield to maturity.
+
+\emph{Horizon and duration.} A rise in rates lowers the sale price (price risk) but raises reinvestment income (reinvestment risk works the other way). For a single small change in yield just after purchase, the two offset when the horizon equals the bond's Macaulay duration, so the horizon return stays close to the purchase yield; with a shorter horizon price risk dominates, with a longer one reinvestment risk does (Interpretation, from the definitions in chap.~5, pp.~118--120).
+
+\qffield{Practice} Example, original: a 7-year 5 percent bond bought on a coupon date at 4.80 percent, price 101.1772, Macaulay duration 5.9987 years.
+\begin{itemize}
+\item \emph{Three years, yield unchanged}: coupons 15.0000, interest on interest 0.9293, pull to par $-0.4571$ (the price falls to 100.7201), a gain of 15.4722 per 100 and a return of 4.80 percent.
+\item \emph{Yield +100 basis points just after purchase}: interest on interest 1.1305, pull to par $-0.4571$, rate effect $-3.5398$; 3.8112 percent. \emph{Yield $-100$ basis points}: interest on interest 0.7308, rate effect +3.6942; 5.8103 percent.
+\item \emph{Horizon equal to Macaulay duration}: a 10 basis point rise or fall leaves the annualised return within 0.003 basis points of 4.80 percent, and at or above it, because of convexity. For +100 basis points a 2-year horizon earns 2.82 percent and a 7-year horizon (to maturity) 4.95 percent.
+\end{itemize}
+
+\qffield{Conditions} The duration match holds for one small parallel change in the bond's own yield, immediately after purchase; as time passes duration falls more slowly than the horizon, so the match drifts and must be rebalanced. Non-parallel moves, defaults and options break it. Yield to maturity is a promised return, not a forecast: the realised return depends on the path of rates (\hyperref[def:bond-yield-spread-measures]{yield measures}).
+
+\qffield{Pitfalls} Calling a bond with a high yield the best bond for a horizon without projecting reinvestment and the sale price; the Handbook's four-bond example shows the yield ranking need not survive (chap.~4, pp.~80--81). Ignoring the pull to par on a premium bond and booking all the coupon as income.
+
+\qffield{See also} \hyperref[meth:yield-duration-pvbp]{duration}; \hyperref[meth:forward-rates-expected-returns]{forwards and expected returns}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Yield-based duration: Macaulay, modified, approximate modified and money duration, the price value of a basis point, and how maturity, coupon and yield level drive interest-rate risk]\label{meth:yield-duration-pvbp}
+\qffield{Statement} \emph{Macaulay duration} is the present-value-weighted average time to the bond's cash flows, $D_{\text{Mac}}=\sum_t t\,PV(CF_t)/P$ in years. \emph{Modified duration} $D_{\text{mod}}=D_{\text{Mac}}/(1+y/k)$, for $k$ payments a year, is the approximate percentage price change for a one-unit change in yield, assuming the cash flows do not change; it can be approximated from two repricings, $D\approx(V_- - V_+)/(2V_0\Delta y)$, which is how software usually computes it and the form that extends to \emph{effective} duration for bonds whose cash flows change with rates \citep[chap.~5, pp.~111--112 and~117--120]{s7-fabozzifixed}. \emph{Money} (dollar) duration is modified duration times the full price, a price change per unit change in yield. The \emph{price value of a basis point} (PVBP, DV01) is the absolute price change for one basis point, a special case of money duration (pp.~138--139).
+
+\emph{Drivers.} Other things equal, sensitivity rises with maturity and falls with the coupon rate and with the level of yields; a zero-coupon bond's Macaulay duration equals its maturity, and a bond's duration can be read as the maturity of a zero with the same sensitivity (pp.~105 and~110--111, 120).
+
+\qffield{Practice} \emph{Reproduced.} Fabozzi's 5 percent 20-year bond at 4 percent (price 113.6777; 116.7049 and 110.7527 at $\pm20$ basis points) has duration 13.09; its PVBP is 0.1489 for a fall and 0.1486 for a rise of one basis point (pp.~111 and~138--139).
+
+\emph{Original}: the 7-year 5 percent bond at 4.80 percent, price 101.1772. Macaulay duration 5.9987 years, modified duration 5.8581, matched to $10^{-6}$ by $\pm1$ basis point repricing; PVBP 0.0593 per 100 of par, so a 10 million holding loses about 5{,}927 per basis point and its money duration is 592{,}705 per 100 basis points. Full repricing for +10 basis points gives $-0.5838$ percent against $-0.5858$ percent from duration alone. A 10-year zero has Macaulay duration 10.0; lengthening maturity, lowering the coupon or lowering the yield each raises duration.
+
+\qffield{Conditions} Yield duration measures sensitivity to the bond's own yield, assuming fixed cash flows and, for a portfolio, the same change in every bond's yield. It is a first-order approximation, good for small changes; for larger ones add \hyperref[meth:convexity-portfolio-duration]{convexity}. Modified duration needs a yield with the compounding of the formula; Hull's continuous-yield duration equals Macaulay duration (\hyperref[mod:duration-convexity]{duration and convexity}).
+
+\qffield{Pitfalls} Reading duration as a time to wait rather than as a sensitivity; Fabozzi notes that an interest-only strip can have negative duration (pp.~120--121). Using modified duration for a callable bond or mortgage security (\hyperref[meth:curve-based-empirical-duration]{effective duration}). Comparing durations without yield volatility: a bond with lower duration but more volatile yields can be riskier (pp.~139--140).
+
+\qffield{See also} \hyperref[meth:bond-return-decomposition]{horizon return}; \hyperref[meth:curve-trades-carry-rolldown]{DV01-neutral trades}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Convexity and the duration-convexity price approximation; portfolio duration and convexity by market-value weights, contributions to duration, and the limits of these measures]\label{meth:convexity-portfolio-duration}
+\qffield{Statement} \emph{Convexity} measures the curvature of the price--yield relation, $C=P^{-1}\,d^2P/dy^2$, approximated by $(V_++V_--2V_0)/(V_0\Delta y^2)$. The percentage price change is then approximately $-D_{\text{mod}}\Delta y+\tfrac12C(\Delta y)^2$. Option-free bonds have positive convexity, so the approximation from duration alone understates the price after a move either way; callable bonds and mortgage securities can have negative convexity \citep[chap.~5, pp.~124--128]{s7-fabozzifixed}. Vendors scale convexity differently: Fabozzi's Eq.~(5-4) divides by $2V_0\Delta y^2$ and is used with $C\,\Delta y^2$; the measure is meaningful only with its matching adjustment formula (pp.~126--127).
+
+\emph{Portfolios.} Portfolio duration (and convexity) is the market-value-weighted average of the bonds' measures; each bond's \emph{contribution to duration} is its weight times its duration. The average assumes every bond's yield changes by the same amount, equivalent to perfectly correlated yield changes (pp.~121--123).
+
+\qffield{Practice} \emph{Reproduced.} For Fabozzi's 20-year bond the convexity measure is 112.38 from the printed four-decimal prices but 112.27 from exact prices: with a 20 basis point shock, price rounding is divided by $\Delta y^2$. His three-bond portfolio has duration 8.81 (p.~122).
+
+\emph{Original}, the 7-year bond (duration 5.8581, convexity 40.63):
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Yield change & Full repricing & Duration only & Duration + convexity \\
+\midrule
++100 bp & $-5.6600\%$ & $-5.8581\%$ & $-5.6549\%$ \\
++200 bp & $-10.9431\%$ & $-11.7162\%$ & $-10.9036\%$ \\
+$-200$ bp & $+12.5717\%$ & $+11.7162\%$ & $+12.5288\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+A portfolio of 4 million par of a 2-year 3 percent note at 4.20 percent, 3 million of a 7-year 4.5 percent note at 4.60 percent and 3 million of a 20-year 5 percent bond at 4.90 percent has weights 39.4, 30.0 and 30.6 percent and modified durations 1.915, 5.942 and 12.605: portfolio duration 6.3955 (contributions 0.754, 1.785 and 3.857) and convexity 79.36. For an equal 50 basis point rise in all three yields, $-D\Delta y+\tfrac12C\Delta y^2$ gives $-3.0985$ percent against $-3.1012$ percent by full repricing. For a steepening of 10, 50 and 90 basis points the portfolio loses 4.174 percent, against 3.198 percent from its duration times the average change.
+
+\qffield{Conditions} \emph{Limits.} Duration and convexity are local, yield-based and assume a parallel change in yields; a twist or a spread change moves the portfolio differently; options change the cash flows; and the portfolio's internal rate of return, 4.7357 percent here, is not its value-weighted average yield, 4.5343 percent \citep[chap.~4, pp.~84--85]{s7-fabozzifixed}.
+
+\qffield{Pitfalls} Mixing convexity figures from vendors that scale them differently. Hedging a barbell with a bullet of equal duration and calling the position curve-neutral. Treating positive convexity as free (\hyperref[mod:duration-convexity]{carry is not determined by convexity}).
+
+\qffield{See also} \hyperref[meth:yield-duration-pvbp]{duration and PVBP}; \hyperref[meth:curve-based-empirical-duration]{key-rate and effective measures}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Curve-based and empirical risk measures: effective duration and convexity for bonds with embedded options, the price change from them, key-rate durations, and empirical against analytical duration]\label{meth:curve-based-empirical-duration}
+\qffield{Statement} \emph{Effective duration and convexity} use the same repricing formulas as approximate modified duration and convexity, but shift the benchmark curve and reprice with a model that lets the cash flows change, so the call, put or prepayment behaviour is included. For bonds with embedded options they can differ greatly from the yield-based measures, and they are the appropriate ones \citep[chap.~5, pp.~117--118 and~128--135]{s7-fabozzifixed}. \emph{Different shocks.} Even for an option-free bond the two measure different things: a curve-based measure shifts every benchmark rate by the same amount, and a yield-based measure shifts the bond's own yield. A parallel shift of the zero curve weights each cash flow's time by its present value at the zero rates, and a yield shift by its present value at the yield; the two duration figures, and the two convexities, are equal when the curve is flat in the compounding used for both, or for a single cash flow, and in general differ otherwise, by more as the curve is steeper and the cash flows more spread out. The price change for a benchmark curve shift $\Delta y$ is $-D_{\text{eff}}\Delta y+\tfrac12C_{\text{eff}}(\Delta y)^2$, with convexity scaled to match. \emph{Key-rate durations} measure sensitivity to a shift in one point of the benchmark curve with the others fixed; they sum to the effective (parallel) duration and expose non-parallel risk (chap.~33, pp.~770--773; Ho, cited there). \emph{Empirical duration} is estimated by regressing a bond's price changes on changes in a benchmark yield; it needs no model of cash flows and captures how spreads move with rates, but depends on the sample, mixes in other influences and can be distorted when price series are not transaction prices (chap.~22, pp.~488--489).
+
+\qffield{Practice} \emph{Reproduced.} Fabozzi's lattice prices for 10 basis point shifts give effective duration and convexity of 4.67 and 24.84 for a five-year option-free bond, 4.50 and $-47.46$ for a callable bond and 3.17 and 228.32 for a putable bond; for the callable bond a 100 basis point rise is $-4.74$ percent (chap.~5, Exhibits~5-15 and~5-20).
+
+\emph{Original} (continuous zero curve 3.80 to 4.50 percent at vertices 0.5, 1, 2, 3, 5, 7 and 10 years, linear between them): a 7-year 5 percent bond prices at 103.8017, effective duration 6.0074 and convexity 39.674, with key-rate durations of 0.012, 0.040, 0.089, 0.210, 0.388 and 5.269 at the 0.5- to 7-year vertices, summing to 6.0074. A steepening of 5 to 35 basis points across the vertices changes its value by $-1.7477$ by key-rate durations and $-1.7302$ by full repricing, the gap being convexity. Callable at 102 after 2.5 years, with the call exercised whenever the forward value exceeds 102 (a zero-volatility rule): today the call is out of the money and $\pm5$ basis point shifts give an effective duration of 6.008, the straight bond's; $\pm25$ basis point shifts cross the exercise boundary and give 4.956; 60 basis points lower the call is exercised and effective duration is 2.386 against 6.029 for the straight bond.
+
+\emph{Curve against yield measures} (original; continuous compounding for both). A 20-year 10 percent annual bond on the zero curve $z(t)=1\%+0.3\%\,t$ prices at 152.050048, a yield of 5.4546 percent. A parallel shift of the zero curve gives a duration of 10.218587 and convexity of 146.46; a shift of its own yield gives 11.213091 and 172.06. The rising curve discounts the distant cash flows more heavily than the flat yield, so the zero-curve weights sit earlier. For +100 basis points, full repricing gives $-9.525$ percent for the curve shift and $-10.400$ percent for the yield shift: the parallel curve shift raises this bond's yield by only 91.0 basis points. With every zero rate at 5.4546 percent the price is the same and the two durations and convexities coincide.
+
+Synthetic monthly data in which credit spreads fall by a quarter of any rise in Treasury yields give an empirical duration of 4.63 for a bond whose analytical duration is 6.5.
+
+\qffield{Conditions} Effective measures are model outputs: they depend on the rate model, the volatility assumed (the zero-volatility rule above ignores the option's time value) and the size of the shift, which near an exercise boundary changes the answer. Key-rate durations depend on the chosen vertices and interpolation. Empirical durations describe a past relation that can break.
+
+\qffield{Pitfalls} Applying yield duration to a callable or mortgage security. Assuming an option-free bond's effective (curve) duration equals its yield duration on a sloped curve, or comparing the two computed under different compounding conventions. Treating a single effective duration as constant across rate levels; the Handbook's callable bond ranges from 1.97 for a 250 basis point fall to 4.47 for a 1,000 basis point rise (Exhibit~5-16). Assuming key-rate durations of zero mean no curve risk where the vertices miss the cash flows.
+
+\qffield{See also} \hyperref[meth:convexity-portfolio-duration]{convexity}; \hyperref[meth:yield-curve-factor-exposures]{factor exposures}; \hyperref[def:bond-cash-flow-contingencies]{embedded options}.
+
+\end{qfmethod}

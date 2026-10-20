@@ -1,0 +1,69 @@
+\section{Arbitrage-free bond valuation and interest-rate trees}
+
+These entries value bonds so that no package of traded instruments can be bought and sold for a riskless profit: first an option-free bond from the spot curve, then a binomial tree of one-period rates calibrated to the same curve, and then the term-structure models behind such trees. Bonds whose cash flows depend on the path of rates are in \hyperref[meth:callable-putable-bond-valuation]{bonds with embedded options}. Numbers are checked in \texttt{notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py}; periods are annual and cash flows fall at period ends.
+
+\begin{qfmethod}[Arbitrage-free valuation: valuing an option-free bond from the spot curve, the arbitrage that enforces it, and why a calibrated lattice gives the same value]\label{meth:arbitrage-free-bond-valuation}
+\qffield{Statement} A bond is a package of zero-coupon cash flows, so its arbitrage-free value discounts each cash flow at the spot rate for its date: $V=\sum_tCF_t/(1+z_t)^t$. If the bond trades below this value, buying it and selling its cash flows as zero-coupon bonds earns a riskless profit; if above, the reverse. This is the law of one price applied to cash flows (\hyperref[meth:arbitrage-replication-carry]{arbitrage and replication}). Spot rates come from bootstrapping the par curve (\hyperref[meth:spot-par-forward-curves]{spot, par and forward curves}).
+
+A lattice must produce the same value for an option-free bond. The interest-rate tree ``must produce a value for an on-the-run optionless issue that is consistent with the current par yield curve''; a tree that does so is ``arbitrage free'' or ``fair'', and only a calibrated tree is used for valuation \citep[chap.~36, pp.~831--832]{s7-fabozzifixed}. For an option-free bond, discounting at spot rates is enough; the Handbook's 6.5 percent four-year bond is worth 104.643 by both routes (p.~840).
+
+\qffield{Practice} \emph{Reproduced and checked} (Handbook Exhibit~36-4: par rates 3.5, 4.2, 4.7 and 5.2 percent, annual coupons). Bootstrapped spot rates are 3.5000, 4.2148, 4.7352 and 5.2706 percent. The 6.5 percent four-year bond is worth 104.643098 at spot rates and exactly the same on the calibrated tree below. Averaging its value along all eight equally likely rate paths of the tree also gives 104.643098; individual paths range from 101.331 to 107.615.
+
+\emph{Arbitrage} (original). If the bond traded at 104.20, a dealer could buy it and sell its four cash flows separately as zero-coupon bonds at the spot prices, collecting 0.443 today with no future obligation. At 105.00 the dealer would buy the zeros, reconstitute the bond and sell it.
+
+\emph{Zero curve against lattice} (Interpretation). For a bond whose cash flows are fixed, both methods give one value because the tree is calibrated to the curve that produces the spot rates; the lattice adds nothing. It is needed when cash flows depend on future rates (calls, puts, caps, floors), because the spot curve alone fixes no distribution of future rates. The lattice then needs an assumed volatility, and its option values depend on it.
+
+\qffield{Conditions} Default-free or same-issuer cash flows; for a risky issuer the curve is that issuer's (the Handbook's Exhibit~36-4 is a hypothetical issuer's par curve). The arbitrage needs the ability to strip and reconstitute, or to trade the zeros; transaction costs and stripping limits make it a band.
+
+\qffield{Pitfalls} Discounting every cash flow at the bond's yield instead of at spot rates and calling the result arbitrage-free. Using a tree that has not been calibrated, which misprices even the option-free benchmark.
+
+\qffield{See also} \hyperref[meth:binomial-rate-tree-calibration]{calibrating a rate tree}; \hyperref[meth:bond-price-from-yield]{price from yield}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[The binomial interest-rate tree: lognormal one-period rates, calibration to the par curve, backward induction and pathwise valuation]\label{meth:binomial-rate-tree-calibration}
+\qffield{Statement} \emph{Framework.} In the Handbook's one-factor lattice the one-year rate follows a lognormal random walk with a stationary volatility $\sigma$. Adjacent rates at a date satisfy $r_{t,H}=r_{t,L}e^{2\sigma\sqrt t}$, with $\sqrt t$ dropped for one-year steps, and each branch has probability one-half. With $r_t$ the lowest rate at date $t$, the nodes are $r_te^{2\sigma i}$ for $i=0,\dots,t$ up-moves \citep[chap.~36, pp.~832--834, Exhibits~36-1 and~36-2]{s7-fabozzifixed}.
+
+\emph{Backward induction.} The value at a node is the average of the next period's two values plus the coupon, discounted at the node's rate: $V=\tfrac12\bigl[(V_H+C)+(V_L+C)\bigr]/(1+r^*)$. Starting from par plus the final coupon at maturity and working back is ``recursive valuation'' (pp.~834--836, Exhibit~36-3).
+
+\emph{Calibration.} Choose the lowest rate at each date so that the on-the-run par bond of that maturity values at 100, one date at a time. With $r_0=3.5$ percent and $\sigma=10$ percent, a first trial of 4.75 percent for $r_1$ prices the two-year 4.2 percent bond at 99.691. That is too low, so $r_1$ is reduced until it reaches 4.4448 percent, with $r_{1,H}=5.4289$ percent. The three-year bond then gives 4.6958, 5.7354 and 7.0053 percent, and earlier rates stay fixed as the tree grows (pp.~836--840, Exhibits~36-5 to~36-8).
+
+\emph{Pathwise valuation.} Alternatively, list every path of rates, discount the cash flows along each path and average with the path probabilities. On a recombining tree with $n$ steps there are $2^n$ paths, so this is practical only for short trees or with sampling (\hyperref[mod:term-structure-models-simulation]{Monte Carlo}). It gives the same value as backward induction and also handles cash flows that depend on the path.
+
+\qffield{Practice} \emph{Reproduced} (Handbook Exhibits~36-4 to~36-9, $\sigma=10$ percent). The calibrated year-1 rates are 4.4448 and 5.4289 percent. Year 2 has 4.6958, 5.7354 and 7.0053 percent. Year 3 has 5.0483, 6.1660, 7.5312 and 9.1986 percent; the exhibit prints 9.1987 for the top node, a rounding difference. Every on-the-run bond reprices at 100. The script recalibrates the tree for each curve shift rather than reading rates off the exhibit.
+
+\emph{Pathwise} (checked). The 6.5 percent four-year bond has eight equally likely paths, LLL to HHH. The average of their values equals the backward-induction value of 104.643.
+
+\emph{Interpretation.} The tree is a model of the distribution of future one-year rates that is consistent with today's curve. Volatility spreads the rates without changing the value of any option-free bond: recalibrated at 20 percent, the four-year bond is still worth 104.643, while its call and put options change (\hyperref[meth:callable-putable-bond-valuation]{embedded options}).
+
+\qffield{Conditions} Annual steps illustrate the method; practice uses much shorter steps, whose length matters (p.~832). A lognormal tree keeps rates positive and makes the spread between nodes proportional to the level. A normal-rate tree (\hyperref[mod:term-structure-models-simulation]{Ho--Lee}) allows negative rates and spreads nodes equally. One factor means all rates move together.
+
+\qffield{Pitfalls} Calibrating to yields of bonds that are not at par without adjusting the target prices. Using a volatility for valuation that differs from the one used to calibrate. Expecting the four-year bond's value to depend on $\sigma$: if it does, the tree is not calibrated.
+
+\qffield{See also} \hyperref[meth:arbitrage-free-bond-valuation]{arbitrage-free valuation}; \hyperref[meth:option-adjusted-spread]{option-adjusted spread}; \hyperref[meth:multi-period-binomial-valuation]{binomial option valuation}.
+
+\end{qfmethod}
+
+\begin{qfmodel}[Term-structure models: equilibrium against no-arbitrage short-rate models, Monte Carlo simulation of rate paths, and why path-dependent securities need it]\label{mod:term-structure-models-simulation}
+\qffield{Statement} \emph{Short-rate models.} In the traditional risk-neutral world, a bond price is the expected discount at the short rate, $P(t,T)=\hat E[e^{-\bar r(T-t)}]$. Once the process for $r$ is specified, the whole zero curve and its evolution follow. A one-factor model moves all rates in the same direction over a short interval, but not by the same amount, so the curve's shape can still change \citep[chap.~31, secs.~31.1--31.2, pp.~719--722]{s7-hulloptions}.
+
+\emph{Equilibrium models} start from assumptions about economic variables and derive a stationary process for $r$; today's curve is an \emph{output}. Hull's examples are Rendleman--Bartter, Vasicek and Cox--Ingersoll--Ross (pp.~722--725). In Vasicek's model $dr=a(b-r)dt+\sigma dz$, so mean reversion makes a bond less sensitive to the short rate than to its own yield: for a four-year zero with $a=0.1$, $B(0,4)=3.30$ against a duration of 4 (Example~31.1, p.~725).
+
+\emph{No-arbitrage models} are built to fit today's curve exactly; the curve is an \emph{input}, and the drift of $r$ generally depends on time. Ho--Lee, $dr=\theta(t)dt+\sigma dz$, chooses $\theta(t)$ to fit the curve; Hull--White adds mean reversion; Black--Derman--Toy and Black--Karasinski are lognormal \citep[chap.~32, sec.~32.1, pp.~732--736]{s7-hulloptions}. Traders prefer them for derivatives because ``a 1\% error in the price of the underlying bond may lead to a 25\% error in an option price'' (p.~732). The Handbook's lognormal lattice (\hyperref[meth:binomial-rate-tree-calibration]{rate tree}) is a calibrated no-arbitrage tree.
+
+\emph{Monte Carlo.} Some securities, mortgage-backed securities above all, have path-dependent cash flows that a recombining tree cannot hold. Monte Carlo simulates many paths of the rates needed for pricing, computes the cash flows on each, and averages their discounted values. Its four steps are to choose an interest-rate model, calibrate it, reduce factors if the model is too expensive, and generate the paths \citep[chap.~37, pp.~859--860]{s7-fabozzifixed}. Arbitrage-free models, which satisfy the Heath--Jarrow--Morton drift condition, keep the hedging securities correctly priced on all paths. Real-world models fitted to history do not fit today's curve; one-factor models give too-high correlations between forward rates for MBS, for which the chapter prefers a market model of forward rates (pp.~860--862).
+
+\qffield{Practice} Checks (original, same lattice).
+\begin{itemize}
+\item \emph{Monte Carlo on the lattice.} Sampling 200{,}000 paths of the calibrated tree prices the 6.5 percent four-year bond at 104.638, with a standard error of 0.004, against the exact 104.643. Sampling error, not bias, separates them.
+\item \emph{A path-dependent note.} A 6.5 percent note is redeemed at par at the end of the first year in which the one-year rate has been below 4.75 percent for two years running. It is worth 103.960, the exact average over the eight paths, and Monte Carlo agrees within sampling error. Backward induction on the recombining tree cannot value it, because the redemption depends on the previous year's rate as well as today's.
+\item \emph{Equilibrium against no-arbitrage.} A Vasicek model with $a=0.1$, $b=5$ percent, $\sigma=1$ percent and $r_0=4$ percent prices a four-year zero at 0.846849 in closed form, matched by 40{,}000 simulated paths within sampling error. Its four-year zero rate does not equal the bootstrapped 5.27 percent: the model's curve is an output. A Ho--Lee lattice with $\sigma=1$ percent (normal rates $a_t+\sigma(2i-t)$) has its central rates solved by forward induction on Arrow--Debreu prices. It then reprices all four zero-coupon bonds exactly by backward induction: the curve is an input. Its central rates, 3.500, 4.944, 5.812 and 6.950 percent, exceed the one-year forward rates of 3.500, 4.935, 5.784 and 6.893 percent. The gap is the convexity adjustment, which is zero in the first period.
+\end{itemize}
+
+\qffield{Conditions} Hull's treatment works in the traditional risk-neutral world; real-world processes for risk management need a market price of risk (sec.~31.3). The Monte Carlo example assumes the lattice's process; an MBS application adds a prepayment model, which drives most of the value.
+
+\qffield{Pitfalls} Calibrating an equilibrium model to a curve and expecting exact repricing of the hedges. Reading Monte Carlo noise as a model difference: report the standard error. Using a one-factor model for securities whose value depends on how the curve twists.
+
+\qffield{See also} \hyperref[meth:binomial-rate-tree-calibration]{rate tree}; \hyperref[meth:yield-curve-factor-exposures]{curve factor exposure}; \hyperref[mod:sabr-smile]{rate volatility smiles}.
+
+\end{qfmodel}

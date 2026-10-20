@@ -1,0 +1,225 @@
+\section{Equity portfolio management}
+
+These entries cover the decisions of an equity portfolio from mandate to structure: the roles of equities, segmenting the universe, income and costs, engagement, the active spectrum and the benchmark; cap-weighted against factor-based indexing and how index portfolios are built; fundamental and quantitative active strategies, how they are created and classified; and how active portfolios are constructed, sized and structured. Signals and forecasts are in \hyperref[meth:alpha-signal-combination]{signal combination}; the fundamental law in \hyperref[res:fundamental-law-active-management]{active management}. The original examples use a synthetic 500-stock universe with a factor model (market, ten sectors, value, idiosyncratic), not market data; numbers are checked in \texttt{notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py}.
+
+\begin{qfdefinition}[Equity portfolio mandates: roles of equities, segmenting the universe, income and costs, shareholder engagement, the passive-to-active spectrum, and choosing a benchmark]\label{def:equity-portfolio-roles-mandate}
+\qffield{Statement} \emph{Roles.} Equities provide long-run growth: their real returns exceeded bonds' in all 17 countries studied over 1900--2005. They also offer diversification across markets and companies with no home-market equivalent, and inflation protection over long horizons, though not over short ones or in high inflation \citep[chap.~7, sec.~2, pp.~408--410]{managing-investment-portfolios-2007}.
+
+\emph{Segmentation.} The universe is divided by size and style (value, growth, market-oriented), by geography (domestic, developed and emerging) and by economic sector and industry. Styles are identified from holdings or returns and summarised in a style box (secs.~5.1--5.1.6, pp.~429--448).
+
+\emph{Income and costs.} Equity income includes dividends and, for index portfolios, securities-lending revenue, which can be a significant offset to costs (p.~423). Costs include management fees, which are higher for active mandates, custody, trading costs from turnover, and taxes (pp.~467--469; \hyperref[def:transaction-costs]{transaction costs}).
+
+\emph{Engagement.} Under the UK Stewardship Code 2026, stewardship is ``the responsible allocation, management and oversight of capital to create long-term sustainable value for clients and beneficiaries''. Signatories ``engage to maintain or enhance the value of assets'' and ``actively exercise their rights and responsibilities'', voting included \citep[pp.~5 and~12, Principles~3--4]{uk-stewardship-code-2026}. \emph{Benefits}: better governance and capital allocation, information for investment decisions, and influence on risks that affect long-term value. \emph{Role of the manager}: dialogue with boards and management, voting, escalation when dialogue fails, collaboration with other investors, and reporting to clients; index managers, who cannot sell, rely on engagement and voting rather than exit (Interpretation). Engagement benefits all holders, while its costs fall on the engager, a free-rider problem (Interpretation). Activist hedge funds, which take concentrated stakes, achieve their aims in about two-thirds of cases \citep[abstract, p.~1729]{wide-brav-activism}.
+
+\emph{The active spectrum.} \emph{Passive} management does not reflect the manager's expectations in holdings; indexing is the main form. \emph{Active} management seeks to beat a benchmark through different holdings. \emph{Semiactive} or enhanced indexing seeks a small excess return at low tracking risk (MIP, sec.~3, pp.~410--412; sec.~6, p.~455). Rationales: active for perceived skill or opportunity, passive for low cost and tax efficiency, semiactive in between, and a core--satellite structure combining them (sec.~7.1, p.~461).
+
+\emph{Benchmark choice.} The benchmark should match the mandate's universe and style, be investable and be specified in advance; a manager's normal benchmark separates true active return from style ``misfit'' (MIP, sec.~7.1, pp.~461--462; \hyperref[meth:benchmark-selection-quality]{benchmark tests}).
+
+\qffield{Practice} \emph{Original} (illustrative costs).
+\begin{itemize}
+\item \emph{Index mandate.} Dividends of 1.80 percent, lending revenue of 0.05 percent, a 0.04 percent fee and 0.02 percent of trading cost (5 percent turnover at 20 basis points a side) give $+1.79$ percent on top of price return.
+\item \emph{Active mandate.} The same stocks with 0.02 percent lending, a 0.65 percent fee and 80 percent turnover (0.32 percent) give $+0.85$ percent. The active manager starts 0.94 percent behind and must add that in stock selection.
+\item \emph{Activism.} Brav et al.\ report 7 to 8 percent abnormal returns around a Schedule 13D filing (p.~1730). On a 5 percent position that is 0.35 to 0.40 percent of the portfolio.
+\end{itemize}
+
+\qffield{Conditions} Return figures are illustrative; MIP's market statistics date from 2004--2006, and the Stewardship Code is the UK's, effective 1~January~2026. Other jurisdictions' stewardship rules and the U.S.\ proxy rules differ.
+
+\qffield{Pitfalls} Choosing a broad-market benchmark for a style mandate and calling the misfit alpha. Ignoring securities-lending income and costs in comparing index vehicles. Treating engagement as free.
+
+\qffield{See also} \hyperref[def:cap-weighted-factor-indexing]{indexing approaches}; \hyperref[meth:manager-due-diligence]{manager due diligence}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Index-based equity investing: cap-weighted against factor-based (smart-beta) indexes, and the vehicles and approaches for index exposure]\label{def:cap-weighted-factor-indexing}
+\qffield{Statement} \emph{Cap-weighted indexes} weight each stock by its market value, usually free float. They represent the market's holdings, are self-rebalancing and need trading only for constituent changes and corporate actions (\hyperref[def:equity-fixed-income-index-types]{index types}). \emph{Factor-based indexes} weight by a rule that tilts towards rewarded factors (value, momentum, low volatility, quality) or by alternative weights (equal, fundamental). Ang describes long-only factor exposures as dominated by the market unless netted against short positions, and dynamic factors as time-varying long--short positions that remove market exposure \citep[chap.~14, pp.~449--451]{s7-ang}.
+\begin{itemize}
+\item They give systematic exposures cheaply, but turn over more and hold less liquid stocks.
+\item They can underperform for long periods: factor premiums compensate for losses in bad times.
+\item They are active decisions relative to the cap-weighted market (Interpretation).
+\end{itemize}
+
+\emph{Vehicles.} Index exposure is obtained through conventional index funds, ETFs, separate or pooled accounts, index futures and equity total-return swaps \citep[chap.~7, secs.~4.2.1--4.2.3, pp.~422--429]{managing-investment-portfolios-2007}.
+\begin{itemize}
+\item ETFs trade intraday and are often more tax-efficient, because in-kind redemption avoids distributing gains. They insulate long-term holders from the cost of others' liquidity, but pay licence fees and trading costs.
+\item Separate accounts are the cheapest for large institutions.
+\item Futures and swaps give exposure without holding the shares, with margin, roll or counterparty terms.
+\end{itemize}
+
+\emph{Approaches.} Pure indexing replicates a cap-weighted index. Smart-beta indexing replicates a factor index. Factor investing combines factor exposures to the asset owner's objectives, which Ang argues should start from the factors that matter to the owner rather than from market weights (pp.~485--487).
+
+\qffield{Practice} \emph{Original} (synthetic 500-stock universe).
+\begin{itemize}
+\item \emph{Turnover.} After a year of simulated returns and value scores, the cap-weighted index needs no rebalancing trades. An equal-weighted index needs 16.4 percent turnover, and a value-tilted index, cap weight times $e^{0.5\times\text{value score}}$, 11.6 percent.
+\item \emph{Concentration.} The effective number of stocks, $1/\sum w^2$, is 500 equal-weighted, 114 cap-weighted and 93 value-tilted: the tilt concentrates further in large cheap stocks.
+\item \emph{Exposures.} The value tilt's value score is 0.53 against 0.10; equal weighting has a strong small-size tilt (average log size 9.06 against 10.60).
+\item \emph{Tracking error.} Against the cap-weighted index the two alternatives have tracking errors of 2.1 and 1.9 percent: index-based, but active relative to the market.
+\end{itemize}
+
+\qffield{Conditions} Factor premiums are uncertain and time-varying; published backtests of factor indexes may overstate them (\hyperref[meth:deflated-sharpe-ratio]{backtest overfitting}). Vehicle costs and tax treatment depend on jurisdiction.
+
+\qffield{Pitfalls} Calling a factor index passive. Comparing an equal-weighted index with a cap-weighted benchmark without noting the size tilt. Ignoring turnover and capacity when a factor index becomes popular.
+
+\qffield{See also} \hyperref[meth:index-equity-portfolio-construction]{building index portfolios}; \hyperref[def:active-equity-strategies]{factor strategies}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Building an index equity portfolio: full replication, stratified sampling and optimisation, the causes and control of tracking error, and the sources of an index portfolio's return and risk]\label{meth:index-equity-portfolio-construction}
+\qffield{Statement} \emph{Methods} \citep[chap.~7, sec.~4.2.1, pp.~425--426]{managing-investment-portfolios-2007}.
+\begin{itemize}
+\item \emph{Full replication}, holding every index stock at its index weight, is used for indexes of fewer than about 1{,}000 liquid stocks. It gives minimal tracking risk and is self-rebalancing for value-weighted indexes.
+\item \emph{Stratified (representative) sampling} divides the index into cells, such as size, industry and style, and holds representative stocks to match each cell's weight.
+\item \emph{Optimisation} uses a multifactor risk model to choose holdings that minimise expected tracking risk subject to constraints. It can track poorly when correlations change, and needs frequent trading to stay optimal.
+\end{itemize}
+Grinold and Kahn call stratification ``glorified screening'': it controls risk only along the chosen categories, and fails if important risk dimensions are excluded \citep[chap.~14, pp.~394--395]{alpha-grinold}.
+
+\emph{Tracking error.} Even a full-replication fund lags its index through management and administration costs, transaction costs of index changes and cash flows, and the drag of cash in rising markets (MIP, p.~425). Index funds sometimes delay predictable index changes to limit tracking risk, while arbitrageurs trade ahead of them (pp.~424--425; \hyperref[ev:index-reconstitution-impact]{index reconstitution}). Control: replicate where liquidity allows, sample with a risk model, equitise cash with futures, trade index changes efficiently, and lend securities to offset costs.
+
+\emph{Return and risk sources.} An index portfolio returns the index, less fees and trading costs, plus or minus sampling and cash effects, plus lending income. Its risk relative to the index is tracking error from sampling and implementation, while its absolute risk is the market's (Interpretation).
+
+\qffield{Practice} \emph{Original} (synthetic 500-stock index, factor risk model).
+\begin{itemize}
+\item \emph{Stratified sample.} Holding the 10 largest stocks in each of 10 sectors, scaled to the sector weights, matches every sector weight with 100 stocks and gives a model tracking error of 1.22 percent.
+\item \emph{Optimised sample.} Reweighting the same 100 stocks to minimise tracking error against the risk model lowers it to 0.97 percent. Full replication has zero model tracking error.
+\item \emph{Cash.} Holding 2 percent in cash costs 0.08 percent a year when the market returns 8 percent and cash 4 percent; equitising with index futures removes the drag, leaving roll and margin costs.
+\end{itemize}
+
+\qffield{Conditions} Model tracking errors depend on the risk model's accuracy; realised tracking error will be higher when correlations shift. The sampling example ignores transaction costs, which favour fewer holdings.
+
+\qffield{Pitfalls} Matching sector weights and assuming risk is controlled. Re-optimising so often that turnover costs exceed the tracking-error saving. Leaving dividends and inflows in cash.
+
+\qffield{See also} \hyperref[meth:bond-index-exposure-benchmarks]{bond indexing}; \hyperref[def:cap-weighted-factor-indexing]{index approaches}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[Active equity strategies: fundamental against quantitative approaches; bottom-up, top-down, factor-based and activist strategies; and statistical arbitrage and microstructure strategies]\label{def:active-equity-strategies}
+\qffield{Statement} \emph{Fundamental against quantitative} (Interpretation).
+\begin{itemize}
+\item \emph{Fundamental} managers form views company by company from research and judgement, hold fewer stocks with larger active weights, and make few independent bets with, they hope, high skill.
+\item \emph{Quantitative} managers apply models to many stocks systematically, with small weights each and many bets of low individual skill.
+\end{itemize}
+The fundamental law ties the two: the same information ratio can come from high IC and low breadth or the reverse (\hyperref[res:fundamental-law-active-management]{fundamental law}).
+
+\emph{Strategies.}
+\begin{itemize}
+\item \emph{Bottom-up} strategies select companies on value, growth or growth at a reasonable price. \emph{Top-down} strategies start from the economy, countries, sectors or themes and then choose stocks \citep[chap.~7, secs.~5.1.1--5.1.3 and~9.1, pp.~432--436 and~474]{managing-investment-portfolios-2007}.
+\item \emph{Factor-based} strategies hold systematic exposures to value, momentum, quality, size or low volatility, long-only or long--short (\citep[chap.~14, pp.~449--451]{s7-ang}; \hyperref[def:cap-weighted-factor-indexing]{factor indexes}).
+\item \emph{Activist} strategies take stakes and press for change. Activist hedge funds target ``value'' firms that are profitable but pay out less, with more takeover defences and higher CEO pay. They seldom seek control, are mostly non-confrontational, and hold for about a year at the median \citep[pp.~1729--1731]{wide-brav-activism}.
+\item \emph{Statistical arbitrage} trades relative mispricings between related stocks. In pairs trading, pairs are formed by the minimum distance between normalised prices, and a position opens when the pair diverges by two historical standard deviations; top pairs earned about 12 percent annualised excess returns in 1962--1997, less after bid--ask bounce and costs \citep[secs.~I and~III, pp.~1--8]{gatev-pairs-trading-1999}. Residual strategies trade mean reversion in stock returns net of PCA or sector-ETF factors: after costs, a Sharpe ratio of 1.44 over 1997--2007, only 0.9 in 2003--2007 \citep[abstract]{avellaneda-lee-statarb-2009}.
+\item \emph{Market-microstructure} strategies profit from supplying liquidity or from short-term order-flow patterns (\hyperref[def:hft-strategies]{high-frequency strategies}).
+\end{itemize}
+
+\qffield{Practice} \emph{Original.} A fundamental manager with IC 0.10 on 50 independent bets a year and a transfer coefficient of 0.6 has an information ratio of $0.10\times\sqrt{50}\times0.6=0.42$. A quantitative manager with IC 0.02 on 2{,}000 bets and TC 0.5 reaches 0.45. Comparable outcomes come by different routes, and with different failure modes:
+\begin{itemize}
+\item the fundamental manager's few bets carry stock-specific risk;
+\item the quantitative manager's many bets share model and crowding risk (\hyperref[def:common-investor-contagion]{August 2007}).
+\end{itemize}
+Activism has a different payoff profile: a concentrated stake earns the 7 to 8 percent announcement return reported by Brav et al.\ only if the campaign is credible, and costs time and fees either way.
+
+\qffield{Conditions} Strategy labels overlap: a quantitative value strategy is both factor-based and bottom-up. Evidence on factor and activist returns is period- and market-specific.
+
+\qffield{Pitfalls} Counting holdings as breadth. Treating statistical arbitrage as riskless. Assuming activist returns are available to a passive shareholder after announcement.
+
+\qffield{See also} \hyperref[meth:active-equity-strategy-creation]{creating strategies}; \hyperref[meth:active-equity-portfolio-construction]{portfolio construction}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Creating active equity strategies: the fundamental research process, the quantitative research process, and classifying managers by style from holdings and returns]\label{meth:active-equity-strategy-creation}
+\qffield{Statement} \emph{Fundamental process} (Interpretation).
+\begin{enumerate}
+\item Define the investment universe and the market view.
+\item Prescreen it.
+\item Research companies: industry, competitive position, management, financial statements.
+\item Value them and set a target price.
+\item Build the portfolio.
+\item Apply a sell discipline.
+\end{enumerate}
+Sell disciplines differ by style. Value managers sell when a stock reaches fair value and typically turn over 20 to 80 percent a year; growth managers sell when growth disappoints, with turnover from 60 percent to several hundred percent \citep[chap.~7, sec.~5.4, pp.~454--455]{managing-investment-portfolios-2007}.
+
+\emph{Quantitative process} (Interpretation).
+\begin{enumerate}
+\item State a hypothesis with an economic rationale.
+\item Collect point-in-time data.
+\item Define and test signals out of sample with realistic costs.
+\item Combine signals into forecasts.
+\item Construct portfolios with a risk model.
+\item Monitor decay and crowding.
+\end{enumerate}
+See \hyperref[meth:alpha-signal-combination]{signal combination} and \hyperref[meth:deflated-sharpe-ratio]{backtest overfitting}.
+
+\emph{Style classification.} \emph{Returns-based} style analysis regresses a manager's returns on style indexes, a constrained regression needing only returns. \emph{Holdings-based} analysis scores the actual holdings on value, growth and size characteristics. The style box places a portfolio on size and value--growth axes, and style drift is a change of style over time (MIP, secs.~5.1.4--5.1.7, pp.~436--449; \hyperref[meth:manager-due-diligence]{Sharpe's style analysis}).
+\begin{itemize}
+\item Returns-based analysis is cheap and hard to game, but slow to detect changes and sensitive to the indexes chosen.
+\item Holdings-based analysis is precise at a date, but needs holdings data, can be window-dressed, and depends on the classification rules.
+\end{itemize}
+
+\qffield{Practice} \emph{Original} (synthetic universe). A 60-stock portfolio drawn from the cheapest stocks, equally weighted, scores $+1.05$ on value and $-0.39$ on growth relative to the index. Its average log size is 0.27 below the index's. Holdings-based analysis classifies it as small to mid value; a returns-based analysis against broad style indexes would need enough history to see the same.
+
+\qffield{Conditions} Holdings-based scores depend on the characteristic definitions and on index providers' style rules; returns-based results on the index set and window.
+
+\qffield{Pitfalls} Testing many signals and reporting the best. Classifying a manager on one quarter's holdings. Ignoring that equal weighting creates a size tilt.
+
+\qffield{See also} \hyperref[def:active-equity-strategies]{strategies}; \hyperref[meth:forecast-scaling-ic]{forecast scaling}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Constructing active equity portfolios: from philosophy to weights, approaches to construction, active share against active risk, risk budgeting, and risk measures and limits]\label{meth:active-equity-portfolio-construction}
+\qffield{Statement} \emph{From philosophy to portfolio.} A portfolio expresses the manager's sources of alpha (rewarded factor exposures, stock selection, timing), sized by conviction and constrained by risk. Grinold and Kahn's figure of merit is value added less costs: high alpha, low active risk and low transaction costs \citep[chap.~14, p.~393]{alpha-grinold}.
+
+\emph{Approaches.} Four generic procedures cover most institutional practice: screens, stratification, linear programming and quadratic programming (mean--variance optimisation) (pp.~393--396; \hyperref[mod:mean-variance-portfolio-optimisation]{optimisation}). Screens are simple and robust but use only rankings and give fragmentary risk control. Constraints on positions, turnover and categories often compensate for faulty inputs; Grinold and Kahn prefer fixing the alphas and using a powerful optimiser with few constraints (Summary, pp.~408--409). Practice also divides into systematic and discretionary, bottom-up and top-down, and benchmark-aware and benchmark-agnostic construction (Interpretation).
+
+\emph{Active share and active risk.} Active Share is
+\[ \tfrac12\sum_i|w_{\text{fund},i}-w_{\text{index},i}|, \]
+``the fraction of the portfolio that is different from the benchmark index''. A fund is 100 percent of the index plus a zero-cost active long--short portfolio of that size \citep[sec.~2.2]{cremers-petajisto-2009}. Tracking error weights correlated bets heavily, while Active Share weights every bet equally. Used together they distinguish diversified stock pickers (high Active Share, low tracking error), factor bettors (the reverse), concentrated stock pickers (both high) and closet indexers (both low) (pp.~2--3 and Figure~1).
+
+\emph{Risk budgeting} allocates active risk among sources: factor against stock-specific, and across managers or sectors. Euler decompositions make the contributions add up (\hyperref[meth:active-risk-decomposition]{active-risk decomposition}). \emph{Risk measures and limits}: tracking error, active share, factor exposures (beta, size, style), and position, sector and country limits relative to the benchmark, plus liquidity limits.
+
+\qffield{Practice} \emph{Reproduced.} Cremers and Petajisto's example, 100 percent in the index plus 40 percent of active longs and 40 percent of active shorts, has an Active Share of 40 percent.
+
+\emph{Original} (synthetic universe and risk model).
+\begin{itemize}
+\item \emph{Closet indexer}, 90 percent index and 10 percent value tilt: Active Share 1.8 percent, tracking error 0.19 percent.
+\item \emph{Sector rotator}, cap weights scaled 1.8 in three sectors and 0.65 elsewhere: Active Share 24 percent, tracking error 1.5 percent.
+\item \emph{Diversified stock picker}, 60 names, six per sector at sector weight: Active Share 92 percent, tracking error 4.3 percent.
+\item \emph{Concentrated picker}, 25 names in two sectors: Active Share 94 percent, tracking error 6.8 percent.
+\end{itemize}
+The stock picker's active variance is 11 percent factor and 89 percent stock-specific, a budget dominated by selection. A $\pm3$-point active-weight limit binds on both stock pickers through an underweight: neither holds the largest index stock, a 4.9 percent weight. Limits relative to the benchmark force holding the mega-caps.
+
+\qffield{Conditions} Active Share needs a chosen benchmark; Cremers and Petajisto assign the index giving the lowest Active Share. Tracking errors are model estimates.
+
+\qffield{Pitfalls} Using Active Share alone to judge skill. Hitting a tracking-error budget with unintended factor bets. Setting position limits only on overweights.
+
+\qffield{See also} \hyperref[meth:equity-portfolio-capacity-structure]{capacity and structure}; \hyperref[res:fundamental-law-active-management]{fundamental law}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Structure and capacity of active equity portfolios: assets under management, position size, liquidity and turnover, and long-only, long extension, long--short and market-neutral structures evaluated against the mandate]\label{meth:equity-portfolio-capacity-structure}
+\qffield{Statement} \emph{Capacity.} A strategy's capacity is limited by the trading needed to build and change positions: days to trade $=$ AUM $\times$ weight $/$ (participation rate $\times$ average daily volume). As AUM grows, positions in small or illiquid stocks take longer to trade and cost more, so a manager must hold larger, more liquid names, accept higher costs, or close the strategy. Turnover times round-trip cost is a direct drag (Interpretation; \hyperref[mod:almgren-chriss-execution]{execution cost}). Turnover is the minimum of purchase and sales turnover \citep[chap.~16, p.~456]{alpha-grinold}.
+
+\emph{Structures.}
+\begin{itemize}
+\item \emph{Long-only.} The no-short constraint is ``surprisingly important''. Long/short gains most when the universe is large, volatility low and active risk high. The constraint induces a negative size bias and limits even long positions, by not allowing shorts to finance them (Grinold and Kahn, chap.~15, pp.~419--420).
+\item \emph{Long extension} (130/30) adds limited shorts.
+\item \emph{Long--short} and \emph{market-neutral} portfolios hold equal longs and shorts with beta near zero, earning cash plus alpha, and can be equitised with futures (MIP, chap.~7, secs.~5.3--5.3.3, pp.~450--454).
+\end{itemize}
+The transfer coefficient measures how much of the unconstrained portfolio's information reaches the constrained one (\hyperref[res:fundamental-law-active-management]{fundamental law}). Its value depends on which unconstrained reference is used, so the reference must be stated. Here it is the portfolio $Q$ that maximises $\alpha^\top a-\lambda\,a^\top Da$ (alpha less a residual-variance penalty, $D$ the diagonal specific covariance) subject only to $\mathbf1^\top a=0$: fully invested, with no bounds on positions. The first-order condition $\alpha-2\lambda Da=\eta\mathbf1$ gives
+\[
+a_Q=\frac{D^{-1}(\alpha-\eta\mathbf1)}{2\lambda},\qquad \eta=\frac{\mathbf1^\top D^{-1}\alpha}{\mathbf1^\top D^{-1}\mathbf1}.
+\]
+The transfer coefficient of a constrained portfolio with active weights $a$ is then the $D$-weighted correlation $a^\top Da_Q/\sqrt{(a^\top Da)(a_Q^\top Da_Q)}$, which is the correlation of its risk-scaled positions with $\alpha-\eta\mathbf1$ (Interpretation). Simply rescaling $D^{-1}\alpha/(2\lambda)$ to zero net weight with benchmark weights is feasible but not optimal, and it reports a different coefficient.
+
+\emph{Evaluating a structure against the mandate} (Interpretation). Long-only suits mandates that forbid leverage and shorting, at the cost of transfer. 130/30 keeps net exposure at 100 percent with more transfer, but needs borrowing, a prime broker and leverage approval. Market-neutral suits an absolute-return mandate, with borrow costs, recall risk and the risk of factor crowding.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Capacity.} A 2 percent position for a 5 billion fund in a stock trading 20 million a day, at 20 percent participation, takes 25 days to build. Capacity at a five-day limit is 1 billion.
+\item \emph{Turnover.} 100 percent turnover at 30 basis points a side costs 0.60 percent a year, a large share of a 2 percent alpha target.
+\item \emph{Transfer} (synthetic universe, alphas tilted to value and scaled by residual risk). Optimised against residual risk ($\lambda=10$) with a 20 percent position cap, a long-only portfolio has a transfer coefficient of 0.609 against $a_Q$. A 130/30 portfolio (30 percent gross short, at most 0.6 percent short per stock) has 0.781, keeping 28 percent more of the same signal's information ratio. The reference is checked independently: $a_Q$ sums to zero, $\alpha-2\lambda Da_Q$ is constant, it equals the solution of the bordered KKT system, and every feasible perturbation lowers the objective. Against the benchmark-rescaled reference, which has a lower objective, the coefficients would read 0.616 and 0.786. The 130/30 holds 130 percent long and 30 percent short: 160 percent gross and 100 percent net, with shorts that must be borrowed and financed.
+\end{itemize}
+
+\qffield{Conditions} Capacity estimates depend on volume forecasts and impact models; transfer coefficients on the alpha and risk inputs. The 130/30 example ignores borrow fees and recall.
+
+\qffield{Pitfalls} Raising AUM without re-estimating capacity. Comparing long-only and long--short managers on gross alpha without leverage, borrow and financing costs. Assuming market-neutral means factor-neutral.
+
+\qffield{See also} \hyperref[meth:active-equity-portfolio-construction]{construction}; \hyperref[def:securities-lending-fee-rebate]{borrow fees}.
+
+\end{qfmethod}

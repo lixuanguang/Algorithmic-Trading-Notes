@@ -1,0 +1,181 @@
+\section{Business cycles, fiscal policy, trade and geopolitics}
+
+These entries describe how economies fluctuate and how governments and their relations shape the environment in which asset prices are set: business and credit cycles and the indicators that track them, fiscal policy, the gains from trade and the costs of restricting it, and geopolitics and its risks. Monetary policy and its interaction with fiscal policy are in \hyperref[def:monetary-policy-transmission-regimes]{monetary policy}. Numbers are checked in \texttt{notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py}. Data quoted from sources are dated to them; the original examples are invented.
+
+\begin{qfdefinition}[Business cycles and credit cycles: phases, how employment, inventories, investment, housing and trade behave over the cycle, competing explanations, and the credit cycle's link to deeper recessions]\label{def:business-credit-cycles}
+\qffield{Statement} A business cycle is a fluctuation of aggregate activity around its trend: \emph{expansion} from trough to peak and \emph{contraction} from peak to trough. ``Business cycles are usually viewed as fluctuations around the trend growth of an economy, so such points as peaks and troughs are relative to the individual cycle'' \citep[chap.~6, sec.~2.1, pp.~280--284, Exhibits~6-1a and~6-1b]{economics-investment-decision-makers-2013}. The phases differ by what activity, employment, spending and inflation do:
+\begin{itemize}
+\item \emph{early expansion (recovery)}: output turns up; layoffs slow but the unemployment rate stays high as firms use overtime first; housing, durables and light equipment lead; inflation moderate or still falling;
+\item \emph{late expansion}: growth accelerates and broadens; full-time hiring, low unemployment; heavy equipment and construction; inflation picks up; a \emph{boom} may test capacity, with bidding for workers and borrowing to expand;
+\item \emph{peak}: growth decelerates; capital spending still expands but more slowly; inflation accelerates further;
+\item \emph{contraction (recession)}: output falls; hours cut, hiring frozen, then layoffs; cuts in industrial production, housing, durables and equipment orders; inflation decelerates with a lag.
+\end{itemize}
+Equity markets typically trough three to six months before the economy, so the stock market is classed as a leading indicator (p.~282).
+
+\emph{Dating.} The rule ``two consecutive quarters of negative real GDP growth'' is common but can miss a recession in which growth alternates around zero; the NBER's Business Cycle Dating Committee instead judges many monthly series (employment, production, sales, income), and announces turning points well after they occur because data are revised (Example~6-1, p.~283) \citep[dating page]{nber-business-cycles}.
+
+\emph{Resource use} (secs.~2.2--2.4, pp.~284--295). When demand falls, inventories pile up and firms cut production and orders before workers; hiring resumes only once the recovery looks secure, so unemployment lags. Business investment and inventories are the most volatile parts of spending; housing responds to mortgage rates and incomes and often leads; exports follow trading partners' cycles and the exchange rate.
+
+\emph{Explanations} (sec.~3, pp.~295--303). Neoclassical and Austrian economists see cycles as adjustments to shocks or to misallocated credit; Keynesians stress swings in aggregate demand and sticky wages, so policy can stabilise; monetarists stress money growth and warn that discretionary policy adds instability; the new classical school explains fluctuations by real (technology) shocks and rational expectations. Schools differ in whether and how policy should respond.
+
+\emph{Credit cycles.} Credit expands and contracts with, and partly ahead of, activity. Jord\`a, Schularick and Taylor, studying over 200 recessions in 14 advanced economies from 1870 to 2008, ``document two key facts of the modern business cycle: financial-crisis recessions are more costly than normal recessions in terms of lost output; and for both types of recession, more credit-intensive expansions tend to be followed by deeper recessions and slower recoveries'' \citep[abstract]{jorda-schularick-taylor-2011}. Their measure of \emph{excess credit} is the rate of change of bank loans to the non-financial sector relative to GDP over the preceding expansion, measured against its mean, in percentage points a year; five years after the start of the recession, the financial-crisis path of real GDP per capita is about 4 percent below the normal-recession path (printed pp.~4--5).
+
+\qffield{Notation} Real GDP growth quarter on quarter (not annualised unless stated); ppy percentage points per year; trough and peak as dated after the fact.
+
+\qffield{Conditions} Phase descriptions are stylised; any cycle can skip or blend phases, and the asset-market patterns depend on what caused the downturn (a banking crisis against a policy tightening, p.~284). The credit evidence is for advanced economies over 1870--2008 and is an association conditioned on controls in local projections, not a mechanism. Turning points are known only with a lag.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Two-quarter rule.} Quarterly growth of $+0.6$, $-0.3$, $+0.1$, $-0.4$ and $+0.5$ percent never gives two negative quarters in a row, yet real GDP falls 0.60 percent from its peak to its trough; a committee judging several series could still date a recession.
+\item \emph{Excess credit.} Loans rising from 80 to 98 percent of GDP over a six-year expansion is 3.0 percentage points a year; against a historical mean of 1.0, the expansion carries 2.0 points a year of excess credit, the kind of boom that JST find precedes deeper recessions.
+\end{itemize}
+
+\qffield{Pitfalls} Treating the two-quarter rule as the definition. Reading a recession's end from the unemployment rate, which lags. Assuming each cycle follows the textbook sequence. Reading the JST association as proof that credit causes the depth of recessions.
+
+\qffield{See also} \hyperref[meth:business-cycle-indicators]{cycle indicators}; \hyperref[def:macro-regime-asset-map]{regime map of asset responses}; \hyperref[meth:cycle-rates-breakevens-spreads]{the cycle and bond markets}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Interpreting cycle indicators: leading, coincident and lagging indicators and composites, diffusion indices, surveys and the yield curve, and how activity variables behave around turning points]\label{meth:business-cycle-indicators}
+\qffield{Statement} An \emph{economic indicator} gives information on the state of the economy. \emph{Leading} indicators have turning points that usually precede the economy's and help forecast its near-term state; \emph{coincident} indicators turn with it and identify the present state; \emph{lagging} indicators turn later and confirm the past \citep[chap.~6, sec.~5, pp.~319--320]{economics-investment-decision-makers-2013}. Composites combine several:
+\begin{itemize}
+\item the Conference Board's U.S.\ index has ten leading components (average weekly manufacturing hours, initial unemployment claims, new orders for consumer goods and materials, vendor deliveries, non-defence capital-goods orders, building permits, the S\&P 500, real M2, the 10-year Treasury less fed funds spread and consumer expectations), four coincident (payrolls, real personal income less transfers, industrial production, manufacturing and trade sales) and seven lagging (duration of unemployment, inventory-to-sales ratio, change in unit labour costs, the prime rate, commercial and industrial loans, consumer instalment credit to income, services CPI) (Exhibit~6-7, pp.~321--322);
+\item its leading index has led contractions by eight to 20 months and expansions by one to ten months, so its lead is variable (p.~320);
+\item the OECD publishes comparable composite leading indicators for about 30 countries, and the euro area's leading index uses sentiment, permits, capital-goods orders, equities, M2, a rate spread and PMIs (pp.~320--323).
+\end{itemize}
+Each indicator's reason matters: overtime is cut before workers; permits precede construction; the curve spread anticipates rate moves; inventories pile up when sales first fall and are run down when they recover, so the inventory-to-sales ratio lags (Exhibit~6-7).
+
+\emph{How to read them} (Interpretation, from pp.~320--327).
+\begin{enumerate}
+\item Read several indicators together, and look for breadth: a \emph{diffusion index}, the share of components rising plus half the unchanged, separates a broad move from one driven by a single series.
+\item Use coincident indicators to establish the present phase, leading indicators for the direction of the next few quarters, and lagging indicators to confirm a turn already made.
+\item Weigh one move against revisions and noise: one month's rise in the leading index is weak evidence; a sustained move in most components is stronger.
+\item Combine with markets: equities, credit spreads and the yield curve are forward-looking; an inverted curve has preceded U.S.\ recessions, with variable lead \citep[pp.~4--5]{estrella-trubin-2006}.
+\end{enumerate}
+
+\qffield{Notation} Diffusion index $=100\times(\text{rising}+\tfrac12\,\text{unchanged})/\text{total}$; 50 means as many components rising as falling. PMI is a survey diffusion index (\hyperref[def:macroeconomic-indicators]{macro indicators}).
+
+\qffield{Conditions} Composites are revised and reweighted; leads vary by cycle; relationships that held in the past (money supply, the curve) change with policy regimes. The Conference Board's composition is the one in EIDM's 2013 description and may since have changed.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Breadth.} Of ten leading components, six rise, one is unchanged and three fall: a diffusion index of 65, a broad but not universal improvement.
+\item \emph{A lagging ratio.} Sales of 100, 95, 90, 90, 95 and 100 against inventories of 120, 120, 117, 108, 105 and 110 give an inventory-to-sales ratio of 1.200, 1.263, 1.300, 1.200, 1.105 and 1.100: the ratio peaks a period after sales start falling and keeps falling after sales recover, because firms cut orders late and rebuild stocks late.
+\end{itemize}
+
+\qffield{Pitfalls} Treating the leading index as a forecast with a fixed lead. Calling a recession on one month's data. Ignoring revisions. Mixing indicators from different economies whose cycles are not synchronised.
+
+\qffield{See also} \hyperref[def:business-credit-cycles]{business and credit cycles}; \hyperref[def:macroeconomic-indicators]{macro indicators}; \hyperref[meth:equity-macro-leading-indicators]{leading indicators for equities}; \hyperref[meth:cycle-policy-curve-expectations]{cycle analysis for expectations}.
+
+\end{qfmethod}
+
+\begin{qfdefinition}[Fiscal policy: roles and objectives, deficits and public debt and the debate about debt, spending and tax tools and their advantages, the multiplier, implementation lags and the fiscal stance]\label{def:fiscal-policy-tools-stance}
+\qffield{Statement} \emph{Fiscal policy} uses government spending and taxation to influence aggregate demand and activity, the distribution of income and wealth, and the allocation of resources \citep[chap.~7, sec.~3, p.~374]{economics-investment-decision-makers-2013}.
+
+\emph{Roles, deficits and debt} (sec.~3.1, pp.~374--381). Expansionary policy cuts taxes or raises spending; contractionary policy does the reverse. The budget balance (revenue less spending, interest included) varies automatically: \emph{automatic stabilisers} such as unemployment benefits and progressive taxes widen deficits in recessions and narrow them in booms without any decision. The debt is the accumulation of deficits; if the real interest rate on it exceeds real growth, the ratio of debt to GDP rises even with a growing economy. Arguments against concern about debt: it may be owed to residents, it may finance productive investment, it may prompt tax reform, Ricardian equivalence, and it does not divert resources when there is unemployment. Arguments for concern: higher future tax rates that reduce effort, money-financed deficits and inflation, and \emph{crowding out} of private investment by higher rates, more serious in the long run than the short (pp.~380--381).
+
+\emph{Tools} (sec.~3.2, pp.~382--387). Spending: transfer payments (outside GDP), current spending on goods and services, and capital spending that adds to the capital stock. Revenue: direct taxes on income, wealth and profits, and indirect taxes on spending. Desirable attributes of a tax system are simplicity, efficiency, fairness and revenue sufficiency. Indirect taxes can be changed quickly and act at once; direct taxes, transfers and especially capital projects take months or years, though capital spending raises productive potential (p.~385). With marginal propensity to consume $c$ and net tax rate $t$, the \emph{fiscal multiplier} is $1/[1-c(1-t)]$: 3.57 at $c=0.9$, $t=0.2$ (pp.~386--387). A balanced-budget expansion raises output, because households cut spending by less than the tax.
+
+\emph{Implementation and stance} (sec.~3.3, pp.~388--392). The actual deficit is a poor measure of stance because stabilisers move it; the \emph{structural} (cyclically adjusted) deficit, the deficit at full employment, is used instead, and real rather than nominal interest is the relevant cost when inflation erodes debt (p.~389). \emph{Ricardian equivalence}: if households anticipate the future taxes needed to repay debt, a debt-financed tax cut leaves spending unchanged (p.~388). Fiscal policy cannot fine-tune demand because of the recognition, action and impact lags, uncertainty about where the economy is heading and about full employment, the risk of inflation, market resistance to large deficits and possible crowding out (p.~390).
+
+\qffield{Notation} $c$ marginal propensity to consume, $t$ net tax rate; debt ratio $d$, nominal rate $r$, nominal growth $g$, primary balance $pb$ (surplus positive) as shares of GDP: $d_{t+1}=d_t(1+r)/(1+g)-pb$.
+
+\qffield{Conditions} The multiplier assumes idle resources, fixed prices and no monetary offset; full employment, monetary offset through higher rates, or Ricardian household saving can reduce it. Monetary accommodation can amplify the fiscal multiplier by preventing rates from offsetting demand (pp.~393--394). Data in EIDM's exhibits are OECD figures to 2008--2010.
+
+\qffield{Practice} \emph{Reproduced}: the multiplier of 3.57, which the original check confirms by summing successive spending rounds. \emph{Original.}
+\begin{itemize}
+\item \emph{Balanced budget.} With lump-sum taxes and $c=0.9$, raising spending and taxes by 100 each raises output by exactly 100.
+\item \emph{Debt dynamics.} Debt of 172 percent of GDP at a 1 percent nominal rate and 0.5 percent nominal growth needs a primary surplus of 0.856 percent of GDP to stay constant; with a balanced primary budget the ratio rises 0.86 points a year. With a nominal interest rate of 3 percent, nominal GDP growth of 5 percent and a zero primary balance (excluding interest), the debt ratio falls from 60 to 58.857 percent of GDP.
+\item \emph{Stance.} An actual deficit of 6 percent of GDP with an output gap of $-4$ percent and a budget semi-elasticity of 0.5 has a cyclical part of 2 points and a structural deficit of 4: looser than neutral, but not by six points.
+\item \emph{Ricardian equivalence.} A 10 billion tax cut financed by a one-year bond at 4 percent and repaid with 10.4 billion of taxes leaves the present value of taxes unchanged.
+\end{itemize}
+
+\qffield{Pitfalls} Reading a wider deficit in a recession as discretionary easing. Applying a peacetime multiplier at full employment. Ignoring the difference between nominal and real debt service. Treating debt sustainability as a fixed threshold rather than a comparison of rates, growth and primary balances.
+
+\qffield{See also} \hyperref[meth:monetary-fiscal-policy-mix]{monetary--fiscal interaction}; \hyperref[def:monetary-policy-transmission-regimes]{monetary policy}; \hyperref[def:sovereign-credit-defaults]{sovereign defaults}.
+
+\end{qfdefinition}
+
+\begin{qfdefinition}[Geopolitics and the international system: cooperation and competition, globalisation and fragmentation, the IMF, World Bank and WTO, and geopolitical tools and their regional effects]\label{def:geopolitics-institutions-tools}
+\qffield{Statement} \emph{Geopolitics} is the study of how geography, power and politics shape relations among states and their economic consequences. Two tendencies coexist (Interpretation):
+\begin{itemize}
+\item \emph{cooperation}: states pursue shared gains through trade, capital flows, common rules and international organisations;
+\item \emph{competition}: states seek relative advantage, security or autonomy, using economic as well as military means, even at a cost to joint welfare.
+\end{itemize}
+\emph{Globalisation} is the result of cooperation dominating: trade deepening ``helped catalyze catch-up in per capita incomes across countries and a large reduction in global poverty''. The IMF's staff now describe a risk of \emph{geoeconomic fragmentation}, ``a policy-driven reversal of global economic integration'', after the global financial crisis, Brexit, U.S.--China trade tensions, the pandemic and Russia's invasion of Ukraine, with trade, migration, capital flows, technology diffusion and the provision of global public goods as its channels \citep[Executive Summary, p.~4]{imf-sdn-2023-001}.
+
+\emph{International organisations} \citep[chap.~8, sec.~5, pp.~451--456]{economics-investment-decision-makers-2013}:
+\begin{itemize}
+\item the \emph{International Monetary Fund} promotes monetary cooperation and exchange stability, monitors members' economies and policies (surveillance) and lends to members with balance-of-payments problems, usually with policy conditions;
+\item the \emph{World Bank Group} provides long-term finance, advice and guarantees for development and poverty reduction (IBRD for middle-income, IDA for the poorest countries, with IFC, MIGA and ICSID for private investment);
+\item the \emph{World Trade Organization}, successor in 1995 to the GATT, administers trade agreements, is a forum for negotiation and settles disputes among members.
+\end{itemize}
+
+\emph{Geopolitical tools}. States use national-security tools (alliances, armed force), economic tools (tariffs, quotas, export controls, subsidies and industrial policy) and financial tools (sanctions, asset freezes, investment screening, payment-system access). The IMF note records export bans as about 90 percent of trade restrictions at the height of the pandemic, sanctions on Russia and Belarus disrupting energy and agricultural markets, and a surge of trade, FDI and capital measures motivated by national security from 2020 (sec.~II, p.~9).
+
+\emph{Regional effects}. Tools act through specific channels and so hit regions unevenly: commodity importers and exporters, economies tied to a sanctioned country's supply chains, and low-income countries most exposed to food and energy prices. The IMF note estimates long-term output losses from trade fragmentation from 0.2 percent of world GDP in a limited scenario to 7 percent in a severe one, and 8 to 12 percent in some countries if technology decouples, with emerging and low-income economies most at risk (p.~4).
+
+\qffield{Notation} GEF geoeconomic fragmentation; GFSN global financial safety net (IMF resources, regional arrangements, central-bank swap lines, reserves).
+
+\qffield{Conditions} The IMF note's estimates are model outputs under stated scenarios, and its views are the authors', not necessarily the IMF's. The description of the three organisations follows EIDM's 2013 text; their lending facilities and membership change.
+
+\qffield{Practice} \emph{Interpretation.} For an investor, the questions are which tools could be used, by whom, against whom, and through which channel a holding is exposed: revenue in a sanctioned market, inputs from a restricted supply chain, assets in a jurisdiction where capital controls are possible, or the price of a commodity. The answers are inputs to \hyperref[meth:geopolitical-risk-assessment]{geopolitical risk assessment}.
+
+\qffield{Pitfalls} Treating globalisation as irreversible or fragmentation as certain. Treating an IMF loan as a sign of solvency rather than of a financing need. Assuming a tool affects only its target.
+
+\qffield{See also} \hyperref[meth:geopolitical-risk-assessment]{geopolitical risk}; \hyperref[meth:trade-benefits-restrictions-blocs]{trade and restrictions}; \hyperref[def:macro-regime-asset-map]{regime map}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Assessing geopolitical risk: definition and measurement, threats against acts, likelihood, velocity and size, scenario analysis, and the effects on investment, sectors and portfolios]\label{meth:geopolitical-risk-assessment}
+\qffield{Statement} Caldara and Iacoviello define geopolitical risk as ``the threat, realization, and escalation of adverse events associated with wars, terrorism, and any tensions among states and political actors that affect the peaceful course of international relations''. Their GPR index is the share of articles in leading U.S., U.K.\ and Canadian newspapers that mention adverse geopolitical events, with separate \emph{threats} and \emph{acts} indexes and a historical series from 1900; the recent index is ``normalized to 100 throughout the 1985--2019 period'' \citep[introduction, pp.~1194--1196; Figure~1 notes, p.~1201]{caldara-iacoviello-2022}. Findings: ``Higher geopolitical risk foreshadows lower investment and employment and is associated with higher disaster probability and larger downside risks''; both threats and realisations matter; investment falls more in exposed industries, and higher firm-level risk goes with lower firm-level investment (abstract, p.~1194).
+
+\emph{An assessment procedure} (Interpretation).
+\begin{enumerate}
+\item \emph{Identify} the risk and its channel to the portfolio (\hyperref[def:geopolitics-institutions-tools]{tools and regional effects}).
+\item \emph{Judge likelihood}, \emph{velocity} (how fast the impact arrives: a sudden attack against a slow trade realignment) and \emph{size} (local or global, temporary or lasting).
+\item \emph{Build scenarios} (base, escalation, de-escalation) with probabilities and asset returns in each, and with the market's pricing as a cross-check.
+\item \emph{Act according to velocity}: high-velocity risks call for liquidity and hedges with defined cost (options); low-velocity, persistent risks for strategic changes in exposures, supply chains or currency.
+\item \emph{Monitor} signposts that change the probabilities, including news-based indexes.
+\end{enumerate}
+
+\qffield{Notation} GPR index: $100\times s_t/\bar s_{\text{ref}}$, with $s_t$ the monthly share of articles matching the search and $\bar s_{\text{ref}}$ its average over the reference period (1985--2019 for the recent index).
+
+\qffield{Conditions} The index measures press attention from a North American and British perspective; country-specific indexes slice it further (p.~1195). Scenario probabilities are physical, subjective forecasts. A claim's price is instead $\sum_s p_s m_s X_s$, with stochastic discount factor $m_s$; risk-neutral probabilities satisfy $q_s=p_sm_s/B(0,T)$ when a pricing measure exists, where $B(0,T)=\sum_s p_sm_s$ is the price of a unit risk-free payoff \citep[secs.~1.2 and~3.1--3.2, pp.~16--17 and~54--56]{asset-pricing-manuscript-2000}. For a claim paying a fixed 15 only in escalation, premium/15 is an event state price; dividing also by $B(0,T)$ yields its risk-neutral event probability. This interpretation requires a fixed date and payoff, no credit or settlement risk, and no embedded costs or other-state payoffs. It is generally not the market's physical forecast.
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Index arithmetic.} On synthetic monthly article counts with a 3 percent hit share, a three-month episode in which the share triples reads about 300 against a reference average of 100.
+\item \emph{Scenarios.} Weights of 70, 20 and 10 percent on returns of $+6$, $-18$ and $+12$ percent give $+1.8$ percent expected. A put costing 1.2 percent that pays 15 percent in escalation lifts the worst case to $-4.2$ percent and the expected return to 3.6 percent under these probabilities. Here the initial portfolio value is 100, including a cash reserve of 2 earning zero interest; the unhedged scenario returns already include that cash. Paying the 1.2 premium from the reserve leaves initial total invested wealth unchanged. Thus 1.2/15 is an 8 percent event state price; only at zero interest does it equal the risk-neutral probability. A committee limiting loss in the specified escalation scenario to 5 percent and premium spending to 1.5 percent should choose the hedge: the unhedged portfolio breaches the loss limit, while the hedge meets both constraints. The alternative is reducing the risky allocation and holding cash, which also gives up upside. This recommendation is conditional on the payoff functioning in the relevant stress; a risk-neutral investor seeking expected profit alone would use physical expected payoff less financed premium instead. Even if the investor assigns escalation only 5 percent, below the zero-rate pricing probability of 8 percent, the claim's expected net payoff is $0.05(15)-1.2=-0.45$ percent. It can still be preferred to meet the loss constraint or under sufficiently concave utility. A probability comparison alone cannot establish whether insurance serves the portfolio objective.
+\end{itemize}
+
+\qffield{Pitfalls} Reacting to headlines after the event when the market has already moved. Treating a news index as a probability. Hedging slow, structural risks with short-dated options that decay before the risk arrives.
+
+\qffield{See also} \hyperref[def:geopolitics-institutions-tools]{geopolitics and tools}; \hyperref[def:macro-regime-asset-map]{regime map}; \hyperref[meth:sensitivity-scenario-risk-measures]{scenario analysis}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[International trade: comparative advantage and the gains and costs of trade, tariffs, quotas and export subsidies and their welfare effects, small and large countries, and trading blocs from free-trade areas to monetary unions]\label{meth:trade-benefits-restrictions-blocs}
+\qffield{Statement} \emph{Benefits and costs} \citep[chap.~8, secs.~2.3--2.4, pp.~411--423]{economics-investment-decision-makers-2013}. Trade lets countries specialise by \emph{comparative advantage}, a lower opportunity cost, so total output and consumption can rise even when one country is absolutely more productive in every good (the Ricardian model; Heckscher--Ohlin attributes advantage to factor abundance). Other gains are economies of scale, more variety, competition and technology transfer. Costs fall on workers and firms in import-competing industries, and adjustment can be slow; the gains are aggregate, the losses concentrated.
+
+\emph{Restrictions} (sec.~3, pp.~424--430). A \emph{tariff} is a tax on imports: in a small (price-taking) country it raises the domestic price by the tariff, increases domestic output, cuts consumption and imports, and creates a deadweight loss of the production and consumption triangles; consumers lose more than producers and the government gain. A \emph{quota} has the same price effect, but the quota rent goes to whoever holds the licences; if foreign exporters capture it, the national loss is larger than under the equivalent tariff. A \emph{voluntary export restraint} hands the rent to the exporter. An \emph{export subsidy} raises the domestic price by the subsidy in a small country and costs the government more than producers gain; in a large country part of the subsidy is passed to foreign buyers. A large importer can gain from a tariff if it lowers the world price enough and partners do not retaliate, but world welfare falls (pp.~424--428, Exhibit~8-13). Reasons given for restrictions include infant industries, employment, national security, revenue and retaliation.
+
+\emph{Trading blocs} (sec.~3.4, pp.~430--435), by depth of integration: a \emph{free-trade area} removes barriers among members, each keeping its own external tariffs; a \emph{customs union} adds a common external tariff; a \emph{common market} adds free movement of labour and capital; an \emph{economic union} adds common institutions and coordinated policy; a \emph{monetary union} adds a single currency. Blocs create trade among members but can divert it from cheaper outside suppliers.
+
+\qffield{Notation} $P^*$ world price, $t$ tariff per unit; consumer and producer surplus and deadweight loss as areas between demand, supply and prices.
+
+\qffield{Conditions} Static partial-equilibrium analysis of one good; retaliation, dynamic effects and political economy are outside it. The Ricardian example is a two-good, two-country, constant-cost model.
+
+\qffield{Practice} \emph{Reproduced} (Example~8-5, pp.~426--427). South Africa produces 110,000 tons of paper against demand of 200,000 at a world price of \$5. A 20 percent tariff raises the price to \$6, output to 130,000 and cuts demand to 170,000. Consumers lose \$185,000, producers gain \$120,000, the government collects \$40,000, and the deadweight loss is \$25,000. \emph{Original.}
+\begin{itemize}
+\item An equivalent quota of 40,000 tons whose rent is kept by foreign exporters costs the country \$65,000.
+\item Comparative advantage: if a worker in A makes 4 cloth or 2 wine and in B 1 cloth or 1 wine, A's opportunity cost of cloth is 0.5 wine and B's 1.0, so terms between 0.5 and 1 wine per cloth benefit both: at 0.75, A gets 0.75 wine per cloth traded instead of 0.5 by making wine, and B gets a cloth for 0.75 wine instead of 0.75 cloth by making it; at 1.2 B would lose, at 0.4 A would. With 100 workers each, moving from even splits (world 250 cloth, 150 wine) to A 75/25 and B all wine gives 300 cloth and 150 wine.
+\item Small-country export subsidy of 1 with $S=20P$, $D=100-10P$ and world price 5: consumers lose 45, producers gain 110, the subsidy costs 80; national loss 15.
+\item Large importer ($D=100-P$, $S=P$, foreign supply $P_w-20$): a tariff of 5 lowers the world price from 40 to 36.67, so foreigners bear two-thirds of it; home welfare rises 52.78 (terms-of-trade gain 55.56 less deadweight loss 2.78), foreign producers lose 61.11, and world welfare falls 8.33.
+\end{itemize}
+
+\qffield{Pitfalls} Confusing absolute with comparative advantage. Counting tariff revenue as a gain to the economy without the consumer loss. Assuming a quota and a tariff have the same welfare cost regardless of who keeps the rent. Generalising the large-country gain without retaliation.
+
+\qffield{See also} \hyperref[def:geopolitics-institutions-tools]{geopolitical tools}; \hyperref[def:exchange-rate-regimes-capital-flows]{exchange-rate regimes and capital flows}; \hyperref[def:growth-policies-technology-trade]{trade and growth}.
+
+\end{qfmethod}

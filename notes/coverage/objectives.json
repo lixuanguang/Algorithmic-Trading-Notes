@@ -2297,11 +2297,16 @@
      {
       "key": "jorda-schularick-taylor-2011",
       "locator": "abstract"
+     },
+     {
+      "key": "financial-cycle-medium-term-2012",
+      "locator": "printed pp. 2, 16-20, Tables 8-9"
      }
     ],
     "reading_notes": [
      "notes/readings/economics-investment-decision-makers-2013.md",
-     "notes/readings/jorda-schularick-taylor-2011.md"
+     "notes/readings/jorda-schularick-taylor-2011.md",
+     "notes/readings/financial-cycle-medium-term-2012.md"
     ],
     "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
     "entry_evidence": [
@@ -10929,7 +10934,7 @@
      "mod:mean-variance-portfolio-optimisation",
      "mod:black-litterman"
     ],
-    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 4 (the utility function, the reverse-optimisation round trip, input sensitivity and constrained optima); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread."
+    "example": "notes/artefacts/strategic-asset-allocation/saa-checks.py part 4 (the utility function, the reverse-optimisation round trip, input sensitivity and constrained optima); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; correction: Cedar client case covers objectives, capacity/willingness, liquidity/tax/horizon/concentration constraints, market proxy and competing mixes; feasible 30/15/45/10 recommendation justified by declared mean-variance utility and stress limits. USD ledger and adverse forecast implication. PMiP pp.220-223 reread. Correction 2026-10-20: fifth percentile -8.13% (about -8.1%) checked in closed form and by simulation."
    },
    "supersedes": null
   },

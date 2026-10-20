@@ -4486,3 +4486,46 @@ rebuild passed (287 pages, no overfull boxes or undefined references). Existing
 underfull/page-destination warnings are not treated as new errors. `make pre-commit`
 passed all hooks. PDF pages96-110 and118-119 were rendered and inspected, covering
 all corrections and both complete client cases; no clipping or overlap observed.
+
+## Macro source-correction pass, 20 October 2026
+
+Starting state verified before edits: `main` at `0b78e4d`, clean. PRs #24, #25 and #26
+are closed, and their corrected stack, through `893622d`, was merged into `main` by PR #28
+on 20 October 2026. The accounting expansion `644f5d0` was reverted by `4196920` before
+that merge, so it is absent from `main`. PR #26's branch therefore cannot receive this pass;
+it runs on `codex/macro-source-corrections-20261020` from `main`.
+
+**Re-audit of the eight PR #26 findings.** Each correction in the record above was
+recomputed by an independent scratch script, not by the repository scripts:
+- cap rate: forward-NOI cash ledger 1.6981 percent and stable-cap control 7.5 percent;
+- cross hedge: 850,000 AUD and USD P&L -15,120;
+- Solow: raw K/L grows at 2.2584 percent, while K/(L A^(1/(1-alpha))) reaches the closed-form 3.7534;
+- P/E: trailing 21, 26.25 and 15 against forward 20, 25 and 14.2857, with Gordon prices 210, 262.5 and 150;
+- Markov: cumulative log returns -5.415, -13.625, 4.0 and 42.335 percent, confirmed by 200,000 simulated paths (-13.59 percent at 12 months);
+- Cedar: all four mixes' mean, volatility, stress and utility;
+- Lins: all budgets, the 60/40 comparison, the reduced home goal and a simulated 80.1 percent home success;
+- the debt ratio 58.857 and the rebalancing weights.
+
+The pricing-probability and fiscal-multiplier wording, as now on `main`, was reread.
+All match. One residual error was found: the Cedar text's normal-model fifth
+percentile "about -8.2%" is -8.13% (5.075 - 1.645 x 8.031). It was not computed by any
+check.
+
+- `meth:asset-only-allocation-mvo`: now "about -8.1%". `saa-checks.py` part 10 adds one check: the closed form, and the empirical quantile of 400,000 simulated multivariate-normal asset returns (-8.1353%). That script now executes 40 checks, up from 39. No allocation decision changes.
+- `def:business-credit-cycles`: BIS Working Paper 380 (Drehmann, Borio and Tsatsaronis, June 2012) was supplied by the owner. Its abstract was read in the earlier batch, but it was not cited. Now read:
+  - introduction, printed pp. 1-3;
+  - sec. 3.3 with Table 8, pp. 16-17;
+  - sec. 4 with Graph 3 and Table 9, pp. 18-20.
+
+  One paragraph cites it for:
+  - the medium-term financial cycle (credit, credit/GDP, house prices; seven countries, 1960-2011);
+  - average duration of about 16 years (nearly 20 after 1998, 11 before);
+  - domestic crises at or near its peaks;
+  - average recession depths of -3.4 against -2.2 percent by financial-cycle phase.
+
+  The authors' "indicative" caveat is kept. New key `financial-cycle-medium-term-2012`, with a reading note. The Jordà-Schularick-Taylor note's retrieval remark was updated.
+- `imf-sdn-2023-001`: the owner supplied the IMF-published PDF (15 January 2023) and its Online Annexes. The Executive Summary is identical, after whitespace normalisation, to the earlier copy without annexes, so the entry's p. 4 locator is unchanged. The reading note's "p. 9" for export bans and national-security restrictions was a locator error: both copies print that passage on p. 10. Box Figure 1.1 (p. 15) and its comparability caveat were added to the note. The annexes were inspected at heading level only and are not relied on. The source description in `sources.tex` now names the official copy.
+
+Coverage is unchanged: 191/424 objectives and 460/1,030 outline items. The affected
+objectives (`describe-business-credit-cycles`, `recommend-asset-allocation`) were
+reassessed and remain covered at their stated depth. No new objective is counted.

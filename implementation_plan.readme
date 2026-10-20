@@ -2922,3 +2922,36 @@ be delivered in a new stacked draft PR.
 - `objective:apply-integrated-analysis-framework` (decision; demonstrate).
 - `objective:adjust-for-comparability` (analysis; identify, explain, evaluate, recommend).
 - `objective:analyse-accounting-change-effects` (analysis; evaluate, analyze, interpret).
+
+
+## 24. Macro source corrections after the PR #28 merge (executed 2026-10-20)
+
+**Verified state.** `main` was clean at `0b78e4d`. PRs #24--#26 are closed; PR #28
+merged their corrected stack, whose tree equals `893622d`, into `main`. The accounting
+expansion `644f5d0` was reverted by `4196920` before the merge, so Section 23 is still a
+scope record only. The PR #26 branch is no longer an open delivery target. The
+corrections run on `codex/macro-source-corrections-20261020` from `main`, with a draft
+PR to `main`.
+
+**Re-audit.** All eight PR #26 findings (Section 22) are present on `main`. An
+independent scratch script, not the repository scripts, reproduced them:
+- cap-rate ledger and stable control;
+- cross-hedge notionals and USD P&L;
+- Solow raw and normalised paths;
+- trailing and forward P/E against Gordon prices;
+- Markov log returns, including a simulation;
+- Cedar and Lins decision tables;
+- debt and rebalancing arithmetic.
+
+One residual error was corrected: the Cedar fifth percentile is about -8.1%, not -8.2%.
+It is now checked in closed form and by simulation (`saa-checks.py`, 40 checks).
+
+**Supplied papers.** BIS WP 380 (June 2012) was read on its relevant pages and is now
+cited in `def:business-credit-cycles`. The official IMF SDN/2023/001 and its annexes
+replace the third-party copy in the source record. The entry locator is unchanged, a
+reading-note locator was corrected (p. 10), and the annexes were inspected only at
+heading level.
+
+**Coverage.** Unchanged: 191/424 objectives and 460/1,030 items. Corrections count
+toward no new objective. Details: `notes/source-review-records.md`, *Macro
+source-correction pass, 20 October 2026*.

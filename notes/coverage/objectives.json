@@ -10852,7 +10852,8 @@
    "prerequisites": [],
    "entries": [
     "res:international-parity-conditions",
-    "ev:cip-deviations"
+    "ev:cip-deviations",
+    "meth:cross-currency-basis-swaps"
    ],
    "candidate_entries": [
     "ev:cip-deviations",
@@ -10867,17 +10868,23 @@
      {
       "key": "economics-investment-decision-makers-2013",
       "locator": "chap. 10, sec. 3.1, pp. 549-565"
+     },
+     {
+      "key": "cur-borio-mccauley-mcguire-sushko-2016",
+      "locator": "pp. 45-48, Graph 1 and Box A (p. 48)"
      }
     ],
     "reading_notes": [
-     "notes/readings/economics-investment-decision-makers-2013.md"
+     "notes/readings/economics-investment-decision-makers-2013.md",
+     "notes/readings/cur-borio-mccauley-mcguire-sushko-2016.md"
     ],
     "review_record": "notes/source-review-records.md#macro-allocation-and-currency-batch-19-october-2026",
     "entry_evidence": [
      "res:international-parity-conditions",
-     "ev:cip-deviations"
+     "ev:cip-deviations",
+     "meth:cross-currency-basis-swaps"
     ],
-    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 6 (the parity conditions tied together from Fisher, PPP and UIP); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/fx-mechanics-determination/fx-checks.py part 6 (the parity conditions tied together from Fisher, PPP and UIP); notes/artefacts/forward-swap-valuation/cross-currency-basis-check.py (Batch L4, 2026-10-21: covered parity with a basis on one leg, the dollar-leg and foreign-leg conventions mapped exactly with annualisation at tau = 1 and 0.25, synthetic dollar funding, the inverted quote; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -14400,7 +14407,8 @@
    "depth": "analysis",
    "prerequisites": [],
    "entries": [
-    "meth:swap-valuation-replication"
+    "meth:swap-valuation-replication",
+    "meth:cross-currency-basis-swaps"
    ],
    "candidate_entries": [
     "def:interest-rate-swaps",
@@ -14428,18 +14436,28 @@
      {
       "key": "hull-tn19",
       "locator": "Technical Note 19"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 7, sec. 7.10, pp. 192-193"
+     },
+     {
+      "key": "ding-liu-rutkowski-ccbs-2025",
+      "locator": "arXiv v3, Definition 2.4, pp. 6-7; p. 38"
      }
     ],
     "reading_notes": [
      "notes/readings/s7-hulloptions.md",
      "notes/readings/s7-fabozzifixed.md",
-     "notes/readings/hull-tn19.md"
+     "notes/readings/hull-tn19.md",
+     "notes/readings/ding-liu-rutkowski-ccbs-2025.md"
     ],
     "review_record": "notes/source-review-records.md#fixed-income-and-derivatives-batch-18-october-2026",
     "entry_evidence": [
-     "meth:swap-valuation-replication"
+     "meth:swap-valuation-replication",
+     "meth:cross-currency-basis-swaps"
     ],
-    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed and equity-for-SOFR swaps with the next equity payment, later payments and net value separated, reset-date limits and a stochastic-rate simulation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/forward-swap-valuation/forward-swap-checks.py part 6 (receive-fixed swap after a rate rise by bonds and by FRAs, Hull Examples 7.2-7.3, EUR/USD swap, equity-for-fixed and equity-for-SOFR swaps with the next equity payment, later payments and net value separated, reset-date limits and a stochastic-rate simulation); notes/artefacts/forward-swap-valuation/cross-currency-basis-check.py (Batch L4, 2026-10-21: cross-currency basis swap cash flows by party, principal exchanges, the final exchange against the EUR/USD fixed-for-fixed example; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -18021,17 +18039,22 @@
      {
       "key": "s7-hulloptions",
       "locator": "chap. 26, sec. 26.16, pp. 629-632"
+     },
+     {
+      "key": "demeterfi-varswaps-gs-1999",
+      "locator": "Goldman Sachs note, March 1999, pp. 1-2, 13, 15 (EQ 13-16), 19 (EQ 26) and 30 (EQ 36-37)"
      }
     ],
     "reading_notes": [
-     "notes/readings/s7-hulloptions.md"
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/demeterfi-varswaps-gs-1999.md"
     ],
     "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
     "entry_evidence": [
      "meth:volatility-derivative-applications",
      "def:vix-variance-dividend-swaps"
     ],
-    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 2 (variance and volatility swap payoffs, Hull Examples 15.8 and 26.4-26.5 and a VIX futures hedge); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/derivative-overlays/overlay-checks.py part 2 (variance and volatility swap payoffs, Hull Examples 15.8 and 26.4-26.5 and a VIX futures hedge); notes/artefacts/derivative-overlays/seasoned-variance-swap-check.py (Batch L4, 2026-10-21: seasoned value from observation weights as a labelled derivation, limits, units, vega notional, the exact discrete remaining strike under GBM against a 200,000-path simulation, continuous approximation reported separately; review record notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21510,6 +21533,50 @@
      "meth:margin-purchase-leverage"
     ],
     "example": "notes/artefacts/short-term-funding/margin-purchase-check.py (static long and short call prices against roots; dated ledgers with interest, rebate, fee, commission and dividend; levered-return identity; deterministic, original inputs); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:estimate-greeks-by-simulation",
+   "topic": "topic:option-valuation",
+   "title": "Estimate option sensitivities by pathwise and likelihood-ratio Monte Carlo estimators and explain when each fails",
+   "operations": [
+    "calculate",
+    "explain"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:apply-monte-carlo-simulation",
+    "objective:manage-option-greeks"
+   ],
+   "entries": [
+    "meth:monte-carlo-greeks"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 9,
+   "evidence": {
+    "sources": [
+     {
+      "key": "broadie-glasserman-1996",
+      "locator": "secs. 2-4, pp. 269-275, eqs. (4)-(18); sec. 5 and Apps. A-B, pp. 280-281, conditions (A1)-(A4), Proposition 1, eq. (26)"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 21, sec. 21.6, pp. 494-495"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/broadie-glasserman-1996.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l4-21-october-2026",
+    "entry_evidence": [
+     "meth:monte-carlo-greeks"
+    ],
+    "example": "notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py (path derivatives and scores against finite differences; eq. (18) boundary term against the BSM gamma; call pathwise and likelihood-ratio delta and vega and pathwise strike sensitivity within 4 standard errors; a digital whose pathwise delta is zero on every path, recovered by the likelihood ratio; resimulation reported at two steps; seed 20261021, 100,000 draws, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   }

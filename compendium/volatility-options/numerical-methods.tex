@@ -1,6 +1,6 @@
-\section{Numerical option pricing: finite differences and least-squares Monte Carlo}
+\section{Numerical option pricing: finite differences, least-squares Monte Carlo and simulated Greeks}
 
-When no closed form exists, an option is valued by solving its pricing equation on a grid or by simulating the underlying. Grids handle early exercise naturally; simulation handles path dependence and several factors, and needs regression to handle early exercise. Plain Monte Carlo, its standard error and variance reduction are in \hyperref[meth:monte-carlo-simulation]{Monte Carlo simulation}; the equation being solved is derived in \hyperref[res:risk-neutral-pricing-feynman-kac]{risk-neutral pricing}.
+When no closed form exists, an option is valued by solving its pricing equation on a grid or by simulating the underlying. Grids handle early exercise naturally; simulation handles path dependence and several factors, and needs regression to handle early exercise and dedicated estimators for sensitivities. Plain Monte Carlo, its standard error and variance reduction are in \hyperref[meth:monte-carlo-simulation]{Monte Carlo simulation}; the equation being solved is derived in \hyperref[res:risk-neutral-pricing-feynman-kac]{risk-neutral pricing}.
 
 \begin{qfmethod}[Finite-difference option pricing: explicit and Crank--Nicolson schemes, stability, boundaries and early exercise]\label{meth:finite-difference-option-pricing}
 \qffield{Statement} A finite-difference method replaces the derivatives in the pricing equation by differences on a grid of asset prices and times and works back from the payoff \citep[chap.~21, sec.~21.8, pp.~498--508]{s7-hulloptions}. In time to maturity $\tau$ the Black--Scholes--Merton equation is $V_\tau=\tfrac12\sigma^2S^2V_{SS}+(r-q)SV_S-rV$. On a uniform grid $S_i=i\,\Delta S$ with central differences, the \emph{explicit} scheme gives each new value from three old ones:
@@ -46,5 +46,36 @@ Because exercise is decided only on the simulated dates, the method values a Ber
 \qffield{See also} \hyperref[meth:monte-carlo-simulation]{Monte Carlo simulation}; \hyperref[meth:finite-difference-option-pricing]{finite differences}; \hyperref[meth:multi-period-binomial-valuation]{binomial trees} (American exercise by backward induction).
 
 \qffield{Further reading} \nolinkurl{s6-glasserman} (regression methods and duality upper bounds).
+
+\end{qfmethod}
+
+\begin{qfmethod}[Monte Carlo Greeks: resimulation and its bias, pathwise and likelihood-ratio estimators, and when each fails]\label{meth:monte-carlo-greeks}
+\qffield{Statement} \emph{Resimulation.} The simplest simulated Greek values the option again with the parameter bumped by $h$ and divides the change by $h$; using the same random numbers in both runs makes the difference far less noisy \citep[chap.~21, sec.~21.6, pp.~494--495]{s7-hulloptions}. The estimate inherits the bias of the finite difference, while its variance grows as $h$ shrinks. Writing the price near $\theta_0$ as $p_0+a(\theta-\theta_0)+b(\theta-\theta_0)^2$, with $\nu^2$ the variance of each price estimate and $\rho$ their correlation, the increment that minimises mean squared error is $h^*=\bigl(2\nu^2(1-\rho)/b^2\bigr)^{1/4}$ \citep[sec.~4, p.~274; app.~B, eq.~(26), p.~281]{broadie-glasserman-1996}. Estimating $n$ Greeks this way needs $n+1$ simulations; the two direct methods below need one, and they are unbiased (p.~274).
+
+\emph{Pathwise.} Differentiate the discounted payoff along each path. With $S_T=S_0e^{(r-q-\sigma^2/2)T+\sigma\sqrt TZ}$, $dS_T/dS_0=S_T/S_0$ and $dS_T/d\sigma=S_T(-\sigma T+\sqrt TZ)$, so a call's delta and vega estimators are $e^{-rT}\mathbf 1\{S_T>K\}S_T/S_0$ and $e^{-rT}\mathbf 1\{S_T>K\}S_T(-\sigma T+\sqrt TZ)$ (eqs.~(4)--(9), pp.~270--271). They are unbiased when the path is almost surely Lipschitz in the parameter with an integrable modulus and the payoff is Lipschitz (conditions (A1)--(A4) and Proposition~1, app.~A, pp.~280--281); as a rule of thumb, a continuous payoff qualifies (p.~272).
+
+\emph{Likelihood ratio.} Put the parameter in the density $g$ of $S_T$ instead and weight the discounted payoff by the score $\partial\ln g(S_T)/\partial\theta$ (eqs.~(10)--(16), pp.~271--272). The payoff need not be smooth, and one estimator serves every payoff with the same density (p.~273), but the parameter must enter the density. The strike does not, so the method does not apply to it ``except possibly through a change of variables'' (p.~272).
+
+\qffield{Notation} $Z$ standard normal; $q$ the dividend yield (the paper's $\delta$); $g$ the lognormal density of $S_T$. Interpretation: in terms of $Z$, the scores are $Z/(S_0\sigma\sqrt T)$ for $S_0$ and $(Z^2-1)/\sigma-\sqrt TZ$ for $\sigma$, so the likelihood-ratio delta and vega are the discounted payoff times these. A call's strike sensitivity has the pathwise estimator $-e^{-rT}\mathbf 1\{S_T>K\}$, unbiased because the payoff is Lipschitz in $K$.
+
+\qffield{Conditions} Interpretation: \emph{where each fails.}
+\begin{itemize}
+\item \emph{Discontinuous payoffs.} A cash digital's discounted payoff $e^{-rT}\mathbf 1\{S_T>K\}$ has zero derivative on every path, so the pathwise delta is identically zero although the true delta is positive: the value moves only through the probability mass crossing the strike. The likelihood-ratio delta is unbiased. For the digital's strike sensitivity neither naive method works: the pathwise derivative is again zero, and $K$ is not a density parameter; a change of variables or a smoothed payoff is needed.
+\item \emph{Gamma.} Differentiating each path's call delta $e^{-rT}\mathbf 1\{S_T>K\}S_T/S_0$ in $S_0$ gives zero almost surely, because $S_T/S_0$ does not depend on $S_0$. Differentiating the expectation instead picks up the boundary at $S_T=K$ and gives $e^{-rT}(K/S_0)^2g(K)$, the closed-form gamma (eq.~(18) and n.~2, p.~273). Second derivatives therefore need problem-specific smoothing (p.~281).
+\item \emph{Variance.} In Broadie and Glasserman's European-option example the likelihood-ratio standard errors are 1.5 to 4 times the pathwise ones (p.~275); this is a finding for those examples, not a general ordering.
+\end{itemize}
+Every estimator is unbiased only under the simulated model, and resimulation without common random numbers is far noisier.
+
+\qffield{Practice} Example, original, with the inputs of \hyperref[meth:monte-carlo-simulation]{Monte Carlo simulation} (stock 100, call struck at 105, volatility 20 percent, rate 3 percent, no dividend, one year), 100{,}000 draws and one set of normals for every estimator. Closed forms: delta 0.50241, vega 39.894, strike sensitivity $-0.41060$.
+\begin{itemize}
+\item Pathwise delta 0.50101 (standard error 0.00188) and likelihood-ratio delta 0.49582 (0.00403). Pathwise vega 39.505 (0.233) and likelihood-ratio vega 38.920 (0.763). Pathwise strike sensitivity $-0.40989$ (0.00152). All lie within 1.7 standard errors. Here the likelihood-ratio standard error is 2.2 times the pathwise one for delta and 3.3 times for vega.
+\item A unit cash digital struck at 105 has delta $e^{-rT}n(d_2)/(S_0\sigma\sqrt T)=0.018997$. Every pathwise sample is 0. The likelihood ratio gives 0.018861 (0.000090). Resimulation with common numbers gives 0.019030 (0.000426) at $h=1$ and 0.020379 (0.004447) at $h=0.01$: a hundredth of the step costs about ten times the standard error, since the variance grows like $1/h$.
+\end{itemize}
+
+\qffield{Pitfalls} Taking the pathwise estimator for a digital, barrier or other discontinuous payoff because it works for the call. Differentiating the pathwise delta path by path and reporting a zero gamma. Shrinking the resimulation step without common random numbers, or without checking that the standard error stays acceptable. Applying the likelihood ratio to a parameter, such as the strike, that does not enter the density.
+
+\qffield{See also} \hyperref[meth:monte-carlo-simulation]{Monte Carlo simulation}; \hyperref[meth:greeks-delta-gamma-hedging]{Greeks and hedging}; \hyperref[meth:digital-option-valuation]{digital options} (the closed-form delta); \hyperref[mod:black-scholes-merton]{BSM}.
+
+\qffield{Further reading} \nolinkurl{s6-glasserman} (simulated Greeks among other simulation methods).
 
 \end{qfmethod}

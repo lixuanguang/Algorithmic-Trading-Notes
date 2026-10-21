@@ -85,6 +85,13 @@ Sources: Hull, *Options, Futures, and Other Derivatives*, 11th Global ed., and W
 
 Written in library gap-filling Batch L2 (2026-10-21), decision L2-D5: `meth:multi-period-binomial-valuation` extended with known dollar dividends in a recombining tree (Hull's Example 21.5 reproduced) and dividend-motivated early exercise of an American call; `meth:black-model-rates-currencies` extended with the receiver swaption, payer-receiver parity and the callable bond as a straight bond less a receiver swaption. Checks in `notes/artefacts/option-valuation/dividend-tree-swaption-checks.py`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
 
+Written in library gap-filling Batch L4 (2026-10-21):
+
+- `meth:monte-carlo-greeks` (new, `numerical-methods.tex`): resimulation with common random numbers and its bias-variance choice of step, pathwise and likelihood-ratio delta and vega (Broadie and Glasserman 1996), the digital whose pathwise delta is zero on every path, the gamma boundary term, and the strike case. Checks in `notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py`.
+- `meth:cross-currency-basis-swaps` (new, `forward-commitment-valuation.tex`): constant-notional cash flows by party, the dollar-leg (BIS) and foreign-leg (Du-Tepper-Verdelhan) sign conventions with annualisation, synthetic dollar funding and the principal exchanges, on overnight-rate legs. Checks in `notes/artefacts/forward-swap-valuation/cross-currency-basis-check.py`. `meth:swap-valuation-replication` gained a See also link and lost a stray comma; `meth:digital-option-valuation` gained a link.
+
+Sources: Hull, 11th Global ed.; Broadie and Glasserman (1996); Ding, Liu and Rutkowski (arXiv v3); Borio et al. (BIS Quarterly Review, September 2016). Synthetic examples only. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l4-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.

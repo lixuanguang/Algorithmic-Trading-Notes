@@ -101,7 +101,7 @@ In `market-risk-measurement.tex` (topic `market-risk-measurement`):
 In `derivative-overlays.tex` (topic `derivative-overlay-strategies`):
 
 - `meth:forward-commitment-risk-overlays`: futures and swaps for duration, currency forwards and swaps, and equity futures, forwards and swaps for beta.
-- `meth:volatility-derivative-applications`: variance and volatility swaps and VIX futures.
+- `meth:volatility-derivative-applications`: variance and volatility swaps and VIX futures. Extended 2026-10-21 (Batch L4): a seasoned variance swap valued from observation-weighted realised and remaining variance (a labelled derivation), with the exact discrete remaining strike under GBM kept apart from the continuous approximation; checks in `notes/artefacts/derivative-overlays/seasoned-variance-swap-check.py`.
 - `meth:derivative-overlay-allocation`: targeting equity and rate exposure together, rebalancing, and expectations inferred from derivative prices.
 - `ex:endowment-derivative-overlay-case`: cash against futures for rebalancing and a tactical tilt (illustrative).
 

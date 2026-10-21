@@ -6321,3 +6321,90 @@ printed p.~139 rendered and inspected. Pre-commit on the changed files. Reused w
 the 36 tests, because no script, input or Python file changed since `517213d`, where they passed; the edit is text and
 evidence only. `verify-outlines` not rerun; the crosswalk is unchanged. The same commit records the Batch L4 proposal in
 `implementation_plan_v2.md` (not implemented). Nothing pushed; no PR.
+
+## Library gap-filling, Batch L4, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-l4-proposal` at `95c547a` (parent `517213d`), working tree clean, no
+newer work; coverage 446/446 objectives and 1,030/1,030 outline items; L4 proposed, not implemented. Branch
+`codex/library-gap-batch-l4` created from `95c547a`. Local only. Owner decisions: L4-D1 all three packages; L4-D2 the
+seasoned variance-swap value as a labelled derivation with its contract and approximation assumptions stated; L4-D3 no
+separate objective for cross-currency basis swaps. Delegation to the models named by the implementation skill was not
+available; the work was done directly.
+
+**Freeze corrections, recorded before implementation** (plan, Section 7, "Batch L4 freeze corrections and frozen
+specification"). L4-C1: the proposal's dollar-leg basis $b=\frac FS(1+r_f\tau)-(1+r_{\$}\tau)$ is a period amount and
+matched the annual quote only at $\tau=1$; frozen as $[\ldots]/\tau$ with the equivalence
+$F/S=[1+(r_{\$}+b)\tau]/[1+r_f\tau]$, checked at $\tau=1$ and 0.25. L4-C2: the gamma sentence implied that differentiating
+each path gives the closed form; per path the derivative of the pathwise delta is zero almost surely, and eq. (18) is the
+derivative of the expectation with the boundary at $S_T=K$; the pathwise strike statement was restricted to Lipschitz
+payoffs (the digital fails both naive methods); larger likelihood-ratio variance is reported as a finding for the cited
+examples and this call. L4-C3: the seasoned-swap contract (return measure, schedule, $A$, $K_{\text{vol}}$,
+$K_{\text{var}}$, $N_{\text{var}}$ units, empty segments) was defined, and the simulation benchmark changed from the
+continuous strike to the exact discrete expectation $\sigma^2+(r-q-\sigma^2/2)^2/A$, with the continuous approximation and
+its deterministic difference reported separately. Seeds, path counts and tolerances were fixed in the plan before the
+first run.
+
+**Sources read** (copies in the git-ignored `reading_materials/library-gap-l4-20261021/`, hashes in its `SHA256SUMS`;
+retrieved 2026-10-21).
+
+| Source | Passages | Used for | Limits |
+|---|---|---|---|
+| Broadie and Glasserman (1996), *Management Science* 42(2) (`broadie-glasserman-1996`, new key); Columbia scan, SHA-256 `247d7319…e1304` | pp. 269-275, 280-281, read as page images; eqs. (4)-(18) and n. 2, p. 272 scope (strike, "except possibly through a change of variables"), p. 274 resimulation, p. 275 the 1.5-4 times ratio, App. A (A1)-(A4) and Proposition 1, App. B eq. (26), p. 281 second derivatives | `meth:monte-carlo-greeks` | Tables (pp. 276-279) and Apps. C-D not read; no digital example in the paper (the digital case is Interpretation, checked) |
+| Hull, OFOD 11th Global ed. (`s7-hulloptions`), git-ignored copy SHA-256 `8bc6e2f0…b482` | sec. 21.6, pp. 494-495; sec. 7.10, pp. 192-193; sec. 26.16, pp. 629-631 reread | resimulation; direction of principal exchanges and the decomposition; inception-only variance-swap value | Hull values variance swaps only at inception |
+| Demeterfi et al., Goldman Sachs note, March 1999 (`demeterfi-varswaps-gs-1999`, new key, naming the catalogued *J. Derivatives* version `wide-demeterfi-varswaps`), SHA-256 `ad289770…f762223e` | pp. 1-2 (contract terms), 13 (variance vega and remaining variance), 15 (EQ 13-16), 19 (EQ 26), 29-30 (EQ 35-37, additivity) | seasoned-swap extension of `meth:volatility-derivative-applications` | No mid-life formula printed: the value is a labelled derivation; journal version not read |
+| Ding, Liu and Rutkowski, arXiv:2410.08477v3 (`ding-liu-rutkowski-ccbs-2025`, new key, naming the catalogued SIAM version `w4-ding-rutkowski-ccbs`), SHA-256 `3f4eed42…f049f2` | pp. 1, 4, 6-7 (Definitions 2.4-2.5, constant spread), 38 (AUD/USD example) | `meth:cross-currency-basis-swaps` cash flows | One pair's convention; model sections not read; MTM resets named only |
+| Borio, McCauley, McGuire and Sushko (2016), BIS Quarterly Review (`cur-borio-mccauley-mcguire-sushko-2016`), SHA-256 `32dce4f0…a2928` | pp. 45-48, Graph 1 and Box A (p. 48) | the two sign conventions | LIBOR era; pp. 49-58 not read |
+
+**Delivered.** New `meth:monte-carlo-greeks` (`volatility-options/numerical-methods.tex`; the section title now names
+simulated Greeks) and `meth:cross-currency-basis-swaps` (`volatility-options/forward-commitment-valuation.tex`); the
+seasoned-swap extension of `meth:volatility-derivative-applications` (Statement, two Practice items, Conditions,
+Pitfall); See also links from `meth:monte-carlo-simulation`, `meth:digital-option-valuation`,
+`meth:swap-valuation-replication`, `ev:cip-deviations` and `meth:cross-forward-rates`. Adjacent prose: a stray comma
+before a citation in `meth:swap-valuation-replication`, and "Its last order found, of 5 October 2026" in
+`meth:esg-exposure-evaluation` reworded to "Its order of 5 October 2026, the latest available on 21 October 2026" (the
+dated posture is unchanged). One new objective, `objective:estimate-greeks-by-simulation` (`topic:option-valuation`,
+planned batch 9); `meth:cross-currency-basis-swaps` mapped as depth to `objective:value-swaps-by-replication` and
+`objective:apply-international-parity`; seasoned-swap evidence added to `objective:use-volatility-derivatives`. Reading
+notes for the four L4 sources (Borio et al. had none) and the Hull locators; entry evidence; pathway notes
+`volatility-options`, `fx-cip-dollar-funding` and `portfolio-construction-risk`.
+
+**Numerical results** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; first runs, no reseeding).
+- `notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py`, seed 20261021, 100,000 shared normals. Deterministic:
+  path derivatives and scores against central differences, worst relative error $1.3\times10^{-9}$; eq. (18) boundary term
+  equals the BSM gamma 0.0199467491; $S_T/S_0$ unchanged by an $S_0$ bump ($2.8\times10^{-16}$). Call: pathwise delta
+  0.50101 (s.e. 0.00188, $z=-0.75$), LR delta 0.49582 (0.00403, $-1.64$), pathwise vega 39.505 (0.233, $-1.67$), LR vega
+  38.920 (0.763, $-1.28$), pathwise $\partial C/\partial K$ $-0.40989$ (0.00152, $+0.47$) against 0.50241, 39.894 and
+  $-0.41060$. Digital: pathwise delta and strike derivative zero on every path (closest path $10^{-4}$ from $K$); LR delta
+  0.018861 (0.000090, $z=-1.51$) against 0.018997. Reported: LR/pathwise standard-error ratios 2.15 (delta) and 3.28
+  (vega); digital resimulation 0.019030 (0.000426) at $h=1$ and 0.020379 (0.004447) at $h=0.01$.
+- `notes/artefacts/derivative-overlays/seasoned-variance-swap-check.py`. Deterministic: worked value 182,562.0029; inception
+  0; expiry 562,500; decimal units equal; payoff derivative at $K_{\text{vol}}$ equals the vega notional 100,000;
+  observation weights from a return series; $E[r^2]$ by quadrature to $10^{-9}$. Exact discrete remaining strike 324.007557
+  (value 182,571.26) against the continuous 324 (182,562.00), difference 9.26, deterministic. Simulation, seed 20261021,
+  200,000 paths: 182,634.39 (s.e. 111.83), $z=+0.56$ against the exact discrete value. Reported: mean-subtracted realised
+  variance 597.23 (over $n$) and 602.00 (over $n-1$) against 625; calendar-day weights 181,551.59.
+- `notes/artefacts/forward-swap-valuation/cross-currency-basis-check.py`, deterministic: cash flows by party (A: $-100$m EUR
+  and $+110$m USD at $T_0$, $+2.3$m and $-4.4$m each year, principals back at $T_3$); covered parity at $\kappa=0$
+  (1.116098; 1.104099 at $\tau=0.25$); forward with the basis 1.118280 (1.104648); $b=20.3324$ basis points at $\tau=1$ and
+  20.0845 at $\tau=0.25$, period amount 5.0211; synthetic dollar rate 4.2033 and 4.2008 percent; inverted quote 0.894231;
+  final exchange $+4.0$m at 1.14, matching the fixed-for-fixed example's 4.0m.
+
+One harness correction during the run, recorded: the seasoned-swap script's first run compared the worked value with a
+mistyped literal (182,562.4, tolerance 0.5); the value is $2{,}500e^{-0.02}\times74.5=182{,}562.0029$ by hand, so the
+literal was corrected and the tolerance tightened to 0.01. No seed, path count or other tolerance changed.
+
+**Checks run (2026-10-21).** The three scripts with warnings as errors (pass, after `ruff format`, which changed layout
+only; outputs identical). `make lint`, `make format-check` (153 files), `make check-compendium` (0 problems, 695 entries),
+`make check-coverage` (0 problems; 447/447 objectives, 1,030/1,030 items) and `make test` (36 passed) pass. `make pdf`
+builds 443 pages (was 442) with no overfull boxes or undefined references; the one underfull box (badness 2277) is the
+pre-existing one. Printed pp.~138--139, 181--182, 191 and 261--262 rendered and inspected. Pre-commit on every changed
+and new file. Reused without rerun: every other numerical script, including `overlay-checks.py`,
+`forward-swap-checks.py`, `numerical-pricing-checks.py`, `exotic-option-checks.py`, the inference-simulation and FX
+scripts, because their files and inputs are unchanged and the L4 edits to their entries are text and cross-references;
+their last recorded passes (Batch L2 correction pass, reused by L3) still apply. `verify-outlines` not rerun; the crosswalk is unchanged.
+
+Limits: editorial coverage only; human review outstanding. Shortfall 44 against the 45-objective preference, without
+padding. The seasoned-swap value and the B13 annualised mapping are Interpretation, checked for internal consistency, not
+printed in the sources read. Excluded: mark-to-market cross-currency swaps, multi-period cross-currency valuation and
+curves, second-order Monte Carlo Greeks beyond the gamma sentence, empirical basis levels after 2016. Nothing pushed; no
+PR.

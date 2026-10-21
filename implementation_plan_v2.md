@@ -1,6 +1,14 @@
 # Compendium gap-filling from the owner's finance library: implementation plan v2
 
-**Current status (2026-10-21, after Batch L2).** Batch L2 was frozen by the owner (decisions L2-D0 to L2-D6, Section
+**Current status (2026-10-21, after Batch L3).** Batch L3 (P10, regulatory and disclosure currency; backlog B7) was
+frozen and executed on `codex/library-gap-batch-l3`, branched from `a519e0c`; committed locally, not pushed, no PR.
+FRTB, liquidity and sustainability-disclosure statements were verified against the issuers' texts and corrected with
+EU, UK and US status; one new entry, `rule:counterparty-credit-cva-capital`, and one new objective (446/446 objectives,
+1,030/1,030 items; shortfall 44 against 45). Record: `notes/source-review-records.md`, *Library gap-filling, Batch L3,
+21 October 2026*. Unverified: the FCA's PS26/19 and Eighth Circuit orders after May 2026. Human review outstanding.
+
+Status after Batch L2 (kept for the record):
+Batch L2 was frozen by the owner (decisions L2-D0 to L2-D6, Section
 10.3, with the two freeze corrections in Section 7) and implemented on `codex/library-gap-batch-l2`, branched from
 `c688d54`; committed locally, not pushed, no PR. All packages (P6-P9, P11a-c, the L2-D3 tree extension and the L2-D5
 Hull extensions) are complete; P10 is deferred to Batch L3. Eleven new objectives: 445/445 objectives and 1,030/1,030
@@ -162,7 +170,7 @@ rest. Proposed later work (Section 7) and the backlog (Section 8) hold the remai
 | Hedging with the wrong volatility; growth-optimal sizing | P4-P5 | Batch L1 |
 | Short rates, xVA, default correlation, EVT | P6-P9 | Proposed Batch L2 (Section 7), awaiting freeze |
 | New ideas found by C0: correlation and independence tests, mean-CVaR optimisation, buying on margin | P11 | Proposed Batch L2, owner decision L2-D2 |
-| Regulatory and disclosure currency | P10 | Batch L3 by default (decision L2-D4) |
+| Regulatory and disclosure currency | P10 | Batch L3 by default (decision L2-D4); done 2026-10-21 |
 | CAIA depth, lookbacks, Kolmogorov equations, second-order Greeks beyond a sentence, MC Greeks, others | B1-B10 | Backlog |
 | C0 depth gaps not placed in L2 | B12-B17 | Backlog |
 
@@ -993,8 +1001,7 @@ changed, and no threshold was tuned. The corrected text above is marked "Correct
 
 | Package | Original wording | Problem | Correction |
 |---|---|---|---|
-| P8 | "the deterministic gap between the large-pool and exact finite-pool values is reported for $N=250$, 500 and 1,000. Its absolute value must decrease in $N$ for each tranche." (and, in the L2 audit table, "Granularity is reported as a deterministic gap that must shrink from 250 to 1,000 names") | Not implied by the model for thin tranches. With $\mathrm{PD}=0.02$, $
-ho=0.3$, LGD 0.6 and a 0.2-2 percent tranche, the gaps in pool-loss units are about $6.227824	imes10^{-6}$, $1.0586963	imes10^{-5}$ and $5.082963	imes10^{-6}$ at 250, 500 and 1,000 names: they rise, then fall. | Gaps reported per tranche, not tested. The independent conditional-binomial finite-pool benchmark, its quadrature convergence and the 1,000-name Monte Carlo comparison remain binding. |
+| P8 | "the deterministic gap between the large-pool and exact finite-pool values is reported for $N=250$, 500 and 1,000. Its absolute value must decrease in $N$ for each tranche." (and, in the L2 audit table, "Granularity is reported as a deterministic gap that must shrink from 250 to 1,000 names") | Not implied by the model for thin tranches. With $\mathrm{PD}=0.02$, $\rho=0.3$, LGD 0.6 and a 0.2-2 percent tranche, the gaps in pool-loss units are about $6.227824\times10^{-6}$, $1.0586963\times10^{-5}$ and $5.082963\times10^{-6}$ at 250, 500 and 1,000 names: they rise, then fall. | Gaps reported per tranche, not tested. The independent conditional-binomial finite-pool benchmark, its quadrature convergence and the 1,000-name Monte Carlo comparison remain binding. |
 | P9 | "Over 500 replications of $k=250$, the mean shape is within 3 standard errors of 0.25, which allows for the $O(1/k)$ bias of maximum likelihood." | Three standard errors of the replication mean do not allow for finite-sample MLE bias, which does not shrink with the number of replications. Reproduction: NumPy `default_rng(20261021)`, 500 successive `genpareto.rvs(c=0.25, scale=1, size=250, random_state=rng)` samples, each fitted with `floc=0`: mean shape 0.237276, error 0.012724 against 3 s.e. 0.010503. | Mean shape moved to Diagnostics. The score and likelihood checks, the exact-Pareto Hill checks and the exact tail-formula checks remain binding. |
 
 The rest of the L2 audit table above is unchanged and kept as written.
@@ -1015,6 +1022,72 @@ reasons the earlier checks passed.
 | L2-F3 (`meth:credit-valuation-adjustment`) | EPE $\times$ spread presented without units. | Gregory sec. 14.2.5, p. 313: a per-annum spread (4.62 bp) against 0.200% upfront, converted by the risky annuity 4.42 (4.52 bp); checked. |
 | L2-F4 (`meth:margin-purchase-leverage`) | 150% stated for any non-exempted short sale. | Stated for the unhedged non-exempted equity short of the examples; 220.12(c)(2) and (d) given, from the retained eCFR text. No number changed. |
 
+### Batch L3 (frozen 2026-10-21): P10, regulatory and disclosure currency (backlog B7)
+
+Frozen by the owner's instruction of 2026-10-21 and executed in the same session, on branch
+`codex/library-gap-batch-l3` from `a519e0c`; local only (no push, PR, merge, rebase or amendment).
+Before the scope was written, the P8 row of "Batch L2 freeze corrections" was repaired: its
+`\rho` and `\times` had been stored as a line break and tab characters, which split the table
+row. Numbers and meaning are unchanged; this is formatting only.
+
+**Scope.** Four strands, each verified against current primary texts (BIS/BCBS, EU legislation
+and official EU institutions, PRA/Bank of England, US banking regulators and the Federal
+Register, IFRS Foundation/ISSB, FSB, SEC and official court documents). Search results and
+generated summaries are discovery aids only; every cited claim rests on a substantive passage
+read in the issuer's text, saved where possible under the git-ignored
+`reading_materials/library-gap-l3-20261021/`.
+
+1. *FRTB.* The Basel standard (MAR, with its effective date) separately from implementation in
+   the EU, the UK and the US. Review `meth:market-risk-limits-capital` and correct wording
+   that implies uniform implementation.
+2. *Counterparty capital.* SA-CCR (CRE52) and the revised CVA-risk framework (MAR50) in the
+   current Basel chapters, and their EU, UK and US status. Distinguish exposure measurement,
+   default-risk capital and CVA-risk capital. At most one new `rule:` entry, in
+   `corporate-credit-capital/counterparty-xva.tex`, if the reading shows a distinct idea; its
+   small checked example only if needed to teach the formula (deterministic, original inputs,
+   numpy/scipy only).
+3. *Sustainability disclosure.* IFRS S1/S2 (issuance and effective dates), the TCFD-to-ISSB
+   transition, and the SEC climate rule's status (adoption, stay, litigation). Issuance and
+   effective dates are kept apart from jurisdictional adoption. Adoption comparisons are limited
+   to the EU, the UK and the US. Entry: `meth:esg-exposure-evaluation` (Conditions).
+4. *Liquidity.* The LCR and NSFR statements and dates in
+   `financial-statement-analysis/financial-institution-analysis.tex`
+   (`def:financial-institution-features`), Basel standards against national implementation.
+
+**Record for each material claim** (in `notes/source-review-records.md`): issuer and exact
+locator; jurisdiction and affected institutions; publication, effective or application, and
+retrieval dates; status (proposed, final, effective, transitional, delayed, stayed or withdrawn);
+the entry affected and the correction made, or confirmation that none is needed. Conflicting
+dates are resolved by the controlling text and later official amendments; a press release is not
+evidence of implementation and a proposal is not law. An essential source that cannot be read is
+recorded as the precise unverified claim, and independent work continues.
+
+**Limits.** Extend existing entries first; no new chapter, regulatory calculator framework or
+dependency. Retrieval diaries and verification details stay out of the teaching text (Conditions
+give the "as of" dates only). No other backlog item; the L1 and L2 mathematical audits are not
+reopened without new evidence. Library read-only; citation policy unchanged.
+
+**Objectives.** Only genuinely new ones count. FRTB, liquidity and sustainability are currency
+corrections to covered objectives (`objective:set-market-risk-limits`,
+`objective:explain-financial-institution-features`, `objective:evaluate-esg-exposures`) and add
+none. Regulatory counterparty capital has no objective; if its entry is written, one objective is
+added (`topic:credit-models`, planned batch 8). Expected: 0-1 new, a shortfall of 44-45 against
+45, reported without padding.
+
+**Acceptance.** Every material claim recorded as above; affected entries corrected or confirmed;
+reading notes, `sources.tex`, entry evidence, coverage, pathways and plan status updated; any new
+script passes with warnings as errors; unaffected numerical evidence reused with its reason;
+`make lint`, `make format-check`, `make check-compendium`, `make check-coverage` and `make test`
+pass; `make pdf` builds with no overfull boxes or undefined references, and the changed pages are
+rendered and inspected; pre-commit passes on the committed files, new ones included; one new local
+commit.
+
+**Outcome (2026-10-21).** All four strands done; every material claim is tabulated in the review record with issuer,
+locator, jurisdiction, dates, status and entry outcome. One new entry and objective (counterparty capital), with a
+deterministic checked example; three entries corrected or extended; the other claims confirmed. Two sources could not
+be read (FCA PS26/19; Eighth Circuit orders after 18 May 2026) and are recorded as unverified; the teaching text does
+not depend on them.
+
 ## 8. Backlog (needs evidence before it is scheduled)
 
 | ID | Item | What is needed first |
@@ -1025,7 +1098,7 @@ reasons the earlier checks passed.
 | B4 | Second-order Greeks beyond the P4 sentence (vanna/volga hedging, the vanna-volga method) | A source for market practice |
 | B5 | Discrete-hedging error distribution and transaction costs (Wilmott chaps. 47-48) | Overlap check with P4 and `mod:black-scholes-merton` |
 | B6 | CAIA depth: CTA industry structure and vehicles (chaps. 29, 32), payoff-distribution and bottom-up replication (chap. 33), convertible arbitrage risks (chap. 34) | Owner decision on a CAIA citation exception, or non-curriculum sources (Kat and Palaro; Hasanhodzic and Lo) located and read. No own empirical CTA performance. A trend illustration is synthetic; an empirical futures backtest needs a defined continuous-contract roll rule, collateral return, a signal lag of $t-1$ information, and costs |
-| B7 | Regulatory currency P10: FRTB status by jurisdiction (BCBS, EU CRR3, UK PRA, US); SA-CCR and the revised CVA framework (CRE52, MAR50); ISSB IFRS S1/S2 adoption, TCFD's transfer to the ISSB, SEC climate-rule status; LCR/NSFR dates in `financial-institution-analysis.tex` | The issuers' current texts read with retrieval dates; corrections to existing entries plus at most one `rule:` entry for counterparty capital |
+| B7 | (Done in Batch L3, 2026-10-21.) Regulatory currency P10: FRTB status by jurisdiction (BCBS, EU CRR3, UK PRA, US); SA-CCR and the revised CVA framework (CRE52, MAR50); ISSB IFRS S1/S2 adoption, TCFD's transfer to the ISSB, SEC climate-rule status; LCR/NSFR dates in `financial-institution-analysis.tex` | The issuers' current texts read with retrieval dates; corrections to existing entries plus at most one `rule:` entry for counterparty capital |
 | B8 | LIBOR-era CQF and Gregory material | Historical only; used solely as dated context in P6-P7 |
 | B9 | Empirical EVT illustration | A daily return series with a documented source, dates and licence |
 | B10 | "Monte Carlo Methods.pdf" | Identify author and edition (OCR or bibliographic match) only if B3 needs it |
@@ -1217,6 +1290,7 @@ padding. The options below are kept as they were put to the owner.
 5. Owner freezes Batch L2 (Section 10.3). P10 (B7) goes in Batch L2 or L3 (L2-D4). Done: frozen 2026-10-21; P10 to L3.
 6. Batch L2: P6, P7, P8, P9, P11a-c, each with focused checks and records before the next. Done 2026-10-21 (frozen with
    decisions L2-D0 to L2-D6); committed locally on `codex/library-gap-batch-l2`. Next: Batch L3 (P10), human review.
+7. Batch L3: P10 (B7), frozen and executed 2026-10-21 on `codex/library-gap-batch-l3`; committed locally. Next: human review; no further batch is scheduled.
 
 ## 12. Risks and limits
 

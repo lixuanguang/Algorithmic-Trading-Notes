@@ -1,6 +1,6 @@
 \section{Counterparty exposure and valuation adjustments}
 
-A bilaterally cleared derivative can be worth something to either side, so the loss from a counterparty's default depends on what the netting set is worth when the default happens. These entries measure that future exposure, with netting and collateral, price it as a credit valuation adjustment and show how dependence between exposure and default changes the price. The bond case, where exposure is known, is \hyperref[meth:risky-bond-cva]{valuing a risky bond}. Regulatory capital for counterparty risk is not covered here. Numbers are checked in \texttt{notes/artefacts/counterparty-xva/counterparty-xva-checks.py}.
+A bilaterally cleared derivative can be worth something to either side, so the loss from a counterparty's default depends on what the netting set is worth when the default happens. These entries measure that future exposure, with netting and collateral, price it as a credit valuation adjustment and show how dependence between exposure and default changes the price. The bond case, where exposure is known, is \hyperref[meth:risky-bond-cva]{valuing a risky bond}. Regulatory capital for counterparty risk is a separate calculation, set out in \hyperref[rule:counterparty-credit-cva-capital]{counterparty and CVA capital}. Numbers are checked in \texttt{notes/artefacts/counterparty-xva/counterparty-xva-checks.py}.
 
 \begin{qfdefinition}[Counterparty exposure: expected exposure, potential future exposure and expected positive exposure, with netting, collateral and the margin period of risk]\label{def:counterparty-exposure-measures}
 \qffield{Statement} If the counterparty defaults when the netting set has value $V$ to the bank, the bank is an unsecured creditor for $V$ when $V>0$ and owes $-V$ in full when $V<0$. Ignoring the bid--ask cost of replacing the trades, the exposure is $\max(V,0)$, with $V$ the net value of all trades under the master agreement \citep[chap.~18, sec.~18.1, pp.~394--395]{risk-management-financial-institutions-2023}. With collateral $C$ held by the bank (negative if the bank has posted), $E=\max(V-C,0)$ (eq.~(18.4), p.~396). Netting turns trades worth $+10$, $+30$ and $-25$ million into one exposure of 15 instead of 40 \citep[chap.~24, sec.~24.7, p.~574]{s7-hulloptions}.
@@ -43,7 +43,7 @@ The exposure measures are taken across simulated values at each future date \cit
 
 \qffield{Pitfalls} Pulling the discount factor out of the expectation in a rates product. Reading $\mathrm{EPE}\times s$ as an upfront CVA rather than a charge per year. Using historical default probabilities in a price. Calculating CVA trade by trade under netting. Counting a DVA gain as a source of capital, which regulators exclude (RMFI, p.~403).
 
-\qffield{See also} \hyperref[def:counterparty-exposure-measures]{exposure measures}; \hyperref[def:wrong-way-risk]{wrong-way risk}; \hyperref[meth:risky-bond-cva]{risky bond CVA}; \hyperref[meth:cds-pricing]{CDS pricing}.
+\qffield{See also} \hyperref[def:counterparty-exposure-measures]{exposure measures}; \hyperref[def:wrong-way-risk]{wrong-way risk}; \hyperref[meth:risky-bond-cva]{risky bond CVA}; \hyperref[meth:cds-pricing]{CDS pricing}; \hyperref[rule:counterparty-credit-cva-capital]{regulatory capital}.
 
 \end{qfmethod}
 
@@ -62,6 +62,45 @@ the date-grid approximation of $(1-R)\,E^Q[D(0,\tau)E(\tau)\mathbf 1_{\{\tau\le 
 
 \qffield{Pitfalls} Reading a correlation sign without fixing which tail defaults. Treating historical correlations as evidence of no wrong-way risk when the link is causal or specific. Posting collateral in a currency or security that falls when the exposure rises (Gregory, sec.~17.3.3, pp.~382--383).
 
-\qffield{See also} \hyperref[meth:credit-valuation-adjustment]{CVA}; \hyperref[def:counterparty-exposure-measures]{exposure measures}; \hyperref[meth:cds-strategies]{CDS strategies}.
+\qffield{See also} \hyperref[meth:credit-valuation-adjustment]{CVA}; \hyperref[def:counterparty-exposure-measures]{exposure measures}; \hyperref[meth:cds-strategies]{CDS strategies}; \hyperref[rule:counterparty-credit-cva-capital]{regulatory capital}.
 
 \end{qfdefinition}
+
+\begin{qfrule}[Regulatory capital for derivatives counterparty risk: SA-CCR exposure at default, default-risk capital and the separate CVA-risk capital, with their EU, UK and US implementation]\label{rule:counterparty-credit-cva-capital}
+\qffield{Statement} Bank capital for a derivatives counterparty involves three different quantities.
+\begin{itemize}
+\item \emph{Exposure measurement.} A bank without internal-model approval measures each netting set's exposure at default with the standardised approach (SA-CCR): $\mathrm{EAD}=\alpha(\mathrm{RC}+\mathrm{PFE})$ with $\alpha=1.4$ \citep[CRE52.1]{basel-framework-ccr-mar-2026}. Unmargined, the replacement cost is $\mathrm{RC}=\max(V-C,0)$ (CRE52.10), and $\mathrm{PFE}=\text{multiplier}\times\mathrm{AddOn}$ (CRE52.20).
+\item \emph{Default-risk capital.} The EAD then enters the standardised or IRB credit-risk approach as the exposure and is risk-weighted for the counterparty's default (CRE51.7 and~51.13).
+\item \emph{CVA-risk capital.} A separate charge covers losses from changes in CVA as counterparty spreads and market factors move, with RWA $=12.5\times$ the requirement (MAR50.1 and~50.4). Regulatory CVA excludes the bank's own default (MAR50.3).
+\end{itemize}
+
+\emph{SA-CCR mechanics.} For an interest-rate trade the adjusted notional is the notional times the supervisory duration $\mathrm{SD}=(e^{-0.05S}-e^{-0.05E})/0.05$, with $S$ and $E$ the start and end of the referenced period (CRE52.34). It is multiplied by the maturity factor $\sqrt{\min(M,1)}$ for an unmargined trade (CRE52.48) and by a supervisory delta of $\pm1$ for a linear one (CRE52.39). Trades are netted by currency in three maturity buckets, with partial offset between buckets, and the hedging set's add-on is 0.5 percent of its effective notional (CRE52.57). Excess collateral or a negative value reduces PFE but not below 5 percent of the add-on:
+\[ \text{multiplier}=\min\Big\{1;\;0.05+0.95\exp\Big(\frac{V-C}{2\times0.95\times\mathrm{AddOn}}\Big)\Big\}\quad\text{(CRE52.23).} \]
+
+\emph{The basic approach to CVA risk} (BA-CVA, reduced version, without hedges). A counterparty's stand-alone requirement is
+\[ \mathrm{SCVA}_c=\frac1\alpha\,\mathrm{RW}_c\sum_{NS}M_{NS}\,\mathrm{EAD}_{NS}\,\mathrm{DF}_{NS},\qquad \mathrm{DF}=\frac{1-e^{-0.05M}}{0.05M}, \]
+with $\mathrm{RW}_c$ from 0.5 to 12 percent by sector and credit quality (MAR50.15--50.16). Across counterparties
+\[ K_{\text{reduced}}=\sqrt{\Big(\rho\sum_c\mathrm{SCVA}_c\Big)^2+(1-\rho^2)\sum_c\mathrm{SCVA}_c^2},\qquad\rho=50\ \text{percent}, \]
+and the requirement is $0.65\,K_{\text{reduced}}$ (MAR50.14). The standardised approach (SA-CVA), based on CVA sensitivities, needs supervisory approval (MAR50.7). A bank with non-centrally cleared derivatives of no more than EUR~100 billion notional may instead set CVA capital equal to its counterparty-credit-risk capital (MAR50.9).
+
+\qffield{Notation} $V$ value of the netting set to the bank; $C$ haircut collateral held; $M$ remaining (MF) or effective (BA-CVA) maturity in years; $\alpha$ converts effective expected positive exposure to EAD, which is why BA-CVA divides by it (MAR50.15, n.~4). Interpretation: $\mathrm{SD}$ is a continuously discounted annuity at 5 percent, and $M\,\mathrm{EAD}\,\mathrm{DF}/\alpha$ stands in for the area under the discounted expected-exposure profile (MAR50.15, n.~3), the same object as $\mathrm{EE}^*$ in \hyperref[meth:credit-valuation-adjustment]{CVA}.
+
+\qffield{Conditions} Basel dates: SA-CCR became effective on 1 January 2017 \citep[sec.~D, p.~3]{bcbs-sa-ccr-2014}; the current SA-CCR and CVA chapters are the versions effective 1 January 2023 \citep[CRE52 and MAR50]{basel-framework-ccr-mar-2026}. Implementation, as of 21 October 2026:
+\begin{itemize}
+\item \emph{EU.} SA-CCR applies from 28 June 2021 \citep[Art.~3(2)]{eu-2019-876-crr2}. CRR3 replaced the CVA approaches with standardised, basic and simplified ones from 1 January 2025 \citep[Art.~1(199) and Art.~2]{eu-2024-1623-crr3}, but kept the exemptions for, among others, non-financial counterparties below the EMIR clearing threshold, intragroup trades and sovereign-type counterparties \citep[Art.~382(4)]{eu-2013-575-crr}.
+\item \emph{UK.} SA-CCR applies from 1 January 2022 \citep[p.~8]{pra-ps17-21-basel-2021}. The Basel 3.1 CVA approaches (an alternative approach for small users, BA-CVA and SA-CVA) take effect on 1 January 2027 and remove existing exemptions, with transitional arrangements \citep[paras~1.8 and~1.13]{pra-ps17-23-basel31-2023}; \citep[para.~1.23]{pra-ps1-26-basel31-2026}.
+\item \emph{US.} SA-CCR took effect on 1 April 2020, mandatory for advanced-approaches banks from 1 January 2022 \citep[p.~4362]{us-sa-ccr-rule-2020}. Alpha is 1 for a commercial end-user \citep[12 CFR 217.132(c)(5)(iv)]{ecfr-12cfr217-2026}. CVA capital is still the simple or advanced CVA approach of the advanced approaches (217.132(e)); BA-CVA and SA-CVA are only proposed \citep[p.~14955]{us-capital-proposal-2026}.
+\end{itemize}
+
+\qffield{Practice} Checked example (\texttt{counterparty-capital-check.py}; original inputs). An unmargined four-year payer swap on 100 notional is worth 2 to the bank, with no collateral.
+\begin{itemize}
+\item \emph{SA-CCR}: SD 3.6254, adjusted notional 362.54, add-on $0.005\times362.54=1.8127$, RC 2 and multiplier 1, so $\mathrm{EAD}=1.4\times(2+1.8127)=5.3378$. With 4 of cash collateral held, RC is 0, the multiplier 0.5815 and EAD 1.4758. For a US commercial end-user ($\alpha=1$) the uncollateralised EAD is 3.8127.
+\item \emph{Default-risk capital} at an illustrative 100 percent risk weight: RWA 5.3378, capital 0.4270 at 8 percent.
+\item \emph{CVA-risk capital} for an investment-grade industrial ($\mathrm{RW}=3$ percent), taking $M=4$ for illustration: DF 0.9063, SCVA 0.4147, requirement $0.65\times0.4147=0.2695$, RWA 3.3692. Two such counterparties need $\sqrt{2.5}=1.58$ times one, not twice.
+\end{itemize}
+
+\qffield{Pitfalls} Treating EAD as a capital charge; it is the exposure fed to the credit-risk approach. Adding default-risk and CVA-risk capital as if one measured the other. Reading regulatory CVA as accounting CVA. Quoting the Basel effective date as the date a jurisdiction applies the rule.
+
+\qffield{See also} \hyperref[def:counterparty-exposure-measures]{exposure measures}; \hyperref[meth:credit-valuation-adjustment]{CVA}; \hyperref[def:wrong-way-risk]{wrong-way risk}; \hyperref[mech:otc-clearing-collateral]{clearing and collateral}.
+
+\end{qfrule}

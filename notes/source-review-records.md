@@ -6123,3 +6123,106 @@ as the history of the first implementation.
   (no script refers to the two changed ones). Their results at `cd55096` (`make source-check`, 119 scripts) stand.
 - Objectives unchanged: eleven new, 445/445 objectives and 1,030/1,030 outline items, editorial coverage only; the
   shortfall against 45 is still 34. Human review of the L2 entries is still outstanding. Nothing pushed; no PR.
+
+## Library gap-filling, Batch L3, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-batch-l2` at `a519e0c` (the L2 correction commit after `cd55096`), working
+tree clean, no newer work; coverage 445/445 objectives and 1,030/1,030 outline items. Branch `codex/library-gap-batch-l3`
+created from `a519e0c`. Local only. First, formatting repair of the P8 row of "Batch L2 freeze corrections" in
+`implementation_plan_v2.md`: `\rho` had been stored as a line break plus "ho" and `\times` as a tab plus "imes",
+splitting the table row; restored, with numbers and meaning unchanged, and the table re-parsed with markdown-it (GFM
+tables) as header, P8 and P9 rows of four cells each (before: a split, malformed P8 row). Then the L3 scope (P10, backlog
+B7) was frozen in the plan (Section 7, "Batch L3 (frozen 2026-10-21)") and executed. Delegation to the models named by
+the implementation skill was not available; the work was done directly.
+
+**Method.** Each claim rests on the issuer's own text, downloaded to the git-ignored
+`reading_materials/library-gap-l3-20261021/` (hashes in its `SHA256SUMS`) and read as extracted text; formula images
+(CRE52, MAR50) were rendered and read. BIS chapter pages moved to a new URL scheme with in-force and publication dates;
+EUR-Lex returned a bot challenge, so EU acts came from the Publications Office (CELLAR) and were found by SPARQL title
+queries; the eCFR API needed a compression header; Federal Register documents came from its API and XML. Web search was
+used only to find documents. In one early request the HTTP user-agent string contained the owner's e-mail address (a
+connectivity probe to eight issuer sites); later requests used a generic string.
+
+**Claims checked** (retrieval date 2026-10-21 for all; "Basel" dates are the dates by which BCBS members agreed to
+implement).
+
+| # | Claim | Issuer, locator | Jurisdiction; institutions | Published; effective/application | Status | Entry; result |
+|---|---|---|---|---|---|---|
+| 1 | FRTB internal models: ES at 97.5%, stress-calibrated, 10-day base scaled to liquidity horizons 10-120 days | BCBS, MAR33.3-33.5, 33.12 | Basel; internationally active banks | MAR33 version published 5 Jun 2020; effective 1 Jan 2023 | Final (Basel standard) | `meth:market-risk-limits-capital`: sentence corrected; it had implied a completed, uniform move |
+| 2 | Basel market-risk standard effective 1 Jan 2023, deferred from 1 Jan 2022 | BCBS, d457 introduction (2022); GHOS press release 27 Mar 2020; MAR90.1 | Basel | Jan 2019; deferral 27 Mar 2020 | Final; deferred | same entry; Conditions added |
+| 3 | EU FRTB applies from 1 Jan 2027; pre-CRR3 rules until then | Commission DR (EU) 2025/1496 Art. 1 (CRR Art. 520a), replacing DR 2024/2795 (1 Jan 2026) | EU; CRR institutions | OJ 19.9.2025; applies 1 Jan 2026 | Final; delayed twice | same entry; added |
+| 4 | EU temporary FRTB relief to 31 Dec 2029, incl. 0.9 multipliers | DR (EU) 2026/1221 Art. 1 (CRR Arts 495i-495v, 495s) | EU; CRR institutions | OJ 11.9.2026; applies 1 Jan 2027 | Final; transitional | same entry; added |
+| 5 | UK Basel 3.1 from 1 Jan 2027; FRTB-IMA from 1 Jan 2028, existing IMA permissions retained in 2027 | PRA PS1/26 paras 1.5, 1.23-1.24, 3.4 | UK; PRA-authorised banks, building societies, designated investment firms | 20 Jan 2026; 1 Jan 2027 / 1 Jan 2028 | Final; delayed (from 2025/2026) | same entry; added |
+| 6 | US market-risk rule is 99%, 10-day VaR plus stressed VaR | 12 CFR 217.204(b)(2), 217.205(b)(1) (eCFR to 19 Oct 2026) | US; Board-regulated institutions subject to market risk rule | in force | Effective | same entry; added |
+| 7 | US revised framework only proposed; 2023 proposal rescinded | OCC/Board/FDIC NPR 91 FR 14952, 14955 | US; Category I-II and significant-trading banks | 27 Mar 2026; comments to 18 Jun 2026; no final rule found to 21 Oct 2026 | Proposed | same entry and `rule:counterparty-credit-cva-capital`; added |
+| 8 | SA-CCR: EAD = 1.4 (RC + PFE); RC, multiplier (5% floor), SD, MF, delta, IR buckets, SF 0.5% | BCBS CRE52.1-52.57, 52.72 | Basel; banks without IMM approval | CRE52 version effective 1 Jan 2023 | Final | new `rule:counterparty-credit-cva-capital` |
+| 9 | SA-CCR Basel effective date 1 Jan 2017 | BCBS 279 sec. D, p. 3 | Basel | Mar 2014 | Final | new rule; added |
+| 10 | CCR EAD feeds the credit-risk SA or IRB as the exposure | BCBS CRE51.7, 51.13 (2028 version compared: adds CCR-hedge treatment only) | Basel | 2023 version | Final | new rule |
+| 11 | CVA-risk capital: separate, RWA = 12.5 x K; BA-CVA reduced K formula, DS 0.65, rho 50%, SCVA, DF, RW 0.5-12%; SA-CVA needs approval; EUR 100bn option | BCBS MAR50.1-50.16 (July 2020 revision BCBS d507 read for the DS and calibration change) | Basel | MAR50 published 8 Jul 2020; effective 1 Jan 2023 | Final | new rule |
+| 12 | EU SA-CCR from 28 Jun 2021 | Reg. (EU) 2019/876 Art. 3(2) | EU | OJ 7.6.2019; 28 Jun 2021 | Effective | new rule; added |
+| 13 | EU revised CVA approaches from 1 Jan 2025, exemptions kept | Reg. (EU) 2024/1623 Art. 1(198)-(199), Art. 2; Reg. 575/2013 Art. 382(4) | EU; CRR institutions | OJ 19.6.2024; 1 Jan 2025 | Effective | new rule; added |
+| 14 | UK SA-CCR (and NSFR) from 1 Jan 2022 | PRA PS17/21 pp. 4, 8 | UK; PRA-authorised firms | Jul 2021; 1 Jan 2022 | Effective | new rule and `def:financial-institution-features`; added |
+| 15 | UK Basel 3.1 CVA (AA-CVA, BA-CVA, SA-CVA) removes exemptions, with transition | PRA PS17/23 paras 1.8, 1.13; PS1/26 para. 1.23 | UK | 12 Dec 2023 (near-final); 1 Jan 2027 | Final, not yet effective | new rule; added |
+| 16 | US SA-CCR effective 1 Apr 2020, mandatory 1 Jan 2022 for advanced approaches; alpha 1 for commercial end-users | 85 FR 4362, 4365; 12 CFR 217.132(c)(5)(iv) | US | 24 Jan 2020 | Effective | new rule; added |
+| 17 | US CVA capital: simple or advanced CVA approach (advanced approaches); BA-/SA-CVA only proposed | 12 CFR 217.132(e); 91 FR 14952 | US | in force / proposal | Effective / proposed | new rule; added |
+| 18 | LCR >= 100% outside stress (LCR20.4-20.5); NSFR >= 100% (NSF20.2) | BCBS LCR20, NSF20 | Basel | versions effective 15 Dec 2019 | Final | `def:financial-institution-features`; confirmed, no correction |
+| 19 | LCR 100% minimum from 1 Jan 2019; NSFR minimum standard from 1 Jan 2018 | BCBS LCR90.1; BCBS 295 para. 8 | Basel | 2013 / Oct 2014 | Final | same entry; dates added |
+| 20 | EU LCR from 1 Oct 2015 at 60%, 100% from 1 Jan 2018; NSFR from 28 Jun 2021 | DR (EU) 2015/61 Arts 38-39; Reg. 2019/876 Art. 3(2) | EU | 2014 / 2019 | Effective | same entry; added |
+| 21 | US LCR effective 1 Jan 2015 (80%, 90%, 100% from 2017); NSFR 1 Jul 2021 for $100bn+ organisations | 79 FR 61440, 61444; 86 FR 9120 | US | 10 Oct 2014; 11 Feb 2021 | Effective | same entry; added |
+| 22 | IFRS S1/S2 issued June 2023, effective for periods from 1 Jan 2024; climate-first relief; GHG amendments Dec 2025 effective 1 Jan 2027 | IFRS S1 E1, E5; S2 C1, C1B | Global standard; applies only where adopted | Jun 2023; Dec 2025 | Issued (not law) | `meth:esg-exposure-evaluation`; added |
+| 23 | ISSB materiality is investor-focused (financial) | IFRS S1 paras 3, 18 | as above | | Issued | same entry; existing claim confirmed and qualified |
+| 24 | TCFD monitoring passes to ISSB from 2024; TCFD disbanded after 2023 report | FSB press release 21/2023 (13 Jul 2023); TCFD 2023 Status Report p. 3 | Global | Jul and Oct 2023 | Completed | same entry; added |
+| 25 | EU uses ESRS; mandatory scope after Omnibus I: > EUR 450m turnover and > 1,000 employees; transposition by 19 Mar 2027 | Dir. (EU) 2026/470 Art. 2(1), Art. 5(1) | EU; large undertakings | OJ 26.2.2026 | Final directive, awaiting transposition | same entry; added |
+| 26 | UK endorsed UK SRS S1/S2 for voluntary use | DBT government response paras 1.4-1.5, 1.15 | UK | 25 Feb 2026 | Final (voluntary) | same entry; added |
+| 27 | SEC climate rules adopted Mar 2024; stayed Apr 2024; defence ended 27 Mar 2025; Eighth Circuit abeyance 12 Sep 2025; rescission proposed Jun 2026 | 89 FR 21668; 89 FR 25804 (Release 33-11280); 91 FR 33296, 33299-33300; SEC letter to the Eighth Circuit, 7 May 2026 | US; SEC registrants | adopted 6 Mar 2024; never effective | Stayed; rescission proposed | same entry; added |
+
+**Not verified** (stated precisely; nothing in the teaching text depends on them).
+- FCA PS26/19 (listed issuers' sustainability disclosures referring to UK SRS): the FCA site returned a bot challenge to
+  every request, so its content, dates and comply-or-explain basis are unread; the entry says only that mandatory use
+  depends on separate rules such as the FCA's Listing Rules, which the government response states.
+- Eighth Circuit orders after 18 May 2026 (including any ruling on Iowa's motion of 8 May 2026 to lift abeyance) and the
+  SEC's planned later status report: not in the public RECAP docket; PACER was not used. The entry states the posture as
+  of the SEC's June 2026 proposal and records that no final rescission appears in the Federal Register up to 21 October
+  2026.
+- The PRA Rulebook instrument (PS1/26 Appendix 1) and the OCC and FDIC parallel capital parts were not read; dates and
+  US text come from the policy statement and the Board's part 217.
+- Directive (EU) 2025/794 and Commission Recommendation 2025/1710 were found but are not used.
+
+**Entries.** New `rule:counterparty-credit-cva-capital` (in `corporate-credit-capital/counterparty-xva.tex`; the topic
+file's introduction no longer says capital is not covered, and See also links were added to the CVA and wrong-way-risk
+entries). Corrected or extended: `meth:market-risk-limits-capital` (Banks item, Conditions, Pitfalls),
+`def:financial-institution-features` (Liquidity item, Conditions), `meth:esg-exposure-evaluation` (Conditions). No
+other backlog item was touched; no L1 or L2 calculation was reopened.
+
+**Check** (`notes/artefacts/counterparty-xva/counterparty-capital-check.py`, deterministic, original inputs). It tests
+identities independent of the hand formulas (SD and DF against numerical integrals of $e^{-0.05t}$ to $10^{-12}$; the
+multiplier's value of 1 for $V-C\ge0$ and approach to the 5 percent floor; the single-bucket effective notional;
+$K_{\text{reduced}}=S\sqrt{\rho^2N^2+(1-\rho^2)N}$ for $N$ equal counterparties) and the worked example: SD 3.6254, add-on
+1.8127, EAD 5.3378; with 4 of cash collateral multiplier 0.5815, EAD 1.4758; default RWA 5.3378 and capital 0.4270 at an
+illustrative 100 percent risk weight; DF 0.9063, SCVA 0.4147, BA-CVA requirement 0.2695, RWA 3.3692; two counterparties
+$\sqrt{2.5}$ times one; US commercial end-user EAD 3.8127. First run: one failure in my own expected value (I had
+pre-computed the collateralised multiplier as 0.5816; the formula gives 0.581531), corrected to 0.5815, 1.0541 and
+1.4758; no formula or input changed. The script was reformatted by moving two comments.
+
+**Objectives.** One new: `objective:explain-counterparty-credit-capital` (`topic:credit-models`, planned batch 8,
+covered). FRTB, liquidity and sustainability were currency corrections to covered objectives
+(`objective:set-market-risk-limits`, `objective:explain-financial-institution-features`, `objective:evaluate-esg-exposures`),
+whose evidence now lists the new sources. Coverage 446/446 objectives and 1,030/1,030 outline items (no outline item
+maps to the new objective). Shortfall against the standing 45: 44.
+
+**Registry and notes.** 25 new `sources.tex` keys and reading notes (Basel, BCBS, EU, PRA, DBT, US agencies, eCFR,
+SEC, IFRS Foundation, FSB, TCFD); entry evidence for the new entry and the four touched ones (plus a note on the
+wrong-way-risk record); coverage evidence; two pathway notes.
+
+**Checks run (2026-10-21).** `counterparty-capital-check.py` with warnings as errors (all pass); `make lint`,
+`make format-check`, `make check-compendium` and `make check-coverage` (0 problems; 446/446, 1,030/1,030) and `make test`
+(36 passed). `make pdf`: 441 pages, no overfull boxes, undefined references or citations; the one underfull box
+(badness 2277) is the pre-existing one. The first build stopped on an `itemize` I had left unclosed in the ESG
+Conditions; the next showed a new underfull line from an inline SCVA formula, moved into a display. Printed pp. 91,
+93, 128, 139 and 259 (the changed entries) were rendered and inspected. Pre-commit on the committed files, new ones
+included. Reused without rerun: every other numerical script (no script except the new one changed since `a519e0c`,
+whose affected scripts and both checkers passed in the L2 correction pass and were confirmed by the later audit; the
+full `make source-check` of `cd55096` covers the rest); `verify-outlines` (the outline crosswalk is unchanged).
+
+**Limits.** Status statements are as of 21 October 2026 and will date. Editorial coverage only; human review of the
+new entry and the three corrected ones is outstanding. Nothing pushed; no PR.

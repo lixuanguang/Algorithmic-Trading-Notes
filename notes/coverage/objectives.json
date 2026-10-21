@@ -11569,17 +11569,52 @@
      {
       "key": "basel-framework-2026",
       "locator": "RBC20.1"
+     },
+     {
+      "key": "basel-framework-ccr-mar-2026",
+      "locator": "LCR90.1"
+     },
+     {
+      "key": "bcbs-nsfr-2014",
+      "locator": "para. 8"
+     },
+     {
+      "key": "eu-2015-61-lcr",
+      "locator": "Arts 38-39"
+     },
+     {
+      "key": "eu-2019-876-crr2",
+      "locator": "Art. 3(2)"
+     },
+     {
+      "key": "pra-ps17-21-basel-2021",
+      "locator": "pp. 4, 8"
+     },
+     {
+      "key": "us-lcr-rule-2014",
+      "locator": "79 FR 61444"
+     },
+     {
+      "key": "us-nsfr-rule-2021",
+      "locator": "86 FR 9120"
      }
     ],
     "reading_notes": [
      "notes/readings/risk-management-financial-institutions-2023.md",
-     "notes/readings/basel-framework-2026.md"
+     "notes/readings/basel-framework-2026.md",
+     "notes/readings/basel-framework-ccr-mar-2026.md",
+     "notes/readings/bcbs-nsfr-2014.md",
+     "notes/readings/eu-2015-61-lcr.md",
+     "notes/readings/eu-2019-876-crr2.md",
+     "notes/readings/pra-ps17-21-basel-2021.md",
+     "notes/readings/us-lcr-rule-2014.md",
+     "notes/readings/us-nsfr-rule-2021.md"
     ],
     "review_record": "notes/source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026",
     "entry_evidence": [
      "def:financial-institution-features"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 8 (Hull's DLC reproduced: 12% pre-tax ROE; insolvency at 1% equity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 8 (Hull's DLC reproduced: 12% pre-tax ROE; insolvency at 1% equity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; LCR and NSFR dates by jurisdiction verified in library gap-filling Batch L3 (2026-10-21), no numerical change"
    },
    "supersedes": null
   },
@@ -12289,19 +12324,54 @@
      {
       "key": "aggregate-confusion-2022",
       "locator": "abstract and sec. 1"
+     },
+     {
+      "key": "ifrs-s1-s2-2026",
+      "locator": "S1 paras 3, 18, E1, E5; S2 paras C1, C1B"
+     },
+     {
+      "key": "fsb-climate-roadmap-2023",
+      "locator": "ref. 21/2023"
+     },
+     {
+      "key": "tcfd-status-2023",
+      "locator": "p. 3"
+     },
+     {
+      "key": "eu-2026-470-sustainability-omnibus",
+      "locator": "Art. 2(1), Art. 5(1)"
+     },
+     {
+      "key": "uk-srs-response-2026",
+      "locator": "paras 1.4-1.5, 1.15"
+     },
+     {
+      "key": "sec-climate-rule-2024",
+      "locator": "89 FR 21668"
+     },
+     {
+      "key": "sec-climate-rescission-proposal-2026",
+      "locator": "91 FR 33296, 33299-33300"
      }
     ],
     "reading_notes": [
      "notes/readings/eu-2026-1563-esrs.md",
      "notes/readings/oecd-g20-principles-2023.md",
      "notes/readings/applied-corporate-finance-2014.md",
-     "notes/readings/aggregate-confusion-2022.md"
+     "notes/readings/aggregate-confusion-2022.md",
+     "notes/readings/ifrs-s1-s2-2026.md",
+     "notes/readings/fsb-climate-roadmap-2023.md",
+     "notes/readings/tcfd-status-2023.md",
+     "notes/readings/eu-2026-470-sustainability-omnibus.md",
+     "notes/readings/uk-srs-response-2026.md",
+     "notes/readings/sec-climate-rule-2024.md",
+     "notes/readings/sec-climate-rescission-proposal-2026.md"
     ],
     "review_record": "notes/source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026",
     "entry_evidence": [
      "meth:esg-exposure-evaluation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 4 (carbon cost in cash flows and value)"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 4 (carbon cost in cash flows and value); disclosure standards and EU, UK and US adoption status verified in library gap-filling Batch L3 (2026-10-21), no numerical change"
    },
    "supersedes": null
   },
@@ -15505,17 +15575,52 @@
      {
       "key": "risk-management-financial-institutions-2023",
       "locator": "chap. 28, pp. 609-613"
+     },
+     {
+      "key": "basel-framework-ccr-mar-2026",
+      "locator": "MAR33.3-33.5, MAR33.12, MAR90.1"
+     },
+     {
+      "key": "bcbs-ghos-deferral-2020",
+      "locator": "press release, 27 March 2020"
+     },
+     {
+      "key": "eu-2025-1496-frtb-date",
+      "locator": "Art. 1 (CRR Art. 520a)"
+     },
+     {
+      "key": "eu-2026-1221-frtb-relief",
+      "locator": "Art. 1 (CRR Art. 495s)"
+     },
+     {
+      "key": "pra-ps1-26-basel31-2026",
+      "locator": "paras 1.23-1.24, 3.4"
+     },
+     {
+      "key": "ecfr-12cfr217-2026",
+      "locator": "12 CFR 217.204-217.205"
+     },
+     {
+      "key": "us-capital-proposal-2026",
+      "locator": "91 FR 14955"
      }
     ],
     "reading_notes": [
      "notes/readings/managing-investment-portfolios-2007.md",
-     "notes/readings/risk-management-financial-institutions-2023.md"
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/basel-framework-ccr-mar-2026.md",
+     "notes/readings/bcbs-ghos-deferral-2020.md",
+     "notes/readings/eu-2025-1496-frtb-date.md",
+     "notes/readings/eu-2026-1221-frtb-relief.md",
+     "notes/readings/pra-ps1-26-basel31-2026.md",
+     "notes/readings/ecfr-12cfr217-2026.md",
+     "notes/readings/us-capital-proposal-2026.md"
     ],
     "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
     "entry_evidence": [
      "meth:market-risk-limits-capital"
     ],
-    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 4 (limit utilisation, risk budgets, RAROC capital allocation and institution-specific measures); corrected 2026-10-19 (PR #25 pass): stop-loss comparison on the named book and convention; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/market-risk-measurement/market-risk-checks.py part 4 (limit utilisation, risk budgets, RAROC capital allocation and institution-specific measures); corrected 2026-10-19 (PR #25 pass): stop-loss comparison on the named book and convention; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; FRTB status by jurisdiction verified against issuer texts in library gap-filling Batch L3 (2026-10-21), no numerical change"
    },
    "supersedes": null
   },
@@ -21023,6 +21128,95 @@
      "def:wrong-way-risk"
     ],
     "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py part 2 (one-date latent-normal example, bivariate-normal quadrature against 200,000 draws, seed 20261071, five correlations, lower-tail default; part 1, a non-unit-discount PV CVA added in the L2 correction pass); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:explain-counterparty-credit-capital",
+   "topic": "topic:credit-models",
+   "title": "Explain regulatory capital for derivatives counterparty risk: SA-CCR exposure at default, default-risk capital and CVA-risk capital, and how their implementation differs by jurisdiction",
+   "operations": [
+    "explain",
+    "calculate"
+   ],
+   "depth": "application",
+   "prerequisites": [
+    "objective:calculate-derivative-cva",
+    "objective:measure-counterparty-exposure"
+   ],
+   "entries": [
+    "rule:counterparty-credit-cva-capital"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "basel-framework-ccr-mar-2026",
+      "locator": "CRE51.7, 51.13; CRE52.1-52.57; MAR50.1-50.16 (versions effective 1 January 2023)"
+     },
+     {
+      "key": "bcbs-sa-ccr-2014",
+      "locator": "sec. D, p. 3"
+     },
+     {
+      "key": "eu-2019-876-crr2",
+      "locator": "Art. 3(2)"
+     },
+     {
+      "key": "eu-2024-1623-crr3",
+      "locator": "Art. 1(199), Art. 2"
+     },
+     {
+      "key": "eu-2013-575-crr",
+      "locator": "Art. 382(4)"
+     },
+     {
+      "key": "pra-ps17-21-basel-2021",
+      "locator": "p. 8"
+     },
+     {
+      "key": "pra-ps17-23-basel31-2023",
+      "locator": "paras 1.8, 1.13"
+     },
+     {
+      "key": "pra-ps1-26-basel31-2026",
+      "locator": "para. 1.23"
+     },
+     {
+      "key": "us-sa-ccr-rule-2020",
+      "locator": "85 FR 4362"
+     },
+     {
+      "key": "ecfr-12cfr217-2026",
+      "locator": "12 CFR 217.132(c)(5), (e)"
+     },
+     {
+      "key": "us-capital-proposal-2026",
+      "locator": "91 FR 14955"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/basel-framework-ccr-mar-2026.md",
+     "notes/readings/bcbs-sa-ccr-2014.md",
+     "notes/readings/eu-2019-876-crr2.md",
+     "notes/readings/eu-2024-1623-crr3.md",
+     "notes/readings/eu-2013-575-crr.md",
+     "notes/readings/pra-ps17-21-basel-2021.md",
+     "notes/readings/pra-ps17-23-basel31-2023.md",
+     "notes/readings/pra-ps1-26-basel31-2026.md",
+     "notes/readings/us-sa-ccr-rule-2020.md",
+     "notes/readings/ecfr-12cfr217-2026.md",
+     "notes/readings/us-capital-proposal-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l3-21-october-2026",
+    "entry_evidence": [
+     "rule:counterparty-credit-cva-capital"
+    ],
+    "example": "notes/artefacts/counterparty-xva/counterparty-capital-check.py (SA-CCR for an unmargined four-year swap with and without excess collateral, default-risk capital at an illustrative risk weight, reduced BA-CVA for one and two counterparties, US commercial end-user alpha; deterministic, original inputs); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },

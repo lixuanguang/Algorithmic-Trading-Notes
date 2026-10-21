@@ -6303,3 +6303,21 @@ No mathematical L1 or L2 statement was touched. `verify-outlines` was not rerun;
 Limits: status statements are as of 21 October 2026, except the Eighth Circuit posture (5 October 2026). The FCA text
 is an archived copy of the FCA's PDF, not a direct download. Editorial coverage only; human review outstanding. Nothing
 pushed; no PR.
+
+**L3 wording correction, 21 October 2026.** Branch `codex/library-gap-l4-proposal`, created from `517213d` (parent
+`440272b`; clean tree; 446/446 objectives, 1,030/1,030 items). `meth:esg-exposure-evaluation`, EU timing: the item named
+only large public-interest entities above 500 employees as the FY 2024-2026 first wave. CSRD Art.~5(2), first
+subparagraph, point (a) also covers (ii) public-interest entities that are parents of a large group above 500 employees
+on a consolidated basis (retained OJ text in `reading_materials/library-gap-l3-audit-20261021/eu-32022L2464.html`,
+SHA-256 `6ad8df8d…d6c29837`). Directive 2025/794 Art.~1 amends only points (b) and (c), and Directive 2026/470
+Art.~3(1)(a)(i) replaces only the introductory dates of point (a) (retained copies from Batch L3), so both cases stand
+for FY 2024-2026. The item now names both, citing CSRD Art.~5(2)(a)(i)--(ii), and cites Directive 2026/470 Art.~3(1)
+for the exemption sentence. Updated with it: the CSRD and 2026/470 reading notes (earlier wording kept), the entry
+evidence, and the objective's CSRD locator and example note. No number or objective changed.
+
+Checks run (2026-10-21). `make check-compendium` (0 problems), `make check-coverage` (0 problems; 446/446, 1,030/1,030),
+`make pdf` (442 pages, no overfull boxes or undefined references; the one underfull box is the pre-existing one);
+printed p.~139 rendered and inspected. Pre-commit on the changed files. Reused without rerun: every numerical script and
+the 36 tests, because no script, input or Python file changed since `517213d`, where they passed; the edit is text and
+evidence only. `verify-outlines` not rerun; the crosswalk is unchanged. The same commit records the Batch L4 proposal in
+`implementation_plan_v2.md` (not implemented). Nothing pushed; no PR.

@@ -12364,7 +12364,7 @@
      },
      {
       "key": "eu-2022-2464-csrd",
-      "locator": "Art. 5(2)"
+      "locator": "Art. 5(2), first subpara., point (a)(i)-(ii); second subpara."
      },
      {
       "key": "fca-ps26-19-2026",
@@ -12396,7 +12396,7 @@
     "entry_evidence": [
      "meth:esg-exposure-evaluation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 4 (carbon cost in cash flows and value); disclosure standards and EU, UK and US adoption status verified in library gap-filling Batch L3 (2026-10-21), no numerical change; EU scope and timing, the FCA's final rules and the Eighth Circuit orders corrected or added in the Batch L3 post-implementation audit correction pass (2026-10-21), no numerical change"
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 4 (carbon cost in cash flows and value); disclosure standards and EU, UK and US adoption status verified in library gap-filling Batch L3 (2026-10-21), no numerical change; EU scope and timing, the FCA's final rules and the Eighth Circuit orders corrected or added in the Batch L3 post-implementation audit correction pass (2026-10-21), no numerical change; first-wave scope completed with public-interest parents of large groups (CSRD Art. 5(2)(a)(ii)) in the L3 wording correction (2026-10-21), no numerical change"
    },
    "supersedes": null
   },

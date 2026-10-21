@@ -1,5 +1,13 @@
 # Compendium gap-filling from the owner's finance library: implementation plan v2
 
+**Current status (2026-10-21, L4 proposal).** On `codex/library-gap-l4-proposal`, created from `517213d` (parent
+`440272b`; clean tree; 446/446 objectives, 1,030/1,030 items), one L3 wording correction was made: the CSRD first wave
+in `meth:esg-exposure-evaluation` now includes public-interest parents of large groups (Section 7, "L3 wording
+correction"). **Batch L4 (B3, B12, B13) is proposed and awaiting the owner's freeze (Section 7, "Proposed Batch L4";
+decisions in Section 10.4). Nothing in it has been implemented**: no teaching entry, script or coverage claim. Expected
+new objectives: 1 (shortfall 44 against 45). Local commit only; no push, PR, merge, rebase or amendment.
+
+Status after Batch L3 (kept for the record):
 **Current status (2026-10-21, after Batch L3).** Batch L3 (P10, regulatory and disclosure currency; backlog B7) was
 frozen and executed on `codex/library-gap-batch-l3`, branched from `a519e0c`; committed locally, not pushed, no PR.
 FRTB, liquidity and sustainability-disclosure statements were verified against the issuers' texts and corrected with
@@ -177,8 +185,9 @@ rest. Proposed later work (Section 7) and the backlog (Section 8) hold the remai
 | Short rates, xVA, default correlation, EVT | P6-P9 | Proposed Batch L2 (Section 7), awaiting freeze |
 | New ideas found by C0: correlation and independence tests, mean-CVaR optimisation, buying on margin | P11 | Proposed Batch L2, owner decision L2-D2 |
 | Regulatory and disclosure currency | P10 | Batch L3 by default (decision L2-D4); done 2026-10-21 |
-| CAIA depth, lookbacks, Kolmogorov equations, second-order Greeks beyond a sentence, MC Greeks, others | B1-B10 | Backlog |
-| C0 depth gaps not placed in L2 | B12-B17 | Backlog |
+| CAIA depth, lookbacks, Kolmogorov equations, second-order Greeks beyond a sentence, MC Greeks, others | B1-B10 | Backlog (B3 proposed for L4) |
+| C0 depth gaps not placed in L2 | B12-B17 | Backlog (B12, B13 proposed for L4) |
+| Monte Carlo Greeks; seasoned variance swaps; cross-currency basis swaps | B3, B12, B13 | Proposed Batch L4 (Section 7), awaiting freeze |
 
 ## 5. Method for every package
 
@@ -1116,13 +1125,227 @@ comply-or-explain Listing Rules apply to accounting periods from 1 January 2027 
 voluntary UK SRS endorsement. Eighth Circuit: the order of 21 May 2026 (abeyance kept) and the order of 5 October 2026
 (next SEC status report by 31 December 2026). The court posture is dated 5 October 2026, the last filing found.
 
+### L3 wording correction (2026-10-21)
+
+Authorised with the L4 proposal and made on `codex/library-gap-l4-proposal` (from `517213d`). The EU timing item of
+`meth:esg-exposure-evaluation` described the 2024-2026 first wave only as large public-interest entities with more than
+500 employees. CSRD Art. 5(2), first subparagraph, point (a) has two cases: (i) large public-interest entities above 500
+employees and (ii) public-interest entities that are parents of a large group above 500 employees on a consolidated
+basis (retained OJ text, `reading_materials/library-gap-l3-audit-20261021/eu-32022L2464.html`, SHA-256
+`6ad8df8d…d6c29837`). Directive 2025/794 Art. 1 amends only points (b) and (c); Directive 2026/470 Art. 3(1)(a)(i)
+replaces only the introductory dates of point (a). Both cases therefore stand for FY 2024-2026. The item now names both
+and cites CSRD Art. 5(2)(a)(i)-(ii); the exemption sentence cites Directive 2026/470 Art. 3(1) explicitly. Updated with
+it: the two CSRD reading notes, the entry evidence, the objective's CSRD locator and example note, and the review record.
+No number, objective or other timing qualification changed; the L3 records above are kept as written.
+
+### Proposed Batch L4 (2026-10-21; awaiting owner freeze): Monte Carlo Greeks, seasoned variance swaps, cross-currency basis swaps
+
+Investigation only. No entry, script, reading note or coverage record has been written for L4. Sources were read on
+21 October 2026; copies are in the git-ignored `reading_materials/library-gap-l4-20261021/` (and Hull in
+`reading materials/`). Delegation to the models named by the implementation skill was unavailable; the work was done
+directly.
+
+**Sources actually read.**
+
+| Source | Identity, copy and locator convention | Passages read | Limits |
+|---|---|---|---|
+| Hull, OFOD 11th Global ed. (`s7-hulloptions`) | Git-ignored copy in `reading materials/`, SHA-256 `8bc6e2f0…b482`; printed page = PDF page | Sec. 21.6 "Calculating the Greek letters", pp. 494-495; sec. 26.16, pp. 629-631 (variance and volatility swaps, eqs. (26.6)-(26.9), Examples 26.4-26.5); sec. 7.10, pp. 192-193 (fixed-for-floating and floating-for-floating currency swaps: the initial principal exchange runs opposite to the interest payments and the final one in the same direction; decomposition into a fixed-for-fixed swap and two interest-rate swaps); sec. 34.3, pp. 776-777 (valuation by forward rates realised, each leg on its own curve); sec. 7.13, p. 194 (single-currency basis swaps) | MC Greeks only by bump-and-revalue with common random numbers; variance swaps valued at inception only, discounted at $e^{-rT}$; realised volatility with $252/(n-2)$ and a zero mean ("sometimes $n-1$"); $L_{\text{var}}=L_{\text{vol}}/(2\sigma_K)$; no quoted cross-currency basis, no sign convention for it |
+| Broadie and Glasserman (1996), "Estimating Security Price Derivatives Using Simulation", *Management Science* 42(2), 269-285, DOI 10.1287/mnsc.42.2.269 | Not in the catalogue; register a neutral key when first cited. Columbia Business School copy (`business.columbia.edu/sites/default/files-efs/pubfiles/1848/estimating.pdf`), a 17-page ProQuest scan of the published article with no text layer, read as page images; SHA-256 `247d7319…e1304`; locators are journal pages | Pp. 269-275 (sec. 1; sec. 2: pathwise eqs. (4)-(9), likelihood ratio eqs. (10)-(16), sec. 2.3 scope; sec. 3 second derivatives, eq. (18); sec. 4 resimulation, sec. 4.1 Example 1 discussion); pp. 280-281 (control variates eq. (23), sec. 5, App. A conditions (A1)-(A4) and Proposition 1, App. B choice of $h$, eq. (26)) | Pp. 276-279 (Tables 1-3, Asian and stochastic-volatility examples) and Apps. C-D not read; the 1.5-4 times larger LR standard errors are quoted from the text of p. 275, not the table. Discontinuous payoffs are treated only through condition (A3) and the "continuous payoff" rule of thumb (p. 272); no digital example is given |
+| Demeterfi, Derman, Kamal and Zou, "More Than You Ever Wanted To Know About Volatility Swaps", Goldman Sachs Quantitative Strategies Research Notes, March 1999 (catalogue key `wide-demeterfi-varswaps` is the *J. Derivatives* 6(4) 1999 version) | Author-hosted copy (`emanuelderman.com/wp-content/uploads/1999/02/gs-volatility_swaps.pdf`), 56 PDF pages with text layer; SHA-256 `ad289770…f762223e`; printed page = PDF page $-4$. Cite the catalogue key with a version note, since GS pages differ from the journal's | Pp. 1-3 (volatility and variance swap payoffs, EQ 1-2, quoting in vol points squared, the contract choices: source and frequency, annualisation factor (260 days as example), zero-mean against mean-subtracted); pp. 12-13 (imperfect strikes; variance vega falls linearly with time, "proportional to the remaining variance $\sigma^2\tau$"); pp. 15 and 18-19 (EQ 13-17: continuous realised variance $V=\frac1T\int_0^T\sigma^2dt$, value $e^{-rT}E[V-K]$, fair strike; EQ 26, the strip formula); pp. 29-30 (EQ 35-39, daily log-payoff accumulation, "variance is additive", jump error) | No seasoned-swap valuation formula is printed; the mid-life value is a labelled derivation from EQ 14-16 and additivity (decision L4-D2). The *J. Derivatives* version was not read |
+| Borio, McCauley, McGuire and Sushko (2016), "Covered interest parity lost: understanding the cross-currency basis", *BIS Quarterly Review*, September 2016 (`cur-borio-mccauley-mcguire-sushko-2016`) | BIS PDF (`bis.org/publications/covered-interest-parity-lost-understanding-cross-currency-basis_1.pdf`), SHA-256 `32dce4f0…a2928`; printed page = PDF page $+44$ | Pp. 45-48: introduction, Graph 1 (three-month and three-year bases against the dollar, 2006-2016), the framework section and Box A (CIP with $S$ in dollars per foreign unit; FX swaps quoted in forward points; cross-currency basis swap with Libor legs, principals re-exchanged at the initial spot; the one-period relation with $b$ added to the dollar leg; bid-ask and credit causes) | LIBOR era. Two sign conventions in one paper: Box A adds a positive $b$ to the **dollar** leg, while the text and Graph 1 report the basis as **negative** when dollars are dear through swaps (the foreign-leg convention of `ev:cip-deviations`). Pp. 49-58 (cross-section, yen time series, regressions) not read |
+| Ding, Liu and Rutkowski, "Multi-Curve Approach to Cross-Currency Basis Swaps Referencing Backward-Looking Term Rates", arXiv:2410.08477v3 (final revision 30 October 2025; catalogue key `w4-ding-rutkowski-ccbs` is the *SIAM J. Financial Math.* 17(2) 2026 version) | arXiv PDF, 50 pages, SHA-256 `3f4eed42…f049f2`; locators are arXiv pages. Cite with a version note | Pp. 1, 4 (abstract: the LIBOR-to-RFR transition; constant-notional and mark-to-market CCBS named as market variants); pp. 6-7 (Definition 2.4: constant-notional CCBS cash flows, principals exchanged at $T_0$ and re-exchanged at $T_n$ with $P^d=Q_{T_0}P^f$, basis spread $\kappa$ on the domestic (AUD) leg, compounded backward-looking rates); p. 38 (example: 3-year non-MTM CCBS, receive six-month compounded SOFR, pay six-month averaged AONIA plus a spread, semi-annual) | Model sections (3-6) not read and not needed. One currency pair's example; it does not establish a market-wide quoting rule or the MTM-reset mechanics |
+
+**Evidence reused (not reread).** `ev:cip-deviations` already defines the basis on the foreign leg after Du, Tepper and
+Verdelhan (eqs. (3)-(4), printed p. 9), so the L4 sign convention agrees with an entry in the compendium.
+`meth:swap-valuation-replication` already holds Hull's fixed-for-fixed currency swap (secs. 7.8-7.9, pp. 186-192, checked
+in its script). `meth:monte-carlo-simulation` already holds the inputs (S 100, K 105, 20 percent, 3 percent, one year;
+closed form 7.1281) and the common-random-numbers point.
+
+**Planning values.** The numbers below come from one exploratory script in the session scratchpad (NumPy
+`default_rng(20261021)`), not from repository evidence. They show that each check is feasible with margin; the package
+scripts recompute them and the acceptance criteria, not these values, are binding.
+
+#### L4-a (B3). Monte Carlo Greeks: pathwise and likelihood-ratio estimators
+
+*Gap.* `meth:monte-carlo-simulation` estimates values, standard errors, control variates and discretisation bias; no
+entry estimates a sensitivity by simulation. `meth:greeks-delta-gamma-hedging` and `mod:black-scholes-merton` give
+closed-form Greeks, and `option-pricing.tex` checks them by finite differences of the closed form, not of a simulation.
+Nothing explains why a direct estimator is unbiased, when it fails, or why resimulation is biased. **New idea; new
+entry** `meth:monte-carlo-greeks` in `volatility-options/numerical-methods.tex`, after `meth:least-squares-monte-carlo`,
+with one-line See also links from `meth:monte-carlo-simulation` and `meth:digital-option-valuation`.
+
+*Teaching content.* Resimulation with common random numbers and its bias-variance trade-off in $h$ (Hull pp. 494-495;
+Broadie-Glasserman p. 274 and App. B, eq. (26)). Pathwise: differentiate the discounted payoff along the path,
+$e^{-rT}\mathbf 1\{S_T>K\}S_T/S_0$ for delta and $e^{-rT}\mathbf 1\{S_T>K\}S_T(-\sigma T+\sqrt T Z)$ for vega (eqs.
+(5)-(9)), valid under (A1)-(A4) (Lipschitz payoff; p. 281). Likelihood ratio: weight the payoff by the score of the
+density, $Z/(S_0\sigma\sqrt T)$ for $S_0$ and $(Z^2-1)/\sigma-\sqrt T Z$ for $\sigma$ (eqs. (14)-(16), rewritten in $Z$
+as an Interpretation); it needs no payoff smoothness but the parameter must enter the density, so strike sensitivity
+needs the pathwise method (p. 272); its variance is larger (pp. 275, 280). Gamma: the pathwise second derivative of a
+call collapses to the closed form (eq. (18)); not repeated as a check.
+
+*Worked example (original).* The `meth:monte-carlo-simulation` call; 100,000 draws, fixed seed. Pathwise and LR delta and
+vega against closed form (planning: pathwise delta 0.50101, s.e. 0.00188, exact 0.50241; LR delta s.e. 0.00403; vega
+39.505 and 38.920 with s.e. 0.233 and 0.763 against 39.894). A cash-or-nothing digital paying 1 at $K=105$: every
+pathwise delta sample is exactly zero though the true delta is $e^{-rT}n(d_2)/(S_0\sigma\sqrt T)=0.018997$; LR gives
+0.018861 (s.e. 0.000090); resimulation with common random numbers gives s.e. 0.000426 at $h=1$ and 0.004447 at $h=0.01$.
+
+*Checks (new `notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py`, numpy and scipy only).*
+1. Independent derivatives of the estimator building blocks, deterministic: $dS_T/d\sigma$ and $dS_T/dS_0$ against
+   central differences of the path map on fixed $Z$; both scores against central differences of the lognormal
+   log-density at several $x$ (planning agreement about $10^{-9}$ relative). This catches sign and factor errors that a
+   Monte Carlo tolerance would hide.
+2. Each of the four call estimators within 4 standard errors of the closed form (seed and path count fixed and
+   reported; no reseeding).
+3. Digital: the pathwise estimator is identically zero on every path (exact), which differs from the positive closed
+   form; the LR estimate is within 4 standard errors of it.
+4. Reported, not binding: LR to pathwise standard-error ratios; resimulation bias and standard error at $h=1$ and
+   $h=0.01$ for the digital (the variance grows roughly as $1/h$).
+
+*Objective.* Genuinely new: `objective:estimate-greeks-by-simulation` ("Estimate option sensitivities by pathwise and
+likelihood-ratio Monte Carlo estimators and explain when each fails"), `topic:option-valuation`, `planned_batch` 9,
+prerequisites `objective:apply-monte-carlo-simulation` and `objective:manage-option-greeks`. **+1.**
+
+#### L4-b (B12). Valuing a variance swap during its life
+
+*Gap.* `def:vix-variance-dividend-swaps` gives the payoff, vega notional and variance units at expiry (Gliner);
+`meth:volatility-derivative-applications` gives the inception value by option replication (Hull eq. (26.6), Example
+26.4) and says realised-variance definitions are contractual. Neither values a seasoned swap, separates realised from
+remaining implied variance, or states the observation weights and annualisation that the split needs. **Depth within a
+covered objective: extension** of `meth:volatility-derivative-applications` (a paragraph in Statement, one Practice item,
+one Pitfall), not a new entry.
+
+*Teaching content.* With $N$ return observations in the contract, $n$ already observed, annualisation factor $A$ (for
+example 252) and zero-mean realised variance $\sigma^2_{0,t}=\frac{A}{n}\sum_{i\le n}r_i^2$, the expiry variance is
+the observation-weighted sum $\frac nN\sigma^2_{0,t}+\frac{N-n}{N}\sigma^2_{t,T}$ (Demeterfi pp. 15 and 30: realised
+variance is a time integral and additive). The swap's value to the variance receiver at $t$ is
+$N_{\text{var}}\,P(t,T)\bigl[\frac nN\sigma^2_{0,t}+\frac{N-n}{N}K_{t,T}-K_{\text{var}}\bigr]$, all in the same
+variance units (for example points squared). $K_{\text{var}}=K_{\text{vol}}^2$ is the contract's variance strike and
+$K_{t,T}$ today's fair variance strike for the remaining period from the option strip (Demeterfi EQ 15-16 and 26 applied at $t$; Hull eq. (26.7)), expressed on
+the contract's annualisation, and $P(t,T)$ discounts from expiry, since the payoff is paid then. This is a labelled
+**Interpretation**: a derivation from the cited definitions, not a formula printed in the sources read (decision
+L4-D2). Notional conventions: vega notional $=2K_{\text{vol}}\times N_{\text{var}}$ with $K_{\text{vol}}$ in vol points (Hull p. 629; Gliner in
+`def:vix-variance-dividend-swaps`); variance in points squared against decimal variance differs by $10^4$.
+
+*Worked example (original).* Vega notional 100,000 at strike 20 (so $N_{\text{var}}=2{,}500$ per point squared); one
+year, 252 observations, 126 observed with realised volatility 25; remaining fair strike 18 on the same 252-day basis; 4
+percent continuously compounded for the remaining half-year. Value
+$2{,}500\,e^{-0.02}(0.5\times625+0.5\times324-400)=182{,}562$ (planning).
+
+*Checks (new script in `notes/artefacts/derivative-overlays/`, beside `overlay-checks.py`).*
+1. Limits: at $n=0$ with $K_{0,T}=K$ the value is 0; at $n=N$ it is the undiscounted payoff
+   $N_{\text{var}}(\sigma^2_{0,T}-K^2)$ (562,500 here).
+2. Units: the same value in points squared and in decimal variance with $N_{\text{var}}\times10^4$ (exact).
+3. Weights from data: the realised leg recomputed from an explicit synthetic daily return series with the contract
+   formula; mean-subtracted and $n-1$ variants reported as contract alternatives, not substitutes.
+4. Independent: under GBM with volatility 18 percent for the remaining 126 daily returns, the discounted mean terminal
+   payoff of the full contract (realised part fixed) within 4 standard errors of the formula (planning 182,652, s.e.
+   112). The small discrete-sampling drift term is stated, not tuned away.
+5. Reported, not binding: the value with calendar-day weights (182/365) instead of observation weights, 181,552, as the
+   size of the mismatch that the Pitfall describes.
+
+*Objective.* Covered by `objective:use-volatility-derivatives`; no new objective. Coverage evidence and entry evidence
+updated only. **+0.**
+
+#### L4-c (B13). Cross-currency basis swaps: cash flows, the quoted basis leg, sign conventions and synthetic funding
+
+*Gap.* `meth:swap-valuation-replication` values fixed-for-fixed currency swaps (principal exchanges included);
+`meth:cross-forward-rates` derives CIP; `ev:cip-deviations` defines the basis and reports its size;
+`meth:forward-commitment-risk-overlays` uses a cross-currency swap to hedge a foreign bond. None sets out the
+floating-for-floating basis swap: who pays the spread, the principal exchanges at the initial spot, why a negative
+foreign-leg basis means expensive synthetic dollars, or how the two published sign conventions map. **New entry** (one
+idea, too long for the already four-instrument swap entry): `meth:cross-currency-basis-swaps` in
+`volatility-options/forward-commitment-valuation.tex` after `meth:swap-valuation-replication`, linked from it, from
+`ev:cip-deviations` and from `meth:cross-forward-rates`.
+
+*Teaching content.* Constant-notional cash flows by party (Ding-Liu-Rutkowski Def. 2.4, pp. 6-7; Hull sec. 7.10, pp.
+192-193, for the direction of the principal exchanges and the decomposition): exchange principals at $T_0$ at spot, pay one compounded RFR plus $\kappa$ and receive the other flat each period, re-exchange the same
+principals at $T_n$. One-period relation in the foreign-leg convention, $F/S=(1+r_{\$}\tau)/(1+(r_f+\kappa)\tau)$ with
+$S$ in dollars per foreign unit, mapped to BIS Box A's dollar-leg $b$ (p. 48) by
+$b=\frac FS(1+r_f\tau)-(1+r_{\$}\tau)$; to first order $b\approx-\kappa$. Synthetic dollar funding (borrow the foreign
+currency, swap into dollars) costs about $r_{\$}-\kappa$, above direct dollar funding when $\kappa<0$ (BIS pp. 45-46,
+Graph 1, as Interpretation of the sign). Conditions: LIBOR-era evidence (BIS 2016; Du-Tepper-Verdelhan 2017) separated
+from current RFR legs (SOFR and other compounded overnight rates; DLR); the leg carrying the spread is a term of the
+contract, shown as such; mark-to-market notional resets are named, not taught.
+
+*Worked example (original, current-convention legs).* EUR/USD at 1.10 dollars per euro; EUR 100 million against USD 110
+million; one year; compounded SOFR 4.0 percent against compounded €STR 2.5 percent; $\kappa=-20$ basis points on the
+euro leg. A cash-flow table by date and party for a three-year annual version with stated assumed fixings (cash flows
+only, no multi-period valuation). One-period: CIP forward 1.116098, forward with the basis 1.118280; dollar-leg
+equivalent $b=+20.33$ basis points; synthetic dollar rate 4.2033 percent against 4.0 direct (planning).
+
+*Checks (new script in `notes/artefacts/derivative-overlays/` or the currency-markets artefact folder; numpy only).*
+1. Signs and principals: per-party cash-flow table sums; the initial exchange runs opposite to each party's interest
+   payments and the final one in the same direction (Hull p. 192); the receiver of the initial dollars repays them at $T_n$;
+   initial and final exchanges use the same rate; with fixings at the assumed rates and $\kappa=0$ the one-period legs
+   reproduce CIP exactly.
+2. Convention mapping: the forward from the foreign-leg $\kappa$ equals the forward from the BIS dollar-leg $b$ under
+   the mapping (exact); a negative $\kappa$ raises the synthetic dollar rate above the direct one.
+3. Quote direction: the same deal with the quote inverted (euros per dollar) gives the reciprocal forward (exact), and
+   entering the inverted quote unconverted changes the result (reported, as in the existing currency-swap Pitfall).
+4. Principal exchange exposure: the value change of the final exchange alone for a spot move, reconciled with the
+   fixed-for-fixed currency swap in `meth:swap-valuation-replication`.
+
+*Objective.* Deeper treatment of `objective:value-swaps-by-replication` (currency swaps) and
+`objective:apply-international-parity` (CIP); no new objective. **+0.** If the owner prefers the entry to carry its own
+objective, it would be `objective:explain-cross-currency-basis-swaps` (+1); recommended against, since its operations
+(describe, calculate, interpret) are those of the two covered objectives (decision L4-D3).
+
+#### Scope, size, exclusions and dependencies
+
+**Recommended scope.** L4-a, L4-b and L4-c as above: two new entries (`meth:monte-carlo-greeks`,
+`meth:cross-currency-basis-swaps`), one substantive extension (`meth:volatility-derivative-applications`), and
+cross-reference-only edits to `meth:monte-carlo-simulation`, `meth:digital-option-valuation`,
+`meth:swap-valuation-replication`, `ev:cip-deviations` and `meth:cross-forward-rates`. Three new check scripts. No new
+chapter or topic file.
+
+**Expected new objectives: 1** (L4-a), 447/447 after the batch; **shortfall 44 against the standing 45**, reported
+without padding. B12 and B13 are depth within covered objectives, and adding objectives for them would inflate the count.
+
+**Deferred or excluded.**
+- No candidate is deferred: each essential source was read. B12's seasoned-value formula rests on a derivation, not on a
+  printed formula; if the owner rejects L4-D2, defer B12 until `w5-bossu-advanced-equity` or `wide-bennett-trading-vol`
+  (catalogued, not held) is obtained and read.
+- Excluded: mark-to-market (resetting) cross-currency swaps, multi-period basis-swap valuation and cross-currency
+  discount curves (would need a curve framework and a source on the reset mechanics); quanto and diff swaps; volatility
+  swaps beyond the existing Hull example; second-order MC Greeks beyond a sentence; Broadie-Glasserman's Asian and
+  stochastic-volatility examples (pp. 276-279, not read); any empirical basis series or claim about the size of the
+  basis after 2016 (none read); any general market statement about which leg carries the spread beyond the cited
+  contracts.
+
+**Dependencies.** None between packages; any order. Each depends only on existing entries named above. No new
+dependency; the citation policy is unchanged (no curriculum source is cited). Two catalogue keys are cited in a version
+other than the catalogued one (GS note; arXiv v3) and must carry version notes, as `dtv-cip-2017` does. Broadie and
+Glasserman (1996) is registered in `compendium/front/sources.tex` with DOI, the Columbia URL and the retrieval date.
+
+**Records at implementation.** Reading notes for the three new sources, Hull locators added to `s7-hulloptions.md`;
+`sources.tex` (Broadie-Glasserman); entry evidence for the two new and one extended entry; `objectives.json` (one new
+objective; evidence notes on the three covered ones); pathway links in `volatility-options.md` and the currency-markets
+note; a review record *Library gap-filling, Batch L4*; this plan's status.
+
+**Acceptance.**
+1. Each new or extended entry states its assumptions, units, conventions and dated limits in Conditions, and labels the
+   B12 value formula, the $Z$-form scores and the sign interpretation as Interpretation where no source prints them.
+2. The three scripts pass with warnings as errors; every binding check listed above passes with the fixed seeds and
+   path counts reported; no tolerance or seed is changed after a run to obtain a pass. A failure is diagnosed at the
+   smallest boundary (estimator formula, unit or sign) before any rerun.
+3. `make lint`, `make format-check`, `make check-compendium`, `make check-coverage` (447/447 objectives, 1,030/1,030
+   items) and `make test` pass; `make pdf` builds with no overfull boxes or undefined references, and the changed pages
+   are rendered and inspected; pre-commit passes on the committed files.
+4. Records above complete; one local commit; nothing pushed.
+
+**Evidence-reuse rules.** Existing numerical scripts are not rerun unless their files or inputs change: the L4 edits to
+existing entries are text and cross-references, so `overlay-checks.py`, the forward-commitment and simulation scripts
+keep their last results with that reason stated. If an existing entry's number is touched, rerun that entry's script.
+`verify-outlines` is not needed (the crosswalk is unchanged). The L1-L3 mathematical and regulatory audits are not
+reopened without new evidence.
+
 ## 8. Backlog (needs evidence before it is scheduled)
 
 | ID | Item | What is needed first |
 | --- | --- | --- |
 | B1 | Kolmogorov forward and backward equations, transition densities | Decide whether it adds teaching beyond P1; Wilmott chap. 10 |
 | B2 | Lookback options | Hull sec. 26.11, Wilmott chap. 26; low priority |
-| B3 | Monte Carlo Greeks (pathwise, likelihood ratio) | Hull sec. 21.7 and Glasserman (not held); could be one entry |
+| B3 | Monte Carlo Greeks (pathwise, likelihood ratio) | Hull sec. 21.7 and Glasserman (not held); could be one entry. Proposed for L4 (L4-a, 2026-10-21): Hull sec. 21.6, pp. 494-495 and Broadie and Glasserman (1996) read instead; one new entry and objective |
 | B4 | Second-order Greeks beyond the P4 sentence (vanna/volga hedging, the vanna-volga method) | A source for market practice |
 | B5 | Discrete-hedging error distribution and transaction costs (Wilmott chaps. 47-48) | Overlap check with P4 and `mod:black-scholes-merton` |
 | B6 | CAIA depth: CTA industry structure and vehicles (chaps. 29, 32), payoff-distribution and bottom-up replication (chap. 33), convertible arbitrage risks (chap. 34) | Owner decision on a CAIA citation exception, or non-curriculum sources (Kat and Palaro; Hasanhodzic and Lo) located and read. No own empirical CTA performance. A trend illustration is synthetic; an empirical futures backtest needs a defined continuous-contract roll rule, collateral return, a signal lag of $t-1$ information, and costs |
@@ -1131,8 +1354,8 @@ voluntary UK SRS endorsement. Eighth Circuit: the order of 21 May 2026 (abeyance
 | B9 | Empirical EVT illustration | A daily return series with a documented source, dates and licence |
 | B10 | "Monte Carlo Methods.pdf" | Identify author and edition (OCR or bibliographic match) only if B3 needs it |
 | B11 | C0 findings | Done: Section 8.1; the items not placed in L2 are B12-B17 |
-| B12 | Variance swap valued during its life: time-weighted realised and implied variance, discounted (C0 candidate 6) | Extends `meth:volatility-derivative-applications`; read `wide-demeterfi-varswaps` (catalogue, DOI; not held) |
-| B13 | Cross-currency basis swap: cash flows, which leg carries the basis, synthetic funding (candidate 6) | Extends `meth:swap-valuation-replication` or `res:international-parity-conditions`; read `cur-borio-mccauley-mcguire-sushko-2016` (BIS, open) |
+| B12 | Variance swap valued during its life: time-weighted realised and implied variance, discounted (C0 candidate 6) | Extends `meth:volatility-derivative-applications`; read `wide-demeterfi-varswaps` (catalogue, DOI; not held). Proposed for L4 (L4-b, 2026-10-21): the authors' GS note read; the seasoned formula is a labelled derivation (L4-D2); no new objective |
+| B13 | Cross-currency basis swap: cash flows, which leg carries the basis, synthetic funding (candidate 6) | Extends `meth:swap-valuation-replication` or `res:international-parity-conditions`; read `cur-borio-mccauley-mcguire-sushko-2016` (BIS, open). Proposed for L4 (L4-c, 2026-10-21): BIS pp. 45-48, Hull secs. 7.10 and 34.3, and Ding-Liu-Rutkowski (arXiv v3) read; a new entry, no new objective; MTM resets excluded |
 | B14 | Crisis-conditional hedge fund factor exposures (state-dummy interactions) and screening collinear factors (candidate 11) | Extends `meth:hedge-fund-factor-exposures`; the curriculum's source, Hasanhodzic and Lo (2007), is neither catalogued nor held. A non-curriculum source is needed, or the owner accepts an Interpretation |
 | B15 | Option-strategy practice: the move implied over a horizon, $\sigma\sqrt{h/252}$, against a straddle's break-even; put writing to buy at $K-p$; skew (90/110) and term-structure (12M-3M) gauges (candidate 5) | Extends `meth:option-spreads-volatility-strategies` and `meth:covered-call-protective-put`; check `s7-natenberg` first |
 | B16 | Life insurance pricing: net and gross premium, level term, policy reserve, net payment and surrender cost indexes (candidate 12) | Extends `meth:human-capital-risks`; no non-curriculum source located (mortality tables and an actuarial text needed) |
@@ -1306,6 +1529,24 @@ padding. The options below are kept as they were put to the owner.
   - Network reads of CRE31, `s6-cvar`, Regulation T and FINRA Rule 4210 during their packages.
     They are reads of public pages, recorded with retrieval dates; nothing is published.
 
+### 10.4 Decisions needed to freeze Batch L4
+
+Only these change what is built. Everything else in the L4 proposal is a routine default.
+
+- **L4-D1. Scope.** Recommended: freeze L4-a, L4-b and L4-c as proposed (two new entries, one extension, one new
+  objective, shortfall 44). Alternative: L4-a only, keeping B12-B13 in the backlog.
+- **L4-D2. B12's seasoned-swap formula without a printed source.** Recommended: (a) write it as a labelled
+  Interpretation derived from Demeterfi et al.'s definitions (EQ 14-16, additivity) and Hull eq. (26.7), checked by the
+  limits, units and an independent simulation. Alternatives: (b) obtain and read `w5-bossu-advanced-equity` or
+  `wide-bennett-trading-vol` first (neither held; no purchase is authorised); (c) defer B12.
+- **L4-D3. B13's objective.** Recommended: no new objective (depth within `objective:value-swaps-by-replication` and
+  `objective:apply-international-parity`). Alternative: add `objective:explain-cross-currency-basis-swaps` (+1, shortfall
+  43).
+
+Routine defaults (no input needed unless the owner objects): implement on a new local branch from this proposal's
+commit; `planned_batch` 9; scripts in `numerical-pricing/` and `derivative-overlays/`; Broadie and Glasserman (1996)
+registered under a neutral key; no push or PR.
+
 ## 11. Sequence
 
 1. Owner decides E1 and E2. Done.
@@ -1319,6 +1560,8 @@ padding. The options below are kept as they were put to the owner.
 6. Batch L2: P6, P7, P8, P9, P11a-c, each with focused checks and records before the next. Done 2026-10-21 (frozen with
    decisions L2-D0 to L2-D6); committed locally on `codex/library-gap-batch-l2`. Next: Batch L3 (P10), human review.
 7. Batch L3: P10 (B7), frozen and executed 2026-10-21 on `codex/library-gap-batch-l3`; committed locally. Audit corrections L3-F1 to L3-F5 committed separately on `codex/library-gap-l3-audit-fixes`. Next: human review; no further batch is scheduled.
+8. L3 wording correction (CSRD first wave) and the Batch L4 proposal, 2026-10-21, on `codex/library-gap-l4-proposal`;
+   committed locally. Next: owner freeze of L4 (Section 10.4), then implementation; human review of L1-L3 outstanding.
 
 ## 12. Risks and limits
 
@@ -1330,6 +1573,8 @@ padding. The options below are kept as they were put to the owner.
   repository. The package scripts recompute them; the acceptance ranges, not the planning
   values, are binding.
 - Editorial coverage is not study. Human review of all new entries is still outstanding.
+- The L4 proposal rests on the passages listed in its source table only; unread parts (Broadie-Glasserman pp. 276-279,
+  BIS pp. 49-58, the *J. Derivatives* and *SIAM* versions) are not cited. Planning values are exploratory, not evidence.
 - C0 is a bounded sample, not a census. Hand comparison of section heads covered 76 of 175
   modules, and the unexamined candidates are listed in Section 8.1. A gap that C0 did not find
   may still exist.

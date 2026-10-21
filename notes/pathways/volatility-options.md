@@ -92,6 +92,14 @@ Written in library gap-filling Batch L4 (2026-10-21):
 
 Sources: Hull, 11th Global ed.; Broadie and Glasserman (1996); Ding, Liu and Rutkowski (arXiv v3); Borio et al. (BIS Quarterly Review, September 2016). Synthetic examples only. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l4-21-october-2026).
 
+Written in library gap-filling Batch L5 (2026-10-21):
+
+- `meth:lookback-option-valuation` (new, `exotic-options.tex`, whose section heading now names lookbacks): floating and fixed-strike payoffs, Hull's floating formulas with the extreme to date and the fixed-strike parity relation, Wilmott's state-variable formulation and jump condition, Example 26.2, seasoned contracts, and discrete against continuous monitoring on coupled grids with an exact Brownian-bridge extreme (no barrier shift transplanted). Checks in `notes/artefacts/exotic-options/lookback-option-check.py`. `meth:barrier-option-valuation` gained a See also link.
+- `meth:transaction-cost-hedging` (new, `option-valuation.tex`, after `res:delta-hedging-volatility-mismatch`, which gained a link): Leland's adjusted volatilities for long and short positions (cited through Wilmott chap. 48; Leland 1985 not read), the Hoggard-Whalley-Wilmott equation and nonadditivity, the admissible domain of the long formula, fixed-interval against band rebalancing as Wilmott reports it, and a simulated comparison of hedging costs with the Leland premium. Checks in `notes/artefacts/option-valuation/transaction-cost-hedging-check.py`.
+- `meth:monte-carlo-greeks`: the resimulation-bias sentence corrected (generally biased; more paths do not remove it; affine prices excepted).
+
+Sources: Hull, 11th Global ed., sec. 26.11; Wilmott, 2nd ed., chaps. 24, 26 and 48. Synthetic examples only. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l5-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.

@@ -6441,6 +6441,11 @@ Finance*, printed pp. 98-107 (country risk premiums); *Managing Investment Portf
 Outcome: 2 confirmed distinct candidate objectives (lookbacks; hedging with transaction costs), 4 sourced depth
 extensions, 2 possibly distinct but unresolved (vanna-volga; hedge-fund replication), 5 unsourced depth items;
 provisional 449 for this corpus, at most 451. Batch L5 proposed (+2), not frozen.
+*Corrected 2026-10-21 (pre-L5 audit, C1-F2; plan Section 7, "Pre-L5 audit corrections"):* "4 sourced depth
+extensions" overstated the evidence. C1-D1 is supported (passages read); C1-D2 partly (*Managing Investment Portfolios*
+read; Hull's collar pages held, not read for it; IRC secs. 1259 and 721 not read); C1-D3 is unsupported (Natenberg held,
+its passages not located or read); C1-D4 cited Wilmott secs. 10.11-10.12, which are the backward equation, and became
+supported only when sec. 10.4 (forward equation (10.2), printed p. 172) was read in the pre-L5 pass.
 
 **Checks run (2026-10-21).** `monte-carlo-greeks-check.py` with warnings as errors (after `ruff format`); `make lint`,
 `make format-check`, `make check-compendium` (0 problems), `make check-coverage` (0 problems; 447/447, 1,030/1,030),
@@ -6449,3 +6454,108 @@ Reused without rerun: every other numerical script (no code, input or asserted r
 `seasoned-variance-swap-check.py` and `cross-currency-basis-check.py` from L4. `verify-outlines` not rerun; the
 crosswalk is unchanged. Limits: the inventory is a bounded comparison of the inspected corpus, not a census of the
 finance library; editorial coverage only; human review outstanding. Nothing pushed; no PR.
+
+## Library gap-filling, Batch L5, 21 October 2026
+
+**Starting state.** The prompt expected `codex/library-gap-c1-inventory` at `d71e127` with a clean tree. Found: that
+branch unchanged at `d71e127`, and `main` checked out at `c26a09e`, the merge of PR #33 whose second parent is `d71e127`
+and whose tree is identical to it (empty diff); clean tree; 447/447 objectives, 1,030/1,030 items. Branch
+`codex/library-gap-batch-l5` was created from `main` so the newer merge is kept. Local only; no push, PR, merge, rebase
+or amendment. Delegation was not used; the work was done directly.
+
+**Audit corrections before L5** (plan Section 7, "Pre-L5 audit corrections").
+- C1-F1, `meth:monte-carlo-greeks`: "fixed-step resimulation is biased whatever the conditions" replaced by: generally
+  biased, since its expectation is the finite difference of the price; more paths reduce only the sampling error; affine
+  price functions (a forward's value in $S_0$) are exact. Text only; estimator formulas and numbers unchanged;
+  `monte-carlo-greeks-check.py` not rerun.
+- C1-F2, Section 8.2 and the C1 record: depth extensions reclassified by evidence (supported C1-D1; partly C1-D2;
+  unsupported C1-D3, Natenberg held but passages not located; C1-D4 supported after Wilmott chap. 10, secs. 10.2-10.6,
+  printed pp. 169-175 were read for this pass, forward equation (10.2) on p. 172). C1-D1 and C1-D2 were not reread.
+
+**Freeze.** Owner decisions L5-D1 (L5-a and L5-b, +2; L5-c excluded), L5-D2 (Leland through Wilmott chap. 48, Leland
+named as originator, the 1985 paper not read and listed under Further reading only), L5-D3 (C1-D1 and C1-D2 deferred;
+other backlog items stay deferred). The specification, inputs, seeds, path counts, grids and tolerances were written into
+the plan (Section 7, "Batch L5 freeze and frozen specification") before either script ran; one sign slip in the L5-b
+gate (b) expression was corrected in the plan before the first run.
+
+**Sources read** (held = in the owner's library or the git-ignored folders; read = the passages below were read).
+- Hull, OFOD 11th Global ed., `reading materials/` copy (SHA-256 `8bc6e2f0…b482`, printed = PDF page): sec. 26.11,
+  pp. 623-625, read in the text layer. Broadie, Glasserman and Kou (1998), Goldman, Sosin and Gatto (1979) and Wong-Kwok
+  (2003) are cited by Hull only; none is held or read.
+- Wilmott, PWOQF 2nd ed. (library copy, SHA-256 `e0ff5f09…d549`, printed = PDF $-21$): chap. 24, secs. 24.4-24.5,
+  pp. 422-425; chap. 26, pp. 445-452; chap. 48, pp. 783-811 including the appendix, with pp. 785, 788 and 789 also viewed
+  as rendered page images; chap. 10, pp. 169-175. Text extracted with pypdf 5.1.0 and pages rendered with PyMuPDF 1.26.3,
+  both in isolated throwaway environments outside the project (no dependency added) into the session scratchpad; no
+  source text entered the repository.
+- Leland (1985, `vo-leland-1985`), Whalley and Wilmott (1997, `vo-whalley-wilmott-1997`), Heynen and Kat (1995),
+  Jefferies (1999): catalogued or named, not held or read.
+
+**Discrepancies.** Wilmott p. 789 prints the long-position breakdown as $\kappa>\sigma/\sqrt{8\pi\delta t}$, which is
+dimensionally inconsistent with (48.5); (48.5) gives $\kappa<\sigma\sqrt{\pi\delta t/8}$, i.e. $K<\sqrt{\pi/8}\approx0.6267$
+(at $\sigma=0.2$, $\delta t=1/52$: 0.01738 against the printed 0.2877). The entry teaches the derived form and notes the
+print. The sec. 48.4 heading dates Hoggard-Whalley-Wilmott 1992 and its further reading 1994; the entry gives no year.
+No source read prints a lookback discrete-monitoring correction, so none is taught; the barrier shift is not applied.
+
+**Entries.** `meth:lookback-option-valuation` (new, `volatility-options/exotic-options.tex`, after the barrier entry;
+section heading and introduction now name lookbacks; the barrier entry gained a See also link) and
+`meth:transaction-cost-hedging` (new, `volatility-options/option-valuation.tex`, after
+`res:delta-hedging-volatility-mismatch`, which gained a link). Labelled Interpretation: the seasoned use of Hull's
+formulas, the exact Brownian-bridge extreme, $\kappa$ as half the proportional spread, and the Itô identity
+$\hat V-V=E^Q\!\int e^{-rt}\kappa\sigma\sqrt{2/(\pi\delta t)}S^2\hat\Gamma\,dt$. New objectives
+`objective:value-lookback-options` and `objective:hedge-options-with-transaction-costs` (`topic:option-valuation`,
+planned batch 10).
+
+**Checks (frozen in the plan before the first run).**
+- `notes/artefacts/exotic-options/lookback-option-check.py`. First run: 19 of 20 gates passed; the pricing-equation
+  residual failed, ``BAD pricing-equation residual at interior points (S strictly inside the extreme) <= 1e-6: largest
+  3.6e-06''. Diagnosis (harness, not formula): at $S=50$, $S_{\min}=48$, $\tau=0.1$ the residual is $-3.5\times10^{-4}$,
+  $-3.2\times10^{-5}$, $-3.6\times10^{-6}$ and $-3.3\times10^{-7}$ at $h_S=0.1$, 0.03, 0.01 and 0.003, falling as $h_S^2$;
+  the frozen tolerance assumed a truncation error below $10^{-9}$, which is false near the running extreme. Correction:
+  the frozen $10^{-6}$ is applied to the Richardson-extrapolated residual $(4R(0.01)-R(0.02))/3$ (largest
+  $4.5\times10^{-8}$), with the raw residuals printed. All other output is identical between the two runs. Results:
+  Example 26.2 put 7.790219 and call 8.037120 (7.79 and 8.04 to the cent); printed $b_1,b_2,b_3,Y_2$ reproduced; Hull and
+  Wilmott agree to $7.9\times10^{-15}$ relative (floating, fixed in both strike cases, $q=0$ and 0.02); boundary condition:
+  one-sided difference $-4.01\times10^{-4}$ ($h=0.01$) and $-4.01\times10^{-5}$ ($h=0.001$) against the interior
+  derivative $-0.39945$; deep-seasoned excesses $3.1\times10^{-6}$ (call, $S_{\min}=20$, value 30.4938) and
+  $6.9\times10^{-5}$ (put, $S_{\max}=120$, 67.0373); monotone in the recorded extreme. Seasoned simulation (seed
+  20261022, 400,000 paths): call $S_{\min}=45$ 9.0303 (s.e. 0.0123) against 9.0448, $z=-1.18$; put $S_{\max}=56$ 9.0739
+  (0.0093) against 9.0729, $z=+0.10$; fixed call $K=52$ 8.3488 (0.0102) against 8.3568, $z=-0.79$; $K=60$ 2.6175 (0.0082)
+  against 2.6249, $z=-0.91$; the seasoned-new difference is 82 (call) and 138 (put) standard errors. Monitoring (seed
+  20261021, 100,000 paths, 1,008 steps): continuous call 8.0249 (0.0223), $z=-0.55$, put 7.8187 (0.0165), $z=+1.73$;
+  paired gaps, call 1.6340, 0.9977, 0.5930, 0.3024, 0.1523 and put 2.1810, 1.3452, 0.8076, 0.4140, 0.2094 for $m=7$, 21,
+  63, 252, 1,008 (paired s.e. 0.00025 to 0.00437); $g_{1008}/g_{63}$ 0.257 (call) and 0.259 (put); $g_m\sqrt m$ 4.32 to 4.83
+  (call), 5.77 to 6.65 (put); pathwise ordering holds on every path.
+- `notes/artefacts/option-valuation/transaction-cost-hedging-check.py`, all gates passed on the first run. (48.5)-(48.6)
+  equal the printed forms to $2.2\times10^{-16}$; signs, zero-cost limit and the domain ($K^*=0.6267$) hold; Wilmott's
+  spread approximation has relative error $3.77\times10^{-3}$ at $K=0.01$ and $3.78\times10^{-4}$ at $K=0.001$. Ledger
+  identity to $3.4\times10^{-13}$; mean discounted wealth minus its exact expectation $-0.0038$ (s.e. 0.0029, short) and
+  $+0.0040$ (0.0030, long). Residuals $e_N$ (seed 20261023, 100,000 paths, $N=13$, 52, 208): short $K=0.1$ ($L=0.5777$)
+  $+0.0400$, $+0.0125$, $+0.0039$; short $K=0.4$ ($L=2.1123$) $+0.2012$, $+0.0640$, $+0.0199$; long $K=0.1$ ($L=0.6233$)
+  $+0.0315$, $+0.0098$, $+0.0031$; long $K=0.4$ ($L=2.9354$) $+0.0543$, $+0.0180$, $+0.0064$; standard errors of $C_N$
+  0.0007 to 0.0048. The residual is positive throughout (the simulated cost exceeds the Leland premium) and falls about
+  3.2 times per fourfold refinement, consistent with an $O(\sqrt{\delta t})$ leading error; this rate is observed, not
+  gated. Reported: opening cost 0.1756 (short) and 0.1781 (long); settlement trade 0.0170 and 0.0157 against a
+  cash-settled close of 0.1759 and 0.1760; P&L s.d. 0.925 and 0.878. Fixed $\kappa=0.2$ percent, BSM delta: costs 0.2289,
+  0.4399, 0.8686, P&L s.d. 1.773, 0.933, 0.584, premium for a 5 percent loss probability 13.695, 12.527, 12.420. Call
+  spread: separate 0.8544, netted 0.2474, saving 0.6070 (s.e. 0.00070), never more on any step; long-short same call
+  exactly 0 netted. Leg-by-leg Leland 4.4906, BSM spread 5.3251, BSM less separate cost 4.4707, less netted cost 5.0777
+  (approximate values under a fixed delta rule, not solutions of (48.4)).
+
+**Validation.** The two new scripts with warnings as errors (pass; `ruff format` and a lint-only switch to `itertools.pairwise`
+changed layout only, outputs identical to the recorded runs). `make lint`, `make format-check` (155 files),
+`make check-compendium` (0 problems, 697 entries), `make check-coverage` (0 problems; 449/449 objectives, 1,030/1,030
+items), `make verify-outlines` (0 problems) and `make test` (36 passed). `make pdf` builds 445 pages (was 443) with no
+overfull boxes or undefined references; the one underfull box (badness 2277) is the pre-existing one. Printed pp.
+185-186 and 192-194 (PDF 191-192 and 198-200) rendered and inspected. Pre-commit on every changed and new file.
+Reused without rerun: every other numerical script, including `monte-carlo-greeks-check.py` (C1-F1 changed text only),
+`exotic-option-checks.py` and `volatility-mismatch-hedging-check.py` (their entries gained links only), because no
+code, input or asserted result changed; their last recorded passes (L4 and the C1 pass) still apply.
+
+**Limits.** Editorial coverage only; human review outstanding. The lookback monitoring result is for one parameter set
+and no rate is claimed beyond it. The Leland comparison is under the risk-neutral measure with $q=0$, physical
+settlement and the opening trade excluded; real-world drift, discrete dividends, fixed costs and band strategies are not
+simulated. The Hoggard-Whalley-Wilmott equation is stated, not solved; the call-spread figures are a hedge-cost
+demonstration. Wilmott's empirical comparisons (Jefferies) are reported as printed and are dated. Deferred: C1-D1
+(country risk premium), C1-D2 (concentrated positions), L5-c (option-strategy practice; Natenberg passages still to be
+located), C1-D4 as an entry (now sourced), and the unresolved C1-U1 to C1-U3 items. Shortfall 43 against the
+45-objective preference, without padding. Nothing pushed; no PR.

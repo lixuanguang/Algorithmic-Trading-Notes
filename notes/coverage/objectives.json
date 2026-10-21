@@ -21579,6 +21579,91 @@
     "example": "notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py (path derivatives and scores against finite differences; eq. (18) boundary term against the BSM gamma; call pathwise and likelihood-ratio delta and vega and pathwise strike sensitivity within 4 standard errors; a digital whose pathwise delta is zero on every path, recovered by the likelihood ratio; resimulation reported at two steps; shared-path finite-difference variance finite for the call and about 1/h for the digital (part 4, added in the C1 correction pass); seed 20261021, 100,000 draws, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
+  },
+  {
+   "id": "objective:value-lookback-options",
+   "topic": "topic:option-valuation",
+   "title": "Value floating- and fixed-strike lookback options at issue and during their life, and explain the effect of discrete monitoring",
+   "operations": [
+    "calculate",
+    "explain",
+    "compare"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:value-barrier-options-monitoring",
+    "objective:apply-monte-carlo-simulation"
+   ],
+   "entries": [
+    "meth:lookback-option-valuation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 10,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 26, sec. 26.11, pp. 623-625"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 24, secs. 24.4-24.5, pp. 422-425; chap. 26, secs. 26.2-26.6, pp. 445-452"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l5-21-october-2026",
+    "entry_evidence": [
+     "meth:lookback-option-valuation"
+    ],
+    "example": "notes/artefacts/exotic-options/lookback-option-check.py (Hull Example 26.2 to its printed rounding; Hull and Wilmott formulas against each other for floating and fixed-strike lookbacks; pricing-equation residual and the boundary condition on S = M; deep-seasoned limits and monotonicity in the recorded extreme; seasoned contracts by exact one-step simulation with a Brownian-bridge extreme, seed 20261022, 400,000 paths; monitoring bias on coupled nested grids m = 7 to 1,008 against an exact continuous extreme on the same paths, seed 20261021, 100,000 paths; synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:hedge-options-with-transaction-costs",
+   "topic": "topic:option-valuation",
+   "title": "Value and hedge option positions under proportional transaction costs with Leland's adjusted volatility, explain why costs make portfolio values nonadditive, and compare rebalancing rules",
+   "operations": [
+    "calculate",
+    "explain",
+    "compare"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:quantify-hedging-volatility-mismatch",
+    "objective:manage-option-greeks"
+   ],
+   "entries": [
+    "meth:transaction-cost-hedging"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 10,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 48, secs. 48.1-48.14 and appendix, pp. 783-811"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l5-21-october-2026",
+    "entry_evidence": [
+     "meth:transaction-cost-hedging"
+    ],
+    "example": "notes/artefacts/option-valuation/transaction-cost-hedging-check.py (eqs. (48.5)-(48.6) against the printed forms, signs, zero-cost limit and the admissible domain K < sqrt(pi/8); a per-path cash ledger; simulated present value of hedging costs against the Leland premium with the approximation residual converging on nested grids N = 13, 52, 208 for long and short positions at K = 0.1 and 0.4; netted against separately hedged call-spread legs on the same paths; risk-neutral, seed 20261023, 100,000 paths, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
   }
  ]
 }

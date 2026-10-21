@@ -1,9 +1,20 @@
 # Compendium gap-filling from the owner's finance library: implementation plan v2
 
-**Current status (2026-10-21, after the C1 pass).** On `codex/library-gap-c1-inventory`, created from `e6c22e6`
+**Current status (2026-10-21, after Batch L5).** On `codex/library-gap-batch-l5`, created from `main` at `c26a09e`
+(the PR #33 merge; second parent and tree identical to the expected `d71e127`; clean tree; 447/447 objectives,
+1,030/1,030 items). Two pre-L5 audit corrections (C1-F1, the Monte Carlo Greeks resimulation-bias sentence; C1-F2, the
+C1 depth-extension classification) and **Batch L5 frozen and implemented** (L5-D1 to L5-D3; Section 7, "Pre-L5 audit
+corrections" and "Batch L5 freeze and frozen specification"): `meth:lookback-option-valuation`,
+`meth:transaction-cost-hedging`, two check scripts and records; **449/449 objectives, 1,030/1,030 items**; shortfall 43
+against 45, without padding. One harness correction in the lookback script after its first run (recorded). Record:
+`notes/source-review-records.md`, *Library gap-filling, Batch L5, 21 October 2026*. Local commits only; no push, PR,
+merge, rebase or amendment. Human review of L1-L5 outstanding.
+
+Status after the C1 pass (kept for the record; its depth-extension count is corrected by C1-F2):
+**Status (2026-10-21, after the C1 pass).** On `codex/library-gap-c1-inventory`, created from `e6c22e6`
 (clean tree; 447/447 objectives, 1,030/1,030 items): three L4 corrections (L4-F1 to L4-F3, Section 7, "C1 pass: L4
 corrections"), the C1 gap inventory (Section 8.2: 97 remaining modules reconciled and compared; 2 confirmed distinct
-candidate objectives, 4 sourced depth extensions, 2 possibly distinct but unresolved; provisional 449 for this corpus),
+candidate objectives, 4 depth extensions (corrected by C1-F2: not all source-supported), 2 possibly distinct but unresolved; provisional 449 for this corpus),
 and **Batch L5 proposed, not frozen or implemented** (lookback options and hedging with transaction costs, +2;
 decisions in Section 10.5). Objectives unchanged at 447/447. One local commit; no push, PR, merge, rebase or amendment.
 
@@ -208,6 +219,7 @@ rest. Proposed later work (Section 7) and the backlog (Section 8) hold the remai
 | CAIA depth, lookbacks, Kolmogorov equations, second-order Greeks beyond a sentence, MC Greeks, others | B1-B10 | Backlog (B3 done in L4) |
 | C0 depth gaps not placed in L2 | B12-B17 | Backlog (B12, B13 done in L4) |
 | Monte Carlo Greeks; seasoned variance swaps; cross-currency basis swaps | B3, B12, B13 | Batch L4, frozen with corrections and implemented 2026-10-21 (Section 7) |
+| Lookback options; hedging with transaction costs | B2, B5 (C1-N1, C1-N2) | Batch L5, frozen and implemented 2026-10-21 (Section 7) |
 
 ## 5. Method for every package
 
@@ -1440,6 +1452,10 @@ clean tree, 447/447 objectives, 1,030/1,030 items). Fixes only: no objective, in
 
 ### Proposed Batch L5 (2026-10-21; awaiting owner freeze): lookback options and hedging with transaction costs
 
+*Kept as the proposal record. Frozen on 2026-10-21 with decisions L5-D1 to L5-D3; see "Batch L5 freeze and frozen
+specification" below, which binds where the two differ (in particular it replaces the proposal's "within 4 standard
+errors of the Leland price difference" gate and its discrete-monitoring "correction" clause).*
+
 From the C1 inventory (Section 8.2). Proposed only: no entry, script, reading note or coverage record has been written.
 Both packages extend the option-hedging and path-dependent material of L1 with sources already held, so they form one
 coherent `volatility-options` batch.
@@ -1483,15 +1499,157 @@ record, this plan). Existing scripts reused unless their files or inputs change.
 
 **Dependencies.** L1's barrier, Asian and volatility-mismatch entries and their scripts; no new dependency.
 
+### Pre-L5 audit corrections (2026-10-21)
+
+Authorised with the L5 freeze and made on `codex/library-gap-batch-l5`, created from `main` at `c26a09e` (the merge of
+PR #33, whose second parent is the expected proposal commit `d71e127` and whose tree is identical to it; clean tree,
+447/447 objectives, 1,030/1,030 items). The prompt expected `codex/library-gap-c1-inventory` at `d71e127`; that branch is
+unchanged and `main` holds the same tree plus the merge, so branching from `main` preserves the newer merge. Fixes only.
+
+| ID | Where | Problem | Correction and evidence |
+|---|---|---|---|
+| C1-F1 | `meth:monte-carlo-greeks` | "Fixed-step resimulation is biased whatever the conditions" is false as stated: a price that is affine in the parameter (for example a forward's value in $S_0$) has an exact finite difference | Generally biased: its expectation is the finite difference of the price, not the derivative, and more paths reduce only the sampling error, never that bias; affine price functions are the exception. Estimator formulas and numbers unchanged; `monte-carlo-greeks-check.py` not rerun (no code, input or asserted result changes) |
+| C1-F2 | Section 8.2, the status paragraph, the C1 review record | C1 counted "4 source-supported" depth extensions (C1-D1 to C1-D4). C1-D3's Natenberg passages were not located or read (the book is held; its reading note covers chaps. 11, 17 and 24 for earlier entries, not the three C1-D3 items). C1-D4 cited Wilmott secs. 10.11-10.12, which concern the backward equation and the risk-neutral expectation; the forward equation is sec. 10.4, printed p. 172, eq. (10.2) | Reclassified by evidence status: C1-D1 supported (Damodaran, *Applied Corporate Finance*, printed pp. 98-107 read in C1); C1-D2 partly supported (*Managing Investment Portfolios* Example 11-3 and Exhibit 11-4 read; Hull's collar pages held but not read for D2; IRC secs. 1259 and 721 not read); C1-D3 unsupported (source held, passages not located); C1-D4 supported after this pass: Wilmott chap. 10, secs. 10.2-10.6, printed pp. 169-175 read on 21 October 2026 (forward equation (10.2), p. 172; lognormal solution (10.3), p. 173; steady state, p. 174; backward equation (10.4), p. 175). C1-D1 and C1-D2 were not reread here. The `d71e127` commit message keeps the old wording; this record supersedes it |
+
+### Batch L5 freeze and frozen specification (2026-10-21)
+
+Owner decisions of 2026-10-21: **L5-D1** L5-a and L5-b only (+2 objectives), L5-c excluded; **L5-D2** Leland's model
+cited through Wilmott chap. 48 with Leland named as originator, without implying that Leland (1985) was read;
+**L5-D3** C1-D1 and C1-D2 deferred to a later batch, other unresolved backlog items stay deferred. Expected: 449/449
+objectives, 1,030/1,030 items; shortfall 43 against 45, without padding. This section binds where it differs from the
+proposal above. Specification written before any L5 script was run.
+
+**Sources read for the freeze** (git-ignored copies; locators printed pages). Hull, OFOD 11th Global ed., copy in
+`reading materials/` (SHA-256 `8bc6e2f0…b482`, printed page = PDF page): sec. 26.11, pp. 623-625 (floating formulas with
+$S_{\min}$/$S_{\max}$ "achieved to date", Example 26.2, the fixed-strike parity relation and n. 8; discrete observation
+adjusted by Broadie, Glasserman and Kou (1998), n. 9, named but **not printed**). Wilmott, PWOQF 2nd ed. (SHA-256
+`e0ff5f09…d549`, printed = PDF $-21$): chap. 24, secs. 24.4-24.5, pp. 422-425 (updating rule $M_i=\max(S(t_i),M_{i-1})$,
+jump condition (24.5), algorithm); chap. 26, pp. 445-452 (payoff types, continuous measurement and $\partial V/\partial M=0$
+on $S=M$, discrete measurement "used to decrease the value", similarity reduction (26.1), formulas of sec. 26.6, further
+reading naming Heynen and Kat (1995), not printed); chap. 48, pp. 783-811 (secs. 48.1-48.14 and the appendix; formula
+pages 785, 788-789 also viewed as images); chap. 10, pp. 169-175 (C1-F2).
+
+**Discrepancies found while reading.** (i) Wilmott p. 789 prints the long-position breakdown as $\kappa>\sigma/\sqrt{8\pi\,\delta t}$;
+that is dimensionally inconsistent ($\kappa$ is dimensionless, $\sigma/\sqrt{\delta t}$ has units of 1/time). From (48.5),
+$\check\sigma^2>0$ if and only if $\kappa<\sigma\sqrt{\pi\delta t/8}$, i.e. $K=\kappa/(\sigma\sqrt{\delta t})<\sqrt{\pi/8}\approx0.6267$.
+The derived form is taught and checked; the printed one is recorded here only. (ii) The sec. 48.4 heading dates
+Hoggard-Whalley-Wilmott 1992 and the further reading 1994; the entry names the model without a year. (iii) No source
+read prints a lookback-specific discrete-monitoring correction; the barrier shift $e^{\pm0.5826\sigma\sqrt{T/m}}$ is **not**
+transplanted.
+
+#### L5-a frozen specification: `meth:lookback-option-valuation`
+
+*Contract and notation.* Floating call pays $S_T-S_{\min}$, floating put $S_{\max}-S_T$; fixed call $\max(S_{\max}-K,0)$,
+fixed put $\max(K-S_{\min},0)$. Extremes run over the whole option life including the start price; at a valuation date
+with remaining time $\tau$ they are the recorded extreme to date. Continuous monitoring in the formulas; a discretely
+monitored contract observes $S_0$ and $m$ equally spaced dates $t_i=iT/m$ with $t_m=T$. Hull's formulas (sec. 26.11) are
+used with $T$ read as remaining time $\tau$, which is how Hull states the running extreme "to date"; $r\ne q$ (the $r=q$
+case, Hull Problem 26.23, is excluded).
+
+*Deterministic checks* (`notes/artefacts/exotic-options/lookback-option-check.py`, part 1):
+1. Example 26.2 ($S_0=50$, $\sigma=0.4$, $r=0.1$, $q=0$, $T=0.25$, new issue): put and call rounded to cents equal 7.79 and
+   8.04 exactly; printed $b_1=-0.025$, $b_2=-0.225$, $b_3=0.025$ within $5\times10^{-4}$; $Y_2=0$ within $10^{-15}$.
+2. New-issue limits: the call evaluated with $S_{\min}=S_0$ and the put with $S_{\max}=S_0$ (where $Y_1=Y_2=0$).
+3. Two sources: Hull's floating call and put against Wilmott's sec. 26.6 forms, and Hull's fixed-strike parity route
+   against Wilmott's direct fixed-strike formulas in both cases ($K$ above and below the running extreme), relative
+   $\le10^{-12}$ (they are algebraically identical, so only rounding remains) at six points with $q=0$ and $q=0.02$.
+4. Pricing equation: central-difference residual of $V_t+\frac12\sigma^2S^2V_{SS}+(r-q)SV_S-rV$ at interior points
+   ($S\ne$ extreme), steps $h_S=0.01$, $h_t=10^{-5}$, absolute $\le10^{-6}$ (truncation and rounding both below $10^{-9}$).
+5. Boundary condition $\partial V/\partial M=0$ on $S=M$ (Wilmott p. 447): one-sided difference in $S_{\min}$ at $S=S_{\min}$
+   is $\le10^{-2}$ times the derivative at an interior point ($S=50$, $S_{\min}=45$), and shrinks linearly: the ratio of the
+   differences at $h=10^{-2}$ and $10^{-3}$ lies in $[5,20]$.
+6. History matters (would catch ignoring it): deep-seasoned limits $|c_{fl}(50;S_{\min}=20)-(Se^{-q\tau}-20e^{-r\tau})|\le10^{-4}$
+   and $|p_{fl}(50;S_{\max}=120)-(120e^{-r\tau}-Se^{-q\tau})|\le10^{-4}$ (the excess is $e^{-r\tau}E[(20-m_\tau)^+]$ with
+   $P(m_\tau<20)$ about $10^{-6}$); strict monotonicity: $c_{fl}$ decreasing in $S_{\min}$ and $p_{fl}$ increasing in
+   $S_{\max}$ on a grid. Ignoring history gives 8.04 against about 30.5.
+
+*Seasoned Monte Carlo* (part 2; independent of the formulas): $S=50$, $\tau=0.25$, Example 26.2 parameters; call with
+$S_{\min}=45$, put with $S_{\max}=56$, fixed call $K=52$ with $S_{\max}=56$ (already in the money) and $K=60$. Exact
+simulation of the continuous extreme: one step $X_\tau=\ln S+(r-q-\sigma^2/2)\tau+\sigma\sqrt\tau Z$, then the bridge
+minimum $\frac12[x_0+x_1-\sqrt{(x_1-x_0)^2-2\sigma^2\tau\ln U}]$ (maximum with $+$ and an independent $U'$), the inverse of the
+crossing probability $\exp[-2(x_0-b)(x_1-b)/(\sigma^2\tau)]$ already used in `meth:barrier-option-valuation` (labelled
+Interpretation). `default_rng(20261022)`, 400,000 paths. Gate: each estimate within 4 standard errors of the closed form;
+and the seasoned and new-issue closed forms differ by more than 20 standard errors, so the test has power against ignoring
+history.
+
+*Monitoring* (part 3): new issue, Example 26.2 parameters. `default_rng(20261021)`, 100,000 paths of 1,008 equal steps in
+20 blocks of 5,000, log-exact stepping. Coupled nested grids $m\in\{7,21,63,252,1008\}$ (63 is about daily) are subsets of
+the same path, each including $S_0$ and $S_T$; the continuous extreme on the same paths is the minimum (maximum) over the
+1,008 sub-intervals of exact bridge extremes (independent uniforms for minimum and maximum). Separation of errors:
+*sampling* uncertainty is the standard error of the continuous estimate against the closed form (gate: within 4 standard
+errors for call and put); *monitoring bias* is the paired mean gap $g_m=e^{-rT}E[\text{payoff}_{\text{cont}}-\text{payoff}_m]$
+with its paired standard error. Gates: payoffs ordered pathwise (finer grid never pays less; exact, a harness check);
+each $g_m$ positive by more than 4 paired standard errors; convergence criterion $g_{1008}\le\frac12g_{63}$ (16 times finer
+monitoring must remove at least half the gap; pathwise convergence of the discrete extreme follows from path continuity,
+and the criterion assumes no rate). Reported, not gated: $g_m\sqrt m$, the daily ($m=63$) values.
+
+#### L5-b frozen specification: `meth:transaction-cost-hedging`
+
+*Units and conventions* (Wilmott sec. 48.3). Trading $\nu$ shares at $S$ costs $\kappa|\nu|S$, buying or selling; $\kappa$
+is a one-way proportional cost (if trades fill at mid $\pm$ half the spread, $\kappa$ is half the proportional bid-offer
+spread: Interpretation). Rebalancing at fixed $\delta t=T/N$; $K=\kappa/(\sigma\sqrt{\delta t})$ (48.7). Position sign
+$s=+1$ long, $-1$ short one call; stock holding $h_k=-s\Delta_k$; trades $\nu_k=h_k-h_{k-1}$ at $S_{t_k}$. Delta rule: BSM
+delta at the position's Leland volatility, $\check\sigma$ for long and $\hat\sigma$ for short, $\hat\sigma^2,\check\sigma^2=\sigma^2\pm
+2\kappa\sigma\sqrt{2/(\pi\delta t)}$ (48.5)-(48.6); the BSM delta at $\sigma$ for the spread demonstration. Cash: $c_0=-sP-h_0S_0$,
+$c_k=c_{k-1}e^{r\delta t}-\nu_kS_{t_k}-\kappa|\nu_k|S_{t_k}$. Settlement: physical; at $T$ the holding moves to the payoff
+delta $-s\mathbf 1\{S_T>K\}$ (the $N$-th trade, costed), the delivered share passes at the strike, so terminal wealth is
+$W_T=c_N+h_NS_T+s(S_T-K)^+$. Opening trade ($h_0$ from zero) excluded from the comparison and reported separately; the
+cash-settled alternative (liquidating $h_{N-1}$ at $S_T$) reported separately. Simulation under the risk-neutral measure
+($\mu=r$), $q=0$, so the discounted stock is a martingale; discounting continuous at $r$.
+
+*Comparable quantity* (original derivation, labelled Interpretation). Itô's formula for $e^{-rt}\hat V(S_t,t)$, where $\hat V$
+is BSM at $\hat\sigma$ and $S$ has volatility $\sigma$, gives exactly $\hat V-V=E^Q\!\int_0^Te^{-rt}\kappa\sigma\sqrt{2/(\pi\delta t)}
+S_t^2\hat\Gamma_t\,dt$: the Leland premium is the expected present value of Wilmott's leading-order cost (48.2) of hedging
+with the $\hat\sigma$ delta. Likewise $V-\check V$ with $\check\Gamma$ for the long position. The simulated estimand is
+$C_N=E^Q[\sum_{k=1}^Ne^{-rt_k}\kappa S_{t_k}|\nu_k|]$ under the same rule, and the **approximation residual** is
+$e_N=C_N-L$ with $L=\hat V-V$ (short) or $V-\check V$ (long). Under $Q$ the writer at price $\hat V$ (holder at $\check V$) has
+$E[e^{-rT}W_T]=-e_N$ exactly, so $e_N$ is the expected loss left by the Leland price.
+
+*Deterministic checks* (`notes/artefacts/option-valuation/transaction-cost-hedging-check.py`, part 1): (48.5)-(48.6)
+against the printed $\sigma(1\mp\sqrt{8/(\pi\delta t)}\,\kappa/\sigma)^{1/2}$, relative $\le10^{-14}$; signs
+$\check\sigma<\sigma<\hat\sigma$ for $\kappa>0$; zero-cost limit $\check\sigma=\hat\sigma=\sigma$ and $L=0$ at $\kappa=0$
+exactly; domain $\check\sigma^2(K^*)=0$ at $K^*=\sqrt{\pi/8}$ within $10^{-15}\sigma^2$ and negative above it; Wilmott's spread
+$2\kappa SN'(d_1)\sqrt\tau/\sqrt{2\pi\delta t}$ against $\hat V-V$: the relative error at $K=0.01$ is between 5 and 20 times
+that at $K=0.001$ (second-order error). Reported: the printed p. 789 bound against the derived one.
+
+*Simulation* (part 2): call $S_0=K_{\text{strike}}=100$, $\sigma=0.2$, $r=0.05$, $q=0$, $T=1$ (the setting of Wilmott sec.
+48.12). `default_rng(20261023)`, 100,000 paths of 208 log-exact steps; nested rebalancing grids $N\in\{13,52,208\}$ on
+the same paths; Leland numbers $K\in\{0.1,0.4\}$ (so $\kappa=K\sigma\sqrt{T/N}$; at $N=52$, $\kappa=0.277\%$ and $1.109\%$);
+long ($\check\sigma$ rule) and short ($\hat\sigma$ rule). Gates: (a) ledger identity on every path, $e^{-rT}(c_N+h_NS_T)=-sP+
+\sum_kh_k(\tilde S_{k+1}-\tilde S_k)-\sum_ke^{-rt_k}\kappa S_{t_k}|\nu_k|$, relative $\le10^{-9}$ (signs and discounting);
+(b) $E[e^{-rT}W_T]$ within 4 standard errors of $-s(P-V)-C_N$, with $C_N$ estimated on the same paths (exact in expectation: only sampling
+error), for short and long at $K=0.1$, $N=52$; (c) convergence of the residual at fixed $K$: $|e_{13}|>|e_{52}|>|e_{208}|$
+and $|e_{208}|\le\frac12|e_{13}|$ (16 times more frequent rebalancing must remove at least half the residual; the expected
+leading error is $O(\sqrt{\delta t})$ or smaller, which predicts a quarter, but no rate is gated), for all four
+position/$K$ cases. Reported with standard errors, not gated: $e_N/L$, the opening cost $\kappa h_0S_0$, the cash-settlement
+close, the P&L standard deviation and 95th percentile, and costs against hedge dispersion at fixed $\kappa=0.2\%$ (BSM delta)
+for $N\in\{13,52,208\}$ (Wilmott sec. 48.13's trade-off).
+
+*Nonadditivity* (part 3, hedge-cost demonstration, not a solved valuation): bull spread long $K_1=95$, short $K_2=105$, same
+paths, $N=52$, $\kappa=0.2\%$, BSM deltas at $\sigma$. Aggregate trades $\nu^{\text{net}}=\nu^{(1)}+\nu^{(2)}$ against
+separately hedged legs. Gates: $\kappa S|\nu^{\text{net}}|\le\kappa S(|\nu^{(1)}|+|\nu^{(2)}|)$ on every step of every path
+($10^{-12}$); mean saving positive by more than 4 paired standard errors; long and short the same call: aggregated cost
+exactly 0 on every path, separate cost exactly twice one leg's. Reported, labelled approximate: leg-by-leg Leland values
+$V(K_1;\check\sigma)-V(K_2;\hat\sigma)$ against $V(K_1;\sigma)-V(K_2;\sigma)-C^{\text{agg}}$; the Hoggard-Whalley-Wilmott
+equation (48.4) is stated, not solved (its value needs a nonlinear PDE solver, which no retained claim requires).
+
+*Teaching limits.* Band (delta-tolerance) and utility-based rebalancing are described only as Wilmott presents them
+(secs. 48.8-48.9, 48.12-48.13): the bandwidth (48.9) and its equation (48.10), the asymptotic optimal band, Jefferies'
+simulated 95th-percentile prices (Leland 14.90 at four days, delta tolerance 15.15, utility 15.03) and real-data wins
+(delta tolerance about 70 percent, utility 23, Leland 7), with Wilmott's conclusion that the best strategy is unclear.
+
+**Failure policy.** Deterministic parts first; any failure classified (formula, unit, sign, harness, approximation) and
+reported with its first-run output; no seed, path count, grid or tolerance is changed to pass.
+
 ## 8. Backlog (needs evidence before it is scheduled)
 
 | ID | Item | What is needed first |
 | --- | --- | --- |
-| B1 | Kolmogorov forward and backward equations, transition densities | Decide whether it adds teaching beyond P1; Wilmott chap. 10 |
-| B2 | Lookback options | Hull sec. 26.11, Wilmott chap. 26; low priority. C1 (2026-10-21): distinct, C1-N1, proposed for L5 |
+| B1 | Kolmogorov forward and backward equations, transition densities | Decide whether it adds teaching beyond P1; Wilmott chap. 10. Forward equation read 2026-10-21 (sec. 10.4, p. 172; C1-F2); deferred |
+| B2 | Lookback options | Hull sec. 26.11, Wilmott chap. 26; low priority. C1 (2026-10-21): distinct, C1-N1, proposed for L5. **Done in L5 (2026-10-21)** |
 | B3 | Monte Carlo Greeks (pathwise, likelihood ratio) | Hull sec. 21.7 and Glasserman (not held); could be one entry. Proposed for L4 (L4-a, 2026-10-21): Hull sec. 21.6, pp. 494-495 and Broadie and Glasserman (1996) read instead; one new entry and objective. **Done in L4 (2026-10-21)** |
 | B4 | Second-order Greeks beyond the P4 sentence (vanna/volga hedging, the vanna-volga method) | A source for market practice |
-| B5 | Discrete-hedging error distribution and transaction costs (Wilmott chaps. 47-48) | Overlap check with P4 and `mod:black-scholes-merton`. C1 (2026-10-21): discrete error already in P4; transaction costs distinct, C1-N2, proposed for L5 |
+| B5 | Discrete-hedging error distribution and transaction costs (Wilmott chaps. 47-48) | Overlap check with P4 and `mod:black-scholes-merton`. C1 (2026-10-21): discrete error already in P4; transaction costs distinct, C1-N2, proposed for L5. **Transaction costs done in L5 (2026-10-21)** |
 | B6 | CAIA depth: CTA industry structure and vehicles (chaps. 29, 32), payoff-distribution and bottom-up replication (chap. 33), convertible arbitrage risks (chap. 34) | Owner decision on a CAIA citation exception, or non-curriculum sources (Kat and Palaro; Hasanhodzic and Lo) located and read. No own empirical CTA performance. A trend illustration is synthetic; an empirical futures backtest needs a defined continuous-contract roll rule, collateral return, a signal lag of $t-1$ information, and costs |
 | B7 | (Done in Batch L3, 2026-10-21.) Regulatory currency P10: FRTB status by jurisdiction (BCBS, EU CRR3, UK PRA, US); SA-CCR and the revised CVA framework (CRE52, MAR50); ISSB IFRS S1/S2 adoption, TCFD's transfer to the ISSB, SEC climate-rule status; LCR/NSFR dates in `financial-institution-analysis.tex` | The issuers' current texts read with retrieval dates; corrections to existing entries plus at most one `rule:` entry for counterparty capital |
 | B8 | LIBOR-era CQF and Gregory material | Historical only; used solely as dated context in P6-P7 |
@@ -1618,8 +1776,8 @@ Management except item D2 below. Depth gaps were found in four modules (D1, D2, 
 | C1-N2 (B5) | Hedging options with proportional transaction costs: Leland's adjusted volatility, its sign for long and short positions, the Hoggard-Whalley-Wilmott portfolio equation, and rebalancing rules | `res:delta-hedging-volatility-mismatch` (assumes no costs), `meth:greeks-delta-gamma-hedging`; `objective:quantify-hedging-volatility-mismatch` | Costs appear only as an assumption ("no costs"); the earlier `meth:leland-cost-adjusted-volatility` question was blocked for lack of Leland (1985) | Backlog B5; Wilmott chap. 48 pp. 783-812 (sec. 48.3 Leland, pp. 784-785; HWW; strategy comparison) located and opening pages read; `vo-leland-1985` catalogued, not held | **+1** (`objective:hedge-options-with-transaction-costs`) | P4 entry and its script; L5 |
 | C1-D1 | Country risk premium in the cost of equity: sovereign default spread, relative-volatility scaling, melded approach | `meth:cost-of-debt-equity-estimation`, `meth:capital-structure-benchmarking` ("country risk" listed only); `objective:estimate-cost-of-debt-and-equity` | No method or example | L2 vol. 3, Cost of Capital: Advanced Topics, "International Considerations" (pp. 119 and 139); `applied-corporate-finance-2014` printed pp. 98-107 (PDF 114-123) located, passages read | 0 (depth) | None; a later small depth batch |
 | C1-D2 | Concentrated single-stock positions: risk and tax trade-off, staged diversification and completion portfolios, zero-premium collars, variable prepaid forwards, exchange funds, charitable remainder trusts | `meth:complex-client-situations`, `meth:wealth-transfer-strategies`, `meth:covered-call-protective-put`; `objective:advise-complex-client-situations` | Concentration is named; hedging and monetisation strategies are not taught | L3 vol. 4, Topics in Private Wealth Management (pp. 310-323); `managing-investment-portfolios-2007` Example 11-3 and Exhibit 11-4, pp. 693-695 read; Hull collars (held); US constructive-sale and exchange-fund rules (IRC secs. 1259, 721) not yet read | 0 (depth) | Option-strategy entries; later depth batch |
-| C1-D3 (B15) | Option-strategy practice: horizon move against straddle break-even, put writing to buy below market, skew and term-structure gauges | `meth:option-spreads-volatility-strategies`, `meth:covered-call-protective-put` | Short practical items | C0 candidate 5; `s7-natenberg` held, relevant pages not yet located | 0 (depth) | Optional with L5 |
-| C1-D4 (B1) | Forward (Fokker-Planck) Kolmogorov equation and transition densities | `res:risk-neutral-pricing-feynman-kac` (backward equation already from Wilmott chap. 10) | The forward equation only | Backlog B1; Wilmott chap. 10 (held; secs. 10.11-10.12 already read) | 0 (depth); low priority | None |
+| C1-D3 (B15) | Option-strategy practice: horizon move against straddle break-even, put writing to buy below market, skew and term-structure gauges | `meth:option-spreads-volatility-strategies`, `meth:covered-call-protective-put` | Short practical items | C0 candidate 5; `s7-natenberg` held, relevant pages not yet located. *Corrected (C1-F2): unsupported; held, not located or read* | 0 (depth) | Optional with L5; excluded by L5-D1, deferred |
+| C1-D4 (B1) | Forward (Fokker-Planck) Kolmogorov equation and transition densities | `res:risk-neutral-pricing-feynman-kac` (backward equation already from Wilmott chap. 10) | The forward equation only | Backlog B1; Wilmott chap. 10 (held; secs. 10.11-10.12 already read). *Corrected (C1-F2): those sections are the backward equation; the forward equation is sec. 10.4, printed p. 172, eq. (10.2), read 2026-10-21 (pp. 169-175); now supported* | 0 (depth); low priority | None; deferred |
 | C1-U1 (B4) | Vanna-volga smile construction and pricing | `meth:greeks-delta-gamma-hedging` (vanna, volga), `def:implied-volatility-surface` | The method itself | Backlog B4; `cur-bossens-rayee-skantzos-deelstra-2010` and `cur-castagna-fx-smile` catalogued, neither held nor read | Possibly +1; unresolved until a source is read | Smile entries |
 | C1-U2 (B6) | Hedge-fund replication (factor and payoff-distribution), CTA structure, convertible-arbitrage risks | `meth:hedge-fund-factor-exposures`, `meth:hedge-fund-strategy-classification` | Replication methods; CTA vehicles | Backlog B6; CAIA chaps. 29, 32-34 held but need an owner decision on citing CAIA; Kat-Palaro, Hasanhodzic-Lo not held | Possibly +1 (replication); rest depth | Owner decision |
 | C1-U3 | Depth without a source: conditional hedge-fund betas (B14), life-insurance pricing (B16), economics of regulation including antitrust (B17; `openstax-microeconomics-3e` registered, chapters not located), incapacity planning (L3 vol. 4, p. 345), an empirical EVT illustration (B9, needs data) | as in Section 8 | as in Section 8 | as listed | 0 each | Source or data first |
@@ -1630,8 +1788,10 @@ Closed without action: B8 (historical context only), B10 (moot after L4 used Bro
 **Counts (inspected corpus only).**
 1. Implemented objectives: **447**.
 2. Confirmed distinct candidate objectives: **2** (C1-N1, C1-N2).
-3. Depth extensions adding no objective: **4** source-supported (C1-D1 to C1-D4), plus five unsourced depth items in
-   C1-U3.
+3. Depth extensions adding no objective: four (C1-D1 to C1-D4), plus five unsourced depth items in C1-U3. *Corrected
+   (C1-F2):* C1 wrote "4 source-supported". By evidence: C1-D1 supported (read); C1-D2 partly supported (one source
+   read, tax rules not read); C1-D3 unsupported (source held, passages not located); C1-D4 supported only after the
+   pre-L5 reading of Wilmott sec. 10.4.
 4. Unresolved candidates: **2** that might add an objective (C1-U1, C1-U2) and the five depth items of C1-U3.
 5. Provisional total for this corpus: **449** (447 + 2); at most 451 if C1-U1 and C1-U2 are both confirmed. This does
    not exhaust the finance library; the 45-objective preference was not used as a target.
@@ -1761,6 +1921,10 @@ registered under a neutral key; no push or PR.
 
 ### 10.5 Decisions needed to freeze Batch L5
 
+*Decided 2026-10-21: L5-D1 L5-a and L5-b only (+2), L5-c excluded; L5-D2 Leland through Wilmott chap. 48, Leland named
+as originator, the paper not implied to have been read; L5-D3 C1-D1 and C1-D2 deferred, other backlog items deferred.
+The options below are kept for the record.*
+
 - **L5-D1. Scope.** Recommended: L5-a and L5-b (+2). Alternatives: add L5-c (Natenberg depth, +0), or one package only.
 - **L5-D2. Leland (1985) through Wilmott.** Recommended: cite the model through Wilmott chap. 48, which derives it, and
   name Leland as the originator; alternative: obtain `vo-leland-1985` first (not held; no purchase authorised).
@@ -1789,6 +1953,9 @@ Routine defaults: new local branch from the commit that records this proposal; `
 10. C1 pass, 2026-10-21, on `codex/library-gap-c1-inventory`: three L4 corrections (Section 7), the C1 gap inventory
     (Section 8.2) and the Batch L5 proposal (Section 7; decisions in Section 10.5); one local commit. Next: owner
     freeze of L5; human review of L1-L4 outstanding.
+11. Pre-L5 audit corrections C1-F1 and C1-F2, then Batch L5 frozen (L5-D1 to L5-D3) and implemented, 2026-10-21, on
+    `codex/library-gap-batch-l5` from `main` (`c26a09e`); local commits. 449/449 objectives. Next: human review of
+    L1-L5; deferred: C1-D1, C1-D2, C1-D3, C1-D4 as an entry, C1-U1 to C1-U3.
 
 ## 12. Risks and limits
 
@@ -1808,6 +1975,9 @@ Routine defaults: new local branch from the commit that records this proposal; `
 - The C1 inventory compared section heads by hand and opened curriculum passages only to locate gaps; a heading that
   looks explained may still hide depth. C0's 76 modules were not recompared (their membership is reconstructed from
   C0's categories). The inventory covers the 18 volumes and the backlog, not the whole finance library.
+- L5's Leland comparison rests on Wilmott's presentation; Leland (1985) was not read. The lookback monitoring gaps are
+  for one parameter set; no discrete-monitoring correction for lookbacks was read, so none is taught. The
+  Hoggard-Whalley-Wilmott equation is stated, not solved.
 - C0 is a bounded sample, not a census. Hand comparison of section heads covered 76 of 175
   modules, and the unexamined candidates are listed in Section 8.1. A gap that C0 did not find
   may still exist.

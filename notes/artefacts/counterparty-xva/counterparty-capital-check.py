@@ -1,7 +1,7 @@
 """Library gap-filling Batch L3, package P10 (2026-10-21): the worked example of rule:counterparty-credit-cva-capital.
 
 Deterministic, original inputs. Formulas from the Basel Framework as retrieved on 2026-10-21: SA-CCR (CRE52.1,
-52.10, 52.20, 52.23, 52.34, 52.39, 52.48 and 52.57; version effective 1 January 2023) and the reduced basic approach
+52.10, 52.20, 52.23, 52.34, 52.39, 52.48-52.49 and 52.57; version effective 1 January 2023) and the reduced basic approach
 for CVA risk (MAR50.1 and 50.14-50.16; version effective 1 January 2023). One unmargined netting set holding a
 four-year payer interest rate swap on 100 notional, mark-to-market V = 2 to the bank; the counterparty is an
 investment-grade industrial (MAR50.16, Table 1: RW = 3 percent). The swap's remaining maturity, 4 years, stands in
@@ -110,6 +110,17 @@ ok(
     ),
     ", ".join(f"{k / s:.4f} S" for k in ks),
 )
+# Batch L3 audit correction (2026-10-21): the printed MF had dropped the CRE52.48-52.49 floor of 10 business days.
+m_week = 5 / 250
+ok(
+    "MF floor (CRE52.49, 250-day convention): a 5-business-day trade gets sqrt(10/250) = 0.2, not sqrt(5/250) = 0.1414;"
+    " the floor binds only below 10/250 years",
+    abs(maturity_factor_unmargined(m_week) - 0.2) < 1e-15
+    and abs(maturity_factor_unmargined(m_week) - math.sqrt(m_week)) > 0.05
+    and maturity_factor_unmargined(0.5) == math.sqrt(0.5)
+    and maturity_factor_unmargined(4.0) == 1.0,
+    f"{maturity_factor_unmargined(m_week):.4f} against {math.sqrt(m_week):.4f} unfloored",
+)
 
 print("== Worked example (original inputs)")
 # A payer swap is long the rate (delta +1, CRE52.39); its 4-year end date puts it in bucket 2 (one to five years).
@@ -151,6 +162,18 @@ ok(
     and abs(cap_cva - 0.2695) < 5e-5
     and abs(12.5 * cap_cva - 3.3692) < 5e-5,
     f"{df:.6f}, {scva:.6f}, {cap_cva:.6f}, {12.5 * cap_cva:.6f}",
+)
+# Batch L3 audit correction: M EAD DF / alpha is an exposure-time area (currency x years), not a discounted EE at a date.
+eepe = ead / ALPHA
+area = 4.0 * ead * df / ALPHA
+ok(
+    "BA-CVA proxy: M EAD DF / alpha = 13.8225 equals the integral of EEPE exp(-0.05 t) over [0, 4] (currency x years);"
+    " divided by M it is EEPE x DF = 3.4556, a time average in currency",
+    abs(area - integrate.quad(lambda t: eepe * math.exp(-0.05 * t), 0.0, 4.0)[0]) < 1e-12
+    and abs(area - 13.8225) < 5e-5
+    and abs(area / 4.0 - 3.4556) < 5e-5
+    and abs(scva - RW_C * area) < 1e-12,
+    f"EEPE {eepe:.6f}, area {area:.6f}, area / M {area / 4.0:.6f}",
 )
 two = DS_BA_CVA * k_reduced([scva, scva])
 ok(

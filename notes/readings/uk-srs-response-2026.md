@@ -23,7 +23,9 @@ Prepared on 2026-10-21 by library gap-filling Batch L3 (P10, regulatory and disc
 
 ## Limits
 
-The FCA's policy statement PS26/19 could not be read (the FCA site returned a bot challenge), so FCA rule content is not stated.
+In Batch L3 the FCA's policy statement PS26/19 could not be read (the FCA site returned a bot challenge). It has since been read from an Internet Archive copy of the FCA's PDF (fca-ps26-19-2026): final comply-or-explain Listing Rules for accounting periods from 1 January 2027, distinct from this voluntary endorsement.
+
+Corrected 2026-10-21 by the Batch L3 post-implementation audit correction pass (source copies in `reading_materials/library-gap-l3-audit-20261021/`).
 
 ## Implementation
 

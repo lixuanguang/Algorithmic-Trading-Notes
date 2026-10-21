@@ -23,7 +23,9 @@ Prepared on 2026-10-21 by library gap-filling Batch L3 (P10, regulatory and disc
 
 ## Limits
 
-Teaching text mentions only the date, the end of the relief and the 0.9 multiplier.
+Teaching text mentions the date, the end of the relief and the 0.9 multiplier. The first L3 wording applied the multiplier to "the standardised requirements"; Art. 495s(1)-(2) limits it to the sensitivities-based method result (Art. 325h(4)) and the simplified standardised approach, so the alternative approach's default-risk and residual-risk components (Art. 325c(2)) are not scaled. The optional Art. 495v multiplier is a separate measure, not described.
+
+Corrected 2026-10-21 by the Batch L3 post-implementation audit correction pass (source copies in `reading_materials/library-gap-l3-audit-20261021/`).
 
 ## Implementation
 

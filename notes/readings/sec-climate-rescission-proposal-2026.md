@@ -24,7 +24,9 @@ Prepared on 2026-10-21 by library gap-filling Batch L3 (P10, regulatory and disc
 
 ## Limits
 
-No final rescission found in the Federal Register up to 2026-10-21 (only a regulatory agenda notice of 14 August 2026). Court orders after 18 May 2026 (for example on Iowa's motion to lift abeyance) were not available in the public RECAP docket and are unverified.
+No final rescission found in the Federal Register up to 2026-10-21 (only a regulatory agenda notice of 14 August 2026). In Batch L3, court orders after 18 May 2026 (for example on Iowa's motion to lift abeyance) were not available in the public RECAP docket and were unverified. They have since been read (ca8-iowa-v-sec-2026): motion denied 21 May 2026; status report of 31 August accepted and the next due 31 December 2026 by order of 5 October 2026, the last filing on the RECAP docket.
+
+Corrected 2026-10-21 by the Batch L3 post-implementation audit correction pass (source copies in `reading_materials/library-gap-l3-audit-20261021/`).
 
 ## Implementation
 

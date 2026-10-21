@@ -6,6 +6,12 @@ FRTB, liquidity and sustainability-disclosure statements were verified against t
 EU, UK and US status; one new entry, `rule:counterparty-credit-cva-capital`, and one new objective (446/446 objectives,
 1,030/1,030 items; shortfall 44 against 45). Record: `notes/source-review-records.md`, *Library gap-filling, Batch L3,
 21 October 2026*. Unverified: the FCA's PS26/19 and Eighth Circuit orders after May 2026. Human review outstanding.
+**Correction pass (2026-10-21).** An audit of `440272b` found five statements the checks did not test (L3-F1 to L3-F5:
+the SA-CCR maturity-factor floor, the units of the BA-CVA exposure proxy, Directive 2026/470 scope and timing, US NSFR
+applicability, and the scope of the EU 0.9 multiplier). They were corrected in a separate local commit on
+`codex/library-gap-l3-audit-fixes`, with two deterministic checks; PS26/19 and the Eighth Circuit orders of 21 May and
+5 October 2026 were then read. See "Batch L3 post-implementation audit corrections" in Section 7. Objectives (446/446)
+and items (1,030/1,030) unchanged. Not done: push, PR, any backlog batch.
 
 Status after Batch L2 (kept for the record):
 Batch L2 was frozen by the owner (decisions L2-D0 to L2-D6, Section
@@ -1088,6 +1094,28 @@ deterministic checked example; three entries corrected or extended; the other cl
 be read (FCA PS26/19; Eighth Circuit orders after 18 May 2026) and are recorded as unverified; the teaching text does
 not depend on them.
 
+### Batch L3 post-implementation audit corrections (2026-10-21)
+
+An audit of the committed Batch L3 (`440272b`) found five statements that its passing checks (the new script with
+warnings as errors, 36 tests, lint, formatting, both checkers, the PDF build) did not test. The owner authorised a
+bounded, fixes-only pass on `codex/library-gap-l3-audit-fixes`, branched from `440272b`. No objective was added, no
+backlog batch started, and no existing number, input or tolerance changed. The Outcome above is kept as the record of
+the first implementation; details are in `notes/source-review-records.md` (*Post-implementation audit corrections,
+Batch L3*).
+
+| Finding | Problem | Correction |
+|---|---|---|
+| L3-F1 (`rule:counterparty-credit-cva-capital`) | Printed unmargined MF $\sqrt{\min(M,1)}$ without the ten-business-day floor (the script had it). | Floor restored from CRE52.48-52.49 (10/250 years). Counterexample checked: five business days give 0.2, not 0.141. Four-year example unchanged. |
+| L3-F2 (same entry) | $M\,\mathrm{EAD}\,\mathrm{DF}/\alpha$ called "the same object as $\mathrm{EE}^*$". | Per MAR50.15 nn. 3-4, a supervisory proxy for the area under the discounted EE profile, in currency times years, against $\mathrm{EE}^*(t)$ in currency at a date. Checked: 13.8225 currency-years against EEPE 3.8127. |
+| L3-F3 (`meth:esg-exposure-evaluation`) | Directive 2026/470 Art. 2(1) cited for the reporting scope; the new thresholds implied to apply already. | Art. 2(4)-(5) (individual, consolidated), 2(13) (third-country), 3(1) (FY 2024-2026 first wave; optional FY 2025-2026 exemption), 5(1) (transposition by 19 March 2027); FY 2027 start from Directive 2025/794 and FY 2028 third-country start from CSRD Art. 5(2). |
+| L3-F4 (`def:financial-institution-features`) | US NSFR said to apply at \$100bn of assets. | 12 CFR 249.1(b)(1): Category IV only with \$50bn or more of weighted short-term wholesale funding; 249.105(b): 100, 85 or 70 percent. |
+| L3-F5 (`meth:market-risk-limits-capital`) | EU 0.9 multiplier applied to "the standardised requirements". | CRR Art. 495s(1)-(2): the sensitivities-based method result and the simplified standardised approach only. |
+
+Source gaps closed: FCA PS26/19, read from the Internet Archive capture of the FCA's PDF (7 October 2026). Its final
+comply-or-explain Listing Rules apply to accounting periods from 1 January 2027 and are stated separately from the
+voluntary UK SRS endorsement. Eighth Circuit: the order of 21 May 2026 (abeyance kept) and the order of 5 October 2026
+(next SEC status report by 31 December 2026). The court posture is dated 5 October 2026, the last filing found.
+
 ## 8. Backlog (needs evidence before it is scheduled)
 
 | ID | Item | What is needed first |
@@ -1290,7 +1318,7 @@ padding. The options below are kept as they were put to the owner.
 5. Owner freezes Batch L2 (Section 10.3). P10 (B7) goes in Batch L2 or L3 (L2-D4). Done: frozen 2026-10-21; P10 to L3.
 6. Batch L2: P6, P7, P8, P9, P11a-c, each with focused checks and records before the next. Done 2026-10-21 (frozen with
    decisions L2-D0 to L2-D6); committed locally on `codex/library-gap-batch-l2`. Next: Batch L3 (P10), human review.
-7. Batch L3: P10 (B7), frozen and executed 2026-10-21 on `codex/library-gap-batch-l3`; committed locally. Next: human review; no further batch is scheduled.
+7. Batch L3: P10 (B7), frozen and executed 2026-10-21 on `codex/library-gap-batch-l3`; committed locally. Audit corrections L3-F1 to L3-F5 committed separately on `codex/library-gap-l3-audit-fixes`. Next: human review; no further batch is scheduled.
 
 ## 12. Risks and limits
 

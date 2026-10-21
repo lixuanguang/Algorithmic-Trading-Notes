@@ -6226,3 +6226,80 @@ full `make source-check` of `cd55096` covers the rest); `verify-outlines` (the o
 
 **Limits.** Status statements are as of 21 October 2026 and will date. Editorial coverage only; human review of the
 new entry and the three corrected ones is outstanding. Nothing pushed; no PR.
+
+**Post-implementation audit corrections, Batch L3, 21 October 2026.** An audit of the committed Batch L3 (`440272b`)
+found five statements that the passing checks did not test (L3-F1 to L3-F5) and asked for one bounded attempt to close
+the two disclosed source gaps. Starting state: branch `codex/library-gap-batch-l3` at `440272b` (parent `a519e0c`),
+working tree clean, no newer work; 446/446 objectives and 1,030/1,030 outline items. Branch
+`codex/library-gap-l3-audit-fixes` was created from `440272b`. Local only. The owner authorised a fixes-only pass: no
+objective added, no backlog batch started, no existing number or tolerance changed. The claims table and "Not verified"
+list above are kept as the history of the first implementation. New copies are in the git-ignored
+`reading_materials/library-gap-l3-audit-20261021/` (hashes in its `SHA256SUMS`); the Batch L3 copies were reused where
+they already held the passage. Delegation to the models named by the implementation skill was again unavailable.
+- L3-F1, `rule:counterparty-credit-cva-capital`, printed maturity factor. The text gave $\sqrt{\min(M,1)}$ without
+  the floor. CRE52.48 floors the remaining maturity at ten business days; CRE52.49 gives 10/250 years under a 250-day
+  convention. The script already applied the floor, so the four-year example (MF 1) is unchanged. The entry now states
+  the floor with a short-maturity counterexample: five business days give 0.2, not $\sqrt{0.02}=0.1414$. A new check
+  in `counterparty-capital-check.py` asserts it; an unfloored formula fails it.
+- L3-F2, same entry, Notation. The text called $M\,\mathrm{EAD}\,\mathrm{DF}/\alpha$ "the same object as
+  $\mathrm{EE}^*$". MAR50.15 n.~3 calls $\mathrm{EAD}\times M$ a proxy for the area under the discounted EE profile;
+  n.~4 says $\alpha$ converts EAD back to EEPE. The product is in currency times years; $\mathrm{EE}^*(t)$ is in
+  currency at one date. The entry now distinguishes them, keeps the supervisory-proxy qualification (flat EEPE, a fixed
+  5 percent rate) and gives the example's area, 13.8225 currency-years against an EEPE of 3.8127. A new check
+  confirms it equals $\int_0^4\mathrm{EEPE}\,e^{-0.05t}dt$, and that SCVA is RW times it.
+- L3-F3, `meth:esg-exposure-evaluation`, EU. The text cited Directive 2026/470 Art.~2(1), which amends the
+  legal-form extension in Art.~1(3) of Directive 2013/34/EU, as the reporting scope. It also said, unqualified, that
+  "mandatory reporting is limited" to the new thresholds. Corrected from the directive: Art.~2(4) (Art.~19a(1),
+  individual undertakings) and Art.~2(5) (Art.~29a(1), consolidated groups). Art.~2(13) (Art.~40a(1)) gives the
+  third-country route: EU turnover above EUR~450m in each of the last two years, through a subsidiary or branch above
+  EUR~200m. Art.~3(1) (CSRD Art.~5(2)) keeps the first wave for FY 2024--2026 and allows a Member State exemption
+  below the new thresholds for FY 2025--2026. Art.~5(1) sets transposition by 19 March 2027. The FY 2027 start of the
+  new scope is Directive 2025/794 Art.~1 (retrieved in L3, now registered). The FY 2028 third-country start is CSRD
+  Art.~5(2), second subparagraph, which neither amending directive changes. National transposition was not checked.
+- L3-F4, `def:financial-institution-features`, US NSFR. The text said the NSFR applies to banking organisations with
+  \$100bn or more of assets, a paraphrase of the 2021 rule's summary. 12 CFR 249.1(b)(1) covers GSIB holding companies
+  and their depository institutions, Category II and III, and Category IV only with \$50bn or more of average weighted
+  short-term wholesale funding, plus covered nonbank companies and Board determinations. 252.5(e) defines Category IV.
+  249.105(b) scales required stable funding at 100, 85 or 70 percent. Board text only (eCFR to 19 October 2026); the
+  OCC and FDIC parts were not read.
+- L3-F5, `meth:market-risk-limits-capital`, EU 0.9 multiplier. The text applied it to "the standardised
+  requirements". CRR Art.~495s(1)--(2), inserted by Regulation 2026/1221, apply it to the sensitivities-based method
+  result (Art.~325h(4)) and to the simplified standardised approach. The alternative standardised approach's
+  default-risk and residual-risk components (Art.~325c(2)) are not scaled. The optional Art.~495v multiplier is not
+  described.
+- Source gap, FCA PS26/19. fca.org.uk and the FCA Handbook again returned a Cloudflare challenge to direct requests,
+  and no installed browser was available. The FCA's PDF was read from the Internet Archive capture of 7 October 2026
+  (87 pages; SHA-256 `0a3e0282…048f833f`): paras 1.1--1.11, 3.6--3.25 and Appendix~1, FCA 2026/56 (made
+  24 September 2026, in force 1 January 2027). The rules are comply-or-explain for UKLR 6, 14, 15, 16 and 22 issuers,
+  for accounting periods from 1 January 2027 (first reports in 2028), with one-year Scope~3 and two-year S1 reliefs.
+  They are now stated separately from the voluntary UK SRS endorsement. Law-firm summaries found by search were not
+  used.
+- Source gap, Eighth Circuit. The order of 21 May 2026 was read from the court's PDF as posted by the Sabin Center's
+  Climate Litigation Database: the motion to lift abeyance was denied and an SEC status report was due by 31 August
+  2026. The SEC's letter of 1 June 2026 confirms it (Doc. 5642807). The RECAP docket now held later entries. The order
+  of 5 October 2026 (Entry ID 5690930, read from RECAP's copy of the court PDF) accepted the 31 August report and set
+  the next for 31 December 2026; RECAP showed it as the last known filing. The 31 August report itself was not read,
+  and entries after 5 October 2026 are not verified, so the entry dates this claim to 5 October 2026. The Federal
+  Register API, queried 21 October 2026, shows no final rescission, only the June proposal.
+- HTTP headers. Every request in this pass used a generic user-agent string without personal identifiers. The
+  incident recorded under *Method* above (one early Batch L3 probe whose user-agent contained the owner's e-mail
+  address) stands as recorded.
+
+Registry and notes: five new `sources.tex` keys and reading notes (`ca8-iowa-v-sec-2026`, `ecfr-12cfr249-2026`,
+`eu-2022-2464-csrd`, `eu-2025-794-stop-the-clock`, `fca-ps26-19-2026`). Corrected notes: the 2026/470, US NSFR,
+CRR-relief, UK SRS, SEC-rescission and Basel notes, with the superseded readings kept. Entry evidence for the four
+entries; coverage evidence for their four objectives. Objectives 446/446 and items 1,030/1,030 unchanged; no objective
+added.
+
+Checks run (2026-10-21). `counterparty-capital-check.py` with warnings as errors: all pass, including the two new
+checks; the four-year example values are unchanged. `make lint`, `make format-check` (150 files), `make check-compendium`
+(0 problems), `make check-coverage` (0 problems; 446/446, 1,030/1,030) and `make test` (36 passed) all pass.
+`make pdf` builds 442 pages (was 441) with no overfull boxes or undefined references; the one underfull box (badness
+2277) is the pre-existing one. Printed pp.~93, 128, 139 and 259 (the four changed entries) were rendered and
+inspected. Pre-commit runs on every changed and new file. Reused without rerun: every other numerical script. No other
+script changed since `440272b`, and those scripts passed in the L2 correction pass, whose results the L3 record reused.
+No mathematical L1 or L2 statement was touched. `verify-outlines` was not rerun; the outline crosswalk is unchanged.
+
+Limits: status statements are as of 21 October 2026, except the Eighth Circuit posture (5 October 2026). The FCA text
+is an archived copy of the FCA's PDF, not a direct download. Editorial coverage only; human review outstanding. Nothing
+pushed; no PR.

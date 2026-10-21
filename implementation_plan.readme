@@ -3361,3 +3361,13 @@ the SEC climate rule's stay and proposed rescission. New `rule:counterparty-cred
 and CVA-risk capital) with a deterministic check. One new objective: 446/446 objectives, 1,030/1,030 items; shortfall 44
 against 45. Details and the per-claim table: `notes/source-review-records.md`, *Library gap-filling, Batch L3, 21 October
 2026*. Editorial coverage only; human review outstanding.
+
+**Correction pass (2026-10-21).** An audit of `440272b` found five statements its checks did not test: the SA-CCR
+maturity factor printed without its ten-business-day floor; the BA-CVA product $M\cdot\mathrm{EAD}\cdot\mathrm{DF}/\alpha$
+equated with a discounted expected exposure at a date (it is an exposure-time area); the scope and timing of Directive
+(EU) 2026/470; US NSFR applicability (Category IV only with \$50bn or more of weighted short-term wholesale funding);
+and the EU 0.9 multiplier, which applies only under CRR Art. 495s(1)-(2). All were corrected in a separate local commit
+on `codex/library-gap-l3-audit-fixes`, with two deterministic checks in `counterparty-capital-check.py`. FCA PS26/19 and
+the Eighth Circuit orders of 21 May and 5 October 2026 were read and added. Scope and coverage unchanged (446/446,
+1,030/1,030). Record: `notes/source-review-records.md`, *Post-implementation audit corrections, Batch L3, 21 October
+2026*; plan: `implementation_plan_v2.md` Section 7. Not done: push, PR, any backlog batch.

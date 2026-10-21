@@ -1,0 +1,60 @@
+\section{Default correlation and tranche valuation}
+
+Defaults cluster: names in one economy fail together in bad years, so losses on a portfolio are far more dispersed than independent defaults would suggest. These entries model that dependence with a one-factor Gaussian copula, use it to value tranches of a portfolio and to set bank capital, and show what implied correlations reveal about the model's limits. Numbers are checked in \texttt{notes/artefacts/default-correlation/default-correlation-checks.py}.
+
+\begin{qfmodel}[The one-factor Gaussian copula for default times: marginals kept, dependence through a latent normal factor, the conditional default probability and the large-pool loss distribution]\label{mod:gaussian-copula-default-correlation}
+\qffield{Statement} A copula builds a joint distribution from given marginals. Each variable is mapped percentile to percentile onto a standard normal, and the normals are assumed jointly normal with a chosen correlation, the \emph{copula correlation}. The marginals are preserved exactly, and the copula correlation is in general not the correlation of the original variables \citep[chap.~9, sec.~9.5, pp.~202--205]{risk-management-financial-institutions-2023}. For default times $\tau_i$ with cumulative probabilities $Q_i(t)$, $x_i=N^{-1}[Q_i(\tau_i)]$ \citep[chap.~24, sec.~24.8, pp.~578--579]{s7-hulloptions}.
+
+\emph{One factor.} With $x_i=\sqrt\rho\,F+\sqrt{1-\rho}\,Z_i$, $F$ and $Z_i$ independent standard normals, every pair has copula correlation $\rho$. Conditional on the factor, defaults are independent with probability
+\[ Q(T\mid F)=N\!\left(\frac{N^{-1}[Q(T)]-\sqrt\rho\,F}{\sqrt{1-\rho}}\right), \]
+so the number of defaults in $n$ names is binomial given $F$ (Hull, eqs.~(24.7)--(24.9), p.~580; eq.~(25.7), p.~602). In a very large pool the default rate equals $Q(T\mid F)$. Setting $F$ at its $1-X$ quantile gives Vasicek's worst-case default rate $\mathrm{WCDR}(T,X)=N\big[(N^{-1}(\mathrm{PD})+\sqrt\rho\,N^{-1}(X))/\sqrt{1-\rho}\big]$ (RMFI, sec.~9.6 and~9.6.1, pp.~208--211, eqs.~(9.9)--(9.13)).
+
+\emph{Bank capital.} The internal ratings-based (IRB) formula for corporate, sovereign and bank exposures uses this default rate at $X=99.9$ percent: $K=[\mathrm{LGD}\cdot N(G(\mathrm{PD})/\sqrt{1-R}+\sqrt{R/(1-R)}\,G(0.999))-\mathrm{PD}\cdot\mathrm{LGD}]\cdot(1+(M-2.5)b)/(1-1.5b)$ and $\mathrm{RWA}=12.5\,K\cdot\mathrm{EAD}$. The correlation $R$ falls from 0.24 to 0.12 as PD rises, as $0.12w+0.24(1-w)$ with $w=(1-e^{-50\,\mathrm{PD}})/(1-e^{-50})$, and $b=[0.11852-0.05478\ln\mathrm{PD}]^2$ \citep[CRE31.2 and CRE31.5--31.6]{basel-framework-cre-2026}.
+
+\qffield{Notation} $N$, $N^{-1}$ (the Basel text's $G$) standard normal distribution and its inverse; PD the probability of default by the horizon; $\rho$ (Basel $R$) copula correlation; LGD loss given default; $M$ effective maturity.
+
+\qffield{Conditions} The Gaussian copula has little tail dependence: unusually early defaults rarely coincide, and no $\rho$ may fit both a mean default rate and the frequency of bad years. A Student $t$ copula, or heavier-tailed factor distributions, give more joint extremes (RMFI, secs.~9.5.2--9.5.3 and~9.6.3, pp.~205--206 and~212). The model takes either risk-neutral default probabilities, for pricing, or real-world ones, for risk and capital (Hull, p.~578). Capital: the Basel Committee's text in force from 1 January 2023, as retrieved on 21 October 2026. It applies a 1.25 multiplier to the correlation for large regulated and all unregulated financial institutions, and a firm-size reduction for small companies (CRE31.7--31.8). Jurisdictions implement it with their own rules and dates.
+
+\qffield{Practice} \emph{Reproduced.}
+\begin{itemize}
+\item Hull's basket: with 100 independent names each 2 percent likely to default, one or more defaults has probability 86.74 percent and ten or more 0.0034 percent; under perfect correlation both are 2 percent (sec.~25.9, p.~601).
+\item RMFI's copula of two triangular marginals with correlation 0.5: the joint probability that both are below 0.1 is 0.006, against 0.001 under independence (Table~9.5, p.~204). Its Example~9.2: PD 2 percent and $\rho=0.1$ give a 99.9 percent worst-case default rate of 12.8 percent (p.~209).
+\item The IRB formula reproduces the Committee's illustrative corporate risk weights to 0.005 points (CRE99 Table~1; LGD 40 percent, $M=2.5$): 17.47 percent at PD 0.05 percent, 82.06 percent at 1 percent and 102.09 percent at 2 percent.
+\end{itemize}
+\emph{Checked}: at PD 1 percent ($R=0.1928$) the conditional default rate inside the formula is 14.03 percent, exactly the worst-case default rate at that correlation. With LGD 45 percent, $K$ is 7.39 percent and the risk weight 92.3 percent.
+
+\qffield{Pitfalls} Reading the copula correlation as the correlation of default indicators or of default times. Using the large-pool formula for a small portfolio without checking the granularity error (\hyperref[meth:tranche-loss-base-correlation]{tranches}). Treating the 99.9 percent capital level as a forecast of losses.
+
+\qffield{See also} \hyperref[meth:credit-liquidity-tail-risk]{credit tail risk} (worst-case default rate in credit VaR); \hyperref[meth:tranche-loss-base-correlation]{tranche valuation}; \hyperref[def:return-dependence]{dependence}; \hyperref[mod:structural-reduced-form-credit]{structural and reduced-form models}.
+
+\qffield{Further reading} \nolinkurl{wide-nelsen-copulas} (copula theory).
+
+\end{qfmodel}
+
+\begin{qfmethod}[Tranche expected loss in the one-factor Gaussian copula, the granularity of a finite pool, and compound and base correlation with their failures]\label{meth:tranche-loss-base-correlation}
+\qffield{Statement} A tranche with attachment $a$ and detachment $d$ absorbs portfolio losses between $a$ and $d$; its loss is $\min(\max(L-a,0),d-a)$ for portfolio loss $L$. In a synthetic CDO the portfolio is a set of CDS, and standard tranches of the CDS indices trade on their own, for example 0--3, 3--7, 7--10, 10--15, 15--30 and 30--100 percent for CDX NA IG \citep[chap.~25, sec.~25.8, pp.~599--600]{s7-hulloptions}. Low default correlation makes the equity tranche risky and the senior safe; as correlation rises the junior tranches gain and the senior lose (sec.~25.9, p.~601).
+
+\emph{Valuation.} Given the factor, the number of defaults is binomial, which gives the expected tranche principal $E_j(F)$ on each payment date. Integrating over $F$ by Gaussian quadrature gives the present values of spread payments $A$, accrual $B$ and protection $C$, and the breakeven spread is $C/(A+B)$ (eqs.~(25.1)--(25.12), pp.~601--604).
+
+\emph{Implied correlations.} The market quotes tranche spreads and backs out a correlation. \emph{Compound} correlation reprices one tranche. \emph{Base} correlation reprices the $0$--$d$ tranche whose expected loss is the sum of those of the tranches below $d$. On iTraxx in January 2007 compound correlations showed a smile (17.7, 7.8, 14.0, 18.2, 23.3 percent), and base correlations a skew rising from 17.7 to 60.5 percent. A model consistent with prices would show one number (pp.~606--607, Table~25.8).
+
+\qffield{Notation} $L=\mathrm{LGD}\cdot k/n$ for $k$ defaults among $n$ equal names; large pool $L=\mathrm{LGD}\cdot Q(T\mid F)$; expected losses in units of pool notional.
+
+\qffield{Conditions} Base correlations of non-standard tranches are often found by interpolation. The expected loss of the $0$--$x$ tranche must rise with $x$ at a decreasing rate, and interpolated base correlations often break that condition. Hull prefers to interpolate the expected-loss curve directly with that shape imposed (pp.~607--608). Alternatives include heterogeneous pools, double-$t$ and other copulas, random recovery and factor loadings, implied copulas and dynamic models (sec.~25.11, pp.~608--610). The examples below are one-period and undiscounted, and their ``market'' is synthetic.
+
+\qffield{Practice} \emph{Reproduced}: Hull's Example~25.2, the iTraxx 3--6 percent tranche (125 names, $\rho=0.15$, recovery 40 percent, hazard 0.83 percent, rates 3.5 percent, quarterly, 60 quadrature points). The model gives $A=4.2845$, $B=0.0187$ and $C=0.1497$, a spread of 347.8 basis points, against Hull's 4.2846, 0.0187, 0.1496 and 348 (p.~605).
+
+\emph{Checked} (synthetic: PD 2 percent, $\rho=0.3$, LGD 60 percent, the CDX tranches). Large-pool expected losses sum to $\mathrm{PD}\times\mathrm{LGD}=0.012$. For 1{,}000 names the exact conditional-binomial values are 0.008717 (0--3), 0.002267 (3--7), 0.000547 (7--10), 0.000330, 0.000136 and 0.0000033. Simulating each name's latent variable in 50{,}000 scenarios agrees within 1.8 standard errors for every tranche. The finite pool's equity loss is below the large pool's by $3.9\times10^{-5}$, and the senior tranches' losses are above it. Here the gaps roughly halve from 250 to 500 to 1{,}000 names, but they need not shrink monotonically for a thin tranche.
+
+\emph{Failures}, with a synthetic ``market'' that is an equal mixture of Gaussian copulas at $\rho=0.1$ and 0.6:
+\begin{itemize}
+\item Base correlations rise from 0.33 (0--3) to 0.53 (0--30), a skew, although no single $\rho$ generated the prices.
+\item The 3--7 percent tranche has two compound correlations that reprice it.
+\item Linear interpolation of base correlations prices a 4--8 percent tranche at 0.001202 against the market's 0.001242. For 0.25 percent-wide tranches it breaks the decreasing-rate condition three times.
+\end{itemize}
+
+\qffield{Pitfalls} Quoting compound correlation for a mezzanine tranche as if it were unique. Interpolating base correlations without checking the shape of the implied loss curve. Valuing a small or concentrated pool with the large-pool formula. Reading an implied correlation as a measured one.
+
+\qffield{See also} \hyperref[mod:gaussian-copula-default-correlation]{Gaussian copula}; \hyperref[meth:abs-structures-credit-enhancement]{ABS structures and enhancement}; \hyperref[meth:cds-pricing]{CDS pricing}; \hyperref[meth:credit-cds-international-structured]{structured credit against corporates}.
+
+\end{qfmethod}

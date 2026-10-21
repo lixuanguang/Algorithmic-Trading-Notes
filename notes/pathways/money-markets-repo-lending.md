@@ -44,6 +44,12 @@ Written in the derivatives, portfolio and execution batch (2026-10-19):
 
 Partly checked 2026-10-19, draft. Example in `notes/artefacts/short-term-funding/funding-repo-checks.py`; human review is outstanding. Coverage records are editorial, not study.
 
+Written in library gap-filling Batch L2 (2026-10-21), in `portfolio-risk-financing/securities-lending.tex`:
+
+- `meth:margin-purchase-leverage`: Regulation T initial margin and FINRA Rule 4210 maintenance (texts retrieved 2026-10-21), the leverage ratio, levered return after interest and commissions, and long and short margin-call prices from the loan or credit balance at the date, with dated ledgers.
+
+Partly checked 2026-10-21, draft. Checks in `notes/artefacts/short-term-funding/margin-purchase-check.py` (deterministic, original inputs). Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:post-libor-funding-stress-measures` narrowed; `data:treasury-bill-offering-schedule` resolved (TreasuryDirect: bills of 4 to 52 weeks; 4-, 6-, 8-, 13-, 17- and 26-week weekly, 52-week every four weeks, plus cash management bills). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

@@ -88,6 +88,12 @@ Sources: Hull, *Options, Futures, and Other Derivatives*, 11th Global ed., chaps
 
 The same batch extended `meth:monte-carlo-simulation` with control variates and the separation of discretisation bias from sampling error (`notes/artefacts/inference-simulation/inference-simulation-checks.py`).
 
+Written in library gap-filling Batch L2 (2026-10-21), in `statistical-inference.tex`:
+
+- `meth:correlation-independence-tests`: the t test of zero correlation, Spearman's rank correlation with midranks and its transform properties, the chi-square test of independence, and the information coefficient with overlapping returns.
+
+Partly checked 2026-10-21, draft. Checks in `notes/artefacts/inference-simulation/correlation-independence-checks.py`. Sources: OpenStax, *Introductory Statistics* 2e, secs. 11.3 and 12.4; NIST Dataplot, "Rank Correlation Independence Test". Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice

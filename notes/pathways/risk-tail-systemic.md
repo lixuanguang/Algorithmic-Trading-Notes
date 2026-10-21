@@ -28,6 +28,12 @@ method validation (2026-10-17):
 
 - `meth:var-es-estimation-methods`: historical, filtered historical, parametric and Monte Carlo VaR and ES as overlapping choices, and the unconditional coverage backtest. Partly checked 2026-10-17, draft.
 
+Written in library gap-filling Batch L2 (2026-10-21), in `portfolio-construction-risk/risk-models.tex`:
+
+- `meth:extreme-value-tail-estimation`: block maxima and the GEV family, peaks over threshold and the GPD, POT VaR and ES, the Hill estimator, threshold bias against sampling error, and the two-step GARCH-GPD method. `meth:var-es-estimation-methods` now links to it from its Pitfalls.
+
+Partly checked 2026-10-21, draft. Checks in `notes/artefacts/extreme-value/extreme-value-checks.py` (synthetic; no empirical EVT claim, backlog B9). Sources: Hull, *RMFI* 6th ed., secs. 8.4 and 12.5-12.6; McNeil, Frey and Embrechts, *QRM*, 1st ed. (2005), chap. 7; Wilmott, sec. 19.8. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 method validation (2026-10-17) (audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): Queue: `meth:var-es-estimation-methods` resolved as a new entry in `portfolio-construction-risk/risk-models.tex` (Christoffersen, 2nd ed., chaps. 2, 6, 8 and 13; own GARCH backtest simulation); QRM and Kupiec not read. The record is in `notes/source-review-records.md`, *method validation (2026-10-17)*.

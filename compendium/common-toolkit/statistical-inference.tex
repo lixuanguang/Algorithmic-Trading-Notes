@@ -48,3 +48,29 @@ Samples can be drawn in several ways: a \emph{simple random sample} gives every 
 \qffield{See also} \hyperref[meth:hypothesis-testing]{hypothesis tests}; \hyperref[meth:bootstrap-resampling]{bootstrap} (another route when formulas are doubtful).
 
 \end{qfmethod}
+
+\begin{qfmethod}[Testing correlation and independence: the $t$ test of zero correlation, Spearman's rank correlation with ties, the chi-square test of independence, and overlapping observations]\label{meth:correlation-independence-tests}
+\qffield{Statement} \emph{Pearson correlation.} To test $H_0:\rho=0$ against $\rho\ne0$, use $t=r\sqrt{n-2}/\sqrt{1-r^2}$ with $n-2$ degrees of freedom; $t$ has the sign of $r$, and the $p$-value is the area in both tails. Equivalently, $r$ is significant at 5 percent when it lies beyond $\pm t_c/\sqrt{t_c^2+n-2}$, which is 0.602 for $n=11$ and 0.456 for $n=19$ \citep[sec.~12.4]{introductory-statistics-2023}. The test assumes a linear relation, normal and equally dispersed $y$ at each $x$, independent residuals and a random sample.
+
+\emph{Spearman's rank correlation} replaces each observation by its rank, giving tied values their average rank, and computes the Pearson correlation of the ranks. It measures monotone, not only linear, association. NIST tests $\rho_s=0$ with tabulated quantiles for $n\le30$ without ties, and otherwise with the normal approximation $\rho_s\sqrt{n-1}$ \citep[``Rank Correlation Independence Test'']{nist-dataplot-rank-correlation}.
+
+\emph{Independence in a contingency table.} With observed counts $O$ and expected counts $E=(\text{row total})(\text{column total})/(\text{grand total})$, the statistic $\sum(O-E)^2/E$ has a chi-square distribution with $(r-1)(c-1)$ degrees of freedom under independence. The test is right-tailed and needs every expected count to be at least five (OpenStax, sec.~11.3).
+
+\qffield{Notation} $r$ sample correlation; $n$ pairs; $\rho_s$ Spearman's coefficient; $r\times c$ the table's rows and columns. Interpretation: Spearman's coefficient is unchanged by a strictly increasing transform of either variable. A strictly decreasing transform of one variable changes only its sign, and of both leaves it unchanged. The shortcut $1-6\sum d_i^2/(n(n^2-1))$, with $d_i$ the rank differences, equals it only without ties. A weakly monotone transform can create ties and change the value.
+
+\qffield{Conditions} The $t$ test needs independent pairs. In quant research the \emph{information coefficient} of a signal, its correlation with the next period's return, is tested this way, and the \emph{rank IC} is the Spearman version, robust to outliers. When forward returns overlap, as with a daily signal and 20-day returns, consecutive pairs share most of their returns. If the signal is persistent, the effective sample is far smaller than $n$, and the nominal test rejects far too often (Interpretation, checked below). Use non-overlapping periods or standard errors that allow for the overlap.
+
+\qffield{Practice} \emph{Reproduced}: OpenStax's exam data, $r=0.6631$ with $n=11$, give $t=2.658$ and $p=0.026$; the critical values for $n=6$ to 19 are reproduced. In Example~11.6, 839 volunteers classified by type and hours (a $3\times3$ table) give $\chi^2=12.9909$ with 4 degrees of freedom and $p=0.0113$, so hours and type are dependent at 5 percent (sec.~11.3).
+
+\emph{Checked} (synthetic):
+\begin{itemize}
+\item On 20{,}000 independent normal samples of 30 pairs, the 5 percent Pearson test rejected 4.84 percent of the time. Spearman's test with the $t$ approximation on midranks rejected 4.95 percent, and with NIST's normal approximation 4.78 percent.
+\item A tied fixture of 12 pairs has $\rho_s=0.9288$ on midranks, while the shortcut gives 0.9301.
+\item A persistent signal (AR(1), coefficient 0.95) correlated with independent returns over 500 days: the 5 percent test rejected 6.5 percent of the time with one-day returns and 62.9 percent with overlapping 20-day returns.
+\end{itemize}
+
+\qffield{Pitfalls} Reading a significant $r$ as a large or causal effect. Using the $d_i^2$ shortcut with ties. Running a chi-square test with expected counts below five. Testing an IC built from overlapping returns with $n-2$ degrees of freedom.
+
+\qffield{See also} \hyperref[meth:hypothesis-testing]{hypothesis testing}; \hyperref[meth:nonparametric-tests]{nonparametric tests}; \hyperref[def:return-dependence]{dependence}.
+
+\end{qfmethod}

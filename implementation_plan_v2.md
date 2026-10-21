@@ -1,6 +1,13 @@
 # Compendium gap-filling from the owner's finance library: implementation plan v2
 
-**Current status (2026-10-21, after the L2 proposal audit).** Batch L1 and its five audit
+**Current status (2026-10-21, after Batch L2).** Batch L2 was frozen by the owner (decisions L2-D0 to L2-D6, Section
+10.3, with the two freeze corrections in Section 7) and implemented on `codex/library-gap-batch-l2`, branched from
+`c688d54`; committed locally, not pushed, no PR. All packages (P6-P9, P11a-c, the L2-D3 tree extension and the L2-D5
+Hull extensions) are complete; P10 is deferred to Batch L3. Eleven new objectives: 445/445 objectives and 1,030/1,030
+outline items, editorial coverage only; shortfall 34 against 45. Every frozen criterion passed. Record:
+`notes/source-review-records.md`, *Library gap-filling, Batch L2, 21 October 2026*. Human review outstanding.
+
+Status after the L2 proposal audit (kept for the record):  Batch L1 and its five audit
 repairs are committed locally as `5e0578e` on `codex/library-gap-batch-l1` (parent `2b89791`;
 not pushed, no PR). That commit holds this file at its audited pre-C0 state (SHA-256
 `afb74d11…8e14`). The C0 revision and the audit corrections to the Batch L2 proposal are
@@ -760,10 +767,11 @@ values, are binding.
       - Correctness: a finite-pool simulation of 1,000 names (50,000 scenarios, fixed seed)
         agrees with the exact finite-pool value for each tranche within 3 standard errors.
       - Granularity: the deterministic gap between the large-pool and exact finite-pool values
-        is reported for $N=250$, 500 and 1,000. Its absolute value must decrease in $N$ for
-        each tranche. A planning reproduction with $\mathrm{PD}=2\%$, $\rho=0.3$, LGD 60
-        percent and tranches 0-3, 3-7, 7-10, 10-15, 15-30 and 30-100 percent showed this. It
-        is not binding: the script fixes its own inputs in advance.
+        is reported for $N=250$, 500 and 1,000, for each tranche. *Corrected (L2 freeze).* It is
+        a reported result, not a pass condition: the gap need not shrink monotonically in $N$
+        for a thin tranche (counterexample in "Batch L2 freeze corrections"). The exact
+        finite-pool benchmark, its quadrature convergence and the Monte Carlo comparison stay
+        binding.
     - The conditional default rate inside the IRB formula equals the WCDR of
       `meth:credit-liquidity-tail-risk` to $10^{-12}$ at the same PD and correlation. The capital
       figure is recomputed from the CRE31 text as read, at its retrieval date.
@@ -806,13 +814,14 @@ values, are binding.
     - Exact GPD data ($\xi=0.25$, $\beta=1$). At the fitted parameters, the score (gradient
       of the log-likelihood) is below $10^{-6}$ in each component. The log-likelihood is no
       lower than that of `scipy.stats.genpareto.fit` with location 0, less $10^{-8}$. This
-      avoids comparing two optimisers' parameters. Over 500 replications of $k=250$, the
-      mean shape is within 3 standard errors of 0.25, which allows for the $O(1/k)$ bias of
-      maximum likelihood.
+      avoids comparing two optimisers' parameters. *Corrected (L2 freeze).* The mean fitted
+      shape over 500 replications of $k=250$ is reported under Diagnostics, not tested here.
     - For a Pareto tail, whose excesses are exactly GPD above any threshold, the
       peaks-over-threshold VaR and ES formulas at the true parameters reproduce the closed-form
       quantile and ES to $10^{-10}$.
   - Diagnostics (reported, with no pass threshold):
+    - Maximum-likelihood shape bias (*moved here at the L2 freeze*): the mean fitted shape over
+      500 exact-GPD replications of $k=250$, its standard error and its difference from 0.25.
     - Finite-threshold bias. On the $n=5{,}000$ sample, $H_k$ and the GPD shape are reported
       against both 0.25 and their population values at the threshold. The 99.5 percent VaR
       and ES are reported against the closed form, and against the values implied by the
@@ -970,6 +979,21 @@ C0 boundary and its unexamined items (Section 8.1) and the source restrictions a
 | P6 | "exact Ornstein-Uhlenbeck steps" for simulated discount factors | Exact rate samples do not give an exact $\int r\,du$. | Joint exact sampling of the rate and its integral; trapezoid bias diagnostic; 4 standard errors for the 30-maturity family. |
 | P8 | "within 3 standard errors plus a granularity allowance" | The allowance was not predetermined. | Exact finite-pool benchmark (conditional binomial). Granularity is reported as a deterministic gap that must shrink from 250 to 1,000 names. |
 
+### Batch L2 freeze corrections (2026-10-21)
+
+The owner froze Batch L2 with decisions L2-D0 to L2-D6 (Section 10.3) and authorised two
+bounded criterion corrections, made before any L2 script was written. Both counterexamples were
+reproduced in the session scratchpad before the edit. No seed, input or other tolerance was
+changed, and no threshold was tuned. The corrected text above is marked "Corrected (L2 freeze)".
+
+| Package | Original wording | Problem | Correction |
+|---|---|---|---|
+| P8 | "the deterministic gap between the large-pool and exact finite-pool values is reported for $N=250$, 500 and 1,000. Its absolute value must decrease in $N$ for each tranche." (and, in the L2 audit table, "Granularity is reported as a deterministic gap that must shrink from 250 to 1,000 names") | Not implied by the model for thin tranches. With $\mathrm{PD}=0.02$, $
+ho=0.3$, LGD 0.6 and a 0.2-2 percent tranche, the gaps in pool-loss units are about $6.227824	imes10^{-6}$, $1.0586963	imes10^{-5}$ and $5.082963	imes10^{-6}$ at 250, 500 and 1,000 names: they rise, then fall. | Gaps reported per tranche, not tested. The independent conditional-binomial finite-pool benchmark, its quadrature convergence and the 1,000-name Monte Carlo comparison remain binding. |
+| P9 | "Over 500 replications of $k=250$, the mean shape is within 3 standard errors of 0.25, which allows for the $O(1/k)$ bias of maximum likelihood." | Three standard errors of the replication mean do not allow for finite-sample MLE bias, which does not shrink with the number of replications. Reproduction: NumPy `default_rng(20261021)`, 500 successive `genpareto.rvs(c=0.25, scale=1, size=250, random_state=rng)` samples, each fitted with `floc=0`: mean shape 0.237276, error 0.012724 against 3 s.e. 0.010503. | Mean shape moved to Diagnostics. The score and likelihood checks, the exact-Pareto Hill checks and the exact tail-formula checks remain binding. |
+
+The rest of the L2 audit table above is unchanged and kept as written.
+
 ## 8. Backlog (needs evidence before it is scheduled)
 
 | ID | Item | What is needed first |
@@ -1114,6 +1138,16 @@ Each title-pass candidate has a renamed or near counterpart in the crosswalk or 
 
 ### 10.3 Decisions needed to freeze Batch L2 (after C0)
 
+**Owner decisions, 2026-10-21 (Batch L2 frozen).** L2-D0: everything stays local (no push, PR
+or merge); L2 is implemented on `codex/library-gap-batch-l2`, created from `c688d54`. L2-D1:
+P6-P9 approved with the two freeze corrections (Section 7, "Batch L2 freeze corrections").
+L2-D2: P11a-c included. L2-D3: option (a), the rate-tree CVA and risky floater as an
+explicitly labelled original derivation that combines the cited tree and CVA foundations, read
+first; Smith (2017) is not held and is not implied to have been read. L2-D4: P10 deferred to
+Batch L3. L2-D5: both optional Hull extensions included, after their passages are read.
+L2-D6: about 11 new objectives accepted; the actual shortfall against 45 is reported without
+padding. The options below are kept as they were put to the owner.
+
 - **L2-D0. Batch L1 first.** Resolved for the commit: L1 and its audit repairs were committed
   locally as `5e0578e` with the owner's authorisation. Still open: whether to push it and
   open or update its PR, and whether L2 continues on this branch or branches from
@@ -1159,8 +1193,9 @@ Each title-pass candidate has a renamed or near counterpart in the crosswalk or 
    Checks, report and local commit done; push and PR not done (L2-D0).
 4. C0 (bounded) adds its findings to Section 8 and proposes the Batch L2 scope. Done
    (Sections 7 and 8.1), with its acceptance criteria corrected after audit.
-5. Owner freezes Batch L2 (Section 10.3). P10 (B7) goes in Batch L2 or L3 (L2-D4).
-6. Batch L2: P6, P7, P8, P9, P11a-c, each with focused checks and records before the next.
+5. Owner freezes Batch L2 (Section 10.3). P10 (B7) goes in Batch L2 or L3 (L2-D4). Done: frozen 2026-10-21; P10 to L3.
+6. Batch L2: P6, P7, P8, P9, P11a-c, each with focused checks and records before the next. Done 2026-10-21 (frozen with
+   decisions L2-D0 to L2-D6); committed locally on `codex/library-gap-batch-l2`. Next: Batch L3 (P10), human review.
 
 ## 12. Risks and limits
 

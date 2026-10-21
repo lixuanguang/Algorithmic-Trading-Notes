@@ -30,6 +30,13 @@ Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
 
+Written in library gap-filling Batch L2 (2026-10-21), new topic file `compendium/securitised-structured-credit/default-correlation.tex`:
+
+- `mod:gaussian-copula-default-correlation`: copulas, the one-factor Gaussian copula for default times, conditional binomial defaults, Vasicek's worst-case default rate, and the Basel IRB risk-weight function (CRE31, in force from 1 January 2023, retrieved 2026-10-21) reproducing CRE99's illustrative risk weights.
+- `meth:tranche-loss-base-correlation`: tranche loss, Hull's Example 25.2 reproduced, large against exact finite pools and simulation, compound and base correlation, and their failures on a synthetic two-correlation market.
+
+Partly checked 2026-10-21, draft. Checks in `notes/artefacts/default-correlation/default-correlation-checks.py`. Sources: Hull, *OFOD* 11th Global ed., secs. 24.8 and 25.8-25.11; Hull, *RMFI* 6th ed., secs. 9.5-9.6; Basel Framework CRE31 and CRE99. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `meth:credit-spread-term-structure` (`corporate-credit-cds`); `meth:option-adjusted-spread` (`rates-credit-mortgages`).

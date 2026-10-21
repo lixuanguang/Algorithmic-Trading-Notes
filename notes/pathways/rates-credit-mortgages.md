@@ -105,6 +105,14 @@ In `fixed-income-portfolio-management.tex` (topic `fixed-income-portfolio-manage
 
 All partly checked 2026-10-19, draft. Examples in `notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py` and `notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py`; human review is outstanding. Coverage records are editorial, not study. `meth:curve-based-empirical-duration` is linked, not repeated.
 
+Written in library gap-filling Batch L2 (2026-10-21), in `arbitrage-free-valuation.tex` (topic `arbitrage-free-bond-valuation`):
+
+- `mod:affine-short-rate-models`: the affine bond-price form, Vasicek and CIR closed forms, the Feller condition, Hull-White's theta(t) fitted to the GSW curve of 30 September 2026, exact joint sampling of the rate and its integral, and negative rates.
+- `mod:hjm-forward-rate-models`: the HJM drift condition, Ho-Lee and Hull-White as Markov special cases, the forward market model under forward and rolling spot measures, Black caplets and Hull's adjustment for backward-looking rates.
+- `mod:term-structure-models-simulation` extended: fitting simulated paths by a time-dependent drift, the lognormal (Black-Karasinski) alternative and Wilmott's caution on refitting.
+
+Partly checked 2026-10-21, draft. Checks in `notes/artefacts/short-rate-models/short-rate-model-checks.py` (GSW curve; volatilities illustrative, not calibrated). Sources: Hull, *OFOD* 11th Global ed., chaps. 29 and 31-33; Wilmott, *PWOQF* 2nd ed., chaps. 30, 31 and 37; the Handbook, chap. 37. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `data:fixed-income-market-size` resolved (SIFMA Fact Book highlights: global fixed-income debt $160.7 trillion and equity market capitalisation $157.8 trillion in 2025; the product-group ranking found ill-posed). Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

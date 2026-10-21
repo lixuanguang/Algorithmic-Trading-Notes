@@ -115,11 +115,17 @@ CVA &&&&& 2.80 \\
 \end{center}
 The value without default is 105.66, so the fair value is $105.66-2.80=102.86$. That is a yield of 3.97 percent and a credit spread of 97 basis points. Survival-weighted cash flows confirm 102.86. Sensitivities: at 30 percent recovery CVA is 3.22; at a hazard of 3 percent, 5.52. With the physical default rate of a BBB issuer (0.16 percent) CVA would be only 0.30, far too low to price the bond.
 
-\qffield{Conditions} The bond case assumes default independent of interest rates and recovery as a share of par. For derivatives the exposure is random and is simulated in a risk-neutral world, with collateral and a cure period (pp.~396--398).
+\emph{On a calibrated rate tree} (Interpretation: an original derivation that applies the formula above node by node on the \hyperref[meth:binomial-rate-tree-calibration]{calibrated binomial tree}; no source cited here teaches it). With default just before each payment and independent of rates, $v_t=\sum_j\pi_{t,j}(V_{t,j}+C-100R)$, where $\pi_{t,j}$ is the value today of 1 paid at node $j$ of date $t$ and $V_{t,j}$ the ex-coupon value there. Averaging the discounted loss over all $2^t$ paths gives the same number. On the Handbook's tree ($\sigma=10$ percent, par curve 3.5 to 5.2 percent), an original 5 percent four-year bond with hazard 1.5 percent and recovery 40 percent of par has CVA 3.2964 by both routes.
+\begin{itemize}
+\item \emph{Volatility.} The bond's CVA is the same at $\sigma=10^{-4}$ (rates at the forwards), 10 and 20 percent. Summed over nodes with state prices, value plus coupon is the curve value of the flows from that date, so an exposure linear in rates has a CVA fixed by the curve. Volatility matters when the exposure is not linear: an at-market four-year payer swap on the same tree, with loss $(1-R)\max(V,0)$, has CVA 0.043, 0.052 and 0.068 per 100 at those volatilities.
+\item \emph{Risky floater.} A floater paying the node's one-year rate is worth 100 at every node. With a 50 basis point quoted margin, hazards of 1.0, 1.5, 2.0 and 2.5 percent in years 1--4 and 40 percent recovery, the no-default value 101.79 less CVA 3.95 gives 97.84. The discount margin, the spread added to every tree rate that discounts the promised flows to that value, is 112 basis points.
+\end{itemize}
+
+\qffield{Conditions} The bond case assumes default independent of interest rates and recovery as a share of par. If default or recovery depended on rates, the tree CVA of a bond would depend on volatility too. For derivatives the exposure is random and is simulated in a risk-neutral world, with collateral and a cure period (pp.~396--398).
 
 \qffield{Pitfalls} Using physical default probabilities. Confusing the unconditional default probability per period with the hazard rate. Ignoring that the coupon due at the default date is part of the exposure.
 
-\qffield{See also} \hyperref[def:credit-risk-components]{components}; \hyperref[meth:credit-spread-term-structure]{credit spread term structure}; \hyperref[meth:cds-pricing]{CDS pricing}.
+\qffield{See also} \hyperref[def:credit-risk-components]{components}; \hyperref[meth:credit-spread-term-structure]{credit spread term structure}; \hyperref[meth:cds-pricing]{CDS pricing}; \hyperref[meth:credit-valuation-adjustment]{CVA for derivatives}.
 
 \end{qfmethod}
 

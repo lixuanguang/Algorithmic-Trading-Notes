@@ -191,6 +191,30 @@ Interpretation: applying one common permutation to the rows of a multivariate re
 
 \end{qfmodel}
 
+\begin{qfmethod}[Mean--CVaR optimisation: minimising conditional value at risk over scenarios as a linear programme, its link to mean--variance under normality, and skewed returns]\label{meth:mean-cvar-optimisation}
+\qffield{Statement} Rockafellar and Uryasev define, for loss $f(x,y)$ of portfolio $x$ and confidence $\beta$, the function $F_\beta(x,\alpha)=\alpha+(1-\beta)^{-1}E\big[(f(x,y)-\alpha)^+\big]$. For continuous loss distributions, its minimum over $\alpha$ is the $\beta$-CVaR, and the left end of the minimising set is the $\beta$-VaR (Theorem~1). Minimising CVaR over $x$ is minimising $F_\beta$ jointly over $(x,\alpha)$, a convex problem when the loss is convex in $x$ (Theorem~2). With $q$ sampled scenarios $y_k$ and loss $-x^\top y_k$, it becomes a linear programme in $x$, $\alpha$ and auxiliary $u_k\ge0$: minimise $\alpha+\frac1{q(1-\beta)}\sum_ku_k$ subject to $x^\top y_k+\alpha+u_k\ge0$ and the portfolio constraints \citep[secs.~2--3, eqs.~(4)--(17), pp.~4--9]{s6-cvar}. No distributional form is needed.
+
+\emph{Link to mean--variance.} If losses are normal, $\mathrm{VaR}=\mu+c_1(\beta)\sigma$ and $\mathrm{CVaR}=\mu+c_2(\beta)\sigma$ with $c_2(\beta)=\varphi(z_\beta)/(1-\beta)$. With the expected return held fixed, minimising CVaR, VaR or variance gives the same portfolio (Proposition, p.~10).
+
+\qffield{Notation} $\alpha$ the auxiliary variable, at the optimum the VaR (Rockafellar and Uryasev write $\alpha$ for VaR and $\beta$ for the confidence level); $u_k$ the excess of scenario $k$'s loss over $\alpha$. Interpretation: with $n$ equally weighted scenarios the minimum over $\alpha$ is the average of the worst $n(1-\beta)$ losses, with a fractional weight on the last. That is the empirical ES of \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation}, which also covers distributions with atoms, where the paper's continuity assumption fails.
+
+\qffield{Conditions} The problem here is long-only, fully invested and has an expected-return \emph{equality}; with an inequality the return constraint may not bind, and the equivalence with mean--variance needs it to bind. Sampling error is large because only the tail scenarios set the solution. Rockafellar and Uryasev's own normal example converged slowly with pseudo-random scenarios (p.~11). Under skewed or fat-tailed returns the two problems differ, and the direction of the change in any one weight is a result, not a rule.
+
+\qffield{Practice} \emph{Reproduced}: the paper's three-asset benchmark (S\&P~500, long government bonds, small caps; monthly means and covariances of Tables~1--2, target return 1.1 percent). Minimum variance gives weights 0.452, 0.116 and 0.432 and variance 0.00378529. The normal formulas then give VaR and CVaR of 0.0678 and 0.0970 at 90 percent, 0.0902 and 0.1159 at 95 percent, and 0.1321 and 0.1530 at 99 percent (Tables~3--4, p.~12).
+
+\emph{Checked} (synthetic: means 4, 6 and 8 percent, volatilities 10, 15 and 20 percent, correlations 0.3, target 6 percent, 95 percent CVaR, scenario means set to the targets):
+\begin{itemize}
+\item The LP's objective equals the fractional-tail-mass CVaR of its weights at 10{,}000 scenarios, and at 250 scenarios at 97.5 percent, where the tail holds 6.25 scenarios. A 1 percent grid of feasible portfolios does no better.
+\item The population mean--variance portfolio is $(0.321,0.357,0.321)$. Over ten scenario sets, the largest weight gap from it averages 0.0135 with 10{,}000 scenarios and 0.0035 with 100{,}000; the largest single gap is 0.0078.
+\item Giving the third asset a return with the same mean and variance but skewness $-3.6$ moves the mean--CVaR weights to $(0.274,0.452,0.274)$ from the mean--variance $(0.339,0.322,0.339)$. CVaR falls from 0.137 to 0.125. Here the skewed asset's weight fell, but the return constraint ties its weight to the first asset's, so that is a feature of this example.
+\end{itemize}
+
+\qffield{Pitfalls} Reading a CVaR-optimal portfolio from a few thousand scenarios as precise. Using an inequality return constraint and comparing with a mean--variance solution at a different return. Assuming a skewed asset always gets less weight. Minimising VaR instead, which over scenarios can have several local minima (p.~2).
+
+\qffield{See also} \hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}; \hyperref[meth:var-es-estimation-methods]{VaR and ES}; \hyperref[meth:extreme-value-tail-estimation]{extreme value methods}.
+
+\end{qfmethod}
+
 \begin{qfmethod}[Signal-portfolio allocation: weighting simulated factor portfolios rather than positions, as Narang describes Grinold and Kahn's approach]\label{meth:signal-portfolio-allocation}
 \qffield{Statement} Narang describes an optimiser ``directly aimed at building a portfolio of signals, whereas most optimizers try to size positions'', attributing it to Grinold and Kahn's \emph{Active Portfolio Management} \citep[chap.~6, sec.~6.2.2.4, pp.~117--118]{s7-narang}:
 \begin{enumerate}

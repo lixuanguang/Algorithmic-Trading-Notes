@@ -3323,3 +3323,19 @@ were corrected; seeds and tolerances unchanged; the ten objectives unchanged (43
 withdrawn figures: `notes/source-review-records.md`, *Post-implementation audit corrections, 21 October 2026*.
 `make source-check` passes (111 scripts, 36 tests); `make pdf` builds 431 pages with no overfull boxes or undefined
 references (the one underfull box pre-exists). Not done: C0, Batch L2, commit or PR.
+
+## 38. Library gap-filling: Batch L2 (executed 2026-10-21)
+
+**Pointer.** Batch L2 follows `implementation_plan_v2.md` Section 7 as frozen by the owner on 2026-10-21 (decisions
+L2-D0 to L2-D6 in Section 10.3; two criterion corrections before implementation, recorded as "Batch L2 freeze
+corrections": P8's finite-pool gaps are reported rather than required to shrink, and P9's mean fitted GPD shape is a
+diagnostic). Branch `codex/library-gap-batch-l2` from `c688d54`; local commit only, no push or PR.
+
+**Outcome.** Packages P6 (short-rate and forward-rate models), P7 (counterparty exposure, CVA, wrong-way risk, and the
+rate-tree CVA as an original derivation), P8 (Gaussian copula and tranches), P9 (extreme value theory) and P11a-c
+(correlation and independence tests, mean-CVaR optimisation, buying on margin), plus the two optional Hull extensions.
+Eleven new entries, two new topic files, four extended entries, eight new numerical scripts. Eleven new objectives:
+445/445 objectives, 1,030/1,030 items; shortfall 34 against the 45-objective preference. Every frozen criterion passed;
+`make source-check` (119 scripts) and `make pdf` (437 pages, no overfull boxes or undefined references) pass. P10 is
+deferred to Batch L3. Details, sources read and remaining source gaps: `notes/source-review-records.md`, *Library
+gap-filling, Batch L2, 21 October 2026*. Editorial coverage only; human review outstanding.

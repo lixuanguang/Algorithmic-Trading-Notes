@@ -20785,6 +20785,509 @@
     "example": "notes/artefacts/portfolio-construction/kelly-check.py (continuous identities, exact continuous log-wealth sampling, unlevered daily-rebalanced log growth against convergence-checked quadrature, discrete bets, estimation error, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
+  },
+  {
+   "id": "objective:apply-affine-short-rate-models",
+   "topic": "topic:arbitrage-free-bond-valuation",
+   "title": "Apply affine short-rate models (Vasicek, Cox-Ingersoll-Ross, Hull-White) to price zero-coupon bonds and fit today's curve, and simulate them without discretisation bias",
+   "operations": [
+    "calculate",
+    "explain",
+    "evaluate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:describe-term-structure-models",
+    "objective:apply-ito-lemma-gbm"
+   ],
+   "entries": [
+    "mod:affine-short-rate-models"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 31, secs. 31.2-31.3, pp. 722-725; chap. 32, sec. 32.1, pp. 734-735, eqs. (32.5)-(32.8), and p. 747"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 30, secs. 30.6-30.8, pp. 515-519; chap. 31, sec. 31.4.2, pp. 528-531"
+     },
+     {
+      "key": "fed-gsw-data",
+      "locator": "feds200628.csv, Svensson parameters on 30 September 2026"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "mod:affine-short-rate-models"
+    ],
+    "example": "notes/artefacts/short-rate-models/short-rate-model-checks.py (GSW curve; Vasicek reuse, CIR closed form against exact non-central chi-square paths with a grid-halving rule, Euler against exact sampling when Feller fails, Hull-White theta fit to 1e-10 and exact joint sampling of the rate and its integral at 30 maturities; volatilities illustrative); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:explain-hjm-drift-forward-market-model",
+   "topic": "topic:arbitrage-free-bond-valuation",
+   "title": "Explain the Heath-Jarrow-Morton drift condition and value caplets in the forward market model",
+   "operations": [
+    "explain",
+    "calculate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:apply-affine-short-rate-models"
+   ],
+   "entries": [
+    "mod:hjm-forward-rate-models"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 33, secs. 33.1-33.2, pp. 756-764, eqs. (33.4)-(33.14); chap. 32, eq. (32.2), p. 733; chap. 29, sec. 29.2, pp. 698-699"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 37, secs. 37.1-37.7 and 37.12, pp. 609-617"
+     },
+     {
+      "key": "s7-fabozzifixed",
+      "locator": "chap. 37, pp. 861-863"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md",
+     "notes/readings/s7-fabozzifixed.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "mod:hjm-forward-rate-models"
+    ],
+    "example": "notes/artefacts/short-rate-models/short-rate-model-checks.py (HJM drift integrated numerically against Ho-Lee and Hull-White drifts on the GSW curve; a forward-market-model caplet under the rolling spot measure against Black's formula; synthetic volatilities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:measure-counterparty-exposure",
+   "topic": "topic:credit-models",
+   "title": "Measure counterparty exposure (EE, PFE, EPE) of a netting set, with netting and with collateral under a margin period of risk",
+   "operations": [
+    "calculate",
+    "explain",
+    "evaluate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:calculate-credit-valuation-adjustment",
+    "objective:apply-affine-short-rate-models"
+   ],
+   "entries": [
+    "def:counterparty-exposure-measures"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "chap. 18, secs. 18.1-18.2.2, pp. 394-398, eq. (18.4) and Example 18.1"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 24, sec. 24.7, pp. 573-574, Example 24.4"
+     },
+     {
+      "key": "gregory-xva-challenge-2015",
+      "locator": "chap. 7, secs. 7.2-7.4.4, pp. 114-134; chap. 11, secs. 11.2-11.3.6, pp. 247-259"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/gregory-xva-challenge-2015.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "def:counterparty-exposure-measures"
+    ],
+    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py part 3 (Gregory's normal EE and PFE; Hull-White swap profiles on the GSW curve, netting, two-way and one-way collateral with a 10-day MPR and mid-month dates, lag diagnostic; synthetic swaps); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:calculate-derivative-cva",
+   "topic": "topic:credit-models",
+   "title": "Calculate unilateral CVA for a derivatives netting set from expected exposure and risk-neutral default probabilities, state the independence it needs, and outline DVA, FVA, MVA and KVA",
+   "operations": [
+    "calculate",
+    "explain"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:measure-counterparty-exposure"
+   ],
+   "entries": [
+    "meth:credit-valuation-adjustment"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 9, secs. 9.1-9.3, pp. 216-223; chap. 24, sec. 24.7, pp. 576-577, Example 24.6"
+     },
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "chap. 18, secs. 18.2-18.3, pp. 395-400, eqs. (18.1)-(18.3); sec. 18.7.3, pp. 405-407, Example 18.3; sec. 18.8, pp. 407-408"
+     },
+     {
+      "key": "gregory-xva-challenge-2015",
+      "locator": "chap. 14, secs. 14.2.3-14.2.7 and 14.6.4, pp. 311-314 and 327-328; chap. 15, sec. 15.2.1, pp. 341-342"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/gregory-xva-challenge-2015.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "meth:credit-valuation-adjustment"
+    ],
+    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py parts 1 and 3 (Gregory's square-root CVA, RMFI and OFOD gold forward with the (1 - R) convention difference; swap CVA uncollateralised and collateralised with discounting inside the expectation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:assess-wrong-way-risk",
+   "topic": "topic:credit-models",
+   "title": "Assess wrong-way and right-way risk and their effect on CVA through exposure conditional on default",
+   "operations": [
+    "explain",
+    "calculate",
+    "evaluate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:calculate-derivative-cva"
+   ],
+   "entries": [
+    "def:wrong-way-risk"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "chap. 18, sec. 18.5, pp. 401-402"
+     },
+     {
+      "key": "gregory-xva-challenge-2015",
+      "locator": "chap. 17, secs. 17.2-17.4.2, pp. 377-385"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/gregory-xva-challenge-2015.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "def:wrong-way-risk"
+    ],
+    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py part 2 (one-date latent-normal example, bivariate-normal quadrature against 200,000 draws, seed 20261071, five correlations, lower-tail default); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:model-default-correlation-gaussian-copula",
+   "topic": "topic:securitisation",
+   "title": "Model default correlation with a one-factor Gaussian copula, derive the conditional default probability and the large-pool default rate, and apply it in the IRB capital formula",
+   "operations": [
+    "explain",
+    "calculate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:describe-abs-structures"
+   ],
+   "entries": [
+    "mod:gaussian-copula-default-correlation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "chap. 9, secs. 9.5-9.6.3, pp. 202-212, Table 9.5, Example 9.2"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 24, sec. 24.8, pp. 577-580, eqs. (24.7)-(24.9); chap. 25, secs. 25.9-25.10, pp. 601-602"
+     },
+     {
+      "key": "basel-framework-cre-2026",
+      "locator": "CRE31.2-31.8 and CRE99.2-99.3, Table 1 (versions effective 1 January 2023)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/basel-framework-cre-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "mod:gaussian-copula-default-correlation"
+    ],
+    "example": "notes/artefacts/default-correlation/default-correlation-checks.py part 1 (Hull's basket probabilities, RMFI Table 9.5 and Example 9.2, CRE99 corporate risk weights from the CRE31.5 formula, the IRB conditional default rate against the WCDR); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:value-tranches-base-correlation",
+   "topic": "topic:securitisation",
+   "title": "Value portfolio tranches in the one-factor Gaussian copula and explain compound and base correlation and where they fail",
+   "operations": [
+    "calculate",
+    "explain",
+    "evaluate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:model-default-correlation-gaussian-copula"
+   ],
+   "entries": [
+    "meth:tranche-loss-base-correlation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 25, secs. 25.8-25.11, pp. 599-610, eqs. (25.1)-(25.12), Example 25.2, Table 25.8"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "meth:tranche-loss-base-correlation"
+    ],
+    "example": "notes/artefacts/default-correlation/default-correlation-checks.py parts 1-3 (Hull's Example 25.2; large-pool, exact finite-pool and 1,000-name Monte Carlo tranche losses, seed 20261081; granularity gaps reported; compound and base correlation on a synthetic mixture market); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:estimate-tail-risk-extreme-value",
+   "topic": "topic:market-risk-measurement",
+   "title": "Estimate tail risk by extreme value methods (GPD peaks over threshold and the Hill estimator), derive VaR and ES from the fitted tail, judge threshold choice, and apply the two-step filtered method",
+   "operations": [
+    "calculate",
+    "explain",
+    "evaluate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:estimate-value-at-risk"
+   ],
+   "entries": [
+    "meth:extreme-value-tail-estimation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "risk-management-financial-institutions-2023",
+      "locator": "chap. 12, secs. 12.5-12.6.1, pp. 270-276, eqs. (12.5)-(12.10)"
+     },
+     {
+      "key": "mcneil-frey-embrechts-qrm-2005",
+      "locator": "chap. 7, secs. 7.1.1 and 7.2.1-7.2.6, pp. 265-268 and 275-293, eqs. (7.14), (7.18)-(7.19), (7.23)"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 19, sec. 19.8.1, p. 341"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/risk-management-financial-institutions-2023.md",
+     "notes/readings/mcneil-frey-embrechts-qrm-2005.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "meth:extreme-value-tail-estimation"
+    ],
+    "example": "notes/artefacts/extreme-value/extreme-value-checks.py (RMFI sec. 12.6 reproduced; exact Pareto Hill benchmark, t4 finite-threshold functional at n = 1e6, GPD score and likelihood, exact POT formulas; diagnostics for ML bias, finite-threshold bias, bootstrap coverage, threshold sensitivity and the GARCH-GPD two-step; synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:test-correlation-independence",
+   "topic": "topic:statistical-inference",
+   "title": "Test whether a correlation is zero, parametrically and by ranks, and test independence in a contingency table",
+   "operations": [
+    "calculate",
+    "explain",
+    "evaluate"
+   ],
+   "depth": "foundation",
+   "prerequisites": [
+    "objective:conduct-hypothesis-tests"
+   ],
+   "entries": [
+    "meth:correlation-independence-tests"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "introductory-statistics-2023",
+      "locator": "secs. 11.3 and 12.4 (2e, read online 2026-10-21)"
+     },
+     {
+      "key": "nist-dataplot-rank-correlation",
+      "locator": "Rank Correlation Independence Test (page updated 11 December 2023)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/introductory-statistics-2023.md",
+     "notes/readings/nist-dataplot-rank-correlation.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "meth:correlation-independence-tests"
+    ],
+    "example": "notes/artefacts/inference-simulation/correlation-independence-checks.py (OpenStax sec. 12.4 and Example 11.6 reproduced; SciPy agreement, ties and transforms; size of the 5% tests on 20,000 replications, seed 20261101; overlapping-horizon diagnostic, seed 20261103); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:construct-minimum-cvar-portfolio",
+   "topic": "topic:portfolio-risk-return",
+   "title": "Construct a minimum-CVaR portfolio by linear programming over scenarios and compare it with mean-variance",
+   "operations": [
+    "calculate",
+    "explain",
+    "evaluate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:derive-efficient-frontier",
+    "objective:estimate-value-at-risk"
+   ],
+   "entries": [
+    "meth:mean-cvar-optimisation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s6-cvar",
+      "locator": "author preprint of 5 September 1999, secs. 1-3, pp. 2-12, Theorems 1-2, eqs. (4)-(19), Proposition, Tables 1-4"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s6-cvar.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "meth:mean-cvar-optimisation"
+    ],
+    "example": "notes/artefacts/portfolio-construction/mean-cvar-check.py (Rockafellar-Uryasev Tables 3-4 reproduced; LP against fractional-tail-mass CVaR at n = 10,000 and n = 250; 1% grid; normal equivalence over seeds 0-9 at 10,000 and 100,000 scenarios; negative-skew diagnostic; synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:calculate-margin-leverage-call-price",
+   "topic": "topic:equity-securities-markets",
+   "title": "Calculate the leverage ratio, the levered return and the margin-call price for long and short margin positions",
+   "operations": [
+    "calculate",
+    "explain"
+   ],
+   "depth": "foundation",
+   "prerequisites": [
+    "objective:describe-equity-markets-trading"
+   ],
+   "entries": [
+    "meth:margin-purchase-leverage"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 8,
+   "evidence": {
+    "sources": [
+     {
+      "key": "ecfr-12cfr220",
+      "locator": "12 CFR 220.12(a) and (c), eCFR text up to date as of 19 October 2026 (retrieved 2026-10-21)"
+     },
+     {
+      "key": "finra-rules-2026",
+      "locator": "Rule 4210(b)-(d), version from 4 June 2026 (reread 2026-10-21)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/ecfr-12cfr220.md",
+     "notes/readings/finra-rules-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l2-21-october-2026",
+    "entry_evidence": [
+     "meth:margin-purchase-leverage"
+    ],
+    "example": "notes/artefacts/short-term-funding/margin-purchase-check.py (static long and short call prices against roots; dated ledgers with interest, rebate, fee, commission and dividend; levered-return identity; deterministic, original inputs); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
   }
  ]
 }

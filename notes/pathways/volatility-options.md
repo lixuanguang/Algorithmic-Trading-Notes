@@ -83,6 +83,8 @@ Written in library gap-filling Batch L1 (2026-10-21):
 
 Sources: Hull, *Options, Futures, and Other Derivatives*, 11th Global ed., and Wilmott, *Paul Wilmott on Quantitative Finance*, 2nd ed. (chapters listed in the record). Synthetic examples only. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l1-21-october-2026).
 
+Written in library gap-filling Batch L2 (2026-10-21), decision L2-D5: `meth:multi-period-binomial-valuation` extended with known dollar dividends in a recombining tree (Hull's Example 21.5 reproduced) and dividend-motivated early exercise of an American call; `meth:black-model-rates-currencies` extended with the receiver swaption, payer-receiver parity and the callable bond as a straight bond less a receiver swaption. Checks in `notes/artefacts/option-valuation/dividend-tree-swaption-checks.py`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.

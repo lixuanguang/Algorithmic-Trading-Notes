@@ -186,10 +186,41 @@ In \emph{historical simulation} the same definition is the average of the worst 
 \end{itemize}
 A second check verifies the discrete example above, the equality of the integral and fractional-mass forms, historical simulation with 1{,}000 and 250 observations, and agreement with the normal closed form $\varphi(z_{0.99})/0.01=2.665$ for a continuous law. Whether the methods are useful for dynamically updating risk assessments therefore needs this kind of evidence: forecasts with better coverage and independence. That a method can be updated is not enough. Here the evidence is only synthetic, in a world where the GARCH model is true.
 
-\qffield{Pitfalls} The book's EVT, ES backtesting and stress-testing chapters, the regulatory ES standard and Kupiec's 1995 paper (\nolinkurl{wide-kupiec-backtest}) are not covered here. Page numbers are PDF pages; the printed numbering is offset by a varying amount.
+\qffield{Pitfalls} The book's ES backtesting and stress-testing chapters, the regulatory ES standard and Kupiec's 1995 paper (\nolinkurl{wide-kupiec-backtest}) are not covered here; extreme value methods for the far tail are in \hyperref[meth:extreme-value-tail-estimation]{extreme value tail estimation}. Page numbers are PDF pages; the printed numbering is offset by a varying amount.
 
 \qffield{See also} \hyperref[mod:factor-risk-model]{factor risk model}; \hyperref[def:common-investor-contagion]{common-investor contagion} (VaR-based leverage in August 2007).
 
 \qffield{Further reading} \nolinkurl{s7-qrm}; \nolinkurl{wide-kupiec-backtest}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Extreme value theory for tail risk: block maxima and peaks over threshold, the generalized Pareto distribution, the Hill estimator, threshold choice, VaR and ES, and the two-step filtered method]\label{meth:extreme-value-tail-estimation}
+\qffield{Statement} Extreme value theory estimates the far tail of a loss distribution from its largest observations. Normalized block maxima of independent losses can converge only to the generalized extreme value family, $H_\xi(x)=\exp(-(1+\xi x)^{-1/\xi})$: Fr\'echet for $\xi>0$, Gumbel for $\xi=0$, Weibull for $\xi<0$ \citep[chap.~7, sec.~7.1.1, pp.~265--266]{mcneil-frey-embrechts-qrm-2005}. Wilmott outlines both maxima and threshold models \citep[chap.~19, sec.~19.8.1, p.~341]{wide-wilmott-pwoqf}. Block maxima waste data, so practice uses \emph{peaks over threshold}. For a wide class of distributions, the excess over a high threshold $u$ tends to a generalized Pareto distribution (GPD), $G_{\xi,\beta}(y)=1-(1+\xi y/\beta)^{-1/\xi}$ \citep[chap.~12, sec.~12.5.1, p.~271]{risk-management-financial-institutions-2023}. Its shape $\xi$ is the same as the GEV shape for the maxima (QRM, Theorem~7.20, pp.~277--278).
+
+\emph{Estimation and risk measures.} Fit $\xi$ and $\beta$ by maximum likelihood to the $n_u$ excesses over $u$, often near the 95th percentile. Then the tail and the risk measures follow:
+\[ P(L>x)=\frac{n_u}{n}\Big(1+\frac{\xi(x-u)}\beta\Big)^{-1/\xi}\ (x>u),\qquad \mathrm{VaR}_q=u+\frac\beta\xi\Big[\Big(\frac{n}{n_u}(1-q)\Big)^{-\xi}-1\Big],\qquad \mathrm{ES}_q=\frac{\mathrm{VaR}_q+\beta-\xi u}{1-\xi} \]
+(RMFI, secs.~12.5.2--12.5.6, pp.~272--273, eqs.~(12.7)--(12.10); QRM, eqs.~(7.18)--(7.19), p.~283). The \emph{Hill} estimator assumes a regularly varying tail $\bar F(x)=L(x)x^{-\alpha}$ with $\xi=1/\alpha$. It averages the log excesses of the $k$ largest observations over a threshold order statistic (QRM, sec.~7.2.4, pp.~286--289, eq.~(7.23)).
+
+\emph{Two-step (filtered) method.} Returns are serially dependent. McNeil and Frey fit a GARCH model by quasi-maximum likelihood, apply the GPD to the standardized residuals and scale the residual VaR and ES by tomorrow's forecast volatility: $\mathrm{VaR}^t_q=\mu_{t+1}+\sigma_{t+1}q_q(Z)$ (QRM, sec.~7.2.6, pp.~291--292).
+
+\qffield{Notation} $\xi$ shape (tail index $\alpha=1/\xi$); $\beta$ scale; $u$ threshold; $n_u$ exceedances among $n$ losses; $k$ number of upper order statistics. Here $H_k=\tfrac1k\sum_{i=1}^k\ln X_{(n-i+1)}-\ln X_{(n-k)}$, with the $(k+1)$-th largest observation as threshold. QRM's eq.~(7.23) uses the $k$-th largest, and notes that some versions use the $(k+1)$-th. For $\xi>0$, moments of order $1/\xi$ and above are infinite; most financial data give $\xi$ between 0.1 and 0.4 (RMFI, p.~271).
+
+\qffield{Conditions} The GPD is a limit: at any finite threshold the excesses are only approximately GPD, so estimates carry a threshold bias as well as sampling error. A Student $t_4$ has $\xi=0.25$ only asymptotically (QRM, Example~7.29, p.~293). At its 95th percentile the population Hill functional is 0.3489, and the GPD closest to the true excesses has $\xi=0.19$. Thresholds trade bias against variance. In a $t_4$ study QRM finds Hill best for $\xi$ at about 20--30 order statistics of 1{,}000. The GPD quantile estimator is the more robust to threshold choice for the 99 percent VaR (sec.~7.2.5, pp.~289--291). Serial dependence makes maximum likelihood a quasi-likelihood with too-small standard errors (pp.~278--279). For the left tail of returns, change the sign (RMFI, p.~273).
+
+\qffield{Practice} \emph{Reproduced}: RMFI's example, 25 of 500 losses above $u=160$ with $\beta=110.46$ and $\xi=0.354$. It gives $P(L>300)=0.0176$, 99 and 99.9 percent VaR of 399.6 and 1{,}094.6, and ES of 702.0 and 1{,}778.1 (pp.~274--275). The printed figures need $\xi=0.3541$ before rounding; with $\xi=0.354$ exactly the 99.9 percent VaR is 1{,}094.3.
+
+\emph{Checked} (synthetic, $k=n/20$):
+\begin{itemize}
+\item Exact Pareto data with $\xi=0.25$: over 2{,}000 samples of 5{,}000, Hill averages 0.2505 with standard deviation 0.0157, against $\xi/\sqrt k=0.0158$.
+\item $t_4$ with $n=10^6$: Hill is 0.3496 (standard error 0.0014), matching the finite-threshold value 0.3489 and not 0.25.
+\item For a Pareto tail the formulas above reproduce the exact VaR and ES. The GPD fit's score vanishes at the estimate.
+\end{itemize}
+\emph{Reported}: on a 5{,}000-draw $t_4$ sample Hill is 0.339 and the GPD shape 0.200. The 99.5 percent VaR and ES estimates are 4.40 and 5.98, against true values of 4.60 and 6.32. Across 200 samples, Hill's 95 percent bootstrap interval covered the finite-threshold value 190 times and 0.25 never. Over 500 exact-GPD samples of 250 excesses the fitted shape averaged 0.237: maximum likelihood is biased low in small samples. On GARCH(1,1) returns with $t_6$ shocks, the two-step 99 percent one-day VaR was 0.0137 against a true 0.0137, and ES 0.0169 against 0.0176.
+
+\qffield{Pitfalls} Testing an estimated $\xi$ against an asymptotic value at a finite threshold. Reading a Hill plot with no stable region as evidence for one tail index. Applying the unconditional method to clustered returns and reading the standard errors at face value. Extrapolating far beyond the data without stating the threshold and the number of exceedances.
+
+\qffield{See also} \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation}; \hyperref[meth:portfolio-var-methods-decomposition]{portfolio VaR}; \hyperref[mod:arch-conditional-variance]{ARCH and GARCH}.
+
+\qffield{Further reading} \nolinkurl{w2-hill-estimator}; \nolinkurl{w2-mcneil-frey}; \nolinkurl{wide-embrechts-extremal}; \nolinkurl{s7-qrm} (2015 edition).
 
 \end{qfmethod}

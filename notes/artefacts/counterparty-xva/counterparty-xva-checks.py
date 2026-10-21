@@ -1,0 +1,572 @@
+"""Library gap-filling Batch L2, package P7 (2026-10-21): the worked examples of
+def:counterparty-exposure-measures, meth:credit-valuation-adjustment, def:wrong-way-risk and the rate-tree
+extension of meth:risky-bond-cva.
+
+Part 1 reproduces published examples: Gregory's normal-distribution EE and PFE (The xVA Challenge, 3rd ed., sec.
+7.2.4, p. 116), his CVA of a square-root exposure (sec. 14.2.4, p. 312), and the gold forward of Hull (Options,
+Futures, and Other Derivatives, 11th Global ed., Example 24.6) and Hull (Risk Management and Financial Institutions,
+6th ed., Example 18.3). Part 2 is the one-date wrong-way-risk example: V ~ N(0, 1), default when a latent normal Y
+with Corr(V, Y) = rho falls below Phi^-1(PD) (lower-tail default), PD = 5 percent, R = 40 percent, unit discounting.
+Part 3 simulates swap exposures under one-factor Hull-White on the GSW curve of 30 September 2026, the model and curve
+of short-rate-model-checks.py (a = 0.1, sigma = 1 percent; illustrative). The swaps are single-curve and synthetic.
+Part 4 is the rate-tree CVA and risky floater: an original derivation on the Handbook's calibrated tree (Fabozzi,
+Handbook of Fixed Income Securities, 9th ed., chap. 36), with original credit inputs.
+
+Conventions fixed before the first run (implementation_plan_v2.md Section 7, P7): unilateral CVA from the bank's
+side; exposure max(V, 0) of the netting set's ex-coupon mark-to-market; risk-neutral measure with the bank-account
+numeraire. Two-way CSA in cash, daily variation margin, zero threshold and minimum transfer amount, no initial margin;
+collateral C(t) = V(t - delta) for t >= delta and 0 before, held by the bank when positive; no margin moves in the
+margin period of risk; posted collateral not segregated; collateral earns the discount rate and accrual during the MPR
+is ignored. delta = 10 business days (10/252 years). Exposure dates are mid-months (plus nine daily dates before
+delta), so no swap payment falls in any window (t - delta, t]; the script asserts this for every lag it uses. Default
+is independent of rates, with a deterministic hazard. Seeds: 20261071 wrong-way Monte Carlo, 20261072 swap paths,
+20261073 PFE bootstrap.
+
+Run: uv run python counterparty-xva-checks.py   (numpy, scipy). Exits 1 on failure.
+"""
+
+# standard library imports
+import itertools
+import math
+import sys
+
+# third party library imports
+import numpy as np
+import scipy
+from scipy import integrate, optimize, stats
+
+print(f"Python {sys.version.split()[0]}, NumPy {np.__version__}, SciPy {scipy.__version__}")
+fails = []
+N = stats.norm.cdf
+n_pdf = stats.norm.pdf
+
+
+def ok(name, cond, detail=""):
+    print(f"  {'ok ' if cond else 'BAD'} {name}{': ' + detail if detail else ''}")
+    if not cond:
+        fails.append(name)
+
+
+print("== Part 1: published examples")
+for mu, s, ee_p, pfe_p in ((2.0, 2.0, 2.17, 6.65), (2.0, 4.0, 2.79, 11.31)):
+    ee = mu * N(mu / s) + s * n_pdf(mu / s)
+    pfe = mu + stats.norm.ppf(0.99) * s
+    ok(
+        f"Gregory p. 116: normal future value (mean {mu:g}, s.d. {s:g}) has EE {ee_p} and 99% PFE {pfe_p}",
+        abs(ee - ee_p) < 5e-3 and abs(pfe - pfe_p) < 5e-3,
+        f"{ee:.4f}, {pfe:.4f}",
+    )
+spread, lgd = 0.03, 0.6
+ee_g = lambda t: 0.01 * math.sqrt(t)
+surv = lambda t: math.exp(-spread * t / lgd)
+grid = [0.25 * i for i in range(21)]
+cva_end = lgd * sum(ee_g(b) * (surv(a) - surv(b)) for a, b in itertools.pairwise(grid))
+cva_mid = lgd * sum(
+    0.5 * (ee_g(a) + ee_g(b)) * (surv(a) - surv(b)) for a, b in itertools.pairwise(grid)
+)
+cva_exact = lgd * integrate.quad(lambda t: ee_g(t) * spread / lgd * surv(t), 0, 5)[0]
+ok(
+    "Gregory p. 312: CVA of EE = 1% sqrt(t), 300 bp, LGD 60%, 20 quarterly dates: 0.200%, exact 0.193%, averaged 0.192%",
+    abs(100 * cva_end - 0.200) < 5e-4
+    and abs(100 * cva_exact - 0.193) < 5e-4
+    and abs(100 * cva_mid - 0.192) < 5e-4,
+    f"{100 * cva_end:.4f}%, {100 * cva_exact:.4f}%, {100 * cva_mid:.4f}%",
+)
+F0, K, sg_f, r_f, R_f, T_f = 1600.0, 1500.0, 0.2, 0.05, 0.3, 2.0
+q = (0.02, 0.03)
+v = []
+for t in (0.5, 1.5):
+    d1 = (math.log(F0 / K) + sg_f**2 * t / 2) / (sg_f * math.sqrt(t))
+    v.append(math.exp(-r_f * T_f) * (F0 * N(d1) - K * N(d1 - sg_f * math.sqrt(t))))
+cva_gold = (1 - R_f) * (q[0] * v[0] + q[1] * v[1])
+ok(
+    "RMFI Example 18.3: v1 = 132.38, v2 = 186.65, CVA = 5.77 and value 84.71",
+    abs(v[0] - 132.38) < 5e-3
+    and abs(v[1] - 186.65) < 5e-3
+    and abs(cva_gold - 5.77) < 5e-3
+    and abs(100 * math.exp(-0.1) - cva_gold - 84.71) < 5e-3,
+    f"{v[0]:.2f}, {v[1]:.2f}, {cva_gold:.3f}",
+)
+ok(
+    "OFOD Example 24.6 prints v1 = 92.67 and v2 = 130.65: the same exposures times (1 - R)",
+    abs((1 - R_f) * v[0] - 92.67) < 5e-3 and abs((1 - R_f) * v[1] - 130.65) < 5e-3,
+    f"{(1 - R_f) * v[0]:.2f}, {(1 - R_f) * v[1]:.2f}",
+)
+
+print("== Part 2: wrong-way risk at one exposure date (200,000 draws)")
+PD, R, s_v = 0.05, 0.40, 1.0
+c = stats.norm.ppf(PD)
+
+
+def cva_quad(rho):
+    """(1 - R) E[max(V, 0) 1{Y < c}] by quadrature over v of v phi(v) P(Y < c | V = v)."""
+    f = lambda x: s_v * x * n_pdf(x) * N((c - rho * x) / math.sqrt(1 - rho**2))
+    return (1 - R) * integrate.quad(f, 0, np.inf, epsabs=1e-14, epsrel=1e-12)[0]
+
+
+rhos = (-0.5, -0.25, 0.0, 0.25, 0.5)
+quad_vals = [cva_quad(rho) for rho in rhos]
+rng = np.random.default_rng(20261071)
+z = rng.standard_normal((2, 200_000))
+for rho, qv in zip(rhos, quad_vals, strict=True):
+    V = s_v * z[0]
+    Y = rho * z[0] + math.sqrt(1 - rho**2) * z[1]
+    loss = (1 - R) * np.maximum(V, 0) * (Y < c)
+    m, se = float(loss.mean()), float(loss.std(ddof=1) / math.sqrt(loss.size))
+    ok(
+        f"rho = {rho:+.2f}: quadrature CVA {qv:.5f} within 3 s.e. of Monte Carlo",
+        abs(m - qv) <= 3 * se,
+        f"{m:.5f} (s.e. {se:.5f})",
+    )
+indep = (1 - R) * PD * s_v / math.sqrt(2 * math.pi)
+ok(
+    "at rho = 0 the value equals the independent (1 - R) PD s / sqrt(2 pi) to 1e-10",
+    abs(quad_vals[2] - indep) < 1e-10,
+    f"{indep:.8f}",
+)
+ok(
+    "CVA is strictly decreasing in rho (rho < 0: default with high V, wrong-way)",
+    all(a > b for a, b in itertools.pairwise(quad_vals)),
+    ", ".join(f"{x:.5f}" for x in quad_vals),
+)
+
+print("== Part 3: swap exposure under Hull-White on the GSW curve (40,000 paths)")
+GSW = (
+    2.220637762132e-14,
+    3.9277698129101,
+    5.27031980138786,
+    17.0928160768659,
+    1.86454967884118,
+    15.7025187144884,
+)
+b0, b1, b2, b3 = (x / 100 for x in GSW[:4])
+t1, t2 = GSW[4], GSW[5]
+
+
+def fwd(t):
+    e1, e2 = math.exp(-t / t1), math.exp(-t / t2)
+    return b0 + b1 * e1 + b2 * (t / t1) * e1 + b3 * (t / t2) * e2
+
+
+def zero_yield(t):
+    if t == 0:
+        return fwd(0.0)
+    x1, x2 = t / t1, t / t2
+    g1, g2 = (1 - math.exp(-x1)) / x1, (1 - math.exp(-x2)) / x2
+    return b0 + b1 * g1 + b2 * (g1 - math.exp(-x1)) + b3 * (g2 - math.exp(-x2))
+
+
+def P0(t):
+    return math.exp(-zero_yield(t) * t)
+
+
+a, sg = 0.1, 0.01
+
+
+def bfun(tau):
+    return (1 - math.exp(-a * tau)) / a
+
+
+def alpha(t):
+    return fwd(t) + sg**2 / (2 * a**2) * (1 - math.exp(-a * t)) ** 2
+
+
+def bond(t, T, x):
+    """Hull eqs. (32.6)-(32.8): P(t, T) given the short rate r = x + alpha(t) on each path."""
+    if T <= t:
+        return np.ones_like(x)
+    B = bfun(T - t)
+    lnA = (
+        math.log(P0(T) / P0(t))
+        + B * fwd(t)
+        - sg**2
+        / (4 * a**3)
+        * (math.exp(-a * T) - math.exp(-a * t)) ** 2
+        * (math.exp(2 * a * t) - 1)
+    )
+    return np.exp(lnA - B * (x + alpha(t)))
+
+
+def par_rate(n):
+    return (1 - P0(n)) / sum(P0(j) for j in range(1, n + 1))
+
+
+K5, K3 = par_rate(5), par_rate(3)
+notional = 100.0
+delta = 10 / 252
+lags = {5: 5 / 252, 10: 10 / 252, 20: 20 / 252}
+expo_dates = [k / 252 for k in range(1, 10)] + [(m + 0.5) / 12 for m in range(60)]
+pay_dates = [1.0, 2.0, 3.0, 4.0, 5.0]
+crossing = {
+    lag: [t for t in expo_dates if any(t - d < p <= t for p in pay_dates) and t >= d]
+    for lag, d in lags.items()
+}
+ok(
+    "no payment falls in (t - 10/252, t] for any exposure date (so V(t) and V(t - delta) share a reset)",
+    not crossing[10] and not crossing[5],
+)
+diag_dates = [t for t in expo_dates if t >= lags[20] and not any(t in crossing[g] for g in lags)]
+print(
+    f"  20-day windows cross a payment at {len(crossing[20])} dates ({', '.join(f'{12 * t:.1f}m' for t in crossing[20])});"
+    f" they are left out of the lag diagnostic for every lag ({len(diag_dates)} common dates)"
+)
+times = sorted(
+    set(expo_dates)
+    | {t - d for t in expo_dates for d in lags.values() if t - d > 0}
+    | set(pay_dates[:-1])
+)
+
+
+def swap_value(t, x, last_reset_bond, K, n, payer=True):
+    """Ex-coupon value at t of a swap with annual fixed K and annual floating set in advance, maturity n."""
+    if t >= n:
+        return np.zeros_like(x)
+    k = math.floor(t)  # last reset at k (k = 0 uses today's curve)
+    nxt = bond(t, k + 1, x)
+    floating = nxt / last_reset_bond - bond(t, n, x)
+    fixed = K * sum(bond(t, j, x) for j in range(k + 1, n + 1))
+    return notional * (floating - fixed) * (1 if payer else -1)
+
+
+n_p = 40_000
+rng = np.random.default_rng(20261072)
+x = np.zeros(n_p)
+I = np.zeros(n_p)
+reset_bond = {0: np.full(n_p, P0(1.0))}
+V5, V3, D = {}, {}, {}
+t_prev = 0.0
+for t in times:
+    dt = t - t_prev
+    e1 = math.exp(-a * dt)
+    vx = sg**2 * (1 - e1**2) / (2 * a)
+    vi = sg**2 / a**2 * (dt - 2 * bfun(dt) + (1 - e1**2) / (2 * a))
+    cv = sg**2 / (2 * a**2) * (1 - e1) ** 2
+    L = np.linalg.cholesky(np.array([[vx, cv], [cv, vi]]))
+    eps = L @ rng.standard_normal((2, n_p))
+    I = I + x * bfun(dt) + eps[1]
+    x = x * e1 + eps[0]
+    t_prev = t
+    if t in pay_dates:
+        reset_bond[round(t)] = bond(t, t + 1, x)
+        continue
+    k = math.floor(t)
+    V5[t] = swap_value(t, x, reset_bond[k], K5, 5, payer=True)
+    V3[t] = swap_value(t, x, reset_bond[k], K3, 3, payer=False)
+    # D(0, t) = exp(-int alpha - int x); int alpha = -ln P0(t) + Var(int x)/2 (the P6 decomposition)
+    var_int = sg**2 / a**2 * (t - 2 * bfun(t) + (1 - math.exp(-2 * a * t)) / (2 * a))
+    D[t] = P0(t) * np.exp(0.5 * var_int - I)
+v0 = swap_value(0.0, np.zeros(1), np.array([P0(1.0)]), K5, 5)[0]
+ok(
+    "the at-market five-year payer swap has V(0) = 0, so EE(0) = 0, to 1e-12",
+    abs(v0) < 1e-12,
+    f"{v0:.1e}",
+)
+zs = []
+for t in (0.5 / 12, 11.5 / 12, 24.5 / 12, 36.5 / 12, 54.5 / 12):
+    # payments after t: floating coupon j is worth P0(j - 1) - P0(j) today whether or not it has been set
+    target = notional * sum((P0(j - 1) - P0(j)) - K5 * P0(j) for j in range(1, 6) if j > t)
+    y = D[t] * V5[t]
+    zs.append((float(y.mean()) - target) / float(y.std(ddof=1) / math.sqrt(n_p)))
+ok(
+    "the discounted ex-coupon swap value has the curve's forward value at five dates (within 4 s.e.)",
+    max(abs(z) for z in zs) <= 4,
+    "z = " + ", ".join(f"{z:+.2f}" for z in zs),
+)
+mid = [t for t in expo_dates if t > 0.04]
+EE = np.array([float(np.maximum(V5[t], 0).mean()) for t in mid])
+peak = int(EE.argmax())
+ok(
+    "EE of the payer swap peaks at an interior date",
+    0 < peak < len(mid) - 1,
+    f"peak {EE[peak]:.3f} at {mid[peak]:.2f} years; EE at {mid[0]:.2f} and {mid[-1]:.2f} years {EE[0]:.3f}, {EE[-1]:.3f}",
+)
+net = {t: V5[t] + V3[t] for t in expo_dates}
+pathwise = all(
+    bool(np.all(np.maximum(net[t], 0) <= np.maximum(V5[t], 0) + np.maximum(V3[t], 0) + 1e-12))
+    for t in expo_dates
+)
+ok("netted exposure never exceeds the sum of stand-alone exposures on any path or date", pathwise)
+EE_net = np.array([float(np.maximum(net[t], 0).mean()) for t in mid])
+EE_sum = np.array([float(np.maximum(V5[t], 0).mean() + np.maximum(V3[t], 0).mean()) for t in mid])
+ok(
+    "so netted EE is at most the sum of stand-alone EEs at every date",
+    bool(np.all(EE_net <= EE_sum + 1e-12)),
+)
+t_pk = mid[peak]
+pfe = float(np.quantile(np.maximum(V5[t_pk], 0), 0.975))
+rng_b = np.random.default_rng(20261073)
+boot = [
+    float(np.quantile(np.maximum(V5[t_pk], 0)[rng_b.integers(0, n_p, n_p)], 0.975))
+    for _ in range(200)
+]
+print(
+    f"  97.5% PFE at the EE peak: {pfe:.3f} (bootstrap s.e. {np.std(boot, ddof=1):.3f}, 200 resamples);"
+    f" netting with the three-year receiver lowers EE at {mid[17]:.2f} years from {EE_sum[17]:.3f} to {EE_net[17]:.3f}"
+)
+
+print("== Part 3b: collateral with a 10-day margin period of risk")
+early = [t for t in expo_dates if t < delta]
+
+
+def lagged(t, d):
+    return V5[t - d] if t - d > 0 else np.zeros(n_p)
+
+
+ok(
+    "E_c(t) = E(t) for t < delta on every path (no call has settled yet)",
+    len(early) == 9
+    and all(
+        bool(np.all(np.maximum(V5[t] - lagged(t, delta), 0) == np.maximum(V5[t], 0))) for t in early
+    ),
+)
+
+
+late = [t for t in expo_dates if t >= delta]
+one_way = all(
+    bool(np.all(np.maximum(V5[t] - np.maximum(lagged(t, delta), 0), 0) <= np.maximum(V5[t], 0)))
+    for t in late
+)
+ok("one-way variant C = max(V(t - delta), 0): E_c <= E on every path", one_way)
+two_way = all(
+    bool(
+        np.all(np.maximum(V5[t] - lagged(t, delta), 0) <= np.abs(V5[t] - lagged(t, delta)) + 1e-12)
+    )
+    for t in late
+)
+ok("two-way: E_c <= |V(t) - V(t - delta)| on every path, and E_c = 0 when delta = 0", two_way)
+posted = sum(int(np.sum((lagged(t, delta) < 0) & (V5[t] > 0))) for t in late)
+worse = [
+    t
+    for t in late
+    if float(np.maximum(V5[t] - lagged(t, delta), 0).mean()) > float(np.maximum(V5[t], 0).mean())
+]
+print(
+    f"  path-dates where the bank had posted and V turned positive (E_c > E there): {posted};"
+    f" dates with EE_c > EE: {len(worse)}"
+)
+print("  diagnostic, EE_c against sigma_dV / sqrt(2 pi) (common dates, mean over dates):")
+for lag, d in lags.items():
+    ratio = []
+    for t in diag_dates:
+        dv = V5[t] - V5[t - d]
+        ratio.append(
+            float(np.maximum(dv, 0).mean()) / (float(dv.std(ddof=1)) / math.sqrt(2 * math.pi))
+        )
+    ee_c = np.mean([float(np.maximum(V5[t] - V5[t - d], 0).mean()) for t in diag_dates])
+    print(
+        f"    {lag:2d} days: mean EE_c {ee_c:.4f}; EE_c / approximation {np.mean(ratio):.3f} (range {min(ratio):.3f}-{max(ratio):.3f})"
+    )
+h, R_s = 0.02, 0.40
+cva_u = cva_c = 0.0
+gap = []
+for m in range(60):
+    t = (m + 0.5) / 12
+    pd_m = math.exp(-h * m / 12) - math.exp(-h * (m + 1) / 12)
+    ee_star = float((D[t] * np.maximum(V5[t], 0)).mean())
+    cva_u += (1 - R_s) * ee_star * pd_m
+    cva_c += (1 - R_s) * float((D[t] * np.maximum(V5[t] - lagged(t, delta), 0)).mean()) * pd_m
+    gap.append(ee_star - P0(t) * float(np.maximum(V5[t], 0).mean()))
+print(
+    f"  CVA (hazard 2%, R = 40%, monthly intervals, per 100 notional): uncollateralised {cva_u:.4f},"
+    f" collateralised {cva_c:.4f}; largest |E[D E] - P(0,t) E[E]| {max(abs(g) for g in gap):.4f}"
+)
+
+print("== Part 4: CVA on the Handbook's calibrated rate tree (original derivation)")
+
+
+def calibrate(par, sigma):
+    """Lowest one-year rate at each date so that every par bond prices at 100 (Handbook chap. 36)."""
+    rates = [np.array([par[0]])]
+    for n in range(2, len(par) + 1):
+        cpn = 100 * par[n - 1]
+
+        def price(r_low, n=n, cpn=cpn):
+            tree = [*rates, r_low * np.exp(2 * sigma * np.arange(n))]
+            val = np.full(n + 1, 100 + cpn)
+            for t in range(n - 1, -1, -1):
+                val = 0.5 * (val[:-1] + val[1:]) / (1 + tree[t]) + (cpn if t > 0 else 0)
+            return float(val[0]) - 100
+
+        rates.append(
+            optimize.brentq(price, 1e-6, 0.5, xtol=1e-15, rtol=1e-15)
+            * np.exp(2 * sigma * np.arange(n))
+        )
+    return rates
+
+
+par = [0.035, 0.042, 0.047, 0.052]
+tree = calibrate(par, 0.10)
+ok(
+    "calibrated year-1 and year-3 rates match Handbook Exhibits 36-6 to 36-8 (4.4448, 5.4289; 5.0483, 9.1986 percent)",
+    abs(100 * tree[1][0] - 4.4448) < 5e-5
+    and abs(100 * tree[1][1] - 5.4289) < 5e-5
+    and abs(100 * tree[3][0] - 5.0483) < 5e-5
+    and abs(100 * tree[3][3] - 9.1986) < 5e-4,
+)
+
+
+def state_prices(tree):
+    """Arrow-Debreu prices AD[t][j] of a unit paid at node (t, j), probability one-half on each branch."""
+    ad = [np.array([1.0])]
+    for t in range(len(tree)):
+        nxt = np.zeros(t + 2)
+        nxt[:-1] += 0.5 * ad[t] / (1 + tree[t])
+        nxt[1:] += 0.5 * ad[t] / (1 + tree[t])
+        ad.append(nxt)
+    return ad
+
+
+def bond_values(tree, cpn, n):
+    """Ex-coupon value of an n-year bond at each node of dates 0..n (value at n is 0 after redemption)."""
+    vals = [None] * (n + 1)
+    vals[n] = np.zeros(n + 1)
+    nxt = np.full(n + 1, 100 + cpn)
+    for t in range(n - 1, -1, -1):
+        vals[t] = 0.5 * (nxt[:-1] + nxt[1:]) / (1 + tree[t])
+        nxt = vals[t] + cpn
+    return vals
+
+
+def tree_cva(tree, cpn, hazard, R):
+    """CVA = sum_t q_t sum_j AD(t, j) [exposure(t, j) - R x 100], default just before the date-t payment."""
+    n = len(tree)
+    vals, ad = bond_values(tree, cpn, n), state_prices(tree)
+    surv = [math.exp(-sum(hazard[:t])) for t in range(n + 1)]
+    return sum(
+        (surv[t - 1] - surv[t]) * float(ad[t] @ (vals[t] + cpn + (100 if t == n else 0) - R * 100))
+        for t in range(1, n + 1)
+    )
+
+
+def path_cva(tree, cpn, hazard, R):
+    """The same CVA by listing all 2^n paths and discounting the expected loss along each."""
+    n = len(tree)
+    vals = bond_values(tree, cpn, n)
+    surv = [math.exp(-sum(hazard[:t])) for t in range(n + 1)]
+    total = 0.0
+    for path in itertools.product((0, 1), repeat=n):
+        j, disc, pv = 0, 1.0, 0.0
+        for t in range(1, n + 1):
+            disc /= 1 + tree[t - 1][j]
+            j += path[t - 1]
+            expo = vals[t][j] + cpn + (100 if t == n else 0)
+            pv += (surv[t - 1] - surv[t]) * disc * (expo - R * 100)
+        total += pv / 2**n
+    return total
+
+
+cpn, haz, R_b = 5.0, [0.015] * 4, 0.40
+cva_tree, cva_path = tree_cva(tree, cpn, haz, R_b), path_cva(tree, cpn, haz, R_b)
+ok(
+    "node-weighted expected exposure gives the same CVA as the pathwise average to 1e-10",
+    abs(cva_tree - cva_path) < 1e-10,
+    f"{cva_tree:.6f}",
+)
+spot = []  # discount factors bootstrapped from the par curve
+for k in range(4):
+    spot.append((1 - par[k] * sum(spot)) / (1 + par[k]))
+fwd_rates = [1 / spot[0] - 1] + [spot[t - 1] / spot[t] - 1 for t in range(1, 4)]
+flat_tree = [np.full(t + 1, fwd_rates[t]) for t in range(4)]
+cva_fwd = tree_cva(flat_tree, cpn, haz, R_b)
+gaps = {
+    sgm: abs(tree_cva(calibrate(par, sgm), cpn, haz, R_b) - cva_fwd)
+    for sgm in (0.2, 0.1, 1e-2, 1e-4)
+}
+ok(
+    "as sigma -> 0 the tree CVA tends to the forward-rate calculation of meth:risky-bond-cva (gap < 1e-6 at sigma = 1e-4)",
+    gaps[1e-4] < 1e-6,
+    f"forward-rate CVA {cva_fwd:.6f}; gaps "
+    + ", ".join(f"{s:g}: {g:.2e}" for s, g in gaps.items()),
+)
+for sgm in (0.0001, 0.10, 0.20):
+    print(
+        f"  sigma = {sgm:g}: CVA of the 5% four-year bond (hazard 1.5%, R = 40%) {tree_cva(calibrate(par, sgm), cpn, haz, R_b):.6f}"
+    )
+# Added after the first run, which showed the bond's CVA does not depend on sigma: sum_j AD(t, j) [V(t, j) + C] is the
+# curve value of the flows from t on, so a linear exposure has a curve-determined CVA. A swap's exposure max(V, 0) is
+# not linear, so its CVA should rise with sigma.
+
+
+def swap_tree_cva(tree, K, hazard, R):
+    """Unilateral CVA of a payer swap (receive the tree rate, pay K, annual, notional 100), loss (1 - R) max(V, 0)."""
+    n = len(tree)
+    fixed, ad = bond_values(tree, 100 * K, n), state_prices(tree)
+    surv = [math.exp(-sum(hazard[:t])) for t in range(n + 1)]
+    out = 0.0
+    for t in range(1, n + 1):
+        v_ex = 100 - fixed[t] if t < n else np.zeros(n + 1)  # floating leg ex-coupon is par
+        pv = 0.0
+        for p_node in range(t):
+            w = ad[t - 1][p_node] * 0.5 / (1 + tree[t - 1][p_node])
+            net = 100 * (tree[t - 1][p_node] - K)  # the net payment due at t, set at the parent
+            pv += w * (max(v_ex[p_node] + net, 0) + max(v_ex[p_node + 1] + net, 0))
+        out += (surv[t - 1] - surv[t]) * (1 - R) * pv
+    return out
+
+
+swap_cvas = [swap_tree_cva(calibrate(par, sgm), par[-1], haz, R_b) for sgm in (0.0001, 0.10, 0.20)]
+ok(
+    "an at-market four-year payer swap on the same tree has a CVA that rises with sigma (1e-4, 10%, 20%)",
+    swap_cvas[0] < swap_cvas[1] < swap_cvas[2],
+    ", ".join(f"{x:.4f}" for x in swap_cvas),
+)
+
+
+def floater_values(tree, margin, dm=0.0):
+    """Ex-coupon floater values: coupon (r_t + margin) x 100 set at node (t, j) and paid at t + 1, discounted at r + dm."""
+    n = len(tree)
+    vals = [None] * (n + 1)
+    vals[n] = np.zeros(n + 1)
+    nxt = np.full(n + 1, 100.0)
+    for t in range(n - 1, -1, -1):
+        up = nxt[1:] + 100 * (tree[t] + margin)
+        dn = nxt[:-1] + 100 * (tree[t] + margin)
+        vals[t] = 0.5 * (up + dn) / (1 + tree[t] + dm)
+        nxt = vals[t]
+    return vals
+
+
+fl = floater_values(tree, 0.0)
+ok(
+    "a default-free floater paying the tree rate flat is worth par at every node to 1e-10",
+    all(float(np.max(np.abs(fl[t] - 100))) < 1e-10 for t in range(4)),
+)
+qm, haz_f, R_f2 = 0.005, [0.010, 0.015, 0.020, 0.025], 0.40
+
+
+def floater_cva(tree, margin, hazard, R):
+    n = len(tree)
+    vals, ad = floater_values(tree, margin), state_prices(tree)
+    surv = [math.exp(-sum(hazard[:t])) for t in range(n + 1)]
+    out = 0.0
+    for t in range(1, n + 1):
+        coupon = 100 * (tree[t - 1] + margin)  # set at the parent node at t - 1, paid at t
+        # exposure at child (t, j): its ex-coupon value plus the coupon set at its parent(s), weighted by AD
+        cpn_child = np.zeros(t + 1)
+        w = np.zeros(t + 1)
+        cpn_child[:-1] += ad[t - 1] * 0.5 / (1 + tree[t - 1]) * coupon
+        cpn_child[1:] += ad[t - 1] * 0.5 / (1 + tree[t - 1]) * coupon
+        w[:-1] += ad[t - 1] * 0.5 / (1 + tree[t - 1])
+        w[1:] += ad[t - 1] * 0.5 / (1 + tree[t - 1])
+        red = 100 if t == n else 0
+        pv_expo = float(cpn_child.sum() + w @ (vals[t] + red))
+        out += (surv[t - 1] - surv[t]) * (pv_expo - R * 100 * float(ad[t].sum()))
+    return out
+
+
+nd_value = float(floater_values(tree, qm)[0][0])
+fair = nd_value - floater_cva(tree, qm, haz_f, R_f2)
+dm = optimize.brentq(
+    lambda d: float(floater_values(tree, qm, d)[0][0]) - fair, -0.05, 0.2, xtol=1e-15, rtol=1e-15
+)
+ok(
+    "the discount margin solved on the tree reprices the risky floater's fair value to 1e-8",
+    abs(float(floater_values(tree, qm, dm)[0][0]) - fair) < 1e-8,
+    f"no-default value {nd_value:.4f}, CVA {nd_value - fair:.4f}, fair value {fair:.4f}, quoted margin 50 bp,"
+    f" discount margin {1e4 * dm:.2f} bp",
+)
+
+if fails:
+    print("FAILED:", ", ".join(fails))
+    sys.exit(1)
+print("all checks passed")

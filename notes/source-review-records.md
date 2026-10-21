@@ -5724,3 +5724,324 @@ recorded above are kept as the history of the first implementation.
   the seed sequence of the Monte Carlo checks is unchanged.
 - Objectives unchanged: the same ten, all covered; 434/434 objectives and 1,030/1,030 items. Coverage example strings,
   entry-evidence reviews and the pathway summaries for these entries were updated to match.
+
+## Library gap-filling, Batch L2, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-batch-l2`, created from `c688d54` on `codex/library-gap-batch-l1`
+(L1 commit `5e0578e`, then the C0 and corrected L2 proposal `c688d54`); the working tree was clean and no newer work
+was found. The 27 files of `5e0578e` were confirmed by count, and `implementation_plan_v2.md` at `5e0578e` has the
+audited SHA-256 `afb74d11…8e14`; the earlier audit's per-file manifest is not in the repository or the session
+scratchpad, so its byte match was not re-established here. Coverage before: 434/434 objectives and 1,030/1,030 outline
+items. Scope: `implementation_plan_v2.md` Section 7 as frozen by the owner on 2026-10-21 (decisions L2-D0 to L2-D6:
+local only; P6-P9 and P11a-c; the rate-tree CVA as an explicitly labelled original derivation; P10 deferred to L3; both
+optional Hull extensions; about 11 objectives). Before any L2 script was written, two criteria were corrected with the
+owner's authorisation and recorded in the plan ("Batch L2 freeze corrections"): P8's requirement that every tranche's
+finite-versus-large-pool gap shrink from 250 to 1,000 names (counterexample reproduced: in pool-loss units
+$6.2278\times10^{-6}$, $1.0587\times10^{-5}$, $5.0830\times10^{-6}$ for a 0.2-2 percent tranche) became a reported
+result; P9's mean fitted GPD shape over 500 samples became a diagnostic (reproduced: 0.237276, error 0.012724 against
+3 s.e. 0.010503). Delegation to other models named by the implementation skill was not available in this session; the
+work was done directly.
+
+**P6, short-rate and forward-rate models** (`compendium/rates-credit-mortgages/arbitrage-free-valuation.tex`: new
+`mod:affine-short-rate-models` and `mod:hjm-forward-rate-models`; `mod:term-structure-models-simulation` extended).
+- Read: Hull, *OFOD* 11th Global ed. (git-ignored copy, SHA-256 `8bc6e2f0…b482`), chap. 29, secs. 29.2-29.3 (pp.
+  697-702), chap. 31 (pp. 719-731), chap. 32, secs. 32.1-32.5 (pp. 732-741) and p. 747, chap. 33, secs. 33.1-33.2
+  (pp. 755-764); Wilmott, *PWOQF* 2nd ed., chap. 30, secs. 30.6-30.8 (pp. 515-520), chap. 31 (pp. 525-531), chap. 37,
+  secs. 37.1-37.13 (pp. 609-619); the Handbook (Fabozzi, 9th ed., SHA-256 `ece05686…b19f`), chap. 37, pp. 855-864.
+  The plan listed Hull chaps. 31-33 and Wilmott chaps. 30-31 and 37; Hull sec. 29.2 was added for backward-looking
+  rates. Not read: `gap-rates-backward-term-rates` (not held; Further reading).
+- Discrepancies. The plan asked whether Handbook chap. 37 (pp. 859-862) describes calibrating Monte Carlo paths by a
+  drift adjustment. It does not: it says that in an HJM model the curve is an input, so simulated paths reproduce zero
+  prices "on average" (p. 863), and prefers a calibrated LIBOR market model for MBS. The extension of
+  `mod:term-structure-models-simulation` therefore rests on Wilmott's yield-curve fitting (chap. 31, a time-dependent
+  drift chosen to match market discount factors) and Hull's Black-Karasinski and shifted forms; the Handbook is cited
+  only for the "on average" statement. Wilmott's CIR positivity condition ($\eta>\alpha/2$ in his notation) is Hull's
+  $2ab\ge\sigma^2$; Hull adds that otherwise the rate "occasionally touches zero" (p. 724). The decomposition
+  $r=x+\alpha$ with $\alpha=F+\tfrac{\sigma^2}{2a^2}(1-e^{-at})^2$ and the variance of $\int x$ are standard
+  derivations, not printed in either source; they are stated as Interpretation and checked (the mean rate from Hull's
+  $\theta$ by quadrature equals the closed form to $10^{-10}$).
+- Data: GSW Svensson parameters for 2026-09-30 from `feds200628.csv` (`fed-gsw-data`; file SHA-256
+  `72864350…335c`, git-ignored). The six parameters are written in the script, which rereads the row and compares
+  the published SVENY01-SVENY30 (largest gap $4.75\times10^{-5}$ percentage points, inside the 4-decimal rounding)
+  when the file is present.
+- Checks (`notes/artefacts/short-rate-models/short-rate-model-checks.py`; seeds 20261061 Hull-White, 20261062 CIR exact,
+  20261063 CIR Euler against exact, 20261064 caplet, written in the script before its first run). The first attempt
+  stopped before any statistical check: under `-W error` an unclosed file and a SciPy `IntegrationWarning` from
+  quadrature tolerances at $10^{-14}$ relative were raised (coding errors; the file is now closed and quadrature
+  tolerances are $10^{-12}$ relative). The complete run then passed every predetermined criterion:
+  - Vasicek 0.846849 reused; CIR five-year zero 0.835234, which solves the bond PDE (residual $2\times10^{-10}$).
+    Exact non-central chi-square paths (200,000): 0.835325 at $h=1/8$ and 0.835319 (s.e. 0.000104) at $h=1/16$, where
+    halving changed the price by $5.6\times10^{-6}<0.1$ s.e.; $z=+0.82$ (criterion 3 s.e.). Exact minimum
+    $2.3\times10^{-4}$. With $\sigma=25$ percent (Feller fails), untruncated monthly Euler went negative on 7,052 of
+    10,000 paths; exact sampling's minimum was $1.2\times10^{-10}$.
+  - Hull-White ($a=0.1$, $\sigma=1$ percent, illustrative): zero prices with Hull's $\theta$ integrated numerically in
+    Wilmott's eq. (31.2) equal the GSW discount factors to $2\times10^{-16}$ (criterion $10^{-10}$). Exact joint
+    sampling of $(x,\int x)$ on 100,000 paths: largest $|z|$ 1.16 (at 8 years) over the 30 maturities (criterion 4
+    s.e.). Trapezoid diagnostic: the 30-year discount factor moved by $1.5\times10^{-6}$ from monthly to half-monthly
+    (0.1 s.e. is $2.4\times10^{-5}$), so the trapezoid result is usable but was not needed. 0.85 percent of paths have
+    a negative short rate at 30 years.
+  - HJM: the numerically integrated drift with constant volatility equals $\partial F/\partial t+\sigma^2t$ at 1, 5
+    and 12 years, and with $\sigma e^{-a(T-t)}$ reproduces Hull's $\theta$, both to $10^{-10}$.
+  - Forward market model: an at-the-money caplet on the year-5 to year-6 annual forward, $\Lambda=20$ percent, 100,000
+    paths under the rolling spot measure with monthly sub-steps: 70.023 bp (s.e. 0.388) against Black's 70.195 bp,
+    $z=-0.44$; the rolled numeraire reprices the six-year zero ($z=+0.22$).
+- Objectives: `objective:apply-affine-short-rate-models` and `objective:explain-hjm-drift-forward-market-model`
+  (`topic:arbitrage-free-bond-valuation`, planned batch 8), covered. The extension adds no objective.
+
+**P7, counterparty exposure and xVA** (new topic file `compendium/corporate-credit-capital/counterparty-xva.tex`:
+`def:counterparty-exposure-measures`, `meth:credit-valuation-adjustment`, `def:wrong-way-risk`; `meth:risky-bond-cva`
+extended under decision L2-D3).
+- Read: Hull, *RMFI* 6th ed., chap. 18 (pp. 393-411); Hull, *OFOD*, chap. 9 (pp. 216-226) and sec. 24.7 (pp. 571-577;
+  the plan listed chap. 9, which points to chap. 24 for the calculation); Gregory, *The xVA Challenge*, 3rd ed. (Wiley
+  2015, ISBN 978-1-119-10941-9, owner's library, SHA-256 `b2b005d1…f394f`, printed = PDF $-27$; new source
+  `gregory-xva-challenge-2015` and reading note), secs. 7.1.6-7.4.4, 11.2-11.3.7, 14.2.3-14.3.1, 14.6.3-14.6.5, 15.2.1
+  and 17.1-17.4.2. Not read: Gregory chap. 16 (MVA, KVA; those terms rest on Hull and RMFI), chaps. 10 (exposure
+  simulation, contents only) and the capital chapter 8 (pre-reform; P10 is deferred to L3). For L2-D3, the tree
+  (Handbook chap. 36, pp. 831-838) and RMFI's CVA formula (pp. 395-396) were reread before the extension was written.
+  Smith (2017) is not held and was not read.
+- Discrepancies. OFOD's Example 24.6 defines $v_i$ to include $1-R$ (92.67, 130.65) and RMFI's Example 18.3 does not
+  (132.38, 186.65); both give CVA 5.77 (reproduced). Gregory signs CVA negative. Gregory and Hull describe the regulators'
+  alpha multiplier; it is not used here, pending the Batch L3 currency review.
+- Checks (`notes/artefacts/counterparty-xva/counterparty-xva-checks.py`; seeds 20261071 wrong-way Monte Carlo,
+  20261072 swap paths, 20261073 PFE bootstrap, written before the first run). The first complete run passed every
+  predetermined criterion:
+  - Reproduced: Gregory's normal EE and PFE (2.1666 and 6.6527; 2.7912 and 11.3054) and his square-root CVA (0.1999%,
+    0.1929% exact, 0.1922% averaged); the gold forward in both books.
+  - Wrong-way example (200,000 draws): quadrature 0.03253, 0.02097, 0.01197, 0.00550, 0.00159 at $\rho=-0.5$ to 0.5,
+    each within 3 s.e. (Monte Carlo 0.03206 s.e. 0.00039, 0.02055 0.00030, 0.01185 0.00021, 0.00536 0.00013, 0.00161
+    0.00006); independent value $0.01196827$ to $10^{-10}$; strictly decreasing.
+  - Swaps under Hull-White on the GSW curve (40,000 paths; same model and curve as P6): $V(0)=2.8\times10^{-15}$; the
+    discounted ex-coupon value matches the curve's forward value at five dates ($|z|\le1.51$); EE peaks at 1.82 at
+    1.96 years (interior); netting dominance holds on every path and date; 97.5% PFE at the peak 7.93 (bootstrap s.e.
+    0.053).
+  - Collateral (two-way cash, zero threshold and MTA, no IM, $C(t)=V(t-\delta)$, $\delta=10/252$): $E_c=E$ on the nine
+    daily dates before $\delta$; the one-way variant never exceeds $E$; $E_c\le|V(t)-V(t-\delta)|$ on every path.
+    Payment crossings: exposure dates are mid-month, and the script asserts that no payment falls in $(t-\delta,t]$ for
+    the 5- and 10-day lags. Four 20-day windows (12.5, 24.5, 36.5 and 48.5 months) cross an annual payment, so those
+    dates are left out of the lag diagnostic for all three lags (55 common dates). Diagnostic: mean collateralised EE
+    0.0870, 0.1232 and 0.1746 at 5, 10 and 20 days, 6.1, 7.2 and 8.1 percent above $\sigma_{\Delta V}/\sqrt{2\pi}$ on
+    average. On 52,866 path-dates the bank had posted and $V$ turned positive; mean $\mathrm{EE}_c$ never exceeded EE.
+    CVA (hazard 2%, $R=40\%$): 0.0601 uncollateralised and 0.0066 collateralised per 100 notional;
+    $E[D(0,t)E(t)]-P(0,t)\mathrm{EE}(t)$ up to 0.0445.
+  - Rate tree (original derivation): calibrated rates match Exhibits 36-6 to 36-8; node-weighted and pathwise CVA of
+    an original 5% four-year bond (hazard 1.5%, $R=40\%$ of par) both 3.296402, to $10^{-10}$; a default-free floater is
+    at par at every node; the discount margin of a 50 bp risky floater (hazards 1-2.5%) is 112.07 bp and reprices the
+    fair value 97.8397 to $10^{-8}$.
+- A criterion met trivially. The plan's "as $\sigma\to0$ the tree CVA tends to the forward-rate calculation" holds to
+  $10^{-15}$ at every volatility (0.2, 0.1, 0.01, $10^{-4}$), because for a bond whose exposure is linear in the tree
+  values the state-price sum of value plus coupon is the curve value of the remaining flows. The criterion therefore
+  confirms the implementation but does not test convergence. A check of my own was added after the first run to show
+  where volatility matters: an at-market four-year payer swap on the same tree has CVA 0.0426, 0.0518 and 0.0680 at
+  $\sigma=10^{-4}$, 10 and 20 percent (criterion: strictly increasing). The entry states the identity and the swap
+  result; it does not attribute a volatility effect for bonds to any source.
+- Objectives: `objective:measure-counterparty-exposure`, `objective:calculate-derivative-cva` and
+  `objective:assess-wrong-way-risk` (`topic:credit-models`, planned batch 8), covered. The reading showed wrong-way
+  risk as a separate idea (its own chapter in Gregory, a section in RMFI, conditional exposure and its own models), so
+  the plan's upper count of three was used. The tree extension adds no objective.
+
+**P8, default correlation** (new topic file `compendium/securitised-structured-credit/default-correlation.tex`:
+`mod:gaussian-copula-default-correlation`, `meth:tranche-loss-base-correlation`; a See also link added to
+`meth:credit-liquidity-tail-risk`, whose WCDR formula is linked, not restated).
+- Read: Hull, *OFOD*, secs. 24.8-24.9 (pp. 577-582) and 25.8-25.11 (pp. 599-611); Hull, *RMFI*, secs. 9.5-9.6.3 (pp.
+  202-213); Basel Framework CRE31 (all paragraphs, with the CRE31.5-31.6 formula images rendered and read) and CRE99.1-99.3
+  with Table 1, versions effective 1 January 2023 (last updated 27 March 2020, status current), retrieved from bis.org on
+  2026-10-21 (new source `basel-framework-cre-2026` and reading note; HTML copies in the git-ignored
+  `reading_materials/library-gap-l2-20261021/`). The first request for `chapter/CRE/31.htm` returned the CRE index
+  page; the chapter was fetched with explicit in-force and publication dates. Not read: Li (2000), Vasicek (1987),
+  `wide-nelsen-copulas` (Further reading).
+- Checks (`notes/artefacts/default-correlation/default-correlation-checks.py`; seed 20261081, inputs PD 2%, rho 0.3,
+  LGD 60% and the CDX tranches fixed before the first run). The first attempt stopped before any statistical check:
+  NumPy's Gauss-Hermite rule raised a divide-by-zero warning when the node count was doubled past about 150, and the
+  near-step conditional binomial integrand had not converged at 128 nodes (coding/method issue). The integration was
+  changed, within the plan's "adaptive quadrature or nodes doubled" rule, to composite Gauss-Legendre on [-10, 10] with
+  panels doubled until the change is below $10^{-10}$ (at most 640 nodes); an adaptive-quadrature cross-check of the
+  3-7% tranche agrees to 12 decimals. No seed, input or tolerance changed. The complete run passed every criterion:
+  - Reproduced: Hull's basket (86.7380%, 0.00344%); Example 25.2 ($A=4.2845$, $B=0.0187$, $C=0.1497$, 347.8 bp
+    against 4.2846, 0.0187, 0.1496 and 348 bp, within the 5e-4 and nearest-basis-point tolerances); RMFI Table 9.5 cells
+    (0.0062, 0.4168, 0.9699, 0.3644, 0.0799 against 0.006, 0.417, 0.970, 0.364, 0.080); Example 9.2 (0.12824); CRE99
+    Table 1 corporate risk weights at ten PDs from the CRE31.5 formula, largest gap 0.0048 points (82.06% at 1%).
+  - The IRB conditional default rate equals the WCDR to $10^{-12}$ (0.140273 at PD 1%, $R=0.1928$; 0.190259 at 2%).
+  - Large-pool tranche losses sum to 0.012000000000000. Exact finite pools converge and also sum to PD x LGD. The
+    1,000-name simulation (50,000 scenarios) is within 3 s.e. of the exact value for every tranche ($z$ from $-1.71$ to
+    $+1.82$).
+  - Reported, not tested (L2 freeze correction): exact minus large pool at 250, 500 and 1,000 names is $-1.58$,
+    $-0.78$, $-0.39\times10^{-4}$ (0-3%), $+0.98$, $+0.48$, $+0.24\times10^{-4}$ (3-7%), and similarly halving for the
+    other tranches. For these tranches the gaps did shrink monotonically; the freeze counterexample (a 0.2-2% tranche)
+    shows that this is not guaranteed.
+  - Base correlation on a synthetic equal mixture of $\rho=0.1$ and 0.6 (checks of my own, fixed before running):
+    base correlations reprice every 0-$d$ loss to $9\times10^{-18}$ and their differences reproduce every tranche;
+    reported: base correlations 0.3347 to 0.5284; two compound correlations for 3-7%; a 4-8% tranche at 0.001202 by
+    interpolated base correlation and 0.001423 by linearly interpolated 0-$x$ loss against 0.001242; 0.25%-wide
+    tranches from interpolated base correlations break the decreasing-rate condition three times (largest
+    $1.8\times10^{-5}$). Linear interpolation of the loss curve was worse than base correlation here; the entry
+    reports Hull's recommendation (interpolate the loss curve with the concavity imposed) without claiming the crude
+    linear version is better.
+- Objectives: `objective:model-default-correlation-gaussian-copula` and `objective:value-tranches-base-correlation`
+  (`topic:securitisation`, planned batch 8), covered.
+
+**P9, extreme value theory** (new `meth:extreme-value-tail-estimation` in
+`compendium/portfolio-construction-risk/risk-models.tex`; the Pitfalls sentence of `meth:var-es-estimation-methods`
+now links to it).
+- Read: Hull, *RMFI*, sec. 8.4 (pp. 170-172) and secs. 12.3-12.6.1 (pp. 266-276); McNeil, Frey and Embrechts,
+  *Quantitative Risk Management*, 1st ed. (Princeton 2005; owner's library, SHA-256 `a27c34f4…6c7d`, printed = PDF
+  $-16$; new source `mcneil-frey-embrechts-qrm-2005` and reading note), secs. 7.1-7.1.2 and 7.2.1-7.2.6 with Example
+  7.29; Wilmott, sec. 19.8 (pp. 339-341).
+- Source gap corrected. The plan listed `s7-qrm`, `w2-mcneil-frey` and `wide-embrechts-extremal` as not held. A
+  library search during the package found the 2005 first edition of QRM (the catalogue key is the 2015 revised
+  edition, which is not held), so it is registered under its own key and cited. RMFI does not give the Hill estimator;
+  QRM's eq. (7.23) supplies it. Hill (1975), `w2-hill-estimator`, could not be obtained (Project Euclid answered the
+  scripted request with a bot-protection page); McNeil and Frey (2000), Embrechts et al. (1997) and the 2015 QRM
+  were not read. All four are Further reading.
+- Definition. The plan fixed $H_k$ with the $(k+1)$-th largest observation as threshold; QRM's standard form uses the
+  $k$-th and notes that some versions use the $(k+1)$-th. The plan's form was kept; it makes the Rényi benchmark exact.
+- Checks (`notes/artefacts/extreme-value/extreme-value-checks.py`; seeds as listed in the script, fixed before the first
+  run). First complete run: every plan criterion passed. Pareto: mean $H_k$ 0.25046 (s.e. 0.00035), s.d. 0.015699
+  against 0.015811 (within 5%). $t_4$ functional 0.3488984 by quadrature; $n=10^6$ Hill 0.34961 (s.e. 0.00140, within
+  3 s.e.). Exact GPD ($k=250$): ML $\xi=0.21563$, $\beta=0.91990$, score $-6.8\times10^{-14}$ and 0; log-likelihood
+  $-283.0351887074$ against SciPy's $-283.0351887885$. POT formulas for a Pareto tail exact to $8.9\times10^{-16}$.
+- A check of my own failed on the first run and was diagnosed. Reproducing RMFI's example with the printed
+  $\beta=110.46$, $\xi=0.354$ gave 99.9% and 99.97% VaR of 1,094.31 and 1,756.66 against the printed 1,094.6 and
+  1,757.4 (ES 1,777.29 against 1,778.1). RMFI's own exponent reads $-1/0.3545$ (p. 274): the book computed with the
+  unrounded Solver estimate. The cause is print rounding, not the formula. The check was restated after diagnosis: it
+  infers $\xi$ from the printed 99.9% VaR (0.35413, which rounds to 0.354) and requires that single value to reproduce
+  the other six printed figures to their printed precision. It passes.
+- Diagnostics, reported only (L2 freeze correction for the first): ML shape over 500 exact-GPD samples of 250 (seed
+  20261094) 0.236875 (s.e. 0.003799), $-0.0131$ from 0.25; the freeze reproduction with planning seed 20261021 gave
+  0.237276. Population GPD fit to $t_4$ excesses at the 95th percentile $\xi=0.1917$, $\beta=0.8640$. On one
+  $n=5{,}000$ $t_4$ sample: Hill 0.3391, GPD 0.2002; 99%/99.5% VaR 3.5793/4.3992 (true 3.7469/4.6041), ES
+  4.9580/5.9832 (true 5.2206/6.3248). Hill bootstrap intervals (200 samples, 1,000 resamples) covered 0.348898 in 190
+  and 0.25 in 0 of 200; GPD shape interval [0.0231, 0.3339]. Threshold sensitivity at 90, 95, 97.5 and 99%: Hill 0.3968,
+  0.3391, 0.3078, 0.2814 against functionals 0.4161, 0.3489, 0.3129, 0.2866; GPD 0.1695, 0.2002, 0.2296, 0.2166 against
+  0.1626, 0.1917, 0.2104, 0.2258. Two-step on GARCH(1,1)-$t_6$ (the generator of `var-backtest-check.py`, own seed):
+  99% conditional VaR 0.01368 (true 0.01372), ES 0.01687 (true 0.01761); 99.5% VaR 0.01588 (0.01619), ES 0.01910
+  (0.02042); residual GPD shape 0.0092 (the $t_6$ asymptotic value is 1/6). Runtime about 25 s.
+- No empirical EVT claim (backlog B9). The two-step method is taught inside the same entry; the reading did not show
+  it to be a separate idea, so one objective: `objective:estimate-tail-risk-extreme-value`
+  (`topic:market-risk-measurement`, planned batch 8), covered.
+
+**P11a, correlation and independence tests** (new `meth:correlation-independence-tests` in
+`compendium/common-toolkit/statistical-inference.tex`).
+- Read: OpenStax, *Introductory Statistics* 2e, secs. 11.3 and 12.4 (fetched renderings, 2026-10-21; the fetch tool
+  returns a summary with short quotations, not the full text, which limits the record to the formulas, conditions
+  and example numbers it reported); NIST Dataplot, "Rank Correlation Independence Test" (new source
+  `nist-dataplot-rank-correlation`). The plan named `statistical-methods-handbook` (the NIST e-Handbook) for rank
+  correlation; a search found no Spearman section in it, and the Dataplot reference page was used instead. Not read:
+  Conover (1999).
+- Checks (`notes/artefacts/inference-simulation/correlation-independence-checks.py`; seeds 20261101 size study,
+  20261102 formula data, 20261103 overlap diagnostic, fixed before the first run). All criteria passed on the first
+  run: OpenStax $p=0.02615$ (prints 0.026) and six critical values; Example 11.6 $\chi^2=12.9909$, df 4, $p=0.01132$;
+  SciPy agreement to $10^{-12}$ (Pearson $p$-value, Spearman with and without ties, chi-square without continuity
+  correction); transforms (strictly increasing invariance, sign change for one decreasing transform, invariance for
+  two, ties included); the shortcut differs with ties (0.930070 against 0.928832) and agrees without. Size, 20,000
+  replications of $n=30$: Pearson 4.84%, Spearman ($t$ approximation, the predetermined test) 4.95%, both within
+  $5\pm0.5$; NIST's normal approximation 4.78% (reported). Diagnostic of my own: an AR(1) signal ($\phi=0.95$) and
+  independent returns, $T=500$, 2,000 replications: rejection 6.5% with one-day and 62.9% with overlapping 20-day
+  returns.
+- Objective: `objective:test-correlation-independence` (`topic:statistical-inference`, planned batch 8), covered. No
+  outline item maps to it (the 2026/2027 outlines dropped this module).
+
+**P11b, mean-CVaR optimisation** (new `meth:mean-cvar-optimisation` in
+`compendium/portfolio-construction-risk/portfolio-construction-models.tex`).
+- Read: Rockafellar and Uryasev, "Optimization of Conditional Value-at-Risk" (`s6-cvar`), the author preprint dated 5
+  September 1999 (26 pp.) at the catalogue's link, retrieved 2026-10-21 (SHA-256 `34aff216…42f4`; new reading note).
+  The catalogue lists the 2000 *Journal of Risk* article; locators are to the preprint. Not read: Rockafellar and
+  Uryasev (2002) for general distributions.
+- Checks (`notes/artefacts/portfolio-construction/mean-cvar-check.py`; problem and seeds fixed before the first run;
+  seeds 0-9 had been used in a planning reproduction and are not unseen data). The first run used HiGHS dual simplex
+  with tight tolerances and was stopped after several minutes without output (100,000-scenario LPs); timing one LP
+  showed interior point with crossover at 10 s against 32 s for dual simplex, with the same solution, so the solver
+  was switched (no criterion changed). In the complete run every plan criterion passed: LP objective equals the
+  fractional-tail-mass CVaR (0.1678292649 at $n=10{,}000$; 0.1961604624 at $n=250$, 97.5%, tail mass 6.25); the 1%
+  grid on the feasible line ($w_1=w_3$) has best 0.167834 against the LP's 0.167829 (allowance 0.006414); normal
+  equivalence against the population portfolio (0.321429, 0.357143, 0.321429): largest gap 0.0078 at 100,000
+  scenarios (criterion 0.025), mean 0.0135 at 10,000 and 0.0035 at 100,000. Reported: a negatively skewed third asset
+  (skewness $-3.63$) moves weights from (0.3388, 0.3224, 0.3388) to (0.2740, 0.4520, 0.2740), CVaR 0.13699 to 0.12496.
+- A check of my own failed and was diagnosed: reproducing Table 3 with a $5\times10^{-7}$ tolerance gave 0.4520113,
+  0.1155732, 0.4324155 against the printed 0.452013, 0.115573, 0.432414. The printed weights' mean return is
+  0.0109999956, so they are a numerical QP solution that misses the constraint by about $4\times10^{-9}$; the exact
+  KKT solution is the optimum. The tolerance was widened to $5\times10^{-6}$ with the constraint error reported. Table
+  4's VaR and CVaR reproduce to $5\times10^{-6}$. Runtime about two minutes.
+- Objective: `objective:construct-minimum-cvar-portfolio` (`topic:portfolio-risk-return`, planned batch 8), covered.
+
+**P11c, buying on margin** (new `meth:margin-purchase-leverage` in
+`compendium/portfolio-risk-financing/securities-lending.tex`).
+- Read (current texts, retrieved 2026-10-21): 12 CFR 220.4 and 220.12 from the eCFR versioner (title 12 up to date as
+  of 19 October 2026, last amended 2 October 2026; the first unauthenticated request returned an error asking for
+  compression, repeated with it); FINRA Rule 4210(b)-(d) on finra.org, version from 4 June 2026 (unchanged since the
+  17 October reading). New reading notes for `ecfr-12cfr220` and `finra-rules-2026`; the two `sources.tex` entries
+  now record the reread. The leverage, levered-return and call-price formulas are derivations (Interpretation) with
+  the assumptions corrected after the L2 audit. The 4210(g) portfolio-margin text was not read, and a draft clause
+  about portfolio margining was removed from the entry for that reason.
+- Checks (`notes/artefacts/short-term-funding/margin-purchase-check.py`; deterministic, original inputs). All passed on
+  the first run: static call prices 26.6666666667 (long, 25%) and 46.1538461538 (short, 30%) equal the roots to
+  $10^{-12}$; the 30% leg binds (13.85 a share against the \$5 floor). Long ledger (6.5% act/360, \$0.40 dividend
+  credited 15 April): loan 20,235.0219, call price 26.980029 (+0.313363 against static). Short ledger (2% rebate, 0.5%
+  borrow fee, dividend owed, \$15 commission): credit 59,878.3333, call price 46.060256 ($-0.093590$). The levered
+  return identity holds to $10^{-12}$ (16.00% asset, 28.6507% equity; at \$34, $-14.00$% and $-31.30$%).
+- Objective: `objective:calculate-margin-leverage-call-price` (`topic:equity-securities-markets`, planned batch 8),
+  covered.
+
+**Decision L2-D5, two optional Hull extensions** (no objective).
+- Read: Hull, *OFOD*, sec. 21.3 (pp. 480-483, known dividends in trees, Example 21.5), sec. 15.12 (pp. 360-363,
+  early exercise of American calls and Black's approximation), secs. 11.5-11.6 and 11.8 (pp. 258-263), and sec. 29.3
+  (pp. 699-705, already read for P6). C0 had located sec. 21.3 without reading it; the passages were read before
+  writing.
+- `meth:multi-period-binomial-valuation`: known dollar dividends via the $S^*$ tree and Hull's early-exercise
+  conditions. `meth:black-model-rates-currencies`: the receiver swaption, payer-receiver parity and the callable bond
+  as a straight bond less a receiver swaption (the last as an Interpretation of Business Snapshot 29.2).
+- Checks (`notes/artefacts/option-valuation/dividend-tree-swaption-checks.py`; seed 20261121). Example 21.5:
+  4.4404, 4.2084, 4.2143 at 5, 50 and 100 steps (printed 4.44, 4.208, 4.214). Original call (bound 0.1124): with
+  $D=0.05$ no node exercises and American equals European (4.100852); with $D=1.50$ the American is 3.8544 against
+  3.3125 and all exercise falls at 0.4545, the last step before the ex-date. Example 29.4 payer 2.1908; receiver
+  2.2028; parity to $10^{-12}$; the call-at-par and receiver payoffs agree on 1,000 random curves (largest gap
+  $2\times10^{-14}$). Diagnostic: Black's approximation first printed 3.3119 because the $t_n$ leg wrongly deducted the
+  dividend (my coding error, corrected before use); correctly computed it is 3.9144, above the tree's 3.8544, because
+  it puts the volatility on the whole stock price rather than on $S^*$ (Hull, p. 360, n. 13). It is reported, not
+  tested.
+
+**Batch completion.**
+- Scope delivered as frozen: P6, P7, P8, P9 and P11a-c complete; the rate-tree CVA and risky floater (L2-D3) and the
+  two optional Hull extensions (L2-D5) done; P10 deferred to Batch L3 (L2-D4). No package is partial. Eleven new entries, as estimated
+  (`mod:affine-short-rate-models`, `mod:hjm-forward-rate-models`, `def:counterparty-exposure-measures`,
+  `meth:credit-valuation-adjustment`, `def:wrong-way-risk`, `mod:gaussian-copula-default-correlation`,
+  `meth:tranche-loss-base-correlation`, `meth:extreme-value-tail-estimation`, `meth:correlation-independence-tests`,
+  `meth:mean-cvar-optimisation`, `meth:margin-purchase-leverage`) in two new topic files (`corporate-credit-capital/counterparty-xva.tex`,
+  `securitised-structured-credit/default-correlation.tex`) and four existing ones. Extended: `mod:term-structure-models-simulation`,
+  `meth:risky-bond-cva`, `meth:multi-period-binomial-valuation`, `meth:black-model-rates-currencies`; link-only edits to
+  `meth:var-es-estimation-methods` and `meth:credit-liquidity-tail-risk`.
+- Coverage: eleven new objectives (P6 2, P7 3, P8 2, P9 1, P11 3), all covered, planned batch 8, no new topic; the
+  denominator moves from 434 to 445, all covered. Outline items unchanged at 1,030/1,030 (no outline item maps to the
+  new objectives). Newly covered objectives: 11, a shortfall of 34 against the standing 45-objective preference
+  (decision L2-D6). The library-gap programme's verified new ideas are nearly exhausted; most remaining gaps are depth
+  within covered objectives, which earn no count, and padding is not allowed.
+- New sources registered: `gregory-xva-challenge-2015`, `basel-framework-cre-2026`, `mcneil-frey-embrechts-qrm-2005`,
+  `nist-dataplot-rank-correlation`; reread and re-dated: `ecfr-12cfr220`, `finra-rules-2026`, `introductory-statistics-2023`.
+  Downloaded public texts (BIS CRE31 and CRE99 pages and formula images, the Rockafellar-Uryasev preprint, eCFR XML,
+  FINRA HTML) are kept in the git-ignored `reading_materials/library-gap-l2-20261021/`. The owner's library was read only.
+- Sources actually read: Hull, *OFOD* 11th Global ed. (chaps. 9, 11, 15, 21, 24, 25, 29, 31-33); Hull, *RMFI* 6th ed.
+  (chaps. 8, 9, 12, 18); Wilmott, *PWOQF* 2nd ed. (chaps. 19, 30, 31, 37); the Handbook (chaps. 36-37); Gregory, *The
+  xVA Challenge* 3rd ed.; McNeil, Frey and Embrechts, *QRM* 1st ed. (chap. 7); Rockafellar and Uryasev (1999 preprint);
+  OpenStax *Introductory Statistics* 2e (secs. 11.3, 12.4); NIST Dataplot; Basel Framework CRE31 and CRE99; 12 CFR 220;
+  FINRA Rule 4210. No curriculum, workbook, CQF or CAIA text was used or cited.
+- Source gaps remaining: Smith (2017) (tree-based CVA; not held, not read; the extension is an original derivation);
+  Hill (1975) (Project Euclid refused scripted access); McNeil and Frey (2000), Embrechts et al. (1997), the 2015 QRM,
+  `gap-rates-backward-term-rates`, `wide-nelsen-copulas`, Conover (1999), Gregory chap. 16. All are Further reading
+  or are cited only through the books that were read.
+- Numerical scripts: eight new (`short-rate-model-checks.py`, `counterparty-xva-checks.py`,
+  `default-correlation-checks.py`, `extreme-value-checks.py`, `correlation-independence-checks.py`,
+  `mean-cvar-check.py`, `margin-purchase-check.py`, `dividend-tree-swaption-checks.py`); `make examples` now runs 119.
+  Every predetermined plan criterion, as frozen with the two freeze corrections, passed without a change of seed,
+  input or tolerance. First-run failures were coding or method issues (P6 warnings, P8 Gauss-Hermite) or in checks of
+  my own (P9 RMFI rounding, P11b Table 3, the D5 Black-approximation diagnostic), each recorded above with its cause;
+  the P7 sigma-limit criterion holds trivially, as recorded.
+- Repository checks (2026-10-21): `make source-check` passed (lock, lint, format, compendium checker 0 problems,
+  coverage 0 problems, 36 tests, 119 scripts; about five minutes, of which P11b is about two). `make pdf` built 437
+  pages with no overfull boxes and no undefined references or citations; the one underfull box (badness 2277, first
+  paragraph of `common-toolkit/statistical-inference.tex`) is the pre-existing one recorded in L1. Rendered pages of the
+  new and edited entries (printed pp. 8, 70-73, 87-88, 91-93, 98-100, 181-182, 249-250, 255-256, 283-284) were
+  inspected; two short-tailed lines (a Notation formula on p. 71 and a tail-probability formula on p. 255) were moved
+  into displays and the PDF rebuilt with the same results.
+- Limits: all examples are synthetic or reproduce published examples, except P6's curve (GSW, a Treasury fitted
+  curve, not SOFR or OIS); no empirical claim about markets. Volatility parameters in P6-P7 are illustrative. US
+  margin rules and the Basel IRB formula are as retrieved on 2026-10-21. Editorial coverage only; human review of all
+  eleven entries and four extensions is outstanding. Nothing pushed; no PR.

@@ -6408,3 +6408,44 @@ padding. The seasoned-swap value and the B13 annualised mapping are Interpretati
 printed in the sources read. Excluded: mark-to-market cross-currency swaps, multi-period cross-currency valuation and
 curves, second-order Monte Carlo Greeks beyond the gamma sentence, empirical basis levels after 2016. Nothing pushed; no
 PR.
+
+## C1 pass: L4 corrections and gap inventory, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-batch-l4` at `e6c22e6` (parent `95c547a`), working tree clean, no newer
+work; 447/447 objectives, 1,030/1,030 items. Branch `codex/library-gap-c1-inventory` created from it. Local only.
+Delegation to the models named by the implementation skill was not available; the work was done directly.
+
+**L4 corrections** (plan, Section 7, "C1 pass: L4 corrections"; no objective, input, seed or earlier tolerance changed).
+- `meth:monte-carlo-greeks` (L4-F1): Broadie-Glasserman's $h^*$ (App. B, eq. (26), p. 281; the page was reread and states
+  that $\rho$ is assumed independent of $h$) is no longer presented as a universal optimum; the call/digital
+  shared-path variance distinction and the restriction of unbiasedness to the direct estimators under their conditions
+  were added. Fixed before the run: one new section in `monte-carlo-greeks-check.py` on the same seed and draws, with
+  relative tolerances of 1% for the two limits and a factor-2 band for the ratio check. Results: call finite-difference
+  variance 0.348653, 0.351635, 0.351932 and 0.351952 at $h=1$, 0.1, 0.01, 0.001 against 0.351959 for the pathwise delta;
+  digital variance exact from the lognormal distribution, 0.018065, 0.18399, 1.8432 and 18.435, so $h\times$variance runs
+  0.018065 to 0.018435 against the limit $e^{-2rT}g(K)K/S_0=0.018435$. All 17 checks pass; parts 1-3 unchanged.
+- `meth:volatility-derivative-applications` (L4-F2): "volatility points squared" for the $10^4$ conversion; "zero mean"
+  defined as not subtracting the sample mean. Text only; `seasoned-variance-swap-check.py` not rerun.
+- `meth:esg-exposure-evaluation` (L4-F3): the 5 October 2026 order qualified as the latest found in the public RECAP
+  docket as of 21 October 2026, PACER not used, later filings unverified (as in `notes/readings/ca8-iowa-v-sec-2026.md`).
+
+**C1 inventory** (plan, Section 8.2). Discovery material: the 18 volumes of the 2024 curriculum, read-only, text extracted
+with pypdf 5.1.0 in an isolated environment to the session scratchpad (none enters the repository and none is cited).
+Reconciliation: 175 numbered modules, of which two are statistical-table appendices; 173 substantive; C0's 76 compared
+plus 97 remaining. The 97 were title-matched to the crosswalk (78 same-titled), screened by head words (74 of 2,231 heads
+flagged) and compared by hand with entry titles and text. Support checked in held or registered sources: Hull sec. 26.11,
+pp. 623-625 (lookback formulas, Example 26.2); Wilmott contents, the end of chap. 47 and the opening of chap. 48 (PDF pp. 799-809; Leland's
+adjusted volatility, sec. 48.3) and the chap. 24 lookback passages (PDF pp. 443-447); Damodaran, *Applied Corporate
+Finance*, printed pp. 98-107 (country risk premiums); *Managing Investment Portfolios* (2007) Example 11-3 and Exhibit
+11-4, pp. 693-695 (hedging and monetisation of a concentrated position). Catalogue searched for B4 and B14 sources.
+Outcome: 2 confirmed distinct candidate objectives (lookbacks; hedging with transaction costs), 4 sourced depth
+extensions, 2 possibly distinct but unresolved (vanna-volga; hedge-fund replication), 5 unsourced depth items;
+provisional 449 for this corpus, at most 451. Batch L5 proposed (+2), not frozen.
+
+**Checks run (2026-10-21).** `monte-carlo-greeks-check.py` with warnings as errors (after `ruff format`); `make lint`,
+`make format-check`, `make check-compendium` (0 problems), `make check-coverage` (0 problems; 447/447, 1,030/1,030),
+`make test` (36 passed); `make pdf` and inspection of the changed pages; pre-commit on every changed and new file.
+Reused without rerun: every other numerical script (no code, input or asserted result changed), including
+`seasoned-variance-swap-check.py` and `cross-currency-basis-check.py` from L4. `verify-outlines` not rerun; the
+crosswalk is unchanged. Limits: the inventory is a bounded comparison of the inspected corpus, not a census of the
+finance library; editorial coverage only; human review outstanding. Nothing pushed; no PR.

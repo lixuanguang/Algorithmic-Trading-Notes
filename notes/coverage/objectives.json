@@ -21576,7 +21576,7 @@
     "entry_evidence": [
      "meth:monte-carlo-greeks"
     ],
-    "example": "notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py (path derivatives and scores against finite differences; eq. (18) boundary term against the BSM gamma; call pathwise and likelihood-ratio delta and vega and pathwise strike sensitivity within 4 standard errors; a digital whose pathwise delta is zero on every path, recovered by the likelihood ratio; resimulation reported at two steps; seed 20261021, 100,000 draws, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py (path derivatives and scores against finite differences; eq. (18) boundary term against the BSM gamma; call pathwise and likelihood-ratio delta and vega and pathwise strike sensitivity within 4 standard errors; a digital whose pathwise delta is zero on every path, recovered by the likelihood ratio; resimulation reported at two steps; shared-path finite-difference variance finite for the call and about 1/h for the digital (part 4, added in the C1 correction pass); seed 20261021, 100,000 draws, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   }

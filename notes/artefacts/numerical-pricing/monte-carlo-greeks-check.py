@@ -182,5 +182,45 @@ for hh in (1.0, 0.01):
     )
 print(f"  digital LR delta for comparison: {dig_lr[0]:.6f} (s.e. {dig_lr[1]:.6f})")
 
-print("FAILED: " + ", ".join(fails) if fails else "all checks passed")
+# Added 2026-10-21 (C1 pass, L4 correction): per-path variance of the forward difference on shared paths.
+# Call: the difference tends path by path to the pathwise delta, so its variance stays finite as h -> 0.
+# Digital: a path contributes e^{-rT}/h only if S_T crosses K, with probability about g(K) K h / S0, so the
+# variance is about e^{-2rT} g(K) K / (S0 h). The digital is computed exactly from the lognormal CDF.
+print("== 4. shared-path finite-difference variance: call finite, digital about 1/h")
+var_pw = float(np.var(disc * itm * ST / S0, ddof=1))
+call_var = {}
+for hh in (1.0, 0.1, 0.01, 0.001):
+    fd = disc * (np.maximum(path(S0 + hh, sig, Z) - K, 0.0) - np.maximum(ST - K, 0.0)) / hh
+    call_var[hh] = float(np.var(fd, ddof=1))
+    print(f"  call, h = {hh:g}: sample variance {call_var[hh]:.6f} (pathwise delta {var_pw:.6f})")
+ok(
+    "call: shared-path difference variance tends to the pathwise variance (h = 0.001, rel 1%)",
+    rel(call_var[0.001], var_pw) <= 0.01,
+    f"{call_var[0.001]:.6f} vs {var_pw:.6f}",
+)
+limit = disc**2 * np.exp(log_density(K, S0, sig)) * K / S0
+dig_hvar = {}
+for hh in (1.0, 0.1, 0.01, 0.001):
+    p_cross = stats.norm.cdf(z_of(K, S0, sig)) - stats.norm.cdf(z_of(K * S0 / (S0 + hh), S0, sig))
+    var_exact = disc**2 * p_cross * (1 - p_cross) / hh**2
+    dig_hvar[hh] = hh * var_exact
+    print(
+        f"  digital, h = {hh:g}: exact variance {var_exact:.6f}, h x variance {hh * var_exact:.6f}"
+    )
+ok(
+    "digital: h x variance tends to e^{-2rT} g(K) K / S0 (h = 0.001, rel 1%)",
+    rel(dig_hvar[0.001], limit) <= 0.01,
+    f"{dig_hvar[0.001]:.6f} vs {limit:.6f}",
+)
+ok(
+    "digital variance grows about 1000-fold from h = 1 to 0.001; the call's stays within a factor 2",
+    0.5 <= dig_hvar[0.001] / dig_hvar[1.0] <= 2 and 0.5 <= call_var[0.001] / call_var[1.0] <= 2,
+    f"h x var ratio {dig_hvar[0.001] / dig_hvar[1.0]:.3f}; call var ratio {call_var[0.001] / call_var[1.0]:.3f}",
+)
+fd = disc * ((path(S0 + 1.0, sig, Z) > K).astype(float) - itm) / 1.0
+print(
+    f"  digital, h = 1 sample variance on the shared paths: {np.var(fd, ddof=1):.6f} (exact above)"
+)
+
+print("FAILED:" + ", ".join(fails) if fails else "all checks passed")
 sys.exit(1 if fails else 0)

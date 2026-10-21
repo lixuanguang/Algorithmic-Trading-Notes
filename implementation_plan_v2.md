@@ -1,6 +1,14 @@
 # Compendium gap-filling from the owner's finance library: implementation plan v2
 
-**Current status (2026-10-21, after Batch L4).** Batch L4 (B3, B12, B13) was frozen by the owner (L4-D1 all three
+**Current status (2026-10-21, after the C1 pass).** On `codex/library-gap-c1-inventory`, created from `e6c22e6`
+(clean tree; 447/447 objectives, 1,030/1,030 items): three L4 corrections (L4-F1 to L4-F3, Section 7, "C1 pass: L4
+corrections"), the C1 gap inventory (Section 8.2: 97 remaining modules reconciled and compared; 2 confirmed distinct
+candidate objectives, 4 sourced depth extensions, 2 possibly distinct but unresolved; provisional 449 for this corpus),
+and **Batch L5 proposed, not frozen or implemented** (lookback options and hedging with transaction costs, +2;
+decisions in Section 10.5). Objectives unchanged at 447/447. One local commit; no push, PR, merge, rebase or amendment.
+
+Status after Batch L4 (kept for the record):
+**Status (2026-10-21, after Batch L4).** Batch L4 (B3, B12, B13) was frozen by the owner (L4-D1 all three
 packages, L4-D2 the seasoned variance-swap value as a labelled derivation, L4-D3 no separate B13 objective) with three
 specification corrections (L4-C1 to L4-C3, Section 7, "Batch L4 freeze corrections and frozen specification") and
 implemented on `codex/library-gap-batch-l4`, created from `95c547a`. Delivered: `meth:monte-carlo-greeks`,
@@ -1419,20 +1427,76 @@ extension (`meth:volatility-derivative-applications`), cross-reference edits, on
 (`objective:estimate-greeks-by-simulation`, `planned_batch` 9). Version notes: the Goldman Sachs note and arXiv v3 are
 registered as their own `sources.tex` keys, each naming the catalogued version, because their locators differ.
 
+### C1 pass: L4 corrections (2026-10-21)
+
+Authorised with the C1 inventory and made on `codex/library-gap-c1-inventory`, created from `e6c22e6` (parent `95c547a`,
+clean tree, 447/447 objectives, 1,030/1,030 items). Fixes only: no objective, input, seed or earlier tolerance changed.
+
+| ID | Entry | Problem | Correction and evidence |
+|---|---|---|---|
+| L4-F1 | `meth:monte-carlo-greeks` | Appendix B's $h^*$ was presented as the optimum; its assumption that the correlation $\rho$ of the two pricing errors does not depend on $h$ (Broadie-Glasserman p. 281) was omitted; "they are unbiased" did not say which estimators and under what conditions | $h^*$ stated with its assumption and not as a universal optimum; Interpretation: with common random numbers $\rho$ depends on $h$, the call's shared-path difference has finite limiting variance, the digital's grows like $e^{-2rT}g(K)K/(S_0h)$; unbiasedness restricted to the direct estimators under (A1)-(A4) or the interchange condition; fixed-step resimulation keeps finite-difference bias. New part 4 of `monte-carlo-greeks-check.py`, tolerances fixed before its run: call variance 0.348653 ($h=1$) and 0.351952 ($h=0.001$) against pathwise 0.351959 (relative 1%); digital variance exact from the lognormal CDF, $h\times$variance 0.018065 to 0.018435 against the limit 0.018435 (relative 1%). Parts 1-3 and their results unchanged |
+| L4-F2 | `meth:volatility-derivative-applications` | "vol points with decimal variance" for the $10^4$ conversion; "zero-mean log returns" could read as zero expected returns | "volatility points squared with decimal variance"; "zero mean" stated as the convention of not subtracting the sample mean, not zero expectation (under a drift the expectation is not zero). Numbers and the 1 percent dividend yield unchanged; `seasoned-variance-swap-check.py` not rerun (no code or asserted result changed) |
+| L4-F3 | `meth:esg-exposure-evaluation` | "the latest available on 21 October 2026" overstated what was checked | "the latest found in the public RECAP docket as of 21 October 2026 (PACER was not used; later filings are unverified)", matching `notes/readings/ca8-iowa-v-sec-2026.md`. Regulatory review not reopened |
+
+### Proposed Batch L5 (2026-10-21; awaiting owner freeze): lookback options and hedging with transaction costs
+
+From the C1 inventory (Section 8.2). Proposed only: no entry, script, reading note or coverage record has been written.
+Both packages extend the option-hedging and path-dependent material of L1 with sources already held, so they form one
+coherent `volatility-options` batch.
+
+**L5-a (C1-N1). Lookback options.** New entry `meth:lookback-option-valuation` in
+`volatility-options/exotic-options.tex` after `meth:barrier-option-valuation`. Teaching: floating and fixed-strike
+payoffs; Hull's closed forms for floating lookbacks with the running minimum or maximum to date (sec. 26.11, pp.
+623-625); the Wilmott state-variable formulation and the jump condition for discrete sampling (chap. 24 lookback
+passages; chap. 26 to be read); why discrete monitoring lowers the value. New
+`objective:value-lookback-options` (`topic:option-valuation`, like the other exotic-option objectives), planned batch 10; prerequisites `objective:value-barrier-options-monitoring`, `objective:apply-monte-carlo-simulation`.
+*Checks* (`notes/artefacts/exotic-options/lookback-option-check.py`): reproduce Example 26.2 (put 7.79, call 8.04)
+deterministically; seasoned values with a running extreme reduce to the new-issue values when $S_{\min}=S_0$; a
+simulation with fine monitoring within 4 standard errors of the closed form after an explicitly stated discrete-
+monitoring correction or, if none is printed in the sources read, with the discrete-continuous gap reported and
+shown to shrink as monitoring increases (not absorbed into tolerance).
+
+**L5-b (C1-N2). Hedging with transaction costs.** New entry `meth:transaction-cost-hedging` in
+`volatility-options/option-valuation.tex` after `res:delta-hedging-volatility-mismatch`. Teaching: Leland's adjusted
+volatility for proportional costs and its opposite signs for long and short positions; the condition on gamma; the
+Hoggard-Whalley-Wilmott nonlinear equation and why a portfolio's value is not the sum of its parts; the costs of
+fixed-interval against band rebalancing (Wilmott chap. 48, pp. 783-812; Leland 1985 cited through Wilmott unless
+obtained). New `objective:hedge-options-with-transaction-costs` (`topic:option-valuation`), planned batch 10; prerequisites
+`objective:quantify-hedging-volatility-mismatch`, `objective:manage-option-greeks`. *Checks*
+(`notes/artefacts/option-valuation/transaction-cost-hedging-check.py`): the adjusted volatility formula against
+Wilmott's printed form and its limits ($k\to0$ gives $\sigma$); a discretely hedged call with proportional costs
+simulated on fixed seeds, whose mean hedging cost agrees with the Leland price difference within 4 standard errors
+for a small cost parameter, with the approximation error at a larger parameter reported, not tuned; the nonlinearity
+shown on a call spread (value of the spread against the difference of the two option values).
+
+**Optional L5-c (C1-D3).** Option-strategy practice items in `meth:option-spreads-volatility-strategies` and
+`meth:covered-call-protective-put`, only if `s7-natenberg` supports them when read; 0 objectives.
+
+**Expected objectives: +2** (449/449), shortfall 43 against the standing 45, without padding.
+
+**Acceptance.** Seeds, path counts and tolerances fixed in this plan before the first run; deterministic formula,
+unit and limit checks before stochastic ones; failures diagnosed, not reseeded. Each entry states its model
+assumptions and labels derivations as Interpretation. Gates as in L4: the two scripts with warnings as errors, lint,
+format, both checkers (449/449, 1,030/1,030), tests, PDF without overfull boxes or undefined references with changed
+pages inspected, pre-commit on changed files; records (reading notes, entry evidence, objectives, pathway, review
+record, this plan). Existing scripts reused unless their files or inputs change.
+
+**Dependencies.** L1's barrier, Asian and volatility-mismatch entries and their scripts; no new dependency.
+
 ## 8. Backlog (needs evidence before it is scheduled)
 
 | ID | Item | What is needed first |
 | --- | --- | --- |
 | B1 | Kolmogorov forward and backward equations, transition densities | Decide whether it adds teaching beyond P1; Wilmott chap. 10 |
-| B2 | Lookback options | Hull sec. 26.11, Wilmott chap. 26; low priority |
+| B2 | Lookback options | Hull sec. 26.11, Wilmott chap. 26; low priority. C1 (2026-10-21): distinct, C1-N1, proposed for L5 |
 | B3 | Monte Carlo Greeks (pathwise, likelihood ratio) | Hull sec. 21.7 and Glasserman (not held); could be one entry. Proposed for L4 (L4-a, 2026-10-21): Hull sec. 21.6, pp. 494-495 and Broadie and Glasserman (1996) read instead; one new entry and objective. **Done in L4 (2026-10-21)** |
 | B4 | Second-order Greeks beyond the P4 sentence (vanna/volga hedging, the vanna-volga method) | A source for market practice |
-| B5 | Discrete-hedging error distribution and transaction costs (Wilmott chaps. 47-48) | Overlap check with P4 and `mod:black-scholes-merton` |
+| B5 | Discrete-hedging error distribution and transaction costs (Wilmott chaps. 47-48) | Overlap check with P4 and `mod:black-scholes-merton`. C1 (2026-10-21): discrete error already in P4; transaction costs distinct, C1-N2, proposed for L5 |
 | B6 | CAIA depth: CTA industry structure and vehicles (chaps. 29, 32), payoff-distribution and bottom-up replication (chap. 33), convertible arbitrage risks (chap. 34) | Owner decision on a CAIA citation exception, or non-curriculum sources (Kat and Palaro; Hasanhodzic and Lo) located and read. No own empirical CTA performance. A trend illustration is synthetic; an empirical futures backtest needs a defined continuous-contract roll rule, collateral return, a signal lag of $t-1$ information, and costs |
 | B7 | (Done in Batch L3, 2026-10-21.) Regulatory currency P10: FRTB status by jurisdiction (BCBS, EU CRR3, UK PRA, US); SA-CCR and the revised CVA framework (CRE52, MAR50); ISSB IFRS S1/S2 adoption, TCFD's transfer to the ISSB, SEC climate-rule status; LCR/NSFR dates in `financial-institution-analysis.tex` | The issuers' current texts read with retrieval dates; corrections to existing entries plus at most one `rule:` entry for counterparty capital |
 | B8 | LIBOR-era CQF and Gregory material | Historical only; used solely as dated context in P6-P7 |
 | B9 | Empirical EVT illustration | A daily return series with a documented source, dates and licence |
-| B10 | "Monte Carlo Methods.pdf" | Identify author and edition (OCR or bibliographic match) only if B3 needs it |
+| B10 | "Monte Carlo Methods.pdf" | Identify author and edition (OCR or bibliographic match) only if B3 needs it. Closed by C1: B3 was done in L4 without it |
 | B11 | C0 findings | Done: Section 8.1; the items not placed in L2 are B12-B17 |
 | B12 | Variance swap valued during its life: time-weighted realised and implied variance, discounted (C0 candidate 6) | Extends `meth:volatility-derivative-applications`; read `wide-demeterfi-varswaps` (catalogue, DOI; not held). Proposed for L4 (L4-b, 2026-10-21): the authors' GS note read; the seasoned formula is a labelled derivation (L4-D2); no new objective. **Done in L4 (2026-10-21)** |
 | B13 | Cross-currency basis swap: cash flows, which leg carries the basis, synthetic funding (candidate 6) | Extends `meth:swap-valuation-replication` or `res:international-parity-conditions`; read `cur-borio-mccauley-mcguire-sushko-2016` (BIS, open). Proposed for L4 (L4-c, 2026-10-21): BIS pp. 45-48, Hull secs. 7.10 and 34.3, and Ding-Liu-Rutkowski (arXiv v3) read; a new entry, no new objective; MTM resets excluded. **Done in L4 (2026-10-21)** |
@@ -1506,6 +1570,71 @@ None was read substantively, and none is needed by a proposed L2 package.
 
 Each title-pass candidate has a renamed or near counterpart in the crosswalk or in
 `objectives.json`, but that was not confirmed by reading.
+
+### 8.2 C1 gap inventory (2026-10-21)
+
+Discovery only: no teaching entry, objective or coverage claim was written, and no curriculum text entered the
+repository. Curriculum volumes were used to find gaps, never as support; support was checked in registered or held
+non-curriculum sources. This inventory covers the inspected corpus below, not the whole finance library.
+
+**Corpus and reconciliation.** The same 18 volumes as C0 (2024 Level I-III, six each; Level II in the `2024 Notes`
+folder), read-only, text extracted to the session scratchpad (9,530 pages). Their contents pages list 175 numbered
+learning modules. Two are statistical tables ("Appendices A-E", L1 vol. 1 and L2 vol. 1), so 173 are substantive; the
+"Appendix" headings inside L2 vol. 1 (currency module) and L3 vol. 6 (Asset Manager Code) are sections, not modules.
+C0 recorded 76 modules compared by hand and 97 remaining, which sums to 173: C0's "175 ... including two appendices" is
+consistent once the appendices are excluded. C0 named its 76 by category, not by module. Its categories reproduce
+exactly 76 when read as: quantitative methods (L1 11, L2 7), fixed income (L1 19, L2 5), derivatives (L1 10, L2 2), the
+four L2 vol. 5 portfolio and risk modules, L3 vols. 2-3 (11), and the alternatives and trading modules of L2 vol. 5 (4),
+L3 vol. 4 (2) and L3 vol. 5 (1). The remaining 97 are then: economics (L1 8, L2 3), corporate issuers (L1 7, L2 4),
+financial statement analysis (L1 12, L2 7), equity (L1 8, L2 6), portfolio management (L1 6, L2 2), L1 alternatives (7),
+ethics and GIPS (L1 5, L2 3, L3 5), L3 vol. 1 (5), private wealth (L3 3) and L3 vol. 5 institutional, performance,
+manager selection and the three cases (6). This reconstruction fits C0's count and wording but is not proof of which
+modules C0 read; C0's three substantive reviews in the 97 (candidates 12-14) are reused.
+
+**Method.** (1) Each of the 97 titles matched against the 203 crosswalk modules: 78 have a same-titled 2026/27 module
+whose items are all mapped to covered objectives; 19 do not (renamed, merged or dropped modules, the cases and the
+ethics guidance). A match is a pointer, not a review. (2) The 2,231 non-generic section heads were screened for words
+absent from the compendium (74 flagged, mostly case names); the screen only shortlists. (3) By hand, every module's heads
+were compared with entry titles and, where a concept looked thin, with entry text; substantive curriculum passages
+were opened only to locate a gap. (4) Each candidate was checked against existing objectives (granularity follows the
+compendium: one objective per distinct capability, as for digital, barrier and Asian options) and against L1-L4.
+(5) Support was checked in held or registered sources; the 13 C0 title-pass candidates were resolved in the same pass.
+
+**Outcome for the 97 modules.** 93 are already explained by existing entries (for example market structures,
+cycles, fiscal and monetary policy, geopolitics, the FSA chapter including translation, CAMELS and insurers, payout,
+restructuring, equity valuation models, CME, asset allocation including Black-Litterman, surplus optimisation and
+risk parity, attribution, manager selection, GIPS and the ethics chapter). The 13 C0 title-pass candidates all have
+counterparts: probability trees (`def:conditional-moments`, `meth:bayesian-updating`), market efficiency
+(`def:market-efficiency`, `mech:biases-market-anomalies`), indexes (`meth:index-value-return-calculation`), equity
+securities, equity valuation tools, GIPS, ethics application, FS modelling, passive equity, the two risk-management
+cases (`meth:swf-risk-case`, `meth:lifetime-exposures`, `ex:investment-planning-case`), and Topics in Private Wealth
+Management except item D2 below. Depth gaps were found in four modules (D1, D2, and the reused B16-B17).
+
+**Candidates** (IDs C1-N distinct, C1-D depth, C1-U unresolved; curriculum discovery locators are printed pages from the 2024 contents pages; C0's table used PDF pages).
+
+| ID | Concept (neutral) | Related entries / objectives | Missing teaching | Discovery; source status | Objective effect | Dependencies; batch |
+|---|---|---|---|---|---|---|
+| C1-N1 (B2) | Lookback options: floating and fixed strike, valuation during life with the running extreme, discrete against continuous monitoring | `meth:barrier-option-valuation`, `meth:asian-option-valuation`; `objective:value-barrier-options-monitoring` | No lookback anywhere in the compendium | Backlog B2; Wilmott chap. 26 (from printed p. 445; located in the contents, not read) and the lookback passages of chap. 24 (PDF pp. 443-447, read); Hull sec. 26.11 pp. 623-625, formulas and Example 26.2 (7.79 put, 8.04 call) read | **+1** (`objective:value-lookback-options`), matching the per-exotic objectives | Barrier entry (monitoring shift), MC entries; L5 |
+| C1-N2 (B5) | Hedging options with proportional transaction costs: Leland's adjusted volatility, its sign for long and short positions, the Hoggard-Whalley-Wilmott portfolio equation, and rebalancing rules | `res:delta-hedging-volatility-mismatch` (assumes no costs), `meth:greeks-delta-gamma-hedging`; `objective:quantify-hedging-volatility-mismatch` | Costs appear only as an assumption ("no costs"); the earlier `meth:leland-cost-adjusted-volatility` question was blocked for lack of Leland (1985) | Backlog B5; Wilmott chap. 48 pp. 783-812 (sec. 48.3 Leland, pp. 784-785; HWW; strategy comparison) located and opening pages read; `vo-leland-1985` catalogued, not held | **+1** (`objective:hedge-options-with-transaction-costs`) | P4 entry and its script; L5 |
+| C1-D1 | Country risk premium in the cost of equity: sovereign default spread, relative-volatility scaling, melded approach | `meth:cost-of-debt-equity-estimation`, `meth:capital-structure-benchmarking` ("country risk" listed only); `objective:estimate-cost-of-debt-and-equity` | No method or example | L2 vol. 3, Cost of Capital: Advanced Topics, "International Considerations" (pp. 119 and 139); `applied-corporate-finance-2014` printed pp. 98-107 (PDF 114-123) located, passages read | 0 (depth) | None; a later small depth batch |
+| C1-D2 | Concentrated single-stock positions: risk and tax trade-off, staged diversification and completion portfolios, zero-premium collars, variable prepaid forwards, exchange funds, charitable remainder trusts | `meth:complex-client-situations`, `meth:wealth-transfer-strategies`, `meth:covered-call-protective-put`; `objective:advise-complex-client-situations` | Concentration is named; hedging and monetisation strategies are not taught | L3 vol. 4, Topics in Private Wealth Management (pp. 310-323); `managing-investment-portfolios-2007` Example 11-3 and Exhibit 11-4, pp. 693-695 read; Hull collars (held); US constructive-sale and exchange-fund rules (IRC secs. 1259, 721) not yet read | 0 (depth) | Option-strategy entries; later depth batch |
+| C1-D3 (B15) | Option-strategy practice: horizon move against straddle break-even, put writing to buy below market, skew and term-structure gauges | `meth:option-spreads-volatility-strategies`, `meth:covered-call-protective-put` | Short practical items | C0 candidate 5; `s7-natenberg` held, relevant pages not yet located | 0 (depth) | Optional with L5 |
+| C1-D4 (B1) | Forward (Fokker-Planck) Kolmogorov equation and transition densities | `res:risk-neutral-pricing-feynman-kac` (backward equation already from Wilmott chap. 10) | The forward equation only | Backlog B1; Wilmott chap. 10 (held; secs. 10.11-10.12 already read) | 0 (depth); low priority | None |
+| C1-U1 (B4) | Vanna-volga smile construction and pricing | `meth:greeks-delta-gamma-hedging` (vanna, volga), `def:implied-volatility-surface` | The method itself | Backlog B4; `cur-bossens-rayee-skantzos-deelstra-2010` and `cur-castagna-fx-smile` catalogued, neither held nor read | Possibly +1; unresolved until a source is read | Smile entries |
+| C1-U2 (B6) | Hedge-fund replication (factor and payoff-distribution), CTA structure, convertible-arbitrage risks | `meth:hedge-fund-factor-exposures`, `meth:hedge-fund-strategy-classification` | Replication methods; CTA vehicles | Backlog B6; CAIA chaps. 29, 32-34 held but need an owner decision on citing CAIA; Kat-Palaro, Hasanhodzic-Lo not held | Possibly +1 (replication); rest depth | Owner decision |
+| C1-U3 | Depth without a source: conditional hedge-fund betas (B14), life-insurance pricing (B16), economics of regulation including antitrust (B17; `openstax-microeconomics-3e` registered, chapters not located), incapacity planning (L3 vol. 4, p. 345), an empirical EVT illustration (B9, needs data) | as in Section 8 | as in Section 8 | as listed | 0 each | Source or data first |
+
+Closed without action: B8 (historical context only), B10 (moot after L4 used Broadie-Glasserman), C0's minor items
+(proportional yield volatility; KWF and Gauss+ named only).
+
+**Counts (inspected corpus only).**
+1. Implemented objectives: **447**.
+2. Confirmed distinct candidate objectives: **2** (C1-N1, C1-N2).
+3. Depth extensions adding no objective: **4** source-supported (C1-D1 to C1-D4), plus five unsourced depth items in
+   C1-U3.
+4. Unresolved candidates: **2** that might add an objective (C1-U1, C1-U2) and the five depth items of C1-U3.
+5. Provisional total for this corpus: **449** (447 + 2); at most 451 if C1-U1 and C1-U2 are both confirmed. This does
+   not exhaust the finance library; the 45-objective preference was not used as a target.
 
 ## 9. Records for each package
 
@@ -1630,6 +1759,16 @@ Routine defaults (no input needed unless the owner objects): implement on a new 
 commit; `planned_batch` 9; scripts in `numerical-pricing/` and `derivative-overlays/`; Broadie and Glasserman (1996)
 registered under a neutral key; no push or PR.
 
+### 10.5 Decisions needed to freeze Batch L5
+
+- **L5-D1. Scope.** Recommended: L5-a and L5-b (+2). Alternatives: add L5-c (Natenberg depth, +0), or one package only.
+- **L5-D2. Leland (1985) through Wilmott.** Recommended: cite the model through Wilmott chap. 48, which derives it, and
+  name Leland as the originator; alternative: obtain `vo-leland-1985` first (not held; no purchase authorised).
+- **L5-D3. Depth items C1-D1 and C1-D2** (country risk premium; concentrated positions). Recommended: a separate small
+  depth batch after L5, since they belong to other chapters; alternative: add them to L5 (+0 objectives).
+
+Routine defaults: new local branch from the commit that records this proposal; `planned_batch` 10; no push or PR.
+
 ## 11. Sequence
 
 1. Owner decides E1 and E2. Done.
@@ -1646,7 +1785,10 @@ registered under a neutral key; no push or PR.
 8. L3 wording correction (CSRD first wave) and the Batch L4 proposal, 2026-10-21, on `codex/library-gap-l4-proposal`;
    committed locally as `95c547a`.
 9. Batch L4 frozen with corrections L4-C1 to L4-C3 and implemented, 2026-10-21, on `codex/library-gap-batch-l4`;
-   one local commit. Next: owner review; human review of L1-L4 outstanding; no further batch is proposed here.
+   one local commit.
+10. C1 pass, 2026-10-21, on `codex/library-gap-c1-inventory`: three L4 corrections (Section 7), the C1 gap inventory
+    (Section 8.2) and the Batch L5 proposal (Section 7; decisions in Section 10.5); one local commit. Next: owner
+    freeze of L5; human review of L1-L4 outstanding.
 
 ## 12. Risks and limits
 
@@ -1663,6 +1805,9 @@ registered under a neutral key; no push or PR.
 - L4's seasoned variance-swap value and the annualised basis mapping are Interpretation, checked for consistency and
   against an independent simulation or exact identities, not quoted from a source. The cross-currency example uses
   assumed fixings with exact accrual; real ACT/360 compounding in arrears, collateral and curves are not modelled.
+- The C1 inventory compared section heads by hand and opened curriculum passages only to locate gaps; a heading that
+  looks explained may still hide depth. C0's 76 modules were not recompared (their membership is reconstructed from
+  C0's categories). The inventory covers the 18 volumes and the backlog, not the whole finance library.
 - C0 is a bounded sample, not a census. Hand comparison of section heads covered 76 of 175
   modules, and the unexamined candidates are listed in Section 8.1. A gap that C0 did not find
   may still exist.

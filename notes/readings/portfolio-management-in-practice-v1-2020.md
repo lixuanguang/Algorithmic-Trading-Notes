@@ -2,7 +2,7 @@
 key: portfolio-management-in-practice-v1-2020
 pathways: [multi-asset-systematic-macro, currency-markets]
 version: CFA Institute, Portfolio Management in Practice, Volume 1: Investment Management, CFA Institute Investment Series, John Wiley & Sons, 2020 (ISBN 978-1-119-74369-9). Copy used: local PDF outside the repository (SHA-256 9753edc5fb686f1ff7a1336481d6d8d3b3ad48da8003f4696a177c7d85f28bef), text layer; printed page = PDF page - 28 (running heads on even pages read "Managing Investment Portfolios"). A CFA Institute Investment Series book; no examination curriculum volume was used
-sections: chap. 3, pp. 37-81 (CME framework, challenges, growth and shocks, Example 5, forecasting approaches, cycle phases and Example 7, inflation, policy and policy mix Exhibit 5, yield curve, linkages); chap. 4, pp. 93-142 (fixed-income DCF and Example 1, building blocks, EM debt, Grinold-Kroner and Example 4, Singer-Terhaar, EM equity, real estate, exchange rates, volatility, smoothing eq. 16, ARCH eq. 17, global portfolio reweighting); chap. 5, pp. 155-207 (governance, economic balance sheet, approaches, SAA, implementation, rebalancing); chap. 6, pp. 211-292 (MVO, Monte Carlo, criticisms, reverse optimisation Exhibit 12, Black-Litterman, liquidity, risk budgeting Exhibit 19, factor-based allocation, liability-relative approaches, goals-based modules Exhibit 36 and the Smiths, heuristics, rebalancing Exhibit 48); chap. 7, pp. 307-356 (size, liquidity, horizon and regulatory constraints, taxes, revision, TAA, behavioural biases); chap. 8, pp. 369-440 (currency return and risk, strategic decisions, programme formulation, active strategies, forwards, roll yield, options, cost reduction, multiple currencies, emerging markets and NDFs); chap. 6, sec. 4, pp. 268-283 (completion batch, 2026-10-20)
+sections: chap. 3, pp. 37-81 (CME framework, challenges, growth and shocks, Example 5, forecasting approaches, cycle phases and Example 7, inflation, policy and policy mix Exhibit 5, yield curve, linkages); chap. 4, pp. 93-142 (fixed-income DCF and Example 1, building blocks, EM debt, Grinold-Kroner and Example 4, Singer-Terhaar, EM equity, real estate, exchange rates, volatility, smoothing eq. 16, ARCH eq. 17, global portfolio reweighting); chap. 5, pp. 155-207 (governance, economic balance sheet, approaches, SAA, implementation, rebalancing); chap. 6, pp. 211-292 (MVO, Monte Carlo, criticisms, reverse optimisation Exhibit 12, Black-Litterman, liquidity, risk budgeting Exhibit 19, factor-based allocation, liability-relative approaches, goals-based modules Exhibit 36 and the Smiths, heuristics, rebalancing Exhibit 48); chap. 7, pp. 307-356 (size, liquidity, horizon and regulatory constraints, taxes, revision, TAA, behavioural biases); chap. 8, pp. 369-440 (currency return and risk, strategic decisions, programme formulation, active strategies, forwards, roll yield, options, cost reduction, multiple currencies, emerging markets and NDFs); chap. 6, sec. 4, pp. 268-283 (completion batch, 2026-10-20); library gap-filling Batch L6 (2026-10-21): chap. 16, sec. 6, pp. 904-913 (concentrated positions: risks, approaches, staged diversification and completion portfolios, monetisation, collars and Example 12, exchange funds and Exhibit 15, charitable remainder trust and Exhibit 16, Example 13)
 read:
 status: draft
 ---
@@ -10,6 +10,9 @@ status: draft
 Prepared on 2026-10-19 by the macro, allocation and currency batch from source checks, not from study: the headings that need your own reading are left empty. Used for the capital-market-expectations, strategic-asset-allocation and currency-management entries.
 
 Extended on 2026-10-20 by the completion batch (2026-10-20), from source checks, not from study: used also for `meth:goals-based-financial-plan` (goals-based planning).
+
+
+Also used by library gap-filling Batch L6 (2026-10-21) for the concentrated-position block of `meth:complex-client-situations` (`private-wealth-management`).
 
 ## Question and claim
 
@@ -26,6 +29,8 @@ Extended on 2026-10-20 by the completion batch (2026-10-20), from source checks,
 - Exhibit 5 (pp. 74-75) maps persistent policy mixes to the level of real and nominal rates, not to the slope.
 - Goals-based minimum-expectation returns equal mu - z sigma / sqrt(T) to within 0.1 point (Exhibit 36); the Smiths' 6,671 and 2,679 thousand need unrounded rates of about 4.13% and 6.81% (pp. 274-275).
 - Factors favouring more currency hedging: short horizon, risk aversion, immediate liquidity needs, fixed income, cheap hedging, volatile markets, scepticism of active currency management (pp. 393-395).
+
+- Concentrated positions (chap. 16, sec. 6): four risk and tax considerations (p. 904); sell, staged diversification, hedge and monetise, tax-free exchanges, charitable giving, holding (pp. 905-906); Exxon: 225,000 tax on a 900,000 gain at 25 percent, tracking error 19.8 percent, last 2 percent kept at index weight (pp. 907-908); monetisation as hedge then borrow, constructive sale named (pp. 908-909); Example 12 collar capped at 150,000, covered call 225,000 (pp. 910-911); exchange fund seven years, 20 percent qualified assets ('usually REITs', not reconciled with 26 U.S.C. 351(e)(1)(B)(iv)), Exhibit 15 1,326,442 against 1,486,538, reproduced (p. 912); CRT (p. 912). Tax statements are textbook summaries, not legal support.
 
 ## Limits
 

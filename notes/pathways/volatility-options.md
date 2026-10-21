@@ -100,6 +100,8 @@ Written in library gap-filling Batch L5 (2026-10-21):
 
 Sources: Hull, 11th Global ed., sec. 26.11; Wilmott, 2nd ed., chaps. 24, 26 and 48. Synthetic examples only. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l5-21-october-2026).
 
+Written in library gap-filling Batch L6 (2026-10-21): `meth:covered-call-protective-put`'s collar item gained the zero-cost condition and the range forward's convergence to a forward (Hull sec. 17.2), linking to the concentrated-position block of `meth:complex-client-situations`; `meth:transaction-cost-hedging` clarified (each side's adjustment, twice it between short and long). See [record](../source-review-records.md#library-gap-filling-batch-l6-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.

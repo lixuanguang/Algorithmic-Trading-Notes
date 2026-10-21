@@ -12432,7 +12432,7 @@
     "sources": [
      {
       "key": "applied-corporate-finance-2014",
-      "locator": "pp. 137-141; pp. 94-105"
+      "locator": "pp. 137-141; pp. 94-105; Batch L6: pp. 89-93, 98-107, 133-135"
      }
     ],
     "reading_notes": [
@@ -12442,7 +12442,7 @@
     "entry_evidence": [
      "meth:cost-of-debt-equity-estimation"
     ],
-    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 11 (YTM, synthetic rating, implied ERP, CAPM, three-factor, build-up, bond-yield-plus, total beta); corrected 2026-10-20 (PR #31 audit): CAPM cost of equity 9.32% with options in market equity",
+    "example": "notes/artefacts/corporate-finance/corporate-finance-checks.py: part 11 (YTM, synthetic rating, implied ERP, CAPM, three-factor, build-up, bond-yield-plus, total beta); corrected 2026-10-20 (PR #31 audit): CAPM cost of equity 9.32% with options in market equity; notes/artefacts/corporate-finance/country-risk-premium-check.py (Batch L6, 2026-10-21: Damodaran Table 4.5, Illustration 4.2, Table 4.9 and the Vale R$ cost of equity reproduced; original country-risk example in float and exact arithmetic; zero limit; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l6-21-october-2026); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1",
     "correction_record": "notes/source-review-records.md#corporate-equity-audit-correction-pass-20-october-2026"
    },
    "supersedes": null
@@ -17868,16 +17868,21 @@
      {
       "key": "s7-natenberg",
       "locator": "chap. 17, p. 323"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 17, sec. 17.2, pp. 387-389; chap. 26, sec. 26.1, p. 615 and n. 1"
      }
     ],
     "reading_notes": [
-     "notes/readings/s7-natenberg.md"
+     "notes/readings/s7-natenberg.md",
+     "notes/readings/s7-hulloptions.md"
     ],
     "review_record": "notes/source-review-records.md#derivatives-portfolio-and-execution-batch-19-october-2026",
     "entry_evidence": [
      "meth:covered-call-protective-put"
     ],
-    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 2 (payoffs, maximum profit and loss and break-evens of covered calls, protective puts and short-position hedges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/option-strategies/option-strategy-checks.py part 2 (payoffs, maximum profit and loss and break-evens of covered calls, protective puts and short-position hedges); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; notes/artefacts/private-wealth/concentrated-position-check.py (Batch L6: zero-cost collar strike solved, deterministic)"
    },
    "supersedes": null
   },
@@ -20429,23 +20434,43 @@
      },
      {
       "key": "us-internal-revenue-code-26",
-      "locator": "sec. 1202(a)(1), (a)(5), (b)(1), (b)(4)"
+      "locator": "sec. 1202(a)(1), (a)(5), (b)(1), (b)(4); secs. 351(e)(1), 664(b)-(d), 704(c)(1)(B), 721(a)-(b), 737(a)-(b), 1259"
      },
      {
       "key": "sec-rule-10b5-1",
       "locator": "para. (c)(1)(ii)(B)"
+     },
+     {
+      "key": "portfolio-management-in-practice-v1-2020",
+      "locator": "chap. 16, sec. 6, pp. 904-913"
+     },
+     {
+      "key": "managing-investment-portfolios-2007",
+      "locator": "chap. 11, Example 11-3 and Exhibit 11-4, pp. 693-695"
+     },
+     {
+      "key": "irs-rev-rul-2003-7",
+      "locator": "2003-5 I.R.B., pp. 363-365"
+     },
+     {
+      "key": "us-treas-reg-1-351-1",
+      "locator": "para. (c)(1)-(6)"
      }
     ],
     "reading_notes": [
      "notes/readings/irs-rev-proc-2025-32.md",
      "notes/readings/us-internal-revenue-code-26.md",
-     "notes/readings/sec-rule-10b5-1.md"
+     "notes/readings/sec-rule-10b5-1.md",
+     "notes/readings/portfolio-management-in-practice-v1-2020.md",
+     "notes/readings/managing-investment-portfolios-2007.md",
+     "notes/readings/irs-rev-rul-2003-7.md",
+     "notes/readings/us-treas-reg-1-351-1.md"
     ],
     "review_record": "notes/source-review-records.md#completion-batch-20-october-2026",
     "entry_evidence": [
      "meth:complex-client-situations"
     ],
-    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 12 (founders and executives); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 12 (founders and executives); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; notes/artefacts/private-wealth/concentrated-position-check.py (Batch L6, 2026-10-21: sale, zero-cost collar and a specified variable prepaid forward compared; advance as a loan plus a collar; PMiP Exhibit 15 reproduced and a break-even fee; deterministic; review record notes/source-review-records.md#library-gap-filling-batch-l6-21-october-2026)"
    },
    "supersedes": null
   },

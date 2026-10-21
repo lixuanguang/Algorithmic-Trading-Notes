@@ -1,6 +1,14 @@
 # Compendium gap-filling from the owner's finance library: implementation plan v2
 
-**Current status (2026-10-21, after Batch L5).** On `codex/library-gap-batch-l5`, created from `main` at `c26a09e`
+**Current status (2026-10-21, after Batch L6).** On `codex/library-gap-batch-l6`, created from `af47d03` (L5). Two L5
+clarifications (Section 7) and **Batch L6** (C1-D1 country risk premium, C1-D2 concentrated positions; depth only):
+`meth:cost-of-debt-equity-estimation`, `meth:complex-client-situations` and `meth:covered-call-protective-put`
+extended, two deterministic check scripts (three first-run failures, all harness or hand-value errors, recorded), new
+source keys for Rev. Rul. 2003-7 and Treas. Reg. 1.351-1. **449/449 objectives, 1,030/1,030 items** (unchanged). Record:
+`notes/source-review-records.md`, *Library gap-filling, Batch L6, 21 October 2026*. Local commits only.
+
+Status after Batch L5 (kept for the record):
+**Status (2026-10-21, after Batch L5).** On `codex/library-gap-batch-l5`, created from `main` at `c26a09e`
 (the PR #33 merge; second parent and tree identical to the expected `d71e127`; clean tree; 447/447 objectives,
 1,030/1,030 items). Two pre-L5 audit corrections (C1-F1, the Monte Carlo Greeks resimulation-bias sentence; C1-F2, the
 C1 depth-extension classification) and **Batch L5 frozen and implemented** (L5-D1 to L5-D3; Section 7, "Pre-L5 audit
@@ -1555,6 +1563,9 @@ case, Hull Problem 26.23, is excluded).
    $\le10^{-12}$ (they are algebraically identical, so only rounding remains) at six points with $q=0$ and $q=0.02$.
 4. Pricing equation: central-difference residual of $V_t+\frac12\sigma^2S^2V_{SS}+(r-q)SV_S-rV$ at interior points
    ($S\ne$ extreme), steps $h_S=0.01$, $h_t=10^{-5}$, absolute $\le10^{-6}$ (truncation and rounding both below $10^{-9}$).
+   *Pre-run criterion, kept as frozen. Amended 2026-10-21 after the first run failed it (harness, $O(h_S^2)$
+   truncation): the same $10^{-6}$ is applied to the Richardson-extrapolated residual $(4R(0.01)-R(0.02))/3$; see
+   `notes/source-review-records.md`, *Library gap-filling, Batch L5, 21 October 2026*, "Checks".*
 5. Boundary condition $\partial V/\partial M=0$ on $S=M$ (Wilmott p. 447): one-sided difference in $S_{\min}$ at $S=S_{\min}$
    is $\le10^{-2}$ times the derivative at an interior point ($S=50$, $S_{\min}=45$), and shrinks linearly: the ratio of the
    differences at $h=10^{-2}$ and $10^{-3}$ lies in $[5,20]$.
@@ -1640,6 +1651,115 @@ simulated 95th-percentile prices (Leland 14.90 at four days, delta tolerance 15.
 
 **Failure policy.** Deterministic parts first; any failure classified (formula, unit, sign, harness, approximation) and
 reported with its first-run output; no seed, path count, grid or tolerance is changed to pass.
+
+### L5 clarifications (2026-10-21, before L6)
+
+Made on `codex/library-gap-batch-l6`, created from `codex/library-gap-batch-l5` at `af47d03` (parent `c26a09e`; clean;
+449/449, 1,030/1,030). (1) `meth:transaction-cost-hedging`: "long--short difference per side" replaced by the explicit
+statement that Wilmott's $2\kappa SN'(d_1)\sqrt{T-t}/\sqrt{2\pi\delta t}$ is each side's adjustment from the frictionless value,
+so the short-minus-long difference is about twice it to first order (formula and numbers unchanged). (2) In the frozen
+L5-a specification, a dated cross-reference after check 4 points to the amended Richardson gate and the L5 review record;
+the pre-run criterion is kept as written. Editorial only; no rerun.
+
+### Batch L6 (2026-10-21): C1-D1 and C1-D2, depth only (+0 objectives)
+
+Owner scope: C1-D1 (country risk premium) and C1-D2 (concentrated single-stock positions), both depth within existing
+objectives; C1-D3, C1-D4 and C1-U1 to C1-U3 stay deferred; no inventory repeat. Specification written after source review
+and before any L6 script ran.
+
+**Sources read** (held = library or git-ignored copies; read = these passages).
+- Damodaran, *Applied Corporate Finance*, 4th ed. (`applied-corporate-finance-2014`, SHA-256 `ab6e2462…a7f4`, printed =
+  PDF $-16$): pp. 89-93 (currency consistency, default-spread-adjusted local risk-free rates, CDS alternative), pp. 98-107
+  (mature premium plus country premium; default-spread, relative-volatility and melded methods; Table 4.5; whether a
+  country premium should exist; company premium weighted by revenues, with production and reserves caveats; Illustration
+  4.2, Table 4.9) and pp. 133-135 (Illustration 4.13: dollar cost of equity, R$ by inflation differential). Slips: India's
+  spread is 2.00 percent in the prose of p. 98 but 2.25 in its equation and Table 4.5; Table 4.5 is headed "March 2009"
+  while its inputs are dated November 2013; n. 15 notes the equity volatility is in R$ and the bond's in dollars.
+- *Managing Investment Portfolios* (2007) (`managing-investment-portfolios-2007`, printed = PDF $-29$): Example 11-3 and
+  Exhibit 11-4, pp. 693-695; p. 687 (concentrated positions as a unique circumstance); p. 47 (charitable remainder trust
+  defined only). Its tax statements are 2007 textbook summaries and are not used as legal support.
+- *Portfolio Management in Practice*, Vol. 1 (2020) (`portfolio-management-in-practice-v1-2020`, registered and already
+  cited; same copy as its reading note, SHA-256 `9753edc5…8bef`, printed = PDF $-28$, checked on pp. 903-904): chap. 16, sec. 6, pp. 904-913 (risks;
+  approaches; staged diversification and completion portfolios with the Exxon tax-against-tracking-error trade-off;
+  monetisation as hedge then borrow; zero-cost collar and Example 12; constructive sale named; exchange funds and Exhibit
+  15; charitable remainder trust, Exhibit 16; Example 13).
+- Hull, OFOD 11th Global ed. (same copy as L5): sec. 12.2, pp. 270-271 (protective put); sec. 17.2, pp. 387-389 (range
+  forwards: zero cost, strikes moved together give a forward); sec. 26.1, p. 615 and n. 1 ("zero-cost collar" as another name).
+- US primary texts, retrieved 2026-10-21 (LII, Cornell; IRS): 26 U.S.C. secs. 1259 (whole), 721(a)-(b), 351(e)(1),
+  704(c)(1)(B), 737(a)-(b), 664(b)-(d); 26 C.F.R. sec. 1.351-1(c)(1)-(6); Rev. Rul. 2003-7, 2003-5 I.R.B. 363-365.
+  Not read: sec. 170 (charitable deduction), any regulations under sec. 1259(c)(1)(E), later case law on prepaid forwards,
+  state law. These are named as unread where relevant and nothing is taught from them.
+
+**Discrepancies.** PMiP says an exchange fund's 20 percent of "qualified assets" is "usually real estate investment
+trusts"; sec. 351(e)(1)(B)(iv) and Reg. sec. 1.351-1(c)(1)(ii) count REIT interests among the investment assets, so the
+entry states only the threshold. PMiP and MIP describe charitable trusts as letting shares be sold "without incurring
+capital gains taxes"; sec. 664(c)(1) exempts the trust, but sec. 664(b) carries the trust's undistributed capital gain
+out to the income beneficiary in the payments, so the entry teaches deferral and spreading at the beneficiary level.
+MIP's "private exchange ... tax free" is not verified and is not taught as a tax result.
+
+**L6-a: entry change.** Extend `meth:cost-of-debt-equity-estimation` (objective `estimate-cost-of-debt-and-equity`):
+a *Country risk* block in Statement (mature premium plus country premium; the three methods; beta-scaled against
+additive use; revenue weights with production caveats; whether the premium should exist), conventions in Notation-style
+text (currency of cash flows and risk-free rate; local rate net of the local-currency default spread; premium measured
+against the mature market's government bond; volatilities annualised from the same frequency and, ideally, currency),
+an original example in Practice, and Pitfalls (double counting the default spread; treating the default spread as the
+equity premium; incorporation country instead of operations; mixing currencies).
+
+*Example inputs (synthetic).* Dollar risk-free 4.0 percent; mature premium 5.0; country dollar-bond default spread 3.0;
+annualised volatilities: country equity 30, mature equity 18, country dollar bond 20; beta 1.2; operations 60 percent in
+the country, 40 mature; local government bond 11.0 with local-currency default spread 2.5; expected inflation 6.0 local
+and 2.5 dollar. Expected (hand): country premiums 3.0, 3.3333 and 4.5 for the default-spread, relative-volatility and
+melded methods; total premiums 8.0, 8.3333, 9.5; dollar cost of equity with the melded premium 15.4 (beta-scaled) and
+14.5 (additive); revenue-weighted premium 7.7 and cost of equity 13.24; local risk-free 8.5; local cost of equity by
+inflation differential 17.107 against 17.74 with the dollar premium kept; double counting with the unadjusted 11.0 gives
+20.24. Zero limit: spread 0 gives zero country premium for the spread-based methods (cost of equity 10.0), while the
+relative-volatility method still gives 3.3333, since it does not use the spread.
+
+*Acceptance* (`notes/artefacts/corporate-finance/country-risk-premium-check.py`, deterministic, no random inputs):
+the example computed in floating point and again in exact rational arithmetic, agreeing to $10^{-12}$, and each matching
+the hand values above to $5\times10^{-5}$ percentage point (the hand values are exact or rounded at 4-5 decimals);
+reproduction of Damodaran's printed values to their rounding ($\le0.005$ percentage point): Table 4.5 (1.68, 3.00; 2.52,
+3.60; 0.84, 1.44), Illustration 4.2 (8.50, 9.10, 6.94), Disney's revenue-weighted 5.76 from Table 4.9, Vale's R$ cost of
+equity 18.67 and 18.87 (pp. 134-135, with $k_{\$}=2.75+1.1503\times7.38$); and the zero limit exactly.
+
+**L6-b: entry changes.** Extend `meth:complex-client-situations` (objective `advise-complex-client-situations`) with
+a block on concentrated public-stock positions: the risks (company-specific, inefficiency, liquidity, tax); the menu (sell,
+staged diversification, completion portfolio, hedging and monetisation, exchange fund, charitable remainder trust,
+holding); what each retains and surrenders (exposure, liquidity, financing, counterparty, upside, control, fees); US
+federal tax mechanics as of 21 October 2026 from the primary texts above, qualified as rules not advice; and an original
+example. Extend `meth:covered-call-protective-put`'s collar item with the zero-cost condition and the convergence to a
+forward (Hull), linking to the new block. The PMiP Exxon figures (tax 225,000; tracking error 19.8 percent; 2 percent
+index weight) are reproduced in text where used.
+
+*Example contract and inputs (synthetic; specified, not "a typical VPF").* Holding 100,000 shares at 50 (5 million),
+basis 10 per share, an assumed flat 20 percent tax on the gain (illustrative, not a statutory rate), one year, $r=4$
+percent continuously compounded, $q=0$, volatility 30 percent, BSM values. (i) *Sale*: tax 900,000, 4.1 million
+reinvested (riskless here, to isolate exposure). (ii) *Zero-cost collar*: long 45 put, short call at the strike $K_2$
+that makes the call worth the put (solved, bisection to $10^{-10}$); no cash; value $\min(\max(S_T,45),K_2)$ per share.
+(iii) *Variable prepaid forward*, terms patterned on the structure in Rev. Rul. 2003-7: at maturity deliver all shares
+if $S_T<F=50$, shares worth $NF$ if $50\le S_T\le C=62.5$, and $NF/C$ shares (80 percent) above; shares pledged; cash may
+replace shares. The advance is the BSM present value of the delivery, $N[S_0-c(F)+(F/C)c(C)]$, with no dealer spread
+(stated). (iv) PMiP Exhibit 15 reproduced, and the annual fee at which the exchange fund's after-tax value equals the
+sale's (Interpretation, bisection).
+
+*Acceptance* (`notes/artefacts/private-wealth/concentrated-position-check.py`, deterministic): put-call parity and the
+zero-cost condition to $10^{-10}$; the advance by two routes ($S_0-c(F)$ and $Fe^{-rT}-p(F)$) equal to $10^{-10}$
+relative, showing the prepaid forward as a collar plus a loan; on $S_T\in\{30,40,50,60,70,80\}$, retained plus delivered
+value equals $NS_T$ exactly, delivered shares lie in $[0.8N,N]$, and payoffs from the formula equal the option
+decomposition to $10^{-9}$; hand values for the sale (tax 900,000; 4,264,000 grown at $e^{0.04}$ gives 4,267,328.43) to
+0.01; *[Corrected 2026-10-21 after the first run: these hand values were wrong; the gain is 4,000,000, so
+the tax is 800,000 and 4,200,000 grows to 4,371,405.25. Tolerance unchanged; see the L6 review record.]* PMiP Exhibit 15 (775,000; 1,510,256; 1,948,717; 183,814; 462,179; 1,326,442; 1,486,538) to 1 dollar (printed
+rounding). Reported: $K_2$, the advance as a fraction of value, the break-even fee, and the terminal table.
+
+*First-run outcomes (2026-10-21, recorded after the runs; criteria unchanged).* Country-risk script: India's bond
+volatility was taken from Damodaran's p. 100 formula line (17) instead of Table 4.5 (15), which this specification gates;
+the p. 100 line is itself inconsistent with its printed 7.80 (a further source slip). The hand value 17.107 above is
+correct; the script's literal had been mistyped. Concentrated-position script: see the bracketed correction above.
+
+**Records.** Reading notes (Damodaran, MIP, PMiP, Hull); `sources.tex`: the IRC key extended with secs. 351, 704, 721,
+737, 1259 (retrieved 2026-10-21) and new keys for Reg. sec. 1.351-1 and Rev. Rul. 2003-7; entry evidence for the three
+entries; objective evidence for `estimate-cost-of-debt-and-equity`, `advise-complex-client-situations` and
+`analyse-covered-and-protective-positions`; pathway notes; a review record. Counts stay 449/449, 1,030/1,030.
 
 ## 8. Backlog (needs evidence before it is scheduled)
 
@@ -1774,8 +1894,8 @@ Management except item D2 below. Depth gaps were found in four modules (D1, D2, 
 |---|---|---|---|---|---|---|
 | C1-N1 (B2) | Lookback options: floating and fixed strike, valuation during life with the running extreme, discrete against continuous monitoring | `meth:barrier-option-valuation`, `meth:asian-option-valuation`; `objective:value-barrier-options-monitoring` | No lookback anywhere in the compendium | Backlog B2; Wilmott chap. 26 (from printed p. 445; located in the contents, not read) and the lookback passages of chap. 24 (PDF pp. 443-447, read); Hull sec. 26.11 pp. 623-625, formulas and Example 26.2 (7.79 put, 8.04 call) read | **+1** (`objective:value-lookback-options`), matching the per-exotic objectives | Barrier entry (monitoring shift), MC entries; L5 |
 | C1-N2 (B5) | Hedging options with proportional transaction costs: Leland's adjusted volatility, its sign for long and short positions, the Hoggard-Whalley-Wilmott portfolio equation, and rebalancing rules | `res:delta-hedging-volatility-mismatch` (assumes no costs), `meth:greeks-delta-gamma-hedging`; `objective:quantify-hedging-volatility-mismatch` | Costs appear only as an assumption ("no costs"); the earlier `meth:leland-cost-adjusted-volatility` question was blocked for lack of Leland (1985) | Backlog B5; Wilmott chap. 48 pp. 783-812 (sec. 48.3 Leland, pp. 784-785; HWW; strategy comparison) located and opening pages read; `vo-leland-1985` catalogued, not held | **+1** (`objective:hedge-options-with-transaction-costs`) | P4 entry and its script; L5 |
-| C1-D1 | Country risk premium in the cost of equity: sovereign default spread, relative-volatility scaling, melded approach | `meth:cost-of-debt-equity-estimation`, `meth:capital-structure-benchmarking` ("country risk" listed only); `objective:estimate-cost-of-debt-and-equity` | No method or example | L2 vol. 3, Cost of Capital: Advanced Topics, "International Considerations" (pp. 119 and 139); `applied-corporate-finance-2014` printed pp. 98-107 (PDF 114-123) located, passages read | 0 (depth) | None; a later small depth batch |
-| C1-D2 | Concentrated single-stock positions: risk and tax trade-off, staged diversification and completion portfolios, zero-premium collars, variable prepaid forwards, exchange funds, charitable remainder trusts | `meth:complex-client-situations`, `meth:wealth-transfer-strategies`, `meth:covered-call-protective-put`; `objective:advise-complex-client-situations` | Concentration is named; hedging and monetisation strategies are not taught | L3 vol. 4, Topics in Private Wealth Management (pp. 310-323); `managing-investment-portfolios-2007` Example 11-3 and Exhibit 11-4, pp. 693-695 read; Hull collars (held); US constructive-sale and exchange-fund rules (IRC secs. 1259, 721) not yet read | 0 (depth) | Option-strategy entries; later depth batch |
+| C1-D1 (done in L6, 2026-10-21) | Country risk premium in the cost of equity: sovereign default spread, relative-volatility scaling, melded approach | `meth:cost-of-debt-equity-estimation`, `meth:capital-structure-benchmarking` ("country risk" listed only); `objective:estimate-cost-of-debt-and-equity` | No method or example | L2 vol. 3, Cost of Capital: Advanced Topics, "International Considerations" (pp. 119 and 139); `applied-corporate-finance-2014` printed pp. 98-107 (PDF 114-123) located, passages read | 0 (depth) | None; a later small depth batch |
+| C1-D2 (done in L6, 2026-10-21) | Concentrated single-stock positions: risk and tax trade-off, staged diversification and completion portfolios, zero-premium collars, variable prepaid forwards, exchange funds, charitable remainder trusts | `meth:complex-client-situations`, `meth:wealth-transfer-strategies`, `meth:covered-call-protective-put`; `objective:advise-complex-client-situations` | Concentration is named; hedging and monetisation strategies are not taught | L3 vol. 4, Topics in Private Wealth Management (pp. 310-323); `managing-investment-portfolios-2007` Example 11-3 and Exhibit 11-4, pp. 693-695 read; Hull collars (held); US constructive-sale and exchange-fund rules (IRC secs. 1259, 721) not yet read | 0 (depth) | Option-strategy entries; later depth batch |
 | C1-D3 (B15) | Option-strategy practice: horizon move against straddle break-even, put writing to buy below market, skew and term-structure gauges | `meth:option-spreads-volatility-strategies`, `meth:covered-call-protective-put` | Short practical items | C0 candidate 5; `s7-natenberg` held, relevant pages not yet located. *Corrected (C1-F2): unsupported; held, not located or read* | 0 (depth) | Optional with L5; excluded by L5-D1, deferred |
 | C1-D4 (B1) | Forward (Fokker-Planck) Kolmogorov equation and transition densities | `res:risk-neutral-pricing-feynman-kac` (backward equation already from Wilmott chap. 10) | The forward equation only | Backlog B1; Wilmott chap. 10 (held; secs. 10.11-10.12 already read). *Corrected (C1-F2): those sections are the backward equation; the forward equation is sec. 10.4, printed p. 172, eq. (10.2), read 2026-10-21 (pp. 169-175); now supported* | 0 (depth); low priority | None; deferred |
 | C1-U1 (B4) | Vanna-volga smile construction and pricing | `meth:greeks-delta-gamma-hedging` (vanna, volga), `def:implied-volatility-surface` | The method itself | Backlog B4; `cur-bossens-rayee-skantzos-deelstra-2010` and `cur-castagna-fx-smile` catalogued, neither held nor read | Possibly +1; unresolved until a source is read | Smile entries |
@@ -1956,6 +2076,8 @@ Routine defaults: new local branch from the commit that records this proposal; `
 11. Pre-L5 audit corrections C1-F1 and C1-F2, then Batch L5 frozen (L5-D1 to L5-D3) and implemented, 2026-10-21, on
     `codex/library-gap-batch-l5` from `main` (`c26a09e`); local commits. 449/449 objectives. Next: human review of
     L1-L5; deferred: C1-D1, C1-D2, C1-D3, C1-D4 as an entry, C1-U1 to C1-U3.
+12. L5 clarifications and Batch L6 (C1-D1, C1-D2; +0 objectives), 2026-10-21, on `codex/library-gap-batch-l6` from
+    `af47d03`; local commits. Next: human review of L1-L6; deferred: C1-D3, C1-D4 as an entry, C1-U1 to C1-U3.
 
 ## 12. Risks and limits
 

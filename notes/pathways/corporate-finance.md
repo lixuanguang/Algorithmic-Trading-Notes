@@ -38,6 +38,9 @@ Partly checked 2026-10-20, draft; human review outstanding. See [record](../sour
 
 ## What changed in my view or practice
 
+
+Written in library gap-filling Batch L6 (2026-10-21): `meth:cost-of-debt-equity-estimation` extended with country risk premiums (default-spread, relative-volatility and melded methods; beta-scaled against additive use; revenue weights with production caveats; local risk-free rates net of the default spread; currency translation by inflation differential) from Damodaran, *Applied Corporate Finance*, pp. 89-93, 98-107 and 133-135, with an original example and its zero limit. Checks in `notes/artefacts/corporate-finance/country-risk-premium-check.py`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l6-21-october-2026).
+
 ## Questions carried forward
 
 - The rating-to-spread schedule in `meth:capital-structure-benchmarking` is illustrative; a current published schedule (for example Damodaran's annual ratings table) would test whether Harbour's optimum near 20 percent debt is robust.

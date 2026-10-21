@@ -6559,3 +6559,80 @@ demonstration. Wilmott's empirical comparisons (Jefferies) are reported as print
 (country risk premium), C1-D2 (concentrated positions), L5-c (option-strategy practice; Natenberg passages still to be
 located), C1-D4 as an entry (now sourced), and the unresolved C1-U1 to C1-U3 items. Shortfall 43 against the
 45-objective preference, without padding. Nothing pushed; no PR.
+
+## Library gap-filling, Batch L6, 21 October 2026
+
+**Starting state.** `codex/library-gap-batch-l5` at `af47d03` (parent `c26a09e`, the PR #33 merge), clean, 449/449
+objectives and 1,030/1,030 items, as expected. Branch `codex/library-gap-batch-l6` created from it. Local only.
+
+**L5 clarifications** (plan Section 7, "L5 clarifications"). `meth:transaction-cost-hedging`: Wilmott's p. 788
+approximation stated as each side's adjustment from the frictionless value, with the short-minus-long difference about
+twice it to first order. Frozen L5-a specification: a dated cross-reference after check 4 to the amended Richardson gate
+and the L5 record; the pre-run criterion and its first-run failure are kept. Editorial; no rerun.
+
+**Scope.** Owner decision: C1-D1 and C1-D2, depth only (+0 objectives); C1-D3, C1-D4 and C1-U1 to C1-U3 deferred.
+Specification (inputs, contracts, hand values, tolerances) written in the plan (Section 7, "Batch L6") before either
+script ran.
+
+**Sources read.**
+- Damodaran, *Applied Corporate Finance*, 4th ed. (library PDF, SHA-256 matches the reading note; printed = PDF $-16$):
+  pp. 89-93, 98-107, 133-135.
+- *Portfolio Management in Practice*, Vol. 1 (registered key; same copy as its reading note; printed = PDF $-28$):
+  chap. 16, sec. 6, pp. 904-913.
+- *Managing Investment Portfolios* (2007) (SHA-256 matches; printed = PDF $-29$): pp. 693-695, p. 687, p. 47.
+- Hull, OFOD 11th Global ed. (same copy as L5): sec. 12.2, pp. 270-271; sec. 17.2, pp. 387-389; p. 615 and n. 1.
+- US primary texts retrieved 2026-10-21 into the session scratchpad (not saved in Git): 26 U.S.C. 1259 (whole),
+  721(a)-(b), 351(e)(1), 704(c)(1)(B), 737(a)-(b), 664(b)-(d), and 26 C.F.R. 1.351-1(a)(1), (c)(1)-(6), from LII (Cornell);
+  Rev. Rul. 2003-7 from the 2003-5 Internal Revenue Bulletin PDF on irs.gov. Text extracted locally (pypdf 5.1.0 in a
+  throwaway environment; HTML stripped with a standard-library script) and read directly; no summarising tool was used.
+- Not read, and nothing taught from them: sec. 170, any regulations under sec. 1259(c)(1)(E), Treas. Reg. 1.721-1, later
+  rulings or cases on prepaid forwards, state law. Charitable remainder trusts are included because PMiP p. 912 gives a
+  substantive mechanism and sec. 664 was read; the MIP definition alone (p. 47) would not have sufficed.
+
+**Discrepancies.** Damodaran: India's spread 2.00 in the prose of p. 98 against 2.25 in its equation and Table 4.5;
+the p. 100 India line prints $4.20+2.25(24/17)=7.80$, but 24/17 gives 7.38, and only Table 4.5's 24/15 is consistent with
+7.80; Table 4.5 is headed March 2009 with November 2013 inputs. PMiP: exchange-fund qualified assets "usually REITs",
+not reconcilable with 26 U.S.C. 351(e)(1)(B)(iv) and Reg. 1.351-1(c)(1)(ii), which count REIT interests among the
+investment assets; not taught. PMiP and MIP describe charitable trusts and exchange funds as avoiding or not triggering
+tax; secs. 664(b), 704(c)(1)(B), 737 and the carried-over basis make both deferral, and the entry says so. MIP's
+"private exchange ... tax free" is not verified and not taught as a tax result.
+
+**Entry changes.** `meth:cost-of-debt-equity-estimation` (country-risk block in Statement, example in Practice,
+conventions and dates in Conditions, four new pitfalls); `meth:complex-client-situations` (concentrated-position
+block, US federal tax mechanics dated 21 October 2026, example, Conditions and Pitfalls, See also);
+`meth:covered-call-protective-put` (zero-cost collar condition and convergence to a forward, link). Sources: the IRC key
+extended; new keys `irs-rev-rul-2003-7` and `us-treas-reg-1-351-1` with reading notes. Objective evidence updated for
+`estimate-cost-of-debt-and-equity`, `advise-complex-client-situations` and `analyse-covered-and-protective-positions`;
+no objective added.
+
+**Checks** (deterministic; acceptance frozen in the plan).
+- `notes/artefacts/corporate-finance/country-risk-premium-check.py`. First run: 2 of 23 failed, both harness errors.
+  (1) ``BAD Table 4.5 India: relative-sd 2.52, melded 3.60: 2.5200, 3.1765'': the script took India's bond volatility
+  (17) from the p. 100 formula line, while the specification gates Table 4.5, whose ratio is 24/15; the input was
+  corrected and the p. 100 line is reported as a source slip. (2) ``BAD ke local inflation: ... hand 17.10705: 17.106732'':
+  the hand literal was mistyped ($1.1324\times1.06/1.025-1=17.10673$ percent; the plan's rounded 17.107 was right).
+  No tolerance changed. Final: Table 4.5, Illustration 4.2, Disney 5.7616 and Vale 18.6670 and 18.8733 reproduced to
+  printed rounding; the example agrees in float and exact rational arithmetic to $10^{-12}$ and with the hand values;
+  zero limit exact.
+- `notes/artefacts/private-wealth/concentrated-position-check.py`. First run: 1 failure, ``BAD sale: tax 900,000,
+  4,100,000 reinvested, 4,267,328.43 ...: 4,371,405.25''. The frozen hand values were wrong (gain 4,000,000, so tax
+  800,000 and 4,200,000 grows to 4,371,405.25); the script was right. Literals corrected, tolerance unchanged, and the
+  correction noted beside the spec in the plan. Final: parity and zero-cost strike $K_2=62.0380$ to $10^{-10}$; advance
+  4,529,075.55 (90.58 percent) by two routes to $10^{-10}$; payoff identity exact and decomposition to $10^{-9}$ on the
+  grid; delivered shares 100,000 to 80,000; PMiP Exhibit 15 reproduced to the dollar; break-even fee 1.8081 percent a year.
+
+**Validation.** The two new scripts with warnings as errors (pass; `ruff format` changed layout only, outputs identical to the
+recorded passing runs). `make lint`, `make format-check` (157 files), `make check-compendium` (0 problems),
+`make check-coverage` (0 problems; 449/449 objectives, 1,030/1,030 items) and `make test` (36 passed). `make pdf`
+builds 446 pages (was 445) with no overfull boxes or undefined references; the one underfull box is the pre-existing
+one. Printed pp. 144-145, 186-187 and 300-301 (PDF 150-151, 192-193 and 306-307) rendered and inspected; the script
+name was then removed from the new practice item, as the conventions require. Pre-commit on every changed and new file.
+Reused without rerun: `corporate-finance-checks.py`, `private-wealth-checks.py`, `option-strategy-checks.py` and the L5
+scripts, whose code, inputs and asserted results are unchanged (the L6 edits to their entries add text; the L5 edit is
+wording); `verify-outlines` not rerun, the crosswalk is unchanged.
+
+**Limits.** Editorial coverage only; human review outstanding. Both examples are synthetic; the option values are
+Black--Scholes with no dealer margin, and real collars and prepaid forwards are bespoke. Tax notes are US federal income
+tax only, dated 21 October 2026, rules not advice, and exclude the items listed as not read. Damodaran's market figures
+are from 2013-2014, MIP's from 2007. Deferred: C1-D3, C1-D4, C1-U1 to C1-U3. Objectives unchanged at 449/449, items at
+1,030/1,030. Nothing pushed; no PR.

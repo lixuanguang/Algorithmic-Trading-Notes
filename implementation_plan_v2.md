@@ -1,6 +1,24 @@
 # Compendium gap-filling from the owner's finance library: implementation plan v2
 
-Status: plan only. Written 2026-10-21 (Asia/Singapore) and revised the same day after a
+**Current status (2026-10-21, after the L2 proposal audit).** Batch L1 and its five audit
+repairs are committed locally as `5e0578e` on `codex/library-gap-batch-l1` (parent `2b89791`;
+not pushed, no PR). That commit holds this file at its audited pre-C0 state (SHA-256
+`afb74d11…8e14`). The C0 revision and the audit corrections to the Batch L2 proposal are
+committed separately after it. The corrections are marked "Corrected (L2 audit)" in Section 7
+and listed under "Batch L2 proposal audit corrections". **Batch L2 is awaiting the owner's
+freeze (Section 10.3); nothing in it has been implemented.**
+
+Status after discovery task C0 (kept for the record): Batch L1 (Section 6) and its five
+audit repairs are implemented but not committed, on branch `codex/library-gap-batch-l1` at
+`2b89791`. A later read-only audit found no new actionable L1 defect: the six L1 scripts passed
+with warnings as errors; 36 tests, lint, formatting and the structural checks passed. Coverage is
+434/434 objectives and 1,030/1,030 outline items. That coverage is editorial; human review of the
+L1 entries is outstanding. C0 is complete (Section 8.1). Batch L2 is a proposal (Section 7) and
+is not frozen; it needs the owner decisions in Section 10.3. The C0 revision changed only this
+file. The status paragraphs below and the baselines in them are kept as the record of earlier
+revisions.
+
+Status at first writing: plan only. Written 2026-10-21 (Asia/Singapore) and revised the same day after a
 read-only audit of the first draft. No compendium, notes, coverage, artefact or library file has
 been changed. `implementation_plan.readme` stays the historical record of Batches 0-6 and
 Sections 7-36; adding its pointer section is part of Batch L1, not of this revision.
@@ -37,7 +55,8 @@ folder, no standalone notes, no second book and no new chapter.
 Execution is bounded. Section 6 freezes **Batch L1**, the only batch this plan authorises once
 the decisions in Section 10.1 are made. Everything else is either a proposed later batch whose
 scope is frozen only after the bounded discovery task C0 (Section 7), or a backlog item
-(Section 8) that needs evidence before it can be scheduled.
+(Section 8) that needs evidence before it can be scheduled. C0 has now run. Batch L2 is still
+not authorised; the owner freezes it with the decisions in Section 10.3.
 
 ## 2. Ground rules carried over
 
@@ -115,7 +134,7 @@ uses it (Section 5, step 2).
 | Hilpisch, *Derivatives Analytics with Python* (Wiley 2015, ISBN 978-1-119-03799-6) | PDF metadata and copyright page | None beyond identity | Optional cross-check for MC/LSM code; not required |
 | "Monte Carlo Methods.pdf" (CQF Textbooks folder) | 233-page scan without a text layer (PDF metadata 2004, DjVu origin); author not established | Pages 1-3: no text | **Optional, backlog B10.** No package depends on it; Hull and Wilmott cover Batch L1 |
 | CAIA, *CAIA Level II: Advanced Core Topics in Alternative Investments*, **2nd ed.** (Wiley; copyright 2009, 2012; ISBN 978-1-118-36975-3) | Title page (PDF p. 5), copyright page (p. 6); printed page = PDF page $-34$ | Contents; chap. 33 pp. 475-477 (three replication approaches: factor-based, payoff-distribution, bottom-up) | Backlog B6. Chaps. 29-34 are managed futures, replication and convertible arbitrage; chap. 37 is quantitative equity and is not needed |
-| CFA curricula: 2024 Levels I-III (six volumes each), Level II 2020, 2022 and 2023 vol. 1, Level III 2023 box set; Investment Series books | File list only | None | Gap finding in C0 only (not cited) |
+| CFA curricula: 2024 Levels I-III (six volumes each), Level II 2020, 2022 and 2023 vol. 1, Level III 2023 box set; Investment Series books | File list only (C0 later verified the 18 volumes of 2024 and read the passages in Section 8.1) | None | Gap finding in C0 only (not cited) |
 | Kenyon and Stamm, *Discounting, Libor, CVA and Funding* (2012) | File name | None | Historical cross-check only |
 | Catalogue keys with no local copy: `crypto-shreve`, `s6-glasserman`, `s6-brigo`, `s7-qrm`, `w2-mcneil-frey`, `wide-embrechts-extremal`, `wide-nelsen-copulas`, `w2-thorp-kelly`, `w2-busseti-kelly`, `gap-rates-backward-term-rates`, `vo-broadie-glasserman-kou-1997`, `gap-gregory5` | Catalogue entries only; none is in the repository or the library | None | Cited only if an authorised copy is obtained and read; otherwise Further reading. Kelly (1956) has two catalogue keys; use `ev-kelly-1956` (with DOI), not `s7-kelly` |
 
@@ -129,9 +148,11 @@ rest. Proposed later work (Section 7) and the backlog (Section 8) hold the remai
 | --- | --- | --- |
 | Continuous-time foundations and numerical pricing | P1-P3 | Batch L1 |
 | Hedging with the wrong volatility; growth-optimal sizing | P4-P5 | Batch L1 |
-| Short rates, xVA, default correlation, EVT | P6-P9 | Proposed Batch L2, frozen after C0 |
-| Regulatory and disclosure currency | P10 | Proposed Batch L2 or L3 |
+| Short rates, xVA, default correlation, EVT | P6-P9 | Proposed Batch L2 (Section 7), awaiting freeze |
+| New ideas found by C0: correlation and independence tests, mean-CVaR optimisation, buying on margin | P11 | Proposed Batch L2, owner decision L2-D2 |
+| Regulatory and disclosure currency | P10 | Batch L3 by default (decision L2-D4) |
 | CAIA depth, lookbacks, Kolmogorov equations, second-order Greeks beyond a sentence, MC Greeks, others | B1-B10 | Backlog |
+| C0 depth gaps not placed in L2 | B12-B17 | Backlog |
 
 ## 5. Method for every package
 
@@ -487,6 +508,10 @@ not changed and no tolerance was loosened. All ten objectives are kept; none was
 
 ### C0. Bounded CFA cross-level comparison (exploratory; not part of Batch L1)
 
+**Completed 2026-10-21.** All 15 candidate reviews were used, including the six required
+readings. The findings, the extent of each pass and what was left unexamined are in Section 8.1.
+The specification below is kept as it was run.
+
 C0 runs after Batch L1 and before Batch L2 is frozen. It is gap finding only: no entry is
 written and nothing is cited.
 
@@ -513,10 +538,73 @@ written and nothing is cited.
 - **Output.** A short table added to Section 8 of this file, and a Batch L2 scope proposal.
   C0 ends when the cap is reached or both passes are complete.
 
-### Proposed Batch L2 (frozen only after C0)
+### Proposed Batch L2 (refined by C0 and corrected after audit, 2026-10-21; awaiting owner freeze)
 
-Sources are in hand for each package; the substantive passages are still to be read. Each
-package states its data and its claims.
+**What C0 changed** (findings in Section 8.1).
+- The six required readings teach nothing at worked depth that the mapped entries do not,
+  apart from five depth gaps. One of them bears on an L2 package: CVA on a calibrated rate tree,
+  including a risky floater and its discount margin (candidate 4). It would extend
+  `meth:risky-bond-cva` and adds no objective.
+- The 2024 curricula do not teach the P7-P9 subjects. Wrong-way risk and extreme value theory
+  are only named (L1 vol. 6, PDF p. 164; L3 vol. 4, PDF p. 156), and copulas and Kelly sizing
+  do not appear. P6-P9 therefore rest on the Section 3.1 evidence, not on C0.
+- C0 found three new ideas whose sources are registered or openly available. They are proposed
+  as package P11.
+
+**Scope, if decisions L2-D1 to L2-D5 are taken as recommended (Section 10.3).**
+- New entries: 11 (P6 2, P7 3, P8 2, P9 1, P11 3).
+- New topic files: 2 (`corporate-credit-capital/counterparty-xva.tex` and
+  `securitised-structured-credit/default-correlation.tex`). Each is input from its existing
+  chapter wrapper.
+- Existing entries extended (no objective counted):
+  - `mod:term-structure-models-simulation` (P6): calibrating simulated rate paths to today's
+    curve by a drift adjustment, and the lognormal no-arbitrage alternative. This is added only
+    if a source read in the package supports it.
+  - `meth:risky-bond-cva` (P7): tree-based CVA and a risky floater, subject to decision L2-D3.
+  - `meth:var-es-estimation-methods` (P9): its Pitfalls sentence on EVT becomes a link.
+  - `meth:credit-liquidity-tail-risk` (P8): a See also link only.
+- Optional small extensions, with sources in the repository (decision L2-D5):
+  - `meth:black-model-rates-currencies`: the receiver swaption, payer-receiver parity, and a
+    callable bond as a straight bond less a receiver swaption (Hull OFOD chap. 29, sec. 29.3;
+    cited by the entry for the payer swaption, not reread in C0 for these points).
+  - `meth:multi-period-binomial-valuation`: known discrete dividends in a tree and the
+    dividend-motivated early exercise of an American call (Hull OFOD sec. 21.3, p. 480;
+    located, not yet read).
+- New objectives: about 11, in a range of 10-12 (P6 2, P7 2-3, P8 2, P9 1-2, P11 3). Topics:
+  - P6: `topic:arbitrage-free-bond-valuation`;
+  - P7: `topic:credit-models`;
+  - P8: `topic:securitisation`;
+  - P9: `topic:market-risk-measurement`;
+  - P11: `topic:statistical-inference`, `topic:portfolio-risk-return` and
+    `topic:equity-securities-markets`.
+
+  All have `planned_batch` 8. E1's rule applies: only new ideas get objectives.
+
+**Dependencies and order.** Run P6 first: its Hull-White simulation supplies P7's swap
+exposure profile. P7 follows P6. P8, P9 and P11 depend on no other L2 package. Proposed order:
+P6, P7, P8, P9, P11a, P11b, P11c, with each package's checks and records complete before the
+next starts (Section 5).
+
+**Data.** All checks are synthetic, with fixed seeds, except P6's curve. That curve comes from
+the GSW file, which is git-ignored and present at
+`reading_materials/derivatives-validation/empirical/feds200628.csv` (last row 2026-10-09; the
+row for 2026-09-30 exists). As in Batch L1, a check shows that a method is implemented
+correctly under its model. It is not evidence about markets.
+
+**Material source gaps.**
+- Tree-based CVA (candidate 4): the curriculum's source, Smith (2017), is not in the library.
+  The Investment Series *Fixed Income Analysis* (2015), chap. 6 (section heads examined, PDF
+  pp. 305-345) is the earlier, structural and reduced-form version of the reading, without the
+  tree. This is decision L2-D3.
+- `gap-rates-backward-term-rates`, `s7-qrm`, `w2-mcneil-frey` and `wide-embrechts-extremal`
+  are not held. They go under Further reading unless an authorised copy is obtained and read.
+- CRE31 (P8) and the margin rules (P11c) must be read in their current text, with retrieval
+  dates. Rockafellar and Uryasev (`s6-cvar`, P11b) is an open author PDF. Each needs network
+  access during its package.
+
+Each package below states its data, its claims and predetermined criteria. Values written here
+are not planning results. Each package script computes its own, and the criteria, not those
+values, are binding.
 
 - **P6 Short-rate and forward-rate models** (`rates-credit-mortgages/arbitrage-free-valuation.tex`
   after `mod:term-structure-models-simulation`).
@@ -526,16 +614,49 @@ package states its data and its claims.
     caplets; the backward-looking RFR extension, if `gap-rates-backward-term-rates` is
     read).
   - Sources: Hull OFOD chaps. 31-33 (pp. 719-772; the draft's "32-33" omitted chap. 31) and
-    Wilmott chaps. 30-31 and 37.
+    Wilmott chaps. 30-31 and 37. For the extension: the Handbook chap. 37 (pp. 859-862), which
+    `mod:term-structure-models-simulation` already cites, is read to confirm that it describes
+    calibrating Monte Carlo paths by a drift adjustment.
   - Data: the Federal Reserve Board's GSW Svensson parameters (`feds200628.csv`, kept outside
     Git) on 30 September 2026, giving an analytic instantaneous forward curve. The curve is
     labelled "fitted off-the-run nominal Treasury zero curve (GSW)", never SOFR or OIS.
   - Claims: Hull-White's $\theta(t)$ reproduces that curve by construction (zero prices to
-    $10^{-10}$; simulated discount factors within 3 standard errors). The mean-reversion and
+    $10^{-10}$; simulated discount factors within 4 standard errors, below). The mean-reversion and
     volatility parameters are illustrative and stated as not calibrated: calibrating them
     needs cap or swaption volatilities, which are not held.
   - Further checks: the existing Vasicek 0.846849 is reused; the CIR closed form against
     Monte Carlo; HJM with constant volatility gives the Ho-Lee drift $\sigma^2t$.
+  - Criteria fixed by C0 (the package script fixes its seeds before its first run; a failed
+    statistical check is diagnosed, not rerun with another seed):
+    - Hull-White on the GSW curve: analytic zero-coupon prices equal the GSW discount factors
+      at 1 to 30 years to $10^{-10}$. Simulated discount factors (100,000 paths) lie within 4
+      standard errors at each of the 30 maturities. With 30 correlated comparisons, 4 rather
+      than 3 standard errors keeps the chance of a false failure below about 0.2 percent.
+      *Corrected (L2 audit).* Exact Ornstein-Uhlenbeck samples of $r$ do not make
+      $\exp(-\int_0^T r\,du)$ exact. Each step therefore samples the pair
+      $\big(x_t,\int_s^t x_u\,du\big)$ jointly from its exact bivariate normal transition given
+      $x_s$, where $x=r-\alpha(t)$ is the Ornstein-Uhlenbeck part, so the discount factor is
+      unbiased. The conditional mean of the integral is $x_sB(s,t)$ with
+      $B=(1-e^{-a\Delta})/a$. Its variance is
+      $\frac{\sigma^2}{a^2}\big[\Delta-2B+\frac{1-e^{-2a\Delta}}{2a}\big]$, and its covariance
+      with $x_t$ is $\frac{\sigma^2}{2a^2}(1-e^{-a\Delta})^2$, where $\Delta=t-s$. The
+      deterministic part $\int_s^t\alpha(u)\,du$ comes from the curve in closed form. A
+      trapezoid rule on the exact $r$ samples is also run as a bias diagnostic: halving its
+      step from monthly must change the 30-year discount factor by less than a tenth of a
+      standard error, or the trapezoid result is reported as biased and not used.
+    - CIR with $a=0.5$, $b=4\%$, $\sigma=10\%$, $r_0=3\%$ (so $2ab\ge\sigma^2$): the closed-form
+      five-year zero price against Monte Carlo with exact non-central chi-square transitions
+      (200,000 paths), within 3 standard errors. The integration grid is halved until the price
+      changes by less than a tenth of a standard error. With $\sigma=25\%$, an Euler scheme
+      without truncation produces negative rates and exact sampling does not.
+    - HJM with constant volatility: the implied short-rate drift equals
+      $\partial f(0,t)/\partial t+\sigma^2t$ to $10^{-10}$ on the GSW curve.
+    - The forward market model: a one-factor lognormal simulation of a caplet agrees with
+      Black's formula within 3 standard errors, and the existing Hull Example 29.3 value
+      (0.00519 million) is reused, not recomputed.
+  - Objectives (2): apply affine short-rate models (Vasicek, CIR, Hull-White), including their
+    bond prices and fit to today's curve; explain the HJM drift condition and value caplets in
+    the forward market model.
 - **P7 Counterparty exposure and xVA** (new topic file
   `corporate-credit-capital/counterparty-xva.tex`).
   - Candidates: `def:counterparty-exposure-measures`, `meth:credit-valuation-adjustment`,
@@ -545,12 +666,22 @@ package states its data and its claims.
     ignored); exposure $E(t)=\max(V(t),0)$ of the netting set's mark-to-market,
     uncollateralised first, then with a margin period of risk; risk-neutral measure with the
     bank-account numéraire. In general
-    $\mathrm{CVA}=(1-R)\,E^Q\!\big[D(0,\tau)E(\tau)\mathbf 1_{\{\tau\le T\}}\big]$. With
-    exposure independent of default and a constant $R$, this becomes
-    $(1-R)\sum_i\mathrm{EE}^*(t_i)\,[\mathrm{PD}(t_{i-1},t_i)]$, where
-    $\mathrm{EE}^*(t)=E^Q[D(0,t)E(t)]$, which equals $P(0,t)\,\mathrm{EE}(t)$ under
-    deterministic rates. Wrong-way risk breaks the independence, so the joint expectation
-    $E^Q[D(0,t_i)E(t_i)\mathbf 1_{\{t_{i-1}<\tau\le t_i\}}]$ is needed.
+    $\mathrm{CVA}=(1-R)\,E^Q\!\big[D(0,\tau)E(\tau)\mathbf 1_{\{\tau\le T\}}\big]$. On a date
+    grid, with default in $(t_{i-1},t_i]$ treated as occurring at $t_i$, this is
+    $(1-R)\sum_iE^Q[D(0,t_i)E(t_i)\mathbf 1_{\{t_{i-1}<\tau\le t_i\}}]$. *Corrected (L2
+    audit).* Under stochastic rates, independence of the exposure $E$ from default is not
+    enough to factor this. The factorization
+    $(1-R)\sum_i\mathrm{EE}^*(t_i)\,\mathrm{PD}(t_{i-1},t_i)$, with
+    $\mathrm{EE}^*(t)=E^Q[D(0,t)E(t)]$ and $\mathrm{PD}$ the risk-neutral default
+    probabilities, requires $\tau$ to be independent of the discounted exposure $D(0,t_i)E(t_i)$
+    at each grid date. A sufficient condition is that $\tau$ is independent of the rates and
+    market factors jointly, with $R$ constant (or independent of both). Default correlated
+    with rates breaks it even when it is independent of the swap's mark-to-market. Always
+    $\mathrm{EE}^*(t)=P(0,t)\,E^{Q_t}[E(t)]$ under the $t$-forward measure; this equals
+    $P(0,t)\,\mathrm{EE}(t)$ with $\mathrm{EE}$ taken under $Q$ only when rates are
+    deterministic, or when $D(0,t)$ and $E(t)$ are uncorrelated under $Q$. Wrong-way risk
+    breaks the independence, so the joint expectation above is needed. The entry states the
+    assumption it uses, and the swap example uses an independent, deterministic hazard rate.
   - Decisive small example (synthetic): one exposure date, $V\sim N(0,s^2)$ and default when
     a latent normal $Y$, with $\rho=\mathrm{Corr}(V,Y)$, falls below $\Phi^{-1}(\mathrm{PD})$
     (lower-tail default). CVA by bivariate-normal quadrature against Monte Carlo; it equals
@@ -561,6 +692,55 @@ package states its data and its claims.
     consistently. A swap exposure profile simulated under one-factor
     Hull-White shows the humped EE and PFE.
   - Sources: Gregory 3rd ed. chaps. 10-11, 14-17; Hull OFOD chap. 9; RMFI chap. 18.
+  - Criteria fixed by C0:
+    - The wrong-way example: bivariate-normal quadrature against Monte Carlo (200,000 draws,
+      fixed seed), within 3 standard errors at each $\rho$. At $\rho=0$ the value equals the
+      independent closed form $(1-R)\,\mathrm{PD}\,s/\sqrt{2\pi}$ to $10^{-10}$. CVA is strictly
+      decreasing in $\rho$ on $\{-0.5,-0.25,0,0.25,0.5\}$. The three values above are the
+      audited planning values (finding R1); the script recomputes them.
+    - The swap profile, on P6's Hull-White paths: an at-market swap has EE(0) equal to 0, and
+      EE peaks at an interior date. Uncollateralised, the netted exposure never exceeds the sum
+      of the stand-alone exposures on any path, since $\max(a+b,0)\le\max(a,0)+\max(b,0)$, so
+      the same holds for EE at every date. PFE (97.5 percent) is reported with a bootstrap
+      standard error.
+    - *Corrected (L2 audit): collateral mechanics.* Value $V(t)$ is the bank's
+      mark-to-market of the netting set, ex-coupon. The CSA is two-way, with daily variation
+      margin in cash, zero threshold and zero minimum transfer amount, and no initial margin.
+      The collateral balance $C(t)$ is held by the bank when positive and posted by the bank
+      when negative. The margin period of risk is $\delta=10$ business days ($10/252$ years).
+      The last margin call settled before a default at $t$ was based on $V(t-\delta)$, so
+      $C(t)=V(t-\delta)$ for $t\ge\delta$ and $C(t)=0$ for $t<\delta$. No margin moves in
+      either direction during the MPR, and posted collateral is not segregated. Collateral
+      earns the short rate, the rate used to discount, so it adds no funding term. Interest
+      accrued on the balance during the MPR is ignored. Exposure dates sit at mid-months, so
+      no swap payment falls in any window $(t-\delta,t]$. Each exposure date $t$ and the
+      date $t-\delta$ are simulated on the same path, with an exact step between them.
+      Collateralised exposure is $E_c(t)=\max(V(t)-C(t),0)$.
+    - Collateral criteria. Per-date dominance $\mathrm{EE}_c(t)\le\mathrm{EE}(t)$ is not
+      required under two-way lagged collateral. It fails on paths where the bank has posted,
+      $V(t-\delta)<0<V(t)$, and can fail in expectation, for example for an out-of-the-money
+      swap. Only properties that the model implies are checked:
+      - $E_c(t)=E(t)$ for $t<\delta$ on every path.
+      - For a one-way variant in which only the bank receives collateral,
+        $C(t)=\max(V(t-\delta),0)$, $E_c(t)\le E(t)$ holds on every path.
+      - Under two-way collateral, $E_c(t)\le|V(t)-V(t-\delta)|$ on every path, and with
+        $\delta=0$ exposure is zero.
+      - $\mathrm{EE}_c$ at 5, 10 and 20 business days is reported against the
+        Gaussian-increment approximation $\sigma_{\Delta V}(t)/\sqrt{2\pi}$, where
+        $\sigma_{\Delta V}(t)$ is the simulated standard deviation of $V(t)-V(t-\delta)$. It is
+        reported as a diagnostic, not a pass condition, because swap increments are not
+        exactly normal or mean zero.
+      - The uncollateralised and collateralised CVA are both reported.
+    - The tree-based CVA extension, if L2-D3 accepts it, uses the Handbook tree already in
+      `meth:binomial-rate-tree-calibration` and original inputs, not the curriculum's.
+      Node-weighted expected exposure gives the same CVA as the pathwise average to
+      $10^{-10}$. As $\sigma\to0$, it tends to the forward-rate calculation of
+      `meth:risky-bond-cva`. A default-free floater paying the tree rate flat is worth par at
+      every node to $10^{-10}$. The discount margin solved on the tree reprices the fair value
+      to $10^{-8}$.
+  - Objectives (2-3): measure counterparty exposure (EE, EPE, PFE) with netting and collateral;
+    calculate unilateral CVA under independence; assess wrong-way risk (the last two may form
+    one objective if the reading shows one idea).
 - **P8 Default correlation** (new topic file `securitised-structured-credit/default-correlation.tex`).
   - Candidates: `mod:gaussian-copula-default-correlation` and
     `meth:tranche-loss-base-correlation`; it links to the existing WCDR formula in
@@ -569,23 +749,226 @@ package states its data and its claims.
     read).
   - Checks (synthetic): large-pool tranche expected loss by quadrature against finite-pool
     simulation; IRB capital at sample PD and correlation.
+  - Criteria fixed by C0:
+    - The expected losses of tranches that partition the capital structure sum to the pool's
+      expected loss, $\mathrm{PD}\times\mathrm{LGD}$, to $10^{-12}$.
+    - *Corrected (L2 audit).* No granularity allowance is used. The benchmark is an
+      independent, exact finite pool. For a homogeneous pool of $N$ names, the number of
+      defaults conditional on the factor $M$ is binomial$(N,p(M))$. The tranche expected loss is
+      therefore a one-dimensional integral over $M$ of a finite binomial sum, computed by
+      adaptive quadrature or with nodes doubled until it changes by less than $10^{-10}$.
+      - Correctness: a finite-pool simulation of 1,000 names (50,000 scenarios, fixed seed)
+        agrees with the exact finite-pool value for each tranche within 3 standard errors.
+      - Granularity: the deterministic gap between the large-pool and exact finite-pool values
+        is reported for $N=250$, 500 and 1,000. Its absolute value must decrease in $N$ for
+        each tranche. A planning reproduction with $\mathrm{PD}=2\%$, $\rho=0.3$, LGD 60
+        percent and tranches 0-3, 3-7, 7-10, 10-15, 15-30 and 30-100 percent showed this. It
+        is not binding: the script fixes its own inputs in advance.
+    - The conditional default rate inside the IRB formula equals the WCDR of
+      `meth:credit-liquidity-tail-risk` to $10^{-12}$ at the same PD and correlation. The capital
+      figure is recomputed from the CRE31 text as read, at its retrieval date.
+  - Objectives (2): model default correlation with a one-factor Gaussian copula; value tranches
+    and explain base correlation and where it fails.
 - **P9 Extreme value theory** (`portfolio-construction-risk/risk-models.tex` after
   `meth:var-es-estimation-methods`, whose Pitfalls sentence is then updated).
   - Candidate `meth:extreme-value-tail-estimation` (block maxima and peaks over threshold;
     GPD; Hill; threshold choice; VaR and ES; the McNeil-Frey two-step on GARCH residuals).
   - Source: RMFI chap. 12; `s7-qrm`, `w2-mcneil-frey` and `wide-embrechts-extremal` only if
     obtained and read.
-  - Data (known truth, synthetic):
-    - i.i.d. Student $t$ with 4 degrees of freedom (tail index $\xi=0.25$, VaR and ES in
-      closed form), $n=5{,}000$. Acceptance: the GPD and Hill estimates' 95% bootstrap
-      intervals cover 0.25, and the 99.5% VaR is within 10% of the truth.
+  - Data (synthetic):
+    - i.i.d. Student $t$ with 4 degrees of freedom, $n=5{,}000$. VaR and ES are in closed
+      form. The tail index $\xi=0.25$ holds only asymptotically.
     - The GARCH(1,1)-$t$ generator already used for `meth:var-es-estimation-methods`, for the
       two-step method.
+  - Estimators, fixed in advance:
+    - Upper tail of the loss, with threshold $u$ at the empirical 95th percentile and
+      $k=n/20=250$ exceedances.
+    - Hill uses those $k$ largest order statistics:
+      $H_k=\frac1k\sum_{i=1}^k\ln X_{(n-i+1)}-\ln X_{(n-k)}$, the threshold being the
+      $(k+1)$-th largest observation.
+    - The GPD is fitted by maximum likelihood to the $k$ excesses.
+    - VaR and ES at 99 and 99.5 percent use the peaks-over-threshold formulas.
+  - *Corrected (L2 audit).* The original acceptance rule (bootstrap intervals for Student
+    $t_4$ must cover 0.25) mixed numerical correctness with finite-threshold bias. At the 95th
+    percentile of $t_4$ ($u\approx2.13185$), the population Hill functional
+    $E[\ln(X/u)\mid X>u]$ is about 0.348898. The Kullback-Leibler-best GPD shape for the
+    excesses there is about 0.192. Neither is 0.25. The plan now separates two kinds of
+    check.
+  - Numerical correctness (pass or fail; known-truth benchmarks):
+    - Exact Pareto data with $\xi=0.25$. By Rényi's representation, $H_k$ is distributed as
+      $\xi\,\mathrm{Gamma}(k,1)/k$. Over 2,000 replications (fixed seed), the mean is within
+      3 standard errors of 0.25, and the standard deviation is within 5 percent of
+      $\xi/\sqrt k$.
+    - Student $t_4$, with $n=10^6$ and the same $k/n=0.05$: $H_k$ lies within 3 standard
+      errors of the population functional 0.348898. The standard error is the sample standard
+      deviation of the $k$ log-excesses over $\sqrt k$. This checks the finite-threshold
+      target, not the asymptotic index.
+    - Exact GPD data ($\xi=0.25$, $\beta=1$). At the fitted parameters, the score (gradient
+      of the log-likelihood) is below $10^{-6}$ in each component. The log-likelihood is no
+      lower than that of `scipy.stats.genpareto.fit` with location 0, less $10^{-8}$. This
+      avoids comparing two optimisers' parameters. Over 500 replications of $k=250$, the
+      mean shape is within 3 standard errors of 0.25, which allows for the $O(1/k)$ bias of
+      maximum likelihood.
+    - For a Pareto tail, whose excesses are exactly GPD above any threshold, the
+      peaks-over-threshold VaR and ES formulas at the true parameters reproduce the closed-form
+      quantile and ES to $10^{-10}$.
+  - Diagnostics (reported, with no pass threshold):
+    - Finite-threshold bias. On the $n=5{,}000$ sample, $H_k$ and the GPD shape are reported
+      against both 0.25 and their population values at the threshold. The 99.5 percent VaR
+      and ES are reported against the closed form, and against the values implied by the
+      population GPD fit at $u$.
+    - Bootstrap coverage. Percentile intervals use 1,000 resamples (fixed seed). The coverage
+      of Hill's 95 percent interval over 200 independent samples (fixed seeds) is reported
+      for both 0.348898 and 0.25. For the GPD, the single-sample interval is reported.
+    - Threshold sensitivity. Hill and the GPD shape are reported at the 90, 95, 97.5 and 99
+      percent thresholds, a list fixed in advance, each beside its population functional.
   - The annual Damodaran file (98 observations, 1928-2025) is not suitable and is not used.
     No empirical claim is made unless a daily series with stated source, dates and licence is
     added (backlog B9).
+  - Seeds, the threshold list and the cutoff $k$ are written into the script before its first
+    run. A failed correctness check is diagnosed, not rerun with another seed or threshold.
+  - Objective (1, possibly 2): estimate tail risk by extreme value methods (GPD and Hill;
+    VaR and ES), including the two-step filtered method. Split into two objectives only if the
+    two-step method proves to be a separate idea.
 
-Batch L2 is estimated at about 8-9 objectives. P10 may join it if C0 adds few items.
+- **P11 New ideas found by C0** (decision L2-D2). These are three small entries, unrelated to
+  each other.
+  - **P11a** `meth:correlation-independence-tests` (`common-toolkit/statistical-inference.tex`,
+    after `meth:nonparametric-tests`).
+    - Content: the $t$-test of zero correlation, $t=r\sqrt{n-2}/\sqrt{1-r^2}$ with $n-2$
+      degrees of freedom; Spearman's rank correlation and its test, with ties; the chi-square
+      test of independence on a contingency table, with expected counts and $(r-1)(c-1)$
+      degrees of freedom. The quant use is the significance of an information coefficient and
+      a rank IC, with the caveat about overlapping observations.
+    - Sources: `introductory-statistics-2023` (OpenStax, registered). Its sections on the
+      significance of the correlation coefficient and the test of independence are to be
+      located and read. `statistical-methods-handbook` (NIST, registered) is checked for rank
+      correlation. The 2026/2027 outlines dropped this module, so no outline item maps to it.
+    - Checks:
+      - Size: 20,000 replications of independent normal pairs with $n=30$ (fixed seed). The
+        5 percent Pearson and Spearman tests reject in $5\pm0.5$ percent of replications.
+      - The $t$-test $p$-value equals `scipy.stats.pearsonr` to $10^{-12}$.
+      - Spearman equals Pearson on midranks to $10^{-12}$, and equals `scipy.stats.spearmanr`,
+        on data with and without ties. *Corrected (L2 audit).* It is unchanged to $10^{-12}$
+        by a strictly increasing transform of either variable. A strictly decreasing
+        transform of one variable changes only its sign, and of both leaves it unchanged.
+        Strict monotonicity preserves ties, so these hold with ties too. A non-strict
+        (weakly) monotone transform can create ties and change the value, and is not tested.
+        With ties, the shortcut $1-6\sum d_i^2/(n(n^2-1))$ differs from Pearson on midranks,
+        and the entry says so. The tied fixture shows the difference.
+      - The chi-square statistic equals `scipy.stats.chi2_contingency` (without continuity
+        correction) to $10^{-12}$.
+    - Objective (1): test whether a correlation is zero, parametrically and by ranks, and test
+      independence in a contingency table.
+  - **P11b** `meth:mean-cvar-optimisation`
+    (`portfolio-construction-risk/portfolio-construction-models.tex`, after
+    `mod:mean-variance-portfolio-optimisation`).
+    - Content: minimising CVaR at a target return as a linear programme over scenarios
+      (Rockafellar-Uryasev); why the allocation changes when returns are skewed or fat-tailed;
+      the scenario count needed.
+    - Source: `s6-cvar` (catalogue; open author PDF, to be obtained and read). If it cannot be
+      read, the package stops with `obtain-source`.
+    - Problem, fixed in advance (*corrected, L2 audit*):
+      - CVaR of the portfolio loss $L=-R^\top w$ at confidence $\alpha=95$ percent.
+      - Constraints: long-only ($w\ge0$), fully invested ($\mathbf 1^\top w=1$), and the
+        expected return equal to the target ($\mu^\top w=\mu^*$, an equality, not $\ge$).
+      - The empirical CVaR is the existing fractional-tail-mass definition of
+        `meth:var-es-estimation-methods`: the average of the worst $n(1-\alpha)$ scenario
+        losses, with a fractional weight on the last when $n(1-\alpha)$ is not an integer.
+        For equally weighted scenarios, the minimum over $\zeta$ of the Rockafellar-Uryasev
+        function $\zeta+\frac1{n(1-\alpha)}\sum_j(L_j-\zeta)^+$ equals this.
+    - Checks (scipy `linprog`, no new dependency):
+      - The LP objective equals that empirical CVaR of the optimal weights, computed
+        directly, to $10^{-8}$. This holds both at $n=10{,}000$ ($n(1-\alpha)=500$) and in a
+        case where the tail mass is not an integer: $n=250$ at 97.5 percent, tail mass 6.25.
+      - For three assets, no weight on a 1 percent simplex grid that meets the target has a
+        lower CVaR, allowing for the grid step.
+      - Normal equivalence at an equal expected return. Three assets have
+        $\mu=(4,6,8)$ percent, volatilities $(10,15,20)$ percent, all correlations 0.3 and
+        $\mu^*=6$ percent. Scenarios are jointly normal, with the sample mean shifted to
+        $\mu$ exactly, so both problems face the same return constraint. The benchmark is
+        the population mean-variance solution under the same three constraints, where the
+        minimum CVaR and the minimum variance coincide because CVaR is
+        $-\mu^\top w+\sigma_w\,\varphi(z_\alpha)/(1-\alpha)$. Over seeds 0-9 (fixed), the
+        largest absolute weight difference must be at most 0.025 at 100,000 scenarios. Its
+        mean over the seeds must be lower at 100,000 than at 10,000. A planning reproduction
+        gave a maximum of 0.048 at 10,000 and 0.009 at 100,000. The tolerance is set from the
+        $n^{-1/2}$ rate, not tuned, and is binding.
+      - Negative skew (*corrected, L2 audit*): with one asset given a negatively skewed
+        return of the same mean and variance, the change in its mean-CVaR weight relative to
+        mean-variance is reported and explained (tail contribution to CVaR against
+        diversification). It is not a pass condition. Lower CVaR does not imply a lower
+        weight in general, and no fixture establishing the direction is fixed in advance.
+    - Objective (1): construct a minimum-CVaR portfolio and compare it with mean-variance.
+  - **P11c** `meth:margin-purchase-leverage` (`portfolio-risk-financing/securities-lending.tex`,
+    after `mech:securities-lending-short-sale`).
+    - Content: buying on margin; the leverage ratio $1/m_0$; the levered total return after
+      financing, income and commissions; the margin-call price
+      $P^*=P_0(1-m_0)/(1-m_m)$ for a long position and $P_0(1+m_0)/(1+m_m)$ for a short one.
+    - Sources: `ecfr-12cfr220` (Regulation T, sec. 220.12) and `finra-rules-2026` (Rule 4210),
+      both registered; their current texts are reread with retrieval dates (Section 5, step 3).
+    - *Corrected (L2 audit): assumptions.* The two static formulas assume the loan (for a
+      long position) or the credit balance (for a short one) is unchanged since the
+      purchase: no interest, fees, dividends, coupons or other cash flows. The entry states
+      this. When those flows occur, the call price is computed from the balance at the date.
+      For a long position, $P^*=L_t/\big(N(1-m_m)\big)$, with the loan $L_t$ including
+      accrued interest and fees and net of income credited. For a short one,
+      $P^*=K_t/\big(N(1+m_m)\big)$, where the credit balance $K_t$ includes the sale proceeds
+      and margin deposited, plus any interest rebate, less dividends owed to the lender and
+      fees.
+    - Checks (deterministic, original inputs):
+      - Static case: both margin-call prices equal a numerical root of the equity-to-value
+        condition to $10^{-12}$.
+      - With financing: an example with financing interest, a commission and a dividend
+        recomputes $L_t$ or $K_t$ from a dated cash-flow ledger. The balance formula equals a
+        numerical root of the same condition to $10^{-12}$, and differs from the static
+        formula by an amount that is reported.
+      - The levered-return identity equals the cash-flow computation to $10^{-12}$.
+    - Objective (1): calculate the leverage ratio, the levered return and the margin-call price
+      for long and short margin positions.
+
+**Acceptance and stopping.** As for Batch L1 (Section 6): per-package focused checks and
+records, then `make source-check`, `make pdf` with inspection of the new pages, `make
+pre-commit`, and a completion report with the sources actually read and the shortfall against
+45. The stop rules are the same. In addition, a package whose essential source cannot be read
+in its current or authorised form records its objective as `partial` with `obtain-source`, and
+the other packages continue.
+
+**Estimated size against the 45-objective preference.** About 11 newly covered objectives
+(10-12), a shortfall of about 34 (33-35). With P10, about 12. The estimate before C0 was 8-9
+(P6-P9). The reason is the evidence, not
+the method. C0 used all 15 candidate reviews and found three new ideas in the curricula. Most
+of the other gaps are depth within covered objectives, which earn no count. Nothing is padded
+to approach 45.
+
+**Excluded from Batch L2.**
+- C0 depth gaps placed in the backlog (B12-B17).
+- P10 (by default Batch L3; decision L2-D4).
+- B1-B10 unchanged.
+- Calibrating Hull-White to cap or swaption volatilities: no data are held.
+- An empirical EVT illustration (B9).
+- LIBOR-era CQF and Gregory material, except as dated context (B8).
+- Any curriculum or workbook citation: the citation policy of Section 2 is unchanged, and
+  Batch L2 needs no exception.
+
+### Batch L2 proposal audit corrections (2026-10-21)
+
+An audit of the C0 proposal found criteria that would not have tested what they claimed. They
+are corrected in place above, marked "Corrected (L2 audit)". The original wording is kept
+here for the record. The values below were reproduced in the scratchpad before the
+correction; the package scripts recompute them. The scope, objective count, the 15-candidate
+C0 boundary and its unexamined items (Section 8.1) and the source restrictions are unchanged.
+
+| Package | Original wording | Problem | Correction |
+|---|---|---|---|
+| P9 | "the GPD and Hill estimates' 95% bootstrap intervals cover 0.25, and the 99.5% VaR is within 10% of the truth"; "the threshold … is the 95th percentile" | Student $t_4$'s $\xi=0.25$ is asymptotic. At the 95th percentile, the population Hill functional is 0.348898 and the KL-best GPD shape is about 0.192, so the test mixed estimator bias with correctness. Hill's cutoff was not stated. | Cutoff $k=n/20$ fixed. Pass or fail only on known-truth benchmarks (exact Pareto and GPD data, the finite-threshold functional at $n=10^6$, exact POT formulas). Bias, bootstrap coverage and threshold sensitivity are reported diagnostics. Seeds and thresholds are fixed before the first run. |
+| P7 | "With exposure independent of default and a constant $R$, this becomes $(1-R)\sum_i\mathrm{EE}^*(t_i)\mathrm{PD}$" | Under stochastic rates, the factorization needs $\tau$ independent of the discounted exposure $D(0,t)E(t)$. | Condition stated, with a sufficient joint-independence assumption and the forward-measure form. |
+| P7 | "Collateral with a 10-day margin period of risk lowers EE at every date" | False for two-way lagged collateral when the bank has posted. | Direction, timing, accrual and MPR mechanics defined. Only model-implied properties are checked (pathwise bounds, the one-way variant, and $t<\delta$). The Gaussian-increment comparison is a diagnostic. |
+| P11b | "agree within a tolerance fixed in advance"; "With one negatively skewed asset, the mean-CVaR weight on it is lower" | No confidence level, constraints or equal-return basis. The direction of the skew effect is not guaranteed. | $\alpha=95\%$, long-only, fully invested, equality return target, mean-matched scenarios, tolerance 0.025 at 100,000 over seeds 0-9. The empirical CVaR is the fractional-tail-mass definition. The skew effect is a reported result. |
+| P11a | "unchanged by a monotone transform" | Ambiguous: decreasing transforms flip the sign, and the shortcut formula fails with ties. | Strictly increasing invariance, sign change under strictly decreasing transforms, midranks for ties. |
+| P11c | Static margin-call formulas only | They assume an unchanged loan or credit balance. | Assumption stated. Separate ledger-based example with financing, fees and a dividend. |
+| P6 | "exact Ornstein-Uhlenbeck steps" for simulated discount factors | Exact rate samples do not give an exact $\int r\,du$. | Joint exact sampling of the rate and its integral; trapezoid bias diagnostic; 4 standard errors for the 30-maturity family. |
+| P8 | "within 3 standard errors plus a granularity allowance" | The allowance was not predetermined. | Exact finite-pool benchmark (conditional binomial). Granularity is reported as a deterministic gap that must shrink from 250 to 1,000 names. |
 
 ## 8. Backlog (needs evidence before it is scheduled)
 
@@ -601,7 +984,79 @@ Batch L2 is estimated at about 8-9 objectives. P10 may join it if C0 adds few it
 | B8 | LIBOR-era CQF and Gregory material | Historical only; used solely as dated context in P6-P7 |
 | B9 | Empirical EVT illustration | A daily return series with a documented source, dates and licence |
 | B10 | "Monte Carlo Methods.pdf" | Identify author and edition (OCR or bibliographic match) only if B3 needs it |
-| B11 | C0 findings | Added here by C0 |
+| B11 | C0 findings | Done: Section 8.1; the items not placed in L2 are B12-B17 |
+| B12 | Variance swap valued during its life: time-weighted realised and implied variance, discounted (C0 candidate 6) | Extends `meth:volatility-derivative-applications`; read `wide-demeterfi-varswaps` (catalogue, DOI; not held) |
+| B13 | Cross-currency basis swap: cash flows, which leg carries the basis, synthetic funding (candidate 6) | Extends `meth:swap-valuation-replication` or `res:international-parity-conditions`; read `cur-borio-mccauley-mcguire-sushko-2016` (BIS, open) |
+| B14 | Crisis-conditional hedge fund factor exposures (state-dummy interactions) and screening collinear factors (candidate 11) | Extends `meth:hedge-fund-factor-exposures`; the curriculum's source, Hasanhodzic and Lo (2007), is neither catalogued nor held. A non-curriculum source is needed, or the owner accepts an Interpretation |
+| B15 | Option-strategy practice: the move implied over a horizon, $\sigma\sqrt{h/252}$, against a straddle's break-even; put writing to buy at $K-p$; skew (90/110) and term-structure (12M-3M) gauges (candidate 5) | Extends `meth:option-spreads-volatility-strategies` and `meth:covered-call-protective-put`; check `s7-natenberg` first |
+| B16 | Life insurance pricing: net and gross premium, level term, policy reserve, net payment and surrender cost indexes (candidate 12) | Extends `meth:human-capital-risks`; no non-curriculum source located (mortality tables and an actuarial text needed) |
+| B17 | Economics of regulation: kinds of regulator, regulatory competition and arbitrage, the Coase theorem, cost-benefit analysis (candidate 13) | Extends `def:market-regulation-design` or the economics chapter; locate the relevant chapters of `openstax-microeconomics-3e` (registered) |
+
+### 8.1 C0 findings (2026-10-21)
+
+**Library.** The 18 volumes of the 2024 curriculum, six for each level, are at
+`/Users/lxg/Documents/CFA & Finance/Exam/CFA/CFA Level {1,2,3}/2024[ Notes]/`. Their identity
+was verified from each title page ("2024 • LEVEL n • VOLUME m"), the ©2023 CFA Institute
+copyright page and the ISBNs, which run from 978-1-953337-49-8 (L1 vol. 1) to -66-5 (L3 vol. 6).
+Text was extracted to the session scratchpad. The library was not modified, and no curriculum
+text entered the repository. Locators below are PDF pages.
+
+**Pass 1 (titles and section heads).**
+- Reading titles: complete. There are 175 learning modules, including two appendices.
+  Matching them to the 203 crosswalk modules leaves 34 without a close title match. Most of
+  those are renamed versions of mapped modules, for example "Rates and Returns".
+- Second-level heads (about 1,480; L3 vol. 4 parsed from its contents pages, which mix
+  levels):
+  - screened against entry text by keyword for all volumes. The screen was noisy: 519 heads
+    were flagged, so it was used only to find candidates;
+  - compared by hand for 76 modules (491 heads): quantitative methods, fixed income,
+    derivatives, L2 portfolio and risk readings, and L3 vols. 2-3 and the derivatives,
+    hedge-fund, alternatives and trading readings.
+
+  Keyword hits were not counted as coverage or as gaps.
+
+**Pass 2 and the cap.** 15 substantive reviews, the cap. The six required readings are
+candidates 1-6. The pages listed in the second column were read; the rest of each reading was
+seen only at heading level.
+
+| # | Reading (2024; PDF pages read) | Existing entries compared | Outcome | Gap, support and placement |
+|---|---|---|---|---|
+| 1 | L2 vol. 5, Valuation of Contingent Claims (pp. 94-153) | `meth:multi-period-binomial-valuation`, `meth:black-model-rates-currencies`, `meth:greeks-delta-gamma-hedging`, `mod:black-scholes-merton`, `def:implied-volatility-surface` | Already explained, with two small depth gaps | Discrete dividends and dividend-motivated early exercise of an American call (p. 113); receiver swaption, payer-receiver parity, callable bond less receiver swaption (pp. 138-139). Hull OFOD sec. 21.3 and sec. 29.3 (in repository, not read in C0). Optional L2 extensions (L2-D5) |
+| 2 | L2 vol. 4, The Arbitrage-Free Valuation Framework (pp. 421-453) | `meth:arbitrage-free-bond-valuation`, `meth:binomial-rate-tree-calibration`, `mod:term-structure-models-simulation` | Already explained, with depth gaps | Calibrating simulated paths by a drift adjustment (p. 446); the lognormal KWF model and the multi-factor Gauss+ model are named (pp. 451-452); CIR is only stated. Goes into P6 |
+| 3 | L2 vol. 4, The Term Structure and Interest Rate Dynamics (pp. 370-397; pp. 356-369 at heading and example level) | `meth:forward-rates-expected-returns`, `meth:spot-par-forward-curves`, `def:swap-curve-short-term-spreads`, `res:term-structure-theories`, `meth:yield-curve-factor-exposures` | Already explained (the entries go further) | None for L2; the proportional yield-volatility term structure (p. 391) is minor |
+| 4 | L2 vol. 4, Credit Analysis Models (pp. 569-584; pp. 552-568 at heading level) | `meth:risky-bond-cva`, `mod:structural-reduced-form-credit`, `meth:credit-spread-term-structure`, `meth:rating-migration-returns` | Depth gap | CVA from node-weighted exposure on a calibrated tree; the effect of rate volatility on CVA; default probability and recovery that vary by year; risky-floater value and discount margin solved on the tree (pp. 573-584). Source gap: Smith (2017) not held; FIA 2015 chap. 6 lacks it. P7 extension, L2-D3 |
+| 5 | L3 vol. 2, Options Strategies (pp. 58-78; the rest at heading level) | `meth:option-replication-deltas`, `meth:covered-call-protective-put`, `meth:option-spreads-volatility-strategies`, `ex:option-strategy-selection-case`, `meth:volatility-derivative-applications` | Already explained; minor depth | Implied move against straddle break-even (p. 59); put writing (pp. 67-68); skew and term-structure gauges (pp. 60-62). B15 |
+| 6 | L3 vol. 2, Swaps, Forwards, and Futures Strategies (pp. 100-120; the rest at heading level) | `meth:forward-commitment-risk-overlays`, `meth:derivative-overlay-allocation`, `meth:rate-bond-forward-valuation`, `def:vix-variance-dividend-swaps` | Already explained, with two depth gaps | Variance swap valued during its life (p. 120); cross-currency basis swap mechanics (pp. 105-108). B12, B13 |
+| 7 | L1 vol. 1, Parametric and Non-Parametric Tests of Independence (pp. 253-264) | `meth:nonparametric-tests`, `meth:hypothesis-testing`, `def:return-dependence` | New idea (no objective; dropped from the 2026/2027 outlines) | Correlation $t$-test, Spearman test, chi-square test of independence. `introductory-statistics-2023` and `statistical-methods-handbook` registered (located, not read). P11a |
+| 8 | L2 vol. 4, Credit Default Swaps (pp. 636-643) | `meth:cds-pricing`, `meth:cds-strategies`, `def:cds-contract-features` | Already explained (the entries go further) | None |
+| 9 | L2 vol. 4, Bonds with Embedded Options (pp. 496-512, 520-522) | `meth:option-adjusted-spread`, `meth:embedded-option-effective-duration`, `meth:callable-putable-bond-valuation`, `meth:convertible-bond-valuation`, `meth:capped-floored-floater-valuation` | Already explained | None |
+| 10 | L3 vol. 4, Asset Allocation to Alternative Investments (pp. 160-170) | `meth:alternatives-allocation-approaches`, `mod:mean-variance-portfolio-optimisation` | New idea; a depth gap | Mean-CVaR optimisation (pp. 167-169): `s6-cvar` catalogued, open PDF (located, not read), P11b. Long-horizon goal-probability simulation (pp. 160-164) is already near the existing Monte Carlo and planning entries; not placed |
+| 11 | L2 vol. 5, Hedge Fund Strategies: the conditional factor model (pp. 376-380, 393-398) | `meth:hedge-fund-factor-exposures` | Depth gap | Crisis-dummy betas and stepwise screening of collinear factors (pp. 377-378). No source held. B14 |
+| 12 | L3 vol. 4, Risk Management for Individuals (pp. 399-409) | `meth:human-capital-risks`, `meth:lifetime-exposures` | Depth gap (peripheral) | Net and gross premium, reserves, cost indexes (pp. 405-409). No source. B16 |
+| 13 | L2 vol. 1, Economics of Regulation (pp. 556-572) | `def:market-regulation-design` | Depth gap (peripheral) | Classification of regulators, competition and arbitrage, the Coase theorem, cost-benefit analysis. B17 |
+| 14 | L1 vol. 3, Market Organization and Structure: leveraged positions (pp. 285-288) | `mech:securities-lending-short-sale` (short-sale margin only) | New idea (small) | Leverage ratio, levered return, margin-call price. `ecfr-12cfr220` and `finra-rules-2026` registered (not reread). P11c |
+| 15 | L2 vol. 5, Measuring and Managing Market Risk (pp. 540-548) | `meth:portfolio-var-methods-decomposition`, `meth:var-es-estimation-methods`, `meth:sensitivity-scenario-risk-measures` | Already explained | None; the curricula only name EVT (L1 vol. 6, p. 164; L3 vol. 4, p. 156), so P9 rests on Section 3.1 |
+
+**Investment Series as support.**
+- *Fixed Income Analysis* (2015): chapter list and the section heads of chap. 6 were
+  examined. It does not support candidate 4.
+- *Derivatives* (2017): chapter list only.
+- *Quantitative Investment Analysis* (2007): no text layer, so it was not searched.
+
+None was read substantively, and none is needed by a proposed L2 package.
+
+**Left unexamined because the cap was reached:**
+- Title-pass candidates: L1 Probability Trees and Conditional Expectations; Market
+  Efficiency; Security Market Indexes; Overview of Equity Securities; Equity Valuation:
+  Concepts and Basic Tools; Introduction to GIPS; Ethics Application. L2 Financial Statement
+  Modeling. L3 Passive Equity Investing; Topics in Private Wealth Management; the two Case
+  Studies in Risk Management.
+- Hand comparison of section heads in the remaining 97 modules (financial statements,
+  corporate issuers, equity valuation, economics, ethics, CME and asset allocation, private
+  wealth, institutional).
+
+Each title-pass candidate has a renamed or near counterpart in the crosswalk or in
+`objectives.json`, but that was not confirmed by reading.
 
 ## 9. Records for each package
 
@@ -657,13 +1112,55 @@ Batch L2 is estimated at about 8-9 objectives. P10 may join it if C0 adds few it
   the `make examples` pattern.
 - **Citation policy.** Unchanged (Section 2). Batch L1 needs no exception.
 
+### 10.3 Decisions needed to freeze Batch L2 (after C0)
+
+- **L2-D0. Batch L1 first.** Resolved for the commit: L1 and its audit repairs were committed
+  locally as `5e0578e` with the owner's authorisation. Still open: whether to push it and
+  open or update its PR, and whether L2 continues on this branch or branches from
+  `5e0578e`.
+- **L2-D1. P6-P9 as specified in Section 7, with the criteria C0 added as corrected after
+  the audit.** Recommended: freeze them. The alternative is to drop P8 or P9 for a smaller
+  batch; each removes 1-2 objectives.
+- **L2-D2. P11 (three new ideas found by C0) in Batch L2.** Recommended: include it. Each idea
+  is genuinely absent from the compendium, has a registered or open source and adds one
+  objective. They are outside L2's rates-and-credit theme, so the alternative is a separate
+  small batch.
+- **L2-D3. Tree-based CVA and the risky floater, with no direct source held.** Options:
+  - (a) write it as an Interpretation that combines the cited tree
+    (`meth:binomial-rate-tree-calibration`) with the cited CVA formula (RMFI pp. 395-396),
+    using original inputs. Recommended; it adds no objective;
+  - (b) obtain and read Smith (2017) first;
+  - (c) move it to the backlog.
+- **L2-D4. P10 (regulatory currency, B7).** Recommended: Batch L3. It needs a different kind
+  of evidence (current issuer texts in four jurisdictions) and is mainly corrections to
+  existing entries, adding about one objective. The alternative is to add it to L2 (about 12
+  objectives).
+- **L2-D5. Optional Hull extensions** (receiver swaption and parity; discrete dividends in
+  trees). Recommended: include them. Both sources are in the repository, and they add no
+  objective.
+- **L2-D6. Size.** Batch L2 would cover about 11 new objectives, a shortfall of about 34 against
+  the standing 45. Recommended: approve and report the shortfall, as under E2. Reaching 45
+  would need the backlog items that lack sources, or padding.
+- **Routine defaults** (no input needed unless the owner objects):
+  - `planned_batch` 8.
+  - Check scripts in new folders `short-rate-models/`, `counterparty-xva/`,
+    `default-correlation/` and `extreme-value/`, and in the existing `inference-simulation/`
+    (P11a), `portfolio-construction/` (P11b) and `short-term-funding/` (P11c). All are matched
+    by the `make examples` pattern.
+  - Network reads of CRE31, `s6-cvar`, Regulation T and FINRA Rule 4210 during their packages.
+    They are reads of public pages, recorded with retrieval dates; nothing is published.
+
 ## 11. Sequence
 
-1. Owner decides E1 and E2.
-2. Batch L1: P1, P2, P3, P4, P5, each with focused checks and records before the next.
+1. Owner decides E1 and E2. Done.
+2. Batch L1: P1, P2, P3, P4, P5, each with focused checks and records before the next. Done,
+   with the five audit corrections; committed locally as `5e0578e`.
 3. Batch L1 integration checks and completion report; commit and PR only when the owner asks.
-4. C0 (bounded) adds its findings to Section 8 and proposes the Batch L2 scope.
-5. Owner freezes Batch L2. P10 (B7) goes in Batch L2 or L3 according to C0's size.
+   Checks, report and local commit done; push and PR not done (L2-D0).
+4. C0 (bounded) adds its findings to Section 8 and proposes the Batch L2 scope. Done
+   (Sections 7 and 8.1), with its acceptance criteria corrected after audit.
+5. Owner freezes Batch L2 (Section 10.3). P10 (B7) goes in Batch L2 or L3 (L2-D4).
+6. Batch L2: P6, P7, P8, P9, P11a-c, each with focused checks and records before the next.
 
 ## 12. Risks and limits
 
@@ -675,3 +1172,6 @@ Batch L2 is estimated at about 8-9 objectives. P10 may join it if C0 adds few it
   repository. The package scripts recompute them; the acceptance ranges, not the planning
   values, are binding.
 - Editorial coverage is not study. Human review of all new entries is still outstanding.
+- C0 is a bounded sample, not a census. Hand comparison of section heads covered 76 of 175
+  modules, and the unexamined candidates are listed in Section 8.1. A gap that C0 did not find
+  may still exist.

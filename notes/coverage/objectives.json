@@ -58,6 +58,15 @@
    "scope": "Expectations, conditional moments, key distributions and Bayesian updating."
   },
   {
+   "id": "topic:stochastic-calculus",
+   "title": "Stochastic calculus for asset prices",
+   "section": "common-toolkit",
+   "prerequisites": [
+    "topic:probability-distributions"
+   ],
+   "scope": "Brownian motion and quadratic variation, Ito's lemma and geometric Brownian motion, risk-neutral pricing by change of measure and its link to the pricing PDE."
+  },
+  {
    "id": "topic:statistical-inference",
    "title": "Sampling and statistical inference",
    "section": "common-toolkit",
@@ -20342,6 +20351,438 @@
      "meth:wealth-transfer-strategies"
     ],
     "example": "notes/artefacts/private-wealth/private-wealth-checks.py: part 13 (US gift against bequest; residence band taper boundary cases; UK gift and estate as one chronology: 42,000 + 960,000 against 1,030,000; CRAT remainder); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:explain-brownian-motion-quadratic-variation",
+   "topic": "topic:stochastic-calculus",
+   "title": "Explain Brownian motion and its quadratic variation, and why squared increments produce Ito's correction",
+   "operations": [
+    "explain",
+    "describe"
+   ],
+   "depth": "foundation",
+   "prerequisites": [],
+   "entries": [
+    "def:brownian-motion-quadratic-variation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 14, sec. 14.2, pp. 318-319; appendix, pp. 336-337"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 4, secs. 4.5-4.9 and 4.12.1, pp. 73-78 and 82-83"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "def:brownian-motion-quadratic-variation"
+    ],
+    "example": "notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py part 1 (quadratic variation, first variation and Ito integral identities on simulated paths, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:apply-ito-lemma-gbm",
+   "topic": "topic:stochastic-calculus",
+   "title": "Apply Ito's lemma to derive the geometric Brownian motion solution and its moments",
+   "operations": [
+    "calculate",
+    "explain"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:explain-brownian-motion-quadratic-variation"
+   ],
+   "entries": [
+    "res:ito-lemma-geometric-brownian-motion"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 14, secs. 14.6-14.7, pp. 327-329; chap. 15, p. 340 and sec. 15.3, pp. 341-342"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 4, secs. 4.10-4.14, pp. 78-85"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "res:ito-lemma-geometric-brownian-motion"
+    ],
+    "example": "notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py part 2 (exact GBM mean and median, E[S_T^2] by Ito, Euler discretisation error, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:value-derivative-risk-neutral-expectation",
+   "topic": "topic:stochastic-calculus",
+   "title": "Value a derivative as a discounted risk-neutral expectation, explain the change of measure and relate the expectation to the pricing PDE",
+   "operations": [
+    "calculate",
+    "explain",
+    "contrast"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:apply-ito-lemma-gbm"
+   ],
+   "entries": [
+    "res:risk-neutral-pricing-feynman-kac"
+   ],
+   "candidate_entries": [
+    "mod:black-scholes-merton"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 28, secs. 28.1-28.4, pp. 671-677; chap. 15, sec. 15.7, p. 351"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 10, secs. 10.11-10.12, pp. 179-181"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "res:risk-neutral-pricing-feynman-kac"
+    ],
+    "example": "notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py part 3 (Girsanov reweighting against the BSM call, the PDE satisfied by real-world and risk-neutral expectations, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:price-options-finite-differences",
+   "topic": "topic:option-valuation",
+   "title": "Price European and American options by finite differences and assess the stability and convergence of the scheme",
+   "operations": [
+    "calculate",
+    "explain",
+    "evaluate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:value-derivative-risk-neutral-expectation"
+   ],
+   "entries": [
+    "meth:finite-difference-option-pricing"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 21, sec. 21.8, pp. 498-508"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 77, secs. 77.11-77.12 and 77.17, pp. 1212-1215 and 1224-1226; chap. 78, secs. 78.3, 78.7 and 78.9, pp. 1229-1230, 1243-1246"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "meth:finite-difference-option-pricing"
+    ],
+    "example": "notes/artefacts/numerical-pricing/numerical-pricing-checks.py parts 1-2 (European convergence, explicit instability, American put by projected SOR, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:value-early-exercise-least-squares-monte-carlo",
+   "topic": "topic:option-valuation",
+   "title": "Value early-exercise options by least-squares Monte Carlo and explain the bias of the estimate",
+   "operations": [
+    "calculate",
+    "explain"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:apply-monte-carlo-simulation"
+   ],
+   "entries": [
+    "meth:least-squares-monte-carlo"
+   ],
+   "candidate_entries": [
+    "meth:monte-carlo-simulation"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 21, sec. 21.6, p. 491; chap. 27, sec. 27.8, pp. 660-665"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "meth:least-squares-monte-carlo"
+    ],
+    "example": "notes/artefacts/numerical-pricing/numerical-pricing-checks.py parts 3-4 (Hull's eight paths; Bermudan put against restricted-exercise trees, out of sample, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:value-digital-options-pin-risk",
+   "topic": "topic:option-valuation",
+   "title": "Value cash-or-nothing and asset-or-nothing options, relate them to the vanilla call and explain their hedging (pin) risk",
+   "operations": [
+    "calculate",
+    "explain"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:value-derivative-risk-neutral-expectation"
+   ],
+   "entries": [
+    "meth:digital-option-valuation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 26, sec. 26.10, pp. 622-623"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 7, pp. 119-121; chap. 2, pp. 43-44"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "meth:digital-option-valuation"
+    ],
+    "example": "notes/artefacts/exotic-options/exotic-option-checks.py part 1 (digital identities, call-spread convergence, delta near expiry and its sign on both sides of the strike, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:value-barrier-options-monitoring",
+   "topic": "topic:option-valuation",
+   "title": "Value barrier options under continuous and discrete monitoring and explain their vega and hedging problems near the barrier",
+   "operations": [
+    "calculate",
+    "explain",
+    "compare"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:value-digital-options-pin-risk"
+   ],
+   "entries": [
+    "meth:barrier-option-valuation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 26, sec. 26.9, pp. 620-622; chap. 27, sec. 27.6, pp. 656-658"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 23, secs. 23.7-23.8, pp. 401-405"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "meth:barrier-option-valuation"
+    ],
+    "example": "notes/artefacts/exotic-options/exotic-option-checks.py part 2 (in-out parity, Brownian-bridge and daily-monitored Monte Carlo against closed forms, vega signs, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:value-asian-options",
+   "topic": "topic:option-valuation",
+   "title": "Value Asian options by the geometric closed form and by controlled simulation, and compare discrete with continuous averaging",
+   "operations": [
+    "calculate",
+    "compare"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:apply-monte-carlo-simulation"
+   ],
+   "entries": [
+    "meth:asian-option-valuation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 26, sec. 26.13, pp. 626-627; chap. 27, sec. 27.5, p. 653"
+     },
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 25, secs. 25.9-25.11, pp. 440-442"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/s7-hulloptions.md",
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "meth:asian-option-valuation"
+    ],
+    "example": "notes/artefacts/exotic-options/exotic-option-checks.py part 3 (discrete geometric closed form, geometric control variate, convergence to continuous averaging, a negative-carry case where the Asian call exceeds the vanilla, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:quantify-hedging-volatility-mismatch",
+   "topic": "topic:option-valuation",
+   "title": "Explain and quantify the profit and loss of delta hedging when implied and actual volatility differ, for each choice of hedge volatility",
+   "operations": [
+    "explain",
+    "calculate",
+    "compare"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:manage-option-greeks",
+    "objective:apply-ito-lemma-gbm"
+   ],
+   "entries": [
+    "res:delta-hedging-volatility-mismatch"
+   ],
+   "candidate_entries": [
+    "meth:greeks-delta-gamma-hedging"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 12, pp. 197-204; chap. 47, pp. 764-770"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 19, sec. 19.4, pp. 425-426"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-wilmott-pwoqf.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "res:delta-hedging-volatility-mismatch"
+    ],
+    "example": "notes/artefacts/option-valuation/volatility-mismatch-hedging-check.py (actual- and implied-volatility delta hedges on 20,000 common paths at 252 and 2,520 rebalancings; a cash-digital counterexample to the gamma condition, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:derive-kelly-growth-optimal-fraction",
+   "topic": "topic:portfolio-risk-return",
+   "title": "Derive the growth-optimal fraction for discrete bets and for a lognormal asset, and assess fractional Kelly under estimation error",
+   "operations": [
+    "calculate",
+    "explain",
+    "evaluate"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:apply-ito-lemma-gbm"
+   ],
+   "entries": [
+    "res:kelly-growth-optimal-fraction"
+   ],
+   "candidate_entries": [
+    "meth:rule-based-position-sizing"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "planned_batch": 7,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-wilmott-pwoqf",
+      "locator": "chap. 17, sec. 17.5, pp. 306-309; chap. 66, sec. 66.4, pp. 1057-1058"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-wilmott-pwoqf.md"
+    ],
+    "review_record": "notes/source-review-records.md#library-gap-filling-batch-l1-21-october-2026",
+    "entry_evidence": [
+     "res:kelly-growth-optimal-fraction"
+    ],
+    "example": "notes/artefacts/portfolio-construction/kelly-check.py (continuous identities, exact continuous log-wealth sampling, unlevered daily-rebalanced log growth against convergence-checked quadrature, discrete bets, estimation error, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   }

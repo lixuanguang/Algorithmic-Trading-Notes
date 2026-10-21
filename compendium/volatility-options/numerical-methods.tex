@@ -1,0 +1,50 @@
+\section{Numerical option pricing: finite differences and least-squares Monte Carlo}
+
+When no closed form exists, an option is valued by solving its pricing equation on a grid or by simulating the underlying. Grids handle early exercise naturally; simulation handles path dependence and several factors, and needs regression to handle early exercise. Plain Monte Carlo, its standard error and variance reduction are in \hyperref[meth:monte-carlo-simulation]{Monte Carlo simulation}; the equation being solved is derived in \hyperref[res:risk-neutral-pricing-feynman-kac]{risk-neutral pricing}.
+
+\begin{qfmethod}[Finite-difference option pricing: explicit and Crank--Nicolson schemes, stability, boundaries and early exercise]\label{meth:finite-difference-option-pricing}
+\qffield{Statement} A finite-difference method replaces the derivatives in the pricing equation by differences on a grid of asset prices and times and works back from the payoff \citep[chap.~21, sec.~21.8, pp.~498--508]{s7-hulloptions}. In time to maturity $\tau$ the Black--Scholes--Merton equation is $V_\tau=\tfrac12\sigma^2S^2V_{SS}+(r-q)SV_S-rV$. On a uniform grid $S_i=i\,\Delta S$ with central differences, the \emph{explicit} scheme gives each new value from three old ones:
+\[ V_i^{n+1}=A_iV_{i-1}^n+B_iV_i^n+C_iV_{i+1}^n,\quad A_i=\tfrac12\Delta\tau(\sigma^2i^2-(r-q)i),\ B_i=1-\Delta\tau(\sigma^2i^2+r),\ C_i=\tfrac12\Delta\tau(\sigma^2i^2+(r-q)i). \]
+These are Wilmott's coefficients \citep[chap.~77, sec.~77.11.1, pp.~1212--1213]{wide-wilmott-pwoqf}. Hull's version discounts by $1/(1+r\Delta t)$ instead and reads $A$, $B$, $C$ as the probabilities of a trinomial tree (eq.~(21.34), pp.~502--507).
+
+\emph{Stability.} Wilmott's analysis requires $c\le0$, $2\nu_1a-\delta t\,c\le1$ and $\tfrac12\nu_2|b|\le\nu_1a$, which for this equation means $\Delta\tau\le1/(\sigma^2I^2)$ approximately. Halving the asset step then needs a quarter of the time step. When the constraint fails, ``the instability is so serious, and so oscillatory, that it is easily noticed'' \citep[sec.~77.12, pp.~1213--1215]{wide-wilmott-pwoqf}. Hull traces the failure to negative tree probabilities (p.~507). The \emph{Crank--Nicolson} scheme averages the explicit and fully implicit schemes. It has error $O(\delta t^2,\delta S^2)$ and ``no relevant limitation on the size of the time step'' \citep[chap.~78, sec.~78.3, pp.~1229--1230]{wide-wilmott-pwoqf}.
+
+\emph{Early exercise.} In the explicit scheme, replace each new value by the payoff where the payoff is larger. In Crank--Nicolson every new value depends on every other, so the replacement is made inside the iteration that solves the equations: projected successive over-relaxation (SOR). A Bermudan option uses a payoff that applies only on the exercise dates \citep[sec.~78.9, pp.~1244--1246]{wide-wilmott-pwoqf}.
+
+\qffield{Notation} $I$ asset steps up to $S_{\max}=I\Delta S$; $N$ time steps of $\Delta\tau=T/N$; Wilmott's $\nu_1=\delta t/\delta S^2$, $\nu_2=\delta t/\delta S$, and $a$, $b$, $c$ the coefficients of $V_{SS}$, $V_S$ and $V$. Interpretation: the three coefficients sum to $1-r\Delta\tau$; when all are non-negative the scheme is monotone and stable in the maximum norm, which needs $\Delta\tau\le1/(\sigma^2I^2+r)$ (the discount term included) and $\sigma^2i\ge|r-q|$. Nodes that fail the second condition use a one-sided (upwind) first difference \citep[sec.~77.17, pp.~1224--1226]{wide-wilmott-pwoqf}. Boundaries for a put: $V(S_{\max},\tau)=0$, and $V(0,\tau)=Ke^{-r\tau}$ (European) or $K$ (American); for a call $V(0,\tau)=0$ and $V(S_{\max},\tau)=S_{\max}e^{-q\tau}-Ke^{-r\tau}$.
+
+\qffield{Conditions} The condition above is sufficient, not necessary. Crank--Nicolson is unconditionally stable for constant coefficients but not monotone for large $\Delta\tau$: the payoff's kink can produce oscillations, so the examples start with four implicit half-steps, and Wilmott notes a three-level scheme ``better for discontinuous initial data'' (sec.~78.7, p.~1243). Hull's implicit example compares values with the payoff only after solving each time step's equations. That is the projection Wilmott warns is ``not good enough'' for an implicit scheme (p.~1246). Grids handle one or two factors well; path-dependent payoffs need extra state variables (Hull, p.~508).
+
+\qffield{Practice} Examples, synthetic: put with $K=100$, $r=5$ percent, $q=0$, $\sigma=20$ percent, $T=1$, valued at $S=100$, $S_{\max}=300$.
+\begin{itemize}
+\item \emph{European} (BSM 5.5735). Crank--Nicolson at $(I,N)=(150,75)$ and $(300,150)$ has errors $1.00\times10^{-2}$ and $2.50\times10^{-3}$, a ratio of 4.01 (second order). The explicit scheme with $\Delta\tau$ just inside the bound ($N=901$ and 3{,}601) has errors $8.9\times10^{-3}$ and $2.2\times10^{-3}$. Because $\sigma^2<r$, only node $i=1$ needs upwinding.
+\item \emph{Instability.} At $I=150$ and $N=200$, 4.5 times the bound, $B_i<0$ at high $S$ and the values reach $3\times10^{92}$.
+\item \emph{American.} The reference is 6.0904, the mean of CRR trees with 8{,}000 and 8{,}001 steps (6.0903 and 6.0906). Crank--Nicolson with projected SOR ($\omega=1.5$) gives 6.0780 at $I=150$ and 6.0870 at $I=300$, an error ratio of 3.6. The early-exercise premium is about 0.52.
+\end{itemize}
+
+\qffield{Pitfalls} Choosing $\Delta\tau$ from the diffusion term alone and ignoring the discount and drift terms. Halving $\Delta S$ in an explicit scheme without quartering $\Delta\tau$. Reading the value off between grid nodes without interpolation error in mind. Projecting the payoff after an implicit solve and calling the result American. Placing $S_{\max}$ so close to the strike that the boundary condition distorts the value.
+
+\qffield{See also} \hyperref[mod:black-scholes-merton]{BSM}; \hyperref[meth:multi-period-binomial-valuation]{binomial trees}; \hyperref[meth:least-squares-monte-carlo]{least-squares Monte Carlo}; \hyperref[meth:barrier-option-valuation]{barrier options} (grids with an absorbing boundary).
+
+\end{qfmethod}
+
+\begin{qfmethod}[Least-squares Monte Carlo: early exercise by regressing continuation values, the Bermudan approximation and the bias of the estimate]\label{meth:least-squares-monte-carlo}
+\qffield{Statement} Monte Carlo cannot easily handle early exercise, because the holder must compare exercising with the unknown value of continuing \citep[chap.~21, sec.~21.6, p.~491]{s7-hulloptions}. Longstaff and Schwartz estimate the continuation value by least squares. Working backwards from maturity, at each exercise date they regress the discounted cash flows that the paths will receive if the option is kept on functions of the current state. Only the in-the-money paths are used. The holder exercises where the immediate payoff exceeds the fitted continuation value, and the option value is the mean of the discounted cash flows \citep[chap.~27, sec.~27.8, pp.~660--664]{s7-hulloptions}. In Hull's eight-path example (a three-year put, strike 1.10, rate 6 percent, exercise at years 1, 2 and 3), the regression at year~2 is $V=-1.070+2.983S-1.813S^2$ and the value is 0.1144 (Tables~27.4--27.7, pp.~661--663).
+
+Because exercise is decided only on the simulated dates, the method values a Bermudan option, and an American value is approximated with many dates (p.~664). A rule estimated from the paths is suboptimal, so the method ``tend[s] to underprice American-style options''; Andersen and Broadie's procedure gives an upper bound (p.~665).
+
+\qffield{Notation} Exercise dates $t_1<\dots<t_m$; payoff $h(S)$; basis functions $\psi_k(S)$, here $\{1,S/K,(S/K)^2\}$; fitted continuation $\hat C_j(S)=\sum_k\hat\beta_{jk}\psi_k(S)$. Interpretation: \emph{in-sample} value is the mean on the paths used to fit $\hat\beta$, which can be biased upwards because the rule has seen those paths. The \emph{out-of-sample} value applies the fitted rule to independent paths. Because no rule can beat the optimal one in expectation, the out-of-sample value is biased low, apart from sampling error.
+
+\qffield{Conditions} The basis must be rich enough to rank exercise against continuation near the boundary; a poor basis lowers the out-of-sample value but leaves it a lower bound. Paths must be sampled exactly on the exercise dates; for a lognormal asset this needs no discretisation. The method extends to several state variables, where its advantage over grids is largest (Hull, p.~664). The examples are synthetic: they test the algorithm under the model, not exercise behaviour in markets.
+
+\qffield{Practice} \emph{Reproduced}: Hull's eight paths give 0.11443 and the two printed regressions. The year-2 coefficient on $S^2$ is $-1.81358$ by least squares, printed truncated as $-1.813$.
+
+\emph{Checked}, a Bermudan put with $S_0=K=100$, $r=5$ percent, $\sigma=20$ percent, $T=1$ and exercise only at $t_j=j/50$. CRR trees with 5{,}000 and 5{,}050 steps that allow exercise only on those dates give 6.0785; Crank--Nicolson with projection only on those dates gives 6.0780. The value lies between the European 5.5735 and the American 6.0904. The rule fitted on 100{,}000 paths and applied to 100{,}000 independent paths gives 6.0386 (standard error 0.023), 0.04 below the reference, within the stated low-bias allowance of 0.05. On the fitting paths it gives 6.1248, above the reference.
+
+\qffield{Pitfalls} Reporting the in-sample mean as the price. Calling a 50-date Bermudan value American without checking the effect of more dates. Regressing on all paths, including out-of-the-money ones, which wastes the fit where no decision is made. Comparing a low-biased estimate with a reference and reading the shortfall as sampling noise.
+
+\qffield{See also} \hyperref[meth:monte-carlo-simulation]{Monte Carlo simulation}; \hyperref[meth:finite-difference-option-pricing]{finite differences}; \hyperref[meth:multi-period-binomial-valuation]{binomial trees} (American exercise by backward induction).
+
+\qffield{Further reading} \nolinkurl{s6-glasserman} (regression methods and duality upper bounds).
+
+\end{qfmethod}

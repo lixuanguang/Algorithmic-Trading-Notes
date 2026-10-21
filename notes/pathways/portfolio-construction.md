@@ -68,6 +68,10 @@ Written in empirical extensions (2026-10-17) (source verification and bounded ch
 - `mod:garch-volatility-forecast`: GARCH(1,1) against EWMA, with own synthetic checks (`garch-ewma-check.py`). Partly checked 2026-10-17, draft; human review outstanding.
 - `meth:resampled-efficiency`: Michaud resampling: what is drawn and averaged, and the proponents' simulation evidence. Partly checked 2026-10-17, draft; human review outstanding.
 
+Written in library gap-filling Batch L1 (2026-10-21):
+
+- `res:kelly-growth-optimal-fraction` in `compendium/portfolio-construction-risk/portfolio-construction-models.tex`: the discrete-bet fraction $p-q/b$, the continuous fraction $(\mu-r)/\sigma^2$ with exact half- and twice-Kelly identities, daily rebalancing at unlevered fractions against its quadrature expectation (levered fractions with discrete rebalancing can lose all wealth in a step, so they are left to the continuous model), and estimation error in $\mu$. Source: Wilmott, *Paul Wilmott on Quantitative Finance*, 2nd ed., secs. 17.5 and 66.4; Kelly (1956) and Thorp (2008) not read. Checks in `notes/artefacts/portfolio-construction/kelly-check.py`, synthetic. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l1-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 source verification (2026-10-17) (source verification and bounded tests, not study or human review): `meth:convex-cost-portfolio-optimisation` resolved by merge into `mod:portfolio-transaction-cost-function` (Boyd et al., *Multi-Period Trading via Convex Optimization*, 2017, author-hosted PDF, secs. 2.3, 4.7 and 5.3): the a|x| + b sigma |x|^{3/2}/V^{1/2} + cx cost, convexity of the common variants and nonconvexity of fixed fees, interior-point cost O(nk^2) 'even for ... the 3/2 power transaction costs', a coefficient near 2 for purely quadratic problems, and multi-period effort linear in the horizon; the piecewise-linear reformulation remains our interpretation. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.

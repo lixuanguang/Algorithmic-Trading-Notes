@@ -5507,3 +5507,220 @@ therefore labelled an ordinary-interest equivalent of the 151.91m valuation-date
 actual single September 2027 payment would have to be larger by an amount that depends on Harlow's 2025 minimum, which
 is not modelled. New source `cfr-26-1-430j-1` with a reading note; no figure, objective, denominator or requirement
 changed: 424/424 objectives and 1,030/1,030 items, editorial coverage only.
+
+## Library gap-filling, Batch L1, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-batch-l1`, created from `codex/alternatives-audit-20261020` at `2b89791`
+(draft PR #33 to `main` still open with that head, checked 2026-10-21); the only working-tree change was the untracked
+`implementation_plan_v2.md`. Coverage before: 424/424 objectives and 1,030/1,030 outline items, all covered. Scope:
+`implementation_plan_v2.md` Section 6, packages P1-P5, after the owner approved decisions E1 (ten new neutral
+objectives, a denominator change) and E2 (a ten-objective batch, below the standing 45-objective preference). Before
+implementation the plan was corrected for the external audit's findings R1-R4: P7's wrong-way-risk sign (plan only; P7
+is not implemented), a predetermined numerical criterion for P5's daily rebalancing, explicit P2-P3 example
+conventions, and the count of existing entries touched (two substantive extensions, two cross-reference edits).
+
+**P1, stochastic calculus** (new topic file `compendium/common-toolkit/stochastic-calculus.tex`; new
+`topic:stochastic-calculus`).
+- Read: Hull, *OFOD* 11th Global ed., chap. 14 (pp. 316-337, all sections and the appendix), chap. 15 (pp. 339-342 and
+  348-352), chap. 28 (pp. 670-677); Wilmott, *PWOQF* 2nd ed., chap. 4 (pp. 71-88) and chap. 10, secs. 10.11-10.12
+  (pp. 179-181). The plan listed Wilmott chaps. 3-6; the passages that teach the material are chap. 4 and sec. 10.11,
+  which are the ones cited. Neither book names Feynman-Kac or writes the Radon-Nikodym density: Hull states
+  Girsanov's theorem as a change of the market price of risk that leaves volatilities unchanged (p. 674), and Wilmott
+  reaches the risk-neutral expectation through the backward Kolmogorov equation (pp. 179-180). The density
+  $Z_T=\exp(-\theta W_T-\tfrac12\theta^2T)$ is therefore given in the entry as a direct calculation and checked
+  numerically; Shreve (`crypto-shreve`, not held) is Further reading only.
+- Notation: Hull's $z$ and Wilmott's $X$ are written $W$; Hull's market price of risk $\lambda$ is kept in the
+  Statement and $\theta$ used for the Girsanov kernel.
+- Checks (`notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py`, 22 checks, synthetic, seeds 20261021 to
+  +3 fixed before running): quadratic variation 1.0052 (10,000 steps; s.d. 0.0141) and 0.9996 on the bridge-refined
+  path; first variation 79.69 against 79.79; the left-point and midpoint integral identities. GBM with 200,000 exact
+  draws: mean 108.363 (s.e. 0.049) against 108.329, median 106.207 (s.e. 0.060) against 106.184; $E[S_T^2]$ 12,220.5
+  (s.e. 11.4) against Itô's 12,214.0, with the chain-rule 11,735.1 rejected; Euler RMS error 0.441 at 50 steps and
+  0.043 at 5,000 on common paths (discretisation, not sampling, error). Girsanov: reweighted real-world draws give
+  7.0979 (s.e. 0.0209) against the BSM call 7.1281, inside the predetermined 3 standard errors; unweighted
+  discounting gives 9.9148. The discounted real-world expectation satisfies the PDE with $\mu$ (residual
+  $-2.4\times10^{-7}$) and fails the Black-Scholes equation (residual $-2.58$).
+- Existing entry touched: `mod:black-scholes-merton` (See also links only; no claim or check changed).
+- Objectives: `objective:explain-brownian-motion-quadratic-variation`, `objective:apply-ito-lemma-gbm`,
+  `objective:value-derivative-risk-neutral-expectation`, all covered.
+
+**P2, numerical pricing** (new topic file `compendium/volatility-options/numerical-methods.tex`; extension of
+`meth:monte-carlo-simulation`).
+- Read: Hull, chap. 21, secs. 21.6-21.8 (pp. 489-509) and chap. 27, sec. 27.8 (pp. 660-665); Wilmott, chap. 77, secs.
+  77.11-77.12 and 77.17 (pp. 1212-1215, 1224-1226), chap. 78, secs. 78.1-78.3, 78.7 and 78.9 (pp. 1227-1230,
+  1242-1246) and chap. 80, secs. 80.1-80.6 (pp. 1263-1269). Not read: Longstaff and Schwartz (2001), Andersen and
+  Broadie, Glasserman (`s6-glasserman`, not held; Further reading).
+- Discrepancies and conventions. Hull's explicit coefficients discount by $1/(1+r\Delta t)$, Wilmott's subtract
+  $r\delta t$ from the centre coefficient; the entry teaches Wilmott's form and the plan's monotonicity condition,
+  which adds the discount term to Wilmott's diffusion-only bound $\delta t\le1/(\sigma^2I^2)$. Hull's implicit American
+  example projects after each linear solve (p. 502), which Wilmott calls "not good enough" for an implicit scheme
+  (p. 1246); the entry says so. Neither source names the Rannacher start; it is an implementation choice in the
+  examples, supported by Wilmott's remark that CN is not the best scheme for discontinuous initial data (p. 1243).
+  Hull's control variate uses a coefficient of 1 (eq. (21.20)); neither source gives the estimated optimal
+  coefficient, so it is stated as an Interpretation and checked. Hull prints the year-2 $S^2$ coefficient as $-1.813$;
+  least squares on his Table 27.4 data gives $-1.81358$ (truncated, not rounded); the published value 0.1144 is
+  reproduced (0.11443).
+- Checks (`notes/artefacts/numerical-pricing/numerical-pricing-checks.py`, synthetic): European put (BSM 5.573526):
+  Crank-Nicolson errors $1.00\times10^{-2}$ and $2.50\times10^{-3}$ at (150, 75) and (300, 150), ratio 4.01; explicit
+  at $N=901$ and 3,601 (just inside $1/(\sigma^2I^2+r)$, all coefficients non-negative; node $i=1$ upwinded because
+  $\sigma^2<r$) errors $8.86\times10^{-3}$ and $2.21\times10^{-3}$, ratio 4.01; explicit at $N=200$ (4.5 times the
+  bound) reaches $2.9\times10^{92}$. American put: CRR 6.09028 (8,000 steps) and 6.09056 (8,001), reference 6.09042;
+  CN with projected SOR 6.0780 ($I=150$) and 6.0870 ($I=300$, error $3.4\times10^{-3}\le4\times10^{-3}$), ratio 3.63;
+  the explicit scheme with projection gives 6.0806. Bermudan put (50 dates): CRR 6.07853 (5,000 steps) and 6.07851
+  (5,050), reference 6.07852; CN (600, 1,000) with projection only on the dates 6.07796 (within $5\times10^{-3}$); LSM
+  out of sample 6.0386 (s.e. 0.0227), 0.040 below the reference, inside the predetermined $[-0.05,+3\text{ s.e.}]$
+  band; in sample 6.1248 (reported, not tested). Every acceptance range in the plan passed on the first complete
+  run; one check of my own on Hull's printed coefficients first used a tolerance of $5\times10^{-4}$ and failed
+  because of the truncated print; it now allows $10^{-3}$ and the reason is stated in the script.
+- Monte Carlo extension (`inference-simulation-checks.py`, same 100,000 draws as the existing call): estimated
+  coefficient 0.5421, correlation 0.8746, variance reduction factor 4.25 (criterion above 2), estimate 7.1289 (s.e.
+  0.0192) against 7.1281 (criterion 3 s.e.). A recorded coefficient of 0.5258 written before the run was wrong and
+  was replaced by the computed value; the plan's criteria were not changed. Euler bias on 400,000 common paths
+  (seed 20261018 + 11): $-0.1254$, $-0.0536$, $-0.0250$ at 2, 4 and 8 steps (s.e. 0.0024 or less), ratios 2.34 and
+  2.14 against the predetermined $[1.5,2.5]$.
+- Objectives: `objective:price-options-finite-differences`, `objective:value-early-exercise-least-squares-monte-carlo`,
+  covered. The control-variate extension deepens the covered `objective:apply-monte-carlo-simulation` and is not
+  counted.
+
+**P3, digital, barrier and Asian options** (new topic file `compendium/volatility-options/exotic-options.tex`).
+- Read: Hull, chap. 26, secs. 26.9-26.10 and 26.13 (pp. 620-623, 626-627) and chap. 27, secs. 27.5-27.6 (pp.
+  653-658); Wilmott, chap. 2 (pp. 43-44), chap. 7 (pp. 119-121), chap. 23 (pp. 385-386, 400-405) and chap. 25, secs.
+  25.9-25.11 (pp. 440-442, page image of p. 440 viewed). The plan listed Wilmott chaps. 22-23 and 25; the binary
+  material is in chaps. 2 and 7, which are the passages cited. Not read: Broadie, Glasserman and Kou (1997), Kemna
+  and Vorst (1990); both are cited through Hull or Wilmott, and BGK is Further reading.
+- Discrepancy: Wilmott's summary of Kemna-Vorst (p. 440) replaces the dividend yield by $D+\sigma^2/6$; his own formula
+  (p. 442) and the limit of the discrete geometric distribution give $\tfrac12(r+D+\sigma^2/6)$. The script shows the
+  p. 440 version gives 6.5181 against 5.9802. The plan's description of Hull's continuous-averaging form (sec. 26.13)
+  was inaccurate: Hull gives moment matching for the arithmetic average and a footnote that the geometric average is
+  lognormal, not the $\sigma/\sqrt3$ formula; the entry cites Wilmott for that formula.
+- Checks (`notes/artefacts/exotic-options/exotic-option-checks.py`, synthetic, $S_0=K=100$, $r=5\%$, $q=2\%$,
+  $\sigma=25\%$, $T=1$, 100,000 paths per Monte Carlo check, seeds 20261031-20261035 in check order). Digitals: call
+  11.123762 = 58.4955 - 100 x 0.473717 to $10^{-12}$; call-spread errors $1.03\times10^{-4}$, $2.58\times10^{-5}$,
+  $6.45\times10^{-6}$ (ratios about 4.0, criterion [3.5, 4.5]); simulated digital 0.4719 (s.e. 0.0015); delta at the
+  strike 0.0152, 0.0550, 0.2533 at 1 year, 1 month, 1 day. Barrier $H=90$: $c_{do}=8.1388$, $c_{di}=2.9850$; in-out
+  parity path by path to $10^{-12}$; Brownian-bridge Monte Carlo 8.1953 (s.e. 0.0529); daily monitoring 8.4890 (s.e.
+  0.0538) against the shifted-barrier 8.5190 (barrier 89.178), inside 3 s.e. + 0.5 percent. Asian, 12 monthly dates
+  excluding $S_0$: discrete geometric 6.3903 against 6.3888 (s.e. 0.0309); arithmetic 6.6797 (s.e. 0.0321)
+  uncontrolled and 6.6813 (s.e. 0.00107) controlled, variance-reduction factor 900 (criterion above 10), difference
+  inside 3 uncontrolled s.e.; continuous geometric 5.9802.
+- Errors caught during development, all in checks of my own beyond the plan's criteria (the plan's criteria passed on
+  the first run): a vega check failed because `call` captured $\sigma$ as a default argument, so the vanilla term
+  had no vega (coding error, fixed); the corrected down-and-out vega with $H<K$ is positive near the barrier (0.81 at
+  $S=91$ against 14.80 at 130), so my expectation of a negative sign was wrong; the check now tests that it shrinks
+  below a tenth, and tests Hull's own example of negative vega, an up-and-out call ($K=100$, $H=120$, $S=115$: value
+  0.1999, vega $-2.22$; the value was cross-checked once by a Brownian-bridge simulation outside the script, 0.2025,
+  s.e. 0.0030). A convergence check with a 2e-3 tolerance at 1,000 dates failed because convergence to continuous
+  averaging is first order (gap 0.00491 at 1,000 dates); it was replaced by a refinement check (gap 0.00982 at 500,
+  ratio 2.0, criterion [1.9, 2.1]).
+- Objectives: `objective:value-digital-options-pin-risk`, `objective:value-barrier-options-monitoring`,
+  `objective:value-asian-options`, covered.
+
+**P4, hedging with the wrong volatility** (new `res:delta-hedging-volatility-mismatch` in
+`compendium/volatility-options/option-valuation.tex`; vanna and volga added to `meth:greeks-delta-gamma-hedging`; a See
+also link in `meth:active-currency-strategies`).
+- Read: Wilmott, chap. 12 (pp. 197-205), chap. 47 (pp. 763-770) and chap. 7 (pp. 127-128 with n. 3); Hull, chap. 19,
+  sec. 19.4 (pp. 421-427, reread). Not read: Carr (2005), Henrard (2001), Ahmad and Wilmott (2005); eq. (12.2) is
+  cited through Wilmott. Neither source uses the names vanna and volga; Wilmott records "vomma" and "kabanga" for
+  the same derivatives, and the entry cites that and gives the formulas, checked by finite differences (vanna
+  $-0.2814$, volga 9.8501 for the example's call at 20 percent).
+- Checks (`notes/artefacts/option-valuation/volatility-mismatch-hedging-check.py`, 20,000 common paths, seed
+  20261051): $V^a-V^i=14.2313-10.4506=3.7807$. Actual-volatility delta: mean 3.7770 (s.e. 0.0044, s.d. 0.627) at
+  252 rebalancings and 3.7805 (s.e. 0.0014, s.d. 0.200) at 2,520, both inside 3 s.e.; s.d. ratio 3.14 (criterion
+  [2.8, 3.5]). Implied-volatility delta: RMS gap to the pathwise integral 0.797 and 0.256, factor 3.12 (criterion
+  [2.5, 3.8]); cross-path s.d. 1.75 at 2,520 steps (criterion above 1.5); mean 3.7462 (s.e. 0.0124), reported only.
+  All criteria passed on the first run.
+- Objective: `objective:quantify-hedging-volatility-mismatch`, covered. The vanna-volga sentence deepens the covered
+  `objective:manage-option-greeks` and is not counted.
+
+**P5, growth-optimal (Kelly) sizing** (new `res:kelly-growth-optimal-fraction` in
+`compendium/portfolio-construction-risk/portfolio-construction-models.tex`).
+- Read: Wilmott, chap. 17, sec. 17.5 (pp. 306-309) and chap. 66, sec. 66.4 (pp. 1057-1058, the growth-optimal
+  portfolio, which the plan did not list and which supplies the continuous-time fraction with a riskless asset and
+  the log-utility link). Not read: Kelly (1956), Thorp (2008), Busseti, Ryu and Boyd (2016); no copy is in the
+  library, so all three are Further reading only. The discrete-bet fraction $p-q/b$, the exact continuous identities
+  and the estimation-error formula are derivations stated as Interpretation and checked.
+- Discrepancy: Wilmott's "halves your volatility ... only decreases your expected growth rate by 25%" (p. 309) rests
+  on his small-edge quadratic approximation (17.1); the entry states the exact continuous identity (excess growth over
+  $r$) and shows it does not hold for discrete bets.
+- Checks (`notes/artefacts/portfolio-construction/kelly-check.py`, synthetic, $\mu=8\%$, $r=2\%$, $\sigma=20\%$):
+  $f^*=1.5$; excess growth 0.045 and 0.03375 (ratio 0.75), variance-rate ratio 0.25, $g(2f^*)=r$. Exact 10-year
+  sampling (200,000 draws, seed 20261041): 0.05379 (s.e. 0.00011), 0.06508 (0.00021), 0.02016 (0.00042) against
+  0.05375, 0.065, 0.02, standard deviations within 1 percent of $f\sigma/\sqrt T$. Daily rebalancing (20,000 x 2,520,
+  seed 20261042) against 80-point Gauss-Hermite expectations 0.053750, 0.064999, 0.019900: simulated 0.05418 (s.e.
+  0.00033), 0.06585 (0.00067), 0.02159 (0.00134), all inside 3 s.e.; biases $+2.8\times10^{-7}$, $-8.9\times10^{-7}$,
+  $-1.00\times10^{-4}$ a year (criterion below $5\times10^{-4}$), refinement ratios 0.500, 0.500, 0.499 (criterion
+  [0.4, 0.6]). Discrete bets: 0.7470 and 0.7727, both different from 0.75. Estimation error (10 years of data, seed
+  20261043, a criterion fixed before running): expected excess growth $-0.00500$ at full and $+0.02125$ at half
+  Kelly, simulated $-0.00515$ and $+0.02120$. All criteria passed on the first run.
+- Objective: `objective:derive-kelly-growth-optimal-fraction`, covered.
+
+**Batch completion.**
+- Scope delivered: ten new entries (`def:brownian-motion-quadratic-variation`, `res:ito-lemma-geometric-brownian-motion`,
+  `res:risk-neutral-pricing-feynman-kac`, `meth:finite-difference-option-pricing`, `meth:least-squares-monte-carlo`,
+  `meth:digital-option-valuation`, `meth:barrier-option-valuation`, `meth:asian-option-valuation`,
+  `res:delta-hedging-volatility-mismatch`, `res:kelly-growth-optimal-fraction`); three new topic files
+  (`common-toolkit/stochastic-calculus.tex`, `volatility-options/numerical-methods.tex`,
+  `volatility-options/exotic-options.tex`); two substantive extensions (`meth:monte-carlo-simulation`,
+  `meth:greeks-delta-gamma-hedging`) and two cross-reference edits (`mod:black-scholes-merton`,
+  `meth:active-currency-strategies`). Entries 671 to 681.
+- Coverage: one new topic (`topic:stochastic-calculus`) and ten new neutral objectives, all covered (decision E1). The
+  denominator changes from 424 to 434: 434/434 objectives covered. Outline items unchanged at 1,030/1,030; the new
+  objectives have no outline items. Newly covered objectives: 10, a shortfall of 35 against the standing 45-objective
+  preference (decision E2): the library-gap programme has about 20 verified objectives in total (Batch L1, the
+  proposed Batch L2 and P10), L2 is frozen only after the C0 discovery task, and padding is not allowed. No backlog
+  item was created; the plan's Section 8 already holds B1-B11.
+- Sources actually read: Hull, *OFOD* 11th Global ed. (chaps. 14, 15, 19, 21, 26, 27, 28) and Wilmott, *PWOQF* 2nd ed.
+  (chaps. 2, 4, 7, 10, 12, 17, 23, 25, 47, 66, 77, 78, 80). No curriculum, workbook, CQF or CAIA text was used or cited.
+- Numerical scripts: five new (`stochastic-calculus-checks.py`, `numerical-pricing-checks.py`,
+  `exotic-option-checks.py`, `volatility-mismatch-hedging-check.py`, `kelly-check.py`) and one extended
+  (`inference-simulation-checks.py`); `make examples` now runs 111 scripts. Every acceptance range in
+  `implementation_plan_v2.md` Section 6 (as corrected for R2 and R3 before running) passed without changing a seed or
+  tolerance. Failures during development were in checks of my own beyond the plan, recorded under P2 and P3.
+- Repository checks (2026-10-21): `make source-check` passed (lock, lint, format, compendium checker 0 problems,
+  coverage 0 problems, 36 tests, 111 scripts); `make pdf` built 430 pages with no overfull boxes and no undefined
+  references or citations. One underfull box (badness 2277) in the first paragraph of
+  `common-toolkit/statistical-inference.tex` is pre-existing: a build of `2b89791` in a temporary worktree shows the
+  same box with the same badness. The first PDF build failed on a bracket inside an entry's optional title
+  (`$[W]_T=T$`); the title was reworded. Rendered pages of the three new topic files and the edited entries were
+  inspected.
+- Limits: all examples are synthetic and test the methods under their models, not markets. Hull and Wilmott are cited
+  for papers that were not read (Longstaff-Schwartz, Andersen-Broadie, Broadie-Glasserman-Kou, Kemna-Vorst, Carr,
+  Henrard). Editorial coverage only; human review of the ten entries is outstanding. Nothing was committed.
+
+**Post-implementation audit corrections, 21 October 2026.** An audit of the uncommitted Batch L1 (findings L1-F1 to
+L1-F5) reran the six affected scripts and both checkers, all passing, and found mathematical assumptions the checks did
+not cover. The counterexamples were reproduced before any edit, and the file hashes matched the audited state. The owner
+authorised the necessary changes to the affected examples and acceptance criteria (`implementation_plan_v2.md`, P3-P5
+and *Batch L1 post-implementation audit corrections*). No seed was changed and no tolerance loosened; the results
+recorded above are kept as the history of the first implementation.
+- L1-F1, `res:kelly-growth-optimal-fraction`. The daily-rebalancing check ran at $f=0.75$, 1.5 and 3 and called the
+  80-node quadrature value exact. For $f>1$ the one-day gross factor $(1-f)e^{r\Delta t}+fR$ is nonpositive when
+  $Z\le-87.21$ ($f=1.5$) or $Z\le-32.20$ ($f=3$), probabilities of about $10^{-1654}$ and $10^{-227}$: not zero, so
+  $E[\ln W]$ is undefined, and the quadrature nodes and the 20,000 paths simply missed the tail. The earlier biases
+  $-8.9\times10^{-7}$ and $-1.00\times10^{-4}$ at $f=1.5$ and 3 are therefore withdrawn. The script now shows the
+  negative gross factor for both levered fractions, checks that $f=1$ (no trade) gives $\mu-\tfrac12\sigma^2=g(1)$ to
+  $10^{-12}$, and tests daily rebalancing at $f=0.25$, 0.5 and 0.75 with the same seed 20261042 and criteria:
+  quadrature 0.033751, 0.045001, 0.053750 a year; simulated 0.03389 (s.e. 0.00011), 0.04529 (0.00022), 0.05418
+  (0.00033); biases $+8.74\times10^{-7}$, $+6.94\times10^{-7}$, $+2.79\times10^{-7}$; refinement ratios 0.500. New
+  convergence criterion: 40-, 80- and 160-node rules and adaptive `scipy.integrate.quad` agree within $10^{-10}$ and
+  within 1/1,000 of the bias (largest difference $3.0\times10^{-14}$). The continuous leveraged identities and exact
+  sampling are unchanged. The entry's Conditions, Practice and Pitfalls explain why continuous rebalancing keeps wealth
+  positive and discrete leveraged rebalancing needs a ruin or margin model.
+- L1-F2, `res:delta-hedging-volatility-mismatch`. The Conditions had dropped $\Gamma^i\ge0$ from the claim that
+  $\sigma>\tilde\sigma$ gives the implied-volatility hedge a positive total. Restored in Statement, Conditions and
+  Pitfalls; a deterministic check and Practice item add a unit cash-or-nothing call ($S_0=120$, $K=100$, $r=5\%$,
+  $q=0$, $T=1$): 0.8141 at 20 percent and 0.6980 at 30 percent, $V^a-V^i=-0.1160$; gamma $+0.00071$ at $S=80$ and
+  $-0.00047$ at $S=120$, matched by a finite difference. The vanilla simulation and its results are unchanged.
+- L1-F3, `meth:asian-option-valuation`. Hull's text layer, p. 626, reads "tend to be less expensive than regular
+  options" (rechecked); the entry had written "are cheaper". It now quotes Hull, says that averaging moves the forward
+  as well as the dispersion, and keeps the AM-GM ordering. A deterministic negative-carry check ($S_0=100$, $K=60$,
+  $r=2\%$, $q=8\%$, $\sigma=20\%$, 12 dates excluding $S_0$): vanilla 33.5611, geometric Asian 35.7601, arithmetic at
+  least $e^{-rT}(E[S_{\text{ave}}]-K)=36.0876$. The positive-carry Practice item now says "with these inputs".
+- L1-F4, `def:brownian-motion-quadratic-variation`. Pitfalls wording: variance is proportional to elapsed time and
+  standard deviation to its square root. No check changed.
+- L1-F5, `meth:digital-option-valuation`. The example said the hedge "reverses" across the strike; the one-day delta
+  is 0.2530, 0.2533 and 0.2525 at 99.9, 100 and 100.1, positive throughout. The text now says the hedge changes size,
+  not sign, while gamma changes sign near the strike; a deterministic check was added. It draws no random numbers, so
+  the seed sequence of the Monte Carlo checks is unchanged.
+- Objectives unchanged: the same ten, all covered; 434/434 objectives and 1,030/1,030 items. Coverage example strings,
+  entry-evidence reviews and the pathway summaries for these entries were updated to match.

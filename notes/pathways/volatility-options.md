@@ -75,6 +75,14 @@ In `option-strategies.tex` (topic `option-strategies`):
 
 All partly checked 2026-10-19, draft. Examples in `notes/artefacts/option-valuation/option-valuation-checks.py` and `notes/artefacts/option-strategies/option-strategy-checks.py`; human review is outstanding. Coverage records are editorial, not study. `mod:black-scholes-merton`, `def:implied-volatility-surface` and `meth:option-payoff-profit` are linked, not repeated.
 
+Written in library gap-filling Batch L1 (2026-10-21):
+
+- New topic file `compendium/volatility-options/numerical-methods.tex`: `meth:finite-difference-option-pricing` (explicit and Crank-Nicolson schemes, the monotonicity condition with the discount term, upwinding, boundaries, American exercise by projection and projected SOR) and `meth:least-squares-monte-carlo` (Hull's eight-path example, a 50-date Bermudan put, in-sample against out-of-sample bias). Checks in `notes/artefacts/numerical-pricing/numerical-pricing-checks.py`.
+- New topic file `compendium/volatility-options/exotic-options.tex`: `meth:digital-option-valuation` (cash and asset digitals, the call as their difference, call-spread limit, pin risk), `meth:barrier-option-valuation` (in-out parity, the down-and-out call, Brownian-bridge and discretely monitored simulation, the Broadie-Glasserman-Kou shift, vega near the barrier) and `meth:asian-option-valuation` (discrete and continuous geometric averages, a geometric control for the arithmetic average, and a negative-carry case where the Asian call exceeds the vanilla). Checks in `notes/artefacts/exotic-options/exotic-option-checks.py`.
+- `compendium/volatility-options/option-valuation.tex`: new `res:delta-hedging-volatility-mismatch` (hedging with actual against implied volatility, Wilmott chap. 12, with the nonnegative-gamma condition and a cash-digital counterexample; discrete-hedging error, chap. 47), with checks in `notes/artefacts/option-valuation/volatility-mismatch-hedging-check.py`; `meth:greeks-delta-gamma-hedging` extended with vanna and volga and a link to the new entry. `meth:active-currency-strategies` (currency-markets) gained a See also link only.
+
+Sources: Hull, *Options, Futures, and Other Derivatives*, 11th Global ed., and Wilmott, *Paul Wilmott on Quantitative Finance*, 2nd ed. (chapters listed in the record). Synthetic examples only. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l1-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.

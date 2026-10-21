@@ -143,6 +143,8 @@ Formulas are in \hyperref[mod:black-scholes-merton]{the BSM model}. A position w
 
 \emph{Gamma risk.} For a delta-neutral portfolio $\Delta\Pi\approx\Theta\Delta t+\tfrac12\Gamma\Delta S^2$ (eq.~(19.3), p.~430). With negative gamma the portfolio gains if the price does not move and loses on large moves of either sign. The underlying has zero gamma, so a portfolio is made gamma neutral with $-\Gamma/\Gamma_T$ traded options and then delta neutral again with the underlying (pp.~430--431). Vega is hedged the same way, with options (sec.~19.8).
 
+\emph{Second-order volatility Greeks.} Vanna, $\partial^2V/\partial S\partial\sigma$, is the change in delta per unit of volatility; volga, $\partial^2V/\partial\sigma^2$, is the change in vega per unit of volatility. Wilmott records them under the names ``kabanga'' and ``vomma'' and warns that vega itself is meaningful only for payoffs whose gamma has one sign \citep[chap.~7, pp.~127--128 and n.~3]{wide-wilmott-pwoqf}. For a European call, vanna is $-e^{-qT}N'(d_1)d_2/\sigma$ and volga is $\text{vega}\cdot d_1d_2/\sigma$.
+
 \emph{Implied volatility in trading.} The implied volatility is the volatility that makes the model price equal the market price. Traders quote options in implied volatility, and the VIX indexes the 30-day implied volatility of S\&P~500 options (chap.~15, sec.~15.11, pp.~358--359). A delta-hedged long option earns, roughly, $\tfrac12\Gamma S^2(\sigma_{\text{realised}}^2-\sigma_{\text{implied}}^2)\Delta t$ each period. So buying options is a view that realised volatility will exceed implied: ``If implied volatility is low, such that options generally appear underpriced, look for spreads with a positive vega'' \citep[chap.~11, p.~199]{s7-natenberg}.
 
 \qffield{Practice} \emph{Reproduced} (Hull, Example~19.1 and sec.~19.6).
@@ -165,6 +167,31 @@ Formulas are in \hyperref[mod:black-scholes-merton]{the BSM model}. A position w
 
 \qffield{Pitfalls} Treating a delta-neutral book as riskless. Hedging gamma with the underlying. Reading a profit on a delta-hedged option as alpha when it is the realised-minus-implied variance spread, earned at the cost of gamma risk.
 
-\qffield{See also} \hyperref[mod:black-scholes-merton]{BSM}; \hyperref[meth:option-spreads-volatility-strategies]{volatility strategies}; \hyperref[def:vix-variance-dividend-swaps]{the VIX}.
+\qffield{See also} \hyperref[mod:black-scholes-merton]{BSM}; \hyperref[meth:option-spreads-volatility-strategies]{volatility strategies}; \hyperref[def:vix-variance-dividend-swaps]{the VIX}; \hyperref[res:delta-hedging-volatility-mismatch]{hedging with the wrong volatility} (which delta to use when implied and actual volatility differ).
 
 \end{qfmethod}
+
+\begin{qfresult}[Delta hedging when implied and actual volatility differ: the locked-in profit of the actual-volatility hedge against the path-dependent profit of the implied-volatility hedge]\label{res:delta-hedging-volatility-mismatch}
+\qffield{Statement} Suppose an option is bought at the price implied by $\tilde\sigma$ while the asset's actual volatility is $\sigma$, and the position is delta hedged to expiry. The question is which volatility goes into the delta \citep[chap.~12, pp.~197--199]{wide-wilmott-pwoqf}.
+\begin{itemize}
+\item \emph{Hedge with actual volatility.} This replicates a short position in a correctly priced option, so the profit is guaranteed to be $V(S,t;\sigma)-V(S,t;\tilde\sigma)$ in present value by expiry. The mark-to-market profit over each step is $\tfrac12(\sigma^2-\tilde\sigma^2)S^2\Gamma^i\,dt+(\Delta^i-\Delta^a)((\mu-r+D)S\,dt+\sigma S\,dX)$: it contains a $dX$ term and the real drift $\mu$, so ``you could lose before you gain'' (pp.~200--202).
+\item \emph{Hedge with implied volatility.} The profit each step is $\tfrac12(\sigma^2-\tilde\sigma^2)S^2\Gamma^i\,dt$, eq.~(12.1), with no $dX$ term. Its present value over the life is $\tfrac12(\sigma^2-\tilde\sigma^2)\int_{t_0}^Te^{-r(t-t_0)}S^2\Gamma^i\,dt$, which is ``always positive, but highly path dependent''; the positivity needs $\Gamma^i\ge0$, as for a vanilla call or put. It depends on $\mu$, is largest if the asset ends near the strike, and needs no estimate of actual volatility beyond its sign relative to implied (pp.~202--203). For a payoff whose gamma changes sign the integrand changes sign too, so the total can be negative even with $\sigma>\tilde\sigma$.
+\end{itemize}
+Hedging with any volatility $\sigma_h$ gives $V(S,t;\sigma_h)-V(S,t;\tilde\sigma)+\tfrac12(\sigma^2-\sigma_h^2)\int e^{-r(t-t_0)}S^2\Gamma^h\,dt$, eq.~(12.2), after Carr and Henrard (p.~203).
+
+\qffield{Notation} Superscripts $a$ and $i$ for values and Greeks at actual and implied volatility; $D$ dividend yield; profits in present value at $t_0$. Interpretation: ``zero diffusion'' describes the continuous-time increment of the implied-volatility hedge. With rebalancing at intervals $\delta t$ both hedges carry a hedging error, which Wilmott writes as $\tfrac12(\phi^2-1)\sigma^2S^2\Gamma\,\delta t$ per step: mean zero, chi-squared and skewed \citep[chap.~47, pp.~764--770]{wide-wilmott-pwoqf}. Hull's simulations show the dispersion of a discretely rebalanced hedge falling steadily with the rebalancing interval \citep[chap.~19, sec.~19.4, pp.~425--426]{s7-hulloptions}.
+
+\qffield{Conditions} Geometric Brownian motion with constant, known actual volatility and constant implied volatility; the option is marked at implied volatility throughout; continuous rebalancing, no costs, borrowing and lending at $r$. The guaranteed profit needs the actual volatility to be known and constant, which it never is; the implied-volatility hedge has a positive total if $\sigma>\tilde\sigma$ throughout and $\Gamma^i\ge0$ along the path, as for a vanilla call or put (a convex payoff). Neither profit is positive merely because actual volatility exceeds implied: with negative gamma the integrand is negative, and where vega is negative $V^a-V^i<0$. With a smile, stochastic volatility or jumps, neither result holds exactly. The examples are synthetic.
+
+\qffield{Practice} Example, synthetic: a one-year at-the-money call, $S_0=K=100$, $r=5$ percent, $q=0$, real drift 10 percent, actual volatility 30 percent, bought at implied 20 percent. Then $V^a-V^i=14.2313-10.4506=3.7807$. On 20{,}000 common paths:
+\begin{itemize}
+\item \emph{Actual-volatility delta.} Mean profit 3.7770 (standard error 0.0044) with 252 rebalancings and 3.7805 (0.0014) with 2{,}520. The standard deviation falls from 0.627 to 0.200, a ratio of 3.14 against $\sqrt{10}=3.16$: the dispersion is discrete-hedging error.
+\item \emph{Implied-volatility delta.} The root-mean-square gap between each path's profit and its pathwise integral falls from 0.797 to 0.256. The standard deviation across paths stays at 1.75, because the total itself depends on the path. The mean profit here is 3.746 (standard error 0.012); with another drift it would differ.
+\item \emph{The gamma condition, in closed form.} A unit cash-or-nothing call (\hyperref[meth:digital-option-valuation]{digital options}) with $S_0=120$, $K=100$, $r=5$ percent, $q=0$ and $T=1$ is worth 0.8141 at 20 percent volatility and 0.6980 at 30 percent, so the actual-volatility hedge locks in $-0.1160$. Its gamma at implied volatility is $+0.00071$ at $S=80$ and $-0.00047$ at $S=120$; it is negative wherever $d_1>0$, so a path that stays above the strike makes the implied-volatility hedge lose.
+\end{itemize}
+
+\qffield{Pitfalls} Expecting the implied-volatility hedge to earn $V^a-V^i$, or the actual-volatility hedge to make money smoothly. Calling the implied-volatility hedge riskless because each increment has no $dW$ term: the total is random, and finite rebalancing adds noise. Forgetting that the guaranteed profit depends on a volatility forecast that has to be right for the whole life. Expecting a positive variance spread to pay on a digital, barrier or spread position whose gamma changes sign.
+
+\qffield{See also} \hyperref[meth:greeks-delta-gamma-hedging]{the Greeks in use}; \hyperref[mod:black-scholes-merton]{BSM}; \hyperref[def:vix-variance-dividend-swaps]{variance swaps} (trading the variance spread directly); \hyperref[meth:active-currency-strategies]{volatility trading in currencies}.
+
+\end{qfresult}

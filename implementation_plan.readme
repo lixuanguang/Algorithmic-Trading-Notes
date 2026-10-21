@@ -3291,3 +3291,35 @@ of the 151.91m valuation-date minimum under 26 CFR 1.430(j)-1(b)(4)(i), distinct
 quarterly installments in (b)(4)(ii) and (c), in the compendium, the script's check text, this plan, the review record
 and the PR description. New source `cfr-26-1-430j-1` with a reading note. No figure, objective, denominator or
 requirement changed; coverage 424/424 and 1,030/1,030, editorial only; human review outstanding.
+
+## 37. Library gap-filling: plan v2 and Batch L1 (executed 2026-10-21)
+
+**Pointer.** Work after Section 36 follows `implementation_plan_v2.md` (gap-filling from the owner's finance library;
+untracked at the time of writing). That file holds the gap register, Batch L1's frozen scope and acceptance criteria,
+the proposed Batch L2, the discovery task C0 and the backlog. Before execution it was corrected for an external
+audit's findings R1-R4 (P7's wrong-way-risk sign, P5's daily-rebalancing criterion, explicit P2-P3 example
+conventions, the count of existing entries touched).
+
+**Verified state.** Branch `codex/library-gap-batch-l1` from `2b89791` (draft PR #33 still open with that head).
+Coverage before: 424/424 objectives and 1,030/1,030 items.
+
+**Outcome.** Packages P1-P5: ten new entries in three new topic files and two existing ones; two substantive
+extensions and two cross-reference edits; five new numerical scripts and one extended. Decisions E1 and E2 approved:
+ten new neutral objectives (new `topic:stochastic-calculus`), all covered, so 434/434 objectives; items unchanged at
+1,030/1,030. Ten newly covered objectives, a shortfall of 35 against the 45-objective preference, reported rather than
+padded. Sources: Hull, *OFOD* 11th Global ed., and Wilmott, *PWOQF* 2nd ed.; no curriculum or CAIA text. Every plan
+acceptance check passed unchanged. `make source-check` and `make pdf` pass (430 pages; one underfull box pre-exists at
+`2b89791`). Details: `notes/source-review-records.md`, *Library gap-filling, Batch L1, 21 October 2026*. Not done:
+C0, Batch L2, the backlog, commit or PR. Editorial coverage only; human review outstanding.
+
+**Post-implementation audit corrections (2026-10-21).** An audit of the uncommitted Batch L1 found five issues the
+checks did not cover (L1-F1 to L1-F5): daily leveraged Kelly treated an undefined expected log as exact (wealth can be
+nonpositive over a finite step when $f>1$); the implied-volatility hedge's positive total had lost its $\Gamma^i\ge0$
+condition; Asian calls were said to be cheaper than vanillas without qualification; "square-root scaling of variance";
+and a cash digital's hedge was said to reverse across the strike. With the owner's authorisation the affected entries,
+three scripts (`kelly-check.py`, `volatility-mismatch-hedging-check.py`, `exotic-option-checks.py`), the P3-P5
+acceptance language in `implementation_plan_v2.md`, the evidence and coverage example strings and two pathway summaries
+were corrected; seeds and tolerances unchanged; the ten objectives unchanged (434/434, 1,030/1,030). Details and
+withdrawn figures: `notes/source-review-records.md`, *Post-implementation audit corrections, 21 October 2026*.
+`make source-check` passes (111 scripts, 36 tests); `make pdf` builds 431 pages with no overfull boxes or undefined
+references (the one underfull box pre-exists). Not done: C0, Batch L2, commit or PR.

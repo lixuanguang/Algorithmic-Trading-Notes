@@ -3339,3 +3339,11 @@ Eleven new entries, two new topic files, four extended entries, eight new numeri
 `make source-check` (119 scripts) and `make pdf` (437 pages, no overfull boxes or undefined references) pass. P10 is
 deferred to Batch L3. Details, sources read and remaining source gaps: `notes/source-review-records.md`, *Library
 gap-filling, Batch L2, 21 October 2026*. Editorial coverage only; human review outstanding.
+
+**Correction pass (2026-10-21).** An audit of `cd55096` found four defects its checks did not test: the Hull-White
+discount factor's sign in `counterparty-xva-checks.py`, the discounting convention of the wrong-way CVA equation, the
+units of Gregory's EPE-times-spread approximation, and the scope of Regulation T's 150 percent short-sale margin. All
+were corrected in a separate local commit, with deterministic checks that reject the old sign and test the spread
+units; corrected swap CVA 0.0600863777 (uncollateralised) and 0.0066079387 (collateralised). Scope and coverage
+unchanged (445/445, 1,030/1,030). Record: `notes/source-review-records.md`, *Post-implementation audit corrections,
+Batch L2, 21 October 2026*; plan: `implementation_plan_v2.md` Section 7. Not done: push, PR, Batch L3.

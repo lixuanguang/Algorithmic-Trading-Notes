@@ -22,8 +22,9 @@ Prepared on 2026-10-21 by library gap-filling Batch L2 from source checks, not f
 - Metrics follow BCBS (2005): EE is the mean of the positive part and is "sometimes called EPE"; EPE is the time-weighted average of EE (pp. 116-118). Normal future value with mean 2: EE 2.17 and 99% PFE 6.65 at s.d. 2, 2.79 and 11.31 at s.d. 4 (pp. 116-117), reproduced.
 - Swap EE approximately proportional to (T - t) sqrt(t), maximum at T/3 (p. 121).
 - Collateral can increase exposure (Table 7.3, p. 133); a two-way CSA raises EE for short CDS protection (pp. 258-259); payment spikes inside the MPR (pp. 250-254).
-- CVA = -LGD sum EE(t_i) PD(t_{i-1}, t_i), eq. (14.2), p. 311; the 300 bp square-root example gives -0.200%, exact -0.193%, averaged -0.192% (p. 312), reproduced. Taking discount factors outside needs the T-forward measure (p. 313).
-- Conditional EE replaces EE under wrong-way risk, eq. (17.1), p. 380; wrong-way risk increases as credit quality improves (pp. 381-382); hazard-rate approaches give weak dependence (p. 384).
+- CVA = -LGD sum EE(t_i) PD(t_{i-1}, t_i), eq. (14.2), p. 311, where EE "is the discounted expected exposure"; the 300 bp square-root example gives -0.200%, exact -0.193%, averaged -0.192% (p. 312), reproduced. Taking discount factors outside needs the T-forward measure (p. 313).
+- CVA as a spread (sec. 14.2.5, p. 313): -0.200% / risky annuity 4.42 = -4.52 bp per annum (zero rates, n. 4; the annuity formula is in the online Appendix 14B, not read; (1 - e^{-hT})/h with h = 5% reproduces 4.42). Eq. (14.4), CVA ~ -EPE x spread, is "in the same units as the credit spread", with EPE undiscounted and constant (nn. 5-7): -1.54% x 300 = -4.62 bp per annum, not an upfront value. Reread 2026-10-21 in the L2 correction pass.
+- Conditional EE replaces EE under wrong-way risk, eq. (17.1), p. 380: EE(t_i | t_i = tau_C), conditional on t_i being the default time and, like eq. (14.2), discounted (reread in the L2 correction pass); wrong-way risk increases as credit quality improves (pp. 381-382); hazard-rate approaches give weak dependence (p. 384).
 
 ## Limits
 
@@ -34,7 +35,7 @@ Prepared on 2026-10-21 by library gap-filling Batch L2 from source checks, not f
 
 ## Notation map
 
-Gregory's MPR is RMFI's and Hull's cure period; his EE is discounted inside the simulation unless stated (p. 313).
+Gregory's MPR is RMFI's and Hull's cure period; his EE is discounted inside the simulation unless stated (pp. 311 and 313), whereas the compendium's E(t) and EE are undiscounted and EE* = E[D(0,t) E(t)] is the discounted form. His EPE in eq. (14.4) is undiscounted.
 
 ## Connections
 

@@ -6045,3 +6045,81 @@ now links to it).
   curve, not SOFR or OIS); no empirical claim about markets. Volatility parameters in P6-P7 are illustrative. US
   margin rules and the Basel IRB formula are as retrieved on 2026-10-21. Editorial coverage only; human review of all
   eleven entries and four extensions is outstanding. Nothing pushed; no PR.
+
+**Post-implementation audit corrections, Batch L2, 21 October 2026.** An audit of the committed Batch L2 (`cd55096`)
+reran the eight new L2 scripts with warnings as errors, the 36 tests, lint, formatting and both checkers (all passing;
+445/445 objectives, 1,030/1,030 items) and found four defects that those checks did not test (L2-F1 to L2-F4: three in
+P7 discounting and units, one in P11c rule scope). Starting state: branch `codex/library-gap-batch-l2` at `cd55096`,
+working tree clean, no newer work. The owner authorised a bounded correction pass: no seed, input or tolerance of an
+existing check was changed, the objective count and batch scope are unchanged, and the results recorded above are kept
+as the history of the first implementation.
+- L2-F1, the Hull-White discount factor in `counterparty-xva-checks.py` (audited line 257). The script used
+  $D(0,t)=P(0,t)\exp(+\tfrac12\mathrm{Var}(I_t)-I_t)$ with $I_t=\int_0^tx\,du$. Derivation: with $r=x+\alpha$ and
+  $E[x]=0$, the mean short-rate integral is $\int_0^t\alpha\,du=-\ln P(0,t)+\tfrac12\mathrm{Var}(I_t)$ (the P6
+  decomposition), so $D(0,t)=\exp(-\int\alpha-I_t)=P(0,t)\exp(-\tfrac12\mathrm{Var}(I_t)-I_t)$; equivalently, since
+  $I_t\sim N(0,\mathrm{Var}(I_t))$, $E[e^{-I_t}]=e^{\mathrm{Var}/2}$ and only the minus sign gives $E[D(0,t)]=P(0,t)$.
+  The old sign overstated every discount factor by $e^{\mathrm{Var}(I_t)}$, up to 0.29 percent at 4.96 years. P6's own
+  script integrates $\alpha$ separately and uses $\exp(-\int\alpha+\tfrac12\mathrm{Var})$ for bond prices, which is
+  correct, so P6 is unaffected. The fix is one helper, `disc`, used for every simulated date. Two deterministic checks
+  were added: $D(0,t)$ at $I=0$ equals $\exp(-\int\alpha)$ with $\int\alpha$ by quadrature at 0.5, 1.96 and 4.96 years
+  ($1.1\times10^{-16}$ relative, criterion $10^{-10}$; the old sign misses by $4.0\times10^{-6}$ to $2.9\times10^{-3}$);
+  and the covariance of $(x,I)$ propagated through the simulation's own exact steps, without random numbers, has
+  $\mathrm{Var}(I_t)$ equal to the closed form at every date ($3.8\times10^{-16}$ absolute, criterion $10^{-14}$, absolute
+  because the closed form loses relative precision near $10^{-13}$ on the first daily dates) and $E[D(0,t)]=P(0,t)$ by
+  the normal moment generating function ($1.1\times10^{-16}$). Two of my first thresholds for these new checks were
+  mis-set (a relative variance tolerance on the first daily dates, and a $10^{-4}$ discrimination margin that the 0.5-year
+  date does not reach, although its $4.0\times10^{-6}$ is $4\times10^4$ times the tolerance); they were reset before the
+  checks were accepted, as stated in the script. Mutation check: a scratch copy with the old sign restored fails both
+  new checks and still passes every original check. Corrected results (same seed 20261072, 40,000 paths): CVA per 100
+  notional 0.0600863777 uncollateralised and 0.0066079387 collateralised; largest $|E[D(0,t)E(t)]-P(0,t)\mathrm{EE}(t)|$
+  0.0461283797 (the audit's isolated probe gave the same three values). Originally 0.0601229105, 0.0066095777 and
+  0.0444617598 (printed as 0.0601, 0.0066 and 0.0445). The forward-value $z$ values move from $-0.36$, $-1.24$, $-1.51$,
+  $-1.24$, $-0.35$ to $-0.36$, $-1.24$, $-1.52$, $-1.25$, $-0.39$. The entry's displayed 0.0601 and 0.0066 are unchanged
+  at four decimals; its gap becomes 0.046 (still about 2.5 percent of the 1.82 peak). EE, PFE, netting and collateral
+  results do not use $D$ and are unchanged.
+- L2-F2, `def:wrong-way-risk`. The Statement wrote $\mathrm{CVA}=(1-R)\sum_iE[E(t_i)\mid\tau=t_i]\,q_i$ with the
+  compendium's undiscounted $E(t)$, silently inheriting Gregory's discounted EE. Gregory reread (owner's library copy,
+  SHA-256 `b2b005d1…f394f`, extracted 2026-10-21): eq. (17.1), p. 380, is $-\mathrm{LGD}\sum_i\mathrm{EE}(t_i\mid
+  t_i=\tau_C)\,\mathrm{PD}(t_{i-1},t_i)$; his EE "is the discounted expected exposure" (sec. 14.2.3, p. 311) and is
+  discounted inside the simulation (sec. 14.2.6, p. 313). The entry now conditions $D(0,t_i)E(t_i)$ on
+  $t_{i-1}<\tau\le t_i$, the event whose probability is $q_i$, states it as the date-grid approximation of
+  $(1-R)E^Q[D(0,\tau)E(\tau)\mathbf 1_{\{\tau\le T\}}]$, and maps Gregory's convention. Added example and check: a
+  one-year exposure of 100, PD 5 percent, $R=40$ percent and a deterministic continuously compounded rate of 5 percent
+  give PV CVA 2.8536882735, not 3.
+- L2-F3, `meth:credit-valuation-adjustment`. The Conditions called $\mathrm{CVA}\approx\mathrm{EPE}\times\text{spread}$
+  a rough form of CVA without units. Gregory, sec. 14.2.5, p. 313: eq. (14.4) gives CVA "in the same units as the credit
+  spread", a per-annum charge with an undiscounted, constant EPE (nn. 5-7); the upfront example is converted by dividing
+  by the risky annuity (4.42, zero rates, n. 4): $-0.200\%/4.42=-4.52$ bp a year, against the approximation's
+  $-1.54\%\times300=-4.62$ bp. The annuity formula is in Gregory's online Appendix 14B, which is not in the book and was
+  not read; $(1-e^{-hT})/h$ with $h=s/\mathrm{LGD}=5\%$, $T=5$ reproduces 4.4240 (a quarterly end-point sum gives
+  4.3964, which does not). The entry now distinguishes the running spread from upfront CVA and shows the conversion
+  $\mathrm{CVA}_{\text{upfront}}\approx\mathrm{EPE}\times s\times A$ (Interpretation); Practice and Pitfalls were
+  extended. Added checks: annuity 4.4240, 4.5183 bp, EPE 1.5416 percent (1.4907 exact), 4.6249 bp, all within 0.005 of
+  the printed figures; the approximation times the annuity is 0.2046 percent upfront, within 5 percent of 0.1999, while
+  read as upfront (0.0462 percent) it is about a quarter of the CVA.
+- L2-F4, `meth:margin-purchase-leverage`. The Statement gave 150 percent "for a short sale of a non-exempted security".
+  The retained eCFR XML of 220.12 (SHA-256 `35633db6…5b21`, title 12 up to date as of 19 October 2026) was rechecked:
+  (c) applies to a nonexempted security "except for a non-equity security"; (c)(1) is 150 percent; (c)(2) is 100 percent
+  when a security exchangeable or convertible within 90 calendar days is held (a long call only if listed, American-style
+  and struck no higher than the short-sale price); (d) is 100 percent plus good-faith margin for an exempted or non-equity
+  security. The entry now states 150 percent for the unhedged non-exempted equity short of its examples and gives both
+  exceptions with a cross-reference to `mech:securities-lending-short-sale`, whose wording (pre-L2) already cites (c)
+  for nonexempted equity securities. The script's docstring was qualified the same way. No number changed.
+- Why the earlier checks passed. L2-F1: no check tested $D$ deterministically. The only check using it was the Monte
+  Carlo forward-value test at 4 standard errors, and a bias of at most 0.29 percent of a near-zero forward value moved $z$
+  by at most 0.04. The CVA figures and the discounting gap were printed, not tested. L2-F2 and L2-F3 were text: the
+  wrong-way example uses unit discounting, where $D=1$ hides the convention, and the script reproduced Gregory's p. 312
+  upfront figures but not his p. 313 units. L2-F4 was rule scope, which the margin script's arithmetic cannot test.
+- Records updated: the two entries, the two scripts, the Gregory and `ecfr-12cfr220` reading notes, the four
+  entry-evidence reviews, three coverage example or locator strings, two pathway summaries, `implementation_plan_v2.md`
+  (*Batch L2 post-implementation audit corrections*) and `implementation_plan.readme` Section 38.
+- Checks run (2026-10-21): `counterparty-xva-checks.py` and `margin-purchase-check.py` with `-W error`, all passing
+  (the xVA output was identical before and after `ruff format`); `make lint`, `make format-check` (it reformatted one
+  new line of my code first), `make check-compendium`, `make check-coverage` (0 problems; 445/445, 1,030/1,030),
+  `make test` (36 passed); `make pdf` (437 pages, no overfull boxes or undefined references; the one underfull box is
+  the pre-existing one; the first build stopped on two literal `\n` sequences my edit had left in the TeX, fixed before
+  the recorded build), with printed pp. 92-93 and 283 rendered and inspected; pre-commit on the committed files. Reused without rerun: the other six L2 scripts
+  and the 111 earlier ones, whose files are unchanged since `cd55096` and which import or read nothing that changed
+  (no script refers to the two changed ones). Their results at `cd55096` (`make source-check`, 119 scripts) stand.
+- Objectives unchanged: eleven new, 445/445 objectives and 1,030/1,030 outline items, editorial coverage only; the
+  shortfall against 45 is still 34. Human review of the L2 entries is still outstanding. Nothing pushed; no PR.

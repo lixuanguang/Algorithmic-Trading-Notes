@@ -2,7 +2,8 @@
 
 Deterministic, original inputs. Percentages from the rule texts read on 2026-10-21: Regulation T (12 CFR 220.12, eCFR
 up to date as of 19 October 2026) sets initial margin at 50 percent of market value for a long margin equity security
-and 150 percent for a short sale; FINRA Rule 4210(c) (version from 4 June 2026) sets maintenance at 25 percent of
+and 150 percent for an unhedged short sale of a nonexempted equity security (220.12(c)(1); the exceptions in (c)(2) and
+(d) do not apply to these examples); FINRA Rule 4210(c) (version from 4 June 2026) sets maintenance at 25 percent of
 market value for long margin securities and, for a short stock at $5 or above, the greater of $5 a share or 30 percent.
 Brokers may set higher house requirements (Rule 4210(d)).
 

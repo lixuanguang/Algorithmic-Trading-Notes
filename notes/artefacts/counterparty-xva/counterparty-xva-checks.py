@@ -22,6 +22,10 @@ delta), so no swap payment falls in any window (t - delta, t]; the script assert
 is independent of rates, with a deterministic hazard. Seeds: 20261071 wrong-way Monte Carlo, 20261072 swap paths,
 20261073 PFE bootstrap.
 
+L2 correction pass (2026-10-21): the Hull-White discount factor's sign was corrected (see disc), with deterministic
+checks that reject the previous sign; Part 1 adds the units of Gregory's EPE x spread approximation and a non-unit
+discount example. Seeds, inputs and tolerances of the original checks are unchanged.
+
 Run: uv run python counterparty-xva-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
@@ -91,6 +95,41 @@ ok(
     "OFOD Example 24.6 prints v1 = 92.67 and v2 = 130.65: the same exposures times (1 - R)",
     abs((1 - R_f) * v[0] - 92.67) < 5e-3 and abs((1 - R_f) * v[1] - 130.65) < 5e-3,
     f"{(1 - R_f) * v[0]:.2f}, {(1 - R_f) * v[1]:.2f}",
+)
+# Added in the L2 correction pass: units of Gregory's EPE x spread (sec. 14.2.5, p. 313). Eq. (14.4) gives CVA "in the
+# same units as the credit spread", a per-annum charge with undiscounted EPE; an upfront CVA is that spread times the
+# risky annuity. Gregory's annuity (zero rates, his online Appendix 14B, not read) is reproduced by (1 - e^{-hT}) / h.
+haz_g = spread / lgd
+annuity = (1 - math.exp(-haz_g * 5)) / haz_g
+cva_bp = 1e4 * cva_end / annuity
+epe_q = sum(ee_g(b) for b in grid[1:]) / 20
+epe_exact = integrate.quad(ee_g, 0, 5)[0] / 5
+approx_bp = 1e4 * epe_q * spread
+ok(
+    "Gregory p. 313: risky annuity 4.42, CVA spread 0.200% / 4.42 = 4.52 bp a year, EPE 1.54% (1.49% exact),"
+    " EPE x 300 bp = 4.62 bp a year",
+    abs(annuity - 4.42) < 5e-3
+    and abs(cva_bp - 4.52) < 5e-3
+    and abs(100 * epe_q - 1.54) < 5e-3
+    and abs(100 * epe_exact - 1.49) < 5e-3
+    and abs(approx_bp - 4.62) < 5e-3,
+    f"{annuity:.4f}, {cva_bp:.4f} bp, {100 * epe_q:.4f}%, {100 * epe_exact:.4f}%, {approx_bp:.4f} bp",
+)
+upfront_from_approx = approx_bp / 1e4 * annuity
+ok(
+    "EPE x spread is a running spread: times the annuity it is within 5% of the 0.200% upfront CVA,"
+    " while read as upfront it is about a quarter of it",
+    abs(upfront_from_approx / cva_end - 1) < 0.05 and epe_q * spread / cva_end < 0.3,
+    f"{100 * upfront_from_approx:.4f}% upfront against {100 * cva_end:.4f}%; EPE x spread"
+    f" {100 * epe_q * spread:.4f}% of notional a year",
+)
+# Added in the L2 correction pass: E(t) is undiscounted here, so a default-time exposure enters CVA multiplied by
+# D(0, t). One date at 1 year, exposure 100, PD 5%, R = 40%, deterministic continuously compounded rate 5%.
+pv_cva = (1 - 0.40) * 0.05 * 100 * math.exp(-0.05 * 1)
+ok(
+    "PV CVA of a one-year exposure of 100 (PD 5%, R 40%, rate 5% continuous) is 2.8536882735, not 3",
+    abs(pv_cva - 2.8536882735) < 1e-10 and abs(pv_cva - 3) > 0.1,
+    f"{pv_cva:.10f}",
 )
 
 print("== Part 2: wrong-way risk at one exposure date (200,000 draws)")
@@ -187,6 +226,20 @@ def bond(t, T, x):
     return np.exp(lnA - B * (x + alpha(t)))
 
 
+def var_int(t):
+    """Var(int_0^t x du) for the Ornstein-Uhlenbeck factor x with x(0) = 0."""
+    return sg**2 / a**2 * (t - 2 * bfun(t) + (1 - math.exp(-2 * a * t)) / (2 * a))
+
+
+def disc(t, I):
+    """D(0, t) = exp(-int_0^t r du) with r = x + alpha and I = int_0^t x du.
+
+    E[x] = 0, so the mean short-rate integral is int_0^t alpha du = -ln P0(t) + var_int(t) / 2, and
+    D(0, t) = P0(t) exp(-var_int(t) / 2 - I). Since I ~ N(0, var_int(t)), E[D(0, t)] = P0(t).
+    """
+    return P0(t) * np.exp(-0.5 * var_int(t) - I)
+
+
 def par_rate(n):
     return (1 - P0(n)) / sum(P0(j) for j in range(1, n + 1))
 
@@ -252,9 +305,48 @@ for t in times:
     k = math.floor(t)
     V5[t] = swap_value(t, x, reset_bond[k], K5, 5, payer=True)
     V3[t] = swap_value(t, x, reset_bond[k], K3, 3, payer=False)
-    # D(0, t) = exp(-int alpha - int x); int alpha = -ln P0(t) + Var(int x)/2 (the P6 decomposition)
-    var_int = sg**2 / a**2 * (t - 2 * bfun(t) + (1 - math.exp(-2 * a * t)) / (2 * a))
-    D[t] = P0(t) * np.exp(0.5 * var_int - I)
+    D[t] = disc(t, I)
+# Added in the L2 correction pass: deterministic checks of the discount factor. The first run used
+# P0(t) exp(+var_int / 2 - I), which overstates every D(0, t) by exp(var_int(t)), at most 0.29 percent here; the
+# Monte Carlo checks below could not detect it.
+chk = (0.5, 1.96, 4.96)
+int_alpha = [integrate.quad(alpha, 0, t, epsabs=1e-14, epsrel=1e-12)[0] for t in chk]
+err_new = max(
+    abs(float(disc(t, 0.0)) / math.exp(-ia) - 1) for t, ia in zip(chk, int_alpha, strict=True)
+)
+err_old = min(
+    abs(P0(t) * math.exp(0.5 * var_int(t)) / math.exp(-ia) - 1)
+    for t, ia in zip(chk, int_alpha, strict=True)
+)
+ok(
+    "D(0, t) at I = 0 equals exp(-int alpha) with int alpha by quadrature, to 1e-10 relative (the +var/2 sign fails"
+    " at every date, by more than 1e-6)",
+    err_new < 1e-10 and err_old > 1e-6,
+    f"error {err_new:.1e}; previous sign {err_old:.2e} or more",
+)
+# Exact-sampling covariance of (x, I), propagated through the simulation's own steps without random numbers. The gap
+# is absolute: var_int is about 1e-13 on the first daily dates, where the closed form loses relative precision, and an
+# absolute variance error e moves D(0, t) by e / 2 relative.
+cov = np.zeros((2, 2))
+var_gap = 0.0
+t_prev = 0.0
+for t in times:
+    dt = t - t_prev
+    e1 = math.exp(-a * dt)
+    step = np.array([[e1, 0.0], [bfun(dt), 1.0]])
+    vx = sg**2 * (1 - e1**2) / (2 * a)
+    vi = sg**2 / a**2 * (dt - 2 * bfun(dt) + (1 - e1**2) / (2 * a))
+    cv = sg**2 / (2 * a**2) * (1 - e1) ** 2
+    cov = step @ cov @ step.T + np.array([[vx, cv], [cv, vi]])
+    var_gap = max(var_gap, abs(cov[1, 1] - var_int(t)))
+    t_prev = t
+mean_d = max(abs(float(disc(t, 0.0)) * math.exp(0.5 * var_int(t)) / P0(t) - 1) for t in chk)
+ok(
+    "the simulated I has variance var_int(t) at every date (to 1e-14 absolute), so E[D(0, t)] = P0(t) exactly by the"
+    " normal moment generating function (to 1e-12)",
+    var_gap < 1e-14 and mean_d < 1e-12,
+    f"{var_gap:.1e}, {mean_d:.1e}",
+)
 v0 = swap_value(0.0, np.zeros(1), np.array([P0(1.0)]), K5, 5)[0]
 ok(
     "the at-market five-year payer swap has V(0) = 0, so EE(0) = 0, to 1e-12",
@@ -367,8 +459,8 @@ for m in range(60):
     cva_c += (1 - R_s) * float((D[t] * np.maximum(V5[t] - lagged(t, delta), 0)).mean()) * pd_m
     gap.append(ee_star - P0(t) * float(np.maximum(V5[t], 0).mean()))
 print(
-    f"  CVA (hazard 2%, R = 40%, monthly intervals, per 100 notional): uncollateralised {cva_u:.4f},"
-    f" collateralised {cva_c:.4f}; largest |E[D E] - P(0,t) E[E]| {max(abs(g) for g in gap):.4f}"
+    f"  CVA (hazard 2%, R = 40%, monthly intervals, per 100 notional): uncollateralised {cva_u:.10f},"
+    f" collateralised {cva_c:.10f}; largest |E[D E] - P(0,t) E[E]| {max(abs(g) for g in gap):.10f}"
 )
 
 print("== Part 4: CVA on the Handbook's calibrated rate tree (original derivation)")

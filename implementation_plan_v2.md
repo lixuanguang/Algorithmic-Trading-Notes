@@ -6,6 +6,11 @@
 Hull extensions) are complete; P10 is deferred to Batch L3. Eleven new objectives: 445/445 objectives and 1,030/1,030
 outline items, editorial coverage only; shortfall 34 against 45. Every frozen criterion passed. Record:
 `notes/source-review-records.md`, *Library gap-filling, Batch L2, 21 October 2026*. Human review outstanding.
+**Correction pass (2026-10-21).** An audit of `cd55096` found four defects that the passing checks did not test
+(L2-F1 to L2-F4: the Hull-White discount sign in the P7 script, the discounting convention of the wrong-way CVA
+equation, the units of EPE times spread, and the scope of Regulation T's 150 percent). They were corrected in a separate
+local commit after `cd55096`, with deterministic checks for the first and third; see "Batch L2 post-implementation
+audit corrections" in Section 7. Scope, objectives (445/445) and items (1,030/1,030) unchanged. Not done: push, PR, L3.
 
 Status after the L2 proposal audit (kept for the record):  Batch L1 and its five audit
 repairs are committed locally as `5e0578e` on `codex/library-gap-batch-l1` (parent `2b89791`;
@@ -993,6 +998,22 @@ ho=0.3$, LGD 0.6 and a 0.2-2 percent tranche, the gaps in pool-loss units are ab
 | P9 | "Over 500 replications of $k=250$, the mean shape is within 3 standard errors of 0.25, which allows for the $O(1/k)$ bias of maximum likelihood." | Three standard errors of the replication mean do not allow for finite-sample MLE bias, which does not shrink with the number of replications. Reproduction: NumPy `default_rng(20261021)`, 500 successive `genpareto.rvs(c=0.25, scale=1, size=250, random_state=rng)` samples, each fitted with `floc=0`: mean shape 0.237276, error 0.012724 against 3 s.e. 0.010503. | Mean shape moved to Diagnostics. The score and likelihood checks, the exact-Pareto Hill checks and the exact tail-formula checks remain binding. |
 
 The rest of the L2 audit table above is unchanged and kept as written.
+
+### Batch L2 post-implementation audit corrections (2026-10-21)
+
+An audit of the committed Batch L2 (`cd55096`) found that its passing checks (eight scripts with warnings as errors, 36
+tests, lint, formatting, both checkers) missed three P7 discounting and units defects and one P11c rule-scope
+statement. The owner authorised a bounded correction pass. No seed, input or existing tolerance changed; no frozen
+criterion was altered; the eleven objectives are unchanged. Original results are kept in
+`notes/source-review-records.md` (*Post-implementation audit corrections, Batch L2*), with the corrected values and the
+reasons the earlier checks passed.
+
+| Finding | Problem | Correction |
+|---|---|---|
+| L2-F1 (P7 script) | $D(0,t)=P(0,t)e^{+\mathrm{Var}(I)/2-I}$ overstated each discount factor by $e^{\mathrm{Var}(I)}$ (up to 0.29%); only a Monte Carlo check at 4 s.e. used it. | Sign corrected from the mean short-rate integral; deterministic checks (quadrature of $\int\alpha$; propagated exact-step variance and $E[D]=P$) reject the old sign. CVA 0.0600863777 and 0.0066079387, gap 0.0461283797 (were 0.0601229105, 0.0066095777, 0.0444617598). |
+| L2-F2 (`def:wrong-way-risk`) | $E[E(t_i)\mid\tau=t_i]$ with undiscounted $E$ inherited Gregory's discounted EE (eq. (17.1), p. 380; p. 311). | Conditions $D(0,t_i)E(t_i)$ on $t_{i-1}<\tau\le t_i$; convention mapped; PV CVA example 2.8536882735 against 3 checked. |
+| L2-F3 (`meth:credit-valuation-adjustment`) | EPE $\times$ spread presented without units. | Gregory sec. 14.2.5, p. 313: a per-annum spread (4.62 bp) against 0.200% upfront, converted by the risky annuity 4.42 (4.52 bp); checked. |
+| L2-F4 (`meth:margin-purchase-leverage`) | 150% stated for any non-exempted short sale. | Stated for the unhedged non-exempted equity short of the examples; 220.12(c)(2) and (d) given, from the retained eCFR text. No number changed. |
 
 ## 8. Backlog (needs evidence before it is scheduled)
 

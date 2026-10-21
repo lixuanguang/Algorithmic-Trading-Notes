@@ -19,7 +19,8 @@ Prepared on 2026-10-21 by library gap-filling Batch L2 from source checks, not f
 
 ## Key results
 
-- 220.12(a): margin equity security 50 percent of current market value (or the exchange's percentage if greater); (c)(1): short sale of a nonexempted security 150 percent of current market value.
+- 220.12(a): margin equity security 50 percent of current market value (or the exchange's percentage if greater); (c)(1): short sale of a nonexempted security, except a non-equity security, 150 percent of current market value.
+- 220.12(c)(2): 100 percent instead if a security exchangeable or convertible within 90 calendar days into the security sold short is held, a long call counting only if listed, American-style and struck at or below the short-sale price. (d): short sale of an exempted or non-equity security, 100 percent plus the margin the creditor requires in good faith. Rechecked 2026-10-21 in the L2 correction pass against the retained XML (SHA-256 35633db6...5b21).
 
 ## Limits
 

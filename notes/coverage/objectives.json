@@ -20977,7 +20977,7 @@
     "entry_evidence": [
      "meth:credit-valuation-adjustment"
     ],
-    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py parts 1 and 3 (Gregory's square-root CVA, RMFI and OFOD gold forward with the (1 - R) convention difference; swap CVA uncollateralised and collateralised with discounting inside the expectation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py parts 1 and 3 (Gregory's square-root CVA, RMFI and OFOD gold forward with the (1 - R) convention difference; swap CVA uncollateralised and collateralised with discounting inside the expectation, the discount factor checked deterministically after the L2 correction pass; Gregory's EPE x spread as a per-annum spread converted with the risky annuity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21022,7 +21022,7 @@
     "entry_evidence": [
      "def:wrong-way-risk"
     ],
-    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py part 2 (one-date latent-normal example, bivariate-normal quadrature against 200,000 draws, seed 20261071, five correlations, lower-tail default); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "notes/artefacts/counterparty-xva/counterparty-xva-checks.py part 2 (one-date latent-normal example, bivariate-normal quadrature against 200,000 draws, seed 20261071, five correlations, lower-tail default; part 1, a non-unit-discount PV CVA added in the L2 correction pass); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -21270,7 +21270,7 @@
     "sources": [
      {
       "key": "ecfr-12cfr220",
-      "locator": "12 CFR 220.12(a) and (c), eCFR text up to date as of 19 October 2026 (retrieved 2026-10-21)"
+      "locator": "12 CFR 220.12(a), (c) and (d), eCFR text up to date as of 19 October 2026 (retrieved 2026-10-21)"
      },
      {
       "key": "finra-rules-2026",

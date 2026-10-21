@@ -54,6 +54,10 @@ empirical extensions (2026-10-17) (six audit repairs and a source-review coverag
 
 derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): backlog reconciliation only: the backlog lines below were rewritten to state the remaining gap alone, removing stacked dated status prefixes and claims that material was unread or not obtained where earlier batches had read it. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
+## Entries created by the completion batch (2026-10-20)
+
+Machine-learning methods and the data-science workflow, in `ml-alternative-data/machine-learning-methods.tex` and `ml-alternative-data/data-science-workflow.tex`, checked by `notes/artefacts/financial-ml-methods/ml-methods-checks.py` (synthetic data throughout, labelled as such): `def:learning-methods-overfitting`, `meth:supervised-algorithm-selection`, `meth:unsupervised-algorithm-selection`, `def:financial-data-science-uses`, `meth:data-analysis-project`, `meth:text-feature-engineering`, `meth:ml-model-training-evaluation`. Sources: James, Witten, Hastie and Tibshirani (ISLR, 2nd ed., owner's copy), Gentzkow, Kelly and Taddy (NBER WP 23276), the FSB's 2017 report on AI and machine learning, and López de Prado chaps. 2 and 11--12; existing purged cross-validation and time-valid experiment entries are cross-referenced. Partly checked 2026-10-20, draft; human review outstanding. The record is in `notes/source-review-records.md`, *Completion batch, 20 October 2026*.
+
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `pit:label-weight-leakage` (`financial-ml-evaluation`); `def:financial-data-types` (`alternative-data-sources`); `data:trading-reference-data`, `data:market-data-levels`, `data:derived-market-statistics` (`point-in-time-data`); `mod:pca-risk-distribution-weights` (`portfolio-construction`); `pit:parameter-overfitting` (`backtest-inference`); `meth:strategy-production-lifecycle` (`model-governance-controls`).

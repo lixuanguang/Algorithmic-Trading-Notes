@@ -78,6 +78,22 @@ Credit, time-series and valuation batch (2026-10-20), on annual US data for 1928
 
 Sources: STAT 501 lessons 5-8 and 10-14 (Internet Archive copies), Tsay (2010, 3rd ed.) chaps. 2, 3 and 8, Hyndman and Athanasopoulos (FPP3) secs. 5.8, 5.10, 7.4, 7.5 and 9.1. Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
 
+Written in library gap-filling Batch L1 (2026-10-21), new topic file `compendium/common-toolkit/stochastic-calculus.tex`:
+
+- `def:brownian-motion-quadratic-variation`: Brownian motion from its increments and as the limit of a scaled random walk; quadratic variation $[W]_T=T$, the mean-square argument behind $dW^2=dt$, left-point stochastic integrals.
+- `res:ito-lemma-geometric-brownian-motion`: Itô's lemma in one dimension; the GBM solution; mean against median of the terminal price; $E[S_T^2]$ by Itô; Euler discretisation error kept separate from sampling error.
+- `res:risk-neutral-pricing-feynman-kac`: market price of risk and Girsanov's change of drift (with the density $Z_T$ as a checked calculation); money-market numeraire; Wilmott's backward-Kolmogorov route from an expectation to the pricing equation.
+
+Sources: Hull, *Options, Futures, and Other Derivatives*, 11th Global ed., chaps. 14, 15 and 28; Wilmott, *Paul Wilmott on Quantitative Finance*, 2nd ed., chaps. 4 and 10. Synthetic examples in `notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l1-21-october-2026).
+
+The same batch extended `meth:monte-carlo-simulation` with control variates and the separation of discretisation bias from sampling error (`notes/artefacts/inference-simulation/inference-simulation-checks.py`).
+
+Written in library gap-filling Batch L2 (2026-10-21), in `statistical-inference.tex`:
+
+- `meth:correlation-independence-tests`: the t test of zero correlation, Spearman's rank correlation with midranks and its transform properties, the chi-square test of independence, and the information coefficient with overlapping returns.
+
+Partly checked 2026-10-21, draft. Checks in `notes/artefacts/inference-simulation/correlation-independence-checks.py`. Sources: OpenStax, *Introductory Statistics* 2e, secs. 11.3 and 12.4; NIST Dataplot, "Rank Correlation Independence Test". Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+
 ## Entry backlog
 
 ## What changed in my view or practice

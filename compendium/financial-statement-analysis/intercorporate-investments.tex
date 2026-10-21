@@ -28,15 +28,24 @@
 \emph{Special purpose and variable interest entities.} Some entities are designed so that voting rights do not decide who controls them, for example a vehicle that holds leased assets or securitised receivables under contractual rules.
 \begin{itemize}
 \item IFRS calls them \emph{structured entities} \citep[App.~A, para.~B21]{eu-2023-1803-ifrs12} and applies the same control test: power, exposure to variable returns and the link between them \citep[para.~7]{eu-2023-1803-ifrs10}. Interests in unconsolidated structured entities must be disclosed \citep[paras.~24--31]{eu-2023-1803-ifrs12}.
-\item US GAAP consolidates a \emph{variable interest entity} by its primary beneficiary: the party with the power to direct the activities that most significantly affect its performance and the obligation to absorb losses or right to receive benefits that could be significant. FAS~167 replaced the earlier quantitative test of who absorbs most expected losses with this largely qualitative one \citep[Summary]{us-variable-interest-entities-2009}.
+\item US GAAP consolidates a \emph{variable interest entity} by its primary beneficiary: the party with the power to direct the activities that most significantly affect its performance and the obligation to absorb losses or right to receive benefits that could be significant. FAS~167 replaced the earlier quantitative test of who absorbs most expected losses with this largely qualitative one \citep[Summary; para.~14A]{us-variable-interest-entities-2009}.
 \end{itemize}
+
+\emph{Design and losses are not power.} In both frameworks, control of such a vehicle rests on who holds substantive rights to direct its relevant activities, often decisions that arise only on a default or at the end of a lease \citep[paras.~10, B9, B22, B53]{eu-2023-1803-ifrs10}; \citep[para.~14B]{us-variable-interest-entities-2009}.
+\begin{itemize}
+\item Being involved in the design ``alone is not sufficient'' to give control, though it may show the opportunity to obtain rights that give power (IFRS~10 para.~B51). FAS~167 says the same of US GAAP (para.~14F).
+\item The risks the vehicle was designed to pass on, and a commitment to keep it operating as designed, raise the incentive to obtain power. They are indicators, not power (paras.~B8, B54).
+\item Exposure to losses can be held without power. In FAS~167's first example the bondholders absorb losses after the equity, but have no rights to direct the defaulted loans. The special servicer that directs them, and holds the first-loss equity, is the primary beneficiary \citep[paras.~C2--C12]{us-variable-interest-entities-2009}.
+\item Under IFRS~10 a decision maker also has to be a principal rather than an agent, judged by its authority, others' removal rights, its pay and its other interests (paras.~B58--B60). FAS~167 treats removal (kick-out) rights as affecting power only when a single party can exercise them (para.~14C).
+\end{itemize}
+Without the facts about who decides, the classification cannot be concluded (Interpretation).
 Off-balance-sheet vehicles were where leverage hid before 2009, so the consolidation judgement matters for analysis (Interpretation).
 
 \emph{Disclosure.} The notes give the classification judgements, summarised financial information of material associates and joint ventures, the non-controlling interests and the fair values of financial assets. These are what an analyst needs to rebuild the investee's balance sheet (Interpretation).
 
-\qffield{Practice} \emph{Penrose Group} (original, EUR millions; \nolinkurl{notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py}). Seven stakes, classified in the order above:
+\qffield{Practice} \emph{Penrose Group} (original, EUR millions; \nolinkurl{notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py}). Nine stakes, classified in the order above:
 \begin{center}\small
-\begin{tabular}{@{}lll@{}}
+\begin{tabular}{@{}p{0.44\linewidth}p{0.27\linewidth}p{0.23\linewidth}@{}}
 \toprule
 Holding and rights & Classification & Measurement \\
 \midrule
@@ -46,7 +55,9 @@ Holding and rights & Classification & Measurement \\
 50\%, joint control over net assets & Joint venture & Equity method \\
 50\%, joint control over assets and obligations & Joint operation & Share of each line \\
 45\% with power through an agreement & Subsidiary & Consolidation \\
-0\% voting; a leasing vehicle Penrose designed and whose losses it bears & Structured entity (VIE) & Consolidation \\
+Leasing vehicle: Penrose holds the first-loss note and decides remarketing and lessee defaults & Subsidiary (structured entity) & Consolidation \\
+Same vehicle; an unrelated servicer it cannot remove makes those decisions & Interest in an unconsolidated structured entity & Note under IFRS~9; IFRS~12 disclosure \\
+Vehicle Penrose designed and whose losses it bears; decision rights not given & Not determinable & Obtain the decision rights \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -60,9 +71,9 @@ Holding and rights & Classification & Measurement \\
 
 \emph{A 10 percent stake} bought for 36 rises to 39 and pays a dividend of 1. At fair value through profit, all 4 is in profit. Under the election the 3 gain goes to other comprehensive income and is never recycled; the 1 dividend is in profit. Under US GAAP all 4 is in net income.
 
-\qffield{Conditions} The rules are IFRS as adopted in the EU and US GAAP in the pre-Codification texts cited; only the summary of FAS~167 was read, not the detailed VIE criteria. Investment entities and step acquisitions are outside this entry. The 20 percent presumption is rebuttable both ways.
+\qffield{Conditions} The rules are IFRS as adopted in the EU and US GAAP in the pre-Codification texts cited; FAS~167 is cited in its pre-Codification form, since codified in ASC~810-10; the criteria for whether an entity is a VIE are not covered here. Investment entities and step acquisitions are outside this entry. The 20 percent presumption is rebuttable both ways.
 
-\qffield{Pitfalls} Classifying on the percentage alone when contracts give power or influence. Treating the equity-method carrying amount as a fair value. Forgetting that an elected fair-value-through-OCI equity never passes its gains through profit, even on sale.
+\qffield{Pitfalls} Classifying on the percentage alone when contracts give power or influence. Consolidating a vehicle because the investor designed it or bears its first losses, without identifying who directs its relevant activities. Treating the equity-method carrying amount as a fair value. Forgetting that an elected fair-value-through-OCI equity never passes its gains through profit, even on sale.
 
 \qffield{See also} \hyperref[meth:consolidation-ratio-effects]{effects on statements and ratios}; \hyperref[meth:intangibles-goodwill-reporting]{goodwill}; \hyperref[meth:financial-instruments-liabilities]{financial instruments}.
 

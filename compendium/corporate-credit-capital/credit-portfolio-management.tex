@@ -1,0 +1,125 @@
+\section{Credit portfolio management}
+
+\begin{qfmethod}[Risk in spread-based portfolios: spread duration and duration times spread, the advantages and disadvantages of credit spread measures, and why the option-adjusted spread is preferred]\label{meth:credit-spread-portfolio-risk}
+\qffield{Statement} \emph{Risks of a spread portfolio} (Interpretation, from the sources below): rates (the Treasury or swap curve), spread changes for the market, sectors and issuers, migration and default, liquidity, and the interaction of rates and spreads. A credit portfolio's excess return over duration-matched Treasuries comes from spread carry less losses from spread changes, downgrades and defaults.
+
+\emph{Measuring spread exposure.} Spread duration $D$ gives the return from a parallel spread change, $R\approx-D\,\Delta s$. Ben Dor and co-authors show that spread changes are roughly proportional to spread levels, so the better measure of exposure is \emph{duration times spread} (DTS):
+\[
+R\approx-D\,s\,\frac{\Delta s}{s},\qquad \sigma_R\approx D\,s\,\sigma^{\text{rel}}_s ,
+\]
+and sector and issuer exposures are expressed as contributions to DTS (market weight times $D$ times $s$). Bonds with wider spreads within a cell are ``high beta'', so matching spread-duration contributions can still take more credit risk \citep[pp.~3--4]{ben-dor-credit-portfolio-2012}. DTS also describes CDS and sovereign spreads, including euro-area sovereigns in 2010, when Treasuries contributed more of the Euro Aggregate's spread risk than corporates (pp.~39, 55).
+
+\emph{Spread measures} (\hyperref[def:bond-yield-spread-measures]{yield spread measures}; \hyperref[meth:option-adjusted-spread]{OAS}):
+\begin{itemize}
+\item \emph{yield spread} over a benchmark Treasury --- simple, but mismatched maturities and coupons distort it and it uses one point of the curve;
+\item \emph{G-spread} over an interpolated government yield, and \emph{I-spread} over the swap curve --- better maturity matching, but still a yield-to-yield comparison;
+\item \emph{asset swap spread} --- the floating spread from swapping the bond's fixed coupons, used by bank and swap-based investors; it depends on price and swap terms;
+\item \emph{Z-spread} --- the constant spread over the whole spot curve that prices the cash flows; it ignores embedded options;
+\item \emph{option-adjusted spread} --- the Z-spread less the value of embedded options, from an interest-rate model.
+\end{itemize}
+OAS is the most appropriate for spread portfolios because it compares bonds with and without call or put options on the same basis and so measures compensation for credit and liquidity rather than for options sold; its limits are model and volatility dependence. Ben Dor and co-authors use ``spread'' to mean OAS throughout (p.~xxviii) and decompose it into expected default loss, expected liquidity cost and a risk premium (pp.~133--134).
+
+\qffield{Practice} (Original numbers; checked in the script.)
+\begin{itemize}
+\item \emph{DTS equivalence} (Ben Dor's example, p.~4): a 5 percent overweight at 80 basis points and spread duration 3 has the same DTS contribution, 12, as a 3 percent overweight at 50 basis points and duration 8.
+\item A 15 basis point widening on a bond with spread duration 6 and spread 150 costs 0.90 percent --- the same as a 10 percent relative widening times DTS 9. With a common 10 percent relative volatility, a 240 basis point bond has three times the excess-return volatility of an 80 basis point bond of the same duration.
+\item \emph{Spread measures}: a bond yielding 5.20 percent with the interpolated Treasury at 4.00 and swaps at 4.30 has a G-spread of 120 and an I-spread of 90 basis points; if callable with a Z-spread of 180 and option cost of 40, its OAS is 140.
+\end{itemize}
+
+\qffield{Conditions} Ben Dor and co-authors' evidence is for US and European investment-grade bonds to 2010.
+
+\qffield{Pitfalls} Comparing callable and bullet bonds by yield spread. Matching spread duration and missing the DTS overweight. Reading wide spreads as cheapness without decomposing them.
+
+\qffield{See also} \hyperref[meth:credit-selection-positioning]{selection and positioning}; \hyperref[meth:credit-liquidity-tail-risk]{liquidity and tail risk}; \hyperref[def:credit-risk-components]{credit risk}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Credit strategies: bottom-up and top-down approaches, and positioning a portfolio for a credit spread view]\label{meth:credit-selection-positioning}
+\qffield{Statement} \emph{Bottom-up.} Start from issuers and bonds: assess credit quality from fundamentals (\hyperref[meth:corporate-credit-analysis]{credit analysis}), then compare bonds within peer groups of similar rating, sector and duration, and buy those whose spreads are wide relative to their risk. Ben Dor and co-authors measure relative value as the \emph{excess spread to peers} --- the part of a bond's spread over its peer group not explained by fundamentals such as leverage --- because favouring high-spread bonds outright adds market risk and quality biases \citep[pp.~413--415]{ben-dor-systematic-credit-2021}. Selection must also weigh liquidity, downgrade risk, covenants and relative value across the issuer's curve.
+
+\emph{Top-down.} Start from the macro view: the credit cycle, defaults, rates and risk appetite, and allocate to quality, sector, maturity and region before choosing issuers. Signals include the economic outlook, spread levels against expected losses, and market-wide indicators; Ben Dor and co-authors use issuers' equity momentum both for issuer selection and for sector timing --- over 2007--2017 US investment-grade bonds in the lowest momentum decile returned $-7.2$ percent a year in excess of Treasuries and the highest 8.10 percent, against 1.43 percent for the index (pp.~515--516). The two are often combined: top-down sets the DTS budget by sector, bottom-up fills it.
+
+\emph{Positioning for a spread view} (Interpretation, from the sources above and \hyperref[meth:cds-strategies]{CDS strategies}):
+\begin{itemize}
+\item \emph{level}: change the portfolio's DTS (or spread duration) against the benchmark, with cash bonds, CDS indices or total return swaps; expect spreads to tighten more for wider bonds, so DTS, not spread duration, sizes the view;
+\item \emph{curve}: steepeners and flatteners along issuers' credit curves; Ben Dor and co-authors find credit steepeners --- long short-dated, short long-dated bonds of the same issuers, sized by DTS --- earned positive carry with lower volatility than duration-neutral versions \citep[pp.~213--214]{ben-dor-credit-portfolio-2012};
+\item \emph{quality and sector}: rotate between higher and lower quality or cyclical and defensive sectors;
+\item \emph{instrument}: cash against CDS (the basis), new issues against seasoned bonds.
+\end{itemize}
+
+\qffield{Practice} (Original numbers; checked in the script.)
+\begin{itemize}
+\item \emph{Bottom-up}: a bond at 160 basis points whose peers trade at a median of 130 has an excess spread of 30; it is an overweight candidate if leverage and other fundamentals do not explain the gap.
+\item \emph{Curve}: per 100 of short-dated bonds (duration 3, spread 100), a duration-neutral hedge sells 30 of long-dated bonds (duration 10, spread 180), a DTS-neutral hedge 16.67.
+\item \emph{Level}: a portfolio DTS of 7.2 against a benchmark of 6.0 loses 0.72 percent against 0.60 percent if spreads widen 10 percent, an underperformance of 12 basis points; if spreads tighten, it gains by the same amount.
+\end{itemize}
+
+\qffield{Conditions} The excess-spread and momentum results are back-tests by the authors' research group at Barclays, before costs except where stated.
+
+\qffield{Pitfalls} Buying the widest bonds as ``value''. Expressing a spread view in spread duration across very different spread levels. Ignoring issuer concentration in curve trades.
+
+\qffield{See also} \hyperref[meth:credit-spread-portfolio-risk]{spread risk}; \hyperref[meth:credit-cds-international-structured]{CDS and structured credit}; \hyperref[meth:curve-trades-carry-rolldown]{curve trades}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Liquidity risk and tail risk in credit portfolios: measuring and managing liquidity, and assessing and managing tail risk]\label{meth:credit-liquidity-tail-risk}
+\qffield{Statement} \emph{Liquidity.} Most corporate bonds trade rarely over the counter through dealers, so liquidity is costly and falls in stress. Ben Dor and co-authors define liquidity as the cost of a round trip in institutional size and measure it with the \emph{liquidity cost score}, LCS $=$ OAS duration $\times$ bid--ask spread (in spread terms), or the bid--ask price difference over the bid price for price-quoted bonds: the cost, as a percentage of the bond's value, of an immediate \emph{round trip} in institutional size \citep[pp.~81--82, 88]{ben-dor-credit-portfolio-2012}. A one-way trade pays only part of it, and how much depends on the mark: against a mid-price mark a sale costs about half the LCS when the spread is symmetric; against a bid-side mark, the convention of bond indexes when they remove bonds (p.~274), a sale at the bid costs nothing beyond the mark, because the cost was taken in the valuation; against an ask mark it costs the full spread (Derivation). The US investment-grade index's LCS ranged from 0.59 to 3.40 percent between January 2007 and June 2009, doubling between June and September 2007 (p.~82). Uses: building liquid portfolios, separating liquidity from credit in spreads, deciding which bonds to sell first in a crisis, and defining liquid benchmarks (p.~82). \emph{Managing liquidity}: hold a liquid sleeve (Treasuries, recent large issues, CDS indices, credit ETFs); use derivatives --- CDS indices and total return swaps --- to adjust exposure quickly; limit holdings of illiquid bonds by LCS; and plan for redemptions and margin calls (Interpretation, with the replication choices in pp.~337--338: total return swaps, small cash proxy baskets and CDS-based baskets, which are cheap and liquid but suffer short-term basis tracking error).
+
+\emph{Tail risk.} Credit returns are negatively skewed: small carry most of the time, large losses in defaults, downgrades and crises. Assess it with:
+\begin{itemize}
+\item \emph{credit VaR and expected shortfall}, from default-only models such as Vasicek's one-factor model,
+\[
+\mathrm{WCDR}(T,X)=N\!\left(\frac{N^{-1}(\mathrm{PD})+\sqrt{\rho}\,N^{-1}(X)}{\sqrt{1-\rho}}\right),
+\]
+or from models including migration and spread changes \citep[pp.~413, 416--417]{risk-management-financial-institutions-2023};
+\item \emph{stress tests and scenarios} such as 2008 or a sector shock;
+\item \emph{concentration limits} by issuer and sector. Ben Dor and co-authors size issuer limits by downgrade risk, which gives ratios of 9.2 : 3.1 : 1 for Aaa--Aa, A and Baa issuers before the crisis, or by a cap on each issuer's DTS contribution, which responds faster but can force selling (pp.~249, 257--258).
+\end{itemize}
+\emph{Managing it}: diversify issuers, cap DTS contributions, buy protection on CDS indices or index options, and hold liquid reserves.
+
+\qffield{Practice} (Original numbers; checked in the script.)
+\begin{itemize}
+\item \emph{LCS}: a bond with OAS duration 7 and a 10 basis point bid--ask spread costs 0.70 percent round trip. A portfolio of 100 at mid prices, with LCS of 0.40, 0.90 and 2.00 percent in weights 50/30/20, has an LCS of 0.87 percent.
+\item \emph{Selling the most liquid half}, one way, against mid marks, costs half its LCS: $50\times0.40\%/2=0.10$, or 0.10 percent of the portfolio, not the 0.20 percent a round trip would cost. Proceeds are 49.90, and $100=49.90+50+0.10$. Against bid marks the same sale costs nothing relative to the reported value.
+\item What remains is 49.90 of cash and 50 of bonds weighted 60/40, with an LCS of 1.34 percent; selling them later would cost a further 0.335 one way. Raising cash from the liquid bonds is cheap now but concentrates the illiquid ones.
+\item \emph{DTS caps}: a cap of 0.12 allows 2.50 percent in an issuer at 80 basis points and duration 6 but 0.83 percent in one at 240.
+\item \emph{Credit VaR}: with a 1 percent default probability, correlation 0.10 and 60 percent loss given default, the 99.9 percent worst-case default rate is 7.75 percent and the loss 4.65 percent of a granular portfolio, against an expected 0.60 percent; a one-factor simulation agrees.
+\end{itemize}
+
+\qffield{Conditions} LCS needs dealer quotes, which are indications rather than firm two-way markets (p.~90); the half-spread rule assumes quotes symmetric about mid and trades in normal size. Vasicek's formula assumes a large, homogeneous portfolio and one factor.
+
+\qffield{Pitfalls} Reading trading volume as liquidity. Selling the most liquid bonds first and leaving an illiquid remainder. Ignoring correlation in default tails.
+
+\qffield{See also} \hyperref[meth:credit-spread-portfolio-risk]{spread risk}; \hyperref[meth:rating-migration-returns]{rating migration}; \hyperref[mod:gaussian-copula-default-correlation]{Gaussian copula} (the derivation of the worst-case default rate).
+
+\end{qfmethod}
+
+\begin{qfmethod}[CDS, international and structured credit in active portfolios: CDS strategies, portfolios across credit markets, structured instruments against corporate bonds, and analytical tools]\label{meth:credit-cds-international-structured}
+\qffield{Statement} \emph{CDS in active portfolios}. Selling protection adds credit exposure without funding a bond; buying protection hedges or shorts credit. Managers use single-name CDS for issuer views, index CDS (CDX, iTraxx) for liquid market exposure and hedges, curve trades sized by Credit01, and basis trades between bonds and CDS (\hyperref[meth:cds-strategies]{CDS strategies}). CDS-based replication of a credit index is cheap and liquid but tracks poorly over short horizons because the CDS--cash basis is volatile; tracking improves over longer horizons as the basis mean-reverts \citep[pp.~337--338]{ben-dor-credit-portfolio-2012}.
+
+\emph{International credit.} Markets differ in size, sector mix, rating distribution, duration, liquidity and conventions: Pan-European indices have fewer and shorter bonds than US ones, and European dealer quotes come with sizes (pp.~113--114). Emerging-market dollar debt behaves like corporate credit, driven by spreads rather than rates, and euro-area sovereigns took on credit-like spread risk in 2010 (p.~55). Considerations (Interpretation): currency --- hedge or not, at a cost or gain set by short-rate differentials; legal and bankruptcy regimes; local liquidity; and the correlation of credit cycles across regions.
+
+\emph{Structured instruments against corporate bonds.} Two different exposures replace a corporate bond.
+\begin{itemize}
+\item A \emph{securitisation} tranche is paid only from a pool of loans or receivables held by a special purpose entity. The pool's credit risk is tranched, and subordination determines how losses are shared \citep[Art.~2(1)]{eu-2017-2402-securitisation}. Junior tranches absorb losses first. In Larreur's corporate-loan securitisation the senior tranche is 68.5 percent of the notes, within the usual 50--70 percent, and every rated tranche pays a floating coupon over three-month Libor \citep[pp.~256--260, Table~10.1]{larreur-structured-finance-2021}. Floating coupons there follow from floating-rate loan collateral (Interpretation); mortgage pass-throughs instead pass borrowers' prepayments to investors \citep[pp.~7, 10]{wide-fuster-mbs-review}. CLO coverage tests divert cash to senior notes when overcollateralisation or interest coverage falls below triggers (p.~309).
+\item A \emph{covered bond} is an obligation of the issuing bank. Investors have dual recourse: a claim on the bank and, if it fails, a priority claim on a segregated cover pool, with any shortfall ranking alongside unsecured creditors \citep[Art.~4]{eu-dir-2019-2162-covered-bonds}. The bonds are not accelerated on the issuer's insolvency (Art.~5), and the pool must cover all liabilities at all times (Art.~15). While the bank is solvent, the investor is exposed to the bank, not to pool losses or prepayments. Defaulted loans stop counting towards coverage and must be replaced (Art.~15(4)), which makes the pool collateral rather than the source of payment. The bonds of a programme are not tranched against one another, so senior-tranche proportions do not apply (Interpretation); see \hyperref[meth:abs-structures-credit-enhancement]{ABS structures}.
+\end{itemize}
+Both offer diversification from corporate issuers and spread pickup for a given rating. Securitisations carry model, prepayment, structural and liquidity risks, and the crisis exposed the weakness of ratings on structured products \citep[p.~257]{ben-dor-credit-portfolio-2012}. Covered bonds carry the bank's credit risk and, after its failure, the quality of the pool.
+
+\emph{Analytical tools} (Interpretation, from the sources above): \emph{inputs} --- holdings, benchmark, prices, curves, spreads, ratings, LCS, factor and covariance models; \emph{outputs} --- duration, key-rate and spread-duration exposures, DTS by sector and issuer, tracking error and its attribution, scenario and stress results, liquidity and concentration reports; \emph{considerations} --- model risk (OAS and prepayment models), stale prices, data quality and the difference between measured and future risk.
+
+\qffield{Practice} (Original numbers; checked in the script.)
+\begin{itemize}
+\item \emph{CDS overlay}: adding 0.5 years of spread duration to a 100 million portfolio by selling protection on an index with spread duration 4.5 needs about 11.1 million notional.
+\item \emph{International}: a euro bond yielding 3.5 percent hedged into dollars, with short rates of 4.5 and 2.5 percent, yields about 5.5 percent, above a comparable US bond at 5.2 percent.
+\item \emph{CLO test}: 120 of collateral against 100 of rated notes is 120 percent overcollateralised; 10 of defaults at 40 percent recovery cut it to 114 percent, below a 115 percent trigger, and cash is diverted to pay down the senior notes.
+\item \emph{Covered bond against securitisation}: Bank Corvel's covered bonds of 100 rest on a pool of 110. If the pool falls to 95 while the bank is solvent, the bank pays 100; in a securitisation of the same pool into 80/15/15, the equity absorbs the loss. If the bank fails with the pool worth 90, covered bondholders take 90 plus 40 percent of the 10 shortfall as unsecured creditors: 94. If 20 of the pool prepays, pass-through investors receive it early, while the bank must restore coverage of 100.
+\end{itemize}
+
+\qffield{Conditions} Ben Dor and co-authors' replication evidence is for US credit indices before 2012; the hedged-yield arithmetic ignores basis and hedge costs.
+
+\qffield{Pitfalls} Treating a CDS overlay as identical to cash bonds. Comparing unhedged foreign yields with domestic ones. Equating a structured AAA with a corporate AAA. Analysing a covered bond as a pool-only tranche, or a securitisation tranche as a bank obligation.
+
+\qffield{See also} \hyperref[meth:cds-strategies]{CDS strategies}; \hyperref[def:securitisation-process]{securitisation}; \hyperref[meth:credit-liquidity-tail-risk]{liquidity and tail risk}.
+
+\end{qfmethod}

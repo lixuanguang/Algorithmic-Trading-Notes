@@ -4977,3 +4977,1475 @@ Arden bond, Larkspur, Veloria, Avon Fittings, Brent Utilities and Fenton Enginee
 hypothetical, as are the rating-spread schedule, the scenario probabilities and the CDS market
 quotes used in the strategies. Regulatory texts are as read in October 2026; national
 implementations of Basel and of the covered bond directive were not read.
+
+## Valuation and inference audit correction pass, 20 October 2026
+
+**Starting state.** `main` at `191edb2` (PR #32 merged); branch `codex/alternatives-audit-20261020`
+from it. The untracked copies whose names end in " 2" were left in place and excluded from every
+commit; because the checker reads them as duplicate labels, the final validation ran in a separate
+worktree. Coverage at the start: 326/424 objectives and 774/1,030 items. These corrections count
+toward no new objective.
+
+**Findings reproduced first**, each by an independent identity or counterexample before the text
+changed:
+1. *FCFF and interest classification* (`meth:fcff-fcfe-derivation`). Built from receipts and
+   payments, Avon's CFO with interest paid in financing and taxes in operating is 120 - 19.50 - 8 =
+   92.50. CFO less capital investment is 47.50, 3.00 (= 12 x 0.25) above the 44.50 that the EBIT,
+   net-income and EBITDA routes give; CFO - Int x t - FCInv restores it. If the tax saving were also
+   classified in financing, CFO would be 89.50. The superseded check described the CFO difference as
+   9; it is 12. IAS 7 before IFRS 18 allowed either classification (para. 33); IAS 7 para. 34A as
+   amended by IFRS 18 requires financing for entities without a specified main business activity;
+   taxes stay in operating (para. 35) in both versions.
+2. *FCFE, payout and endogenous borrowing* (`meth:fcf-forecasting`, `meth:cash-flow-proxies`).
+   `forecast(payout=0.50)` raises the 2026 dividend to 36.62 and the revolver draw from 30.81 to
+   38.28; actual FCFE goes from 31.82 to 39.08, still equal to dividends plus the unchanged 2.46 cash
+   increase. FCFE before the revolver moves only from 1.01 to 0.80, and valuation FCFF from 31.93 to
+   31.88 (0.8 x t x the extra interest: the model settles a fifth of current tax in-year). The claim
+   that FCFE is unchanged was wrong under the revolver policy and right only with borrowing fixed in
+   advance (Avon: dividends 30 + buyback 10 + cash 5.50 = 45.50). Damodaran p. 355 says dividends
+   above FCFE are financed from cash or new stock; the entry had attributed "or borrow" to him.
+3. *Residual income and outstanding options* (`meth:residual-income-valuation`,
+   `meth:residual-income-comparison`, `meth:justified-multiples`). The RI aggregate 809.2412 values
+   all equity claims, including the five million vested options; the DDM aggregate 834.1610 also
+   includes future grantees (PV of credits 24.9198). The option fixed point
+   p = (809.2412 - 5C(p))/100.75 gives 7.9557 (options 7.70), confirmed by a root-finder; 834.16 -
+   24.92 - 7.70 = 801.54 = 7.9557 x 100.75. Simple division gave 8.0322 and 8.2795. The dirty-surplus
+   identity is unchanged; future grants enter only through the RI charge, so deducting the vested
+   options does not double count. On all equity claims (1,126.19, P/B 1.74) the implied RI growth is
+   7.34 percent and the implied ROE 14.37 percent; the shares alone give 7.27 and 14.18 percent. The
+   justified P/B aggregate 786.43 becomes 7.74 a common share (7.81 by division); the multiples
+   entry now says so.
+4. *Diversification versus marketability* (`meth:private-company-valuation`). Damodaran's Table 24.2
+   (p. 689) applies both a total-beta cost of equity and an illiquidity discount to a private sale,
+   and Illustrations 24.10-24.11 (pp. 687-690) pair a 15.27 percent total-beta cost of capital with
+   a 12.94-28.75 percent illiquidity discount. The blanket double-counting pitfall was therefore
+   wrong. Double counting arises when an illiquidity premium is already in the rate (the p. 674 box
+   warns of this for build-ups) or in the comparables. Fenton's basis is now stated: a control,
+   marketable value to a diversified buyer; an undiversified buyer's 30 percent stake is 3.73 with
+   the marketability discount, 4.81 without.
+5. *Structured-entity control* (`def:intercorporate-investment-classification`). IFRS 10 paras. 7,
+   10, B8-B9, B22, B51 (design ``alone is not sufficient''), B53-B54 and B58-B60, and FAS 167 paras.
+   14A-14F and Example 1 (bondholders bear losses without power; the special servicer is the primary
+   beneficiary). The Penrose table now has three vehicle cases: power and returns (subsidiary),
+   returns without power (unconsolidated structured entity, IFRS 12 disclosure), and design plus
+   losses only (not determinable). The check script derives control from power, returns and the
+   principal test; the hardcoded `control=True` input is gone.
+6. *Regression inference* (`meth:regression-misspecification`). Var(b|X) = (X'X)^-1 X'Omega X
+   (X'X)^-1. With ten observations, an intercept and AR(1) errors, the ratio of true slope variance
+   to the expected usual estimate is 2.75 and 0.41 for a trend at rho = +0.5 and -0.5, and 0.43 and
+   2.96 for an alternating regressor; a seeded 20,000-draw simulation gives 0.42 for the alternating
+   case. Rescaling the stock regressor to percentage points divides its slope and standard error by
+   100 and leaves t, R2 and fitted values unchanged, so units are not a specification error.
+   Unbiasedness is now conditioned on strict exogeneity; the lagged-dependent-variable case is
+   described as inconsistency.
+7. *Forecast validation matched to the decision* (`meth:time-series-model-selection`). Target:
+   cumulative inflation over the five years after each origin. On the 31 common origins 1990-2020,
+   with estimation on data to each origin only: RMSE AR(1) 5.94, mean 6.12, AR(4) 7.27, random walk
+   7.56, trend 19.36 percentage points; mean errors -3.21, -4.10, -4.63, +0.60, -10.44. AR(1) errors
+   autocorrelate at 0.76 at lag 1 (about six independent windows). Diebold-Mariano with Newey-West (4
+   lags): AR(4) against AR(1) t = 2.61; AR(1) against the mean -0.40 and against the random walk
+   -1.45. The 1990-2025 data are described as selection validation, not a holdout. The wartime
+   claim is qualified: from 1953 BIC prefers AR(1) and AIC barely separates the models, and the
+   lag-4 coefficient falls from 0.43 to 0.17, which fits but does not demonstrate the explanation.
+8. *Insurer coverage* (`meth:insurer-analysis`, new `meth:life-insurer-analysis`). The outline item
+   (Level II p. 8) asks for key ratios and other factors for an insurance company, which includes
+   life insurers; the existing entry explicitly did not develop them. Sources read: IFRS 17 paras.
+   32, 37-38, 43-44, 47-50, 83-85 (EU 2023/1803); Solvency II Directive Arts. 75-78, 101, 105 and
+   Annex IV and Delegated Regulation 2015/35 Arts. 37-39, 136-140, 142 (original OJ texts, CELEX
+   32009L0138, SHA-256 8b71252cb8de50200e6b2257e753777779c23eb6cdd8c6978563cfd6f182e96e; CELEX
+   32015R0035, SHA-256 210316eaa3ef18510c137bbcab8d3fbe824be408e1cb147c4bacc0ec1f7b8471); Hull (2023)
+   pp. 52, 56-57, 62-63; CNP Assurances' 2017 MCEV report pp. 6, 12, 21-22. The new entry covers
+   new-business value and the CSM, technical provisions and the SCR, matching, mortality, longevity
+   and lapse, with limits; a two-insurer comparison and a new-business case are reproduced in
+   `intercorporate-fx-institutions-checks.py` part 10. The item stays covered with both entries
+   mapped.
+
+**Access and source limits.** EUR-Lex HTML returned empty responses; the Publications Office
+CELLAR XHTML was used. The CFO Forum MCEV Principles could not be retrieved (the download did not
+return the PDF); an issuer's MCEV report prepared under them is cited instead, as company-defined
+measures. The Solvency II texts are the original ones; the 2025 review and later delegated
+amendments are not reflected. US risk-based capital was not read.
+
+**Numerical evidence.** `equity-fcf-ri-private-checks.py` 57 checks (from 48);
+`intercorporate-fx-institutions-checks.py` 54 (from 44); `multiple-regression-checks.py` 24 (from
+21); `time-series-checks.py` 36 (from 32). Each new check would fail on the superseded statement:
+CFO - FCInv = 47.50 differs from 44.50; FCFE moves by 7.26 with the payout; simple division exceeds
+the option-adjusted value by C(p) x 5 / 100.75; the stake without the marketability discount is
+4.81, not 3.73; the design-and-losses case is not determinable; positive autocorrelation gives a
+ratio below one for the alternating regressor; the five-year RMSEs and overlap are recomputed from
+data to each origin.
+
+**Coverage.** The 11 objectives whose entries changed were reassessed at their stated depth and
+remain covered; their 32 outline items keep their mappings, with rationales noting the recheck, and
+`objective:analyse-insurer` now maps both insurer entries. Coverage unchanged: 326/424 objectives and
+774/1,030 items.
+
+## Alternatives batch, 20 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` from `main` at `191edb2`, after the
+audit commit `0d62a5d` (*Valuation and inference audit correction pass*), which counts toward no
+objective. All 45 objectives were `missing`; three had candidate entries
+(`def:contango-backwardation-stocks`, `def:commodity-indices-risk-return`,
+`mech:etf-creation-redemption`). Their 113 outline items map to no objective outside the batch;
+two items are shared by two batch objectives (`7099c7688942:m084:b03`, `2f25110282bf:m034:b04`)
+and carry one rationale each. Coverage before: 326/424 objectives, 774/1,030 outline items.
+Untracked copies named "... 2" in the working tree were neither deleted nor committed; the full
+checks ran in a separate worktree.
+
+**Scope (45).**
+- firms-market-structure: 3 (cost and output, market structures, identification)
+- private-capital-allocator: 17 (structures, fees and returns 3; private equity and debt 9; programmes 5)
+- real-asset-investor: 10 (real estate 6; infrastructure 3; land, timber and farmland 1)
+- commodity-investing-premia: 4; portfolio-construction-risk: hedge funds 3, allocation to alternatives 2
+- execution-trading-costs: ETFs 2; corporate-credit-capital: credit portfolio strategies 4
+
+Implemented in prerequisite order: market structure; alternative structures, fees and returns;
+private equity and debt; private-market programmes; real estate, infrastructure and land;
+commodities; hedge funds; ETFs; credit portfolios; allocation to alternatives last, because it
+draws on all of the above.
+
+**Outline pages read.** Level I (`7099c7688942`) PDF pp. 5, 25-26; Level II (`0242f4b7ba07`)
+PDF pp. 23-24, 26; Level III core and Portfolio Management (`2e1d62d8f585`) PDF pp. 6, 18;
+Level III core and Private Markets (`2f25110282bf`) PDF pp. 16-18. Each of the 113 items was
+read against its page and given an item-specific rationale in `outline-crosswalk.json`. Gaps
+found in review were written into the entries rather than left as residual gaps: specialist and
+multi-manager hedge fund families, vehicles beyond limited partnerships (managed accounts,
+registered funds), ETF spread components and the Rule 6c-11 disclosures, international credit
+and analytical tools, commitment pacing, the denominator effect and programme monitoring.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Books (owner's library PDFs outside the repository, cited by printed page): Varian (2014); Demaria et al., *Asset Allocation and Private Markets* (2021); Ippolito, *Private Capital Investing* (2020); Tsolacos and Andrew (2021); Lynn et al. (2009); Larreur, *Structured Finance* (2021); Geman, *Commodities and Commodity Derivatives* (2005); Jaeger, *Alternative Beta Strategies and Hedge Fund Replication* (2008); Abner, *The ETF Handbook*, 2nd ed. (2016); Ben Dor et al., *Quantitative Credit Portfolio Management* (2012) and *Systematic Investing in Credit* (2021); and further chapters of Ang (2014) chaps. 11, 13, 14, 17; Damodaran, *Investment Valuation* (2012) chap. 26; Hull, *Options, Futures, and Other Derivatives* (2022) pp. 195, 781; Hull, *Risk Management and Financial Institutions* (2023) chap. 19.
+- Papers (working-paper versions, retrieved 2026-10-20): Gorton and Rouwenhorst (NBER WP 10595, revised March 2006); Erb and Harvey (NBER WP 11222, March 2005); Getmansky, Lo and Makarov (NBER WP 9571); Kaplan and Schoar (WP 9807); Kaplan and Strömberg (WP 14207); Harris, Jenkinson and Kaplan (WP 17874); Gompers, Kaplan and Mukharlyamov (WP 21133); Metrick and Yasuda (WP 16652); Luxenberg et al. (arXiv 2207.07767).
+- Law, standards and data: SEC Rule 6c-11 (eCFR, last amended 85 FR 83291); 11 U.S.C. 1126 and 1129; the 2023 Merger Guidelines (already held); Nareit FFO White Paper (2018 restatement); NCREIF NPI snapshot 2Q 2026 and a Timberland Index commentary (1Q 2023); USDA ERS Farmland Value page (2026 update); OpenStax *Principles of Microeconomics* 3e secs. 7.5, 8.2, 10.1, 10.2, 11.1.
+- Curriculum volumes and answer workbooks were not used; the outlines were used only to map and review items.
+
+**Access limits and unread sources.**
+- The published *Financial Analysts Journal* versions of Gorton and Rouwenhorst and of Erb and Harvey (catalogue entries `s16-r34`, `wide-erb-harvey-commodity`), the *Journal of Finance* and *JFE* versions of the private equity papers, and the ICAIF version of Luxenberg et al. were not read; the working papers are cited and the entries say so.
+- Takahashi and Alexander (2002) is paywalled; its model is described through Luxenberg et al. (p. 3). Petajisto (2017) and Ben-David, Franzoni and Moussawi on ETFs were not read.
+- Lhabitant's *Hedge Funds: Quantitative Insights* copy has no text layer and was set aside. The USDA NASS land values PDF and a farmland dissertation could not be retrieved; the ERS summary was used. The NCREIF NPI full methodology and TPI methodology were not obtained.
+- Specialist hedge fund niches (insurance-linked, sector specialists), basis swaps, securities-lending offsets, international credit currency considerations and analytical-tool inputs lack a primary source read here and are marked Interpretation.
+
+**Discrepancies found in sources** (recorded in the entries and reading notes):
+- Erb and Harvey (2005) p. 13: oil's roll return printed 13.1% but $40.95/$36.65 - 1 = 11.73%; the far contract is dated June and then July 2005; p. 25 gives the same diversification return as 3.4% and "about 3.5%" (half of 12.8 - 5.3 is 3.75).
+- Ang (2014): backfill bias printed 7.3% where 14.7 - 7.3 = 7.4 (p. 565); the 2000s negative roll return attributed to "highly backwardated" oil, contradicting the book's rule that backwardation gives positive roll (pp. 369-370); Table 11.7's 1970s row adds to 21.7 against 21.6 printed.
+- Gorton and Rouwenhorst: abstract sample ends March 2004, figures run to December 2004.
+- Demaria et al. (2021): net exposure "at best between 40 and 60 percent" (p. 186) against 45-65% (p. 175); n. 103 repeats n. 96; growth pooled IRR above the printed top quartile; the IRR footnote formula and the farmland passage across pp. 143-144 (details in the reading note).
+- Ippolito (2020) p. 175: dilution divides by (1 + D) while D is described as the later investors' share.
+- Damodaran (2012) Illustration 26.4: intercept printed -2,535.50 and -2,535.70.
+- Abner (2016) p. 48: the redemption fee per share printed as 200,000/$2,000 for 2,000/200,000.
+- Ben Dor et al. (2012) p. 257: position-size ratio printed "2:6 : 1.5 : 1.0" for 2.6.
+
+**Conventions protected by the examples.**
+- Fees, carry and clawback computed on dated LP cash flows; PME and IRR on the same flows; smoothing reversed before risk statistics are used.
+- Commodity futures returns compound contract by contract; the roll is measured from the curve, not as a cash flow; the diversification return belongs to a rebalanced portfolio, not one commodity.
+- Hedge fund exposures summed across lags; allocation tested on de-smoothed volatility and full-cycle correlation, net of avoidable fees.
+- ETF premium measured at NAV time; the Rule 6c-11 median uses 10-second NBBO snapshots.
+- Credit exposure in DTS; issuer limits on DTS contribution; Vasicek's percentile checked against simulation.
+- Private exposure measured as NAV plus uncalled commitments; commitments sized from the steady-state gain, not set equal to the target NAV.
+
+**Numerical evidence** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; all run with `python -W error` by `make examples`):
+- `notes/artefacts/firms-market-structure/market-structure-checks.py`: 4 parts, 13 checks; shutdown and breakeven prices; Cournot closed form against iteration; CR4, HHI and merger change.
+- `notes/artefacts/private-capital/private-capital-checks.py`: 8 parts, 29 checks; hedge fund fees with a high-water mark; fund waterfall, carry and clawback; J-curve, PME, gross and net IRR; venture method; LBO returns; credit ratios; smoothing; allocation.
+- `notes/artefacts/real-assets/real-asset-checks.py`: 6 parts, 24 checks; direct capitalisation against DCF; NCREIF chain-linking; REIT NAV, FFO, AFFO and DDM; levered underwriting; DSCR-sculpted project debt; farmland and raw land.
+- `notes/artefacts/commodity-investment/commodity-return-checks.py`: 4 parts, 15 checks; Ang's Table 11.7 and eq. 11.3; Erb and Harvey's roll and diversification figures; a quarterly roll simulated in backwardation and contango; rebalancing and roll schedules; swap values.
+- `notes/artefacts/hedge-funds/hedge-fund-checks.py`: 6 parts, 17 checks; fund-of-funds fee layers; merger, long/short and convertible arithmetic; smoothing closed forms against simulation; factor regression with lags against generating loadings; the Sharpe-ratio allocation test.
+- `notes/artefacts/etf-mechanics/etf-checks.py`: 5 parts, 13 checks; Abner's fee and cash arithmetic; the market maker's quote; Rule 6c-11 premium, seven-day and median-spread tests; leveraged paths; costs of ownership.
+- `notes/artefacts/credit-portfolios/credit-portfolio-checks.py`: 4 parts, 17 checks; DTS by two routes; spread measures; ESP and DTS-neutral hedges; LCS; issuer caps; Vasicek against simulation; CDS overlay, hedged yield and CLO OC test.
+- `notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py`: 5 parts, 13 checks; crisis scenarios; factor-mapped exposure; steady-state pacing against simulation; denominator effect; liquidity coverage.
+
+**Errors caught during development** (all corrected before the text was final):
+- many expected figures were set before computing and differed (contango excess return, hedged-fund Sharpe ratios, Vasicek percentile, ETF quote, merger annualisation, factor-mapped beta, real-asset and private-capital figures); the text uses the computed values;
+- a first spread-median test had a tie at the median and was redesigned; a cash merger's annualised spread was misstated by 0.01 point;
+- undefined macros (`\citealp`, `\euro`) and a cross-reference to a nonexistent non-GAAP label were replaced; a Gorton and Rouwenhorst point stated in prose was given a citation so the evidence key is cited by its entry; an overfull Vasicek formula was moved to a display;
+- a claim that ETF prices "fell far below fair value" in the 2015 flash crash was narrowed to what Abner reports (widened quotes, hard pricing, stop orders in 2010).
+
+**Coverage.** All 45 objectives were reassessed operation by operation at their stated depth
+and moved to `covered`, mapped to 45 new entries plus `mech:etf-creation-redemption` (one
+sentence updated to point to the new Rule 6c-11 material). Objectives move from 326/424 to
+371/424, and outline items from 774/1,030 to 887/1,030 (Level I 302, Level II 349, Portfolio
+Management 59, Private Markets 34, shared core 143). This is editorial coverage, not learner
+mastery or independent human review.
+
+**Limits.** Brook Relative Value, Ashby Fund I, Novaro, Corran Industrial, Halden, Marlow House,
+Kestrel REIT, Ferris Park, Ashdown Hospital and the commodity, hedge fund, ETF, credit and
+allocation portfolios are hypothetical. Practitioner books (Demaria, Ippolito, Larreur, Jaeger,
+Abner, Ben Dor) describe market practice of their dates; the Ben Dor results are back-tests by a
+sell-side research group. Human review is outstanding.
+
+## Alternatives audit correction pass, 20 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` at `505a13f`, draft PR #33 to `main`
+open, working tree clean; no files named "... 2" were present. Coverage at the start: 371/424
+objectives and 887/1,030 items. These corrections count toward no new objective.
+
+**Findings reproduced first**, each by an identity, boundary case or primary text before the entry
+changed:
+1. *Timberland accounting* (`meth:land-timber-farmland`). Adding 5.04 percent of growth and price,
+   a 3 percent harvest yield and 2 percent land appreciation counts the harvested wood twice (it is
+   inside the 5.04 percent) and weights land as if it were the whole stand. A stand of 100 m3 at 30
+   on land of 1,000 (NAV 4,000), growing 4 percent, harvesting 3 m3 at 30.30 and paying costs of 15,
+   closes at NAV 4,080.30 with distributions of 75.90: 3.905 percent. The opening-weight
+   decomposition (0.75 x 5.04 + 0.25 x 2 - 0.375) reproduces it. With no growth and unchanged prices
+   the harvest returns only the costs (-0.375 percent). The NCREIF split into income and appreciation
+   on one denominator (p. 28) is the index analogue; the accounting itself is derivation.
+2. *Infrastructure construction financing* (`meth:infrastructure-underwriting`,
+   `meth:infrastructure-allocation`). The old script subtracted the debt sized at completion (165.83)
+   from the cost of 200 and spread the 34.17 of equity over two years, so lenders implicitly funded
+   construction interest-free; its "LLCR at financial close" was an operating-start figure. Dated
+   convention adopted: close at t = 0, payments of 100 at t = 1 and 2, pro-rata draws of 80.89 with
+   the first draw's 4.04 of interest capitalised, opening operating balance 165.83 at t = 2, sculpted
+   repayment to zero over 22 years. Sources 165.83 + 38.21 = uses 200 + 4.04; equity IRR 9.63
+   percent. The alternative (draws of 82.92, interest of 4.15 paid by equity) gives 9.65 percent,
+   matching the audit's orientation figures; at a zero construction rate both collapse to 10.70.
+   Larreur pp. 157-158 (staged drawdowns) and p. 171 (equity first, pro rata or back-ended) support
+   the conventions; the interest treatment is derivation. The allocation entry now says 9.6 percent
+   on 81 percent gearing of total cost.
+3. *Distressed debt* (`meth:special-situations-distressed`). Primary text read for 11 U.S.C. 364,
+   506(a), 1124, 1126(c)-(e) and 1129(a)(7)-(10), (b)(1)-(2) (LII pages saved in
+   `reading_materials/completion-20261020/`). The entry had conflated a blocking position in the
+   class vote with preventing confirmation, and described absolute priority as "no junior class
+   receives anything while it is impaired". Cramdown needs an accepting impaired non-insider class
+   (a)(10) and fair and equitable treatment, which differs for secured classes ((b)(2)(A)) and
+   unsecured ones ((b)(2)(B)). DIP priority over existing liens requires a sec. 364(d) finding
+   (credit unavailable otherwise, adequate protection) or consent; the example's assumptions are now
+   stated. Threshold corrected from 260 to 250 (40 + 10 + 200); at 255 the bonds receive 5. Boundary
+   cases: a holder of two-thirds by amount still fails the number test against ten small holders;
+   reinstated senior debt is unimpaired (1124(2)) and cannot supply the accepting class.
+4. *Private-fund PME* (`meth:private-fund-multiples-pme`). The formula omitted residual NAV. With it,
+   Ashby's year-4 PME is 1.10 (0.56 without); a contribution of 100 with NAV 110 after a 10 percent
+   index rise gives exactly 1. Kaplan and Schoar's main sample is of largely liquidated funds (p. 6);
+   Harris, Jenkinson and Kaplan state the residual-value treatment (p. 10) and distinguish the
+   Long-Nickels excess return (p. 11). The deflated-flow IRR (5.67 percent) is a money-weighted
+   excess; with a constant 5 percent index it equals (1 + IRR)/1.05 - 1 = 6.39, not 6.71.
+5. *Covered bonds* (`meth:credit-cds-international-structured`, `meth:abs-structures-credit-enhancement`).
+   The credit entry listed covered bonds with ABS as pool exposures with subordination, a 50-70
+   percent senior tranche and floating coupons. Directive 2019/2162 Arts. 4, 5 and 15(4) and recital
+   17 make covered bonds bank obligations with dual recourse, no acceleration and a cover pool kept
+   at coverage; Regulation 2017/2402 Art. 2(1) defines securitisation by tranching and pool-dependent
+   payments. Larreur's 68.5 percent senior share and Libor coupons belong to his corporate-loan
+   securitisation (Table 10.1, p. 260); prepayment pass-through belongs to mortgage pass-throughs
+   (Fuster et al. pp. 7, 10). Bank Corvel cases check issuer-solvent, issuer-insolvent and
+   prepayment outcomes against a tranched securitisation of the same pool.
+6. *Replacement cost* (`meth:real-estate-valuation-indexes`). The entry called the cost approach a
+   floor. IVS 105 (2016 exposure draft, paras 70.1-70.3, 80.2-80.5, 90.1-90.7) sets out substitution,
+   modern-equivalent replacement cost and physical, functional and economic obsolescence; Damodaran
+   pp. 537-538 (Tobin's Q) gives value below replacement cost when assets earn less than their
+   required return. Harbour Point: depreciated for physical wear only, 58; income 40, comparables 42,
+   reconciled 41; functional 5.33 and economic 11.67 obsolescence close the gap. The text says cost
+   is neither a floor nor an unconditional ceiling.
+7. *Credit liquidity costs* (`meth:credit-liquidity-tail-risk`). LCS is a round-trip cost (Ben Dor
+   et al. pp. 81-82, 88). Applying the full 0.40 percent to a one-way sale of half the portfolio gave
+   0.20 percent; against mid marks it is 0.10 (proceeds 49.90; 100 = 49.90 + 50 + 0.10), against bid
+   marks 0 and against ask marks 0.20. Remaining bonds 60/40 with LCS 1.34 percent. Index removals at
+   the bid (p. 274) and quote indications (p. 90) are noted.
+
+**Numerical evidence.** `real-asset-checks.py` 37 checks (was 24), `private-capital-checks.py` 38
+(was 29), `credit-portfolio-checks.py` 25 (was 17), all passing in the locked uv environment
+(Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1). New checks test identities (sources = uses, NAV
+reconciliation, distribution totals, cash identity), boundary cases (zero growth, zero construction
+rate, benchmark-matching PME, junior DIP lien, voting by number) and statutory conditions, not only
+restated constants.
+
+**Coverage.** Ten objectives and 27 outline items rechecked, with their rationales and evidence
+updated; mapping and coverage unchanged (371/424, 887/1,030).
+
+**Limits.** Case law on cramdown, unfair discrimination, new value and priming was not read; IVS 105
+is cited from its exposure draft; national covered-bond transpositions and the CRR minimum
+overcollateralisation were not read; construction delay and reserve accounts remain outside the
+Ashdown model.
+
+## Completion batch, 20 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` at `2d9f2f3` (*Alternatives audit
+correction pass*, which counts toward no objective), draft PR #33 open. Coverage before: 371/424
+objectives and 887/1,030 outline items. All 53 remaining objectives were `missing`; five had
+candidate entries (`def:inside-information`, `rule:spoofing-securities-markets`,
+`meth:purged-embargoed-cross-validation`, `meth:backtest-evaluation-diagnostics` with
+`pit:parameter-overfitting`, `def:amm-pool-mechanics`, `def:crypto-venue-instrument-structure`),
+none of which performs the objectives' operations, so new entries were written and the candidates
+kept as cross-references. The 143 remaining outline items map only to these 53 objectives; one item
+(`0242f4b7ba07:m007:b07`) maps to two and carries one rationale. No "... 2" copies were present.
+This batch supersedes the standing 45-objective preference at the user's request: all remaining
+objectives and items.
+
+**Scope (53).**
+- professional-ethics (new chapter): 22 (ethics and trust 2; code, programme and enforcement 2; Standards I-VII applied and prevention 14; evaluating conduct 1; Asset Manager Code 2; manager selection 1)
+- private-wealth-management (new chapter): 15 (clients and industry 5; planning 5; preservation 2; transfer and complex clients 3)
+- portfolio-construction-risk: institutional investors 6
+- ml-alternative-data: 7 (learning methods 3; data-science workflow 4)
+- research-engineering-validation: backtest design 1
+- digital-assets-prediction-markets: distributed ledgers and digital-asset investing 2
+
+Implemented in prerequisite order: ethics (framework, code, Standards, cases, firm code, manager
+selection); private wealth (capital and taxes before the IPS, planning before preservation and
+transfer); institutional investors (characteristics before DB risk, IPS evaluation, the SWF case,
+endowment liquidity and ESG); machine learning (methods before workflow, text and evaluation);
+backtest design; ledger mechanics before digital-asset investing.
+
+**Outline pages read.** Level I (`7099c7688942`) PDF pp. 3, 26, 29-31; Level II (`0242f4b7ba07`)
+PDF pp. 2-3, 27, 29-30; Level III core (`2e1d62d8f585`) PDF pp. 6-7, 13-15, 18; Private Wealth
+(`5bc9c1013387`) PDF pp. 16-18. Each of the 143 items was read on its page and given an
+item-specific rationale naming the entry and what it does for that item. Gaps found in review were
+written into entries rather than left as residual gaps: bank and insurer balance sheets in the
+institutional IPS entry, liquidity strategies in the goals-based plan, the joint family decision
+framework, enterprise risk management against GAPP 22, preventive procedures for each Asset
+Manager Code provision, and the custody and vehicle layer for digital assets.
+
+**Sources read** (versions, sections and key results in the reading notes):
+- Ethics (issuer's official texts, not curriculum readings): *Standards of Practice Handbook*, 12th ed. (2024); *Rules of Procedure for Conduct Related to the Profession* (2022); the *Ethical Decision-Making Framework* card (2014, member-society copy); *Asset Manager Code*, 2nd ed.; SEC Release IA-5248 (2019) on advisers' standard of conduct; Gennaioli, Shleifer and Vishny, *Money Doctors* (NBER WP 18174).
+- Private wealth: Survey of Consumer Finances 2022 (Federal Reserve Bulletin, October 2023); Ibbotson et al., *Lifetime Financial Advice* (2007); IRS Rev. Proc. 2025-32 and Notice 2025-67; 26 USC 401(a)(9), 664, 877, 877A, 1014, 1015, 1091, 1202, 1411, 2001, 4942, 7701(b); 17 CFR 240.10b5-1 and 240.15l-1; ESMA suitability guidelines (2022); MiFID II art. 24; GOV.UK and HMRC pages for income tax, CGT, ISAs, pensions, inheritance tax, the statutory residence test (RDR3), IHTM47020 and the 2024 non-dom reform; IRAS residency rules; the UK-US double taxation convention (2001/2002); and *Portfolio Management in Practice*, vol. 1, chap. 6 (read in an earlier batch).
+- Institutional: Ang (2014) chaps. 1, 3, 13; the Santiago Principles (2008); NBIM's GPFG pages (2026); Lerner, Schoar and Wang (NBER WP 14341); the GSIA review (2022).
+- Machine learning and backtesting: James et al., *ISLR*, 2nd ed. (owner's copy); Gentzkow, Kelly and Taddy (NBER WP 23276); FSB, *AI and Machine Learning in Financial Services* (2017); López de Prado, *AFML*, chaps. 2, 11-12.
+- Digital assets: Nakamoto (2008); BIS Annual Economic Report 2018, chap. V; Narayanan et al. (draft of 9 February 2016); ethereum.org proof-of-stake and Merge pages (2026); Liu and Tsyvinski (NBER WP 24877); SEC Release 34-99306 (89 FR 3008, January 2024).
+- Curriculum volumes and answer workbooks were not used; the outlines were used only to map and review items. Handbook examples were read but not reproduced: every case in the ethics entries is original.
+
+**Access limits and unread sources.**
+- sec.gov, the IRS treaty page, regjeringen.no, SSA life tables and the ISLR/ESL sites refused automated download; the Federal Register (govinfo) copies of the SEC releases, the GOV.UK treaty text, NBIM's own pages and the owner's ISLR copy were used instead. The private-wealth mortality example uses an illustrative Gompertz law, labelled as such, not an official life table.
+- EUR-Lex returned blank pages; MiFID II was read from the Publications Office (CELLAR) copy. The BIS chapter PDF link returned HTML; the HTML version is cited by section heading.
+- The published *Bitcoin and Cryptocurrency Technologies* (2016), the RFS version of Liu and Tsyvinski, the *Journal of Finance* version of *Money Doctors* and the *JEP* version of Lerner et al. were not read; the drafts and working papers are cited and the entries say so.
+- State and local taxes, case law, Treasury regulations, HMRC manuals beyond IHTM47020, the SEC's 10b5-1 and Reg BI adopting releases, and later spot-ETP orders (in-kind creation, ether) were not read.
+
+**Discrepancies and approximations found in sources.**
+- Nakamoto (2008) sec. 11 treats the attacker's progress as Poisson; the exact negative-binomial count gives 0.178 percent after 5 blocks at q = 0.1 against the printed 0.091 percent, so the paper's waiting times are lower bounds (`digital-asset-checks.py` part 3, with a simulation).
+- The FSB report (2017) and the BIS chapter (2018) describe their dates; Ethereum moved to proof-of-stake in September 2022, after both and after the Narayanan draft.
+
+**Conventions protected by the examples.**
+- Taxes and thresholds are dated (US tax year 2026, UK 2026-27) and every client is hypothetical.
+- Machine-learning examples are synthetic, labelled as such, with training, validation and an untouched test set; every fitted transform, vocabulary and idf weight is estimated on training data only.
+- Backtest examples use a simulated universe with no predictability, so any performance is an artefact of design.
+- Ledger mechanics (hashing, consensus, finality) are kept separate from investment exposure, vehicle, custody and liquidity.
+
+**Numerical evidence** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; all run with `python -W error` by `make examples`):
+- `notes/artefacts/private-wealth/private-wealth-checks.py`: 13 parts, 43 checks; human capital and economic net worth; after-tax and real returns; required return; fee models; goals and funded ratio; illustrative mortality, disability and longevity; asset location and harvesting; reporting; retirement accounts; residence tests; founders and executives; gifts against bequests (counting exemption use) and philanthropy.
+- `notes/artefacts/institutional-portfolios/institutional-checks.py`: 5 parts, 21 checks; DB funded status and surplus risk; spending rules, a foundation's payout, bank and insurer gaps; the GPFG fiscal rule and a hypothetical sovereign fund; endowment liquidity stress, the denominator effect and pacing; ESG constraint costs.
+- `notes/artefacts/financial-ml-methods/ml-methods-checks.py`: 6 parts, 23 checks; overfitting; lasso KKT and ridge closed form; trees, forest, KNN and SVM; PCA, k-means and hierarchical clustering; leakage; text features; classifier metrics and ROC.
+- `notes/artefacts/backtest-inference/backtest-design-checks.py`: 5 parts, 10 checks; survivorship, look-ahead, turnover and costs, drawdown by two routes, best-of-24 against walk-forward, expanding against rolling windows.
+- `notes/artefacts/digital-assets/digital-asset-checks.py`: 7 parts, 21 checks; SHA-256 chain and Merkle branch; proof-of-work cost; Nakamoto's table, the exact count and a simulation; issuance schedule; proof-of-stake timing; Liu and Tsyvinski consistency; hypothetical allocation and multisignature custody.
+
+**Errors caught during development** (all corrected before the text was final):
+- expected values set before computing differed from the computed ones (survivorship and look-ahead figures, risk share of a 5 percent crypto weight, simulated attacker probability, ML test errors); the text uses the computed values, and placeholder checks were replaced by computations (10b5-1 dates, wash-sale window, denominator effect);
+- the gift-against-bequest comparison first ignored the use of the lifetime exclusion; four source keys carried the provider token and were renamed (`standards-practice-handbook-2024`, `conduct-rules-of-procedure-2022`, `ethical-decision-framework-2014`, `asset-manager-code-2010`);
+- cross-references to labels that do not exist (thirteen across the batch) were corrected; missing locators were added;
+- reading-note statements not supported by the saved texts were corrected before commit: the conduct panel and standard of proof, UK dividend rates, a "pandering" claim, the Lerner et al. findings, NBIM's risk limit, the Santiago principle numbers and Singapore's three-year concession.
+
+**Coverage.** All 53 objectives were reassessed operation by operation at their stated depth and
+moved to `covered`, each mapped to one new entry. Objectives move from 371/424 to 424/424, and
+outline items from 887/1,030 to 1,030/1,030 (Level I 340, Level II 382, Portfolio Management 64,
+Private Markets 34, Private Wealth 27, shared core 183). This is editorial coverage, not learner
+mastery or independent human review.
+
+**Limits.** The Okafors, Harlow Industrial, the Vardø Fund, Elmsworth, the ethics firms and
+people, the default classifier and the crypto allocation are hypothetical. Tax and regulatory
+figures are dated and jurisdiction-specific and will change. Ethics entries interpret the Standards
+for original cases; the issuer's own guidance governs. Human review is outstanding.
+
+## Final audit correction pass, 20 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` at `316c07e`, draft PR #33 to `main` open, working
+tree clean. Coverage at the start: 424/424 objectives and 1,030/1,030 items. No new objectives; denominators and
+requirements unchanged. Every number below was reproduced by an identity, a boundary case or the primary text before
+the entry changed; old values are kept for comparison.
+
+**Findings and corrections.**
+1. *Backtest costs* (`meth:backtest-design-evaluation`; `backtest-design-checks.py`). The old rule measured turnover as
+   a quarter of the change in successive target weights and deducted twice that times 20 bp: for absolute trades of 2.0
+   it charged 0.002 instead of 0.004, and unchanged targets after unequal returns cost nothing. Conventions now stated
+   (NAV = cash + signed positions; long-short target +1/-1, gross 2; short proceeds in cash; cash, rebates and borrow
+   at zero; targets on post-trade NAV, so f = c sum|w*(V - f) - h|; establishment charged; delisted positions sold).
+   Hand-reconciled ledgers: establishment from 100 (fee 0.2/1.002 = 0.19960, cash 0); 55/45 rebalanced to 50/50
+   (sell 5.01, buy 4.99, traded 10, fee 0.02); the long-short swap (traded 2.0, fee 0.004, cash 0.996); long-short
+   drift (fee 0.2c/(1+c)). The full simulation checks cash + positions = NAV after every trade, zero-cost equality
+   with the gross target book, and (1 - f/V)(1 + w*.r) month by month. Momentum: traded 1.09 of NAV a month against
+   0.96 from target changes; cost drag 2.62 percent a year (1.17 before); net -2.51 percent a year, Sharpe -0.40
+   (was -1.05 and -0.17); hit rate 0.43 (0.47).
+2. *Maximum drawdown*. The running peak and its brute-force check both started after the first return. Now both include
+   the initial wealth of 1; [-0.10, +0.05] gives 10 percent, [-0.05] 5 percent, a rising path 0, and the old peak gives 0
+   on the first two, so the cases detect the error. Net maximum drawdown 50 percent (39 before); gross 32 percent.
+   The other two drawdown implementations (`drawdown-resampling-checks.py`, `performance-evaluation-checks.py`)
+   already included the start.
+3. *Asset location* (`meth:tax-in-planning`; `private-wealth-checks.py` part 7). Taxable stocks compounded
+   (1 + d(1 - t))(1 + g) while IRA stocks compounded 1 + d + g. One convention now: price +5 percent and a 2 percent
+   dividend on opening value, dividend at year-end, after-tax dividend reinvested and added to basis. Year 1: value
+   532,620, basis 507,620, gain 25,000; IRA 535,000. Bonds in the IRA: 2,454,619 (2,474,630 before); reverse
+   2,316,409. With zero taxes both placements give 3,140,699, whereas the old conventions would have shown 36,488.
+4. *The Okafor case* (`meth:individual-wealth-capital`, `meth:private-client-ips`, `meth:goals-based-financial-plan`,
+   `meth:lifetime-exposures`, `meth:private-client-allocation-review`). The 60,000 reserve now sits outside the
+   540,000 policy portfolio and on neither side of the funded ratio: required real return 2.30 percent (1.96
+   percent counted the reserve twice), confirmed by projecting forward to the 1.76m need. Human capital to retirement at
+   62: 3.00m at 40 (3.29m to 65). One saving figure (50,000), education at 8 and 10 years in every calculation (parts
+   1 and 5 had used 10 for both), the 35 percent joint band (Rev. Proc. 2025-32 sec. 4.01, Table 1, p. 10) instead of
+   "top bracket". Funded ratio 1.16 at 3.5 percent and 0.91 at 1.5 percent (1.22 and 0.95); saving of 58.1k restores
+   1.0. Allocation, on stated illustrative real assumptions: 70/30, 60/40 and 40/60 give compound 3.22, 3.03 and 2.57
+   percent, one-in-twenty one-year returns of -15.1, -13.4 and -10.2 percent, and surpluses of 0.28, 0.22 and 0.08m.
+   The recommendation changes from 70/25/5 to 60/40, which willingness governs; 40/60 is the lower-risk alternative
+   if paired with higher saving. Life cover 1.95m (2.17m). The review uses the Okafors' own 540,000 and saving:
+   TWR 11.72, MWR 11.78 percent, funded ratio 1.16 to 1.20.
+5. *Pension funding law* (`def:institutional-investor-characteristics`, `meth:db-pension-risk`). Read: IRS Notice
+   2021-48, IRB 2021-33, p. 305, secs. I-IV (https://www.irs.gov/irb/2021-33_irb); 26 U.S.C. 430(a), (c)(1)-(2),
+   (c)(5), (c)(8), (d)(1), (g)(3), (h)(2)(C)(iv) on LII. For single-employer plans, plan years beginning after 31
+   December 2021 (earlier by election), earlier shortfall bases are reduced to zero and new bases amortised over 15
+   plan years; the minimum is target normal cost plus installments when assets fall short of the funding target of
+   accrued benefits; the segment-rate corridor is 95-105 percent through 2030. Ang's seven years (2014) is now
+   attributed to the Pension Protection Act. Harlow: statutory shortfall 0.40bn on a stylised funding target of
+   8.4bn, accounting deficit 1.0bn, economic deficit about 1.81bn; a single new base over 15 years costs 38.5m; the
+   96.34m (15-year) and 172.82m (7-year) annuities on the accounting deficit are labelled policy illustrations. The
+   conclusion now separates a moderate cash burden from high economic risk.
+6. *Endowment spending law* (`def:institutional-investor-characteristics`, `meth:institutional-ips-portfolios`,
+   `meth:endowment-liquidity-allocation`). Read: New York NPC sec. 553(a), (b), (d), (e) and the Article 5-A table
+   (NY Senate site, revision of 14 July 2017). The presumption is rebuttable, applies to post-enactment gift
+   instruments, uses quarterly values averaged over at least five years, and gives no presumption of prudence below 7
+   percent. Elmsworth is now a New York corporation with donor-restricted, post-enactment gifts setting no rate; with
+   five prior years assumed flat at 2,000m, spending peaks at 5.28 percent of the statutory average (6.6 percent of the
+   post-crash value). The uniform-act text was not obtained, so the entry says only that states differ. Liquidity:
+   185.6m remain after net outflows of 212.4m (173 before, which ignored the 12.6m of distributions counted in the
+   coverage ratio).
+7. *Family accounts and IPOs* (`rule:standard-duties-to-clients`, `meth:preventing-client-duty-violations`,
+   `rule:standard-conflicts-of-interest`, `meth:preventing-conflict-violations`). Read: Standards of Practice Handbook,
+   12th ed., III(A) Example 7, p. 74; III(B) guidance, p. 77; VI(B) guidance, p. 165, Examples 2-3, p. 167; the issuer's
+   III(B) (updated April 2024) and VI(B) (updated January 2024) web pages. The blanket exclusion of family accounts is
+   replaced by a classification of personal and beneficially owned accounts (excluded from oversubscribed issues) and
+   family client accounts (allocated pro rata, flagged and reviewed); contrasting original cases added.
+8. *UK inheritance tax* (`meth:wealth-transfer-strategies`; part 13). Read: HMRC, "Inheritance Tax: residence nil rate
+   band" (published 8 November 2016, updated 5 September 2019); IHTM46023 (updated 7 April 2026); the thresholds table
+   (updated 6 April 2026) and the gifts page. The band now tapers by 1 for every 2 above 2m on the estate excluding
+   lifetime gifts (175k at 2.0m, 125k at 2.1m, 0 at 2.35m), capped at the home's value. The gift example now has the
+   donor dying 4.5 years after the gift (24 percent, 42,000). The examples form one chronology: the gift consumes the
+   nil-rate band, so the 2.4m estate pays 960,000 (830,000 before, which reused the band); total 1,002,000 against
+   1,030,000 without the gift, the difference being the taper relief of 28,000.
+
+**Coverage revalidation.** Sixteen objectives and their 43 outline items, all at their recorded depth (15 decision,
+1 analysis). Each item was reread against the corrected entry; 35 rationales gained a specific revalidation note and
+8 a note that the correction does not touch them. All remain covered: 424/424 objectives and 1,030/1,030 items.
+New sources: `irs-notice-2021-48`, `ny-npc-553`, `govuk-rnrb-guidance-2019`, `hmrc-ihtm46023-2026`, with reading
+notes; IRC sec. 430 added to `us-internal-revenue-code-26`.
+
+**Validation** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; LuaLaTeX from TeX Live 2023).
+Focused: `backtest-design-checks.py` 19 checks (10 before), `private-wealth-checks.py` 53 (43), `institutional-checks.py`
+22 (21), each with `python -W error`. Final: `make check` (lock, ruff lint and format, check-compendium 0 problems,
+check-coverage 0 problems, pytest 36 passed, 106 check scripts, `--verify-outlines` 0 problems, PDF of 424 pages
+with no overfull boxes or undefined references) and `make pre-commit` (12 hooks passed). Pages 18-19, 265-267,
+276-282 and 36-38 were rendered and inspected.
+
+**Limitations.** The Okafor capital market assumptions, willingness threshold, Harlow funding target and Treasury
+spread, and Elmsworth's pre-example values are stated assumptions, not data. The New York article's effective date was
+not taken from a primary page. Editorial coverage only; human review and study are outstanding.
+
+## PR #33 correction pass, 21 October 2026
+
+**Starting state.** Branch `codex/alternatives-audit-20261020` at `394d15c`, draft PR #33 to `main` open, working
+tree clean. Coverage at the start: 424/424 objectives and 1,030/1,030 items. Corrections only: no objective created,
+no denominator or requirement changed. Each finding was reproduced before the entry changed; old values are kept for
+comparison.
+
+**Findings and corrections.**
+1. *Okafor tax assumptions* (`meth:private-client-ips`; `private-wealth-checks.py` part 3). Reproduced: the IPS read a
+   15 percent rate on qualified dividends and gains from the 35 percent ordinary band, but Rev. Proc. 2025-32 sec. 4.03
+   (p. 13) puts the 2026 joint 15 percent ceiling at 613,700, inside that band (512,450 to 768,700, sec. 4.01 Table 1).
+   Read: IRC sec. 1(h)(1)(A)-(D), (h)(11), (j)(5) (LII, saved 2026-10-21); sec. 1411(a)(1), (b)(1); Rev. Proc. sec.
+   4.14 (standard deduction 32,200). Stated 2026 return: wages 650,000 less 49,000 of 401(k) deferrals, interest
+   2,400, qualified dividends 6,000, net long-term gains 60,000; AGI 669,400; taxable income 637,200; ordinary taxable
+   income 571,200. Stacked: 42,500 at 15 percent and 23,500 at 20 percent; income tax 148,533.50 (the old inference
+   gives 1,175 less); NIIT 3.8 percent of 68,400 = 2,599.20 (MAGI exceeds 250,000 by 419,400). Marginal rates by finite
+   difference: 23.8 percent on gains (not 18.8), 40 percent on wages, 43.8 percent on interest. Checks: published
+   cumulative bracket amounts (116,896 at 512,450; 206,583.50 at 768,700); the statutory formula against layer
+   stacking; boundaries at 613,700 (all 15 percent at the ceiling, 20 percent on the next dollar), ordinary income at
+   613,700 (all 20 percent), the zero-rate amount (38,900 at 0 percent on 60,000 of ordinary income), ordinary income of
+   547,700 (all 66,000 at 15 percent); NIIT below the threshold and on the MAGI excess when it is the smaller amount.
+2. *Harlow pension contributions* (`meth:db-pension-risk`, `def:institutional-investor-characteristics`;
+   `institutional-checks.py` part 1). Reproduced: the entry treated the whole 0.40bn shortfall as a new base (38.5m)
+   and then said the minimum adds installments on 2022-2025 bases, amortising the open bases twice. Read: IRC sec.
+   430(a), (c)(1)-(3), (c)(5)-(6), (c)(8), (g)(2), (j)(1)-(3) (LII, saved 2026-10-21); Notice 2021-48 sec. III.B.1 (p. 5,
+   PDF saved 2026-10-21), which lists the present value of remaining installments "for purposes of determining any
+   shortfall amortization base established in the current plan year under § 430(c)(3)". Stated assumptions: valuation
+   date 1 January 2026; one 5 percent effective rate for the segment rates; open bases 0.20, 0.08, 0.03 and 0.05bn set in
+   2022-2025, a shortfall in every year; no waiver, prefunding or carryover balances; target normal cost 110m. Result:
+   old installments 33.03m a year worth 303.2m; 2026 base 96.8m (installment 8.88m); shortfall charge 41.91m; minimum
+   required contribution 151.91m at the valuation date (12.7 percent of EBITDA; deficit repair 3.5 percent), 165.12m if
+   paid in one sum on 15 September 2027, before any surcharge on missed quarterly installments (an ordinary-interest
+   illustration; see the close-out below). The double-counting
+   construction gives 69.73m (27.82m too high). The 38.5m was also an end-of-year annuity; valued at the valuation date
+   a single base costs 36.70m. Checks: the present value of all installments still due equals the shortfall; each
+   base's balance reaches zero after 15 installments; no open bases (base = shortfall); assets above target (TNC less
+   the excess, 60m); a negative base when the shortfall (0.25bn) is below the open installments' value (-53.2m, charge
+   28.15m, floored at zero in aggregate by 430(c)(1)). Conclusion: deficit-repair cash is moderate under the stated
+   assumptions; the true minimum cannot be determined without Harlow's valuation; accounting (1.0bn) and economic
+   (1.81bn) deficits kept separate.
+3. *Family client IPO allocations* (`rule:standard-duties-to-clients`, `meth:preventing-client-duty-violations`,
+   `rule:standard-conflicts-of-interest`, `meth:preventing-conflict-violations`). Reproduced: the Linton family-client
+   class required no employee beneficial interest and the personal class covered only accounts not managed under the
+   client process, so a managed family account with an employee interest fitted neither. Read: Handbook III(B), p. 77;
+   VI(B) guidance, p. 165; compliance practices, p. 166; Example 3, pp. 167-168 ("If Toffler has beneficial ownership in
+   the account, however, ... she may have to preclear the trades and report the transactions"). The policy now asks two
+   separate questions: allocation class by how the account is managed, conflict controls (register, holdings report,
+   duplicate statements, preclearance of block participation that cannot change the pro-rata share) by beneficial
+   interest. New original case: a taxable account the manager holds jointly with her mother, managed in the strategy on
+   standard terms, receives the same 1,200 of a 60 percent fill after preclearance and with reporting; cutting it,
+   skipping the controls or topping it up are violations. The Brook Lane code and the III(B) and VI(B) statements are
+   aligned; Example 3's page reference corrected to pp. 167-168.
+4. *Endowment spending comparison* (`meth:institutional-ips-portfolios`; `institutional-checks.py` part 2).
+   Reproduced: pure 5 percent spending was divided by five-year averages of quarterly values generated by the smoothed
+   rule. Each rule now carries its own quarterly history: pure peak 5.242401 percent (5.24, published 5.25, which the
+   cross-policy construction gives as 5.245031); smoothed 5.28 and 5.07 unchanged. A check rebuilds the pure rule's 40
+   quarter-end values from its own spending and confirms the cross-policy construction differs.
+
+**Coverage revalidation.** Eight objectives and their 24 outline items, all at decision depth. Each item was reread
+against the corrected entry; 21 rationales gained a specific revalidation note and 3 a note that the corrections do
+not touch them. All remain covered: 424/424 objectives and 1,030/1,030 items. No new source keys; IRC sec. 1(h) and
+(j)(5) added to `us-internal-revenue-code-26`, sec. 4.14 to `irs-rev-proc-2025-32`, sec. III.B.1 to
+`irs-notice-2021-48`. Editorial coverage only; it does not establish learner mastery, and human review is outstanding.
+
+**Close-out, 21 October 2026 (documentation only).** Branch at `f3d8791`, tree clean, draft PR #33 open. The
+independent re-audit found the four corrections above resolved and all checks passing; it flagged that the 165.12m
+September 2027 figure was qualified in the script and this record but not in the implementation plan, the PR
+description or, explicitly enough, the compendium. Read: 26 CFR 1.430(j)-1(b)(4)(i)-(ii) and (c)(1), (c)(5)-(6) (eCFR
+current text, saved 2026-10-21). Paragraph (b)(4)(i) adjusts a payment made after the valuation date at the plan's
+effective rate; (b)(4)(ii) treats any part of a payment that settles a late required installment in two steps, first
+discounting it to the installment's due date at the effective rate plus 5 percentage points; (c) requires quarterly
+installments of 25 percent of the lesser of 90 percent of the current minimum and 100 percent of the prior year's after
+a shortfall year, due on the 15th of the 4th, 7th and 10th plan months and 15 days after the year. The 165.12m is
+therefore labelled an ordinary-interest equivalent of the 151.91m valuation-date minimum, not a payable amount; an
+actual single September 2027 payment would have to be larger by an amount that depends on Harlow's 2025 minimum, which
+is not modelled. New source `cfr-26-1-430j-1` with a reading note; no figure, objective, denominator or requirement
+changed: 424/424 objectives and 1,030/1,030 items, editorial coverage only.
+
+## Library gap-filling, Batch L1, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-batch-l1`, created from `codex/alternatives-audit-20261020` at `2b89791`
+(draft PR #33 to `main` still open with that head, checked 2026-10-21); the only working-tree change was the untracked
+`implementation_plan_v2.md`. Coverage before: 424/424 objectives and 1,030/1,030 outline items, all covered. Scope:
+`implementation_plan_v2.md` Section 6, packages P1-P5, after the owner approved decisions E1 (ten new neutral
+objectives, a denominator change) and E2 (a ten-objective batch, below the standing 45-objective preference). Before
+implementation the plan was corrected for the external audit's findings R1-R4: P7's wrong-way-risk sign (plan only; P7
+is not implemented), a predetermined numerical criterion for P5's daily rebalancing, explicit P2-P3 example
+conventions, and the count of existing entries touched (two substantive extensions, two cross-reference edits).
+
+**P1, stochastic calculus** (new topic file `compendium/common-toolkit/stochastic-calculus.tex`; new
+`topic:stochastic-calculus`).
+- Read: Hull, *OFOD* 11th Global ed., chap. 14 (pp. 316-337, all sections and the appendix), chap. 15 (pp. 339-342 and
+  348-352), chap. 28 (pp. 670-677); Wilmott, *PWOQF* 2nd ed., chap. 4 (pp. 71-88) and chap. 10, secs. 10.11-10.12
+  (pp. 179-181). The plan listed Wilmott chaps. 3-6; the passages that teach the material are chap. 4 and sec. 10.11,
+  which are the ones cited. Neither book names Feynman-Kac or writes the Radon-Nikodym density: Hull states
+  Girsanov's theorem as a change of the market price of risk that leaves volatilities unchanged (p. 674), and Wilmott
+  reaches the risk-neutral expectation through the backward Kolmogorov equation (pp. 179-180). The density
+  $Z_T=\exp(-\theta W_T-\tfrac12\theta^2T)$ is therefore given in the entry as a direct calculation and checked
+  numerically; Shreve (`crypto-shreve`, not held) is Further reading only.
+- Notation: Hull's $z$ and Wilmott's $X$ are written $W$; Hull's market price of risk $\lambda$ is kept in the
+  Statement and $\theta$ used for the Girsanov kernel.
+- Checks (`notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py`, 22 checks, synthetic, seeds 20261021 to
+  +3 fixed before running): quadratic variation 1.0052 (10,000 steps; s.d. 0.0141) and 0.9996 on the bridge-refined
+  path; first variation 79.69 against 79.79; the left-point and midpoint integral identities. GBM with 200,000 exact
+  draws: mean 108.363 (s.e. 0.049) against 108.329, median 106.207 (s.e. 0.060) against 106.184; $E[S_T^2]$ 12,220.5
+  (s.e. 11.4) against Itô's 12,214.0, with the chain-rule 11,735.1 rejected; Euler RMS error 0.441 at 50 steps and
+  0.043 at 5,000 on common paths (discretisation, not sampling, error). Girsanov: reweighted real-world draws give
+  7.0979 (s.e. 0.0209) against the BSM call 7.1281, inside the predetermined 3 standard errors; unweighted
+  discounting gives 9.9148. The discounted real-world expectation satisfies the PDE with $\mu$ (residual
+  $-2.4\times10^{-7}$) and fails the Black-Scholes equation (residual $-2.58$).
+- Existing entry touched: `mod:black-scholes-merton` (See also links only; no claim or check changed).
+- Objectives: `objective:explain-brownian-motion-quadratic-variation`, `objective:apply-ito-lemma-gbm`,
+  `objective:value-derivative-risk-neutral-expectation`, all covered.
+
+**P2, numerical pricing** (new topic file `compendium/volatility-options/numerical-methods.tex`; extension of
+`meth:monte-carlo-simulation`).
+- Read: Hull, chap. 21, secs. 21.6-21.8 (pp. 489-509) and chap. 27, sec. 27.8 (pp. 660-665); Wilmott, chap. 77, secs.
+  77.11-77.12 and 77.17 (pp. 1212-1215, 1224-1226), chap. 78, secs. 78.1-78.3, 78.7 and 78.9 (pp. 1227-1230,
+  1242-1246) and chap. 80, secs. 80.1-80.6 (pp. 1263-1269). Not read: Longstaff and Schwartz (2001), Andersen and
+  Broadie, Glasserman (`s6-glasserman`, not held; Further reading).
+- Discrepancies and conventions. Hull's explicit coefficients discount by $1/(1+r\Delta t)$, Wilmott's subtract
+  $r\delta t$ from the centre coefficient; the entry teaches Wilmott's form and the plan's monotonicity condition,
+  which adds the discount term to Wilmott's diffusion-only bound $\delta t\le1/(\sigma^2I^2)$. Hull's implicit American
+  example projects after each linear solve (p. 502), which Wilmott calls "not good enough" for an implicit scheme
+  (p. 1246); the entry says so. Neither source names the Rannacher start; it is an implementation choice in the
+  examples, supported by Wilmott's remark that CN is not the best scheme for discontinuous initial data (p. 1243).
+  Hull's control variate uses a coefficient of 1 (eq. (21.20)); neither source gives the estimated optimal
+  coefficient, so it is stated as an Interpretation and checked. Hull prints the year-2 $S^2$ coefficient as $-1.813$;
+  least squares on his Table 27.4 data gives $-1.81358$ (truncated, not rounded); the published value 0.1144 is
+  reproduced (0.11443).
+- Checks (`notes/artefacts/numerical-pricing/numerical-pricing-checks.py`, synthetic): European put (BSM 5.573526):
+  Crank-Nicolson errors $1.00\times10^{-2}$ and $2.50\times10^{-3}$ at (150, 75) and (300, 150), ratio 4.01; explicit
+  at $N=901$ and 3,601 (just inside $1/(\sigma^2I^2+r)$, all coefficients non-negative; node $i=1$ upwinded because
+  $\sigma^2<r$) errors $8.86\times10^{-3}$ and $2.21\times10^{-3}$, ratio 4.01; explicit at $N=200$ (4.5 times the
+  bound) reaches $2.9\times10^{92}$. American put: CRR 6.09028 (8,000 steps) and 6.09056 (8,001), reference 6.09042;
+  CN with projected SOR 6.0780 ($I=150$) and 6.0870 ($I=300$, error $3.4\times10^{-3}\le4\times10^{-3}$), ratio 3.63;
+  the explicit scheme with projection gives 6.0806. Bermudan put (50 dates): CRR 6.07853 (5,000 steps) and 6.07851
+  (5,050), reference 6.07852; CN (600, 1,000) with projection only on the dates 6.07796 (within $5\times10^{-3}$); LSM
+  out of sample 6.0386 (s.e. 0.0227), 0.040 below the reference, inside the predetermined $[-0.05,+3\text{ s.e.}]$
+  band; in sample 6.1248 (reported, not tested). Every acceptance range in the plan passed on the first complete
+  run; one check of my own on Hull's printed coefficients first used a tolerance of $5\times10^{-4}$ and failed
+  because of the truncated print; it now allows $10^{-3}$ and the reason is stated in the script.
+- Monte Carlo extension (`inference-simulation-checks.py`, same 100,000 draws as the existing call): estimated
+  coefficient 0.5421, correlation 0.8746, variance reduction factor 4.25 (criterion above 2), estimate 7.1289 (s.e.
+  0.0192) against 7.1281 (criterion 3 s.e.). A recorded coefficient of 0.5258 written before the run was wrong and
+  was replaced by the computed value; the plan's criteria were not changed. Euler bias on 400,000 common paths
+  (seed 20261018 + 11): $-0.1254$, $-0.0536$, $-0.0250$ at 2, 4 and 8 steps (s.e. 0.0024 or less), ratios 2.34 and
+  2.14 against the predetermined $[1.5,2.5]$.
+- Objectives: `objective:price-options-finite-differences`, `objective:value-early-exercise-least-squares-monte-carlo`,
+  covered. The control-variate extension deepens the covered `objective:apply-monte-carlo-simulation` and is not
+  counted.
+
+**P3, digital, barrier and Asian options** (new topic file `compendium/volatility-options/exotic-options.tex`).
+- Read: Hull, chap. 26, secs. 26.9-26.10 and 26.13 (pp. 620-623, 626-627) and chap. 27, secs. 27.5-27.6 (pp.
+  653-658); Wilmott, chap. 2 (pp. 43-44), chap. 7 (pp. 119-121), chap. 23 (pp. 385-386, 400-405) and chap. 25, secs.
+  25.9-25.11 (pp. 440-442, page image of p. 440 viewed). The plan listed Wilmott chaps. 22-23 and 25; the binary
+  material is in chaps. 2 and 7, which are the passages cited. Not read: Broadie, Glasserman and Kou (1997), Kemna
+  and Vorst (1990); both are cited through Hull or Wilmott, and BGK is Further reading.
+- Discrepancy: Wilmott's summary of Kemna-Vorst (p. 440) replaces the dividend yield by $D+\sigma^2/6$; his own formula
+  (p. 442) and the limit of the discrete geometric distribution give $\tfrac12(r+D+\sigma^2/6)$. The script shows the
+  p. 440 version gives 6.5181 against 5.9802. The plan's description of Hull's continuous-averaging form (sec. 26.13)
+  was inaccurate: Hull gives moment matching for the arithmetic average and a footnote that the geometric average is
+  lognormal, not the $\sigma/\sqrt3$ formula; the entry cites Wilmott for that formula.
+- Checks (`notes/artefacts/exotic-options/exotic-option-checks.py`, synthetic, $S_0=K=100$, $r=5\%$, $q=2\%$,
+  $\sigma=25\%$, $T=1$, 100,000 paths per Monte Carlo check, seeds 20261031-20261035 in check order). Digitals: call
+  11.123762 = 58.4955 - 100 x 0.473717 to $10^{-12}$; call-spread errors $1.03\times10^{-4}$, $2.58\times10^{-5}$,
+  $6.45\times10^{-6}$ (ratios about 4.0, criterion [3.5, 4.5]); simulated digital 0.4719 (s.e. 0.0015); delta at the
+  strike 0.0152, 0.0550, 0.2533 at 1 year, 1 month, 1 day. Barrier $H=90$: $c_{do}=8.1388$, $c_{di}=2.9850$; in-out
+  parity path by path to $10^{-12}$; Brownian-bridge Monte Carlo 8.1953 (s.e. 0.0529); daily monitoring 8.4890 (s.e.
+  0.0538) against the shifted-barrier 8.5190 (barrier 89.178), inside 3 s.e. + 0.5 percent. Asian, 12 monthly dates
+  excluding $S_0$: discrete geometric 6.3903 against 6.3888 (s.e. 0.0309); arithmetic 6.6797 (s.e. 0.0321)
+  uncontrolled and 6.6813 (s.e. 0.00107) controlled, variance-reduction factor 900 (criterion above 10), difference
+  inside 3 uncontrolled s.e.; continuous geometric 5.9802.
+- Errors caught during development, all in checks of my own beyond the plan's criteria (the plan's criteria passed on
+  the first run): a vega check failed because `call` captured $\sigma$ as a default argument, so the vanilla term
+  had no vega (coding error, fixed); the corrected down-and-out vega with $H<K$ is positive near the barrier (0.81 at
+  $S=91$ against 14.80 at 130), so my expectation of a negative sign was wrong; the check now tests that it shrinks
+  below a tenth, and tests Hull's own example of negative vega, an up-and-out call ($K=100$, $H=120$, $S=115$: value
+  0.1999, vega $-2.22$; the value was cross-checked once by a Brownian-bridge simulation outside the script, 0.2025,
+  s.e. 0.0030). A convergence check with a 2e-3 tolerance at 1,000 dates failed because convergence to continuous
+  averaging is first order (gap 0.00491 at 1,000 dates); it was replaced by a refinement check (gap 0.00982 at 500,
+  ratio 2.0, criterion [1.9, 2.1]).
+- Objectives: `objective:value-digital-options-pin-risk`, `objective:value-barrier-options-monitoring`,
+  `objective:value-asian-options`, covered.
+
+**P4, hedging with the wrong volatility** (new `res:delta-hedging-volatility-mismatch` in
+`compendium/volatility-options/option-valuation.tex`; vanna and volga added to `meth:greeks-delta-gamma-hedging`; a See
+also link in `meth:active-currency-strategies`).
+- Read: Wilmott, chap. 12 (pp. 197-205), chap. 47 (pp. 763-770) and chap. 7 (pp. 127-128 with n. 3); Hull, chap. 19,
+  sec. 19.4 (pp. 421-427, reread). Not read: Carr (2005), Henrard (2001), Ahmad and Wilmott (2005); eq. (12.2) is
+  cited through Wilmott. Neither source uses the names vanna and volga; Wilmott records "vomma" and "kabanga" for
+  the same derivatives, and the entry cites that and gives the formulas, checked by finite differences (vanna
+  $-0.2814$, volga 9.8501 for the example's call at 20 percent).
+- Checks (`notes/artefacts/option-valuation/volatility-mismatch-hedging-check.py`, 20,000 common paths, seed
+  20261051): $V^a-V^i=14.2313-10.4506=3.7807$. Actual-volatility delta: mean 3.7770 (s.e. 0.0044, s.d. 0.627) at
+  252 rebalancings and 3.7805 (s.e. 0.0014, s.d. 0.200) at 2,520, both inside 3 s.e.; s.d. ratio 3.14 (criterion
+  [2.8, 3.5]). Implied-volatility delta: RMS gap to the pathwise integral 0.797 and 0.256, factor 3.12 (criterion
+  [2.5, 3.8]); cross-path s.d. 1.75 at 2,520 steps (criterion above 1.5); mean 3.7462 (s.e. 0.0124), reported only.
+  All criteria passed on the first run.
+- Objective: `objective:quantify-hedging-volatility-mismatch`, covered. The vanna-volga sentence deepens the covered
+  `objective:manage-option-greeks` and is not counted.
+
+**P5, growth-optimal (Kelly) sizing** (new `res:kelly-growth-optimal-fraction` in
+`compendium/portfolio-construction-risk/portfolio-construction-models.tex`).
+- Read: Wilmott, chap. 17, sec. 17.5 (pp. 306-309) and chap. 66, sec. 66.4 (pp. 1057-1058, the growth-optimal
+  portfolio, which the plan did not list and which supplies the continuous-time fraction with a riskless asset and
+  the log-utility link). Not read: Kelly (1956), Thorp (2008), Busseti, Ryu and Boyd (2016); no copy is in the
+  library, so all three are Further reading only. The discrete-bet fraction $p-q/b$, the exact continuous identities
+  and the estimation-error formula are derivations stated as Interpretation and checked.
+- Discrepancy: Wilmott's "halves your volatility ... only decreases your expected growth rate by 25%" (p. 309) rests
+  on his small-edge quadratic approximation (17.1); the entry states the exact continuous identity (excess growth over
+  $r$) and shows it does not hold for discrete bets.
+- Checks (`notes/artefacts/portfolio-construction/kelly-check.py`, synthetic, $\mu=8\%$, $r=2\%$, $\sigma=20\%$):
+  $f^*=1.5$; excess growth 0.045 and 0.03375 (ratio 0.75), variance-rate ratio 0.25, $g(2f^*)=r$. Exact 10-year
+  sampling (200,000 draws, seed 20261041): 0.05379 (s.e. 0.00011), 0.06508 (0.00021), 0.02016 (0.00042) against
+  0.05375, 0.065, 0.02, standard deviations within 1 percent of $f\sigma/\sqrt T$. Daily rebalancing (20,000 x 2,520,
+  seed 20261042) against 80-point Gauss-Hermite expectations 0.053750, 0.064999, 0.019900: simulated 0.05418 (s.e.
+  0.00033), 0.06585 (0.00067), 0.02159 (0.00134), all inside 3 s.e.; biases $+2.8\times10^{-7}$, $-8.9\times10^{-7}$,
+  $-1.00\times10^{-4}$ a year (criterion below $5\times10^{-4}$), refinement ratios 0.500, 0.500, 0.499 (criterion
+  [0.4, 0.6]). Discrete bets: 0.7470 and 0.7727, both different from 0.75. Estimation error (10 years of data, seed
+  20261043, a criterion fixed before running): expected excess growth $-0.00500$ at full and $+0.02125$ at half
+  Kelly, simulated $-0.00515$ and $+0.02120$. All criteria passed on the first run.
+- Objective: `objective:derive-kelly-growth-optimal-fraction`, covered.
+
+**Batch completion.**
+- Scope delivered: ten new entries (`def:brownian-motion-quadratic-variation`, `res:ito-lemma-geometric-brownian-motion`,
+  `res:risk-neutral-pricing-feynman-kac`, `meth:finite-difference-option-pricing`, `meth:least-squares-monte-carlo`,
+  `meth:digital-option-valuation`, `meth:barrier-option-valuation`, `meth:asian-option-valuation`,
+  `res:delta-hedging-volatility-mismatch`, `res:kelly-growth-optimal-fraction`); three new topic files
+  (`common-toolkit/stochastic-calculus.tex`, `volatility-options/numerical-methods.tex`,
+  `volatility-options/exotic-options.tex`); two substantive extensions (`meth:monte-carlo-simulation`,
+  `meth:greeks-delta-gamma-hedging`) and two cross-reference edits (`mod:black-scholes-merton`,
+  `meth:active-currency-strategies`). Entries 671 to 681.
+- Coverage: one new topic (`topic:stochastic-calculus`) and ten new neutral objectives, all covered (decision E1). The
+  denominator changes from 424 to 434: 434/434 objectives covered. Outline items unchanged at 1,030/1,030; the new
+  objectives have no outline items. Newly covered objectives: 10, a shortfall of 35 against the standing 45-objective
+  preference (decision E2): the library-gap programme has about 20 verified objectives in total (Batch L1, the
+  proposed Batch L2 and P10), L2 is frozen only after the C0 discovery task, and padding is not allowed. No backlog
+  item was created; the plan's Section 8 already holds B1-B11.
+- Sources actually read: Hull, *OFOD* 11th Global ed. (chaps. 14, 15, 19, 21, 26, 27, 28) and Wilmott, *PWOQF* 2nd ed.
+  (chaps. 2, 4, 7, 10, 12, 17, 23, 25, 47, 66, 77, 78, 80). No curriculum, workbook, CQF or CAIA text was used or cited.
+- Numerical scripts: five new (`stochastic-calculus-checks.py`, `numerical-pricing-checks.py`,
+  `exotic-option-checks.py`, `volatility-mismatch-hedging-check.py`, `kelly-check.py`) and one extended
+  (`inference-simulation-checks.py`); `make examples` now runs 111 scripts. Every acceptance range in
+  `implementation_plan_v2.md` Section 6 (as corrected for R2 and R3 before running) passed without changing a seed or
+  tolerance. Failures during development were in checks of my own beyond the plan, recorded under P2 and P3.
+- Repository checks (2026-10-21): `make source-check` passed (lock, lint, format, compendium checker 0 problems,
+  coverage 0 problems, 36 tests, 111 scripts); `make pdf` built 430 pages with no overfull boxes and no undefined
+  references or citations. One underfull box (badness 2277) in the first paragraph of
+  `common-toolkit/statistical-inference.tex` is pre-existing: a build of `2b89791` in a temporary worktree shows the
+  same box with the same badness. The first PDF build failed on a bracket inside an entry's optional title
+  (`$[W]_T=T$`); the title was reworded. Rendered pages of the three new topic files and the edited entries were
+  inspected.
+- Limits: all examples are synthetic and test the methods under their models, not markets. Hull and Wilmott are cited
+  for papers that were not read (Longstaff-Schwartz, Andersen-Broadie, Broadie-Glasserman-Kou, Kemna-Vorst, Carr,
+  Henrard). Editorial coverage only; human review of the ten entries is outstanding. Nothing was committed.
+
+**Post-implementation audit corrections, 21 October 2026.** An audit of the uncommitted Batch L1 (findings L1-F1 to
+L1-F5) reran the six affected scripts and both checkers, all passing, and found mathematical assumptions the checks did
+not cover. The counterexamples were reproduced before any edit, and the file hashes matched the audited state. The owner
+authorised the necessary changes to the affected examples and acceptance criteria (`implementation_plan_v2.md`, P3-P5
+and *Batch L1 post-implementation audit corrections*). No seed was changed and no tolerance loosened; the results
+recorded above are kept as the history of the first implementation.
+- L1-F1, `res:kelly-growth-optimal-fraction`. The daily-rebalancing check ran at $f=0.75$, 1.5 and 3 and called the
+  80-node quadrature value exact. For $f>1$ the one-day gross factor $(1-f)e^{r\Delta t}+fR$ is nonpositive when
+  $Z\le-87.21$ ($f=1.5$) or $Z\le-32.20$ ($f=3$), probabilities of about $10^{-1654}$ and $10^{-227}$: not zero, so
+  $E[\ln W]$ is undefined, and the quadrature nodes and the 20,000 paths simply missed the tail. The earlier biases
+  $-8.9\times10^{-7}$ and $-1.00\times10^{-4}$ at $f=1.5$ and 3 are therefore withdrawn. The script now shows the
+  negative gross factor for both levered fractions, checks that $f=1$ (no trade) gives $\mu-\tfrac12\sigma^2=g(1)$ to
+  $10^{-12}$, and tests daily rebalancing at $f=0.25$, 0.5 and 0.75 with the same seed 20261042 and criteria:
+  quadrature 0.033751, 0.045001, 0.053750 a year; simulated 0.03389 (s.e. 0.00011), 0.04529 (0.00022), 0.05418
+  (0.00033); biases $+8.74\times10^{-7}$, $+6.94\times10^{-7}$, $+2.79\times10^{-7}$; refinement ratios 0.500. New
+  convergence criterion: 40-, 80- and 160-node rules and adaptive `scipy.integrate.quad` agree within $10^{-10}$ and
+  within 1/1,000 of the bias (largest difference $3.0\times10^{-14}$). The continuous leveraged identities and exact
+  sampling are unchanged. The entry's Conditions, Practice and Pitfalls explain why continuous rebalancing keeps wealth
+  positive and discrete leveraged rebalancing needs a ruin or margin model.
+- L1-F2, `res:delta-hedging-volatility-mismatch`. The Conditions had dropped $\Gamma^i\ge0$ from the claim that
+  $\sigma>\tilde\sigma$ gives the implied-volatility hedge a positive total. Restored in Statement, Conditions and
+  Pitfalls; a deterministic check and Practice item add a unit cash-or-nothing call ($S_0=120$, $K=100$, $r=5\%$,
+  $q=0$, $T=1$): 0.8141 at 20 percent and 0.6980 at 30 percent, $V^a-V^i=-0.1160$; gamma $+0.00071$ at $S=80$ and
+  $-0.00047$ at $S=120$, matched by a finite difference. The vanilla simulation and its results are unchanged.
+- L1-F3, `meth:asian-option-valuation`. Hull's text layer, p. 626, reads "tend to be less expensive than regular
+  options" (rechecked); the entry had written "are cheaper". It now quotes Hull, says that averaging moves the forward
+  as well as the dispersion, and keeps the AM-GM ordering. A deterministic negative-carry check ($S_0=100$, $K=60$,
+  $r=2\%$, $q=8\%$, $\sigma=20\%$, 12 dates excluding $S_0$): vanilla 33.5611, geometric Asian 35.7601, arithmetic at
+  least $e^{-rT}(E[S_{\text{ave}}]-K)=36.0876$. The positive-carry Practice item now says "with these inputs".
+- L1-F4, `def:brownian-motion-quadratic-variation`. Pitfalls wording: variance is proportional to elapsed time and
+  standard deviation to its square root. No check changed.
+- L1-F5, `meth:digital-option-valuation`. The example said the hedge "reverses" across the strike; the one-day delta
+  is 0.2530, 0.2533 and 0.2525 at 99.9, 100 and 100.1, positive throughout. The text now says the hedge changes size,
+  not sign, while gamma changes sign near the strike; a deterministic check was added. It draws no random numbers, so
+  the seed sequence of the Monte Carlo checks is unchanged.
+- Objectives unchanged: the same ten, all covered; 434/434 objectives and 1,030/1,030 items. Coverage example strings,
+  entry-evidence reviews and the pathway summaries for these entries were updated to match.
+
+## Library gap-filling, Batch L2, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-batch-l2`, created from `c688d54` on `codex/library-gap-batch-l1`
+(L1 commit `5e0578e`, then the C0 and corrected L2 proposal `c688d54`); the working tree was clean and no newer work
+was found. The 27 files of `5e0578e` were confirmed by count, and `implementation_plan_v2.md` at `5e0578e` has the
+audited SHA-256 `afb74d11…8e14`; the earlier audit's per-file manifest is not in the repository or the session
+scratchpad, so its byte match was not re-established here. Coverage before: 434/434 objectives and 1,030/1,030 outline
+items. Scope: `implementation_plan_v2.md` Section 7 as frozen by the owner on 2026-10-21 (decisions L2-D0 to L2-D6:
+local only; P6-P9 and P11a-c; the rate-tree CVA as an explicitly labelled original derivation; P10 deferred to L3; both
+optional Hull extensions; about 11 objectives). Before any L2 script was written, two criteria were corrected with the
+owner's authorisation and recorded in the plan ("Batch L2 freeze corrections"): P8's requirement that every tranche's
+finite-versus-large-pool gap shrink from 250 to 1,000 names (counterexample reproduced: in pool-loss units
+$6.2278\times10^{-6}$, $1.0587\times10^{-5}$, $5.0830\times10^{-6}$ for a 0.2-2 percent tranche) became a reported
+result; P9's mean fitted GPD shape over 500 samples became a diagnostic (reproduced: 0.237276, error 0.012724 against
+3 s.e. 0.010503). Delegation to other models named by the implementation skill was not available in this session; the
+work was done directly.
+
+**P6, short-rate and forward-rate models** (`compendium/rates-credit-mortgages/arbitrage-free-valuation.tex`: new
+`mod:affine-short-rate-models` and `mod:hjm-forward-rate-models`; `mod:term-structure-models-simulation` extended).
+- Read: Hull, *OFOD* 11th Global ed. (git-ignored copy, SHA-256 `8bc6e2f0…b482`), chap. 29, secs. 29.2-29.3 (pp.
+  697-702), chap. 31 (pp. 719-731), chap. 32, secs. 32.1-32.5 (pp. 732-741) and p. 747, chap. 33, secs. 33.1-33.2
+  (pp. 755-764); Wilmott, *PWOQF* 2nd ed., chap. 30, secs. 30.6-30.8 (pp. 515-520), chap. 31 (pp. 525-531), chap. 37,
+  secs. 37.1-37.13 (pp. 609-619); the Handbook (Fabozzi, 9th ed., SHA-256 `ece05686…b19f`), chap. 37, pp. 855-864.
+  The plan listed Hull chaps. 31-33 and Wilmott chaps. 30-31 and 37; Hull sec. 29.2 was added for backward-looking
+  rates. Not read: `gap-rates-backward-term-rates` (not held; Further reading).
+- Discrepancies. The plan asked whether Handbook chap. 37 (pp. 859-862) describes calibrating Monte Carlo paths by a
+  drift adjustment. It does not: it says that in an HJM model the curve is an input, so simulated paths reproduce zero
+  prices "on average" (p. 863), and prefers a calibrated LIBOR market model for MBS. The extension of
+  `mod:term-structure-models-simulation` therefore rests on Wilmott's yield-curve fitting (chap. 31, a time-dependent
+  drift chosen to match market discount factors) and Hull's Black-Karasinski and shifted forms; the Handbook is cited
+  only for the "on average" statement. Wilmott's CIR positivity condition ($\eta>\alpha/2$ in his notation) is Hull's
+  $2ab\ge\sigma^2$; Hull adds that otherwise the rate "occasionally touches zero" (p. 724). The decomposition
+  $r=x+\alpha$ with $\alpha=F+\tfrac{\sigma^2}{2a^2}(1-e^{-at})^2$ and the variance of $\int x$ are standard
+  derivations, not printed in either source; they are stated as Interpretation and checked (the mean rate from Hull's
+  $\theta$ by quadrature equals the closed form to $10^{-10}$).
+- Data: GSW Svensson parameters for 2026-09-30 from `feds200628.csv` (`fed-gsw-data`; file SHA-256
+  `72864350…335c`, git-ignored). The six parameters are written in the script, which rereads the row and compares
+  the published SVENY01-SVENY30 (largest gap $4.75\times10^{-5}$ percentage points, inside the 4-decimal rounding)
+  when the file is present.
+- Checks (`notes/artefacts/short-rate-models/short-rate-model-checks.py`; seeds 20261061 Hull-White, 20261062 CIR exact,
+  20261063 CIR Euler against exact, 20261064 caplet, written in the script before its first run). The first attempt
+  stopped before any statistical check: under `-W error` an unclosed file and a SciPy `IntegrationWarning` from
+  quadrature tolerances at $10^{-14}$ relative were raised (coding errors; the file is now closed and quadrature
+  tolerances are $10^{-12}$ relative). The complete run then passed every predetermined criterion:
+  - Vasicek 0.846849 reused; CIR five-year zero 0.835234, which solves the bond PDE (residual $2\times10^{-10}$).
+    Exact non-central chi-square paths (200,000): 0.835325 at $h=1/8$ and 0.835319 (s.e. 0.000104) at $h=1/16$, where
+    halving changed the price by $5.6\times10^{-6}<0.1$ s.e.; $z=+0.82$ (criterion 3 s.e.). Exact minimum
+    $2.3\times10^{-4}$. With $\sigma=25$ percent (Feller fails), untruncated monthly Euler went negative on 7,052 of
+    10,000 paths; exact sampling's minimum was $1.2\times10^{-10}$.
+  - Hull-White ($a=0.1$, $\sigma=1$ percent, illustrative): zero prices with Hull's $\theta$ integrated numerically in
+    Wilmott's eq. (31.2) equal the GSW discount factors to $2\times10^{-16}$ (criterion $10^{-10}$). Exact joint
+    sampling of $(x,\int x)$ on 100,000 paths: largest $|z|$ 1.16 (at 8 years) over the 30 maturities (criterion 4
+    s.e.). Trapezoid diagnostic: the 30-year discount factor moved by $1.5\times10^{-6}$ from monthly to half-monthly
+    (0.1 s.e. is $2.4\times10^{-5}$), so the trapezoid result is usable but was not needed. 0.85 percent of paths have
+    a negative short rate at 30 years.
+  - HJM: the numerically integrated drift with constant volatility equals $\partial F/\partial t+\sigma^2t$ at 1, 5
+    and 12 years, and with $\sigma e^{-a(T-t)}$ reproduces Hull's $\theta$, both to $10^{-10}$.
+  - Forward market model: an at-the-money caplet on the year-5 to year-6 annual forward, $\Lambda=20$ percent, 100,000
+    paths under the rolling spot measure with monthly sub-steps: 70.023 bp (s.e. 0.388) against Black's 70.195 bp,
+    $z=-0.44$; the rolled numeraire reprices the six-year zero ($z=+0.22$).
+- Objectives: `objective:apply-affine-short-rate-models` and `objective:explain-hjm-drift-forward-market-model`
+  (`topic:arbitrage-free-bond-valuation`, planned batch 8), covered. The extension adds no objective.
+
+**P7, counterparty exposure and xVA** (new topic file `compendium/corporate-credit-capital/counterparty-xva.tex`:
+`def:counterparty-exposure-measures`, `meth:credit-valuation-adjustment`, `def:wrong-way-risk`; `meth:risky-bond-cva`
+extended under decision L2-D3).
+- Read: Hull, *RMFI* 6th ed., chap. 18 (pp. 393-411); Hull, *OFOD*, chap. 9 (pp. 216-226) and sec. 24.7 (pp. 571-577;
+  the plan listed chap. 9, which points to chap. 24 for the calculation); Gregory, *The xVA Challenge*, 3rd ed. (Wiley
+  2015, ISBN 978-1-119-10941-9, owner's library, SHA-256 `b2b005d1…f394f`, printed = PDF $-27$; new source
+  `gregory-xva-challenge-2015` and reading note), secs. 7.1.6-7.4.4, 11.2-11.3.7, 14.2.3-14.3.1, 14.6.3-14.6.5, 15.2.1
+  and 17.1-17.4.2. Not read: Gregory chap. 16 (MVA, KVA; those terms rest on Hull and RMFI), chaps. 10 (exposure
+  simulation, contents only) and the capital chapter 8 (pre-reform; P10 is deferred to L3). For L2-D3, the tree
+  (Handbook chap. 36, pp. 831-838) and RMFI's CVA formula (pp. 395-396) were reread before the extension was written.
+  Smith (2017) is not held and was not read.
+- Discrepancies. OFOD's Example 24.6 defines $v_i$ to include $1-R$ (92.67, 130.65) and RMFI's Example 18.3 does not
+  (132.38, 186.65); both give CVA 5.77 (reproduced). Gregory signs CVA negative. Gregory and Hull describe the regulators'
+  alpha multiplier; it is not used here, pending the Batch L3 currency review.
+- Checks (`notes/artefacts/counterparty-xva/counterparty-xva-checks.py`; seeds 20261071 wrong-way Monte Carlo,
+  20261072 swap paths, 20261073 PFE bootstrap, written before the first run). The first complete run passed every
+  predetermined criterion:
+  - Reproduced: Gregory's normal EE and PFE (2.1666 and 6.6527; 2.7912 and 11.3054) and his square-root CVA (0.1999%,
+    0.1929% exact, 0.1922% averaged); the gold forward in both books.
+  - Wrong-way example (200,000 draws): quadrature 0.03253, 0.02097, 0.01197, 0.00550, 0.00159 at $\rho=-0.5$ to 0.5,
+    each within 3 s.e. (Monte Carlo 0.03206 s.e. 0.00039, 0.02055 0.00030, 0.01185 0.00021, 0.00536 0.00013, 0.00161
+    0.00006); independent value $0.01196827$ to $10^{-10}$; strictly decreasing.
+  - Swaps under Hull-White on the GSW curve (40,000 paths; same model and curve as P6): $V(0)=2.8\times10^{-15}$; the
+    discounted ex-coupon value matches the curve's forward value at five dates ($|z|\le1.51$); EE peaks at 1.82 at
+    1.96 years (interior); netting dominance holds on every path and date; 97.5% PFE at the peak 7.93 (bootstrap s.e.
+    0.053).
+  - Collateral (two-way cash, zero threshold and MTA, no IM, $C(t)=V(t-\delta)$, $\delta=10/252$): $E_c=E$ on the nine
+    daily dates before $\delta$; the one-way variant never exceeds $E$; $E_c\le|V(t)-V(t-\delta)|$ on every path.
+    Payment crossings: exposure dates are mid-month, and the script asserts that no payment falls in $(t-\delta,t]$ for
+    the 5- and 10-day lags. Four 20-day windows (12.5, 24.5, 36.5 and 48.5 months) cross an annual payment, so those
+    dates are left out of the lag diagnostic for all three lags (55 common dates). Diagnostic: mean collateralised EE
+    0.0870, 0.1232 and 0.1746 at 5, 10 and 20 days, 6.1, 7.2 and 8.1 percent above $\sigma_{\Delta V}/\sqrt{2\pi}$ on
+    average. On 52,866 path-dates the bank had posted and $V$ turned positive; mean $\mathrm{EE}_c$ never exceeded EE.
+    CVA (hazard 2%, $R=40\%$): 0.0601 uncollateralised and 0.0066 collateralised per 100 notional;
+    $E[D(0,t)E(t)]-P(0,t)\mathrm{EE}(t)$ up to 0.0445.
+  - Rate tree (original derivation): calibrated rates match Exhibits 36-6 to 36-8; node-weighted and pathwise CVA of
+    an original 5% four-year bond (hazard 1.5%, $R=40\%$ of par) both 3.296402, to $10^{-10}$; a default-free floater is
+    at par at every node; the discount margin of a 50 bp risky floater (hazards 1-2.5%) is 112.07 bp and reprices the
+    fair value 97.8397 to $10^{-8}$.
+- A criterion met trivially. The plan's "as $\sigma\to0$ the tree CVA tends to the forward-rate calculation" holds to
+  $10^{-15}$ at every volatility (0.2, 0.1, 0.01, $10^{-4}$), because for a bond whose exposure is linear in the tree
+  values the state-price sum of value plus coupon is the curve value of the remaining flows. The criterion therefore
+  confirms the implementation but does not test convergence. A check of my own was added after the first run to show
+  where volatility matters: an at-market four-year payer swap on the same tree has CVA 0.0426, 0.0518 and 0.0680 at
+  $\sigma=10^{-4}$, 10 and 20 percent (criterion: strictly increasing). The entry states the identity and the swap
+  result; it does not attribute a volatility effect for bonds to any source.
+- Objectives: `objective:measure-counterparty-exposure`, `objective:calculate-derivative-cva` and
+  `objective:assess-wrong-way-risk` (`topic:credit-models`, planned batch 8), covered. The reading showed wrong-way
+  risk as a separate idea (its own chapter in Gregory, a section in RMFI, conditional exposure and its own models), so
+  the plan's upper count of three was used. The tree extension adds no objective.
+
+**P8, default correlation** (new topic file `compendium/securitised-structured-credit/default-correlation.tex`:
+`mod:gaussian-copula-default-correlation`, `meth:tranche-loss-base-correlation`; a See also link added to
+`meth:credit-liquidity-tail-risk`, whose WCDR formula is linked, not restated).
+- Read: Hull, *OFOD*, secs. 24.8-24.9 (pp. 577-582) and 25.8-25.11 (pp. 599-611); Hull, *RMFI*, secs. 9.5-9.6.3 (pp.
+  202-213); Basel Framework CRE31 (all paragraphs, with the CRE31.5-31.6 formula images rendered and read) and CRE99.1-99.3
+  with Table 1, versions effective 1 January 2023 (last updated 27 March 2020, status current), retrieved from bis.org on
+  2026-10-21 (new source `basel-framework-cre-2026` and reading note; HTML copies in the git-ignored
+  `reading_materials/library-gap-l2-20261021/`). The first request for `chapter/CRE/31.htm` returned the CRE index
+  page; the chapter was fetched with explicit in-force and publication dates. Not read: Li (2000), Vasicek (1987),
+  `wide-nelsen-copulas` (Further reading).
+- Checks (`notes/artefacts/default-correlation/default-correlation-checks.py`; seed 20261081, inputs PD 2%, rho 0.3,
+  LGD 60% and the CDX tranches fixed before the first run). The first attempt stopped before any statistical check:
+  NumPy's Gauss-Hermite rule raised a divide-by-zero warning when the node count was doubled past about 150, and the
+  near-step conditional binomial integrand had not converged at 128 nodes (coding/method issue). The integration was
+  changed, within the plan's "adaptive quadrature or nodes doubled" rule, to composite Gauss-Legendre on [-10, 10] with
+  panels doubled until the change is below $10^{-10}$ (at most 640 nodes); an adaptive-quadrature cross-check of the
+  3-7% tranche agrees to 12 decimals. No seed, input or tolerance changed. The complete run passed every criterion:
+  - Reproduced: Hull's basket (86.7380%, 0.00344%); Example 25.2 ($A=4.2845$, $B=0.0187$, $C=0.1497$, 347.8 bp
+    against 4.2846, 0.0187, 0.1496 and 348 bp, within the 5e-4 and nearest-basis-point tolerances); RMFI Table 9.5 cells
+    (0.0062, 0.4168, 0.9699, 0.3644, 0.0799 against 0.006, 0.417, 0.970, 0.364, 0.080); Example 9.2 (0.12824); CRE99
+    Table 1 corporate risk weights at ten PDs from the CRE31.5 formula, largest gap 0.0048 points (82.06% at 1%).
+  - The IRB conditional default rate equals the WCDR to $10^{-12}$ (0.140273 at PD 1%, $R=0.1928$; 0.190259 at 2%).
+  - Large-pool tranche losses sum to 0.012000000000000. Exact finite pools converge and also sum to PD x LGD. The
+    1,000-name simulation (50,000 scenarios) is within 3 s.e. of the exact value for every tranche ($z$ from $-1.71$ to
+    $+1.82$).
+  - Reported, not tested (L2 freeze correction): exact minus large pool at 250, 500 and 1,000 names is $-1.58$,
+    $-0.78$, $-0.39\times10^{-4}$ (0-3%), $+0.98$, $+0.48$, $+0.24\times10^{-4}$ (3-7%), and similarly halving for the
+    other tranches. For these tranches the gaps did shrink monotonically; the freeze counterexample (a 0.2-2% tranche)
+    shows that this is not guaranteed.
+  - Base correlation on a synthetic equal mixture of $\rho=0.1$ and 0.6 (checks of my own, fixed before running):
+    base correlations reprice every 0-$d$ loss to $9\times10^{-18}$ and their differences reproduce every tranche;
+    reported: base correlations 0.3347 to 0.5284; two compound correlations for 3-7%; a 4-8% tranche at 0.001202 by
+    interpolated base correlation and 0.001423 by linearly interpolated 0-$x$ loss against 0.001242; 0.25%-wide
+    tranches from interpolated base correlations break the decreasing-rate condition three times (largest
+    $1.8\times10^{-5}$). Linear interpolation of the loss curve was worse than base correlation here; the entry
+    reports Hull's recommendation (interpolate the loss curve with the concavity imposed) without claiming the crude
+    linear version is better.
+- Objectives: `objective:model-default-correlation-gaussian-copula` and `objective:value-tranches-base-correlation`
+  (`topic:securitisation`, planned batch 8), covered.
+
+**P9, extreme value theory** (new `meth:extreme-value-tail-estimation` in
+`compendium/portfolio-construction-risk/risk-models.tex`; the Pitfalls sentence of `meth:var-es-estimation-methods`
+now links to it).
+- Read: Hull, *RMFI*, sec. 8.4 (pp. 170-172) and secs. 12.3-12.6.1 (pp. 266-276); McNeil, Frey and Embrechts,
+  *Quantitative Risk Management*, 1st ed. (Princeton 2005; owner's library, SHA-256 `a27c34f4…6c7d`, printed = PDF
+  $-16$; new source `mcneil-frey-embrechts-qrm-2005` and reading note), secs. 7.1-7.1.2 and 7.2.1-7.2.6 with Example
+  7.29; Wilmott, sec. 19.8 (pp. 339-341).
+- Source gap corrected. The plan listed `s7-qrm`, `w2-mcneil-frey` and `wide-embrechts-extremal` as not held. A
+  library search during the package found the 2005 first edition of QRM (the catalogue key is the 2015 revised
+  edition, which is not held), so it is registered under its own key and cited. RMFI does not give the Hill estimator;
+  QRM's eq. (7.23) supplies it. Hill (1975), `w2-hill-estimator`, could not be obtained (Project Euclid answered the
+  scripted request with a bot-protection page); McNeil and Frey (2000), Embrechts et al. (1997) and the 2015 QRM
+  were not read. All four are Further reading.
+- Definition. The plan fixed $H_k$ with the $(k+1)$-th largest observation as threshold; QRM's standard form uses the
+  $k$-th and notes that some versions use the $(k+1)$-th. The plan's form was kept; it makes the Rényi benchmark exact.
+- Checks (`notes/artefacts/extreme-value/extreme-value-checks.py`; seeds as listed in the script, fixed before the first
+  run). First complete run: every plan criterion passed. Pareto: mean $H_k$ 0.25046 (s.e. 0.00035), s.d. 0.015699
+  against 0.015811 (within 5%). $t_4$ functional 0.3488984 by quadrature; $n=10^6$ Hill 0.34961 (s.e. 0.00140, within
+  3 s.e.). Exact GPD ($k=250$): ML $\xi=0.21563$, $\beta=0.91990$, score $-6.8\times10^{-14}$ and 0; log-likelihood
+  $-283.0351887074$ against SciPy's $-283.0351887885$. POT formulas for a Pareto tail exact to $8.9\times10^{-16}$.
+- A check of my own failed on the first run and was diagnosed. Reproducing RMFI's example with the printed
+  $\beta=110.46$, $\xi=0.354$ gave 99.9% and 99.97% VaR of 1,094.31 and 1,756.66 against the printed 1,094.6 and
+  1,757.4 (ES 1,777.29 against 1,778.1). RMFI's own exponent reads $-1/0.3545$ (p. 274): the book computed with the
+  unrounded Solver estimate. The cause is print rounding, not the formula. The check was restated after diagnosis: it
+  infers $\xi$ from the printed 99.9% VaR (0.35413, which rounds to 0.354) and requires that single value to reproduce
+  the other six printed figures to their printed precision. It passes.
+- Diagnostics, reported only (L2 freeze correction for the first): ML shape over 500 exact-GPD samples of 250 (seed
+  20261094) 0.236875 (s.e. 0.003799), $-0.0131$ from 0.25; the freeze reproduction with planning seed 20261021 gave
+  0.237276. Population GPD fit to $t_4$ excesses at the 95th percentile $\xi=0.1917$, $\beta=0.8640$. On one
+  $n=5{,}000$ $t_4$ sample: Hill 0.3391, GPD 0.2002; 99%/99.5% VaR 3.5793/4.3992 (true 3.7469/4.6041), ES
+  4.9580/5.9832 (true 5.2206/6.3248). Hill bootstrap intervals (200 samples, 1,000 resamples) covered 0.348898 in 190
+  and 0.25 in 0 of 200; GPD shape interval [0.0231, 0.3339]. Threshold sensitivity at 90, 95, 97.5 and 99%: Hill 0.3968,
+  0.3391, 0.3078, 0.2814 against functionals 0.4161, 0.3489, 0.3129, 0.2866; GPD 0.1695, 0.2002, 0.2296, 0.2166 against
+  0.1626, 0.1917, 0.2104, 0.2258. Two-step on GARCH(1,1)-$t_6$ (the generator of `var-backtest-check.py`, own seed):
+  99% conditional VaR 0.01368 (true 0.01372), ES 0.01687 (true 0.01761); 99.5% VaR 0.01588 (0.01619), ES 0.01910
+  (0.02042); residual GPD shape 0.0092 (the $t_6$ asymptotic value is 1/6). Runtime about 25 s.
+- No empirical EVT claim (backlog B9). The two-step method is taught inside the same entry; the reading did not show
+  it to be a separate idea, so one objective: `objective:estimate-tail-risk-extreme-value`
+  (`topic:market-risk-measurement`, planned batch 8), covered.
+
+**P11a, correlation and independence tests** (new `meth:correlation-independence-tests` in
+`compendium/common-toolkit/statistical-inference.tex`).
+- Read: OpenStax, *Introductory Statistics* 2e, secs. 11.3 and 12.4 (fetched renderings, 2026-10-21; the fetch tool
+  returns a summary with short quotations, not the full text, which limits the record to the formulas, conditions
+  and example numbers it reported); NIST Dataplot, "Rank Correlation Independence Test" (new source
+  `nist-dataplot-rank-correlation`). The plan named `statistical-methods-handbook` (the NIST e-Handbook) for rank
+  correlation; a search found no Spearman section in it, and the Dataplot reference page was used instead. Not read:
+  Conover (1999).
+- Checks (`notes/artefacts/inference-simulation/correlation-independence-checks.py`; seeds 20261101 size study,
+  20261102 formula data, 20261103 overlap diagnostic, fixed before the first run). All criteria passed on the first
+  run: OpenStax $p=0.02615$ (prints 0.026) and six critical values; Example 11.6 $\chi^2=12.9909$, df 4, $p=0.01132$;
+  SciPy agreement to $10^{-12}$ (Pearson $p$-value, Spearman with and without ties, chi-square without continuity
+  correction); transforms (strictly increasing invariance, sign change for one decreasing transform, invariance for
+  two, ties included); the shortcut differs with ties (0.930070 against 0.928832) and agrees without. Size, 20,000
+  replications of $n=30$: Pearson 4.84%, Spearman ($t$ approximation, the predetermined test) 4.95%, both within
+  $5\pm0.5$; NIST's normal approximation 4.78% (reported). Diagnostic of my own: an AR(1) signal ($\phi=0.95$) and
+  independent returns, $T=500$, 2,000 replications: rejection 6.5% with one-day and 62.9% with overlapping 20-day
+  returns.
+- Objective: `objective:test-correlation-independence` (`topic:statistical-inference`, planned batch 8), covered. No
+  outline item maps to it (the 2026/2027 outlines dropped this module).
+
+**P11b, mean-CVaR optimisation** (new `meth:mean-cvar-optimisation` in
+`compendium/portfolio-construction-risk/portfolio-construction-models.tex`).
+- Read: Rockafellar and Uryasev, "Optimization of Conditional Value-at-Risk" (`s6-cvar`), the author preprint dated 5
+  September 1999 (26 pp.) at the catalogue's link, retrieved 2026-10-21 (SHA-256 `34aff216…42f4`; new reading note).
+  The catalogue lists the 2000 *Journal of Risk* article; locators are to the preprint. Not read: Rockafellar and
+  Uryasev (2002) for general distributions.
+- Checks (`notes/artefacts/portfolio-construction/mean-cvar-check.py`; problem and seeds fixed before the first run;
+  seeds 0-9 had been used in a planning reproduction and are not unseen data). The first run used HiGHS dual simplex
+  with tight tolerances and was stopped after several minutes without output (100,000-scenario LPs); timing one LP
+  showed interior point with crossover at 10 s against 32 s for dual simplex, with the same solution, so the solver
+  was switched (no criterion changed). In the complete run every plan criterion passed: LP objective equals the
+  fractional-tail-mass CVaR (0.1678292649 at $n=10{,}000$; 0.1961604624 at $n=250$, 97.5%, tail mass 6.25); the 1%
+  grid on the feasible line ($w_1=w_3$) has best 0.167834 against the LP's 0.167829 (allowance 0.006414); normal
+  equivalence against the population portfolio (0.321429, 0.357143, 0.321429): largest gap 0.0078 at 100,000
+  scenarios (criterion 0.025), mean 0.0135 at 10,000 and 0.0035 at 100,000. Reported: a negatively skewed third asset
+  (skewness $-3.63$) moves weights from (0.3388, 0.3224, 0.3388) to (0.2740, 0.4520, 0.2740), CVaR 0.13699 to 0.12496.
+- A check of my own failed and was diagnosed: reproducing Table 3 with a $5\times10^{-7}$ tolerance gave 0.4520113,
+  0.1155732, 0.4324155 against the printed 0.452013, 0.115573, 0.432414. The printed weights' mean return is
+  0.0109999956, so they are a numerical QP solution that misses the constraint by about $4\times10^{-9}$; the exact
+  KKT solution is the optimum. The tolerance was widened to $5\times10^{-6}$ with the constraint error reported. Table
+  4's VaR and CVaR reproduce to $5\times10^{-6}$. Runtime about two minutes.
+- Objective: `objective:construct-minimum-cvar-portfolio` (`topic:portfolio-risk-return`, planned batch 8), covered.
+
+**P11c, buying on margin** (new `meth:margin-purchase-leverage` in
+`compendium/portfolio-risk-financing/securities-lending.tex`).
+- Read (current texts, retrieved 2026-10-21): 12 CFR 220.4 and 220.12 from the eCFR versioner (title 12 up to date as
+  of 19 October 2026, last amended 2 October 2026; the first unauthenticated request returned an error asking for
+  compression, repeated with it); FINRA Rule 4210(b)-(d) on finra.org, version from 4 June 2026 (unchanged since the
+  17 October reading). New reading notes for `ecfr-12cfr220` and `finra-rules-2026`; the two `sources.tex` entries
+  now record the reread. The leverage, levered-return and call-price formulas are derivations (Interpretation) with
+  the assumptions corrected after the L2 audit. The 4210(g) portfolio-margin text was not read, and a draft clause
+  about portfolio margining was removed from the entry for that reason.
+- Checks (`notes/artefacts/short-term-funding/margin-purchase-check.py`; deterministic, original inputs). All passed on
+  the first run: static call prices 26.6666666667 (long, 25%) and 46.1538461538 (short, 30%) equal the roots to
+  $10^{-12}$; the 30% leg binds (13.85 a share against the \$5 floor). Long ledger (6.5% act/360, \$0.40 dividend
+  credited 15 April): loan 20,235.0219, call price 26.980029 (+0.313363 against static). Short ledger (2% rebate, 0.5%
+  borrow fee, dividend owed, \$15 commission): credit 59,878.3333, call price 46.060256 ($-0.093590$). The levered
+  return identity holds to $10^{-12}$ (16.00% asset, 28.6507% equity; at \$34, $-14.00$% and $-31.30$%).
+- Objective: `objective:calculate-margin-leverage-call-price` (`topic:equity-securities-markets`, planned batch 8),
+  covered.
+
+**Decision L2-D5, two optional Hull extensions** (no objective).
+- Read: Hull, *OFOD*, sec. 21.3 (pp. 480-483, known dividends in trees, Example 21.5), sec. 15.12 (pp. 360-363,
+  early exercise of American calls and Black's approximation), secs. 11.5-11.6 and 11.8 (pp. 258-263), and sec. 29.3
+  (pp. 699-705, already read for P6). C0 had located sec. 21.3 without reading it; the passages were read before
+  writing.
+- `meth:multi-period-binomial-valuation`: known dollar dividends via the $S^*$ tree and Hull's early-exercise
+  conditions. `meth:black-model-rates-currencies`: the receiver swaption, payer-receiver parity and the callable bond
+  as a straight bond less a receiver swaption (the last as an Interpretation of Business Snapshot 29.2).
+- Checks (`notes/artefacts/option-valuation/dividend-tree-swaption-checks.py`; seed 20261121). Example 21.5:
+  4.4404, 4.2084, 4.2143 at 5, 50 and 100 steps (printed 4.44, 4.208, 4.214). Original call (bound 0.1124): with
+  $D=0.05$ no node exercises and American equals European (4.100852); with $D=1.50$ the American is 3.8544 against
+  3.3125 and all exercise falls at 0.4545, the last step before the ex-date. Example 29.4 payer 2.1908; receiver
+  2.2028; parity to $10^{-12}$; the call-at-par and receiver payoffs agree on 1,000 random curves (largest gap
+  $2\times10^{-14}$). Diagnostic: Black's approximation first printed 3.3119 because the $t_n$ leg wrongly deducted the
+  dividend (my coding error, corrected before use); correctly computed it is 3.9144, above the tree's 3.8544, because
+  it puts the volatility on the whole stock price rather than on $S^*$ (Hull, p. 360, n. 13). It is reported, not
+  tested.
+
+**Batch completion.**
+- Scope delivered as frozen: P6, P7, P8, P9 and P11a-c complete; the rate-tree CVA and risky floater (L2-D3) and the
+  two optional Hull extensions (L2-D5) done; P10 deferred to Batch L3 (L2-D4). No package is partial. Eleven new entries, as estimated
+  (`mod:affine-short-rate-models`, `mod:hjm-forward-rate-models`, `def:counterparty-exposure-measures`,
+  `meth:credit-valuation-adjustment`, `def:wrong-way-risk`, `mod:gaussian-copula-default-correlation`,
+  `meth:tranche-loss-base-correlation`, `meth:extreme-value-tail-estimation`, `meth:correlation-independence-tests`,
+  `meth:mean-cvar-optimisation`, `meth:margin-purchase-leverage`) in two new topic files (`corporate-credit-capital/counterparty-xva.tex`,
+  `securitised-structured-credit/default-correlation.tex`) and four existing ones. Extended: `mod:term-structure-models-simulation`,
+  `meth:risky-bond-cva`, `meth:multi-period-binomial-valuation`, `meth:black-model-rates-currencies`; link-only edits to
+  `meth:var-es-estimation-methods` and `meth:credit-liquidity-tail-risk`.
+- Coverage: eleven new objectives (P6 2, P7 3, P8 2, P9 1, P11 3), all covered, planned batch 8, no new topic; the
+  denominator moves from 434 to 445, all covered. Outline items unchanged at 1,030/1,030 (no outline item maps to the
+  new objectives). Newly covered objectives: 11, a shortfall of 34 against the standing 45-objective preference
+  (decision L2-D6). The library-gap programme's verified new ideas are nearly exhausted; most remaining gaps are depth
+  within covered objectives, which earn no count, and padding is not allowed.
+- New sources registered: `gregory-xva-challenge-2015`, `basel-framework-cre-2026`, `mcneil-frey-embrechts-qrm-2005`,
+  `nist-dataplot-rank-correlation`; reread and re-dated: `ecfr-12cfr220`, `finra-rules-2026`, `introductory-statistics-2023`.
+  Downloaded public texts (BIS CRE31 and CRE99 pages and formula images, the Rockafellar-Uryasev preprint, eCFR XML,
+  FINRA HTML) are kept in the git-ignored `reading_materials/library-gap-l2-20261021/`. The owner's library was read only.
+- Sources actually read: Hull, *OFOD* 11th Global ed. (chaps. 9, 11, 15, 21, 24, 25, 29, 31-33); Hull, *RMFI* 6th ed.
+  (chaps. 8, 9, 12, 18); Wilmott, *PWOQF* 2nd ed. (chaps. 19, 30, 31, 37); the Handbook (chaps. 36-37); Gregory, *The
+  xVA Challenge* 3rd ed.; McNeil, Frey and Embrechts, *QRM* 1st ed. (chap. 7); Rockafellar and Uryasev (1999 preprint);
+  OpenStax *Introductory Statistics* 2e (secs. 11.3, 12.4); NIST Dataplot; Basel Framework CRE31 and CRE99; 12 CFR 220;
+  FINRA Rule 4210. No curriculum, workbook, CQF or CAIA text was used or cited.
+- Source gaps remaining: Smith (2017) (tree-based CVA; not held, not read; the extension is an original derivation);
+  Hill (1975) (Project Euclid refused scripted access); McNeil and Frey (2000), Embrechts et al. (1997), the 2015 QRM,
+  `gap-rates-backward-term-rates`, `wide-nelsen-copulas`, Conover (1999), Gregory chap. 16. All are Further reading
+  or are cited only through the books that were read.
+- Numerical scripts: eight new (`short-rate-model-checks.py`, `counterparty-xva-checks.py`,
+  `default-correlation-checks.py`, `extreme-value-checks.py`, `correlation-independence-checks.py`,
+  `mean-cvar-check.py`, `margin-purchase-check.py`, `dividend-tree-swaption-checks.py`); `make examples` now runs 119.
+  Every predetermined plan criterion, as frozen with the two freeze corrections, passed without a change of seed,
+  input or tolerance. First-run failures were coding or method issues (P6 warnings, P8 Gauss-Hermite) or in checks of
+  my own (P9 RMFI rounding, P11b Table 3, the D5 Black-approximation diagnostic), each recorded above with its cause;
+  the P7 sigma-limit criterion holds trivially, as recorded.
+- Repository checks (2026-10-21): `make source-check` passed (lock, lint, format, compendium checker 0 problems,
+  coverage 0 problems, 36 tests, 119 scripts; about five minutes, of which P11b is about two). `make pdf` built 437
+  pages with no overfull boxes and no undefined references or citations; the one underfull box (badness 2277, first
+  paragraph of `common-toolkit/statistical-inference.tex`) is the pre-existing one recorded in L1. Rendered pages of the
+  new and edited entries (printed pp. 8, 70-73, 87-88, 91-93, 98-100, 181-182, 249-250, 255-256, 283-284) were
+  inspected; two short-tailed lines (a Notation formula on p. 71 and a tail-probability formula on p. 255) were moved
+  into displays and the PDF rebuilt with the same results.
+- Limits: all examples are synthetic or reproduce published examples, except P6's curve (GSW, a Treasury fitted
+  curve, not SOFR or OIS); no empirical claim about markets. Volatility parameters in P6-P7 are illustrative. US
+  margin rules and the Basel IRB formula are as retrieved on 2026-10-21. Editorial coverage only; human review of all
+  eleven entries and four extensions is outstanding. Nothing pushed; no PR.
+
+**Post-implementation audit corrections, Batch L2, 21 October 2026.** An audit of the committed Batch L2 (`cd55096`)
+reran the eight new L2 scripts with warnings as errors, the 36 tests, lint, formatting and both checkers (all passing;
+445/445 objectives, 1,030/1,030 items) and found four defects that those checks did not test (L2-F1 to L2-F4: three in
+P7 discounting and units, one in P11c rule scope). Starting state: branch `codex/library-gap-batch-l2` at `cd55096`,
+working tree clean, no newer work. The owner authorised a bounded correction pass: no seed, input or tolerance of an
+existing check was changed, the objective count and batch scope are unchanged, and the results recorded above are kept
+as the history of the first implementation.
+- L2-F1, the Hull-White discount factor in `counterparty-xva-checks.py` (audited line 257). The script used
+  $D(0,t)=P(0,t)\exp(+\tfrac12\mathrm{Var}(I_t)-I_t)$ with $I_t=\int_0^tx\,du$. Derivation: with $r=x+\alpha$ and
+  $E[x]=0$, the mean short-rate integral is $\int_0^t\alpha\,du=-\ln P(0,t)+\tfrac12\mathrm{Var}(I_t)$ (the P6
+  decomposition), so $D(0,t)=\exp(-\int\alpha-I_t)=P(0,t)\exp(-\tfrac12\mathrm{Var}(I_t)-I_t)$; equivalently, since
+  $I_t\sim N(0,\mathrm{Var}(I_t))$, $E[e^{-I_t}]=e^{\mathrm{Var}/2}$ and only the minus sign gives $E[D(0,t)]=P(0,t)$.
+  The old sign overstated every discount factor by $e^{\mathrm{Var}(I_t)}$, up to 0.29 percent at 4.96 years. P6's own
+  script integrates $\alpha$ separately and uses $\exp(-\int\alpha+\tfrac12\mathrm{Var})$ for bond prices, which is
+  correct, so P6 is unaffected. The fix is one helper, `disc`, used for every simulated date. Two deterministic checks
+  were added: $D(0,t)$ at $I=0$ equals $\exp(-\int\alpha)$ with $\int\alpha$ by quadrature at 0.5, 1.96 and 4.96 years
+  ($1.1\times10^{-16}$ relative, criterion $10^{-10}$; the old sign misses by $4.0\times10^{-6}$ to $2.9\times10^{-3}$);
+  and the covariance of $(x,I)$ propagated through the simulation's own exact steps, without random numbers, has
+  $\mathrm{Var}(I_t)$ equal to the closed form at every date ($3.8\times10^{-16}$ absolute, criterion $10^{-14}$, absolute
+  because the closed form loses relative precision near $10^{-13}$ on the first daily dates) and $E[D(0,t)]=P(0,t)$ by
+  the normal moment generating function ($1.1\times10^{-16}$). Two of my first thresholds for these new checks were
+  mis-set (a relative variance tolerance on the first daily dates, and a $10^{-4}$ discrimination margin that the 0.5-year
+  date does not reach, although its $4.0\times10^{-6}$ is $4\times10^4$ times the tolerance); they were reset before the
+  checks were accepted, as stated in the script. Mutation check: a scratch copy with the old sign restored fails both
+  new checks and still passes every original check. Corrected results (same seed 20261072, 40,000 paths): CVA per 100
+  notional 0.0600863777 uncollateralised and 0.0066079387 collateralised; largest $|E[D(0,t)E(t)]-P(0,t)\mathrm{EE}(t)|$
+  0.0461283797 (the audit's isolated probe gave the same three values). Originally 0.0601229105, 0.0066095777 and
+  0.0444617598 (printed as 0.0601, 0.0066 and 0.0445). The forward-value $z$ values move from $-0.36$, $-1.24$, $-1.51$,
+  $-1.24$, $-0.35$ to $-0.36$, $-1.24$, $-1.52$, $-1.25$, $-0.39$. The entry's displayed 0.0601 and 0.0066 are unchanged
+  at four decimals; its gap becomes 0.046 (still about 2.5 percent of the 1.82 peak). EE, PFE, netting and collateral
+  results do not use $D$ and are unchanged.
+- L2-F2, `def:wrong-way-risk`. The Statement wrote $\mathrm{CVA}=(1-R)\sum_iE[E(t_i)\mid\tau=t_i]\,q_i$ with the
+  compendium's undiscounted $E(t)$, silently inheriting Gregory's discounted EE. Gregory reread (owner's library copy,
+  SHA-256 `b2b005d1…f394f`, extracted 2026-10-21): eq. (17.1), p. 380, is $-\mathrm{LGD}\sum_i\mathrm{EE}(t_i\mid
+  t_i=\tau_C)\,\mathrm{PD}(t_{i-1},t_i)$; his EE "is the discounted expected exposure" (sec. 14.2.3, p. 311) and is
+  discounted inside the simulation (sec. 14.2.6, p. 313). The entry now conditions $D(0,t_i)E(t_i)$ on
+  $t_{i-1}<\tau\le t_i$, the event whose probability is $q_i$, states it as the date-grid approximation of
+  $(1-R)E^Q[D(0,\tau)E(\tau)\mathbf 1_{\{\tau\le T\}}]$, and maps Gregory's convention. Added example and check: a
+  one-year exposure of 100, PD 5 percent, $R=40$ percent and a deterministic continuously compounded rate of 5 percent
+  give PV CVA 2.8536882735, not 3.
+- L2-F3, `meth:credit-valuation-adjustment`. The Conditions called $\mathrm{CVA}\approx\mathrm{EPE}\times\text{spread}$
+  a rough form of CVA without units. Gregory, sec. 14.2.5, p. 313: eq. (14.4) gives CVA "in the same units as the credit
+  spread", a per-annum charge with an undiscounted, constant EPE (nn. 5-7); the upfront example is converted by dividing
+  by the risky annuity (4.42, zero rates, n. 4): $-0.200\%/4.42=-4.52$ bp a year, against the approximation's
+  $-1.54\%\times300=-4.62$ bp. The annuity formula is in Gregory's online Appendix 14B, which is not in the book and was
+  not read; $(1-e^{-hT})/h$ with $h=s/\mathrm{LGD}=5\%$, $T=5$ reproduces 4.4240 (a quarterly end-point sum gives
+  4.3964, which does not). The entry now distinguishes the running spread from upfront CVA and shows the conversion
+  $\mathrm{CVA}_{\text{upfront}}\approx\mathrm{EPE}\times s\times A$ (Interpretation); Practice and Pitfalls were
+  extended. Added checks: annuity 4.4240, 4.5183 bp, EPE 1.5416 percent (1.4907 exact), 4.6249 bp, all within 0.005 of
+  the printed figures; the approximation times the annuity is 0.2046 percent upfront, within 5 percent of 0.1999, while
+  read as upfront (0.0462 percent) it is about a quarter of the CVA.
+- L2-F4, `meth:margin-purchase-leverage`. The Statement gave 150 percent "for a short sale of a non-exempted security".
+  The retained eCFR XML of 220.12 (SHA-256 `35633db6…5b21`, title 12 up to date as of 19 October 2026) was rechecked:
+  (c) applies to a nonexempted security "except for a non-equity security"; (c)(1) is 150 percent; (c)(2) is 100 percent
+  when a security exchangeable or convertible within 90 calendar days is held (a long call only if listed, American-style
+  and struck no higher than the short-sale price); (d) is 100 percent plus good-faith margin for an exempted or non-equity
+  security. The entry now states 150 percent for the unhedged non-exempted equity short of its examples and gives both
+  exceptions with a cross-reference to `mech:securities-lending-short-sale`, whose wording (pre-L2) already cites (c)
+  for nonexempted equity securities. The script's docstring was qualified the same way. No number changed.
+- Why the earlier checks passed. L2-F1: no check tested $D$ deterministically. The only check using it was the Monte
+  Carlo forward-value test at 4 standard errors, and a bias of at most 0.29 percent of a near-zero forward value moved $z$
+  by at most 0.04. The CVA figures and the discounting gap were printed, not tested. L2-F2 and L2-F3 were text: the
+  wrong-way example uses unit discounting, where $D=1$ hides the convention, and the script reproduced Gregory's p. 312
+  upfront figures but not his p. 313 units. L2-F4 was rule scope, which the margin script's arithmetic cannot test.
+- Records updated: the two entries, the two scripts, the Gregory and `ecfr-12cfr220` reading notes, the four
+  entry-evidence reviews, three coverage example or locator strings, two pathway summaries, `implementation_plan_v2.md`
+  (*Batch L2 post-implementation audit corrections*) and `implementation_plan.readme` Section 38.
+- Checks run (2026-10-21): `counterparty-xva-checks.py` and `margin-purchase-check.py` with `-W error`, all passing
+  (the xVA output was identical before and after `ruff format`); `make lint`, `make format-check` (it reformatted one
+  new line of my code first), `make check-compendium`, `make check-coverage` (0 problems; 445/445, 1,030/1,030),
+  `make test` (36 passed); `make pdf` (437 pages, no overfull boxes or undefined references; the one underfull box is
+  the pre-existing one; the first build stopped on two literal `\n` sequences my edit had left in the TeX, fixed before
+  the recorded build), with printed pp. 92-93 and 283 rendered and inspected; pre-commit on the committed files. Reused without rerun: the other six L2 scripts
+  and the 111 earlier ones, whose files are unchanged since `cd55096` and which import or read nothing that changed
+  (no script refers to the two changed ones). Their results at `cd55096` (`make source-check`, 119 scripts) stand.
+- Objectives unchanged: eleven new, 445/445 objectives and 1,030/1,030 outline items, editorial coverage only; the
+  shortfall against 45 is still 34. Human review of the L2 entries is still outstanding. Nothing pushed; no PR.
+
+## Library gap-filling, Batch L3, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-batch-l2` at `a519e0c` (the L2 correction commit after `cd55096`), working
+tree clean, no newer work; coverage 445/445 objectives and 1,030/1,030 outline items. Branch `codex/library-gap-batch-l3`
+created from `a519e0c`. Local only. First, formatting repair of the P8 row of "Batch L2 freeze corrections" in
+`implementation_plan_v2.md`: `\rho` had been stored as a line break plus "ho" and `\times` as a tab plus "imes",
+splitting the table row; restored, with numbers and meaning unchanged, and the table re-parsed with markdown-it (GFM
+tables) as header, P8 and P9 rows of four cells each (before: a split, malformed P8 row). Then the L3 scope (P10, backlog
+B7) was frozen in the plan (Section 7, "Batch L3 (frozen 2026-10-21)") and executed. Delegation to the models named by
+the implementation skill was not available; the work was done directly.
+
+**Method.** Each claim rests on the issuer's own text, downloaded to the git-ignored
+`reading_materials/library-gap-l3-20261021/` (hashes in its `SHA256SUMS`) and read as extracted text; formula images
+(CRE52, MAR50) were rendered and read. BIS chapter pages moved to a new URL scheme with in-force and publication dates;
+EUR-Lex returned a bot challenge, so EU acts came from the Publications Office (CELLAR) and were found by SPARQL title
+queries; the eCFR API needed a compression header; Federal Register documents came from its API and XML. Web search was
+used only to find documents. In one early request the HTTP user-agent string contained the owner's e-mail address (a
+connectivity probe to eight issuer sites); later requests used a generic string.
+
+**Claims checked** (retrieval date 2026-10-21 for all; "Basel" dates are the dates by which BCBS members agreed to
+implement).
+
+| # | Claim | Issuer, locator | Jurisdiction; institutions | Published; effective/application | Status | Entry; result |
+|---|---|---|---|---|---|---|
+| 1 | FRTB internal models: ES at 97.5%, stress-calibrated, 10-day base scaled to liquidity horizons 10-120 days | BCBS, MAR33.3-33.5, 33.12 | Basel; internationally active banks | MAR33 version published 5 Jun 2020; effective 1 Jan 2023 | Final (Basel standard) | `meth:market-risk-limits-capital`: sentence corrected; it had implied a completed, uniform move |
+| 2 | Basel market-risk standard effective 1 Jan 2023, deferred from 1 Jan 2022 | BCBS, d457 introduction (2022); GHOS press release 27 Mar 2020; MAR90.1 | Basel | Jan 2019; deferral 27 Mar 2020 | Final; deferred | same entry; Conditions added |
+| 3 | EU FRTB applies from 1 Jan 2027; pre-CRR3 rules until then | Commission DR (EU) 2025/1496 Art. 1 (CRR Art. 520a), replacing DR 2024/2795 (1 Jan 2026) | EU; CRR institutions | OJ 19.9.2025; applies 1 Jan 2026 | Final; delayed twice | same entry; added |
+| 4 | EU temporary FRTB relief to 31 Dec 2029, incl. 0.9 multipliers | DR (EU) 2026/1221 Art. 1 (CRR Arts 495i-495v, 495s) | EU; CRR institutions | OJ 11.9.2026; applies 1 Jan 2027 | Final; transitional | same entry; added |
+| 5 | UK Basel 3.1 from 1 Jan 2027; FRTB-IMA from 1 Jan 2028, existing IMA permissions retained in 2027 | PRA PS1/26 paras 1.5, 1.23-1.24, 3.4 | UK; PRA-authorised banks, building societies, designated investment firms | 20 Jan 2026; 1 Jan 2027 / 1 Jan 2028 | Final; delayed (from 2025/2026) | same entry; added |
+| 6 | US market-risk rule is 99%, 10-day VaR plus stressed VaR | 12 CFR 217.204(b)(2), 217.205(b)(1) (eCFR to 19 Oct 2026) | US; Board-regulated institutions subject to market risk rule | in force | Effective | same entry; added |
+| 7 | US revised framework only proposed; 2023 proposal rescinded | OCC/Board/FDIC NPR 91 FR 14952, 14955 | US; Category I-II and significant-trading banks | 27 Mar 2026; comments to 18 Jun 2026; no final rule found to 21 Oct 2026 | Proposed | same entry and `rule:counterparty-credit-cva-capital`; added |
+| 8 | SA-CCR: EAD = 1.4 (RC + PFE); RC, multiplier (5% floor), SD, MF, delta, IR buckets, SF 0.5% | BCBS CRE52.1-52.57, 52.72 | Basel; banks without IMM approval | CRE52 version effective 1 Jan 2023 | Final | new `rule:counterparty-credit-cva-capital` |
+| 9 | SA-CCR Basel effective date 1 Jan 2017 | BCBS 279 sec. D, p. 3 | Basel | Mar 2014 | Final | new rule; added |
+| 10 | CCR EAD feeds the credit-risk SA or IRB as the exposure | BCBS CRE51.7, 51.13 (2028 version compared: adds CCR-hedge treatment only) | Basel | 2023 version | Final | new rule |
+| 11 | CVA-risk capital: separate, RWA = 12.5 x K; BA-CVA reduced K formula, DS 0.65, rho 50%, SCVA, DF, RW 0.5-12%; SA-CVA needs approval; EUR 100bn option | BCBS MAR50.1-50.16 (July 2020 revision BCBS d507 read for the DS and calibration change) | Basel | MAR50 published 8 Jul 2020; effective 1 Jan 2023 | Final | new rule |
+| 12 | EU SA-CCR from 28 Jun 2021 | Reg. (EU) 2019/876 Art. 3(2) | EU | OJ 7.6.2019; 28 Jun 2021 | Effective | new rule; added |
+| 13 | EU revised CVA approaches from 1 Jan 2025, exemptions kept | Reg. (EU) 2024/1623 Art. 1(198)-(199), Art. 2; Reg. 575/2013 Art. 382(4) | EU; CRR institutions | OJ 19.6.2024; 1 Jan 2025 | Effective | new rule; added |
+| 14 | UK SA-CCR (and NSFR) from 1 Jan 2022 | PRA PS17/21 pp. 4, 8 | UK; PRA-authorised firms | Jul 2021; 1 Jan 2022 | Effective | new rule and `def:financial-institution-features`; added |
+| 15 | UK Basel 3.1 CVA (AA-CVA, BA-CVA, SA-CVA) removes exemptions, with transition | PRA PS17/23 paras 1.8, 1.13; PS1/26 para. 1.23 | UK | 12 Dec 2023 (near-final); 1 Jan 2027 | Final, not yet effective | new rule; added |
+| 16 | US SA-CCR effective 1 Apr 2020, mandatory 1 Jan 2022 for advanced approaches; alpha 1 for commercial end-users | 85 FR 4362, 4365; 12 CFR 217.132(c)(5)(iv) | US | 24 Jan 2020 | Effective | new rule; added |
+| 17 | US CVA capital: simple or advanced CVA approach (advanced approaches); BA-/SA-CVA only proposed | 12 CFR 217.132(e); 91 FR 14952 | US | in force / proposal | Effective / proposed | new rule; added |
+| 18 | LCR >= 100% outside stress (LCR20.4-20.5); NSFR >= 100% (NSF20.2) | BCBS LCR20, NSF20 | Basel | versions effective 15 Dec 2019 | Final | `def:financial-institution-features`; confirmed, no correction |
+| 19 | LCR 100% minimum from 1 Jan 2019; NSFR minimum standard from 1 Jan 2018 | BCBS LCR90.1; BCBS 295 para. 8 | Basel | 2013 / Oct 2014 | Final | same entry; dates added |
+| 20 | EU LCR from 1 Oct 2015 at 60%, 100% from 1 Jan 2018; NSFR from 28 Jun 2021 | DR (EU) 2015/61 Arts 38-39; Reg. 2019/876 Art. 3(2) | EU | 2014 / 2019 | Effective | same entry; added |
+| 21 | US LCR effective 1 Jan 2015 (80%, 90%, 100% from 2017); NSFR 1 Jul 2021 for $100bn+ organisations | 79 FR 61440, 61444; 86 FR 9120 | US | 10 Oct 2014; 11 Feb 2021 | Effective | same entry; added |
+| 22 | IFRS S1/S2 issued June 2023, effective for periods from 1 Jan 2024; climate-first relief; GHG amendments Dec 2025 effective 1 Jan 2027 | IFRS S1 E1, E5; S2 C1, C1B | Global standard; applies only where adopted | Jun 2023; Dec 2025 | Issued (not law) | `meth:esg-exposure-evaluation`; added |
+| 23 | ISSB materiality is investor-focused (financial) | IFRS S1 paras 3, 18 | as above | | Issued | same entry; existing claim confirmed and qualified |
+| 24 | TCFD monitoring passes to ISSB from 2024; TCFD disbanded after 2023 report | FSB press release 21/2023 (13 Jul 2023); TCFD 2023 Status Report p. 3 | Global | Jul and Oct 2023 | Completed | same entry; added |
+| 25 | EU uses ESRS; mandatory scope after Omnibus I: > EUR 450m turnover and > 1,000 employees; transposition by 19 Mar 2027 | Dir. (EU) 2026/470 Art. 2(1), Art. 5(1) | EU; large undertakings | OJ 26.2.2026 | Final directive, awaiting transposition | same entry; added |
+| 26 | UK endorsed UK SRS S1/S2 for voluntary use | DBT government response paras 1.4-1.5, 1.15 | UK | 25 Feb 2026 | Final (voluntary) | same entry; added |
+| 27 | SEC climate rules adopted Mar 2024; stayed Apr 2024; defence ended 27 Mar 2025; Eighth Circuit abeyance 12 Sep 2025; rescission proposed Jun 2026 | 89 FR 21668; 89 FR 25804 (Release 33-11280); 91 FR 33296, 33299-33300; SEC letter to the Eighth Circuit, 7 May 2026 | US; SEC registrants | adopted 6 Mar 2024; never effective | Stayed; rescission proposed | same entry; added |
+
+**Not verified** (stated precisely; nothing in the teaching text depends on them).
+- FCA PS26/19 (listed issuers' sustainability disclosures referring to UK SRS): the FCA site returned a bot challenge to
+  every request, so its content, dates and comply-or-explain basis are unread; the entry says only that mandatory use
+  depends on separate rules such as the FCA's Listing Rules, which the government response states.
+- Eighth Circuit orders after 18 May 2026 (including any ruling on Iowa's motion of 8 May 2026 to lift abeyance) and the
+  SEC's planned later status report: not in the public RECAP docket; PACER was not used. The entry states the posture as
+  of the SEC's June 2026 proposal and records that no final rescission appears in the Federal Register up to 21 October
+  2026.
+- The PRA Rulebook instrument (PS1/26 Appendix 1) and the OCC and FDIC parallel capital parts were not read; dates and
+  US text come from the policy statement and the Board's part 217.
+- Directive (EU) 2025/794 and Commission Recommendation 2025/1710 were found but are not used.
+
+**Entries.** New `rule:counterparty-credit-cva-capital` (in `corporate-credit-capital/counterparty-xva.tex`; the topic
+file's introduction no longer says capital is not covered, and See also links were added to the CVA and wrong-way-risk
+entries). Corrected or extended: `meth:market-risk-limits-capital` (Banks item, Conditions, Pitfalls),
+`def:financial-institution-features` (Liquidity item, Conditions), `meth:esg-exposure-evaluation` (Conditions). No
+other backlog item was touched; no L1 or L2 calculation was reopened.
+
+**Check** (`notes/artefacts/counterparty-xva/counterparty-capital-check.py`, deterministic, original inputs). It tests
+identities independent of the hand formulas (SD and DF against numerical integrals of $e^{-0.05t}$ to $10^{-12}$; the
+multiplier's value of 1 for $V-C\ge0$ and approach to the 5 percent floor; the single-bucket effective notional;
+$K_{\text{reduced}}=S\sqrt{\rho^2N^2+(1-\rho^2)N}$ for $N$ equal counterparties) and the worked example: SD 3.6254, add-on
+1.8127, EAD 5.3378; with 4 of cash collateral multiplier 0.5815, EAD 1.4758; default RWA 5.3378 and capital 0.4270 at an
+illustrative 100 percent risk weight; DF 0.9063, SCVA 0.4147, BA-CVA requirement 0.2695, RWA 3.3692; two counterparties
+$\sqrt{2.5}$ times one; US commercial end-user EAD 3.8127. First run: one failure in my own expected value (I had
+pre-computed the collateralised multiplier as 0.5816; the formula gives 0.581531), corrected to 0.5815, 1.0541 and
+1.4758; no formula or input changed. The script was reformatted by moving two comments.
+
+**Objectives.** One new: `objective:explain-counterparty-credit-capital` (`topic:credit-models`, planned batch 8,
+covered). FRTB, liquidity and sustainability were currency corrections to covered objectives
+(`objective:set-market-risk-limits`, `objective:explain-financial-institution-features`, `objective:evaluate-esg-exposures`),
+whose evidence now lists the new sources. Coverage 446/446 objectives and 1,030/1,030 outline items (no outline item
+maps to the new objective). Shortfall against the standing 45: 44.
+
+**Registry and notes.** 25 new `sources.tex` keys and reading notes (Basel, BCBS, EU, PRA, DBT, US agencies, eCFR,
+SEC, IFRS Foundation, FSB, TCFD); entry evidence for the new entry and the four touched ones (plus a note on the
+wrong-way-risk record); coverage evidence; two pathway notes.
+
+**Checks run (2026-10-21).** `counterparty-capital-check.py` with warnings as errors (all pass); `make lint`,
+`make format-check`, `make check-compendium` and `make check-coverage` (0 problems; 446/446, 1,030/1,030) and `make test`
+(36 passed). `make pdf`: 441 pages, no overfull boxes, undefined references or citations; the one underfull box
+(badness 2277) is the pre-existing one. The first build stopped on an `itemize` I had left unclosed in the ESG
+Conditions; the next showed a new underfull line from an inline SCVA formula, moved into a display. Printed pp. 91,
+93, 128, 139 and 259 (the changed entries) were rendered and inspected. Pre-commit on the committed files, new ones
+included. Reused without rerun: every other numerical script (no script except the new one changed since `a519e0c`,
+whose affected scripts and both checkers passed in the L2 correction pass and were confirmed by the later audit; the
+full `make source-check` of `cd55096` covers the rest); `verify-outlines` (the outline crosswalk is unchanged).
+
+**Limits.** Status statements are as of 21 October 2026 and will date. Editorial coverage only; human review of the
+new entry and the three corrected ones is outstanding. Nothing pushed; no PR.
+
+**Post-implementation audit corrections, Batch L3, 21 October 2026.** An audit of the committed Batch L3 (`440272b`)
+found five statements that the passing checks did not test (L3-F1 to L3-F5) and asked for one bounded attempt to close
+the two disclosed source gaps. Starting state: branch `codex/library-gap-batch-l3` at `440272b` (parent `a519e0c`),
+working tree clean, no newer work; 446/446 objectives and 1,030/1,030 outline items. Branch
+`codex/library-gap-l3-audit-fixes` was created from `440272b`. Local only. The owner authorised a fixes-only pass: no
+objective added, no backlog batch started, no existing number or tolerance changed. The claims table and "Not verified"
+list above are kept as the history of the first implementation. New copies are in the git-ignored
+`reading_materials/library-gap-l3-audit-20261021/` (hashes in its `SHA256SUMS`); the Batch L3 copies were reused where
+they already held the passage. Delegation to the models named by the implementation skill was again unavailable.
+- L3-F1, `rule:counterparty-credit-cva-capital`, printed maturity factor. The text gave $\sqrt{\min(M,1)}$ without
+  the floor. CRE52.48 floors the remaining maturity at ten business days; CRE52.49 gives 10/250 years under a 250-day
+  convention. The script already applied the floor, so the four-year example (MF 1) is unchanged. The entry now states
+  the floor with a short-maturity counterexample: five business days give 0.2, not $\sqrt{0.02}=0.1414$. A new check
+  in `counterparty-capital-check.py` asserts it; an unfloored formula fails it.
+- L3-F2, same entry, Notation. The text called $M\,\mathrm{EAD}\,\mathrm{DF}/\alpha$ "the same object as
+  $\mathrm{EE}^*$". MAR50.15 n.~3 calls $\mathrm{EAD}\times M$ a proxy for the area under the discounted EE profile;
+  n.~4 says $\alpha$ converts EAD back to EEPE. The product is in currency times years; $\mathrm{EE}^*(t)$ is in
+  currency at one date. The entry now distinguishes them, keeps the supervisory-proxy qualification (flat EEPE, a fixed
+  5 percent rate) and gives the example's area, 13.8225 currency-years against an EEPE of 3.8127. A new check
+  confirms it equals $\int_0^4\mathrm{EEPE}\,e^{-0.05t}dt$, and that SCVA is RW times it.
+- L3-F3, `meth:esg-exposure-evaluation`, EU. The text cited Directive 2026/470 Art.~2(1), which amends the
+  legal-form extension in Art.~1(3) of Directive 2013/34/EU, as the reporting scope. It also said, unqualified, that
+  "mandatory reporting is limited" to the new thresholds. Corrected from the directive: Art.~2(4) (Art.~19a(1),
+  individual undertakings) and Art.~2(5) (Art.~29a(1), consolidated groups). Art.~2(13) (Art.~40a(1)) gives the
+  third-country route: EU turnover above EUR~450m in each of the last two years, through a subsidiary or branch above
+  EUR~200m. Art.~3(1) (CSRD Art.~5(2)) keeps the first wave for FY 2024--2026 and allows a Member State exemption
+  below the new thresholds for FY 2025--2026. Art.~5(1) sets transposition by 19 March 2027. The FY 2027 start of the
+  new scope is Directive 2025/794 Art.~1 (retrieved in L3, now registered). The FY 2028 third-country start is CSRD
+  Art.~5(2), second subparagraph, which neither amending directive changes. National transposition was not checked.
+- L3-F4, `def:financial-institution-features`, US NSFR. The text said the NSFR applies to banking organisations with
+  \$100bn or more of assets, a paraphrase of the 2021 rule's summary. 12 CFR 249.1(b)(1) covers GSIB holding companies
+  and their depository institutions, Category II and III, and Category IV only with \$50bn or more of average weighted
+  short-term wholesale funding, plus covered nonbank companies and Board determinations. 252.5(e) defines Category IV.
+  249.105(b) scales required stable funding at 100, 85 or 70 percent. Board text only (eCFR to 19 October 2026); the
+  OCC and FDIC parts were not read.
+- L3-F5, `meth:market-risk-limits-capital`, EU 0.9 multiplier. The text applied it to "the standardised
+  requirements". CRR Art.~495s(1)--(2), inserted by Regulation 2026/1221, apply it to the sensitivities-based method
+  result (Art.~325h(4)) and to the simplified standardised approach. The alternative standardised approach's
+  default-risk and residual-risk components (Art.~325c(2)) are not scaled. The optional Art.~495v multiplier is not
+  described.
+- Source gap, FCA PS26/19. fca.org.uk and the FCA Handbook again returned a Cloudflare challenge to direct requests,
+  and no installed browser was available. The FCA's PDF was read from the Internet Archive capture of 7 October 2026
+  (87 pages; SHA-256 `0a3e0282…048f833f`): paras 1.1--1.11, 3.6--3.25 and Appendix~1, FCA 2026/56 (made
+  24 September 2026, in force 1 January 2027). The rules are comply-or-explain for UKLR 6, 14, 15, 16 and 22 issuers,
+  for accounting periods from 1 January 2027 (first reports in 2028), with one-year Scope~3 and two-year S1 reliefs.
+  They are now stated separately from the voluntary UK SRS endorsement. Law-firm summaries found by search were not
+  used.
+- Source gap, Eighth Circuit. The order of 21 May 2026 was read from the court's PDF as posted by the Sabin Center's
+  Climate Litigation Database: the motion to lift abeyance was denied and an SEC status report was due by 31 August
+  2026. The SEC's letter of 1 June 2026 confirms it (Doc. 5642807). The RECAP docket now held later entries. The order
+  of 5 October 2026 (Entry ID 5690930, read from RECAP's copy of the court PDF) accepted the 31 August report and set
+  the next for 31 December 2026; RECAP showed it as the last known filing. The 31 August report itself was not read,
+  and entries after 5 October 2026 are not verified, so the entry dates this claim to 5 October 2026. The Federal
+  Register API, queried 21 October 2026, shows no final rescission, only the June proposal.
+- HTTP headers. Every request in this pass used a generic user-agent string without personal identifiers. The
+  incident recorded under *Method* above (one early Batch L3 probe whose user-agent contained the owner's e-mail
+  address) stands as recorded.
+
+Registry and notes: five new `sources.tex` keys and reading notes (`ca8-iowa-v-sec-2026`, `ecfr-12cfr249-2026`,
+`eu-2022-2464-csrd`, `eu-2025-794-stop-the-clock`, `fca-ps26-19-2026`). Corrected notes: the 2026/470, US NSFR,
+CRR-relief, UK SRS, SEC-rescission and Basel notes, with the superseded readings kept. Entry evidence for the four
+entries; coverage evidence for their four objectives. Objectives 446/446 and items 1,030/1,030 unchanged; no objective
+added.
+
+Checks run (2026-10-21). `counterparty-capital-check.py` with warnings as errors: all pass, including the two new
+checks; the four-year example values are unchanged. `make lint`, `make format-check` (150 files), `make check-compendium`
+(0 problems), `make check-coverage` (0 problems; 446/446, 1,030/1,030) and `make test` (36 passed) all pass.
+`make pdf` builds 442 pages (was 441) with no overfull boxes or undefined references; the one underfull box (badness
+2277) is the pre-existing one. Printed pp.~93, 128, 139 and 259 (the four changed entries) were rendered and
+inspected. Pre-commit runs on every changed and new file. Reused without rerun: every other numerical script. No other
+script changed since `440272b`, and those scripts passed in the L2 correction pass, whose results the L3 record reused.
+No mathematical L1 or L2 statement was touched. `verify-outlines` was not rerun; the outline crosswalk is unchanged.
+
+Limits: status statements are as of 21 October 2026, except the Eighth Circuit posture (5 October 2026). The FCA text
+is an archived copy of the FCA's PDF, not a direct download. Editorial coverage only; human review outstanding. Nothing
+pushed; no PR.
+
+**L3 wording correction, 21 October 2026.** Branch `codex/library-gap-l4-proposal`, created from `517213d` (parent
+`440272b`; clean tree; 446/446 objectives, 1,030/1,030 items). `meth:esg-exposure-evaluation`, EU timing: the item named
+only large public-interest entities above 500 employees as the FY 2024-2026 first wave. CSRD Art.~5(2), first
+subparagraph, point (a) also covers (ii) public-interest entities that are parents of a large group above 500 employees
+on a consolidated basis (retained OJ text in `reading_materials/library-gap-l3-audit-20261021/eu-32022L2464.html`,
+SHA-256 `6ad8df8d…d6c29837`). Directive 2025/794 Art.~1 amends only points (b) and (c), and Directive 2026/470
+Art.~3(1)(a)(i) replaces only the introductory dates of point (a) (retained copies from Batch L3), so both cases stand
+for FY 2024-2026. The item now names both, citing CSRD Art.~5(2)(a)(i)--(ii), and cites Directive 2026/470 Art.~3(1)
+for the exemption sentence. Updated with it: the CSRD and 2026/470 reading notes (earlier wording kept), the entry
+evidence, and the objective's CSRD locator and example note. No number or objective changed.
+
+Checks run (2026-10-21). `make check-compendium` (0 problems), `make check-coverage` (0 problems; 446/446, 1,030/1,030),
+`make pdf` (442 pages, no overfull boxes or undefined references; the one underfull box is the pre-existing one);
+printed p.~139 rendered and inspected. Pre-commit on the changed files. Reused without rerun: every numerical script and
+the 36 tests, because no script, input or Python file changed since `517213d`, where they passed; the edit is text and
+evidence only. `verify-outlines` not rerun; the crosswalk is unchanged. The same commit records the Batch L4 proposal in
+`implementation_plan_v2.md` (not implemented). Nothing pushed; no PR.
+
+## Library gap-filling, Batch L4, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-l4-proposal` at `95c547a` (parent `517213d`), working tree clean, no
+newer work; coverage 446/446 objectives and 1,030/1,030 outline items; L4 proposed, not implemented. Branch
+`codex/library-gap-batch-l4` created from `95c547a`. Local only. Owner decisions: L4-D1 all three packages; L4-D2 the
+seasoned variance-swap value as a labelled derivation with its contract and approximation assumptions stated; L4-D3 no
+separate objective for cross-currency basis swaps. Delegation to the models named by the implementation skill was not
+available; the work was done directly.
+
+**Freeze corrections, recorded before implementation** (plan, Section 7, "Batch L4 freeze corrections and frozen
+specification"). L4-C1: the proposal's dollar-leg basis $b=\frac FS(1+r_f\tau)-(1+r_{\$}\tau)$ is a period amount and
+matched the annual quote only at $\tau=1$; frozen as $[\ldots]/\tau$ with the equivalence
+$F/S=[1+(r_{\$}+b)\tau]/[1+r_f\tau]$, checked at $\tau=1$ and 0.25. L4-C2: the gamma sentence implied that differentiating
+each path gives the closed form; per path the derivative of the pathwise delta is zero almost surely, and eq. (18) is the
+derivative of the expectation with the boundary at $S_T=K$; the pathwise strike statement was restricted to Lipschitz
+payoffs (the digital fails both naive methods); larger likelihood-ratio variance is reported as a finding for the cited
+examples and this call. L4-C3: the seasoned-swap contract (return measure, schedule, $A$, $K_{\text{vol}}$,
+$K_{\text{var}}$, $N_{\text{var}}$ units, empty segments) was defined, and the simulation benchmark changed from the
+continuous strike to the exact discrete expectation $\sigma^2+(r-q-\sigma^2/2)^2/A$, with the continuous approximation and
+its deterministic difference reported separately. Seeds, path counts and tolerances were fixed in the plan before the
+first run.
+
+**Sources read** (copies in the git-ignored `reading_materials/library-gap-l4-20261021/`, hashes in its `SHA256SUMS`;
+retrieved 2026-10-21).
+
+| Source | Passages | Used for | Limits |
+|---|---|---|---|
+| Broadie and Glasserman (1996), *Management Science* 42(2) (`broadie-glasserman-1996`, new key); Columbia scan, SHA-256 `247d7319…e1304` | pp. 269-275, 280-281, read as page images; eqs. (4)-(18) and n. 2, p. 272 scope (strike, "except possibly through a change of variables"), p. 274 resimulation, p. 275 the 1.5-4 times ratio, App. A (A1)-(A4) and Proposition 1, App. B eq. (26), p. 281 second derivatives | `meth:monte-carlo-greeks` | Tables (pp. 276-279) and Apps. C-D not read; no digital example in the paper (the digital case is Interpretation, checked) |
+| Hull, OFOD 11th Global ed. (`s7-hulloptions`), git-ignored copy SHA-256 `8bc6e2f0…b482` | sec. 21.6, pp. 494-495; sec. 7.10, pp. 192-193; sec. 26.16, pp. 629-631 reread | resimulation; direction of principal exchanges and the decomposition; inception-only variance-swap value | Hull values variance swaps only at inception |
+| Demeterfi et al., Goldman Sachs note, March 1999 (`demeterfi-varswaps-gs-1999`, new key, naming the catalogued *J. Derivatives* version `wide-demeterfi-varswaps`), SHA-256 `ad289770…f762223e` | pp. 1-2 (contract terms), 13 (variance vega and remaining variance), 15 (EQ 13-16), 19 (EQ 26), 29-30 (EQ 35-37, additivity) | seasoned-swap extension of `meth:volatility-derivative-applications` | No mid-life formula printed: the value is a labelled derivation; journal version not read |
+| Ding, Liu and Rutkowski, arXiv:2410.08477v3 (`ding-liu-rutkowski-ccbs-2025`, new key, naming the catalogued SIAM version `w4-ding-rutkowski-ccbs`), SHA-256 `3f4eed42…f049f2` | pp. 1, 4, 6-7 (Definitions 2.4-2.5, constant spread), 38 (AUD/USD example) | `meth:cross-currency-basis-swaps` cash flows | One pair's convention; model sections not read; MTM resets named only |
+| Borio, McCauley, McGuire and Sushko (2016), BIS Quarterly Review (`cur-borio-mccauley-mcguire-sushko-2016`), SHA-256 `32dce4f0…a2928` | pp. 45-48, Graph 1 and Box A (p. 48) | the two sign conventions | LIBOR era; pp. 49-58 not read |
+
+**Delivered.** New `meth:monte-carlo-greeks` (`volatility-options/numerical-methods.tex`; the section title now names
+simulated Greeks) and `meth:cross-currency-basis-swaps` (`volatility-options/forward-commitment-valuation.tex`); the
+seasoned-swap extension of `meth:volatility-derivative-applications` (Statement, two Practice items, Conditions,
+Pitfall); See also links from `meth:monte-carlo-simulation`, `meth:digital-option-valuation`,
+`meth:swap-valuation-replication`, `ev:cip-deviations` and `meth:cross-forward-rates`. Adjacent prose: a stray comma
+before a citation in `meth:swap-valuation-replication`, and "Its last order found, of 5 October 2026" in
+`meth:esg-exposure-evaluation` reworded to "Its order of 5 October 2026, the latest available on 21 October 2026" (the
+dated posture is unchanged). One new objective, `objective:estimate-greeks-by-simulation` (`topic:option-valuation`,
+planned batch 9); `meth:cross-currency-basis-swaps` mapped as depth to `objective:value-swaps-by-replication` and
+`objective:apply-international-parity`; seasoned-swap evidence added to `objective:use-volatility-derivatives`. Reading
+notes for the four L4 sources (Borio et al. had none) and the Hull locators; entry evidence; pathway notes
+`volatility-options`, `fx-cip-dollar-funding` and `portfolio-construction-risk`.
+
+**Numerical results** (locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1; first runs, no reseeding).
+- `notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py`, seed 20261021, 100,000 shared normals. Deterministic:
+  path derivatives and scores against central differences, worst relative error $1.3\times10^{-9}$; eq. (18) boundary term
+  equals the BSM gamma 0.0199467491; $S_T/S_0$ unchanged by an $S_0$ bump ($2.8\times10^{-16}$). Call: pathwise delta
+  0.50101 (s.e. 0.00188, $z=-0.75$), LR delta 0.49582 (0.00403, $-1.64$), pathwise vega 39.505 (0.233, $-1.67$), LR vega
+  38.920 (0.763, $-1.28$), pathwise $\partial C/\partial K$ $-0.40989$ (0.00152, $+0.47$) against 0.50241, 39.894 and
+  $-0.41060$. Digital: pathwise delta and strike derivative zero on every path (closest path $10^{-4}$ from $K$); LR delta
+  0.018861 (0.000090, $z=-1.51$) against 0.018997. Reported: LR/pathwise standard-error ratios 2.15 (delta) and 3.28
+  (vega); digital resimulation 0.019030 (0.000426) at $h=1$ and 0.020379 (0.004447) at $h=0.01$.
+- `notes/artefacts/derivative-overlays/seasoned-variance-swap-check.py`. Deterministic: worked value 182,562.0029; inception
+  0; expiry 562,500; decimal units equal; payoff derivative at $K_{\text{vol}}$ equals the vega notional 100,000;
+  observation weights from a return series; $E[r^2]$ by quadrature to $10^{-9}$. Exact discrete remaining strike 324.007557
+  (value 182,571.26) against the continuous 324 (182,562.00), difference 9.26, deterministic. Simulation, seed 20261021,
+  200,000 paths: 182,634.39 (s.e. 111.83), $z=+0.56$ against the exact discrete value. Reported: mean-subtracted realised
+  variance 597.23 (over $n$) and 602.00 (over $n-1$) against 625; calendar-day weights 181,551.59.
+- `notes/artefacts/forward-swap-valuation/cross-currency-basis-check.py`, deterministic: cash flows by party (A: $-100$m EUR
+  and $+110$m USD at $T_0$, $+2.3$m and $-4.4$m each year, principals back at $T_3$); covered parity at $\kappa=0$
+  (1.116098; 1.104099 at $\tau=0.25$); forward with the basis 1.118280 (1.104648); $b=20.3324$ basis points at $\tau=1$ and
+  20.0845 at $\tau=0.25$, period amount 5.0211; synthetic dollar rate 4.2033 and 4.2008 percent; inverted quote 0.894231;
+  final exchange $+4.0$m at 1.14, matching the fixed-for-fixed example's 4.0m.
+
+One harness correction during the run, recorded: the seasoned-swap script's first run compared the worked value with a
+mistyped literal (182,562.4, tolerance 0.5); the value is $2{,}500e^{-0.02}\times74.5=182{,}562.0029$ by hand, so the
+literal was corrected and the tolerance tightened to 0.01. No seed, path count or other tolerance changed.
+
+**Checks run (2026-10-21).** The three scripts with warnings as errors (pass, after `ruff format`, which changed layout
+only; outputs identical). `make lint`, `make format-check` (153 files), `make check-compendium` (0 problems, 695 entries),
+`make check-coverage` (0 problems; 447/447 objectives, 1,030/1,030 items) and `make test` (36 passed) pass. `make pdf`
+builds 443 pages (was 442) with no overfull boxes or undefined references; the one underfull box (badness 2277) is the
+pre-existing one. Printed pp.~138--139, 181--182, 191 and 261--262 rendered and inspected. Pre-commit on every changed
+and new file. Reused without rerun: every other numerical script, including `overlay-checks.py`,
+`forward-swap-checks.py`, `numerical-pricing-checks.py`, `exotic-option-checks.py`, the inference-simulation and FX
+scripts, because their files and inputs are unchanged and the L4 edits to their entries are text and cross-references;
+their last recorded passes (Batch L2 correction pass, reused by L3) still apply. `verify-outlines` not rerun; the crosswalk is unchanged.
+
+Limits: editorial coverage only; human review outstanding. Shortfall 44 against the 45-objective preference, without
+padding. The seasoned-swap value and the B13 annualised mapping are Interpretation, checked for internal consistency, not
+printed in the sources read. Excluded: mark-to-market cross-currency swaps, multi-period cross-currency valuation and
+curves, second-order Monte Carlo Greeks beyond the gamma sentence, empirical basis levels after 2016. Nothing pushed; no
+PR.
+
+## C1 pass: L4 corrections and gap inventory, 21 October 2026
+
+**Starting state.** Branch `codex/library-gap-batch-l4` at `e6c22e6` (parent `95c547a`), working tree clean, no newer
+work; 447/447 objectives, 1,030/1,030 items. Branch `codex/library-gap-c1-inventory` created from it. Local only.
+Delegation to the models named by the implementation skill was not available; the work was done directly.
+
+**L4 corrections** (plan, Section 7, "C1 pass: L4 corrections"; no objective, input, seed or earlier tolerance changed).
+- `meth:monte-carlo-greeks` (L4-F1): Broadie-Glasserman's $h^*$ (App. B, eq. (26), p. 281; the page was reread and states
+  that $\rho$ is assumed independent of $h$) is no longer presented as a universal optimum; the call/digital
+  shared-path variance distinction and the restriction of unbiasedness to the direct estimators under their conditions
+  were added. Fixed before the run: one new section in `monte-carlo-greeks-check.py` on the same seed and draws, with
+  relative tolerances of 1% for the two limits and a factor-2 band for the ratio check. Results: call finite-difference
+  variance 0.348653, 0.351635, 0.351932 and 0.351952 at $h=1$, 0.1, 0.01, 0.001 against 0.351959 for the pathwise delta;
+  digital variance exact from the lognormal distribution, 0.018065, 0.18399, 1.8432 and 18.435, so $h\times$variance runs
+  0.018065 to 0.018435 against the limit $e^{-2rT}g(K)K/S_0=0.018435$. All 17 checks pass; parts 1-3 unchanged.
+- `meth:volatility-derivative-applications` (L4-F2): "volatility points squared" for the $10^4$ conversion; "zero mean"
+  defined as not subtracting the sample mean. Text only; `seasoned-variance-swap-check.py` not rerun.
+- `meth:esg-exposure-evaluation` (L4-F3): the 5 October 2026 order qualified as the latest found in the public RECAP
+  docket as of 21 October 2026, PACER not used, later filings unverified (as in `notes/readings/ca8-iowa-v-sec-2026.md`).
+
+**C1 inventory** (plan, Section 8.2). Discovery material: the 18 volumes of the 2024 curriculum, read-only, text extracted
+with pypdf 5.1.0 in an isolated environment to the session scratchpad (none enters the repository and none is cited).
+Reconciliation: 175 numbered modules, of which two are statistical-table appendices; 173 substantive; C0's 76 compared
+plus 97 remaining. The 97 were title-matched to the crosswalk (78 same-titled), screened by head words (74 of 2,231 heads
+flagged) and compared by hand with entry titles and text. Support checked in held or registered sources: Hull sec. 26.11,
+pp. 623-625 (lookback formulas, Example 26.2); Wilmott contents, the end of chap. 47 and the opening of chap. 48 (PDF pp. 799-809; Leland's
+adjusted volatility, sec. 48.3) and the chap. 24 lookback passages (PDF pp. 443-447); Damodaran, *Applied Corporate
+Finance*, printed pp. 98-107 (country risk premiums); *Managing Investment Portfolios* (2007) Example 11-3 and Exhibit
+11-4, pp. 693-695 (hedging and monetisation of a concentrated position). Catalogue searched for B4 and B14 sources.
+Outcome: 2 confirmed distinct candidate objectives (lookbacks; hedging with transaction costs), 4 sourced depth
+extensions, 2 possibly distinct but unresolved (vanna-volga; hedge-fund replication), 5 unsourced depth items;
+provisional 449 for this corpus, at most 451. Batch L5 proposed (+2), not frozen.
+
+**Checks run (2026-10-21).** `monte-carlo-greeks-check.py` with warnings as errors (after `ruff format`); `make lint`,
+`make format-check`, `make check-compendium` (0 problems), `make check-coverage` (0 problems; 447/447, 1,030/1,030),
+`make test` (36 passed); `make pdf` and inspection of the changed pages; pre-commit on every changed and new file.
+Reused without rerun: every other numerical script (no code, input or asserted result changed), including
+`seasoned-variance-swap-check.py` and `cross-currency-basis-check.py` from L4. `verify-outlines` not rerun; the
+crosswalk is unchanged. Limits: the inventory is a bounded comparison of the inspected corpus, not a census of the
+finance library; editorial coverage only; human review outstanding. Nothing pushed; no PR.

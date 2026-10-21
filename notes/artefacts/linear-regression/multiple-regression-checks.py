@@ -215,6 +215,70 @@ ok(
     f"VIF {vif_w:.1f}, SE ratio {fw.bse[1] / f_one.bse[1]:.2f}, t {fw.tvalues[1]:.2f}, {fw.tvalues[2]:.2f}",
 )
 
+
+# Added 2026-10-20 (audit): the direction of the bias in the usual OLS standard error under serially correlated errors
+# depends on the design. Exact: Var(b | X) = (X'X)^-1 X' Omega X (X'X)^-1 against E(s^2) (X'X)^-1, with
+# E(s^2) = tr(M Omega) / (n - k). Independent route: a seeded simulation of AR(1) errors.
+def ar1_variance_ratio(x, rho_e):
+    m = len(x)
+    Xd = np.column_stack([np.ones(m), x])
+    idx = np.arange(m)
+    om = rho_e ** np.abs(idx[:, None] - idx[None, :]) / (1 - rho_e**2)
+    xtxi = np.linalg.inv(Xd.T @ Xd)
+    true_var = (xtxi @ Xd.T @ om @ Xd @ xtxi)[1, 1]
+    resid_maker = np.eye(m) - Xd @ xtxi @ Xd.T
+    usual = np.trace(resid_maker @ om) / (m - 2) * xtxi[1, 1]
+    return true_var / usual
+
+
+trend10 = np.arange(1, 11, dtype=float)
+alt10 = (-1.0) ** np.arange(1, 11)
+ratios = {
+    (nm, r_): ar1_variance_ratio(xv, r_)
+    for nm, xv in (("trend", trend10), ("alternating", alt10))
+    for r_ in (0.5, -0.5)
+}
+ok(
+    "ten observations, intercept, AR(1) errors: true / expected usual slope variance is 2.75 (trend, rho 0.5), "
+    "0.41 (trend, -0.5), 0.43 (alternating, 0.5) and 2.96 (alternating, -0.5) - positive autocorrelation "
+    "overstates the usual standard error for the alternating regressor",
+    [
+        round(ratios[k_], 2)
+        for k_ in (("trend", 0.5), ("trend", -0.5), ("alternating", 0.5), ("alternating", -0.5))
+    ]
+    == [2.75, 0.41, 0.43, 2.96]
+    and ratios[("alternating", 0.5)] < 1 < ratios[("trend", 0.5)],
+    ", ".join(f"{k_} {v:.3f}" for k_, v in ratios.items()),
+)
+rng_ar = np.random.default_rng(20261020)
+Xa = np.column_stack([np.ones(10), alt10])
+sims_b, sims_v = [], []
+for _ in range(20000):
+    e = np.empty(10)
+    e[0] = rng_ar.standard_normal() / np.sqrt(1 - 0.25)
+    for t_ in range(1, 10):
+        e[t_] = 0.5 * e[t_ - 1] + rng_ar.standard_normal()
+    fa = np.linalg.lstsq(Xa, e, rcond=None)
+    sims_b.append(fa[0][1])
+    sims_v.append(fa[1][0] / 8 * np.linalg.inv(Xa.T @ Xa)[1, 1])
+ok(
+    "simulation (20,000 draws, rho 0.5, alternating regressor): the slope's sampling variance is below the average "
+    "usual estimate, ratio within 0.02 of the exact 0.43",
+    abs(np.var(sims_b) / np.mean(sims_v) - ratios[("alternating", 0.5)]) < 0.02,
+    f"{np.var(sims_b) / np.mean(sims_v):.4f}",
+)
+X_pct = np.column_stack([np.ones(n), x_bond, 100 * x_stock])
+fit_pct = sm.OLS(y, X_pct).fit()
+ok(
+    "units: the stock excess return in percentage points divides its slope and standard error by 100; t, R2 and "
+    "fitted values are unchanged",
+    close(fit_pct.params[2] * 100, fit.params[2], 1e-12)
+    and close(fit_pct.bse[2] * 100, fit.bse[2], 1e-12)
+    and close(fit_pct.tvalues[2], fit.tvalues[2], 1e-9)
+    and close(fit_pct.rsquared, fit.rsquared, 1e-12)
+    and np.allclose(fit_pct.fittedvalues, fit.fittedvalues, atol=1e-12),
+)
+
 # ---------------------------------------------------------------------------------------------
 print("== part 4: influential observations, dummy variables and logistic regression")
 inf = OLSInfluence(fit)

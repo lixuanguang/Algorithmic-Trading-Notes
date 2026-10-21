@@ -85,6 +85,12 @@ At 20 percent debt the WACC is 8.34 percent for a diversified buyer. For an undi
 \item a sale to a private buyer uses a total-beta cost of equity, a possible extra debt spread, the buyer's personal tax rate, a finite life and an illiquidity discount;
 \item an IPO or a sale to a listed firm uses the market beta, corporate tax, a perpetual life and no illiquidity discount.
 \end{itemize}
+The private-sale column applies both the total beta and the illiquidity discount. They address different effects:
+\begin{itemize}
+\item \emph{Total beta} prices the firm-specific risk an undiversified owner bears, by dividing the market beta by the comparables' correlation with the market (pp.~672--673).
+\item \emph{Illiquidity} is the cost and delay of selling the stake, which depends on the firm's size, health, liquid assets and chance of going public, and on how long the buyer needs to hold (pp.~684--685).
+\end{itemize}
+Damodaran's Chez Pierre is valued for a private sale at a total-beta cost of capital and then considered for an illiquidity discount of 12.94 to 28.75 percent (Illustrations~24.10--24.11, pp.~687--690). Double counting arises when the same liquidity effect enters twice. Examples are an illiquidity premium already built into the discount rate, a size premium that partly measures illiquidity (p.~674), or a multiple from private transactions whose prices already reflect it (Interpretation).
 
 \emph{Control.} A controlling stake is worth the value of the firm run optimally; a minority stake the value under incumbent management (pp.~691--692).
 
@@ -97,19 +103,20 @@ At 20 percent debt the WACC is 8.34 percent for a diversified buyer. For an undi
 \item \emph{Asset.} Assets at fair value of 38.0, less net debt and other liabilities, leave equity of 22.5, a floor.
 \end{itemize}
 
-\emph{A 30 percent stake for a private investor.}
+\emph{A 30 percent stake for a private investor.} The starting value is the income-approach value to a diversified buyer of the whole business. It is a control value, because the normalised cash flows assume the business is run on arm's-length terms. It is also a marketable value, because the 8.34 percent rate contains no illiquidity premium. The stake needs both adjustments:
 \begin{itemize}
 \item Control equity is $59.93-6.0=53.93$.
 \item A 25 percent control premium implies a discount for lack of control of $1-1/1.25=20$ percent.
 \item The Silber regression gives a discount of 48.94 percent at revenue of 10 million and 46.33 percent at 40 million. A 25 percent benchmark for a profitable firm with revenue of 10 million therefore becomes 22.39 percent for Fenton.
 \item The discounts multiply: $0.30\times53.93\times0.80\times0.7761=10.05$, a combined discount of 37.91 percent, not $20+22.39=42.39$ percent.
 \end{itemize}
+For an undiversified buyer of the stake, the total-beta value is the starting point instead: equity $26.05-6.0=20.05$, and $0.30\times20.05\times0.80\times0.7761=3.73$. The marketability discount still applies, because the 15.93 percent rate prices undiversified risk, not the cost of selling. Applying it would double count only if that rate had been built up with an illiquidity premium, or if the 22.39 percent benchmark had already been reduced for a buyer who never needs to sell.
 
-\emph{Recommendation.} For a sale of the whole business, seek a listed or private-equity buyer, whose diversification is worth over 30 of value to the seller; the transaction multiple brackets the result. For the minority stake, 10 is a central estimate, sensitive to the control premium and the marketability benchmark.
+\emph{Recommendation.} For a sale of the whole business, seek a listed or private-equity buyer, whose diversification is worth over 30 of value to the seller; the transaction multiple brackets the result. For the minority stake, 10 is a central estimate for a diversified holder, sensitive to the control premium and the marketability benchmark; to an undiversified individual the same stake is worth about 3.7.
 
 \qffield{Conditions} The control premium, marketability benchmark, correlation and premiums are illustrative inputs. The Silber regression was estimated on restricted stock of listed firms in 1984--1989 and is extended to private firms only as a guide (p.~686). For US tax valuations, ``fair market value'' rests on Revenue Ruling 59-60, which was not read; it is not described here.
 
-\qffield{Pitfalls} Applying a discount for lack of marketability to an income-approach value already built on an undiversified owner's discount rate, which double counts. Applying a control premium to a value already on a control basis. Adding discounts instead of compounding them. Using a single average discount for every firm.
+\qffield{Pitfalls} Treating total beta and a marketability discount as the same adjustment: one prices undiversified risk, the other the cost of selling. Applying a marketability discount to a value whose discount rate or comparables already include an illiquidity premium, which double counts. Applying a control premium to a value already on a control basis. Adding discounts instead of compounding them. Using a single average discount for every firm.
 
 \qffield{See also} \hyperref[meth:comparables-evaluation]{comparables}; \hyperref[meth:private-discount-rate]{discount rates}; \hyperref[meth:valuation-approach-choice]{approach choice}.
 

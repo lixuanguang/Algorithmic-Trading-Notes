@@ -1,0 +1,70 @@
+\section{Allocating to alternative investments}
+
+\begin{qfdefinition}[Alternative investments in multi-asset portfolios: their roles, alternatives against bonds as mitigators of equity risk, and traditional against risk-based opportunity sets]\label{def:alternatives-roles-opportunity-set}
+\qffield{Statement} \emph{Roles} (Interpretation, from the sources cited in each item):
+\begin{itemize}
+\item \emph{return enhancement} from equity-like risk with an illiquidity premium or manager skill --- private equity and private credit (\hyperref[def:private-equity-features]{private equity});
+\item \emph{diversification} from return sources weakly linked to listed markets --- some hedge fund strategies, commodities, timber (\hyperref[def:hedge-fund-features]{hedge funds}; \hyperref[def:commodity-features]{commodities});
+\item \emph{inflation protection} --- real estate, infrastructure and energy commodities, the latter the only commodities that hedged inflation in Ang's data \citep[pp.~366--367]{s7-ang};
+\item \emph{income} --- core real estate, infrastructure and private debt;
+\item \emph{risk mitigation} for an equity-heavy portfolio --- trend following and other long-volatility strategies.
+\end{itemize}
+Ang's caution applies to all of them: illiquid asset classes as a whole do not offer high risk-adjusted returns, and the case for them rests on skill in markets with large information asymmetries \citep[pp.~438--439]{s7-ang}.
+
+\emph{Alternatives against bonds as equity risk mitigators.} High-quality government bonds have usually gained when equities fell sharply, though the stock--bond correlation varies with inflation regimes (\hyperref[def:macro-regime-asset-map]{regime map}). Most alternatives are equity risk in other forms: hedge fund indices had partial correlations of 0.67 with equities and positive exposure to short volatility (pp.~572--573); private equity is levered equity whose smoothed reports hide it (\hyperref[meth:private-capital-diversification]{smoothing}). The exceptions are strategies that are long volatility or trend-following, which gained in the 2001--2002 sell-offs \citep[p.~107]{jaeger-alternative-beta-2008}. Alternatives can mitigate equity risk over long horizons through different return drivers, but in a sudden crisis bonds and trend following are the main offsets.
+
+\emph{Opportunity sets.}
+\begin{itemize}
+\item \emph{Traditional}: asset classes by label --- equities, bonds, cash, then ``alternatives'' --- each with its own allocation and manager structure. Simple to govern and benchmark, but alternative labels hide common risks and lead to over-diversified and overlapping exposures.
+\item \emph{Risk-based}: map every holding to underlying factors --- equity, rates, credit, inflation, illiquidity, volatility --- and allocate to the factors. Ang's principles are that ``factors matter, not assets'' and that assets are ``bundles of factors''; 2008 showed that asset class labels ``can be highly misleading'' about diversification \citep[pp.~195, 211]{s7-ang}. Factor maps are harder to estimate for illiquid assets and harder to communicate to boards.
+\end{itemize}
+
+\qffield{Practice} (Original numbers; checked in the script.)
+\begin{itemize}
+\item \emph{Crisis test}: with equities $-30$ percent, a 60/40 portfolio loses 16.0 percent; replacing half the bonds with hedge funds (beta 0.3) loses 18.8 percent; with trend following, 15.0 percent; a 50/30/20 mix with private equity (beta 1.2) loses 20.7 percent. In normal times the hedge fund and private equity mixes earn more (5.9 and 6.35 against 5.6 percent).
+\item \emph{Risk-based view}: a portfolio labelled 40 percent public equity, 25 bonds, 15 private equity, 10 hedge funds and 10 real estate has an equity beta of 0.645 and duration of 1.8 years; with 16 percent equity and 1 percent yield volatility, equity risk is 97 percent of its variance.
+\end{itemize}
+
+\qffield{Conditions} The betas and scenario returns are illustrative; Ang's figures use data to 2012.
+
+\qffield{Pitfalls} Counting alternatives as diversifiers because their reported correlations are low. Expecting alternatives to cushion an equity crash as bonds do.
+
+\qffield{See also} \hyperref[meth:alternatives-allocation-approaches]{allocation approaches}; \hyperref[def:alternative-investment-categories]{categories}; \hyperref[meth:hedge-fund-factor-exposures]{hedge fund exposures}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Allocating to alternatives: investment considerations by type, suitability, allocation approaches, liquidity planning and commitment pacing, and monitoring a programme]\label{meth:alternatives-allocation-approaches}
+\qffield{Statement} \emph{Investment considerations by type} (Interpretation, collecting the sources): for each type ask what return driver it adds (illiquidity, skill, inflation, volatility), how its risk is measured (smoothing, factor exposures), how it is accessed (funds, co-investment, separate accounts, listed vehicles), what it costs (fee layers), how liquid it is (lock-ups, fund lives, secondary discounts), and how dispersed manager returns are. Private equity and private real assets need commitment programmes and manager selection; hedge funds need factor analysis and liquidity-term review; commodities need a view on the futures curve.
+
+\emph{Suitability}: horizon, liquidity needs and payouts, size (enough to diversify across managers and vintages and to employ staff), governance and the ability to hold through losses, regulation and tax. Ang notes that size and patience are ``necessary but not sufficient'': skill in selecting and monitoring managers is the essential condition, and investors without it are ``taken to the cleaners'' \citep[p.~439]{s7-ang}.
+
+\emph{Allocation approaches.}
+\begin{itemize}
+\item \emph{Mean--variance with adjusted inputs}: de-smoothed volatilities and correlations, net returns, and constraints for illiquidity; unconstrained optimisers overweight smoothed assets.
+\item \emph{Risk-factor allocation}: set budgets for equity, rate, credit, inflation and illiquidity risk and fill them with the cheapest implementation.
+\item \emph{Liquidity-constrained models}: Ang's illiquidity hurdles --- about 0.7 percent a year for an asset tradable every six months, 1 percent for a year and 6 percent for ten years --- and the result that optimal illiquid holdings are modest (p.~438).
+\item \emph{Monte Carlo and cash-flow simulation} of commitments, calls, distributions and NAV under scenarios.
+\item \emph{Rules of thumb and peer models} (for example the endowment model), which ignore the investor's own liabilities and skill.
+\end{itemize}
+
+\emph{Liquidity planning and commitment pacing.} Private funds call committed capital over years and distribute later, so net exposure is ``at best between 40 and 60 percent'' of commitments \citep[p.~186]{demaria-private-markets-2021}. Investors therefore commit more than the target NAV and plan for calls:
+\begin{itemize}
+\item \emph{pacing models}: Takahashi and Alexander model calls as a fraction of uncalled commitments and distributions as a fraction of NAV \citep[p.~3]{depth-pe-luxenberg-2022}. In the stochastic version of Luxenberg and co-authors, repeated unit commitments produce a steady-state NAV gain $\alpha_I$ (3.685 in their calibration), so the commitment that sustains a target NAV is $I^{\text{targ}}/\alpha_I$ (pp.~6, 9, 20);
+\item \emph{overcommitment}: committing 20 percent more when 60 percent is expected to be called raises net exposure to 72 percent, at the risk of exceeding the target or the capacity to pay if distributions stop or credit lines are withdrawn (Demaria, pp.~175--176, 186);
+\item \emph{the denominator effect}: when listed assets fall and private valuations lag, private assets exceed their target weight without any purchase (p.~101);
+\item \emph{liquidity reserves}: hold enough cash, bonds and credit lines to meet calls, payouts and collateral in a stress year with no distributions. Harvard's endowment, short of liquidity in 2008, issued \$2.5 billion of bonds because its assets were illiquid and its liabilities short \citep[pp.~441--442]{s7-ang}.
+\end{itemize}
+
+\emph{Monitoring a programme}: track exposure against target (NAV plus uncalled commitments), pacing and vintage diversification; performance against PMEs and factor benchmarks, net of fees; cash flows against the model; manager organisation, style drift and alignment; valuation policies; and liquidity coverage. Demaria and co-authors stress scenario analysis because historical return data are limited (pp.~177--180).
+
+\qffield{Practice} \emph{Pacing a 10 percent private allocation} (original; checked in the script). In a linear model with call intensities 0.20 on new and 0.35 on uncalled commitments, distribution intensity 0.30 and a 10 percent return, a unit commitment each period gives a steady-state NAV of 4.348 and uncalled commitments of 2.286; calls equal commitments in the steady state, as Luxenberg and co-authors show. To hold 100 of a 1,000 portfolio, commit 23.0 a period; total exposure (NAV plus uncalled) is then 152.6, or 15.3 percent of assets.
+
+\emph{Liquidity plan}: a stress year with calls of 40 percent of 150 unfunded (60), no distributions and a 5 percent payout (50) needs 110 against 120 of cash and Treasuries, a coverage of 1.09. A 30 percent equity fall with stale appraisals would also lift a 10 percent real estate target to 12.0 percent, so the plan must allow rebalancing ranges rather than forced sales.
+
+\qffield{Conditions} The pacing parameters are illustrative, not calibrated; Luxenberg and co-authors are cited from the arXiv version of their ICAIF 2022 paper.
+
+\qffield{Pitfalls} Setting commitments equal to the target NAV. Ignoring unfunded commitments in liquidity plans. Selling liquid assets at the bottom to meet capital calls.
+
+\qffield{See also} \hyperref[def:alternatives-roles-opportunity-set]{roles}; \hyperref[meth:private-capital-allocation]{private capital allocation}; \hyperref[meth:real-assets-allocation]{real assets}; \hyperref[meth:infrastructure-allocation]{infrastructure}.
+
+\end{qfmethod}

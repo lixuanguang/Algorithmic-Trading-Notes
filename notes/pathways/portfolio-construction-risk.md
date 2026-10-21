@@ -96,16 +96,31 @@ In `market-risk-measurement.tex` (topic `market-risk-measurement`):
 
 - `meth:portfolio-var-methods-decomposition`: parametric, historical and Monte Carlo VaR on one portfolio, ES and VaR decompositions (RMFI 6th ed.). Corrected 2026-10-19 (PR #25 pass): one zero-mean convention throughout; components sum to the reported 1,729,125.
 - `meth:sensitivity-scenario-risk-measures`: beta, duration, convexity and option Greeks as risk measures; historical, hypothetical and reverse stress tests. Corrected 2026-10-19 (PR #25 pass): each stress and VaR comparison names the book it covers.
-- `meth:market-risk-limits-capital`: risk budgets and limits, capital allocation with RAROC, and measures by institution type. Corrected 2026-10-19 (PR #25 pass): the stop-loss comparison names the book and convention (1.16 times VaR).
+- `meth:market-risk-limits-capital`: risk budgets and limits, capital allocation with RAROC, and measures by institution type. Corrected 2026-10-19 (PR #25 pass): the stop-loss comparison names the book and convention (1.16 times VaR). Corrected 2026-10-21 (Batch L3): FRTB stated as the Basel standard (effective 1 January 2023) with its different EU, UK and US implementation.
 
 In `derivative-overlays.tex` (topic `derivative-overlay-strategies`):
 
 - `meth:forward-commitment-risk-overlays`: futures and swaps for duration, currency forwards and swaps, and equity futures, forwards and swaps for beta.
-- `meth:volatility-derivative-applications`: variance and volatility swaps and VIX futures.
+- `meth:volatility-derivative-applications`: variance and volatility swaps and VIX futures. Extended 2026-10-21 (Batch L4): a seasoned variance swap valued from observation-weighted realised and remaining variance (a labelled derivation), with the exact discrete remaining strike under GBM kept apart from the continuous approximation; checks in `notes/artefacts/derivative-overlays/seasoned-variance-swap-check.py`.
 - `meth:derivative-overlay-allocation`: targeting equity and rate exposure together, rebalancing, and expectations inferred from derivative prices.
 - `ex:endowment-derivative-overlay-case`: cash against futures for rebalancing and a tactical tilt (illustrative).
 
 All partly checked 2026-10-19, draft. Examples in `notes/artefacts/market-risk-measurement/market-risk-checks.py` and `notes/artefacts/derivative-overlays/overlay-checks.py`; human review is outstanding. Coverage records are editorial, not study. `meth:var-es-estimation-methods` and `def:vix-variance-dividend-swaps` are linked, not repeated.
+
+Written in the alternatives batch (2026-10-20):
+
+In `hedge-fund-strategies.tex`:
+
+- `def:hedge-fund-features`: features against other asset classes, vehicles (single funds, funds of funds, managed accounts, registered funds), data biases, performance, smoothing, and fee layers in a fund of funds.
+- `meth:hedge-fund-strategy-classification`: classification and the equity-related, event-driven, relative value, opportunistic, specialist and multi-manager families, with merger, long/short and convertible arithmetic.
+- `meth:hedge-fund-factor-exposures`: factor models with lagged factors for smoothing, and the Sharpe-ratio test for adding a fund to a 60/40 portfolio on reported and de-smoothed statistics.
+
+In `alternatives-allocation.tex`:
+
+- `def:alternatives-roles-opportunity-set`: roles of alternatives, alternatives against bonds as equity risk mitigators, and label-based against factor-based opportunity sets.
+- `meth:alternatives-allocation-approaches`: considerations by type, suitability, allocation approaches, commitment pacing (Takahashi-Alexander and Luxenberg et al.), overcommitment, the denominator effect, liquidity reserves and monitoring.
+
+Sources: Ang (2014) chaps. 13, 14 and 17; Jaeger (2008); Getmansky, Lo and Makarov (NBER WP 9571); Demaria et al. (2021); Luxenberg et al. (arXiv 2207.07767). Examples in `notes/artefacts/hedge-funds/hedge-fund-checks.py` and `notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py`. Partly checked 2026-10-20, draft; human review outstanding. Coverage records are editorial, not study.
 
 ## Source verification after macro markets and pricing review
 
@@ -114,6 +129,12 @@ method validation (2026-10-17) (audit repairs and a source-review coverage; sour
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `meth:residual-reversion-strategy` narrowed (Avellaneda and Lee and Gatev et al. merged into the alpha taxonomy); `ev:value-carry-premia` resolved (Koijen et al., Asness, Moskowitz and Pedersen and the QMJ paper merged into `def:alpha-model-taxonomy`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
 
 derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog reconciliation and a source-review coverage; source verification and bounded tests, not study or human review): the `def:alpha-model-taxonomy` and `meth:s-score-residual-trading` questions: Lo and MacKinlay's decomposition of contrarian profits, Avellaneda and Lee's s-score thresholds (chosen inside their backtest period) and Moskowitz, Ooi and Pedersen's position sizing merged into `def:alpha-model-taxonomy`; `meth:residual-reversion-strategy` narrowed. The record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
+
+## Entries created by the completion batch (2026-10-20)
+
+Institutional investor portfolios, in `institutional-portfolios.tex`, checked by `notes/artefacts/institutional-portfolios/institutional-checks.py`: `def:institutional-investor-characteristics`, `meth:db-pension-risk`, `meth:institutional-ips-portfolios`, `meth:swf-risk-case`, `meth:endowment-liquidity-allocation`, `meth:institutional-esg-integration`. Sources: Ang (2014) chap. 1, 3 and 13, NBIM's GPFG pages (2026), the Santiago Principles, Lerner, Schoar and Wang (NBER WP 14341), Title 26 ss. 430 and 4942, IRS Notice 2021-48, New York NPC s. 553 and the GSIA review; existing bank, insurer, ESG and allocation entries are cross-referenced. Partly checked 2026-10-20, draft; human review outstanding. The records are in `notes/source-review-records.md`, *Completion batch, 20 October 2026*, and *Final audit correction pass, 20 October 2026* (pension funding law, New York endowment spending law, endowment liquidity).
+
+PR #33 correction pass (2026-10-21): Harlow's 2026 statutory base nets the present value of installments on open bases (IRC 430(c)(3); 96.8m, not 400m) and the full minimum contribution is computed with its timing (151.91m at the valuation date); Elmsworth's pure spending rule is tested against its own quarterly history (peak 5.24 percent, not 5.25). See [record](../source-review-records.md#pr-33-correction-pass-21-october-2026).
 
 ## Related entries owned elsewhere
 

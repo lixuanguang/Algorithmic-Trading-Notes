@@ -189,9 +189,25 @@ ok(
     and close(fcfe_fcff, fcfe_ni),
     f"NI {ni:.2f}, EBIT {ebit:.2f}, EBITDA {ebitda:.2f}, CFO {cfo:.2f}",
 )
+# Corrected 2026-10-20 (audit): with interest paid in financing and taxes paid in operating (IAS 7 paras. 34A, 35),
+# CFO is built from cash receipts and payments, not by adjusting the US GAAP figure.
+taxes_paid = t * (ebit - interest)
+cfo_int_fin = ebitda - taxes_paid - wc_inv
+cfo_tax_fin = ebitda - t * ebit - wc_inv  # the interest tax saving also shown in financing
 ok(
-    "IFRS presentation: if interest paid sits in financing, CFO is 9 higher and the interest term is dropped",
-    close((cfo + interest) - interest * t - fc_inv, fcff_cfo),
+    "interest paid in financing, taxes in operating: CFO 120 - 19.50 - 8 = 92.50 (12 above the US GAAP 80.50); "
+    "FCFF = CFO - interest x t - FCInv = 44.50",
+    close(cfo_int_fin, 92.5)
+    and close(cfo_int_fin - cfo, interest)
+    and close(cfo_int_fin - interest * t - fc_inv, fcff_ebit),
+)
+ok(
+    "omitting the interest tax shield gives 47.50, overstating FCFF by 3.00; CFO is 89.50 and FCFF = CFO - FCInv "
+    "only if the tax saving is also classified in financing",
+    close(cfo_int_fin - fc_inv, 47.5)
+    and close(cfo_int_fin - fc_inv - fcff_ebit, interest * t)
+    and close(cfo_tax_fin, 89.5)
+    and close(cfo_tax_fin - fc_inv, fcff_ebit),
 )
 # Harbour 2026 forecast: CFO route (with valuation adjustments) against the NOPAT route.
 f26 = H["base"][0]
@@ -206,9 +222,16 @@ print("== part 4: forecasting FCFF and FCFE - payouts, issues and leverage")
 base_fcff, base_fcfe = fcff_ni, fcfe_ni
 fcfe_more_debt = ni + dep - fc_inv - wc_inv + (net_borrow + 20.0) - 20.0 * 0.06 * (1 - t)
 ok(
-    "a dividend or buyback changes neither FCFF nor FCFE; borrowing 20 more at 6% raises FCFE by 20 - 0.90 "
-    "in the year and leaves FCFF unchanged",
+    "with net borrowing fixed at 10, borrowing 20 more at 6% (drawn at the start of the year) raises FCFE by "
+    "20 - 0.90 in the year and leaves FCFF unchanged",
     close(fcfe_more_debt - base_fcfe, 20 - 0.9),
+)
+# Uses of FCFE under the fixed policy: dividends 30, buyback 10, no issue; cash takes the rest.
+d_cash = base_fcfe - 30.0 - 10.0
+ok(
+    "fixed borrowing: FCFE 45.50 = dividends 30 + buyback 10 + cash increase 5.50; five more of dividends cut "
+    "the cash increase to 0.50 and leave FCFE at 45.50",
+    close(d_cash, 5.5) and close(base_fcfe - 35.0 - 10.0, 0.5),
 )
 for f in H["base"]:
     o, c = f["open"], f["bs"]
@@ -218,6 +241,48 @@ for f in H["base"]:
         f"{c['cash'] - o['cash']:.2f}; net borrowing {f['draw'] - f['loan_repay'] - f['lease_principal'] + f['lease_new']:.2f}",
         close(fcfe_stat, f["divs"] + c["cash"] - o["cash"], 1e-9),
     )
+# Payout sensitivity under the revolver policy (corrected 2026-10-20, audit): the revolver tops cash up to 40,
+# so a higher dividend is borrowed and actual FCFE rises with it. FCFE before the revolver (scheduled loan and
+# lease flows only) and FCFF barely move.
+with contextlib.redirect_stdout(io.StringIO()):
+    hi = H["forecast"](payout=0.50)
+
+
+def fcfe_actual(f):
+    return f["cfo"] - f["capex"] - f["lease_principal"] - f["loan_repay"] + f["draw"]
+
+
+lo26, hi26 = H["base"][0], hi[0]
+ok(
+    "2026 at payout 50% instead of 40%: dividend 36.62 (from 29.36), revolver draw 38.28 (from 30.81), actual "
+    "FCFE 39.08 (from 31.82) - the superseded claim that FCFE stays unchanged fails by 7.26",
+    round(hi26["divs"], 2) == 36.62
+    and round(hi26["draw"], 2) == 38.28
+    and round(lo26["draw"], 2) == 30.81
+    and round(fcfe_actual(hi26), 2) == 39.08
+    and round(fcfe_actual(lo26), 2) == 31.82
+    and fcfe_actual(hi26) - fcfe_actual(lo26) > 7.0,
+    f"{fcfe_actual(lo26):.4f} -> {fcfe_actual(hi26):.4f}",
+)
+ok(
+    "at 50% the identity still holds: FCFE = dividends + change in cash (2.46, unchanged); no shares issued",
+    all(close(fcfe_actual(f), f["divs"] + f["bs"]["cash"] - f["open"]["cash"], 1e-9) for f in hi)
+    and round(hi26["bs"]["cash"] - hi26["open"]["cash"], 2) == 2.46
+    and all(close(f["bs"]["share_capital"], f["open"]["share_capital"]) for f in hi),
+)
+ok(
+    "FCFE before the revolver 1.01 -> 0.80 (extra interest only); valuation FCFF 31.93 -> 31.88: FCFF credits "
+    "the full tax saving on the extra interest, of which only 20% is settled in cash within the year",
+    round(fcfe_actual(lo26) - lo26["draw"], 2) == 1.01
+    and round(fcfe_actual(hi26) - hi26["draw"], 2) == 0.80
+    and round(H["fcff_valuation"](lo26), 2) == 31.93
+    and round(H["fcff_valuation"](hi26), 2) == 31.88
+    and close(
+        H["fcff_valuation"](lo26) - H["fcff_valuation"](hi26),
+        0.8 * TAX * (hi26["interest_paid"] - lo26["interest_paid"]),
+        1e-9,
+    ),
+)
 # Target-ratio forecasting shortcut (Damodaran): FCFE = NI - (1 - DR)(FCInv - Dep + WCInv).
 dr = 0.30
 ok(
@@ -468,7 +533,8 @@ ok(
     and round(v_ri_naive, 2) == 809.24
     and round(pv_credits, 2) == 24.92
     and round(pb_t, 4) == 1.2148
-    and [round(v / SHARES, 2) for v in (v_ddm, v_ri_naive)] == [8.28, 8.03],
+    and [round(v / SHARES, 2) for v in (v_ddm, v_ri_naive)]
+    == [8.28, 8.03],  # simple division: superseded, see below
     f"DDM {v_ddm:.4f} ({v_ddm / SHARES:.4f} a share), RI {v_ri_naive:.4f} ({v_ri_naive / SHARES:.4f}), PV credits {pv_credits:.4f}, P_T {p_t:.4f}, P/B {pb_t:.4f}",
 )
 ok(
@@ -476,14 +542,57 @@ ok(
     round(ni_h[0] / bvs[0], 4) == 0.1134 and [round(r, 2) for r in ri_h] == [13.04, 10.12, 9.86],
     ", ".join(f"RI {r:.2f}" for r in ri_h),
 )
-pb_mkt = PRICE * SHARES / bvs[0]
-g_implied = KE - (roe_ss - KE) / (pb_mkt - 1)
-roe_implied = KE + (pb_mkt - 1) * (KE - g_ss)
+# Claims (corrected 2026-10-20, audit). Book value plus RI values every equity claim book equity supports, including
+# the five million vested options; the DDM aggregate also includes the dividends that future grantees will receive.
+# Per common share both need the option claim removed at the price it implies, as in the DCF bridge.
+p_ri = per_share(v_ri_naive)
+p_brent = brentq(lambda p: p * SHARES + option_claim(p) - v_ri_naive, 1.0, 20.0)
+opt_ri = option_claim(p_ri)
 ok(
-    "implied growth from the market P/B: at P/B 1.71, ke 9.32% and a sustained ROE of 10.79%, residual income "
-    "must grow at 7.27% a year; at 2.5% growth the price needs a sustained ROE of 14.18%",
-    round(pb_mkt, 2) == 1.71 and round(g_implied, 4) == 0.0727 and round(roe_implied, 4) == 0.1418,
-    f"P/B {pb_mkt:.4f}, g {g_implied:.4f}",
+    "per common share: p = (809.24 - 5 C(p)) / 100.75 = 7.9557, options 7.70; the fixed point equals a root-finder "
+    "solution; simple division (8.0322) overstates by the option claim per share",
+    round(p_ri, 4) == 7.9557
+    and close(p_ri, p_brent, 1e-9)
+    and round(opt_ri, 2) == 7.70
+    and round(v_ri_naive / SHARES, 4) == 8.0322
+    and close(v_ri_naive / SHARES - p_ri, opt_ri / SHARES, 1e-9),
+    f"{p_ri:.6f}, options {opt_ri:.4f}",
+)
+common_ddm = v_ddm - pv_credits - opt_ri
+ok(
+    "dividend route on the same claims: 834.16 - 24.92 (future grants) - 7.70 (vested options) = 801.54 = "
+    "7.9557 x 100.75; deducting the options does not double count the grants charged in RI",
+    round(common_ddm, 2) == 801.54 and close(common_ddm / SHARES, p_ri, 1e-9),
+)
+pb_mkt = PRICE * SHARES / bvs[0]
+pb_claims = (PRICE * SHARES + option_claim(PRICE)) / bvs[0]
+g_implied = KE - (roe_ss - KE) / (pb_claims - 1)
+roe_implied = KE + (pb_claims - 1) * (KE - g_ss)
+g_common = KE - (roe_ss - KE) / (pb_mkt - 1)
+roe_common = KE + (pb_mkt - 1) * (KE - g_ss)
+ok(
+    "implied growth on all equity claims: market equity 1,108.25 + options 17.94 = 1,126.19, P/B 1.74; at ke "
+    "9.32% and a sustained ROE of 10.79% residual income must grow 7.34% a year; at 2.5% growth the price needs "
+    "ROE 14.37% (shares alone: P/B 1.71, 7.27% and 14.18%)",
+    round(PRICE * SHARES + option_claim(PRICE), 2) == 1126.19
+    and round(pb_claims, 2) == 1.74
+    and round(g_implied, 4) == 0.0734
+    and round(roe_implied, 4) == 0.1437
+    and round(pb_mkt, 2) == 1.71
+    and round(g_common, 4) == 0.0727
+    and round(roe_common, 4) == 0.1418,
+    f"P/B {pb_claims:.4f}, g {g_implied:.4f}, ROE {roe_implied:.4f}",
+)
+# Justified P/B applied to book is also an aggregate over all equity claims.
+just_agg = pb_t * bvs[0]
+p_just = per_share(just_agg)
+ok(
+    "justified P/B 1.2148 x book 647.38 = 786.43 for all equity claims: 7.81 by simple division, 7.74 a common "
+    "share after the vested options",
+    round(just_agg, 2) == 786.43
+    and round(just_agg / SHARES, 2) == 7.81
+    and round(p_just, 2) == 7.74,
+    f"{p_just:.4f}",
 )
 share_book = bvs[0] / v_ri_naive
 share_tv_ri = (p_t - bvs[-1]) / (1 + KE) ** 3 / v_ri_naive
@@ -589,6 +698,16 @@ ok(
 ok(
     "the discounts multiply: 1 - 0.80 x 0.7761 = 37.91%, not 20% + 22.39% = 42.39%",
     round(1 - (1 - dloc) * (1 - dlom), 4) == 0.3791,
+)
+# Corrected 2026-10-20 (audit): total beta and marketability are different effects (Damodaran Table 24.2 applies both
+# for a private sale), so an undiversified buyer's stake value keeps the marketability discount.
+stake_undiv = 0.30 * (ev_priv - net_debt_f) * (1 - dloc) * (1 - dlom)
+ok(
+    "undiversified buyer: 30% of (26.05 - 6.0) = 20.05 equity, less DLOC and DLOM: 3.73; dropping the DLOM as a "
+    "supposed double count would give 4.81, pricing the stake as if it could be sold freely",
+    round(ev_priv - net_debt_f, 2) == 20.05
+    and round(stake_undiv, 2) == 3.73
+    and round(0.30 * (ev_priv - net_debt_f) * (1 - dloc), 2) == 4.81,
 )
 
 print(f"\n{n_checks} checks executed")

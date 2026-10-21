@@ -35,6 +35,25 @@ Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/
 
 These entries serve the curriculum objectives of the section; none of the pathway's 14 required readings was read for them. Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#credit-time-series-and-valuation-batch-20-october-2026).
 
+Alternatives batch (2026-10-20), in `credit-portfolio-management.tex`:
+
+- `meth:credit-spread-portfolio-risk`: risks of spread portfolios, spread duration and DTS, and the spread measures with the case for OAS.
+- `meth:credit-selection-positioning`: bottom-up (excess spread to peers) and top-down (cycle, sectors, equity momentum) approaches, and positioning by DTS, curve, quality and instrument.
+- `meth:credit-liquidity-tail-risk`: liquidity cost scores, liquidity management, credit VaR (Vasicek), stress tests and issuer limits by downgrade risk or DTS.
+- `meth:credit-cds-international-structured`: CDS overlays and replication, international credit, structured instruments against corporates (tranching, CLO tests) and analytical tools.
+
+Sources: Ben Dor et al. (2012, 2021), Hull (2023) chap. 19, Larreur (2021). Examples in `notes/artefacts/credit-portfolios/credit-portfolio-checks.py`. Partly checked 2026-10-20, draft; human review outstanding; none of the pathway's required readings was read for them.
+
+Written in library gap-filling Batch L2 (2026-10-21), new topic file `compendium/corporate-credit-capital/counterparty-xva.tex`:
+
+- `def:counterparty-exposure-measures`: exposure of a netting set, EFV, EE, PFE, EPE and effective EPE, netting, two-way and one-way collateral with a margin period of risk, payments inside the margin period, and collateral that raises exposure.
+- `meth:credit-valuation-adjustment`: unilateral CVA, the independence of default from discounted exposure that the factorization needs, the forward-measure form, EPE times spread as a per-annum charge and its risky-annuity conversion, DVA, and FVA, MVA and KVA in outline.
+- `def:wrong-way-risk`: wrong-way and right-way risk, discounted exposure conditional on default in each interval, general against specific, and a latent-normal example with a stated default tail.
+- `rule:counterparty-credit-cva-capital`: regulatory capital for derivatives counterparty risk, separating SA-CCR exposure at default, default-risk capital and CVA-risk capital (reduced BA-CVA), with the Basel dates and EU, UK and US implementation as of 21 October 2026; checked example (library gap-filling Batch L3).
+- `meth:risky-bond-cva` extended: CVA by state prices on the calibrated tree (an original derivation), why a bond's tree CVA does not depend on volatility while a swap's does, and a risky floater's discount margin.
+
+Partly checked 2026-10-21, draft. Checks in `notes/artefacts/counterparty-xva/counterparty-xva-checks.py`. Sources: Hull, *RMFI* 6th ed., chap. 18; Hull, *OFOD* 11th Global ed., chap. 9 and sec. 24.7; Gregory, *The xVA Challenge*, 3rd ed., chaps. 7, 11, 14, 15 and 17; the Handbook, chap. 36 (the tree). Smith (2017), the curriculum's source for tree-based CVA, was not read. Human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l2-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 macro markets and pricing review follow-up, 2026-10-16 (source verification, not study): `conv:cds-standard-contract` narrowed. Entries corrected in the same follow-up are listed in `notes/source-review-records.md`, *macro markets and pricing review follow-up*.

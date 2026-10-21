@@ -1,0 +1,77 @@
+\section{Machine learning methods}
+
+\begin{qfdefinition}[Supervised, unsupervised and deep learning; overfitting, the bias--variance trade-off, and the methods that control it]\label{def:learning-methods-overfitting}
+\qffield{Statement} \emph{Supervised learning} fits a model relating predictors $x_i$ to an observed response $y_i$, for prediction or inference: regression when $y$ is quantitative, classification when it is a category. \emph{Unsupervised learning} has measurements $x_i$ but no response; it looks for structure, such as clusters of observations or a few components that summarise many variables \citep[pp.~26--27]{s6-isl}. \emph{Deep learning} fits neural networks with several layers of nonlinear units; it can be supervised, unsupervised or used in reinforcement learning, in which an algorithm learns from feedback on its actions \citep[pp.~5--6]{fsb-ai-ml-2017}; \citep[pp.~403--407]{s6-isl}. Machine learning finds patterns and correlations for prediction and classification; it does not by itself establish causes (FSB, pp.~5--6).
+
+\emph{Overfitting.} As a model becomes more flexible, training error keeps falling but test error falls and then rises: a flexible model starts to follow noise. Expected test error decomposes into the variance of the estimate, its squared bias and the irreducible error: $E[(y_0-\hat f(x_0))^2]=\mathrm{Var}(\hat f(x_0))+[\mathrm{Bias}(\hat f(x_0))]^2+\mathrm{Var}(\epsilon)$. Flexible methods have low bias and high variance \citep[pp.~31--36]{s6-isl}.
+
+\emph{Addressing it}: estimate test error honestly with a held-out validation set or $k$-fold cross-validation, typically $k=5$ or 10, which balances the bias of small training sets against the variance of leave-one-out estimates (pp.~198--206); restrict complexity by penalties (ridge, lasso), by pruning trees or limiting depth, by early stopping, dropout and weight decay in networks (pp.~237--247, 331--336, 436--438); average many models (bagging, random forests); use more data; and, in finance, respect time order with purged and embargoed validation (\hyperref[meth:purged-embargoed-cross-validation]{purged CV}).
+
+\qffield{Practice} \emph{Synthetic demonstration} (\texttt{ml-methods-checks.py}, part~1): 120 points from $y=\sin(2.5x)$ plus noise with variance 0.09, fitted with polynomials of degree 1 to 12. Training error never rises with degree; validation error is lowest at degree 3 (0.093, close to the 0.09 noise floor) and higher at degree 12 (0.115). Choosing degree 12 because it fits the training data best would be overfitting.
+
+\qffield{Conditions} The data are simulated; with dependent financial data, random splits leak information and chronological or purged splits are required.
+
+\qffield{Pitfalls} Reporting training or in-sample fit as performance. Tuning on the test set. Treating a predictive pattern as a causal one.
+
+\qffield{See also} \hyperref[meth:supervised-algorithm-selection]{supervised algorithms}; \hyperref[meth:ml-model-training-evaluation]{training and evaluation}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Supervised algorithms and the problems each suits: penalised regression, support vector machines, k-nearest neighbours, classification and regression trees, ensembles and random forests]\label{meth:supervised-algorithm-selection}
+\qffield{Statement} \citep[pp.~25--39, 237--250, 327--383]{s6-isl}, at the pages given:
+\begin{itemize}
+\item \emph{Penalised regression}. Ridge minimises $\mathrm{RSS}+\lambda\sum\beta_j^2$, shrinking all coefficients; the lasso uses $\lambda\sum|\beta_j|$ and sets some exactly to zero, selecting features. The lasso tends to do better when few predictors matter, ridge when many matter a little; $\lambda$ is chosen by cross-validation (pp.~237--250). \emph{Suits}: many correlated or noisy predictors, linear signals, a need for sparse or stable models.
+\item \emph{Support vector machines}: find the separating boundary with the largest margin, allowing violations controlled by a cost parameter; kernels enlarge the feature space for nonlinear boundaries (pp.~367--383). \emph{Suits}: classification with clear margins, many features, moderate sample sizes.
+\item \emph{K-nearest neighbours}: predicts from the $k$ closest training points; small $k$ is flexible, large $k$ smooth (pp.~36--39). \emph{Suits}: low-dimensional problems with irregular boundaries; it degrades with many irrelevant features.
+\item \emph{Classification and regression trees}: recursive binary splits that minimise squared error or impurity; easy to explain and handle mixed predictors and interactions, but are non-robust and often less accurate (pp.~327--340).
+\item \emph{Ensembles}: bagging averages trees fitted to bootstrap samples; \emph{random forests} also sample features at each split to decorrelate the trees; boosting fits trees sequentially to what earlier trees missed, with shrinkage (pp.~340--352). \emph{Suits}: nonlinear relations and interactions where accuracy matters more than a single readable model.
+\end{itemize}
+Flexible methods trade interpretability for fit (p.~25); in text and other high-dimensional data, penalised linear models are often hard to beat out of sample \citep[NBER WP 23276, pp.~12--15]{wide-gentzkow-kelly-taddy}.
+
+\qffield{Practice} \emph{Synthetic comparisons} (\texttt{ml-methods-checks.py}, part~2; splits 60/20/20; tuning on validation, one evaluation on test):
+\begin{center}\small
+\begin{tabular}{@{}p{0.34\linewidth}p{0.2\linewidth}p{0.36\linewidth}@{}}
+\toprule
+Data-generating process & Better method & Test result \\
+\midrule
+4 of 40 features matter, linearly & Lasso & MSE 1.25 against 1.65 for OLS; 27 of 36 noise coefficients zero \\
+$y$ jumps only when $x_1>0$ and $x_2>0$ & Tree, random forest & MSE 0.19 and 0.14 against 0.48 linear \\
+Circular class boundary & KNN & Accuracy 0.95 against 0.46 for a linear SVM \\
+Linear class boundary & Linear SVM & Accuracy 0.89 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{Decision} for a credit-default classifier with 200 candidate ratios and a regulatory need to explain decisions: a lasso logistic model as the primary model, with a random forest as a challenger whose gains, if any, must survive the out-of-time test.
+
+\qffield{Conditions} The comparisons are on simulated data built to favour each method; real datasets need their own validation.
+
+\qffield{Pitfalls} Choosing an algorithm by reputation rather than by the data and the need to explain it. Forgetting to standardise inputs for penalised regression, KNN and SVMs, or standardising with test-period statistics.
+
+\qffield{See also} \hyperref[def:learning-methods-overfitting]{overfitting}; \hyperref[meth:unsupervised-algorithm-selection]{unsupervised algorithms}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Unsupervised algorithms and the problems each suits: principal components analysis, k-means clustering and hierarchical clustering]\label{meth:unsupervised-algorithm-selection}
+\qffield{Statement} \citep[pp.~498--531]{s6-isl}, at the pages given:
+\begin{itemize}
+\item \emph{Principal components analysis} finds orthogonal directions of maximum variance; the first few components summarise many correlated variables, their loadings show what drives them, and the proportion of variance explained (a scree plot) shows how many to keep. Variables are usually standardised first (pp.~498--510). \emph{Suits}: dimension reduction, visualisation, factor extraction (yield curves, equity risk factors), and inputs to regression.
+\item \emph{K-means clustering} partitions observations into a chosen number $K$ of non-overlapping clusters by minimising within-cluster variation; the algorithm reaches a local optimum, so it is run from several random starts (pp.~517--521).
+\item \emph{Hierarchical clustering} builds a dendrogram by successively merging the closest observations or clusters under a chosen dissimilarity and linkage (complete, average, single, centroid); the number of clusters is chosen afterwards by cutting the tree (pp.~521--530).
+\end{itemize}
+Clustering results depend on scaling, the dissimilarity, the linkage and $K$, will always find clusters even in noise, and should be validated on new data (pp.~530--531). \emph{Uses in finance}: grouping securities or funds by return behaviour for diversification or peer groups, regime identification, and pricing illiquid securities by similarity \citep[p.~5]{fsb-ai-ml-2017}.
+
+\qffield{Practice} \emph{Synthetic demonstrations} (\texttt{ml-methods-checks.py}, part~3).
+\begin{itemize}
+\item \emph{PCA}: ten yields driven by a level and a slope factor. Fitted on the first 300 of 500 observations, the first two components explain more than 95 percent of variance (0.889 and 0.083); the first has nearly equal loadings (level), the second loadings that change sign (slope); eigenvalues match squared singular values divided by $n-1$.
+\item \emph{K-means}: three planted groups of 60 points. With ten random starts the within-cluster sum of squares never rises during iterations and the best start recovers the groups; the sum of squares falls from 1,049 ($K=1$) to 416 and 135 and then only to 115 and 100: an elbow at three.
+\item \emph{Hierarchical}: average linkage cut at three clusters recovers the groups with 99 percent purity without fixing $K$ in advance.
+\end{itemize}
+\emph{Choice}: PCA when the aim is fewer variables; k-means when the number of groups is known or testable and clusters are compact; hierarchical clustering to see nested structure (for example, sectors within markets) before choosing a cut.
+
+\qffield{Conditions} Synthetic data with planted structure; in markets, clusters and components change over time and should be re-estimated on rolling training windows.
+
+\qffield{Pitfalls} Running PCA on unstandardised variables of different units. Treating clusters found in one period as stable. Using full-sample PCA loadings in a backtest.
+
+\qffield{See also} \hyperref[meth:yield-curve-factor-exposures]{yield-curve factors}; \hyperref[mod:pca-risk-distribution-weights]{PCA risk weights}.
+
+\end{qfmethod}

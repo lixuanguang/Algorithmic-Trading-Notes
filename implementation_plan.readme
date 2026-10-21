@@ -24,6 +24,10 @@ branch stacked on PR #22. No next content slice has been selected. Not started: 
 (multiple regression, misspecification, extensions); the rest of Batch 2; and
 the rest of Batches 3-6. (Later batches are in Sections 20-29; the linear-regression objectives
 named here were completed in Section 29.)
+Current summary (2026-10-20): after the audit corrections of Section 32, the completion batch
+of Section 33 and the final audit corrections of Section 34, all 424 objectives and all 1,030 outline items are covered (editorial coverage),
+with professional ethics and private wealth management added as chapters. Remaining work is
+human review of the draft entries and study; no content batch is pending.
 Editorial coverage only: nothing here records or implies learner mastery.
 Audit date: 2026-10-18, Asia/Singapore.
 Repository baseline: `dc74b55`; pinned guide: `343d145909ba5384202b50604bf5ebe7e5b6ed86`.
@@ -3136,3 +3140,234 @@ individually against their outline pages. Editorial coverage only.
 - Human review is outstanding.
 
 Details: `notes/source-review-records.md`, *Credit, time-series and valuation batch, 20 October 2026*.
+
+## 30. Valuation and inference audit corrections after PR #32 (executed 2026-10-20)
+
+**Verified state.** `main` at `191edb2` (PR #32 merged; the earlier stacked arrangement is finished).
+Branch `codex/alternatives-audit-20261020` from `main`, with a draft PR to `main`. Untracked copies
+named "... 2" were present and were neither deleted nor committed; validation runs in a separate
+worktree because the checker reads them. Coverage 326/424 objectives and 774/1,030 items.
+
+**Corrections** (figures and sources: `notes/source-review-records.md`, *Valuation and inference audit
+correction pass*):
+1. FCFF with interest paid in financing deducts the interest tax shield (Avon CFO 92.50, FCFF 44.50,
+   47.50 if omitted); IAS 7 before and after IFRS 18 distinguished.
+2. FCFE under a revolver rises with the payout (31.82 to 39.08 in 2026); fixed and endogenous
+   borrowing distinguished; uses of FCFE reconciled; Damodaran p. 355 restated.
+3. Residual-income and dividend aggregates reduced to the common shares through the vested-option
+   claim: 7.96 a share, not 8.03 or 8.28; implied growth and ROE on all equity claims.
+4. Total beta and marketability are different effects (Damodaran Table 24.2); Fenton's basis stated.
+5. Structured-entity control from substantive power, returns and their link, with contrasting cases
+   (IFRS 10 B51, FAS 167 Example 1); the check derives control instead of assuming it.
+6. The direction of OLS standard-error bias under serial correlation depends on the design
+   (counterexample); units are not misspecification; exogeneity conditions stated.
+7. Inflation model choice validated at the five-year cumulative horizon on common origins, with
+   overlap and Diebold-Mariano comparisons; 1990-2025 is not a holdout; the wartime claim qualified.
+8. Life insurers added (`meth:life-insurer-analysis`): IFRS 17, Solvency II, Hull and an issuer MCEV
+   report; `objective:analyse-insurer` retained as covered with both entries.
+
+**Evidence.** Four scripts extended (57, 54, 24 and 36 checks). Eleven objectives and 32 outline items
+rechecked; coverage unchanged. Corrections count toward no new objective.
+
+## 31. Alternatives batch (executed 2026-10-20)
+
+**Verified state.** Same branch and draft PR as section 30, after the audit commit. Coverage
+before: 326/424 objectives and 774/1,030 outline items. All 45 selected objectives were
+`missing`; their 113 outline items map to no objective outside the batch.
+
+**Scope.** Market structure (3); alternative structures, private equity and debt, private-market
+programmes (17, new chapter `private-capital-allocator`); real estate, infrastructure and land
+(10, new chapter `real-asset-investor`); commodity investment (4); hedge funds (3); ETFs (2);
+credit portfolio strategies (4); allocation to alternatives (2).
+
+**Method.** Each outline item read on its page; non-curriculum sources only (books held by the
+owner, working papers, law and index documents); one checked example script per area, reused
+through `make examples`; records through the existing objectives, crosswalk, entry-evidence,
+reading-note and pathway files. No new validation framework.
+
+**Result.** 45 new entries (plus one existing ETF entry remapped), eight scripts with 141 checks,
+17 new sources, 27 new and 14 extended reading notes. Coverage 371/424 objectives and 887/1,030
+items. Editorial coverage only; human review is outstanding.
+
+Details: `notes/source-review-records.md`, *Alternatives batch, 20 October 2026*.
+
+## 32. Alternatives audit corrections on PR #33 (executed 2026-10-20)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `505a13f`, draft PR #33 to `main` open, working
+tree clean, no "... 2" copies present. Coverage 371/424 objectives and 887/1,030 items.
+
+**Corrections** (figures and sources: `notes/source-review-records.md`, *Alternatives audit correction pass*):
+1. Timber return from an opening-to-closing NAV reconciliation (3.905 percent, not about 10); zero-growth harvest
+   returns only the costs.
+2. Ashdown construction financing dated: pro-rata draws, 4.04 of capitalised interest, sources = uses 204.04,
+   sculpted repayment, LLCR from the start of operations, equity IRR 9.63 percent (9.65 with equity-funded
+   interest); allocation entry restated.
+3. Chapter 11: class acceptance (1126(c)) separated from confirmation (1129(a)(8), (a)(10), (b)); fair and
+   equitable by class; DIP priority under sec. 364; Halden threshold 250.
+4. PME with residual NAV, an interim example and the benchmark-matching case; deflated IRR described exactly.
+5. Covered bonds separated from securitisation tranches; tranche, coupon and prepayment claims scoped.
+6. Replacement cost not a floor: obsolescence, substitution, reconciliation; Harbour Point below cost.
+7. One-way liquidation cost against a stated mark (0.10 percent against mid), cash and weights reconciled.
+
+**Evidence.** Three scripts extended (37, 38 and 25 checks). Ten objectives and 27 outline items rechecked;
+coverage unchanged. Corrections count toward no new objective.
+
+## 33. Completion batch: the remaining 53 objectives (executed 2026-10-20)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `2d9f2f3` (the Section 32 corrections), draft
+PR #33 open, no "... 2" copies present. Coverage before: 371/424 objectives and 887/1,030 outline items; the 143
+remaining items map only to the 53 remaining objectives. At the user's request this batch covers all of them,
+superseding the 45-objective preference for this prompt only.
+
+**Scope.** Professional ethics (22, new chapter `professional-ethics`): ethics and trust, the code and its
+enforcement, Standards I-VII applied with prevention, conduct evaluation, the Asset Manager Code and manager
+selection. Private wealth (15, new chapter `private-wealth-management`). Institutional investors (6). Machine
+learning and the data-science workflow (7). Backtest design (1). Distributed ledgers and digital-asset investing (2).
+
+**Method.** Each outline item read on its page; issuer texts for the ethics code (no curriculum readings), law,
+regulators' pages and tax tables dated to 2026, books held by the owner, working papers; original hypothetical
+clients and cases; synthetic data, labelled, for machine learning and backtesting. One checked example script per
+area, run by `make examples`. Records through the existing objectives, crosswalk, entry-evidence, reading-note and
+pathway files; four source keys renamed to keep the provider token out of maintained names. No new validation
+framework and no checker changed.
+
+**Result.** 53 new entries; five new scripts with 118 checks (43, 21, 23, 10, 21); 32 new sources; 38 new and six
+extended reading notes. Coverage 424/424 objectives and 1,030/1,030 items. Editorial coverage only; human review
+is outstanding.
+
+Details: `notes/source-review-records.md`, *Completion batch, 20 October 2026*.
+
+## 34. Final audit corrections on PR #33 (executed 2026-10-20)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `316c07e`, draft PR #33 to `main` open, working tree
+clean. Coverage before: 424/424 objectives and 1,030/1,030 items. No new expansion quota: corrections only, with no
+objective created and no denominator or requirement changed.
+
+**Corrections** (figures and sources: `notes/source-review-records.md`, *Final audit correction pass*):
+1. Backtest costs from the traded notional of a dollar ledger with drift and establishment, conventions stated;
+   cost drag 2.62 percent a year (1.17), net Sharpe -0.40 (-0.17).
+2. Maximum drawdown from initial wealth 1, with decisive cases the old check fails; net 50 percent (39).
+3. Asset location under one dividend and reinvestment convention with basis; 2,454,619 (2,474,630); zero-tax equality.
+4. Okafor case reconciled: reserve outside the 540k policy portfolio, required return 2.30 percent (1.96), retirement
+   at 62 throughout, one saving, education and tax assumption; recommendation 60/40 (was 70/25/5).
+5. Pension funding: IRC 430(c)(8) 15-year amortisation for single-employer plan years after 2021 (Notice 2021-48);
+   funding target, PBO and economic liability distinguished; 96.34m and 172.82m labelled policy illustrations.
+6. Endowment law: New York NPC 553(d) rebuttable presumption on a five-year quarterly average; liquidity 185.6m (173).
+7. Family accounts: personal and beneficially owned accounts separated from family client accounts; contrasting cases.
+8. UK IHT: residence band taper; death 4.5 years after the gift; one chronology carrying the nil-rate band forward.
+
+**Evidence.** Three scripts extended (19, 53 and 22 checks). Sixteen objectives and 43 outline items revalidated;
+coverage unchanged at 424/424 and 1,030/1,030. Four sources added. `make check` and `make pre-commit` pass on the
+committed tree; PDF 424 pages, no overfull boxes or undefined references. Editorial coverage only; human review is
+outstanding.
+
+## 35. PR #33 correction pass (executed 2026-10-21)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `394d15c`, draft PR #33 to `main` open, working tree
+clean. Coverage before: 424/424 objectives and 1,030/1,030 items. Corrections only; no denominator or requirement
+changed.
+
+**Corrections** (figures and sources: `notes/source-review-records.md`, *PR #33 correction pass*):
+1. Okafor tax: 2026 return specified; dividends and gains stacked under IRC 1(h) against the 613,700 ceiling (42,500
+   at 15 percent, 23,500 at 20), NIIT 2,599.20; marginal 23.8 percent on gains, 40 on wages, 43.8 on interest.
+2. Harlow: 430(c)(3) base 96.8m net of 303.2m of open installments (not 400m); minimum 151.91m at the valuation date
+   (TNC 110m, charge 41.91m); 165.12m on 15 September 2027 is only its ordinary-interest equivalent (26 CFR
+   1.430(j)-1(b)(4)(i)), since late quarterly installments are discounted at the effective rate plus 5 points
+   ((b)(4)(ii), (c)), so an actual single payment then would be larger; true minimum needs the actuarial valuation.
+3. Family client accounts: allocation by management, controls by beneficial interest (VI(B) Example 3); joint-account
+   case; Brook Lane code aligned.
+4. Endowment: each spending rule on its own quarterly history; pure peak 5.24 percent (5.25); detection check.
+
+**Evidence.** Two scripts extended (private wealth 59 checks, institutional 28). Eight objectives and 24 outline items
+revalidated; coverage unchanged at 424/424 and 1,030/1,030. `make check` and `make pre-commit` pass; PDF 425
+pages, no overfull boxes or undefined references. Editorial coverage only; human review is outstanding.
+
+## 36. PR #33 close-out (executed 2026-10-21)
+
+**Verified state.** Branch `codex/alternatives-audit-20261020` at `f3d8791`, draft PR #33 open, working tree clean.
+
+**Change.** Documentation only: the Harlow 165.12m September 2027 figure is labelled an ordinary-interest equivalent
+of the 151.91m valuation-date minimum under 26 CFR 1.430(j)-1(b)(4)(i), distinct from the two-step adjustment for late
+quarterly installments in (b)(4)(ii) and (c), in the compendium, the script's check text, this plan, the review record
+and the PR description. New source `cfr-26-1-430j-1` with a reading note. No figure, objective, denominator or
+requirement changed; coverage 424/424 and 1,030/1,030, editorial only; human review outstanding.
+
+## 37. Library gap-filling: plan v2 and Batch L1 (executed 2026-10-21)
+
+**Pointer.** Work after Section 36 follows `implementation_plan_v2.md` (gap-filling from the owner's finance library;
+untracked at the time of writing). That file holds the gap register, Batch L1's frozen scope and acceptance criteria,
+the proposed Batch L2, the discovery task C0 and the backlog. Before execution it was corrected for an external
+audit's findings R1-R4 (P7's wrong-way-risk sign, P5's daily-rebalancing criterion, explicit P2-P3 example
+conventions, the count of existing entries touched).
+
+**Verified state.** Branch `codex/library-gap-batch-l1` from `2b89791` (draft PR #33 still open with that head).
+Coverage before: 424/424 objectives and 1,030/1,030 items.
+
+**Outcome.** Packages P1-P5: ten new entries in three new topic files and two existing ones; two substantive
+extensions and two cross-reference edits; five new numerical scripts and one extended. Decisions E1 and E2 approved:
+ten new neutral objectives (new `topic:stochastic-calculus`), all covered, so 434/434 objectives; items unchanged at
+1,030/1,030. Ten newly covered objectives, a shortfall of 35 against the 45-objective preference, reported rather than
+padded. Sources: Hull, *OFOD* 11th Global ed., and Wilmott, *PWOQF* 2nd ed.; no curriculum or CAIA text. Every plan
+acceptance check passed unchanged. `make source-check` and `make pdf` pass (430 pages; one underfull box pre-exists at
+`2b89791`). Details: `notes/source-review-records.md`, *Library gap-filling, Batch L1, 21 October 2026*. Not done:
+C0, Batch L2, the backlog, commit or PR. Editorial coverage only; human review outstanding.
+
+**Post-implementation audit corrections (2026-10-21).** An audit of the uncommitted Batch L1 found five issues the
+checks did not cover (L1-F1 to L1-F5): daily leveraged Kelly treated an undefined expected log as exact (wealth can be
+nonpositive over a finite step when $f>1$); the implied-volatility hedge's positive total had lost its $\Gamma^i\ge0$
+condition; Asian calls were said to be cheaper than vanillas without qualification; "square-root scaling of variance";
+and a cash digital's hedge was said to reverse across the strike. With the owner's authorisation the affected entries,
+three scripts (`kelly-check.py`, `volatility-mismatch-hedging-check.py`, `exotic-option-checks.py`), the P3-P5
+acceptance language in `implementation_plan_v2.md`, the evidence and coverage example strings and two pathway summaries
+were corrected; seeds and tolerances unchanged; the ten objectives unchanged (434/434, 1,030/1,030). Details and
+withdrawn figures: `notes/source-review-records.md`, *Post-implementation audit corrections, 21 October 2026*.
+`make source-check` passes (111 scripts, 36 tests); `make pdf` builds 431 pages with no overfull boxes or undefined
+references (the one underfull box pre-exists). Not done: C0, Batch L2, commit or PR.
+
+## 38. Library gap-filling: Batch L2 (executed 2026-10-21)
+
+**Pointer.** Batch L2 follows `implementation_plan_v2.md` Section 7 as frozen by the owner on 2026-10-21 (decisions
+L2-D0 to L2-D6 in Section 10.3; two criterion corrections before implementation, recorded as "Batch L2 freeze
+corrections": P8's finite-pool gaps are reported rather than required to shrink, and P9's mean fitted GPD shape is a
+diagnostic). Branch `codex/library-gap-batch-l2` from `c688d54`; local commit only, no push or PR.
+
+**Outcome.** Packages P6 (short-rate and forward-rate models), P7 (counterparty exposure, CVA, wrong-way risk, and the
+rate-tree CVA as an original derivation), P8 (Gaussian copula and tranches), P9 (extreme value theory) and P11a-c
+(correlation and independence tests, mean-CVaR optimisation, buying on margin), plus the two optional Hull extensions.
+Eleven new entries, two new topic files, four extended entries, eight new numerical scripts. Eleven new objectives:
+445/445 objectives, 1,030/1,030 items; shortfall 34 against the 45-objective preference. Every frozen criterion passed;
+`make source-check` (119 scripts) and `make pdf` (437 pages, no overfull boxes or undefined references) pass. P10 is
+deferred to Batch L3. Details, sources read and remaining source gaps: `notes/source-review-records.md`, *Library
+gap-filling, Batch L2, 21 October 2026*. Editorial coverage only; human review outstanding.
+
+**Correction pass (2026-10-21).** An audit of `cd55096` found four defects its checks did not test: the Hull-White
+discount factor's sign in `counterparty-xva-checks.py`, the discounting convention of the wrong-way CVA equation, the
+units of Gregory's EPE-times-spread approximation, and the scope of Regulation T's 150 percent short-sale margin. All
+were corrected in a separate local commit, with deterministic checks that reject the old sign and test the spread
+units; corrected swap CVA 0.0600863777 (uncollateralised) and 0.0066079387 (collateralised). Scope and coverage
+unchanged (445/445, 1,030/1,030). Record: `notes/source-review-records.md`, *Post-implementation audit corrections,
+Batch L2, 21 October 2026*; plan: `implementation_plan_v2.md` Section 7. Not done: push, PR, Batch L3.
+
+## 39. Library gap-filling: Batch L3 (executed 2026-10-21)
+
+**Pointer.** Batch L3 is package P10 (backlog B7) of `implementation_plan_v2.md`, frozen in its Section 7 on 2026-10-21
+and executed the same day on `codex/library-gap-batch-l3` from `a519e0c`; local commit only, no push or PR. A formatting
+repair of the plan's L2 freeze-correction table came first.
+
+**Outcome.** FRTB is stated as the Basel standard (effective 1 January 2023) with its EU (1 January 2027; relief to
+2029), UK (1 January 2027; internal models 1 January 2028) and US (proposal of March 2026) positions; LCR and NSFR dates
+by jurisdiction; IFRS S1/S2 issuance and effective dates kept apart from EU, UK and US adoption, the TCFD transfer and
+the SEC climate rule's stay and proposed rescission. New `rule:counterparty-credit-cva-capital` (SA-CCR, default-risk
+and CVA-risk capital) with a deterministic check. One new objective: 446/446 objectives, 1,030/1,030 items; shortfall 44
+against 45. Details and the per-claim table: `notes/source-review-records.md`, *Library gap-filling, Batch L3, 21 October
+2026*. Editorial coverage only; human review outstanding.
+
+**Correction pass (2026-10-21).** An audit of `440272b` found five statements its checks did not test: the SA-CCR
+maturity factor printed without its ten-business-day floor; the BA-CVA product $M\cdot\mathrm{EAD}\cdot\mathrm{DF}/\alpha$
+equated with a discounted expected exposure at a date (it is an exposure-time area); the scope and timing of Directive
+(EU) 2026/470; US NSFR applicability (Category IV only with \$50bn or more of weighted short-term wholesale funding);
+and the EU 0.9 multiplier, which applies only under CRR Art. 495s(1)-(2). All were corrected in a separate local commit
+on `codex/library-gap-l3-audit-fixes`, with two deterministic checks in `counterparty-capital-check.py`. FCA PS26/19 and
+the Eighth Circuit orders of 21 May and 5 October 2026 were read and added. Scope and coverage unchanged (446/446,
+1,030/1,030). Record: `notes/source-review-records.md`, *Post-implementation audit corrections, Batch L3, 21 October
+2026*; plan: `implementation_plan_v2.md` Section 7. Not done: push, PR, any backlog batch.

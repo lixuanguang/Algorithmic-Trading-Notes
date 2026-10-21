@@ -1,0 +1,98 @@
+\section{Hedge funds}
+
+\begin{qfdefinition}[Hedge funds: investment features against other asset classes, forms and vehicles of investment, and the sources of their risk, return and diversification]\label{def:hedge-fund-features}
+\qffield{Statement} \emph{Features.} Hedge funds ``are defined by what they are not'': in the United States they are exempt from the Investment Company Act of 1940, which gives them latitude in how they invest, pay managers, disclose and return money \citep[p.~559]{s7-ang}. Ang lists their features (pp.~561--562):
+\begin{itemize}
+\item a limited number of wealthy investors --- up to 100 accredited investors under section 3(c)(1), or qualified purchasers under 3(c)(7);
+\item high minimums, typically \$1 million or more;
+\item leverage, short selling and derivatives;
+\item limited liquidity, through lock-ups, notice periods and gates (pp.~585--587);
+\item limited disclosure, with reports to the SEC rather than to investors for advisers above \$150 million;
+\item high fees with large performance components.
+\end{itemize}
+\emph{Against other asset classes}: hedge funds are not a separate class of securities --- ``they trade in exactly the same securities you already own'' --- but their dynamic trading, leverage and derivatives emphasise risk factors that long-only positions barely carry (Ang, pp.~564--565, quoting Cochrane). Jaeger likewise argues they are treated as a class for the purpose they serve in a portfolio, not because they hold different assets \citep[p.~11]{jaeger-alternative-beta-2008}.
+
+\emph{Forms and vehicles.} Funds are usually limited partnerships or limited liability companies, often domiciled offshore for tax and regulatory reasons \citep[p.~10]{jaeger-alternative-beta-2008}. Investors use:
+\begin{itemize}
+\item \emph{direct investment in single funds}, with high minimums and the fund's liquidity terms;
+\item \emph{funds of funds}, which diversify across managers, monitor them and share due-diligence costs, with lower minimums but a second fee layer, typically 1 percent and 10 percent above a hurdle (Jaeger, pp.~15, 28; Ang, p.~561);
+\item \emph{managed accounts}, in which the investor owns the assets and sees the positions, as in the investable indices Jaeger describes (p.~28);
+\item \emph{registered funds} (liquid alternatives), with minimums as low as \$10,000 but under the 1940 Act's limits (Ang, p.~561).
+\end{itemize}
+
+\emph{Risk, return and diversification.}
+\begin{itemize}
+\item \emph{Data biases}: survivorship bias of 2--4 percent or more a year and a backfill bias Malkiel and Saha measure as 14.7 against 7.3 percent (Ang, p.~565); 10--15 percent of funds leave the databases each year, and failure peaks around three years (pp.~567--568).
+\item \emph{Performance}: rolling alphas against the S\&P~500 fell from over 10 percent in the mid-1990s to 1--2 percent after 2008 and turned negative in 2011--2012, while the correlation with the S\&P~500 rose from about 0.5 to above 0.85; dollar-weighted industry returns were 6.0 percent over 1980--2008 against 10.9 for the S\&P~500 (pp.~568--570).
+\item \emph{Exposures}: hedge funds are ``bundles of standard risk factors'', above all equity and short-volatility risk (pp.~571--576; \hyperref[meth:hedge-fund-factor-exposures]{factor exposures}).
+\item \emph{Smoothing}: illiquid holdings and reported prices smooth returns, which lowers measured volatility and correlation and raises the Sharpe ratio \citep[pp.~21--23]{wide-getmansky-lo-makarov}.
+\end{itemize}
+
+\qffield{Practice} \emph{Fund of funds fee layers} (original; checked in the script). Two underlying funds earn $+20$ and $-10$ percent gross, equally weighted: the portfolio's gross return is 5 percent. Paying 2/20 fund by fund leaves 1.20 percent, against 2.40 percent if incentive fees were charged on the netted result; the fund of funds' own 1 percent and 10 percent leave 0.18 percent. Jaeger calls the asymmetric part a ``diversification cost'' of 0.4--0.8 percent a year in a typical portfolio (p.~4).
+
+\qffield{Conditions} US law and data as of 2013 (Ang) and 2008 (Jaeger); registration rules for advisers and private funds have changed since.
+
+\qffield{Pitfalls} Reading database averages as achievable returns. Taking a low reported correlation as diversification without de-smoothing. Ignoring the second fee layer of a fund of funds.
+
+\qffield{See also} \hyperref[meth:hedge-fund-strategy-classification]{strategies}; \hyperref[def:alternative-fund-terms]{fee terms}; \hyperref[meth:alternative-returns-after-fees]{returns after fees}; \hyperref[meth:manager-due-diligence]{manager selection}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Hedge fund strategies: classification, and the characteristics, implementation and portfolio role of equity-related, event-driven, relative value, opportunistic, specialist and multi-manager strategies]\label{meth:hedge-fund-strategy-classification}
+\qffield{Statement} \emph{Classification.} Funds are classified by the assets they trade, by whether they are directional or market-neutral, and by whether decisions are discretionary or systematic \citep[pp.~571--572]{s7-ang}. Jaeger's consensus scheme separates equity hedged, relative value, event-driven, opportunistic and managed futures strategies, and notes that classifications differ between index providers and are partly statistical \citep[pp.~11--14]{jaeger-alternative-beta-2008}. Database labels are self-reported, so the exposures should be checked (\hyperref[meth:hedge-fund-factor-exposures]{factor exposures}).
+
+\emph{The families} (Jaeger, pp.~37--81, unless stated):
+\begin{itemize}
+\item \emph{Equity-related.} \emph{Long/short equity} buys a core of stocks and partly hedges with short sales or index futures, usually with a long bias; returns come from stock selection and net exposure (p.~37). \emph{Equity market neutral} matches longs and shorts to zero net exposure by dollars, beta, sector or style, including statistical arbitrage (p.~41). \emph{Short selling} is directional short, with collateral of 30--50 percent of the shorted value (p.~44). \emph{Role}: an equity substitute or diversifier, depending on net exposure; Ang finds long/short equity's partial correlation with equities only 0.11 (p.~572).
+\item \emph{Event-driven.} \emph{Merger arbitrage} buys targets and, in stock deals, shorts acquirers, earning the deal spread while bearing completion risk (p.~64); \emph{distressed securities} buy the debt or equity of troubled companies, an illiquid, legally complex market (p.~67); activist and special-situation funds trade other corporate events (p.~62). \emph{Role}: returns tied to deal and credit cycles, with equity and volatility exposure in crises; Ang's partial correlations with equities are above 0.6 for event-driven and 0.41 for distressed (p.~572).
+\item \emph{Relative value.} \emph{Fixed income arbitrage} trades yield-curve, swap-spread, on-the-run against off-the-run and mortgage spreads with leverage (pp.~46--51); \emph{convertible arbitrage} buys convertibles and shorts the stock, earning credit carry and gamma (p.~51); \emph{capital structure arbitrage} trades debt or CDS against equity of one issuer (p.~60). Jaeger stresses that these ``arbitrage'' strategies are short a put on market health (p.~45). \emph{Role}: steady returns with tail and liquidity risk; partial correlations with volatility of about 0.4 or more (Ang, p.~573).
+\item \emph{Opportunistic.} \emph{Global macro} trades rates, currencies, commodities and equity indices top-down, discretionary or systematic (p.~70); \emph{managed futures} (CTAs) trade futures, mostly by trend following (pp.~75--79). \emph{Role}: the main diversifiers in equity sell-offs --- trend followers tend to be long volatility (Ang, p.~573; Jaeger, p.~107).
+\item \emph{Specialist.} Strategies built on narrow expertise: \emph{volatility trading}, which buys cheap and sells expensive implied volatility with delta hedges (Jaeger, pp.~58--60); sector specialists and insurance-linked or other niche strategies (Interpretation). \emph{Role}: returns from a specific risk premium or skill, with exposures that need separate modelling.
+\item \emph{Multi-manager.} \emph{Multi-strategy} funds allocate across strategies within one firm and share infrastructure; \emph{funds of funds} allocate across external managers (Jaeger, pp.~13--15, 28). \emph{Role}: a diversified core hedge fund allocation, at the cost of fee layers and netting risk (\hyperref[def:hedge-fund-features]{features}).
+\end{itemize}
+
+\qffield{Practice} (Original; checked in the script.)
+\begin{itemize}
+\item \emph{Merger arbitrage}: a target at 48 under a 50 cash offer with a fallback of 40 implies an 80 percent chance of completion; the 4.17 percent spread earned in four months annualises to 13.03 percent, but a break costs 16.7 percent. In a 0.5-share stock deal with the acquirer at 98, long one target and short half an acquirer share locks in 1.00.
+\item \emph{Long/short equity}: 130 percent long and 70 percent short is 200 percent gross and 60 percent net; with betas of 1.1 and 0.9 the beta-adjusted net exposure is 80 percent.
+\item \emph{Convertible arbitrage}: a bond convertible into two shares with a delta of 0.6 is hedged by shorting 1.2 shares (48 of stock against 105 of bond), leaving credit, volatility and rate exposure.
+\end{itemize}
+
+\qffield{Conditions} Strategy descriptions as of 2008; Ang's partial correlations use HFR indices from 2000 to 2012.
+
+\qffield{Pitfalls} Accepting a manager's label without checking exposures. Treating ``arbitrage'' as riskless. Expecting every strategy to diversify an equity portfolio.
+
+\qffield{See also} \hyperref[def:hedge-fund-features]{features}; \hyperref[meth:hedge-fund-factor-exposures]{factor exposures}; \hyperref[meth:special-situations-distressed]{distressed investing}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Hedge fund risk exposures from factor models, and evaluating the effect of a hedge fund allocation on a traditional portfolio]\label{meth:hedge-fund-factor-exposures}
+\qffield{Statement} \emph{Factor models.} Regress a fund's excess returns on factor returns:
+\[
+r_t-r_f=\alpha+\textstyle\sum_k\beta_k F_{k,t}+\sum_k\gamma_k F_{k,t-1}+\varepsilon_t .
+\]
+\begin{itemize}
+\item \emph{Factors}: equity market and short-volatility returns explain most hedge fund returns; Ang finds partial correlations of 0.67 with equities and 0.26 with volatility for the HFR index over 2000--2012 \citep[pp.~572--573]{s7-ang}; term and credit spreads matter for relative value, value and momentum for quant funds, commodities and currencies for macro, and illiquidity for many funds (p.~576). Fung and Hsieh introduced asset-based and option-like factors because many strategies have non-linear payoffs; Fung and co-authors find an average alpha of 6 basis points once equity, bond and volatility factors are included (Ang, p.~576; \citep[pp.~161--162]{jaeger-alternative-beta-2008}).
+\item \emph{Lags}: smoothing biases the contemporaneous beta towards zero and creates exposure to lagged factor returns, so lagged factors (or an AR(1) term) are added and betas summed \citep[pp.~21--22]{wide-getmansky-lo-makarov}. With these, Jaeger's average alpha across HFR strategies roughly halves, about half the decline coming from the AR(1) term (pp.~163--165).
+\item \emph{Uses}: identify the risks behind a label; separate alternative beta, which could be bought more cheaply, from alpha; monitor style drift; and stress the fund with factor shocks. The limits are short, biased data, unstable loadings and non-linear payoffs (pp.~165--168, 176).
+\end{itemize}
+
+\emph{Evaluating an allocation.} Adding a small amount of fund $h$ to portfolio $p$ raises the Sharpe ratio if $SR_h>\rho_{h,p}\,SR_p$ (a standard mean--variance result). Use de-smoothed volatility, full-cycle or crisis correlations, returns net of all fee layers and the cost of illiquidity \citep[pp.~107--109]{jaeger-alternative-beta-2008}. Jaeger warns that mean--variance frontiers built on hedge fund indices overstate the benefit and suggests risk measures such as expected shortfall.
+
+\qffield{Practice} \emph{Simulated fund} (original; checked by regression). A fund with true loadings of 0.30 on equities and 0.60 on a short-volatility factor reports returns smoothed with weights 0.6/0.4. Regressed on equities alone, it shows a beta of 0.34 and a spurious alpha of about 7 percent a year. Adding the volatility factor and one lag of each factor recovers summed loadings of 0.29 and 0.63, and the alpha falls to about 0.4 percent.
+
+\emph{Adding the fund to a 60/40 portfolio} (portfolio return 6.5 percent, volatility 10 percent, cash 3 percent, Sharpe 0.35):
+\begin{itemize}
+\item on reported statistics (7 percent, volatility 6 percent, correlation 0.40), the fund's Sharpe of 0.67 beats the hurdle $0.35\times0.40=0.14$, and a 10 percent allocation lifts the portfolio's Sharpe to 0.384;
+\item de-smoothed with weights 0.5/0.3/0.2 (volatility $6/0.616=9.7$ percent) and with a full-cycle correlation of 0.70, the fund's Sharpe is 0.41 against a hurdle of 0.245, and the allocation lifts the portfolio only to 0.366;
+\item if 1.5 points of the return are fees that liquid factor exposure would avoid, the fund still clears the hurdle (0.257) but adds less than 0.001 to the Sharpe ratio.
+\end{itemize}
+\emph{Decision}: the case for the allocation rests on the alpha after factors and fees, not on the reported correlation.
+
+\qffield{Conditions} Linear models miss option-like payoffs; the simulation is illustrative. Getmansky, Lo and Makarov are cited by the printed pages of NBER Working Paper 9571 (2003).
+
+\qffield{Pitfalls} Counting short-volatility premia as alpha. Using contemporaneous betas of smoothed returns. Optimising on index data.
+
+\qffield{See also} \hyperref[meth:hedge-fund-strategy-classification]{strategies}; \hyperref[meth:alternatives-allocation-approaches]{allocating to alternatives}; \hyperref[meth:private-capital-diversification]{smoothing in private capital}.
+
+\end{qfmethod}

@@ -1,6 +1,6 @@
 ---
 key: merger-guidelines-2023
-pathways: [systematic-equities]
+pathways: [systematic-equities, multi-asset-systematic-macro]
 version: US Department of Justice and Federal Trade Commission, Merger Guidelines, 18 December 2023, PDF retrieved 2026-10-20, in `reading_materials/corporate-equity-20261020/merger-guidelines-2023.pdf`; printed page = PDF page - 1
 sections: pp. 5-6 and nn. 13-15
 read:
@@ -8,6 +8,8 @@ status: draft
 ---
 
 Prepared on 2026-10-20 by the corporate-finance and equity-valuation batch from source checks, not from study: the headings that need your own reading are left empty. Used for `meth:industry-analysis`.
+
+Also used by the alternatives batch (2026-10-20) for `meth:market-structure-identification`.
 
 ## Question and claim
 

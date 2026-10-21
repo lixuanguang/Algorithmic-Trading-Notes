@@ -1,0 +1,99 @@
+\section{Private equity strategies, valuation and allocation}
+
+\begin{qfmethod}[Private equity strategies over the company life cycle: venture capital, growth equity and buyouts, their characteristics, risks and roles]\label{meth:private-equity-strategies}
+\qffield{Statement} Private equity finances companies at each stage, with the instrument and control matched to the risk \citep[pp.~58--59, 111--118]{demaria-private-markets-2021}:
+\begin{itemize}
+\item \emph{Venture capital} finances companies from seed and early stage through industrialisation to late stage. Minority stakes are bought by capital increases, usually as convertible preferred shares, staged by milestones so that investors can stop funding failures (pp.~112--113). Little or no debt is used; outcomes are highly skewed. Cambridge Associates data give a loss ratio of 35.4 percent for US venture deals (p.~116), and top-5-percent funds an IRR of 64.9 percent against $-16.3$ percent for the bottom 5 percent (p.~113).
+\item \emph{Growth equity} finances profitable companies making a transforming move, such as an acquisition, internationalisation or a new product, through minority stakes with little debt. It has a lower loss ratio (13.4 percent) and steadier returns, but often pays rich prices (pp.~114--116).
+\item \emph{Buyouts} finance a transfer of ownership of a mature company with equity and debt, through a holding company whose borrowing is serviced by the target. Financial leverage helps when the business earns more than the debt costs and can cost the owner the company when it cannot. Tax deductibility adds tax leverage. Sponsored ownership lasts three to five years (pp.~117--118). The loss ratio is 15.1 percent (p.~116).
+\item Turnaround, replacement capital and distressed strategies address companies in difficulty or shareholders wanting a partial exit (pp.~126--127).
+\end{itemize}
+
+\emph{Deal terms.} Venture investors use preferred stock, staging, board seats, liquidation preferences and anti-dilution protection \citep[pp.~33--34]{metrick-yasuda-survey-2011}; \citep[pp.~167--173]{ippolito-private-capital-2020}. Buyout investors take control and use leverage, which Sahlman saw as playing a role similar to staging: it removes discretionary cash flow (Metrick and Yasuda, p.~33).
+
+\qffield{Practice} \emph{Fit to strategy} (original). An endowment seeking technology growth and willing to hold for 12 years with manager access can hold venture. An insurer that must limit loss and volatility of capital is better in growth equity and buyouts with modest leverage. A pension worried about drawdowns can add turnaround and distressed managers, whose opportunities rise in recessions.
+
+\qffield{Conditions} Loss ratios and dispersion are Cambridge Associates statistics reported by Demaria and co-authors, as of 2012 and 2016; they depend on vintage and data coverage.
+
+\qffield{Pitfalls} Calling all private equity ``buyouts''. Valuing a venture investment on its last-round price without its preferences. Assuming growth equity is lower risk because it uses less debt, when entry prices are high.
+
+\qffield{See also} \hyperref[def:private-equity-features]{private equity}; \hyperref[meth:private-equity-valuation]{valuation}; \hyperref[meth:special-situations-distressed]{special situations}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Valuing private equity investments: the venture capital method with dilution, growth equity, and buyout valuation from target returns, leverage and exit multiples]\label{meth:private-equity-valuation}
+\qffield{Statement} \emph{Practice of valuation.} Private equity investors value deals mainly by target IRRs and multiples of invested capital, not discounted cash flow; buyout managers report a median target IRR of about 22--25 percent and a multiple of 2.5, and set exit values from comparable multiples \citep[NBER WP 21133, pp.~3, 13--17]{w5-gompers-kaplan-mukharlyamov}.
+
+\emph{Venture capital (and growth capital) method} \citep[pp.~173--175]{ippolito-private-capital-2020}. With investment $I$, target return $r$, holding period $t$ and exit equity value $V$:
+\[ R=I(1+r)^t,\qquad S=R/V,\qquad \mathrm{POST}=I/S,\qquad \mathrm{PRE}=\mathrm{POST}-I. \]
+New shares for $x$ existing shares are $y=x\,S/(1-S)$, at price $I/y$ (pre-money over existing shares). If later rounds will sell fractions $d_1,d_2$ of the company, the stake bought now must be $S/[(1-d_1)(1-d_2)]$ (Derivation). Targets fall with the stage: above 40 percent for start-ups and above 25 percent for ordinary equity (pp.~20--21).
+
+\emph{Buyouts.} The sponsor works back from the debt the cash flows can carry, the exit multiple and the target return to the price it can pay. Entry and exit multiples are usually assumed equal, and returns are shown across exit years and multiples (pp.~209--210). Equity value creation splits into EBITDA growth, multiple change and debt paydown \citep[pp.~162--163]{demaria-private-markets-2021}.
+
+\qffield{Practice} \emph{Novaro, venture} (original). Invest 8 at a 45 percent target for five years, with exit equity value 200:
+\begin{itemize}
+\item required value $8\times1.45^5=51.28$, so a 25.64 percent stake at exit;
+\item later rounds selling 20 and 15 percent leave 68 percent of today's stake, so 37.70 percent is needed now: post-money 21.22, pre-money 13.22;
+\item with 1.0 million existing shares, 0.605 million new shares at 13.22 each.
+\end{itemize}
+Ippolito adjusts the stake by dividing by $(1+D_1)(1+D_2)$ while describing $D$ as the share taken up by later investors. That gives 18.58 percent, half what is needed under that description; the formula is right only if $D$ measures new shares relative to existing ones.
+
+\emph{Growth equity.} The same method at a 25 percent target and lower dilution gives a much smaller required stake, usually taken as convertible preferred shares with protective rights.
+
+\emph{Corran Industrial, buyout} (original). EBITDA 50, bought at 9.0 times (450) with fees of 10 and 250 of unitranche debt at 9 percent; equity 210. EBITDA grows 6 percent a year, half of it is free cash flow, and all spare cash repays debt:
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & Exit at 9.0x & Exit at 8.0x \\
+\midrule
+Exit EBITDA & 66.91 & 66.91 \\
+Debt at exit & 176.90 & 176.90 \\
+Equity at exit & 425.30 & 358.39 \\
+Multiple / IRR & 2.03 / 15.2\% & 1.71 / 11.3\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+The 215.30 gain is EBITDA growth times the multiple (152.20) plus debt repaid (73.10) less fees (10). The deal reaches a 22 percent IRR only if it is bought, and sold, at about 6.9 times EBITDA: that is the sponsor's maximum price on these assumptions.
+
+\qffield{Conditions} The exit value is the critical input and rests on comparables; all numbers are hypothetical. The 45 percent target reflects stage risk and the high failure rate, not an expected return.
+
+\qffield{Pitfalls} Ignoring later dilution. Relying on multiple expansion to meet a target return. Equating a high target IRR with the expected return of a portfolio that includes failures.
+
+\qffield{See also} \hyperref[meth:private-equity-strategies]{strategies}; \hyperref[meth:private-debt-financing-structures]{buyout financing}; \hyperref[meth:private-company-valuation]{private company valuation}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Private equity, private debt and special situations in a strategic allocation: comparing risk and return, roles, and a recommendation]\label{meth:private-capital-allocation}
+\qffield{Statement} \emph{Return and risk across private capital.} Cambridge Associates statistics for US funds of the 1986--2008 vintages, as reported by Demaria and co-authors, risk-adjusted only through a PME \citep[pp.~116--117, 123, 130, 133]{demaria-private-markets-2021}:
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Strategy & Pooled net IRR & Multiple & PME & Bottom/top quartile IRR \\
+\midrule
+Buyouts (604 funds) & 12.8\% & 1.71 & 1.41 & 6.5\% / 19.2\% \\
+Distressed debt (110 funds) & 11.7\% & 1.56 & 1.36 & 5.5\% / 17.4\% \\
+Growth equity (109 funds) & 19.3\% & 1.78 & 1.52 & 3.5\% / 19.1\% \\
+Mezzanine (median fund) & 9.7\% & 1.48 & -- & 7.1\% / 11.9\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+The growth-equity pooled IRR exceeds its top-quartile IRR as printed, which capital weighting by a few large funds could explain. Direct lending funds target 4--6 percent net in Western Europe and 7--9 percent gross in the US before fund leverage (p.~134).
+
+\emph{Roles} (Interpretation, from the sources above and the private-equity, private-debt and diversification entries):
+\begin{itemize}
+\item \emph{Private equity} is a return-seeking substitute for public equity with leverage and manager risk; its premium over public equity is uncertain after risk adjustment \citep[pp.~427--428]{s7-ang}.
+\item \emph{Private debt} provides contractual floating-rate income with covenants and lower dispersion, but credit risk that rises with leverage and the cycle; mezzanine sits between debt and equity.
+\item \emph{Special situations} and distressed debt are countercyclical: their opportunity set widens in recessions, when buyouts and venture suffer \citep[p.~163]{demaria-private-markets-2021}.
+\end{itemize}
+
+\emph{Building the allocation.} Size the total private sleeve by liquidity, then split by role: private debt for income and lower dispersion, buyouts and growth for return, distressed as a cyclical complement. Diversify across managers and vintages, because manager dispersion exceeds strategy differences (Interpretation).
+
+\qffield{Practice} \emph{A \$10 billion endowment} (original) with a 15 percent private sleeve and 4 percent annual spending: 7 percent buyouts and growth, 3 percent venture through established managers, 3 percent private debt (direct lending and some mezzanine) to fund near-term calls from income, 2 percent distressed with managers who can deploy in a downturn. On unsmoothed risk the sleeve behaves like leveraged equity, so the public equity weight is cut by more than the private equity added (\hyperref[meth:private-public-market-comparison]{private against public}).
+
+\qffield{Conditions} Historical pooled returns are not expectations; they reflect survivorship in the databases and vintages with falling rates.
+
+\qffield{Pitfalls} Comparing contractual yields on private debt with equity IRRs without the loss experience. Holding distressed debt for diversification but committing to it only after a crisis has begun.
+
+\qffield{See also} \hyperref[meth:private-capital-diversification]{diversification}; \hyperref[meth:alternatives-allocation-approaches]{allocating to alternatives}.
+
+\end{qfmethod}

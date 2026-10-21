@@ -6,6 +6,9 @@ exact enumeration, an exact quadratic-form expectation, or a seeded simulation c
 of its own standard error). Seeds were fixed before any run (20261018 and offsets) and are not tuned; Monte Carlo
 comparisons use a tolerance of four standard errors, stated in advance. All data are invented for illustration.
 
+Extended 2026-10-21 (library gap-filling Batch L1): a control variate with an estimated coefficient and the
+Euler discretisation bias, both for meth:monte-carlo-simulation; seed 20261018 + 11 added for the latter.
+
 Environment: the locked project environment (Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1). The first recorded
 run used Python 3.10.16, NumPy 1.23.5 and SciPy 1.10.1; both runs agree apart from the printed version line,
 which reports the versions the script ran under.
@@ -455,6 +458,59 @@ anti = 0.5 * (
 ok(
     "antithetic pairs reduce the s.e. per payoff evaluated",
     anti.std(ddof=1) / math.sqrt(M) < mse / math.sqrt(2) * 1.0,
+)
+
+# Library gap-filling Batch L1 (2026-10-21), extension of meth:monte-carlo-simulation. Acceptance fixed in
+# implementation_plan_v2.md Section 6, P2 before running: the same 100,000 draws, the discounted terminal
+# price as control (known mean S0), variance reduced by a factor above 2, estimate within 3 s.e. of 7.1281.
+print("== control variate with an estimated coefficient")
+ctrl = math.exp(-r * T) * ST
+b_hat = np.cov(pay, ctrl)[0, 1] / ctrl.var(ddof=1)
+adj = pay - b_hat * (ctrl - S0)
+cv_est, cv_se = adj.mean(), adj.std(ddof=1) / math.sqrt(M)
+rho = np.corrcoef(pay, ctrl)[0, 1]
+ok(
+    "estimated coefficient 0.542 and correlation 0.875; variance falls by 1/(1 - rho^2) = 4.25 (above 2)",
+    close(b_hat, 0.5421, 5e-4)
+    and pay.var(ddof=1) / adj.var(ddof=1) > 2
+    and close(pay.var(ddof=1) / adj.var(ddof=1), 1 / (1 - rho**2), 1e-3),
+    f"b {b_hat:.4f}, rho {rho:.4f}, factor {pay.var(ddof=1) / adj.var(ddof=1):.2f}",
+)
+ok(
+    "controlled estimate within 3 s.e. of 7.1281",
+    abs(cv_est - bsm) <= 3 * cv_se,
+    f"{cv_est:.4f} (s.e. {cv_se:.4f})",
+)
+ok(
+    "Hull's fixed coefficient of 1 (eq. (21.20)) reduces the variance less here",
+    (pay - (ctrl - S0)).var(ddof=1) > adj.var(ddof=1),
+)
+
+# Discretisation bias against sampling error: Euler steps of dS = r S dt + sigma S dW on the same Brownian
+# paths as the exact solution. Criterion fixed before running: the bias at 2 steps exceeds 4 s.e. of the
+# paired difference, and each halving of the step changes the bias by a factor in [1.5, 2.5] (first order).
+print("== discretisation bias against sampling error")
+rng_e = np.random.default_rng(SEED + 11)
+Me, steps = 400_000, 16
+dWe = rng_e.standard_normal((Me, steps)) * math.sqrt(T / steps)
+exact_pay = math.exp(-r * T) * np.maximum(S0 * np.exp((r - sg**2 / 2) * T + sg * dWe.sum(1)) - K, 0)
+bias, bias_se = {}, {}
+for n_steps in (2, 4, 8):
+    inc = dWe.reshape(Me, n_steps, steps // n_steps).sum(2)
+    s_e = np.full(Me, S0)
+    for k in range(n_steps):
+        s_e = s_e * (1 + r * T / n_steps + sg * inc[:, k])
+    diff = math.exp(-r * T) * np.maximum(s_e - K, 0) - exact_pay
+    bias[n_steps], bias_se[n_steps] = diff.mean(), diff.std(ddof=1) / math.sqrt(Me)
+ok(
+    "Euler bias at 2 steps exceeds 4 s.e. of the paired difference",
+    abs(bias[2]) > 4 * bias_se[2],
+    ", ".join(f"{n}: {bias[n]:+.4f} (s.e. {bias_se[n]:.4f})" for n in bias),
+)
+ok(
+    "the bias halves with the step (ratios in [1.5, 2.5]); more paths would not remove it",
+    1.5 <= bias[2] / bias[4] <= 2.5 and 1.5 <= bias[4] / bias[8] <= 2.5,
+    f"{bias[2] / bias[4]:.2f}, {bias[4] / bias[8]:.2f}",
 )
 
 if fails:

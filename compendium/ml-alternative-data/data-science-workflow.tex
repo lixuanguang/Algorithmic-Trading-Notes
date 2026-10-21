@@ -1,0 +1,85 @@
+\section{The data-science workflow}
+
+\begin{qfdefinition}[Big data, machine learning and artificial intelligence in finance: definitions and uses in customer services, operations, trading and portfolio management, and compliance, with their risks]\label{def:financial-data-science-uses}
+\qffield{Statement} \emph{Definitions} \citep[pp.~4--6]{fsb-ai-ml-2017}: \emph{big data} describes the storage and analysis of large or complicated datasets, often unstructured or semi-structured; \emph{artificial intelligence} is the development of computer systems that perform tasks that traditionally required human intelligence; \emph{machine learning}, a branch of it, designs algorithms that optimise automatically through experience. Classification and regression are the main tasks; patterns found are correlations, not causes.
+
+\emph{Uses} (pp.~11--23): customer-focused applications such as credit scoring, insurance pricing and chatbots; operations such as capital optimisation, model validation and stress testing, and market-impact analysis; trading execution and portfolio management, including signals from alternative data (satellite images, text, transactions); and regulatory compliance (RegTech) and supervision (SupTech), such as surveillance and fraud detection. In investment management, natural-language processing turns reports, news and filings into variables, and alternative data supplements market and fundamental data (\hyperref[def:financial-data-types]{data types}).
+
+\emph{Risks} (pp.~1--2, 24--33): lack of interpretability and auditability; models trained on biased data; data privacy, conduct and cyber risks; concentration on a few third-party providers; and herding when many firms use similar models and data, which can amplify shocks.
+
+\qffield{Practice} \emph{Fintech in an asset manager} (original). A manager uses (1) NLP on earnings-call transcripts for a sentiment feature, (2) a gradient-boosting model to forecast stock-level transaction costs for its execution desk, and (3) clustering of funds' holdings to spot style drift in its manager research. Each is registered as a model, validated on out-of-time data and explained to its users; the transcript feature is time-stamped to the call's end so it cannot enter a backtest before it existed.
+
+\qffield{Conditions} The FSB's report describes the landscape in 2017; techniques and adoption have since changed (for example, large language models).
+
+\qffield{Pitfalls} Confusing correlation found by an algorithm with an investment thesis. Adopting third-party models without understanding their data and limits.
+
+\qffield{See also} \hyperref[def:learning-methods-overfitting]{learning methods}; \hyperref[meth:time-valid-ml-experiment-record]{time-valid experiments}.
+
+\end{qfdefinition}
+
+\begin{qfmethod}[Steps in a data analysis project, and preparing, wrangling and exploring structured and text data]\label{meth:data-analysis-project}
+\qffield{Statement} \emph{Steps} (Interpretation, organising \citep[pp.~2--8]{wide-gentzkow-kelly-taddy} and \citep[pp.~23--28]{alpha-afml}): (1) \emph{conceptualise} the problem, the target, the decision it supports and its timing; (2) \emph{collect} data, with release times, revisions and point-in-time histories; (3) \emph{prepare and wrangle}; (4) \emph{explore}; (5) \emph{engineer and select features}; (6) \emph{train} and tune on training and validation data; (7) \emph{evaluate} once on untouched data; (8) deploy, monitor and retrain under governance.
+
+\emph{Preparing and wrangling structured data}: \emph{cleansing} for incompleteness (missing values), invalidity (values outside allowed ranges), inaccuracy, inconsistency, non-uniform formats and duplicates; \emph{transformation} by extraction, aggregation, filtration of rows, selection of columns and conversion of types; handling \emph{outliers} by trimming or winsorising; and \emph{scaling} by normalisation or standardisation. Every fitted transformation (means, standard deviations, percentiles, imputation values) is estimated on training data only and applied to later data (\hyperref[pit:label-weight-leakage]{time validity}).
+
+\emph{Text}: decide the unit of a document (an article, a filing, a day of news) to match the outcome and its timing; remove markup, punctuation and numbers as appropriate; lower-case; remove stop words and very rare words; stem or lemmatise; then tokenise into words or $n$-grams to form a document-term matrix (Gentzkow, Kelly and Taddy, pp.~4--8).
+
+\emph{Exploration}: summary statistics, histograms and box plots, correlation and scatter plots for structured data; word frequencies and word clouds for text; used to find errors, choose transformations and generate features, not to test hypotheses on the data later used for evaluation.
+
+\qffield{Practice} \emph{Synthetic demonstrations of wrangling errors} (\texttt{ml-methods-checks.py}, part~4).
+\begin{itemize}
+\item \emph{Information timing}: a feature built from the next period's return has a test correlation of 1.00 with the target; the honest, lagged feature 0.05. A data timestamp check would have rejected it.
+\item \emph{Fitted transforms}: for a trending feature, full-sample mean and standard deviation (0.401, 0.525) differ from the training-only values (0.529, 0.541); standardising with full-sample values lets the test period shape the inputs.
+\item \emph{Outliers}: five planted data errors raise the standard deviation from about 1 to 2.22; winsorising at the training sample's 1st and 99th percentiles brings it to 0.99 without dropping rows.
+\end{itemize}
+
+\qffield{Conditions} The steps are a common practitioner sequence, not a standard; the demonstrations are simulated.
+
+\qffield{Pitfalls} Imputing or scaling with full-sample statistics. Defining documents at a different frequency from the target. Exploring the test set.
+
+\qffield{See also} \hyperref[meth:text-feature-engineering]{text features}; \hyperref[meth:bitemporal-reference-tables]{point-in-time reference data}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Extracting, selecting and engineering features from text for financial forecasting: bag of words and n-grams, tf-idf, dictionaries, frequency and chi-square selection, and time-stamping]\label{meth:text-feature-engineering}
+\qffield{Statement} \emph{Representation} \citep[NBER WP 23276, pp.~5--8]{wide-gentzkow-kelly-taddy}: the bag-of-words model counts each token in each document; $n$-grams count phrases of $n$ words and keep some word order; \emph{tf-idf} weights the count of token $j$ in document $i$ by $\log(n/d_j)$, where $d_j$ is the number of documents containing $j$, down-weighting words that appear everywhere; stop-word removal, rare-word filters and stemming cut dimensionality, but each choice can remove meaning.
+
+\emph{Mapping text to outcomes} (pp.~10--26): \emph{dictionary} methods count words from a predefined list and suit cases without labelled data, provided the list fits the domain. Loughran and McDonald showed that a general-purpose dictionary misreads financial text and built finance-specific word lists \citep[p.~31]{wide-gentzkow-kelly-taddy}. \emph{Supervised} methods (penalised regression, naive Bayes, trees, neural networks) learn weights from labelled documents and need validation by cross-validation and manual audits (pp.~12--15, 26). \emph{Unsupervised} methods such as topic models find themes.
+
+\emph{Feature selection and engineering}: keep tokens by document frequency, or by association with the label (chi-square, mutual information), estimated on training documents only; engineer features such as negation-aware sentiment, counts of numbers, named entities, readability or changes from the previous filing (Interpretation). For forecasting, each feature carries the time the text became public, and the document's unit matches the forecast horizon (pp.~6--7).
+
+\qffield{Practice} \emph{A synthetic earnings-text example} (\texttt{ml-methods-checks.py}, part~5). Ten one-sentence ``press releases'' are labelled positive or negative; the first eight are training documents.
+\begin{itemize}
+\item After removing stop words, the vocabulary comes from the eight training documents only. ``Strong'' appears in four, so its idf is $\ln(8/4)=0.693$, and its tf-idf in a document where it appears once is 0.693.
+\item Chi-square scores on the training documents rank ``strong'', ``weak'', ``growth'' and ``impairment'' highest and neutral words such as ``quarter'' and ``revenue'' low.
+\item A regularised logistic model on those four words classifies both held-out documents correctly, which shows the mechanics only.
+\end{itemize}
+In a real study, a document is a filing or call time-stamped to its release, labels are subsequent returns measured from the first tradable price after release, and the dictionary or model is fixed before the test period.
+
+\qffield{Conditions} Toy corpus; finance-specific dictionaries and models age and should be versioned.
+
+\qffield{Pitfalls} Building the vocabulary or idf weights on all documents including the test set. Using a general sentiment dictionary on filings. Aligning text with returns at the filing date rather than the time it became public.
+
+\qffield{See also} \hyperref[meth:data-analysis-project]{data project}; \hyperref[meth:time-valid-ml-experiment-record]{time-valid experiments}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Training machine-learning models and evaluating their fit: training, validation and test sets, tuning, the confusion matrix, precision, recall, F1, ROC and AUC, and RMSE]\label{meth:ml-model-training-evaluation}
+\qffield{Statement} \emph{Training} (Interpretation, organising \citep[pp.~198--206]{s6-isl}): choose candidate methods suited to the problem; split data into training, validation and test sets (or use cross-validation within the training period, purged and embargoed for overlapping financial labels); fit on training data; choose hyperparameters (penalty, depth, number of neighbours, learning rate) by validation error; refit; and evaluate once on the untouched test set. Handle class imbalance by weighting, resampling or threshold choice.
+
+\emph{Evaluating fit}:
+\begin{itemize}
+\item \emph{Classification}: the confusion matrix of true and false positives and negatives; \emph{precision} $=TP/(TP+FP)$, \emph{recall} (sensitivity) $=TP/(TP+FN)$, \emph{accuracy} $=(TP+TN)/N$, $F1$ the harmonic mean of precision and recall; the \emph{ROC curve} traces the true-positive against the false-positive rate as the threshold varies, and the area under it (AUC) summarises ranking quality \citep[pp.~150--151]{s6-isl}.
+\item \emph{Regression}: root mean squared error and its comparison with a naive benchmark.
+\end{itemize}
+Accuracy misleads when classes are imbalanced. The threshold is chosen for the cost of each error type, on validation data.
+
+\qffield{Practice} \emph{A synthetic default classifier} (\texttt{ml-methods-checks.py}, part~6). Two thousand cases with a 23 percent default rate are split 60/20/20 in order. Logistic regression's penalty is chosen on the validation set; on the test set the confusion matrix is TP~39, FP~15, FN~54, TN~292: precision 0.72, recall 0.42, accuracy 0.83 and F1 0.53. Accuracy looks high only because always predicting ``no default'' would score 0.77. AUC is 0.79, and the trapezoid rule equals the Mann--Whitney probability that a random defaulter is scored above a random non-defaulter. Lowering the threshold from 0.5 to 0.2 raises recall and the false-positive rate together; a lender who loses much more on a missed default than on a wrongly declined loan should choose the lower threshold on validation data.
+
+\qffield{Conditions} Simulated data; in practice the test period must also be later than training and the label must not overlap it.
+
+\qffield{Pitfalls} Selecting the model on the test set. Reporting accuracy alone for rare events. Choosing a threshold after seeing test results.
+
+\qffield{See also} \hyperref[meth:purged-embargoed-cross-validation]{purged CV}; \hyperref[meth:backtest-design-evaluation]{backtesting}.
+
+\end{qfmethod}

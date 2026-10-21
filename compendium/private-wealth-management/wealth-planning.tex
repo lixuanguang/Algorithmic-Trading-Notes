@@ -1,0 +1,131 @@
+\section{Wealth and investment planning}
+
+\begin{qfmethod}[Goals-based financial planning: listing and valuing goals, the funded ratio, strategies to close a gap, and liquidity strategies from emergency reserves to lending]\label{meth:goals-based-financial-plan}
+\qffield{Statement} A goals-based plan lists each goal with its amount, date and priority (needs, wants, wishes), values goals and resources on the same basis, and recommends actions. Goals are described by amount, timing and required probability of success and each is matched to a sub-portfolio \citep[chap.~6, sec.~4, pp.~268--283]{portfolio-management-in-practice-v1-2020}; savings risk is controlled by solving for the savings rate the goals need \citep[pp.~74--75]{ibbotson-lifetime-financial-advice-2007}. The steps (Interpretation, extending \hyperref[meth:goals-based-allocation-heuristics]{goals-based allocation}):
+\begin{enumerate}
+\item \emph{Goals}: present value of each goal's real cash flows, discounted at a rate consistent with how it will be funded.
+\item \emph{Resources}: financial assets, the present value of planned savings, pensions and, for completeness, human capital.
+\item \emph{Funded ratio} $=$ PV(resources)/PV(goals). Below one, the plan needs more saving, later or smaller goals, or more expected return with more risk; well above one, risk can be reduced or new goals funded.
+\item \emph{Strategies}: allocate each goal's capital to a module matching its horizon and required probability; protect essential goals first; revisit annually and at life events.
+\end{enumerate}
+\emph{Liquidity strategies} keep the plan from forcing sales at bad prices: an emergency reserve (commonly three to twelve months of spending, more for volatile incomes); a cash or short-bond bucket for goals due within about two years; staggered maturities for known outlays; committed credit lines secured on securities or a home, used for timing gaps rather than permanent borrowing; and attention to the liquidity of illiquid holdings and lock-ups (Interpretation).
+
+\qffield{Practice} \emph{The Okafors' plan} (original; \texttt{private-wealth-checks.py}, parts~3 and 5).
+\begin{itemize}
+\item Goals: education (two 200,000 payments in 8 and 10 years) and retirement income at 62 (a 90,000-a-year gap worth 1.76 million at 62). Discounted at 3.5 percent real, the goals are worth 1.12 million today.
+\item Resources: the 540,000 policy portfolio plus 50,000 a year for 22 years, worth 1.30 million at 3.5 percent. The 60,000 emergency reserve funds emergencies, not goals, so it is on neither side.
+\item Funded ratio 1.16 at 3.5 percent, but 0.91 at 1.5 percent: if they kept the goal capital in safe bonds yielding 1.5 percent real, the plan would be short. \emph{Recommendation}: hold the 60/40 policy for goal capital; if real yields stay low, raise saving to about 58,100 a year, which restores a funded ratio of 1 at 1.5 percent; fix education money in short bonds two years ahead.
+\item Liquidity: the 60,000 emergency reserve in cash, outside the policy portfolio (six months of 120,000 spending, given Tunde's variable income); 188,500 moved to a short-bond bucket two years before each 200,000 payment; a USD~250,000 securities-backed line arranged in advance for timing gaps, never for investing.
+\end{itemize}
+
+\qffield{Conditions} Funding conclusions depend on the discount rate, which must match the assets that will fund the goals. Reserve sizes are rules of thumb, not regulations.
+
+\qffield{Pitfalls} Discounting goals at an expected equity return while funding them with bonds. Using a credit line as a permanent leverage source. Treating a funded ratio above one as permanent.
+
+\qffield{See also} \hyperref[meth:private-client-ips]{IPS}; \hyperref[meth:lifetime-exposures]{lifetime exposures}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Managing a family's financial exposures across life and retirement: mortality, disability, longevity, health and liability risks, and the roles of insurance, annuities and reserves]\label{meth:lifetime-exposures}
+\qffield{Statement} A holistic plan treats the family's balance sheet as exposed to events, not only to markets \citep[pp.~28--31, 41--44, 74--79]{ibbotson-lifetime-financial-advice-2007}:
+\begin{itemize}
+\item \emph{Accumulation}: market risk, controlled by the allocation; \emph{mortality} risk to human capital, hedged by life insurance, which pays exactly when human capital is lost; and savings risk, controlled by the savings rate. More life insurance is needed when human capital is large and safe, when financial wealth is small, when the family is risk-averse and when bequest motives are strong; less when earnings are equity-like (p.~76).
+\item \emph{Disability} can end earnings while spending continues; income-replacement cover insures it (Interpretation).
+\item \emph{Retirement}: market risk (sequence of returns), \emph{longevity} risk (outliving assets: about half of retirees outlive their life expectancy) and spending or inflation risk. Payout annuities pool longevity risk and pay a mortality credit; fixed annuities substitute for bonds and variable ones for stocks; because purchases are irreversible, staggering them after retirement is suggested (pp.~41--44, 78--79).
+\item \emph{Health and long-term care, liability and property} risks are insured or reserved for (Interpretation).
+\end{itemize}
+
+\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part~6). Mortality follows an illustrative Gompertz law with modal age 88 and dispersion 10 years; under it a 65-year-old reaches 80 with probability 0.71, 85 with 0.53 and 95 with 0.15.
+\begin{itemize}
+\item \emph{Life insurance}: Adaeze Okafor's human capital to retirement at 62 is 3.00 million; if 75 percent of it supports the family and 300,000 of assets is set aside for them, she needs about 1.95 million of term cover to 62, declining as she ages.
+\item \emph{Disability}: cover to 62 of 60 percent of her USD~250,000 pre-tax pay replaces 83 percent of after-tax pay if benefits are untaxed, as for individually paid policies (Interpretation).
+\item \emph{Longevity}: a fair life annuity costs 13.98 per unit of income at 3 percent, a 20-year bond ladder 14.88. The annuity pays 7.15 percent of the premium for life; the ladder pays 6.72 percent and stops at 85, an age the retiree reaches with probability 0.53. \emph{Recommendation}: at retirement, the Okafors annuitise enough to cover essential spending beyond Social Security in two or three tranches, and keep the rest invested for flexibility and bequests.
+\end{itemize}
+
+\qffield{Conditions} Gompertz parameters are chosen for illustration and are consistent with the survival probabilities quoted by Ibbotson and co-authors; annuity prices ignore insurer loads and credit risk.
+
+\qffield{Pitfalls} Insuring the lower-earning or non-earning spouse without valuing household services. Planning to life expectancy rather than to a high survival age. Buying annuities all at once at retirement.
+
+\qffield{See also} \hyperref[meth:human-capital-risks]{risks to human capital}; \hyperref[meth:retirement-across-jurisdictions]{retirement planning}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Taxes in goals-based planning and tax management across asset types: deferral, exemption, rate differences, asset location, loss harvesting, holding periods and wrappers, in the United States and the United Kingdom]\label{meth:tax-in-planning}
+\qffield{Statement} \emph{Principles} (Derivation, from the formulas in \hyperref[meth:private-client-tax-inflation]{taxes and inflation}): plans should be built on after-tax cash flows; tax deferral is valuable even at an unchanged rate; exempt accounts remove tax on growth; differences between current and future rates and between income and gains create opportunities; and the basis rules at death or gift change what is worth realising.
+
+\emph{Tax efficiency by asset type}: interest and non-qualified income are taxed at ordinary rates each year and are least efficient in taxable accounts; qualified dividends and long-term gains are taxed at lower rates, gains only when realised; inflation-linked bonds are taxed on the inflation uplift; real estate may offer depreciation; and municipal bonds in the US are exempt from federal tax (Interpretation).
+
+\emph{Strategies}:
+\begin{itemize}
+\item \emph{Asset location}: hold income-heavy assets in deferred or exempt accounts and growth assets in taxable accounts.
+\item \emph{Loss harvesting}: realise losses to offset gains, avoiding the US wash-sale rule, which disallows a loss if substantially identical securities are bought within 30 days before or after the sale \citep[sec.~1091(a)]{us-internal-revenue-code-26}. The value is the deferral, unless the replacement is held until death, when US basis steps up to fair market value \citep[sec.~1014(a)]{us-internal-revenue-code-26}.
+\item \emph{Holding periods and timing}: defer gains, realise them in low-income years, and use annual allowances (in the UK the 3,000 capital-gains allowance).
+\item \emph{Wrappers}: US 401(k) and IRA, UK pensions and ISAs (GBP~20,000 a year in 2026--27, \citep[overview]{govuk-isa-2026}).
+\end{itemize}
+
+\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part~7). A US top-bracket client (not the Okafors) holds 500,000 of bonds yielding 4.5 percent and 500,000 of stocks, split between a taxable account and an IRA whose withdrawals will be taxed at 24 percent. Both placements use one convention for the stocks: each year the price rises 5 percent of the opening value, a dividend of 2 percent of the opening value is paid at year-end, and the dividend (after tax, in the taxable account) is reinvested. A reinvested after-tax dividend adds to basis. In the first year, the taxable account's 10,000 dividend bears 2,380 of tax at 23.8 percent; 7,620 is reinvested, giving a value of 532,620, basis 507,620 and an unrealised gain equal to the 25,000 price rise. The IRA reinvests the whole dividend (535,000).
+\begin{itemize}
+\item bonds in the IRA and stocks in the taxable account end after 20 years with USD~2,454,619 after tax; the reverse location with 2,316,409, so the recommended location adds 138,211. With every tax set to zero, both placements end with 3,140,699: location alone cannot change gross performance;
+\item harvesting a 50,000 loss saves 11,900 at 23.8 percent; if the lower basis is taxed at the same rate in 10 years, the benefit is the deferral, worth 5,255 at 6 percent, and if the position is held until death, the full 11,900;
+\item a repurchase 31 days after the sale keeps the loss; one 30 days after loses it.
+\end{itemize}
+For a UK client the analogue is to use the ISA allowance each year (``bed and ISA''), realising gains within the 3,000 allowance, and to hold dividend-paying assets in the ISA, since dividends above 500 are taxed at up to 39.35 percent.
+
+\qffield{Conditions} 2026 US federal and 2026--27 UK rates; the IRA withdrawal rate and returns are assumptions. The taxable stocks are liquidated at the end, with the gain over basis taxed at 23.8 percent; holding them until death would remove that tax through the step-up and widen the advantage.
+
+\qffield{Pitfalls} Letting the tax tail wag the investment dog: harvesting into an unsuitable replacement. Ignoring a spouse's or the client's own purchases in other accounts under the wash-sale rule.
+
+\qffield{See also} \hyperref[meth:allocation-constraints-taxes-revision]{taxes in allocation}; \hyperref[meth:retirement-across-jurisdictions]{retirement accounts}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Recommending and justifying a private client's allocation, and evaluating the programme through reporting and review: returns against benchmarks and against goals]\label{meth:private-client-allocation-review}
+\qffield{Statement} \emph{Recommending an allocation}: start from the IPS and the goals; size each goal's capital and module; treat human capital and other assets outside the portfolio as part of total wealth; respect liquidity and concentration limits; choose implementation by account (location) and cost; and justify the result against alternatives \citep[pp.~13--18]{ibbotson-lifetime-financial-advice-2007}; \hyperref[meth:goals-based-allocation-heuristics]{goals-based allocation}.
+
+\emph{Reporting and review.} Reports should show: holdings and allocation against policy; time-weighted return against a policy benchmark, which measures the manager; money-weighted return, which measures the client's experience including the timing of flows; returns after fees and, where relevant, after tax; risk measures; and, above all, progress towards each goal (funded ratio, probability of success). Review compares results with the IPS, records changes in circumstances and decides whether to rebalance, revise the IPS or change managers \citep[pp.~21--22]{asset-manager-code-2010}; \citep[pp.~87--90]{standards-practice-handbook-2024}.
+
+\qffield{Practice} \emph{The Okafors' allocation} (original; \texttt{private-wealth-checks.py}, parts~3 and 8). The 540,000 policy portfolio needs 2.30 percent real; the 60,000 reserve stays in cash outside it. Illustrative real assumptions: equity 5.0 percent expected with 17 percent volatility, bonds 1.5 percent with 6 percent, correlation 0.2.
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Equity/bonds & Expected compound & 1-in-20 one-year return & Surplus at 62 (USD m) \\
+\midrule
+70/30 & 3.22\% & $-15.1$\% & 0.28 \\
+60/40 & 3.03\% & $-13.4$\% & 0.22 \\
+40/60 & 2.57\% & $-10.2$\% & 0.08 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{Recommended}: 60/40 (global, low-cost index funds; Treasuries and TIPS in the 401(k)s); Tunde's employer stock sold down to below 10 percent of liquid assets over 12 months. It meets the goals with a margin of 0.22 million on expected returns and keeps a bad year inside the roughly 15 percent loss the Okafors say they would tolerate. \emph{Alternatives}: 70/30, which their high capacity supports, sits at the limit of their willingness for 0.06 million more expected surplus; 40/60, the lower-risk choice, still exceeds the required return, but by only 0.27 points, leaving almost no margin if returns disappoint. 40/60 is a defensible choice only together with the higher saving (about 58,100 a year) that would make the plan fully funded at a 1.5 percent real discount rate.
+
+\emph{First annual review} (\texttt{private-wealth-checks.py}, part~8): the policy portfolio grew from 540,000 to 567,000 by mid-year, received the year's 50,000 of saving, and ended at 656,488. The time-weighted return is 11.72 percent; the money-weighted return 11.78 percent, slightly higher because the contribution came before the stronger half-year. Against an assumed blended benchmark return of 11.0 percent, the manager added 0.72 points; against the plan, the funded ratio at 3.5 percent rose from 1.16 to 1.20 (treating the year's return as real). No IPS change is needed; rebalancing back to 60 percent equity is.
+
+\qffield{Conditions} Benchmark, capital market assumptions and returns are illustrative; the expected compound return is the lognormal median rate, and the surplus is projected at that rate, not a probability of success.
+
+\qffield{Pitfalls} Judging the adviser on money-weighted returns driven by the client's own flows. Reporting returns without progress towards goals. Ignoring assets held elsewhere.
+
+\qffield{See also} \hyperref[def:return-measures]{time- and money-weighted returns}; \hyperref[meth:private-client-ips]{IPS}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Retirement planning from legal, tax and jurisdictional perspectives: US and UK retirement accounts, withdrawal rules, cross-border pensions, and choosing between pre-tax and after-tax saving]\label{meth:retirement-across-jurisdictions}
+\qffield{Statement} \emph{United States} (2026): employees may defer USD~24,500 into a 401(k), 403(b) or governmental 457 plan, plus 8,000 from age 50; IRAs take 7,500 \citep[secs.~402(g), 414(v), 219(b)]{irs-notice-2025-67}. Traditional accounts give a deduction now and tax withdrawals; Roth accounts tax contributions and exempt qualified withdrawals (Interpretation). Required minimum distributions begin at 73 for those reaching 72 after 2022 and 73 before 2033, and at 75 for those reaching 74 after 2032 \citep[sec.~401(a)(9)(C)(v)]{us-internal-revenue-code-26}.
+
+\emph{United Kingdom} (2026--27): contributions up to an annual allowance of GBP~60,000 (tapered for adjusted incomes above 260,000) receive relief at the saver's marginal rate; 25 percent of a pension can usually be taken tax-free, up to a lump sum allowance of 268,275; the rest is taxed as income \citep[annual allowance; lump sum allowance]{govuk-pension-tax-2026}.
+
+\emph{Across jurisdictions.} Residence decides which country taxes pensions as they grow and pay out, and treaties allocate rights. Under the UK--US treaty, a resident of one state who belongs to a pension scheme in the other is taxed on its income only when paid out (Art.~18(1)); a US citizen resident and employed in the UK can deduct contributions to a UK scheme for US tax, within limits (Art.~18(5)); and the US keeps its right to tax citizens except where the treaty says otherwise (Art.~1(4)--(5)) \citep[Arts.~1(4)--(5), 4(4), 18]{uk-us-double-taxation-convention-2001}.
+
+\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part~9).
+\begin{itemize}
+\item \emph{US, traditional against Roth}: a USD~24,500 deferral at a 35 percent marginal rate, invested for 25 years at 6 percent and withdrawn at 24 percent, leaves 79,915 after tax; a Roth contribution of the same after-tax cost (15,925) leaves 68,348. At equal rates the two are identical, so the choice turns on expected retirement tax rates. \emph{Recommendation for the Okafors}: traditional deferrals now (35 percent rate), with Roth conversions in low-income years between retirement at 62 and the start of RMDs.
+\item \emph{UK, pension against ISA}: Margaret Hartley's daughter, a higher-rate taxpayer, pays 10,000 into a personal pension; relief grosses it up to 12,500 and she reclaims 2,500 more, so it costs her 7,500. After 25 years at 6 percent the pot is 53,648; with 25 percent tax-free and the rest taxed at 20 percent, she keeps 45,601, against 32,189 from 7,500 in an ISA. The pension wins unless she needs access before pension age.
+\item \emph{Cross-border}: Maya Chen, a US citizen moving to London, keeps her 401(k), whose growth the UK will not tax until paid out (Art.~18(1)); her contributions to her UK employer's scheme can be deducted for US tax under Art.~18(5). Because the US still taxes her as a citizen, her UK ISA does not shelter income from US tax (Interpretation of the saving clause); she should hold UK-tax-efficient investments that are not penalised in the US, after advice from both countries' advisers.
+\end{itemize}
+
+\qffield{Conditions} US federal and UK (non-Scottish) rules for tax years starting in 2026; state taxes, the UK state pension and social-security totalisation are omitted. The treaty is the 2001 Convention as amended by the 2002 Protocol.
+
+\qffield{Pitfalls} Comparing traditional and Roth accounts with unequal after-tax contributions. Moving abroad without checking how the new country treats existing accounts. Assuming a treaty overrides citizenship-based taxation.
+
+\qffield{See also} \hyperref[meth:tax-in-planning]{tax management}; \hyperref[meth:residency-citizenship]{residency}.
+
+\end{qfmethod}

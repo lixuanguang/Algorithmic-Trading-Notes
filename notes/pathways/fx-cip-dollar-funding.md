@@ -28,6 +28,10 @@ Written in derivatives and empirical validation (2026-10-17):
 
 All: verification partly checked 2026-10-17, stability draft; human review outstanding.
 
+Written in library gap-filling Batch L4 (2026-10-21):
+
+- `meth:cross-currency-basis-swaps` (in `volatility-options`): the swap behind the basis, the leg that carries it, the two sign conventions and their annualised mapping, and synthetic dollar funding; `ev:cip-deviations` gained a link to it. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l4-21-october-2026).
+
 ## Source verification
 
 derivatives and empirical validation (2026-10-17) (source verification and bounded checks, not study or human review): the entries above were written from the passages cited in them; the record is in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.

@@ -39,8 +39,92 @@ Other index products compare as follows:
 \item the choice among products turns mostly on speed, funding, tracking error, tax and operations (a synthesis).
 \end{itemize}
 
-Lettau and Madhavan are cited from their NBER working paper of January 2018, not the published \emph{Journal of Economic Perspectives} version. Madhavan was then head of ETF and index research at BlackRock, which the paper discloses (p.~1). The ETF facts are as of 2014--2018 for the United States; current SEC rules on ETF baskets (Rule 6c-11) are not covered here.
+Lettau and Madhavan are cited from their NBER working paper of January 2018, not the published \emph{Journal of Economic Perspectives} version. Madhavan was then head of ETF and index research at BlackRock, which the paper discloses (p.~1). The ETF facts are as of 2014--2018 for the United States; current SEC rules on ETF baskets and disclosure (Rule 6c-11) are in \hyperref[meth:etf-trading-tracking-premiums]{ETF trading and premiums}.
 
 \qffield{See also} \hyperref[def:portfolio-trading]{portfolio trading} (index products and program trades); \hyperref[ev:index-reconstitution-impact]{index reconstitution}; \hyperref[res:arbitrage-risks]{arbitrage risks}; \hyperref[def:hft-strategies]{HFT strategies} (ETF-basket arbitrage).
 
 \end{qfmechanism}
+
+\begin{qfmethod}[ETF trading: secondary-market trading, sources of tracking error, factors in bid--ask spreads, and sources of premiums and discounts to NAV]\label{meth:etf-trading-tracking-premiums}
+\qffield{Statement} \emph{Secondary trading.} ETF shares trade on exchanges ``at market-determined prices'', which Rule 6c-11 exempts from the requirement to sell fund shares at the current NAV \citep[paras.~(a)(1), (b)(2)]{sec-rule-6c-11}. Most trading is investor to investor or against liquidity providers; the creation and redemption process is the authorised participants' back office for flattening their books, not a route clients use themselves, so clients can obtain NAV-based executions in any size through an AP or liquidity provider \citep[pp.~141--142]{abner-etf-handbook-2016}. For thinly traded ETFs, liquidity is that of the underlying basket (the ``implied liquidity''), not the ETF's screen volume (pp.~96--98); Abner advises limit orders near the fund's value and avoiding the last minutes of the day (pp.~133, 214).
+
+\emph{Tracking error} --- the dispersion of the fund's return around the index's --- and \emph{tracking difference} --- the gap in cumulative return --- come from:
+\begin{itemize}
+\item the expense ratio, deducted daily;
+\item sampling or optimised baskets instead of full replication, chosen for liquidity and weight limits;
+\item trading costs of rebalancing and index changes;
+\item cash drag and the timing of dividends;
+\item securities lending income, which offsets fees;
+\item taxes and withholding on foreign holdings;
+\item for derivative-based and leveraged funds, roll costs and daily resets (Abner, pp.~36--37, 267--274; Interpretation for lending and withholding).
+\end{itemize}
+A fully replicated basket has the least tracking error, mainly from friction costs and fees (p.~36).
+
+\emph{Bid--ask spreads.} A market maker quotes from the basket:
+\[
+\text{bid}=\text{basket bid}-\frac{\text{C/R fee}}{\text{CU}}-\text{slippage}-\text{expected financing},\qquad
+\text{offer}=\text{basket offer}+\frac{\text{C/R fee}}{\text{CU}}+\text{slippage}+\text{expected financing},
+\]
+where expected financing depends on how long the position may stay on the books, and so on the ETF's volume relative to its creation unit, and covers management fees, borrowing and hedge trading costs \citep[p.~140]{abner-etf-handbook-2016}. Spreads therefore widen with the underlying securities' spreads and illiquidity, creation fees, low ETF volume, hedging difficulty (closed underlying markets, use of proxy hedges), volatility and the approach of the close; they narrow as volume lets market makers net flows instead of creating or redeeming (pp.~47--48, 140, 214). Rule 6c-11 requires each ETF to publish its median bid--ask spread over the last 30 days, from national best bid and offer quotes at the end of each 10-second interval \citep[para.~(c)(1)(v)]{sec-rule-6c-11}.
+
+\emph{Premiums and discounts.} The rule defines the premium or discount as the market price at the time NAV is calculated less NAV, as a percentage of NAV, and requires daily disclosure of it, annual and quarterly counts and charts, and an explanation if it exceeds 2 percent for more than seven consecutive trading days (paras.~(a)(1), (c)(1)(ii)--(vi)). Sources:
+\begin{itemize}
+\item \emph{stale NAV}: holdings that trade in other time zones or rarely, such as foreign equities and bonds, make the ETF price the real-time estimate and the NAV the stale one (Abner, p.~214); \citep[NBER working paper version, p.~6]{ex-lettau-madhavan-2018};
+\item \emph{late trading}: large late orders and wider spreads at the close create apparent premiums that reverse the next day (Abner, p.~214);
+\item \emph{interrupted arbitrage}: closed underlying markets, suspended creations or redemptions, or APs stepping back, as in stressed bond markets (Abner, p.~214; \hyperref[mech:etf-creation-redemption]{creation and redemption});
+\item \emph{creation and redemption costs}: the price can drift within a band set by fees, basket spreads and financing before arbitrage pays.
+\end{itemize}
+Abner calls the reported NAV premium for domestic equity ETFs ``marketplace noise'', unlike the persistent premiums of closed-end funds (p.~214).
+
+\qffield{Practice} (Original numbers; checked in the script.)
+\begin{itemize}
+\item \emph{A market maker's quote}: basket 49.98/50.02, creation fee \$0.02 a share (Abner's \$2,000 on a 100,000-share unit, p.~48), slippage \$0.01 and two days' financing at 5 percent (\$0.014): the ETF quote is 49.936/50.064, a 0.26 percent spread against 0.08 percent for the basket. If volume lets the market maker net half its flows, halving the fee and financing it charges, the quote tightens to 49.953/50.047.
+\item \emph{Premium}: a close of 50.30 against a NAV of 50.00 is a 0.60 percent premium; eight consecutive days above 2 percent triggers the rule's website statement.
+\item \emph{Tracking}: an index fund charging 9 basis points with small daily replication noise shows a tracking difference near $-0.1$ percent a year and tracking error of about 0.3 percent.
+\end{itemize}
+
+\qffield{Conditions} Abner's description is US market practice as of 2016; Rule 6c-11 as in the eCFR, last amended 21 December 2020.
+
+\qffield{Pitfalls} Judging liquidity by ETF volume rather than the basket. Treating a closing premium on an international ETF as mispricing. Confusing tracking error with tracking difference.
+
+\qffield{See also} \hyperref[mech:etf-creation-redemption]{creation and redemption}; \hyperref[meth:etf-costs-risks-uses]{costs, risks and uses}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[ETF ownership: the costs of owning an ETF, the types of ETF risk, and portfolio uses]\label{meth:etf-costs-risks-uses}
+\qffield{Statement} \emph{Costs of owning} (Interpretation, collecting the sources' items):
+\begin{itemize}
+\item \emph{the expense ratio} --- the asset-weighted average for US ETFs was 30 basis points in July 2015, and an S\&P~500 fund cost about 0.03 percent in early 2016 \citep[p.~30]{abner-etf-handbook-2016};
+\item \emph{trading costs}: commissions, the bid--ask spread and any premium paid or discount received, incurred on each round trip (pp.~140, 214);
+\item \emph{tracking difference} beyond the expense ratio (\hyperref[meth:etf-trading-tracking-premiums]{tracking});
+\item \emph{taxes}: in-kind redemptions let ETFs remove low-basis lots, so equity index ETFs distribute few capital gains (pp.~42--43);
+\item offset by securities lending income where the fund lends.
+\end{itemize}
+Holding-period costs (the expense ratio) grow with time; trading costs are paid once per round trip, so short holdings are dominated by spreads and long holdings by fees.
+
+\emph{Risks} \citep[pp.~42, 64--67, 105, 181--187, 266--284]{abner-etf-handbook-2016}:
+\begin{itemize}
+\item \emph{structure}: open-end funds and unit investment trusts under the 1940 Act; grantor trusts and partnerships for commodities under the 1933 Act; and exchange-traded notes, which are senior unsecured debt ``backed only by the credit of the issuer'' (pp.~283--284);
+\item \emph{counterparty risk} in swap-based and leveraged funds and in securities lending;
+\item \emph{leverage and daily reset}: leveraged and inverse funds deliver a multiple of the daily return, so longer-period returns depend on the path (pp.~267--274);
+\item \emph{market-structure risk}: on 24 August 2015 many underlying stocks had not opened and limit-up/limit-down halts slowed trading, so liquidity providers widened their prices in ETFs with US holdings, which became hard to price (pp.~181--187); stop-loss orders triggered in the 2010 flash crash filled far from value (p.~105);
+\item \emph{fund closure}: small funds close and force a taxable sale (pp.~64--67);
+\item \emph{liquidity mismatch and premiums} where the fund holds illiquid assets (\hyperref[mech:etf-creation-redemption]{creation and redemption});
+\item \emph{tracking and tax} differences, such as commodity funds' roll returns (\hyperref[meth:commodity-futures-return-components]{commodity returns}).
+\end{itemize}
+
+\emph{Portfolio uses}: core and satellite holdings of asset classes at low cost; tactical and sector tilts; factor and thematic exposure; cash equitisation, transitions between managers and liquidity sleeves --- Abner names transitions and cash equitisation among the clients of ETF desks (p.~158); hedging and completion portfolios; and access to markets that are hard to trade directly, such as bonds, commodities and foreign shares (Interpretation for the list beyond Abner's examples).
+
+\qffield{Practice} (Original numbers; checked in the script.)
+\begin{itemize}
+\item \emph{Cost of ownership}: a core ETF with a 9 basis point expense ratio and a 4 basis point round-trip spread costs 0.13 percent for one year and 0.49 percent over five; a niche ETF at 60 basis points with a 50 basis point spread, bought at a 30 basis point premium, costs 1.40 percent for one year --- more than a 50 basis point mutual fund. Lending income of 10 basis points, 80 percent to the fund, offsets 8 basis points.
+\item \emph{Leverage}: ten days of $+10$ percent take an index up 159 percent and a 2x fund up 519 percent; ten days of $-10$ percent take them to 34.87 and 10.74 (Abner's Exhibits~12.3--12.4, pp.~269--270). Alternating $+10$ and $-9.09$ percent leaves the index unchanged and the 2x fund down 8.77 percent.
+\end{itemize}
+
+\qffield{Conditions} US structures and figures as of 2016.
+
+\qffield{Pitfalls} Comparing expense ratios without trading costs. Holding a daily leveraged fund as a long-term position. Treating an ETN like a fund.
+
+\qffield{See also} \hyperref[meth:etf-trading-tracking-premiums]{trading and premiums}; \hyperref[mech:etf-creation-redemption]{creation and redemption}; \hyperref[meth:commodity-swaps-index-construction]{commodity index products}.
+
+\end{qfmethod}

@@ -487,6 +487,16 @@
    "scope": "CAPM, market model, beta, APT and macroeconomic, fundamental and statistical factor models."
   },
   {
+   "id": "topic:return-predictability",
+   "title": "Aggregate return predictability and forecast evaluation",
+   "section": "asset-pricing",
+   "prerequisites": [
+    "topic:time-series-models",
+    "topic:asset-pricing-factor-models"
+   ],
+   "scope": "Present-value logic for valuation ratios, out-of-sample tests of a predictive regression against the historical mean, restricted forecasts and their economic value for one aggregate equity predictor; forecast combination and proper scoring of density forecasts are not yet written."
+  },
+  {
    "id": "topic:bond-instrument-features",
    "title": "Bond features, issuance and markets",
    "section": "rates-credit-mortgages",
@@ -8615,6 +8625,170 @@
     ],
     "example": "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py part 1 (raw-return market-model regression; parameter count for a single-index covariance); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
+   "supersedes": null
+  },
+  {
+   "id": "objective:interpret-present-value-identity",
+   "topic": "topic:return-predictability",
+   "title": "Derive the log-linear present-value identity and use it to interpret what a valuation ratio must forecast",
+   "operations": [
+    "derive",
+    "calculate",
+    "interpret"
+   ],
+   "depth": "analysis",
+   "prerequisites": [],
+   "entries": [
+    "res:campbell-shiller-identity"
+   ],
+   "candidate_entries": [
+    "res:campbell-shiller-identity",
+    "meth:gordon-growth-model"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "wide-cochrane-dog",
+      "locator": "RFS 21(4), 2008, p. 1539 and n. 4, eq. (4); p. 1540, eqs. (5)-(6), rho = 0.9638; p. 1544, eqs. (8)-(11)"
+     },
+     {
+      "key": "campbell-shiller-1986-nber",
+      "locator": "NBER WP 2100, eqs. (2)-(5), pp. 4-5 (linearisation point log(1 + mean R) less mean dividend growth, p. 5); Table 1a, p. 21"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/wide-cochrane-dog.md",
+     "notes/readings/campbell-shiller-1986-nber.md"
+    ],
+    "review_record": "notes/source-review-records.md#return-predictability-content-batch-22-october-2026",
+    "entry_evidence": [
+     "res:campbell-shiller-identity"
+    ],
+    "example": "notes/artefacts/return-predictability/return-predictability-checks.py part A, as corrected in the audit of 2026-10-22 (exact identity on annual S&P 500 data 1872-2025 with a return built from Index and D12, the CRSP mismatch reported separately; Taylor remainder non-negative and bounded; nominal variance ratios 0.00021 and 0.00077 at the mean-pd point, 0.00089 and 0.00728 at the working-paper point; forward iteration with the terminal term; b_r - b_d + rho phi = 1 + b_eps for 1927-2004 and 1872-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by goyal_extract.py"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:test-nested-return-forecasts",
+   "topic": "topic:return-predictability",
+   "title": "Compare a predictive regression with the historical mean out of sample with statistics valid for nested models",
+   "operations": [
+    "calculate",
+    "test",
+    "interpret"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:interpret-present-value-identity"
+   ],
+   "entries": [
+    "meth:nested-forecast-tests"
+   ],
+   "candidate_entries": [
+    "meth:nested-forecast-tests",
+    "meth:forecast-accuracy-evaluation",
+    "meth:backtest-evaluation-diagnostics"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "clark-west-2006-nber",
+      "locator": "NBER Technical WP 326, eq. (2.1), p. 4; eqs. (3.6)-(3.10), pp. 6-7; eq. (4.1), p. 8; regime, eqs. (4.2)-(4.3) and exceptions, pp. 8-10; extensions, pp. 10-12; eq. (6.1), p. 13; design and simulation summary, pp. 15-17; Table 1, panels A1 and B1; sec. 7, pp. 19-20"
+     },
+     {
+      "key": "s7-welch",
+      "locator": "RFS 21(4), 2008, eq. (6), p. 1461; eq. (7) and n. 3, p. 1462; Table 1, p. 1470"
+     },
+     {
+      "key": "campbell-thompson-2005-nber",
+      "locator": "NBER WP 11468, eq. (1), p. 6"
+     },
+     {
+      "key": "wide-cochrane-dog",
+      "locator": "RFS 21(4), 2008, p. 1538"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/clark-west-2006-nber.md",
+     "notes/readings/s7-welch.md",
+     "notes/readings/campbell-thompson-2005-nber.md",
+     "notes/readings/wide-cochrane-dog.md"
+    ],
+    "review_record": "notes/source-review-records.md#return-predictability-content-batch-22-october-2026",
+    "entry_evidence": [
+     "meth:nested-forecast-tests"
+    ],
+    "example": "notes/artefacts/return-predictability/return-predictability-checks.py part B (hand example and statistic identities; timing; Monte Carlo of Clark and West's DGP 1, seed 20261022, 5,000 replications, compared with both simulations' errors; audit investigation in the source's design, seed 20261104, 20,000 replications, gap at P = 120 unresolved; Welch and Goyal's annual d/p row; start-date sensitivity to 2005 and 2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by goyal_extract.py"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:value-restricted-return-forecasts",
+   "topic": "topic:return-predictability",
+   "title": "Impose sign restrictions on an equity-premium forecast and measure its utility gain for a constrained mean-variance investor",
+   "operations": [
+    "calculate",
+    "compare",
+    "interpret"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:test-nested-return-forecasts"
+   ],
+   "entries": [
+    "meth:restricted-forecast-value"
+   ],
+   "candidate_entries": [
+    "meth:restricted-forecast-value",
+    "meth:capital-allocation-line",
+    "def:risk-aversion-utility"
+   ],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "campbell-thompson-2005-nber",
+      "locator": "NBER WP 11468, pp. 2-3 and 6; eq. (5), p. 9; p. 10; Table 2 and notes"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/campbell-thompson-2005-nber.md"
+    ],
+    "review_record": "notes/source-review-records.md#return-predictability-content-batch-22-october-2026",
+    "entry_evidence": [
+     "meth:restricted-forecast-value"
+    ],
+    "example": "notes/artefacts/return-predictability/return-predictability-checks.py part C (hand example; Campbell and Thompson's monthly d/p row 1927-2003 and to 2025; synthetic C4 and post-run supplement C5, seeds 20261023 and 20261024); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by goyal_extract.py"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:score-and-combine-return-forecasts",
+   "topic": "topic:return-predictability",
+   "title": "Combine several return forecasts and score density or interval forecasts with proper scoring rules and conditional tests",
+   "operations": [
+    "calculate",
+    "compare",
+    "test"
+   ],
+   "depth": "analysis",
+   "prerequisites": [
+    "objective:test-nested-return-forecasts"
+   ],
+   "entries": [],
+   "candidate_entries": [],
+   "coverage": "missing",
+   "next_action": "obtain-source",
+   "missing": "No entry: forecast combination (wide-rapach-strauss-zhou), conditional predictive ability (wide-giacomini-white) and proper scoring rules (wide-gneiting-raftery) are required readings of the return-predictability pathway that have not been obtained or read.",
+   "evidence": null,
    "supersedes": null
   },
   {

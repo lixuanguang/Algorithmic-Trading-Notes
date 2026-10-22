@@ -1,0 +1,136 @@
+Python 3.14.7, NumPy 2.4.6, pandas 3.0.5
+annual 1871-2025, monthly 187101-202512; CRSP returns from 1926 (annual), 192601 (monthly)
+
+== A0. linearisation points: hand checks (added in the audit, 2026-10-22)
+  ok  working-paper rho uses log(1 + mean R): R = 0.5, -0.3, 0.1 and dd = 0.02, 0.04, 0 give exp(0.02)/1.1: 0.927456; the mean log return would give 0.972356
+  ok  steady state: the working-paper rho equals PD/(1 + PD), the mean-pd rho: 0.961538461538 against 0.961538461538
+
+== A1. exact identity, annual S&P 500 data, return built from Index and D12 in every year
+  ok  A1 exact identity r_t = dd_t - pd_{t-1} + log(1 + e^{pd_t}) for every year 1872-2025: max gap 1.9e-15
+     reported separately: CRSP log return less the Index-and-D12 log return, 1926-2025: mean +0.00002, sd 0.0103, largest 0.0675 (1931), correlation of the two returns 0.9990
+
+== A2. first-order approximation: the pure Taylor remainder at two expansion points
+     1872-1986, mean pd point: pd-bar 3.0473, rho 0.9547
+       remainder: mean 0.00176, min 2.3e-08, max 0.0158, variance ratio 0.00021, corr(r, approximation) 0.99991
+  ok  A2 1872-1986, mean pd: the remainder is log(1+e^pd) less its tangent at pd-bar, in [0, (pd - pd-bar)^2/8]: max |remainder - tangent gap| 1.1e-15
+  ok  A2 1872-1986: error variance below 0.5% of var(r) and correlation above 0.99
+     1872-1986, working paper point: pd-bar 2.6636, rho 0.9348; log(1 + mean R) 0.0975, mean dd 0.0301
+       remainder: mean 0.00580, min 7.0e-06, max 0.0215, variance ratio 0.00089, corr(r, approximation) 0.99960
+  ok  A2 1872-1986, working paper: the remainder is log(1+e^pd) less its tangent at pd-bar, in [0, (pd - pd-bar)^2/8]: max |remainder - tangent gap| 1.2e-15
+     1872-1986, mean pd point, with CRSP returns from 1926 as in the first run (remainder plus mismatch): variance ratio 0.00229
+     1872-2025, mean pd point: pd-bar 3.2715, rho 0.9634
+       remainder: mean 0.00389, min 3.6e-08, max 0.0234, variance ratio 0.00077, corr(r, approximation) 0.99965
+  ok  A2 1872-2025, mean pd: the remainder is log(1+e^pd) less its tangent at pd-bar, in [0, (pd - pd-bar)^2/8]: max |remainder - tangent gap| 1.9e-15
+  ok  A2 1872-2025: error variance below 0.5% of var(r) and correlation above 0.99
+     1872-2025, working paper point: pd-bar 2.6901, rho 0.9364; log(1 + mean R) 0.1028, mean dd 0.0371
+       remainder: mean 0.01249, min 1.3e-07, max 0.0592, variance ratio 0.00728, corr(r, approximation) 0.99638
+  ok  A2 1872-2025, working paper: the remainder is log(1+e^pd) less its tangent at pd-bar, in [0, (pd - pd-bar)^2/8]: max |remainder - tangent gap| 1.9e-15
+     1872-2025, mean pd point, with CRSP returns from 1926 as in the first run (remainder plus mismatch): variance ratio 0.00248
+     nominal data: Campbell and Shiller's Table 1a (0.0008, 0.9996) is for PPI-deflated returns at the working-paper
+     point; these rows illustrate the approximation on nominal data and do not reproduce that table
+
+== A3. forward solution, 1872-2025, mean pd point
+  ok  A3 iterating 1 years forward rebuilds pd_t with remainders and terminal term kept: max gap 8.9e-16; terminal weight rho^J = 0.963
+  ok  A3 iterating 5 years forward rebuilds pd_t with remainders and terminal term kept: max gap 1.8e-15; terminal weight rho^J = 0.830
+  ok  A3 iterating 10 years forward rebuilds pd_t with remainders and terminal term kept: max gap 2.2e-15; terminal weight rho^J = 0.689
+  ok  A3 iterating 20 years forward rebuilds pd_t with remainders and terminal term kept: max gap 1.8e-15; terminal weight rho^J = 0.475
+
+== A4. coefficient restriction, mean pd point of each sample
+  ok  A4 1927-2004: b_r - b_d + rho*phi = 1 + b_eps: b_r 0.066, b_d -0.067, phi 0.896, rho 0.9640, b_eps -0.0029, b_r - b_d + rho*phi = 0.9971
+     long-run return coefficient b_r/(1 - rho*phi) = 0.49, dividend-growth share -b_d/(1 - rho*phi) = 0.49; reported separately: slope of CRSP log returns 0.064 (= b_r + slope of the mismatch, -0.002)
+  ok  A4 1872-2025: b_r - b_d + rho*phi = 1 + b_eps: b_r 0.024, b_d -0.086, phi 0.920, rho 0.9634, b_eps -0.0032, b_r - b_d + rho*phi = 0.9968
+     long-run return coefficient b_r/(1 - rho*phi) = 0.21, dividend-growth share -b_d/(1 - rho*phi) = 0.76; reported separately: slope of CRSP log returns 0.022 (= b_r + slope of the mismatch, -0.002)
+
+== B1. hand example: recursive forecasts and the statistics' algebra
+  ok  recursive OLS by running sums equals lstsq refitted at each origin
+  ok  historical-mean forecast equals the mean of earlier outcomes
+  ok  Clark-West: mean f = MSE_N - (MSE_A - adj)
+  ok  Clark-West: mean f = 2 mean(e_N (e_N - e_A)) (eq. (4.1))
+  ok  ENC = P mean(f) / (2 MSE_A)
+  ok  R2_OS and DeltaRMSE have the same sign
+     forecasts A [0.4103 1.5624 2.512  0.6776] N [0.825  0.68   0.8167 0.8286]
+     P 4, MSE_N 0.8114, MSE_A 1.0828, adj 0.9619, R2_OS -0.3344, MSE-F -1.0023, ENC 1.2755, CW mean 0.6906, CW t 2.6512
+
+== B2. timing: overwriting the future leaves earlier forecasts unchanged
+  ok  forecasts for periods up to 25 unchanged
+  ok  forecasts for periods up to 40 unchanged
+  ok  forecasts for periods up to 55 unchanged
+
+== B3. Monte Carlo, Clark and West's DGP 1 (eq. (6.1)), recursive, R = 120, 5,000 replications
+     P = 120: mean MSE_N - MSE_A = -0.160 (MC t -39.3); Clark-West size 0.069 (published 0.085); unadjusted 0.023 (published 0.028)
+  ok  P = 120: the unadjusted MSPE difference favours the historical mean under the null
+  ok  P = 120: Clark-West size in [0.04, 0.11] and within 0.02 of Clark and West
+  ok  P = 120: unadjusted test rejects in less than 3% of replications
+     P = 240: mean MSE_N - MSE_A = -0.118 (MC t -52.7); Clark-West size 0.059 (published 0.07); unadjusted 0.010 (published 0.012)
+  ok  P = 240: the unadjusted MSPE difference favours the historical mean under the null
+  ok  P = 240: Clark-West size in [0.04, 0.11] and within 0.02 of Clark and West
+  ok  P = 240: unadjusted test rejects in less than 3% of replications
+  ok  gamma = 0.35, P = 240: Clark-West rejects more often than the unadjusted test: 0.156 against 0.033
+     added in the audit: P = 120, Clark-West size 0.069 less published 0.085 = -0.016; standard error of the difference 0.0053 (both runs, 5,000 replications each), -3.0 standard errors
+     added in the audit: P = 240, Clark-West size 0.059 less published 0.070 = -0.011; standard error of the difference 0.0049 (both runs, 5,000 replications each), -2.3 standard errors
+
+== B3b. audit investigation of the size gap (reported only; no verdict): the source's design, seed 20261104
+     recursive P = 120: Clark-West 0.0722 (Table 1 0.085; difference -0.0128, s.e. 0.0043, -2.9 s.e.), unadjusted 0.0236 (0.028)
+     recursive P = 240: Clark-West 0.0657 (Table 1 0.070; difference -0.0043, s.e. 0.0040, -1.1 s.e.), unadjusted 0.0109 (0.012)
+     recursive P = 720: Clark-West 0.0551 (Table 1 0.054; difference +0.0011, s.e. 0.0036, +0.3 s.e.), unadjusted 0.0032 (0.003)
+     rolling   P = 120: Clark-West 0.0722 (Table 1 0.085; difference -0.0129, s.e. 0.0043, -3.0 s.e.), unadjusted 0.0143 (0.018)
+     rolling   P = 240: Clark-West 0.0730 (Table 1 0.078; difference -0.0050, s.e. 0.0042, -1.2 s.e.), unadjusted 0.0027 (0.006)
+     rolling   P = 720: Clark-West 0.0856 (Table 1 0.091; difference -0.0054, s.e. 0.0045, -1.2 s.e.), unadjusted 0.0001 (0.000)
+     rolling, P = 720, means over replications: MSE_N - MSE_A -0.247, adjusted +0.005, mean squared forecast difference 0.252 (Clark and West, p. 16: -0.24, 0.01 and 0.25)
+
+== B4. Welch and Goyal's annual dividend-price row (data 1872-2005)
+     in sample: slope 0.0465, R2 1.07%, adjusted 0.32% (Welch and Goyal 0.49)
+  ok  in-sample adjusted R2 within 0.25 points of 0.49
+     forecasts from 1892: P 114, R2_OS -1.32%, adjusted -2.23% (published -2.06), DeltaRMSE -0.13 (published -0.11), MSE-F -1.49, ENC 0.32, Clark-West t 0.26
+  ok  forecasts from 1892: DeltaRMSE within 0.05 points of -0.11
+     forecasts from 1965: P 41, R2_OS -1.67%, adjusted -4.28% (published -3.69), DeltaRMSE -0.13 (published -0.09), MSE-F -0.67, ENC 0.68, Clark-West t 0.46
+  ok  forecasts from 1965: DeltaRMSE within 0.05 points of -0.09
+
+== B5. start-date sensitivity (reported only)
+     1892-2005: P 114, R2_OS  -1.32%, Clark-West t  0.26, slope range -0.133 to 0.107
+     1927-2005: P  79, R2_OS  -0.87%, Clark-West t  0.48, slope range -0.000 to 0.107
+     1947-2005: P  59, R2_OS  -0.93%, Clark-West t  0.63, slope range 0.021 to 0.107
+     1965-2005: P  41, R2_OS  -1.67%, Clark-West t  0.46, slope range 0.021 to 0.107
+     1985-2005: P  21, R2_OS -17.40%, Clark-West t -0.65, slope range 0.021 to 0.107
+     1892-2025: P 134, R2_OS  -2.26%, Clark-West t -0.11, slope range -0.133 to 0.107
+     1927-2025: P  99, R2_OS  -2.13%, Clark-West t  0.06, slope range -0.000 to 0.107
+     1947-2025: P  79, R2_OS  -3.10%, Clark-West t  0.17, slope range 0.020 to 0.107
+     1965-2025: P  61, R2_OS  -4.23%, Clark-West t -0.01, slope range 0.020 to 0.107
+     1985-2025: P  41, R2_OS -12.18%, Clark-West t -0.98, slope range 0.020 to 0.107
+
+== C1. hand example: weights, portfolio returns and utility
+  ok  weights 1.0, 0 (no short sales) and 1.5 (leverage cap): [ 1.     -0.3333  5.5556]
+  ok  portfolio returns 0.020, 0.003 and 0.0135
+  ok  utility = mean - (gamma/2) var: 1.2056% a month
+
+== C2. Campbell and Thompson's dividend-price comparison, monthly, forecasts 1927-2003, gamma = 3, weights in [0, 1.5]
+     P 924; R2_OS unrestricted -0.326%, restricted 0.003% (published, restricted: 0.001%)
+     utility of the historical-mean investor 0.492% a month (published 0.501%); change unrestricted -0.018% (published -0.016%), restricted -0.024% (published -0.024%)
+     negative slope in 8.0% of months; restricted weight 0 in 0.0%, at 1.5 in 0.0%; mean weights (mean, unrestricted, restricted) [0.669 0.461 0.458]
+  ok  historical-mean investor's utility within 0.05 points of 0.501% a month
+  ok  both utility changes within 0.05 points of zero
+
+== C3. extended to December 2025 (reported only)
+     P 1188; R2_OS unrestricted -0.412%, restricted -0.127%; utility 0.517%, change unrestricted -0.051%, restricted -0.055%
+
+== C4. synthetic mechanism: DGP 1 in monthly decimals, gamma* = 0.35, R = 240, P = 480, 1,000 replications
+     mean gain over the historical mean, % a month: unrestricted -0.0072, restricted -0.0070; share of samples with a gain: 0.106, 0.105
+     diagnostic added after the first run: weight at the 1.5 cap in 100.0% of months (historical mean) and 97.7% (unrestricted); DGP 1's mean excess return, 0.5 + 0.35 x 3 = 1.55% a month against a variance of 18 (percent squared), asks for a weight near 2.9, so the cap binds and the predictor can hardly be used
+
+== C5. post-run supplement: C4 with a mean excess return of 0.5% a month (intercept -0.55), seed 20261024
+     mean gain, % a month: unrestricted 0.0171, restricted 0.0214; share with a gain 0.514, 0.540; restricted better than unrestricted in 0.344 of samples; tied in 0.638; cap binds in 4.2% and 15.3% of months
+     population R2 0.0017, S2 0.0139; known-parameter, uncapped utility gain (1/(2gamma))(R2/(1-R2))(1+S2) = 0.0295% a month (half the expected-return gain of Campbell and Thompson's eq. (8); a conditional
+     mean-variance reference: the realised measure above also counts the variation of the timed mean, so it is lower)
+  ok  C4 timing: forecasts before the overwritten months are unchanged
+
+== Recorded values (added after the first run, 2026-10-22, to detect drift; no tolerance was changed)
+  ok  A (replaced in the audit; the first run's 0.0023 and 0.0025 mixed in CRSP returns): pure remainder variance ratios 0.00021 and 0.00077 at the mean-pd point (rho 0.9547, 0.9634), 0.00089 and 0.00728 at the working-paper point (rho 0.9348, 0.9364)
+  ok  A4 (audit): b_r 0.066 and 0.024, b_eps -0.0029 and -0.0032 (1927-2004, 1872-2025)
+  ok  B3b (audit): source-design sizes, recursive 0.0722, 0.0657, 0.0551; rolling 0.0722, 0.0730, 0.0856
+  ok  B3: Clark-West sizes 0.069 and 0.059; unadjusted 0.023 and 0.010; power 0.156 against 0.033
+  ok  B4: R2_OS -1.32% and -1.67%; DeltaRMSE -0.13 and -0.13; Clark-West t 0.26 and 0.46
+  ok  C2/C3: utility 0.492%, changes -0.018% and -0.024%; to 2025 0.517%, -0.051% and -0.055%
+  ok  C5: mean gains 0.0171% and 0.0214% a month
+
+47 checks executed
+all checks passed

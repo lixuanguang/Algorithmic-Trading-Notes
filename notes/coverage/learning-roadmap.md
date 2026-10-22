@@ -63,6 +63,7 @@ Two routes have been followed end to end, from roadmap to compiled entry to sour
 | --- | --- | --- | ---: |
 | `topic:linear-regression` Linear regression | `regression-time-series` | `topic:statistical-inference` | 7 |
 | `topic:time-series-models` Time-series models | `regression-time-series` | `topic:linear-regression` | 7 |
+| `topic:return-predictability` Aggregate return predictability and forecast evaluation | `asset-pricing` | `topic:time-series-models`, `topic:asset-pricing-factor-models` | 4 |
 | `topic:stochastic-calculus` Stochastic calculus for asset prices | `stochastic-processes-calculus` | `topic:probability-distributions` | 3 |
 | `topic:machine-learning-methods` Machine learning methods | `ml-alternative-data` | `topic:linear-regression` | 3 |
 | `topic:data-science-workflow` Financial data-science workflow | `ml-alternative-data` | `topic:machine-learning-methods` | 4 |

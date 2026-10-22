@@ -6621,3 +6621,150 @@ Black--Scholes with no dealer margin, and real collars and prepaid forwards are 
 tax only, dated 21 October 2026, rules not advice, and exclude the items listed as not read. Damodaran's market figures
 are from 2013-2014, MIP's from 2007. Deferred: C1-D3, C1-D4, C1-U1 to C1-U3. Objectives unchanged at 449/449, items at
 1,030/1,030. Nothing pushed; no PR.
+
+## Return-predictability content batch (22 October 2026)
+
+**Starting state.** `main` at `2ebe829` (merge of the subsection alignment, PR #36), clean; guide pin `8302467`;
+697 entries, 111 printed pathways, 461 PDF pages, 449/449 objectives. Branch `codex/return-predictability-content`.
+Scope set by the request: the three entries of the deferred `content_development_plan.md`, no general coverage campaign.
+The plan was reconciled first (pin, `\qfpathway` placement after `empirical-asset-pricing`, owning pathways of the
+reused entries, batch size); its section 0 records the decisions. Local only; nothing committed or pushed.
+
+**Sources read** (equations and tables as page images; downloads logged with URL, time, status, size and SHA-256 in the
+git-ignored `reading_materials/return-predictability/dl_log.tsv`):
+- Campbell and Shiller, NBER WP 2100 (December 1986), from nber.org, a 40-page scan whose text layer is unusable for
+  equations: pp. 1, 4-5 (eqs. (1)-(5), the linearisation point), Table 1a, p. 21. Registered as
+  `campbell-shiller-1986-nber`. The RFS 1988 version was not obtained.
+- Clark and West, NBER Technical WP 326 (August 2006), from nber.org: abstract, secs. 1-4 (pp. 1-10), sec. 6.1
+  (pp. 13-15), sec. 7 (pp. 19-20), Table 1 (PDF p. 36) and the empirical table (PDF p. 40). Registered as
+  `clark-west-2006-nber`. The Journal of Econometrics version was not obtained.
+- Cochrane, RFS 21(4) 2008, the published article from the author's site: pp. 1533-1541 and 1544.
+- Welch and Goyal, RFS 21(4) 2008, the existing local journal copy: pp. 1456-1457, 1461-1462, 1464, Table 1 (p. 1470,
+  rendered at 220 dpi and rotated).
+- Campbell and Thompson, NBER WP 11468, the existing local copy: pp. 2-3, 6, 9-10 and Table 2 (PDF p. 26, 220 dpi).
+- Goyal's data page (sites.google.com/view/agoyal145) and two workbooks; the one used is labelled "Original data (up
+  to 2005) used in the paper" but runs to December 2025 (SHA-256 `8d210b77...be872`).
+- Not obtained or read, and nothing taught from them: `wide-campbell-shiller-1988`, `wide-clark-west`,
+  `wide-campbell-thompson` (journal versions), `wide-rapach-strauss-zhou`, `wide-goyal-welch-zafirov`,
+  `wide-giacomini-white`, `wide-gneiting-raftery`, `wide-martin-svix`, `w3-cakici-pockets-replication`.
+
+**Discrepancies and source limits.**
+- Welch and Goyal's adjusted out-of-sample R^2, as printed with eq. (6), is `R^2 - (1 - R^2)(T - k)/(T - 1)`; for R^2
+  near zero it gives about -100 percent, which Table 1 does not show. Read as a misprint; ΔRMSE is the gated comparison.
+- Clark and West's empirical table is printed "Table 4" and called Table 7 in the text (p. 20).
+- Campbell and Thompson define the "wrong" sign against "the theoretically expected sign estimated over the full
+  sample" (p. 6), which uses future data if taken literally; the entry and the script fix the sign from theory.
+- The 1986 working paper's timing ($\delta_t=d_{t-1}-p_t$) and $\rho=\exp(-(r-g))$ differ from the 1988 form; both are
+  stated, and the 1988 form is cited to Cochrane, whose copy is the published article.
+- No 2005 data vintage was available: differences from the 2008 and 2005 tables cannot be separated from revisions.
+
+**Entries.** New: `res:campbell-shiller-identity`, `meth:nested-forecast-tests`, `meth:restricted-forecast-value` in
+`compendium/asset-pricing/return-predictability.tex`, under `\qfpathway{return-predictability}{Return predictability and
+forecast evaluation}` (section 8.3). Navigation only, checked to be identical to `HEAD` once the inserted links are
+removed: `def:contango-backwardation-stocks`, `meth:fx-valuation-signals` (a link on the first "Clark--West"),
+`meth:forecast-accuracy-evaluation`, `meth:backtest-evaluation-diagnostics` (See also). The other 693 entries are
+byte-identical; no label, type or file changed. Their evidence records are unchanged, since no claim moved.
+
+**Coverage.** New `topic:return-predictability` (section `asset-pricing`; prerequisites `topic:time-series-models` and
+`topic:asset-pricing-factor-models`) with `objective:interpret-present-value-identity`,
+`objective:test-nested-return-forecasts` and `objective:value-restricted-return-forecasts`, covered at analysis depth
+with these sources, reading notes, entry evidence and worked examples, and
+`objective:score-and-combine-return-forecasts`, missing (next action obtain-source), so that the topic records the part
+of the pathway outcome that is not written. The pathway checkpoint was not attempted. Objectives 453: 452 covered, 1
+missing; outline items unchanged at 1,030/1,030. Nothing in `notes/log.md`; no study or mastery claimed.
+
+**Checks.** `notes/artefacts/return-predictability/`: `return-predictability-protocol.md` (definitions, timing and
+tolerances written before the first run, after the published tables had been read; not a preregistration);
+`goyal_extract.py` (empirical group; verifies the workbook hash, writes the two CSVs); `return-predictability-checks.py`
+(numpy and pandas, default environment, about 1 s) and `return-predictability-results.txt`.
+- First run: every gated check in parts A, B and C1-C3 passed; the run then stopped in C4 on a NumPy RuntimeWarning
+  (under `-W error`), because the running variance was computed for a one-observation column that the slice discarded.
+  Harness corrected; no reported number depended on it.
+- C4 then showed a design flaw in the protocol, not in the code: with DGP 1's mean (1.55 percent a month against a
+  variance of 18) the weight sits at the 1.5 cap in 98-100 percent of months, so the synthetic check cannot show a
+  forecast's value. Kept and reported; a diagnostic line and a post-run supplement C5 (mean 0.5 percent a month, seed
+  20261024, outside any verdict) were added, and a units slip in C5's known-parameter reference (an extra division by
+  100) was corrected before values were recorded. The observed values were then added as regression checks. No
+  tolerance changed. Final: 39 checks pass.
+- Results against published figures (first run; part A superseded by the audit below): identity error-variance ratio
+  0.0023 (1872-1986) and 0.0025 (1872-2025), against Campbell and Shiller's 0.0008 for a deflated series; Clark-West
+  size 0.069 and 0.059 against 0.085 and 0.070 (inside the 0.02 tolerance, below by more than the simulation error of
+  about 0.004; cause not identified), unadjusted 0.023 and 0.010 against 0.028 and 0.012; Welch-Goyal d/p ΔRMSE -0.13 against -0.11 and -0.09, in-sample adjusted R^2 0.32
+  against 0.49; Campbell-Thompson d/p utility 0.492 against 0.501 percent a month, changes -0.018 and -0.024 against
+  -0.016 and -0.024. Seeds 20261022, 20261023 and 20261024; Python 3.14.7, NumPy 2.4.6, pandas 3.0.5.
+
+**Validation.** See the end of this record.
+
+**Limits.** Editorial coverage only; human review outstanding. One predictor, one market; working-paper locators for
+three of the five papers; a 2026 data vintage compared with tables built from 2005 data. Deferred: forecast
+combination, conditional tests, proper scoring, option-implied bounds, the checkpoint replication, predictive-regression
+bias (`standard-errors-inference`), and the cause of the lower Clark-West size at P = 120 (see the audit below).
+
+**Validation (22 October 2026).** `make check` (exit 0): lock check; ruff lint and format (160 files); `check_compendium.py
+--check` (700 entries, 112 pathways printed, 96 pathway notes, 0 problems); `check_coverage.py --check` and
+`--verify-outlines` (0 problems; 453 objectives, 452 covered, 1 missing; 1,030 items covered); `make test` (59 passed);
+`make examples` (128 scripts, warnings as errors); `make pdf`: 464 pages (was 461), no overfull boxes (one in the
+first build, from an inline weight formula, removed by displaying it), no undefined references, the one pre-existing
+underfull box. Contents list: 8.3 *Return predictability and forecast evaluation*, p. 35; PDF bookmark under chapter 8
+at PDF p. 41. Printed pp. 35-38 (PDF 41-44) rendered and read: headings, equations, the five tables and links; one
+sentence corrected afterwards (the restrictions do not improve the utility change). `make pre-commit` (exit 0, no file
+changed). Entry preservation: the 697 earlier entries keep labels, types and files; 693 are byte-identical and four
+differ only by the inserted links. `guide/` unchanged.
+
+**Audit corrections (22 October 2026, before commit).** An audit of the uncommitted batch reported three findings;
+each was checked independently against the local source PDFs as page images before anything was changed. The working
+tree was snapshotted first; nothing was reset, committed or pushed. The first run (script, output and protocol as they
+stood) is preserved unchanged in `notes/artefacts/return-predictability/superseded-first-run/` with a README, and it
+still reproduces its output byte for byte. The protocol keeps its original text with two bracketed notes and a new
+*Audit corrections* section; no seed, specification or tolerance changed.
+- *Campbell-Shiller linearisation point.* Confirmed: NBER WP 2100, printed p. 5, linearises around `Δd = g` and
+  `δ = log(exp(r - g) - 1)` with `r` "the log of one plus the sample average real return", i.e. `log(1 + mean R)`; the
+  script used the mean log return. Timing checked: `R_t = (P_{t+1} - P_t + D_t)/P_t` with `δ_t = d_{t-1} - p_t` is the
+  Goyal return `(Index_t + D12_t)/Index_{t-1}` with the end-of-year dividend yield. Real data in the paper (Table 1a,
+  PPI and CPI deflated); the extracted file has no deflator, so the batch's rows are now labelled a nominal
+  illustration, not a reproduction. Working-paper `ρ`: 0.9498 and 0.9501 before, 0.9348 and 0.9364 after (1872-1986,
+  1872-2025).
+- *Identity and approximation.* Confirmed: part A used CRSP returns from 1926 with `Index` and `D12`, and A1 was
+  restricted to 1872-1925 without a protocol record. Part A now builds the return from `Index` and `D12` in every year:
+  exact identity 1.9e-15 over 1872-2025; CRSP-versus-constructed log mismatch reported separately (1926-2025: mean
+  +0.00002, standard deviation 0.0103, largest 0.0675 in 1931). The approximation error is checked to equal the
+  Taylor remainder of `log(1 + e^x)` (1e-12), to be non-negative by convexity and at most `(pd - pd-bar)^2/8`, at both
+  points. Variance ratios: mean-pd point 0.00021 and 0.00077 (were 0.0023 and 0.0025, which the CRSP mismatch
+  dominated: 0.00229 and 0.00248 with it); working-paper point 0.00089 and 0.00728. The audit's 0.00021 and 0.00077
+  were treated as a diagnostic and matched without tuning. Forward iteration exact as before; A4, 1927-2004: `b_r`
+  0.066 (was 0.064), `b_ε` -0.0029 (was -0.0052), long-run shares 0.49 and 0.49 (were 0.47 and 0.49); 1872-2025: 0.21
+  and 0.76 (were 0.20 and 0.76). Parts B and C keep their CRSP-based return definitions; their output is unchanged.
+- *Clark-West inference.* Confirmed: the entry's size statement lacked the source's regime and qualifications. Restored
+  from pp. 8-12: `R, P -> ∞` with `P/R` to a finite nonzero constant; one-step, conditionally homoskedastic forecasts;
+  numerically computed quantiles for dim(Z) <= 20 and P/R from 0.1 to 20, all 400 recursive entries within (4.2), 4 of
+  400 rolling entries with a 0.90 quantile of 1.29; no formal proof and not asserted as literally true; (4.3) with 1 and
+  14 exceptions; the dim(Z) = 1 extension. The 48-design result is now presented as simulation evidence (pp. 2,
+  15-17), not a guarantee. Locators corrected: eq. (4.1) is on p. 8 (was p. 7), eq. (4.2) on p. 9 (was p. 8).
+- *Monte Carlo gap.* With both simulations' errors, the protocol run is 3.0 (P = 120) and 2.3 (P = 240) standard errors
+  below Table 1. A bounded investigation (B3b, seed 20261104, 20,000 replications, reported only) used the source's
+  design: one R + 720 path shared by every P, stationary initial draw, no observed lag for `y_1`, recursive and rolling
+  schemes, the ordinary t statistic. It reproduces the rolling means quoted on p. 16 (-0.247, 0.005, 0.252 against
+  -0.24, 0.01, 0.25) and gives recursive sizes 0.0722, 0.0657, 0.0551 against 0.085, 0.070, 0.054 and rolling 0.0722,
+  0.0730, 0.0856 against 0.085, 0.078, 0.091. Exploratory runs on common random numbers showed that indexing and the
+  variance divisor move the sizes by at most 0.0004. The gap is confined to P = 120 (about 0.013, three standard errors,
+  both schemes) and is retained as an unresolved reproduction result.
+- *Checks added.* A0 (the working-paper point on three declared returns; the steady state where both points agree), A1
+  over every year, the A2 remainder identity and bounds, the two-sided size gap, B3b, and drift checks for the corrected
+  values. Mutation tests on a scratch copy: restoring the mean log return fails A0 and the recorded values; restoring
+  CRSP returns in part A fails A1, every A2 remainder check and the recorded values. 47 checks pass (39 before).
+- *Records updated.* The entries `res:campbell-shiller-identity` and `meth:nested-forecast-tests`, their evidence
+  records and coverage evidence, the two reading notes, the pathway backlog, `content_development_plan.md` (status,
+  sources, files, section 7 and 7.1, deferred) and this record. `meth:restricted-forecast-value` needed no change. No
+  entry, pathway or objective was added, the forecast-combination work was not started, and the guide, the historical
+  migration and alignment records, the other 697 entries and every mastery state are unchanged.
+
+**Validation after the audit (22 October 2026).** `make check` (exit 0): lock check; ruff lint and format (160 files;
+`superseded-*` folders are excluded by configuration); `check_compendium.py --check` (700 entries, 0 problems);
+`check_coverage.py --check` and `--verify-outlines` (0 problems; 453 objectives, 452 covered, 1 missing); `make test`
+(59 passed); `make examples` (128 scripts, warnings as errors); `make pdf`: 464 pages, no overfull boxes, no undefined
+references, the one pre-existing underfull box. Printed pp. 35-38 (PDF 41-44) rendered and read: the new
+four-row identity table, the size discussion and the links display correctly. `make pre-commit` (exit 0, no file
+changed). Entry preservation: against `HEAD`, 697 entries keep labels, types and files, 693 byte-identical and four
+differing only by the batch's navigation links; against the pre-audit working tree, only the two corrected entries
+differ. `guide/`, `content_migration_plan.md`, `content_migration_ledger.md`, `subsection_alignment_plan.md` and
+`notes/log.md` are unchanged against `HEAD`.

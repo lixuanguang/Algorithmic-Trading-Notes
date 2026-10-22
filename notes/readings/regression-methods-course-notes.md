@@ -1,6 +1,6 @@
 ---
 key: regression-methods-course-notes
-pathways: [common-toolkit]
+pathways: [regression-time-series]
 version: Penn State Eberly College of Science, STAT 501 Regression Methods, online course notes (online.stat.psu.edu/stat501); read 2026-10-18 through Internet Archive captures dated 16 December 2025 to 12 May 2026, because the live site's TLS certificate chain could not be verified from this environment
 sections: 1.2 Best fitting line; 1.3 The simple linear regression model; 1.4 Common error variance; 1.5 Coefficient of determination; 1.8 R-squared cautions; 2.1 Inference for intercept and slope; 2.3 Sums of squares; 2.6 ANOVA table and F-test; 2.7 Example (t squared equals F); 2.8 Equivalent linear relationship tests; 3.2 Confidence interval for the mean response; 3.3 Prediction interval for a new response; 4.1 Background; 4.2 Residuals vs. fits; 4.4 Identifying problems with residual plots; 4.5 Residuals vs. order; 4.6 Normal probability plot; 9.1-9.3 Log transformations; credit, time-series and valuation batch (2026-10-20): lessons 5.3-5.4, 6.1-6.5, 7.1-7.6, 8.2-8.3, 8.6, 10.5, 11.2-11.5, 12.1, 12.3-12.4, 12.6, 13.1-13.2, 14.1, 14.3-14.4, read 2026-10-20 through Internet Archive copies saved in reading_materials/corp-credit-ts-20261020/stat501 (capture timestamps not retained in the saved files)
 read:

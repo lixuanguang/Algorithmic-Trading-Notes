@@ -1,6 +1,6 @@
 ---
 key: high-dimensional-estimation
-section: common-toolkit
+section: high-dimensional-statistics
 status: not started (draft entries from source verification only)
 ---
 
@@ -10,7 +10,7 @@ Pathway outcome, from the guide: Estimate large covariance and factor structures
 
 ## Status
 
-Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 17 October 2026 by derivatives and empirical validation (2026-10-17) that date (`notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*), which wrote this pathway's first entries from bounded source verification of some of its readings. That is not study of the pathway: its readings were read only for the passages cited in the entries, and no checkpoint was attempted. The entries are in `compendium/portfolio-construction-risk/risk-models.tex` (the guide section `common-toolkit` has no chapter folder; the entries sit beside the covariance and volatility entries they extend).
+Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 17 October 2026 by derivatives and empirical validation (2026-10-17) that date (`notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*), which wrote this pathway's first entries from bounded source verification of some of its readings. That is not study of the pathway: its readings were read only for the passages cited in the entries, and no checkpoint was attempted. The entries are in `compendium/high-dimensional-statistics/covariance-estimation.tex`, the guide section `high-dimensional-statistics`. Until the migration of 22 October 2026 they were in `compendium/portfolio-construction-risk/risk-models.tex`, because the earlier guide section `common-toolkit` had no chapter folder.
 
 ## Outcome in my own words
 

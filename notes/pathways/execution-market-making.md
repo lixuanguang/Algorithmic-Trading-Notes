@@ -110,6 +110,18 @@ Changed in dealer models and information review (merges): `def:outside-spread` (
 
 Corrected in the dealer models and information review follow-up, 2026-10-16: `def:arbitrage` (exact triangular equality of cross rates restricted to the frictionless case; with bid and ask quotes the synthetic and direct midpoints can differ inside the executable band, checked on EUR/USD 1.0999/1.1001, USD/JPY 109.99/110.01 and EUR/JPY 120.99/121.03, synthetic mid 121.00 against direct 121.01, both cycles unprofitable). Corrected in a second market design and liquidity review follow-up, 2026-10-16: `def:liquidity-dimensions` (the cost function made dimensionally consistent: $C(q)=q\,w(q)$ with $w$ in currency per share, or $C=q\,m\,w_{bp}/10{,}000$ with $w$ in basis points of the midpoint $m$; 100 shares at a midpoint of 100 and 10 bp cost 10). Both checks extend `notes/artefacts/execution-market-making/dealer-queue-information-checks.py` and `liquidity-market-design-checks.py`.
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+
+- `market-making-lob` (Market making, queues and limit-order-book models): pathway note [market-making-lob.md](market-making-lob.md), 16 entries listed, in `execution-market-making/market-making-models`, `execution-market-making/order-books`, `execution-market-making/order-flow-statistics`.
+- `lob-deep-learning` (Deep learning on limit-order-book data): pathway note [lob-deep-learning.md](lob-deep-learning.md), 1 entries listed, in `execution-market-making/order-books`.
+- `options-execution` (Options market making and execution costs): pathway note [options-execution.md](options-execution.md), 3 entries listed, in `execution-market-making/options-dealing`.
+- `bond-swap-dealer-market-making` (Bond and swap dealing: RFQs, inventory and balance-sheet capacity): no pathway note; partial treatment in existing entries, not reviewed as complete: RFQ protocols, venues and dealer risk-bearing in fixed income (`def:fixed-income-market-structure` in `execution-trading-costs/fixed-income-trading`); OTC derivative execution by RFQ (`def:trade-implementation-by-market` in `execution-trading-costs/trade-strategy-governance`). Not written: RFQ quoting and inventory models for bonds and swaps; balance-sheet capacity constraints.
+- `market-simulation` (Market simulation and counterfactual testing): pathway note [market-simulation.md](market-simulation.md), 5 entries listed, in `execution-market-making/order-flow-statistics`.
+- `fx-dealer-market-making` (FX dealing: internalisation, last look and hedging): pathway note [fx-dealer-market-making.md](fx-dealer-market-making.md), 3 entries listed, in `execution-market-making/fx-dealing`.
+- `hft-market-design` (High-frequency trading, speed and adverse selection): pathway note [hft-market-design.md](hft-market-design.md), 7 entries listed, in `execution-market-making/high-frequency-trading`.
+
 ## Entry backlog
 
 Empty after the source verification (2026-10-17); new stubs go here.

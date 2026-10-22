@@ -112,6 +112,17 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 Cross-referenced, not owned here: `mech:futures-margin-settlement` (`futures-execution`, extended with Hull's generic margin account); `mech:otc-clearing-collateral`, `def:interest-rate-measures`, `mod:forward-rates-fra`, `mod:duration-convexity`, `conv:us-rate-quotation` (`rates-credit-mortgages`); `def:futures-hedge-basis`, `mod:minimum-variance-hedge-ratio` (`commodity-hedging`); `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:arbitrage` (`execution-market-making`).
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+- `option-pricing-models` (Stochastic, local and jump volatility models): pathway note [option-pricing-models.md](option-pricing-models.md), 2 entries listed, in `volatility-options/option-pricing`.
+- `convertible-bonds` (Convertible bonds and credit-equity hedging): no pathway note; related existing material in `rates-credit-mortgages/embedded-option-bonds`, not reviewed as a complete treatment of the pathway.
+- `volatility-models` (Rough and path-dependent volatility): content gap; no entry written.
+- `option-hedging-smile` (Option hedging: delta, vega, smile dynamics and transaction costs): no pathway note; related existing material in `volatility-options/option-valuation`, `volatility-options/option-strategies`, not reviewed as a complete treatment of the pathway.
+- `learning-pricing-model-risk` (Learning-based pricing, calibration and model risk): content gap; no entry written.
+- `exotics-structured-products` (Exotic options, autocallables and structured products): no pathway note; related existing material in `volatility-options/exotic-options`, not reviewed as a complete treatment of the pathway.
+
 ## Entry backlog
 
 ## What changed in my view or practice

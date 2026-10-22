@@ -30,6 +30,16 @@ Alternatives batch (2026-10-20). Numbers are checked by `notes/artefacts/real-as
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#alternatives-batch-20-october-2026).
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+- `property-valuation` (Property valuation and listed real estate): no pathway note; related existing material in `real-asset-investor/real-estate`, not reviewed as a complete treatment of the pathway.
+- `infrastructure-regulated-assets` (Infrastructure and regulated assets): no pathway note; related existing material in `real-asset-investor/infrastructure`, not reviewed as a complete treatment of the pathway.
+- `equipment-aircraft-leasing` (Equipment and aircraft leasing): content gap; no entry written.
+- `natural-resource-rights` (Timber, farmland, mineral and water rights): no pathway note; related existing material in `real-asset-investor/land-timber-farmland`, not reviewed as a complete treatment of the pathway.
+- `collectibles-valuation` (Collectibles: auction evidence and investable returns): content gap; no entry written.
+
 ## Entry backlog
 
 ## What changed in my view or practice

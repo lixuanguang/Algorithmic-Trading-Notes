@@ -58,6 +58,16 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 Cross-referenced, not owned here: `meth:equity-index-valuation` (`cross-asset-style-premia`); `def:vix-variance-dividend-swaps` (`vix-correlation-dividends`); `mech:etf-creation-redemption` (`etf-index-closing-execution`).
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+
+- `intl-equity-integration` (Equity index construction, international integration, diversification and home bias): no pathway note; related existing material in `international-equity-markets/index-construction`, `international-equity-markets/equity-indices`, not reviewed as a complete treatment of the pathway.
+- `global-equity-factors` (Global equity factors, country selection and return predictability): no pathway note; partial treatment in existing entries, not reviewed as complete: country and sector selection by valuation (`meth:equity-index-valuation` in `multi-asset-systematic-macro/macro-regimes-data`); integration-weighted equity premia (`meth:asset-class-return-forecasts` in `multi-asset-systematic-macro/capital-market-expectations`); value and momentum across countries and asset classes (`def:alpha-model-taxonomy` in `research-engineering-validation/quant-strategy-structure`). Not written: global factor models; country-level return predictability.
+- `em-frontier-equities` (Emerging and frontier equity markets: liberalisation, foreign investors and liquidity): no pathway note; partial treatment in existing entries, not reviewed as complete: emerging-market equity premia under partial integration, and governance risks (`meth:asset-class-return-forecasts` in `multi-asset-systematic-macro/capital-market-expectations`). Not written: liberalisation effects; foreign investors and flows; frontier-market liquidity.
+- `cross-listing-global-trading` (Cross-listings, ADRs and asynchronous global trading): no pathway note; partial treatment in existing entries, not reviewed as complete: ADR mechanics and currency exposure (`def:equity-indices-derivatives` in `international-equity-markets/equity-indices`). Not written: cross-listing motives and valuation effects; ADR parity and arbitrage; asynchronous trading across time zones.
+- `china-em-equities` (China's stock market: factors, retail trading, intervention and access): content gap; no entry written.
+
 ## Entry backlog
 
 - data:equity-index-lists-current: current methodologies for the Jakarta Composite, the S&P 500 and the other S&P DJI indices apart from the DJIA, CAC 40 and AEX, KOSPI, ASX 200, NZX 50, Shanghai Composite, Bovespa, Mexico IPC, Nasdaq Composite and FTSE MIB, and BME's IBEX Technical Regulations themselves; fourteen indices' rules and an IBEX committee notice are in `def:equity-indices-derivatives`.

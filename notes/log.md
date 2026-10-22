@@ -1,6 +1,6 @@
 # Coverage log
 
-One row per pathway or section overview, keyed by a section declared in `compendium/compendium.tex` or a specialist pathway of the learning guide (`guide/`). A pathway is *mastered* when its checkpoint is passed from your own notes, and *consolidated* when its entry backlog is empty and its entries are checked. Dates are ISO 8601.
+One row per pathway or section overview, keyed by a section declared in `compendium/compendium.tex` or a specialist pathway of the learning guide (`guide/`). Rows for the guide's retired overviews (`common-toolkit`, `empirical-causal-research`) are kept as history; their successor sections are listed under `retired_overviews` in `guide/learning_routes.json`. A pathway is *mastered* when its checkpoint is passed from your own notes, and *consolidated* when its entry backlog is empty and its entries are checked. Dates are ISO 8601.
 
 | Pathway key | Mastered | Consolidated | Checkpoint artefact | Entries |
 | --- | --- | --- | --- | --- |

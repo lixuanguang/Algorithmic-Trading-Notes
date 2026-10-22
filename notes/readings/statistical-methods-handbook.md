@@ -1,6 +1,6 @@
 ---
 key: statistical-methods-handbook
-pathways: [common-toolkit]
+pathways: [probability-statistics, regression-time-series]
 version: NIST/SEMATECH e-Handbook of Statistical Methods, National Institute of Standards and Technology (itl.nist.gov/div898/handbook), web edition; pages read through fetched renderings on 2026-10-18
 sections: 1.3.3.4 Bootstrap Plot; 1.3.5.2 Confidence Limits for the Mean; 1.3.5.8 Chi-Square Test for the Variance; 1.3.5.9 F-Test for Equality of Two Variances; 1.3.5.10 Levene Test (inference and simulation slice); 1.3.5.1 Measures of Location; 1.3.5.6 Measures of Scale; 1.3.5.11 Measures of Skewness and Kurtosis; 7.2.6.2 Percentiles; 1.3.6.6.1 Normal, 1.3.6.6.2 Uniform, 1.3.6.6.4 t, 1.3.6.6.9 Lognormal, 1.3.6.6.18 Binomial distributions
 read:

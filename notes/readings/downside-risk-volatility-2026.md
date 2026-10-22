@@ -1,6 +1,6 @@
 ---
 key: downside-risk-volatility-2026
-pathways: [common-toolkit]
+pathways: [probability-statistics]
 version: Javier Estrada, "Volatility: A dead ringer for downside risk", Finance Research Open 2 (2026), 100099, doi 10.1016/j.finr.2026.100099, open access (CC BY), online 5 February 2026. Copy used: author PDF from blog.iese.edu retrieved 2026-10-18, SHA-256 052c010813747d1bd0426b6c986777c5bdf2f4ed8fc20c162bd650a651bfb1cd, 7 pages, in the git-ignored `reading_materials/coverage-pilots/`
 sections: introduction and section 2 (pp. 1-2), equations (1)-(3)
 read:

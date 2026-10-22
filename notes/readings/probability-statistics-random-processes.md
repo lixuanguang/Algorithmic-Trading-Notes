@@ -1,6 +1,6 @@
 ---
 key: probability-statistics-random-processes
-pathways: [common-toolkit]
+pathways: [probability-statistics, bayesian-inference]
 version: Hossein Pishro-Nik, Introduction to Probability, Statistics, and Random Processes, Kappa Research; online edition at probabilitycourse.com read through fetched renderings on 2026-10-18 (edition not stated on the pages)
 sections: 1.4.3 Bayes' Rule; 7.1.2 Central Limit Theorem; 8.3.3 Confidence Intervals for Normal Samples; 8.4.3 Hypothesis Testing for the Mean; 8.4.4 P-Values (inference and simulation slice); 5.1.5 Conditional Expectation (Revisited) and Conditional Variance; 5.3.1 Covariance and Correlation; 8.2.2 Point Estimators for Mean and Variance
 read:

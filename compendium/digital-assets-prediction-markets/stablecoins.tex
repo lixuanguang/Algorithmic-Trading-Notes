@@ -1,0 +1,33 @@
+\section{Stablecoins: runs and international standards}
+
+\begin{qfevidence}[Stablecoin runs and flights to safety, and stablecoin flows in Treasury bill yields]\label{ev:stablecoin-runs}
+\qffield{Statement} Anadu et al.\ document net flows ``from riskier to safer stablecoins on days of crypto-market stress'' and estimate a break-the-buck threshold at \$1: a coin priced at or above \$1 has flows uncorrelated with its price, while below \$1 its daily outflow rate ``jumps by 34 basis points''; the 2022 (Terra) and 2023 runs show the same flight to safety, and flows tend to stay within a blockchain, as money-fund flows stay within fund families (abstract and sec.~1, PDF pp.~2 and~4--5) \citep[Staff Report~1073, September 2023, revised April 2024, abstract and sec.~1]{cd-anadu-2023}.
+
+Ahmed and Aldasoro estimate, with instrumented local projections on daily data from 2021 to 2025, that ``a 2-standard deviation inflow into stablecoins lowers 3-month Treasury yields by 2--2.5 basis points within 10 days'', with little effect at longer tenors, and that outflows raise yields two to three times as much as inflows lower them (abstract) \citep[BIS WP~1270, May 2025 version, abstract]{rt-ahmed-aldasoro-stablecoins}.
+
+\qffield{Conditions} Safe and risky are classified from issuers' reported reserves, whose reporting quality varies (Anadu et al., n.~6). The yield estimate is for 2021--2025 and depends on the instrument.
+
+\qffield{Practice} A depeg can be dated as the first close below \$1, the threshold at which these authors find redemptions accelerate. \emph{Discrepancies noted}: the guide's reading note for this paper says ``the USD 0.99 break-the-buck threshold''; the paper estimates \$1. The paper's introduction calls the money-fund threshold ``95-cent'' while its later section defines breaking the buck as a market-price NAV below \$0.995 (PDF p.~5 against the money-fund background section); the latter is the usual definition.
+
+\qffield{Pitfalls} Figures are from the BIS paper's May 2025 version; the catalogue records a later revision with data to March 2026.
+
+\qffield{See also} \hyperref[ev:money-fund-runs]{money-fund runs}; \hyperref[rule:stablecoin-standards]{international stablecoin standards}; \hyperref[def:crypto-trading-risk-layers]{crypto trading risk layers}.
+
+\qffield{Further reading} \nolinkurl{wide-lyons-stablecoin}; \nolinkurl{wide-liu-makarov-schoar-terra}.
+
+\end{qfevidence}
+
+\begin{qfrule}[International standards for stablecoins: the FSB's redemption, stabilisation and reserve recommendations (July 2023)]\label{rule:stablecoin-standards}
+\qffield{Statement} The FSB's high-level recommendations for ``global stablecoin'' arrangements require that authorities ensure ``a robust legal claim to all users against the issuer and/or underlying reserve assets'' and ``timely redemption''; ``For GSCs referenced to a single fiat currency, redemption should be at par into fiat''; and an effective stabilisation mechanism, clear redemption rights and prudential requirements (Recommendation~9, PDF pp.~13--14) \citep[Final Report, 17 July 2023, Recommendation~9, printed pp.~9--10]{cd-fsb-stablecoin-2023}. Because Recommendation~9 requires an effective stabilisation mechanism, ``so-called algorithmic stablecoins do not meet the High-Level Recommendations'' (n.~2, printed p.~1). CPMI and IOSCO apply the PFMI's settlement-finality and money-settlement principles to systemically important arrangements (\hyperref[def:crypto-trading-risk-layers]{crypto trading risk layers}).
+
+\qffield{Conditions} These are international recommendations to authorities, not binding law; jurisdictions implement them in their own regimes (for example the EU's MiCA).
+
+\qffield{Practice} For a design check, ask in order: who holds the legal claim and on what, at par and how fast; what reserves back it and how they are managed; and what makes a transfer final on the chain used.
+
+\qffield{Pitfalls} A \emph{global} stablecoin is a category defined by potential reach across jurisdictions; the recommendations apply in full to that category.
+
+\qffield{See also} \hyperref[ev:stablecoin-runs]{stablecoin runs}.
+
+\qffield{Further reading} \nolinkurl{cd-cpmi-iosco-stablecoin-pfmi-2022}; \nolinkurl{cd-davernas-maurin-vandeweyer-2026}.
+
+\end{qfrule}

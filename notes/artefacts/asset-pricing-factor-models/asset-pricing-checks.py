@@ -326,7 +326,7 @@ ok(
 )
 
 print("== figure: security market line coordinates")
-fig = Path("../../../compendium/portfolio-construction-risk/figures/security-market-line.tikz")
+fig = Path("../../../compendium/asset-pricing/figures/security-market-line.tikz")
 txt = fig.read_text()
 pts = {
     k: tuple(map(float, v.split(",")))

@@ -1,4 +1,4 @@
-\section{Labels and sample weights for overlapping financial outcomes}
+\subsection{Labels and sample weights for overlapping financial outcomes}
 
 \begin{qfmethod}[Triple-barrier labelling: the fixed-horizon method and its limits, volatility-scaled barriers, first touch, barrier configurations, and labelling side against size]\label{meth:triple-barrier-labelling}
 \qffield{Statement} \emph{Fixed-horizon labelling} gives an observation $X_i$, drawn from bars $t=1,\dots,T$, the label $y_i=-1$, $0$ or $1$ as the return $r_{t_{i,0},t_{i,0}+h}=p_{t_{i,0}+h}/p_{t_{i,0}}-1$ is below $-\tau$, within $\pm\tau$, or above $\tau$, with $t_{i,0}$ ``the index of the bar immediately after $X_i$ takes place'' and $\tau$ a constant \citep[chap.~3, sec.~3.2, p.~43]{alpha-afml}. López de Prado gives three reasons to avoid it: time bars have poor statistical properties; one $\tau$ is applied whatever the volatility, so a $\tau$ of 1 percent labels most observations 0 at night and few at the open; and it ignores the path, labelling as winners positions that ``would have been stopped-out'' (p.~44).

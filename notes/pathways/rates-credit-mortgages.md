@@ -125,6 +125,16 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry-forward-price`, `def:swaps-as-forward-strips`, `meth:rate-bond-forward-valuation`, `meth:swap-valuation-replication` (`volatility-options`); `mech:futures-margin-settlement` (`futures-execution`); `def:return-measures` (`performance-manager-evaluation`); `mod:minimum-variance-hedge-ratio` (`commodity-hedging`); `def:fixed-income-market-structure` (`otc-fixed-income-trading`); `mech:securities-lending-short-sale` (`money-markets-repo-lending`); `def:common-investor-contagion` (`funding-crowding`).
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+- `curve-term-structure` (Yield-curve construction and term-structure models): pathway note [curve-term-structure.md](curve-term-structure.md), 2 entries listed, in `rates-credit-mortgages/interest-rates`, `rates-credit-mortgages/monetary-policy-curves`.
+- `rate-derivatives` (Interest-rate derivatives, volatility and RFR conventions): pathway note [rate-derivatives.md](rate-derivatives.md), 2 entries listed, in `rates-credit-mortgages/monetary-policy-curves`, `volatility-options/option-pricing`.
+- `monetary-policy-curve` (Monetary policy, balance-sheet policy and the yield curve): pathway note [monetary-policy-curve.md](monetary-policy-curve.md), 6 entries listed, in `rates-credit-mortgages/monetary-fiscal-policy`, `rates-credit-mortgages/monetary-policy-curves`.
+- `bond-risk-premia` (Bond risk premia, predictability and systematic rates strategies): no pathway note; related existing material in `rates-credit-mortgages/term-structure-returns`, `rates-credit-mortgages/fixed-income-portfolio-management`, not reviewed as a complete treatment of the pathway.
+- `rates-inflation` (Inflation-linked bonds, real yields and breakevens): pathway note [rates-inflation.md](rates-inflation.md), 1 entries listed, in `rates-credit-mortgages/monetary-policy-curves`.
+
 ## Entry backlog
 
 - rule:otc-derivatives-reforms: the U.S. prudential regulators' uncleared-margin rule and EMIR's texts, with scope and dates; the CFTC's rules and the BCBS-IOSCO framework (thresholds and phase-in) are in `mech:otc-clearing-collateral`.

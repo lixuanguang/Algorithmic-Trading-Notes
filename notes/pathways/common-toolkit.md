@@ -1,14 +1,30 @@
 ---
 key: common-toolkit
-section: common-toolkit
-status: not started (draft entries only, not from study)
+section: retired guide overview (compatibility bridge)
+status: retired; history kept below
 ---
 
-# Common toolkit (section overview)
+# Common toolkit (retired guide overview: bridge to Part I)
+
+The guide retired this overview in its eight-Part edition (`guide/learning_routes.json`, `retired_overviews`). It is no longer a compendium section. The content migration of 22 October 2026 moved its nine topic files, with labels and content unchanged, into the seven sections of Part I, *Financial mathematics, statistics and numerical methods*:
+
+| Successor section | Former files and entries |
+| --- | --- |
+| `financial-mathematics` ([overview](financial-mathematics.md)) | `time-value.tex`; with `def:return-measures` from portfolio performance |
+| `probability-statistics` ([overview](probability-statistics.md)) | `descriptive-statistics.tex`, `statistical-inference.tex`; `probability.tex` without Bayesian updating; `simulation-methods.tex` as `resampling.tex` without Monte Carlo |
+| `regression-time-series` ([overview](regression-time-series.md)) | `regression.tex`, `multiple-regression.tex`, `time-series-models.tex` |
+| `stochastic-processes-calculus` ([overview](stochastic-processes-calculus.md)) | `stochastic-calculus.tex` |
+| `bayesian-inference` ([overview](bayesian-inference.md)) | `meth:bayesian-updating`, from `probability.tex` |
+| `high-dimensional-statistics` ([overview](high-dimensional-statistics.md)) | none from this chapter; its covariance entries came from portfolio risk |
+| `numerical-optimisation` ([overview](numerical-optimisation.md)) | `meth:monte-carlo-simulation`, from `simulation-methods.tex` |
+
+The guide moved this overview's research-record checkpoint to `research-engineering-validation` ([overview](research-engineering-validation.md)). The history below records the work done while the chapter existed; its file paths are historical.
+
+## Former overview
 
 Overview outcome, from the guide: write a reproducible research record for a simple signal: decision-time data, an economic mechanism, the uncertainty of the headline estimate, a portfolio decision and the evidence that would reject it. Its checkpoint is a one-page research record for a public-data signal, rebuilt from the recorded inputs. Its readings are `prob-wasserman`, `s15-campbell`, `s6-cochrane`, `alpha-boyd`, `s7-meucci`, `s6-pbo` and `s8-bitemporal`.
 
-The chapter also holds the time-value foundations that the subject objectives in `notes/coverage/objectives.json` place under `topic:time-value-of-money` and part of `topic:return-measurement`. Those entries come from the foundation slice of 18 October 2026, not from this overview's readings.
+The chapter also held the time-value foundations that the subject objectives in `notes/coverage/objectives.json` place under `topic:time-value-of-money` and part of `topic:return-measurement`. Those entries come from the foundation slice of 18 October 2026, not from this overview's readings.
 
 ## Status
 

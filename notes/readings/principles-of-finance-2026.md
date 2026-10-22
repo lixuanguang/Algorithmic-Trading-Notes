@@ -1,6 +1,6 @@
 ---
 key: principles-of-finance-2026
-pathways: [common-toolkit, performance-manager-evaluation, corporate-finance]
+pathways: [financial-mathematics, performance-manager-evaluation, corporate-finance]
 version: Julie Dahlquist and Rainford Knight, Principles of Finance, 2nd edition, OpenStax (Rice University), web edition with publication date 24 June 2026, CC BY-NC-SA 4.0; read through fetched renderings of the openstax.org pages on 2026-10-18 (equations partly garbled in the rendering and reconstructed from the worked numbers)
 sections: 3.4 "Interest Rates"; 7.4 "Applications of TVM in Finance"; 10.2 "Bond Valuation"; 11.2 "Dividend Discount Models (DDMs)"; 15.1 "Risk and Return to an Individual Asset"; 2.1 "Business Structures", 19.1, 19.2, 19.4 and 19.5 (working capital, trade credit, receivables, inventory; read 2026-10-20)
 read:

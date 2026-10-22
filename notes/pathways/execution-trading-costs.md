@@ -12,6 +12,8 @@ Overview outcome, from the guide: plan the execution of an equity order, a futur
 
 Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 15 October 2026 by optimal execution review (`notes/source-review-index.md`) and extended by execution benchmarks / transaction-cost analysis reviews: the overview's outcome asks for a schedule and an expected cost with its uncertainty from a stated impact model, and `alpha-almgren` is one of its readings. execution benchmarks review added the execution-benchmark entries: the overview's outcome and checkpoint ask for realised implementation shortfall against arrival price, and its first reading is Perold's paper. execution algorithms review added the execution-algorithms entries: how an algorithm pursues its benchmark, how a large order is exposed and routed, and how portfolios are traded, which is the outcome's planning of a venue, mechanism and schedule. transaction-cost analysis review added the transaction-cost entries: measuring and splitting realised shortfall is the outcome's last clause; best execution and broker conflicts are owned by `market-structure-execution-quality`, and manager performance by `performance-manager-evaluation`. The entries come from source checking against Lehalle and Laruelle (`alpha-laruelle`, on no route), the Almgren–Chriss author preprint of December 2000 (`alpha-almgren`, selected passages), Harris (`alpha-harris`) and Kissell (`s7-kissellscience`, on no route). Perold's paper (`wide-perold-shortfall`) was not available and has not been read. That is not study of the readings.
 
+Moved in by the content migration of 22 October 2026, with labels and content unchanged: from `ml-alternative-data`: `mod:cartea-jaimungal-execution`.
+
 ## Outcome in my own words
 
 ## How the readings fit together
@@ -103,6 +105,17 @@ All partly checked 2026-10-19, draft. Examples in `notes/artefacts/trade-executi
 ## Source verification after macro markets and pricing review
 
 source verification (2026-10-17) (source verification and bounded tests, not study or human review): `def:clearing-settlement` resolved by merge into `def:transaction-costs` (its clearing-and-settlement item): the CPSS-IOSCO principles' Annex H definitions of clearing, final settlement, delivery versus payment, principal risk, central counterparty, novation and open offer (pp. 174-178, BIS PDF). The CPMI's online glossary page renders its terms by script and was not compared; the CPSS glossary of 2003 was not read. The record is in `notes/source-review-records.md`, *source verification (2026-10-17)*.
+
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+- `price-impact-execution` (Price impact, optimal execution and TCA): pathway note [price-impact-execution.md](price-impact-execution.md), 10 entries listed, in `execution-trading-costs/impact-models`, `execution-trading-costs/trade-signing`.
+- `market-structure-execution-quality` (Market structure rules, fees and execution quality): pathway note [market-structure-execution-quality.md](market-structure-execution-quality.md), 19 entries listed, in `execution-trading-costs/dark-trading-fragmentation`, `execution-trading-costs/execution-quality`, `execution-trading-costs/market-regulation`, `execution-trading-costs/smart-order-routing`, `execution-trading-costs/tick-size`.
+- `otc-fixed-income-trading` (Fixed-income and OTC electronic trading): pathway note [otc-fixed-income-trading.md](otc-fixed-income-trading.md), 3 entries listed, in `execution-trading-costs/fixed-income-trading`.
+- `etf-index-closing-execution` (ETFs, index events and closing auctions): pathway note [etf-index-closing-execution.md](etf-index-closing-execution.md), 3 entries listed, in `execution-trading-costs/etf-mechanics`.
+- `futures-execution` (Futures execution: matching, rolls and settlement): pathway note [futures-execution.md](futures-execution.md), 5 entries listed, in `execution-trading-costs/futures-execution`.
+- `retail-cfd-brokers` (Retail CFDs: leverage limits, broker risk and client outcomes): content gap; no entry written.
 
 ## Entry backlog
 

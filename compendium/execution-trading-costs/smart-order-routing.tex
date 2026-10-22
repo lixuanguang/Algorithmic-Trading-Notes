@@ -1,4 +1,4 @@
-\section{Smart order routing across fragmented venues}
+\subsection{Smart order routing across fragmented venues}
 
 \begin{qfdefinition}[Smart order routing: splitting a marketable order across venues, and why displayed liquidity is only probable]\label{def:smart-order-routing}
 \qffield{Statement} When several venues trade the same instrument, marketability is venue-specific: with 50 shares offered at 10.00 on one venue and 150 at 11.00 on another, a buy limit at 10.50 is marketable on the first only \citep[sec.~3.4.2, pp.~233--234]{alpha-laruelle}. A smart order router (SOR) decides where the child orders of a trading algorithm go; in Lehalle and Laruelle's architecture it is one of the tactics working inside the envelope set by the risk-control layer (\hyperref[def:trading-envelope]{trading envelope}). Their example (Table~3.3, p.~235) is a market buy of 500 shares against three European books, routed by three brokers (pp.~235--236):

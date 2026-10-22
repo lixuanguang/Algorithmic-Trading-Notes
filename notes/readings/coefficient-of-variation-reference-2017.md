@@ -1,6 +1,6 @@
 ---
 key: coefficient-of-variation-reference-2017
-pathways: [common-toolkit]
+pathways: [probability-statistics]
 version: NIST Dataplot Reference Manual, "Coefficient of Variation", created and last updated 24 January 2017; web page read 2026-10-18
 sections: whole page
 read:

@@ -38,6 +38,13 @@ Final audit correction pass (2026-10-20): family accounts under Standards III(B)
 
 PR #33 correction pass (2026-10-21): allocation class decided by how an account is managed, conflict controls by beneficial interest; family client accounts with an employee beneficial interest allocated pro rata after preclearance and with reporting (VI(B) Example 3), with a contrasting joint-account case. See [record](../source-review-records.md#pr-33-correction-pass-21-october-2026).
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+- `ethics-code-standards` (Codes of ethics, professional standards and enforcement): no pathway note; related existing material in `professional-ethics/ethics-trust-framework`, `professional-ethics/code-standards-enforcement`, `professional-ethics/standards-professionalism-markets`, not reviewed as a complete treatment of the pathway.
+- `fiduciary-duties-conflicts` (Duties to clients, conflicts of interest and asset-manager responsibilities): no pathway note; related existing material in `professional-ethics/standards-clients-employers`, `professional-ethics/standards-analysis-conflicts-members`, `professional-ethics/conduct-cases`, `professional-ethics/asset-manager-code`, not reviewed as a complete treatment of the pathway.
+
 ## Entry backlog
 
 ## What changed in my view or practice

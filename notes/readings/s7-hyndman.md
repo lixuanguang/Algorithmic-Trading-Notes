@@ -1,6 +1,6 @@
 ---
 key: s7-hyndman
-pathways: [common-toolkit]
+pathways: [regression-time-series]
 version: Rob J. Hyndman and George Athanasopoulos, Forecasting: Principles and Practice, 3rd ed., online text (otexts.com/fpp3), chapters 5, 7 and 9 retrieved 2026-10-20 (copies in reading_materials/corp-credit-ts-20261020/fpp3-ch5.html, -ch7.html, -ch9.html)
 sections: secs. 5.2 (simple methods as benchmarks), 5.8 (training and test sets; MAE, RMSE), 5.10 (time-series cross-validation), 7.4 (trend, dummy and seasonal dummy predictors), 7.5 (selecting predictors; adjusted R2, CV, AIC, AICc, BIC; spurious regression), 9.1 (stationarity, differencing, random walk, KPSS)
 read:

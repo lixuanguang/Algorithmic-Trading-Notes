@@ -1,6 +1,6 @@
 ---
 key: s7-tsay
-pathways: [common-toolkit]
+pathways: [regression-time-series]
 version: Ruey S. Tsay, Analysis of Financial Time Series, 3rd ed., Wiley, 2010 (ISBN 978-0-470-41435-4); owner's local PDF outside the repository (SHA-256 749e5738733cb1aca6e2c224f650de4401e55c268d216dcf26275cb84f65d7a2), printed page = PDF page - 27. The catalogue entry does not establish an edition; the 3rd edition was used
 sections: chap. 2: pp. 30-31 (stationarity), 37-47 (AR models, PACF, information criteria), 53-56 (goodness of fit, forecasting, half-life), 71-78 (unit-root nonstationarity, Dickey-Fuller and ADF); chap. 3: pp. 114-117 (ARCH effects and model); chap. 8: pp. 428-431 (cointegration)
 read:

@@ -41,6 +41,16 @@ Partly checked 2026-10-21, draft. Checks in `notes/artefacts/default-correlation
 
 Cross-referenced, not owned here: `meth:credit-spread-term-structure` (`corporate-credit-cds`); `meth:option-adjusted-spread` (`rates-credit-mortgages`).
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+
+- `covered-bonds` (Covered bonds and extendable maturity): no pathway note; partial treatment in existing entries, not reviewed as complete: dual recourse and covered bonds against securitisation (`meth:abs-structures-credit-enhancement` in `securitised-structured-credit/securitisation`, `meth:credit-cds-international-structured` in `corporate-credit-capital/credit-portfolio-management`). Not written: extendable maturities; covered-bond spreads and regulatory treatment.
+- `sukuk` (Sukuk: ownership, recourse and relative value): content gap; no entry written.
+- `mortgages-abs-clo` (Mortgages, ABS and CLO waterfalls): no pathway note; related existing material in `securitised-structured-credit/securitisation`, not reviewed as a complete treatment of the pathway.
+- `synthetic-risk-transfer` (Synthetic risk transfer and credit-linked notes): no pathway note; related existing material in `securitised-structured-credit/default-correlation`, not reviewed as a complete treatment of the pathway.
+- `cmbs-workouts` (CMBS, servicing and property workouts): no pathway note; partial treatment in existing entries, not reviewed as complete: CMBS call protection, the special servicer as B-piece holder and balloon risk (`meth:mortgage-securities-prepayment` in `securitised-structured-credit/securitisation`). Not written: servicing standards; modification and foreclosure outcomes; loss severities.
+
 ## Entry backlog
 
 ## What changed in my view or practice

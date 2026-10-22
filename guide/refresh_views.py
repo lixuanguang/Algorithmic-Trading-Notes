@@ -61,6 +61,8 @@ def validate_pathway(data):
         assert re.fullmatch(r'[a-z0-9-]+',identifier),identifier
     parts=data['learning_parts']
     assert len({p['id'] for p in parts})==len(parts),'Duplicate part identifiers'
+    for p in parts:
+        assert re.fullmatch(r'[a-z0-9-]+',p['id']),('Part identifiers use only a-z, 0-9 and hyphens, as prose references do',p['id'])
     ordered=[identifier for part in parts for identifier in part['routes']]
     assert len(ordered)==len(set(ordered)) and set(ordered)==set(overviews),'Overview placement mismatch'
     children=[identifier for r in routes for identifier in r['specialist_order']]
@@ -73,8 +75,37 @@ def validate_pathway(data):
         for prerequisite in r.get('prerequisite_routes',[]):
             assert prerequisite in all_routes,(r['id'],prerequisite)
             assert positions[prerequisite]<positions[r['id']],('Prerequisite must precede pathway',r['id'],prerequisite)
-    legacy=[r['legacy_label'] for r in routes]
+    for r in specialists:
+        assert 'specialist_order' not in r and 'legacy_label' not in r,('Only overviews have specialist_order or legacy labels',r['id'])
+    # Overviews added after the numbered legacy scheme have no legacy label; retired
+    # overviews keep theirs, on a bridge, so earlier links still resolve.
+    retired=data.get('retired_overviews',[])
+    legacy=[r['legacy_label'] for r in routes if 'legacy_label' in r]+[r['legacy_label'] for r in retired]
     assert len(legacy)==len(set(legacy)),'Duplicate legacy route labels'
+    # The numbered scheme is closed: each label stays with its original overview key.
+    owners={r['id']:r['legacy_label'] for r in routes+retired if 'legacy_label' in r}
+    assert owners==LEGACY_LABELS,('Keep each inherited legacy label on its original overview key',sorted(set(owners.items())^set(LEGACY_LABELS.items())))
+    for r in retired:
+        assert re.fullmatch(r'[a-z0-9-]+',r['id']) and r['id'] not in all_routes,('A retired overview key must not be a live route',r['id'])
+        assert r['successors'] and set(r['successors'])<=set(overviews),('Retired overview successors must be live overviews',r['id'])
+    assert len({r['id'] for r in retired})==len(retired),'Duplicate retired overview keys'
+    # Prose names other routes and parts by key, never by number, so that it survives renumbering.
+    part_ids={p['id'] for p in parts}
+    texts=[('part '+p['id'],p['introduction']) for p in parts]
+    for r in all_routes.values():
+        texts+=[(r['id'],r.get(k,'')) for k in ('outcome','prerequisites','checkpoint','learning_note')]
+        texts+=[(r['id'],g['goal']) for g in r.get('section_goals',[])]
+        texts+=[(r['id'],rd['reason']) for rd in r['required_readings']]
+        texts+=[(r['id'],b['reason']) for b in r['optional_branches']]
+    # A reading's selection locates passages in its source (its own section numbers), so
+    # only references are checked there, not bare numbers.
+    selections=[(r['id'],rd['selection']) for r in all_routes.values() for rd in r['required_readings'] if rd.get('selection')]
+    for owner,text in texts+selections:
+        for kind,key in re.findall(r'\[\[(part:)?([^\]]*)\]\]',text):
+            assert (key in part_ids) if kind else (key in all_routes),('Unresolved prose reference',owner,kind+key)
+    for owner,text in texts:
+        bare=re.findall(BARE_REFERENCE,text)
+        assert not bare,('Name routes and parts with [[key]] or [[part:key]], not numbers',owner,bare)
     # An overview's outcome is what its checkpoint tests; its section goals map the wider
     # coverage to the pathways that teach it, and a capstone checkpoint names those it needs.
     for r in routes:
@@ -95,21 +126,45 @@ def one_line_commands(source):
         for _ in range(2 if m[1]=='ExtendedNote' else 7):_,i=argument(source,i)
         assert '\n' not in source[m.start():i] and source[i:i+1] in ('\n',''),('Keep each catalogue command on one line',source[m.start():m.start()+80])
 
+def route_label(identifier, all_routes):
+    """Overviews are sections (route-*), pathways subsections (specialist-*)."""
+    return ('route-' if 'specialist_order' in all_routes[identifier] else 'specialist-')+identifier
+
 def number_link(identifier, all_routes):
-    label=('route-' if 'legacy_label' in all_routes[identifier] else 'specialist-')+identifier
+    label=route_label(identifier,all_routes)
     return r'\hyperref['+label+r']{\ref*{'+label+'}}'
+
+ROMAN=['I','II','III','IV','V','VI','VII','VIII','IX','X']
+# The guide's original numbering: each overview key keeps its label, on a live overview
+# or a retired bridge. Taken from learning_routes.json at commit 343d145; the scheme is closed.
+LEGACY_LABELS={'common-toolkit':'route-1','systematic-equities':'route-2','multi-asset-systematic-macro':'route-3','rates-credit-mortgages':'route-4','volatility-options':'route-5','execution-market-making':'route-6','ml-alternative-data':'route-7','portfolio-risk-financing':'route-8','energy-commodities':'route-9','digital-assets-prediction-markets':'route-10','research-engineering-validation':'route-11','private-capital-allocator':'route-12','real-asset-investor':'route-13','insurance-climate-risk':'route-14','global-regional-markets':'route-15','empirical-causal-research':'route-16','corporate-credit-capital':'route-17','securitised-structured-credit':'route-18','portfolio-construction-risk':'route-19','power-gas-environmental':'route-20','onchain-protocols':'route-21','event-contracts-prediction-markets':'route-22','execution-trading-costs':'route-23','government-bond-markets':'route-24','volatility-trading-premia':'route-25','currency-markets':'route-26','international-equity-markets':'route-27','commodity-investing-premia':'route-28','physical-commodity-markets':'route-29','commodity-spot-markets':'route-30','oil-shocks-macro':'route-31','environmental-markets':'route-32','crypto-spot-markets':'route-33','tokenised-fractional-assets':'route-34','crypto-market-making':'route-35','crypto-trading-strategies':'route-36','event-contract-venues':'route-37','event-contract-trading':'route-38'}
+# A hard-coded section or part number in prose, with an ordinary or TeX (~) space.
+BARE_REFERENCE=r'\(\d+\.\d+\)|\b(?:Section|Part)[\s~]+(?:\d+|[IVX]+)\b|\b(?:from|after|of|and|in)[\s~]+\d+\.\d+\b(?!\s?%)'
+def prose(s, all_routes, parts, linked=True):
+    """Escape route-file prose, printing [[route-id]] as the route's current number and
+    [[part:part-id]] as the part's Roman numeral. Unlinked inside another link."""
+    numerals={p['id']:ROMAN[i] for i,p in enumerate(parts)}
+    assert '[[' not in re.sub(r'\[\[(part:)?[a-z0-9-]+\]\]','',s),('Unparsed prose reference',s)
+    out=[];i=0
+    for m in re.finditer(r'\[\[(part:)?([a-z0-9-]+)\]\]',s):
+        out.append(tex_escape(s[i:m.start()]));i=m.end()
+        if m[1]:
+            out.append(r'\hyperref[part-'+m[2]+']{'+numerals[m[2]]+'}' if linked else numerals[m[2]])
+        else:
+            out.append(number_link(m[2],all_routes) if linked else r'\ref*{'+route_label(m[2],all_routes)+'}')
+    return ''.join(out)+tex_escape(s[i:])
 
 def and_list(items):
     return items[0] if len(items)==1 else ', '.join(items[:-1])+' and '+items[-1]
 
 def route_link(identifier, all_routes, text=None):
     r=all_routes[identifier]
-    label=('route-' if 'legacy_label' in r else 'specialist-')+identifier
+    label=route_label(identifier,all_routes)
     return r'\hyperref['+label+']{'+tex_escape(text or r['name'])+'}'
 
 def chart_node(identifier, all_routes, x, y, width='2.85cm', style='pathnode', show_count=False):
     r=all_routes[identifier]
-    label=('route-' if 'legacy_label' in r else 'specialist-')+identifier
+    label=route_label(identifier,all_routes)
     title=r'\textbf{\ref*{'+label+r'}.} '+tex_escape(r.get('chart_name',r['name']))
     if show_count:
         title+=r'\\[2pt]{\small '+str(len(r['specialist_order']))+' pathways}'
@@ -124,41 +179,60 @@ def overview_chart(parts, all_routes):
 
     A dashed spine from the first foundation section, the shared prerequisite of every
     subject part, feeds each later row. Solid arrows give the recommended study order
-    within a row; they are not hard gates. Rows hold at most four sections. The page
-    holds only the heading and the chart, which "Using the routes" explains, so that
-    the chart is never split from its heading.
+    within a row; they are not hard gates. Rows hold at most four sections. Each page
+    holds only a heading and the chart, which "Using the routes" explains, so that the
+    chart is never split from its heading. When the parts do not fit one page, whole
+    parts continue on a second page, where the spine resumes from the top edge.
     """
-    cols=4;step=4.15;width='3.30cm';spine=-2.40;label_x=-1.80
+    cols=4;step=4.15;width='3.30cm';spine=-2.40;label_x=-1.80;page_depth=-23.0
     roman=['I','II','III','IV','V','VI','VII','VIII','IX','X']
-    result=[r'''\clearpage
-\section*{Learning pathway DAG}\phantomsection\label{learning-map}
-\markboth{Learning pathway DAG}{}
-\addcontentsline{toc}{section}{Learning pathway DAG}
-\begin{center}
-\begin{tikzpicture}[x=1cm,y=1cm]
-''']
-    y=0;rows=[]
+    layout=[]  # per part: its groups and the chart height it needs
     for i,part in enumerate(parts):
         groups=part.get('chart_rows') or [part['routes'][k:k+cols] for k in range(0,len(part['routes']),cols)]
         assert [m for g in groups for m in g]==part['routes'],('chart_rows must list the part sections in order',part['id'])
         assert max(len(g) for g in groups)<=cols,('Whole-guide DAG row is wider than four sections',part['id'])
-        label=r'\hyperref[part-'+part['id']+']{PART '+roman[i]+': '+tex_escape(part['title']).upper()+'}'
-        result.append(r'\node[maplabel,anchor=west] at ('+f'{label_x:.2f},{y:.2f}'+') {'+label+'};\n')
-        y-=1.10
-        for j,group in enumerate(groups):
-            if j:y-=1.80
-            for k,identifier in enumerate(group):
-                result.append(chart_node(identifier,all_routes,f'{k*step:.2f}',f'{y:.2f}',width=width,show_count=True))
-            for a,b in zip(group,group[1:]):
-                result.append(r'\draw[patharrow] ('+a+'.east) -- ('+b+'.west);\n')
-            rows.append((y,group))
-        y-=1.25
+        layout.append((i,part,groups,1.10+1.80*(len(groups)-1)+1.25))
+    pages=[[]];used=0.0
+    for item in layout:
+        if pages[-1] and used+item[3]>-page_depth:pages.append([]);used=0.0
+        pages[-1].append(item);used+=item[3]
     source=parts[0]['routes'][0]
-    result.append(r'\draw[entryline] ('+source+'.west) -- ('+f'{spine:.2f},{rows[0][0]:.2f}'+') -- ('+f'{spine:.2f},{rows[-1][0]:.2f}'+');\n')
-    for row_y,group in rows:
-        if source not in group:
-            result.append(r'\draw[entryarrow] ('+f'{spine:.2f},{row_y:.2f}'+') -- ('+group[0]+'.west);\n')
-    result.append('\\end{tikzpicture}\n\\end{center}\n')
+    result=[]
+    for n,page in enumerate(pages):
+        if n==0:
+            result.append(r'''\clearpage
+\section*{Learning pathway DAG}\phantomsection\label{learning-map}
+\markboth{Learning pathway DAG}{}
+\addcontentsline{toc}{section}{Learning pathway DAG}
+''')
+        else:
+            result.append(r'''\clearpage
+\section*{Learning pathway DAG (continued)}\phantomsection\label{learning-map-'''+str(n+1)+r'''}
+The dashed connector from '''+route_link(source,all_routes)+r''' continues from the \hyperref[learning-map]{previous page}.
+''')
+        result.append('\\begin{center}\n\\begin{tikzpicture}[x=1cm,y=1cm]\n')
+        y=0;rows=[]
+        for i,part,groups,_ in page:
+            label=r'\hyperref[part-'+part['id']+']{PART '+roman[i]+': '+tex_escape(part['title']).upper()+'}'
+            result.append(r'\node[maplabel,anchor=west] at ('+f'{label_x:.2f},{y:.2f}'+') {'+label+'};\n')
+            y-=1.10
+            for j,group in enumerate(groups):
+                if j:y-=1.80
+                for k,identifier in enumerate(group):
+                    result.append(chart_node(identifier,all_routes,f'{k*step:.2f}',f'{y:.2f}',width=width,show_count=True))
+                for a,b in zip(group,group[1:]):
+                    result.append(r'\draw[patharrow] ('+a+'.east) -- ('+b+'.west);\n')
+                rows.append((y,group))
+            y-=1.25
+        start=f'{spine:.2f},0.30'
+        if n==0:
+            result.append(r'\draw[entryline] ('+source+'.west) -- ('+f'{spine:.2f},{rows[0][0]:.2f}'+') -- ('+f'{spine:.2f},{rows[-1][0]:.2f}'+');\n')
+        else:
+            result.append(r'\draw[entryline] ('+start+') -- ('+f'{spine:.2f},{rows[-1][0]:.2f}'+');\n')
+        for row_y,group in rows:
+            if source not in group:
+                result.append(r'\draw[entryarrow] ('+f'{spine:.2f},{row_y:.2f}'+') -- ('+group[0]+'.west);\n')
+        result.append('\\end{tikzpicture}\n\\end{center}\n')
     return ''.join(result)
 
 def section_dag_label(identifier):
@@ -411,6 +485,7 @@ def refresh():
     parts=route_data['learning_parts']
     route_labels={r['name']:'route-'+r['id'] for r in routes}
     placement={sid:r['id'] for r in routes for sid in r['specialist_order']}
+    part_of={identifier:p['id'] for p in parts for identifier in p['routes']}
     specialist_ids=[r['id'] for r in specialists]
     assert len(set(specialist_ids))==len(specialist_ids),'Duplicate specialist route ids'
     for r in specialists:
@@ -456,6 +531,11 @@ def refresh():
  entryline/.style={pathline,dashed},
  maplabel/.style={font=\fontsize{7.2}{9}\selectfont\bfseries,text=catalogueink,fill=white,inner sep=2pt}
 }
+% A retired overview's bridge labels: \ref prints the part that now holds its first
+% successor and \nameref the retired name, not the title of the preceding section.
+\makeatletter
+\newcommand{\BridgeLabel}[3]{{\def\@currentlabel{#2}\def\@currentlabelname{#3}\label{#1}}}
+\makeatother
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
 \titleformat{\part}[display]{\centering\color{catalogueink}\bfseries}{\large PART \thepart}{10pt}{\fontsize{21.6}{25.2}\selectfont}
@@ -478,7 +558,7 @@ Companion to the canonical reference catalogue\par
 \section*{How to study with this guide}\phantomsection\label{study-method}
 \markboth{How to study with this guide}{}
 \addcontentsline{toc}{section}{How to study with this guide}
-Studying with this guide should leave you with two things. The first is competence: a pathway is mastered when you can do what its outcome states and pass its checkpoint, not when every reading has been opened. The second is a reference: a compiled LaTeX compendium, in the manner of Wasserman's \emph{All of Statistics} (a reading in the \hyperref[route-common-toolkit]{common toolkit}), that states the definitions, conventions, results, models, methods, market mechanics, evidence, data and rules behind every part of this guide in one notation, with each statement traced to a located passage in its source. An experienced practitioner should be able to look a topic up in it, rely on each statement as far as its status allows, and follow its links to the same economics in other markets.
+Studying with this guide should leave you with two things. The first is competence: a pathway is mastered when you can do what its outcome states and pass its checkpoint, not when every reading has been opened. The second is a reference: a compiled LaTeX compendium, in the manner of Wasserman's \emph{All of Statistics} (a reading in WASSERMAN_ROUTE), that states the definitions, conventions, results, models, methods, market mechanics, evidence, data and rules behind every part of this guide in one notation, with each statement traced to a located passage in its source. An experienced practitioner should be able to look a topic up in it, rely on each statement as far as its status allows, and follow its links to the same economics in other markets.
 
 The method makes the reference a by-product of studying without letting it slow study down. Notes are written once, in three layers, and consolidated over several passes. Each pathway therefore has two milestones, kept apart: you \emph{master} it in one study loop, and you \emph{consolidate} its material into the compendium later, usually a section at a time. Entries are written in LaTeX from their first draft, so the compendium compiles at every stage, and fixed headings, one house notation, typed entries with stable labels and citations by catalogue key make consolidating it a matter of editing entries, not rewriting notes.
 
@@ -552,7 +632,7 @@ Keep one Markdown file per reading, named by its catalogue key. Open it with a m
 \begin{verbatim}
 ---
 key: s6-pbo
-pathways: [common-toolkit]
+pathways: [research-engineering-validation]
 version: 2017 journal article, Journal of Computational Finance
 sections: 1-4, 6
 read: 2026-10-14
@@ -854,13 +934,13 @@ Below are my notation register and the entries [labels]. Without adding facts: (
 \clearpage
 \section*{Using the routes}
 \markboth{Using the routes}{}
-The guide progresses through PART_COUNT parts. Each numbered section starts with an overview route; its specialist pathways follow immediately as numbered subsections. Start with the common toolkit and research process, then choose a subject branch using the \hyperref[learning-map]{learning pathway DAG}. The contents and PDF bookmarks expose the same part, section and subsection hierarchy. All digital-asset applications are together in Part VI, including dealer execution and options; links bring in their earlier foundations.
+The guide progresses through PART_COUNT parts. Each numbered section starts with an overview route; its specialist pathways follow immediately as numbered subsections. Start with the mathematical and statistical methods of Part~I and the research methods of Part~II, then choose a subject branch using the \hyperref[learning-map]{learning pathway DAG}. The contents and PDF bookmarks expose the same part, section and subsection hierarchy. All digital-asset applications are together in Part~DIGITAL_PART, including dealer execution and options; links bring in their earlier foundations.
 
 \textbf{Overviews: orientation and completion.} An overview route opens each section. Its \emph{section goals} list what the section's pathways teach, each with the pathways that teach it. Its \emph{overview outcome} is narrower: what its own readings deliver, stated so that its checkpoint can test it. Read an overview's readings for orientation before its pathways: their questions, vocabulary and main results, and where each pathway fits, which are the first two passes of the study loop. Every pathway in the section assumes that orientation and no more, and so does a route in another section that lists the overview among its prerequisites; a route that needs a pathway's methods lists that pathway. Completing an overview means passing its checkpoint. Most overview checkpoints can be done straight after the readings. Where one uses methods that the section's own pathways teach, it is marked as a \emph{section capstone}, with the pathways to complete first, and it closes the section rather than opening it.
 
 \textbf{Pathways, readings and checkpoints.} Read each selected sequence in order and complete its checkpoint. \emph{Required} readings are those a route's outcome and checkpoint are built on and that its compendium entries cite; if you can already pass the checkpoint, read them for what is new and for their locators rather than studying them again (see \hyperref[study-method]{How to study with this guide}). Prerequisites identify assumed knowledge rather than a compulsory schedule, and a prerequisite pathway is met when you can pass its checkpoint. Stage labels identify mechanics, valuation, empirical evidence, data and implementation; the number of readings follows the subject rather than a fixed cap. Optional branches extend a topic without adding to the required set. Book selections identify topics or chapters only where the catalogue supports them; no chapter numbers or workload estimates are inferred. A paired-paper entry is marked explicitly when the route uses only one of its works. A checkpoint is a learning exercise, not evidence of investment performance or readiness for live trading.
 
-\textbf{Diagrams.} The \hyperref[learning-map]{learning pathway DAG} that follows shows every section, part by part. Begin with the shared foundations in Part I; the dashed connector from the common toolkit leads to every subject part. Solid arrows show the recommended study order within each row; they do not require every section to be completed. Each node links to its numbered section and each part label to its part opener. Consult the linked prerequisites before moving between branches: for example, FX options build on options knowledge, private-credit work uses public-credit foundations, and crypto derivatives use both options and venue mechanics. Every section with two or more specialist pathways also has its own DAG, showing its in-section dependencies, the earlier foundations each pathway brings with it and any capstone checkpoint: SECTION_DAG_INDEX
+\textbf{Diagrams.} The \hyperref[learning-map]{learning pathway DAG} that follows shows every section, part by part. Begin with the shared foundations in Part~I; the dashed connector from its first section, FIRST_SECTION, leads to every later row. Solid arrows show the recommended study order within each row; they do not require every section to be completed. Each node links to its numbered section and each part label to its part opener. Consult the linked prerequisites before moving between branches: for example, FX options build on options knowledge, private-credit work uses public-credit foundations, and crypto derivatives use both options and venue mechanics. Every section with two or more specialist pathways also has its own DAG, showing its in-section dependencies, the earlier foundations each pathway brings with it and any capstone checkpoint: SECTION_DAG_INDEX
 
 Reading titles link to the \href{institutional_quantitative_finance_reading_list.pdf}{canonical reference catalogue}. Edition, publication status, primary links and full qualifications live there. This guide's title text is generated from the catalogue, while route choices and rationales are maintained separately. Keep the two PDFs and the extended-notes HTML together. PDF links work in viewers that support named destinations in companion files; a catalogue page is also supplied for every reading and branch.
 
@@ -873,6 +953,10 @@ Research or preliminary status does not make a work an advanced prerequisite or 
     section_keys=', '.join(k for part in parts for k in part['routes'])
     section_key_list=textwrap.fill(section_keys,width=88,initial_indent='\\qfsections{',subsequent_indent='  ',break_on_hyphens=False,break_long_words=False)+'}'
     guide[-1]=guide[-1].replace('SECTION_KEY_LIST',section_key_list)
+    wasserman=[r['id'] for r in routes if any(rd['anchor']=='prob-wasserman' for rd in r['required_readings'])]
+    assert wasserman,'The study method cites Wasserman as an overview reading'
+    digital=[i for i,p in enumerate(parts) if 'digital-assets-prediction-markets' in p['routes']]
+    guide[-1]=guide[-1].replace('WASSERMAN_ROUTE',route_link(wasserman[0],all_routes)).replace('DIGITAL_PART',ROMAN[digital[0]]).replace('FIRST_SECTION',route_link(parts[0]['routes'][0],all_routes))
     guide[-1]=guide[-1].replace('SECTION_DAG_INDEX',dag_index).replace('ROUTE_SUMMARY',tex_escape(route_summary)).replace('EDITION_DATE',display_date).replace('PATHWAY_DATE',pathway_display).replace('PART_COUNT_CAP',PART_WORDS[len(parts)].capitalize()).replace('PART_COUNT',PART_WORDS[len(parts)])
     if html_links:
         old_intro=guide[-1].index('Reading titles link to')
@@ -890,11 +974,18 @@ Research or preliminary status does not make a work an advanced prerequisite or 
             ordered.extend(('specialist',all_routes[sid]) for sid in r['specialist_order'])
     for kind,r in ordered:
         if kind=='part':
-            guide.append('\\clearpage\n\\part{'+tex_escape(r['title'])+'}\\label{part-'+r['id']+'}\n'+tex_escape(r['introduction'])+'\n\n')
+            guide.append('\\clearpage\n\\part{'+tex_escape(r['title'])+'}\\label{part-'+r['id']+'}\n'+prose(r['introduction'],all_routes,parts)+'\n\n')
+            for old in route_data.get('retired_overviews',[]):
+                if old['successors'][0] in r['routes']:
+                    # A navigation bridge, not a section: earlier links to the retired overview land here.
+                    numeral=ROMAN[[p['id'] for p in parts].index(r['id'])]
+                    bridge_labels=''.join('\\BridgeLabel{'+label+'}{'+numeral+'}{'+tex_escape(old['name'])+' (former section)}' for label in ('route-'+old['id'],old['legacy_label']))
+                    guide.append('\\par\\phantomsection'+bridge_labels+'\\textbf{Former section.} '+tex_escape(old['name'])+' (key \\texttt{'+old['id']+'}) is now divided into '+and_list([route_link(k,all_routes)+' ('+number_link(k,all_routes)+')' for k in old['successors']])+'. '+prose(old['note'],all_routes,parts)+'\n\n')
+
             guide.append('\\textbf{Sections in learning order}\\begin{enumerate}\n')
             for identifier in r['routes']:
                 route=overviews[identifier]
-                guide.append('\\item[\\ref*{route-'+identifier+'}.] '+route_link(identifier,all_routes)+' --- '+tex_escape(route['learning_note'])+'\n')
+                guide.append('\\item[\\ref*{route-'+identifier+'}.] '+route_link(identifier,all_routes)+' --- '+prose(route['learning_note'],all_routes,parts)+'\n')
             guide.append('\\end{enumerate}\n\\hyperref[learning-map]{Return to the learning pathway DAG.}\n')
             continue
         is_overview=kind=='overview'
@@ -902,15 +993,15 @@ Research or preliminary status does not make a work an advanced prerequisite or 
         heading='section' if is_overview else 'subsection'
         guide.append(('\\clearpage' if is_overview else '\\Needspace{12\\baselineskip}')+'\n\\'+heading+'{'+tex_escape(r['name'])+'}\\label{'+label+'}\n')
         if is_overview:
-            guide.append('\\label{'+r['legacy_label']+'}\n')
-            guide.append('\\textbf{Learning sequence.} '+tex_escape(r['learning_note'])+'\n\n')
+            if 'legacy_label' in r:guide.append('\\label{'+r['legacy_label']+'}\n')
+            guide.append('\\textbf{Learning sequence.} '+prose(r['learning_note'],all_routes,parts)+'\n\n')
             guide.append('\\textbf{Section goals.} Across its pathways, this section teaches you to:\n\\begin{itemize}[leftmargin=1.4em,itemsep=0pt,topsep=1pt]\n')
             for g in r['section_goals']:
-                guide.append('\\item '+tex_escape(g['goal'])+' ('+', '.join(number_link(p,all_routes) for p in g['pathways'])+')\n')
+                guide.append('\\item '+prose(g['goal'],all_routes,parts)+' ('+', '.join(number_link(p,all_routes) for p in g['pathways'])+')\n')
             guide.append('\\end{itemize}\n')
         else:
             guide.append('\\textbf{Specialist pathway.} In '+route_link(placement[r['id']],all_routes)+'.\n\n')
-        guide.append('\\textbf{'+('Overview outcome' if is_overview else 'Outcome')+'.} '+tex_escape(r['outcome'])+'\n\n\\textbf{Prerequisites.} '+tex_escape(r['prerequisites'])+'\n\n')
+        guide.append('\\textbf{'+('Overview outcome' if is_overview else 'Outcome')+'.} '+prose(r['outcome'],all_routes,parts)+'\n\n\\textbf{Prerequisites.} '+prose(r['prerequisites'],all_routes,parts)+'\n\n')
         prerequisites=r.get('prerequisite_routes',[])
         if prerequisites:
             guide.append('\\textbf{Review first.} '+'; '.join(route_link(identifier,all_routes) for identifier in prerequisites)+'.\n\n')
@@ -922,18 +1013,18 @@ Research or preliminary status does not make a work an advanced prerequisite or 
             guide.append('\\Needspace{5\\baselineskip}\\item \\href{'+destination+'}{'+title+'}')
             if page:guide.append('\\CataloguePage{'+str(page)+'}')
             guide.append('\\NoteKey{'+a+'}')
-            if rd.get('selection'):guide.append('\\par\\emph{Selection:} '+tex_escape(rd['selection']))
+            if rd.get('selection'):guide.append('\\par\\emph{Selection:} '+prose(rd['selection'],all_routes,parts))
             stage='\\textbf{'+tex_escape(rd['stage'])+'.} ' if rd.get('stage') else ''
-            guide.append('\\par '+stage+tex_escape(rd['reason'])+'\n')
+            guide.append('\\par '+stage+prose(rd['reason'],all_routes,parts)+'\n')
         capstone=r.get('checkpoint_after',[])
         checkpoint='Checkpoint'+(', a section capstone: complete it after '+and_list([number_link(p,all_routes) for p in capstone]) if capstone else '')
-        guide.append('\\end{enumerate}\n\\Needspace{5\\baselineskip}\\textbf{'+checkpoint+'.} '+tex_escape(r['checkpoint'])+'\n\n')
+        guide.append('\\end{enumerate}\n\\Needspace{5\\baselineskip}\\textbf{'+checkpoint+'.} '+prose(r['checkpoint'],all_routes,parts)+'\n\n')
         branches=[]
         for b in r['optional_branches']:
             a=b['target'];dest=a if html_links else labels.get(a,a)
             if a in by_anchor:dest=by_anchor[a][0]
             page=pages.get(dest)
-            branch='\\href{'+('catalogue_extended_notes.html' if html_links else CATALOGUE+'.pdf')+'\\#'+dest+'}{'+tex_escape(b['reason'])+'}'
+            branch='\\href{'+('catalogue_extended_notes.html' if html_links else CATALOGUE+'.pdf')+'\\#'+dest+'}{'+prose(b['reason'],all_routes,parts,linked=False)+'}'
             if page:branch+='\\BranchPage{'+str(page)+'}'
             branches.append(branch)
         if branches:guide.append('\\textbf{Optional branches.} '+' '.join(branches)+'\n')
@@ -942,7 +1033,8 @@ Research or preliminary status does not make a work an advanced prerequisite or 
             guide.append('\\par\\textbf{Continue in this section.} '+'; '.join(route_link(s['id'],all_routes) for s in children)+'.\n')
         elsewhere=[s for s in specialists if s['parent_route']==r['name'] and placement[s['id']]!=r['id']]
         if elsewhere:
-            guide.append('\\par\\textbf{Digital-asset applications (Part VI).} '+'; '.join(route_link(s['id'],all_routes) for s in elsewhere)+'.\n')
+            homes=[p['id'] for p in parts if p['id'] in {part_of[placement[s['id']]] for s in elsewhere}]
+            guide.append('\\par\\textbf{Applications in '+('Part ' if len(homes)==1 else 'Parts ')+and_list([prose('[[part:'+h+']]',all_routes,parts) for h in homes])+'.} '+'; '.join(route_link(s['id'],all_routes)+' ('+number_link(s['id'],all_routes)+')' for s in elsewhere)+'.\n')
         guide.append('\\par{\\small \\hyperref[learning-map]{Learning pathway DAG}')
         if not is_overview:
             guide.append(' \\textbar{} '+route_link(placement[r['id']],all_routes,'Section overview'))

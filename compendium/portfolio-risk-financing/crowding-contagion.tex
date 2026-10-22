@@ -1,4 +1,4 @@
-\section{Crowding and common-investor contagion}
+\section{Crowding, contagion and liquidity spirals}
 
 \begin{qfdefinition}[Common-investor (contagion) risk: crowded positions and forced exits through what else their holders own, with Narang's account of August 2007]\label{def:common-investor-contagion}
 \qffield{Statement} Contagion, or common-investor, risk is the risk a strategy bears ``not because of the strategy itself but because other investors hold the same strategies'' \citep[chap.~``Risks Inherent to Quant Strategies'', sec.~10.4, p.~202]{s7-narang}. Narang splits it in two:
@@ -67,5 +67,24 @@ The expansion and the super-additivity hold on illustrative numbers (an illustra
 
 \qffield{See also} \hyperref[def:common-investor-contagion]{common-investor (contagion) risk}; \hyperref[mod:grossman-miller]{Grossman--Miller} (the liquidity-provision model it extends with a funding constraint, p.~2); \hyperref[mech:futures-margin-settlement]{futures margin and settlement}; \hyperref[res:arbitrage-risks]{arbitrage risks}.
 
+
+\end{qfmodel}
+
+\begin{qfmodel}[Market and funding liquidity spirals: when margins are destabilising (Brunnermeier and Pedersen)]\label{mod:liquidity-spirals}
+\qffield{Statement} Speculators who provide liquidity are financed against margins. Brunnermeier and Pedersen call margins \emph{destabilising} ``if they can increase in illiquidity''. When the financier knows the fundamental value and that prices will return to it, margins are stabilising: illiquidity lowers the margin on the side that buys low or sells high, a ``cushioning'' effect (Proposition~1). When the financier is uninformed and fundamentals have ARCH-type volatility, margins rise with observed price moves, $m=\bar\sigma+\bar\theta|\Delta p|$, including moves caused by liquidity shocks (Proposition~2).
+
+With destabilising margins or large existing positions, liquidity can be fragile, with multiple equilibria and ``a discontinuous drop of market liquidity'' after small losses. A \emph{margin spiral} (tighter margins force selling) and a \emph{loss spiral} (losses on existing positions force selling) reinforce each other (sec.~1, printed pp.~2--4; Propositions~1--3, printed pp.~19--21) \citep[NBER WP~12939, February 2007, sec.~1 and Propositions~1--3]{exp-brunnermeier-pedersen-liquidity}.
+
+\qffield{Notation} $m$ margin; $\bar\sigma$, $\bar\theta$ parameters of the volatility process; $\Delta p$ the observed price change; $\Lambda$ the gap between price and fundamental.
+
+\qffield{Conditions} Model of 2007--2009. Destabilising margins need financiers who cannot tell fundamental from liquidity shocks; the model is stylised (three periods), and the empirical motivation is margins on S\&P~500 futures in 1987, 1990 and 1998.
+
+\qffield{Practice} A crypto liquidation cascade fits the margin-spiral reading when venues raise maintenance requirements or mark against falling prices and forced sales move the mark; whether it does is an empirical question.
+
+\qffield{Pitfalls} Propositions follow the 2007 working paper, which may differ from the \emph{Review of Financial Studies} version in \hyperref[def:common-investor-contagion]{common-investor contagion}.
+
+\qffield{See also} \hyperref[mech:crypto-auto-deleveraging]{auto-deleveraging}; \hyperref[def:common-investor-contagion]{common-investor contagion}; \hyperref[mech:defi-lending-liquidation]{DeFi liquidations}.
+
+\qffield{Further reading} \nolinkurl{exp-brunnermeier-pedersen-liquidity} (published version).
 
 \end{qfmodel}

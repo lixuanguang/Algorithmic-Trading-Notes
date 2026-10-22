@@ -1,4 +1,4 @@
-\section{Transaction cost models as inputs to portfolio construction}
+\subsection{Transaction cost models as inputs to portfolio construction}
 
 \begin{qfmodel}[Transaction cost functions for portfolio construction: flat, linear, piecewise-linear and quadratic forms, with units and size conventions]\label{mod:portfolio-transaction-cost-function}
 \qffield{Statement} Narang's transaction cost model quantifies ``the cost of making a trade of a given size'' so that the portfolio construction model can weigh it against the alpha and risk models when choosing the portfolio to hold \citep[chap.~5, ``Transaction Cost Models'', p.~85]{s7-narang}. It is ``not designed to minimize the cost of trading, only to inform the portfolio construction engine''; minimising cost is the execution algorithm's job (p.~86), and cost is reduced in two phases, first by the portfolio construction model using the cost estimate and then by execution (sec.~5.3, p.~96). In his framing there are ``only two reasons to make a trade'', a better reward from the alpha model or a lower risk from the risk model, and a trade's benefit must ``clear the hurdle of the cost of transacting'' (p.~85).

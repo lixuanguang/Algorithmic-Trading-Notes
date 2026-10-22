@@ -17,14 +17,14 @@
   {
    "id": "topic:time-value-of-money",
    "title": "Time value of money and cash-flow additivity",
-   "section": "common-toolkit",
+   "section": "financial-mathematics",
    "prerequisites": [],
    "scope": "Present value, implied returns and growth, cash-flow additivity and no-arbitrage forward relations."
   },
   {
    "id": "topic:return-measurement",
    "title": "Return measurement",
-   "section": "portfolio-construction-risk",
+   "section": "financial-mathematics",
    "prerequisites": [
     "topic:time-value-of-money"
    ],
@@ -42,7 +42,7 @@
   {
    "id": "topic:descriptive-statistics",
    "title": "Descriptive statistics of returns",
-   "section": "common-toolkit",
+   "section": "probability-statistics",
    "prerequisites": [
     "topic:return-measurement"
    ],
@@ -51,7 +51,7 @@
   {
    "id": "topic:probability-distributions",
    "title": "Probability and distributions in finance",
-   "section": "common-toolkit",
+   "section": "probability-statistics",
    "prerequisites": [
     "topic:descriptive-statistics"
    ],
@@ -60,7 +60,7 @@
   {
    "id": "topic:stochastic-calculus",
    "title": "Stochastic calculus for asset prices",
-   "section": "common-toolkit",
+   "section": "stochastic-processes-calculus",
    "prerequisites": [
     "topic:probability-distributions"
    ],
@@ -69,7 +69,7 @@
   {
    "id": "topic:statistical-inference",
    "title": "Sampling and statistical inference",
-   "section": "common-toolkit",
+   "section": "probability-statistics",
    "prerequisites": [
     "topic:probability-distributions"
    ],
@@ -78,7 +78,7 @@
   {
    "id": "topic:simulation-methods",
    "title": "Simulation and resampling",
-   "section": "common-toolkit",
+   "section": "probability-statistics",
    "prerequisites": [
     "topic:probability-distributions"
    ],
@@ -87,7 +87,7 @@
   {
    "id": "topic:linear-regression",
    "title": "Linear regression",
-   "section": "common-toolkit",
+   "section": "regression-time-series",
    "prerequisites": [
     "topic:statistical-inference"
    ],
@@ -96,7 +96,7 @@
   {
    "id": "topic:time-series-models",
    "title": "Time-series models",
-   "section": "common-toolkit",
+   "section": "regression-time-series",
    "prerequisites": [
     "topic:linear-regression"
    ],
@@ -480,7 +480,7 @@
   {
    "id": "topic:asset-pricing-factor-models",
    "title": "CAPM and factor models",
-   "section": "portfolio-construction-risk",
+   "section": "asset-pricing",
    "prerequisites": [
     "topic:portfolio-risk-return"
    ],
@@ -726,7 +726,7 @@
   {
    "id": "topic:digital-asset-investment",
    "title": "Digital asset investment",
-   "section": "digital-assets-prediction-markets",
+   "section": "crypto-spot-markets",
    "prerequisites": [],
    "scope": "Distributed ledgers, digital asset features, vehicles, risk, return and diversification."
   },
@@ -819,7 +819,7 @@
   {
    "id": "topic:strategic-asset-allocation",
    "title": "Asset allocation",
-   "section": "multi-asset-systematic-macro",
+   "section": "portfolio-construction-risk",
    "prerequisites": [
     "topic:capital-market-expectations",
     "topic:investment-policy-planning"

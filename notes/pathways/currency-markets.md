@@ -44,6 +44,18 @@ macro markets and pricing review follow-up, 2026-10-16 (source verification, not
 
 Cross-referenced, not owned here: `def:fx-market-structure` (`fx-dealer-market-making`); `mod:fx-carry-trade` (`fx-premia`); `def:currency-regimes-intervention` (`em-currencies-intervention`); `meth:fx-valuation-signals` (`fx-determination-forecasting`).
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+
+- `fx-determination-forecasting` (Exchange-rate determination, forecasting and order flow): pathway note [fx-determination-forecasting.md](fx-determination-forecasting.md), 1 entries listed, in `currency-markets/macro-fx`.
+- `fx-funding-settlement` (FX forwards, options, fixes and settlement): no pathway note; related existing material in `currency-markets/fx-mechanics-parity`, not reviewed as a complete treatment of the pathway.
+- `fx-premia` (Currency premia: carry, momentum, value and the dollar): pathway note [fx-premia.md](fx-premia.md), 1 entries listed, in `currency-markets/macro-fx`.
+- `fx-cip-dollar-funding` (Covered interest parity, the cross-currency basis and dollar funding): pathway note [fx-cip-dollar-funding.md](fx-cip-dollar-funding.md), 2 entries listed, in `currency-markets/macro-fx`, `volatility-options/forward-commitment-valuation`.
+- `fx-volatility-crash-risk` (FX volatility, skew and crash risk): no pathway note; partial treatment in existing entries, not reviewed as complete: carry crash risk and negative skew (`meth:carry-trade-uip` in `currency-markets/fx-mechanics-parity`, `mod:fx-carry-trade` in `currency-markets/macro-fx`); FX volatility trading with straddles and risk reversals (`meth:active-currency-strategies` in `currency-markets/currency-management`); option structures for currency hedging (`meth:currency-hedge-cost-reduction` in `currency-markets/currency-management`). Not written: FX volatility-surface quoting conventions; FX volatility and skew premia.
+- `currency-hedging` (Currency hedging for international portfolios): no pathway note; related existing material in `currency-markets/currency-management`, not reviewed as a complete treatment of the pathway.
+- `em-currencies-intervention` (Emerging-market currencies: regimes, intervention and the global financial cycle): pathway note [em-currencies-intervention.md](em-currencies-intervention.md), 1 entries listed, in `currency-markets/macro-fx`.
+
 ## Entry backlog
 
 ## What changed in my view or practice

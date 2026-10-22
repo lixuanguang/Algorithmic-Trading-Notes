@@ -1,6 +1,6 @@
 ---
 key: applied-statistics-course-notes
-pathways: [common-toolkit]
+pathways: [probability-statistics]
 version: Penn State Eberly College of Science, STAT 500 Applied Statistics, online course notes, Lesson 12 Summary and Review; read 2026-10-18 through the Internet Archive capture of 11 August 2026, because the live site's TLS certificate chain could not be verified from this environment
 sections: 12.1 Summary of Statistical Techniques, "Test to Compare Two Population Variances"
 read:

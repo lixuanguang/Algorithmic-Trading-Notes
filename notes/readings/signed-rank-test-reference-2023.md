@@ -1,6 +1,6 @@
 ---
 key: signed-rank-test-reference-2023
-pathways: [common-toolkit]
+pathways: [probability-statistics]
 version: NIST Dataplot Reference Manual, "Signed Rank Test", created 5 June 2001, last updated 11 December 2023; web page read 2026-10-18
 sections: whole page (purpose, assumptions after Conover, comparison with the t and sign tests, statistic and large-sample approximation)
 read:

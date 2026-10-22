@@ -1,0 +1,185 @@
+\begin{qfresult}[The Campbell--Shiller log-linear present-value identity: the exact return identity, its first-order approximation and the constant $\rho$, the forward solution, and why a valuation ratio must forecast returns, dividend growth or itself]\label{res:campbell-shiller-identity}
+\qffield{Statement} \emph{The exact identity.} With $R_{t+1}=(P_{t+1}+D_{t+1})/P_t$ and lowercase letters for logs, so that $pd_t=p_t-d_t$,
+\[ r_{t+1}=\Delta d_{t+1}-pd_t+\log\bigl(1+e^{pd_{t+1}}\bigr). \]
+It is the definition of a return rearranged and applies to each data point \citep[RFS 21(4), 2008, p.~1539 and n.~4]{wide-cochrane-dog}; no model of prices is involved.
+
+\emph{The approximation.} Expanding $\log(1+e^{x})$ to first order around the mean $\overline{pd}$ gives
+\[ r_{t+1}\approx k+\rho\,pd_{t+1}-pd_t+\Delta d_{t+1},\qquad \rho=\frac{e^{\overline{pd}}}{1+e^{\overline{pd}}}, \]
+with $k=\log(1+e^{\overline{pd}})-\rho\,\overline{pd}$. Cochrane writes it for demeaned variables, with $\rho=PD/(1+PD)$ at the price--dividend ratio about which one linearises. In annual CRSP data for 1927--2004 he takes $\rho$ from the mean log dividend yield, $\rho=0.9638$ (eq.~(4), pp.~1539--1540). The constant $k$ is our own bookkeeping (Interpretation).
+
+\emph{Forward solution.} Solving the approximate identity forward $J$ periods gives
+\[ pd_t=\sum_{j=1}^{J}\rho^{j-1}\bigl(k+\Delta d_{t+j}-r_{t+j}\bigr)+\rho^{J}pd_{t+J}, \]
+apart from the approximation errors. It holds after the event, and therefore also in expectation. If $\rho^{J}pd_{t+J}$ vanishes as $J$ grows (no bubble), a high price--dividend ratio must be followed by high dividend growth or low returns. Cochrane's eq.~(9) is the expectational form, $d_t-p_t=E_t\sum_j\rho^{j-1}r_{t+j}-E_t\sum_j\rho^{j-1}\Delta d_{t+j}$ (p.~1544).
+
+\emph{Restrictions on forecasts.} Project each term of the identity on $d_t-p_t$. With $b_r$, $b_d$ and $\phi$ the slopes of next period's log return, dividend growth and dividend yield on $d_t-p_t$,
+\[ b_r=1-\rho\phi+b_d \]
+(eq.~(5), p.~1540). While $\phi<1/\rho\approx1.04$, returns and dividend growth cannot both be unforecastable. A coherent null of no return predictability therefore needs $b_d<0$, a forecast of dividend growth that can itself be tested. Dividing by $1-\rho\phi$ gives long-run coefficients that sum to one, $b_r^{lr}-b_d^{lr}=1$, the shares of the dividend yield's variance due to expected returns and expected dividend growth (eqs.~(8)--(11), p.~1544).
+
+\qffield{Conditions} \emph{Two versions.} The working paper linearises the present-value model itself around a constant discount rate $r$ and growth $g$, with $\rho=\exp(-(r-g))$ \citep[NBER WP 2100, eqs.~(2)--(5), pp.~4--5]{campbell-shiller-1986-nber}. Its return $R_t=(P_{t+1}-P_t+D_t)/P_t$ dates the price at the start of period $t$, and its log dividend--price ratio $\delta_t=d_{t-1}-p_t$ divides the dividend of the period just ended by that price. With end-of-period prices and trailing dividends, as in the data below, this is the timing used here (Interpretation). The same model follows from linearising the one-period return around $\Delta d_t=g$ and $\delta_t=\log(e^{r-g}-1)$. For $r$ the paper takes the log of one plus the sample average real return, $\log(1+\bar R)$, not the average log return, and for $g$ the average change in log dividends (p.~5). In a steady state the two constants agree, since $e^{\bar\delta}=e^{r-g}-1$ makes $\rho=1/(1+e^{\bar\delta})$ (Interpretation). In a finite sample they differ. For nominal annual S\&P~500 data 1872--2025, $\rho$ is 0.9634 from the mean log price--dividend ratio and 0.9364 from $\log(1+\bar R)-\bar g$. Two effects lower the second: $\log(1+\bar R)$ exceeds the mean log return, and the ratio rose over the sample, which adds its average change to the mean log return (Interpretation).
+
+\emph{Accuracy.} For annual PPI-deflated returns 1871--1986, at the working paper's point, the error variance of the one-period approximation is 0.0008 of the variance of the log return, with a correlation of 0.9996 \citep[Table~1a, p.~21]{campbell-shiller-1986-nber}. The approximation degrades when the ratio moves far from the point of linearisation. Cochrane notes that his eq.~(5) is not exact: each coefficient differs from the one implied by the other two by about 0.005 \citep[p.~1540]{wide-cochrane-dog}.
+
+\emph{Units.} Inflation cancels from $r_{t+1}-\Delta d_{t+1}$, so real and nominal versions share $pd_t$ and, at the same expansion point, the same approximation error; only the variance of $r$ differs. The working paper's point does change with the deflator, through $\log(1+\bar R)$ and $\bar g$. Subtracting the risk-free rate from both sides turns ``dividend growth'' into dividend growth less the interest rate (p.~1540). Cash dividends omit repurchases, which matters for forecasting with the dividend yield (p.~1538).
+
+\emph{Finite horizons.} The terminal term does not vanish quickly: with $\rho=0.963$ its weight $\rho^J$ is 0.83 after 5 years and 0.47 after 20.
+
+\qffield{Practice} \emph{S\&P~500, annual} (Goyal's file of 2026: index level and trailing twelve-month dividends). The return is built from the same two series in every year, $R_t=(\text{Index}_t+\text{D12}_t)/\text{Index}_{t-1}-1$, and the exact identity then holds to rounding error ($2\times10^{-15}$) for 1872--2025. CRSP's S\&P~500 return, used from 1926 in the forecasting examples of the next two entries, is a different series. Its log return differs from this one by up to 6.8 log points (1931), with a standard deviation of 1.0 point over 1926--2025, so it is kept out of this check. The approximation error is then exactly the Taylor remainder $\log(1+e^{pd})-\log(1+e^{\overline{pd}})-\rho\,(pd-\overline{pd})$. It is never negative, because $\log(1+e^{x})$ is convex, and never above $(pd-\overline{pd})^2/8$, because the second derivative is at most $1/4$. Nominal returns:
+\begin{center}\small
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Sample & Expansion point & $\rho$ & Error variance / variance of $r$ & Correlation \\
+\midrule
+1872--1986 & mean $pd$ & 0.9547 & 0.00021 & 0.99991 \\
+ & $\log(1+\bar R)-\bar g$ & 0.9348 & 0.00089 & 0.99960 \\
+1872--2025 & mean $pd$ & 0.9634 & 0.00077 & 0.99965 \\
+ & $\log(1+\bar R)-\bar g$ & 0.9364 & 0.00728 & 0.99638 \\
+\bottomrule
+\end{tabular}
+\end{center}
+This is an illustration on nominal data, not a reproduction of Campbell and Shiller's Table~1a: their 0.0008 and 0.9996 are for PPI-deflated returns, and the deflator is not in the file used here. The working paper's point, $\overline{pd}=2.69$ for 1872--2025, lies far below the ratio's recent values, so its error grows once the later decades are included. If CRSP returns replaced the constructed ones from 1926, the mean-$pd$ error ratios would be 0.0023 and 0.0025, mostly the mismatch between the two return series rather than the approximation.
+
+\emph{Decomposition, 1927--2004} (outcome years, predictor lagged one year). Slopes on $d_{t-1}-p_{t-1}$: $b_r=0.066$, $b_d=-0.067$, $\phi=0.896$, $\rho=0.964$. Then $b_r-b_d+\rho\phi=0.997$, and the gap from one equals the slope of the approximation error, $-0.003$. The long-run shares are 0.49 for returns and 0.49 for dividend growth; for 1872--2025 they are 0.21 and 0.76. With CRSP returns in place of the constructed ones, the 1927--2004 return slope is 0.064.
+
+For the same years, Cochrane's CRSP value-weighted real data give $b_r\approx0.10$, $b_d\approx0$ and $\phi\approx0.94$ \citep[p.~1540]{wide-cochrane-dog}, so almost all the variance falls on returns. The split depends on the index, the dividend series and the sample. These are point estimates with large standard errors, about 0.05 each in Cochrane's sample.
+
+\qffield{Pitfalls} Treating the identity as evidence of predictability: it only says that something must be forecastable, not what. Mixing timing conventions ($d_t$ against $d_{t-1}$ in the ratio) between the identity and the regressions. Checking the identity with a return built from other prices or dividends than the ratio, which adds their mismatch to the ``approximation error''. Computing the working paper's point from the mean log return instead of $\log(1+\bar R)$. Using a $\rho$ estimated in one sample to decompose another. Ignoring the terminal term at horizons of a decade or two. Computing returns from a price index without dividends.
+
+\qffield{See also} \hyperref[meth:gordon-growth-model]{Gordon growth model} (the constant-growth case, in which $pd$ is constant); \hyperref[meth:autoregressive-forecasting]{autoregressive forecasting} (the persistence $\phi$); \hyperref[meth:nested-forecast-tests]{nested forecast tests} (out-of-sample evidence on $b_r$); \hyperref[meth:restricted-forecast-value]{restricted forecasts}.
+
+\end{qfresult}
+
+\begin{qfmethod}[Comparing a predictive regression with the historical mean out of sample: recursive forecasts, out-of-sample $R^2$ and $\Delta$RMSE, MSE-F and ENC, the upward bias of the larger model's MSPE, and the Clark--West adjusted test]\label{meth:nested-forecast-tests}
+\qffield{Statement} \emph{Design.} Model~1, the historical mean, is nested in model~2, a regression of the return on a lagged predictor. With $R$ initial observations and $P$ forecasts, each forecast for period $t+1$ uses estimates from data through $t$ only. In the \emph{recursive} scheme the estimation sample grows; in the \emph{rolling} scheme it keeps length $R$ \citep[NBER Technical WP 326, sec.~3, eq.~(3.6), p.~6, and n.~3]{clark-west-2006-nber}. Welch and Goyal's forecasts likewise use ``only the data available up to the time at which the forecast is made'' \citep[p.~1461]{s7-welch}.
+
+\emph{Statistics.} With $e_N$ and $e_A$ the errors of the mean and the regression over the $P$ forecasts:
+\begin{itemize}
+\item the out-of-sample $R^2_{OS}=1-\sum(r_t-\hat r_t)^2/\sum(r_t-\bar r_t)^2$, comparable in units with the in-sample $R^2$ and of the same sign as $\Delta\mathrm{RMSE}=\sqrt{\mathrm{MSE}_N}-\sqrt{\mathrm{MSE}_A}$ \citep[NBER WP 11468, eq.~(1), p.~6]{campbell-thompson-2005-nber};
+\item McCracken's $\text{MSE-F}=(T-h+1)(\mathrm{MSE}_N-\mathrm{MSE}_A)/\mathrm{MSE}_A$, a test of equal MSE \citep[eq.~(6), p.~1461]{s7-welch};
+\item the encompassing statistic $\text{ENC}=\frac{T-h+1}{T}\sum_t(e_{Nt}^2-e_{Nt}e_{At})/\mathrm{MSE}_A$ (eq.~(7), p.~1462).
+\end{itemize}
+Here $T$ is the number of forecasts and $h$ the overlap ($h=1$ for none). For nested models both MSE-F and ENC have nonstandard distributions: under the null the asymptotic difference in squared errors is exactly zero with zero variance. Welch and Goyal therefore bootstrap their critical values (p.~1462).
+
+\emph{Why the larger model looks worse.} Under the null the extra slope is zero in population, but the regression estimates it and adds noise to its forecasts. With $\hat y_1$ and $\hat y_2$ the two forecasts,
+\[ \hat\sigma_1^2-\hat\sigma_2^2=-2P^{-1}\textstyle\sum\hat e_{1}(\hat y_{1}-\hat y_{2})-P^{-1}\sum(\hat y_{1}-\hat y_{2})^2 . \]
+The first term should be near zero under the null, and the second is negative. So the parsimonious model is expected to have the smaller sample MSPE even when the null is true \citep[eq.~(3.8), p.~7]{clark-west-2006-nber}.
+
+\emph{The Clark--West test.} Add back the noise term and test whether the adjusted difference is positive. Define
+\[ \hat f_{t+\tau}=(y_{t+\tau}-\hat y_{1t,t+\tau})^2-\bigl[(y_{t+\tau}-\hat y_{2t,t+\tau})^2-(\hat y_{1t,t+\tau}-\hat y_{2t,t+\tau})^2\bigr], \]
+regress it on a constant, and reject equal MSPE in favour of the larger model if the $t$ statistic exceeds 1.282 (one-sided 10 percent) or 1.645 (5 percent). For one-step forecasts the ordinary standard error serves; autocorrelated multistep errors need an autocorrelation-consistent one (eq.~(2.1), p.~4).
+
+\emph{Approximate size.} The statistic is not asymptotically normal. Clark and West rely on Clark and McCracken's asymptotics, in which $R\to\infty$ and $P\to\infty$ with $P/R$ tending to a finite nonzero constant. For one-step forecasts with conditionally homoskedastic errors, the limiting distribution then depends only on the number of extra regressors, the limit of $P/R$ and the scheme. Clark and McCracken tabulated its quantiles numerically for up to 20 extra regressors and $P/R$ from 0.1 to 20. In those tables the 0.90 quantile lies at or below 1.282 and the 0.95 quantile at or above it, apart from a couple of exceptions. All 400 recursive entries obey both bounds, but in 4 of the 400 rolling entries the 0.90 quantile is 1.29. Within that regime a nominal 0.10 test therefore has an actual size somewhere between 0.05 and 0.10 (eq.~(4.2), pp.~8--10). The authors call this safe in practice but stress that it is not proved, that they do not assert it is literally true, and that further exceptions may appear. With 1.645 the corresponding range is 0.01 to 0.05, with one recursive and 14 rolling exceptions (eq.~(4.3), p.~10). With one extra regressor the same quantiles also serve for multistep and conditionally heteroskedastic forecasts; otherwise Clark and McCracken simulate critical values (pp.~10--12).
+
+The mean of $\hat f$ equals $2P^{-1}\sum\hat e_1(\hat e_1-\hat e_2)$, an encompassing form (eq.~(4.1), p.~8). With $h=1$, $\text{ENC}=P\,\bar f/(2\,\mathrm{MSE}_A)$, so ENC and Clark--West share a numerator (Interpretation).
+
+\qffield{Conditions} \emph{Scope of the theory.} Nested linear models estimated by least squares, with multistep forecasts made directly rather than iterated \citep[sec.~4, p.~8]{clark-west-2006-nber}.
+
+\emph{Simulation evidence, not a guarantee.} Clark and West ran 48 one-step designs: two DGPs, homoskedastic and conditionally heteroskedastic errors, rolling and recursive schemes, and several $R$ and $P$ (Tables~1--2). In every design the nominal 0.10 test had a size between 0.05 and 0.10, with a median of 0.080. At 1.645 the sizes ranged from 0.027 to 0.059, outside 0.01--0.05 in three designs. Rolling regressions gave sizes closer to the nominal level than recursive ones, and the unadjusted comparison with normal critical values had a median size of 0.008 (pp.~2, 15--17). This is evidence for their designs, not a bound for every DGP, sample size or forecast horizon.
+
+\emph{What is tested.} The test asks whether the predictor's population slope is non-zero, not whether the estimated regression beat the mean in this sample. A negative $\Delta$RMSE can therefore coexist with a significant test: these tests ``are ultimately tests of whether $\beta$ is equal to zero'' \citep[p.~1462, n.~3]{s7-welch}. Cochrane adds that out-of-sample $R^2$ ``is not a \emph{test}'' with more power than full-sample tests \citep[p.~1538]{wide-cochrane-dog}.
+
+\emph{Adjusted $R^2$.} Welch and Goyal's tables report an adjusted out-of-sample $\bar R^2$. The formula printed with eq.~(6), $\bar R^2=R^2-(1-R^2)(T-k)/(T-1)$, would put an $R^2$ near zero at about $-100$ percent, which the tables do not show; it is presumably misprinted (Interpretation). $\Delta$RMSE needs no adjustment and is the safer basis for comparison.
+
+\emph{Data.} The examples below use Goyal's data file as served in 2026, which runs to 2025; the 2008 tables used data to 2005, and revisions may move the numbers.
+
+\qffield{Practice} \emph{Size and power by simulation.} Clark and West's DGP~1 is calibrated to monthly S\&P excess returns (percent) and the dividend--price ratio: $y_t=0.5+\gamma z_{t-1}+e_t$, $z_t=0.15+0.95z_{t-1}+v_t$, $\mathrm{var}(e)=18$, $\mathrm{var}(v)=0.025$, $\mathrm{corr}(e,v)=-0.75$ \citep[eq.~(6.1), p.~13]{clark-west-2006-nber}. With the recursive scheme, $R=120$ and 5,000 replications, the rejection rates at 1.282 are below, with Clark and West's Table~1, panel~B1, in brackets (unnumbered table page). Under the null, the mean of $\mathrm{MSE}_N-\mathrm{MSE}_A$ is $-0.160$ ($P=120$) and $-0.118$ ($P=240$): the historical mean wins on average.
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Rejection rate, nominal 0.10 & $P=120$ & $P=240$ \\
+\midrule
+Clark--West, $\gamma=0$ & 0.069 (0.085) & 0.059 (0.070) \\
+Unadjusted MSPE difference, $\gamma=0$ & 0.023 (0.028) & 0.010 (0.012) \\
+Clark--West, $\gamma=0.35$ & & 0.156 \\
+Unadjusted MSPE difference, $\gamma=0.35$ & & 0.033 \\
+\bottomrule
+\end{tabular}
+\end{center}
+These Clark--West sizes lie in the predicted band but below the published ones. The gaps are 0.016 and 0.011, or 3.0 and 2.3 standard errors once the simulation error of both studies (5,000 replications each) is counted. A rerun in Clark and West's own layout used one path per replication shared by every $P$, with no observed lag for the first observation, and 20,000 replications (p.~15). It gives 0.072, 0.066 and 0.055 for $P=120$, 240 and 720, against 0.085, 0.070 and 0.054. For the rolling scheme with $P=720$, it reproduces the means they quote, $-0.24$, 0.01 and 0.25, as $-0.247$, 0.005 and 0.252 (p.~16). The remaining gap is at $P=120$: about 0.013, or three standard errors, in both schemes. Its cause is unresolved. The $\gamma=0.35$ rows are raw rejection rates, not size-adjusted power.
+
+\emph{Welch and Goyal's dividend--price row.} The annual log equity premium is regressed on the lagged log dividend--price ratio, 1872--2005, with the first forecast for 1892 after 20 observations. The result is $R^2_{OS}=-1.32$ percent and $\Delta\mathrm{RMSE}=-0.13$ points against their $-0.11$ \citep[Table~1, p.~1470]{s7-welch}, MSE-F $-1.49$, ENC 0.32 and a Clark--West $t$ of 0.26. The conventionally adjusted value is $-2.23$ against their $-2.06$. From 1965 the figures are $\Delta\mathrm{RMSE}=-0.13$ (theirs $-0.09$), $R^2_{OS}=-1.67$ percent and a Clark--West $t$ of 0.46. The in-sample adjusted $R^2$ is 0.32 percent against their 0.49.
+
+\emph{Start of the evaluation sample.} Same regression, recursive from 1872:
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{Ending 2005} & \multicolumn{2}{c}{Ending 2025} \\
+First forecast & $R^2_{OS}$ (\%) & Clark--West $t$ & $R^2_{OS}$ (\%) & Clark--West $t$ \\
+\midrule
+1892 & $-1.32$ & 0.26 & $-2.26$ & $-0.11$ \\
+1927 & $-0.87$ & 0.48 & $-2.13$ & 0.06 \\
+1947 & $-0.93$ & 0.63 & $-3.10$ & 0.17 \\
+1965 & $-1.67$ & 0.46 & $-4.23$ & $-0.01$ \\
+1985 & $-17.40$ & $-0.65$ & $-12.18$ & $-0.98$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+No start gives a positive $R^2_{OS}$ or a Clark--West $t$ near 1.282, and adding 2006--2025 makes every row worse. The 1985 rows rest on 21 and 41 forecasts.
+
+\emph{An adjusted test against a raw loss.} In Clark and West's monthly example (S\&P excess return on the dividend--price ratio, recursive, forecasts 1964--2004, $P=492$), the regression's MSPE is 19.14 against 18.91 for the mean. The adjustment is 0.68, so the adjusted MSPE is 18.46, and the Clark--West $t$ is 1.17. That is below 1.282 but above Clark and McCracken's tabulated 0.90 quantile, which Clark and West read as ``some statistical evidence'' against the null (pp.~19--20; the results table is printed as Table~4 and called Table~7 in the text).
+
+\qffield{Pitfalls} Applying the Diebold--Mariano or another normal test to the raw MSPE difference of nested models: it is undersized and almost never rejects. Reading a negative $R^2_{OS}$ as proof that the slope is zero, or a positive one as proof of a usable strategy. Choosing the start of the evaluation sample after seeing the results. Two-sided tests: the alternative is that the larger model forecasts better. Overlapping multi-year forecasts with ordinary standard errors (\hyperref[meth:correlation-independence-tests]{overlapping observations}). Fixing a coefficient's expected sign from the full sample, which leaks the future into a ``real-time'' forecast (\hyperref[meth:restricted-forecast-value]{restricted forecasts}).
+
+\qffield{See also} \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation} (the split and the benchmarks); \hyperref[meth:hypothesis-testing]{hypothesis tests} (size and power); \hyperref[res:campbell-shiller-identity]{present-value identity} (why the dividend yield should forecast); \hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics} (Welch and Goyal's other predictors).
+
+\end{qfmethod}
+
+\begin{qfmethod}[Restricted equity-premium forecasts and their economic value: sign restrictions on the slope and on the forecast, the mean--variance weight with no short sales and limited leverage, and the utility gain over the historical mean]\label{meth:restricted-forecast-value}
+\qffield{Statement} \emph{Restrictions.} A regression estimated on a short early sample can produce perverse forecasts. Campbell and Thompson's example is the early 1930s: the earnings--price ratio was high, but its estimated coefficient was negative, so the regression forecast a negative premium \citep[NBER WP 11468, p.~6]{campbell-thompson-2005-nber}. They impose two restrictions, separately and together (pp.~2--3, 6):
+\begin{itemize}
+\item set the slope to zero when it has the ``wrong'' sign, which leaves the historical mean as the forecast;
+\item set a negative forecast of the equity premium to zero, and floor the historical-mean benchmark in the same way.
+\end{itemize}
+
+\emph{Economic value.} An investor with mean--variance preferences and relative risk aversion $\gamma$ who observes the predictor holds the share $\alpha_t=(1/\gamma)(\mu+x_t)/\sigma_\varepsilon^2$ in stocks (eq.~(5), p.~9). In Campbell and Thompson's portfolio exercise, $\gamma=3$ and the weight is confined to 0--150 percent: no short sales and at most 50 percent leverage. The variance is estimated either from all data up to the investment date or from a rolling five-year window (p.~10). Each forecast is scored by the average realised utility
+\[ U=\widehat E(R_p)-\tfrac{\gamma}{2}\widehat{\mathrm{Var}}(R_p),\qquad R_{p,t}=R_{f,t}+w_t\,(R_t-R_{f,t}) \]
+\citep[Table~2 notes, unnumbered table page]{campbell-thompson-2005-nber}. The predictor's value is the change in $U$ from using it instead of the historical mean. Utility differences are in units of expected return, so they read as the monthly fee an investor would pay for the predictor (p.~10). How a small $R^2$ translates into a proportional return gain, about $R^2/S^2$, is set out under \hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics}.
+
+\qffield{Notation} $\hat\mu_t$ is the forecast of next month's excess return and $\hat\sigma_t^2$ the variance of excess returns observed before month $t$; the bounded weight is
+\[ w_t=\min\bigl\{\max\{\hat\mu_t/(\gamma\hat\sigma_t^2),\,0\},\,1.5\bigr\}. \]
+Unconstrained, this is the optimal risky share $y^\ast$ of the \hyperref[meth:capital-allocation-line]{capital allocation line}, with $A=\gamma$ for returns in decimals (\hyperref[def:risk-aversion-utility]{risk aversion and utility}).
+
+\qffield{Conditions} \emph{Real time.} Campbell and Thompson define the ``wrong'' sign as one ``different from the theoretically expected sign estimated over the full sample'' (p.~6). Taking the expected sign from the full-sample estimate uses information not available at the forecast date. Fixing it in advance from theory, positive for valuation ratios, avoids this (Interpretation).
+
+\emph{Choices that move the answer.} The value of $\gamma$, the weight bounds, the variance estimator, monthly rebalancing and zero trading costs. The utility is computed from realised means and variances over one evaluation sample and carries no standard error.
+
+\emph{Version.} Locators refer to the working paper of June 2005; the \emph{Review of Financial Studies} version (2008) was not used here and may differ.
+
+\qffield{Practice} \emph{Hand example}, $\gamma=3$, $R_f=0.3$ percent a month:
+\begin{center}\small
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$\hat\mu_t$ & $\hat\sigma_t^2$ & $\hat\mu_t/(\gamma\hat\sigma_t^2)$ & $w_t$ & $R_{p,t}$ when $R_t=2.0,\,-5.0,\,1.0\%$ \\
+\midrule
+0.6\% & 0.0020 & 1.00 & 1.00 & 2.00\% \\
+$-0.2$\% & 0.0020 & $-0.33$ & 0 & 0.30\% \\
+3.0\% & 0.0018 & 5.56 & 1.50 & 1.35\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+The bounds bind twice. With the sample variance of the three portfolio returns, $U=0.012167-1.5\times0.0000736=0.012056$, or 1.206 percent a month.
+
+\emph{Campbell and Thompson's dividend--price row.} Monthly S\&P~500, regression data from February 1871, forecasts January 1927 to December 2003, $\gamma=3$, weights in [0, 1.5], variance from all earlier excess returns, expected sign positive:
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+& Recomputed & Table~2 \\
+\midrule
+$R^2_{OS}$, restricted (\%) & 0.003 & 0.001 \\
+$R^2_{OS}$, unrestricted (\%) & $-0.326$ & \\
+Utility, historical mean (\% a month) & 0.492 & 0.501 \\
+Change, unrestricted (\% a month) & $-0.018$ & $-0.016$ \\
+Change, restricted (\% a month) & $-0.024$ & $-0.024$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Published figures are from Table~2 (constant-variance columns) and its panel~D source \citep[Table~2, unnumbered table page]{campbell-thompson-2005-nber}. The restrictions lift $R^2_{OS}$ from $-0.33$ to about zero but do not improve the utility change, which moves from $-0.018$ to $-0.024$. The slope was negative in 8 percent of months, and the no-short-sale bound already removes negative forecasts from the portfolio, as Campbell and Thompson observe (p.~10). Extended to December 2025, both changes fall to about $-0.05$ percent a month.
+
+\emph{When the predictor is real.} Clark and West's DGP~1 (see \hyperref[meth:nested-forecast-tests]{nested forecast tests}) is rescaled to monthly decimals with a mean excess return of 0.5 percent and true slope 0.35, a population $R^2$ of 0.17 percent, $S^2=0.014$. With $R=240$ and $P=480$, over 1,000 samples, the mean utility gain is 0.017 percent a month unrestricted and 0.021 percent restricted. With known parameters and no bounds it would be about 0.03 percent, $(1/(2\gamma))(R^2/(1-R^2))(1+S^2)$, half of Campbell and Thompson's eq.~(8) (Interpretation). Only 51 and 54 percent of 40-year samples show a gain.
+
+With DGP~1's original mean of 1.55 percent a month, the optimal weight is near 2.9. The 1.5 bound then binds in 98 to 100 percent of months, and the predictor can hardly be used.
+
+\qffield{Pitfalls} Setting the expected sign from the full sample. Restricting the model's forecast but not the benchmark's. Reading a better $R^2_{OS}$ as a better portfolio when the weight bounds already do the restricting. Mixing percent and decimal returns in $\hat\mu/(\gamma\hat\sigma^2)$, which changes the weight by a factor of 100. Treating a utility gain from one sample as an expected fee without its sampling error.
+
+\qffield{See also} \hyperref[meth:nested-forecast-tests]{nested forecast tests} (the statistical comparison); \hyperref[res:campbell-shiller-identity]{present-value identity} (the expected sign); \hyperref[meth:capital-allocation-line]{capital allocation line}; \hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics}.
+
+\end{qfmethod}

@@ -119,7 +119,7 @@ No start gives a positive $R^2_{OS}$ or a Clark--West $t$ near 1.282, and adding
 
 \qffield{Pitfalls} Applying the Diebold--Mariano or another normal test to the raw MSPE difference of nested models: it is undersized and almost never rejects. Reading a negative $R^2_{OS}$ as proof that the slope is zero, or a positive one as proof of a usable strategy. Choosing the start of the evaluation sample after seeing the results. Two-sided tests: the alternative is that the larger model forecasts better. Overlapping multi-year forecasts with ordinary standard errors (\hyperref[meth:correlation-independence-tests]{overlapping observations}). Fixing a coefficient's expected sign from the full sample, which leaks the future into a ``real-time'' forecast (\hyperref[meth:restricted-forecast-value]{restricted forecasts}).
 
-\qffield{See also} \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation} (the split and the benchmarks); \hyperref[meth:hypothesis-testing]{hypothesis tests} (size and power); \hyperref[res:campbell-shiller-identity]{present-value identity} (why the dividend yield should forecast); \hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics} (Welch and Goyal's other predictors).
+\qffield{See also} \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation} (the split and the benchmarks); \hyperref[meth:hypothesis-testing]{hypothesis tests} (size and power); \hyperref[res:campbell-shiller-identity]{present-value identity} (why the dividend yield should forecast); \hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics} (Welch and Goyal's other predictors); \hyperref[meth:forecast-combination]{forecast combination}.
 
 \end{qfmethod}
 
@@ -181,5 +181,128 @@ With DGP~1's original mean of 1.55 percent a month, the optimal weight is near 2
 \qffield{Pitfalls} Setting the expected sign from the full sample. Restricting the model's forecast but not the benchmark's. Reading a better $R^2_{OS}$ as a better portfolio when the weight bounds already do the restricting. Mixing percent and decimal returns in $\hat\mu/(\gamma\hat\sigma^2)$, which changes the weight by a factor of 100. Treating a utility gain from one sample as an expected fee without its sampling error.
 
 \qffield{See also} \hyperref[meth:nested-forecast-tests]{nested forecast tests} (the statistical comparison); \hyperref[res:campbell-shiller-identity]{present-value identity} (the expected sign); \hyperref[meth:capital-allocation-line]{capital allocation line}; \hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Combining equity-premium forecasts: equal-weight and performance-weighted averages of single-predictor regressions, why correlated errors limit diversification, and the gain as the spread of the forecasts]\label{meth:forecast-combination}
+\qffield{Statement} \emph{Design.} Each of $N$ predictors gets its own regression $r_{t+1}=\alpha+\beta x_{i,t}+\varepsilon_{t+1}$, estimated recursively as in \hyperref[meth:nested-forecast-tests]{nested forecast tests}. The combination forecast is a weighted average of the $N$ individual forecasts,
+\[ \hat r_{c,t+1}=\sum_{i=1}^{N}\omega_{i,t}\,\hat r_{i,t+1}, \]
+with weights fixed \emph{ex ante} at time $t$ \citep[working paper, February 2008, eqs.~(1)--(2), pp.~3--4]{rapach-strauss-zhou-2008-wp}. The simple schemes are the mean ($\omega_{i,t}=1/N$), the median, and the trimmed mean, which drops the highest and lowest forecasts and weights the others $1/(N-2)$ (pp.~4--5). They need no holdout period.
+
+\emph{Performance weights.} The discounted MSPE scheme weights each forecast by its inverse discounted squared error over a holdout period, $\omega_{i,t}=m_{i,t}^{-1}/\sum_j m_{j,t}^{-1}$ with $m_{i,t}=\sum_{s=R}^{t-1}\theta^{t-1-s}(r_{s+1}-\hat r_{i,s+1})^2$. With $\theta=1$, this is Bates and Granger's optimal combination when forecast errors are unbiased and uncorrelated, so their second-moment matrix is diagonal (Interpretation; the working paper calls the forecasts uncorrelated); $\theta<1$ favours recent accuracy (eqs.~(3)--(4), p.~5). Cluster and approximate Bayesian model-averaging weights complete the list (pp.~5--6).
+
+\emph{Why averaging helps, and where it stops} (Interpretation). With equal weights the combination's error is the average of the individual errors, so
+\[ \mathrm{MSE}_c=\frac1{N^2}\sum_{i,j}E[e_ie_j]=\frac1N\sum_i\mathrm{MSE}_i-\frac1N\sum_iE\bigl[(\hat r_i-\hat r_c)^2\bigr]. \]
+The second form holds exactly in any sample. The combination is never worse than its average member, and it gains exactly the mean squared spread of the forecasts about their average. It can still lose to the best member. If the errors are unbiased, have equal variance $\sigma^2$ and common correlation $\rho$, then $\mathrm{MSE}_c=\sigma^2[\rho+(1-\rho)/N]$. With individual error biases $b_i$ and the same equal-variance, common-correlation structure for the centered errors, add $\bar b^2$, where $\bar b=N^{-1}\sum_i b_i$. For fixed $0\leq\rho\leq1$, the unbiased-error expression tends to $\rho\sigma^2$ as $N$ grows.
+
+\emph{What is diversified.} Return forecast errors share the unpredictable part of the return, so their correlations are close to one. Write each forecast as the historical mean plus a deviation. The deviations, the predictors' signals, are much less correlated, and averaging them shrinks the combination towards the historical mean when the signals disagree (Interpretation).
+
+\emph{Estimated weights.} Among weights that sum to one, $\Sigma^{-1}\mathbf 1/(\mathbf 1'\Sigma^{-1}\mathbf 1)$ minimises the MSE when $\Sigma$, the matrix of second moments of the errors, is known. With a diagonal $\Sigma$ it reduces to inverse-MSE weights, the $\theta=1$ case above. In practice $\Sigma$ must be estimated from a short holdout, so the weights carry estimation error that equal weights avoid (Interpretation).
+
+\qffield{Conditions} \emph{Version.} Locators refer to the working paper of 6 February 2008, ``Out-of-Sample Equity Premium Prediction: Consistently Beating the Historical Average''. The \emph{Review of Financial Studies} article (2010) has a different title and may differ in design and results; its tables are not quoted here.
+
+\emph{The working paper's evidence.} Monthly data, 14 of Welch and Goyal's predictors available from 1927, evaluation 1947:01--2005:12. Only four unrestricted single-predictor forecasts have a positive $R^2_{OS}$, none above 0.33 percent; the mean combination has 0.95 percent, with a Clark--West $p$-value of 0.09 percent \citep[pp.~12--13, 16 and Table~1, panels A--B, unnumbered table page]{rapach-strauss-zhou-2008-wp}. The authors add a data-mining bootstrap over all predictors and combining methods, because several were tried (sec.~2.5, pp.~11--12). They also warn that the Clark--West test has not been analysed for combination forecasts, which are not nested linear models (n.~11, p.~9).
+
+\emph{Real time.} The working paper takes the expected signs for its restricted forecasts from full-sample estimates (n.~9, p.~8), the leak discussed under \hyperref[meth:restricted-forecast-value]{restricted forecasts}. The predictors, the start of the evaluation and the combining method must likewise be fixed before the evaluation sample is seen.
+
+\qffield{Practice} \emph{Four annual predictors} (Goyal's data file of 2026, a vintage that runs to 2025). The outcome is the log equity premium, $\log(1+R_t)-\log(1+R_{f,t})$, with CRSP's S\&P~500 return. The predictors, dated $t-1$, are the log dividend--price ratio (dp), the log earnings--price ratio (ep), the term spread, long-term yield less T-bill rate (tms), and the default spread, BAA less AAA yield (dfy). All regressions and the historical mean start with 1927. The first forecast is for 1947, after 20 observations. The predictors, years, rows and transformations were fixed before any result was computed. Forecasts in percent:
+\begin{center}\small
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Year & Outcome & Hist.\ mean & dp & ep & tms & dfy & Mean comb. \\
+\midrule
+1947 & 4.31 & 4.10 & 3.04 & 3.87 & 3.73 & 3.62 & 3.57 \\
+1970 & $-2.85$ & 6.98 & 3.42 & 4.14 & 1.00 & 7.29 & 3.96 \\
+1990 & $-10.83$ & 5.86 & 0.51 & 3.28 & 3.81 & 5.86 & 3.37 \\
+2010 & 13.99 & 5.47 & 0.29 & 2.11 & 11.81 & 5.41 & 4.90 \\
+2025 & 12.47 & 6.46 & 2.08 & 3.08 & 4.38 & 6.14 & 3.92 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Each recursive regression uses outcomes through $t-1$ and predictor rows dated $t-1$ for the forecast of year $t$; this is chronological indexing. The exercise does not model publication lags or data revisions (especially for E12), so these rows do not establish point-in-time availability or a real-time investable backtest.
+
+\emph{Evaluation against the historical mean}, $R^2_{OS}$ in percent:
+\begin{center}\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Forecasts & dp & ep & tms & dfy & Mean comb. \\
+\midrule
+1947--2025 (79) & $-1.83$ & $-2.28$ & $-3.60$ & $-0.83$ & 2.56 \\
+1947--2005 (59) & 1.34 & 4.61 & $-3.70$ & $-1.00$ & 5.82 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Over 1947--2025 no single predictor beats the mean, but the combination does; its $\Delta$RMSE is 0.21 points. The Clark--West $t$ statistics of the combination, 1.44 and 2.13, are descriptive only, for the reason given in Conditions.
+
+The four forecast errors are correlated between 0.89 and 0.98. Their deviations from the historical mean are correlated between $-0.30$ and 0.82, with dp and ep the one closely related pair. The deviations' standard deviations are 3.13, 5.84, 3.75 and 0.67 points, but that of their average is 2.06. In the decomposition above (all $\times100$), $\mathrm{MSE}_c=2.6500$ equals the average member's 2.7777 less the spread 0.1277; the historical mean's is 2.7197.
+
+This is an annual illustration with four predictors, not a reproduction of the working paper's monthly Table~1. One window and one predictor set prove little, and a combination need not beat the mean in other samples.
+
+\qffield{Pitfalls} Choosing the predictors, weights or evaluation start after seeing the results; with many tries, a data-mining correction is needed. Ex post optimal weights: from the 1947--2025 errors they are $-0.02$, 0.51, 0.40 and 0.12, which lowers the MSE only to 2.6380 and could not have been known in 1947. Reading a combination's gain as evidence that any one predictor works. Treating a Clark--West $p$-value for a combination as exact. Expecting $N$ to remove error variance when the errors share the return shock. Treating an average of point forecasts as a combined predictive distribution (\hyperref[meth:proper-scoring-rules]{proper scoring}).
+
+\qffield{See also} \hyperref[meth:nested-forecast-tests]{nested forecast tests} (the single-predictor comparisons and $R^2_{OS}$); \hyperref[meth:restricted-forecast-value]{restricted forecasts} (sign restrictions and utility gains); \hyperref[meth:alpha-signal-combination]{combining alpha signals}; \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Scoring predictive distributions and intervals with proper scoring rules: the logarithmic score, the CRPS and the interval score, their sign conventions and units, and why a point loss cannot rank forecasts with the same mean]\label{meth:proper-scoring-rules}
+\qffield{Statement} \emph{Point and probabilistic forecasts.} A point forecast is a single number, scored by a loss on its error. A probabilistic forecast is a predictive distribution $P$, or some of its quantiles, such as an interval. A \emph{scoring rule} $S(P,x)$ rewards the forecaster with $S(P,x)$ when $x$ materialises. Gneiting and Raftery take scores as positively oriented rewards to be maximised \citep[JASA 102(477), 2007, p.~359]{wide-gneiting-raftery}. With $S(P,Q)$ the expected score under $Q$, the rule is \emph{proper} if $S(Q,Q)\ge S(P,Q)$ for all $P$ and $Q$. It is \emph{strictly proper} if equality holds only for $P=Q$ (eq.~(1), p.~360). A forecaster who maximises expected score then has no reason to report anything but their true belief.
+
+\emph{Squared error is not enough.} The negative squared error of the predictive mean, $-\|\mu_P-x\|^2$, is proper but not strictly proper (eq.~(23), p.~367). It depends on the mean alone, so forecasts with the same mean but different spreads tie.
+
+\emph{Three rules} (each also given here as a negatively oriented loss, smaller is better):
+\begin{itemize}
+\item \emph{Logarithmic score}, $\mathrm{LogS}(p,x)=\log p(x)$ for a predictive density $p$ (eq.~(19), p.~365); loss $-\log p(x)$. Strictly proper among densities; its expected-score divergence is the Kullback--Leibler divergence.
+\item \emph{Continuous ranked probability score}, $\mathrm{CRPS}(F,x)=-\int_{-\infty}^{\infty}\bigl(F(y)-\mathbb 1\{y\ge x\}\bigr)^2dy=\tfrac12E|X-X'|-E|X-x|$, with $X,X'$ independent draws from $F$ (eqs.~(20)--(21), p.~367). For $F=N(\mu,\sigma^2)$ and $z=(x-\mu)/\sigma$, the loss is $\sigma\bigl[z(2\Phi(z)-1)+2\varphi(z)-1/\sqrt\pi\bigr]$. Strictly proper among distributions with a finite mean.
+\item \emph{Interval score} for a central $(1-\alpha)$ interval $[l,u]$, negatively oriented as printed (eq.~(43), p.~370):
+\[ S^{\mathrm{int}}_\alpha(l,u;x)=(u-l)+\tfrac2\alpha(l-x)\mathbb 1\{x<l\}+\tfrac2\alpha(x-u)\mathbb 1\{x>u\}. \]
+It charges the width and, beyond the interval, a penalty that grows as $\alpha$ falls. It equals $2/\alpha$ times the sum of the quantile (``tick'' or ``check'') losses $(\mathbb 1\{x\le r\}-\tau)(r-x)$ at $\tau=\alpha/2$ and $1-\alpha/2$ (eqs.~(41)--(42), p.~370).
+\end{itemize}
+
+\qffield{Conditions} \emph{Units.} The CRPS and the interval score are in the units of the outcome; for a point forecast the CRPS reduces to the absolute error, so point and probabilistic forecasts can be compared on one scale (p.~367). The log score is in nats and depends on the units of the density: a density of returns in percent is one hundredth of the density in decimals, so $-\log p$ is higher by $\log100=4.61$. Differences between forecasts of the same outcome are unit-free (Interpretation).
+
+\emph{Behaviour.} The log score is local: it uses only the density at the outcome, and it punishes low-probability outcomes harshly. Gneiting and Raftery found it ``highly sensitive to extreme cases'' and the CRPS less so (p.~374). The linear score $p(x)$ looks natural but is improper: it rewards a density concentrated at the mode (p.~366).
+
+\emph{Propriety is about expectations.} A strictly proper score rewards the true distribution on average. Over a finite sample, a wrong forecast can score better, so a difference in average scores needs its own test of equal predictive ability (Interpretation).
+
+\emph{Combining densities.} Averaging point forecasts and combining predictive distributions are different operations. The equal-weight \emph{linear pool} of two densities is their mixture. Its variance adds the squared spread of the means to the average variance. Choosing a normal density centred on the averaged point forecast and assigning it the average component variance is an additional modelling assumption: point forecasts alone determine neither a variance nor a predictive distribution (Interpretation).
+
+\qffield{Practice} \emph{Same mean, different spread.} Two forecasts of an annual excess return, in percentage points: $A=N(5,10^2)$ and $B=N(5,20^2)$, with 90 percent central intervals $[-11.45,21.45]$ and $[-27.90,37.90]$. Losses (smaller is better):
+\begin{center}\small
+\begin{tabular}{@{}rrrrrrrr@{}}
+\toprule
+& Squared error & \multicolumn{2}{c}{$-\log p(x)$} & \multicolumn{2}{c}{CRPS} & \multicolumn{2}{c}{Interval score} \\
+$x$ & $A$ and $B$ & $A$ & $B$ & $A$ & $B$ & $A$ & $B$ \\
+\midrule
+5 & 0 & 3.222 & 3.915 & 2.337 & 4.674 & 32.90 & 65.79 \\
+$-15$ & 400 & 5.222 & 4.415 & 14.528 & 12.049 & 103.93 & 65.79 \\
+$-40$ & 2025 & 13.347 & 6.446 & 39.358 & 33.886 & 603.93 & 307.85 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The squared error cannot separate $A$ and $B$. The three proper scores favour the sharper $A$ when the outcome is at the mean and the wider $B$ after a loss of 20 or 45 points. With $x$ in decimals, every $-\log p$ falls by 4.605; at $x=5$ the log loss of $A$ is $-1.384$, a negative loss. The CRPS values agree with numerical integration of eq.~(20) and with simulation of eq.~(21).
+
+\emph{Propriety, numerically.} If returns are truly $N(5,15^2)$, forecasts $N(5,s^2)$ with $s=10$, 15 and 20 have expected log losses of 4.347, 4.127 and 4.196. Their expected CRPS is 8.742, 8.463 and 8.663, and their expected 90 percent interval scores 74.35, 61.88 and 68.78. Each loss is smallest at the true $s=15$ on a grid from 5 to 30. The expected linear score instead keeps rising as $s$ shrinks.
+
+\emph{Interval forecasts for a heteroskedastic process} \citep[eqs.~(44)--(47), Table~2, p.~371]{wide-gneiting-raftery}. For $X_{t+1}=\tfrac12X_t+\tfrac12X_t\varepsilon_t+\varepsilon_t$ with standard normal $\varepsilon_t$, three one-step 95 percent intervals are compared: $I$ from the true conditional distribution, $J$ from the unconditional quantiles, and $K$, which minimises expected width at nominal coverage. Over 100,000 forecasts:
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Interval & Coverage (\%) & Average width & Average interval score \\
+\midrule
+$I$ & 94.98 (95.01) & 4.00 (4.00) & 4.76 (4.77) \\
+$J$ & 94.91 (95.08) & 5.46 (5.45) & 8.03 (8.04) \\
+$K$ & 94.94 (94.98) & 3.79 (3.79) & 5.29 (5.32) \\
+\bottomrule
+\end{tabular}
+\end{center}
+Published values are in brackets. All three intervals have nominal coverage and $K$ is the narrowest, but the conditional interval $I$ scores best: $K$ collapses to a point when the conditional variance is highest. Coverage alone cannot rank the three.
+
+\emph{A linear pool versus an averaged point forecast.} Forecasts $N(0,10^2)$ and $N(8,10^2)$ average to the point forecast 4. Their equal-weight pool has mean 4 and variance $100+4^2=116$; the normal density around the averaged forecast, $N(4,10^2)$, has variance 100. At $x=4$, $N(4,10^2)$ has the lower log loss and CRPS (3.222 and 2.337 against the pool's 3.302 and 2.527). At $x=-15$ and $x=20$ the pool does (log losses 4.842 and 4.389 against 5.027 and 4.502). If the pool is the true distribution, its expected log loss is 3.796 against 3.802, and its expected CRPS 6.082 against 6.090, as strict propriety requires.
+
+All forecasts in this field are Gaussian, or mixtures of Gaussians, by assumption. Return distributions have fatter tails, which raises the log loss of thin-tailed forecasts in crashes.
+
+\qffield{Pitfalls} Ranking density forecasts by the squared error of their means. Comparing log scores computed in different units, or reading a negative log loss as an error. Mixing positively and negatively oriented scores in one table. Judging intervals by coverage alone. Treating an average of point forecasts, with the members' own spread, as the combined predictive distribution. Using an improper score such as the linear score, which favours overconfident forecasts.
+
+\qffield{See also} \hyperref[meth:forecast-combination]{forecast combination} (averaging point forecasts); \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation} (RMSE favours the mean, MAE the median); \hyperref[meth:volatility-forecast-loss]{volatility forecast losses}; \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation} (VaR is a quantile forecast).
 
 \end{qfmethod}

@@ -1,0 +1,141 @@
+Python 3.14.7, NumPy 2.4.6, pandas 3.0.5, SciPy 1.18.1
+
+F. Forecast combination, annual log equity premium, four predictors
+  outcomes 1927-2025 (99), first forecast 1947 after 20 observations, P = 79
+  ok  F1 recursive OLS by running sums equals lstsq refits: max |diff| 6.5e-15
+  ok  F2 chronological indexing: forecasts through 1971 unchanged when later rows are overwritten: max |diff| 0.0e+00
+  ok  F2 chronological indexing: forecasts through 2001 unchanged when later rows are overwritten: max |diff| 0.0e+00
+
+  Evaluation 1947-2025: P = 79
+  forecast    MSFE x100   R2_OS %  dRMSE pp    CW t
+  hist mean      2.7197
+  dp             2.7694     -1.83     -0.15    1.00
+  ep             2.7816     -2.28     -0.19    1.33
+  tms            2.8176     -3.60     -0.29    0.31
+  dfy            2.7421     -0.83     -0.07   -0.67
+  mean comb      2.6500      2.56      0.21    1.44
+
+  Evaluation 1947-2005: P = 59
+  forecast    MSFE x100   R2_OS %  dRMSE pp    CW t
+  hist mean      2.5876
+  dp             2.5530      1.34      0.11    1.35
+  ep             2.4682      4.61      0.38    1.97
+  tms            2.6832     -3.70     -0.29    0.35
+  dfy            2.6135     -1.00     -0.08   -0.56
+  mean comb      2.4371      5.82      0.47    2.13
+  ok  F3 combination error = mean of individual errors
+  ok  F3 MSE_c = 1'S1 / N^2 (S = mean error products)
+  ok  F3 ambiguity decomposition MSE_c = mean MSE_i - mean spread: 2.6500 = 2.7777 - 0.1277 (x100)
+  ok  F6 biased errors: combination MSE = variance + mean bias squared: biases 1, 2, 3; 116/27 = 8/27 + 2^2
+  ok  F6 biased errors: second-moment and ambiguity identities still hold: 116/27 = 116/27 = 50/9 - 34/27
+
+  1947-2025 correlation of forecast errors (dp, ep, tms, dfy):
+    dp    1.000  0.974  0.947  0.980
+    ep    0.974  1.000  0.890  0.935
+    tms   0.947  0.890  1.000  0.971
+    dfy   0.980  0.935  0.971  1.000
+  1947-2025 correlation of forecast deviations from the historical mean:
+    dp    1.000  0.824 -0.229 -0.094
+    ep    0.824  1.000 -0.289 -0.082
+    tms  -0.229 -0.289  1.000 -0.299
+    dfy  -0.094 -0.082 -0.299  1.000
+  sd of deviations (pp): dp 3.13, ep 5.84, tms 3.75, dfy 0.67; combination 2.06
+  sd of outcome (pp): 16.27; sd of benchmark error 16.46
+
+  Predeclared rows (percent): forecast for year, actual, hist mean, dp, ep, tms, dfy, mean comb
+    1947  actual    4.31  mean   4.10  dp   3.04  ep   3.87  tms   3.73  dfy   3.62  comb   3.57
+    1970  actual   -2.85  mean   6.98  dp   3.42  ep   4.14  tms   1.00  dfy   7.29  comb   3.96
+    1990  actual  -10.83  mean   5.86  dp   0.51  ep   3.28  tms   3.81  dfy   5.86  comb   3.37
+    2010  actual   13.99  mean   5.47  dp   0.29  ep   2.11  tms  11.81  dfy   5.41  comb   4.90
+    2025  actual   12.47  mean   6.46  dp   2.08  ep   3.08  tms   4.38  dfy   6.14  comb   3.92
+  ok  F4 rho = 0.0: MSE of average near rho + (1 - rho)/N: 0.2498 vs 0.2500
+  ok  F4 rho = 0.5: MSE of average near rho + (1 - rho)/N: 0.6225 vs 0.6250
+  ok  F4 rho = 0.9: MSE of average near rho + (1 - rho)/N: 0.9285 vs 0.9250
+  ok  F4 rho = 0.99: MSE of average near rho + (1 - rho)/N: 0.9909 vs 0.9925
+  ok  F5 diagonal covariance: minimum-variance weights = inverse-MSE weights
+  ex post 1947-2025 weights, minimum-MSE (sum to one): dp -0.02, ep 0.51, tms 0.40, dfy 0.12
+  ex post 1947-2025 weights, inverse MSE:             dp 0.251, ep 0.250, tms 0.246, dfy 0.253
+  ex post minimum-MSE combination MSFE x100: 2.6380
+
+S. Proper scoring rules (negatively oriented losses; units: percentage points unless stated)
+
+  S1 hand example: A = N(5, 10^2), B = N(5, 20^2); 90% central intervals
+          x  sq. err -log f (pct) -log f (dec)    CRPS         interval      IS
+  A       5        0        3.222       -1.384   2.337 [-11.45, 21.45]   32.90
+  ok  S1 A, x = 5: closed-form CRPS = quadrature of eq. (20): 8.9e-16
+  ok  S1 A, x = 5: kernel form eq. (21) by Monte Carlo within 4 se: 2.344 (se 0.006)
+  ok  S1 A, x = 5: interval score = (2/alpha) x sum of quantile scores
+  ok  S1 A, x = 5: log score in decimals = in percent - log 100
+  B       5        0        3.915       -0.690   4.674 [-27.90, 37.90]   65.79
+  ok  S1 B, x = 5: closed-form CRPS = quadrature of eq. (20): 8.9e-16
+  ok  S1 B, x = 5: kernel form eq. (21) by Monte Carlo within 4 se: 4.667 (se 0.011)
+  ok  S1 B, x = 5: interval score = (2/alpha) x sum of quantile scores
+  ok  S1 B, x = 5: log score in decimals = in percent - log 100
+  A     -15      400        5.222        0.616  14.528 [-11.45, 21.45]  103.93
+  ok  S1 A, x = -15: closed-form CRPS = quadrature of eq. (20): 1.8e-15
+  ok  S1 A, x = -15: kernel form eq. (21) by Monte Carlo within 4 se: 14.518 (se 0.010)
+  ok  S1 A, x = -15: interval score = (2/alpha) x sum of quantile scores
+  ok  S1 A, x = -15: log score in decimals = in percent - log 100
+  B     -15      400        4.415       -0.190  12.049 [-27.90, 37.90]   65.79
+  ok  S1 B, x = -15: closed-form CRPS = quadrature of eq. (20): 0.0e+00
+  ok  S1 B, x = -15: kernel form eq. (21) by Monte Carlo within 4 se: 12.047 (se 0.017)
+  ok  S1 B, x = -15: interval score = (2/alpha) x sum of quantile scores
+  ok  S1 B, x = -15: log score in decimals = in percent - log 100
+  A     -40     2025       13.347        8.741  39.358 [-11.45, 21.45]  603.93
+  ok  S1 A, x = -40: closed-form CRPS = quadrature of eq. (20): 1.4e-14
+  ok  S1 A, x = -40: kernel form eq. (21) by Monte Carlo within 4 se: 39.358 (se 0.011)
+  ok  S1 A, x = -40: interval score = (2/alpha) x sum of quantile scores
+  ok  S1 A, x = -40: log score in decimals = in percent - log 100
+  B     -40     2025        6.446        1.841  33.886 [-27.90, 37.90]  307.85
+  ok  S1 B, x = -40: closed-form CRPS = quadrature of eq. (20): 0.0e+00
+  ok  S1 B, x = -40: kernel form eq. (21) by Monte Carlo within 4 se: 33.812 (se 0.021)
+  ok  S1 B, x = -40: interval score = (2/alpha) x sum of quantile scores
+  ok  S1 B, x = -40: log score in decimals = in percent - log 100
+
+  S2 truth Q = N(5, 15^2); forecasts N(5, s^2)
+  ok  S2 expected log score smallest at s = 15: argmin 15.0
+  ok  S2 expected CRPS smallest at s = 15: argmin 15.0
+  ok  S2 expected interval score smallest at s = 15: argmin 15.0
+  ok  S2 expected linear score (improper) largest at the smallest s
+    s = 10.0: E[-log f] 4.3465  E[CRPS] 8.7422  E[IS90] 74.349  E[f(x)] 0.02213
+    s = 15.0: E[-log f] 4.1270  E[CRPS] 8.4628  E[IS90] 61.881  E[f(x)] 0.01881
+    s = 20.0: E[-log f] 4.1959  E[CRPS] 8.6633  E[IS90] 68.784  E[f(x)] 0.01596
+
+  S3 bilinear process (44), one-step 95% intervals I, J, K; Gneiting and Raftery Table 2 in brackets
+    J's unconditional quantiles from 10^7 draws: [-2.040, 3.419]
+    I: coverage  94.98% (95.01), width  4.00 (4.0), interval score  4.76 (4.77), batch-means se 0.024
+  ok  S3 I coverage within 0.5 pp
+  ok  S3 I width within 2%
+  ok  S3 I interval score within 3%
+    J: coverage  94.91% (95.08), width  5.46 (5.45), interval score  8.03 (8.04), batch-means se 0.098
+  ok  S3 J coverage within 0.5 pp
+  ok  S3 J width within 2%
+  ok  S3 J interval score within 3%
+    K: coverage  94.94% (94.98), width  3.79 (3.79), interval score  5.29 (5.32), batch-means se 0.065
+  ok  S3 K coverage within 0.5 pp
+  ok  S3 K width within 2%
+  ok  S3 K interval score within 3%
+  ok  S3 order by interval score I < K < J
+
+  S4 forecasts N(0, 10^2) and N(8, 10^2): equal-weight linear pool against N(4, 10^2)
+  ok  S4 pool variance = 100 + 16 = 116 by quadrature: 116.0000000000, mean 4.0000000000
+  ok  S4 pool CRPS at x = -15: closed form = quadrature of eq. (20)
+    x =   -15: pool -log f 4.842, CRPS 13.248;  N(4,10^2) -log f 5.027, CRPS 13.579
+  ok  S4 pool CRPS at x = 4: closed form = quadrature of eq. (20)
+    x =     4: pool -log f 3.302, CRPS 2.527;  N(4,10^2) -log f 3.222, CRPS 2.337
+  ok  S4 pool CRPS at x = 20: closed form = quadrature of eq. (20)
+    x =    20: pool -log f 4.389, CRPS 10.564;  N(4,10^2) -log f 4.502, CRPS 10.823
+    truth = pool: E[-log f] pool 3.7957, N(4,10^2) 3.8015; E[CRPS] pool 6.0816, N(4,10^2) 6.0903
+  ok  S4 truth = pool: pool has the lower expected log score
+  ok  S4 truth = pool: pool has the lower expected CRPS
+
+R. Recorded values of the first run, at their printed rounding (drift check)
+  ok  R R2_OS 1947-2025 (dp, ep, tms, dfy, comb): [-1.83, -2.28, -3.6, -0.83, 2.56]
+  ok  R R2_OS 1947-2005 (dp, ep, tms, dfy, comb): [1.34, 4.61, -3.7, -1.0, 5.82]
+  ok  R combination CW t 1947-2025 and 1947-2005
+  ok  R ambiguity terms x100
+  ok  R S2 expected scores at s = 15
+  ok  R S3 average interval scores I, J, K
+  ok  R S4 expected scores, truth = pool
+
+64 checks, 0 failed

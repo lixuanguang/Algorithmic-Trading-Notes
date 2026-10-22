@@ -494,7 +494,7 @@
     "topic:time-series-models",
     "topic:asset-pricing-factor-models"
    ],
-   "scope": "Present-value logic for valuation ratios, out-of-sample tests of a predictive regression against the historical mean, restricted forecasts and their economic value for one aggregate equity predictor; forecast combination and proper scoring of density forecasts are not yet written."
+   "scope": "Present-value logic for valuation ratios, out-of-sample tests of a predictive regression against the historical mean, restricted forecasts and their economic value for one aggregate equity predictor, equal-weight combination of several predictors' forecasts, and proper scoring of predictive distributions and intervals; conditional predictive-ability tests are not yet written."
   },
   {
    "id": "topic:bond-instrument-features",
@@ -8783,12 +8783,41 @@
    "prerequisites": [
     "objective:test-nested-return-forecasts"
    ],
-   "entries": [],
-   "candidate_entries": [],
-   "coverage": "missing",
+   "entries": [
+    "meth:forecast-combination",
+    "meth:proper-scoring-rules"
+   ],
+   "candidate_entries": [
+    "meth:forecast-combination",
+    "meth:proper-scoring-rules",
+    "meth:nested-forecast-tests",
+    "meth:forecast-accuracy-evaluation"
+   ],
+   "coverage": "partial",
    "next_action": "obtain-source",
-   "missing": "No entry: forecast combination (wide-rapach-strauss-zhou), conditional predictive ability (wide-giacomini-white) and proper scoring rules (wide-gneiting-raftery) are required readings of the return-predictability pathway that have not been obtained or read.",
-   "evidence": null,
+   "missing": "Conditional predictive ability (wide-giacomini-white, not obtained) and any test of equal average scores are not written; the combination entry rests on the 2008 working paper, not the RFS 2010 version of wide-rapach-strauss-zhou, and does not cover its links to the real economy. Written: equal-weight and performance-weighted combination with an annual four-predictor example (meth:forecast-combination); the logarithmic score, CRPS and interval score with worked examples (meth:proper-scoring-rules).",
+   "evidence": {
+    "sources": [
+     {
+      "key": "rapach-strauss-zhou-2008-wp",
+      "locator": "Working paper, 6 February 2008, eqs. (1)-(4), pp. 3-5; pp. 5-6; n. 9, p. 8; n. 11, p. 9; sec. 2.5, pp. 11-12; pp. 12-13, 16; Table 1, panels A-B (unnumbered, PDF p. 30)"
+     },
+     {
+      "key": "wide-gneiting-raftery",
+      "locator": "JASA 102(477), 2007, p. 359; eq. (1), p. 360; eq. (19), p. 365; p. 366; eqs. (20)-(21) and (23), p. 367; eqs. (41)-(43), p. 370; eqs. (44)-(47) and Table 2, p. 371; p. 374"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/rapach-strauss-zhou-2008-wp.md",
+     "notes/readings/wide-gneiting-raftery.md"
+    ],
+    "review_record": "notes/source-review-records.md#forecast-combination-and-proper-scoring-batch-22-october-2026",
+    "entry_evidence": [
+     "meth:forecast-combination",
+     "meth:proper-scoring-rules"
+    ],
+    "example": "notes/artefacts/return-predictability/forecast-combination-scoring-checks.py parts F and S under forecast-combination-scoring-protocol.md (annual equal-weight combination of dp, ep, tms and dfy, 1947-2025 and 1947-2005, fixed before the first run; error and ambiguity identities; equicorrelated floor, seed 20261105; hand scoring example with CRPS by closed form, quadrature and Monte Carlo, seed 20261106; propriety by quadrature; Gneiting and Raftery's Table 2 by simulation, seeds 20261107-20261108; linear pool against an averaged point forecast); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5, SciPy 1.18.1; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by goyal_extract_predictors.py"
+   },
    "supersedes": null
   },
   {

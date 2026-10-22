@@ -6768,3 +6768,112 @@ changed). Entry preservation: against `HEAD`, 697 entries keep labels, types and
 differing only by the batch's navigation links; against the pre-audit working tree, only the two corrected entries
 differ. `guide/`, `content_migration_plan.md`, `content_migration_ledger.md`, `subsection_alignment_plan.md` and
 `notes/log.md` are unchanged against `HEAD`.
+
+## Forecast-combination and proper-scoring batch (22 October 2026)
+
+**Starting state.** `main` at `2561b34` (merge of PR #37), clean; guide pin `8302467`; 700 entries, 112 printed
+pathways, 464 PDF pages; objectives 453 (452 covered, 1 missing). Branch `codex/forecast-combination-scoring`. GitHub
+Actions run 39790431215 (the post-merge source validation of `2561b34`) was `in_progress` when the batch started, with
+its only job, *Source validation*, already successful; it completed with conclusion `success` during the batch and
+was not cancelled, rerun or changed. Scope set by the request: at most two entries under `return-predictability`
+(combining point forecasts; proper scoring of distributions and intervals). Local only; nothing committed or pushed.
+
+**Sources read** (equations and tables as page images; downloads logged with URL, time, status, size and SHA-256 in the
+git-ignored `reading_materials/forecast-combination-scoring/download-log.tsv`):
+- Gneiting and Raftery, JASA 102(477), 2007, the author-hosted copy of the journal's typeset article
+  (`sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf`, SHA-256 `d31a0c5f...7ba2`, 20 pages;
+  PDF page = printed page - 358): pp. 359-360 (orientation, eq. (1)), 365 (eq. (19)), 366 (locality, linear score),
+  367 (eqs. (20)-(23), the Gaussian CRPS), 370 (eqs. (40)-(43)), 371 (eqs. (44)-(47), Table 2) and 374 (sensitivity of
+  the log score). Catalogue key `wide-gneiting-raftery`.
+- Rapach, Strauss and Zhou, "Out-of-Sample Equity Premium Prediction: Consistently Beating the Historical Average",
+  working paper of 6 February 2008 (first draft 23 July 2007). Zhou's copy (`apps.olin.wustl.edu/faculty/zhou/RSZ.pdf`)
+  returns 404; the Wayback Machine capture of 2016-06-16 (same digest as that of 2014-12-22) was used, SHA-256
+  `c8dab2ae...f909`, 38 pages, printed page = PDF page - 1. Read: secs. 1-2 (pp. 1-12), 3.1-3.2 (pp. 12-19), 3.6 and 4,
+  the notes to Tables 1-4 and Table 1 (PDF pp. 29-30). Registered as `rapach-strauss-zhou-2008-wp`.
+- Not obtained: the RFS 2010 article (`wide-rapach-strauss-zhou`, doi 10.1093/rfs/hhp063). doi.org, academic.oup.com
+  and SSRN 1257858 returned HTTP 403 on 2026-10-22; archived `rfs.oxfordjournals.org` full-text pages are sign-in
+  pages; Zhou's archived *Notes_Data_Code_RSZ2010.pdf* (SHA-256 `b5f6fa64...77d7`) points to data and code only.
+  Nothing is attributed to the published version. `wide-timmermann-combinations` and `wide-giacomini-white` were not
+  sought.
+- Data: the workbook already hashed by the earlier batch (`8d210b77...be872`, 2026 vintage despite its label); new
+  columns `E12, tbl, AAA, BAA, lty` extracted by `goyal_extract_predictors.py`. The earlier CSVs are unchanged.
+
+**Discrepancies and source limits.**
+- The working paper prints the historical average as `r-bar_{t+1} = sum_{j=1}^t r_j` without the 1/t (p. 4); read as
+  a typesetting slip, not used.
+- Its Table 1 labels the discounted method "DMSFE"; the text says DMSPE (p. 5).
+- It sets the restricted forecasts' expected signs from full-sample estimates (n. 9, p. 8) and notes that the
+  Clark-West test has not been analysed for combination forecasts (n. 11, p. 9); both are stated in the entry.
+- The working paper contains no forecast-error covariance argument for why combination works. That argument, the
+  ambiguity decomposition and the equicorrelated floor are labelled Interpretation and checked numerically.
+- Gneiting and Raftery do not state the burn-in, seed or J's unconditional quantiles behind Table 2; they are set or
+  estimated in the protocol. They do not discuss linear pools; the pool example is labelled Interpretation.
+
+**Entries.** New: `meth:forecast-combination` (Method 8.11) and `meth:proper-scoring-rules` (Method 8.12) at the end
+of `compendium/asset-pricing/return-predictability.tex`, the pathway's only topic file (section 8.3). Navigation only:
+See also of `meth:nested-forecast-tests` gains `meth:forecast-combination`; See also of
+`meth:forecast-accuracy-evaluation` gains `meth:proper-scoring-rules`. Registered source:
+`rapach-strauss-zhou-2008-wp` in `compendium/front/sources.tex`.
+
+**Coverage.** `objective:score-and-combine-return-forecasts` moves from missing to partial: both new entries mapped,
+with sources, locators, reading notes, entry evidence and worked examples. Next action stays obtain-source, because
+conditional predictive ability (`wide-giacomini-white`) and tests of equal average scores are unwritten. Its title is
+unchanged. The scope of `topic:return-predictability` now names what is written. Objectives 453: 452 covered, 1
+partial; outline items unchanged at 1,030/1,030 (no item maps to this objective). The pathway checkpoint was not
+attempted. Nothing in `notes/log.md`; no study or mastery claimed.
+
+**Checks.** `notes/artefacts/return-predictability/`: `forecast-combination-scoring-protocol.md` (predictors, sample,
+rows, transformations, seeds and tolerances written before the script existed, after the published tables had been
+read; not a preregistration); `goyal_extract_predictors.py` (empirical group); `goyal-annual-predictors-1871-2025.csv`;
+`forecast-combination-scoring-checks.py` (numpy, pandas, scipy, default environment, about 4 s) and
+`forecast-combination-scoring-results.txt`.
+- First run: all 55 gated checks passed; seven drift checks of observed values were then added (part R), bringing that
+  run to 62 checks. The post-first-run audit added two exact deterministic checks; the current total is 64. Seeds
+  20261105-20261108; Python 3.14.7, NumPy 2.4.6, pandas 3.0.5, SciPy 1.18.1.
+- Part F (annual log premium; dp, ep, tms, dfy dated t - 1; recursive from 1927; first forecast 1947): R2_OS
+  1947-2025 -1.83, -2.28, -3.60, -0.83, equal-weight combination +2.56 (ΔRMSE +0.21, Clark-West t 1.44, descriptive);
+  1947-2005 +1.34, +4.61, -3.70, -1.00, combination +5.82 (t 2.13). Error correlations 0.89-0.98, deviation
+  correlations -0.30 to 0.82; MSE_c 2.6500 = 2.7777 - 0.1277 (x100); ex post minimum-MSE weights -0.02, 0.51, 0.40,
+  0.12 (MSE 2.6380). The combination was not required to win, and this is not a reproduction of the working paper's
+  monthly Table 1 (0.95 percent for the mean combination).
+- Part S: normal CRPS closed form against quadrature of eq. (20) (at most 1.4e-14) and Monte Carlo of eq. (21); the
+  interval score against the sum of two quantile scores (1e-12); propriety on a grid (each proper loss smallest at the
+  true s = 15; linear score largest at the smallest s); Table 2 in the source's design: coverage 94.98, 94.91, 94.94
+  (published 95.01, 95.08, 94.98), widths 4.00, 5.46, 3.79 (4.00, 5.45, 3.79), interval scores 4.76, 8.03, 5.29
+  (4.77, 8.04, 5.32), batch-means standard errors 0.024, 0.098, 0.065; linear pool against N(4, 10^2) under the pool:
+  log loss 3.7957 against 3.8015, CRPS 6.0816 against 6.0903.
+
+**Limits.** Editorial coverage only; human review outstanding. Working-paper locators for the combination entry; one
+annual predictor set and one evaluation window (with a sub-window); a 2026 data vintage; Gaussian illustrative
+forecasts. Deferred: Giacomini-White conditional tests, tests of equal average scores, the pathway checkpoint, the
+SVIX bound, the real-time kernel check, density combination beyond the pool example, and further investigation of the
+Clark-West size gap at P = 120.
+
+**Validation (22 October 2026).** `make check` (exit 0): lock check; ruff lint and format (163 files);
+`check_compendium.py --check` (702 entries, 112 pathways printed, 96 pathway notes, 0 problems); `check_coverage.py
+--check` and `--verify-outlines` (0 problems; 453 objectives, 452 covered, 1 partial; 1,030 items covered); `make test`
+(59 passed); `make examples` (129 scripts, warnings as errors); `make pdf`: 466 pages (was 464), no overfull boxes, no
+undefined references, the one pre-existing underfull box. Section 8.3 still starts on printed p. 35; the new entries
+are on printed pp. 38-40 (PDF 44-46), rendered and read: headings, equations, the five tables and the links display
+correctly. `make pre-commit` (exit 0). Entry preservation against `HEAD`: 700 entries keep labels, types and files;
+698 are byte-identical and two differ only by the inserted See-also links. The earlier batch's check script still
+reproduces its recorded output byte for byte. `guide/`, `content_migration_plan.md`, `content_migration_ledger.md`,
+`subsection_alignment_plan.md` and `notes/log.md` are unchanged against `HEAD`.
+
+**Post-first-run audit corrections (22 October 2026).** The equal-variance equicorrelation expression is now scoped to
+unbiased errors; individual biases add the squared mean bias. Two exact deterministic checks use member biases 1, 2 and
+3 to verify `MSE = variance + mean bias squared` (`116/27 = 8/27 + 2^2`) and both the second-moment and ambiguity
+identities (`116/27 = 116/27 = 50/9 - 34/27`). The Bates-Granger wording now makes explicit that inverse-MSE
+optimality needs unbiased, uncorrelated errors (a diagonal error second-moment matrix); this is marked Interpretation,
+since the working paper says "forecasts are uncorrelated." The annual predictors are calendar-indexed at `t - 1`; no
+publication lags or revisions are modeled, especially for E12, so the data do not establish point-in-time availability
+or a real-time investable backtest. The normal comparison in the density example is identified as an assumed density
+with the average component variance; point forecasts alone determine neither variance nor predictive distribution.
+The data, forecast results, scoring results and original first-run protocol history are unchanged. The focused script
+was rerun under `-W error`; 64 checks pass. The repository-wide validation above predates these corrections.
+
+**Publication validation (22 October 2026).** After the corrections, `make check` passed: 59 tests, 129 numerical
+scripts, structure and coverage checks, outline hashes, and the PDF build. The PDF remains 466 pages; printed
+pp. 38–40 were rendered and inspected, with no overfull boxes or unresolved references and only the existing
+underfull box. The earlier return-predictability script still reproduces its recorded output exactly. All 700 earlier
+labels, types and file locations are preserved; only the two documented navigation links change their bodies.

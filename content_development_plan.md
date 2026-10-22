@@ -14,6 +14,10 @@ and the alignment record are kept as historical evidence and are not edited by t
 Guide pin now: `8302467bc5acfedba55c7e79b311cfb2154f433c` (227 pathways). Before this batch: 697 entries, 111 printed
 pathways, 461 PDF pages. After it: 700 entries, 112 printed pathways, 464 PDF pages.
 
+A second batch on the same pathway, forecast combination and proper scoring (22 October 2026, branch
+`codex/forecast-combination-scoring` from `2561b34`), is recorded in section 10: 702 entries, 112 printed pathways,
+466 PDF pages. Sections 0-9 are the first batch's record and are not revised by it.
+
 ## 0. Reconciliation before implementation (22 October 2026)
 
 | Item in the deferred proposal | Current repository | Decision |
@@ -212,3 +216,79 @@ third entry needed no change.
 ## 9. Validation
 
 Recorded in `notes/source-review-records.md`, *Return-predictability content batch (22 October 2026)*.
+
+## 10. Second batch: forecast combination and proper scoring (22 October 2026)
+
+Status: implemented on branch `codex/forecast-combination-scoring` from `2561b34`; post-first-run audit corrections
+prepared for publication after audit. Review record: `notes/source-review-records.md`, *Forecast-combination and
+proper-scoring batch (22 October 2026)*.
+
+### 10.1 Scope
+
+At most two new entries under `return-predictability`, set by the request: combining point forecasts, and proper scoring
+of predictive distributions and intervals. Explicitly deferred: Giacomini-White conditional tests, the pathway
+checkpoint, the SVIX bound, kernel methods and further investigation of the Clark-West size gap.
+`objective:score-and-combine-return-forecasts` stays partial while conditional tests are unwritten; its title is not
+narrowed.
+
+### 10.2 Sources
+
+| Key used | Version read | Copy | Notes |
+| --- | --- | --- | --- |
+| `wide-gneiting-raftery` (catalogue) | JASA 102(477), 2007, typeset article | Author-hosted PDF (stat.washington.edu), SHA-256 `d31a0c5f…7ba2`; PDF page = printed page − 358 | pp. 359–360, 365–367, 370–371, 374 read as page images |
+| `rapach-strauss-zhou-2008-wp` (registered) | Working paper, 6 February 2008, "Consistently Beating the Historical Average" | Zhou's former web copy via the Wayback Machine (2016-06-16), SHA-256 `c8dab2ae…f909`; printed page = PDF page − 1 | Precursor of `wide-rapach-strauss-zhou` (RFS 2010), which returned HTTP 403 from doi.org, OUP and SSRN and was not used |
+| Predictor data | Same workbook as section 4, `8d210b77…be872` (2026 vintage) | New columns extracted by `goyal_extract_predictors.py` | Earlier CSVs unchanged |
+
+### 10.3 Entries and files
+
+| Path | Change |
+| --- | --- |
+| `compendium/asset-pricing/return-predictability.tex` | `meth:forecast-combination` (Method 8.11) and `meth:proper-scoring-rules` (Method 8.12) appended; See also of `meth:nested-forecast-tests` gains a link |
+| `compendium/regression-time-series/time-series-models.tex` | See also of `meth:forecast-accuracy-evaluation` gains a link (navigation only) |
+| `compendium/front/sources.tex` | `rapach-strauss-zhou-2008-wp` registered |
+| `notes/artefacts/return-predictability/` | `forecast-combination-scoring-protocol.md`, `goyal_extract_predictors.py`, `goyal-annual-predictors-1871-2025.csv`, `forecast-combination-scoring-checks.py`, `forecast-combination-scoring-results.txt` |
+| `notes/readings/` | New `rapach-strauss-zhou-2008-wp.md`, `wide-gneiting-raftery.md` |
+| `notes/entry-evidence.json`, `notes/coverage/objectives.json` | Two records; the objective partial with evidence, the topic's scope |
+| `notes/pathways/return-predictability.md`, `notes/pathways/asset-pricing.md` | Entries, status and backlog |
+| `notes/source-review-records.md`, `notes/source-review-index.md` | Batch record and index line |
+
+### 10.4 Numerical checks
+
+Protocol written before the script existed; 55 gated checks passed on the first run and 7 drift checks brought the
+then-current total to 62. The post-first-run audit added two exact deterministic checks; 64 checks now pass.
+Part F: an annual equal-weight combination of dp, ep, tms and dfy, chosen in advance, beats the historical mean over
+1947–2025 (R2_OS +2.56 percent) while each predictor alone does not (−0.83 to −3.60). It was not required to win, and
+it is not a reproduction of the working paper's monthly Table 1. Part S: the CRPS and interval-score identities, propriety
+on a grid, Gneiting and Raftery's Table 2 within the pre-set tolerances, and a linear pool against an averaged point
+forecast. Details in the protocol and the review record.
+
+### 10.5 Acceptance
+
+- Two entries with located citations, checked against the copies in 10.2: met.
+- Equal weighting, error covariance and the diversification limit explained; a predeclared chronological example
+  with 3–5 predictors, the individual forecasts, the combination and the benchmark: met (four predictors, five rows).
+- The log score, CRPS and interval score with sign conventions and units, same-mean examples, independent validation,
+  and averaging point forecasts distinguished from combining densities: met.
+- The 700 earlier entries preserved apart from two See-also links; `make check` and `make pre-commit` pass;
+  466 PDF pages, no overfull boxes or unresolved references: met.
+- Coverage: one objective missing → partial; no mastery claimed; checkpoint not attempted.
+
+### 10.6 Deferred
+
+Giacomini–White conditional tests and tests of equal average scores; the RFS 2010 version of Rapach–Strauss–Zhou and
+its real-economy links; Timmermann's handbook chapter; density combination beyond the linear-pool example and
+calibration diagnostics; the checkpoint replication; the SVIX bound; the real-time kernel check; the Clark–West size gap
+at P = 120.
+
+### 10.7 Post-first-run audit corrections (22 October 2026)
+
+The equicorrelation MSE formula now requires unbiased errors; individual biases add the squared average bias. Two exact
+checks with member biases 1, 2 and 3 verify `116/27 = 8/27 + 2^2` and preserve the second-moment and ambiguity
+identities (`116/27 = 50/9 - 34/27`). The Bates-Granger inverse-MSE condition is stated as unbiased, uncorrelated
+errors and marked Interpretation, since the working paper says "forecasts are uncorrelated." The annual predictor rows
+are dated `t - 1`, but release lags and revisions (especially E12) are not modeled; this does not establish point-in-time
+availability or a real-time investable backtest. The Gaussian comparison uses the average component variance as an
+assumption; point forecasts alone supply neither variance nor predictive distribution. Data and forecast/scoring
+results are unchanged. The focused script passes under `-W error` with 64 checks. The pre-audit repository-wide
+validation is recorded in `notes/source-review-records.md`; the post-audit validation run belongs to the publication
+pass.

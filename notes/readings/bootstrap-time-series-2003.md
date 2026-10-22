@@ -1,6 +1,6 @@
 ---
 key: bootstrap-time-series-2003
-pathways: [common-toolkit]
+pathways: [probability-statistics]
 version: Dimitris N. Politis, "The Impact of Bootstrap Methods on Time Series Analysis", Statistical Science 18(2) (2003), 219-230, doi 10.1214/ss/1063994977. Copy used: author's PDF from mathweb.ucsd.edu retrieved 2026-10-18, SHA-256 80c1b1332fe3a7982930b6be541b9ee62b6cdcaecb8cc28ba9accea8e3c9a61f, 12 PDF pages, in the git-ignored `reading_materials/coverage-pilots/` (printed page = PDF page + 218)
 sections: abstract; sec. 2 Block resampling and subsampling (pp. 221-222); sec. 2.3 Block size choice (p. 223)
 read:

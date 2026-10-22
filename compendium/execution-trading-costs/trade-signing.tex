@@ -1,4 +1,4 @@
-\section{Signing trades}
+\subsection{Signing trades}
 
 \begin{qfmethod}[Trade-sign classification: the quote rule, the tick rule and Lee--Ready, block prices, signed volume, and what an inferred sign does and does not say]\label{meth:trade-sign-classification}
 \qffield{Statement} Trade data rarely say which side initiated a trade, so the sign $q_t=+1$ (buyer-initiated) or $-1$ is inferred. If all executions occur at the posted quotes, $q_t=+1$ at the ask and $-1$ at the bid; more generally $q_t=\operatorname{Sign}(p_t-m_t)$ with $m_t$ the prevailing midpoint (the \emph{quote rule}), which leaves midpoint trades unclassified. For those, the trade takes the sign of the most recent price change (the \emph{tick rule}) \citep[chap.~9, sec.~9.7.1, p.~89]{s6-hasbrouck}.

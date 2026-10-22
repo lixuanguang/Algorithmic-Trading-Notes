@@ -1,4 +1,4 @@
-\section{Orders, limit order books and queues}
+\subsection{Orders, limit order books and queues}
 
 \begin{qfmechanism}[Order lifecycle and messages: order states, insert, modify, cancel and execute, private and public channels, and the instructions that change priority]\label{mech:order-lifecycle}
 \qffield{Statement} Lehalle and Laruelle's account starts from a book that is ``most often empty'' at the start of the day; orders are stored while they do not match a resting order, and two orders match when their prices are compatible, each match producing one public trade message and two private messages, one to the owner of each order \citep[chap.~3, sec.~3.3.1, p.~217]{alpha-laruelle}. Members usually reach the matching engine through two channels: a private one, on which they send their orders and receive the messages that concern them, and a public one, on which everyone connected sees the transactions and the state of the book; the private channel is generally the faster (p.~218).

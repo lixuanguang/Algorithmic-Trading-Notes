@@ -1,0 +1,55 @@
+\section{Automated market makers and lending protocols}
+
+\begin{qfdefinition}[Automated market maker pools: the constant-product rule and its fee, price impact and the cost of providing liquidity, and concentrated liquidity in Uniswap v3]\label{def:amm-pool-mechanics}
+\qffield{Statement} A Uniswap pair pools reserves $x$ and $y$ of two tokens. Uniswap v1 and v2 maintain ``the invariant that the product of the reserves cannot decrease''; ``traders pay a 30-basis-point fee on trades, which goes to liquidity providers'' \citep[sec.~1, p.~1]{uniswap-v2-2020}. Version~2 enforces the fee through $(x_1-0.003\,x_{in})(y_1-0.003\,y_{in})\ge x_0y_0$, with $x_0,y_0$ the balances before and $x_1,y_1$ after the swap (sec.~3.2.1, eq.~(10), p.~7). Uniswap v3 keeps $x\cdot y=k$ but lets a liquidity provider confine liquidity $L=\sqrt k$ to a price range $[p_a,p_b]$, a \emph{position} \citep[sec.~2, eqs.~(2.1)--(2.2), p.~2]{s6-uniswap}. Its real reserves satisfy
+\[ \Big(x+\frac{L}{\sqrt{p_b}}\Big)\big(y+L\sqrt{p_a}\big)=L^2, \]
+so it trades like a constant-product pool with larger ``virtual reserves'' inside the range. Outside the range it holds one asset only, ``is no longer active, and no longer earns fees''. Fee tiers are set per pool, initially 0.05, 0.30 and 1 percent (sec.~1, p.~1).
+
+\qffield{Notation} Derived, with price $p=y/x$ and fee $f$, $\gamma=1-f$: selling $\Delta x$ returns $\Delta y=y\gamma\Delta x/(x+\gamma\Delta x)$. A position's real reserves at price $p$ inside its range are $x=L(1/\sqrt p-1/\sqrt{p_b})$ and $y=L(\sqrt p-\sqrt{p_a})$.
+
+\qffield{Conditions} The formulas are the protocols' design as described in their 2020 and 2021 whitepapers. Deployed pools, fee switches, later versions (UniswapX, v4) and other AMM designs differ. Gas costs, transaction ordering and the maximal extractable value they enable are outside these papers.
+
+\qffield{Practice} Numerical checks:
+\begin{itemize}
+\item \emph{Price impact.} Selling 10 ETH into a 1{,}000 ETH and 2{,}000{,}000 USDC pool returns 19{,}743.16 USDC, an execution price of 1{,}974.32 against a pool price of 2{,}000 before and 1{,}960.65 after. Before the fee the shortfall is $\gamma\Delta x/(x+\gamma\Delta x)$, 0.99 percent for a trade of 1 percent of the reserve. The product $k$ rises by the fee retained.
+\item \emph{Cost of providing liquidity.} With arbitrageurs moving the pool to an external price $p_0r$, a full-range position is worth $2\sqrt r/(1+r)$ times the buy-and-hold value before fees: $-5.7$ percent for $r=2$ or $1/2$, and $-20$ percent for $r=4$. That is the ``impermanent loss'' that fee income must cover.
+\item \emph{Concentration.} The same $L$ on $[1600,2500]$ at a price of 2{,}000 needs 94{,}427 of capital against 894{,}427 on the full range, 9.5 times less. Below $p_a$ the position is all X (50 units); above $p_b$, all Y (100{,}000).
+\end{itemize}
+
+\emph{Fees, block times, gas and pool design}.
+\begin{itemize}
+\item \emph{Fees and blocks} (\nolinkurl{roadmap-amm-fees}, arXiv v2 of 23 July 2025). With a fee $\gamma$ and Poisson block arrivals at rate $\lambda$, the probability that a block contains a profitable arbitrage is $P_{\mathrm{trade}}=1/(1+\sqrt{2\lambda}\,\gamma/\sigma)$; for small fees and fast blocks, arbitrage profit is approximately loss-versus-rebalancing times $P_{\mathrm{trade}}$ and fees paid by arbitrageurs approximately LVR times $(1-P_{\mathrm{trade}})$, so ``faster blockchains will result in reduced LP losses''; with fixed gas costs added, ``lower gas fees lead to smaller losses for LPs'' (abstract and sec.~1, pp.~1--4) \citep[arXiv v2, abstract and sec.~1, pp.~1--4]{roadmap-amm-fees}. That is the gas-cost question in theory.
+\item \emph{Reported prices} (\nolinkurl{s6-cfmm}, arXiv v4). A CFMM's reported price is the slope of a supporting hyperplane of its reachable set; an arbitrageur facing reference prices $c$ is ``always incentivized'' to move the pool there, so the pool tracks the reference market. A fee of $1-\gamma$ on inputs makes a path-independent CFMM path-deficient: a trader must put in $1/\gamma$ more input (sec.~3, pp.~13--16 and~20--21) \citep[arXiv v4, sec.~3, pp.~13--21]{s6-cfmm}. With a fee, a constant-product pool's price is pushed only into a band around the reference price (own reading of the path-deficiency result, not a quoted bound). Angeris, Kao, Chiang, Noyes and Chitra show that under common conditions constant-product markets ``must closely track the reference market price'' and simulate stability under a wide range of conditions \citep[arXiv v7, abstract]{s11-r12}.
+\item \emph{Many assets} (\nolinkurl{roadmap-cfmm-convex}, arXiv v1, July 2021): choosing a multi-asset trade against a CFMM can be posed as a convex optimisation problem and solved reliably (abstract) \citep[arXiv v1, abstract and sec.~1]{roadmap-cfmm-convex}.
+\item \emph{Uniswap v4} (\nolinkurl{exp-uniswap4}, August 2024): pools keep v3's concentrated liquidity, but a pool's creator can attach a ``hook contract'' run at set points of a call, which can ``manage the swap fee of the pool dynamically, implement custom curves, and adjust fees''; all pools sit in one singleton contract with ``flash accounting'', which nets token balances within a lock to cut gas on multi-pool trades (abstract and sec.~1, pp.~1--2) \citep[whitepaper, August 2024, pp.~1--2]{exp-uniswap4}.
+\item \emph{Auctioning the pool} (\nolinkurl{exp-amamm}, arXiv v4 of 12 February 2025): an on-chain auction for the right to be ``pool manager'' of a constant-product pool, who sets the fee, receives fees and can capture some arbitrage; they ``prove that under certain assumptions'' this pool has higher equilibrium liquidity than any fixed-fee AMM (abstract) \citep[arXiv v4, abstract]{exp-amamm}. A design proposal with proofs under assumptions, not evidence of deployment.
+\end{itemize}
+
+\qffield{Pitfalls} The whitepapers are the developers' design descriptions, not audits of deployed code. The impermanent-loss expression assumes the pool is arbitraged to an outside price and ignores fees and gas; both are own derivations, not statements of the sources.
+
+\qffield{See also} \hyperref[def:crypto-venue-instrument-structure]{crypto venues and instruments}; \hyperref[def:crypto-trading-risk-layers]{crypto trading risk layers}; \hyperref[ev:crypto-dated-futures-carry]{crypto carry}.
+
+\qffield{Further reading} \nolinkurl{roadmap-uniswapx}; \nolinkurl{roadmap-cfmm-routing-efficient}.
+
+\end{qfdefinition}
+
+\begin{qfmechanism}[DeFi lending liquidations: fixed-spread and auction designs, close factors and health factors, and how much becomes liquidatable when prices fall]\label{mech:defi-lending-liquidation}
+\qffield{Statement} Qin, Zhou, Gamito, Jovanovic and Gervais study Aave, Compound, MakerDAO and dYdX, over 85 percent of Ethereum lending, from their launch to April 2021. Two designs dominate: auctions (MakerDAO) and fixed-spread liquidation (Aave, Compound, dYdX), where a liquidator repays debt and claims collateral worth the repaid debt times $(1+LS)$, with LS the liquidation spread, up to a \emph{close factor}, the maximum share of the debt repayable in one liquidation (sec.~2.3, eq.~(1), PDF p.~3).
+
+Over the period, liquidation proceeds were \$807.46 million in 28{,}138 events by 2{,}011 liquidator addresses; 641 auction liquidations were unprofitable for liquidators; Aave V2 had accumulated \$87.4 thousand of bad debt by the end of April 2021; and a 43 percent fall in ETH, like 13 March 2020, would make \$1.07 billion of collateral liquidatable on MakerDAO. Fixed-spread designs ``favor liquidators over borrowers'' because they allow more collateral than necessary to be sold (sec.~1, PDF p.~2) \citep[arXiv v2, secs.~1--2, PDF pp.~1--3]{roadmap-defi-liquidations}. Perez, Werner, Xu and Livshits find on Compound to September 2020 that ``variations of only 3\% in an asset's dollar price can result in over 10m USD becoming liquidable'', with over 70 percent of liquidatable positions liquidated immediately (abstract) \citep[arXiv v6, abstract]{oc-perez-knife-edge-2021}.
+
+In Aave V3, the V2 rule that only half a position could be liquidated at once was relaxed: a position ``approaching insolvency (HF $<$ 0.95)'' can be liquidated in full; on layer-2 chains a grace period applies after a sequencer outage for $0.95<HF<1$ (PDF pp.~7--8 and~14) \citep[Aave V3 Technical Paper, 27 January 2022, PDF pp.~7--8 and~14]{al-aave}.
+
+\qffield{Notation} HF the health factor, below one liquidatable; LS liquidation spread (bonus); CF close factor; LT liquidation threshold.
+
+\qffield{Conditions} The figures are for 2019--2021 protocol versions and parameters, which governance changes; the HF definition in terms of collateral, liquidation thresholds and debt is the protocols' (not transcribed here).
+
+\qffield{Practice} To assess a liquidation, record the protocol version and parameters at the pinned block, compute the maximum repay amount from the close factor and the HF band, and net the bonus of gas and DEX slippage before calling a liquidation profitable.
+
+\qffield{Pitfalls} The Aave paper is the developers' description; parameters such as the e-mode example (97 percent LTV, 98 percent threshold, 2 percent bonus for stablecoins, PDF p.~6) are examples, not current values.
+
+\qffield{See also} \hyperref[def:amm-pool-mechanics]{AMM pools}; \hyperref[def:crypto-trading-risk-layers]{crypto trading risk layers}; \hyperref[mod:liquidity-spirals]{liquidity spirals}.
+
+\qffield{Further reading} \nolinkurl{oc-heimbach-huang-2024}; \nolinkurl{oc-lehar-parlour-2022}; \nolinkurl{oc-eskandari-oracles-2021}.
+
+\end{qfmechanism}

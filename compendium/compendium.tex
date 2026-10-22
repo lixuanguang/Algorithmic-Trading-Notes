@@ -16,25 +16,40 @@
 \InputIfFileExists{front/glossary}{}{}
 
 \mainmatter
-% The single ordered declaration of compendium sections, also read by tools/check_*.py;
-% a chapter appears once <section-key>/section.tex exists.
-\qfsections{common-toolkit, empirical-causal-research, research-engineering-validation,
-  professional-ethics, ml-alternative-data, rates-credit-mortgages, government-bond-markets,
-  corporate-credit-capital, securitised-structured-credit, financial-statement-analysis,
-  corporate-finance, systematic-equities,
-  volatility-options, volatility-trading-premia, multi-asset-systematic-macro,
-  currency-markets, international-equity-markets, global-regional-markets,
-  portfolio-construction-risk, portfolio-risk-financing, private-wealth-management,
-  execution-market-making,
-  execution-trading-costs, energy-commodities, commodity-spot-markets,
-  physical-commodity-markets, commodity-investing-premia, oil-shocks-macro,
-  power-gas-environmental, environmental-markets, private-capital-allocator,
-  real-asset-investor, insurance-climate-risk, digital-assets-prediction-markets,
-  crypto-spot-markets, onchain-protocols, tokenised-fractional-assets,
-  crypto-market-making, crypto-trading-strategies, event-contracts-prediction-markets,
-  event-contract-venues, event-contract-trading}
+% The single ordered declaration of compendium Parts and sections, also read by
+% tools/check_*.py and checked against the pinned guide's learning_parts. A chapter
+% appears once <section-key>/section.tex exists; a Part appears once one of its sections does.
+\qfpart{mathematics-statistics-numerics}{Financial mathematics, statistics and numerical methods}{
+  financial-mathematics, probability-statistics, regression-time-series,
+  stochastic-processes-calculus, bayesian-inference, high-dimensional-statistics,
+  numerical-optimisation}
+\qfpart{empirical-finance-research-governance}{Empirical finance, machine learning and research governance}{
+  asset-pricing, causal-inference, research-engineering-validation, professional-ethics,
+  ml-alternative-data}
+\qfpart{public-markets}{Public markets and pricing}{
+  rates-credit-mortgages, government-bond-markets, financial-statement-analysis,
+  corporate-finance, corporate-credit-capital, securitised-structured-credit,
+  systematic-equities, volatility-options, volatility-trading-premia,
+  multi-asset-systematic-macro, currency-markets, international-equity-markets,
+  global-regional-markets}
+\qfpart{portfolio-financing-execution}{Portfolio financing and execution}{
+  portfolio-construction-risk, portfolio-risk-financing, execution-market-making,
+  execution-trading-costs}
+\qfpart{energy-commodities}{Energy and commodities}{
+  energy-commodities, commodity-spot-markets, physical-commodity-markets,
+  commodity-investing-premia, oil-shocks-macro, power-gas-environmental,
+  environmental-markets}
+\qfpart{private-real-insurance}{Private capital, real assets and insurance}{
+  private-capital-allocator, real-asset-investor, insurance-climate-risk,
+  private-wealth-management}
+\qfpart{digital-assets}{Digital assets}{
+  digital-assets-prediction-markets, crypto-spot-markets, onchain-protocols,
+  tokenised-fractional-assets, crypto-market-making, crypto-trading-strategies}
+\qfpart{event-contracts}{Event contracts and prediction markets}{
+  event-contracts-prediction-markets, event-contract-venues, event-contract-trading}
 
 \backmatter
+\bookmarksetup{startatroot}
 \chapter{Sources outside the catalogue}
 \input{front/sources}
 \end{document}

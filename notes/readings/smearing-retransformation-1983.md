@@ -1,6 +1,6 @@
 ---
 key: smearing-retransformation-1983
-pathways: [common-toolkit]
+pathways: [regression-time-series]
 version: Naihua Duan, "Smearing Estimate: A Nonparametric Retransformation Method", Journal of the American Statistical Association 78(383), September 1983, pp. 605-610 (JSTOR stable 2288126); local copy reading_materials/Smearing.pdf (git-ignored), SHA-256 7525fc608bce0cf8b0e9b6e060bbf5f3ce434b859de03f53b2c9198e36118885, text layer
 sections: abstract; 1 Introduction; 2 The retransformation problem; 3 The smearing estimate (pp. 605-606); sec. 4 (p. 607), Lemma 1 and Theorem 1 with the moment condition, read 2026-10-18 in the second correction pass
 read:

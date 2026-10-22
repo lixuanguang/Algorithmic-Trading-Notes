@@ -92,6 +92,16 @@ Written in library gap-filling Batch L4 (2026-10-21):
 
 Sources: Hull, 11th Global ed.; Broadie and Glasserman (1996); Ding, Liu and Rutkowski (arXiv v3); Borio et al. (BIS Quarterly Review, September 2016). Synthetic examples only. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l4-21-october-2026).
 
+Written in library gap-filling Batch L5 (2026-10-21):
+
+- `meth:lookback-option-valuation` (new, `exotic-options.tex`, whose section heading now names lookbacks): floating and fixed-strike payoffs, Hull's floating formulas with the extreme to date and the fixed-strike parity relation, Wilmott's state-variable formulation and jump condition, Example 26.2, seasoned contracts, and discrete against continuous monitoring on coupled grids with an exact Brownian-bridge extreme (no barrier shift transplanted). Checks in `notes/artefacts/exotic-options/lookback-option-check.py`. `meth:barrier-option-valuation` gained a See also link.
+- `meth:transaction-cost-hedging` (new, `option-valuation.tex`, after `res:delta-hedging-volatility-mismatch`, which gained a link): Leland's adjusted volatilities for long and short positions (cited through Wilmott chap. 48; Leland 1985 not read), the Hoggard-Whalley-Wilmott equation and nonadditivity, the admissible domain of the long formula, fixed-interval against band rebalancing as Wilmott reports it, and a simulated comparison of hedging costs with the Leland premium. Checks in `notes/artefacts/option-valuation/transaction-cost-hedging-check.py`.
+- `meth:monte-carlo-greeks`: the resimulation-bias sentence corrected (generally biased; more paths do not remove it; affine prices excepted).
+
+Sources: Hull, 11th Global ed., sec. 26.11; Wilmott, 2nd ed., chaps. 24, 26 and 48. Synthetic examples only. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l5-21-october-2026).
+
+Written in library gap-filling Batch L6 (2026-10-21): `meth:covered-call-protective-put`'s collar item gained the zero-cost condition and the range forward's convergence to a forward (Hull sec. 17.2), linking to the concentrated-position block of `meth:complex-client-situations`; `meth:transaction-cost-hedging` clarified (each side's adjustment, twice it between short and long). See [record](../source-review-records.md#library-gap-filling-batch-l6-21-october-2026).
+
 ## Source verification after macro markets and pricing review
 
 empirical extensions (2026-10-17) (six audit repairs and a source-review coverage; source verification and bounded tests, not study or human review): `mod:black-scholes-merton` resolved (new entry `mod:black-scholes-merton`); `def:implied-volatility-surface` resolved (new entry `def:implied-volatility-surface`). The record is in `notes/source-review-records.md`, *empirical extensions (2026-10-17)*.
@@ -101,6 +111,17 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `mech:futures-margin-settlement` (`futures-execution`, extended with Hull's generic margin account); `mech:otc-clearing-collateral`, `def:interest-rate-measures`, `mod:forward-rates-fra`, `mod:duration-convexity`, `conv:us-rate-quotation` (`rates-credit-mortgages`); `def:futures-hedge-basis`, `mod:minimum-variance-hedge-ratio` (`commodity-hedging`); `res:synthetic-short-put-call` (`synthetic-equity-cfd-trs`); `def:arbitrage` (`execution-market-making`).
+
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+- `option-pricing-models` (Stochastic, local and jump volatility models): pathway note [option-pricing-models.md](option-pricing-models.md), 2 entries listed, in `volatility-options/option-pricing`.
+- `convertible-bonds` (Convertible bonds and credit-equity hedging): no pathway note; related existing material in `rates-credit-mortgages/embedded-option-bonds`, not reviewed as a complete treatment of the pathway.
+- `volatility-models` (Rough and path-dependent volatility): content gap; no entry written.
+- `option-hedging-smile` (Option hedging: delta, vega, smile dynamics and transaction costs): no pathway note; related existing material in `volatility-options/option-valuation`, `volatility-options/option-strategies`, not reviewed as a complete treatment of the pathway.
+- `learning-pricing-model-risk` (Learning-based pricing, calibration and model risk): content gap; no entry written.
+- `exotics-structured-products` (Exotic options, autocallables and structured products): no pathway note; related existing material in `volatility-options/exotic-options`, not reviewed as a complete treatment of the pathway.
 
 ## Entry backlog
 

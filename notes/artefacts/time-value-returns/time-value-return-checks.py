@@ -4,7 +4,7 @@ res:cash-flow-additivity.
 
 Each closed-form result is checked against an independent route: explicit cash-flow summation, a ledger of the
 replicating trades, root finding by bisection, or the alternative formula. Annual compounding and end-of-year cash
-flows throughout unless stated. Corrections of 2026-10-18 (plan sec. 10.2): dated forward-lending cash flows, uncertain inflation, yield quotation.
+flows throughout unless stated. Corrections of 2026-10-18: dated forward-lending cash flows, uncertain inflation, yield quotation.
 Inputs are invented; they illustrate the mechanics, not any security.
 Run: uv run python time-value-return-checks.py   (standard library). Exits 1 on failure.
 """
@@ -213,7 +213,7 @@ ok("1-year rate one year forward 4.6062%", close(f12, 0.046062, 2e-6), f"{f12:.6
 cost = 1000 / (1 + z2) ** 2
 repay_y1 = cost * (1 + z1)
 ok("two-year zero paying 1,000 costs 928.1225", close(cost, 928.122482, 1e-5))
-# Correction of 2026-10-18 (plan sec. 10.2): check the dated cash flows of the trades themselves; no future rate assumed.
+# Correction of 2026-10-18: check the dated cash flows of the trades themselves; no future rate assumed.
 # Buy the 2-year zero, borrow its cost for 1 year: flows (t0, t1, t2) = (0, -repay, +1000).
 flows_lend = (-cost + cost, -repay_y1, 1000.0)
 ok(

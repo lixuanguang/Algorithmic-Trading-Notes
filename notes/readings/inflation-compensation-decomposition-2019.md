@@ -1,6 +1,6 @@
 ---
 key: inflation-compensation-decomposition-2019
-pathways: [common-toolkit]
+pathways: [financial-mathematics]
 version: Don H. Kim, Cait Walsh and Min Wei, "Tips from TIPS: Update and Discussions", FEDS Notes, Board of Governors of the Federal Reserve System, 21 May 2019, doi 10.17016/2380-7172.2355. Copy used: HTML from federalreserve.gov retrieved 2026-10-18, SHA-256 b6ac47d0d83af434e8eeb998292e4324db554b0f201784b765356195928f444c, in the git-ignored `reading_materials/coverage-pilots/`
 sections: introduction, model description with equations (1)-(4) and the discussion of the inflation risk premium and TIPS liquidity premium; figures and later sections skimmed
 read:

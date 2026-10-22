@@ -1,0 +1,68 @@
+\section{Volatility forecasts, forecast evaluation and structural breaks}
+
+\begin{qfmodel}[GARCH(1,1) and EWMA (RiskMetrics) variance forecasts: mean reversion against a flat forecast, and the evidence on forecast accuracy]\label{mod:garch-volatility-forecast}
+\qffield{Statement} The GARCH(1,1) daily variance is $\sigma^2_{t+1}=\omega+\alpha R_t^2+\beta\sigma_t^2$ with $\alpha+\beta<1$. Its long-run variance is $\sigma^2=\omega/(1-\alpha-\beta)$, so $\sigma^2_{t+1}=\sigma^2+\alpha(R_t^2-\sigma^2)+\beta(\sigma_t^2-\sigma^2)$, and the $k$-day-ahead forecast reverts at the rate of the \emph{persistence} $\alpha+\beta$ \citep[chap.~4, secs.~2--3, printed pp.~70--71 of an uncorrected proof]{wide-christoffersen-elements}:
+\[ E_t[\sigma^2_{t+k}]-\sigma^2=(\alpha+\beta)^{k-1}(\sigma^2_{t+1}-\sigma^2). \]
+RiskMetrics' exponential smoothing, $\sigma^2_{t+1}=\lambda\sigma^2_t+(1-\lambda)R_t^2$ with $\lambda=0.94$ set for every asset, is the case $\omega=0$, $\alpha+\beta=1$. It ``ignores the fact that the long-run average variance tends to be relatively stable over time'', so its forecast is flat in $k$ and ``counterfactual'' at longer horizons. Its advantages are a single parameter, no estimation and little stored data (pp.~70--71).
+
+\emph{Evidence on accuracy.} Hansen and Lunde compare 330 volatility models out of sample against intraday realised volatility: the DM--dollar rate (1,254 daily returns, October 1987 to September 1992) and IBM (2,378, January 1990 to May 1999). They use seven loss functions and White's and Hansen's tests for superior predictive ability. They find ``the best models do not provide a significantly better forecast than the GARCH(1,1) model'', while ``if an ARCH(1) model is selected as the benchmark, it is clearly outperformed'' \citep[abstract; sec.~2.4, pp.~7--8; sec.~6]{hansen-lunde-2001}. Their model set includes IGARCH, which they find ``surprisingly poor'' on most criteria (p.~25), but not RiskMetrics' fixed-$\lambda$ smoother as such.
+
+\emph{Two extensions}.
+\begin{itemize}
+\item \emph{Asymmetry (GJR).} Glosten, Jagannathan and Runkle let the squared innovation enter the variance with a different coefficient according to its sign: $v_{t-1}=b_0+b_1v_{t-2}+g_1\epsilon^2_{t-1}+g_2\epsilon^2_{t-1}I_{t-1}$ (Model~2, eq.~(9), printed p.~10) \citep[Minneapolis Fed Working Paper~505, November 1992, printed p.~10]{wide-gjr-garch}. In this working paper $I_{t-1}=1$ when $\epsilon_{t-1}$ is \emph{positive}; the common textbook form puts the indicator on negative shocks, so the sign of the asymmetry coefficient depends on the convention used.
+
+On monthly U.S.\ excess returns they find that ``positive unanticipated returns result in a downward revision of the conditional volatility whereas negative unanticipated returns result in an upward revision \dots\ of a similar magnitude'', that volatility is less persistent than the standard model suggests, and a negative relation between conditional mean and variance once the model allows for asymmetry, seasonality and interest rates (abstract). The paper was published in the \emph{Journal of Finance} (1993).
+\item \emph{Realised-volatility cascade (HAR-RV).} Corsi models next-day realised volatility as $RV^{(d)}_{t+1}=c+\beta^{(d)}RV^{(d)}_t+\beta^{(w)}RV^{(w)}_t+\beta^{(m)}RV^{(m)}_t+\omega_{t+1}$, where $RV^{(w)}$ and $RV^{(m)}$ average the daily values over 5 and 22 trading days (eqs.~(4) and~(6)--(8), pp.~177--181) \citep[\emph{Journal of Financial Econometrics} 7(2), 2009, pp.~174--196]{wide-corsi-har}. It is a restricted AR(22) estimable by least squares, which reproduces long memory approximately without being a long-memory process; Corsi's $RV$ is realised \emph{volatility}, the square root of summed squared intraday returns, and his averages are of volatilities, which by Jensen's inequality are not exactly the volatility of the longer period (n.~4). The HAR forecast equals the AR(22) with coefficients $\beta^{(d)}+\beta^{(w)}/5+\beta^{(m)}/22$ at lag~1, $\beta^{(w)}/5+\beta^{(m)}/22$ at lags 2--5 and $\beta^{(m)}/22$ at lags 6--22.
+\end{itemize}
+
+\qffield{Notation} $R_t$ daily return (mean taken as zero); $\sigma^2_{t+1}$ the variance for day $t+1$ known at the end of day $t$; $\lambda$ the smoothing weight.
+
+\qffield{Conditions} The GARCH forecast formula needs $\alpha+\beta<1$ and parameters estimated by quasi-maximum likelihood. Comparisons depend on the volatility proxy: Hansen and Lunde argue that noisy proxies such as squared daily returns obscure the differences between models (sec.~1). They also depend on the loss function and the sample, here one currency and one stock in the 1990s.
+
+\qffield{Practice} Synthetic check. The $k$-step formula matches simulation. Where GARCH(1,1) is true (persistence 0.98), the EWMA forecast's mean squared error for cumulative variance is 0.9 percent above GARCH's at one day and 15 percent above at 20 days. That shows how the flat forecast costs more as the horizon grows; it is not evidence on market data. This bears on Narang's statements (\hyperref[mod:mean-variance-portfolio-optimisation]{mean--variance optimisation}). That GARCH is ``the most widely used such technique (particularly in equity trading)'' is unsupported, since no source here measures usage. That a simpler EWMA ``may perform just about as well'' is consistent with the check at short horizons, but Hansen and Lunde did not test the fixed-$\lambda$ smoother.
+
+\qffield{Pitfalls} The GARCH formulation follows secondary sources, not Bollerslev's 1986 paper (\nolinkurl{s7-bollerslev}). The Christoffersen file is an uncorrected proof of the second edition, so its page numbers may differ from print. The Hansen--Lunde text is their March 2001 working paper (CAF Working Paper Series, No.~84); the published version (\emph{Journal of Applied Econometrics} 20(7), 2005) may summarise the IBM results differently.
+
+\qffield{See also} \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation} (filtered historical simulation scales by a GARCH variance); \hyperref[meth:portfolio-covariance-estimation]{covariance estimation}; \hyperref[meth:multiple-testing-control]{multiple testing} (White's Reality Check, which Hansen and Lunde use).
+
+\qffield{Further reading} \nolinkurl{s7-bollerslev}; \nolinkurl{s7-realized} (realised volatility); \hyperref[meth:volatility-forecast-loss]{loss functions for comparing volatility forecasts}.
+
+\end{qfmodel}
+
+\begin{qfmethod}[Comparing volatility forecasts with a noisy proxy: which loss functions keep the ranking, and why MSE and QLIKE do while MAE does not]\label{meth:volatility-forecast-loss}
+\qffield{Statement} True conditional variance is unobserved, so forecasts are compared against a proxy $\hat\sigma^2_t$ (a squared return, a range, realised variance) that is conditionally unbiased but noisy. Patton calls a loss function \emph{robust} if ranking two forecasts by expected loss gives the same order with the proxy as with the true variance (Definition~1, printed p.~4). A loss is robust if and only if it can be written $L(\hat\sigma^2,h)=\tilde C(h)+B(\hat\sigma^2)+C(h)(\hat\sigma^2-h)$ with $C$ strictly decreasing and $\tilde C$ its antiderivative (Proposition~2, printed p.~13).
+
+MSE, $(\hat\sigma^2-h)^2$, is the only robust loss that depends on the forecast error alone, and QLIKE, $\log h+\hat\sigma^2/h$, the only one that depends on the standardised error alone (Proposition~3, printed p.~14). The homogeneous robust losses form a one-parameter family that contains MSE ($b=0$) and QLIKE ($b=-2$) (Proposition~4, printed p.~14) \citep[UTS QFRC Research Paper~175, April 2006, secs.~2--3, printed pp.~4--14]{wide-patton-robust-loss}.
+
+\qffield{Notation} $h_t$ the forecast of the conditional variance $\sigma^2_t$; $\hat\sigma^2_t$ the proxy with $E_{t-1}[\hat\sigma^2_t]=\sigma^2_t$.
+
+\qffield{Conditions} The result needs a conditionally unbiased proxy; it concerns rankings, not the level of expected loss, which noise raises for every forecast (printed p.~4). ``Robust'' here does not mean robust to outliers (n.~6).
+
+\qffield{Practice} With a squared-return proxy, $\hat\sigma^2=\sigma^2\chi^2_1$, MSE and QLIKE both rank the true variance first among forecasts scaled by 0.455, 0.8, 1 and 1.25, while MAE prefers $0.455\sigma^2$, the proxy's conditional median, so MAE (and MAE on logs or standard deviations, by the same argument) favours a forecast biased downward. This argues for reporting MSE and QLIKE when ranking GARCH, GJR and HAR forecasts against realised variance.
+
+\qffield{Pitfalls} Locators refer to the 2006 working paper (\emph{Journal of Econometrics}, 2011). Hansen and Lunde's 2005 comparison, cited in \hyperref[mod:garch-volatility-forecast]{GARCH(1,1) and EWMA}, used seven loss functions, some of them non-robust in Patton's sense.
+
+\qffield{See also} \hyperref[mod:garch-volatility-forecast]{GARCH(1,1) and EWMA}; \hyperref[meth:multiple-testing-control]{multiple testing} (comparing many forecasts).
+
+\qffield{Further reading} \nolinkurl{wide-hansen-lunde-garch11}; \nolinkurl{s7-realized}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Testing for several structural breaks at unknown dates: least-squares break estimation, trimmed sup-F tests and the sequential choice of the number of breaks (Bai and Perron)]\label{meth:structural-break-tests}
+\qffield{Statement} In a linear regression whose coefficients (all or some) shift at $m$ unknown dates, Bai and Perron estimate the break dates by least squares, the break fractions converging at rate $T$. To test no break against $k$ breaks they use $\sup F_T(k;q)$, the largest $F$ statistic over all break partitions in which breaks are at least a fraction $\epsilon$ apart and from the sample ends (``we need to restrict each break date to be asymptotically distinct and bounded from the boundaries of the sample''), generalising Andrews's single-break test; its limit depends on the regressors and on serial correlation and heterogeneity in the errors (sec.~4, printed pp.~16--17).
+
+To choose the number of breaks they propose a sequential procedure: test $\ell$ against $\ell+1$ breaks with $F_T(\ell+1\,|\,\ell)$ in each segment and add a break wherever the test rejects, stopping at the first non-rejection; information criteria are an alternative, with BIC consistent and AIC tending ``to overestimate the dimension'' (sec.~5, printed pp.~26--27) \citep[MIT Department of Economics Working Paper 95-17, September 1995, abstract and secs.~4--5]{wide-bai-perron}.
+
+\qffield{Notation} $T$ observations; $m$ breaks with fractions $\lambda_i=T_i/T$; $q$ the number of coefficients allowed to shift; $\epsilon$ the trimming fraction.
+
+\qffield{Conditions} The critical values depend on $\epsilon$, $q$ and $k$; the asymptotics need breaks bounded away from each other and from the ends. Whether the sequential procedure uses breaks estimated jointly or one at a time matters for the null distribution (sec.~5).
+
+\qffield{Practice} To report break dates that change a forecast ranking, fix $\epsilon$ and the maximum number of breaks before looking, report the sequential test's choice alongside BIC, and state whether rankings of forecasts (\hyperref[meth:volatility-forecast-loss]{loss functions}) change across the estimated regimes.
+
+\qffield{Pitfalls} The source is the 1995 working paper behind the 1998 \emph{Econometrica} article, not the 2003 \emph{Journal of Applied Econometrics} paper with the dynamic-programming algorithm; formulas are not transcribed.
+
+\qffield{See also} \hyperref[meth:volatility-forecast-loss]{volatility forecast comparison}; \hyperref[mod:garch-volatility-forecast]{GARCH and HAR}.
+
+\qffield{Further reading} \nolinkurl{wide-bai-perron} (the 2003 computation paper); \nolinkurl{wide-hamilton-1989}.
+
+\end{qfmethod}

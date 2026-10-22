@@ -1,6 +1,6 @@
 ---
 key: linear-regression-lectures
-pathways: [common-toolkit]
+pathways: [regression-time-series]
 version: Marco Taboga, Lectures on probability theory and mathematical statistics, online edition (statlect.com), lectures "Normal linear regression model", "Linear regression - Hypothesis testing" and "Gauss Markov theorem"; live pages read 2026-10-18 (HTML text, with the assumption formulas of the Gauss Markov lecture read from its equation-image sprite)
 sections: Normal linear regression model - Setting, Assumptions, Distribution of the OLS estimator, Estimation of the variance of the error terms; Linear regression - Hypothesis testing - Normal vs non-normal model, Tests of hypothesis in the normal linear regression model (t test; F test), Tests of hypothesis when the OLS estimator is asymptotically normal (z test; Chi-square test); Gauss Markov theorem - Assumptions, OLS is linear and unbiased, The covariance matrix of the OLS estimator; Gamma distribution - Caveat, Definition (parameterisation only, read 2026-10-18 in the second correction pass)
 read:

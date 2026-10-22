@@ -10,7 +10,7 @@ published zero yields. The curve is a fitted off-the-run nominal Treasury zero c
 mean-reversion and volatility parameters (a = 0.1, sigma = 1 percent) are illustrative and not calibrated: calibration
 needs cap or swaption volatilities, which are not held.
 
-Seeds and criteria were fixed before the first run (implementation_plan_v2.md Section 7, P6): 20261061 Hull-White
+Seeds and criteria were fixed before the first run: 20261061 Hull-White
 paths, 20261062 CIR exact paths, 20261063 the CIR Euler and exact comparison, 20261064 the forward-market caplet. A
 failed statistical check is diagnosed, not rerun with another seed. Every check except the curve shows that a model is
 implemented correctly under its own assumptions; none is evidence about markets.

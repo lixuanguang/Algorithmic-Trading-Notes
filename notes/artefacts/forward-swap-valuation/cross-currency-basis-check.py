@@ -1,6 +1,6 @@
 """Library gap-filling Batch L4, package L4-c (2026-10-21): the worked numbers of meth:cross-currency-basis-swaps.
 
-Conventions (implementation_plan_v2.md, "Batch L4 freeze corrections and frozen specification"): EUR/USD quoted as
+Conventions: EUR/USD quoted as
 S = 1.10 dollars per euro; constant notionals EUR 100m and USD 110m exchanged at T0 and re-exchanged at the same spot at
 Tn. Party A pays euros and receives dollars at T0, then receives compounded ESTR + kappa on the euro notional and pays
 compounded SOFR on the dollar notional each period, and at Tn pays the dollars back and receives the euros (Hull sec.

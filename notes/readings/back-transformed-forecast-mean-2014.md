@@ -1,6 +1,6 @@
 ---
 key: back-transformed-forecast-mean-2014
-pathways: [common-toolkit]
+pathways: [regression-time-series]
 version: Rob J Hyndman, "The forecast mean after back-transformation", Hyndsight blog, 25 February 2014 (robjhyndman.com/hyndsight/backtransforming/); live page read 2026-10-18
 sections: whole post: opening paragraph; Taylor-series mean; Box-Cox transformations; scaled logistic transformation skimmed
 read:

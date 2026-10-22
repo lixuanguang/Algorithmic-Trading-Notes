@@ -5834,7 +5834,7 @@
    "objectives": [
     "objective:estimate-simple-regression"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline wording (describe, interpret and explain simple linear regression, including coefficient estimation by the least squares criterion) and meth:simple-regression-estimation: population line, least squares criterion and formulas, fitted values and residuals, coefficient units and interpretation, association against causation, on a worked example. Re-reviewed 2026-10-18 after the correction pass (plan sec. 13.5) against the same outline wording: the entry now also states when the estimates exist and are unique (finite data, Sxx > 0) and that fitting needs no error assumption; still covered.",
+   "rationale": "Reviewed 2026-10-18 against the outline wording (describe, interpret and explain simple linear regression, including coefficient estimation by the least squares criterion) and meth:simple-regression-estimation: population line, least squares criterion and formulas, fitted values and residuals, coefficient units and interpretation, association against causation, on a worked example. Re-reviewed 2026-10-18 after the correction pass against the same outline wording: the entry now also states when the estimates exist and are unique (finite data, Sxx > 0) and that fitting needs no error assumption; still covered.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -5857,7 +5857,7 @@
    "objectives": [
     "objective:diagnose-regression-assumptions"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline wording (describe and compare the assumptions, identify violations through residuals, evaluate goodness of fit, coefficients and ANOVA results) and meth:regression-diagnostics-anova: the four conditions and the sensitivity of tests and intervals to each, residual plots and standardised residuals, S, R^2 and its cautions, coefficient t tests and intervals, the ANOVA table and F = t^2 for the zero-slope null, on a worked example with a counterexample. Re-reviewed 2026-10-18 after the correction pass (plan sec. 13.5): the comparison of assumptions now separates computing, unbiasedness, conventional variances and exact t/F inference, requires n > 2, and restricts F = t^2 to the matching null; still covered.",
+   "rationale": "Reviewed 2026-10-18 against the outline wording (describe and compare the assumptions, identify violations through residuals, evaluate goodness of fit, coefficients and ANOVA results) and meth:regression-diagnostics-anova: the four conditions and the sensitivity of tests and intervals to each, residual plots and standardised residuals, S, R^2 and its cautions, coefficient t tests and intervals, the ANOVA table and F = t^2 for the zero-slope null, on a worked example with a counterexample. Re-reviewed 2026-10-18 after the correction pass: the comparison of assumptions now separates computing, unbiasedness, conventional variances and exact t/F inference, requires n > 2, and restricts F = t^2 to the matching null; still covered.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },
@@ -5879,7 +5879,7 @@
    "objectives": [
     "objective:forecast-with-regression"
    ],
-   "rationale": "Reviewed 2026-10-18 against the outline wording (calculate and interpret predicted values, the standard error of the estimate and prediction intervals; describe functional forms) and meth:regression-prediction-functional-form: predictions, standard error of estimate, fit and prediction, the interval for the mean against the prediction interval, extrapolation, level-level, log-level, level-log and log-log forms with units and domains, and retransformation to geometric means, medians and means. Re-reviewed 2026-10-18 after the correction pass (plan sec. 13.5): the log-log percentage rule is now 100 (1.01^b1 - 1), and the back-transformed log prediction is the geometric mean, the median only under a median-zero log error; still covered.",
+   "rationale": "Reviewed 2026-10-18 against the outline wording (calculate and interpret predicted values, the standard error of the estimate and prediction intervals; describe functional forms) and meth:regression-prediction-functional-form: predictions, standard error of estimate, fit and prediction, the interval for the mean against the prediction interval, extrapolation, level-level, log-level, level-log and log-log forms with units and domains, and retransformation to geometric means, medians and means. Re-reviewed 2026-10-18 after the correction pass: the log-log percentage rule is now 100 (1.01^b1 - 1), and the back-transformed log prediction is the geometric mean, the median only under a median-zero log error; still covered.",
    "residual_gap": null,
    "reviewed": "2026-10-18"
   },

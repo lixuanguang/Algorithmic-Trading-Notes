@@ -4,7 +4,7 @@ res:risk-neutral-pricing-feynman-kac.
 
 Every check uses model-generated data with a known answer: S0 = 100, mu = 8 percent, sigma = 20 percent,
 T = 1 unless stated. Seeds (20261021 and offsets) and tolerances (four standard errors, or three for the
-Girsanov price, as recorded in implementation_plan_v2.md Section 6, P1) were fixed before any run and are not
+Girsanov price) were fixed before any run and are not
 tuned. The checks show that the formulas are implemented correctly under the model; they are not evidence
 about markets.
 

@@ -1,0 +1,28 @@
+\section{Carry on dated crypto futures}
+
+\begin{qfevidence}[Crypto carry on dated futures: size, drivers (small traders' demand for leverage) and limits to arbitrage (spot access, margin and cross-margining), 2019--2024]\label{ev:crypto-dated-futures-carry}
+\qffield{Statement} Schmeling, Schrimpf and Todorov measure the annualised basis of one- and three-month constant-maturity bitcoin and ether futures over spot, using data from Binance, OKEx, FTX, Huobi, BitMEX, Deribit and the CME (the CME from August 2020) \citep[revision of 1 October 2025, abstract, sec.~1 and data section, PDF pp.~3--9]{roadmap-carry}.
+\begin{itemize}
+\item \emph{Size.} Carry ``can reach exceptionally high levels, sometimes exceeding 40\% per annum''. It averaged about 7 percent a year across exchanges from April 2019 to July 2024 (pp.~3 and~5).
+\item \emph{Not fundamentals.} In $F_t=S_te^{(r_t+u_t-y_t)(T-t)}$, interest rates bear ``little to no relation'' to the carry and storage costs are negligible. That implies a large negative convenience yield: investors prefer being long futures to holding spot (p.~5).
+\item \emph{Demand.} Higher carry goes with larger net long positions of smaller traders in the CFTC's Commitments of Traders data, who add positions in strong trends and periods of attention. Dealers and leveraged funds take the short side. Introducing CME micro bitcoin futures raised CME carry relative to other venues in a difference-in-differences test (pp.~6--7).
+\item \emph{Limits to arbitrage.} Regulation long kept many professionals from holding spot, and margin frictions bind. With no cross-margining on traditional exchanges, a long spot position cannot collateralise a short futures position. The futures leg suffers severe drawdowns, and carry predicts liquidations of short futures. \emph{Scale, from Table~7}: in OKEx data, a monthly regression of next-month sell liquidations, ``scaled by open interest'', on the standardised one-month basis, with implied volatility, realised skew and open interest as controls, has a basis coefficient of 2.22 (standard error 0.79) and an intercept of 10.84 (1,619 observations, adjusted $R^2$ 0.29; Table~7, col.~2, printed p.~41, PDF p.~44).
+
+Since the text expresses liquidations ``as a percentage of open interest'' (PDF p.~25), a one-standard-deviation rise in carry goes with sell liquidations about 2.2 percentage points of open interest higher, against a level of about 10.8 percent when the regressors are at their means; buy liquidations are not predicted (0.41, s.e.\ 0.45). In the subsample built to exclude profit-taking (basis widening on at least 70 percent of days in the two weeks before expiry), the coefficient is 2.02 on an intercept of 9.33 (211 observations).
+
+The prose states the effect in two ways: ``an increase in the standardized carry by 10\% predicts an increase in liquidations of short futures positions by 22\% of total open interest'' (PDF p.~7) and ``a rise in standardized carry by 10\% predicts a 22\% increase in total sell liquidations (relative to total open interest)'' (PDF p.~25). Neither maps cleanly onto the table: a 22 percent rise relative to the intercept is close to $2.22/10.84\approx20$ percent, while ``22\% of total open interest'' is ten times the coefficient, and what ``10\%'' of a standardised variable means is not stated. The earlier ``liquidations of 22 percent of open interest'' in this entry is withdrawn.
+
+The liquidation measure ``capture[s] both forced liquidations by the exchange due to missed margin calls and voluntary liquidations by the trader'' (PDF p.~25), so it is contract closing, not forced liquidation alone. After spot bitcoin ETFs were introduced in 2024, carry fell by about 3 percentage points across exchanges and 5 more on the CME, 36 and 97 percent of the mean (p.~8).
+\end{itemize}
+
+\qffield{Conditions} The evidence is for fixed-date futures, which converge to spot at expiry; perpetual futures are discussed only through other papers (p.~8). The causal claims rest on two difference-in-differences designs around specific events. The exchange sample includes FTX, which failed in November 2022.
+
+\qffield{Practice} A cash-and-carry trade that ``appears risk-free'' in the absence of frictions (p.~5) carries funding and liquidation risk before convergence. Size it against the margin path and the venue's liquidation rules, not against the annualised basis alone (\hyperref[def:crypto-trading-risk-layers]{crypto trading risk layers}). For perpetuals, the paper restates other work: He et al.\ find that perpetuals ``typically trade at a positive funding rate, that is, the long side pays the short side'', and Christin et al.\ that a carry trade short perpetual futures earns high Sharpe ratios (p.~8).
+
+\qffield{Pitfalls} Table~5 (printed p.~39, PDF p.~42) regresses the one-month basis on treatment and post dummies in two-month windows: around the spot-ETF launch, $Post=-0.03$ and $Treat\times Post=-0.05$ (both $s.e.$ 0.01; intercept 0.13; 291 observations), and around CME's micro futures $Treat\times Post=+0.11$ (intercept 0.28; 292 observations). The basis is in decimals of an annual rate, so the coefficients are the text's ``around 3\%'' and ``5\%'' in annualised percentage points of basis, matching the Size bullet's statement.
+
+\qffield{See also} \hyperref[mech:perpetual-funding]{perpetual funding}; \hyperref[res:cost-of-carry-forward-price]{cost-of-carry forward price} (the pricing equation); \hyperref[def:contango-backwardation-stocks]{convenience yield in commodities} (opposite sign).
+
+\qffield{Further reading} \nolinkurl{roadmap-perpetual-fundamentals} for funding rates; \nolinkurl{s11-r15}.
+
+\end{qfevidence}

@@ -12,6 +12,8 @@ Pathway outcome, from the guide: attribute a cross-asset portfolio's returns to 
 
 Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 16 October 2026 by macro markets and pricing review (`notes/source-review-index.md`). The entries come from source checking against Gliner (`s7-gliner`, *Global Macro Trading*, Wiley 2014, read from a local PDF and cited by chapter, section and PDF page) and Drobny (`s7-drobny`, *Inside the House of Money*, Wiley 2006 printing, checked interview by interview). That is not study of the readings: none of them has been read for this pathway, and no checkpoint was attempted.
 
+Moved out by the content migration of 22 October 2026, with labels and content unchanged: to `portfolio-construction-risk`: `def:investment-governance-allocation`, `meth:economic-balance-sheet-allocation`, `def:allocation-approaches-risk`, `meth:asset-class-factor-specification`, `meth:asset-only-allocation-mvo`, `meth:allocation-implementation-rebalancing`, `meth:allocation-robustness-liquidity-risk-budget`, `meth:liability-relative-allocation`, `meth:goals-based-allocation-heuristics`, `meth:allocation-constraints-taxes-revision`, `meth:tactical-shifts-behavioural-biases`.
+
 ## Outcome in my own words
 
 ## How the readings fit together
@@ -69,6 +71,17 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 ## Related entries owned elsewhere
 
 Cross-referenced, not owned here: `def:macro-regime-asset-map` (`macro-regimes-stock-bond`); `meth:equity-index-valuation` (`cross-asset-style-premia`); `mod:fx-carry-trade` (`fx-premia`); `meth:curve-trades-carry-rolldown` (`curve-term-structure`); `meth:relative-performance-evaluation` (`performance-manager-evaluation`).
+
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+
+- `cross-asset-style-premia` (Cross-asset style premia: value, momentum, carry and defensive): pathway note [cross-asset-style-premia.md](cross-asset-style-premia.md), 1 entries listed, in `multi-asset-systematic-macro/macro-regimes-data`.
+- `trend-following` (Trend following and managed futures): no pathway note; partial treatment in existing entries, not reviewed as complete: time-series momentum construction and century-long evidence (`def:alpha-model-taxonomy` in `research-engineering-validation/quant-strategy-structure`); CTAs and managed futures as diversifiers (`meth:hedge-fund-strategy-classification` in `portfolio-construction-risk/hedge-fund-strategies`, `def:alternatives-roles-opportunity-set` in `portfolio-construction-risk/alternatives-allocation`, `def:global-macro-strategy` in `multi-asset-systematic-macro/global-macro`); Turtle-style volatility sizing (`meth:macro-position-sizing-risk` in `multi-asset-systematic-macro/global-macro`); trend followers' win rates and drawdowns (`meth:alpha-strategy-specification` in `research-engineering-validation/quant-strategy-structure`, `meth:rule-based-position-sizing` in `portfolio-construction-risk/portfolio-construction-models`). Not written: trend-signal design and horizon choice; managed-futures fees, capacity and replication.
+- `risk-parity-vol-targeting` (Risk parity, leverage and volatility targeting): pathway note [risk-parity-vol-targeting.md](risk-parity-vol-targeting.md), 1 entries listed, in `portfolio-construction-risk/portfolio-construction-models`.
+- `macro-announcements-policy` (Macro announcements, policy news and announcement premia): pathway note [macro-announcements-policy.md](macro-announcements-policy.md), 2 entries listed, in `multi-asset-systematic-macro/macro-regimes-data`.
+- `macro-regimes-stock-bond` (Macro regimes, inflation and the stock–bond correlation): pathway note [macro-regimes-stock-bond.md](macro-regimes-stock-bond.md), 1 entries listed, in `multi-asset-systematic-macro/macro-regimes-data`.
+- `macro-nowcasting-signals` (Nowcasting, real-time macro data and macro trading signals): pathway note [macro-nowcasting-signals.md](macro-nowcasting-signals.md), 2 entries listed, in `multi-asset-systematic-macro/macro-regimes-data`.
 
 ## Entry backlog
 

@@ -1,4 +1,6 @@
-\section{Inventory risk and the price of immediacy}
+\subsection{Inventory and quoting}
+
+\subsubsection{Inventory risk and the price of immediacy}
 
 \begin{qfmodel}[Grossman--Miller market making: the price of immediacy]\label{mod:grossman-miller}
 \qffield{Statement} Competitive, risk-averse market makers supply immediacy to a liquidity trader who arrives before the trader with the offsetting need, and the price concession they charge compensates exactly for carrying the inventory until that trader arrives \citep[chap.~``A Primer on the Microstructure of Financial Markets'', p.~21]{crypto-cartea}. In the simplified three-date version, $n$ identical market makers, liquidity trader LT1 holding $i$ units and liquidity trader LT2 holding $-i$ units (arriving at date~2) trade an asset worth $S_3=\mu+\epsilon_2+\epsilon_3$ at date~3, and the date-1 equilibrium is \citep[same chap., pp.~23--24]{crypto-cartea}
@@ -67,7 +69,7 @@ With public news $\epsilon_1$ before LT1 trades and efficient price $\mu_t=\math
 
 \end{qfresult}
 
-\section{Quoting with limit orders}
+\subsubsection{Quoting with limit orders}
 
 \begin{qfmodel}[Static limit-order depth with exponential fill probability]\label{mod:static-limit-order-depth}
 \qffield{Statement} A small, risk-neutral market maker with costless inventory and infinite patience chooses depths $\delta^\pm$ from the midprice $S_t$ for a sell order at $S_t+\delta^+$ and a buy order at $S_t-\delta^-$; a buy (sell) market order arrives with probability $p^+$ ($p^-$) and reaches depth $\delta$ with probability $e^{-\kappa^\pm\delta}$, and expected profit per trade is maximised by \citep[chap.~``A Primer on the Microstructure of Financial Markets'', p.~29, eq.~(2.3)]{crypto-cartea}
@@ -120,7 +122,9 @@ Balakaeva and Veretennikov's preprint, which says it corrects ``seemingly seriou
 
 \end{qfmodel}
 
-\section{Informed trading and informative prices}
+\subsection{Information and adverse selection}
+
+\subsubsection{Informed trading and informative prices}
 
 \begin{qfdefinition}[Fundamental value, market value and noise: what informative prices are informative about]\label{def:fundamental-value}
 \qffield{Statement} The \emph{market value} of an instrument is the price at which traders can buy or sell it. Its \emph{fundamental value} (intrinsic value) is the expected present value of all present and future benefits and costs of holding it: the value everyone would agree on if all knew everything known about the instrument, analysed it properly and perceived its benefits and costs alike \citep[chap.~``Informed Traders and Market Efficiency'', sec.~10.1, pp.~222--223]{alpha-harris}. The difference between the two is \emph{noise}; prices are informative when they are near fundamental values and completely informative when they equal them \citep[same sec., p.~223]{alpha-harris}. Writing $V_t$ for fundamental value and $P_t$ for the price, noise is $\epsilon_t=P_t-V_t$.
@@ -304,7 +308,7 @@ Pressure inconsistent with participants' consensus generates only temporary impa
 
 \end{qfdefinition}
 
-\section{Arbitrageurs, order anticipators and bluffers}
+\subsubsection{Arbitrageurs, order anticipators and bluffers}
 
 \begin{qfdefinition}[Arbitrage: hedge portfolio, basis, fair value, arbitrage spread and bounds; pure and speculative arbitrage]\label{def:arbitrage}
 \qffield{Statement} Arbitrageurs trade instruments with correlated prices. An \emph{arbitrage opportunity} arises when those prices diverge from their normal relation: the arbitrageur buys the relatively cheap instruments, sells the relatively expensive ones, and profits if the prices converge \citep[chap.~``Arbitrageurs'', sec.~17.1, p.~348]{alpha-harris}. The positions form a \emph{hedge portfolio}, whose legs are scaled by hedge ratios against a reference instrument, the \emph{arbitrage numerator}, chosen to minimise the portfolio's risk. Its \emph{carrying costs} include financing, dividends paid on short positions, storage and spoilage, offset by dividends, lending fees and interest received \citep[same sec., pp.~348--349]{alpha-harris}. With $B_t$ the \emph{basis}, the difference in prices between the instruments in the hedge portfolio, and $B_t^\star$ its \emph{fair value}, the basis if all were correctly priced relative to each other, which depends on carrying costs and must be estimated, the \emph{arbitrage spread} is
@@ -423,7 +427,7 @@ Symmetric impact disciplines bluffing in this sense. If impact depended on net p
 
 \end{qfdefinition}
 
-\section{Information and price impact}
+\subsubsection{Information and price impact}
 
 \begin{qfmodel}[Kyle single-auction model: informed trading and linear price impact]\label{mod:kyle-single-auction}
 \qffield{Statement} One risk-neutral insider who knows the asset value $v\sim N(\mu,\sigma_v^2)$, price-insensitive noise traders with net order $u\sim N(0,\sigma_u^2)$ independent of $v$, and competitive risk-neutral market makers who see only the net order flow $y=x+u$ and set $S(y)=\mathbb{E}[v\mid y]$ \citep[chap.~``A Primer on the Microstructure of Financial Markets'', pp.~31--32]{crypto-cartea} have a linear equilibrium \citep[chap.~``Strategic Trader Models I: Informed Traders'', p.~93, eqs.~(4.3)--(4.5)]{catalogue-0496}:
@@ -444,7 +448,7 @@ The insider's ex ante expected profit is $\tfrac12\sigma_v\sigma_u$ \citep[same 
 
 \end{qfmodel}
 
-\section{Adverse selection and the bid--ask spread}
+\subsubsection{Adverse selection and the bid--ask spread}
 
 \begin{qfmodel}[Glosten--Milgrom sequential-trade model: spreads from adverse selection]\label{mod:glosten-milgrom}
 \qffield{Statement} In a pure dealership market, investors arrive one at a time, randomly and anonymously, see the specialist's bid $b_t$ and ask $a_t$, and buy one unit at the ask, sell one unit at the bid, or leave; some arrivals are informed about the asset's future value $V$, the rest trade for liquidity reasons \citep[sec.~II, pp.~3--4]{glosten-milgrom-1983}. An arrival with information $\mathcal{F}_t$ has reservation price $Z_t=\rho_t\,\mathbb{E}[V\mid\mathcal{F}_t]$ and buys if $Z_t>a_t$, sells if $Z_t<b_t$; competitive, risk-neutral specialists with information $\mathcal{S}_t$ earn zero expected profit on each purchase and each sale, so the quotes solve \citep[p.~6]{glosten-milgrom-1983}
@@ -528,7 +532,9 @@ This is a textbook example, not the Glosten--Milgrom paper, whose quotes are exp
 
 \end{qfresult}
 
-\section{Dealer inventory and quote adjustment}
+\subsection{Dealer quotes, spread measurement and liquidity stress}
+
+\subsubsection{Dealer inventory and quote adjustment}
 
 \begin{qfdefinition}[Dealer inventory imbalance and the two inventory risks]\label{def:dealer-inventory-risk}
 \qffield{Statement} A dealer's \emph{target inventory} is the position it wants to hold, and its \emph{inventory imbalance} is actual inventory minus target \citep[chap.~``Dealers'', p.~283]{alpha-harris}. Dealers face two inventory risks, distinguished by whether future price changes are correlated with the imbalance \citep[same chap., p.~285]{alpha-harris}:
@@ -593,7 +599,7 @@ Garman's fixed-quote dealer is ruined with probability one, within days for real
 
 \end{qfmodel}
 
-\section{Measuring and decomposing the spread}
+\subsubsection{Measuring and decomposing the spread}
 
 \begin{qfdefinition}[Spread measures: quoted, inside, relative, effective and realised spreads]\label{def:spread-measures}
 \qffield{Statement} With best bid $b_t$, best ask $a_t$ and midpoint $m_t=\tfrac12(a_t+b_t)$:
@@ -712,7 +718,7 @@ Dealer and outside spreads differ in valuation target, holding period, risks (in
 
 \end{qfdefinition}
 
-\section{Volatility, liquidity and crashes}
+\subsubsection{Volatility, liquidity and crashes}
 
 \begin{qfdefinition}[Fundamental and transitory volatility: the random-walk and transitory components of prices]\label{def:volatility-components}
 \qffield{Statement} \emph{Volatility} is the tendency of prices to change unexpectedly. \emph{Fundamental volatility} comes from unanticipated changes in instrument values; \emph{transitory volatility} comes from trading by impatient uninformed traders, which pushes prices away from values until they revert. Total volatility is the sum of the two \citep[chap.~``Volatility'', pp.~410, 413--414]{alpha-harris}. In statistical form, the trade price is a random-walk efficient price plus a stationary pricing error \citep[sec.~8.6, p.~72]{s6-hasbrouck}:

@@ -12,7 +12,7 @@ of short-rate-model-checks.py (a = 0.1, sigma = 1 percent; illustrative). The sw
 Part 4 is the rate-tree CVA and risky floater: an original derivation on the Handbook's calibrated tree (Fabozzi,
 Handbook of Fixed Income Securities, 9th ed., chap. 36), with original credit inputs.
 
-Conventions fixed before the first run (implementation_plan_v2.md Section 7, P7): unilateral CVA from the bank's
+Conventions fixed before the first run: unilateral CVA from the bank's
 side; exposure max(V, 0) of the netting set's ex-coupon mark-to-market; risk-neutral measure with the bank-account
 numeraire. Two-way CSA in cash, daily variation margin, zero threshold and minimum transfer amount, no initial margin;
 collateral C(t) = V(t - delta) for t >= delta and 0 before, held by the bank when positive; no margin moves in the

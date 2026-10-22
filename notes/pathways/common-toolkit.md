@@ -1,14 +1,30 @@
 ---
 key: common-toolkit
-section: common-toolkit
-status: not started (draft entries only, not from study)
+section: retired guide overview (compatibility bridge)
+status: retired; history kept below
 ---
 
-# Common toolkit (section overview)
+# Common toolkit (retired guide overview: bridge to Part I)
+
+The guide retired this overview in its eight-Part edition (`guide/learning_routes.json`, `retired_overviews`). It is no longer a compendium section. The content migration of 22 October 2026 moved its nine topic files, with labels and content unchanged, into the seven sections of Part I, *Financial mathematics, statistics and numerical methods*:
+
+| Successor section | Former files and entries |
+| --- | --- |
+| `financial-mathematics` ([overview](financial-mathematics.md)) | `time-value.tex`; with `def:return-measures` from portfolio performance |
+| `probability-statistics` ([overview](probability-statistics.md)) | `descriptive-statistics.tex`, `statistical-inference.tex`; `probability.tex` without Bayesian updating; `simulation-methods.tex` as `resampling.tex` without Monte Carlo |
+| `regression-time-series` ([overview](regression-time-series.md)) | `regression.tex`, `multiple-regression.tex`, `time-series-models.tex` |
+| `stochastic-processes-calculus` ([overview](stochastic-processes-calculus.md)) | `stochastic-calculus.tex` |
+| `bayesian-inference` ([overview](bayesian-inference.md)) | `meth:bayesian-updating`, from `probability.tex` |
+| `high-dimensional-statistics` ([overview](high-dimensional-statistics.md)) | none from this chapter; its covariance entries came from portfolio risk |
+| `numerical-optimisation` ([overview](numerical-optimisation.md)) | `meth:monte-carlo-simulation`, from `simulation-methods.tex` |
+
+The guide moved this overview's research-record checkpoint to `research-engineering-validation` ([overview](research-engineering-validation.md)). The history below records the work done while the chapter existed; its file paths are historical.
+
+## Former overview
 
 Overview outcome, from the guide: write a reproducible research record for a simple signal: decision-time data, an economic mechanism, the uncertainty of the headline estimate, a portfolio decision and the evidence that would reject it. Its checkpoint is a one-page research record for a public-data signal, rebuilt from the recorded inputs. Its readings are `prob-wasserman`, `s15-campbell`, `s6-cochrane`, `alpha-boyd`, `s7-meucci`, `s6-pbo` and `s8-bitemporal`.
 
-The chapter also holds the time-value foundations that the subject objectives in `notes/coverage/objectives.json` place under `topic:time-value-of-money` and part of `topic:return-measurement`. Those entries come from the foundation slice of 18 October 2026, not from this overview's readings.
+The chapter also held the time-value foundations that the subject objectives in `notes/coverage/objectives.json` place under `topic:time-value-of-money` and part of `topic:return-measurement`. Those entries come from the foundation slice of 18 October 2026, not from this overview's readings.
 
 ## Status
 
@@ -32,7 +48,7 @@ Written in the first foundation slice (2026-10-18):
 
 All three partly checked 2026-10-18, draft; numerical examples in `notes/artefacts/time-value-returns/time-value-return-checks.py`; human review outstanding.
 
-Corrections of 2026-10-18 (plan sec. 10.2): `res:cash-flow-additivity` now shows the dated cash flows of forward lending and borrowing and separates them from refinancing at a later, unknown rate; `def:required-return-components` separates the realised (ex post) Fisher identity and the ex ante relation (Mankiw, chap. 5, sec. 5-3) from the expected real return under uncertain inflation; `meth:instrument-present-value` distinguishes nominal annual yields compounded semiannually from effective annual yields.
+Corrections of 2026-10-18: `res:cash-flow-additivity` now shows the dated cash flows of forward lending and borrowing and separates them from refinancing at a later, unknown rate; `def:required-return-components` separates the realised (ex post) Fisher identity and the ex ante relation (Mankiw, chap. 5, sec. 5-3) from the expected real return under uncertain inflation; `meth:instrument-present-value` distinguishes nominal annual yields compounded semiannually from effective annual yields.
 
 Written in the statistics slice (2026-10-18):
 
@@ -46,7 +62,7 @@ Written in the statistics slice (2026-10-18):
 
 All seven partly checked 2026-10-18, draft; examples in `notes/artefacts/descriptive-probability/statistics-probability-checks.py`; human review outstanding.
 
-Corrections of 2026-10-18 (plan sec. 11.2): sampling assumptions for the unbiased sample variance; kurtosis read as tail and outlier sensitivity, not central mass; finite sample moments distinguished from nonexistent population moments, with the Student-t thresholds for real degrees of freedom; GBM drift against mean log return; conditional independence in the Bayesian example; the check-script path removed from the printed text.
+Corrections of 2026-10-18: sampling assumptions for the unbiased sample variance; kurtosis read as tail and outlier sensitivity, not central mass; finite sample moments distinguished from nonexistent population moments, with the Student-t thresholds for real degrees of freedom; GBM drift against mean log return; conditional independence in the Bayesian example; the check-script path removed from the printed text.
 
 Written in the inference and simulation slice (2026-10-18):
 
@@ -59,7 +75,7 @@ Written in the inference and simulation slice (2026-10-18):
 
 All six partly checked 2026-10-18, draft; examples in `notes/artefacts/inference-simulation/inference-simulation-checks.py`; human review outstanding.
 
-Corrections of 2026-10-18 (plan sec. 13.2): `meth:historical-simulation` now uses the lower loss quantile and exact-tail-mass ES of `meth:var-es-estimation-methods` for both weightings (VaR 8,400 in both; ES 15,700 equal-weighted and about 14,000 age-weighted), with Hull's equal-weight rank attributed as an alternative; `meth:hypothesis-testing` states the independent-samples condition of the variance-ratio F test and uses an independently drawn second sample, with a correlated-sample counterexample.
+Corrections of 2026-10-18: `meth:historical-simulation` now uses the lower loss quantile and exact-tail-mass ES of `meth:var-es-estimation-methods` for both weightings (VaR 8,400 in both; ES 15,700 equal-weighted and about 14,000 age-weighted), with Hull's equal-weight rank attributed as an alternative; `meth:hypothesis-testing` states the independent-samples condition of the variance-ratio F test and uses an independently drawn second sample, with a correlated-sample counterexample.
 
 Written in the regression slice (2026-10-18):
 
@@ -69,7 +85,7 @@ Written in the regression slice (2026-10-18):
 
 All three partly checked 2026-10-18, draft; examples in `notes/artefacts/linear-regression/regression-checks.py`; human review outstanding. Multiple regression, misspecification, time-series regression and the CAPM regression are not written; `topic:linear-regression` is therefore only partly covered.
 
-Correction pass of 2026-10-18 (plan sec. 13.5): `meth:simple-regression-estimation` states when the estimates exist (finite data, $S_{xx}>0$); `meth:regression-diagnostics-anova` separates the assumptions for computing, unbiasedness, conventional variances and exact $t$/$F$ inference, requires $n>2$, and restricts $F=t^2$ to the zero-slope null; `meth:regression-prediction-functional-form` treats the back-transformed log prediction as a geometric mean (a median only under a median-zero log error), qualifies Duan's consistency statement and corrects the log--log percentage rule; the ES pitfall of `meth:historical-simulation` now matches the canonical VaR of 8,400.
+Correction pass of 2026-10-18: `meth:simple-regression-estimation` states when the estimates exist (finite data, $S_{xx}>0$); `meth:regression-diagnostics-anova` separates the assumptions for computing, unbiasedness, conventional variances and exact $t$/$F$ inference, requires $n>2$, and restricts $F=t^2$ to the zero-slope null; `meth:regression-prediction-functional-form` treats the back-transformed log prediction as a geometric mean (a median only under a median-zero log error), qualifies Duan's consistency statement and corrects the log--log percentage rule; the ES pitfall of `meth:historical-simulation` now matches the canonical VaR of 8,400.
 
 Credit, time-series and valuation batch (2026-10-20), on annual US data for 1928-2025 and seeded simulations:
 

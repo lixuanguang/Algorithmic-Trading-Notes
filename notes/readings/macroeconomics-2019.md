@@ -1,13 +1,13 @@
 ---
 key: macroeconomics-2019
-pathways: [common-toolkit]
+pathways: [financial-mathematics]
 version: N. Gregory Mankiw, Macroeconomics, 10th edition, Worth Publishers, copyright 2019 (e-book ISBN 978-1-319-10605-8). Copy used: a PDF conversion of the e-book supplied by the user, in the git-ignored `reading materials/` directory (SHA-256 249ad41691639e08941c3e10bcd5a091767f89e4efbffa0288b4ac73b7276d6f, 719 PDF pages, no printed page numbers; the index puts ex ante and ex post real rates on p. 115)
 sections: chapter 5, section 5-3 "Inflation and Interest Rates" (Two Interest Rates: Real and Nominal; The Fisher Effect; Two Real Interest Rates: Ex Ante and Ex Post); macro, allocation and currency batch (2026-10-19): chapter 9, sections 9-2 (convergence at about 2% a year among similar economies; factor accumulation and efficiency), 9-3 (knowledge spillovers: social return to capital above private) and 9-4 (AK model growth sA - delta; "standing on shoulders" against "stepping on toes")
 read:
 status: draft
 ---
 
-Prepared on 2026-10-18 by the time-value correction (plan sec. 10.2) from source checks, not from study: the headings that need your own reading are left empty. Used for `def:required-return-components`. A 1981 St. Louis Fed Review article on real rates was sought first; its link redirected to an index page.
+Prepared on 2026-10-18 by the time-value correction from source checks, not from study: the headings that need your own reading are left empty. Used for `def:required-return-components`. A 1981 St. Louis Fed Review article on real rates was sought first; its link redirected to an index page.
 
 ## Question and claim
 

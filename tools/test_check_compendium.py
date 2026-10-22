@@ -13,10 +13,15 @@ from pathlib import Path
 import check_compendium as ms
 
 ROUTES = {
-    "routes": [{"id": "sec-a"}, {"id": "sec-b"}],
+    "learning_parts": [
+        {"id": "part-one", "title": "Part one", "routes": ["sec-a", "sec-b"]},
+        {"id": "part-two", "title": "Part two", "routes": ["sec-c"]},
+    ],
+    "routes": [{"id": "sec-a"}, {"id": "sec-b"}, {"id": "sec-c"}],
     "specialist_routes": [{"id": "path-x"}, {"id": "path-y"}, {"id": "path-z"}],
+    "retired_overviews": [{"id": "old-ab", "successors": ["sec-a", "sec-b"]}],
 }
-MASTER = "\\qfsections{sec-a, sec-b, sec-c}\n"
+MASTER = "\\qfpart{part-one}{Part one}{sec-a, sec-b}\n\\qfpart{part-two}{Part two}{sec-c}\n"
 
 GOOD_ENTRY = r"""\begin{qfmodel}[A model]\label{mod:good}
 \qffield{Statement} Claim \citep[p.~3]{cat-key}.
@@ -45,6 +50,7 @@ class Repo:
             + "\n",
         )
         self.write("notes/pathways/.keep", "")
+        self.write("notes/pathways/sec-a.md", "")
         self.write("compendium/compendium.tex", MASTER)
         self.write("compendium/sec-a/section.tex", "\\chapter{A}\n\\input{sec-a/topic}\n")
 
@@ -162,7 +168,7 @@ class EntryMetadata(unittest.TestCase):
 
 
 class SectionDeclaration(unittest.TestCase):
-    r"""The master's ordered \qfsections list is the only declaration of compendium sections."""
+    r"""The master's \qfpart declarations are the only declaration of Parts and sections."""
 
     def setUp(self):
         """Create a repository for each test."""
@@ -179,12 +185,143 @@ class SectionDeclaration(unittest.TestCase):
         """Declared sections and reachable entries pass."""
         self.assertEqual(self.problems(), "")
 
-    def test_section_outside_the_guide_is_ordinary_when_declared(self):
-        """Section outside the guide is ordinary when declared."""
+    def test_populated_section_in_a_later_part_passes(self):
+        """Populated section in a later part passes."""
         self.repo.write("compendium/sec-c/section.tex", "\\chapter{C}\n\\input{sec-c/topic}\n")
         self.repo.write("compendium/sec-c/topic.tex", GOOD_ENTRY.replace("mod:good", "mod:other"))
         self.repo.write("notes/pathways/sec-c.md", "## Entries\n- `mod:other`\n")
         self.assertEqual(self.problems(), "")
+
+    def test_empty_leading_section_in_a_populated_part_passes(self):
+        """Empty leading section in a populated part passes."""
+        self.repo.root.joinpath("compendium/sec-a/section.tex").unlink()
+        self.repo.write("compendium/sec-b/section.tex", "\\chapter{B}\n\\input{sec-a/topic}\n")
+        self.repo.write("notes/pathways/sec-b.md", "")
+        self.assertEqual(self.problems(), "")
+        parts = self.repo.report()["parts"]
+        self.assertEqual(parts[0]["populated"], ["sec-b"])
+        self.assertEqual(parts[1]["populated"], [])
+
+    def test_section_outside_the_guide_fails(self):
+        """Section outside the guide fails."""
+        self.repo.write("compendium/compendium.tex", MASTER.replace("sec-c}", "sec-c, sec-d}"))
+        self.assertIn("section `sec-d` is not a section of the pinned guide", self.problems())
+
+    def test_swapped_sections_and_parts_fail(self):
+        """Swapped sections and parts fail."""
+        self.repo.write(
+            "compendium/compendium.tex",
+            "\\qfpart{part-one}{Part one}{sec-b, sec-a}\n\\qfpart{part-two}{Part two}{sec-c}\n",
+        )
+        self.assertIn("Part `part-one` orders its sections", self.problems())
+        self.repo.write(
+            "compendium/compendium.tex",
+            "\\qfpart{part-two}{Part two}{sec-c}\n\\qfpart{part-one}{Part one}{sec-a, sec-b}\n",
+        )
+        self.assertIn("differ from the guide's", self.problems())
+
+    def test_section_in_the_wrong_part_fails(self):
+        """Section in the wrong part fails, although every key is declared."""
+        self.repo.write(
+            "compendium/compendium.tex",
+            "\\qfpart{part-one}{Part one}{sec-a}\n\\qfpart{part-two}{Part two}{sec-b, sec-c}\n",
+        )
+        self.assertIn(
+            "section `sec-b` is declared in Part `part-two`, the guide places it in `part-one`",
+            self.problems(),
+        )
+
+    def test_missing_section_and_wrong_part_title_fail(self):
+        """Missing section and wrong part title fail."""
+        self.repo.write(
+            "compendium/compendium.tex",
+            "\\qfpart{part-one}{Part 1}{sec-a, sec-b}\n\\qfpart{part-two}{Part two}{sec-a}\n",
+        )
+        problems = self.problems()
+        self.assertIn("guide section `sec-c` is not declared", problems)
+        self.assertIn("section `sec-a` is declared twice", problems)
+        self.assertIn("Part `part-one` is titled 'Part 1'", problems)
+
+    def test_retired_overview_is_a_bridge_not_a_section(self):
+        """Retired overview is a bridge not a section."""
+        self.repo.write("notes/pathways/old-ab.md", "Now `sec-a` and `sec-b`.\n")
+        self.assertEqual(self.problems(), "")
+        self.repo.write("notes/pathways/old-ab.md", "Now `sec-a` only.\n")
+        self.assertIn("does not name its successor section `sec-b`", self.problems())
+        self.repo.write("compendium/compendium.tex", MASTER.replace("sec-c}", "sec-c, old-ab}"))
+        self.assertIn("section `old-ab` is a retired guide overview", self.problems())
+
+    def test_populated_section_needs_an_overview_note(self):
+        """Populated section needs an overview note."""
+        self.repo.root.joinpath("notes/pathways/sec-a.md").unlink()
+        self.repo.write("notes/pathways/path-x.md", "## Entries\n- `mod:good`\n")
+        self.assertIn("section `sec-a` is populated but has no overview note", self.problems())
+
+    def test_repeated_input_and_cycle_fail(self):
+        """Repeated input and cycle fail, which set-based reachability would miss."""
+        self.repo.write(
+            "compendium/sec-a/section.tex",
+            "\\chapter{A}\n\\input{sec-a/topic}\n\\input{sec-a/topic}\n",
+        )
+        self.assertIn("compendium/sec-a/topic.tex: input 2 times", self.problems())
+        self.repo.write("compendium/sec-a/section.tex", "\\chapter{A}\n\\input{sec-a/topic}\n")
+        self.repo.write("compendium/sec-a/topic.tex", GOOD_ENTRY + "\\input{sec-a/loop}\n")
+        self.repo.write("compendium/sec-a/loop.tex", "\\input{sec-a/topic}\n")
+        self.assertIn(
+            "input cycle: compendium/sec-a/section.tex -> compendium/sec-a/topic.tex -> "
+            "compendium/sec-a/loop.tex -> compendium/sec-a/topic.tex",
+            self.problems(),
+        )
+
+    def test_aliased_repeated_input_and_cycle_fail(self):
+        """Repeated input and cycle through an equivalent path fail."""
+        self.repo.write(
+            "compendium/sec-a/section.tex",
+            "\\chapter{A}\n\\input{sec-a/topic}\n\\input{sec-a/../sec-a/topic}\n",
+        )
+        self.assertIn("compendium/sec-a/topic.tex: input 2 times", self.problems())
+        self.repo.write("compendium/sec-a/section.tex", "\\chapter{A}\n\\input{sec-a/topic}\n")
+        self.repo.write("compendium/sec-a/topic.tex", GOOD_ENTRY + "\\input{sec-a/loop}\n")
+        self.repo.write("compendium/sec-a/loop.tex", "\\input{sec-a/./../sec-a/topic.tex}\n")
+        self.assertIn(
+            "input cycle: compendium/sec-a/section.tex -> compendium/sec-a/topic.tex -> "
+            "compendium/sec-a/loop.tex -> compendium/sec-a/topic.tex",
+            self.problems(),
+        )
+
+    def test_aliased_input_is_one_reachable_file(self):
+        """An equivalent input path reaches its file once, for reachability and headings."""
+        self.repo.write(
+            "compendium/sec-a/section.tex",
+            "\\chapter{A}\n\\section{Group}\n\\input{sec-a/../sec-a/topic}\n",
+        )
+        self.repo.write("compendium/sec-a/topic.tex", "\\subsection{T}\n" + GOOD_ENTRY)
+        self.assertEqual(self.problems(), "")
+        self.repo.write("compendium/sec-a/section.tex", "\\chapter{A}\n\\input{../outside}\n")
+        self.assertIn("\\input{../outside} names a file outside compendium/", self.problems())
+
+    def test_unreachable_prose_only_topic_file_fails(self):
+        """A topic file with only headings or prose must be input; front matter need not be."""
+        self.repo.write("compendium/sec-a/orphan.tex", "\\section{Orphan}\nProse only.\n")
+        self.assertIn("sec-a/orphan.tex: is a topic file but is not reachable", self.problems())
+        self.repo.root.joinpath("compendium/sec-a/orphan.tex").unlink()
+        self.repo.write("compendium/sec-a/blank.tex", "% comment only\n\n")
+        self.repo.write("compendium/front/notation.tex", "\\chapter*{Notation}\n")
+        self.repo.write("compendium/house.tex", "\\newcommand{\\qfhouse}{}\n")
+        self.assertEqual(self.problems(), "")
+
+    def test_skipped_heading_level_fails(self):
+        """Skipped heading level fails, reading wrapper headings and inputs in order."""
+        self.repo.write(
+            "compendium/sec-a/section.tex",
+            "\\chapter{A}\n\\section{Group}\n\\input{sec-a/topic}\n",
+        )
+        self.repo.write("compendium/sec-a/topic.tex", "\\subsection{T}\n" + GOOD_ENTRY)
+        self.assertEqual(self.problems(), "")
+        self.repo.write("compendium/sec-a/section.tex", "\\chapter{A}\n\\input{sec-a/topic}\n")
+        self.assertIn("\\subsection skips a heading level", self.problems())
+        self.repo.write("compendium/sec-a/section.tex", "\\input{sec-a/topic}\n")
+        self.assertIn("needs exactly one \\chapter heading", self.problems())
 
     def test_planned_section_needs_no_empty_chapter(self):
         """Planned section needs no empty chapter."""
@@ -215,7 +352,9 @@ class SectionDeclaration(unittest.TestCase):
     def test_duplicate_malformed_and_colliding_keys_fail(self):
         """Duplicate malformed and colliding keys fail."""
         self.repo.write(
-            "compendium/compendium.tex", "\\qfsections{sec-a, sec-b, sec-a, Bad_Key, path-x}\n"
+            "compendium/compendium.tex",
+            "\\qfpart{part-one}{Part one}{sec-a, sec-b, sec-a, Bad_Key, path-x}\n"
+            "\\qfpart{part-two}{Part two}{sec-c}\n",
         )
         problems = self.problems()
         self.assertIn("section `sec-a` is declared twice", problems)
@@ -224,7 +363,7 @@ class SectionDeclaration(unittest.TestCase):
 
     def test_missing_master_or_declaration_fails_without_fallback(self):
         """Missing master or declaration fails without fallback."""
-        for text in (None, "% \\qfsections{sec-a}\n", "\\qfsections{sec-a}\n\\qfsections{sec-b}\n"):
+        for text in (None, "% \\qfpart{part-one}{Part one}{sec-a}\n", "\\qfsections{sec-a}\n"):
             with self.subTest(text=text):
                 path = self.repo.root / "compendium/compendium.tex"
                 if text is None:
@@ -233,8 +372,7 @@ class SectionDeclaration(unittest.TestCase):
                     path.write_text(text)
                 problems = self.problems()
                 self.assertTrue(
-                    "compendium.tex: missing" in problems
-                    or "expected exactly one \\qfsections declaration" in problems,
+                    "compendium.tex: missing" in problems or "no \\qfpart declaration" in problems,
                     problems,
                 )
                 self.assertIn(

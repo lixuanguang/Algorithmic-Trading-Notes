@@ -1,31 +1,4 @@
-\section{Distributed ledgers and digital-asset investing}
-
-\begin{qfdefinition}[Distributed ledger technology and its financial applications: hash-chained blocks, consensus by proof-of-work or proof-of-stake, permissioned and permissionless ledgers, smart contracts, tokenisation, and the limits on finality and scale]\label{def:distributed-ledger-applications}
-\qffield{Statement} \emph{Ledger mechanics.} A distributed ledger is a record of transactions of which each participant keeps a copy; it lets parties transfer a digital asset without a central record-keeper by solving the \emph{double-spending} problem, that digital information can be copied and spent twice \citep[ch.~V, ``Distributed ledger technology in cryptocurrencies'']{bis-aer-2018-cryptocurrencies}. A cryptocurrency combines a protocol (the rules in code), the ledger and a decentralised network that updates, stores and reads it (same section). In a \emph{blockchain} the ledger is updated in blocks: each block holds a hash of the previous block, so altering a past transaction changes every later hash; transactions in a block are summarised by a Merkle-tree root, which lets a light client verify that a transaction is included from a short branch of hashes \citep[secs.~3, 7--8, pp.~2--5]{s6-bitcoin}. Ownership passes by digital signatures: a coin is a chain of signatures, each owner signing a hash of the previous transaction and the next owner's public key (sec.~2, p.~2).
-
-\emph{Consensus.} Under \emph{proof-of-work}, a block is accepted only if its hash falls below a target; finding one takes costly computation and checking it takes one hash; honest nodes follow the chain with the most work, and an attacker with less than half the computing power falls behind exponentially in the number of blocks added after a transaction (secs.~4--5, 11, pp.~3, 6--8). Bitcoin's protocol fixes supply: the block reward halves every 210{,}000 blocks, about four years, so issuance converges to 21 million coins \citep[draft of 9 February 2016, p.~62]{crypto-narayanan}. Under \emph{proof-of-stake}, validators deposit stake (32~ETH on Ethereum), are chosen at random to propose blocks in 12-second slots, attest to blocks in 32-slot epochs, and lose stake (``slashing'') for provable misbehaviour; a block is final once two-thirds of staked ETH links two checkpoints. Ethereum moved from proof-of-work to proof-of-stake on 15 September 2022 \citep[``Proof-of-stake'' and ``The Merge'' pages]{ethereum-pos-2026}.
-
-\emph{Permissioned and permissionless.} In \emph{permissioned} ledgers only trusted nodes, chosen and overseen by an authority, may update the ledger; trust still rests on an institution. In \emph{permissionless} ledgers anyone may take part and no one holds a special key (BIS, ch.~V, same section).
-
-\emph{Financial applications}: cryptocurrencies; \emph{smart contracts}, programs on the ledger that execute payment flows automatically (Ethereum) \citep[pp.~285--287]{crypto-narayanan}; \emph{tokenisation} of assets and initial coin offerings, which may be securities or ``utility tokens'' giving access to a service; stablecoins (\hyperref[rule:stablecoin-standards]{stablecoin standards}); decentralised finance such as \hyperref[def:amm-pool-mechanics]{automated market makers}; and permissioned uses in trade finance, low-value cross-border payments and post-trade settlement, which do not need a cryptocurrency at all (BIS, ch.~V, ``Beyond the bubble'' and Boxes V.B and V.C).
-
-\emph{Limits} (BIS, ch.~V, ``Assessing the economic limitations''): proof-of-work uses large amounts of energy; every full participant stores and checks the whole history, so throughput is capped and fees rise under congestion; finality under proof-of-work is probabilistic, never reaching certainty; and forks can split a chain, as on 11~March~2013 when Bitcoin's two branches were reconciled only by miners departing from protocol.
-
-\qffield{Practice} \emph{Toy ledger} (\texttt{digital-asset-checks.py}, parts~1--4, real SHA-256 hashing).
-\begin{itemize}
-\item Changing ``A pays B~5'' to ``A pays B~50'' in the first of three blocks breaks the chain's verification; a two-hash Merkle branch confirms a transaction in a four-transaction block and rejects an altered one.
-\item With a 12-bit target, finding a valid nonce took 3{,}507 hashes on average over 60 blocks, against an expectation of $2^{12}=4{,}096$; checking took one.
-\item The white paper's attacker-success formula reproduces its table: with 10~percent of hashing power the attacker's chance after 5 blocks is 0.09~percent; to keep it below 0.1~percent a merchant waits 5, 24 and 340 blocks against attackers with 10, 30 and 45~percent. An exact negative-binomial count (Derivation), confirmed by simulation, gives 0.18~percent after 5 blocks: the paper's Poisson step understates the risk, so its waiting times are a lower bound.
-\item Summing the halving schedule in integer satoshis gives 20{,}999{,}999.9769 coins over 33 halving eras.
-\end{itemize}
-
-\qffield{Conditions} The mechanics describe Bitcoin and Ethereum as specified in these sources; other ledgers differ, and the BIS assessment is of 2018.
-
-\qffield{Pitfalls} Calling a ledger immutable: it is costly to rewrite, not impossible, and consensus can fail. Assuming a blockchain is needed whenever several parties share data: a permissioned database may do. Treating an application of the technology as an investment in a coin.
-
-\qffield{See also} \hyperref[meth:digital-asset-investment-analysis]{digital-asset investing}; \hyperref[def:crypto-venue-instrument-structure]{crypto venues and instruments}; \hyperref[mech:defi-lending-liquidation]{DeFi lending}.
-
-\end{qfdefinition}
+\section{Digital-asset investing}
 
 \begin{qfmethod}[Digital-asset investing: features, vehicles (direct holdings, exchange-traded products, futures, funds and related equities), custody and liquidity, and the analysis of risk, return and diversification]\label{meth:digital-asset-investment-analysis}
 \qffield{Statement} \emph{Ledger mechanics are not the investment.} The ledger determines how ownership is recorded and transferred; the investor's \emph{exposure} is to the price of a token, through a \emph{vehicle}, held by a \emph{custodian} or by the investor, and traded where \emph{liquidity} exists. Each layer carries separate risks.

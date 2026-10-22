@@ -34,9 +34,20 @@ Corporate-finance and equity-valuation batch (2026-10-20). Harbour Tools plc, th
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#corporate-finance-and-equity-valuation-batch-20-october-2026).
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+- `capital-budgeting-investment` (Capital budgeting, project valuation and working capital): no pathway note; related existing material in `corporate-finance/capital-investment`, `corporate-finance/working-capital-liquidity`, not reviewed as a complete treatment of the pathway.
+- `capital-structure-payout` (Capital structure, cost of capital and payout policy): no pathway note; related existing material in `corporate-finance/capital-structure-cost-of-capital`, `corporate-finance/payout-policy`, not reviewed as a complete treatment of the pathway.
+- `corporate-governance-restructuring` (Ownership, corporate governance, mergers and restructuring): no pathway note; related existing material in `corporate-finance/corporate-ownership-governance`, `corporate-finance/business-models`, `corporate-finance/corporate-restructuring`, not reviewed as a complete treatment of the pathway.
+
 ## Entry backlog
 
 ## What changed in my view or practice
+
+
+Written in library gap-filling Batch L6 (2026-10-21): `meth:cost-of-debt-equity-estimation` extended with country risk premiums (default-spread, relative-volatility and melded methods; beta-scaled against additive use; revenue weights with production caveats; local risk-free rates net of the default spread; currency translation by inflation differential) from Damodaran, *Applied Corporate Finance*, pp. 89-93, 98-107 and 133-135, with an original example and its zero limit. Checks in `notes/artefacts/corporate-finance/country-risk-premium-check.py`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l6-21-october-2026).
 
 ## Questions carried forward
 

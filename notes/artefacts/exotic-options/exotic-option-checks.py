@@ -1,7 +1,7 @@
 """Library gap-filling Batch L1, package P3 (2026-10-21): the worked examples of meth:digital-option-valuation,
 meth:barrier-option-valuation and meth:asian-option-valuation.
 
-Inputs and acceptance (implementation_plan_v2.md Section 6, P3, as corrected before any run): GBM with
+Inputs and acceptance, fixed before the first run: GBM with
 S0 = 100, K = 100, r = 5 percent, q = 2 percent, sigma = 25 percent, T = 1. Every Monte Carlo check uses
 100,000 paths sampled exactly on its dates, seeds 20261031, 20261032, ... in the order of the checks below.
 Synthetic model data only: the checks test the formulas and the simulation under the model, not markets.

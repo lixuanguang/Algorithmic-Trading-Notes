@@ -32,6 +32,18 @@ Alternatives batch (2026-10-20). Numbers are checked by `notes/artefacts/private
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#alternatives-batch-20-october-2026).
 
+## Specialist pathways
+
+The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+- `pe-performance-measurement` (Private-market performance measurement and replication): no pathway note; related existing material in `private-capital-allocator/alternative-investment-structures`, `private-capital-allocator/private-market-programmes`, not reviewed as a complete treatment of the pathway.
+- `private-equity-vc` (Private equity and venture security design): no pathway note; related existing material in `private-capital-allocator/private-capital-foundations`, `private-capital-allocator/private-equity-strategies`, not reviewed as a complete treatment of the pathway.
+- `private-credit-workouts` (Private credit and workouts): no pathway note; related existing material in `private-capital-allocator/private-debt-special-situations`, not reviewed as a complete treatment of the pathway.
+- `trade-receivables` (Trade finance and purchased receivables): content gap; no entry written.
+- `royalty-rights` (Music and pharmaceutical royalties): content gap; no entry written.
+- `litigation-finance-claims` (Litigation claims and legal-finance cash flows): content gap; no entry written.
+- `fund-liquidity` (Private-fund liquidity and evergreen vehicles): no pathway note; related existing material in `private-capital-allocator/private-market-programmes`, not reviewed as a complete treatment of the pathway.
+
 ## Entry backlog
 
 ## What changed in my view or practice

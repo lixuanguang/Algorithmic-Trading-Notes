@@ -29,8 +29,20 @@
 % front/sources.tex; the optional URL links the key.
 \NewDocumentCommand{\qfsource}{o m m}{\par\noindent\phantomsection\label{src:#2}%
   \IfValueTF{#1}{\href{#1}{\nolinkurl{#2}}}{\nolinkurl{#2}}\quad #3\par}
-% \qfsections{key, ...} inputs <key>/section.tex for each listed key that has one, in order.
+% \qfpart{part-key}{Title}{section-key, ...} declares one Part and its ordered sections. It prints
+% the Part heading and inputs <key>/section.tex for each listed key that has one, in order; a Part
+% none of whose sections has a wrapper prints nothing.
 \ExplSyntaxOn
-\NewDocumentCommand{\qfsections}{m}
-  {\clist_map_inline:nn {#1} {\InputIfFileExists{##1/section}{}{}}}
+\bool_new:N \l__qf_part_populated_bool
+\NewDocumentCommand{\qfpart}{m m m}
+  {
+    \bool_set_false:N \l__qf_part_populated_bool
+    \clist_map_inline:nn {#3}
+      { \file_if_exist:nT {##1/section.tex} { \bool_set_true:N \l__qf_part_populated_bool } }
+    \bool_if:NT \l__qf_part_populated_bool
+      {
+        \part{#2}\label{part:#1}
+        \clist_map_inline:nn {#3} { \InputIfFileExists{##1/section}{}{} }
+      }
+  }
 \ExplSyntaxOff

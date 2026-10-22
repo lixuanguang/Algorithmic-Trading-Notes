@@ -1,4 +1,4 @@
-\section{Financial data structures: bars, multi-product series and event sampling}
+\subsection{Financial data structures: bars, multi-product series and event sampling}
 
 \begin{qfmethod}[Activity-sampled bars: time, tick, volume and dollar bars, what each corrects, and what the evidence on their returns shows]\label{meth:activity-sampled-bars}
 \qffield{Statement} \emph{Bars} are the rows of a table into which unstructured trade data are regularised; standard bar methods ``transform a series of observations that arrive at irregular frequency (often referred to as `inhomogeneous series') into a homogeneous series derived from regular sampling'' \citep[chap.~2, sec.~2.3.1, p.~26]{alpha-afml}. Each bar records a timestamp, VWAP, open, close, high, low and volume. \emph{Time bars} sample at fixed clock intervals; \emph{tick bars} each time a fixed number of transactions has taken place (for example 1,000); \emph{volume bars} each time a fixed number of the security's units has traded; \emph{dollar bars} each time a fixed market value has traded, in the security's currency (secs.~2.3.1.1--2.3.1.4, pp.~26--28).

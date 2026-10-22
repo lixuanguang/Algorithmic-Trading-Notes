@@ -1,9 +1,9 @@
 """Library gap-filling Batch L1, package P2 (2026-10-21): the worked examples of
 meth:finite-difference-option-pricing and meth:least-squares-monte-carlo.
 
-Inputs (implementation_plan_v2.md Section 6, P2): K = 100, r = 5 percent, q = 0, sigma = 20 percent, T = 1, value
+Inputs: K = 100, r = 5 percent, q = 0, sigma = 20 percent, T = 1, value
 read at S = 100, a grid node; S_max = 3K. Acceptance ranges, seeds (20261021, 20261022) and path counts were
-fixed in the plan before any run and are not tuned. Synthetic model data only: the checks show that the
+fixed before any run and are not tuned. Synthetic model data only: the checks show that the
 schemes are implemented correctly under Black-Scholes-Merton; they are not evidence about markets.
 
 Run: uv run python numerical-pricing-checks.py   Exits 1 on failure. About 30 seconds.

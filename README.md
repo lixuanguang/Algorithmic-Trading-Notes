@@ -1,12 +1,12 @@
 # All Things on Quantitative Trading
 
-A source-based reference on quantitative trading and the financial analysis behind it. Its chapters follow the ordered section list in `compendium/compendium.tex`; the institutional learning guide pinned in `guide/` supplies the reading catalogue and specialist pathways. The compiled document is [compendium/compendium.pdf](compendium/compendium.pdf).
+A source-based reference on quantitative trading and the financial analysis behind it. Its eight Parts and their chapters follow the `\qfpart` declarations in `compendium/compendium.tex`, which match the Parts and sections of the institutional learning guide pinned in `guide/`; the guide also supplies the reading catalogue and specialist pathways. The compiled document is [compendium/compendium.pdf](compendium/compendium.pdf).
 
 ## Layout
 
 | Location | Purpose |
 |---|---|
-| `compendium/` | LaTeX reference, one chapter per populated section of the master's `\qfsections` list |
+| `compendium/` | LaTeX reference: one Part per `\qfpart` declaration in the master and one chapter per populated section |
 | `compendium/preamble.tex` | Packages, typography, list spacing and mathematical macros |
 | `compendium/house.tex` | Entry environments, citation commands and source references |
 | `compendium/front/` | Notation and sources outside the guide catalogue |
@@ -19,7 +19,7 @@ A source-based reference on quantitative trading and the financial analysis behi
 | `notes/coverage/` | Subject topics and learning objectives, their coverage and prerequisites, and the crosswalk from external topic outlines |
 | `notes/log.md` | Reading progress and unresolved questions |
 | `notes/tooling/` | Standalone calculator, Python, editor and research-tool notes |
-| `tools/check_compendium.py` | Entry, citation, label and pathway-link checks |
+| `tools/check_compendium.py` | Entry, citation, label and pathway-link checks; Part and section agreement with the guide; single inclusion of every topic file |
 | `tools/check_coverage.py` | Objective and crosswalk structure, coverage report and optional outline hash check |
 
 ## Build and check
@@ -59,10 +59,14 @@ Name files and functions for their subject or operation. Store figures beside th
 
 ## Chapters and coverage
 
-The ordered `\qfsections` list in `compendium/compendium.tex` declares every compendium section and its place in the reading order. A chapter folder and its overview note `notes/pathways/<key>.md` must use one of those keys; a specialist pathway note may instead use a pathway key of the pinned guide. A section prints once `<key>/section.tex` exists and inputs its topic files; a declared section without content prints nothing. To add a subject, add its key to the list and write its wrapper, first topic file and overview note together.
+The `\qfpart{part-key}{Title}{section-key, ...}` declarations in `compendium/compendium.tex` are the single declaration of the compendium's Parts, their sections and the reading order. `make check-compendium` compares them directly with `learning_parts` in `guide/learning_routes.json`: Part keys, titles and order, and each Part's sections and their order, must be the guide's. A chapter folder and its overview note `notes/pathways/<key>.md` must use a declared key; a specialist pathway note may instead use a pathway key of the pinned guide. A section prints once `<key>/section.tex` exists and inputs its topic files, and a Part prints its heading only when one of its sections does; a declared section without content prints nothing. A populated section needs its overview note. To add a subject, write its wrapper, first topic file and overview note together; the key is already declared by the guide.
+
+Within a chapter, `\section` headings group related topic files and `\subsection` headings divide a group; a topic file that forms a group by itself keeps its own `\section`. Every topic file is input exactly once. Entries keep their labels when they move; chapter and entry numbers may change.
+
+The guide's `retired_overviews` keep the keys of divided overviews, `common-toolkit` and `empirical-causal-research`. They are not compendium sections; their notes in `notes/pathways/` are bridges that name each successor section and keep the earlier history.
 
 `notes/coverage/` maps subject objectives to entries and sources, and external topic outlines to objectives; see [its README](notes/coverage/README.md). `make verify-outlines` also hashes the local outline copies in the ignored `reading_materials/outlines/`. Coverage is editorial; it does not record study.
 
 ## Update the guide
 
-`guide/` is a plain copy of the tracked files of the `institutional_reading_list` repository, taken at commit `343d145909ba5384202b50604bf5ebe7e5b6ed86`; it is no longer a submodule. To update it, replace those files with the tracked files of a newer commit of that repository, record the commit in the commit message, and run `make check`. Compare catalogue and pathway keys using the guide's maintenance instructions before committing; do not edit the copied files here. Local reading PDFs and downloaded research inputs are ignored by Git.
+`guide/` is a plain copy of the tracked files of the `institutional_reading_list` repository, taken at commit `6c7734ed49f1c242908b86a57c4f5d1f0e349ec0` (the eight-Part edition of 22 October 2026); it is no longer a submodule. The previous copy, from commit `343d145909ba5384202b50604bf5ebe7e5b6ed86`, is the edition that notes and review records dated before 22 October 2026 refer to. To update it, export the committed files of a newer commit (`git -C <reading-list> archive <commit>`, not its working tree), replace the contents of `guide/` with them, check that `git write-tree --prefix=guide/` after staging equals the commit's tree, record the commit here and in the commit message, and run `make check`. Compare catalogue and pathway keys using the guide's maintenance instructions before committing; do not edit the copied files here. Local reading PDFs and downloaded research inputs are ignored by Git.

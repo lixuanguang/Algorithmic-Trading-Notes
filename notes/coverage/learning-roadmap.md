@@ -1,6 +1,6 @@
 # Learning roadmap
 
-Topics in prerequisite order, grouped by the depth most of their objectives require. Each topic builds on the topics in its *Builds on* column; a topic can sit in a later group than some of its own objectives. Objectives, their status and their entries are in [objectives.json](objectives.json); run `make check-coverage` for current coverage. Chapter keys are sections declared in `compendium/compendium.tex`.
+Topics in prerequisite order, grouped by the depth most of their objectives require. Each topic builds on the topics in its *Builds on* column; a topic can sit in a later group than some of its own objectives. Objectives, their status and their entries are in [objectives.json](objectives.json); run `make check-coverage` for current coverage. Chapter keys are sections declared in `compendium/compendium.tex`. A topic has one owning chapter even when one of its entries sits in another: `topic:probability-distributions` keeps Bayesian updating, now in `bayesian-inference`; `topic:simulation-methods` keeps Monte Carlo simulation, now in `numerical-optimisation`; `topic:credit-models` keeps the counterparty and xVA entries, now in `portfolio-risk-financing`; `topic:digital-asset-investment` keeps the distributed-ledger entry, which opens `digital-assets-prediction-markets`.
 
 The order is a navigation aid for subjects, not an examination sequence. Several topics in different subjects can be studied in parallel once their prerequisites are met.
 
@@ -8,9 +8,9 @@ The order is a navigation aid for subjects, not an examination sequence. Several
 
 Two routes have been followed end to end, from roadmap to compiled entry to source locator.
 
-**Reusing an existing entry.** `topic:return-measurement` (Foundations) → `objective:compare-time-and-money-weighted-returns` → `def:return-measures` in the *Portfolio construction and risk* chapter, section *Performance evaluation* → its Statement cites the GIPS 2020 glossary (`wide-gips-2020`, pp. 78 and 83) and provision 1.A.35 for when money-weighted returns may be presented; the worked example in Practice gives the time- and money-weighted returns of one cash-flow history. The outline item `outline:7099c7688942:m003:b01` maps to this objective; its review is in `outline-crosswalk.json`.
+**Reusing an existing entry.** `topic:return-measurement` (Foundations) → `objective:compare-time-and-money-weighted-returns` → `def:return-measures` in the *Financial mathematics and return measurement* chapter, section *Return measurement* (before 22 October 2026 it was in *Portfolio construction and risk*, section *Performance evaluation*) → its Statement cites the GIPS 2020 glossary (`wide-gips-2020`, pp. 78 and 83) and provision 1.A.35 for when money-weighted returns may be presented; the worked example in Practice gives the time- and money-weighted returns of one cash-flow history. The outline item `outline:7099c7688942:m003:b01` maps to this objective; its review is in `outline-crosswalk.json`.
 
-**A new chapter.** `topic:cash-flow-analysis` (Foundations) → `objective:link-cash-flow-statement` → `meth:statement-linked-cash-flows` in the new *Financial statement analysis* chapter, section *Cash-flow analysis* → IAS 7 paragraphs 6, 10 and 18-20 (`eu-2023-1803-ias7`) and the IFRS 18 amendments (`eu-2026-338-ifrs18`, amended paras. 18(b), 20, 33A and 34A); the worked example is checked by `notes/artefacts/financial-statement-analysis/cash-flow-linkage-check.py`. Two outline items map to the objective (`outline:7099c7688942:m030:b01` and `:b02`); the same entry covers the line-by-line conversion and the IFRS-against-US-GAAP comparison (`objective:convert-indirect-to-direct-cash-flow`, `objective:compare-cash-flow-reporting-frameworks`).
+**A new chapter.** `topic:cash-flow-analysis` (Foundations) → `objective:link-cash-flow-statement` → `meth:statement-linked-cash-flows` in the *Financial statement analysis* chapter, section *Reporting and the statements*, subsection *Cash-flow analysis* → IAS 7 paragraphs 6, 10 and 18-20 (`eu-2023-1803-ias7`) and the IFRS 18 amendments (`eu-2026-338-ifrs18`, amended paras. 18(b), 20, 33A and 34A); the worked example is checked by `notes/artefacts/financial-statement-analysis/cash-flow-linkage-check.py`. Two outline items map to the objective (`outline:7099c7688942:m030:b01` and `:b02`); the same entry covers the line-by-line conversion and the IFRS-against-US-GAAP comparison (`objective:convert-indirect-to-direct-cash-flow`, `objective:compare-cash-flow-reporting-frameworks`).
 
 **One case across topics.** `topic:income-statement-analysis` and `topic:balance-sheet-analysis` (Foundations) → `topic:ratio-analysis` → `topic:financial-reporting-quality` → `topic:financial-statement-modelling` → `topic:integrated-statement-analysis` all use one hypothetical company, `ex:harbour-tools-statements`, whose statements are built as a ledger and reconciled (direct = indirect operating cash flow; equity roll-forward). Its ratios and DuPont decomposition (`meth:return-on-equity-decomposition`), an aggressive reporting variant (`meth:report-quality-evaluation`), a three-year forecast that balances without a plug (`ex:harbour-pro-forma-model`) and a lender's decision with constraints and alternatives (`ex:integrated-credit-decision`, `objective:apply-integrated-analysis-framework`) are checked by `notes/artefacts/financial-statement-analysis/statement-analysis-checks.py`.
 
@@ -20,13 +20,13 @@ Two routes have been followed end to end, from roadmap to compiled entry to sour
 
 | Topic | Chapter | Builds on | Objectives |
 | --- | --- | --- | ---: |
-| `topic:time-value-of-money` Time value of money and cash-flow additivity | `common-toolkit` | — | 3 |
-| `topic:return-measurement` Return measurement | `portfolio-construction-risk` | `topic:time-value-of-money` | 5 |
+| `topic:time-value-of-money` Time value of money and cash-flow additivity | `financial-mathematics` | — | 3 |
+| `topic:return-measurement` Return measurement | `financial-mathematics` | `topic:time-value-of-money` | 5 |
 | `topic:market-index-construction` Market index construction | `international-equity-markets` | `topic:return-measurement` | 2 |
-| `topic:descriptive-statistics` Descriptive statistics of returns | `common-toolkit` | `topic:return-measurement` | 4 |
-| `topic:probability-distributions` Probability and distributions in finance | `common-toolkit` | `topic:descriptive-statistics` | 3 |
-| `topic:statistical-inference` Sampling and statistical inference | `common-toolkit` | `topic:probability-distributions` | 3 |
-| `topic:simulation-methods` Simulation and resampling | `common-toolkit` | `topic:probability-distributions` | 3 |
+| `topic:descriptive-statistics` Descriptive statistics of returns | `probability-statistics` | `topic:return-measurement` | 4 |
+| `topic:probability-distributions` Probability and distributions in finance | `probability-statistics` | `topic:descriptive-statistics` | 3 |
+| `topic:statistical-inference` Sampling and statistical inference | `probability-statistics` | `topic:probability-distributions` | 3 |
+| `topic:simulation-methods` Simulation and resampling | `probability-statistics` | `topic:probability-distributions` | 3 |
 | `topic:firms-market-structure` Firms and market structure | `multi-asset-systematic-macro` | — | 3 |
 | `topic:business-cycles` Business and credit cycles | `multi-asset-systematic-macro` | — | 2 |
 | `topic:fiscal-policy` Fiscal policy | `multi-asset-systematic-macro` | `topic:business-cycles` | 1 |
@@ -40,7 +40,7 @@ Two routes have been followed end to end, from roadmap to compiled entry to sour
 | `topic:leases-employee-compensation` Leases, pensions and share-based compensation | `financial-statement-analysis` | `topic:balance-sheet-analysis` | 6 |
 | `topic:income-tax-accounting` Income tax accounting | `financial-statement-analysis` | `topic:income-statement-analysis` | 3 |
 | `topic:portfolio-risk-return` Portfolio risk and return | `portfolio-construction-risk` | `topic:descriptive-statistics` | 6 |
-| `topic:asset-pricing-factor-models` CAPM and factor models | `portfolio-construction-risk` | `topic:portfolio-risk-return` | 8 |
+| `topic:asset-pricing-factor-models` CAPM and factor models | `asset-pricing` | `topic:portfolio-risk-return` | 8 |
 | `topic:business-models` Business models | `corporate-finance` | — | 1 |
 | `topic:equity-securities-markets` Equity securities and markets | `systematic-equities` | — | 4 |
 | `topic:bond-instrument-features` Bond features, issuance and markets | `rates-credit-mortgages` | — | 5 |
@@ -61,8 +61,9 @@ Two routes have been followed end to end, from roadmap to compiled entry to sour
 
 | Topic | Chapter | Builds on | Objectives |
 | --- | --- | --- | ---: |
-| `topic:linear-regression` Linear regression | `common-toolkit` | `topic:statistical-inference` | 7 |
-| `topic:time-series-models` Time-series models | `common-toolkit` | `topic:linear-regression` | 7 |
+| `topic:linear-regression` Linear regression | `regression-time-series` | `topic:statistical-inference` | 7 |
+| `topic:time-series-models` Time-series models | `regression-time-series` | `topic:linear-regression` | 7 |
+| `topic:stochastic-calculus` Stochastic calculus for asset prices | `stochastic-processes-calculus` | `topic:probability-distributions` | 3 |
 | `topic:machine-learning-methods` Machine learning methods | `ml-alternative-data` | `topic:linear-regression` | 3 |
 | `topic:data-science-workflow` Financial data-science workflow | `ml-alternative-data` | `topic:machine-learning-methods` | 4 |
 | `topic:exchange-rate-mechanics` Exchange-rate quotation and arithmetic | `currency-markets` | `topic:time-value-of-money` | 4 |
@@ -101,7 +102,7 @@ Two routes have been followed end to end, from roadmap to compiled entry to sour
 | `topic:option-valuation` Option valuation | `volatility-options` | `topic:forward-commitment-valuation`, `topic:probability-distributions` | 6 |
 | `topic:commodity-investment` Commodity investment | `commodity-investing-premia` | `topic:forward-commitment-valuation` | 4 |
 | `topic:hedge-fund-strategies` Hedge funds and their strategies | `portfolio-construction-risk` | `topic:alternative-investment-structures` | 3 |
-| `topic:digital-asset-investment` Digital asset investment | `digital-assets-prediction-markets` | — | 2 |
+| `topic:digital-asset-investment` Digital asset investment | `crypto-spot-markets` | — | 2 |
 | `topic:active-management-analysis` Active management and the fundamental law | `portfolio-construction-risk` | `topic:asset-pricing-factor-models` | 3 |
 | `topic:exchange-traded-funds` Exchange-traded funds | `execution-trading-costs` | `topic:equity-securities-markets` | 2 |
 | `topic:market-risk-measurement` Market risk measurement and limits | `portfolio-construction-risk` | `topic:probability-distributions`, `topic:interest-rate-risk` | 3 |
@@ -117,7 +118,7 @@ Two routes have been followed end to end, from roadmap to compiled entry to sour
 | `topic:derivative-overlay-strategies` Derivative overlays for portfolio exposures | `portfolio-construction-risk` | `topic:forward-commitment-valuation`, `topic:interest-rate-risk` | 4 |
 | `topic:currency-management` Currency management | `currency-markets` | `topic:exchange-rate-determination`, `topic:derivative-overlay-strategies` | 4 |
 | `topic:capital-market-expectations` Capital market expectations | `multi-asset-systematic-macro` | `topic:macro-asset-valuation`, `topic:economic-growth` | 6 |
-| `topic:strategic-asset-allocation` Asset allocation | `multi-asset-systematic-macro` | `topic:capital-market-expectations`, `topic:investment-policy-planning` | 11 |
+| `topic:strategic-asset-allocation` Asset allocation | `portfolio-construction-risk` | `topic:capital-market-expectations`, `topic:investment-policy-planning` | 11 |
 | `topic:equity-portfolio-management` Equity portfolio management | `systematic-equities` | `topic:asset-pricing-factor-models`, `topic:active-management-analysis` | 7 |
 | `topic:fixed-income-portfolio-management` Fixed-income portfolio management | `rates-credit-mortgages` | `topic:interest-rate-risk`, `topic:term-structure` | 7 |
 | `topic:credit-portfolio-strategies` Active credit strategies | `corporate-credit-capital` | `topic:credit-models`, `topic:fixed-income-portfolio-management` | 4 |

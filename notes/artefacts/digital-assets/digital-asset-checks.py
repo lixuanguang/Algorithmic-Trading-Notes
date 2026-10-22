@@ -1,7 +1,8 @@
 """Distributed-ledger mechanics and digital-asset investment arithmetic (2026-10-20).
 
-Worked numbers of def:distributed-ledger-applications and meth:digital-asset-investment-analysis in
-compendium/digital-assets-prediction-markets/digital-asset-investing.tex.
+Worked numbers of def:distributed-ledger-applications in
+compendium/digital-assets-prediction-markets/distributed-ledgers.tex and meth:digital-asset-investment-analysis in
+compendium/crypto-spot-markets/digital-asset-investing.tex.
 
 Ledger mechanics (parts 1-4) use real SHA-256 on toy blocks; nothing here touches a live network. Part 3 reproduces
 the attacker-success table of Nakamoto (2008), sec. 11, and checks it against an independent simulation of the race.

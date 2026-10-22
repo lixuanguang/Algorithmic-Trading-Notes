@@ -86,6 +86,8 @@
 \usepackage{enumitem}        % For customizing list layouts
 \setlist{nosep,topsep=2pt,leftmargin=*}
 \usepackage{titlesec}
+\titleformat{\part}[display]{\normalfont\bfseries\fontsize{17}{20}\selectfont\filcenter}
+  {\partname~\thepart}{8pt}{}
 \titleformat{\chapter}[hang]{\normalfont\bfseries\fontsize{14}{17}\selectfont}
   {\thechapter}{0.7em}{}
 \titleformat{\section}{\normalfont\bfseries\fontsize{11}{13}\selectfont}
@@ -98,6 +100,8 @@
 \titlespacing*{\section}{0pt}{8pt}{4pt}
 \titlespacing*{\subsection}{0pt}{6pt}{3pt}
 \titlespacing*{\subsubsection}{0pt}{4pt}{2pt}
+% Contents: Parts, chapters (subjects) and their \section groups; bookmarks add the deeper divisions.
+\setcounter{tocdepth}{1}
 \usepackage{makecell}        % For enhanced table cells
 \usepackage{comment}		 % For commenting out sections
 
@@ -305,9 +309,11 @@
 % Hyperlinks (loaded last: loaded before float and algorithm it duplicated figure anchors)
 % -----------------------------
 \usepackage{hyperref}
+\usepackage{bookmark}       % \bookmarksetup{startatroot} keeps back matter out of the last Part
 \usepackage{xurl}
 \hypersetup{
   colorlinks,
+  bookmarksdepth=3,
   linkcolor={blue!80!black},
   citecolor={green!80!black},
   urlcolor={red!80!black}

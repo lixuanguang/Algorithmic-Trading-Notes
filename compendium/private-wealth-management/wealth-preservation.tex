@@ -1,30 +1,69 @@
-\section{Preserving wealth}
-
-\begin{qfmethod}[Risks to human capital and how to manage them: mortality, disability, unemployment, wage and industry risk, correlation with financial assets, and health, with insurance, diversification and reserves]\label{meth:human-capital-risks}
-\qffield{Statement} \emph{Types of risk to human capital} (Interpretation, extending \citep[pp.~13--16, 28--31, 75--76]{ibbotson-lifetime-financial-advice-2007}):
+\begin{qfmethod}[Taxes and inflation in individual investment decisions: types of taxes on individuals, accrual, deferral and wealth taxes, after-tax and real returns, with US and UK rates]\label{meth:private-client-tax-inflation}
+\qffield{Statement} \emph{Types of tax.} Individuals pay tax on income (wages, interest, dividends), on realised capital gains, on consumption, on property, sometimes on wealth, and on transfers at death or by gift (Interpretation). For investors, the relevant 2026 rates are:
 \begin{itemize}
-\item \emph{mortality}: earnings stop for the family;
-\item \emph{disability and ill health}: earnings stop or fall while costs rise;
-\item \emph{unemployment and wage risk}: lost or lower pay, often in recessions when financial assets also fall;
-\item \emph{industry and employer risk}: skills tied to a declining industry or a single employer, worst when the same employer's stock is in the portfolio;
-\item \emph{obsolescence}: skills that lose value as technology changes.
-\end{itemize}
-Human capital's correlation with markets decides how much financial risk the household can carry: equity-like earnings call for more bonds in the financial portfolio; bond-like earnings allow more equities (pp.~14--16, 76).
-
-\emph{Strategies}: life insurance for mortality (term cover sized to human capital not otherwise funded); disability income cover; health and long-term-care cover; an emergency reserve sized to income volatility; diversification away from employer stock and the client's own industry; investment in skills; and, for business owners, key-person cover and succession plans (Interpretation).
-
-\qffield{Practice} \emph{Tunde Okafor} (original; \texttt{private-wealth-checks.py}, parts~6 and 10). Tunde, 42, earns mainly commission from a listed software company, and holds 40 percent of the family's liquid assets in its shares (volatility 45 percent, correlation 0.5 with a 16 percent-volatility market).
-\begin{itemize}
-\item The concentrated portfolio's volatility is 24.3 percent against 16 percent diversified; and its worst outcomes coincide with his commission income falling.
-\item \emph{Analysis}: his human capital is equity-like and tied to the same company as 40 percent of the portfolio, so a downturn there hits income, employment and savings together.
-\item \emph{Recommendations}: sell the shares down to below 10 percent of liquid assets over a year (a pre-arranged Rule~10b5-1 plan if he is an insider); hold a larger emergency reserve (six months) than a salaried employee would; keep the household's financial portfolio more bond-heavy than Adaeze's bond-like income alone would justify; buy disability cover that includes commission income; and term life cover on both spouses, since Adaeze's 2.17 million need (above) is matched by a smaller one for Tunde.
+\item \emph{United States} (federal): ordinary income up to 37 percent above USD~640,600 single or 768,700 joint; long-term gains and qualified dividends at 0, 15 or 20 percent, the 20 percent rate above USD~545,500 single or 613,700 joint \citep[secs.~4.01, 4.03]{irs-rev-proc-2025-32}; plus a 3.8 percent net investment income tax on investment income above modified adjusted gross income of USD~200,000 single or 250,000 joint \citep[sec.~1411]{us-internal-revenue-code-26}.
+\item \emph{United Kingdom} (2026--27, outside Scotland): personal allowance GBP~12,570, basic rate 20 percent on the next 37,700, higher 40 percent, additional 45 percent above 125,140; dividends above a 500 allowance at 10.75, 35.75 and 39.35 percent \citep[tables]{govuk-income-tax-rates-2026}; gains above a 3,000 allowance at 18 percent within the basic-rate band and 24 percent above it \citep[rates page]{govuk-cgt-rates-2026}.
 \end{itemize}
 
-\qffield{Conditions} Volatilities and correlation are illustrative; insurance terms and taxation of benefits differ by policy and jurisdiction.
+\emph{How taxes compound.} With return $r$ over $n$ years:
+\begin{itemize}
+\item tax on accrual each year at $t$: $(1+r(1-t))^n$;
+\item deferred gains taxed once at sale: $(1+r)^n(1-t)+t$ per unit invested;
+\item a wealth tax at $t_w$ on value each year: $[(1+r)(1-t_w)]^n$.
+\end{itemize}
+Deferral lowers the effective annual rate below the statutory rate; tax-exempt accounts remove it. \emph{Inflation} raises the effective tax on real returns, because nominal income and gains are taxed even when they only keep pace with prices (Derivation).
 
-\qffield{Pitfalls} Holding employer stock because it is familiar. Insuring only the higher earner. Ignoring the correlation between job loss and market falls.
+\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part 2). One hundred invested at 6 percent for 20 years:
+\begin{center}\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+Treatment & Ending value \\
+\midrule
+Tax-exempt & 320.71 \\
+US interest taxed yearly at 40.8\% (37\% + 3.8\%) & 200.99 \\
+US gains deferred, taxed at 23.8\% at the end & 268.18 \\
+UK dividends taxed yearly at 39.35\% & 204.39 \\
+UK gains deferred, 24\% at the end & 267.74 \\
+1\% annual wealth tax & 262.31 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The deferred US gain's effective annual tax rate is 15.7 percent. With 2.5 percent inflation, interest taxed at 40.8 percent earns 1.03 percent real, against 3.41 percent before tax: the tax takes 70 percent of the real return. \emph{Decision}: for a top-bracket client, hold income-producing assets in tax-exempt or deferred accounts and growth assets in taxable accounts; prefer inflation-linked instruments in tax-advantaged accounts, where the inflation uplift is not taxed (\hyperref[meth:tax-in-planning]{tax management}).
 
-\qffield{See also} \hyperref[meth:lifetime-exposures]{lifetime exposures}; \hyperref[meth:complex-client-situations]{executives}.
+\qffield{Conditions} Federal US and non-Scottish UK rates for the tax years starting in 2026; state, local and Scottish taxes, phase-outs, allowances for savings income and treaty credits are ignored. The chapter uses these two jurisdictions because they contrast citizenship- with residence-based taxation, estate with inheritance tax and two pension designs; it is not advice to any real person.
+
+\qffield{Pitfalls} Comparing pre-tax returns across accounts with different tax treatment. Ignoring inflation when judging a tax rate. Assuming deferral is worth nothing because the rate is the same at the end.
+
+\qffield{See also} \hyperref[meth:allocation-constraints-taxes-revision]{taxes in allocation}; \hyperref[meth:tax-in-planning]{tax management}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Taxes in goals-based planning and tax management across asset types: deferral, exemption, rate differences, asset location, loss harvesting, holding periods and wrappers, in the United States and the United Kingdom]\label{meth:tax-in-planning}
+\qffield{Statement} \emph{Principles} (Derivation, from the formulas in \hyperref[meth:private-client-tax-inflation]{taxes and inflation}): plans should be built on after-tax cash flows; tax deferral is valuable even at an unchanged rate; exempt accounts remove tax on growth; differences between current and future rates and between income and gains create opportunities; and the basis rules at death or gift change what is worth realising.
+
+\emph{Tax efficiency by asset type}: interest and non-qualified income are taxed at ordinary rates each year and are least efficient in taxable accounts; qualified dividends and long-term gains are taxed at lower rates, gains only when realised; inflation-linked bonds are taxed on the inflation uplift; real estate may offer depreciation; and municipal bonds in the US are exempt from federal tax (Interpretation).
+
+\emph{Strategies}:
+\begin{itemize}
+\item \emph{Asset location}: hold income-heavy assets in deferred or exempt accounts and growth assets in taxable accounts.
+\item \emph{Loss harvesting}: realise losses to offset gains, avoiding the US wash-sale rule, which disallows a loss if substantially identical securities are bought within 30 days before or after the sale \citep[sec.~1091(a)]{us-internal-revenue-code-26}. The value is the deferral, unless the replacement is held until death, when US basis steps up to fair market value \citep[sec.~1014(a)]{us-internal-revenue-code-26}.
+\item \emph{Holding periods and timing}: defer gains, realise them in low-income years, and use annual allowances (in the UK the 3,000 capital-gains allowance).
+\item \emph{Wrappers}: US 401(k) and IRA, UK pensions and ISAs (GBP~20,000 a year in 2026--27, \citep[overview]{govuk-isa-2026}).
+\end{itemize}
+
+\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part~7). A US top-bracket client (not the Okafors) holds 500,000 of bonds yielding 4.5 percent and 500,000 of stocks, split between a taxable account and an IRA whose withdrawals will be taxed at 24 percent. Both placements use one convention for the stocks: each year the price rises 5 percent of the opening value, a dividend of 2 percent of the opening value is paid at year-end, and the dividend (after tax, in the taxable account) is reinvested. A reinvested after-tax dividend adds to basis. In the first year, the taxable account's 10,000 dividend bears 2,380 of tax at 23.8 percent; 7,620 is reinvested, giving a value of 532,620, basis 507,620 and an unrealised gain equal to the 25,000 price rise. The IRA reinvests the whole dividend (535,000).
+\begin{itemize}
+\item bonds in the IRA and stocks in the taxable account end after 20 years with USD~2,454,619 after tax; the reverse location with 2,316,409, so the recommended location adds 138,211. With every tax set to zero, both placements end with 3,140,699: location alone cannot change gross performance;
+\item harvesting a 50,000 loss saves 11,900 at 23.8 percent; if the lower basis is taxed at the same rate in 10 years, the benefit is the deferral, worth 5,255 at 6 percent, and if the position is held until death, the full 11,900;
+\item a repurchase 31 days after the sale keeps the loss; one 30 days after loses it.
+\end{itemize}
+For a UK client the analogue is to use the ISA allowance each year (``bed and ISA''), realising gains within the 3,000 allowance, and to hold dividend-paying assets in the ISA, since dividends above 500 are taxed at up to 39.35 percent.
+
+\qffield{Conditions} 2026 US federal and 2026--27 UK rates; the IRA withdrawal rate and returns are assumptions. The taxable stocks are liquidated at the end, with the gain over basis taxed at 23.8 percent; holding them until death would remove that tax through the step-up and widen the advantage.
+
+\qffield{Pitfalls} Letting the tax tail wag the investment dog: harvesting into an unsuitable replacement. Ignoring a spouse's or the client's own purchases in other accounts under the wash-sale rule.
+
+\qffield{See also} \hyperref[meth:allocation-constraints-taxes-revision]{taxes in allocation}; \hyperref[meth:retirement-across-jurisdictions]{retirement accounts}.
 
 \end{qfmethod}
 

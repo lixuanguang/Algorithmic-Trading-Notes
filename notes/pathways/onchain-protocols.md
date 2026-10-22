@@ -24,18 +24,21 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Automated market makers and lending protocols* (`amm-lending.tex`): `def:amm-pool-mechanics`, `mech:defi-lending-liquidation`.
+- `amm-lending` (Automated market makers: pricing, routing and liquidity-provider returns; `amm-lending.tex`): `def:amm-pool-mechanics`.
+- `defi-lending-liquidations` (DeFi lending, liquidations and price oracles; `defi-lending.tex`): `mech:defi-lending-liquidation`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `amm-lending`, `defi-lending-liquidations`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
 - `amm-lending` (Automated market makers: pricing, routing and liquidity-provider returns): no pathway note; related existing material in `onchain-protocols/amm-lending`, not reviewed as a complete treatment of the pathway.
 - `mev-block-building` (Transaction ordering, MEV and block building): content gap; no entry written.
 - `staking-restaking` (Staking, liquid staking and restaking): no pathway note; partial treatment in existing entries, not reviewed as complete: proof-of-stake validation, stake deposits and slashing (`def:distributed-ledger-applications` in `digital-assets-prediction-markets/distributed-ledgers`). Not written: staking yields; liquid staking and restaking.
-- `defi-lending-liquidations` (DeFi lending, liquidations and price oracles): pathway note [defi-lending-liquidations.md](defi-lending-liquidations.md), 1 entries listed, in `onchain-protocols/amm-lending`.
+- `defi-lending-liquidations` (DeFi lending, liquidations and price oracles): pathway note [defi-lending-liquidations.md](defi-lending-liquidations.md), 1 entries listed, in `onchain-protocols/defi-lending`.
 - `onchain-solvers-execution` (On-chain solver auctions and cross-domain execution): content gap; no entry written.
 - `protocol-risk-governance` (Protocol risk and governance: exploits, bridges, layer two and DAOs): content gap; no entry written.
 - `crypto-signals` (Crypto signals and on-chain evidence): content gap; no entry written.

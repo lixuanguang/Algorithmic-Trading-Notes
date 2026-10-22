@@ -1,0 +1,37 @@
+\subsection{Estimating value at risk and expected shortfall}
+
+\begin{qfmethod}[Estimating VaR and ES: historical simulation, filtered historical simulation, parametric dynamic models and Monte Carlo as overlapping choices, and the coverage backtest]\label{meth:var-es-estimation-methods}
+\qffield{Statement} Christoffersen's textbook \citep[2nd ed., 2012]{wide-christoffersen-elements} treats the methods as layers, not exclusive categories:
+\begin{itemize}
+\item \emph{Historical simulation} (HS) applies today's holdings to past prices. It assumes ``the distribution of tomorrow's portfolio returns \dots\ is well approximated by the empirical distribution of the past $m$ observations'' (chap.~2, sec.~2.1, PDF pp.~34--35). His conclusion is that ``HS is problematic for computing VaR'', which motivates dynamic models (chap.~2, overview). Weighted HS, which weights recent observations more, is an extension.
+\item \emph{Filtered historical simulation} (FHS) ``combines model-based methods of dynamic variance, such as GARCH, with model-free methods of distribution''. It scales the empirical distribution of standardised returns by the model's current volatility (chap.~6, PDF p.~134).
+\item \emph{Monte Carlo} and FHS are both used to simulate a dynamic risk model forward, for VaR and ES at horizons longer than a day, where closed forms are lacking. Monte Carlo ``relies on artificial random numbers'' from the model's assumed distribution, FHS ``uses historical random shocks'' (chap.~8, overview, PDF p.~179).
+\end{itemize}
+\emph{Backtesting.} With $I_{t+1}$ the indicator of a VaR violation at coverage rate $p$, $T_0$ and $T_1$ the numbers of non-violations and violations, the unconditional coverage test is
+\[ LR_{uc}=-2\ln\big[(1-p)^{T_0}p^{T_1}\big/\big((1-T_1/T)^{T_0}(T_1/T)^{T_1}\big)\big]\sim\chi^2_1, \]
+rejected at 10 percent above 2.7055. An independence test and a combined conditional-coverage test follow (chap.~13, PDF pp.~303--304).
+
+\qffield{Notation} Losses $L$ (positive numbers are losses). The \emph{confidence level} $c$ (for example 99 percent) and the \emph{exceedance} or \emph{coverage} probability $p=1-c$ (1 percent) name the same tail from opposite ends; Christoffersen's $p$ is the latter. $\mathrm{VaR}_c=\inf\{\ell:P(L\le\ell)\ge c\}$, the lower $c$-quantile of the loss. Expected shortfall is the average of VaR over the tail confidence levels,
+\[ \mathrm{ES}_c=\frac1{p}\int_c^1\mathrm{VaR}_u\,du=\frac1{p}\Big(E\big[L\,\mathbf 1\{L>\mathrm{VaR}_c\}\big]+\mathrm{VaR}_c\big(P(L\le\mathrm{VaR}_c)-c\big)\Big), \]
+the loss-side form of Acerbi and Tasche's tail mean and expected shortfall \citep[Definition~2.6, p.~5; Proposition~3.2, p.~6; eq.~(3.3), p.~7, stated for a profit $X$ and tail level $\alpha=p$]{acerbi-tasche-2001}. The second term gives the atom at VaR exactly the weight needed for the tail to carry probability $p$. $m$ is the HS window.
+
+\emph{Why not ``the expected loss given that VaR is exceeded''.} That phrase equals ES only when $L$ has no atom at $\mathrm{VaR}_c$, for example a continuous distribution; Acerbi and Tasche show that the tail conditional expectations can then differ from ES and fail sub-additivity (pp.~3--5 and Example~5.4). Example: a loss of 100 with probability 0.005, otherwise 0. At $c=99$ percent ($p=1$ percent), $\mathrm{VaR}=0$ because $P(L\le0)=0.995\ge0.99$. Then $\mathrm{ES}=(0.005\times100+0\times(0.995-0.99))/0.01=50$, while $E[L\mid L>\mathrm{VaR}]=100$ and $E[L\mid L\ge\mathrm{VaR}]=0.5$.
+
+In \emph{historical simulation} the same definition is the average of the worst $np$ losses of $n$, with a fractional weight on the last one when $np$ is not an integer: with $n=250$ at 99 percent, $np=2.5$ and $\mathrm{ES}=(\ell_{(1)}+\ell_{(2)}+0.5\,\ell_{(3)})/2.5$, not the mean of the worst two or three.
+
+\qffield{Conditions} HS needs no distributional assumption but assumes the window's returns are draws from tomorrow's distribution: a stationary, independent sample over $m$ days. FHS needs a correct variance model and i.i.d.\ standardised returns. Monte Carlo needs a fully specified distribution. The $\chi^2$ backtest is asymptotic and assumes independent violations under the null.
+
+\qffield{Practice} Synthetic check. Returns are simulated from a GARCH(1,1) with Student-$t$ shocks over 20{,}000 days, and 1 percent HS and FHS VaR are backtested, both on a 250-day window.
+\begin{itemize}
+\item HS violations occur on 1.62 percent of days, with $LR_{uc}=66$. Their probability the day after a violation is 5.8 percent: they cluster.
+\item FHS violations occur on 1.38 percent of days, with $LR_{uc}=25$, the 250-day empirical 1-percent quantile being imprecise. They do not cluster after a violation.
+\end{itemize}
+A second check verifies the discrete example above, the equality of the integral and fractional-mass forms, historical simulation with 1{,}000 and 250 observations, and agreement with the normal closed form $\varphi(z_{0.99})/0.01=2.665$ for a continuous law. Whether the methods are useful for dynamically updating risk assessments therefore needs this kind of evidence: forecasts with better coverage and independence. That a method can be updated is not enough. Here the evidence is only synthetic, in a world where the GARCH model is true.
+
+\qffield{Pitfalls} The book's ES backtesting and stress-testing chapters, the regulatory ES standard and Kupiec's 1995 paper (\nolinkurl{wide-kupiec-backtest}) are not covered here; extreme value methods for the far tail are in \hyperref[meth:extreme-value-tail-estimation]{extreme value tail estimation}. Page numbers are PDF pages; the printed numbering is offset by a varying amount.
+
+\qffield{See also} \hyperref[mod:factor-risk-model]{factor risk model}; \hyperref[def:common-investor-contagion]{common-investor contagion} (VaR-based leverage in August 2007).
+
+\qffield{Further reading} \nolinkurl{s7-qrm}; \nolinkurl{wide-kupiec-backtest}.
+
+\end{qfmethod}

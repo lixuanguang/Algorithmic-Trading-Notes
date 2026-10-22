@@ -1,0 +1,86 @@
+\subsection{Swaps, multi-curve valuation and clearing}
+
+\begin{qfmodel}[FRA and swap valuation with separate projection and discounting curves, and the backward-looking compounded SOFR period rate]\label{mod:multi-curve-fra-swap-valuation}
+\qffield{Statement} Hull values an interest rate swap as a portfolio of FRAs in three steps \citep[chap.~7, sec.~7.6, pp.~183--185]{s7-hulloptions}:
+\begin{enumerate}
+\item calculate forward rates for each unknown floating rate;
+\item set the swap's cash flows on the assumption that those rates equal the forwards;
+\item discount the net cash flows ``at the risk-free rate''.
+\end{enumerate}
+The risk-free zero curve comes from overnight indexed swaps. OIS rates to one year ``provide the risk-free zero rates that are equivalent to the underlying overnight rates''. Longer OIS rates define par bonds, and are bootstrapped like a par-yield curve (sec.~7.2, p.~175). The two curves can differ.
+\begin{itemize}
+\item \emph{An OIS or SOFR swap.} Projection and discounting both use the risk-free curve. The first floating rate ``is not really a forward rate. It is a blend of one-day rates already observed and the zero rate that corresponds to the remaining one-day rates in the period'' (p.~184).
+\item \emph{A LIBOR (term-rate) swap.} The forwards are estimated from Eurodollar futures, with a convexity adjustment, and from swap rates that make par swaps worth zero, while the cash flows are still discounted at the OIS-based risk-free rate (p.~184).
+\end{itemize}
+In symbols, take a receive-floating contract on reference index $j$ over $[T_1,T_2]$, with accrual $\tau$, fixed rate $K$, notional $N$ and fixing $L$ observed at $T_1$.
+\begin{itemize}
+\item \emph{End settlement (a swaplet, paid at $T_2$):} the payoff $N\tau(L-K)$ is worth $N\tau\,(F_j(T_1,T_2)-K)\,P_{\mathrm{OIS}}(T_2)$, where $F_j$ is read from index $j$'s own projection curve. The formula is exact when $F_j$ is \emph{defined} as the expectation of $L$ under the $T_2$-forward measure of the OIS curve, which is what a projection curve calibrated to OIS-discounted swaps delivers. This is how Hull's swap cash flows are valued, each paid at the end of its period.
+\item \emph{Start settlement (the conventional FRA, paid at $T_1$):} the end amount is discounted at the fixing itself, $N\tau(L-K)/(1+\tau L)$, as in Hull's footnote: ``the payment would be made at time two years and equal to the present value of \$125{,}000 discounted for three months at 3.5\%'' \citep[chap.~4, sec.~4.9, p.~111, n.~4]{s7-hulloptions}. Its value is $N P_{\mathrm{OIS}}(T_1)\,\mathbb{E}^{T_1}[\tau(L-K)/(1+\tau L)]$. If $L$ is deterministic, $L=F_j$, this is $N\tau(F_j-K)P_{\mathrm{OIS}}(T_1)/(1+\tau F_j)$.
+\end{itemize}
+The two conventions coincide in the single-curve case, the formula of \hyperref[mod:forward-rates-fra]{forward rates and FRAs}: there $1/(1+\tau L)$ is the discount factor from $T_2$ to $T_1$, so the start-settled payoff is replicated with bonds, $N[P(T_1)-(1+\tau K)P(T_2)]$, whatever $L$ does. With separate curves they differ: by $N\tau(F_j-K)[P_{\mathrm{OIS}}(T_1)/(1+\tau F_j)-P_{\mathrm{OIS}}(T_2)]$ even with deterministic rates. With a stochastic $L$, the deterministic substitution is no pricing theorem. The start-settled payoff is concave in $L$, and the $T_1$-forward mean of $L$ need not equal $F_j$, so its value carries a convexity adjustment that depends on $L$'s volatility and its correlation with OIS discount factors.
+
+Neither that adjustment nor the market's FRA conventions (ISDA FRA discounting, fixing and payment lags) are covered here; see \nolinkurl{s6-brigo} and \nolinkurl{wide-henrard-multicurve}. Bianchetti and Carlicchi's comparison table values a FRA as $NP_d(t,T_k)\omega[\tilde F_{x,k}(t)-K]\tau_{x,k}$, with the FRA rate $\tilde F_{x,k}(t)=E^{Q_d^{T_k}}[L_x(T_{k-1},T_k)\,|\,\mathcal F_t]$, the expectation of the fixing under the $T_k$-forward measure of the discounting curve, which ``is a martingale under such measure'' while the classical forward is not (p.~9, and Table~2, p.~11) \citep[arXiv 1103.2567, version of 28 March 2012, Table~2, p.~11]{gap-rates-multicurve-sabr}. That is the end-settled form above, with $F_j$ defined as that expectation; their table does not treat payment at $T_1$.
+
+For a backward-looking rate compounded over the period, $\prod_i(1+r_id_i)$ of the overnight forwards implied by a curve telescopes to $P(T_1)/P(T_2)$. So its forward is the simple forward from discount-factor ratios, before convexity, day-count and lookback adjustments.
+
+\qffield{Notation} $P_{\mathrm{OIS}}(T)$ discount factor from the OIS curve; $F_j(T_1,T_2)$ the forward for reference index $j$ (the $T_2$-forward expectation of its fixing); $L$ the fixing at $T_1$; $\mathbb{E}^{T}$ expectation under the $T$-forward measure of the OIS curve; $r_i$, $d_i$ the overnight rate and its day fraction.
+
+\qffield{Conditions} Conventions as Hull states them in 2021; SOFR replaced USD LIBOR after June 2023. Hull's calculations ``are approximate because they do not take account of holiday calendars and day count conventions'' (p.~185). Discounting at the OIS rate presumes cash-collateralised trades earning the overnight rate; uncollateralised trades bring funding and credit adjustments, which are not covered here.
+
+\qffield{Practice} Numerical checks. Hull's Example~7.1 is reproduced: paying 3 percent semiannually against six-month SOFR on \$100 million, with floating rates 2.50, 3.36 and 3.68 percent continuous (2.516, 3.388 and 3.714 semiannual), the swap is worth $+\$0.292$ million (p.~185). The first rate is $0.6\times2.3+0.4\times2.8=2.50$ percent, the blend of observed and expected overnight rates. With invented curves, a term reference 30 basis points above OIS and $K=3.4$ percent on \$100 million for a quarter starting in one year, an end-settled receive-floating contract is worth $-\$20{,}793$ on two curves and $-\$20{,}715$ discounted on the term curve. Projecting at OIS gives $-\$93{,}604$. The projection curve matters far more than the discounting curve for one period.
+
+Settled at the start under the deterministic substitution, the same contract is worth $-\$20{,}777.37$, against $-\$20{,}792.96$ settled at the end; the conventions coincide on one curve and diverge on two. With a lognormal $L$ of 20 percent volatility, deterministic OIS rates and $\mathbb{E}[L]=F_j$ (an invented illustration), the start-settled value falls to $-\$21{,}044.50$: the concavity term is larger than the settlement-convention gap.
+
+\qffield{Pitfalls} Hull's 11th edition still describes LIBOR forwards from Eurodollar futures, which ended with LIBOR (\hyperref[meth:policy-path-ois-futures]{LIBOR cessation}). Lookback, lockout and payment-delay conventions, and the futures convexity adjustment, are not covered here (\nolinkurl{s6-brigo}, \nolinkurl{gap-rates-sofr-futures-hedging}).
+
+\qffield{See also} \hyperref[mod:forward-rates-fra]{forward rates and FRAs}; \hyperref[def:interest-rate-measures]{interest-rate measures}; \hyperref[mech:otc-clearing-collateral]{OTC clearing and collateral}.
+
+\qffield{Further reading} \nolinkurl{s6-brigo}; \nolinkurl{gap-rates-sofr-futures-hedging}.
+
+\end{qfmodel}
+
+\begin{qfmechanism}[OTC derivatives clearing and collateral: central counterparties, bilateral ISDA/CSA clearing, variation and initial margin, and post-crisis reforms as Hull describes them]\label{mech:otc-clearing-collateral}
+\qffield{Statement} An OTC trade can be presented to a central counterparty (CCP) or cleared bilaterally \citep[chap.~1, ``Introduction'', sec.~1.2, p.~25]{s7-hulloptions}. A CCP accepting a trade between A and B becomes counterparty to both and takes on the credit risk of each; its members post initial margin and daily variation margin and contribute to a guaranty fund, and non-members clear through members (chap.~2, sec.~2.5, pp.~54--55). In the CPSS--IOSCO principles a CCP ``interposes itself between counterparties'', ensuring the performance of open contracts through novation or an open-offer system, and has ``the potential to reduce significantly risks to participants'' through multilateral netting and risk controls \citep[para.~1.13, p.~9]{exp-pfmi}. Bilaterally cleared trades are covered by a master agreement, usually ISDA's, with a credit support annex (CSA) requiring collateral, typically valued daily (p.~55).
+
+\qffield{Conditions} \emph{Reforms, as Hull reports them} (pp.~26 and~55--56): standardised OTC derivatives between U.S. financial institutions must, ``whenever possible'', trade on swap execution facilities; most parts of the world require CCP clearing of most standardised derivatives between financial institutions; trades must be reported to a repository; and from 2016 regulations required initial and variation margin for bilaterally cleared transactions between financial institutions, with initial margin held by a third party. Hull notes that ``financial institutions'' include banks, insurers, pension funds and hedge funds, while most non-financial corporations and some FX transactions are exempt (p.~56, n.~4). \emph{The U.S. primary rules}:
+\begin{itemize}
+\item \emph{Reporting.} A swap executed on a SEF or designated contract market is reported to a swap data repository by the facility, and an off-facility swap by its reporting counterparty, ``as soon as technologically practicable after execution'' for public dissemination \citep[17 CFR 43.3(a)]{ecfr-17cfr-cftc-swaps}. Full creation data follow ``not later than the end of the next business day'' after execution, or the second business day for a reporting counterparty that is not a swap dealer, major swap participant or clearing organisation (45.3(a)--(b)).
+\item \emph{Uncleared margin.} The CFTC's rules bind ``covered swap entities'', swap dealers and major swap participants without a prudential regulator; bank dealers fall under the prudential regulators' parallel rules (23.151). They do not apply where the counterparty qualifies for the end-user clearing exception or the cooperative exemption (23.150(b)). Variation margin is exchanged daily with swap entities and \emph{financial end users} (23.153). Initial margin is collected from \emph{covered counterparties}, which are swap entities and financial end users with \emph{material swaps exposure} (an average month-end notional above \$8 billion). It is posted to financial end users with material swaps exposure (23.152, 23.151). It is held by a custodian that is neither party nor an affiliate, and may not be rehypothecated (23.157).
+
+The definitions set a \$50 million initial-margin threshold amount(23.154). No transfer is required below a combined minimum transfer amount of \$500{,}000 (23.152(b)(3), 23.153(c), 23.151).
+\item \emph{Phase-in} (23.161). Both margins applied from 1 September 2016 where both groups' average daily notional exceeded \$3 trillion. Variation margin applied to all covered entities from 1 March 2017. Initial margin phased down through \$2.25 trillion (2017), \$1.5 trillion (2018), \$0.75 trillion (2019) and \$50 billion (1 September 2021), reaching all remaining covered counterparties on 1 September 2022.
+\end{itemize}
+Hull's ``from 2016'' is therefore the first phase only; initial margin reached the smallest covered counterparties six years later. His ``held by a third party'' matches 23.157. His exemption of ``most non-financial corporations'' corresponds to the end-user exception and to the definition of financial end user. \emph{Interest.} Initial margin in cash usually earns interest; futures variation margin does not, being daily settlement, while OTC variation margin in cash does, because OTC trades are not settled daily (p.~57). Securities used as collateral are subject to haircuts (p.~57).
+
+\qffield{Practice} Interpretation: clearing and collateral mitigate counterparty risk rather than eliminate it. Margin is sized to cover most, not all, losses on a default (Hull's clearing-house example aims at about 99 percent certainty, p.~54), a guaranty fund mutualises the rest, and the CCP itself concentrates risk; Hull cites Duffie and Zhu for the dependence of the benefit on the number of CCPs and the share of trades cleared (p.~57, n.~5). Collateral also creates funding and liquidity demands: LTCM had to post collateral on both legs of its trades in 1998 and, being highly leveraged, had to close out positions (Business Snapshot~2.2, p.~56).
+
+\emph{The uncleared-margin framework}. Covered entities must exchange full variation margin (a zero threshold) and two-way initial margin with a threshold ``not to exceed \texteuro50 million'' at the level of the consolidated group, with a minimum transfer amount of at most \texteuro500{,}000 (Requirement~2, PDF p.~14). Variation margin applied to all covered entities from 1 March 2017, and only new contracts are covered (Requirement~8, pp.~23--24) \citep[April 2020, Requirements~2 and~8, printed pp.~10 and~23--24]{bcbs-iosco-margin-2020}. These are the international standards; the U.S. prudential regulators' rule and EMIR implement them in their own terms.
+
+Initial margin was phased in by group notional of non-centrally cleared derivatives (month-end average for March--May): above \texteuro3.0 trillion from 1 September 2016, then \texteuro2.25 trillion (2017), \texteuro1.5 trillion (2018), \texteuro0.75 trillion (1 September 2019 to 31 August 2021) and \texteuro50 billion (1 September 2021 to 31 August 2022). From 1 September 2022 the threshold is \texteuro8 billion on a permanent basis (Requirement~8).
+
+\qffield{Pitfalls} Clearing does not eliminate credit risk; Hull's phrase is that it does so ``by requiring \dots\ margin'' (p.~25), which reduces the risk without removing it. Hull's account of the reforms carries the qualifiers ``whenever possible'' and ``in most parts of the world''. Futures-specific margin rules (maintenance margin, margin calls, interest on futures balances) are in \hyperref[mech:futures-margin-settlement]{futures margin and settlement}.
+
+\qffield{See also} \hyperref[mech:futures-margin-settlement]{futures margin and settlement}; \hyperref[def:derivative-contracts]{derivative contracts}; \hyperref[def:common-investor-contagion]{common-investor contagion} (margin calls in deleveraging).
+
+\qffield{Further reading} The BCBS--IOSCO margin framework and the prudential regulators' margin rules (12 CFR part~45 and parallel parts).
+
+\end{qfmechanism}
+
+\begin{qfdefinition}[Interest-rate swaps for macro use: fixed for floating, payer and receiver, the swap curve, clearing, and uses]\label{def:interest-rate-swaps}
+\qffield{Statement} An interest-rate swap exchanges fixed for floating interest payments on a notional; ``future LIBOR expectations drive [the] swap curve'', and ``while most trade OTC'' they are used to hedge interest-rate exposure and lock in spreads \citep[chap.~9, sec.\ ``Interest Rate Swaps'', PDF p.~256]{s7-gliner}. A \emph{payer} pays fixed and receives floating, gaining when rates rise; a \emph{receiver} receives fixed, gaining when rates fall. Today's U.S.\ dollar swaps reference SOFR, compounded in arrears (\hyperref[meth:policy-path-ois-futures]{LIBOR cessation}).
+
+\qffield{Notation} Par swap rate: the fixed rate that gives the swap zero value at inception; the floating leg follows the conventions of its \hyperref[def:interest-rate-measures]{reference rate}.
+
+\qffield{Conditions} SOFR conventions as of 2026; Gliner's LIBOR account as of 2014. The payer gains from a rise in the swap rate for the remaining term, not only in the floating rate; with SOFR, the floating amount is known only at the end of each period.
+
+\qffield{Practice} After Dodd-Frank, many interest rate swaps became centrally cleared and some trade on swap execution facilities, rather than on exchanges; clearing is covered in \hyperref[mech:otc-clearing-collateral]{OTC clearing and collateral}. Interest rate derivatives as a whole are the largest derivatives market by notional: the BIS reports that interest rate derivatives, ``the largest component of the global aggregate'' of OTC derivatives, had \$579 trillion of notional outstanding at end-June 2024 \citep[release of 21 November 2024]{bis-otc-2024h1}.
+
+\emph{Swaps within it}: the BIS's OTC derivatives dataset gives, at end-December 2025, interest rate derivatives of \$669.5 trillion (79.3 percent of all OTC notional), of which interest rate swaps \$545.0 trillion (81.4 percent), forward rate agreements 10.7 percent and options 7.9 percent; at end-June 2024 swaps were \$469.2 trillion, 81.1 percent of the \$578.8 trillion \citep[bulk file \nolinkurl{WS_OTC_DERIV2}, net-net notional, all reporting countries, counterparties, currencies and maturities]{bis-otc-dataset}. So interest rate swaps alone are the largest single OTC instrument by notional. Notional overstates economic exposure.
+
+\qffield{Pitfalls} Do not read a swap curve as pure expectations: it contains term premia and, against Treasuries, swap spreads with their own drivers.
+
+\qffield{See also} \hyperref[mod:forward-rates-fra]{forward rates and FRAs}; \hyperref[meth:policy-path-ois-futures]{OIS}; \hyperref[mech:otc-clearing-collateral]{OTC clearing}.
+
+\qffield{Further reading} The 2021 ISDA definitions \citep{gap-rates-isda-definitions}.
+
+\end{qfdefinition}

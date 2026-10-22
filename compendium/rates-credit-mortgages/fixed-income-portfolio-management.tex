@@ -1,6 +1,6 @@
-\section{Fixed-income portfolio management}
+\subsection{Fixed-income portfolio management}
 
-These entries manage bond portfolios against an index or against liabilities: the roles of bonds and how mandates are classified, an expected-return model, leverage and taxes, liability-driven investing with cash-flow matching, ladders and immunisation, indexed and enhanced-index portfolios, and positioning for and evaluating yield-curve views. Price, yield, duration and curve mechanics are earlier in this chapter. The original examples use an invented annual zero curve, 3.00 percent plus 0.15 percent per year to ten years and flat beyond; numbers are checked in \texttt{notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py}.
+These entries manage bond portfolios against an index or against liabilities: the roles of bonds and how mandates are classified, an expected-return model, leverage and taxes, indexed and enhanced-index portfolios, and positioning for and evaluating yield-curve views. Liability-driven investing with cash-flow matching, ladders and immunisation is in \hyperref[meth:liability-matching-ladders]{liability matching} and \hyperref[meth:immunisation-liabilities]{immunisation}, with asset--liability management. Price, yield, duration and curve mechanics are earlier in this chapter. The original examples use an invented annual zero curve, 3.00 percent plus 0.15 percent per year to ten years and flat beyond; numbers are checked in \texttt{notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py}.
 
 \begin{qfdefinition}[Fixed-income mandates: roles of bonds, liability-based against total-return mandates and the indexing-to-active spectrum, portfolio risk and correlation measures, bond-market liquidity, and an expected-return model]\label{def:fixed-income-mandates-return-model}
 \qffield{Statement} \emph{Roles.} Bonds diversify equity risk, provide income, hedge liabilities that are themselves rate-sensitive, and, if indexed, hedge inflation (Interpretation; \hyperref[def:asset-class-characteristics]{asset classes}). Which risk matters depends on the objective \citep[chap.~43, pp.~1081--1083, Exhibit~43-3]{s7-fabozzifixed}.
@@ -70,69 +70,6 @@ So taxable portfolios manage turnover, holding periods and tax lots, and harvest
 \qffield{Pitfalls} Measuring leverage by notional alone, ignoring duration and haircut terms. Holding municipals in a tax-exempt account. Harvesting a loss and rebuying the same bond within 30 days.
 
 \qffield{See also} \hyperref[def:short-term-funding-repo]{repo}; \hyperref[meth:forward-commitment-risk-overlays]{futures and swaps overlays}.
-
-\end{qfmethod}
-
-\begin{qfmethod}[Liability-driven investing, cash-flow matching and laddered portfolios: matching assets to liabilities, the least-cost dedicated portfolio, and ladders for liquidity and reinvestment diversification]\label{meth:liability-matching-ladders}
-\qffield{Statement} \emph{Liability-driven investing} manages assets against the liabilities they fund, and measures risk as the surplus, assets minus the present value of liabilities. The more uncertain the liabilities, the less a passive dedication strategy works and the more active elements are added \citep[chap.~6, sec.~4.1, pp.~346--348]{managing-investment-portfolios-2007}. For a pension fund, a short portfolio may look safe on market value but is risky against long liabilities \citep[chap.~43, p.~1082]{s7-fabozzifixed}.
-
-\emph{Cash-flow matching} (cash-flow driven investment, CDI) funds a liability stream from the portfolio's coupons and principal \citep[chap.~51, pp.~1271--1274]{s7-fabozzifixed}.
-\begin{itemize}
-\item It suits the most certain liabilities, a pension plan's retired lives.
-\item It uses option-free bonds within the plan's credit and sector limits.
-\item An optimiser leans towards longer, higher-yielding bonds to cut cost.
-\item Any excess cash flows are reinvested, and the less excess the better.
-\end{itemize}
-An exact match with STRIPS is possible but costly (defeasance). Compared with multiple-liability immunisation, cash-flow matching needs no duration rebalancing for the matched cash flows and is easier to understand, but it usually costs more (MIP, sec.~4.2, pp.~365--368; \hyperref[meth:immunisation-liabilities]{immunisation}).
-
-\emph{Ladders.} A ladder spreads its holdings across maturities. Fabozzi defines it as ``approximately equal dollar amounts (market values) in each maturity sector'' and shows a 1997 Treasury ladder whose key-rate durations are roughly equal ``for all the key maturities from year 2 on'', against a barbell's concentration at the wings and a bullet's at one point \citep[chap.~7, p.~207]{fixed-income-analysis-2007}. That flat profile belongs to his portfolio and his grid of unevenly spaced key rates; equal amounts do not by themselves give equal key-rate durations. Measured against each annual zero rate, a rung's sensitivity grows with its maturity, so a ladder of equal face or equal market value has a key-rate profile that rises with maturity and carries slope risk (Practice). Three allocations differ: \emph{equal face} (the same principal maturing each year), \emph{equal market value} (Fabozzi's definition) and \emph{equal risk} (the same dollar duration in each rung, which needs much more in the short rungs). Only the last approaches a flat profile, at the cost of a shorter duration. Insurers use balanced or laddered maturity schedules to ensure a steady rollover of assets for liquidity (MIP, chap.~3, p.~117). A maturing rung provides cash each year, and reinvestment is spread across rate environments. \emph{Risk and return} (Interpretation): a ladder's duration is near the middle of its range, its convexity lies between a bullet's and a barbell's, and its return is spread across the curve's segments. Its slope exposure must be measured from its key-rate profile, not assumed away. \emph{Limitations}: it matches no particular liability, it gives up any yield pick-up from concentrating where the curve is steepest, its rungs are reinvested at whatever rates prevail, and in credit it needs enough issues per rung to diversify.
-
-\qffield{Practice} \emph{Original.}
-\begin{itemize}
-\item \emph{Cash-flow matching.} Liabilities of 10, 10, 12, 12 and 15 million fall due in years 1 to 5. A least-cost portfolio of five annual-coupon bonds (1 to 5 years, 3.0 to 4.0 percent coupons) meets every payment exactly and costs 52.80 million, the liabilities' present value on the curve, because with one bond per date the match is exact. With fewer bond maturities than liability dates, the optimiser would hold surplus cash at some dates and cost more.
-\item \emph{Ladder.} A ladder of equal face values maturing in years 1 to 10 has a duration of 4.69 and returns a tenth of its face every year to spend or reinvest. Its key-rate durations to the annual zero rates rise from 0.1304 at year 1 to 0.6363 at year 10 (0.2456, 0.3455, 0.4298, 0.4989, 0.5532, 0.5932, 0.6197, 0.6337 between) and sum to 4.686245. A steepening twist from $-50$ basis points at year 1 to $+50$ at year 10 lowers its value by 0.493 percent by full repricing (0.510 percent to first order). Equal market value per rung barely changes this (0.13 to 0.63; $-0.48$ percent in the twist). Equal dollar duration per rung flattens the profile to 0.25--0.35 and turns the twist result into $+0.10$ percent, but the duration falls to 3.14 and 32 percent of the value sits in the one-year rung. Key-rate figures are checked against the analytic $tC_t(1+z_t)^{-(t+1)}/V$.
-\end{itemize}
-
-\qffield{Conditions} Matching needs projected liabilities; actuarial updates require rebalancing. Callable and prepayable bonds disturb the cash flows. Ladders suit investors who value liquidity and simplicity over matching a particular liability or benchmark.
-
-\qffield{Pitfalls} Cash-flow matching uncertain active-member liabilities. Measuring a pension portfolio's risk on market value. Treating a ladder as immunised: its duration still has to match the liabilities. Assuming that equal amounts per maturity mean equal key-rate durations or no slope risk.
-
-\qffield{See also} \hyperref[meth:immunisation-liabilities]{immunisation}; \hyperref[def:fixed-income-mandates-return-model]{mandates}.
-
-\end{qfmethod}
-
-\begin{qfmethod}[Immunising single and multiple liabilities: duration matching and its conditions, evaluating strategies under parallel shifts and twists, rebalancing, contingent immunisation, and the risks of liability-relative management]\label{meth:immunisation-liabilities}
-\qffield{Statement} \emph{Single liability.} Immunisation locks in a return over a horizon by balancing price risk against reinvestment risk. It needs (1) a portfolio duration equal to the horizon and (2) a present value equal to the liability's. It protects against parallel shifts, and duration drifts with time and rates, so the portfolio must be rebalanced, trading transaction costs against duration wander \citep[chap.~6, sec.~4.1.1, pp.~348--351]{managing-investment-portfolios-2007}. Dollar duration (duration $\times$ value $\times$ 0.01) is restored by scaling positions by the ratio of the original to the new dollar duration (pp.~351--353).
-
-\emph{Risks.} Interest-rate risk is the largest. Contingent-claim risk (calls and prepayments) and cap risk on floaters add to it (pp.~358--359). Non-parallel shifts create immunisation risk, measured by the dispersion of the portfolio's cash flows around the horizon: a bullet is less exposed than a barbell, and a zero maturing at the horizon not at all (pp.~360--361).
-
-\emph{Multiple liabilities.} Fong and Vasicek's conditions for parallel shifts are that the portfolio's composite duration equals the liabilities' and that the distribution of the assets' durations is wider than the liabilities' (pp.~362--363). Matching the average duration alone is not sufficient.
-
-\emph{Implementation.} Single and multiple liabilities can be met with cash bonds (zeros, bullets, dedicated portfolios), or by holding physical assets and adjusting duration with interest-rate swaps or futures, a derivatives overlay that uses less capital but adds basis, counterparty and margin risk (\hyperref[meth:forward-commitment-risk-overlays]{rate overlays}). A single liability is best met by a matched zero or a low-dispersion bullet; multiple liabilities need the Fong--Vasicek conditions or cash-flow matching, which costs more but needs less rebalancing (\hyperref[meth:liability-matching-ladders]{cash-flow matching}). \emph{Contingent immunisation.} An active portfolio is managed until its return falls to a safety-net level, then immunised. It is possible when the available immunised rate exceeds the required rate; the difference is the cushion spread (p.~357).
-
-\qffield{Practice} \emph{Reproduced} (MIP).
-\begin{itemize}
-\item \emph{GIC.} A five-year GIC promising 7.5 percent on 9{,}642{,}899 needs 13{,}934{,}413 at the horizon.
-\item \emph{Contingent immunisation.} 500 million with a 3 percent safety net must reach 546.72 million in three years. Immunising at 4.75 percent needs 474.90 million, a cushion of 25.10 million.
-\item \emph{Rebalancing.} Dollar durations of 53{,}548, 12{,}054 and 46{,}343 fall to 43{,}465, 3{,}063 and 36{,}049 a year later, a rebalancing ratio of 1.356, so each position grows 35.6 percent. MIP reports the portfolio's dollar duration as 37{,}315 and 27{,}526, which are averages of the three; the sum, 111{,}945, is the portfolio's dollar duration, and the ratio is unaffected. The cash needed is 1{,}077{,}796, or MIP's 1{,}079{,}012 with the ratio rounded to 1.356.
-\end{itemize}
-
-\emph{Evaluating strategies} (original; a flat 5 percent annual curve, a target of 100 in five years).
-\begin{itemize}
-\item \emph{Parallel shifts.} A five-year zero meets the target exactly. A barbell of a one-year zero and a ten-year 5 percent bond (56.3 percent by value), matched to Macaulay duration 5, ends at 100.32 for $-200$ basis points and 100.31 for $+200$: always at or above target, because of convexity. A five-year 5 percent coupon bond, matched in maturity but not duration, ends at 99.15 for $-200$ and 100.88 for $+200$.
-\item \emph{Twist.} If reinvestment rates fall 100 basis points while long rates rise 100, the barbell ends at 96.26, short of the target, and the zero is untouched.
-\item \emph{Selection.} A single known liability is best met by a matched zero or a low-dispersion bullet; a barbell is chosen only if the manager wants convexity and accepts twist risk.
-\end{itemize}
-
-\emph{Multiple liabilities} (original). Liabilities of 10 million at 2, 5 and 8 years have a present value of 23.67 million and a duration of 4.71. Zeros at 1 and 12 years with the same present value and duration bracket every liability date. The surplus stays non-negative for parallel shifts from $-200$ to $+200$ basis points, but a twist (rates beyond five years $+100$, within five years $-100$) leaves a deficit of 0.77 million.
-
-\emph{Contingent trigger} (original, MIP's case). If the 500 million is held in a ten-year 4.75 percent bond, the cushion is exhausted when its yield rises to 5.80 percent, about 105 basis points. The manager must then immunise.
-
-\qffield{Conditions} Classical immunisation assumes parallel shifts, no default, and rebalancing; spreads and curve twists break it. Contingent immunisation needs continuous monitoring and liquid instruments to switch.
-
-\qffield{Pitfalls} Matching maturity instead of duration. Matching duration but with a widely dispersed portfolio against a single liability. Forgetting to rebalance as time passes and rates move. Letting a contingent portfolio fall through its trigger in a gap move.
-
-\qffield{See also} \hyperref[meth:bond-return-decomposition]{duration and the horizon}; \hyperref[meth:liability-matching-ladders]{cash-flow matching}.
 
 \end{qfmethod}
 

@@ -26,15 +26,18 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Credit risk and credit analysis* (`credit-risk-analysis.tex`): `def:credit-risk-components`, `meth:corporate-credit-analysis`, `meth:risky-bond-cva`, `meth:rating-migration-returns`, `mod:structural-reduced-form-credit`, `meth:credit-spread-term-structure`.
-- *Credit default swaps* (`credit-default-swaps.tex`): `mech:cds-contract-credit-events`, `def:cds-contract-features`, `meth:cds-pricing`, `meth:cds-strategies`.
-- *Credit portfolio management* (`credit-portfolio-management.tex`): `meth:credit-spread-portfolio-risk`, `meth:credit-selection-positioning`, `meth:credit-liquidity-tail-risk`, `meth:credit-cds-international-structured`.
+- `credit-models-default` (Credit models, default prediction and credit portfolios; `credit-risk-analysis.tex`): `def:credit-risk-components`, `meth:corporate-credit-analysis`, `meth:risky-bond-cva`, `meth:rating-migration-returns`, `mod:structural-reduced-form-credit`, `meth:credit-spread-term-structure`.
+- `corporate-credit-cds` (Corporate bonds and credit derivatives):
+  - *Credit default swaps* (`credit-default-swaps.tex`): `mech:cds-contract-credit-events`, `def:cds-contract-features`, `meth:cds-pricing`, `meth:cds-strategies`.
+  - *Credit portfolio management* (`credit-portfolio-management.tex`): `meth:credit-spread-portfolio-risk`, `meth:credit-selection-positioning`, `meth:credit-liquidity-tail-risk`, `meth:credit-cds-international-structured`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `credit-models-default`, `corporate-credit-cds`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `credit-models-default` (Credit models, default prediction and credit portfolios): no pathway note; related existing material in `corporate-credit-capital/credit-risk-analysis`, `corporate-credit-capital/credit-portfolio-management`, not reviewed as a complete treatment of the pathway.
 - `corporate-credit-cds` (Corporate bonds and credit derivatives): pathway note [corporate-credit-cds.md](corporate-credit-cds.md), 18 entries listed, in `corporate-credit-capital/credit-default-swaps`, `corporate-credit-capital/credit-portfolio-management`, `corporate-credit-capital/credit-risk-analysis`, `portfolio-risk-financing/counterparty-xva`.

@@ -129,11 +129,14 @@ Cross-referenced, not owned here: `def:derivative-contracts`, `res:cost-of-carry
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
 
-- `curve-term-structure` (Yield-curve construction and term-structure models): pathway note [curve-term-structure.md](curve-term-structure.md), 2 entries listed, in `rates-credit-mortgages/interest-rates`, `rates-credit-mortgages/monetary-policy-curves`.
-- `rate-derivatives` (Interest-rate derivatives, volatility and RFR conventions): pathway note [rate-derivatives.md](rate-derivatives.md), 2 entries listed, in `rates-credit-mortgages/monetary-policy-curves`, `volatility-options/option-pricing`.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `bond-pricing-rate-risk`, `curve-term-structure`, `rate-derivatives`, `monetary-policy-curve`, `bond-risk-premia`, `rates-inflation`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
+- `bond-pricing-rate-risk` (Bond instruments, pricing, yields and interest-rate risk): added by the guide revision of 22 October 2026 (`8302467`); no pathway note; its entries are in `rates-credit-mortgages/interest-rates`, `rates-credit-mortgages/bond-instruments-markets`, `rates-credit-mortgages/fixed-income-universe`, `rates-credit-mortgages/bond-pricing-yields`, `rates-credit-mortgages/interest-rate-risk`.
+- `curve-term-structure` (Yield-curve construction and term-structure models): pathway note [curve-term-structure.md](curve-term-structure.md), 2 entries listed, in `rates-credit-mortgages/curve-trades`, `rates-credit-mortgages/gsw-treasury-curve`.
+- `rate-derivatives` (Interest-rate derivatives, volatility and RFR conventions): pathway note [rate-derivatives.md](rate-derivatives.md), 2 entries listed, in `rates-credit-mortgages/rate-swaps-clearing`, `volatility-options/option-pricing`.
 - `monetary-policy-curve` (Monetary policy, balance-sheet policy and the yield curve): pathway note [monetary-policy-curve.md](monetary-policy-curve.md), 6 entries listed, in `rates-credit-mortgages/monetary-fiscal-policy`, `rates-credit-mortgages/monetary-policy-curves`.
-- `bond-risk-premia` (Bond risk premia, predictability and systematic rates strategies): no pathway note; related existing material in `rates-credit-mortgages/term-structure-returns`, `rates-credit-mortgages/fixed-income-portfolio-management`, not reviewed as a complete treatment of the pathway.
-- `rates-inflation` (Inflation-linked bonds, real yields and breakevens): pathway note [rates-inflation.md](rates-inflation.md), 1 entries listed, in `rates-credit-mortgages/monetary-policy-curves`.
+- `bond-risk-premia` (Bond risk premia, rates strategies and fixed-income portfolio management): no pathway note; related existing material in `rates-credit-mortgages/term-structure-returns`, `rates-credit-mortgages/fixed-income-portfolio-management`, not reviewed as a complete treatment of the pathway. Broadened by the guide revision of 22 October 2026 (`8302467`) to cover fixed-income portfolio management; its entries are in `rates-credit-mortgages/curve-trades`, `rates-credit-mortgages/fixed-income-portfolio-management`.
+- `rates-inflation` (Inflation-linked bonds, real yields and breakevens): pathway note [rates-inflation.md](rates-inflation.md), 1 entries listed, in `rates-credit-mortgages/tips-breakevens`.
 
 ## Entry backlog
 

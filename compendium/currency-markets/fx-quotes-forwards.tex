@@ -1,0 +1,88 @@
+These entries cover the foreign exchange market's arithmetic: cross and forward rates, bid--offer spreads, arbitrage and the value of a forward. Quotes follow the convention in \hyperref[def:fx-market-real-exchange-rates]{the FX market}; numbers are checked in \texttt{notes/artefacts/fx-mechanics-determination/fx-checks.py}.
+
+\begin{qfmethod}[Cross rates and forward rates: computing a cross rate from two quotes, forward points and percentage premiums, covered interest arbitrage and the forward rate, and money-market day counts]\label{meth:cross-forward-rates}
+\qffield{Statement} \emph{Cross rates} \citep[chap.~9, sec.~3.2, pp.~488--492]{economics-investment-decision-makers-2013}. Given A/B and B/C, the cross rate is $A/C=(A/B)\times(B/C)$; a quote may need inverting first so that the common currency cancels. A cross quote inconsistent with its components offers \emph{triangular arbitrage}.
+
+\emph{Forward points} (sec.~3.3, pp.~492--494) are the forward rate minus spot, scaled to the last decimal of the spot quote ($\times10{,}000$, or $\times100$ for yen). Positive points mean the base currency is at a \emph{forward premium}, negative at a \emph{discount}. The forward rate is spot plus points$/10{,}000$, or spot times $(1+\text{percentage premium})$. Points grow with maturity and with the interest differential.
+
+\emph{Covered interest parity} (pp.~494--496). A domestic deposit and a foreign deposit hedged with a forward are both riskless, so they must earn the same:
+\[
+(1+i_d)=S_{f/d}(1+i_f)\frac{1}{F_{f/d}},\qquad F_{f/d}=S_{f/d}\frac{1+i_f}{1+i_d}.
+\]
+Regardless of quoting convention, the higher-interest currency trades at a forward discount and the lower-interest currency at a premium (p.~496). A forward that breaks the relation is an arbitrage: borrow in the currency whose hedged return is lower, convert, deposit and hedge. With money-market rates the interest factors are $1+i\tau$, each with its own day count (act/360 or act/365) for the same calendar period (\hyperref[mod:fx-carry-trade]{carry conventions}).
+
+\qffield{Notation} $S_{f/d}$, $F_{f/d}$ spot and forward, foreign currency per domestic unit (EIDM's derivation); $i_d,i_f$ rates for the period; $\tau$ accrual fraction.
+
+\qffield{Conditions} CIP holds closely among liquid currencies with free capital flows but not exactly: since 2008 the cross-currency basis has been non-zero, especially across quarter-ends (\hyperref[ev:cip-deviations]{CIP deviations}). Forward points quoted by dealers have their own bid--offer.
+
+\qffield{Practice} \emph{Reproduced}:
+\begin{itemize}
+\item CAD/EUR $=1.0460\times1.2880=1.3472$; JPY/CAD $=85.50/1.0460=81.74$; a dealer quoting 82.00 offers 0.26 yen per Canadian dollar of arbitrage (pp.~488--489);
+\item GBP/EUR $=1.3960/1.5850=0.8808$ (Example~9-5, p.~492);
+\item 12-month points of $-26.5$ on spot 1.2875 give 1.28485; 3-month points of $-5.5$ give 1.28695, a discount of 0.043 percent (pp.~492--494);
+\item with spot 1.6535 (f/d), a 3.50 percent domestic and 5.00 percent foreign rate, the forward is 1.6775; at a quoted 1.6900 the hedged foreign deposit earns 2.73 percent, so borrowing abroad and depositing at home earns 77 basis points with no capital (p.~495).
+\end{itemize}
+\emph{Original.} For 90 days with the dollar at 4.30 percent act/360 and sterling at 3.90 percent act/365, a spot of 1.2700 dollars per pound gives a forward of 1.27143 (+14.3 points); the hedged sterling deposit then earns exactly the dollar rate.
+
+\qffield{Pitfalls} Multiplying quotes whose common currency does not cancel. Adding points without the sign or the right scale. Treating the forward premium as a forecast (\hyperref[res:international-parity-conditions]{parity conditions}). Mixing day counts.
+
+\qffield{See also} \hyperref[meth:fx-bid-offer-triangular-arbitrage]{bid--offer and triangular arbitrage}; \hyperref[meth:currency-forward-mark-to-market]{forward valuation}; \hyperref[meth:forward-price-value-lifecycle]{forward price and value}; \hyperref[meth:cross-currency-basis-swaps]{cross-currency basis swaps} (parity with a basis on one leg).
+
+\end{qfmethod}
+
+\begin{qfmethod}[Bid--offer spreads and triangular arbitrage: what drives FX spreads, the two arbitrage constraints on quotes, implied cross bid--offers, and identifying and computing a triangular arbitrage]\label{meth:fx-bid-offer-triangular-arbitrage}
+\qffield{Statement} \emph{Spreads} \citep[chap.~10, sec.~2, pp.~531--533]{economics-investment-decision-makers-2013}. A dealer quotes clients a bid and offer for the base currency and lays off the risk in the interbank market. The client spread depends on the interbank spread, which is wider for less traded pairs, outside the overlap of the main trading centres and in volatile markets; on the size of the trade; and on the client relationship and credit. Retail spreads can be hundreds of pips against one or two interbank.
+
+\emph{Arbitrage constraints} (sec.~2.1, pp.~533--535):
+\begin{enumerate}
+\item a dealer's bid cannot exceed the interbank offer, nor its offer be below the interbank bid;
+\item a cross bid cannot exceed the implied cross offer from the component quotes, nor the cross offer be below the implied bid.
+\end{enumerate}
+\emph{Implied cross bid--offers.} Write the trade (``sell JPY, buy EUR'') as a chain of trades in the component pairs and use, for each leg, the side the trader faces: buying a base currency pays the offer, selling it hits the bid. When a component must be inverted, its bid becomes the inverse of its offer. Thus $\text{JPY/EUR}_{\text{offer}}=\text{JPY/USD}_{\text{offer}}\times\text{USD/EUR}_{\text{offer}}$, while $\text{GBP/EUR}_{\text{bid}}=(1/\text{USD/GBP}_{\text{offer}})\times\text{USD/EUR}_{\text{bid}}$.
+
+\emph{Identifying arbitrage}. If a dealer's cross offer is below the implied bid, buy from the dealer and sell through the components; if its bid is above the implied offer, do the reverse. Profit per unit is the gap.
+
+\qffield{Notation} Bid $<$ offer always; a pip is the last quoted decimal (0.0001, or 0.01 for yen).
+
+\qffield{Conditions} Arbitrage requires simultaneous execution at the quoted prices and wholesale access; in practice violations are eliminated almost at once by traders and algorithms (p.~535).
+
+\qffield{Practice} \emph{Reproduced}:
+\begin{itemize}
+\item USD/EUR 1.3649/1.3651 and JPY/USD 76.64/76.66 imply JPY/EUR 104.61/104.65 (p.~534);
+\item USD/GBP 1.5644/1.5646 inverts to GBP/USD 0.63914/0.63922, implying GBP/EUR 0.8724/0.8726 (p.~535);
+\item a dealer's 1.3652/1.3654 against an interbank 1.3649/1.3651 lets anyone buy euros at 1.3651 and sell to the dealer at 1.3652, one pip or \$100 per euro million (p.~533);
+\item Example~10-1 (pp.~536--537): SEK/EUR 10.0077/10.0094 and JPY/CAD 85.76/85.80; a dealer quoting JPY/CAD 85.73/85.75 sells Canadian dollars at 85.75, below the implied bid of 85.76: buy from the dealer, sell interbank, 0.01 yen per dollar; a quote of 85.74/85.81 brackets the implied rates and offers none.
+\end{itemize}
+
+\qffield{Pitfalls} Using mid rates to test for arbitrage. Forgetting that inverting swaps bid and offer. Ignoring the size and time of day at which a quoted spread applies.
+
+\qffield{See also} \hyperref[meth:cross-forward-rates]{cross rates}; \hyperref[def:fx-market-structure]{FX market structure}; \hyperref[def:arbitrage]{arbitrage}.
+
+\end{qfmethod}
+
+\begin{qfmethod}[Currency forwards: spot, forward and forward premium, all-in rates, closing out with an offsetting forward, the cash flow at settlement and its present value]\label{meth:currency-forward-mark-to-market}
+\qffield{Statement} \emph{Forward premium} \citep[chap.~10, sec.~2.2, pp.~538--542]{economics-investment-decision-makers-2013}: the forward rate differs from spot by points that reflect the interest differential over the term, from covered interest parity; the \emph{all-in} forward rate is spot plus scaled points, taken on the bid or offer side as the trade requires. At inception a forward is worth zero; afterwards its value changes with the spot rate and with interest rates in both currencies.
+
+\emph{Marking to market} (pp.~542--543), in four steps:
+\begin{enumerate}
+\item create an equal and offsetting forward for the same settlement date (sell what was bought);
+\item find its all-in rate for the remaining term: use the bid if the base currency is being sold, the offer if it is being bought;
+\item compute the settlement cash flow, the contract size times the difference between the original and offsetting rates, which arises in the price currency because the base-currency amounts net to zero; a gain if the currency one was long has appreciated;
+\item discount that cash flow to today at the interest rate of its currency for the remaining term.
+\end{enumerate}
+
+\qffield{Notation} Contract size $N$ in the base currency; original rate $F_0$, offsetting all-in rate $F_t$; remaining days $D$; the value of a long base-currency forward is $N(F_t-F_0)/(1+i_{\text{price}}D/360)$.
+
+\qffield{Conditions} Money-market discounting with the stated basis; credit and collateral effects ignored. Libor was the discount rate in EIDM's examples; current practice uses overnight-rate curves.
+
+\qffield{Practice} \emph{Reproduced}:
+\begin{itemize}
+\item long GBP 10 million against AUD at 1.6100, closed with three months left when spot is 1.6210/1.6215 and three-month points 130/140: the offsetting sale is at the bid, 1.6340; the settlement cash flow is AUD 240{,}000, worth AUD 237{,}154 today at 4.80 percent (pp.~542--543);
+\item Example~10-3 (pp.~544--545): short NZD 10 million at 0.7900 USD/NZD, closed by buying NZD three months forward at the offer, $0.7830-0.0010=0.7820$: USD 80{,}000 at settlement, USD 79{,}938 today at 0.31 percent, discounted in dollars because the cash flow is in dollars.
+\end{itemize}
+
+\qffield{Pitfalls} Using the wrong side of the quote. Discounting at the rate of the wrong currency. Treating the forward's value as the undiscounted settlement difference.
+
+\qffield{See also} \hyperref[meth:cross-forward-rates]{forward rates}; \hyperref[meth:currency-hedging-programme]{hedge ratios and rolling}; \hyperref[meth:forward-price-value-lifecycle]{forward price and value}.
+
+\end{qfmethod}

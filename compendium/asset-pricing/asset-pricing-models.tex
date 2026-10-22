@@ -1,6 +1,4 @@
-\section{Systematic risk, the CAPM and factor models}
-
-These entries take the \hyperref[meth:capital-allocation-line]{capital allocation line} to equilibrium and then to factor models. The regression example uses twelve invented months declared in \hyperref[meth:capm-regression]{CAPM regression}; the cost-of-equity example uses inputs published for 1~October~2026. The other examples are invented, and none is evidence about a security or a market.
+These entries take the \hyperref[meth:capital-allocation-line]{capital allocation line} to equilibrium and then to factor models. The cost-of-equity example uses inputs published for 1~October~2026. The other examples are invented, and none is evidence about a security or a market. Estimating and testing the models is in \hyperref[meth:capm-regression]{CAPM regression} and \hyperref[def:factor-model-types]{factor model types}.
 
 \begin{qfmechanism}[Systematic and nonsystematic risk: splitting an asset's variance by its covariance with a common return, why diversification removes only the residual part, and the model-dependent claim that only systematic exposure earns a risk premium]\label{mech:systematic-risk-pricing}
 \qffield{Statement} Sharpe regards the scatter of an asset's returns $R_i$ around their mean as evidence of its total risk. Part of the scatter is due to the asset's relation with the return $R_g$ of an efficient combination, measured by the slope $B_{ig}$; ``it is this component of the asset's total risk which we term the \emph{systematic} risk'', and the remainder, uncorrelated with $R_g$, ``is the unsystematic component''. The part of an asset's risk due to its correlation with the combination ``cannot be diversified away when the asset is added to the combination'', so prices adjust until $B_{ig}$ is directly related to expected return \citep[\emph{Journal of Finance} 19(3), 1964, pp.~438--440 and Fig.~8]{capital-asset-prices-1964}.
@@ -90,42 +88,6 @@ Black's version drops risk-free borrowing and lending and allows unrestricted sh
 
 \end{qfmodel}
 
-\begin{qfmethod}[Estimating CAPM alpha and beta by regression: aligned excess returns, closed forms and an independent least-squares check, units, fit and uncertainty, raw-return against excess-return regressions, and why a fitted alpha is not skill]\label{meth:capm-regression}
-\qffield{Statement} The Sharpe--Lintner CAPM implies a time-series test. When an asset's excess return is regressed on the market's excess return, ``Jensen's alpha'', the intercept, ``is zero for each asset'' \citep[\emph{JEP} 18(3), 2004, p.~32]{capm-theory-evidence-2004}:
-\[ R_{it}-R_{ft}=\alpha_i+\beta_{iM}(R_{Mt}-R_{ft})+\varepsilon_{it}. \] Least squares estimates the coefficients as in \hyperref[meth:simple-regression-estimation]{simple regression}: $\hat\beta=S_{xy}/S_{xx}$ and $\hat\alpha=\bar y-\hat\beta\bar x$, with $y$ the asset's and $x$ the market's excess return. Huberman and Wang give the same estimators for a factor regression \citep[FRBNY Staff Report 216, August 2005, sec.~7, eqs.~(14)--(17)]{arbitrage-pricing-review-2005}.
-
-\qffield{Data} Invented and declared: twelve months of total returns in percent, typed by hand, for a stock S, a market index M and a one-month Treasury bill whose rate rises through the year. Each row is the same calendar month for all three, and the bill rate is the return on a bill held over that month. S was built as $r_f+0.1+1.25(R_M-r_f)$ plus hand-chosen residuals, rounded; the estimates do not use this.
-
-\begin{center}\small
-\begin{tabular}{@{}lrrrrrrrrrrrr@{}}
-\toprule
-Month & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
-\midrule
-$R_S$ & 3.6 & $-3.3$ & 2.6 & 2.8 & $-3.6$ & 0.5 & 6.6 & $-0.2$ & $-0.8$ & $-3.0$ & 3.7 & 1.6 \\
-$R_M$ & 2.1 & $-1.4$ & 3.0 & 0.8 & $-2.6$ & 1.9 & 4.2 & $-0.7$ & 1.1 & $-3.3$ & 2.5 & 0.6 \\
-$R_f$ & 0.30 & 0.31 & 0.32 & 0.33 & 0.35 & 0.36 & 0.38 & 0.39 & 0.40 & 0.41 & 0.42 & 0.42 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\qffield{Practice} \emph{Estimates.} $\hat\beta=1.2548$ and $\hat\alpha=0.1108$ percent a month. The closed forms, a matrix least-squares solution and a regression package agree, and $\hat\beta$ equals the sample covariance of the excess returns divided by the market's sample variance with either denominator. The residual standard deviation is 1.447 percent a month and $R^2=0.813$. The standard errors are 0.190 for $\hat\beta$ and 0.422 for $\hat\alpha$, with 10 degrees of freedom. The 95 percent intervals are 0.83 to 1.68 for beta and $-0.83$ to $1.05$ for alpha ($t=0.26$).
-
-\emph{Interpretation.} Beta is unit-free: in this sample a month in which the market's excess return was one percentage point higher came with a stock excess return about 1.25 points higher on average. Alpha is in percent a month; twelve times it is 1.33 percent a year, with an interval of $-9.95$ to $12.61$. $R^2$ is the share of the sample variance of the stock's excess return associated with the market: 81 percent systematic and 19 percent residual (\hyperref[mech:systematic-risk-pricing]{systematic risk}).
-
-\emph{Raw against excess returns.} Regressing raw $R_S$ on raw $R_M$, the market model, gives $\hat a=0.0158$ and $\hat b=1.2574$. The intercepts differ by $-0.0949$, of which $(1-\hat\beta)\bar R_f=-0.0932$ comes from the risk-free rate's place in the model and $-0.0017$ from its variation over the year. With a constant risk-free rate the two slopes coincide and $\hat a=\hat\alpha+(1-\hat\beta)R_f$ exactly. A raw intercept is thus not Jensen's alpha: for a high-beta asset it is lower by about $(\beta-1)R_f$, and the gap grows with the level of rates (Interpretation).
-
-\qffield{Conditions} \emph{Alignment.} The three series must cover the same periods, use total returns in the same currency, and use a bill rate for the same holding period, known at its start. The market index is a proxy, and its choice changes beta. The standard errors assume the conditions in \hyperref[meth:regression-diagnostics-anova]{regression diagnostics}: errors that are independent and of constant variance. Return data often violate both, and nonsynchronous trading biases betas estimated from short intervals (Interpretation).
-
-\emph{Uncertainty.} Twelve observations are far too few. Fama and French call individual betas ``imprecise'' (p.~31) and note that large standard errors of betas and of the premium make cost-of-equity estimates ``rather meaningless'' (p.~44, n.~7). Betas also change over time; Harris measures them concurrently for this reason (\hyperref[meth:relative-performance-evaluation]{relative performance evaluation}).
-
-\emph{Alpha is not skill.} A fitted alpha measures the average excess return not associated with the market proxy in that sample, given the model. It can reflect luck: here the interval spans more than 22 percentage points a year. It can also reflect the model's failure: funds tilted to low-beta, small or value stocks ``will tend to produce positive abnormal returns'' against the Sharpe--Lintner CAPM ``even when the fund managers have no special talent for picking winners'' (p.~44). Testing for skill needs a credible benchmark and the inference in \hyperref[meth:skill-luck-significance-tests]{skill against luck}.
-
-\qffield{Pitfalls} Regressing raw returns and calling the intercept alpha. Mixing a stock's total return with a price-only index. Using an annual bill yield in a monthly regression. Annualising a monthly alpha without its uncertainty. Reporting beta without its interval or estimation window.
-
-\qffield{See also} \hyperref[mod:return-generating-models]{return-generating models}; \hyperref[mod:capm-sml]{CAPM}; \hyperref[meth:required-return-on-equity]{required return on equity}; \hyperref[meth:simple-regression-estimation]{simple regression}; \hyperref[meth:regression-diagnostics-anova]{regression diagnostics}.
-
-\end{qfmethod}
-
 \begin{qfmethod}[Estimating a required return on equity with the CAPM: a forward-looking risk-free rate, equity premium and beta, the market model's role, sensitivity, and the difference from a historical average or fitted return]\label{meth:required-return-on-equity}
 \qffield{Statement} The textbook prescription that Fama and French describe is ``to estimate a stock's market beta and combine it with the risk-free interest rate and the average market risk premium to produce an estimate of the cost of equity'' \citep[\emph{JEP} 18(3), 2004, p.~43]{capm-theory-evidence-2004}:
 \[ k_e=r_f+\beta_i\,\mathrm{ERP}. \]
@@ -197,53 +159,3 @@ Buying 1{,}000{,}000 of D and selling 1{,}000{,}000 of that replica costs nothin
 \qffield{See also} \hyperref[mod:return-generating-models]{return-generating models}; \hyperref[def:factor-model-types]{factor model types}; \hyperref[mod:capm-sml]{CAPM}; \hyperref[mech:systematic-risk-pricing]{systematic risk}; \hyperref[mod:factor-risk-model]{factor risk model}.
 
 \end{qfmodel}
-
-\begin{qfdefinition}[Macroeconomic, fundamental and statistical factor models: inputs, estimation, outputs and interpretation, their uses in risk, attribution, pricing and construction, the value of several risk dimensions, and their limitations]\label{def:factor-model-types}
-\qffield{Statement} Connor divides multifactor models of returns into three types \citep[\emph{Financial Analysts Journal}, May--June 1995, pp.~42--43 and Table~1]{factor-model-types-1995}:
-\begin{itemize}
-\item \emph{Macroeconomic} models use observable economic time series, such as inflation, industrial production, the excess return on long-term government bonds and the premium of low-grade over high-grade corporate bonds, as measures of the pervasive shocks. Each security's factor betas are estimated by time-series regression, which ``requires a long and stable history of returns''.
-\item \emph{Fundamental} models use observed company attributes, such as size, dividend yield, book-to-market and industry, as the factor betas. The factors are the realised returns of mimicking portfolios, estimated each period by cross-sectional regression: the dividend-yield factor is ``the realized return per extra unit of dividend yield, holding other attributes constant''.
-\item \emph{Statistical} models derive both factors and betas from returns alone by factor analysis or principal components. Their factors are ``essentially unlabeled statistical artifacts'' that can be linearly recombined.
-\end{itemize}
-Without estimation error and with unlimited data the three are ``rotations of one another'' and can all hold at once (p.~43).
-
-Huberman and Wang describe three ways of identifying factors. The first is an algorithmic analysis of the covariance matrix. The second is a researcher's judgement guided by it, as in the size and book-to-market factors of Fama and French. The third is pure judgement, as in Chen, Roll and Ross's financial and macroeconomic variables. Only the first two respect the factor structure, and the third is ``more in the spirit of Merton's (1973) intertemporal CAPM than in the spirit of the APT'' \citep[FRBNY Staff Report 216, August 2005, sec.~8]{arbitrage-pricing-review-2005}.
-
-\qffield{Data} Connor's comparison covers 779 large-capitalisation US stocks, January 1985 to December 1993, with explanatory power measured as one minus average specific variance over average total variance (pp.~44--45, Tables~2--5):
-\begin{itemize}
-\item five statistical factors explain 39.0 percent, the first alone 29.0;
-\item five macroeconomic factors explain 10.9 percent, needing both the default and the term-structure factors;
-\item the fundamental model of 55 industry dummies and 12 risk indices explains 42.6 percent, the industries alone 16.3;
-\item the macroeconomic model adds nothing once the fundamental model is included.
-\end{itemize}
-He adds that by theoretical consistency and intuitive appeal the macroeconomic model ``is probably the strongest'' of the three (p.~46).
-
-\qffield{Conditions} \emph{Comparison} (Interpretation, from the sources cited and \hyperref[mod:factor-risk-model]{factor risk model}):
-\begin{itemize}
-\item \emph{Macroeconomic.} The factors are economic surprises, which must be measured as unexpected changes, and the exposures are estimated. The model is interpretable, linked to theory and useful for macro scenarios. Its limitations are low explanatory power, error in measuring surprises, and betas that need long, stable histories.
-\item \emph{Fundamental.} The exposures are observed and current, and the factor returns are estimated. The model responds immediately to changes in a firm and its explanatory power is high. It depends on vendor definitions and many inputs, and its industry factors carry much of the fit.
-\item \emph{Statistical.} The model needs returns data only and fits the sample best. Its factors are unlabeled, defined only up to sign and rotation, and unstable across samples.
-\end{itemize}
-
-All three are return-generating descriptions. Pricing requires the further restriction of \hyperref[mod:multifactor-apt]{APT} or an equilibrium model, and evidence that a factor explains covariance does not show that it carries a premium.
-
-\qffield{Practice} \emph{Uses and outputs.} Common uses (Interpretation):
-\begin{itemize}
-\item Risk decomposition into factor and specific parts, with contributions by factor.
-\item Return attribution.
-\item Control or hedging of unintended exposures in construction (\hyperref[mod:factor-risk-model]{factor risk model}).
-\item Expected returns and costs of capital. Huberman and Wang report macroeconomic and Fama--French factor models proposed for utility rate cases in New York, where the commission used the CAPM instead (sec.~9).
-\item Performance evaluation with factor alphas, and asset allocation with fewer parameters, since $k$ factor portfolios span the efficient frontier when the factor model holds (sec.~9).
-\end{itemize}
-
-Example, original, monthly percent, a fundamental model with market, size and value factors. A portfolio's exposures are $(1.0,-0.3,0.6)$ against its benchmark's $(1.0,0,0.1)$, so its active exposures are $(0,-0.3,0.5)$. In a month with factor returns 2.0, $-0.8$ and 1.2, the factors explain $0+0.24+0.60=0.84$ percentage points of active return. If the realised active return was 1.10, 0.26 is specific to the holdings.
-
-With factor covariance matrix rows $(16,2,-1)$, $(2,9,0.5)$ and $(-1,0.5,6.25)$ and a specific variance of 4.0, the portfolio's factor variance is $x^\top Fx=16.48$ and its total 20.48, so factors account for 80.5 percent. The contributions $x_k(Fx)_k$ are 14.80 from the market, 0.12 from size and 1.56 from value. The output says the portfolio's risk is mostly market risk and its size tilt barely matters for risk, though it added 0.24 to this month's return.
-
-\emph{Several risk dimensions.} Two portfolios with the same market beta of 1.0 but inflation sensitivities of $+0.5$ and $-0.5$ look identical to the CAPM. A month with a market factor return of $-2$ and an inflation factor return of $+1$ moves them $-1.5$ and $-2.5$ percent. Modelling several dimensions shows such differences. It allows a risk budget or hedge per source, and it matches investors who care about covariances with state variables such as labour income or inflation, as in the ICAPM \citep[\emph{JEP} 18(3), 2004, pp.~37--38]{capm-theory-evidence-2004}.
-
-\qffield{Pitfalls} Naming a statistical factor after the fact and treating the name as a property of the method. Reading a factor's explanatory power as evidence that it is priced. Adding factors until a sample is explained: Huberman and Wang note that ``the number of factors, as well as the methods of factor construction, is exploding'' (sec.~8). Comparing exposures from different models as if their factors were the same.
-
-\qffield{See also} \hyperref[mod:factor-risk-model]{factor risk model} (the covariance decomposition and economic against statistical factors); \hyperref[mod:multifactor-apt]{APT and multifactor models}; \hyperref[mod:return-generating-models]{return-generating models}; \hyperref[meth:portfolio-covariance-estimation]{covariance estimation}.
-
-\end{qfdefinition}

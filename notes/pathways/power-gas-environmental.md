@@ -24,13 +24,15 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Natural gas* (`natural-gas.tex`): `def:natural-gas-market`.
+- `gas-hub-pricing` (Natural gas markets: hub pricing, oil indexation, market integration and supply shocks; `natural-gas.tex`): `def:natural-gas-market`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `gas-hub-pricing`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `gas-hub-pricing` (Natural gas markets: hub pricing, oil indexation, market integration and supply shocks): pathway note [gas-hub-pricing.md](gas-hub-pricing.md), 1 entries listed, in `power-gas-environmental/natural-gas`.
 - `physical-lng` (Natural gas storage, transport and LNG optionality): content gap; no entry written.

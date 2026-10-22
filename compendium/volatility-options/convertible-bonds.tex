@@ -1,0 +1,46 @@
+The examples are verified in \texttt{notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py}. Callable, putable, capped and floored bonds valued on the Handbook's interest-rate tree are in \hyperref[meth:callable-putable-bond-valuation]{callable and putable bonds} and the entries after it, in the rates chapter.
+
+\begin{qfmethod}[Convertible bonds: features, conversion value, premiums and minimum value, arbitrage-free valuation on a stock tree with default, and risk and return against straight bonds and stock]\label{meth:convertible-bond-valuation}
+\qffield{Statement} \emph{Features.} A convertible note can be exchanged for a set number of the issuer's shares, the \emph{conversion ratio}, so the \emph{conversion price} is par divided by the ratio. The Handbook's prototype is Tesla's 2 percent notes of May~2024 \citep[chap.~38, pp.~883--890]{s7-fabozzifixed}. Their terms, from the prospectus supplement of 2~May~2019 \citep[The Offering; Description of Notes]{tesla-2024-notes-prospectus-2019}:
+\begin{itemize}
+\item \$1.6 billion (\$1.84 billion with the underwriters' option) of 2.00 percent senior notes, interest from 7~May~2019 paid on 15~May and 15~November, maturing on 15~May~2024;
+\item an initial conversion rate of 3.2276 shares per \$1{,}000, a conversion price of about \$309.83, which the Handbook describes as a 27.5 percent premium over a \$243 reference price;
+\item \emph{contingent conversion}: before 15~February~2024 holders may convert only if a trigger is met (the stock at 130 percent or more of the conversion price on at least 20 of the last 30 trading days of a quarter; the notes trading below 98 percent of their conversion value; or specified corporate events); from that date to just before maturity they may convert at any time;
+\item settlement in cash, shares or a combination at Tesla's election, combination settlement with a \$1{,}000 specified amount being the default;
+\item \emph{no issuer call}: ``We may not redeem the notes prior to the maturity date,'' and there is no sinking fund;
+\item a \emph{fundamental-change put}: after a fundamental change (such as a takeover or delisting) holders may require Tesla to buy the notes for cash at 100 percent of principal plus accrued interest;
+\item a \emph{make-whole conversion adjustment}, separate from that put: a holder who converts in connection with a make-whole fundamental change receives additional shares from a table indexed by date and stock price, with the rate capped at 4.1152 shares per \$1{,}000, compensating for lost option time value;
+\item anti-dilution adjustments to the conversion rate for dividends, splits and similar events.
+\end{itemize}
+The fundamental-change put is a holder's right to cash at par; the make-whole adjustment raises what a converting holder receives; contingent conversion limits when conversion is possible. None is an issuer call. The Hull example below is hypothetical and has different terms (a call at 113).
+Most convertibles are senior unsecured, without financial covenants, and unrated or below investment grade. Callable issues usually have a hard non-call period followed by a soft call conditional on the share price.
+
+\emph{Components.} \emph{Parity} or conversion value is the conversion ratio times the share price. The \emph{bond floor} or investment value is the value without conversion. Above parity, the \emph{conversion premium} is (price/parity $-1$); the \emph{points premium} is (price $-$ parity)/10 per 1{,}000 of par; the \emph{investment premium} is (price/investment value $-1$) (eqs.~(38-4)--(38-6), p.~890). The holder is long a straight bond and a call on the stock, or, by put--call parity, long the stock with a put (pp.~888--889, eqs.~(38-1)--(38-3)). Minimum value: a convertible should not trade below the greater of parity and the bond floor, or buying and converting (or holding as a bond) would be profitable \citep[chap.~9, sec.~X.B, p.~249]{fixed-income-analysis-2007}.
+
+\emph{Valuation.} Hull's practical model puts the stock on a binomial tree with a default branch: in each step the stock moves up by $u=e^{\sigma\sqrt{\Delta t}}$ or down by $d=1/u$, or defaults with probability $1-e^{-\lambda\Delta t}$, when the stock goes to zero and the bond recovers a set amount. At each node the holder converts if that is worth more, and the issuer calls if that lowers the value, after which the holder converts if conversion beats the call price \citep[chap.~27, sec.~27.4, pp.~650--653]{s7-hulloptions}.
+
+\emph{Risk and return.} The Handbook classifies convertibles by stage (chap.~38, pp.~892--894).
+\begin{itemize}
+\item \emph{Balanced}: conversion premium about 15--40 percent and delta 55--75 percent; they respond to both equity and rates.
+\item \emph{Equity substitutes}: conversion premium 15 percent or less, investment premium above 40 percent and delta above 80--85 percent.
+\item \emph{Busted}: conversion premium usually above 50 percent; the bond trades near its floor and credit analysis matters.
+\item \emph{Distressed}: credit spreads widen as the stock falls and the floor gives way.
+\end{itemize}
+The investment premium is the more reliable guide to how far in the money the note is.
+
+\qffield{Practice} \emph{Reproduced.}
+\begin{itemize}
+\item \emph{Handbook} (p.~890). A note with ratio 40, the stock at \$23, a price of \$1{,}100 and a floor of \$865 has a conversion premium of 19.57 percent, a points premium of 18.00 and an investment premium of 27.17 percent. The stock rose 15 percent and the note 11 percent.
+\item \emph{Tesla's terms.} $243\times1.275=309.825$ and $1000/309.825=3.2276$ shares, as printed; the text's ``\$1000 / 309.63'' transposes digits.
+\item \emph{Hull's example} (nine-month zero-coupon bond, face 100, convertible into two shares and callable at 113; stock 50, $\sigma=30$ percent, hazard 1 percent, $r=5$ percent, recovery 40, three steps). The tree has $u=1.1618$, $d=0.8607$, $p_u=0.5115$, $p_d=0.4860$ and default probability 0.0025, and the convertible is worth 107.44, above both its conversion value (100) and its straight value.
+\end{itemize}
+
+\emph{Original, against stock and a straight bond} (Hull's tree). If the stock jumps 30 percent to 65, the convertible gains 21.0 percent; if it falls 30 percent to 35, the convertible loses 9.6 percent, while a straight bond moves only with rates and credit. Its delta is 0.73 per conversion share. The asymmetry is the call option, bought by giving up some yield and paying the conversion premium; Interpretation.
+
+\qffield{Conditions} Hull's model makes the default probability independent of the stock price, which researchers have relaxed (p.~653). Real notes add contingent conversion, soft calls, make-whole and dilution adjustments, which a tree must encode node by node.
+
+\qffield{Pitfalls} Treating the bond floor as fixed: it falls when rates or credit spreads rise, and in distress it gives way. Using the conversion premium alone to classify a note with long call protection on a volatile stock. Ignoring the call, which forces conversion and caps the value.
+
+\qffield{See also} \hyperref[meth:callable-putable-bond-valuation]{embedded options}; \hyperref[mod:black-scholes-merton]{option pricing}; \hyperref[mech:cds-contract-credit-events]{credit events}.
+
+\end{qfmethod}

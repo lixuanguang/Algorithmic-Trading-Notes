@@ -46,3 +46,6 @@
       }
   }
 \ExplSyntaxOff
+% \qfpathway{pathway-key}{Name} opens one of the chapter's guide specialist pathways as a section,
+% with the guide's name; the checker compares key, name, chapter and order with the pinned guide.
+\NewDocumentCommand{\qfpathway}{m m}{\section{#2}\label{pathway:#1}}

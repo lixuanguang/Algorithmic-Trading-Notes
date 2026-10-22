@@ -1,4 +1,4 @@
-\section{Monte Carlo simulation}
+\subsection{Monte Carlo simulation}
 
 \begin{qfmethod}[Monte Carlo simulation: sampling from a specified model, the estimation target, seeds, standard error, the square-root rule, control variates and discretisation bias]\label{meth:monte-carlo-simulation}
 \qffield{Statement} A Monte Carlo valuation samples paths of the variables from a specified model, computes the discounted payoff on each, and averages. With $\bar f$ the mean and $\omega$ the standard deviation of the discounted payoffs over $M$ trials, the standard error is $\omega/\sqrt M$ and a 95 percent confidence interval for the value is $\bar f\pm1.96\,\omega/\sqrt M$; uncertainty falls with the square root of the number of trials, so doubling the accuracy needs four times the trials \citep[chap.~21, sec.~21.6, pp.~492--494]{s7-hulloptions}. In Hull's example, 1{,}000 trials give an option value of 4.98 with a standard error of 0.24, and the closed-form price, 4.817, lies inside the interval (Example~21.8, p.~494).

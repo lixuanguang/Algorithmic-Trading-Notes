@@ -24,14 +24,16 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Time value, required returns and present value* (`time-value.tex`): `def:required-return-components`, `meth:instrument-present-value`, `res:cash-flow-additivity`.
-- *Return measurement* (`return-measurement.tex`): `def:return-measures`.
+- `time-value-cash-flows` (Time value of money, discounting and cash-flow valuation; `time-value.tex`): `def:required-return-components`, `meth:instrument-present-value`, `res:cash-flow-additivity`.
+- `return-measurement` (Return measurement: holding-period, time-weighted and money-weighted returns; `return-measurement.tex`): `def:return-measures`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `time-value-cash-flows`, `return-measurement`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `time-value-cash-flows` (Time value of money, discounting and cash-flow valuation): no pathway note; related existing material in `financial-mathematics/time-value`, not reviewed as a complete treatment of the pathway.
 - `return-measurement` (Return measurement: holding-period, time-weighted and money-weighted returns): no pathway note; related existing material in `financial-mathematics/return-measurement`, not reviewed as a complete treatment of the pathway.

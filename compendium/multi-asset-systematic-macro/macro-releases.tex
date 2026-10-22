@@ -1,0 +1,41 @@
+\begin{qfdata}[U.S.\ macro release calendar: the usual monthly cadence of employment, inflation, activity and survey releases, FOMC and ECB meeting frequency, and why the agencies' own schedules are the record]\label{data:us-macro-release-calendar}
+\qffield{Statement} The cadence: the Employment Situation (payrolls, unemployment, wages) on the first Friday; CPI, retail sales and industrial production mid-month; housing starts and permits in the third week; GDP (quarterly), personal income and outlays (PCE) and durable goods late in the month; the ISM manufacturing PMI on the first business day and the services PMI on the third. Of these, the first-Friday payroll convention is Gliner's \citep[chap.~12, PDF p.~406]{s7-gliner}, and the BLS's schedule shows the next Employment Situation on Friday 6 November 2026 \citep[program page]{bls-ces-page}. The FOMC holds eight regularly scheduled meetings a year \citep[page updated 7 October 2026]{fomc-page}. The ECB's Governing Council takes monetary policy decisions every six weeks \citep[web page]{ecb-governing-council}, about eight a year.
+
+\qffield{Notation} Release times are U.S.\ Eastern; each agency (BLS, BEA, Census Bureau, Federal Reserve Board, ISM) publishes its own calendar.
+
+\qffield{Conditions} The cadence is a pattern, not a rule: payrolls move when the first Friday falls too early in the month or on a holiday, and government shutdowns have postponed releases. Use the agencies' published calendars, archived as they stood on each date, to rebuild a release timeline without look-ahead.
+
+\qffield{Practice} A backtest that uses data at its reference date rather than its release time, or uses revised values, has look-ahead; keep first-release values and their timestamps (\hyperref[meth:macro-event-queries]{event queries}).
+
+\qffield{Pitfalls} Do not confuse six meetings per year with six-week intervals; the ECB's own page gives decisions every six weeks. \emph{Placements against agency calendars}. Industrial production (Federal Reserve G.17) is released mid-month, for example 16 October and 17 November 2026 \citep[release dates]{fed-g17-dates}; BEA's advance GDP for the third quarter of 2026 and personal income and outlays (PCE) for September are both due on 29 October 2026, late in the month \citep[2026 schedule]{bea-schedule}; the Census Bureau's calendar shown (for 2027) puts retail sales near the 15th, housing starts and permits near the 20th and durable goods near the 27th of the month after the reference month \citep[economic indicator calendar]{census-econ-calendar}. These agree with the cadence.
+
+\emph{CPI}: the BLS schedule lists the October 2026 CPI for 10 November 2026, November's for 10 December 2026 and December's for 13 January 2027, all at 8:30~a.m., and the 2027 reference months between the 10th and the 14th of the following month \citep[CPI release schedule]{bls-cpi-schedule}, so CPI comes before retail sales and well before PCE for the same month.
+
+\emph{ISM}. The ISM states that the Manufacturing PMI ``is released on the first business day of the month at 10:00 a.m. (EST)'' and the Services PMI on the third, and lists 2026 dates (Manufacturing, Services): 5 and 7 January, 2 and 4 February, 2 and 4 March, 1 and 6 April, 1 and 5 May, 1 and 3 June, 1 and 6 July, 3 and 5 August, 1 and 3 September, 1 and 5 October, 2 and 4 November, 1 and 3 December, with notes that January's Manufacturing report moves to the 5th ``due to ISM holiday'' and July's Services report moved for the Independence Day holiday observed on 3 July \citep[2026 calendar, p.~1]{ism-calendar-2026}.
+
+Counting business days against U.S. federal holidays reproduces every date except January's two and April's Services date: 6 April follows from skipping Good Friday (3 April), which is not a federal holiday, so the ISM's own holidays decide the count (an inference). The rule therefore holds as a rule, with ISM-specific exceptions to be read from each year's calendar.
+
+\qffield{See also} \hyperref[def:macroeconomic-indicators]{macroeconomic indicators}; \hyperref[meth:macro-event-queries]{event queries}; \hyperref[rule:major-central-banks-current]{major central banks}.
+
+\qffield{Further reading} Announcement returns \citep{wide-savor-wilson-announcements}.
+
+\end{qfdata}
+
+\begin{qfmethod}[Event queries around data releases and policy decisions: surprise against consensus, revisions, conditional back-tests of asset returns after past events, hit rates and their small-sample error]\label{meth:macro-event-queries}
+\qffield{Statement} Gliner's \emph{query} back-tests how assets behaved after past occurrences of an event like the one expected: choose the event and the conditioning (for an expected ``no change'' from the ECB, back-test meetings with no change), list the dates, and tabulate returns at fixed horizons with the share of up and down outcomes and the standard deviation \citep[chap.~3, secs.\ ``Simple Back-Tests and Queries'' and ``An Example of Building a Query'', PDF pp.~79--85]{s7-gliner}.
+
+His example is the Bank of England's quantitative easing in July 2012: the June minutes showed a 5--4 vote against more QE (against 8--1 in May), traders expected an expansion, and the query over the six earlier QE announcements shows the FTSE~100 up on 5 of 6 announcement days (83 percent), averaging 0.3 percent, and up on all six four days later, averaging 1.7 percent, at horizons of 1 to 5 days, two weeks and one month (Tables~3.1--3.2, pp.~80--83). He adds analogs, comparing current price paths with past ones (sec.\ ``Historical Correlations and Analogs'', p.~86).
+
+\qffield{Notation} \emph{Surprise} = actual minus consensus forecast, often scaled by its standard deviation; \emph{hit rate} = share of events in which the asset moved in the expected direction.
+
+\qffield{Conditions} With six events, a hit rate means little: five or more up out of six has probability 0.109 under a fair coin, and six of six 0.016; overlapping horizons from the same six dates are not independent tests. The conditioning set is chosen after the fact, which invites data mining. A query on a release also needs the surprise, not the level: markets price the consensus beforehand.
+
+\qffield{Practice} Practitioner principles (surprise direction and size drive the move; initial releases move markets and material revisions move them again; NFP and CPI dominate in the United States and PMIs globally; what matters depends on the regime) are standard practitioner views, consistent with the announcement literature, but not shown in Gliner's chapter. Report the number of events and a confidence interval with any hit rate.
+
+\qffield{Pitfalls} Cutting a position quickly when it moves against you right after an event is advice, not a result. Back-testing on revised data, or on event dates known only afterwards, adds look-ahead.
+
+\qffield{See also} \hyperref[data:us-macro-release-calendar]{release calendar}; \hyperref[def:macroeconomic-indicators]{macroeconomic indicators}; \hyperref[def:central-bank-policy-framework]{central-bank communication}; \hyperref[meth:skill-luck-significance-tests]{tests of skill against luck}.
+
+\qffield{Further reading} \citep{rt-kuttner-2001} on policy surprises and \citep{wide-savor-wilson-announcements} on announcement-day returns.
+
+\end{qfmethod}

@@ -24,16 +24,19 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Simple linear regression* (`regression.tex`): `meth:simple-regression-estimation`, `meth:regression-diagnostics-anova`, `meth:regression-prediction-functional-form`.
-- *Multiple regression* (`multiple-regression.tex`): `meth:multiple-regression-formulation`, `meth:multiple-regression-fit-tests`, `meth:regression-misspecification`, `meth:regression-extensions`.
-- *Time-series models* (`time-series-models.tex`): `meth:trend-models`, `def:stationarity-unit-roots`, `meth:autoregressive-forecasting`, `meth:forecast-accuracy-evaluation`, `mod:arch-conditional-variance`, `meth:cointegration-testing`, `meth:time-series-model-selection`.
-- *Volatility forecasts, forecast evaluation and structural breaks* (`volatility-forecasting.tex`): `mod:garch-volatility-forecast`, `meth:volatility-forecast-loss`, `meth:structural-break-tests`.
+- `regression-econometrics` (Linear regression, GMM and econometric inference):
+  - *Simple linear regression* (`regression.tex`): `meth:simple-regression-estimation`, `meth:regression-diagnostics-anova`, `meth:regression-prediction-functional-form`.
+  - *Multiple regression* (`multiple-regression.tex`): `meth:multiple-regression-formulation`, `meth:multiple-regression-fit-tests`, `meth:regression-misspecification`, `meth:regression-extensions`.
+- `stationarity-cointegration` (Stationarity, ARMA and VAR models, unit roots and cointegration; `time-series-models.tex`): `meth:trend-models`, `def:stationarity-unit-roots`, `meth:autoregressive-forecasting`, `meth:forecast-accuracy-evaluation`, `meth:cointegration-testing`, `meth:time-series-model-selection`.
+- `time-series-volatility` (Volatility forecasting, regimes and structural breaks; `volatility-forecasting.tex`): `mod:arch-conditional-variance`, `mod:garch-volatility-forecast`, `meth:volatility-forecast-loss`, `meth:structural-break-tests`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `regression-econometrics`, `stationarity-cointegration`, `time-series-volatility`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `regression-econometrics` (Linear regression, GMM and econometric inference): no pathway note; related existing material in `regression-time-series/regression`, `regression-time-series/multiple-regression`, not reviewed as a complete treatment of the pathway.
 - `stationarity-cointegration` (Stationarity, ARMA and VAR models, unit roots and cointegration): no pathway note; related existing material in `regression-time-series/time-series-models`, not reviewed as a complete treatment of the pathway.

@@ -41,7 +41,9 @@ PR #33 correction pass (2026-10-21): the Okafors' 2026 federal tax specified and
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
 
-- `household-finance-lifecycle` (Household finance, human capital and lifecycle investment planning): no pathway note; related existing material in `private-wealth-management/clients-industry`, `private-wealth-management/wealth-planning`, not reviewed as a complete treatment of the pathway.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `household-finance-lifecycle`, `tax-aware-wealth-preservation`, `wealth-transfer-succession`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
+- `household-finance-lifecycle` (Private clients, household finance and lifecycle investment planning): no pathway note; related existing material in `private-wealth-management/clients-industry`, `private-wealth-management/wealth-planning`, not reviewed as a complete treatment of the pathway. Broadened by the guide revision of 22 October 2026 (`8302467`) to cover private clients and the wealth-management industry; its entries are in `private-wealth-management/clients-industry`, `private-wealth-management/wealth-planning`.
 - `tax-aware-wealth-preservation` (Taxes, asset location and concentrated positions): no pathway note; related existing material in `private-wealth-management/wealth-preservation`, not reviewed as a complete treatment of the pathway.
 - `wealth-transfer-succession` (Estate planning, intergenerational transfers and family-business succession): no pathway note; related existing material in `private-wealth-management/wealth-transfer`, not reviewed as a complete treatment of the pathway.
 

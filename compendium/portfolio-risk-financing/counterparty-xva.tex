@@ -1,5 +1,3 @@
-\section{Counterparty exposure and valuation adjustments}
-
 A bilaterally cleared derivative can be worth something to either side, so the loss from a counterparty's default depends on what the netting set is worth when the default happens. These entries measure that future exposure, with netting and collateral, price it as a credit valuation adjustment and show how dependence between exposure and default changes the price. The bond case, where exposure is known, is \hyperref[meth:risky-bond-cva]{valuing a risky bond}. Regulatory capital for counterparty risk is a separate calculation, set out in \hyperref[rule:counterparty-credit-cva-capital]{counterparty and CVA capital}. Numbers are checked in \texttt{notes/artefacts/counterparty-xva/counterparty-xva-checks.py}.
 
 \begin{qfdefinition}[Counterparty exposure: expected exposure, potential future exposure and expected positive exposure, with netting, collateral and the margin period of risk]\label{def:counterparty-exposure-measures}

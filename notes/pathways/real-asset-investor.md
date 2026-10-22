@@ -34,6 +34,8 @@ Partly checked 2026-10-20, draft; human review outstanding. See [record](../sour
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
 
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `property-valuation`, `infrastructure-regulated-assets`, `natural-resource-rights`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
 - `property-valuation` (Property valuation and listed real estate): no pathway note; related existing material in `real-asset-investor/real-estate`, not reviewed as a complete treatment of the pathway.
 - `infrastructure-regulated-assets` (Infrastructure and regulated assets): no pathway note; related existing material in `real-asset-investor/infrastructure`, not reviewed as a complete treatment of the pathway.
 - `equipment-aircraft-leasing` (Equipment and aircraft leasing): content gap; no entry written.

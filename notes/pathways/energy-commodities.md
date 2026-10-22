@@ -24,14 +24,16 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Curves and inventories* (`commodity-curves.tex`): `def:contango-backwardation-stocks`.
-- *Hedging with futures* (`futures-hedging.tex`): `def:futures-hedge-basis`, `mod:minimum-variance-hedge-ratio`.
+- `commodity-storage-curves` (Theory of storage, convenience yield and inventories; `commodity-curves.tex`): `def:contango-backwardation-stocks`.
+- `commodity-hedging` (Commodity hedging: hedge ratios, rolling hedges and corporate risk management; `futures-hedging.tex`): `def:futures-hedge-basis`, `mod:minimum-variance-hedge-ratio`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `commodity-storage-curves`, `commodity-hedging`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `commodity-storage-curves` (Theory of storage, convenience yield and inventories): pathway note [commodity-storage-curves.md](commodity-storage-curves.md), 1 entries listed, in `energy-commodities/commodity-curves`.
 - `commodity-curve-models` (Commodity term-structure models: factor, seasonal and jump models): content gap; no entry written.

@@ -24,13 +24,15 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Carry on dated crypto futures* (`crypto-carry.tex`): `ev:crypto-dated-futures-carry`.
+- `crypto-arbitrage-carry` (Crypto arbitrage and carry: cross-exchange, triangular, funding basis and DeFi yields; `crypto-carry.tex`): `ev:crypto-dated-futures-carry`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `crypto-arbitrage-carry`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `crypto-cross-section` (Cross-sectional crypto strategies: size, momentum, reversal, value and factor momentum): content gap; no entry written.
 - `crypto-trend-technical` (Crypto trend following, intraday momentum, technical rules and calendar effects): content gap; no entry written.

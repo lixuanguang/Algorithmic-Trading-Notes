@@ -1,0 +1,31 @@
+\subsection{The foreign exchange market and real exchange rates}
+
+\emph{Notation}: following EIDM, A/B is the price of one unit of B (the \emph{base} currency) in units of A (the \emph{price} currency), so USD/EUR 1.30 means 1.30 dollars per euro; the market code for the same quote is EURUSD. The chapter's EIDM-based entries use this convention. Numbers are checked in \texttt{notes/artefacts/fx-mechanics-determination/fx-checks.py}.
+
+\begin{qfdefinition}[The foreign exchange market and real exchange rates: functions and participants, size, quotes and their direction, percentage changes, and nominal against real exchange rates]\label{def:fx-market-real-exchange-rates}
+\qffield{Statement} \emph{Functions} \citep[chap.~9, sec.~2, pp.~473--484]{economics-investment-decision-makers-2013}: the FX market converts currencies for trade and investment, lets participants hedge future currency flows with forwards, swaps and options, and lets speculators take positions. \emph{Participants} (pp.~478--482): the \emph{sell side} (dealers, mostly large banks) and the \emph{buy side}: corporations, real-money investors (pension funds, insurers, mutual funds), leveraged accounts (hedge funds, CTAs), retail, governments, central banks (intervention and reserve management) and sovereign wealth funds. \emph{Size}: global turnover was \$9.6 trillion a day in April 2025 \citep[preliminary results]{bis-triennial-2025}.
+
+\emph{Quotes} (pp.~484--488). An exchange rate is the price of one currency in another. A \emph{direct} quote uses the domestic currency as the price currency, an \emph{indirect} quote the foreign currency; both are in common use, so the base and price currencies must be read off each quote. A two-sided quote is a bid and an offer for the base currency; most rates are quoted to four decimals, yen rates to two. A rise in USD/EUR is a euro appreciation; the dollar's depreciation in percentage terms is different, because $1/(1+x)-1\neq-x$.
+
+\emph{Real exchange rates} (pp.~468--470). The real rate measures the relative price of foreign goods:
+\[
+q_{d/f}=S_{d/f}\,\frac{P_f}{P_d},
+\]
+rising when the nominal rate or foreign prices rise and falling when domestic prices rise. A higher real rate (with the domestic currency as price currency) means foreign goods cost more in real terms. Real rates are indexes, not traded prices; they can drift for years, which is why they matter for trade and long-run value.
+
+\qffield{Notation} $S_{d/f}$ nominal spot, domestic currency per unit of foreign; $P_d,P_f$ price levels (CPIs); $q_{d/f}$ real rate.
+
+\qffield{Conditions} Participant descriptions follow EIDM's 2013 text; market shares and turnover are from the 2025 survey and change between surveys.
+
+\qffield{Practice} \emph{Reproduced}:
+\begin{itemize}
+\item USD/EUR rising from 1.2500 to 1.3000 is a 4.00 percent euro appreciation but a 3.85 percent dollar depreciation (p.~487);
+\item a bid--offer of 12.4020/12.4060 MXN/USD inverts to 0.08061/0.08063 USD/MXN, the new bid being the inverse of the old offer (Example~9-4, pp.~487--488);
+\item a 10 percent rise in GBP/EUR with euro-area prices up 5 percent and U.K.\ prices up 2 percent raises the U.K.\ buyer's real rate by about 13 percent (13.24 percent exactly) (p.~469).
+\end{itemize}
+
+\qffield{Pitfalls} Reading a quote without identifying its base currency. Treating an appreciation and a depreciation of the same size in percent as symmetric. Treating a real exchange rate as a tradable price.
+
+\qffield{See also} \hyperref[meth:cross-forward-rates]{cross and forward rates}; \hyperref[def:fx-market-structure]{FX market structure}; \hyperref[def:us-dollar-dxy-sdr]{the dollar in global macro}.
+
+\end{qfdefinition}

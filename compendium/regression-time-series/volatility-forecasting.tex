@@ -1,4 +1,29 @@
-\section{Volatility forecasts, forecast evaluation and structural breaks}
+\begin{qfmodel}[ARCH: conditional heteroskedasticity in the errors, Engle's LM test, estimation, and variance forecasts that revert to the unconditional level]\label{mod:arch-conditional-variance}
+\qffield{Statement} In an ARCH($m$) model the shocks are serially uncorrelated but dependent: their variance depends on past squared shocks \citep[pp.~115--116]{s7-tsay}:
+\[ a_t=\sigma_t\epsilon_t,\qquad \sigma_t^2=\alpha_0+\alpha_1a_{t-1}^2+\dots+\alpha_ma_{t-m}^2. \]
+This produces the volatility clustering of asset returns (p.~116).
+\begin{itemize}
+\item \emph{Testing}: Engle's Lagrange multiplier test regresses squared residuals on $m$ of their lags and compares $(T-m)R^2$ with $\chi^2_m$; alternatively apply Ljung--Box to the squared residuals (p.~114).
+\item \emph{Estimation}: by maximum likelihood (Interpretation for the method; the estimation pages were not part of this reading).
+\item \emph{Forecasting}: for ARCH(1), $\sigma^2_{t+1}=\alpha_0+\alpha_1a_t^2$, and further forecasts revert to $\alpha_0/(1-\alpha_1)$ at rate $\alpha_1$ per step (Derivation).
+\item \emph{Consequences}: ARCH does not bias regression coefficients, but standard errors and prediction intervals that assume constant variance are wrong in volatile periods (Interpretation). GARCH adds lagged variance (\hyperref[mod:garch-volatility-forecast]{GARCH and EWMA}).
+\end{itemize}
+
+\qffield{Practice} \emph{Simulated} (600 shocks, $\alpha_0=0.0002$, $\alpha_1=0.5$):
+\begin{itemize}
+\item Engle's LM statistic is $599\times R^2=52.1$, $p<10^{-12}$; statsmodels agrees.
+\item Least squares on squared shocks estimates $\alpha_1=0.29$; maximum likelihood 0.54. Squared shocks are fat-tailed, so least squares is inefficient and biased in moderate samples.
+\item The last shock was $-1.74$ percent, so next-period variance is $0.000217+0.539\times0.0174^2=0.000379$, a volatility of 1.95 percent. Forecasts rise to 0.000421 at two steps and 0.000462 at five, towards the long-run 0.000469 (2.17 percent).
+\end{itemize}
+\emph{Annual S\&P~500 returns}, 1928--2025: the LM statistic is 2.22 ($p=0.14$). Volatility clustering, strong in daily and monthly data, barely shows at an annual frequency.
+
+\qffield{Conditions} ARCH models assume a correctly specified mean equation; test residuals, not raw series with a mean. A large $\alpha_1$ near 1 signals persistence better handled by GARCH.
+
+\qffield{Pitfalls} Testing for ARCH on a series whose mean has not been modelled. Using annual data to rule out volatility clustering at shorter horizons.
+
+\qffield{See also} \hyperref[mod:garch-volatility-forecast]{GARCH and EWMA}; \hyperref[meth:regression-misspecification]{heteroskedasticity in regressions}.
+
+\end{qfmodel}
 
 \begin{qfmodel}[GARCH(1,1) and EWMA (RiskMetrics) variance forecasts: mean reversion against a flat forecast, and the evidence on forecast accuracy]\label{mod:garch-volatility-forecast}
 \qffield{Statement} The GARCH(1,1) daily variance is $\sigma^2_{t+1}=\omega+\alpha R_t^2+\beta\sigma_t^2$ with $\alpha+\beta<1$. Its long-run variance is $\sigma^2=\omega/(1-\alpha-\beta)$, so $\sigma^2_{t+1}=\sigma^2+\alpha(R_t^2-\sigma^2)+\beta(\sigma_t^2-\sigma^2)$, and the $k$-day-ahead forecast reverts at the rate of the \emph{persistence} $\alpha+\beta$ \citep[chap.~4, secs.~2--3, printed pp.~70--71 of an uncorrected proof]{wide-christoffersen-elements}:

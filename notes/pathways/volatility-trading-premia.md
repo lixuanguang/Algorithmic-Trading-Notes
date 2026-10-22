@@ -24,15 +24,17 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *VIX, variance swaps and dividend swaps* (`vix-variance-dividends.tex`): `def:vix-variance-dividend-swaps`.
+- `vix-correlation-dividends` (VIX, correlation and dividend derivatives; `vix-variance-dividends.tex`): `def:vix-variance-dividend-swaps`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
-- `option-premia-dealers` (Option returns, variance premia and dealer hedging): no pathway note; partial treatment in existing entries, not reviewed as complete: the variance risk premium in variance-swap strikes and selling variance (`def:vix-variance-dividend-swaps` in `volatility-trading-premia/vix-variance-dividends`, `meth:volatility-derivative-applications` in `portfolio-construction-risk/derivative-overlays`); hedged-option profit when implied and realised volatility differ (`res:delta-hedging-volatility-mismatch` in `volatility-options/option-valuation`); dealers' hedging and inventory risk in option spreads (`res:option-market-maker-spreads` in `execution-market-making/options-dealing`). Not written: option-return evidence; dealer gamma positioning and its effect on the underlying.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `vix-correlation-dividends`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
+- `option-premia-dealers` (Option returns, variance premia and dealer hedging): no pathway note; partial treatment in existing entries, not reviewed as complete: the variance risk premium in variance-swap strikes and selling variance (`def:vix-variance-dividend-swaps` in `volatility-trading-premia/vix-variance-dividends`, `meth:volatility-derivative-applications` in `portfolio-construction-risk/derivative-overlays`); hedged-option profit when implied and realised volatility differ (`res:delta-hedging-volatility-mismatch` in `volatility-options/option-hedging`); dealers' hedging and inventory risk in option spreads (`res:option-market-maker-spreads` in `execution-market-making/options-dealing`). Not written: option-return evidence; dealer gamma positioning and its effect on the underlying.
 - `option-implied-information` (Option-implied densities, tail risk and expected returns): no pathway note; partial treatment in existing entries, not reviewed as complete: the butterfly condition as a non-negative implied density (`def:implied-volatility-surface` in `volatility-options/option-pricing`); risk-neutral probabilities from call spreads (`meth:derivative-overlay-allocation` in `portfolio-construction-risk/derivative-overlays`). Not written: density extraction; tail-risk and implied-moment measures; their return predictability.
 - `equity-option-returns` (Single-stock option returns: volatility mispricing, characteristics and factors): content gap; no entry written.
 - `vix-correlation-dividends` (VIX, correlation and dividend derivatives): pathway note [vix-correlation-dividends.md](vix-correlation-dividends.md), 1 entries listed, in `volatility-trading-premia/vix-variance-dividends`.

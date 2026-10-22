@@ -1,6 +1,6 @@
-\section{Pricing and valuing forward commitments}
+\subsection{Pricing and valuing forward commitments}
 
-These entries price forwards, futures and swaps by arbitrage and replication and value them during their lives: equity, interest-rate and bond forwards and futures, and interest-rate, currency and equity swaps. The cost-of-carry formulas with income, yield and storage are in \hyperref[res:cost-of-carry-forward-price]{the cost of carry}; FRA and swap valuation with separate projection and discounting curves is in \hyperref[mod:multi-curve-fra-swap-valuation]{multi-curve valuation}. Unless an example says otherwise, it uses one curve for both projection and discounting, a simplification that matches pre-2008 textbook practice and today's OIS and SOFR swaps, not term-rate swaps. Numbers are checked in \texttt{notes/artefacts/forward-swap-valuation/forward-swap-checks.py}; rates are continuously compounded unless stated.
+These entries price forwards, futures and swaps by arbitrage and replication and value them during their lives: equity, interest-rate and bond forwards and futures, and interest-rate, currency and equity swaps. The cost-of-carry formulas with income, yield and storage are in \hyperref[res:cost-of-carry-forward-price]{the cost of carry}; FRA and swap valuation with separate projection and discounting curves is in \hyperref[mod:multi-curve-fra-swap-valuation]{multi-curve valuation}; cross-currency basis swaps and synthetic dollar funding are in \hyperref[meth:cross-currency-basis-swaps]{cross-currency basis swaps}, in the currency chapter. Unless an example says otherwise, it uses one curve for both projection and discounting, a simplification that matches pre-2008 textbook practice and today's OIS and SOFR swaps, not term-rate swaps. Numbers are checked in \texttt{notes/artefacts/forward-swap-valuation/forward-swap-checks.py}; rates are continuously compounded unless stated.
 
 \begin{qfmethod}[Arbitrage, replication and the cost of carry: why a forward commitment is priced by the cost of a replicating position rather than by expected prices, and the costs and benefits that move the forward price]\label{meth:arbitrage-replication-carry}
 \qffield{Statement} \emph{Arbitrage} locks in a riskless profit from simultaneous trades, and pricing assumes that ``no arbitrage opportunities exist'' \citep[chap.~1, sec.~1.9, p.~39]{s7-hulloptions}. Two portfolios with the same future payoffs must therefore cost the same today (the law of one price). A long forward on an investment asset is \emph{replicated} by buying the asset with borrowed money: at maturity the buyer owns the asset and owes the loan with interest, the same position as a long forward struck at that amount. Hence $F_0=S_0e^{rT}$ without income, $(S_0-I)e^{rT}$ with income of present value $I$, $S_0e^{(r-q)T}$ with yield $q$ (chap.~5, secs.~5.4--5.6, pp.~127--132). The \emph{cost of carry}, financing plus storage less income and, for consumption assets, convenience yield, is what moves $F_0$ away from $S_0$ (sec.~5.12, pp.~143--144; \hyperref[res:cost-of-carry-forward-price]{the cost of carry}).
@@ -121,41 +121,5 @@ Hull's text gives the value of the next equity cash flow as $L(E-E_0)/E_0$ (p.~7
 \qffield{Pitfalls} Inverting a currency quote. Forgetting the principal exchanges in a currency swap, which carry most of its exchange-rate risk. Valuing the next equity payment as the return to date, $N(E_t/E_0-1)$, or confusing it with the whole equity leg or the net swap value. Treating swap value as the only exposure: Hull separates credit and market risk (sec.~7.11, p.~193).
 
 \qffield{See also} \hyperref[def:swaps-as-forward-strips]{swaps as forward strips}; \hyperref[def:interest-rate-swaps]{interest-rate swaps}; \hyperref[mech:otc-clearing-collateral]{collateral}; \hyperref[meth:cross-currency-basis-swaps]{cross-currency basis swaps} (floating legs and the quoted basis).
-
-\end{qfmethod}
-
-\begin{qfmethod}[Cross-currency basis swaps: constant-notional cash flows, the leg that carries the basis, the two sign conventions, annualisation and synthetic dollar funding]\label{meth:cross-currency-basis-swaps}
-\qffield{Statement} \emph{Cash flows.} In a floating-for-floating currency swap the parties exchange principals at the start, pay each other floating interest in the two currencies and exchange the principals back at maturity. The initial exchange runs opposite to the interest payments and the final one in the same direction. The swap decomposes into a fixed-for-fixed currency swap and two interest-rate swaps \citep[chap.~7, sec.~7.10, pp.~192--193]{s7-hulloptions}. Ding, Liu and Rutkowski define the constant-notional swap. The long party receives the domestic principal $P^d$ and pays the foreign $P^f$ at $T_0$, with $P^d=Q_{T_0}P^f$ at the spot rate. On each date $T_j$ it pays $(R^d_j+\kappa)\delta_jP^d$ and receives $R^f_j\delta_jP^f$, and at $T_n$ it pays $P^d$ back and receives $P^f$ \citep[Definition~2.4, pp.~6--7]{ding-liu-rutkowski-ccbs-2025}. Their legs reference backward-looking compounded overnight rates. Their example receives six-month compounded SOFR and pays Australian AONIA plus the spread, semi-annually for three years (p.~38). The spread $\kappa$ is agreed at inception and stays fixed (p.~7).
-
-\emph{The basis and its sign.} With $S$ in dollars per foreign unit and Libor legs, the BIS writes the one-period relation with the basis $b$ on the \emph{dollar} leg, $F-S=S\frac{1+r+b}{1+r^*}-S$. There ``the party borrowing US dollars in a cross-currency swap pays the basis, $b$, on top of US dollar Libor'' \citep[Box~A, p.~48]{cur-borio-mccauley-mcguire-sushko-2016}. Its text and Graph~1 instead report the basis as negative when dollars are expensive through swaps (pp.~45--46). That is the foreign-leg convention of \hyperref[ev:cip-deviations]{CIP deviations}.
-
-\emph{Annualisation and the mapping} (Interpretation). Box~A's rates are per period. With annual rates and year fraction $\tau$, the dollar-leg basis is $b=\bigl[\frac FS(1+r_f\tau)-(1+r_{\$}\tau)\bigr]/\tau$, so $\frac FS=\frac{1+(r_{\$}+b)\tau}{1+r_f\tau}$. With the spread $\kappa$ on the foreign leg, $\frac FS=\frac{1+r_{\$}\tau}{1+(r_f+\kappa)\tau}$, and exactly $b=-\kappa\frac{1+r_{\$}\tau}{1+(r_f+\kappa)\tau}\approx-\kappa$. Borrowing the foreign currency at $r_f$ and swapping it into dollars costs $\bigl[\frac FS(1+r_f\tau)-1\bigr]/\tau=r_{\$}+b$ a year. A negative $\kappa$ therefore means synthetic dollars cost more than direct ones; $b\tau$ is the amount per period, not the quoted spread.
-
-\qffield{Notation} $S$, $F$ spot and one-period forward in dollars per foreign unit; $r_{\$}$, $r_f$ annual simple rates for the period, read as the compounded overnight rates realised over it; $\tau$ year fraction; $\kappa$ spread on the foreign leg (Du--Tepper--Verdelhan and the Ding--Liu--Rutkowski contract); $b$ annualised spread on the dollar leg (BIS Box~A). Ding--Liu--Rutkowski's $Q$ is domestic currency per foreign unit, with the Australian dollar domestic and the dollar foreign.
-
-\qffield{Conditions} Which leg carries the spread is a term of each contract: Ding--Liu--Rutkowski put it on the non-dollar leg, the BIS algebra on the dollar leg; neither establishes a single market rule. The one-period relation treats the legs at assumed fixings as deposits and ignores collateral, credit, bid--offer, day counts (ACT/360 on rates compounded in arrears) and payment lags. Multi-period valuation needs cross-currency discount curves and is not covered here. Nor are mark-to-market swaps, whose notional resets with the spot rate (Ding--Liu--Rutkowski, p.~4). The BIS evidence and the 2010--2016 sizes in \hyperref[ev:cip-deviations]{CIP deviations} come from Libor-era swaps, whose legs both carried a bank-credit component; the examples here use overnight-rate legs.
-
-\qffield{Practice} Example, original. EUR/USD at 1.10 dollars per euro; EUR 100 million against USD 110 million; party A pays euros and receives dollars at the start, receives compounded €STR plus $\kappa=-20$ basis points and pays compounded SOFR. Assumed fixings are 2.5 and 4.0 percent with accrual of exactly one year (cash flows in millions, A's side; B's are the negatives):
-\begin{center}
-\begin{tabular}{@{}lrr@{}}
-\toprule
-Date & EUR & USD \\
-\midrule
-$T_0$ & $-100.0$ & $+110.0$ \\
-$T_1$, $T_2$ & $+2.3$ & $-4.4$ \\
-$T_3$ & $+102.3$ & $-114.4$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-\begin{itemize}
-\item \emph{One year.} The covered-parity forward is 1.116098; with the basis the swap's legs imply 1.118280. The dollar-leg basis is $b=+20.33$ basis points, and synthetic dollars cost 4.2033 percent against 4.0 directly.
-\item \emph{One quarter} ($\tau=0.25$). The forward is 1.104648 (covered parity 1.104099). The annualised basis is $b=20.08$ basis points, and synthetic dollars cost 4.2008 percent. The period amount is 5.02 basis points, a quarter of the spread.
-\item \emph{Quote direction.} In euros per dollar the one-year forward is 0.894231, the reciprocal of 1.118280. Entering 0.9091 as if it were dollars per euro gives 0.924198, a different and wrong forward.
-\item \emph{Principal exchange.} If the euro is at 1.14 at maturity, the final exchange is worth $+4.0$ million dollars to A, which receives the euros. That is the same exposure, notional times the change in spot, as the fixed-for-fixed swap in \hyperref[meth:swap-valuation-replication]{swap valuation}.
-\end{itemize}
-
-\qffield{Pitfalls} Reading a basis's sign without knowing which leg carries it. Comparing a per-period amount with an annual quote. Inverting the currency quote. Forgetting the principal exchanges, which carry most of the exchange-rate risk. Treating Libor-era basis levels as current.
-
-\qffield{See also} \hyperref[meth:swap-valuation-replication]{swap valuation} (fixed-for-fixed currency swaps); \hyperref[meth:cross-forward-rates]{forward rates and covered interest arbitrage}; \hyperref[ev:cip-deviations]{CIP deviations}; \hyperref[mod:multi-curve-fra-swap-valuation]{multi-curve valuation}.
 
 \end{qfmethod}

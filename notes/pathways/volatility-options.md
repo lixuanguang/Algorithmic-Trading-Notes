@@ -116,10 +116,13 @@ Cross-referenced, not owned here: `mech:futures-margin-settlement` (`futures-exe
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
 
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `derivative-valuation-strategies`, `option-pricing-models`, `convertible-bonds`, `option-hedging-smile`, `exotics-structured-products`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
+- `derivative-valuation-strategies` (Forwards, swaps and options: no-arbitrage valuation and option strategies): added by the guide revision of 22 October 2026 (`8302467`); no pathway note; its entries are in `volatility-options/derivative-contracts`, `volatility-options/derivative-markets-uses`, `volatility-options/forward-commitment-valuation`, `volatility-options/option-valuation`, `volatility-options/option-strategies`.
 - `option-pricing-models` (Stochastic, local and jump volatility models): pathway note [option-pricing-models.md](option-pricing-models.md), 2 entries listed, in `volatility-options/option-pricing`.
-- `convertible-bonds` (Convertible bonds and credit-equity hedging): no pathway note; related existing material in `rates-credit-mortgages/embedded-option-bonds`, not reviewed as a complete treatment of the pathway.
+- `convertible-bonds` (Convertible bonds and credit-equity hedging): no pathway note; related existing material in `volatility-options/convertible-bonds`, not reviewed as a complete treatment of the pathway.
 - `volatility-models` (Rough and path-dependent volatility): content gap; no entry written.
-- `option-hedging-smile` (Option hedging: delta, vega, smile dynamics and transaction costs): no pathway note; related existing material in `volatility-options/option-valuation`, `volatility-options/option-strategies`, not reviewed as a complete treatment of the pathway.
+- `option-hedging-smile` (Option hedging: delta, vega, smile dynamics and transaction costs): no pathway note; related existing material in `volatility-options/option-hedging`, `volatility-options/option-strategies`, not reviewed as a complete treatment of the pathway.
 - `learning-pricing-model-risk` (Learning-based pricing, calibration and model risk): content gap; no entry written.
 - `exotics-structured-products` (Exotic options, autocallables and structured products): no pathway note; related existing material in `volatility-options/exotic-options`, not reviewed as a complete treatment of the pathway.
 

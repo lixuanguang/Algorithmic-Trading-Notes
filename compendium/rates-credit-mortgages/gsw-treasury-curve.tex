@@ -1,0 +1,18 @@
+\subsection{The Federal Reserve's fitted Treasury curve}
+
+\begin{qfdata}[The Federal Reserve's fitted Treasury curve (Gürkaynak, Sack and Wright): the Svensson form, its published parameters and how to recompute the yields]\label{data:gsw-treasury-curve}
+\qffield{Statement} Gürkaynak, Sack and Wright fit off-the-run Treasury notes and bonds each day with the Svensson extension of Nelson--Siegel: the zero yield at maturity $n$ is $y_t(n)=\beta_0+\beta_1\frac{1-e^{-n/\tau_1}}{n/\tau_1}+\beta_2[\frac{1-e^{-n/\tau_1}}{n/\tau_1}-e^{-n/\tau_1}]+\beta_3[\frac{1-e^{-n/\tau_2}}{n/\tau_2}-e^{-n/\tau_2}]$, continuously compounded; the parameters minimise duration-weighted squared price errors, approximately the squared yield errors (eq.~(22), p.~15) \citep[FEDS 2006-28, sec.~3, pp.~13--15]{wide-gsw-yield-curve}. The Board publishes the daily parameters ($\beta_0$ to $\beta_3$, $\tau_1$, $\tau_2$) with zero yields (SVENY), par yields, instantaneous forwards and one-year forwards \citep[file \texttt{feds200628.csv}, 14 June 1961 to 9 October 2026]{fed-gsw-data}.
+
+\qffield{Notation} $n$ maturity in years; $\beta_3=0$ and no $\tau_2$ in the early years, when the three-term Nelson--Siegel form is used.
+
+\qffield{Conditions} The file is a staff research product, ``subject to delay, revision, or methodological changes without advance notice'' (file header); its yields are fitted values, smooth by construction, not traded prices; the fit excludes bills and on-the-run issues, as described in the paper.
+
+\qffield{Practice} Recomputing the 10-year zero yield from each day's parameters reproduces the published SVENY10 on all 13{,}759 days with a 10-year yield to within 0.00005 points (rounding of the published value); 2{,}084 of those days use the three-term form. On 9 October 2026 both give 5.2514 percent. This curve is a dated, reproducible input, not a substitute for bootstrapping one's own.
+
+\qffield{Pitfalls} The paper describes the method as of 2006; later changes to the sample or filters, which the file header allows, may apply.
+
+\qffield{See also} \hyperref[mod:forward-rates-fra]{forward rates and FRAs} (term premia, ACM and KW); \hyperref[mod:duration-convexity]{duration and convexity}.
+
+\qffield{Further reading} \nolinkurl{wide-nelson-siegel}; \nolinkurl{wide-hagan-west-interp}.
+
+\end{qfdata}

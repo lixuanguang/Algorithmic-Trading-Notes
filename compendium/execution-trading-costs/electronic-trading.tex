@@ -1,0 +1,30 @@
+\subsection{The electronic trading environment}
+
+Numbers in \hyperref[def:electronic-trading-environment]{electronic trading} are checked in \texttt{notes/artefacts/trade-execution/trade-execution-checks.py}.
+
+\begin{qfdefinition}[Electronic trading: what drove it, fragmentation, the main types of electronic traders, trading systems, the advantages of low latency, the risks and how regulation mitigates them, and abuses that surveillance looks for]\label{def:electronic-trading-environment}
+\qffield{Statement} This entry links the parts of the compendium that describe today's electronic markets.
+\begin{itemize}
+\item \emph{Drivers.} Automation began with portfolio trades in the 1980s and rules-based trading in the 1990s, and grew into algorithmic trading that chooses horizon, style and venue \citep[chap.~10, sec.~5.3, pp.~670--673]{managing-investment-portfolios-2007}. Lower costs, decimal ticks, competition among venues and regulation pushed volume onto electronic order books (\hyperref[rule:us-equity-market-structure]{U.S.\ market structure}). In bonds, falling dealer capacity raised the demand for electronic liquidity \citep[chap.~44, pp.~1098--1099]{s7-fabozzifixed}.
+\item \emph{Fragmentation.} Trading in one security spreads across exchanges, alternative trading systems, dark pools and internalisers, linked by routing rules and smart routers (\hyperref[mech:venue-competition-fragmentation]{venue competition}; \hyperref[def:dark-pools-crossing]{dark pools}; \hyperref[def:smart-order-routing]{smart order routing}).
+\item \emph{Electronic traders.} The SEC's 2010 release describes passive market makers, arbitrageurs, structural traders (who exploit stale quotes and market structure) and directional traders, including order anticipation and momentum ignition (\hyperref[def:hft-strategies]{high-frequency strategies}). Buy-side institutions trade through algorithms and direct market access. MIP's motives (information, value, liquidity and passive traders) remain the basis of their urgency (sec.~4.1, pp.~664--667). The types contrast in horizon, inventory and edge (Interpretation): market makers hold little inventory and earn the spread; arbitrageurs and structural traders earn from speed and price relations; directional and order-anticipating traders take short-term views; the buy side trades large orders over hours or days and is the liquidity demand the others supply or anticipate.
+\item \emph{Systems.} Order and execution management systems, direct and sponsored market access, smart routers, co-location and direct data feeds (\hyperref[def:automated-trading-architecture]{trading architecture}).
+\item \emph{Low latency.} Speed matters absolutely and relative to competitors \citep[sec.~IV.B.2, pp.~57--58]{sec-concept-release-2010}. Faster traders can update quotes before being picked off, pick off others' stale quotes, and win queue priority; continuous markets reward the race (\hyperref[res:latency-arbitrage-arms-race]{latency arbitrage}; \hyperref[res:queue-position-value]{queue position}).
+\item \emph{Risks and mitigation.} Runaway algorithms and operational failures (\hyperref[ev:quant-implementation-failures]{Knight Capital}) and liquidity withdrawal and flash crashes (\hyperref[ev:may-2010-flash-crash]{May 2010}). U.S. brokers with market access must have controls that block erroneous orders and breaches of credit or capital thresholds \citep[17 CFR 240.15c3-5(b)]{cfr-240-15c3-5}. EU firms must test algorithms and keep kill functionality (\hyperref[rule:mifid-rts6-algorithmic-controls]{RTS~6}). Circuit breakers and limit-up/limit-down bands pause trading (\hyperref[mech:circuit-breakers-trading-halts]{circuit breakers}).
+\item \emph{Abuses.} Surveillance looks for spoofing and layering (\hyperref[rule:spoofing-securities-markets]{spoofing}), momentum ignition and front running (FINRA Rule~5270, in \hyperref[def:hft-strategies]{high-frequency strategies}), quote stuffing and wash trades (Interpretation).
+\end{itemize}
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Stale quotes.} A dealer's stale 500-share bid at 50.00, hit when fair value has moved to 49.98, loses 10.00.
+\item \emph{The spread that pays for it.} If 10 percent of the dealer's fills are such pick-offs, they cost 0.002 a share on average. A 0.005 half-spread then leaves 0.003 net, and the dealer breaks even at a 0.002 half-spread.
+\end{itemize}
+That is why a dealer pays for speed (to cancel first) and why slower liquidity providers quote wider spreads. Investors pay that cost through the spread.
+
+\qffield{Conditions} Market-structure descriptions are dated in the linked entries; rules change, and venue, fee and latency details differ across markets and jurisdictions.
+
+\qffield{Pitfalls} Treating high-frequency trading as one strategy. Assuming fragmentation always raises costs: competition can narrow spreads while splitting depth. Equating a cancelled order with manipulation; intent decides spoofing.
+
+\qffield{See also} \hyperref[def:market-regulation-design]{regulation as market design}; \hyperref[meth:trade-strategy-selection]{choosing a strategy}.
+
+\end{qfdefinition}

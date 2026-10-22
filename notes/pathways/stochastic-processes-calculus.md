@@ -24,13 +24,15 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Stochastic calculus for asset prices* (`stochastic-calculus.tex`): `def:brownian-motion-quadratic-variation`, `res:ito-lemma-geometric-brownian-motion`, `res:risk-neutral-pricing-feynman-kac`.
+- `stochastic-calculus-control` (Stochastic calculus and continuous-time control; `stochastic-calculus.tex`): `def:brownian-motion-quadratic-variation`, `res:ito-lemma-geometric-brownian-motion`, `res:risk-neutral-pricing-feynman-kac`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `stochastic-calculus-control`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `stochastic-calculus-control` (Stochastic calculus and continuous-time control): no pathway note; related existing material in `stochastic-processes-calculus/stochastic-calculus`, not reviewed as a complete treatment of the pathway.
 

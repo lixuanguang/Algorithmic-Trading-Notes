@@ -103,23 +103,6 @@ The conclusion that assuming IID draws oversamples survives; the formula does no
 
 \end{qfmethod}
 
-\begin{qfpitfall}[Time-validity of labels, sample weights and fitted transforms: what is known when, and what may be used only in training]\label{pit:label-weight-leakage}
-\qffield{Statement} Several of López de Prado's constructions use information from after the observation they describe. A triple-barrier label and its return use prices up to $t_{i,1}$ \citep[chap.~3, p.~45]{alpha-afml}; average uniqueness ``requires information that is not available until a future time'' and is safe only because it is ``used on the training set \dots\ and not on the testing set'' (chap.~4, p.~62); attribution weights use realised returns over the label's life (p.~69). These are legitimate as training targets and weights.
-
-Interpretation, derived here: they leak when (i) a training label's span reaches into the test period, so the training set contains test-period prices; (ii) concurrency $c_t$ is computed with labels from both sets; (iii) a quantity fitted on the full sample (a CUSUM threshold, a barrier multiple, a fractional-differencing order $d$, an EWMA warm-up, a meta-label primary model) is then used in a backtest of that same sample; or (iv) weights or labels are used as features.
-
-\qffield{Conditions} The decision-time inputs, by contrast, are causal as López de Prado defines them: bar thresholds use EWMAs of prior bars (chap.~2, pp.~29--32), and the barrier width uses volatility up to the event (chap.~3, pp.~44--45). His fractional-differencing order is chosen on the whole E-mini history (chap.~5, Snippet~5.4, p.~85), and his quantamental recipe refits the secondary model ``on the same training set'' as the primary (p.~53); both need re-estimation inside each training window when the result is to be evaluated out of sample.
-
-\qffield{Practice} Interpretation, a checklist for one train/test split: compute labels, spans, concurrency, uniqueness and weights from training data; drop (purge) training observations whose spans overlap the test period, and leave a gap (embargo) after it; fit $d$, thresholds and barrier multiples on training data and apply them unchanged to the test period; build meta-labels from out-of-sample primary predictions; and record each choice with its data window.
-
-\qffield{Pitfalls} Uniqueness avoids leakage only when computed within the training set; the fractional-differencing order is fitted, not a fixed property of the series. Purging and embargo are López de Prado's chap.~7. His rules, stated in \hyperref[meth:purged-embargoed-cross-validation]{purged and embargoed cross-validation}, agree with the checklist's purge and embargo, applied to every split.
-
-\qffield{See also} \hyperref[def:label-concurrency-uniqueness]{label concurrency and uniqueness}; \hyperref[meth:sample-weights-attribution-decay]{sample weights}; \hyperref[meth:meta-labelling]{meta-labelling}; \hyperref[meth:fixed-width-fractional-differencing]{fixed-width fractional differencing}; \hyperref[meth:strategy-production-lifecycle]{strategy production lifecycle} (embargo before live trading, a different use of the word); \hyperref[pit:parameter-overfitting]{parameter overfitting}.
-
-\qffield{Further reading} On information timing, \nolinkurl{alpha-jansen} and point-in-time language models; López de Prado's chap.~7 on evaluation.
-
-\end{qfpitfall}
-
 \begin{qfmethod}[Purged and embargoed $k$-fold cross-validation: dropping training labels that overlap the test set, a gap after it, and why shuffled $k$-fold and out-of-bag scores are inflated]\label{meth:purged-embargoed-cross-validation}
 \qffield{Statement} López de Prado gives two reasons why $k$-fold cross-validation ``fails in finance'': observations ``cannot be assumed to be drawn from an IID process'', and the test set is reused while a model is developed, ``leading to multiple testing and selection bias'' \citep[chap.~7, sec.~7.3, p.~104]{alpha-afml}. Chapter~7 treats only the first. With a serially correlated feature, $X_t\approx X_{t+1}$, and labels formed on overlapping data, $Y_t\approx Y_{t+1}$, putting $t$ and $t+1$ in different sets leaks information, so a classifier can score well ``even if $X$ is an irrelevant feature''; leakage requires $(X_i,Y_i)\approx(X_j,Y_j)$, and ``it does not suffice that $X_i\approx X_j$ or even $Y_i\approx Y_j$'' (p.~105). The remedy has two parts (sec.~7.4, pp.~105--108):
 \begin{itemize}
@@ -156,41 +139,5 @@ Bergmeir et al.'s result concerns one-step autoregressive rows with uncorrelated
 \qffield{See also} \hyperref[pit:label-weight-leakage]{time-validity of labels and weights}; \hyperref[def:label-concurrency-uniqueness]{label concurrency and uniqueness}; \hyperref[meth:sequential-bootstrap]{sequential bootstrap}; \hyperref[pit:parameter-overfitting]{parameter overfitting}.
 
 \qffield{Further reading} The rest of chap.~7 (sec.~7.5 on scikit-learn's scoring bugs, pp.~109--110) and chap.~12's combinatorial purged cross-validation.
-
-\end{qfmethod}
-
-\begin{qfmethod}[Recording a time-valid ML or language-model experiment: data release times, training and pretraining cutoffs, tuning trials and held-out dates]\label{meth:time-valid-ml-experiment-record}
-\qffield{Statement} The problem for language models is stated by Kelly, Malamud, Schwab and Xu in their NBER working paper of May 2026 \citep[WP~35247, abstract, p.~1]{latest-pit-language-models}. Models ``trained on unrestricted internet corpora inevitably embed information from the future, introducing lookahead bias that compromises the validity of backtests''. Point-in-time models, ``trained exclusively on text available up to each calendar date'', remove this ``by construction''. Their implementation shows what has to be recorded:
-\begin{itemize}
-\item \emph{Pretraining cutoff.} Monthly checkpoints from 2013 to 2024 are trained on FineWeb text, which ``is already indexed with publication timestamps allowing us to enforce a temporal cutoff directly'' (sec.~3, p.~5; Table~1).
-\item \emph{Fine-tuning data.} These were filtered by a classifier (gpt-5-nano) that keeps only ``timeless'' examples free of ``real-world events, real individuals, specific dates'' (App.~B, p.~22).
-\item \emph{Use in a forecast.} Each calendar year's news is embedded with the checkpoint of December of the year before. Because the earliest checkpoint is December 2013, out-of-sample results run from 2014 to May 2020 on Dow Jones Newswire (sec.~5, p.~9).
-\end{itemize}
-
-\qffield{Notation} Decision time $t$; data release (record) time of each input; model cutoff $c$, the last date of text or data any trained component saw; held-out window, the dates never used for fitting or selection.
-
-\qffield{Conditions} \emph{A minimal record} (Interpretation). For every experiment, log:
-\begin{itemize}
-\item each input's release time, not its reference date (\hyperref[meth:bitemporal-reference-tables]{bitemporal tables}; \hyperref[data:holdings-insider-filing-lags]{filing timestamps});
-\item every model component's cutoff, including pretrained models and any model used to filter or label data;
-\item the label spans, purge and embargo (\hyperref[meth:purged-embargoed-cross-validation]{purged cross-validation});
-\item the number and dispersion of tuning trials, kept for \hyperref[meth:deflated-sharpe-ratio]{deflation} and \hyperref[meth:multiple-testing-control]{multiple testing};
-\item the held-out dates, fixed before results are seen, with a note of any later look at them.
-\end{itemize}
-A cutoff is only as good as its timestamps. The paper relies on FineWeb's publication timestamps and does not test their accuracy.
-
-\qffield{Practice} The paper reports that portfolios built from point-in-time embeddings ``achieve robust positive Sharpe ratios and perform close to full-sample counterparts that violate temporal validity'' (abstract). That is a claim about its sample and design.
-
-\qffield{Pitfalls} Interpretation: a filter or labeller trained on unrestricted data, here the classifier used for fine-tuning data, can itself carry later knowledge into what it keeps, even when it only removes examples; the paper's design limits this to fine-tuning data, but a record should name it. Commit dates of a protocol file are not proof that it preceded the results when both are committed together. Its working-paper abstract on Chicago Booth's Fama--Miller page states that ``commercial LLMs suffer from significant look-ahead bias, which may explain a large portion of their predictability in various settings'', and that LLMs ``exhibit extremely poor numerical reasoning'' \citep[working-paper abstract on the Fama--Miller Center page]{latest-levy-caution-llm}.
-
-A contrasting estimate: He, Lv, Manela and Wu train language models for each year from 1999 on text available at the time. Next-day return forecasts from news using their outputs reach Sharpe ratios ``comparable to a much larger Llama model, indicating that lookahead bias is modest'' in that application. They add that it is ``model and application-specific'', since a prediction model on top can compensate \citep[arXiv v3, 6 July 2025, abstract]{wide-chrono-llm}. The two disagree on magnitude for different models and tasks, which is a reason to record the training cutoff and the evaluation window rather than assume either.
-
-\emph{A taxonomy of leakage to check against}. Kapoor and Narayanan sort leakage into three classes and eight types: [L1] no clean separation of training and test data (no test set; pre-processing, or feature selection, on the combined data; duplicates); [L2] features that ``should not be legitimately available'', such as proxies for the outcome; and [L3] a test set not drawn from the distribution of interest (temporal leakage, when the test set contains data ``from a date before the training set''; non-independence between training and test samples; sampling bias) \citep[sec.~2.4, PDF pp.~5--6]{wide-kapoor-narayanan-leakage}.
-
-Mapped to this record (interpretation): release times and training cutoffs address [L3.1]; purging and embargoes [L3.2]; fitting scalers, imputations and feature screens inside each training window [L1.2]--[L1.3]; and a field-by-field availability check [L2]. The record above does not yet name duplicates across overlapping instruments or vendor histories [L1.4], or a test window chosen after results [L3.3].
-
-\qffield{See also} \hyperref[pit:label-weight-leakage]{time-validity of labels and weights}; \hyperref[meth:purged-embargoed-cross-validation]{purged cross-validation}; \hyperref[meth:bitemporal-reference-tables]{bitemporal reference tables}.
-
-\qffield{Further reading} \nolinkurl{latest-levy-caution-llm}; \nolinkurl{alpha-jansen}.
 
 \end{qfmethod}

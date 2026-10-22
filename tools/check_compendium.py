@@ -20,6 +20,14 @@ file, including one with only headings or prose, is input exactly once, in decla
 order, from a section wrapper's \input chain, without cycles; equivalent paths name
 one file. Headings below a chapter must not skip a level.
 
+A chapter's title is its guide section's name. Below it, each \section is a guide specialist
+pathway opened by \qfpathway{pathway-key}{Name} in the wrapper: the key must be one of that
+section's pathways in the guide's specialist_order, the name the guide's, each pathway at most
+once and in the guide's relative order, and each with at least one typed entry. A pathway
+without local material is omitted. Every topic file, and so every typed entry, is input
+under a pathway; a chapter may open with brief prose in its wrapper. Topic files hold the
+lower headings (\subsection, \subsubsection) only.
+
 This is a structural check, not a claim or source-verification check.
 """
 
@@ -69,8 +77,16 @@ SECTION_KEY = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 PART_DECL = re.compile(r"\\qfpart\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}")
 OLD_DECL = re.compile(r"\\qfsections\{")
 INPUT = re.compile(r"\\input\{([^}]+)\}")
-HEADING = re.compile(r"\\(chapter|section|subsection|subsubsection)\*?\{")
-LEVEL = {"chapter": 0, "section": 1, "subsection": 2, "subsubsection": 3}
+HEADING = re.compile(r"\\(chapter|section|subsection|subsubsection|qfpathway)\*?\{")
+LEVEL = {
+    "chapter": 0,
+    "section": 1,
+    "qfpathway": 1,
+    "subsection": 2,
+    "subsubsection": 3,
+}
+PATHWAY = re.compile(r"\\qfpathway\{([^}]*)\}\{([^}]*)\}")
+CHAPTER = re.compile(r"\\chapter\*?\{([^}]*)\}")
 
 
 def tex_text(path):
@@ -297,6 +313,111 @@ def heading_levels(root, sections, problems):
             walk(wrapper.resolve())
 
 
+def check_pathways(root, sections, guide, problems):
+    r"""Compare each populated chapter's title and \qfpathway headings with the guide.
+
+    The chapter title must be the section's guide name. In the wrapper every \input follows
+    a \qfpathway, so no topic file, and no typed entry, sits outside a numbered pathway; a
+    chapter may open with brief introductory prose in the wrapper itself. Each pathway key
+    belongs to this section's specialist_order, carries the guide's name, appears once, in the
+    guide's relative order, and has at least one typed entry among the files input under it.
+    Peer headings other than \qfpathway are reported: a bare or starred \section or an
+    unnumbered overview command in a wrapper, and \chapter, \section, \qfpathway or an
+    overview command in a topic file. Returns the rendered pathway keys by section.
+    """
+    root = root.resolve()
+    compendium = root / "compendium"
+    name = {r["id"]: " ".join(r.get("name", "").split()) for r in guide["routes"]}
+    order = {r["id"]: list(r.get("specialist_order", [])) for r in guide["routes"]}
+    owner = {pid: sec for sec, pids in order.items() for pid in pids}
+    pname = {r["id"]: " ".join(r.get("name", "").split()) for r in guide["specialist_routes"]}
+    token = re.compile(
+        PATHWAY.pattern + "|" + INPUT.pattern + r"|(\\section\*?\{|\\qfoverview[a-z]*)"
+    )
+    rendered = {}
+
+    def entries_under(path, seen):
+        if path in seen or not path.exists():
+            return 0
+        seen.add(path)
+        text = tex_text(path)
+        found = len(ENTRY.findall(text))
+        for target in INPUT.findall(text):
+            child = input_target(compendium, target)
+            if child.is_relative_to(compendium):
+                found += entries_under(child, seen)
+        return found
+
+    for key in sections:
+        wrapper = compendium / key / "section.tex"
+        if not wrapper.exists():
+            continue
+        where = wrapper.relative_to(root).as_posix()
+        text = tex_text(wrapper)
+        titles = CHAPTER.findall(text)
+        if titles and key in name and " ".join(titles[0].split()) != name[key]:
+            problems.append(f"{where}: chapter is titled {titles[0]!r}, the guide {name[key]!r}")
+        current, counts, keys = None, {}, []
+        for m in token.finditer(text):
+            line = text.count("\n", 0, m.start()) + 1
+            if m.group(1) is not None:
+                pid, title = m.group(1).strip(), " ".join(m.group(2).split())
+                current = pid
+                if pid in counts:
+                    problems.append(f"{where}:{line}: pathway `{pid}` is opened twice")
+                    continue
+                counts[pid] = 0
+                keys.append(pid)
+                if pid not in pname:
+                    problems.append(f"{where}:{line}: `{pid}` is not a guide specialist pathway")
+                elif owner.get(pid) != key:
+                    problems.append(
+                        f"{where}:{line}: pathway `{pid}` belongs to section "
+                        f"`{owner.get(pid)}`, not `{key}`"
+                    )
+                elif title != pname[pid]:
+                    problems.append(
+                        f"{where}:{line}: pathway `{pid}` is titled {title!r}, "
+                        f"the guide {pname[pid]!r}"
+                    )
+            elif m.group(3) is not None:
+                if current is None:
+                    problems.append(
+                        f"{where}:{line}: \\input{{{m.group(3)}}} sits outside any numbered "
+                        "pathway; open the guide pathway it serves with \\qfpathway first"
+                    )
+                    continue
+                child = input_target(compendium, m.group(3))
+                if child.is_relative_to(compendium):
+                    counts[current] += entries_under(child, set())
+            else:
+                problems.append(
+                    f"{where}:{line}: {m.group(4).rstrip('{')} is not a guide pathway heading; "
+                    "use \\qfpathway"
+                )
+        listed = [pid for pid in keys if owner.get(pid) == key]
+        if listed != [pid for pid in order.get(key, []) if pid in listed]:
+            problems.append(
+                f"{where}: pathways {listed} are not in the guide's order {order.get(key, [])}"
+            )
+        for pid in keys:
+            if counts[pid] == 0:
+                problems.append(f"{where}: pathway `{pid}` has no typed entry")
+        rendered[key] = keys
+    for path in sorted(compendium.rglob("*.tex")):
+        parts = path.relative_to(compendium).parts
+        if len(parts) < 2 or parts[0] == "front" or path.name == "section.tex":
+            continue
+        text = tex_text(path)
+        for m in re.finditer(r"\\(qfpathway|qfoverview[a-z]*|chapter|section)(?![a-z])\*?", text):
+            line = text.count("\n", 0, m.start()) + 1
+            problems.append(
+                f"{path.relative_to(root).as_posix()}:{line}: \\{m.group(1)} in a topic file; "
+                "pathways open in the wrapper and topics use \\subsection"
+            )
+    return rendered
+
+
 def load_citation_keys(root):
     """Return catalogue keys from the guide plus keys registered in front/sources.tex."""
     keys = set(
@@ -426,6 +547,7 @@ def report(root):
     ordered = [key for key in load_sections(root, []) if key in sections]
     reached = set(input_order(root, ordered, problems))
     heading_levels(root, ordered, problems)
+    rendered = check_pathways(root, ordered, load_guide(root), problems)
     populated = [key for key in ordered if (root / "compendium" / key / "section.tex").exists()]
     notes_dir = root / "notes" / "pathways"
     for key in populated:
@@ -467,6 +589,7 @@ def report(root):
             {"key": pkey, "sections": keys, "populated": [k for k in keys if k in populated]}
             for pkey, _, keys in load_parts(root, [])
         ],
+        "pathways_rendered": rendered,
         "entries": len(entries),
         "entries_by_section": dict(Counter(e["section"] for e in entries)),
         "entries_by_type": dict(Counter(e["type"] for e in entries)),
@@ -487,7 +610,10 @@ def print_report(r):
         + ", populated "
         + "/".join(str(len(p["populated"])) for p in r["parts"])
     )
-    print(f"Pathway notes: {len(r['pathways'])}")
+    print(
+        f"Pathways rendered: {sum(len(v) for v in r['pathways_rendered'].values())}  "
+        f"pathway notes: {len(r['pathways'])}"
+    )
     print(f"Problems: {len(r['problems'])}")
     for problem in r["problems"]:
         print("  - " + problem)

@@ -1,4 +1,4 @@
-\section{Private clients and the wealth management industry}
+\subsection{Private clients and the wealth management industry}
 
 \begin{qfmethod}[Individual wealth: its types, creation and distribution; human capital, financial capital and economic net worth over the life cycle, and how they shape decisions]\label{meth:individual-wealth-capital}
 \qffield{Statement} \emph{Types and creation.} A household's wealth is financial (deposits, securities, retirement accounts), real (homes, other property), business equity, and claims to future income: \emph{human capital}, the present value of future labour income, and pension and social-security entitlements. Wealth is created by saving earned income, by building or owning businesses, by holding assets that appreciate, and by inheritance (Interpretation).
@@ -22,46 +22,6 @@ with $h$ real after-tax earnings, $R$ the retirement age and $\nu$ a premium for
 \qffield{Pitfalls} Analysing a young client's portfolio without their human capital. Treating all human capital as bond-like. Confusing mean with median wealth.
 
 \qffield{See also} \hyperref[meth:economic-balance-sheet-allocation]{economic balance sheet}; \hyperref[meth:private-client-ips]{private-client IPS}; \hyperref[meth:human-capital-risks]{risks to human capital}.
-
-\end{qfmethod}
-
-\begin{qfmethod}[Taxes and inflation in individual investment decisions: types of taxes on individuals, accrual, deferral and wealth taxes, after-tax and real returns, with US and UK rates]\label{meth:private-client-tax-inflation}
-\qffield{Statement} \emph{Types of tax.} Individuals pay tax on income (wages, interest, dividends), on realised capital gains, on consumption, on property, sometimes on wealth, and on transfers at death or by gift (Interpretation). For investors, the relevant 2026 rates are:
-\begin{itemize}
-\item \emph{United States} (federal): ordinary income up to 37 percent above USD~640,600 single or 768,700 joint; long-term gains and qualified dividends at 0, 15 or 20 percent, the 20 percent rate above USD~545,500 single or 613,700 joint \citep[secs.~4.01, 4.03]{irs-rev-proc-2025-32}; plus a 3.8 percent net investment income tax on investment income above modified adjusted gross income of USD~200,000 single or 250,000 joint \citep[sec.~1411]{us-internal-revenue-code-26}.
-\item \emph{United Kingdom} (2026--27, outside Scotland): personal allowance GBP~12,570, basic rate 20 percent on the next 37,700, higher 40 percent, additional 45 percent above 125,140; dividends above a 500 allowance at 10.75, 35.75 and 39.35 percent \citep[tables]{govuk-income-tax-rates-2026}; gains above a 3,000 allowance at 18 percent within the basic-rate band and 24 percent above it \citep[rates page]{govuk-cgt-rates-2026}.
-\end{itemize}
-
-\emph{How taxes compound.} With return $r$ over $n$ years:
-\begin{itemize}
-\item tax on accrual each year at $t$: $(1+r(1-t))^n$;
-\item deferred gains taxed once at sale: $(1+r)^n(1-t)+t$ per unit invested;
-\item a wealth tax at $t_w$ on value each year: $[(1+r)(1-t_w)]^n$.
-\end{itemize}
-Deferral lowers the effective annual rate below the statutory rate; tax-exempt accounts remove it. \emph{Inflation} raises the effective tax on real returns, because nominal income and gains are taxed even when they only keep pace with prices (Derivation).
-
-\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part 2). One hundred invested at 6 percent for 20 years:
-\begin{center}\small
-\begin{tabular}{@{}lr@{}}
-\toprule
-Treatment & Ending value \\
-\midrule
-Tax-exempt & 320.71 \\
-US interest taxed yearly at 40.8\% (37\% + 3.8\%) & 200.99 \\
-US gains deferred, taxed at 23.8\% at the end & 268.18 \\
-UK dividends taxed yearly at 39.35\% & 204.39 \\
-UK gains deferred, 24\% at the end & 267.74 \\
-1\% annual wealth tax & 262.31 \\
-\bottomrule
-\end{tabular}
-\end{center}
-The deferred US gain's effective annual tax rate is 15.7 percent. With 2.5 percent inflation, interest taxed at 40.8 percent earns 1.03 percent real, against 3.41 percent before tax: the tax takes 70 percent of the real return. \emph{Decision}: for a top-bracket client, hold income-producing assets in tax-exempt or deferred accounts and growth assets in taxable accounts; prefer inflation-linked instruments in tax-advantaged accounts, where the inflation uplift is not taxed (\hyperref[meth:tax-in-planning]{tax management}).
-
-\qffield{Conditions} Federal US and non-Scottish UK rates for the tax years starting in 2026; state, local and Scottish taxes, phase-outs, allowances for savings income and treaty credits are ignored. The chapter uses these two jurisdictions because they contrast citizenship- with residence-based taxation, estate with inheritance tax and two pension designs; it is not advice to any real person.
-
-\qffield{Pitfalls} Comparing pre-tax returns across accounts with different tax treatment. Ignoring inflation when judging a tax rate. Assuming deferral is worth nothing because the rate is the same at the end.
-
-\qffield{See also} \hyperref[meth:allocation-constraints-taxes-revision]{taxes in allocation}; \hyperref[meth:tax-in-planning]{tax management}.
 
 \end{qfmethod}
 

@@ -1,5 +1,3 @@
-\section{Large covariance matrices: shrinkage and random-matrix noise}
-
 \begin{qfmethod}[Estimating a large covariance matrix: why the sample matrix fails when assets are many relative to observations, and linear and nonlinear shrinkage]\label{meth:portfolio-covariance-estimation}
 \qffield{Statement} Ledoit and Wolf's review starts from the case ``when the number of variables is of the same magnitude as the number of observations'', where ``the sample covariance matrix certainly will not do'' \citep[UZH ECON WP~323, version of February 2020, abstract, p.~1]{wide-ledoit-wolf-review}. \emph{Linear shrinkage} to the identity solves $\min_{\rho_1,\rho_2}E\|\hat\Sigma-\Sigma\|_F^2$ over $\hat\Sigma=\rho_1I+\rho_2S$, with the scaled Frobenius norm $\|A\|_F^2=\operatorname{Tr}(A'A)/N$ (eqs.~(2.1)--(2.5), pp.~4--5). The solution is
 \[ \Sigma^*=\gamma^*\mu I+(1-\gamma^*)S,\qquad \gamma^*=\frac{\beta^2}{\delta^2}, \]

@@ -123,7 +123,7 @@
   {
    "id": "topic:firms-market-structure",
    "title": "Firms and market structure",
-   "section": "multi-asset-systematic-macro",
+   "section": "systematic-equities",
    "prerequisites": [],
    "scope": "Costs, breakeven and shutdown, competitive structures, pricing and concentration measures."
   },
@@ -869,7 +869,7 @@
   {
    "id": "topic:institutional-portfolios",
    "title": "Institutional investor portfolios",
-   "section": "portfolio-construction-risk",
+   "section": "portfolio-risk-financing",
    "prerequisites": [
     "topic:strategic-asset-allocation"
    ],

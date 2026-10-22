@@ -194,13 +194,13 @@
      ]
     },
     {
-     "goal": "combine signals into a neutral long--short portfolio with a matched risk model",
+     "goal": "combine signals into a neutral long--short portfolio with a matched risk model, after choosing a mandate and building an index portfolio",
      "pathways": [
       "equity-long-short-construction"
      ]
     },
     {
-     "goal": "measure event returns and size merger-arbitrage positions",
+     "goal": "measure event returns and size merger-arbitrage positions, starting from equity securities and corporate actions",
      "pathways": [
       "equity-event-driven"
      ]
@@ -276,7 +276,7 @@
     "equity-long-short-construction",
     "equity-event-driven"
    ],
-   "learning_note": "Start from factor premia, statistical arbitrage, investor flows and fundamental valuation; then study short-selling, option, insider and retail-flow signals, combine signals into a risk-controlled long–short portfolio, and finish with corporate events and merger arbitrage.",
+   "learning_note": "Start from factor premia, statistical arbitrage, investor flows and fundamental valuation; then study short-selling, option, insider and retail-flow signals, combine signals into a risk-controlled long–short portfolio, and finish with equity securities and corporate actions, earnings events and merger arbitrage.",
    "chart_name": "Systematic equities"
   },
   {
@@ -285,6 +285,12 @@
    "name": "Multi-asset and systematic macro",
    "outcome": "Attribute a cross-asset portfolio's returns to carry, trend, value and rate exposures, using signals built from release vintages and tradable contract rolls, and show how funding haircuts, trading costs and a rapid unwind change the result.",
    "section_goals": [
+    {
+     "goal": "read the business cycle and growth, set capital-market expectations and size global macro trades",
+     "pathways": [
+      "macro-economy-global-macro"
+     ]
+    },
     {
      "goal": "build and judge value, momentum, carry and defensive premia across asset classes",
      "pathways": [
@@ -400,6 +406,7 @@
     }
    ],
    "specialist_order": [
+    "macro-economy-global-macro",
     "cross-asset-style-premia",
     "trend-following",
     "risk-parity-vol-targeting",
@@ -407,7 +414,7 @@
     "macro-regimes-stock-bond",
     "macro-nowcasting-signals"
    ],
-   "learning_note": "Start with cross-asset style premia, trend following, risk parity and macro announcements; macro regimes and the stock–bond correlation build on risk parity, and nowcasting builds on announcements. Currencies follow in their own section.",
+   "learning_note": "Start with the business cycle, growth, capital-market expectations and global macro trading, then cross-asset style premia, trend following, risk parity and macro announcements; macro regimes and the stock–bond correlation build on risk parity and on the business cycle, and nowcasting builds on announcements and the cycle. Currencies follow in their own section.",
    "chart_name": "Multi-asset and macro"
   },
   {
@@ -417,7 +424,7 @@
    "outcome": "From spot, forward and money-market rates, measure forward-implied carry, covered-interest-parity deviations and realised currency excess returns, and show how a carry portfolio behaves in the worst equity months.",
    "section_goals": [
     {
-     "goal": "test exchange-rate forecasts and explain the forward-premium puzzle and the role of order flow",
+     "goal": "test exchange-rate forecasts and explain the forward-premium puzzle and the role of order flow, starting from quotes and real exchange rates",
      "pathways": [
       "fx-determination-forecasting"
      ]
@@ -535,6 +542,12 @@
    "outcome": "Connect a rate quote or bond position to its curve, expected policy path, term premium, collateral and hedge-contract assumptions.",
    "section_goals": [
     {
+     "goal": "price bonds from yields under market conventions and measure their duration and convexity",
+     "pathways": [
+      "bond-pricing-rate-risk"
+     ]
+    },
+    {
      "goal": "build zero curves and estimate and compare affine term-structure models",
      "pathways": [
       "curve-term-structure"
@@ -553,7 +566,7 @@
      ]
     },
     {
-     "goal": "forecast bond excess returns and build systematic rates signals",
+     "goal": "forecast bond excess returns and build systematic rates signals, and manage bond portfolios against an index or mandate",
      "pathways": [
       "bond-risk-premia"
      ]
@@ -603,13 +616,14 @@
     }
    ],
    "specialist_order": [
+    "bond-pricing-rate-risk",
     "curve-term-structure",
     "rate-derivatives",
     "monetary-policy-curve",
     "bond-risk-premia",
     "rates-inflation"
    ],
-   "learning_note": "Build curves and rate-derivative conventions, then read monetary policy and term premia in the curve, forecast bond excess returns and price inflation-linked claims.",
+   "learning_note": "Price bonds from yields and measure their rate risk; build curves and rate-derivative conventions, then read monetary policy and term premia in the curve, forecast bond excess returns and price inflation-linked claims.",
    "chart_name": "Rates: curves, premia and derivatives"
   },
   {
@@ -860,6 +874,12 @@
    "outcome": "Fit an arbitrage-free volatility surface to an option chain and compare delta and delta--vega hedges of one position on profit and loss, costs and tail losses under observed and stressed smile moves.",
    "section_goals": [
     {
+     "goal": "price forwards, swaps and options by no-arbitrage and choose option strategies",
+     "pathways": [
+      "derivative-valuation-strategies"
+     ]
+    },
+    {
      "goal": "calibrate local, stochastic and jump models and compare their smile dynamics",
      "pathways": [
       "option-pricing-models"
@@ -946,6 +966,7 @@
     }
    ],
    "specialist_order": [
+    "derivative-valuation-strategies",
     "option-pricing-models",
     "convertible-bonds",
     "volatility-models",
@@ -953,7 +974,7 @@
     "learning-pricing-model-risk",
     "exotics-structured-products"
    ],
-   "learning_note": "Start with stochastic, local and jump models, or with convertibles, a separate entry point; then rough and path-dependent volatility and the hedges each model implies, learned pricing, and exotics and structured products. Volatility trading and option premia are in the next section; crypto options appear with digital assets.",
+   "learning_note": "Start with no-arbitrage valuation of forwards, swaps and options and with option strategies; then stochastic, local and jump models and convertibles; then rough and path-dependent volatility and the hedges each model implies, learned pricing, and exotics and structured products. Volatility trading and option premia are in the next section; crypto options appear with digital assets.",
    "chart_name": "Option pricing and hedging"
   },
   {
@@ -1056,6 +1077,12 @@
    "outcome": "Evaluate a quoting policy on an order-book replay by fill probability, adverse selection and inventory risk, and state how the result depends on queue-position and self-impact assumptions.",
    "section_goals": [
     {
+     "goal": "describe market organisation and informed trading and measure spreads and volatility",
+     "pathways": [
+      "market-organisation-liquidity"
+     ]
+    },
+    {
      "goal": "derive inventory-aware quotes and model queues and fill probabilities",
      "pathways": [
       "market-making-lob"
@@ -1136,6 +1163,7 @@
     }
    ],
    "specialist_order": [
+    "market-organisation-liquidity",
     "market-making-lob",
     "lob-deep-learning",
     "options-execution",
@@ -1144,7 +1172,7 @@
     "fx-dealer-market-making",
     "hft-market-design"
    ],
-   "learning_note": "Study order-book mechanics and market making, then order-book learning, options market making, dealer market making in bonds and swaps, and simulation; FX dealing builds on bond and swap dealing, and high-frequency trading is a separate entry point. Crypto venues apply the same tools in Part [[part:digital-assets]].",
+   "learning_note": "Study market organisation, informed trading and liquidity measurement, then order-book mechanics and market making, then order-book learning, options market making, dealer market making in bonds and swaps, and simulation; FX dealing builds on bond and swap dealing, and high-frequency trading is a separate entry point. Crypto venues apply the same tools in Part [[part:digital-assets]].",
    "chart_name": "Microstructure and market making"
   },
   {
@@ -1402,6 +1430,12 @@
      "pathways": [
       "climate-sustainable"
      ]
+    },
+    {
+     "goal": "write investment policy, set the strategic allocation and use alternatives and derivative overlays",
+     "pathways": [
+      "investment-policy-allocation"
+     ]
     }
    ],
    "prerequisites": "Asset pricing, high-dimensional statistics and numerical optimisation overviews; portfolio exposure, covariance estimation and basic optimisation.",
@@ -1439,9 +1473,10 @@
     "portfolio-construction",
     "risk-tail-systemic",
     "performance-manager-evaluation",
-    "climate-sustainable"
+    "climate-sustainable",
+    "investment-policy-allocation"
    ],
-   "learning_note": "Turn forecasts into constrained portfolios, measure tail and systemic risk, then evaluate managers and climate exposure.",
+   "learning_note": "Turn forecasts into constrained portfolios, measure tail and systemic risk, then evaluate managers and climate exposure; investment policy, strategic asset allocation, alternatives and overlays build on construction.",
    "chart_name": "Portfolio construction and risk"
   },
   {
@@ -1797,7 +1832,7 @@
      ]
     },
     {
-     "goal": "size a strategic allocation for diversification and inflation hedging",
+     "goal": "size a strategic allocation for diversification and inflation hedging, starting from sectors, participants and forms of access",
      "pathways": [
       "commodity-allocation-inflation"
      ]
@@ -2113,7 +2148,7 @@
    "outcome": "Trace a crypto position from custody and collateral through venue fragmentation, funding, quoting and option margin to its settlement risk.",
    "section_goals": [
     {
-     "goal": "trace stablecoin and tokenised-bond claims, reserves and redemption",
+     "goal": "trace stablecoin and tokenised-bond claims, reserves and redemption, after learning how ledgers reach consensus",
      "pathways": [
       "stablecoin-tokenisation"
      ]
@@ -2207,7 +2242,7 @@
     "crypto-leverage-liquidations",
     "crypto-option-markets"
    ],
-   "learning_note": "Begin with custody, settlement and stablecoin collateral, then progress through cross-venue basis and crypto options. Three later pathways deepen each strand: stablecoin pegs and runs, leverage and liquidation cascades, and option-market evidence. Spot price discovery, exchange market quality, valuation, investors and exchange regulation follow in Section [[crypto-spot-markets]]; order-book dealing and other market making are in Section [[crypto-market-making]].",
+   "learning_note": "Begin with distributed ledgers, custody, settlement and stablecoin collateral, then progress through cross-venue basis and crypto options. Three later pathways deepen each strand: stablecoin pegs and runs, leverage and liquidation cascades, and option-market evidence. Spot price discovery, exchange market quality, valuation, investors and exchange regulation follow in Section [[crypto-spot-markets]]; order-book dealing and other market making are in Section [[crypto-market-making]].",
    "chart_name": "Crypto venues and derivatives"
   },
   {
@@ -2587,7 +2622,7 @@
    "outcome": "Specify a strategy as a research record (decision timestamp, data vintages, candidate family, economic hypothesis and the evidence that would reject it) and reconstruct a research decision and its eventual trade from versioned identities, data events, experiments and control records.",
    "section_goals": [
     {
-     "goal": "report backtests with multiplicity-adjusted significance and Sharpe-ratio uncertainty",
+     "goal": "report backtests with multiplicity-adjusted significance and Sharpe-ratio uncertainty after specifying the strategy as a testable hypothesis",
      "pathways": [
       "backtest-inference"
      ]
@@ -2688,7 +2723,7 @@
    "outcome": "Measure a fund's performance from dated investor cash flows against a public benchmark, and show when delayed exits, extra calls, NAV financing or lower appraisals force an allocator to sell liquid assets or cut new commitments.",
    "section_goals": [
     {
-     "goal": "measure private-fund performance with PME, direct alpha and cash-flow returns",
+     "goal": "measure private-fund performance with PME, direct alpha and cash-flow returns, from fund structures and fees",
      "pathways": [
       "pe-performance-measurement"
      ]
@@ -4135,7 +4170,7 @@
      ]
     },
     {
-     "goal": "analyse ownership and governance, mergers and the restructuring of distressed firms",
+     "goal": "analyse ownership and governance, mergers and the restructuring of distressed firms, starting from the business model",
      "pathways": [
       "corporate-governance-restructuring"
      ]
@@ -4177,7 +4212,7 @@
     "capital-structure-payout",
     "corporate-governance-restructuring"
    ],
-   "learning_note": "Capital budgeting and working capital come first; capital structure, cost of capital and payout build on them, and governance, mergers and restructuring on both. Credit analysis follows in Corporate credit, hybrids and labelled bonds ([[corporate-credit-capital]]) and private-equity transactions in Private equity and venture security design ([[private-equity-vc]]).",
+   "learning_note": "Capital budgeting and working capital come first; capital structure, cost of capital and payout build on them, and business models, governance, mergers and restructuring on both. Credit analysis follows in Corporate credit, hybrids and labelled bonds ([[corporate-credit-capital]]) and private-equity transactions in Private equity and venture security design ([[private-equity-vc]]).",
    "chart_name": "Corporate finance"
   },
   {
@@ -4186,7 +4221,7 @@
    "outcome": "Profile a private client's balance sheet (human capital, liabilities, taxes and goals) and propose an asset allocation, an insurance and annuity position and a transfer plan, each justified against lifecycle theory and the client's jurisdiction.",
    "section_goals": [
     {
-     "goal": "build lifecycle allocation, saving, insurance and annuitisation plans that account for human capital, labour flexibility and longevity",
+     "goal": "build lifecycle allocation, saving, insurance and annuitisation plans that account for human capital, labour flexibility and longevity, starting from the private client",
      "pathways": [
       "household-finance-lifecycle"
      ]
@@ -4235,7 +4270,7 @@
     "tax-aware-wealth-preservation",
     "wealth-transfer-succession"
    ],
-   "learning_note": "Client circumstances and lifecycle planning come first; taxes, asset location and concentrated positions build on them, and transfer and succession planning on both. Portfolio methods are in Portfolio construction, estimation error and risk models ([[portfolio-construction]]) and conduct duties in Duties to clients, conflicts of interest and asset-manager responsibilities ([[fiduciary-duties-conflicts]]).",
+   "learning_note": "Private clients, their advisers and lifecycle planning come first; taxes, asset location and concentrated positions build on them, and transfer and succession planning on both. Portfolio methods are in Portfolio construction, estimation error and risk models ([[portfolio-construction]]) and conduct duties in Duties to clients, conflicts of interest and asset-manager responsibilities ([[fiduciary-duties-conflicts]]).",
    "chart_name": "Private wealth management",
    "checkpoint_after": [
     "household-finance-lifecycle",
@@ -4245,6 +4280,42 @@
   }
  ],
  "specialist_routes": [
+  {
+   "id": "bond-pricing-rate-risk",
+   "name": "Bond instruments, pricing, yields and interest-rate risk",
+   "chart_name": "Bond pricing and rate risk",
+   "parent_route": "Rates: yield curves, term premia and derivatives",
+   "outcome": "Read a bond's contract terms and its issuer's funding market, price it from a yield on and between coupon dates under the market's day-count and quotation conventions, convert among yield and spread measures, and measure and aggregate its duration, convexity and curve exposures.",
+   "prerequisites": "Time value of money, discounting and cash-flow valuation ([[time-value-cash-flows]]); the Rates overview.",
+   "prerequisite_routes": [
+    "rates-credit-mortgages",
+    "time-value-cash-flows"
+   ],
+   "required_readings": [
+    {
+     "anchor": "s7-hulloptions",
+     "stage": "Foundations",
+     "reason": "Learn rate measures, compounding conventions, zero and par yields, forward rates and duration in Hull's interest-rate chapter."
+    },
+    {
+     "anchor": "s7-fabozzifixed",
+     "stage": "Mechanics",
+     "reason": "Read bond features, covenants and issuers, then pricing from a yield, accrued interest, yield and spread measures and interest-rate risk."
+    },
+    {
+     "anchor": "wide-bsv-fi-survey",
+     "stage": "Mechanics",
+     "reason": "See how fixed-income market segments trade, and who bears dealer risk."
+    },
+    {
+     "anchor": "exp-sofr-data",
+     "stage": "Data",
+     "reason": "Use the published reference-rate definitions behind money-market quotes and floating coupons."
+    }
+   ],
+   "checkpoint": "Price a semiannual-coupon bond between coupon dates from a quoted yield, giving its full and flat prices and accrued interest; convert the yield to effective-annual and money-market bases and compute its G- and Z-spreads; compute its modified duration, convexity and money duration, estimate the price change for a 50 basis-point parallel shift and say when the duration--convexity approximation fails.",
+   "optional_branches": []
+  },
   {
    "id": "rates-inflation",
    "name": "Inflation-linked bonds, real yields and breakevens",
@@ -4950,10 +5021,10 @@
   },
   {
    "id": "equity-event-driven",
-   "name": "Earnings, corporate events and merger arbitrage",
-   "chart_name": "Events and merger arbitrage",
+   "name": "Equity securities, corporate actions, earnings events and merger arbitrage",
+   "chart_name": "Equity securities and events",
    "parent_route": "Systematic equities",
-   "outcome": "Measure abnormal returns around earnings, analyst, issuance and corporate-action events with sound event-study methods, and size merger-arbitrage and other relative-value positions by completion risk, short-sale constraints and arbitrage capital.",
+   "outcome": "Distinguish share classes, shareholder rights and the issuance, distribution and trading of shares, then measure abnormal returns around earnings, analyst, issuance and corporate-action events with sound event-study methods, and size merger-arbitrage and other relative-value positions by completion risk, short-sale constraints and arbitrage capital.",
    "prerequisites": "Fundamental valuation and accounting signals; empirical asset pricing.",
    "prerequisite_routes": [
     "systematic-equities",
@@ -5042,7 +5113,7 @@
      "reason": "Study parent--subsidiary mispricing and why convergence trades can fail."
     }
    ],
-   "checkpoint": "Build an earnings-event file with exact announcement timestamps and point-in-time surprises; estimate the announcement premium and post-announcement drift by size and period, using calendar-time portfolios and the factor benchmark. Then assemble a sample of cash and stock mergers: compute spreads net of borrow and dividends, model completion probability as a function of time since announcement, and report returns and drawdowns with and without failed deals.",
+   "checkpoint": "Trace one company's share classes, voting rights and recent issues, dividends and buybacks, and their effect on a holder's position. Then build an earnings-event file with exact announcement timestamps and point-in-time surprises; estimate the announcement premium and post-announcement drift by size and period, using calendar-time portfolios and the factor benchmark. Then assemble a sample of cash and stock mergers: compute spreads net of borrow and dividends, model completion probability as a function of time since announcement, and report returns and drawdowns with and without failed deals.",
    "optional_branches": [
     {
      "target": "eq-lamont-frazzini-2007",
@@ -5097,6 +5168,32 @@
      "reason": "Compare returns to SPAC IPO investors, sponsors and public shareholders."
     }
    ]
+  },
+  {
+   "id": "derivative-valuation-strategies",
+   "name": "Forwards, swaps and options: no-arbitrage valuation and option strategies",
+   "chart_name": "Derivative valuation and strategies",
+   "parent_route": "Option pricing, volatility models and hedging",
+   "outcome": "Price forwards, futures and swaps by replication and value them during their lives, bound option prices with parity and arbitrage limits, value options on binomial trees and with Black's model, and choose and evaluate option strategies by their payoffs, break-evens and deltas.",
+   "prerequisites": "Time value of money, discounting and cash-flow valuation ([[time-value-cash-flows]]); the Option pricing overview.",
+   "prerequisite_routes": [
+    "volatility-options",
+    "time-value-cash-flows"
+   ],
+   "required_readings": [
+    {
+     "anchor": "s7-hulloptions",
+     "stage": "Valuation",
+     "reason": "Learn forward and futures pricing by cost of carry, swap valuation, put--call parity, binomial trees and Black's model."
+    },
+    {
+     "anchor": "s7-natenberg",
+     "stage": "Mechanics",
+     "reason": "Read how traders build spreads, straddles and collars and what the volatility skew means for choosing among them."
+    }
+   ],
+   "checkpoint": "For a dividend-paying stock, price a forward and value an existing one, test put--call--forward parity on quoted prices, and value an American put on a two-period binomial tree. Then choose between a collar and a covered call for a concentrated holding and state each strategy's break-even, maximum loss and delta.",
+   "optional_branches": []
   },
   {
    "id": "volatility-models",
@@ -7291,14 +7388,19 @@
   },
   {
    "id": "stablecoin-tokenisation",
-   "name": "Stablecoins and tokenised bonds",
+   "name": "Distributed ledgers, stablecoins and tokenised bonds",
    "parent_route": "Crypto settlement, venues and derivatives",
-   "outcome": "Trace the legal claim, reserve assets, redemption queue and settlement leg behind token prices.",
+   "outcome": "Explain how distributed ledgers reach consensus and run smart contracts, then trace the legal claim, reserve assets, redemption queue and settlement leg behind token prices.",
    "prerequisites": "Crypto settlement, venues and derivatives; money markets, custody and payment settlement.",
    "prerequisite_routes": [
     "digital-assets-prediction-markets"
    ],
    "required_readings": [
+    {
+     "anchor": "crypto-narayanan",
+     "stage": "Foundations",
+     "reason": "Learn hashing, consensus, permissioned against permissionless ledgers and smart contracts."
+    },
     {
      "anchor": "exp-bis-stablecoins",
      "stage": "Evidence",
@@ -7365,7 +7467,7 @@
      "reason": "Compare stablecoins with the tokenised unified-ledger proposal and its singleness, elasticity and integrity tests."
     }
    ],
-   "checkpoint": "Draw a token-to-dollar redemption and a tokenised-bond delivery-versus-payment flow. At each step identify legal obligor, asset custodian, settlement finality, cut-off, fee and delay; stress a concentrated redemption wave and collateral-market shock with dated disclosures. Compare a tokenised-bond efficiency claim with the sample size, spread construction and selection limitations of the ECB study.",
+   "checkpoint": "Explain how a proof-of-stake ledger finalises a transfer. Then draw a token-to-dollar redemption and a tokenised-bond delivery-versus-payment flow. At each step identify legal obligor, asset custodian, settlement finality, cut-off, fee and delay; stress a concentrated redemption wave and collateral-market shock with dated disclosures. Compare a tokenised-bond efficiency claim with the sample size, spread construction and selection limitations of the ECB study.",
    "optional_branches": [
     {
      "target": "wide-gorton-zhang-wildcat",
@@ -7376,7 +7478,7 @@
      "reason": "Study ledger governance of money."
     }
    ],
-   "chart_name": "Stablecoins and tokenised bonds"
+   "chart_name": "Ledgers, stablecoins and tokenised bonds"
   },
   {
    "id": "prediction-forecast-evidence",
@@ -8352,6 +8454,42 @@
    ]
   },
   {
+   "id": "macro-economy-global-macro",
+   "name": "Business cycles, growth, capital-market expectations and global macro trading",
+   "chart_name": "Macro economy and global macro",
+   "parent_route": "Multi-asset and systematic macro",
+   "outcome": "Date the business and credit cycle with leading, coincident and lagging indicators, forecast potential growth by growth accounting, assess fiscal, trade and geopolitical shocks, turn them into asset-class return and currency expectations within a stated framework, and express a macro view as a sized, risk-limited trade whose record in crises you can judge.",
+   "prerequisites": "Asset-pricing theory ([[asset-pricing-theory]]); the Multi-asset overview.",
+   "prerequisite_routes": [
+    "multi-asset-systematic-macro",
+    "asset-pricing-theory"
+   ],
+   "required_readings": [
+    {
+     "anchor": "s7-gliner",
+     "stage": "Mechanics",
+     "reason": "Read how a macro trader maps growth, inflation, policy and indicators to rates, currencies, equities and commodities, and sizes positions."
+    },
+    {
+     "anchor": "w3-moench-stein-business-cycle",
+     "stage": "Evidence",
+     "reason": "See how equity-premium predictability varies over the business cycle."
+    },
+    {
+     "anchor": "wide-harvey-worst-times",
+     "stage": "Evidence",
+     "reason": "Compare how macro, trend and other strategies performed in equity drawdowns."
+    },
+    {
+     "anchor": "s7-drobny",
+     "stage": "Implementation",
+     "reason": "Read practitioners' accounts of trade construction, risk-taking and crisis trading in discretionary macro."
+    }
+   ],
+   "checkpoint": "Using one country's current indicator releases, place its economy in a cycle phase and estimate its potential growth from labour and productivity trends; derive five-year expected returns for its government bonds and equities with a building-block and a Grinold--Kroner model; then express the resulting view as one trade, sized by volatility, with a stop, a risk limit and the scenario that would close it.",
+   "optional_branches": []
+  },
+  {
    "id": "cross-asset-style-premia",
    "name": "Cross-asset style premia: value, momentum, carry and defensive",
    "chart_name": "Cross-asset style premia",
@@ -8565,10 +8703,11 @@
    "chart_name": "Regimes, inflation and stock–bond correlation",
    "parent_route": "Multi-asset and systematic macro",
    "outcome": "Identify growth, inflation and volatility regimes with information available at the time, measure how asset classes and styles behave in each, model the stock–bond correlation, and test whether regime-aware allocation beats a static mix out of sample.",
-   "prerequisites": "Risk parity and volatility targeting; regime-switching time-series models.",
+   "prerequisites": "Risk parity and volatility targeting; regime-switching time-series models; Business cycles, growth, capital-market expectations and global macro trading ([[macro-economy-global-macro]]).",
    "prerequisite_routes": [
     "risk-parity-vol-targeting",
-    "time-series-volatility"
+    "time-series-volatility",
+    "macro-economy-global-macro"
    ],
    "required_readings": [
     {
@@ -8701,11 +8840,12 @@
    "chart_name": "Nowcasting and macro signals",
    "parent_route": "Multi-asset and systematic macro",
    "outcome": "Build a real-time nowcast and surprise index from data vintages and release calendars, compare factor, mixed-frequency, text and machine-learning methods, and turn macro trends into a tradable signal without look-ahead.",
-   "prerequisites": "Macro announcements; point-in-time data; time-series econometrics.",
+   "prerequisites": "Macro announcements; point-in-time data; time-series econometrics; Business cycles, growth, capital-market expectations and global macro trading ([[macro-economy-global-macro]]).",
    "prerequisite_routes": [
     "macro-announcements-policy",
     "point-in-time-data",
-    "time-series-volatility"
+    "time-series-volatility",
+    "macro-economy-global-macro"
    ],
    "required_readings": [
     {
@@ -8814,10 +8954,10 @@
   },
   {
    "id": "fx-determination-forecasting",
-   "name": "Exchange-rate determination, forecasting and order flow",
+   "name": "Exchange-rate quotes, real exchange rates, determination and forecasting",
    "chart_name": "Exchange-rate determination",
    "parent_route": "Currency markets: exchange rates, premia and hedging",
-   "outcome": "Test exchange-rate forecasts against a random walk with economic as well as statistical criteria, and explain the forward-premium puzzle, the disconnect from fundamentals and the roles of order flow and financial flows.",
+   "outcome": "Read exchange-rate quotes in either direction and compute real exchange rates, then test exchange-rate forecasts against a random walk with economic as well as statistical criteria, and explain the forward-premium puzzle, the disconnect from fundamentals and the roles of order flow and financial flows.",
    "prerequisites": "Currency-markets overview; return predictability and forecast evaluation.",
    "prerequisite_routes": [
     "currency-markets",
@@ -8915,7 +9055,7 @@
      "reason": "Decompose the sources of the dollar's strength."
     }
    ],
-   "checkpoint": "For G10 currencies against the dollar, forecast one- and twelve-month changes in real time with uncovered-interest-parity, purchasing-power-parity, Taylor-rule and order-flow models. Compare each with a driftless random walk using Clark–West tests and the performance fee of a mean–variance investor, then repeat the twelve-month test with a small-sample bootstrap.",
+   "checkpoint": "Convert three quotes between direct and indirect form and compute a real exchange-rate change. Then, for G10 currencies against the dollar, forecast one- and twelve-month changes in real time with uncovered-interest-parity, purchasing-power-parity, Taylor-rule and order-flow models. Compare each with a driftless random walk using Clark–West tests and the performance fee of a mean–variance investor, then repeat the twelve-month test with a small-sample bootstrap.",
    "optional_branches": [
     {
      "target": "ma-greenwood-hanson-stein-sunderam-2023",
@@ -10129,9 +10269,10 @@
    "name": "Convertible bonds and credit-equity hedging",
    "parent_route": "Option pricing, volatility models and hedging",
    "outcome": "Combine default, equity optionality, conversion terms and stock-borrow economics.",
-   "prerequisites": "Option pricing, volatility models and hedging; bond cash flows, credit loss, discounting and option exercise.",
+   "prerequisites": "Option pricing, volatility models and hedging; bond cash flows, credit loss, discounting and option exercise; Forwards, swaps and options: no-arbitrage valuation and option strategies ([[derivative-valuation-strategies]]).",
    "prerequisite_routes": [
-    "volatility-options"
+    "volatility-options",
+    "derivative-valuation-strategies"
    ],
    "required_readings": [
     {
@@ -14148,16 +14289,21 @@
   },
   {
    "id": "backtest-inference",
-   "name": "Backtest inference, multiple testing and Sharpe-ratio statistics",
-   "chart_name": "Backtest inference",
+   "name": "Strategy specification, backtest inference, multiple testing and Sharpe-ratio statistics",
+   "chart_name": "Strategy and backtest inference",
    "parent_route": "Research engineering, data provenance and model validation",
-   "outcome": "Report a strategy result with the number of trials, multiplicity-adjusted significance and Sharpe-ratio uncertainty under dependence.",
+   "outcome": "Specify a strategy's alpha, risk and transaction-cost models, horizon and universe as a testable hypothesis, then report its result with the number of trials, multiplicity-adjusted significance and Sharpe-ratio uncertainty under dependence.",
    "prerequisites": "Probability, statistical inference and resampling ([[probability-statistical-inference]]), including the bootstrap; the Research engineering overview.",
    "prerequisite_routes": [
     "research-engineering-validation",
     "probability-statistical-inference"
    ],
    "required_readings": [
+    {
+     "anchor": "s7-narang",
+     "stage": "Foundations",
+     "reason": "Lay out a strategy's alpha, risk, cost and construction modules, and the choices that specify an alpha model, before testing it."
+    },
     {
      "anchor": "wide-harvey-scientific-outlook",
      "stage": "Foundations",
@@ -14239,7 +14385,7 @@
      "reason": "Deflate the winning Sharpe ratio for the size of the search."
     }
    ],
-   "checkpoint": "Generate 200 variants of a simple signal, record every trial, and report the best Sharpe ratio with Lo standard errors, a deflated Sharpe ratio, a Romano--Wolf stepdown test and BH-adjusted p-values; document which leakage checks you ran.",
+   "checkpoint": "Specify one signal's forecast target, horizon, universe and bet structure in a short research record. Then generate 200 variants of a simple signal, record every trial, and report the best Sharpe ratio with Lo standard errors, a deflated Sharpe ratio, a Romano--Wolf stepdown test and BH-adjusted p-values; document which leakage checks you ran.",
    "optional_branches": [
     {
      "target": "wide-bailey-sharpe-frontier",
@@ -14998,9 +15144,10 @@
    "chart_name": "Curves and term structure",
    "parent_route": "Rates: yield curves, term premia and derivatives",
    "outcome": "Build a zero curve, decompose yields into expectations and term premia, and estimate and compare affine term-structure models.",
-   "prerequisites": "Rates overview; stochastic calculus basics.",
+   "prerequisites": "Rates overview; stochastic calculus basics; Bond instruments, pricing, yields and interest-rate risk ([[bond-pricing-rate-risk]]).",
    "prerequisite_routes": [
-    "rates-credit-mortgages"
+    "rates-credit-mortgages",
+    "bond-pricing-rate-risk"
    ],
    "required_readings": [
     {
@@ -15358,16 +15505,21 @@
   },
   {
    "id": "bond-risk-premia",
-   "name": "Bond risk premia, predictability and systematic rates strategies",
-   "chart_name": "Bond risk premia and strategies",
+   "name": "Bond risk premia, rates strategies and fixed-income portfolio management",
+   "chart_name": "Bond risk premia and portfolios",
    "parent_route": "Rates: yield curves, term premia and derivatives",
-   "outcome": "Forecast bond excess returns out of sample, judge their economic value after real-time data, small-sample bias and costs, and build carry, value and momentum signals for government-bond futures.",
+   "outcome": "Forecast bond excess returns out of sample, judge their economic value after real-time data, small-sample bias and costs, and build carry, value and momentum signals for government-bond futures. Manage a bond portfolio against an index or mandate, with its leverage, tax treatment and yield-curve positioning.",
    "prerequisites": "Yield-curve construction and term-structure models; return predictability and forecast evaluation.",
    "prerequisite_routes": [
     "curve-term-structure",
     "return-predictability"
    ],
    "required_readings": [
+    {
+     "anchor": "s7-fabozzifixed",
+     "stage": "Implementation",
+     "reason": "Read how bond mandates, indexing, leverage and yield-curve strategies are run and evaluated."
+    },
     {
      "anchor": "s16-r32",
      "stage": "Evidence",
@@ -15444,7 +15596,7 @@
      "reason": "Link that covariance to the monetary-policy regime."
     }
    ],
-   "checkpoint": "Using the GSW zero curve, reproduce the Cochrane--Piazzesi factor and one macro-factor regression, then apply the Bauer--Hamilton bootstrap and an expanding-window out-of-sample test on real-time macro vintages. Turn the forecasts into a duration-timing rule for Treasury futures, report utility gains and Sharpe ratios after transaction costs, and compare with a cross-country carry and momentum portfolio. State which result survives each correction.",
+   "checkpoint": "Using the GSW zero curve, reproduce the Cochrane--Piazzesi factor and one macro-factor regression, then apply the Bauer--Hamilton bootstrap and an expanding-window out-of-sample test on real-time macro vintages. Turn the forecasts into a duration-timing rule for Treasury futures, report utility gains and Sharpe ratios after transaction costs, and compare with a cross-country carry and momentum portfolio. State which result survives each correction. Finally, position a portfolio against a bond index for a steepening view and decompose its expected excess return by key-rate exposure.",
    "optional_branches": [
     {
      "target": "w3-pflueger-1980s",
@@ -17468,6 +17620,41 @@
    ]
   },
   {
+   "id": "investment-policy-allocation",
+   "name": "Investment policy and strategic asset allocation, with alternatives and derivative overlays",
+   "chart_name": "Investment policy and allocation",
+   "parent_route": "Portfolio construction and risk",
+   "outcome": "Turn an investor's objectives and constraints into an investment policy statement, recognise the behavioural biases that distort it, recommend an asset-only, liability-relative or goals-based strategic allocation with rebalancing ranges, size allocations to hedge funds and other alternatives with their liquidity, and implement or adjust exposures with derivative overlays.",
+   "prerequisites": "Portfolio construction, estimation error and risk models ([[portfolio-construction]]).",
+   "prerequisite_routes": [
+    "portfolio-construction"
+   ],
+   "required_readings": [
+    {
+     "anchor": "s7-ang",
+     "stage": "Foundations",
+     "reason": "Learn the asset owner's problem, factor-based allocation, alternatives and the delegation to managers."
+    },
+    {
+     "anchor": "s16-r09",
+     "stage": "Theory",
+     "reason": "See how horizon, labour income and liabilities change the strategic allocation."
+    },
+    {
+     "anchor": "wide-barberis-thaler-survey",
+     "stage": "Evidence",
+     "reason": "Learn the biases and limits to arbitrage behind investors' departures from policy."
+    },
+    {
+     "anchor": "wide-getmansky-lo-makarov",
+     "stage": "Methods",
+     "reason": "Unsmooth reported hedge-fund returns before using them in an allocation."
+    }
+   ],
+   "checkpoint": "Write an investment policy statement for a stated client, with return and risk objectives and constraints; recommend a strategic allocation with rebalancing corridors, including a hedge-fund allocation whose reported returns you have unsmoothed; then implement a tactical equity tilt with futures and compare its cost and basis risk with trading the cash markets.",
+   "optional_branches": []
+  },
+  {
    "id": "portfolio-construction",
    "name": "Portfolio construction, estimation error and risk models",
    "chart_name": "Portfolio construction",
@@ -18106,7 +18293,7 @@
    "name": "Price impact, optimal execution and TCA",
    "chart_name": "Price impact and execution",
    "parent_route": "Execution, trading costs and market structure",
-   "outcome": "Estimate a price-impact model from executions, derive an optimal schedule and measure implementation shortfall with confidence intervals.",
+   "outcome": "Estimate a price-impact model from executions, derive an optimal schedule and measure implementation shortfall with confidence intervals. Explain how mechanical hedging such as portfolio insurance feeds back into the prices it trades.",
    "prerequisites": "Execution, trading costs and market structure overview; stochastic control basics.",
    "prerequisite_routes": [
     "execution-trading-costs"
@@ -18217,15 +18404,47 @@
    ]
   },
   {
+   "id": "market-organisation-liquidity",
+   "name": "Market organisation, informed trading and liquidity measurement",
+   "chart_name": "Markets, information and liquidity",
+   "parent_route": "Market microstructure and market making",
+   "outcome": "Describe how venues, intermediaries and trading sessions organise trading; explain how informed traders, arbitrageurs, order anticipators and manipulators make prices more or less informative; and measure quoted, effective and realised spreads, separate their components, and estimate volatility and its transitory part from trades and quotes.",
+   "prerequisites": "Probability, statistical inference and resampling ([[probability-statistical-inference]]); the Market microstructure overview.",
+   "prerequisite_routes": [
+    "execution-market-making",
+    "probability-statistical-inference"
+   ],
+   "required_readings": [
+    {
+     "anchor": "alpha-harris",
+     "stage": "Foundations",
+     "reason": "Learn market structures, order types, trader motives, informed trading, arbitrage and the components of the spread."
+    },
+    {
+     "anchor": "s6-hasbrouck",
+     "stage": "Methods",
+     "reason": "Estimate spreads, their components and the random-walk and transitory parts of prices from trades and quotes."
+    },
+    {
+     "anchor": "alpha-laruelle",
+     "stage": "Evidence",
+     "reason": "See how fragmentation, intraday patterns and liquidity measures behave in current equity markets."
+    }
+   ],
+   "checkpoint": "From one day of trades and quotes for a stock, compute quoted, effective and realised spreads and Roll's estimator, and explain the gaps between them by adverse selection and inventory; then classify the traders behind three described orders by motive and information, and say which of them a dealer should fear.",
+   "optional_branches": []
+  },
+  {
    "id": "market-making-lob",
    "name": "Market making, queues and limit-order-book models",
    "chart_name": "Market making and LOBs",
    "parent_route": "Market microstructure and market making",
    "outcome": "Derive inventory-aware quotes, model queue dynamics and fill probabilities, and evaluate learned order-book signals.",
-   "prerequisites": "Market microstructure and market making; stochastic calculus and control.",
+   "prerequisites": "Market microstructure and market making; stochastic calculus and control; Market organisation, informed trading and liquidity measurement ([[market-organisation-liquidity]]).",
    "prerequisite_routes": [
     "execution-market-making",
-    "stochastic-calculus-control"
+    "stochastic-calculus-control",
+    "market-organisation-liquidity"
    ],
    "required_readings": [
     {
@@ -19647,16 +19866,21 @@
   },
   {
    "id": "commodity-allocation-inflation",
-   "name": "Commodities in multi-asset portfolios: diversification and inflation hedging",
-   "chart_name": "Allocation and inflation hedging",
+   "name": "Commodities as investments: sectors, access, diversification and inflation hedging",
+   "chart_name": "Commodity investing and inflation",
    "parent_route": "Commodity risk premia and investing: factors, allocation and index products",
-   "outcome": "Judge whether commodities improve a stock--bond portfolio in and out of sample, measure their inflation-hedging properties by horizon and regime, and decide between long-only exposure and commodity factor premia in a strategic allocation.",
+   "outcome": "Describe commodity sectors, their market participants and the forms of investment access, then judge whether commodities improve a stock--bond portfolio in and out of sample, measure their inflation-hedging properties by horizon and regime, and decide between long-only exposure and commodity factor premia in a strategic allocation.",
    "prerequisites": "Commodity risk premia: hedging pressure, inventories and the basis ([[commodity-premia]]); Macro regimes, inflation and the stock--bond correlation ([[macro-regimes-stock-bond]]), whose inflation-hedging readings this pathway builds on; mean-variance and risk-parity portfolio construction.",
    "prerequisite_routes": [
     "commodity-premia",
     "macro-regimes-stock-bond"
    ],
    "required_readings": [
+    {
+     "anchor": "physical-geman-commodities-2005",
+     "stage": "Mechanics",
+     "reason": "Learn commodity sectors, their supply chains and the participants in their futures markets."
+    },
     {
      "anchor": "cp-bodie-1981",
      "stage": "Foundations",
@@ -19718,7 +19942,7 @@
      "reason": "Weigh commodity factor premia against the long-only market portfolio in the strategic mix."
     }
    ],
-   "checkpoint": "Using monthly returns since 1970 for US equities, Treasuries, bills, an equal-weight commodity futures index and a long--short commodity factor portfolio, run mean-variance spanning tests in sample, then form rolling minimum-variance, risk-parity and mean-variance portfolios with and without commodities and evaluate them out of sample after costs. Regress each asset's real return on unexpected inflation at 1-, 12- and 60-month horizons and report the hedge ratios separately for 1970--85, 1986--2020 and 2021 onward.",
+   "checkpoint": "Describe one commodity sector's production cycle, its main futures participants and two ways to invest in it. Then, using monthly returns since 1970 for US equities, Treasuries, bills, an equal-weight commodity futures index and a long--short commodity factor portfolio, run mean-variance spanning tests in sample, then form rolling minimum-variance, risk-parity and mean-variance portfolios with and without commodities and evaluate them out of sample after costs. Regress each asset's real return on unexpected inflation at 1-, 12- and 60-month horizons and report the hedge ratios separately for 1970--85, 1986--2020 and 2021 onward.",
    "optional_branches": [
     {
      "target": "cp-cheung-miu-2010",
@@ -20579,16 +20803,21 @@
   },
   {
    "id": "pe-performance-measurement",
-   "name": "Private-market performance measurement and replication",
-   "chart_name": "PE measurement and replication",
+   "name": "Alternative-fund structures, fees and private-market performance measurement",
+   "chart_name": "Fund structures and PE measurement",
    "parent_route": "Private equity, private credit and fund structures",
-   "outcome": "Measure private-fund performance with PME, direct alpha and cash-flow-based returns, and test whether public replication explains it.",
+   "outcome": "Classify alternative investments and the routes into them (direct, co-investment and fund), compute returns before and after management fees, carried interest and waterfalls, then measure private-fund performance with PME, direct alpha and cash-flow-based returns, and test whether public replication explains it.",
    "prerequisites": "Private-capital overview; performance attribution.",
    "prerequisite_routes": [
     "private-capital-allocator",
     "performance-manager-evaluation"
    ],
    "required_readings": [
+    {
+     "anchor": "s7-ang",
+     "stage": "Foundations",
+     "reason": "Learn the categories of alternative investments, fund terms and fee structures and their effect on returns."
+    },
     {
      "anchor": "wide-kaplan-sensoy-survey",
      "stage": "Foundations",
@@ -20650,7 +20879,7 @@
      "reason": "See why since-inception IRR misstates wealth growth."
     }
    ],
-   "checkpoint": "For a set of fund cash flows, compute IRR, TVPI, KS-PME and direct alpha against two benchmarks; estimate an unsmoothed return series, compare with a levered small-value replication, and report fee drag and the dependence of conclusions on benchmark choice.",
+   "checkpoint": "Compute a fund's distributions to limited and general partners under a European and an American waterfall with a hurdle and catch-up. Then, for a set of fund cash flows, compute IRR, TVPI, KS-PME and direct alpha against two benchmarks; estimate an unsmoothed return series, compare with a levered small-value replication, and report fee drag and the dependence of conclusions on benchmark choice.",
    "optional_branches": [
     {
      "target": "wide-phalippou-laid-bare",
@@ -21198,10 +21427,10 @@
   },
   {
    "id": "equity-long-short-construction",
-   "name": "Equity signal combination, risk models and long–short portfolios",
-   "chart_name": "Long–short construction",
+   "name": "Equity portfolio construction: mandates, indexing, signal combination and long–short portfolios",
+   "chart_name": "Equity portfolio construction",
    "parent_route": "Systematic equities",
-   "outcome": "Turn several equity signals into one market-, sector- and style-neutral portfolio: scale forecasts, combine signals, align the risk model with the alpha, choose neutralisation and the short side, and net the result of realistic trading costs.",
+   "outcome": "Choose an equity mandate and benchmark, build an index portfolio by replication, sampling or optimisation, and turn several equity signals into one market-, sector- and style-neutral portfolio: scale forecasts, combine signals, align the risk model with the alpha, choose neutralisation and the short side, and net the result of realistic trading costs.",
    "prerequisites": "Equity factor premia; statistical arbitrage; covariance estimation. Portfolio construction and risk (Part [[part:portfolio-financing-execution]]) treats general optimisation in more depth.",
    "prerequisite_routes": [
     "systematic-equities",
@@ -21210,6 +21439,11 @@
     "high-dimensional-estimation"
    ],
    "required_readings": [
+    {
+     "anchor": "s7-ang",
+     "stage": "Implementation",
+     "reason": "Compare cap-weighted, factor-based and active equity mandates and how each is implemented."
+    },
     {
      "anchor": "s7-grinold",
      "stage": "Theory",
@@ -21291,7 +21525,7 @@
      "reason": "Trade towards an aim portfolio when returns are predictable and trading is costly."
     }
    ],
-   "checkpoint": "Combine at least four signals from earlier pathways into daily forecasts scaled by volatility and information coefficient. Build market-, sector- and style-neutral portfolios with a factor risk model, compare mixing with integrating the signals, and report the transfer coefficient, ex ante against realised risk, turnover, borrow costs and net Sharpe ratio under a calibrated impact model. Then test whether sector neutralisation or hedging unpriced factor risk improves the net result.",
+   "checkpoint": "Build a sampled index portfolio and report its tracking error against full replication. Then combine at least four signals from earlier pathways into daily forecasts scaled by volatility and information coefficient. Build market-, sector- and style-neutral portfolios with a factor risk model, compare mixing with integrating the signals, and report the transfer coefficient, ex ante against realised risk, turnover, borrow costs and net Sharpe ratio under a calibrated impact model. Then test whether sector neutralisation or hedging unpriced factor risk improves the net result.",
    "optional_branches": [
     {
      "target": "wide-grinold-kahn-advances",
@@ -21333,10 +21567,11 @@
    "chart_name": "Stochastic, local and jump models",
    "parent_route": "Option pricing, volatility models and hedging",
    "outcome": "Calibrate local, stochastic and jump-diffusion models to the same surface, explain what each implies for smile dynamics and exotic prices, and test whether the fit survives out of sample.",
-   "prerequisites": "Option pricing, volatility models and hedging overview; stochastic calculus and Fourier or PDE pricing.",
+   "prerequisites": "Option pricing, volatility models and hedging overview; stochastic calculus and Fourier or PDE pricing; Forwards, swaps and options: no-arbitrage valuation and option strategies ([[derivative-valuation-strategies]]).",
    "prerequisite_routes": [
     "volatility-options",
-    "stochastic-calculus-control"
+    "stochastic-calculus-control",
+    "derivative-valuation-strategies"
    ],
    "required_readings": [
     {
@@ -24435,9 +24670,9 @@
   },
   {
    "id": "corporate-governance-restructuring",
-   "name": "Ownership, corporate governance, mergers and restructuring",
+   "name": "Business models, ownership, corporate governance, mergers and restructuring",
    "parent_route": "Corporate finance",
-   "outcome": "Explain how ownership concentration and investor protection discipline managers, evaluate a merger's motives and announcement returns, and compare out-of-court restructuring with formal bankruptcy for a distressed issuer.",
+   "outcome": "Describe a company's business model and its ESG exposures, then explain how ownership concentration and investor protection discipline managers, evaluate a merger's motives and announcement returns, and compare out-of-court restructuring with formal bankruptcy for a distressed issuer.",
    "prerequisites": "Capital structure, cost of capital and payout policy; Event studies and long-run abnormal returns ([[event-studies]]) helps for announcement returns.",
    "prerequisite_routes": [
     "capital-structure-payout"
@@ -24470,20 +24705,20 @@
      "reason": "Follow distressed exchanges, Chapter 11 and creditor recoveries in practice."
     }
    ],
-   "checkpoint": "For one completed acquisition, compute acquirer, target and combined announcement returns with a market model, record the stated motive and the governance features (ownership, board and takeover defences) of both firms, and judge whether the deal created value. For one distressed issuer, compare each creditor class's recovery under its out-of-court exchange or Chapter 11 plan with a liquidation alternative.",
+   "checkpoint": "Describe one company's business model, revenue model and material ESG exposures. Then, for one completed acquisition, compute acquirer, target and combined announcement returns with a market model, record the stated motive and the governance features (ownership, board and takeover defences) of both firms, and judge whether the deal created value. For one distressed issuer, compare each creditor class's recovery under its out-of-court exchange or Chapter 11 plan with a liquidation alternative.",
    "optional_branches": [
     {
      "target": "corp-oecd-principles-2023",
      "reason": "Compare a national governance code with the G20/OECD Principles."
     }
    ],
-   "chart_name": "Governance, mergers and restructuring"
+   "chart_name": "Business models, governance and restructuring"
   },
   {
    "id": "household-finance-lifecycle",
-   "name": "Household finance, human capital and lifecycle investment planning",
+   "name": "Private clients, household finance and lifecycle investment planning",
    "parent_route": "Private wealth management",
-   "outcome": "Solve or simulate a lifecycle consumption and portfolio problem with labour income, labour flexibility and an uncertain lifetime, explain why the optimal equity share and annuitisation depend on human capital and longevity, and compare the result with common age-based rules.",
+   "outcome": "Profile a private client and family and explain how the wealth-management industry is paid and regulated, then solve or simulate a lifecycle consumption and portfolio problem with labour income, labour flexibility and an uncertain lifetime, explain why the optimal equity share and annuitisation depend on human capital and longevity, and compare the result with common age-based rules.",
    "prerequisites": "Private wealth management overview; dynamic programming at the level of Stochastic calculus and continuous-time control ([[stochastic-calculus-control]]).",
    "prerequisite_routes": [
     "private-wealth-management",
@@ -24517,14 +24752,14 @@
      "selection": "Chapters on human wealth and financial wealth and on investing over the life cycle."
     }
    ],
-   "checkpoint": "Solve a discrete-time lifecycle model from age 25 to 100 with stochastic labour income, a retirement age, mortality from a published life table and constant-relative-risk-aversion utility. Report the optimal equity share by age for bond-like and for equity-like labour income, and compare welfare with a 100-minus-age rule and a target-date glide path. Then add a fairly priced life annuity at retirement and report the share of wealth annuitised and why.",
+   "checkpoint": "Profile a stated family's human and financial capital and draft its investment policy. Then solve a discrete-time lifecycle model from age 25 to 100 with stochastic labour income, a retirement age, mortality from a published life table and constant-relative-risk-aversion utility. Report the optimal equity share by age for bond-like and for equity-like labour income, and compare welfare with a 100-minus-age rule and a target-date glide path. Then add a fairly priced life annuity at retirement and report the share of wealth annuitised and why.",
    "optional_branches": [
     {
      "target": "wide-merton-1971",
      "reason": "Extend the lifetime problem to optimal consumption rules."
     }
    ],
-   "chart_name": "Lifecycle planning"
+   "chart_name": "Private clients and lifecycle planning"
   },
   {
    "id": "tax-aware-wealth-preservation",

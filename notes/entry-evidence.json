@@ -12,7 +12,7 @@
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~179--188; the IMF's SDR factsheet as retrieved; macro markets and pricing review follow-up, 2026-10-16: ICE's U.S. Dollar Index FAQ of June 2015 and the BIS 2025 preliminary results on currency shares read). Stability: draft. Currency: Gliner's figures as of 2013; SDR basket as of 2022."
   },
   "def:currency-regimes-intervention": {
-    "source": "compendium/currency-markets/macro-fx.tex",
+    "source": "compendium/currency-markets/currency-intervention.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~185--194, and chap.~11, pp.~360--363; second macro markets and pricing review follow-up, 2026-10-16: the Ilzetzki--Reinhart--Rogoff classification workbook, 1940--2025, read for nineteen currencies at December 2013 and December 2025). Stability: draft. Currency: regime grouping as of 2013; de facto codes to December 2025."
   },
   "meth:fx-valuation-signals": {
@@ -20,11 +20,11 @@
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~195--209; source verification (2026-10-17): own PPP test on FRED data, rerun as v2 after an audit, reported in Pitfalls; empirical extensions (2026-10-17): carry factor added; derivatives and empirical validation (2026-10-17): pooled Clark--West inference of both tests corrected to calendar-month panel standard errors, verdicts unchanged). Stability: draft. Currency: Gliner's examples as of 2012--2013; forecasts to 2021--2025 by currency, outcomes to 2026."
   },
   "mod:fx-carry-trade": {
-    "source": "compendium/currency-markets/macro-fx.tex",
+    "source": "compendium/currency-markets/currency-carry.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~7, PDF pp.~206--209, with Table~7.6; the ranking example computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: quote, compounding and return conventions stated, exact and first-order forms checked numerically, and the Brunnermeier--Nagel--Pedersen abstract read; second follow-up, 2026-10-16: separate accrual fractions for the two rates, the log excess return distinguished from the arithmetic P\\&L, and an ACT/360 against ACT/365 example computed; the Brunnermeier--Nagel--Pedersen working paper read at pp.~8 and 12--13; source follow-up of 2026-10-16: Menkhoff et al.'s accepted version, secs.~II and~V.C and Table~I, from City, University of London's repository). Stability: draft. Currency: Gliner's table as of September 2013; carry statistics to August 2009."
   },
   "ev:cip-deviations": {
-    "source": "compendium/currency-markets/macro-fx.tex",
+    "source": "compendium/currency-markets/cross-currency-basis.tex",
     "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): NBER WP~23170, abstract and pp.~1--9, text layer). Stability: draft. Currency: evidence on 2010--2016; owning pathway \\texttt{fx-cip-dollar-funding}. 2026-10-21 (Batch L4): See also link to meth:cross-currency-basis-swaps only."
   },
   "def:crypto-venue-instrument-structure": {
@@ -48,7 +48,7 @@
     "review": "Verification: partly checked 2026-10-17 (against \\texttt{uniswap-v2-2020}, the v2 Core whitepaper of March 2020, secs.~1 and~3.2.1, text layer; \\texttt{s6-uniswap}, the v3 Core whitepaper of March 2021, secs.~1--2, text layer and a page image of p.~2; own numerical checks; derivatives and empirical validation (2026-10-17): Milionis et al., Angeris and Chitra, Angeris et al.\\ (two papers), the Uniswap v4 whitepaper and the am-AMM paper). Stability: draft. Currency: protocol designs of 2020--2021."
   },
   "mech:defi-lending-liquidation": {
-    "source": "compendium/onchain-protocols/amm-lending.tex",
+    "source": "compendium/onchain-protocols/defi-lending.tex",
     "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): Qin et al., arXiv v2, secs.~1--2; Perez et al., arXiv v6, abstract; Aave V3 Technical Paper, PDF pp.~6--8 and~14; text layers). Stability: draft. Currency: protocol designs of 2019--2022; owning pathway \\texttt{defi-lending-liquidations}."
   },
   "ev:stablecoin-runs": {
@@ -60,7 +60,7 @@
     "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): FSB final report of 17 July 2023, Recommendation~9 and n.~2, text layer). Stability: draft. Currency: standards as of 2023; owning pathway \\texttt{stablecoin-pegs-runs}."
   },
   "mech:crypto-auto-deleveraging": {
-    "source": "compendium/digital-assets-prediction-markets/crypto-venues-perpetuals.tex",
+    "source": "compendium/digital-assets-prediction-markets/crypto-auto-deleveraging.tex",
     "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): arXiv v3, abstract and introduction, text layer). Stability: draft. Currency: event of October 2025; owning pathway \\texttt{crypto-leverage-liquidations}."
   },
   "mod:liquidity-spirals": {
@@ -140,51 +140,51 @@
     "review": "Verification: partly checked 2026-10-14 (the reservation price, intensity, spread and simulation results against the author-hosted journal PDF of \\texttt{s6-stoikov}, pp.~217--222; the HJB equation and expansion steps read but not re-derived; source verification (2026-10-17): secs.~2.3 and~3.1, pp.~219--221, rechecked as page images in the same author-hosted PDF, downloaded again 2026-10-17, with the infinite-horizon prices and eqs.~(18)--(19) recomputed). Stability: draft. Currency: as published in 2008; review annually with the catalogue record."
   },
   "def:fundamental-value": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/informed-trading.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~222--230, 236--237, 240 and 585, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, p.~26). Stability: draft. Currency: timeless (concepts)."
   },
   "res:informed-trading-aggregation": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/informed-trading.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~222--226, 229 and 236--239; the box on p.~225 also against its page image, 2026-10-15, strategic trading review). Stability: draft. Currency: timeless (theory)."
   },
   "def:informed-trader-types": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/informed-trading.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~226--235 and 239, Tables~10-1 and~10-3 included, and pp.~338--339; market design and liquidity review: pp.~194--196 and 402--403). Stability: draft. Currency: timeless (concepts)."
   },
   "def:winners-curse": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/informed-trading.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~341--343). Stability: draft. Currency: timeless (concept)."
   },
   "def:market-efficiency": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/informed-trading.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~237--244 and 597--598, and \\texttt{alpha-laruelle}, 2018 World Scientific printing, p.~4; market design and liquidity review: pp.~215--216). Stability: draft. Currency: timeless (concepts); the empirical summary as of 2002."
   },
   "def:inside-information": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/informed-trading.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~236 and 584--592, the box on p.~590 added in strategic trading review; the SEC web page Harris quotes was not consulted; market design and liquidity review: pp.~587--588; 17 CFR 240.10b5-1, 240.16a-3 and 243.100 for 14 October 2026; the 2022 release's summary and dates). Stability: draft. Currency: dated: United States law as summarised in 2002, with the insider-plan, Form~4 and Regulation~FD rules checked as of October 2026; penalties and other jurisdictions not checked."
   },
   "res:insider-trading-deterrence": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/informed-trading.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~236 and 588--595; market design and liquidity review: pp.~591--598). Stability: draft. Currency: dated: United States law and enforcement practice as described in 2002; not checked against current law."
   },
   "def:price-formation-process": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/informed-trading.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, Introduction, pp.~3--7, 19--20 and 27--29, and chap.~2, pp.~171--172 and 177; Figure~8 not inspected). Stability: draft. Currency: timeless (concept); the regulatory context is European, 2007--2018."
   },
   "def:arbitrage": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/arbitrage-anticipation.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~232--235 and 347--379; market design and liquidity review: pp.~6 and 404--405; dealer models and information review: pp.~354--357, page image of p.~357, the currency box and the cyclic band recomputed; dealer models and information review follow-up, 2026-10-16: the triangular equality restricted to frictionless quotes and the EUR/USD--USD/JPY--EUR/JPY quotes example computed in \\nolinkurl{notes/artefacts/execution-market-making/dealer-queue-information-checks.py}, section~2). Stability: draft. Currency: timeless (concepts); examples to 2000."
   },
   "res:arbitrage-risks": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/arbitrage-anticipation.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~356--375; dealer models and information review: pp.~366--367 for legging, and the factor decomposition with a hedge ratio derived and simulated). Stability: draft. Currency: timeless (concepts); examples to 2000."
   },
   "def:order-anticipation": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/arbitrage-anticipation.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~245--258 and 498--508). Stability: draft. Currency: concepts timeless; the specialist privileges and legal remarks as of 2002."
   },
   "def:bluffing-manipulation": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/arbitrage-anticipation.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~259--275, and the page image of p.~270; pp.~271--273 rechecked in liquidity and impact review). Stability: draft. Currency: timeless (concepts); legal remarks as of 2002."
   },
   "mod:kyle-single-auction": {
@@ -220,43 +220,43 @@
     "review": "Verification: partly checked 2026-10-15 (the Stoll version, eqs.~(11.2)--(11.3), and the inventory evidence against the text layer of a local copy of \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~106--117; the Ho--Stoll account against page images of \\texttt{catalogue-0496}, 1998 Wiley printing, pp.~29--36; the ask and the reservation price derived here; neither Stoll (1978) nor Ho and Stoll (1981) consulted). Stability: draft. Currency: timeless (theory); the evidence is from 1990s NYSE data."
   },
   "def:spread-measures": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/spread-measurement.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~280--281, 312 and 423--427, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~148 and 150--151). Stability: draft. Currency: as of the 2002 and 2007 printings for the reporting rules (Rule 605 named by Hasbrouck); definitions timeless."
   },
   "res:roll-spread-estimator": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/spread-measurement.tex",
     "review": "Verification: partly checked 2026-10-15 (the model and derivation against the page image of \\texttt{alpha-harris}, p.~415, and its text layer, pp.~416 and 434; the parametrisation, example, biases and estimation against the text layer of \\texttt{s6-hasbrouck}, pp.~29--30 and 38--39; the original paper not consulted). Stability: draft. Currency: timeless (method); the example is from 2003 data."
   },
   "res:spread-component-identification": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/spread-measurement.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, pp.~299--303, and \\texttt{s6-hasbrouck}, pp.~67--69, 112 and 115). Stability: draft. Currency: timeless (method); the NYSE evidence is from 1990s data."
   },
   "res:spread-determinants": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/spread-measurement.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~303--318, Table~14-2 included, and pp.~561 and 563; and of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~144--151, with eq.~(2.1) and p.~148 added in futures market structure review, eq.~(2.1) corrected from the page image of p.~145 in its follow-up; empirical extensions (2026-10-17): \\texttt{dayri-rosenbaum-2013}, arXiv v2, pp.~15 and 18--19, text layer). Stability: draft. Currency: timeless (theory); institutional examples from 2002; the European evidence from 2008--2016."
   },
   "def:outside-spread": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/spread-measurement.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~338--346, and pp.~230 and 239 for the profit sources; dealer models and information review: pp.~344--345 for the dealer comparison). Stability: draft. Currency: timeless (concepts)."
   },
   "def:volatility-components": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/volatility-liquidity-crashes.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layers of local copies of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~410--417 and 575--577, and \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~69 and 72--75). Stability: draft. Currency: timeless (concepts and method)."
   },
   "meth:garman-klass-volatility": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/volatility-liquidity-crashes.tex",
     "review": "Verification: partly checked 2026-10-15 (the formula against the page image of \\texttt{alpha-laruelle}, 2018 World Scientific printing, p.~172; its use against the text layer, pp.~146--148 and 172--174; the original paper not consulted). Stability: draft. Currency: timeless (method); the applications use 2007--2016 European data."
   },
   "def:intraday-overnight-returns": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/volatility-liquidity-crashes.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~169 and 174--177, figure captions included; no page images). Stability: draft. Currency: as of the 1991--2012 data; definitions timeless."
   },
   "meth:spread-volatility-regression": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/volatility-liquidity-crashes.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, pp.~144--151 and 292--298, figure captions included; \\texttt{alpha-harris}, p.~314; market design and liquidity review: p.~149; dealer models and information review: pp.~295, 298 and 318--321, the $R^2$ forms and the averaging effect computed). Stability: draft. Currency: as of the 2008--2016 data used; method timeless."
   },
   "mech:bubble-crash-dynamics": {
-    "source": "compendium/execution-market-making/market-making-models.tex",
+    "source": "compendium/execution-market-making/volatility-liquidity-crashes.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{alpha-harris}, 2002 Oxford printing, pp.~555--563 and 570--571). Stability: draft. Currency: timeless (mechanism); the case material is historical, to 2002."
   },
   "def:market-functions": {
@@ -336,7 +336,7 @@
     "review": "Verification: partly checked 2026-10-16 (against the text layer of a local copy of \\texttt{alpha-laruelle}, 2018 World Scientific printing, chap.~3, pp.~219--227, and chap.~1, p.~89; \\texttt{catalogue-0528}, p.~59; the drift and waiting-time illustrations computed; source follow-up of 2026-10-16: Huang, Lehalle and Rosenbaum's paper in arXiv version~2, secs.~2--3, pp.~4--20, with the invariant law and the estimator checked by simulation). Stability: draft. Currency: the model as published in 2014--2015; evidence Euronext Paris, 2010--2012."
   },
   "def:order-flow-imbalance": {
-    "source": "compendium/execution-market-making/order-books.tex",
+    "source": "compendium/execution-market-making/order-flow-imbalance.tex",
     "review": "Verification: partly checked 2026-10-16 (against the text layer of \\texttt{catalogue-0503} in its arXiv version 3 of 13 April 2011, pp.~1, 4, 8 and~16, downloaded 2026-10-16; the journal version was not checked; and \\texttt{catalogue-0528}, Cambridge 2018, p.~222; the toy sequence computed; second macro markets and pricing review follow-up, 2026-10-16: \\texttt{wide-cont-cross-impact-ofi} in its arXiv version 4 of 13 June 2023, pp.~1, 5--8, 11--12, 16, 22--23 and 26--28, with p.~5 checked as an image; correction of 2026-10-16: n.~3, p.~5, on the selection date, and the rolling design, p.~22; source follow-up of 2026-10-16: \\texttt{w2-lobcast} in arXiv version~2 (19 September 2023), pp.~1--10, and \\texttt{w2-briola-lob-guide} in arXiv version~4 (4 June 2024), pp.~7--8 and 22--25; journal versions not compared; second source follow-up of 2026-10-16: \\texttt{wide-kolm-deep-ofi}, SSRN version of 6 August 2021, PDF pp.~1--31, Fig.~8 read as an image; correction of 2026-10-17: Table~3's definition rechecked on PDF pp.~19--21 as page images, and Fig.~8, p.~28, cited for the decline). Stability: draft. Currency: evidence from April 2010, 2017--2020 and 2021--2022 U.S. data."
   },
   "ev:high-frequency-stylised-facts": {
@@ -508,7 +508,7 @@
     "review": "Verification: partly checked 2026-10-15 (against \\texttt{alpha-harris}, 2002 Oxford printing, p.~435 by page image; and \\texttt{s6-hasbrouck}, 2007 Oxford printing, pp.~87--92, page image of p.~91). Stability: draft. Currency: timeless (method)."
   },
   "ev:index-reconstitution-impact": {
-    "source": "compendium/execution-trading-costs/impact-models.tex",
+    "source": "compendium/execution-trading-costs/etf-mechanics.tex",
     "review": "Verification: partly checked 2026-10-15 (against \\texttt{alpha-harris}, 2002 Oxford printing, p.~487 by page image). Stability: draft. Currency: as of 1996--2001."
   },
   "def:market-regulation-design": {
@@ -636,7 +636,7 @@
     "review": "Verification: partly checked 2026-10-16 (against the text layer and page images of a local copy of \\texttt{alpha-afml}, chap.~4, pp.~68--72, Snippets~4.10--4.11; weights and decay constants recomputed; the summation's lower limit corrected 2026-10-16). Stability: draft. Currency: timeless; scikit-learn behaviour as described in 2018."
   },
   "pit:label-weight-leakage": {
-    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "source": "compendium/ml-alternative-data/ml-time-validity.tex",
     "review": "Verification: partly checked 2026-10-16 (the López de Prado passages cited, chaps.~2--5, as for the linked entries; the checklist is the entry's own and unchecked against chap.~7). Stability: draft. Currency: timeless."
   },
   "meth:purged-embargoed-cross-validation": {
@@ -644,7 +644,7 @@
     "review": "Verification: partly checked 2026-10-17 (against the text layer of a local copy of \\texttt{alpha-afml}, Wiley 2018, chap.~7, secs.~7.1--7.4.3, pp.~103--109, with p.~106 read as page images, and chap.~6, secs.~6.3.3--6.4, pp.~97--98; \\texttt{rf-bergmeir-hyndman-koo-2018}, Monash working paper dated 23 July 2017, pp.~1--3 and 14; \\texttt{rf-cerqueira-torgo-mozetic-2020}, arXiv v1, abstract; the overlap rule and the class's index sets recomputed; audit repair of 2026-10-17: the plateau passage, pp.~106--107, reread and scoped as a heuristic). Stability: draft. Currency: methods as published 2017--2019."
   },
   "meth:time-valid-ml-experiment-record": {
-    "source": "compendium/ml-alternative-data/labelling-sample-weights.tex",
+    "source": "compendium/ml-alternative-data/ml-time-validity.tex",
     "review": "Verification: partly checked 2026-10-17 (against \\texttt{latest-pit-language-models}, NBER Working Paper 35247, May 2026, abstract and pp.~5, 9 and~22, text layer; the record list is interpretation; derivatives and empirical validation (2026-10-17): Kapoor and Narayanan's leakage taxonomy, sec.~2.4, arXiv text layer). Stability: draft. Currency: methods as of 2026."
   },
   "def:global-macro-strategy": {
@@ -668,35 +668,35 @@
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~4, PDF pp.~98--102, and chap.~8, pp.~216--217; macro markets and pricing review follow-up, 2026-10-16: Figure~8.3 on p.~217 read as a page image and compared phase by phase with the sector-rotation table in these notes; that earlier map is otherwise unsourced; empirical extensions (2026-10-17): own real-time test of the inflation row added, rerun on the quarterly vintages in derivatives and empirical validation (2026-10-17) with the monthly run kept as a sensitivity, and the deflation row added; source verification (2026-10-17): own real-time test of the recession row, rerun as v2 after an audit, reported in Pitfalls). Stability: draft. Currency: hypotheses; the recession row tested on 1965--2025 data, the other rows untested."
   },
   "def:macroeconomic-indicators": {
-    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "source": "compendium/multi-asset-systematic-macro/macro-indicators.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~12, PDF pp.~401--428, and Table~12.2 (pp.~424--425; macro markets and pricing review follow-up: page images of pp.~416 and 424--425 read); the FOMC's Statement on Longer-Run Goals, as amended effective 27 January 2026; the BLS Current Employment Statistics page as retrieved; second macro markets and pricing review follow-up, 2026-10-16: the UN World Population Prospects 2024 age-group file for the Table~12.2 countries). Stability: draft. Currency: FOMC goal as of 16 October 2026; Gliner's data and projections as of about 2013; UN projections of 2024."
   },
   "meth:equity-macro-leading-indicators": {
-    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "source": "compendium/multi-asset-systematic-macro/macro-indicators.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~8, PDF pp.~233--240). Stability: draft. Currency: Gliner's charts to 2013."
   },
   "data:us-macro-release-calendar": {
-    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "source": "compendium/multi-asset-systematic-macro/macro-releases.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner, chap.~12, PDF p.~406; the BLS CES program page, the Federal Reserve's FOMC page and the ECB's Governing Council page as retrieved; macro markets and pricing review follow-up, 2026-10-16: the BLS CES FAQ, the Fed's G.17 release dates, BEA's 2026 schedule and the Census Bureau's indicator calendar read; BLS CPI and ISM calendars not retrievable; second follow-up, 2026-10-16: the BLS CPI schedule read; the ISM calendar still behind a login; third follow-up, 2026-10-16: the ISM's 2026 calendar read from a browser export, with the business-day rule computed). Stability: draft. Currency: schedules as of 16 October 2026."
   },
   "meth:macro-event-queries": {
-    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "source": "compendium/multi-asset-systematic-macro/macro-releases.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~3, PDF pp.~79--86, with Tables~3.1--3.2; the binomial probabilities computed in the topic review check script). Stability: draft. Currency: example as of July 2012."
   },
   "meth:equity-index-valuation": {
-    "source": "compendium/multi-asset-systematic-macro/macro-regimes-data.tex",
+    "source": "compendium/multi-asset-systematic-macro/equity-index-valuation.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~8, PDF pp.~215--216 and 228--233). Stability: draft. Currency: Gliner's thresholds as of 2013."
   },
   "def:crude-oil-markets": {
-    "source": "compendium/physical-commodity-markets/physical-markets.tex",
+    "source": "compendium/physical-commodity-markets/crude-oil-markets.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~301--312; the crack-spread arithmetic in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: ICE Brent Crude futures specifications read; OPEC, EIA and CME pages not retrievable; source follow-up of 2026-10-16: NYMEX Submission 23-057 as filed with the CFTC and OPEC's home page; second source follow-up of 2026-10-16: NYMEX Chapter~200, the WAM announcement, EIA's analysis and glossary, OPEC's Statute and 3 May 2026 release). Stability: draft. Currency: market data as of 2011--2013; the WTI contract as published on 16 October 2026; OPEC membership evidence to 16 October 2026."
   },
   "def:metals-markets": {
-    "source": "compendium/physical-commodity-markets/physical-markets.tex",
+    "source": "compendium/physical-commodity-markets/metals-markets.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~319--328; the density ratio in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: Gliner pp.~320 and~322 reread and Table~10.9 recomputed; USGS \\emph{Mineral Commodity Summaries} 2013 (gold, silver) and 2025 (gold, silver, copper) read; second follow-up, 2026-10-16: the World Gold Council's full-year 2025 demand release and jewellery section and the Silver Institute's World Silver Survey 2026 release read; source follow-up of 2026-10-16: WPIC's \\emph{Platinum Quarterly} Q2~2026, Table~1; second source follow-up of 2026-10-16: ICSG \\emph{World Copper Factbook 2025}, pp.~5 and~48, the ICA 2023 end-use dataset, the IAI/MPP aluminium strategy, COMEX Chapters 107 and 111--113, and the LME Rulebook as of 13 October 2026; source verification (2026-10-17): USGS \\emph{Mineral Commodity Summaries} 2026, aluminum, text layer). Stability: draft. Currency: market data as of 2011--2013; gold and silver demand for 2025; copper for 2024 (end use 2022 and 2024); aluminium demand shares of about 2020 and smelter production for 2024--2025; contract texts as of October 2026."
   },
   "def:agricultural-markets": {
-    "source": "compendium/physical-commodity-markets/physical-markets.tex",
+    "source": "compendium/physical-commodity-markets/agricultural-markets.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~10, PDF pp.~330--348; macro markets and pricing review follow-up, 2026-10-16: ICE coffee and cotton specifications read; source follow-up of 2026-10-16: CBOT Submission 24-443; second source follow-up of 2026-10-16: CBOT Chapters 10, 11 and~14, official chapter PDFs). Stability: draft. Currency: market data as of 2012--2013; CBOT grain terms as published on 16 October 2026."
   },
   "meth:relative-performance-evaluation": {
@@ -784,7 +784,7 @@
     "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): the 1995 MIT working paper, abstract and secs.~4--5, OCR text of an Internet Archive scan). Stability: draft. Currency: methods of 1995--2003; owning pathway \\texttt{time-series-volatility}."
   },
   "meth:var-es-estimation-methods": {
-    "source": "compendium/portfolio-construction-risk/risk-models.tex",
+    "source": "compendium/portfolio-construction-risk/var-es-estimation.tex",
     "review": "Verification: partly checked 2026-10-17 (against the text layer of a local copy of the second edition, \\texttt{wide-christoffersen-elements}, Academic Press 2012, chap.~2 (overview and sec.~2.1), chap.~6 (FHS), chap.~8 (overview) and chap.~13 (unconditional coverage); the backtest formula and its critical value recomputed in an own simulation; empirical extensions (2026-10-17): the ES definition corrected from the conditional-exceedance form to the quantile integral, against Acerbi and Tasche's arXiv v3, Definitions~2.1--2.6 and Proposition~3.2 read from page images and text, with an own discrete and historical-simulation check). Stability: draft. Currency: methods as of the 2012 edition. Edited 2026-10-21 (library gap-filling Batch L2): the Pitfalls sentence that said EVT is not covered now links to meth:extreme-value-tail-estimation; no claim or check changed."
   },
   "mod:portfolio-transaction-cost-function": {
@@ -840,7 +840,7 @@
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~4, pp.~101 and 109--119; Table~4.5 and Example~4.3 recomputed; the instantaneous forward checked by finite difference; derivatives and empirical validation (2026-10-17): Kim and Wright (FEDS 2005-33) and an own comparison with ACM). Stability: draft. Currency: formulas timeless; LIBOR-based conventions historical, SOFR conventions as Hull states them in 2021. macro markets and pricing / source review / optimal execution / execution control reviews: FRA market notation checked against \\texttt{s7-gliner}, chap.~9, PDF p.~263. empirical extensions (2026-10-17), 2026-10-17: term-premium evidence from \\texttt{exp-adrian-crump-moench-term-structure} (Staff Report 340, revised April 2013, text layer, secs.~2.4 and~3.3; the JFE version not compared) and the New York Fed's ACM data file, summarised by an own script."
   },
   "mod:multi-curve-fra-swap-valuation": {
-    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "source": "compendium/rates-credit-mortgages/rate-swaps-clearing.tex",
     "review": "Verification: partly checked 2026-10-17 (against the local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~7, secs.~7.2 and~7.6, pp.~175 and~183--185, text layer; Example~7.1 and an own two-curve illustration recomputed; derivatives and empirical validation (2026-10-17): settlement conventions separated, Hull's p.~111 n.~4 read, start- and end-settled values recomputed in \\nolinkurl{fra-settlement-check.py}). Stability: draft. Currency: conventions as Hull states them in 2021; SOFR replaced USD LIBOR after June 2023."
   },
   "mod:duration-convexity": {
@@ -852,11 +852,11 @@
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~6, pp.~152--155; examples recomputed). Stability: draft. Currency: U.S. conventions as of Hull's 2021 account; no current market convention document checked."
   },
   "data:gsw-treasury-curve": {
-    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "source": "compendium/rates-credit-mortgages/gsw-treasury-curve.tex",
     "review": "Verification: partly checked 2026-10-17 (derivatives and empirical validation (2026-10-17): FEDS 2006-28, eq.~(22) on p.~15 as a page image; the published parameter file recomputed in full). Stability: draft. Currency: data to 9 October 2026; owning pathway \\texttt{curve-term-structure}."
   },
   "mech:otc-clearing-collateral": {
-    "source": "compendium/rates-credit-mortgages/interest-rates.tex",
+    "source": "compendium/rates-credit-mortgages/rate-swaps-clearing.tex",
     "review": "Verification: partly checked 2026-10-15 (against the text layer of a local copy of \\texttt{s7-hulloptions}, 11th Global edition, chap.~1, pp.~25--26, and chap.~2, pp.~54--57; and \\texttt{exp-pfmi}, April 2012, para.~1.13, p.~9, read in transaction-cost models review). empirical extensions (2026-10-17), 2026-10-17: 17 CFR 23.150--23.153, 23.157, 23.161, 43.3 and 45.3, eCFR point-in-time text for 15 October 2026, read. derivatives and empirical validation (2026-10-17): the BCBS--IOSCO framework of April 2020, Requirements~2 and~8. Stability: draft. Currency: Hull's account as of 2021; U.S. rules as of 15 October 2026."
   },
   "def:central-bank-policy-framework": {
@@ -876,19 +876,19 @@
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~254--261; CBOT Submission No.~23-214, as filed with the CFTC on 1 June 2023; the ARRC's SOFR-transition page, EMMI's EONIA page and the ECB's \\texteuro{}STR page as retrieved; the probability and tick arithmetic in the topic review check script; second macro markets and pricing review follow-up, 2026-10-16: CME Clearing Advisory 23-082 from a user-supplied browser export, the ARRC's 9 March 2023 minutes, the CFTC chairman's LIBOR keynote and CME Submission No.~24-271 read for the conversion date; correction of 2026-10-16: CME's press release of 24 April 2023 read in a dated reprint, CME's own page refusing automated access (HTTP 403), which removed the follow-up's misattribution of ``April 23''). Stability: draft. Currency: Eurodollar and LIBOR material historical; status as of 16 October 2026."
   },
   "meth:curve-trades-carry-rolldown": {
-    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "source": "compendium/rates-credit-mortgages/curve-trades.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~266--271; Estrella and Trubin (2006), pp.~1--6; carry signs computed in the topic review check script; macro markets and pricing review follow-up, 2026-10-16: Estrella and Trubin reread from the New York Fed's PDF, pp.~4--6 and the table; NBER chronology and Treasury daily par yields 2006--2026 retrieved and averaged by month; second follow-up, 2026-10-16: pp.~2--3, 5 and~6 (with the table's footnote) reread, the three statements separated, the paper's series replicated from H.15 and its table reproduced, and month and episode onset rules tested on reproducible monthly series). Stability: draft. Currency: Estrella and Trubin's record to 2005; post-2005 inversions and NBER dating as of 16 October 2026."
   },
   "def:tips-breakevens": {
-    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "source": "compendium/rates-credit-mortgages/tips-breakevens.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~247--250; TreasuryDirect's TIPS page as retrieved; the arithmetic in the topic review check script; second macro markets and pricing review follow-up, 2026-10-16: Treasury's refunding statements of 5 May 2004 and 31 October 2018 read). Stability: draft. Currency: schedule as of 16 October 2026; Gliner's as of 2014."
   },
   "def:interest-rate-swaps": {
-    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "source": "compendium/rates-credit-mortgages/rate-swaps-clearing.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF p.~256; LIBOR cessation per the CBOT filing cited in the policy-path entry; macro markets and pricing review follow-up, 2026-10-16: the BIS OTC derivatives release for end-June 2024; second follow-up, 2026-10-16: the BIS OTC derivatives bulk dataset, instrument breakdown for end-June 2024 to end-December 2025). Stability: draft. Currency: SOFR conventions as of 2026; Gliner's LIBOR account as of 2014."
   },
   "def:fixed-income-universe": {
-    "source": "compendium/rates-credit-mortgages/monetary-policy-curves.tex",
+    "source": "compendium/rates-credit-mortgages/fixed-income-universe.tex",
     "review": "Verification: partly checked 2026-10-16 (Gliner's text, chap.~9, PDF pp.~245 and 280, and chap.~4, p.~95; macro markets and pricing review follow-up, 2026-10-16: SIFMA's Fact Book highlights page read). Stability: draft. Currency: segment list timeless; ETF names as of the 2010s."
   },
   "meth:hypothesis-driven-strategy-research": {
@@ -1108,7 +1108,7 @@
     "review": "Verification: SEC investor guide (investor.gov PDF, file dated February 2019), pp. 1-3, read 2026-10-18; Damodaran histretSP.xls (January 2026 update, rows 1928-2025, SHA-256 28b81109...e69c69), sheets 'Returns by year' and 'Explanations and FAQ', read 2026-10-18 and transcribed to notes/artefacts/portfolio-risk-return/us-asset-class-returns-1928-2025.csv; Markowitz 1952, p. 91 and n. 15, page images. Checked by notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py: the six arithmetic and geometric means reproduce the workbook's summary rows to 0.005 percentage points; standard deviations, real geometric means, worst years, CPI geometric mean 3.04, stock-bond premium 7.03 (s.e. 2.10 under independence), 26 negative stock years, 40 negative real T-bill years, 2016-2025 means and subperiod stock-bond correlations computed from the annual series. The workbook's small-cap geometric mean looks inconsistent and its 2025 value is partial, so that column is excluded. The class characteristics list and the reading of history against expectations are Interpretation consistent with the sources. Dimson-Marsh-Staunton yearbook not obtained (UBS returned HTTP 403). Partly checked 2026-10-18 (portfolio choice and asset pricing batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0. Correction pass 2026-10-18 (PR #22): the sentence on equity expected returns now names both the implied and the historical premium and the latter's assumption."
   },
   "def:factor-model-types": {
-    "source": "compendium/asset-pricing/asset-pricing-models.tex",
+    "source": "compendium/asset-pricing/factor-model-tests.tex",
     "review": "Verification: Connor 1995, FAJ May-June, pp. 42-46 with Tables 1-5 (author-deposited copy); Huberman and Wang 2005, secs. 8-9; Fama and French 2004, pp. 37-38. The comparison list and the uses list are Interpretation drawing on these and on mod:factor-risk-model. Checked by notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py: active exposures and attribution (0.84 factor, 0.26 specific); x'Fx = 16.48, total 20.48, factor share 80.5 percent; contributions 14.80, 0.12, 1.56 summing to x'Fx; the inflation-sensitivity example (-1.5 against -2.5). Partly checked 2026-10-18 (portfolio choice and asset pricing batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "def:risk-aversion-utility": {
@@ -1124,7 +1124,7 @@
     "review": "Verification: Fama and French 2004, pp. 26-30 and n. 2 (combination line, tangency, separation, equilibrium assumptions, Black version); Sharpe 1964, pp. 432-435 and nn. 15, 19 (lending, borrowing, dichotomy, equilibrium assumptions, CML), page images. Tangency formula and its condition r_f < B/A, y*, and the three-part efficient set with a higher borrowing rate are derivation (Interpretation). Checked by notes/artefacts/portfolio-risk-return/portfolio-choice-checks.py: tangency against SLSQP maximum-Sharpe; flatter CALs for three other portfolios; y* for A = 2, 4, 8 against a grid; A = 4 position and utility; the 5 percent borrowing rate (above the GMV mean) returning a lower-branch point; the 3.5 percent borrowing tangency and the A = 2 investor's frontier choice (mean 7.18, U 5.19) against grids on both lines; figure points. Partly checked 2026-10-18 (portfolio choice and asset pricing batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:capm-regression": {
-    "source": "compendium/asset-pricing/asset-pricing-models.tex",
+    "source": "compendium/asset-pricing/factor-model-tests.tex",
     "review": "Verification: Fama and French 2004, pp. 31-32 and 44 (n. 7); Huberman and Wang 2005, sec. 7, eqs. (14)-(17). Data invented and declared (twelve hand-typed months). Checked by notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py: alpha and beta by closed form, numpy lstsq and statsmodels OLS; covariance ratio with either denominator; standard errors, t and 95 percent intervals (10 df) by hand against OLS; R^2 and the variance decomposition; raw against excess regression (a - alpha = -0.0949, of which (1 - beta) mean r_f = -0.0932 and -0.0017 from the varying rate); the exact identity with a constant rate. The interpretation of units, fit and the alpha-is-not-skill argument draws on Fama and French p. 44. Partly checked 2026-10-18 (portfolio choice and asset pricing batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:efficient-frontier": {
@@ -1312,7 +1312,7 @@
     "review": "Verification: s7-fabozzifixed chap. 31, pp. 692--693; s7-hulloptions sec. 4.7, pp. 106--108; locators in the entry text. Checked by term-structure-checks.py part 1 (par to spot to forward and back, bond repricing, inverted-curve ordering). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:forward-rates-expected-returns": {
-    "source": "compendium/rates-credit-mortgages/term-structure-returns.tex",
+    "source": "compendium/rates-credit-mortgages/curve-trades.tex",
     "review": "Verification: s7-fabozzifixed chap. 31, pp. 695 and 711--712; locators in the entry text. Checked by term-structure-checks.py part 2 (forwards as break-evens, Ilmanen's example, rolling yield and break-even shift). Partly checked 2026-10-18 (fixed-income and derivatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "def:swap-curve-short-term-spreads": {
@@ -1420,7 +1420,7 @@
     "review": "Verification: fixed-income-analysis-2007 chap. 9, sec. IX, pp. 244--247; s7-fabozzifixed chap. 36, p. 832; locators in the entry text. Checked by rate-tree-checks.py part 6 (capped, floored and collared floaters on the calibrated tree, with cap and floor values). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:convertible-bond-valuation": {
-    "source": "compendium/rates-credit-mortgages/embedded-option-bonds.tex",
+    "source": "compendium/volatility-options/convertible-bonds.tex",
     "review": "Verification: s7-fabozzifixed chap. 38, pp. 883--890; fixed-income-analysis-2007 chap. 9, sec. X.B, p. 249; s7-hulloptions chap. 27, sec. 27.4, pp. 650--653; locators in the entry text. Checked by rate-tree-checks.py part 8 (conversion measures, premiums and minimum value, Hull's 107.44 default tree and risk-return against the straight bond and stock). Written 2026-10-19 (derivatives, portfolio and execution batch). Corrected 2026-10-19 (correction pass on PR #25): Tesla's 2024 notes are described from the prospectus supplement (tesla-2024-notes-prospectus-2019): no redemption by Tesla before maturity, a holders' fundamental-change put at par plus accrued interest, a make-whole conversion-rate adjustment capped at 4.1152 shares, contingent conversion before 15 February 2024 and settlement at Tesla's election; Hull's hypothetical convertible is kept separate. Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "def:option-value-drivers": {
@@ -1444,7 +1444,7 @@
     "review": "Verification: s7-hulloptions chap. 17, sec. 17.5, eqs. (17.11)--(17.14), pp. 394--395, chap. 29, sec. 29.2, eq. (29.7), pp. 695--696; locators in the entry text. Checked by option-valuation-checks.py part 5 (the N(d1)-share replication, Garman-Kohlhagen, Black's model for futures options, caplets and swaptions with Hull's Examples 15.6, 17.2, 18.6-18.7 and 29.3-29.4, and cap-floor parity). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Extended 2026-10-21 (library gap-filling Batch L2, decision L2-D5): the receiver swaption eq. (29.11), payer-receiver parity (Problem 29.18) and a bond callable at par as a straight bond less a receiver swaption (Business Snapshot 29.2; the decomposition is an Interpretation), s7-hulloptions chap. 29, sec. 29.3, pp. 699-705 read; checked by dividend-tree-swaption-checks.py part 2 (seed 20261121). No objective added."
   },
   "meth:greeks-delta-gamma-hedging": {
-    "source": "compendium/volatility-options/option-valuation.tex",
+    "source": "compendium/volatility-options/option-hedging.tex",
     "review": "Verification: s7-hulloptions chap. 19, sec. 19.4, pp. 421--427; s7-natenberg chap. 11, p. 199; locators in the entry text. Checked by option-valuation-checks.py part 6 (Greeks against finite differences, a delta-hedging simulation against Hull's Table 19.4, the gamma-theta identity against full revaluation, gamma neutrality and implied volatility by root finding). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Extension 2026-10-21 (library gap-filling Batch L1): vanna and volga defined, with wide-wilmott-pwoqf chap. 7, pp. 127-128 and n. 3 (Wilmott's names 'kabanga' and 'vomma'; vega meaningful only for single-signed gamma); call formulas checked against finite differences in volatility-mismatch-hedging-check.py; See also link to res:delta-hedging-volatility-mismatch. Existing text, figures and checks unchanged. Editorial review only; human review outstanding."
   },
   "meth:option-replication-deltas": {
@@ -1500,11 +1500,11 @@
     "review": "Verification: managing-investment-portfolios-2007 chap. 6, sec. 5.2, pp. 369--373; s7-fabozzifixed chap. 60, pp. 1485--1491, chap. 9, p. 221; irs-pub-550-2025 chap. 3, Tax-exempt income; locators in the entry text. Checked by fixed-income-portfolio-checks.py part 2 (leveraged return, repo and futures leverage, and taxable-equivalent yields with loss harvesting). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:liability-matching-ladders": {
-    "source": "compendium/rates-credit-mortgages/fixed-income-portfolio-management.tex",
+    "source": "compendium/portfolio-risk-financing/liability-matching.tex",
     "review": "Verification: managing-investment-portfolios-2007 chap. 6, sec. 4.1, pp. 346--348; s7-fabozzifixed chap. 43, p. 1082, chap. 51, pp. 1271--1274; fixed-income-analysis-2007 chap. 7, p. 207; locators in the entry text. Checked by fixed-income-portfolio-checks.py part 3 (an original least-cost cash-flow-matched portfolio by linear programming, surplus risk and a ladder's reinvestment profile). Written 2026-10-19 (derivatives, portfolio and execution batch). Corrected 2026-10-19 (correction pass on PR #25): the claim that equal amounts per maturity give about equal key-rate durations and little slope exposure is removed; the equal-face ladder's annual key-rate durations (0.1304 to 0.6363, sum 4.686245, checked against the analytic formula) and a -50/+50 bp twist (-0.493%) are given, with equal-market-value and equal-risk allocations compared; fixed-income-analysis-2007 chap. 7, p. 207 reread. Checked by fixed-income-portfolio-checks.py part 3. Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:immunisation-liabilities": {
-    "source": "compendium/rates-credit-mortgages/fixed-income-portfolio-management.tex",
+    "source": "compendium/portfolio-risk-financing/liability-matching.tex",
     "review": "Verification: managing-investment-portfolios-2007 chap. 6, sec. 4.1.1, pp. 348--351; locators in the entry text. Checked by fixed-income-portfolio-checks.py part 4 (MIP's single-liability immunisation, barbell and bullet under shifts and twists, dispersion, and multiple-liability conditions). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:bond-index-exposure-benchmarks": {
@@ -1552,7 +1552,7 @@
     "review": "Verification: managing-investment-portfolios-2007 chap. 10, sec. 3.1, pp. 654--656; locators in the entry text. Checked by trade-execution-checks.py part 1 (MIP's effective spreads, VWAP cost and the 87 bp implementation shortfall with components and a market adjustment). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "def:electronic-trading-environment": {
-    "source": "compendium/execution-trading-costs/trade-strategy-governance.tex",
+    "source": "compendium/execution-trading-costs/electronic-trading.tex",
     "review": "Verification: managing-investment-portfolios-2007 chap. 10, sec. 5.3, pp. 670--673; s7-fabozzifixed chap. 44, pp. 1098--1099; sec-concept-release-2010 sec. IV.B.2, pp. 57--58; cfr-240-15c3-5 17 CFR 240.15c3-5(b); locators in the entry text. Checked by trade-execution-checks.py part 2 (a stale-quote loss and the half-spread that covers adverse selection). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:trade-strategy-selection": {
@@ -1564,7 +1564,7 @@
     "review": "Verification: s7-fabozzifixed chap. 44, pp. 1097--1099; locators in the entry text. Checked by trade-execution-checks.py part 4 (illustrative costs of a 50 million trade in five markets). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:trade-execution-evaluation-governance": {
-    "source": "compendium/execution-trading-costs/trade-strategy-governance.tex",
+    "source": "compendium/execution-trading-costs/execution-quality.tex",
     "review": "Verification: managing-investment-portfolios-2007 chap. 10, sec. 6.1, pp. 679--680; finra-rule-5310 Rule 5310(a)(1) and Supplementary Material .09; eu-2014-65-mifid2 art. 27(1), (4)--(5), (7)--(8); locators in the entry text. Checked by trade-execution-checks.py part 5 (a z-score against a pre-trade estimate, a broker comparison with a significance test and the sample size needed). Written 2026-10-19 (derivatives, portfolio and execution batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "def:business-credit-cycles": {
@@ -1600,23 +1600,23 @@
     "review": "Verification: economics-investment-decision-makers-2013 chap. 8, secs. 2.3--2.4, pp. 411--423; locators in the entry text. Checked by macro-policy-trade-checks.py part 4 (comparative advantage, EIDM Example 8-5, quota rents, a small-country export subsidy and a large-country tariff). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "def:fx-market-real-exchange-rates": {
-    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "source": "compendium/currency-markets/fx-market.tex",
     "review": "Verification: economics-investment-decision-makers-2013 chap. 9, sec. 2, pp. 473--484; bis-triennial-2025 preliminary results; locators in the entry text. Checked by fx-checks.py part 1 (percentage changes in both directions, bid-offer inversion and the real exchange rate). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:cross-forward-rates": {
-    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "source": "compendium/currency-markets/fx-quotes-forwards.tex",
     "review": "Verification: economics-investment-decision-makers-2013 chap. 9, sec. 3.2, pp. 488--492; locators in the entry text. Checked by fx-checks.py part 2 (EIDM cross rates, forward points, the 77 bp CIP arbitrage and CIP with money-market day counts). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. 2026-10-21 (Batch L4): See also link to meth:cross-currency-basis-swaps only."
   },
   "meth:fx-bid-offer-triangular-arbitrage": {
-    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "source": "compendium/currency-markets/fx-quotes-forwards.tex",
     "review": "Verification: economics-investment-decision-makers-2013 chap. 10, sec. 2, pp. 531--533; locators in the entry text. Checked by fx-checks.py part 3 (implied cross bid-offers, EIDM Example 10-1 and dealer arbitrage). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:currency-forward-mark-to-market": {
-    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "source": "compendium/currency-markets/fx-quotes-forwards.tex",
     "review": "Verification: economics-investment-decision-makers-2013 chap. 10, sec. 2.2, pp. 538--542; locators in the entry text. Checked by fx-checks.py part 4 (EIDM's AUD 237,154 mark-to-market and Example 10-3). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "def:exchange-rate-regimes-capital-flows": {
-    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "source": "compendium/currency-markets/currency-intervention.tex",
     "review": "Verification: economics-investment-decision-makers-2013 chap. 9, sec. 4.1, p. 500; locators in the entry text. Checked by fx-checks.py part 5 (the Marshall-Lerner condition from EIDM Exhibit 9-9). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "res:international-parity-conditions": {
@@ -1628,7 +1628,7 @@
     "review": "Verification: economics-investment-decision-makers-2013 chap. 10, secs. 3.1--3.3 and 9, pp. 553--569 and 605--610; locators in the entry text. Checked by fx-checks.py part 7 (the real-interest-differential model, PPP fair value and forward against random-walk forecasts on a simulated series). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:carry-trade-uip": {
-    "source": "compendium/currency-markets/fx-mechanics-parity.tex",
+    "source": "compendium/currency-markets/currency-carry.tex",
     "review": "Verification: economics-investment-decision-makers-2013 chap. 10, sec. 4, pp. 569--572; msss-2012 abstract; locators in the entry text. Checked by fx-checks.py part 8 (carry P&L against the UIP prediction and the skew of a crash-prone return stream). Written 2026-10-19 (macro, allocation and currency batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "def:flows-policy-exchange-rates": {
@@ -1764,11 +1764,11 @@
     "review": "Verification: eu-2023-1803-ias7 IAS 7 paras. 31-33; eu-2023-1803-ias2 IAS 2 para. 12; eu-2023-2822-ias1 Annex, IAS 1 para. 73; locators in the entry text. Checked by statement-analysis-checks.py part 1 (double-entry ledger; direct = indirect CFO; CFO+CFI+CFF = change in cash; equity and retained earnings roll-forwards; balance sheet, 2024-2025). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:revenue-recognition-analysis": {
-    "source": "compendium/financial-statement-analysis/income-statement-analysis.tex",
+    "source": "compendium/financial-statement-analysis/revenue-expense-recognition.tex",
     "review": "Verification: eu-2023-1803-ifrs15 IFRS 15 paras. 2, 9, 22, 31, 35, 38, 47, 50-51, 56, 73-74, 91, 105-108, 114, 120, B35-B37, C1; us-revenue-2014 pp. 10-11; us-revenue-deferral-2015 p. 1; financial-statement-analysis-2009 pp. 110-111; locators in the entry text. Checked by statement-analysis-checks.py part 5 (allocation, timing, contract liability, constraint, principal/agent). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:expense-recognition-capitalisation": {
-    "source": "compendium/financial-statement-analysis/income-statement-analysis.tex",
+    "source": "compendium/financial-statement-analysis/revenue-expense-recognition.tex",
     "review": "Verification: eu-2023-1803-ias2 IAS 2 para. 34; eu-2023-1803-ias16 IAS 16 paras. 7, 12-13, 50-51, 61; eu-2023-1803-ias23 IAS 23 para. 8; eu-2023-1803-ias38 IAS 38 paras. 54, 57, 71; us-research-development-1974 para. 12; us-software-1985 paras. 3-4; us-software-2025 pp. 2-3; financial-statement-analysis-2009 pp. 110-111; locators in the entry text. Checked by statement-analysis-checks.py part 6 (constant and growing spend; cumulative difference = asset; capitalised interest and coverage). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:non-recurring-items": {
@@ -1784,7 +1784,7 @@
     "review": "Verification: financial-statement-analysis-2009 pp. 28-35; eu-2023-1803-ias1 IAS 1 paras. 99, 103; eu-2026-338-ifrs18 Annex, IFRS 18 paras. 69, 82-83; us-expense-disaggregation-2024 pp. 1-3; locators in the entry text. Checked by statement-analysis-checks.py part 2 (common-size income statement reconciles to 100%; margins). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:intangibles-goodwill-reporting": {
-    "source": "compendium/financial-statement-analysis/balance-sheet-analysis.tex",
+    "source": "compendium/financial-statement-analysis/long-lived-asset-accounting.tex",
     "review": "Verification: eu-2023-1803-ias38 IAS 38 paras. 21, 48, 63-64, 72, 75, 88, 97, 104, 107-108, 118, 126; eu-2023-1803-ifrs3 IFRS 3 paras. 32, B31; eu-2023-1803-ias36 IAS 36 paras. 10, 80, 104, 124, 134; us-goodwill-intangibles-2001 paras. 16-18; us-goodwill-2017 pp. 2-3; locators in the entry text. Checked by statement-analysis-checks.py part 8 (goodwill from a purchase-price allocation with deferred tax). Written 2026-10-20 (accounting and statement-analysis batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:financial-instruments-liabilities": {
@@ -2272,7 +2272,7 @@
     "review": "Verification: s7-hyndman sec.~5.8; locators in the entry text. Checked by time-series-checks.py part 4 (chronological split 1928-1989/1990-2025: RMSE 1.46% AR(1), 1.66% random walk, 1.60% mean; expanding window 1.45%; Chow F 1.03; half-lives 1.40 and 0.83). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "mod:arch-conditional-variance": {
-    "source": "compendium/regression-time-series/time-series-models.tex",
+    "source": "compendium/regression-time-series/volatility-forecasting.tex",
     "review": "Verification: s7-tsay pp.~115--116; locators in the entry text. Checked by time-series-checks.py part 5 (Engle LM 52.1 on simulated ARCH(1); OLS 0.29 against MLE 0.54; variance forecasts 0.000379 to the long-run 0.000469; annual S&P LM 2.22). Written 2026-10-20 (credit, time-series and valuation batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:cointegration-testing": {
@@ -2292,15 +2292,15 @@
     "review": "Verification: eu-2023-1803-ifrs17 paras. 32, 37-38, 44, 47-48, 83, 85; eu-2009-138-solvency2 Arts. 77, 101, 105 and Annex IV; eu-2015-35-solvency2-dr Arts. 37, 39, 136-138, 142; risk-management-financial-institutions-2023 pp. 52, 56-57, 62-63; cnp-mcev-2017 pp. 6, 12, 21-22; locators in the entry text. Checked by intercorporate-fx-institutions-checks.py part 10 (Linden and Rowan Life shocks, SCR aggregation, ratios 191.5% and 156.0%; new business CSM 14.70 and VNB 7.21; onerous group at a 15% loading). Written 2026-10-20 (PR #32 audit correction, objective:analyse-insurer). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:cost-output-shutdown": {
-    "source": "compendium/multi-asset-systematic-macro/firms-market-structure.tex",
+    "source": "compendium/systematic-equities/firms-market-structure.tex",
     "review": "Verification: varian-microeconomics-2014 pp. 359-361, 405-409, 416-419, 426, 433-437, 469-471, 494-497; openstax-microeconomics-3e secs. 7.5, 8.2; locators in the entry text. Checked by notes/artefacts/firms-market-structure/market-structure-checks.py: parts 1-2 (shutdown 24, breakeven 40.42; MES 707, natural monopoly, tangency at 289). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "def:market-structures-pricing": {
-    "source": "compendium/multi-asset-systematic-macro/firms-market-structure.tex",
+    "source": "compendium/systematic-equities/firms-market-structure.tex",
     "review": "Verification: varian-microeconomics-2014 pp. 458-461, 494-497, 516-537; chaps. 23-28; openstax-microeconomics-3e chap. 10; secs. 10.1, 10.2; locators in the entry text. Checked by notes/artefacts/firms-market-structure/market-structure-checks.py: part 3 (Cournot closed form against iteration; Stackelberg, Bertrand, cartel deviation). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:market-structure-identification": {
-    "source": "compendium/multi-asset-systematic-macro/firms-market-structure.tex",
+    "source": "compendium/systematic-equities/firms-market-structure.tex",
     "review": "Verification: openstax-microeconomics-3e sec. 11.1; merger-guidelines-2023 pp. 5-6, n. 14; varian-microeconomics-2014 pp. 529-530; locators in the entry text. Checked by notes/artefacts/firms-market-structure/market-structure-checks.py: part 4 (CR4 80, HHI 1,950, merger +300; HHI/elasticity markup). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "def:alternative-investment-categories": {
@@ -2316,15 +2316,15 @@
     "review": "Verification: s7-ang pp. 416-426, 597-602; demaria-private-markets-2021 p. 67; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: parts 1-3 (Brook 2/20 with high-water mark and hurdle: net 124.74 against 139.10 gross; Ashby gross 16.87% against net 11.71%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "def:private-equity-features": {
-    "source": "compendium/private-capital-allocator/private-capital-foundations.tex",
+    "source": "compendium/private-capital-allocator/private-equity-strategies.tex",
     "review": "Verification: s7-ang pp. 594-596; metrick-yasuda-survey-2011 pp. 5-7; pe-kaplan-stromberg-2009 pp. 3, 11-16; w5-gompers-kaplan-mukharlyamov p. 27; ippolito-private-capital-2020 pp. 16-18; pe-harris-jenkinson-kaplan-2014 abstract; pe-kaplan-schoar-2005 pp. 1-2; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 3 (Ashby J-curve). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "def:private-debt-features": {
-    "source": "compendium/private-capital-allocator/private-capital-foundations.tex",
+    "source": "compendium/private-capital-allocator/private-debt-special-situations.tex",
     "review": "Verification: ippolito-private-capital-2020 pp. 13, 21, 39-44; demaria-private-markets-2021 pp. 61-62, 127-134; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 5 (Corran unitranche against senior plus mezzanine). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:private-capital-diversification": {
-    "source": "compendium/private-capital-allocator/private-capital-foundations.tex",
+    "source": "compendium/private-capital-allocator/private-market-programmes.tex",
     "review": "Verification: demaria-private-markets-2021 pp. 160-166; s7-ang pp. 416-421; wide-getmansky-lo-makarov abstract; pe-harris-jenkinson-kaplan-2014 abstract; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 7 (smoothing halves volatility and cuts beta to 0.40; unsmoothing restores them). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:private-public-market-comparison": {
@@ -2332,7 +2332,7 @@
     "review": "Verification: s7-ang pp. 416-428, 594; pe-harris-jenkinson-kaplan-2014 abstract; demaria-private-markets-2021 p. 63; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 8 (reported inputs put 100% in PE; unsmoothed inputs 32%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:private-fund-structures": {
-    "source": "compendium/private-capital-allocator/private-market-programmes.tex",
+    "source": "compendium/private-capital-allocator/private-fund-structures.tex",
     "review": "Verification: demaria-private-markets-2021 pp. 60-66, 95-98; s7-ang pp. 595-596; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py (structures are qualitative; the secondary-sale case uses no numbers). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:private-fund-multiples-pme": {
@@ -2344,7 +2344,7 @@
     "review": "Verification: ippolito-private-capital-2020 pp. 13-16; metrick-yasuda-survey-2011 pp. 33, 35; s7-ang pp. 610-614; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 2 (European waterfall: carry 11.85; LP net IRR 11.71%; deal-by-deal 13.21 with clawback 1.36). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:private-deal-process-exits": {
-    "source": "compendium/private-capital-allocator/private-market-programmes.tex",
+    "source": "compendium/private-capital-allocator/private-equity-strategies.tex",
     "review": "Verification: w5-gompers-kaplan-mukharlyamov pp. 3, 13-17, 25-28; ippolito-private-capital-2020 pp. 71-94, 125-130, 188-189, 218-225; pe-kaplan-stromberg-2009 pp. 11, 13-16; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 4 (Corran exit at 9.0x against 8.0x). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:private-equity-strategies": {
@@ -2356,7 +2356,7 @@
     "review": "Verification: ippolito-private-capital-2020 pp. 20-21, 173-175, 209-210; w5-gompers-kaplan-mukharlyamov pp. 3, 13-17; demaria-private-markets-2021 pp. 162-163; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: part 4 (Novaro VC method: 37.70%, pre-money 13.22; Corran LBO: MOIC 2.03, IRR 15.2%, maximum entry 6.9x). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:private-capital-allocation": {
-    "source": "compendium/private-capital-allocator/private-equity-strategies.tex",
+    "source": "compendium/private-capital-allocator/private-market-programmes.tex",
     "review": "Verification: demaria-private-markets-2021 pp. 116-117, 123, 130, 133-134, 163; s7-ang pp. 427-428; locators in the entry text. Checked by notes/artefacts/private-capital/private-capital-checks.py: parts 7-8 (unsmoothed risk; allocation sensitivity). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:private-debt-financing-structures": {
@@ -2420,11 +2420,11 @@
     "review": "Verification: physical-geman-commodities-2005 pp. 6-10, 24-25, 33-34, 143-144, 169, 201, 251-252; s16-r34 p. 2; s7-ang pp. 365, 370; locators in the entry text. Checked by notes/artefacts/commodity-investment/commodity-return-checks.py: part 1 (stocks-to-use 20%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:commodity-futures-return-components": {
-    "source": "compendium/commodity-investing-premia/commodity-futures-investing.tex",
+    "source": "compendium/commodity-investing-premia/commodity-return-components.tex",
     "review": "Verification: physical-geman-commodities-2005 pp. 24-28, 33-34; wide-erb-harvey-commodity pp. 10-13; s7-ang pp. 367-370; s16-r34 p. 6, n. 7; locators in the entry text. Checked by notes/artefacts/commodity-investment/commodity-return-checks.py: parts 1-2 (Ang Table 11.7 and eq. 11.3; Erb and Harvey roll returns; quarterly roll simulation in backwardation and contango, excess 8.42%/-7.62%, total 12.73%/-3.79%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "meth:commodity-swaps-index-construction": {
-    "source": "compendium/commodity-investing-premia/commodity-futures-investing.tex",
+    "source": "compendium/commodity-investing-premia/commodity-indices.tex",
     "review": "Verification: s7-hulloptions pp. 195, 781; wide-erb-harvey-commodity pp. 24-25; s16-r34 p. 9; locators in the entry text. Checked by notes/artefacts/commodity-investment/commodity-return-checks.py: parts 3-4 (rebalancing return 8.51%; roll schedule; swap value 1.01m; total return swap net 2.85%). Written 2026-10-20 (alternatives batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0."
   },
   "def:hedge-fund-features": {
@@ -2564,7 +2564,7 @@
     "review": "Verification: fed-scf-2022 pp. 11-13, 20; ibbotson-lifetime-financial-advice-2007 pp. 13-16, 74-76; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 1 (the Okafors' human capital, financial capital and economic net worth). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): human capital to retirement at 62; projection with the plan's saving and education payments; capacity separated from willingness."
   },
   "meth:private-client-tax-inflation": {
-    "source": "compendium/private-wealth-management/clients-industry.tex",
+    "source": "compendium/private-wealth-management/wealth-preservation.tex",
     "review": "Verification: irs-rev-proc-2025-32 secs. 4.01, 4.03; us-internal-revenue-code-26 sec. 1411; govuk-income-tax-rates-2026 tables; govuk-cgt-rates-2026 rates page; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 2 (after-tax and real returns, US 2026 and UK 2026-27). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:private-client-ips": {
@@ -2588,7 +2588,7 @@
     "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 28-31, 41-44, 74-79; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 6 (mortality, disability and longevity; illustrative Gompertz mortality). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): life and disability cover to retirement at 62 (1.95m term cover)."
   },
   "meth:tax-in-planning": {
-    "source": "compendium/private-wealth-management/wealth-planning.tex",
+    "source": "compendium/private-wealth-management/wealth-preservation.tex",
     "review": "Verification: us-internal-revenue-code-26 sec. 1091(a); sec. 1014(a); govuk-isa-2026 overview; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 7 (asset location and loss harvesting, US 2026). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): asset location under one dividend and reinvestment convention with basis tracking, one-year reconciliation and zero-tax equality (2,454,619 against 2,316,409)."
   },
   "meth:private-client-allocation-review": {
@@ -2600,7 +2600,7 @@
     "review": "Verification: irs-notice-2025-67 secs. 402(g), 414(v), 219(b); us-internal-revenue-code-26 sec. 401(a)(9)(C)(v); govuk-pension-tax-2026 annual allowance; lump sum allowance; uk-us-double-taxation-convention-2001 Arts. 1(4)-(5), 4(4), 18; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 9 (retirement saving across jurisdictions). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:human-capital-risks": {
-    "source": "compendium/private-wealth-management/wealth-preservation.tex",
+    "source": "compendium/private-wealth-management/wealth-planning.tex",
     "review": "Verification: ibbotson-lifetime-financial-advice-2007 pp. 13-16, 28-31, 75-76; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 10 (protecting human capital). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:purchasing-power-fx": {
@@ -2620,27 +2620,27 @@
     "review": "Verification: irs-rev-proc-2025-32 secs. 3.14, 4.42; us-internal-revenue-code-26 sec. 2001(c); secs. 1014(a), 1015(a); sec. 4942(e); sec. 664(d); govuk-iht-2026 overview; gifts; govuk-iht-thresholds-2026 thresholds table; locators in the entry text. Checked by notes/artefacts/private-wealth/private-wealth-checks.py: part 13 (gifts, bequests and philanthropy). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): residence band taper (govuk-rnrb-guidance-2019; hmrc-ihtm46023-2026 IHTM46023); gift and estate as one chronology with death 4.5 years after the gift and the nil-rate band carried forward."
   },
   "def:institutional-investor-characteristics": {
-    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "source": "compendium/portfolio-risk-financing/institutional-portfolios.tex",
     "review": "Verification: s7-ang chap. 1, pp. 4-28; p. 24; santiago-principles-2008 GAPP 1, 4, 6, 18-19, 22; us-internal-revenue-code-26 sec. 4942(e); locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 2 (spending rules, a foundation's payout, bank and insurer balance sheets). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): IRC sec. 430(a), (c)(8), (d)(1) and irs-notice-2021-48 secs. II.B, III.A replace the seven-year rule for single-employer plans from 2022; ny-npc-553 sec. 553(a), (d) replaces the unqualified UPMIFA 7% statement. Corrected 2026-10-21 (PR #33 correction pass, notes/source-review-records.md#pr-33-correction-pass-21-october-2026): DB funding statement now says each new base is the shortfall less the present value of installments still due on earlier bases (us-internal-revenue-code-26 sec. 430(c)(3); irs-notice-2021-48 sec. III.B.1)."
   },
   "meth:db-pension-risk": {
-    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "source": "compendium/portfolio-risk-financing/institutional-portfolios.tex",
     "review": "Verification: s7-ang chap. 1, pp. 16-22; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 1 (Harlow Industrial's DB plan: funded status, surplus risk and the sponsor). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): statutory funding target, accounting PBO and economic liability distinguished (IRC sec. 430(c)(8), (d)(1), (h)(2)(C)(iv)); deficit annuities labelled policy illustrations (96.34m over 15 years, 172.82m over 7); sponsor-burden conclusion revised. Corrected 2026-10-21 (PR #33 correction pass, notes/source-review-records.md#pr-33-correction-pass-21-october-2026): the 2026 base is the shortfall less the present value of installments on the open 2022-2025 bases (us-internal-revenue-code-26 sec. 430(c)(3); irs-notice-2021-48 sec. III.B.1): 400m - 303.2m = 96.8m; minimum required contribution 151.91m at the 1 January 2026 valuation date (target normal cost 110m, shortfall charge 41.91m; 430(a), (g)(2)), 165.12m as its ordinary-interest equivalent on 15 September 2027 (430(j); cfr-26-1-430j-1 para. (b)(4)(i)), not a payable amount, since late quarterly installments are discounted at the effective rate plus 5 points (paras. (b)(4)(ii), (c)); the double-counting construction gave a 69.73m charge; stated assumptions and the limits of the conclusion given; checked by institutional-checks.py part 1 (present-value identity, base schedules, boundary cases)."
   },
   "meth:institutional-ips-portfolios": {
-    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "source": "compendium/portfolio-risk-financing/institutional-portfolios.tex",
     "review": "Verification: nbim-gpfg-2026 benchmark index; risk management; about the fund; lerner-schoar-wang-endowments-2008 NBER WP 14341, abstract, pp. 1-2; s7-ang pp. 26-27; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: parts 1-3 (DB plan, spending rules, foundation payout, bank and insurer balance sheets, GPFG rules). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): Elmsworth spending tested against New York's five-year quarterly average (ny-npc-553 sec. 553(d)); below 7% is not a safe harbour. Corrected 2026-10-21 (PR #33 correction pass, notes/source-review-records.md#pr-33-correction-pass-21-october-2026): pure 5% spending tested against the averages of its own quarterly values, not those of the smoothed rule: peak 5.24% (5.242401%), not 5.25%; institutional-checks.py part 2 rebuilds each history and shows the cross-policy construction differs."
   },
   "meth:swf-risk-case": {
-    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "source": "compendium/portfolio-risk-financing/institutional-portfolios.tex",
     "review": "Verification: s7-ang chap. 1, pp. 7-12; chap. 3, pp. 71-73; nbim-gpfg-2026 climate action plan; risk management; santiago-principles-2008 GAPP 22; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 3 (the GPFG rules and the hypothetical Vardø Fund's risks). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:endowment-liquidity-allocation": {
-    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "source": "compendium/portfolio-risk-financing/institutional-portfolios.tex",
     "review": "Verification: s7-ang chap. 13, pp. 410-412; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 4 (Elmsworth endowment: liquidity stress, denominator effect, commitment pacing). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Corrected 2026-10-20 (final audit correction pass, notes/source-review-records.md#final-audit-correction-pass-20-october-2026): remaining liquidity nets distributions (185.6m)."
   },
   "meth:institutional-esg-integration": {
-    "source": "compendium/portfolio-construction-risk/institutional-portfolios.tex",
+    "source": "compendium/portfolio-construction-risk/esg-integration.tex",
     "review": "Verification: nbim-gpfg-2026 climate action plan; s7-ang chap. 3, pp. 71-73, 112; sustainable-investment-review-2022 Tables 1-2, p. 7; santiago-principles-2008 GAPP 19.1; locators in the entry text. Checked by notes/artefacts/institutional-portfolios/institutional-checks.py: part 5 (ESG constraints in a long-term portfolio). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "def:financial-data-science-uses": {
@@ -2664,7 +2664,7 @@
     "review": "Verification: wide-gentzkow-kelly-taddy pp. 2-8; alpha-afml pp. 23-28; locators in the entry text. Checked by notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 4 (synthetic look-ahead, fitted transforms and outliers). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:text-feature-engineering": {
-    "source": "compendium/ml-alternative-data/data-science-workflow.tex",
+    "source": "compendium/ml-alternative-data/text-features.tex",
     "review": "Verification: wide-gentzkow-kelly-taddy NBER WP 23276, pp. 5-8; p. 31; locators in the entry text. Checked by notes/artefacts/financial-ml-methods/ml-methods-checks.py: part 5 (synthetic corpus: training vocabulary, tf-idf, chi-square, logistic). Written 2026-10-20 (completion batch). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1."
   },
   "meth:ml-model-training-evaluation": {
@@ -2696,11 +2696,11 @@
     "review": "Verification: s7-hulloptions chap. 28, secs. 28.1, 28.3-28.4, eqs. (28.6)-(28.19), pp. 671-677, and chap. 15, sec. 15.7, p. 351; wide-wilmott-pwoqf chap. 10, secs. 10.11-10.12, eqs. (10.6)-(10.8), pp. 179-181. Neither source writes the Radon-Nikodym density; Z_T is stated in the entry as a direct calculation (Interpretation) and checked numerically, and the rigorous statements are left to Further reading (crypto-shreve, not read). Checked by stochastic-calculus-checks.py part 3 (real-world draws reweighted by Z_T reproduce the BSM call 7.1281 within three standard errors; E_P[Z_T] = 1; the reweighted forward; the discounted real-world expectation solves the PDE with mu and fails the Black-Scholes PDE by finite differences); seed 20261021 + 3. Written 2026-10-21 (library gap-filling Batch L1). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding."
   },
   "meth:finite-difference-option-pricing": {
-    "source": "compendium/volatility-options/numerical-methods.tex",
+    "source": "compendium/numerical-optimisation/numerical-methods.tex",
     "review": "Verification: s7-hulloptions chap. 21, sec. 21.8, pp. 498-508 (grid, implicit and explicit schemes, eqs. (21.27)-(21.39), Examples 21.10-21.11, the trinomial interpretation and negative probabilities); wide-wilmott-pwoqf chap. 77, secs. 77.11-77.12 and 77.17, pp. 1212-1215 and 1224-1226, and chap. 78, secs. 78.3, 78.7 and 78.9, pp. 1229-1230, 1243 and 1244-1246; locators in the entry text. The monotonicity condition with the discount term and the Rannacher start are stated as Interpretation and implementation choices; neither source names Rannacher. Checked by notes/artefacts/numerical-pricing/numerical-pricing-checks.py parts 1-2 (Crank-Nicolson and explicit convergence ratios against BSM 5.5735; deliberate explicit instability; American put by projected SOR against the mean of CRR trees with 8,000 and 8,001 steps; acceptance ranges fixed before running). Written 2026-10-21 (library gap-filling Batch L1). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding."
   },
   "meth:least-squares-monte-carlo": {
-    "source": "compendium/volatility-options/numerical-methods.tex",
+    "source": "compendium/numerical-optimisation/numerical-methods.tex",
     "review": "Verification: s7-hulloptions chap. 21, sec. 21.6, p. 491 and chap. 27, sec. 27.8, pp. 660-665 (Tables 27.4-27.7, the least-squares approach, exercise-boundary parameterisation, upper bounds); locators in the entry text. Longstaff and Schwartz (2001) and Andersen and Broadie were not read; they are cited through Hull. Checked by numerical-pricing-checks.py parts 3-4 (Hull's eight-path example 0.1144 and its regressions, the printed year-2 S^2 coefficient being truncated; a 50-date Bermudan put against CRR trees with exercise restricted to the dates and a Crank-Nicolson cross-check; out-of-sample LSM with seeds 20261021 and 20261022, 100,000 paths each, inside the predetermined low-bias allowance). Written 2026-10-21 (library gap-filling Batch L1). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding."
   },
   "meth:digital-option-valuation": {
@@ -2716,7 +2716,7 @@
     "review": "Verification: s7-hulloptions chap. 26, sec. 26.13, pp. 626-627 (moment matching, Example 26.3) and chap. 27, sec. 27.5, p. 653; wide-wilmott-pwoqf chap. 25, secs. 25.9-25.11, pp. 440-442 (Kemna-Vorst, the square-root-of-three rule, the geometric average-rate formula). Discrepancy recorded: Wilmott's summary (p. 440) gives the adjusted yield as D + sigma^2/6, which disagrees with his formula on p. 442 and with the limit of the discrete geometric distribution; the entry follows p. 442. The discrete geometric distribution is stated as Interpretation and checked. Checked by exotic-option-checks.py part 3 (discrete geometric closed form against Monte Carlo, seed 20261035; geometric control for the arithmetic average, variance-reduction factor about 900; first-order convergence to continuous averaging; the p. 440 yield rejected). Corrected 2026-10-21 after the Batch L1 audit (notes/source-review-records.md, Batch L1, post-implementation audit corrections): Hull's wording 'tend to be less expensive' (p. 626, rechecked in the text layer) replaces the unqualified 'cheaper'; the ordering against the vanilla depends on carry, shown by a deterministic negative-carry check (K = 60, q = 8 percent > r = 2 percent: vanilla 33.5611 below geometric 35.7601 and the arithmetic lower bound 36.0876); AM-GM ordering kept (finding L1-F3). Written 2026-10-21 (library gap-filling Batch L1). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding."
   },
   "res:delta-hedging-volatility-mismatch": {
-    "source": "compendium/volatility-options/option-valuation.tex",
+    "source": "compendium/volatility-options/option-hedging.tex",
     "review": "Verification: wide-wilmott-pwoqf chap. 12, pp. 197-204 (which volatility in the delta; Case 1, actual volatility, guaranteed V^a - V^i with a random mark-to-market path; Case 2, implied volatility, eq. (12.1) and the path-dependent total; eq. (12.2) after Carr and Henrard) and chap. 47, pp. 764-770 (discrete hedging, the chi-squared hedging error); s7-hulloptions chap. 19, sec. 19.4, pp. 425-426 (hedge performance improves with rebalancing frequency). Carr (2005), Henrard (2001) and Ahmad and Wilmott (2005) were not read; eq. (12.2) is cited through Wilmott. Checked by notes/artefacts/option-valuation/volatility-mismatch-hedging-check.py (20,000 common paths, seed 20261051, 252 and 2,520 rebalancings: actual-delta mean P&L within 3 s.e. of 3.7807 at both, s.d. ratio 3.14; implied-delta RMS gap to the pathwise integral 0.797 to 0.256, cross-path s.d. 1.75; acceptance ranges fixed before running). Corrected 2026-10-21 after the Batch L1 audit (notes/source-review-records.md, Batch L1, post-implementation audit corrections): the positive implied-hedge total needs Gamma^i >= 0 as well as sigma > implied (a convex vanilla payoff); a deterministic cash-digital counterexample (S0 = 120, K = 100: 0.8141 at 20 percent, 0.6980 at 30 percent, V^a - V^i = -0.1160; gamma +0.00071 at S = 80 and -0.00047 at S = 120) was added (finding L1-F2). The vanilla simulation is unchanged. Written 2026-10-21 (library gap-filling Batch L1). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding."
   },
   "res:kelly-growth-optimal-fraction": {
@@ -2772,11 +2772,11 @@
     "review": "Verification: basel-framework-ccr-mar-2026 CRE51.1-51.15 (2023 version; the 2028 version compared), CRE52.1-52.57 and 52.72 with the formula images read, MAR50.1-50.20 with the formula images read; bcbs-sa-ccr-2014 sec. D, p. 3 (effective 1 January 2017). Implementation: eu-2019-876-crr2 Art. 3; eu-2024-1623-crr3 Art. 1(197)-(199) and Art. 2; eu-2013-575-crr Art. 382(4) (retained by CRR3); pra-ps17-21-basel-2021 pp. 4, 8; pra-ps17-23-basel31-2023 paras 1.7-1.13; pra-ps1-26-basel31-2026 paras 1.23-1.24; us-sa-ccr-rule-2020 (85 FR 4362, 4365); ecfr-12cfr217-2026 217.132(c)(5), (e); us-capital-proposal-2026 (a proposal; 91 FR 14952, 14955, 14983). The SD, DF and BA-CVA aggregation identities and the worked example are checked by counterparty-capital-check.py (deterministic, original inputs; the default-risk risk weight and the effective maturity are illustrative). Written 2026-10-21 (library gap-filling Batch L3, P10). Stability: draft; currency: rules as of 2026-10-21. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding. Batch L3 post-implementation audit corrections (2026-10-21; notes/source-review-records.md, Library gap-filling, Batch L3): the printed unmargined maturity factor had dropped the ten-business-day floor; restored from CRE52.48-52.49 (10/250 years under a 250-day convention), with a short-maturity counterexample (5 business days: 0.2, not 0.141) checked in counterparty-capital-check.py; the script already applied the floor, so the four-year example (MF 1) is unchanged. The Notation called M EAD DF / alpha the same object as EE*; per MAR50.15 nn. 3-4 it is a supervisory proxy for the area under the discounted EE profile (currency x years; 13.8225 in the example, EEPE 3.8127), not a discounted EE at a date; checked against the integral of EEPE exp(-0.05 t). No other number changed."
   },
   "meth:cross-currency-basis-swaps": {
-    "source": "compendium/volatility-options/forward-commitment-valuation.tex",
+    "source": "compendium/currency-markets/cross-currency-basis.tex",
     "review": "Verification: s7-hulloptions chap. 7, sec. 7.10, pp. 192-193 (direction of principal exchanges; decomposition); ding-liu-rutkowski-ccbs-2025 (arXiv v3, not the catalogued SIAM version) Definition 2.4, pp. 6-7, p. 4 and p. 38; cur-borio-mccauley-mcguire-sushko-2016 pp. 45-48 (Box A on p. 48, Graph 1). The annualised mapping b = [(F/S)(1 + r_f tau) - (1 + r_usd tau)]/tau, its exact relation to the foreign-leg spread and the synthetic-dollar reading are labelled Interpretation; the annualisation was corrected at the L4 freeze (L4-C1) from a period-amount formula that matched only at tau = 1. Checked by cross-currency-basis-check.py (deterministic, relative 1e-12 or 1e-6 currency: cash-flow signs and principals by party, the forward from the legs, kappa = 0 against covered parity, the convention mapping at tau = 1 and 0.25, the inverted quote, and the final exchange against the fixed-for-fixed example of meth:swap-valuation-replication). LIBOR-era evidence (BIS 2016, ev:cip-deviations) kept apart from the overnight-rate example; mark-to-market resets and multi-period valuation excluded. Written 2026-10-21 (library gap-filling Batch L4). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding."
   },
   "meth:monte-carlo-greeks": {
-    "source": "compendium/volatility-options/numerical-methods.tex",
+    "source": "compendium/numerical-optimisation/numerical-methods.tex",
     "review": "Verification: broadie-glasserman-1996 pp. 269-275 and 280-281 (pathwise eqs. (4)-(9), likelihood ratio eqs. (10)-(16), scope of each on p. 272, eq. (18) and n. 2 for gamma, resimulation p. 274, standard-error comparison p. 275, App. A conditions (A1)-(A4) and Proposition 1, App. B eq. (26)), read as page images of the Columbia scan; tables on pp. 276-279 not read. s7-hulloptions chap. 21, sec. 21.6, pp. 494-495 (bump and revalue with common random numbers). The Z-form scores, the digital and strike cases and the gamma boundary sentence are labelled Interpretation, corrected at the L4 freeze (L4-C2): gamma is the derivative of the expectation, not of each path; the pathwise strike statement is restricted to Lipschitz payoffs; the larger likelihood-ratio variance is a finding for the cited examples. Checked by monte-carlo-greeks-check.py (frozen before the run: seed 20261021, 100,000 normals shared by all estimators; deterministic derivative and score checks to 1e-6, eq. (18) against the BSM gamma to 1e-12; five call estimators and the digital LR delta within 4 standard errors, all |z| <= 1.7; digital pathwise delta and strike derivative zero on every path). Written 2026-10-21 (library gap-filling Batch L4). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding. Corrected 2026-10-21 (C1 pass): Appendix B's h* is stated with its assumption that the correlation of the two pricing errors does not depend on h (reread on p. 281), and not as a universal optimum; the call's finite limiting shared-path variance is distinguished from the digital's roughly 1/h variance; unbiasedness is restricted to the direct estimators under their conditions, fixed-step resimulation keeping finite-difference bias. Checked by monte-carlo-greeks-check.py part 4 (call sample variance 0.348653 at h = 1 and 0.351952 at h = 0.001 against pathwise 0.351959; digital variance exact from the lognormal CDF, h x variance 0.018065 to 0.018435 against the limit e^{-2rT} g(K) K/S0 = 0.018435); parts 1-3 unchanged. Corrected 2026-10-21 (pre-L5 audit, C1-F1): 'fixed-step resimulation is biased whatever the conditions' replaced by: generally biased, its expectation being the finite difference of the price; more paths reduce only the sampling error; affine price functions excepted. Formulas and numbers unchanged; monte-carlo-greeks-check.py not rerun."
   },
   "meth:lookback-option-valuation": {
@@ -2784,7 +2784,7 @@
     "review": "Verification: s7-hulloptions chap. 26, sec. 26.11, pp. 623-625 (floating formulas with the extreme achieved to date, Example 26.2 and its intermediates, the fixed-strike parity relation of n. 8, the Broadie-Glasserman-Kou discrete adjustment named in n. 9 but not printed), read in the git-ignored copy (printed page = PDF page). wide-wilmott-pwoqf chap. 24, secs. 24.4-24.5, pp. 422-425 (updating rule, jump condition (24.5), algorithm) and chap. 26, pp. 445-452 (payoff types, dM = 0 below the maximum and dV/dM = 0 on S = M, discrete measurement lowers the value, similarity reduction (26.1), sec. 26.6 formulas; Heynen and Kat named, not printed). No source read prints a lookback-specific discrete-monitoring correction; the barrier shift is not transplanted. Labelled Interpretation: the formulas applied to seasoned contracts with tau and the recorded extreme; the exact bridge extreme as the inverse of the barrier entry's crossing probability; the observed sqrt(m) behaviour of the monitoring gap for these inputs. Checked by lookback-option-check.py (frozen before the run: Example 26.2 rounds to 7.79 and 8.04 (7.790219, 8.037120); Hull and Wilmott agree to 7.9e-15 relative; boundary condition and deep-seasoned limits; seasoned simulations, seed 20261022, 400,000 paths, all |z| <= 1.2; monitoring gaps on coupled nested grids, seed 20261021, 100,000 paths, call 1.6340 to 0.1523 and put 2.1810 to 0.2094 from m = 7 to 1,008, continuous estimates within 1.8 standard errors). One harness correction after the first run: the pricing-equation residual gate is applied to the step-extrapolated residual (raw residual 3.6e-6 at the frozen step, falling as hS^2; tolerance unchanged). Written 2026-10-21 (library gap-filling Batch L5). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding."
   },
   "meth:transaction-cost-hedging": {
-    "source": "compendium/volatility-options/option-valuation.tex",
+    "source": "compendium/volatility-options/option-hedging.tex",
     "review": "Verification: wide-wilmott-pwoqf chap. 48, secs. 48.1-48.14 and the appendix, pp. 783-811 (Leland's assumptions and adjusted volatilities, sec. 48.3, p. 785; the Hoggard-Whalley-Wilmott derivation (48.1)-(48.6) and nonadditivity, pp. 785-788; K (48.7) and ill-posedness, pp. 788-789; mixed gamma, marginal effect, other cost structures, bandwidth (48.9)-(48.10), utility models and the asymptotic band, pp. 790-797; interpretation, negative prices, existence, pp. 797-799; non-normal returns, Table 48.1, p. 800; Jefferies' empirical tests, pp. 800-806; costs against hedging error, pp. 807-808; appendix, pp. 809-811); formula pages 785, 788 and 789 also viewed as page images. Leland (1985) is cited through Wilmott (owner decision L5-D2) and was not read; it is under Further reading. Discrepancy recorded in the entry: p. 789 prints the long-position breakdown as kappa > sigma/sqrt(8 pi dt), dimensionally inconsistent with (48.5), which gives kappa < sigma sqrt(pi dt/8). Labelled Interpretation: kappa as half the proportional spread; the exact Ito identity making the Leland premium the expected present value of the leading-order cost under the sigma-hat delta; the simulated comparisons. Checked by transaction-cost-hedging-check.py (frozen before the run, all gates passed on the first run: (48.5)-(48.6) equal the printed forms to 2.2e-16; signs, zero-cost limit and domain K* = sqrt(pi/8); ledger identity to 3.4e-13; mean discounted wealth within 1.4 standard errors of its exact expectation; residual e_N/L for N = 13, 52, 208 of +6.9, +2.2, +0.7 percent (short, K = 0.1), +9.5, +3.0, +0.9 (short, K = 0.4), +5.1, +1.6, +0.5 (long, K = 0.1), +1.9, +0.6, +0.2 (long, K = 0.4); netting saves 0.607 (s.e. 0.0007) on a 95/105 bull spread and never costs more on any step; risk-neutral, seed 20261023, 100,000 paths). The call-spread values are a hedge-cost demonstration under a fixed Black-Scholes delta rule, not a solution of eq. (48.4). Written 2026-10-21 (library gap-filling Batch L5). Stability: draft. Numerical checks in the locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1. Editorial review only; human review outstanding. Clarified 2026-10-21 (L5 audit): Wilmott's p. 788 approximation stated as each side's adjustment from the frictionless value, the short-minus-long difference about twice it to first order; formulas and numbers unchanged, no rerun."
   }
 }

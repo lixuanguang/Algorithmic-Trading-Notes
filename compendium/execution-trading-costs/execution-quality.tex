@@ -1,4 +1,6 @@
-\subsection{Best execution and broker conflicts}
+\subsection{Best execution, broker conflicts and execution review}
+
+Numbers in \hyperref[meth:trade-execution-evaluation-governance]{execution evaluation and governance} are checked in \texttt{notes/artefacts/trade-execution/trade-execution-checks.py}; market costs in its original examples are stated assumptions, not quotes.
 
 \begin{qfdefinition}[Best execution: three standards, the dimensions of execution quality, and why retail clients see commissions but not prices]\label{def:best-execution}
 \qffield{Statement} A broker taking an order assumes an agency responsibility to obtain best execution, which is not well defined. To unsophisticated clients it means the best possible price for a market order and the fastest execution for a limit order, an absolute standard, which is what the term generally means in U.S. equity markets; to more sophisticated traders, the execution they pay for; to the most sophisticated, the execution they can expect given what they pay and how well they can audit it \citep[chap.~``Brokers'', sec.~7.4.2, pp.~160--161]{alpha-harris}.
@@ -42,3 +44,28 @@ Kissell adds venue rebates: when brokers keep maker--taker rebates or pay the fe
 \qffield{See also} \hyperref[def:best-execution]{best execution}; \hyperref[def:order-anticipation]{order anticipation} (front running); \hyperref[def:order-exposure-decisions]{order exposure decisions}.
 
 \end{qfdefinition}
+
+\begin{qfmethod}[Evaluating trade execution and trading governance: measuring and attributing cost, judging an execution against benchmarks and peers with statistical care, and the policies, disclosures, reviews and records of best execution]\label{meth:trade-execution-evaluation-governance}
+\qffield{Statement} \emph{Measuring and determining cost.} Choose the benchmark before trading, measure implementation shortfall with its components, and adjust for the market's move (\hyperref[meth:execution-cost-measures]{cost measures}). Compare realised cost with a pre-trade estimate, as a $z$-score, and with peers trading similar orders (\hyperref[meth:transaction-cost-analysis]{transaction cost analysis}).
+
+\emph{Evaluating.} Best execution ``is a prospective, statistical, and qualitative concept''. It can be measured ex post over many trades, but not trade by trade: one would not judge a card player on one hand \citep[chap.~10, sec.~6.1, pp.~679--680]{managing-investment-portfolios-2007}.
+
+\emph{Governance.} The 2002 trade-management guidelines summarised in MIP call for processes, disclosures and record keeping. Current rules require the following (pp.~679--681).
+\begin{itemize}
+\item \emph{U.S. broker-dealers} must use reasonable diligence to find the best market so that the price to the customer is as favourable as possible under prevailing conditions, considering the character of the market, the size and type of transaction, the number of markets checked, the accessibility of the quotation and the order's terms. Firms that route or internalise order flow must review execution quality ``regular and rigorous'', at least quarterly, by security and order type: price improvement and disimprovement, fill likelihood, speed, size, cost, customer needs and payment-for-order-flow arrangements. They must change routing or justify not changing it \citep[Rule~5310(a)(1) and Supplementary Material~.09]{finra-rule-5310}.
+\item \emph{EU investment firms} must take ``all sufficient steps to obtain \dots\ the best possible result'', considering price, costs, speed, likelihood of execution and settlement, size and nature. For retail clients this is total consideration. Firms must have an order execution policy naming venues, disclose it and obtain consent, monitor it regularly and correct deficiencies, and be able to demonstrate compliance on request \citep[art.~27(1), (4)--(5), (7)--(8)]{eu-2014-65-mifid2}.
+\end{itemize}
+
+\qffield{Practice} \emph{Original.}
+\begin{itemize}
+\item \emph{Comparing brokers.} Broker B's average shortfall is 7 basis points worse than A's: 32 against 25, with a standard deviation of 40, over 100 and 120 orders. The difference gives $t=1.29$ ($p=0.20$), not significant. Detecting a 7 basis point difference at the 5 percent level with this dispersion needs about 250 orders per broker, or a matched comparison of similar orders.
+\item \emph{Governance decision.} Keep both brokers, route comparable orders to each to build the sample, and record the review and its rationale for the quarterly best-execution file.
+\end{itemize}
+
+\qffield{Conditions} U.S. rule text as retrieved from FINRA on 19~October~2026 (last amended 2014). MiFID~II article~27 as originally enacted in 2014; later amendments to the reporting paragraphs, 27(3) and (6), were not reviewed.
+
+\qffield{Pitfalls} Ranking brokers on raw averages without regard to order difficulty or sample size. Treating a policy document as compliance without the reviews and records behind it. Letting soft-dollar arrangements influence routing (\hyperref[def:broker-agency-conflicts]{broker conflicts}).
+
+\qffield{See also} \hyperref[def:best-execution]{best execution}; \hyperref[meth:execution-cost-measures]{cost measures}.
+
+\end{qfmethod}

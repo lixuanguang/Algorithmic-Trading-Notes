@@ -1,0 +1,22 @@
+\begin{qfmethod}[Extracting, selecting and engineering features from text for financial forecasting: bag of words and n-grams, tf-idf, dictionaries, frequency and chi-square selection, and time-stamping]\label{meth:text-feature-engineering}
+\qffield{Statement} \emph{Representation} \citep[NBER WP 23276, pp.~5--8]{wide-gentzkow-kelly-taddy}: the bag-of-words model counts each token in each document; $n$-grams count phrases of $n$ words and keep some word order; \emph{tf-idf} weights the count of token $j$ in document $i$ by $\log(n/d_j)$, where $d_j$ is the number of documents containing $j$, down-weighting words that appear everywhere; stop-word removal, rare-word filters and stemming cut dimensionality, but each choice can remove meaning.
+
+\emph{Mapping text to outcomes} (pp.~10--26): \emph{dictionary} methods count words from a predefined list and suit cases without labelled data, provided the list fits the domain. Loughran and McDonald showed that a general-purpose dictionary misreads financial text and built finance-specific word lists \citep[p.~31]{wide-gentzkow-kelly-taddy}. \emph{Supervised} methods (penalised regression, naive Bayes, trees, neural networks) learn weights from labelled documents and need validation by cross-validation and manual audits (pp.~12--15, 26). \emph{Unsupervised} methods such as topic models find themes.
+
+\emph{Feature selection and engineering}: keep tokens by document frequency, or by association with the label (chi-square, mutual information), estimated on training documents only; engineer features such as negation-aware sentiment, counts of numbers, named entities, readability or changes from the previous filing (Interpretation). For forecasting, each feature carries the time the text became public, and the document's unit matches the forecast horizon (pp.~6--7).
+
+\qffield{Practice} \emph{A synthetic earnings-text example} (\texttt{ml-methods-checks.py}, part~5). Ten one-sentence ``press releases'' are labelled positive or negative; the first eight are training documents.
+\begin{itemize}
+\item After removing stop words, the vocabulary comes from the eight training documents only. ``Strong'' appears in four, so its idf is $\ln(8/4)=0.693$, and its tf-idf in a document where it appears once is 0.693.
+\item Chi-square scores on the training documents rank ``strong'', ``weak'', ``growth'' and ``impairment'' highest and neutral words such as ``quarter'' and ``revenue'' low.
+\item A regularised logistic model on those four words classifies both held-out documents correctly, which shows the mechanics only.
+\end{itemize}
+In a real study, a document is a filing or call time-stamped to its release, labels are subsequent returns measured from the first tradable price after release, and the dictionary or model is fixed before the test period.
+
+\qffield{Conditions} Toy corpus; finance-specific dictionaries and models age and should be versioned.
+
+\qffield{Pitfalls} Building the vocabulary or idf weights on all documents including the test set. Using a general sentiment dictionary on filings. Aligning text with returns at the filing date rather than the time it became public.
+
+\qffield{See also} \hyperref[meth:data-analysis-project]{data project}; \hyperref[meth:time-valid-ml-experiment-record]{time-valid experiments}.
+
+\end{qfmethod}

@@ -45,6 +45,8 @@ Cross-referenced, not owned here: `meth:credit-spread-term-structure` (`corporat
 
 The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
 
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `mortgages-abs-clo`, `synthetic-risk-transfer`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
 - `covered-bonds` (Covered bonds and extendable maturity): no pathway note; partial treatment in existing entries, not reviewed as complete: dual recourse and covered bonds against securitisation (`meth:abs-structures-credit-enhancement` in `securitised-structured-credit/securitisation`, `meth:credit-cds-international-structured` in `corporate-credit-capital/credit-portfolio-management`). Not written: extendable maturities; covered-bond spreads and regulatory treatment.
 - `sukuk` (Sukuk: ownership, recourse and relative value): content gap; no entry written.
 - `mortgages-abs-clo` (Mortgages, ABS and CLO waterfalls): no pathway note; related existing material in `securitised-structured-credit/securitisation`, not reviewed as a complete treatment of the pathway.

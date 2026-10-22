@@ -24,13 +24,15 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Posterior updating and prediction* (`bayesian-updating.tex`): `meth:bayesian-updating`.
+- `bayesian-parameter-uncertainty` (Bayesian inference, shrinkage and parameter uncertainty; `bayesian-updating.tex`): `meth:bayesian-updating`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
+
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `bayesian-parameter-uncertainty`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `bayesian-parameter-uncertainty` (Bayesian inference, shrinkage and parameter uncertainty): no pathway note; related existing material in `bayesian-inference/bayesian-updating`, not reviewed as a complete treatment of the pathway.
 

@@ -24,15 +24,19 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Monte Carlo simulation* (`monte-carlo-simulation.tex`): `meth:monte-carlo-simulation`.
+- `numerical-methods-optimisation` (Optimisation and numerical methods for pricing and portfolios):
+  - *Monte Carlo simulation* (`monte-carlo-simulation.tex`): `meth:monte-carlo-simulation`.
+  - *Numerical option pricing: finite differences, least-squares Monte Carlo and simulated Greeks* (`numerical-methods.tex`): `meth:finite-difference-option-pricing`, `meth:least-squares-monte-carlo`, `meth:monte-carlo-greeks`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
 
-- `numerical-methods-optimisation` (Optimisation and numerical methods for pricing and portfolios): no pathway note; related existing material in `numerical-optimisation/monte-carlo-simulation`, `volatility-options/numerical-methods`, not reviewed as a complete treatment of the pathway.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `numerical-methods-optimisation`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
+- `numerical-methods-optimisation` (Optimisation and numerical methods for pricing and portfolios): no pathway note; related existing material in `numerical-optimisation/monte-carlo-simulation`, `numerical-optimisation/numerical-methods`, not reviewed as a complete treatment of the pathway.
 
 ## Entry backlog
 

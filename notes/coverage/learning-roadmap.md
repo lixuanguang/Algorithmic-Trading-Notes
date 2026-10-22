@@ -1,6 +1,6 @@
 # Learning roadmap
 
-Topics in prerequisite order, grouped by the depth most of their objectives require. Each topic builds on the topics in its *Builds on* column; a topic can sit in a later group than some of its own objectives. Objectives, their status and their entries are in [objectives.json](objectives.json); run `make check-coverage` for current coverage. Chapter keys are sections declared in `compendium/compendium.tex`. A topic has one owning chapter even when one of its entries sits in another: `topic:probability-distributions` keeps Bayesian updating, now in `bayesian-inference`; `topic:simulation-methods` keeps Monte Carlo simulation, now in `numerical-optimisation`; `topic:credit-models` keeps the counterparty and xVA entries, now in `portfolio-risk-financing`; `topic:digital-asset-investment` keeps the distributed-ledger entry, which opens `digital-assets-prediction-markets`.
+Topics in prerequisite order, grouped by the depth most of their objectives require. Each topic builds on the topics in its *Builds on* column; a topic can sit in a later group than some of its own objectives. Objectives, their status and their entries are in [objectives.json](objectives.json); run `make check-coverage` for current coverage. Chapter keys are sections declared in `compendium/compendium.tex`. A topic has one owning chapter even when one of its entries sits in another: `topic:probability-distributions` keeps Bayesian updating, now in `bayesian-inference`; `topic:simulation-methods` keeps Monte Carlo simulation, now in `numerical-optimisation`; `topic:credit-models` keeps the counterparty and xVA entries, now in `portfolio-risk-financing`; `topic:digital-asset-investment` keeps the distributed-ledger entry, which opens `digital-assets-prediction-markets`; since the subsection alignment of 22 October 2026, `topic:embedded-option-bonds` keeps convertible-bond valuation, now in `volatility-options`; `topic:option-valuation` keeps numerical option pricing, now in `numerical-optimisation`; `topic:forward-commitment-valuation` keeps cross-currency basis swaps, now in `currency-markets`; and `topic:fixed-income-portfolio-management` keeps cash-flow matching and immunisation, now in `portfolio-risk-financing`.
 
 The order is a navigation aid for subjects, not an examination sequence. Several topics in different subjects can be studied in parallel once their prerequisites are met.
 
@@ -27,7 +27,7 @@ Two routes have been followed end to end, from roadmap to compiled entry to sour
 | `topic:probability-distributions` Probability and distributions in finance | `probability-statistics` | `topic:descriptive-statistics` | 3 |
 | `topic:statistical-inference` Sampling and statistical inference | `probability-statistics` | `topic:probability-distributions` | 3 |
 | `topic:simulation-methods` Simulation and resampling | `probability-statistics` | `topic:probability-distributions` | 3 |
-| `topic:firms-market-structure` Firms and market structure | `multi-asset-systematic-macro` | — | 3 |
+| `topic:firms-market-structure` Firms and market structure | `systematic-equities` | — | 3 |
 | `topic:business-cycles` Business and credit cycles | `multi-asset-systematic-macro` | — | 2 |
 | `topic:fiscal-policy` Fiscal policy | `multi-asset-systematic-macro` | `topic:business-cycles` | 1 |
 | `topic:monetary-policy` Monetary policy | `rates-credit-mortgages` | `topic:business-cycles` | 2 |
@@ -123,7 +123,7 @@ Two routes have been followed end to end, from roadmap to compiled entry to sour
 | `topic:fixed-income-portfolio-management` Fixed-income portfolio management | `rates-credit-mortgages` | `topic:interest-rate-risk`, `topic:term-structure` | 7 |
 | `topic:credit-portfolio-strategies` Active credit strategies | `corporate-credit-capital` | `topic:credit-models`, `topic:fixed-income-portfolio-management` | 4 |
 | `topic:alternatives-allocation` Allocating to alternative investments | `portfolio-construction-risk` | `topic:strategic-asset-allocation`, `topic:alternative-investment-structures` | 2 |
-| `topic:institutional-portfolios` Institutional investor portfolios | `portfolio-construction-risk` | `topic:strategic-asset-allocation` | 6 |
+| `topic:institutional-portfolios` Institutional investor portfolios | `portfolio-risk-financing` | `topic:strategic-asset-allocation` | 6 |
 | `topic:trade-execution` Trading costs and trade execution | `execution-trading-costs` | — | 5 |
 | `topic:manager-selection` Investment manager selection | `portfolio-construction-risk` | `topic:performance-evaluation` | 3 |
 | `topic:professional-conduct-standards` Application of professional conduct standards | `professional-ethics` | `topic:professional-conduct-code` | 16 |

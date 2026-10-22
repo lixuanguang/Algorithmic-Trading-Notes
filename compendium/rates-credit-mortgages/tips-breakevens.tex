@@ -1,0 +1,22 @@
+\begin{qfdefinition}[TIPS and breakeven inflation: index ratio and CPI-U lag, the principal floor, semiannual interest, the auction schedule then and now, and what a breakeven contains besides expected inflation]\label{def:tips-breakevens}
+\qffield{Statement} TIPS are Treasury securities whose principal is indexed to the CPI-U, not seasonally adjusted, through a reference index with a three-month lag; the fixed coupon rate is applied to the adjusted principal, and at maturity the holder receives the greater of the adjusted principal and the original principal \citep[chap.~9, PDF pp.~247--249]{s7-gliner}; the floor ``does not apply to coupon payments'' (p.~248).
+
+TreasuryDirect describes TIPS as issued in 5-, 10- and 30-year terms, paying interest every six months, and repaying the adjusted or the original principal, whichever is greater; its current schedule has the 5-year auctioned in April and October and reopened in June and December, the 10-year in January and July and reopened in March, May, September and November, and the 30-year in February and reopened in August \citep[web page]{treasurydirect-tips}. The \emph{breakeven inflation rate} is the nominal Treasury yield minus the TIPS real yield of the same maturity: 4.0 minus 1.5 gives 2.5 percent \citep[chap.~9, PDF p.~250]{s7-gliner}.
+
+\qffield{Notation} Index ratio $=\text{Ref CPI}_{\text{settle}}/\text{Ref CPI}_{\text{dated}}$; adjusted principal $=$ face $\times$ index ratio.
+
+\qffield{Conditions} A breakeven equals expected inflation plus an inflation risk premium minus a liquidity premium for TIPS (and is affected by the deflation floor and the indexation lag), so breakevens reflect market-implied inflation expectations only approximately.
+
+\qffield{Practice} With cumulative CPI up 5 percent, the principal per 100 is 105 and coupons are paid on 105; with CPI down 2 percent, coupons are paid on 98 and the maturity payment is floored at 100. Gliner's walk-through of the reference-index calculation for a March 2012 settlement uses December 2011 CPI-U (p.~249).
+
+\qffield{Pitfalls} Gliner's ``if CPI is 5 percent for a year, then the TIPS will trade at 105'' conflates the adjusted principal with the market price, which is the index ratio times a real clean price that moves with real yields. ``5Y, 10Y, and 30Y maturities issued quarterly'' follows Gliner's ``TIPS are typically issued on a quarterly basis'' (p.~247) and does not match the current schedule above, under which the 10-year is offered six times a year. Gliner's 2014 calendar (p.~247) differs from the current one in two ways: the 5-year was then a new issue in April with reopenings in August and December, against new issues in April and October and reopenings in June and December now; and the 30-year was reopened twice, in June and October, against once, in August, now; the 10-year pattern is unchanged.
+
+\emph{When the calendar changed}. Treasury's refunding statement of 31 October 2018 made both changes from 2019: ``Treasury will introduce a new October 5-year TIPS maturity starting in 2019'', which would ``replace the existing October 30-year reopening auction''; ``the first reopening of the April 5-year TIPS will be moved from August to June''; and the 30-year would be reopened once instead of twice, with its reopening moved from June to August \citep[statement and its 2018--2019 auction table]{treasury-refunding-2018-10}. The 5-year TIPS itself dates from the May 2004 statement: ``A new 5-year TIPS with the first auction in October 2004'', then ``auctioned on an April/October cycle'' \citep[statement of 5 May 2004]{treasury-refunding-2004-05}; the October new issue had been dropped by Gliner's 2014 calendar.
+
+``Short-end TIPS trade like food and energy'' is Gliner's sentence (p.~248); it compresses the observation that short TIPS carry depends on headline CPI, which energy prices dominate month to month. Negative real yields mean holders accept a real loss if inflation equals the breakeven, not a ``guaranteed'' loss.
+
+\qffield{See also} \hyperref[def:macroeconomic-indicators]{inflation indicators}; \hyperref[def:macro-regime-asset-map]{regime map}; \hyperref[def:fixed-income-universe]{fixed-income universe}.
+
+\qffield{Further reading} TIPS breakeven decomposition \citep{gap-inflation-tips-decomposition}; \citep{gap-inflation-tips-spec} for TreasuryDirect's CPI reference data.
+
+\end{qfdefinition}

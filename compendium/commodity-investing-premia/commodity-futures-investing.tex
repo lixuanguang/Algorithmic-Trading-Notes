@@ -1,5 +1,3 @@
-\section{Commodity futures as investments}
-
 \begin{qfdefinition}[Commodities as investments: their features, the forms of access, and their risk, return and diversification characteristics]\label{def:commodity-features}
 \qffield{Statement} \emph{Features.} Commodity futures differ from stocks and bonds in three ways: ``(1) commodity futures are derivative securities; they are not claims on long-lived corporations; (2) they are short maturity claims on real assets; (3) unlike financial assets, many commodities have pronounced seasonality in price levels and volatilities'' \citep[p.~2]{s16-r34}. Every commodity trades on a spot market, and a commodity trade may be physical (delivery) or financial (cash settlement), unlike trades in stocks and bonds \citep[pp.~1--2]{physical-geman-commodities-2005}. Some commodities are storable and some, such as electricity, are not (Gorton and Rouwenhorst, p.~2; Geman, p.~251).
 
@@ -43,69 +41,5 @@
 \qffield{Pitfalls} Applying equity valuation multiples to commodities. Ignoring seasonality and storability when comparing sectors.
 
 \qffield{See also} \hyperref[def:commodity-features]{features}; \hyperref[meth:commodity-futures-return-components]{return components}.
-
-\end{qfmethod}
-
-\begin{qfmethod}[Commodity futures returns: spot and futures prices in contango and backwardation, theories of futures returns, the total-return components of a fully collateralised position, and the roll return]\label{meth:commodity-futures-return-components}
-\qffield{Statement} \emph{Spot and futures prices.} By the theory of storage, the futures price exceeds the spot price by the costs of storage and financing less the \emph{convenience yield}, the benefit that ``accrues to the owner of the physical commodity but not to the holder of a forward contract'' \citep[pp.~24--25]{physical-geman-commodities-2005}. With ample inventories the curve rises (\emph{contango}); when stocks are scarce the convenience yield is high and futures trade below spot (\emph{backwardation}). Volatility is inversely related to stocks (p.~28). At expiry the futures price converges to spot (\hyperref[def:contango-backwardation-stocks]{contango and backwardation}).
-
-\emph{Theories of futures returns.}
-\begin{itemize}
-\item \emph{Insurance (normal backwardation)}: Keynes argued that producers who hedge by selling futures pay speculators a premium, so futures prices are downward-biased estimates of future spot prices \citep[pp.~33--34]{physical-geman-commodities-2005}; \citep[pp.~10--11]{wide-erb-harvey-commodity}.
-\item \emph{Hedging pressure}: the premium's sign depends on whether hedgers are net short or net long, so it can be positive or negative and vary by commodity (Erb and Harvey, pp.~11--12; Geman, p.~34, on markets where the net-short assumption fails).
-\item \emph{Theory of storage}: curve shape and expected returns depend on inventories and the convenience yield; a downward-sloping curve signals scarcity (Geman, pp.~24--28).
-\end{itemize}
-Telser found no bias in large grain markets, and Geman judges normal backwardation ``somewhat obsolete'' where participants' motives vary (pp.~33--34).
-
-\emph{Total return of a fully collateralised position.} Ang separates three parts: the \emph{spot return} from changing spot prices; the \emph{cash or collateral return}, the interest on the collateral; and the \emph{roll return}, the gains or losses from selling expiring contracts and buying the next \citep[pp.~367--368]{s7-ang}. Over 1970--2011 the GSCI's 11.3 percent average total return comprised spot 6.4, cash 5.6 and roll $-0.7$ percent; in the 2000s roll was $-7.5$ and spot 13.0 percent; nearly all variance came from spot (pp.~368--369). Erb and Harvey write the portfolio return as cash return plus excess return plus a \emph{diversification return} from rebalancing (p.~10). Gorton and Rouwenhorst note that the roll itself has no cash flow: the futures return is the change in the price of the contract held \citep[p.~6, n.~7]{s16-r34}; the ``roll return'' measures how much of that change comes from the slope of the curve.
-
-\emph{Roll return in contango and backwardation.} In backwardation the investor sells the expiring contract high and buys the next low, and with an unchanged curve the position rises toward spot: a positive roll return. In contango the reverse holds and the roll loses (Ang, p.~369). Erb and Harvey's May 2004 curves illustrate: oil in backwardation with an unchanged curve gives $40.95/36.65-1=11.7$ percent (printed as 13.1), and gold in contango $398.3/404-1=-1.4$ percent \citep[p.~13]{wide-erb-harvey-commodity}.
-
-\qffield{Practice} \emph{A fully collateralised position rolled quarterly} (original; checked by simulation). Spot stays at 100 for a year; collateral earns 4 percent:
-\begin{itemize}
-\item in backwardation, with each three-month future 2 percent below spot, each quarter's position rises from 98 to 100, a 2.04 percent roll return; the excess return over the year is 8.42 percent and the total return 12.73 percent;
-\item in contango, with futures 2 percent above spot, the excess return is $-7.62$ percent and the total $-3.79$ percent, although spot never moved;
-\item with spot falling 5 percent over the year in the same backwardation, the excess return is still $+3.00$ percent and the total $+7.15$ percent: futures returns can be positive when spot falls.
-\end{itemize}
-\emph{Interpretation}: the spot return explains most variance, but the curve decides whether a flat market rewards or penalises a passive holder.
-
-\qffield{Conditions} Ang's decomposition is of the GSCI's index components; Erb and Harvey's oil figure is printed as 13.1 percent but their own inputs give 11.73 percent, and the text dates the far contract as June and then July 2005. Ang attributes the negative roll return of the 2000s to ``highly backwardated oil markets in 2008'', which contradicts his own statement that backwardation produces positive roll returns (pp.~369--370); the figures, not that sentence, are used here. The decade rows of Ang's Table~11.7 add up except for the 1970s (21.7 against 21.6 printed, rounding).
-
-\qffield{Pitfalls} Calling a backwardated curve a forecast of falling prices. Expecting a contango ETF to track spot. Adding the diversification return to a single-commodity position.
-
-\qffield{See also} \hyperref[def:contango-backwardation-stocks]{contango and backwardation}; \hyperref[meth:commodity-swaps-index-construction]{swaps and indices}; \hyperref[def:commodity-features]{features}.
-
-\end{qfmethod}
-
-\begin{qfmethod}[Commodity swaps and index construction: using swaps to obtain or modify commodity exposure, and how weighting, rebalancing and roll rules affect index returns]\label{meth:commodity-swaps-index-construction}
-\qffield{Statement} \emph{Commodity swaps.} A commodity swap is ``in essence a series of forward contracts on a commodity with different maturity dates and the same delivery prices'' \citep[p.~195]{s7-hulloptions}. A consumer of 100,000 barrels a year can pay \$5 million a year and receive 100,000 times the market price, locking in \$50 a barrel; a producer takes the opposite side (p.~781). Investors use swaps to:
-\begin{itemize}
-\item \emph{obtain exposure}: a \emph{total return swap} on a commodity index pays the index's total return in exchange for a floating rate plus a spread, giving index exposure without trading futures (Interpretation, from the index definitions in \hyperref[def:commodity-indices-risk-return]{index record});
-\item \emph{modify exposure}: \emph{excess return swaps} pay the index excess return without the collateral leg; fixed-for-floating price swaps hedge a producer's or consumer's price; and \emph{basis swaps} exchange one price for another, such as a grade or location spread (Interpretation). \emph{Volatility swaps} exchange a preagreed volatility for realised volatility (Hull, p.~195).
-\end{itemize}
-Swap values follow from forward prices: the fixed payer's value is the discounted sum of forward price less fixed price times quantity.
-
-\emph{Index construction} affects index returns through:
-\begin{itemize}
-\item \emph{weights}: production weights (S\&P GSCI, heavy in energy) or liquidity-and-production weights with caps (BCOM's 33 percent group cap), so sector returns dominate differently (\hyperref[def:commodity-indices-risk-return]{index record});
-\item \emph{rebalancing}: fixed-weight rebalancing sells winners and buys losers, earning a \emph{diversification return} of roughly half the difference between average variance and average covariance \citep[pp.~24--25]{wide-erb-harvey-commodity}; Gorton and Rouwenhorst's monthly-rebalanced equal-weighted index embeds this strategy \citep[p.~9]{s16-r34};
-\item \emph{roll rules}: which contracts are held and when they are rolled (fifth to ninth business day for the GSCI; sixth to tenth for BCOM) set the roll return; deferred or optimised contracts reduce roll costs in contango;
-\item \emph{return variant}: spot, excess-return and total-return versions differ by the roll and the collateral yield.
-\end{itemize}
-
-\qffield{Practice} (Original; checked in the script.)
-\begin{itemize}
-\item \emph{Swap value}: a three-year swap at \$50 for 100,000 barrels a year, with forwards at 52, 54 and 55 and a 4 percent discount rate, is worth \$1.01 million to the fixed payer.
-\item \emph{Total return swap}: an index total return of 7.1 percent against bills plus 25 basis points (4.25 percent) nets 2.85 percent.
-\item \emph{Rebalancing}: one commodity alternates $+50$ and $-33.3$ percent (no net change), another is flat. Buy-and-hold gains nothing over four periods; an equal-weighted index rebalanced each period gains 8.51 percent, a 90/10 index 3.02 percent.
-\item \emph{Roll rule}: in a contango costing 2 percent a month at the front but 0.75 percent further out, rolling the front contract loses 21.53 percent a year against 8.64 percent for deferred contracts.
-\item \emph{Published check}: Erb and Harvey's heating oil and S\&P 500 example (1993--2003) shows a 10.9 percent rebalanced return against a 7.5 percent average, about 3.4 percent; half the difference between average variance (12.8) and covariance (5.3) is 3.75 percent, which they round to ``about 3.5\%'' (pp.~24--25).
-\end{itemize}
-
-\qffield{Conditions} The swap and rebalancing figures are illustrative; index rules are those in the 2026 methodologies.
-
-\qffield{Pitfalls} Comparing indices without matching the return variant. Treating the diversification return as a risk premium (Erb and Harvey, p.~25). Ignoring counterparty risk in swaps.
-
-\qffield{See also} \hyperref[def:commodity-indices-risk-return]{index record}; \hyperref[meth:commodity-futures-return-components]{return components}; \hyperref[mech:etf-creation-redemption]{ETF creation}.
 
 \end{qfmethod}

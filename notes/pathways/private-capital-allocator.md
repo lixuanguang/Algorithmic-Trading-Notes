@@ -36,13 +36,15 @@ Partly checked 2026-10-20, draft; human review outstanding. See [record](../sour
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
 
-- `pe-performance-measurement` (Private-market performance measurement and replication): no pathway note; related existing material in `private-capital-allocator/alternative-investment-structures`, `private-capital-allocator/private-market-programmes`, not reviewed as a complete treatment of the pathway.
-- `private-equity-vc` (Private equity and venture security design): no pathway note; related existing material in `private-capital-allocator/private-capital-foundations`, `private-capital-allocator/private-equity-strategies`, not reviewed as a complete treatment of the pathway.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `pe-performance-measurement`, `private-equity-vc`, `private-credit-workouts`, `fund-liquidity`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
+- `pe-performance-measurement` (Alternative-fund structures, fees and private-market performance measurement): no pathway note; related existing material in `private-capital-allocator/alternative-investment-structures`, `private-capital-allocator/private-market-programmes`, not reviewed as a complete treatment of the pathway. Broadened by the guide revision of 22 October 2026 (`8302467`) to cover alternative-fund structures and fees; its entries are in `private-capital-allocator/alternative-investment-structures`, `private-capital-allocator/private-market-programmes`.
+- `private-equity-vc` (Private equity and venture security design): no pathway note; related existing material in `private-capital-allocator/private-equity-strategies`, not reviewed as a complete treatment of the pathway.
 - `private-credit-workouts` (Private credit and workouts): no pathway note; related existing material in `private-capital-allocator/private-debt-special-situations`, not reviewed as a complete treatment of the pathway.
 - `trade-receivables` (Trade finance and purchased receivables): content gap; no entry written.
 - `royalty-rights` (Music and pharmaceutical royalties): content gap; no entry written.
 - `litigation-finance-claims` (Litigation claims and legal-finance cash flows): content gap; no entry written.
-- `fund-liquidity` (Private-fund liquidity and evergreen vehicles): no pathway note; related existing material in `private-capital-allocator/private-market-programmes`, not reviewed as a complete treatment of the pathway.
+- `fund-liquidity` (Private-fund liquidity and evergreen vehicles): no pathway note; related existing material in `private-capital-allocator/private-fund-structures`, not reviewed as a complete treatment of the pathway.
 
 ## Entry backlog
 

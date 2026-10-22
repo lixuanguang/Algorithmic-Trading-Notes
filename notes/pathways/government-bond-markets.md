@@ -24,13 +24,15 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Sovereign credit* (`sovereign-credit.tex`): `def:sovereign-credit-defaults`, `meth:sovereign-credit-analysis`.
+- `sovereign-municipal` (Sovereign default, restructuring and local-currency debt; `sovereign-credit.tex`): `def:sovereign-credit-defaults`, `meth:sovereign-credit-analysis`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material, partial treatment or content gap as recorded by the content migration of 22 October 2026 and its closeout review. A pathway with related material but no note has not been opened. A partial treatment names the existing entries that treat some of the pathway's subtopics, wherever they sit, and the subtopics with nothing written.
+
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `sovereign-municipal`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
 
 - `treasury-market-functioning` (Treasury market structure, basis trades and dealer capacity): no pathway note; partial treatment in existing entries, not reviewed as complete: Treasury trading protocols, interdealer venues and dealer risk-bearing (`def:fixed-income-market-structure` in `execution-trading-costs/fixed-income-trading`); Treasury futures delivery, cheapest-to-deliver and futures below the bond (`conv:government-bond-futures` in `execution-trading-costs/futures-execution`). Not written: basis-trade financing and leverage; dealer balance-sheet capacity and stress episodes.
 - `treasury-issuance-demand` (Government debt issuance, auctions and investor demand): no pathway note; partial treatment in existing entries, not reviewed as complete: Treasury instruments and single-price auctions on a pre-announced calendar (`def:government-agency-supranational-funding` in `rates-credit-mortgages/bond-instruments-markets`); yield effects of central-bank purchases (`def:central-bank-policy-framework` in `rates-credit-mortgages/monetary-policy-curves`). Not written: auction outcomes and investor demand; supply effects of issuance on yields.

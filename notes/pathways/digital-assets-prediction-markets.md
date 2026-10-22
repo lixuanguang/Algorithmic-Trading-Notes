@@ -26,21 +26,24 @@ Not attempted.
 
 ## Entries
 
-By subsection, in compiled order:
+By pathway, in compiled order: each printed pathway is a numbered section of the chapter, and a pathway with several topic files prints each as a subsection.
 
-- *Distributed ledgers and their financial applications* (`distributed-ledgers.tex`): `def:distributed-ledger-applications`.
-- *Stablecoins: runs and international standards* (`stablecoins.tex`): `ev:stablecoin-runs`, `rule:stablecoin-standards`.
-- *Crypto venues, perpetuals and trading risk* (`crypto-venues-perpetuals.tex`): `def:crypto-venue-instrument-structure`, `mech:perpetual-funding`, `def:crypto-trading-risk-layers`, `mech:crypto-auto-deleveraging`.
+- `stablecoin-tokenisation` (Distributed ledgers, stablecoins and tokenised bonds; `distributed-ledgers.tex`): `def:distributed-ledger-applications`.
+- `crypto-perpetuals` (Crypto perpetuals and cross-venue basis; `crypto-venues-perpetuals.tex`): `def:crypto-venue-instrument-structure`, `mech:perpetual-funding`, `def:crypto-trading-risk-layers`.
+- `stablecoin-pegs-runs` (Stablecoin pegs, runs and reserve assets; `stablecoins.tex`): `ev:stablecoin-runs`, `rule:stablecoin-standards`.
+- `crypto-leverage-liquidations` (Crypto leverage, liquidations and centralised lenders; `crypto-auto-deleveraging.tex`): `mech:crypto-auto-deleveraging`.
 
 ## Specialist pathways
 
 The guide's pathways for this section, in its order, with the existing material or the content gap as recorded by the content migration of 22 October 2026. A pathway with related material but no note has not been opened.
 
-- `stablecoin-tokenisation` (Stablecoins and tokenised bonds): no pathway note; related existing material in `digital-assets-prediction-markets/stablecoins`, `digital-assets-prediction-markets/distributed-ledgers`, not reviewed as a complete treatment of the pathway.
+Printed as numbered sections of the chapter, under the guide pinned at `8302467` (`subsection_alignment_plan.md`): `stablecoin-tokenisation`, `crypto-perpetuals`, `stablecoin-pegs-runs`, `crypto-leverage-liquidations`. A pathway without entries of its own is not printed; the related material and partial treatments named below are printed under the pathway or section that owns them.
+
+- `stablecoin-tokenisation` (Distributed ledgers, stablecoins and tokenised bonds): no pathway note; related existing material in `digital-assets-prediction-markets/stablecoins`, `digital-assets-prediction-markets/distributed-ledgers`, not reviewed as a complete treatment of the pathway. Broadened by the guide revision of 22 October 2026 (`8302467`) to cover distributed ledgers; its entries are in `digital-assets-prediction-markets/distributed-ledgers`.
 - `crypto-perpetuals` (Crypto perpetuals and cross-venue basis): pathway note [crypto-perpetuals.md](crypto-perpetuals.md), 7 entries listed, in `crypto-spot-markets/digital-asset-investing`, `crypto-trading-strategies/crypto-carry`, `digital-assets-prediction-markets/crypto-venues-perpetuals`, `digital-assets-prediction-markets/distributed-ledgers`, `onchain-protocols/amm-lending`.
 - `stablecoin-pegs-runs` (Stablecoin pegs, runs and reserve assets): pathway note [stablecoin-pegs-runs.md](stablecoin-pegs-runs.md), 2 entries listed, in `digital-assets-prediction-markets/stablecoins`.
 - `crypto-options-numeraire` (Crypto options, inverse payoffs and margin): no pathway note; related existing material in `digital-assets-prediction-markets/crypto-venues-perpetuals`, not reviewed as a complete treatment of the pathway.
-- `crypto-leverage-liquidations` (Crypto leverage, liquidations and centralised lenders): pathway note [crypto-leverage-liquidations.md](crypto-leverage-liquidations.md), 2 entries listed, in `digital-assets-prediction-markets/crypto-venues-perpetuals`, `portfolio-risk-financing/crowding-contagion`.
+- `crypto-leverage-liquidations` (Crypto leverage, liquidations and centralised lenders): pathway note [crypto-leverage-liquidations.md](crypto-leverage-liquidations.md), 2 entries listed, in `digital-assets-prediction-markets/crypto-auto-deleveraging`, `portfolio-risk-financing/crowding-contagion`.
 - `crypto-option-markets` (Crypto option markets: implied volatility, smiles and risk premia): content gap; no entry written.
 
 ## Entry backlog

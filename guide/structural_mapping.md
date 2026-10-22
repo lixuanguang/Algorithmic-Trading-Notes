@@ -34,7 +34,7 @@ How the catalogue is organised, how the learning guide draws on it, and the rule
 
 ## Learning guide
 
-The guide is organised by learning order, not by catalogue chapter: 8 parts, 49 overview sections and 222 specialist pathways, defined in [learning_routes.json](learning_routes.json). The main catalogue sources of each part's required readings are:
+The guide is organised by learning order, not by catalogue chapter: 8 parts, 49 overview sections and 227 specialist pathways, defined in [learning_routes.json](learning_routes.json). The main catalogue sources of each part's required readings are:
 
 | Guide part | Sections | Pathways | Main catalogue chapters |
 | --- | ---: | ---: | --- |

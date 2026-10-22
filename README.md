@@ -1,12 +1,12 @@
 # All Things on Quantitative Trading
 
-A source-based reference on quantitative trading and the financial analysis behind it. Its eight Parts and their chapters follow the `\qfpart` declarations in `compendium/compendium.tex`, which match the Parts and sections of the institutional learning guide pinned in `guide/`; the guide also supplies the reading catalogue and specialist pathways. The compiled document is [compendium/compendium.pdf](compendium/compendium.pdf).
+A source-based reference on quantitative trading and the financial analysis behind it. Its eight Parts and their chapters follow the `\qfpart` declarations in `compendium/compendium.tex`, which match the Parts and sections of the institutional learning guide pinned in `guide/`; within each chapter, the numbered sections are the guide's specialist pathways that have entries. The guide also supplies the reading catalogue. The compiled document is [compendium/compendium.pdf](compendium/compendium.pdf).
 
 ## Layout
 
 | Location | Purpose |
 |---|---|
-| `compendium/` | LaTeX reference: one Part per `\qfpart` declaration in the master and one chapter per populated section |
+| `compendium/` | LaTeX reference: one Part per `\qfpart` declaration in the master, one chapter per populated section and one section per specialist pathway with entries |
 | `compendium/preamble.tex` | Packages, typography, list spacing and mathematical macros |
 | `compendium/house.tex` | Entry environments, citation commands and source references |
 | `compendium/front/` | Notation and sources outside the guide catalogue |
@@ -19,7 +19,7 @@ A source-based reference on quantitative trading and the financial analysis behi
 | `notes/coverage/` | Subject topics and learning objectives, their coverage and prerequisites, and the crosswalk from external topic outlines |
 | `notes/log.md` | Reading progress and unresolved questions |
 | `notes/tooling/` | Standalone calculator, Python, editor and research-tool notes |
-| `tools/check_compendium.py` | Entry, citation, label and pathway-link checks; Part and section agreement with the guide; single inclusion of every topic file |
+| `tools/check_compendium.py` | Entry, citation, label and pathway-link checks; Part, section and specialist-pathway agreement with the guide; single inclusion of every topic file |
 | `tools/check_coverage.py` | Objective and crosswalk structure, coverage report and optional outline hash check |
 
 ## Build and check
@@ -61,7 +61,7 @@ Name files and functions for their subject or operation. Store figures beside th
 
 The `\qfpart{part-key}{Title}{section-key, ...}` declarations in `compendium/compendium.tex` are the single declaration of the compendium's Parts, their sections and the reading order. `make check-compendium` compares them directly with `learning_parts` in `guide/learning_routes.json`: Part keys, titles and order, and each Part's sections and their order, must be the guide's. A chapter folder and its overview note `notes/pathways/<key>.md` must use a declared key; a specialist pathway note may instead use a pathway key of the pinned guide. A section prints once `<key>/section.tex` exists and inputs its topic files, and a Part prints its heading only when one of its sections does; a declared section without content prints nothing. A populated section needs its overview note. To add a subject, write its wrapper, first topic file and overview note together; the key is already declared by the guide.
 
-Within a chapter, `\section` headings group related topic files and `\subsection` headings divide a group; a topic file that forms a group by itself keeps its own `\section`. Every topic file is input exactly once. Entries keep their labels when they move; chapter and entry numbers may change.
+Within a chapter, each section is one of the guide's specialist pathways for that section, opened in the wrapper by `\qfpathway{pathway-key}{Name}` with the guide's name and in the guide's `specialist_order`. A pathway prints only when it has entries of its own; one without them is omitted, and material it shares with a printed pathway is cross-referenced rather than repeated. Topic files below a pathway start with `\subsection`, except that the only topic file of a pathway has no heading of its own; `\subsubsection` divides a topic. Every topic file, and so every entry, is input exactly once, under the pathway whose outcome covers it; a chapter may open with brief prose in its wrapper, but holds no unnumbered collection of entries. Entries keep their labels when they move; chapter and entry numbers may change. The mapping of entries to pathways and its exceptions are recorded in [subsection_alignment_plan.md](subsection_alignment_plan.md).
 
 The guide's `retired_overviews` keep the keys of divided overviews, `common-toolkit` and `empirical-causal-research`. They are not compendium sections; their notes in `notes/pathways/` are bridges that name each successor section and keep the earlier history.
 
@@ -69,4 +69,4 @@ The guide's `retired_overviews` keep the keys of divided overviews, `common-tool
 
 ## Update the guide
 
-`guide/` is a plain copy of the tracked files of the `institutional_reading_list` repository, taken at commit `6c7734ed49f1c242908b86a57c4f5d1f0e349ec0` (the eight-Part edition of 22 October 2026); it is no longer a submodule. The previous copy, from commit `343d145909ba5384202b50604bf5ebe7e5b6ed86`, is the edition that notes and review records dated before 22 October 2026 refer to. To update it, export the committed files of a newer commit (`git -C <reading-list> archive <commit>`, not its working tree), replace the contents of `guide/` with them, check that `git write-tree --prefix=guide/` after staging equals the commit's tree, record the commit here and in the commit message, and run `make check`. Compare catalogue and pathway keys using the guide's maintenance instructions before committing; do not edit the copied files here. Local reading PDFs and downloaded research inputs are ignored by Git.
+`guide/` is a plain copy of the tracked files of the `institutional_reading_list` repository, taken at commit `8302467bc5acfedba55c7e79b311cfb2154f433c` (local branch `codex/compendium-pathway-coverage`, 22 October 2026: 227 pathways, five added and eleven broadened so that every compendium subject has a numbered pathway); it is no longer a submodule. The previous copies were `6c7734ed49f1c242908b86a57c4f5d1f0e349ec0` (the eight-Part edition of 22 October 2026, 222 pathways) and `343d145909ba5384202b50604bf5ebe7e5b6ed86`, the edition that notes and review records dated before 22 October 2026 refer to. To update it, export the committed files of a newer commit (`git -C <reading-list> archive <commit>`, not its working tree), replace the contents of `guide/` with them, check that `git write-tree --prefix=guide/` after staging equals the commit's tree, record the commit here and in the commit message, and run `make check`. Compare catalogue and pathway keys using the guide's maintenance instructions before committing; do not edit the copied files here. Local reading PDFs and downloaded research inputs are ignored by Git.

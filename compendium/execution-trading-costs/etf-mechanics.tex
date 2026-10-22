@@ -1,5 +1,3 @@
-\subsection{Exchange-traded funds and index products}
-
 \begin{qfmechanism}[ETF creation and redemption: authorised participants, in-kind and cash baskets, and arbitrage that tends to keep price near value without guaranteeing it]\label{mech:etf-creation-redemption}
 \qffield{Statement} An open-end mutual fund transacts with its investors at the end of the day at net asset value (NAV), and buys or sells the underlying assets itself when flows do not net. An exchange-traded fund (ETF) also holds a portfolio but, in the authors' description, ``does not interact with capital markets directly'' (p.~4): secondary trading and in-kind creations and redemptions leave the fund's dealings in the underlying to others, while cash creations and redemptions can require the fund to trade (Practice). Its sponsor contracts with \emph{authorised participants} (APs), typically large financial institutions or specialised market makers, who can create or redeem the fund's shares in large blocks, \emph{creation units}, in exchange for a basket of securities and/or cash \citep[NBER working paper version, pp.~4--5]{ex-lettau-madhavan-2018}. Two markets are therefore distinct:
 \begin{itemize}
@@ -128,3 +126,18 @@ Holding-period costs (the expense ratio) grow with time; trading costs are paid 
 \qffield{See also} \hyperref[meth:etf-trading-tracking-premiums]{trading and premiums}; \hyperref[mech:etf-creation-redemption]{creation and redemption}; \hyperref[meth:commodity-swaps-index-construction]{commodity index products}.
 
 \end{qfmethod}
+
+\begin{qfevidence}[Index reconstitution: price pressure from forced index-fund trading and its partial reversal]\label{ev:index-reconstitution-impact}
+\qffield{Statement} Index funds that replicate the Russell indexes rebalance when the indexes are reconstituted each June, buying additions and selling deletions near the same date. In the six years 1996--2001, Russell~3000 additions outperformed deletions by an average of 15 percent in June and underperformed them by 5 percent in July. Harris reports this from Madhavan (2002) \citep[chap.~``Index and Portfolio Markets'', box, p.~487]{alpha-harris}.
+
+\qffield{Conditions} Russell reconstitutes at the close of the last trading day in June on capitalisations as of the end of May. The impacts are large because the stocks affected are small \citep[same box]{alpha-harris}. Harris notes that changes to Standard \& Poor's indexes have similar effects (same box).
+
+\qffield{Practice} The July reversal shows that part of the June move is transitory. Harris offers three explanations for the remainder: investors may value index membership, perhaps for liquidity; a momentum anomaly in small stocks; or reversal in later months \citep[same box]{alpha-harris}. The event is predictable demand that is uninformed about the firm, which makes it a natural setting for separating price pressure from information (Interpretation).
+
+\qffield{Pitfalls} Changed ownership, attention or information are not Harris's explanations of the residual, and the box gives no test between his. That the effect is largest when forced demand is large relative to liquidity rests only on Harris's remark that the stocks are small; the box gives no measure of demand relative to liquidity. The figures are averages over 1996--2001 and may not hold under later practice.
+
+\qffield{See also} \hyperref[def:price-impact]{price impact} (transient and permanent components); \hyperref[meth:post-execution-impact-profile]{post-execution impact profile}.
+
+\qffield{Further reading} Madhavan, ``The Russell Reconstitution Effect'' (2002), cited by Harris.
+
+\end{qfevidence}

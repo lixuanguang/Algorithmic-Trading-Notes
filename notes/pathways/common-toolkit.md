@@ -32,7 +32,7 @@ Written in the first foundation slice (2026-10-18):
 
 All three partly checked 2026-10-18, draft; numerical examples in `notes/artefacts/time-value-returns/time-value-return-checks.py`; human review outstanding.
 
-Corrections of 2026-10-18 (plan sec. 10.2): `res:cash-flow-additivity` now shows the dated cash flows of forward lending and borrowing and separates them from refinancing at a later, unknown rate; `def:required-return-components` separates the realised (ex post) Fisher identity and the ex ante relation (Mankiw, chap. 5, sec. 5-3) from the expected real return under uncertain inflation; `meth:instrument-present-value` distinguishes nominal annual yields compounded semiannually from effective annual yields.
+Corrections of 2026-10-18: `res:cash-flow-additivity` now shows the dated cash flows of forward lending and borrowing and separates them from refinancing at a later, unknown rate; `def:required-return-components` separates the realised (ex post) Fisher identity and the ex ante relation (Mankiw, chap. 5, sec. 5-3) from the expected real return under uncertain inflation; `meth:instrument-present-value` distinguishes nominal annual yields compounded semiannually from effective annual yields.
 
 Written in the statistics slice (2026-10-18):
 
@@ -46,7 +46,7 @@ Written in the statistics slice (2026-10-18):
 
 All seven partly checked 2026-10-18, draft; examples in `notes/artefacts/descriptive-probability/statistics-probability-checks.py`; human review outstanding.
 
-Corrections of 2026-10-18 (plan sec. 11.2): sampling assumptions for the unbiased sample variance; kurtosis read as tail and outlier sensitivity, not central mass; finite sample moments distinguished from nonexistent population moments, with the Student-t thresholds for real degrees of freedom; GBM drift against mean log return; conditional independence in the Bayesian example; the check-script path removed from the printed text.
+Corrections of 2026-10-18: sampling assumptions for the unbiased sample variance; kurtosis read as tail and outlier sensitivity, not central mass; finite sample moments distinguished from nonexistent population moments, with the Student-t thresholds for real degrees of freedom; GBM drift against mean log return; conditional independence in the Bayesian example; the check-script path removed from the printed text.
 
 Written in the inference and simulation slice (2026-10-18):
 
@@ -59,7 +59,7 @@ Written in the inference and simulation slice (2026-10-18):
 
 All six partly checked 2026-10-18, draft; examples in `notes/artefacts/inference-simulation/inference-simulation-checks.py`; human review outstanding.
 
-Corrections of 2026-10-18 (plan sec. 13.2): `meth:historical-simulation` now uses the lower loss quantile and exact-tail-mass ES of `meth:var-es-estimation-methods` for both weightings (VaR 8,400 in both; ES 15,700 equal-weighted and about 14,000 age-weighted), with Hull's equal-weight rank attributed as an alternative; `meth:hypothesis-testing` states the independent-samples condition of the variance-ratio F test and uses an independently drawn second sample, with a correlated-sample counterexample.
+Corrections of 2026-10-18: `meth:historical-simulation` now uses the lower loss quantile and exact-tail-mass ES of `meth:var-es-estimation-methods` for both weightings (VaR 8,400 in both; ES 15,700 equal-weighted and about 14,000 age-weighted), with Hull's equal-weight rank attributed as an alternative; `meth:hypothesis-testing` states the independent-samples condition of the variance-ratio F test and uses an independently drawn second sample, with a correlated-sample counterexample.
 
 Written in the regression slice (2026-10-18):
 
@@ -69,7 +69,7 @@ Written in the regression slice (2026-10-18):
 
 All three partly checked 2026-10-18, draft; examples in `notes/artefacts/linear-regression/regression-checks.py`; human review outstanding. Multiple regression, misspecification, time-series regression and the CAPM regression are not written; `topic:linear-regression` is therefore only partly covered.
 
-Correction pass of 2026-10-18 (plan sec. 13.5): `meth:simple-regression-estimation` states when the estimates exist (finite data, $S_{xx}>0$); `meth:regression-diagnostics-anova` separates the assumptions for computing, unbiasedness, conventional variances and exact $t$/$F$ inference, requires $n>2$, and restricts $F=t^2$ to the zero-slope null; `meth:regression-prediction-functional-form` treats the back-transformed log prediction as a geometric mean (a median only under a median-zero log error), qualifies Duan's consistency statement and corrects the log--log percentage rule; the ES pitfall of `meth:historical-simulation` now matches the canonical VaR of 8,400.
+Correction pass of 2026-10-18: `meth:simple-regression-estimation` states when the estimates exist (finite data, $S_{xx}>0$); `meth:regression-diagnostics-anova` separates the assumptions for computing, unbiasedness, conventional variances and exact $t$/$F$ inference, requires $n>2$, and restricts $F=t^2$ to the zero-slope null; `meth:regression-prediction-functional-form` treats the back-transformed log prediction as a geometric mean (a median only under a median-zero log error), qualifies Duan's consistency statement and corrects the log--log percentage rule; the ES pitfall of `meth:historical-simulation` now matches the canonical VaR of 8,400.
 
 Credit, time-series and valuation batch (2026-10-20), on annual US data for 1928-2025 and seeded simulations:
 

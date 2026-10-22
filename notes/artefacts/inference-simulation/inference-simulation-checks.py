@@ -137,7 +137,7 @@ ok(
     abs(type1 - 0.05) <= 4 * math.sqrt(0.05 * 0.95 / R),
     f"{type1:.4f}",
 )
-# Correction of 2026-10-18 (plan sec. 13.2): the F test needs independent samples. The second sample is drawn
+# Correction of 2026-10-18: the F test needs independent samples. The second sample is drawn
 # independently of x from N(0, 0.5^2), n = 15, first draw of seed SEED + 7, rounded to one decimal.
 y = np.round(np.random.default_rng(SEED + 7).normal(0.0, 0.5, 15), 1)
 ok(
@@ -461,7 +461,7 @@ ok(
 )
 
 # Library gap-filling Batch L1 (2026-10-21), extension of meth:monte-carlo-simulation. Acceptance fixed in
-# implementation_plan_v2.md Section 6, P2 before running: the same 100,000 draws, the discounted terminal
+# before running: the same 100,000 draws, the discounted terminal
 # price as control (known mean S0), variance reduced by a factor above 2, estimate within 3 s.e. of 7.1281.
 print("== control variate with an estimated coefficient")
 ctrl = math.exp(-r * T) * ST

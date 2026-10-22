@@ -1,8 +1,7 @@
 """Library gap-filling Batch L1, package P5 (2026-10-21): the worked examples of res:kelly-growth-optimal-fraction.
 
 Continuous model: constant mu = 8 percent, r = 2 percent, sigma = 20 percent, a constant fraction f of wealth
-in the risky asset and the rest in cash, no costs or leverage limits. Acceptance (implementation_plan_v2.md
-Section 6, P5, as corrected before any run):
+in the risky asset and the rest in cash, no costs or leverage limits. Acceptance, fixed before the first run:
   - the continuous identity is tested with its matching model, exact continuous-time log-wealth sampling
     (200,000 draws over 10 years, seed 20261041);
   - daily rebalancing is tested separately against its expectation, computed by 80-point Gauss-Hermite

@@ -1,8 +1,7 @@
 """Library gap-filling Batch L2, package P9 (2026-10-21): the worked examples of
 meth:extreme-value-tail-estimation.
 
-Estimators fixed before the first run (implementation_plan_v2.md Section 7, P9, as corrected after the L2 audit and at
-the L2 freeze): upper tail of the loss; threshold at the empirical 95th percentile with k = n/20 exceedances; Hill
+Estimators fixed before the first run: upper tail of the loss; threshold at the empirical 95th percentile with k = n/20 exceedances; Hill
 H_k = (1/k) sum_{i=1..k} ln X_(n-i+1) - ln X_(n-k), the threshold being the (k+1)-th largest observation; the GPD
 fitted by maximum likelihood to the k excesses; VaR and ES at 99 and 99.5 percent by the peaks-over-threshold formulas
 (Hull, RMFI 6th ed., eqs. (12.9)-(12.10); McNeil, Frey and Embrechts, QRM 2005, eqs. (7.18)-(7.19)).

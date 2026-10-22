@@ -15,8 +15,8 @@ composite Gauss-Legendre panels doubled until the value changes by less than 1e-
 names, 50,000 scenarios, seed 20261081, fixed before the first run). Part 3 builds a synthetic "market" from an equal
 mixture of Gaussian copulas with correlations 0.1 and 0.6 and reads off compound and base correlations.
 
-Criteria as frozen in implementation_plan_v2.md Section 7, P8 (with the L2 freeze correction: the finite-versus-large
-pool gaps at 250, 500 and 1,000 names are reported, not tested).
+Criteria were fixed before the first run. The finite-versus-large-pool gaps at 250, 500 and 1,000 names
+are reported, not tested, following the correction made before implementation.
 
 Run: uv run python default-correlation-checks.py   (numpy, scipy). Exits 1 on failure.
 """

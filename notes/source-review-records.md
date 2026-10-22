@@ -4,7 +4,7 @@ The record of each source review, from the format pilot of 14 October 2026 to th
 
 ## Pilot: `market-making-lob` format pilot, 14 October 2026
 
-A test of the entry format on the formal models named in the plan. Grossman–Miller and Kyle are supplemental to `market-making-lob`; its required readings (Glosten–Milgrom, Ho–Stoll, Guéant–Lehalle–Fernandez-Tapia, the queue and order-flow papers) are not covered, and the pathway is neither mastered nor consolidated.
+A test of the entry format on the formal models discussed below. Grossman–Miller and Kyle are supplemental to `market-making-lob`; its required readings (Glosten–Milgrom, Ho–Stoll, Guéant–Lehalle–Fernandez-Tapia, the queue and order-flow papers) are not covered, and the pathway is neither mastered nor consolidated.
 
 ### Source findings
 
@@ -3605,11 +3605,11 @@ Files changed: `compendium/multi-asset-systematic-macro/global-macro.tex` (Besse
 
 ## Coverage inventory and pilot integrations, 18 October 2026
 
-Batches 0 and 1 of `implementation_plan.readme`: an inventory of the supplied topic outlines mapped to neutral objectives, and two source-to-entry pilots. Source checking and editorial mapping, not study; no mastery is implied. Both pilot entries stay *draft*.
+Batches 0 and 1: an inventory of the supplied topic outlines mapped to neutral objectives, and two source-to-entry pilots. Source checking and editorial mapping, not study; no mastery is implied. Both pilot entries stay *draft*.
 
 ### Outline inventory
 
-- **Relocation.** The eight outline PDFs in the ignored `reading_materials/curriculum_cfa/` were hashed (SHA-256, all equal to the plan's audit values), copied to `reading_materials/outlines/outline-<first 12 hex digits>.pdf`, each copy re-hashed and matched before its original was deleted, and the emptied folder removed. No twelve-digit prefixes collide. Original names are kept only as provenance in `notes/coverage/outline-manifest.json`; no maintained file referred to the old folder.
+- **Relocation.** The eight outline PDFs in the ignored `reading_materials/curriculum_cfa/` were hashed (SHA-256, all equal to the initial audit values), copied to `reading_materials/outlines/outline-<first 12 hex digits>.pdf`, each copy re-hashed and matched before its original was deleted, and the emptied folder removed. No twelve-digit prefixes collide. Original names are kept only as provenance in `notes/coverage/outline-manifest.json`; no maintained file referred to the old folder.
 - **Extraction.** Text from every page with PyPDF2; modules parsed as the heading before each "able to" marker and items as checkbox lines. Split headings (the Standard VII title runs over two lines) and wrapped items were reconciled against the raw extracted page text. Counts: Level I 102 modules / 340 items; Level II 51 / 382; each 2027 Level III file 28 / 183 core plus 8 / 64, 7 / 34 and 7 / 27 pathway items; 2026 files 22 / 171 core plus the same pathway counts. The three core copies are identical within each year. Total in scope: 203 modules / 1,030 items, core counted once with all three occurrences kept.
 - **Mapping.** Each item was read and paraphrased in our own words with its command verbs; items were grouped into 424 objectives in 107 topics owned by guide or local chapters. 1,019 items map to one objective and 11 to two. Distinct standards and levels stay distinct items; identical wording across the seven standards maps to the same per-standard objectives at every level. Candidate existing entries were attached to 66 objectives by subject search; none was assessed, so those objectives stay `missing` with next action `review`.
 - **Edition comparison.** The 2026-to-2027 Level III differences are the ethics guidance split (six modules, twelve items added per file) and one semicolon in Private Debt; see `notes/coverage/source-changes.md`.
@@ -3643,11 +3643,9 @@ Searches (standard web search): "IAS 7 Statement of Cash Flows full text Commiss
 
 The mapping of 1,025 unreviewed items is an editorial grouping, not a coverage claim. The paraphrases were written from extracted text; the split ethics headings were checked against the raw page text, and no outline page images were inspected in this pass. Human review of both entries and of the objective grouping is outstanding.
 
-Files changed: see the Batch 0-1 progress section of `implementation_plan.readme`.
-
 ## Cash-flow slice and validator corrections, 18 October 2026
 
-The slice of `implementation_plan.readme`, Section 8.3: one section declaration, three coverage-validator corrections and the two partial cash-flow objectives. Source checking and tooling, not study. It supersedes the statements of the record above that the IFRS against US GAAP comparison is unsourced and that the indirect-to-direct conversion lacks prepaid and accrued items.
+This correction slice covers one section declaration, three coverage-validator corrections and the two partial cash-flow objectives. Source checking and tooling, not study. It supersedes the statements of the record above that the IFRS against US GAAP comparison is unsourced and that the indirect-to-direct conversion lacks prepaid and accrued items.
 
 ### Section declaration
 
@@ -3683,11 +3681,11 @@ Not accessible: the FASB Accounting Standards Codification (login) and DART's Co
 
 ### Checks and their limits
 
-Recorded in `implementation_plan.readme`, Section 8.4. The current Codification text was not read; the US GAAP paragraphs rest on the 2016 Update's reprint and a 2026 secondary quotation, and later amendments other than the pending finance-lease item were not traced. Human review of the entry is outstanding.
+The current Codification text was not read; the US GAAP paragraphs rest on the 2016 Update's reprint and a 2026 secondary quotation, and later amendments other than the pending finance-lease item were not traced. Human review of the entry is outstanding.
 
 ## Return measurement and present value: first foundation slice, 18 October 2026
 
-`implementation_plan.readme`, Section 9.3: the cash-tax correction of Section 9.2, the checker docstring warning, and `topic:return-measurement` and `topic:time-value-of-money` only. Source checking and writing, not study.
+This slice covers the cash-tax correction, the checker docstring warning, and `topic:return-measurement` and `topic:time-value-of-money` only. Source checking and writing, not study.
 
 ### Cash-tax correction
 
@@ -3722,7 +3720,7 @@ The textbook was read as web renderings with partly garbled equations, cited by 
 
 ## Time-value corrections and statistics slice, 18 October 2026
 
-`implementation_plan.readme`, Section 10: three corrections to the time-value entries, then `topic:descriptive-statistics` and `topic:probability-distributions` only. Source checking and writing, not study.
+This slice covers three corrections to the time-value entries, then `topic:descriptive-statistics` and `topic:probability-distributions` only. Source checking and writing, not study.
 
 ### Corrections
 
@@ -3764,7 +3762,7 @@ The outline does not name its "key distributions"; chi-square and $F$ are left t
 
 ## Statistics corrections and inference and simulation slice, 18 October 2026
 
-`implementation_plan.readme`, Section 11: five bounded corrections to the statistics entries, then `topic:statistical-inference` and `topic:simulation-methods` only. Source checking and writing, not study.
+This slice covers five bounded corrections to the statistics entries, then `topic:statistical-inference` and `topic:simulation-methods` only. Source checking and writing, not study.
 
 ### Environment
 
@@ -3828,7 +3826,7 @@ Results from the data-dependent empirical scripts were not reproduced under the 
 
 ## Regression slice and inference corrections, 18 October 2026
 
-Source checking and numerical verification for plan Section 13; not study and not human review. Three corrections were made first, then three foundation objectives of `topic:linear-regression` were written.
+Source checking and numerical verification for the linear-regression slice; not study and not human review. Three corrections were made first, then three foundation objectives of `topic:linear-regression` were written.
 
 ### Sources read
 
@@ -3871,7 +3869,7 @@ Outline review: `outline:7099c7688942:m010:b01`-`b03` were reviewed one by one a
 
 Examples are synthetic and make no claim about credit markets. Residual diagnostics on ten points are weak evidence; no formal normality, heteroscedasticity or serial-correlation test is taught. Multiple regression, misspecification, time-series regression and the CAPM regression are deferred. Course notes are a secondary, teaching source. Human review is outstanding.
 
-### Correction pass (plan sec. 13.5), 18 October 2026
+### Correction pass, 18 October 2026
 
 A bounded correction of the slice above, after an audit of the finished entries. The earlier record is left as written; where it says F = t^2, "median" for back-transformed log predictions, or ES "beyond" VaR leaving 18,600, read this subsection.
 
@@ -3909,13 +3907,13 @@ No seed, data or general framework was added.
 
 Outline re-review: `outline:7099c7688942:m010:b01`-`b03` were re-read against the outline page (PDF and printed p. 3) and the corrected entries. All three remain covered, and b02's "describe and compare the assumptions" is now met more fully. `b04` (CAPM) and the four Batch 3 objectives of `topic:linear-regression` were not promoted.
 
-### Second correction pass (plan sec. 13.6), 18 October 2026
+### Second correction pass, 18 October 2026
 
 Bounded audit findings on the corrected regression entries; earlier text above is left as written.
 
 - `meth:regression-diagnostics-anova`: the claim that least squares "remains consistent ... whether or not the errors are normal" omitted Duan's condition. Reread sec. 2, pp. 605-606: errors i.i.d. with mean 0 and variance sigma^2, and coefficients and predictions "unbiased and also consistent if the design matrix is asymptotically nondegenerate". The entry now quotes the condition and adds a counterexample, derived here: x_i = 2^-i is full rank in every sample but Sxx tends to 1/3, so Var(b1) = sigma^2/Sxx tends to 3 sigma^2. The check uses exact rational arithmetic against the closed form (1 - 4^-n)/3 - (1 - 2^-n)^2/n and numpy at n = 60; Sxx is 0.2335, 0.3083 and 0.3283 at n = 10, 40 and 200.
 - `meth:regression-prediction-functional-form`: the normal-theory consistency statement now refers to the same design and moment conditions. The smearing estimate's weak consistency is stated with Duan's Theorem 1 (sec. 4, p. 607, read in full for the first time): h continuously differentiable, an intercept, X'X/n tending to a positive-definite matrix, and a moment condition that for logs is E exp(2 eps) < infinity. Duan calls condition (iii) "much stronger than we need".
-- Plan opening: `objective:estimate-capm-regression` belongs to `topic:asset-pricing-factor-models` (as `objectives.json` already records), not `topic:linear-regression`.
+- Topic ownership: `objective:estimate-capm-regression` belongs to `topic:asset-pricing-factor-models` (as `objectives.json` already records), not `topic:linear-regression`.
 - `notes/readings/linear-regression-lectures.md`: the Gamma(N-K, sigma^2) statement follows StatLect's degrees-of-freedom and mean parameterisation ("Gamma distribution" lecture, Caveat and Definition, live page read 2026-10-18). The note now names that convention and gives the shape/scale equivalent; the statement itself was not wrong.
 
 ## Portfolio moments and diversification slice, 18 October 2026
@@ -4079,7 +4077,7 @@ All 12 objectives are `covered`; this is editorial coverage, not mastery. Totals
 
 ## Correction pass on PR #22, 18 October 2026
 
-A fixes-only pass on `907e84b`. This is not study and not human review; plan Section 17 has the details.
+A fixes-only pass on `907e84b`. This is not study and not human review.
 
 - `meth:efficient-frontier`: removed the claim that constrained solutions necessarily have zero weights. The entry now states that an unconstrained optimum meeting the limits stays optimal, that binding limits give boundary solutions, and that no single unrestricted formula covers active-set changes. Markowitz p. 87, n. 10 is reused. The added assertion confirms that the 5 and 6 percent long-only optima equal the strictly positive unconstrained weights, and that 7.5 percent does not.
 - `meth:required-return-on-equity`: a historical premium with the current 10-year yield is described as a legitimate CAPM estimate with its own assumption and estimation error:
@@ -4096,7 +4094,7 @@ A fixes-only pass on `907e84b`. This is not study and not human review; plan Sec
 
 Thirty objectives in nine topics: market index construction (2), the investment management process (3), investment policy planning (4), behavioural finance (2), the risk management framework (2), active management (3), performance evaluation (7), manager selection (3) and performance presentation standards (4). Branch `codex/performance-management-20261018`, stacked on PR #22 at `e82bb90`. Source checks and numerical verification; not study and not human review.
 
-### Source discovery (plan sec. 3.5)
+### Source discovery
 
 Searches on 2026-10-18 used subject terms (index divisor and corporate actions; fixed-income index rebalancing and return universes; transfer coefficient and fundamental law; behavioural finance survey; GIPS portability and verification; Rule 205-3 qualified client 2026; ESG integration definitions; investment company fact book 2026). The owner's local library was searched first and supplied the books. Sources read, with sections and identities in their reading notes:
 
@@ -4164,7 +4162,7 @@ All 30 objectives are `covered` (editorial coverage, not mastery). Totals: 71 of
 
 ## Correction pass on PR #23, 18 October 2026
 
-A fixes-only pass on `0b094ea`, after an external audit. This is not study and not human review; plan Section 18.1 has the scope. No objective was added and no coverage status or outline mapping changed.
+A fixes-only pass on `0b094ea`, after an external audit. This is not study and not human review. No objective was added and no coverage status or outline mapping changed.
 
 Sources re-read for this pass:
 - Sharpe (1992), "Style Analysis", from the hashed local copy (SHA-256 3f82fa85...6286, identical to the batch's) and the live author page: weights minimise the variance of the difference, and the objective "is not to minimize either the average value of this difference or the sum of the squared differences".
@@ -4185,7 +4183,7 @@ Checks: `investment-planning-checks.py` 41 (was 25), `manager-selection-checks.p
 
 Thirty objectives in six topics: bond features, issuance and markets (5), bond pricing and yields (4), the term structure (6), interest-rate risk (4), derivative instruments and markets (4) and forward, futures and swap valuation (7). Branch `codex/fixed-income-derivatives-20261018`, from `main` at `a1cf781` after PRs #22 and #23 were merged. Source checks and numerical verification; not study and not human review.
 
-### Source discovery (plan sec. 3.5)
+### Source discovery
 
 Retrieval on 2026-10-18 targeted these subjects (Treasury price formula with a simple-interest first period; Rule 15c6-1 T+1 compliance date; Trust Indenture Act exemption threshold; Rule 144A qualified institutional buyer; prospectus exemptions consolidated text; IFRS 13 matrix pricing; IBRD funding programme currency; commercial paper tier spread; empirical duration; key-rate duration; principal components of yield changes). The owner's local library was searched first and supplied the books. Sources read, with sections and identities in their reading notes:
 
@@ -4247,7 +4245,7 @@ All 30 objectives are `covered` (editorial coverage, not mastery). Totals: 101 o
 
 ## Correction pass on PR #24, 18 October 2026
 
-A fixes-only pass on `88bd29e`, after an external audit with six findings. This is not study and not human review; plan Section 19.1 has the scope. No objective was added; the seven objectives and ten outline items whose teaching changed were reassessed and stay covered.
+A fixes-only pass on `88bd29e`, after an external audit with six findings. This is not study and not human review. No objective was added; the seven objectives and ten outline items whose teaching changed were reassessed and stay covered.
 
 Sources read or re-read for this pass:
 - Hull (11th Global ed.), second local copy (SHA-256 36748bb6...ba8e): sec. 6.3, pp. 162-163 (Example 6.3: SOFR plus 200 basis points on \$100 million for three months from 16 December 2021, 0.25 accrual, quote 99.990); sec. 34.4, pp. 777-778 (the next equity cash flow "is L(E - E0)/E0").
@@ -4269,7 +4267,7 @@ Limits: Hull's Technical Note 19 was read from an archived copy; his errata were
 
 ## Second correction pass on PR #24, 19 October 2026
 
-A fixes-only pass on `642e29c`, after an audit that confirmed the six corrections of the first pass and found three further issues. This is not study and not human review; plan Section 19.2 has the scope. No objective was added.
+A fixes-only pass on `642e29c`, after an audit that confirmed the six corrections of the first pass and found three further issues. This is not study and not human review. No objective was added.
 
 Sources read for this pass (search date 2026-10-19):
 - IRS Publication 550 (2025) and Publication 1212 (revised December 2025), HTML editions supplied by the audit and downloaded in full (hashes in the reading notes `irs-pub-550-2025` and `irs-pub-1212-2025`). Read: Pub. 550, chap. 1, Tax-Exempt Interest and Market Discount Bonds; chap. 4, Discounted tax-exempt obligations and Tax-exempt state and local government bonds. Pub. 1212, Information for Owners of OID Debt Instruments, the constant-yield sections and Tax-Exempt Bonds and Coupons.
@@ -4289,9 +4287,9 @@ Limits: the holiday calendar is not modelled beyond the weekend rule. The repo c
 
 ## Derivatives, portfolio and execution batch, 19 October 2026
 
-Forty-five objectives in ten topics, the batch size of plan Section 17.4: short-term funding (1), arbitrage-free bond valuation (3), bonds with embedded options (5), option valuation (6), option strategies (4), derivative overlay strategies (4), market risk measurement (3), fixed-income portfolio management (7), equity portfolio management (7) and trade execution (5). Branch `codex/derivatives-portfolio-execution-20261019`, from `codex/fixed-income-derivatives-20261018` at `f320d35` (draft PR #24, unmerged). Source checks and numerical verification; not study and not human review.
+Forty-five objectives in ten topics: short-term funding (1), arbitrage-free bond valuation (3), bonds with embedded options (5), option valuation (6), option strategies (4), derivative overlay strategies (4), market risk measurement (3), fixed-income portfolio management (7), equity portfolio management (7) and trade execution (5). Branch `codex/derivatives-portfolio-execution-20261019`, from `codex/fixed-income-derivatives-20261018` at `f320d35` (draft PR #24, unmerged). Source checks and numerical verification; not study and not human review.
 
-### Source discovery (plan sec. 3.5)
+### Source discovery
 
 Retrieval on 2026-10-19 targeted these subjects: binomial rate-tree calibration, OAS and effective duration, capped and floored floaters, convertible valuation with default, put-call-forward parity, Black's model for caplets and swaptions, delta-hedging error, variance swaps, VaR methods and decomposition, RAROC, cash-flow matching and immunisation, Active Share, the transfer coefficient of long-short portfolios, statistical arbitrage, engagement and stewardship, effective spread and implementation shortfall, best-execution rules. The owner's local library was searched first. Sources read, with sections, copies and hashes in their reading notes:
 
@@ -4359,7 +4357,7 @@ All 45 objectives are `covered` (editorial coverage, not mastery). Totals: 146 o
 
 ## Correction pass on PR #25, 19 October 2026
 
-A fixes-only pass on `edbf4bf`, after an audit with seven findings. This is not study and not human review; plan Section 20.1 has the scope. No objective was added.
+A fixes-only pass on `edbf4bf`, after an audit with seven findings. This is not study and not human review. No objective was added.
 
 Sources read for this pass:
 - Tesla, Inc., prospectus supplement of 2 May 2019 for the 2.00% Convertible Senior Notes due 2024 (Rule 424(b)(5), Registration No. 333-231168), read through the fetching tool because the shell download returned HTTP 403 (`tesla-2024-notes-prospectus-2019`): The Offering and the named Description of Notes sections.
@@ -4383,9 +4381,9 @@ Limits: the prospectus was read through a fetching tool, without a local copy or
 
 ## Macro, allocation and currency batch, 19 October 2026
 
-Forty-five objectives in eleven topics, the batch size of plan Section 17.4: business cycles (2), fiscal policy (1), monetary policy (2), geopolitics and trade (3), exchange-rate mechanics (4), exchange-rate determination (5), economic growth (4), macro asset valuation (3), capital market expectations (6), strategic asset allocation (11) and currency management (4). Branch `codex/macro-allocation-currency-20261019`, from `codex/derivatives-portfolio-execution-20261019` at `bea4f8e` (draft PR #25 after its correction pass). Source checks and numerical verification; not study and not human review.
+Forty-five objectives in eleven topics: business cycles (2), fiscal policy (1), monetary policy (2), geopolitics and trade (3), exchange-rate mechanics (4), exchange-rate determination (5), economic growth (4), macro asset valuation (3), capital market expectations (6), strategic asset allocation (11) and currency management (4). Branch `codex/macro-allocation-currency-20261019`, from `codex/derivatives-portfolio-execution-20261019` at `bea4f8e` (draft PR #25 after its correction pass). Source checks and numerical verification; not study and not human review.
 
-### Source discovery (plan sec. 3.5)
+### Source discovery
 
 Retrieval on 2026-10-19 targeted these subjects: business-cycle phases and dating, credit and financial cycles, leading indicators, fiscal multipliers and debt dynamics, monetary transmission and the neutral rate, geopolitical risk measurement and fragmentation, tariff welfare, FX quotes, cross and forward rates, triangular arbitrage, forward valuation, parity conditions and fair value, carry, balance of payments and crises, growth accounting and convergence, the consumption-based real rate, breakevens and credit spreads over the cycle, capital market expectations, strategic asset allocation and currency hedging. The owner's local library was searched first. Sources read, with sections, copies and hashes in their reading notes:
 
@@ -5496,7 +5494,7 @@ not touch them. All remain covered: 424/424 objectives and 1,030/1,030 items. No
 
 **Close-out, 21 October 2026 (documentation only).** Branch at `f3d8791`, tree clean, draft PR #33 open. The
 independent re-audit found the four corrections above resolved and all checks passing; it flagged that the 165.12m
-September 2027 figure was qualified in the script and this record but not in the implementation plan, the PR
+September 2027 figure was qualified in the script and this record but not in the PR
 description or, explicitly enough, the compendium. Read: 26 CFR 1.430(j)-1(b)(4)(i)-(ii) and (c)(1), (c)(5)-(6) (eCFR
 current text, saved 2026-10-21). Paragraph (b)(4)(i) adjusts a payment made after the valuation date at the plan's
 effective rate; (b)(4)(ii) treats any part of a payment that settles a late required installment in two steps, first
@@ -5511,19 +5509,17 @@ changed: 424/424 objectives and 1,030/1,030 items, editorial coverage only.
 ## Library gap-filling, Batch L1, 21 October 2026
 
 **Starting state.** Branch `codex/library-gap-batch-l1`, created from `codex/alternatives-audit-20261020` at `2b89791`
-(draft PR #33 to `main` still open with that head, checked 2026-10-21); the only working-tree change was the untracked
-`implementation_plan_v2.md`. Coverage before: 424/424 objectives and 1,030/1,030 outline items, all covered. Scope:
-`implementation_plan_v2.md` Section 6, packages P1-P5, after the owner approved decisions E1 (ten new neutral
+(draft PR #33 to `main` still open with that head, checked 2026-10-21). Coverage before: 424/424 objectives and
+1,030/1,030 outline items, all covered. Scope: packages P1-P5, after the owner approved decisions E1 (ten new neutral
 objectives, a denominator change) and E2 (a ten-objective batch, below the standing 45-objective preference). Before
-implementation the plan was corrected for the external audit's findings R1-R4: P7's wrong-way-risk sign (plan only; P7
-is not implemented), a predetermined numerical criterion for P5's daily rebalancing, explicit P2-P3 example
+implementation the proposed numerical contracts were corrected for the external audit's findings R1-R4: P7's wrong-way-risk sign (P7 was not implemented in this batch), a predetermined numerical criterion for P5's daily rebalancing, explicit P2-P3 example
 conventions, and the count of existing entries touched (two substantive extensions, two cross-reference edits).
 
 **P1, stochastic calculus** (new topic file `compendium/common-toolkit/stochastic-calculus.tex`; new
 `topic:stochastic-calculus`).
 - Read: Hull, *OFOD* 11th Global ed., chap. 14 (pp. 316-337, all sections and the appendix), chap. 15 (pp. 339-342 and
   348-352), chap. 28 (pp. 670-677); Wilmott, *PWOQF* 2nd ed., chap. 4 (pp. 71-88) and chap. 10, secs. 10.11-10.12
-  (pp. 179-181). The plan listed Wilmott chaps. 3-6; the passages that teach the material are chap. 4 and sec. 10.11,
+  (pp. 179-181). Wilmott chaps. 3-6 were initial source candidates; the passages that teach the material are chap. 4 and sec. 10.11,
   which are the ones cited. Neither book names Feynman-Kac or writes the Radon-Nikodym density: Hull states
   Girsanov's theorem as a change of the market price of risk that leaves volatilities unchanged (p. 674), and Wilmott
   reaches the risk-neutral expectation through the backward Kolmogorov equation (pp. 179-180). The density
@@ -5551,7 +5547,7 @@ conventions, and the count of existing entries touched (two substantive extensio
   1242-1246) and chap. 80, secs. 80.1-80.6 (pp. 1263-1269). Not read: Longstaff and Schwartz (2001), Andersen and
   Broadie, Glasserman (`s6-glasserman`, not held; Further reading).
 - Discrepancies and conventions. Hull's explicit coefficients discount by $1/(1+r\Delta t)$, Wilmott's subtract
-  $r\delta t$ from the centre coefficient; the entry teaches Wilmott's form and the plan's monotonicity condition,
+  $r\delta t$ from the centre coefficient; the entry teaches Wilmott's form and the stated monotonicity condition,
   which adds the discount term to Wilmott's diffusion-only bound $\delta t\le1/(\sigma^2I^2)$. Hull's implicit American
   example projects after each linear solve (p. 502), which Wilmott calls "not good enough" for an implicit scheme
   (p. 1246); the entry says so. Neither source names the Rannacher start; it is an implementation choice in the
@@ -5569,13 +5565,13 @@ conventions, and the count of existing entries touched (two substantive extensio
   the explicit scheme with projection gives 6.0806. Bermudan put (50 dates): CRR 6.07853 (5,000 steps) and 6.07851
   (5,050), reference 6.07852; CN (600, 1,000) with projection only on the dates 6.07796 (within $5\times10^{-3}$); LSM
   out of sample 6.0386 (s.e. 0.0227), 0.040 below the reference, inside the predetermined $[-0.05,+3\text{ s.e.}]$
-  band; in sample 6.1248 (reported, not tested). Every acceptance range in the plan passed on the first complete
+  band; in sample 6.1248 (reported, not tested). Every predetermined acceptance range passed on the first complete
   run; one check of my own on Hull's printed coefficients first used a tolerance of $5\times10^{-4}$ and failed
   because of the truncated print; it now allows $10^{-3}$ and the reason is stated in the script.
 - Monte Carlo extension (`inference-simulation-checks.py`, same 100,000 draws as the existing call): estimated
   coefficient 0.5421, correlation 0.8746, variance reduction factor 4.25 (criterion above 2), estimate 7.1289 (s.e.
   0.0192) against 7.1281 (criterion 3 s.e.). A recorded coefficient of 0.5258 written before the run was wrong and
-  was replaced by the computed value; the plan's criteria were not changed. Euler bias on 400,000 common paths
+  was replaced by the computed value; the predetermined criteria were not changed. Euler bias on 400,000 common paths
   (seed 20261018 + 11): $-0.1254$, $-0.0536$, $-0.0250$ at 2, 4 and 8 steps (s.e. 0.0024 or less), ratios 2.34 and
   2.14 against the predetermined $[1.5,2.5]$.
 - Objectives: `objective:price-options-finite-differences`, `objective:value-early-exercise-least-squares-monte-carlo`,
@@ -5585,12 +5581,12 @@ conventions, and the count of existing entries touched (two substantive extensio
 **P3, digital, barrier and Asian options** (new topic file `compendium/volatility-options/exotic-options.tex`).
 - Read: Hull, chap. 26, secs. 26.9-26.10 and 26.13 (pp. 620-623, 626-627) and chap. 27, secs. 27.5-27.6 (pp.
   653-658); Wilmott, chap. 2 (pp. 43-44), chap. 7 (pp. 119-121), chap. 23 (pp. 385-386, 400-405) and chap. 25, secs.
-  25.9-25.11 (pp. 440-442, page image of p. 440 viewed). The plan listed Wilmott chaps. 22-23 and 25; the binary
+  25.9-25.11 (pp. 440-442, page image of p. 440 viewed). Wilmott chaps. 22-23 and 25 were initial source candidates; the binary
   material is in chaps. 2 and 7, which are the passages cited. Not read: Broadie, Glasserman and Kou (1997), Kemna
   and Vorst (1990); both are cited through Hull or Wilmott, and BGK is Further reading.
 - Discrepancy: Wilmott's summary of Kemna-Vorst (p. 440) replaces the dividend yield by $D+\sigma^2/6$; his own formula
   (p. 442) and the limit of the discrete geometric distribution give $\tfrac12(r+D+\sigma^2/6)$. The script shows the
-  p. 440 version gives 6.5181 against 5.9802. The plan's description of Hull's continuous-averaging form (sec. 26.13)
+  p. 440 version gives 6.5181 against 5.9802. The initial description of Hull's continuous-averaging form (sec. 26.13)
   was inaccurate: Hull gives moment matching for the arithmetic average and a footnote that the geometric average is
   lognormal, not the $\sigma/\sqrt3$ formula; the entry cites Wilmott for that formula.
 - Checks (`notes/artefacts/exotic-options/exotic-option-checks.py`, synthetic, $S_0=K=100$, $r=5\%$, $q=2\%$,
@@ -5603,7 +5599,7 @@ conventions, and the count of existing entries touched (two substantive extensio
   excluding $S_0$: discrete geometric 6.3903 against 6.3888 (s.e. 0.0309); arithmetic 6.6797 (s.e. 0.0321)
   uncontrolled and 6.6813 (s.e. 0.00107) controlled, variance-reduction factor 900 (criterion above 10), difference
   inside 3 uncontrolled s.e.; continuous geometric 5.9802.
-- Errors caught during development, all in checks of my own beyond the plan's criteria (the plan's criteria passed on
+- Errors caught during development, all in checks of my own beyond the predetermined criteria (those criteria passed on
   the first run): a vega check failed because `call` captured $\sigma$ as a default argument, so the vanilla term
   had no vega (coding error, fixed); the corrected down-and-out vega with $H<K$ is positive near the barrier (0.81 at
   $S=91$ against 14.80 at 130), so my expectation of a negative sign was wrong; the check now tests that it shrinks
@@ -5635,7 +5631,7 @@ also link in `meth:active-currency-strategies`).
 **P5, growth-optimal (Kelly) sizing** (new `res:kelly-growth-optimal-fraction` in
 `compendium/portfolio-construction-risk/portfolio-construction-models.tex`).
 - Read: Wilmott, chap. 17, sec. 17.5 (pp. 306-309) and chap. 66, sec. 66.4 (pp. 1057-1058, the growth-optimal
-  portfolio, which the plan did not list and which supplies the continuous-time fraction with a riskless asset and
+  portfolio, added during source review, which supplies the continuous-time fraction with a riskless asset and
   the log-utility link). Not read: Kelly (1956), Thorp (2008), Busseti, Ryu and Boyd (2016); no copy is in the
   library, so all three are Further reading only. The discrete-bet fraction $p-q/b$, the exact continuous identities
   and the estimation-error formula are derivations stated as Interpretation and checked.
@@ -5668,14 +5664,14 @@ also link in `meth:active-currency-strategies`).
   objectives have no outline items. Newly covered objectives: 10, a shortfall of 35 against the standing 45-objective
   preference (decision E2): the library-gap programme has about 20 verified objectives in total (Batch L1, the
   proposed Batch L2 and P10), L2 is frozen only after the C0 discovery task, and padding is not allowed. No backlog
-  item was created; the plan's Section 8 already holds B1-B11.
+  item was created.
 - Sources actually read: Hull, *OFOD* 11th Global ed. (chaps. 14, 15, 19, 21, 26, 27, 28) and Wilmott, *PWOQF* 2nd ed.
   (chaps. 2, 4, 7, 10, 12, 17, 23, 25, 47, 66, 77, 78, 80). No curriculum, workbook, CQF or CAIA text was used or cited.
 - Numerical scripts: five new (`stochastic-calculus-checks.py`, `numerical-pricing-checks.py`,
   `exotic-option-checks.py`, `volatility-mismatch-hedging-check.py`, `kelly-check.py`) and one extended
-  (`inference-simulation-checks.py`); `make examples` now runs 111 scripts. Every acceptance range in
-  `implementation_plan_v2.md` Section 6 (as corrected for R2 and R3 before running) passed without changing a seed or
-  tolerance. Failures during development were in checks of my own beyond the plan, recorded under P2 and P3.
+  (`inference-simulation-checks.py`); `make examples` now runs 111 scripts. Every predetermined acceptance range
+  (as corrected for R2 and R3 before running) passed without changing a seed or
+  tolerance. Failures during development were in checks of my own beyond those criteria, recorded under P2 and P3.
 - Repository checks (2026-10-21): `make source-check` passed (lock, lint, format, compendium checker 0 problems,
   coverage 0 problems, 36 tests, 111 scripts); `make pdf` built 430 pages with no overfull boxes and no undefined
   references or citations. One underfull box (badness 2277) in the first paragraph of
@@ -5690,8 +5686,7 @@ also link in `meth:active-currency-strategies`).
 **Post-implementation audit corrections, 21 October 2026.** An audit of the uncommitted Batch L1 (findings L1-F1 to
 L1-F5) reran the six affected scripts and both checkers, all passing, and found mathematical assumptions the checks did
 not cover. The counterexamples were reproduced before any edit, and the file hashes matched the audited state. The owner
-authorised the necessary changes to the affected examples and acceptance criteria (`implementation_plan_v2.md`, P3-P5
-and *Batch L1 post-implementation audit corrections*). No seed was changed and no tolerance loosened; the results
+authorised the necessary changes to the affected examples and acceptance criteria for P3-P5, as recorded below. No seed was changed and no tolerance loosened; the results
 recorded above are kept as the history of the first implementation.
 - L1-F1, `res:kelly-growth-optimal-fraction`. The daily-rebalancing check ran at $f=0.75$, 1.5 and 3 and called the
   80-node quadrature value exact. For $f>1$ the one-day gross factor $(1-f)e^{r\Delta t}+fR$ is nonpositive when
@@ -5729,13 +5724,12 @@ recorded above are kept as the history of the first implementation.
 
 **Starting state.** Branch `codex/library-gap-batch-l2`, created from `c688d54` on `codex/library-gap-batch-l1`
 (L1 commit `5e0578e`, then the C0 and corrected L2 proposal `c688d54`); the working tree was clean and no newer work
-was found. The 27 files of `5e0578e` were confirmed by count, and `implementation_plan_v2.md` at `5e0578e` has the
-audited SHA-256 `afb74d11…8e14`; the earlier audit's per-file manifest is not in the repository or the session
-scratchpad, so its byte match was not re-established here. Coverage before: 434/434 objectives and 1,030/1,030 outline
-items. Scope: `implementation_plan_v2.md` Section 7 as frozen by the owner on 2026-10-21 (decisions L2-D0 to L2-D6:
+was found. The 27 files of `5e0578e` were confirmed by count; the earlier audit's per-file manifest is not in the repository
+or the session scratchpad, so the per-file byte matches were not re-established here. Coverage before: 434/434 objectives and 1,030/1,030 outline
+items. Scope fixed by the owner on 2026-10-21 (decisions L2-D0 to L2-D6:
 local only; P6-P9 and P11a-c; the rate-tree CVA as an explicitly labelled original derivation; P10 deferred to L3; both
 optional Hull extensions; about 11 objectives). Before any L2 script was written, two criteria were corrected with the
-owner's authorisation and recorded in the plan ("Batch L2 freeze corrections"): P8's requirement that every tranche's
+owner's authorisation before implementation: P8's requirement that every tranche's
 finite-versus-large-pool gap shrink from 250 to 1,000 names (counterexample reproduced: in pool-loss units
 $6.2278\times10^{-6}$, $1.0587\times10^{-5}$, $5.0830\times10^{-6}$ for a 0.2-2 percent tranche) became a reported
 result; P9's mean fitted GPD shape over 500 samples became a diagnostic (reproduced: 0.237276, error 0.012724 against
@@ -5748,9 +5742,9 @@ work was done directly.
   697-702), chap. 31 (pp. 719-731), chap. 32, secs. 32.1-32.5 (pp. 732-741) and p. 747, chap. 33, secs. 33.1-33.2
   (pp. 755-764); Wilmott, *PWOQF* 2nd ed., chap. 30, secs. 30.6-30.8 (pp. 515-520), chap. 31 (pp. 525-531), chap. 37,
   secs. 37.1-37.13 (pp. 609-619); the Handbook (Fabozzi, 9th ed., SHA-256 `ece05686…b19f`), chap. 37, pp. 855-864.
-  The plan listed Hull chaps. 31-33 and Wilmott chaps. 30-31 and 37; Hull sec. 29.2 was added for backward-looking
+  Initial source candidates were Hull chaps. 31-33 and Wilmott chaps. 30-31 and 37; Hull sec. 29.2 was added for backward-looking
   rates. Not read: `gap-rates-backward-term-rates` (not held; Further reading).
-- Discrepancies. The plan asked whether Handbook chap. 37 (pp. 859-862) describes calibrating Monte Carlo paths by a
+- Discrepancies. The source review asked whether Handbook chap. 37 (pp. 859-862) describes calibrating Monte Carlo paths by a
   drift adjustment. It does not: it says that in an HJM model the curve is an input, so simulated paths reproduce zero
   prices "on average" (p. 863), and prefers a calibrated LIBOR market model for MBS. The extension of
   `mod:term-structure-models-simulation` therefore rests on Wilmott's yield-curve fitting (chap. 31, a time-dependent
@@ -5792,7 +5786,7 @@ work was done directly.
 `def:counterparty-exposure-measures`, `meth:credit-valuation-adjustment`, `def:wrong-way-risk`; `meth:risky-bond-cva`
 extended under decision L2-D3).
 - Read: Hull, *RMFI* 6th ed., chap. 18 (pp. 393-411); Hull, *OFOD*, chap. 9 (pp. 216-226) and sec. 24.7 (pp. 571-577;
-  the plan listed chap. 9, which points to chap. 24 for the calculation); Gregory, *The xVA Challenge*, 3rd ed. (Wiley
+  chap. 9 points to chap. 24 for the calculation); Gregory, *The xVA Challenge*, 3rd ed. (Wiley
   2015, ISBN 978-1-119-10941-9, owner's library, SHA-256 `b2b005d1…f394f`, printed = PDF $-27$; new source
   `gregory-xva-challenge-2015` and reading note), secs. 7.1.6-7.4.4, 11.2-11.3.7, 14.2.3-14.3.1, 14.6.3-14.6.5, 15.2.1
   and 17.1-17.4.2. Not read: Gregory chap. 16 (MVA, KVA; those terms rest on Hull and RMFI), chaps. 10 (exposure
@@ -5827,7 +5821,7 @@ extended under decision L2-D3).
     an original 5% four-year bond (hazard 1.5%, $R=40\%$ of par) both 3.296402, to $10^{-10}$; a default-free floater is
     at par at every node; the discount margin of a 50 bp risky floater (hazards 1-2.5%) is 112.07 bp and reprices the
     fair value 97.8397 to $10^{-8}$.
-- A criterion met trivially. The plan's "as $\sigma\to0$ the tree CVA tends to the forward-rate calculation" holds to
+- A criterion met trivially. The predetermined criterion "as $\sigma\to0$ the tree CVA tends to the forward-rate calculation" holds to
   $10^{-15}$ at every volatility (0.2, 0.1, 0.01, $10^{-4}$), because for a bond whose exposure is linear in the tree
   values the state-price sum of value plus coupon is the curve value of the remaining flows. The criterion therefore
   confirms the implementation but does not test convergence. A check of my own was added after the first run to show
@@ -5837,7 +5831,7 @@ extended under decision L2-D3).
 - Objectives: `objective:measure-counterparty-exposure`, `objective:calculate-derivative-cva` and
   `objective:assess-wrong-way-risk` (`topic:credit-models`, planned batch 8), covered. The reading showed wrong-way
   risk as a separate idea (its own chapter in Gregory, a section in RMFI, conditional exposure and its own models), so
-  the plan's upper count of three was used. The tree extension adds no objective.
+  three new objectives were used. The tree extension adds no objective.
 
 **P8, default correlation** (new topic file `compendium/securitised-structured-credit/default-correlation.tex`:
 `mod:gaussian-copula-default-correlation`, `meth:tranche-loss-base-correlation`; a See also link added to
@@ -5853,7 +5847,7 @@ extended under decision L2-D3).
   LGD 60% and the CDX tranches fixed before the first run). The first attempt stopped before any statistical check:
   NumPy's Gauss-Hermite rule raised a divide-by-zero warning when the node count was doubled past about 150, and the
   near-step conditional binomial integrand had not converged at 128 nodes (coding/method issue). The integration was
-  changed, within the plan's "adaptive quadrature or nodes doubled" rule, to composite Gauss-Legendre on [-10, 10] with
+  changed, within the predetermined "adaptive quadrature or nodes doubled" rule, to composite Gauss-Legendre on [-10, 10] with
   panels doubled until the change is below $10^{-10}$ (at most 640 nodes); an adaptive-quadrature cross-check of the
   3-7% tranche agrees to 12 decimals. No seed, input or tolerance changed. The complete run passed every criterion:
   - Reproduced: Hull's basket (86.7380%, 0.00344%); Example 25.2 ($A=4.2845$, $B=0.0187$, $C=0.1497$, 347.8 bp
@@ -5886,16 +5880,16 @@ now links to it).
   *Quantitative Risk Management*, 1st ed. (Princeton 2005; owner's library, SHA-256 `a27c34f4…6c7d`, printed = PDF
   $-16$; new source `mcneil-frey-embrechts-qrm-2005` and reading note), secs. 7.1-7.1.2 and 7.2.1-7.2.6 with Example
   7.29; Wilmott, sec. 19.8 (pp. 339-341).
-- Source gap corrected. The plan listed `s7-qrm`, `w2-mcneil-frey` and `wide-embrechts-extremal` as not held. A
+- Source gap corrected. The initial inventory listed `s7-qrm`, `w2-mcneil-frey` and `wide-embrechts-extremal` as not held. A
   library search during the package found the 2005 first edition of QRM (the catalogue key is the 2015 revised
   edition, which is not held), so it is registered under its own key and cited. RMFI does not give the Hill estimator;
   QRM's eq. (7.23) supplies it. Hill (1975), `w2-hill-estimator`, could not be obtained (Project Euclid answered the
   scripted request with a bot-protection page); McNeil and Frey (2000), Embrechts et al. (1997) and the 2015 QRM
   were not read. All four are Further reading.
-- Definition. The plan fixed $H_k$ with the $(k+1)$-th largest observation as threshold; QRM's standard form uses the
-  $k$-th and notes that some versions use the $(k+1)$-th. The plan's form was kept; it makes the Rényi benchmark exact.
+- Definition. The estimator fixed before the first run uses $H_k$ with the $(k+1)$-th largest observation as threshold; QRM's standard form uses the
+  $k$-th and notes that some versions use the $(k+1)$-th. The latter form was kept; it makes the Rényi benchmark exact.
 - Checks (`notes/artefacts/extreme-value/extreme-value-checks.py`; seeds as listed in the script, fixed before the first
-  run). First complete run: every plan criterion passed. Pareto: mean $H_k$ 0.25046 (s.e. 0.00035), s.d. 0.015699
+  run). First complete run: every predetermined criterion passed. Pareto: mean $H_k$ 0.25046 (s.e. 0.00035), s.d. 0.015699
   against 0.015811 (within 5%). $t_4$ functional 0.3488984 by quadrature; $n=10^6$ Hill 0.34961 (s.e. 0.00140, within
   3 s.e.). Exact GPD ($k=250$): ML $\xi=0.21563$, $\beta=0.91990$, score $-6.8\times10^{-14}$ and 0; log-likelihood
   $-283.0351887074$ against SciPy's $-283.0351887885$. POT formulas for a Pareto tail exact to $8.9\times10^{-16}$.
@@ -5924,7 +5918,7 @@ now links to it).
 - Read: OpenStax, *Introductory Statistics* 2e, secs. 11.3 and 12.4 (fetched renderings, 2026-10-21; the fetch tool
   returns a summary with short quotations, not the full text, which limits the record to the formulas, conditions
   and example numbers it reported); NIST Dataplot, "Rank Correlation Independence Test" (new source
-  `nist-dataplot-rank-correlation`). The plan named `statistical-methods-handbook` (the NIST e-Handbook) for rank
+  `nist-dataplot-rank-correlation`). The initial source candidate was `statistical-methods-handbook` (the NIST e-Handbook) for rank
   correlation; a search found no Spearman section in it, and the Dataplot reference page was used instead. Not read:
   Conover (1999).
 - Checks (`notes/artefacts/inference-simulation/correlation-independence-checks.py`; seeds 20261101 size study,
@@ -5950,7 +5944,7 @@ now links to it).
   seeds 0-9 had been used in a planning reproduction and are not unseen data). The first run used HiGHS dual simplex
   with tight tolerances and was stopped after several minutes without output (100,000-scenario LPs); timing one LP
   showed interior point with crossover at 10 s against 32 s for dual simplex, with the same solution, so the solver
-  was switched (no criterion changed). In the complete run every plan criterion passed: LP objective equals the
+  was switched (no criterion changed). In the complete run every predetermined criterion passed: LP objective equals the
   fractional-tail-mass CVaR (0.1678292649 at $n=10{,}000$; 0.1961604624 at $n=250$, 97.5%, tail mass 6.25); the 1%
   grid on the feasible line ($w_1=w_3$) has best 0.167834 against the LP's 0.167829 (allowance 0.006414); normal
   equivalence against the population portfolio (0.321429, 0.357143, 0.321429): largest gap 0.0078 at 100,000
@@ -6030,7 +6024,7 @@ now links to it).
 - Numerical scripts: eight new (`short-rate-model-checks.py`, `counterparty-xva-checks.py`,
   `default-correlation-checks.py`, `extreme-value-checks.py`, `correlation-independence-checks.py`,
   `mean-cvar-check.py`, `margin-purchase-check.py`, `dividend-tree-swaption-checks.py`); `make examples` now runs 119.
-  Every predetermined plan criterion, as frozen with the two freeze corrections, passed without a change of seed,
+  Every predetermined criterion, as frozen with the two freeze corrections, passed without a change of seed,
   input or tolerance. First-run failures were coding or method issues (P6 warnings, P8 Gauss-Hermite) or in checks of
   my own (P9 RMFI rounding, P11b Table 3, the D5 Black-approximation diagnostic), each recorded above with its cause;
   the P7 sigma-limit criterion holds trivially, as recorded.
@@ -6111,8 +6105,7 @@ as the history of the first implementation.
   wrong-way example uses unit discounting, where $D=1$ hides the convention, and the script reproduced Gregory's p. 312
   upfront figures but not his p. 313 units. L2-F4 was rule scope, which the margin script's arithmetic cannot test.
 - Records updated: the two entries, the two scripts, the Gregory and `ecfr-12cfr220` reading notes, the four
-  entry-evidence reviews, three coverage example or locator strings, two pathway summaries, `implementation_plan_v2.md`
-  (*Batch L2 post-implementation audit corrections*) and `implementation_plan.readme` Section 38.
+  entry-evidence reviews, three coverage example or locator strings and two pathway summaries.
 - Checks run (2026-10-21): `counterparty-xva-checks.py` and `margin-purchase-check.py` with `-W error`, all passing
   (the xVA output was identical before and after `ruff format`); `make lint`, `make format-check` (it reformatted one
   new line of my code first), `make check-compendium`, `make check-coverage` (0 problems; 445/445, 1,030/1,030),
@@ -6128,11 +6121,7 @@ as the history of the first implementation.
 
 **Starting state.** Branch `codex/library-gap-batch-l2` at `a519e0c` (the L2 correction commit after `cd55096`), working
 tree clean, no newer work; coverage 445/445 objectives and 1,030/1,030 outline items. Branch `codex/library-gap-batch-l3`
-created from `a519e0c`. Local only. First, formatting repair of the P8 row of "Batch L2 freeze corrections" in
-`implementation_plan_v2.md`: `\rho` had been stored as a line break plus "ho" and `\times` as a tab plus "imes",
-splitting the table row; restored, with numbers and meaning unchanged, and the table re-parsed with markdown-it (GFM
-tables) as header, P8 and P9 rows of four cells each (before: a split, malformed P8 row). Then the L3 scope (P10, backlog
-B7) was frozen in the plan (Section 7, "Batch L3 (frozen 2026-10-21)") and executed. Delegation to the models named by
+created from `a519e0c`. Local only. The L3 scope (P10, backlog B7) was fixed on 2026-10-21 and executed. Delegation to the models named by
 the implementation skill was not available; the work was done directly.
 
 **Method.** Each claim rests on the issuer's own text, downloaded to the git-ignored
@@ -6319,8 +6308,7 @@ Checks run (2026-10-21). `make check-compendium` (0 problems), `make check-cover
 `make pdf` (442 pages, no overfull boxes or undefined references; the one underfull box is the pre-existing one);
 printed p.~139 rendered and inspected. Pre-commit on the changed files. Reused without rerun: every numerical script and
 the 36 tests, because no script, input or Python file changed since `517213d`, where they passed; the edit is text and
-evidence only. `verify-outlines` not rerun; the crosswalk is unchanged. The same commit records the Batch L4 proposal in
-`implementation_plan_v2.md` (not implemented). Nothing pushed; no PR.
+evidence only. `verify-outlines` not rerun; the crosswalk is unchanged. Nothing pushed; no PR.
 
 ## Library gap-filling, Batch L4, 21 October 2026
 
@@ -6331,8 +6319,7 @@ seasoned variance-swap value as a labelled derivation with its contract and appr
 separate objective for cross-currency basis swaps. Delegation to the models named by the implementation skill was not
 available; the work was done directly.
 
-**Freeze corrections, recorded before implementation** (plan, Section 7, "Batch L4 freeze corrections and frozen
-specification"). L4-C1: the proposal's dollar-leg basis $b=\frac FS(1+r_f\tau)-(1+r_{\$}\tau)$ is a period amount and
+**Freeze corrections, recorded before implementation**. L4-C1: the proposal's dollar-leg basis $b=\frac FS(1+r_f\tau)-(1+r_{\$}\tau)$ is a period amount and
 matched the annual quote only at $\tau=1$; frozen as $[\ldots]/\tau$ with the equivalence
 $F/S=[1+(r_{\$}+b)\tau]/[1+r_f\tau]$, checked at $\tau=1$ and 0.25. L4-C2: the gamma sentence implied that differentiating
 each path gives the closed form; per path the derivative of the pathwise delta is zero almost surely, and eq. (18) is the
@@ -6341,7 +6328,7 @@ payoffs (the digital fails both naive methods); larger likelihood-ratio variance
 examples and this call. L4-C3: the seasoned-swap contract (return measure, schedule, $A$, $K_{\text{vol}}$,
 $K_{\text{var}}$, $N_{\text{var}}$ units, empty segments) was defined, and the simulation benchmark changed from the
 continuous strike to the exact discrete expectation $\sigma^2+(r-q-\sigma^2/2)^2/A$, with the continuous approximation and
-its deterministic difference reported separately. Seeds, path counts and tolerances were fixed in the plan before the
+its deterministic difference reported separately. Seeds, path counts and tolerances were fixed before the
 first run.
 
 **Sources read** (copies in the git-ignored `reading_materials/library-gap-l4-20261021/`, hashes in its `SHA256SUMS`;
@@ -6415,7 +6402,7 @@ PR.
 work; 447/447 objectives, 1,030/1,030 items. Branch `codex/library-gap-c1-inventory` created from it. Local only.
 Delegation to the models named by the implementation skill was not available; the work was done directly.
 
-**L4 corrections** (plan, Section 7, "C1 pass: L4 corrections"; no objective, input, seed or earlier tolerance changed).
+**L4 corrections** (no objective, input, seed or earlier tolerance changed).
 - `meth:monte-carlo-greeks` (L4-F1): Broadie-Glasserman's $h^*$ (App. B, eq. (26), p. 281; the page was reread and states
   that $\rho$ is assumed independent of $h$) is no longer presented as a universal optimum; the call/digital
   shared-path variance distinction and the restriction of unbiasedness to the direct estimators under their conditions
@@ -6429,7 +6416,7 @@ Delegation to the models named by the implementation skill was not available; th
 - `meth:esg-exposure-evaluation` (L4-F3): the 5 October 2026 order qualified as the latest found in the public RECAP
   docket as of 21 October 2026, PACER not used, later filings unverified (as in `notes/readings/ca8-iowa-v-sec-2026.md`).
 
-**C1 inventory** (plan, Section 8.2). Discovery material: the 18 volumes of the 2024 curriculum, read-only, text extracted
+**C1 inventory**. Discovery material: the 18 volumes of the 2024 curriculum, read-only, text extracted
 with pypdf 5.1.0 in an isolated environment to the session scratchpad (none enters the repository and none is cited).
 Reconciliation: 175 numbered modules, of which two are statistical-table appendices; 173 substantive; C0's 76 compared
 plus 97 remaining. The 97 were title-matched to the crosswalk (78 same-titled), screened by head words (74 of 2,231 heads
@@ -6441,7 +6428,7 @@ Finance*, printed pp. 98-107 (country risk premiums); *Managing Investment Portf
 Outcome: 2 confirmed distinct candidate objectives (lookbacks; hedging with transaction costs), 4 sourced depth
 extensions, 2 possibly distinct but unresolved (vanna-volga; hedge-fund replication), 5 unsourced depth items;
 provisional 449 for this corpus, at most 451. Batch L5 proposed (+2), not frozen.
-*Corrected 2026-10-21 (pre-L5 audit, C1-F2; plan Section 7, "Pre-L5 audit corrections"):* "4 sourced depth
+*Corrected 2026-10-21 (pre-L5 audit, C1-F2):* "4 sourced depth
 extensions" overstated the evidence. C1-D1 is supported (passages read); C1-D2 partly (*Managing Investment Portfolios*
 read; Hull's collar pages held, not read for it; IRC secs. 1259 and 721 not read); C1-D3 is unsupported (Natenberg held,
 its passages not located or read); C1-D4 cited Wilmott secs. 10.11-10.12, which are the backward equation, and became
@@ -6463,7 +6450,7 @@ and whose tree is identical to it (empty diff); clean tree; 447/447 objectives, 
 `codex/library-gap-batch-l5` was created from `main` so the newer merge is kept. Local only; no push, PR, merge, rebase
 or amendment. Delegation was not used; the work was done directly.
 
-**Audit corrections before L5** (plan Section 7, "Pre-L5 audit corrections").
+**Audit corrections before L5**.
 - C1-F1, `meth:monte-carlo-greeks`: "fixed-step resimulation is biased whatever the conditions" replaced by: generally
   biased, since its expectation is the finite difference of the price; more paths reduce only the sampling error; affine
   price functions (a forward's value in $S_0$) are exact. Text only; estimator formulas and numbers unchanged;
@@ -6474,9 +6461,8 @@ or amendment. Delegation was not used; the work was done directly.
 
 **Freeze.** Owner decisions L5-D1 (L5-a and L5-b, +2; L5-c excluded), L5-D2 (Leland through Wilmott chap. 48, Leland
 named as originator, the 1985 paper not read and listed under Further reading only), L5-D3 (C1-D1 and C1-D2 deferred;
-other backlog items stay deferred). The specification, inputs, seeds, path counts, grids and tolerances were written into
-the plan (Section 7, "Batch L5 freeze and frozen specification") before either script ran; one sign slip in the L5-b
-gate (b) expression was corrected in the plan before the first run.
+other backlog items stay deferred). The specification, inputs, seeds, path counts, grids and tolerances were recorded before either script ran; one sign slip in the L5-b
+gate (b) expression was corrected before the first run.
 
 **Sources read** (held = in the owner's library or the git-ignored folders; read = the passages below were read).
 - Hull, OFOD 11th Global ed., `reading materials/` copy (SHA-256 `8bc6e2f0…b482`, printed = PDF page): sec. 26.11,
@@ -6505,7 +6491,7 @@ $\hat V-V=E^Q\!\int e^{-rt}\kappa\sigma\sqrt{2/(\pi\delta t)}S^2\hat\Gamma\,dt$.
 `objective:value-lookback-options` and `objective:hedge-options-with-transaction-costs` (`topic:option-valuation`,
 planned batch 10).
 
-**Checks (frozen in the plan before the first run).**
+**Checks (fixed before the first run).**
 - `notes/artefacts/exotic-options/lookback-option-check.py`. First run: 19 of 20 gates passed; the pricing-equation
   residual failed, ``BAD pricing-equation residual at interior points (S strictly inside the extreme) <= 1e-6: largest
   3.6e-06''. Diagnosis (harness, not formula): at $S=50$, $S_{\min}=48$, $\tau=0.1$ the residual is $-3.5\times10^{-4}$,
@@ -6565,14 +6551,13 @@ located), C1-D4 as an entry (now sourced), and the unresolved C1-U1 to C1-U3 ite
 **Starting state.** `codex/library-gap-batch-l5` at `af47d03` (parent `c26a09e`, the PR #33 merge), clean, 449/449
 objectives and 1,030/1,030 items, as expected. Branch `codex/library-gap-batch-l6` created from it. Local only.
 
-**L5 clarifications** (plan Section 7, "L5 clarifications"). `meth:transaction-cost-hedging`: Wilmott's p. 788
+**L5 clarifications**. `meth:transaction-cost-hedging`: Wilmott's p. 788
 approximation stated as each side's adjustment from the frictionless value, with the short-minus-long difference about
 twice it to first order. Frozen L5-a specification: a dated cross-reference after check 4 to the amended Richardson gate
 and the L5 record; the pre-run criterion and its first-run failure are kept. Editorial; no rerun.
 
 **Scope.** Owner decision: C1-D1 and C1-D2, depth only (+0 objectives); C1-D3, C1-D4 and C1-U1 to C1-U3 deferred.
-Specification (inputs, contracts, hand values, tolerances) written in the plan (Section 7, "Batch L6") before either
-script ran.
+Specification (inputs, contracts, hand values, tolerances) recorded before either script ran.
 
 **Sources read.**
 - Damodaran, *Applied Corporate Finance*, 4th ed. (library PDF, SHA-256 matches the reading note; printed = PDF $-16$):
@@ -6605,19 +6590,19 @@ extended; new keys `irs-rev-rul-2003-7` and `us-treas-reg-1-351-1` with reading 
 `estimate-cost-of-debt-and-equity`, `advise-complex-client-situations` and `analyse-covered-and-protective-positions`;
 no objective added.
 
-**Checks** (deterministic; acceptance frozen in the plan).
+**Checks** (deterministic; acceptance fixed before the first run).
 - `notes/artefacts/corporate-finance/country-risk-premium-check.py`. First run: 2 of 23 failed, both harness errors.
   (1) ``BAD Table 4.5 India: relative-sd 2.52, melded 3.60: 2.5200, 3.1765'': the script took India's bond volatility
   (17) from the p. 100 formula line, while the specification gates Table 4.5, whose ratio is 24/15; the input was
   corrected and the p. 100 line is reported as a source slip. (2) ``BAD ke local inflation: ... hand 17.10705: 17.106732'':
-  the hand literal was mistyped ($1.1324\times1.06/1.025-1=17.10673$ percent; the plan's rounded 17.107 was right).
+  the hand literal was mistyped ($1.1324\times1.06/1.025-1=17.10673$ percent; the predetermined rounded 17.107 was right).
   No tolerance changed. Final: Table 4.5, Illustration 4.2, Disney 5.7616 and Vale 18.6670 and 18.8733 reproduced to
   printed rounding; the example agrees in float and exact rational arithmetic to $10^{-12}$ and with the hand values;
   zero limit exact.
 - `notes/artefacts/private-wealth/concentrated-position-check.py`. First run: 1 failure, ``BAD sale: tax 900,000,
   4,100,000 reinvested, 4,267,328.43 ...: 4,371,405.25''. The frozen hand values were wrong (gain 4,000,000, so tax
   800,000 and 4,200,000 grows to 4,371,405.25); the script was right. Literals corrected, tolerance unchanged, and the
-  correction noted beside the spec in the plan. Final: parity and zero-cost strike $K_2=62.0380$ to $10^{-10}$; advance
+  correction recorded here. Final: parity and zero-cost strike $K_2=62.0380$ to $10^{-10}$; advance
   4,529,075.55 (90.58 percent) by two routes to $10^{-10}$; payoff identity exact and decomposition to $10^{-9}$ on the
   grid; delivered shares 100,000 to 80,000; PMiP Exhibit 15 reproduced to the dollar; break-even fee 1.8081 percent a year.
 

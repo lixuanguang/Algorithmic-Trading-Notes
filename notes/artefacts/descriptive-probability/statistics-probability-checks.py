@@ -351,7 +351,7 @@ ok(
     close(k_up / N, 0.70) and pred_post < 0.55,
 )
 
-print("== corrections of 2026-10-18 (plan sec. 11.2): counterexamples")
+print("== corrections of 2026-10-18: counterexamples")
 # (1) Unbiasedness of s^2 needs independent observations: X1 = X2 = Z, Z = -1 or +1 equally likely.
 samples = [([-1.0, -1.0], 0.5), ([1.0, 1.0], 0.5)]
 exp_s2 = sum(pr * np.var(x, ddof=1) for x, pr in samples)

@@ -1,7 +1,7 @@
 """Library gap-filling Batch L6, package L6-b (2026-10-21): the concentrated-position example of
 meth:complex-client-situations and the zero-cost collar of meth:covered-call-protective-put.
 
-Inputs and acceptance were fixed in implementation_plan_v2.md (Section 7, "Batch L6", L6-b) before the first run.
+Inputs and acceptance were fixed before the first run.
 Synthetic: 100,000 shares at 50, basis 10 per share, an assumed flat 20 percent tax on the gain (illustrative, not a
 statutory rate), one year, r = 4 percent continuously compounded, q = 0, volatility 30 percent, BSM option values.
 Strategies: outright sale (proceeds held riskless, to isolate exposure); a zero-cost collar (long 45 put, short call

@@ -1,7 +1,6 @@
 """Library gap-filling Batch L5, package L5-a (2026-10-21): the worked examples of meth:lookback-option-valuation.
 
-Inputs and acceptance were frozen in implementation_plan_v2.md (Section 7, "Batch L5 freeze and frozen specification",
-L5-a) before the first run. Model: GBM with constant r, q and sigma, r != q. Hull's floating formulas (OFOD 11th Global
+Inputs and acceptance were frozen before the first run. Model: GBM with constant r, q and sigma, r != q. Hull's floating formulas (OFOD 11th Global
 ed., sec. 26.11, pp. 623-624) are evaluated with T read as the remaining time tau and S_min/S_max the extreme recorded
 to date; Wilmott's sec. 26.6 forms (PWOQF 2nd ed., pp. 450-452) are an independent transcription.
 

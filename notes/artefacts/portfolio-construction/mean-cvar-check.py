@@ -1,6 +1,6 @@
 """Library gap-filling Batch L2, package P11b (2026-10-21): the worked examples of meth:mean-cvar-optimisation.
 
-Problem, fixed before the first run (implementation_plan_v2.md Section 7, P11b, as corrected after the L2 audit):
+Problem, fixed before the first run:
 minimise the CVaR of the portfolio loss L = -R'w at confidence 95 percent, long-only (w >= 0), fully invested
 (1'w = 1), with the expected return equal to the target (mu'w = mu*). The empirical CVaR is the fractional-tail-mass
 definition of meth:var-es-estimation-methods; for equally weighted scenarios Rockafellar and Uryasev's function
@@ -9,7 +9,7 @@ zeta + sum_j (L_j - zeta)^+ / (n(1 - alpha)) has this as its minimum. The LP is 
 
 Synthetic three-asset world: mu = (4, 6, 8) percent, volatilities (10, 15, 20) percent, all correlations 0.3, target
 6 percent. Scenarios are jointly normal with the sample mean shifted to mu exactly. Seeds: 0-9 for the normal
-equivalence (as frozen in the plan; a planning reproduction had used them, so they are not unseen data); 20261111
+equivalence (fixed before the first run; a preliminary reproduction had used them, so they are not unseen data); 20261111
 the n = 250 fractional-tail case; 20261112 the negative-skew diagnostic.
 
 Run: uv run python mean-cvar-check.py   (numpy, scipy). Exits 1 on failure.

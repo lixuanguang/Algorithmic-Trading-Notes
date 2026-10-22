@@ -1,6 +1,6 @@
 """Library gap-filling Batch L4, package L4-a (2026-10-21): the worked example of meth:monte-carlo-greeks.
 
-Model (implementation_plan_v2.md, "Batch L4 freeze corrections and frozen specification"): risk-neutral GBM,
+Model: risk-neutral GBM,
 S0 = 100, r = 3 percent, q = 0, sigma = 20 percent, T = 1 (the inputs of meth:monte-carlo-simulation). A European
 call struck at 105 and a unit cash-or-nothing call struck at 105. Estimators after Broadie and Glasserman (1996):
 pathwise (eqs. (5)-(9)) and likelihood ratio (eqs. (14)-(16), scores rewritten in the standard normal Z), and

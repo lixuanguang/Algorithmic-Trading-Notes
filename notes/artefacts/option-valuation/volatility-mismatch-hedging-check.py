@@ -1,11 +1,11 @@
 """Library gap-filling Batch L1, package P4 (2026-10-21): the worked example of
 res:delta-hedging-volatility-mismatch, and the vanna and volga formulas added to meth:greeks-delta-gamma-hedging.
 
-Model (implementation_plan_v2.md Section 6, P4): dS = mu S dt + sigma S dW with mu = 10 percent and actual
+Model: dS = mu S dt + sigma S dW with mu = 10 percent and actual
 volatility sigma = 30 percent; a European call (S0 = K = 100, T = 1, r = 5 percent, q = 0) bought at the BSM
 price with implied volatility 20 percent and marked at that volatility; short delta shares; cash at r; no
 costs. 20,000 paths, rebalanced 252 or 2,520 times on common Brownian paths (the coarse grid uses every tenth
-fine date). Profit is measured as present value at time 0. Acceptance ranges were fixed in the plan before any
+fine date). Profit is measured as present value at time 0. Acceptance ranges were fixed before any
 run; seed 20261051. Synthetic data only: not evidence about markets.
 
 Correction, 2026-10-21 (L1 audit finding L1-F2): the entry had dropped the condition Gamma >= 0 from the claim

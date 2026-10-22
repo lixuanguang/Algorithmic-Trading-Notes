@@ -1,12 +1,12 @@
 """Library gap-filling Batch L4, package L4-b (2026-10-21): the seasoned variance swap added to
 meth:volatility-derivative-applications.
 
-Contract (implementation_plan_v2.md, "Batch L4 freeze corrections and frozen specification"): N = 252 daily
+Contract: N = 252 daily
 log returns r_i = ln(S_i / S_{i-1}), zero mean, annualisation A = 252, realised variance RV = 10^4 (A/N) sum r_i^2
 in variance points; K_vol = 20 vol points, K_var = K_vol^2 = 400 points squared; vega notional 100,000, so
 N_var = 100,000 / (2 K_vol) = 2,500 per point squared; payoff N_var (RV - K_var) at T.
 After n returns, V_t = N_var P(t,T) [10^4 (A/N) sum_{i<=n} r_i^2 + ((N-n)/N) K_rem - K_var], where K_rem is the
-fair variance strike of the remaining N - n returns of the same contract. A labelled derivation (decision L4-D2)
+fair variance strike of the remaining N - n returns of the same contract. A labelled derivation
 from Demeterfi et al.'s definitions and additivity, not a formula printed in the sources.
 
 Example: n = 126, realised volatility 25 over them, quoted K_rem = 324, r = 4 percent continuously compounded,

@@ -7,7 +7,7 @@ read:
 status: draft
 ---
 
-Prepared on 2026-10-18 by the time-value correction (plan sec. 10.2) from source checks, not from study: the headings that need your own reading are left empty. Used for `def:required-return-components`. A 1981 St. Louis Fed Review article on real rates was sought first; its link redirected to an index page.
+Prepared on 2026-10-18 by the time-value correction from source checks, not from study: the headings that need your own reading are left empty. Used for `def:required-return-components`. A 1981 St. Louis Fed Review article on real rates was sought first; its link redirected to an index page.
 
 ## Question and claim
 

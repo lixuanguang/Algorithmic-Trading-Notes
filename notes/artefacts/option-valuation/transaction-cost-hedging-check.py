@@ -1,7 +1,6 @@
 """Library gap-filling Batch L5, package L5-b (2026-10-21): the worked examples of meth:transaction-cost-hedging.
 
-Inputs, conventions and acceptance were frozen in implementation_plan_v2.md (Section 7, "Batch L5 freeze and frozen
-specification", L5-b) before the first run. Wilmott, PWOQF 2nd ed., chap. 48: trading nu shares at S costs
+Inputs, conventions and acceptance were frozen before the first run. Wilmott, PWOQF 2nd ed., chap. 48: trading nu shares at S costs
 kappa |nu| S; rebalancing every dt = T/N; Leland's volatilities (48.5)-(48.6), sigma_hat^2, sigma_check^2 = sigma^2
 +/- 2 kappa sigma sqrt(2/(pi dt)); K = kappa/(sigma sqrt(dt)) (48.7).
 
@@ -11,7 +10,7 @@ and pays trades and costs; physical settlement, so at T the holding moves to the
 costed trade). The opening trade and the cash-settled close are reported separately. Risk-neutral simulation (mu = r),
 q = 0, so the discounted stock is a martingale.
 
-Comparable quantity (Interpretation, derived in the plan): BSM(sigma_hat) - BSM(sigma) = E^Q int e^{-rt} kappa sigma
+Comparable quantity (Interpretation): BSM(sigma_hat) - BSM(sigma) = E^Q int e^{-rt} kappa sigma
 sqrt(2/(pi dt)) S^2 Gamma_hat dt exactly, the expected present value of Wilmott's leading-order cost (48.2) under the
 sigma_hat delta. The simulated estimand C_N is the expected present value of the actual costs of trades 1..N under the
 same rule; e_N = C_N - L is the approximation residual, and E[e^{-rT} W_T] = -e_N for the writer at the Leland price.

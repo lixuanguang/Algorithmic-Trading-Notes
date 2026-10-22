@@ -1,7 +1,7 @@
 """Library gap-filling Batch L6, package L6-a (2026-10-21): the country-risk example of
 meth:cost-of-debt-equity-estimation.
 
-Inputs and acceptance were fixed in implementation_plan_v2.md (Section 7, "Batch L6", L6-a) before the first run.
+Inputs and acceptance were fixed before the first run.
 Part 1 reproduces Damodaran, Applied Corporate Finance, 4th ed. (2014): Table 4.5 (p. 100), Illustration 4.2 and
 Table 4.9 (pp. 106-107), and the Vale R$ cost of equity (pp. 134-135), to their printed rounding. Part 2 computes the
 original example in floating point and again in exact rational arithmetic and compares both with hand values. Part 3

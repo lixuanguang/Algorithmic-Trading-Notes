@@ -5,6 +5,10 @@ res:cash-flow-additivity.
 Each closed-form result is checked against an independent route: explicit cash-flow summation, a ledger of the
 replicating trades, root finding by bisection, or the alternative formula. Annual compounding and end-of-year cash
 flows throughout unless stated. Corrections of 2026-10-18: dated forward-lending cash flows, uncertain inflation, yield quotation.
+Unit review of 2026-10-23: single amounts and quote conversion, dated streams and annuities, loan amortisation,
+the internal rate of return and its pitfalls, and a forward on a dividend-paying share.
+Correction pass of 2026-10-23: bisect() rejects invalid brackets and returns endpoint roots; a double-root IRR;
+the annuity due at zero and negative rates; perpetuity timing; zero-rate loan limits; a negative IRR.
 Inputs are invented; they illustrate the mechanics, not any security.
 Run: uv run python time-value-return-checks.py   (standard library). Exits 1 on failure.
 """
@@ -27,14 +31,34 @@ def close(a, b, tol=5e-5):
 
 
 def bisect(f, lo, hi, n=200):
-    flo = f(lo)
+    """Root of f in [lo, hi]; the ends must have opposite signs unless one is a root."""
+    if not lo < hi:
+        raise ValueError("bracket needs lo < hi")
+    flo, fhi = f(lo), f(hi)
+    if flo == 0:
+        return lo
+    if fhi == 0:
+        return hi
+    if (flo > 0) == (fhi > 0):
+        raise ValueError("ends of the bracket have the same sign")
     for _ in range(n):
         mid = (lo + hi) / 2
-        if (f(mid) > 0) == (flo > 0):
-            lo, flo = mid, f(mid)
+        fmid = f(mid)
+        if fmid == 0:
+            return mid
+        if (fmid > 0) == (flo > 0):
+            lo, flo = mid, fmid
         else:
             hi = mid
     return (lo + hi) / 2
+
+
+def rejects(f, lo, hi):
+    try:
+        bisect(f, lo, hi)
+    except ValueError:
+        return True
+    return False
 
 
 print("== holding-period, price and total return of a share")
@@ -282,6 +306,373 @@ ok(
 ok(
     "parity holds state by state: call - put = share - K",
     all(close(max(s - k, 0) - max(k - s, 0), s - k, 1e-12) for s in (su, sd, 47.3)),
+)
+
+# Unit review 2026-10-23: def:time-value-compounding, meth:cash-flow-streams, meth:loan-amortisation,
+# meth:internal-rate-of-return and the share forward in res:cash-flow-additivity.
+
+
+def npv(rate, flows):
+    return sum(c / (1 + rate) ** t for t, c in enumerate(flows))
+
+
+print("== single amounts, compounding and quote conversion")
+ok(
+    "1,000 at 5% for 3 years: compound 1,157.625, simple 1,150, interest on interest 7.625",
+    close(1000 * 1.05**3, 1157.625, 1e-9)
+    and close(1000 * 1.05**3 - 1000 * (1 + 0.05 * 3), 7.625, 1e-9),
+)
+year_by_year = 1000.0
+for _ in range(3):
+    year_by_year += year_by_year * 0.05
+ok("year-by-year crediting gives the same 1,157.625", close(year_by_year, 1157.625, 1e-9))
+ok("PV of 1,000 in 3 years at 5% is 863.8376", close(1000 / 1.05**3, 863.837599, 1e-6))
+ok("zero rate: PV equals FV", 1000 / 1.0**3 == 1000)
+ok("growth 1,000 -> 1,500 in 6 years is 6.9913%", close(1.5 ** (1 / 6) - 1, 0.069913, 1e-6))
+n_double = math.log(2) / math.log(1.06)
+ok(
+    "doubling at 6%: 11.8957 years; rule of 72 gives 12",
+    close(n_double, 11.895661, 1e-6) and close(1.06**n_double, 2.0, 1e-12),
+)
+ok(
+    "rule of 72 poorer at 36%: exact 2.2542 years",
+    close(math.log(2) / math.log(1.36), 2.254249, 1e-6),
+)
+growth = 1.01**12
+ok("nominal 12% monthly: EAR 12.6825%", close(growth - 1, 0.126825, 1e-6))
+r_semi, r_q, r_c = 2 * (1.01**6 - 1), 4 * (1.01**3 - 1), 12 * math.log(1.01)
+ok(
+    "equivalents 12.3040% semiannual, 12.1204% quarterly, 11.9404% continuous",
+    close(r_semi, 0.123040, 1e-6) and close(r_q, 0.121204, 1e-6) and close(r_c, 0.119404, 1e-6),
+)
+ok(
+    "each equivalent grows 100 to 112.6825 in a year",
+    all(
+        close(100 * x, 112.682503, 1e-5)
+        for x in ((1 + r_semi / 2) ** 2, (1 + r_q / 4) ** 4, math.exp(r_c))
+    ),
+)
+ok("OpenStax credit card: 1.5% a month is 19.562% effective", close(1.015**12 - 1, 0.19562, 1e-5))
+mm = 1 + 0.05 * 90 / 360
+ok(
+    "90-day 5% simple act/360: growth 1.0125, EAR 5.1671%, continuous 5.0380%",
+    close(mm, 1.0125, 1e-12)
+    and close(mm ** (365 / 90) - 1, 0.051671, 1e-6)
+    and close(math.log(mm) * 365 / 90, 0.050380, 1e-6),
+)
+r_s = (1.05 ** (90 / 365) - 1) * 360 / 90
+ok(
+    "EAR 5% as a 90-day act/360 simple rate: 4.8412%, and back",
+    close(r_s, 0.048412, 1e-6) and close((1 + r_s * 90 / 360) ** (365 / 90), 1.05, 1e-12),
+)
+
+print("== dated streams, annuities and perpetuities")
+ok(
+    "mixed stream 300, 500, 700 at years 1, 2, 4 and 6%: 1,282.4827",
+    close(npv(0.06, [0, 300, 500, 0, 700]), 1282.482652, 1e-5),
+)
+a5 = 1000 * (1 - 1.06**-5) / 0.06
+ok(
+    "ordinary annuity 4,212.3638 by formula and by summing",
+    close(a5, 4212.363786, 1e-5) and close(a5, sum(1000 / 1.06**t for t in range(1, 6)), 1e-9),
+)
+ok(
+    "annuity due 4,465.1056 (first payment now) by formula and by summing",
+    close(a5 * 1.06, 4465.105613, 1e-5)
+    and close(a5 * 1.06, sum(1000 / 1.06**t for t in range(5)), 1e-9),
+)
+ok(
+    "future value 5,637.0930 by formula, by compounding each payment and as (1+r)^N PV",
+    close(1000 * (1.06**5 - 1) / 0.06, 5637.09296, 1e-5)
+    and close(sum(1000 * 1.06 ** (5 - t) for t in range(1, 6)), 5637.09296, 1e-5)
+    and close(a5 * 1.06**5, 5637.09296, 1e-5),
+)
+ok(
+    "annuity due: larger at 6%, equal at 0% (5,000), smaller at -2% (5,208.2892 < 5,314.5809), by summing",
+    all(
+        cmp(
+            sum(1000 / (1 + x) ** t for t in range(5)),
+            sum(1000 / (1 + x) ** t for t in range(1, 6)),
+        )
+        for x, cmp in (
+            (0.06, lambda d, o: d > o),
+            (0.0, lambda d, o: d == o == 5000),
+            (
+                -0.02,
+                lambda d, o: d < o and close(d, 5208.289237, 1e-5) and close(o, 5314.580854, 1e-5),
+            ),
+        )
+    ),
+)
+ok(
+    "C/r is a perpetuity paid from t = 1; paid from t = 0 it is worth C + C/r",
+    close(sum(1000 / 1.06**t for t in range(1, 3001)), 1000 / 0.06, 1e-6)
+    and close(sum(1000 / 1.06**t for t in range(3001)), 1000 + 1000 / 0.06, 1e-6),
+)
+ok(
+    "r <= 0: partial sums of a level perpetuity do not converge (N C at r = 0)",
+    sum(1000 / 1.0**t for t in range(1, 1001)) == 1000 * 1000
+    and sum(1000 / 0.99**t for t in range(1, 201)) > sum(1000 / 0.99**t for t in range(1, 101)) * 2,
+)
+ok(
+    "annuity = perpetuity paid from year 1 less perpetuity paid from year 6",
+    close(1000 / 0.06 - 1000 / 0.06 / 1.06**5, a5, 1e-9),
+)
+ok(
+    "zero-rate limit: annuity factor tends to N",
+    close((1 - 1.000001**-5) / 0.000001, 5, 1e-4),
+)
+ok(
+    "growing perpetuity 100 at 8% growing 3%: 2,000; after a payment of 100 just made: 2,060",
+    close(100 / 0.05, 2000, 1e-12) and close(100 * 1.03 / 0.05, 2060, 1e-9),
+)
+ok(
+    "growing perpetuity truncated sum agrees",
+    close(sum(100 * 1.03 ** (t - 1) / 1.08**t for t in range(1, 3001)), 2000, 1e-6),
+)
+ga = 100 / 0.05 * (1 - (1.03 / 1.08) ** 10)
+ok(
+    "growing annuity, 10 payments: 755.0134 by formula and by summing",
+    close(ga, 755.013369, 1e-5)
+    and close(ga, sum(100 * 1.03 ** (t - 1) / 1.08**t for t in range(1, 11)), 1e-9),
+)
+ok(
+    "g = r boundary: N C1/(1+r) = 925.9259, and the r != g formula tends to it",
+    close(sum(100 * 1.08 ** (t - 1) / 1.08**t for t in range(1, 11)), 925.925926, 1e-5)
+    and close(100 / (0.08 - 0.0799999) * (1 - (1.0799999 / 1.08) ** 10), 925.925926, 1e-3),
+)
+ok(
+    "monthly: 200 a month, 36 months, 0.75%: 6,289.3611",
+    close(200 * (1 - 1.0075**-36) / 0.0075, 6289.361050, 1e-5),
+)
+m_eff = 1.06 ** (1 / 12) - 1
+ok(
+    "6% effective: monthly rate 0.48676%; 12 x 100 worth 1,162.88, not 1,161.89 at 0.5%",
+    close(m_eff, 0.0048676, 1e-7)
+    and close(100 * (1 - (1 + m_eff) ** -12) / m_eff, 1162.88, 0.005)
+    and close(100 * (1 - 1.005**-12) / 0.005, 1161.89, 0.005),
+)
+ok(
+    "OpenStax 8.2: year-3 PV of 25,000 at 8% is 19,845.81; five payments 99,817.75",
+    close(25000 / 1.08**3, 19845.81, 0.005)
+    and close(sum(25000 / 1.08**t for t in range(1, 6)), 99817.75, 0.005),
+)
+
+print("== loan amortisation")
+pay = 10000 * 0.08 / (1 - 1.08**-4)
+ok("payment on 10,000, 4 years, 8%: 3,019.2080", close(pay, 3019.208045, 1e-5))
+bal, schedule = 10000.0, []
+for k in range(1, 5):
+    interest = 0.08 * bal
+    principal = pay - interest
+    bal -= principal
+    schedule.append((interest, principal, bal))
+ok(
+    "schedule rows as printed",
+    all(
+        close(x, y, 5e-5)
+        for row, want in zip(
+            schedule,
+            [
+                (800.0, 2219.2080, 7780.7920),
+                (622.4634, 2396.7447, 5384.0473),
+                (430.7238, 2588.4843, 2795.5630),
+                (223.6450, 2795.5630, 0.0),
+            ],
+        )
+        for x, y in zip(row, want)
+    ),
+)
+ok(
+    "balance = PV of remaining payments = retrospective balance, every year",
+    all(
+        close(b, pay * (1 - 1.08 ** -(4 - k)) / 0.08, 1e-8)
+        and close(b, 10000 * 1.08**k - pay * (1.08**k - 1) / 0.08, 1e-8)
+        for k, (_, _, b) in enumerate(schedule, 1)
+    ),
+)
+ok(
+    "principal parts grow by 1.08; total interest 2,076.8322",
+    all(close(schedule[k + 1][1], 1.08 * schedule[k][1], 1e-9) for k in range(3))
+    and close(sum(row[0] for row in schedule), 2076.832178, 1e-5)
+    and close(4 * pay - 10000, 2076.832178, 1e-5),
+)
+bal0, rows0 = 10000.0, []
+for k in range(1, 5):
+    interest0 = 0.0 * bal0  # schedule recursion with r = 0
+    bal0 -= 2500.0 - interest0
+    rows0.append(bal0)
+ok(
+    "zero rate: payment L/N = 2,500, balances 7,500, 5,000, 2,500, 0 = L(1 - k/N)",
+    rows0 == [10000 * (1 - k / 4) for k in range(1, 5)] == [7500.0, 5000.0, 2500.0, 0.0],
+)
+eps = 1e-7
+pay_eps = 10000 * eps / (1 - (1 + eps) ** -4)
+ok(
+    "the r -> 0 limits of A and B_k are L/N and L(1 - k/N)",
+    close(pay_eps, 2500.0, 1e-2)
+    and all(
+        close(pay_eps * (1 - (1 + eps) ** -(4 - k)) / eps, 10000 * (1 - k / 4), 1e-2)
+        for k in range(1, 4)
+    ),
+)
+ok(
+    "lender's IRR equals the loan rate",
+    close(bisect(lambda x: npv(x, [-10000] + [pay] * 4), 0.0, 1.0), 0.08, 1e-9),
+)
+af = (1 - 1.005**-36) / 0.005
+car = 32000 / af
+bal = 32000.0
+total_int = 0.0
+for _ in range(36):
+    total_int += 0.005 * bal
+    bal -= car - 0.005 * bal
+ok(
+    "OpenStax auto loan: factor 32.8710, payment 973.5020, interest 3,046.07, month 1 split 160.00/813.50",
+    close(af, 32.871016, 1e-6)
+    and close(car, 973.501998, 1e-6)
+    and close(total_int, 3046.07, 0.005)
+    and close(bal, 0.0, 1e-6)
+    and close(973.50 - 160.00, 813.50, 1e-9),
+)
+ok("6% compounded monthly is 6.1678% effective", close(1.005**12 - 1, 0.061678, 1e-6))
+
+print("== internal rate of return")
+conv = [-1000, 300, 400, 500]
+irr = bisect(lambda x: npv(x, conv), 0.0, 1.0)
+ok(
+    "NPV at 6% 58.8271; IRR 8.8963% by bisection",
+    close(npv(0.06, conv), 58.827085, 1e-5) and close(irr, 0.088963, 1e-6),
+)
+x, steps = 0.0, []
+for _ in range(3):
+    x -= npv(x, conv) / sum(-t * c / (1 + x) ** (t + 1) for t, c in enumerate(conv))
+    steps.append(x)
+ok(
+    "Newton from 0: 7.6923, 8.8737, 8.8963 percent",
+    all(close(s, w, 1e-6) for s, w in zip(steps, (0.076923, 0.088737, 0.088963))),
+)
+fac = [-350, 950, -620]
+disc = 950**2 - 4 * 350 * 620
+roots = sorted(1 / ((950 + s * math.sqrt(disc)) / 1240) - 1 for s in (1, -1))
+ok(
+    "facility: two IRRs 9.1797% and 62.2488%, NPV zero at both",
+    close(roots[0], 0.091797, 1e-6)
+    and close(roots[1], 0.622488, 1e-6)
+    and all(close(npv(r, fac), 0, 1e-9) for r in roots),
+)
+ok(
+    "facility NPV -20 at 0%, +13.9053 at 30%, -30 at 100%",
+    close(npv(0, fac), -20, 1e-9)
+    and close(npv(0.3, fac), 13.905325, 1e-6)
+    and close(npv(1.0, fac), -30, 1e-9),
+)
+ok(
+    "no IRR: +100, -250, +200 has negative discriminant; minimum NPV 21.875 at 60%",
+    250**2 - 4 * 100 * 200 < 0
+    and close(npv(0.6, [100, -250, 200]), 21.875, 1e-9)
+    and min(npv(k / 1000, [100, -250, 200]) for k in range(-900, 20000)) > 21.87,
+)
+ok(
+    "borrowing +1,000, -1,100: IRR 10%, NPV at 8% -18.52",
+    close(bisect(lambda x: npv(x, [1000, -1100]), 0.0, 1.0), 0.10, 1e-9)
+    and close(npv(0.08, [1000, -1100]), -18.52, 0.005),
+)
+reg = [-16000, 2000, 4000, 5000, 5000, 5000, 5000]
+heavy = [-25000, 2000, 4000, 8000, 9000, 9000, 9000]
+cross = bisect(lambda x: npv(x, [h - g for h, g in zip(heavy, reg)]), 0.0, 1.0)
+ok(
+    "OpenStax machines: IRRs 14.0855% and 13.2040%, NPVs at 9% 2,835.62 and 3,970.67, crossover 11.9265%",
+    close(bisect(lambda x: npv(x, reg), 0, 1), 0.140855, 1e-6)
+    and close(bisect(lambda x: npv(x, heavy), 0, 1), 0.132040, 1e-6)
+    and close(npv(0.09, reg), 2835.62, 0.005)
+    and close(npv(0.09, heavy), 3970.67, 0.005)
+    and close(cross, 0.119265, 1e-6)
+    and close(npv(cross, reg), npv(cross, heavy), 1e-6),
+)
+dbl = [-100, 220, -121]
+ok(
+    "double root: -100, 220, -121 has NPV -(11/(1+r) - 10)^2, never positive; -1 at 0%, -0.6944 at 20%",
+    all(close(npv(k / 100, dbl), -((11 / (1 + k / 100) - 10) ** 2), 1e-9) for k in range(-50, 301))
+    and max(npv(k / 1000, dbl) for k in range(-500, 3001)) <= 1e-12
+    and close(npv(0, dbl), -1, 1e-12)
+    and close(npv(0.2, dbl), -0.694444, 1e-6),
+)
+ok(
+    "double root: 10% is the sole distinct IRR (root 10/11 of -(11x - 10)^2, counted twice)",
+    121 * (10 / 11) ** 2 - 220 * (10 / 11) + 100 < 1e-12 and 220**2 - 4 * 121 * 100 == 0,
+)
+ok(
+    "double root: no grid bracket has opposite signs, and bisection refuses [0, 0.2]",
+    not any(npv(k / 1000, dbl) * npv((k + 1) / 1000, dbl) < 0 for k in range(-500, 3000))
+    and rejects(lambda x: npv(x, dbl), 0.0, 0.2),
+)
+x = 0.0
+for _ in range(60):
+    d = sum(-t * c / (1 + x) ** (t + 1) for t, c in enumerate(dbl))
+    if d == 0:
+        break
+    x -= npv(x, dbl) / d
+ok(
+    "double root: Newton's iterate passes the domain and residual test (|NPV| <= 1e-9 sum|CF|)",
+    x > -1 and abs(npv(x, dbl)) <= 1e-9 * sum(abs(c) for c in dbl) and close(x, 0.10, 1e-6),
+    f"{x:.9f}",
+)
+ok(
+    "double root: IRR 10% exceeds an 8% hurdle, yet NPV at 8% is -0.0343",
+    close(npv(0.08, dbl), -0.034294, 1e-6),
+)
+neg = [-100, 50, 40]
+irr_neg = bisect(lambda x: npv(x, neg), -0.5, 0.0)
+ok(
+    "conventional stream with negative sum: one IRR, negative (-6.9926%); NPV positive below, negative above",
+    close(irr_neg, -0.069926, 1e-6)
+    and npv(irr_neg - 0.05, neg) > 0
+    and npv(irr_neg + 0.05, neg) < 0
+    and close(npv(0, neg), -10, 1e-12),
+    f"{irr_neg:.6f}",
+)
+ok(
+    "bisect rejects lo >= hi and same-sign ends",
+    rejects(lambda x: npv(x, conv), 0.5, 0.1)
+    and rejects(lambda x: npv(x, conv), 0.1, 0.1)
+    and rejects(lambda x: npv(x, conv), 0.0, 0.05),
+)
+ok(
+    "bisect returns an endpoint root exactly: -100, 125 at 25%",
+    bisect(lambda x: npv(x, [-100, 125]), 0.25, 1.0) == 0.25
+    and bisect(lambda x: npv(x, [-100, 125]), 0.0, 0.25) == 0.25,
+)
+ok(
+    "reinvesting the interim inflows at the IRR grows the outlay at the IRR",
+    close(
+        sum(c * (1 + irr) ** (3 - t) for t, c in enumerate(conv) if t), 1000 * (1 + irr) ** 3, 1e-6
+    ),
+)
+
+print("== forward on a dividend-paying share (discrete compounding)")
+s_0, dvd, rate = 50.0, 1.00, 0.04
+pv_div = dvd / (1 + rate) ** 0.5
+fwd_share = (s_0 - pv_div) * (1 + rate)
+ok(
+    "PV of dividend 0.9806, forward 50.9802, equal to S(1+r) - D(1+r)^0.5",
+    close(pv_div, 0.980581, 1e-6)
+    and close(fwd_share, 50.980196, 1e-6)
+    and close(fwd_share, s_0 * 1.04 - dvd * 1.04**0.5, 1e-12),
+)
+# Ledger: two loans, 0.9806 for six months and 49.0194 for a year, buy the share, sell forward.
+short_loan, long_loan = pv_div, s_0 - pv_div
+ok("the dividend repays the six-month loan exactly", close(short_loan * 1.04**0.5, dvd, 1e-12))
+ok("forward proceeds repay the one-year loan exactly", close(long_loan * 1.04, fwd_share, 1e-12))
+ok(
+    "arbitrage at 51.50 earns 0.5198; reverse at 50.50 earns 0.4802",
+    close(51.50 - long_loan * 1.04, 0.519804, 1e-6)
+    and close(long_loan * 1.04 - 50.50, 0.480196, 1e-6),
+)
+r_cont = math.log(1.04)
+ok(
+    "Hull's (S - I)e^{rT} with the continuous equivalent gives the same forward",
+    close((s_0 - dvd * math.exp(-r_cont * 0.5)) * math.exp(r_cont), fwd_share, 1e-12),
 )
 
 if fails:

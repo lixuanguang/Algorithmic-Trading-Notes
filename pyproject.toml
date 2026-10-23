@@ -16,6 +16,7 @@ dependencies = [
 dev = [
     "pre-commit==4.6.2",
     "pre-commit-hooks==6.0.0",
+    "mypy==2.4.0",
     "pytest==9.1.1",
     "ruff==0.16.5",
 ]
@@ -25,9 +26,23 @@ empirical = [
     "xlrd==2.0.2",
 ]
 
+[build-system]
+# uv uses its built-in backend when this pin matches the running uv, so no build download.
+requires = ["uv_build==0.12.7"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "trading_notes"
+
 [tool.uv]
 required-version = "==0.12.7"
-package = false
+# The reusable code under src/trading_notes is installed as a package, so scripts and tests
+# import it normally instead of modifying sys.path. `make` installs it non-editable
+# (UV_NO_EDITABLE): CPython skips an editable install's .pth file once macOS flags it
+# hidden, as file sync can do inside ~/Documents. The cache keys reinstall the package
+# whenever a source file changes, so a non-editable copy never goes stale.
+package = true
+cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.py" }]
 default-groups = ["dev"]
 # Transitive versions kept equal to the other research repository where they overlap.
 constraint-dependencies = ["pandas==3.0.5"]
@@ -35,19 +50,20 @@ constraint-dependencies = ["pandas==3.0.5"]
 [tool.ruff]
 target-version = "py314"
 line-length = 100
-src = ["tools"]
+src = ["src", "."]
 # Preserved historical runs are kept exactly as they were executed.
 extend-exclude = ["notes/artefacts/**/superseded-*", "guide", "reading_materials", "reading materials"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "W", "UP", "RUF", "D", "ANN401"]
+select = ["E", "F", "I", "W", "UP", "RUF", "D", "ANN"]
 
 [tool.ruff.lint.per-file-ignores]
-# Evidence scripts record one computation each and are documented by their module
-# docstring and the source-review records, not as a library API. Their long data,
-# formula and printed-result lines, source-notation variable names (l, I, O), named
-# lambdas for numeric functions and math-symbol first words (mu, lambda, t) are kept.
-"notes/artefacts/**/*.py" = ["E501", "D1", "D205", "D403", "E731", "E741"]
+# Evidence modules keep their provenance docstrings and each printed check name on one
+# source line, as printed. The legacy exemptions of unmigrated artefacts are scoped to that
+# folder by notes/artefacts/ruff.toml; all other code gets every rule.
+"src/trading_notes/numerical/{funding_repo,fra_settlement,multicurve,amm_pool,country_risk_premium}.py" = [
+    "E501",
+]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -58,8 +74,36 @@ third-party = "third party library imports"
 first-party = "project library imports"
 local-folder = "project library imports"
 
+[tool.mypy]
+# Strict checking of the migrated scope: the package, its entrypoints and their tests.
+# Numerical artefacts join this list as they are migrated (see notes/artefacts/ruff.toml).
+files = [
+    "src",
+    "tools",
+    "tests",
+    "notes/artefacts/short-term-funding/funding-repo-checks.py",
+    "notes/artefacts/rates-credit-mortgages/fra-settlement-check.py",
+    "notes/artefacts/rates-credit-mortgages/multicurve-check.py",
+    "notes/artefacts/crypto-perpetuals/amm-checks.py",
+    "notes/artefacts/corporate-finance/country-risk-premium-check.py",
+]
+mypy_path = "src"
+python_version = "3.14"
+strict = true
+disallow_any_explicit = true
+disallow_any_decorated = true
+disallow_any_unimported = true
+warn_unreachable = true
+enable_error_code = [
+    "ignore-without-code",
+    "possibly-undefined",
+    "redundant-expr",
+    "truthy-bool",
+    "unused-awaitable",
+]
+
 [tool.pytest.ini_options]
-testpaths = ["tools"]
+testpaths = ["tests"]
 python_files = ["test_*.py"]
 addopts = "--strict-config --strict-markers"
 filterwarnings = ["error"]

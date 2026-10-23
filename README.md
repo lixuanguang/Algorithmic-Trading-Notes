@@ -21,6 +21,8 @@ A source-based reference on quantitative trading and the financial analysis behi
 | `notes/tooling/` | Standalone calculator, Python, editor and research-tool notes |
 | `tools/check_compendium.py` | Entry, citation, label and pathway-link checks; Part, section and specialist-pathway agreement with the guide; single inclusion of every topic file |
 | `tools/check_coverage.py` | Objective and crosswalk structure, coverage report and optional outline hash check |
+| `src/trading_notes/` | Reusable typed package. `structure/` holds the structural checks behind the two scripts above: the shared compendium and guide representation (`compendium.py`), each checker's rules and report (`compendium_check.py`, `coverage_check.py`) and JSON field validation (`json_fields.py`); it imports only the standard library. `numerical/` holds migrated numerical checks: the per-check report (`report.py`) and the checks behind five artefact scripts (`funding-repo-checks.py`, `fra-settlement-check.py`, `multicurve-check.py`, `amm-checks.py` and `country-risk-premium-check.py`), which are now entrypoints that call them. The two subpackages do not import each other |
+| `tests/` | Tests of the package and the checker scripts, on synthetic repositories |
 
 ## Build and check
 
@@ -31,21 +33,22 @@ git clone https://github.com/lixuanguang/Algorithmic-Trading-Notes.git
 cd Algorithmic-Trading-Notes
 make sync           # install the locked environment from uv.lock
 uv run pre-commit install
-make source-check   # lock, lint, format, compendium and coverage checks, tests, numerical examples
+make source-check   # lock, lint, format, types, compendium and coverage checks, tests, numerical examples
 make check          # source-check, the outline hash check and the PDF build
 ```
 
 | Target | Runs |
 | --- | --- |
-| `make lint`, `make format-check`, `make format` | ruff on `tools/` and `notes/artefacts/` |
+| `make lint`, `make format-check`, `make format` | ruff on `src/`, `tools/`, `tests/` and `notes/artefacts/` |
+| `make typecheck` | strict mypy on `src/`, `tools/`, `tests/` and the migrated artefact entrypoints (`[tool.mypy]` in `pyproject.toml`) |
 | `make check-compendium`, `make check-coverage` | the two structural checkers with `--check` |
-| `make test` | pytest on `tools/` |
+| `make test` | pytest on `tests/` |
 | `make examples` | every `notes/artefacts/*/*check*.py` script, from its own folder, with warnings as errors |
 | `make verify-outlines` | the coverage check plus hashes of the local outline copies |
 | `make pdf` | `latexmk -lualatex` in `compendium/` |
 | `make pre-commit` | every pre-commit hook on all files |
 
-Dependencies are pinned exactly in `pyproject.toml` and resolved in `uv.lock`; after changing them, run `uv lock` and commit both files. Scripts that read spreadsheet data need the `empirical` group: `uv run --group empirical python <script>`. Remote CI runs `make source-check` only after a pull request into `main` is merged, on the merged commit; commits, pushes, opening or updating a pull request, labels and closing a pull request without merging run nothing, so run `make check` and the pre-commit hooks locally before merging. The outline check and the PDF build need git-ignored local copies, so they run locally only. The guide is committed in this repository, so the workflow needs no secrets; it must not switch to a privileged trigger that runs untrusted pull-request code. `make examples` runs in the default environment; scripts that read spreadsheets, directly or through another script (for example `jet_fuel_hedge_test.py` through `backwardation_test.series`), need `--group empirical`.
+Dependencies are pinned exactly in `pyproject.toml` and resolved in `uv.lock`; after changing them, run `uv lock` and commit both files. The project itself is installed as the `trading_notes` package, so scripts and tests import it normally, from any working directory: `uv run --project <repo> python <repo>/tools/check_coverage.py --root <repo>`. `make` installs it non-editable (`UV_NO_EDITABLE=1`) and uv reinstalls it whenever a file under `src/` changes; set the same variable for direct `uv run` commands if imports of `trading_notes` fail with "Skipping hidden .pth file" under `python -v`, which happens when macOS file sync marks the environment's files hidden. All Python code gets every ruff rule, including annotation and docstring rules, except the unmigrated scripts in `notes/artefacts/`, whose legacy exemptions are scoped to that folder by `notes/artefacts/ruff.toml`; a migrated artefact entrypoint is named there and in `[tool.mypy] files`, which mypy checks strictly. The structural checkers exit 0, or 1 with `--check` when they report a problem; a missing or malformed pinned guide file is reported on stderr with status 1, and command-line usage errors exit 2. Scripts that read spreadsheet data need the `empirical` group: `uv run --group empirical python <script>`. Remote CI runs `make source-check` only after a pull request into `main` is merged, on the merged commit; commits, pushes, opening or updating a pull request, labels and closing a pull request without merging run nothing, so run `make check` and the pre-commit hooks locally before merging. The outline check and the PDF build need git-ignored local copies, so they run locally only. The guide is committed in this repository, so the workflow needs no secrets; it must not switch to a privileged trigger that runs untrusted pull-request code. `make examples` runs in the default environment; scripts that read spreadsheets, directly or through another script (for example `jet_fuel_hedge_test.py` through `backwardation_test.series`), need `--group empirical`.
 
 Catalogue citations link to the reading-list PDF in `guide/`.
 

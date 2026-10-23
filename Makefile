@@ -1,11 +1,13 @@
 .DEFAULT_GOAL := check
 
 UV := uv
-PYTHON_PATHS := tools notes/artefacts
+# Install the project package non-editable; see [tool.uv] in pyproject.toml.
+export UV_NO_EDITABLE := 1
+PYTHON_PATHS := src tools tests notes/artefacts
 # Numerical evidence scripts; preserved superseded runs live one level deeper and are excluded.
 CHECK_SCRIPTS := $(sort $(wildcard notes/artefacts/*/*check*.py))
 
-.PHONY: sync lock-check format format-check lint test check-compendium check-coverage \
+.PHONY: sync lock-check format format-check lint typecheck test check-compendium check-coverage \
 	verify-outlines examples pdf pre-commit source-check check
 
 sync:
@@ -22,6 +24,10 @@ format-check:
 
 lint:
 	$(UV) run --frozen ruff check $(PYTHON_PATHS)
+
+# Strict mypy over the migrated scope listed in [tool.mypy] files.
+typecheck:
+	$(UV) run --frozen mypy
 
 test:
 	$(UV) run --frozen pytest -q
@@ -52,6 +58,6 @@ pdf:
 pre-commit:
 	$(UV) run --frozen pre-commit run --all-files
 
-source-check: lock-check lint format-check check-compendium check-coverage test examples
+source-check: lock-check lint format-check typecheck check-compendium check-coverage test examples
 
 check: source-check verify-outlines pdf

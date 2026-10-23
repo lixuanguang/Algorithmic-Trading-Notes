@@ -20,7 +20,7 @@ Inference repair (derivatives and empirical validation (2026-10-17), after the r
   t statistic is fx_ppp_oos_test.panel_nw_t (sum within origin month, Bartlett over h-1 calendar months; h lags as a
   sensitivity). Pooling weights (each currency-month 1/N), forecasts, OOS R^2 and the carry portfolio (already one
   observation per month) are unchanged.
-Run: uv run python fx_carry_test.py <folder with the FRED csv files>  (numpy). Writes fx_carry_monthly.csv.
+Run: uv run --frozen --no-editable python fx_carry_test.py <folder with the FRED csv files>  (numpy). Writes fx_carry_monthly.csv.
 """
 
 # standard library imports

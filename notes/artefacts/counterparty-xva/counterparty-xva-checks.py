@@ -26,7 +26,7 @@ L2 correction pass (2026-10-21): the Hull-White discount factor's sign was corre
 checks that reject the previous sign; Part 1 adds the units of Gregory's EPE x spread approximation and a non-unit
 discount example. Seeds, inputs and tolerances of the original checks are unchanged.
 
-Run: uv run python counterparty-xva-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python counterparty-xva-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

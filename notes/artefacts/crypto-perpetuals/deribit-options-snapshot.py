@@ -6,7 +6,7 @@ Reads Deribit's public API responses saved on 2026-10-17 (reading_materials/empi
 Reports, for BTC options: inverse (coin-settled, 'reversed') against USDC-settled linear listings, expiries, strikes
 per expiry, and how concentrated open interest is across expiries and strikes. A snapshot of one venue on one day;
 no other venue was read, so it says nothing about "fewer venues" and is not a time series.
-Run: uv run python deribit-options-snapshot.py <reading_materials/empirical-extensions/deribit>
+Run: uv run --frozen --no-editable python deribit-options-snapshot.py <reading_materials/empirical-extensions/deribit>
 """
 
 # standard library imports

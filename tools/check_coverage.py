@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Check the subject coverage records and reconcile the external outline crosswalk.
 
-Run: uv run python tools/check_coverage.py [--check] [--verify-outlines] [--json] [--root DIR]
+Run: uv run --frozen --no-editable python tools/check_coverage.py [--check] [--verify-outlines]
+    [--json] [--root DIR]
 (`make check-coverage` and `make verify-outlines` run it with --check).
 
 The checks are trading_notes.structure.coverage_check; this script parses arguments,

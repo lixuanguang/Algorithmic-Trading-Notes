@@ -6,7 +6,7 @@
 2. Two forecasts: Var g = 16, Var g' = 25, Cov(g, g') = 5, Cov(r, g) = 3, Cov(r, g') = 4, Var r = 81:
    regression weights Sigma^-1 c = (0.1467, 0.1307); IC of g' = 4/(9*5) = 0.089; combined IC sqrt(c' Sigma^-1 c)/9 = 0.1090.
 3. Table 10.1: alpha = residual volatility * 0.09 * score, to within the rounding of the printed two-decimal scores.
-Run: uv run python forecast-checks.py   (numpy, scipy). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python forecast-checks.py   (numpy, scipy). Exits non-zero on failure.
 """
 
 # standard library imports

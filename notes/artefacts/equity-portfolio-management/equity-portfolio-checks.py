@@ -17,7 +17,7 @@ reference rescaled the unconstrained solution by benchmark weights, which is fea
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python equity-portfolio-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python equity-portfolio-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

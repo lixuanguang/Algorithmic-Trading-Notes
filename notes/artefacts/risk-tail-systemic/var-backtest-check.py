@@ -8,7 +8,7 @@ Student-t(6) shocks, 1 percent HS VaR (250-day window) and FHS VaR (true GARCH f
 from the same window) are backtested over 20 000 days: HS's violations cluster (probability of a violation the day
 after a violation far above 1 percent) while FHS's do not, the dynamic-updating claim in a setting where the model is
 right. This does not test either method on market data.
-Run: uv run python var-backtest-check.py   (numpy, scipy; about 5 s). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python var-backtest-check.py   (numpy, scipy; about 5 s). Exits non-zero on failure.
 """
 
 # standard library imports

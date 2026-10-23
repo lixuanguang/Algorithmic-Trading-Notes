@@ -24,7 +24,7 @@ Count convention: one check is one executed ok() call (a call inside a loop coun
 Conventions are stated beside each block: semiannual coupons, bond-equivalent (doubled) yields unless stated, prices
 per 100 of par, durations in years, PVBP per 100 of par for one basis point.
 
-Run: uv run python bond-valuation-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python bond-valuation-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

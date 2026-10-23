@@ -19,7 +19,7 @@ Part 1 deterministic; part 2 simulation, default_rng(20261023), 100,000 paths of
 blocks of 10,000, nested grids N = 13, 52, 208, Leland numbers K = 0.1 and 0.4; part 3 the call-spread hedge-cost
 demonstration on the same paths (N = 52, kappa = 0.2 percent, BSM deltas at sigma). Synthetic model data only.
 
-Run: uv run python transaction-cost-hedging-check.py   Exits 1 on failure. About 20 seconds.
+Run: uv run --frozen --no-editable python transaction-cost-hedging-check.py   Exits 1 on failure. About 20 seconds.
 """
 
 # standard library imports

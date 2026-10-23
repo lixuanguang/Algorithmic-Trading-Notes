@@ -3,7 +3,8 @@
 Empirical extensions, 2026-10-17. The checks, their sources and derivations are in
 trading_notes.numerical.amm_pool.
 
-Run: uv run python amm-checks.py (standard library). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.amm_pool
+(standard library). Exits non-zero on failure.
 """
 
 # standard library imports

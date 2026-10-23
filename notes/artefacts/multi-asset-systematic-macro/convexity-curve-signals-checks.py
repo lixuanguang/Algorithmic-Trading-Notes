@@ -1,6 +1,6 @@
 """macro markets and pricing review follow-up checks (2026-10-16): numbers behind the corrections to the macro markets and pricing review entries.
 
-Run from anywhere:  uv run python convexity-curve-signals-checks.py
+Run from anywhere:  uv run --frozen --no-editable python convexity-curve-signals-checks.py
 Each section prints its result and asserts what the corrected entries state. Section 2 reads
 ust-10y3m-monthly.csv (in this folder), monthly averages of Treasury's daily par yields, 10-year minus
 3-month and 10-year minus 2-year, built from Treasury's daily CSV files for 2006-2026 (retrieved 2026-10-16).

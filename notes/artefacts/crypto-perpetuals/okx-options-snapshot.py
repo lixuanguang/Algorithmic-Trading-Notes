@@ -4,7 +4,7 @@ with empirical extensions (2026-10-17)'s Deribit snapshot (def:crypto-venue-inst
 Inputs (OKX public REST API v5, retrieved 2026-10-17 about 11:52 UTC): /api/v5/public/instruments?instType=OPTION&uly=BTC-USD
 and /api/v5/public/open-interest?instType=OPTION&uly=BTC-USD. Reported: instrument counts by settlement currency and
 contract type, expiries, open interest (oiUsd) by contract type, by expiry and in the ten largest instruments.
-Run: uv run python okx-options-snapshot.py <instruments.json> <open-interest.json>
+Run: uv run --frozen --no-editable python okx-options-snapshot.py <instruments.json> <open-interest.json>
 """
 
 # standard library imports

@@ -6,7 +6,7 @@ read at S = 100, a grid node; S_max = 3K. Acceptance ranges, seeds (20261021, 20
 fixed before any run and are not tuned. Synthetic model data only: the checks show that the
 schemes are implemented correctly under Black-Scholes-Merton; they are not evidence about markets.
 
-Run: uv run python numerical-pricing-checks.py   Exits 1 on failure. About 30 seconds.
+Run: uv run --frozen --no-editable python numerical-pricing-checks.py   Exits 1 on failure. About 30 seconds.
 """
 
 # standard library imports

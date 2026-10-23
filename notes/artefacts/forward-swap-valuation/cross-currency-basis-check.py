@@ -16,7 +16,7 @@ and exactly b = -kappa (1 + r_usd tau) / (1 + (r_f + kappa) tau). The period amo
 All checks deterministic, fixed before the first run: relative 1e-12, or 1e-6 currency on 100 million. Synthetic
 inputs; not evidence about the size of the basis in any market.
 
-Run: uv run python cross-currency-basis-check.py   Exits 1 on failure.
+Run: uv run --frozen --no-editable python cross-currency-basis-check.py   Exits 1 on failure.
 """
 
 # standard library imports

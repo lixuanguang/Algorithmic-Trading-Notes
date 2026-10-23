@@ -19,7 +19,7 @@ sample; 20261094 the 500-sample shape diagnostic; 20261095 the n = 5,000 t4 samp
 The L2 freeze reproduction of the shape diagnostic used NumPy default_rng(20261021); that seed was examined during
 planning and is reported only as such. Synthetic data only: no empirical claim.
 
-Run: uv run python extreme-value-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python extreme-value-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

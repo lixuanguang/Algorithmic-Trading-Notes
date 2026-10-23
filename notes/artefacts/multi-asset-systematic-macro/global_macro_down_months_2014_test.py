@@ -20,7 +20,7 @@ Diagnostics added in this batch (not part of the protocol's verdict): the same s
 workbook, and a month-by-month comparison with the 55 values read from the HTML page in method validation (2026-10-17), to detect
 revisions between the two retrievals. The index is computed by BarclayHedge from reporting funds; its constituents and
 past values can change (late reporters, new funds, closures), so every figure is as of the retrieval time.
-Run: uv run --group empirical python global_macro_down_months_2014_test.py <workbook .xls> <French factors csv>
+Run: uv run --frozen --no-editable --group empirical python global_macro_down_months_2014_test.py <workbook .xls> <French factors csv>
      (numpy, scipy, xlrd 2.0.1 for the .xls; under 1 s). Writes global_macro_monthly_2014.csv next to this script.
 """
 

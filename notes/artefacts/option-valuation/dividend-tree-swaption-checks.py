@@ -11,7 +11,7 @@ and the callable bond as a straight bond less a receiver swaption (Business Snap
 reused. The payoff identity B_T - L = L A_T (s_K - s_T) is checked on 1,000 random curves at the exercise date (seed
 20261121).
 
-Run: uv run python dividend-tree-swaption-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python dividend-tree-swaption-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

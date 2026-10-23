@@ -12,7 +12,7 @@ of the tracking difference, cross-checked by a centred quadratic form, the KKT c
 shrinks two invented track records' information ratios toward zero under a normal prior and shows how the ranking
 depends on the assumed prior spread.
 
-No random draws. Run: uv run python manager-selection-checks.py   (numpy, scipy). Exits 1 on failure.
+No random draws. Run: uv run --frozen --no-editable python manager-selection-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

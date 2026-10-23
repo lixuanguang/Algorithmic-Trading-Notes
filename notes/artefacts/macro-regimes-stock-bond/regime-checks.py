@@ -6,7 +6,7 @@
    services changes only for windows starting from January 2006; the v1 splice is reported separately.
 4. Real-time and ex-post blocks are separate and labelled; the decision rule is applied to the real-time block.
 5. v1's derived panel is preserved.
-Run: uv run python regime-checks.py   (standard library; reads files next to it). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python regime-checks.py   (standard library; reads files next to it). Exits non-zero on failure.
 """
 
 # standard library imports

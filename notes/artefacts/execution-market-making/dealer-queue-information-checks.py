@@ -1,7 +1,7 @@
 """Numerical checks for dealer models and information review (market making, information and volatility, and
 feature and data engineering), 2026-10-16.
 
-Run with numpy and scipy:  uv run python dealer-queue-information-checks.py
+Run with numpy and scipy:  uv run --frozen --no-editable python dealer-queue-information-checks.py
 Each section prints its result and asserts what the entries state.
 
 1. Harris's inside spread (Table 13-1, p. 281) (def:dealer-quotes-order-flow).

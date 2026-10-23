@@ -8,7 +8,7 @@ Girsanov price) were fixed before any run and are not
 tuned. The checks show that the formulas are implemented correctly under the model; they are not evidence
 about markets.
 
-Run: uv run python stochastic-calculus-checks.py   Exits 1 on failure.
+Run: uv run --frozen --no-editable python stochastic-calculus-checks.py   Exits 1 on failure.
 """
 
 # standard library imports

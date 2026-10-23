@@ -33,7 +33,7 @@ drawdown omitted the initial wealth of 1, as did its brute-force check.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python backtest-design-checks.py   (numpy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python backtest-design-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

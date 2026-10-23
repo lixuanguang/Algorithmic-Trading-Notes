@@ -42,7 +42,7 @@ Test. Mean response in signal quarters minus non-signal quarters, Welch t (quart
   trough included), which uses information not available in real time.
 Sufficient test. A sign is supported if the real-time difference has the hypothesised sign (dy10 < 0, dcred > 0,
   eq < 0, dfn > 0, usd > 0) with |t| > 2.
-Run (v2, under 2 s): uv run --group empirical python regime_recession_test.py <empirical folder>   (expects rucqvmd.xlsx,
+Run (v2, under 2 s): uv run --frozen --no-editable --group empirical python regime_recession_test.py <empirical folder>   (expects rucqvmd.xlsx,
   fred/*.csv, french/*.csv). Writes regime_quarters.csv (derived panel).
 """
 

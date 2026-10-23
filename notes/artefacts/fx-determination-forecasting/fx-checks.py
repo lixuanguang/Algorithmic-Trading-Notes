@@ -7,7 +7,7 @@
 3. Expanding training uses only outcomes known at the forecast date (t' + h <= t).
 4. Rebuilt outputs: AUD and NZD predictors end in September 2025, not September 2026; the panel records CPI ages;
    the results label the portfolio as not executable; v1's outputs are preserved.
-Run: uv run python fx-checks.py   (numpy; under 1 s). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python fx-checks.py   (numpy; under 1 s). Exits non-zero on failure.
 """
 
 # standard library imports

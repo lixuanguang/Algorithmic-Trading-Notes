@@ -12,7 +12,7 @@ Synthetic three-asset world: mu = (4, 6, 8) percent, volatilities (10, 15, 20) p
 equivalence (fixed before the first run; a preliminary reproduction had used them, so they are not unseen data); 20261111
 the n = 250 fractional-tail case; 20261112 the negative-skew diagnostic.
 
-Run: uv run python mean-cvar-check.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python mean-cvar-check.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

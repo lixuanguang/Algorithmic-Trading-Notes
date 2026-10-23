@@ -7,8 +7,8 @@ for YEAR = 2006 ... 2026. These are constant-maturity (CMT) par yields, a proxy 
 Estrella and Trubin's three-month secondary-market bill rate on a bond-equivalent basis (H.15).
 
 Usage (standard library only):
-  uv run python ust_monthly.py --extract RAW_DIR   # rebuild ust-daily-3m-2y-10y.csv from the yearly Treasury CSVs
-  uv run python ust_monthly.py                     # rebuild ust-10y3m-monthly.csv from ust-daily-3m-2y-10y.csv
+  uv run --frozen --no-editable python ust_monthly.py --extract RAW_DIR   # rebuild ust-daily-3m-2y-10y.csv from the yearly Treasury CSVs
+  uv run --frozen --no-editable python ust_monthly.py                     # rebuild ust-10y3m-monthly.csv from ust-daily-3m-2y-10y.csv
 Checks: dates unique and strictly increasing; every month from the first to the last present (no gaps);
 the month of the last observation flagged incomplete when it is the retrieval month (October 2026).
 """

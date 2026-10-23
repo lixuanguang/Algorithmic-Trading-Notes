@@ -16,7 +16,7 @@ Columns kept from the Annual sheet, as printed (no transformation here):
   CRSP_SPvw  CRSP value-weighted S&P 500 return including dividends (from 1926)
 The check script derives the log equity premium and the four predictors from these columns.
 
-Run: uv run --group empirical python goyal_extract_predictors.py <path to PredictorData2005_original.xlsx>
+Run: uv run --frozen --no-editable --group empirical python goyal_extract_predictors.py <path to PredictorData2005_original.xlsx>
 Writes goyal-annual-predictors-1871-2025.csv next to this script.
 """
 

@@ -8,7 +8,8 @@ __pycache__/
 # -----------------------------------------------------------------------------
 # Virtual environments / local Python envs
 # -----------------------------------------------------------------------------
-.venv/
+# No trailing slash: .venv may be a link to an environment outside a synced folder.
+.venv
 venv/
 env/
 ENV/

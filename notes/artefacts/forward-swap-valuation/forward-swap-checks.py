@@ -23,7 +23,7 @@ carry decomposition of quoted forward minus spot quote as independent checks.
 
 Count convention: one check is one executed ok() call (so a call inside a loop counts once per iteration).
 
-Run: uv run python forward-swap-checks.py   (numpy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python forward-swap-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

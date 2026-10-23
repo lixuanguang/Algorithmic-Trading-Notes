@@ -17,7 +17,7 @@ inflation-row-protocol.md; the protocol and this script are committed together, 
     Reported alongside: Newey-West t (4 quarterly lags) and the number of episodes (runs of consecutive signal vintages).
   Diagnostic, not part of the verdict: on vintage months present in both files, how often the latest CPI month differs
     and how many signal labels differ between the quarterly and the monthly vintage.
-Run: uv run --group empirical python inflation_quarterly_test.py <reading_materials root>
+Run: uv run --frozen --no-editable --group empirical python inflation_quarterly_test.py <reading_materials root>
   (expects derivatives-validation/empirical/cpiQvMd.xlsx, empirical-extensions/empirical/pcpiMvMd.xlsx, empirical-extensions/empirical/EIA_RWTCm.xls,
   source-verification/empirical/fred/GS10.csv). Writes inflation_quarterly_vintage_quarters.csv.
 """

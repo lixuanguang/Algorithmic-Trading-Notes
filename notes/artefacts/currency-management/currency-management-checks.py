@@ -14,7 +14,7 @@ and a volatility trade; and a hedging-cost budget.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python currency-management-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python currency-management-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

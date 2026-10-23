@@ -5,7 +5,7 @@ Protocol (recorded before any result was computed; committed with the results, n
 jet-fuel-hedge-protocol.md. Weekly (last common date of each ISO week) dollar changes per gallon; weeks whose
 hedge contract 1 changes delivery month are dropped; static h from the first 260 usable weeks; rolling h from the
 previous 104 (sensitivity 52) weeks; out-of-sample variance reduction VR = 1 - Var(dS - h dF)/Var(dS) after week 260.
-Run: uv run --group empirical python jet_fuel_hedge_test.py <jet .xls> <folder with EIA_EER_EPD2F_PE1_Y35NY_DPGd.xls> <folder with EIA_RCLC1d.xls>
+Run: uv run --frozen --no-editable --group empirical python jet_fuel_hedge_test.py <jet .xls> <folder with EIA_EER_EPD2F_PE1_Y35NY_DPGd.xls> <folder with EIA_RCLC1d.xls>
 """
 
 # standard library imports

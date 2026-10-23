@@ -6,7 +6,7 @@ Input: ACMTermPremium.xls as published by the Federal Reserve Bank of New York (
 not observed quantities, and are revised when the model is re-estimated; this is a description of one vintage, not a
 test. Reported: the 10-year term premium ACMTP10 over the whole sample and by decade, the share of months below zero,
 its extremes, and the 10-year yield split ACMY10 = ACMRNY10 + ACMTP10 (checked to rounding).
-Run: uv run --group empirical python acm-term-premium-summary.py <ACMTermPremium.xls>   (xlrd). Exits non-zero on failure.
+Run: uv run --frozen --no-editable --group empirical python acm-term-premium-summary.py <ACMTermPremium.xls>   (xlrd). Exits non-zero on failure.
 """
 
 # standard library imports

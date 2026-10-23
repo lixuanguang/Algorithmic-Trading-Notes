@@ -13,7 +13,7 @@ Independent numerical checks, not reproductions of the entry's formulas from the
 4. Compounded simple returns: for IID lognormal one-period gross returns, the Sharpe ratio of the compounded
    q-period simple return (excess over a compounded constant benchmark) differs from sqrt(q) times the one-period
    ratio; the exact moments are computed in closed form.
-Run: uv run python sharpe-conditions-checks.py   (numpy; about 2 s). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python sharpe-conditions-checks.py   (numpy; about 2 s). Exits non-zero on failure.
 """
 
 # standard library imports

@@ -14,7 +14,7 @@ now shows the condition matters: a unit cash-or-nothing call (S0 = 120, K = 100,
 is worth less at 30 than at 20 percent volatility, and its gamma changes sign (where d1 = 0, S about 93). The vanilla
 simulation above is unchanged.
 
-Run: uv run python volatility-mismatch-hedging-check.py   Exits 1 on failure. About 10 seconds.
+Run: uv run --frozen --no-editable python volatility-mismatch-hedging-check.py   Exits 1 on failure. About 10 seconds.
 """
 
 # standard library imports

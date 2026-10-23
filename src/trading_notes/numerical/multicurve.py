@@ -10,11 +10,12 @@ curve equals the simple forward from discount-factor ratios (the backward-lookin
 under the forward measure, ignoring convexity and day counts); (3) a two-curve FRA: projecting a term reference rate
 (a LIBOR-like curve 30 bp above OIS) and discounting at OIS against projecting and discounting on the single term
 curve. Own illustration with invented curves; not market data.
-Run through notes/artefacts/rates-credit-mortgages/multicurve-check.py (standard library).
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.multicurve (standard library).
 """
 
 # standard library imports
 import math
+import sys
 
 # project library imports
 from trading_notes.numerical.report import CheckReport
@@ -110,3 +111,7 @@ def main() -> int:
         return 1
     print("\nall checks passed")
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

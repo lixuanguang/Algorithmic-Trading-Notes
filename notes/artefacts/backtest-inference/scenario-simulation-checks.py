@@ -12,7 +12,7 @@ re-simulated distributions that share the same random draws (common random numbe
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python scenario-simulation-checks.py   (numpy, pandas). Exits 1 on failure.
+Run: uv run --frozen --no-editable python scenario-simulation-checks.py   (numpy, pandas). Exits 1 on failure.
 """
 
 # standard library imports

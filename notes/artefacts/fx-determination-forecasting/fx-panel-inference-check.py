@@ -7,7 +7,7 @@ calendar months and absorb contemporaneous cross-currency dependence, never trea
 2. Row order inside a month must not matter (a row-lag estimator depends on it).
 3. Independent currencies: the panel t must be close to sqrt(K) times a single currency's t on average.
 4. A month with no rows is a zero on the calendar grid, so lags stay calendar months across gaps.
-Run: uv run python fx-panel-inference-check.py  (numpy only; exits 1 on failure).
+Run: uv run --frozen --no-editable python fx-panel-inference-check.py  (numpy only; exits 1 on failure).
 """
 
 # standard library imports

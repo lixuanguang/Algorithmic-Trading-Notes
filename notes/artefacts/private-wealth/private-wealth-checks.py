@@ -48,7 +48,7 @@ specified and the rate is computed by stacking.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python private-wealth-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python private-wealth-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

@@ -13,7 +13,7 @@ Every closed form is checked against an independent route: numerical optimisatio
 integration, brute-force grids or the KKT conditions. The figure coordinates in
 compendium/portfolio-construction-risk/figures/mean-sd-frontier.tikz are recomputed and compared. No random draws.
 
-Run: uv run python portfolio-choice-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python portfolio-choice-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

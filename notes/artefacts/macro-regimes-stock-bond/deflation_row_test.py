@@ -6,7 +6,7 @@ been run on the same data; committed with the results, so not a preregistration)
 the quarter's middle month m, pi(L) - pi(L-12) <= -1.0 point. Hypothesis: dy10 = GS10(m+3) - GS10(m) < 0, supported if
 the signal-minus-other difference is negative with Welch |t| > 2. Alongside: Newey-West t (4 lags), episodes, and the
 slope and WTI responses of the inflation row. Loaders are copied from inflation_quarterly_test.py unchanged.
-Run: uv run --group empirical python deflation_row_test.py <reading_materials root>
+Run: uv run --frozen --no-editable --group empirical python deflation_row_test.py <reading_materials root>
   Writes deflation_quarters.csv.
 """
 

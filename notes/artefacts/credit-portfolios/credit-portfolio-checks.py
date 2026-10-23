@@ -14,7 +14,7 @@ issuer and pool claims against securitisation tranches paid from the pool alone.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python credit-portfolio-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python credit-portfolio-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

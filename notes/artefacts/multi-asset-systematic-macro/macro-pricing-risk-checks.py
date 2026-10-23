@@ -1,7 +1,7 @@
 """Numerical checks for macro markets and pricing review (regimes, transmission maps and
 practitioner frameworks), 2026-10-16.
 
-Run with numpy and scipy:  uv run python macro-pricing-risk-checks.py
+Run with numpy and scipy:  uv run --frozen --no-editable python macro-pricing-risk-checks.py
 Each section prints its result and asserts what the entries state. Locators: Gliner (2014) by chapter,
 section and PDF page of the ebook (no printed page numbers); Drobny (2006), printed = PDF - 15.
 

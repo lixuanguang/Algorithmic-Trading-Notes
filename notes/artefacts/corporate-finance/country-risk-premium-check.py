@@ -3,7 +3,8 @@
 Library gap-filling Batch L6, package L6-a, 2026-10-21. The checks, their sources and the
 first-run record are in trading_notes.numerical.country_risk_premium.
 
-Run: uv run python country-risk-premium-check.py   Exits 1 on failure.
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.country_risk_premium
+Exits 1 on failure.
 """
 
 # standard library imports

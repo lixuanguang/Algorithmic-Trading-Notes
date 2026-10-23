@@ -13,7 +13,7 @@ for internal-consistency checks, and HYPOTHETICAL inputs, labelled as such, for 
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python digital-asset-checks.py   (numpy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python digital-asset-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

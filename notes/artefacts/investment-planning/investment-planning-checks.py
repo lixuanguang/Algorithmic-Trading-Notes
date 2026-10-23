@@ -24,7 +24,7 @@ on pre-tax returns, the fall in portfolio value before any tax offset; the after
 
 Part 4 reproduces Edwards's urn calculation as quoted by Barberis and Thaler (NBER w9222, p. 14): posterior 0.97.
 
-No random draws. Run: uv run python investment-planning-checks.py   (numpy, scipy). Exits 1 on failure.
+No random draws. Run: uv run --frozen --no-editable python investment-planning-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

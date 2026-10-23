@@ -16,7 +16,7 @@ whose quantified views raise the expected return per unit of risk.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python cme-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python cme-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

@@ -8,7 +8,7 @@ Choices recorded before computing (committed with the output, so not a preregist
    ACMTP10 (New York Fed, end of month, retained from empirical extensions (2026-10-17)). KW is sampled on the last available day of each
    month; reported: common months, correlation, mean and range of KW - ACM, both series at the last common month and at
    June 2020 and December 1990. Both are model outputs and are revised; this compares two vintages, it tests nothing.
-Run: uv run --group empirical python gsw-kw-acm.py <feds200628.csv> <feds200533.csv> <ACMTermPremium.xls>   (numpy, xlrd).
+Run: uv run --frozen --no-editable --group empirical python gsw-kw-acm.py <feds200628.csv> <feds200533.csv> <ACMTermPremium.xls>   (numpy, xlrd).
 """
 
 # standard library imports

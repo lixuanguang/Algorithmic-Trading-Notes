@@ -6,7 +6,7 @@ method (White's Reality Check, modified) controls the FWE with power gained from
 the stepwise version (StepM) controls the FWE while rejecting at least as many hypotheses. Checked here on
 K = 20 jointly normal, equicorrelated (rho = 0.8) test statistics with known covariance (so the max quantiles are
 simulated exactly rather than bootstrapped), 5 false nulls with mean 3.0 and 15 true nulls with mean 0, alpha 5%.
-Run: uv run python multiple-testing-checks.py   (numpy, scipy; about 5 s). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python multiple-testing-checks.py   (numpy, scipy; about 5 s). Exits non-zero on failure.
 """
 
 # standard library imports

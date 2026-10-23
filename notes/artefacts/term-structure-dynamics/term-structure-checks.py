@@ -13,7 +13,7 @@ instruments. Part 6 runs a principal-components analysis and a volatility-by-mat
 Gurkaynak-Sack-Wright zero yields, January 1986 to September 2026 (gsw-month-end-zero.csv, produced by
 gsw-month-end-extract.py from the Board's feds200628.csv).
 
-Run from this folder: uv run python term-structure-checks.py   (numpy). Exits 1 on failure.
+Run from this folder: uv run --frozen --no-editable python term-structure-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

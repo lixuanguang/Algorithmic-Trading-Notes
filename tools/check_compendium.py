@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check compendium entries, citation keys, labels and pathway links.
 
-Run: uv run python tools/check_compendium.py [--check] [--json] [--root DIR]
+Run: uv run --frozen --no-editable python tools/check_compendium.py [--check] [--json] [--root DIR]
 (`make check-compendium` runs it with --check).
 
 The checks are trading_notes.structure.compendium_check; this script parses arguments,

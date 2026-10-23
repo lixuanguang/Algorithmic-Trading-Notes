@@ -8,7 +8,7 @@ Output: gsw-month-end-zero.csv, the last available business day of each complete
 first month with a 30-year yield in every month that follows) to September 2026, maturities 1, 2, 3, 5, 7, 10, 20
 and 30 years. The partial October 2026 month is excluded.
 
-Run from this folder: uv run python gsw-month-end-extract.py
+Run from this folder: uv run --frozen --no-editable python gsw-month-end-extract.py
 """
 
 # standard library imports

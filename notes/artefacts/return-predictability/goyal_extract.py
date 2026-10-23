@@ -14,7 +14,7 @@ Columns kept, as printed in the workbook (no transformation here):
   CRSP_SPvw  CRSP value-weighted S&P 500 return including dividends (from 1926)
 The check script derives returns, the dividend-price ratio and excess returns from these columns.
 
-Run: uv run --group empirical python goyal_extract.py <path to PredictorData2005_original.xlsx>
+Run: uv run --frozen --no-editable --group empirical python goyal_extract.py <path to PredictorData2005_original.xlsx>
 Writes goyal-annual-1871-2025.csv and goyal-monthly-1871-2025.csv next to this script.
 """
 

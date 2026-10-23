@@ -8,7 +8,7 @@ meth:forecast-scaling-ic.
    example E[error | g] = g^2 - 1, so a nonlinear function of g still predicts the error.
 3. Under joint normality the projection and the conditional mean coincide: binned conditional means of r given g
    lie on the projection line (within simulation error).
-Run: uv run python projection-checks.py   (numpy; under 1 s). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python projection-checks.py   (numpy; under 1 s). Exits non-zero on failure.
 """
 
 # standard library imports

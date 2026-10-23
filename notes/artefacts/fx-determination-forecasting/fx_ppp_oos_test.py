@@ -30,7 +30,7 @@ Inference repair (derivatives and empirical validation (2026-10-17), after the r
   calendar months (h-1 lags, the protocol's lag count, now in months; h lags as a sensitivity, because 12-month changes
   of monthly-average prices overlap for h months, not h-1). Each currency-month keeps weight 1/N, so the pooled mean
   and the pooled OOS R^2 are unchanged; only the standard error changes. Forecast-origin months are kept with each score.
-Run: uv run python fx_ppp_oos_test.py <folder with the FRED csv files>  (numpy only; about 2 s).
+Run: uv run --frozen --no-editable python fx_ppp_oos_test.py <folder with the FRED csv files>  (numpy only; about 2 s).
 Writes fx_ppp_monthly.csv (derived panel) next to this script.
 """
 

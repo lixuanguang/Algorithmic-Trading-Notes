@@ -45,7 +45,7 @@ denominator effect by recomputing weights; exclusion tracking error against a si
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python institutional-checks.py   (numpy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python institutional-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

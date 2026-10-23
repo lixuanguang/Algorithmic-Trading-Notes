@@ -17,7 +17,7 @@ the Engle-Granger residual test by hand against statsmodels' coint; the Chow sta
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python time-series-checks.py   (numpy, pandas, scipy, statsmodels). Exits 1 on failure.
+Run: uv run --frozen --no-editable python time-series-checks.py   (numpy, pandas, scipy, statsmodels). Exits 1 on failure.
 """
 
 # standard library imports

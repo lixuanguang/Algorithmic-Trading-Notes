@@ -25,7 +25,7 @@ and its convexity bounds; hand checks A0. Part B3 prints the size gap with the e
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python return-predictability-checks.py   (numpy, pandas; about 5 s). Exits 1 on failure.
+Run: uv run --frozen --no-editable python return-predictability-checks.py   (numpy, pandas; about 5 s). Exits 1 on failure.
 Recorded output: return-predictability-results.txt.
 """
 

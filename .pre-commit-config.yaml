@@ -12,21 +12,21 @@ repos:
 
       - id: ruff
         name: ruff check
-        entry: uv run --frozen ruff check --force-exclude --fix --exit-non-zero-on-fix
+        entry: uv run --frozen --no-editable ruff check --force-exclude --fix --exit-non-zero-on-fix
         language: system
         types: [python]
 
       - id: ruff-format
         name: ruff format
-        entry: uv run --frozen ruff format --force-exclude
+        entry: uv run --frozen --no-editable ruff format --force-exclude
         language: system
         types: [python]
 
       - id: mypy
-        name: mypy (strict, migrated scope)
+        name: mypy (strict)
         entry: make typecheck
         language: system
-        files: ^((src|tools|tests)/.*\.py|pyproject\.toml|notes/artefacts/(short-term-funding/funding-repo-checks|rates-credit-mortgages/(fra-settlement|multicurve)-check|crypto-perpetuals/amm-checks|corporate-finance/country-risk-premium-check)\.py|notes/artefacts/ruff\.toml)$
+        files: ^((src|tools|tests)/.*\.py|pyproject\.toml|notes/artefacts/(short-term-funding/funding-repo-checks|rates-credit-mortgages/(fra-settlement|multicurve)-check|crypto-perpetuals/amm-checks|corporate-finance/country-risk-premium-check|financial-statement-analysis/cash-flow-linkage-check|volatility-options/bsm-svi-checks|time-value-returns/time-value-return-checks|point-in-time-data/(bitemporal-check|filing-checks|filing-timestamp-checks)|funding-crowding/spiral-checks|execution-market-making/(cme-allocation|commodity-production-latency|contract-specifications-statistics)-checks|synthetic-equity-cfd-trs/synthetic_short_checks|crypto-mm-microstructure/funding_checks|model-governance-controls/reconciliation-check|portfolio-construction/(black-litterman|erc|erc-sharpe|shrinkage)-check|risk-tail-systemic/es-discrete-check|reinforcement-learning-trading/cartea_jaimungal_checks|risk-parity-vol-targeting/risk-parity-checks|volatility-options/negative-hedge-ratio-check|risk-tail-systemic/garch-ewma-check|backtest-inference/(sharpe-zero-check|drawdown-resampling-checks))\.py|notes/artefacts/ruff\.toml)$
         pass_filenames: false
 
       - id: compendium
@@ -45,43 +45,43 @@ repos:
 
       - id: detect-private-key
         name: detect private keys
-        entry: uv run --frozen detect-private-key
+        entry: uv run --frozen --no-editable detect-private-key
         language: system
         types: [text]
 
       - id: trailing-whitespace
         name: trim trailing whitespace
-        entry: uv run --frozen trailing-whitespace-fixer
+        entry: uv run --frozen --no-editable trailing-whitespace-fixer
         language: system
         types: [text]
 
       - id: end-of-file-fixer
         name: fix end of files
-        entry: uv run --frozen end-of-file-fixer
+        entry: uv run --frozen --no-editable end-of-file-fixer
         language: system
         types: [text]
 
       - id: check-yaml
         name: check yaml
-        entry: uv run --frozen check-yaml
+        entry: uv run --frozen --no-editable check-yaml
         language: system
         types: [yaml]
 
       - id: check-toml
         name: check toml
-        entry: uv run --frozen check-toml
+        entry: uv run --frozen --no-editable check-toml
         language: system
         types: [toml]
 
       - id: check-json
         name: check json
-        entry: uv run --frozen check-json
+        entry: uv run --frozen --no-editable check-json
         language: system
         types: [json]
 
       - id: check-added-large-files
         name: check added large files
-        entry: uv run --frozen check-added-large-files --maxkb=500
+        entry: uv run --frozen --no-editable check-added-large-files --maxkb=500
         language: system
         types: [file]
         # The compiled reference and the complete outline crosswalk are intentionally large.

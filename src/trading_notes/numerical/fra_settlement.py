@@ -18,11 +18,12 @@ Checks:
      start-settled payoff lies below the deterministic substitution (Jensen), by an amount that grows with the
      volatility of L (expectation by quadrature over the normal density). Illustration only; lognormal L and the
      volatilities are invented.
-Run through notes/artefacts/rates-credit-mortgages/fra-settlement-check.py (standard library).
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.fra_settlement (standard library).
 """
 
 # standard library imports
 import math
+import sys
 from collections.abc import Callable
 from typing import Final
 
@@ -145,3 +146,7 @@ def main() -> int:
         return 1
     print("\nall checks passed")
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

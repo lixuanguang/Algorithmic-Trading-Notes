@@ -9,7 +9,7 @@ commercial paper quoted on a discount basis.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run through notes/artefacts/short-term-funding/funding-repo-checks.py (standard library only).
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.funding_repo (standard library only).
 """
 
 # standard library imports
@@ -151,3 +151,7 @@ def main() -> int:
         return 1
     print("all checks passed")
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

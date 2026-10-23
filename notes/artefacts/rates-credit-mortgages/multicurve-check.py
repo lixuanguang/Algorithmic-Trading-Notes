@@ -3,7 +3,8 @@
 Empirical extensions, 2026-10-17. The checks, their sources and assumptions are in
 trading_notes.numerical.multicurve.
 
-Run: uv run python multicurve-check.py   (standard library). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.multicurve
+(standard library). Exits non-zero on failure.
 """
 
 # standard library imports

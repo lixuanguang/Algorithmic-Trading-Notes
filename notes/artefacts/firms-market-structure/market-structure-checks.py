@@ -11,7 +11,7 @@ the demand elasticity; the merger change in HHI as 2ab against recomputation fro
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python market-structure-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python market-structure-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

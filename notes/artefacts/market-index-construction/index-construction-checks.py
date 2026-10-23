@@ -10,7 +10,7 @@ are reset with additional weight factors at each rebalancing; one-way turnover i
 changes. Bond returns follow Bloomberg's Fixed Income Index Methodology (8 January 2026): price, coupon and
 paydown return on the beginning dirty value, weights fixed at the beginning market value of the returns universe.
 
-Every input is invented. No random draws. Run: uv run python index-construction-checks.py   (numpy). Exits 1 on
+Every input is invented. No random draws. Run: uv run --frozen --no-editable python index-construction-checks.py   (numpy). Exits 1 on
 failure.
 """
 

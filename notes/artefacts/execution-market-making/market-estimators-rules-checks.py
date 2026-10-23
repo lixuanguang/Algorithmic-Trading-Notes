@@ -19,7 +19,7 @@
    lookups and the range of the relative tick in the most and least liquid bands; the large-in-scale table for shares
    (Delegated Regulation (EU) 2017/587, Annex II, Table 1, unchanged by its 2019, 2023 and 2025 amendments).
 7. Platinum demand and refined-supply shares for 2025 from the WPIC Platinum Quarterly Q2 2026, Table 1 (Metals Focus data).
-Run: uv run python market-estimators-rules-checks.py   (numpy; fixed seeds; a few seconds). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python market-estimators-rules-checks.py   (numpy; fixed seeds; a few seconds). Exits non-zero on failure.
 """
 
 # standard library imports

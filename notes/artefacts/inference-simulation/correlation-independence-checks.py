@@ -10,7 +10,7 @@ of freedom (as scipy.stats.spearmanr computes it), fixed before the first run; N
 z = rho_s sqrt(n - 1) is reported beside it. Part 3 is a diagnostic of my own: the rejection rate of the t-test when a
 persistent signal is correlated with overlapping multi-day returns, all independent (seed 20261103).
 
-Run: uv run python correlation-independence-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python correlation-independence-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

@@ -19,7 +19,7 @@ of the first return at its median absolute value, gives conditional correlations
 Every formula is checked against direct aggregation of the scenario or sample portfolio returns, or against an
 independent route (numpy covariance, scipy integration, exact enumeration). No seeds are used.
 
-Run: uv run python portfolio-moments-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python portfolio-moments-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

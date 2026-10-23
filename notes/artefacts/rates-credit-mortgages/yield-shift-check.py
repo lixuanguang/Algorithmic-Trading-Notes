@@ -1,6 +1,6 @@
 """derivatives and hedging review follow-up check (2026-10-16): yield change against a parallel zero-curve shift.
 
-Continuous compounding. Run: uv run python yield-shift-check.py (numpy, scipy).
+Continuous compounding. Run: uv run --frozen --no-editable python yield-shift-check.py (numpy, scipy).
 """
 
 # third party library imports

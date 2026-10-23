@@ -20,7 +20,7 @@
    (own derivation): d ln(1+M)/d a > 0 when 2ac < u*, u* e^{u*} = 2 (e^{u*} - 1), u* ~ 1.5936.
    The chi-squared moment generating function behind (18) is checked by simulation; the exponent carries
    (E i)^2 / Var(i) where the printed (18) shows (E i)^2 (immaterial when E i = 0).
-Run: uv run python model-checks.py   (numpy and scipy). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python model-checks.py   (numpy and scipy). Exits non-zero on failure.
 """
 
 # standard library imports

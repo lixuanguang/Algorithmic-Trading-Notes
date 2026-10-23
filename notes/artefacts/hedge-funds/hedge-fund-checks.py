@@ -10,7 +10,7 @@ the marginal effect of an allocation from the Sharpe-ratio rule against the port
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python hedge-fund-checks.py   (numpy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python hedge-fund-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

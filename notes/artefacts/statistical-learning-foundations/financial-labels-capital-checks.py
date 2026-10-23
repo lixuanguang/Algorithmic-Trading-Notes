@@ -1,7 +1,7 @@
 """financial data and labels review follow-up checks (2026-10-16): ETF-trick timing and capital, label spans and the returns they use.
 
 Independent of the entries' formulas where possible: holdings and spans are recomputed by brute force.
-Run: uv run python financial-labels-capital-checks.py   (numpy only)
+Run: uv run --frozen --no-editable python financial-labels-capital-checks.py   (numpy only)
 """
 
 # third party library imports

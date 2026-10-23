@@ -17,7 +17,7 @@ in its design.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python forecast-combination-scoring-checks.py   (numpy, pandas, scipy; about 10 s). Exits 1 on failure.
+Run: uv run --frozen --no-editable python forecast-combination-scoring-checks.py   (numpy, pandas, scipy; about 10 s). Exits 1 on failure.
 Recorded output: forecast-combination-scoring-results.txt.
 """
 

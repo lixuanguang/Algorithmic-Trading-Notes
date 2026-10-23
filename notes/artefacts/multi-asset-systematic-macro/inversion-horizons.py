@@ -13,7 +13,7 @@ t+1..t+12, i.e. whether a peak fell in t..t+11. Two separate questions are answe
       longer than the longest announced in the list (12 months), i.e. is t+11+12 <= 2026-09 (last complete month)?
 A month passing (1) and (2) is a miss beyond the longest past lag: retrospective dating is still possible but would
 need a longer lag than any in the list. A month passing (1) only remains open to dating within past lags.
-Run: uv run python inversion-horizons.py   (standard library). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python inversion-horizons.py   (standard library). Exits non-zero on failure.
 """
 
 # standard library imports

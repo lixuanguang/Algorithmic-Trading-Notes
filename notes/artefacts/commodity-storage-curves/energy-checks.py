@@ -12,7 +12,7 @@ Each check targets one audit finding, on a synthetic trading calendar or on the 
 5. Wording: the results no longer say months were "dropped"; they say they are retained.
 6. Execution: the panel's executable return differs from the settlement-to-settlement return, and v1's outputs
    are kept unchanged in superseded-first-run/.
-Run: uv run python energy-checks.py   (numpy; reads files next to it; under 1 s). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python energy-checks.py   (numpy; reads files next to it; under 1 s). Exits non-zero on failure.
 """
 
 # standard library imports

@@ -18,7 +18,7 @@ Choices fixed on 17 October 2026 before computing, because the public data diffe
   * Ten worst benchmark months: the ten lowest Mkt-RF months in the window.
 This is not the protocol's 2014-2026 test: the window is 55 months, about 20 of them down months, and the index's
 history before 2022 was not available without registration. Results are bounded accordingly.
-Run: uv run python global_macro_down_months_test.py <BarclayHedge html> <French factors csv>   (numpy, scipy; under 1 s).
+Run: uv run --frozen --no-editable python global_macro_down_months_test.py <BarclayHedge html> <French factors csv>   (numpy, scipy; under 1 s).
 Writes global_macro_monthly.csv next to this script.
 """
 

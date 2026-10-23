@@ -11,7 +11,7 @@ advance = BSM present value of the delivery, with no dealer spread. Also: Portfo
 chap. 16, Exhibit 15 (exchange fund against sale) reproduced, and the annual fee that equates them (Interpretation).
 Deterministic; no tax treatment is computed except the sale's, and none is implied for the collar or forward.
 
-Run: uv run python concentrated-position-check.py   Exits 1 on failure.
+Run: uv run --frozen --no-editable python concentrated-position-check.py   Exits 1 on failure.
 """
 
 # standard library imports

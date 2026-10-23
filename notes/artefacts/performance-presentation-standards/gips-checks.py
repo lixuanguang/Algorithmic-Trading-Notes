@@ -9,7 +9,7 @@ annualised ex post standard deviation from 36 monthly returns (4.A.1(i)-(j)), wi
 consistently (GIPS Handbook for Firms, Nov. 2020, pp. 196-199), and a model fee no lower than the actual fee
 (2.A.31). The membership calendar applies an invented composite policy, not a GIPS rule.
 
-No random draws. Run: uv run python gips-checks.py   (numpy). Exits 1 on failure.
+No random draws. Run: uv run --frozen --no-editable python gips-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

@@ -13,7 +13,7 @@ mod:sabr-smile. Parameters are invented; nothing here is market data.
 4. SABR (Hagan et al. 2002 as restated by Bianchetti and Carlicchi, Table 5): the lognormal implied-volatility
    expansion. Checks: continuity at the money (z/x(z) -> 1); with nu = 0 and beta = 1 it is flat at alpha; against a
    Monte Carlo of the SABR dynamics at moderate parameters, within a stated tolerance of an asymptotic formula.
-Run: uv run python option-model-checks.py   (numpy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python option-model-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

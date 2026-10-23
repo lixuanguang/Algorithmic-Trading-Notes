@@ -21,7 +21,7 @@ what is held fixed; part 21 times the acquisition at 1 April 2026 and re-evaluat
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python statement-analysis-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python statement-analysis-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

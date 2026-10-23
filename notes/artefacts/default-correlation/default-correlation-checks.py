@@ -18,7 +18,7 @@ mixture of Gaussian copulas with correlations 0.1 and 0.6 and reads off compound
 Criteria were fixed before the first run. The finite-versus-large-pool gaps at 250, 500 and 1,000 names
 are reported, not tested, following the correction made before implementation.
 
-Run: uv run python default-correlation-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python default-correlation-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

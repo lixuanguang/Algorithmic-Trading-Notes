@@ -4,7 +4,7 @@ Each process runs isolated (`python -I`), from an unrelated working directory, s
 package must come from the project environment and not from the script's folder, the
 working directory or a path that pytest adds.
 
-Run: make test (uv run pytest)
+Run: make test (uv run --frozen --no-editable pytest)
 """
 
 # standard library imports
@@ -131,16 +131,29 @@ class Entrypoints(unittest.TestCase):
         self.assertIn(f"`{OUT_A}:m001:b02` field `residual_gap` must be a string", done.stdout)
 
     def test_package_imports_without_side_effects(self) -> None:
-        """Importing the checks reads no data, prints nothing and loads no numerical code."""
-        effects = import_effects(
-            ["trading_notes.structure.compendium_check", "trading_notes.structure.coverage_check"],
-            [*HEAVY, "trading_notes.numerical", "trading_notes.numerical.report"],
-            self.cwd,
-        )
-        self.assertEqual(effects.returncode, 0, effects.stderr)
-        self.assertEqual((effects.opened, effects.printed, effects.loaded), ([], "", []))
-        self.assertEqual(effects.stderr, "")
-        self.assertEqual(list(self.cwd.iterdir()), [])
+        """Importing each module alone reads no data, prints nothing and loads no numerical code.
+
+        Each module gets its own fresh process, so no heavy dependency is ever allowed here.
+        """
+        for name in (
+            "trading_notes",
+            "trading_notes.structure",
+            "trading_notes.structure.json_fields",
+            "trading_notes.structure.compendium",
+            "trading_notes.structure.compendium_check",
+            "trading_notes.structure.coverage_check",
+        ):
+            with self.subTest(name):
+                effects = import_effects(
+                    [name],
+                    [*HEAVY, "trading_notes.numerical", "trading_notes.numerical.report"],
+                    self.cwd,
+                )
+                self.assertEqual(effects.returncode, 0, effects.stderr)
+                self.assertEqual((effects.opened, effects.printed, effects.loaded), ([], "", []))
+                self.assertEqual(effects.stderr, "")
+                self.assertTrue(effects.random_unchanged)
+                self.assertEqual(list(self.cwd.iterdir()), [])
 
 
 if __name__ == "__main__":

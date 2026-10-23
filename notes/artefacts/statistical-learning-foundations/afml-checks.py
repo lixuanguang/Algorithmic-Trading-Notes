@@ -1,7 +1,7 @@
 """Numerical checks for financial data and labels review (AFML data cluster), 2026-10-16.
 
 Independent toy calculations and boundary cases for the formulas and algorithms adopted in the
-compendium entries; not an implementation library. Run:  uv run python afml-checks.py
+compendium entries; not an implementation library. Run:  uv run --frozen --no-editable python afml-checks.py
 Needs numpy and statsmodels (for one ADF illustration). Seeds are fixed; output is deterministic.
 Printed page numbers refer to Lopez de Prado, Advances in Financial Machine Learning (Wiley 2018).
 """

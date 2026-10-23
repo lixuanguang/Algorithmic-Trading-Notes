@@ -10,7 +10,7 @@ Frozen before the first run: NumPy default_rng(20261021), one vector of 100,000 
 estimator; deterministic checks to relative 1e-6 (finite differences) or 1e-12 (identities); each stochastic
 estimate within 4 standard errors of its closed form. Synthetic inputs only: not evidence about markets.
 
-Run: uv run python monte-carlo-greeks-check.py   Exits 1 on failure. About one second.
+Run: uv run --frozen --no-editable python monte-carlo-greeks-check.py   Exits 1 on failure. About one second.
 """
 
 # standard library imports

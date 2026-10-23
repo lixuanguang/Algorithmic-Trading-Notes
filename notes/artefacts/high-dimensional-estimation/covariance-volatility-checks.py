@@ -14,7 +14,7 @@
    conditional median (0.455 sigma^2), so it misranks.
 4. Corsi (2009, eqs. (4)-(8)): HAR-RV is an AR(22) with coefficients constrained to three steps
    (b_d + b_w/5 + b_m/22 at lag 1, b_w/5 + b_m/22 at lags 2-5, b_m/22 at lags 6-22). Check the mapping numerically.
-Run: uv run python covariance-volatility-checks.py   (numpy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python covariance-volatility-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

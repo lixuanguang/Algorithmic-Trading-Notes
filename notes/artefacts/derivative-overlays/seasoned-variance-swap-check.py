@@ -18,7 +18,7 @@ Frozen before the first run: default_rng(20261021), 200,000 paths of 126 returns
 deterministic checks to 1e-6 currency or relative 1e-9; the simulated value within 4 standard errors of the
 value at the exact discrete K_rem. Synthetic inputs only: not evidence about markets.
 
-Run: uv run python seasoned-variance-swap-check.py   Exits 1 on failure. About two seconds.
+Run: uv run --frozen --no-editable python seasoned-variance-swap-check.py   Exits 1 on failure. About two seconds.
 """
 
 # standard library imports

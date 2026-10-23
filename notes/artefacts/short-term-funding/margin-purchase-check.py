@@ -13,7 +13,7 @@ fees, dividends or other flows, the call price is computed from the balance at t
 long position and K_t / (N (1 + mm)) for a short one. Each formula is checked against a numerical root of the
 equity-to-value condition, and the balances are rebuilt from a dated cash-flow ledger (actual/360 simple interest).
 
-Run: uv run python margin-purchase-check.py   (scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python margin-purchase-check.py   (scipy). Exits 1 on failure.
 """
 
 # standard library imports

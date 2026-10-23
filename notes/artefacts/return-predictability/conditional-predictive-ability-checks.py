@@ -21,7 +21,7 @@ values (R). The two part X gates of the first run, which expected ZT Table 2 to 
 reproduction outcomes: reproduction_gate() reports them against their original criterion and they are not counted
 as checks (protocol, "Amendment, 23 October 2026").
 
-Run: uv run python conditional-predictive-ability-checks.py   (numpy, pandas, scipy; about a minute). Exits 1 on
+Run: uv run --frozen --no-editable python conditional-predictive-ability-checks.py   (numpy, pandas, scipy; about a minute). Exits 1 on
 failure. Recorded output: conditional-predictive-ability-results.txt.
 """
 

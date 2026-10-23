@@ -14,7 +14,7 @@ It is committed with these results, so it is a protocol recorded in advance with
     oil    = 100 ln(RWTC(m+3)/RWTC(m))                  (EIA Cushing WTI spot, monthly average; a spot price).
   Test: mean in signal quarters minus non-signal quarters, Welch t; supported if dy10 > 0, dslope > 0, oil > 0 with
     |t| > 2. Reported alongside: Newey-West t (4 lags) from the regression on the indicator, and episode counts.
-Run: uv run --group empirical python inflation_regime_test.py <reading_materials root>
+Run: uv run --frozen --no-editable --group empirical python inflation_regime_test.py <reading_materials root>
   (expects empirical-extensions/empirical/pcpiMvMd.xlsx, empirical-extensions/empirical/EIA_RWTCm.xls, source-verification/empirical/fred/GS10.csv).
 Writes inflation_monthly_vintage_quarters.csv.
 """

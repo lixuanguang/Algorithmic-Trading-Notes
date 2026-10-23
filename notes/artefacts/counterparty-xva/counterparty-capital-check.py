@@ -8,7 +8,7 @@ investment-grade industrial (MAR50.16, Table 1: RW = 3 percent). The swap's rema
 for the effective maturity M of CRE32.46-32.54 (illustration only). The default-risk risk weight of 100 percent is
 illustrative, not taken from the credit-risk chapters.
 
-Run: uv run python counterparty-capital-check.py   (scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python counterparty-capital-check.py   (scipy). Exits 1 on failure.
 """
 
 # standard library imports

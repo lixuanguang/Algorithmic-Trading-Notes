@@ -15,7 +15,7 @@ paths, 20261062 CIR exact paths, 20261063 the CIR Euler and exact comparison, 20
 failed statistical check is diagnosed, not rerun with another seed. Every check except the curve shows that a model is
 implemented correctly under its own assumptions; none is evidence about markets.
 
-Run: uv run python short-rate-model-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python short-rate-model-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

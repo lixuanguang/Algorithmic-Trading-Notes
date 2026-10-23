@@ -10,7 +10,7 @@ This folder records which financial capabilities the compendium teaches, how the
 | [learning-roadmap.md](learning-roadmap.md) | Prerequisite order of the topics, from foundations to client decisions, and the two worked source-to-entry journeys |
 | [source-changes.md](source-changes.md) | Comparisons between outline editions and their effect on objectives |
 
-Run `make check-coverage` (`uv run python tools/check_coverage.py --check`) for the current counts by chapter and by outline component; `make verify-outlines` also hashes the local outline copies. The report, not this page, is the place to read coverage figures.
+Run `make check-coverage` (`uv run --frozen --no-editable python tools/check_coverage.py --check`) for the current counts by chapter and by outline component; `make verify-outlines` also hashes the local outline copies. The report, not this page, is the place to read coverage figures.
 
 ## Legend
 

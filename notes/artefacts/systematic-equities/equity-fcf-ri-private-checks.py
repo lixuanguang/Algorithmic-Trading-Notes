@@ -16,7 +16,7 @@ and CAPM costs of equity from their definitions; the Silber regression evaluated
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python equity-fcf-ri-private-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python equity-fcf-ri-private-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

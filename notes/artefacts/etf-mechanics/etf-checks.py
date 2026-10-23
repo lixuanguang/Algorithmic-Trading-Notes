@@ -9,7 +9,7 @@ against the closed-form product; costs of ownership summed by component against 
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python etf-checks.py   (numpy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python etf-checks.py   (numpy). Exits 1 on failure.
 """
 
 # standard library imports

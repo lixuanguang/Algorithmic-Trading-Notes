@@ -15,7 +15,7 @@ Part 3, monitoring: new issue, default_rng(20261021), 100,000 paths of 1,008 log
 1,008, each including S_0 and S_T; the continuous extreme on the same paths from exact bridge extremes on every step.
 Sampling error (continuous estimate against the closed form) is separated from monitoring bias (paired gap).
 
-Synthetic model data only. Run: uv run python lookback-option-check.py   Exits 1 on failure. About 15 seconds.
+Synthetic model data only. Run: uv run --frozen --no-editable python lookback-option-check.py   Exits 1 on failure. About 15 seconds.
 """
 
 # standard library imports

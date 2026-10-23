@@ -29,3 +29,13 @@ class CheckReport:
         print(f"  {'ok ' if cond else 'BAD'} {name}{': ' + detail if detail else ''}")
         if not cond:
             self._failures.append(name)
+
+    def same[T](self, name: str, got: T, want: T) -> None:
+        """Check `got == want` and print `  ok  <name>: <got> (want <want>)`, or the BAD line.
+
+        Args:
+            name: What the check asserts.
+            got: The computed value, printed with `str`.
+            want: The expected value, printed with `str`.
+        """
+        self.ok(name, got == want, f"{got} (want {want})")

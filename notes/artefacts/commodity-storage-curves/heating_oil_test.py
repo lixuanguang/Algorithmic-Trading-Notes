@@ -27,7 +27,7 @@ superseded-simple-return-run/):
     with that mapping; it does not establish the exact expiry date, which the NYMEX rule text (not obtained) would.
   * Exploratory, chosen after the results were seen and not part of the verdict: P re-estimated on the month pairs
     whose selected dates both equal the proxy last trading day.
-Run: uv run --group empirical python heating_oil_test.py <folder with EIA_*.xls>  (numpy, xlrd; a few seconds).
+Run: uv run --frozen --no-editable --group empirical python heating_oil_test.py <folder with EIA_*.xls>  (numpy, xlrd; a few seconds).
 Writes heating_oil_monthly.csv next to this script.
 """
 

@@ -16,7 +16,7 @@ and a mean-zero skewed log error that separates geometric mean, median and mean.
 Second correction (2026-10-18): the x_i = 2^-i design, full rank in every sample yet Sxx -> 1/3, so the slope
 variance tends to 3 sigma^2 and least squares is not consistent without an asymptotically nondegenerate design.
 
-Run: uv run python regression-checks.py   (numpy, scipy, statsmodels). Exits 1 on failure.
+Run: uv run --frozen --no-editable python regression-checks.py   (numpy, scipy, statsmodels). Exits 1 on failure.
 """
 
 # standard library imports

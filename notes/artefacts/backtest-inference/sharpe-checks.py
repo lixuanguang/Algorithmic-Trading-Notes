@@ -9,7 +9,7 @@
    pp. 9-10: SR0 = 0.1132 (non-annualised, 250 observations a year) and DSR = 0.9004 for N = 100, V = 1/2 annualised,
    T = 1250, skewness -3, kurtosis 10, SR = 2.5 annualised; DSR = 0.9505 at N = 46; and with normal returns
    (skewness 0, kurtosis 3) DSR = 0.9505 "after N = 88".
-Run: uv run python sharpe-checks.py   (scipy). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python sharpe-checks.py   (scipy). Exits non-zero on failure.
 """
 
 # standard library imports

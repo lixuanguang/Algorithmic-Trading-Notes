@@ -8,7 +8,7 @@
    label end, plus the embargo counted in observations (int(N * pctEmbargo)).
    Consequence, found here: a training label that ends exactly at the test block's first bar, or starts exactly at the
    last test label's end, is kept by the class but overlaps under the closed-interval rule of p. 106 (one shared bar).
-Run: uv run python cv-checks.py   (numpy). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python cv-checks.py   (numpy). Exits non-zero on failure.
 """
 
 # standard library imports

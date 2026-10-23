@@ -1,7 +1,7 @@
 """order matching and fragmentation review (2026-10-16): independent checks for the order-instruction, matching, dark-trading and fragmentation entries.
 
 Each block recomputes a source's example or a derived claim from first principles, or gives a counterexample.
-Run: uv run python order-routing-fragmentation-checks.py   (numpy, scipy; fixed seeds; a few seconds)
+Run: uv run --frozen --no-editable python order-routing-fragmentation-checks.py   (numpy, scipy; fixed seeds; a few seconds)
 """
 
 # standard library imports

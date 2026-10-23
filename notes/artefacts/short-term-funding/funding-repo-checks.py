@@ -3,7 +3,8 @@
 Dated 2026-10-19. The checks, their sources and conventions are in
 trading_notes.numerical.funding_repo.
 
-Run: uv run python funding-repo-checks.py   (standard library only). Exits 1 on failure.
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.funding_repo
+(standard library only). Exits 1 on failure.
 """
 
 # standard library imports

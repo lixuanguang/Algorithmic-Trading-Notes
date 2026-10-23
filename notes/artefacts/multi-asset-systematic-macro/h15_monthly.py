@@ -11,8 +11,8 @@ d the discount yield in percentage points; daily spread = 10-year CMT - bond-equ
 of business days. Checks: unique, increasing dates; no missing months; the month of the last observation
 flagged incomplete when it is the retrieval month (October 2026).
 
-Usage: uv run python h15_monthly.py --extract H15_data.xml   (rebuild the daily extract)
-       uv run python h15_monthly.py                          (rebuild h15-spread-monthly.csv)
+Usage: uv run --frozen --no-editable python h15_monthly.py --extract H15_data.xml   (rebuild the daily extract)
+       uv run --frozen --no-editable python h15_monthly.py                          (rebuild h15-spread-monthly.csv)
 """
 
 # standard library imports

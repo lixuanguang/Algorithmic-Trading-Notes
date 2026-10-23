@@ -8,7 +8,7 @@ hedging-pressure-protocol.md.
   backwardation_monthly.csv, simple return as the WTI protocol defines it); supported if Newey-West (12 lags) t > 2 and
   the expanding out-of-sample R^2 from month 121 is positive with Clark-West t > 1.65 (backwardation_test.oos).
   Reported alongside: corr(HP_t, B_t) and r on B and HP jointly.
-Run: uv run python hedging_pressure_test.py <folder with deacot*.zip>  (numpy). Writes hedging_pressure_monthly.csv.
+Run: uv run --frozen --no-editable python hedging_pressure_test.py <folder with deacot*.zip>  (numpy). Writes hedging_pressure_monthly.csv.
 """
 
 # standard library imports

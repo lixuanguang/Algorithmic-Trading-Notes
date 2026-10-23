@@ -18,7 +18,7 @@ use the admissible unlevered fractions 0.25, 0.5 and 0.75 (half Kelly), with the
 refinement test; the quadrature is treated as a numerical approximation and its convergence is checked. The
 leveraged fractions stay in the continuous-model checks, where wealth is always positive.
 
-Run: uv run python kelly-check.py   Exits 1 on failure. About 5 seconds.
+Run: uv run --frozen --no-editable python kelly-check.py   Exits 1 on failure. About 5 seconds.
 """
 
 # standard library imports

@@ -12,7 +12,7 @@
    with kappa=4 gives 0.25, tolerance 1e-5; second-order condition negative.
 5. Roll: Var(dP) = sigma^2 + S^2/2 and Cov(dP_t, dP_{t-1}) = -S^2/4 (S=0.2, sigma=0.1, Q = +/-1), by simulation
    (seed 3, N=1,000,000); tolerance 5e-4; lag-2 autocovariance within 5e-4 of zero.
-Run: uv run python model-derivations-checks.py   (numpy and scipy). Exits non-zero on failure.
+Run: uv run --frozen --no-editable python model-derivations-checks.py   (numpy and scipy). Exits non-zero on failure.
 """
 
 # standard library imports

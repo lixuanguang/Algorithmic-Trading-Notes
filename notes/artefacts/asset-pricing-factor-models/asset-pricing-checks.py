@@ -12,7 +12,7 @@ Part 3 uses forward-looking inputs published for 1 October 2026: Damodaran's imp
 4.20 percent with the 5.29 percent US Treasury rate he paired with it (the 10-year par yield on 30 September 2026
 in the Treasury's daily file), and an assumed beta. Parts 2, 4 and 5 use invented inputs.
 
-No random draws. Run: uv run python asset-pricing-checks.py   (numpy, statsmodels). Exits 1 on failure.
+No random draws. Run: uv run --frozen --no-editable python asset-pricing-checks.py   (numpy, statsmodels). Exits 1 on failure.
 """
 
 # standard library imports

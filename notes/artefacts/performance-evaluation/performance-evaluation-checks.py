@@ -11,7 +11,7 @@ cumulative wealth; Carino linking follows Bacon eqs. 6.153-6.158; fixed-income a
 duration decomposition Bacon attributes to van Breukelen (eqs. 6.121-6.133) with returns approximated by income
 minus duration times yield change.
 
-No random draws. Run: uv run python performance-evaluation-checks.py   (numpy, scipy). Exits 1 on failure.
+No random draws. Run: uv run --frozen --no-editable python performance-evaluation-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

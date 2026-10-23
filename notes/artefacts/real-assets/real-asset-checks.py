@@ -18,7 +18,7 @@ boundary case; the cost approach after all three kinds of obsolescence against i
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python real-asset-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python real-asset-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

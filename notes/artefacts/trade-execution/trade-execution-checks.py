@@ -12,7 +12,7 @@ estimate; and a broker comparison with a significance test.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python trade-execution-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python trade-execution-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

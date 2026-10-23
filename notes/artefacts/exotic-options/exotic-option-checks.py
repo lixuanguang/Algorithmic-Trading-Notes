@@ -13,7 +13,7 @@ the common inputs but is not a general ordering: with negative carry (q = 8 perc
 average's forward exceeds the terminal forward and the Asian call is worth more than the vanilla. The AM-GM
 ordering of arithmetic over geometric average holds throughout.
 
-Run: uv run python exotic-option-checks.py   Exits 1 on failure.
+Run: uv run --frozen --no-editable python exotic-option-checks.py   Exits 1 on failure.
 """
 
 # standard library imports

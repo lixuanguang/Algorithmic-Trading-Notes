@@ -3,7 +3,8 @@
 Derivatives and empirical validation, 2026-10-17. The checks, their derivation and sources
 are in trading_notes.numerical.fra_settlement.
 
-Run: uv run python fra-settlement-check.py  (standard library; exits 1 on failure).
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.fra_settlement
+(standard library; exits 1 on failure).
 """
 
 # standard library imports

@@ -39,7 +39,7 @@ Inventory deviation I_t: ln(stocks) at the latest usable week minus the mean of 
   the previous five years.
 Costs: two ticks per round trip (WTI $0.01, NG $0.001 per tick; NYMEX Chapters 200 and 220), an assumption.
 Inference: OLS with Newey-West (12 lags). Returns are futures (collateral-excess) returns.
-Run: uv run --group empirical python backwardation_test.py <folder with EIA_*.xls>  (needs numpy and xlrd; about 3 s).
+Run: uv run --frozen --no-editable --group empirical python backwardation_test.py <folder with EIA_*.xls>  (needs numpy and xlrd; about 3 s).
 Writes backwardation_monthly.csv next to this script and prints the results.
 """
 

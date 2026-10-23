@@ -12,7 +12,7 @@ Euler discretisation bias, both for meth:monte-carlo-simulation; seed 20261018 +
 Environment: the locked project environment (Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1). The first recorded
 run used Python 3.10.16, NumPy 1.23.5 and SciPy 1.10.1; both runs agree apart from the printed version line,
 which reports the versions the script ran under.
-Run: uv run python inference-simulation-checks.py   Exits 1 on failure.
+Run: uv run --frozen --no-editable python inference-simulation-checks.py   Exits 1 on failure.
 """
 
 # standard library imports

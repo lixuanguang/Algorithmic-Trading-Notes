@@ -16,7 +16,7 @@ Black-Scholes prices with continuous dividend yield; per share unless stated.
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python option-strategy-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python option-strategy-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

@@ -37,10 +37,13 @@ module-name = "trading_notes"
 [tool.uv]
 required-version = "==0.12.7"
 # The reusable code under src/trading_notes is installed as a package, so scripts and tests
-# import it normally instead of modifying sys.path. `make` installs it non-editable
-# (UV_NO_EDITABLE): CPython skips an editable install's .pth file once macOS flags it
-# hidden, as file sync can do inside ~/Documents. The cache keys reinstall the package
-# whenever a source file changes, so a non-editable copy never goes stale.
+# import it normally instead of modifying sys.path. It is installed non-editable: CPython
+# skips an editable install's .pth file once macOS flags it hidden, as file sync can do
+# inside ~/Documents. uv 0.12.7 has no project setting for this, and any `uv sync` or
+# `uv run` without --no-editable reinstalls the project editable, so every such command in
+# the Makefile, the pre-commit hooks, CI and the README passes --no-editable (see
+# tests/test_installation.py). The cache keys reinstall the package whenever a source file
+# changes, so a non-editable copy never goes stale.
 package = true
 cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.py" }]
 default-groups = ["dev"]
@@ -61,7 +64,7 @@ select = ["E", "F", "I", "W", "UP", "RUF", "D", "ANN"]
 # Evidence modules keep their provenance docstrings and each printed check name on one
 # source line, as printed. The legacy exemptions of unmigrated artefacts are scoped to that
 # folder by notes/artefacts/ruff.toml; all other code gets every rule.
-"src/trading_notes/numerical/{funding_repo,fra_settlement,multicurve,amm_pool,country_risk_premium}.py" = [
+"src/trading_notes/numerical/{funding_repo,fra_settlement,multicurve,amm_pool,country_risk_premium,cash_flow_linkage,bsm_svi,time_value_returns,bitemporal,filing_deadlines,filing_timestamps,margin_spiral,cme_allocation,perpetual_funding,commodity_latency,contract_statistics,synthetic_short}.py" = [
     "E501",
 ]
 
@@ -86,6 +89,30 @@ files = [
     "notes/artefacts/rates-credit-mortgages/multicurve-check.py",
     "notes/artefacts/crypto-perpetuals/amm-checks.py",
     "notes/artefacts/corporate-finance/country-risk-premium-check.py",
+    "notes/artefacts/financial-statement-analysis/cash-flow-linkage-check.py",
+    "notes/artefacts/volatility-options/bsm-svi-checks.py",
+    "notes/artefacts/time-value-returns/time-value-return-checks.py",
+    "notes/artefacts/point-in-time-data/bitemporal-check.py",
+    "notes/artefacts/point-in-time-data/filing-checks.py",
+    "notes/artefacts/point-in-time-data/filing-timestamp-checks.py",
+    "notes/artefacts/funding-crowding/spiral-checks.py",
+    "notes/artefacts/execution-market-making/cme-allocation-checks.py",
+    "notes/artefacts/crypto-mm-microstructure/funding_checks.py",
+    "notes/artefacts/execution-market-making/commodity-production-latency-checks.py",
+    "notes/artefacts/execution-market-making/contract-specifications-statistics-checks.py",
+    "notes/artefacts/synthetic-equity-cfd-trs/synthetic_short_checks.py",
+    "notes/artefacts/model-governance-controls/reconciliation-check.py",
+    "notes/artefacts/portfolio-construction/black-litterman-check.py",
+    "notes/artefacts/portfolio-construction/erc-check.py",
+    "notes/artefacts/portfolio-construction/erc-sharpe-check.py",
+    "notes/artefacts/risk-tail-systemic/es-discrete-check.py",
+    "notes/artefacts/reinforcement-learning-trading/cartea_jaimungal_checks.py",
+    "notes/artefacts/portfolio-construction/shrinkage-check.py",
+    "notes/artefacts/risk-parity-vol-targeting/risk-parity-checks.py",
+    "notes/artefacts/volatility-options/negative-hedge-ratio-check.py",
+    "notes/artefacts/risk-tail-systemic/garch-ewma-check.py",
+    "notes/artefacts/backtest-inference/sharpe-zero-check.py",
+    "notes/artefacts/backtest-inference/drawdown-resampling-checks.py",
 ]
 mypy_path = "src"
 python_version = "3.14"

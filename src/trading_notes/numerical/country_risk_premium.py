@@ -11,7 +11,7 @@ First run (recorded in the L6 review record): two failures, both in the harness:
 the p. 100 formula line instead of Table 4.5, and a mistyped hand literal (17.10705 for 1.1324 x 1.06 / 1.025 - 1 =
 17.10673 percent). Both corrected; no tolerance changed.
 
-Run through notes/artefacts/corporate-finance/country-risk-premium-check.py.
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.country_risk_premium
 """
 
 # standard library imports
@@ -171,3 +171,7 @@ def main() -> int:
         return 1
     print("all checks passed")
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -41,11 +41,11 @@ jobs:
         run: uv python install
 
       - name: Install locked environment
-        run: uv sync --frozen
+        run: uv sync --frozen --no-editable
 
       - name: Verify supported Python runtime
         run: |
-          uv run --frozen python - <<'PY'
+          uv run --frozen --no-editable python - <<'PY'
           """Verify the pinned interpreter and supported platform."""
 
           # standard library imports

@@ -9,7 +9,7 @@ including the 300-component binary example and the transfer-coefficient identity
 invented five-stock problem. Part 4 decomposes an invented active position into factor and specific risk and into
 active beta and residual risk.
 
-No random draws. Run: uv run python active-management-checks.py   (numpy, scipy). Exits 1 on failure.
+No random draws. Run: uv run --frozen --no-editable python active-management-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

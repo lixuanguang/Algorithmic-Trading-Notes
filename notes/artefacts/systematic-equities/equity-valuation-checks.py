@@ -21,7 +21,7 @@ bridges share one claim set; ROE is profit over opening book equity throughout t
 ROE x B0 is E1 and the justified P/E, P/B and dividend model give one value (7.81); the cost of equity is
 taken from the WACC with options in equity (9.32%); the callable preferred value is conditional on redemption.
 
-Run: uv run python equity-valuation-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python equity-valuation-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

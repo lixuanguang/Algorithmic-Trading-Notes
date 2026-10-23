@@ -24,7 +24,7 @@ Conventions: annual periods, cash flows at period ends, risk-neutral probability
 
 Count convention: one check is one executed ok() call (a call inside a loop counts once per iteration).
 
-Run: uv run python rate-tree-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python rate-tree-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

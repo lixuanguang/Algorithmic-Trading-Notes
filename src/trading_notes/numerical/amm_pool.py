@@ -7,11 +7,12 @@ tiers 0.05%, 0.30%, 1% (sec. 1), liquidity L = sqrt(k), and a position on [p_a, 
 Own derivations checked numerically: the swap output, execution price against the pool price, the value of a
 full-range position against holding (impermanent loss 2 sqrt(r)/(1+r) - 1 for a price ratio r, before fees), and the
 real reserves of a concentrated position.
-Run through notes/artefacts/crypto-perpetuals/amm-checks.py (standard library).
+Run: uv run --frozen --no-editable python -m trading_notes.numerical.amm_pool (standard library).
 """
 
 # standard library imports
 import math
+import sys
 from typing import Final
 
 # project library imports
@@ -105,3 +106,7 @@ def main() -> int:
         return 1
     print("\nall checks passed")
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

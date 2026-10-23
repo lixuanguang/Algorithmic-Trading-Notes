@@ -1,6 +1,6 @@
 """Numerical checks for market design and liquidity review (the foundations folder), 2026-10-16.
 
-Run with numpy:  uv run python liquidity-market-design-checks.py
+Run with numpy:  uv run --frozen --no-editable python liquidity-market-design-checks.py
 Each section prints its result and asserts what the entries state.
 
 1. Past profit, skill and luck: when past profit predicts future profit, and why

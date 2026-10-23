@@ -6,7 +6,7 @@ Every value is computed twice: by the formula written in the entry (plain Python
 (numpy or scipy implementations, enumeration of a probability table, numerical integration, or sequential
 updating). The return series and the probability table are invented for illustration; they are not data on any
 asset or strategy.
-Run: uv run python statistics-probability-checks.py   (numpy, scipy). Exits 1 on failure.
+Run: uv run --frozen --no-editable python statistics-probability-checks.py   (numpy, scipy). Exits 1 on failure.
 """
 
 # standard library imports

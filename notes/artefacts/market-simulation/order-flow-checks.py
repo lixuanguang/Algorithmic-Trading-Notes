@@ -1,7 +1,7 @@
 """order books and order flow review (2026-10-16): independent checks for the order-book, order-flow and point-process entries.
 
 Each block recomputes a claim from first principles or gives a counterexample; nothing here is fitted to real data.
-Run: uv run python order-flow-checks.py   (numpy, scipy; fixed seeds; about 20 s)
+Run: uv run --frozen --no-editable python order-flow-checks.py   (numpy, scipy; fixed seeds; about 20 s)
 """
 
 # standard library imports

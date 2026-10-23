@@ -6877,3 +6877,204 @@ scripts, structure and coverage checks, outline hashes, and the PDF build. The P
 pp. 38–40 were rendered and inspected, with no overfull boxes or unresolved references and only the existing
 underfull box. The earlier return-predictability script still reproduces its recorded output exactly. All 700 earlier
 labels, types and file locations are preserved; only the two documented navigation links change their bodies.
+
+## Conditional predictive ability entry (22 October 2026)
+
+**Starting state.** `main` at `4c95e3e` (merge of PR #38), clean; 702 entries, 112 printed pathways, 466 PDF pages;
+objectives 453 (452 covered, 1 partial). PR #38's CI run 39803945461 (on its head `5444074`) concluded `success`; no
+check runs are reported for the merge commit itself. Branch `codex/conditional-predictive-ability`. Scope set by the
+request: at most one entry under `return-predictability`. Local only; nothing committed or pushed.
+
+**Sources read** (equations and tables as page images; downloads logged with URL, date, status, size and SHA-256 in the
+git-ignored `reading_materials/conditional-predictive-ability/download-log.tsv`):
+- Giacomini and White, "Tests of conditional predictive ability", authors' version "This version: April 2006", whose
+  acknowledgement thanks the Editor and three referees. `GiacominiWhite04.pdf` from Giacomini's former UCLA page, Wayback
+  Machine capture of 2006-09-20, SHA-256 `2d937c5c...f15a7`, 31 pages, printed page = PDF page. Read: secs. 1-5 and
+  6.2-6.4, appendix proofs, Table 1; pp. 5-13 as page images. Registered as `giacomini-white-2006-wp`.
+- Not obtained: the Econometrica article (`wide-giacomini-white`, 74(6), 2006, 1545-1578). Wiley and a UCL copy returned
+  HTTP 403 on 2026-10-22, and no Wayback snapshot of the UCL copy exists. Unpaywall and Semantic Scholar list only the
+  2003 Boston College working paper, which was not used. Nothing is attributed to the journal's pages. The catalogue
+  record itself says the full text was not inspected; no verification is inherited from it.
+- Zhu and Timmermann, arXiv:2006.03238v2 (submitted 19 August 2022), SHA-256 `afed6367...4cea`, 30 pages, printed
+  page = PDF page. Read: secs. 1-5 and the proofs of Propositions 1, 2, 5 and Lemma 1; pp. 5-8 and 13-18 as page images.
+  Version 1 (5 June 2020, SHA-256 `4f4b6627...846c`) was compared for its abstract and section list only. It claimed
+  that the null cannot be valid under a rolling window; version 2 states a necessary and sufficient condition.
+  Registered as `zhu-timmermann-2022-arxiv`.
+- Data: `goyal-annual-predictors-1871-2025.csv` from the previous batch, unchanged (2026 vintage, workbook SHA-256
+  `8d210b77...be872`).
+
+**Discrepancies and source limits.**
+- Giacomini and White's copy refers to its unconditional and conditional tests as "Theorems 5 and 6" (pp. 15-17, 19),
+  although they are numbered 1-4 in the same copy; locators use the copy's numbering.
+- Zhu and Timmermann's Proposition 6 (p. 14) gives V_4 = 0.677 for Gaussian errors. The autocovariances derived here give
+  `V_m = (2m + 1)/(3m)` = 0.75, and the simulation gives 0.755 (se 0.011); the two agree only at m = 1.
+- Their Table 2 (p. 18; 0.196 and 0.158 at λ = 0.25 and 0.5) is not reproduced. A direct simulation of Example 5 gives
+  0.057 and 0.054. The limit derived here gives 0.054 and 0.053. Eq. (14) as printed, with the opposite sign on its
+  second term, gives 0.149 and 0.117.
+- The proof of their Proposition 5 writes `Z = -2 y_t ε` and `E Y²` where the statement's `E Y⁴` is correct; this was
+  noted, not used.
+- Giacomini and White's own power simulations (sec. 5.2) generate loss differences directly; the entry's simulations
+  instead derive each null from a DGP and two forecasting methods.
+
+**Entries.** New: `meth:conditional-predictive-ability` (Method 8.13) at the end of
+`compendium/asset-pricing/return-predictability.tex`. Navigation only: the See also fields of
+`meth:nested-forecast-tests` and `meth:proper-scoring-rules` gain a link to it. Registered sources:
+`giacomini-white-2006-wp`, `zhu-timmermann-2022-arxiv` in `compendium/front/sources.tex`.
+
+**Coverage.** `objective:score-and-combine-return-forecasts` moves from partial to covered. Its stated operations are
+calculate, compare and test, over combining forecasts, scoring density or interval forecasts with proper scoring rules,
+and conditional tests. The new entry adds the missing operation: unconditional and conditional tests of equal
+predictive ability, computed on squared-error and CRPS loss differences of Gaussian predictive densities. The CRPS
+case is also a test of equal average scores. The remaining limits are of source version and scope, not of operation.
+They are kept in the pathway backlog: Giacomini-White from the authors' version, Rapach-Strauss-Zhou from the 2008
+working paper without the RFS version's real-economy links, and interval-score differences not tested on data.
+Objectives 453: 453 covered. Outline items unchanged. The pathway checkpoint was not attempted. Nothing in
+`notes/log.md`; no study or mastery claimed.
+
+**Checks.** `notes/artefacts/return-predictability/`: `conditional-predictive-ability-protocol.md` (hypotheses, designs,
+windows, instruments, losses, seeds and acceptance criteria written before the script existed, after the sources and
+their tables had been read; not a preregistration); `conditional-predictive-ability-checks.py`;
+`conditional-predictive-ability-first-run.txt` (the first run, kept unchanged); `conditional-predictive-ability-results.txt`.
+- First run: 41 checks, 39 passed. Both part X gates failed (rates above 0.10 expected from ZT Table 2; observed 0.0567
+  and 0.0538). The gates were not loosened: the lines now print as a failed reproduction, and the rates are recorded
+  values. Post-run supplements P1 (exact V_m) and P2 (limit with both signs, seed 20261115) were added, then drift
+  checks (part R). The script then reported "52 checks, 0 failed" without separating the failed gates; the current
+  accounting is in *Correction and final-validation pass (23 October 2026)* below. Seeds 20261109-20261115; Python 3.14.7, NumPy 2.4.6, pandas 3.0.5, SciPy 1.18.1.
+- V: the Wald statistic agrees across exact rational arithmetic, a linear solve and n R² (hand example T = 3087/2005).
+  Rank-deficient instruments (a duplicated column; a second constant beside the intercept) raise an error; the pseudo-inverse statistic equals the reduced one (df = rank).
+  Multi-step and HAC covariances match hand loops.
+- H (states, n = 120): unconditional rejection 0.0518, conditional with h = (1, S) 1.0000. N (null true by
+  construction): 0.0417/0.0443 (n = 120) and 0.0465/0.0508 (n = 1000). U (unconditional true, conditional false, m = 4,
+  n = 1000): mds variance 0.0237, uniform HAC 0.0552, Newey-West 0.0444, subsample t 0.0459, h = (1, f1) 0.0442,
+  h = (1, f1²) 0.7881; derived moments within 3 se. C (equal population models): mean L_M - L_D = -0.0969 (se 0.0004);
+  the conditional test rejects 0.9985.
+- E (fixed 20-year window, annual log premium on lagged log dp): R2_OS of the rolling regression against the rolling
+  mean is 3.40 percent (1947-2025) and 1.22 (1947-2005). DM t with Newey-West: 0.50 (p 0.62) squared and 0.31 (p 0.75)
+  CRPS. Conditional T with h = (1, ΔL_t): 2.73 (p 0.26) and 3.01 (p 0.22); no p-value below 0.2 in either sample. The
+  1947 forecasts equal the earlier recursive ones. Predictor years are calendar-indexed: no publication lags or
+  revisions, so not point-in-time.
+
+**Limits.** Editorial coverage only; human review outstanding. Authors'-version locators for Giacomini-White.
+Asymptotics with n = 78 and 58 are rough. The Gaussian predictive densities are an assumption. Deferred: the pathway
+checkpoint, further predictor searches, the SVIX bound, kernel methods, the Clark-West size gap at P = 120, Zhu and
+Timmermann's skewed-error Table 1 and J test, and multi-step conditional tests on data.
+
+**Validation (23 October 2026).** `make check` (exit 0): lock check; ruff lint and format (165 files);
+`check_compendium.py --check` (703 entries, 112 pathways printed, 96 pathway notes, 0 problems);
+`check_coverage.py --check` and `--verify-outlines` (0 problems; 453 objectives, 453 covered); `make test` (59 passed);
+`make examples` (130 scripts, warnings as errors); `make pdf`: 467 pages (was 466), no overfull boxes, no undefined
+references, the one pre-existing underfull box. The new entry is on printed pp. 40-41 (PDF 46-47) and was rendered and
+read: headings, equations, both tables and the links display correctly. The sources page (PDF 457) was also read.
+`make pre-commit` (exit 0). Entry preservation against `HEAD`: all 702 earlier entries keep their labels, types and
+files; 700 are byte-identical, and two differ only by the inserted See-also links. The two earlier check scripts and
+the new one reproduce their recorded outputs byte for byte. `guide/`, `content_migration_plan.md`,
+`content_migration_ledger.md`, `subsection_alignment_plan.md`, `notes/log.md` and `superseded-first-run/` are
+unchanged against `HEAD`.
+
+### Correction and final-validation pass (23 October 2026)
+
+Same branch, uncommitted, on top of the work above; earlier experiments, the first-run output, `guide/`, the
+migration and alignment records and `notes/log.md` are untouched. The *Validation (23 October 2026)* paragraph above
+describes the state before this pass and is superseded by the validation below.
+
+**Corrections.**
+- *Singular covariance (entry, Conditions).* The entry said Ω̂ is singular if an instrument "is constant over the
+  sample". Wrong: Ω̂ = n⁻¹Z′Z is singular exactly when Z = hΔL has rank below q. A single constant h = 1 is valid
+  (Ω̂ is then the mean of ΔL²); a second constant, or an indicator that never changes, is redundant only beside an
+  intercept. Checked against V1 (h = (1, a), full rank), V3 (h = 1 accepted) and V5 (duplicated column, h = (1, 2):
+  both rank deficient); no test was added. The checks bullet above now reads "rank-deficient instruments".
+- *Verdict accounting.* The first run (41 checks, 39 passed, both part X gates failed) stands and its output is
+  unchanged (SHA-256 `c46e1ba7…9235`). The script used to print those gates as text and then report "52 checks, 0
+  failed". `reproduction_gate()` now reports them under their original criterion, not counted as checks, and the
+  summary gives two tallies: 53 correctness and regression checks run, 0 failed (39 protocol checks in V–E, 6 post-run
+  supplements, 8 recorded values); 2 historical reproduction gates evaluated, 0 met. The protocol has an appended
+  *Amendment, 23 October 2026*; its original criteria are unchanged. No seed, threshold, design or observation was
+  changed. The recorded output differs from the previous one only in the two gate lines, one new P1 line and the
+  summary (checked with `diff`).
+- *Source discrepancies,* read as page images from the cached
+  `reading_materials/conditional-predictive-ability/src/ZhuTimmermann_arXiv2006.03238v2.pdf` (SHA-256 re-checked).
+  (a) Proposition 6, proof pp. 24–27: eq. (23), p. 25, writes the fourth moment of a sum of k errors as
+  `k(k − 1) + kκ₂`, missing the factor 3 for the three pairings; the same omission occurs before eq. (28), p. 26.
+  The printed steps give 88/130 exactly; with the factor they give `V_m = (2m + 1)/(3m)`, 3/4 at m = 4. A new exact
+  check in P1 records both. A general corrected form for skewed errors was derived and compared with a scratch Monte
+  Carlo (reading note): exploratory, not repository-verified evidence, and not used in the entry; Table 1 was not
+  re-simulated. (b) Proposition 8: the proof's eq. (30),
+  p. 28, gives `Σ ΔL → A + 2N` and `Σ ΔL² → 4I`, so the limit is `A/(2√I) + N/√I`, with ΔL ordered as in eq. (29),
+  as the script implements. Eq. (14), p. 17, prints a minus sign. Reversing the loss ordering would flip both terms
+  together, so it cannot reconcile the two. (c) Table 2 is reproduced by neither sign (0.054/0.053 and 0.149/0.117
+  against 0.196/0.158) and stays unexplained. The entry carries one qualified sentence for each point; derivations are
+  in `notes/readings/zhu-timmermann-2022-arxiv.md`.
+- *Versions.* `giacomini-white-2006-wp` remains the authors' April 2006 version; no locator is attributed to
+  Econometrica (entry, reading note, sources page and evidence checked).
+- *Coverage.* `objective:score-and-combine-return-forecasts` re-assessed against `notes/coverage/README.md`
+  ("a reviewed entry performs every operation at the stated depth, with substantive sources, review evidence and,
+  for a calculation, a worked example"). Combine (`meth:forecast-combination`), score with proper rules
+  (`meth:proper-scoring-rules`) and test, conditionally and unconditionally (`meth:conditional-predictive-ability`,
+  squared-error and CRPS differences on data) are each still supported, at analysis depth. Kept covered. The
+  source-version limits stay in the pathway backlog. This is editorial coverage, not learner mastery: nothing in
+  `notes/log.md`, checkpoint not attempted.
+- *Records updated:* entry; script, recorded output and protocol amendment; `notes/entry-evidence.json`;
+  `notes/coverage/objectives.json` (Zhu–Timmermann locators gain the proof pages); this record;
+  `notes/pathways/return-predictability.md`; `notes/readings/zhu-timmermann-2022-arxiv.md`;
+  `content_development_plan.md` section 11.7.
+
+**Validation (23 October 2026, after the corrections).**
+- `cd notes/artefacts/return-predictability && uv run --frozen --project ../../.. python -W error
+  conditional-predictive-ability-checks.py`: exit 0; output byte-identical on a second run and saved as the results
+  file; "Correctness and regression checks: 53 run, 0 failed"; "Historical reproduction gates … 2 evaluated, 0 met".
+- `make check`, exit 0: lock check; ruff lint and format (165 files); `check_compendium.py --check` (703 entries,
+  0 problems; 112 pathways printed, 96 pathway notes); `check_coverage.py --check` and `--verify-outlines` (453
+  objectives, 453 covered, 0 problems); `make test` (59 passed, 3 subtests); `make examples` (130 scripts, warnings
+  as errors); `make pdf`: 468 pages (467 before this pass), no overfull boxes, no undefined references, the one
+  pre-existing underfull box.
+- `make pre-commit`, exit 0, all hooks passed.
+- PDF pages 46–48 (printed 40–42) rendered and read: the corrected singular-covariance paragraph, the Proposition 6
+  and eq. (14)/Table 2 sentences, both tables and the links display correctly; the last three lines of the entry
+  (end of Pitfalls, See also) now fall on printed p. 42.
+- Preservation against `HEAD`: 702 earlier entries keep labels, types and files; 700 byte-identical, two differ only
+  by the inserted See-also link. `return-predictability-checks.py` and `forecast-combination-scoring-checks.py`
+  reproduce their recorded outputs byte for byte under `-W error`. `git diff HEAD` is empty for `guide/`,
+  `content_migration_plan.md`, `content_migration_ledger.md`, `subsection_alignment_plan.md`, `notes/log.md`,
+  `superseded-first-run/` and the earlier batches' artefacts.
+
+**Remaining limits.** ZT Table 2 unreproduced and unexplained; Table 1 and the J test not re-simulated; the
+Econometrica text of Giacomini–White not obtained; human review outstanding.
+
+### Publication pass (23 October 2026)
+
+Same branch, before the first commit of this batch; the content and verdicts audited above are unchanged.
+
+**Changes.**
+- *Pagination (entry).* The last four lines of `meth:conditional-predictive-ability` (end of Pitfalls, See also) had
+  fallen alone on printed p. 42. Reworded, meaning kept: the statistic paragraph (Ω̂ "omits autocovariances: under the
+  null Z is a martingale difference"; a HAC estimator "is also valid but may lose power"); the states example
+  ("Neither method is better unconditionally; conditionally, A is better after a boom"); design C's simulated mean
+  moved into the parenthesis with its standard error; "D is OLS" for "method D is OLS"; "The CRPS assumes a Gaussian"
+  for "uses the Gaussian … as an assumption"; two Pitfalls phrases shortened. Table C's label "equal population
+  models, method null false" now sits on one row. No spacing commands, no font changes. Every locator, number, caveat
+  and source conclusion is unchanged.
+- *Scratch calculation.* The skewed-error general form of Proposition 6 (reading note; record above) is now labelled
+  exploratory and not repository-verified: its symbolic check and Monte Carlo were not saved or rerun here.
+
+**Source conclusions as published.** Giacomini–White: the authors' April 2006 version only; the Econometrica text was
+not obtained. Proposition 6: discrepancy traced to the missing fourth-moment pairing factor 3 in its proof. Eq. (14):
+sign opposite to the proof's eq. (30). Table 2: unreproduced and unexplained. Table 1 and the J test: not reproduced
+or tested here. Coverage of `objective:score-and-combine-return-forecasts` is editorial; no mastery claimed, checkpoint
+not attempted.
+
+**Validation (23 October 2026, after these changes).**
+- Check script rerun under `-W error`: exit 0, output byte-identical to `conditional-predictive-ability-results.txt`
+  (53 checks run, 0 failed; 2 historical reproduction gates, 0 met). First-run output unchanged (SHA-256
+  `c46e1ba7…9235`).
+- `make check`, exit 0: lock check; ruff lint and format (165 files); `check_compendium.py --check` (703 entries,
+  0 problems; 112 pathways printed, 96 pathway notes); `check_coverage.py --check` and `--verify-outlines` (453
+  objectives, 453 covered, 0 problems); `make test` (59 passed, 3 subtests); `make examples` (130 scripts);
+  `make pdf`: 467 pages (468 before), no overfull boxes, no undefined references, the one pre-existing underfull box.
+- `make pre-commit`, exit 0, all hooks passed, no file changed; rerun after staging so that the six new files are
+  in the index (`--all-files` covers only indexed files): `end-of-file-fixer` removed one trailing blank line from
+  `notes/readings/zhu-timmermann-2022-arxiv.md` (inspected; no text changed); third run, exit 0, all hooks passed.
+- PDF pages 46–48 (printed 40–42) rendered and read: the entry ends on printed p. 41 with Pitfalls and See also; the
+  joined table row, the reworded sentences and the links display correctly; chapter 9 opens on printed p. 42.
+
+**Remaining limits.** As above: ZT Table 2 unreproduced and unexplained; Table 1 and the J test not reproduced or
+tested; the Econometrica text of Giacomini–White not obtained; human review outstanding.

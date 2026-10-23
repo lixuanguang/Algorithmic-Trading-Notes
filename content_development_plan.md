@@ -18,6 +18,11 @@ A second batch on the same pathway, forecast combination and proper scoring (22 
 `codex/forecast-combination-scoring` from `2561b34`), is recorded in section 10: 702 entries, 112 printed pathways,
 466 PDF pages. Sections 0-9 are the first batch's record and are not revised by it.
 
+A third pass, one entry on conditional predictive ability (22 October 2026, branch
+`codex/conditional-predictive-ability` from `4c95e3e`), is recorded in section 11: 703 entries, 112 printed pathways,
+467 PDF pages after the publication pass of section 11.8 (468 after the correction pass of section 11.7, 467 before it).
+Sections 0-10 are not revised by it.
+
 ## 0. Reconciliation before implementation (22 October 2026)
 
 | Item in the deferred proposal | Current repository | Decision |
@@ -292,3 +297,102 @@ assumption; point forecasts alone supply neither variance nor predictive distrib
 results are unchanged. The focused script passes under `-W error` with 64 checks. The pre-audit repository-wide
 validation is recorded in `notes/source-review-records.md`; the post-audit validation run belongs to the publication
 pass.
+
+## 11. Third pass: conditional predictive ability (22 October 2026)
+
+Status: implemented on branch `codex/conditional-predictive-ability` from `4c95e3e`; uncommitted, for review. Review
+record: `notes/source-review-records.md`, *Conditional predictive ability entry (22 October 2026)*.
+
+### 11.1 Scope
+
+At most one new entry under `return-predictability`, provisionally `meth:conditional-predictive-ability`, set by the
+request. Explicitly deferred: the full pathway checkpoint, further predictor searches, SVIX, kernel methods and the
+unresolved Clark-West replication gap.
+
+### 11.2 Sources
+
+| Key used | Version read | Copy | Notes |
+| --- | --- | --- | --- |
+| `giacomini-white-2006-wp` (registered) | Authors' version, "This version: April 2006", post-referee | Giacomini's former UCLA copy via the Wayback Machine (2006-09-20), SHA-256 `2d937c5c…f15a7`; printed page = PDF page | Precursor of `wide-giacomini-white` (Econometrica 74(6), 2006), which returned HTTP 403 and was not used |
+| `zhu-timmermann-2022-arxiv` (registered) | arXiv:2006.03238v2, 19 August 2022 | arXiv, SHA-256 `afed6367…4cea`; printed page = PDF page | v1 (June 2020) compared for abstract and section list only |
+| Data | `goyal-annual-predictors-1871-2025.csv`, unchanged | Previous batch's extraction, workbook `8d210b77…be872` (2026 vintage) | No new extraction |
+
+### 11.3 Entries and files
+
+| Path | Change |
+| --- | --- |
+| `compendium/asset-pricing/return-predictability.tex` | `meth:conditional-predictive-ability` (Method 8.13) appended; See also of `meth:nested-forecast-tests` and `meth:proper-scoring-rules` gains a link |
+| `compendium/front/sources.tex` | `giacomini-white-2006-wp`, `zhu-timmermann-2022-arxiv` registered |
+| `notes/artefacts/return-predictability/` | `conditional-predictive-ability-protocol.md`, `-checks.py`, `-first-run.txt`, `-results.txt` |
+| `notes/readings/` | New `giacomini-white-2006-wp.md`, `zhu-timmermann-2022-arxiv.md` |
+| `notes/entry-evidence.json`, `notes/coverage/objectives.json` | One record; the objective covered, the topic's scope |
+| `notes/pathways/return-predictability.md`, `notes/pathways/asset-pricing.md` | Entry, status and backlog |
+| `notes/source-review-records.md`, `notes/source-review-index.md` | Record and index line |
+
+### 11.4 Numerical checks
+
+The protocol was written before the script existed. On the first run, 39 of 41 checks passed. The two failures were
+the gates of part X, which expected Zhu and Timmermann's Table 2 to reproduce for the expanding-window Example 5;
+it did not (0.057 and 0.054 against 0.196 and 0.158). They are reported as a failed reproduction, not loosened.
+Post-run derivations found an opposite sign in their eq. (14) and the exact variance ratio `(2m + 1)/(3m)` in place of
+their Proposition 6. The current script reports 53 correctness and regression checks, all passing, and reports the
+two failed part X gates separately as historical reproduction outcomes (section 11.7). The simulations derive each null
+from the DGP and both forecasting methods and report Monte Carlo standard errors. The constructed states example shows
+equal average losses with opposite conditional losses. The fixed 20-year rolling-window illustration on existing data
+rejects nothing (all p-values above 0.2).
+
+### 11.5 Acceptance
+
+- One entry with located citations, checked against the copies in 11.2, explaining methods (including estimation and
+  windows), conditional against unconditional nulls, instruments, the statistic with its covariance, degrees of
+  freedom and assumptions, the expanding-window exclusion and why equal population models or equal average accuracy do
+  not give the conditional null: met.
+- Protocol before experiments; independent validation of the statistic; derived-null simulations with Monte Carlo
+  uncertainty; a small unconditional-versus-conditional example; a predeclared fixed rolling window on existing data
+  with the vintage and publication-lag caveats; one-step mds covariance distinguished from serial-correlation cases;
+  rank-deficient instruments handled (a single constant instrument is valid; section 11.7): met.
+- The 702 earlier entries preserved apart from two See-also links; `make check` and `make pre-commit` pass; 468 PDF
+  pages after section 11.7 (467 before), no overfull boxes or unresolved references: met.
+- Coverage: the remaining objective moved from partial to covered (its operations now supported); source-version limits
+  kept in the backlog; no mastery claimed; checkpoint not attempted.
+
+### 11.6 Deferred
+
+The Econometrica text of Giacomini and White; the pathway checkpoint; further predictor searches; the SVIX bound; kernel
+methods; the Clark-West size gap at P = 120; Zhu and Timmermann's skewed-error Table 1 and J test; multi-step
+conditional tests and the decision rule on data; interval-score differences on data.
+
+### 11.7 Correction and final-validation pass (23 October 2026)
+
+Same branch, uncommitted. Review record: *Correction and final-validation pass (23 October 2026)* under the
+conditional predictive ability record in `notes/source-review-records.md`.
+
+- **Singular covariance.** The entry said a constant instrument makes Ω̂ singular. Corrected: Ω̂ is singular exactly
+  when Z = hΔL has rank below q; a single constant h = 1 is valid, and a second constant is redundant only beside an
+  intercept. Consistent with V1 (h = (1, a)), V3 (h = 1) and V5 (duplicated column; h = (1, 2)); no test added.
+- **Verdict accounting.** The first run's verdict stands: 41 checks, 39 passed, both part X reproduction gates
+  failed (`conditional-predictive-ability-first-run.txt` unchanged). The script now reports 53 correctness and
+  regression checks (39 protocol, 6 post-run, 8 recorded values), all passing, and separately the 2 historical
+  reproduction gates under their original criterion, both NOT MET. Protocol amendment appended; no seed, threshold,
+  design or observation changed; every numerical line of the recorded output is unchanged.
+- **Source discrepancies, checked in the cached arXiv v2 PDF.** Proposition 6: the proof omits the Gaussian
+  fourth-moment pairing factor 3 (eq. (23), p. 25, and before eq. (28), p. 26); its printed steps give 88/130, and
+  with the factor they give `(2m + 1)/(3m)` (one exact check added to P1). Proposition 8: eq. (14), p. 17, has a minus
+  sign on the stochastic-integral term where the proof's eq. (30), p. 28, gives a plus; the script's loss ordering
+  matches eq. (29). Table 2 remains unreproduced and unexplained. Derivations: `notes/readings/zhu-timmermann-2022-arxiv.md`.
+- **Coverage.** `objective:score-and-combine-return-forecasts` re-assessed against `notes/coverage/README.md`: still
+  covered (combining, proper scoring and unconditional and conditional tests each have a reviewed entry with a worked
+  example); the Giacomini-White source-version limit stays in the backlog. Editorial coverage only; no mastery claimed.
+- **PDF.** 468 pages (was 467): the entry's last three lines move to printed p. 42.
+
+### 11.8 Publication pass (23 October 2026)
+
+Same branch; committed and opened as a draft pull request after this pass. Review record: *Publication pass (23 October
+2026)* under the conditional predictive ability record in `notes/source-review-records.md`.
+
+- **Pagination.** The entry's last four lines no longer fall alone on printed p. 42. Six sentences were reworded
+  without removing any assumption, result, citation or caveat; table C's two-row label was joined on one row; no
+  spacing commands or font changes. 467 PDF pages (468 after section 11.7); the entry ends on printed p. 41.
+- **Wording.** The skewed-error general form in the reading note and the 11.7 record is now labelled exploratory, not
+  repository-verified evidence. No other record, protocol, first-run output, seed or threshold changed.
+- **Checks.** `make check` and `make pre-commit` pass; the check script reproduces its recorded output byte for byte.

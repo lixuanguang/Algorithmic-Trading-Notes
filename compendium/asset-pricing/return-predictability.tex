@@ -119,7 +119,7 @@ No start gives a positive $R^2_{OS}$ or a Clark--West $t$ near 1.282, and adding
 
 \qffield{Pitfalls} Applying the Diebold--Mariano or another normal test to the raw MSPE difference of nested models: it is undersized and almost never rejects. Reading a negative $R^2_{OS}$ as proof that the slope is zero, or a positive one as proof of a usable strategy. Choosing the start of the evaluation sample after seeing the results. Two-sided tests: the alternative is that the larger model forecasts better. Overlapping multi-year forecasts with ordinary standard errors (\hyperref[meth:correlation-independence-tests]{overlapping observations}). Fixing a coefficient's expected sign from the full sample, which leaks the future into a ``real-time'' forecast (\hyperref[meth:restricted-forecast-value]{restricted forecasts}).
 
-\qffield{See also} \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation} (the split and the benchmarks); \hyperref[meth:hypothesis-testing]{hypothesis tests} (size and power); \hyperref[res:campbell-shiller-identity]{present-value identity} (why the dividend yield should forecast); \hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics} (Welch and Goyal's other predictors); \hyperref[meth:forecast-combination]{forecast combination}.
+\qffield{See also} \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation} (the split and the benchmarks); \hyperref[meth:hypothesis-testing]{hypothesis tests} (size and power); \hyperref[res:campbell-shiller-identity]{present-value identity} (why the dividend yield should forecast); \hyperref[meth:backtest-evaluation-diagnostics]{backtest diagnostics} (Welch and Goyal's other predictors); \hyperref[meth:forecast-combination]{forecast combination}; \hyperref[meth:conditional-predictive-ability]{conditional predictive ability} (comparing forecasting methods with fixed windows).
 
 \end{qfmethod}
 
@@ -303,6 +303,74 @@ All forecasts in this field are Gaussian, or mixtures of Gaussians, by assumptio
 
 \qffield{Pitfalls} Ranking density forecasts by the squared error of their means. Comparing log scores computed in different units, or reading a negative log loss as an error. Mixing positively and negatively oriented scores in one table. Judging intervals by coverage alone. Treating an average of point forecasts, with the members' own spread, as the combined predictive distribution. Using an improper score such as the linear score, which favours overconfident forecasts.
 
-\qffield{See also} \hyperref[meth:forecast-combination]{forecast combination} (averaging point forecasts); \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation} (RMSE favours the mean, MAE the median); \hyperref[meth:volatility-forecast-loss]{volatility forecast losses}; \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation} (VaR is a quantile forecast).
+\qffield{See also} \hyperref[meth:forecast-combination]{forecast combination} (averaging point forecasts); \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation} (RMSE favours the mean, MAE the median); \hyperref[meth:volatility-forecast-loss]{volatility forecast losses}; \hyperref[meth:var-es-estimation-methods]{VaR and ES estimation} (VaR is a quantile forecast); \hyperref[meth:conditional-predictive-ability]{conditional predictive ability} (testing differences in scores).
+
+\end{qfmethod}
+
+\begin{qfmethod}[Testing equal conditional predictive ability of forecasting methods: the null on losses at the estimates used, instruments known at the forecast origin, the Wald statistic and its covariance, bounded estimation windows, and when the conditional null can hold]\label{meth:conditional-predictive-ability}
+\qffield{Statement} \emph{What is compared.} A \emph{forecasting method} is a model together with its estimation procedure and the data used to estimate it, including the length of the window. The null concerns losses at the estimates actually used, conditional on an information set $\mathcal G_t$:
+\[ H_0:\ E\bigl[L(y_{t+\tau},\hat f_t)-L(y_{t+\tau},\hat g_t)\,\big|\,\mathcal G_t\bigr]\equiv E[\Delta L_{t+\tau}\mid\mathcal G_t]=0 \]
+\citep[authors' version, April 2006, eqs.~(2)--(3), pp.~5, 8]{giacomini-white-2006-wp}. The Diebold--Mariano--West null (eq.~(1)) evaluates the losses at the parameters' probability limits and so compares \emph{models}. The method null counts estimation noise, so a small misspecified model can be as accurate as a large correct one (pp.~5--6).
+
+\emph{Conditional and unconditional.} With $\mathcal G_t$ trivial, the null is equal average loss: which method was better on average, the question for an unspecified future date. With $\mathcal G_t=\mathcal F_t$, the information at the forecast origin, it says that nothing known then predicts which method will be more accurate at $t+\tau$ (pp.~3, 6). The conditional null implies the unconditional one, not the reverse.
+
+\emph{Instruments.} For $\tau=1$ and $\mathcal G_t=\mathcal F_t$ the null makes $\Delta L_{t+1}$ a martingale difference sequence, so $E[h_t\Delta L_{t+1}]=0$ for every $q\times1$ vector $h_t$ known at $t$ (the ``test function''). The test checks only this implication for the chosen $h_t$, such as a constant and the lagged loss difference, or a business-cycle indicator. It can ``accept'' a false null when $\Delta L$ is correlated with information left out of $h_t$, and weak instruments dilute its power (pp.~9, 11).
+
+\emph{Statistic.} With $Z_{t+1}=h_t\Delta L_{t+1}$ over the $n$ forecasts,
+\[ T=n\,\bar Z'\hat\Omega^{-1}\bar Z,\qquad \hat\Omega=n^{-1}\textstyle\sum_t Z_{t+1}Z_{t+1}', \]
+and the null is rejected when $T$ exceeds the $1-\alpha$ quantile of $\chi^2_q$ (eq.~(4), p.~9). $\hat\Omega$ is uncentred and omits autocovariances: under the null $Z$ is a martingale difference. $T$ equals $n$ times the uncentred $R^2$ of a regression of a constant one on $Z'$. A HAC estimator is also valid but may lose power (comments~5 and~7, p.~10).
+
+\emph{When serial correlation must be allowed for.} For $\tau>1$ the conditional null leaves $h_t\Delta L_{t+\tau}$ correlated up to lag $\tau-1$, and $\tilde\Omega$ adds those autocovariances with weights tending to one (eq.~(6), Theorem~3, pp.~11--12). The unconditional null implies no dependence structure: its $t$ statistic, $\overline{\Delta L}/(\hat\sigma/\sqrt n)$, needs a HAC variance with a truncation lag growing with $n$, and it coincides with Diebold and Mariano's (eq.~(8), Theorem~4, pp.~12--13). Rolling windows make $\Delta L$ itself dependent. Zhu and Timmermann therefore replace the martingale-difference variance with Newey--West, or with a subsample $t$: $K$ block means against Student $t_{K-1}$ \citep[arXiv:2006.03238v2, Remarks~1--2 and eq.~(13), p.~14]{zhu-timmermann-2022-arxiv}.
+
+\qffield{Conditions} \emph{Assumptions of the one-step test} \citep[Theorem~1, p.~9]{giacomini-white-2006-wp}: the estimation window is bounded, $m\le\bar m<\infty$, while $n\to\infty$, so estimation noise does not vanish; data and instruments are mixing, allowing heterogeneity and breaks at unknown dates; moments of order $2(r+\delta)$ exist; and $\Omega_n$ is uniformly positive definite. The degrees of freedom are the number of linearly independent instruments. Nested models are allowed, because non-vanishing estimation noise prevents the singularity that the model null meets (comment~4, p.~10). Any loss qualifies (squared, absolute, linex, direction of change, predictive log likelihood; p.~8), so a \hyperref[meth:proper-scoring-rules]{proper score} can define $\Delta L$.
+
+\emph{Singular instrument covariance.} $\hat\Omega=n^{-1}Z'Z$, with rows $Z_{t+1}'=h_t'\Delta L_{t+1}$, is singular exactly when the $n\times q$ matrix $Z$ has rank below $q$. A single constant, $h_t=1$, is valid: then $\hat\Omega$ is the mean of $\Delta L^2$, positive unless every $\Delta L$ is zero. Singularity arises when the instruments are linearly dependent over the sample, for example a second constant, or an indicator that never changes, beside the intercept; $T$ is then undefined. A generalised inverse returns the statistic of the reduced set, whose degrees of freedom are the rank, not $q$ (Interpretation; checked numerically). Drop the redundant instrument and report the $q$ used.
+
+\emph{Expanding windows are outside the theory.} A bounded window ``rules out an expanding window forecasting scheme'' \citep[p.~8 and comment~3, p.~10]{giacomini-white-2006-wp}; a single fixed estimation sample is allowed. The recursive comparisons under \hyperref[meth:nested-forecast-tests]{nested forecast tests} and \hyperref[meth:forecast-combination]{forecast combination} are therefore not Giacomini--White exercises. Their methods include an expanding window, and Clark--West's critical values address the population-slope null with $R,P\to\infty$. Recasting them needs a fixed window and new forecasts, as in the illustration below. With an expanding window the statistic's limit can be non-standard \citep[Proposition~8, p.~17]{zhu-timmermann-2022-arxiv}.
+
+\emph{When the conditional null can hold.} Under squared loss $\Delta L=(f_1+f_2-2y)(f_1-f_2)$. So, if $f_1\neq f_2$, $E[\Delta L_{t+1}\mid\mathcal F_t]=0$ exactly when $E[y_{t+1}\mid\mathcal F_t]=(f_{1,t}+f_{2,t})/2$ \citep[Proposition~1, p.~5]{zhu-timmermann-2022-arxiv}. With rolling-window forecasts it fails whenever the conditional mean depends on data older than the window (Proposition~2, p.~6). For an autoregression with estimated coefficients and a window longer than its order it should not be expected (Lemma~1, p.~8). For nested models whose average losses are equal by construction, $\Delta L$ is still not a martingale difference (Proposition~3, p.~8). So equal population models do not establish equal method accuracy, and equal average accuracy does not establish the conditional null. A rejection of the conditional null therefore does not by itself show that either method is better on average.
+
+\emph{Versions.} Giacomini and White are cited from the authors' post-referee version of April 2006. The \emph{Econometrica} article (74(6), 2006, 1545--1578; catalogue \nolinkurl{wide-giacomini-white}) was not obtained, and its numbering may differ: the copy's text calls its tests ``Theorems~5 and~6''. Zhu and Timmermann are cited from arXiv version~2 (August 2022). Version~1 (June 2020) claimed instead that the null cannot be valid under a rolling window.
+
+\qffield{Practice} \emph{Same average accuracy, different conditional accuracy} (constructed). A state $S_t$, boom or bust with probability $\tfrac12$, is known at $t$. Then $y_{t+1}=1+\varepsilon$ after a boom and $-1+\varepsilon$ after a bust, with $\varepsilon\sim N(0,1)$. Method~A always forecasts $+1$, method~B $-1$. Expected squared losses are 1 and 5 for A, and 5 and 1 for B, so both average 3. $\Delta L=L_A-L_B=-4y_{t+1}$ has conditional mean $-4$ after a boom and $+4$ after a bust. Neither method is better unconditionally; conditionally, A is better after a boom. With $n=120$ and 10,000 samples, the unconditional test rejects 5.2 percent of the time (Monte Carlo s.e.\ 0.2 points), the conditional test with $h_t=(1,S_t)$ every time.
+
+\emph{Simulated methods, not simulated loss differences.} Each design simulates the data and both forecasting methods. The status of each null is derived from them. All tests are at 5 percent, with 10,000 samples except C (2,000); Monte Carlo standard errors are at most 0.004.
+\begin{center}\small
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Design and derived null & Test & $n=120$ & $n=1000$ \\
+\midrule
+N: $y=\tfrac12(f_1+f_2)+\varepsilon$, conditional null true & $h=(1,\Delta L_t)$ & 0.042 & 0.047 \\
+U: unconditional null true, & $h=1$, martingale-difference variance & 0.026 & 0.024 \\
+\quad conditional null false & $t$, uniform HAC, lag 4 & 0.093 & 0.055 \\
+ & subsample $t$, $K=4$ & 0.050 & 0.046 \\
+ & $h=(1,f_1)$ & 0.061 & 0.044 \\
+ & $h=(1,f_1^2)$ & 0.142 & 0.788 \\
+C: equal population models, method null false & $h=(1,\Delta L_t)$ & & 0.999 \\
+\bottomrule
+\end{tabular}
+\end{center}
+In N each forecast is the 12-period moving average of its own AR(1) signal. The null holds only because the outcome is defined as their average (Zhu and Timmermann's Example~2). In U, $y=\tfrac12+\varepsilon$, $f_1$ is the mean of the last $m=4$ outcomes and $f_2=0$ (their Example~4). Then $E[\Delta L_{t+1}\mid\mathcal F_t]=v_t^2-\tfrac14$, with $v_t=f_{1,t}-\tfrac12$, so $E[f_1\Delta L]=0$ but $E[f_1^2\Delta L]=1/8$: the instrument $f_1$ cannot see the failure and $f_1^2$ can (Interpretation). $\Delta L$ is $m$-dependent, so the unconditional null needs autocovariances. Without them, the variance of the normalised statistic is $(2m+1)/(3m)=0.75$ for Gaussian errors (derived here, Interpretation; simulated 0.755). Zhu and Timmermann's Proposition~6 gives 0.677 (p.~14); its proof's Gaussian-case fourth moment omits the factor 3 on the pairings (eq.~(23), p.~25, and before eq.~(28), p.~26), and with it the same steps give 0.75 (Interpretation). Both make the test undersized. In C both methods use 20 observations: the window mean, and OLS on an AR(1) predictor whose true slope is zero. Then $E[L_M-L_D]=-E[\hat b^2(x_t-\bar x)^2]<0$ (Interpretation; simulated $-0.097$, s.e.\ 0.0004). The test rejects, and the sign of $\overline{\Delta L}$ favours the window mean.
+
+For Zhu and Timmermann's expanding-window Example~5, with $T=2000$, comparing the statistic with 1.96 rejects 5.7 and 5.4 percent of the time ($\lambda=0.25$, 0.5). That agrees with the limit derived here, 5.4 and 5.3 percent. It does not reproduce their Table~2, 19.6 and 15.8 percent (p.~18). Their eq.~(14) has the opposite sign on the stochastic-integral term to this derivation and to their own proof (eq.~(30), p.~28); simulated as printed, it gives 14.9 and 11.7 percent. Neither sign gives Table~2, whose values remain unexplained here.
+
+\emph{Annual equity premium with a fixed 20-year window.} The window, methods, losses, instrument and samples were fixed before any result. The outcome is the annual log equity premium in percent. Method~M is the mean of the previous 20 outcomes; D is OLS on the lagged log dividend--price ratio over the same 20 years. The 1947 forecasts (4.10 and 3.04 percent) equal the recursive ones of the earlier entries; later the windows differ. $\Delta L=L_M-L_D$, so a positive mean favours D. The CRPS assumes a Gaussian $N(\hat f,s^2)$, $s^2$ being the window's variance (M) or residual variance (D).
+\begin{center}\small
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+Forecasts & Loss & Mean $\Delta L$ & DM $t$ & $p$ & $T$, $h=(1,\Delta L_t)$ & $p$ \\
+\midrule
+1947--2025 (79) & squared (pct$^2$) & 9.87 & 0.50 & 0.62 & 2.73 & 0.26 \\
+ & CRPS (pct) & 0.116 & 0.31 & 0.75 & 3.01 & 0.22 \\
+1947--2005 (59) & squared (pct$^2$) & 3.38 & 0.14 & 0.89 & 2.63 & 0.27 \\
+ & CRPS (pct) & $-0.001$ & $-0.00$ & 1.00 & 2.76 & 0.25 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The DM $t$ uses Newey--West with lags 3 and 2; $T$ uses 78 and 58 observations and $\chi^2_2$. D's $R^2_{OS}$ against M is 3.40 and 1.22 percent. In the recursive comparison of the earlier entries, dp's $R^2_{OS}$ against the historical mean for 1947--2025 is $-1.83$ percent. Fixing the window changes both methods, so the two numbers answer different questions. No test rejects, conditionally or unconditionally, and with 78 observations the $\chi^2$ approximation is rough. The predictor years are calendar-indexed, from the 2026 vintage of Goyal's file, with no publication lags or revisions: this is not a point-in-time backtest.
+
+\qffield{Pitfalls} Reporting a Giacomini--White test on expanding-window forecasts. Reading a rejection of the conditional null as evidence that one method is better on average, or a non-rejection with a small $h_t$ as evidence of equal conditional accuracy. Using the martingale-difference variance for the unconditional null or for $\tau>1$. Choosing the window, instruments or evaluation sample after seeing results. Keeping $q$ degrees of freedom after replacing a singular $\hat\Omega$ with a generalised inverse. Reading a Clark--West result, which concerns the population slope, as one about forecasting methods.
+
+\qffield{See also} \hyperref[meth:nested-forecast-tests]{nested forecast tests} (the model null and recursive windows); \hyperref[meth:forecast-combination]{forecast combination}; \hyperref[meth:proper-scoring-rules]{proper scoring rules} (losses for density and interval forecasts); \hyperref[meth:forecast-accuracy-evaluation]{chronological forecast evaluation}; \hyperref[meth:correlation-independence-tests]{overlapping observations}; \hyperref[meth:hypothesis-testing]{hypothesis tests}.
 
 \end{qfmethod}

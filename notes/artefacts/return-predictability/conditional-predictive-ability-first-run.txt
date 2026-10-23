@@ -1,0 +1,94 @@
+Python 3.14.7, NumPy 2.4.6, pandas 3.0.5, SciPy 1.18.1
+
+V. Validation of the statistic
+  ok  V1 hand example: exact = solve = n R^2: T = 3087/2005 = 1.539651, p = 0.4631
+  ok  V2 random n = 500, q = 3: solve = n R^2: T = 12.049514
+  ok  V3 h = 1: T = (sum dL)^2 / sum dL^2 = GW_T^2
+  ok  V4 chi2(2) upper tail = exp(-x/2)
+  ok  V4 5% critical values q = 1, 2
+  ok  V5 duplicated column: singular instruments raise: instrument matrix has rank 2 < q = 3; drop the redundant instrument
+  ok  V5 h = (1, 2): singular instruments raise: instrument matrix has rank 1 < q = 2; drop the redundant instrument
+  ok  V5 Moore-Penrose statistic with the duplicate = reduced statistic (df = rank 2, not 3): 1.539651 vs 1.539651
+  ok  V6 Omega-tilde (tau = 2) = hand loop; tau = 1 gives Omega-hat
+  ok  V7 uniform LRV (L = 2) = Omega-tilde (tau = 3) on demeaned data
+  ok  V7 Newey-West (L = 3) = hand loop
+  ok  V7 subsample t (K = 4) = hand calculation: 0.718185
+
+H. Same average accuracy, different conditional accuracy (states)
+  ok  H exact: E[L_A|S] = 1, 5; E[L_B|S] = 5, 1; E[dL|S] = -4, +4; E dL = 0
+  ok  H dL = -4 y exactly
+  ok  H pooled E[dL | S = 1] within 3 se of -4: -3.9933 (se 0.0052)
+  ok  H pooled E[dL | S = 0] within 3 se of +4: +3.9966 (se 0.0051)
+  rejection at 5%, n = 120, R = 10000: unconditional 0.0518 (mc se 0.0022); conditional h = (1, S) 1.0000 (mc se 0.0000)
+  ok  H unconditional rejection in [0.035, 0.070]: 0.0518
+  ok  H conditional rejection >= 0.99: 1.0000
+
+N. Conditional null true by construction (two moving-average forecasts, ZT Example 2)
+  n =  120, h = (1, dL_t)    : rejection 0.0417 (mc se 0.0020)
+  n =  120, h = (1, f1 - f2) : rejection 0.0443 (mc se 0.0021)
+  n = 1000, h = (1, dL_t)    : rejection 0.0465 (mc se 0.0021)
+  n = 1000, h = (1, f1 - f2) : rejection 0.0508 (mc se 0.0022)
+  ok  N pooled mean of Z component dL within 3 se of 0 (n = 1000): +0.00094 (se 0.00170)
+  ok  N pooled mean of Z component dL_t dL within 3 se of 0 (n = 1000): -0.02749 (se 0.01567)
+  ok  N rejection with h = (1, dL_t), n = 1000, within 0.015 of 0.05: 0.0465
+
+U. Unconditional null true, conditional null false (ZT Example 4, Gaussian, m = 4)
+  n = 120: Newey-West lag 3; uniform HAC not positive in 34 samples (Bartlett used)
+    U-a mds              rejection 0.0264 (mc se 0.0016)
+    U-b uniform HAC      rejection 0.0931 (mc se 0.0029)
+    U-c Newey-West       rejection 0.0476 (mc se 0.0021)
+    U-d subsample K=4    rejection 0.0503 (mc se 0.0022)
+    U-e (1, f1)          rejection 0.0611 (mc se 0.0024)
+    U-e (1, f1^2)        rejection 0.1423 (mc se 0.0035)
+    variance of signed GW_T 0.7625; ZT Proposition 6 V_4 = 88/130 = 0.6769
+  n = 1000: Newey-West lag 7; uniform HAC not positive in 0 samples (Bartlett used)
+    U-a mds              rejection 0.0237 (mc se 0.0015)
+    U-b uniform HAC      rejection 0.0552 (mc se 0.0023)
+    U-c Newey-West       rejection 0.0444 (mc se 0.0021)
+    U-d subsample K=4    rejection 0.0459 (mc se 0.0021)
+    U-e (1, f1)          rejection 0.0442 (mc se 0.0021)
+    U-e (1, f1^2)        rejection 0.7881 (mc se 0.0041)
+    variance of signed GW_T 0.7552; ZT Proposition 6 V_4 = 88/130 = 0.6769
+  ok  U pooled mean of dL within 3 se of 0 (n = 1000): +0.00038 (se 0.00040)
+  ok  U pooled mean of dL^2 within 3 se of 2.125 (n = 1000): +2.12687 (se 0.00235)
+  ok  U pooled mean of f1 dL within 3 se of 0 (n = 1000): +0.00000 (se 0.00037)
+  ok  U pooled mean of f1^2 dL within 3 se of 0.125 (n = 1000): +0.12505 (se 0.00053)
+  ok  U U-b uniform HAC rejection, n = 1000, within 0.02 of 0.05: 0.0552
+  ok  U U-d subsample K=4 rejection, n = 1000, within 0.02 of 0.05: 0.0459
+
+C. Equal population models, unequal methods (rolling mean vs rolling OLS on an irrelevant predictor)
+  ok  C rolling OLS by window sums = lstsq (one window)
+  ok  C pooled mean dL = L_M - L_D below zero by > 3 se: -0.09689 (se 0.00035)
+  ok  C pooled mean of 2(mu - ybar) b d within 3 se of 0: -0.00037 (se 0.00020)
+  n = 1000, R = 2000: conditional h = (1, dL_t) rejects 0.9985 (mc se 0.0009); subsample t rejects 0.9825 (mc se 0.0029); mean dL / mean dL^2 scale: -0.09689
+
+X. Expanding window (ZT Example 5): GW_T with the mds variance against 1.96
+  lambda = 0.25: rejection 0.0567 (mc se 0.0023); ZT Table 2 asymptotic 0.196
+  BAD X lambda = 0.25: rejection exceeds 0.10: 0.0567
+  lambda = 0.5: rejection 0.0538 (mc se 0.0023); ZT Table 2 asymptotic 0.158
+  BAD X lambda = 0.5: rejection exceeds 0.10: 0.0538
+
+E. Annual log equity premium: rolling 20-year mean (M) vs rolling 20-year regression on dp (D)
+  ok  E1 rolling OLS closed form = lstsq per window: max |diff| 1.1e-13
+  ok  E2 forecasts through 1971 unchanged when later rows are overwritten: max |diff| 0.0e+00
+  ok  E2 forecasts through 2001 unchanged when later rows are overwritten: max |diff| 0.0e+00
+  ok  E3 1947 forecasts equal the recursive ones of the previous batches: M 4.10, D 3.04 percent
+  ok  E4 Gaussian CRPS closed form = quadrature (1947, D): 6.897359
+  forecasts (percent): 1947: y 4.31, M 4.10, D 3.04; 1970: y -2.85, M 9.71, D 5.88; 1990: y -10.83, M 3.45, D -4.29; 2010: y 13.99, M 4.26, D 4.28; 2025: y 12.47, M 8.42, D -4.90
+
+  Evaluation 1947-2025: n = 79, Newey-West lag 3, R2_OS of D against M 3.40%
+  loss       mean dL   DM t (NW)  p      mds t   p      cond. T  p      (n cond.)
+  squared      9.865      0.50  0.618    0.38  0.703     2.73  0.255   78
+  ok  E5 instrument matrix full rank (1947-2025, squared)
+  CRPS         0.116      0.31  0.754    0.23  0.816     3.01  0.222   78
+  ok  E5 instrument matrix full rank (1947-2025, CRPS)
+
+  Evaluation 1947-2005: n = 59, Newey-West lag 2, R2_OS of D against M 1.22%
+  loss       mean dL   DM t (NW)  p      mds t   p      cond. T  p      (n cond.)
+  squared      3.377      0.14  0.887    0.11  0.910     2.63  0.269   58
+  ok  E5 instrument matrix full rank (1947-2005, squared)
+  CRPS        -0.001     -0.00  0.999   -0.00  0.999     2.76  0.251   58
+  ok  E5 instrument matrix full rank (1947-2005, CRPS)
+
+41 checks, 2 failed
+FAILED: X lambda = 0.25: rejection exceeds 0.10; X lambda = 0.5: rejection exceeds 0.10

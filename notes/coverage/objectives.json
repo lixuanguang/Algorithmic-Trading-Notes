@@ -19,7 +19,7 @@
    "title": "Time value of money and cash-flow additivity",
    "section": "financial-mathematics",
    "prerequisites": [],
-   "scope": "Present value, implied returns and growth, cash-flow additivity and no-arbitrage forward relations."
+   "scope": "Future and present value of single amounts, compounding frequency and conversion between rate quotations, dated streams, annuities and perpetuities, loan amortisation, the internal rate of return and its pitfalls, present values of bond and equity cash flows, implied returns and growth, cash-flow additivity and no-arbitrage forward relations."
   },
   {
    "id": "topic:return-measurement",
@@ -1229,6 +1229,160 @@
    "supersedes": null
   },
   {
+   "id": "objective:convert-rate-quotations",
+   "topic": "topic:time-value-of-money",
+   "title": "Calculate future and present values of single amounts and convert between simple, periodically compounded, effective annual and continuously compounded rate quotations",
+   "operations": [
+    "calculate",
+    "convert",
+    "explain"
+   ],
+   "depth": "foundation",
+   "prerequisites": [],
+   "entries": [
+    "def:time-value-compounding"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "principles-of-finance-2026",
+      "locator": "secs. 7.1-7.4 (time value, FV and PV, compounding frequency, rule of 72) and 8.4 (stated against effective rates)"
+     },
+     {
+      "key": "s7-hulloptions",
+      "locator": "chap. 4, sec. 4.4, pp. 101-104 (compounding frequency, eqs. (4.1)-(4.4)); chap. 6, sec. 6.1, pp. 152-153 (day counts)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/principles-of-finance-2026.md",
+     "notes/readings/s7-hulloptions.md"
+    ],
+    "review_record": "notes/source-review-records.md#time-value-and-cash-flows-unit-review-23-october-2026",
+    "entry_evidence": [
+     "def:time-value-compounding"
+    ],
+    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (compound against simple interest; solving for rate and periods; monthly, semiannual, quarterly, continuous and money-market conversions)"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:value-annuities-perpetuities",
+   "topic": "topic:time-value-of-money",
+   "title": "Value mixed streams, ordinary annuities and annuities due, perpetuities, growing perpetuities and growing annuities, including non-annual payments and boundary cases",
+   "operations": [
+    "calculate",
+    "derive",
+    "interpret"
+   ],
+   "depth": "foundation",
+   "prerequisites": [
+    "objective:convert-rate-quotations"
+   ],
+   "entries": [
+    "meth:cash-flow-streams"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "principles-of-finance-2026",
+      "locator": "secs. 8.1 (perpetuities), 8.2 (annuities), 8.3 (non-annual periods) and 9.1 (mixed streams)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/principles-of-finance-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#time-value-and-cash-flows-unit-review-23-october-2026",
+    "entry_evidence": [
+     "meth:cash-flow-streams"
+    ],
+    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (formula against summation; annuity due, including zero and negative rates; perpetuity timing; growing annuity and the r = g case; effective against nominal monthly rates)"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:amortise-loans",
+   "topic": "topic:time-value-of-money",
+   "title": "Compute a level loan payment and its amortisation schedule, the outstanding balance and the total cost of borrowing",
+   "operations": [
+    "calculate",
+    "interpret"
+   ],
+   "depth": "foundation",
+   "prerequisites": [
+    "objective:value-annuities-perpetuities"
+   ],
+   "entries": [
+    "meth:loan-amortisation"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "principles-of-finance-2026",
+      "locator": "sec. 8.3 (loan amortisation, Table 8.4)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/principles-of-finance-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#time-value-and-cash-flows-unit-review-23-october-2026",
+    "entry_evidence": [
+     "meth:loan-amortisation"
+    ],
+    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (four-year schedule, prospective and retrospective balances, zero-rate schedule and limits, the OpenStax auto loan recomputed)"
+   },
+   "supersedes": null
+  },
+  {
+   "id": "objective:solve-irr-and-recognise-pitfalls",
+   "topic": "topic:time-value-of-money",
+   "title": "Solve for the internal rate of return by bracketing and Newton steps and recognise multiple, missing and borrowing-type IRRs and ranking errors",
+   "operations": [
+    "calculate",
+    "explain",
+    "evaluate"
+   ],
+   "depth": "foundation",
+   "prerequisites": [
+    "objective:value-annuities-perpetuities"
+   ],
+   "entries": [
+    "meth:internal-rate-of-return"
+   ],
+   "candidate_entries": [],
+   "coverage": "covered",
+   "next_action": null,
+   "missing": null,
+   "evidence": {
+    "sources": [
+     {
+      "key": "principles-of-finance-2026",
+      "locator": "secs. 16.3 (IRR method and its disadvantages) and 16.5 (mutually exclusive projects, Table 16.11)"
+     }
+    ],
+    "reading_notes": [
+     "notes/readings/principles-of-finance-2026.md"
+    ],
+    "review_record": "notes/source-review-records.md#time-value-and-cash-flows-unit-review-23-october-2026",
+    "entry_evidence": [
+     "meth:internal-rate-of-return"
+    ],
+    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (bisection and Newton; invalid brackets and endpoint roots; two IRRs; a double root without a crossing; no IRR; borrowing; scale and crossover rate)"
+   },
+   "supersedes": null
+  },
+  {
    "id": "objective:value-instruments-by-present-value",
    "topic": "topic:time-value-of-money",
    "title": "Calculate and interpret present values of bond and equity cash flows",
@@ -1311,7 +1465,7 @@
   {
    "id": "objective:apply-cash-flow-additivity",
    "topic": "topic:time-value-of-money",
-   "title": "Explain cash-flow additivity and no arbitrage and use them to derive implied forward rates, forward exchange rates and option values",
+   "title": "Explain cash-flow additivity and no arbitrage and use them to derive implied forward rates, the forward price of a share with a known dividend, forward exchange rates and option values",
    "operations": [
     "explain"
    ],
@@ -1330,7 +1484,7 @@
     "sources": [
      {
       "key": "s7-hulloptions",
-      "locator": "sec. 11.4, pp. 255-256; sec. 4.8, pp. 109-110; sec. 5.10, pp. 137-140; sec. 13.1, pp. 288-290"
+      "locator": "sec. 11.4, pp. 255-256; sec. 4.8, pp. 109-110; sec. 5.5, pp. 130-131 and Table 5.3; sec. 5.10, pp. 137-140; sec. 13.1, pp. 288-290"
      }
     ],
     "reading_notes": [
@@ -1340,7 +1494,7 @@
     "entry_evidence": [
      "res:cash-flow-additivity"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (forward rate lock-in ledger; covered FX ledger; call and put replication and parity)"
+    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (forward rate lock-in ledger; dividend-paying share forward ledger; covered FX ledger; call and put replication and parity)"
    },
    "supersedes": null
   },

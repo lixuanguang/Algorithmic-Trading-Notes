@@ -7078,3 +7078,119 @@ not attempted.
 
 **Remaining limits.** As above: ZT Table 2 unreproduced and unexplained; Table 1 and the J test not reproduced or
 tested; the Econometrica text of Giacomini–White not obtained; human review outstanding.
+
+## Time value and cash flows unit review, 23 October 2026
+
+**Starting state.** `main` at `8b66412` (merge of PR #39), the expected starting commit, clean; no intervening changes. Branch `codex/time-value-cash-flows-review`. Scope set by the request: Part I, chapter 1, Section 1.1, pathway `time-value-cash-flows`, audited against the guide's full pathway outcome. Nothing beyond this unit was edited except its evidence records, the OpenStax source registration and the reading notes. Local only; nothing committed or pushed. Source checking and writing, not study.
+
+**Outcome audited.** The guide's outcome: price finite and perpetual streams of dated cash flows, convert between compounding and quoting conventions, solve for the IRR and recognise its pitfalls, and price a forward by cost of carry with the same no-arbitrage argument. The three existing entries covered present values of bonds and equities, the Fisher relation and premia, and cash-flow additivity applied to forward rates, FX forwards and one-step options.
+
+**Findings.**
+- *Prerequisite order.* The section opened with `def:required-return-components`, which assumes nominal, real and risk-free rates, breakevens and term premia before discounting itself has been explained. A reader with algebra but no finance background met inflation risk premia before present value.
+- *Missing foundations.* No entry in the section defined time value, present and future value, simple against compound interest, or stated against effective rates. The conversion formulas existed only in `def:interest-rate-measures` (rates chapter), which also states the annuity identities and the EAR without a source.
+- *Missing outcome parts.* Not covered anywhere in the unit: annuity due and growing annuity, the r = g and g >= r boundaries, mixed streams, loan amortisation, IRR solution methods, the conditions for zero, one or several IRRs, and borrowing-type streams. NPV against IRR is in `meth:capital-project-evaluation`, which owns capital-budgeting ranking.
+- *Forward by cost of carry.* Owned by `res:cost-of-carry-forward-price` and `meth:arbitrage-replication-carry`, in continuous compounding. This unit linked to them but did not itself carry the borrow-buy-sell-forward argument for an asset with income.
+- *Vocabulary.* `meth:instrument-present-value` used coupon, face value and yield to maturity without defining them.
+- *Existing figures.* Every figure in the three existing entries was rerun by `time-value-return-checks.py` and agreed; the OpenStax Fisher example (8.12 percent, sec. 7.4) was re-read and agrees. No numerical error was found in the existing entries.
+
+**Sources read** (copies saved in the git-ignored `reading_materials/time-value-cash-flows/`, SHA-256 prefixes given):
+
+| Source | Identity | Read |
+| --- | --- | --- |
+| `principles-of-finance-2026` | Dahlquist and Knight, *Principles of Finance* 2e, OpenStax web edition dated 24 June 2026 (page footer copyright 6 July 2026); prerendered HTML fetched 2026-10-23 | 7.1 (51a1c937d333b1b0), 7.2 (cba7e61e9faeaa1d), 7.3 (0621c8d4ec3cae58), 7.4 reread (71af541b401bd5b2), 8.1 (d462849f7748fdff), 8.2 (2d15f9e202d7fbf8), 8.3 (0b18a66edbf59586), 8.4 (f8a8c4d522df4f10), 9.1 (e6e1dd046787cc8f), 16.3 (b98ba80873565459), 16.5 (4d78e9b06f02779b) |
+| `s7-hulloptions` | Hull, 11th Global edition, the git-ignored copy in `reading materials/` (SHA-256 8bc6e2f0...b482, printed page = PDF page) | chap. 4, sec. 4.4, pp. 101-104; chap. 5, sec. 5.5, pp. 130-131 and Table 5.3; chap. 6, sec. 6.1, pp. 152-153 |
+
+The OpenStax pages state that the book may not be ingested into language models without OpenStax's permission. The user was told and decided that the pages should be read for citation checking; the entries paraphrase and quote short phrases only. Not obtained, and not relied on: `corp-berk-demarzo` (6th edition) and `catalogue-0233` (Tuckman and Serrat, 4th edition), both required readings of the pathway.
+
+**Source discrepancies found** (recorded here, not in the entries except where they teach a distinction):
+- OpenStax 7.4 calls the discount rate "the inverse of the growth rate"; the discount factor, not the rate, is the reciprocal of the growth factor. This is corrected in `def:time-value-compounding` Pitfalls.
+- OpenStax 8.1 applies C/(R_s - G) to the current dividend. The entry states that C is the first payment, one period away, and links to the D_1 pitfall.
+- OpenStax 8.2, Table 8.2: year 3 is printed as 19,846.81 (exact 19,845.81) and the total as 99,818.76 (exact 99,817.75). The text attributes the gap from the formula's 99,817.81 to rounding; it is mainly the table's 1.00 slip.
+- OpenStax 8.3: the text divides by "32.781" where it means 32.871. The exact payment is 973.5020 and total interest with the exact payment 3,046.07; the table's 3,046.08 reflects rounding.
+- OpenStax 16.3 prints the embroidery machine's IRR as 14.09 percent, and Table 16.11 as 14.10 percent; the exact rate is 14.0855 percent. OpenStax does not print the facility's two IRRs; they are computed here (9.1797 and 62.2488 percent).
+- Added in the correction pass below: OpenStax 16.3 describes the IRR as the rate at which the NPV profile "crosses the horizontal axis"; a root need not be a crossing. OpenStax 8.2 says the annuity due "must always be larger"; for positive payments that holds only when r > 0.
+
+**Entries.** `time-value.tex` was reordered to run from single amounts to no arbitrage; labels are unchanged.
+- New: `def:time-value-compounding` (Definition 1.1), `meth:cash-flow-streams` (Method 1.2), `meth:loan-amortisation` (Method 1.3), `meth:internal-rate-of-return` (Method 1.4).
+- Moved: `def:required-return-components`, from 1.1 to 1.5, text unchanged.
+- Extended: `meth:instrument-present-value` defines coupons, face value and yield to maturity at first use, and its See also is updated; no figure changed. `res:cash-flow-additivity` gains a fourth consequence, the forward on an asset with known income (Hull sec. 5.5 and Table 5.3), with a discrete-compounding share example and its replication ledger; its title, Notation and Conditions are extended and no existing figure changed.
+- Canonical homes kept: forward pricing in `res:cost-of-carry-forward-price`, capital-budgeting ranking in `meth:capital-project-evaluation`, reference rates and zero curves in `def:interest-rate-measures`. All are cross-referenced, not repeated. `def:interest-rate-measures` was not edited; its unsourced annuity identities now overlap with `meth:cash-flow-streams` and should be consolidated when the rates unit is reviewed.
+- Derived, not sourced, and labelled "Interpretation" in the entries: conversion by equating growth factors over equal calendar time; simple-rate conversions; the geometric-series and difference-of-perpetuities derivations; the growing annuity and its r = g case; prospective and retrospective loan balances; bisection, Newton steps, Descartes' bound and conventional-stream uniqueness; the reading of the reinvestment statement; the discrete share-forward formula.
+
+**Checks.** `notes/artefacts/time-value-returns/time-value-return-checks.py` was extended rather than replaced. New sections:
+- single amounts and conversions: year-by-year crediting against the closed form, round trips between quotes, the money-market conversions both ways;
+- streams: formula against summation, annuity due, future value three ways, perpetuity truncation, the growing annuity and the r -> g limit against the r = g formula, effective against nominal monthly rates, the OpenStax table slip;
+- amortisation: the schedule rows, the balance prospectively and retrospectively at every date, the geometric growth of principal parts, the lender's IRR equal to the loan rate, the OpenStax auto loan;
+- IRR: bisection against Newton, both roots of the facility checked by NPV = 0, no-IRR minimum over a grid, borrowing, the OpenStax machines with the crossover found as the IRR of the difference, and reinvestment at the IRR;
+- share forward: a two-loan ledger, both arbitrage directions, and agreement with the continuous formula.
+
+Boundary cases tested: r = 0, r -> 0, g = r, g -> r, no IRR, two IRRs, and a borrowing-type stream. All checks pass with warnings as errors.
+
+**Coverage.** Four objectives were added to `topic:time-value-of-money` and marked covered (editorial coverage): `objective:convert-rate-quotations`, `objective:value-annuities-perpetuities`, `objective:amortise-loans`, `objective:solve-irr-and-recognise-pitfalls`. `objective:apply-cash-flow-additivity` now names the share forward, the Hull sec. 5.5 locator and the ledger example. The topic scope was widened to match. No outline mapping was changed or promoted.
+
+**Notes.** New specialist note `notes/pathways/time-value-cash-flows.md`; the overview `financial-mathematics.md` was updated. `principles-of-finance-2026.md` and `s7-hulloptions.md` record the sections read. `compendium/front/sources.tex` registers the OpenStax sections read.
+
+**Limits.** Editorial coverage only; no checkpoint attempted, no study or mastery claimed, and human review outstanding. OpenStax was read in web renderings with partly garbled equations, cited by section without page numbers. Two required readings are unread. Not covered: the modified IRR, worked irregular-date IRRs, payment frequencies that differ from compounding beyond the effective-rate conversion, and loan fees and regulatory APR.
+
+**Validation (23 October 2026).**
+- `make check` exits 0: lock check, ruff lint and format (165 files), `check_compendium` (707 entries, 112 printed pathways, 97 pathway notes, 0 problems), `check_coverage` with outline hashes (457 objectives covered, 0 problems), pytest (59 passed), 130 numerical check scripts, and the PDF (470 pages, previously 467; first recorded here as 466, corrected in the correction pass: the publication pass of PR #39 left the PDF at 467 pages).
+- `pre-commit run --all-files` passes.
+- The LaTeX log has no overfull boxes, warnings or undefined references. It has the one pre-existing underfull box, in `probability-statistics/statistical-inference.tex` (badness 2277), outside this unit; this line first omitted it and was corrected in the correction pass.
+- PDF pages 8-12 (printed 2-6) were rendered and read. Chapter 1 opens with Definition 1.1, and the seven entries run to printed p. 6, where Section 1.2 begins. Displayed equations, the amortisation list, the IRR bullets and the cross-references display correctly, with no short last lines.
+
+### Correction pass (23 October 2026)
+
+**Starting state.** The uncommitted unit review above, on `codex/time-value-cash-flows-review` at `8b66412`; all of its changes kept. A bounded correction pass on Section 1.1 only; Section 1.2 was not started. Local only; nothing committed or pushed.
+
+**Corrections.**
+- `meth:internal-rate-of-return`. The IRR is defined by NPV = 0. OpenStax's "crosses the horizontal axis" (sec. 16.3) is attributed and qualified, because a root need not be a crossing. A new original example, -100, +220, -121, has NPV = -(11/(1+r) - 10)^2. NPV is never positive, and its sole distinct IRR is 10 percent, a double root of -(11x - 10)^2. No bracket has ends of opposite signs, and at an 8 percent hurdle the IRR exceeds the hurdle while NPV is -0.0343. Descartes' rule now counts positive roots with multiplicity and is stated to assume equally spaced periods. For irregular dates the entry says the argument does not apply as stated. Bracketing is stated to certify crossing roots only and to miss touching roots and pairs of roots. A numerical IRR is accepted only if it lies in r > -1 and has |NPV| <= 1e-9 sum|CF_t|, with a note that a small residual fixes a multiple root less precisely. The rule "accept if the IRR exceeds the cost of capital" is restricted to conventional investment streams, an outlay followed by inflows with a positive undiscounted sum. NPV decides when a stream has several IRRs or a multiple root. Pitfalls were revised to match. The old pitfall that asked for a sign change around a Newton solution was replaced, because a double root has no sign change.
+- `meth:cash-flow-streams`. For positive payments the annuity due is larger when r > 0, equal at r = 0, and smaller when -1 < r < 0; OpenStax's "must always be larger" (sec. 8.2) is attributed. The domains are stated:
+  - finite streams need r > -1;
+  - the level closed forms also need r != 0, with NC at r = 0;
+  - the growing annuity needs g > -1 and r != g, with a separate r = g form;
+  - C/r needs r > 0, and the growing perpetuity needs -1 < g < r.
+
+  C/r is stated to be the time-0 value of a perpetuity whose first payment is at t = 1, and the difference-of-perpetuities form is reworded to match ("starting now" was misleading). A pitfall covers applying C/r to a perpetuity paid immediately, whose value is C + C/r. The printed future value is corrected from 5,637.0929 to 5,637.0930 (exact 5,637.09296). The script already checked the exact value, so the slip was in the printed rounding only. A zero-rate and a -2 percent example were added: 5,000 for each annuity at 0 percent, and 5,314.5809 against 5,208.2892 at -2 percent.
+- `meth:loan-amortisation`. The formulas are stated to need r > -1 and r != 0. The zero-rate limits are A = L/N and B_k = L(1 - k/N). The example adds the zero-rate schedule: four payments of 2,500 and balances 7,500, 5,000, 2,500 and 0.
+- This record. In the unit review's validation, the PDF baseline is corrected from 466 to 467 pages, and the pre-existing underfull box is now named (both above). Two source discrepancies are added to the list above.
+
+No label, title or source locator was changed. No other entry was edited, and no figure outside the ones named changed.
+
+**Checks.** In `time-value-return-checks.py`, `bisect()` now raises `ValueError` when lo >= hi or when the two ends have the same sign. It returns an end, or a midpoint, at which the function is exactly zero. A helper `rejects()` tests the refusal. Every existing call has a valid bracket and still passes. Twelve checks were added, for 113 in all (101 before):
+- streams: the annuity due against the ordinary annuity at 6, 0 and -2 percent by direct summation; C/r against truncated sums from t = 1 and t = 0; non-convergent partial sums at r <= 0;
+- loans: the zero-rate schedule by recursion, and the closed forms at r = 1e-7 against L/N and L(1 - k/N);
+- IRR: the double root's NPV against its closed form on a grid; no positive value on the grid; the root 10/11 with zero discriminant; no grid sign change, and bisection refused on [0, 0.2]; Newton's iterate passing the domain and residual test; NPV at 8 percent; bisection refused for reversed, empty and same-sign brackets; endpoint roots returned exactly (-100, +125 at 25 percent, from either side).
+
+No general-purpose solver was built.
+
+**Notes and evidence.** The `entry-evidence.json` records of the three corrected entries gain a dated correction-pass sentence; earlier text is kept. The `example` fields of the three matching objectives in `objectives.json` name the new checks; coverage status, sources and locators are unchanged. `principles-of-finance-2026.md` annotates the two qualified OpenStax statements. The pathway note, the section overview and the review index record the pass. The source-version limitation (OpenStax web edition of 24 June 2026, read in web renderings, without page numbers) and the unread status of `corp-berk-demarzo` and `catalogue-0233` are unchanged. No study, mastery or checkpoint is claimed.
+
+**Validation (23 October 2026).**
+- `uv run python -W error time-value-return-checks.py`: 113 checks passed, exit 0.
+- `make check` exits 0. It ran the lock check, ruff lint and format (165 files), and `check_compendium` (707 entries, 112 printed pathways, 97 pathway notes, 0 problems). It also ran `check_coverage` with outline hashes (457 of 457 objectives covered, 0 problems), pytest (59 passed, 3 subtests) and 130 numerical check scripts with warnings as errors. The PDF built at 470 pages, the same as after the unit review.
+- `pre-commit run --all-files` passes, and so does `pre-commit run --files notes/pathways/time-value-cash-flows.md`, the untracked note, which `--all-files` does not cover.
+- The LaTeX log has no overfull boxes, warnings or undefined references. It has the one pre-existing underfull box (badness 2277), in `probability-statistics/statistical-inference.tex`.
+- After the final content change, PDF pages 8-12 (printed 2-6) were rendered and read. They show the annuity-due and domain sentences, the zero-rate examples and limits, the IRR Statement, Notation bullets and double-root example, and the revised Pitfalls. The equations display correctly. Section 1.1 still ends on printed p. 6, where Section 1.2 begins.
+
+**Limits.** Editorial correction only; human review of the unit and this pass is outstanding. The root-counting statement covers equally spaced periods only. The residual tolerance is a stated convention, not a derived bound. The source-version and unread-reading limits above are unchanged.
+
+### Final wording and publication (23 October 2026)
+
+Same branch, before the first commit of this batch. The wording of `meth:internal-rate-of-return` was revised; no other entry, figure, label or locator changed.
+
+**Changes.**
+- *Borrowing streams.* The reversed comparison is kept: a borrowing-type stream is worthwhile when its IRR is below the cost of capital. The Pitfalls warning against applying "any IRR rule" to a stream that is not a conventional investment contradicted it and is removed. The Pitfalls now name applying the investment rule to a borrowing stream, and applying either rule to a stream with several IRRs or a multiple root. The double-root example now says that the stream is neither a conventional investment nor a conventional borrowing.
+- *Bracketing.* Bisection, and the advice that "a safe solver brackets first", are limited to cases where a sign-change bracket exists. Where none exists, candidates from Newton steps or a scan of NPV are accepted only after the domain and residual validation.
+- *Positive IRR against the decision rule.* A conventional investment, outflows followed by inflows, has exactly one IRR, with NPV positive below it and negative above. The rule needs only that, and it holds when the IRR is negative. The IRR is positive exactly when the undiscounted sum NPV(0) is positive. Previously the positive sum was folded into the stream the rule applies to. The Statement, Notation and Conditions now state this.
+- *Check.* `time-value-return-checks.py` adds one check, for 114 in all: -100, 50, 40 has an undiscounted sum of -10, a single IRR of -6.9926 percent found by bisection on [-0.5, 0], and NPV positive below it and negative above. The `entry-evidence.json` record gains a dated sentence, with earlier text kept.
+
+Unchanged: the source-version limitation (OpenStax web edition of 24 June 2026, read in web renderings, without page numbers), the unread status of `corp-berk-demarzo` and `catalogue-0233`, and the earlier evidence. The coverage remains editorial: the checkpoint has not been attempted, no study or mastery is claimed, and human review is outstanding.
+
+**Validation (23 October 2026, final state).**
+- `uv run python -W error time-value-return-checks.py`: 114 checks passed, exit 0.
+- All twelve batch files are staged, including the new `notes/pathways/time-value-cash-flows.md`, so `--all-files` covers them. `pre-commit run --all-files` passed, and no hook changed a file.
+- `make check` exits 0. It ran the lock check, ruff lint and format (165 files), and `check_compendium` (707 entries, 112 printed pathways, 97 pathway notes, 0 problems). It also ran `check_coverage` with outline hashes (457 of 457 objectives covered, 0 problems), pytest (59 passed, 3 subtests) and 130 numerical check scripts with warnings as errors. The PDF built at 470 pages, with no overfull boxes, warnings or undefined references; the one pre-existing underfull box in `probability-statistics/statistical-inference.tex` remains.
+- PDF pages 9-10 (printed 3-4) were rendered and read: the IRR Statement, Notation bullets, Conditions, double-root example and Pitfalls display correctly. Page 12 (printed 6) was checked: Section 1.2 still begins there.
+- After this record was written, pre-commit was rerun on it; nothing else changed.
+
+**Publication.** Committed on `codex/time-value-cash-flows-review` as one batch and merged into `main` by pull request. The post-merge CI run checks out the merge commit; its result is reported in the session, not here.

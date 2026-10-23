@@ -1,0 +1,23 @@
+# Lint settings for notes/artefacts/: the repository's, plus the legacy exemptions of the
+# evidence scripts not yet migrated to trading_notes. Ruff uses the closest configuration for
+# each file, so these exemptions cannot reach code outside this folder.
+extend = "../../pyproject.toml"
+
+[lint.per-file-ignores]
+# Unmigrated evidence scripts record one computation each and are documented by their
+# module docstring and the source-review records, not as a library API. Their long data,
+# formula and printed-result lines, source-notation variable names (l, I, O), named
+# lambdas for numeric functions and math-symbol first words (mu, lambda, t) are kept, and
+# only ANN401 (explicit Any) of the annotation rules applies. Patterns are relative to this
+# folder; the negated pattern names the migrated entrypoints, which get every rule. Add an
+# entrypoint here, and to [tool.mypy] files in pyproject.toml, as its artefact migrates.
+"!{short-term-funding/funding-repo-checks.py,rates-credit-mortgages/fra-settlement-check.py,rates-credit-mortgages/multicurve-check.py,crypto-perpetuals/amm-checks.py,corporate-finance/country-risk-premium-check.py}" = [
+    "E501",
+    "D1",
+    "D205",
+    "D403",
+    "E731",
+    "E741",
+    "ANN0",
+    "ANN2",
+]

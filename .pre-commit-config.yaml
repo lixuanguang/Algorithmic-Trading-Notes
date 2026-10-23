@@ -22,18 +22,25 @@ repos:
         language: system
         types: [python]
 
+      - id: mypy
+        name: mypy (strict, migrated scope)
+        entry: make typecheck
+        language: system
+        files: ^((src|tools|tests)/.*\.py|pyproject\.toml|notes/artefacts/(short-term-funding/funding-repo-checks|rates-credit-mortgages/(fra-settlement|multicurve)-check|crypto-perpetuals/amm-checks|corporate-finance/country-risk-premium-check)\.py|notes/artefacts/ruff\.toml)$
+        pass_filenames: false
+
       - id: compendium
         name: check compendium entries, citations, labels and sections
         entry: make check-compendium
         language: system
-        files: ^(compendium/.*\.tex|notes/pathways/.*\.md|tools/check_compendium\.py)$
+        files: ^(compendium/.*\.tex|notes/pathways/.*\.md|tools/check_compendium\.py|src/trading_notes/structure/.*\.py)$
         pass_filenames: false
 
       - id: coverage
         name: check coverage records and outline crosswalk
         entry: make check-coverage
         language: system
-        files: ^(notes/coverage/.*|notes/entry-evidence\.json|compendium/.*\.tex|tools/check_.*\.py)$
+        files: ^(notes/coverage/.*|notes/entry-evidence\.json|compendium/.*\.tex|tools/check_.*\.py|src/trading_notes/structure/.*\.py)$
         pass_filenames: false
 
       - id: detect-private-key

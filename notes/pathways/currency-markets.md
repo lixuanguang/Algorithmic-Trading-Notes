@@ -34,7 +34,7 @@ In `fx-mechanics-parity.tex`: `def:fx-market-real-exchange-rates`, `meth:cross-f
 
 In `currency-management.tex`: `meth:currency-portfolio-effects`, `meth:currency-hedging-programme`, `meth:active-currency-strategies` and `meth:currency-hedge-cost-reduction` (PMiP chap. 8; Campbell, Serfaty-de Medeiros and Viceira).
 
-All partly checked 2026-10-19, draft. Examples in `notes/artefacts/fx-mechanics-determination/fx-checks.py` and `notes/artefacts/currency-management/currency-management-checks.py`; human review is outstanding. Coverage records are editorial, not study. `def:fx-market-structure`, `def:currency-regimes-intervention`, `ev:cip-deviations`, `mod:fx-carry-trade` and `mod:minimum-variance-hedge-ratio` are linked, not repeated.
+All partly checked 2026-10-19, draft. Examples in `trading_notes.numerical.fx_mechanics_parity.fx_mechanics_checks` and `trading_notes.numerical.currency_management.currency_management_checks`; human review is outstanding. Coverage records are editorial, not study. `def:fx-market-structure`, `def:currency-regimes-intervention`, `ev:cip-deviations`, `mod:fx-carry-trade` and `mod:minimum-variance-hedge-ratio` are linked, not repeated.
 
 ## Source verification after macro markets and pricing review
 

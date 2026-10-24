@@ -44,7 +44,7 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 ## Entries created by the completion batch (2026-10-20)
 
-Distributed ledgers and digital-asset investing, in `digital-assets-prediction-markets/digital-asset-investing.tex`, checked by `notes/artefacts/digital-assets/digital-asset-checks.py`: `def:distributed-ledger-applications`, `meth:digital-asset-investment-analysis`. Sources: Nakamoto's white paper, the BIS Annual Economic Report 2018 chap. V, Narayanan et al. (draft of 9 February 2016), ethereum.org's proof-of-stake and Merge pages, Liu and Tsyvinski (NBER WP 24877) and the SEC's January 2024 spot bitcoin ETP order. Partly checked 2026-10-20, draft; human review outstanding. The record is in `notes/source-review-records.md`, *Completion batch, 20 October 2026*.
+Distributed ledgers and digital-asset investing, in `digital-assets-prediction-markets/digital-asset-investing.tex`, checked by `trading_notes.numerical.distributed_ledgers.digital_assets_checks`: `def:distributed-ledger-applications`, `meth:digital-asset-investment-analysis`. Sources: Nakamoto's white paper, the BIS Annual Economic Report 2018 chap. V, Narayanan et al. (draft of 9 February 2016), ethereum.org's proof-of-stake and Merge pages, Liu and Tsyvinski (NBER WP 24877) and the SEC's January 2024 spot bitcoin ETP order. Partly checked 2026-10-20, draft; human review outstanding. The record is in `notes/source-review-records.md`, *Completion batch, 20 October 2026*.
 
 ## Related entries owned elsewhere
 

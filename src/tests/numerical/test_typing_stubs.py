@@ -8,7 +8,9 @@ the runtime type with the declared one, so that a library upgrade that changes a
 Run: make test (uv run --frozen --no-editable pytest)
 """
 
+import tempfile
 import unittest
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -58,6 +60,20 @@ class StubbedTypes(unittest.TestCase):
         self.assertIs(type(table), pd.DataFrame)
         self.assertIs(type(table["sum_sq"]), pd.Series)
         self.assertIs(type(table["sum_sq"].iloc[0]), np.float64)
+
+    def test_read_csv_columns(self) -> None:
+        """read_csv skips comments, iterates column names and converts columns to typed arrays."""
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "table.csv"
+            path.write_text("# a comment\nlabel,x\n1,0.5\n2,\n")
+            frame = pd.read_csv(path, comment="#")
+        self.assertIs(type(frame), pd.DataFrame)
+        self.assertEqual([type(c) for c in frame], [str, str])
+        labels, x = frame["label"].to_numpy(dtype=np.int64), frame["x"].to_numpy(dtype=np.float64)
+        self.assertEqual((type(labels), labels.dtype), (np.ndarray, np.int64))
+        self.assertEqual((type(x), x.dtype), (np.ndarray, np.float64))
+        self.assertTrue(np.isnan(x[1]))
+        self.assertIsInstance(pd.__version__, str)
 
     def test_adfuller_tuple(self) -> None:
         """Without a result object, adfuller returns the declared five- or six-tuple."""

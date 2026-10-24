@@ -51,7 +51,7 @@ uv, the Makefile, the pre-commit hooks and the tests' subprocesses all reach the
 | `make typecheck` | strict mypy on `src/trading_notes/`, `src/tests/` and the migrated artefact entrypoints (`[tool.mypy]` in `pyproject.toml`) |
 | `make check-compendium`, `make check-coverage` | the two structural checkers with `--check` |
 | `make test` | pytest on `src/tests/`, spread over all CPUs by pytest-xdist |
-| `make examples` | each `notes/artefacts/*/*check*.py` script not yet migrated, once, from an empty temporary folder, with warnings as errors; `make test` runs every package example's entrypoint once, from an unrelated folder |
+| `make examples` | each `notes/artefacts/*/*check*.py` script not yet migrated, once, from an empty temporary folder, with warnings as errors (none remain, and it says so); `make test` runs every package example's entrypoint once, from an unrelated folder |
 | `make verify-outlines` | the coverage check plus hashes of the local outline copies |
 | `make pdf` | `latexmk -lualatex` in `compendium/` |
 | `make pre-commit` | every pre-commit hook on all files |

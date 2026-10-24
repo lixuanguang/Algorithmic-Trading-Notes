@@ -1,22 +1,32 @@
-from collections.abc import Mapping
+from collections.abc import Iterator, Mapping
+from pathlib import Path
 from typing import overload
 
 import numpy as np
 from numpy.typing import NDArray
 
-# Float-valued frames only.
+__version__: str
+
+def read_csv(filepath_or_buffer: Path, *, comment: str | None = ...) -> DataFrame: ...
+
+# Float-valued frames only, except that a column read from a file may hold integers.
 class DataFrame:
     def __init__(self, data: Mapping[str, NDArray[np.float64]]) -> None: ...
     @overload
     def __getitem__(self, key: str) -> Series: ...
     @overload
     def __getitem__(self, key: list[str]) -> DataFrame: ...
+    def __iter__(self) -> Iterator[str]: ...
     @property
     def values(self) -> NDArray[np.float64]: ...
 
 class Series:
     @property
     def iloc(self) -> _ILocIndexer: ...
+    @overload
+    def to_numpy(self, dtype: type[np.float64]) -> NDArray[np.float64]: ...
+    @overload
+    def to_numpy(self, dtype: type[np.int64]) -> NDArray[np.int64]: ...
 
 class _ILocIndexer:
     def __getitem__(self, i: int) -> np.float64: ...

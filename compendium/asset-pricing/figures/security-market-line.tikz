@@ -1,6 +1,6 @@
 % compendium/portfolio-construction-risk/figures/security-market-line.tikz
 % Security market line of mod:capm-sml with the forward-looking inputs of 1 October 2026 (risk-free 5.29,
-% premium 4.20 percent a year); points rechecked by notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py.
+% premium 4.20 percent a year); points rechecked by trading_notes.numerical.asset_pricing_models.asset_pricing_checks.
 \begin{tikzpicture}[>=stealth, x=3.6cm, y=0.42cm, font=\scriptsize]
   \draw[->] (0,0) -- (2.15,0);
   \node at (1.05,-1.6) {beta with respect to the market portfolio};

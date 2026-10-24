@@ -87,7 +87,7 @@ Written in library gap-filling Batch L2 (2026-10-21), decision L2-D5: `meth:mult
 
 Written in library gap-filling Batch L4 (2026-10-21):
 
-- `meth:monte-carlo-greeks` (new, `numerical-methods.tex`): resimulation with common random numbers and its bias-variance choice of step, pathwise and likelihood-ratio delta and vega (Broadie and Glasserman 1996), the digital whose pathwise delta is zero on every path, the gamma boundary term, and the strike case. Checks in `notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py`.
+- `meth:monte-carlo-greeks` (new, `numerical-methods.tex`): resimulation with common random numbers and its bias-variance choice of step, pathwise and likelihood-ratio delta and vega (Broadie and Glasserman 1996), the digital whose pathwise delta is zero on every path, the gamma boundary term, and the strike case. Checks in `trading_notes.numerical.monte_carlo_simulation.monte_carlo_greeks_checks`.
 - `meth:cross-currency-basis-swaps` (new, `forward-commitment-valuation.tex`): constant-notional cash flows by party, the dollar-leg (BIS) and foreign-leg (Du-Tepper-Verdelhan) sign conventions with annualisation, synthetic dollar funding and the principal exchanges, on overnight-rate legs. Checks in `trading_notes.numerical.forward_commitment_valuation.cross_currency_basis_checks`. `meth:swap-valuation-replication` gained a See also link and lost a stray comma; `meth:digital-option-valuation` gained a link.
 
 Sources: Hull, 11th Global ed.; Broadie and Glasserman (1996); Ding, Liu and Rutkowski (arXiv v3); Borio et al. (BIS Quarterly Review, September 2016). Synthetic examples only. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l4-21-october-2026).

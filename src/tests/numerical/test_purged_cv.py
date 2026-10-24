@@ -11,7 +11,8 @@ import unittest
 
 import numpy as np
 
-from trading_notes.numerical import purged_cv as pcv
+from trading_notes.numerical.labelling_sample_weights import purged_cv_checks as pcv
+from trading_notes.numerical.labelling_sample_weights.cross_validation import LabelSpans
 
 
 class Folds(unittest.TestCase):
@@ -22,7 +23,7 @@ class Folds(unittest.TestCase):
         start = np.arange(pcv.N)
         for pct in (0.0, 0.1):
             with self.subTest(pct=pct):
-                folds = list(pcv.purged_kfold(start, start + pcv.SPAN, 4, pct))
+                folds = list(LabelSpans(start=start, end=start + pcv.SPAN).purged_kfold(4, pct))
                 tests = np.concatenate([te for _, te in folds])
                 np.testing.assert_array_equal(tests, start)
                 for tr, te in folds:
@@ -39,16 +40,16 @@ class Conventions(unittest.TestCase):
     def test_one_bar_labels(self) -> None:
         """Labels [i, i + 1]: fold 2 (test 5..9) trains on 0..4 and from 10 + embargo."""
         start = np.arange(pcv.N)
-        tr, te = list(pcv.purged_kfold(start, start + 1, 4, 0.0))[1]
+        tr, te = list(LabelSpans(start=start, end=start + 1).purged_kfold(4, 0.0))[1]
         np.testing.assert_array_equal(te, np.arange(5, 10))
         np.testing.assert_array_equal(tr, np.r_[0:5, 10:20])
-        tr, _ = list(pcv.purged_kfold(start, start + 1, 4, 0.25))[1]
+        tr, _ = list(LabelSpans(start=start, end=start + 1).purged_kfold(4, 0.25))[1]
         np.testing.assert_array_equal(tr, np.r_[0:5, 15:20])  # embargo int(20 * 0.25) = 5
 
     def test_last_fold_has_no_right_set(self) -> None:
         """When the latest test label ends past the last start, nothing is appended."""
         start = np.arange(pcv.N)
-        tr, te = list(pcv.purged_kfold(start, start + pcv.SPAN, 4, 0.1))[-1]
+        tr, te = list(LabelSpans(start=start, end=start + pcv.SPAN).purged_kfold(4, 0.1))[-1]
         np.testing.assert_array_equal(te, np.arange(15, 20))
         np.testing.assert_array_equal(tr, np.arange(0, 13))
 

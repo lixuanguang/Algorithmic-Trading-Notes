@@ -22,7 +22,7 @@ Not attempted. The guide's checkpoint (a quarterly LP cash-flow ledger against a
 
 ## Entries created or changed
 
-Alternatives batch (2026-10-20). Numbers are checked by `notes/artefacts/private-capital/private-capital-checks.py`:
+Alternatives batch (2026-10-20). Numbers are checked by `trading_notes.numerical.private_capital_allocator.private_capital_checks`:
 
 - Structures, fees and returns: `def:alternative-investment-categories`, `def:alternative-fund-terms`, `meth:alternative-returns-after-fees`.
 - Private equity and private debt: `def:private-equity-features`, `def:private-debt-features`, `meth:private-capital-diversification`.

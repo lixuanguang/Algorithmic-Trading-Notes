@@ -22,7 +22,7 @@ Not attempted. The guide's checkpoint for this section has not been done; the ex
 
 ## Entries created or changed
 
-Alternatives batch (2026-10-20). Numbers are checked by `notes/artefacts/real-assets/real-asset-checks.py`:
+Alternatives batch (2026-10-20). Numbers are checked by `trading_notes.numerical.real_asset_investor.real_assets_checks`:
 
 - Real estate: `def:real-estate-characteristics`, `meth:real-estate-value-drivers`, `meth:real-estate-valuation-indexes`, `meth:reit-valuation`, `meth:private-real-estate-underwriting`, `meth:real-assets-allocation`.
 - Infrastructure: `def:infrastructure-characteristics`, `meth:infrastructure-underwriting`, `meth:infrastructure-allocation`.

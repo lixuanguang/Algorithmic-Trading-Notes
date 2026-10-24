@@ -7,7 +7,8 @@ UV_RUN := $(UV) run --frozen --no-editable
 PYTHON_PATHS := src notes/artefacts
 # Numerical evidence scripts not yet moved into the package, so not run by the tests; scripts
 # that forward to trading_notes.numerical are run once by `make test`. Preserved superseded runs
-# live one level deeper and are excluded.
+# live one level deeper and are excluded. None remain; the target reports that explicitly and
+# still runs any such script that is added.
 CHECK_SCRIPTS := $(sort $(shell grep -L '^from trading_notes\.numerical' notes/artefacts/*/*check*.py))
 
 .PHONY: sync lock-check format format-check lint typecheck test check-compendium check-coverage \
@@ -56,7 +57,11 @@ examples:
 		fi; \
 	done; \
 	if [ -n "$$(ls -A "$$tmp")" ]; then echo "FAILED: files written to the working folder"; exit 1; fi; \
-	echo "$(words $(CHECK_SCRIPTS)) check scripts passed"
+	if [ -z "$(strip $(CHECK_SCRIPTS))" ]; then \
+		echo "no unmigrated check scripts remain; every example runs once in make test"; \
+	else \
+		echo "$(words $(CHECK_SCRIPTS)) check scripts passed"; \
+	fi
 
 # Needs a LuaLaTeX installation with latexmk.
 pdf:

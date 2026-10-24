@@ -60,7 +60,7 @@ In `asset-pricing-models.tex`, owned by `topic:asset-pricing-factor-models` and 
 
 Correction pass (2026-10-18, PR #22): `meth:efficient-frontier` no longer says constrained solutions must have zero weights, and `meth:required-return-on-equity` treats a historical premium with the current 10-year yield as a legitimate estimate with its own assumption and uncertainty (Damodaran's corporate finance project notes).
 
-All partly checked 2026-10-18, draft. The examples are in `trading_notes.numerical.portfolio_choice.portfolio_choice_checks` and `notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py`; human review is outstanding.
+All partly checked 2026-10-18, draft. The examples are in `trading_notes.numerical.portfolio_choice.portfolio_choice_checks` and `trading_notes.numerical.asset_pricing_models.asset_pricing_checks`; human review is outstanding.
 
 
 Written in the performance and planning batch (2026-10-18):
@@ -134,7 +134,7 @@ derivatives and empirical validation (2026-10-17) (seven audit repairs, backlog 
 
 ## Entries created by the completion batch (2026-10-20)
 
-Institutional investor portfolios, in `institutional-portfolios.tex`, checked by `notes/artefacts/institutional-portfolios/institutional-checks.py`: `def:institutional-investor-characteristics`, `meth:db-pension-risk`, `meth:institutional-ips-portfolios`, `meth:swf-risk-case`, `meth:endowment-liquidity-allocation`, `meth:institutional-esg-integration`. Sources: Ang (2014) chap. 1, 3 and 13, NBIM's GPFG pages (2026), the Santiago Principles, Lerner, Schoar and Wang (NBER WP 14341), Title 26 ss. 430 and 4942, IRS Notice 2021-48, New York NPC s. 553 and the GSIA review; existing bank, insurer, ESG and allocation entries are cross-referenced. Partly checked 2026-10-20, draft; human review outstanding. The records are in `notes/source-review-records.md`, *Completion batch, 20 October 2026*, and *Final audit correction pass, 20 October 2026* (pension funding law, New York endowment spending law, endowment liquidity).
+Institutional investor portfolios, in `institutional-portfolios.tex`, checked by `trading_notes.numerical.institutional_portfolios.institutional_portfolios_checks`: `def:institutional-investor-characteristics`, `meth:db-pension-risk`, `meth:institutional-ips-portfolios`, `meth:swf-risk-case`, `meth:endowment-liquidity-allocation`, `meth:institutional-esg-integration`. Sources: Ang (2014) chap. 1, 3 and 13, NBIM's GPFG pages (2026), the Santiago Principles, Lerner, Schoar and Wang (NBER WP 14341), Title 26 ss. 430 and 4942, IRS Notice 2021-48, New York NPC s. 553 and the GSIA review; existing bank, insurer, ESG and allocation entries are cross-referenced. Partly checked 2026-10-20, draft; human review outstanding. The records are in `notes/source-review-records.md`, *Completion batch, 20 October 2026*, and *Final audit correction pass, 20 October 2026* (pension funding law, New York endowment spending law, endowment liquidity).
 
 PR #33 correction pass (2026-10-21): Harlow's 2026 statutory base nets the present value of installments on open bases (IRC 430(c)(3); 96.8m, not 400m) and the full minimum contribution is computed with its timing (151.91m at the valuation date); Elmsworth's pure spending rule is tested against its own quarterly history (peak 5.24 percent, not 5.25). See [record](../source-review-records.md#pr-33-correction-pass-21-october-2026).
 

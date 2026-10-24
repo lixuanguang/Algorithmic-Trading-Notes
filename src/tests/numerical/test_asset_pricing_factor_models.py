@@ -1,4 +1,4 @@
-"""Tests of how the asset-pricing check finds and reads the compendium figure it checks.
+"""Tests of the asset-pricing figure check, its --root option and the CAPM and APT classes.
 
 The example's full run is tested in test_checks.py. These confirm that the figure is read
 rather than assumed, and that `--root` locates it from any working directory.
@@ -13,7 +13,15 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from trading_notes.numerical import asset_pricing_factor_models as apm
+import numpy as np
+
+from trading_notes.numerical.asset_pricing_models import asset_pricing_checks as apm
+from trading_notes.numerical.asset_pricing_models.capm import (
+    AptPricing,
+    CapmFit,
+    MarketLines,
+    replicating_weights,
+)
 from trading_notes.numerical.report import CheckReport
 from trading_notes.numerical.repository import repository_root
 
@@ -52,6 +60,36 @@ class FigureLocation(unittest.TestCase):
             finally:
                 os.chdir(before)
         self.assertTrue((repository_root("", ["--root", str(ROOT)]) / apm.FIGURE).is_file())
+
+
+class CapmAndApt(unittest.TestCase):
+    """The regression's closed forms, the market lines and APT replication."""
+
+    def test_exact_line_has_zero_residuals(self) -> None:
+        """Y = 0.5 + 2x fits exactly: alpha 0.5, beta 2, R^2 1, zero standard errors."""
+        x = np.array([-1.0, 0.0, 1.0, 2.0])
+        fit = CapmFit.of(x, 0.5 + 2 * x)
+        self.assertAlmostEqual(fit.alpha, 0.5, places=14)
+        self.assertAlmostEqual(fit.beta, 2.0, places=14)
+        self.assertAlmostEqual(fit.r_squared, 1.0, places=14)
+        self.assertAlmostEqual(fit.se_beta, 0.0, places=14)
+
+    def test_cml_at_systematic_risk_equals_sml(self) -> None:
+        """An asset's systematic s.d. beta s_M puts the CML on the SML's return."""
+        lines = MarketLines(risk_free=5.29, premium=4.20, market_sd=16.0)
+        self.assertAlmostEqual(lines.cml(1.25 * 16.0), lines.sml(1.25), places=12)
+
+    def test_replica_matches_sensitivities_and_price(self) -> None:
+        """Replicating weights sum to one, match the target and earn the APT return."""
+        apt = AptPricing(zero_beta=4.0, premia=np.array([3.0, 1.5]))
+        portfolios = np.array([[1.0, 0.5], [0.5, -0.5], [1.5, 1.0]])
+        target = np.array([0.8, 0.2])
+        w = replicating_weights(portfolios, target)
+        np.testing.assert_allclose(w @ portfolios, target, atol=1e-12)
+        self.assertAlmostEqual(w.sum(), 1.0, places=12)
+        self.assertAlmostEqual(
+            float(w @ apt.expected(portfolios)), float(apt.expected(target[None, :])[0]), 12
+        )
 
 
 if __name__ == "__main__":

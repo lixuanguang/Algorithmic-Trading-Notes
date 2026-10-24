@@ -41,6 +41,9 @@ import sys
 
 import numpy as np
 
+from trading_notes.numerical.macro_fx.ppp_forecasts import ExpandingForecast, StaleDataRule
+from trading_notes.numerical.newey_west import add, nw_t, panel_nw_t
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 CCY = {  # spot id, quoted as foreign per USD?, CPI id, quarterly?, rate id
     "JPY": ("EXJPUS", True, "JPNCPIALLMINMEI", False, "IR3TIB01JPM156N"),
@@ -53,8 +56,8 @@ CCY = {  # spot id, quoted as foreign per USD?, CPI id, quarterly?, rate id
     "NOK": ("EXNOUS", True, "NORCPIALLMINMEI", False, "IR3TIB01NOM156N"),
     "DKK": ("EXDNUS", True, "DNKCPIALLMINMEI", False, "IR3TIB01DKM156N"),
 }
-MONTHLY_LAG = 2
-QTR_MIN_AGE, QTR_MAX_AGE = 4, 6
+RULE = StaleDataRule(monthly_lag=2, min_age=4, max_age=6)
+MONTHLY_LAG = RULE.monthly_lag
 START = (1985, 1)
 
 
@@ -70,29 +73,6 @@ def load(src, i):
     return out
 
 
-def add(ym, k):
-    n = ym[0] * 12 + ym[1] - 1 + k
-    return (n // 12, n % 12 + 1)
-
-
-def mdiff(a, b):
-    return (a[0] * 12 + a[1]) - (b[0] * 12 + b[1])
-
-
-def known_price(cpi, t, quarterly):
-    """(price level, age in months of the observation's last month) known at t under the stale-data rule, or None."""
-    if not quarterly:
-        k = add(t, -MONTHLY_LAG)
-        return (cpi[k], MONTHLY_LAG) if k in cpi else None
-    # quarterly series are dated at the quarter's first month; the quarter ends two months later
-    cands = [k for k in cpi if mdiff(t, add(k, 2)) >= QTR_MIN_AGE]
-    if not cands:
-        return None
-    k = max(cands)
-    age = mdiff(t, add(k, 2))
-    return (cpi[k], age) if age <= QTR_MAX_AGE else None
-
-
 def build(src):
     us_cpi, us_r = load(src, "CPIAUCNS"), load(src, "IR3TIB01USM156N")
     spot, pred = {}, {}
@@ -101,7 +81,7 @@ def build(src):
         spot[c] = {t: (-math.log(v) if inv else math.log(v)) for t, v in sp.items()}
         rows, qs = {}, []
         for t in sorted(spot[c]):
-            kp = known_price(cpi, t, qtr)
+            kp = RULE.known_price(cpi, t, qtr)
             ku = add(t, -MONTHLY_LAG)
             if kp is None or ku not in us_cpi:
                 continue
@@ -116,58 +96,6 @@ def build(src):
             )
         pred[c] = rows
     return spot, pred
-
-
-def nw_t(x, lags):
-    x = np.asarray(x)
-    xc = x - x.mean()
-    n = len(x)
-    s2 = (xc @ xc) / n + 2 * sum(
-        (1 - L / (lags + 1)) * (xc[L:] @ xc[:-L]) / n for L in range(1, lags + 1)
-    )
-    return x.mean() / math.sqrt(s2 / n)
-
-
-def panel_nw_t(rows, lags):
-    """t statistic for the mean of pooled scores rows = [(forecast-origin month, score), ...], in calendar time.
-
-    The scores are summed within each origin month (S_m, n_m rows), giving one observation per calendar month; months
-    with no rows count as zero on a complete monthly grid. With mu the pooled mean (every row weighted 1/N), the
-    long-run variance of sum_m (S_m - n_m mu) is estimated with Bartlett weights over `lags` calendar months, and
-    Var(mu) = LRV / N^2. Contemporaneous dependence across currencies is absorbed in S_m; overlap is handled by the lags.
-    With one row per month this equals nw_t.
-    """
-    by = {}
-    for m, v in rows:
-        s, n = by.get(m, (0.0, 0))
-        by[m] = (s + v, n + 1)
-    lo, hi = min(by), max(by)
-    grid = [add(lo, k) for k in range(mdiff(hi, lo) + 1)]
-    S = np.array([by.get(m, (0.0, 0))[0] for m in grid])
-    n = np.array([by.get(m, (0.0, 0))[1] for m in grid])
-    N = n.sum()
-    mu = S.sum() / N
-    u = S - n * mu
-    lrv = u @ u + 2 * sum((1 - L / (lags + 1)) * (u[L:] @ u[:-L]) for L in range(1, lags + 1))
-    return mu / math.sqrt(lrv / N**2)
-
-
-def forecasts(spot, pred, c, h):
-    """Expanding-OLS forecasts for currency c: list of (t, forecast, actual)."""
-    ts = [t for t in sorted(pred[c]) if pred[c][t]["z"] is not None and add(t, h) in spot[c]]
-    X = {t: pred[c][t]["z"] for t in ts}
-    Y = {t: spot[c][add(t, h)] - spot[c][t] for t in ts}
-    out = []
-    for j, t in enumerate(ts):
-        if t < START:
-            continue
-        tr = [k for k in ts[:j] if add(k, h) <= t]  # only outcomes known at t
-        if len(tr) < 60:
-            continue
-        A = np.column_stack([np.ones(len(tr)), [X[k] for k in tr]])
-        b = np.linalg.lstsq(A, np.array([Y[k] for k in tr]), rcond=None)[0]
-        out.append((t, b[0] + b[1] * X[t], Y[t]))
-    return out, ts, X, Y
 
 
 def main(src):
@@ -223,7 +151,8 @@ def main(src):
             f"\n== h = {h} months: expanding OLS of ds on z, forecasts from {START[0]}-{START[1]:02d}"
         )
         for c in CCY:
-            fc, ts, X, Y = forecasts(spot, pred, c, h)
+            z = {t: row["z"] for t, row in pred[c].items()}
+            fc, ts, X, Y = ExpandingForecast(horizon=h, start=START).forecasts(spot[c], z)
             f = np.array([x[1] for x in fc])
             a = np.array([x[2] for x in fc])
             r2 = 1 - ((a - f) ** 2).sum() / (a**2).sum()

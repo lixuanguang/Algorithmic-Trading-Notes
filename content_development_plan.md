@@ -158,7 +158,7 @@ its own. In the PDF the pathway is section 8.3 (printed pp. 35–38).
 
 ## 7. Numerical checks
 
-`notes/artefacts/return-predictability/return-predictability-checks.py`, run by `make examples`; definitions, timing and
+`trading_notes.numerical.return_predictability.return_predictability_checks`, run once by `make test`; definitions, timing and
 tolerances in `return-predictability-protocol.md`, written before the first run (not blind to the published tables;
 not a preregistration). 47 checks pass after the audit (39 before it); output in `return-predictability-results.txt`.
 

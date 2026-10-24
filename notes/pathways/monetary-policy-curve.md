@@ -36,7 +36,7 @@ Written in the macro, allocation and currency batch (2026-10-19):
 - `def:monetary-policy-transmission-regimes`: central-bank roles, tools, transmission, effective central banks, inflation and exchange-rate targeting, the neutral rate and limits (EIDM chap. 7).
 - `meth:monetary-fiscal-policy-mix`: the two policies compared, the four mixes, accommodation and credibility.
 
-Both partly checked 2026-10-19, draft. Examples in `notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py`; human review is outstanding. `def:central-bank-policy-framework` and `mod:taylor-rule` are linked, not repeated.
+Both partly checked 2026-10-19, draft. Examples in `trading_notes.numerical.business_cycles_policy.macro_policy_trade_checks`; human review is outstanding. `def:central-bank-policy-framework` and `mod:taylor-rule` are linked, not repeated.
 
 ## Source verification after macro markets and pricing review
 

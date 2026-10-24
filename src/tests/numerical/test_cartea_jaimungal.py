@@ -15,7 +15,12 @@ import re
 import unittest
 from unittest import mock
 
-from trading_notes.numerical import cartea_jaimungal as cj
+from trading_notes.numerical.execution_control import cartea_jaimungal_checks as cj
+from trading_notes.numerical.execution_control.optimal_liquidation import (
+    LiquidationModel,
+    monte_carlo_variance,
+    quadrature_variance,
+)
 
 from .single_run import GlobalState, prime_global_random, restored_global_state
 
@@ -33,7 +38,7 @@ SKELETON = [
     "  A x#                          [#, #, #]",
     "  kappa x#                      [#, #, #]",
     "  A=#                          [#, #, #] Almgren-Chriss sinh [#, #]",
-    "--- follow-up checks (#-#-#)",
+    "--- wealth identity, feedback policies and the unbounded counterexample",
     "wealth identity: simulated #, identity #",
     "corrected payoff: Q(T/#) direct # feedback #; Q(T) direct # feedback #",
     "printed   payoff: Q(T/#) direct # feedback #; Q(T) direct # feedback #",
@@ -89,8 +94,8 @@ class SeededRun(unittest.TestCase):
         rng = random.Random(1)
         for _ in range(2 * 4000):
             rng.uniform(0, 1)
-        continued = cj.monte_carlo_variance(rng)
-        reseeded = cj.monte_carlo_variance(random.Random(1))
+        continued = monte_carlo_variance(rng)
+        reseeded = monte_carlo_variance(random.Random(1))
         last = self.out.splitlines()[-1]
         self.assertIn(f"Monte Carlo {continued:.5f},", last)
         self.assertNotEqual(f"{continued:.5f}", f"{reseeded:.5f}")
@@ -105,17 +110,17 @@ class Generators(unittest.TestCase):
             prime_global_random(6)
             before = GlobalState.now()
             rng = random.Random(9)
-            first = cj.monte_carlo_variance(rng, paths=50, steps=20)
+            first = monte_carlo_variance(rng, paths=50, steps=20)
             self.assertEqual(GlobalState.now(), before)
         replay = random.Random(9)
         for _ in range(50 * 20):
             replay.gauss(0, math.sqrt(1 / 20))
         self.assertEqual(rng.getstate(), replay.getstate())
-        self.assertEqual(cj.monte_carlo_variance(random.Random(9), paths=50, steps=20), first)
+        self.assertEqual(monte_carlo_variance(random.Random(9), paths=50, steps=20), first)
 
     def test_monte_carlo_is_near_one_twentieth(self) -> None:
         """2000 paths estimate the variance 1/20 to within 0.005."""
-        self.assertAlmostEqual(cj.monte_carlo_variance(random.Random(3), 2000), 0.05, delta=0.005)
+        self.assertAlmostEqual(monte_carlo_variance(random.Random(3), 2000), 0.05, delta=0.005)
 
 
 class Riccati(unittest.TestCase):
@@ -123,14 +128,15 @@ class Riccati(unittest.TestCase):
 
     def test_terminal_values(self) -> None:
         """h2(T) = -xi(T) - b/2 is -A when corrected and A - b as printed."""
-        k, phi, A, b, T = 0.01, 0.001, 0.5, 0.002, 1.0
-        self.assertAlmostEqual(-cj.xi(T, T, k, phi, A, b) - b / 2, -A, places=12)
-        self.assertAlmostEqual(-cj.xi(T, T, k, phi, A, b, printed=True) - b / 2, A - b, places=12)
+        A, b, T = 0.5, 0.002, 1.0
+        model = LiquidationModel(kappa=0.01, phi=0.001, terminal=A, permanent=b, horizon=T)
+        self.assertAlmostEqual(-model.xi(T) - b / 2, -A, places=12)
+        self.assertAlmostEqual(-model.xi(T, printed=True) - b / 2, A - b, places=12)
 
     def test_almgren_chriss_limit(self) -> None:
         """With A very large the inventory follows sinh(gamma (T - t)) / sinh(gamma T)."""
         g = math.sqrt(0.001 / 0.01)
-        quarter, half, end = cj.path(0.01, 0.001, 1e6, n=2000)
+        quarter, half, end = LiquidationModel(kappa=0.01, phi=0.001, terminal=1e6).inventory(2000)
         self.assertAlmostEqual(quarter, math.sinh(g * 0.75) / math.sinh(g), places=3)
         self.assertAlmostEqual(half, math.sinh(g * 0.5) / math.sinh(g), places=3)
         self.assertEqual(end, 0.0)
@@ -139,42 +145,44 @@ class Riccati(unittest.TestCase):
 class WealthAndFeedback(unittest.TestCase):
     """The simulation, the identity, the direct optimum and the feedback stay separate routes."""
 
-    PARAMETERS = (1.0, 0.01, 0.001, 0.05, 0.02, 0.01, 1.0, 200)
+    MODEL = LiquidationModel(kappa=0.01, phi=0.001, terminal=0.05, permanent=0.02, spread=0.01)
+    # The wealth examples' model: b = 0.1, kappa = 0.01, psi = 0.02, phi = 0.001, A = 0.08.
+    WEALTH = LiquidationModel(kappa=0.01, phi=0.001, terminal=0.08, permanent=0.1, spread=0.02)
 
     def test_identity_is_exact_without_trading(self) -> None:
         """With nu = 0 the Euler reward equals the identity up to rounding."""
         rng = random.Random(2)
         mu = [rng.uniform(-1, 1) for _ in range(400)]
-        args = (1.0, 10.0, 0.1, 0.01, 0.02, 0.001, 0.08, 1.0)
-        simulated, q_end = cj.wealth_sim([0.0] * 400, mu, *args)
+        simulated, q_end = self.WEALTH.wealth([0.0] * 400, mu, 1.0, 10.0)
         self.assertEqual(q_end, 1.0)
-        with mock.patch.object(cj, "wealth_sim", side_effect=AssertionError):
-            identity = cj.wealth_identity([0.0] * 400, mu, *args)
+        with mock.patch.object(LiquidationModel, "wealth", side_effect=AssertionError):
+            identity = self.WEALTH.wealth_identity([0.0] * 400, mu, 1.0, 10.0)
         self.assertAlmostEqual(simulated, identity, places=12)
 
     def test_printed_payoff_adds_half_the_spread(self) -> None:
         """The printed terminal payoff exceeds the corrected one by psi/2 Q_T."""
         nu, mu = [0.5] * 100, [0.0] * 100
-        args = (1.0, 10.0, 0.1, 0.01, 0.02, 0.001, 0.08, 1.0)
-        corrected, q_end = cj.wealth_sim(nu, mu, *args)
-        printed, _ = cj.wealth_sim(nu, mu, *args, printed=True)
+        corrected, q_end = self.WEALTH.wealth(nu, mu, 1.0, 10.0)
+        printed, _ = self.WEALTH.wealth(nu, mu, 1.0, 10.0, printed=True)
         self.assertAlmostEqual(printed - corrected, 0.02 / 2 * q_end, places=12)
 
     def test_direct_optimum_matches_feedback_independently(self) -> None:
         """The tridiagonal optimum uses no closed form, and both payoffs agree to 1e-3."""
         for printed in (False, True):
             with self.subTest(printed=printed):
-                with mock.patch.object(cj, "xi", side_effect=AssertionError):
-                    direct = cj.direct_optimum(*self.PARAMETERS, printed)
-                with mock.patch.object(cj, "direct_optimum", side_effect=AssertionError):
-                    feedback = cj.feedback_path(*self.PARAMETERS, printed)
+                with mock.patch.object(LiquidationModel, "xi", side_effect=AssertionError):
+                    direct = self.MODEL.direct_optimum(1.0, 200, printed)
+                with mock.patch.object(
+                    LiquidationModel, "direct_optimum", side_effect=AssertionError
+                ):
+                    feedback = self.MODEL.feedback_path(1.0, 200, printed)
                 self.assertEqual(len(direct), len(feedback))
                 self.assertAlmostEqual(direct[99], feedback[99], delta=1e-3)
                 self.assertAlmostEqual(direct[-1], feedback[-1], delta=1e-3)
 
     def test_quadrature_converges_to_one_twentieth(self) -> None:
         """The midpoint rule's error falls by four when the grid doubles."""
-        errors = [cj.quadrature_variance(m) - 1 / 20 for m in (50, 100)]
+        errors = [quadrature_variance(m) - 1 / 20 for m in (50, 100)]
         self.assertAlmostEqual(errors[0] / errors[1], 4.0, places=3)
         self.assertLess(abs(errors[1]), 1e-5)
 

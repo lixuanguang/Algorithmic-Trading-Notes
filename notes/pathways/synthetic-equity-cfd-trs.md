@@ -24,9 +24,9 @@ Not attempted.
 
 Written in securities lending and synthetic shorts / source review / optimal execution / high-frequency strategies reviews:
 
-- `res:synthetic-short-put-call`: long put plus short call pays $K-S_T$, a short forward at $K$; $P-C=e^{-rT}(K-F)$ with dividends; with a short bond repaying $K$ the payoff is $-S_T$, equivalent to short stock when $q=0$ (Harris's p. 157 "long bond" wording recorded as a discrepancy, since a long bond gives $2K-S_T$); with $q=0$ the financed package ends with $S_0e^{rT}-S_T$ against $S_0e^{r_bT}-S_T$ for a short sale with rebate $r_b$; matching terms; American early exercise and assignment; no guaranteed access to scarce borrow. Corrected in the securities lending and synthetic shorts review follow-up (same day), with reproducible checks in `notes/artefacts/synthetic-equity-cfd-trs/synthetic_short_checks.py`.
+- `res:synthetic-short-put-call`: long put plus short call pays $K-S_T$, a short forward at $K$; $P-C=e^{-rT}(K-F)$ with dividends; with a short bond repaying $K$ the payoff is $-S_T$, equivalent to short stock when $q=0$ (Harris's p. 157 "long bond" wording recorded as a discrepancy, since a long bond gives $2K-S_T$); with $q=0$ the financed package ends with $S_0e^{rT}-S_T$ against $S_0e^{r_bT}-S_T$ for a short sale with rebate $r_b$; matching terms; American early exercise and assignment; no guaranteed access to scarce borrow. Corrected in the securities lending and synthetic shorts review follow-up (same day), with reproducible checks in `trading_notes.numerical.synthetic_shorts.synthetic_short_checks`.
 
-Verification partly checked 2026-10-15, stability draft; human review outstanding. Checks: `synthetic_short_checks.py`.
+Verification partly checked 2026-10-15, stability draft; human review outstanding. Checks: `trading_notes.numerical.synthetic_shorts.synthetic_short_checks`.
 
 Written in empirical extensions (2026-10-17) (source verification and bounded checks, not study or human review):
 

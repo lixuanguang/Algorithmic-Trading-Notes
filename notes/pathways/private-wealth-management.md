@@ -22,7 +22,7 @@ Not attempted.
 
 ## Entries created or changed
 
-Completion batch (2026-10-20). Numbers are checked by `notes/artefacts/private-wealth/private-wealth-checks.py`:
+Completion batch (2026-10-20). Numbers are checked by `trading_notes.numerical.private_wealth_management.private_wealth_checks`:
 
 - Clients and the industry: `meth:individual-wealth-capital`, `meth:private-client-tax-inflation`, `meth:private-client-ips`, `def:wealth-management-industry`, `meth:advising-families`.
 - Planning: `meth:goals-based-financial-plan`, `meth:lifetime-exposures`, `meth:tax-in-planning`, `meth:private-client-allocation-review`, `meth:retirement-across-jurisdictions`.
@@ -52,7 +52,7 @@ Printed as numbered sections of the chapter, under the guide pinned at `8302467`
 ## What changed in my view or practice
 
 
-Written in library gap-filling Batch L6 (2026-10-21): `meth:complex-client-situations` extended with concentrated single-stock positions (sale, staged diversification, completion portfolios, collars and prepaid forwards, exchange funds, charitable remainder trusts), from *Portfolio Management in Practice*, Vol. 1, chap. 16, sec. 6, and *Managing Investment Portfolios*, Example 11-3, with US federal tax mechanics verified in 26 U.S.C. 1259, 721, 351(e), 704(c), 737 and 664, Treas. Reg. 1.351-1 and Rev. Rul. 2003-7 (retrieved 2026-10-21). Checks in `notes/artefacts/private-wealth/concentrated-position-check.py`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l6-21-october-2026).
+Written in library gap-filling Batch L6 (2026-10-21): `meth:complex-client-situations` extended with concentrated single-stock positions (sale, staged diversification, completion portfolios, collars and prepaid forwards, exchange funds, charitable remainder trusts), from *Portfolio Management in Practice*, Vol. 1, chap. 16, sec. 6, and *Managing Investment Portfolios*, Example 11-3, with US federal tax mechanics verified in 26 U.S.C. 1259, 721, 351(e), 704(c), 737 and 664, Treas. Reg. 1.351-1 and Rev. Rul. 2003-7 (retrieved 2026-10-21). Checks in `trading_notes.numerical.wealth_transfer.concentrated_position_checks`. Partly checked 2026-10-21, draft; human review outstanding. See [record](../source-review-records.md#library-gap-filling-batch-l6-21-october-2026).
 
 ## Questions carried forward
 

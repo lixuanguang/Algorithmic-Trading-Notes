@@ -29,12 +29,12 @@ Written in crypto market structure / source review / optimal execution / high-fr
 - `def:crypto-trading-risk-layers`: Deribit's liquidation process, insurance fund, socialised loss and auto-deleveraging, and custody arrangements, kept apart from venue insolvency and from stablecoin, network and bridge risk (unchecked).
   Corrected 2026-10-15 (crypto market structure review follow-up): socialised loss is triggered at Deribit's absolute discretion when the fund is depleted in all currencies, or in the bankrupt account's currency when Deribit decides not to convert others (Rule 10.8); converting other currencies is itself discretionary (Rule 10.7).
 
-All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Checks: `funding_checks.py`.
+All three: verification partly checked 2026-10-15, stability draft; human review outstanding. Checks: `trading_notes.numerical.crypto_venues_perpetuals.perpetual_funding_checks`.
 
 Written in empirical extensions (2026-10-17) (source verification and bounded checks, not study or human review):
 
 - `ev:crypto-dated-futures-carry`: dated-futures carry and its drivers, from BIS WP 1087 (archived copy). Partly checked 2026-10-17, draft; human review outstanding.
-- `def:amm-pool-mechanics`: constant-product and concentrated-liquidity pools, with own checks (`amm-checks.py`). Partly checked 2026-10-17, draft; human review outstanding.
+- `def:amm-pool-mechanics`: constant-product and concentrated-liquidity pools, with own checks (`trading_notes.numerical.amm_lending.amm_pool_checks`). Partly checked 2026-10-17, draft; human review outstanding.
 
 ## Source verification after macro markets and pricing review
 

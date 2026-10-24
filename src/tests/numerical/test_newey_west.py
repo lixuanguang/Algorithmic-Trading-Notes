@@ -1,37 +1,24 @@
-"""Tests of the packaged Newey-West helpers against the FX runner's original copies, bit for bit.
+"""Tests of the Newey-West helpers against independent copies, bit for bit."""
 
-trading_notes.numerical.newey_west holds the pure helpers that fx_panel_inference took from
-notes/artefacts/fx-determination-forecasting/fx_ppp_oos_test.py. That script, and fx_carry_test.py
-through it, now import them from the package; the copies they used before are kept here as the
-reference. These compare the two on calendar arithmetic across year ends and gaps, and on t
-statistics with and without lags, stacked rows and empty months, and check that the script binds
-the packaged helpers. The script is loaded without running it; it reads its data only in `main`.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The copies below are the FX tests' original helpers, kept as the reference. These compare the
+# two on calendar arithmetic across year ends and gaps, and on t statistics with and without lags,
+# stacked rows and empty months, and check that the FX research workflows bind the package's
+# helpers rather than copies of their own.
 
 import math
-import runpy
 import unittest
 from collections.abc import Sequence
-from pathlib import Path
 
 import numpy as np
 from numpy.typing import ArrayLike
 
 from trading_notes.numerical import newey_west
+from trading_notes.research.macro_fx import carry_out_of_sample, ppp_out_of_sample
 
-SCRIPT = (
-    Path(__file__).resolve().parents[3]
-    / "notes"
-    / "artefacts"
-    / "fx-determination-forecasting"
-    / "fx_ppp_oos_test.py"
-)
 Month = tuple[int, int]
 
 
-# The script's own helpers before they moved into the package, as they were run.
+# The FX tests' own helpers before they moved into the package, as they were run.
 def add(ym: Month, k: int) -> Month:
     """Return the month k months after ym."""
     n = ym[0] * 12 + ym[1] - 1 + k
@@ -71,19 +58,19 @@ def panel_nw_t(rows: Sequence[tuple[Month, float]], lags: int) -> float:
     return float(mu / math.sqrt(lrv / N**2))
 
 
-class ScriptBinding(unittest.TestCase):
-    """The FX script runs the packaged helpers, not copies of its own."""
+class WorkflowBinding(unittest.TestCase):
+    """The FX research workflows run the packaged helpers, not copies of their own."""
 
-    def test_script_imports_the_package_helpers(self) -> None:
-        """add, nw_t and panel_nw_t in the script's namespace are the package's objects."""
-        namespace = runpy.run_path(str(SCRIPT), run_name="fx_ppp_oos_test")
-        for name in ("add", "nw_t", "panel_nw_t"):
-            with self.subTest(name=name):
-                self.assertIs(namespace[name], getattr(newey_west, name))
+    def test_workflows_import_the_package_helpers(self) -> None:
+        """add, nw_t and panel_nw_t in each workflow module are the package's objects."""
+        for module in (ppp_out_of_sample, carry_out_of_sample):
+            for name in ("add", "nw_t", "panel_nw_t"):
+                with self.subTest(module=module.__name__, name=name):
+                    self.assertIs(getattr(module, name), getattr(newey_west, name))
 
 
 class OriginalHelpers(unittest.TestCase):
-    """Each packaged helper returns exactly what the script's original copy returned."""
+    """Each packaged helper returns exactly what the original copy returned."""
 
     def test_month_arithmetic(self) -> None:
         """The month helpers agree forwards, backwards and across year ends."""

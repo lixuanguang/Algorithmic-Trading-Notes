@@ -9,8 +9,8 @@ from numpy.typing import NDArray
 from scipy import integrate, stats
 
 from trading_notes.numerical.derivative_overlays.variance_swap import SeasonedVarianceSwap
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
+from trading_notes.records import Record
 
 SEED: Final = 20261021
 A: Final = 252  # annualisation

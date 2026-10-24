@@ -1,11 +1,8 @@
-"""Tests of the toy ledger's Merkle branches, chain links, proof of work and finality.
+"""Tests of the toy ledger's Merkle branches, chain links, proof of work and finality."""
 
-The example's full run is tested in test_checks.py, which checks one branch of a four-leaf
-block. These check every leaf of blocks with one to seven transactions, where odd levels
-duplicate their last hash, and that tampering breaks the chain from the tampered block on.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's full run is tested in test_checks.py, which checks one branch of a four-leaf
+# block. These check every leaf of blocks with one to seven transactions, where odd levels
+# duplicate their last hash, and that tampering breaks the chain from the tampered block on.
 
 import math
 import unittest

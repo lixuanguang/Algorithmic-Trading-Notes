@@ -11,6 +11,7 @@ from scipy.optimize import brentq
 from trading_notes.numerical.company_case.harbour import (
     GROSS_DEBT,
     MARKET_PRICE,
+    OPTIONS,
     SHARES,
     TAX,
     YEARS,
@@ -18,14 +19,10 @@ from trading_notes.numerical.company_case.harbour import (
     HarbourCase,
     YearForecast,
     market_cost_of_equity,
-    nopat_route_fcff,
-    option_claim,
-    price_after_options,
-    valuation_fcff,
 )
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.tolerance import close
+from trading_notes.records import Record
 
 WACC_DCF: Final = 0.08  # the DCF input of the Harbour valuation
 
@@ -48,11 +45,11 @@ def harbour_value(
     Returns:
         The value per share after options, the enterprise value and the three FCFFs.
     """
-    fcff = [valuation_fcff(f) for f in fc]
+    fcff = [f.valuation_fcff() for f in fc]
     nopat_2028 = fc[2].op - TAX * (fc[2].op + fc[2].sbc)
     tv = nopat_2028 * (1 + g) * (1 - g / ronic) / (wacc - g)
     ev = sum(c / (1 + wacc) ** (t + 1) for t, c in enumerate(fcff)) + tv / (1 + wacc) ** 3
-    return price_after_options(ev - harbour_claims(case)), ev, fcff
+    return OPTIONS.price_per_share(ev - harbour_claims(case)), ev, fcff
 
 
 class AvonFittings(Record):
@@ -214,7 +211,7 @@ def check_research_targets(report: CheckReport, case: HarbourCase) -> None:
     eps_fwd = case.base[0].profit / SHARES
     target_pe = 18.0 * eps_fwd  # sell-side: peer median forward P/E
     eq_ev = 7.8 * 195.0 - harbour_claims(case)
-    target_ev = price_after_options(eq_ev)
+    target_ev = OPTIONS.price_per_share(eq_ev)
     diff_sources = {
         "multiple vs fundamentals": target_pe - target_ev,
         "EV/EBITDA peers vs DCF": target_ev - v_base,
@@ -281,8 +278,8 @@ def check_cash_flow_routes(report: CheckReport, case: HarbourCase) -> None:
     f26 = case.base[0]
     report.ok(
         "Harbour 2026 valuation FCFF 31.93: CFO route equals the NOPAT route",
-        close(valuation_fcff(f26), nopat_route_fcff(f26), 1e-9)
-        and round(valuation_fcff(f26), 2) == 31.93,
+        close(f26.valuation_fcff(), f26.nopat_route_fcff(), 1e-9)
+        and round(f26.valuation_fcff(), 2) == 31.93,
     )
 
 
@@ -352,10 +349,10 @@ def check_cash_flow_forecasts(report: CheckReport, case: HarbourCase) -> None:
         " cash within the year",
         round(fcfe_actual(lo26) - lo26.draw, 2) == 1.01
         and round(fcfe_actual(hi26) - hi26.draw, 2) == 0.80
-        and round(valuation_fcff(lo26), 2) == 31.93
-        and round(valuation_fcff(hi26), 2) == 31.88
+        and round(lo26.valuation_fcff(), 2) == 31.93
+        and round(hi26.valuation_fcff(), 2) == 31.88
         and close(
-            valuation_fcff(lo26) - valuation_fcff(hi26),
+            lo26.valuation_fcff() - hi26.valuation_fcff(),
             0.8 * TAX * (hi26.interest_paid - lo26.interest_paid),
             1e-9,
         ),
@@ -519,7 +516,7 @@ def check_eva(report: CheckReport, case: HarbourCase) -> None:
     nopat25 = op25 - TAX * (op25 + YEARS[2025].sbc)
     wacc_mkt = 0.0802
     eva25 = nopat25 - wacc_mkt * ic24
-    ev_mkt = MARKET_PRICE * SHARES + option_claim(MARKET_PRICE) + harbour_claims(case)
+    ev_mkt = MARKET_PRICE * SHARES + OPTIONS.claim(MARKET_PRICE) + harbour_claims(case)
     mva = ev_mkt - ic25
     print(
         f"  invested capital 2024 {ic24:.2f}, 2025 {ic25:.2f}; NOPAT 2025 {nopat25:.2f}; EVA"
@@ -664,9 +661,9 @@ def check_residual_income_harbour(report: CheckReport, case: HarbourCase) -> Non
     # million vested options; the DDM aggregate also includes the dividends that future grantees
     # will receive. Per common share both need the option claim removed at the price it implies,
     # as in the DCF bridge.
-    p_ri = price_after_options(v_ri_naive)
-    p_brent = brentq(lambda p: p * SHARES + option_claim(p) - v_ri_naive, 1.0, 20.0)
-    opt_ri = option_claim(p_ri)
+    p_ri = OPTIONS.price_per_share(v_ri_naive)
+    p_brent = brentq(lambda p: p * SHARES + OPTIONS.claim(p) - v_ri_naive, 1.0, 20.0)
+    opt_ri = OPTIONS.claim(p_ri)
     report.ok(
         "per common share: p = (809.24 - 5 C(p)) / 100.75 = 7.9557, options 7.70; the fixed point"
         " equals a root-finder solution; simple division (8.0322) overstates by the option claim"
@@ -687,7 +684,7 @@ def check_residual_income_harbour(report: CheckReport, case: HarbourCase) -> Non
         round(common_ddm, 2) == 801.54 and close(common_ddm / SHARES, p_ri, 1e-9),
     )
     pb_mkt = MARKET_PRICE * SHARES / bvs[0]
-    pb_claims = (MARKET_PRICE * SHARES + option_claim(MARKET_PRICE)) / bvs[0]
+    pb_claims = (MARKET_PRICE * SHARES + OPTIONS.claim(MARKET_PRICE)) / bvs[0]
     g_implied = KE - (roe_ss - KE) / (pb_claims - 1)
     roe_implied = KE + (pb_claims - 1) * (KE - g_ss)
     g_common = KE - (roe_ss - KE) / (pb_mkt - 1)
@@ -697,7 +694,7 @@ def check_residual_income_harbour(report: CheckReport, case: HarbourCase) -> Non
         " P/B"
         " 1.74; at ke 9.32% and a sustained ROE of 10.79% residual income must grow 7.34% a year;"
         " at 2.5% growth the price needs ROE 14.37% (shares alone: P/B 1.71, 7.27% and 14.18%)",
-        round(MARKET_PRICE * SHARES + option_claim(MARKET_PRICE), 2) == 1126.19
+        round(MARKET_PRICE * SHARES + OPTIONS.claim(MARKET_PRICE), 2) == 1126.19
         and round(pb_claims, 2) == 1.74
         and round(g_implied, 4) == 0.0734
         and round(roe_implied, 4) == 0.1437
@@ -708,7 +705,7 @@ def check_residual_income_harbour(report: CheckReport, case: HarbourCase) -> Non
     )
     # Justified P/B applied to book is also an aggregate over all equity claims.
     just_agg = pb_t * bvs[0]
-    p_just = price_after_options(just_agg)
+    p_just = OPTIONS.price_per_share(just_agg)
     report.ok(
         "justified P/B 1.2148 x book 647.38 = 786.43 for all equity claims: 7.81 by simple"
         " division,"

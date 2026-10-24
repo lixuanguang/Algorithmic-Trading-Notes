@@ -27,4 +27,4 @@ Prepared on 2026-10-17 by the source verification (2026-10-17) from source check
 
 Asymptotic; the empirical sections and Appendix A were not checked.
 
-Audit repair, method validation (2026-10-17): eq. (5) (p. 38, page image) asserts Var(sigma-hat^2) -> 2 sigma^4 under "finite mean and variance", which needs normal fourth moments; recorded as an overstatement in the source, not edited. Eqs. (25)-(26) (p. 42) give the nu_3, nu_4 form and the normal special case; eq. (16) and note 7 (pp. 40, 51) define additive q-period returns. Own checks: `sharpe-conditions-checks.py`.
+Audit repair, method validation (2026-10-17): eq. (5) (p. 38, page image) asserts Var(sigma-hat^2) -> 2 sigma^4 under "finite mean and variance", which needs normal fourth moments; recorded as an overstatement in the source, not edited. Eqs. (25)-(26) (p. 42) give the nu_3, nu_4 form and the normal special case; eq. (16) and note 7 (pp. 40, 51) define additive q-period returns. Own checks: `trading_notes.numerical.backtest_evaluation.sharpe_conditions_checks`.

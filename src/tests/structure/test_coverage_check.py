@@ -1,7 +1,4 @@
-"""Focused tests for the coverage check on small synthetic repositories.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+"""Focused tests for the coverage check on small synthetic repositories."""
 
 import hashlib
 import unittest
@@ -325,7 +322,7 @@ class CoverageContract(unittest.TestCase):
         self.assertIn("`CFA_LIMIT` contains the provider token", problems)
         self.assertIn("`check_cfa_case` contains the provider token", problems)
 
-    # Regressions for the three findings of the 18 October 2026 audit.
+    # Mapping, evidence and manifest rules that a covered objective must satisfy.
 
     def test_unreviewed_mapping_is_not_covered_by_covered_objectives(self) -> None:
         """Unreviewed mapping is not covered by covered objectives."""

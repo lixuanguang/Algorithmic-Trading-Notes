@@ -1,6 +1,6 @@
 from collections.abc import Iterator, Mapping
 from pathlib import Path
-from typing import overload
+from typing import TextIO, overload
 
 import numpy as np
 from numpy.typing import NDArray
@@ -8,6 +8,7 @@ from numpy.typing import NDArray
 __version__: str
 
 def read_csv(filepath_or_buffer: Path, *, comment: str | None = ...) -> DataFrame: ...
+def read_excel(io: Path, *, sheet_name: str) -> DataFrame: ...
 
 # Float-valued frames only, except that a column read from a file may hold integers.
 class DataFrame:
@@ -17,6 +18,8 @@ class DataFrame:
     @overload
     def __getitem__(self, key: list[str]) -> DataFrame: ...
     def __iter__(self) -> Iterator[str]: ...
+    def __len__(self) -> int: ...
+    def to_csv(self, path_or_buf: TextIO, *, index: bool, float_format: str) -> None: ...
     @property
     def values(self) -> NDArray[np.float64]: ...
 

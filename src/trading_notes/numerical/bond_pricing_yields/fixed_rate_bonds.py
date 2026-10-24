@@ -7,7 +7,7 @@ import numpy as np
 from numpy.typing import NDArray
 from scipy.optimize import brentq
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
@@ -20,40 +20,96 @@ def days_30_360(d1: date, d2: date) -> int:
     return 360 * (d2.year - d1.year) + 30 * (d2.month - d1.month) + (b - a)
 
 
-def price_periodic(
-    c: float, y: float, n: int, freq: float = 2, w: float = 1.0, face: float = 100.0
-) -> float:
-    """Return the full (dirty) price per 100 of n coupons of c/freq, the first w periods away."""
-    cpn = c / freq
-    price: float = sum(
-        (cpn + (face if k == n else 0.0)) / (1 + y / freq) ** (k - 1 + w) for k in range(1, n + 1)
-    )
-    return price
+class FixedRateBond(Record):
+    """A bullet bond paying coupon/freq each period, valued at a periodically compounded yield.
 
+    Attributes:
+        coupon: The annual coupon per 100 of par.
+        periods: The coupons left, the last paid with the face value.
+        freq: Coupons per year.
+        first: Periods to the first coupon, a fraction of a period between coupon dates.
+        face: The redemption amount.
+    """
 
-def ytm_from_price(p: float, c: float, n: int, freq: float = 2, w: float = 1.0) -> float:
-    """Return the yield to maturity that prices n coupons of c/freq at p."""
-    return brentq(lambda y: price_periodic(c, y, n, freq, w) - p, -0.5, 1.0)
+    coupon: float
+    periods: int
+    freq: float = 2
+    first: float = 1.0
+    face: float = 100.0
 
+    def cash_flow(self, k: int) -> float:
+        """Return the k-th payment (k = 1, ..., periods): the coupon, with the face value last."""
+        return self.coupon / self.freq + (self.face if k == self.periods else 0.0)
 
-def mac_duration(c: float, y: float, n: int, freq: float = 2, w: float = 1.0) -> float:
-    """Return the Macaulay duration in years of n coupons of c/freq at yield y."""
-    cp = c / freq
-    pv = [(cp + (100 if k == n else 0)) / (1 + y / freq) ** (k - 1 + w) for k in range(1, n + 1)]
-    t = [(k - 1 + w) / freq for k in range(1, n + 1)]
-    mean_t: float = sum(ti * p for ti, p in zip(t, pv, strict=True)) / sum(pv)
-    return mean_t
+    def price(self, y: float) -> float:
+        """Return the full (dirty) price at yield y."""
+        price: float = sum(
+            self.cash_flow(k) / (1 + y / self.freq) ** (k - 1 + self.first)
+            for k in range(1, self.periods + 1)
+        )
+        return price
 
+    def yield_at(self, p: float) -> float:
+        """Return the yield to maturity at which the full price is p."""
+        return brentq(lambda y: self.price(y) - p, -0.5, 1.0)
 
-def convexity(c: float, y: float, n: int, freq: float = 2, w: float = 1.0) -> float:
-    """Return the convexity measure of n coupons of c/freq at yield y."""
-    cp = c / freq
-    P0 = price_periodic(c, y, n, freq, w)
-    tot = 0.0
-    for k in range(1, n + 1):
-        tt = k - 1 + w
-        tot += (cp + (100 if k == n else 0)) * tt * (tt + 1) / (1 + y / freq) ** (tt + 2)
-    return tot / (P0 * freq**2)
+    def macaulay_duration(self, y: float) -> float:
+        """Return the Macaulay duration in years at yield y."""
+        ks = range(1, self.periods + 1)
+        pv = [self.cash_flow(k) / (1 + y / self.freq) ** (k - 1 + self.first) for k in ks]
+        t = [(k - 1 + self.first) / self.freq for k in ks]
+        mean_t: float = sum(ti * p for ti, p in zip(t, pv, strict=True)) / sum(pv)
+        return mean_t
+
+    def convexity(self, y: float) -> float:
+        """Return the convexity measure at yield y."""
+        tot = 0.0
+        for k in range(1, self.periods + 1):
+            tt = k - 1 + self.first
+            tot += self.cash_flow(k) * tt * (tt + 1) / (1 + y / self.freq) ** (tt + 2)
+        return tot / (self.price(y) * self.freq**2)
+
+    def remaining(self, periods_passed: int) -> FixedRateBond:
+        """Return the same bond after periods_passed whole coupon periods."""
+        return self.model_copy(update={"periods": self.periods - periods_passed})
+
+    def horizon_return(self, y_buy: float, y_new: float, years: int) -> HorizonReturn:
+        """Return the sources of return of a semiannual bond bought at y_buy, held for years.
+
+        The yield moves at once to y_new; coupons are reinvested at y_new and the bond is sold
+        at y_new.
+        """
+        p_buy = self.price(y_buy)
+        m = 2 * years
+        coupons = self.coupon / 2 * m
+        fv_cpn = self.coupon / 2 * ((1 + y_new / 2) ** m - 1) / (y_new / 2)
+        later = self.remaining(m)
+        p_sell = later.price(y_new)
+        p_sell_old = later.price(y_buy)  # sale price had the yield not moved (pull to par)
+        total = fv_cpn + p_sell
+        ann = 2 * ((total / p_buy) ** (1 / m) - 1)
+        return HorizonReturn(
+            coupons=coupons,
+            int_on_int=fv_cpn - coupons,
+            pull_to_par=p_sell_old - p_buy,
+            rate_effect=p_sell - p_sell_old,
+            total=total - p_buy,
+            ann=ann,
+        )
+
+    def annualised_horizon_return(self, y_buy: float, y_new: float, H: float) -> float:
+        """Return the annualised return over H years (fractional half-years allowed).
+
+        The bond is bought at y_buy, the yield moves at once to y_new, and every payment is
+        carried to the horizon at y_new.
+        """
+        p_buy = self.price(y_buy)
+        m = 2 * H
+        val = 0.0
+        for k in range(1, self.periods + 1):
+            val += self.cash_flow(k) * (1 + y_new / 2) ** (m - k)
+        ann: float = 2 * ((val / p_buy) ** (1 / m) - 1)
+        return ann
 
 
 class LinearZeroCurve(Record):
@@ -124,42 +180,3 @@ class HorizonReturn(Record):
     rate_effect: float
     total: float
     ann: float
-
-
-def horizon(
-    y_new: float, years: int = 3, c: float = 5.0, n: int = 14, y_buy: float = 0.048
-) -> HorizonReturn:
-    """Return the horizon return of a bond bought at y_buy, the yield moving at once to y_new.
-
-    Coupons are reinvested at y_new and the bond is sold at y_new after `years`.
-    """
-    p_buy = price_periodic(c, y_buy, n)
-    m = 2 * years
-    coupons = c / 2 * m
-    fv_cpn = c / 2 * ((1 + y_new / 2) ** m - 1) / (y_new / 2)
-    p_sell = price_periodic(c, y_new, n - m)
-    p_sell_old = price_periodic(c, y_buy, n - m)  # sale price had the yield not moved (pull to par)
-    total = fv_cpn + p_sell
-    ann = 2 * ((total / p_buy) ** (1 / m) - 1)
-    return HorizonReturn(
-        coupons=coupons,
-        int_on_int=fv_cpn - coupons,
-        pull_to_par=p_sell_old - p_buy,
-        rate_effect=p_sell - p_sell_old,
-        total=total - p_buy,
-        ann=ann,
-    )
-
-
-def horizon_return_frac(
-    y_new: float, H: float, c: float = 5.0, n: int = 14, y_buy: float = 0.048
-) -> float:
-    """Return the annualised horizon return over H years, from the yield at which it is bought."""
-    p_buy = price_periodic(c, y_buy, n)
-    m = 2 * H  # fractional half-years allowed
-    val = 0.0
-    for k in range(1, n + 1):
-        cf = c / 2 + (100 if k == n else 0)
-        val += cf * (1 + y_new / 2) ** (m - k)
-    ann: float = 2 * ((val / p_buy) ** (1 / m) - 1)
-    return ann

@@ -4,7 +4,7 @@ import csv
 from pathlib import Path
 from typing import Self
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 def add_months(ym: str, k: int) -> str:

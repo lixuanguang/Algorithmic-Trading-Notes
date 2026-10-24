@@ -20,7 +20,7 @@ Prepared on 2026-10-18 by the portfolio moments and diversification slice from s
 ## Key results
 
 - Abstract: monthly data on the five largest stock markets, 1958-1996; multivariate normality rejected for the negative tail but not the positive tail; correlation is related to the market trend, not volatility per se, and increases in bear markets but not in bull markets.
-- p. 1: conditioning a correlation estimate on realised returns misleads. Bivariate normal, zero mean, unit s.d., constant correlation 0.50, split into two halves by the absolute U.S. return (threshold 0.674): conditional correlations 0.21 (small returns) and 0.62 (large returns), although the correlation is constant by assumption. Reproduced analytically in `notes/artefacts/portfolio-risk-return/portfolio-moments-checks.py` (0.2131 and 0.6184).
+- p. 1: conditioning a correlation estimate on realised returns misleads. Bivariate normal, zero mean, unit s.d., constant correlation 0.50, split into two halves by the absolute U.S. return (threshold 0.674): conditional correlations 0.21 (small returns) and 0.62 (large returns), although the correlation is constant by assumption. Reproduced analytically in `trading_notes.numerical.portfolio_moments.portfolio_moments_checks` (0.2131 and 0.6184).
 - p. 2: the asymmetry rejects constant-correlation normal and constant-correlation GARCH models; implications for asset allocation are noted but not explored.
 
 ## Limits

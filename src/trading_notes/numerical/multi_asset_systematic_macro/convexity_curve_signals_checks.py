@@ -306,11 +306,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Run the seven sections, print each failed check as BAD, and return the exit status.
 
     Each section prints its result and checks what the entries state. Section 2 reads
-    h15-spread-monthly.csv, the paper's 10-year minus 3-month spread built by h15_monthly.py,
-    and ust-10y3m-monthly.csv, monthly averages of Treasury's daily par yields (10-year minus
-    3-month and 10-year minus 2-year) built from Treasury's daily CSV files for 2006-2026
-    (retrieved 2026-10-16) by ust_monthly.py. Gliner (2014) by PDF page of the ebook; Drobny
-    (2006) by printed page.
+    h15-spread-monthly.csv, the paper's 10-year minus 3-month spread built by
+    trading_notes.research.business_cycles_policy.h15_spread, and ust-10y3m-monthly.csv, monthly
+    averages of Treasury's daily par yields (10-year minus 3-month and 10-year minus 2-year)
+    built from Treasury's daily CSV files for 2006-2026 (retrieved 2026-10-16) by
+    trading_notes.research.business_cycles_policy.treasury_spread. Gliner (2014) by PDF page of
+    the ebook; Drobny (2006) by printed page.
 
     Args:
         argv: Command-line arguments: `--root DIR`, the repository root that holds the data

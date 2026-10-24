@@ -55,7 +55,7 @@ Written in financial data and labels / source review / optimal execution / execu
 
 - `mod:pca-risk-distribution-weights`: López de Prado's weights that deliver a chosen distribution of risk across principal components (`alpha-afml`, chap. 2, sec. 2.4.2, pp. 35-36), with two formula slips corrected, the positive-eigenvalue requirement, the sign indeterminacy ($2^k$ allocations per risk distribution, $k$ the components given risk, when eigenvalues are distinct) and the estimation-error caveat for the smallest eigenvalues.
 
-Partly checked 2026-10-16, draft; human review outstanding. Checks: `afml-checks.py`.
+Partly checked 2026-10-16, draft; human review outstanding. Checks: `trading_notes.numerical.ml_alternative_data.afml_checks`.
 
 method validation (2026-10-17):
 
@@ -65,7 +65,7 @@ method validation (2026-10-17):
 Written in empirical extensions (2026-10-17) (source verification and bounded checks, not study or human review):
 
 - `meth:equal-risk-contribution`: ERC against inverse-volatility weights, with own checks (`trading_notes.numerical.portfolio_construction_models.equal_risk_contribution_checks`). Partly checked 2026-10-17, draft; human review outstanding.
-- `mod:garch-volatility-forecast`: GARCH(1,1) against EWMA, with own synthetic checks (`garch-ewma-check.py`). Partly checked 2026-10-17, draft; human review outstanding.
+- `mod:garch-volatility-forecast`: GARCH(1,1) against EWMA, with own synthetic checks (`trading_notes.numerical.volatility_forecasting.garch_ewma_checks`). Partly checked 2026-10-17, draft; human review outstanding.
 - `meth:resampled-efficiency`: Michaud resampling: what is drawn and averaged, and the proponents' simulation evidence. Partly checked 2026-10-17, draft; human review outstanding.
 
 Written in library gap-filling Batch L1 (2026-10-21):

@@ -10,7 +10,7 @@
 \end{enumerate}
 \emph{Liquidity strategies} keep the plan from forcing sales at bad prices: an emergency reserve (commonly three to twelve months of spending, more for volatile incomes); a cash or short-bond bucket for goals due within about two years; staggered maturities for known outlays; committed credit lines secured on securities or a home, used for timing gaps rather than permanent borrowing; and attention to the liquidity of illiquid holdings and lock-ups (Interpretation).
 
-\qffield{Practice} \emph{The Okafors' plan} (original; \texttt{private-wealth-checks.py}, parts~3 and 5).
+\qffield{Practice} \emph{The Okafors' plan} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, parts~3 and 5).
 \begin{itemize}
 \item Goals: education (two 200,000 payments in 8 and 10 years) and retirement income at 62 (a 90,000-a-year gap worth 1.76 million at 62). Discounted at 3.5 percent real, the goals are worth 1.12 million today.
 \item Resources: the 540,000 policy portfolio plus 50,000 a year for 22 years, worth 1.30 million at 3.5 percent. The 60,000 emergency reserve funds emergencies, not goals, so it is on neither side.
@@ -35,7 +35,7 @@
 \item \emph{Health and long-term care, liability and property} risks are insured or reserved for (Interpretation).
 \end{itemize}
 
-\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part~6). Mortality follows an illustrative Gompertz law with modal age 88 and dispersion 10 years; under it a 65-year-old reaches 80 with probability 0.71, 85 with 0.53 and 95 with 0.15.
+\qffield{Practice} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, part~6). Mortality follows an illustrative Gompertz law with modal age 88 and dispersion 10 years; under it a 65-year-old reaches 80 with probability 0.71, 85 with 0.53 and 95 with 0.15.
 \begin{itemize}
 \item \emph{Life insurance}: Adaeze Okafor's human capital to retirement at 62 is 3.00 million; if 75 percent of it supports the family and 300,000 of assets is set aside for them, she needs about 1.95 million of term cover to 62, declining as she ages.
 \item \emph{Disability}: cover to 62 of 60 percent of her USD~250,000 pre-tax pay replaces 83 percent of after-tax pay if benefits are untaxed, as for individually paid policies (Interpretation).
@@ -55,7 +55,7 @@
 
 \emph{Reporting and review.} Reports should show: holdings and allocation against policy; time-weighted return against a policy benchmark, which measures the manager; money-weighted return, which measures the client's experience including the timing of flows; returns after fees and, where relevant, after tax; risk measures; and, above all, progress towards each goal (funded ratio, probability of success). Review compares results with the IPS, records changes in circumstances and decides whether to rebalance, revise the IPS or change managers \citep[pp.~21--22]{asset-manager-code-2010}; \citep[pp.~87--90]{standards-practice-handbook-2024}.
 
-\qffield{Practice} \emph{The Okafors' allocation} (original; \texttt{private-wealth-checks.py}, parts~3 and 8). The 540,000 policy portfolio needs 2.30 percent real; the 60,000 reserve stays in cash outside it. Illustrative real assumptions: equity 5.0 percent expected with 17 percent volatility, bonds 1.5 percent with 6 percent, correlation 0.2.
+\qffield{Practice} \emph{The Okafors' allocation} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, parts~3 and 8). The 540,000 policy portfolio needs 2.30 percent real; the 60,000 reserve stays in cash outside it. Illustrative real assumptions: equity 5.0 percent expected with 17 percent volatility, bonds 1.5 percent with 6 percent, correlation 0.2.
 \begin{center}\small
 \begin{tabular}{@{}lrrr@{}}
 \toprule
@@ -69,7 +69,7 @@ Equity/bonds & Expected compound & 1-in-20 one-year return & Surplus at 62 (USD 
 \end{center}
 \emph{Recommended}: 60/40 (global, low-cost index funds; Treasuries and TIPS in the 401(k)s); Tunde's employer stock sold down to below 10 percent of liquid assets over 12 months. It meets the goals with a margin of 0.22 million on expected returns and keeps a bad year inside the roughly 15 percent loss the Okafors say they would tolerate. \emph{Alternatives}: 70/30, which their high capacity supports, sits at the limit of their willingness for 0.06 million more expected surplus; 40/60, the lower-risk choice, still exceeds the required return, but by only 0.27 points, leaving almost no margin if returns disappoint. 40/60 is a defensible choice only together with the higher saving (about 58,100 a year) that would make the plan fully funded at a 1.5 percent real discount rate.
 
-\emph{First annual review} (\texttt{private-wealth-checks.py}, part~8): the policy portfolio grew from 540,000 to 567,000 by mid-year, received the year's 50,000 of saving, and ended at 656,488. The time-weighted return is 11.72 percent; the money-weighted return 11.78 percent, slightly higher because the contribution came before the stronger half-year. Against an assumed blended benchmark return of 11.0 percent, the manager added 0.72 points; against the plan, the funded ratio at 3.5 percent rose from 1.16 to 1.20 (treating the year's return as real). No IPS change is needed; rebalancing back to 60 percent equity is.
+\emph{First annual review} (\nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, part~8): the policy portfolio grew from 540,000 to 567,000 by mid-year, received the year's 50,000 of saving, and ended at 656,488. The time-weighted return is 11.72 percent; the money-weighted return 11.78 percent, slightly higher because the contribution came before the stronger half-year. Against an assumed blended benchmark return of 11.0 percent, the manager added 0.72 points; against the plan, the funded ratio at 3.5 percent rose from 1.16 to 1.20 (treating the year's return as real). No IPS change is needed; rebalancing back to 60 percent equity is.
 
 \qffield{Conditions} Benchmark, capital market assumptions and returns are illustrative; the expected compound return is the lognormal median rate, and the surplus is projected at that rate, not a probability of success.
 
@@ -86,7 +86,7 @@ Equity/bonds & Expected compound & 1-in-20 one-year return & Surplus at 62 (USD 
 
 \emph{Across jurisdictions.} Residence decides which country taxes pensions as they grow and pay out, and treaties allocate rights. Under the UK--US treaty, a resident of one state who belongs to a pension scheme in the other is taxed on its income only when paid out (Art.~18(1)); a US citizen resident and employed in the UK can deduct contributions to a UK scheme for US tax, within limits (Art.~18(5)); and the US keeps its right to tax citizens except where the treaty says otherwise (Art.~1(4)--(5)) \citep[Arts.~1(4)--(5), 4(4), 18]{uk-us-double-taxation-convention-2001}.
 
-\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part~9).
+\qffield{Practice} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, part~9).
 \begin{itemize}
 \item \emph{US, traditional against Roth}: a USD~24,500 deferral at a 35 percent marginal rate, invested for 25 years at 6 percent and withdrawn at 24 percent, leaves 79,915 after tax; a Roth contribution of the same after-tax cost (15,925) leaves 68,348. At equal rates the two are identical, so the choice turns on expected retirement tax rates. \emph{Recommendation for the Okafors}: traditional deferrals now (35 percent rate), with Roth conversions in low-income years between retirement at 62 and the start of RMDs.
 \item \emph{UK, pension against ISA}: Margaret Hartley's daughter, a higher-rate taxpayer, pays 10,000 into a personal pension; relief grosses it up to 12,500 and she reclaims 2,500 more, so it costs her 7,500. After 25 years at 6 percent the pot is 53,648; with 25 percent tax-free and the rest taxed at 20 percent, she keeps 45,601, against 32,189 from 7,500 in an ISA. The pension wins unless she needs access before pension age.
@@ -114,7 +114,7 @@ Human capital's correlation with markets decides how much financial risk the hou
 
 \emph{Strategies}: life insurance for mortality (term cover sized to human capital not otherwise funded); disability income cover; health and long-term-care cover; an emergency reserve sized to income volatility; diversification away from employer stock and the client's own industry; investment in skills; and, for business owners, key-person cover and succession plans (Interpretation).
 
-\qffield{Practice} \emph{Tunde Okafor} (original; \texttt{private-wealth-checks.py}, parts~6 and 10). Tunde, 42, earns mainly commission from a listed software company, and holds 40 percent of the family's liquid assets in its shares (volatility 45 percent, correlation 0.5 with a 16 percent-volatility market).
+\qffield{Practice} \emph{Tunde Okafor} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, parts~6 and 10). Tunde, 42, earns mainly commission from a listed software company, and holds 40 percent of the family's liquid assets in its shares (volatility 45 percent, correlation 0.5 with a 16 percent-volatility market).
 \begin{itemize}
 \item The concentrated portfolio's volatility is 24.3 percent against 16 percent diversified; and its worst outcomes coincide with his commission income falling.
 \item \emph{Analysis}: his human capital is equity-like and tied to the same company as 40 percent of the portfolio, so a downturn there hits income, employment and savings together.

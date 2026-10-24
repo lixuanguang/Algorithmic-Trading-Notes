@@ -1,6 +1,6 @@
 """One year of a timber stand: biological growth, harvest, stumpage price and land value."""
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class TimberYear(Record):

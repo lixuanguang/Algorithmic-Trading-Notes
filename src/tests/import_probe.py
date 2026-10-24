@@ -6,7 +6,7 @@ import sys
 from collections.abc import Collection, Sequence
 from pathlib import Path
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 # Puts the folders of argv[4] first on the module path and imports the preloaded modules
 # (argv[3]), so that their own start-up is not observed; then, with a stray argument and an

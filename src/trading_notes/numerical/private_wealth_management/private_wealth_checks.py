@@ -11,13 +11,13 @@ from numpy.typing import NDArray
 from scipy.optimize import brentq
 
 from trading_notes.numerical.report import CheckReport
+from trading_notes.numerical.time_value.cash_flows import annuity
 from trading_notes.numerical.tolerance import close
 from trading_notes.numerical.wealth_planning.household_plan import (
     GoalsPlan,
     Gompertz,
     HumanCapital,
     MarketAssumptions,
-    annuity,
 )
 from trading_notes.numerical.wealth_preservation.tax_drag import AssetLocation, TaxDrag, wash_sale
 from trading_notes.numerical.wealth_preservation.us_income_tax import JointIncomeTax

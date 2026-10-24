@@ -1,11 +1,8 @@
-"""Tests of the linear-projection example's references, conventions and stream.
+"""Tests of the linear-projection example's references, conventions and stream."""
 
-The example's full run is tested in test_checks.py. These pin down the analytical variance
-share, the slope's mixed covariance and variance divisors, the half-open bins of the
-joint-normal check, and the order in which the one generator is drawn, with small inputs.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's full run is tested in test_checks.py. These pin down the analytical variance
+# share, the slope's mixed covariance and variance divisors, the half-open bins of the
+# joint-normal check, and the order in which the one generator is drawn, with small inputs.
 
 import contextlib
 import io

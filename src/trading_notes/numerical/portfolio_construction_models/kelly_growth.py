@@ -4,7 +4,7 @@ import math
 
 import numpy as np
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class ContinuousKelly(Record):

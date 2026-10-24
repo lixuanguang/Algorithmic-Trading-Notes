@@ -1,13 +1,10 @@
-"""Tests of the Sharpe statistics against references independent of the implementation.
+"""Tests of the Sharpe statistics against references independent of the implementation."""
 
-The example's full run, with the stated table values, is tested in test_checks.py. These
-compare Lo's annualisation factor with the variance of a sum of AR(1) returns computed from
-its autocorrelation matrix, the deflated Sharpe ratio with the standard library's normal
-distribution instead of SciPy's, the rho = 0 branch, the unit conversions, and confirm that a
-changed table value is reported.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's full run, with the stated table values, is tested in test_checks.py. These compare
+# Lo's annualisation factor with the variance of a sum of AR(1) returns computed from its
+# autocorrelation matrix, the deflated Sharpe ratio with the standard library's normal
+# distribution instead of SciPy's, the rho = 0 branch, the unit conversions, and confirm that a
+# changed table value is reported.
 
 import contextlib
 import io

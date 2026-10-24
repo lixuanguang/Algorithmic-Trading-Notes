@@ -1,11 +1,8 @@
-"""Tests of the Cartea-Jaimungal demonstration: its sequences, its output and its routines.
+"""Tests of the Cartea-Jaimungal demonstration: its sequences, its output and its routines."""
 
-The demonstration asserts nothing, so these tests do not give it a pass or fail contract. They
-pin down the two seeded sequences, the shape of what a run prints and the computational
-contracts of its routines, the latter with short computations rather than the run's own.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The demonstration asserts nothing, so these tests do not give it a pass or fail contract. They
+# pin down the two seeded sequences, the shape of what a run prints and the computational
+# contracts of its routines, the latter with short computations rather than the run's own.
 
 import contextlib
 import io

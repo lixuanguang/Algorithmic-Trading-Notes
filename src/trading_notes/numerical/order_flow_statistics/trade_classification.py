@@ -6,7 +6,7 @@ from typing import Annotated
 
 from pydantic import Strict
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 # Prices stay Decimal: a float price would be rejected rather than converted, so the midpoint
 # and 30% bands are compared exactly.

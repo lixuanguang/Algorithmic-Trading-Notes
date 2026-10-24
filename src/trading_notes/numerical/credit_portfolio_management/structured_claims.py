@@ -1,6 +1,6 @@
 """Claims on a pool of loans: securitisation tranches against covered bonds."""
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class Securitisation(Record):

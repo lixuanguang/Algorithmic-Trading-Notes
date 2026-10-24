@@ -33,4 +33,4 @@ Prepared on 2026-10-17 by the source verification (2026-10-17) from source check
 
 Chaps. 3-6 and 10 read in part as listed; chaps. 11-12 not read.
 
-Audit repair, method validation (2026-10-17): n. 1 (p. 263) uses E{r|g} "somewhat loosely"; the Technical Appendix proves the best linear estimate (Proposition 1, pp. 287-288) and the conditional expectation only under joint normality (Proposition 2, p. 289). Own checks: `projection-checks.py`.
+Audit repair, method validation (2026-10-17): n. 1 (p. 263) uses E{r|g} "somewhat loosely"; the Technical Appendix proves the best linear estimate (Proposition 1, pp. 287-288) and the conditional expectation only under joint normality (Proposition 2, p. 289). Own checks: `trading_notes.numerical.signal_combination.linear_projection_checks`.

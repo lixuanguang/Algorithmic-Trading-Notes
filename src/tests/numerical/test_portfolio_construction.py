@@ -18,7 +18,6 @@ from trading_notes.numerical.portfolio_construction_models.equal_risk_contributi
 )
 from trading_notes.numerical.portfolio_construction_models.risk_contributions import (
     CovarianceModel,
-    long_only_minimum_variance,
     project_to_simplex,
 )
 from trading_notes.numerical.report import CheckReport
@@ -104,14 +103,14 @@ class EqualRiskContribution(unittest.TestCase):
         """Uncorrelated assets: minimum-variance weights are proportional to 1 / variance."""
         S = np.diag([0.01, 0.04])
         # The error shrinks by about 1 - lr * mean variance = 0.9875 a step: e^-50 here.
-        weights = long_only_minimum_variance(S, iters=4000)
+        weights = CovarianceModel(sigma=S).long_only_minimum_variance(iters=4000)
         np.testing.assert_allclose(weights, [0.8, 0.2], atol=1e-12)
         np.testing.assert_array_equal(S, np.diag([0.01, 0.04]))
 
     def test_minvar_corner_solution(self) -> None:
         """A dominated asset gets zero weight: the projection keeps the descent long-only."""
         S = np.array([[0.01, 0.015], [0.015, 0.04]])  # correlation 0.75 > vol ratio 0.5
-        weights = long_only_minimum_variance(S, iters=2000)
+        weights = CovarianceModel(sigma=S).long_only_minimum_variance(iters=2000)
         np.testing.assert_allclose(weights, [1.0, 0.0], atol=1e-12)
 
     def test_erc_equalises_contributions_and_keeps_inputs(self) -> None:

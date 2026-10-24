@@ -1,12 +1,9 @@
-"""Tests of the labelling, bar-sampling, ETF-trick and fractional-differencing classes.
+"""Tests of the labelling, bar-sampling, ETF-trick and fractional-differencing classes."""
 
-The demonstrations' full runs are tested in test_checks.py. These pin down the guard for a
-time that no label uses (uniqueness 0 there, not 0/0), AFML's sequential-bootstrap example,
-the CUSUM filter's strict threshold, the barriers' touch order, the ETF trick's gross exposure
-and the two routes to the fractional-difference weights, against hand-computed values.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The demonstrations' full runs are tested in test_checks.py. These pin down the guard for a time
+# that no label uses (uniqueness 0 there, not 0/0), AFML's sequential-bootstrap example, the CUSUM
+# filter's strict threshold, the barriers' touch order, the ETF trick's gross exposure and the two
+# routes to the fractional-difference weights, against hand-computed values.
 
 import unittest
 import warnings

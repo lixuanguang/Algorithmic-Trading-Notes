@@ -22,7 +22,7 @@ Also used by the credit, time-series and valuation batch (2026-10-20) for `meth:
 ## Key results
 
 - Annual returns 1928-2025 for the S&P 500 with dividends, small caps (bottom decile), the 3-month T-bill (average rate in the year), the 10-year T-bond and Baa bonds (returns repriced from constant-maturity yields), residential real estate (Shiller/Case-Shiller, price only), gold (fixed before 1971) and CPI inflation.
-- Summary rows reproduced by portfolio-choice-checks.py: arithmetic 11.85, 3.41, 4.82, 6.90, 4.38 and 7.36 percent and geometric 10.02, 3.37, 4.53, 6.63, 4.20 and 5.61 for stocks, bills, bonds, Baa, real estate and gold.
+- Summary rows reproduced by trading_notes.numerical.portfolio_choice.portfolio_choice_checks: arithmetic 11.85, 3.41, 4.82, 6.90, 4.38 and 7.36 percent and geometric 10.02, 3.37, 4.53, 6.63, 4.20 and 5.61 for stocks, bills, bonds, Baa, real estate and gold.
 - FAQ: averages come with error; the bond return keeps a constant 10-year maturity for consistency.
 - Used as data, not as a source of claims: Baa excess return regression, US inflation models, and a 60/40 scenario study.
 

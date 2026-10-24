@@ -5,8 +5,8 @@ import sys
 from typing import Final
 
 from trading_notes.numerical.option_pricing.svi import RawSVI, Slice, butterfly
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport
+from trading_notes.records import Record
 
 # A total-variance slice w(k) of log-moneyness k.
 

@@ -1,11 +1,8 @@
-"""Tests of the Sharpe-zero example's chunked estimator, samplers and stream.
+"""Tests of the Sharpe-zero example's chunked estimator, samplers and stream."""
 
-The example's checks run in test_checks.py. These pin down the chunk shapes and order, the
-ddof 0 standard deviation, the two samplers' laws and that both checks draw from one stream, with
-small samples.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's checks run in test_checks.py. These pin down the chunk shapes and order, the ddof
+# 0 standard deviation, the two samplers' laws and that both checks draw from one stream, with
+# small samples.
 
 import contextlib
 import io

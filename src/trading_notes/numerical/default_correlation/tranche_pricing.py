@@ -9,7 +9,7 @@ from numpy.typing import NDArray
 from scipy import integrate, stats
 
 from trading_notes.numerical.default_correlation.factor_model import VasicekFactorModel
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 

@@ -2,7 +2,7 @@
 
 from math import erf, exp, log, pi, sqrt
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 def N(x: float) -> float:

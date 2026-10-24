@@ -2,7 +2,7 @@
 
 import math
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class FundedCarry(Record):

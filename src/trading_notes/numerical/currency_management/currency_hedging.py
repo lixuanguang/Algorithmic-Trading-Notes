@@ -4,7 +4,7 @@ import math
 
 from scipy.stats import norm
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class CurrencyExposure(Record):

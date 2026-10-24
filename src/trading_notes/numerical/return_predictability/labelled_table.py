@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from numpy.typing import NDArray
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 type Labels = NDArray[np.int64]

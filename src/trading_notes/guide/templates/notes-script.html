@@ -1,0 +1,1 @@
+<script>const search=document.getElementById('search'),articles=[...document.querySelectorAll('article')];function filter(){const q=search.value.toLowerCase();let n=0;articles.forEach(a=>{a.hidden=!a.textContent.toLowerCase().includes(q);if(!a.hidden)n++});document.getElementById('count').textContent=n+' notes';}search.addEventListener('input',filter);filter();</script></html>

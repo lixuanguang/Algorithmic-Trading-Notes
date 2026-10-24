@@ -1,12 +1,23 @@
-"""Tests of the per-check reports, the numerical checks and the numerical demonstrations.
+"""Tests of the per-check reports, the numerical checks and the numerical demonstrations."""
 
-The numerical assertions themselves are the checks' own; these tests only confirm how a run
-is reported, that each run starts fresh and leaves shared state alone, and that a failure
-reaches the exit status. A demonstration prints values and asserts nothing, so only its runs,
-not a failure contract, are tested here.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The numerical assertions themselves are the checks' own; these tests only confirm how a run is
+# reported, that each run starts fresh and leaves shared state alone, and that a failure reaches
+# the exit status. A demonstration prints values and asserts nothing, so only its runs, not a
+# failure contract, are tested here.
+#
+# Attributes: module: The implementation module, with `main()`, run as `python -m <module>`.
+# replaced: A function after which the in-process tests record one more, forced, failure. summary:
+# The end of its output with that one forced failure: the failure summary, or the BAD line itself
+# for a script that prints none. checks: The number of check lines a passing run prints; 0 for a
+# module that prints only its failures. line: Matches each reported check line; group 1 is its
+# status. forced: How the failure after `replaced` is recorded, one of `stand_ins.forced_*`.
+# passed: The end of a passing run's output; empty for a module that prints no summary. imports:
+# The modules it imports for its heavy dependencies (of `HEAVY`), as it imports them. Importing it
+# must load exactly their packages, and open no file beyond those they open when imported alone.
+# args: Command-line arguments of its runs, such as the repository root of a module that reads
+# compendium or research files. stand_ins: Module attributes replaced in the in-process runs only:
+# expensive check functions by `skipped` or `no_conditions`, simulation sizes by small values. The
+# full run always uses the real ones.
 
 import ast
 import contextlib
@@ -17,14 +28,12 @@ import pkgutil
 import py_compile
 import random
 import re
-import runpy
 import subprocess
 import sys
 import tempfile
 import unittest
 from collections.abc import Callable, Sequence
 from concurrent.futures import ThreadPoolExecutor
-from dataclasses import replace
 from fractions import Fraction
 from pathlib import Path
 from types import CodeType, ModuleType
@@ -36,19 +45,7 @@ import pytest
 from pydantic import Field
 
 import trading_notes.numerical
-from trading_notes.numerical import (
-    bitemporal,
-    filing_deadlines,
-    filing_timestamps,
-    intercorporate_fx_institutions,
-    margin_spiral,
-    negative_hedge_ratio,
-    numerical_pricing,
-    order_reconciliation,
-    order_routing_fragmentation,
-    time_value_returns,
-    us_calendar,
-)
+from trading_notes.numerical import us_calendar
 from trading_notes.numerical.active_management import active_management_checks as active_management
 from trading_notes.numerical.alternatives_allocation import (
     alternatives_allocation_checks as alternatives_allocation,
@@ -106,6 +103,7 @@ from trading_notes.numerical.credit_portfolio_management import (
 from trading_notes.numerical.credit_risk_analysis import (
     credit_cds_securitisation_checks as credit_cds_securitisation,
 )
+from trading_notes.numerical.crowding_contagion import margin_spiral_checks as margin_spiral
 from trading_notes.numerical.crypto_venues_perpetuals import funding_rates
 from trading_notes.numerical.crypto_venues_perpetuals import (
     perpetual_funding_checks as perpetual_funding,
@@ -114,6 +112,9 @@ from trading_notes.numerical.crypto_venues_perpetuals.funding_rates import Fundi
 from trading_notes.numerical.crypto_venues_perpetuals.perpetual_funding_checks import FundingReport
 from trading_notes.numerical.currency_management import (
     currency_management_checks as currency_management,
+)
+from trading_notes.numerical.dark_trading_fragmentation import (
+    order_routing_fragmentation_checks as order_routing_fragmentation,
 )
 from trading_notes.numerical.default_correlation import (
     default_correlation_checks as default_correlation,
@@ -140,6 +141,12 @@ from trading_notes.numerical.execution_control import cartea_jaimungal_checks as
 from trading_notes.numerical.exotic_options import exotic_options_checks as exotic_options
 from trading_notes.numerical.exotic_options import lookback_options_checks as lookback_options
 from trading_notes.numerical.extreme_values import extreme_value_checks as extreme_value
+from trading_notes.numerical.financial_mathematics import (
+    time_value_returns_checks as time_value_returns,
+)
+from trading_notes.numerical.financial_statement_analysis import (
+    intercorporate_fx_institutions_checks as intercorporate_fx_institutions,
+)
 from trading_notes.numerical.firms_market_structure import (
     market_structure_checks as market_structure,
 )
@@ -154,6 +161,9 @@ from trading_notes.numerical.forward_commitment_valuation import (
 )
 from trading_notes.numerical.futures_execution import (
     contract_statistics_checks as contract_statistics,
+)
+from trading_notes.numerical.futures_hedging import (
+    negative_hedge_ratio_checks as negative_hedge_ratio,
 )
 from trading_notes.numerical.fx_mechanics_parity import fx_mechanics_checks as fx_mechanics
 from trading_notes.numerical.global_macro import macro_pricing_risk_checks as macro_pricing_risk
@@ -205,6 +215,7 @@ from trading_notes.numerical.multi_asset_systematic_macro import (
 from trading_notes.numerical.multiple_regression import (
     multiple_regression_checks as multiple_regression,
 )
+from trading_notes.numerical.numerical_methods import numerical_pricing_checks as numerical_pricing
 from trading_notes.numerical.option_hedging import (
     transaction_cost_hedging_checks as transaction_cost_hedging,
 )
@@ -229,6 +240,11 @@ from trading_notes.numerical.performance_attribution_appraisal import (
     performance_evaluation_checks as performance_evaluation,
 )
 from trading_notes.numerical.performance_standards import gips_checks as gips
+from trading_notes.numerical.point_in_time_data import bitemporal_checks as bitemporal
+from trading_notes.numerical.point_in_time_data import filing_deadlines_checks as filing_deadlines
+from trading_notes.numerical.point_in_time_data import (
+    filing_timestamps_checks as filing_timestamps,
+)
 from trading_notes.numerical.portfolio_choice import portfolio_choice_checks as portfolio_choice
 from trading_notes.numerical.portfolio_construction_models import (
     black_litterman_checks as black_litterman,
@@ -252,7 +268,6 @@ from trading_notes.numerical.private_wealth_management import (
 from trading_notes.numerical.rate_swaps_clearing import fra_settlement_checks as fra_settlement
 from trading_notes.numerical.rate_swaps_clearing import multicurve_checks as multicurve
 from trading_notes.numerical.real_asset_investor import real_assets_checks as real_assets
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.regression import linear_regression_checks as linear_regression
 from trading_notes.numerical.report import CheckReport, require, section
 from trading_notes.numerical.return_predictability import (
@@ -290,6 +305,9 @@ from trading_notes.numerical.time_series_models import time_series_checks as tim
 from trading_notes.numerical.trade_strategy_governance import (
     trade_execution_checks as trade_execution,
 )
+from trading_notes.numerical.trading_controls import (
+    order_reconciliation_checks as order_reconciliation,
+)
 from trading_notes.numerical.var_es_estimation import (
     expected_shortfall_checks as expected_shortfall,
 )
@@ -298,6 +316,7 @@ from trading_notes.numerical.volatility_forecasting import garch_ewma_checks as 
 from trading_notes.numerical.wealth_transfer import (
     concentrated_position_checks as concentrated_position,
 )
+from trading_notes.records import Record
 
 from ..import_probe import HEAVY, dependency_reads, import_effects
 from .single_run import PRIMING_SEED, GlobalState, prime_global_random, restored_global_state
@@ -314,7 +333,6 @@ from .stand_ins import (
 )
 
 ROOT = Path(__file__).resolve().parents[3]
-ARTEFACTS = ROOT / "notes" / "artefacts"
 # A reported check line of CheckReport, of the ok/FAIL reports of perpetual_funding,
 # synthetic_short and lob_model_derivations, and of the modules that print failed conditions
 # only: covariance_shrinkage, drawdown_resampling, multiple_testing, dealer_queue_information,
@@ -329,32 +347,9 @@ MAX_PROCESSES: Final = os.cpu_count() or 4
 
 
 class NumericalCheck(Record):
-    """A numerical check module and what its tests expect of it.
-
-    Attributes:
-        module: The implementation module, with `main()`, run as `python -m <module>`.
-        script: Its forwarding script under notes/artefacts/, or None once the module has moved
-            into a package and the script is retired.
-        replaced: A function after which the in-process tests record one more, forced, failure.
-        summary: The end of its output with that one forced failure: the failure summary,
-            or the BAD line itself for a script that prints none.
-        checks: The number of check lines a passing run prints; 0 for a module that prints
-            only its failures.
-        line: Matches each reported check line; group 1 is its status.
-        forced: How the failure after `replaced` is recorded, one of `stand_ins.forced_*`.
-        passed: The end of a passing run's output; empty for a module that prints no summary.
-        imports: The modules it imports for its heavy dependencies (of `HEAVY`), as it
-            imports them. Importing it must load exactly their packages, and open no file
-            beyond those they open when imported alone.
-        args: Command-line arguments of its runs, such as the repository root of a module that
-            reads compendium or research files.
-        stand_ins: Module attributes replaced in the in-process runs only: expensive check
-            functions by `skipped` or `no_conditions`, simulation sizes by small values. The
-            full run always uses the real ones.
-    """
+    """A numerical check module and what its tests expect of it."""
 
     module: ModuleType
-    script: Path | None
     replaced: str
     summary: str
     checks: int
@@ -373,7 +368,6 @@ class Demonstration(Record):
 
     Attributes:
         module: The implementation module, with `main()`, run as `python -m <module>`.
-        script: Its forwarding script under notes/artefacts/, or None once it is retired.
         lines: The number of lines a run prints.
         imports: The modules it imports for its heavy dependencies (of `HEAVY`), as it
             imports them. Importing it must load exactly their packages, and open no file
@@ -381,14 +375,13 @@ class Demonstration(Record):
     """
 
     module: ModuleType
-    script: Path | None
     lines: int
     imports: tuple[str, ...] = ()
 
 
 LIST_SUMMARY = "\nFAILED: ['forced failure']\n"
-# bitemporal-check.py, black-litterman-check.py and var-backtest-check.py print no failure
-# summary, so nothing follows the BAD line.
+# bitemporal_checks, black_litterman_checks and var_backtest_checks print no failure summary,
+# so nothing follows the BAD line.
 NO_SUMMARY = "  BAD forced failure\n"
 # The summary of the scripts that print their failures joined by commas.
 JOINED_SUMMARY = "\nFAILED: forced failure\n"
@@ -403,7 +396,6 @@ STATSMODELS = ("numpy", "pandas", "scipy", "statsmodels")
 CHECKS = [
     NumericalCheck(
         module=funding_repo,
-        script=None,
         replaced="check_margin_call",
         summary="\n1 check(s) failed: ['forced failure']\n",
         checks=11,
@@ -411,7 +403,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=fra_settlement,
-        script=None,
         replaced="check_convexity",
         summary=LIST_SUMMARY,
         checks=11,
@@ -419,7 +410,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=multicurve,
-        script=None,
         replaced="check_two_curves",
         summary=LIST_SUMMARY,
         checks=6,
@@ -427,7 +417,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=amm_pool,
-        script=None,
         imports=("pydantic",),
         replaced="check_concentrated_position",
         summary=LIST_SUMMARY,
@@ -435,7 +424,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=country_risk_premium,
-        script=None,
         replaced="check_zero_limit",
         summary=JOINED_SUMMARY,
         checks=23,
@@ -443,7 +431,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=cash_flow_linkage,
-        script=None,
         replaced="check_cash_tax",
         summary=JOINED_SUMMARY,
         checks=34,
@@ -451,7 +438,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=bsm_svi,
-        script=None,
         replaced="check_svi",
         summary=JOINED_SUMMARY,
         checks=23,
@@ -459,42 +445,40 @@ CHECKS = [
     ),
     NumericalCheck(
         module=time_value_returns,
-        script=ARTEFACTS / "time-value-returns" / "time-value-return-checks.py",
         replaced="check_share_forward",
         summary="\nFAILED: forced failure\n",
         checks=114,
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=bitemporal,
-        script=ARTEFACTS / "point-in-time-data" / "bitemporal-check.py",
         replaced="check_split_correction",
         summary=NO_SUMMARY,
         checks=4,
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=filing_deadlines,
-        script=ARTEFACTS / "point-in-time-data" / "filing-checks.py",
         replaced="check_deadlines",
         summary=LIST_SUMMARY,
         checks=8,
     ),
     NumericalCheck(
         module=filing_timestamps,
-        script=ARTEFACTS / "point-in-time-data" / "filing-timestamp-checks.py",
         replaced="check_holiday_cutoff",
         summary=LIST_SUMMARY,
         checks=18,
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=margin_spiral,
-        script=ARTEFACTS / "funding-crowding" / "spiral-checks.py",
         replaced="check_amplification",
         summary=LIST_SUMMARY,
         checks=4,
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=cme_allocation,
-        script=None,
         replaced="check_fifo",
         summary=LIST_SUMMARY,
         checks=12,
@@ -502,7 +486,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=perpetual_funding,
-        script=None,
         imports=("pydantic",),
         replaced="check_sign_convention",
         summary="FAIL forced failure: got 1, want 0\n1 check(s) failed: ['forced failure']\n",
@@ -512,7 +495,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=commodity_latency,
-        script=None,
         replaced="check_latency_calibration",
         summary=LIST_SUMMARY,
         checks=7,
@@ -520,14 +502,12 @@ CHECKS = [
     ),
     NumericalCheck(
         module=contract_statistics,
-        script=None,
         replaced="check_ism_calendar",
         summary=LIST_SUMMARY,
         checks=38,
     ),
     NumericalCheck(
         module=synthetic_short,
-        script=None,
         imports=("pydantic",),
         replaced="check_rebate",
         summary="FAIL forced failure: got 1.000000, want 0.000000\n1 check(s) failed\n",
@@ -537,15 +517,14 @@ CHECKS = [
     ),
     NumericalCheck(
         module=order_reconciliation,
-        script=ARTEFACTS / "model-governance-controls" / "reconciliation-check.py",
         replaced="check_day_order",
         summary=LIST_SUMMARY,
         checks=22,
         passed="\nall checks passed (offline synthetic illustration)\n",
+        imports=("pydantic",),
     ),
     NumericalCheck(
         module=black_litterman,
-        script=None,
         replaced="check_posterior",
         summary=JOINED_SUMMARY,
         checks=4,
@@ -553,7 +532,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=equal_risk_contribution,
-        script=None,
         replaced="check_unequal_correlations",
         summary=JOINED_SUMMARY,
         checks=10,
@@ -562,7 +540,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=erc_sharpe,
-        script=None,
         replaced="check_unequal_correlations",
         summary=JOINED_SUMMARY,
         checks=7,
@@ -570,7 +547,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=expected_shortfall,
-        script=None,
         replaced="check_historical_simulation",
         summary=JOINED_SUMMARY,
         checks=14,
@@ -578,7 +554,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=covariance_shrinkage,
-        script=None,
         replaced="failed_conditions",
         summary="\nBAD forced failure\n",
         checks=0,
@@ -588,7 +563,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=risk_parity,
-        script=None,
         replaced="check_two_asset_erc",
         summary=JOINED_SUMMARY,
         checks=3,
@@ -596,7 +570,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=garch_ewma,
-        script=None,
         replaced="check_ewma_against_garch",
         summary=LIST_SUMMARY,
         checks=3,
@@ -605,7 +578,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=sharpe_zero,
-        script=None,
         replaced="check_three_point",
         summary=LIST_SUMMARY,
         checks=4,
@@ -614,7 +586,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=drawdown_resampling,
-        script=None,
         replaced="failed_conditions",
         summary="\nBAD forced failure\n",
         checks=0,
@@ -630,7 +601,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=linear_projection,
-        script=None,
         replaced="check_joint_normality",
         summary=LIST_SUMMARY,
         checks=5,
@@ -638,7 +608,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=var_backtest,
-        script=None,
         replaced="check_clustering",
         summary=JOINED_SUMMARY,
         checks=3,
@@ -647,7 +616,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=multiple_testing,
-        script=None,
         replaced="failed_conditions",
         summary="\nBAD forced failure\n",
         checks=0,
@@ -657,7 +625,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=sharpe_statistics,
-        script=None,
         replaced="check_deflated_sharpe",
         summary=LIST_SUMMARY,
         checks=23,
@@ -665,7 +632,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=forecast_scaling,
-        script=None,
         replaced="check_table_10_1",
         summary=LIST_SUMMARY,
         checks=16,
@@ -673,7 +639,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=purged_cv,
-        script=None,
         replaced="check_purged_kfold",
         summary=LIST_SUMMARY,
         checks=7,
@@ -681,7 +646,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=concentrated_position,
-        script=None,
         replaced="check_exchange_fund",
         summary=JOINED_SUMMARY,
         checks=8,
@@ -689,7 +653,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=lob_model_derivations,
-        script=None,
         replaced="check_roll",
         summary="FAIL forced failure: forced\n",
         checks=11,
@@ -700,7 +663,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=sharpe_conditions,
-        script=None,
         replaced="check_compounding",
         summary=LIST_SUMMARY,
         checks=8,
@@ -709,7 +671,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=dividend_tree_swaption,
-        script=None,
         replaced="check_swaptions",
         summary=JOINED_SUMMARY,
         checks=6,
@@ -717,7 +678,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=lob_models,
-        script=None,
         replaced="check_free_entry",
         summary=LIST_SUMMARY,
         checks=37,
@@ -725,7 +685,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=margin_purchase,
-        script=None,
         replaced="check_levered_return",
         summary=JOINED_SUMMARY,
         checks=7,
@@ -733,7 +692,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=cross_currency_basis,
-        script=None,
         replaced="check_final_exchange",
         summary=JOINED_SUMMARY,
         checks=16,
@@ -741,7 +699,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=seasoned_variance_swap,
-        script=None,
         replaced="check_simulation",
         summary=JOINED_SUMMARY,
         checks=8,
@@ -749,7 +706,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=covariance_volatility,
-        script=None,
         replaced="check_har",
         summary=LIST_SUMMARY,
         checks=11,
@@ -757,7 +713,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=etf_mechanics,
-        script=None,
         replaced="check_cost_of_ownership",
         summary=LIST_SUMMARY,
         checks=13,
@@ -766,7 +721,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=trade_execution,
-        script=None,
         replaced="check_evaluation",
         summary=COUNTED_SUMMARY,
         checks=14,
@@ -774,7 +728,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=macro_valuation,
-        script=None,
         replaced="check_multiples_and_property",
         summary=COUNTED_SUMMARY,
         checks=16,
@@ -782,7 +735,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=commodity_returns,
-        script=None,
         replaced="check_swaps",
         summary=LIST_SUMMARY,
         checks=15,
@@ -791,7 +743,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=correlation_independence,
-        script=None,
         replaced="check_size",
         summary=JOINED_SUMMARY,
         checks=13,
@@ -800,7 +751,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=counterparty_capital,
-        script=None,
         replaced="check_worked_example",
         summary=JOINED_SUMMARY,
         checks=13,
@@ -808,7 +758,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=volatility_mismatch_hedging,
-        script=None,
         replaced="check_gamma_condition",
         summary=JOINED_SUMMARY,
         checks=10,
@@ -823,7 +772,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=alternatives_allocation,
-        script=None,
         replaced="check_liquidity",
         summary=JOINED_SUMMARY,
         checks=13,
@@ -831,7 +779,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=market_structure,
-        script=None,
         replaced="check_concentration",
         summary=JOINED_SUMMARY,
         checks=13,
@@ -839,7 +786,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=hedge_funds,
-        script=None,
         replaced="check_allocation",
         summary=JOINED_SUMMARY,
         checks=17,
@@ -847,7 +793,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=gips,
-        script=None,
         replaced="check_composite_report",
         summary=JOINED_SUMMARY,
         checks=25,
@@ -855,7 +800,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=stochastic_calculus,
-        script=None,
         replaced="check_feynman_kac",
         summary=JOINED_SUMMARY,
         checks=23,
@@ -863,7 +807,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=index_construction,
-        script=None,
         replaced="check_bond_index",
         summary=COUNTED_SUMMARY,
         checks=30,
@@ -871,7 +814,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=monte_carlo_greeks,
-        script=None,
         replaced="check_fd_variance",
         summary="\nFAILED:forced failure\n",
         checks=17,
@@ -879,7 +821,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=currency_management,
-        script=None,
         replaced="check_active_strategies",
         summary=COUNTED_SUMMARY,
         checks=21,
@@ -887,7 +828,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=option_models,
-        script=None,
         replaced="check_sabr",
         summary=JOINED_SUMMARY,
         checks=20,
@@ -896,7 +836,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=economic_growth,
-        script=None,
         replaced="check_endogenous_growth",
         summary=COUNTED_SUMMARY,
         checks=22,
@@ -904,7 +843,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=derivative_overlays,
-        script=None,
         replaced="check_endowment_case",
         summary=JOINED_SUMMARY,
         checks=25,
@@ -912,7 +850,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=active_management,
-        script=None,
         replaced="check_risk_decomposition",
         summary=JOINED_SUMMARY,
         checks=30,
@@ -920,7 +857,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=credit_portfolios,
-        script=None,
         replaced="check_structured",
         summary=LIST_SUMMARY,
         checks=25,
@@ -929,7 +865,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=fx_mechanics,
-        script=None,
         replaced="check_flows",
         summary=COUNTED_SUMMARY,
         checks=27,
@@ -937,7 +872,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=manager_selection,
-        script=None,
         replaced="check_shrinkage",
         summary=JOINED_SUMMARY,
         checks=26,
@@ -945,7 +879,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=transaction_cost_hedging,
-        script=None,
         replaced="check_nonadditivity",
         summary=JOINED_SUMMARY,
         checks=16,
@@ -962,7 +895,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=capital_market_expectations,
-        script=None,
         replaced="check_reweighting",
         summary=COUNTED_SUMMARY,
         checks=28,
@@ -970,7 +902,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=portfolio_moments,
-        script=None,
         replaced="check_conditional_correlation",
         summary=JOINED_SUMMARY,
         checks=29,
@@ -978,7 +909,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=digital_assets,
-        script=None,
         replaced="check_custody",
         summary=LIST_SUMMARY,
         checks=21,
@@ -987,16 +917,14 @@ CHECKS = [
     ),
     NumericalCheck(
         module=numerical_pricing,
-        script=ARTEFACTS / "numerical-pricing" / "numerical-pricing-checks.py",
         replaced="check_bermudan",
         summary=JOINED_SUMMARY,
         checks=18,
-        imports=("numpy", "scipy", "scipy.stats", "scipy.linalg"),
+        imports=("numpy", "scipy", "scipy.linalg", "scipy.stats", "pydantic"),
         stand_ins={"check_american": unused_value, "check_bermudan": skipped},
     ),
     NumericalCheck(
         module=asset_pricing_factor_models,
-        script=None,
         replaced="check_factor_models",
         summary=JOINED_SUMMARY,
         checks=39,
@@ -1005,7 +933,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=backtest_design,
-        script=None,
         replaced="check_survivorship",
         summary=LIST_SUMMARY,
         checks=19,
@@ -1014,7 +941,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=bond_valuation_risk,
-        script=None,
         replaced="check_treasury_formulas",
         summary=COUNTED_SUMMARY,
         checks=94,
@@ -1022,7 +948,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=credit_cds_securitisation,
-        script=None,
         replaced="check_migration",
         summary="\n53 checks executed\nFAILED: ['forced failure']\n",
         checks=52,
@@ -1031,7 +956,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=counterparty_xva,
-        script=None,
         replaced="check_collateral",
         summary=JOINED_SUMMARY,
         checks=32,
@@ -1039,7 +963,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=default_correlation,
-        script=None,
         replaced="check_base_correlation",
         summary=JOINED_SUMMARY,
         checks=18,
@@ -1048,7 +971,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=short_rate_model,
-        script=None,
         replaced="check_forward_market",
         summary=JOINED_SUMMARY,
         checks=22,
@@ -1058,7 +980,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=term_structure,
-        script=None,
         replaced="check_curves",
         summary=COUNTED_SUMMARY,
         checks=36,
@@ -1067,7 +988,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=statistics_probability,
-        script=None,
         replaced="check_bayesian",
         summary=JOINED_SUMMARY,
         checks=64,
@@ -1075,7 +995,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=equity_portfolio_management,
-        script=None,
         replaced="check_capacity_structure",
         summary=JOINED_SUMMARY,
         checks=26,
@@ -1084,7 +1003,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=dealer_queue_information,
-        script=None,
         replaced="check_power_and_inference",
         summary="\nBAD forced failure\n",
         checks=0,
@@ -1095,7 +1013,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=liquidity_market_design,
-        script=None,
         replaced="check_capacity",
         summary="\nBAD forced failure\n",
         checks=0,
@@ -1106,7 +1023,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=market_estimators_rules,
-        script=None,
         replaced="check_model_i",
         summary="\nFAILURES: ['forced failure']\n",
         checks=45,
@@ -1116,7 +1032,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=exotic_options,
-        script=None,
         replaced="check_barrier",
         summary=JOINED_SUMMARY,
         checks=21,
@@ -1125,7 +1040,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=lookback_options,
-        script=None,
         replaced="check_monitoring",
         summary=JOINED_SUMMARY,
         checks=19,
@@ -1134,7 +1048,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=extreme_value,
-        script=None,
         replaced="check_rmfi",
         summary=JOINED_SUMMARY,
         checks=8,
@@ -1143,7 +1056,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=financial_ml_methods,
-        script=None,
         replaced="check_classifier",
         summary=LIST_SUMMARY,
         checks=23,
@@ -1159,18 +1071,14 @@ CHECKS = [
     ),
     NumericalCheck(
         module=intercorporate_fx_institutions,
-        script=ARTEFACTS
-        / "financial-statement-analysis"
-        / "intercorporate-fx-institutions-checks.py",
         replaced="check_classification",
         summary=LIST_SUMMARY,
         checks=54,
-        imports=NUMPY,
+        imports=("numpy", "pydantic"),
         passed="\n54 checks executed\nall checks passed\n",
     ),
     NumericalCheck(
         module=statement_analysis,
-        script=None,
         replaced="check_leases",
         summary=JOINED_SUMMARY,
         checks=138,
@@ -1179,7 +1087,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=fixed_income_portfolio,
-        script=None,
         replaced="check_indexes",
         summary=COUNTED_SUMMARY,
         checks=40,
@@ -1187,7 +1094,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=forward_swap_valuation,
-        script=None,
         replaced="check_option_payoffs",
         summary=JOINED_SUMMARY,
         checks=69,
@@ -1195,7 +1101,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=inference_simulation,
-        script=None,
         replaced="check_discretisation",
         summary=JOINED_SUMMARY,
         checks=52,
@@ -1203,7 +1108,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=institutional_portfolios,
-        script=None,
         replaced="check_endowment",
         summary=LIST_SUMMARY,
         checks=28,
@@ -1212,7 +1116,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=investment_planning,
-        script=None,
         replaced="check_behaviour",
         summary=JOINED_SUMMARY,
         checks=41,
@@ -1220,7 +1123,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=macro_policy_trade,
-        script=None,
         replaced="check_trade",
         summary=COUNTED_SUMMARY,
         checks=25,
@@ -1228,7 +1130,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=market_risk_measurement,
-        script=None,
         replaced="check_sensitivity_scenarios",
         summary=JOINED_SUMMARY,
         checks=27,
@@ -1236,7 +1137,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=order_flow,
-        script=None,
         replaced="check_trade_signing",
         summary="\nBAD forced failure\n",
         checks=0,
@@ -1248,21 +1148,17 @@ CHECKS = [
     ),
     NumericalCheck(
         module=order_routing_fragmentation,
-        script=ARTEFACTS
-        / "market-structure-execution-quality"
-        / "order-routing-fragmentation-checks.py",
         replaced="check_learner",
         summary="\nBAD forced failure\n",
         checks=0,
         line=BAD_ONLY_LINE,
         forced=forced_condition_failure,
-        imports=SCIPY_STATS,
+        imports=("numpy", "scipy.stats", "pydantic"),
         passed="",
         stand_ins={"check_learner": no_conditions},
     ),
     NumericalCheck(
         module=macro_pricing_risk,
-        script=None,
         replaced="check_duration",
         summary="\nBAD forced failure\n",
         checks=0,
@@ -1272,7 +1168,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=option_strategies,
-        script=None,
         replaced="check_selection",
         summary=JOINED_SUMMARY,
         checks=31,
@@ -1280,7 +1175,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=option_valuation,
-        script=None,
         replaced="check_greeks",
         summary=JOINED_SUMMARY,
         checks=44,
@@ -1288,7 +1182,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=performance_evaluation,
-        script=None,
         replaced="check_skill",
         summary=JOINED_SUMMARY,
         checks=41,
@@ -1296,7 +1189,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=kelly_growth,
-        script=None,
         replaced="check_levered_ruin",
         summary=JOINED_SUMMARY,
         checks=23,
@@ -1305,7 +1197,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=mean_cvar,
-        script=None,
         replaced="check_mean_variance",
         summary=JOINED_SUMMARY,
         checks=8,
@@ -1326,7 +1217,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=private_capital,
-        script=None,
         replaced="check_valuation",
         summary=LIST_SUMMARY,
         checks=38,
@@ -1335,7 +1225,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=private_wealth,
-        script=None,
         replaced="check_residence",
         summary=LIST_SUMMARY,
         checks=59,
@@ -1344,7 +1233,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=rate_tree_embedded_options,
-        script=None,
         replaced="check_paths",
         summary=COUNTED_SUMMARY,
         checks=46,
@@ -1352,7 +1240,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=real_assets,
-        script=None,
         replaced="check_reit",
         summary=LIST_SUMMARY,
         checks=37,
@@ -1361,7 +1248,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=strategic_asset_allocation,
-        script=None,
         replaced="check_goals_heuristics",
         summary=JOINED_SUMMARY,
         checks=40,
@@ -1369,7 +1255,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=fx_panel_inference,
-        script=None,
         replaced="check_empty_months",
         summary="FAIL  forced failure: forced\n",
         checks=11,
@@ -1381,7 +1266,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=linear_regression,
-        script=None,
         replaced="check_functional_forms",
         summary=JOINED_SUMMARY,
         checks=44,
@@ -1398,7 +1282,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=scenario_simulation,
-        script=None,
         replaced="check_sensitivities",
         summary=LIST_SUMMARY,
         checks=10,
@@ -1408,7 +1291,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=multiple_regression,
-        script=None,
         replaced="check_extensions",
         summary=LIST_SUMMARY,
         checks=24,
@@ -1426,7 +1308,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=time_series,
-        script=None,
         replaced="check_model_selection",
         summary=LIST_SUMMARY,
         checks=36,
@@ -1448,7 +1329,6 @@ CHECKS = [
     # It reads its data file and a compendium figure below the repository root.
     NumericalCheck(
         module=portfolio_choice,
-        script=None,
         replaced="check_risk_aversion",
         summary=JOINED_SUMMARY,
         checks=50,
@@ -1457,7 +1337,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=corporate_finance,
-        script=None,
         replaced="check_payout_policy",
         summary=JOINED_SUMMARY,
         checks=75,
@@ -1466,7 +1345,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=equity_valuation,
-        script=None,
         replaced="check_momentum",
         summary=JOINED_SUMMARY,
         checks=72,
@@ -1475,7 +1353,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=equity_fcf_ri_private,
-        script=None,
         replaced="check_normalised_earnings",
         summary=JOINED_SUMMARY,
         checks=57,
@@ -1484,7 +1361,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=regime_checks,
-        script=None,
         replaced="check_results",
         summary=LIST_SUMMARY,
         checks=13,
@@ -1493,7 +1369,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=carry_market_statistics_checks,
-        script=None,
         replaced="check_make_take",
         summary="\nFAILURES: ['forced failure']\n",
         checks=40,
@@ -1503,7 +1378,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=convexity_curve_signals_checks,
-        script=None,
         replaced="check_stops",
         summary="\nBAD forced failure\n",
         checks=0,
@@ -1515,7 +1389,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=energy_checks,
-        script=None,
         replaced="check_report_availability",
         summary=LIST_SUMMARY,
         checks=22,
@@ -1524,7 +1397,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=fx_checks,
-        script=None,
         replaced="check_eligibility_and_training",
         summary=LIST_SUMMARY,
         checks=15,
@@ -1533,7 +1405,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=return_predictability_checks,
-        script=None,
         replaced="check_timing",
         summary="\n48 checks executed\nFAILED: ['forced failure']\n",
         checks=47,
@@ -1543,7 +1414,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=forecast_combination_scoring_checks,
-        script=None,
         replaced="check_biased_errors",
         summary="\n65 checks, 1 failed\nFAILED: forced failure\n",
         checks=64,
@@ -1553,7 +1423,6 @@ CHECKS = [
     ),
     NumericalCheck(
         module=conditional_predictive_ability_checks,
-        script=None,
         replaced="check_methods",
         summary=JOINED_SUMMARY,
         checks=53,
@@ -1568,31 +1437,26 @@ CHECKS = [
 DEMONSTRATIONS = [
     Demonstration(
         module=cartea_jaimungal,
-        script=None,
         imports=("pydantic",),
         lines=22,
     ),
     Demonstration(
         module=negative_hedge_ratio,
-        script=ARTEFACTS / "volatility-options" / "negative-hedge-ratio-check.py",
         lines=6,
-        imports=NUMPY,
+        imports=("numpy", "pydantic"),
     ),
     Demonstration(
         module=yield_shift,
-        script=None,
         lines=9,
         imports=("numpy", "scipy.optimize", "pydantic"),
     ),
     Demonstration(
         module=financial_labels,
-        script=None,
         lines=39,
         imports=("numpy", "pydantic"),
     ),
     Demonstration(
         module=afml,
-        script=None,
         lines=84,
         imports=(
             "numpy",
@@ -1798,7 +1662,7 @@ SUPPORT: dict[str, tuple[str, ...]] = {
     "trading_notes.numerical.portfolio_moments.scenario_moments": ("numpy", "pydantic"),
     "trading_notes.numerical.rate_swaps_clearing": (),
     "trading_notes.numerical.rate_swaps_clearing.fra_valuation": ("pydantic",),
-    "trading_notes.numerical.records": ("pydantic",),
+    "trading_notes.records": ("pydantic",),
     "trading_notes.numerical.regression": (),
     "trading_notes.numerical.regression.simple_regression": ("numpy", "scipy.stats", "pydantic"),
     "trading_notes.numerical.report": (),
@@ -1975,6 +1839,39 @@ SUPPORT: dict[str, tuple[str, ...]] = {
     "trading_notes.numerical.wealth_preservation.us_income_tax": ("pydantic",),
     "trading_notes.numerical.private_wealth_management": (),
     "trading_notes.numerical.internal_rate": ("numpy", "scipy.optimize"),
+    "trading_notes.numerical.point_in_time_data": (),
+    "trading_notes.numerical.point_in_time_data.split_history": ("pydantic",),
+    "trading_notes.numerical.point_in_time_data.edgar_filings": ("pydantic",),
+    "trading_notes.numerical.crowding_contagion": (),
+    "trading_notes.numerical.crowding_contagion.liquidity_spiral": ("pydantic",),
+    "trading_notes.numerical.futures_hedging": (),
+    "trading_notes.numerical.futures_hedging.hedge_ratio": ("numpy", "pydantic"),
+    "trading_notes.numerical.numerical_methods": (),
+    "trading_notes.numerical.numerical_methods.least_squares_monte_carlo": ("numpy", "pydantic"),
+    "trading_notes.numerical.numerical_methods.put_pricing": (
+        "numpy",
+        "scipy.linalg",
+        "scipy.stats",
+        "pydantic",
+    ),
+    "trading_notes.numerical.trading_controls": (),
+    "trading_notes.numerical.trading_controls.order_state": ("pydantic",),
+    "trading_notes.numerical.order_books.order_instructions": ("pydantic",),
+    "trading_notes.numerical.dark_trading_fragmentation": (),
+    "trading_notes.numerical.dark_trading_fragmentation.venue_shares": ("numpy", "pydantic"),
+    "trading_notes.numerical.smart_order_routing": (),
+    "trading_notes.numerical.smart_order_routing.venue_allocation": ("numpy", "pydantic"),
+    "trading_notes.numerical.financial_mathematics": (),
+    "trading_notes.numerical.time_value": (),
+    "trading_notes.numerical.time_value.cash_flows": ("pydantic",),
+    "trading_notes.numerical.financial_statement_analysis": (),
+    "trading_notes.numerical.intercorporate_investments": (),
+    "trading_notes.numerical.intercorporate_investments.investment_classification": ("pydantic",),
+    "trading_notes.numerical.foreign_currency_reporting": (),
+    "trading_notes.numerical.foreign_currency_reporting.translation": ("pydantic",),
+    "trading_notes.numerical.financial_institution_analysis": (),
+    "trading_notes.numerical.financial_institution_analysis.institution_ratios": ("pydantic",),
+    "trading_notes.numerical.financial_institution_analysis.life_insurance": ("numpy", "pydantic"),
 }
 
 
@@ -2142,7 +2039,6 @@ def full_run_command(example: NumericalCheck | Demonstration) -> list[str]:
         "-c",
         HARNESS,
         example.module.__name__,
-        str(example.script or ""),
         *args,
     ]
 
@@ -2222,9 +2118,9 @@ class NumericalChecks(unittest.TestCase):
         """One isolated, real run of each example's entrypoint checks a clean pass.
 
         Each example runs once as the main program, `python -I -W error`, from an unrelated
-        folder: the module through runpy as `python -m` runs it, or its forwarding script while
-        it has one. A check must exit 0 with every check line ok, its number of check lines and
-        its success summary; a demonstration exits 0 with its number of lines. The shared
+        folder: the module through runpy as `python -m` runs it. A check must exit 0 with every
+        check line ok, its number of check lines and its success summary; a demonstration exits
+        0 with its number of lines. The shared
         generators start seeded and holding cached Gaussians, unlike a fresh process, and must
         be left exactly as found, with NumPy's print options and error handling; nothing may be
         written to the working folder.
@@ -2245,8 +2141,8 @@ class NumericalChecks(unittest.TestCase):
     def test_entrypoints_exit_with_the_status_of_main(self) -> None:
         """Each entrypoint passes main()'s status to sys.exit, so a failure reaches the shell.
 
-        The module's own `if __name__ == "__main__":` block, and the forwarding script while
-        there is one, are executed with `main` answered by a stand-in returning 0, then 1.
+        The module's own `if __name__ == "__main__":` block is executed with `main` answered by
+        a stand-in returning 0, then 1.
         """
         for example in EXAMPLES:
             guard = main_guard(example.module)
@@ -2258,14 +2154,6 @@ class NumericalChecks(unittest.TestCase):
                     }
                     with self.assertRaises(SystemExit) as stop:
                         exec(guard, namespace)
-                    self.assertEqual(stop.exception.code, status)
-                    if example.script is None:
-                        continue
-                    with (
-                        mock.patch.object(example.module, "main", answering(status)),
-                        self.assertRaises(SystemExit) as stop,
-                    ):
-                        runpy.run_path(str(example.script), run_name="__main__")
                     self.assertEqual(stop.exception.code, status)
 
     def test_every_package_module_is_covered(self) -> None:
@@ -2281,19 +2169,8 @@ class NumericalChecks(unittest.TestCase):
         self.assertEqual(checks & demonstrations, set())
         self.assertEqual(len(checks) + len(demonstrations), len(EXAMPLES))
         listed = checks | demonstrations | set(SUPPORT)
-        self.assertEqual(found, listed - {"trading_notes", "trading_notes.numerical"})
-
-    def test_every_forwarding_script_is_listed(self) -> None:
-        """Each artefact script that forwards to the package is an example's `script`.
-
-        `make examples` skips these scripts because the single run here covers them.
-        """
-        forwarding = {
-            script
-            for script in ARTEFACTS.glob("*/*check*.py")
-            if re.search(r"^from trading_notes\.numerical", script.read_text(), re.M)
-        }
-        self.assertEqual(forwarding, {e.script for e in EXAMPLES if e.script is not None})
+        outside = {"trading_notes", "trading_notes.records", "trading_notes.numerical"}
+        self.assertEqual(found, listed - outside)
 
     def test_imports_have_no_side_effects(self) -> None:
         """Importing a module alone prints nothing, reads no data and runs no example.
@@ -2320,7 +2197,7 @@ class NumericalChecks(unittest.TestCase):
             # The standard-library and NumPy modules stay held to opening nothing at all, and
             # no dependency's own reads reach the notes, where the research data is kept.
             self.assertEqual(allowed[NUMPY], frozenset())
-            notes = ARTEFACTS.parent
+            notes = ROOT / "notes"
             self.assertFalse(
                 [p for r in allowed.values() for p in r if Path(p).is_relative_to(notes)]
             )
@@ -2411,9 +2288,7 @@ def synthetic_example(
         return status(report)
 
     vars(module).update(check_value=check_value, main=main)
-    return NumericalCheck(
-        module=module, script=None, replaced="check_value", summary=JOINED_SUMMARY, checks=1
-    )
+    return NumericalCheck(module=module, replaced="check_value", summary=JOINED_SUMMARY, checks=1)
 
 
 class VerifiersRejectBrokenExamples(unittest.TestCase):
@@ -2504,23 +2379,7 @@ class CashFlowLinkage(unittest.TestCase):
 
 
 class RootFinders(unittest.TestCase):
-    """The two bisection routines keep their different contracts."""
-
-    def test_time_value_bisect_rejects_bad_brackets(self) -> None:
-        """Bad brackets raise ValueError with their own message, before any iteration."""
-        bisect = time_value_returns.bisect
-        with self.assertRaisesRegex(ValueError, r"^bracket needs lo < hi$"):
-            bisect(lambda x: x, 1.0, 1.0)
-        with self.assertRaisesRegex(ValueError, r"^ends of the bracket have the same sign$"):
-            bisect(lambda x: x, 1.0, 2.0)
-
-    def test_time_value_bisect_returns_exact_roots_and_midpoints(self) -> None:
-        """Exact roots at an end or a midpoint return as they are; otherwise n halvings."""
-        bisect = time_value_returns.bisect
-        self.assertEqual(bisect(lambda x: x - 0.5, 0.0, 1.0), 0.5)
-        self.assertEqual(bisect(lambda x: x, 0.0, 1.0), 0.0)
-        self.assertEqual(bisect(lambda x: x - 0.3, 0.0, 1.0, n=0), 0.5)
-        self.assertEqual(bisect(lambda x: x - 0.3, 0.0, 1.0, n=1), 0.25)
+    """The implied-volatility bisection keeps its own contract."""
 
     def test_implied_volatility_does_not_validate_its_bracket(self) -> None:
         """A price beyond the bracket returns about the nearer end instead of raising."""
@@ -2528,138 +2387,6 @@ class RootFinders(unittest.TestCase):
         high = bsm_svi.bs(case.S, case.K, case.r, case.q, 9.0, case.T)
         iv = bsm_svi.implied(high, case.S, case.K, case.r, case.q, case.T)
         self.assertAlmostEqual(iv, 5.0, places=9)
-
-
-D = dt.date
-OPEN = D(9999, 12, 31)
-
-
-def corrected_history() -> bitemporal.SplitHistory:
-    """Return the example's history: a 2-for-1 split recorded on 3 March, corrected on 20 March."""
-    history = bitemporal.SplitHistory(
-        [bitemporal.SplitRow(D(2000, 1, 1), OPEN, D(2000, 1, 1), OPEN, 1.0)]
-    )
-    history.record(D(2026, 3, 3), D(2026, 3, 2), 2.0)
-    history.record(D(2026, 3, 20), D(2026, 3, 2), 1.5)
-    return history
-
-
-class BitemporalHistory(unittest.TestCase):
-    """A split history is append-only, inclusive at its boundaries and owned by one instance."""
-
-    def test_correction_closes_and_appends_rows(self) -> None:
-        """Both records leave every earlier row, closed or replaced, in lookup order."""
-        row = bitemporal.SplitRow
-        self.assertEqual(
-            corrected_history().rows,
-            (
-                row(D(2000, 1, 1), D(2026, 3, 2), D(2000, 1, 1), OPEN, 1.0),  # seed, closed
-                row(D(2026, 3, 3), OPEN, D(2000, 1, 1), D(2026, 3, 1), 1.0),  # pre-split remainder
-                row(D(2026, 3, 3), D(2026, 3, 19), D(2026, 3, 2), OPEN, 2.0),  # first entry, closed
-                row(D(2026, 3, 20), OPEN, D(2026, 3, 2), OPEN, 1.5),  # correction
-            ),
-        )
-
-    def test_boundaries_are_inclusive(self) -> None:
-        """Record and actual ranges include both ends, the sentinel date included."""
-        factor = corrected_history().factor_at
-        self.assertEqual(factor(D(2026, 3, 5), D(2026, 3, 2)), 1.0)
-        self.assertEqual(factor(D(2026, 3, 5), D(2026, 3, 3)), 2.0)
-        self.assertEqual(factor(D(2026, 3, 5), D(2026, 3, 19)), 2.0)
-        self.assertEqual(factor(D(2026, 3, 5), D(2026, 3, 20)), 1.5)
-        self.assertEqual(factor(D(2026, 3, 1), D(2026, 10, 17)), 1.0)
-        self.assertEqual(factor(D(2026, 3, 2), D(2026, 10, 17)), 1.5)
-        self.assertEqual(factor(OPEN, OPEN), 1.5)
-
-    def test_no_matching_row_gives_no_split(self) -> None:
-        """Dates outside every row, or an empty history, give the factor 1.0."""
-        self.assertEqual(bitemporal.SplitHistory().factor_at(D(2026, 3, 5), D(2026, 10, 17)), 1.0)
-        self.assertEqual(corrected_history().factor_at(D(1999, 12, 31), D(2026, 10, 17)), 1.0)
-        self.assertEqual(corrected_history().factor_at(D(2026, 3, 5), D(1999, 12, 31)), 1.0)
-
-    def test_instances_do_not_share_history(self) -> None:
-        """Recording into one history changes neither another nor the rows it started from."""
-        seed = [bitemporal.SplitRow(D(2000, 1, 1), OPEN, D(2000, 1, 1), OPEN, 1.0)]
-        first, second = bitemporal.SplitHistory(seed), bitemporal.SplitHistory(seed)
-        first.record(D(2026, 3, 3), D(2026, 3, 2), 2.0)
-        self.assertEqual(len(first.rows), 3)
-        self.assertEqual(second.rows, tuple(seed))
-        self.assertEqual(len(seed), 1)
-        self.assertEqual(bitemporal.SplitHistory().rows, ())
-
-
-class FilingTimestamps(unittest.TestCase):
-    """Availability is recorded or unknown; the deemed filing date and lower bound stay apart."""
-
-    def test_unknown_availability_stays_none(self) -> None:
-        """Without recorded times availability is None, whatever else the record holds."""
-        record = filing_timestamps.FilingRecord(
-            "10-K", dt.datetime(2026, 11, 19, 18, 0), period=D(2026, 9, 30)
-        )
-        self.assertIsNone(filing_timestamps.available_at(record))
-        self.assertEqual(filing_timestamps.not_before(record), dt.datetime(2026, 11, 20, 6, 0))
-
-    def test_dissemination_takes_precedence(self) -> None:
-        """A recorded dissemination wins even over an earlier first observation."""
-        both = filing_timestamps.FilingRecord(
-            "10-K",
-            dt.datetime(2026, 11, 19, 9, 0),
-            disseminated=dt.datetime(2026, 11, 19, 9, 30),
-            first_observed=dt.datetime(2026, 11, 19, 9, 10),
-        )
-        seen = replace(both, disseminated=None)
-        self.assertEqual(filing_timestamps.available_at(both), dt.datetime(2026, 11, 19, 9, 30))
-        self.assertEqual(filing_timestamps.available_at(seen), dt.datetime(2026, 11, 19, 9, 10))
-
-    def test_cutoffs_are_inclusive(self) -> None:
-        """A start at 17:30 (22:00 for late forms) is filed that day; a second later is not."""
-        filed = filing_timestamps.filing_date
-        self.assertEqual(filed("10-K", dt.datetime(2026, 11, 19, 17, 30)), D(2026, 11, 19))
-        self.assertEqual(filed("10-K", dt.datetime(2026, 11, 19, 17, 30, 1)), D(2026, 11, 20))
-        self.assertEqual(filed("4/A", dt.datetime(2026, 11, 19, 22, 0)), D(2026, 11, 19))
-        self.assertEqual(filed("4/A", dt.datetime(2026, 11, 19, 22, 0, 1)), D(2026, 11, 20))
-        bound = filing_timestamps.not_before
-        at_cutoff = filing_timestamps.FilingRecord("10-K", dt.datetime(2026, 11, 19, 17, 30))
-        self.assertEqual(bound(at_cutoff), at_cutoff.accepted)
-        late = replace(at_cutoff, accepted=dt.datetime(2026, 11, 19, 17, 30, 1))
-        self.assertEqual(bound(late), dt.datetime(2026, 11, 20, 6, 0))
-
-    def test_amendments_follow_their_base_form(self) -> None:
-        """An /A form takes its base form's cutoff and dissemination treatment."""
-        bound = filing_timestamps.not_before
-        f4a = filing_timestamps.FilingRecord("4/A", dt.datetime(2026, 11, 19, 19, 0))
-        tenka = filing_timestamps.FilingRecord("10-K/A", dt.datetime(2026, 11, 19, 19, 0))
-        self.assertEqual(bound(f4a), f4a.accepted)
-        self.assertEqual(bound(tenka), dt.datetime(2026, 11, 20, 6, 0))
-
-    def test_non_business_days(self) -> None:
-        """A weekend start is filed the next business day; the fixed holidays are skipped."""
-        filed = filing_timestamps.filing_date
-        self.assertEqual(filed("10-K", dt.datetime(2026, 11, 21, 9, 0)), D(2026, 11, 23))
-        self.assertEqual(filing_timestamps.next_business_day(D(2026, 12, 24)), D(2026, 12, 28))
-
-
-class FilingDeadlines(unittest.TestCase):
-    """The computed federal-holiday calendar of the deadline example."""
-
-    def test_observed_fixed_date_holidays(self) -> None:
-        """A Saturday holiday is observed on Friday, a Sunday one on Monday."""
-        self.assertIn(D(2026, 7, 3), filing_deadlines.holidays(2026))
-        self.assertNotIn(D(2026, 7, 4), filing_deadlines.holidays(2026))
-        self.assertIn(D(2027, 7, 5), filing_deadlines.holidays(2027))
-        self.assertIn(D(2027, 12, 24), filing_deadlines.holidays(2027))
-        self.assertEqual(len(filing_deadlines.holidays(2026)), 11)
-
-    def test_last_weekday_including_december(self) -> None:
-        """The last Monday of May and of December (the year-end branch)."""
-        self.assertEqual(filing_deadlines.last_weekday(2026, 5, 0), D(2026, 5, 25))
-        self.assertEqual(filing_deadlines.last_weekday(2026, 12, 0), D(2026, 12, 28))
-
-    def test_business_day_steps(self) -> None:
-        """A business day rolls to itself; add_bd skips a holiday and counts from the next day."""
-        self.assertEqual(filing_deadlines.roll(D(2026, 11, 16)), D(2026, 11, 16))
-        self.assertEqual(filing_deadlines.add_bd(D(2026, 11, 10), 1), D(2026, 11, 12))
-        self.assertEqual(filing_deadlines.add_bd(D(2026, 11, 10), 0), D(2026, 11, 10))
 
 
 class FundingReporting(unittest.TestCase):
@@ -2738,39 +2465,6 @@ class PerpetualFunding(unittest.TestCase):
     def test_premium_rate_is_in_percent(self) -> None:
         """A mark 0.075% over the index gives 0.075, not 0.00075."""
         self.assertAlmostEqual(funding_rates.premium_rate(100_075, 100_000), 0.075, places=12)
-
-
-class MarginSpiral(unittest.TestCase):
-    """The loop series is summed independently of the closed form it is checked against."""
-
-    def test_series_and_closed_form_are_independent(self) -> None:
-        """Both give 1/(k - l) = 2 at k = 1, l = 0.5; a wrong closed form fails the check."""
-        self.assertEqual(margin_spiral.price_response(1.0, 0.5), 2.0)
-        self.assertAlmostEqual(margin_spiral.series_response(1.0, 0.5), 2.0, places=12)
-        self.assertEqual(margin_spiral.loop_strengths(), (1.0, 0.2, 0.3))
-
-        def wrong(k: float, ell: float) -> float:
-            return 1 / (k - ell) + 1e-9
-
-        report = CheckReport()
-        with contextlib.redirect_stdout(io.StringIO()):
-            with mock.patch.object(margin_spiral, "price_response", wrong):
-                margin_spiral.check_series(report)
-        self.assertEqual(report.failures, ["series = closed form (2.000000 vs 2.000000)"])
-
-    def test_negative_loss_loop_is_not_super_additive(self) -> None:
-        """With x0 < 0 the loss loop dampens, and the joint extra falls below the sum."""
-        report = CheckReport()
-        with contextlib.redirect_stdout(io.StringIO()):
-            with mock.patch.object(margin_spiral, "X0", -0.3):
-                margin_spiral.check_amplification(report)
-        self.assertEqual(
-            report.failures,
-            [
-                "loss spiral amplifies: 0.7692 > 1.0000",
-                "joint extra -0.0909 > sum of separate extras 0.0192",
-            ],
-        )
 
 
 class CmeAllocation(unittest.TestCase):

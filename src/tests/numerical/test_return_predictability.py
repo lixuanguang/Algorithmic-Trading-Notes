@@ -1,11 +1,8 @@
-"""Tests of the labelled table's boundaries and the scoring-rule forecast records.
+"""Tests of the labelled table's boundaries and the scoring-rule forecast records."""
 
-The examples' full runs are tested in test_checks.py. These pin down the shift and
-first-valid boundaries of the table, and the scoring rules against hand-computed values,
-the quadrature reference and their scalar and array return types.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The examples' full runs are tested in test_checks.py. These pin down the shift and first-valid
+# boundaries of the table, and the scoring rules against hand-computed values, the quadrature
+# reference and their scalar and array return types.
 
 import math
 import unittest

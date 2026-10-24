@@ -6,7 +6,7 @@ import numpy as np
 from numpy.typing import NDArray
 from scipy import stats
 
-from trading_notes.numerical.records import MutableRecord, Record
+from trading_notes.records import MutableRecord, Record
 
 type Floats = NDArray[np.float64]
 

@@ -31,7 +31,7 @@ Both partly checked 2026-10-15, draft; human review outstanding.
 
 derivatives and hedging review follow-up, 2026-10-16: `def:futures-hedge-basis` now names the two cross-hedge basis components (the futures-underlying basis $S_2^*-F_2$ and the asset difference $S_2-S_2^*$, Hull p. 77), states that $F_1+b_2$ and the decomposition assume a hedge ratio of 1.0 (p. 79), and adds the derived general expression $S_2+h(F_1-F_2)$ with its units.
 
-Changed in the financial data and labels review follow-up, 2026-10-16: `def:futures-hedge-basis` and `mod:minimum-variance-hedge-ratio` no longer say a negative $h$ adds exposure: with $\operatorname{Cov}(\Delta S,\Delta F)<0$ the minimum-variance $h^*$ is negative (a long futures position against a long exposure) and reduces variance; checked in `notes/artefacts/volatility-options/negative-hedge-ratio-check.py`.
+Changed in the financial data and labels review follow-up, 2026-10-16: `def:futures-hedge-basis` and `mod:minimum-variance-hedge-ratio` no longer say a negative $h$ adds exposure: with $\operatorname{Cov}(\Delta S,\Delta F)<0$ the minimum-variance $h^*$ is negative (a long futures position against a long exposure) and reduces variance; checked in `trading_notes.numerical.futures_hedging.negative_hedge_ratio_checks`.
 
 ## Source verification after macro markets and pricing review
 

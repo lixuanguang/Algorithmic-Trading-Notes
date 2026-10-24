@@ -3,7 +3,7 @@
 import math
 from collections.abc import Sequence
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 def mod_dietz(bmv: float, emv: float, flows: Sequence[tuple[float, float]]) -> float:

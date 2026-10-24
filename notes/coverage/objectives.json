@@ -1037,7 +1037,7 @@
     "entry_evidence": [
      "def:return-measures"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (price, income and total return; arithmetic against geometric mean)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (price, income and total return; arithmetic against geometric mean)"
    },
    "supersedes": null
   },
@@ -1090,7 +1090,7 @@
     "entry_evidence": [
      "def:required-return-components"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (exact and approximate Fisher; additive premia)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (exact and approximate Fisher; additive premia)"
    },
    "supersedes": null
   },
@@ -1137,7 +1137,7 @@
     "entry_evidence": [
      "def:return-measures"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (total return, index, means, net of fees) and the existing Practice figures (annualised, real, leveraged returns)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (total return, index, means, net of fees) and the existing Practice figures (annualised, real, leveraged returns)"
    },
    "supersedes": null
   },
@@ -1265,7 +1265,7 @@
     "entry_evidence": [
      "def:time-value-compounding"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (compound against simple interest; solving for rate and periods; monthly, semiannual, quarterly, continuous and money-market conversions)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (compound against simple interest; solving for rate and periods; monthly, semiannual, quarterly, continuous and money-market conversions)"
    },
    "supersedes": null
   },
@@ -1303,7 +1303,7 @@
     "entry_evidence": [
      "meth:cash-flow-streams"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (formula against summation; annuity due, including zero and negative rates; perpetuity timing; growing annuity and the r = g case; effective against nominal monthly rates)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (formula against summation; annuity due, including zero and negative rates; perpetuity timing; growing annuity and the r = g case; effective against nominal monthly rates)"
    },
    "supersedes": null
   },
@@ -1340,7 +1340,7 @@
     "entry_evidence": [
      "meth:loan-amortisation"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (four-year schedule, prospective and retrospective balances, zero-rate schedule and limits, the OpenStax auto loan recomputed)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (four-year schedule, prospective and retrospective balances, zero-rate schedule and limits, the OpenStax auto loan recomputed)"
    },
    "supersedes": null
   },
@@ -1378,7 +1378,7 @@
     "entry_evidence": [
      "meth:internal-rate-of-return"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (bisection and Newton; invalid brackets and endpoint roots; two IRRs; a double root without a crossing; no IRR; borrowing; scale and crossover rate)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (bisection and Newton; invalid brackets and endpoint roots; two IRRs; a double root without a crossing; no IRR; borrowing; scale and crossover rate)"
    },
    "supersedes": null
   },
@@ -1418,7 +1418,7 @@
     "entry_evidence": [
      "meth:instrument-present-value"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (zero, coupon bond at a yield and at zero rates, preferred, constant and two-stage growth)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (zero, coupon bond at a yield and at zero rates, preferred, constant and two-stage growth)"
    },
    "supersedes": null
   },
@@ -1458,7 +1458,7 @@
     "entry_evidence": [
      "meth:instrument-present-value"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (yield 5.7447 percent by bisection; implied return 9 percent; implied growth 4.9630 percent, closed form and bisection)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (yield 5.7447 percent by bisection; implied return 9 percent; implied growth 4.9630 percent, closed form and bisection)"
    },
    "supersedes": null
   },
@@ -1494,7 +1494,7 @@
     "entry_evidence": [
      "res:cash-flow-additivity"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (forward rate lock-in ledger; dividend-paying share forward ledger; covered FX ledger; call and put replication and parity)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (forward rate lock-in ledger; dividend-paying share forward ledger; covered FX ledger; call and put replication and parity)"
    },
    "supersedes": null
   },
@@ -5727,7 +5727,7 @@
     "entry_evidence": [
      "def:return-measures"
     ],
-    "example": "notes/artefacts/time-value-returns/time-value-return-checks.py (price return 8.0, total return 10.4 percent; total-return index 107.0588)"
+    "example": "trading_notes.numerical.financial_mathematics.time_value_returns_checks (price return 8.0, total return 10.4 percent; total-return index 107.0588)"
    },
    "supersedes": null
   },
@@ -8821,7 +8821,7 @@
     "entry_evidence": [
      "res:campbell-shiller-identity"
     ],
-    "example": "trading_notes.numerical.return_predictability.return_predictability_checks part A, as corrected in the audit of 2026-10-22 (exact identity on annual S&P 500 data 1872-2025 with a return built from Index and D12, the CRSP mismatch reported separately; Taylor remainder non-negative and bounded; nominal variance ratios 0.00021 and 0.00077 at the mean-pd point, 0.00089 and 0.00728 at the working-paper point; forward iteration with the terminal term; b_r - b_d + rho phi = 1 + b_eps for 1927-2004 and 1872-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by goyal_extract.py"
+    "example": "trading_notes.numerical.return_predictability.return_predictability_checks part A, as corrected in the audit of 2026-10-22 (exact identity on annual S&P 500 data 1872-2025 with a return built from Index and D12, the CRSP mismatch reported separately; Taylor remainder non-negative and bounded; nominal variance ratios 0.00021 and 0.00077 at the mean-pd point, 0.00089 and 0.00728 at the working-paper point; forward iteration with the terminal term; b_r - b_d + rho phi = 1 + b_eps for 1927-2004 and 1872-2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by trading_notes.research.return_predictability.goyal_extract"
    },
    "supersedes": null
   },
@@ -8878,7 +8878,7 @@
     "entry_evidence": [
      "meth:nested-forecast-tests"
     ],
-    "example": "trading_notes.numerical.return_predictability.return_predictability_checks part B (hand example and statistic identities; timing; Monte Carlo of Clark and West's DGP 1, seed 20261022, 5,000 replications, compared with both simulations' errors; audit investigation in the source's design, seed 20261104, 20,000 replications, gap at P = 120 unresolved; Welch and Goyal's annual d/p row; start-date sensitivity to 2005 and 2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by goyal_extract.py"
+    "example": "trading_notes.numerical.return_predictability.return_predictability_checks part B (hand example and statistic identities; timing; Monte Carlo of Clark and West's DGP 1, seed 20261022, 5,000 replications, compared with both simulations' errors; audit investigation in the source's design, seed 20261104, 20,000 replications, gap at P = 120 unresolved; Welch and Goyal's annual d/p row; start-date sensitivity to 2005 and 2025); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by trading_notes.research.return_predictability.goyal_extract"
    },
    "supersedes": null
   },
@@ -8920,7 +8920,7 @@
     "entry_evidence": [
      "meth:restricted-forecast-value"
     ],
-    "example": "trading_notes.numerical.return_predictability.return_predictability_checks part C (hand example; Campbell and Thompson's monthly d/p row 1927-2003 and to 2025; synthetic C4 and post-run supplement C5, seeds 20261023 and 20261024); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by goyal_extract.py"
+    "example": "trading_notes.numerical.return_predictability.return_predictability_checks part C (hand example; Campbell and Thompson's monthly d/p row 1927-2003 and to 2025; synthetic C4 and post-run supplement C5, seeds 20261023 and 20261024); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by trading_notes.research.return_predictability.goyal_extract"
    },
    "supersedes": null
   },
@@ -8983,7 +8983,7 @@
      "meth:proper-scoring-rules",
      "meth:conditional-predictive-ability"
     ],
-    "example": "trading_notes.numerical.return_predictability.forecast_combination_scoring_checks parts F and S under forecast-combination-scoring-protocol.md (annual equal-weight combination of dp, ep, tms and dfy, 1947-2025 and 1947-2005, fixed before the first run; error and ambiguity identities; equicorrelated floor, seed 20261105; hand scoring example with CRPS by closed form, quadrature and Monte Carlo, seed 20261106; propriety by quadrature; Gneiting and Raftery's Table 2 by simulation, seeds 20261107-20261108; linear pool against an averaged point forecast); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5, SciPy 1.18.1; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by goyal_extract_predictors.py; trading_notes.numerical.return_predictability.conditional_predictive_ability_checks under conditional-predictive-ability-protocol.md (Wald statistic validated by exact arithmetic and n R^2; simulations of forecasting methods with derived nulls, seeds 20261109-20261115; fixed 20-year rolling window on the annual log equity premium with squared-error and Gaussian-CRPS loss differences, unconditional and conditional tests; same data file and environment)"
+    "example": "trading_notes.numerical.return_predictability.forecast_combination_scoring_checks parts F and S under forecast-combination-scoring-protocol.md (annual equal-weight combination of dp, ep, tms and dfy, 1947-2025 and 1947-2005, fixed before the first run; error and ambiguity identities; equicorrelated floor, seed 20261105; hand scoring example with CRPS by closed form, quadrature and Monte Carlo, seed 20261106; propriety by quadrature; Gneiting and Raftery's Table 2 by simulation, seeds 20261107-20261108; linear pool against an averaged point forecast); locked uv environment, Python 3.14.7, NumPy 2.4.6, pandas 3.0.5, SciPy 1.18.1; data: Goyal's 2026 workbook (SHA-256 8d210b77...be872), extracted by trading_notes.research.return_predictability.goyal_extract_predictors; trading_notes.numerical.return_predictability.conditional_predictive_ability_checks under conditional-predictive-ability-protocol.md (Wald statistic validated by exact arithmetic and n R^2; simulations of forecasting methods with derived nulls, seeds 20261109-20261115; fixed 20-year rolling window on the annual log equity premium with squared-error and Gaussian-CRPS loss differences, unconditional and conditional tests; same data file and environment)"
    },
    "supersedes": null
   },
@@ -11406,7 +11406,7 @@
     "entry_evidence": [
      "def:intercorporate-investment-classification"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: parts 1-2 (classification cases including a structured entity; equity method 115.8 by two routes; FVPL against FVOCI); Corrected 2026-10-20 (PR #32 audit): control derived from power, returns and link; design and losses alone not determinable; servicer case without power; FAS 167 Example 1; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.financial_statement_analysis.intercorporate_fx_institutions_checks: parts 1-2 (classification cases including a structured entity; equity method 115.8 by two routes; FVPL against FVOCI); Corrected 2026-10-20 (PR #32 audit): control derived from power, returns and link; design and losses alone not determinable; servicer case without power; FAS 167 Example 1; locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11447,7 +11447,7 @@
     "entry_evidence": [
      "meth:consolidation-ratio-effects"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 3 (goodwill 22 or 25; parent profit 105.2 both ways; balance sheet 1,585.0; ratios by method); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.financial_statement_analysis.intercorporate_fx_institutions_checks: part 3 (goodwill 22 or 25; parent profit 105.2 both ways; balance sheet 1,585.0; ratios by method); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11587,7 +11587,7 @@
     "entry_evidence": [
      "def:functional-currency-transactions"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 6 (USD receivable: gain 0.5, loss 0.2, total 0.3); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.financial_statement_analysis.intercorporate_fx_institutions_checks: part 6 (USD receivable: gain 0.5, loss 0.2, total 0.3); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11642,7 +11642,7 @@
     "entry_evidence": [
      "meth:currency-translation-methods"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: parts 4-5 (Subramanyam and Wild's BritCo reproduced; Penrose Inc. current rate against temporal; hyperinflation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.financial_statement_analysis.intercorporate_fx_institutions_checks: parts 4-5 (Subramanyam and Wild's BritCo reproduced; Penrose Inc. current rate against temporal; hyperinflation); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11685,7 +11685,7 @@
     "entry_evidence": [
      "meth:multinational-currency-tax-analysis"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 7 (Larch Brands constant-currency growth 4.75%; ETR 23.08% reconciliation; mix shift 22.77%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.financial_statement_analysis.intercorporate_fx_institutions_checks: part 7 (Larch Brands constant-currency growth 4.75%; ETR 23.08% reconciliation; mix shift 22.77%); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11766,7 +11766,7 @@
     "entry_evidence": [
      "def:financial-institution-features"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 8 (Hull's DLC reproduced: 12% pre-tax ROE; insolvency at 1% equity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; LCR and NSFR dates by jurisdiction verified in library gap-filling Batch L3 (2026-10-21), no numerical change; US NSFR applicability and calibration corrected from 12 CFR 249 in the Batch L3 post-implementation audit correction pass (2026-10-21), no numerical change"
+    "example": "trading_notes.numerical.financial_statement_analysis.intercorporate_fx_institutions_checks: part 8 (Hull's DLC reproduced: 12% pre-tax ROE; insolvency at 1% equity); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0; LCR and NSFR dates by jurisdiction verified in library gap-filling Batch L3 (2026-10-21), no numerical change; US NSFR applicability and calibration corrected from 12 CFR 249 in the Batch L3 post-implementation audit correction pass (2026-10-21), no numerical change"
    },
    "supersedes": null
   },
@@ -11809,7 +11809,7 @@
     "entry_evidence": [
      "meth:bank-camels-analysis"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 8 (Tamar Bank capital, asset quality, earnings, liquidity and repricing-gap ratios against Basel minimums); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.financial_statement_analysis.intercorporate_fx_institutions_checks: part 8 (Tamar Bank capital, asset quality, earnings, liquidity and repricing-gap ratios against Basel minimums); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -11868,7 +11868,7 @@
      "meth:insurer-analysis",
      "meth:life-insurer-analysis"
     ],
-    "example": "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py: part 9 (Hull's Table 3.2 reproduced; Wren combined ratio 97.5% -> 104.9%, development, solvency); part 10, added 2026-10-20 after the PR #32 audit (Linden and Rowan Life: Solvency II rate, longevity, mortality and mass-lapse shocks, SCR aggregation, ratios 191.5% and 156.0%; new business VNB 7.21 against CSM 14.70, and an onerous group at a 15% loading; CNP 2017 reported VNB margin and sensitivities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
+    "example": "trading_notes.numerical.financial_statement_analysis.intercorporate_fx_institutions_checks: part 9 (Hull's Table 3.2 reproduced; Wren combined ratio 97.5% -> 104.9%, development, solvency); part 10, added 2026-10-20 after the PR #32 audit (Linden and Rowan Life: Solvency II rate, longevity, mortality and mass-lapse shocks, SCR aggregation, ratios 191.5% and 156.0%; new business VNB 7.21 against CSM 14.70, and an onerous group at a 15% loading; CNP 2017 reported VNB margin and sensitivities); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1, statsmodels 0.15.0"
    },
    "supersedes": null
   },
@@ -20649,7 +20649,7 @@
     "entry_evidence": [
      "meth:finite-difference-option-pricing"
     ],
-    "example": "notes/artefacts/numerical-pricing/numerical-pricing-checks.py parts 1-2 (European convergence, explicit instability, American put by projected SOR, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.numerical_methods.numerical_pricing_checks parts 1-2 (European convergence, explicit instability, American put by projected SOR, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },
@@ -20688,7 +20688,7 @@
     "entry_evidence": [
      "meth:least-squares-monte-carlo"
     ],
-    "example": "notes/artefacts/numerical-pricing/numerical-pricing-checks.py parts 3-4 (Hull's eight paths; Bermudan put against restricted-exercise trees, out of sample, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
+    "example": "trading_notes.numerical.numerical_methods.numerical_pricing_checks parts 3-4 (Hull's eight paths; Bermudan put against restricted-exercise trees, out of sample, synthetic); locked uv environment, Python 3.14.7, NumPy 2.4.6, SciPy 1.18.1"
    },
    "supersedes": null
   },

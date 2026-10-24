@@ -1,39 +1,12 @@
-r"""Check compendium entries, citation keys, labels and pathway links.
-
-Printed entries require a title, a type-appropriate label, a Statement, and
-known citations with locators. Source-review provenance belongs in
-notes/entry-evidence.json; it is not a required printed field. Pathway notes
-list entry labels under Entries and proposed entries under Entry backlog.
-
-The ordered \qfpart declarations in compendium/compendium.tex are the single
-declaration of compendium Parts and sections. Their keys, titles, order and
-membership must equal the pinned guide's learning_parts. Chapter folders and
-section-overview notes must use a declared section key, and every populated section
-needs its overview note. Specialist pathway notes may also use the guide's
-specialist pathway keys, and a note for one of the guide's retired overviews is a
-compatibility bridge that must name each successor section. Every non-empty topic
-file, including one with only headings or prose, is input exactly once, in declared
-order, from a section wrapper's \input chain, without cycles; equivalent paths name
-one file. Headings below a chapter must not skip a level.
-
-A chapter's title is its guide section's name. Below it, each \section is a guide specialist
-pathway opened by \qfpathway{pathway-key}{Name} in the wrapper: the key must be one of that
-section's pathways in the guide's specialist_order, the name the guide's, each pathway at most
-once and in the guide's relative order, and each with at least one typed entry. A pathway
-without local material is omitted. Every topic file, and so every typed entry, is input
-under a pathway; a chapter may open with brief prose in its wrapper. Topic files hold the
-lower headings (\subsection, \subsubsection) only.
-
-This is a structural check, not a claim or source-verification check.
-"""
+r"""Check compendium entries, citation keys, labels and pathway links."""
 
 import re
 from collections import Counter, defaultdict
 from collections.abc import Collection, Sequence
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Final, TypedDict
 
+from trading_notes.records import Record
 from trading_notes.structure.compendium import (
     ENTRY,
     INPUT,
@@ -84,8 +57,7 @@ class CompendiumReport(TypedDict):
     problems: list[str]
 
 
-@dataclass(frozen=True)
-class NoteListing:
+class NoteListing(Record):
     """What a pathway note lists.
 
     Attributes:
@@ -317,12 +289,37 @@ def list_note_entries(
                 labels |= set(re.findall(LABEL_RE, line))
             elif heading == "entry backlog" and re.match(r"-\s*" + LABEL_RE + ":", line.strip()):
                 stubs += 1
-        listings[key] = NoteListing(frozenset(labels), stubs)
+        listings[key] = NoteListing(labels=frozenset(labels), backlog_stubs=stubs)
     return listings
 
 
 def build_report(root: Path) -> CompendiumReport:
-    """Run every structural check on the repository at root and return the report.
+    r"""Run every structural check on the repository at root and return the report.
+
+    Printed entries require a title, a type-appropriate label, a Statement, and known citations with
+    locators. Source-review provenance belongs in notes/entry-evidence.json; it is not a required
+    printed field. Pathway notes list entry labels under Entries and proposed entries under Entry
+    backlog.
+
+    The ordered \qfpart declarations in compendium/compendium.tex are the single declaration of
+    compendium Parts and sections. Their keys, titles, order and membership must equal the pinned
+    guide's learning_parts. Chapter folders and section-overview notes must use a declared section
+    key, and every populated section needs its overview note. Specialist pathway notes may also use
+    the guide's specialist pathway keys, and a note for one of the guide's retired overviews is a
+    compatibility bridge that must name each successor section. Every non-empty topic file,
+    including one with only headings or prose, is input exactly once, in declared order, from a
+    section wrapper's \input chain, without cycles; equivalent paths name one file. Headings below a
+    chapter must not skip a level.
+
+    A chapter's title is its guide section's name. Below it, each \section is a guide specialist
+    pathway opened by \qfpathway{pathway-key}{Name} in the wrapper: the key must be one of that
+    section's pathways in the guide's specialist_order, the name the guide's, each pathway at most
+    once and in the guide's relative order, and each with at least one typed entry. A pathway
+    without local material is omitted. Every topic file, and so every typed entry, is input under a
+    pathway; a chapter may open with brief prose in its wrapper. Topic files hold the lower headings
+    (\subsection, \subsubsection) only.
+
+    This is a structural check, not a claim or source-verification check.
 
     Raises:
         RepositoryInputError: The pinned guide or its catalogue is missing or malformed.

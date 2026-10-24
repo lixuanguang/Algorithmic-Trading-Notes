@@ -1,12 +1,9 @@
-"""Tests of the drawdown-resampling example's measures, resamplers, stream and report.
+"""Tests of the drawdown-resampling example's measures, resamplers, stream and report."""
 
-The example's full run is tested in test_checks.py. These pin down the log drawdown from an
-initial zero peak, the AR(1) burn-in, the bootstraps' wrap-around and restart draws, the order in
-which the one stream is consumed, the two conditions and the failure-only report, with small
-inputs or prepared results.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's full run is tested in test_checks.py. These pin down the log drawdown from an
+# initial zero peak, the AR(1) burn-in, the bootstraps' wrap-around and restart draws, the order
+# in which the one stream is consumed, the two conditions and the failure-only report, with small
+# inputs or prepared results.
 
 import contextlib
 import io

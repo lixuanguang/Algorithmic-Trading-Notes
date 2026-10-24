@@ -9,7 +9,7 @@ from numpy.typing import NDArray
 from scipy.optimize import OptimizeResult, minimize
 from scipy.stats import norm
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 type LossMeasure = Literal["q5", "q5_at"]

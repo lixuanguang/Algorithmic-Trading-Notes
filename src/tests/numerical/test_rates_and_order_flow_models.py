@@ -1,11 +1,8 @@
-"""Tests of the rate-model, rate-tree and order-flow domain classes behind several examples.
+"""Tests of the rate-model, rate-tree and order-flow domain classes behind several examples."""
 
-The examples' own checks run in test_checks.py. These pin down boundaries and return contracts
-that the examples do not reach: principal components of few maturities, scalar against array
-discount factors, the two independent binomial trees and the exact decimal trade-signing rules.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The examples' own checks run in test_checks.py. These pin down boundaries and return contracts
+# that the examples do not reach: principal components of few maturities, scalar against array
+# discount factors, the two independent binomial trees and the exact decimal trade-signing rules.
 
 import unittest
 from decimal import Decimal

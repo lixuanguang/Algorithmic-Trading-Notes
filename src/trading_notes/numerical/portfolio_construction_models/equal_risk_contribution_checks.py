@@ -9,7 +9,6 @@ from numpy.typing import NDArray
 from trading_notes.numerical.portfolio_construction_models.risk_contributions import (
     CovarianceModel,
     inverse_volatility,
-    long_only_minimum_variance,
 )
 from trading_notes.numerical.report import CheckReport
 
@@ -67,7 +66,7 @@ def check_case(report: CheckReport, label: str, C: NDArray[np.float64]) -> None:
             + ", ".join(f"{v / r_iv.sum() * 100:.1f}%" for v in r_iv)
         )
     S = model.sigma
-    mv = long_only_minimum_variance(S)
+    mv = model.long_only_minimum_variance()
     s_mv, s_erc, s_eq = np.sqrt(mv @ S @ mv), s, np.sqrt(np.ones(4) @ S @ np.ones(4)) / 4
     report.ok(
         "sigma_mv <= sigma_erc <= sigma_1/n",

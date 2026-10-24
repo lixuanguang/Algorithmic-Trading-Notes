@@ -3,3 +3,10 @@
 These are `fx_ppp_oos_test.py` (v2) and `fx_carry_test.py` with their printed results as committed in `012aa19`. Their pooled Clark–West t statistics applied Newey–West to currency rows stacked into one vector: in the carry test, 7–9 rows per forecast month with h−1 *row* lags (one or two calendar months, not eleven); in the PPP test, rows stacked currency by currency, so contemporaneous dependence across the nine dollar rates was ignored. An audit in derivatives and empirical validation (2026-10-17) found this; the corrected scripts in the parent folder sum the scores within each forecast-origin month and take the long-run variance over calendar months (`panel_nw_t`), with the same pooling weights, forecasts, out-of-sample R² and portfolios. The reasons are in the scripts' docstrings and in `notes/source-review-records.md`, *derivatives and empirical validation (2026-10-17)*.
 
 The derived panels (`fx_ppp_monthly.csv`, `fx_carry_monthly.csv`) did not change and are kept only in the parent folder. These scripts still reproduce their outputs byte for byte when run from a copy of this folder (each writes its panel next to itself). Do not cite their pooled Clark–West t statistics as current: −4.44 (carry, h = 12), −0.85 (carry, h = 1), −0.31 (PPP, h = 12) and −2.14 (PPP, h = 1) became −1.97, −0.41, −0.18 and −1.30. Every verdict is unchanged.
+
+The scripts are no longer kept in the working tree. Each is recoverable byte for byte from the commit that last changed it; to rerun, restore it into a copy of this folder:
+
+```
+git show 199ed96a1ddd612a0ba52ca74570aebbaba76a7c:notes/artefacts/fx-determination-forecasting/superseded-row-lag-inference/fx_carry_test.py > fx_carry_test.py
+git show 199ed96a1ddd612a0ba52ca74570aebbaba76a7c:notes/artefacts/fx-determination-forecasting/superseded-row-lag-inference/fx_ppp_oos_test.py > fx_ppp_oos_test.py
+```

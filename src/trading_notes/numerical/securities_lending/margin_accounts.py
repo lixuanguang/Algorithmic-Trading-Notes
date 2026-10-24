@@ -2,7 +2,7 @@
 
 from datetime import date
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 def act360(start: date, end: date) -> float:

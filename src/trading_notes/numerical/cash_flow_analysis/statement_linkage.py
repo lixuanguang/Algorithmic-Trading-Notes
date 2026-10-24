@@ -1,6 +1,6 @@
 """Linking the income statement, balance sheets and cash-flow statement through the accounts."""
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class IncomeStatement(Record):

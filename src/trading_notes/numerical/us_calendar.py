@@ -1,4 +1,4 @@
-"""U.S. calendar rules: weekday arithmetic, the federal holidays of 5 U.S.C. 6103 and Easter."""
+"""U.S. calendar rules: weekday arithmetic, federal holidays and business days, and Easter."""
 
 import datetime as dt
 from collections.abc import Container
@@ -41,6 +41,27 @@ def federal_holidays(year: int) -> set[dt.date]:
         nth_weekday(year, 11, 3, 4),
         observed(dt.date(year, 12, 25)),
     }
+
+
+def is_business_day(d: dt.date) -> bool:
+    """Return whether d is a weekday that is not a federal holiday of its own year."""
+    return d.weekday() < 5 and d not in federal_holidays(d.year)
+
+
+def rolled_forward(d: dt.date) -> dt.date:
+    """Return d if it is a business day, else the next business day."""
+    while not is_business_day(d):
+        d += dt.timedelta(days=1)
+    return d
+
+
+def add_business_days(d: dt.date, n: int) -> dt.date:
+    """Return the n-th business day after d, for n >= 0; d itself is not counted."""
+    while n:
+        d += dt.timedelta(days=1)
+        if is_business_day(d):
+            n -= 1
+    return d
 
 
 def easter(year: int) -> dt.date:

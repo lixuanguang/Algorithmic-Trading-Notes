@@ -7,7 +7,7 @@
 
 \emph{Addressing it}: estimate test error honestly with a held-out validation set or $k$-fold cross-validation, typically $k=5$ or 10, which balances the bias of small training sets against the variance of leave-one-out estimates (pp.~198--206); restrict complexity by penalties (ridge, lasso), by pruning trees or limiting depth, by early stopping, dropout and weight decay in networks (pp.~237--247, 331--336, 436--438); average many models (bagging, random forests); use more data; and, in finance, respect time order with purged and embargoed validation (\hyperref[meth:purged-embargoed-cross-validation]{purged CV}).
 
-\qffield{Practice} \emph{Synthetic demonstration} (\texttt{ml-methods-checks.py}, part~1): 120 points from $y=\sin(2.5x)$ plus noise with variance 0.09, fitted with polynomials of degree 1 to 12. Training error never rises with degree; validation error is lowest at degree 3 (0.093, close to the 0.09 noise floor) and higher at degree 12 (0.115). Choosing degree 12 because it fits the training data best would be overfitting.
+\qffield{Practice} \emph{Synthetic demonstration} (\nolinkurl{trading_notes.numerical.machine_learning_methods.financial_ml_methods_checks}, part~1): 120 points from $y=\sin(2.5x)$ plus noise with variance 0.09, fitted with polynomials of degree 1 to 12. Training error never rises with degree; validation error is lowest at degree 3 (0.093, close to the 0.09 noise floor) and higher at degree 12 (0.115). Choosing degree 12 because it fits the training data best would be overfitting.
 
 \qffield{Conditions} The data are simulated; with dependent financial data, random splits leak information and chronological or purged splits are required.
 
@@ -28,7 +28,7 @@
 \end{itemize}
 Flexible methods trade interpretability for fit (p.~25); in text and other high-dimensional data, penalised linear models are often hard to beat out of sample \citep[NBER WP 23276, pp.~12--15]{wide-gentzkow-kelly-taddy}.
 
-\qffield{Practice} \emph{Synthetic comparisons} (\texttt{ml-methods-checks.py}, part~2; splits 60/20/20; tuning on validation, one evaluation on test):
+\qffield{Practice} \emph{Synthetic comparisons} (\nolinkurl{trading_notes.numerical.machine_learning_methods.financial_ml_methods_checks}, part~2; splits 60/20/20; tuning on validation, one evaluation on test):
 \begin{center}\small
 \begin{tabular}{@{}p{0.34\linewidth}p{0.2\linewidth}p{0.36\linewidth}@{}}
 \toprule
@@ -60,7 +60,7 @@ Linear class boundary & Linear SVM & Accuracy 0.89 \\
 \end{itemize}
 Clustering results depend on scaling, the dissimilarity, the linkage and $K$, will always find clusters even in noise, and should be validated on new data (pp.~530--531). \emph{Uses in finance}: grouping securities or funds by return behaviour for diversification or peer groups, regime identification, and pricing illiquid securities by similarity \citep[p.~5]{fsb-ai-ml-2017}.
 
-\qffield{Practice} \emph{Synthetic demonstrations} (\texttt{ml-methods-checks.py}, part~3).
+\qffield{Practice} \emph{Synthetic demonstrations} (\nolinkurl{trading_notes.numerical.machine_learning_methods.financial_ml_methods_checks}, part~3).
 \begin{itemize}
 \item \emph{PCA}: ten yields driven by a level and a slope factor. Fitted on the first 300 of 500 observations, the first two components explain more than 95 percent of variance (0.889 and 0.083); the first has nearly equal loadings (level), the second loadings that change sign (slope); eigenvalues match squared singular values divided by $n-1$.
 \item \emph{K-means}: three planted groups of 60 points. With ten random starts the within-cluster sum of squares never rises during iterations and the best start recovers the groups; the sum of squares falls from 1,049 ($K=1$) to 416 and 135 and then only to 115 and 100: an elbow at three.

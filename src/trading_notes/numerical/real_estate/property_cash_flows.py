@@ -1,6 +1,6 @@
 """A let office building's net operating income by year."""
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class LetBuilding(Record):

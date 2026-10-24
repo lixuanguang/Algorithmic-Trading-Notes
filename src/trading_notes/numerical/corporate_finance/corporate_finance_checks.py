@@ -10,14 +10,16 @@ import scipy
 from scipy.optimize import brentq
 
 from trading_notes.numerical.capital_structure_cost_of_capital.cost_of_capital import (
+    SCHEDULE,
     CapitalStructure,
-    annuity,
-    npv,
-    rated_cost_of_debt,
-    synthetic_rating,
 )
-from trading_notes.numerical.company_case.harbour import TAX, HarbourCase, option_on_harbour
+from trading_notes.numerical.company_case.harbour import (
+    OPTIONS,
+    TAX,
+    HarbourCase,
+)
 from trading_notes.numerical.report import CheckReport, print_versions
+from trading_notes.numerical.time_value.cash_flows import CashFlowStream, annuity
 from trading_notes.numerical.tolerance import close
 
 PRICE: Final = 11.0  # Harbour's share price at 31 December 2025
@@ -233,9 +235,9 @@ def check_capital_project(report: CheckReport) -> None:
     ebit = rev - var * rev - fixed - cannib - rent_forgone - dep
     nopat = ebit * (1 - TAX)
     ocf = nopat + dep
-    flows = [-(capex + wc)] + [ocf] * (life - 1) + [ocf + salvage + wc]
-    p_npv = npv(WACC, flows)
-    p_irr = brentq(lambda r: npv(r, flows), -0.5, 1.0)
+    project = CashFlowStream(flows=(-(capex + wc), *[ocf] * (life - 1), ocf + salvage + wc))
+    p_npv = project.npv(WACC)
+    p_irr = brentq(project.npv, -0.5, 1.0)
     report.ok(
         "EBIT 14.00, NOPAT 10.50, operating cash flow 28.50; NPV at 8% 15.81; IRR 12.61%",
         close(ebit, 14)
@@ -245,7 +247,7 @@ def check_capital_project(report: CheckReport) -> None:
     )
     report.ok(
         "NPV is zero at the IRR and positive below it",
-        close(npv(p_irr, flows), 0, 1e-9) and npv(0.1, flows) > 0,
+        close(project.npv(p_irr), 0, 1e-9) and project.npv(0.1) > 0,
     )
     # The same NPV from a revenue-cost table built line by line (an independent route).
     line_flows = []
@@ -257,7 +259,8 @@ def check_capital_project(report: CheckReport) -> None:
         tax = TAX * (pre_tax_cash - dep)
         line_flows.append(pre_tax_cash - tax + (salvage + wc if t == life else 0.0))
     report.ok(
-        "line-by-line cash flows reproduce the NPV", close(npv(WACC, line_flows), p_npv, 1e-9)
+        "line-by-line cash flows reproduce the NPV",
+        close(CashFlowStream(flows=tuple(line_flows)).npv(WACC), p_npv, 1e-9),
     )
     sunk_rd = 12.0
     interest_aftertax = 0.05 * 50 * (1 - TAX)
@@ -279,23 +282,23 @@ def check_capital_project(report: CheckReport) -> None:
         ", ".join(f"{x:.2%}" for x in roic),
     )
     # Mutually exclusive projects: scale and timing differences.
-    A = [-40.0, 22.0, 18.0, 12.0]
-    Bp = [-100.0, 20.0, 35.0, 45.0, 40.0]
-    irr_a = brentq(lambda r: npv(r, A), -0.5, 1)
-    irr_b = brentq(lambda r: npv(r, Bp), -0.5, 1)
-    cross = brentq(lambda r: npv(r, Bp) - npv(r, A), 0.0, 0.5)
+    A = CashFlowStream(flows=(-40.0, 22.0, 18.0, 12.0))
+    Bp = CashFlowStream(flows=(-100.0, 20.0, 35.0, 45.0, 40.0))
+    irr_a = brentq(A.npv, -0.5, 1)
+    irr_b = brentq(Bp.npv, -0.5, 1)
+    cross = brentq(lambda r: Bp.npv(r) - A.npv(r), 0.0, 0.5)
     report.ok(
         "mutually exclusive: A has the higher IRR, B the higher NPV at 8%; NPV profiles cross at"
         " 12.39%",
-        irr_a > irr_b and npv(WACC, Bp) > npv(WACC, A) and round(cross, 4) == 0.1239,
-        f"A NPV {npv(WACC, A):.2f} IRR {irr_a:.2%}; B NPV {npv(WACC, Bp):.2f} IRR {irr_b:.2%}",
+        irr_a > irr_b and Bp.npv(WACC) > A.npv(WACC) and round(cross, 4) == 0.1239,
+        f"A NPV {A.npv(WACC):.2f} IRR {irr_a:.2%}; B NPV {Bp.npv(WACC):.2f} IRR {irr_b:.2%}",
     )
-    M = [-100.0, 230.0, -132.0]
-    roots = sorted(brentq(lambda r: npv(r, M), a, b) for a, b in ((0.05, 0.15), (0.15, 0.30)))
+    M = CashFlowStream(flows=(-100.0, 230.0, -132.0))
+    roots = sorted(brentq(M.npv, a, b) for a, b in ((0.05, 0.15), (0.15, 0.30)))
     report.ok(
         "two sign changes give two IRRs, 10% and 20%; NPV at 8% is -0.21, so reject despite 'IRR >"
         " 8%'",
-        [round(x, 6) for x in roots] == [0.1, 0.2] and round(npv(WACC, M), 2) == -0.21,
+        [round(x, 6) for x in roots] == [0.1, 0.2] and round(M.npv(WACC), 2) == -0.21,
     )
     # Capital rationing: profitability index against the best combination.
     projects = {
@@ -372,7 +375,7 @@ def check_wacc(report: CheckReport, case: HarbourCase) -> CapitalStructure:
     debt = -(B25["term_loan"] + B25["revolver"] + B25["lease_liab"])
     # The 5m vested options are an equity claim, valued at the market price with the inputs of
     # the Harbour equity bridge, so market equity is shares plus options.
-    opt_mkt = 5.0 * option_on_harbour(PRICE).call()
+    opt_mkt = 5.0 * OPTIONS.option(PRICE).call()
     mkt_shares = PRICE * SHARES
     cs = CapitalStructure(
         rf=0.03,
@@ -506,7 +509,7 @@ def check_cost_of_capital_methods(report: CheckReport, cs: CapitalStructure) -> 
     )
     report.ok("a 4% five-year bond at 94.83 yields 5.20%", round(ytm, 4) == 0.052)
     int_2025 = 0.052 * 355
-    rating, spread = synthetic_rating(EBIT_NORMALISED / int_2025)
+    rating, spread = SCHEDULE.rating(EBIT_NORMALISED / int_2025)
     report.ok(
         "synthetic rating: normalised EBIT 111 over interest at 5.2% on 355 (18.46) = cover 6.01 ->"
         " BBB, spread 2.2%, so rf 3% + 2.2% reproduces the 5.2% bond yield; the 2025 book rate"
@@ -825,7 +828,7 @@ def check_restructuring(report: CheckReport, case: HarbourCase, cs: CapitalStruc
     beta_pf = cs.beta_u * (1 + (1 - TAX) * de_pf)
     ke_pf = cs.rf + beta_pf * cs.erp
     wacc_pf = eq_pf / (eq_pf + debt_pf) * ke_pf + debt_pf / (eq_pf + debt_pf) * kd
-    kd_pf, rating_pf = rated_cost_of_debt(cs.rf, debt_pf, EBIT_NORMALISED + 5.0)
+    kd_pf, rating_pf = SCHEDULE.cost_of_debt(cs.rf, debt_pf, EBIT_NORMALISED + 5.0)
     wacc_pf_rerated = eq_pf / (eq_pf + debt_pf) * ke_pf + debt_pf / (eq_pf + debt_pf) * kd_pf * (
         1 - TAX
     )

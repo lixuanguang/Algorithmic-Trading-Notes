@@ -1,10 +1,7 @@
-"""Tests of the asset-pricing figure check, its --root option and the CAPM and APT classes.
+"""Tests of the asset-pricing figure check, its --root option and the CAPM and APT classes."""
 
-The example's full run is tested in test_checks.py. These confirm that the figure is read
-rather than assumed, and that `--root` locates it from any working directory.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's full run is tested in test_checks.py. These confirm that the figure is read rather
+# than assumed, and that `--root` locates it from any working directory.
 
 import contextlib
 import io

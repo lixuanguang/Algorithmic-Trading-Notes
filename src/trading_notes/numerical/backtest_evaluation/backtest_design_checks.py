@@ -15,8 +15,8 @@ from trading_notes.numerical.backtest_evaluation.backtest_book import (
     annualised_sharpe,
     max_drawdown,
 )
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 type Bools = NDArray[np.bool_]

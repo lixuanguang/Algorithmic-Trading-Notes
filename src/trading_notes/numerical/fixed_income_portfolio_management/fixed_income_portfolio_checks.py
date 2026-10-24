@@ -2,7 +2,7 @@
 
 import math
 import sys
-from typing import Final, cast
+from typing import Final
 
 import numpy as np
 import scipy
@@ -11,9 +11,7 @@ from scipy.optimize import brentq, linprog
 
 from trading_notes.numerical.fixed_income_portfolio_management.curve_exposures import (
     AnnualZeroCurve,
-    bond,
-    horizon_value,
-    mac,
+    CashFlows,
 )
 from trading_notes.numerical.report import CheckReport
 from trading_notes.numerical.tolerance import close
@@ -110,29 +108,33 @@ def check_ladders(report: CheckReport) -> None:
     print("== part 3: liability-driven investing, cash-flow matching and ladders")
     liab_t = np.array([1, 2, 3, 4, 5])
     liab = np.array([10e6, 10e6, 12e6, 12e6, 15e6])
-    bonds = [bond(cpn, m) for cpn, m in ((0.03, 1), (0.034, 2), (0.036, 3), (0.038, 4), (0.040, 5))]
-    prices = np.array([CURVE.price(*b) for b in bonds]) / 100
+    bonds = [
+        CashFlows.annual_bond(cpn, m)
+        for cpn, m in ((0.03, 1), (0.034, 2), (0.036, 3), (0.038, 4), (0.040, 5))
+    ]
+    prices = np.array([CURVE.price(b) for b in bonds]) / 100
     cf_matrix = np.zeros((5, 5))
-    for j, (cfs, times) in enumerate(bonds):
-        for c_, t_ in zip(cfs, times, strict=True):
+    for j, flows in enumerate(bonds):
+        for c_, t_ in zip(flows.amounts, flows.times, strict=True):
             cf_matrix[t_ - 1, j] = c_ / 100
     res = linprog(prices, A_ub=-cf_matrix, b_ub=-liab, bounds=[(0, None)] * 5, method="highs")
     pv_liab = sum(
         liab_t_cf / (1 + CURVE.zero(t)) ** t for liab_t_cf, t in zip(liab, liab_t, strict=True)
     )
+    cost = math.nan if res.fun is None else res.fun
     report.ok(
         "cash-flow matching five liabilities (59m) with five annual-coupon bonds: the least-cost"
         " portfolio meets every payment exactly and costs the liabilities' present value on this"
         " curve",
         res.status == 0
-        and np.allclose(cf_matrix @ cast(Floats, res.x), liab, atol=1e-3)
-        and abs(cast(float, res.fun) - pv_liab) < 1.0,
-        f"cost {cast(float, res.fun) / 1e6:.4f}m, PV {pv_liab / 1e6:.4f}m",
+        and np.allclose(cf_matrix @ np.asarray(res.x, dtype=np.float64), liab, atol=1e-3)
+        and abs(cost - pv_liab) < 1.0,
+        f"cost {cost / 1e6:.4f}m, PV {pv_liab / 1e6:.4f}m",
     )
-    ladder = [bond(0.034 + 0.0015 * (m - 1), m) for m in range(1, 11)]
-    ladder_val = [CURVE.price(*b) for b in ladder]
+    ladder = [CashFlows.annual_bond(0.034 + 0.0015 * (m - 1), m) for m in range(1, 11)]
+    ladder_val = [CURVE.price(b) for b in ladder]
     ladder_dur = sum(
-        CURVE.modified_duration(*b) * v for b, v in zip(ladder, ladder_val, strict=True)
+        CURVE.modified_duration(b) * v for b, v in zip(ladder, ladder_val, strict=True)
     ) / sum(ladder_val)
     report.ok(
         "a 1-10 year ladder (equal face in each year) has a duration of 4.69 and returns a tenth"
@@ -144,8 +146,8 @@ def check_ladders(report: CheckReport) -> None:
     def rung_cfs(weights: Floats) -> Floats:
         """Annual cash flows (years 1-10) of a ladder holding `weights` units of face a rung."""
         cf = np.zeros(10)
-        for w_, (cfs_, times_) in zip(weights, ladder, strict=True):
-            for c_, t_ in zip(cfs_, times_, strict=True):
+        for w_, rung in zip(weights, ladder, strict=True):
+            for c_, t_ in zip(rung.amounts, rung.times, strict=True):
                 cf[t_ - 1] += w_ * c_
         return cf
 
@@ -216,22 +218,22 @@ def check_immunisation(report: CheckReport) -> None:
     )
 
     y0 = 0.05
-    zero5 = ([100.0], [5])
-    coup5 = bond(0.05, 5)
-    b1, b10 = ([100.0], [1]), bond(0.05, 10)
+    zero5 = CashFlows(amounts=[100.0], times=[5])
+    coup5 = CashFlows.annual_bond(0.05, 5)
+    b1, b10 = CashFlows(amounts=[100.0], times=[1]), CashFlows.annual_bond(0.05, 10)
 
-    w10 = (5 - mac(*b1, y0)) / (mac(*b10, y0) - mac(*b1, y0))
+    w10 = (5 - b1.macaulay_duration(y0)) / (b10.macaulay_duration(y0) - b1.macaulay_duration(y0))
     p1, p10 = (
         100 / (1 + y0),
-        sum(c_ / (1 + y0) ** t_ for c_, t_ in zip(*b10, strict=True)),
+        sum(c_ / (1 + y0) ** t_ for c_, t_ in zip(b10.amounts, b10.times, strict=True)),
     )
     budget = 100 / (1 + y0) ** 5  # cost of the 5-year zero: the immunised target is 100
     units1, units10 = (1 - w10) * budget / p1, w10 * budget / p10
     target = 100.0
     for dy in (-0.02, -0.01, 0.01, 0.02):
-        hz_bul = horizon_value(*zero5, y0 + dy, 5)
-        hz_cpn = horizon_value(*coup5, y0 + dy, 5) * budget / 100
-        hz_bar = units1 * horizon_value(*b1, y0 + dy, 5) + units10 * horizon_value(*b10, y0 + dy, 5)
+        hz_bul = zero5.horizon_value(y0 + dy, 5)
+        hz_cpn = coup5.horizon_value(y0 + dy, 5) * budget / 100
+        hz_bar = units1 * b1.horizon_value(y0 + dy, 5) + units10 * b10.horizon_value(y0 + dy, 5)
         report.ok(
             f"parallel {dy:+.0%}: zero exactly 100; duration-matched barbell >= 100 (convexity);"
             f" maturity-matched 5% coupon bond {'falls short' if dy < 0 else 'beats the target'}",
@@ -240,13 +242,13 @@ def check_immunisation(report: CheckReport) -> None:
             and ((hz_cpn < target) if dy < 0 else (hz_cpn > target)),
             f"barbell {hz_bar:.3f}, coupon bond {hz_cpn:.3f}",
         )
-    tw_bar = units1 * horizon_value(*b1, y0, 5, twist=0.01) + units10 * horizon_value(
-        *b10, y0, 5, twist=0.01
+    tw_bar = units1 * b1.horizon_value(y0, 5, twist=0.01) + units10 * b10.horizon_value(
+        y0, 5, twist=0.01
     )
     report.ok(
         "a twist (reinvestment rates down 100 bp, long rates up 100 bp) leaves the barbell short"
         " of the target; the zero is untouched",
-        tw_bar < target - 1 and close(horizon_value(*zero5, y0, 5, twist=0.01), 100, 1e-9),
+        tw_bar < target - 1 and close(zero5.horizon_value(y0, 5, twist=0.01), 100, 1e-9),
         f"{tw_bar:.3f}",
     )
     report.ok(
@@ -365,29 +367,44 @@ def check_curve_positioning(report: CheckReport) -> None:
         abs(p4_unch / p5_0 - 1 - 0.04352) < 5e-5 and CURVE.zero(1) == 0.0315,
         f"{p4_unch / p5_0 - 1:.5f}",
     )
-    dv01_2 = CURVE.modified_duration(*bond(0.033, 2)) * CURVE.price(*bond(0.033, 2)) * 1e-4
-    dv01_10 = CURVE.modified_duration(*bond(0.045, 10)) * CURVE.price(*bond(0.045, 10)) * 1e-4
+    dv01_2 = (
+        CURVE.modified_duration(CashFlows.annual_bond(0.033, 2))
+        * CURVE.price(CashFlows.annual_bond(0.033, 2))
+        * 1e-4
+    )
+    dv01_10 = (
+        CURVE.modified_duration(CashFlows.annual_bond(0.045, 10))
+        * CURVE.price(CashFlows.annual_bond(0.045, 10))
+        * 1e-4
+    )
     ratio = dv01_10 / dv01_2
     pnl_steep = ratio * (
-        CURVE.price(*bond(0.033, 2), twist=0.005) - CURVE.price(*bond(0.033, 2))
-    ) - (CURVE.price(*bond(0.045, 10), twist=0.005) - CURVE.price(*bond(0.045, 10)))
+        CURVE.price(CashFlows.annual_bond(0.033, 2), twist=0.005)
+        - CURVE.price(CashFlows.annual_bond(0.033, 2))
+    ) - (
+        CURVE.price(CashFlows.annual_bond(0.045, 10), twist=0.005)
+        - CURVE.price(CashFlows.annual_bond(0.045, 10))
+    )
     report.ok(
         "divergent view (curve to steepen): DV01-neutral 2s10s steepener buys 4.18 2-year bonds"
         " per 10-year bond sold and gains on a 100 bp twist",
         abs(ratio - 4.179) < 0.001 and pnl_steep > 0,
         f"ratio {ratio:.3f}, gain {pnl_steep:.3f}",
     )
-    p5b = CURVE.price(*bond(0.0375, 5))
-    d5b = CURVE.modified_duration(*bond(0.0375, 5))
-    w_l = (d5b - CURVE.modified_duration(*bond(0.0315, 1))) / (
-        CURVE.modified_duration(*bond(0.045, 10)) - CURVE.modified_duration(*bond(0.0315, 1))
+    p5b = CURVE.price(CashFlows.annual_bond(0.0375, 5))
+    d5b = CURVE.modified_duration(CashFlows.annual_bond(0.0375, 5))
+    w_l = (d5b - CURVE.modified_duration(CashFlows.annual_bond(0.0315, 1))) / (
+        CURVE.modified_duration(CashFlows.annual_bond(0.045, 10))
+        - CURVE.modified_duration(CashFlows.annual_bond(0.0315, 1))
     )
 
     def barbell_minus_bullet(shift: float) -> float:
-        bb = (1 - w_l) * CURVE.price(*bond(0.0315, 1), shift=shift) / CURVE.price(
-            *bond(0.0315, 1)
-        ) + w_l * CURVE.price(*bond(0.045, 10), shift=shift) / CURVE.price(*bond(0.045, 10))
-        return bb - CURVE.price(*bond(0.0375, 5), shift=shift) / p5b
+        bb = (1 - w_l) * CURVE.price(CashFlows.annual_bond(0.0315, 1), shift=shift) / CURVE.price(
+            CashFlows.annual_bond(0.0315, 1)
+        ) + w_l * CURVE.price(CashFlows.annual_bond(0.045, 10), shift=shift) / CURVE.price(
+            CashFlows.annual_bond(0.045, 10)
+        )
+        return bb - CURVE.price(CashFlows.annual_bond(0.0375, 5), shift=shift) / p5b
 
     report.ok(
         "volatility view: a duration-matched 1y/10y barbell beats the 5-year bullet for large"

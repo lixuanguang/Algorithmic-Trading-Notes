@@ -110,8 +110,7 @@ def check_cyclic_arbitrage(rng: np.random.Generator) -> list[str]:
     require(
         failed, "a cycle earns money exactly when the quotes leave the band", viol_agree == N_TRIALS
     )
-    # dealer models and information review follow-up: midpoints need not satisfy the frictionless
-    # equality while no cycle pays
+    # Midpoints need not satisfy the frictionless equality while no cycle pays.
     q = {"EURUSD": (1.0999, 1.1001), "USDJPY": (109.99, 110.01), "EURJPY": (120.99, 121.03)}
     a_, b_ = cycle_returns(q)
     syn_mid = (q["EURUSD"][0] + q["EURUSD"][1]) / 2 * (q["USDJPY"][0] + q["USDJPY"][1]) / 2

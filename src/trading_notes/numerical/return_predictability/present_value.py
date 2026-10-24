@@ -5,8 +5,8 @@ from typing import Self
 import numpy as np
 from numpy.typing import NDArray
 
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.return_predictability.labelled_table import LabelledTable, lagged
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 

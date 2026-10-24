@@ -1,11 +1,8 @@
-"""Tests of the regime chain's timing convention, stationary law and the ARCH update.
+"""Tests of the regime chain's timing convention, stationary law and the ARCH update."""
 
-The example's full run is tested in test_checks.py. These pin down that the first month's
-return is the starting state's and the chain moves after each month, against hand recursion on
-a prepared two-state chain.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's full run is tested in test_checks.py. These pin down that the first month's return
+# is the starting state's and the chain moves after each month, against hand recursion on a
+# prepared two-state chain.
 
 import unittest
 

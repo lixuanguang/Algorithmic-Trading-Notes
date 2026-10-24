@@ -26,7 +26,7 @@ repos:
         name: mypy (strict)
         entry: make typecheck
         language: system
-        files: ^(src/.*\.pyi?|pyproject\.toml|notes/artefacts/.*\.py|notes/artefacts/ruff\.toml)$
+        files: ^(src/.*\.pyi?|pyproject\.toml)$
         pass_filenames: false
 
       - id: compendium

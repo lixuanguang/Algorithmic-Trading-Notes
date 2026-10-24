@@ -3,7 +3,7 @@
 import math
 from collections.abc import Callable
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type DiscountCurve = Callable[[float], float]
 """Discount factor P(t) for a time t in years."""

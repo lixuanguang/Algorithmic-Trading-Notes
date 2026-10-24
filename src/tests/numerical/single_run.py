@@ -1,4 +1,4 @@
-"""Run one numerical example's entrypoint once, as `python -m` or `python <script>` would."""
+"""Run one numerical example's entrypoint once, as `python -m` would."""
 
 import contextlib
 import random
@@ -67,39 +67,35 @@ def prime_global_random(seed: int) -> None:
     np.random.standard_normal()
 
 
-def run_entrypoint(module: str, script: str, args: Sequence[str]) -> int:
-    """Execute the module, or its script, as the main program and return its exit status.
+def run_entrypoint(module: str, args: Sequence[str]) -> int:
+    """Execute the module as the main program and return its exit status.
 
-    runpy is what `python -m` and `python <script>` use, so the module's own
-    `if __name__ == "__main__"` block runs.
+    runpy is what `python -m` uses, so the module's own `if __name__ == "__main__"` block runs.
 
     Raises:
         AssertionError: The program finished without `sys.exit`, or exited with a status that
             is not an integer.
     """
-    sys.argv = [script or module, *args]
+    sys.argv = [module, *args]
     try:
-        if script:
-            runpy.run_path(script, run_name="__main__")
-        else:
-            runpy.run_module(module, run_name="__main__", alter_sys=True)
+        runpy.run_module(module, run_name="__main__", alter_sys=True)
     except SystemExit as stop:
         if isinstance(stop.code, int):
             return stop.code
-        raise AssertionError(f"{script or module} exited with {stop.code!r}") from None
-    raise AssertionError(f"{script or module} returned without calling sys.exit")
+        raise AssertionError(f"{module} exited with {stop.code!r}") from None
+    raise AssertionError(f"{module} returned without calling sys.exit")
 
 
 def main(argv: Sequence[str]) -> int:
     """Run one example once and return its status; report changed shared state on stderr.
 
     Args:
-        argv: The module name, its forwarding script or "", then the arguments to pass it.
+        argv: The module name, then the arguments to pass it.
     """
-    module, script, *args = argv
+    module, *args = argv
     prime_global_random(PRIMING_SEED)
     before = GlobalState.now()
-    status = run_entrypoint(module, script, args)
+    status = run_entrypoint(module, args)
     if GlobalState.now() != before:
         print(f"{module} changed the shared random or NumPy state", file=sys.stderr)
     return status

@@ -9,7 +9,6 @@ import numpy as np
 import pandas as pd
 from numpy.typing import NDArray
 
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.repository import repository_root
 from trading_notes.numerical.return_predictability.forecast_evaluation import (
@@ -25,6 +24,7 @@ from trading_notes.numerical.return_predictability.present_value import (
     ReturnPanel,
     log1pexp,
 )
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
@@ -766,10 +766,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     and tolerances written before the first run).
 
     Data: goyal-annual-1871-2025.csv and goyal-monthly-1871-2025.csv, extracted by
-    goyal_extract.py from the workbook on Amit Goyal's page labelled "Original data (up to
-    2005) used in the paper", served on 2026-10-22 with data to December 2025 (a 2026 vintage,
-    not the file behind the 2008 tables). Synthetic data from fixed seeds (20261022, 20261023,
-    20261024, 20261104) where the true model must be known.
+    trading_notes.research.return_predictability.goyal_extract from the workbook on Amit Goyal's
+    page labelled "Original data (up to 2005) used in the paper", served on 2026-10-22 with data
+    to December 2025 (a 2026 vintage, not the file behind the 2008 tables). Synthetic data from
+    fixed seeds (20261022, 20261023, 20261024, 20261104) where the true model must be known.
 
     Part A builds one return from Index and D12 in every year; the working-paper linearisation
     point uses log(1 + mean R), as printed on p. 5 of NBER WP 2100, not the mean log return;

@@ -5,7 +5,7 @@
 
 \emph{Feature selection and engineering}: keep tokens by document frequency, or by association with the label (chi-square, mutual information), estimated on training documents only; engineer features such as negation-aware sentiment, counts of numbers, named entities, readability or changes from the previous filing (Interpretation). For forecasting, each feature carries the time the text became public, and the document's unit matches the forecast horizon (pp.~6--7).
 
-\qffield{Practice} \emph{A synthetic earnings-text example} (\texttt{ml-methods-checks.py}, part~5). Ten one-sentence ``press releases'' are labelled positive or negative; the first eight are training documents.
+\qffield{Practice} \emph{A synthetic earnings-text example} (\nolinkurl{trading_notes.numerical.machine_learning_methods.financial_ml_methods_checks}, part~5). Ten one-sentence ``press releases'' are labelled positive or negative; the first eight are training documents.
 \begin{itemize}
 \item After removing stop words, the vocabulary comes from the eight training documents only. ``Strong'' appears in four, so its idf is $\ln(8/4)=0.693$, and its tf-idf in a document where it appears once is 0.693.
 \item Chi-square scores on the training documents rank ``strong'', ``weak'', ``growth'' and ``impairment'' highest and neutral words such as ``quarter'' and ``revenue'' low.

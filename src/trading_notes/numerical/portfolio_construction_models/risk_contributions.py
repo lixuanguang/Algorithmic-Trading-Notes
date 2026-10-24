@@ -7,7 +7,7 @@ from typing import Self
 import numpy as np
 from numpy.typing import NDArray
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
@@ -68,26 +68,24 @@ class CovarianceModel(Record):
         weights: Floats = y / y.sum()
         return weights
 
+    def long_only_minimum_variance(self, iters: int = 200000, lr: float = 0.5) -> Floats:
+        """Return the long-only minimum-variance weights by projected gradient descent.
+
+        Args:
+            iters: Number of gradient steps, each followed by a projection onto the simplex.
+            lr: Step size.
+        """
+        n = len(self.sigma)
+        x = np.ones(n) / n
+        for _ in range(iters):
+            x = project_to_simplex(x - lr * (self.sigma @ x))
+        return x
+
 
 def inverse_volatility(vols: Floats) -> Floats:
     """Return weights proportional to 1 / volatility, summing to one."""
     weights: Floats = (1 / vols) / (1 / vols).sum()
     return weights
-
-
-def long_only_minimum_variance(sigma: Floats, iters: int = 200000, lr: float = 0.5) -> Floats:
-    """Return the long-only minimum-variance weights by projected gradient descent.
-
-    Args:
-        sigma: Covariance matrix, n x n.
-        iters: Number of gradient steps, each followed by a projection onto the simplex.
-        lr: Step size.
-    """
-    n = len(sigma)
-    x = np.ones(n) / n
-    for _ in range(iters):
-        x = project_to_simplex(x - lr * (sigma @ x))
-    return x
 
 
 def project_to_simplex(x: Floats) -> Floats:

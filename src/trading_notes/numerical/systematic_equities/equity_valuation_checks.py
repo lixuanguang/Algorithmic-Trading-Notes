@@ -12,16 +12,15 @@ from scipy.optimize import brentq
 from trading_notes.numerical.company_case.harbour import (
     GROSS_DEBT,
     MARKET_PRICE,
+    OPTIONS,
     SHARES,
     TAX,
     HarbourCase,
     market_cost_of_equity,
-    option_claim,
-    price_after_options,
 )
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.tolerance import close
+from trading_notes.records import Record
 
 PROFIT: Final = {2024: 67.0, 2025: 55.38}
 
@@ -63,7 +62,7 @@ class Market(Record):
 def market(case: HarbourCase) -> Market:
     """Return Harbour's market values."""
     B25 = case.balances[2025]
-    options = option_claim(MARKET_PRICE)
+    options = OPTIONS.claim(MARKET_PRICE)
     ke = market_cost_of_equity()
     return Market(
         book_equity=case.balance_view(2025).eq,
@@ -165,7 +164,7 @@ def check_enterprise_value(report: CheckReport, case: HarbourCase, mkt: Market) 
     )
     iv = case.valuation.price
     # Market and intrinsic bridges use one claim set: EV = shares + options + debt + pension - cash.
-    opt_iv = option_claim(iv)
+    opt_iv = OPTIONS.claim(iv)
     ev_iv_rebuilt = iv * SHARES + opt_iv + GROSS_DEBT + mkt.pension_after_tax - mkt.cash
     report.ok(
         "intrinsic bridge with the same claims: 855.59 + options 9.28 + 355 + 36.12 - 37.54 = DCF"
@@ -192,7 +191,7 @@ def check_implied_by_price(report: CheckReport, case: HarbourCase, mkt: Market) 
         """Return the DCF value per share at a WACC and steady-state growth and RONIC."""
         tv = nopat_2028 * (1 + g) * (1 - g / ronic) / (wacc - g)
         ev_ = sum(c / (1 + wacc) ** (t + 1) for t, c in enumerate(fcff)) + tv / (1 + wacc) ** 3
-        return price_after_options(ev_ - mkt.net_claims)
+        return OPTIONS.price_per_share(ev_ - mkt.net_claims)
 
     report.ok(
         "the function reproduces 8.49 at 8%",
@@ -597,16 +596,16 @@ def check_ev_multiples(report: CheckReport, case: HarbourCase, mkt: Market) -> f
     )
     ev_ebitda_peer_median = float(np.median([v[1] for v in PEERS.values()]))
     eq_from_ev = ev_ebitda_peer_median * ebitda25 - mkt.net_claims
-    p_peer = price_after_options(eq_from_ev)
+    p_peer = OPTIONS.price_per_share(eq_from_ev)
     report.ok(
         "at the peer median 7.8x EBITDA: EV 1,521.00, less debt-like claims net of cash 353.58 ="
         " 1,167.42 for shares and options; options at the implied price 19.45 leave 1,147.97, 11.39"
         " a share",
         close(ev_ebitda_peer_median, 7.8)
         and round(eq_from_ev, 2) == 1167.42
-        and round(option_claim(p_peer), 2) == 19.45
+        and round(OPTIONS.claim(p_peer), 2) == 19.45
         and round(p_peer, 2) == 11.39
-        and close(p_peer * SHARES + option_claim(p_peer), eq_from_ev, 1e-9),
+        and close(p_peer * SHARES + OPTIONS.claim(p_peer), eq_from_ev, 1e-9),
     )
     report.ok(
         "dividing the whole residual by shares (11.59) would leave the option claim unpaid",
@@ -752,13 +751,13 @@ def check_quoted_figures(
     )
     dev_capitalised = 22.0
     eq_dev = ev_ebitda_median * (case.ratios[2025].ebitda - dev_capitalised) - mkt.net_claims
-    p_dev = price_after_options(eq_dev)
+    p_dev = OPTIONS.price_per_share(eq_dev)
     report.ok(
         "peer 7.8x on development-adjusted EBITDA 173: shares and options 995.82; options 13.40;"
         " 9.75 a share (9.88 if the options were left unpaid)",
         round(eq_dev, 2) == 995.82
         and round(p_dev, 2) == 9.75
-        and round(option_claim(p_dev), 2) == 13.40
+        and round(OPTIONS.claim(p_dev), 2) == 13.40
         and round(eq_dev / SHARES, 2) == 9.88,
     )
     report.ok("Norland at 30 is 9% above its Gordon value", round(30 / v_gordon - 1, 2) == 0.09)

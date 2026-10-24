@@ -6,7 +6,7 @@ from collections.abc import Callable, Mapping
 from typing import Final
 
 from trading_notes.numerical.option_pricing.black_scholes import BlackScholes
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Line = Mapping[str, float]  # named line items of one year
 
@@ -141,6 +141,39 @@ class YearForecast(Record):
     iters: int
     balance_sheet: dict[str, float]
     opening: dict[str, float]
+
+    def valuation_fcff(self) -> float:
+        """Return a forecast year's valuation FCFF by the CFO route.
+
+        CFO plus after-tax interest and pension financing, less capital spending, acquisitions,
+        right-of-use additions and share-based expense.
+        """
+        pension_fin = 15.0 - self.service - TAX * self.pens_int
+        return (
+            self.cfo
+            + self.interest_paid * (1 - TAX)
+            + pension_fin
+            - self.capex
+            - self.acq_cash
+            - self.lease_new
+            - self.sbc
+        )
+
+    def nopat_route_fcff(self) -> float:
+        """Return valuation FCFF by the NOPAT route: EBIT less cash taxes, D&A and investment."""
+        o, c = self.opening, self.balance_sheet
+        cash_tax = self.current - (c["tax_payable"] - o["tax_payable"])
+        # All finance costs are deductible; their tax shield belongs to the WACC.
+        op_tax = cash_tax + TAX * self.fin
+        dwc = (
+            (c["receivables"] - o["receivables"])
+            + (c["inventory"] - o["inventory"])
+            - (c["payables"] - o["payables"])
+            - (c["accrued_wages"] - o["accrued_wages"])
+            - (c["restructuring_prov"] - o["restructuring_prov"])
+        )
+        da = self.dep + self.rou_dep + self.dev_amort + self.acq_amort
+        return self.op - op_tax + da - dwc - self.capex - self.acq_cash - self.lease_new
 
 
 ASSETS: Final = [
@@ -656,41 +689,6 @@ class CashFlow2025(Record):
     valuation_fcfe: float
 
 
-def valuation_fcff(f: YearForecast) -> float:
-    """Return a forecast year's valuation FCFF by the CFO route.
-
-    CFO plus after-tax interest and pension financing, less capital spending, acquisitions,
-    right-of-use additions and share-based expense.
-    """
-    pension_fin = 15.0 - f.service - TAX * f.pens_int
-    return (
-        f.cfo
-        + f.interest_paid * (1 - TAX)
-        + pension_fin
-        - f.capex
-        - f.acq_cash
-        - f.lease_new
-        - f.sbc
-    )
-
-
-def nopat_route_fcff(f: YearForecast) -> float:
-    """Return valuation FCFF by the independent route: EBIT less cash taxes, D&A and investment."""
-    o, c = f.opening, f.balance_sheet
-    cash_tax = f.current - (c["tax_payable"] - o["tax_payable"])
-    # All finance costs are deductible; their tax shield belongs to the WACC.
-    op_tax = cash_tax + TAX * f.fin
-    dwc = (
-        (c["receivables"] - o["receivables"])
-        + (c["inventory"] - o["inventory"])
-        - (c["payables"] - o["payables"])
-        - (c["accrued_wages"] - o["accrued_wages"])
-        - (c["restructuring_prov"] - o["restructuring_prov"])
-    )
-    da = f.dep + f.rou_dep + f.dev_amort + f.acq_amort
-    return f.op - op_tax + da - dwc - f.capex - f.acq_cash - f.lease_new
-
-
 def terminal_value(nopat_next: float, g: float, ronic: float, r: float) -> float:
     """Return the value-driver terminal value NOPAT_{T+1} (1 - g / RONIC) / (r - g)."""
     return nopat_next * (1 - g / ronic) / (r - g)
@@ -741,16 +739,58 @@ MARKET_PRICE: Final = 11.0  # EUR per share on the valuation date
 GROSS_DEBT: Final = 355.0  # term loan, revolver and leases at the end of 2025
 
 
-def option_on_harbour(price: float) -> BlackScholes:
-    """Return one of the vested options at EUR 8 on a Harbour share worth `price`."""
-    return BlackScholes(
-        spot=price, strike=8.0, maturity=3.0, rate=0.03, vol=0.30, dividend_yield=0.025
-    )
+class VestedOptions(Record):
+    """Employee options on Harbour shares, valued by Black-Scholes-Merton.
+
+    Attributes:
+        count: Options outstanding, millions.
+        strike: Exercise price, EUR.
+        maturity: Years to expiry.
+        rate: Continuously compounded risk-free rate.
+        vol: Volatility of the share.
+        dividend_yield: Continuous dividend yield of the share.
+    """
+
+    count: float
+    strike: float
+    maturity: float
+    rate: float
+    vol: float
+    dividend_yield: float
+
+    def option(self, price: float) -> BlackScholes:
+        """Return one option on a share worth `price`."""
+        return BlackScholes(
+            spot=price,
+            strike=self.strike,
+            maturity=self.maturity,
+            rate=self.rate,
+            vol=self.vol,
+            dividend_yield=self.dividend_yield,
+        )
+
+    def claim(self, price: float) -> float:
+        """Return the value of all the options on a share worth `price`."""
+        return self.count * self.option(price).call()
+
+    def price_per_share(self, equity_before_options: float, shares: float = SHARES) -> float:
+        """Return the value per share after the options, valued at that same price.
+
+        Iterates p = (equity before options - options at p) / shares to a fixed point.
+        """
+        price = equity_before_options / shares
+        for _ in range(200):
+            new_price = (equity_before_options - self.claim(price)) / shares
+            if abs(new_price - price) < 1e-12:
+                break
+            price = new_price
+        return price
 
 
-def option_claim(price: float) -> float:
-    """Return the value of the vested options on a Harbour share worth `price`."""
-    return VESTED_OPTIONS * option_on_harbour(price).call()
+# The 5m vested options at EUR 8: 3 years, volatility 30%, rate 3%, yield 2.5%.
+OPTIONS: Final = VestedOptions(
+    count=VESTED_OPTIONS, strike=8.0, maturity=3.0, rate=0.03, vol=0.30, dividend_yield=0.025
+)
 
 
 def market_cost_of_equity() -> float:
@@ -758,22 +798,8 @@ def market_cost_of_equity() -> float:
 
     The equity is valued at the market price: 3% risk-free rate and 5.5% equity premium.
     """
-    equity = MARKET_PRICE * SHARES + option_claim(MARKET_PRICE)
+    equity = MARKET_PRICE * SHARES + OPTIONS.claim(MARKET_PRICE)
     return 0.03 + 0.93 * (1 + (1 - TAX) * GROSS_DEBT / equity) * 0.055
-
-
-def price_after_options(equity_before_options: float, shares: float = SHARES) -> float:
-    """Return the value per share after the 5m vested options, valued at that same price.
-
-    Iterates p = (equity before options - options at p) / shares to a fixed point.
-    """
-    price = equity_before_options / shares
-    for _ in range(200):
-        new_price = (equity_before_options - option_claim(price)) / shares
-        if abs(new_price - price) < 1e-12:
-            break
-        price = new_price
-    return price
 
 
 class HarbourCase:
@@ -921,7 +947,7 @@ class HarbourCase:
         """Return the valuation at 31 December 2025, at an 8% WACC."""
         wacc, g_ss, ronic_ss = 0.08, 0.025, 0.12
         base = self.base
-        fcff = [valuation_fcff(f) for f in base]
+        fcff = [f.valuation_fcff() for f in base]
         # NOPAT uses book taxes on EBIT with share-based pay non-deductible: EBIT - t(EBIT + SBC).
         nopat_2028 = base[2].op - TAX * (base[2].op + base[2].sbc)
         tv_2028 = terminal_value(nopat_2028 * (1 + g_ss), g_ss, ronic_ss, wacc)
@@ -936,7 +962,7 @@ class HarbourCase:
             pension_after_tax=-b25["db_liab"] * (1 - TAX),
         )
         equity_pre_options = v_short + b25["cash"] - sum(claims.values())
-        price_iv = price_after_options(equity_pre_options)
+        price_iv = OPTIONS.price_per_share(equity_pre_options)
         return HarbourValuation(
             wacc=wacc,
             growth=g_ss,
@@ -949,7 +975,7 @@ class HarbourCase:
             equity_before_options=equity_pre_options,
             shares=SHARES,
             options=VESTED_OPTIONS,
-            option_value=option_on_harbour(price_iv).call(),
+            option_value=OPTIONS.option(price_iv).call(),
             price=price_iv,
         )
 

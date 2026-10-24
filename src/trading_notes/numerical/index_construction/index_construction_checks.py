@@ -12,9 +12,9 @@ from trading_notes.numerical.index_construction.index_mathematics import (
     PriceWeightedIndex,
     one_way_turnover,
 )
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport
 from trading_notes.numerical.tolerance import close
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 

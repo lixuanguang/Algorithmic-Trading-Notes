@@ -1,11 +1,8 @@
-"""Tests of the oracle-shrinkage simulation: its generator, its conditions and its report.
+"""Tests of the oracle-shrinkage simulation: its generator, its conditions and its report."""
 
-The example's own run is tested in test_checks.py. These pin down the generator's draw order,
-the three conditions and the failure-only report, the last with stated estimates instead of a
-new simulation.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's own run is tested in test_checks.py. These pin down the generator's draw order,
+# the three conditions and the failure-only report, the last with stated estimates instead of a
+# new simulation.
 
 import contextlib
 import io

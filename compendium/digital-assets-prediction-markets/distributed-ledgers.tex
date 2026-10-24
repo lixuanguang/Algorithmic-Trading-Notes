@@ -9,7 +9,7 @@
 
 \emph{Limits} (BIS, ch.~V, ``Assessing the economic limitations''): proof-of-work uses large amounts of energy; every full participant stores and checks the whole history, so throughput is capped and fees rise under congestion; finality under proof-of-work is probabilistic, never reaching certainty; and forks can split a chain, as on 11~March~2013 when Bitcoin's two branches were reconciled only by miners departing from protocol.
 
-\qffield{Practice} \emph{Toy ledger} (\texttt{digital-asset-checks.py}, parts~1--4, real SHA-256 hashing).
+\qffield{Practice} \emph{Toy ledger} (\nolinkurl{trading_notes.numerical.distributed_ledgers.digital_assets_checks}, parts~1--4, real SHA-256 hashing).
 \begin{itemize}
 \item Changing ``A pays B~5'' to ``A pays B~50'' in the first of three blocks breaks the chain's verification; a two-hash Merkle branch confirms a transaction in a four-transaction block and rejects an altered one.
 \item With a 12-bit target, finding a valid nonce took 3{,}507 hashes on average over 60 blocks, against an expectation of $2^{12}=4{,}096$; checking took one.

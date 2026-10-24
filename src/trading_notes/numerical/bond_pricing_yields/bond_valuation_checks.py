@@ -12,15 +12,10 @@ from numpy.typing import NDArray
 from scipy.optimize import brentq
 
 from trading_notes.numerical.bond_pricing_yields.fixed_rate_bonds import (
+    FixedRateBond,
     IndexedFloater,
     LinearZeroCurve,
-    convexity,
     days_30_360,
-    horizon,
-    horizon_return_frac,
-    mac_duration,
-    price_periodic,
-    ytm_from_price,
 )
 from trading_notes.numerical.bond_pricing_yields.sofr_notes import (
     BusinessCalendar,
@@ -95,11 +90,13 @@ def check_pricing_between_coupons(report: CheckReport) -> tuple[float, float, fl
     print("== part 2: pricing on and between coupon dates (Handbook chap. 4)")
     report.ok(
         "9% 20-year at 12%: 774.31 (the Handbook adds rounded parts to 774.30); at 7%: 1,213.55",
-        abs(10 * price_periodic(9, 0.12, 40) - 774.3055) < 5e-4,
+        abs(10 * FixedRateBond(coupon=9, periods=40).price(0.12) - 774.3055) < 5e-4,
     )
-    report.ok("  (at 7%)", abs(10 * price_periodic(9, 0.07, 40) - 1213.55) < 0.005)
+    report.ok(
+        "  (at 7%)", abs(10 * FixedRateBond(coupon=9, periods=40).price(0.07) - 1213.55) < 0.005
+    )
     w = days_30_360(date(2021, 7, 17), date(2021, 9, 1)) / 180
-    dirty_h = price_periodic(10, 0.065, 12, w=w)
+    dirty_h = FixedRateBond(coupon=10, periods=12, first=w).price(0.065)
     ai_h = 5 * (180 - 44) / 180
     report.ok("Illustration 4: 44 days of 30/360, w = 0.24444", abs(w - 0.244444) < 1e-6)
     report.ok(
@@ -108,7 +105,7 @@ def check_pricing_between_coupons(report: CheckReport) -> tuple[float, float, fl
     )
     acc_days = days_30_360(last_cpn, settle)
     w0 = (180 - acc_days) / 180
-    full0 = price_periodic(5, y0, n0, w=w0)
+    full0 = FixedRateBond(coupon=5, periods=n0, first=w0).price(y0)
     ai0 = 2.5 * acc_days / 180
     clean0 = full0 - ai0
     print(
@@ -125,7 +122,11 @@ def check_pricing_between_coupons(report: CheckReport) -> tuple[float, float, fl
     )
     report.ok(
         "yield round trip: the full price returns 4.80% exactly",
-        abs(brentq(lambda y: price_periodic(5, y, n0, w=w0) - full0, 0, 0.2) - y0) < 1e-12,
+        abs(
+            brentq(lambda y: FixedRateBond(coupon=5, periods=n0, first=w0).price(y) - full0, 0, 0.2)
+            - y0
+        )
+        < 1e-12,
     )
     # Treasury-style linear first period (Appendix B form) gives a slightly different full
     # price for the same yield.
@@ -149,21 +150,25 @@ def check_pricing_between_coupons(report: CheckReport) -> tuple[float, float, fl
     )
     # Price-yield-coupon relationships on a coupon date (7-year bonds, yield 4.80%)
     p_prem, p_par, p_disc = (
-        price_periodic(6, y0, 14),
-        price_periodic(4.8, y0, 14),
-        price_periodic(3.6, y0, 14),
+        FixedRateBond(coupon=6, periods=14).price(y0),
+        FixedRateBond(coupon=4.8, periods=14).price(y0),
+        FixedRateBond(coupon=3.6, periods=14).price(y0),
     )
     report.ok(
         "coupon above yield -> premium; equal -> par; below -> discount",
         p_prem > 100 and close(p_par, 100, 1e-9) and p_disc < 100,
     )
-    path = [price_periodic(6, y0, k) for k in (14, 10, 6, 2)]
+    path = [FixedRateBond(coupon=6, periods=k).price(y0) for k in (14, 10, 6, 2)]
     report.ok(
         "at an unchanged yield a premium bond's price falls toward par as it ages",
         all(np.diff(path) < 0) and path[-1] > 100,
     )
     dp = [
-        (price_periodic(c, y0 + 0.01, m) / price_periodic(c, y0, m) - 1)
+        (
+            FixedRateBond(coupon=c, periods=m).price(y0 + 0.01)
+            / FixedRateBond(coupon=c, periods=m).price(y0)
+            - 1
+        )
         for c, m in ((4.8, 6), (4.8, 30), (0.0, 30))
     ]
     report.ok(
@@ -173,7 +178,10 @@ def check_pricing_between_coupons(report: CheckReport) -> tuple[float, float, fl
         and abs(dp[1] + 0.099281) < 5e-6
         and abs(dp[2] + 0.135953) < 5e-6,
     )
-    up, dn = price_periodic(4.8, y0 + 0.01, 30), price_periodic(4.8, y0 - 0.01, 30)
+    up, dn = (
+        FixedRateBond(coupon=4.8, periods=30).price(y0 + 0.01),
+        FixedRateBond(coupon=4.8, periods=30).price(y0 - 0.01),
+    )
     report.ok(
         "convex shape: the gain for -100 bp exceeds the loss for +100 bp", (dn - 100) > (100 - up)
     )
@@ -306,9 +314,12 @@ def check_matrix_pricing(report: CheckReport) -> None:
     # Two traded bonds of the same issuer rating and sector, priced on a coupon date: A 4-year
     # 4.0%, B 6-year 5.0%.
     pa, pb = 98.20, 101.10
-    ya, yb = ytm_from_price(pa, 4.0, 8), ytm_from_price(pb, 5.0, 12)
+    ya, yb = (
+        FixedRateBond(coupon=4.0, periods=8).yield_at(pa),
+        FixedRateBond(coupon=5.0, periods=12).yield_at(pb),
+    )
     y5 = 0.5 * (ya + yb)  # linear interpolation in maturity at 5 years
-    p_matrix = price_periodic(4.5, y5, 10)
+    p_matrix = FixedRateBond(coupon=4.5, periods=10).price(y5)
     print(
         f"    yA {100 * ya:.4f}%, yB {100 * yb:.4f}%, interpolated 5y {100 * y5:.4f}%, matrix price"
         f" {p_matrix:.4f}"
@@ -472,15 +483,20 @@ def check_duration_pvbp(report: CheckReport) -> float:
     print("== part 6: duration, PVBP and convexity (yield-based, option-free)")
     # 7-year 5% s.a. bond at 4.80% on a coupon date (original example)
     c7, n7 = 5.0, 14
-    p7 = price_periodic(c7, y0, n7)
-    D_mac = mac_duration(c7, y0, n7)
+    p7 = FixedRateBond(coupon=c7, periods=n7).price(y0)
+    D_mac = FixedRateBond(coupon=c7, periods=n7).macaulay_duration(y0)
     D_mod = D_mac / (1 + y0 / 2)
     h = 1e-4
-    D_app = (price_periodic(c7, y0 - h, n7) - price_periodic(c7, y0 + h, n7)) / (2 * p7 * h)
-    C7 = convexity(c7, y0, n7)
-    C_app = (price_periodic(c7, y0 - h, n7) + price_periodic(c7, y0 + h, n7) - 2 * p7) / (
-        p7 * h * h
-    )
+    D_app = (
+        FixedRateBond(coupon=c7, periods=n7).price(y0 - h)
+        - FixedRateBond(coupon=c7, periods=n7).price(y0 + h)
+    ) / (2 * p7 * h)
+    C7 = FixedRateBond(coupon=c7, periods=n7).convexity(y0)
+    C_app = (
+        FixedRateBond(coupon=c7, periods=n7).price(y0 - h)
+        + FixedRateBond(coupon=c7, periods=n7).price(y0 + h)
+        - 2 * p7
+    ) / (p7 * h * h)
     pvbp = p7 * D_mod * 1e-4
     print(
         f"    7y 5% at 4.80%: price {p7:.4f}, Macaulay {D_mac:.4f}, modified {D_mod:.4f}, convexity"
@@ -508,7 +524,7 @@ def check_duration_pvbp(report: CheckReport) -> float:
         and abs(p7 / 100 * D_mod * 1e7 * 1e-4 - 5927.05) < 0.01,
     )
     for dy, exp_full in ((0.001, -0.5843), (0.01, -5.6689), (0.02, -11.0164), (-0.02, 12.5735)):
-        full = price_periodic(c7, y0 + dy, n7) / p7 - 1
+        full = FixedRateBond(coupon=c7, periods=n7).price(y0 + dy) / p7 - 1
         d_only = -D_mod * dy
         d_c = d_only + 0.5 * C7 * dy * dy
         print(
@@ -523,27 +539,30 @@ def check_duration_pvbp(report: CheckReport) -> float:
             )
     report.ok(
         "full repricing: +200 bp -10.943%, -200 bp +12.572%",
-        abs(price_periodic(c7, y0 + 0.02, n7) / p7 - 1 + 0.109431) < 5e-6
-        and abs(price_periodic(c7, y0 - 0.02, n7) / p7 - 1 - 0.125717) < 5e-6,
+        abs(FixedRateBond(coupon=c7, periods=n7).price(y0 + 0.02) / p7 - 1 + 0.109431) < 5e-6
+        and abs(FixedRateBond(coupon=c7, periods=n7).price(y0 - 0.02) / p7 - 1 - 0.125717) < 5e-6,
     )
     # Properties: zero-coupon Macaulay = maturity; perpetuity limit; longer maturity and lower
     # coupon -> longer duration.
     report.ok(
         "a zero's Macaulay duration equals its maturity (10 years)",
-        close(mac_duration(0.0, y0, 20), 10.0, 1e-12),
+        close(FixedRateBond(coupon=0.0, periods=20).macaulay_duration(y0), 10.0, 1e-12),
     )
     report.ok(
         "duration rises with maturity and falls with coupon and with yield level",
-        mac_duration(5, y0, 20) > mac_duration(5, y0, 10)
-        and mac_duration(3, y0, 20) > mac_duration(5, y0, 20)
-        and mac_duration(5, 0.08, 20) < mac_duration(5, y0, 20),
+        FixedRateBond(coupon=5, periods=20).macaulay_duration(y0)
+        > FixedRateBond(coupon=5, periods=10).macaulay_duration(y0)
+        and FixedRateBond(coupon=3, periods=20).macaulay_duration(y0)
+        > FixedRateBond(coupon=5, periods=20).macaulay_duration(y0)
+        and FixedRateBond(coupon=5, periods=20).macaulay_duration(0.08)
+        < FixedRateBond(coupon=5, periods=20).macaulay_duration(y0),
     )
     # Handbook chap. 5: 5% 20-year at 4%: approximate duration 13.09 (20 bp shocks), convexity
     # measure 112.38 (Eq. 5-4)
     V0, Vm, Vp = (
-        price_periodic(5, 0.04, 40),
-        price_periodic(5, 0.038, 40),
-        price_periodic(5, 0.042, 40),
+        FixedRateBond(coupon=5, periods=40).price(0.04),
+        FixedRateBond(coupon=5, periods=40).price(0.038),
+        FixedRateBond(coupon=5, periods=40).price(0.042),
     )
     report.ok(
         "Handbook prices 113.6777, 116.7049, 110.7527",
@@ -560,8 +579,8 @@ def check_duration_pvbp(report: CheckReport) -> float:
     )
     report.ok(
         "PVBP at 3.99% and 4.01%: 0.1489 and 0.1486",
-        abs(price_periodic(5, 0.0399, 40) - V0 - 0.1489) < 5e-5
-        and abs(V0 - price_periodic(5, 0.0401, 40) - 0.1486) < 5e-5,
+        abs(FixedRateBond(coupon=5, periods=40).price(0.0399) - V0 - 0.1489) < 5e-5
+        and abs(V0 - FixedRateBond(coupon=5, periods=40).price(0.0401) - 0.1486) < 5e-5,
     )
     # Handbook portfolio duration 8.81 from market-value weights
     mv = np.array([6122823, 2273555, 2521413.0])
@@ -579,10 +598,10 @@ def check_portfolio_duration(report: CheckReport) -> None:
     mods_rows: list[float] = []
     convs_rows: list[float] = []
     for par, c, m, yy_ in hold:
-        pr = price_periodic(c, yy_, m)
+        pr = FixedRateBond(coupon=c, periods=m).price(yy_)
         vals_rows.append(par * pr / 100)
-        mods_rows.append(mac_duration(c, yy_, m) / (1 + yy_ / 2))
-        convs_rows.append(convexity(c, yy_, m))
+        mods_rows.append(FixedRateBond(coupon=c, periods=m).macaulay_duration(yy_) / (1 + yy_ / 2))
+        convs_rows.append(FixedRateBond(coupon=c, periods=m).convexity(yy_))
     vals, mods, convs = map(np.array, (vals_rows, mods_rows, convs_rows))
     wts = vals / vals.sum()
     D_port, C_port = wts @ mods, wts @ convs
@@ -602,7 +621,7 @@ def check_portfolio_duration(report: CheckReport) -> None:
 
     def port_value(shift_by_bond: Sequence[float]) -> float:
         return sum(
-            par * price_periodic(c, yy_ + sh, m) / 100
+            par * FixedRateBond(coupon=c, periods=m).price(yy_ + sh) / 100
             for (par, c, m, yy_), sh in zip(hold, shift_by_bond, strict=True)
         )
 
@@ -643,7 +662,7 @@ def check_return_sources(report: CheckReport, D_mac: float) -> None:
     print("== part 8: sources of return and the Macaulay-duration horizon")
     # Buy the 7-year 5% bond at 4.80% (price 101.1754). Hold 3 years; coupons reinvested at the
     # prevailing yield.
-    base = horizon(0.048)
+    base = FixedRateBond(coupon=5.0, periods=14).horizon_return(0.048, 0.048, 3)
     report.ok(
         "unchanged 4.80% yield: 3-year return 4.80% (bond-equivalent) exactly",
         abs(base.ann - 0.048) < 1e-12,
@@ -657,8 +676,8 @@ def check_return_sources(report: CheckReport, D_mac: float) -> None:
             1e-9,
         ),
     )
-    up100 = horizon(0.058)
-    dn100 = horizon(0.038)
+    up100 = FixedRateBond(coupon=5.0, periods=14).horizon_return(0.048, 0.058, 3)
+    dn100 = FixedRateBond(coupon=5.0, periods=14).horizon_return(0.048, 0.038, 3)
     print("    +100 bp:", {k: round(v, 4) for k, v in up100.model_dump().items()})
     report.ok(
         "+100 bp just after purchase: higher reinvestment but a capital loss; 3-year return"
@@ -674,7 +693,10 @@ def check_return_sources(report: CheckReport, D_mac: float) -> None:
     # Horizon equal to Macaulay duration (6.0081 years): returns nearly immune to a one-time small
     # parallel shift.
     Hmac = D_mac
-    r_up, r_dn = horizon_return_frac(0.0490, Hmac), horizon_return_frac(0.0470, Hmac)
+    r_up, r_dn = (
+        FixedRateBond(coupon=5.0, periods=14).annualised_horizon_return(0.048, 0.0490, Hmac),
+        FixedRateBond(coupon=5.0, periods=14).annualised_horizon_return(0.048, 0.0470, Hmac),
+    )
     report.ok(
         "horizon = Macaulay duration: a +/-10 bp shift moves the realised return by under 0.02 bp",
         abs(r_up - 0.048) < 2e-6 and abs(r_dn - 0.048) < 2e-6,
@@ -684,8 +706,8 @@ def check_return_sources(report: CheckReport, D_mac: float) -> None:
         "and both shifts leave it at or above 4.80% (convexity)",
         r_up >= 0.048 - 1e-12 and r_dn >= 0.048 - 1e-12,
     )
-    r_short = horizon_return_frac(0.0580, 2.0)
-    r_long = horizon_return_frac(0.0580, 7.0)
+    r_short = FixedRateBond(coupon=5.0, periods=14).annualised_horizon_return(0.048, 0.0580, 2.0)
+    r_long = FixedRateBond(coupon=5.0, periods=14).annualised_horizon_return(0.048, 0.0580, 7.0)
     report.ok(
         "+100 bp: a 2-year horizon (shorter than duration) loses, the 7-year horizon (maturity)"
         " gains",

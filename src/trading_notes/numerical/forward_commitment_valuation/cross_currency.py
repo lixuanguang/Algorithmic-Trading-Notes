@@ -1,6 +1,6 @@
 """One-period cross-currency basis swap: the forward it implies and the basis a forward implies."""
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class CrossCurrencySwap(Record):

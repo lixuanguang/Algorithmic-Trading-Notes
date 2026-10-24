@@ -4,7 +4,7 @@ import csv
 from pathlib import Path
 from typing import Literal
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Outcome = Literal["hit", "miss", "provisional miss", "window open"]
 

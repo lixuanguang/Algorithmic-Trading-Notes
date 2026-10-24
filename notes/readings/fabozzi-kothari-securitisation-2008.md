@@ -20,7 +20,7 @@ Prepared on 2026-10-20 by the credit, time-series and valuation batch (2026-10-2
 ## Key results
 
 - Securitisation delinks the pool's credit from the originator's; securities can be rated above the originator's secured debt (pp. 5-6); true sale to an SPV (p. 9).
-- Rebuilt by credit-cds-securitisation-checks.py: Table 3.1 month 1 (payment 3,964,947; prepayment 546,435); PAC schedule total 470,224,580 (p. 45); class A retired month 78 and B month 97 (Table 3.2; the text says 98); average life 8.54 years against the printed 8.6.
+- Rebuilt by trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: Table 3.1 month 1 (payment 3,964,947; prepayment 546,435); PAC schedule total 470,224,580 (p. 45); class A retired month 78 and B month 97 (Table 3.2; the text says 98); average life 8.54 years against the printed 8.6.
 - Sizing: base-case loss 1.68% x multiples 5/4/3/2/1.75 gives AAA support 8.40% and class sizes 91.60/1.68/1.68/1.68/0.42% (p. 96).
 
 ## Limits

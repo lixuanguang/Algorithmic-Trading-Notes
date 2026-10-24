@@ -2,12 +2,7 @@
 
 import math
 
-from trading_notes.numerical.records import Record
-
-
-def annuity(r: float, n: int) -> float:
-    """Return the annuity factor: n payments of one at rate r, at year-ends (n if r is zero)."""
-    return n if r == 0 else (1 - (1 + r) ** -n) / r
+from trading_notes.records import Record
 
 
 class MarketAssumptions(Record):

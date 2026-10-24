@@ -1,6 +1,6 @@
 """Closed forms of Grossman-Miller with fees, Kyle's single auction and Roll's spread model."""
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class GrossmanMillerFees(Record):

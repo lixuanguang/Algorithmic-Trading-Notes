@@ -2,7 +2,7 @@
 
 import math
 import sys
-from typing import Final, cast
+from typing import Final
 
 import numpy as np
 import scipy
@@ -15,9 +15,9 @@ from trading_notes.numerical.equity_portfolio_management.equity_universe import 
     Universe,
     active_share,
 )
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.tolerance import close
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 type Ints = NDArray[np.int64]
@@ -339,7 +339,7 @@ def check_capacity_structure(report: CheckReport, u: Universe, rng: np.random.Ge
     kkt[:N, :N] = 2 * lam * D
     kkt[:N, N] = kkt[N, :N] = 1.0
     sol = np.linalg.solve(kkt, np.concatenate([alpha, [0.0]]))
-    q_naive = cast(Floats, np.linalg.solve(2 * lam * D, alpha))
+    q_naive = np.asarray(np.linalg.solve(2 * lam * D, alpha), dtype=np.float64)
     # alternative reference: the unconstrained solution scaled back to zero net active weight
     q_naive -= w_cap * q_naive.sum() / w_cap.sum()
 

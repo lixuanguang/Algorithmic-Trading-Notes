@@ -18,9 +18,9 @@ from trading_notes.numerical.private_debt_special_situations.restructuring impor
 )
 from trading_notes.numerical.private_equity_strategies.leveraged_buyout import LeveragedBuyout
 from trading_notes.numerical.private_fund_structures.waterfalls import DealBook, EuropeanWaterfall
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport
 from trading_notes.numerical.tolerance import close
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 

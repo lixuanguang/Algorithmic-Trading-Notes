@@ -1,25 +1,14 @@
-r"""Shared representation of the compendium sources and the pinned learning guide.
-
-Both structural checkers read the master's \qfpart declaration, the guide, the citation-key
-registries and the typed entries through this module. A `Compendium` belongs to one run: it
-reads each TeX file at most once and is discarded with the run, so successive runs on a
-modified repository never see stale text.
-
-Typed entries are environments `qf<type>` with an optional bracketed title. Entry labels
-carry a type prefix (`mod:` for a model, and so on). LaTeX resolves `\input` paths from
-compendium/, so files are identified by resolved paths: `a/topic` and `a/../a/topic`, or a
-symbolic link, name one file.
-"""
+r"""Shared representation of the compendium sources and the pinned learning guide."""
 
 import json
 import re
 from collections import Counter
 from collections.abc import Container, Iterable, Set
-from dataclasses import dataclass
 from functools import cached_property
 from pathlib import Path
 from typing import Final
 
+from trading_notes.records import Record
 from trading_notes.structure.json_fields import JsonRecord, as_object
 
 MASTER: Final = Path("compendium") / "compendium.tex"
@@ -67,8 +56,7 @@ def collapse(text: str) -> str:
     return " ".join(text.split())
 
 
-@dataclass(frozen=True)
-class Part:
+class Part(Record):
     """A Part of the reading order.
 
     Attributes:
@@ -82,8 +70,7 @@ class Part:
     sections: tuple[str, ...]
 
 
-@dataclass(frozen=True)
-class Guide:
+class Guide(Record):
     """The parts of the pinned guide's learning_routes.json that the checks compare against.
 
     Names and titles have their whitespace collapsed.
@@ -144,7 +131,7 @@ class Guide:
             key, title = part.text("id", required=True), part.text("title", required=True)
             sections = part.texts("routes", required=True)
             if key is not None and title is not None:
-                parts.append(Part(key, collapse(title), sections))
+                parts.append(Part(key=key, title=collapse(title), sections=sections))
         section_names, section_pathways = {}, {}
         for route in records("routes", required=True):
             if (key := route.text("id", required=True)) is not None:
@@ -160,11 +147,16 @@ class Guide:
                 retired[key] = overview.texts("successors", required=True)
         if problems:
             raise RepositoryInputError("\n".join(problems))
-        return cls(tuple(parts), section_names, section_pathways, pathway_names, retired)
+        return cls(
+            parts=tuple(parts),
+            section_names=section_names,
+            section_pathways=section_pathways,
+            pathway_names=pathway_names,
+            retired_overviews=retired,
+        )
 
 
-@dataclass(frozen=True)
-class CitationKeys:
+class CitationKeys(Record):
     r"""The citation keys an entry may cite.
 
     Attributes:
@@ -194,13 +186,12 @@ class CitationKeys:
         sources = root / SOURCES
         registered = sources.read_text(encoding="utf-8") if sources.exists() else ""
         return cls(
-            frozenset(re.findall(r"\\CatalogueEntry\{([^}]+)\}", catalogue)),
-            frozenset(re.findall(r"\\qfsource(?:\[[^]]*\])?\{([^}]+)\}", registered)),
+            catalogue=frozenset(re.findall(r"\\CatalogueEntry\{([^}]+)\}", catalogue)),
+            registered=frozenset(re.findall(r"\\qfsource(?:\[[^]]*\])?\{([^}]+)\}", registered)),
         )
 
 
-@dataclass(frozen=True)
-class Declaration:
+class Declaration(Record):
     r"""The master's \qfpart declaration of Parts and sections.
 
     Attributes:
@@ -219,8 +210,7 @@ class Declaration:
         return tuple(key for part in self.parts for key in part.sections)
 
 
-@dataclass(frozen=True)
-class Entry:
+class Entry(Record):
     """A typed entry in a section folder.
 
     Attributes:
@@ -242,6 +232,16 @@ class Entry:
 
 class Compendium:
     r"""One run's view of a repository: its TeX sources, pinned guide and citation keys.
+
+    Both structural checkers read the master's \qfpart declaration, the guide, the citation-key
+    registries and the typed entries through this module. A `Compendium` belongs to one run: it
+    reads each TeX file at most once and is discarded with the run, so successive runs on a modified
+    repository never see stale text.
+
+    Typed entries are environments `qf<type>` with an optional bracketed title. Entry labels carry a
+    type prefix (`mod:` for a model, and so on). LaTeX resolves `\input` paths from compendium/, so
+    files are identified by resolved paths: `a/topic` and `a/../a/topic`, or a symbolic link, name
+    one file.
 
     TeX files are read on first use and then kept, comment-stripped, for the life of the
     instance. Create one instance per run so that edits between runs are seen.
@@ -326,7 +326,7 @@ class Compendium:
                 f"{where}: section `{key}` is a retired guide overview; "
                 "declare its successor sections instead"
             )
-        return Declaration(tuple(parts), frozenset(sections | specialist | retired))
+        return Declaration(parts=tuple(parts), note_keys=frozenset(sections | specialist | retired))
 
     def _declared_parts(self, where: str, problems: list[str]) -> list[Part]:
         r"""Return the master's well-formed Parts in order, reporting malformed declarations."""
@@ -359,7 +359,7 @@ class Compendium:
                 else:
                     seen.add(key)
                     keys.append(key)
-            parts.append(Part(part_key, collapse(raw_title), tuple(keys)))
+            parts.append(Part(key=part_key, title=collapse(raw_title), sections=tuple(keys)))
         return parts
 
     def _check_guide_alignment(self, parts: list[Part], where: str, problems: list[str]) -> None:

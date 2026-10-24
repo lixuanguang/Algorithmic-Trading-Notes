@@ -7,7 +7,7 @@ from typing import Final
 import numpy as np
 from scipy.optimize import brentq
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 SIG: Final = 0.10  # the Handbook's volatility
 

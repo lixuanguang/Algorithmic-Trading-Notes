@@ -1,0 +1,36 @@
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\definecolor{pathfill}{HTML}{EDF3F5}
+\definecolor{pathrule}{HTML}{7E969F}
+% Keep page fallbacks intact and attached to the end of the linked text.
+\newcommand{\CataloguePage}[1]{\nobreakspace{\small\mbox{(Catalogue p.\,#1)}}}
+\newcommand{\BranchPage}[1]{\nobreakspace\mbox{(p.\,#1)}}
+% Note keys (catalogue identifiers and pathway ids) end their line, flush right.
+\definecolor{notekey}{HTML}{4F6670}
+\newcommand{\NoteKey}[1]{\unskip\nobreak\hfill\penalty50\hskip1em\hbox{}\nobreak\hfill{\fontsize{7.2}{8.6}\selectfont\ttfamily\color{notekey}#1}{\parfillskip=0pt\par}}
+\newsavebox{\pathnodebox}
+\newlength{\pathnodeheight}
+\newcommand{\MeasurePathNode}[2]{%
+  \sbox{\pathnodebox}{\parbox{#1}{\centering #2}}%
+  \setlength{\pathnodeheight}{\dimexpr\ht\pathnodebox+\dp\pathnodebox\relax}%
+  \ifdim\pathnodeheight<1.30cm\setlength{\pathnodeheight}{1.30cm}\fi
+}
+\tikzset{
+ pathnode/.style={draw=pathrule,fill=pathfill,rounded corners=3pt,inner sep=4pt,font=\fontsize{9}{10.35}\selectfont},
+ patharrow/.style={-{Stealth[length=2mm]},draw=catalogueink,line width=.7pt},
+ pathline/.style={draw=catalogueink,line width=.7pt},
+ entryarrow/.style={patharrow,dashed},
+ entryline/.style={pathline,dashed},
+ maplabel/.style={font=\fontsize{7.2}{9}\selectfont\bfseries,text=catalogueink,fill=white,inner sep=2pt}
+}
+% A retired overview's bridge labels: \ref prints the part that now holds its first
+% successor and \nameref the retired name, not the title of the preceding section.
+\makeatletter
+\newcommand{\BridgeLabel}[3]{{\def\@currentlabel{#2}\def\@currentlabelname{#3}\label{#1}}}
+\makeatother
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+\titleformat{\part}[display]{\centering\color{catalogueink}\bfseries}{\large PART \thepart}{10pt}{\fontsize{21.6}{25.2}\selectfont}
+\titleformat{\section}{\fontsize{14.4}{17.1}\selectfont\bfseries\color{catalogueink}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\fontsize{11.7}{14.4}\selectfont\bfseries\color{catalogueink}}{\thesubsection}{0.6em}{}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=7pt,topsep=5pt}

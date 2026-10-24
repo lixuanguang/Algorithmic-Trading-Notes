@@ -18,7 +18,7 @@ Not mastered and not consolidated: no dates in `notes/log.md`. Opened on 23 Octo
 
 ## Checkpoint
 
-Not attempted. The checkpoint asks the reader to build and test a small library: rate conversions, annuity and loan schedules, an IRR solver with a two-IRR example, and a share forward checked against replication. The worked examples in `notes/artefacts/time-value-returns/time-value-return-checks.py` are editorial checks of the entries' figures; they are not that library and do not count as the checkpoint.
+Not attempted. The checkpoint asks the reader to build and test a small library: rate conversions, annuity and loan schedules, an IRR solver with a two-IRR example, and a share forward checked against replication. The worked examples in `trading_notes.numerical.financial_mathematics.time_value_returns_checks` are editorial checks of the entries' figures; they are not that library and do not count as the checkpoint.
 
 ## Entries
 

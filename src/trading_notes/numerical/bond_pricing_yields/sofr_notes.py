@@ -4,8 +4,8 @@ from collections.abc import Callable, Iterable
 from datetime import date, timedelta
 from itertools import pairwise
 
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.us_calendar import last_weekday, nth_weekday
+from trading_notes.records import Record
 
 
 def federal_reserve_holidays(y: int) -> set[date]:

@@ -19,10 +19,10 @@ from trading_notes.numerical.multiple_regression.least_squares import (
     newton_logit,
 )
 from trading_notes.numerical.portfolio_choice.history import DATA, AssetClassHistory
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.repository import repository_root
 from trading_notes.numerical.tolerance import close
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 

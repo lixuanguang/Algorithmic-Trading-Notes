@@ -7,7 +7,7 @@ from numpy.typing import NDArray
 from scipy.optimize import minimize
 from scipy.stats import norm
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 

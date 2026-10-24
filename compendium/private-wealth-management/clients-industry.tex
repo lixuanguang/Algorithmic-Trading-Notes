@@ -32,7 +32,7 @@ with $h$ real after-tax earnings, $R$ the retirement age and $\nu$ a premium for
 
 \emph{Components}: client and accounts; return objective; risk tolerance (capacity and willingness); time horizons by goal; liquidity needs; taxes; legal and regulatory constraints; unique circumstances; review schedule and benchmark.
 
-\qffield{Practice} \emph{IPS for the Okafors} (original; \texttt{private-wealth-checks.py}, parts~1 and 3). \emph{Capital}: of the 600,000 of financial assets, a 60,000 emergency reserve is held in cash \emph{outside} the policy portfolio; the remaining 540,000 is the policy portfolio that funds the goals. The reserve is never counted as goal capital.
+\qffield{Practice} \emph{IPS for the Okafors} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, parts~1 and 3). \emph{Capital}: of the 600,000 of financial assets, a 60,000 emergency reserve is held in cash \emph{outside} the policy portfolio; the remaining 540,000 is the policy portfolio that funds the goals. The reserve is never counted as goal capital.
 \begin{itemize}
 \item \emph{Return}: retirement at 62 needs USD~150,000 a year in today's money for 30 years, before income tax on withdrawals; Social Security is assumed to provide 60,000, so the gap is worth 1.76 million at 62 at 3 percent real. With 540,000 today, 50,000 saved at the end of each of the next 22 years and 200,000 paid out in years 8 and 10, the required real return is 2.30 percent. Counting the reserve as goal capital as well would give 1.96 percent while spending the same 60,000 on emergencies.
 \item \emph{Risk}: capacity is high (3.00 million of stable human capital, 22 years to retirement, a modest required return), though Tunde's equity-like commission income reduces it. Their willingness is moderate: they say they would sell after a one-year loss of about 15 percent. Willingness is the lower of the two and governs.
@@ -45,7 +45,7 @@ with $h$ real after-tax earnings, $R$ the retirement age and $\nu$ a premium for
 \end{itemize}
 The modest required return lets the moderate willingness govern without leaving the goals short; the allocation is tested against both in \hyperref[meth:private-client-allocation-review]{the allocation review}.
 
-\qffield{Conditions} The Social Security figure, return assumptions, spending goal and 2026 income figures are illustrative; the tax calculation ignores state and payroll taxes, itemised deductions and credits (\texttt{private-wealth-checks.py}, part~3, checks it by the statutory formula and by layer-by-layer stacking). The funding model works in today's dollars with year-end flows, treats savings and the retirement goal as before tax on withdrawal, and ignores the taxable account's tax drag; saving from variable commissions above the planned 50,000 is not counted until received; ESMA's guidelines apply to EU firms giving advice or managing portfolios.
+\qffield{Conditions} The Social Security figure, return assumptions, spending goal and 2026 income figures are illustrative; the tax calculation ignores state and payroll taxes, itemised deductions and credits (\nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, part~3, checks it by the statutory formula and by layer-by-layer stacking). The funding model works in today's dollars with year-end flows, treats savings and the retirement goal as before tax on withdrawal, and ignores the taxable account's tax drag; saving from variable commissions above the planned 50,000 is not counted until received; ESMA's guidelines apply to EU firms giving advice or managing portfolios.
 
 \qffield{Pitfalls} Setting risk from questionnaire answers alone. Reading the rate on dividends and gains from the ordinary-income band instead of stacking them against the 0 and 15 percent ceilings. Writing one IPS for a couple without recording whose goals and accounts it covers. Never revisiting the IPS after a life event.
 
@@ -66,7 +66,7 @@ The modest required return lets the moderate willingness govern without leaving 
 \item \emph{European Union}: firms must disclose all costs and their cumulative effect on return, at least annually; firms advising on an \emph{independent} basis must assess a sufficiently wide range of products and may not keep third-party commissions, nor may portfolio managers; other inducements are allowed only if they enhance the service and are disclosed \citep[Art.~24(4), (7)--(9)]{eu-2014-65-mifid2}. The Standards add a cost-and-services disclosure for members worldwide (V(B)).
 \end{itemize}
 
-\qffield{Practice} \emph{Three fee models on USD~2 million over 20 years at 6 percent gross} (original; \texttt{private-wealth-checks.py}, part~4):
+\qffield{Practice} \emph{Three fee models on USD~2 million over 20 years at 6 percent gross} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, part~4):
 \begin{center}\small
 \begin{tabular}{@{}lr@{}}
 \toprule

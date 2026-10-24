@@ -2,7 +2,6 @@
 
 import math
 import sys
-from typing import cast
 
 import numpy as np
 import scipy
@@ -24,16 +23,14 @@ from trading_notes.numerical.company_case.harbour import (
     HarbourCase,
     YearForecast,
     avg,
-    nopat_route_fcff,
     opening_2023_balances,
     straight_line,
     terminal_value,
-    valuation_fcff,
 )
 from trading_notes.numerical.option_pricing.black_scholes import BlackScholes
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.tolerance import close
+from trading_notes.records import Record
 
 type Line = dict[str, float]
 
@@ -418,7 +415,7 @@ def check_eps(report: CheckReport, case: HarbourCase) -> None:
     monthly = [40] * 3 + [46] * 6 + [44] * 3
     report.ok(
         "weighted average shares: formula equals month-by-month average",
-        close(cast(np.float64, np.mean(monthly)) * 1.1, wa, 1e-12),
+        close(float(np.mean(monthly)) * 1.1, wa, 1e-12),
         f"{wa:.4f}m",
     )
     profit, pref_cum, pref_conv_div = 50.0, 2.0, 3.0
@@ -1297,7 +1294,7 @@ def check_valuation(report: CheckReport, case: HarbourCase) -> None:
     fcff = valuation.fcff
     report.ok(
         "valuation FCFF: CFO route equals the NOPAT route in every forecast year",
-        all(close(a, nopat_route_fcff(f), 1e-9) for a, f in zip(fcff, base)),
+        all(close(a, f.nopat_route_fcff(), 1e-9) for a, f in zip(fcff, base)),
         ", ".join(
             f"{f.year} {a:.4f} (accounting {b:.4f})" for f, a, b in zip(base, fcff, fcff_old)
         ),
@@ -1332,7 +1329,7 @@ def check_valuation(report: CheckReport, case: HarbourCase) -> None:
             close(fcfe_stat, f.divs + c["cash"] - o["cash"], 1e-9)
             and close(fcfe_stat, fcfe_debt, 1e-12)
             and close(
-                valuation_fcff(f),
+                f.valuation_fcff(),
                 (fcfe_debt - f.sbc)
                 + (f.interest_paid + f.pens_int) * (1 - TAX)
                 - (f.lease_new - f.lease_principal - f.loan_repay + f.draw)

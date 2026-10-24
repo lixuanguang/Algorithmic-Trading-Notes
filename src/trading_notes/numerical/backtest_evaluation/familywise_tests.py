@@ -5,7 +5,7 @@ from typing import Self
 import numpy as np
 from numpy.typing import NDArray
 
-from trading_notes.numerical.records import MutableRecord, Record
+from trading_notes.records import MutableRecord, Record
 
 type Floats = NDArray[np.float64]
 type Flags = NDArray[np.bool_]

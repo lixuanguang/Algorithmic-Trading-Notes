@@ -1,17 +1,9 @@
-"""The project environment holds a current, non-editable copy of trading_notes.
+"""The project environment holds a current, non-editable copy of trading_notes."""
 
-CPython skips an editable install's .pth file once macOS marks it hidden, which leaves the
-package unimportable; and uv reinstalls the project editable on any `uv sync` or `uv run`
-without --no-editable. So these tests check the installed copy itself, and that every uv
-command the repository runs or documents passes --no-editable.
-
-A command counts when it is written out: in a recipe, hook, workflow, docstring or code
-block, or inline in prose (`uv run --frozen --no-editable python <script>`). A command name
-alone in backticks (`uv run`) is prose about it, not an instruction. Frozen evidence is not
-scanned: superseded-* runs and the dated run records of notes/source-review-records.md.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# CPython skips an editable install's .pth file once macOS marks it hidden, which leaves the
+# package unimportable; and uv reinstalls the project editable on any `uv sync` or `uv run`
+# without --no-editable. So these tests check the installed copy itself, and that every uv
+# command the repository runs or documents passes --no-editable.
 
 import importlib.metadata
 import json
@@ -26,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "src" / "trading_notes"
 DISTRIBUTION = "algorithmic-trading-notes"
 # Not maintained here: the vendored guide, git-ignored local copies and the environment at the
-# top level; caches and frozen superseded-* runs anywhere; dated records of commands as run.
+# top level; caches anywhere; dated records of commands as run.
 TOP_LEVEL_SKIPPED = {".git", ".venv", "guide", "reading_materials", "reading materials"}
 CACHES = {"__pycache__", ".mypy_cache", ".pytest_cache", ".ruff_cache"}
 HISTORICAL = {ROOT / "notes" / "source-review-records.md"}
@@ -44,9 +36,7 @@ def maintained_files() -> list[Path]:
         subfolders[:] = sorted(
             name
             for name in subfolders
-            if not (here == ROOT and name in TOP_LEVEL_SKIPPED)
-            and name not in CACHES
-            and not name.startswith("superseded-")
+            if not (here == ROOT and name in TOP_LEVEL_SKIPPED) and name not in CACHES
         )
         found += [
             here / name
@@ -58,11 +48,11 @@ def maintained_files() -> list[Path]:
 
 
 def sources(root: Path) -> dict[str, bytes]:
-    """Return the Python files below root, by path relative to it, with their contents."""
+    """Return the files below root other than bytecode, by relative path, with their contents."""
     return {
         path.relative_to(root).as_posix(): path.read_bytes()
-        for path in sorted(root.rglob("*.py"))
-        if "__pycache__" not in path.parts
+        for path in sorted(root.rglob("*"))
+        if path.is_file() and "__pycache__" not in path.parts
     }
 
 
@@ -85,7 +75,7 @@ class Installation(unittest.TestCase):
         self.assertEqual(package.parent.name, "site-packages")
 
     def test_installed_copy_matches_source(self) -> None:
-        """The installed modules are exactly the source modules, byte for byte."""
+        """The installed files are exactly the source files, byte for byte."""
         installed = sources(Path(trading_notes.__file__).resolve().parent)
         source = sources(SOURCE)
         self.assertEqual(sorted(installed), sorted(source))
@@ -93,18 +83,22 @@ class Installation(unittest.TestCase):
 
 
 class UvCommands(unittest.TestCase):
-    """Every command that syncs or runs with uv keeps the non-editable installation."""
+    """Every command that syncs or runs with uv keeps the non-editable installation.
+
+    A command counts when it is written out: in a recipe, hook, workflow, docstring or code
+    block, or inline in prose (`uv run --frozen --no-editable python <script>`). A command name
+    alone in backticks (`uv run`) is prose about it, not an instruction. The dated run records of
+    notes/source-review-records.md are frozen evidence and not scanned.
+    """
 
     def test_scan_reaches_maintained_instructions(self) -> None:
-        """The scan includes the coverage notes, CI and every active artefact script."""
+        """The scan includes the coverage notes, CI, superseded runs' notes and all Python."""
         scanned = set(maintained_files())
-        artefacts = {
-            path
-            for path in (ROOT / "notes" / "artefacts").rglob("*.py")
-            if not any(part.startswith("superseded-") for part in path.parts)
-        }
-        self.assertTrue(artefacts)
-        self.assertEqual(artefacts - scanned, set())
+        python = set((ROOT / "src").rglob("*.py")) - set((ROOT / "src").rglob("__pycache__/*"))
+        superseded = set((ROOT / "notes" / "artefacts").glob("*/superseded-*/README.md"))
+        self.assertTrue(python and superseded)
+        self.assertEqual((python | superseded) - scanned, set())
+        self.assertIn(ROOT / "Makefile", scanned)
         self.assertIn(ROOT / "notes" / "coverage" / "README.md", scanned)
         self.assertIn(ROOT / ".github" / "workflows" / "ci.yml", scanned)
 

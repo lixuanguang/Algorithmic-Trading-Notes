@@ -10,9 +10,9 @@ from trading_notes.numerical.institutional_portfolios.plan_rules import (
     MinimumFunding,
     PensionPlan,
     SpendingRule,
-    annuity,
 )
 from trading_notes.numerical.report import CheckReport
+from trading_notes.numerical.time_value.cash_flows import annuity
 from trading_notes.numerical.tolerance import close
 
 SEED: Final = 20261020

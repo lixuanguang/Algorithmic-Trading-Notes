@@ -39,7 +39,7 @@ Also used for `meth:extreme-value-tail-estimation` (`risk-tail-systemic`).
 - RAROC = (revenues - costs - expected losses)/economic capital; 0.80/4 = 20%, 22% with interest on capital (pp. 612-613).
 - Six sources of funding liquidity; wholesale deposits ``can disappear quickly'' (pp. 459-460).
 
-- Reproduced by credit-cds-securitisation-checks.py: Examples 17.1-17.4, Tables 17.1-17.5 (Q = 3.03%), 19.1-19.2, Appendix K (123 bp, MTM 0.0111); Table K.1 misprints year-4 survival 0.9321 (Table K.2: 0.9231).
+- Reproduced by trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks: Examples 17.1-17.4, Tables 17.1-17.5 (Q = 3.03%), 19.1-19.2, Appendix K (123 bp, MTM 0.0111); Table K.1 misprints year-4 survival 0.9321 (Table K.2: 0.9231).
 - DLC: 12% pre-tax ROE on 5% equity; a 3.2% rise in loan losses makes a 1%-equity bank insolvent (pp. 28-30); combined and operating ratios, Table 3.2 (pp. 59-60).
 - Longevity hurts annuities and helps life cover; mortality risk the reverse; the two partly offset, net exposure assessed by actuaries (pp. 56-57). Life insurers invest mostly in corporate bonds matched to liability maturity; reserves are conservative estimates (p. 63). Guaranteed annuity rates as unpriced options (p. 52); adverse selection in life and annuity books (p. 62).
 - Credit VaR: the credit loss not exceeded with a given confidence; default-only or including migration and spreads (p. 413); WCDR(T, X) = N((N^-1(PD) + sqrt(rho) N^-1(X)) / sqrt(1 - rho)) (p. 416).

@@ -36,7 +36,7 @@ Written in financial data and labels / source review / optimal execution / execu
 - `mod:fractional-differencing-weights`: binomial weights, recurrence, integer cases, signs, and a power-law decay rate in place of the source's product argument.
 - `meth:fixed-width-fractional-differencing`: expanding window and weight loss with one consistent index, FFD with its range corrected, the minimum-$d$ ADF procedure and its evidence; ADF rejection is not demonstrated stationarity, and $d$ is to be chosen on training data.
 
-All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/` (`afml-checks.py`, the numerical checks).
+All partly checked 2026-10-16, draft; human review outstanding. Artefacts: `notes/artefacts/statistical-learning-foundations/` (`trading_notes.numerical.ml_alternative_data.afml_checks`, the numerical checks).
 
 Changed in the financial data and labels review follow-up, 2026-10-16: `meth:etf-trick` (the next-open sizing is an accounting convention, reproducible only by notional orders filled in full at a single opening price; gross exposure $|K_t|$ with positive prices and conversion factors; holdings reverse at $K_t<0$, so a series that exhausts its capital stops describing the strategy); `def:label-concurrency-uniqueness` (indicator $t_{i,0}<t\le t_{i,1}$ for returns indexed by ending time; López de Prado's toy matrix is consistent, his Snippets 4.1, 4.3 and 4.10 include the event's own bar, which is not equivalent); `meth:sample-weights-attribution-decay` (sum from $t_{i,0}+1$); `meth:triple-barrier-labelling` (the returns a label uses). Checks in `trading_notes.numerical.labelling_sample_weights.financial_labels_checks`.
 

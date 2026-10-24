@@ -12,8 +12,8 @@ from numpy.typing import NDArray
 from scipy import stats
 
 from trading_notes.numerical.exotic_options.lookback import LookbackModel
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 # A floating-strike price: (S, recorded extreme, tau) -> value.

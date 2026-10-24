@@ -1,12 +1,9 @@
-"""Tests of the multiple-testing example's procedures, counts, cutoffs, stream and report.
+"""Tests of the multiple-testing example's procedures, counts, cutoffs, stream and report."""
 
-The example's full run is tested in test_checks.py. These pin down the strict comparisons,
-Holm's sorting and stopping, StepM's steps and stopping, how rejections are counted, the
-cutoffs' calibration from the first n columns, the order in which the one stream is drawn,
-and the six conditions with the failure-only report, with small inputs or prepared tallies.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's full run is tested in test_checks.py. These pin down the strict comparisons,
+# Holm's sorting and stopping, StepM's steps and stopping, how rejections are counted, the
+# cutoffs' calibration from the first n columns, the order in which the one stream is drawn, and
+# the six conditions with the failure-only report, with small inputs or prepared tallies.
 
 import contextlib
 import io

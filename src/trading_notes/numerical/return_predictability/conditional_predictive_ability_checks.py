@@ -12,7 +12,6 @@ import scipy
 from numpy.typing import NDArray
 from scipy import integrate, stats
 
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.repository import repository_root
 from trading_notes.numerical.return_predictability.conditional_ability import (
@@ -25,6 +24,7 @@ from trading_notes.numerical.return_predictability.conditional_ability import (
 )
 from trading_notes.numerical.return_predictability.labelled_table import LabelledTable
 from trading_notes.numerical.return_predictability.scoring_rules import NormalForecast
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
@@ -767,7 +767,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     conditional predictive ability", authors' version of April 2006 (giacomini-white-2006-wp);
     Zhu and Timmermann, arXiv:2006.03238v2 (zhu-timmermann-2022-arxiv).
 
-    Data: goyal-annual-predictors-1871-2025.csv, extracted by goyal_extract_predictors.py from
+    Data: goyal-annual-predictors-1871-2025.csv, extracted by
+    trading_notes.research.return_predictability.goyal_extract_predictors from
     the workbook on Amit Goyal's page labelled "Original data (up to 2005) used in the paper",
     served in 2026 with data to 2025 (a 2026 vintage). Synthetic data from seeds
     20261109-20261115.

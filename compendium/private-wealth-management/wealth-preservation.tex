@@ -13,7 +13,7 @@
 \end{itemize}
 Deferral lowers the effective annual rate below the statutory rate; tax-exempt accounts remove it. \emph{Inflation} raises the effective tax on real returns, because nominal income and gains are taxed even when they only keep pace with prices (Derivation).
 
-\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part 2). One hundred invested at 6 percent for 20 years:
+\qffield{Practice} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, part 2). One hundred invested at 6 percent for 20 years:
 \begin{center}\small
 \begin{tabular}{@{}lr@{}}
 \toprule
@@ -51,7 +51,7 @@ The deferred US gain's effective annual tax rate is 15.7 percent. With 2.5 perce
 \item \emph{Wrappers}: US 401(k) and IRA, UK pensions and ISAs (GBP~20,000 a year in 2026--27, \citep[overview]{govuk-isa-2026}).
 \end{itemize}
 
-\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part~7). A US top-bracket client (not the Okafors) holds 500,000 of bonds yielding 4.5 percent and 500,000 of stocks, split between a taxable account and an IRA whose withdrawals will be taxed at 24 percent. Both placements use one convention for the stocks: each year the price rises 5 percent of the opening value, a dividend of 2 percent of the opening value is paid at year-end, and the dividend (after tax, in the taxable account) is reinvested. A reinvested after-tax dividend adds to basis. In the first year, the taxable account's 10,000 dividend bears 2,380 of tax at 23.8 percent; 7,620 is reinvested, giving a value of 532,620, basis 507,620 and an unrealised gain equal to the 25,000 price rise. The IRA reinvests the whole dividend (535,000).
+\qffield{Practice} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, part~7). A US top-bracket client (not the Okafors) holds 500,000 of bonds yielding 4.5 percent and 500,000 of stocks, split between a taxable account and an IRA whose withdrawals will be taxed at 24 percent. Both placements use one convention for the stocks: each year the price rises 5 percent of the opening value, a dividend of 2 percent of the opening value is paid at year-end, and the dividend (after tax, in the taxable account) is reinvested. A reinvested after-tax dividend adds to basis. In the first year, the taxable account's 10,000 dividend bears 2,380 of tax at 23.8 percent; 7,620 is reinvested, giving a value of 532,620, basis 507,620 and an unrealised gain equal to the 25,000 price rise. The IRA reinvests the whole dividend (535,000).
 \begin{itemize}
 \item bonds in the IRA and stocks in the taxable account end after 20 years with USD~2,454,619 after tax; the reverse location with 2,316,409, so the recommended location adds 138,211. With every tax set to zero, both placements end with 3,140,699: location alone cannot change gross performance;
 \item harvesting a 50,000 loss saves 11,900 at 23.8 percent; if the lower basis is taxed at the same rate in 10 years, the benefit is the deferral, worth 5,255 at 6 percent, and if the position is held until death, the full 11,900;
@@ -72,7 +72,7 @@ For a UK client the analogue is to use the ISA allowance each year (``bed and IS
 
 \emph{Exchange rates.} A client who spends in one currency and holds assets in others bears currency risk on those assets. Hedging foreign bonds removes most of their risk, since currency returns are almost uncorrelated with bond returns; for global equities some currencies (in 1975--2005 the US dollar, euro and Swiss franc) moved against equity markets and reduced risk, so a full hedge is not always risk-minimising \citep[NBER WP 13088, pp.~1--3]{campbell-viceira-currency-hedging-2007}. Practical steps: match the currency of assets to the currency of planned spending, especially for near-term goals; hedge foreign bonds; decide a hedge ratio for foreign equities; and for clients with multi-currency lives (expatriates, retirees abroad), hold separate currency buckets for each spending stream (Interpretation; \hyperref[meth:currency-hedging-programme]{currency programme}).
 
-\qffield{Practice} (original; \texttt{private-wealth-checks.py}, part~10).
+\qffield{Practice} (original; \nolinkurl{trading_notes.numerical.private_wealth_management.private_wealth_checks}, part~10).
 \begin{itemize}
 \item \emph{Inflation}: a level nominal pension of 50,000 is worth 27,700 in today's money after 20 years of 3 percent inflation, a 45 percent loss. For the Okafors' essential retirement spending above Social Security, a TIPS ladder bought gradually in their 401(k)s matches real spending and avoids tax on the inflation uplift.
 \item \emph{Exchange rates}: Margaret Hartley lives on sterling with 30 percent of her portfolio in US dollar assets. A 10 percent rise in sterling cuts the portfolio's sterling value by 2.7 percent. Recommendation: hedge her dollar bonds fully and half her US equities, keeping the rest unhedged for diversification, and hold three years of spending in sterling assets.

@@ -1,12 +1,9 @@
 """Annual bond cash flows on a zero curve: prices, durations, key-rate exposures and horizons."""
 
-from collections.abc import Sequence
-from typing import cast
-
 import numpy as np
 from numpy.typing import NDArray
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
@@ -33,25 +30,25 @@ class AnnualZeroCurve(Record):
         tw = twist * (min(max(t, 1.0), 10.0) - 5.5) / 4.5
         return base + shift + tw
 
-    def price(self, cfs: Sequence[float], times: Sequence[int], **kw: float) -> float:
+    def price(self, flows: CashFlows, **kw: float) -> float:
         """Return the price of cash flows on the curve, shifted or twisted by kw."""
-        return sum(c / (1 + self.zero(t, **kw)) ** t for c, t in zip(cfs, times, strict=True))
+        return sum(
+            c / (1 + self.zero(t, **kw)) ** t
+            for c, t in zip(flows.amounts, flows.times, strict=True)
+        )
 
-    def modified_duration(
-        self, cfs: Sequence[float], times: Sequence[int], h: float = 1e-4, **kw: float
-    ) -> float:
+    def modified_duration(self, flows: CashFlows, h: float = 1e-4, **kw: float) -> float:
         """Return the modified duration by central parallel shifts of the curve."""
-        p0 = self.price(cfs, times, **kw)
+        p0 = self.price(flows, **kw)
         rest = {k: v for k, v in kw.items() if k != "shift"}
-        return (
-            self.price(cfs, times, shift=-h, **rest) - self.price(cfs, times, shift=h, **rest)
-        ) / (2 * p0 * h)
+        return (self.price(flows, shift=-h, **rest) - self.price(flows, shift=h, **rest)) / (
+            2 * p0 * h
+        )
 
     def pv_bumped(self, cf: Floats, bumps: Floats) -> np.float64:
         """Return the PV of annual cash flows (years 1-10) with each zero rate bumped."""
-        return cast(
-            np.float64,
-            sum(cf[k] / (1 + self.zero(k + 1) + bumps[k]) ** (k + 1) for k in range(10)),
+        return np.float64(
+            sum(cf[k] / (1 + self.zero(k + 1) + bumps[k]) ** (k + 1) for k in range(10))
         )
 
     def key_rates(self, cf: Floats, h: float = 1e-5) -> Floats:
@@ -66,32 +63,39 @@ class AnnualZeroCurve(Record):
         )
 
 
-def bond(coupon: float, mat: int) -> tuple[list[float], list[int]]:
-    """Return the annual cash flows per 100 face and their times of a coupon bond."""
-    times = list(range(1, mat + 1))
-    cfs = [100 * coupon] * mat
-    cfs[-1] += 100
-    return cfs, times
+class CashFlows(Record):
+    """Payments at whole years.
 
-
-def horizon_value(
-    cfs: Sequence[float], times: Sequence[int], y_after: float, horizon: int, twist: float = 0.0
-) -> float:
-    """Return the value at the horizon of reinvested coupons and the remaining cash flows sold.
-
-    The curve is flat at y_after (annual), with an optional twist: reinvestment at y_after - twist,
-    discounting at y_after + twist.
+    Attributes:
+        amounts: The payments.
+        times: Their times in years, one per payment.
     """
-    total = 0.0
-    for c_, t_ in zip(cfs, times, strict=True):
-        if t_ <= horizon:
-            total += c_ * (1 + y_after - twist) ** (horizon - t_)
-        else:
-            total += c_ / (1 + y_after + twist) ** (t_ - horizon)
-    return total
 
+    amounts: list[float]
+    times: list[int]
 
-def mac(cfs: Sequence[float], times: Sequence[int], y: float) -> float:
-    """Return the Macaulay duration at a flat annual yield y."""
-    pv = [c_ / (1 + y) ** t_ for c_, t_ in zip(cfs, times, strict=True)]
-    return sum(t_ * v for t_, v in zip(times, pv, strict=True)) / sum(pv)
+    @classmethod
+    def annual_bond(cls, coupon: float, mat: int) -> CashFlows:
+        """Return the annual cash flows per 100 face of a coupon bond maturing in mat years."""
+        cfs = [100 * coupon] * mat
+        cfs[-1] += 100
+        return cls(amounts=cfs, times=list(range(1, mat + 1)))
+
+    def horizon_value(self, y_after: float, horizon: int, twist: float = 0.0) -> float:
+        """Return the value at the horizon of reinvested payments and the later ones sold.
+
+        The curve is flat at y_after (annual), with an optional twist: reinvestment at
+        y_after - twist, discounting at y_after + twist.
+        """
+        total = 0.0
+        for c_, t_ in zip(self.amounts, self.times, strict=True):
+            if t_ <= horizon:
+                total += c_ * (1 + y_after - twist) ** (horizon - t_)
+            else:
+                total += c_ / (1 + y_after + twist) ** (t_ - horizon)
+        return total
+
+    def macaulay_duration(self, y: float) -> float:
+        """Return the Macaulay duration at a flat annual yield y."""
+        pv = [c_ / (1 + y) ** t_ for c_, t_ in zip(self.amounts, self.times, strict=True)]
+        return sum(t_ * v for t_, v in zip(self.times, pv, strict=True)) / sum(pv)

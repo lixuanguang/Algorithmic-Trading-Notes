@@ -8,7 +8,7 @@ from pydantic import Field
 from scipy import stats
 
 from trading_notes.numerical.option_pricing.black_scholes import BlackScholes
-from trading_notes.numerical.records import MutableRecord, Record
+from trading_notes.records import MutableRecord, Record
 
 type Floats = NDArray[np.float64]
 

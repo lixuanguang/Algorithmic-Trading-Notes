@@ -19,7 +19,7 @@ Prepared on 2026-10-18 by the fixed-income and derivatives batch (2026-10-18) fr
 
 ## Key results
 
-- Treasury price-from-yield formulas with a simple-interest first (stub) period; bill discount, price and investment-rate formulas; FRN index and accrued-interest computations; examples reproduced in `bond-valuation-checks.py` (II.D 99.730918; FRN index 0.095022819%).
+- Treasury price-from-yield formulas with a simple-interest first (stub) period; bill discount, price and investment-rate formulas; FRN index and accrued-interest computations; examples reproduced in `trading_notes.numerical.bond_pricing_yields.bond_valuation_checks` (II.D 99.730918; FRN index 0.095022819%).
 
 ## Limits
 

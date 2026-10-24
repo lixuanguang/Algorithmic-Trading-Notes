@@ -47,7 +47,7 @@ Calder Foundation & 5\% minimum payout & Perpetual & s.~4942; excise tax \\
 \end{enumerate}
 \emph{Measures}: hedge ratio (asset dollar duration over liability dollar duration), surplus volatility and surplus at risk relative to the sponsor's market value and cash flow.
 
-\qffield{Practice} \emph{Harlow Industrial} (original; \texttt{institutional-checks.py}, part~1). Plan assets 8bn (55 percent global equity, 45 percent bonds of duration 6), PBO 9bn of duration 12; Harlow is a cyclical manufacturer with a 6bn market value and EBITDA of 1.2bn; 60 percent of members are retired and benefits are final-salary with partial indexation.
+\qffield{Practice} \emph{Harlow Industrial} (original; \nolinkurl{trading_notes.numerical.institutional_portfolios.institutional_portfolios_checks}, part~1). Plan assets 8bn (55 percent global equity, 45 percent bonds of duration 6), PBO 9bn of duration 12; Harlow is a cyclical manufacturer with a 6bn market value and EBITDA of 1.2bn; 60 percent of members are retired and benefits are final-salary with partial indexation.
 \begin{itemize}
 \item Funded ratio 88.9 percent; the interest-rate hedge ratio is only 20 percent.
 \item Surplus volatility is about 1.0bn a year (12.5 percent of assets); the 95 percent one-year surplus at risk of 1.64bn is 27 percent of Harlow's market value.
@@ -77,7 +77,7 @@ Calder Foundation & 5\% minimum payout & Perpetual & s.~4942; excise tax \\
 \item \emph{Banks and insurers}: manage the duration gap between assets and liabilities, liquidity under regulatory ratios and capital consumption of risky assets (\hyperref[meth:bank-camels-analysis]{bank analysis}; \hyperref[meth:life-insurer-analysis]{life insurers}).
 \end{itemize}
 
-\qffield{Practice} (original; \texttt{institutional-checks.py}, parts~2--3).
+\qffield{Practice} (original; \nolinkurl{trading_notes.numerical.institutional_portfolios.institutional_portfolios_checks}, parts~2--3).
 \begin{itemize}
 \item \emph{Elmsworth endowment's spending rule}: after two 8 percent years and a $-25$ percent year, spending at 5 percent of value falls 29 percent (105.3m to 75.0m); a rule of 70 percent last year's spending grown with 2.5 percent inflation plus 30 percent of 5 percent of value falls 7 percent (106.0m to 98.5m), peaking at 6.6 percent of the post-crash value. Elmsworth is a New York not-for-profit corporation whose endowment is donor-restricted under post-enactment gift instruments that set no spending rate. Its statutory test uses quarterly values averaged over five years \citep[sec.~553(d)]{ny-npc-553}; taking the five years before the example at 2,000m, the smoothed rule never exceeds 5.28 percent of that average and pure 5 percent spending 5.24 percent, each measured against the quarterly values of its own asset path (the two rules spend differently, so their averages differ). Neither raises New York's presumption, but staying below 7 percent does not make spending prudent: the board must document the statutory factors. Economically, the smoothed rule better fits a university budget.
 \item \emph{Calder Foundation IPS}: 5 percent payout, 2.5 percent inflation and 0.5 percent costs need 8.2 percent nominal; an IPS expecting 6.5 percent implies a 26 percent loss of real value over 20 years. The IPS should either accept a finite life, raise expected return within its risk tolerance, or seek new gifts; it should not set an unattainable target.
@@ -101,7 +101,7 @@ Calder Foundation & 5\% minimum payout & Perpetual & s.~4942; excise tax \\
 
 \emph{Enterprise risk management} should identify, assess and manage all risks, with reliable information and reporting, controls, incentives and codes of conduct (GAPP~22 \citep[GAPP~22]{santiago-principles-2008}); Norway's manager combines a tracking-error limit with historical and hypothetical stress tests, expected shortfall, concentration and factor analysis \citep[risk management]{nbim-gpfg-2026}.
 
-\qffield{Practice} \emph{The Vardø Fund} (original; \texttt{institutional-checks.py}, part~3), USD~100bn, funded by oil revenue of about 8bn a year, with a rule that the budget may draw up to 6bn in bad years. Allocation: 60 percent global equity, 20 percent bonds, 12 percent direct real estate and infrastructure, 8 percent strategic stakes in domestic companies.
+\qffield{Practice} \emph{The Vardø Fund} (original; \nolinkurl{trading_notes.numerical.institutional_portfolios.institutional_portfolios_checks}, part~3), USD~100bn, funded by oil revenue of about 8bn a year, with a rule that the budget may draw up to 6bn in bad years. Allocation: 60 percent global equity, 20 percent bonds, 12 percent direct real estate and infrastructure, 8 percent strategic stakes in domestic companies.
 \begin{itemize}
 \item \emph{Financial risk}: in a joint oil and equity crash the portfolio falls 21.8bn (22 percent) just as inflows stop and the budget draws 6bn. Bonds worth 20.6bn after the shock cover more than three years of draws, so liquidity is adequate; but the domestic stakes lose 3.2bn, 15 percent of the loss from 8 percent of assets, and are tied to the same economy as oil revenue.
 \item \emph{Environmental and social risk}: equity holdings in oil, gas and carbon-intensive industries add to the country's own oil exposure; some infrastructure assets are in countries with weak labour standards.
@@ -124,7 +124,7 @@ Calder Foundation & 5\% minimum payout & Perpetual & s.~4942; excise tax \\
 
 \emph{Liquidity tools} (Interpretation; \hyperref[meth:alternatives-allocation-approaches]{commitment pacing}): a liquidity budget that classifies assets by days to cash; a reserve of liquid assets covering spending and stressed capital calls; committed credit lines; a commitment-pacing model for unfunded commitments; secondary sales as a last resort; rebalancing ranges wide enough to absorb the \emph{denominator effect} (private assets' share rising when public assets fall and appraisals lag); and derivative overlays to rebalance exposure without selling illiquid assets (\hyperref[ex:endowment-derivative-overlay-case]{overlays}).
 
-\qffield{Practice} \emph{Elmsworth University endowment} (original; \texttt{institutional-checks.py}, part~4). USD~2bn: cash 100m, bonds 200m, public equity 600m, hedge funds 400m (quarterly liquidity), private assets 700m with 500m unfunded; spending 5 percent (100m).
+\qffield{Practice} \emph{Elmsworth University endowment} (original; \nolinkurl{trading_notes.numerical.institutional_portfolios.institutional_portfolios_checks}, part~4). USD~2bn: cash 100m, bonds 200m, public equity 600m, hedge funds 400m (quarterly liquidity), private assets 700m with 500m unfunded; spending 5 percent (100m).
 \begin{itemize}
 \item \emph{Stress}: public equity $-35$ percent, hedge funds $-10$ percent, private NAV $-10$ percent because appraisals lag: total 1,688m.
 \item \emph{Needs}: calls of 125m (a quarter of unfunded) and spending of 100m, less distributions of 13m; \emph{sources}: cash 100m, bonds 208m and a quarter of hedge funds (90m) = 398m, 1.87 times net needs.

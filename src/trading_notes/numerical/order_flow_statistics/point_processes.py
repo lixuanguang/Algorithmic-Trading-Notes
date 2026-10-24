@@ -4,7 +4,7 @@ import numpy as np
 from numpy.typing import NDArray
 from scipy import integrate, stats
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 type Ints = NDArray[np.int64]

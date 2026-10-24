@@ -153,7 +153,8 @@ def main(argv: Sequence[str] | None = None) -> int:
        return, and the first run's outputs are kept unchanged in superseded-first-run/.
 
     The contract rules are those trading_notes.numerical.commodity_curves.nymex_contracts
-    gives backwardation_test.py.
+    gives the backwardation research workflow,
+    trading_notes.research.commodity_curves.backwardation.
 
     Args:
         argv: Command-line arguments: `--root DIR`, the repository root that holds the outputs

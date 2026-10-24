@@ -9,7 +9,6 @@ from typing import Final
 import numpy as np
 from numpy.typing import NDArray
 
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.repository import repository_root
 from trading_notes.numerical.term_structure_returns.curve_bootstrap import (
@@ -19,6 +18,7 @@ from trading_notes.numerical.term_structure_returns.curve_bootstrap import (
     bootstrap,
 )
 from trading_notes.numerical.tolerance import close
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 
@@ -416,7 +416,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     ed., sec. 22.9, Tables 22.9-22.11) and hedges two factors with two instruments. Part 6 runs a
     principal-components analysis and a volatility-by-maturity table on month-end
     Gurkaynak-Sack-Wright zero yields, January 1986 to September 2026 (gsw-month-end-zero.csv,
-    produced by gsw-month-end-extract.py from the Board's feds200628.csv).
+    produced by trading_notes.research.term_structure_returns.gsw_month_end from the Board's
+    feds200628.csv).
 
     Args:
         argv: Command-line arguments: `--root DIR`, the repository root that holds the data

@@ -5,7 +5,7 @@ from collections.abc import Mapping
 import numpy as np
 
 from trading_notes.numerical.newey_west import Month, add, mdiff
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class StaleDataRule(Record):

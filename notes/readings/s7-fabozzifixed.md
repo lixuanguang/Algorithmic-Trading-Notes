@@ -31,7 +31,7 @@ Also used by library gap-filling Batch L2 (2026-10-21) for the rate-tree extensi
 - Approximate, modified and effective duration; convexity measure Eq. (5-4) and its scaling; effective measures for callable and putable bonds (Exhibits 5-15, 5-16, 5-20); PVBP and yield volatility (chap. 5).
 - Ilmanen's decomposition of forward rates into expectations, risk premium and convexity bias (chaps. 31-32); key-rate durations and curve factors (chap. 33).
 - Swap as a package of forwards and of cash-market instruments (chap. 64, pp. 1577-1578).
-- Debt dynamics eq. 17-1 (read from the page image) verified against a nominal roll-forward in credit-cds-securitisation-checks.py part 9; debt-stabilising primary balance eq. 17-2; GFN = primary deficit + debt service, eq. 17-3 (pp. 372-374).
+- Debt dynamics eq. 17-1 (read from the page image) verified against a nominal roll-forward in trading_notes.numerical.credit_risk_analysis.credit_cds_securitisation_checks part 9; debt-stabilising primary balance eq. 17-2; GFN = primary deficit + debt service, eq. 17-3 (pp. 372-374).
 
 ## Limits
 

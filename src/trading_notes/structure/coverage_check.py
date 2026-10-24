@@ -1,21 +1,4 @@
-"""Check the subject coverage records and reconcile the external outline crosswalk.
-
-Reads notes/coverage/objectives.json (topics and neutral learning objectives),
-notes/coverage/outline-manifest.json (external outline files) and
-notes/coverage/outline-crosswalk.json (outline modules and items mapped to objectives).
-It validates their shape, identifiers, references, typed entry labels, section owners
-(the sections declared in compendium/compendium.tex), evidence consistency and status
-requirements; it reconciles each active outline's item and module occurrences with the
-manifest; and it reports objective coverage separately from outline-item coverage. An
-outline item counts as covered only after its mapping has been reviewed. Verification
-also checks the local outline copies against their SHA-256.
-
-A field of the wrong JSON type is reported and then read as absent, so a malformed record
-gives problems rather than a traceback.
-
-This is a structural check. It does not judge whether an entry teaches an objective
-well enough, and it says nothing about learner mastery.
-"""
+"""Check the subject coverage records and reconcile the external outline crosswalk."""
 
 import ast
 import hashlib
@@ -23,10 +6,10 @@ import json
 import re
 from collections import Counter, defaultdict
 from collections.abc import Container, Iterable
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Final, Literal, Self, TypedDict
 
+from trading_notes.records import Record
 from trading_notes.structure.compendium import Compendium, Entry
 from trading_notes.structure.json_fields import JsonObject, JsonRecord, as_object
 
@@ -101,16 +84,14 @@ def item_outline(item_id: str) -> str | None:
     return module_outline(item_module(item_id)) if ITEM_ID.match(item_id) else None
 
 
-@dataclass(frozen=True)
-class SourceRef:
+class SourceRef(Record):
     """A source an objective's evidence names, with its locator."""
 
     key: str | None
     locator: str | None
 
 
-@dataclass(frozen=True)
-class Evidence:
+class Evidence(Record):
     """A partial or covered objective's evidence record.
 
     Attributes:
@@ -133,7 +114,9 @@ class Evidence:
 
         def refs(field: str) -> tuple[SourceRef, ...]:
             sources = (record.child(raw) for raw in record.objects(field, nullable=True))
-            return tuple(SourceRef(src.text("key"), src.text("locator")) for src in sources)
+            return tuple(
+                SourceRef(key=src.text("key"), locator=src.text("locator")) for src in sources
+            )
 
         return cls(
             sources=refs("sources"),
@@ -144,8 +127,7 @@ class Evidence:
         )
 
 
-@dataclass(frozen=True)
-class Topic:
+class Topic(Record):
     """A canonical topic, owned by one compendium section."""
 
     id: str
@@ -155,11 +137,14 @@ class Topic:
     @classmethod
     def read(cls, record: JsonRecord) -> Self:
         """Read a topic whose id has been validated."""
-        return cls(record.name, record.text("section"), record.texts("prerequisites"))
+        return cls(
+            id=record.name,
+            section=record.text("section"),
+            prerequisites=record.texts("prerequisites"),
+        )
 
 
-@dataclass(frozen=True)
-class Objective:
+class Objective(Record):
     """A learning objective and its coverage status.
 
     Attributes:
@@ -210,8 +195,7 @@ class Objective:
         )
 
 
-@dataclass(frozen=True)
-class Outline:
+class Outline(Record):
     """An external outline file listed in the manifest.
 
     Attributes:
@@ -243,8 +227,7 @@ class Outline:
         )
 
 
-@dataclass(frozen=True)
-class Module:
+class Module(Record):
     """A crosswalk module.
 
     Attributes:
@@ -271,8 +254,7 @@ class Module:
         )
 
 
-@dataclass(frozen=True)
-class Item:
+class Item(Record):
     """A crosswalk item: one outline bullet mapped to objectives.
 
     Attributes:
@@ -313,8 +295,7 @@ class Item:
         )
 
 
-@dataclass(frozen=True)
-class CompendiumIndex:
+class CompendiumIndex(Record):
     """What the coverage records are checked against, from one run's compendium.
 
     Attributes:
@@ -745,6 +726,22 @@ def verify_outlines(root: Path, outlines: dict[str, Outline], problems: list[str
 
 def build_report(root: Path, verify: bool = False) -> CoverageReport:
     """Run every coverage check on the repository at root and return the report.
+
+    Reads notes/coverage/objectives.json (topics and neutral learning objectives),
+    notes/coverage/outline-manifest.json (external outline files) and
+    notes/coverage/outline-crosswalk.json (outline modules and items mapped to objectives). It
+    validates their shape, identifiers, references, typed entry labels, section owners (the sections
+    declared in compendium/compendium.tex), evidence consistency and status requirements; it
+    reconciles each active outline's item and module occurrences with the manifest; and it reports
+    objective coverage separately from outline-item coverage. An outline item counts as covered only
+    after its mapping has been reviewed. Verification also checks the local outline copies against
+    their SHA-256.
+
+    A field of the wrong JSON type is reported and then read as absent, so a malformed record gives
+    problems rather than a traceback.
+
+    This is a structural check. It does not judge whether an entry teaches an objective well enough,
+    and it says nothing about learner mastery.
 
     Args:
         root: Repository root.

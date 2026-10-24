@@ -1,7 +1,4 @@
-"""Focused tests for the compendium check on small synthetic repositories.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+"""Focused tests for the compendium check on small synthetic repositories."""
 
 import unittest
 

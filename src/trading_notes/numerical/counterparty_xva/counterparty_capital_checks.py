@@ -10,33 +10,50 @@ from scipy import integrate
 from trading_notes.numerical.counterparty_xva.regulatory_capital import (
     ALPHA,
     FLOOR,
-    ir_hedging_set_effective_notional,
-    k_reduced,
-    maturity_factor_unmargined,
-    multiplier,
-    sa_ccr_ead,
-    supervisory_df,
-    supervisory_duration,
+    CvaCounterparty,
+    IrHedgingSet,
+    IrTrade,
+    NettingSet,
+    ReducedBaCva,
 )
-from trading_notes.numerical.report import CheckReport
+from trading_notes.numerical.report import CheckReport, print_versions
 
 SF_IR: Final = 0.005
 RHO: Final = 0.5
-DS_BA_CVA: Final = 0.65
+BA_CVA: Final = ReducedBaCva(correlation=RHO, discount_scalar=0.65)
 RW_C: Final = 0.03  # MAR50.16 risk weight of an investment-grade industrial
+# A payer swap is long the rate (delta +1, CRE52.39); its 4-year end date puts it in bucket 2
+# (one to five years).
+SWAP: Final = IrTrade(notional=100.0, start=0.0, end=4.0, maturity=4.0, delta=+1)
+COUNTERPARTY: Final = CvaCounterparty(risk_weight=RW_C, maturity=4.0)
+
+
+def multiplier(v_minus_c: float, addon: float) -> float:
+    """Return the PFE multiplier of a netting set whose value less collateral is v_minus_c."""
+    return NettingSet(value=v_minus_c, collateral=0.0, addon=addon).multiplier()
+
+
+def maturity_factor(m: float) -> float:
+    """Return the unmargined maturity factor of a trade with remaining maturity m years."""
+    return IrTrade(notional=1.0, start=0.0, end=m, maturity=m).maturity_factor
+
+
+def effective_notional(d1: float, d2: float, d3: float) -> float:
+    """Return the hedging-set effective notional of the three bucket notionals."""
+    return IrHedgingSet(bucket_notionals=(d1, d2, d3)).effective_notional()
 
 
 def check_identities(report: CheckReport) -> tuple[float, float]:
     """Check the formula identities; return the 4-year supervisory duration and DF."""
     print("== Formula identities")
-    sd = supervisory_duration(0.0, 4.0)
+    sd = SWAP.supervisory_duration
     report.ok(
         "SD equals the integral of exp(-0.05 t) from S to E (a continuously discounted annuity at 5"
         " percent)",
         abs(sd - integrate.quad(lambda t: math.exp(-0.05 * t), 0.0, 4.0)[0]) < 1e-12,
         f"{sd:.6f}",
     )
-    df = supervisory_df(4.0)
+    df = COUNTERPARTY.discount_factor
     report.ok(
         "DF equals the time average of exp(-0.05 t) over [0, M] (MAR50.15, footnote 3)",
         abs(df - integrate.quad(lambda t: math.exp(-0.05 * t), 0.0, 4.0)[0] / 4.0) < 1e-12,
@@ -54,12 +71,12 @@ def check_identities(report: CheckReport) -> tuple[float, float]:
         "with one maturity bucket the hedging-set effective notional is |D|; offsetting trades in"
         " buckets 1 and 3 net"
         " only partly",
-        abs(ir_hedging_set_effective_notional(0, 362.5, 0) - 362.5) < 1e-12
-        and 0 < ir_hedging_set_effective_notional(100, 0, -100) < 200,
-        f"{ir_hedging_set_effective_notional(100, 0, -100):.4f} for +100 and -100",
+        abs(effective_notional(0, 362.5, 0) - 362.5) < 1e-12
+        and 0 < effective_notional(100, 0, -100) < 200,
+        f"{effective_notional(100, 0, -100):.4f} for +100 and -100",
     )
     s = 0.3
-    ks = [k_reduced([s] * n, RHO) for n in (1, 2, 10)]
+    ks = [BA_CVA.k([s] * n) for n in (1, 2, 10)]
     report.ok(
         "K_reduced equals SCVA for one counterparty and S sqrt(rho^2 N^2 + (1 - rho^2) N) for N"
         " equal ones, between"
@@ -77,11 +94,11 @@ def check_identities(report: CheckReport) -> tuple[float, float]:
         "MF floor (CRE52.49, 250-day convention): a 5-business-day trade gets sqrt(10/250) = 0.2,"
         " not sqrt(5/250) = 0.1414;"
         " the floor binds only below 10/250 years",
-        abs(maturity_factor_unmargined(m_week) - 0.2) < 1e-15
-        and abs(maturity_factor_unmargined(m_week) - math.sqrt(m_week)) > 0.05
-        and maturity_factor_unmargined(0.5) == math.sqrt(0.5)
-        and maturity_factor_unmargined(4.0) == 1.0,
-        f"{maturity_factor_unmargined(m_week):.4f} against {math.sqrt(m_week):.4f} unfloored",
+        abs(maturity_factor(m_week) - 0.2) < 1e-15
+        and abs(maturity_factor(m_week) - math.sqrt(m_week)) > 0.05
+        and maturity_factor(0.5) == math.sqrt(0.5)
+        and maturity_factor(4.0) == 1.0,
+        f"{maturity_factor(m_week):.4f} against {math.sqrt(m_week):.4f} unfloored",
     )
     return sd, df
 
@@ -89,12 +106,10 @@ def check_identities(report: CheckReport) -> tuple[float, float]:
 def check_worked_example(report: CheckReport, sd: float, df: float) -> None:
     """Check SA-CCR, default-risk capital and reduced BA-CVA on the worked example."""
     print("== Worked example (original inputs)")
-    # A payer swap is long the rate (delta +1, CRE52.39); its 4-year end date puts it in bucket
-    # 2 (one to five years).
-    d = 100.0 * sd * maturity_factor_unmargined(4.0) * (+1)
-    en = ir_hedging_set_effective_notional(0.0, d, 0.0)
+    d = SWAP.adjusted_notional
+    en = effective_notional(0.0, d, 0.0)
     addon = SF_IR * en
-    exposure = sa_ccr_ead(2.0, 0.0, addon)
+    exposure = NettingSet(value=2.0, collateral=0.0, addon=addon).exposure()
     ead, rc, pfe = (
         exposure.ead,
         exposure.replacement_cost,
@@ -109,7 +124,7 @@ def check_worked_example(report: CheckReport, sd: float, df: float) -> None:
         and abs(ead - 5.3378) < 5e-5,
         f"{sd:.6f}, {d:.4f}, {addon:.6f}, {ead:.6f}",
     )
-    held = sa_ccr_ead(2.0, 4.0, addon)
+    held = NettingSet(value=2.0, collateral=4.0, addon=addon).exposure()
     ead_c, rc_c, pfe_c = held.ead, held.replacement_cost, held.potential_future_exposure
     report.ok(
         "with 4 of cash collateral held: RC 0, multiplier 0.5815, PFE 1.0541, EAD 1.4758",
@@ -126,8 +141,8 @@ def check_worked_example(report: CheckReport, sd: float, df: float) -> None:
         abs(rwa_default - 5.3378) < 5e-5 and abs(0.08 * rwa_default - 0.4270) < 5e-5,
         f"{0.08 * rwa_default:.6f}",
     )
-    scva = RW_C * 4.0 * ead * df / ALPHA
-    cap_cva = DS_BA_CVA * k_reduced([scva], RHO)
+    scva = COUNTERPARTY.scva(ead)
+    cap_cva = BA_CVA.capital([scva])
     report.ok(
         "reduced BA-CVA: DF 0.9063, SCVA 0.4147, capital 0.65 x 0.4147 = 0.2695, RWA 12.5 x"
         " capital = 3.3692",
@@ -150,13 +165,13 @@ def check_worked_example(report: CheckReport, sd: float, df: float) -> None:
         and abs(scva - RW_C * area) < 1e-12,
         f"EEPE {eepe:.6f}, area {area:.6f}, area / M {area / 4.0:.6f}",
     )
-    two = DS_BA_CVA * k_reduced([scva, scva], RHO)
+    two = BA_CVA.capital([scva, scva])
     report.ok(
         "two such counterparties: 1.5811 times one, not 2 (rho = 50 percent)",
         abs(two / cap_cva - math.sqrt(2.5)) < 1e-12,
         f"{two:.6f}",
     )
-    ead_ceu = sa_ccr_ead(2.0, 0.0, addon, alpha=1.0).ead
+    ead_ceu = NettingSet(value=2.0, collateral=0.0, addon=addon, alpha=1.0).exposure().ead
     report.ok(
         "US rule for a commercial end-user (alpha 1, 12 CFR 217.132(c)(5)(iv)): EAD 3.8127",
         abs(ead_ceu - 3.8127) < 5e-5,
@@ -180,7 +195,7 @@ def main() -> int:
     Returns:
         The exit status, 0 or 1.
     """
-    print(f"Python {sys.version.split()[0]}, SciPy {scipy.__version__}")
+    print_versions(scipy)
     report = CheckReport()
     sd, df = check_identities(report)
     check_worked_example(report, sd, df)

@@ -153,7 +153,7 @@ its own. In the PDF the pathway is section 8.3 (printed pp. 35–38).
 | `notes/coverage/learning-roadmap.md` | The topic in group 2 after `topic:time-series-models` |
 | `notes/readings/` | New notes for `campbell-shiller-1986-nber`, `clark-west-2006-nber`, `wide-cochrane-dog`, `campbell-thompson-2005-nber`; `s7-welch.md` extended |
 | `notes/source-review-records.md`, `notes/source-review-index.md` | Batch record and index line |
-| `notes/artefacts/return-predictability/` | Protocol, extraction script, derived CSVs, check script, recorded output; `superseded-first-run/` keeps the pre-audit script, output and protocol |
+| `notes/artefacts/return-predictability/` | Protocol, extraction script, derived CSVs, check script, recorded output; `superseded-first-run/` keeps the pre-audit output and protocol, and names the commit holding its script |
 | `README.md`, `compendium/README.md` | Where the mapping of later entries is recorded |
 
 ## 7. Numerical checks

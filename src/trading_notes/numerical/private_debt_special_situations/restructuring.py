@@ -1,6 +1,6 @@
 """Recoveries by absolute priority, and Chapter 11 class acceptance and confirmation."""
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class RecoveryWaterfall(Record):

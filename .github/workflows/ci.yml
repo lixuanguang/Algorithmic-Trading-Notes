@@ -44,21 +44,7 @@ jobs:
         run: uv sync --frozen --no-editable
 
       - name: Verify supported Python runtime
-        run: |
-          uv run --frozen --no-editable python - <<'PY'
-          """Verify the pinned interpreter and supported platform."""
-
-          import platform
-          import sys
-          import sysconfig
-          from pathlib import Path
-
-          print(sys.version, platform.platform(), platform.machine())
-          assert platform.python_implementation() == "CPython"
-          assert platform.python_version() == Path(".python-version").read_text().strip()
-          assert sys._is_gil_enabled() and not sysconfig.get_config_var("Py_GIL_DISABLED")
-          assert platform.machine() == "x86_64"
-          PY
+        run: uv run --frozen --no-editable python -m trading_notes.cli.check_runtime
 
       - name: Run source validation
         run: make source-check

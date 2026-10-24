@@ -1,9 +1,4 @@
-"""Read fields of untrusted JSON objects as typed values, reporting wrong shapes.
-
-`json.loads` returns untyped data. Callers bind it to `object` and narrow it here before
-building trusted records, so a malformed record becomes a reported problem and not a
-traceback raised later.
-"""
+"""Read fields of untrusted JSON objects as typed values, reporting wrong shapes."""
 
 from collections.abc import Callable
 
@@ -40,6 +35,10 @@ def as_strings(value: object) -> tuple[str, ...] | None:
 
 class JsonRecord:
     """One JSON object whose fields are read as typed values.
+
+    `json.loads` returns untyped data. Callers bind it to `object` and narrow it here before
+    building trusted records, so a malformed record becomes a reported problem and not a traceback
+    raised later.
 
     A present field of the wrong JSON type is reported once and then read as absent, so
     later checks see a well-typed value. Scalars accept null as absence. A list field is

@@ -1,9 +1,4 @@
-"""Calendar-month arithmetic and Newey-West t statistics for single and pooled score series.
-
-Moved unchanged in formula and operation order from the pure helpers of
-notes/artefacts/fx-determination-forecasting/fx_ppp_oos_test.py, which keeps its own copies until
-its empirical run migrates. Months are (year, month) pairs with month 1 to 12.
-"""
+"""Calendar-month arithmetic on (year, month) pairs and Newey-West t statistics of scores."""
 
 import math
 from collections.abc import Sequence

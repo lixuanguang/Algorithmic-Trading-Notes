@@ -8,7 +8,7 @@ import statsmodels.api as sm
 from numpy.typing import NDArray
 from scipy.optimize import minimize
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 

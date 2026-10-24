@@ -122,7 +122,8 @@ def main(argv: Sequence[str] | None = None) -> int:
        superseded-first-run/.
 
     The stale-data rule and the forecasts are those
-    trading_notes.numerical.macro_fx.ppp_forecasts gives fx_ppp_oos_test.py.
+    trading_notes.numerical.macro_fx.ppp_forecasts gives the PPP research workflow,
+    trading_notes.research.macro_fx.ppp_out_of_sample.
 
     Args:
         argv: Command-line arguments: `--root DIR`, the repository root that holds the outputs

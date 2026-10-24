@@ -1,10 +1,9 @@
-"""A throwaway repository laid out like this one, shared by the structural-check tests.
+"""A throwaway repository laid out like this one, shared by the structural-check tests."""
 
-The guide declares two Parts: part-one with sections sec-a (pathways path-x, path-y) and
-sec-b (path-z), and part-two with sec-c (path-w); old-ab is a retired overview succeeded by
-sec-a and sec-b. The repository starts with section A's wrapper opening path-x over
-sec-a/topic, which each test writes as it needs.
-"""
+# The guide declares two Parts: part-one with sections sec-a (pathways path-x, path-y) and sec-b
+# (path-z), and part-two with sec-c (path-w); old-ab is a retired overview succeeded by sec-a and
+# sec-b. The repository starts with section A's wrapper opening path-x over sec-a/topic, which
+# each test writes as it needs.
 
 import json
 import tempfile

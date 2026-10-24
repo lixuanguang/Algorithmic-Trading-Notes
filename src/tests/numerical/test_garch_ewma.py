@@ -1,11 +1,8 @@
-"""Tests of the GARCH/EWMA example's forecast timing and draw order.
+"""Tests of the GARCH/EWMA example's forecast timing and draw order."""
 
-The example's checks run in test_checks.py. These pin down the k - 1 exponent, which day each
-variance belongs to, the forecast window and the order in which the one stream is consumed, on
-short series.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's checks run in test_checks.py. These pin down the k - 1 exponent, which day each
+# variance belongs to, the forecast window and the order in which the one stream is consumed, on
+# short series.
 
 import contextlib
 import io

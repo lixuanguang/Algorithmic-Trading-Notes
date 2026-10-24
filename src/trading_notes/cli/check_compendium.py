@@ -1,11 +1,4 @@
-"""Check compendium entries, citation keys, labels and pathway links.
-
-Run from the repository root, or pass --root:
-uv run --frozen --no-editable python -m trading_notes.cli.check_compendium
-    [--check] [--json] [--root DIR]
-It exits 0, or 1 with --check when a problem is reported; a missing or malformed guide file
-is reported on stderr with status 1, and argparse usage errors exit 2.
-"""
+"""Check compendium entries, citation keys, labels and pathway links."""
 
 import argparse
 import json
@@ -42,7 +35,14 @@ def print_report(r: CompendiumReport) -> None:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    """Parse arguments, run the checks and return the process exit status."""
+    """Parse arguments, run the checks and return the process exit status.
+
+    Run from the repository root, or pass --root:
+    uv run --frozen --no-editable python -m trading_notes.cli.check_compendium
+        [--check] [--json] [--root DIR]
+    It exits 0, or 1 with --check when a problem is reported; a missing or malformed guide file
+    is reported on stderr with status 1, and argparse usage errors exit 2.
+    """
     ap = argparse.ArgumentParser(description=DESCRIPTION)
     ap.add_argument("--root", type=Path, default=Path.cwd())
     ap.add_argument("--json", action="store_true", help="print the report as JSON")

@@ -46,7 +46,7 @@ Written in the first foundation slice (2026-10-18):
 - `meth:instrument-present-value`: present values of zero-coupon and coupon bonds (single yield and zero rates), preferred stock, constant and two-stage dividend growth; implied yield, required return and growth.
 - `res:cash-flow-additivity`: the law of one price and additivity of dated cash flows; implied forward rates, covered interest parity and a one-period replicated option with put-call parity.
 
-All three partly checked 2026-10-18, draft; numerical examples in `notes/artefacts/time-value-returns/time-value-return-checks.py`; human review outstanding.
+All three partly checked 2026-10-18, draft; numerical examples in `trading_notes.numerical.financial_mathematics.time_value_returns_checks`; human review outstanding.
 
 Corrections of 2026-10-18: `res:cash-flow-additivity` now shows the dated cash flows of forward lending and borrowing and separates them from refinancing at a later, unknown rate; `def:required-return-components` separates the realised (ex post) Fisher identity and the ex ante relation (Mankiw, chap. 5, sec. 5-3) from the expected real return under uncertain inflation; `meth:instrument-present-value` distinguishes nominal annual yields compounded semiannually from effective annual yields.
 

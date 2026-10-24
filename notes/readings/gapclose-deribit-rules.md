@@ -21,7 +21,7 @@ Prepared on 2026-10-15 by crypto market structure review from source checks, not
 
 - Deribit FZE is a VASP regulated by Dubai's VARA (Rule 1.1); spot via brokerage services, derivatives linear or inverse (Rule 1.2).
 - Funding: positive rate, longs pay shorts; no fee; premium rate against the Deribit Index; damper +/-0.025%; caps BTC +/-0.5%, ETH +/-1.0%, USDC & USDT +/-5.0%; quoted per 8 hours, accrued continuously, in RSPL, cash at 08:00 UTC settlement.
-- Example slips: ETH Example 3 says index USD 10,000 and "1 BTC long"; ETH Example 5 formula shows 7.5%; stated results correct (recomputed in funding_checks.py).
+- Example slips: ETH Example 3 says index USD 10,000 and "1 BTC long"; ETH Example 5 formula shows 7.5%; stated results correct (recomputed in trading_notes.numerical.crypto_venues_perpetuals.perpetual_funding_checks).
 - Liquidation Process (10.1), liquidation fee (10.5), insurance fund (10.6-10.7; converting another currency of the fund is at Deribit's absolute discretion), socialised loss (10.8-10.11), auto-deleveraging definition; settlement daily 08:00 UTC (11.4); European cash-settled options priced in BTC or ETH (App. A 2(d)).
 - Socialised-loss trigger (10.8, rechecked 2026-10-15): Deribit may, in its absolute discretion, trigger the mechanism if the fund is depleted in all currencies, or if the bankrupt account's currency is depleted and it decides not to convert other currencies. crypto market structure review had written only "if the fund is depleted"; corrected in `def:crypto-trading-risk-layers`. Rule 9.17 applies the same two-branch trigger to a short spot under cross-collateral margin (read, not used in an entry).
 

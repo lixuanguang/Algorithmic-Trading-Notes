@@ -1,23 +1,24 @@
-"""Tests of the order reconciliation example's records and state-owning reconciler.
+"""Tests of the order reconciliation example's records and state-owning reconciler."""
 
-The example's own checks run in test_checks.py; these vary its synthetic inputs to pin down
-the rules the checks rely on: ExecID deduplication, conservative state, intent validity and the
-Done for Day distinctions.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's own checks run in test_checks.py; these vary its synthetic inputs to pin down the
+# rules the checks rely on: ExecID deduplication, conservative state, intent validity and the Done
+# for Day distinctions.
 
 import unittest
 from collections.abc import Mapping
-from dataclasses import FrozenInstanceError
 from types import MappingProxyType
 
-from trading_notes.numerical import order_reconciliation as rec
-from trading_notes.numerical.order_reconciliation import (
+from pydantic import ValidationError
+
+from trading_notes.numerical.trading_controls import order_reconciliation_checks as rec
+from trading_notes.numerical.trading_controls.order_reconciliation_checks import (
     INTENTS,
     ORDERS,
     STATUS,
     STREAM,
+    VENUE_DAY_DFD_FINAL,
+)
+from trading_notes.numerical.trading_controls.order_state import (
     Execution,
     Intent,
     Order,
@@ -31,7 +32,7 @@ def day_one(
     intents: Mapping[str, Intent] = INTENTS, orders: Mapping[str, Order] = ORDERS
 ) -> Reconciler:
     """Return a new reconciler with the example's execution stream applied."""
-    reconciler = Reconciler(intents, orders)
+    reconciler = Reconciler(intents, orders, VENUE_DAY_DFD_FINAL)
     reconciler.apply(STREAM)
     return reconciler
 
@@ -41,16 +42,16 @@ class Deduplication(unittest.TestCase):
 
     def test_resent_exec_id_is_applied_once(self) -> None:
         """Copies of one ExecID count once, flagged or not."""
-        reconciler = Reconciler(INTENTS, ORDERS)
-        f1 = Execution("F1", "f1", 120)
-        reconciler.apply([f1, Execution("F1", "f1", 120, poss_dup=True), f1])
+        reconciler = Reconciler(INTENTS, ORDERS, VENUE_DAY_DFD_FINAL)
+        f1 = Execution(cl_ord_id="F1", exec_id="f1", last_qty=120)
+        reconciler.apply([f1, f1.model_copy(update={"poss_dup": True}), f1])
         self.assertEqual(reconciler.filled["F1"], 120)
 
     def test_unseen_possdup_is_applied(self) -> None:
         """A PossDup whose ExecID was never seen is a fill that may never have arrived."""
-        reconciler = Reconciler(INTENTS, ORDERS)
+        reconciler = Reconciler(INTENTS, ORDERS, VENUE_DAY_DFD_FINAL)
         self.assertFalse(reconciler.has_applied("f2"))
-        reconciler.apply([Execution("F1", "f2", 80, poss_dup=True)])
+        reconciler.apply([Execution(cl_ord_id="F1", exec_id="f2", last_qty=80, poss_dup=True)])
         self.assertTrue(reconciler.has_applied("f2"))
         self.assertEqual(reconciler.filled["F1"], 80)
 
@@ -76,7 +77,9 @@ class ConservativeState(unittest.TestCase):
     def test_fills_beyond_the_reply_also_break(self) -> None:
         """More applied than the reply reports: exposure takes the fills, nothing is proposed."""
         reconciler = day_one()
-        state = reconciler.reconcile_all({**STATUS, "X1": StatusReply("4", 100, 0)})
+        state = reconciler.reconcile_all(
+            {**STATUS, "X1": StatusReply(ord_status="4", cum_qty=100, leaves_qty=0)}
+        )
         self.assertEqual((state["X1"].break_qty, state["X1"].cum), (-20, 120))
         self.assertEqual(state["X1"].could_fill, 180)
         self.assertNotIn("P-part", reconciler.propose(state))
@@ -89,7 +92,7 @@ class Proposals(unittest.TestCase):
         """The same unfilled 100 is proposed only while the intent is valid."""
         withdrawn = day_one()
         self.assertNotIn("P-withdrawn", withdrawn.propose(withdrawn.reconcile_all(STATUS)))
-        valid = day_one({**INTENTS, "P-withdrawn": Intent(150, True)})
+        valid = day_one({**INTENTS, "P-withdrawn": Intent(qty=150, valid=True)})
         self.assertEqual(valid.propose(valid.reconcile_all(STATUS))["P-withdrawn"], 100)
 
     def test_pending_cancel_blocks_until_confirmed(self) -> None:
@@ -99,7 +102,9 @@ class Proposals(unittest.TestCase):
         self.assertFalse(pending["C1"].resolved)
         self.assertEqual(pending["C1"].could_fill, 100)
         self.assertNotIn("P-pending", reconciler.propose(pending))
-        cancelled = reconciler.reconcile_all({**STATUS, "C1": StatusReply("4", 0, 0)})
+        cancelled = reconciler.reconcile_all(
+            {**STATUS, "C1": StatusReply(ord_status="4", cum_qty=0, leaves_qty=0)}
+        )
         self.assertEqual(reconciler.propose(cancelled)["P-pending"], 100)
 
 
@@ -115,7 +120,9 @@ class DoneForDay(unittest.TestCase):
         """Unknown TimeInForce, or GTD, keeps D1 dormant even with the venue rule read."""
         for tif in (None, "6"):
             with self.subTest(tif=tif):
-                reconciler = day_one(orders={**ORDERS, "D1": Order("P-day", 500, tif=tif)})
+                reconciler = day_one(
+                    orders={**ORDERS, "D1": Order(intent="P-day", qty=500, tif=tif)}
+                )
                 state = reconciler.reconcile_all(STATUS)
                 self.assertEqual((state["D1"].terminal, state["D1"].dormant), (False, True))
                 self.assertEqual(state["D1"].could_fill, 200)
@@ -131,15 +138,18 @@ class DoneForDay(unittest.TestCase):
     def test_renewal_then_confirmed_cancellation_or_expiry(self) -> None:
         """A renewed GTC order stays live; Canceled or Expired ends it and frees the rest."""
         reconciler = day_one()
-        reconciler.apply([Execution("G1", "g2", 1000)])
-        renewed = reconciler.reconcile_all(
-            {**STATUS, "G1": StatusReply("1", 3000, 7000, exec_type="D", restatement_reason=1)}
+        reconciler.apply([Execution(cl_ord_id="G1", exec_id="g2", last_qty=1000)])
+        renewal = StatusReply(
+            ord_status="1", cum_qty=3000, leaves_qty=7000, exec_type="D", restatement_reason=1
         )
+        renewed = reconciler.reconcile_all({**STATUS, "G1": renewal})
         self.assertEqual((renewed["G1"].cum, renewed["G1"].could_fill), (3000, 7000))
         self.assertNotIn("P-gtc", reconciler.propose(renewed))
         for ended in ("4", "C"):
             with self.subTest(ord_status=ended):
-                state = reconciler.reconcile_all({**STATUS, "G1": StatusReply(ended, 3000, 0)})
+                state = reconciler.reconcile_all(
+                    {**STATUS, "G1": StatusReply(ord_status=ended, cum_qty=3000, leaves_qty=0)}
+                )
                 self.assertEqual(reconciler.propose(state)["P-gtc"], 7000)
 
 
@@ -150,7 +160,7 @@ class StateOwnership(unittest.TestCase):
         """Applying to one reconciler changes neither another nor a returned copy."""
         first, second = day_one(), day_one()
         filled = first.filled
-        first.apply([Execution("G1", "g2", 1000)])
+        first.apply([Execution(cl_ord_id="G1", exec_id="g2", last_qty=1000)])
         self.assertEqual(
             (first.filled["G1"], second.filled["G1"], filled["G1"]), (3000, 2000, 2000)
         )
@@ -161,7 +171,7 @@ class StateOwnership(unittest.TestCase):
         for mapping in (rec.INTENTS, rec.ORDERS, rec.STATUS, rec.VENUE_DAY_DFD_FINAL):
             self.assertIsInstance(mapping, MappingProxyType)
         self.assertIsInstance(rec.STREAM, tuple)
-        with self.assertRaises(FrozenInstanceError):
+        with self.assertRaises(ValidationError):
             setattr(rec.INTENTS["P-gtc"], "qty", 1)  # a write the type checker would reject
 
 

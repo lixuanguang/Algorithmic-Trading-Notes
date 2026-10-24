@@ -26,7 +26,7 @@
 
 \emph{Exploration}: summary statistics, histograms and box plots, correlation and scatter plots for structured data; word frequencies and word clouds for text; used to find errors, choose transformations and generate features, not to test hypotheses on the data later used for evaluation.
 
-\qffield{Practice} \emph{Synthetic demonstrations of wrangling errors} (\texttt{ml-methods-checks.py}, part~4).
+\qffield{Practice} \emph{Synthetic demonstrations of wrangling errors} (\nolinkurl{trading_notes.numerical.machine_learning_methods.financial_ml_methods_checks}, part~4).
 \begin{itemize}
 \item \emph{Information timing}: a feature built from the next period's return has a test correlation of 1.00 with the target; the honest, lagged feature 0.05. A data timestamp check would have rejected it.
 \item \emph{Fitted transforms}: for a trending feature, full-sample mean and standard deviation (0.401, 0.525) differ from the training-only values (0.529, 0.541); standardising with full-sample values lets the test period shape the inputs.
@@ -51,7 +51,7 @@
 \end{itemize}
 Accuracy misleads when classes are imbalanced. The threshold is chosen for the cost of each error type, on validation data.
 
-\qffield{Practice} \emph{A synthetic default classifier} (\texttt{ml-methods-checks.py}, part~6). Two thousand cases with a 23 percent default rate are split 60/20/20 in order. Logistic regression's penalty is chosen on the validation set; on the test set the confusion matrix is TP~39, FP~15, FN~54, TN~292: precision 0.72, recall 0.42, accuracy 0.83 and F1 0.53. Accuracy looks high only because always predicting ``no default'' would score 0.77. AUC is 0.79, and the trapezoid rule equals the Mann--Whitney probability that a random defaulter is scored above a random non-defaulter. Lowering the threshold from 0.5 to 0.2 raises recall and the false-positive rate together; a lender who loses much more on a missed default than on a wrongly declined loan should choose the lower threshold on validation data.
+\qffield{Practice} \emph{A synthetic default classifier} (\nolinkurl{trading_notes.numerical.machine_learning_methods.financial_ml_methods_checks}, part~6). Two thousand cases with a 23 percent default rate are split 60/20/20 in order. Logistic regression's penalty is chosen on the validation set; on the test set the confusion matrix is TP~39, FP~15, FN~54, TN~292: precision 0.72, recall 0.42, accuracy 0.83 and F1 0.53. Accuracy looks high only because always predicting ``no default'' would score 0.77. AUC is 0.79, and the trapezoid rule equals the Mann--Whitney probability that a random defaulter is scored above a random non-defaulter. Lowering the threshold from 0.5 to 0.2 raises recall and the false-positive rate together; a lender who loses much more on a missed default than on a wrongly declined loan should choose the lower threshold on validation data.
 
 \qffield{Conditions} Simulated data; in practice the test period must also be later than training and the label must not overlap it.
 

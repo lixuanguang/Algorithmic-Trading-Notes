@@ -3,7 +3,7 @@
 import datetime
 import math
 import sys
-from typing import cast, overload
+from typing import overload
 
 import numpy as np
 from numpy.typing import NDArray
@@ -25,7 +25,9 @@ def call_pay(s: float, k: float) -> np.float64: ...
 def call_pay(s: Floats, k: float) -> Floats: ...
 def call_pay(s: float | Floats, k: float) -> np.float64 | Floats:
     """Return the call payoff max(s - k, 0), for one terminal price or an array of them."""
-    return cast(np.float64 | Floats, np.maximum(s - k, 0.0))
+    if isinstance(s, np.ndarray):
+        return np.asarray(np.maximum(s - k, 0.0), dtype=np.float64)
+    return np.float64(np.maximum(s - k, 0.0))
 
 
 @overload
@@ -34,7 +36,9 @@ def put_pay(s: float, k: float) -> np.float64: ...
 def put_pay(s: Floats, k: float) -> Floats: ...
 def put_pay(s: float | Floats, k: float) -> np.float64 | Floats:
     """Return the put payoff max(k - s, 0), for one terminal price or an array of them."""
-    return cast(np.float64 | Floats, np.maximum(k - s, 0.0))
+    if isinstance(s, np.ndarray):
+        return np.asarray(np.maximum(k - s, 0.0), dtype=np.float64)
+    return np.float64(np.maximum(k - s, 0.0))
 
 
 # Payment-date limits: as t -> T_next, P -> 1 and the PV becomes the payment itself; just after a

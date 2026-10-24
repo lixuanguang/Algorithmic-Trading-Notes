@@ -4,15 +4,10 @@ UV := uv
 # Every sync and run installs the project non-editable; see [tool.uv] in pyproject.toml.
 UV_SYNC := $(UV) sync --frozen --no-editable
 UV_RUN := $(UV) run --frozen --no-editable
-PYTHON_PATHS := src notes/artefacts
-# Numerical evidence scripts not yet moved into the package, so not run by the tests; scripts
-# that forward to trading_notes.numerical are run once by `make test`. Preserved superseded runs
-# live one level deeper and are excluded. None remain; the target reports that explicitly and
-# still runs any such script that is added.
-CHECK_SCRIPTS := $(sort $(shell grep -L '^from trading_notes\.numerical' notes/artefacts/*/*check*.py))
+PYTHON_PATHS := src
 
 .PHONY: sync lock-check format format-check lint typecheck test check-compendium check-coverage \
-	verify-outlines examples pdf pre-commit source-check check
+	verify-outlines pdf pre-commit source-check check
 
 sync:
 	$(UV_SYNC)
@@ -29,7 +24,7 @@ format-check:
 lint:
 	$(UV_RUN) ruff check $(PYTHON_PATHS)
 
-# Strict mypy over the migrated scope listed in [tool.mypy] files.
+# Strict mypy over everything under src, as listed in [tool.mypy] files.
 typecheck:
 	$(UV_RUN) mypy
 
@@ -46,23 +41,6 @@ check-coverage:
 verify-outlines:
 	$(UV_RUN) python -m trading_notes.cli.check_coverage --check --verify-outlines
 
-# Each script runs once from an empty temporary folder, so none depends on the working
-# directory (scripts find their data next to themselves) or writes into it.
-examples:
-	@set -e; tmp=$$(mktemp -d); trap 'rm -rf "$$tmp"' EXIT; \
-	for f in $(CHECK_SCRIPTS); do \
-		if ! (cd "$$tmp" && $(UV_RUN) --project "$(CURDIR)" \
-			python -W error "$(CURDIR)/$$f" > /dev/null 2>&1); then \
-			echo "FAILED: $$f"; exit 1; \
-		fi; \
-	done; \
-	if [ -n "$$(ls -A "$$tmp")" ]; then echo "FAILED: files written to the working folder"; exit 1; fi; \
-	if [ -z "$(strip $(CHECK_SCRIPTS))" ]; then \
-		echo "no unmigrated check scripts remain; every example runs once in make test"; \
-	else \
-		echo "$(words $(CHECK_SCRIPTS)) check scripts passed"; \
-	fi
-
 # Needs a LuaLaTeX installation with latexmk.
 pdf:
 	cd compendium && latexmk -lualatex -interaction=nonstopmode -halt-on-error compendium.tex
@@ -70,6 +48,6 @@ pdf:
 pre-commit:
 	$(UV_RUN) pre-commit run --all-files
 
-source-check: lock-check lint format-check typecheck check-compendium check-coverage test examples
+source-check: lock-check lint format-check typecheck check-compendium check-coverage test
 
 check: source-check verify-outlines pdf

@@ -3,7 +3,7 @@
 import math
 from collections.abc import Callable
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 # A total-variance slice w(k) of log-moneyness k.
 type Slice = Callable[[float], float]

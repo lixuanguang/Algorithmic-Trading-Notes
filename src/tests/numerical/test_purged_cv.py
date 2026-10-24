@@ -1,11 +1,8 @@
-"""Tests of the printed Snippet 7.3 split's index conventions.
+"""Tests of the printed Snippet 7.3 split's index conventions."""
 
-The example's full run is tested in test_checks.py. These pin down that the folds partition
-the observations into contiguous test blocks that training never touches, and the purge and
-embargo conventions on a label span other than the example's.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# The example's full run is tested in test_checks.py. These pin down that the folds partition the
+# observations into contiguous test blocks that training never touches, and the purge and embargo
+# conventions on a label span other than the example's.
 
 import unittest
 

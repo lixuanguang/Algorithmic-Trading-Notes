@@ -1,6 +1,6 @@
 """Money-market instruments on act/360: repos, discount paper and repo margin."""
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class Repo(Record):

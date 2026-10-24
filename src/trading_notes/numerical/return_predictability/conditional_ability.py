@@ -5,7 +5,7 @@ from typing import Literal, Self
 import numpy as np
 from numpy.typing import NDArray
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 type Kernel = Literal["uniform", "bartlett"]

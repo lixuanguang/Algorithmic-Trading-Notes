@@ -4,7 +4,7 @@ import math
 import random
 from collections.abc import Sequence
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class LiquidationModel(Record):

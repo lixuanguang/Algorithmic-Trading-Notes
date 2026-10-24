@@ -5,13 +5,8 @@ from typing import Literal
 
 import numpy as np
 
-from trading_notes.numerical.records import Record
-
-
-def annuity(r: float, n: float) -> float:
-    """Return the present value of an end-of-year annuity of 1 for n years at rate r."""
-    discount: float = (1 + r) ** -n
-    return (1 - discount) / r
+from trading_notes.numerical.time_value.cash_flows import annuity
+from trading_notes.records import Record
 
 
 def annuity_due(n: int, r: float) -> float:

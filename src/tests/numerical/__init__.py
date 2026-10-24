@@ -1,1 +1,1 @@
-"""Tests of the migrated numerical checks and their shared reporting."""
+"""Tests of the numerical examples and their shared reporting."""

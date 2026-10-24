@@ -5,7 +5,7 @@ from typing import Literal, Self
 
 from scipy.stats import norm
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type OptionKind = Literal["call", "put"]
 

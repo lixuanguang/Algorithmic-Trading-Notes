@@ -1,6 +1,6 @@
 """Deribit's perpetual funding rate: a damper band around zero, then symmetric caps."""
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 def premium_rate(mark: float, index: float) -> float:

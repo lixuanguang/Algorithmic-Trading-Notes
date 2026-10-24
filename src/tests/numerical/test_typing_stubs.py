@@ -1,12 +1,10 @@
-"""Tests that the local statsmodels and pandas stubs describe what the pinned libraries return.
+"""Tests that the local statsmodels and pandas stubs describe what the pinned libraries return."""
 
-src/typings/ types only the calls the numerical checks make, and mypy trusts it without looking at
-the libraries. These make each of those calls on float64 arrays, as the checks do, and compare
-the runtime type with the declared one, so that a library upgrade that changes a result's type
-(an ndarray becoming a pandas object, say) fails here rather than passing mypy unnoticed.
-
-Run: make test (uv run --frozen --no-editable pytest)
-"""
+# src/typings/ types only the calls the numerical checks make, and mypy trusts it without looking
+# at the libraries. These make each of those calls on float64 arrays, as the checks do, and
+# compare the runtime type with the declared one, so that a library upgrade that changes a
+# result's type (an ndarray becoming a pandas object, say) fails here rather than passing mypy
+# unnoticed.
 
 import tempfile
 import unittest

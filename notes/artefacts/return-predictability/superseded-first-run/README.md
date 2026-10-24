@@ -11,3 +11,9 @@ The audit found two calculation errors in part A and one under-qualified stateme
 The corrected script and output are in the parent folder; the reasons are in the parent protocol's *Audit corrections* section and in `notes/source-review-records.md`, *Return-predictability content batch (22 October 2026)*. Parts B and C did not change: their numbers in these files are still current.
 
 The script reproduces `return-predictability-results.txt` byte for byte when run from a copy of this folder that also holds `goyal-annual-1871-2025.csv` and `goyal-monthly-1871-2025.csv` from the parent folder (it reads them from its own directory). Do not cite this run's part A figures as current.
+
+The script is no longer kept in the working tree. Each is recoverable byte for byte from the commit that last changed it; to rerun, restore it into a copy of this folder:
+
+```
+git show 76bd96e5b43cc780fc9a98e522459549f34136ad:notes/artefacts/return-predictability/superseded-first-run/return-predictability-checks.py > return-predictability-checks.py
+```

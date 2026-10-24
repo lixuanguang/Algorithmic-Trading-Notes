@@ -8,7 +8,6 @@ import numpy as np
 from numpy.typing import NDArray
 
 from trading_notes.numerical.portfolio_choice.history import DATA, AssetClassHistory
-from trading_notes.numerical.records import Record
 from trading_notes.numerical.report import CheckReport, print_versions
 from trading_notes.numerical.repository import repository_root
 from trading_notes.numerical.scenario_simulation.return_simulation import (
@@ -16,6 +15,7 @@ from trading_notes.numerical.scenario_simulation.return_simulation import (
     compounded_wealth,
 )
 from trading_notes.numerical.tolerance import close
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 

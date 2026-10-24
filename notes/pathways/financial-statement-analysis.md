@@ -48,7 +48,7 @@ Accounting and statement-analysis batch (2026-10-20), one shared case and 45 obj
 
 Partly checked 2026-10-20, draft; human review outstanding. See [record](../source-review-records.md#accounting-and-statement-analysis-batch-20-october-2026).
 
-Credit, time-series and valuation batch (2026-10-20); numbers checked by `notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py`, with Penrose Group, Larch Brands, Tamar Bank and Wren Insurance as hypothetical cases and reproductions of Subramanyam and Wild's BritCo and Hull's DLC and Table 3.2:
+Credit, time-series and valuation batch (2026-10-20); numbers checked by `trading_notes.numerical.financial_statement_analysis.intercorporate_fx_institutions_checks`, with Penrose Group, Larch Brands, Tamar Bank and Wren Insurance as hypothetical cases and reproductions of Subramanyam and Wild's BritCo and Hull's DLC and Table 3.2:
 
 - Intercorporate investments: `def:intercorporate-investment-classification`, `meth:consolidation-ratio-effects`.
 - Foreign currency: `def:functional-currency-transactions`, `meth:currency-translation-methods`, `meth:multinational-currency-tax-analysis`.

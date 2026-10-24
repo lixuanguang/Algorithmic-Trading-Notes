@@ -9,7 +9,7 @@ from trading_notes.numerical.arbitrage_free_valuation.short_rate_models import (
     HullWhite,
     SvenssonCurve,
 )
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 type Floats = NDArray[np.float64]
 

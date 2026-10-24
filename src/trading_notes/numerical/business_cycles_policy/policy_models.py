@@ -2,7 +2,7 @@
 
 from scipy.optimize import brentq
 
-from trading_notes.numerical.records import Record
+from trading_notes.records import Record
 
 
 class KeynesianCross(Record):

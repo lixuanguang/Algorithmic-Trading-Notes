@@ -1,11 +1,11 @@
 [project]
 name = "algorithmic-trading-notes"
 version = "0.1.0"
-description = "Structural checkers and numerical evidence scripts for the compendium"
+description = "Structural checkers, numerical examples, research workflows and guide views for the compendium"
 readme = "README.md"
 requires-python = "==3.14.*"
 classifiers = ["Private :: Do Not Upload"]
-# Numerical check scripts in notes/artefacts/ (numpy, scipy; statsmodels, which brings pandas,
+# The numerical package and research workflows (numpy, scipy; statsmodels, which brings pandas,
 # for the regression, asset-pricing and AFML checks).
 dependencies = [
     "numpy==2.4.6",
@@ -26,7 +26,8 @@ dev = [
     # Type information for scipy, which ships none; its version tracks the scipy pin.
     "scipy-stubs==1.18.1.1",
 ]
-# Empirical reruns that read retained spreadsheets; not needed for `make check`.
+# Spreadsheet readers of the research workflows that rerun retained evidence. A default group,
+# so the workflows' imports, types and tests are checked by `make check`.
 empirical = [
     "openpyxl==3.1.5",
     "xlrd==2.0.2",
@@ -48,56 +49,34 @@ required-version = "==0.12.7"
 # inside ~/Documents. uv 0.12.7 has no project setting for this, and any `uv sync` or
 # `uv run` without --no-editable reinstalls the project editable, so every such command in
 # the Makefile, the pre-commit hooks, CI and the README passes --no-editable (see
-# src/tests/test_installation.py). The cache keys reinstall the package whenever a source file
-# changes, so a non-editable copy never goes stale.
+# src/tests/test_installation.py). The cache keys reinstall the package whenever a source or
+# data file (the guide's templates) changes, so a non-editable copy never goes stale.
 package = true
-cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.py" }]
-default-groups = ["dev"]
+cache-keys = [{ file = "pyproject.toml" }, { file = "src/trading_notes/**/*" }]
+default-groups = ["dev", "empirical"]
 # Transitive versions kept equal to the other research repository where they overlap.
 constraint-dependencies = ["pandas==3.0.5"]
 
 [tool.ruff]
 target-version = "py314"
 line-length = 100
-src = ["src", "."]
-# Preserved historical runs are kept exactly as they were executed.
-extend-exclude = ["notes/artefacts/**/superseded-*", "guide", "reading_materials", "reading materials"]
+src = ["src"]
+extend-exclude = ["reading_materials", "reading materials"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "UP", "RUF", "D", "ANN"]
-
-[tool.ruff.lint.per-file-ignores]
-# Evidence modules keep their provenance docstrings and each printed check name on one
-# source line, as printed. The legacy exemptions of unmigrated artefacts are scoped to that
-# folder by notes/artefacts/ruff.toml; all other code gets every rule.
-"src/trading_notes/numerical/{time_value_returns,bitemporal,filing_deadlines,filing_timestamps,margin_spiral}.py" = [
-    "E501",
-]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
 [tool.mypy]
-# Strict checking of everything maintained under src/ (the package and its tests), plus the
-# forwarding scripts in notes/artefacts that remain until their modules move into packages.
-files = [
-    "src/trading_notes",
-    "src/tests",
-    "notes/artefacts/time-value-returns/time-value-return-checks.py",
-    "notes/artefacts/point-in-time-data/bitemporal-check.py",
-    "notes/artefacts/point-in-time-data/filing-checks.py",
-    "notes/artefacts/point-in-time-data/filing-timestamp-checks.py",
-    "notes/artefacts/funding-crowding/spiral-checks.py",
-    "notes/artefacts/model-governance-controls/reconciliation-check.py",
-    "notes/artefacts/volatility-options/negative-hedge-ratio-check.py",
-    "notes/artefacts/numerical-pricing/numerical-pricing-checks.py",
-    "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py",
-    "notes/artefacts/market-structure-execution-quality/order-routing-fragmentation-checks.py",
-]
-# statsmodels and pandas ship no type information. src/typings/ declares only the parts of their
-# APIs that the numerical checks call, typed as those calls return at the pinned versions; a call
-# outside them is a type error, so extend a stub, checked against the pinned library, when a
-# check needs a new call, and review the stubs when a pin moves.
+# Strict checking of every maintained module: the package, its research and guide tools, and
+# the tests.
+files = ["src/trading_notes", "src/tests"]
+# statsmodels, pandas, openpyxl and xlrd ship no type information. src/typings/ declares only the
+# parts of their APIs that the package calls, typed as those calls return at the pinned versions;
+# a call outside them is a type error, so extend a stub, checked against the pinned library, when
+# a module needs a new call, and review the stubs when a pin moves.
 mypy_path = "src:src/typings"
 plugins = ["pydantic.mypy"]
 python_version = "3.14"

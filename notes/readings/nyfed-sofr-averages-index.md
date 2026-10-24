@@ -20,7 +20,7 @@ Prepared on 2026-10-18 by the correction pass on PR #24 from source checks, not 
 ## Key results
 
 - The SOFR Averages and Index "employ daily compounding on each business day"; on other days "simple interest applies, at a rate of interest equal to the SOFR value for the preceding business day"; actual days over a 360-day year. n_i is the calendar days for which SOFR_i applies (3 for most Fridays).
-- Index set to 1.00000000 on 2 April 2018; the published table reaches 1.00034365 on 9 April 2018 with the Friday rate 1.75% applied for three days (reproduced in `bond-valuation-checks.py`). Custom-period averages come from index ratios; index rounding can differ from published averages at the fifth decimal.
+- Index set to 1.00000000 on 2 April 2018; the published table reaches 1.00034365 on 9 April 2018 with the Friday rate 1.75% applied for three days (reproduced in `trading_notes.numerical.bond_pricing_yields.bond_valuation_checks`). Custom-period averages come from index ratios; index rounding can differ from published averages at the fifth decimal.
 - Rates are not published on, or for, days for which SIFMA recommends a full closure of U.S. government securities trading.
 
 ## Limits

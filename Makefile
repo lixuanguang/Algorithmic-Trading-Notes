@@ -4,7 +4,7 @@ UV := uv
 # Every sync and run installs the project non-editable; see [tool.uv] in pyproject.toml.
 UV_SYNC := $(UV) sync --frozen --no-editable
 UV_RUN := $(UV) run --frozen --no-editable
-PYTHON_PATHS := src tools tests notes/artefacts
+PYTHON_PATHS := src tools tests typings notes/artefacts
 # Numerical evidence scripts; preserved superseded runs live one level deeper and are excluded.
 CHECK_SCRIPTS := $(sort $(wildcard notes/artefacts/*/*check*.py))
 

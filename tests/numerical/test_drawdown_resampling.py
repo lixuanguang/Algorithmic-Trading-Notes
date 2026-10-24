@@ -27,16 +27,20 @@ class MaxDrawdown(unittest.TestCase):
 
     def test_initial_peak_and_log_units(self) -> None:
         """A first-month loss of 10% is a drawdown of -log(0.9); a later fall is measured too."""
-        self.assertAlmostEqual(float(dd.max_dd(np.array([-0.1]))), -math.log(0.9), places=15)
+        one = dd.max_dd(np.array([-0.1]))
+        self.assertIs(type(one), np.float64)
+        self.assertAlmostEqual(float(one), -math.log(0.9), places=15)
         self.assertAlmostEqual(
             float(dd.max_dd(np.array([0.1, -0.05, 0.02]))), -math.log(0.95), places=15
         )
         self.assertEqual(float(dd.max_dd(np.array([0.1, 0.2]))), 0.0)
 
     def test_last_axis_of_a_batch(self) -> None:
-        """Each row is measured on its own."""
+        """Each row is measured on its own, into a float64 array with one value per row."""
         got = dd.max_dd(np.array([[-0.1, 0.0], [0.0, 0.0]]))
-        self.assertEqual(got.shape, (2,))
+        self.assertIsInstance(got, np.ndarray)
+        assert isinstance(got, np.ndarray)
+        self.assertEqual((got.shape, got.dtype), ((2,), np.float64))
         self.assertAlmostEqual(float(got[0]), -math.log(0.9), places=15)
         self.assertEqual(float(got[1]), 0.0)
 

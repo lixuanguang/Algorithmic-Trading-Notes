@@ -14,6 +14,7 @@ import datetime as dt
 import functools
 import io
 import pkgutil
+import py_compile
 import random
 import re
 import subprocess
@@ -35,48 +36,135 @@ from numpy.typing import NDArray
 
 # project library imports
 import trading_notes.numerical
-from tests.import_probe import HEAVY, import_effects
+from tests.import_probe import HEAVY, dependency_reads, import_effects
 from trading_notes.numerical import (
+    active_management,
+    afml,
+    alternatives_allocation,
     amm_pool,
+    asset_pricing_factor_models,
+    backtest_design,
     bitemporal,
     black_litterman,
+    bond_valuation_risk,
     bsm_svi,
+    capital_market_expectations,
     cartea_jaimungal,
     cash_flow_linkage,
     cme_allocation,
     commodity_latency,
+    commodity_returns,
+    concentrated_position,
     contract_statistics,
+    correlation_independence,
+    counterparty_capital,
+    counterparty_xva,
     country_risk_premium,
     covariance_shrinkage,
+    covariance_volatility,
+    credit_cds_securitisation,
+    credit_portfolios,
+    cross_currency_basis,
+    currency_management,
+    dealer_queue_information,
+    default_correlation,
+    derivative_overlays,
+    digital_assets,
+    dividend_tree_swaption,
     drawdown_resampling,
+    economic_growth,
     equal_risk_contribution,
+    equity_portfolio_management,
     erc_sharpe,
+    etf_mechanics,
+    exotic_options,
     expected_shortfall,
+    extreme_value,
     filing_deadlines,
     filing_timestamps,
+    financial_labels,
+    financial_ml_methods,
+    fixed_income_portfolio,
+    forecast_scaling,
+    forward_swap_valuation,
     fra_settlement,
     funding_repo,
+    fx_mechanics,
+    fx_panel_inference,
     garch_ewma,
+    gips,
+    hedge_funds,
+    index_construction,
+    inference_simulation,
+    institutional_portfolios,
+    intercorporate_fx_institutions,
+    investment_planning,
+    kelly_growth,
+    linear_projection,
+    linear_regression,
+    liquidity_market_design,
+    lob_model_derivations,
+    lob_models,
+    lookback_options,
+    macro_policy_trade,
+    macro_pricing_risk,
+    macro_valuation,
+    manager_selection,
+    margin_purchase,
     margin_spiral,
+    market_estimators_rules,
+    market_risk_measurement,
+    market_structure,
+    mean_cvar,
+    monte_carlo_greeks,
     multicurve,
+    multiple_testing,
     negative_hedge_ratio,
+    numerical_pricing,
+    option_models,
+    option_strategies,
+    option_valuation,
+    order_flow,
     order_reconciliation,
+    order_routing_fragmentation,
+    performance_evaluation,
     perpetual_funding,
+    portfolio_moments,
+    private_capital,
+    private_wealth,
+    purged_cv,
+    rate_tree_embedded_options,
+    real_assets,
     risk_parity,
+    seasoned_variance_swap,
+    sharpe_conditions,
+    sharpe_statistics,
     sharpe_zero,
+    statement_analysis,
+    statistics_probability,
+    stochastic_calculus,
+    strategic_asset_allocation,
     synthetic_short,
     time_value_returns,
+    trade_execution,
+    transaction_cost_hedging,
+    var_backtest,
+    volatility_mismatch_hedging,
+    yield_shift,
 )
 from trading_notes.numerical.perpetual_funding import FundingReport
 from trading_notes.numerical.report import CheckReport
 from trading_notes.numerical.synthetic_short import ShortReport
 
 ARTEFACTS = Path(__file__).resolve().parents[2] / "notes" / "artefacts"
-# A reported check line of CheckReport, of the ok/FAIL reports of perpetual_funding and
-# synthetic_short, and of covariance_shrinkage and drawdown_resampling, which print failed
-# conditions only.
+# A reported check line of CheckReport, of the ok/FAIL reports of perpetual_funding,
+# synthetic_short and lob_model_derivations, and of the modules that print failed conditions
+# only: covariance_shrinkage, drawdown_resampling, multiple_testing, dealer_queue_information,
+# liquidity_market_design, order_flow, order_routing_fragmentation and macro_pricing_risk.
 CHECK_LINE = re.compile(r"^  (ok |BAD) ", re.M)
 OK_FAIL_LINE = re.compile(r"^(ok  |FAIL) ", re.M)
+# fx_panel_inference prints PASS or FAIL lines and no summary.
+PASS_FAIL_LINE = re.compile(r"^(PASS|FAIL)  ", re.M)
 BAD_ONLY_LINE = re.compile(r"^(BAD) ", re.M)
 # At most this many example processes run at once, whatever the number of examples.
 MAX_PROCESSES: Final = 4
@@ -97,8 +185,18 @@ def forced_short_failure(report: ShortReport, *_: object) -> None:
     report.check("forced failure", 1.0, 0.0)
 
 
+def forced_derivation_failure(failures: list[str], *_: object) -> None:
+    """Stand in for a lob_model_derivations check function, recording one failed check."""
+    lob_model_derivations.check(failures, "forced failure", False, "forced")
+
+
+def forced_panel_failure(failures: list[str], *_: object) -> None:
+    """Stand in for a fx_panel_inference check function, recording one failed check."""
+    fx_panel_inference.check(failures, "forced failure", False, "forced")
+
+
 def forced_condition_failure(*_: object) -> list[str]:
-    """Stand in for covariance_shrinkage.failed_conditions, reporting one failed condition."""
+    """Stand in for a failed_conditions function, reporting one failed condition."""
     return ["forced failure"]
 
 
@@ -126,10 +224,14 @@ class NumericalCheck:
         line: Matches each reported check line; group 1 is its status.
         forced: The stand-in for `replaced`, a function of this test module.
         passed: The end of a passing run's output.
-        imports: The heavy dependencies (of `HEAVY`) that importing the module loads; all
-            others are forbidden.
+        imports: The modules it imports for its heavy dependencies (of `HEAVY`), as it
+            imports them. Importing it must load exactly their packages, and open no file
+            beyond those they open when imported alone.
         solver: A slow, pure function of one matrix that the module calls by name, which
             bookkeeping tests may answer from earlier results instead of solving again.
+        cwd: The folder that the module's default paths are relative to, for a module that
+            reads a compendium file; its in-process runs and package commands start there. None
+            for a module that reads nothing.
     """
 
     module: ModuleType
@@ -142,6 +244,7 @@ class NumericalCheck:
     passed: str = "\nall checks passed\n"
     imports: tuple[str, ...] = ()
     solver: Callable[[NDArray[np.float64]], NDArray[np.float64]] | None = None
+    cwd: Path | None = None
 
 
 @dataclass(frozen=True)
@@ -154,8 +257,9 @@ class Demonstration:
         module: The implementation module, with `main()`, run as `python -m <module>`.
         script: Its entrypoint under notes/artefacts/.
         lines: The number of lines a run prints.
-        imports: The heavy dependencies (of `HEAVY`) that importing the module loads; all
-            others are forbidden.
+        imports: The modules it imports for its heavy dependencies (of `HEAVY`), as it
+            imports them. Importing it must load exactly their packages, and open no file
+            beyond those they open when imported alone.
     """
 
     module: ModuleType
@@ -165,10 +269,19 @@ class Demonstration:
 
 
 LIST_SUMMARY = "\nFAILED: ['forced failure']\n"
-# bitemporal-check.py and black-litterman-check.py print no failure summary, so nothing
-# follows the BAD line.
+# bitemporal-check.py, black-litterman-check.py and var-backtest-check.py print no failure
+# summary, so nothing follows the BAD line.
 NO_SUMMARY = "  BAD forced failure\n"
+# The summary of the scripts that print their failures joined by commas.
+JOINED_SUMMARY = "\nFAILED: forced failure\n"
+# The summary of the scripts that print their failure count and list.
+COUNTED_SUMMARY = "\n1 check(s) failed: ['forced failure']\n"
 NUMPY = ("numpy",)
+# scipy.stats imports NumPy itself, so even a module that imports only scipy.stats loads both.
+SCIPY_STATS = ("numpy", "scipy.stats")
+# statsmodels imports NumPy, pandas and SciPy itself, so a module that imports any part of it
+# loads all four; they are listed before the statsmodels modules it imports.
+STATSMODELS = ("numpy", "pandas", "scipy", "statsmodels")
 CHECKS = [
     NumericalCheck(
         funding_repo,
@@ -380,6 +493,700 @@ CHECKS = [
         passed="; blocks come closer\nall checks passed\n",
         imports=NUMPY,
     ),
+    NumericalCheck(
+        linear_projection,
+        ARTEFACTS / "equity-long-short-construction" / "projection-checks.py",
+        "check_joint_normality",
+        LIST_SUMMARY,
+        5,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        var_backtest,
+        ARTEFACTS / "risk-tail-systemic" / "var-backtest-check.py",
+        "check_clustering",
+        NO_SUMMARY,
+        3,
+        imports=SCIPY_STATS,
+    ),
+    NumericalCheck(
+        multiple_testing,
+        ARTEFACTS / "backtest-inference" / "multiple-testing-checks.py",
+        "failed_conditions",
+        "\nBAD forced failure\n",
+        0,
+        BAD_ONLY_LINE,
+        forced_condition_failure,
+        imports=SCIPY_STATS,
+    ),
+    NumericalCheck(
+        sharpe_statistics,
+        ARTEFACTS / "backtest-inference" / "sharpe-checks.py",
+        "check_deflated_sharpe",
+        LIST_SUMMARY,
+        23,
+        imports=SCIPY_STATS,
+    ),
+    NumericalCheck(
+        forecast_scaling,
+        ARTEFACTS / "equity-long-short-construction" / "forecast-checks.py",
+        "check_table_10_1",
+        LIST_SUMMARY,
+        16,
+        imports=SCIPY_STATS,
+    ),
+    NumericalCheck(
+        purged_cv,
+        ARTEFACTS / "statistical-learning-foundations" / "cv-checks.py",
+        "check_purged_kfold",
+        LIST_SUMMARY,
+        7,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        concentrated_position,
+        ARTEFACTS / "private-wealth" / "concentrated-position-check.py",
+        "check_exchange_fund",
+        JOINED_SUMMARY,
+        8,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        lob_model_derivations,
+        ARTEFACTS / "market-making-lob" / "model-derivations-checks.py",
+        "check_roll",
+        "FAIL forced failure: forced\n",
+        11,
+        OK_FAIL_LINE,
+        forced_derivation_failure,
+        passed="lag 2 -0.00005\n",
+        imports=("numpy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        sharpe_conditions,
+        ARTEFACTS / "backtest-inference" / "sharpe-conditions-checks.py",
+        "check_compounding",
+        LIST_SUMMARY,
+        8,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        dividend_tree_swaption,
+        ARTEFACTS / "option-valuation" / "dividend-tree-swaption-checks.py",
+        "check_swaptions",
+        JOINED_SUMMARY,
+        6,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        lob_models,
+        ARTEFACTS / "market-making-lob" / "model-checks.py",
+        "check_free_entry",
+        LIST_SUMMARY,
+        37,
+        imports=("numpy", "scipy.integrate", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        margin_purchase,
+        ARTEFACTS / "short-term-funding" / "margin-purchase-check.py",
+        "check_levered_return",
+        JOINED_SUMMARY,
+        7,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        cross_currency_basis,
+        ARTEFACTS / "forward-swap-valuation" / "cross-currency-basis-check.py",
+        "check_final_exchange",
+        JOINED_SUMMARY,
+        16,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        seasoned_variance_swap,
+        ARTEFACTS / "derivative-overlays" / "seasoned-variance-swap-check.py",
+        "check_simulation",
+        JOINED_SUMMARY,
+        8,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.stats"),
+    ),
+    NumericalCheck(
+        covariance_volatility,
+        ARTEFACTS / "high-dimensional-estimation" / "covariance-volatility-checks.py",
+        "check_har",
+        LIST_SUMMARY,
+        11,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        etf_mechanics,
+        ARTEFACTS / "etf-mechanics" / "etf-checks.py",
+        "check_cost_of_ownership",
+        LIST_SUMMARY,
+        13,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        trade_execution,
+        ARTEFACTS / "trade-execution" / "trade-execution-checks.py",
+        "check_evaluation",
+        COUNTED_SUMMARY,
+        14,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        macro_valuation,
+        ARTEFACTS / "macro-asset-valuation" / "macro-valuation-checks.py",
+        "check_multiples_and_property",
+        COUNTED_SUMMARY,
+        16,
+        imports=("numpy", "scipy"),
+    ),
+    NumericalCheck(
+        commodity_returns,
+        ARTEFACTS / "commodity-investment" / "commodity-return-checks.py",
+        "check_swaps",
+        LIST_SUMMARY,
+        15,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        correlation_independence,
+        ARTEFACTS / "inference-simulation" / "correlation-independence-checks.py",
+        "check_size",
+        JOINED_SUMMARY,
+        13,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        counterparty_capital,
+        ARTEFACTS / "counterparty-xva" / "counterparty-capital-check.py",
+        "check_worked_example",
+        JOINED_SUMMARY,
+        13,
+        imports=("numpy", "scipy", "scipy.integrate"),
+    ),
+    NumericalCheck(
+        volatility_mismatch_hedging,
+        ARTEFACTS / "option-valuation" / "volatility-mismatch-hedging-check.py",
+        "check_gamma_condition",
+        JOINED_SUMMARY,
+        10,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        alternatives_allocation,
+        ARTEFACTS / "alternatives-allocation" / "alternatives-allocation-checks.py",
+        "check_liquidity",
+        LIST_SUMMARY,
+        13,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        market_structure,
+        ARTEFACTS / "firms-market-structure" / "market-structure-checks.py",
+        "check_concentration",
+        LIST_SUMMARY,
+        13,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        hedge_funds,
+        ARTEFACTS / "hedge-funds" / "hedge-fund-checks.py",
+        "check_allocation",
+        LIST_SUMMARY,
+        17,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        gips,
+        ARTEFACTS / "performance-presentation-standards" / "gips-checks.py",
+        "check_composite_report",
+        COUNTED_SUMMARY,
+        25,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        stochastic_calculus,
+        ARTEFACTS / "stochastic-calculus" / "stochastic-calculus-checks.py",
+        "check_feynman_kac",
+        JOINED_SUMMARY,
+        23,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        index_construction,
+        ARTEFACTS / "market-index-construction" / "index-construction-checks.py",
+        "check_bond_index",
+        COUNTED_SUMMARY,
+        30,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        monte_carlo_greeks,
+        ARTEFACTS / "numerical-pricing" / "monte-carlo-greeks-check.py",
+        "check_fd_variance",
+        "\nFAILED:forced failure\n",
+        17,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        currency_management,
+        ARTEFACTS / "currency-management" / "currency-management-checks.py",
+        "check_active_strategies",
+        COUNTED_SUMMARY,
+        21,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        option_models,
+        ARTEFACTS / "option-pricing-models" / "option-model-checks.py",
+        "check_sabr",
+        LIST_SUMMARY,
+        20,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        economic_growth,
+        ARTEFACTS / "economic-growth" / "growth-checks.py",
+        "check_endogenous_growth",
+        COUNTED_SUMMARY,
+        22,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        derivative_overlays,
+        ARTEFACTS / "derivative-overlays" / "overlay-checks.py",
+        "check_endowment_case",
+        COUNTED_SUMMARY,
+        25,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        active_management,
+        ARTEFACTS / "active-management-analysis" / "active-management-checks.py",
+        "check_risk_decomposition",
+        COUNTED_SUMMARY,
+        30,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        credit_portfolios,
+        ARTEFACTS / "credit-portfolios" / "credit-portfolio-checks.py",
+        "check_structured",
+        LIST_SUMMARY,
+        25,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        fx_mechanics,
+        ARTEFACTS / "fx-mechanics-determination" / "fx-checks.py",
+        "check_flows",
+        COUNTED_SUMMARY,
+        27,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        manager_selection,
+        ARTEFACTS / "manager-selection" / "manager-selection-checks.py",
+        "check_shrinkage",
+        COUNTED_SUMMARY,
+        26,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        transaction_cost_hedging,
+        ARTEFACTS / "option-valuation" / "transaction-cost-hedging-check.py",
+        "check_nonadditivity",
+        JOINED_SUMMARY,
+        16,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        capital_market_expectations,
+        ARTEFACTS / "capital-market-expectations" / "cme-checks.py",
+        "check_reweighting",
+        COUNTED_SUMMARY,
+        28,
+        imports=("numpy", "scipy"),
+    ),
+    NumericalCheck(
+        portfolio_moments,
+        ARTEFACTS / "portfolio-risk-return" / "portfolio-moments-checks.py",
+        "check_conditional_correlation",
+        JOINED_SUMMARY,
+        29,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.stats"),
+    ),
+    NumericalCheck(
+        digital_assets,
+        ARTEFACTS / "digital-assets" / "digital-asset-checks.py",
+        "check_custody",
+        LIST_SUMMARY,
+        21,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        numerical_pricing,
+        ARTEFACTS / "numerical-pricing" / "numerical-pricing-checks.py",
+        "check_bermudan",
+        JOINED_SUMMARY,
+        18,
+        imports=("numpy", "scipy", "scipy.stats", "scipy.linalg"),
+    ),
+    # Its last check reads a compendium figure relative to the entry's folder; the entrypoint
+    # passes the figure's location instead.
+    NumericalCheck(
+        asset_pricing_factor_models,
+        ARTEFACTS / "asset-pricing-factor-models" / "asset-pricing-checks.py",
+        "check_factor_models",
+        JOINED_SUMMARY,
+        39,
+        imports=(*STATSMODELS, "statsmodels.api"),
+        cwd=ARTEFACTS / "asset-pricing-factor-models",
+    ),
+    NumericalCheck(
+        backtest_design,
+        ARTEFACTS / "backtest-inference" / "backtest-design-checks.py",
+        "check_survivorship",
+        LIST_SUMMARY,
+        19,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        bond_valuation_risk,
+        ARTEFACTS / "bond-valuation-risk" / "bond-valuation-checks.py",
+        "check_treasury_formulas",
+        COUNTED_SUMMARY,
+        94,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        credit_cds_securitisation,
+        ARTEFACTS / "corporate-credit-capital" / "credit-cds-securitisation-checks.py",
+        "check_migration",
+        "\n49 checks executed\nFAILED: ['forced failure']\n",
+        52,
+        imports=("numpy", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        counterparty_xva,
+        ARTEFACTS / "counterparty-xva" / "counterparty-xva-checks.py",
+        "check_collateral",
+        JOINED_SUMMARY,
+        32,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats"),
+    ),
+    # Part 3's correlation searches take most of its 30 seconds; the forced failure replaces it.
+    NumericalCheck(
+        default_correlation,
+        ARTEFACTS / "default-correlation" / "default-correlation-checks.py",
+        "check_base_correlation",
+        JOINED_SUMMARY,
+        18,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        statistics_probability,
+        ARTEFACTS / "descriptive-probability" / "statistics-probability-checks.py",
+        "check_bayesian",
+        JOINED_SUMMARY,
+        64,
+        imports=("numpy", "scipy.integrate", "scipy.stats"),
+    ),
+    # The capacity part takes nearly all of its minute; the forced failure replaces it.
+    NumericalCheck(
+        equity_portfolio_management,
+        ARTEFACTS / "equity-portfolio-management" / "equity-portfolio-checks.py",
+        "check_capacity_structure",
+        COUNTED_SUMMARY,
+        26,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        dealer_queue_information,
+        ARTEFACTS / "execution-market-making" / "dealer-queue-information-checks.py",
+        "check_power_and_inference",
+        "\nBAD forced failure\n",
+        0,
+        BAD_ONLY_LINE,
+        forced_condition_failure,
+        imports=("numpy", "scipy", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        liquidity_market_design,
+        ARTEFACTS / "execution-market-making" / "liquidity-market-design-checks.py",
+        "check_capacity",
+        "\nBAD forced failure\n",
+        0,
+        BAD_ONLY_LINE,
+        forced_condition_failure,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        market_estimators_rules,
+        ARTEFACTS / "execution-market-making" / "market-estimators-rules-checks.py",
+        "check_model_i",
+        "\nFAILURES: ['forced failure']\n",
+        45,
+        passed="\nFAILURES: none\n",
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        exotic_options,
+        ARTEFACTS / "exotic-options" / "exotic-option-checks.py",
+        "check_barrier",
+        JOINED_SUMMARY,
+        21,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        lookback_options,
+        ARTEFACTS / "exotic-options" / "lookback-option-check.py",
+        "check_monitoring",
+        JOINED_SUMMARY,
+        19,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    # Its 24 seconds are diagnostics that take no report, so the forced failure still runs them.
+    NumericalCheck(
+        extreme_value,
+        ARTEFACTS / "extreme-value" / "extreme-value-checks.py",
+        "check_rmfi",
+        JOINED_SUMMARY,
+        8,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        financial_ml_methods,
+        ARTEFACTS / "financial-ml-methods" / "ml-methods-checks.py",
+        "check_classifier",
+        LIST_SUMMARY,
+        23,
+        imports=("numpy", "scipy", "scipy.cluster.hierarchy", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        intercorporate_fx_institutions,
+        ARTEFACTS / "financial-statement-analysis" / "intercorporate-fx-institutions-checks.py",
+        "check_classification",
+        LIST_SUMMARY,
+        54,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        statement_analysis,
+        ARTEFACTS / "financial-statement-analysis" / "statement-analysis-checks.py",
+        "check_leases",
+        LIST_SUMMARY,
+        138,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        fixed_income_portfolio,
+        ARTEFACTS / "fixed-income-portfolio" / "fixed-income-portfolio-checks.py",
+        "check_indexes",
+        COUNTED_SUMMARY,
+        40,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        forward_swap_valuation,
+        ARTEFACTS / "forward-swap-valuation" / "forward-swap-checks.py",
+        "check_option_payoffs",
+        COUNTED_SUMMARY,
+        69,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        inference_simulation,
+        ARTEFACTS / "inference-simulation" / "inference-simulation-checks.py",
+        "check_discretisation",
+        JOINED_SUMMARY,
+        52,
+        imports=("numpy", "scipy", "scipy.stats"),
+    ),
+    NumericalCheck(
+        institutional_portfolios,
+        ARTEFACTS / "institutional-portfolios" / "institutional-checks.py",
+        "check_endowment",
+        LIST_SUMMARY,
+        28,
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        investment_planning,
+        ARTEFACTS / "investment-planning" / "investment-planning-checks.py",
+        "check_behaviour",
+        COUNTED_SUMMARY,
+        41,
+        imports=("numpy", "scipy", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        macro_policy_trade,
+        ARTEFACTS / "macro-policy-trade" / "macro-policy-trade-checks.py",
+        "check_trade",
+        COUNTED_SUMMARY,
+        25,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        market_risk_measurement,
+        ARTEFACTS / "market-risk-measurement" / "market-risk-checks.py",
+        "check_sensitivity_scenarios",
+        COUNTED_SUMMARY,
+        27,
+        imports=("numpy", "scipy", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        order_flow,
+        ARTEFACTS / "market-simulation" / "order-flow-checks.py",
+        "check_trade_signing",
+        "\nBAD forced failure\n",
+        0,
+        BAD_ONLY_LINE,
+        forced_condition_failure,
+        passed="Hawkes gaps: CV = 1.365; E[X^2]/(2E[X]) = 0.579 against the mean wait 0.594 from"
+        " uniform start times (the stationary inversion formula, Palm moments)\n",
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.stats"),
+    ),
+    NumericalCheck(
+        order_routing_fragmentation,
+        ARTEFACTS / "market-structure-execution-quality" / "order-routing-fragmentation-checks.py",
+        "check_learner",
+        "\nBAD forced failure\n",
+        0,
+        BAD_ONLY_LINE,
+        forced_condition_failure,
+        passed="  a1=100.0, b2=100.01, all-in cost k=0.02: profit per unit -0.01 -> none\n",
+        imports=SCIPY_STATS,
+    ),
+    NumericalCheck(
+        macro_pricing_risk,
+        ARTEFACTS / "multi-asset-systematic-macro" / "macro-pricing-risk-checks.py",
+        "check_duration",
+        "\nBAD forced failure\n",
+        0,
+        BAD_ONLY_LINE,
+        forced_condition_failure,
+        imports=SCIPY_STATS,
+    ),
+    NumericalCheck(
+        option_strategies,
+        ARTEFACTS / "option-strategies" / "option-strategy-checks.py",
+        "check_selection",
+        COUNTED_SUMMARY,
+        31,
+        imports=("numpy", "scipy", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        option_valuation,
+        ARTEFACTS / "option-valuation" / "option-valuation-checks.py",
+        "check_greeks",
+        COUNTED_SUMMARY,
+        44,
+        imports=("numpy", "scipy", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        performance_evaluation,
+        ARTEFACTS / "performance-evaluation" / "performance-evaluation-checks.py",
+        "check_skill",
+        COUNTED_SUMMARY,
+        41,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.stats"),
+    ),
+    NumericalCheck(
+        kelly_growth,
+        ARTEFACTS / "portfolio-construction" / "kelly-check.py",
+        "check_levered_ruin",
+        JOINED_SUMMARY,
+        23,
+        imports=("numpy", "scipy", "scipy.integrate", "scipy.stats"),
+    ),
+    # Twenty linear programmes take most of its two minutes; their solver is answered from the
+    # reference run, and the forced failure replaces a quick part.
+    NumericalCheck(
+        mean_cvar,
+        ARTEFACTS / "portfolio-construction" / "mean-cvar-check.py",
+        "check_mean_variance",
+        JOINED_SUMMARY,
+        8,
+        imports=(
+            "numpy",
+            "scipy",
+            "scipy.optimize",
+            "scipy.sparse",
+            "scipy.special",
+            "scipy.stats",
+        ),
+        solver=mean_cvar.cvar_weights,
+    ),
+    NumericalCheck(
+        private_capital,
+        ARTEFACTS / "private-capital" / "private-capital-checks.py",
+        "check_valuation",
+        LIST_SUMMARY,
+        38,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        private_wealth,
+        ARTEFACTS / "private-wealth" / "private-wealth-checks.py",
+        "check_residence",
+        LIST_SUMMARY,
+        59,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        rate_tree_embedded_options,
+        ARTEFACTS / "rate-tree-embedded-options" / "rate-tree-checks.py",
+        "check_paths",
+        COUNTED_SUMMARY,
+        46,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        real_assets,
+        ARTEFACTS / "real-assets" / "real-asset-checks.py",
+        "check_reit",
+        LIST_SUMMARY,
+        37,
+        imports=("numpy", "scipy", "scipy.optimize"),
+    ),
+    NumericalCheck(
+        strategic_asset_allocation,
+        ARTEFACTS / "strategic-asset-allocation" / "saa-checks.py",
+        "check_goals_heuristics",
+        COUNTED_SUMMARY,
+        40,
+        imports=("numpy", "scipy", "scipy.optimize", "scipy.stats"),
+    ),
+    NumericalCheck(
+        fx_panel_inference,
+        ARTEFACTS / "fx-determination-forecasting" / "fx-panel-inference-check.py",
+        "check_empty_months",
+        "FAIL  forced failure: forced\n",
+        11,
+        PASS_FAIL_LINE,
+        forced_panel_failure,
+        passed="\nPASS  empty months stay on the calendar grid: -1.0789\n",
+        imports=NUMPY,
+    ),
+    NumericalCheck(
+        linear_regression,
+        ARTEFACTS / "linear-regression" / "regression-checks.py",
+        "check_functional_forms",
+        JOINED_SUMMARY,
+        44,
+        imports=(
+            *STATSMODELS,
+            "statsmodels.api",
+            "statsmodels.formula.api",
+            "scipy.integrate",
+            "scipy.stats",
+            "statsmodels.regression.linear_model",
+            "statsmodels.stats.anova",
+        ),
+    ),
 ]
 DEMONSTRATIONS = [
     Demonstration(
@@ -393,10 +1200,41 @@ DEMONSTRATIONS = [
         6,
         imports=NUMPY,
     ),
+    Demonstration(
+        yield_shift,
+        ARTEFACTS / "rates-credit-mortgages" / "yield-shift-check.py",
+        9,
+        imports=("numpy", "scipy.optimize"),
+    ),
+    Demonstration(
+        financial_labels,
+        ARTEFACTS / "statistical-learning-foundations" / "financial-labels-capital-checks.py",
+        39,
+        imports=NUMPY,
+    ),
+    Demonstration(
+        afml,
+        ARTEFACTS / "statistical-learning-foundations" / "afml-checks.py",
+        84,
+        imports=(*STATSMODELS, "statsmodels.tsa.stattools"),
+    ),
 ]
 EXAMPLES: list[NumericalCheck | Demonstration] = [*CHECKS, *DEMONSTRATIONS]
-# Package modules that are not examples; they import no heavy dependency.
-SUPPORT = ("trading_notes", "trading_notes.numerical", "trading_notes.numerical.report")
+# Package modules that are not examples, with the heavy dependencies each imports (of `HEAVY`).
+SUPPORT: dict[str, tuple[str, ...]] = {
+    "trading_notes": (),
+    "trading_notes.numerical": (),
+    "trading_notes.numerical.report": (),
+    "trading_notes.numerical.newey_west": NUMPY,
+}
+
+
+def run_main(example: NumericalCheck | Demonstration) -> int:
+    """Run the example's `main()` in process, from its `cwd` when it has one."""
+    folder = example.cwd if isinstance(example, NumericalCheck) else None
+    with contextlib.chdir(folder) if folder else contextlib.nullcontext():
+        status: int = example.module.main()
+    return status
 
 
 def captured(run: Callable[[], int]) -> tuple[int, str]:
@@ -493,7 +1331,7 @@ def reference_run(example: NumericalCheck | Demonstration) -> tuple[int, str]:
     started them.
     """
     with solved_once(example):
-        return captured(example.module.main)
+        return captured(functools.partial(run_main, example))
 
 
 def run_concurrently(
@@ -535,6 +1373,7 @@ class Reporting(unittest.TestCase):
             report.ok("z", False, "detail")
         self.assertEqual(out.getvalue(), "  BAD x\n  ok  y\n  BAD z: detail\n")
         self.assertEqual(report.failures, ["x", "z"])
+        self.assertEqual(report.count, 3)
 
     def test_failures_belong_to_one_report(self) -> None:
         """The failure list is a copy, and a new report starts empty."""
@@ -543,7 +1382,7 @@ class Reporting(unittest.TestCase):
             report.ok("x", False)
         report.failures.append("tampered")
         self.assertEqual(report.failures, ["x"])
-        self.assertEqual(CheckReport().failures, [])
+        self.assertEqual((CheckReport().failures, CheckReport().count), ([], 0))
 
     def test_same_prints_got_and_want(self) -> None:
         """`same` compares with ==, prints both values with str and records a mismatch."""
@@ -560,6 +1399,7 @@ class Reporting(unittest.TestCase):
             "  BAD factor: 1.0 (want 7.0)\n",
         )
         self.assertEqual(report.failures, ["factor"])
+        self.assertEqual(report.count, 3)
 
 
 class SharedStateHelpers(unittest.TestCase):
@@ -606,7 +1446,7 @@ class NumericalChecks(unittest.TestCase):
                 with restored_global_state():
                     prime_global_random(20261023)
                     before = GlobalState.now()
-                    second = captured(example.module.main)
+                    second = captured(functools.partial(run_main, example))
                     self.assertEqual(GlobalState.now(), before)
                 self.assertEqual(first, second)
                 self.assertEqual(first[0], 0)
@@ -628,13 +1468,13 @@ class NumericalChecks(unittest.TestCase):
             with self.subTest(check.module.__name__), solved_once(check):
                 reference_run(check)
                 with mock.patch.object(check.module, check.replaced, check.forced):
-                    status, out = captured(check.module.main)
+                    status, out = captured(functools.partial(run_main, check))
                 self.assertEqual(status, 1)
                 self.assertTrue(out.endswith(check.summary), out[-200:])
                 self.assertNotIn("all checks passed", out)
                 failed = [s for s in check.line.findall(out) if s in ("BAD", "FAIL")]
                 self.assertEqual(len(failed), 1, out)
-                self.assertEqual(captured(check.module.main), reference_run(check))
+                self.assertEqual(captured(functools.partial(run_main, check)), reference_run(check))
 
     def test_entrypoints_run_from_any_directory(self) -> None:
         """Each script runs, isolated, from its own folder and from an unrelated one."""
@@ -675,13 +1515,17 @@ class NumericalChecks(unittest.TestCase):
                 self.assertEqual(done.stderr, "")
 
     def test_modules_run_as_package_commands(self) -> None:
-        """`python -m <module>` runs, isolated, from an unrelated folder, as `main()` does."""
+        """`python -m <module>` runs, isolated, from an unrelated folder, as `main()` does.
+
+        A module whose default paths are relative to a folder (`cwd`) runs from that folder.
+        """
         with tempfile.TemporaryDirectory() as elsewhere:
             results = run_concurrently(
                 [
                     (
                         [sys.executable, "-I", "-W", "error", "-m", example.module.__name__],
-                        Path(elsewhere),
+                        (example.cwd if isinstance(example, NumericalCheck) else None)
+                        or Path(elsewhere),
                     )
                     for example in EXAMPLES
                 ]
@@ -712,35 +1556,84 @@ class NumericalChecks(unittest.TestCase):
         self.assertEqual(found, listed - {"trading_notes", "trading_notes.numerical"})
 
     def test_imports_have_no_side_effects(self) -> None:
-        """Importing a module alone prints nothing, opens no data and runs no example.
+        """Importing a module alone prints nothing, reads no data and runs no example.
 
         Each module is imported in its own fresh process, so one module's dependencies cannot
-        hide another's. It loads exactly its declared heavy dependencies (NumPy for the NumPy
-        modules, none otherwise) and never the structural checkers, and leaves Python's shared
-        generator as it was. A NumPy module is imported again with NumPy loaded first, so that
-        NumPy's legacy generator is compared too.
+        hide another's. It loads exactly its declared heavy dependencies and never the
+        structural checkers, and leaves Python's shared generator as it was. It opens no file
+        beyond those its dependencies open when imported alone, cold, in the same kind of
+        process: none for the standard library or NumPy, and for SciPy the platform and
+        package metadata that SciPy reads as it starts. A module with dependencies is imported
+        again with them loaded first, so that NumPy's legacy generator is compared too. Support
+        modules are held to the same rules.
         """
-        imports = {example.module.__name__: example.imports for example in EXAMPLES}
+        imports = SUPPORT | {example.module.__name__: example.imports for example in EXAMPLES}
         watched = [*HEAVY, "trading_notes.structure"]
         with tempfile.TemporaryDirectory() as elsewhere:
-            for name in [*SUPPORT, *imports]:
+            allowed = {(): frozenset[str]()} | {
+                dependencies: dependency_reads(dependencies, Path(elsewhere))
+                for dependencies in set(imports.values()) - {()}
+            }
+            # The standard-library and NumPy modules stay held to opening nothing at all, and
+            # no dependency's own reads reach the notes, where the research data is kept.
+            self.assertEqual(allowed[NUMPY], frozenset())
+            notes = ARTEFACTS.parent
+            self.assertFalse(
+                [p for r in allowed.values() for p in r if Path(p).is_relative_to(notes)]
+            )
+            for name, dependencies in imports.items():
                 with self.subTest(name):
                     effects = import_effects([name], watched, Path(elsewhere))
                     self.assertEqual(effects.returncode, 0, effects.stderr)
                     self.assertEqual(
-                        (effects.opened, effects.printed, effects.loaded, effects.stderr),
-                        ([], "", sorted(imports.get(name, ())), ""),
+                        (
+                            effects.reads_beyond(allowed[dependencies]),
+                            effects.printed,
+                            effects.loaded,
+                            effects.stderr,
+                        ),
+                        ([], "", sorted({d.partition(".")[0] for d in dependencies}), ""),
                     )
                     self.assertTrue(effects.random_unchanged)
-                    if imports.get(name):
+                    if dependencies:
                         preloaded = import_effects(
-                            [name], watched, Path(elsewhere), preload=imports[name]
+                            [name], watched, Path(elsewhere), preload=dependencies
                         )
                         self.assertEqual(
                             (preloaded.returncode, preloaded.stderr, preloaded.random_unchanged),
                             (0, "", True),
                         )
                     self.assertEqual(list(Path(elsewhere).iterdir()), [])
+
+    def test_data_read_at_import_is_caught(self) -> None:
+        """A module that reads a data file as it is imported fails the import check.
+
+        The read is caught whatever the module imports first: nothing, NumPy, or scipy.stats
+        with its own metadata reads, which stay allowed. The module is compiled beforehand,
+        as an installed one is, so that importing it writes no bytecode cache.
+        """
+        with tempfile.TemporaryDirectory() as folder, tempfile.TemporaryDirectory() as elsewhere:
+            data = Path(folder) / "returns.csv"
+            data.write_text("0.01\n")
+            for dependencies in ((), NUMPY, SCIPY_STATS):
+                module = f"reader_{len(dependencies)}"
+                source = Path(folder) / f"{module}.py"
+                source.write_text(
+                    "".join(f"import {d}\n" for d in dependencies)
+                    + f"from pathlib import Path\nDATA = Path({str(data)!r}).read_text()\n"
+                )
+                py_compile.compile(str(source), doraise=True)
+                with self.subTest(dependencies=dependencies):
+                    effects = import_effects([module], HEAVY, Path(elsewhere), path=[Path(folder)])
+                    self.assertEqual((effects.returncode, effects.stderr), (0, ""))
+                    allowed = (
+                        dependency_reads(dependencies, Path(elsewhere))
+                        if dependencies
+                        else frozenset[str]()
+                    )
+                    self.assertNotIn(str(data), allowed)
+                    self.assertEqual(effects.reads_beyond(allowed), [str(data)])
+            self.assertEqual(list(Path(elsewhere).iterdir()), [])
 
 
 class ExactCountryRisk(unittest.TestCase):

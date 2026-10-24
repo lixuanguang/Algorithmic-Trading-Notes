@@ -5,7 +5,8 @@ description = "Structural checkers and numerical evidence scripts for the compen
 readme = "README.md"
 requires-python = "==3.14.*"
 classifiers = ["Private :: Do Not Upload"]
-# Numerical check scripts in notes/artefacts/ (numpy, scipy; statsmodels for one ML check).
+# Numerical check scripts in notes/artefacts/ (numpy, scipy; statsmodels, which brings pandas,
+# for the regression, asset-pricing and AFML checks).
 dependencies = [
     "numpy==2.4.6",
     "scipy==1.18.1",
@@ -19,6 +20,8 @@ dev = [
     "mypy==2.4.0",
     "pytest==9.1.1",
     "ruff==0.16.5",
+    # Type information for scipy, which ships none; its version tracks the scipy pin.
+    "scipy-stubs==1.18.1.1",
 ]
 # Empirical reruns that read retained spreadsheets; not needed for `make check`.
 empirical = [
@@ -113,8 +116,96 @@ files = [
     "notes/artefacts/risk-tail-systemic/garch-ewma-check.py",
     "notes/artefacts/backtest-inference/sharpe-zero-check.py",
     "notes/artefacts/backtest-inference/drawdown-resampling-checks.py",
+    "notes/artefacts/equity-long-short-construction/projection-checks.py",
+    "notes/artefacts/risk-tail-systemic/var-backtest-check.py",
+    "notes/artefacts/backtest-inference/multiple-testing-checks.py",
+    "notes/artefacts/backtest-inference/sharpe-checks.py",
+    "notes/artefacts/rates-credit-mortgages/yield-shift-check.py",
+    "notes/artefacts/equity-long-short-construction/forecast-checks.py",
+    "notes/artefacts/statistical-learning-foundations/cv-checks.py",
+    "notes/artefacts/statistical-learning-foundations/financial-labels-capital-checks.py",
+    "notes/artefacts/private-wealth/concentrated-position-check.py",
+    "notes/artefacts/market-making-lob/model-derivations-checks.py",
+    "notes/artefacts/backtest-inference/sharpe-conditions-checks.py",
+    "notes/artefacts/option-valuation/dividend-tree-swaption-checks.py",
+    "notes/artefacts/market-making-lob/model-checks.py",
+    "notes/artefacts/short-term-funding/margin-purchase-check.py",
+    "notes/artefacts/forward-swap-valuation/cross-currency-basis-check.py",
+    "notes/artefacts/derivative-overlays/seasoned-variance-swap-check.py",
+    "notes/artefacts/high-dimensional-estimation/covariance-volatility-checks.py",
+    "notes/artefacts/etf-mechanics/etf-checks.py",
+    "notes/artefacts/trade-execution/trade-execution-checks.py",
+    "notes/artefacts/macro-asset-valuation/macro-valuation-checks.py",
+    "notes/artefacts/commodity-investment/commodity-return-checks.py",
+    "notes/artefacts/inference-simulation/correlation-independence-checks.py",
+    "notes/artefacts/counterparty-xva/counterparty-capital-check.py",
+    "notes/artefacts/option-valuation/volatility-mismatch-hedging-check.py",
+    "notes/artefacts/alternatives-allocation/alternatives-allocation-checks.py",
+    "notes/artefacts/firms-market-structure/market-structure-checks.py",
+    "notes/artefacts/hedge-funds/hedge-fund-checks.py",
+    "notes/artefacts/performance-presentation-standards/gips-checks.py",
+    "notes/artefacts/stochastic-calculus/stochastic-calculus-checks.py",
+    "notes/artefacts/market-index-construction/index-construction-checks.py",
+    "notes/artefacts/numerical-pricing/monte-carlo-greeks-check.py",
+    "notes/artefacts/currency-management/currency-management-checks.py",
+    "notes/artefacts/option-pricing-models/option-model-checks.py",
+    "notes/artefacts/economic-growth/growth-checks.py",
+    "notes/artefacts/derivative-overlays/overlay-checks.py",
+    "notes/artefacts/active-management-analysis/active-management-checks.py",
+    "notes/artefacts/credit-portfolios/credit-portfolio-checks.py",
+    "notes/artefacts/fx-mechanics-determination/fx-checks.py",
+    "notes/artefacts/manager-selection/manager-selection-checks.py",
+    "notes/artefacts/option-valuation/transaction-cost-hedging-check.py",
+    "notes/artefacts/capital-market-expectations/cme-checks.py",
+    "notes/artefacts/portfolio-risk-return/portfolio-moments-checks.py",
+    "notes/artefacts/digital-assets/digital-asset-checks.py",
+    "notes/artefacts/numerical-pricing/numerical-pricing-checks.py",
+    "notes/artefacts/asset-pricing-factor-models/asset-pricing-checks.py",
+    "notes/artefacts/backtest-inference/backtest-design-checks.py",
+    "notes/artefacts/bond-valuation-risk/bond-valuation-checks.py",
+    "notes/artefacts/corporate-credit-capital/credit-cds-securitisation-checks.py",
+    "notes/artefacts/counterparty-xva/counterparty-xva-checks.py",
+    "notes/artefacts/default-correlation/default-correlation-checks.py",
+    "notes/artefacts/descriptive-probability/statistics-probability-checks.py",
+    "notes/artefacts/equity-portfolio-management/equity-portfolio-checks.py",
+    "notes/artefacts/execution-market-making/dealer-queue-information-checks.py",
+    "notes/artefacts/execution-market-making/liquidity-market-design-checks.py",
+    "notes/artefacts/execution-market-making/market-estimators-rules-checks.py",
+    "notes/artefacts/exotic-options/exotic-option-checks.py",
+    "notes/artefacts/exotic-options/lookback-option-check.py",
+    "notes/artefacts/extreme-value/extreme-value-checks.py",
+    "notes/artefacts/financial-ml-methods/ml-methods-checks.py",
+    "notes/artefacts/financial-statement-analysis/intercorporate-fx-institutions-checks.py",
+    "notes/artefacts/financial-statement-analysis/statement-analysis-checks.py",
+    "notes/artefacts/fixed-income-portfolio/fixed-income-portfolio-checks.py",
+    "notes/artefacts/forward-swap-valuation/forward-swap-checks.py",
+    "notes/artefacts/fx-determination-forecasting/fx-panel-inference-check.py",
+    "notes/artefacts/inference-simulation/inference-simulation-checks.py",
+    "notes/artefacts/institutional-portfolios/institutional-checks.py",
+    "notes/artefacts/investment-planning/investment-planning-checks.py",
+    "notes/artefacts/linear-regression/regression-checks.py",
+    "notes/artefacts/macro-policy-trade/macro-policy-trade-checks.py",
+    "notes/artefacts/market-risk-measurement/market-risk-checks.py",
+    "notes/artefacts/market-simulation/order-flow-checks.py",
+    "notes/artefacts/market-structure-execution-quality/order-routing-fragmentation-checks.py",
+    "notes/artefacts/multi-asset-systematic-macro/macro-pricing-risk-checks.py",
+    "notes/artefacts/option-strategies/option-strategy-checks.py",
+    "notes/artefacts/option-valuation/option-valuation-checks.py",
+    "notes/artefacts/performance-evaluation/performance-evaluation-checks.py",
+    "notes/artefacts/portfolio-construction/kelly-check.py",
+    "notes/artefacts/portfolio-construction/mean-cvar-check.py",
+    "notes/artefacts/private-capital/private-capital-checks.py",
+    "notes/artefacts/private-wealth/private-wealth-checks.py",
+    "notes/artefacts/rate-tree-embedded-options/rate-tree-checks.py",
+    "notes/artefacts/real-assets/real-asset-checks.py",
+    "notes/artefacts/statistical-learning-foundations/afml-checks.py",
+    "notes/artefacts/strategic-asset-allocation/saa-checks.py",
 ]
-mypy_path = "src"
+# statsmodels and pandas ship no type information. typings/ declares only the parts of their
+# APIs that the numerical checks call, typed as those calls return at the pinned versions; a call
+# outside them is a type error, so extend a stub, checked against the pinned library, when a
+# check needs a new call, and review the stubs when a pin moves.
+mypy_path = "src:typings"
 python_version = "3.14"
 strict = true
 disallow_any_explicit = true

@@ -64,7 +64,7 @@ def ar1(rng: np.random.Generator, n_paths: int) -> NDArray[np.float64]:
     return r[:, BURN_IN:]
 
 
-def max_dd(r: NDArray[np.float64]) -> NDArray[np.float64]:
+def max_dd(r: NDArray[np.float64]) -> np.float64 | NDArray[np.float64]:
     """Return the maximum drawdown of log wealth along the last axis.
 
     Log wealth starts at 0, which counts as the first peak, so an initial loss is a drawdown.
@@ -73,13 +73,16 @@ def max_dd(r: NDArray[np.float64]) -> NDArray[np.float64]:
         r: Simple returns, (..., n).
 
     Returns:
-        The largest fall from a running peak, in log units, shape (...).
+        The largest fall from a running peak, in log units, shape (...): a NumPy scalar for
+        one path of shape (n,), an array for a batch of paths.
     """
     w = np.cumsum(np.log1p(r), axis=-1)
     peak = np.maximum.accumulate(
         np.concatenate([np.zeros((*w.shape[:-1], 1)), w], axis=-1), axis=-1
     )[..., 1:]
-    drawdowns: NDArray[np.float64] = np.max(peak - w, axis=-1)
+    # NumPy's stubs leave a reduction along an axis untyped; reducing the last axis of a
+    # one-dimensional array gives a scalar and of a batch an array, as the tests confirm.
+    drawdowns: np.float64 | NDArray[np.float64] = np.max(peak - w, axis=-1)
     return drawdowns
 
 

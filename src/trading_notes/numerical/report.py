@@ -10,8 +10,14 @@ class CheckReport:
     """
 
     def __init__(self) -> None:
-        """Start a run with no failures."""
+        """Start a run with no checks and no failures."""
         self._failures: list[str] = []
+        self._count = 0
+
+    @property
+    def count(self) -> int:
+        """Return the number of checks run so far, passed or failed."""
+        return self._count
 
     @property
     def failures(self) -> list[str]:
@@ -27,6 +33,7 @@ class CheckReport:
             detail: Computed value printed after the name as `: <detail>`; omitted when empty.
         """
         print(f"  {'ok ' if cond else 'BAD'} {name}{': ' + detail if detail else ''}")
+        self._count += 1
         if not cond:
             self._failures.append(name)
 
